@@ -3,6 +3,13 @@
 #include "PyRxAcut.h"
 #include "PyRxAced.h"
 
+#include "PyAcGe.h"
+#include "PyAcDb.h"
+#include "PyAcRx.h"
+#include "PyAcGi.h"
+#include "PyAcAp.h"
+#include "PyAcEd.h"
+
 
 std::filesystem::path PyRxApp::modulePath()
 {
@@ -21,6 +28,17 @@ PyRxApp& PyRxApp::instance()
 
 bool PyRxApp::init()
 {
+    initPyGeModule();
+    initPyRxModule();
+    initPyGiModule();
+    initPyDbModule();
+    initPyApModule();
+    initPyEdModule();
+
+    //TODO: might not keep this
+    if (PyImport_AppendInittab(PyAppNamespace, PyInitPyRxModule) == -1)
+        acutPrintf(_T("\nPyImport Failed"));
+
     Py_Initialize();
     if (Py_IsInitialized() && setPyConfig())
     {

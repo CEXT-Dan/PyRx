@@ -24,12 +24,7 @@
 //-----------------------------------------------------------------------------
 #include "StdAfx.h"
 #include "resource.h"
-#include "PyAcGe.h"
-#include "PyAcDb.h"
-#include "PyAcRx.h"
-#include "PyAcGi.h"
-#include "PyAcAp.h"
-#include "PyAcEd.h"
+
 
 PyMODINIT_FUNC PyInitPyRxModule(void);
 //-----------------------------------------------------------------------------
@@ -72,17 +67,6 @@ public:
             if (!On_kLoadDwgMsgCallOnce)
             {
                 PRINTVER();
-
-                //TODO: move this into PyRxApp, maybe rename PyRxApp
-                initPyGeModule();
-                initPyRxModule();
-                initPyGiModule();
-                initPyDbModule();
-                initPyApModule();
-                initPyEdModule();
-
-                if (PyImport_AppendInittab(PyAppNamespace, PyInitPyRxModule) == -1)
-                    acutPrintf(_T("\nPyImport Failed"));
 
                 if (!PyRxApp::instance().init())
                     acutPrintf(_T("\nPyInit Failed"));
