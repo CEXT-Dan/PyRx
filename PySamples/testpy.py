@@ -2,11 +2,12 @@ import os
 from time import perf_counter
 
 import PyRxApp# = all the global methods like acutPrintf, 
-import PyAp# = application, document classes services 
 import PyRx# = Runtime runtime 
 import PyGe# = Geometry
 import PyGi# = Graphics interface
 import PyDb# = database
+import PyAp# = application, document classes services 
+import PyEd# = editor 
 
 
 def OnPyInitApp():

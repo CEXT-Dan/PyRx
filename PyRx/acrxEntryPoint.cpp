@@ -290,7 +290,7 @@ public:
                             {
                                 if (PyRxApp::instance().commands.contains(commandName.makeUpper()))
                                 {
-                                    Py_XDECREF(PyRxApp::instance().commands.at(commandName));
+                                    //TODO: py311 Py_XDECREF(PyRxApp::instance().commands.at(commandName));
                                     PyRxApp::instance().commands[commandName] = pValue;
                                 }
                                 else

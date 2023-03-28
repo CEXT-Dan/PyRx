@@ -8,6 +8,7 @@ import PyDb# = database
 import PyAp# = application, document classes services 
 import PyEd# = editor 
 
+
 def OnPyInitApp():
     PyRxApp.Printf("\nOnPyInitApp")
 	
