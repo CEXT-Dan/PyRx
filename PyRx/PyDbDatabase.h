@@ -16,12 +16,63 @@ public:
     bool annoAllVisible() const;
     bool annotativeDwg() const;
     int approxNumObjects() const;
+    Adesk::Int16 attmode() const;
+    Adesk::Int16 aunits() const;
+    Adesk::Int16 auprec() const;
+    bool blipmode() const;
+    PyDbObjectId byBlockLinetype() const;
+    PyDbObjectId byBlockMaterial() const;
+    PyDbObjectId byLayerLinetype() const;
+    PyDbObjectId byLayerMaterial() const;
+    bool cameraDisplay() const;
+    double cameraHeight() const;
+    Adesk::Int16 cDynDisplayMode() const;
+    double celtscale() const;
+    PyDbObjectId celtype() const;
+    AcDb::LineWeight celweight() const; //TODO:: add  AcDb::LineWeight enum
+    double chamfera() const;
+    double chamferb() const;
+    double chamferc() const;
+    double chamferd() const;
+    std::string classDxfName(const PyRxClass& pClass);
+    PyDbObjectId clayer() const;
+    Acad::ErrorStatus closeInput(bool bCloseFile);
+    PyDbObjectId cmaterial() const;
+    Adesk::Int16 cmljust() const;
+    double cmlscale() const;
+    PyDbObjectId cmlstyleID() const;
+    PyDbObjectId colorDictionaryId() const;
+    PyDbObjectId continuousLinetype() const;
+    Adesk::Int16 coords() const;
+    Adesk::UInt32 countEmptyObjects(const Adesk::UInt32 flags);
+    PyDbObjectId detailViewStyle() const;
+    PyDbObjectId detailViewStyleDictionaryId() const;
+    bool dimaso() const;
+    Adesk::UInt8 dimAssoc() const;
+    int dimfit() const;
+    bool dimsho() const;
+    PyDbObjectId dimstyle() const;
+    PyDbObjectId dimStyleTableId() const;
+    int dimunit() const;
+    void disablePartialOpen();
+    void disableUndoRecording(bool disable);
+    bool dispSilh() const;
+    Adesk::Int16 dragmode() const;
+    PyDbObjectId dragVisStyle() const;
+    Adesk::UInt8 drawOrderCtl() const;
+    Adesk::UInt8 dwfframe() const;
+    bool dwgFileWasSavedByAutodeskSoftware() const;
+    Acad::ErrorStatus dxfIn(const std::string& dxfFilename);
+    Acad::ErrorStatus dxfOut(const std::string& dxfFilename);
+    double elevation() const;
+    Adesk::UInt32 eraseEmptyObjects(const Adesk::UInt32 flags);
 
 
     Acad::ErrorStatus create(bool buildDefaultDrawing, bool noDocument);
     Acad::ErrorStatus readDwgFile(const char* fileName);
     std::string getFilename();
 
+    PyDbObjectId currentSpaceId() const;
     PyDbObjectId blockTableId() const;
     PyDbObjectId modelspaceId() const;
 
