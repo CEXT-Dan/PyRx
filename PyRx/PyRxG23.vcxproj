@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{254ed7f5-4891-44d2-a6bd-f5b3891ccccf}</ProjectGuid>
+    <RootNamespace>PyRx</RootNamespace>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <ProjectName>PyRxG23</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <UseOfAtl>false</UseOfAtl>
+    <CLRSupport>false</CLRSupport>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <UseOfAtl>false</UseOfAtl>
+    <CLRSupport>false</CLRSupport>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IntDir>$(ProjectName)\$(PlatformName)\$(Configuration)/</IntDir>
+    <OutDir>$(SolutionDir)\Bin\$(ProjectName)\$(PlatformName)\$(Configuration)/</OutDir>
+    <LinkIncremental>true</LinkIncremental>
+    <TargetExt>.grx</TargetExt>
+    <TargetName>$(ProjectName)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IntDir>$(ProjectName)\$(PlatformName)\$(Configuration)/</IntDir>
+    <OutDir>$(SolutionDir)\Bin\$(ProjectName)\$(PlatformName)\$(Configuration)/</OutDir>
+    <LinkIncremental>true</LinkIncremental>
+    <TargetExt>.grx</TargetExt>
+    <TargetName>$(ProjectName)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <WarningLevel>Level1</WarningLevel>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <Optimization>Disabled</Optimization>
+      <StringPooling>false</StringPooling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PreprocessorDefinitions>_WIN64;_WINDOWS;ARXBRXTEST_MODULE;_AFXEXT;_ACRXAPP;GRXAPP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalIncludeDirectories>$(GRX23)\arx\inc;$(Py310)\include;$(boost)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(outdir)/$(targetname)$(TargetExt)</OutputFile>
+      <LinkDLL>true</LinkDLL>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)/$(targetname).pdb</ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)/$(targetname).lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+      <AdditionalLibraryDirectories>$(GRX23)\arx\lib-$(PlatformName);$(Py310)\libs;$(boost)\lib64-msvc-14.2</AdditionalLibraryDirectories>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(NOINHERIT)$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <WarningLevel>Level1</WarningLevel>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <Optimization>MaxSpeed</Optimization>
+      <StringPooling>true</StringPooling>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PreprocessorDefinitions>_WIN64;_WINDOWS;ARXBRXTEST_MODULE;NDEBUG;_AFXEXT;_ACRXAPP;GRXAPP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalIncludeDirectories>$(GRX23)\arx\inc;$(Py310)\include;$(boost)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(outdir)/$(targetname)$(TargetExt)</OutputFile>
+      <LinkDLL>true</LinkDLL>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <ProgramDatabaseFile>
+      </ProgramDatabaseFile>
+      <ImportLibrary>$(OutDir)/$(targetname).lib</ImportLibrary>
+      <TargetMachine>MachineX64</TargetMachine>
+      <AdditionalLibraryDirectories>$(GRX23)\arx\lib-$(PlatformName);$(Py310)\libs;$(boost)\lib64-msvc-14.2</AdditionalLibraryDirectories>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+    </Link>
+    <ResourceCompile>
+      <AdditionalIncludeDirectories>$(NOINHERIT)$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="acrxEntryPoint.cpp" />
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="DocData.cpp" />
+    <ClCompile Include="PyAcAp.cpp" />
+    <ClCompile Include="PyAcDb.cpp" />
+    <ClCompile Include="PyAcEd.cpp" />
+    <ClCompile Include="PyAcEditor.cpp" />
+    <ClCompile Include="PyAcGe.cpp" />
+    <ClCompile Include="PyAcGi.cpp" />
+    <ClCompile Include="PyAcRx.cpp" />
+    <ClCompile Include="PyApApplication.cpp" />
+    <ClCompile Include="PyApDocManager.cpp" />
+    <ClCompile Include="PyApDocument.cpp" />
+    <ClCompile Include="PyDbBlockTableRecord.cpp" />
+    <ClCompile Include="PyDbDatabase.cpp" />
+    <ClCompile Include="PyDbEntity.cpp" />
+    <ClCompile Include="PyDbHostApplicationServices.cpp" />
+    <ClCompile Include="PyDbObject.cpp" />
+    <ClCompile Include="PyDbObjectId.cpp" />
+    <ClCompile Include="PyDbSymbolTableRecord.cpp" />
+    <ClCompile Include="PyGiDrawable.cpp" />
+    <ClCompile Include="PyRxAced.cpp" />
+    <ClCompile Include="PyRxAcut.cpp" />
+    <ClCompile Include="PyRxApp.cpp" />
+    <ClCompile Include="PyRxObject.cpp" />
+    <ClCompile Include="StdAfx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DocData.h" />
+    <ClInclude Include="PyAcAp.h" />
+    <ClInclude Include="PyAcDb.h" />
+    <ClInclude Include="PyAcEd.h" />
+    <ClInclude Include="PyAcEditor.h" />
+    <ClInclude Include="PyAcGe.h" />
+    <ClInclude Include="PyAcGi.h" />
+    <ClInclude Include="PyAcRx.h" />
+    <ClInclude Include="PyApApplication.h" />
+    <ClInclude Include="PyApDocManager.h" />
+    <ClInclude Include="PyApDocument.h" />
+    <ClInclude Include="PyDbBlockTableRecord.h" />
+    <ClInclude Include="PyDbDatabase.h" />
+    <ClInclude Include="PyDbEntity.h" />
+    <ClInclude Include="PyDbHostApplicationServices.h" />
+    <ClInclude Include="PyDbObject.h" />
+    <ClInclude Include="PyDbObjectId.h" />
+    <ClInclude Include="PyDbSymbolTableRecord.h" />
+    <ClInclude Include="PyException.h" />
+    <ClInclude Include="PyGiDrawable.h" />
+    <ClInclude Include="PyRxAced.h" />
+    <ClInclude Include="PyRxAcut.h" />
+    <ClInclude Include="PyRxApp.h" />
+    <ClInclude Include="PyRxObject.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="RxPyString.h" />
+    <ClInclude Include="StdAfx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ArxBrxTest.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
