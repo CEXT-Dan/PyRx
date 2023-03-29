@@ -1018,12 +1018,485 @@ PyDbObjectId PyDbDatabase::modelspaceId() const
 
 
 
+Acad::ErrorStatus PyDbDatabase::setInsunits(const AcDb::UnitsValue units)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setInsunits(units);
+    throw PyNullObject();
+}
 
+Acad::ErrorStatus PyDbDatabase::setInterfereObjVisStyle(const PyDbObjectId& id)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setInterfereObjVisStyle(id.m_id);
+    throw PyNullObject();
+#endif
+}
 
+Acad::ErrorStatus PyDbDatabase::setInterfereVpVisStyle(const PyDbObjectId& id)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setInterfereVpVisStyle(id.m_id);
+    throw PyNullObject();
+#endif
+}
 
+Acad::ErrorStatus PyDbDatabase::setIntersectColor(Adesk::UInt16 val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setIntersectColor(val);
+    throw PyNullObject();
+#endif
+}
 
+Acad::ErrorStatus PyDbDatabase::setIntersectDisplay(Adesk::UInt8 val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setIntersectDisplay(val);
+    throw PyNullObject();
+#endif
+}
 
+Acad::ErrorStatus PyDbDatabase::setIsolines(Adesk::Int16 isolines)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setIsolines(isolines);
+    throw PyNullObject();
+}
 
+Acad::ErrorStatus PyDbDatabase::setJoinStyle(AcDb::JoinStyle style)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setJoinStyle(style);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setLatitude(double lat)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setLatitude(lat);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setLayerEval(Adesk::UInt8 val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setLayerEval(val);
+    throw PyNullObject();
+#endif
+}
+
+Acad::ErrorStatus PyDbDatabase::setLayerNotify(Adesk::Int16 val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setLayerNotify(val);
+    throw PyNullObject();
+#endif
+}
+
+Acad::ErrorStatus PyDbDatabase::setLensLength(const double _lensLength)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setLensLength(_lensLength);
+    throw PyNullObject();
+#endif
+}
+
+Acad::ErrorStatus PyDbDatabase::setLightGlyphDisplay(Adesk::UInt8 val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setLightGlyphDisplay(val);
+    throw PyNullObject();
+#endif
+}
+
+Acad::ErrorStatus PyDbDatabase::setLightingUnits(Adesk::UInt8 val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setLightingUnits(val);
+    throw PyNullObject();
+#endif
+}
+
+Acad::ErrorStatus PyDbDatabase::setLightsInBlocks(bool val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setLightsInBlocks(val);
+    throw PyNullObject();
+#endif
+}
+
+Acad::ErrorStatus PyDbDatabase::setLimcheck(bool check)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setLimcheck(check);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setLimmax(const AcGePoint2d& max)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setLimmax(max);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setLimmin(const AcGePoint2d& min)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setLimmin(min);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setLineWeightDisplay(bool display)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setLineWeightDisplay(display);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setLoftAng1(double ang1)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setLoftAng1(ang1);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setLoftAng2(double ang2)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setLoftAng2(ang2);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setLoftMag1(double mag1)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setLoftMag1(mag1);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setLoftMag2(double mag2)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setLoftMag2(mag2);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setLoftNormals(Adesk::UInt8 value)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setLoftNormals(value);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setLoftParam(Adesk::UInt16 flags)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setLoftParam(flags);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setLongitude(double lng)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setLongitude(lng);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setLtscale(double scale)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setLtscale(scale);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setLunits(Adesk::Int16 lunits)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setLunits(lunits);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setLuprec(Adesk::Int16 prec)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setLuprec(prec);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setMaxactvp(Adesk::Int16 max)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setMaxactvp(max);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setMeasurement(AcDb::MeasurementValue type)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setMeasurement(type);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setMirrtext(bool mirror)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setMirrtext(mirror);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setMLeaderscale(double scale)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setMLeaderscale(scale);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setMLeaderstyle(const PyDbObjectId& objId)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setMLeaderstyle(objId.m_id);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setMsltscale(bool val)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setMsltscale(val);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setMsOleScale(double val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setMsOleScale(val);
+    throw PyNullObject();
+#endif
+}
+
+Acad::ErrorStatus PyDbDatabase::setNorthDirection(double northdir)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setNorthDirection(northdir);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setObscuredColor(Adesk::UInt16 val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setObscuredColor(val);
+    throw PyNullObject();
+#endif
+}
+
+Acad::ErrorStatus PyDbDatabase::setObscuredLineType(Adesk::UInt8 val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setObscuredLineType(val);
+    throw PyNullObject();
+#endif
+}
+
+Acad::ErrorStatus PyDbDatabase::setOleStartUp(bool val)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setOleStartUp(val);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setOrthomode(bool mode)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setOrthomode(mode);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setPdfframe(Adesk::Int8 val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setPdfframe(val);
+    throw PyNullObject();
+#endif
+}
+
+Acad::ErrorStatus PyDbDatabase::setPdmode(Adesk::Int16 mode)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setPdmode(mode);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setPdsize(double size)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setPdsize(size);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setPelevation(double elev)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setPelevation(elev);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setPextmax(const AcGePoint3d& max)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setPextmax(max);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setPextmin(const AcGePoint3d& min)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setPextmin(min);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setPickstyle(Adesk::Int16 style)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setPickstyle(style);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setPinsbase(const AcGePoint3d& base)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setPinsbase(base);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setPlimcheck(bool check)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setPlimcheck(check);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setPlimmax(const AcGePoint2d& max)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setPlimmax(max);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setPlimmin(const AcGePoint2d& min)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setPlimmin(min);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setPlineEllipse(bool pline)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setPlineEllipse(pline);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::setPlinegen(bool gen)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->setPlinegen(gen);
+    throw PyNullObject();
+}
 
 Acad::ErrorStatus PyDbDatabase::setPlinewid(double width)
 {
@@ -1089,7 +1562,7 @@ Acad::ErrorStatus PyDbDatabase::setPucs(const AcGePoint3d& ucsOrigin, const AcGe
 {
     auto imp = impObj();
     if (imp != nullptr)
-        return impObj()->setPucs(ucsOrigin,ucsXDir, ucsYDir);
+        return impObj()->setPucs(ucsOrigin, ucsXDir, ucsYDir);
     throw PyNullObject();
 }
 
@@ -1441,7 +1914,7 @@ Acad::ErrorStatus PyDbDatabase::setUcs(const AcGePoint3d& ucsOrigin, const AcGeV
 {
     auto imp = impObj();
     if (imp != nullptr)
-        return impObj()->setUcs(ucsOrigin,ucsXDir,ucsYDir);
+        return impObj()->setUcs(ucsOrigin, ucsXDir, ucsYDir);
     throw PyNullObject();
 }
 
@@ -1608,7 +2081,7 @@ Acad::ErrorStatus PyDbDatabase::setWorldPucsBaseOrigin(const AcGePoint3d& origin
 #else
     auto imp = impObj();
     if (imp != nullptr)
-        return impObj()->setWorldPucsBaseOrigin(origin,orthoView);
+        return impObj()->setWorldPucsBaseOrigin(origin, orthoView);
     throw PyNullObject();
 #endif
 }
@@ -1620,7 +2093,7 @@ Acad::ErrorStatus PyDbDatabase::setWorldUcsBaseOrigin(const AcGePoint3d& origin,
 #else
     auto imp = impObj();
     if (imp != nullptr)
-        return impObj()->setWorldUcsBaseOrigin(origin,orthoView);
+        return impObj()->setWorldUcsBaseOrigin(origin, orthoView);
     throw PyNullObject();
 #endif
 }

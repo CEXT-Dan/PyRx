@@ -138,8 +138,62 @@ public:
 
 
 
+    Acad::ErrorStatus setInsunits(const AcDb::UnitsValue units);
 
+    //Acad::ErrorStatus setInterfereColor(const AcCmColor& color);//TODO: AcCmColor
 
+    Acad::ErrorStatus setInterfereObjVisStyle(const PyDbObjectId& id);
+    Acad::ErrorStatus setInterfereVpVisStyle(const PyDbObjectId& id);
+    Acad::ErrorStatus setIntersectColor(Adesk::UInt16 val);
+    Acad::ErrorStatus setIntersectDisplay(Adesk::UInt8 val);
+    Acad::ErrorStatus setIsolines(Adesk::Int16 isolines);
+    Acad::ErrorStatus setJoinStyle(AcDb::JoinStyle style);
+    Acad::ErrorStatus setLatitude(double lat);
+    Acad::ErrorStatus setLayerEval(Adesk::UInt8 val);
+    Acad::ErrorStatus setLayerNotify(Adesk::Int16 val);
+    Acad::ErrorStatus setLensLength(const double _lensLength);
+    Acad::ErrorStatus setLightGlyphDisplay(Adesk::UInt8 val);
+    Acad::ErrorStatus setLightingUnits(Adesk::UInt8 val);
+    Acad::ErrorStatus setLightsInBlocks(bool val);
+    Acad::ErrorStatus setLimcheck(bool check);
+    Acad::ErrorStatus setLimmax(const AcGePoint2d& max);
+    Acad::ErrorStatus setLimmin(const AcGePoint2d& min);
+    Acad::ErrorStatus setLineWeightDisplay(bool display);
+    Acad::ErrorStatus setLoftAng1(double ang1);
+    Acad::ErrorStatus setLoftAng2(double ang2);
+    Acad::ErrorStatus setLoftMag1(double mag1);
+    Acad::ErrorStatus setLoftMag2(double mag2);
+    Acad::ErrorStatus setLoftNormals(Adesk::UInt8 value);
+    Acad::ErrorStatus setLoftParam(Adesk::UInt16 flags);
+    Acad::ErrorStatus setLongitude(double lng);
+    Acad::ErrorStatus setLtscale(double scale);
+    Acad::ErrorStatus setLunits(Adesk::Int16 lunits);
+    Acad::ErrorStatus setLuprec(Adesk::Int16 prec);
+    Acad::ErrorStatus setMaxactvp(Adesk::Int16 max);
+    Acad::ErrorStatus setMeasurement(AcDb::MeasurementValue type);
+    Acad::ErrorStatus setMirrtext(bool mirror);
+    Acad::ErrorStatus setMLeaderscale(double scale);
+    Acad::ErrorStatus setMLeaderstyle(const PyDbObjectId& objId);
+    Acad::ErrorStatus setMsltscale(bool val);
+    Acad::ErrorStatus setMsOleScale(double val);
+    Acad::ErrorStatus setNorthDirection(double northdir);
+    Acad::ErrorStatus setObscuredColor(Adesk::UInt16 val);
+    Acad::ErrorStatus setObscuredLineType(Adesk::UInt8 val);
+    Acad::ErrorStatus setOleStartUp(bool val);
+    Acad::ErrorStatus setOrthomode(bool mode);
+    Acad::ErrorStatus setPdfframe(Adesk::Int8 val);
+    Acad::ErrorStatus setPdmode(Adesk::Int16 mode);
+    Acad::ErrorStatus setPdsize(double size);
+    Acad::ErrorStatus setPelevation(double elev);
+    Acad::ErrorStatus setPextmax(const AcGePoint3d& max);
+    Acad::ErrorStatus setPextmin(const AcGePoint3d& min);
+    Acad::ErrorStatus setPickstyle(Adesk::Int16 style);
+    Acad::ErrorStatus setPinsbase(const AcGePoint3d& base);
+    Acad::ErrorStatus setPlimcheck(bool check);
+    Acad::ErrorStatus setPlimmax(const AcGePoint2d& max);
+    Acad::ErrorStatus setPlimmin(const AcGePoint2d& min);
+    Acad::ErrorStatus setPlineEllipse(bool pline);
+    Acad::ErrorStatus setPlinegen(bool gen);
     Acad::ErrorStatus setPlinewid(double width);
     Acad::ErrorStatus setPreviewType(Adesk::Int16 val);
     Acad::ErrorStatus setProjectName(const std::string& val);
