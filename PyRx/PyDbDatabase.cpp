@@ -634,103 +634,334 @@ bool PyDbDatabase::isAppRegistered(const std::string& pszAppName) const
 #endif // 
 }
 
-std::string PyDbDatabase::getDimapost() const
+std::string PyDbDatabase::dimapost() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return wstr_to_utf8(impObj()->dimapost());
+    throw PyNullObject();
+}
+
+PyDbObjectId PyDbDatabase::dimblk() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return PyDbObjectId(impObj()->dimblk());
+    throw PyNullObject();
+}
+
+PyDbObjectId PyDbDatabase::dimblk1() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return PyDbObjectId(impObj()->dimblk1());
+    throw PyNullObject();
+}
+
+PyDbObjectId PyDbDatabase::dimblk2() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return PyDbObjectId(impObj()->dimblk2());
+    throw PyNullObject();
+}
+
+std::string PyDbDatabase::dimpost() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return wstr_to_utf8(impObj()->dimpost());
+    throw PyNullObject();
+}
+
+PyDbObjectId PyDbDatabase::getDimstyleParentId(PyDbObjectId& childStyle) const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return PyDbObjectId(impObj()->getDimstyleParentId(childStyle.m_id));
+    throw PyNullObject();
+}
+
+PyDbObjectId PyDbDatabase::groupDictionaryId() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return PyDbObjectId(impObj()->groupDictionaryId());
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::insert(PyDbObjectId& blockId, const std::string& pBlockName, PyDbDatabase& db, bool preserveSourceDatabase /*= true*/)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return imp->insert(blockId.m_id, utf8_to_wstr(pBlockName).c_str(), db.impObj(), preserveSourceDatabase);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::insert(PyDbObjectId& blockId, const std::string& pSourceBlockName, const std::string& pDestinationBlockName, PyDbDatabase& db, bool preserveSourceDatabase /*= true*/)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return imp->insert(blockId.m_id, utf8_to_wstr(pSourceBlockName).c_str(), utf8_to_wstr(pDestinationBlockName).c_str(), db.impObj(), preserveSourceDatabase);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::insert(const AcGeMatrix3d& xform, PyDbDatabase& db, bool preserveSourceDatabase /*= true*/)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return imp->insert(xform, db.impObj(), preserveSourceDatabase);
+    throw PyNullObject();
+}
+
+AcDb::UnitsValue PyDbDatabase::insunits() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return imp->insunits();
+    throw PyNullObject();
+}
+
+bool PyDbDatabase::isBeingDestroyed() const
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    std::string str;
     auto imp = impObj();
     if (imp != nullptr)
-    {
-        ACHAR* pOutput = nullptr;
-        if (impObj()->getDimapost(pOutput) == eOk && pOutput != nullptr)
-        {
-            str = wstr_to_utf8(pOutput);
-            acutDelString(pOutput);
-        }
-    }
-    return str;
+        return imp->isBeingDestroyed();
+    throw PyNullObject();
 #endif
 }
 
-std::string PyDbDatabase::getDimblk() const
+PyDbObjectId PyDbDatabase::layerTableId() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return PyDbObjectId(imp->layerTableId());
+    throw PyNullObject();
+}
+
+PyDbObjectId PyDbDatabase::layerZero() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return PyDbObjectId(imp->layerZero());
+    throw PyNullObject();
+}
+
+PyDbObjectId PyDbDatabase::layoutDictionaryId() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return PyDbObjectId(imp->layoutDictionaryId());
+    throw PyNullObject();
+}
+
+double PyDbDatabase::lensLength() const
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    std::string str;
     auto imp = impObj();
     if (imp != nullptr)
-    {
-        ACHAR* pOutput = nullptr;
-        if (impObj()->getDimblk(pOutput) == eOk && pOutput != nullptr)
-        {
-            str = wstr_to_utf8(pOutput);
-            acutDelString(pOutput);
-        }
-    }
-    return str;
+        return imp->lensLength();
+    throw PyNullObject();
 #endif
 }
 
-std::string PyDbDatabase::getDimblk1() const
+PyDbObjectId PyDbDatabase::linetypeTableId() const
 {
-#ifdef BRXAPP
-    throw PyNotimplementedByHost();
-#else
-    std::string str;
     auto imp = impObj();
     if (imp != nullptr)
-    {
-        ACHAR* pOutput = nullptr;
-        if (impObj()->getDimblk1(pOutput) == eOk && pOutput != nullptr)
-        {
-            str = wstr_to_utf8(pOutput);
-            acutDelString(pOutput);
-        }
-    }
-    return str;
+        return PyDbObjectId(imp->linetypeTableId());
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::registerApp(const std::string& pszAppName)
+{
+#ifdef ARX2023
+    auto imp = impObj();
+    if (imp != nullptr)
+        return imp->registerApp(utf8_to_wstr(pszAppName).c_str());
+#else
+    throw PyNotimplementedByHost();
 #endif
 }
 
-std::string PyDbDatabase::getDimblk2() const
+PyDbObjectId PyDbDatabase::materialDictionaryId() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return PyDbObjectId(imp->materialDictionaryId());
+    throw PyNullObject();
+}
+
+AcDb::MeasurementValue PyDbDatabase::measurement() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return imp->measurement();
+    throw PyNullObject();
+}
+
+bool PyDbDatabase::mirrtext() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return imp->mirrtext();
+    throw PyNullObject();
+}
+
+double PyDbDatabase::mleaderscale() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return imp->mleaderscale();
+    throw PyNullObject();
+}
+
+PyDbObjectId PyDbDatabase::mleaderstyle() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return PyDbObjectId(imp->mleaderstyle());
+    throw PyNullObject();
+}
+
+PyDbObjectId PyDbDatabase::mleaderStyleDictionaryId() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return PyDbObjectId(imp->mleaderStyleDictionaryId());
+    throw PyNullObject();
+}
+
+PyDbObjectId PyDbDatabase::mLStyleDictionaryId() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return PyDbObjectId(imp->mLStyleDictionaryId());
+    throw PyNullObject();
+}
+
+bool PyDbDatabase::msltscale() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return imp->msltscale();
+    throw PyNullObject();
+}
+
+PyDbObjectId PyDbDatabase::namedObjectsDictionaryId() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return PyDbObjectId(imp->namedObjectsDictionaryId());
+    throw PyNullObject();
+}
+
+bool PyDbDatabase::needsRecovery() const
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    std::string str;
     auto imp = impObj();
     if (imp != nullptr)
-    {
-        ACHAR* pOutput = nullptr;
-        if (impObj()->getDimblk2(pOutput) == eOk && pOutput != nullptr)
-        {
-            str = wstr_to_utf8(pOutput);
-            acutDelString(pOutput);
-        }
-    }
-    return str;
+        return imp->needsRecovery();
+    throw PyNullObject();
 #endif
 }
 
-std::string PyDbDatabase::getDimpost() const
+double PyDbDatabase::northDirection() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return imp->northDirection();
+    throw PyNullObject();
+}
+
+Adesk::Int32 PyDbDatabase::numberOfSaves() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return imp->numberOfSaves();
+    throw PyNullObject();
+}
+
+bool PyDbDatabase::orthomode() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return imp->orthomode();
+    throw PyNullObject();
+}
+
+PyDbObjectId PyDbDatabase::paperSpaceVportId() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return PyDbObjectId(imp->paperSpaceVportId());
+    throw PyNullObject();
+}
+
+PyDbObjectId PyDbDatabase::plotSettingsDictionaryId() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return PyDbObjectId(imp->plotSettingsDictionaryId());
+    throw PyNullObject();
+}
+
+bool PyDbDatabase::plotStyleMode() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return imp->plotStyleMode();
+    throw PyNullObject();
+}
+
+PyDbObjectId PyDbDatabase::plotStyleNameDictionaryId() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return PyDbObjectId(imp->plotStyleNameDictionaryId());
+    throw PyNullObject();
+}
+
+PyDbObjectId PyDbDatabase::regAppTableId() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return PyDbObjectId(imp->regAppTableId());
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::restoreOriginalXrefSymbols()
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return imp->restoreOriginalXrefSymbols();
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::saveAs(const std::string& fileName)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+       return imp->saveAs(utf8_to_wstr(fileName).c_str());
+    throw PyNullObject();
+}
+
+void PyDbDatabase::setFullSaveRequired()
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    std::string str;
     auto imp = impObj();
     if (imp != nullptr)
-    {
-        ACHAR* pOutput = nullptr;
-        if (impObj()->getDimblk2(pOutput) == eOk && pOutput != nullptr)
-        {
-            str = wstr_to_utf8(pOutput);
-            acutDelString(pOutput);
-        }
-    }
-    return str;
+        imp->setFullSaveRequired();
+    throw PyNullObject();
 #endif
 }
 

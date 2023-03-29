@@ -79,11 +79,53 @@ public:
     //TODO: Acad::ErrorStatus getAcDbObjectId
     AcDb::PlotStyleNameType getCePlotStyleNameId(PyDbObjectId& id) const;
     bool isAppRegistered(const std::string& pszAppName) const;
-    std::string getDimapost() const;
-    std::string getDimblk() const;
-    std::string getDimblk1() const;
-    std::string getDimblk2() const;
-    std::string getDimpost() const;
+    std::string dimapost() const;
+    PyDbObjectId dimblk() const;
+    PyDbObjectId dimblk1() const;
+    PyDbObjectId dimblk2() const;
+    std::string  dimpost() const;
+
+    PyDbObjectId getDimstyleParentId(PyDbObjectId& childStyle) const;
+    PyDbObjectId groupDictionaryId() const;
+
+    Acad::ErrorStatus insert(PyDbObjectId& blockId, const std::string& pBlockName, PyDbDatabase& db, bool preserveSourceDatabase = true);
+    Acad::ErrorStatus insert(PyDbObjectId& blockId, const std::string& pSourceBlockName, const std::string& pDestinationBlockName, PyDbDatabase& db, bool preserveSourceDatabase = true);
+    Acad::ErrorStatus insert(const AcGeMatrix3d& xform, PyDbDatabase& db, bool preserveSourceDatabase = true);
+
+    //TODO: enum
+    AcDb::UnitsValue insunits() const;
+    bool isBeingDestroyed() const;
+    PyDbObjectId layerTableId() const;
+    PyDbObjectId layerZero() const;
+    PyDbObjectId layoutDictionaryId()const;
+    double lensLength() const;
+    PyDbObjectId linetypeTableId() const;
+    Acad::ErrorStatus registerApp(const std::string& pszAppName);
+    PyDbObjectId materialDictionaryId() const;
+
+    //TODO: enum
+    AcDb::MeasurementValue measurement() const;
+    bool mirrtext() const;
+    double mleaderscale() const;
+    PyDbObjectId mleaderstyle() const;
+    PyDbObjectId mleaderStyleDictionaryId() const;
+    PyDbObjectId mLStyleDictionaryId() const;
+    bool msltscale() const;
+    PyDbObjectId namedObjectsDictionaryId() const;
+    bool needsRecovery() const;
+    double northDirection() const;
+    Adesk::Int32 numberOfSaves() const;
+    bool orthomode() const;
+    PyDbObjectId paperSpaceVportId() const;
+    PyDbObjectId plotSettingsDictionaryId() const;
+    bool plotStyleMode() const;
+    PyDbObjectId plotStyleNameDictionaryId() const;
+    PyDbObjectId regAppTableId() const;
+    Acad::ErrorStatus restoreOriginalXrefSymbols();
+
+    //TODO: enum
+    Acad::ErrorStatus saveAs(const std::string& fileName);
+    void setFullSaveRequired();
 
 
     Acad::ErrorStatus create(bool buildDefaultDrawing, bool noDocument);
