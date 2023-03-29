@@ -37,11 +37,16 @@ void makeAcDbDatabaseWrapper()
 //---------------------------------------------------------------------------------------------------
 // PyDbDatabase
 PyDbDatabase::PyDbDatabase()
-    :PyRxObject(acdbHostApplicationServices()->workingDatabase(), false)
+    :PyRxObject(nullptr, false)
 {
 }
 
 PyDbDatabase::PyDbDatabase(AcDbDatabase* _pDb)
+    : PyRxObject(_pDb, false)
+{
+}
+
+PyDbDatabase::PyDbDatabase(AcDbDatabase* _pDb, bool autoDelete)
     : PyRxObject(_pDb, false)
 {
 }
@@ -949,7 +954,7 @@ Acad::ErrorStatus PyDbDatabase::saveAs(const std::string& fileName)
 {
     auto imp = impObj();
     if (imp != nullptr)
-       return imp->saveAs(utf8_to_wstr(fileName).c_str());
+        return imp->saveAs(utf8_to_wstr(fileName).c_str());
     throw PyNullObject();
 }
 
@@ -1010,6 +1015,135 @@ PyDbObjectId PyDbDatabase::blockTableId() const
 PyDbObjectId PyDbDatabase::modelspaceId() const
 {
     return PyDbObjectId(acdbSymUtil()->blockModelSpaceId(impObj()));
+}
+
+Acad::ErrorStatus PyDbDatabase::wblock(PyDbDatabase& pOutputDb)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+    {
+        AcDbDatabase* _pOutputDb = nullptr;
+        auto stat = impObj()->wblock(_pOutputDb);
+        if (stat == eOk && _pOutputDb != nullptr)
+            pOutputDb = PyDbDatabase(_pOutputDb, true);
+        return stat;
+    }
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::wblock(PyDbDatabase& pOutputDb, const PyDbObjectId& blockId)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+    {
+        AcDbDatabase* _pOutputDb = nullptr;
+        auto stat = impObj()->wblock(_pOutputDb, blockId.m_id);
+        if (stat == eOk && _pOutputDb != nullptr)
+            pOutputDb = PyDbDatabase(_pOutputDb, true);
+        return stat;
+    }
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::wblock(PyDbDatabase& pOutputDb, const boost::python::list& outObjIds, const AcGePoint3d& basePoint)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+    {
+        //TODO: maybe we can do better
+        const auto PyDbObjectIds = py_list_to_std_vector<PyDbObjectId>(outObjIds);
+        AcDbObjectIdArray ids;
+        for (const auto& pyId : PyDbObjectIds)
+            ids.append(pyId.m_id);
+
+        AcDbDatabase* _pOutputDb = nullptr;
+        auto stat = impObj()->wblock(_pOutputDb, ids, basePoint);
+        if (stat == eOk && _pOutputDb != nullptr)
+            pOutputDb = PyDbDatabase(_pOutputDb, true);
+        return stat;
+    }
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbDatabase::wblock(PyDbDatabase& pOutputDb, const boost::python::list& outObjIds, const AcGePoint3d& basePoint, AcDb::DuplicateRecordCloning drc)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp != nullptr)
+    {
+        //TODO: maybe we can do better
+        const auto PyDbObjectIds = py_list_to_std_vector<PyDbObjectId>(outObjIds);
+        AcDbObjectIdArray ids;
+        for (const auto& pyId : PyDbObjectIds)
+            ids.append(pyId.m_id);
+
+        AcDbDatabase* pDb = pOutputDb.impObj();
+        return impObj()->wblock(pDb, ids, basePoint, drc);
+    }
+    throw PyNullObject();
+#endif
+}
+
+AcGePoint3d PyDbDatabase::worldPucsBaseOrigin(AcDb::OrthographicView orthoView) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->worldPucsBaseOrigin(orthoView);
+    throw PyNullObject();
+#endif
+}
+
+AcGePoint3d PyDbDatabase::worldUcsBaseOrigin(AcDb::OrthographicView orthoView) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->worldUcsBaseOrigin(orthoView);
+    throw PyNullObject();
+#endif
+}
+
+bool PyDbDatabase::worldview() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->worldview();
+    throw PyNullObject();
+}
+
+Adesk::UInt8 PyDbDatabase::xclipFrame() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->xclipFrame();
+    throw PyNullObject();
+#endif
+}
+
+PyDbObjectId PyDbDatabase::xrefBlockId() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return PyDbObjectId(impObj()->xrefBlockId());
+    throw PyNullObject();
+}
+
+bool PyDbDatabase::xrefEditEnabled() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->xrefEditEnabled();
+    throw PyNullObject();
 }
 
 std::string PyDbDatabase::className()

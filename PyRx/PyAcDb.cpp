@@ -42,6 +42,24 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbHostApplicationServicesWrapper();
 
 
+    enum_<AcDb::DuplicateRecordCloning>("DuplicateRecordCloning")
+        .value("DrcNotApplicable", AcDb::DuplicateRecordCloning::kDrcNotApplicable)
+        .value("DrcIgnore", AcDb::DuplicateRecordCloning::kDrcIgnore)
+        .value("DrcReplace", AcDb::DuplicateRecordCloning::kDrcReplace)
+        .value("DrcXrefMangleName", AcDb::DuplicateRecordCloning::kDrcXrefMangleName)
+        .value("DrcMangleName", AcDb::DuplicateRecordCloning::kDrcMangleName)
+        .value("DrcUnmangleName", AcDb::DuplicateRecordCloning::kDrcUnmangleName)
+        ;
+    enum_<AcDb::OrthographicView>("OrthographicView")
+        .value("NonOrthoView", AcDb::OrthographicView::kNonOrthoView)
+        .value("TopView", AcDb::OrthographicView::kTopView)
+        .value("BottomView", AcDb::OrthographicView::kBottomView)
+        .value("FrontView", AcDb::OrthographicView::kFrontView)
+        .value("BackView", AcDb::OrthographicView::kBackView)
+        .value("LeftView", AcDb::OrthographicView::kLeftView)
+        .value("RightView", AcDb::OrthographicView::kRightView)
+        ;
+
     //TODO
     enum_<Acad::ErrorStatus>("ErrorStatus")
         .value("eOk", Acad::ErrorStatus::eOk)

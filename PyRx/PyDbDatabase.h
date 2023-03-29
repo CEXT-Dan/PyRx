@@ -10,6 +10,7 @@ class PyDbDatabase : public PyRxObject
 public:
     PyDbDatabase();
     PyDbDatabase(AcDbDatabase* pDb);
+    PyDbDatabase(AcDbDatabase* pDb, bool autoDelete);
     ~PyDbDatabase();
     double angbase() const;
     bool angdir() const;
@@ -127,8 +128,6 @@ public:
     Acad::ErrorStatus saveAs(const std::string& fileName);
     void setFullSaveRequired();
 
-
-    Acad::ErrorStatus create(bool buildDefaultDrawing, bool noDocument);
     Acad::ErrorStatus readDwgFile(const char* fileName);
     std::string getFilename();
 
@@ -136,6 +135,22 @@ public:
     PyDbObjectId blockTableId() const;
     PyDbObjectId modelspaceId() const;
 
+
+    Acad::ErrorStatus wblock(PyDbDatabase& pOutputDb, const boost::python::list& outObjIds, const AcGePoint3d& basePoint, AcDb::DuplicateRecordCloning drc);
+    Acad::ErrorStatus wblock(PyDbDatabase& pOutputDb, const boost::python::list& outObjIds,const AcGePoint3d& basePoint);
+    Acad::ErrorStatus wblock(PyDbDatabase& pOutputDb,const PyDbObjectId& blockId);
+    Acad::ErrorStatus wblock(PyDbDatabase& pOutputDb);
+
+    //TODO: AcDbIdMapping
+    //Acad::ErrorStatus wblockCloneObjects(const boost::python::list& objectIds, const AcDbObjectId& owner, AcDbIdMapping& idMap, AcDb::DuplicateRecordCloning drc, bool deferXlation = false);
+    AcGePoint3d worldPucsBaseOrigin(AcDb::OrthographicView orthoView) const;
+    AcGePoint3d worldUcsBaseOrigin(AcDb::OrthographicView orthoView) const;
+    bool worldview() const;
+    Adesk::UInt8 xclipFrame() const;
+    PyDbObjectId xrefBlockId() const;
+    bool xrefEditEnabled() const;
+    //
+    Acad::ErrorStatus create(bool buildDefaultDrawing, bool noDocument);
     static std::string className();
 private:
     AcDbDatabase* impObj() const;
