@@ -136,6 +136,62 @@ public:
     PyDbObjectId modelspaceId() const;
 
 
+
+
+
+    double textsize() const;
+
+    PyDbObjectId textstyle() const;
+    PyDbObjectId textStyleTableId() const;
+    double thickness() const;
+
+    //TODO:
+    //void* thumbnailBitmap() const maybe 
+    //Acad::ErrorStatus thumbnailImage(Atil::Image*& pPreviewImage) const; probably never
+    bool tilemode() const;
+    Adesk::UInt8 tileModeLightSynch() const;
+    //TODO: enum
+    AcDb::TimeZone timeZone() const;
+    double tracewid() const;
+
+    //TODO:
+    //AcDbTransactionManager* transactionManager() const;
+    Adesk::Int16 treedepth() const;
+    int tstackalign() const;
+    int tstacksize() const;
+
+    PyDbObjectId ucsBase() const;
+    PyDbObjectId ucsname() const;
+    AcGePoint3d ucsorg() const;
+    PyDbObjectId UCSTableId() const;
+    AcGeVector3d ucsxdir() const;
+    AcGeVector3d ucsydir() const;
+    bool undoRecording() const;
+    Adesk::Int16 unitmode() const;
+
+    Acad::ErrorStatus updateDataLink(AcDb::UpdateDirection nDir,AcDb::UpdateOption nOption);
+    Acad::ErrorStatus updateExt(bool doBestFit);
+    Adesk::UInt8 updateThumbnail() const;
+
+    Adesk::Int16 useri1() const;
+    Adesk::Int16 useri2() const;
+    Adesk::Int16 useri3() const;
+    Adesk::Int16 useri4() const;
+    Adesk::Int16 useri5() const;
+
+    double userr1() const;
+    double userr2() const;
+    double userr3() const;
+    double userr4() const;
+    double userr5() const;
+
+    bool usrtimer() const;
+    double viewportScaleDefault() const;
+    PyDbObjectId viewportTableId() const;
+    PyDbObjectId viewTableId() const;
+    bool visretain() const;
+    PyDbObjectId visualStyleDictionaryId() const;
+
     Acad::ErrorStatus wblock(PyDbDatabase& pOutputDb, const boost::python::list& outObjIds, const AcGePoint3d& basePoint, AcDb::DuplicateRecordCloning drc);
     Acad::ErrorStatus wblock(PyDbDatabase& pOutputDb, const boost::python::list& outObjIds,const AcGePoint3d& basePoint);
     Acad::ErrorStatus wblock(PyDbDatabase& pOutputDb,const PyDbObjectId& blockId);
@@ -150,7 +206,6 @@ public:
     PyDbObjectId xrefBlockId() const;
     bool xrefEditEnabled() const;
     //
-    Acad::ErrorStatus create(bool buildDefaultDrawing, bool noDocument);
     static std::string className();
 private:
     AcDbDatabase* impObj() const;

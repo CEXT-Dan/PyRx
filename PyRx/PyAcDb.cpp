@@ -14,7 +14,7 @@ static PyDbObject openDbObject(const PyDbObjectId& id, bool forWrite)
     AcDbObject* pObj = nullptr;
     if (acdbOpenAcDbObject(pObj, id.m_id, forWrite ? AcDb::kForWrite : AcDb::kForRead) == eOk)
         return PyDbObject(pObj, true);
-    return PyDbObject(nullptr, true);
+    throw PyNullObject();
 }
 
 static PyDbObject openDbEntity(const PyDbObjectId& id, bool forWrite)
@@ -25,7 +25,7 @@ static PyDbObject openDbEntity(const PyDbObjectId& id, bool forWrite)
         if (acdbOpenAcDbEntity(pObj, id.m_id, forWrite ? AcDb::kForWrite : AcDb::kForRead) == eOk)
             return PyDbObject(pObj, true);
     }
-    return PyDbObject(nullptr, true);
+    throw PyNullObject();
 }
 
 BOOST_PYTHON_MODULE(PyDb)
@@ -41,7 +41,23 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbDatabaseWrapper();
     makeAcDbHostApplicationServicesWrapper();
 
-
+    enum_<AcDb::UpdateOption>("UpdateOption")
+        .value("UpdateOptionNone", AcDb::UpdateOption::kUpdateOptionNone)
+        .value("UpdateOptionSkipFormat", AcDb::UpdateOption::kUpdateOptionSkipFormat)
+        .value("UpdateOptionUpdateRowHeight", AcDb::UpdateOption::kUpdateOptionUpdateRowHeight)
+        .value("UpdateOptionUpdateColumnWidth", AcDb::UpdateOption::kUpdateOptionUpdateColumnWidth)
+        .value("UpdateOptionAllowSourceUpdate", AcDb::UpdateOption::kUpdateOptionAllowSourceUpdate)
+        .value("UpdateOptionForceFullSourceUpdate", AcDb::UpdateOption::kUpdateOptionForceFullSourceUpdate)
+        .value("UpdateOptionOverwriteContentModifiedAfterUpdate", AcDb::UpdateOption::kUpdateOptionOverwriteContentModifiedAfterUpdate)
+        .value("UpdateOptionOverwriteFormatModifiedAfterUpdate", AcDb::UpdateOption::kUpdateOptionOverwriteFormatModifiedAfterUpdate)
+        .value("UpdateOptionForPreview", AcDb::UpdateOption::kUpdateOptionForPreview)
+        .value("UpdateOptionIncludeXrefs", AcDb::UpdateOption::kUpdateOptionIncludeXrefs)
+        .value("SkipFormatAfterFirstUpdate", AcDb::UpdateOption::kSkipFormatAfterFirstUpdate)
+        ;
+    enum_<AcDb::UpdateDirection>("UpdateDirection")
+        .value("UpdateDirSourceToData", AcDb::UpdateDirection::kUpdateDirSourceToData)
+        .value("UpdateDirDataToSource", AcDb::UpdateDirection::kUpdateDirDataToSource)
+        ;
     enum_<AcDb::DuplicateRecordCloning>("DuplicateRecordCloning")
         .value("DrcNotApplicable", AcDb::DuplicateRecordCloning::kDrcNotApplicable)
         .value("DrcIgnore", AcDb::DuplicateRecordCloning::kDrcIgnore)
@@ -59,7 +75,6 @@ BOOST_PYTHON_MODULE(PyDb)
         .value("LeftView", AcDb::OrthographicView::kLeftView)
         .value("RightView", AcDb::OrthographicView::kRightView)
         ;
-
     //TODO
     enum_<Acad::ErrorStatus>("ErrorStatus")
         .value("eOk", Acad::ErrorStatus::eOk)
