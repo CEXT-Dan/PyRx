@@ -422,7 +422,7 @@ void PyDbDatabase::disablePartialOpen()
 {
     auto imp = impObj();
     if (imp != nullptr)
-         impObj()->disablePartialOpen();
+        impObj()->disablePartialOpen();
     throw PyNullObject();
 }
 
@@ -523,6 +523,214 @@ Adesk::UInt32 PyDbDatabase::eraseEmptyObjects(const Adesk::UInt32 flags)
     if (imp != nullptr)
         return impObj()->eraseEmptyObjects(flags);
     throw PyNullObject();
+#endif
+}
+
+AcGePoint3d PyDbDatabase::extmax() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->extmax();
+    throw PyNullObject();
+}
+
+AcGePoint3d PyDbDatabase::extmin() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->extmin();
+    throw PyNullObject();
+}
+
+double PyDbDatabase::facetres() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->facetres();
+    throw PyNullObject();
+}
+
+double PyDbDatabase::filletrad() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->filletrad();
+    throw PyNullObject();
+}
+
+bool PyDbDatabase::fillmode() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->fillmode();
+    throw PyNullObject();
+}
+
+void PyDbDatabase::forceWblockDatabaseCopy()
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp != nullptr)
+        impObj()->forceWblockDatabaseCopy();
+    throw PyNullObject();
+#endif
+}
+
+std::string PyDbDatabase::geoCoordinateSystemId() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp != nullptr)
+        return wstr_to_utf8(impObj()->geoCoordinateSystemId());
+    throw PyNullObject();
+#endif
+}
+
+bool PyDbDatabase::geoMarkerVisibility() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->geoMarkerVisibility();
+    throw PyNullObject();
+#endif
+}
+
+double PyDbDatabase::get3dDwfPrec() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->get3dDwfPrec();
+    throw PyNullObject();
+#endif
+}
+
+AcDb::PlotStyleNameType PyDbDatabase::getCePlotStyleNameId(PyDbObjectId& id) const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->getCePlotStyleNameId(id.m_id);
+    throw PyNullObject();
+}
+
+bool PyDbDatabase::isAppRegistered(const std::string& pszAppName) const
+{
+#ifdef ARX2023
+    auto imp = impObj();
+    if (imp != nullptr)
+        return impObj()->isAppRegistered(utf8_to_wstr(pszAppName).c_str());
+    throw PyNullObject();
+#else
+    throw PyNotimplementedByHost();
+#endif // 
+}
+
+std::string PyDbDatabase::getDimapost() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    std::string str;
+    auto imp = impObj();
+    if (imp != nullptr)
+    {
+        ACHAR* pOutput = nullptr;
+        if (impObj()->getDimapost(pOutput) == eOk && pOutput != nullptr)
+        {
+            str = wstr_to_utf8(pOutput);
+            acutDelString(pOutput);
+        }
+    }
+    return str;
+#endif
+}
+
+std::string PyDbDatabase::getDimblk() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    std::string str;
+    auto imp = impObj();
+    if (imp != nullptr)
+    {
+        ACHAR* pOutput = nullptr;
+        if (impObj()->getDimblk(pOutput) == eOk && pOutput != nullptr)
+        {
+            str = wstr_to_utf8(pOutput);
+            acutDelString(pOutput);
+        }
+    }
+    return str;
+#endif
+}
+
+std::string PyDbDatabase::getDimblk1() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    std::string str;
+    auto imp = impObj();
+    if (imp != nullptr)
+    {
+        ACHAR* pOutput = nullptr;
+        if (impObj()->getDimblk1(pOutput) == eOk && pOutput != nullptr)
+        {
+            str = wstr_to_utf8(pOutput);
+            acutDelString(pOutput);
+        }
+    }
+    return str;
+#endif
+}
+
+std::string PyDbDatabase::getDimblk2() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    std::string str;
+    auto imp = impObj();
+    if (imp != nullptr)
+    {
+        ACHAR* pOutput = nullptr;
+        if (impObj()->getDimblk2(pOutput) == eOk && pOutput != nullptr)
+        {
+            str = wstr_to_utf8(pOutput);
+            acutDelString(pOutput);
+        }
+    }
+    return str;
+#endif
+}
+
+std::string PyDbDatabase::getDimpost() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    std::string str;
+    auto imp = impObj();
+    if (imp != nullptr)
+    {
+        ACHAR* pOutput = nullptr;
+        if (impObj()->getDimblk2(pOutput) == eOk && pOutput != nullptr)
+        {
+            str = wstr_to_utf8(pOutput);
+            acutDelString(pOutput);
+        }
+    }
+    return str;
 #endif
 }
 

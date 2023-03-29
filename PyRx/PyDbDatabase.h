@@ -66,6 +66,24 @@ public:
     Acad::ErrorStatus dxfOut(const std::string& dxfFilename);
     double elevation() const;
     Adesk::UInt32 eraseEmptyObjects(const Adesk::UInt32 flags);
+    AcGePoint3d extmax() const;
+    AcGePoint3d extmin() const;
+    double facetres() const;
+    double filletrad() const;
+    bool fillmode() const;
+    void forceWblockDatabaseCopy();
+    std::string geoCoordinateSystemId() const;
+    bool geoMarkerVisibility() const;
+    double get3dDwfPrec() const;
+
+    //TODO: Acad::ErrorStatus getAcDbObjectId
+    AcDb::PlotStyleNameType getCePlotStyleNameId(PyDbObjectId& id) const;
+    bool isAppRegistered(const std::string& pszAppName) const;
+    std::string getDimapost() const;
+    std::string getDimblk() const;
+    std::string getDimblk1() const;
+    std::string getDimblk2() const;
+    std::string getDimpost() const;
 
 
     Acad::ErrorStatus create(bool buildDefaultDrawing, bool noDocument);
