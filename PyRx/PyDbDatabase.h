@@ -139,14 +139,119 @@ public:
 
 
 
+
+    Acad::ErrorStatus setPlinewid(double width);
+    Acad::ErrorStatus setPreviewType(Adesk::Int16 val);
+    Acad::ErrorStatus setProjectName(const std::string& val);
+    Acad::ErrorStatus setPsltscale(bool scale);
+    Acad::ErrorStatus setPsolHeight(double height);
+    Acad::ErrorStatus setPsolWidth(double width);
+    Acad::ErrorStatus setPucs(const AcGePoint3d& ucsOrigin,const AcGeVector3d& ucsXDir, const AcGeVector3d& ucsYDir);
+    Acad::ErrorStatus setPucsBase(const PyDbObjectId& ucsid);
+    Acad::ErrorStatus setPucsname(const PyDbObjectId& ucsRecId);
+    Acad::ErrorStatus setQtextmode(bool mode);
+    Acad::ErrorStatus setRealWorldScale(const bool realWorldScale);
+    Acad::ErrorStatus setRegenmode(bool mode);
+    void setRetainOriginalThumbnailBitmap(bool retain);
+    Acad::ErrorStatus setSaveproxygraphics(Adesk::Int16 saveimg);
+    Acad::ErrorStatus setSectionViewStyle(const PyDbObjectId& objId);
+    //bool setSecurityParams(const SecurityParams* pSecParams,bool bSetDbMod = true);//TODO:
+
+    Acad::ErrorStatus setShadedge(Adesk::Int16 mode);
+    Acad::ErrorStatus setShadedif(Adesk::Int16 dif);
+    Acad::ErrorStatus setShadowPlaneLocation(double val);
+    Acad::ErrorStatus setShowHist(Adesk::UInt8 val);
+    Acad::ErrorStatus setSketchinc(double inc);
+    Acad::ErrorStatus setSkpoly(bool asPoly);
+    Acad::ErrorStatus setSolidHist(Adesk::UInt8 val);
+    Acad::ErrorStatus setSortEnts(Adesk::UInt8 sortEnts);
+    Acad::ErrorStatus setSplframe(bool disp);
+    Acad::ErrorStatus setSplinesegs(Adesk::Int16 segs);
+    Acad::ErrorStatus setSplinetype(Adesk::Int16 type);
+    Acad::ErrorStatus setStepSize(double stepSize);
+    Acad::ErrorStatus setStepsPerSec(double stepsPerSec);
+    Acad::ErrorStatus setStyleSheet(const std::string& val);
+    Acad::ErrorStatus setSurftab1(Adesk::Int16 tab1);
+    Acad::ErrorStatus setSurftab2(Adesk::Int16 tab2);
+    Acad::ErrorStatus setSurftype(Adesk::Int16 type);
+    Acad::ErrorStatus setSurfu(Adesk::Int16 v);
+    Acad::ErrorStatus setSurfv(Adesk::Int16 v);
+    Acad::ErrorStatus setTablestyle(const PyDbObjectId& objId);
+    Acad::ErrorStatus setTextsize(double size);
+    Acad::ErrorStatus setTextstyle(const PyDbObjectId& objId);
+    Acad::ErrorStatus setThickness(double thickness);
+
+    //Acad::ErrorStatus setThumbnailBitmap(void* pBmp);//TODO:
+    //Acad::ErrorStatus setThumbnailImage(const Atil::Image* pPreviewImage);//TODO:
+
+    Acad::ErrorStatus setTilemode(bool mode);
+    Acad::ErrorStatus setTimeZone(AcDb::TimeZone tz);//TODO: enum
+    Acad::ErrorStatus setTimeZoneAsUtcOffset(double offset);
+    Acad::ErrorStatus setTracewid(double width);
+    Acad::ErrorStatus setTreedepth(Adesk::Int16 depth);
+    Acad::ErrorStatus setTStackAlign(int val);
+    Acad::ErrorStatus setTStackSize(int val);
+    Acad::ErrorStatus setUcs(const AcGePoint3d& ucsOrigin, const AcGeVector3d& ucsXDir, const AcGeVector3d& ucsYDir);
+    Acad::ErrorStatus setUcsBase(const PyDbObjectId& ucsid);
+    Acad::ErrorStatus setUcsname(const PyDbObjectId& ucsRecId);
+    Acad::ErrorStatus setUnitmode(Adesk::Int16 mode);
+    Acad::ErrorStatus setUpdateThumbnail(Adesk::UInt8 val);
+
+    Acad::ErrorStatus setUseri1(Adesk::Int16 val);
+    Acad::ErrorStatus setUseri2(Adesk::Int16 val);
+    Acad::ErrorStatus setUseri3(Adesk::Int16 val);
+    Acad::ErrorStatus setUseri4(Adesk::Int16 val);
+    Acad::ErrorStatus setUseri5(Adesk::Int16 val);
+
+    Acad::ErrorStatus setUserr1(double val);
+    Acad::ErrorStatus setUserr2(double val);
+    Acad::ErrorStatus setUserr3(double val);
+    Acad::ErrorStatus setUserr4(double val);
+    Acad::ErrorStatus setUserr5(double val);
+
+    Acad::ErrorStatus setUsrtimer(bool timer);
+    Acad::ErrorStatus setVersionGuid(const std::string& pNewGuid);
+    Acad::ErrorStatus setViewportScaleDefault(double newDefaultVPScale);
+    Acad::ErrorStatus setVisretain(bool retain);
+    Acad::ErrorStatus setWorldPucsBaseOrigin(const AcGePoint3d& origin, AcDb::OrthographicView orthoView);
+    Acad::ErrorStatus setWorldUcsBaseOrigin(const AcGePoint3d& origin, AcDb::OrthographicView orthoView);
+    Acad::ErrorStatus setWorldview(bool view);
+    Acad::ErrorStatus setXclipFrame(Adesk::UInt8 disp);
+    Acad::ErrorStatus setXrefEditEnabled(bool enable);
+
+    Adesk::Int16 shadedge() const;
+    Adesk::Int16 shadedif() const;
+    double shadowPlaneLocation() const;
+    Adesk::UInt8 showHist() const;
+    double sketchinc() const;
+    bool skpoly() const;
+    Adesk::UInt8 solidHist() const;
+    Adesk::UInt8 sortEnts() const;
+    bool splframe() const;
+    Adesk::Int16 splinesegs() const;
+    Adesk::Int16 splinetype() const;
+    double stepSize() const;
+    double stepsPerSec() const;
+    Adesk::Int16 surftab1() const;
+    Adesk::Int16 surftab2() const;
+    Adesk::Int16 surftype() const;
+    Adesk::Int16 surfu() const;
+    Adesk::Int16 surfv() const;
+    PyDbObjectId tablestyle() const;
+    PyDbObjectId tableStyleDictionaryId() const;
+    //const AcDbDate tdcreate() const;
+    //const AcDbDate tdindwg() const;/TODO:
+    //const AcDbDate tducreate() const;/TODO:
+    //const AcDbDate tdupdate() const/TODO:
+    //const AcDbDate tdusrtimer() const;/TODO:
+    //const AcDbDate tduupdate() const;//TODO:
     double textsize() const;
 
     PyDbObjectId textstyle() const;
     PyDbObjectId textStyleTableId() const;
     double thickness() const;
 
-    //TODO:
-    //void* thumbnailBitmap() const maybe 
+    //void* thumbnailBitmap() const maybe  //TODO:
     //Acad::ErrorStatus thumbnailImage(Atil::Image*& pPreviewImage) const; probably never
     bool tilemode() const;
     Adesk::UInt8 tileModeLightSynch() const;
@@ -154,8 +259,7 @@ public:
     AcDb::TimeZone timeZone() const;
     double tracewid() const;
 
-    //TODO:
-    //AcDbTransactionManager* transactionManager() const;
+    //AcDbTransactionManager* transactionManager() const; //TODO:
     Adesk::Int16 treedepth() const;
     int tstackalign() const;
     int tstacksize() const;
@@ -169,7 +273,7 @@ public:
     bool undoRecording() const;
     Adesk::Int16 unitmode() const;
 
-    Acad::ErrorStatus updateDataLink(AcDb::UpdateDirection nDir,AcDb::UpdateOption nOption);
+    Acad::ErrorStatus updateDataLink(AcDb::UpdateDirection nDir, AcDb::UpdateOption nOption);
     Acad::ErrorStatus updateExt(bool doBestFit);
     Adesk::UInt8 updateThumbnail() const;
 
@@ -193,8 +297,8 @@ public:
     PyDbObjectId visualStyleDictionaryId() const;
 
     Acad::ErrorStatus wblock(PyDbDatabase& pOutputDb, const boost::python::list& outObjIds, const AcGePoint3d& basePoint, AcDb::DuplicateRecordCloning drc);
-    Acad::ErrorStatus wblock(PyDbDatabase& pOutputDb, const boost::python::list& outObjIds,const AcGePoint3d& basePoint);
-    Acad::ErrorStatus wblock(PyDbDatabase& pOutputDb,const PyDbObjectId& blockId);
+    Acad::ErrorStatus wblock(PyDbDatabase& pOutputDb, const boost::python::list& outObjIds, const AcGePoint3d& basePoint);
+    Acad::ErrorStatus wblock(PyDbDatabase& pOutputDb, const PyDbObjectId& blockId);
     Acad::ErrorStatus wblock(PyDbDatabase& pOutputDb);
 
     //TODO: AcDbIdMapping
