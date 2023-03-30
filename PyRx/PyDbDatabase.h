@@ -11,6 +11,7 @@ public:
     PyDbDatabase();
     PyDbDatabase(AcDbDatabase* pDb);
     PyDbDatabase(AcDbDatabase* pDb, bool autoDelete);
+    PyDbDatabase(bool buildDefaultDrawing, bool noDocument);
     ~PyDbDatabase();
     double angbase() const;
     bool angdir() const;
@@ -87,45 +88,140 @@ public:
     std::string  dimpost() const;
 
     PyDbObjectId getDimstyleParentId(PyDbObjectId& childStyle) const;
+
+
+    static AcDb::LineWeight getNearestLineWeight(int weight);
+
+    boost::python::list getViewportArray() const;
+    boost::python::list getVisualStyleList(); //TODO test
+
+    PyDbObjectId globalMaterial() const;
     PyDbObjectId groupDictionaryId() const;
 
     Acad::ErrorStatus insert(PyDbObjectId& blockId, const std::string& pBlockName, PyDbDatabase& db, bool preserveSourceDatabase = true);
     Acad::ErrorStatus insert(PyDbObjectId& blockId, const std::string& pSourceBlockName, const std::string& pDestinationBlockName, PyDbDatabase& db, bool preserveSourceDatabase = true);
     Acad::ErrorStatus insert(const AcGeMatrix3d& xform, PyDbDatabase& db, bool preserveSourceDatabase = true);
 
-    //TODO: enum
+
+
+    Adesk::UInt8 haloGap() const;
+    //AcDbHandle handseed() const; TODO:
+    bool hasClass(const PyRxClass& pClass) const;
+    Adesk::UInt8 hideText() const;
+    bool hpInherit() const;
+    AcGePoint2d hpOrigin() const;
+    Adesk::UInt8 indexctl() const;
     AcDb::UnitsValue insunits() const;
+
+    PyDbObjectId interfereVpVisStyle() const;
+    Adesk::UInt16 intersectColor() const;
+    Adesk::UInt8 intersectDisplay() const;
     bool isBeingDestroyed() const;
+
+
+    bool isEMR() const;
+    static bool isObjectNonPersistent(const PyDbObjectId& id);
+
+    Adesk::Int16 isolines() const;
+    bool isPartiallyOpened() const;
+    bool isPucsOrthographic(AcDb::OrthographicView& orthoView) const;
+    bool isUcsOrthographic(AcDb::OrthographicView& orthoView) const;
+    static bool isValidLineWeight(int weight);
+
+
+    AcDb::JoinStyle joinStyle() const;
+    AcDb::MaintenanceReleaseVersion lastSavedAsMaintenanceVersion() const;
+    AcDb::AcDbDwgVersion lastSavedAsVersion() const;//TODO enum
+    double latitude() const;
+    Adesk::UInt8 layerEval() const;
+    Adesk::Int16 layerNotify() const;
     PyDbObjectId layerTableId() const;
     PyDbObjectId layerZero() const;
     PyDbObjectId layoutDictionaryId()const;
     double lensLength() const;
-    PyDbObjectId linetypeTableId() const;
-    Acad::ErrorStatus registerApp(const std::string& pszAppName);
-    PyDbObjectId materialDictionaryId() const;
 
-    //TODO: enum
+    Adesk::UInt8 lightGlyphDisplay() const;
+    Adesk::UInt8 lightingUnits() const;
+    bool lightsInBlocks() const;
+    bool limcheck() const;
+    AcGePoint2d limmax() const;
+    AcGePoint2d limmin() const;
+
+    PyDbObjectId linetypeTableId() const;
+
+    bool lineWeightDisplay() const;
+    Acad::ErrorStatus loadLineTypeFile(const std::string& ltn, const std::string& filename);
+
+    double loftAng1() const;
+    double loftAng2() const;
+    double loftMag1() const;
+    double loftMag2() const;
+    Adesk::UInt8 loftNormals() const;
+    Adesk::UInt16 loftParam() const;
+    double longitude() const;
+    double ltscale() const;
+    Adesk::Int16 lunits() const;
+    Adesk::Int16 luprec() const;
+    AcDb::MaintenanceReleaseVersion maintenanceReleaseVersion() const;
+
+    static Acad::ErrorStatus markObjectNonPersistent(const PyDbObjectId &id,bool value);
+
+    PyDbObjectId materialDictionaryId() const;
+    Adesk::Int16 maxactvp() const;
     AcDb::MeasurementValue measurement() const;
     bool mirrtext() const;
+
     double mleaderscale() const;
     PyDbObjectId mleaderstyle() const;
     PyDbObjectId mleaderStyleDictionaryId() const;
     PyDbObjectId mLStyleDictionaryId() const;
+
     bool msltscale() const;
+    double msOleScale() const;
+
     PyDbObjectId namedObjectsDictionaryId() const;
     bool needsRecovery() const;
     double northDirection() const;
     Adesk::Int32 numberOfSaves() const;
+
+    //AcDbObjectContextManager* objectContextManager() const; TODO
+    Adesk::UInt16 obscuredColor() const;
+    Adesk::UInt8 obscuredLineType() const;
+    bool oleStartUp() const;
+    AcDb::MaintenanceReleaseVersion originalFileMaintenanceVersion() const;
+    std::string originalFileName() const;
+    AcDb::MaintenanceReleaseVersion originalFileSavedByMaintenanceVersion() const;//TODO: enum
+    AcDb::AcDbDwgVersion originalFileSavedByVersion() const;
+    AcDb::AcDbDwgVersion originalFileVersion() const;//TODO: enum
     bool orthomode() const;
+
+    //AcDwgFileHandle* outputFiler() const; TODO:
+
     PyDbObjectId paperSpaceVportId() const;
+
+    Adesk::Int8 pdfframe() const;
+    Adesk::Int16 pdmode() const;
+    double pdsize() const;
+    double pelevation() const;
+    AcGePoint3d pextmax() const;
+    AcGePoint3d pextmin() const;
+    Adesk::Int16 pickstyle() const;
+    AcGePoint3d pinsbase() const;
+    bool plimcheck() const;
+    AcGePoint2d plimmax() const;
+    AcGePoint2d plimmin() const;
+    bool plineEllipse() const;
+    bool plinegen() const;
+    double plinewid() const;
+
     PyDbObjectId plotSettingsDictionaryId() const;
     bool plotStyleMode() const;
     PyDbObjectId plotStyleNameDictionaryId() const;
 
 
-
-
-
+    Adesk::Int16 previewType() const;
+    bool psltscale() const;
+    double psolHeight() const;
     double psolWidth() const;
 
     PyDbObjectId pucsBase() const;
@@ -142,7 +238,7 @@ public:
     bool regenmode() const;
 
     //Acad::ErrorStatus removeReactor(AcDbDatabaseReactor* pReactor) const; TODO:
-
+    Acad::ErrorStatus registerApp(const std::string& pszAppName);
     Acad::ErrorStatus resetTimes();
     Acad::ErrorStatus restoreForwardingXrefSymbols();
     Acad::ErrorStatus restoreOriginalXrefSymbols();
