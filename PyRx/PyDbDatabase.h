@@ -12,7 +12,7 @@ public:
     PyDbDatabase(AcDbDatabase* pDb);
     PyDbDatabase(AcDbDatabase* pDb, bool autoDelete);
     PyDbDatabase(bool buildDefaultDrawing, bool noDocument);
-    ~PyDbDatabase();
+    virtual ~PyDbDatabase() override = default;
     double angbase() const;
     bool angdir() const;
     bool annoAllVisible() const;
@@ -98,11 +98,9 @@ public:
     PyDbObjectId globalMaterial() const;
     PyDbObjectId groupDictionaryId() const;
 
-    Acad::ErrorStatus insert(PyDbObjectId& blockId, const std::string& pBlockName, PyDbDatabase& db, bool preserveSourceDatabase = true);
-    Acad::ErrorStatus insert(PyDbObjectId& blockId, const std::string& pSourceBlockName, const std::string& pDestinationBlockName, PyDbDatabase& db, bool preserveSourceDatabase = true);
-    Acad::ErrorStatus insert(const AcGeMatrix3d& xform, PyDbDatabase& db, bool preserveSourceDatabase = true);
-
-
+    Acad::ErrorStatus insert(PyDbObjectId& blockId, const std::string& pBlockName, PyDbDatabase& db, bool preserveSourceDatabase);
+    Acad::ErrorStatus insert(PyDbObjectId& blockId, const std::string& pSourceBlockName, const std::string& pDestinationBlockName, PyDbDatabase& db, bool preserveSourceDatabase);
+    Acad::ErrorStatus insert(const AcGeMatrix3d& xform, PyDbDatabase& db, bool preserveSourceDatabase);
 
     Adesk::UInt8 haloGap() const;
     //AcDbHandle handseed() const; TODO:
@@ -118,7 +116,6 @@ public:
     Adesk::UInt8 intersectDisplay() const;
     bool isBeingDestroyed() const;
 
-
     bool isEMR() const;
     static bool isObjectNonPersistent(const PyDbObjectId& id);
 
@@ -130,8 +127,8 @@ public:
 
 
     AcDb::JoinStyle joinStyle() const;
-    AcDb::MaintenanceReleaseVersion lastSavedAsMaintenanceVersion() const;
-    AcDb::AcDbDwgVersion lastSavedAsVersion() const;//TODO enum
+    int lastSavedAsMaintenanceVersion() const;
+    int lastSavedAsVersion() const;
     double latitude() const;
     Adesk::UInt8 layerEval() const;
     Adesk::Int16 layerNotify() const;
@@ -162,9 +159,9 @@ public:
     double ltscale() const;
     Adesk::Int16 lunits() const;
     Adesk::Int16 luprec() const;
-    AcDb::MaintenanceReleaseVersion maintenanceReleaseVersion() const;
+    int maintenanceReleaseVersion() const;
 
-    static Acad::ErrorStatus markObjectNonPersistent(const PyDbObjectId &id,bool value);
+    static Acad::ErrorStatus markObjectNonPersistent(const PyDbObjectId& id, bool value);
 
     PyDbObjectId materialDictionaryId() const;
     Adesk::Int16 maxactvp() const;
@@ -188,11 +185,11 @@ public:
     Adesk::UInt16 obscuredColor() const;
     Adesk::UInt8 obscuredLineType() const;
     bool oleStartUp() const;
-    AcDb::MaintenanceReleaseVersion originalFileMaintenanceVersion() const;
+    int originalFileMaintenanceVersion() const;
     std::string originalFileName() const;
-    AcDb::MaintenanceReleaseVersion originalFileSavedByMaintenanceVersion() const;//TODO: enum
-    AcDb::AcDbDwgVersion originalFileSavedByVersion() const;
-    AcDb::AcDbDwgVersion originalFileVersion() const;//TODO: enum
+    int originalFileSavedByMaintenanceVersion() const;//TODO: enum
+    int originalFileSavedByVersion() const;
+    int originalFileVersion() const;//TODO: enum
     bool orthomode() const;
 
     //AcDwgFileHandle* outputFiler() const; TODO:
@@ -397,7 +394,7 @@ public:
     Acad::ErrorStatus setPsltscale(bool scale);
     Acad::ErrorStatus setPsolHeight(double height);
     Acad::ErrorStatus setPsolWidth(double width);
-    Acad::ErrorStatus setPucs(const AcGePoint3d& ucsOrigin,const AcGeVector3d& ucsXDir, const AcGeVector3d& ucsYDir);
+    Acad::ErrorStatus setPucs(const AcGePoint3d& ucsOrigin, const AcGeVector3d& ucsXDir, const AcGeVector3d& ucsYDir);
     Acad::ErrorStatus setPucsBase(const PyDbObjectId& ucsid);
     Acad::ErrorStatus setPucsname(const PyDbObjectId& ucsRecId);
     Acad::ErrorStatus setQtextmode(bool mode);
@@ -562,7 +559,9 @@ public:
     bool xrefEditEnabled() const;
     //
     static std::string className();
-private:
+
+
+public:
     AcDbDatabase* impObj() const;
 };
 

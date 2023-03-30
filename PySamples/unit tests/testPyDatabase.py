@@ -1,4 +1,5 @@
 import os
+import inspect
 
 import PyRxApp# = all the global methods like acutPrintf, 
 import PyRx# = Runtime runtime 
@@ -21,23 +22,50 @@ def OnPyLoadDwg():
 	
 def OnPyUnloadDwg():
    PyRxApp.Printf("\nOnPyUnloadDwg")
-
+ 
 def PyRxCmd_pydbatabasetest():
 	try:
+		PyDbGetHelpDoc()
+		PyDbGet()
 		PyDatabaseReadDwg()
 		PyHostApptestCopy()
 		PyHostApptestNest()
 		PyDatabaseReadDwg()
 		PyDbIsA()
-		PyDbBT()
+		PyDbGetBlockTable()
+	except Exception as err:
+		PyRxApp.Printf(err)
+		
+def PyDbGetHelpDoc():	
+		db = PyDb.DbHostApplicationServices().workingDatabase()  
+		PyRxApp.Printf("\n({})".format(dir(db)))
+
+def PyDbGet():
+	try:
+		db = PyDb.DbHostApplicationServices().workingDatabase()  
+		PyRxApp.Printf("\nangbase = PASS({})".format(db.angbase()))
+		PyRxApp.Printf("\nangdir = PASS({})".format(db.angdir()))
+		PyRxApp.Printf("\nannoAllVisible = PASS({})".format(db.annoAllVisible()))
+		
+		p = db.extmin();
+		PyRxApp.Printf("\nextmin PASS({},{},{})".format(p.x, p.y, p.z))
+		
+		p = db.extmax();
+		PyRxApp.Printf("\nextmax PASS({},{},{})".format(p.x, p.y, p.z))
+		
+		PyRxApp.Printf("\nlastSavedAsVersion = PASS({})".format(db.lastSavedAsVersion()))
+		PyRxApp.Printf("\nlastSavedAsMaintenanceVersion = PASS({})".format(db.lastSavedAsMaintenanceVersion()))
+
+		PyRxApp.Printf("\nlayerEval = PASS({})".format(db.layerEval()))
+
 	except Exception as err:
 		PyRxApp.Printf(err)
 
-def PyDbBT():
+def PyDbGetBlockTable():
 	try:
 		db = PyDb.DbHostApplicationServices().workingDatabase()  
 		id = db.blockTableId()
-		PyRxApp.Printf("\nPASS({})".format(id.objectClass().name()))
+		PyRxApp.Printf("\nPyDbGetBlockTable = PASS({})".format(id.objectClass().name()))
 	except Exception as err:
 		PyRxApp.Printf(err)
 
@@ -65,8 +93,7 @@ def PyHostApptestNest():
 
 def PyDatabaseReadDwg():
 	try:
-		db = PyDb.DbDatabase()
-		db.create(False,False)
+		db = PyDb.DbDatabase(False,False)
 		db.readDwgFile("E:/Blocks/6036.dwg")
 		dbcopy = db
 		PrintDbPath(dbcopy)  

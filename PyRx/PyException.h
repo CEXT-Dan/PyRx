@@ -27,19 +27,19 @@ struct PyEditorError
 
 struct PyNotimplementedByHost
 {
-    static void translator(PyNullObject const& x)
+    static void translator(PyNotimplementedByHost const& x)
     {
 #ifdef ARXAPP
-        PyErr_SetString(PyExc_RuntimeError, "\nNotimplemented in ARX");
+        PyErr_SetString(PyExc_RuntimeError, "\nException, Not implemented in ARX");
 #endif
 #ifdef BRXAPP
-        PyErr_SetString(PyExc_RuntimeError, "\nNotimplemented in BRX");
+        PyErr_SetString(PyExc_RuntimeError, "\nException, Not implemented in BRX");
 #endif
 #ifdef GRXAPP
-        PyErr_SetString(PyExc_RuntimeError, "\nNotimplemented in GRX");
+        PyErr_SetString(PyExc_RuntimeError, "\nException, Not implemented in GRX");
 #endif
 #ifdef ZRXAPP
-        PyErr_SetString(PyExc_RuntimeError, "\nNotimplemented in ZRX");
+        PyErr_SetString(PyExc_RuntimeError, "\nException, Not implemented in ZRX");
 #endif
     }
 };

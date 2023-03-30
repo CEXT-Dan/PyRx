@@ -11,7 +11,9 @@ using namespace boost::python;
 BOOST_PYTHON_MODULE(PyAp)
 {
     register_exception_translator<PyNullObject>(PyNullObject::translator);
+    register_exception_translator<PyEditorError>(PyEditorError::translator);
     register_exception_translator<PyNotThatKindOfClass>(PyNotThatKindOfClass::translator);
+    register_exception_translator<PyNotimplementedByHost>(PyNotimplementedByHost::translator);
 
     makeAcApApplictionWrapper();
     makeAcApDocManagerWrapper();

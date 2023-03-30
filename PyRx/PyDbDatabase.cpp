@@ -10,21 +10,160 @@ void makeAcDbDatabaseWrapper()
 {
     static auto wrapper = class_<PyDbDatabase, bases<PyRxObject>>("DbDatabase")
         .def(init<>())
-        .def(init<bool,bool>())
-        //.def("abortDeepClone", &PyDbDatabase::dummy)
-        //.def("addAcDbObject", &PyDbDatabase::dummy)
-        //.def("addReactor", &PyDbDatabase::dummy)
+        .def(init<bool, bool>())
         .def("angbase", &PyDbDatabase::angbase)
         .def("angdir", &PyDbDatabase::angdir)
         .def("annoAllVisible", &PyDbDatabase::annoAllVisible)
         .def("annotativeDwg", &PyDbDatabase::annotativeDwg)
-        //.def("applyPartialOpenFilters", &PyDbDatabase::dummy)
         .def("approxNumObjects", &PyDbDatabase::approxNumObjects)
         .def("attmode", &PyDbDatabase::attmode)
         .def("aunits", &PyDbDatabase::aunits)
         .def("auprec", &PyDbDatabase::auprec)
         .def("blipmode", &PyDbDatabase::blipmode)
+
         .def("byBlockLinetype", &PyDbDatabase::byBlockLinetype)
+        .def("byBlockMaterial", &PyDbDatabase::byBlockMaterial)
+        .def("byLayerLinetype", &PyDbDatabase::byLayerLinetype)
+        .def("byLayerMaterial", &PyDbDatabase::byLayerMaterial)
+
+        .def("cameraDisplay", &PyDbDatabase::cameraDisplay)
+        .def("cameraHeight", &PyDbDatabase::cameraHeight)
+        .def("cDynDisplayMode", &PyDbDatabase::cDynDisplayMode)
+        .def("celtscale", &PyDbDatabase::celtscale)
+        .def("celtype", &PyDbDatabase::celtype)
+        .def("celweight", &PyDbDatabase::celweight)
+        .def("chamfera", &PyDbDatabase::chamfera)
+        .def("chamferb", &PyDbDatabase::chamferb)
+        .def("chamferc", &PyDbDatabase::chamferc)
+        .def("chamferd", &PyDbDatabase::chamferd)
+
+        .def("classDxfName", &PyDbDatabase::classDxfName)//TODO: add test
+        .def("clayer", &PyDbDatabase::clayer)//TODO: add test
+        .def("closeInput", &PyDbDatabase::closeInput)//TODO: add test
+
+        .def("cmaterial", &PyDbDatabase::cmaterial)
+        .def("cmljust", &PyDbDatabase::cmljust)
+        .def("cmlscale", &PyDbDatabase::cmlscale)
+        .def("cmlstyleID", &PyDbDatabase::cmlstyleID)
+        .def("colorDictionaryId", &PyDbDatabase::colorDictionaryId)
+        .def("continuousLinetype", &PyDbDatabase::continuousLinetype)
+        .def("coords", &PyDbDatabase::coords)
+        .def("countEmptyObjects", &PyDbDatabase::countEmptyObjects)
+
+        .def("detailViewStyle", &PyDbDatabase::detailViewStyle)
+        .def("detailViewStyleDictionaryId", &PyDbDatabase::detailViewStyleDictionaryId)
+        .def("dimaso", &PyDbDatabase::dimaso)
+        .def("dimAssoc", &PyDbDatabase::dimAssoc)
+        .def("dimfit", &PyDbDatabase::dimfit)
+        .def("dimsho", &PyDbDatabase::dimsho)
+        .def("dimstyle", &PyDbDatabase::dimstyle)
+        .def("dimStyleTableId", &PyDbDatabase::dimStyleTableId)
+        .def("dimunit", &PyDbDatabase::dimunit)
+
+        .def("dimapost", &PyDbDatabase::dimapost)
+        .def("dimblk", &PyDbDatabase::dimblk)
+        .def("dimblk1", &PyDbDatabase::dimblk1)
+        .def("dimblk2", &PyDbDatabase::dimblk2)
+        .def("dimpost", &PyDbDatabase::dimblk2)
+
+        .def("disablePartialOpen", &PyDbDatabase::disablePartialOpen)
+        .def("disableUndoRecording", &PyDbDatabase::disableUndoRecording)
+        .def("dispSilh", &PyDbDatabase::dispSilh)
+        .def("dragmode", &PyDbDatabase::dragmode)
+        .def("dragVisStyle", &PyDbDatabase::dragVisStyle)
+        .def("drawOrderCtl", &PyDbDatabase::drawOrderCtl)
+        .def("dwfframe", &PyDbDatabase::dwfframe)
+        .def("dwgFileWasSavedByAutodeskSoftware", &PyDbDatabase::dwgFileWasSavedByAutodeskSoftware)
+        .def("dxfIn", &PyDbDatabase::dxfIn)
+        .def("dxfOut", &PyDbDatabase::dxfOut)
+
+        .def("elevation", &PyDbDatabase::elevation)
+        .def("eraseEmptyObjects", &PyDbDatabase::eraseEmptyObjects)
+        .def("extmax", &PyDbDatabase::extmax)
+        .def("extmin", &PyDbDatabase::extmin)
+
+        .def("facetres", &PyDbDatabase::facetres)
+        .def("filletrad", &PyDbDatabase::filletrad)
+        .def("fillmode", &PyDbDatabase::fillmode)
+        .def("forceWblockDatabaseCopy", &PyDbDatabase::forceWblockDatabaseCopy)
+
+        .def("geoCoordinateSystemId", &PyDbDatabase::geoCoordinateSystemId)
+        .def("geoMarkerVisibility", &PyDbDatabase::geoMarkerVisibility)
+        .def("get3dDwfPrec", &PyDbDatabase::get3dDwfPrec)
+        .def("getCePlotStyleNameId", &PyDbDatabase::getCePlotStyleNameId)
+        .def("getDimstyleParentId", &PyDbDatabase::getDimstyleParentId)
+
+        .def("getNearestLineWeight", &PyDbDatabase::getNearestLineWeight)//static
+
+        .def("getViewportArray", &PyDbDatabase::getViewportArray)//TODO: TEST
+        .def("getVisualStyleList", &PyDbDatabase::getVisualStyleList)
+
+        .def("globalMaterial", &PyDbDatabase::globalMaterial)
+        .def("groupDictionaryId", &PyDbDatabase::groupDictionaryId)
+
+        .def("haloGap", &PyDbDatabase::haloGap)
+        .def("hasClass", &PyDbDatabase::hasClass)
+        .def("hideText", &PyDbDatabase::hideText)
+        .def("hpInherit", &PyDbDatabase::hpInherit)
+        .def("hpOrigin", &PyDbDatabase::hpOrigin)
+        .def("hpOrigin", &PyDbDatabase::hpOrigin)
+
+        //TODO: TEST
+        .def<Acad::ErrorStatus(PyDbDatabase::*)(PyDbObjectId&, const std::string&, PyDbDatabase&, bool)>("insert", &PyDbDatabase::insert)
+        .def<Acad::ErrorStatus(PyDbDatabase::*)(PyDbObjectId&, const std::string&, const std::string&, PyDbDatabase&, bool)>("insert", &PyDbDatabase::insert)
+        .def<Acad::ErrorStatus(PyDbDatabase::*)(const AcGeMatrix3d&, PyDbDatabase&, bool)>("insert", &PyDbDatabase::insert)
+
+        .def("hpOrigin", &PyDbDatabase::indexctl)
+        .def("isAppRegistered", &PyDbDatabase::isAppRegistered)
+        .def("insunits", &PyDbDatabase::insunits)
+        .def("interfereVpVisStyle", &PyDbDatabase::interfereVpVisStyle)
+        .def("intersectColor", &PyDbDatabase::intersectColor)
+        .def("intersectDisplay", &PyDbDatabase::intersectDisplay)
+        .def("isBeingDestroyed", &PyDbDatabase::isBeingDestroyed)
+        .def("isEMR", &PyDbDatabase::isEMR)
+        .def("isObjectNonPersistent", &PyDbDatabase::isObjectNonPersistent)
+        .def("isolines", &PyDbDatabase::isolines)
+        .def("isPartiallyOpened", &PyDbDatabase::isPartiallyOpened)
+        .def("isPucsOrthographic", &PyDbDatabase::isPucsOrthographic)
+        .def("isUcsOrthographic", &PyDbDatabase::isUcsOrthographic)
+        .def("isValidLineWeight", &PyDbDatabase::isValidLineWeight)//static
+
+        .def("joinStyle", &PyDbDatabase::joinStyle)
+
+        .def("lastSavedAsMaintenanceVersion", &PyDbDatabase::lastSavedAsMaintenanceVersion)
+        .def("lastSavedAsVersion", &PyDbDatabase::lastSavedAsVersion)
+        .def("latitude", &PyDbDatabase::latitude)
+        .def("layerEval", &PyDbDatabase::layerEval)
+        .def("layerNotify", &PyDbDatabase::layerNotify)
+        .def("layerTableId", &PyDbDatabase::layerTableId)
+        .def("layerZero", &PyDbDatabase::layerZero)
+        .def("layoutDictionaryId", &PyDbDatabase::layoutDictionaryId)
+        .def("lensLength", &PyDbDatabase::lensLength)
+        .def("lightGlyphDisplay", &PyDbDatabase::lightGlyphDisplay)
+        .def("lightingUnits", &PyDbDatabase::lightingUnits)
+        .def("lightsInBlocks", &PyDbDatabase::lightsInBlocks)
+        .def("limcheck", &PyDbDatabase::limcheck)
+        .def("limmax", &PyDbDatabase::limmax)
+        .def("limmin", &PyDbDatabase::limmin)
+        .def("linetypeTableId", &PyDbDatabase::linetypeTableId)
+        .def("lineWeightDisplay", &PyDbDatabase::lineWeightDisplay)
+        .def("loadLineTypeFile", &PyDbDatabase::loadLineTypeFile)
+        .def("loftAng1", &PyDbDatabase::loftAng1)
+        .def("loftAng2", &PyDbDatabase::loftAng2)
+        .def("loftMag1", &PyDbDatabase::loftMag1)
+        .def("loftMag2", &PyDbDatabase::loftMag2)
+        .def("loftNormals", &PyDbDatabase::loftNormals)
+        .def("loftParam", &PyDbDatabase::loftParam)
+        .def("longitude", &PyDbDatabase::longitude)
+        .def("ltscale", &PyDbDatabase::ltscale)
+        .def("lunits", &PyDbDatabase::lunits)
+        .def("luprec", &PyDbDatabase::luprec)
+        .def("maintenanceReleaseVersion", &PyDbDatabase::maintenanceReleaseVersion)
+
+        .def("markObjectNonPersistent", &PyDbDatabase::markObjectNonPersistent)//static
+
+        .def("materialDictionaryId", &PyDbDatabase::materialDictionaryId)
+
 
         .def("className", &PyDbDatabase::className)
         .def("getFilename", &PyDbDatabase::getFilename)
@@ -53,10 +192,6 @@ PyDbDatabase::PyDbDatabase(AcDbDatabase* _pDb, bool autoDelete)
 
 PyDbDatabase::PyDbDatabase(bool buildDefaultDrawing, bool noDocument)
     : PyRxObject(new AcDbDatabase(buildDefaultDrawing, noDocument), true)
-{
-}
-
-PyDbDatabase::~PyDbDatabase()
 {
 }
 
@@ -745,7 +880,7 @@ PyDbObjectId PyDbDatabase::groupDictionaryId() const
     throw PyNullObject();
 }
 
-Acad::ErrorStatus PyDbDatabase::insert(PyDbObjectId& blockId, const std::string& pBlockName, PyDbDatabase& db, bool preserveSourceDatabase /*= true*/)
+Acad::ErrorStatus PyDbDatabase::insert(PyDbObjectId& blockId, const std::string& pBlockName, PyDbDatabase& db, bool preserveSourceDatabase)
 {
     auto imp = impObj();
     if (imp != nullptr)
@@ -753,7 +888,7 @@ Acad::ErrorStatus PyDbDatabase::insert(PyDbObjectId& blockId, const std::string&
     throw PyNullObject();
 }
 
-Acad::ErrorStatus PyDbDatabase::insert(PyDbObjectId& blockId, const std::string& pSourceBlockName, const std::string& pDestinationBlockName, PyDbDatabase& db, bool preserveSourceDatabase /*= true*/)
+Acad::ErrorStatus PyDbDatabase::insert(PyDbObjectId& blockId, const std::string& pSourceBlockName, const std::string& pDestinationBlockName, PyDbDatabase& db, bool preserveSourceDatabase)
 {
     auto imp = impObj();
     if (imp != nullptr)
@@ -761,7 +896,7 @@ Acad::ErrorStatus PyDbDatabase::insert(PyDbObjectId& blockId, const std::string&
     throw PyNullObject();
 }
 
-Acad::ErrorStatus PyDbDatabase::insert(const AcGeMatrix3d& xform, PyDbDatabase& db, bool preserveSourceDatabase /*= true*/)
+Acad::ErrorStatus PyDbDatabase::insert(const AcGeMatrix3d& xform, PyDbDatabase& db, bool preserveSourceDatabase)
 {
     auto imp = impObj();
     if (imp != nullptr)
@@ -951,7 +1086,7 @@ AcDb::JoinStyle PyDbDatabase::joinStyle() const
     throw PyNullObject();
 }
 
-AcDb::MaintenanceReleaseVersion PyDbDatabase::lastSavedAsMaintenanceVersion() const
+int PyDbDatabase::lastSavedAsMaintenanceVersion() const
 {
     auto imp = impObj();
     if (imp != nullptr)
@@ -959,7 +1094,7 @@ AcDb::MaintenanceReleaseVersion PyDbDatabase::lastSavedAsMaintenanceVersion() co
     throw PyNullObject();
 }
 
-AcDb::AcDbDwgVersion PyDbDatabase::lastSavedAsVersion() const
+int PyDbDatabase::lastSavedAsVersion() const
 {
     auto imp = impObj();
     if (imp != nullptr)
@@ -1210,7 +1345,7 @@ Acad::ErrorStatus PyDbDatabase::registerApp(const std::string& pszAppName)
 #endif
 }
 
-AcDb::MaintenanceReleaseVersion PyDbDatabase::maintenanceReleaseVersion() const
+int PyDbDatabase::maintenanceReleaseVersion() const
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
@@ -1383,7 +1518,7 @@ bool PyDbDatabase::oleStartUp() const
     throw PyNullObject();
 }
 
-AcDb::MaintenanceReleaseVersion PyDbDatabase::originalFileMaintenanceVersion() const
+int PyDbDatabase::originalFileMaintenanceVersion() const
 {
     auto imp = impObj();
     if (imp != nullptr)
@@ -1399,7 +1534,7 @@ std::string PyDbDatabase::originalFileName() const
     throw PyNullObject();
 }
 
-AcDb::MaintenanceReleaseVersion PyDbDatabase::originalFileSavedByMaintenanceVersion() const
+int PyDbDatabase::originalFileSavedByMaintenanceVersion() const
 {
     auto imp = impObj();
     if (imp != nullptr)
@@ -1407,7 +1542,7 @@ AcDb::MaintenanceReleaseVersion PyDbDatabase::originalFileSavedByMaintenanceVers
     throw PyNullObject();
 }
 
-AcDb::AcDbDwgVersion PyDbDatabase::originalFileSavedByVersion() const
+int PyDbDatabase::originalFileSavedByVersion() const
 {
     auto imp = impObj();
     if (imp != nullptr)
@@ -1415,7 +1550,7 @@ AcDb::AcDbDwgVersion PyDbDatabase::originalFileSavedByVersion() const
     throw PyNullObject();
 }
 
-AcDb::AcDbDwgVersion PyDbDatabase::originalFileVersion() const
+int PyDbDatabase::originalFileVersion() const
 {
     auto imp = impObj();
     if (imp != nullptr)
