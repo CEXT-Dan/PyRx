@@ -121,11 +121,103 @@ public:
     PyDbObjectId plotSettingsDictionaryId() const;
     bool plotStyleMode() const;
     PyDbObjectId plotStyleNameDictionaryId() const;
+
+
+
+
+
+    double psolWidth() const;
+
+    PyDbObjectId pucsBase() const;
+    PyDbObjectId pucsname() const;
+    AcGePoint3d pucsorg() const;
+    AcGeVector3d pucsxdir() const;
+    AcGeVector3d pucsydir() const;
+
+    //Acad::ErrorStatus purge(AcDbObjectIdArray& ids);TODO:
+    bool qtextmode() const;
+
+    Acad::ErrorStatus reclaimMemoryFromErasedObjects(const boost::python::list& erasedObjects);
     PyDbObjectId regAppTableId() const;
+    bool regenmode() const;
+
+    //Acad::ErrorStatus removeReactor(AcDbDatabaseReactor* pReactor) const; TODO:
+
+    Acad::ErrorStatus resetTimes();
+    Acad::ErrorStatus restoreForwardingXrefSymbols();
     Acad::ErrorStatus restoreOriginalXrefSymbols();
 
-    //TODO: enum
-    Acad::ErrorStatus saveAs(const std::string& fileName);
+    bool retainOriginalThumbnailBitmap() const;
+    Adesk::Int16 saveproxygraphics() const;
+
+    PyDbObjectId scaleListDictionaryId() const;
+    PyDbObjectId sectionViewStyle() const;
+    PyDbObjectId sectionViewStyleDictionaryId() const;
+
+    Acad::ErrorStatus set3dDwfPrec(double DwfPrec);
+    Acad::ErrorStatus setAngbase(double angle);
+    Acad::ErrorStatus setAngdir(bool dir);
+    Acad::ErrorStatus setAnnoAllVisible(bool allvis);
+    Acad::ErrorStatus setAttdia(bool dia);
+    Acad::ErrorStatus setAttmode(Adesk::Int16 mode);
+    Acad::ErrorStatus setAttreq(bool req);
+    Acad::ErrorStatus setAunits(Adesk::Int16 aunits);
+    Acad::ErrorStatus setAuprec(Adesk::Int16 auprec);
+    Acad::ErrorStatus setBlipmode(bool mode);
+    Acad::ErrorStatus setCameraDisplay(bool cameraDisplay);
+    Acad::ErrorStatus setCameraHeight(double cameraHeight);
+
+    //Acad::ErrorStatus setCannoscale(AcDbAnnotationScale*); TODO:
+
+    Acad::ErrorStatus setCDynDisplayMode(Adesk::Int16 val);
+
+    //Acad::ErrorStatus setCecolor(const AcCmColor& color); TODO:
+    Acad::ErrorStatus setCeltscale(double scale);
+    Acad::ErrorStatus setCeltype(const PyDbObjectId& id);
+    Acad::ErrorStatus setCelweight(AcDb::LineWeight weight);
+    Acad::ErrorStatus setCePlotStyleName(AcDb::PlotStyleNameType, const PyDbObjectId& id);
+
+    //Acad::ErrorStatus setCetransparency(const AcCmTransparency& transparency); TODO:
+
+    Acad::ErrorStatus setChamfera(double val);
+    Acad::ErrorStatus setChamferb(double val);
+    Acad::ErrorStatus setChamferc(double val);
+    Acad::ErrorStatus setChamferd(double val);
+    Acad::ErrorStatus setClayer(const PyDbObjectId& id);
+    Acad::ErrorStatus setCmaterial(const PyDbObjectId& id);
+    Acad::ErrorStatus setCmljust(Adesk::Int16 just);
+    Acad::ErrorStatus setCmlscale(double scale);
+    Acad::ErrorStatus setCmlstyleID(const PyDbObjectId& id);
+    Acad::ErrorStatus setCoords(Adesk::Int16 coords);
+    Acad::ErrorStatus setCshadow(Adesk::UInt8 val);
+    Acad::ErrorStatus setDelUsedObj(Adesk::Int16 deleteObj);
+    Acad::ErrorStatus setDgnframe(Adesk::UInt8 val);
+    Acad::ErrorStatus setDimaso(bool aso);
+    Acad::ErrorStatus setDimAssoc(Adesk::UInt8 val);
+    Acad::ErrorStatus setDimfit(int fit);
+    Acad::ErrorStatus setDimsho(bool sho);
+    Acad::ErrorStatus setDimstyle(const PyDbObjectId& id);
+
+    //Acad::ErrorStatus setDimstyleData(AcDbDimStyleTableRecord* pRec);//TODO:
+
+    Acad::ErrorStatus setDimstyleData(const PyDbObjectId& id);
+    Acad::ErrorStatus setDimunit(int unit);
+    Acad::ErrorStatus setDispSilh(bool silh);
+    Acad::ErrorStatus setDragmode(Adesk::Int16 mode);
+    Acad::ErrorStatus setDragVisStyle(const PyDbObjectId& id);
+    Acad::ErrorStatus setDrawOrderCtl(Adesk::UInt8 val);
+    Acad::ErrorStatus setDwfframe(Adesk::UInt8);
+    Acad::ErrorStatus setElevation(double elev);
+    Acad::ErrorStatus setEndCaps(AcDb::EndCaps type);
+    Acad::ErrorStatus setExtmax(const AcGePoint3d& max);
+    Acad::ErrorStatus setExtmin(const AcGePoint3d& min);
+    Acad::ErrorStatus setFacetres(double _facetres);
+    Acad::ErrorStatus setFilletrad(double radius);
+    Acad::ErrorStatus setFillmode(bool mode);
+
+    Acad::ErrorStatus saveAs(const std::string& fileName);  //TODO: enum
+
+    Acad::ErrorStatus setFingerprintGuid(const std::string& newGuid);
     void setFullSaveRequired();
 
     Acad::ErrorStatus readDwgFile(const char* fileName);
@@ -136,8 +228,17 @@ public:
     PyDbObjectId modelspaceId() const;
 
 
+    Acad::ErrorStatus setGeoMarkerVisibility(bool value);
+    Acad::ErrorStatus setHaloGap(Adesk::UInt8 val);
 
+    //Acad::ErrorStatus setHandseed(const AcDbHandle& handle); TODO: AcDbHandle
 
+    Acad::ErrorStatus setHideText(Adesk::UInt8 val);
+    Acad::ErrorStatus setHpInherit(const bool inherit);
+    Acad::ErrorStatus setHpOrigin(const AcGePoint2d& origin);
+    Acad::ErrorStatus setHyperlinkBase(const std::string& val);
+    Acad::ErrorStatus setIndexctl(Adesk::UInt8 val);
+    Acad::ErrorStatus setInsbase(const AcGePoint3d& base);
     Acad::ErrorStatus setInsunits(const AcDb::UnitsValue units);
 
     //Acad::ErrorStatus setInterfereColor(const AcCmColor& color);//TODO: AcCmColor
