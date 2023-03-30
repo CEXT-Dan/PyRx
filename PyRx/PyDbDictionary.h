@@ -18,4 +18,3 @@ public:
 public:
     AcDbDictionary* impObj() const;
 };
-

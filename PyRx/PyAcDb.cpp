@@ -7,6 +7,7 @@
 #include "PyDbBlockTableRecord.h"
 #include "PyDbSymbolTableRecord.h"
 #include "PyDbDictionary.h"
+#include "PyDbSymbolTable.h"
 
 using namespace boost::python;
 
@@ -38,6 +39,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbObjectIdWrapper();
     makeAcDbObjectWrapper();
     makeAcDbDictionaryWrapper();
+    makeAcDbSymbolTableWrapper();
     makeAcDbSymbolTableRecordWrapper();
     makeAcDbBlockTableRecordWrapper();
     makeAcDbDatabaseWrapper();

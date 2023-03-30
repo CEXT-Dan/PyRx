@@ -26,8 +26,8 @@ PyDbDictionary::PyDbDictionary(AcDbDictionary* ptr, bool autoDelete)
 PyDbDictionary::PyDbDictionary(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbObject(nullptr, true)
 {
-    AcDbObject* pobj = nullptr;
-    acdbOpenObject<AcDbObject>(pobj, id.m_id, mode);
+    AcDbDictionary* pobj = nullptr;
+    acdbOpenObject<AcDbDictionary>(pobj, id.m_id, mode);
     m_pImp = pobj;
     auto imp = impObj();
     if (imp == nullptr)

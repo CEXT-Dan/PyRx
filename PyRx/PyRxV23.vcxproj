@@ -142,6 +142,7 @@
     <ClCompile Include="PyDbHostApplicationServices.cpp" />
     <ClCompile Include="PyDbObject.cpp" />
     <ClCompile Include="PyDbObjectId.cpp" />
+    <ClCompile Include="PyDbSymbolTable.cpp" />
     <ClCompile Include="PyDbSymbolTableRecord.cpp" />
     <ClCompile Include="PyGiDrawable.cpp" />
     <ClCompile Include="PyRxAced.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="PyDbHostApplicationServices.h" />
     <ClInclude Include="PyDbObject.h" />
     <ClInclude Include="PyDbObjectId.h" />
+    <ClInclude Include="PyDbSymbolTable.h" />
     <ClInclude Include="PyDbSymbolTableRecord.h" />
     <ClInclude Include="PyException.h" />
     <ClInclude Include="PyGiDrawable.h" />
