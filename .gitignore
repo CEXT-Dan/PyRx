@@ -6,3 +6,4 @@
 /PyRx/PyRxZ23
 /PyRx/*.user
 /PySamples/*.err
+*.pyc
