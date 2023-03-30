@@ -187,9 +187,9 @@ public:
     bool oleStartUp() const;
     int originalFileMaintenanceVersion() const;
     std::string originalFileName() const;
-    int originalFileSavedByMaintenanceVersion() const;//TODO: enum
+    int originalFileSavedByMaintenanceVersion() const;
     int originalFileSavedByVersion() const;
-    int originalFileVersion() const;//TODO: enum
+    int originalFileVersion() const;
     bool orthomode() const;
 
     //AcDwgFileHandle* outputFiler() const; TODO:
@@ -503,8 +503,8 @@ public:
     //Acad::ErrorStatus thumbnailImage(Atil::Image*& pPreviewImage) const; probably never
     bool tilemode() const;
     Adesk::UInt8 tileModeLightSynch() const;
-    //TODO: enum
-    AcDb::TimeZone timeZone() const;
+
+    int timeZone() const;
     double tracewid() const;
 
     //AcDbTransactionManager* transactionManager() const; //TODO:
