@@ -35,7 +35,7 @@ def PyDbSymOpenForRead():
 		PyRxApp.Printf("\nFAIL")
 	else:
 		PyRxApp.Printf("\nPASS({})".format(table.isA().name()))
-	for (id) in table.objectIds():
+	for (id) in table.recordIds():
 		PyRxApp.Printf("\nitem({})".format(id))	
 	
 	
