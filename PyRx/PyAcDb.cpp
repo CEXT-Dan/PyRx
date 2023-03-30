@@ -6,6 +6,7 @@
 #include "PyDbHostApplicationServices.h"
 #include "PyDbBlockTableRecord.h"
 #include "PyDbSymbolTableRecord.h"
+#include "PyDbDictionary.h"
 
 using namespace boost::python;
 
@@ -36,6 +37,7 @@ BOOST_PYTHON_MODULE(PyDb)
     //create in class order!
     makeAcDbObjectIdWrapper();
     makeAcDbObjectWrapper();
+    makeAcDbDictionaryWrapper();
     makeAcDbSymbolTableRecordWrapper();
     makeAcDbBlockTableRecordWrapper();
     makeAcDbDatabaseWrapper();
