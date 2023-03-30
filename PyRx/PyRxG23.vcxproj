@@ -137,6 +137,7 @@
     <ClCompile Include="PyApDocument.cpp" />
     <ClCompile Include="PyDbBlockTableRecord.cpp" />
     <ClCompile Include="PyDbDatabase.cpp" />
+    <ClCompile Include="PyDbDictionary.cpp" />
     <ClCompile Include="PyDbEntity.cpp" />
     <ClCompile Include="PyDbHostApplicationServices.cpp" />
     <ClCompile Include="PyDbObject.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="PyApDocument.h" />
     <ClInclude Include="PyDbBlockTableRecord.h" />
     <ClInclude Include="PyDbDatabase.h" />
+    <ClInclude Include="PyDbDictionary.h" />
     <ClInclude Include="PyDbEntity.h" />
     <ClInclude Include="PyDbHostApplicationServices.h" />
     <ClInclude Include="PyDbObject.h" />

@@ -9,20 +9,20 @@
 
 using namespace boost::python;
 
-static PyDbObject openDbObject(const PyDbObjectId& id, bool forWrite)
+static PyDbObject openDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbObject* pObj = nullptr;
-    if (acdbOpenAcDbObject(pObj, id.m_id, forWrite ? AcDb::kForWrite : AcDb::kForRead) == eOk)
+    if (acdbOpenAcDbObject(pObj, id.m_id, mode) == eOk)
         return PyDbObject(pObj, true);
     throw PyNullObject();
 }
 
-static PyDbObject openDbEntity(const PyDbObjectId& id, bool forWrite)
+static PyDbObject openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     if (id.m_id.objectClass()->isDerivedFrom(AcDbEntity::desc()))
     {
         AcDbEntity* pObj = nullptr;
-        if (acdbOpenAcDbEntity(pObj, id.m_id, forWrite ? AcDb::kForWrite : AcDb::kForRead) == eOk)
+        if (acdbOpenAcDbEntity(pObj, id.m_id, mode) == eOk)
             return PyDbObject(pObj, true);
     }
     throw PyNullObject();
@@ -41,6 +41,11 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbDatabaseWrapper();
     makeAcDbHostApplicationServicesWrapper();
 
+    enum_<AcDb::OpenMode>("OpenMode")
+        .value("ForRead", AcDb::OpenMode::kForRead)
+        .value("ForWrite", AcDb::OpenMode::kForWrite)
+        .value("ForNotify", AcDb::OpenMode::kForNotify)
+        ;
     enum_<AcDb::LineWeight>("LineWeight")
         .value("LnWt000", AcDb::LineWeight::kLnWt000)
         .value("LnWt005", AcDb::LineWeight::kLnWt005)
