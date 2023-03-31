@@ -9,10 +9,10 @@ using namespace boost::python;
 void makeAcDbBlockTableRecordWrapper()
 {
     static auto wrapper = class_<PyDbBlockTableRecord, bases<PyDbSymbolTableRecord>>("DbBlockTableRecord", boost::python::no_init)
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbBlockTableRecord::className)
         .def("appendAcDbEntity", &PyDbBlockTableRecord::appendAcDbEntity)
         .def("objectIds", &PyDbBlockTableRecord::objectIds)
-        .def("fromDbObject", &PyDbBlockTableRecord::fromDbObject)
         ;
 }
 
@@ -22,6 +22,18 @@ PyDbBlockTableRecord::PyDbBlockTableRecord(AcDbBlockTableRecord* ptr, bool autoD
     : PyDbSymbolTableRecord(ptr, autoDelete)
 {
 
+}
+
+PyDbBlockTableRecord::PyDbBlockTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbSymbolTableRecord(nullptr, false)
+{
+    AcDbBlockTableRecord* pobj = nullptr;
+    acdbOpenObject<AcDbBlockTableRecord>(pobj, id.m_id, mode);
+    m_pImp = pobj;
+
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
 }
 
 PyDbObjectId PyDbBlockTableRecord::appendAcDbEntity(const PyDbEntity& ent)
@@ -51,13 +63,6 @@ boost::python::list PyDbBlockTableRecord::objectIds()
         }
     }
     return pyList;
-}
-
-PyDbBlockTableRecord PyDbBlockTableRecord::fromDbObject(const PyDbObject& obj)
-{
-    if (obj.impObj() != nullptr && obj.impObj()->isA()->isDerivedFrom(AcDbBlockTableRecord::desc()))
-        return PyDbBlockTableRecord(static_cast<AcDbBlockTableRecord*>(obj.impObj()), true);
-    throw PyNotThatKindOfClass();
 }
 
 std::string PyDbBlockTableRecord::className()

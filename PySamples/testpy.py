@@ -34,7 +34,7 @@ def PyDbBTR():
 
 		db = PyDb.DbHostApplicationServices().workingDatabase()  
 		id = db.modelspaceId()
-		btr = PyDb.DbBlockTableRecord.fromDbObject(PyDb.openDbObject(id, False))
+		btr = PyDb.DbBlockTableRecord(id, PyDb.OpenMode.ForRead)
 		ids = btr.objectIds()
 		numids = len(ids)
 

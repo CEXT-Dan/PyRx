@@ -24,7 +24,6 @@ public:
     Acad::ErrorStatus upgradeOpen();
     Acad::ErrorStatus downgradeOpen();
     Acad::ErrorStatus erase();
-
     static std::string className();
 
 public:

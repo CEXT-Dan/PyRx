@@ -24,7 +24,12 @@ def OnPyUnloadDwg():
    
 def PyRxCmd_pyapptest():
 	try:
+		PyCurDocTest()
 		PyCurDocSelectAll()
+		PyCurDocEdTest1()
+		PyCurDocEdTest2()
+		PyCurDocEdTest3()
+		PyCurDocEntsel()
 	except Exception as err:
 		PyRxApp.Printf(err)
 		
@@ -73,7 +78,7 @@ def PyCurDocEntsel():
 		ed = doc.editor()
 		val = ed.entsel("\nSelect")
 		if(val[2] == PyEd.PromptStatus.Normal):
-			dbo = PyDb.openDbObject(val[0], False)
+			dbo = PyDb.openDbObject(val[0], PyDb.OpenMode.ForRead)
 			PyRxApp.Printf("\nPASS({})".format(dbo.isA().name())) 
 			p = val[1]
 			PyRxApp.Printf("\nPASS({},{},{})".format(p.x, p.y, p.z))

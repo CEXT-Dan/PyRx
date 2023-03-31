@@ -35,7 +35,6 @@ PyDbSymbolTable::PyDbSymbolTable(const PyDbObjectId& id, AcDb::OpenMode mode)
         throw PyNullObject();
 }
 
-
 PyDbObjectId PyDbSymbolTable::getAt(const std::string& entryName)
 {
     auto imp = impObj();

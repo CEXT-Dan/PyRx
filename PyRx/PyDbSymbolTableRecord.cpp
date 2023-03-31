@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PyDbSymbolTableRecord.h"
+#include "PyDbObjectId.h"
 
 using namespace boost::python;
 //---------------------------------------------------------------------------------------- -
@@ -7,6 +8,7 @@ using namespace boost::python;
 void makeAcDbSymbolTableRecordWrapper()
 {
     static auto wrapper = class_<PyDbSymbolTableRecord, bases<PyDbObject>>("DbSymbolTableRecord", boost::python::no_init)
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbSymbolTableRecord::className)
         .def("getName", &PyDbSymbolTableRecord::getName)
         .def("setName", &PyDbSymbolTableRecord::setName)
@@ -19,6 +21,18 @@ PyDbSymbolTableRecord::PyDbSymbolTableRecord(AcDbSymbolTableRecord* ptr, bool au
     : PyDbObject(ptr, autoDelete)
 {
 
+}
+
+PyDbSymbolTableRecord::PyDbSymbolTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbObject(nullptr, false)
+{
+    AcDbSymbolTableRecord* pobj = nullptr;
+    acdbOpenObject<AcDbSymbolTableRecord>(pobj, id.m_id, mode);
+    m_pImp = pobj;
+
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
 }
 
 std::string PyDbSymbolTableRecord::getName()

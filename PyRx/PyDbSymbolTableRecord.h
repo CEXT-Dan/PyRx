@@ -10,6 +10,7 @@ class PyDbSymbolTableRecord : public PyDbObject
 {
 public:
     PyDbSymbolTableRecord(AcDbSymbolTableRecord* ptr, bool autoDelete);
+    PyDbSymbolTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbSymbolTableRecord() override = default;
 
     std::string getName();
