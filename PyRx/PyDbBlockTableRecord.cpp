@@ -28,9 +28,9 @@ PyDbBlockTableRecord::PyDbBlockTableRecord(const PyDbObjectId& id, AcDb::OpenMod
     : PyDbSymbolTableRecord(nullptr, false)
 {
     AcDbBlockTableRecord* pobj = nullptr;
-    acdbOpenObject<AcDbBlockTableRecord>(pobj, id.m_id, mode);
+    if (auto es = acdbOpenObject<AcDbBlockTableRecord>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
     m_pImp = pobj;
-
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();

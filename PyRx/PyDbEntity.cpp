@@ -31,7 +31,8 @@ PyDbEntity::PyDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbObject(nullptr, false)
 {
     AcDbEntity* pobj = nullptr;
-    acdbOpenObject<AcDbEntity>(pobj, id.m_id, mode);
+    if (auto es = acdbOpenObject<AcDbEntity>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
     m_pImp = pobj;
     auto imp = impObj();
     if (imp == nullptr)

@@ -27,7 +27,8 @@ PyDbSymbolTableRecord::PyDbSymbolTableRecord(const PyDbObjectId& id, AcDb::OpenM
     : PyDbObject(nullptr, false)
 {
     AcDbSymbolTableRecord* pobj = nullptr;
-    acdbOpenObject<AcDbSymbolTableRecord>(pobj, id.m_id, mode);
+    if (auto es = acdbOpenObject<AcDbSymbolTableRecord>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
     m_pImp = pobj;
 
     auto imp = impObj();

@@ -31,7 +31,8 @@ PyDbObject::PyDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyGiDrawable(nullptr, true)
 {
     AcDbObject* pobj = nullptr;
-    acdbOpenObject<AcDbObject>(pobj, id.m_id, mode);
+    if (auto es = acdbOpenObject<AcDbObject>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
     m_pImp = pobj;
     auto imp = impObj();
     if (imp == nullptr)

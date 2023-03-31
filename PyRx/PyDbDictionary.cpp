@@ -27,7 +27,8 @@ PyDbDictionary::PyDbDictionary(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbObject(nullptr, true)
 {
     AcDbDictionary* pobj = nullptr;
-    acdbOpenObject<AcDbDictionary>(pobj, id.m_id, mode);
+    if (auto es = acdbOpenObject<AcDbDictionary>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
     m_pImp = pobj;
     auto imp = impObj();
     if (imp == nullptr)
