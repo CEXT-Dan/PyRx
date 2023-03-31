@@ -85,6 +85,9 @@
     <ClCompile Include="PyDbSymbolTable.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
+    <ClCompile Include="ResultBuffer.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -172,6 +175,9 @@
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
     <ClInclude Include="PyDbSymbolTable.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="ResultBuffer.h">
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
   </ItemGroup>

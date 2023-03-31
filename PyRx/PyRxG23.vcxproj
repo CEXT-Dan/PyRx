@@ -149,6 +149,7 @@
     <ClCompile Include="PyRxAcut.cpp" />
     <ClCompile Include="PyRxApp.cpp" />
     <ClCompile Include="PyRxObject.cpp" />
+    <ClCompile Include="ResultBuffer.cpp" />
     <ClCompile Include="StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
@@ -182,6 +183,7 @@
     <ClInclude Include="PyRxApp.h" />
     <ClInclude Include="PyRxObject.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="ResultBuffer.h" />
     <ClInclude Include="RxPyString.h" />
     <ClInclude Include="StdAfx.h" />
   </ItemGroup>
