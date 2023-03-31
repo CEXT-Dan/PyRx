@@ -1,5 +1,6 @@
 import os
 from time import perf_counter
+from inspect import signature
 
 import PyRxApp# = all the global methods like acutPrintf, 
 import PyRx# = Runtime runtime 
@@ -24,24 +25,14 @@ def OnPyUnloadDwg():
          
 def PyRxCmd_pycmd():
 	try: 
-		PyDbBTR()
+		PyDbGetHelpDoc()
 	except Exception as err:
 		PyRxApp.Printf(err)
+		
+def PyDbGetHelpDoc():	
+	db = PyDb.DbHostApplicationServices().workingDatabase()  
+	PyRxApp.Printf(db.wblock.__doc__)
+#	for x in dir(PyDb):
+#	   PyRxApp.Printf("\n(({}:{})".format(x, ""))
+
                 
-def PyDbBTR():
-	try:
-		t1_start = perf_counter()
-
-		db = PyDb.DbHostApplicationServices().workingDatabase()  
-		id = db.modelspaceId()
-		btr = PyDb.DbBlockTableRecord(id, PyDb.OpenMode.ForRead)
-		ids = btr.objectIds()
-		numids = len(ids)
-
-		t1_stop = perf_counter()
-	
-		PyRxApp.Printf("Elapsed time: {t:.4f}".format(t = t1_stop-t1_start))  
-		PyRxApp.Printf("\nCount({})".format(numids))  
-
-	except Exception as err:
-		PyRxApp.Printf(err)

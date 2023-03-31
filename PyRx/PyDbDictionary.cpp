@@ -12,7 +12,7 @@ void makeAcDbDictionaryWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("getAt", &PyDbDictionary::getAt)
         .def("has", &PyDbDictionary::has)
-        .def("items", &PyDbDictionary::items)
+        .def("keyValuePairs", &PyDbDictionary::keyValuePairs)
         ;
 }
 //---------------------------------------------------------------------------------------- -
@@ -52,7 +52,7 @@ bool PyDbDictionary::has(const std::string& entryName)
     return imp->has(utf8_to_wstr(entryName).c_str());
 }
 
-boost::python::list PyDbDictionary::items()
+boost::python::list PyDbDictionary::keyValuePairs()
 {
     auto imp = impObj();
     if (imp == nullptr)

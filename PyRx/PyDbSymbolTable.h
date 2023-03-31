@@ -15,7 +15,7 @@ public:
     PyDbObjectId getAt(const std::string& entryName);
     bool has(const std::string& entryName);
     bool has(const PyDbObjectId& entryid);
-    boost::python::list recordIds();
+    boost::python::list symbolIds();
 
 public:
     AcDbSymbolTable* impObj() const;

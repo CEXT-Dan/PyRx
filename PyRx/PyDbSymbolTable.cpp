@@ -13,7 +13,7 @@ void makeAcDbSymbolTableWrapper()
         .def("getAt", &PyDbSymbolTable::getAt)
         .def<bool(PyDbSymbolTable::*)(const std::string&)>("has", &PyDbSymbolTable::has)
         .def<bool(PyDbSymbolTable::*)(const PyDbObjectId&)>("has", &PyDbSymbolTable::has)
-        .def("recordIds", &PyDbSymbolTable::recordIds)
+        .def("symbolIds", &PyDbSymbolTable::symbolIds)
         ;
 }
 
@@ -61,7 +61,7 @@ bool PyDbSymbolTable::has(const PyDbObjectId& entryid)
     return imp->has(entryid.m_id);
 }
 
-boost::python::list PyDbSymbolTable::recordIds()
+boost::python::list PyDbSymbolTable::symbolIds()
 {
     auto imp = impObj();
     if (imp == nullptr)

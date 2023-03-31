@@ -38,6 +38,7 @@ BOOST_PYTHON_MODULE(PyDb)
     //create in class order!
     makeAcDbObjectIdWrapper();
     makeAcDbObjectWrapper();
+    makeAcDbEntityWrapper();
     makeAcDbDictionaryWrapper();
     makeAcDbSymbolTableWrapper();
     makeAcDbSymbolTableRecordWrapper();

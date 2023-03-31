@@ -25,7 +25,6 @@ def OnPyUnloadDwg():
  
 def PyRxCmd_pydbatabasetest():
 	try:
-		PyDbGetHelpDoc()
 		PyDbGet()
 		PyDatabaseReadDwg()
 		PyHostApptestCopy()
@@ -36,10 +35,6 @@ def PyRxCmd_pydbatabasetest():
 	except Exception as err:
 		PyRxApp.Printf(err)
 		
-def PyDbGetHelpDoc():	
-		db = PyDb.DbHostApplicationServices().workingDatabase()  
-		PyRxApp.Printf("\n({})".format(dir(db)))
-
 def PyDbGet():
 	try:
 		db = PyDb.DbHostApplicationServices().workingDatabase()  

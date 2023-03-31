@@ -35,7 +35,7 @@ def PyDbDictOpenForRead():
 		PyRxApp.Printf("\nFAIL")
 	else:
 		PyRxApp.Printf("\nPASS({})".format(dict.isA().name()))
-	for (name,id) in dict.items():
+	for (name,id) in dict.keyValuePairs():
 		PyRxApp.Printf("\nitem({},{})".format(name,id ))	
 	
 	
