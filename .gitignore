@@ -7,3 +7,4 @@
 /PyRx/*.user
 /PySamples/*.err
 *.pyc
+/PySamples/__pycache__
