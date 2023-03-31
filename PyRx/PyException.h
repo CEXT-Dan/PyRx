@@ -31,7 +31,7 @@ struct PyAcadErrorStatus
     Acad::ErrorStatus m_es;
     explicit PyAcadErrorStatus(Acad::ErrorStatus es)
         : m_es(es){}
-    static void translator(PyAcadErrorStatus const& x)
+    inline static void translator(PyAcadErrorStatus const& x)
     {
         PyErr_SetString(PyExc_RuntimeError, wstr_to_utf8(acadErrorStatusText(x.m_es)).c_str());
     }
