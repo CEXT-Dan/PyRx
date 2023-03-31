@@ -75,7 +75,6 @@ public:
 
     bool hasPersistentReactor(const PyDbObjectId& objId) const;
 
-
     static std::string className();
 
 public:
