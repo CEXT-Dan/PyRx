@@ -39,7 +39,9 @@ def putXDATA():
 			xd = [(PyDb.DxfCode.DxfRegAppName, "DAN"),(PyDb.DxfCode.DxfXdXCoord, PyGe.Point3d(1,10,100))]
 			dbo.setXData(xd)
 			xdres = dbo.xData("DAN");
-			PyRxApp.Printf(xdres)	
+			PyRxApp.Printf(xdres)
+			p = xdres[1][1].toString()
+			PyRxApp.Printf(p)
 	except Exception as err:
 		PyRxApp.Printf(err)
                 

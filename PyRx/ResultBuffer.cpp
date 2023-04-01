@@ -207,22 +207,22 @@ boost::python::list resbufToList(resbuf* pRb)
             switch (acdbGroupCodeToType(pTail->restype))
             {
                 case AcDb::kDwgText:
-                    list.append(boost::python::make_tuple(pTail->restype, wstr_to_utf8(pRb->resval.rstring)));
+                    list.append(boost::python::make_tuple(pTail->restype, wstr_to_utf8(pTail->resval.rstring)));
                     break;
                 case AcDb::kDwgInt8:
-                    list.append(boost::python::make_tuple(pTail->restype, pRb->resval.rint));
+                    list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rint));
                     break;
                 case AcDb::kDwgInt16:
-                    list.append(boost::python::make_tuple(pTail->restype, pRb->resval.rint));
+                    list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rint));
                     break;
                 case AcDb::kDwgInt32:
-                    list.append(boost::python::make_tuple(pTail->restype, pRb->resval.rlong));
+                    list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rlong));
                     break;
                 case AcDb::kDwgReal:
-                    list.append(boost::python::make_tuple(pTail->restype, pRb->resval.rreal));
+                    list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rreal));
                     break;
                 case AcDb::kDwg3Real:
-                    list.append(boost::python::make_tuple(pTail->restype, asPnt3d(pRb->resval.rpoint)));
+                    list.append(boost::python::make_tuple(pTail->restype, asPnt3d(pTail->resval.rpoint)));
                     break;
                 case AcDb::kDwgHandle:
                 case AcDb::kDwgHardOwnershipId:
@@ -231,7 +231,7 @@ boost::python::list resbufToList(resbuf* pRb)
                 case AcDb::kDwgSoftPointerId:
                 {
                     AcDbObjectId id;
-                    if (acdbGetObjectId(id, pRb->resval.rlname) == eOk)
+                    if (acdbGetObjectId(id, pTail->resval.rlname) == eOk)
                         list.append(boost::python::make_tuple(pTail->restype, PyDbObjectId(id)));
                 }
                 break;
@@ -253,33 +253,33 @@ boost::python::list resbufToList(resbuf* pRb)
                     break;
                 case RTANG:
                 case RTREAL:
-                    list.append(boost::python::make_tuple(pTail->restype, pRb->resval.rreal));
+                    list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rreal));
                     break;
                 case RTORINT:
                 case RT3DPOINT:
-                    list.append(boost::python::make_tuple(pTail->restype, asPnt3d(pRb->resval.rpoint)));
+                    list.append(boost::python::make_tuple(pTail->restype, asPnt3d(pTail->resval.rpoint)));
                     break;
                 case RTPOINT:
-                    list.append(boost::python::make_tuple(pTail->restype, asPnt2d(pRb->resval.rpoint)));
+                    list.append(boost::python::make_tuple(pTail->restype, asPnt2d(pTail->resval.rpoint)));
                     break;
                 case RTSHORT:
-                    list.append(boost::python::make_tuple(pTail->restype, pRb->resval.rint));
+                    list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rint));
                     break;
                 case RTLONG:
-                    list.append(boost::python::make_tuple(pTail->restype, pRb->resval.rlong));
+                    list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rlong));
                     break;
                 case RTLONG_PTR:
                 case RTINT64:
-                    list.append(boost::python::make_tuple(pTail->restype, pRb->resval.mnInt64));
+                    list.append(boost::python::make_tuple(pTail->restype, pTail->resval.mnInt64));
                     break;
                 case RTSTR:
-                    list.append(boost::python::make_tuple(pTail->restype, wstr_to_utf8(pRb->resval.rstring)));
+                    list.append(boost::python::make_tuple(pTail->restype, wstr_to_utf8(pTail->resval.rstring)));
                     break;
                 case RTPICKS:
                 case RTENAME:
                 {
                     AcDbObjectId id;
-                    if (acdbGetObjectId(id, pRb->resval.rlname) == eOk)
+                    if (acdbGetObjectId(id, pTail->resval.rlname) == eOk)
                         list.append(boost::python::make_tuple(pTail->restype, PyDbObjectId(id)));
                 }
                 break;

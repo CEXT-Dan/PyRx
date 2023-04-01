@@ -3,6 +3,17 @@
 
 using namespace boost::python;
 
+
+std::string AcGePoint2dToString(const AcGePoint2d& p)
+{
+    return std::format("({},{})", p.x, p.y);
+}
+
+std::string AcGePoint3dToString(const AcGePoint3d& p)
+{
+   return std::format("({},{},{})", p.x, p.y, p.z);
+}
+
 static auto makeAcGePoint2dWrapper()
 {
     static auto wrapper = class_<AcGePoint2d>("Point2d")
@@ -13,6 +24,7 @@ static auto makeAcGePoint2dWrapper()
         .def_readwrite("x", &AcGePoint2d::x)
         .def_readwrite("y", &AcGePoint2d::y)
         .def_readonly("kOrigin", &AcGePoint2d::kOrigin)
+        .def("toString", &AcGePoint3dToString)
         ;
     return wrapper;
 }
@@ -49,6 +61,8 @@ static auto makeAcGePoint3dWrapper()
         .def_readwrite("y", &AcGePoint3d::y)
         .def_readwrite("z", &AcGePoint3d::z)
         .def_readonly("kOrigin", &AcGePoint3d::kOrigin)
+
+        .def("toString", &AcGePoint3dToString)
         ;
     return wrapper;
 }
