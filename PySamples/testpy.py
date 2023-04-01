@@ -25,7 +25,7 @@ def OnPyUnloadDwg():
          
 def PyRxCmd_pycmd():
 	try: 
-		putXDATA()
+		putCOLOR()
 	except Exception as err:
 		PyRxApp.Printf(err)
 		
@@ -44,4 +44,14 @@ def putXDATA():
 			PyRxApp.Printf(p)
 	except Exception as err:
 		PyRxApp.Printf(err)
-                
+		
+def putCOLOR():
+	doc = PyAp.ApApplication().docManager().curDocument()
+	ed = doc.editor()
+	val = ed.entsel("\nSelect")
+	if(val[2] == PyEd.PromptStatus.Normal):
+		e = PyDb.DbEntity(val[0], PyDb.OpenMode.ForWrite)
+		c = PyDb.CmColor()
+		c.setRGB(127,127,127)
+		e.setColor(c,True,doc.database())
+				

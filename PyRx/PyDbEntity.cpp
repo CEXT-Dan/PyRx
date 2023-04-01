@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "PyDbEntity.h"
 #include "PyDbObjectId.h"
+#include "PyCmColorBase.h"
+
 using namespace boost::python;
 
 //----------------------------------------------------------------------------------------------------
@@ -16,6 +18,8 @@ void makeAcDbEntityWrapper()
         .def<Acad::ErrorStatus(PyDbEntity::*)(const PyDbObjectId&)>("setLayer", &PyDbEntity::setLayer)
         .def<Acad::ErrorStatus(PyDbEntity::*)(const PyDbObjectId&, bool)>("setLayer", &PyDbEntity::setLayer)
         .def<Acad::ErrorStatus(PyDbEntity::*)(const PyDbObjectId&, bool, bool)>("setLayer", &PyDbEntity::setLayer)
+
+        .def("setColor", &PyDbEntity::setColor)
         .def("className", &PyDbEntity::className)
         ;
 }
@@ -81,6 +85,14 @@ Acad::ErrorStatus PyDbEntity::setLayer(const PyDbObjectId& newVal, bool doSubent
     if (imp == nullptr)
         throw PyNullObject();
     return impObj()->setLayer(newVal.m_id, doSubents, allowHiddenLayer);
+}
+
+Acad::ErrorStatus PyDbEntity::setColor(const PyCmColor& color, bool doSubents, PyDbDatabase& db)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return impObj()->setColor(color.m_clr, doSubents, db.impObj());
 }
 
 std::string PyDbEntity::className()

@@ -8,6 +8,7 @@
 #include "PyDbSymbolTableRecord.h"
 #include "PyDbDictionary.h"
 #include "PyDbSymbolTable.h"
+#include "PyCmColorBase.h"
 
 using namespace boost::python;
 
@@ -38,6 +39,7 @@ BOOST_PYTHON_MODULE(PyDb)
 #endif
 
     //create in class order!
+    makePyCmColorWrapper();
     makeAcDbObjectIdWrapper();
     makeAcDbObjectWrapper();
     makeAcDbEntityWrapper();
