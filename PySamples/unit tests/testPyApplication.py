@@ -79,7 +79,7 @@ def PyCurDocEntsel():
 		ed = doc.editor()
 		val = ed.entsel("\nSelect")
 		if(val[2] == PyEd.PromptStatus.Normal):
-			dbo = PyDb.openDbObject(val[0], PyDb.OpenMode.ForRead)
+			dbo = PyDb.DbObject(val[0], PyDb.OpenMode.ForRead)
 			PyRxApp.Printf("\nPASS({})".format(dbo.isA().name())) 
 			p = val[1]
 			PyRxApp.Printf("\nPASS({},{},{})".format(p.x, p.y, p.z))

@@ -11,15 +11,15 @@
 
 using namespace boost::python;
 
-static PyDbObject openDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
+PyDbObject openDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbObject* pObj = nullptr;
     if (acdbOpenAcDbObject(pObj, id.m_id, mode) == eOk)
-        return PyDbObject(pObj, true);
+        return PyDbObject{ pObj, true };
     throw PyNullObject();
 }
 
-static PyDbObject openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
+PyDbObject openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     if (id.m_id.objectClass()->isDerivedFrom(AcDbEntity::desc()))
     {
@@ -32,8 +32,8 @@ static PyDbObject openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
 
 BOOST_PYTHON_MODULE(PyDb)
 {
-    def("openDbObject", openDbObject);
-    def("openDbEntity", openDbEntity);
+    //def("openDbObject", openDbObject);
+    //def("openDbEntity", openDbEntity);
 
     //create in class order!
     makeAcDbObjectIdWrapper();

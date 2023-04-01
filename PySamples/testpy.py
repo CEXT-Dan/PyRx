@@ -36,7 +36,7 @@ def putXDATA():
 		val = ed.entsel("\nSelect")
 		if(val[2] == PyEd.PromptStatus.Normal):
 			dbo = PyDb.DbObject(val[0], PyDb.OpenMode.ForWrite)
-			xd = [(PyDb.DxfCode.DxfRegAppName, "DAN"),(PyDb.DxfCode.DxfXdXCoord, PyGe.Point3d(10,10,10))]
+			xd = [(PyDb.DxfCode.DxfRegAppName, "DAN"),(PyDb.DxfCode.DxfXdXCoord, PyGe.Point3d(1,10,100))]
 			dbo.setXData(xd)
 			PyRxApp.Printf(dbo.xData("DAN"))
 			

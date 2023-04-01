@@ -230,6 +230,8 @@ Acad::ErrorStatus PyDbObject::setXData(const boost::python::list& xdata)
     if (imp != nullptr)
     {
         AcResBufPtr pData(listToResbuf(xdata));
+        if (!imp->isWriteEnabled())
+            return eNotOpenForWrite;
         return imp->setXData(pData.get());
     }
     throw PyNullObject();
