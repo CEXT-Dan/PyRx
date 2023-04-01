@@ -200,7 +200,7 @@ resbuf* listToResbuf(const boost::python::list& bpl)
 boost::python::list resbufToList(resbuf* pRb)
 {
     boost::python::list list;
-    for (resbuf* pTail = pRb; pTail != pRb; pTail = pTail->rbnext)
+    for (resbuf* pTail = pRb; pTail != nullptr; pTail = pTail->rbnext)
     {
         if (pTail->restype < 5000)
         {

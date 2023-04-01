@@ -25,40 +25,21 @@ def OnPyUnloadDwg():
          
 def PyRxCmd_pycmd():
 	try: 
-		PyCurDocSelectAll()
-		PyCurDocSelectAllFilter()
+		putXDATA()
 	except Exception as err:
 		PyRxApp.Printf(err)
 		
-def PyCurDocSelectAll():
+def putXDATA():
 	try:
-		app =  PyAp.ApApplication()
-		docm = app.docManager()
-		doc = docm.curDocument()
+		doc = PyAp.ApApplication().docManager().curDocument()
 		ed = doc.editor()
-		val = ed.selectAll()
-		if(val[1] == PyEd.PromptStatus.Normal):
-			numids = len(val[0])
-			PyRxApp.Printf("\nPASS numids({})".format(numids))
-			for id in val[0]:
-				PyRxApp.Printf("\nPASS({})".format(id.objectClass().name()))
+		val = ed.entsel("\nSelect")
+		if(val[2] == PyEd.PromptStatus.Normal):
+			dbo = PyDb.DbObject(val[0], PyDb.OpenMode.ForWrite)
+			xd = [(PyDb.DxfCode.DxfRegAppName, "DAN"),(PyDb.DxfCode.DxfXdXCoord, PyGe.Point3d(10,10,10))]
+			dbo.setXData(xd)
+			PyRxApp.Printf(dbo.xData("DAN"))
+			
 	except Exception as err:
 		PyRxApp.Printf(err)
-
-def PyCurDocSelectAllFilter():
-	try:
-		app =  PyAp.ApApplication()
-		docm = app.docManager()
-		doc = docm.curDocument()
-		ed = doc.editor()
-		filter = [(PyDb.DxfCode.DxfStart,"CIRCLE")]
-		val = ed.selectAll(filter)
-		if(val[1] == PyEd.PromptStatus.Normal):
-			numids = len(val[0])
-			PyRxApp.Printf("\nPASS numids({})".format(numids))
-			for id in val[0]:
-				PyRxApp.Printf("\nPASS({})".format(id.objectClass().name()))
-	except Exception as err:
-		PyRxApp.Printf(err)
-
                 
