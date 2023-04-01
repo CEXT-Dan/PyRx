@@ -7,8 +7,8 @@ resbuf* listToResbuf(const boost::python::list& bpl)
 {
     try
     {
+        //NULL is valid!
         const size_t listSize = boost::python::len(bpl);
-
         if (listSize == 0)
             return nullptr;
 
@@ -30,58 +30,44 @@ resbuf* listToResbuf(const boost::python::list& bpl)
                     {
                         int _code = code == 0 ? RTDXF0 : code;
                         AcString str = utf8_to_wstr(extract<char*>(tpl[1])).c_str();
-                        pTail->rbnext = acutBuildList(_code,(const TCHAR*)str, 0);
+                        pTail->rbnext = acutBuildList(_code, (const TCHAR*)str, 0);
                         if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
                         break;
                     }
                     case AcDb::kDwgInt8:
                     {
-                        resbuf* pRes = acutBuildList(code, extract<int>(tpl[1]),0);
-                        if (pRes != nullptr)
-                        {
-                            pTail->rbnext = pRes;
+                        pTail->rbnext = acutBuildList(code, extract<int>(tpl[1]), 0);
+                        if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
-                        }
                         break;
                     }
                     case AcDb::kDwgInt16:
                     {
-                        resbuf* pRes = acutBuildList(code, extract<int>(tpl[1]),0);
-                        if (pRes != nullptr)
-                        {
-                            pTail->rbnext = pRes;
+                        pTail->rbnext = acutBuildList(code, extract<int>(tpl[1]), 0);
+                        if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
-                        }
                         break;
                     }
                     case AcDb::kDwgInt32:
                     {
-                        resbuf* pRes = acutBuildList(code, extract<int>(tpl[1]),0);
-                        if (pRes != nullptr)
-                        {
-                            pTail->rbnext = pRes;
+                        pTail->rbnext = acutBuildList(code, extract<int>(tpl[1]), 0);
+                        if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
-                        }
                         break;
                     }
                     case AcDb::kDwgReal:
                     {
-                        resbuf* pRes = acutBuildList(code, extract<double>(tpl[1]),0);
-                        if (pRes != nullptr)
-                        {
-                            pTail->rbnext = pRes;
+                        pTail->rbnext = acutBuildList(code, extract<double>(tpl[1]), 0);
+                        if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
-                        }
                         break;
                     }
                     case AcDb::kDwg3Real:
                     {
-                        resbuf* pRes = acutBuildList(code, asDblArray(extract<AcGePoint3d>(tpl[1])),0);
-                        {
-                            pTail->rbnext = pRes;
+                        pTail->rbnext = acutBuildList(code, asDblArray(extract<AcGePoint3d>(tpl[1])), 0);
+                        if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
-                        }
                         break;
                     }
                     case AcDb::kDwgHandle:
@@ -94,12 +80,9 @@ resbuf* listToResbuf(const boost::python::list& bpl)
                         PyDbObjectId id = extract<PyDbObjectId>(tpl[1]);
                         if (acdbGetAdsName(name, id.m_id) == eOk)
                         {
-                            resbuf* pRes = acutBuildList(code, name,0);
-                            if (pRes != nullptr)
-                            {
-                                pTail->rbnext = pRes;
+                            pTail->rbnext = acutBuildList(code, name, 0);
+                            if (pTail->rbnext != nullptr)
                                 pTail = pTail->rbnext;
-                            }
                         }
                     }
                     break;
@@ -118,86 +101,62 @@ resbuf* listToResbuf(const boost::python::list& bpl)
                     case RTLE:
                     case RTNONE:
                     {
-                        resbuf* pRes = acutBuildList(code, extract<int>(tpl[1]),0);
-                        if (pRes != nullptr)
-                        {
-                            pTail->rbnext = pRes;
+                        pTail->rbnext = acutBuildList(code, extract<int>(tpl[1]), 0);
+                        if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
-                        }
                         break;
                     }
                     case RTANG:
                     case RTREAL:
                     {
-                        resbuf* pRes = acutBuildList(code, extract<double>(tpl[1]),0);
-                        if (pRes != nullptr)
-                        {
-                            pTail->rbnext = pRes;
+                        pTail->rbnext = acutBuildList(code, extract<double>(tpl[1]), 0);
+                        if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
-                        }
                         break;
                     }
                     case RTORINT:
                     case RT3DPOINT:
                     {
-                        resbuf* pRes = acutBuildList(code, asDblArray(extract<AcGePoint3d>(tpl[1])),0);
-                        if (pRes != nullptr)
-                        {
-                            pTail->rbnext = pRes;
+                        pTail->rbnext = acutBuildList(code, asDblArray(extract<AcGePoint3d>(tpl[1])), 0);
+                        if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
-                        }
                         break;
                     }
                     case RTPOINT:
                     {
-                        resbuf* pRes = acutBuildList(code, asDblArray(extract<AcGePoint2d>(tpl[1])),0);
-                        if (pRes != nullptr)
-                        {
-                            pTail->rbnext = pRes;
+                        pTail->rbnext = acutBuildList(code, asDblArray(extract<AcGePoint2d>(tpl[1])), 0);
+                        if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
-                        }
                         break;
                     }
                     case RTSHORT:
                     {
-                        resbuf* pRes = acutBuildList(code, extract<int>(tpl[1]),0);
-                        if (pRes != nullptr)
-                        {
-                            pTail->rbnext = pRes;
+                        pTail->rbnext = acutBuildList(code, extract<int>(tpl[1]), 0);
+                        if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
-                        }
                         break;
                     }
                     case RTLONG:
                     {
-                        resbuf* pRes = acutBuildList(code, extract<int>(tpl[1]),0);
-                        if (pRes != nullptr)
-                        {
-                            pTail->rbnext = pRes;
+                        pTail->rbnext = acutBuildList(code, extract<int>(tpl[1]), 0);
+                        if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
-                        }
                         break;
                     }
                     case RTLONG_PTR:
                     case RTINT64:
                     {
-                        resbuf* pRes = acutBuildList(code, extract<int64_t>(tpl[1]),0);
-                        if (pRes != nullptr)
-                        {
-                            pTail->rbnext = pRes;
+                        pTail->rbnext = acutBuildList(code, extract<int64_t>(tpl[1]), 0);
+                        if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
-                        }
                         break;
                     }
                     case RTSTR:
                     {
                         AcString str = utf8_to_wstr(extract<char*>(tpl[1])).c_str();
-                        resbuf* pRes = acutBuildList(code, (const TCHAR*)str,0);
-                        if (pRes != nullptr)
-                        {
-                            pTail->rbnext = pRes;
+                        pTail->rbnext = acutBuildList(code, (const TCHAR*)str, 0);
+                        if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
-                        }
                         break;
                     }
                     case RTPICKS:
@@ -208,12 +167,9 @@ resbuf* listToResbuf(const boost::python::list& bpl)
                             PyDbObjectId id = extract<PyDbObjectId>(tpl[1]);
                             if (acdbGetAdsName(name, id.m_id) == eOk)
                             {
-                                resbuf* pRes = acutBuildList(code, name,0);
-                                if (pRes != nullptr)
-                                {
-                                    pTail->rbnext = pRes;
+                                pTail->rbnext = acutBuildList(code, name, 0);
+                                if (pTail->rbnext != nullptr)
                                     pTail = pTail->rbnext;
-                                }
                             }
                         }
                     }
@@ -330,8 +286,8 @@ boost::python::list resbufToList(resbuf* pRb)
                 }
                 break;
 #endif
-                }
             }
         }
-    return list;
     }
+    return list;
+}

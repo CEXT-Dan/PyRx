@@ -14,8 +14,8 @@ void makeAcEditorWrapper()
         .def("getDouble", &PyAcEditor::getDouble)
         .def("getString", &PyAcEditor::getString)
         .def("entsel", &PyAcEditor::entsel)
-        .def("selectAll", &PyAcEditor::selectAll)
-        .def("selectAllf", &PyAcEditor::selectAllf)
+        .def<boost::python::tuple(PyAcEditor::*)(void)>("selectAll", &PyAcEditor::selectAll)
+        .def<boost::python::tuple(PyAcEditor::*)(const boost::python::list&)>("selectAll", &PyAcEditor::selectAll)
         ;
 }
 
@@ -69,7 +69,7 @@ boost::python::tuple PyAcEditor::selectAll()
     return boost::python::make_tuple<boost::python::list, Acad::PromptStatus>(pyList, stat);
 }
 
-boost::python::tuple PyAcEditor::selectAllf(const boost::python::list& filter)
+boost::python::tuple PyAcEditor::selectAll(const boost::python::list& filter)
 {
     AcResBufPtr pFilter(listToResbuf(filter));
     ads_name name = { 0L };

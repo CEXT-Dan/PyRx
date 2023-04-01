@@ -25,10 +25,25 @@ def OnPyUnloadDwg():
          
 def PyRxCmd_pycmd():
 	try: 
+		PyCurDocSelectAll()
 		PyCurDocSelectAllFilter()
 	except Exception as err:
 		PyRxApp.Printf(err)
 		
+def PyCurDocSelectAll():
+	try:
+		app =  PyAp.ApApplication()
+		docm = app.docManager()
+		doc = docm.curDocument()
+		ed = doc.editor()
+		val = ed.selectAll()
+		if(val[1] == PyEd.PromptStatus.Normal):
+			numids = len(val[0])
+			PyRxApp.Printf("\nPASS numids({})".format(numids))
+			for id in val[0]:
+				PyRxApp.Printf("\nPASS({})".format(id.objectClass().name()))
+	except Exception as err:
+		PyRxApp.Printf(err)
 
 def PyCurDocSelectAllFilter():
 	try:
@@ -37,7 +52,7 @@ def PyCurDocSelectAllFilter():
 		doc = docm.curDocument()
 		ed = doc.editor()
 		filter = [(PyDb.DxfCode.DxfStart,"CIRCLE")]
-		val = ed.selectAllf(filter)
+		val = ed.selectAll(filter)
 		if(val[1] == PyEd.PromptStatus.Normal):
 			numids = len(val[0])
 			PyRxApp.Printf("\nPASS numids({})".format(numids))
