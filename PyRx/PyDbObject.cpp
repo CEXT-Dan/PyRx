@@ -2,6 +2,7 @@
 #include "PyDbObject.h"
 #include "PyDbDatabase.h"
 #include "PyDbObjectId.h"
+#include "ResultBuffer.h"
 
 using namespace boost::python;
 
@@ -124,32 +125,6 @@ PyDbDatabase PyDbObject::database() const
     throw PyNullObject();
 }
 
-#ifdef NEVER
-PyDbDatabase PyDbObject::databaseToUse() const
-{
-    auto imp = impObj();
-    if (imp != nullptr)
-        return PyDbDatabase(imp->databaseToUse());
-    throw PyNullObject();
-}
-
-PyDbDatabase PyDbObject::intendedDatabase() const
-{
-    auto imp = impObj();
-    if (imp != nullptr)
-        return PyDbDatabase(imp->intendedDatabase());
-    throw PyNullObject();
-}
-
-Acad::ErrorStatus PyDbObject::setIntendedDatabase(const PyDbDatabase& db)
-{
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setIntendedDatabase(db.impObj());
-    throw PyNullObject();
-}
-#endif
-
 Acad::ErrorStatus PyDbObject::createExtensionDictionary()
 {
     auto imp = impObj();
@@ -243,6 +218,28 @@ Acad::ErrorStatus PyDbObject::swapIdWith(PyDbObjectId& otherId, Adesk::Boolean s
     auto imp = impObj();
     if (imp != nullptr)
         return imp->swapIdWith(otherId.m_id, swapXdata, swapExtDict);
+    throw PyNullObject();
+}
+
+Acad::ErrorStatus PyDbObject::setXData(const boost::python::list& xdata)
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+    {
+        AcResBufPtr pData(listToResbuf(xdata));
+        return imp->setXData(pData.get());
+    }
+    throw PyNullObject();
+}
+
+boost::python::list PyDbObject::xData(const std::string& regappName) const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+    {
+        AcResBufPtr pData(imp->xData(utf8_to_wstr(regappName).c_str()));
+        return resbufToList(pData.get());
+    }
     throw PyNullObject();
 }
 

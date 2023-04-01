@@ -22,12 +22,6 @@ public:
 
     PyDbDatabase database() const;
 
-#ifdef NEVER
-    PyDbDatabase databaseToUse() const;
-    PyDbDatabase intendedDatabase() const;
-    Acad::ErrorStatus setIntendedDatabase(const PyDbDatabase& db);
-#endif
-
     Acad::ErrorStatus createExtensionDictionary();
     PyDbObjectId extensionDictionary() const;
     Acad::ErrorStatus releaseExtensionDictionary();
@@ -45,6 +39,9 @@ public:
     Acad::ErrorStatus handOverTo(PyDbObject& newObject, Adesk::Boolean keepXData, Adesk::Boolean keepExtDict);
     Acad::ErrorStatus swapIdWith(PyDbObjectId& otherId,Adesk::Boolean swapXdata, Adesk::Boolean swapExtDict);
 
+
+    virtual Acad::ErrorStatus setXData(const boost::python::list& xdata);
+    virtual boost::python::list xData(const std::string& regappName) const;
     Acad::ErrorStatus xDataTransformBy(const AcGeMatrix3d& xform);
 
     Adesk::Boolean isEraseStatusToggled() const;
@@ -62,6 +59,7 @@ public:
     Adesk::Boolean isReallyClosing() const;
     Adesk::Boolean isTransactionResident() const;
     Adesk::Boolean isAProxy() const;
+
 
     void assertReadEnabled() const;
     void assertWriteEnabled();

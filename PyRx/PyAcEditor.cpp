@@ -71,12 +71,9 @@ boost::python::tuple PyAcEditor::selectAll()
 
 boost::python::tuple PyAcEditor::selectAll(const boost::python::list& filter)
 {
-    AcResBufPtr pFilter(listToResbuf(filter));
     ads_name name = { 0L };
-
-    resbuf* pBuf = pFilter == nullptr ? nullptr : pFilter->rbnext;
-
-    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("A"), nullptr, nullptr, pBuf, name));
+    AcResBufPtr pFilter(listToResbuf(filter));
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("A"), nullptr, nullptr, pFilter.get(), name));
     AcDbObjectIdArray ids;
     boost::python::list pyList;
     if (acedGetCurrentSelectionSet(ids) == eOk)

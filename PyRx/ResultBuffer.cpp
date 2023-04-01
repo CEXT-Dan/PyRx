@@ -184,7 +184,11 @@ resbuf* listToResbuf(const boost::python::list& bpl)
                 }
             }
         }
-        return pRbRead;
+        //we created a RTLB, detach it and return next 
+        resbuf* rbToReturn = pRbRead->rbnext;
+        pRbRead->rbnext = nullptr;
+        acutRelRb(pRbRead);
+        return rbToReturn; 
     }
     catch (...)
     {
