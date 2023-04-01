@@ -21,7 +21,7 @@ resbuf* listToResbuf(const boost::python::list& bpl)
             if (boost::python::len(tpl) != 2)
                 throw PyAcadErrorStatus(Acad::eInvalidInput);
 
-            int code = extract<AcDb::DxfCode>(tpl[0]);
+            int code = extract<int>(tpl[0]);
             if (code < 5000)
             {
                 switch (acdbGroupCodeToType(code))
@@ -101,7 +101,7 @@ resbuf* listToResbuf(const boost::python::list& bpl)
                     case RTLE:
                     case RTNONE:
                     {
-                        pTail->rbnext = acutBuildList(code, extract<int>(tpl[1]), 0);
+                        pTail->rbnext = acutBuildList(code, 0, 0);
                         if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
                         break;
@@ -188,7 +188,7 @@ resbuf* listToResbuf(const boost::python::list& bpl)
     }
     catch (...)
     {
-
+        //TODO: throw something here
     }
     return nullptr;
 }
