@@ -137,7 +137,6 @@
 
 static inline const AcString PyCommandPrefix = _T("PyRxCmd_");
 
-
 static inline constexpr const char* PyAppNamespace = "PyRxApp";
 static inline constexpr const char* PyApNamespace = "PyAp";
 static inline constexpr const char* PyRxNamespace = "PyRx";
@@ -219,8 +218,6 @@ using AcDbObjectUPtr = std::unique_ptr < T, decltype([](T* ptr) noexcept
             delete ptr;
     }
 }) > ;
-
-
 
 #pragma pack (pop)
 

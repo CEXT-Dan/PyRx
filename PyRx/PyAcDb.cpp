@@ -32,8 +32,10 @@ PyDbObject openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
 
 BOOST_PYTHON_MODULE(PyDb)
 {
-    //def("openDbObject", openDbObject);
-    //def("openDbEntity", openDbEntity);
+ #ifdef PyRxDebug
+    def("openDbObject", openDbObject);
+    def("openDbEntity", openDbEntity);
+#endif
 
     //create in class order!
     makeAcDbObjectIdWrapper();
