@@ -4,9 +4,19 @@
 using namespace boost::python;
 
 
+std::string AcGeVector2ToString(const AcGeVector2d& p)
+{
+    return std::format("({},{})", p.x, p.y);
+}
+
 std::string AcGePoint2dToString(const AcGePoint2d& p)
 {
     return std::format("({},{})", p.x, p.y);
+}
+
+std::string AcGeVector3dToString(const AcGeVector3d& p)
+{
+    return std::format("({},{},{})", p.x, p.y, p.z);
 }
 
 std::string AcGePoint3dToString(const AcGePoint3d& p)
@@ -24,7 +34,7 @@ static auto makeAcGePoint2dWrapper()
         .def_readwrite("x", &AcGePoint2d::x)
         .def_readwrite("y", &AcGePoint2d::y)
         .def_readonly("kOrigin", &AcGePoint2d::kOrigin)
-        .def("toString", &AcGePoint3dToString)
+        .def("toString", &AcGePoint2dToString)
         ;
     return wrapper;
 }
@@ -36,6 +46,7 @@ static auto makeAcGeVector2dWrapper()
         .def(init<double, double>())
         .def_readonly("kXAxis", &AcGeVector2d::kXAxis)
         .def_readonly("kYAxis", &AcGeVector2d::kYAxis)
+        .def("toString", &AcGeVector2ToString)
         ;
     return wrapper;
 }
@@ -61,7 +72,6 @@ static auto makeAcGePoint3dWrapper()
         .def_readwrite("y", &AcGePoint3d::y)
         .def_readwrite("z", &AcGePoint3d::z)
         .def_readonly("kOrigin", &AcGePoint3d::kOrigin)
-
         .def("toString", &AcGePoint3dToString)
         ;
     return wrapper;
@@ -75,6 +85,7 @@ static auto makeAcGeVector3dWrapper()
         .def_readonly("kXAxis", &AcGeVector3d::kXAxis)
         .def_readonly("kYAxis", &AcGeVector3d::kYAxis)
         .def_readonly("kZAxis", &AcGeVector3d::kZAxis)
+        .def("toString", &AcGeVector3dToString)
         ;
     return wrapper;
 }
