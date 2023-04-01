@@ -3,16 +3,6 @@
 
 using namespace boost::python;
 
-std::string formatObject(const AcGePoint2d& pnt)
-{
-    return std::format("({},{})", pnt.x, pnt.y);
-}
-
-std::string formatObject(const AcGePoint3d& pnt)
-{
-    return std::format("({},{},{})", pnt.x, pnt.y, pnt.z);
-}
-
 static auto makeAcGePoint2dWrapper()
 {
     static auto wrapper = class_<AcGePoint2d>("Point2d")

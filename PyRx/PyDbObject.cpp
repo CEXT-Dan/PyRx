@@ -33,11 +33,9 @@ void makeAcDbObjectWrapper()
         .def("cancel", &PyDbObject::cancel)
         .def("handOverTo", &PyDbObject::handOverTo)
         .def("swapIdWith", &PyDbObject::swapIdWith)
-
         .def("setXData", &PyDbObject::setXData)
         .def("xData", &PyDbObject::xData)
         .def("xDataTransformBy", &PyDbObject::xDataTransformBy)
-
         .def("isEraseStatusToggled", &PyDbObject::isEraseStatusToggled)
         .def("isErased", &PyDbObject::isErased)
         .def("isReadEnabled", &PyDbObject::isReadEnabled)
