@@ -12,6 +12,15 @@ void makeAcDbEntityWrapper()
     static auto wrapper = class_<PyDbEntity, bases<PyDbObject>>("DbEntity", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("blockId", &PyDbEntity::blockId)
+     
+        .def("color", &PyDbEntity::color)
+        .def("setColor", &PyDbEntity::setColor)
+
+        .def("colorIndex", &PyDbEntity::colorIndex)
+        .def("setColorIndex", &PyDbEntity::setColorIndex)
+
+        .def("entityColor", &PyDbEntity::entityColor)
+
         .def<Acad::ErrorStatus(PyDbEntity::*)(const std::string&)>("setLayer", &PyDbEntity::setLayer)
         .def<Acad::ErrorStatus(PyDbEntity::*)(const std::string&, bool)>("setLayer", &PyDbEntity::setLayer)
         .def<Acad::ErrorStatus(PyDbEntity::*)(const std::string&, bool, bool)>("setLayer", &PyDbEntity::setLayer)
@@ -19,7 +28,6 @@ void makeAcDbEntityWrapper()
         .def<Acad::ErrorStatus(PyDbEntity::*)(const PyDbObjectId&, bool)>("setLayer", &PyDbEntity::setLayer)
         .def<Acad::ErrorStatus(PyDbEntity::*)(const PyDbObjectId&, bool, bool)>("setLayer", &PyDbEntity::setLayer)
 
-        .def("setColor", &PyDbEntity::setColor)
         .def("className", &PyDbEntity::className)
         ;
 }
@@ -49,6 +57,14 @@ PyDbObjectId PyDbEntity::blockId() const
     if (imp == nullptr)
         throw PyNullObject();
     return PyDbObjectId(imp->blockId());
+}
+
+AcCmColor PyDbEntity::color() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->color();
 }
 
 Acad::ErrorStatus PyDbEntity::setLayer(const std::string& newVal)
@@ -87,12 +103,52 @@ Acad::ErrorStatus PyDbEntity::setLayer(const PyDbObjectId& newVal, bool doSubent
     return impObj()->setLayer(newVal.m_id, doSubents, allowHiddenLayer);
 }
 
-Acad::ErrorStatus PyDbEntity::setColor(const PyCmColor& color, bool doSubents, PyDbDatabase& db)
+Acad::ErrorStatus PyDbEntity::setColor(const AcCmColor& color, bool doSubents, PyDbDatabase& db)
 {
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
-    return impObj()->setColor(color.m_clr, doSubents, db.impObj());
+    return impObj()->setColor(color, doSubents, db.impObj());
+}
+
+Adesk::UInt16 PyDbEntity::colorIndex() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return impObj()->colorIndex();
+}
+
+Acad::ErrorStatus PyDbEntity::setColorIndex(Adesk::UInt16 color, Adesk::Boolean doSubents /*= true*/)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return impObj()->setColorIndex(color,doSubents);
+}
+
+AcCmEntityColor PyDbEntity::entityColor() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return impObj()->entityColor();
+}
+
+AcCmTransparency PyDbEntity::transparency() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return impObj()->transparency();
+}
+
+Acad::ErrorStatus PyDbEntity::setTransparency(const AcCmTransparency& trans, Adesk::Boolean doSubents /*= true*/)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return impObj()->setTransparency(trans, doSubents);
 }
 
 std::string PyDbEntity::className()

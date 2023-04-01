@@ -1,193 +1,140 @@
 #include "stdafx.h"
-#include "PyCmColorBase.h"
 
 using namespace boost::python;
 
 
 //----------------------------------------------------------------------------------------------------
 //wrapper
-void makePyCmColorWrapper()
+void makeAcCmColorWrapper()
 {
-    static auto wrapper = class_<PyCmColor>("CmColor")
-        .def(init<>())
-        .def("setNone", &PyCmColor::setNone)
-        .def("setByBlock", &PyCmColor::setByBlock)
-        .def("setForeground", &PyCmColor::setForeground)
-        .def("setLayerOff", &PyCmColor::setLayerOff)
-        .def("setByLayer", &PyCmColor::setByLayer)
-        .def("isByColor", &PyCmColor::isByColor)
-        .def("isByLayer", &PyCmColor::isByLayer)
-        .def("isByBlock", &PyCmColor::isByBlock)
-        .def("isByACI", &PyCmColor::isByACI)
-        .def("isByPen", &PyCmColor::isByPen)
-        .def("isForeground", &PyCmColor::isForeground)
-        .def("isNone", &PyCmColor::isNone)
-
+    static auto wrapper = class_<AcCmColor>("CmColor")
 #if defined(GRXAPP) || defined(ZRXAPP)
 #else
-        .def<Acad::ErrorStatus(PyCmColor::*)(Adesk::RGBQuad)>("setRGB", &PyCmColor::setRGB)
+        .def("setNone", &AcCmColor::setNone)
+        .def("setByBlock", &AcCmColor::setByBlock)
+        .def("setForeground", &AcCmColor::setForeground)
+        .def("setLayerOff", &AcCmColor::setLayerOff)
+        .def("setByLayer", &AcCmColor::setByLayer)
 #endif
-        .def<Acad::ErrorStatus(PyCmColor::*)(Adesk::UInt8, Adesk::UInt8, Adesk::UInt8)>("setRGB", &PyCmColor::setRGB)
+        .def("isByColor", &AcCmColor::isByColor)
+        .def("isByLayer", &AcCmColor::isByLayer)
+        .def("isByBlock", &AcCmColor::isByBlock)
+        .def("isByACI", &AcCmColor::isByACI)
+        .def("isByPen", &AcCmColor::isByPen)
+        .def("isForeground", &AcCmColor::isForeground)
+        .def("isNone", &AcCmColor::isNone)
 
-        .def("red", &PyCmColor::red)
-        .def("green", &PyCmColor::green)
-        .def("blue", &PyCmColor::blue)
 #if defined(GRXAPP) || defined(ZRXAPP)
 #else
-        .def("setCOLORREF", &PyCmColor::setCOLORREF)
-        .def("getCOLORREF", &PyCmColor::getCOLORREF)
-        .def("getRGB", &PyCmColor::getRGB)
-        .def("setRGBM", &PyCmColor::setRGBM)
-        .def("getRGBM", &PyCmColor::getRGBM)
+        .def<Acad::ErrorStatus(AcCmColor::*)(Adesk::RGBQuad)>("setRGB", &AcCmColor::setRGB)
+#endif
+        .def<Acad::ErrorStatus(AcCmColor::*)(Adesk::UInt8, Adesk::UInt8, Adesk::UInt8)>("setRGB", &AcCmColor::setRGB)
+
+        .def("red", &AcCmColor::red)
+        .def("green", &AcCmColor::green)
+        .def("blue", &AcCmColor::blue)
+#if defined(GRXAPP) || defined(ZRXAPP)
+#else
+        .def("setCOLORREF", &AcCmColor::setCOLORREF)
+        .def("getCOLORREF", &AcCmColor::getCOLORREF)
+        .def("getRGB", &AcCmColor::getRGB)
+        .def("setRGBM", &AcCmColor::setRGBM)
+        .def("getRGBM", &AcCmColor::getRGBM)
 #endif
         ;
 }
 
-//----------------------------------------------------------------------------------------------------
-//imp
-PyCmColor::PyCmColor()
-    : m_clr()
+//--------------------------------------------------------------------------------------------------------
+//AcCmTransparency no conversion, so we don't need a py wrapper
+void makeAcCmTransparencyWrapper()
 {
+    static auto wrapper = class_<AcCmTransparency>("CmTransparency")
+        .def(init<Adesk::UInt8>())
+        .def(init<double>())
+        .def("setAlpha", &AcCmTransparency::setAlpha)
+        .def("setAlphaPercent", &AcCmTransparency::setAlphaPercent)
+        .def("alpha", &AcCmTransparency::alpha)
+        .def("alphaPercent", &AcCmTransparency::alphaPercent)
+        .def("isByAlpha", &AcCmTransparency::isByAlpha)
+        .def("isByBlock", &AcCmTransparency::isByBlock)
+        .def("isByLayer", &AcCmTransparency::isByLayer)
+#ifndef BRXAPP
+        .def("isInvalid", &AcCmTransparency::isInvalid)
+#endif // !BRXAPP
+        .def("isClear", &AcCmTransparency::isClear)
+        .def("isSolid", &AcCmTransparency::isSolid)
+        ;
 }
 
-PyCmColor::PyCmColor(const AcCmColor& val)
-    : m_clr(val)
+//--------------------------------------------------------------------------------------------------------
+//AcCmEntityColor no conversion, so we don't need a py wrapper
+void makeAcCmEntityColorWrapper()
 {
-
-}
-
-void PyCmColor::setNone()
-{
+    static auto wrapper = class_<AcCmEntityColor>("CmEntityColor")
+        .def(init<Adesk::UInt8, Adesk::UInt8, Adesk::UInt8>())
 #if defined(GRXAPP) || defined(ZRXAPP)
-
 #else
-    m_clr.setNone();
+        .def("setNone", &AcCmEntityColor::setNone)
+        .def("setByBlock", &AcCmEntityColor::setByBlock)
+        .def("setForeground", &AcCmEntityColor::setForeground)
+        .def("setByLayer", &AcCmEntityColor::setByLayer)
+        .def("setLayerOff", &AcCmEntityColor::setLayerOff)
+        .def("None", &AcCmEntityColor::None)
+        .def("ByBlock", &AcCmEntityColor::ByBlock)
+        .def("ByLayer", &AcCmEntityColor::ByLayer)
+        .def("Foreground", &AcCmEntityColor::Foreground)
+        .def("white", &AcCmEntityColor::white)
+        .def("black", &AcCmEntityColor::black)
 #endif
-}
-
-void PyCmColor::setByBlock()
-{
-#if defined(GRXAPP) || defined(ZRXAPP)
-
-#else
-    m_clr.setByBlock();
+#ifdef ARXAPP
+        .def("colorMethod", &AcCmEntityColor::colorMethod)
+        .def("setColorIndex", &AcCmEntityColor::setColorIndex)
+        .def("colorIndex", &AcCmEntityColor::colorIndex)
+        .def("setLayerIndex", &AcCmEntityColor::setLayerIndex)
+        .def("layerIndex", &AcCmEntityColor::layerIndex)
+        .def("setPenIndex", &AcCmEntityColor::setPenIndex)
+        .def("penIndex", &AcCmEntityColor::penIndex)
+        .def("red", &AcCmEntityColor::red)
+        .def("green", &AcCmEntityColor::green)
+        .def("blue", &AcCmEntityColor::blue)
 #endif
-}
-
-void PyCmColor::setForeground()
-{
-#if defined(GRXAPP) || defined(ZRXAPP)
-
-#else
-    m_clr.setForeground();
-#endif
-}
-
-void PyCmColor::setLayerOff()
-{
-#if defined(GRXAPP) || defined(ZRXAPP)
-
-#else
-    m_clr.setLayerOff();
-#endif
-}
-
-void PyCmColor::setByLayer()
-{
-#if defined(GRXAPP) || defined(ZRXAPP)
-
-#else
-    m_clr.setLayerOff();
-#endif
-}
-
-bool PyCmColor::isByColor() const
-{
-    return m_clr.isByColor();
-}
-
-bool PyCmColor::isByLayer() const
-{
-    return m_clr.isByLayer();
-}
-
-bool PyCmColor::isByBlock() const
-{
-    return m_clr.isByBlock();
-}
-
-bool PyCmColor::isByACI() const
-{
-    return m_clr.isByACI();
-}
-
-bool PyCmColor::isByPen() const
-{
-    return m_clr.isByPen();
-}
-
-bool PyCmColor::isForeground() const
-{
-    return m_clr.isForeground();
-}
-
-bool PyCmColor::isNone() const
-{
-    return m_clr.isNone();
-}
-Acad::ErrorStatus PyCmColor::setRGB(Adesk::UInt8 red, Adesk::UInt8 green, Adesk::UInt8 blue)
-{
-    return m_clr.setRGB(red, green, blue);
-}
 
 #if defined(GRXAPP) || defined(ZRXAPP)
 #else
-Acad::ErrorStatus PyCmColor::setRGB(Adesk::RGBQuad rgbquad)
-{
-    return m_clr.setRGB(rgbquad);
-}
-
-Adesk::RGBQuad PyCmColor::getRGB() const
-{
-    return m_clr.getRGB();
-}
-Acad::ErrorStatus PyCmColor::setRGBM(Adesk::UInt32 rgbmValue)
-{
-    return m_clr.setRGBM(rgbmValue);
-}
-
-Adesk::UInt32 PyCmColor::getRGBM() const
-{
-    return m_clr.getRGBM();
-}
-
+        .def("setCOLORREF", &AcCmEntityColor::setCOLORREF)
+        .def("getCOLORREF", &AcCmEntityColor::getCOLORREF)
 #endif
-Adesk::UInt8 PyCmColor::red() const
-{
-    return m_clr.red();
-}
-
-Adesk::UInt8 PyCmColor::green() const
-{
-    return m_clr.green();
-}
-
-Adesk::UInt8 PyCmColor::blue() const
-{
-    return m_clr.blue();
-}
 
 #if defined(GRXAPP) || defined(ZRXAPP)
 #else
-Acad::ErrorStatus PyCmColor::setCOLORREF(Adesk::ColorRef cref)
-{
-    return m_clr.setCOLORREF(cref);
-}
+        .def<Acad::ErrorStatus(AcCmEntityColor::*)(Adesk::RGBQuad)>("setRGB", &AcCmEntityColor::setRGB)
+#endif
+        .def<Acad::ErrorStatus(AcCmEntityColor::*)(Adesk::UInt8, Adesk::UInt8, Adesk::UInt8)>("setRGB", &AcCmEntityColor::setRGB)
 
-Adesk::ColorRef PyCmColor::getCOLORREF() const
-{
-    return m_clr.getCOLORREF();
-}
+#if defined(GRXAPP) || defined(ZRXAPP)
+#else
+        .def("getRGB", &AcCmEntityColor::getRGB)
+        .def("setRGBM", &AcCmEntityColor::setRGBM)
+        .def("getRGBM", &AcCmEntityColor::getRGBM)
 #endif
 
+#ifdef ARXAPP
+        .def("isByColor", &AcCmEntityColor::isByColor)
+        .def("isByLayer", &AcCmEntityColor::isByLayer)
+        .def("isByBlock", &AcCmEntityColor::isByBlock)
+        .def("isByACI", &AcCmEntityColor::isByACI)
+        .def("isByPen", &AcCmEntityColor::isByPen)
+        .def("isForeground", &AcCmEntityColor::isForeground)
+        .def("isLayerOff", &AcCmEntityColor::isLayerOff)
+        .def("isLayerFrozen", &AcCmEntityColor::isLayerFrozen)
+        .def("isNone", &AcCmEntityColor::isNone)
+        .def("isLayerFrozenOrOff", &AcCmEntityColor::isLayerFrozenOrOff)
+#endif
 
+#if defined(GRXAPP) || defined(ZRXAPP)
+#else
+        .def("canResolveRGB", &AcCmEntityColor::canResolveRGB)
+        .def("makeTrueColor", &AcCmEntityColor::makeTrueColor)
+#endif
+        ;
+}

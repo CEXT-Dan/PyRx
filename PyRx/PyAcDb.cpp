@@ -39,7 +39,9 @@ BOOST_PYTHON_MODULE(PyDb)
 #endif
 
     //create in class order!
-    makePyCmColorWrapper();
+    makeAcCmColorWrapper();
+    makeAcCmEntityColorWrapper();
+    makeAcCmTransparencyWrapper();
     makeAcDbObjectIdWrapper();
     makeAcDbObjectWrapper();
     makeAcDbEntityWrapper();
@@ -50,6 +52,41 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbDatabaseWrapper();
     makeAcDbHostApplicationServicesWrapper();
 
+
+
+    enum_<AcCmEntityColor::Color>("AcCmEntityColor_Color")//TODO:?
+        .value("Red", AcCmEntityColor::Color::kRed)
+        .value("Green", AcCmEntityColor::Color::kGreen)
+        .value("Blue", AcCmEntityColor::Color::kBlue)
+        ;
+    enum_<AcCmEntityColor::ColorMethod>("AcCmEntityColor_ColorMethod")//TODO:?
+        .value("ByLayer", AcCmEntityColor::ColorMethod::kByLayer)
+        .value("ByBlock", AcCmEntityColor::ColorMethod::kByBlock)
+        .value("ByColor", AcCmEntityColor::ColorMethod::kByColor)
+        .value("ByACI", AcCmEntityColor::ColorMethod::kByACI)
+        .value("ByPen", AcCmEntityColor::ColorMethod::kByPen)
+        .value("Foreground", AcCmEntityColor::ColorMethod::kForeground)
+        .value("LayerOff", AcCmEntityColor::ColorMethod::kLayerOff)
+        .value("LayerFrozen", AcCmEntityColor::ColorMethod::kLayerFrozen)
+        .value("None", AcCmEntityColor::ColorMethod::kNone)
+        ;
+    enum_<AcCmEntityColor::ACIcolorMethod>("AcCmEntityColor_ACIcolorMethod")//TODO:?
+        .value("kACIbyBlock", AcCmEntityColor::ACIcolorMethod::kACIbyBlock)
+        .value("kACIforeground", AcCmEntityColor::ACIcolorMethod::kACIforeground)
+        .value("kACIbyLayer", AcCmEntityColor::ACIcolorMethod::kACIbyLayer)
+        .value("kACIclear", AcCmEntityColor::ACIcolorMethod::kACIclear)
+        .value("kACIstandard", AcCmEntityColor::ACIcolorMethod::kACIstandard)
+        .value("kACImaximum", AcCmEntityColor::ACIcolorMethod::kACImaximum)
+        .value("kACInone", AcCmEntityColor::ACIcolorMethod::kACInone)
+        .value("kACIminimum", AcCmEntityColor::ACIcolorMethod::kACIminimum)
+        .value("kACIfrozenLayer", AcCmEntityColor::ACIcolorMethod::kACIfrozenLayer)
+        ;
+    enum_<AcCmTransparency::transparencyMethod>("TransparencyMethod")
+        .value("ByLayer", AcCmTransparency::transparencyMethod::kByLayer)
+        .value("ByBlock", AcCmTransparency::transparencyMethod::kByBlock)
+        .value("ByAlpha", AcCmTransparency::transparencyMethod::kByAlpha)
+        .value("ErrorValue", AcCmTransparency::transparencyMethod::kErrorValue)
+        ;
     enum_<AcDb::DxfCode>("DxfCode")
         .value("DxfInvalid", AcDb::kDxfInvalid)
         .value("DxfXDictionary", AcDb::kDxfXDictionary)
