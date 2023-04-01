@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "PyAcEditor.h"
 #include "PyDbObjectId.h"
-
+#include "ResultBuffer.h"
 using namespace boost::python;
 
 //-----------------------------------------------------------------------------------------
@@ -15,6 +15,7 @@ void makeAcEditorWrapper()
         .def("getString", &PyAcEditor::getString)
         .def("entsel", &PyAcEditor::entsel)
         .def("selectAll", &PyAcEditor::selectAll)
+        .def("selectAllf", &PyAcEditor::selectAllf)
         ;
 }
 
@@ -57,6 +58,25 @@ boost::python::tuple PyAcEditor::selectAll()
 {
     ads_name name = { 0L };
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("A"), nullptr, nullptr, nullptr, name));
+    AcDbObjectIdArray ids;
+    boost::python::list pyList;
+    if (acedGetCurrentSelectionSet(ids) == eOk)
+    {
+        for (const auto& id : ids)
+            pyList.append(PyDbObjectId{ id });
+    }
+    acedSSFree(name);
+    return boost::python::make_tuple<boost::python::list, Acad::PromptStatus>(pyList, stat);
+}
+
+boost::python::tuple PyAcEditor::selectAllf(const boost::python::list& filter)
+{
+    AcResBufPtr pFilter(listToResbuf(filter));
+    ads_name name = { 0L };
+
+    resbuf* pBuf = pFilter == nullptr ? nullptr : pFilter->rbnext;
+
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("A"), nullptr, nullptr, pBuf, name));
     AcDbObjectIdArray ids;
     boost::python::list pyList;
     if (acedGetCurrentSelectionSet(ids) == eOk)

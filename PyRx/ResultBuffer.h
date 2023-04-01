@@ -1,21 +1,8 @@
 #pragma once
 
 
-struct TypedValue
-{
-    int code;
-    boost::python::object obj;
-};
-
-resbuf* typedValueToResbuf(const TypedValue tv)
-{
-    return nullptr;
-}
-
+//allways starts with RTLB, strip it if you dont need it
+resbuf* listToResbuf(const boost::python::list& bpl);
 boost::python::list resbufToList(resbuf* pRb);
 
-
-class ResultBuffer
-{
-};
 
