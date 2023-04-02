@@ -27,7 +27,6 @@ def PyRxCmd_pydoit2():
 		members = inspect.getmembers(PyDb.DbEntity)
 		for x in members:
 			  PyRxApp.Printf("\n{} ".format(x[0]))       
-		
 	except Exception as err:
 		PyRxApp.Printf(err)
 		

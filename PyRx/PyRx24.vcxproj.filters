@@ -91,6 +91,9 @@
     <ClCompile Include="PyCmColorBase.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
+    <ClCompile Include="PyGeEntity3d.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -185,6 +188,9 @@
     </ClInclude>
     <ClInclude Include="PyCmColorBase.h">
       <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeEntity3d.h">
+      <Filter>Header Files\PyGe</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

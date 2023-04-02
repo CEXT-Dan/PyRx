@@ -145,6 +145,7 @@
     <ClCompile Include="PyDbObjectId.cpp" />
     <ClCompile Include="PyDbSymbolTable.cpp" />
     <ClCompile Include="PyDbSymbolTableRecord.cpp" />
+    <ClCompile Include="PyGeEntity3d.cpp" />
     <ClCompile Include="PyGiDrawable.cpp" />
     <ClCompile Include="PyRxAced.cpp" />
     <ClCompile Include="PyRxAcut.cpp" />
@@ -179,6 +180,7 @@
     <ClInclude Include="PyDbSymbolTable.h" />
     <ClInclude Include="PyDbSymbolTableRecord.h" />
     <ClInclude Include="PyException.h" />
+    <ClInclude Include="PyGeEntity3d.h" />
     <ClInclude Include="PyGiDrawable.h" />
     <ClInclude Include="PyRxAced.h" />
     <ClInclude Include="PyRxAcut.h" />
