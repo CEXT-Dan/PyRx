@@ -59,6 +59,11 @@ BOOST_PYTHON_MODULE(PyDb)
 
 
 
+    enum_<AcDb::Visibility>("Visibility")
+        .value("Visible", AcDb::Visibility::kVisible)
+        .value("Invisible", AcDb::Visibility::kInvisible)
+        ;
+
     enum_<AcCmEntityColor::Color>("AcCmEntityColor_Color")//TODO:?
         .value("Red", AcCmEntityColor::Color::kRed)
         .value("Green", AcCmEntityColor::Color::kGreen)

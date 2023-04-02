@@ -25,6 +25,10 @@ public:
     AcCmTransparency            transparency() const;
     virtual Acad::ErrorStatus   setTransparency(const AcCmTransparency& trans, Adesk::Boolean doSubents);
 
+
+    std::string  layer() const;
+    PyDbObjectId  layerId() const;
+
     virtual Acad::ErrorStatus setLayer(const std::string& newVal);
     virtual Acad::ErrorStatus setLayer(const std::string& newVal, bool doSubents);
     virtual Acad::ErrorStatus setLayer(const std::string& newVal, bool doSubents, bool allowHiddenLayer);
@@ -33,12 +37,38 @@ public:
     virtual Acad::ErrorStatus setLayer(const PyDbObjectId& newVal, bool doSubents);
     virtual Acad::ErrorStatus setLayer(const PyDbObjectId& newVal, bool doSubents, bool allowHiddenLayer);
 
-    //std::string& plotStyleName() const;
-    //virtual Acad::ErrorStatus  setPlotStyleName(std::string&, Adesk::Boolean doSubents);
-    //virtual Acad::ErrorStatus  setPlotStyleName(AcDb::PlotStyleNameType, AcDbObjectId newId = AcDbObjectId::kNull, Adesk::Boolean doSubents = true);
+    std::string plotStyleName() const;
+    PyDbObjectId  getPlotStyleNameId() const;
+    virtual Acad::ErrorStatus  setPlotStyleName(const std::string&, Adesk::Boolean doSubents);
+    virtual Acad::ErrorStatus  setPlotStyleName(AcDb::PlotStyleNameType, Adesk::Boolean doSubents);
+    virtual Acad::ErrorStatus  setPlotStyleName(AcDb::PlotStyleNameType, const PyDbObjectId& newId, Adesk::Boolean doSubents);
 
 
+    std::string  linetype() const;
+    PyDbObjectId linetypeId() const;
+    virtual Acad::ErrorStatus setLinetype(const std::string& newVal);
+    virtual Acad::ErrorStatus setLinetype(const std::string&, Adesk::Boolean doSubents);
+    virtual Acad::ErrorStatus setLinetype(const PyDbObjectId& newVal);
+    virtual Acad::ErrorStatus setLinetype(const PyDbObjectId& newVal, Adesk::Boolean doSubents);
 
+    std::string  material() const;
+    PyDbObjectId materialId() const;
+    virtual Acad::ErrorStatus setMaterial(const std::string& newVal);
+    virtual Acad::ErrorStatus setMaterial(const std::string&, Adesk::Boolean doSubents);
+    virtual Acad::ErrorStatus setMaterial(const PyDbObjectId& newVal);
+    virtual Acad::ErrorStatus setMaterial(const PyDbObjectId& newVal, Adesk::Boolean doSubents);
+
+    double linetypeScale() const;
+    Acad::ErrorStatus setLinetypeScale(double newval);
+    Acad::ErrorStatus setLinetypeScale(double newval, Adesk::Boolean doSubents);
+
+    AcDb::Visibility visibility() const;
+    virtual Acad::ErrorStatus setVisibility(AcDb::Visibility newVal);
+    virtual Acad::ErrorStatus setVisibility(AcDb::Visibility newVal, Adesk::Boolean doSubents);
+
+    AcDb::LineWeight lineWeight() const;
+    virtual Acad::ErrorStatus   setLineWeight(AcDb::LineWeight newVal);
+    virtual Acad::ErrorStatus   setLineWeight(AcDb::LineWeight newVal, Adesk::Boolean doSubents);
 
 
     static std::string className();
