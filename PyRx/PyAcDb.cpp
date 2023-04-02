@@ -33,6 +33,8 @@ PyDbObject openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
 
 BOOST_PYTHON_MODULE(PyDb)
 {
+    docstring_options local_docstring_options(false, true, false);
+
  #ifdef PyRxDebug
     def("openDbObject", openDbObject);
     def("openDbEntity", openDbEntity);

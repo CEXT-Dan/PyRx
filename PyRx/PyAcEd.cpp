@@ -7,6 +7,8 @@ using namespace boost::python;
 
 BOOST_PYTHON_MODULE(PyEd)
 {
+    docstring_options local_docstring_options(false, true, false);
+
     makeAcEditorWrapper();
 
     enum_<Acad::PromptStatus>("PromptStatus")

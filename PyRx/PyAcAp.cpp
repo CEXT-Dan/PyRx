@@ -10,6 +10,8 @@ using namespace boost::python;
 
 BOOST_PYTHON_MODULE(PyAp)
 {
+    docstring_options local_docstring_options(false, true, false);
+
     register_exception_translator<PyNullObject>(PyNullObject::translator);
     register_exception_translator<PyEditorError>(PyEditorError::translator);
     register_exception_translator<PyAcadErrorStatus>(PyAcadErrorStatus::translator);
