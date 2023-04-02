@@ -31,6 +31,40 @@ PyDbObject openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
     throw PyNullObject();
 }
 
+void makeAcDbExtents2dWrapper()
+{
+    static auto wrapper = class_<AcDbExtents2d>("DbExtents2d")
+        .def(init<>())
+        .def(init<const AcDbExtents2d&>())
+        .def(init<const AcGePoint2d&, const AcGePoint2d&>())
+        .def("minPoint", &AcDbExtents2d::minPoint)
+        .def("maxPoint", &AcDbExtents2d::maxPoint)
+        .def("set", &AcDbExtents2d::set)
+#ifndef BRXAPP
+        .def("addPoint", &AcDbExtents2d::addPoint)
+        .def("addExt", &AcDbExtents2d::addExt)
+        .def("expandBy", &AcDbExtents2d::expandBy)
+        .def("transformBy", &AcDbExtents2d::transformBy)
+#endif // !BRXAPP
+        ;
+}
+void makeAcDbExtentsWrapper()
+{
+    static auto wrapper = class_<AcDbExtents>("DbExtents")
+        .def(init<>())
+        .def(init<const AcDbExtents&>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&>())
+        .def("minPoint", &AcDbExtents::minPoint)
+        .def("maxPoint", &AcDbExtents::maxPoint)
+        .def("set", &AcDbExtents::set)
+        .def("addPoint", &AcDbExtents::addPoint)
+        .def("addExt", &AcDbExtents::addExt)
+        .def("expandBy", &AcDbExtents::expandBy)
+        .def("transformBy", &AcDbExtents::transformBy)
+        //.def("addBlockExt", &AcDbExtents::addBlockExt) //TODO
+        ;
+}
+
 BOOST_PYTHON_MODULE(PyDb)
 {
 #ifndef  PyRxDebug
@@ -44,6 +78,8 @@ BOOST_PYTHON_MODULE(PyDb)
 #endif
 
     //create in class order!
+    makeAcDbExtents2dWrapper();
+    makeAcDbExtentsWrapper();
     makeAcCmColorWrapper();
     makeAcCmEntityColorWrapper();
     makeAcCmTransparencyWrapper();
@@ -57,6 +93,11 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbDatabaseWrapper();
     makeAcDbHostApplicationServicesWrapper();
 
+    enum_<AcDb::Planarity>("Planarity")
+        .value("kNonPlanar", AcDb::Planarity::kNonPlanar)
+        .value("kPlanar", AcDb::Planarity::kPlanar)
+        .value("kLinear", AcDb::Planarity::kLinear)
+        ;
 
     enum_<AcDb::CollisionType>("CollisionType")
         .value("CollisionTypeNone", AcDb::CollisionType::kCollisionTypeNone)

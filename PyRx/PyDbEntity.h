@@ -81,7 +81,17 @@ public:
     Acad::ErrorStatus setPropertiesFrom(const PyDbEntity& pEntity);
     Acad::ErrorStatus setPropertiesFrom(const PyDbEntity& pEntity, Adesk::Boolean doSubents);
 
+    virtual Adesk::Boolean isPlanar() const;
 
+    virtual void getEcs(AcGeMatrix3d& retVal) const;
+
+    virtual void  list() const;
+    virtual Acad::ErrorStatus transformBy(const AcGeMatrix3d& xform);
+    void recordGraphicsModified();
+    Acad::ErrorStatus  draw();
+
+    void  setDatabaseDefaults();
+    void  setDatabaseDefaults(const PyDbDatabase& pDb);
 
     static std::string className();
 

@@ -73,8 +73,18 @@ void makeAcDbEntityWrapper()
         .def<Acad::ErrorStatus(PyDbEntity::*)(const PyDbEntity&)>("setPropertiesFrom", &PyDbEntity::setPropertiesFrom)
         .def<Acad::ErrorStatus(PyDbEntity::*)(const PyDbEntity&, Adesk::Boolean)>("setPropertiesFrom", &PyDbEntity::setPropertiesFrom)
 
+        .def("isPlanar", &PyDbEntity::isPlanar)
+        .def("getEcs", &PyDbEntity::getEcs)
+        .def("list", &PyDbEntity::list)
+        .def("transformBy", &PyDbEntity::transformBy)
+        .def("recordGraphicsModified", &PyDbEntity::recordGraphicsModified)
+        .def("recordGraphicsModified", &PyDbEntity::recordGraphicsModified)
 
-        .def("className", &PyDbEntity::className)
+        .def<void(PyDbEntity::*)(void)>("setDatabaseDefaults", &PyDbEntity::setDatabaseDefaults)
+        .def<void(PyDbEntity::*)(const PyDbDatabase&)>("setDatabaseDefaults", &PyDbEntity::setDatabaseDefaults)
+
+
+        .def("draw", &PyDbEntity::draw)
         ;
 }
 
@@ -483,6 +493,70 @@ Acad::ErrorStatus PyDbEntity::setPropertiesFrom(const PyDbEntity& pEntity, Adesk
     if (imp == nullptr)
         throw PyNullObject();
     return imp->setPropertiesFrom(pEntity.impObj(), doSubents);
+}
+
+Adesk::Boolean PyDbEntity::isPlanar() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isPlanar();
+}
+
+void PyDbEntity::getEcs(AcGeMatrix3d& retVal) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->getEcs(retVal);
+}
+
+void PyDbEntity::list() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->list();
+}
+
+Acad::ErrorStatus PyDbEntity::transformBy(const AcGeMatrix3d& xform)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->transformBy(xform);
+}
+
+void PyDbEntity::recordGraphicsModified()
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->recordGraphicsModified();
+}
+
+Acad::ErrorStatus PyDbEntity::draw()
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->draw();
+}
+
+void PyDbEntity::setDatabaseDefaults()
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->setDatabaseDefaults();
+}
+
+void PyDbEntity::setDatabaseDefaults(const PyDbDatabase& db)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->setDatabaseDefaults(db.impObj());
 }
 
 std::string PyDbEntity::className()
