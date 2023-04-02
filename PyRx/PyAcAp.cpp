@@ -10,7 +10,10 @@ using namespace boost::python;
 
 BOOST_PYTHON_MODULE(PyAp)
 {
+#ifndef  PyRxDebug
     docstring_options local_docstring_options(false, true, false);
+#endif // ! PyRxDebug
+
 
     register_exception_translator<PyNullObject>(PyNullObject::translator);
     register_exception_translator<PyEditorError>(PyEditorError::translator);

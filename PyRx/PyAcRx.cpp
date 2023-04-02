@@ -6,8 +6,10 @@ using namespace boost::python;
 
 BOOST_PYTHON_MODULE(PyRx)
 {
+#ifndef  PyRxDebug
     docstring_options local_docstring_options(false, true, false);
-
+#endif // ! PyRxDebug
+   
     makeAcRxObjectWrapper();
     makeAcRxClassWrapper();
 };

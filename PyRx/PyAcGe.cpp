@@ -102,7 +102,10 @@ static auto makeAcGeMatrix3dWrapper()
 
 BOOST_PYTHON_MODULE(PyGe)
 {
+#ifndef  PyRxDebug
     docstring_options local_docstring_options(false, true, false);
+#endif // ! PyRxDebug
+
     makeAcGePoint2dWrapper();
     makeAcGeVector2dWrapper();
     makeAcGeMatrix2dWrapper();
