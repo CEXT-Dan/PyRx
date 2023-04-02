@@ -62,6 +62,17 @@ void makeAcDbEntityWrapper()
         .def<Acad::ErrorStatus(PyDbEntity::*)(AcDb::LineWeight)>("setLineWeight", &PyDbEntity::setLineWeight)
         .def<Acad::ErrorStatus(PyDbEntity::*)(AcDb::LineWeight, Adesk::Boolean)>("setLineWeight", &PyDbEntity::setLineWeight)
 
+        .def("collisionType", &PyDbEntity::collisionType)
+
+        .def("castShadows", &PyDbEntity::castShadows)
+        .def("setCastShadows", &PyDbEntity::setCastShadows)
+
+        .def("receiveShadows", &PyDbEntity::receiveShadows)
+        .def("setReceiveShadows", &PyDbEntity::setReceiveShadows)
+
+        .def<Acad::ErrorStatus(PyDbEntity::*)(const PyDbEntity&)>("setPropertiesFrom", &PyDbEntity::setPropertiesFrom)
+        .def<Acad::ErrorStatus(PyDbEntity::*)(const PyDbEntity&, Adesk::Boolean)>("setPropertiesFrom", &PyDbEntity::setPropertiesFrom)
+
 
         .def("className", &PyDbEntity::className)
         ;
@@ -416,6 +427,62 @@ Acad::ErrorStatus PyDbEntity::setLineWeight(AcDb::LineWeight newVal, Adesk::Bool
     if (imp == nullptr)
         throw PyNullObject();
     return imp->setLineWeight(newVal, doSubents);
+}
+
+AcDb::CollisionType PyDbEntity::collisionType() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->collisionType();
+}
+
+bool PyDbEntity::castShadows() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->castShadows();
+}
+
+void PyDbEntity::setCastShadows(bool newVal)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->setCastShadows(newVal);
+}
+
+bool PyDbEntity::receiveShadows() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->receiveShadows();
+}
+
+void PyDbEntity::setReceiveShadows(bool newVal)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->setReceiveShadows(newVal);
+}
+
+Acad::ErrorStatus PyDbEntity::setPropertiesFrom(const PyDbEntity& pEntity)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setPropertiesFrom(pEntity.impObj());
+}
+
+Acad::ErrorStatus PyDbEntity::setPropertiesFrom(const PyDbEntity& pEntity, Adesk::Boolean doSubents)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setPropertiesFrom(pEntity.impObj(), doSubents);
 }
 
 std::string PyDbEntity::className()

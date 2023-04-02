@@ -58,12 +58,14 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbHostApplicationServicesWrapper();
 
 
-
+    enum_<AcDb::CollisionType>("CollisionType")
+        .value("CollisionTypeNone", AcDb::CollisionType::kCollisionTypeNone)
+        .value("CollisionTypeSolid", AcDb::CollisionType::kCollisionTypeSolid)
+        ;
     enum_<AcDb::Visibility>("Visibility")
         .value("Visible", AcDb::Visibility::kVisible)
         .value("Invisible", AcDb::Visibility::kInvisible)
         ;
-
     enum_<AcCmEntityColor::Color>("AcCmEntityColor_Color")//TODO:?
         .value("Red", AcCmEntityColor::Color::kRed)
         .value("Green", AcCmEntityColor::Color::kGreen)

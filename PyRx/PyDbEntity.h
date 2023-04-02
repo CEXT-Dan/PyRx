@@ -70,6 +70,18 @@ public:
     virtual Acad::ErrorStatus   setLineWeight(AcDb::LineWeight newVal);
     virtual Acad::ErrorStatus   setLineWeight(AcDb::LineWeight newVal, Adesk::Boolean doSubents);
 
+    virtual AcDb::CollisionType collisionType() const;
+
+    virtual bool castShadows() const;
+    virtual void setCastShadows(bool newVal);
+
+    virtual bool receiveShadows() const;
+    virtual void setReceiveShadows(bool newVal);
+
+    Acad::ErrorStatus setPropertiesFrom(const PyDbEntity& pEntity);
+    Acad::ErrorStatus setPropertiesFrom(const PyDbEntity& pEntity, Adesk::Boolean doSubents);
+
+
 
     static std::string className();
 
