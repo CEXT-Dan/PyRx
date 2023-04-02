@@ -86,6 +86,8 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbObjectIdWrapper();
     makeAcDbObjectWrapper();
     makeAcDbEntityWrapper();
+    makeAcDbBlockBeginWrapper();
+    makeAcDbBlockEndWrapper();
     makeAcDbDictionaryWrapper();
     makeAcDbSymbolTableWrapper();
     makeAcDbSymbolTableRecordWrapper();
@@ -93,12 +95,23 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbDatabaseWrapper();
     makeAcDbHostApplicationServicesWrapper();
 
-    enum_<AcDb::Planarity>("Planarity")
-        .value("kNonPlanar", AcDb::Planarity::kNonPlanar)
-        .value("kPlanar", AcDb::Planarity::kPlanar)
-        .value("kLinear", AcDb::Planarity::kLinear)
+    enum_<AcDbBlockTableRecord::BlockScaling>("BlockScaling")
+        .value("Any", AcDbBlockTableRecord::BlockScaling::kAny)
+        .value("Uniform", AcDbBlockTableRecord::BlockScaling::kUniform)
         ;
-
+    enum_<AcDb::XrefStatus>("XrefStatus")
+        .value("XrfNotAnXref", AcDb::XrefStatus::kXrfNotAnXref)
+        .value("XrfResolved", AcDb::XrefStatus::kXrfResolved)
+        .value("XrfUnloaded", AcDb::XrefStatus::kXrfUnloaded)
+        .value("XrfUnreferenced", AcDb::XrefStatus::kXrfUnreferenced)
+        .value("XrfFileNotFound", AcDb::XrefStatus::kXrfFileNotFound)
+        .value("XrfUnresolved", AcDb::XrefStatus::kXrfUnresolved)
+        ;
+    enum_<AcDb::Planarity>("Planarity")
+        .value("NonPlanar", AcDb::Planarity::kNonPlanar)
+        .value("Planar", AcDb::Planarity::kPlanar)
+        .value("Linear", AcDb::Planarity::kLinear)
+        ;
     enum_<AcDb::CollisionType>("CollisionType")
         .value("CollisionTypeNone", AcDb::CollisionType::kCollisionTypeNone)
         .value("CollisionTypeSolid", AcDb::CollisionType::kCollisionTypeSolid)
@@ -124,15 +137,15 @@ BOOST_PYTHON_MODULE(PyDb)
         .value("None", AcCmEntityColor::ColorMethod::kNone)
         ;
     enum_<AcCmEntityColor::ACIcolorMethod>("AcCmEntityColor_ACIcolorMethod")//TODO:?
-        .value("kACIbyBlock", AcCmEntityColor::ACIcolorMethod::kACIbyBlock)
-        .value("kACIforeground", AcCmEntityColor::ACIcolorMethod::kACIforeground)
-        .value("kACIbyLayer", AcCmEntityColor::ACIcolorMethod::kACIbyLayer)
-        .value("kACIclear", AcCmEntityColor::ACIcolorMethod::kACIclear)
-        .value("kACIstandard", AcCmEntityColor::ACIcolorMethod::kACIstandard)
-        .value("kACImaximum", AcCmEntityColor::ACIcolorMethod::kACImaximum)
-        .value("kACInone", AcCmEntityColor::ACIcolorMethod::kACInone)
-        .value("kACIminimum", AcCmEntityColor::ACIcolorMethod::kACIminimum)
-        .value("kACIfrozenLayer", AcCmEntityColor::ACIcolorMethod::kACIfrozenLayer)
+        .value("ACIbyBlock", AcCmEntityColor::ACIcolorMethod::kACIbyBlock)
+        .value("ACIforeground", AcCmEntityColor::ACIcolorMethod::kACIforeground)
+        .value("ACIbyLayer", AcCmEntityColor::ACIcolorMethod::kACIbyLayer)
+        .value("ACIclear", AcCmEntityColor::ACIcolorMethod::kACIclear)
+        .value("ACIstandard", AcCmEntityColor::ACIcolorMethod::kACIstandard)
+        .value("ACImaximum", AcCmEntityColor::ACIcolorMethod::kACImaximum)
+        .value("ACInone", AcCmEntityColor::ACIcolorMethod::kACInone)
+        .value("ACIminimum", AcCmEntityColor::ACIcolorMethod::kACIminimum)
+        .value("ACIfrozenLayer", AcCmEntityColor::ACIcolorMethod::kACIfrozenLayer)
         ;
     enum_<AcCmTransparency::transparencyMethod>("TransparencyMethod")
         .value("ByLayer", AcCmTransparency::transparencyMethod::kByLayer)

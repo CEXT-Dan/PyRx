@@ -4,7 +4,10 @@
 class PyCmColor;
 
 void makeAcDbEntityWrapper();
-
+void makeAcDbBlockBeginWrapper();
+void makeAcDbBlockEndWrapper();
+//-------------------------------------------------------------------------------------------------------------
+//PyDbEntity
 class PyDbEntity : public PyDbObject
 {
 public:
@@ -102,3 +105,29 @@ public:
     AcDbEntity* impObj() const;
 };
 
+
+//-------------------------------------------------------------------------------------------------------------
+//PyDbBlockBegin
+class PyDbBlockBegin : public PyDbEntity
+{
+public:
+    PyDbBlockBegin(AcDbBlockBegin* ptr, bool autoDelete);
+    PyDbBlockBegin(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbBlockBegin() = default;
+    static std::string className();
+public:
+    AcDbBlockBegin* impObj() const;
+};
+
+//-------------------------------------------------------------------------------------------------------------
+//PyDbBlockEnd
+class PyDbBlockEnd : public PyDbEntity
+{
+public:
+    PyDbBlockEnd(AcDbBlockEnd* ptr, bool autoDelete);
+    PyDbBlockEnd(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbBlockEnd() = default;
+    static std::string className();
+public:
+    AcDbBlockEnd* impObj() const;
+};

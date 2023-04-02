@@ -12,6 +12,9 @@ void makeAcDbSymbolTableRecordWrapper()
         .def("className", &PyDbSymbolTableRecord::className)
         .def("getName", &PyDbSymbolTableRecord::getName)
         .def("setName", &PyDbSymbolTableRecord::setName)
+        .def("isDependent", &PyDbSymbolTableRecord::isDependent)
+        .def("isResolved", &PyDbSymbolTableRecord::isResolved)
+        .def("isResolved", &PyDbSymbolTableRecord::isResolved)
         ;
 }
 
@@ -20,7 +23,6 @@ void makeAcDbSymbolTableRecordWrapper()
 PyDbSymbolTableRecord::PyDbSymbolTableRecord(AcDbSymbolTableRecord* ptr, bool autoDelete)
     : PyDbObject(ptr, autoDelete)
 {
-
 }
 
 PyDbSymbolTableRecord::PyDbSymbolTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
@@ -47,11 +49,38 @@ std::string PyDbSymbolTableRecord::getName()
 
 Acad::ErrorStatus PyDbSymbolTableRecord::setName(const std::string name)
 {
-    const AcString arxName = utf8_to_wstr(name).c_str();
     auto imp = impObj();
     if (imp != nullptr)
-        return  imp->setName(arxName);
-    return eNullPtr;
+        return  imp->setName(utf8_to_wstr(name).c_str());
+    throw PyNullObject();
+}
+
+bool PyDbSymbolTableRecord::isDependent() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return imp->isDependent();
+    throw PyNullObject();
+}
+
+bool PyDbSymbolTableRecord::isResolved() const
+{
+    auto imp = impObj();
+    if (imp != nullptr)
+        return imp->isResolved();
+    throw PyNullObject();
+}
+
+bool PyDbSymbolTableRecord::isRenamable() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp != nullptr)
+        return imp->isRenamable();
+    throw PyNullObject();
+#endif
 }
 
 std::string PyDbSymbolTableRecord::className()

@@ -586,3 +586,77 @@ AcDbEntity* PyDbEntity::impObj() const
 {
     return static_cast<AcDbEntity*>(m_pImp);
 }
+
+//-------------------------------------------------------------------------------------------------------------
+//PyDbBlockBegin
+void makeAcDbBlockBeginWrapper()
+{
+    static auto wrapper = class_<PyDbBlockBegin, bases<PyDbEntity>>("DbBlockBegin", boost::python::no_init)
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("className", &PyDbBlockBegin::className)
+        ;
+}
+
+PyDbBlockBegin::PyDbBlockBegin(AcDbBlockBegin* ptr, bool autoDelete)
+ : PyDbEntity(ptr, autoDelete)
+{
+}
+
+PyDbBlockBegin::PyDbBlockBegin(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbEntity(nullptr, false)
+{
+    AcDbBlockBegin* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbBlockBegin>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    m_pImp = pobj;
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+}
+
+std::string PyDbBlockBegin::className()
+{
+    return "AcDbBlockBegin";
+}
+
+AcDbBlockBegin* PyDbBlockBegin::impObj() const
+{
+    return static_cast<AcDbBlockBegin*>(m_pImp);
+}
+
+//-------------------------------------------------------------------------------------------------------------
+//PyDbBlockEnd
+void makeAcDbBlockEndWrapper()
+{
+    static auto wrapper = class_<PyDbBlockEnd, bases<PyDbEntity>>("DbBlockEnd", boost::python::no_init)
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("className", &PyDbBlockBegin::className)
+        ;
+}
+
+PyDbBlockEnd::PyDbBlockEnd(AcDbBlockEnd* ptr, bool autoDelete)
+    : PyDbEntity(ptr, autoDelete)
+{
+}
+
+PyDbBlockEnd::PyDbBlockEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbEntity(nullptr, false)
+{
+    AcDbBlockEnd* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbBlockEnd>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    m_pImp = pobj;
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+}
+
+std::string PyDbBlockEnd::className()
+{
+    return "AcDbBlockEnd";
+}
+
+AcDbBlockEnd* PyDbBlockEnd::impObj() const
+{
+    return static_cast<AcDbBlockEnd*>(m_pImp);
+}
