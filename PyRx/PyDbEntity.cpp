@@ -83,6 +83,8 @@ void makeAcDbEntityWrapper()
         .def<void(PyDbEntity::*)(void)>("setDatabaseDefaults", &PyDbEntity::setDatabaseDefaults)
         .def<void(PyDbEntity::*)(const PyDbDatabase&)>("setDatabaseDefaults", &PyDbEntity::setDatabaseDefaults)
 
+        .def("getCompoundObjectTransform", &PyDbEntity::getCompoundObjectTransform)//TODO: add test for out param
+        .def("getGeomExtents", &PyDbEntity::getGeomExtents)//TODO: add test for out param
 
         .def("draw", &PyDbEntity::draw)
         ;
@@ -557,6 +559,22 @@ void PyDbEntity::setDatabaseDefaults(const PyDbDatabase& db)
     if (imp == nullptr)
         throw PyNullObject();
     imp->setDatabaseDefaults(db.impObj());
+}
+
+Acad::ErrorStatus PyDbEntity::getCompoundObjectTransform(AcGeMatrix3d& xMat) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->getCompoundObjectTransform(xMat);
+}
+
+Acad::ErrorStatus PyDbEntity::getGeomExtents(AcDbExtents& extents) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->getGeomExtents(extents);
 }
 
 std::string PyDbEntity::className()

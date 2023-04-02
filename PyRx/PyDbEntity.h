@@ -93,6 +93,9 @@ public:
     void  setDatabaseDefaults();
     void  setDatabaseDefaults(const PyDbDatabase& pDb);
 
+    virtual Acad::ErrorStatus getCompoundObjectTransform(AcGeMatrix3d& xMat) const;
+    virtual Acad::ErrorStatus getGeomExtents(AcDbExtents& extents) const;
+
     static std::string className();
 
 public:
