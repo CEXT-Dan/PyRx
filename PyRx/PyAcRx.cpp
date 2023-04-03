@@ -40,6 +40,7 @@ static boost::shared_ptr<stderr_redirector> make_stderr_redirector()
     return boost::shared_ptr<stderr_redirector>(new stderr_redirector);
 }
 
+//
 BOOST_PYTHON_MODULE(PyRx)
 {
 #ifndef  PyRxDebug
@@ -61,6 +62,26 @@ BOOST_PYTHON_MODULE(PyRx)
 
     makeAcRxObjectWrapper();
     makeAcRxClassWrapper();
+
+
+    enum_<LispDataType>("LispDataType")
+        .value("Angle", LispDataType::kAngle)
+        .value("DottedPair", LispDataType::kDottedPair)
+        .value("Double", LispDataType::kDouble)
+        .value("Int16", LispDataType::kInt16)
+        .value("Int32", LispDataType::kInt32)
+        .value("ListBegin", LispDataType::kListBegin)
+        .value("ListEnd", LispDataType::kListEnd)
+        .value("Nil", LispDataType::kNil)
+        .value("None", LispDataType::kNone)
+        .value("ObjectId", LispDataType::kObjectId)
+        .value("Orientation", LispDataType::kOrientation)
+        .value("Point2d", LispDataType::kPoint2d)
+        .value("Point3d", LispDataType::kPoint3d)
+        .value("T_atom", LispDataType::kT_atom)
+        .value("Text", LispDataType::kText)
+        .value("Void", LispDataType::kVoid)
+        ;
 };
 
 void initPyRxModule()
