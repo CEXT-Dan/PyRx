@@ -9,6 +9,7 @@
 #include "PyDbDictionary.h"
 #include "PyDbSymbolTable.h"
 #include "PyCmColorBase.h"
+#include "PyDbLayerTableRecord.h"
 
 using namespace boost::python;
 
@@ -92,6 +93,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbSymbolTableWrapper();
     makeAcDbSymbolTableRecordWrapper();
     makeAcDbBlockTableRecordWrapper();
+    makeAcDbLayerTableRecordWrapper();
     makeAcDbDatabaseWrapper();
     makeAcDbHostApplicationServicesWrapper();
 

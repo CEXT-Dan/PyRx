@@ -94,6 +94,9 @@
     <ClCompile Include="PyGeEntity3d.cpp">
       <Filter>Source Files\PyGe</Filter>
     </ClCompile>
+    <ClCompile Include="PyDbLayerTableRecord.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -191,6 +194,9 @@
     </ClInclude>
     <ClInclude Include="PyGeEntity3d.h">
       <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbLayerTableRecord.h">
+      <Filter>Header Files\PyDb</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
