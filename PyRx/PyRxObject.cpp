@@ -12,6 +12,9 @@ void makeAcRxObjectWrapper()
         .def("className", &PyRxObject::className).staticmethod("className")
         .def("deleteNativeObject", &PyRxObject::deleteNativeObject)
         .def("isNull", &PyRxObject::isNull)
+
+        .def("__eq__", &PyRxObject::operator==)
+        .def("__ne__", &PyRxObject::operator!=)
         ;
 }
 
@@ -26,6 +29,16 @@ PyRxObject::PyRxObject(AcRxObject* ptr, bool autoDelete)
 PyRxObject::~PyRxObject()
 {
     deleteNativeObject();
+}
+
+bool PyRxObject::operator==(const PyRxObject& rhs) const
+{
+    return impObj() == rhs.impObj();
+}
+
+bool PyRxObject::operator!=(const PyRxObject& rhs) const
+{
+    return impObj() != rhs.impObj();
 }
 
 PyRxClass PyRxObject::isA() const

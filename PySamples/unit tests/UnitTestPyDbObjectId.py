@@ -8,7 +8,7 @@ import PyGi# = Graphics interface
 import PyDb# = database
 import PyAp# = application, document classes services 
 import PyEd# = editor 
-print("pydbobjectid")
+print("testname = pydbobjectid")
 
 
 class TestDbObjectId(unittest.TestCase):

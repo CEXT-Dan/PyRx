@@ -8,6 +8,10 @@ class PyDbObjectId
 public:
     PyDbObjectId();
     PyDbObjectId(const AcDbObjectId& id);
+
+    bool operator==(const PyDbObjectId& rhs) const;
+    bool operator!=(const PyDbObjectId& rhs) const;
+
     INT_PTR asOldId() const;
     PyDbObjectId& setFromOldId(INT_PTR oldId);
     bool isNull() const;

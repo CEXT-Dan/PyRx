@@ -10,6 +10,10 @@ class PyRxObject
 public:
     PyRxObject(AcRxObject* ptr, bool autoDelete);
     virtual ~PyRxObject();
+
+    bool operator==(const PyRxObject& rhs) const;
+    bool operator!=(const PyRxObject& rhs) const;
+
     virtual PyRxClass isA() const;
     void deleteNativeObject();
     bool isNull();

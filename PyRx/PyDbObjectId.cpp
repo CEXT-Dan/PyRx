@@ -21,6 +21,10 @@ void makeAcDbObjectIdWrapper()
         .def("originalDatabase", &PyDbObjectId::originalDatabase)
         .def("convertToRedirectedId", &PyDbObjectId::convertToRedirectedId)
         .def("objectClass", &PyDbObjectId::objectClass)
+
+        //operators
+        .def("__eq__", &PyDbObjectId::operator==)
+        .def("__ne__", &PyDbObjectId::operator!=)
         ;
 }
 
@@ -33,6 +37,16 @@ PyDbObjectId::PyDbObjectId(const AcDbObjectId& id)
 
 PyDbObjectId::PyDbObjectId()
 {
+}
+
+bool PyDbObjectId::operator==(const PyDbObjectId& rhs) const
+{
+    return m_id == rhs.m_id;
+}
+
+bool PyDbObjectId::operator!=(const PyDbObjectId& rhs) const
+{
+    return m_id != rhs.m_id;
 }
 
 INT_PTR PyDbObjectId::asOldId() const
