@@ -13,8 +13,9 @@ public:
     virtual ~PyDbDictionary() override = default;
     PyDbObjectId getAt(const std::string& entryName);
     bool has(const std::string& entryName);
-    boost::python::list keyValuePairs();
+    boost::python::dict asDict();
 
+    static std::string className();
 public:
     AcDbDictionary* impObj() const;
 };

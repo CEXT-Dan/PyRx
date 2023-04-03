@@ -82,7 +82,7 @@ void makeAcDbDatabaseWrapper()
         .def("get3dDwfPrec", &PyDbDatabase::get3dDwfPrec)
         .def("getCePlotStyleNameId", &PyDbDatabase::getCePlotStyleNameId)
         .def("getDimstyleParentId", &PyDbDatabase::getDimstyleParentId)
-        .def("getNearestLineWeight", &PyDbDatabase::getNearestLineWeight)//static
+        .def("getNearestLineWeight", &PyDbDatabase::getNearestLineWeight).staticmethod("getNearestLineWeight")//static
         .def("getViewportArray", &PyDbDatabase::getViewportArray)//TODO: TEST
         .def("getVisualStyleList", &PyDbDatabase::getVisualStyleList)
         .def("globalMaterial", &PyDbDatabase::globalMaterial)
@@ -112,7 +112,7 @@ void makeAcDbDatabaseWrapper()
         .def("isPartiallyOpened", &PyDbDatabase::isPartiallyOpened)
         .def("isPucsOrthographic", &PyDbDatabase::isPucsOrthographic)
         .def("isUcsOrthographic", &PyDbDatabase::isUcsOrthographic)
-        .def("isValidLineWeight", &PyDbDatabase::isValidLineWeight)//static
+        .def("isValidLineWeight", &PyDbDatabase::isValidLineWeight).staticmethod("isValidLineWeight")//static
         .def("joinStyle", &PyDbDatabase::joinStyle)
         .def("lastSavedAsMaintenanceVersion", &PyDbDatabase::lastSavedAsMaintenanceVersion)
         .def("lastSavedAsVersion", &PyDbDatabase::lastSavedAsVersion)
@@ -143,7 +143,7 @@ void makeAcDbDatabaseWrapper()
         .def("lunits", &PyDbDatabase::lunits)
         .def("luprec", &PyDbDatabase::luprec)
         .def("maintenanceReleaseVersion", &PyDbDatabase::maintenanceReleaseVersion)
-        .def("markObjectNonPersistent", &PyDbDatabase::markObjectNonPersistent)//static
+        .def("markObjectNonPersistent", &PyDbDatabase::markObjectNonPersistent).staticmethod("markObjectNonPersistent")//static
         .def("materialDictionaryId", &PyDbDatabase::materialDictionaryId)
         .def("maxactvp", &PyDbDatabase::maxactvp)
         .def("measurement", &PyDbDatabase::measurement)

@@ -12,7 +12,8 @@ void makeAcDbDictionaryWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("getAt", &PyDbDictionary::getAt)
         .def("has", &PyDbDictionary::has)
-        .def("keyValuePairs", &PyDbDictionary::keyValuePairs)
+        .def("keyValuePairs", &PyDbDictionary::asDict)
+        .def("className", &PyDbDictionary::className).staticmethod("className")
         ;
 }
 //---------------------------------------------------------------------------------------- -
@@ -20,7 +21,6 @@ void makeAcDbDictionaryWrapper()
 PyDbDictionary::PyDbDictionary(AcDbDictionary* ptr, bool autoDelete)
 : PyDbObject(ptr, autoDelete)
 {
-
 }
 
 PyDbDictionary::PyDbDictionary(const PyDbObjectId& id, AcDb::OpenMode mode)
@@ -53,15 +53,21 @@ bool PyDbDictionary::has(const std::string& entryName)
     return imp->has(utf8_to_wstr(entryName).c_str());
 }
 
-boost::python::list PyDbDictionary::keyValuePairs()
+boost::python::dict PyDbDictionary::asDict()
 {
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
-    boost::python::list _items;
+    boost::python::dict _items;
+
     for (std::unique_ptr<AcDbDictionaryIterator> iter(imp->newIterator()); !iter->done(); iter->next())
-        _items.append(boost::python::make_tuple(wstr_to_utf8(iter->name()), PyDbObjectId(iter->objectId())));
+        _items[wstr_to_utf8(iter->name()).c_str()] = PyDbObjectId(iter->objectId());
     return _items;
+}
+
+std::string PyDbDictionary::className()
+{
+    return "AcDbDictionary";
 }
 
 AcDbDictionary* PyDbDictionary::impObj() const

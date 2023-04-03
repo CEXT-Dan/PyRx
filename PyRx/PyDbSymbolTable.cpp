@@ -14,6 +14,7 @@ void makeAcDbSymbolTableWrapper()
         .def<bool(PyDbSymbolTable::*)(const std::string&)>("has", &PyDbSymbolTable::has)
         .def<bool(PyDbSymbolTable::*)(const PyDbObjectId&)>("has", &PyDbSymbolTable::has)
         .def("symbolIds", &PyDbSymbolTable::symbolIds)
+        .def("className", &PyDbSymbolTable::className).staticmethod("className")
         ;
 }
 
@@ -80,6 +81,11 @@ boost::python::list PyDbSymbolTable::symbolIds()
             _items.append(PyDbObjectId(id));
     }
     return _items;
+}
+
+std::string PyDbSymbolTable::className()
+{
+    return "AcDbSymbolTable";
 }
 
 AcDbSymbolTable* PyDbSymbolTable::impObj() const

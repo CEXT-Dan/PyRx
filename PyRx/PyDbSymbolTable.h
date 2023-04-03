@@ -17,6 +17,7 @@ public:
     bool has(const PyDbObjectId& entryid);
     boost::python::list symbolIds();
 
+    static std::string className();
 public:
     AcDbSymbolTable* impObj() const;
 };
