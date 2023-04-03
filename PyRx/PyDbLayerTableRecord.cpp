@@ -64,7 +64,7 @@ void makeAcDbLayerTableRecordWrapper()
 
         .def("setIsHidden", &PyDbLayerTableRecord::setIsHidden)
         .def("isHidden", &PyDbLayerTableRecord::isHidden)
-        .def("isHiddenS", &PyDbLayerTableRecord::isHiddenS)//TODO: can't override with a static
+        .def("isHidden", &PyDbLayerTableRecord::isHiddenS)//TODO: can't override with a static
 
         .def("removeColorOverride", &PyDbLayerTableRecord::removeColorOverride)
         .def("removeLinetypeOverride", &PyDbLayerTableRecord::removeLinetypeOverride)
@@ -78,7 +78,7 @@ void makeAcDbLayerTableRecordWrapper()
         .def("hasOverrides", &PyDbLayerTableRecord::hasOverrides)
         .def("hasAnyOverrides", &PyDbLayerTableRecord::hasAnyOverrides)
         .def("isReconciled", &PyDbLayerTableRecord::isReconciled)
-        .def("isReconciledS", &PyDbLayerTableRecord::isReconciledS)//TODO: can't override with a static
+        .def("isReconciled", &PyDbLayerTableRecord::isReconciledS)//TODO: can't override with a static test
         ;
 }
 
