@@ -10,7 +10,7 @@ void makeAcDbBlockTableRecordWrapper()
 {
     static auto wrapper = class_<PyDbBlockTableRecord, bases<PyDbSymbolTableRecord>>("DbBlockTableRecord", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("className", &PyDbBlockTableRecord::className)
+        .def("className", &PyDbBlockTableRecord::className).staticmethod("className")
         .def("appendAcDbEntity", &PyDbBlockTableRecord::appendAcDbEntity)
         .def("objectIds", &PyDbBlockTableRecord::objectIds)
         .def("comments", &PyDbBlockTableRecord::comments)

@@ -9,7 +9,7 @@ void makeAcRxObjectWrapper()
 {
     static auto wrapper = class_<PyRxObject, boost::noncopyable>("RxObject", boost::python::no_init)
         .def("isA", &PyRxObject::isA)
-        .def("className", &PyRxObject::className)
+        .def("className", &PyRxObject::className).staticmethod("className")
         .def("deleteNativeObject", &PyRxObject::deleteNativeObject)
         .def("isNull", &PyRxObject::isNull)
         ;
@@ -69,7 +69,7 @@ bool PyRxObject::isNull()
 void makeAcRxClassWrapper()
 {
     static auto wrapper = class_<PyRxClass, bases<PyRxObject>>("RxClass", boost::python::no_init)
-        .def("className", &PyRxClass::className)
+        .def("className", &PyRxClass::className).staticmethod("className")
         .def("name", &PyRxClass::name)
         ;
 }

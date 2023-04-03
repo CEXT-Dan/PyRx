@@ -593,7 +593,7 @@ void makeAcDbBlockBeginWrapper()
 {
     static auto wrapper = class_<PyDbBlockBegin, bases<PyDbEntity>>("DbBlockBegin", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("className", &PyDbBlockBegin::className)
+        .def("className", &PyDbBlockBegin::className).staticmethod("className")
         ;
 }
 
@@ -630,7 +630,7 @@ void makeAcDbBlockEndWrapper()
 {
     static auto wrapper = class_<PyDbBlockEnd, bases<PyDbEntity>>("DbBlockEnd", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("className", &PyDbBlockBegin::className)
+        .def("className", &PyDbBlockBegin::className).staticmethod("className")
         ;
 }
 

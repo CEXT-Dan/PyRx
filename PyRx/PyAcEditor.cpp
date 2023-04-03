@@ -9,7 +9,7 @@ using namespace boost::python;
 void makeAcEditorWrapper()
 {
     static auto wrapper = class_<PyAcEditor>("AcEditor")
-        .def("className", &PyAcEditor::className)
+        .def("className", &PyAcEditor::className).staticmethod("className")
         .def("getInteger", &PyAcEditor::getInteger)
         .def("getDouble", &PyAcEditor::getDouble)
         .def("getString", &PyAcEditor::getString)

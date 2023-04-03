@@ -459,12 +459,12 @@ void makeAcDbDatabaseWrapper()
         .def<Acad::ErrorStatus(PyDbDatabase::*)(PyDbDatabase&, const PyDbObjectId& blockId)>("wblock", &PyDbDatabase::wblock)
         .def<Acad::ErrorStatus(PyDbDatabase::*)(PyDbDatabase&)>("wblock", &PyDbDatabase::wblock)
 
-        .def("className", &PyDbDatabase::className)
         .def("getFilename", &PyDbDatabase::getFilename)
         .def("readDwgFile", &PyDbDatabase::readDwgFile)
         .def("blockTableId", &PyDbDatabase::blockTableId)
         .def("modelspaceId", &PyDbDatabase::modelspaceId)
         .def("currentSpaceId", &PyDbDatabase::currentSpaceId)
+        .def("className", &PyDbDatabase::className).staticmethod("className")
         ;
 }
 

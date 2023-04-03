@@ -9,7 +9,7 @@ void makeAcApApplictionWrapper()
 {
     static auto wrapper = class_<PyApApplication>("ApApplication")
         .def("docManager", &PyApApplication::docManager)
-        .def("className", &PyApApplication::className)
+        .def("className", &PyApApplication::className).staticmethod("className")
         ;
 }
 

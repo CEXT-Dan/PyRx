@@ -9,7 +9,7 @@ void makeAcDbSymbolTableRecordWrapper()
 {
     static auto wrapper = class_<PyDbSymbolTableRecord, bases<PyDbObject>>("DbSymbolTableRecord", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("className", &PyDbSymbolTableRecord::className)
+        .def("className", &PyDbSymbolTableRecord::className).staticmethod("className")
         .def("getName", &PyDbSymbolTableRecord::getName)
         .def("setName", &PyDbSymbolTableRecord::setName)
         .def("isDependent", &PyDbSymbolTableRecord::isDependent)

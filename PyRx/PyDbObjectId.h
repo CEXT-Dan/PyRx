@@ -18,11 +18,9 @@ public:
 
     PyDbDatabase database() const;
     PyDbDatabase originalDatabase() const;
-
     PyRxClass objectClass() const;
 
-
+public:
     AcDbObjectId m_id;
-
 };
 
