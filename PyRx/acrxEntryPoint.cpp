@@ -329,6 +329,7 @@ public:
 
     static void AcRxPyApp_pyfunc(void)
     {
+        PyErr_Clear();
         if (curDoc() != nullptr)
         {
             ACHAR* pGlobalCmdName = nullptr;

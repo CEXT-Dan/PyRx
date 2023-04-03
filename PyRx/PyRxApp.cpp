@@ -3,6 +3,7 @@
 #include "PyRxAcut.h"
 #include "PyRxAced.h"
 
+
 #include "PyAcGe.h"
 #include "PyAcDb.h"
 #include "PyAcRx.h"
@@ -28,8 +29,8 @@ PyRxApp& PyRxApp::instance()
 
 bool PyRxApp::init()
 {
+    initPyRxModule();//first
     initPyGeModule();
-    initPyRxModule();
     initPyGiModule();
     initPyDbModule();
     initPyApModule();

@@ -65,9 +65,7 @@ public:
     int postProcessAnnotativeBTR(bool bqueryOnly, bool bScale);
     Acad::ErrorStatus addAnnoScalestoBlkRefs(bool bScale);
 
-
     static std::string className();
-
 public:
     AcDbBlockTableRecord* impObj() const;
 };
