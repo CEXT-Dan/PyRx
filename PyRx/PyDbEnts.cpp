@@ -3,6 +3,319 @@
 #include "PyDbObjectId.h"
 using namespace boost::python;
 
+
+
+
+
+//-----------------------------------------------------------------------------------
+//PyDbText
+void makePyDbTextWrapper()
+{
+
+}
+
+PyDbText::PyDbText()
+    : PyDbText::PyDbText(new AcDbText(), true)
+{
+}
+
+
+PyDbText::PyDbText(const AcGePoint3d& position, const std::string& text)
+    : PyDbText::PyDbText(new AcDbText(position, utf8_to_wstr(text).c_str()), true)
+{
+
+}
+
+PyDbText::PyDbText(const AcGePoint3d& position, const std::string& text, PyDbObjectId& style, double height, double rotation)
+    : PyDbText::PyDbText(new AcDbText(position, utf8_to_wstr(text).c_str(), style.m_id, height, rotation), true)
+{
+
+}
+
+PyDbText::PyDbText(AcDbText* ptr, bool autoDelete)
+    : PyDbEntity(ptr, autoDelete)
+{
+
+}
+
+PyDbText::PyDbText(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbEntity(nullptr, false)
+{
+    AcDbText* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbText>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    m_pImp = pobj;
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+}
+
+AcGePoint3d PyDbText::position() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->position();
+}
+
+Acad::ErrorStatus PyDbText::setPosition(const AcGePoint3d& val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setPosition(val);
+}
+
+AcGePoint3d PyDbText::alignmentPoint() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->alignmentPoint();
+}
+
+Acad::ErrorStatus PyDbText::setAlignmentPoint(const AcGePoint3d& val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setAlignmentPoint(val);
+}
+
+Adesk::Boolean PyDbText::isDefaultAlignment() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isDefaultAlignment();
+}
+
+AcGeVector3d PyDbText::normal() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->normal();
+}
+
+Acad::ErrorStatus PyDbText::setNormal(const AcGeVector3d& val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setNormal(val);
+}
+
+double PyDbText::thickness() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->thickness();
+}
+
+Acad::ErrorStatus PyDbText::setThickness(double val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setThickness(val);
+}
+
+double PyDbText::oblique() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->oblique();
+}
+
+Acad::ErrorStatus PyDbText::setOblique(double val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setOblique(val);
+}
+
+double PyDbText::rotation() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->rotation();
+}
+
+Acad::ErrorStatus PyDbText::setRotation(double val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setRotation(val);
+}
+
+double PyDbText::height() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->height();
+}
+
+Acad::ErrorStatus PyDbText::setHeight(double val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setHeight(val);
+}
+
+double PyDbText::widthFactor() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->widthFactor();
+}
+
+Acad::ErrorStatus PyDbText::setWidthFactor(double val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setWidthFactor(val);
+}
+
+std::string PyDbText::textString() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return wstr_to_utf8(imp->textStringConst());
+}
+
+Acad::ErrorStatus PyDbText::setTextString(std::string& val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setTextString(utf8_to_wstr(val).c_str());
+}
+
+PyDbObjectId PyDbText::textStyle() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return PyDbObjectId(imp->textStyle());
+}
+
+Acad::ErrorStatus PyDbText::setTextStyle(const PyDbObjectId& val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setTextStyle(val.m_id);
+}
+
+Adesk::Boolean PyDbText::isMirroredInX() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isMirroredInX();
+}
+
+Acad::ErrorStatus PyDbText::mirrorInX(Adesk::Boolean val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->mirrorInX(val);
+}
+
+Adesk::Boolean PyDbText::isMirroredInY() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isMirroredInY();
+}
+
+Acad::ErrorStatus PyDbText::mirrorInY(Adesk::Boolean val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->mirrorInY(val);
+}
+
+AcDb::TextHorzMode PyDbText::horizontalMode() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->horizontalMode();
+}
+
+Acad::ErrorStatus PyDbText::setHorizontalMode(AcDb::TextHorzMode val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setHorizontalMode(val);
+}
+
+AcDb::TextVertMode PyDbText::verticalMode() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->verticalMode();
+}
+
+Acad::ErrorStatus PyDbText::setVerticalMode(AcDb::TextVertMode val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setVerticalMode(val);
+}
+
+int PyDbText::correctSpelling()
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->correctSpelling();
+#endif
+}
+
+Acad::ErrorStatus PyDbText::adjustAlignment(const PyDbDatabase& pDb)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->adjustAlignment(pDb.impObj());
+#endif
+}
+
+std::string PyDbText::className()
+{
+    return "AcDbText";
+}
+
+AcDbText* PyDbText::impObj() const
+{
+    return static_cast<AcDbText*>(m_pImp);
+}
+
 //-----------------------------------------------------------------------------------
 //PyDbPoint
 void makePyDbPointWrapper()
@@ -25,7 +338,7 @@ void makePyDbPointWrapper()
 }
 
 PyDbPoint::PyDbPoint()
- : PyDbPoint::PyDbPoint(new AcDbPoint(), true)
+    : PyDbPoint::PyDbPoint(new AcDbPoint(), true)
 {
 }
 

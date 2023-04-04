@@ -105,7 +105,20 @@ BOOST_PYTHON_MODULE(PyDb)
     //global
     def("RegApp", &RegApp);
    
-
+    enum_<AcDb::TextVertMode>("TextHorzMode")
+        .value("TextBase", AcDb::TextVertMode::kTextBase)
+        .value("TextBottom", AcDb::TextVertMode::kTextBottom)
+        .value("TextVertMid", AcDb::TextVertMode::kTextVertMid)
+        .value("TextTop", AcDb::TextVertMode::kTextTop)
+        ;
+    enum_<AcDb::TextHorzMode>("TextHorzMode")
+        .value("TextLeft", AcDb::TextHorzMode::kTextLeft)
+        .value("TextCenter", AcDb::TextHorzMode::kTextCenter)
+        .value("TextRight", AcDb::TextHorzMode::kTextRight)
+        .value("TextAlign", AcDb::TextHorzMode::kTextAlign)
+        .value("TextMid", AcDb::TextHorzMode::kTextMid)
+        .value("TextFit", AcDb::TextHorzMode::kTextFit)
+        ;
     enum_<AcDbBlockTableRecord::BlockScaling>("BlockScaling")
         .value("Any", AcDbBlockTableRecord::BlockScaling::kAny)
         .value("Uniform", AcDbBlockTableRecord::BlockScaling::kUniform)
