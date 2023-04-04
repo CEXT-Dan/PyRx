@@ -8,7 +8,7 @@ using namespace boost::python;
 //PyDbText
 void makePyDbTextWrapper()
 {
-    static auto wrapper = class_<PyDbText, bases<PyDbEntity>>("DbPoint")
+    static auto wrapper = class_<PyDbText, bases<PyDbEntity>>("DbText")
         .def(init<>())
         .def(init<AcGePoint3d&, const std::string&>())
         .def(init<AcGePoint3d&, const std::string&, PyDbObjectId&, double, double>())
@@ -405,6 +405,238 @@ std::string PyDbText::className()
 AcDbText* PyDbText::impObj() const
 {
     return static_cast<AcDbText*>(m_pImp);
+}
+
+//-----------------------------------------------------------------------------------
+//PyDbAttributeDefinition
+void makePyDbAttributeDefinitionWrapper()
+{
+    static auto wrapper = class_<PyDbAttributeDefinition, bases<PyDbText>>("DbAttributeDefinition")
+        .def(init<>())
+        .def(init<const AcGePoint3d&, const std::string&, const std::string&,const std::string&, const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("prompt", &PyDbAttributeDefinition::prompt)
+        .def("setPrompt", &PyDbAttributeDefinition::setPrompt)
+        .def("tag", &PyDbAttributeDefinition::tag)
+        .def("setTag", &PyDbAttributeDefinition::setTag)
+        .def("isInvisible", &PyDbAttributeDefinition::isInvisible)
+        .def("setInvisible", &PyDbAttributeDefinition::setInvisible)
+        .def("isConstant", &PyDbAttributeDefinition::isConstant)
+        .def("setConstant", &PyDbAttributeDefinition::setConstant)
+        .def("isVerifiable", &PyDbAttributeDefinition::isVerifiable)
+        .def("setVerifiable", &PyDbAttributeDefinition::setVerifiable)
+        .def("isPreset", &PyDbAttributeDefinition::isPreset)
+        .def("setPreset", &PyDbAttributeDefinition::setPreset)
+        .def("fieldLength", &PyDbAttributeDefinition::fieldLength)
+        .def("setFieldLength", &PyDbAttributeDefinition::setFieldLength)
+        .def("adjustAlignment", &PyDbAttributeDefinition::adjustAlignment)
+        .def("lockPositionInBlock", &PyDbAttributeDefinition::lockPositionInBlock)
+        .def("setLockPositionInBlock", &PyDbAttributeDefinition::setLockPositionInBlock)
+        .def("isMTextAttributeDefinition", &PyDbAttributeDefinition::isMTextAttributeDefinition)
+        .def("convertIntoMTextAttributeDefinition", &PyDbAttributeDefinition::convertIntoMTextAttributeDefinition)
+        .def("updateMTextAttributeDefinition", &PyDbAttributeDefinition::updateMTextAttributeDefinition)
+        .def("className", &PyDbAttributeDefinition::className).staticmethod("className")
+        ;
+}
+
+PyDbAttributeDefinition::PyDbAttributeDefinition()
+    : PyDbText(new AcDbAttributeDefinition(), true)
+{
+
+}
+
+PyDbAttributeDefinition::PyDbAttributeDefinition(const AcGePoint3d& position, const std::string& text, const std::string& tag, const std::string& prompt, const PyDbObjectId& style)
+    : PyDbText(new AcDbAttributeDefinition(position, utf8_to_wstr(text).c_str(), utf8_to_wstr(tag).c_str(), utf8_to_wstr(prompt).c_str(), style.m_id), true)
+{
+
+}
+
+PyDbAttributeDefinition::PyDbAttributeDefinition(AcDbAttributeDefinition* ptr, bool autoDelete)
+    : PyDbText(ptr, autoDelete)
+{
+
+}
+
+PyDbAttributeDefinition::PyDbAttributeDefinition(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbText(nullptr, false)
+{
+    AcDbAttributeDefinition* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbAttributeDefinition>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    m_pImp = pobj;
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+}
+
+std::string PyDbAttributeDefinition::prompt() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return wstr_to_utf8(imp->promptConst());
+}
+
+Acad::ErrorStatus PyDbAttributeDefinition::setPrompt(const std::string& val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setPrompt(utf8_to_wstr(val).c_str());
+}
+
+std::string PyDbAttributeDefinition::tag() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return wstr_to_utf8(imp->tagConst());
+}
+
+Acad::ErrorStatus PyDbAttributeDefinition::setTag(const std::string& val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setTag(utf8_to_wstr(val).c_str());
+}
+
+Adesk::Boolean PyDbAttributeDefinition::isInvisible() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isInvisible();
+}
+
+Acad::ErrorStatus PyDbAttributeDefinition::setInvisible(Adesk::Boolean val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setInvisible(val);
+}
+
+Adesk::Boolean PyDbAttributeDefinition::isConstant() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isConstant();
+}
+
+Acad::ErrorStatus PyDbAttributeDefinition::setConstant(Adesk::Boolean val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setConstant(val);
+}
+
+Adesk::Boolean PyDbAttributeDefinition::isVerifiable() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isVerifiable();
+}
+
+Acad::ErrorStatus PyDbAttributeDefinition::setVerifiable(Adesk::Boolean val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setVerifiable(val);
+}
+
+Adesk::Boolean PyDbAttributeDefinition::isPreset() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isPreset();
+}
+
+Acad::ErrorStatus PyDbAttributeDefinition::setPreset(Adesk::Boolean val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setPreset(val);
+}
+
+Adesk::UInt16 PyDbAttributeDefinition::fieldLength() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->fieldLength();
+}
+
+Acad::ErrorStatus PyDbAttributeDefinition::setFieldLength(Adesk::UInt16 val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setFieldLength(val);
+}
+
+Acad::ErrorStatus PyDbAttributeDefinition::adjustAlignment(const PyDbDatabase& pDb)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->adjustAlignment(pDb.impObj());
+}
+
+bool PyDbAttributeDefinition::lockPositionInBlock() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->lockPositionInBlock();
+}
+
+Acad::ErrorStatus PyDbAttributeDefinition::setLockPositionInBlock(bool bValue)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setLockPositionInBlock(bValue);
+}
+
+bool PyDbAttributeDefinition::isMTextAttributeDefinition() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isMTextAttributeDefinition();
+}
+
+Acad::ErrorStatus PyDbAttributeDefinition::convertIntoMTextAttributeDefinition(Adesk::Boolean val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->convertIntoMTextAttributeDefinition(val);
+}
+
+Acad::ErrorStatus PyDbAttributeDefinition::updateMTextAttributeDefinition()
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->updateMTextAttributeDefinition();
+}
+
+std::string PyDbAttributeDefinition::className()
+{
+    return "AcDbAttributeDefinition";
+}
+
+AcDbAttributeDefinition* PyDbAttributeDefinition::impObj() const
+{
+    return static_cast<AcDbAttributeDefinition*>(m_pImp);
 }
 
 //-----------------------------------------------------------------------------------

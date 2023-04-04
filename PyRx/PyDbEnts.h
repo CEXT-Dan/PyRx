@@ -79,6 +79,58 @@ public:
     AcDbText* impObj() const;
 };
 
+//-----------------------------------------------------------------------------------
+//PyDbAttributeDefinition
+void makePyDbAttributeDefinitionWrapper();
+class PyDbAttributeDefinition : public PyDbText
+{
+public:
+    PyDbAttributeDefinition();
+    PyDbAttributeDefinition(const AcGePoint3d& position,const std::string& text, const std::string& tag, const std::string& prompt, const PyDbObjectId&  style);
+    PyDbAttributeDefinition(AcDbAttributeDefinition* ptr, bool autoDelete);
+    PyDbAttributeDefinition(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbAttributeDefinition() override = default;
+
+    std::string         prompt() const;
+    Acad::ErrorStatus   setPrompt(const std::string& val);
+
+    std::string          tag() const;
+    Acad::ErrorStatus    setTag(const std::string& val);
+
+    Adesk::Boolean      isInvisible() const;
+    Acad::ErrorStatus   setInvisible(Adesk::Boolean val);
+
+    Adesk::Boolean      isConstant() const;
+    Acad::ErrorStatus   setConstant(Adesk::Boolean val);
+
+    Adesk::Boolean      isVerifiable() const;
+    Acad::ErrorStatus   setVerifiable(Adesk::Boolean val);
+
+    Adesk::Boolean      isPreset() const;
+    Acad::ErrorStatus   setPreset(Adesk::Boolean val);
+
+    Adesk::UInt16       fieldLength() const;
+    Acad::ErrorStatus   setFieldLength(Adesk::UInt16 val);
+
+    Acad::ErrorStatus   adjustAlignment(const PyDbDatabase& pDb) override;
+
+    bool lockPositionInBlock() const;
+    Acad::ErrorStatus setLockPositionInBlock(bool bValue);
+
+    // multiline attribute definition support
+    bool isMTextAttributeDefinition() const;
+    //AcDbMText* getMTextAttributeDefinition() const;
+    //const AcDbMText* getMTextAttributeDefinitionConst() const;
+    //Acad::ErrorStatus setMTextAttributeDefinition(AcDbMText*);
+    //ACDBCORE2D_PORT Acad::ErrorStatus setMTextAttributeDefinitionConst(const AcDbMText*);
+    Acad::ErrorStatus convertIntoMTextAttributeDefinition(Adesk::Boolean val);
+    Acad::ErrorStatus updateMTextAttributeDefinition();
+
+    static std::string className();
+public:
+    AcDbAttributeDefinition* impObj() const;
+};
+
 
 //-----------------------------------------------------------------------------------
 //PyDbPoint

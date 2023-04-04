@@ -94,7 +94,9 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbEntityWrapper();
 
     makePyDbTextWrapper();//combine ents?
+    makePyDbAttributeDefinitionWrapper();
     makePyDbPointWrapper();
+
 
     makeAcDbBlockBeginWrapper();
     makeAcDbBlockEndWrapper();
