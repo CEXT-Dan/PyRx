@@ -78,7 +78,7 @@ BOOST_PYTHON_MODULE(PyDb)
 #endif // ! PyRxDebug
 
 
- #ifdef PyRxDebug
+#ifdef PyRxDebug
     def("openDbObject", openDbObject);
     def("openDbEntity", openDbEntity);
 #endif
@@ -108,8 +108,25 @@ BOOST_PYTHON_MODULE(PyDb)
 
     //global
     def("RegApp", &RegApp);
-   
-    enum_<AcDb::TextVertMode>("TextHorzMode")
+
+    enum_<AcDbText::AcTextAlignment>("AcTextAlignment")
+        .value("TextAlignmentLeft", AcDbText::AcTextAlignment::kTextAlignmentLeft)
+        .value("TextAlignmentCenter", AcDbText::AcTextAlignment::kTextAlignmentCenter)
+        .value("TextAlignmentRight", AcDbText::AcTextAlignment::kTextAlignmentRight)
+        .value("TextAlignmentAligned", AcDbText::AcTextAlignment::kTextAlignmentAligned)
+        .value("TextAlignmentMiddle", AcDbText::AcTextAlignment::kTextAlignmentMiddle)
+        .value("TextAlignmentFit", AcDbText::AcTextAlignment::kTextAlignmentFit)
+        .value("TextAlignmentTopLeft", AcDbText::AcTextAlignment::kTextAlignmentTopLeft)
+        .value("TextAlignmentTopCenter", AcDbText::AcTextAlignment::kTextAlignmentTopCenter)
+        .value("TextAlignmentTopRight", AcDbText::AcTextAlignment::kTextAlignmentTopRight)
+        .value("TextAlignmentMiddleLeft", AcDbText::AcTextAlignment::kTextAlignmentMiddleLeft)
+        .value("TextAlignmentMiddleCenter", AcDbText::AcTextAlignment::kTextAlignmentMiddleCenter)
+        .value("TextAlignmentMiddleRight", AcDbText::AcTextAlignment::kTextAlignmentMiddleRight)
+        .value("TextAlignmentBottomLeft", AcDbText::AcTextAlignment::kTextAlignmentBottomLeft)
+        .value("TextAlignmentBottomCenter", AcDbText::AcTextAlignment::kTextAlignmentBottomCenter)
+        .value("TextAlignmentBottomRight", AcDbText::AcTextAlignment::kTextAlignmentBottomRight)
+        ;
+        enum_<AcDb::TextVertMode>("TextHorzMode")
         .value("TextBase", AcDb::TextVertMode::kTextBase)
         .value("TextBottom", AcDb::TextVertMode::kTextBottom)
         .value("TextVertMid", AcDb::TextVertMode::kTextVertMid)

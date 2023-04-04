@@ -4,9 +4,6 @@
 using namespace boost::python;
 
 
-
-
-
 //-----------------------------------------------------------------------------------
 //PyDbText
 void makePyDbTextWrapper()
@@ -382,6 +379,22 @@ boost::python::list PyDbText::getBoundingPoints() const
 #else
     throw PyNotimplementedByHost();
 #endif // ARXAPP
+}
+
+AcDbText::AcTextAlignment PyDbText::justification() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->justification();
+}
+
+Acad::ErrorStatus PyDbText::setJustification(AcDbText::AcTextAlignment val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setJustification(val);
 }
 
 std::string PyDbText::className()

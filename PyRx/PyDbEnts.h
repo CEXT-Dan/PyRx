@@ -70,6 +70,9 @@ public:
     bool hitTest(const AcGePoint3d& ptHit) const;
     boost::python::list getBoundingPoints() const;
 
+    AcDbText::AcTextAlignment  justification() const;
+    Acad::ErrorStatus          setJustification(AcDbText::AcTextAlignment val);
+
     static std::string className();
 
 public:
