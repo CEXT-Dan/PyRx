@@ -85,6 +85,7 @@ public:
     Acad::ErrorStatus setPropertiesFrom(const PyDbEntity& pEntity, Adesk::Boolean doSubents);
 
     virtual Adesk::Boolean isPlanar() const;
+    //virtual Acad::ErrorStatus getPlane(AcGePlane&, AcDb::Planarity&) const; //TODO
 
     virtual void getEcs(AcGeMatrix3d& retVal) const;
 

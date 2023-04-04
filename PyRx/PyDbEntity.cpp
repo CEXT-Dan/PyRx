@@ -87,6 +87,8 @@ void makeAcDbEntityWrapper()
         .def("getGeomExtents", &PyDbEntity::getGeomExtents)//TODO: add test for out param
 
         .def("draw", &PyDbEntity::draw)
+
+        .def("className", &PyDbEntity::className).staticmethod("className")
         ;
 }
 
