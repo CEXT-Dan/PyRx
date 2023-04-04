@@ -48,6 +48,9 @@ void makePyDbTextWrapper()
         .def("setVerticalMode", &PyDbText::setVerticalMode)
         .def("correctSpelling", &PyDbText::correctSpelling)
         .def("adjustAlignment", &PyDbText::adjustAlignment)
+        .def("convertFieldToText", &PyDbText::convertFieldToText)
+        .def("hitTest", &PyDbText::hitTest)
+        .def("getBoundingPoints", &PyDbText::getBoundingPoints)
         .def("className", &PyDbText::className).staticmethod("className")
         ;
 }
@@ -338,6 +341,47 @@ Acad::ErrorStatus PyDbText::adjustAlignment(const PyDbDatabase& pDb)
         throw PyNullObject();
     return imp->adjustAlignment(pDb.impObj());
 #endif
+}
+
+Acad::ErrorStatus PyDbText::convertFieldToText()
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->convertFieldToText();
+#endif
+}
+
+bool PyDbText::hitTest(const AcGePoint3d& ptHit) const
+{
+#ifdef ARXAPP
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->hitTest(ptHit);
+#else
+    throw PyNotimplementedByHost();
+#endif // ARXAPP
+}
+
+boost::python::list PyDbText::getBoundingPoints() const
+{
+#ifdef ARXAPP
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    boost::python::list l;
+    AcGePoint3dArray arr;
+    imp->getBoundingPoints(arr);
+    for (const auto& item : arr)
+        l.append(item);
+    return l;
+#else
+    throw PyNotimplementedByHost();
+#endif // ARXAPP
 }
 
 std::string PyDbText::className()

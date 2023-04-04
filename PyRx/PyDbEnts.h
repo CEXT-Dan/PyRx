@@ -66,7 +66,9 @@ public:
 
     virtual Acad::ErrorStatus   adjustAlignment(const PyDbDatabase& pDb);
 
-
+    Acad::ErrorStatus   convertFieldToText();
+    bool hitTest(const AcGePoint3d& ptHit) const;
+    boost::python::list getBoundingPoints() const;
 
     static std::string className();
 
