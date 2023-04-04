@@ -21,17 +21,38 @@ class TestDbObject(unittest.TestCase):
                 self.assertEqual(bdo.isWriteEnabled(), False) 
                 self.assertEqual(bdo.isAProxy(), False) 
                 self.assertEqual(bdo.isNewObject(), False)
-
+                #
                 self.assertEqual(bdo.upgradeOpen(), PyDb.ErrorStatus.Ok)
                 self.assertEqual(bdo.isWriteEnabled(), True) 
-
+                #
                 self.assertEqual(bdo.downgradeOpen(), PyDb.ErrorStatus.Ok)
                 self.assertEqual(bdo.isWriteEnabled(), False)
-
+                #
                 self.assertEqual(bdo.database(), PyDb.DbHostApplicationServices().workingDatabase())  
-
+                #
                 self.assertEqual(bdo.close(), PyDb.ErrorStatus.Ok)  
                 self.assertEqual(bdo.isReadEnabled(), False)
+
+        def test_xdata(self):
+                #regapp
+                success = PyDb.RegApp("PYTHONTEST")
+                self.assertEqual(success, 5100)
+
+                #set
+                id = PyDb.DbHostApplicationServices().workingDatabase().blockTableId()
+                dbo = PyDb.DbObject(id, PyDb.OpenMode.ForWrite)
+                self.assertEqual(dbo.isWriteEnabled(), True) 
+                xd = [(PyDb.DxfCode.DxfRegAppName, "PYTHONTEST"),(PyDb.DxfCode.DxfXdXCoord, PyGe.Point3d(1,10,100))]
+                dbo.setXData(xd)
+
+                #get
+                xdres = dbo.xData("PYTHONTEST")
+                p = xdres[1][1]
+                self.assertEqual(p.x, 1)
+                self.assertEqual(p.y, 10)
+                self.assertEqual(p.z, 100)
+               
+
 
 def PyRxCmd_pydbobject():
         try:

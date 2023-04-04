@@ -66,6 +66,11 @@ void makeAcDbExtentsWrapper()
         ;
 }
 
+int RegApp(const std::string& app)
+{
+    return acdbRegApp(utf8_to_wstr(app).c_str());
+}
+
 BOOST_PYTHON_MODULE(PyDb)
 {
 #ifndef  PyRxDebug
@@ -96,6 +101,10 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbLayerTableRecordWrapper();
     makeAcDbDatabaseWrapper();
     makeAcDbHostApplicationServicesWrapper();
+
+    //global
+    def("RegApp", &RegApp);
+   
 
     enum_<AcDbBlockTableRecord::BlockScaling>("BlockScaling")
         .value("Any", AcDbBlockTableRecord::BlockScaling::kAny)
