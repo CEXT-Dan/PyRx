@@ -462,7 +462,7 @@ void makeAcDbDatabaseWrapper()
         .def("getFilename", &PyDbDatabase::getFilename)
         .def("readDwgFile", &PyDbDatabase::readDwgFile)
         .def("blockTableId", &PyDbDatabase::blockTableId)
-        .def("modelspaceId", &PyDbDatabase::modelspaceId)
+        .def("modelSpaceId", &PyDbDatabase::modelSpaceId)
         .def("currentSpaceId", &PyDbDatabase::currentSpaceId)
         .def("className", &PyDbDatabase::className).staticmethod("className")
         ;
@@ -2687,7 +2687,7 @@ PyDbObjectId PyDbDatabase::blockTableId() const
     throw PyNullObject();
 }
 
-PyDbObjectId PyDbDatabase::modelspaceId() const
+PyDbObjectId PyDbDatabase::modelSpaceId() const
 {
     return PyDbObjectId(acdbSymUtil()->blockModelSpaceId(impObj()));
 }

@@ -83,14 +83,21 @@ PyDbObject::PyDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
 
 PyDbObject::~PyDbObject()
 {
-    if (m_pImp != nullptr)
+    try
     {
-        AcDbObject* pDbo = static_cast<AcDbObject*>(m_pImp);
-        if (!pDbo->objectId().isNull())
+        if (m_pImp != nullptr)
         {
-            pDbo->close();
-            m_bAutoDelete = false;
+            AcDbObject* pDbo = static_cast<AcDbObject*>(m_pImp);//dynamic cast?
+            if (!pDbo->objectId().isNull())
+            {
+                pDbo->close();
+                m_bAutoDelete = false;
+            }
         }
+    }
+    catch (...)
+    {
+        ASSERT(0);
     }
 }
 

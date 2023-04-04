@@ -11,7 +11,45 @@ using namespace boost::python;
 //PyDbText
 void makePyDbTextWrapper()
 {
-
+    static auto wrapper = class_<PyDbText, bases<PyDbEntity>>("DbPoint")
+        .def(init<>())
+        .def(init<AcGePoint3d&, const std::string&>())
+        .def(init<AcGePoint3d&, const std::string&, PyDbObjectId&, double, double>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("position", &PyDbText::position)
+        .def("setPosition", &PyDbText::setPosition)
+        .def("alignmentPoint", &PyDbText::alignmentPoint)
+        .def("setAlignmentPoint", &PyDbText::setAlignmentPoint)
+        .def("isDefaultAlignment", &PyDbText::isDefaultAlignment)
+        .def("normal", &PyDbText::normal)
+        .def("setNormal", &PyDbText::setNormal)
+        .def("isPlanar", &PyDbText::isPlanar)
+        .def("thickness", &PyDbText::thickness)
+        .def("setThickness", &PyDbText::setThickness)
+        .def("oblique", &PyDbText::oblique)
+        .def("setOblique", &PyDbText::setOblique)
+        .def("rotation", &PyDbText::rotation)
+        .def("setRotation", &PyDbText::setRotation)
+        .def("height", &PyDbText::height)
+        .def("setHeight", &PyDbText::setHeight)
+        .def("widthFactor", &PyDbText::widthFactor)
+        .def("setWidthFactor", &PyDbText::setWidthFactor)
+        .def("textString", &PyDbText::textString)
+        .def("setTextString", &PyDbText::setTextString)
+        .def("textStyle", &PyDbText::textStyle)
+        .def("setTextStyle", &PyDbText::setTextStyle)
+        .def("isMirroredInX", &PyDbText::isMirroredInX)
+        .def("mirrorInX", &PyDbText::mirrorInX)
+        .def("isMirroredInY", &PyDbText::isMirroredInY)
+        .def("mirrorInY", &PyDbText::mirrorInY)
+        .def("horizontalMode", &PyDbText::horizontalMode)
+        .def("setHorizontalMode", &PyDbText::setHorizontalMode)
+        .def("verticalMode", &PyDbText::verticalMode)
+        .def("setVerticalMode", &PyDbText::setVerticalMode)
+        .def("correctSpelling", &PyDbText::correctSpelling)
+        .def("adjustAlignment", &PyDbText::adjustAlignment)
+        .def("className", &PyDbText::className).staticmethod("className")
+        ;
 }
 
 PyDbText::PyDbText()
@@ -19,23 +57,19 @@ PyDbText::PyDbText()
 {
 }
 
-
 PyDbText::PyDbText(const AcGePoint3d& position, const std::string& text)
     : PyDbText::PyDbText(new AcDbText(position, utf8_to_wstr(text).c_str()), true)
 {
-
 }
 
 PyDbText::PyDbText(const AcGePoint3d& position, const std::string& text, PyDbObjectId& style, double height, double rotation)
     : PyDbText::PyDbText(new AcDbText(position, utf8_to_wstr(text).c_str(), style.m_id, height, rotation), true)
 {
-
 }
 
 PyDbText::PyDbText(AcDbText* ptr, bool autoDelete)
     : PyDbEntity(ptr, autoDelete)
 {
-
 }
 
 PyDbText::PyDbText(const PyDbObjectId& id, AcDb::OpenMode mode)

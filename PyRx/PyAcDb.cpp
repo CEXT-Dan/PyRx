@@ -10,7 +10,7 @@
 #include "PyDbSymbolTable.h"
 #include "PyCmColorBase.h"
 #include "PyDbLayerTableRecord.h"
-
+#include "PyDbEnts.h"
 using namespace boost::python;
 
 PyDbObject openDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
@@ -92,6 +92,10 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbObjectIdWrapper();
     makeAcDbObjectWrapper();
     makeAcDbEntityWrapper();
+
+    makePyDbTextWrapper();//combine ents?
+    makePyDbPointWrapper();
+
     makeAcDbBlockBeginWrapper();
     makeAcDbBlockEndWrapper();
     makeAcDbDictionaryWrapper();

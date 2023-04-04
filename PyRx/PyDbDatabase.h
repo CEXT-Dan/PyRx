@@ -318,7 +318,7 @@ public:
 
     PyDbObjectId currentSpaceId() const;
     PyDbObjectId blockTableId() const;
-    PyDbObjectId modelspaceId() const;
+    PyDbObjectId modelSpaceId() const;
 
 
     Acad::ErrorStatus setGeoMarkerVisibility(bool value);

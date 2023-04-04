@@ -8,6 +8,7 @@ class PyDbObjectId;
 void makePyDbTextWrapper();
 class PyDbText : public PyDbEntity
 {
+public:
     PyDbText();
     PyDbText(const AcGePoint3d& position, const std::string& text);
     PyDbText(const AcGePoint3d& position, const std::string& text, PyDbObjectId& style, double height, double rotation);

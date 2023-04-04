@@ -25,33 +25,29 @@ def OnPyUnloadDwg():
          
 def PyRxCmd_pycmd():
 	try: 
-		putCOLOR()
+		createDbp()
 	except Exception as err:
 		PyRxApp.Printf(err)
 		
-def putXDATA():
+def createDbp():
 	try:
-		doc = PyAp.ApApplication().docManager().curDocument()
-		ed = doc.editor()
-		val = ed.entsel("\nSelect")
-		if(val[2] == PyEd.PromptStatus.Normal):
-			dbo = PyDb.DbObject(val[0], PyDb.OpenMode.ForWrite)
-			xd = [(PyDb.DxfCode.DxfRegAppName, "DAN"),(PyDb.DxfCode.DxfXdXCoord, PyGe.Point3d(1,10,100))]
-			dbo.setXData(xd)
-			xdres = dbo.xData("DAN");
-			PyRxApp.Printf(xdres)
-			p = xdres[1][1].toString()
-			PyRxApp.Printf(p)
+		db = PyAp.ApApplication().docManager().curDocument().database()
+		model = PyDb.DbBlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.ForWrite)
+		dbp = PyDb.DbPoint(PyGe.Point3d(100,100,0))
+		model.appendAcDbEntity(dbp)
 	except Exception as err:
 		PyRxApp.Printf(err)
 		
-def putCOLOR():
-	doc = PyAp.ApApplication().docManager().curDocument()
-	ed = doc.editor()
-	val = ed.entsel("\nSelect")
-	if(val[2] == PyEd.PromptStatus.Normal):
-		e = PyDb.DbEntity(val[0], PyDb.OpenMode.ForWrite)
-		c = PyDb.CmColor()
-		c.setRGB(127,127,127)
-		e.setColor(c,True,doc.database())
-				
+def createDbps():
+	try:
+		objs = []
+		for x in range(10000):
+			objs.append(PyDb.DbPoint(PyGe.Point3d(x,x,0)))
+
+		db = PyAp.ApApplication().docManager().curDocument().database()
+		model = PyDb.DbBlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.ForWrite)
+
+		for o in objs:
+			model.appendAcDbEntity(o)
+	except Exception as err:
+		PyRxApp.Printf(err)

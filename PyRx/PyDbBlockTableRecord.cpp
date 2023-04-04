@@ -72,7 +72,10 @@ PyDbObjectId PyDbBlockTableRecord::appendAcDbEntity(const PyDbEntity& ent)
     PyDbObjectId id;
     auto imp = impObj();
     if (imp != nullptr)
-        imp->appendAcDbEntity(id.m_id, ent.impObj());
+    {
+        if (auto es = imp->appendAcDbEntity(id.m_id, ent.impObj()); es != eOk)
+            throw PyAcadErrorStatus(es);
+    }
     return id;
 }
 
