@@ -1472,6 +1472,229 @@ AcDb2dVertex* PyDb2dVertex::impObj() const
     return static_cast<AcDb2dVertex*>(m_pImp);
 }
 
+
+//-------------------------------------------------------------------------------------------------------------
+//AcDb3dPolylineVertex
+void makePyAcDb3dPolylineVertexWrapper()
+{
+    static auto wrapper = class_<PyDb3dPolylineVertex, bases<PyDbVertex>>("Db3dPolylineVertex")
+        .def(init<>())
+        .def(init<const AcGePoint3d&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("vertexType", &PyDb3dPolylineVertex::vertexType)
+        .def("position", &PyDb3dPolylineVertex::position)
+        .def("setPosition", &PyDb3dPolylineVertex::setPosition)
+        .def("className", &PyDb3dPolylineVertex::className).staticmethod("className")
+        ;
+}
+
+PyDb3dPolylineVertex::PyDb3dPolylineVertex()
+    : PyDb3dPolylineVertex(new AcDb3dPolylineVertex(), true)
+{
+}
+
+
+PyDb3dPolylineVertex::PyDb3dPolylineVertex(const AcGePoint3d& pos)
+    : PyDb3dPolylineVertex(new AcDb3dPolylineVertex(pos), true)
+{
+}
+
+PyDb3dPolylineVertex::PyDb3dPolylineVertex(AcDb3dPolylineVertex* ptr, bool autoDelete)
+    : PyDbVertex(ptr,autoDelete)
+{
+}
+
+PyDb3dPolylineVertex::PyDb3dPolylineVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbVertex(nullptr, false)
+{
+    AcDb3dPolylineVertex* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDb3dPolylineVertex>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    m_pImp = pobj;
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+}
+
+AcDb::Vertex3dType PyDb3dPolylineVertex::vertexType() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->vertexType();
+}
+
+AcGePoint3d PyDb3dPolylineVertex::position() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->position();
+}
+
+Acad::ErrorStatus PyDb3dPolylineVertex::setPosition(const AcGePoint3d& val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setPosition(val);
+}
+
+std::string PyDb3dPolylineVertex::className()
+{
+    return "AcDb3dPolylineVertex";
+}
+
+AcDb3dPolylineVertex* PyDb3dPolylineVertex::impObj() const
+{
+    return static_cast<AcDb3dPolylineVertex*>(m_pImp);
+}
+
+//-------------------------------------------------------------------------------------------------------------
+//AcDbPolygonMeshVertex
+void makePyAcDbPolygonMeshVertexWrapper()
+{
+    static auto wrapper = class_<PyDbPolygonMeshVertex, bases<PyDbVertex>>("DbPolygonMeshVertex")
+        .def(init<>())
+        .def(init<const AcGePoint3d&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("vertexType", &PyDbPolygonMeshVertex::vertexType)
+        .def("position", &PyDbPolygonMeshVertex::position)
+        .def("setPosition", &PyDbPolygonMeshVertex::setPosition)
+        .def("className", &PyDbPolygonMeshVertex::className).staticmethod("className")
+        ;
+}
+
+PyDbPolygonMeshVertex::PyDbPolygonMeshVertex()
+    : PyDbPolygonMeshVertex(new AcDbPolygonMeshVertex(), true)
+{
+}
+
+PyDbPolygonMeshVertex::PyDbPolygonMeshVertex(const AcGePoint3d& pos)
+    : PyDbPolygonMeshVertex(new AcDbPolygonMeshVertex(pos), true)
+{
+}
+
+PyDbPolygonMeshVertex::PyDbPolygonMeshVertex(AcDbPolygonMeshVertex* ptr, bool autoDelete)
+    : PyDbVertex(ptr, autoDelete)
+{
+}
+
+PyDbPolygonMeshVertex::PyDbPolygonMeshVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbVertex(nullptr, false)
+{
+    AcDbPolygonMeshVertex* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbPolygonMeshVertex>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    m_pImp = pobj;
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+}
+
+AcDb::Vertex3dType PyDbPolygonMeshVertex::vertexType() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->vertexType();
+}
+
+AcGePoint3d PyDbPolygonMeshVertex::position() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->position();
+}
+
+Acad::ErrorStatus PyDbPolygonMeshVertex::setPosition(const AcGePoint3d& val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setPosition(val);
+}
+
+std::string PyDbPolygonMeshVertex::className()
+{
+    return "AcDbPolygonMeshVertex";
+}
+
+AcDbPolygonMeshVertex* PyDbPolygonMeshVertex::impObj() const
+{
+    return static_cast<AcDbPolygonMeshVertex*>(m_pImp);
+}
+
+//-------------------------------------------------------------------------------------------------------------
+//AcDbPolygonMeshVertex
+void makePyDbPolyFaceMeshVertexWrapper()
+{
+    static auto wrapper = class_<PyDbPolyFaceMeshVertex, bases<PyDbVertex>>("DbPolyFaceMeshVertex")
+        .def(init<>())
+        .def(init<const AcGePoint3d&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("position", &PyDbPolyFaceMeshVertex::position)
+        .def("setPosition", &PyDbPolyFaceMeshVertex::setPosition)
+        .def("className", &PyDbPolyFaceMeshVertex::className).staticmethod("className")
+        ;
+}
+
+PyDbPolyFaceMeshVertex::PyDbPolyFaceMeshVertex()
+    : PyDbPolyFaceMeshVertex(new AcDbPolyFaceMeshVertex(), true)
+{
+}
+
+PyDbPolyFaceMeshVertex::PyDbPolyFaceMeshVertex(const AcGePoint3d& pos)
+    : PyDbPolyFaceMeshVertex(new AcDbPolyFaceMeshVertex(pos), true)
+{
+}
+
+PyDbPolyFaceMeshVertex::PyDbPolyFaceMeshVertex(AcDbPolyFaceMeshVertex* ptr, bool autoDelete)
+    : PyDbVertex(ptr, autoDelete)
+{
+}
+
+PyDbPolyFaceMeshVertex::PyDbPolyFaceMeshVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbVertex(nullptr, false)
+{
+    AcDbPolyFaceMeshVertex* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbPolyFaceMeshVertex>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    m_pImp = pobj;
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+}
+
+AcGePoint3d PyDbPolyFaceMeshVertex::position() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->position();
+}
+
+Acad::ErrorStatus PyDbPolyFaceMeshVertex::setPosition(const AcGePoint3d& val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setPosition(val);
+}
+
+std::string PyDbPolyFaceMeshVertex::className()
+{
+    return "AcDbPolyFaceMeshVertex";
+}
+
+AcDbPolyFaceMeshVertex* PyDbPolyFaceMeshVertex::impObj() const
+{
+    return static_cast<AcDbPolyFaceMeshVertex*>(m_pImp);
+}
+
+
+
 //-----------------------------------------------------------------------------------
 //PyDbPoint
 void makePyDbPointWrapper()

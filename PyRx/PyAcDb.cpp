@@ -97,15 +97,19 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbBlockBeginWrapper();
     makeAcDbBlockEndWrapper();
     makeAcDbSequenceEndWrapper();
-    makeAcDbVertexWrapper();
-
-
+   
     makePyDbTextWrapper();//combine ents?
     makePyDbAttributeDefinitionWrapper();
     makePyDbAttributeWrapper();
     makeDbBlockReferenceWrapper();
     makeDbMInsertBlockeWrapper();
+
+    makeAcDbVertexWrapper();
     makePyDb2dVertexWrapper();
+    makePyAcDb3dPolylineVertexWrapper();
+    makePyAcDbPolygonMeshVertexWrapper();
+    makePyAcDbPolygonMeshVertexWrapper();
+
     makePyDbPointWrapper();
 
     makeAcDbDictionaryWrapper();

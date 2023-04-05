@@ -309,11 +309,73 @@ public:
     Acad::ErrorStatus  setVertexIdentifier(Adesk::Int32 suggestedValue);
     int                vertexIdentifier() const;
 
-
-
     static std::string className();
 public:
     AcDb2dVertex* impObj() const;
+};
+
+//-------------------------------------------------------------------------------------------------------------
+//AcDb3dPolylineVertex
+void makePyAcDb3dPolylineVertexWrapper();
+class PyDb3dPolylineVertex : public PyDbVertex
+{
+public:
+    PyDb3dPolylineVertex();
+    PyDb3dPolylineVertex(const AcGePoint3d& pos);
+    PyDb3dPolylineVertex(AcDb3dPolylineVertex* ptr, bool autoDelete);
+    PyDb3dPolylineVertex(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDb3dPolylineVertex() = default;
+
+    AcDb::Vertex3dType  vertexType() const;
+
+    AcGePoint3d         position() const;
+    Acad::ErrorStatus   setPosition(const AcGePoint3d&);
+
+    static std::string className();
+public:
+    AcDb3dPolylineVertex* impObj() const;
+};
+
+//-------------------------------------------------------------------------------------------------------------
+//AcDbPolygonMeshVertex
+void makePyAcDbPolygonMeshVertexWrapper();
+class PyDbPolygonMeshVertex : public PyDbVertex
+{
+public:
+    PyDbPolygonMeshVertex();
+    PyDbPolygonMeshVertex(const AcGePoint3d& pos);
+    PyDbPolygonMeshVertex(AcDbPolygonMeshVertex* ptr, bool autoDelete);
+    PyDbPolygonMeshVertex(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbPolygonMeshVertex() = default;
+
+    AcDb::Vertex3dType  vertexType() const;
+
+    AcGePoint3d         position() const;
+    Acad::ErrorStatus   setPosition(const AcGePoint3d&);
+
+    static std::string className();
+public:
+    AcDbPolygonMeshVertex* impObj() const;
+};
+
+//-------------------------------------------------------------------------------------------------------------
+//AcDbPolygonMeshVertex
+void makePyDbPolyFaceMeshVertexWrapper();
+class PyDbPolyFaceMeshVertex : public PyDbVertex
+{
+public:
+    PyDbPolyFaceMeshVertex();
+    PyDbPolyFaceMeshVertex(const AcGePoint3d& pos);
+    PyDbPolyFaceMeshVertex(AcDbPolyFaceMeshVertex* ptr, bool autoDelete);
+    PyDbPolyFaceMeshVertex(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbPolyFaceMeshVertex() = default;
+
+    AcGePoint3d         position() const;
+    Acad::ErrorStatus   setPosition(const AcGePoint3d&);
+
+    static std::string className();
+public:
+    AcDbPolyFaceMeshVertex* impObj() const;
 };
 
 
