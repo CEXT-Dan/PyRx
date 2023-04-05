@@ -662,3 +662,42 @@ AcDbBlockEnd* PyDbBlockEnd::impObj() const
 {
     return static_cast<AcDbBlockEnd*>(m_pImp);
 }
+
+//-------------------------------------------------------------------------------------------------------------
+//PyDbSequenceEnd
+//-------------------------------------------------------------------------------------------------------------
+//PyDbBlockEnd
+void makeAcDbSequenceEndWrapper()
+{
+    static auto wrapper = class_<PyDbSequenceEnd, bases<PyDbEntity>>("DbSequenceEnd", boost::python::no_init)
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("className", &PyDbSequenceEnd::className).staticmethod("className")
+        ;
+}
+
+PyDbSequenceEnd::PyDbSequenceEnd(AcDbSequenceEnd* ptr, bool autoDelete)
+    : PyDbEntity(ptr, autoDelete)
+{
+}
+
+PyDbSequenceEnd::PyDbSequenceEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbEntity(nullptr, false)
+{
+    AcDbSequenceEnd* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbSequenceEnd>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    m_pImp = pobj;
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+}
+
+std::string PyDbSequenceEnd::className()
+{
+    return "AcDbSequenceEnd";
+}
+
+AcDbSequenceEnd* PyDbSequenceEnd::impObj() const
+{
+    return static_cast<AcDbSequenceEnd*>(m_pImp);
+}
