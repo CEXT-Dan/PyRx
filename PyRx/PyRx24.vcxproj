@@ -125,6 +125,7 @@
     <ClCompile Include="acrxEntryPoint.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="DocData.cpp" />
+    <ClCompile Include="PyDbCurve.cpp" />
     <ClCompile Include="PyDbEnts.cpp" />
     <ClCompile Include="PyAcAp.cpp" />
     <ClCompile Include="PyAcDb.cpp" />
@@ -162,6 +163,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DocData.h" />
+    <ClInclude Include="PyDbCurve.h" />
     <ClInclude Include="PyDbEnts.h" />
     <ClInclude Include="PyAcAp.h" />
     <ClInclude Include="PyAcDb.h" />

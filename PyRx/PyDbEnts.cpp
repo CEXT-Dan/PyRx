@@ -1493,7 +1493,6 @@ PyDb3dPolylineVertex::PyDb3dPolylineVertex()
 {
 }
 
-
 PyDb3dPolylineVertex::PyDb3dPolylineVertex(const AcGePoint3d& pos)
     : PyDb3dPolylineVertex(new AcDb3dPolylineVertex(pos), true)
 {
@@ -1707,7 +1706,7 @@ void makePyAcDbFaceRecordWrapper()
         .def("isEdgeVisibleAt", &PyDbFaceRecord::isEdgeVisibleAt)
         .def("makeEdgeVisibleAt", &PyDbFaceRecord::makeEdgeVisibleAt)
         .def("makeEdgeInvisibleAt", &PyDbFaceRecord::makeEdgeInvisibleAt)
-        .def("className", &PyDbPolyFaceMeshVertex::className).staticmethod("className")
+        .def("className", &PyDbFaceRecord::className).staticmethod("className")
         ;
 }
 

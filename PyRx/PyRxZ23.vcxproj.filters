@@ -103,6 +103,9 @@
     <ClCompile Include="PyDbField.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
+    <ClCompile Include="PyDbCurve.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -211,6 +214,9 @@
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
     <ClInclude Include="PyDbField.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbCurve.h">
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
   </ItemGroup>
