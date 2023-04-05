@@ -64,6 +64,15 @@ void makeAcCmTransparencyWrapper()
         .def("isClear", &AcCmTransparency::isClear)
         .def("isSolid", &AcCmTransparency::isSolid)
         ;
+
+    scope enum_scope = class_<AcCmTransparency>("CmTransparency");
+
+    enum_<AcCmTransparency::transparencyMethod>("TransparencyMethod")
+        .value("ByLayer", AcCmTransparency::transparencyMethod::kByLayer)
+        .value("ByBlock", AcCmTransparency::transparencyMethod::kByBlock)
+        .value("ByAlpha", AcCmTransparency::transparencyMethod::kByAlpha)
+        .value("ErrorValue", AcCmTransparency::transparencyMethod::kErrorValue)
+        ;
 }
 
 //--------------------------------------------------------------------------------------------------------
@@ -136,5 +145,30 @@ void makeAcCmEntityColorWrapper()
         .def("canResolveRGB", &AcCmEntityColor::canResolveRGB)
         .def("makeTrueColor", &AcCmEntityColor::makeTrueColor)
 #endif
+        ;
+
+    scope enum_scope = class_<AcCmEntityColor>("CmEntityColor");
+
+    enum_<AcCmEntityColor::ColorMethod>("ColorMethod")
+        .value("ByLayer", AcCmEntityColor::ColorMethod::kByLayer)
+        .value("ByBlock", AcCmEntityColor::ColorMethod::kByBlock)
+        .value("ByColor", AcCmEntityColor::ColorMethod::kByColor)
+        .value("ByACI", AcCmEntityColor::ColorMethod::kByACI)
+        .value("ByPen", AcCmEntityColor::ColorMethod::kByPen)
+        .value("Foreground", AcCmEntityColor::ColorMethod::kForeground)
+        .value("LayerOff", AcCmEntityColor::ColorMethod::kLayerOff)
+        .value("LayerFrozen", AcCmEntityColor::ColorMethod::kLayerFrozen)
+        .value("None", AcCmEntityColor::ColorMethod::kNone)
+        ;
+    enum_<AcCmEntityColor::ACIcolorMethod>("ACIcolorMethod")
+        .value("ACIbyBlock", AcCmEntityColor::ACIcolorMethod::kACIbyBlock)
+        .value("ACIforeground", AcCmEntityColor::ACIcolorMethod::kACIforeground)
+        .value("ACIbyLayer", AcCmEntityColor::ACIcolorMethod::kACIbyLayer)
+        .value("ACIclear", AcCmEntityColor::ACIcolorMethod::kACIclear)
+        .value("ACIstandard", AcCmEntityColor::ACIcolorMethod::kACIstandard)
+        .value("ACImaximum", AcCmEntityColor::ACIcolorMethod::kACImaximum)
+        .value("ACInone", AcCmEntityColor::ACIcolorMethod::kACInone)
+        .value("ACIminimum", AcCmEntityColor::ACIcolorMethod::kACIminimum)
+        .value("ACIfrozenLayer", AcCmEntityColor::ACIcolorMethod::kACIfrozenLayer)
         ;
 }

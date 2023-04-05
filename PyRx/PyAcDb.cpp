@@ -10,6 +10,7 @@
 #include "PyDbSymbolTable.h"
 #include "PyCmColorBase.h"
 #include "PyDbLayerTableRecord.h"
+#include "PyDbField.h"
 #include "PyDbEnts.h"
 using namespace boost::python;
 
@@ -91,6 +92,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcCmTransparencyWrapper();
     makeAcDbObjectIdWrapper();
     makeAcDbObjectWrapper();
+    makeAcDbFieldtWrapper();
     makeAcDbEntityWrapper();
 
     makePyDbTextWrapper();//combine ents?
@@ -111,24 +113,7 @@ BOOST_PYTHON_MODULE(PyDb)
     //global
     def("RegApp", &RegApp);
 
-    enum_<AcDbText::AcTextAlignment>("AcTextAlignment")
-        .value("TextAlignmentLeft", AcDbText::AcTextAlignment::kTextAlignmentLeft)
-        .value("TextAlignmentCenter", AcDbText::AcTextAlignment::kTextAlignmentCenter)
-        .value("TextAlignmentRight", AcDbText::AcTextAlignment::kTextAlignmentRight)
-        .value("TextAlignmentAligned", AcDbText::AcTextAlignment::kTextAlignmentAligned)
-        .value("TextAlignmentMiddle", AcDbText::AcTextAlignment::kTextAlignmentMiddle)
-        .value("TextAlignmentFit", AcDbText::AcTextAlignment::kTextAlignmentFit)
-        .value("TextAlignmentTopLeft", AcDbText::AcTextAlignment::kTextAlignmentTopLeft)
-        .value("TextAlignmentTopCenter", AcDbText::AcTextAlignment::kTextAlignmentTopCenter)
-        .value("TextAlignmentTopRight", AcDbText::AcTextAlignment::kTextAlignmentTopRight)
-        .value("TextAlignmentMiddleLeft", AcDbText::AcTextAlignment::kTextAlignmentMiddleLeft)
-        .value("TextAlignmentMiddleCenter", AcDbText::AcTextAlignment::kTextAlignmentMiddleCenter)
-        .value("TextAlignmentMiddleRight", AcDbText::AcTextAlignment::kTextAlignmentMiddleRight)
-        .value("TextAlignmentBottomLeft", AcDbText::AcTextAlignment::kTextAlignmentBottomLeft)
-        .value("TextAlignmentBottomCenter", AcDbText::AcTextAlignment::kTextAlignmentBottomCenter)
-        .value("TextAlignmentBottomRight", AcDbText::AcTextAlignment::kTextAlignmentBottomRight)
-        ;
-        enum_<AcDb::TextVertMode>("TextHorzMode")
+    enum_<AcDb::TextVertMode>("TextHorzMode")
         .value("TextBase", AcDb::TextVertMode::kTextBase)
         .value("TextBottom", AcDb::TextVertMode::kTextBottom)
         .value("TextVertMid", AcDb::TextVertMode::kTextVertMid)
@@ -172,34 +157,7 @@ BOOST_PYTHON_MODULE(PyDb)
         .value("Green", AcCmEntityColor::Color::kGreen)
         .value("Blue", AcCmEntityColor::Color::kBlue)
         ;
-    enum_<AcCmEntityColor::ColorMethod>("AcCmEntityColor_ColorMethod")//TODO:?
-        .value("ByLayer", AcCmEntityColor::ColorMethod::kByLayer)
-        .value("ByBlock", AcCmEntityColor::ColorMethod::kByBlock)
-        .value("ByColor", AcCmEntityColor::ColorMethod::kByColor)
-        .value("ByACI", AcCmEntityColor::ColorMethod::kByACI)
-        .value("ByPen", AcCmEntityColor::ColorMethod::kByPen)
-        .value("Foreground", AcCmEntityColor::ColorMethod::kForeground)
-        .value("LayerOff", AcCmEntityColor::ColorMethod::kLayerOff)
-        .value("LayerFrozen", AcCmEntityColor::ColorMethod::kLayerFrozen)
-        .value("None", AcCmEntityColor::ColorMethod::kNone)
-        ;
-    enum_<AcCmEntityColor::ACIcolorMethod>("AcCmEntityColor_ACIcolorMethod")//TODO:?
-        .value("ACIbyBlock", AcCmEntityColor::ACIcolorMethod::kACIbyBlock)
-        .value("ACIforeground", AcCmEntityColor::ACIcolorMethod::kACIforeground)
-        .value("ACIbyLayer", AcCmEntityColor::ACIcolorMethod::kACIbyLayer)
-        .value("ACIclear", AcCmEntityColor::ACIcolorMethod::kACIclear)
-        .value("ACIstandard", AcCmEntityColor::ACIcolorMethod::kACIstandard)
-        .value("ACImaximum", AcCmEntityColor::ACIcolorMethod::kACImaximum)
-        .value("ACInone", AcCmEntityColor::ACIcolorMethod::kACInone)
-        .value("ACIminimum", AcCmEntityColor::ACIcolorMethod::kACIminimum)
-        .value("ACIfrozenLayer", AcCmEntityColor::ACIcolorMethod::kACIfrozenLayer)
-        ;
-    enum_<AcCmTransparency::transparencyMethod>("TransparencyMethod")
-        .value("ByLayer", AcCmTransparency::transparencyMethod::kByLayer)
-        .value("ByBlock", AcCmTransparency::transparencyMethod::kByBlock)
-        .value("ByAlpha", AcCmTransparency::transparencyMethod::kByAlpha)
-        .value("ErrorValue", AcCmTransparency::transparencyMethod::kErrorValue)
-        ;
+   
     enum_<AcDb::DxfCode>("DxfCode")
         .value("DxfInvalid", AcDb::kDxfInvalid)
         .value("DxfXDictionary", AcDb::kDxfXDictionary)

@@ -50,6 +50,26 @@ void makePyDbTextWrapper()
         .def("getBoundingPoints", &PyDbText::getBoundingPoints)
         .def("className", &PyDbText::className).staticmethod("className")
         ;
+
+    scope enum_scope = class_<PyDbText>("DbText");
+
+    enum_<AcDbText::AcTextAlignment>("AcTextAlignment")
+        .value("TextAlignmentLeft", AcDbText::AcTextAlignment::kTextAlignmentLeft)
+        .value("TextAlignmentCenter", AcDbText::AcTextAlignment::kTextAlignmentCenter)
+        .value("TextAlignmentRight", AcDbText::AcTextAlignment::kTextAlignmentRight)
+        .value("TextAlignmentAligned", AcDbText::AcTextAlignment::kTextAlignmentAligned)
+        .value("TextAlignmentMiddle", AcDbText::AcTextAlignment::kTextAlignmentMiddle)
+        .value("TextAlignmentFit", AcDbText::AcTextAlignment::kTextAlignmentFit)
+        .value("TextAlignmentTopLeft", AcDbText::AcTextAlignment::kTextAlignmentTopLeft)
+        .value("TextAlignmentTopCenter", AcDbText::AcTextAlignment::kTextAlignmentTopCenter)
+        .value("TextAlignmentTopRight", AcDbText::AcTextAlignment::kTextAlignmentTopRight)
+        .value("TextAlignmentMiddleLeft", AcDbText::AcTextAlignment::kTextAlignmentMiddleLeft)
+        .value("TextAlignmentMiddleCenter", AcDbText::AcTextAlignment::kTextAlignmentMiddleCenter)
+        .value("TextAlignmentMiddleRight", AcDbText::AcTextAlignment::kTextAlignmentMiddleRight)
+        .value("TextAlignmentBottomLeft", AcDbText::AcTextAlignment::kTextAlignmentBottomLeft)
+        .value("TextAlignmentBottomCenter", AcDbText::AcTextAlignment::kTextAlignmentBottomCenter)
+        .value("TextAlignmentBottomRight", AcDbText::AcTextAlignment::kTextAlignmentBottomRight)
+        ;
 }
 
 PyDbText::PyDbText()
