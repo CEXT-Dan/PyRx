@@ -655,6 +655,7 @@ AcDbAttributeDefinition* PyDbAttributeDefinition::impObj() const
 {
     return static_cast<AcDbAttributeDefinition*>(m_pImp);
 }
+
 //-----------------------------------------------------------------------------------
 //PyDbAttribute
 void makePyDbAttributeWrapper()
@@ -710,7 +711,6 @@ PyDbAttribute::PyDbAttribute(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (imp == nullptr)
         throw PyNullObject();
 }
-
 
 std::string PyDbAttribute::tag() const
 {
@@ -862,6 +862,233 @@ AcDbAttribute* PyDbAttribute::impObj() const
     return static_cast<AcDbAttribute*>(m_pImp);
 }
 
+//-----------------------------------------------------------------------------------
+//PyDbBlockReference
+void makeDbBlockReferenceWrapper()
+{
+    static auto wrapper = class_<PyDbBlockReference, bases<PyDbEntity>>("DbPoint")
+        .def(init<>())
+        .def(init<AcGePoint3d&, const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("blockTableRecord", &PyDbBlockReference::blockTableRecord)
+        .def("setBlockTableRecord", &PyDbBlockReference::setBlockTableRecord)
+        .def("position", &PyDbBlockReference::position)
+        .def("setPosition", &PyDbBlockReference::setPosition)
+        .def("scaleFactors", &PyDbBlockReference::scaleFactors)
+        .def("nonAnnotationScaleFactors", &PyDbBlockReference::nonAnnotationScaleFactors)
+        .def("setScaleFactors", &PyDbBlockReference::setScaleFactors)
+        .def("rotation", &PyDbBlockReference::rotation)
+        .def("setRotation", &PyDbBlockReference::setRotation)
+        .def("normal", &PyDbBlockReference::normal)
+        .def("setNormal", &PyDbBlockReference::setNormal)
+        .def("isPlanar", &PyDbBlockReference::isPlanar)
+        .def("blockTransform", &PyDbBlockReference::blockTransform)
+        .def("nonAnnotationBlockTransform", &PyDbBlockReference::nonAnnotationBlockTransform)
+        .def("setBlockTransform", &PyDbBlockReference::setBlockTransform)
+        .def("appendAttribute", &PyDbBlockReference::appendAttribute)
+        .def("attributeIds", &PyDbBlockReference::attributeIds)
+        .def("treatAsAcDbBlockRefForExplode", &PyDbBlockReference::treatAsAcDbBlockRefForExplode)
+        .def("geomExtentsBestFit", &PyDbBlockReference::geomExtentsBestFit)
+        .def("explodeToOwnerSpace", &PyDbBlockReference::explodeToOwnerSpace)
+        .def("className", &PyDbBlockReference::className).staticmethod("className")
+        ;
+}
+
+PyDbBlockReference::PyDbBlockReference()
+    : PyDbBlockReference(new AcDbBlockReference(), true)
+{
+}
+
+PyDbBlockReference::PyDbBlockReference(const AcGePoint3d& position, const PyDbObjectId& blockTableRec)
+    : PyDbBlockReference(new AcDbBlockReference(position, blockTableRec.m_id), true)
+{
+}
+
+PyDbBlockReference::PyDbBlockReference(AcDbBlockReference* ptr, bool autoDelete)
+    : PyDbEntity(ptr, autoDelete)
+{
+}
+
+PyDbBlockReference::PyDbBlockReference(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbEntity(nullptr, false)
+{
+    AcDbBlockReference* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbBlockReference>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    m_pImp = pobj;
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+}
+
+PyDbObjectId PyDbBlockReference::blockTableRecord() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return PyDbObjectId(imp->blockTableRecord());
+}
+
+Acad::ErrorStatus PyDbBlockReference::setBlockTableRecord(const PyDbObjectId& val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setBlockTableRecord(val.m_id);
+}
+
+AcGePoint3d PyDbBlockReference::position() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->position();
+}
+
+Acad::ErrorStatus PyDbBlockReference::setPosition(const AcGePoint3d& val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setPosition(val);
+}
+
+AcGeScale3d PyDbBlockReference::scaleFactors() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->scaleFactors();
+}
+
+AcGeScale3d PyDbBlockReference::nonAnnotationScaleFactors() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->nonAnnotationScaleFactors();
+}
+
+Acad::ErrorStatus PyDbBlockReference::setScaleFactors(const AcGeScale3d& scale)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setScaleFactors(scale);
+}
+
+double PyDbBlockReference::rotation() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->rotation();
+}
+
+Acad::ErrorStatus PyDbBlockReference::setRotation(double newVal)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setRotation(newVal);
+}
+
+AcGeVector3d PyDbBlockReference::normal() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->normal();
+}
+
+Acad::ErrorStatus PyDbBlockReference::setNormal(const AcGeVector3d& newVal)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setNormal(newVal);
+}
+
+AcGeMatrix3d PyDbBlockReference::blockTransform() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->blockTransform();
+}
+
+AcGeMatrix3d PyDbBlockReference::nonAnnotationBlockTransform() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->nonAnnotationBlockTransform();
+}
+
+Acad::ErrorStatus PyDbBlockReference::setBlockTransform(const AcGeMatrix3d& val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setBlockTransform(val);
+}
+
+PyDbObjectId PyDbBlockReference::appendAttribute(PyDbAttribute& att)
+{
+    AcDbObjectId id;
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    if (auto es = imp->appendAttribute(id, att.impObj()); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return PyDbObjectId(id);
+}
+
+boost::python::list PyDbBlockReference::attributeIds() const
+{
+    AcDbObjectId id;
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    boost::python::list ids;
+    for (std::unique_ptr<AcDbObjectIterator> iter(imp->attributeIterator()); !iter->done(); iter->step())
+        ids.append(PyDbObjectId(iter->objectId()));
+    return ids;
+}
+
+Adesk::Boolean PyDbBlockReference::treatAsAcDbBlockRefForExplode() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->treatAsAcDbBlockRefForExplode();
+}
+
+Acad::ErrorStatus PyDbBlockReference::geomExtentsBestFit(AcDbExtents& extents, const AcGeMatrix3d& parentXform) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->geomExtentsBestFit(extents, parentXform);
+}
+
+Acad::ErrorStatus PyDbBlockReference::explodeToOwnerSpace() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->explodeToOwnerSpace();
+}
+
+std::string PyDbBlockReference::className()
+{
+    return "AcDbBlockReference";
+}
+
+AcDbBlockReference* PyDbBlockReference::impObj() const
+{
+    return static_cast<AcDbBlockReference*>(m_pImp);
+}
 
 //-----------------------------------------------------------------------------------
 //PyDbPoint

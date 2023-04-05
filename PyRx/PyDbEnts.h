@@ -171,11 +171,61 @@ public:
     Acad::ErrorStatus updateMTextAttribute();
     bool              isReallyLocked() const;
 
-
     static std::string className();
 public:
     AcDbAttribute* impObj() const;
 };
+
+//-----------------------------------------------------------------------------------
+//PyDbBlockReference
+void makeDbBlockReferenceWrapper();
+class PyDbBlockReference : public PyDbEntity
+{
+public:
+    PyDbBlockReference();
+    PyDbBlockReference(const AcGePoint3d& position, const PyDbObjectId& blockTableRec);
+    PyDbBlockReference(AcDbBlockReference* ptr, bool autoDelete);
+    PyDbBlockReference(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbBlockReference() override = default;
+
+    PyDbObjectId      blockTableRecord() const;
+    virtual Acad::ErrorStatus setBlockTableRecord(const PyDbObjectId& val);
+
+    virtual AcGePoint3d       position() const;
+    virtual Acad::ErrorStatus setPosition(const AcGePoint3d& val);
+
+    AcGeScale3d       scaleFactors() const;
+    AcGeScale3d       nonAnnotationScaleFactors() const;
+    virtual Acad::ErrorStatus setScaleFactors(const AcGeScale3d& scale);
+
+    double            rotation() const;
+    virtual Acad::ErrorStatus setRotation(double newVal);
+
+    AcGeVector3d      normal() const;
+    virtual Acad::ErrorStatus setNormal(const AcGeVector3d& newVal);
+
+    Adesk::Boolean    isPlanar() const override { return Adesk::kTrue; }
+    //Acad::ErrorStatus getPlane(AcGePlane&, AcDb::Planarity&) const override;
+
+    AcGeMatrix3d      blockTransform() const;
+    AcGeMatrix3d      nonAnnotationBlockTransform() const;
+    virtual Acad::ErrorStatus setBlockTransform(const AcGeMatrix3d& val);
+
+    PyDbObjectId  appendAttribute(PyDbAttribute& att);
+    boost::python::list attributeIds() const;
+
+    virtual Adesk::Boolean treatAsAcDbBlockRefForExplode() const;
+
+    Acad::ErrorStatus geomExtentsBestFit(AcDbExtents& extents,const AcGeMatrix3d& parentXform) const;
+
+    virtual Acad::ErrorStatus explodeToOwnerSpace() const;
+
+   
+    static std::string className();
+public:
+    AcDbBlockReference* impObj() const;
+};
+
 
 
 //-----------------------------------------------------------------------------------

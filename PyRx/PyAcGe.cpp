@@ -111,6 +111,25 @@ static auto makeAcGeMatrix3dWrapper()
     return wrapper;
 }
 
+static auto makeAcGeScale3dWrapper()
+{
+    static auto wrapper = class_<AcGeScale3d>("Scale3d")
+        .def_readwrite("sx", &AcGeScale3d::sx)
+        .def_readwrite("sy", &AcGeScale3d::sy)
+        .def_readwrite("sz", &AcGeScale3d::sz)
+        ;
+    return wrapper;
+}
+
+static auto makeAcGeScale2dWrapper()
+{
+    static auto wrapper = class_<AcGeScale2d>("Scale2d")
+        .def_readwrite("sx", &AcGeScale2d::sx)
+        .def_readwrite("sy", &AcGeScale2d::sy)
+        ;
+    return wrapper;
+}
+
 BOOST_PYTHON_MODULE(PyGe)
 {
 #ifndef  PyRxDebug
@@ -125,6 +144,9 @@ BOOST_PYTHON_MODULE(PyGe)
     makeAcGePoint3dWrapper();
     makeAcGeVector3dWrapper();
     makeAcGeMatrix3dWrapper();
+
+    makeAcGeScale3dWrapper();
+    makeAcGeScale2dWrapper();
 
     enum_<AcGe::EntityId>("EntityId")
         .value("Entity2d", AcGe::EntityId::kEntity2d)
