@@ -433,7 +433,7 @@ void makePyDbAttributeDefinitionWrapper()
 {
     static auto wrapper = class_<PyDbAttributeDefinition, bases<PyDbText>>("DbAttributeDefinition")
         .def(init<>())
-        .def(init<const AcGePoint3d&, const std::string&, const std::string&,const std::string&, const PyDbObjectId&>())
+        .def(init<const AcGePoint3d&, const std::string&, const std::string&, const std::string&, const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("prompt", &PyDbAttributeDefinition::prompt)
         .def("setPrompt", &PyDbAttributeDefinition::setPrompt)
@@ -691,7 +691,7 @@ PyDbAttribute::PyDbAttribute()
 }
 
 PyDbAttribute::PyDbAttribute(const AcGePoint3d& position, const std::string& text, const std::string& tag, const PyDbObjectId& style)
-    : PyDbText(new AcDbAttribute(position, utf8_to_wstr(text).c_str(), utf8_to_wstr(tag).c_str(),style.m_id), true)
+    : PyDbText(new AcDbAttribute(position, utf8_to_wstr(text).c_str(), utf8_to_wstr(tag).c_str(), style.m_id), true)
 {
 }
 
@@ -1221,7 +1221,6 @@ void makeAcDbVertexWrapper()
         ;
 }
 
-
 PyDbVertex::PyDbVertex(AcDbVertex* ptr, bool autoDelete)
     : PyDbEntity(ptr, autoDelete)
 {
@@ -1247,6 +1246,230 @@ std::string PyDbVertex::className()
 AcDbVertex* PyDbVertex::impObj() const
 {
     return static_cast<AcDbVertex*>(m_pImp);
+}
+
+//-------------------------------------------------------------------------------------------------------------
+//PyDb2dVertex
+void makePyDb2dVertexWrapper()
+{
+    static auto wrapper = class_<PyDb2dVertex, bases<PyDbVertex>>("Db2dVertex")
+        .def(init<>())
+        .def(init<const AcGePoint3d&>())
+#ifndef BRXAPP
+        .def(init<const AcGePoint3d&, double, double, double, double, Adesk::Int32>())
+#endif
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("vertexType", &PyDb2dVertex::vertexType)
+        .def("position", &PyDb2dVertex::position)
+        .def("setPosition", &PyDb2dVertex::setPosition)
+        .def("startWidth", &PyDb2dVertex::startWidth)
+        .def("setStartWidth", &PyDb2dVertex::setStartWidth)
+        .def("endWidth", &PyDb2dVertex::endWidth)
+        .def("setEndWidth", &PyDb2dVertex::setEndWidth)
+        .def("bulge", &PyDb2dVertex::bulge)
+        .def("setBulge", &PyDb2dVertex::setBulge)
+        .def("isTangentUsed", &PyDb2dVertex::isTangentUsed)
+        .def("useTangent", &PyDb2dVertex::useTangent)
+        .def("ignoreTangent", &PyDb2dVertex::ignoreTangent)
+        .def("setTangentUsed", &PyDb2dVertex::setTangentUsed)
+        .def("tangent", &PyDb2dVertex::tangent)
+        .def("setTangent", &PyDb2dVertex::setTangent)
+        .def("setVertexIdentifier", &PyDb2dVertex::setVertexIdentifier)
+        .def("vertexIdentifier", &PyDb2dVertex::vertexIdentifier)
+        .def("className", &PyDb2dVertex::className).staticmethod("className")
+        ;
+}
+
+PyDb2dVertex::PyDb2dVertex()
+    : PyDb2dVertex(new AcDb2dVertex(), true)
+{
+}
+
+PyDb2dVertex::PyDb2dVertex(const AcGePoint3d& pos)
+    : PyDb2dVertex(new AcDb2dVertex(pos), true)
+{
+}
+
+#ifndef BRXAPP
+PyDb2dVertex::PyDb2dVertex(const AcGePoint3d& pos, double bulge, double startWidth, double endWidth, double tangent, Adesk::Int32 vertexIdentifier)
+    : PyDb2dVertex(new AcDb2dVertex(pos, bulge, startWidth, endWidth, tangent, vertexIdentifier), true)
+{
+}
+#endif // !BRXAPP
+
+PyDb2dVertex::PyDb2dVertex(AcDb2dVertex* ptr, bool autoDelete)
+    : PyDbVertex(ptr, autoDelete)
+{
+}
+
+PyDb2dVertex::PyDb2dVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbVertex(nullptr, false)
+{
+    AcDb2dVertex* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDb2dVertex>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    m_pImp = pobj;
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+}
+
+AcDb::Vertex2dType PyDb2dVertex::vertexType() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->vertexType();
+}
+
+AcGePoint3d PyDb2dVertex::position() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->position();
+}
+
+Acad::ErrorStatus PyDb2dVertex::setPosition(const AcGePoint3d& val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setPosition(val);
+}
+
+double PyDb2dVertex::startWidth() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->startWidth();
+}
+
+Acad::ErrorStatus PyDb2dVertex::setStartWidth(double newVal)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setStartWidth(newVal);
+}
+
+double PyDb2dVertex::endWidth() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->endWidth();
+}
+
+Acad::ErrorStatus PyDb2dVertex::setEndWidth(double newVal)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setEndWidth(newVal);
+}
+
+double PyDb2dVertex::bulge() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->bulge();
+}
+
+Acad::ErrorStatus PyDb2dVertex::setBulge(double newVal)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setBulge(newVal);
+}
+
+Adesk::Boolean PyDb2dVertex::isTangentUsed() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isTangentUsed();
+}
+
+Acad::ErrorStatus PyDb2dVertex::useTangent()
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->useTangent();
+}
+
+Acad::ErrorStatus PyDb2dVertex::ignoreTangent()
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->ignoreTangent();
+}
+
+Acad::ErrorStatus PyDb2dVertex::setTangentUsed(Adesk::Boolean val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else // !BRXAPP
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setTangentUsed(val);
+#endif
+}
+
+double PyDb2dVertex::tangent() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->tangent();
+}
+
+Acad::ErrorStatus PyDb2dVertex::setTangent(double newVal)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setTangent(newVal);
+}
+
+Acad::ErrorStatus PyDb2dVertex::setVertexIdentifier(Adesk::Int32 suggestedValue)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else // !BRXAPP
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setVertexIdentifier(suggestedValue);
+#endif
+}
+
+int PyDb2dVertex::vertexIdentifier() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else // !BRXAPP
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->vertexIdentifier();
+#endif
+}
+
+std::string PyDb2dVertex::className()
+{
+    return "AcDb2dVertex";
+}
+
+AcDb2dVertex* PyDb2dVertex::impObj() const
+{
+    return static_cast<AcDb2dVertex*>(m_pImp);
 }
 
 //-----------------------------------------------------------------------------------

@@ -271,6 +271,52 @@ public:
 };
 
 
+//-------------------------------------------------------------------------------------------------------------
+//PyDb2dVertex
+void makePyDb2dVertexWrapper();
+class PyDb2dVertex : public PyDbVertex
+{
+public:
+    PyDb2dVertex();
+    PyDb2dVertex(const AcGePoint3d& pos);
+    PyDb2dVertex(const AcGePoint3d& pos, double bulge, double startWidth, double endWidth, double tangent, Adesk::Int32 vertexIdentifier);
+    PyDb2dVertex(AcDb2dVertex* ptr, bool autoDelete);
+    PyDb2dVertex(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDb2dVertex() = default;
+
+    AcDb::Vertex2dType vertexType() const;
+
+    AcGePoint3d         position() const;
+    Acad::ErrorStatus   setPosition(const AcGePoint3d& val);
+
+    double              startWidth() const;
+    Acad::ErrorStatus   setStartWidth(double newVal);
+
+    double              endWidth() const;
+    Acad::ErrorStatus   setEndWidth(double newVal);
+
+    double              bulge() const;
+    Acad::ErrorStatus   setBulge(double newVal);
+
+    Adesk::Boolean      isTangentUsed() const;
+    Acad::ErrorStatus   useTangent();
+    Acad::ErrorStatus   ignoreTangent();
+    Acad::ErrorStatus   setTangentUsed(Adesk::Boolean val);
+
+    double              tangent() const;
+    Acad::ErrorStatus   setTangent(double newVal);
+
+    Acad::ErrorStatus  setVertexIdentifier(Adesk::Int32 suggestedValue);
+    int                vertexIdentifier() const;
+
+
+
+    static std::string className();
+public:
+    AcDb2dVertex* impObj() const;
+};
+
+
 //-----------------------------------------------------------------------------------
 //PyDbPoint
 void makePyDbPointWrapper();

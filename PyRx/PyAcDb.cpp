@@ -99,11 +99,13 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbSequenceEndWrapper();
     makeAcDbVertexWrapper();
 
+
     makePyDbTextWrapper();//combine ents?
     makePyDbAttributeDefinitionWrapper();
     makePyDbAttributeWrapper();
     makeDbBlockReferenceWrapper();
     makeDbMInsertBlockeWrapper();
+    makePyDb2dVertexWrapper();
     makePyDbPointWrapper();
 
     makeAcDbDictionaryWrapper();
@@ -117,6 +119,14 @@ BOOST_PYTHON_MODULE(PyDb)
     //global
     def("RegApp", &RegApp);
 
+
+
+    enum_<AcDb::Vertex2dType>("Vertex2dType")//leave the k
+        .value("k2dVertex", AcDb::Vertex2dType::k2dVertex)
+        .value("k2dSplineCtlVertex", AcDb::Vertex2dType::k2dSplineCtlVertex)
+        .value("k2dSplineFitVertex", AcDb::Vertex2dType::k2dSplineFitVertex)
+        .value("k2dCurveFitVertex", AcDb::Vertex2dType::k2dCurveFitVertex)
+        ;
     enum_<AcDb::TextVertMode>("TextHorzMode")
         .value("TextBase", AcDb::TextVertMode::kTextBase)
         .value("TextBottom", AcDb::TextVertMode::kTextBottom)
