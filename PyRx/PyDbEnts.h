@@ -86,7 +86,7 @@ class PyDbAttributeDefinition : public PyDbText
 {
 public:
     PyDbAttributeDefinition();
-    PyDbAttributeDefinition(const AcGePoint3d& position,const std::string& text, const std::string& tag, const std::string& prompt, const PyDbObjectId& style);
+    PyDbAttributeDefinition(const AcGePoint3d& position, const std::string& text, const std::string& tag, const std::string& prompt, const PyDbObjectId& style);
     PyDbAttributeDefinition(AcDbAttributeDefinition* ptr, bool autoDelete);
     PyDbAttributeDefinition(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbAttributeDefinition() override = default;
@@ -138,7 +138,7 @@ class PyDbAttribute : public PyDbText
 {
 public:
     PyDbAttribute();
-    PyDbAttribute(const AcGePoint3d& position, const std::string& text, const std::string& tag,const PyDbObjectId& style);
+    PyDbAttribute(const AcGePoint3d& position, const std::string& text, const std::string& tag, const PyDbObjectId& style);
     PyDbAttribute(AcDbAttributeDefinition* ptr, bool autoDelete);
     PyDbAttribute(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbAttribute() override = default;
@@ -157,7 +157,7 @@ public:
     Acad::ErrorStatus   setFieldLength(Adesk::UInt16);
 
     Acad::ErrorStatus setAttributeFromBlock(const AcGeMatrix3d& blkXform);
-    Acad::ErrorStatus setAttributeFromBlock(const PyDbAttributeDefinition& pAttdef,const AcGeMatrix3d& blkXform);
+    Acad::ErrorStatus setAttributeFromBlock(const PyDbAttributeDefinition& pAttdef, const AcGeMatrix3d& blkXform);
 
     bool lockPositionInBlock() const;
     Acad::ErrorStatus setLockPositionInBlock(bool bValue);
@@ -216,17 +216,45 @@ public:
 
     virtual Adesk::Boolean treatAsAcDbBlockRefForExplode() const;
 
-    Acad::ErrorStatus geomExtentsBestFit(AcDbExtents& extents,const AcGeMatrix3d& parentXform) const;
+    Acad::ErrorStatus geomExtentsBestFit(AcDbExtents& extents, const AcGeMatrix3d& parentXform) const;
 
     virtual Acad::ErrorStatus explodeToOwnerSpace() const;
 
-   
+
     static std::string className();
 public:
     AcDbBlockReference* impObj() const;
 };
 
+//-----------------------------------------------------------------------------------
+//PyDbBlockReference
+void makeDbMInsertBlockeWrapper();
+class PyDbMInsertBlock : public  PyDbBlockReference
+{
+public:
+    PyDbMInsertBlock();
+    PyDbMInsertBlock(const AcGePoint3d& position, const PyDbObjectId& blockTableRec, Adesk::UInt16 columns, Adesk::UInt16 rows, double colSpacing, double rowSpacing);
+    PyDbMInsertBlock(AcDbMInsertBlock* ptr, bool autoDelete);
+    PyDbMInsertBlock(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbMInsertBlock() override = default;
 
+    Adesk::UInt16      columns() const;
+    Acad::ErrorStatus  setColumns(Adesk::UInt16 val);
+
+    Adesk::UInt16      rows() const;
+    Acad::ErrorStatus  setRows(Adesk::UInt16 val);
+
+    double             columnSpacing() const;
+    Acad::ErrorStatus  setColumnSpacing(double val);
+
+    double             rowSpacing() const;
+    Acad::ErrorStatus  setRowSpacing(double val);
+
+
+    static std::string className();
+public:
+    AcDbMInsertBlock* impObj() const;
+};
 
 //-----------------------------------------------------------------------------------
 //PyDbPoint

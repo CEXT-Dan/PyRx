@@ -99,6 +99,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbAttributeDefinitionWrapper();
     makePyDbAttributeWrapper();
     makeDbBlockReferenceWrapper();
+    makeDbMInsertBlockeWrapper();
     makePyDbPointWrapper();
 
 

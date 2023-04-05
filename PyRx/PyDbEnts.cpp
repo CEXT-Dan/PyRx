@@ -866,7 +866,7 @@ AcDbAttribute* PyDbAttribute::impObj() const
 //PyDbBlockReference
 void makeDbBlockReferenceWrapper()
 {
-    static auto wrapper = class_<PyDbBlockReference, bases<PyDbEntity>>("DbPoint")
+    static auto wrapper = class_<PyDbBlockReference, bases<PyDbEntity>>("DbBlockReference")
         .def(init<>())
         .def(init<AcGePoint3d&, const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
@@ -1088,6 +1088,127 @@ std::string PyDbBlockReference::className()
 AcDbBlockReference* PyDbBlockReference::impObj() const
 {
     return static_cast<AcDbBlockReference*>(m_pImp);
+}
+
+//-----------------------------------------------------------------------------------
+//PyDbBlockReference
+void makeDbMInsertBlockeWrapper()
+{
+    static auto wrapper = class_<PyDbMInsertBlock, bases<PyDbBlockReference>>("DbMInsertBlock")
+        .def(init<>())
+        .def(init<AcGePoint3d&, const PyDbObjectId&, Adesk::UInt16, Adesk::UInt16, double, double>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("columns", &PyDbMInsertBlock::columns)
+        .def("setColumns", &PyDbMInsertBlock::setColumns)
+        .def("rows", &PyDbMInsertBlock::rows)
+        .def("setRows", &PyDbMInsertBlock::setRows)
+        .def("columnSpacing", &PyDbMInsertBlock::columnSpacing)
+        .def("setColumnSpacing", &PyDbMInsertBlock::setColumnSpacing)
+        .def("rowSpacing", &PyDbMInsertBlock::rowSpacing)
+        .def("setRowSpacing", &PyDbMInsertBlock::setRowSpacing)
+        .def("className", &PyDbMInsertBlock::className).staticmethod("className")
+        ;
+}
+
+PyDbMInsertBlock::PyDbMInsertBlock()
+    : PyDbMInsertBlock(new AcDbMInsertBlock(), true)
+{
+}
+
+PyDbMInsertBlock::PyDbMInsertBlock(const AcGePoint3d& position, const PyDbObjectId& blockTableRec, Adesk::UInt16 columns, Adesk::UInt16 rows, double colSpacing, double rowSpacing)
+    : PyDbMInsertBlock(new AcDbMInsertBlock(position, blockTableRec.m_id, columns, rows, colSpacing, rowSpacing), true)
+{
+}
+
+PyDbMInsertBlock::PyDbMInsertBlock(AcDbMInsertBlock* ptr, bool autoDelete)
+    : PyDbBlockReference(ptr, autoDelete)
+{
+}
+
+PyDbMInsertBlock::PyDbMInsertBlock(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbBlockReference(nullptr, false)
+{
+    AcDbMInsertBlock* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbMInsertBlock>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    m_pImp = pobj;
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+}
+
+Adesk::UInt16 PyDbMInsertBlock::columns() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->columns();
+}
+
+Acad::ErrorStatus PyDbMInsertBlock::setColumns(Adesk::UInt16 val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setColumns(val);
+}
+
+Adesk::UInt16 PyDbMInsertBlock::rows() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->rows();
+}
+
+Acad::ErrorStatus PyDbMInsertBlock::setRows(Adesk::UInt16 val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setRows(val);
+}
+
+double PyDbMInsertBlock::columnSpacing() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->columnSpacing();
+}
+
+Acad::ErrorStatus PyDbMInsertBlock::setColumnSpacing(double val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setColumnSpacing(val);
+}
+
+double PyDbMInsertBlock::rowSpacing() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->rowSpacing();
+}
+
+Acad::ErrorStatus PyDbMInsertBlock::setRowSpacing(double val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setRowSpacing(val);
+}
+
+std::string PyDbMInsertBlock::className()
+{
+    return "AcDbMInsertBlock";
+}
+
+AcDbMInsertBlock* PyDbMInsertBlock::impObj() const
+{
+    return static_cast<AcDbMInsertBlock*>(m_pImp);
 }
 
 //-----------------------------------------------------------------------------------
