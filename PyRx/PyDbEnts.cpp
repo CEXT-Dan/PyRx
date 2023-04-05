@@ -1211,6 +1211,44 @@ AcDbMInsertBlock* PyDbMInsertBlock::impObj() const
     return static_cast<AcDbMInsertBlock*>(m_pImp);
 }
 
+//-------------------------------------------------------------------------------------------------------------
+//PyDbVertex
+void makeAcDbVertexWrapper()
+{
+    static auto wrapper = class_<PyDbVertex, bases<PyDbEntity>>("DbVertex", boost::python::no_init)
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("className", &PyDbVertex::className).staticmethod("className")
+        ;
+}
+
+
+PyDbVertex::PyDbVertex(AcDbVertex* ptr, bool autoDelete)
+    : PyDbEntity(ptr, autoDelete)
+{
+}
+
+PyDbVertex::PyDbVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbEntity(nullptr, false)
+{
+    AcDbVertex* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbVertex>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    m_pImp = pobj;
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+}
+
+std::string PyDbVertex::className()
+{
+    return "AcDbVertex";
+}
+
+AcDbVertex* PyDbVertex::impObj() const
+{
+    return static_cast<AcDbVertex*>(m_pImp);
+}
+
 //-----------------------------------------------------------------------------------
 //PyDbPoint
 void makePyDbPointWrapper()

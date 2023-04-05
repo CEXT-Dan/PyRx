@@ -256,6 +256,21 @@ public:
     AcDbMInsertBlock* impObj() const;
 };
 
+//-------------------------------------------------------------------------------------------------------------
+//PyDbVertex
+void makeAcDbVertexWrapper();
+class PyDbVertex : public PyDbEntity
+{
+public:
+    PyDbVertex(AcDbVertex* ptr, bool autoDelete);
+    PyDbVertex(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbVertex() = default;
+    static std::string className();
+public:
+    AcDbVertex* impObj() const;
+};
+
+
 //-----------------------------------------------------------------------------------
 //PyDbPoint
 void makePyDbPointWrapper();
