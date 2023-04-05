@@ -109,6 +109,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyAcDb3dPolylineVertexWrapper();
     makePyAcDbPolygonMeshVertexWrapper();
     makePyAcDbPolygonMeshVertexWrapper();
+    makePyAcDbFaceRecordWrapper();
 
     makePyDbPointWrapper();
 
@@ -122,8 +123,6 @@ BOOST_PYTHON_MODULE(PyDb)
 
     //global
     def("RegApp", &RegApp);
-
-
 
     enum_<AcDb::Vertex2dType>("Vertex2dType")//leave the k
         .value("k2dVertex", AcDb::Vertex2dType::k2dVertex)

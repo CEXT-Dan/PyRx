@@ -1693,7 +1693,106 @@ AcDbPolyFaceMeshVertex* PyDbPolyFaceMeshVertex::impObj() const
     return static_cast<AcDbPolyFaceMeshVertex*>(m_pImp);
 }
 
+//-------------------------------------------------------------------------------------------------------------
+//AcDbFaceRecord
 
+void makePyAcDbFaceRecordWrapper()
+{
+    static auto wrapper = class_<PyDbFaceRecord, bases<PyDbVertex>>("DbFaceRecord")
+        .def(init<>())
+        .def(init<Adesk::Int16, Adesk::Int16, Adesk::Int16, Adesk::Int16>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("getVertexAt", &PyDbFaceRecord::getVertexAt)
+        .def("setVertexAt", &PyDbFaceRecord::setVertexAt)
+        .def("isEdgeVisibleAt", &PyDbFaceRecord::isEdgeVisibleAt)
+        .def("makeEdgeVisibleAt", &PyDbFaceRecord::makeEdgeVisibleAt)
+        .def("makeEdgeInvisibleAt", &PyDbFaceRecord::makeEdgeInvisibleAt)
+        .def("className", &PyDbPolyFaceMeshVertex::className).staticmethod("className")
+        ;
+}
+
+PyDbFaceRecord::PyDbFaceRecord()
+  :PyDbFaceRecord(new AcDbFaceRecord(), true)
+{
+}
+
+PyDbFaceRecord::PyDbFaceRecord(Adesk::Int16 vtx0, Adesk::Int16 vtx1, Adesk::Int16 vtx2, Adesk::Int16 vtx3)
+    : PyDbFaceRecord(new AcDbFaceRecord(vtx0, vtx1, vtx2, vtx3), true)
+{
+}
+
+PyDbFaceRecord::PyDbFaceRecord(AcDbFaceRecord* ptr, bool autoDelete)
+    : PyDbVertex(ptr,autoDelete)
+{
+}
+
+PyDbFaceRecord::PyDbFaceRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbVertex(nullptr, false)
+{
+    AcDbFaceRecord* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbFaceRecord>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    m_pImp = pobj;
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+}
+
+Adesk::Int16 PyDbFaceRecord::getVertexAt(Adesk::UInt16 faceIdx) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    Adesk::Int16 vtxIdx = 0;
+    if(auto es = imp->getVertexAt(faceIdx,vtxIdx); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return vtxIdx;
+}
+
+Acad::ErrorStatus PyDbFaceRecord::setVertexAt(Adesk::UInt16 faceIdx, Adesk::Int16 vtxIdx)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setVertexAt(faceIdx, vtxIdx);
+}
+
+Adesk::Boolean PyDbFaceRecord::isEdgeVisibleAt(Adesk::UInt16 faceIndex) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    Adesk::Boolean flag = false;
+    if (auto es = imp->isEdgeVisibleAt(faceIndex, flag); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return flag;
+}
+
+Acad::ErrorStatus PyDbFaceRecord::makeEdgeVisibleAt(Adesk::UInt16 faceIndex)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->makeEdgeVisibleAt(faceIndex);
+}
+
+Acad::ErrorStatus PyDbFaceRecord::makeEdgeInvisibleAt(Adesk::UInt16 faceIndex)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->makeEdgeInvisibleAt(faceIndex);
+}
+
+std::string PyDbFaceRecord::className()
+{
+    return "AcDbFaceRecord";
+}
+
+AcDbFaceRecord* PyDbFaceRecord::impObj() const
+{
+    return static_cast<AcDbFaceRecord*>(m_pImp);
+}
 
 //-----------------------------------------------------------------------------------
 //PyDbPoint

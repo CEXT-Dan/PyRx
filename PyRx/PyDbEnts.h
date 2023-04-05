@@ -379,6 +379,32 @@ public:
 };
 
 
+//-------------------------------------------------------------------------------------------------------------
+//AcDbFaceRecord
+void makePyAcDbFaceRecordWrapper();
+class PyDbFaceRecord : public PyDbVertex
+{
+public:
+    PyDbFaceRecord();
+    PyDbFaceRecord(Adesk::Int16 vtx0, Adesk::Int16 vtx1,Adesk::Int16 vtx2, Adesk::Int16 vtx3);
+    PyDbFaceRecord(AcDbFaceRecord* ptr, bool autoDelete);
+    PyDbFaceRecord(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbFaceRecord() = default;
+
+    Adesk::Int16 getVertexAt(Adesk::UInt16 faceIdx) const;
+    Acad::ErrorStatus setVertexAt(Adesk::UInt16 faceIdx, Adesk::Int16 vtxIdx);
+
+    Adesk::Boolean isEdgeVisibleAt(Adesk::UInt16 faceIndex) const;
+
+    Acad::ErrorStatus makeEdgeVisibleAt(Adesk::UInt16 faceIndex);
+    Acad::ErrorStatus makeEdgeInvisibleAt(Adesk::UInt16 faceIndex);
+
+    static std::string className();
+public:
+    AcDbFaceRecord* impObj() const;
+};
+
+
 //-----------------------------------------------------------------------------------
 //PyDbPoint
 void makePyDbPointWrapper();
