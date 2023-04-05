@@ -86,7 +86,7 @@ class PyDbAttributeDefinition : public PyDbText
 {
 public:
     PyDbAttributeDefinition();
-    PyDbAttributeDefinition(const AcGePoint3d& position,const std::string& text, const std::string& tag, const std::string& prompt, const PyDbObjectId&  style);
+    PyDbAttributeDefinition(const AcGePoint3d& position,const std::string& text, const std::string& tag, const std::string& prompt, const PyDbObjectId& style);
     PyDbAttributeDefinition(AcDbAttributeDefinition* ptr, bool autoDelete);
     PyDbAttributeDefinition(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbAttributeDefinition() override = default;
@@ -129,6 +129,52 @@ public:
     static std::string className();
 public:
     AcDbAttributeDefinition* impObj() const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyDbAttribute
+void makePyDbAttributeWrapper();
+class PyDbAttribute : public PyDbText
+{
+public:
+    PyDbAttribute();
+    PyDbAttribute(const AcGePoint3d& position, const std::string& text, const std::string& tag,const PyDbObjectId& style);
+    PyDbAttribute(AcDbAttributeDefinition* ptr, bool autoDelete);
+    PyDbAttribute(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbAttribute() override = default;
+
+    std::string tag() const;
+    Acad::ErrorStatus setTag(const std::string& val);
+
+    Adesk::Boolean isInvisible() const;
+    Acad::ErrorStatus setInvisible(Adesk::Boolean val);
+
+    Adesk::Boolean      isConstant() const;
+    Adesk::Boolean      isVerifiable() const;
+    Adesk::Boolean      isPreset() const;
+
+    Adesk::UInt16       fieldLength() const;
+    Acad::ErrorStatus   setFieldLength(Adesk::UInt16);
+
+    Acad::ErrorStatus setAttributeFromBlock(const AcGeMatrix3d& blkXform);
+    Acad::ErrorStatus setAttributeFromBlock(const PyDbAttributeDefinition& pAttdef,const AcGeMatrix3d& blkXform);
+
+    bool lockPositionInBlock() const;
+    Acad::ErrorStatus setLockPositionInBlock(bool bValue);
+
+    bool              isMTextAttribute() const;
+    //AcDbMText*        getMTextAttribute() const;
+    //const AcDbMText*  getMTextAttributeConst() const;
+    //Acad::ErrorStatus setMTextAttribute(AcDbMText*);
+    //Acad::ErrorStatus setMTextAttributeConst(const AcDbMText*);
+    Acad::ErrorStatus convertIntoMTextAttribute(Adesk::Boolean val);
+    Acad::ErrorStatus updateMTextAttribute();
+    bool              isReallyLocked() const;
+
+
+    static std::string className();
+public:
+    AcDbAttribute* impObj() const;
 };
 
 

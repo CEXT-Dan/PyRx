@@ -462,19 +462,16 @@ void makePyDbAttributeDefinitionWrapper()
 PyDbAttributeDefinition::PyDbAttributeDefinition()
     : PyDbText(new AcDbAttributeDefinition(), true)
 {
-
 }
 
 PyDbAttributeDefinition::PyDbAttributeDefinition(const AcGePoint3d& position, const std::string& text, const std::string& tag, const std::string& prompt, const PyDbObjectId& style)
     : PyDbText(new AcDbAttributeDefinition(position, utf8_to_wstr(text).c_str(), utf8_to_wstr(tag).c_str(), utf8_to_wstr(prompt).c_str(), style.m_id), true)
 {
-
 }
 
 PyDbAttributeDefinition::PyDbAttributeDefinition(AcDbAttributeDefinition* ptr, bool autoDelete)
     : PyDbText(ptr, autoDelete)
 {
-
 }
 
 PyDbAttributeDefinition::PyDbAttributeDefinition(const PyDbObjectId& id, AcDb::OpenMode mode)
@@ -658,6 +655,213 @@ AcDbAttributeDefinition* PyDbAttributeDefinition::impObj() const
 {
     return static_cast<AcDbAttributeDefinition*>(m_pImp);
 }
+//-----------------------------------------------------------------------------------
+//PyDbAttribute
+void makePyDbAttributeWrapper()
+{
+    static auto wrapper = class_<PyDbAttribute, bases<PyDbText>>("DbAttribute")
+        .def(init<>())
+        .def(init<const AcGePoint3d&, const std::string&, const std::string&, const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("tag", &PyDbAttribute::tag)
+        .def("setTag", &PyDbAttribute::setTag)
+        .def("isInvisible", &PyDbAttribute::isInvisible)
+        .def("setInvisible", &PyDbAttribute::setInvisible)
+        .def("isConstant", &PyDbAttribute::isConstant)
+        .def("isVerifiable", &PyDbAttribute::isVerifiable)
+        .def("isPreset", &PyDbAttribute::isPreset)
+        .def("fieldLength", &PyDbAttribute::fieldLength)
+        .def("setFieldLength", &PyDbAttribute::setFieldLength)
+        .def<Acad::ErrorStatus(PyDbAttribute::*)(const AcGeMatrix3d&)>("setAttributeFromBlock", &PyDbAttribute::setAttributeFromBlock)
+        .def<Acad::ErrorStatus(PyDbAttribute::*)(const PyDbAttributeDefinition&, const AcGeMatrix3d&)>("setAttributeFromBlock", &PyDbAttribute::setAttributeFromBlock)
+        .def("lockPositionInBlock", &PyDbAttribute::lockPositionInBlock)
+        .def("setLockPositionInBlock", &PyDbAttribute::setLockPositionInBlock)
+        .def("isMTextAttribute", &PyDbAttribute::isMTextAttribute)
+        .def("convertIntoMTextAttribute", &PyDbAttribute::convertIntoMTextAttribute)
+        .def("updateMTextAttribute", &PyDbAttribute::updateMTextAttribute)
+        .def("isReallyLocked", &PyDbAttribute::isReallyLocked)
+        .def("className", &PyDbAttributeDefinition::className).staticmethod("className")
+        ;
+}
+
+PyDbAttribute::PyDbAttribute()
+    : PyDbText(new AcDbAttribute(), true)
+{
+}
+
+PyDbAttribute::PyDbAttribute(const AcGePoint3d& position, const std::string& text, const std::string& tag, const PyDbObjectId& style)
+    : PyDbText(new AcDbAttribute(position, utf8_to_wstr(text).c_str(), utf8_to_wstr(tag).c_str(),style.m_id), true)
+{
+}
+
+PyDbAttribute::PyDbAttribute(AcDbAttributeDefinition* ptr, bool autoDelete)
+    : PyDbText(ptr, autoDelete)
+{
+}
+
+PyDbAttribute::PyDbAttribute(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbText(nullptr, false)
+{
+    AcDbAttribute* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbAttribute>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    m_pImp = pobj;
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+}
+
+
+std::string PyDbAttribute::tag() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return wstr_to_utf8(imp->tagConst());
+}
+
+Acad::ErrorStatus PyDbAttribute::setTag(const std::string& val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setTag(utf8_to_wstr(val).c_str());
+}
+
+Adesk::Boolean PyDbAttribute::isInvisible() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isInvisible();
+}
+
+Acad::ErrorStatus PyDbAttribute::setInvisible(Adesk::Boolean val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setInvisible(val);
+}
+
+Adesk::Boolean PyDbAttribute::isConstant() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isConstant();
+}
+
+Adesk::Boolean PyDbAttribute::isVerifiable() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isVerifiable();
+}
+
+Adesk::Boolean PyDbAttribute::isPreset() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isPreset();
+}
+
+Adesk::UInt16 PyDbAttribute::fieldLength() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isPreset();
+}
+
+Acad::ErrorStatus PyDbAttribute::setFieldLength(Adesk::UInt16 val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setFieldLength(val);
+}
+
+Acad::ErrorStatus PyDbAttribute::setAttributeFromBlock(const AcGeMatrix3d& blkXform)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setAttributeFromBlock(blkXform);
+}
+
+Acad::ErrorStatus PyDbAttribute::setAttributeFromBlock(const PyDbAttributeDefinition& pAttdef, const AcGeMatrix3d& blkXform)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setAttributeFromBlock(pAttdef.impObj(), blkXform);
+}
+
+bool PyDbAttribute::lockPositionInBlock() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->lockPositionInBlock();
+}
+
+Acad::ErrorStatus PyDbAttribute::setLockPositionInBlock(bool bValue)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setLockPositionInBlock(bValue);
+}
+
+bool PyDbAttribute::isMTextAttribute() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isMTextAttribute();
+}
+
+Acad::ErrorStatus PyDbAttribute::convertIntoMTextAttribute(Adesk::Boolean val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->convertIntoMTextAttribute(val);
+}
+
+Acad::ErrorStatus PyDbAttribute::updateMTextAttribute()
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->updateMTextAttribute();
+}
+
+bool PyDbAttribute::isReallyLocked() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isReallyLocked();
+#endif
+}
+
+std::string PyDbAttribute::className()
+{
+    return "AcDbAttribute";
+}
+
+AcDbAttribute* PyDbAttribute::impObj() const
+{
+    return static_cast<AcDbAttribute*>(m_pImp);
+}
+
 
 //-----------------------------------------------------------------------------------
 //PyDbPoint
