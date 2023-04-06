@@ -69,14 +69,14 @@ PyDbBlockTableRecord::PyDbBlockTableRecord(const PyDbObjectId& id, AcDb::OpenMod
 
 PyDbObjectId PyDbBlockTableRecord::appendAcDbEntity(const PyDbEntity& ent)
 {
-    PyDbObjectId id;
+    AcDbObjectId _id;
     auto imp = impObj();
-    if (imp != nullptr)
+    if (imp != nullptr && ent.impObj() != nullptr)
     {
-        if (auto es = imp->appendAcDbEntity(id.m_id, ent.impObj()); es != eOk)
+        if (auto es = imp->appendAcDbEntity(_id, ent.impObj()); es != eOk)
             throw PyAcadErrorStatus(es);
     }
-    return id;
+    return PyDbObjectId(_id);
 }
 
 boost::python::list PyDbBlockTableRecord::objectIds()
@@ -159,6 +159,7 @@ Acad::ErrorStatus PyDbBlockTableRecord::setOrigin(const AcGePoint3d& pt)
     return imp->setOrigin(pt);
 }
 
+//TODO: wrong
 Acad::ErrorStatus PyDbBlockTableRecord::openBlockBegin(PyDbBlockBegin& pBlockBegin, AcDb::OpenMode openMode)
 {
     auto imp = impObj();

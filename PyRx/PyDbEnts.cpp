@@ -51,7 +51,6 @@ void makePyDbTextWrapper()
         .def("className", &PyDbText::className).staticmethod("className")
         ;
 
-    scope enum_scope = class_<PyDbText>("DbText");
 
     enum_<AcDbText::AcTextAlignment>("AcTextAlignment")
         .value("TextAlignmentLeft", AcDbText::AcTextAlignment::kTextAlignmentLeft)

@@ -265,7 +265,7 @@ boost::python::list PyDbCurve::getOffsetCurves(double offsetDist) const
     if (auto es = imp->getOffsetCurves(offsetDist, offsetCurves); es != eOk)
         throw PyAcadErrorStatus(es);
     for (auto ptr : offsetCurves)
-        curves.append(PyDbCurve(static_cast<AcDbCurve*>(ptr), true));
+        curves.append(PyDbEntity(static_cast<AcDbEntity*>(ptr), false));
     return curves;
 }
 
@@ -279,7 +279,11 @@ boost::python::list PyDbCurve::getOffsetCurvesGivenPlaneNormal(const AcGeVector3
     if (auto es = imp->getOffsetCurvesGivenPlaneNormal(normal, offsetDist, offsetCurves); es != eOk)
         throw PyAcadErrorStatus(es);
     for (auto ptr : offsetCurves)
-        curves.append(PyDbCurve(static_cast<AcDbCurve*>(ptr), true));
+    {
+        PyDbEntity ent(static_cast<AcDbEntity*>(ptr), true);
+        curves.append(ent);
+        ent.addRef();
+    }
     return curves;
 }
 
@@ -320,7 +324,11 @@ boost::python::list PyDbCurve::getSplitCurvesAtParams(const boost::python::list&
         if (auto es = imp->getSplitCurves(doublesArray, offsetCurves); es != eOk)
             throw PyAcadErrorStatus(es);
         for (auto ptr : offsetCurves)
-            curves.append(PyDbCurve(static_cast<AcDbCurve*>(ptr), true));
+        {
+            PyDbEntity ent(static_cast<AcDbEntity*>(ptr), true);
+            curves.append(ent);
+            ent.addRef();
+        }
         return curves;
     }
     catch (...)
@@ -346,7 +354,11 @@ boost::python::list PyDbCurve::getSplitCurvesAtPoints(const boost::python::list&
         if (auto es = imp->getSplitCurves(pointsArray, offsetCurves); es != eOk)
             throw PyAcadErrorStatus(es);
         for (auto ptr : offsetCurves)
-            curves.append(PyDbCurve(static_cast<AcDbCurve*>(ptr), true));
+        {
+            PyDbEntity ent(static_cast<AcDbEntity*>(ptr), true);
+            curves.append(ent);
+            ent.addRef();
+        }
         return curves;
     }
     catch (...)

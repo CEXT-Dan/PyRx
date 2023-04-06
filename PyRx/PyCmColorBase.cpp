@@ -65,8 +65,6 @@ void makeAcCmTransparencyWrapper()
         .def("isSolid", &AcCmTransparency::isSolid)
         ;
 
-    scope enum_scope = class_<AcCmTransparency>("CmTransparency");
-
     enum_<AcCmTransparency::transparencyMethod>("TransparencyMethod")
         .value("ByLayer", AcCmTransparency::transparencyMethod::kByLayer)
         .value("ByBlock", AcCmTransparency::transparencyMethod::kByBlock)
@@ -147,8 +145,7 @@ void makeAcCmEntityColorWrapper()
 #endif
         ;
 
-    scope enum_scope = class_<AcCmEntityColor>("CmEntityColor");
-
+  
     enum_<AcCmEntityColor::ColorMethod>("ColorMethod")
         .value("ByLayer", AcCmEntityColor::ColorMethod::kByLayer)
         .value("ByBlock", AcCmEntityColor::ColorMethod::kByBlock)

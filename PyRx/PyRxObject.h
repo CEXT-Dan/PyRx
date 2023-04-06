@@ -19,10 +19,15 @@ public:
     bool isNull();
     static std::string className();
 
+    void addRef();
+    void minusRef();
+
+
 public:
     AcRxObject* impObj() const;
 
 protected:
+    int m_refCount = 0;
     AcRxObject* m_pImp = nullptr;
     bool m_bAutoDelete = false;
 };

@@ -25,8 +25,7 @@ void makeAcDbFieldtWrapper()
         .def("getValue", &PyDbField::getValue)
         .def("className", &PyDbField::className).staticmethod("className")
         ;
-    scope enum_scope = class_<PyDbField>("DbField")
-        ;
+    
     enum_<AcDbField::State>("State")
         .value("Initialized", AcDbField::State::kInitialized)
         .value("Compiled", AcDbField::State::kCompiled)

@@ -51,6 +51,17 @@ std::string PyRxObject::className()
     return "AcRxObject";
 }
 
+void PyRxObject::addRef()
+{
+    m_refCount++;
+}
+
+void PyRxObject::minusRef()
+{
+    if (m_refCount > 0)
+        m_refCount--;
+}
+
 AcRxObject* PyRxObject::impObj() const
 {
     return m_pImp;
@@ -58,15 +69,21 @@ AcRxObject* PyRxObject::impObj() const
 
 void PyRxObject::deleteNativeObject()
 {
+    //TODO!! need a shared pointer that we can not delete if its DBO
     try
     {
-        if (m_bAutoDelete)
+        if (!m_bAutoDelete)
+            return;
+        if (m_pImp == nullptr)
+            return;
+        if (m_refCount == 0)
         {
-            if (m_pImp != nullptr)
-            {
-                delete m_pImp;
-                m_pImp = nullptr;
-            }
+            delete m_pImp;
+            m_pImp = nullptr;
+        }
+        else
+        {
+            m_refCount--;
         }
     }
     catch (...) {}

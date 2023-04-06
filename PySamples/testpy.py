@@ -25,10 +25,29 @@ def OnPyUnloadDwg():
          
 def PyRxCmd_pycmd():
 	try: 
-		createDbp()
+		getSplitCurves()
 	except Exception as err:
 		PyRxApp.Printf(err)
 		
+def getSplitCurves():
+	doc = PyAp.ApApplication().docManager().curDocument()
+	ed = doc.editor()
+	entres = ed.entsel("\nSelect")
+	pntres = ed.getPoint("\nPoint On Curve")
+
+	if(entres[2] == PyEd.PromptStatus.Normal):
+		entId = entres[0]
+		curve = PyDb.DbCurve(entId, PyDb.OpenMode.ForRead)
+		pnt = pntres[0]
+		param = curve.getParamAtPoint(pnt)
+		params = [param]
+		curves = curve.getSplitCurves(params)
+		db =doc.database()
+		model = PyDb.DbBlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.ForWrite)
+		for x in curves:
+			model.appendAcDbEntity(x)
+		
+
 def createDbp():
 	try:
 		db = PyAp.ApApplication().docManager().curDocument().database()

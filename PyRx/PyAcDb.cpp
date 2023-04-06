@@ -12,6 +12,8 @@
 #include "PyDbLayerTableRecord.h"
 #include "PyDbField.h"
 #include "PyDbEnts.h"
+#include "PyDbCurve.h"
+
 using namespace boost::python;
 
 PyDbObject openDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
@@ -110,7 +112,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyAcDbPolygonMeshVertexWrapper();
     makePyAcDbPolygonMeshVertexWrapper();
     makePyAcDbFaceRecordWrapper();
-
+    makePyDbCurveWrapper();
     makePyDbPointWrapper();
 
     makeAcDbDictionaryWrapper();

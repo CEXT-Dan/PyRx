@@ -13,6 +13,7 @@ void makeAcEditorWrapper()
         .def("getInteger", &PyAcEditor::getInteger)
         .def("getDouble", &PyAcEditor::getDouble)
         .def("getString", &PyAcEditor::getString)
+        .def("getPoint", &PyAcEditor::getPoint)
         .def("entsel", &PyAcEditor::entsel)
         .def<boost::python::tuple(PyAcEditor::*)(void)>("selectAll", &PyAcEditor::selectAll)
         .def<boost::python::tuple(PyAcEditor::*)(const boost::python::list&)>("selectAll", &PyAcEditor::selectAll)
@@ -32,6 +33,15 @@ boost::python::tuple PyAcEditor::getDouble(const std::string& prompt)
 {
     std::pair<double, Acad::PromptStatus> res;
     res.second = static_cast<Acad::PromptStatus>(acedGetReal(utf8_to_wstr(prompt).c_str(), &res.first));
+    return boost::python::make_tuple(res.first, res.second);
+}
+
+boost::python::tuple PyAcEditor::getPoint(const std::string& prompt)
+{
+    ads_point pnt;
+    std::pair<AcGePoint3d, Acad::PromptStatus> res;
+    res.second = static_cast<Acad::PromptStatus>(acedGetPoint(nullptr, utf8_to_wstr(prompt).c_str(), pnt));
+    res.first = asPnt3d(pnt);
     return boost::python::make_tuple(res.first, res.second);
 }
 
