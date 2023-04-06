@@ -313,14 +313,21 @@ AcDb::XrefStatus PyDbBlockTableRecord::xrefStatus() const
 
 Acad::ErrorStatus PyDbBlockTableRecord::assumeOwnershipOf(const boost::python::list& entitiesToMove)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    const auto PyDbObjectIds = py_list_to_std_vector<PyDbObjectId>(entitiesToMove);
-    AcDbObjectIdArray ids;
-    for (const auto& pyId : PyDbObjectIds)
-        ids.append(pyId.m_id);
-   return imp->assumeOwnershipOf(ids);
+    try
+    {
+        auto imp = impObj();
+        if (imp == nullptr)
+            throw PyNullObject();
+        const auto PyDbObjectIds = py_list_to_std_vector<PyDbObjectId>(entitiesToMove);
+        AcDbObjectIdArray ids;
+        for (const auto& pyId : PyDbObjectIds)
+            ids.append(pyId.m_id);
+        return imp->assumeOwnershipOf(ids);
+    }
+    catch(...)
+    {
+        throw PyAcadErrorStatus(eInvalidInput);
+    }
 }
 
 AcDbBlockTableRecord::BlockScaling PyDbBlockTableRecord::blockScaling() const
