@@ -105,7 +105,7 @@ PyDbEntity::PyDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
     AcDbEntity* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbEntity>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
-    m_pImp = pobj;
+    this->resetImp(pobj, false, true);
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
@@ -586,7 +586,7 @@ std::string PyDbEntity::className()
 
 AcDbEntity* PyDbEntity::impObj() const
 {
-    return static_cast<AcDbEntity*>(m_pImp);
+    return static_cast<AcDbEntity*>(m_pImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -610,7 +610,7 @@ PyDbBlockBegin::PyDbBlockBegin(const PyDbObjectId& id, AcDb::OpenMode mode)
     AcDbBlockBegin* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbBlockBegin>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
-    m_pImp = pobj;
+    this->resetImp(pobj, false, true);
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
@@ -623,7 +623,7 @@ std::string PyDbBlockBegin::className()
 
 AcDbBlockBegin* PyDbBlockBegin::impObj() const
 {
-    return static_cast<AcDbBlockBegin*>(m_pImp);
+    return static_cast<AcDbBlockBegin*>(m_pImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -647,7 +647,7 @@ PyDbBlockEnd::PyDbBlockEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
     AcDbBlockEnd* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbBlockEnd>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
-    m_pImp = pobj;
+    this->resetImp(pobj, false, true);
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
@@ -660,7 +660,7 @@ std::string PyDbBlockEnd::className()
 
 AcDbBlockEnd* PyDbBlockEnd::impObj() const
 {
-    return static_cast<AcDbBlockEnd*>(m_pImp);
+    return static_cast<AcDbBlockEnd*>(m_pImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -686,7 +686,7 @@ PyDbSequenceEnd::PyDbSequenceEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
     AcDbSequenceEnd* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbSequenceEnd>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
-    m_pImp = pobj;
+    this->resetImp(pobj, false, true);
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
@@ -699,5 +699,5 @@ std::string PyDbSequenceEnd::className()
 
 AcDbSequenceEnd* PyDbSequenceEnd::impObj() const
 {
-    return static_cast<AcDbSequenceEnd*>(m_pImp);
+    return static_cast<AcDbSequenceEnd*>(m_pImp.get());
 }

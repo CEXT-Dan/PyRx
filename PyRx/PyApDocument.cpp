@@ -17,14 +17,8 @@ void makeAcApDocumentWrapper()
 //-----------------------------------------------------------------------------------------
 //PyApDocument
 PyApDocument::PyApDocument(AcApDocument* ptr, bool autoDelete)
-    : PyRxObject(ptr, autoDelete)
+    : PyRxObject(ptr, autoDelete,false)
 {
-}
-
-PyApDocument::~PyApDocument()
-{
-    m_bAutoDelete = false;
-    m_pImp = nullptr;
 }
 
 PyDbDatabase PyApDocument::database() const
@@ -47,5 +41,5 @@ std::string PyApDocument::className()
 
 AcApDocument* PyApDocument::impObj() const
 {
-    return static_cast<AcApDocument*>(m_pImp);
+    return static_cast<AcApDocument*>(m_pImp.get());
 }

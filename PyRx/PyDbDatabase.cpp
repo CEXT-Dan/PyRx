@@ -471,22 +471,22 @@ void makeAcDbDatabaseWrapper()
 //---------------------------------------------------------------------------------------------------
 // PyDbDatabase
 PyDbDatabase::PyDbDatabase()
-    :PyRxObject(nullptr, false)
+    :PyRxObject(nullptr, false,false)
 {
 }
 
 PyDbDatabase::PyDbDatabase(AcDbDatabase* _pDb)
-    : PyRxObject(_pDb, false)
+    : PyRxObject(_pDb, false,false)
 {
 }
 
 PyDbDatabase::PyDbDatabase(AcDbDatabase* _pDb, bool autoDelete)
-    : PyRxObject(_pDb, false)
+    : PyRxObject(_pDb, false,false)
 {
 }
 
 PyDbDatabase::PyDbDatabase(bool buildDefaultDrawing, bool noDocument)
-    : PyRxObject(new AcDbDatabase(buildDefaultDrawing, noDocument), true)
+    : PyRxObject(new AcDbDatabase(buildDefaultDrawing, noDocument), true,false)
 {
 }
 
@@ -4508,6 +4508,6 @@ std::string PyDbDatabase::className()
 
 AcDbDatabase* PyDbDatabase::impObj() const
 {
-    return static_cast<AcDbDatabase*>(m_pImp);
+    return static_cast<AcDbDatabase*>(m_pImp.get());
 }
 

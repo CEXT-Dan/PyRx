@@ -17,7 +17,7 @@ void makeAcApDocManagerWrapper()
 //PyApDocManager
 
 PyApDocManager::PyApDocManager(AcApDocManager* ptr, bool autoDelete)
-    : PyRxObject(ptr, autoDelete)
+    : PyRxObject(ptr, autoDelete,false)
 {
 }
 
@@ -36,5 +36,5 @@ std::string PyApDocManager::className()
 
 AcApDocManager* PyApDocManager::impObj() const
 {
-    return static_cast<AcApDocManager*>(m_pImp);
+    return static_cast<AcApDocManager*>(m_pImp.get());
 }

@@ -97,7 +97,7 @@ PyDbText::PyDbText(const PyDbObjectId& id, AcDb::OpenMode mode)
     AcDbText* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbText>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
-    m_pImp = pobj;
+    this->resetImp(pobj, false, true);
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
@@ -423,7 +423,7 @@ std::string PyDbText::className()
 
 AcDbText* PyDbText::impObj() const
 {
-    return static_cast<AcDbText*>(m_pImp);
+    return static_cast<AcDbText*>(m_pImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -479,7 +479,7 @@ PyDbAttributeDefinition::PyDbAttributeDefinition(const PyDbObjectId& id, AcDb::O
     AcDbAttributeDefinition* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbAttributeDefinition>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
-    m_pImp = pobj;
+    this->resetImp(pobj, false, true);
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
@@ -652,7 +652,7 @@ std::string PyDbAttributeDefinition::className()
 
 AcDbAttributeDefinition* PyDbAttributeDefinition::impObj() const
 {
-    return static_cast<AcDbAttributeDefinition*>(m_pImp);
+    return static_cast<AcDbAttributeDefinition*>(m_pImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -705,7 +705,7 @@ PyDbAttribute::PyDbAttribute(const PyDbObjectId& id, AcDb::OpenMode mode)
     AcDbAttribute* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbAttribute>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
-    m_pImp = pobj;
+    this->resetImp(pobj, false, true);
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
@@ -858,7 +858,7 @@ std::string PyDbAttribute::className()
 
 AcDbAttribute* PyDbAttribute::impObj() const
 {
-    return static_cast<AcDbAttribute*>(m_pImp);
+    return static_cast<AcDbAttribute*>(m_pImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -914,7 +914,7 @@ PyDbBlockReference::PyDbBlockReference(const PyDbObjectId& id, AcDb::OpenMode mo
     AcDbBlockReference* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbBlockReference>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
-    m_pImp = pobj;
+    this->resetImp(pobj, false, true);
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
@@ -1086,7 +1086,7 @@ std::string PyDbBlockReference::className()
 
 AcDbBlockReference* PyDbBlockReference::impObj() const
 {
-    return static_cast<AcDbBlockReference*>(m_pImp);
+    return static_cast<AcDbBlockReference*>(m_pImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -1130,7 +1130,7 @@ PyDbMInsertBlock::PyDbMInsertBlock(const PyDbObjectId& id, AcDb::OpenMode mode)
     AcDbMInsertBlock* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbMInsertBlock>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
-    m_pImp = pobj;
+    this->resetImp(pobj, false, true);
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
@@ -1207,7 +1207,7 @@ std::string PyDbMInsertBlock::className()
 
 AcDbMInsertBlock* PyDbMInsertBlock::impObj() const
 {
-    return static_cast<AcDbMInsertBlock*>(m_pImp);
+    return static_cast<AcDbMInsertBlock*>(m_pImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -1231,7 +1231,7 @@ PyDbVertex::PyDbVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
     AcDbVertex* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbVertex>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
-    m_pImp = pobj;
+    this->resetImp(pobj, false, true);
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
@@ -1244,7 +1244,7 @@ std::string PyDbVertex::className()
 
 AcDbVertex* PyDbVertex::impObj() const
 {
-    return static_cast<AcDbVertex*>(m_pImp);
+    return static_cast<AcDbVertex*>(m_pImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -1307,7 +1307,7 @@ PyDb2dVertex::PyDb2dVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
     AcDb2dVertex* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDb2dVertex>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
-    m_pImp = pobj;
+    this->resetImp(pobj, false, true);
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
@@ -1468,7 +1468,7 @@ std::string PyDb2dVertex::className()
 
 AcDb2dVertex* PyDb2dVertex::impObj() const
 {
-    return static_cast<AcDb2dVertex*>(m_pImp);
+    return static_cast<AcDb2dVertex*>(m_pImp.get());
 }
 
 
@@ -1508,7 +1508,7 @@ PyDb3dPolylineVertex::PyDb3dPolylineVertex(const PyDbObjectId& id, AcDb::OpenMod
     AcDb3dPolylineVertex* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDb3dPolylineVertex>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
-    m_pImp = pobj;
+    this->resetImp(pobj, false, true);
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
@@ -1545,7 +1545,7 @@ std::string PyDb3dPolylineVertex::className()
 
 AcDb3dPolylineVertex* PyDb3dPolylineVertex::impObj() const
 {
-    return static_cast<AcDb3dPolylineVertex*>(m_pImp);
+    return static_cast<AcDb3dPolylineVertex*>(m_pImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -1584,7 +1584,7 @@ PyDbPolygonMeshVertex::PyDbPolygonMeshVertex(const PyDbObjectId& id, AcDb::OpenM
     AcDbPolygonMeshVertex* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbPolygonMeshVertex>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
-    m_pImp = pobj;
+    this->resetImp(pobj, false, true);
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
@@ -1621,7 +1621,7 @@ std::string PyDbPolygonMeshVertex::className()
 
 AcDbPolygonMeshVertex* PyDbPolygonMeshVertex::impObj() const
 {
-    return static_cast<AcDbPolygonMeshVertex*>(m_pImp);
+    return static_cast<AcDbPolygonMeshVertex*>(m_pImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -1659,7 +1659,7 @@ PyDbPolyFaceMeshVertex::PyDbPolyFaceMeshVertex(const PyDbObjectId& id, AcDb::Ope
     AcDbPolyFaceMeshVertex* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbPolyFaceMeshVertex>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
-    m_pImp = pobj;
+    this->resetImp(pobj, false, true);
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
@@ -1688,7 +1688,7 @@ std::string PyDbPolyFaceMeshVertex::className()
 
 AcDbPolyFaceMeshVertex* PyDbPolyFaceMeshVertex::impObj() const
 {
-    return static_cast<AcDbPolyFaceMeshVertex*>(m_pImp);
+    return static_cast<AcDbPolyFaceMeshVertex*>(m_pImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -1730,7 +1730,7 @@ PyDbFaceRecord::PyDbFaceRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
     AcDbFaceRecord* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbFaceRecord>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
-    m_pImp = pobj;
+    this->resetImp(pobj, false, true);
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
@@ -1789,7 +1789,7 @@ std::string PyDbFaceRecord::className()
 
 AcDbFaceRecord* PyDbFaceRecord::impObj() const
 {
-    return static_cast<AcDbFaceRecord*>(m_pImp);
+    return static_cast<AcDbFaceRecord*>(m_pImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -1834,7 +1834,7 @@ PyDbPoint::PyDbPoint(const PyDbObjectId& id, AcDb::OpenMode mode)
     AcDbPoint* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbPoint>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
-    m_pImp = pobj;
+    this->resetImp(pobj, false, true);
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
@@ -1919,5 +1919,5 @@ std::string PyDbPoint::className()
 
 AcDbPoint* PyDbPoint::impObj() const
 {
-    return static_cast<AcDbPoint*>(m_pImp);
+    return static_cast<AcDbPoint*>(m_pImp.get());
 }

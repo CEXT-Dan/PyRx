@@ -95,7 +95,7 @@ PyDbLayerTableRecord::PyDbLayerTableRecord(const PyDbObjectId& id, AcDb::OpenMod
     AcDbLayerTableRecord* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbLayerTableRecord>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
-    m_pImp = pobj;
+    this->resetImp(pobj, false, true);
 
     auto imp = impObj();
     if (imp == nullptr)
@@ -540,5 +540,5 @@ std::string PyDbLayerTableRecord::className()
 
 AcDbLayerTableRecord* PyDbLayerTableRecord::impObj() const
 {
-    return static_cast<AcDbLayerTableRecord*>(m_pImp);
+    return static_cast<AcDbLayerTableRecord*>(m_pImp.get());
 }

@@ -7,7 +7,7 @@ void makeAcGiObjectWrapper();
 class PyGiDrawable : public PyRxObject
 {
 public:
-    PyGiDrawable(AcGiDrawable* ptr, bool autoDelete);
+    PyGiDrawable(AcGiDrawable* ptr, bool autoDelete, bool isDbObject);
     virtual ~PyGiDrawable() override = default;
     static std::string className();
 

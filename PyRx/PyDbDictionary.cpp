@@ -29,7 +29,7 @@ PyDbDictionary::PyDbDictionary(const PyDbObjectId& id, AcDb::OpenMode mode)
     AcDbDictionary* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbDictionary>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
-    m_pImp = pobj;
+    this->resetImp(pobj, false, true);
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
@@ -72,5 +72,5 @@ std::string PyDbDictionary::className()
 
 AcDbDictionary* PyDbDictionary::impObj() const
 {
-    return static_cast<AcDbDictionary*>(m_pImp);
+    return static_cast<AcDbDictionary*>(m_pImp.get());
 }

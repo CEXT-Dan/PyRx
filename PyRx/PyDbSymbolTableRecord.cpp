@@ -31,8 +31,7 @@ PyDbSymbolTableRecord::PyDbSymbolTableRecord(const PyDbObjectId& id, AcDb::OpenM
     AcDbSymbolTableRecord* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbSymbolTableRecord>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
-    m_pImp = pobj;
-
+    this->resetImp(pobj, false, true);
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
@@ -90,5 +89,5 @@ std::string PyDbSymbolTableRecord::className()
 
 AcDbSymbolTableRecord* PyDbSymbolTableRecord::impObj() const
 {
-    return static_cast<AcDbSymbolTableRecord*>(m_pImp);
+    return static_cast<AcDbSymbolTableRecord*>(m_pImp.get());
 }

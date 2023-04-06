@@ -56,7 +56,7 @@ PyDbCurve::PyDbCurve(const PyDbObjectId& id, AcDb::OpenMode mode)
     AcDbCurve* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbCurve>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
-    m_pImp = pobj;
+    this->resetImp(pobj, false, true);
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
@@ -279,11 +279,7 @@ boost::python::list PyDbCurve::getOffsetCurvesGivenPlaneNormal(const AcGeVector3
     if (auto es = imp->getOffsetCurvesGivenPlaneNormal(normal, offsetDist, offsetCurves); es != eOk)
         throw PyAcadErrorStatus(es);
     for (auto ptr : offsetCurves)
-    {
-        PyDbEntity ent(static_cast<AcDbEntity*>(ptr), true);
-        curves.append(ent);
-        ent.addRef();
-    }
+        curves.append(PyDbEntity(static_cast<AcDbEntity*>(ptr), true));
     return curves;
 }
 
@@ -324,11 +320,7 @@ boost::python::list PyDbCurve::getSplitCurvesAtParams(const boost::python::list&
         if (auto es = imp->getSplitCurves(doublesArray, offsetCurves); es != eOk)
             throw PyAcadErrorStatus(es);
         for (auto ptr : offsetCurves)
-        {
-            PyDbEntity ent(static_cast<AcDbEntity*>(ptr), true);
-            curves.append(ent);
-            ent.addRef();
-        }
+            curves.append(PyDbEntity(static_cast<AcDbEntity*>(ptr), true));
         return curves;
     }
     catch (...)
@@ -354,11 +346,7 @@ boost::python::list PyDbCurve::getSplitCurvesAtPoints(const boost::python::list&
         if (auto es = imp->getSplitCurves(pointsArray, offsetCurves); es != eOk)
             throw PyAcadErrorStatus(es);
         for (auto ptr : offsetCurves)
-        {
-            PyDbEntity ent(static_cast<AcDbEntity*>(ptr), true);
-            curves.append(ent);
-            ent.addRef();
-        }
+            curves.append(PyDbEntity(static_cast<AcDbEntity*>(ptr), true));
         return curves;
     }
     catch (...)
@@ -409,5 +397,5 @@ std::string PyDbCurve::className()
 
 AcDbCurve* PyDbCurve::impObj() const
 {
-    return static_cast<AcDbCurve*>(m_pImp);
+    return static_cast<AcDbCurve*>(m_pImp.get());
 }

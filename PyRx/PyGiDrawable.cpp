@@ -13,8 +13,8 @@ void makeAcGiObjectWrapper()
 
 //-----------------------------------------------------------------------------------------
 //PyGiDrawable
-PyGiDrawable::PyGiDrawable(AcGiDrawable* ptr, bool autoDelete)
-    : PyRxObject(ptr, autoDelete)
+PyGiDrawable::PyGiDrawable(AcGiDrawable* ptr, bool autoDelete, bool isDbObject )
+    : PyRxObject(ptr, autoDelete, isDbObject)
 {
 }
 
@@ -25,5 +25,5 @@ std::string PyGiDrawable::className()
 
 AcGiDrawable* PyGiDrawable::impObj() const
 {
-    return static_cast<AcGiDrawable*>(m_pImp);
+    return static_cast<AcGiDrawable*>(m_pImp.get());
 }

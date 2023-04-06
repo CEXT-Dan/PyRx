@@ -10,9 +10,7 @@ void makeAcRxObjectWrapper()
     static auto wrapper = class_<PyRxObject, boost::noncopyable>("RxObject", boost::python::no_init)
         .def("isA", &PyRxObject::isA)
         .def("className", &PyRxObject::className).staticmethod("className")
-        .def("deleteNativeObject", &PyRxObject::deleteNativeObject)
         .def("isNull", &PyRxObject::isNull)
-
         .def("__eq__", &PyRxObject::operator==)
         .def("__ne__", &PyRxObject::operator!=)
         ;
@@ -21,14 +19,14 @@ void makeAcRxObjectWrapper()
 
 //-----------------------------------------------------------------------------------------
 //PyRxObject
-PyRxObject::PyRxObject(AcRxObject* ptr, bool autoDelete)
-    : m_pImp(ptr), m_bAutoDelete(autoDelete)
+PyRxObject::PyRxObject(AcRxObject* ptr, bool autoDelete, bool isDbOject)
+    : m_pImp(ptr, PyRxObjectDeleter(autoDelete, isDbOject))
 {
 }
 
 PyRxObject::~PyRxObject()
 {
-    deleteNativeObject();
+
 }
 
 bool PyRxObject::operator==(const PyRxObject& rhs) const
@@ -46,47 +44,19 @@ PyRxClass PyRxObject::isA() const
     return PyRxClass(m_pImp->isA(), false);
 }
 
+void PyRxObject::resetImp(AcRxObject* ptr, bool autoDelete, bool isDbObject)
+{
+    m_pImp.reset(ptr, PyRxObjectDeleter(autoDelete, isDbObject));
+}
+
 std::string PyRxObject::className()
 {
     return "AcRxObject";
 }
 
-void PyRxObject::addRef()
-{
-    m_refCount++;
-}
-
-void PyRxObject::minusRef()
-{
-    if (m_refCount > 0)
-        m_refCount--;
-}
-
 AcRxObject* PyRxObject::impObj() const
 {
-    return m_pImp;
-}
-
-void PyRxObject::deleteNativeObject()
-{
-    //TODO!! need a shared pointer that we can not delete if its DBO
-    try
-    {
-        if (!m_bAutoDelete)
-            return;
-        if (m_pImp == nullptr)
-            return;
-        if (m_refCount == 0)
-        {
-            delete m_pImp;
-            m_pImp = nullptr;
-        }
-        else
-        {
-            m_refCount--;
-        }
-    }
-    catch (...) {}
+    return m_pImp.get();
 }
 
 bool PyRxObject::isNull()
@@ -107,7 +77,7 @@ void makeAcRxClassWrapper()
 //-----------------------------------------------------------------------------------------
 //PrRxClass
 PyRxClass::PyRxClass(AcRxClass* ptr, bool autoDelete)
-    :PyRxObject(ptr, autoDelete)
+    :PyRxObject(ptr, autoDelete, false)
 {
 }
 
@@ -126,5 +96,5 @@ std::string PyRxClass::className()
 
 AcRxClass* PyRxClass::impObj() const
 {
-    return static_cast<AcRxClass*>(m_pImp);
+    return static_cast<AcRxClass*>(m_pImp.get());
 }

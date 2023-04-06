@@ -12,7 +12,7 @@ class PyApDocument : public PyRxObject
 {
 public:
     PyApDocument(AcApDocument* ptr, bool autoDelete);
-    virtual  ~PyApDocument() override;
+    virtual ~PyApDocument() override = default;
     PyDbDatabase database() const;
     PyAcEditor editor();
     static std::string className();
