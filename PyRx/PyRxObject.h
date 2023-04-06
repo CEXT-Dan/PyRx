@@ -2,21 +2,15 @@
 #include "boost/shared_ptr.hpp"
 class PyRxClass;
 
-class PyRxObjectDeleter
+struct PyRxObjectDeleter
 {
+
     bool m_autoDelete = true;
     bool m_isDbObject = false;
 
-public:
-
-public:
     inline PyRxObjectDeleter(bool autoDelete, bool isDbObject)
         : m_autoDelete(autoDelete), m_isDbObject(isDbObject)
     {
-    }
-    inline void setAutoDelete(bool flag)
-    {
-        m_autoDelete = flag;
     }
     inline bool isdbro(AcRxObject* p) const
     {
