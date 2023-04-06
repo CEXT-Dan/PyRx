@@ -450,6 +450,7 @@ public:
     virtual ~PyDb2dPolyline() override = default;
     PyDb2dPolyline(AcDb2dPolyline* ptr, bool autoDelete);
     PyDb2dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDb2dPolyline(AcDb::Poly2dType type, const boost::python::list& vertices, Adesk::Boolean closed);
 
     AcDb::Poly2dType    polyType() const;
     Acad::ErrorStatus   setPolyType(AcDb::Poly2dType val);
@@ -496,7 +497,7 @@ public:
 
     Acad::ErrorStatus openSequenceEnd(PyDbSequenceEnd& end, AcDb::OpenMode mode);
 
-    boost::python::list vertexIterator() const;
+    boost::python::list vertexIds() const;
 
     AcGePoint3d  vertexPosition(const AcDb2dVertex& vert) const;
 
@@ -505,4 +506,45 @@ public:
     static std::string className();
 public:
     AcDb2dPolyline* impObj() const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyDb3dPolyline
+void makePyDb3dPolylineWrapper();
+class PyDb3dPolyline : public PyDbCurve
+{
+public:
+    PyDb3dPolyline();
+    PyDb3dPolyline(AcDb3dPolyline* ptr, bool autoDelete);
+    PyDb3dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDb3dPolyline(AcDb::Poly3dType, const boost::python::list& vertices, Adesk::Boolean closed);
+    virtual ~PyDb3dPolyline() override = default;
+    double  length() const;
+    Acad::ErrorStatus  setClosed(Adesk::Boolean val);
+
+    Acad::ErrorStatus makeClosed();
+    Acad::ErrorStatus makeOpen();
+
+    AcDb::Poly3dType    polyType() const;
+    Acad::ErrorStatus   setPolyType(AcDb::Poly3dType val);
+    Acad::ErrorStatus   convertToPolyType(AcDb::Poly3dType val);
+
+    Acad::ErrorStatus   straighten();
+    Acad::ErrorStatus   splineFit();
+    Acad::ErrorStatus   splineFit(AcDb::Poly3dType splineType, Adesk::Int16   splineSegs);
+
+    Acad::ErrorStatus appendVertex(const PyDb3dPolylineVertex& vt);
+    Acad::ErrorStatus appendVertex(PyDbObjectId& id, const PyDb3dPolylineVertex& vt);
+
+    Acad::ErrorStatus insertVertexAt(const PyDb3dPolylineVertex& pIndexVert, PyDb3dPolylineVertex& pNewVertex);
+    Acad::ErrorStatus insertVertexAt(PyDbObjectId& newVertId, const PyDbObjectId& indexVertId, PyDb3dPolylineVertex& pNewVertex);
+
+    Acad::ErrorStatus openVertex(PyDb3dPolylineVertex& vt, const PyDbObjectId& vertId, AcDb::OpenMode mode) const;
+    Acad::ErrorStatus openSequenceEnd(PyDbSequenceEnd&, AcDb::OpenMode);
+
+    boost::python::list vertexIds() const;
+
+    static std::string className();
+public:
+    AcDb3dPolyline* impObj() const;
 };

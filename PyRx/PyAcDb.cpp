@@ -115,6 +115,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbCurveWrapper();
     makePyDbPointWrapper();
     makePyDb2dPolylineWrapper();
+    makePyDb3dPolylineWrapper();
 
     makeAcDbDictionaryWrapper();
     makeAcDbSymbolTableWrapper();
@@ -127,7 +128,11 @@ BOOST_PYTHON_MODULE(PyDb)
     //global
     def("RegApp", &RegApp);
 
-
+    enum_<AcDb::Poly3dType>("Poly2dType")
+        .value("k3dSimplePoly", AcDb::Poly3dType::k3dSimplePoly)
+        .value("k3dQuadSplinePoly", AcDb::Poly3dType::k3dQuadSplinePoly)
+        .value("k3dCubicSplinePoly", AcDb::Poly3dType::k3dCubicSplinePoly)
+        ;
     enum_<AcDb::Poly2dType>("Poly2dType")
         .value("k2dSimplePoly", AcDb::Poly2dType::k2dSimplePoly)
         .value("k2dFitCurvePoly", AcDb::Poly2dType::k2dFitCurvePoly)

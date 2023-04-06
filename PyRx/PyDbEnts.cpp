@@ -1923,11 +1923,23 @@ AcDbPoint* PyDbPoint::impObj() const
 
 //-----------------------------------------------------------------------------------
 //PyDb2dPolyline
+AcGePoint3dArray& listToAcGePoint3dArrayRef(const boost::python::list& list)
+{
+    //TODO: maybe this can be done better
+    auto vec = py_list_to_std_vector<AcGePoint3d>(list);
+    static AcGePoint3dArray arr;
+    arr.removeAll();
+    for (const AcGePoint3d& pnt : vec)
+        arr.append(pnt);
+    return arr;
+}
+
 void makePyDb2dPolylineWrapper()
 {
     static auto wrapper = class_<PyDb2dPolyline, bases<PyDbCurve>>("Db2dPolyline")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<AcDb::Poly2dType, const boost::python::list& , Adesk::Boolean>())
         .def("polyType", &PyDb2dPolyline::polyType)
         .def("setPolyType", &PyDb2dPolyline::setPolyType)
         .def("convertToPolyType", &PyDb2dPolyline::convertToPolyType)
@@ -1963,7 +1975,7 @@ void makePyDb2dPolylineWrapper()
 
         .def("openVertex", &PyDb2dPolyline::openVertex)
         .def("openSequenceEnd", &PyDb2dPolyline::openSequenceEnd)
-        .def("vertexIterator", &PyDb2dPolyline::vertexIterator)
+        .def("vertexIds", &PyDb2dPolyline::vertexIds)
         .def("vertexPosition", &PyDb2dPolyline::vertexPosition)
         .def("makeClosedIfStartAndEndVertexCoincide", &PyDb2dPolyline::makeClosedIfStartAndEndVertexCoincide)
         .def("className", &PyDb2dPolyline::className).staticmethod("className")
@@ -1990,6 +2002,12 @@ PyDb2dPolyline::PyDb2dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
+}
+
+PyDb2dPolyline::PyDb2dPolyline(AcDb::Poly2dType type, const boost::python::list& vertices, Adesk::Boolean closed)
+    : PyDbCurve(new AcDb2dPolyline(type, listToAcGePoint3dArrayRef(vertices),0.0, closed),true)
+{
+
 }
 
 AcDb::Poly2dType PyDb2dPolyline::polyType() const
@@ -2249,7 +2267,7 @@ Acad::ErrorStatus PyDb2dPolyline::openSequenceEnd(PyDbSequenceEnd& end, AcDb::Op
     return es;
 }
 
-boost::python::list PyDb2dPolyline::vertexIterator() const
+boost::python::list PyDb2dPolyline::vertexIds() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -2288,4 +2306,214 @@ std::string PyDb2dPolyline::className()
 AcDb2dPolyline* PyDb2dPolyline::impObj() const
 {
     return static_cast<AcDb2dPolyline*>(m_pImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyDb3dPolyline
+void makePyDb3dPolylineWrapper()
+{
+    static auto wrapper = class_<PyDb3dPolyline, bases<PyDbCurve>>("Db2dPolyline")
+        .def(init<>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<AcDb::Poly3dType, const boost::python::list&, Adesk::Boolean>())
+        .def("length", &PyDb3dPolyline::length)
+        .def("setClosed", &PyDb3dPolyline::setClosed)
+        .def("makeClosed", &PyDb3dPolyline::makeClosed)
+        .def("makeOpen", &PyDb3dPolyline::makeOpen)
+        .def("polyType", &PyDb3dPolyline::polyType)
+        .def("setPolyType", &PyDb3dPolyline::setPolyType)
+        .def("convertToPolyType", &PyDb3dPolyline::convertToPolyType)
+        .def("straighten", &PyDb3dPolyline::straighten)
+        .def<Acad::ErrorStatus(PyDb3dPolyline::*)(void)>("splineFit", &PyDb3dPolyline::splineFit)
+        .def<Acad::ErrorStatus(PyDb3dPolyline::*)(AcDb::Poly3dType, Adesk::Int16)>("splineFit", &PyDb3dPolyline::splineFit)
+        .def<Acad::ErrorStatus(PyDb3dPolyline::*)(const PyDb3dPolylineVertex&)>("appendVertex", &PyDb3dPolyline::appendVertex)
+        .def<Acad::ErrorStatus(PyDb3dPolyline::*)(PyDbObjectId&, const PyDb3dPolylineVertex&)>("appendVertex", &PyDb3dPolyline::appendVertex)
+        .def<Acad::ErrorStatus(PyDb3dPolyline::*)(const PyDb3dPolylineVertex&, PyDb3dPolylineVertex&)>("insertVertexAt", &PyDb3dPolyline::insertVertexAt)
+        .def<Acad::ErrorStatus(PyDb3dPolyline::*)(PyDbObjectId&, const PyDbObjectId&, PyDb3dPolylineVertex&)>("insertVertexAt", &PyDb3dPolyline::insertVertexAt)
+        .def("openVertex", &PyDb3dPolyline::openVertex)
+        .def("openSequenceEnd", &PyDb3dPolyline::openSequenceEnd)
+        .def("vertexIds", &PyDb3dPolyline::vertexIds)
+        .def("className", &PyDb3dPolyline::className).staticmethod("className")
+        ;
+}
+
+PyDb3dPolyline::PyDb3dPolyline()
+    : PyDbCurve(new AcDb3dPolyline(), true)
+{
+}
+
+PyDb3dPolyline::PyDb3dPolyline(AcDb3dPolyline* ptr, bool autoDelete)
+    : PyDbCurve(ptr, true)
+{
+}
+
+PyDb3dPolyline::PyDb3dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbCurve(nullptr, false)
+{
+    AcDb3dPolyline* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDb3dPolyline>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    this->resetImp(pobj, false, true);
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+}
+
+PyDb3dPolyline::PyDb3dPolyline(AcDb::Poly3dType pt,const boost::python::list& vertices, Adesk::Boolean closed)
+    : PyDbCurve(new AcDb3dPolyline(pt, listToAcGePoint3dArrayRef(vertices), closed), true)
+{
+}
+
+double PyDb3dPolyline::length() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    double val;
+    if (auto es = imp->length(val); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return val;
+}
+
+Acad::ErrorStatus PyDb3dPolyline::setClosed(Adesk::Boolean val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setClosed(val);
+}
+
+Acad::ErrorStatus PyDb3dPolyline::makeClosed()
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->makeClosed();
+}
+
+Acad::ErrorStatus PyDb3dPolyline::makeOpen()
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->makeOpen();
+}
+
+AcDb::Poly3dType PyDb3dPolyline::polyType() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->polyType();
+}
+
+Acad::ErrorStatus PyDb3dPolyline::setPolyType(AcDb::Poly3dType val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setPolyType(val);
+}
+
+Acad::ErrorStatus PyDb3dPolyline::convertToPolyType(AcDb::Poly3dType val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->convertToPolyType(val);
+}
+
+Acad::ErrorStatus PyDb3dPolyline::straighten()
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->straighten();
+}
+
+Acad::ErrorStatus PyDb3dPolyline::splineFit()
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->splineFit();
+}
+
+Acad::ErrorStatus PyDb3dPolyline::splineFit(AcDb::Poly3dType splineType, Adesk::Int16 splineSegs)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->splineFit(splineType, splineSegs);
+}
+
+Acad::ErrorStatus PyDb3dPolyline::appendVertex(const PyDb3dPolylineVertex& vt)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->appendVertex(vt.impObj());
+}
+
+Acad::ErrorStatus PyDb3dPolyline::appendVertex(PyDbObjectId& id, const PyDb3dPolylineVertex& vt)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->appendVertex(id.m_id, vt.impObj());
+}
+
+Acad::ErrorStatus PyDb3dPolyline::insertVertexAt(const PyDb3dPolylineVertex& pIndexVert, PyDb3dPolylineVertex& pNewVertex)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->insertVertexAt(pIndexVert.impObj(), pNewVertex.impObj());
+}
+
+Acad::ErrorStatus PyDb3dPolyline::insertVertexAt(PyDbObjectId& newVertId, const PyDbObjectId& indexVertId, PyDb3dPolylineVertex& pNewVertex)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->insertVertexAt(newVertId.m_id, indexVertId.m_id, pNewVertex.impObj());
+}
+
+Acad::ErrorStatus PyDb3dPolyline::openVertex(PyDb3dPolylineVertex& vt, const PyDbObjectId& vertId, AcDb::OpenMode mode) const
+{
+    vt = PyDb3dPolylineVertex(vertId, mode);
+    return eOk;
+}
+
+Acad::ErrorStatus PyDb3dPolyline::openSequenceEnd(PyDbSequenceEnd& end, AcDb::OpenMode mode)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcDbSequenceEnd* pEnd = nullptr;
+    auto es = imp->openSequenceEnd(pEnd, mode);
+    if (es == eOk)
+        end = PyDbSequenceEnd(pEnd, true);
+    return es;
+}
+
+boost::python::list PyDb3dPolyline::vertexIds() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    boost::python::list ids;
+    for (std::unique_ptr<AcDbObjectIterator> iter(imp->vertexIterator()); !iter->done(); iter->step())
+        ids.append(iter->objectId());
+    return ids;
+}
+
+std::string PyDb3dPolyline::className()
+{
+    return "AcDb3dPolyline";
+}
+
+AcDb3dPolyline* PyDb3dPolyline::impObj() const
+{
+    return static_cast<AcDb3dPolyline*>(m_pImp.get());
 }
