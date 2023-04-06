@@ -387,7 +387,7 @@ class PyDbFaceRecord : public PyDbVertex
 {
 public:
     PyDbFaceRecord();
-    PyDbFaceRecord(Adesk::Int16 vtx0, Adesk::Int16 vtx1,Adesk::Int16 vtx2, Adesk::Int16 vtx3);
+    PyDbFaceRecord(Adesk::Int16 vtx0, Adesk::Int16 vtx1, Adesk::Int16 vtx2, Adesk::Int16 vtx3);
     PyDbFaceRecord(AcDbFaceRecord* ptr, bool autoDelete);
     PyDbFaceRecord(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbFaceRecord() = default;
@@ -547,4 +547,43 @@ public:
     static std::string className();
 public:
     AcDb3dPolyline* impObj() const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyDbArc
+void makePyDbArcWrapper();
+class PyDbArc : public PyDbCurve
+{
+public:
+    PyDbArc();
+    PyDbArc(AcDbArc* ptr, bool autoDelete);
+    PyDbArc(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbArc(const AcGePoint3d& center, double radius, double startAngle, double endAngle);
+    PyDbArc(const AcGePoint3d& center, const AcGeVector3d& normal, double radius, double startAngle, double endAngle);
+    virtual ~PyDbArc() override = default;
+
+    AcGePoint3d         center() const;
+    Acad::ErrorStatus   setCenter(const AcGePoint3d& val);
+
+    double              radius() const;
+    Acad::ErrorStatus   setRadius(double);
+
+    double              startAngle() const;
+    Acad::ErrorStatus   setStartAngle(double val);
+
+    double              endAngle() const;
+    Acad::ErrorStatus   setEndAngle(double val);
+
+    double    totalAngle() const;
+    double    length() const;
+
+    double              thickness() const;
+    Acad::ErrorStatus   setThickness(double);
+
+    AcGeVector3d        normal() const;
+    Acad::ErrorStatus   setNormal(const AcGeVector3d&);
+
+    static std::string className();
+public:
+    AcDbArc* impObj() const;
 };

@@ -1939,7 +1939,7 @@ void makePyDb2dPolylineWrapper()
     static auto wrapper = class_<PyDb2dPolyline, bases<PyDbCurve>>("Db2dPolyline")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init<AcDb::Poly2dType, const boost::python::list& , Adesk::Boolean>())
+        .def(init<AcDb::Poly2dType, const boost::python::list&, Adesk::Boolean>())
         .def("polyType", &PyDb2dPolyline::polyType)
         .def("setPolyType", &PyDb2dPolyline::setPolyType)
         .def("convertToPolyType", &PyDb2dPolyline::convertToPolyType)
@@ -2005,7 +2005,7 @@ PyDb2dPolyline::PyDb2dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
 }
 
 PyDb2dPolyline::PyDb2dPolyline(AcDb::Poly2dType type, const boost::python::list& vertices, Adesk::Boolean closed)
-    : PyDbCurve(new AcDb2dPolyline(type, listToAcGePoint3dArrayRef(vertices),0.0, closed),true)
+    : PyDbCurve(new AcDb2dPolyline(type, listToAcGePoint3dArrayRef(vertices), 0.0, closed), true)
 {
 
 }
@@ -2359,7 +2359,7 @@ PyDb3dPolyline::PyDb3dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
         throw PyNullObject();
 }
 
-PyDb3dPolyline::PyDb3dPolyline(AcDb::Poly3dType pt,const boost::python::list& vertices, Adesk::Boolean closed)
+PyDb3dPolyline::PyDb3dPolyline(AcDb::Poly3dType pt, const boost::python::list& vertices, Adesk::Boolean closed)
     : PyDbCurve(new AcDb3dPolyline(pt, listToAcGePoint3dArrayRef(vertices), closed), true)
 {
 }
@@ -2516,4 +2516,187 @@ std::string PyDb3dPolyline::className()
 AcDb3dPolyline* PyDb3dPolyline::impObj() const
 {
     return static_cast<AcDb3dPolyline*>(m_pImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyDbArc
+void makePyDbArcWrapper()
+{
+    static auto wrapper = class_<PyDbArc, bases<PyDbCurve>>("DbArc")
+        .def(init<>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const AcGePoint3d&, double, double, double>())
+        .def(init<const AcGePoint3d&, const AcGeVector3d& ,double, double, double>())
+        .def("center", &PyDbArc::center)
+        .def("setCenter", &PyDbArc::setCenter)
+        .def("radius", &PyDbArc::radius)
+        .def("setRadius", &PyDbArc::setRadius)
+        .def("startAngle", &PyDbArc::startAngle)
+        .def("setStartAngle", &PyDbArc::setStartAngle)
+        .def("endAngle", &PyDbArc::endAngle)
+        .def("setEndAngle", &PyDbArc::setEndAngle)
+        .def("totalAngle", &PyDbArc::totalAngle)
+        .def("length", &PyDbArc::length)
+        .def("thickness", &PyDbArc::thickness)
+        .def("setThickness", &PyDbArc::setThickness)
+        .def("normal", &PyDbArc::normal)
+        .def("setNormal", &PyDbArc::setNormal)
+        .def("className", &PyDbArc::className).staticmethod("className")
+        ;
+}
+
+PyDbArc::PyDbArc()
+    : PyDbCurve(new AcDbArc(), true)
+{
+
+}
+
+PyDbArc::PyDbArc(AcDbArc* ptr, bool autoDelete)
+    : PyDbCurve(ptr, autoDelete)
+{
+
+}
+
+PyDbArc::PyDbArc(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbCurve(nullptr, false)
+{
+    AcDbArc* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbArc>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    this->resetImp(pobj, false, true);
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+}
+
+PyDbArc::PyDbArc(const AcGePoint3d& center, double radius, double startAngle, double endAngle)
+    : PyDbCurve(new AcDbArc(center, radius, startAngle, endAngle), true)
+{
+}
+
+PyDbArc::PyDbArc(const AcGePoint3d& center, const AcGeVector3d& normal, double radius, double startAngle, double endAngle)
+    : PyDbCurve(new AcDbArc(center, normal, radius, startAngle, endAngle), true)
+{
+}
+
+AcGePoint3d PyDbArc::center() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->center();
+}
+
+Acad::ErrorStatus PyDbArc::setCenter(const AcGePoint3d& val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setCenter(val);
+}
+
+double PyDbArc::radius() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->radius();
+}
+
+Acad::ErrorStatus PyDbArc::setRadius(double val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setRadius(val);
+}
+
+double PyDbArc::startAngle() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->startAngle();
+}
+
+Acad::ErrorStatus PyDbArc::setStartAngle(double val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setStartAngle(val);
+}
+
+double PyDbArc::endAngle() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->endAngle();
+}
+
+Acad::ErrorStatus PyDbArc::setEndAngle(double val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setEndAngle(val);
+}
+
+double PyDbArc::totalAngle() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->totalAngle();
+}
+
+double PyDbArc::length() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->length();
+}
+
+double PyDbArc::thickness() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->thickness();
+}
+
+Acad::ErrorStatus PyDbArc::setThickness(double val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setThickness(val);
+}
+
+AcGeVector3d PyDbArc::normal() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->normal();
+}
+
+Acad::ErrorStatus PyDbArc::setNormal(const AcGeVector3d& val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setNormal(val);
+}
+
+std::string PyDbArc::className()
+{
+    return "AcDbArc";
+}
+
+AcDbArc* PyDbArc::impObj() const
+{
+    return static_cast<AcDbArc*>(m_pImp.get());
 }
