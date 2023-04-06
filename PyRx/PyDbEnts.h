@@ -587,3 +587,38 @@ public:
 public:
     AcDbArc* impObj() const;
 };
+
+//-----------------------------------------------------------------------------------
+//PyDbCircle
+void makPyDbCircleWrapper();
+class PyDbCircle : public PyDbCurve
+{
+public:
+    PyDbCircle();
+    PyDbCircle(AcDbCircle* ptr, bool autoDelete);
+    PyDbCircle(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbCircle(const AcGePoint3d& cntr, const AcGeVector3d& nrm, double radius);
+    virtual ~PyDbCircle() override = default;
+
+    AcGePoint3d         center() const;
+    Acad::ErrorStatus   setCenter(const AcGePoint3d& val);
+
+    double              radius() const;
+    Acad::ErrorStatus   setRadius(double val);
+
+    double              thickness() const;
+    Acad::ErrorStatus   setThickness(double val);
+
+    AcGeVector3d        normal() const;
+    Acad::ErrorStatus   setNormal(const AcGeVector3d& val);
+
+    double              circumference() const;
+    Acad::ErrorStatus   setCircumference(double val);
+
+    double              diameter() const;
+    Acad::ErrorStatus   setDiameter(double val);
+
+    static std::string className();
+public:
+    AcDbCircle* impObj() const;
+};

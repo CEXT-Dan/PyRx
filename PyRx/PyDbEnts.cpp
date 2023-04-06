@@ -2526,7 +2526,7 @@ void makePyDbArcWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const AcGePoint3d&, double, double, double>())
-        .def(init<const AcGePoint3d&, const AcGeVector3d& ,double, double, double>())
+        .def(init<const AcGePoint3d&, const AcGeVector3d&, double, double, double>())
         .def("center", &PyDbArc::center)
         .def("setCenter", &PyDbArc::setCenter)
         .def("radius", &PyDbArc::radius)
@@ -2548,13 +2548,11 @@ void makePyDbArcWrapper()
 PyDbArc::PyDbArc()
     : PyDbCurve(new AcDbArc(), true)
 {
-
 }
 
 PyDbArc::PyDbArc(AcDbArc* ptr, bool autoDelete)
     : PyDbCurve(ptr, autoDelete)
 {
-
 }
 
 PyDbArc::PyDbArc(const PyDbObjectId& id, AcDb::OpenMode mode)
@@ -2699,4 +2697,177 @@ std::string PyDbArc::className()
 AcDbArc* PyDbArc::impObj() const
 {
     return static_cast<AcDbArc*>(m_pImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyDbCircle
+void makPyDbCircleWrapper()
+{
+    static auto wrapper = class_<PyDbCircle, bases<PyDbCurve>>("DbCircle")
+        .def(init<>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const AcGePoint3d&, const AcGeVector3d&, double>())
+        .def("center", &PyDbCircle::center)
+        .def("setCenter", &PyDbCircle::setCenter)
+        .def("radius", &PyDbCircle::radius)
+        .def("setRadius", &PyDbCircle::setRadius)
+        .def("thickness", &PyDbCircle::thickness)
+        .def("setThickness", &PyDbCircle::setThickness)
+        .def("normal", &PyDbCircle::normal)
+        .def("setNormal", &PyDbCircle::setNormal)
+        .def("circumference", &PyDbCircle::circumference)
+        .def("setCircumference", &PyDbCircle::setCircumference)
+        .def("diameter", &PyDbCircle::diameter)
+        .def("setDiameter", &PyDbCircle::setDiameter)
+        .def("className", &PyDbCircle::className).staticmethod("className")
+        ;
+}
+
+PyDbCircle::PyDbCircle()
+    : PyDbCurve(new AcDbCircle(), true)
+{
+}
+
+PyDbCircle::PyDbCircle(AcDbCircle* ptr, bool autoDelete)
+    : PyDbCurve(ptr, autoDelete)
+{
+}
+
+PyDbCircle::PyDbCircle(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbCurve(nullptr, false)
+{
+    AcDbCircle* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbCircle>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    this->resetImp(pobj, false, true);
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+}
+
+PyDbCircle::PyDbCircle(const AcGePoint3d& cntr, const AcGeVector3d& nrm, double radius)
+    : PyDbCurve(new AcDbCircle(cntr, nrm, radius), true)
+{
+}
+
+AcGePoint3d PyDbCircle::center() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->center();
+}
+
+Acad::ErrorStatus PyDbCircle::setCenter(const AcGePoint3d& val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setCenter(val);
+}
+
+double PyDbCircle::radius() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->radius();
+}
+
+Acad::ErrorStatus PyDbCircle::setRadius(double val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setRadius(val);
+}
+
+double PyDbCircle::thickness() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->thickness();
+}
+
+Acad::ErrorStatus PyDbCircle::setThickness(double val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setThickness(val);
+}
+
+AcGeVector3d PyDbCircle::normal() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->normal();
+}
+
+Acad::ErrorStatus PyDbCircle::setNormal(const AcGeVector3d& val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setNormal(val);
+}
+
+double PyDbCircle::circumference() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->circumference();
+#endif
+}
+
+Acad::ErrorStatus PyDbCircle::setCircumference(double val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setCircumference(val);
+#endif
+}
+
+double PyDbCircle::diameter() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->diameter();
+#endif
+}
+
+Acad::ErrorStatus PyDbCircle::setDiameter(double val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setDiameter(val);
+#endif
+}
+
+std::string PyDbCircle::className()
+{
+    return "AcDbCircle";
+}
+
+AcDbCircle* PyDbCircle::impObj() const
+{
+    return static_cast<AcDbCircle*>(m_pImp.get());
 }
