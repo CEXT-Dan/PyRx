@@ -26,7 +26,6 @@ PyRxObject::PyRxObject(AcRxObject* ptr, bool autoDelete, bool isDbOject)
 
 PyRxObject::~PyRxObject()
 {
-
 }
 
 bool PyRxObject::operator==(const PyRxObject& rhs) const

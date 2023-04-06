@@ -1,5 +1,6 @@
 #pragma once
 #include "PyDbEntity.h"
+#include "PyDbCurve.h"
 class PyDbObjectId;
 
 
@@ -438,3 +439,11 @@ public:
     AcDbPoint* impObj() const;
 };
 
+
+//-----------------------------------------------------------------------------------
+//PyDbPoint
+void makePyDb2dPolylineWrapper();
+class PyDb2dPolyline : public PyDbCurve
+{
+
+};

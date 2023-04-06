@@ -15,15 +15,15 @@ BOOST_PYTHON_MODULE(PyEd)
     makeAcEditorWrapper();
 
     enum_<Acad::PromptStatus>("PromptStatus")
-        .value("None", Acad::PromptStatus::eNone)
-        .value("Modeless", Acad::PromptStatus::eModeless)
-        .value("Normal", Acad::PromptStatus::eNormal)
-        .value("Error", Acad::PromptStatus::eError)
-        .value("Cancel", Acad::PromptStatus::eCancel)
-        .value("Rejected", Acad::PromptStatus::eRejected)
-        .value("Failed", Acad::PromptStatus::eFailed)
-        .value("Keyword", Acad::PromptStatus::eKeyword)
-        .value("eDirect", Acad::PromptStatus::eDirect)
+        .value("kNone", Acad::PromptStatus::eNone)
+        .value("kModeless", Acad::PromptStatus::eModeless)
+        .value("kNormal", Acad::PromptStatus::eNormal)
+        .value("kError", Acad::PromptStatus::eError)
+        .value("kCancel", Acad::PromptStatus::eCancel)
+        .value("kRejected", Acad::PromptStatus::eRejected)
+        .value("kFailed", Acad::PromptStatus::eFailed)
+        .value("kKeyword", Acad::PromptStatus::eKeyword)
+        .value("keDirect", Acad::PromptStatus::eDirect)
         ;
 };
 

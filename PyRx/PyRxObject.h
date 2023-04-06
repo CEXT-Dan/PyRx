@@ -4,14 +4,11 @@ class PyRxClass;
 
 struct PyRxObjectDeleter
 {
-
-    bool m_autoDelete = true;
-    bool m_isDbObject = false;
-
     inline PyRxObjectDeleter(bool autoDelete, bool isDbObject)
         : m_autoDelete(autoDelete), m_isDbObject(isDbObject)
     {
     }
+
     inline bool isdbro(AcRxObject* p) const
     {
         if (!m_isDbObject)
@@ -29,17 +26,18 @@ struct PyRxObjectDeleter
         }
         return false;
     }
+
     inline void operator()(AcRxObject* p) const
     {
         if (isdbro(p))
             return;
         if (!m_autoDelete)
             return;
-#ifdef PyRxDebug
-        acutPrintf(L"\nDELETE");
-#endif
         delete p;
     }
+
+    bool m_autoDelete = true;
+    bool m_isDbObject = false;
 };
 void makeAcRxObjectWrapper();
 //-----------------------------------------------------------------------------------------
