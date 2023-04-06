@@ -38,7 +38,7 @@ def PyDbEntSetLayer():
 	t1_start = perf_counter()
 	if(ss[1] == PyEd.PromptStatus.Normal):
 		for id in ss[0]:
-			PyDb.DbEntity(id, PyDb.OpenMode.ForWrite).setLayer("0")
+			PyDb.DbEntity(id, PyDb.OpenMode.kForWrite).setLayer("0")
 	t1_stop = perf_counter()
 	PyRxApp.Printf("\nNum Items = {}, Elapsed time: {t:.4f}".format(len(ss[0]), t = t1_stop-t1_start))
 	

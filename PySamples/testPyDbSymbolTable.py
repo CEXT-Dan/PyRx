@@ -30,7 +30,7 @@ def PyRxCmd_pydbsymtabletest():
 def PyDbSymOpenForRead():
 	db = PyDb.DbHostApplicationServices().workingDatabase()  
 	btid = db.blockTableId()
-	table = PyDb.DbSymbolTable(btid,PyDb.OpenMode.ForRead)
+	table = PyDb.DbSymbolTable(btid,PyDb.OpenMode.kForRead)
 	if table.isNull():
 		PyRxApp.Printf("\nFAIL")
 	else:

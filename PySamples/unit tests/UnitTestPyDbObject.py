@@ -40,9 +40,9 @@ class TestDbObject(unittest.TestCase):
 
                 #set
                 id = PyDb.DbHostApplicationServices().workingDatabase().blockTableId()
-                dbo = PyDb.DbObject(id, PyDb.OpenMode.ForWrite)
+                dbo = PyDb.DbObject(id, PyDb.OpenMode.kForWrite)
                 self.assertEqual(dbo.isWriteEnabled(), True) 
-                xd = [(PyDb.DxfCode.DxfRegAppName, "PYTHONTEST"),(PyDb.DxfCode.DxfXdXCoord, PyGe.Point3d(1,10,100))]
+                xd = [(PyDb.DxfCode.kDxfRegAppName, "PYTHONTEST"),(PyDb.DxfCode.kDxfXdXCoord, PyGe.Point3d(1,10,100))]
                 dbo.setXData(xd)
 
                 #get

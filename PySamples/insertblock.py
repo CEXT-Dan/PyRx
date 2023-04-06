@@ -26,10 +26,10 @@ def PyRxCmd_pyinsert():
     try: 
         db = PyDb.DbHostApplicationServices().workingDatabase()
         db2 = PyDb.DbDatabase(False, False)
-        if db2.readDwgFile("./dwg/18X36RP.dwg") != PyDb.ErrorStatus.Ok:
+        if db2.readDwgFile("./dwg/18X36RP.dwg") != PyDb.ErrorStatus.kOk:
              print("fail")
         oid = PyDb.DbObjectId()
-        if db.insert(oid,"WOOHOO", db2, True) != PyDb.ErrorStatus.Ok:
+        if db.insert(oid,"WOOHOO", db2, True) != PyDb.ErrorStatus.kOk:
               print("fail")
 
     except Exception as err:

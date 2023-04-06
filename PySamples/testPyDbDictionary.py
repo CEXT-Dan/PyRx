@@ -30,7 +30,7 @@ def PyRxCmd_pydbdicttest():
 def PyDbDictOpenForRead():
 	db = PyDb.DbHostApplicationServices().workingDatabase()  
 	dictid = db.namedObjectsDictionaryId()
-	dict = PyDb.DbDictionary(dictid,PyDb.OpenMode.ForRead)
+	dict = PyDb.DbDictionary(dictid,PyDb.OpenMode.kForRead)
 	if dict.isNull():
 		PyRxApp.Printf("\nFAIL")
 	else:

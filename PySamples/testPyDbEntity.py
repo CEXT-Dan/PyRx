@@ -32,7 +32,7 @@ def PyDbObjectOpenForRead():
 	try:
 		db = PyDb.DbHostApplicationServices().workingDatabase()  
 		id = db.blockTableId()
-		dbo = PyDb.DbObject(val[0], PyDb.OpenMode.ForRead)
+		dbo = PyDb.DbObject(val[0], PyDb.OpenMode.kForRead)
 		if dbo.isNull():
 			PyRxApp.Printf("\nFAIL")
 		else:

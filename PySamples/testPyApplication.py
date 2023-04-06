@@ -45,7 +45,7 @@ def PyCurDocTest():
 def PyCurDocEdTest1():
 	try:
 		val = PyAp.ApApplication().docManager().curDocument().editor().getInteger("\nEnter an int")
-		if(val[1] == PyEd.PromptStatus.Normal):
+		if(val[1] == PyEd.PromptStatus.kNormal):
 			PyRxApp.Printf("\nPASS({})".format(val[0])) 
 	except Exception as err:
 		PyRxApp.Printf(err)
@@ -54,7 +54,7 @@ def PyCurDocEdTest2():
 	try:
 		doc =  PyAp.ApApplication().docManager().curDocument()
 		val = doc.editor().getInteger("\nEnter an int")
-		if(val[1] == PyEd.PromptStatus.Normal):
+		if(val[1] == PyEd.PromptStatus.kNormal):
 			PyRxApp.Printf("\nPASS({})".format(val[0])) 
 	except Exception as err:
 		PyRxApp.Printf(err)
@@ -66,7 +66,7 @@ def PyCurDocEdTest3():
 		doc = docm.curDocument()
 		ed = doc.editor()
 		val = ed.getString(1, "\nEnter a string")
-		if(val[1] == PyEd.PromptStatus.Normal):
+		if(val[1] == PyEd.PromptStatus.kNormal):
 			PyRxApp.Printf("\nPASS({})".format(val[0])) 
 	except Exception as err:
 		PyRxApp.Printf(err)
@@ -78,7 +78,7 @@ def PyCurDocEntsel():
 		doc = docm.curDocument()
 		ed = doc.editor()
 		val = ed.entsel("\nSelect")
-		if(val[2] == PyEd.PromptStatus.Normal):
+		if(val[2] == PyEd.PromptStatus.kNormal):
 			dbo = PyDb.DbObject(val[0], PyDb.OpenMode.ForRead)
 			PyRxApp.Printf("\nPASS({})".format(dbo.isA().name())) 
 			p = val[1]
@@ -93,7 +93,7 @@ def PyCurDocSelectAll():
 		doc = docm.curDocument()
 		ed = doc.editor()
 		val = ed.selectAll()
-		if(val[1] == PyEd.PromptStatus.Normal):
+		if(val[1] == PyEd.PromptStatus.kNormal):
 			numids = len(val[0])
 			PyRxApp.Printf("\nPASS numids({})".format(numids))
 	except Exception as err:
@@ -107,7 +107,7 @@ def PyCurDocSelectAllFilter():
 		ed = doc.editor()
 		filter = [(PyDb.DxfCode.DxfStart,"CIRCLE")]
 		val = ed.selectAll(filter)
-		if(val[1] == PyEd.PromptStatus.Normal):
+		if(val[1] == PyEd.PromptStatus.kNormal):
 			numids = len(val[0])
 			PyRxApp.Printf("\nPASS numids({})".format(numids))
 			for id in val[0]:

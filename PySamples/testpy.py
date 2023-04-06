@@ -38,13 +38,13 @@ def getSplitCurves():
 
 	if(entres[2] == PyEd.PromptStatus.Normal):
 		entId = entres[0]
-		curve = PyDb.DbCurve(entId, PyDb.OpenMode.ForRead)
+		curve = PyDb.DbCurve(entId, PyDb.OpenMode.kForRead)
 		pnt = pntres[0]
 		param = curve.getParamAtPoint(pnt)
 		params = [param]
 		curves = curve.getSplitCurves(params)
 		db =doc.database()
-		model = PyDb.DbBlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.ForWrite)
+		model = PyDb.DbBlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
 		#for x in curves:
 			#model.appendAcDbEntity(x)
 		
@@ -52,7 +52,7 @@ def getSplitCurves():
 def createDbp():
 	try:
 		db = PyAp.ApApplication().docManager().curDocument().database()
-		model = PyDb.DbBlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.ForWrite)
+		model = PyDb.DbBlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
 		dbp = PyDb.DbPoint(PyGe.Point3d(100,100,0))
 		model.appendAcDbEntity(dbp)
 	except Exception as err:
@@ -65,7 +65,7 @@ def createDbps():
 			objs.append(PyDb.DbPoint(PyGe.Point3d(x,x,0)))
 
 		db = PyAp.ApApplication().docManager().curDocument().database()
-		model = PyDb.DbBlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.ForWrite)
+		model = PyDb.DbBlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
 
 		for o in objs:
 			model.appendAcDbEntity(o)
