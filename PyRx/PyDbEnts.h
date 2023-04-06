@@ -505,6 +505,4 @@ public:
     static std::string className();
 public:
     AcDb2dPolyline* impObj() const;
-
-
 };

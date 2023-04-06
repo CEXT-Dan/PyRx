@@ -45,10 +45,9 @@ def getSplitCurves():
 		curves = curve.getSplitCurves(params)
 		db =doc.database()
 		model = PyDb.DbBlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
-		#for x in curves:
-			#model.appendAcDbEntity(x)
+		for x in curves:
+			model.appendAcDbEntity(x)
 		
-
 def createDbp():
 	try:
 		db = PyAp.ApApplication().docManager().curDocument().database()
