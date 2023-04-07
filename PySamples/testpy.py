@@ -25,8 +25,18 @@ def OnPyUnloadDwg():
          
 def PyRxCmd_pycmd():
 	try: 
-		#getSplitCurves()
-		createDbps()
+		createLine()
+	except Exception as err:
+		PyRxApp.Printf(err)
+
+def createLine():
+	try:
+		db = PyAp.ApApplication().docManager().curDocument().database()
+		model = PyDb.DbBlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
+		line = PyDb.DbLine(PyGe.Point3d(0,0,0),PyGe.Point3d(100,100,0))
+		circle = PyDb.DbCircle(PyGe.Point3d(0,0,0),PyGe.Vector3d.kZAxis, 100)
+		model.appendAcDbEntity(line)
+		model.appendAcDbEntity(circle)
 	except Exception as err:
 		PyRxApp.Printf(err)
 		

@@ -34,6 +34,8 @@ static auto makeAcGePoint2dWrapper()
         .def_readwrite("x", &AcGePoint2d::x)
         .def_readwrite("y", &AcGePoint2d::y)
         .def_readonly("kOrigin", &AcGePoint2d::kOrigin)
+        .def("__eq__", &AcGePoint2d::operator==)
+        .def("__ne__", &AcGePoint2d::operator!=)
         .def("toString", &AcGePoint2dToString)
         ;
     return wrapper;
@@ -44,8 +46,12 @@ static auto makeAcGeVector2dWrapper()
     static auto wrapper = class_<AcGeVector2d>("Vector2d")
         .def(init<>())
         .def(init<double, double>())
+        .def_readwrite("x", &AcGeVector2d::x)
+        .def_readwrite("y", &AcGeVector2d::y)
         .def_readonly("kXAxis", &AcGeVector2d::kXAxis)
         .def_readonly("kYAxis", &AcGeVector2d::kYAxis)
+        .def("__eq__", &AcGeVector2d::operator==)
+        .def("__ne__", &AcGeVector2d::operator!=)
         .def("toString", &AcGeVector2ToString)
         ;
     return wrapper;
@@ -57,6 +63,8 @@ static auto makeAcGeMatrix2dWrapper()
         .def("scale", &AcGeMatrix2d::scale)
         .def("setToScaling", &AcGeMatrix2d::setToScaling, return_value_policy<reference_existing_object>())
         .def("setToRotation", &AcGeMatrix2d::setToRotation, return_value_policy<reference_existing_object>())
+        .def("__eq__", &AcGeMatrix2d::operator==)
+        .def("__ne__", &AcGeMatrix2d::operator!=)
         ;
     return wrapper;
 }
@@ -72,6 +80,8 @@ static auto makeAcGePoint3dWrapper()
         .def_readwrite("y", &AcGePoint3d::y)
         .def_readwrite("z", &AcGePoint3d::z)
         .def_readonly("kOrigin", &AcGePoint3d::kOrigin)
+        .def("__eq__", &AcGePoint3d::operator==)
+        .def("__ne__", &AcGePoint3d::operator!=)
         .def("toString", &AcGePoint3dToString)
         ;
     return wrapper;
@@ -93,9 +103,14 @@ static auto makeAcGeVector3dWrapper()
     static auto wrapper = class_<AcGeVector3d>("Vector3d")
         .def(init<>())
         .def(init<double, double, double>())
+        .def_readwrite("x", &AcGeVector3d::x)
+        .def_readwrite("y", &AcGeVector3d::y)
+        .def_readwrite("z", &AcGeVector3d::z)
         .def_readonly("kXAxis", &AcGeVector3d::kXAxis)
         .def_readonly("kYAxis", &AcGeVector3d::kYAxis)
         .def_readonly("kZAxis", &AcGeVector3d::kZAxis)
+        .def("__eq__", &AcGeVector3d::operator==)
+        .def("__ne__", &AcGeVector3d::operator!=)
         .def("toString", &AcGeVector3dToString)
         ;
     return wrapper;
@@ -107,6 +122,8 @@ static auto makeAcGeMatrix3dWrapper()
         .def("scale", &AcGeMatrix3d::scale)
         .def("setToScaling", &AcGeMatrix3d::setToScaling, return_value_policy<reference_existing_object>())
         .def("setToRotation", &AcGeMatrix3d::setToRotation, return_value_policy<reference_existing_object>())
+        .def("__eq__", &AcGeMatrix3d::operator==)
+        .def("__ne__", &AcGeMatrix3d::operator!=)
         ;
     return wrapper;
 }
@@ -117,6 +134,8 @@ static auto makeAcGeScale3dWrapper()
         .def_readwrite("sx", &AcGeScale3d::sx)
         .def_readwrite("sy", &AcGeScale3d::sy)
         .def_readwrite("sz", &AcGeScale3d::sz)
+        .def("__eq__", &AcGeScale3d::operator==)
+        .def("__ne__", &AcGeScale3d::operator!=)
         ;
     return wrapper;
 }
@@ -126,6 +145,8 @@ static auto makeAcGeScale2dWrapper()
     static auto wrapper = class_<AcGeScale2d>("Scale2d")
         .def_readwrite("sx", &AcGeScale2d::sx)
         .def_readwrite("sy", &AcGeScale2d::sy)
+        .def("__eq__", &AcGeScale2d::operator==)
+        .def("__ne__", &AcGeScale2d::operator!=)
         ;
     return wrapper;
 }
