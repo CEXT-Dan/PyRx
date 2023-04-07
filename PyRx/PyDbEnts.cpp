@@ -3007,3 +3007,380 @@ AcDbLine* PyDbLine::impObj() const
 {
     return static_cast<AcDbLine*>(m_pImp.get());
 }
+
+//-----------------------------------------------------------------------------------
+//PyDbPolyline
+void makPyDbPolylineWrapper()
+{
+    static auto wrapper = class_<PyDbPolyline, bases<PyDbCurve>>("DbPolyline")
+        .def(init<>())
+        .def(init<unsigned int>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def<AcGePoint3d(PyDbPolyline::*)(unsigned int)const>("getPointAt", &PyDbPolyline::getPointAt)
+        .def<AcGePoint2d(PyDbPolyline::*)(int)const>("getPointAt", &PyDbPolyline::getPointAt)
+        .def("segType", &PyDbPolyline::segType)
+        .def("onSegAt", &PyDbPolyline::onSegAt)
+        .def("setClosed", &PyDbPolyline::setClosed)
+        .def("setPlinegen", &PyDbPolyline::setPlinegen)
+        .def("setElevation", &PyDbPolyline::setElevation)
+        .def("setThickness", &PyDbPolyline::setThickness)
+        .def("setConstantWidth", &PyDbPolyline::setConstantWidth)
+        .def("setNormal", &PyDbPolyline::setNormal)
+        .def("isOnlyLines", &PyDbPolyline::isOnlyLines)
+        .def("hasPlinegen", &PyDbPolyline::hasPlinegen)
+        .def("elevation", &PyDbPolyline::elevation)
+        .def("thickness", &PyDbPolyline::thickness)
+        .def("getConstantWidth", &PyDbPolyline::getConstantWidth)
+        .def("normal", &PyDbPolyline::normal)
+        .def("addVertexAt", &PyDbPolyline::addVertexAt)
+        .def("removeVertexAt", &PyDbPolyline::removeVertexAt)
+        .def("numVerts", &PyDbPolyline::numVerts)
+        .def("getBulgeAt", &PyDbPolyline::getBulgeAt)
+        .def("getStartWidthAt", &PyDbPolyline::getStartWidthAt)
+        .def("getEndWidthAt", &PyDbPolyline::getEndWidthAt)
+        .def("setPointAt", &PyDbPolyline::setPointAt)
+        .def("setBulgeAt", &PyDbPolyline::setBulgeAt)
+        .def("setWidthsAt", &PyDbPolyline::setWidthsAt)
+        .def("minimizeMemory", &PyDbPolyline::minimizeMemory)
+        .def("maximizeMemory", &PyDbPolyline::maximizeMemory)
+        .def("reset", &PyDbPolyline::reset)
+        .def("hasBulges", &PyDbPolyline::hasBulges)
+        .def("hasVertexIdentifiers", &PyDbPolyline::hasVertexIdentifiers)
+        .def("hasWidth", &PyDbPolyline::hasWidth)
+        .def("makeClosedIfStartAndEndVertexCoincide", &PyDbPolyline::makeClosedIfStartAndEndVertexCoincide)
+        .def("getEcs", &PyDbPolyline::getEcs)
+        .def("getEcs", &PyDbPolyline::getEcs)
+        .def("className", &PyDbPolyline::className).staticmethod("className")
+        ;
+    enum_<AcDbPolyline::SegType>("SegType")
+        .value("kLine", AcDbPolyline::SegType::kLine)
+        .value("kArc", AcDbPolyline::SegType::kArc)
+        .value("kCoincident", AcDbPolyline::SegType::kCoincident)
+        .value("kPoint", AcDbPolyline::SegType::kPoint)
+        .value("kEmpty", AcDbPolyline::SegType::kEmpty)
+        ;
+}
+
+PyDbPolyline::PyDbPolyline()
+    : PyDbCurve(new AcDbPolyline(), true)
+{
+}
+
+PyDbPolyline::PyDbPolyline(unsigned int num_verts)
+    : PyDbCurve(new AcDbPolyline(num_verts), true)
+{
+}
+
+PyDbPolyline::PyDbPolyline(AcDbPolyline* ptr, bool autoDelete)
+    : PyDbCurve(ptr, autoDelete)
+{
+}
+
+PyDbPolyline::PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbCurve(nullptr, false)
+{
+    AcDbPolyline* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbPolyline>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    this->resetImp(pobj, false, true);
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+}
+
+AcGePoint3d PyDbPolyline::getPointAt(unsigned int idx) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGePoint3d pnt;
+    if (auto es = imp->getPointAt(idx, pnt); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return pnt;
+}
+
+AcGePoint2d PyDbPolyline::getPointAt(int idx) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGePoint2d pnt;
+    if (auto es = imp->getPointAt(idx, pnt); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return pnt;
+}
+
+AcDbPolyline::SegType PyDbPolyline::segType(unsigned int index) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->segType(index);
+}
+
+Adesk::Boolean PyDbPolyline::onSegAt(unsigned int index, const AcGePoint2d& pt2d, double param) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    double _param = param;
+    return imp->onSegAt(index, pt2d, _param);
+}
+
+void PyDbPolyline::setClosed(Adesk::Boolean val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->setClosed(val);
+}
+
+void PyDbPolyline::setPlinegen(Adesk::Boolean val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->setPlinegen(val);
+}
+
+void PyDbPolyline::setElevation(double val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->setElevation(val);
+}
+
+Acad::ErrorStatus PyDbPolyline::setThickness(double val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setThickness(val);
+}
+
+Acad::ErrorStatus PyDbPolyline::setConstantWidth(double val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setConstantWidth(val);
+}
+
+Acad::ErrorStatus PyDbPolyline::setNormal(const AcGeVector3d& val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setNormal(val);
+}
+
+Adesk::Boolean PyDbPolyline::isOnlyLines() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isOnlyLines();
+}
+
+Adesk::Boolean PyDbPolyline::hasPlinegen() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->hasPlinegen();
+}
+
+double PyDbPolyline::elevation() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->elevation();
+}
+
+double PyDbPolyline::thickness() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->thickness();
+}
+
+double PyDbPolyline::getConstantWidth() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    double w;
+    if (auto es = imp->getConstantWidth(w); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return w;
+}
+
+AcGeVector3d PyDbPolyline::normal() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->normal();
+}
+
+Acad::ErrorStatus PyDbPolyline::addVertexAt(unsigned int index, const AcGePoint2d& pnt, double bulge, double startWidth, double endWidth)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->addVertexAt(index, pnt, bulge, startWidth, endWidth);
+}
+
+Acad::ErrorStatus PyDbPolyline::removeVertexAt(unsigned int index)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->removeVertexAt(index);
+}
+
+unsigned int PyDbPolyline::numVerts() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->numVerts();
+}
+
+double PyDbPolyline::getBulgeAt(unsigned int index) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    double w;
+    if (auto es = imp->getBulgeAt(index,w); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return w;
+}
+
+double PyDbPolyline::getStartWidthAt(unsigned int index) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    double s, e;
+    if (auto es = imp->getWidthsAt(index,s,e); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return s;
+}
+
+double PyDbPolyline::getEndWidthAt(unsigned int index) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    double s, e;
+    if (auto es = imp->getWidthsAt(index, s, e); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return e;
+}
+
+Acad::ErrorStatus PyDbPolyline::setPointAt(unsigned int index, const AcGePoint2d& pt)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setPointAt(index, pt);
+}
+
+Acad::ErrorStatus PyDbPolyline::setBulgeAt(unsigned int index, double bulge)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setBulgeAt(index, bulge);
+}
+
+Acad::ErrorStatus PyDbPolyline::setWidthsAt(unsigned int index, double startWidth, double endWidth)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setWidthsAt(index, startWidth, endWidth);
+}
+
+Acad::ErrorStatus PyDbPolyline::minimizeMemory()
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->minimizeMemory();
+}
+
+Acad::ErrorStatus PyDbPolyline::maximizeMemory()
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->maximizeMemory();
+}
+
+void PyDbPolyline::reset(Adesk::Boolean reuse, unsigned int numVerts)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->reset(reuse, numVerts);
+}
+
+Adesk::Boolean PyDbPolyline::hasBulges() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->hasBulges();
+}
+
+Adesk::Boolean PyDbPolyline::hasVertexIdentifiers() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->hasVertexIdentifiers();
+}
+
+Adesk::Boolean PyDbPolyline::hasWidth() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->hasWidth();
+}
+
+Acad::ErrorStatus PyDbPolyline::makeClosedIfStartAndEndVertexCoincide(double distTol)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->makeClosedIfStartAndEndVertexCoincide(distTol);
+#endif
+}
+
+void PyDbPolyline::getEcs(AcGeMatrix3d& retVal) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->getEcs(retVal);
+}
+
+std::string PyDbPolyline::className()
+{
+    return "AcDbPolyline";
+}
+
+AcDbPolyline* PyDbPolyline::impObj() const
+{
+    return static_cast<AcDbPolyline*>(m_pImp.get());
+}

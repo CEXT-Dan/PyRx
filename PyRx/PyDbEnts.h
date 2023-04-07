@@ -648,8 +648,73 @@ public:
     Acad::ErrorStatus   setNormal(const AcGeVector3d& val);
 
     boost::python::list getOffsetCurvesGivenPlaneNormal(const AcGeVector3d& normal, double offsetDist) const override;
-  
+
     static std::string className();
 public:
     AcDbLine* impObj() const;
 };
+
+//-----------------------------------------------------------------------------------
+//PyDbPolyline
+void makPyDbPolylineWrapper();
+class PyDbPolyline : public PyDbCurve
+{
+public:
+    PyDbPolyline();
+    PyDbPolyline(unsigned int num_verts);
+    PyDbPolyline(AcDbPolyline* ptr, bool autoDelete);
+    PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbPolyline() override = default;
+
+    AcGePoint3d getPointAt(unsigned int) const;
+    AcGePoint2d getPointAt(int idx) const;
+
+    AcDbPolyline::SegType segType(unsigned int index) const;
+    virtual Adesk::Boolean onSegAt(unsigned int index, const AcGePoint2d& pt2d, double param) const;
+
+    virtual void setClosed(Adesk::Boolean val);
+    void         setPlinegen(Adesk::Boolean val);
+    virtual void setElevation(double val);
+
+    virtual Acad::ErrorStatus setThickness(double val);
+    virtual Acad::ErrorStatus setConstantWidth(double val);
+    virtual Acad::ErrorStatus setNormal(const AcGeVector3d& val);
+
+    Adesk::Boolean    isOnlyLines() const;
+    Adesk::Boolean    hasPlinegen() const;
+    double            elevation() const;
+    double            thickness() const;
+
+    double getConstantWidth() const;
+    AcGeVector3d      normal() const;
+    virtual Acad::ErrorStatus addVertexAt(unsigned int index,const AcGePoint2d&,double bulge,double startWidth, double endWidth);
+
+    virtual Acad::ErrorStatus removeVertexAt(unsigned int index);
+    unsigned int      numVerts()const;
+
+    double getBulgeAt(unsigned int index) const;
+    double getStartWidthAt(unsigned int index) const;
+    double getEndWidthAt(unsigned int index) const;
+
+    virtual Acad::ErrorStatus setPointAt(unsigned int index,const AcGePoint2d& pt);
+    virtual Acad::ErrorStatus setBulgeAt(unsigned int index, double bulge);
+    virtual Acad::ErrorStatus setWidthsAt(unsigned int index,double startWidth, double endWidth);
+
+    Acad::ErrorStatus minimizeMemory();
+    Acad::ErrorStatus maximizeMemory();
+
+    virtual void reset(Adesk::Boolean reuse,unsigned int numVerts);
+
+    Adesk::Boolean     hasBulges()        const;
+    Adesk::Boolean     hasVertexIdentifiers()    const;
+
+    Adesk::Boolean     hasWidth()        const;
+    Acad::ErrorStatus makeClosedIfStartAndEndVertexCoincide(double distTol);
+
+    void              getEcs(AcGeMatrix3d& retVal) const override;
+
+    static std::string className();
+public:
+    AcDbPolyline* impObj() const;
+};
+

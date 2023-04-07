@@ -50,7 +50,7 @@
     <IntDir>$(ProjectName)\$(PlatformName)\$(Configuration)/</IntDir>
     <OutDir>$(SolutionDir)\Bin\$(ProjectName)\$(PlatformName)\$(Configuration)/</OutDir>
     <LinkIncremental>true</LinkIncremental>
-    <TargetExt>.arx</TargetExt>
+    <TargetExt>.brx</TargetExt>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
