@@ -28,6 +28,15 @@ def PyRxCmd_pycmd():
 		createLine()
 	except Exception as err:
 		PyRxApp.Printf(err)
+		
+def PyRxLisp_pylisp(args):
+	try: 
+		for x in args:
+			PyRxApp.Printf("\nLisp item({},{})".format(x[0], x[1]))
+		return [(PyRx.LispDataType.kListBegin, 0),(PyRx.LispDataType.kText, "Back at ya"),(PyRx.LispDataType.kListEnd, 0)]
+	except Exception as err:
+		PyRxApp.Printf(err)
+
 
 def createLine():
 	try:

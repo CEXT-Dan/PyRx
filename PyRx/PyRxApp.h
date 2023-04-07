@@ -59,7 +59,13 @@ public:
     LoadedPaths loadedModulePaths;
 
     using CmdNameMap = std::map<AcString, PyObject*>;
+    using CmdLispMap = std::map<int, AcString>;
+
     CmdNameMap commands;
+    CmdNameMap lispFuncs;
+    CmdLispMap lispFuncCodes;
+
+    int lastLispFuncode = 0;
 
     bool isLoaded = false;
 };

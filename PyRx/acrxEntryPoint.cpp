@@ -24,9 +24,20 @@
 //-----------------------------------------------------------------------------
 #include "StdAfx.h"
 #include "resource.h"
-
+#include "ResultBuffer.h"
 
 PyMODINIT_FUNC PyInitPyRxModule(void);
+
+
+#if ARXAPP
+#define ADSPREFIX(x) zds_ ## x
+#elif GRXAPP
+#define ADSPREFIX(x) gds_ ## x
+#else
+#define ADSPREFIX(x) ads_ ## x
+#endif
+
+
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
 
@@ -202,7 +213,6 @@ public:
                 AcString moduleName;
                 if (!pyNavFileNavDialog(pathName, moduleName))
                     return;
-
                 if (PyRxApp::instance().fnm.contains(moduleName))
                 {
                     acutPrintf(_T("\nModule %ls Already loaded, use pyreload"), (const TCHAR*)moduleName);
@@ -213,6 +223,7 @@ public:
                 method.mod.reset(PyImport_Import(method.modname.get()));
                 if (method.mod != nullptr)
                 {
+                    //module initapp
                     method.mdict = PyModule_GetDict(method.mod.get());
                     method.OnPyInitApp = PyDict_GetItemString(method.mdict, "OnPyInitApp");
                     method.OnPyUnloadApp = PyDict_GetItemString(method.mdict, "OnPyUnloadApp");
@@ -222,15 +233,33 @@ public:
                     PyObject* pKey = nullptr, * pValue = nullptr;
                     for (Py_ssize_t i = 0; PyDict_Next(method.mdict, &i, &pKey, &pValue);)
                     {
-                        AcString key = utf8_to_wstr(PyUnicode_AsUTF8(pKey)).c_str();
-                        int prefix = key.find(PyCommandPrefix);
-                        if (prefix == -1)
-                            continue;
-                        AcString commandName = key.substr(PyCommandPrefix.length(), key.length() - 1);
-                        if (PyFunction_Check(pValue))
+                        const AcString key = utf8_to_wstr(PyUnicode_AsUTF8(pKey)).c_str();
+                        int cmdprefix = key.find(PyCommandPrefix);
+                        if (cmdprefix != -1)
                         {
-                            PyRxApp::instance().commands.emplace(commandName.makeUpper(), pValue);
-                            acedRegCmds->addCommand(_T("PYCOMMANDS"), commandName, commandName, ACRX_CMD_TRANSPARENT, AcRxPyApp_pyfunc);
+                            AcString commandName = key.substr(PyCommandPrefix.length(), key.length() - 1);
+                            if (PyFunction_Check(pValue))
+                            {
+                                //TODO:check for duplicates
+                                PyRxApp::instance().commands.emplace(commandName.makeUpper(), pValue);
+                                acedRegCmds->addCommand(_T("PYCOMMANDS"), commandName, commandName, ACRX_CMD_TRANSPARENT, AcRxPyApp_pyfunc);
+                            }
+                        }
+                        int lspprefix = key.find(PyLispFuncPrefix);
+                        if (lspprefix != -1)
+                        {
+                            AcString lispFuncName = key.substr(PyLispFuncPrefix.length(), key.length() - 1);
+                            if (PyFunction_Check(pValue))
+                            {
+                                //TODO: check for duplicates
+                                //TODO: reload on_doc
+                                //TODO: handle pyreload
+                                PyRxApp::instance().lastLispFuncode++;
+                                PyRxApp::instance().lispFuncs.emplace(lispFuncName.makeUpper(), pValue);
+                                PyRxApp::instance().lispFuncCodes.emplace(PyRxApp::instance().lastLispFuncode, lispFuncName);
+                                acedDefun(lispFuncName,PyRxApp::instance().lastLispFuncode);
+                                ads_regfunc(AcRxPyApp::pylispfunc, PyRxApp::instance().lastLispFuncode);
+                            }
                         }
                     }
                     PyRxApp::instance().fnm.emplace(moduleName, std::move(method));
@@ -352,6 +381,8 @@ public:
                     {
                         if (PyCallable_Check(method))
                             PyObjectPtr rslt(PyObject_CallFunction(method, NULL));
+                        else
+                            acutPrintf(_T("\npyfunc failed: "));
                     }
                 }
                 catch (...)
@@ -360,6 +391,45 @@ public:
                 }
             }
         }
+    }
+
+    static int pylispfunc(void)
+    {
+        try
+        {
+            int fcode = acedGetFunCode();
+            if (PyRxApp::instance().lispFuncCodes.contains(fcode))
+            {
+                auto funcName = PyRxApp::instance().lispFuncCodes.at(fcode);
+                if (PyRxApp::instance().lispFuncs.contains(funcName))
+                {
+                    auto& method = PyRxApp::instance().lispFuncs.at(funcName);
+                    if (method != nullptr)
+                    {
+                        if (PyCallable_Check(method))
+                        {
+                            boost::python::list args = resbufToList(acedGetArgs());
+                            PyObjectPtr rslt(PyObject_CallFunctionObjArgs(method, args, NULL));
+                            if (rslt != nullptr)
+                            {
+                                //TODO: handle tuple or list;
+                                if(rslt.get() == Py_None)
+                                    return RSRSLT;
+                                boost::python::handle<> handle(rslt.get());
+                                boost::python::list reslist(handle);
+                                AcResBufPtr ptr(listToResbuf(reslist));
+                                acedRetList(ptr.get());
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        catch (...)
+        {
+            acutPrintf(_T("\npyfunc failed: "));
+        }
+        return RSRSLT;
     }
 };
 
