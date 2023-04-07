@@ -2871,3 +2871,139 @@ AcDbCircle* PyDbCircle::impObj() const
 {
     return static_cast<AcDbCircle*>(m_pImp.get());
 }
+
+//-----------------------------------------------------------------------------------
+//PyDbLine
+void makPyDbLineWrapper()
+{
+    static auto wrapper = class_<PyDbLine, bases<PyDbCurve>>("DbLine")
+        .def(init<>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&>())
+        .def("startPoint", &PyDbLine::startPoint)
+        .def("setStartPoint", &PyDbLine::setStartPoint)
+        .def("endPoint", &PyDbLine::endPoint)
+        .def("setEndPoint", &PyDbLine::setEndPoint)
+        .def("thickness", &PyDbLine::thickness)
+        .def("setThickness", &PyDbLine::setThickness)
+        .def("normal", &PyDbLine::normal)
+        .def("setNormal", &PyDbLine::setNormal)
+        .def("getOffsetCurvesGivenPlaneNormal", &PyDbLine::getOffsetCurvesGivenPlaneNormal)
+        .def("className", &PyDbLine::className).staticmethod("className")
+        ;
+}
+
+PyDbLine::PyDbLine()
+    : PyDbCurve(new AcDbLine(), true)
+{
+}
+
+PyDbLine::PyDbLine(AcDbLine* ptr, bool autoDelete)
+    : PyDbCurve(ptr, autoDelete)
+{
+}
+
+PyDbLine::PyDbLine(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbCurve(nullptr, false)
+{
+    AcDbLine* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbLine>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    this->resetImp(pobj, false, true);
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+}
+
+PyDbLine::PyDbLine(const AcGePoint3d& start, const AcGePoint3d& end)
+    : PyDbCurve(new AcDbLine(start, end), true)
+{
+}
+
+AcGePoint3d PyDbLine::startPoint() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->startPoint();
+}
+
+Acad::ErrorStatus PyDbLine::setStartPoint(const AcGePoint3d& val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setStartPoint(val);
+}
+
+AcGePoint3d PyDbLine::endPoint() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->endPoint();
+}
+
+Acad::ErrorStatus PyDbLine::setEndPoint(const AcGePoint3d& val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setEndPoint(val);
+}
+
+double PyDbLine::thickness() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->thickness();
+}
+
+Acad::ErrorStatus PyDbLine::setThickness(double val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setThickness(val);
+}
+
+AcGeVector3d PyDbLine::normal() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->normal();
+}
+
+Acad::ErrorStatus PyDbLine::setNormal(const AcGeVector3d& val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setNormal(val);
+}
+
+boost::python::list PyDbLine::getOffsetCurvesGivenPlaneNormal(const AcGeVector3d& normal, double offsetDist) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    boost::python::list curves;
+    AcDbVoidPtrArray offsetCurves;
+    if (auto es = imp->getOffsetCurvesGivenPlaneNormal(normal, offsetDist, offsetCurves); es != eOk)
+        throw PyAcadErrorStatus(es);
+    for (auto ptr : offsetCurves)
+        curves.append(PyDbEntity(static_cast<AcDbEntity*>(ptr), true));
+    return curves;
+}
+
+std::string PyDbLine::className()
+{
+    return "AcDbLine";
+}
+
+AcDbLine* PyDbLine::impObj() const
+{
+    return static_cast<AcDbLine*>(m_pImp.get());
+}

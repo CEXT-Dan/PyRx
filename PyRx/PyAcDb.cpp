@@ -118,6 +118,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDb3dPolylineWrapper();
     makePyDbArcWrapper();
     makPyDbCircleWrapper();
+    makPyDbLineWrapper();
 
     makeAcDbDictionaryWrapper();
     makeAcDbSymbolTableWrapper();

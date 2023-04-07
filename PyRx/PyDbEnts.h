@@ -622,3 +622,34 @@ public:
 public:
     AcDbCircle* impObj() const;
 };
+
+//-----------------------------------------------------------------------------------
+//PyDbLine
+void makPyDbLineWrapper();
+class PyDbLine : public PyDbCurve
+{
+public:
+    PyDbLine();
+    PyDbLine(AcDbLine* ptr, bool autoDelete);
+    PyDbLine(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbLine(const AcGePoint3d& start, const AcGePoint3d& end);
+    virtual ~PyDbLine() override = default;
+
+    AcGePoint3d         startPoint() const;
+    Acad::ErrorStatus   setStartPoint(const AcGePoint3d& val);
+
+    AcGePoint3d         endPoint() const;
+    Acad::ErrorStatus   setEndPoint(const AcGePoint3d& val);
+
+    double              thickness() const;
+    Acad::ErrorStatus   setThickness(double val);
+
+    AcGeVector3d        normal() const;
+    Acad::ErrorStatus   setNormal(const AcGeVector3d& val);
+
+    boost::python::list getOffsetCurvesGivenPlaneNormal(const AcGeVector3d& normal, double offsetDist) const override;
+  
+    static std::string className();
+public:
+    AcDbLine* impObj() const;
+};
