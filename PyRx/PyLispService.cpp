@@ -14,20 +14,38 @@ int PyLispService::execLispFunc()
             if (PyCallable_Check(method))
             {
                 boost::python::list args = resbufToList(acedGetArgs());
-                PyObject* rslt(PyObject_CallFunctionObjArgs(method, args, NULL));
+                PyObjectPtr ptr(PyObject_CallFunctionObjArgs(method, args, NULL));
+                if (ptr == nullptr)
+                {
+                    acedRetT();
+                    return RSRSLT;
+                }
+                else if (ptr.get() == Py_None)
+                {
+                    acedRetT();
+                    return RSRSLT;
+                }
+                if (!PyList_Check(ptr.get()))//lists only for now
+                {
+                    acutPrintf(_T("\nNot a list: "));
+                    acedRetNil();
+                    return RSERR;
+                }
+                boost::python::handle<> rslt(ptr.get());
                 if (rslt != nullptr)
                 {
-                    //TODO: handle tuple or list;
-                    if (rslt == Py_None)
+                    boost::python::list reslist(rslt);
+                    ptr.release();// boost owns it from here
+                    if (reslist.is_none())
                     {
                         acedRetT();
                         return RSRSLT;
                     }
-                    boost::python::handle<> handle(rslt);
-                    boost::python::list reslist(handle);
                     AcResBufPtr ptr(listToResbuf(reslist));
                     if (ptr != nullptr)
+                    {
                         acedRetList(ptr.get());
+                    }
                 }
             }
         }

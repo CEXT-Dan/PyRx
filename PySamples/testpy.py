@@ -80,27 +80,3 @@ def createDbps():
 			model.appendAcDbEntity(o)
 	except Exception as err:
 		PyRxApp.Printf(err)
-
-# (pylisp)
-def PyRxLisp_pylisp(args):
-	try: 
-		return [(PyRx.LispDataType.kListBegin, 0),
-	            (PyRx.LispDataType.kText, "Text"),
-		        (PyRx.LispDataType.kDouble, 12.23),
-			    (PyRx.LispDataType.kListBegin, 0),
-			    (PyRx.LispDataType.kInt16, 1),
-			    (PyRx.LispDataType.kInt32, 2),
-			    (PyRx.LispDataType.kNil, 0),
-			     (PyRx.LispDataType.kT_atom, 0),
-			    (PyRx.LispDataType.kListEnd, 0),
-		     	(PyRx.LispDataType.kPoint3d,PyGe.Point3d(1,10,100)),
-				(PyRx.LispDataType.kListEnd, 0)]
-	except Exception as err:
-		PyRxApp.Printf(err)
-
-#(pylisprt '("hello world" 1 2 3 4 (1 10 100)))
-def PyRxLisp_pylisprt(args):
-	try: 
-		return args
-	except Exception as err:
-		PyRxApp.Printf(err)
