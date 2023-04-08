@@ -14,16 +14,16 @@ int PyLispService::execLispFunc()
             if (PyCallable_Check(method))
             {
                 boost::python::list args = resbufToList(acedGetArgs());
-                PyObjectPtr rslt(PyObject_CallFunctionObjArgs(method, args, NULL));
+                PyObject* rslt(PyObject_CallFunctionObjArgs(method, args, NULL));
                 if (rslt != nullptr)
                 {
                     //TODO: handle tuple or list;
-                    if (rslt.get() == Py_None)
+                    if (rslt == Py_None)
                     {
                         acedRetT();
                         return RSRSLT;
                     }
-                    boost::python::handle<> handle(rslt.get());
+                    boost::python::handle<> handle(rslt);
                     boost::python::list reslist(handle);
                     AcResBufPtr ptr(listToResbuf(reslist));
                     if (ptr != nullptr)

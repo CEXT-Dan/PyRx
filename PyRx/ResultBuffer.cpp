@@ -109,7 +109,8 @@ resbuf* listToResbuf(const boost::python::list& bpl)
                     case RTANG:
                     case RTREAL:
                     {
-                        pTail->rbnext = acutBuildList(code, extract<double>(tpl[1]), 0);
+                        const double val = extract<double>(tpl[1]);
+                        pTail->rbnext = acutBuildList(code, val, 0);
                         if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
                         break;
@@ -117,28 +118,32 @@ resbuf* listToResbuf(const boost::python::list& bpl)
                     case RTORINT:
                     case RT3DPOINT:
                     {
-                        pTail->rbnext = acutBuildList(code, asDblArray(extract<AcGePoint3d>(tpl[1])), 0);
+                        const auto val = asDblArray(extract<AcGePoint3d>(tpl[1]));
+                        pTail->rbnext = acutBuildList(code, val, 0);
                         if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
                         break;
                     }
                     case RTPOINT:
                     {
-                        pTail->rbnext = acutBuildList(code, asDblArray(extract<AcGePoint2d>(tpl[1])), 0);
+                        const auto val = asDblArray(extract<AcGePoint2d>(tpl[1]));
+                        pTail->rbnext = acutBuildList(code, val, 0);
                         if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
                         break;
                     }
                     case RTSHORT:
                     {
-                        pTail->rbnext = acutBuildList(code, extract<int>(tpl[1]), 0);
+                        const short val = extract<int>(tpl[1]);
+                        pTail->rbnext = acutBuildList(code, val, 0);
                         if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
                         break;
                     }
                     case RTLONG:
                     {
-                        pTail->rbnext = acutBuildList(code, extract<int>(tpl[1]), 0);
+                        const int val = extract<int>(tpl[1]);
+                        pTail->rbnext = acutBuildList(code, val, 0);
                         if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
                         break;
@@ -146,14 +151,15 @@ resbuf* listToResbuf(const boost::python::list& bpl)
                     case RTLONG_PTR:
                     case RTINT64:
                     {
-                        pTail->rbnext = acutBuildList(code, extract<int64_t>(tpl[1]), 0);
+                        const int64_t val = extract<int64_t>(tpl[1]);
+                        pTail->rbnext = acutBuildList(code, val, 0);
                         if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
                         break;
                     }
                     case RTSTR:
                     {
-                        AcString str = utf8_to_wstr(extract<char*>(tpl[1])).c_str();
+                        const AcString str = utf8_to_wstr(extract<char*>(tpl[1])).c_str();
                         pTail->rbnext = acutBuildList(code, (const TCHAR*)str, 0);
                         if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
@@ -164,7 +170,7 @@ resbuf* listToResbuf(const boost::python::list& bpl)
                     {
                         {
                             ads_name name = { 0L };
-                            PyDbObjectId id = extract<PyDbObjectId>(tpl[1]);
+                            const PyDbObjectId id = extract<PyDbObjectId>(tpl[1]);
                             if (acdbGetAdsName(name, id.m_id) == eOk)
                             {
                                 pTail->rbnext = acutBuildList(code, name, 0);
