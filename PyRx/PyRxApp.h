@@ -1,4 +1,5 @@
 #pragma once
+#include "PyLispService.h"
 
 PyMODINIT_FUNC PyInitPyRxModule(void);
 
@@ -62,10 +63,7 @@ public:
     using CmdLispMap = std::map<int, AcString>;
 
     CmdNameMap commands;
-    CmdNameMap lispFuncs;
-    CmdLispMap lispFuncCodes;
-
-    int lastLispFuncode = 0;
+    PyLispService lispService;
 
     bool isLoaded = false;
 };
