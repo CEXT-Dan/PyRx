@@ -6,7 +6,7 @@ int PyLispService::execLispFunc()
 {
     try
     {
-        int fcode = acedGetFunCode();
+        const int fcode = acedGetFunCode();
         auto& lisplispService = PyRxApp::instance().lispService;
         if (lisplispService.lispFuncCodes.contains(fcode))
         {
@@ -14,28 +14,28 @@ int PyLispService::execLispFunc()
             if (PyCallable_Check(method))
             {
                 boost::python::list args = resbufToList(acedGetArgs());
-                PyObjectPtr ptr(PyObject_CallFunctionObjArgs(method, args, NULL));
-                if (ptr == nullptr)
+                PyObjectPtr pResult(PyObject_CallFunctionObjArgs(method, args, NULL));
+                if (pResult == nullptr)
                 {
                     acedRetT();
                     return RSRSLT;
                 }
-                else if (ptr.get() == Py_None)
+                else if (pResult.get() == Py_None)
                 {
                     acedRetT();
                     return RSRSLT;
                 }
-                if (!PyList_Check(ptr.get()))//lists only for now
+                if (!PyList_Check(pResult.get()))//lists only for now
                 {
                     acutPrintf(_T("\nNot a list: "));
                     acedRetNil();
                     return RSERR;
                 }
-                boost::python::handle<> rslt(ptr.get());
-                if (rslt != nullptr)
+                boost::python::handle<> resultHandle(pResult.get());
+                if (resultHandle != nullptr)
                 {
-                    boost::python::list reslist(rslt);
-                    ptr.release();// boost owns it from here
+                    boost::python::list reslist(resultHandle);
+                    pResult.release();// boost owns it from here
                     if (reslist.is_none())
                     {
                         acedRetT();
@@ -43,9 +43,7 @@ int PyLispService::execLispFunc()
                     }
                     AcResBufPtr ptr(listToResbuf(reslist));
                     if (ptr != nullptr)
-                    {
                         acedRetList(ptr.get());
-                    }
                 }
             }
         }
@@ -59,7 +57,7 @@ int PyLispService::execLispFunc()
 
 bool PyLispService::tryAddFunc(const AcString& pythonFuncName, PyObject* method)
 {
-    AcString lispFuncName = pythonFuncName.substr(PyLispFuncPrefix.length(), pythonFuncName.length() - 1);
+    const AcString lispFuncName = pythonFuncName.substr(PyLispFuncPrefix.length(), pythonFuncName.length() - 1);
     if (PyFunction_Check(method))
     {
         if (lispFuncs.contains(lispFuncName))
