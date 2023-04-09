@@ -4,16 +4,6 @@
 using namespace boost::python;
 
 
-std::string AcGeVector2ToString(const AcGeVector2d& p)
-{
-    return std::format("({},{})", p.x, p.y);
-}
-
-std::string AcGePoint2dToString(const AcGePoint2d& p)
-{
-    return std::format("({},{})", p.x, p.y);
-}
-
 std::string AcGeVector3dToString(const AcGeVector3d& p)
 {
     return std::format("({},{},{})", p.x, p.y, p.z);
@@ -22,6 +12,14 @@ std::string AcGeVector3dToString(const AcGeVector3d& p)
 std::string AcGePoint3dToString(const AcGePoint3d& p)
 {
     return std::format("({},{},{})", p.x, p.y, p.z);
+}
+
+
+//---------------------------------------------------------------------------------------------------------------
+//AcGePoint2d
+std::string AcGePoint2dToString(const AcGePoint2d& p)
+{
+    return std::format("({},{})", p.x, p.y);
 }
 
 static AcGePoint2d AcGePoint2dkOrigin()
@@ -72,7 +70,12 @@ static void makeAcGePoint2dWrapper()
         ;
 }
 
-
+//---------------------------------------------------------------------------------------------------------------
+//AcGeVector2d
+std::string AcGeVector2ToString(const AcGeVector2d& p)
+{
+    return std::format("({},{})", p.x, p.y);
+}
 
 static AcGeVector2d AcGeVector2dkIdentity()
 {
@@ -96,7 +99,6 @@ static AcGeVector2d acGeVector2dMulOperatorDouble(const double scl, const AcGeVe
 
 static AcGeVector2d acGeVector2dMulOperatorAcGeMatrix2d(const AcGeVector2d& vec, const AcGeMatrix2d& mat)
 {
-    auto tmp = mat * vec;
     return mat * vec;
 }
 
@@ -163,7 +165,6 @@ static void makeAcGeVector2dWrapper()
         .def<AcGeVector2d(AcGeVector2d::*)(const AcGeVector2d&)const>("__sub__", &AcGeVector2d::operator-)
         .def<AcGeVector2d& (AcGeVector2d::*)(const AcGeVector2d&)>("__isub__", &AcGeVector2d::operator-=, return_self<>())
 
-
         .def("toString", &AcGeVector2ToString)
         .def("__str__", &AcGeVector2ToString)
         ;
@@ -172,26 +173,112 @@ static void makeAcGeVector2dWrapper()
 
 }
 
-
+//---------------------------------------------------------------------------------------------------------------
+//AcGeMatrix2d
 static AcGeMatrix2d AcGeMatrix2dkIdentity()
 {
     return AcGeMatrix2d::kIdentity;
 }
 
+std::string AcGeMatrix2dToString(const AcGeMatrix2d& x)
+{
+    return  std::format("(({0},{1},{2}),({3},{4},{5}),({6},{7},{8}))",
+        x.entry[0][0], x.entry[0][1], x.entry[0][2],
+        x.entry[1][0], x.entry[1][1], x.entry[1][2],
+        x.entry[2][0], x.entry[2][1], x.entry[2][2]);
+}
+
+static AcGeMatrix2d AcGeMatrix2dtranslation(const AcGeVector2d& vec)
+{
+    return AcGeMatrix2d::translation(vec);
+}
+
+static AcGeMatrix2d AcGeMatrix2drotation(double angle, const AcGePoint2d& center)
+{
+    return AcGeMatrix2d::rotation(angle, center);
+}
+
+static AcGeMatrix2d AcGeMatrix2scaling(double scaleAll, const AcGePoint2d& center)
+{
+    return AcGeMatrix2d::scaling(scaleAll, center);
+}
+
+static AcGeMatrix2d AcGeMatrix2mirroring(const AcGePoint2d& pnt)
+{
+    return AcGeMatrix2d::mirroring(pnt);
+}
+
+static AcGeMatrix2d AcGeMatrix2mirroring2(const AcGeLine2d& line)
+{
+    return AcGeMatrix2d::mirroring(line);
+}
+
+static AcGeMatrix2d AcGeMatrix2alignCoordSys
+   (const AcGePoint2d& fromOrigin,
+    const AcGeVector2d& fromE0,
+    const AcGeVector2d& fromE1,
+    const AcGePoint2d& toOrigin,
+    const AcGeVector2d& toE0,
+    const AcGeVector2d& toE1)
+{
+    return AcGeMatrix2d::alignCoordSys(fromOrigin, fromE0, fromE1, toOrigin, toE0, toE1);
+}
+
 static auto makeAcGeMatrix2dWrapper()
 {
     static auto wrapper = class_<AcGeMatrix2d>("Matrix2d")
-        .def("scale", &AcGeMatrix2d::scale)
-        .def("setToScaling", &AcGeMatrix2d::setToScaling, return_self<>())
-        .def("setToRotation", &AcGeMatrix2d::setToRotation, return_self<>())
 
         .add_static_property("kIdentity", &AcGeMatrix2dkIdentity)
+        .def("setToIdentity", &AcGeMatrix2d::setToIdentity, return_self<>())
+        .def("preMultBy", &AcGeMatrix2d::preMultBy, return_self<>())
+        .def("postMultBy", &AcGeMatrix2d::postMultBy, return_self<>())
+        .def("setToProduct", &AcGeMatrix2d::setToProduct, return_self<>())
+        .def("invert", &AcGeMatrix2d::invert, return_self<>())
+        .def("inverse", &AcGeMatrix2d::inverse)
+        .def("isSingular", &AcGeMatrix2d::isSingular)
+        .def("transposeIt", &AcGeMatrix2d::transposeIt, return_self<>())
+        .def("transpose", &AcGeMatrix2d::transpose)
+        .def("isEqualTo", &AcGeMatrix2d::isEqualTo)
+        .def("isUniScaledOrtho", &AcGeMatrix2d::isUniScaledOrtho)
+        .def("isScaledOrtho", &AcGeMatrix2d::isScaledOrtho)
+        .def("scale", &AcGeMatrix2d::scale)
+        .def("det", &AcGeMatrix2d::det)
+        .def("setTranslation", &AcGeMatrix2d::setTranslation, return_self<>())
+        .def<AcGeVector2d(AcGeMatrix2d::*)(void)const>("translation", &AcGeMatrix2d::translation)
+        .def("isConformal", &AcGeMatrix2d::isConformal)
+        .def("setCoordSystem", &AcGeMatrix2d::setCoordSystem, return_self<>())
+        .def("getCoordSystem", &AcGeMatrix2d::getCoordSystem)
+        .def("setToTranslation", &AcGeMatrix2d::setToTranslation, return_self<>())
+        .def("setToRotation", &AcGeMatrix2d::setToRotation, return_self<>())
+        .def("setToScaling", &AcGeMatrix2d::setToScaling, return_self<>())
+        .def<AcGeMatrix2d&(AcGeMatrix2d::*)(const AcGePoint2d&)>("setToMirroring", &AcGeMatrix2d::setToMirroring, return_self<>())
+        .def<AcGeMatrix2d&(AcGeMatrix2d::*)(const AcGeLine2d&)>("setToMirroring", &AcGeMatrix2d::setToMirroring, return_self<>())
+        .def("setToAlignCoordSys", &AcGeMatrix2d::setToAlignCoordSys, return_self<>())
+
+        .def("translation", &AcGeMatrix2dtranslation).staticmethod("translation")
+        .def("rotation", &AcGeMatrix2drotation).staticmethod("rotation")
+        .def("scaling", &AcGeMatrix2scaling).staticmethod("scaling")
+        .def("mirroring", &AcGeMatrix2mirroring).staticmethod("mirroring")
+        .def("mirroring", &AcGeMatrix2mirroring2).staticmethod("mirroring")
+        .def("alignCoordSys", &AcGeMatrix2alignCoordSys).staticmethod("alignCoordSys")
+        .def<double(AcGeMatrix2d::*)(unsigned int, unsigned int)const>("elementAt", &AcGeMatrix2d::operator())
+
         .def("__eq__", &AcGeMatrix2d::operator==)
         .def("__ne__", &AcGeMatrix2d::operator!=)
+        .def<AcGeMatrix2d(AcGeMatrix2d::*)(const AcGeMatrix2d&) const>("__mul__", &AcGeMatrix2d::operator*)
+        .def<AcGeMatrix2d& (AcGeMatrix2d::*)(const AcGeMatrix2d&)>("__imul__", &AcGeMatrix2d::operator*=, return_self<>())
+        .def<AcGeMatrix2d(AcGeMatrix2d::*)(const AcGeMatrix2d&) const>("__matmul__", &AcGeMatrix2d::operator*)
+        .def<AcGeMatrix2d& (AcGeMatrix2d::*)(const AcGeMatrix2d&)>("__matmul__", &AcGeMatrix2d::operator*=, return_self<>())
+
+        .def("toString", &AcGeMatrix2dToString)
+        .def("__str__", &AcGeMatrix2dToString)
         ;
     return wrapper;
 }
 
+
+//---------------------------------------------------------------------------------------------------------------
+//AcGePoint3d
 static auto makeAcGePoint3dWrapper()
 {
     static auto wrapper = class_<AcGePoint3d>("Point3d")
