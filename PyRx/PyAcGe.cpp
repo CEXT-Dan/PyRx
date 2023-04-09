@@ -32,6 +32,11 @@ static auto makeAcGeScale2dWrapper()
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGeTol
+static AcGeTol getTol()
+{
+    return AcGeContext::gTol;
+}
+
 void makeAcGeTolWrapper()
 {
     static auto wrapper = class_<AcGeTol>("GeTol")
@@ -40,6 +45,7 @@ void makeAcGeTolWrapper()
         .def("equalVector", &AcGeTol::equalVector)
         .def("setEqualPoint", &AcGeTol::setEqualPoint)
         .def("setEqualVector", &AcGeTol::setEqualVector)
+        .add_static_property("current", &getTol)
         ;
 }
 
@@ -242,7 +248,7 @@ static AcGeMatrix2d AcGeMatrix2mirroring2(const AcGeLine2d& line)
 }
 
 static AcGeMatrix2d AcGeMatrix2alignCoordSys
-   (const AcGePoint2d& fromOrigin,
+(const AcGePoint2d& fromOrigin,
     const AcGeVector2d& fromE0,
     const AcGeVector2d& fromE1,
     const AcGePoint2d& toOrigin,
@@ -279,8 +285,8 @@ static auto makeAcGeMatrix2dWrapper()
         .def("setToTranslation", &AcGeMatrix2d::setToTranslation, return_self<>())
         .def("setToRotation", &AcGeMatrix2d::setToRotation, return_self<>())
         .def("setToScaling", &AcGeMatrix2d::setToScaling, return_self<>())
-        .def<AcGeMatrix2d&(AcGeMatrix2d::*)(const AcGePoint2d&)>("setToMirroring", &AcGeMatrix2d::setToMirroring, return_self<>())
-        .def<AcGeMatrix2d&(AcGeMatrix2d::*)(const AcGeLine2d&)>("setToMirroring", &AcGeMatrix2d::setToMirroring, return_self<>())
+        .def<AcGeMatrix2d& (AcGeMatrix2d::*)(const AcGePoint2d&)>("setToMirroring", &AcGeMatrix2d::setToMirroring, return_self<>())
+        .def<AcGeMatrix2d& (AcGeMatrix2d::*)(const AcGeLine2d&)>("setToMirroring", &AcGeMatrix2d::setToMirroring, return_self<>())
         .def("setToAlignCoordSys", &AcGeMatrix2d::setToAlignCoordSys, return_self<>())
 
         .def("translation", &AcGeMatrix2dtranslation).staticmethod("translation")
@@ -319,7 +325,7 @@ static AcGePoint3d AcGePoint3dkOrigin()
 
 AcGePoint3d acAcGePoint3dMulOperatoAcGeMatrix3d(const AcGeMatrix3d& mat, const AcGePoint3d& pnt)
 {
-   return mat * pnt;
+    return mat * pnt;
 }
 
 AcGePoint3d acAcGePoint3dMulOperatoAcGePoint3d(double val, const AcGePoint3d& pnt)
@@ -340,7 +346,7 @@ static void makeAcGePoint3dWrapper()
         .def_readwrite("z", &AcGePoint3d::z)
         .add_static_property("kOrigin", &AcGePoint3dkOrigin)
 
-        .def("setToProduct", &AcGePoint3d::setToProduct,return_self<>())
+        .def("setToProduct", &AcGePoint3d::setToProduct, return_self<>())
         .def("transformBy", &AcGePoint3d::transformBy, return_self<>())
         .def("rotateBy", &AcGePoint3d::rotateBy, return_self<>())
         .def("mirror", &AcGePoint3d::mirror, return_self<>())
@@ -353,8 +359,8 @@ static void makeAcGePoint3dWrapper()
         .def("orthoProject", &AcGePoint3d::orthoProject)
         .def("isEqualTo", &AcGePoint3d::isEqualTo)
 
-        .def<AcGePoint3d& (AcGePoint3d::*)(double, double, double)>("setToMirroring", &AcGePoint3d::set, return_self<>())
-        .def<AcGePoint3d& (AcGePoint3d::*)(const AcGePlanarEnt&, const AcGePoint2d&)>("setToMirroring", &AcGePoint3d::set, return_self<>())
+        .def<AcGePoint3d& (AcGePoint3d::*)(double, double, double)>("set", &AcGePoint3d::set, return_self<>())
+        .def<AcGePoint3d& (AcGePoint3d::*)(const AcGePlanarEnt&, const AcGePoint2d&)>("set", &AcGePoint3d::set, return_self<>())
 
         .def("__eq__", &AcGePoint3d::operator==)
         .def("__ne__", &AcGePoint3d::operator!=)
@@ -382,24 +388,134 @@ static void makeAcGePoint3dWrapper()
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGeVector3d
+
+static AcGeVector3d AcGeVector3dkIdentity()
+{
+    return AcGeVector3d::kIdentity;
+}
+
+static AcGeVector3d AcGeVector3dkXAxis()
+{
+    return AcGeVector3d::kXAxis;
+}
+
+static AcGeVector3d AcGeVector3dkYAxis()
+{
+    return AcGeVector3d::kYAxis;
+}
+
+static AcGeVector3d AcGeVector3dkZAxis()
+{
+    return AcGeVector3d::kZAxis;
+}
+
 std::string AcGeVector3dToString(const AcGeVector3d& p)
 {
     return std::format("({},{},{})", p.x, p.y, p.z);
 }
 
+
+AcGePoint3d acAcGeVector3dMulOperatoAcGePoint3d(double val, const AcGePoint3d& pnt)
+{
+    return val * pnt;
+}
+
+AcGePoint3d acAcGeVector3ddMulOperatoAcGeMatrix3d(const AcGeMatrix3d& mat, const AcGePoint3d& pnt)
+{
+    return mat * pnt;
+}
+
+
 static auto makeAcGeVector3dWrapper()
 {
     static auto wrapper = class_<AcGeVector3d>("Vector3d")
         .def(init<>())
+        .def(init<const AcGeVector3d&>())
         .def(init<double, double, double>())
+        .def(init<const AcGePlanarEnt&, const AcGeVector2d&>())
+
         .def_readwrite("x", &AcGeVector3d::x)
         .def_readwrite("y", &AcGeVector3d::y)
         .def_readwrite("z", &AcGeVector3d::z)
-        .def_readonly("kXAxis", &AcGeVector3d::kXAxis)
-        .def_readonly("kYAxis", &AcGeVector3d::kYAxis)
-        .def_readonly("kZAxis", &AcGeVector3d::kZAxis)
+
+        .add_static_property("kIdentity", &AcGeVector3dkIdentity)
+        .add_static_property("kXAxis", &AcGeVector3dkXAxis)
+        .add_static_property("kYAxis", &AcGeVector3dkYAxis)
+        .add_static_property("kZAxis", &AcGeVector3dkZAxis)
+
+        .def<AcGeVector3d& (AcGeVector3d::*)(const AcGeVector3d&, double)>("setToProduct", &AcGeVector3d::setToProduct, return_self<>())
+        .def<AcGeVector3d& (AcGeVector3d::*)(const AcGeMatrix3d&, const AcGeVector3d&)>("setToProduct", &AcGeVector3d::setToProduct, return_self<>())
+
+        .def("transformBy", &AcGeVector3d::transformBy, return_self<>())
+        .def("rotateBy", &AcGeVector3d::rotateBy, return_self<>())
+        .def("mirror", &AcGeVector3d::mirror, return_self<>())
+        .def("convert2d", &AcGeVector3d::convert2d)
+        .def("setToSum", &AcGeVector3d::setToSum, return_self<>())
+        .def("negate", &AcGeVector3d::negate, return_self<>())
+        .def("perpVector", &AcGeVector3d::perpVector)
+
+        .def<double(AcGeVector3d::*)(const AcGeVector3d&) const>("angleTo", &AcGeVector3d::angleTo)
+        .def<double(AcGeVector3d::*)(const AcGeVector3d&, const AcGeVector3d&) const>("angleTo", &AcGeVector3d::angleTo)
+
+        .def<AcGeVector3d& (AcGeVector3d::*)(const AcGeTol& tol)>("normalize", &AcGeVector3d::normalize, return_self<>())
+        .def<AcGeVector3d& (AcGeVector3d::*)(const AcGeTol& tol, AcGeError& flag)>("normalize", &AcGeVector3d::normalize, return_self<>())
+
+        .def("angleOnPlane", &AcGeVector3d::angleOnPlane)
+        .def("normal", &AcGeVector3d::normal)
+        .def("normal", &AcGeVector3d::normal, arg("AcGeTol") = getTol())
+        .def("length", &AcGeVector3d::length)
+        .def("lengthSqrd", &AcGeVector3d::lengthSqrd)
+        .def("isUnitLength", &AcGeVector3d::isUnitLength)
+        .def("isUnitLength", &AcGeVector3d::isUnitLength, arg("AcGeTol") = getTol())
+        .def("isZeroLength", &AcGeVector3d::isZeroLength)
+        .def("isZeroLength", &AcGeVector3d::isZeroLength, arg("AcGeTol") = getTol())
+
+        .def<Adesk::Boolean(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&) const>("isParallelTo", &AcGeVector3d::isParallelTo)
+        .def<Adesk::Boolean(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&) const>("isParallelTo", &AcGeVector3d::isParallelTo, arg("AcGeTol") = getTol())
+
+        .def<Adesk::Boolean(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&) const>("isCodirectionalTo", &AcGeVector3d::isCodirectionalTo)
+        .def<Adesk::Boolean(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&) const>("isCodirectionalTo", &AcGeVector3d::isCodirectionalTo, arg("AcGeTol") = getTol())
+
+        .def<Adesk::Boolean(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&) const>("isPerpendicularTo", &AcGeVector3d::isPerpendicularTo)
+        .def<Adesk::Boolean(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&) const>("isPerpendicularTo", &AcGeVector3d::isPerpendicularTo, arg("AcGeTol") = getTol())
+
+        .def("dotProduct", &AcGeVector3d::dotProduct)
+        .def("crossProduct", &AcGeVector3d::crossProduct)
+        .def("rotateTo", &AcGeVector3d::rotateTo)
+
+        .def<AcGeVector3d(AcGeVector3d::*)(const AcGeVector3d&, const AcGeVector3d&) const>("project", &AcGeVector3d::project)
+        .def<AcGeVector3d(AcGeVector3d::*)(const AcGeVector3d&, const AcGeVector3d&, const AcGeTol&, AcGeError&) const>("project", &AcGeVector3d::project)
+
+        .def<AcGeVector3d(AcGeVector3d::*)(const AcGeVector3d&) const>("orthoProject", &AcGeVector3d::orthoProject)
+        .def<AcGeVector3d(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&, AcGeError&) const>("orthoProject", &AcGeVector3d::orthoProject)
+
+        .def("isEqualTo", &AcGeVector3d::isEqualTo)
+        .def("isEqualTo", &AcGeVector3d::isEqualTo, arg("AcGeTol") = getTol())
+
+        .def("largestElement", &AcGeVector3d::largestElement)
+
+        .def<AcGeVector3d& (AcGeVector3d::*)(double, double, double)>("set", &AcGeVector3d::set, return_self<>())
+        .def<AcGeVector3d& (AcGeVector3d::*)(const AcGePlanarEnt&, const AcGeVector2d&)>("set", &AcGeVector3d::set, return_self<>())
+
         .def("__eq__", &AcGeVector3d::operator==)
         .def("__ne__", &AcGeVector3d::operator!=)
+
+        .def<AcGeVector3d(AcGeVector3d::*)(double)const>("__mul__", &AcGeVector3d::operator*)
+        .def<AcGeVector3d& (AcGeVector3d::*)(double)>("__imul__", &AcGeVector3d::operator*=, return_self<>())
+
+        .def("__mul__", &acAcGeVector3dMulOperatoAcGePoint3d)
+        .def("__mul__", &acAcGeVector3ddMulOperatoAcGeMatrix3d)
+        .def("__matmul__", &acAcGeVector3ddMulOperatoAcGeMatrix3d)
+
+        .def<AcGeVector3d(AcGeVector3d::*)(double)const>("__truediv__", &AcGeVector3d::operator/)
+        .def<AcGeVector3d& (AcGeVector3d::*)(double)>("__itruediv__", &AcGeVector3d::operator/=, return_self<>())
+
+        .def<AcGeVector3d(AcGeVector3d::*)(const AcGeVector3d&)const>("__add__", &AcGeVector3d::operator+)
+        .def<AcGeVector3d& (AcGeVector3d::*)(const AcGeVector3d&)>("__iadd__", &AcGeVector3d::operator+=, return_self<>())
+
+        .def<AcGeVector3d(AcGeVector3d::*)(const AcGeVector3d&)const>("__sub__", &AcGeVector3d::operator-)
+        .def<AcGeVector3d& (AcGeVector3d::*)(const AcGeVector3d&)>("__isub__", &AcGeVector3d::operator-=, return_self<>())
+
         .def("toString", &AcGeVector3dToString)
         ;
     return wrapper;
