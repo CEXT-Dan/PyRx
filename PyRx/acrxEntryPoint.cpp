@@ -383,9 +383,23 @@ public:
         }
     }
 
-    static void AcRxPyApp_doit(void)//internal testing
+    static void AcRxPyApp_doit(void)
     {
+        
+        {
+            auto a = AcGeVector2d::kXAxis;
+            auto m = AcGeMatrix2d::kIdentity;
+            auto a2 = m * a;
+            acutPrintf(_T("\n(%f,%f"), a2.x, a2.y);
+        }
 
+        {
+            auto a = AcGeVector2d::kXAxis;
+            auto m = AcGeMatrix2d::kIdentity;
+            m = m.setToRotation(3.14);
+            auto a2 = m * a;
+            acutPrintf(_T("\n(%f,%f"), a2.x, a2.y);
+        }
     }
 };
 
@@ -394,4 +408,4 @@ IMPLEMENT_ARX_ENTRYPOINT(AcRxPyApp)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyload, pyload, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyreload, pyreload, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyrxver, pyrxver, ACRX_CMD_TRANSPARENT, NULL)
-//ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _doit, doit, ACRX_CMD_TRANSPARENT, NULL)
+ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _doit, doit, ACRX_CMD_TRANSPARENT, NULL)

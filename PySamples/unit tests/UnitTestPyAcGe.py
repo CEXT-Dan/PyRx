@@ -52,17 +52,18 @@ class TestGe(unittest.TestCase):
                 point /=  2.0
                 self.assertEqual(point, PyGe.Point2d(50,50))
 
-        def test_vector2d_MulOperatorAcGeMatrix2d(self):
+        def test_vector2d_Mul(self):
                 v = PyGe.Vector2d.kXAxis
                 m = PyGe.Matrix2d.kIdentity
-                v2 =  v * m
-                self.assertEqual( v2, PyGe.Vector2d(-0.9999987317275395,0.0015926529164868282))
+                v =  v * m
+                self.assertEqual( v, PyGe.Vector2d(1,0))
 
-        def test_vector2d_MatMulOperatorAcGeMatrix2d(self):
+        def test_vector2d_MatMul(self):
                 v = PyGe.Vector2d.kXAxis
                 m = PyGe.Matrix2d.kIdentity
-                v2 =  v * m
-                self.assertEqual( v2, PyGe.Vector2d(-0.9999987317275395,0.0015926529164868282))
+                m.setToRotation(3.14,PyGe.Point2d.kOrigin)
+                v =  v @ m
+                self.assertEqual( v, PyGe.Vector2d(-0.9999987317275395,0.0015926529164868282))
 
 def PyRxCmd_pyge():
         try:
