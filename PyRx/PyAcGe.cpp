@@ -3,17 +3,45 @@
 
 using namespace boost::python;
 
-
-std::string AcGeVector3dToString(const AcGeVector3d& p)
+//---------------------------------------------------------------------------------------------------------------
+//AcGeScale3d
+static auto makeAcGeScale3dWrapper()
 {
-    return std::format("({},{},{})", p.x, p.y, p.z);
+    static auto wrapper = class_<AcGeScale3d>("Scale3d")
+        .def_readwrite("sx", &AcGeScale3d::sx)
+        .def_readwrite("sy", &AcGeScale3d::sy)
+        .def_readwrite("sz", &AcGeScale3d::sz)
+        .def("__eq__", &AcGeScale3d::operator==)
+        .def("__ne__", &AcGeScale3d::operator!=)
+        ;
+    return wrapper;
 }
 
-std::string AcGePoint3dToString(const AcGePoint3d& p)
+//---------------------------------------------------------------------------------------------------------------
+//AcGeScale3d
+static auto makeAcGeScale2dWrapper()
 {
-    return std::format("({},{},{})", p.x, p.y, p.z);
+    static auto wrapper = class_<AcGeScale2d>("Scale2d")
+        .def_readwrite("sx", &AcGeScale2d::sx)
+        .def_readwrite("sy", &AcGeScale2d::sy)
+        .def("__eq__", &AcGeScale2d::operator==)
+        .def("__ne__", &AcGeScale2d::operator!=)
+        ;
+    return wrapper;
 }
 
+//---------------------------------------------------------------------------------------------------------------
+//AcGeTol
+void makeAcGeTolWrapper()
+{
+    static auto wrapper = class_<AcGeTol>("GeTol")
+        .def(init<>())
+        .def("equalPoint", &AcGeTol::equalPoint)
+        .def("equalVector", &AcGeTol::equalVector)
+        .def("setEqualPoint", &AcGeTol::setEqualPoint)
+        .def("setEqualVector", &AcGeTol::setEqualVector)
+        ;
+}
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGePoint2d
@@ -279,37 +307,84 @@ static auto makeAcGeMatrix2dWrapper()
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGePoint3d
-static auto makeAcGePoint3dWrapper()
+std::string AcGePoint3dToString(const AcGePoint3d& p)
+{
+    return std::format("({},{},{})", p.x, p.y, p.z);
+}
+
+static AcGePoint3d AcGePoint3dkOrigin()
+{
+    return AcGePoint3d::kOrigin;
+}
+
+AcGePoint3d acAcGePoint3dMulOperatoAcGeMatrix3d(const AcGeMatrix3d& mat, const AcGePoint3d& pnt)
+{
+   return mat * pnt;
+}
+
+AcGePoint3d acAcGePoint3dMulOperatoAcGePoint3d(double val, const AcGePoint3d& pnt)
+{
+    return val * pnt;
+}
+
+static void makeAcGePoint3dWrapper()
 {
     static auto wrapper = class_<AcGePoint3d>("Point3d")
         .def(init<>())
+        .def(init<const AcGePoint3d&>())
         .def(init<double, double, double>())
-        .def("distanceTo", &AcGePoint3d::distanceTo)
-        .def("transformBy", &AcGePoint3d::transformBy, return_self<>())
+        .def(init<const AcGePlanarEnt&, const AcGePoint2d&>())
+
         .def_readwrite("x", &AcGePoint3d::x)
         .def_readwrite("y", &AcGePoint3d::y)
         .def_readwrite("z", &AcGePoint3d::z)
-        .def_readonly("kOrigin", &AcGePoint3d::kOrigin)
+        .add_static_property("kOrigin", &AcGePoint3dkOrigin)
+
+        .def("setToProduct", &AcGePoint3d::setToProduct,return_self<>())
+        .def("transformBy", &AcGePoint3d::transformBy, return_self<>())
+        .def("rotateBy", &AcGePoint3d::rotateBy, return_self<>())
+        .def("mirror", &AcGePoint3d::mirror, return_self<>())
+        .def("scaleBy", &AcGePoint3d::scaleBy, return_self<>())
+        .def("convert2d", &AcGePoint3d::convert2d)
+        .def("setToSum", &AcGePoint3d::setToSum, return_self<>())
+        .def("asVector", &AcGePoint3d::asVector)
+        .def("distanceTo", &AcGePoint3d::distanceTo)
+        .def("project", &AcGePoint3d::project)
+        .def("orthoProject", &AcGePoint3d::orthoProject)
+        .def("isEqualTo", &AcGePoint3d::isEqualTo)
+
+        .def<AcGePoint3d& (AcGePoint3d::*)(double, double, double)>("setToMirroring", &AcGePoint3d::set, return_self<>())
+        .def<AcGePoint3d& (AcGePoint3d::*)(const AcGePlanarEnt&, const AcGePoint2d&)>("setToMirroring", &AcGePoint3d::set, return_self<>())
+
         .def("__eq__", &AcGePoint3d::operator==)
         .def("__ne__", &AcGePoint3d::operator!=)
 
+        .def<AcGePoint3d(AcGePoint3d::*)(double)const>("__mul__", &AcGePoint3d::operator*)
+        .def<AcGePoint3d& (AcGePoint3d::*)(double)>("__imul__", &AcGePoint3d::operator*=, return_self<>())
 
+        .def("__mul__", &acAcGePoint3dMulOperatoAcGePoint3d)
+        .def("__mul__", &acAcGePoint3dMulOperatoAcGeMatrix3d)
+        .def("__matmul__", &acAcGePoint3dMulOperatoAcGeMatrix3d)
+
+        .def<AcGePoint3d(AcGePoint3d::*)(double)const>("__truediv__", &AcGePoint3d::operator/)
+        .def<AcGePoint3d& (AcGePoint3d::*)(double)>("__itruediv__", &AcGePoint3d::operator/=, return_self<>())
+
+        .def<AcGePoint3d(AcGePoint3d::*)(const AcGeVector3d&)const>("__add__", &AcGePoint3d::operator+)
+        .def<AcGePoint3d& (AcGePoint3d::*)(const AcGeVector3d&)>("__iadd__", &AcGePoint3d::operator+=, return_self<>())
+
+        .def<AcGePoint3d(AcGePoint3d::*)(const AcGeVector3d&)const>("__sub__", &AcGePoint3d::operator-)
+        .def<AcGePoint3d& (AcGePoint3d::*)(const AcGeVector3d&)>("__isub__", &AcGePoint3d::operator-=, return_self<>())
 
         .def("toString", &AcGePoint3dToString)
         .def("__str__", &AcGePoint3dToString)
         ;
-    return wrapper;
 }
 
-void makeAcGeTolWrapper()
+//---------------------------------------------------------------------------------------------------------------
+//AcGeVector3d
+std::string AcGeVector3dToString(const AcGeVector3d& p)
 {
-    static auto wrapper = class_<AcGeTol>("GeTol")
-        .def(init<>())
-        .def_readonly("equalPoint", &AcGeTol::equalPoint)
-        .def_readonly("equalVector", &AcGeTol::equalVector)
-        .def_readonly("setEqualPoint", &AcGeTol::setEqualPoint)
-        .def_readonly("setEqualVector", &AcGeTol::setEqualVector)
-        ;
+    return std::format("({},{},{})", p.x, p.y, p.z);
 }
 
 static auto makeAcGeVector3dWrapper()
@@ -330,6 +405,8 @@ static auto makeAcGeVector3dWrapper()
     return wrapper;
 }
 
+//---------------------------------------------------------------------------------------------------------------
+//AcGeMatrix3d
 static auto makeAcGeMatrix3dWrapper()
 {
     static auto wrapper = class_<AcGeMatrix3d>("Matrix3d")
@@ -342,28 +419,6 @@ static auto makeAcGeMatrix3dWrapper()
     return wrapper;
 }
 
-static auto makeAcGeScale3dWrapper()
-{
-    static auto wrapper = class_<AcGeScale3d>("Scale3d")
-        .def_readwrite("sx", &AcGeScale3d::sx)
-        .def_readwrite("sy", &AcGeScale3d::sy)
-        .def_readwrite("sz", &AcGeScale3d::sz)
-        .def("__eq__", &AcGeScale3d::operator==)
-        .def("__ne__", &AcGeScale3d::operator!=)
-        ;
-    return wrapper;
-}
-
-static auto makeAcGeScale2dWrapper()
-{
-    static auto wrapper = class_<AcGeScale2d>("Scale2d")
-        .def_readwrite("sx", &AcGeScale2d::sx)
-        .def_readwrite("sy", &AcGeScale2d::sy)
-        .def("__eq__", &AcGeScale2d::operator==)
-        .def("__ne__", &AcGeScale2d::operator!=)
-        ;
-    return wrapper;
-}
 
 BOOST_PYTHON_MODULE(PyGe)
 {
