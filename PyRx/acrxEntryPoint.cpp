@@ -382,6 +382,11 @@ public:
             }
         }
     }
+
+    static void AcRxPyApp_doit(void)//internal testing
+    {
+
+    }
 };
 
 //-----------------------------------------------------------------------------
@@ -389,3 +394,4 @@ IMPLEMENT_ARX_ENTRYPOINT(AcRxPyApp)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyload, pyload, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyreload, pyreload, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyrxver, pyrxver, ACRX_CMD_TRANSPARENT, NULL)
+//ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _doit, doit, ACRX_CMD_TRANSPARENT, NULL)

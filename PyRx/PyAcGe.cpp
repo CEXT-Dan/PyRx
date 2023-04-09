@@ -21,40 +21,135 @@ std::string AcGeVector3dToString(const AcGeVector3d& p)
 
 std::string AcGePoint3dToString(const AcGePoint3d& p)
 {
-   return std::format("({},{},{})", p.x, p.y, p.z);
+    return std::format("({},{},{})", p.x, p.y, p.z);
 }
 
-static auto makeAcGePoint2dWrapper()
+static void makeAcGePoint2dWrapper()
 {
     static auto wrapper = class_<AcGePoint2d>("Point2d")
         .def(init<>())
+        .def(init<const AcGePoint2d&>())
         .def(init<double, double>())
-        .def("distanceTo", &AcGePoint2d::distanceTo)
+
+        .def("setToProduct", &AcGePoint2d::setToProduct, return_value_policy<reference_existing_object>())
         .def("transformBy", &AcGePoint2d::transformBy, return_value_policy<reference_existing_object>())
+        .def("rotateBy", &AcGePoint2d::rotateBy, return_value_policy<reference_existing_object>())
+        .def("mirror", &AcGePoint2d::mirror, return_value_policy<reference_existing_object>())
+        .def("scaleBy", &AcGePoint2d::scaleBy, return_value_policy<reference_existing_object>())
+        .def("setToSum", &AcGePoint2d::setToSum, return_value_policy<reference_existing_object>())
+        .def("set", &AcGePoint2d::set, return_value_policy<reference_existing_object>())
+        .def("asVector", &AcGePoint2d::asVector)
+        .def("distanceTo", &AcGePoint2d::distanceTo)
+        .def("isEqualTo", &AcGePoint2d::isEqualTo)
+
         .def_readwrite("x", &AcGePoint2d::x)
         .def_readwrite("y", &AcGePoint2d::y)
         .def_readonly("kOrigin", &AcGePoint2d::kOrigin)
+
+        //operators
         .def("__eq__", &AcGePoint2d::operator==)
         .def("__ne__", &AcGePoint2d::operator!=)
+
+        .def<AcGePoint2d(AcGePoint2d::*)(double)const>("__mul__", &AcGePoint2d::operator*)
+        .def<AcGePoint2d& (AcGePoint2d::*)(double)>("__imul__", &AcGePoint2d::operator*=, return_value_policy<reference_existing_object>())
+
+        .def<AcGePoint2d(AcGePoint2d::*)(double)const>("__truediv__", &AcGePoint2d::operator/)
+        .def<AcGePoint2d& (AcGePoint2d::*)(double)>("__itruediv__", &AcGePoint2d::operator/=, return_value_policy<reference_existing_object>())
+
+        .def<AcGePoint2d(AcGePoint2d::*)(const AcGeVector2d&)const>("__add__", &AcGePoint2d::operator+)
+        .def<AcGePoint2d& (AcGePoint2d::*)(const AcGeVector2d&)>("__iadd__", &AcGePoint2d::operator+=, return_value_policy<reference_existing_object>())
+
+        .def<AcGePoint2d(AcGePoint2d::*)(const AcGeVector2d&)const>("__sub__", &AcGePoint2d::operator-)
+        .def<AcGePoint2d& (AcGePoint2d::*)(const AcGeVector2d&)>("__isub__", &AcGePoint2d::operator-=, return_value_policy<reference_existing_object>())
+
         .def("toString", &AcGePoint2dToString)
+        .def("__str__", &AcGePoint2dToString)
         ;
-    return wrapper;
 }
 
-static auto makeAcGeVector2dWrapper()
+
+static AcGeVector2d acGeVector2dMulOperatorDouble(const double scl, const AcGeVector2d& vec)
+{
+    return vec * scl;
+}
+
+static AcGeVector2d acGeVector2dMulOperatorAcGeMatrix2d(const AcGeVector2d& vec, const AcGeMatrix2d& mat)
+{
+    return mat * vec;
+}
+
+
+static void makeAcGeVector2dWrapper()
 {
     static auto wrapper = class_<AcGeVector2d>("Vector2d")
         .def(init<>())
+        //.def(init<const AcGeVector2d&>())
         .def(init<double, double>())
         .def_readwrite("x", &AcGeVector2d::x)
         .def_readwrite("y", &AcGeVector2d::y)
+
+        .def_readonly("kIdentity", &AcGeVector2d::kIdentity)
         .def_readonly("kXAxis", &AcGeVector2d::kXAxis)
         .def_readonly("kYAxis", &AcGeVector2d::kYAxis)
+
+
+        .def<AcGeVector2d& (AcGeVector2d::*)(const AcGeVector2d&, double)>("setToProduct", &AcGeVector2d::setToProduct, return_value_policy<reference_existing_object>())
+        .def<AcGeVector2d& (AcGeVector2d::*)(const AcGeMatrix2d&, const AcGeVector2d&)>("setToProduct", &AcGeVector2d::setToProduct, return_value_policy<reference_existing_object>())
+
+        .def("transformBy", &AcGeVector2d::transformBy, return_value_policy<reference_existing_object>())
+        .def("rotateBy", &AcGeVector2d::rotateBy, return_value_policy<reference_existing_object>())
+        .def("mirror", &AcGeVector2d::mirror, return_value_policy<reference_existing_object>())
+        .def("setToSum", &AcGeVector2d::setToSum, return_value_policy<reference_existing_object>())
+        .def("negate", &AcGeVector2d::negate, return_value_policy<reference_existing_object>())
+
+        .def("angle", &AcGeVector2d::angle)
+        .def("angleTo", &AcGeVector2d::angleTo)
+        .def("normal", &AcGeVector2d::normal)
+
+        .def<AcGeVector2d& (AcGeVector2d::*)(const AcGeTol&)>("normalize", &AcGeVector2d::normalize, return_value_policy<reference_existing_object>())
+
+        .def("length", &AcGeVector2d::length)
+        .def("lengthSqrd", &AcGeVector2d::lengthSqrd)
+        .def("isUnitLength", &AcGeVector2d::isUnitLength)
+        .def("isZeroLength", &AcGeVector2d::isZeroLength)
+
+        .def<Adesk::Boolean(AcGeVector2d::*)(const AcGeVector2d&, const AcGeTol&)const>("isParallelTo", &AcGeVector2d::isParallelTo)
+        .def<Adesk::Boolean(AcGeVector2d::*)(const AcGeVector2d&, const AcGeTol&)const>("isCodirectionalTo", &AcGeVector2d::isCodirectionalTo)
+        .def<Adesk::Boolean(AcGeVector2d::*)(const AcGeVector2d&, const AcGeTol&)const>("isPerpendicularTo", &AcGeVector2d::isPerpendicularTo)
+
+        .def("dotProduct", &AcGeVector2d::dotProduct)
+        .def("isEqualTo", &AcGeVector2d::isEqualTo)
+        .def("set", &AcGeVector2d::set, return_value_policy<reference_existing_object>())
+
+        //operators
         .def("__eq__", &AcGeVector2d::operator==)
         .def("__ne__", &AcGeVector2d::operator!=)
+
+
+        .def<AcGeVector2d(AcGeVector2d::*)(double) const>("__mul__", &AcGeVector2d::operator*)
+        .def<AcGeVector2d& (AcGeVector2d::*)(double)>("__imul__", &AcGeVector2d::operator*=, return_value_policy<reference_existing_object>())
+
+        .def("__mul__", &acGeVector2dMulOperatorDouble)
+        .def("__mul__", &acGeVector2dMulOperatorAcGeMatrix2d)
+        .def("__matmul__", &acGeVector2dMulOperatorAcGeMatrix2d)
+
+        .def<AcGeVector2d(AcGeVector2d::*)(double)const>("__truediv__", &AcGeVector2d::operator/)
+        .def<AcGeVector2d& (AcGeVector2d::*)(double)>("__itruediv__", &AcGeVector2d::operator/=, return_value_policy<reference_existing_object>())
+
+        .def<AcGeVector2d(AcGeVector2d::*)(const AcGeVector2d&)const>("__add__", &AcGeVector2d::operator+)
+        .def<AcGeVector2d& (AcGeVector2d::*)(const AcGeVector2d&)>("__iadd__", &AcGeVector2d::operator+=, return_value_policy<reference_existing_object>())
+
+        .def<AcGeVector2d(AcGeVector2d::*)()const>("__sub__", &AcGeVector2d::operator-)
+        .def<AcGeVector2d(AcGeVector2d::*)(const AcGeVector2d&)const>("__sub__", &AcGeVector2d::operator-)
+        .def<AcGeVector2d& (AcGeVector2d::*)(const AcGeVector2d&)>("__isub__", &AcGeVector2d::operator-=, return_value_policy<reference_existing_object>())
+
+
         .def("toString", &AcGeVector2ToString)
+        .def("__str__", &AcGeVector2ToString)
         ;
-    return wrapper;
+
+    implicitly_convertible<AcGeVector2d, AcGeMatrix2d>();
+
 }
 
 static auto makeAcGeMatrix2dWrapper()
@@ -63,6 +158,8 @@ static auto makeAcGeMatrix2dWrapper()
         .def("scale", &AcGeMatrix2d::scale)
         .def("setToScaling", &AcGeMatrix2d::setToScaling, return_value_policy<reference_existing_object>())
         .def("setToRotation", &AcGeMatrix2d::setToRotation, return_value_policy<reference_existing_object>())
+
+        .def_readonly("kIdentity", &AcGeMatrix2d::kIdentity)
         .def("__eq__", &AcGeMatrix2d::operator==)
         .def("__ne__", &AcGeMatrix2d::operator!=)
         ;
@@ -82,7 +179,11 @@ static auto makeAcGePoint3dWrapper()
         .def_readonly("kOrigin", &AcGePoint3d::kOrigin)
         .def("__eq__", &AcGePoint3d::operator==)
         .def("__ne__", &AcGePoint3d::operator!=)
+
+
+
         .def("toString", &AcGePoint3dToString)
+        .def("__str__", &AcGePoint3dToString)
         ;
     return wrapper;
 }

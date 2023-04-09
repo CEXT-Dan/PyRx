@@ -25,10 +25,14 @@ def OnPyUnloadDwg():
          
 def PyRxCmd_pycmd():
 	try: 
-		createLine()
+		printItem()
 	except Exception as err:
 		PyRxApp.Printf(err)
-
+		
+def printItem():
+	p = PyGe.Point3d(0,0,0)
+	print(p)
+	
 def createLine():
 	try:
 		db = PyAp.ApApplication().docManager().curDocument().database()
