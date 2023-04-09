@@ -45,7 +45,7 @@ void makeAcGeTolWrapper()
         .def("equalVector", &AcGeTol::equalVector)
         .def("setEqualPoint", &AcGeTol::setEqualPoint)
         .def("setEqualVector", &AcGeTol::setEqualVector)
-        .add_static_property("current", &getTol)
+        .add_static_property("global", &getTol)
         ;
 }
 
@@ -523,16 +523,158 @@ static auto makeAcGeVector3dWrapper()
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGeMatrix3d
-static auto makeAcGeMatrix3dWrapper()
+static AcGeMatrix3d AcGeMatrix3dkIdentity()
+{
+    return AcGeMatrix3d::kIdentity;
+}
+
+static AcGeMatrix3d AcGeMatrix3dtranslation(const AcGeVector3d& vec)
+{
+    return AcGeMatrix3d::translation(vec);
+}
+
+static AcGeMatrix3d AcGeMatrix3drotation(double angle, const AcGeVector3d& axis, const AcGePoint3d& center)
+{
+    return AcGeMatrix3d::rotation(angle, axis, center);
+}
+
+static AcGeMatrix3d AcGeMatrix3dscaling(double scaleAll, const AcGePoint3d& center)
+{
+    return AcGeMatrix3d::scaling(scaleAll, center);
+}
+
+static AcGeMatrix3d AcGeMatrix3dmirroring1(const AcGePlane& pln)
+{
+   return AcGeMatrix3d::mirroring(pln);
+}
+static AcGeMatrix3d AcGeMatrix3dmirroring2(const AcGePoint3d& pnt)
+{
+    return AcGeMatrix3d::mirroring(pnt);
+}
+static AcGeMatrix3d AcGeMatrix3dmirroring3(const AcGeLine3d& line)
+{
+    return AcGeMatrix3d::mirroring(line);
+}
+static AcGeMatrix3d AcGeMatrix3dprojection(const AcGePlane& projectionPlane, const AcGeVector3d& projectDir)
+{
+    return AcGeMatrix3d::projection(projectionPlane, projectDir);
+}
+static AcGeMatrix3d AcGeMatrix3dalignCoordSys(const AcGePoint3d& fromOrigin,
+    const AcGeVector3d& fromXAxis,
+    const AcGeVector3d& fromYAxis,
+    const AcGeVector3d& fromZAxis,
+    const AcGePoint3d& toOrigin,
+    const AcGeVector3d& toXAxis,
+    const AcGeVector3d& toYAxis,
+    const AcGeVector3d& toZAxis)
+{
+    return AcGeMatrix3d::alignCoordSys(fromOrigin, fromXAxis, fromYAxis, fromZAxis, toOrigin, toXAxis, toYAxis, toZAxis);
+}
+
+static AcGeMatrix3d AcGeMatrix3dworldToPlane1(const AcGeVector3d& normal)
+{
+   return AcGeMatrix3d::worldToPlane(normal);
+}
+static AcGeMatrix3d AcGeMatrix3dworldToPlane2(const AcGePlane& plane)
+{
+   return AcGeMatrix3d::worldToPlane(plane);
+}
+static AcGeMatrix3d AcGeMatrix3dplaneToWorld1(const AcGeVector3d& normal)
+{
+    return AcGeMatrix3d::planeToWorld(normal);
+}
+static AcGeMatrix3d AcGeMatrix3dplaneToWorld2(const AcGePlane& plane)
+{
+    return AcGeMatrix3d::planeToWorld(plane);
+}
+
+std::string AcGeMatrix3dToString(const AcGeMatrix3d& x)
+{
+    return  std::format("(({0},{1},{2},{3}),({4},{5},{6},{7}),({8},{9},{10},{11}),({12},{13},{14},{15}))",
+        x.entry[0][0], x.entry[0][1], x.entry[0][2], x.entry[0][3],
+        x.entry[1][0], x.entry[1][1], x.entry[1][2], x.entry[1][3],
+        x.entry[2][0], x.entry[2][1], x.entry[2][2], x.entry[2][3],
+        x.entry[3][0], x.entry[3][1], x.entry[3][2], x.entry[3][3]);
+}
+
+static void makeAcGeMatrix3dWrapper()
 {
     static auto wrapper = class_<AcGeMatrix3d>("Matrix3d")
-        .def("scale", &AcGeMatrix3d::scale)
-        .def("setToScaling", &AcGeMatrix3d::setToScaling, return_self<>())
+        .def(init<>())
+        .def(init<const AcGeMatrix3d&>())
+        .add_static_property("kIdentity", &AcGeVector3dkIdentity)
+        .def("setToIdentity", &AcGeMatrix3d::setToIdentity, return_self<>())
+        .def("preMultBy", &AcGeMatrix3d::preMultBy, return_self<>())
+        .def("postMultBy", &AcGeMatrix3d::postMultBy, return_self<>())
+        .def("setToProduct", &AcGeMatrix3d::setToProduct, return_self<>())
+
+        .def("invert", &AcGeMatrix3d::invert, return_self<>())
+        .def<AcGeMatrix3d(AcGeMatrix3d::*)(void)const>("inverse", &AcGeMatrix3d::inverse)
+#ifndef BRXAPP
+        .def<AcGeMatrix3d(AcGeMatrix3d::*)(const AcGeTol&)const>("inverse", &AcGeMatrix3d::inverse)
+#endif // !BRXAPP
+        .def<Adesk::Boolean(AcGeMatrix3d::*)(AcGeMatrix3d&, double)const>("inverse", &AcGeMatrix3d::inverse)
+        .def("isSingular", &AcGeMatrix3d::isSingular)
+        .def("transposeIt", &AcGeMatrix3d::transposeIt, return_self<>())
+        .def("transpose", &AcGeMatrix3d::transpose)
+        .def("isEqualTo", &AcGeMatrix3d::isEqualTo)
+
+        .def("isUniScaledOrtho", &AcGeMatrix3d::isUniScaledOrtho)
+        .def("isScaledOrtho", &AcGeMatrix3d::isScaledOrtho)
+        .def("det", &AcGeMatrix3d::det)
+        .def("setTranslation", &AcGeMatrix3d::setTranslation, return_self<>())
+        .def<AcGeVector3d(AcGeMatrix3d::*)(void)const>("translation", &AcGeMatrix3d::translation)
+        .def("setCoordSystem", &AcGeMatrix3d::setCoordSystem, return_self<>())
+        .def("getCoordSystem", &AcGeMatrix3d::getCoordSystem)
+
+        .def("setToTranslation", &AcGeMatrix3d::setToTranslation, return_self<>())
+        .def("setToTranslation", &AcGeMatrix3d::setToTranslation, return_self<>())
         .def("setToRotation", &AcGeMatrix3d::setToRotation, return_self<>())
+        .def("setToScaling", &AcGeMatrix3d::setToScaling, return_self<>())
+
+        .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGePlane&)>("setToMirroring", &AcGeMatrix3d::setToMirroring, return_self<>())
+        .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeLine3d&)>("setToMirroring", &AcGeMatrix3d::setToMirroring, return_self<>())
+        .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGePoint3d&)>("setToMirroring", &AcGeMatrix3d::setToMirroring, return_self<>())
+
+        .def("setToProjection", &AcGeMatrix3d::setToProjection, return_self<>())
+        .def("setToAlignCoordSys", &AcGeMatrix3d::setToAlignCoordSys, return_self<>())
+
+        .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGePlane&)>("setToWorldToPlane", &AcGeMatrix3d::setToWorldToPlane, return_self<>())
+        .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeVector3d&)>("setToWorldToPlane", &AcGeMatrix3d::setToWorldToPlane, return_self<>())
+
+        .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGePlane&)>("setToPlaneToWorld", &AcGeMatrix3d::setToPlaneToWorld, return_self<>())
+        .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeVector3d&)>("setToPlaneToWorld", &AcGeMatrix3d::setToPlaneToWorld, return_self<>())
+     
+        .def("scale", &AcGeMatrix3d::scale)
+        .def("norm", &AcGeMatrix3d::norm)
+        .def("convertToLocal", &AcGeMatrix3d::convertToLocal)
+
+        .def("translation", &AcGeMatrix3dtranslation).staticmethod("translation")
+        .def("rotation", &AcGeMatrix3drotation).staticmethod("rotation")
+        .def("scaling", &AcGeMatrix3dscaling).staticmethod("scaling")
+        .def("mirroring", &AcGeMatrix3dmirroring1).staticmethod("mirroring")
+        .def("mirroring", &AcGeMatrix3dmirroring2).staticmethod("mirroring")
+        .def("mirroring", &AcGeMatrix3dmirroring3).staticmethod("mirroring")
+        .def("projection", &AcGeMatrix3dprojection).staticmethod("projection")
+        .def("alignCoordSys", &AcGeMatrix3dalignCoordSys).staticmethod("alignCoordSys")
+        .def("worldToPlane", &AcGeMatrix3dworldToPlane1).staticmethod("worldToPlane")
+        .def("worldToPlane", &AcGeMatrix3dworldToPlane2).staticmethod("worldToPlane")
+        .def("planeToWorld", &AcGeMatrix3dplaneToWorld1).staticmethod("planeToWorld")
+        .def("planeToWorld", &AcGeMatrix3dplaneToWorld2).staticmethod("planeToWorld")
+
         .def("__eq__", &AcGeMatrix3d::operator==)
         .def("__ne__", &AcGeMatrix3d::operator!=)
+        .def<AcGeMatrix3d(AcGeMatrix3d::*)(const AcGeMatrix3d&) const>("__mul__", &AcGeMatrix3d::operator*)
+        .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeMatrix3d&)>("__imul__", &AcGeMatrix3d::operator*=, return_self<>())
+        .def<AcGeMatrix3d(AcGeMatrix3d::*)(const AcGeMatrix3d&) const>("__matmul__", &AcGeMatrix3d::operator*)
+        .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeMatrix3d&)>("__matmul__", &AcGeMatrix3d::operator*=, return_self<>())
+
+        .def<double(AcGeMatrix3d::*)(unsigned int, unsigned int)const>("elementAt", &AcGeMatrix3d::operator())
+
+        .def("toString", &AcGeMatrix3dToString)
+        .def("__str__", &AcGeMatrix3dToString)
         ;
-    return wrapper;
+    return;
 }
 
 
