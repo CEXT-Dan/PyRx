@@ -112,6 +112,35 @@ class TestGe(unittest.TestCase):
                 v1.negate()
                 self.assertTrue(v1.isParallelTo(PyGe.Vector2d.kXAxis))
 
+        def test_point3d_toVec(self):
+                pO = PyGe.Point3d(0,0,0)
+                p1 = PyGe.Point3d(0,100,0)
+                v1 = p1 - pO
+                self.assertEqual(v1.length(), 100)
+                self.assertTrue(v1.isParallelTo(PyGe.Vector3d.kYAxis))
+
+        def test_matrix3d_set1(self):
+                pO = PyGe.Point3d(1,10,100)
+                vX = PyGe.Vector3d.kXAxis * 2
+                vY = PyGe.Vector3d.kYAxis * 3
+                vZ = PyGe.Vector3d.kZAxis * 4
+                xf = PyGe.Matrix3d.kIdentity
+                xf.setCoordSystem(pO, vX, vY, vZ)
+                pO2 = PyGe.Point3d.kOrigin
+                vX2 = PyGe.Vector3d.kXAxis
+                vY2 = PyGe.Vector3d.kYAxis
+                vZ2 = PyGe.Vector3d.kZAxis
+                xf.getCoordSystem(pO2, vX2, vY2, vZ2)
+                self.assertEqual(pO,pO2)
+                self.assertEqual(vX,vX2)
+                self.assertEqual(vY,vY2)
+                self.assertEqual(vZ,vZ2)
+                self.assertEqual(vX2.length(),2)
+                self.assertEqual(vY2.length(),3)
+                self.assertEqual(vZ2.length(),4)
+
+
+                
 def PyRxCmd_pyge():
         try:
                 print(".\nstart tests----------------------------------------------------------------------")
