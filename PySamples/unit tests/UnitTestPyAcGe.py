@@ -52,6 +52,13 @@ class TestGe(unittest.TestCase):
                 point /=  2.0
                 self.assertEqual(point, PyGe.Point2d(50,50))
 
+        def test_point2d_isEqualTo(self):
+                point1 = PyGe.Point2d(100,100)
+                point2 = PyGe.Point2d(100,100)
+                point1.isEqualTo(point2)
+                self.assertTrue(point1.isEqualTo(point2))
+                self.assertTrue(point1.isEqualTo(point2,PyGe.GeTol.current))
+
         def test_vector2d_Mul(self):
                 v = PyGe.Vector2d.kXAxis
                 m = PyGe.Matrix2d.kIdentity
@@ -64,6 +71,32 @@ class TestGe(unittest.TestCase):
                 m.setToRotation(3.14,PyGe.Point2d.kOrigin)
                 v =  v @ m
                 self.assertEqual( v, PyGe.Vector2d(-0.9999987317275395,0.0015926529164868282))
+
+        def test_vector2d_setToProduct(self):
+                v1 = PyGe.Vector2d.kXAxis
+                m = PyGe.Matrix2d.kIdentity
+                v1.setToProduct(PyGe.Vector2d.kYAxis,3.14)
+                self.assertEqual( v1, PyGe.Vector2d(0.000000,3.140000))
+                v1 = PyGe.Vector2d.kXAxis
+                m.setToRotation(3.14)
+                v1.setToProduct(m, PyGe.Vector2d.kYAxis)
+                self.assertEqual( v1, PyGe.Vector2d(-0.0015926529164868282,-0.9999987317275395))
+
+        def test_vector2d_isParallelTo(self): # test adding default values on the C++ side
+                v1 = PyGe.Vector2d.kXAxis
+                v2 = PyGe.Vector2d.kXAxis
+                ans = v1.isParallelTo(v2)
+                self.assertEqual(ans, True)
+                ans = v1.isParallelTo(v2, PyGe.GeTol.current)
+                self.assertEqual(ans, True)
+
+        def test_vector2d_isParallelTo(self):
+                v1 = PyGe.Vector2d.kXAxis
+                v2 = PyGe.Vector2d.kYAxis
+                ans = v1.isPerpendicularTo(v2)
+                self.assertEqual(ans, True)
+                ans = v1.isPerpendicularTo(v2, PyGe.GeTol.current)
+                self.assertEqual(ans, True)
 
 def PyRxCmd_pyge():
         try:

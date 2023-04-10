@@ -387,18 +387,15 @@ public:
     {
         
         {
-            auto a = AcGeVector2d::kXAxis;
+            auto v1 = AcGeVector2d::kXAxis;
             auto m = AcGeMatrix2d::kIdentity;
-            auto a2 = m * a;
-            acutPrintf(_T("\n(%f,%f"), a2.x, a2.y);
+            m.setToRotation(3.14);
+            v1.setToProduct(m, AcGeVector2d::kYAxis);
+            acutPrintf(_T("\n(%f,%f"), v1.x, v1.y);
         }
 
         {
-            auto a = AcGeVector2d::kXAxis;
-            auto m = AcGeMatrix2d::kIdentity;
-            m = m.setToRotation(3.14);
-            auto a2 = m * a;
-            acutPrintf(_T("\n(%f,%f"), a2.x, a2.y);
+            
         }
     }
 };

@@ -45,7 +45,7 @@ void makeAcGeTolWrapper()
         .def("equalVector", &AcGeTol::equalVector)
         .def("setEqualPoint", &AcGeTol::setEqualPoint)
         .def("setEqualVector", &AcGeTol::setEqualVector)
-        .add_static_property("global", &getTol)
+        .add_static_property("current", &getTol)
         ;
 }
 
@@ -70,14 +70,14 @@ static void makeAcGePoint2dWrapper()
 
         .def("setToProduct", &AcGePoint2d::setToProduct, return_self<>())
         .def("transformBy", &AcGePoint2d::transformBy, return_self<>())
-        .def("rotateBy", &AcGePoint2d::rotateBy, return_self<>())
+        .def("rotateBy", &AcGePoint2d::rotateBy, arg("AcGePoint2d") = AcGePoint2dkOrigin(), return_self<>())
         .def("mirror", &AcGePoint2d::mirror, return_self<>())
-        .def("scaleBy", &AcGePoint2d::scaleBy, return_self<>())
+        .def("scaleBy", &AcGePoint2d::scaleBy, arg("AcGePoint2d") = AcGePoint2dkOrigin(), return_self<>())
         .def("setToSum", &AcGePoint2d::setToSum, return_self<>())
         .def("set", &AcGePoint2d::set, return_self<>())
         .def("asVector", &AcGePoint2d::asVector)
         .def("distanceTo", &AcGePoint2d::distanceTo)
-        .def("isEqualTo", &AcGePoint2d::isEqualTo)
+        .def("isEqualTo", &AcGePoint2d::isEqualTo, arg("AcGeTol") = getTol())
 
         .def_readwrite("x", &AcGePoint2d::x)
         .def_readwrite("y", &AcGePoint2d::y)
@@ -160,21 +160,21 @@ static void makeAcGeVector2dWrapper()
 
         .def("angle", &AcGeVector2d::angle)
         .def("angleTo", &AcGeVector2d::angleTo)
-        .def("normal", &AcGeVector2d::normal)
+        .def("normal", &AcGeVector2d::normal, arg("AcGeTol") = getTol())
 
-        .def<AcGeVector2d& (AcGeVector2d::*)(const AcGeTol&)>("normalize", &AcGeVector2d::normalize, return_self<>())
+        .def<AcGeVector2d& (AcGeVector2d::*)(const AcGeTol&)>("normalize", &AcGeVector2d::normalize, arg("AcGeTol") = getTol(), return_self<>())
 
         .def("length", &AcGeVector2d::length)
         .def("lengthSqrd", &AcGeVector2d::lengthSqrd)
-        .def("isUnitLength", &AcGeVector2d::isUnitLength)
-        .def("isZeroLength", &AcGeVector2d::isZeroLength)
+        .def("isUnitLength", &AcGeVector2d::isUnitLength, arg("AcGeTol") = getTol())
+        .def("isZeroLength", &AcGeVector2d::isZeroLength, arg("AcGeTol") = getTol())
 
-        .def<Adesk::Boolean(AcGeVector2d::*)(const AcGeVector2d&, const AcGeTol&)const>("isParallelTo", &AcGeVector2d::isParallelTo)
-        .def<Adesk::Boolean(AcGeVector2d::*)(const AcGeVector2d&, const AcGeTol&)const>("isCodirectionalTo", &AcGeVector2d::isCodirectionalTo)
-        .def<Adesk::Boolean(AcGeVector2d::*)(const AcGeVector2d&, const AcGeTol&)const>("isPerpendicularTo", &AcGeVector2d::isPerpendicularTo)
+        .def<Adesk::Boolean(AcGeVector2d::*)(const AcGeVector2d&, const AcGeTol&)const>("isParallelTo", &AcGeVector2d::isParallelTo, arg("AcGeTol") = getTol())
+        .def<Adesk::Boolean(AcGeVector2d::*)(const AcGeVector2d&, const AcGeTol&)const>("isCodirectionalTo", &AcGeVector2d::isCodirectionalTo, arg("AcGeTol") = getTol())
+        .def<Adesk::Boolean(AcGeVector2d::*)(const AcGeVector2d&, const AcGeTol&)const>("isPerpendicularTo", &AcGeVector2d::isPerpendicularTo, arg("AcGeTol") = getTol())
 
         .def("dotProduct", &AcGeVector2d::dotProduct)
-        .def("isEqualTo", &AcGeVector2d::isEqualTo)
+        .def("isEqualTo", &AcGeVector2d::isEqualTo, arg("AcGeTol") = getTol())
         .def("set", &AcGeVector2d::set, return_self<>())
 
         //operators
@@ -272,9 +272,9 @@ static auto makeAcGeMatrix2dWrapper()
         .def("isSingular", &AcGeMatrix2d::isSingular)
         .def("transposeIt", &AcGeMatrix2d::transposeIt, return_self<>())
         .def("transpose", &AcGeMatrix2d::transpose)
-        .def("isEqualTo", &AcGeMatrix2d::isEqualTo)
-        .def("isUniScaledOrtho", &AcGeMatrix2d::isUniScaledOrtho)
-        .def("isScaledOrtho", &AcGeMatrix2d::isScaledOrtho)
+        .def("isEqualTo", &AcGeMatrix2d::isEqualTo, arg("AcGeTol") = getTol())
+        .def("isUniScaledOrtho", &AcGeMatrix2d::isUniScaledOrtho, arg("AcGeTol") = getTol())
+        .def("isScaledOrtho", &AcGeMatrix2d::isScaledOrtho, arg("AcGeTol") = getTol())
         .def("scale", &AcGeMatrix2d::scale)
         .def("det", &AcGeMatrix2d::det)
         .def("setTranslation", &AcGeMatrix2d::setTranslation, return_self<>())
@@ -283,7 +283,7 @@ static auto makeAcGeMatrix2dWrapper()
         .def("setCoordSystem", &AcGeMatrix2d::setCoordSystem, return_self<>())
         .def("getCoordSystem", &AcGeMatrix2d::getCoordSystem)
         .def("setToTranslation", &AcGeMatrix2d::setToTranslation, return_self<>())
-        .def("setToRotation", &AcGeMatrix2d::setToRotation, return_self<>())
+        .def("setToRotation", &AcGeMatrix2d::setToRotation, arg("AcGePoint2d") = AcGePoint2dkOrigin(), return_self<>())
         .def("setToScaling", &AcGeMatrix2d::setToScaling, return_self<>())
         .def<AcGeMatrix2d& (AcGeMatrix2d::*)(const AcGePoint2d&)>("setToMirroring", &AcGeMatrix2d::setToMirroring, return_self<>())
         .def<AcGeMatrix2d& (AcGeMatrix2d::*)(const AcGeLine2d&)>("setToMirroring", &AcGeMatrix2d::setToMirroring, return_self<>())
@@ -292,7 +292,7 @@ static auto makeAcGeMatrix2dWrapper()
         .def("translation", &AcGeMatrix2dtranslation).staticmethod("translation")
         .def("rotation", &AcGeMatrix2drotation).staticmethod("rotation")
         .def("scaling", &AcGeMatrix2scaling).staticmethod("scaling")
-        .def("mirroring", &AcGeMatrix2mirroring).staticmethod("mirroring")
+        .def("mirroring", &AcGeMatrix2mirroring)
         .def("mirroring", &AcGeMatrix2mirroring2).staticmethod("mirroring")
         .def("alignCoordSys", &AcGeMatrix2alignCoordSys).staticmethod("alignCoordSys")
         .def<double(AcGeMatrix2d::*)(unsigned int, unsigned int)const>("elementAt", &AcGeMatrix2d::operator())
@@ -348,16 +348,16 @@ static void makeAcGePoint3dWrapper()
 
         .def("setToProduct", &AcGePoint3d::setToProduct, return_self<>())
         .def("transformBy", &AcGePoint3d::transformBy, return_self<>())
-        .def("rotateBy", &AcGePoint3d::rotateBy, return_self<>())
+        .def("rotateBy", &AcGePoint3d::rotateBy, arg("AcGePoint3d") = AcGePoint3dkOrigin(), return_self<>())
         .def("mirror", &AcGePoint3d::mirror, return_self<>())
-        .def("scaleBy", &AcGePoint3d::scaleBy, return_self<>())
+        .def("scaleBy", &AcGePoint3d::scaleBy, arg("AcGePoint3d") = AcGePoint3dkOrigin(), return_self<>())
         .def("convert2d", &AcGePoint3d::convert2d)
         .def("setToSum", &AcGePoint3d::setToSum, return_self<>())
         .def("asVector", &AcGePoint3d::asVector)
         .def("distanceTo", &AcGePoint3d::distanceTo)
         .def("project", &AcGePoint3d::project)
         .def("orthoProject", &AcGePoint3d::orthoProject)
-        .def("isEqualTo", &AcGePoint3d::isEqualTo)
+        .def("isEqualTo", &AcGePoint3d::isEqualTo, arg("AcGeTol") = getTol())
 
         .def<AcGePoint3d& (AcGePoint3d::*)(double, double, double)>("set", &AcGePoint3d::set, return_self<>())
         .def<AcGePoint3d& (AcGePoint3d::*)(const AcGePlanarEnt&, const AcGePoint2d&)>("set", &AcGePoint3d::set, return_self<>())
@@ -461,22 +461,14 @@ static auto makeAcGeVector3dWrapper()
         .def<AcGeVector3d& (AcGeVector3d::*)(const AcGeTol& tol, AcGeError& flag)>("normalize", &AcGeVector3d::normalize, return_self<>())
 
         .def("angleOnPlane", &AcGeVector3d::angleOnPlane)
-        .def("normal", &AcGeVector3d::normal)
         .def("normal", &AcGeVector3d::normal, arg("AcGeTol") = getTol())
         .def("length", &AcGeVector3d::length)
         .def("lengthSqrd", &AcGeVector3d::lengthSqrd)
-        .def("isUnitLength", &AcGeVector3d::isUnitLength)
         .def("isUnitLength", &AcGeVector3d::isUnitLength, arg("AcGeTol") = getTol())
-        .def("isZeroLength", &AcGeVector3d::isZeroLength)
         .def("isZeroLength", &AcGeVector3d::isZeroLength, arg("AcGeTol") = getTol())
 
-        .def<Adesk::Boolean(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&) const>("isParallelTo", &AcGeVector3d::isParallelTo)
         .def<Adesk::Boolean(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&) const>("isParallelTo", &AcGeVector3d::isParallelTo, arg("AcGeTol") = getTol())
-
-        .def<Adesk::Boolean(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&) const>("isCodirectionalTo", &AcGeVector3d::isCodirectionalTo)
         .def<Adesk::Boolean(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&) const>("isCodirectionalTo", &AcGeVector3d::isCodirectionalTo, arg("AcGeTol") = getTol())
-
-        .def<Adesk::Boolean(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&) const>("isPerpendicularTo", &AcGeVector3d::isPerpendicularTo)
         .def<Adesk::Boolean(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&) const>("isPerpendicularTo", &AcGeVector3d::isPerpendicularTo, arg("AcGeTol") = getTol())
 
         .def("dotProduct", &AcGeVector3d::dotProduct)
@@ -489,7 +481,6 @@ static auto makeAcGeVector3dWrapper()
         .def<AcGeVector3d(AcGeVector3d::*)(const AcGeVector3d&) const>("orthoProject", &AcGeVector3d::orthoProject)
         .def<AcGeVector3d(AcGeVector3d::*)(const AcGeVector3d&, const AcGeTol&, AcGeError&) const>("orthoProject", &AcGeVector3d::orthoProject)
 
-        .def("isEqualTo", &AcGeVector3d::isEqualTo)
         .def("isEqualTo", &AcGeVector3d::isEqualTo, arg("AcGeTol") = getTol())
 
         .def("largestElement", &AcGeVector3d::largestElement)
@@ -545,7 +536,7 @@ static AcGeMatrix3d AcGeMatrix3dscaling(double scaleAll, const AcGePoint3d& cent
 
 static AcGeMatrix3d AcGeMatrix3dmirroring1(const AcGePlane& pln)
 {
-   return AcGeMatrix3d::mirroring(pln);
+    return AcGeMatrix3d::mirroring(pln);
 }
 static AcGeMatrix3d AcGeMatrix3dmirroring2(const AcGePoint3d& pnt)
 {
@@ -573,11 +564,11 @@ static AcGeMatrix3d AcGeMatrix3dalignCoordSys(const AcGePoint3d& fromOrigin,
 
 static AcGeMatrix3d AcGeMatrix3dworldToPlane1(const AcGeVector3d& normal)
 {
-   return AcGeMatrix3d::worldToPlane(normal);
+    return AcGeMatrix3d::worldToPlane(normal);
 }
 static AcGeMatrix3d AcGeMatrix3dworldToPlane2(const AcGePlane& plane)
 {
-   return AcGeMatrix3d::worldToPlane(plane);
+    return AcGeMatrix3d::worldToPlane(plane);
 }
 static AcGeMatrix3d AcGeMatrix3dplaneToWorld1(const AcGeVector3d& normal)
 {
@@ -644,7 +635,7 @@ static void makeAcGeMatrix3dWrapper()
 
         .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGePlane&)>("setToPlaneToWorld", &AcGeMatrix3d::setToPlaneToWorld, return_self<>())
         .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeVector3d&)>("setToPlaneToWorld", &AcGeMatrix3d::setToPlaneToWorld, return_self<>())
-     
+
         .def("scale", &AcGeMatrix3d::scale)
         .def("norm", &AcGeMatrix3d::norm)
         .def("convertToLocal", &AcGeMatrix3d::convertToLocal)
@@ -652,14 +643,14 @@ static void makeAcGeMatrix3dWrapper()
         .def("translation", &AcGeMatrix3dtranslation).staticmethod("translation")
         .def("rotation", &AcGeMatrix3drotation).staticmethod("rotation")
         .def("scaling", &AcGeMatrix3dscaling).staticmethod("scaling")
-        .def("mirroring", &AcGeMatrix3dmirroring1).staticmethod("mirroring")
-        .def("mirroring", &AcGeMatrix3dmirroring2).staticmethod("mirroring")
+        .def("mirroring", &AcGeMatrix3dmirroring1)
+        .def("mirroring", &AcGeMatrix3dmirroring2)
         .def("mirroring", &AcGeMatrix3dmirroring3).staticmethod("mirroring")
         .def("projection", &AcGeMatrix3dprojection).staticmethod("projection")
         .def("alignCoordSys", &AcGeMatrix3dalignCoordSys).staticmethod("alignCoordSys")
-        .def("worldToPlane", &AcGeMatrix3dworldToPlane1).staticmethod("worldToPlane")
+        .def("worldToPlane", &AcGeMatrix3dworldToPlane1)
         .def("worldToPlane", &AcGeMatrix3dworldToPlane2).staticmethod("worldToPlane")
-        .def("planeToWorld", &AcGeMatrix3dplaneToWorld1).staticmethod("planeToWorld")
+        .def("planeToWorld", &AcGeMatrix3dplaneToWorld1)
         .def("planeToWorld", &AcGeMatrix3dplaneToWorld2).staticmethod("planeToWorld")
 
         .def("__eq__", &AcGeMatrix3d::operator==)
