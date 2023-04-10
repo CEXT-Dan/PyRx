@@ -182,7 +182,6 @@ static void makeAcGeVector2dWrapper()
         .def("__eq__", &AcGeVector2d::operator==)
         .def("__ne__", &AcGeVector2d::operator!=)
 
-
         .def<AcGeVector2d(AcGeVector2d::*)(double) const>("__mul__", &AcGeVector2d::operator*)
         .def<AcGeVector2d& (AcGeVector2d::*)(double)>("__imul__", &AcGeVector2d::operator*=, return_self<>())
 
@@ -262,7 +261,6 @@ static AcGeMatrix2d AcGeMatrix2alignCoordSys
 static auto makeAcGeMatrix2dWrapper()
 {
     static auto wrapper = class_<AcGeMatrix2d>("Matrix2d")
-
         .add_static_property("kIdentity", &AcGeMatrix2dkIdentity)
         .def("setToIdentity", &AcGeMatrix2d::setToIdentity, return_self<>())
         .def("preMultBy", &AcGeMatrix2d::preMultBy, return_self<>())
@@ -416,7 +414,6 @@ std::string AcGeVector3dToString(const AcGeVector3d& p)
     return std::format("({},{},{})", p.x, p.y, p.z);
 }
 
-
 AcGePoint3d acAcGeVector3dMulOperatoAcGePoint3d(double val, const AcGePoint3d& pnt)
 {
     return val * pnt;
@@ -426,7 +423,6 @@ AcGePoint3d acAcGeVector3ddMulOperatoAcGeMatrix3d(const AcGeMatrix3d& mat, const
 {
     return mat * pnt;
 }
-
 
 static auto makeAcGeVector3dWrapper()
 {
@@ -621,7 +617,6 @@ static void makeAcGeMatrix3dWrapper()
         .def("getCoordSystem", &AcGeMatrix3d::getCoordSystem)
 
         .def("setToTranslation", &AcGeMatrix3d::setToTranslation, return_self<>())
-        .def("setToTranslation", &AcGeMatrix3d::setToTranslation, return_self<>())
         .def("setToRotation", &AcGeMatrix3d::setToRotation, return_self<>())
         .def("setToScaling", &AcGeMatrix3d::setToScaling, return_self<>())
 
@@ -669,7 +664,6 @@ static void makeAcGeMatrix3dWrapper()
         ;
     return;
 }
-
 
 BOOST_PYTHON_MODULE(PyGe)
 {

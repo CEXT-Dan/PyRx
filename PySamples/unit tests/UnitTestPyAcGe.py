@@ -11,7 +11,6 @@ import PyAp# = application, document classes services
 import PyEd# = editor 
 print("testname = pyge")
 
-
 class TestGe(unittest.TestCase):
         def test_point2d_add(self):
                 point = PyGe.Point2d(100,100)
@@ -138,9 +137,24 @@ class TestGe(unittest.TestCase):
                 self.assertEqual(vX2.length(),2)
                 self.assertEqual(vY2.length(),3)
                 self.assertEqual(vZ2.length(),4)
+                #print(xf)
 
+        def test_point3d_translation(self):
+                pO = PyGe.Point3d(1,10,100)
+                vX = PyGe.Vector3d.kXAxis
+                vY = PyGe.Vector3d.kYAxis
+                vZ = PyGe.Vector3d.kZAxis
+                xf = PyGe.Matrix3d.translation(pO.asVector())
+                pO2 = PyGe.Point3d.kOrigin
+                vX2 = PyGe.Vector3d.kXAxis
+                vY2 = PyGe.Vector3d.kYAxis
+                vZ2 = PyGe.Vector3d.kZAxis
+                xf.getCoordSystem(pO2, vX2, vY2, vZ2)
+                self.assertEqual(pO,pO2)
+                self.assertEqual(vX,vX2)
+                self.assertEqual(vY,vY2)
+                self.assertEqual(vZ,vZ2)
 
-                
 def PyRxCmd_pyge():
         try:
                 print(".\nstart tests----------------------------------------------------------------------")
