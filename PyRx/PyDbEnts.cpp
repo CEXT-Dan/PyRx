@@ -3016,8 +3016,8 @@ void makPyDbPolylineWrapper()
         .def(init<>())
         .def(init<unsigned int>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def<AcGePoint3d(PyDbPolyline::*)(unsigned int)const>("getPointAt", &PyDbPolyline::getPointAt)
-        .def<AcGePoint2d(PyDbPolyline::*)(int)const>("getPointAt", &PyDbPolyline::getPointAt)
+        .def("getPoint3dAt", &PyDbPolyline::getPoint3dAt)
+        .def("getPoint2dAt", &PyDbPolyline::getPoint2dAt)
         .def("segType", &PyDbPolyline::segType)
         .def("onSegAt", &PyDbPolyline::onSegAt)
         .def("setClosed", &PyDbPolyline::setClosed)
@@ -3088,7 +3088,7 @@ PyDbPolyline::PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
         throw PyNullObject();
 }
 
-AcGePoint3d PyDbPolyline::getPointAt(unsigned int idx) const
+AcGePoint3d PyDbPolyline::getPoint3dAt(unsigned int idx) const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -3099,7 +3099,7 @@ AcGePoint3d PyDbPolyline::getPointAt(unsigned int idx) const
     return pnt;
 }
 
-AcGePoint2d PyDbPolyline::getPointAt(int idx) const
+AcGePoint2d PyDbPolyline::getPoint2dAt(unsigned int idx) const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -3383,4 +3383,120 @@ std::string PyDbPolyline::className()
 AcDbPolyline* PyDbPolyline::impObj() const
 {
     return static_cast<AcDbPolyline*>(m_pImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyDbDace
+void makPyDbDaceWrapper()
+{
+    static auto wrapper = class_<PyDbFace, bases<PyDbEntity>>("DbDace")
+        .def(init<>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("getVertexAt", &PyDbFace::getVertexAt)
+        .def("setVertexAt", &PyDbFace::setVertexAt)
+        .def("setVertexAt", &PyDbFace::setVertexAt)
+        .def("isEdgeVisibleAt", &PyDbFace::isEdgeVisibleAt)
+        .def("makeEdgeVisibleAt", &PyDbFace::makeEdgeVisibleAt)
+        .def("makeEdgeInvisibleAt", &PyDbFace::makeEdgeInvisibleAt)
+        .def("isPlanar", &PyDbFace::isPlanar)
+        .def("className", &PyDbPolyline::className).staticmethod("className")
+        ;
+}
+
+PyDbFace::PyDbFace()
+    : PyDbEntity(new AcDbFace(), true)
+{
+}
+
+PyDbFace::PyDbFace(const AcGePoint3d& pt0, const AcGePoint3d& pt1, const AcGePoint3d& pt2, Adesk::Boolean e0vis , Adesk::Boolean e1vis , Adesk::Boolean e2vis , Adesk::Boolean e3vis)
+    : PyDbEntity(new AcDbFace(pt0, pt1, pt2, e0vis, e1vis, e2vis, e3vis), true)
+{
+}
+
+PyDbFace::PyDbFace(const AcGePoint3d& pt0, const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& pt3, Adesk::Boolean e0vis, Adesk::Boolean e1vis , Adesk::Boolean e2vis , Adesk::Boolean e3vis)
+    : PyDbEntity(new AcDbFace(pt0, pt1, pt2,pt3, e0vis, e1vis, e2vis, e3vis), true)
+{
+}
+
+PyDbFace::PyDbFace(AcDbPolyline* ptr, bool autoDelete)
+    : PyDbEntity(ptr, autoDelete)
+{
+}
+
+PyDbFace::PyDbFace(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbEntity(nullptr, false)
+{
+    AcDbFace* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbFace>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    this->resetImp(pobj, false, true);
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+}
+
+AcGePoint3d PyDbFace::getVertexAt(Adesk::UInt16 val) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGePoint3d rPoint;
+    if (auto es = impObj()->getVertexAt(val, rPoint); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return rPoint;
+}
+
+Acad::ErrorStatus PyDbFace::setVertexAt(Adesk::UInt16 val, const AcGePoint3d& pnt)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setVertexAt(val, pnt);
+}
+
+Adesk::Boolean PyDbFace::isEdgeVisibleAt(Adesk::UInt16 val) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    Adesk::Boolean rval;
+    if (auto es = impObj()->isEdgeVisibleAt(val, rval); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return rval;
+}
+
+Acad::ErrorStatus PyDbFace::makeEdgeVisibleAt(Adesk::UInt16 val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->makeEdgeVisibleAt(val);
+}
+
+Acad::ErrorStatus PyDbFace::makeEdgeInvisibleAt(Adesk::UInt16 val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->makeEdgeInvisibleAt(val);
+}
+
+Adesk::Boolean PyDbFace::isPlanar() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isPlanar();
+}
+
+std::string PyDbFace::className()
+{
+    return "AcDbFace";
+}
+
+AcDbFace* PyDbFace::impObj() const
+{
+    return static_cast<AcDbFace*>(m_pImp.get());
 }

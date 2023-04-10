@@ -666,8 +666,8 @@ public:
     PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbPolyline() override = default;
 
-    AcGePoint3d getPointAt(unsigned int) const;
-    AcGePoint2d getPointAt(int idx) const;
+    AcGePoint3d getPoint3dAt(unsigned int) const;
+    AcGePoint2d getPoint2dAt(unsigned int) const;
 
     AcDbPolyline::SegType segType(unsigned int index) const;
     virtual Adesk::Boolean onSegAt(unsigned int index, const AcGePoint2d& pt2d, double param) const;
@@ -718,3 +718,44 @@ public:
     AcDbPolyline* impObj() const;
 };
 
+//-----------------------------------------------------------------------------------
+//PyDbDace
+void makPyDbDaceWrapper();
+class PyDbFace : public PyDbEntity
+{
+public:
+    PyDbFace();
+    PyDbFace(const AcGePoint3d& pt0,
+        const AcGePoint3d& pt1,
+        const AcGePoint3d& pt2,
+        Adesk::Boolean e0vis = Adesk::kTrue,
+        Adesk::Boolean e1vis = Adesk::kTrue,
+        Adesk::Boolean e2vis = Adesk::kTrue,
+        Adesk::Boolean e3vis = Adesk::kTrue);
+    PyDbFace(const AcGePoint3d& pt0,
+        const AcGePoint3d& pt1,
+        const AcGePoint3d& pt2,
+        const AcGePoint3d& pt3,
+        Adesk::Boolean e0vis = Adesk::kTrue,
+        Adesk::Boolean e1vis = Adesk::kTrue,
+        Adesk::Boolean e2vis = Adesk::kTrue,
+        Adesk::Boolean e3vis = Adesk::kTrue);
+    PyDbFace(AcDbPolyline* ptr, bool autoDelete);
+    PyDbFace(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbFace() override = default;
+
+    AcGePoint3d getVertexAt(Adesk::UInt16) const;
+    Acad::ErrorStatus setVertexAt(Adesk::UInt16, const AcGePoint3d&);
+
+    Adesk::Boolean isEdgeVisibleAt(Adesk::UInt16) const;
+    Acad::ErrorStatus makeEdgeVisibleAt(Adesk::UInt16);
+    Acad::ErrorStatus makeEdgeInvisibleAt(Adesk::UInt16);
+
+    Adesk::Boolean      isPlanar() const override;
+    //Acad::ErrorStatus   getPlane(AcGePlane& plane, AcDb::Planarity& planarity) const override;
+
+
+    static std::string className();
+public:
+    AcDbFace* impObj() const;
+};
