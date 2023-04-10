@@ -98,6 +98,7 @@ static void makeAcGePoint2dWrapper()
 
         .def<AcGePoint2d(AcGePoint2d::*)(const AcGeVector2d&)const>("__sub__", &AcGePoint2d::operator-)
         .def<AcGePoint2d& (AcGePoint2d::*)(const AcGeVector2d&)>("__isub__", &AcGePoint2d::operator-=, return_self<>())
+        .def<AcGeVector2d(AcGePoint2d::*)(const AcGePoint2d&)const>("__sub__", &AcGePoint2d::operator-)
 
         .def("toString", &AcGePoint2dToString)
         .def("__str__", &AcGePoint2dToString)
@@ -380,6 +381,7 @@ static void makeAcGePoint3dWrapper()
 
         .def<AcGePoint3d(AcGePoint3d::*)(const AcGeVector3d&)const>("__sub__", &AcGePoint3d::operator-)
         .def<AcGePoint3d& (AcGePoint3d::*)(const AcGeVector3d&)>("__isub__", &AcGePoint3d::operator-=, return_self<>())
+        .def<AcGeVector3d(AcGePoint3d::*)(const AcGePoint3d&)const>("__sub__", &AcGePoint3d::operator-)
 
         .def("toString", &AcGePoint3dToString)
         .def("__str__", &AcGePoint3dToString)

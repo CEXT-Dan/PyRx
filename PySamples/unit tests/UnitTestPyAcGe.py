@@ -1,5 +1,6 @@
 import os 
 import unittest
+import math 
 
 import PyRxApp# = all the global methods like acutPrintf, 
 import PyRx# = Runtime runtime 
@@ -97,6 +98,19 @@ class TestGe(unittest.TestCase):
                 self.assertEqual(ans, True)
                 ans = v1.isPerpendicularTo(v2, PyGe.GeTol.current)
                 self.assertEqual(ans, True)
+
+        def test_vector2d_make1(self):
+                p1 = PyGe.Point2d(100,0)
+                p2 = PyGe.Point2d(0,0)
+                v1 = p2 - p1
+                self.assertTrue(v1.isParallelTo(PyGe.Vector2d.kXAxis))
+                self.assertTrue(v1.isPerpendicularTo(PyGe.Vector2d.kYAxis))
+                self.assertFalse(v1.isUnitLength())
+                self.assertFalse(v1.isZeroLength())
+                self.assertEqual(v1.length(), 100)
+                v1.rotateBy(math.pi)
+                v1.negate()
+                self.assertTrue(v1.isParallelTo(PyGe.Vector2d.kXAxis))
 
 def PyRxCmd_pyge():
         try:
