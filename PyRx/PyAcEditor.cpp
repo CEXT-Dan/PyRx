@@ -6,6 +6,7 @@ using namespace boost::python;
 
 //-----------------------------------------------------------------------------------------
 // PyAcEditor wrapper
+
 void makeAcEditorWrapper()
 {
     static auto wrapper = class_<PyAcEditor>("AcEditor")
@@ -15,6 +16,8 @@ void makeAcEditorWrapper()
         .def("getString", &PyAcEditor::getString)
         .def("getPoint", &PyAcEditor::getPoint)
         .def("entsel", &PyAcEditor::entsel)
+        .def("getCurrentUCS", &PyAcEditor::curUCS)
+        .def("setCurrentUCS", &PyAcEditor::setCurUCS)
         .def<boost::python::tuple(PyAcEditor::*)(void)>("selectAll", &PyAcEditor::selectAll)
         .def<boost::python::tuple(PyAcEditor::*)(const boost::python::list&)>("selectAll", &PyAcEditor::selectAll)
         ;
@@ -93,6 +96,19 @@ boost::python::tuple PyAcEditor::selectAll(const boost::python::list& filter)
     }
     acedSSFree(name);
     return boost::python::make_tuple<boost::python::list, Acad::PromptStatus>(pyList, stat);
+}
+
+AcGeMatrix3d PyAcEditor::curUCS()
+{
+    AcGeMatrix3d mat;
+    if (auto es = acedGetCurrentUCS(mat); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return mat;
+}
+
+Acad::ErrorStatus PyAcEditor::setCurUCS(const AcGeMatrix3d& mat)
+{
+    return acedSetCurrentUCS(mat);
 }
 
 std::string PyAcEditor::className()

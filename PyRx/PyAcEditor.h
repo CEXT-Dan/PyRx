@@ -12,6 +12,8 @@ public:
     boost::python::tuple entsel(const std::string& prompt);
     boost::python::tuple selectAll();
     boost::python::tuple selectAll(const boost::python::list& filter);
+    AcGeMatrix3d curUCS();
+    Acad::ErrorStatus setCurUCS(const AcGeMatrix3d& mat);
     static std::string className();
 };
 
