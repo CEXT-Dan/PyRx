@@ -1,19 +1,43 @@
 #pragma once
 
+class PyDbObjectId;
+class PyDbDatabase;
+
 void makeAcEditorWrapper();
 
 class PyAcEditor
 {
 public:
+    void alert(const std::string& prompt);
+    bool arxLoad(const std::string& path);
+    bool arxUnload(const std::string& app);
+    Acad::ErrorStatus audit(const PyDbDatabase& db, bool bFixErrors, bool bCmdLnEcho);
+    bool cmdS(const boost::python::list& lst);
+
+    std::string findFile(const std::string& file);
+    std::string findTrustedFile(const std::string& file);
+
+    boost::python::list  arxLoaded();
     boost::python::tuple getInteger(const std::string& prompt);
     boost::python::tuple getDouble(const std::string& prompt);
+    boost::python::tuple getAngle(const AcGePoint3d& basePt,const std::string& prompt);
+
     boost::python::tuple getPoint(const std::string& prompt);
+    boost::python::tuple getPoint(const AcGePoint3d& basePt,  const std::string& prompt);
+
+    boost::python::tuple getDist(const std::string& prompt);
+    boost::python::tuple getDist(const AcGePoint3d& basePt, const std::string& prompt);
+
     boost::python::tuple getString(int cronly, const std::string& prompt);
     boost::python::tuple entsel(const std::string& prompt);
     boost::python::tuple selectAll();
     boost::python::tuple selectAll(const boost::python::list& filter);
     AcGeMatrix3d curUCS();
     Acad::ErrorStatus setCurUCS(const AcGeMatrix3d& mat);
+
+    PyDbObjectId activeViewportId();
+
+
     static std::string className();
 };
 

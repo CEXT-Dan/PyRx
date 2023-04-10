@@ -25,7 +25,7 @@ def OnPyUnloadDwg():
          
 def PyRxCmd_pycmd():
 	try: 
-		printItem()
+		print(PyAp.ApApplication().docManager().curDocument().editor().arxLoaded())
 	except Exception as err:
 		PyRxApp.Printf(err)
 		
