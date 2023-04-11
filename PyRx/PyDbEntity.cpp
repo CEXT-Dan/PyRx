@@ -2,7 +2,8 @@
 #include "PyDbEntity.h"
 #include "PyDbObjectId.h"
 #include "PyCmColorBase.h"
-#include "PyGeEntity3d.h"
+#include "PyGePlane.h"
+
 using namespace boost::python;
 
 //----------------------------------------------------------------------------------------------------

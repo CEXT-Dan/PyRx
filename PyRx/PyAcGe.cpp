@@ -1,6 +1,10 @@
 #include "stdafx.h"
 #include "PyAcGe.h"
 #include "PyGeEntity3d.h"
+#include "PyAcGeSurface.h"
+#include "PyGePlanarEnt.h"
+#include "PyGePlane.h"
+
 using namespace boost::python;
 
 //---------------------------------------------------------------------------------------------------------------

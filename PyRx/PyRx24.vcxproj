@@ -125,6 +125,7 @@
     <ClCompile Include="acrxEntryPoint.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="DocData.cpp" />
+    <ClCompile Include="PyAcGeSurface.cpp" />
     <ClCompile Include="PyDbCurve.cpp" />
     <ClCompile Include="PyDbEnts.cpp" />
     <ClCompile Include="PyAcAp.cpp" />
@@ -154,7 +155,10 @@
     <ClCompile Include="PyGeCurveCurveInt3d.cpp" />
     <ClCompile Include="PyGeCurveSurfInt.cpp" />
     <ClCompile Include="PyGeEntity3d.cpp" />
+    <ClCompile Include="PyGePlanarEnt.cpp" />
+    <ClCompile Include="PyGePlane.cpp" />
     <ClCompile Include="PyGePointEnt3d.cpp" />
+    <ClCompile Include="PyGeSurfSurfInt.cpp" />
     <ClCompile Include="PyGiDrawable.cpp" />
     <ClCompile Include="PyLispService.cpp" />
     <ClCompile Include="PyRxAced.cpp" />
@@ -169,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DocData.h" />
+    <ClInclude Include="PyAcGeSurface.h" />
     <ClInclude Include="PyDbCurve.h" />
     <ClInclude Include="PyDbEnts.h" />
     <ClInclude Include="PyAcAp.h" />
@@ -199,7 +204,10 @@
     <ClInclude Include="PyGeCurveCurveInt3d.h" />
     <ClInclude Include="PyGeCurveSurfInt.h" />
     <ClInclude Include="PyGeEntity3d.h" />
+    <ClInclude Include="PyGePlanarEnt.h" />
+    <ClInclude Include="PyGePlane.h" />
     <ClInclude Include="PyGePointEnt3d.h" />
+    <ClInclude Include="PyGeSurfSurfInt.h" />
     <ClInclude Include="PyGiDrawable.h" />
     <ClInclude Include="PyLispService.h" />
     <ClInclude Include="PyRxAced.h" />

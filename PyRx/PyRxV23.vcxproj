@@ -130,6 +130,7 @@
     <ClCompile Include="PyAcEd.cpp" />
     <ClCompile Include="PyAcEditor.cpp" />
     <ClCompile Include="PyAcGe.cpp" />
+    <ClCompile Include="PyAcGeSurface.cpp" />
     <ClCompile Include="PyAcGi.cpp" />
     <ClCompile Include="PyAcRx.cpp" />
     <ClCompile Include="PyApApplication.cpp" />
@@ -154,7 +155,10 @@
     <ClCompile Include="PyGeCurveCurveInt3d.cpp" />
     <ClCompile Include="PyGeCurveSurfInt.cpp" />
     <ClCompile Include="PyGeEntity3d.cpp" />
+    <ClCompile Include="PyGePlanarEnt.cpp" />
+    <ClCompile Include="PyGePlane.cpp" />
     <ClCompile Include="PyGePointEnt3d.cpp" />
+    <ClCompile Include="PyGeSurfSurfInt.cpp" />
     <ClCompile Include="PyGiDrawable.cpp" />
     <ClCompile Include="PyLispService.cpp" />
     <ClCompile Include="PyRxAced.cpp" />
@@ -174,6 +178,7 @@
     <ClInclude Include="PyAcEd.h" />
     <ClInclude Include="PyAcEditor.h" />
     <ClInclude Include="PyAcGe.h" />
+    <ClInclude Include="PyAcGeSurface.h" />
     <ClInclude Include="PyAcGi.h" />
     <ClInclude Include="PyAcRx.h" />
     <ClInclude Include="PyApApplication.h" />
@@ -199,7 +204,10 @@
     <ClInclude Include="PyGeCurveCurveInt3d.h" />
     <ClInclude Include="PyGeCurveSurfInt.h" />
     <ClInclude Include="PyGeEntity3d.h" />
+    <ClInclude Include="PyGePlanarEnt.h" />
+    <ClInclude Include="PyGePlane.h" />
     <ClInclude Include="PyGePointEnt3d.h" />
+    <ClInclude Include="PyGeSurfSurfInt.h" />
     <ClInclude Include="PyGiDrawable.h" />
     <ClInclude Include="PyLispService.h" />
     <ClInclude Include="PyRxAced.h" />
