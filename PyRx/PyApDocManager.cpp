@@ -7,7 +7,7 @@ using namespace boost::python;
 //PyApDocManager Wrapper
 void makeAcApDocManagerWrapper()
 {
-    static auto wrapper = class_<PyApDocManager, bases<PyRxObject>>("ApDocManager", boost::python::no_init)
+    static auto wrapper = class_<PyApDocManager, bases<PyRxObject>>("DocManager", boost::python::no_init)
         .def("className", &PyApDocManager::className).staticmethod("className")
         .def("curDocument", &PyApDocManager::curDocument)
         ;

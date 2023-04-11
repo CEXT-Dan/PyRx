@@ -28,9 +28,9 @@ def PyRxCmd_pydbsymtabletest():
 		PyRxApp.Printf(err)
 		
 def PyDbSymOpenForRead():
-	db = PyDb.DbHostApplicationServices().workingDatabase()  
+	db = PyDb.HostApplicationServices().workingDatabase()  
 	btid = db.blockTableId()
-	table = PyDb.DbSymbolTable(btid,PyDb.OpenMode.kForRead)
+	table = PyDb.SymbolTable(btid,PyDb.OpenMode.kForRead)
 	if table.isNull():
 		PyRxApp.Printf("\nFAIL")
 	else:

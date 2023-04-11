@@ -28,9 +28,9 @@ def PyRxCmd_pydbdicttest():
 		PyRxApp.Printf(err)
 		
 def PyDbDictOpenForRead():
-	db = PyDb.DbHostApplicationServices().workingDatabase()  
+	db = PyDb.HostApplicationServices().workingDatabase()  
 	dictid = db.namedObjectsDictionaryId()
-	dict = PyDb.DbDictionary(dictid,PyDb.OpenMode.kForRead)
+	dict = PyDb.Dictionary(dictid,PyDb.OpenMode.kForRead)
 	if dict.isNull():
 		PyRxApp.Printf("\nFAIL")
 	else:

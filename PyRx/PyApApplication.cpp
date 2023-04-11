@@ -7,7 +7,7 @@ using namespace boost::python;
 //PyApApplication  Wrapper
 void makeAcApApplictionWrapper()
 {
-    static auto wrapper = class_<PyApApplication>("ApApplication")
+    static auto wrapper = class_<PyApApplication>("Application")
         .def("docManager", &PyApApplication::docManager)
         .def("className", &PyApApplication::className).staticmethod("className")
         ;

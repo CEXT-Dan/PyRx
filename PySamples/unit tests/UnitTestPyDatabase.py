@@ -14,8 +14,8 @@ class TestDatabase(unittest.TestCase):
         def test_fail(self):
                 self.assertEqual("Scooby","Scooby")
         def test_property_ids(self):
-                self.assertEqual(PyDb.DbDatabase.className(),"AcDbDatabase")
-                db = PyDb.DbHostApplicationServices().workingDatabase() 
+                self.assertEqual(PyDb.Database.className(),"AcDbDatabase")
+                db = PyDb.HostApplicationServices().workingDatabase() 
                 db.setAngbase(1)
                 self.assertEqual(db.angbase(),1)
                 self.assertEqual(db.byBlockLinetype().objectClass().name(),"AcDbLinetypeTableRecord")

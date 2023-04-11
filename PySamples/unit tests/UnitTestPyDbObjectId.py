@@ -13,7 +13,7 @@ print("testname = pydbobjectid")
 
 class TestDbObjectId(unittest.TestCase):
         def test_property_ids(self):
-                id = PyDb.DbHostApplicationServices().workingDatabase().blockTableId()
+                id = PyDb.HostApplicationServices().workingDatabase().blockTableId()
                 self.assertFalse(id.isNull())
                 self.assertNotEqual(id.asOldId(), 0)
                 self.assertTrue(id.isResident())

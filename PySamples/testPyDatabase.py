@@ -37,7 +37,7 @@ def PyRxCmd_pydbatabasetest():
 		
 def PyDbGet():
 	try:
-		db = PyDb.DbHostApplicationServices().workingDatabase()  
+		db = PyDb.HostApplicationServices().workingDatabase()  
 		PyRxApp.Printf("\nangbase = PASS({})".format(db.angbase()))
 		PyRxApp.Printf("\nangdir = PASS({})".format(db.angdir()))
 		PyRxApp.Printf("\nannoAllVisible = PASS({})".format(db.annoAllVisible()))
@@ -58,7 +58,7 @@ def PyDbGet():
 
 def PyDbGetBlockTable():
 	try:
-		db = PyDb.DbHostApplicationServices().workingDatabase()  
+		db = PyDb.HostApplicationServices().workingDatabase()  
 		id = db.blockTableId()
 		PyRxApp.Printf("\nPyDbGetBlockTable = PASS({})".format(id.objectClass().name()))
 	except Exception as err:
@@ -66,14 +66,14 @@ def PyDbGetBlockTable():
 
 def PyDbIsA():
 	try:
-		db = PyDb.DbHostApplicationServices().workingDatabase()  
+		db = Db.HostApplicationServices().workingDatabase()  
 		PyRxApp.Printf("\nPASS({})".format(db.isA().name()))  
 	except Exception as err:
 		PyRxApp.Printf(err)
                 
 def PyHostApptestCopy():
 	try:
-		ha = PyDb.DbHostApplicationServices()
+		ha = PyDb.HostApplicationServices()
 		db = ha.workingDatabase()  
 		PrintDbPath(db)        
 	except Exception as err:
@@ -81,14 +81,14 @@ def PyHostApptestCopy():
 		
 def PyHostApptestNest():
 	try:
-		db = PyDb.DbHostApplicationServices().workingDatabase()  
+		db = PyDb.HostApplicationServices().workingDatabase()  
 		PrintDbPath(db)     
 	except Exception as err:
 		PyRxApp.Printf(err)
 
 def PyDatabaseReadDwg():
 	try:
-		db = PyDb.DbDatabase(False,False)
+		db = PyDb.Database(False,False)
 		db.readDwgFile("E:/Blocks/6036.dwg")
 		dbcopy = db
 		PrintDbPath(dbcopy)  

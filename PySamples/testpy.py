@@ -35,10 +35,10 @@ def printItem():
 	
 def createLine():
 	try:
-		db = PyAp.ApApplication().docManager().curDocument().database()
-		model = PyDb.DbBlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
-		line = PyDb.DbLine(PyGe.Point3d(0,0,0),PyGe.Point3d(100,100,0))
-		circle = PyDb.DbCircle(PyGe.Point3d(0,0,0),PyGe.Vector3d.kZAxis, 100)
+		db = PyAp.Application().docManager().curDocument().database()
+		model = PyDb.BlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
+		line = PyDb.Line(PyGe.Point3d(0,0,0),PyGe.Point3d(100,100,0))
+		circle = PyDb.Circle(PyGe.Point3d(0,0,0),PyGe.Vector3d.kZAxis, 100)
 
 		lplane = line.getPlane()
 		cplane = circle.getPlane()
@@ -52,27 +52,27 @@ def createLine():
 		PyRxApp.Printf(err)
 		
 def getSplitCurves():
-	doc = PyAp.ApApplication().docManager().curDocument()
+	doc = PyAp.Application().docManager().curDocument()
 	ed = doc.editor()
 	entres = ed.entsel("\nSelect")
 	pntres = ed.getPoint("\nPoint On Curve")
 
 	if(entres[2] == PyEd.PromptStatus.Normal):
 		entId = entres[0]
-		curve = PyDb.DbCurve(entId, PyDb.OpenMode.kForRead)
+		curve = PyDb.Curve(entId, PyDb.OpenMode.kForRead)
 		pnt = pntres[0]
 		param = curve.getParamAtPoint(pnt)
 		params = [param]
 		curves = curve.getSplitCurves(params)
 		db =doc.database()
-		model = PyDb.DbBlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
+		model = PyDb.BlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
 		for x in curves:
 			model.appendAcDbEntity(x)
 		
 def createDbp():
 	try:
-		db = PyAp.ApApplication().docManager().curDocument().database()
-		model = PyDb.DbBlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
+		db = PyAp.Application().docManager().curDocument().database()
+		model = PyDb.BlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
 		dbp = PyDb.DbPoint(PyGe.Point3d(100,100,0))
 		model.appendAcDbEntity(dbp)
 	except Exception as err:
@@ -84,8 +84,8 @@ def createDbps():
 		for x in range(10000):
 			objs.append(PyDb.DbPoint(PyGe.Point3d(x,x,0)))
 
-		db = PyAp.ApApplication().docManager().curDocument().database()
-		model = PyDb.DbBlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
+		db = PyAp.Application().docManager().curDocument().database()
+		model = PyDb.BlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
 
 		for o in objs:
 			model.appendAcDbEntity(o)

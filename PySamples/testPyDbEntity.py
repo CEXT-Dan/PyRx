@@ -30,7 +30,7 @@ def PyRxCmd_pydbentitytest():
 		
 def PyDbObjectOpenForRead():
 	try:
-		db = PyDb.DbHostApplicationServices().workingDatabase()  
+		db = PyDb.HostApplicationServices().workingDatabase()  
 		id = db.blockTableId()
 		dbo = PyDb.DbObject(val[0], PyDb.OpenMode.kForRead)
 		if dbo.isNull():

@@ -13,14 +13,14 @@ print("testname = pydbpoint")
 
 class TestDbPoint(unittest.TestCase):
         def test_property_ids(self):
-                point = PyDb.DbPoint(PyGe.Point3d(1,2,3))
+                point = PyDb.Point(PyGe.Point3d(1,2,3))
 				
-                db = PyAp.ApApplication().docManager().curDocument().database()
-                model = PyDb.DbBlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
+                db = PyAp.Application().docManager().curDocument().database()
+                model = PyDb.BlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
                 model.appendAcDbEntity(point)
                 self.assertEqual(point.position(),PyGe.Point3d(1,2,3))
                 self.assertNotEqual(point.objectId(), PyDb.DbObjectId())
-                self.assertEqual(PyDb.DbPoint.className(),"AcDbPoint")
+                self.assertEqual(PyDb.Point.className(),"AcDbPoint")
                 point.downgradeOpen()
                 self.assertFalse(point.isWriteEnabled())
                 point.upgradeOpen()

@@ -36,7 +36,7 @@ def PyRxCmd_pyapptest():
 		
 def PyCurDocTest():
 	try:
-		db = PyAp.ApApplication().docManager().curDocument().database() 
+		db = PyAp.Application().docManager().curDocument().database() 
 		PyRxApp.Printf("\nPASS({})".format(db.getFilename())) 
 	except Exception as err:
 		PyRxApp.Printf(err)
@@ -44,7 +44,7 @@ def PyCurDocTest():
 
 def PyCurDocEdTest1():
 	try:
-		val = PyAp.ApApplication().docManager().curDocument().editor().getInteger("\nEnter an int")
+		val = PyAp.Application().docManager().curDocument().editor().getInteger("\nEnter an int")
 		if(val[1] == PyEd.PromptStatus.kNormal):
 			PyRxApp.Printf("\nPASS({})".format(val[0])) 
 	except Exception as err:
@@ -52,7 +52,7 @@ def PyCurDocEdTest1():
 
 def PyCurDocEdTest2():
 	try:
-		doc =  PyAp.ApApplication().docManager().curDocument()
+		doc =  PyAp.Application().docManager().curDocument()
 		val = doc.editor().getInteger("\nEnter an int")
 		if(val[1] == PyEd.PromptStatus.kNormal):
 			PyRxApp.Printf("\nPASS({})".format(val[0])) 
@@ -61,7 +61,7 @@ def PyCurDocEdTest2():
 
 def PyCurDocEdTest3():
 	try:
-		app =  PyAp.ApApplication()
+		app =  PyAp.Application()
 		docm = app.docManager()
 		doc = docm.curDocument()
 		ed = doc.editor()
@@ -73,7 +73,7 @@ def PyCurDocEdTest3():
 
 def PyCurDocEntsel():
 	try:
-		app =  PyAp.ApApplication()
+		app =  PyAp.Application()
 		docm = app.docManager()
 		doc = docm.curDocument()
 		ed = doc.editor()
@@ -88,7 +88,7 @@ def PyCurDocEntsel():
 		
 def PyCurDocSelectAll():
 	try:
-		app =  PyAp.ApApplication()
+		app =  PyAp.Application()
 		docm = app.docManager()
 		doc = docm.curDocument()
 		ed = doc.editor()
@@ -101,7 +101,7 @@ def PyCurDocSelectAll():
 		
 def PyCurDocSelectAllFilter():
 	try:
-		app =  PyAp.ApApplication()
+		app =  PyAp.Application()
 		docm = app.docManager()
 		doc = docm.curDocument()
 		ed = doc.editor()

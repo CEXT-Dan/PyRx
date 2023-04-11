@@ -30,7 +30,7 @@ def PyRxCmd_pydbentitytest():
 		PyRxApp.Printf(err)
 		
 def PyDbEntSetLayer():
-	app =  PyAp.ApApplication()
+	app =  PyAp.Application()
 	docm = app.docManager()
 	doc = docm.curDocument()
 	ed = doc.editor()
@@ -38,12 +38,12 @@ def PyDbEntSetLayer():
 	t1_start = perf_counter()
 	if(ss[1] == PyEd.PromptStatus.Normal):
 		for id in ss[0]:
-			PyDb.DbEntity(id, PyDb.OpenMode.kForWrite).setLayer("0")
+			PyDb.Entity(id, PyDb.OpenMode.kForWrite).setLayer("0")
 	t1_stop = perf_counter()
 	PyRxApp.Printf("\nNum Items = {}, Elapsed time: {t:.4f}".format(len(ss[0]), t = t1_stop-t1_start))
 	
 def PyDbEntSetLayer2():
-	app =  PyAp.ApApplication()
+	app =  PyAp.Application()
 	docm = app.docManager()
 	doc = docm.curDocument()
 	ed = doc.editor()
@@ -53,7 +53,7 @@ def PyDbEntSetLayer2():
 	t1_start = perf_counter()
 	if(ss[1] == PyEd.PromptStatus.Normal):
 		for id in ss[0]:
-			PyDb.DbEntity(id, PyDb.OpenMode.ForWrite).setLayer(clayer)
+			PyDb.Entity(id, PyDb.OpenMode.ForWrite).setLayer(clayer)
 	t1_stop = perf_counter()
 	PyRxApp.Printf("\nNum Items = {}, Elapsed time: {t:.4f}".format(len(ss[0]), t = t1_stop-t1_start))
 			

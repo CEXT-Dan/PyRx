@@ -24,11 +24,11 @@ def OnPyUnloadDwg():
          
 def PyRxCmd_pyinsert():
     try: 
-        db = PyDb.DbHostApplicationServices().workingDatabase()
-        db2 = PyDb.DbDatabase(False, False)
+        db = PyDb.HostApplicationServices().workingDatabase()
+        db2 = PyDb.Database(False, False)
         if db2.readDwgFile("./dwg/18X36RP.dwg") != PyDb.ErrorStatus.kOk:
              print("fail")
-        oid = PyDb.DbObjectId()
+        oid = PyDb.ObjectId()
         if db.insert(oid,"WOOHOO", db2, True) != PyDb.ErrorStatus.kOk:
               print("fail")
 

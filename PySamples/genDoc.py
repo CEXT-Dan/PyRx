@@ -13,7 +13,7 @@ import PyEd# = editor
 
 def PyRxCmd_pydoit():
 	try:
-		PyRxApp.Printf(dir(PyDb.DbDatabase))
+		PyRxApp.Printf(dir(PyDb.Database))
 		#PyRxApp.Printf(inspect.getmembers(PyDb))
 		#PyRxApp.Printf(inspect.getsource(PyDb.DbObjectId))
 		#PyRxApp.Printf(inspect.signature(collections.Counter))
@@ -24,7 +24,7 @@ def PyRxCmd_pydoit():
 		
 def PyRxCmd_pydoit2():
 	try:
-		members = inspect.getmembers(PyDb.DbEntity)
+		members = inspect.getmembers(PyDb.Entity)
 		for x in members:
 			  PyRxApp.Printf("\n{} ".format(x[0]))       
 	except Exception as err:
@@ -41,7 +41,7 @@ def PyRxCmd_pydoit3():
 		
 def PyRxCmd_pydoit4():
 	try:
-		members = inspect.getmembers(PyDb.DbDictionary)
+		members = inspect.getmembers(PyDb.Dictionary)
 		for x in members:
 			  PyRxApp.Printf("\nName = {},{}\n.".format(x[0],x[1].__doc__))       
 		

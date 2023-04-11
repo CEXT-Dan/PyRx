@@ -13,7 +13,7 @@ print("testname = pydbobject")
 
 class TestDbObject(unittest.TestCase):
         def test_property_ids(self):
-                id = PyDb.DbHostApplicationServices().workingDatabase().blockTableId()
+                id = PyDb.HostApplicationServices().workingDatabase().blockTableId()
                 bdo = PyDb.DbObject(id, PyDb.OpenMode.ForRead)
                 self.assertEqual(bdo.className(),"AcDbObject") 
                 self.assertEqual(bdo.isA().name(),"AcDbBlockTable") 
@@ -39,7 +39,7 @@ class TestDbObject(unittest.TestCase):
                 self.assertEqual(success, 5100)
 
                 #set
-                id = PyDb.DbHostApplicationServices().workingDatabase().blockTableId()
+                id = PyDb.HostApplicationServices().workingDatabase().blockTableId()
                 dbo = PyDb.DbObject(id, PyDb.OpenMode.kForWrite)
                 self.assertEqual(dbo.isWriteEnabled(), True) 
                 xd = [(PyDb.DxfCode.kDxfRegAppName, "PYTHONTEST"),(PyDb.DxfCode.kDxfXdXCoord, PyGe.Point3d(1,10,100))]
