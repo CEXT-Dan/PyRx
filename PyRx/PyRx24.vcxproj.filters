@@ -109,6 +109,19 @@
     <ClCompile Include="PyLispService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PyGeBoundBlock3d.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGeCurve3d.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGeCurveCurveInt3d.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGeCurveSurfInt.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGePointEnt3d.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -222,6 +235,19 @@
     <ClInclude Include="PyLispService.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PyGeBoundBlock3d.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeCurve3d.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeCurveCurveInt3d.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeCurveSurfInt.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGePointEnt3d.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

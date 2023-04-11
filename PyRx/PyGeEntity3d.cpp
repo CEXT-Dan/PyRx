@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "PyGeEntity3d.h"
 
-
 using namespace boost::python;
 
 //-----------------------------------------------------------------------------------------
