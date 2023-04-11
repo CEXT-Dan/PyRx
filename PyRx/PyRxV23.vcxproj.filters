@@ -136,6 +136,9 @@
     <ClCompile Include="PyGePlane.cpp">
       <Filter>Source Files\PyGe</Filter>
     </ClCompile>
+    <ClCompile Include="PyGeInterval.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -274,6 +277,9 @@
       <Filter>Header Files\PyGe</Filter>
     </ClInclude>
     <ClInclude Include="PyGePlane.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeInterval.h">
       <Filter>Header Files\PyGe</Filter>
     </ClInclude>
   </ItemGroup>

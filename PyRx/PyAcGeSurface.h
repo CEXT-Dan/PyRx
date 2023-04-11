@@ -1,5 +1,8 @@
 #pragma once
 #include "PyGeEntity3d.h"
+
+class PyGeInterval;
+class PyGePointOnSurface;
 //-----------------------------------------------------------------------------------------
 //AcGeSurface wrapper
 void makeAcGeSurfaceWrapper();
@@ -23,8 +26,8 @@ public:
     AcGePoint3d closestPointTo1(const AcGePoint3d& pnt) const;
     AcGePoint3d closestPointTo2(const AcGePoint3d& pnt, const AcGeTol& tol) const;
 
-    //PyGePointOnSurface getClosestPointTo1(const AcGePoint3d& pnt) const;
-    //PyGePointOnSurface getClosestPointTo2(const AcGePoint3d& pnt, const AcGeTol& tol) const;
+    PyGePointOnSurface getClosestPointTo1(const AcGePoint3d& pnt) const;
+    PyGePointOnSurface getClosestPointTo2(const AcGePoint3d& pnt, const AcGeTol& tol) const;
 
     double distanceTo1(const AcGePoint3d& pnt) const;
     double distanceTo2(const AcGePoint3d& pnt, const AcGeTol& tol) const;
@@ -32,7 +35,7 @@ public:
     Adesk::Boolean isNormalReversed() const;
     PyAcGeSurface& reverseNormal();
 
-    //void  getEnvelope(AcGeInterval& intrvlX, AcGeInterval& intrvlY) const;
+    void  getEnvelope(PyGeInterval& intrvlX, PyGeInterval& intrvlY) const;
 
     Adesk::Boolean isClosedInU1() const;
     Adesk::Boolean isClosedInU2(const AcGeTol& tol) const;

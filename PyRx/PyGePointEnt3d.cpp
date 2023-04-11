@@ -39,7 +39,6 @@ void makePyGePointOnCurve3dWrapper()
 PyGePointOnCurve3d::PyGePointOnCurve3d()
     : PyGePointEnt3d(new AcGePointOnCurve3d())
 {
-
 }
 
 

@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "PyAcGeSurface.h"
+#include "PyGePointEnt3d.h"
+#include "PyGeInterval.h"
 
 using namespace boost::python;
 // ---------------------------------------------------------------------------------------- -
@@ -113,6 +115,26 @@ AcGePoint3d PyAcGeSurface::closestPointTo2(const AcGePoint3d& pnt, const AcGeTol
     return imp->closestPointTo(pnt, tol);
 }
 
+PyGePointOnSurface PyAcGeSurface::getClosestPointTo1(const AcGePoint3d& pnt) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGePointOnSurface pos;
+    imp->getClosestPointTo(pnt, pos);
+    return PyGePointOnSurface(pos.copy());
+}
+
+PyGePointOnSurface PyAcGeSurface::getClosestPointTo2(const AcGePoint3d& pnt, const AcGeTol& tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGePointOnSurface pos;
+    imp->getClosestPointTo(pnt, pos, tol);
+    return PyGePointOnSurface(pos.copy());
+}
+
 double PyAcGeSurface::distanceTo1(const AcGePoint3d& pnt) const
 {
     auto imp = impObj();
@@ -144,6 +166,14 @@ PyAcGeSurface& PyAcGeSurface::reverseNormal()
         throw PyNullObject();
     imp->reverseNormal();
     return *this;
+}
+
+void PyAcGeSurface::getEnvelope(PyGeInterval& intrvlX, PyGeInterval& intrvlY) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->getEnvelope(intrvlX.imp, intrvlY.imp);
 }
 
 Adesk::Boolean PyAcGeSurface::isClosedInU1() const

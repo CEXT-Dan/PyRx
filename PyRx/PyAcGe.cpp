@@ -5,6 +5,7 @@
 #include "PyAcGeSurface.h"
 #include "PyGePlanarEnt.h"
 #include "PyGePlane.h"
+#include "PyGeInterval.h"
 
 using namespace boost::python;
 
@@ -688,6 +689,7 @@ BOOST_PYTHON_MODULE(PyGe)
     makeAcGeScale3dWrapper();
     makeAcGeScale2dWrapper();
 
+    makePyGeIntervalWrapper();
     makePyGeEntity3dWrapper();
 
     makePyGePointEnt3dWrapper();
