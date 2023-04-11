@@ -2,7 +2,7 @@
 #include "PyDbEntity.h"
 #include "PyDbObjectId.h"
 #include "PyCmColorBase.h"
-
+#include "PyGeEntity3d.h"
 using namespace boost::python;
 
 //----------------------------------------------------------------------------------------------------
@@ -74,6 +74,8 @@ void makeAcDbEntityWrapper()
         .def<Acad::ErrorStatus(PyDbEntity::*)(const PyDbEntity&, Adesk::Boolean)>("setPropertiesFrom", &PyDbEntity::setPropertiesFrom)
 
         .def("isPlanar", &PyDbEntity::isPlanar)
+        .def("getPlane", &PyDbEntity::getPlane)
+
         .def("getEcs", &PyDbEntity::getEcs)
         .def("list", &PyDbEntity::list)
         .def("transformBy", &PyDbEntity::transformBy)
@@ -505,6 +507,20 @@ Adesk::Boolean PyDbEntity::isPlanar() const
     if (imp == nullptr)
         throw PyNullObject();
     return imp->isPlanar();
+}
+
+PyGePlane PyDbEntity::getPlane() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGePlane plane;
+    AcDb::Planarity val;
+    if (auto es = imp->getPlane(plane, val); es != eOk)
+        throw PyAcadErrorStatus(es);
+    if(val == AcDb::kNonPlanar)
+        throw PyAcadErrorStatus(Acad::eNotApplicable);
+    return PyGePlane(plane);
 }
 
 void PyDbEntity::getEcs(AcGeMatrix3d& retVal) const

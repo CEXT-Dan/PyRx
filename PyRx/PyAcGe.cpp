@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "PyAcGe.h"
-
+#include "PyGeEntity3d.h"
 using namespace boost::python;
 
 //---------------------------------------------------------------------------------------------------------------
@@ -682,6 +682,11 @@ BOOST_PYTHON_MODULE(PyGe)
 
     makeAcGeScale3dWrapper();
     makeAcGeScale2dWrapper();
+
+    makePyGeEntity3dWrapper();
+    makeAcGeSurfaceWrapper();
+    makeAcGePlanarEntWrapper();
+    makePyGePlaneWrapper();
 
     enum_<AcGe::EntityId>("EntityId")
         .value("kEntity2d", AcGe::EntityId::kEntity2d)

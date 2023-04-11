@@ -2,6 +2,7 @@
 #include "PyDbObject.h"
 
 class PyCmColor;
+class PyGePlane;
 
 void makeAcDbEntityWrapper();
 void makeAcDbBlockBeginWrapper();
@@ -86,7 +87,7 @@ public:
     Acad::ErrorStatus setPropertiesFrom(const PyDbEntity& pEntity, Adesk::Boolean doSubents);
 
     virtual Adesk::Boolean isPlanar() const;
-    //virtual Acad::ErrorStatus getPlane(AcGePlane&, AcDb::Planarity&) const; //TODO
+    virtual PyGePlane getPlane() const;
 
     virtual void getEcs(AcGeMatrix3d& retVal) const;
 
