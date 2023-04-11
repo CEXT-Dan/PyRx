@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PyAcGe.h"
 #include "PyGeEntity3d.h"
+#include "PyGePointEnt3d.h"
 #include "PyAcGeSurface.h"
 #include "PyGePlanarEnt.h"
 #include "PyGePlane.h"
@@ -688,6 +689,12 @@ BOOST_PYTHON_MODULE(PyGe)
     makeAcGeScale2dWrapper();
 
     makePyGeEntity3dWrapper();
+
+    makePyGePointEnt3dWrapper();
+    makePyGePointOnCurve3dWrapper();
+    makePyGePointOnSurfaceWrapper();
+    makePyGePosition3dWrapper();
+
     makeAcGeSurfaceWrapper();
     makeAcGePlanarEntWrapper();
     makePyGePlaneWrapper();
