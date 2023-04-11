@@ -6,7 +6,7 @@ using namespace boost::python;
 
 void makePyDbCurveWrapper()
 {
-    static auto wrapper = class_<PyDbCurve, bases<PyDbEntity>>("DbCurve", boost::python::no_init)
+    static auto wrapper = class_<PyDbCurve, bases<PyDbEntity>>("Curve", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("isClosed", &PyDbCurve::isClosed)
         .def("isPeriodic", &PyDbCurve::isPeriodic)

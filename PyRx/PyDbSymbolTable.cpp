@@ -8,7 +8,7 @@ using namespace boost::python;
 //PyDbSymbolTable wrapper
 void makeAcDbSymbolTableWrapper()
 {
-    static auto wrapper = class_<PyDbSymbolTable, bases<PyDbObject>>("DbSymbolTable", boost::python::no_init)
+    static auto wrapper = class_<PyDbSymbolTable, bases<PyDbObject>>("SymbolTable", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("getAt", &PyDbSymbolTable::getAt)
         .def<bool(PyDbSymbolTable::*)(const std::string&)>("has", &PyDbSymbolTable::has)

@@ -8,7 +8,7 @@ using namespace boost::python;
 //PyDbDictionary wrapper
 void makeAcDbDictionaryWrapper()
 {
-    static auto wrapper = class_<PyDbDictionary, bases<PyDbObject>>("DbDictionary", boost::python::no_init)
+    static auto wrapper = class_<PyDbDictionary, bases<PyDbObject>>("Dictionary", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("getAt", &PyDbDictionary::getAt)
         .def("has", &PyDbDictionary::has)

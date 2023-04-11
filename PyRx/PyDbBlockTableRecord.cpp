@@ -8,7 +8,7 @@ using namespace boost::python;
 //PyDbBlockTableRecord wrapper
 void makeAcDbBlockTableRecordWrapper()
 {
-    static auto wrapper = class_<PyDbBlockTableRecord, bases<PyDbSymbolTableRecord>>("DbBlockTableRecord", boost::python::no_init)
+    static auto wrapper = class_<PyDbBlockTableRecord, bases<PyDbSymbolTableRecord>>("BlockTableRecord", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbBlockTableRecord::className).staticmethod("className")
         .def("appendAcDbEntity", &PyDbBlockTableRecord::appendAcDbEntity)

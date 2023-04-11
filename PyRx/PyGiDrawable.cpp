@@ -5,7 +5,7 @@ using namespace boost::python;
 
 void makeAcGiObjectWrapper()
 {
-    static auto wrapper = class_<PyGiDrawable, bases<PyRxObject>>("PyGiDrawable", boost::python::no_init)
+    static auto wrapper = class_<PyGiDrawable, bases<PyRxObject>>("Drawable", boost::python::no_init)
         .def("isA", &PyRxObject::isA)
         .def("className", &PyGiDrawable::className).staticmethod("className")
         ;

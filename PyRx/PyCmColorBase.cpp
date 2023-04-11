@@ -7,7 +7,7 @@ using namespace boost::python;
 //wrapper
 void makeAcCmColorWrapper()
 {
-    static auto wrapper = class_<AcCmColor>("CmColor")
+    static auto wrapper = class_<AcCmColor>("Color")
 #if defined(GRXAPP) || defined(ZRXAPP)
 #else
         .def("setNone", &AcCmColor::setNone)
@@ -48,7 +48,7 @@ void makeAcCmColorWrapper()
 //AcCmTransparency no conversion, so we don't need a py wrapper
 void makeAcCmTransparencyWrapper()
 {
-    static auto wrapper = class_<AcCmTransparency>("CmTransparency")
+    static auto wrapper = class_<AcCmTransparency>("Transparency")
         .def(init<Adesk::UInt8>())
         .def(init<double>())
         .def("setAlpha", &AcCmTransparency::setAlpha)
@@ -77,7 +77,7 @@ void makeAcCmTransparencyWrapper()
 //AcCmEntityColor no conversion, so we don't need a py wrapper
 void makeAcCmEntityColorWrapper()
 {
-    static auto wrapper = class_<AcCmEntityColor>("CmEntityColor")
+    static auto wrapper = class_<AcCmEntityColor>("EntityColor")
         .def(init<Adesk::UInt8, Adesk::UInt8, Adesk::UInt8>())
 #if defined(GRXAPP) || defined(ZRXAPP)
 #else

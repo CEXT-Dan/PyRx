@@ -8,7 +8,7 @@ using namespace boost::python;
 //PyDbText
 void makePyDbTextWrapper()
 {
-    static auto wrapper = class_<PyDbText, bases<PyDbEntity>>("DbText")
+    static auto wrapper = class_<PyDbText, bases<PyDbEntity>>("Text")
         .def(init<>())
         .def(init<AcGePoint3d&, const std::string&>())
         .def(init<AcGePoint3d&, const std::string&, PyDbObjectId&, double, double>())
@@ -429,7 +429,7 @@ AcDbText* PyDbText::impObj() const
 //PyDbAttributeDefinition
 void makePyDbAttributeDefinitionWrapper()
 {
-    static auto wrapper = class_<PyDbAttributeDefinition, bases<PyDbText>>("DbAttributeDefinition")
+    static auto wrapper = class_<PyDbAttributeDefinition, bases<PyDbText>>("AttributeDefinition")
         .def(init<>())
         .def(init<const AcGePoint3d&, const std::string&, const std::string&, const std::string&, const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
@@ -658,7 +658,7 @@ AcDbAttributeDefinition* PyDbAttributeDefinition::impObj() const
 //PyDbAttribute
 void makePyDbAttributeWrapper()
 {
-    static auto wrapper = class_<PyDbAttribute, bases<PyDbText>>("DbAttribute")
+    static auto wrapper = class_<PyDbAttribute, bases<PyDbText>>("Attribute")
         .def(init<>())
         .def(init<const AcGePoint3d&, const std::string&, const std::string&, const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
@@ -864,7 +864,7 @@ AcDbAttribute* PyDbAttribute::impObj() const
 //PyDbBlockReference
 void makeDbBlockReferenceWrapper()
 {
-    static auto wrapper = class_<PyDbBlockReference, bases<PyDbEntity>>("DbBlockReference")
+    static auto wrapper = class_<PyDbBlockReference, bases<PyDbEntity>>("BlockReference")
         .def(init<>())
         .def(init<AcGePoint3d&, const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
@@ -1092,7 +1092,7 @@ AcDbBlockReference* PyDbBlockReference::impObj() const
 //PyDbBlockReference
 void makeDbMInsertBlockeWrapper()
 {
-    static auto wrapper = class_<PyDbMInsertBlock, bases<PyDbBlockReference>>("DbMInsertBlock")
+    static auto wrapper = class_<PyDbMInsertBlock, bases<PyDbBlockReference>>("MInsertBlock")
         .def(init<>())
         .def(init<AcGePoint3d&, const PyDbObjectId&, Adesk::UInt16, Adesk::UInt16, double, double>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
@@ -1213,7 +1213,7 @@ AcDbMInsertBlock* PyDbMInsertBlock::impObj() const
 //PyDbVertex
 void makeAcDbVertexWrapper()
 {
-    static auto wrapper = class_<PyDbVertex, bases<PyDbEntity>>("DbVertex", boost::python::no_init)
+    static auto wrapper = class_<PyDbVertex, bases<PyDbEntity>>("Vertex", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbVertex::className).staticmethod("className")
         ;
@@ -1250,7 +1250,7 @@ AcDbVertex* PyDbVertex::impObj() const
 //PyDb2dVertex
 void makePyDb2dVertexWrapper()
 {
-    static auto wrapper = class_<PyDb2dVertex, bases<PyDbVertex>>("Db2dVertex")
+    static auto wrapper = class_<PyDb2dVertex, bases<PyDbVertex>>("Vertex2d")
         .def(init<>())
         .def(init<const AcGePoint3d&>())
 #ifndef BRXAPP
@@ -1475,7 +1475,7 @@ AcDb2dVertex* PyDb2dVertex::impObj() const
 //AcDb3dPolylineVertex
 void makePyAcDb3dPolylineVertexWrapper()
 {
-    static auto wrapper = class_<PyDb3dPolylineVertex, bases<PyDbVertex>>("Db3dPolylineVertex")
+    static auto wrapper = class_<PyDb3dPolylineVertex, bases<PyDbVertex>>("Polyline3dVertex")
         .def(init<>())
         .def(init<const AcGePoint3d&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
@@ -1551,7 +1551,7 @@ AcDb3dPolylineVertex* PyDb3dPolylineVertex::impObj() const
 //AcDbPolygonMeshVertex
 void makePyAcDbPolygonMeshVertexWrapper()
 {
-    static auto wrapper = class_<PyDbPolygonMeshVertex, bases<PyDbVertex>>("DbPolygonMeshVertex")
+    static auto wrapper = class_<PyDbPolygonMeshVertex, bases<PyDbVertex>>("PolygonMeshVertex")
         .def(init<>())
         .def(init<const AcGePoint3d&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
@@ -1627,7 +1627,7 @@ AcDbPolygonMeshVertex* PyDbPolygonMeshVertex::impObj() const
 //AcDbPolygonMeshVertex
 void makePyDbPolyFaceMeshVertexWrapper()
 {
-    static auto wrapper = class_<PyDbPolyFaceMeshVertex, bases<PyDbVertex>>("DbPolyFaceMeshVertex")
+    static auto wrapper = class_<PyDbPolyFaceMeshVertex, bases<PyDbVertex>>("PolyFaceMeshVertex")
         .def(init<>())
         .def(init<const AcGePoint3d&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
@@ -1695,7 +1695,7 @@ AcDbPolyFaceMeshVertex* PyDbPolyFaceMeshVertex::impObj() const
 
 void makePyAcDbFaceRecordWrapper()
 {
-    static auto wrapper = class_<PyDbFaceRecord, bases<PyDbVertex>>("DbFaceRecord")
+    static auto wrapper = class_<PyDbFaceRecord, bases<PyDbVertex>>("FaceRecord")
         .def(init<>())
         .def(init<Adesk::Int16, Adesk::Int16, Adesk::Int16, Adesk::Int16>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
@@ -1795,7 +1795,7 @@ AcDbFaceRecord* PyDbFaceRecord::impObj() const
 //PyDbPoint
 void makePyDbPointWrapper()
 {
-    static auto wrapper = class_<PyDbPoint, bases<PyDbEntity>>("DbPoint")
+    static auto wrapper = class_<PyDbPoint, bases<PyDbEntity>>("Point")
         .def(init<>())
         .def(init<AcGePoint3d&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
@@ -1936,7 +1936,7 @@ AcGePoint3dArray& listToAcGePoint3dArrayRef(const boost::python::list& list)
 
 void makePyDb2dPolylineWrapper()
 {
-    static auto wrapper = class_<PyDb2dPolyline, bases<PyDbCurve>>("Db2dPolyline")
+    static auto wrapper = class_<PyDb2dPolyline, bases<PyDbCurve>>("Polyline2d")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<AcDb::Poly2dType, const boost::python::list&, Adesk::Boolean>())
@@ -2312,7 +2312,7 @@ AcDb2dPolyline* PyDb2dPolyline::impObj() const
 //PyDb3dPolyline
 void makePyDb3dPolylineWrapper()
 {
-    static auto wrapper = class_<PyDb3dPolyline, bases<PyDbCurve>>("Db2dPolyline")
+    static auto wrapper = class_<PyDb3dPolyline, bases<PyDbCurve>>("Polyline3d")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<AcDb::Poly3dType, const boost::python::list&, Adesk::Boolean>())
@@ -2522,7 +2522,7 @@ AcDb3dPolyline* PyDb3dPolyline::impObj() const
 //PyDbArc
 void makePyDbArcWrapper()
 {
-    static auto wrapper = class_<PyDbArc, bases<PyDbCurve>>("DbArc")
+    static auto wrapper = class_<PyDbArc, bases<PyDbCurve>>("Arc")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const AcGePoint3d&, double, double, double>())
@@ -2703,7 +2703,7 @@ AcDbArc* PyDbArc::impObj() const
 //PyDbCircle
 void makPyDbCircleWrapper()
 {
-    static auto wrapper = class_<PyDbCircle, bases<PyDbCurve>>("DbCircle")
+    static auto wrapper = class_<PyDbCircle, bases<PyDbCurve>>("Circle")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&, double>())
@@ -2876,7 +2876,7 @@ AcDbCircle* PyDbCircle::impObj() const
 //PyDbLine
 void makPyDbLineWrapper()
 {
-    static auto wrapper = class_<PyDbLine, bases<PyDbCurve>>("DbLine")
+    static auto wrapper = class_<PyDbLine, bases<PyDbCurve>>("Line")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&>())
@@ -3012,7 +3012,7 @@ AcDbLine* PyDbLine::impObj() const
 //PyDbPolyline
 void makPyDbPolylineWrapper()
 {
-    static auto wrapper = class_<PyDbPolyline, bases<PyDbCurve>>("DbPolyline")
+    static auto wrapper = class_<PyDbPolyline, bases<PyDbCurve>>("Polyline")
         .def(init<>())
         .def(init<unsigned int>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
@@ -3389,7 +3389,7 @@ AcDbPolyline* PyDbPolyline::impObj() const
 //PyDbDace
 void makPyDbDaceWrapper()
 {
-    static auto wrapper = class_<PyDbFace, bases<PyDbEntity>>("DbDace")
+    static auto wrapper = class_<PyDbFace, bases<PyDbEntity>>("Face")
         .def(init<>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean>())

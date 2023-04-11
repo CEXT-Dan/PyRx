@@ -7,7 +7,7 @@ using namespace boost::python;
 //AcGePlanarEnt wrapper
 void makeAcGePlanarEntWrapper()
 {
-    static auto wrapper = class_<PyGePlanarEnt, bases<PyAcGeSurface>>("GePlanarEnt", boost::python::no_init)
+    static auto wrapper = class_<PyGePlanarEnt, bases<PyAcGeSurface>>("PlanarEnt", boost::python::no_init)
         .def("className", &PyGePlanarEnt::className).staticmethod("className")
         ;
 }

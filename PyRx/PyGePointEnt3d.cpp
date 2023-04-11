@@ -7,7 +7,7 @@ using namespace boost::python;
 //PyGePointEnt3d
 void makePyGePointEnt3dWrapper()
 {
-    static auto wrapper = class_<PyGePointEnt3d, bases<PyGeEntity3d>>("GePointEnt3", boost::python::no_init)
+    static auto wrapper = class_<PyGePointEnt3d, bases<PyGeEntity3d>>("PointEnt3d", boost::python::no_init)
         .def("className", &PyGePointEnt3d::className).staticmethod("className")
         ;
 }
@@ -31,7 +31,7 @@ AcGePointEnt3d* PyGePointEnt3d::impObj() const
 //PyGePointOnCurve3d
 void makePyGePointOnCurve3dWrapper()
 {
-    static auto wrapper = class_<PyGePointOnCurve3d, bases<PyGePointEnt3d>>("GePointOnCurve3d")
+    static auto wrapper = class_<PyGePointOnCurve3d, bases<PyGePointEnt3d>>("PointOnCurve3d")
         .def("className", &PyGePointEnt3d::className).staticmethod("className")
         ;
 }
@@ -61,7 +61,7 @@ AcGePointOnCurve3d* PyGePointOnCurve3d::impObj() const
 //PyGePointOnSurface
 void makePyGePointOnSurfaceWrapper()
 {
-    static auto wrapper = class_<PyGePointOnSurface, bases<PyGePointEnt3d>>("GePointOnCurve3d")
+    static auto wrapper = class_<PyGePointOnSurface, bases<PyGePointEnt3d>>("PointOnCurve3d")
         .def("className", &PyGePointOnSurface::className).staticmethod("className")
         ;
 }
@@ -90,7 +90,7 @@ AcGePointOnSurface* PyGePointOnSurface::impObj() const
 //PyGePosition3d
 void makePyGePosition3dWrapper()
 {
-    static auto wrapper = class_<PyGePosition3d, bases<PyGePointEnt3d>>("GePosition3d")
+    static auto wrapper = class_<PyGePosition3d, bases<PyGePointEnt3d>>("Position3d")
         .def("className", &PyGePosition3d::className).staticmethod("className")
         ;
 }

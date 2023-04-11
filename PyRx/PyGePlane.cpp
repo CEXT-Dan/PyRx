@@ -7,7 +7,7 @@ using namespace boost::python;
 //PyGePlane wrapper
 void makePyGePlaneWrapper()
 {
-    static auto wrapper = class_<PyGePlane, bases<PyGePlanarEnt>>("GePlane")
+    static auto wrapper = class_<PyGePlane, bases<PyGePlanarEnt>>("Plane")
         .def(init<>())
         .def("className", &PyGePlane::className).staticmethod("className")
         ;

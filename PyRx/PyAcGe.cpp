@@ -45,7 +45,7 @@ static AcGeTol getTol()
 
 void makeAcGeTolWrapper()
 {
-    static auto wrapper = class_<AcGeTol>("GeTol")
+    static auto wrapper = class_<AcGeTol>("Tol")
         .def(init<>())
         .def("equalPoint", &AcGeTol::equalPoint)
         .def("equalVector", &AcGeTol::equalVector)

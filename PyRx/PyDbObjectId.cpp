@@ -9,7 +9,7 @@ using namespace boost::python;
 // wrapper
 void makeAcDbObjectIdWrapper()
 {
-    static auto wrapper = class_<PyDbObjectId>("DbObjectId")
+    static auto wrapper = class_<PyDbObjectId>("ObjectId")
         .def(init<>())
         .def("asOldId", &PyDbObjectId::asOldId)
         .def("isNull", &PyDbObjectId::isNull)
