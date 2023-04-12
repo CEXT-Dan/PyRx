@@ -30,7 +30,7 @@ AcGeCurve3d* PyGeCurve3d::impObj() const
 //PyGeLinearEnt2d
 void makPyGeLinearEnt3dWrapper()
 {
-    static auto wrapper = class_<PyGeLinearEnt3d, bases<PyGeCurve3d>>("LinearEnt2d", boost::python::no_init)
+    static auto wrapper = class_<PyGeLinearEnt3d, bases<PyGeCurve3d>>("LinearEnt3d", boost::python::no_init)
         .def("className", &PyGeLinearEnt3d::className).staticmethod("className")
         ;
 }
@@ -54,7 +54,7 @@ AcGeLinearEnt3d* PyGeLinearEnt3d::impObj() const
 //PyGeLineSeg2d
 void makPyGeLineSeg3dWrapper()
 {
-    static auto wrapper = class_<PyGeLineSeg3d, bases<PyGeLinearEnt3d>>("LineSeg2d", boost::python::no_init)
+    static auto wrapper = class_<PyGeLineSeg3d, bases<PyGeLinearEnt3d>>("LineSeg3d", boost::python::no_init)
         .def("className", &PyGeLinearEnt3d::className).staticmethod("className")
         ;
 }
@@ -62,7 +62,6 @@ void makPyGeLineSeg3dWrapper()
 PyGeLineSeg3d::PyGeLineSeg3d(AcGeEntity3d* pEnt)
     :PyGeLinearEnt3d(pEnt)
 {
-
 }
 
 std::string PyGeLineSeg3d::className()
