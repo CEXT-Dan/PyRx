@@ -145,6 +145,9 @@
     <ClCompile Include="PyGeBoundBlock2d.cpp">
       <Filter>Source Files\PyGe</Filter>
     </ClCompile>
+    <ClCompile Include="PyGeClipBoundary2d.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -293,6 +296,9 @@
     </ClInclude>
     <ClInclude Include="PyGeBoundBlock2d.h">
       <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeClipBoundary2d.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
