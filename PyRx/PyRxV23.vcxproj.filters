@@ -121,9 +121,6 @@
     <ClCompile Include="PyGeCurveSurfInt.cpp">
       <Filter>Source Files\PyGe</Filter>
     </ClCompile>
-    <ClCompile Include="PyGePointEnt3d.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PyAcGeSurface.cpp">
       <Filter>Source Files\PyGe</Filter>
     </ClCompile>
@@ -137,6 +134,12 @@
       <Filter>Source Files\PyGe</Filter>
     </ClCompile>
     <ClCompile Include="PyGeInterval.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGePointEnt3d.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGeEntity2d.cpp">
       <Filter>Source Files\PyGe</Filter>
     </ClCompile>
   </ItemGroup>
@@ -280,6 +283,9 @@
       <Filter>Header Files\PyGe</Filter>
     </ClInclude>
     <ClInclude Include="PyGeInterval.h">
+      <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeEntity2d.h">
       <Filter>Header Files\PyGe</Filter>
     </ClInclude>
   </ItemGroup>

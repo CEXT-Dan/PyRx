@@ -30,7 +30,6 @@ public:
     AcCmTransparency            transparency() const;
     virtual Acad::ErrorStatus   setTransparency(const AcCmTransparency& trans, Adesk::Boolean doSubents);
 
-
     std::string  layer() const;
     PyDbObjectId  layerId() const;
 
@@ -47,7 +46,6 @@ public:
     virtual Acad::ErrorStatus  setPlotStyleName(const std::string&, Adesk::Boolean doSubents);
     virtual Acad::ErrorStatus  setPlotStyleName(AcDb::PlotStyleNameType, Adesk::Boolean doSubents);
     virtual Acad::ErrorStatus  setPlotStyleName(AcDb::PlotStyleNameType, const PyDbObjectId& newId, Adesk::Boolean doSubents);
-
 
     std::string  linetype() const;
     PyDbObjectId linetypeId() const;

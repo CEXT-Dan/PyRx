@@ -154,6 +154,7 @@
     <ClCompile Include="PyGeCurve3d.cpp" />
     <ClCompile Include="PyGeCurveCurveInt3d.cpp" />
     <ClCompile Include="PyGeCurveSurfInt.cpp" />
+    <ClCompile Include="PyGeEntity2d.cpp" />
     <ClCompile Include="PyGeEntity3d.cpp" />
     <ClCompile Include="PyGeInterval.cpp" />
     <ClCompile Include="PyGePlanarEnt.cpp" />
@@ -204,6 +205,7 @@
     <ClInclude Include="PyGeCurve3d.h" />
     <ClInclude Include="PyGeCurveCurveInt3d.h" />
     <ClInclude Include="PyGeCurveSurfInt.h" />
+    <ClInclude Include="PyGeEntity2d.h" />
     <ClInclude Include="PyGeEntity3d.h" />
     <ClInclude Include="PyGeInterval.h" />
     <ClInclude Include="PyGePlanarEnt.h" />
@@ -219,7 +221,6 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResultBuffer.h" />
     <ClInclude Include="RxPyString.h" />
-    <ClInclude Include="SelectionSet.h" />
     <ClInclude Include="StdAfx.h" />
   </ItemGroup>
   <ItemGroup>
