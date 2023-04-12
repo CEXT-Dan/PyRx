@@ -36,14 +36,14 @@ PyGeEntity3d::PyGeEntity3d(AcGeEntity3d* pEnt)
 
 bool PyGeEntity3d::operator==(PyGeEntity3d const& rhs) const
 {
-    if (impObj() != nullptr && rhs.impObj() != nullptr)
+    if (!isNull() && !rhs.isNull())
         return *impObj() == *rhs.impObj();
     return false;
 }
 
 bool PyGeEntity3d::operator!=(PyGeEntity3d const& rhs) const
 {
-    if (impObj() != nullptr && rhs.impObj() != nullptr)
+    if (!isNull() && !rhs.isNull())
         return *impObj() != *rhs.impObj();
     return false;
 }

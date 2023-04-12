@@ -243,7 +243,7 @@ static AcGeMatrix2d AcGeMatrix2scaling(double scaleAll, const AcGePoint2d& cente
     return AcGeMatrix2d::scaling(scaleAll, center);
 }
 
-static AcGeMatrix2d AcGeMatrix2mirroring(const AcGePoint2d& pnt)
+static AcGeMatrix2d AcGeMatrix2mirroring1(const AcGePoint2d& pnt)
 {
     return AcGeMatrix2d::mirroring(pnt);
 }
@@ -293,22 +293,19 @@ static auto makeAcGeMatrix2dWrapper()
         .def<AcGeMatrix2d& (AcGeMatrix2d::*)(const AcGePoint2d&)>("setToMirroring", &AcGeMatrix2d::setToMirroring, return_self<>())
         .def<AcGeMatrix2d& (AcGeMatrix2d::*)(const AcGeLine2d&)>("setToMirroring", &AcGeMatrix2d::setToMirroring, return_self<>())
         .def("setToAlignCoordSys", &AcGeMatrix2d::setToAlignCoordSys, return_self<>())
-
         .def("translation", &AcGeMatrix2dtranslation).staticmethod("translation")
         .def("rotation", &AcGeMatrix2drotation).staticmethod("rotation")
         .def("scaling", &AcGeMatrix2scaling).staticmethod("scaling")
-        .def("mirroring", &AcGeMatrix2mirroring)
+        .def("mirroring", &AcGeMatrix2mirroring1).staticmethod("scaling")
         .def("mirroring", &AcGeMatrix2mirroring2).staticmethod("mirroring")
         .def("alignCoordSys", &AcGeMatrix2alignCoordSys).staticmethod("alignCoordSys")
         .def<double(AcGeMatrix2d::*)(unsigned int, unsigned int)const>("elementAt", &AcGeMatrix2d::operator())
-
         .def("__eq__", &AcGeMatrix2d::operator==)
         .def("__ne__", &AcGeMatrix2d::operator!=)
         .def<AcGeMatrix2d(AcGeMatrix2d::*)(const AcGeMatrix2d&) const>("__mul__", &AcGeMatrix2d::operator*)
         .def<AcGeMatrix2d& (AcGeMatrix2d::*)(const AcGeMatrix2d&)>("__imul__", &AcGeMatrix2d::operator*=, return_self<>())
         .def<AcGeMatrix2d(AcGeMatrix2d::*)(const AcGeMatrix2d&) const>("__matmul__", &AcGeMatrix2d::operator*)
         .def<AcGeMatrix2d& (AcGeMatrix2d::*)(const AcGeMatrix2d&)>("__imatmul__", &AcGeMatrix2d::operator*=, return_self<>())
-
         .def("toString", &AcGeMatrix2dToString)
         .def("__str__", &AcGeMatrix2dToString)
         ;
