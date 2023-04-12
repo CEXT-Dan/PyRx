@@ -150,6 +150,7 @@
     <ClCompile Include="PyDbObjectId.cpp" />
     <ClCompile Include="PyDbSymbolTable.cpp" />
     <ClCompile Include="PyDbSymbolTableRecord.cpp" />
+    <ClCompile Include="PyGeBoundBlock2d.cpp" />
     <ClCompile Include="PyGeBoundBlock3d.cpp" />
     <ClCompile Include="PyGeCurve3d.cpp" />
     <ClCompile Include="PyGeCurveCurveInt3d.cpp" />
@@ -201,6 +202,7 @@
     <ClInclude Include="PyDbSymbolTable.h" />
     <ClInclude Include="PyDbSymbolTableRecord.h" />
     <ClInclude Include="PyException.h" />
+    <ClInclude Include="PyGeBoundBlock2d.h" />
     <ClInclude Include="PyGeBoundBlock3d.h" />
     <ClInclude Include="PyGeCurve3d.h" />
     <ClInclude Include="PyGeCurveCurveInt3d.h" />

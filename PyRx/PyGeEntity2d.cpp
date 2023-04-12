@@ -32,7 +32,6 @@ void makePyGeEntity2dWrapper()
 PyGeEntity2d::PyGeEntity2d(AcGeEntity2d* pEnt)
     : m_imp(pEnt)
 {
-
 }
 
 bool PyGeEntity2d::operator==(PyGeEntity2d const& rhs) const

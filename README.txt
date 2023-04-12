@@ -23,10 +23,10 @@ pyautoacad by Roman Haritonov
 https://github.com/reclosedev/pyautocad
 
 
-
 Naming conventions. 
 This project wraps ObjectARX® which is C++, a very large and complex API. in the interest of saving time, 
 thin wrappers are generated, expect camel case naming.
+** pep8ifying will be looked at once I get closer to having usefull code ** 
 
 Some functions in the C++ API return values by ref,  apparently this isn’t allowed in Python for immutable types. in this case
 The wrapper will return by value, and throw a runtime warning into Python on error.
