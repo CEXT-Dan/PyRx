@@ -307,7 +307,7 @@ static auto makeAcGeMatrix2dWrapper()
         .def<AcGeMatrix2d(AcGeMatrix2d::*)(const AcGeMatrix2d&) const>("__mul__", &AcGeMatrix2d::operator*)
         .def<AcGeMatrix2d& (AcGeMatrix2d::*)(const AcGeMatrix2d&)>("__imul__", &AcGeMatrix2d::operator*=, return_self<>())
         .def<AcGeMatrix2d(AcGeMatrix2d::*)(const AcGeMatrix2d&) const>("__matmul__", &AcGeMatrix2d::operator*)
-        .def<AcGeMatrix2d& (AcGeMatrix2d::*)(const AcGeMatrix2d&)>("__matmul__", &AcGeMatrix2d::operator*=, return_self<>())
+        .def<AcGeMatrix2d&(AcGeMatrix2d::*)(const AcGeMatrix2d&)>("__imatmul__", &AcGeMatrix2d::operator*=, return_self<>())
 
         .def("toString", &AcGeMatrix2dToString)
         .def("__str__", &AcGeMatrix2dToString)
@@ -661,7 +661,7 @@ static void makeAcGeMatrix3dWrapper()
         .def<AcGeMatrix3d(AcGeMatrix3d::*)(const AcGeMatrix3d&) const>("__mul__", &AcGeMatrix3d::operator*)
         .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeMatrix3d&)>("__imul__", &AcGeMatrix3d::operator*=, return_self<>())
         .def<AcGeMatrix3d(AcGeMatrix3d::*)(const AcGeMatrix3d&) const>("__matmul__", &AcGeMatrix3d::operator*)
-        .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeMatrix3d&)>("__matmul__", &AcGeMatrix3d::operator*=, return_self<>())
+        .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeMatrix3d&)>("__imatmul__", &AcGeMatrix3d::operator*=, return_self<>())
 
         .def<double(AcGeMatrix3d::*)(unsigned int, unsigned int)const>("elementAt", &AcGeMatrix3d::operator())
 
