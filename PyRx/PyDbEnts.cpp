@@ -3387,7 +3387,7 @@ AcDbPolyline* PyDbPolyline::impObj() const
 
 //-----------------------------------------------------------------------------------
 //PyDbDace
-void makPyDbDaceWrapper()
+void makPyDbFaceWrapper()
 {
     static auto wrapper = class_<PyDbFace, bases<PyDbEntity>>("Face")
         .def(init<>())

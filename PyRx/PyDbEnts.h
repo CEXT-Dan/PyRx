@@ -720,7 +720,7 @@ public:
 
 //-----------------------------------------------------------------------------------
 //PyDbDace
-void makPyDbDaceWrapper();
+void makPyDbFaceWrapper();
 class PyDbFace : public PyDbEntity
 {
 public:
