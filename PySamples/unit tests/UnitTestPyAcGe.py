@@ -57,8 +57,8 @@ class TestGe(unittest.TestCase):
                 point2 = PyGe.Point2d(100,100)
                 point1.isEqualTo(point2)
                 self.assertTrue(point1.isEqualTo(point2))
-                self.assertTrue(point1.isEqualTo(point2,PyGe.GeTol.current))
-
+                self.assertTrue(point1.isEqualTo(point2,PyGe.Tol.current))
+				
         def test_vector2d_Mul(self):
                 v = PyGe.Vector2d.kXAxis
                 m = PyGe.Matrix2d.kIdentity
@@ -69,6 +69,13 @@ class TestGe(unittest.TestCase):
                 v = PyGe.Vector2d.kXAxis
                 m = PyGe.Matrix2d.kIdentity
                 m.setToRotation(3.14,PyGe.Point2d.kOrigin)
+                v =  v @ m
+                self.assertEqual( v, PyGe.Vector2d(-0.9999987317275395,0.0015926529164868282))
+				
+        def test_vector2d_MatMul_default(self):
+                v = PyGe.Vector2d.kXAxis
+                m = PyGe.Matrix2d.kIdentity
+                m.setToRotation(3.14)
                 v =  v @ m
                 self.assertEqual( v, PyGe.Vector2d(-0.9999987317275395,0.0015926529164868282))
 
@@ -87,7 +94,7 @@ class TestGe(unittest.TestCase):
                 v2 = PyGe.Vector2d.kXAxis
                 ans = v1.isParallelTo(v2)
                 self.assertEqual(ans, True)
-                ans = v1.isParallelTo(v2, PyGe.GeTol.current)
+                ans = v1.isParallelTo(v2, PyGe.Tol.current)
                 self.assertEqual(ans, True)
 
         def test_vector2d_isParallelTo(self):
@@ -95,7 +102,7 @@ class TestGe(unittest.TestCase):
                 v2 = PyGe.Vector2d.kYAxis
                 ans = v1.isPerpendicularTo(v2)
                 self.assertEqual(ans, True)
-                ans = v1.isPerpendicularTo(v2, PyGe.GeTol.current)
+                ans = v1.isPerpendicularTo(v2, PyGe.Tol.current)
                 self.assertEqual(ans, True)
 
         def test_vector2d_make1(self):

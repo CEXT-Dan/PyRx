@@ -20,7 +20,6 @@ void makePyDbTextWrapper()
         .def("isDefaultAlignment", &PyDbText::isDefaultAlignment)
         .def("normal", &PyDbText::normal)
         .def("setNormal", &PyDbText::setNormal)
-        .def("isPlanar", &PyDbText::isPlanar)
         .def("thickness", &PyDbText::thickness)
         .def("setThickness", &PyDbText::setThickness)
         .def("oblique", &PyDbText::oblique)
@@ -879,7 +878,6 @@ void makeDbBlockReferenceWrapper()
         .def("setRotation", &PyDbBlockReference::setRotation)
         .def("normal", &PyDbBlockReference::normal)
         .def("setNormal", &PyDbBlockReference::setNormal)
-        .def("isPlanar", &PyDbBlockReference::isPlanar)
         .def("blockTransform", &PyDbBlockReference::blockTransform)
         .def("nonAnnotationBlockTransform", &PyDbBlockReference::nonAnnotationBlockTransform)
         .def("setBlockTransform", &PyDbBlockReference::setBlockTransform)
@@ -1807,7 +1805,6 @@ void makePyDbPointWrapper()
         .def("setNormal", &PyDbPoint::setNormal)
         .def("ecsRotation", &PyDbPoint::ecsRotation)
         .def("setEcsRotation", &PyDbPoint::setEcsRotation)
-        .def("isPlanar", &PyDbPoint::isPlanar)
         .def("className", &PyDbPoint::className).staticmethod("className")
         ;
 }
@@ -1901,14 +1898,6 @@ Acad::ErrorStatus PyDbPoint::setEcsRotation(double val)
     if (imp == nullptr)
         throw PyNullObject();
     return imp->setEcsRotation(val);
-}
-
-Adesk::Boolean PyDbPoint::isPlanar() const
-{
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isPlanar();
 }
 
 std::string PyDbPoint::className()
@@ -3400,7 +3389,6 @@ void makPyDbFaceWrapper()
         .def("isEdgeVisibleAt", &PyDbFace::isEdgeVisibleAt)
         .def("makeEdgeVisibleAt", &PyDbFace::makeEdgeVisibleAt)
         .def("makeEdgeInvisibleAt", &PyDbFace::makeEdgeInvisibleAt)
-        .def("isPlanar", &PyDbFace::isPlanar)
         .def("className", &PyDbPolyline::className).staticmethod("className")
         ;
 }
@@ -3483,13 +3471,6 @@ Acad::ErrorStatus PyDbFace::makeEdgeInvisibleAt(Adesk::UInt16 val)
     return imp->makeEdgeInvisibleAt(val);
 }
 
-Adesk::Boolean PyDbFace::isPlanar() const
-{
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isPlanar();
-}
 
 std::string PyDbFace::className()
 {

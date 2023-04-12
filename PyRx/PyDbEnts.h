@@ -27,9 +27,6 @@ public:
     AcGeVector3d        normal() const;
     Acad::ErrorStatus   setNormal(const AcGeVector3d& val);
 
-    Adesk::Boolean      isPlanar() const override { return Adesk::kTrue; }
-    //Acad::ErrorStatus   getPlane(AcGePlane&, AcDb::Planarity&) const override;
-
     double              thickness() const;
     Acad::ErrorStatus   setThickness(double);
 
@@ -204,9 +201,6 @@ public:
 
     AcGeVector3d      normal() const;
     virtual Acad::ErrorStatus setNormal(const AcGeVector3d& newVal);
-
-    Adesk::Boolean    isPlanar() const override { return Adesk::kTrue; }
-    //Acad::ErrorStatus getPlane(AcGePlane&, AcDb::Planarity&) const override;
 
     AcGeMatrix3d      blockTransform() const;
     AcGeMatrix3d      nonAnnotationBlockTransform() const;
@@ -429,9 +423,6 @@ public:
 
     double              ecsRotation() const;
     Acad::ErrorStatus   setEcsRotation(double);
-
-    Adesk::Boolean    isPlanar() const override;
-    //Acad::ErrorStatus getPlane(AcGePlane&, AcDb::Planarity&) const override; //TODO:
 
     static std::string className();
 
@@ -750,10 +741,6 @@ public:
     Adesk::Boolean isEdgeVisibleAt(Adesk::UInt16) const;
     Acad::ErrorStatus makeEdgeVisibleAt(Adesk::UInt16);
     Acad::ErrorStatus makeEdgeInvisibleAt(Adesk::UInt16);
-
-    Adesk::Boolean      isPlanar() const override;
-    //Acad::ErrorStatus   getPlane(AcGePlane& plane, AcDb::Planarity& planarity) const override;
-
 
     static std::string className();
 public:

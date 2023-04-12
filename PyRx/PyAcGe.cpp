@@ -307,7 +307,7 @@ static auto makeAcGeMatrix2dWrapper()
         .def<AcGeMatrix2d(AcGeMatrix2d::*)(const AcGeMatrix2d&) const>("__mul__", &AcGeMatrix2d::operator*)
         .def<AcGeMatrix2d& (AcGeMatrix2d::*)(const AcGeMatrix2d&)>("__imul__", &AcGeMatrix2d::operator*=, return_self<>())
         .def<AcGeMatrix2d(AcGeMatrix2d::*)(const AcGeMatrix2d&) const>("__matmul__", &AcGeMatrix2d::operator*)
-        .def<AcGeMatrix2d&(AcGeMatrix2d::*)(const AcGeMatrix2d&)>("__imatmul__", &AcGeMatrix2d::operator*=, return_self<>())
+        .def<AcGeMatrix2d& (AcGeMatrix2d::*)(const AcGeMatrix2d&)>("__imatmul__", &AcGeMatrix2d::operator*=, return_self<>())
 
         .def("toString", &AcGeMatrix2dToString)
         .def("__str__", &AcGeMatrix2dToString)
