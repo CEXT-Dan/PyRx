@@ -146,8 +146,6 @@ static inline constexpr const char* PyDbNamespace = "PyDb";
 static inline constexpr const char* PyGiNamespace = "PyGi";
 static inline constexpr const char* PyEdNamespace = "PyEd";
 
-
-
 //-----------------------------------------------------------------------------
 #include "DocData.h" //- Your document specific data class holder
 

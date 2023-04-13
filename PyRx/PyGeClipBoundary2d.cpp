@@ -45,12 +45,10 @@ PyGeClipBoundary2d::PyGeClipBoundary2d(const boost::python::list& clipBoundary)
 }
 #endif
 
-#ifdef NEVER
-PyGeClipBoundary2d::PyGeClipBoundary2d(const AcGeClipBoundary2d& src)
-    : PyGeEntity2d(new AcGeClipBoundary2d(src))
+PyGeClipBoundary2d::PyGeClipBoundary2d(const AcGeClipBoundary2d& sr)
+    : PyGeEntity2d(sr.copy())
 {
 }
-#endif
 
 std::string PyGeClipBoundary2d::className()
 {
