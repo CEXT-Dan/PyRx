@@ -3,7 +3,8 @@
 
 using namespace boost::python;
 
-
+//-----------------------------------------------------------------------------------------
+//PyGeCurve2d wrapper
 void makePyGeCurve2dWrapper()
 {
     static auto wrapper = class_<PyGeCurve2d, bases<PyGeEntity2d>>("Curve2d", boost::python::no_init)

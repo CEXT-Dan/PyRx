@@ -155,6 +155,7 @@
     <ClCompile Include="PyGeClipBoundary2d.cpp" />
     <ClCompile Include="PyGeCurve2d.cpp" />
     <ClCompile Include="PyGeCurve3d.cpp" />
+    <ClCompile Include="PyGeCurveCurveInt2d.cpp" />
     <ClCompile Include="PyGeCurveCurveInt3d.cpp" />
     <ClCompile Include="PyGeCurveSurfInt.cpp" />
     <ClCompile Include="PyGeEntity2d.cpp" />
@@ -162,6 +163,7 @@
     <ClCompile Include="PyGeInterval.cpp" />
     <ClCompile Include="PyGePlanarEnt.cpp" />
     <ClCompile Include="PyGePlane.cpp" />
+    <ClCompile Include="PyGePointEnt2d.cpp" />
     <ClCompile Include="PyGePointEnt3d.cpp" />
     <ClCompile Include="PyGeSurfSurfInt.cpp" />
     <ClCompile Include="PyGiDrawable.cpp" />
@@ -209,6 +211,7 @@
     <ClInclude Include="PyGeClipBoundary2d.h" />
     <ClInclude Include="PyGeCurve2d.h" />
     <ClInclude Include="PyGeCurve3d.h" />
+    <ClInclude Include="PyGeCurveCurveInt2d.h" />
     <ClInclude Include="PyGeCurveCurveInt3d.h" />
     <ClInclude Include="PyGeCurveSurfInt.h" />
     <ClInclude Include="PyGeEntity2d.h" />
@@ -216,6 +219,7 @@
     <ClInclude Include="PyGeInterval.h" />
     <ClInclude Include="PyGePlanarEnt.h" />
     <ClInclude Include="PyGePlane.h" />
+    <ClInclude Include="PyGePointEnt2d.h" />
     <ClInclude Include="PyGePointEnt3d.h" />
     <ClInclude Include="PyGeSurfSurfInt.h" />
     <ClInclude Include="PyGiDrawable.h" />

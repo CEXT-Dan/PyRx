@@ -6,6 +6,12 @@
 #include "PyGePlanarEnt.h"
 #include "PyGePlane.h"
 #include "PyGeInterval.h"
+#include "PyGeEntity2d.h"
+#include "PyGeBoundBlock2d.h"
+#include "PyGeCurve2d.h"
+#include "PyGeCurveCurveInt2d.h"
+#include "PyGePointEnt2d.h"
+#include "PyGeClipBoundary2d.h"
 
 using namespace boost::python;
 
@@ -687,8 +693,15 @@ BOOST_PYTHON_MODULE(PyGe)
     makeAcGeScale2dWrapper();
 
     makePyGeIntervalWrapper();
-    makePyGeEntity3dWrapper();
 
+    makePyGeEntity2dWrapper();
+    makePyGeBoundBlock2dWrapper();
+    makePyGeClipBoundary2dWrapper();
+    makePyGeCurve2dWrapper();
+    makePyGeCurveCurveInt2dWrapper();
+    makePyGePointEnt2dWrapper();
+
+    makePyGeEntity3dWrapper();
     makePyGePointEnt3dWrapper();
     makePyGePointOnCurve3dWrapper();
     makePyGePointOnSurfaceWrapper();

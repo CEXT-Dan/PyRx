@@ -2,7 +2,7 @@
 #include "PyGeEntity2d.h"
 
 //-----------------------------------------------------------------------------------------
-//PyGeBoundBlock2d wrapper
+//PyGeCurve2d wrapper
 void makePyGeCurve2dWrapper();
 
 class PyGeCurve2d : public PyGeEntity2d
