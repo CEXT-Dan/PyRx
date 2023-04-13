@@ -153,6 +153,7 @@
     <ClCompile Include="PyGeBoundBlock2d.cpp" />
     <ClCompile Include="PyGeBoundBlock3d.cpp" />
     <ClCompile Include="PyGeClipBoundary2d.cpp" />
+    <ClCompile Include="PyGeCurve2d.cpp" />
     <ClCompile Include="PyGeCurve3d.cpp" />
     <ClCompile Include="PyGeCurveCurveInt3d.cpp" />
     <ClCompile Include="PyGeCurveSurfInt.cpp" />
@@ -206,6 +207,7 @@
     <ClInclude Include="PyGeBoundBlock2d.h" />
     <ClInclude Include="PyGeBoundBlock3d.h" />
     <ClInclude Include="PyGeClipBoundary2d.h" />
+    <ClInclude Include="PyGeCurve2d.h" />
     <ClInclude Include="PyGeCurve3d.h" />
     <ClInclude Include="PyGeCurveCurveInt3d.h" />
     <ClInclude Include="PyGeCurveSurfInt.h" />

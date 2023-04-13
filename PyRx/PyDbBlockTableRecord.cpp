@@ -44,6 +44,7 @@ void makeAcDbBlockTableRecordWrapper()
         .def("blockInsertUnits", &PyDbBlockTableRecord::blockInsertUnits)
         .def("postProcessAnnotativeBTR", &PyDbBlockTableRecord::postProcessAnnotativeBTR)
         .def("addAnnoScalestoBlkRefs", &PyDbBlockTableRecord::addAnnoScalestoBlkRefs)
+        .def("aslist", &PyDbBlockTableRecord::objectIds)
         ;
 }
 

@@ -12,7 +12,7 @@ void makeAcDbDictionaryWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("getAt", &PyDbDictionary::getAt)
         .def("has", &PyDbDictionary::has)
-        .def("asDict", &PyDbDictionary::asDict)
+        .def("asdict", &PyDbDictionary::asDict)
         .def("className", &PyDbDictionary::className).staticmethod("className")
         ;
 }
