@@ -724,6 +724,7 @@ BOOST_PYTHON_MODULE(PyGe)
 
     //3D
     makePyGeEntity3dWrapper();
+    makPyGeCurve3dWrapper();
     makePyGePointEnt3dWrapper();
     makePyGePointOnCurve3dWrapper();
     makePyGePointOnSurfaceWrapper();
