@@ -705,10 +705,18 @@ BOOST_PYTHON_MODULE(PyGe)
     makeAcGeEllipArc2Wrapper();
     makeAcGeExternalCurve2dWrapper();
     makeAcGeLinearEnt2dWrapper();
+    makeAcGeLine2dWrapper();
+    makePyGeLineSeg2dWrapper();
+    makeAcGeRay2dWrapper();
     makeAcGeOffsetCurve2dWrapper();
     makePyGeCurveCurveInt2dWrapper();
     makePyGePointEnt2dWrapper();
+    makePyGePointOnCurve2dWrapper();
+    makeAcGePosition2dWrapper();
     makePyGeSplineEnt2dWrapper();
+    makAcGeCubicSplineCurve2dWrapper();
+    makAcGeNurbCurve2dWrapper();
+    makAcGePolyline2dWrapper();
 
     makePyGeEntity3dWrapper();
     makePyGePointEnt3dWrapper();

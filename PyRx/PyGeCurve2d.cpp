@@ -8,7 +8,7 @@ using namespace boost::python;
 void makePyGeCurve2dWrapper()
 {
     static auto wrapper = class_<PyGeCurve2d, bases<PyGeEntity2d>>("Curve2d", boost::python::no_init)
-        .def("className", &PyGeEntity2d::className).staticmethod("className")
+        .def("className", &PyGeCurve2d::className).staticmethod("className")
         ;
 }
 
@@ -33,7 +33,7 @@ void makeAcGeCircArc2dWrapper()
 {
     static auto wrapper = class_<PyGeCircArc2d, bases<PyGeCurve2d>>("CircArc2d")
         .def(init<>())
-        .def("className", &PyGeEntity2d::className).staticmethod("className")
+        .def("className", &PyGeCircArc2d::className).staticmethod("className")
         ;
 }
 
@@ -63,7 +63,7 @@ void makeAcGeEllipArc2Wrapper()
 {
     static auto wrapper = class_<PyGeEllipArc2d, bases<PyGeCurve2d>>("CircArc2d")
         .def(init<>())
-        .def("className", &PyGeEntity2d::className).staticmethod("className")
+        .def("className", &PyGeEllipArc2d::className).staticmethod("className")
         ;
 }
 
@@ -92,7 +92,7 @@ AcGeEllipArc2d* PyGeEllipArc2d::impObj() const
 void makeAcGeExternalCurve2dWrapper()
 {
     static auto wrapper = class_<PyGeExternalCurve2d, bases<PyGeCurve2d>>("ExternalCurve2d", boost::python::no_init)
-        .def("className", &PyGeEntity2d::className).staticmethod("className")
+        .def("className", &PyGeExternalCurve2d::className).staticmethod("className")
         ;
 }
 
@@ -117,20 +117,18 @@ void makeAcGeOffsetCurve2dWrapper()
 {
     static auto wrapper = class_<PyGeOffsetCurve2d, bases<PyGeCurve2d>>("OffsetCurve2d",boost::python::no_init)
         .def(init<const PyGeCurve2d&,double>())
-        .def("className", &PyGeEntity2d::className).staticmethod("className")
+        .def("className", &PyGeOffsetCurve2d::className).staticmethod("className")
         ;
 }
 
 PyGeOffsetCurve2d::PyGeOffsetCurve2d(const PyGeCurve2d& baseCurve, double offsetDistance)
     : PyGeCurve2d(new AcGeOffsetCurve2d(*baseCurve.impObj(),offsetDistance))
 {
-
 }
 
 PyGeOffsetCurve2d::PyGeOffsetCurve2d(AcGeEntity2d* pEnt)
     : PyGeCurve2d(pEnt)
 {
-
 }
 
 std::string PyGeOffsetCurve2d::className()

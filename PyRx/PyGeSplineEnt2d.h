@@ -2,7 +2,7 @@
 
 #include "PyGeCurve2d.h"
 //-----------------------------------------------------------------------------------------
-//AcGeLinearEnt2d wrapper
+//PyGeSplineEnt2d wrapper
 void makePyGeSplineEnt2dWrapper();
 class PyGeSplineEnt2d : public PyGeCurve2d
 {
@@ -12,4 +12,52 @@ public:
 public:
     AcGeSplineEnt2d* impObj() const;
 };
+
+
+//-----------------------------------------------------------------------------------------
+//AcGeCubicSplineCurve2d wrapper
+void makAcGeCubicSplineCurve2dWrapper();
+class PyGeCubicSplineCurve2d : public PyGeSplineEnt2d
+{
+public:
+    PyGeCubicSplineCurve2d();
+    PyGeCubicSplineCurve2d(AcGeEntity2d* pEnt);
+    static std::string className();
+public:
+    AcGeCubicSplineCurve2d* impObj() const;
+};
+
+
+//-----------------------------------------------------------------------------------------
+//AcGeNurbCurve2d  wrapper
+void makAcGeNurbCurve2dWrapper();
+class PyGeNurbCurve2d : public PyGeSplineEnt2d
+{
+public:
+    PyGeNurbCurve2d();
+    PyGeNurbCurve2d(AcGeEntity2d* pEnt);
+    static std::string className();
+public:
+    AcGeNurbCurve2d* impObj() const;
+};
+
+
+//-----------------------------------------------------------------------------------------
+//AcGeNurbCurve2d  wrapper
+void makAcGePolyline2dWrapper();
+class PyGePolyline2d : public PyGeSplineEnt2d
+{
+public:
+    PyGePolyline2d();
+    PyGePolyline2d(AcGeEntity2d* pEnt);
+    static std::string className();
+public:
+    AcGePolyline2d* impObj() const;
+};
+
+
+
+
+
+
 
