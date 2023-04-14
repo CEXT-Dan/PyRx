@@ -30,7 +30,6 @@ void makePyGeBoundBlock2dWrapper()
 
 PyGeBoundBlock2d::PyGeBoundBlock2d()
     : PyGeEntity2d(new AcGeBoundBlock2d())
-
 {
 }
 

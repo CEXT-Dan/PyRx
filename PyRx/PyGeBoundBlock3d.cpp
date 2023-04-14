@@ -6,7 +6,23 @@ using namespace boost::python;
 //PyGeBoundBlock3d
 void makPyGeBoundBlock3dWrapper()
 {
-    static auto wrapper = class_<PyGeBoundBlock3d, bases<PyGeEntity3d>>("PyGeEntity3d", boost::python::no_init)
+    static auto wrapper = class_<PyGeBoundBlock3d, bases<PyGeEntity3d>>("BoundBlock3d")
+        .def(init<>())
+        .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, const AcGeVector3d&>())
+        .def("getMinPoint", &PyGeBoundBlock3d::getMinPoint)
+        .def("getMaxPoint", &PyGeBoundBlock3d::getMaxPoint)
+        .def("getBasePoint", &PyGeBoundBlock3d::getBasePoint)
+        .def("getDirection1", &PyGeBoundBlock3d::getDirection1)
+        .def("getDirection3", &PyGeBoundBlock3d::getDirection3)
+        .def("getDirection3", &PyGeBoundBlock3d::getDirection3)
+        .def("set", &PyGeBoundBlock3d::set1, return_self<>())
+        .def("set", &PyGeBoundBlock3d::set2, return_self<>())
+        .def("extend", &PyGeBoundBlock3d::extend, return_self<>())
+        .def("swell", &PyGeBoundBlock3d::swell, return_self<>())
+        .def("contains", &PyGeBoundBlock3d::contains)
+        .def("isDisjoint", &PyGeBoundBlock3d::isDisjoint)
+        .def("isBox", &PyGeBoundBlock3d::isBox)
+        .def("setToBox", &PyGeBoundBlock3d::setToBox, return_self<>())
         .def("className", &PyGeBoundBlock3d::className).staticmethod("className")
         ;
 }
@@ -19,7 +35,144 @@ PyGeBoundBlock3d::PyGeBoundBlock3d()
 PyGeBoundBlock3d::PyGeBoundBlock3d(AcGeEntity3d* pEnt)
     :PyGeEntity3d(pEnt)
 {
+}
 
+PyGeBoundBlock3d::PyGeBoundBlock3d(const AcGePoint3d& base, const AcGeVector3d& dir1, const AcGeVector3d& dir2, const AcGeVector3d& dir3)
+    : PyGeEntity3d(new AcGeBoundBlock3d(base, dir1, dir2, dir3))
+{
+}
+
+AcGePoint3d PyGeBoundBlock3d::getMinPoint() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGePoint3d min, max;
+    imp->getMinMaxPoints(min, max);
+    return min;
+}
+
+AcGePoint3d PyGeBoundBlock3d::getMaxPoint() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGePoint3d min, max;
+    imp->getMinMaxPoints(min, max);
+    return max;
+}
+
+AcGePoint3d PyGeBoundBlock3d::getBasePoint() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGePoint3d base;
+    AcGeVector3d dir1, dir2, dir3;
+    imp->get(base, dir1, dir2,dir3);
+    return base;
+}
+
+AcGeVector3d PyGeBoundBlock3d::getDirection1() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGePoint3d base;
+    AcGeVector3d dir1, dir2, dir3;
+    imp->get(base, dir1, dir2, dir3);
+    return dir1;
+}
+
+AcGeVector3d PyGeBoundBlock3d::getDirection2() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGePoint3d base;
+    AcGeVector3d dir1, dir2, dir3;
+    imp->get(base, dir1, dir2, dir3);
+    return dir2;
+}
+
+AcGeVector3d PyGeBoundBlock3d::getDirection3() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGePoint3d base;
+    AcGeVector3d dir1, dir2, dir3;
+    imp->get(base, dir1, dir2, dir3);
+    return dir3;
+}
+
+PyGeBoundBlock3d& PyGeBoundBlock3d::set1(const AcGePoint3d& point1, const AcGePoint3d& point2)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->set(point1, point2);
+    return *this;
+}
+
+PyGeBoundBlock3d& PyGeBoundBlock3d::set2(const AcGePoint3d& base, const AcGeVector3d& dir1, const AcGeVector3d& dir2, const AcGeVector3d& dir3)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->set(base, dir1, dir2, dir3);
+    return *this;
+}
+
+PyGeBoundBlock3d& PyGeBoundBlock3d::extend(const AcGePoint3d& point)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->extend(point);
+    return *this;
+}
+
+PyGeBoundBlock3d& PyGeBoundBlock3d::swell(double distance)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->swell(distance);
+    return *this;
+}
+
+Adesk::Boolean PyGeBoundBlock3d::contains(const AcGePoint3d& point) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->contains(point);
+}
+
+Adesk::Boolean PyGeBoundBlock3d::isDisjoint(const PyGeBoundBlock3d& block) const
+{
+    auto imp = impObj();
+    if (imp == nullptr || block.isNull())
+        throw PyNullObject();
+    return imp->isDisjoint(*block.impObj());
+}
+
+Adesk::Boolean PyGeBoundBlock3d::isBox() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isBox();
+}
+
+PyGeBoundBlock3d& PyGeBoundBlock3d::setToBox(Adesk::Boolean val)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->setToBox(val);
+    return *this;
 }
 
 std::string PyGeBoundBlock3d::className()
