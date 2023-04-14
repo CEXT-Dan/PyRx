@@ -666,10 +666,10 @@ public:
     AcDbPolyline::SegType segType(unsigned int index) const;
     virtual Adesk::Boolean onSegAt(unsigned int index, const AcGePoint2d& pt2d, double param) const;
 
-    PyGeLineSeg2d getLineSeg2dAt(unsigned int index);//ADD
-    PyGeLineSeg3d getLineSeg3dAt(unsigned int index);//ADD
-    PyGeCircArc2d getArcSeg2dAt(unsigned int index);//ADD
-    PyGeCircArc3d getArcSeg3dAt(unsigned int index);//ADD
+    PyGeLineSeg2d getLineSeg2dAt(unsigned int index);
+    PyGeLineSeg3d getLineSeg3dAt(unsigned int index);
+    PyGeCircArc2d getArcSeg2dAt(unsigned int index);
+    PyGeCircArc3d getArcSeg3dAt(unsigned int index);
 
     virtual void setClosed(Adesk::Boolean val);
     void         setPlinegen(Adesk::Boolean val);
