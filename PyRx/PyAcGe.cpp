@@ -686,19 +686,19 @@ BOOST_PYTHON_MODULE(PyGe)
 #endif // ! PyRxDebug
 
     makeAcGeTolWrapper();
+    //
     makeAcGePoint2dWrapper();
     makeAcGeVector2dWrapper();
     makeAcGeMatrix2dWrapper();
-
+    //
     makeAcGePoint3dWrapper();
     makeAcGeVector3dWrapper();
     makeAcGeMatrix3dWrapper();
-
+    //
     makeAcGeScale3dWrapper();
     makeAcGeScale2dWrapper();
-
+    //
     makePyGeIntervalWrapper();
-
     //2D
     makePyGeEntity2dWrapper();
     makePyGeBoundBlock2dWrapper();
@@ -721,7 +721,6 @@ BOOST_PYTHON_MODULE(PyGe)
     makAcGeNurbCurve2dWrapper();
     makAcGePolyline2dWrapper();
     makeAcGeCompositeCurve2dWrapper();
-
     //3D
     makePyGeEntity3dWrapper();
     makPyGeCurve3dWrapper();
