@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PyGeEntity2d.h"
+#include "PyGeLinearEnt2d.h"
 
 using namespace boost::python;
 
@@ -13,13 +14,13 @@ void makePyGeEntity2dWrapper()
         .def("copy", &PyGeEntity2d::copy)
         .def("isEqualTo", &PyGeEntity2d::isEqualTo1)
         .def("isEqualTo", &PyGeEntity2d::isEqualTo2)
-        .def("transformBy", &PyGeEntity2d::transformBy, return_value_policy<reference_existing_object>())
-        .def("translateBy", &PyGeEntity2d::translateBy, return_value_policy<reference_existing_object>())
-        .def("rotateBy", &PyGeEntity2d::rotateBy1, return_value_policy<reference_existing_object>())
-        .def("rotateBy", &PyGeEntity2d::rotateBy2, return_value_policy<reference_existing_object>())
-        //.def("mirror", &PyGeEntity2d::mirror, return_value_policy<reference_existing_object>())
-        .def("scaleBy", &PyGeEntity2d::scaleBy1, return_value_policy<reference_existing_object>())
-        .def("scaleBy", &PyGeEntity2d::scaleBy2, return_value_policy<reference_existing_object>())
+        .def("transformBy", &PyGeEntity2d::transformBy, return_self<>())
+        .def("translateBy", &PyGeEntity2d::translateBy, return_self<>())
+        .def("rotateBy", &PyGeEntity2d::rotateBy1, return_self<>())
+        .def("rotateBy", &PyGeEntity2d::rotateBy2, return_self<>())
+        .def("mirror", &PyGeEntity2d::mirror, return_self<>())
+        .def("scaleBy", &PyGeEntity2d::scaleBy1, return_self<>())
+        .def("scaleBy", &PyGeEntity2d::scaleBy2, return_self<>())
         .def("isOn", &PyGeEntity2d::isOn1)
         .def("isOn", &PyGeEntity2d::isOn2)
         .def("isNull", &PyGeEntity2d::isNull)
@@ -125,6 +126,15 @@ PyGeEntity2d& PyGeEntity2d::rotateBy2(double angle, const AcGePoint2d& origin)
     if (imp == nullptr)
         throw PyNullObject();
     imp->rotateBy(angle, origin);
+    return *this;
+}
+
+PyGeEntity2d& PyGeEntity2d::mirror(const PyGeLine2d& plane)
+{
+    auto imp = impObj();
+    if (imp == nullptr || plane.isNull())
+        throw PyNullObject();
+    imp->mirror(*plane.impObj());
     return *this;
 }
 

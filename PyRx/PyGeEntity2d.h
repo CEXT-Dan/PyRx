@@ -1,5 +1,6 @@
 #pragma once
 
+class PyGeLine2d;
 //-----------------------------------------------------------------------------------------
 //PyGeEntity2d wrapper
 void makePyGeEntity2dWrapper();
@@ -26,7 +27,7 @@ public:
     PyGeEntity2d& rotateBy1(double angle);
     PyGeEntity2d& rotateBy2(double angle, const AcGePoint2d& origin);
 
-    //PyGeEntity2d& mirror(const PyGeLine2d& plane);
+    PyGeEntity2d& mirror(const PyGeLine2d& plane);
 
     PyGeEntity2d& scaleBy1(double scaleFactor);
     PyGeEntity2d& scaleBy2(double scaleFactor, const AcGePoint2d& wrtPoint);

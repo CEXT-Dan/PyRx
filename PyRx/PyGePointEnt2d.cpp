@@ -39,13 +39,16 @@ void makePyGePointOnCurve2dWrapper()
 PyGePointOnCurve2d::PyGePointOnCurve2d()
     : PyGePointEnt2d(new AcGePointOnCurve2d())
 {
-
 }
 
 PyGePointOnCurve2d::PyGePointOnCurve2d(AcGeEntity2d* pEnt)
     : PyGePointEnt2d(pEnt)
 {
+}
 
+PyGePointOnCurve2d::PyGePointOnCurve2d(const AcGePointOnCurve2d& src)
+    : PyGePointEnt2d(new AcGePointOnCurve2d(src))
+{
 }
 
 std::string PyGePointOnCurve2d::className()

@@ -22,6 +22,7 @@ class PyGePointOnCurve2d : public PyGePointEnt2d
 {
 public:
     PyGePointOnCurve2d();
+    PyGePointOnCurve2d(const AcGePointOnCurve2d& src);
     PyGePointOnCurve2d(AcGeEntity2d* pEnt);
     static std::string className();
 public:

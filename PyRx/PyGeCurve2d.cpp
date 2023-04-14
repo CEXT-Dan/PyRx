@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "PyGeCurve2d.h"
+#include "PyGeInterval.h"
+#include "PyGePointEnt2d.h"
 
 using namespace boost::python;
 
@@ -15,6 +17,190 @@ void makePyGeCurve2dWrapper()
 PyGeCurve2d::PyGeCurve2d(AcGeEntity2d* pEnt)
     : PyGeEntity2d(pEnt)
 {
+}
+
+PyGeInterval PyGeCurve2d::getInterval() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGeInterval iv;
+    imp->getInterval(iv);
+    return PyGeInterval(iv);
+}
+
+AcGePoint2d PyGeCurve2d::getStartPoint() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGeInterval iv;
+    AcGePoint2d s, e;
+    imp->getInterval(iv,s,e);
+    return s;
+}
+
+AcGePoint2d PyGeCurve2d::getEndPoint() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGeInterval iv;
+    AcGePoint2d s, e;
+    imp->getInterval(iv, s, e);
+    return e;
+}
+
+PyGeCurve2d& PyGeCurve2d::reverseParam()
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->reverseParam();
+    return *this;
+}
+
+PyGeCurve2d& PyGeCurve2d::setInterval1()
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->setInterval();
+    return *this;
+}
+
+Adesk::Boolean PyGeCurve2d::setInterval2(const PyGeInterval& intrvl)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setInterval(intrvl.imp);
+}
+
+double PyGeCurve2d::distanceTo1(const AcGePoint2d& pnt) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->distanceTo(pnt);
+}
+
+double PyGeCurve2d::distanceTo2(const AcGePoint2d& pnt, const AcGeTol& tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->distanceTo(pnt, tol);
+}
+
+double PyGeCurve2d::distanceTo3(const PyGeCurve2d& c) const
+{
+    auto imp = impObj();
+    if (imp == nullptr || c.isNull())
+        throw PyNullObject();
+    return imp->distanceTo(*c.impObj());
+}
+
+double PyGeCurve2d::distanceTo4(const PyGeCurve2d& c, const AcGeTol& tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr || c.isNull())
+        throw PyNullObject();
+    return imp->distanceTo(*c.impObj(),tol);
+}
+
+AcGePoint2d PyGeCurve2d::closestPointTo1(const AcGePoint2d& pnt) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->closestPointTo(pnt);
+}
+
+AcGePoint2d PyGeCurve2d::closestPointTo2(const AcGePoint2d& pnt, const AcGeTol& tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->closestPointTo(pnt,tol);
+}
+
+AcGePoint2d PyGeCurve2d::closestPointTo3(const PyGeCurve2d& curve2d, AcGePoint2d& pntOnOtherCrv) const
+{
+    auto imp = impObj();
+    if (imp == nullptr || curve2d.isNull())
+        throw PyNullObject();
+    return imp->closestPointTo(*curve2d.impObj(), pntOnOtherCrv);
+}
+
+AcGePoint2d PyGeCurve2d::closestPointTo4(const PyGeCurve2d& curve2d, AcGePoint2d& pntOnOtherCrv, const AcGeTol& tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr || curve2d.isNull())
+        throw PyNullObject();
+    return imp->closestPointTo(*curve2d.impObj(), pntOnOtherCrv,tol);
+}
+
+PyGePointOnCurve2d PyGeCurve2d::getClosestPointTo1(const AcGePoint2d& pnt)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGePointOnCurve2d curve;
+    imp->getClosestPointTo(pnt, curve);
+    return PyGePointOnCurve2d(curve);
+}
+
+PyGePointOnCurve2d PyGeCurve2d::getClosestPointTo2(const AcGePoint2d& pnt, const AcGeTol& tol)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGePointOnCurve2d curve;
+    imp->getClosestPointTo(pnt, curve,tol);
+    return PyGePointOnCurve2d(curve);
+}
+
+boost::python::tuple PyGeCurve2d::getClosestPointsTo1(const PyGeCurve2d& curve)
+{
+    auto imp = impObj();
+    if (imp == nullptr && curve.isNull())
+        throw PyNullObject();
+    AcGePointOnCurve2d curvea, curveb;
+    imp->getClosestPointTo(*curve.impObj(), curvea, curveb);
+    return make_tuple(PyGePointOnCurve2d(curvea), PyGePointOnCurve2d(curveb));
+}
+
+boost::python::tuple PyGeCurve2d::getClosestPointsTo2(const PyGeCurve2d& curve, const AcGeTol& tol)
+{
+    auto imp = impObj();
+    if (imp == nullptr && curve.isNull())
+        throw PyNullObject();
+    AcGePointOnCurve2d curvea, curveb;
+    imp->getClosestPointTo(*curve.impObj(), curvea, curveb, tol);
+    return make_tuple(PyGePointOnCurve2d(curvea), PyGePointOnCurve2d(curveb));
+}
+
+PyGePointOnCurve2d PyGeCurve2d::getNormalPoint1(const AcGePoint2d& pnt)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGePointOnCurve2d curve;
+    if (auto flag = imp->getNormalPoint(pnt, curve); flag == false)
+        throw PyAcadErrorStatus(eInvalidInput);
+    return PyGePointOnCurve2d(curve);
+}
+
+PyGePointOnCurve2d PyGeCurve2d::getNormalPoint2(const AcGePoint2d& pnt, const AcGeTol& tol)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGePointOnCurve2d curve;
+    if (auto flag = imp->getNormalPoint(pnt, curve,tol); flag == false)
+        throw PyAcadErrorStatus(eInvalidInput);
+    return PyGePointOnCurve2d(curve);
 }
 
 std::string PyGeCurve2d::className()
