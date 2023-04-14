@@ -2,7 +2,10 @@
 #include "PyDbEntity.h"
 #include "PyDbCurve.h"
 class PyDbObjectId;
-
+class PyGeLineSeg2d;
+class PyGeLineSeg3d;
+class PyGeCircArc2d;
+class PyGeCircArc3d;
 
 //-----------------------------------------------------------------------------------
 //PyDbText
@@ -211,10 +214,10 @@ public:
 
     virtual Adesk::Boolean treatAsAcDbBlockRefForExplode() const;
 
-    Acad::ErrorStatus geomExtentsBestFit(AcDbExtents& extents, const AcGeMatrix3d& parentXform) const;
+    AcDbExtents geomExtentsBestFit1() const;
+    AcDbExtents geomExtentsBestFit2(const AcGeMatrix3d& parentXform) const;
 
     virtual Acad::ErrorStatus explodeToOwnerSpace() const;
-
 
     static std::string className();
 public:
@@ -222,7 +225,7 @@ public:
 };
 
 //-----------------------------------------------------------------------------------
-//PyDbBlockReference
+//PyDbMInsertBlock
 void makeDbMInsertBlockeWrapper();
 class PyDbMInsertBlock : public  PyDbBlockReference
 {
@@ -662,6 +665,11 @@ public:
 
     AcDbPolyline::SegType segType(unsigned int index) const;
     virtual Adesk::Boolean onSegAt(unsigned int index, const AcGePoint2d& pt2d, double param) const;
+
+    PyGeLineSeg2d getLineSeg2dAt(unsigned int index);//ADD
+    PyGeLineSeg3d getLineSeg3dAt(unsigned int index);//ADD
+    PyGeCircArc2d getArcSeg2dAt(unsigned int index);//ADD
+    PyGeCircArc3d getArcSeg3dAt(unsigned int index);//ADD
 
     virtual void setClosed(Adesk::Boolean val);
     void         setPlinegen(Adesk::Boolean val);

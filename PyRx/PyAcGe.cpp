@@ -22,6 +22,10 @@ using namespace boost::python;
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGeScale3d
+std::string AcGeScale3dToString(const AcGeScale3d& s)
+{
+    return std::format("({},{},{})", s.sx, s.sy, s.sz);
+}
 static auto makeAcGeScale3dWrapper()
 {
     static auto wrapper = class_<AcGeScale3d>("Scale3d")
@@ -30,12 +34,18 @@ static auto makeAcGeScale3dWrapper()
         .def_readwrite("sz", &AcGeScale3d::sz)
         .def("__eq__", &AcGeScale3d::operator==)
         .def("__ne__", &AcGeScale3d::operator!=)
+        .def("toString", &AcGeScale3dToString)
+        .def("__str__", &AcGeScale3dToString)
         ;
     return wrapper;
 }
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGeScale3d
+std::string AcGeScale2dToString(const AcGeScale2d& s)
+{
+    return std::format("({},{})", s.sx, s.sy);
+}
 static auto makeAcGeScale2dWrapper()
 {
     static auto wrapper = class_<AcGeScale2d>("Scale2d")
@@ -43,6 +53,8 @@ static auto makeAcGeScale2dWrapper()
         .def_readwrite("sy", &AcGeScale2d::sy)
         .def("__eq__", &AcGeScale2d::operator==)
         .def("__ne__", &AcGeScale2d::operator!=)
+        .def("toString", &AcGeScale2dToString)
+        .def("__str__", &AcGeScale2dToString)
         ;
     return wrapper;
 }
@@ -221,7 +233,6 @@ static void makeAcGeVector2dWrapper()
         ;
 
     implicitly_convertible<AcGeVector2d, AcGeMatrix2d>();
-
 }
 
 //---------------------------------------------------------------------------------------------------------------
@@ -323,7 +334,6 @@ static auto makeAcGeMatrix2dWrapper()
     return wrapper;
 }
 
-
 //---------------------------------------------------------------------------------------------------------------
 //AcGePoint3d
 std::string AcGePoint3dToString(const AcGePoint3d& p)
@@ -402,7 +412,6 @@ static void makeAcGePoint3dWrapper()
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGeVector3d
-
 static AcGeVector3d AcGeVector3dkIdentity()
 {
     return AcGeVector3d::kIdentity;
@@ -520,6 +529,7 @@ static auto makeAcGeVector3dWrapper()
         .def<AcGeVector3d& (AcGeVector3d::*)(const AcGeVector3d&)>("__isub__", &AcGeVector3d::operator-=, return_self<>())
 
         .def("toString", &AcGeVector3dToString)
+        .def("__str__", &AcGeVector3dToString)
         ;
     return wrapper;
 }

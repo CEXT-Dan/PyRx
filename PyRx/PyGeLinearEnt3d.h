@@ -1,8 +1,6 @@
 #pragma once
 
 #include "PyGeCurve3d.h"
-
-
 //-----------------------------------------------------------------------------------
 //PyGeLinearEnt3d
 void makPyGeLinearEnt3dWrapper();

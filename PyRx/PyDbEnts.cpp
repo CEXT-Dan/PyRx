@@ -1,6 +1,11 @@
 #include "stdafx.h"
 #include "PyDbEnts.h"
 #include "PyDbObjectId.h"
+#include "PyGeLinearEnt2d.h"
+#include "PyGeLinearEnt3d.h"
+#include "PyGeCurve2d.h"
+#include "PyGeCurve3d.h"
+
 using namespace boost::python;
 
 
@@ -884,7 +889,8 @@ void makeDbBlockReferenceWrapper()
         .def("appendAttribute", &PyDbBlockReference::appendAttribute)
         .def("attributeIds", &PyDbBlockReference::attributeIds)
         .def("treatAsAcDbBlockRefForExplode", &PyDbBlockReference::treatAsAcDbBlockRefForExplode)
-        .def("geomExtentsBestFit", &PyDbBlockReference::geomExtentsBestFit)
+        .def("geomExtentsBestFit", &PyDbBlockReference::geomExtentsBestFit1)
+        .def("geomExtentsBestFit", &PyDbBlockReference::geomExtentsBestFit2)
         .def("explodeToOwnerSpace", &PyDbBlockReference::explodeToOwnerSpace)
         .def("className", &PyDbBlockReference::className).staticmethod("className")
         ;
@@ -1060,12 +1066,20 @@ Adesk::Boolean PyDbBlockReference::treatAsAcDbBlockRefForExplode() const
     return imp->treatAsAcDbBlockRefForExplode();
 }
 
-Acad::ErrorStatus PyDbBlockReference::geomExtentsBestFit(AcDbExtents& extents, const AcGeMatrix3d& parentXform) const
+AcDbExtents PyDbBlockReference::geomExtentsBestFit1() const
+{
+    return geomExtentsBestFit2(AcGeMatrix3d::kIdentity);
+}
+
+AcDbExtents PyDbBlockReference::geomExtentsBestFit2(const AcGeMatrix3d& parentXform) const
 {
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
-    return imp->geomExtentsBestFit(extents, parentXform);
+    AcDbExtents ex;
+    if (auto es = imp->geomExtentsBestFit(ex, parentXform); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return ex;
 }
 
 Acad::ErrorStatus PyDbBlockReference::explodeToOwnerSpace() const
@@ -3009,6 +3023,10 @@ void makPyDbPolylineWrapper()
         .def("getPoint2dAt", &PyDbPolyline::getPoint2dAt)
         .def("segType", &PyDbPolyline::segType)
         .def("onSegAt", &PyDbPolyline::onSegAt)
+        .def("getLineSeg2dAt", &PyDbPolyline::getLineSeg2dAt)
+        .def("getLineSeg3dAt", &PyDbPolyline::getLineSeg3dAt)
+        .def("getArcSeg2dAt", &PyDbPolyline::getArcSeg2dAt)
+        .def("getArcSeg3dAt", &PyDbPolyline::getArcSeg3dAt)
         .def("setClosed", &PyDbPolyline::setClosed)
         .def("setPlinegen", &PyDbPolyline::setPlinegen)
         .def("setElevation", &PyDbPolyline::setElevation)
@@ -3114,6 +3132,50 @@ Adesk::Boolean PyDbPolyline::onSegAt(unsigned int index, const AcGePoint2d& pt2d
         throw PyNullObject();
     double _param = param;
     return imp->onSegAt(index, pt2d, _param);
+}
+
+PyGeLineSeg2d PyDbPolyline::getLineSeg2dAt(unsigned int index)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGeLineSeg2d seg;
+    if (auto es = imp->getLineSegAt(index, seg); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return PyGeLineSeg2d(seg.copy());
+}
+
+PyGeLineSeg3d PyDbPolyline::getLineSeg3dAt(unsigned int index)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGeLineSeg3d seg;
+    if (auto es = imp->getLineSegAt(index, seg); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return PyGeLineSeg3d(seg.copy());
+}
+
+PyGeCircArc2d PyDbPolyline::getArcSeg2dAt(unsigned int index)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGeCircArc2d seg;
+    if (auto es = imp->getArcSegAt(index, seg); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return PyGeCircArc2d(seg.copy());
+}
+
+PyGeCircArc3d PyDbPolyline::getArcSeg3dAt(unsigned int index)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGeCircArc3d seg;
+    if (auto es = imp->getArcSegAt(index, seg); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return PyGeCircArc3d(seg.copy());
 }
 
 void PyDbPolyline::setClosed(Adesk::Boolean val)
