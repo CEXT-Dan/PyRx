@@ -16,6 +16,7 @@
 #include "PyGeSplineEnt2d.h"
 #include "PyGeBoundBlock3d.h"
 #include "PyGeLinearEnt3d.h"
+#include "PyGeSplineEnt3d.h"
 
 using namespace boost::python;
 
@@ -719,6 +720,7 @@ BOOST_PYTHON_MODULE(PyGe)
     makAcGeCubicSplineCurve2dWrapper();
     makAcGeNurbCurve2dWrapper();
     makAcGePolyline2dWrapper();
+    makeAcGeCompositeCurve2dWrapper();
 
     //3D
     makePyGeEntity3dWrapper();
@@ -734,6 +736,15 @@ BOOST_PYTHON_MODULE(PyGe)
     makeAcGeSurfaceWrapper();
     makeAcGePlanarEntWrapper();
     makePyGePlaneWrapper();
+    makAcGeCircArc3dWrapper();
+    makAcGeCompositeCurve3dWrapper();
+    makeAcGeEllipArc3dWrapper();
+    makeAcGeExternalCurve3dWrapper();
+    makeAcGeOffsetCurve3dWrapper();
+    makePyGeSplineEnt3dWrapper();
+    makAcGeCubicSplineCurve3dWrapper();
+    makAcGeNurbCurve3dWrapper();
+    makAcGePolyline3dWrapper();
 
     enum_<AcGe::EntityId>("EntityId")
         .value("kEntity2d", AcGe::EntityId::kEntity2d)

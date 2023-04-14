@@ -43,7 +43,7 @@ public:
 
 
 //-----------------------------------------------------------------------------------------
-//AcGeNurbCurve2d  wrapper
+//PyGePolyline2d  wrapper
 void makAcGePolyline2dWrapper();
 class PyGePolyline2d : public PyGeSplineEnt2d
 {

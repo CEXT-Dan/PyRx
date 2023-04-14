@@ -140,3 +140,34 @@ AcGeOffsetCurve2d* PyGeOffsetCurve2d::impObj() const
 {
     return static_cast<AcGeOffsetCurve2d*>(m_imp.get());
 }
+
+//-----------------------------------------------------------------------------------------
+//AcGeCompositeCurve2d wrapper
+void makeAcGeCompositeCurve2dWrapper()
+{
+    static auto wrapper = class_<PyGeCompositeCurve2d, bases<PyGeCurve2d>>("CompositeCurve2d")
+        .def("className", &PyGeCompositeCurve2d::className).staticmethod("className")
+        ;
+}
+
+PyGeCompositeCurve2d::PyGeCompositeCurve2d()
+    : PyGeCurve2d(new AcGeCompositeCurve2d())
+{
+
+}
+
+PyGeCompositeCurve2d::PyGeCompositeCurve2d(AcGeEntity2d* pEnt)
+    : PyGeCurve2d(pEnt)
+{
+
+}
+
+std::string PyGeCompositeCurve2d::className()
+{
+    return "AcGeCompositeCurve2d";
+}
+
+AcGeCompositeCurve2d* PyGeCompositeCurve2d::impObj() const
+{
+    return static_cast<AcGeCompositeCurve2d*>(m_imp.get());
+}

@@ -66,3 +66,17 @@ public:
 public:
     AcGeOffsetCurve2d* impObj() const;
 };
+
+
+//-----------------------------------------------------------------------------------------
+//AcGeCompositeCurve2d wrapper
+void makeAcGeCompositeCurve2dWrapper();
+class PyGeCompositeCurve2d : public PyGeCurve2d
+{
+public:
+    PyGeCompositeCurve2d();
+    PyGeCompositeCurve2d(AcGeEntity2d* pEnt);
+    static std::string className();
+public:
+    AcGeCompositeCurve2d* impObj() const;
+};
