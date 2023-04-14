@@ -108,6 +108,7 @@
 //#define _RENDER_SUPPORT_			//- Support for the AutoCAD Render API
 //#define _ARX_CUSTOM_DRAG_N_DROP_	//- Support for the ObjectARX Drag'n Drop API
 //#define _INC_LEAGACY_HEADERS_		//- Include legacy headers in this project
+
 #include "arxHeaders.h"
 #include "axlock.h"
 
@@ -134,6 +135,7 @@
 #pragma comment( lib , "gccore.lib" )
 #pragma comment( lib , "gcdb.lib" )
 #endif
+
 
 static inline const AcString PyCommandPrefix = _T("PyRxCmd_");
 static inline const AcString PyLispFuncPrefix = _T("PyRxLisp_");

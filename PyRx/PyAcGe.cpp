@@ -12,6 +12,8 @@
 #include "PyGeCurveCurveInt2d.h"
 #include "PyGePointEnt2d.h"
 #include "PyGeClipBoundary2d.h"
+#include "PyGeLinearEnt2d.h"
+
 
 using namespace boost::python;
 
@@ -698,6 +700,11 @@ BOOST_PYTHON_MODULE(PyGe)
     makePyGeBoundBlock2dWrapper();
     makePyGeClipBoundary2dWrapper();
     makePyGeCurve2dWrapper();
+    makeAcGeCircArc2dWrapper();
+    makeAcGeEllipArc2Wrapper();
+    makeAcGeExternalCurve2dWrapper();
+    makeAcGeLinearEnt2dWrapper();
+    makeAcGeOffsetCurve2dWrapper();
     makePyGeCurveCurveInt2dWrapper();
     makePyGePointEnt2dWrapper();
 

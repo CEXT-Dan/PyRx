@@ -161,6 +161,7 @@
     <ClCompile Include="PyGeEntity2d.cpp" />
     <ClCompile Include="PyGeEntity3d.cpp" />
     <ClCompile Include="PyGeInterval.cpp" />
+    <ClCompile Include="PyGeLinearEnt2d.cpp" />
     <ClCompile Include="PyGePlanarEnt.cpp" />
     <ClCompile Include="PyGePlane.cpp" />
     <ClCompile Include="PyGePointEnt2d.cpp" />
@@ -217,6 +218,7 @@
     <ClInclude Include="PyGeEntity2d.h" />
     <ClInclude Include="PyGeEntity3d.h" />
     <ClInclude Include="PyGeInterval.h" />
+    <ClInclude Include="PyGeLinearEnt2d.h" />
     <ClInclude Include="PyGePlanarEnt.h" />
     <ClInclude Include="PyGePlane.h" />
     <ClInclude Include="PyGePointEnt2d.h" />

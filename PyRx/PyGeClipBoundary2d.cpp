@@ -45,8 +45,8 @@ PyGeClipBoundary2d::PyGeClipBoundary2d(const boost::python::list& clipBoundary)
 }
 #endif
 
-PyGeClipBoundary2d::PyGeClipBoundary2d(const AcGeClipBoundary2d& sr)
-    : PyGeEntity2d(sr.copy())
+PyGeClipBoundary2d::PyGeClipBoundary2d(const AcGeClipBoundary2d& src)
+    : PyGeEntity2d(src.copy())
 {
 }
 
