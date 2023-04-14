@@ -14,7 +14,8 @@
 #include "PyGeClipBoundary2d.h"
 #include "PyGeLinearEnt2d.h"
 #include "PyGeSplineEnt2d.h"
-
+#include "PyGeBoundBlock3d.h"
+#include "PyGeLinearEnt3d.h"
 
 using namespace boost::python;
 
@@ -697,6 +698,7 @@ BOOST_PYTHON_MODULE(PyGe)
 
     makePyGeIntervalWrapper();
 
+    //2D
     makePyGeEntity2dWrapper();
     makePyGeBoundBlock2dWrapper();
     makePyGeClipBoundary2dWrapper();
@@ -718,12 +720,17 @@ BOOST_PYTHON_MODULE(PyGe)
     makAcGeNurbCurve2dWrapper();
     makAcGePolyline2dWrapper();
 
+    //3D
     makePyGeEntity3dWrapper();
     makePyGePointEnt3dWrapper();
     makePyGePointOnCurve3dWrapper();
     makePyGePointOnSurfaceWrapper();
     makePyGePosition3dWrapper();
-
+    makPyGeBoundBlock3dWrapper();
+    makPyGeLinearEnt3dWrapper();
+    makPyGeLineSeg3dWrapper();
+    makAcGeLine3dWrapper();
+    makAcGeRay3ddWrapper();
     makeAcGeSurfaceWrapper();
     makeAcGePlanarEntWrapper();
     makePyGePlaneWrapper();
