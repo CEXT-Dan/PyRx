@@ -31,7 +31,7 @@ AcGePointEnt2d* PyGePointEnt2d::impObj() const
 //PyGePointOnCurve2d wrapper
 void makePyGePointOnCurve2dWrapper()
 {
-    static auto wrapper = class_<PyGePointOnCurve2d, bases<PyGePointEnt2d>>("PyGePointOnCurve2d")
+    static auto wrapper = class_<PyGePointOnCurve2d, bases<PyGePointEnt2d>>("PointOnCurve2d")
         .def("className", &PyGePointOnCurve2d::className).staticmethod("className")
         ;
 }

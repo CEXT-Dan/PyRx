@@ -17,7 +17,7 @@
 #include "PyGeBoundBlock3d.h"
 #include "PyGeLinearEnt3d.h"
 #include "PyGeSplineEnt3d.h"
-
+#include "PyGeCurveCurveInt3d.h"
 using namespace boost::python;
 
 //---------------------------------------------------------------------------------------------------------------
@@ -751,6 +751,7 @@ BOOST_PYTHON_MODULE(PyGe)
     makeAcGeEllipArc3dWrapper();
     makeAcGeExternalCurve3dWrapper();
     makeAcGeOffsetCurve3dWrapper();
+    makePyGeCurveCurveInt3dWrapper();
     makePyGeSplineEnt3dWrapper();
     makAcGeCubicSplineCurve3dWrapper();
     makAcGeNurbCurve3dWrapper();

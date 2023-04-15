@@ -88,7 +88,7 @@ AcGeLineSeg3d* PyGeLineSeg3d::impObj() const
 //AcGeRay3d
 void makAcGeRay3ddWrapper()
 {
-    static auto wrapper = class_<PyGeRay3d, bases<PyGeLinearEnt3d>>("LineSeg3d")
+    static auto wrapper = class_<PyGeRay3d, bases<PyGeLinearEnt3d>>("Ray3d")
         .def("className", &PyGeRay3d::className).staticmethod("className")
         ;
 }

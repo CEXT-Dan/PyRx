@@ -67,5 +67,5 @@ std::string PyGeCurveCurveInt2d::className()
 
 AcGeCurveCurveInt2d* PyGeCurveCurveInt2d::impObj() const
 {
-    return static_cast<AcGeCurveCurveInt2d*>(m_imp.get());;
+    return static_cast<AcGeCurveCurveInt2d*>(m_imp.get());
 }

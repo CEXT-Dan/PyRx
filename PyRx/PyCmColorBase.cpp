@@ -145,7 +145,11 @@ void makeAcCmEntityColorWrapper()
 #endif
         ;
 
-  
+    enum_<AcCmEntityColor::Color>("Color")
+        .value("kRed", AcCmEntityColor::Color::kRed)
+        .value("kGreen", AcCmEntityColor::Color::kGreen)
+        .value("kBlue", AcCmEntityColor::Color::kBlue)
+        ;
     enum_<AcCmEntityColor::ColorMethod>("ColorMethod")
         .value("kByLayer", AcCmEntityColor::ColorMethod::kByLayer)
         .value("kByBlock", AcCmEntityColor::ColorMethod::kByBlock)

@@ -31,7 +31,7 @@ AcGeLinearEnt2d* PyGeLinearEnt2d::impObj() const
 //AcGeLine2d  wrapper
 void makeAcGeLine2dWrapper()
 {
-    static auto wrapper = class_<PyGeLine2d, bases<PyGeLinearEnt2d>>("LinearEnt2d")
+    static auto wrapper = class_<PyGeLine2d, bases<PyGeLinearEnt2d>>("Line2d")
         .def("className", &PyGeLine2d::className).staticmethod("className")
         ;
 }

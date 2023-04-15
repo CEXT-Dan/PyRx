@@ -247,7 +247,7 @@ AcGeCircArc2d* PyGeCircArc2d::impObj() const
 //AcGeCircArc2d wrapper
 void makeAcGeEllipArc2Wrapper()
 {
-    static auto wrapper = class_<PyGeEllipArc2d, bases<PyGeCurve2d>>("CircArc2d")
+    static auto wrapper = class_<PyGeEllipArc2d, bases<PyGeCurve2d>>("EllipArc2d")
         .def(init<>())
         .def("className", &PyGeEllipArc2d::className).staticmethod("className")
         ;

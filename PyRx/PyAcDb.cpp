@@ -188,12 +188,6 @@ BOOST_PYTHON_MODULE(PyDb)
         .value("kVisible", AcDb::Visibility::kVisible)
         .value("kInvisible", AcDb::Visibility::kInvisible)
         ;
-    enum_<AcCmEntityColor::Color>("AcCmEntityColor_Color")//TODO:?
-        .value("kRed", AcCmEntityColor::Color::kRed)
-        .value("kGreen", AcCmEntityColor::Color::kGreen)
-        .value("kBlue", AcCmEntityColor::Color::kBlue)
-        ;
-
     enum_<AcDb::DxfCode>("DxfCode")
         .value("kDxfInvalid", AcDb::kDxfInvalid)
         .value("kDxfXDictionary", AcDb::kDxfXDictionary)
