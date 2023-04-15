@@ -3,6 +3,7 @@
 
 class PyGeInterval;
 class PyGePointOnCurve2d;
+class PyGeBoundBlock2d;
 //-----------------------------------------------------------------------------------------
 //PyGeCurve2d wrapper
 void makePyGeCurve2dWrapper();
@@ -70,6 +71,24 @@ public:
 
     boost::python::tuple isDegenerate1() const;
     boost::python::tuple isDegenerate2(const AcGeTol& tol) const;
+
+    boost::python::list explode1();
+    boost::python::list explode2(const PyGeInterval& interval);
+
+    PyGeBoundBlock2d  boundBlock1() const;
+    PyGeBoundBlock2d  boundBlock2(const PyGeInterval& range) const;
+
+    PyGeBoundBlock2d  orthoBoundBlock1() const;
+    PyGeBoundBlock2d  orthoBoundBlock2(const PyGeInterval& range) const;
+
+    bool hasStartPoint() const;
+    bool hasEndPoint() const;
+
+    AcGePoint2d evalPoint1(double param) const;
+    boost::python::tuple evalPoint2(double param, int numDeriv) const;
+
+    boost::python::list getSamplePoints1(int numSample) const;
+    boost::python::list getSamplePoints2(double fromParam, double toParam, double approxEps) const;
 
     static std::string className();
 public:

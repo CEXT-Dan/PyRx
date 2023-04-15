@@ -3,6 +3,7 @@
 #include "PyGeInterval.h"
 #include "PyGePointEnt2d.h"
 #include "PyGeLinearEnt2d.h"
+#include "PyGeBoundBlock2d.h"
 
 using namespace boost::python;
 
@@ -11,6 +12,61 @@ using namespace boost::python;
 void makePyGeCurve2dWrapper()
 {
     static auto wrapper = class_<PyGeCurve2d, bases<PyGeEntity2d>>("Curve2d", boost::python::no_init)
+        .def("getInterval", &PyGeCurve2d::getInterval)
+        .def("getStartPoint", &PyGeCurve2d::getStartPoint)
+        .def("getEndPoint", &PyGeCurve2d::getEndPoint)
+        .def("reverseParam", &PyGeCurve2d::reverseParam, return_self<>())
+        .def("setInterval", &PyGeCurve2d::setInterval1, return_self<>())
+        .def("setInterval", &PyGeCurve2d::setInterval2)
+        .def("distanceTo", &PyGeCurve2d::distanceTo1)
+        .def("distanceTo", &PyGeCurve2d::distanceTo2)
+        .def("distanceTo", &PyGeCurve2d::distanceTo3)
+        .def("distanceTo", &PyGeCurve2d::distanceTo4)
+        .def("closestPointTo", &PyGeCurve2d::closestPointTo1)
+        .def("closestPointTo", &PyGeCurve2d::closestPointTo2)
+        .def("closestPointTo", &PyGeCurve2d::closestPointTo3)
+        .def("closestPointTo", &PyGeCurve2d::closestPointTo4)
+        .def("getClosestPointTo", &PyGeCurve2d::getClosestPointTo1)
+        .def("getClosestPointTo", &PyGeCurve2d::getClosestPointTo2)
+        .def("getClosestPointsTo", &PyGeCurve2d::getClosestPointsTo1)
+        .def("getClosestPointsTo", &PyGeCurve2d::getClosestPointsTo2)
+        .def("getNormalPoint", &PyGeCurve2d::getNormalPoint1)
+        .def("getNormalPoint", &PyGeCurve2d::getNormalPoint2)
+        .def("isOn", &PyGeCurve2d::isOn1)
+        .def("isOn", &PyGeCurve2d::isOn2)
+        .def("isOn", &PyGeCurve2d::isOn3)
+        .def("isOn", &PyGeCurve2d::isOn4)
+        .def("isOn", &PyGeCurve2d::isOn5)
+        .def("isOn", &PyGeCurve2d::isOn6)
+        .def("paramOf", &PyGeCurve2d::paramOf1)
+        .def("paramOf", &PyGeCurve2d::paramOf2)
+        .def("getTrimmedOffset", &PyGeCurve2d::getTrimmedOffset1)
+        .def("getTrimmedOffset", &PyGeCurve2d::getTrimmedOffset2)
+        .def("isClosed", &PyGeCurve2d::isClosed1)
+        .def("isClosed", &PyGeCurve2d::isClosed2)
+        .def("isPeriodic", &PyGeCurve2d::isPeriodic)
+        .def("isLinear", &PyGeCurve2d::isLinear1)
+        .def("isLinear", &PyGeCurve2d::isLinear2)
+        .def("length", &PyGeCurve2d::length1)
+        .def("length", &PyGeCurve2d::length2)
+        .def("paramAtLength", &PyGeCurve2d::paramAtLength1)
+        .def("paramAtLength", &PyGeCurve2d::paramAtLength2)
+        .def("area", &PyGeCurve2d::area1)
+        .def("area", &PyGeCurve2d::area2)
+        .def("isDegenerate", &PyGeCurve2d::isDegenerate1)
+        .def("isDegenerate", &PyGeCurve2d::isDegenerate2)
+        .def("explode", &PyGeCurve2d::explode1)
+        .def("explode", &PyGeCurve2d::explode2)
+        .def("boundBlock", &PyGeCurve2d::boundBlock1)
+        .def("boundBlock", &PyGeCurve2d::boundBlock2)
+        .def("orthoBoundBlock", &PyGeCurve2d::orthoBoundBlock1)
+        .def("orthoBoundBlock", &PyGeCurve2d::orthoBoundBlock2)
+        .def("hasStartPoint", &PyGeCurve2d::hasStartPoint)
+        .def("hasEndPoint", &PyGeCurve2d::hasEndPoint)
+        .def("evalPoint", &PyGeCurve2d::evalPoint1)
+        .def("evalPoint", &PyGeCurve2d::evalPoint2)
+        .def("getSamplePoints", &PyGeCurve2d::getSamplePoints1)
+        .def("getSamplePoints", &PyGeCurve2d::getSamplePoints2)
         .def("className", &PyGeCurve2d::className).staticmethod("className")
         ;
 }
@@ -285,7 +341,7 @@ boost::python::list PyGeCurve2d::getTrimmedOffset2(double distance, AcGe::Offset
 {
     auto imp = impObj();
     if (imp == nullptr)
-        throw PyNullObject(); 
+        throw PyNullObject();
     boost::python::list curves;
     AcGeVoidPointerArray offsetCurveList;
     imp->getTrimmedOffset(distance, offsetCurveList, extensionType, tol);
@@ -336,7 +392,7 @@ boost::python::tuple PyGeCurve2d::isLinear2(const AcGeTol& tol) const
     if (imp == nullptr)
         throw PyNullObject();
     AcGeLine2d line;
-    bool flag = imp->isLinear(line,tol);
+    bool flag = imp->isLinear(line, tol);
     return boost::python::make_tuple(flag, PyGeLine2d(line));
 }
 
@@ -345,7 +401,7 @@ double PyGeCurve2d::length1(double fromParam, double toParam) const
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
-     return imp->length(fromParam, fromParam);
+    return imp->length(fromParam, fromParam);
 }
 
 double PyGeCurve2d::length2(double fromParam, double toParam, double tol) const
@@ -353,7 +409,7 @@ double PyGeCurve2d::length2(double fromParam, double toParam, double tol) const
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
-    return imp->length(fromParam, fromParam,tol);
+    return imp->length(fromParam, fromParam, tol);
 }
 
 double PyGeCurve2d::paramAtLength1(double datumParam, double length) const
@@ -420,6 +476,142 @@ boost::python::tuple PyGeCurve2d::isDegenerate2(const AcGeTol& tol) const
     bool flag = imp->isDegenerate(pEnt, tol);
     return boost::python::make_tuple(flag, PyGeEntity2d(pEnt));
 #endif
+}
+
+boost::python::list PyGeCurve2d::explode1()
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    boost::python::list curves;
+    AcGeIntArray newExplodedCurve;
+    AcGeVoidPointerArray explodedCurves;
+    imp->explode(explodedCurves, newExplodedCurve);
+    for (size_t idx = 0; idx < explodedCurves.length(); idx++)
+    {
+        AcGeCurve2d* pCurve = reinterpret_cast<AcGeCurve2d*>(explodedCurves[idx]);
+        curves.append(PyGeCurve2d(pCurve->copy()));
+        if (newExplodedCurve[idx] == 1)
+            delete pCurve;
+    }
+    return curves;
+}
+
+boost::python::list PyGeCurve2d::explode2(const PyGeInterval& interval)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    boost::python::list curves;
+    AcGeIntArray newExplodedCurve;
+    AcGeVoidPointerArray explodedCurves;
+    imp->explode(explodedCurves, newExplodedCurve, &interval.imp);
+    for (size_t idx = 0; idx < explodedCurves.length(); idx++)
+    {
+        AcGeCurve2d* pCurve = reinterpret_cast<AcGeCurve2d*>(explodedCurves[idx]);
+        curves.append(PyGeCurve2d(pCurve->copy()));
+        if (newExplodedCurve[idx] == 1)
+            delete pCurve;
+    }
+    return curves;
+}
+
+PyGeBoundBlock2d PyGeCurve2d::boundBlock1() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return PyGeBoundBlock2d(imp->boundBlock().copy());
+}
+
+PyGeBoundBlock2d PyGeCurve2d::boundBlock2(const PyGeInterval& range) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return PyGeBoundBlock2d(imp->boundBlock(range.imp).copy());
+}
+
+PyGeBoundBlock2d PyGeCurve2d::orthoBoundBlock1() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return PyGeBoundBlock2d(imp->orthoBoundBlock().copy());
+}
+
+PyGeBoundBlock2d PyGeCurve2d::orthoBoundBlock2(const PyGeInterval& range) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return PyGeBoundBlock2d(imp->orthoBoundBlock(range.imp).copy());
+}
+
+bool PyGeCurve2d::hasStartPoint() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGePoint2d pnt;
+    return imp->hasStartPoint(pnt);
+}
+
+bool PyGeCurve2d::hasEndPoint() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGePoint2d pnt;
+    return imp->hasEndPoint(pnt);
+}
+
+AcGePoint2d PyGeCurve2d::evalPoint1(double param) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->evalPoint(param);
+}
+
+boost::python::tuple PyGeCurve2d::evalPoint2(double param, int numDeriv) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    boost::python::list vecs;
+    AcGeVector2dArray derivArray;
+   AcGePoint2d pnt = imp->evalPoint(param, numDeriv, derivArray);
+   for (const auto& item : derivArray)
+       vecs.append(item);
+   return boost::python::make_tuple(pnt,vecs);
+}    
+
+boost::python::list PyGeCurve2d::getSamplePoints1(int numSample) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGePoint2dArray pointArray;
+    boost::python::list pointList;
+    imp->getSamplePoints(numSample, pointArray);
+    for (const auto& item : pointArray)
+        pointList.append(item);
+    return pointList;
+}
+
+boost::python::list PyGeCurve2d::getSamplePoints2(double fromParam, double toParam, double approxEps) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGeDoubleArray paramArray;
+    AcGePoint2dArray pointArray;
+    boost::python::list pointList;
+    imp->getSamplePoints(fromParam, toParam, approxEps, pointArray, paramArray);
+    for (const auto& item : pointArray)
+        pointList.append(item);
+    return pointList;
 }
 
 std::string PyGeCurve2d::className()
