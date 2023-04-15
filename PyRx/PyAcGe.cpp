@@ -757,6 +757,11 @@ BOOST_PYTHON_MODULE(PyGe)
     makAcGeNurbCurve3dWrapper();
     makAcGePolyline3dWrapper();
 
+    enum_<AcGe::OffsetCrvExtType>("OffsetCrvExtType")
+        .value("kFillet", AcGe::OffsetCrvExtType::kFillet)
+        .value("kChamfer", AcGe::OffsetCrvExtType::kChamfer)
+        .value("kExtend", AcGe::OffsetCrvExtType::kExtend)
+        ;
     enum_<AcGe::EntityId>("EntityId")
         .value("kEntity2d", AcGe::EntityId::kEntity2d)
         .value("kEntity3d", AcGe::EntityId::kEntity3d)

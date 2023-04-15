@@ -2,6 +2,7 @@
 #include "PyGeCurve2d.h"
 #include "PyGeInterval.h"
 #include "PyGePointEnt2d.h"
+#include "PyGeLinearEnt2d.h"
 
 using namespace boost::python;
 
@@ -36,7 +37,7 @@ AcGePoint2d PyGeCurve2d::getStartPoint() const
         throw PyNullObject();
     AcGeInterval iv;
     AcGePoint2d s, e;
-    imp->getInterval(iv,s,e);
+    imp->getInterval(iv, s, e);
     return s;
 }
 
@@ -106,7 +107,7 @@ double PyGeCurve2d::distanceTo4(const PyGeCurve2d& c, const AcGeTol& tol) const
     auto imp = impObj();
     if (imp == nullptr || c.isNull())
         throw PyNullObject();
-    return imp->distanceTo(*c.impObj(),tol);
+    return imp->distanceTo(*c.impObj(), tol);
 }
 
 AcGePoint2d PyGeCurve2d::closestPointTo1(const AcGePoint2d& pnt) const
@@ -122,7 +123,7 @@ AcGePoint2d PyGeCurve2d::closestPointTo2(const AcGePoint2d& pnt, const AcGeTol& 
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
-    return imp->closestPointTo(pnt,tol);
+    return imp->closestPointTo(pnt, tol);
 }
 
 AcGePoint2d PyGeCurve2d::closestPointTo3(const PyGeCurve2d& curve2d, AcGePoint2d& pntOnOtherCrv) const
@@ -138,7 +139,7 @@ AcGePoint2d PyGeCurve2d::closestPointTo4(const PyGeCurve2d& curve2d, AcGePoint2d
     auto imp = impObj();
     if (imp == nullptr || curve2d.isNull())
         throw PyNullObject();
-    return imp->closestPointTo(*curve2d.impObj(), pntOnOtherCrv,tol);
+    return imp->closestPointTo(*curve2d.impObj(), pntOnOtherCrv, tol);
 }
 
 PyGePointOnCurve2d PyGeCurve2d::getClosestPointTo1(const AcGePoint2d& pnt)
@@ -157,7 +158,7 @@ PyGePointOnCurve2d PyGeCurve2d::getClosestPointTo2(const AcGePoint2d& pnt, const
     if (imp == nullptr)
         throw PyNullObject();
     AcGePointOnCurve2d curve;
-    imp->getClosestPointTo(pnt, curve,tol);
+    imp->getClosestPointTo(pnt, curve, tol);
     return PyGePointOnCurve2d(curve);
 }
 
@@ -198,9 +199,227 @@ PyGePointOnCurve2d PyGeCurve2d::getNormalPoint2(const AcGePoint2d& pnt, const Ac
     if (imp == nullptr)
         throw PyNullObject();
     AcGePointOnCurve2d curve;
-    if (auto flag = imp->getNormalPoint(pnt, curve,tol); flag == false)
+    if (auto flag = imp->getNormalPoint(pnt, curve, tol); flag == false)
         throw PyAcadErrorStatus(eInvalidInput);
     return PyGePointOnCurve2d(curve);
+}
+
+Adesk::Boolean PyGeCurve2d::isOn1(const AcGePoint2d& pnt) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isOn(pnt);
+}
+
+Adesk::Boolean PyGeCurve2d::isOn2(const AcGePoint2d& pnt, const AcGeTol& tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isOn(pnt, tol);
+}
+
+Adesk::Boolean PyGeCurve2d::isOn3(const AcGePoint2d& pnt, double& param) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isOn(pnt, param);
+}
+
+Adesk::Boolean PyGeCurve2d::isOn4(const AcGePoint2d& pnt, double& param, const AcGeTol& tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isOn(pnt, param, tol);
+}
+
+Adesk::Boolean PyGeCurve2d::isOn5(double param) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isOn(param);
+}
+
+Adesk::Boolean PyGeCurve2d::isOn6(double param, const AcGeTol& tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isOn(param, tol);
+}
+
+double PyGeCurve2d::paramOf1(const AcGePoint2d& pnt) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->paramOf(pnt);
+}
+
+double PyGeCurve2d::paramOf2(const AcGePoint2d& pnt, const AcGeTol& tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->paramOf(pnt, tol);
+}
+
+boost::python::list PyGeCurve2d::getTrimmedOffset1(double distance, AcGe::OffsetCrvExtType extensionType) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    boost::python::list curves;
+    AcGeVoidPointerArray offsetCurveList;
+    imp->getTrimmedOffset(distance, offsetCurveList, extensionType);
+    for (const auto& item : offsetCurveList)
+        curves.append(PyGeCurve2d(reinterpret_cast<AcGeCurve2d*>(item)));
+    return curves;
+}
+
+boost::python::list PyGeCurve2d::getTrimmedOffset2(double distance, AcGe::OffsetCrvExtType extensionType, const AcGeTol& tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject(); 
+    boost::python::list curves;
+    AcGeVoidPointerArray offsetCurveList;
+    imp->getTrimmedOffset(distance, offsetCurveList, extensionType, tol);
+    for (const auto& item : offsetCurveList)
+        curves.append(PyGeCurve2d(reinterpret_cast<AcGeCurve2d*>(item)));
+    return curves;
+}
+
+Adesk::Boolean PyGeCurve2d::isClosed1() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isClosed();
+}
+
+Adesk::Boolean PyGeCurve2d::isClosed2(const AcGeTol& tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isClosed(tol);
+}
+
+boost::python::tuple PyGeCurve2d::isPeriodic() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    double val = 0;
+    bool flag = imp->isPeriodic(val);
+    return boost::python::make_tuple(flag, val);
+}
+
+boost::python::tuple PyGeCurve2d::isLinear1() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGeLine2d line;
+    bool flag = imp->isLinear(line);
+    return boost::python::make_tuple(flag, PyGeLine2d(line));
+}
+
+boost::python::tuple PyGeCurve2d::isLinear2(const AcGeTol& tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGeLine2d line;
+    bool flag = imp->isLinear(line,tol);
+    return boost::python::make_tuple(flag, PyGeLine2d(line));
+}
+
+double PyGeCurve2d::length1(double fromParam, double toParam) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+     return imp->length(fromParam, fromParam);
+}
+
+double PyGeCurve2d::length2(double fromParam, double toParam, double tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->length(fromParam, fromParam,tol);
+}
+
+double PyGeCurve2d::paramAtLength1(double datumParam, double length) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->paramAtLength(datumParam, length);
+}
+
+double PyGeCurve2d::paramAtLength2(double datumParam, double length, Adesk::Boolean posParamDir, double tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->paramAtLength(datumParam, length, posParamDir, tol);
+}
+
+double PyGeCurve2d::area1(double startParam, double endParam) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    double length = 0;
+    if (bool flag = imp->area(startParam, endParam, length); flag = false)
+        throw PyAcadErrorStatus(eInvalidInput);
+    return length;
+}
+
+double PyGeCurve2d::area2(double startParam, double endParam, const AcGeTol& tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    double length = 0;
+    if (bool flag = imp->area(startParam, endParam, length, tol); flag = false)
+        throw PyAcadErrorStatus(eInvalidInput);
+    return length;
+}
+
+boost::python::tuple PyGeCurve2d::isDegenerate1() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGeEntity2d* pEnt = nullptr;
+    bool flag = imp->isDegenerate(pEnt);
+    return boost::python::make_tuple(flag, PyGeEntity2d(pEnt));
+#endif
+}
+
+boost::python::tuple PyGeCurve2d::isDegenerate2(const AcGeTol& tol) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGeEntity2d* pEnt = nullptr;
+    bool flag = imp->isDegenerate(pEnt, tol);
+    return boost::python::make_tuple(flag, PyGeEntity2d(pEnt));
+#endif
 }
 
 std::string PyGeCurve2d::className()
@@ -224,7 +443,7 @@ void makeAcGeCircArc2dWrapper()
 }
 
 PyGeCircArc2d::PyGeCircArc2d()
-: PyGeCurve2d(new AcGeCircArc2d())
+    : PyGeCurve2d(new AcGeCircArc2d())
 {
 }
 
@@ -301,14 +520,14 @@ AcGeExternalCurve2d* PyGeExternalCurve2d::impObj() const
 //AcGeOffsetCurve2d wrapper
 void makeAcGeOffsetCurve2dWrapper()
 {
-    static auto wrapper = class_<PyGeOffsetCurve2d, bases<PyGeCurve2d>>("OffsetCurve2d",boost::python::no_init)
-        .def(init<const PyGeCurve2d&,double>())
+    static auto wrapper = class_<PyGeOffsetCurve2d, bases<PyGeCurve2d>>("OffsetCurve2d", boost::python::no_init)
+        .def(init<const PyGeCurve2d&, double>())
         .def("className", &PyGeOffsetCurve2d::className).staticmethod("className")
         ;
 }
 
 PyGeOffsetCurve2d::PyGeOffsetCurve2d(const PyGeCurve2d& baseCurve, double offsetDistance)
-    : PyGeCurve2d(new AcGeOffsetCurve2d(*baseCurve.impObj(),offsetDistance))
+    : PyGeCurve2d(new AcGeOffsetCurve2d(*baseCurve.impObj(), offsetDistance))
 {
 }
 

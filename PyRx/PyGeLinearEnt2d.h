@@ -19,6 +19,7 @@ class PyGeLine2d : public PyGeLinearEnt2d
 {
 public:
     PyGeLine2d();
+    PyGeLine2d(const AcGeLine2d& pEnt);
     PyGeLine2d(AcGeEntity2d* pEnt);
     static std::string className();
 public:

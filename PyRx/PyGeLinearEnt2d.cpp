@@ -47,6 +47,12 @@ PyGeLine2d::PyGeLine2d(AcGeEntity2d* pEnt)
 {
 }
 
+PyGeLine2d::PyGeLine2d(const AcGeLine2d& pEnt)
+    : PyGeLinearEnt2d(new AcGeLine2d(pEnt))
+{
+
+}
+
 std::string PyGeLine2d::className()
 {
     return "AcGeLine2d";

@@ -38,6 +38,39 @@ public:
     PyGePointOnCurve2d getNormalPoint1(const AcGePoint2d& pnt);
     PyGePointOnCurve2d getNormalPoint2(const AcGePoint2d& pnt, const AcGeTol& tol);
 
+    Adesk::Boolean isOn1(const AcGePoint2d& pnt) const;
+    Adesk::Boolean isOn2(const AcGePoint2d& pnt, const AcGeTol& tol) const;
+
+    Adesk::Boolean isOn3(const AcGePoint2d& pnt, double& param) const;
+    Adesk::Boolean isOn4(const AcGePoint2d& pnt, double& param, const AcGeTol& tol) const;
+
+    Adesk::Boolean isOn5(double param) const;
+    Adesk::Boolean isOn6(double param, const AcGeTol& tol) const;
+
+    double  paramOf1(const AcGePoint2d& pnt) const;
+    double  paramOf2(const AcGePoint2d& pnt, const AcGeTol& tol) const;
+
+    boost::python::list getTrimmedOffset1(double distance, AcGe::OffsetCrvExtType extensionType) const;
+    boost::python::list getTrimmedOffset2(double distance, AcGe::OffsetCrvExtType extensionType, const AcGeTol& tol) const;
+
+    Adesk::Boolean isClosed1() const;
+    Adesk::Boolean isClosed2(const AcGeTol& tol) const;
+    boost::python::tuple isPeriodic() const;
+    boost::python::tuple isLinear1() const;
+    boost::python::tuple isLinear2(const AcGeTol& tol) const;
+
+    double length1(double fromParam, double toParam) const;
+    double length2(double fromParam, double toParam, double tol) const;
+
+    double  paramAtLength1(double datumParam, double length) const;
+    double  paramAtLength2(double datumParam, double length, Adesk::Boolean posParamDir, double tol) const;
+
+    double area1(double startParam, double endParam) const;
+    double area2(double startParam, double endParam, const AcGeTol& tol) const;
+
+    boost::python::tuple isDegenerate1() const;
+    boost::python::tuple isDegenerate2(const AcGeTol& tol) const;
+
     static std::string className();
 public:
     AcGeCurve2d* impObj() const;
