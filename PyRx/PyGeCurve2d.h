@@ -159,7 +159,43 @@ class PyGeEllipArc2d : public PyGeCurve2d
 {
 public:
     PyGeEllipArc2d();
+    PyGeEllipArc2d(const AcGeEllipArc2d& ell);
+#ifndef BRXAPP
+    PyGeEllipArc2d(const PyGeCircArc2d& arc);
+#endif // !BRXAPP
+    PyGeEllipArc2d(const AcGePoint2d& cent, const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis, double majorRadius, double minorRadius);
+    PyGeEllipArc2d(const AcGePoint2d& cent, const AcGeVector2d& majorAxis,const AcGeVector2d& minorAxis, double majorRadius,double minorRadius, double startAngle, double endAngle);
     PyGeEllipArc2d(AcGeEntity2d* pEnt);
+
+    boost::python::tuple intersectWith1(const PyGeLinearEnt2d& line) const;
+    boost::python::tuple intersectWith2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const;
+
+    Adesk::Boolean isCircular1() const;
+    Adesk::Boolean isCircular2(const AcGeTol& tol) const;
+
+    Adesk::Boolean isInside1(const AcGePoint2d& pnt) const;
+    Adesk::Boolean isInside2(const AcGePoint2d& pnt, const AcGeTol& tol) const;
+
+    AcGePoint2d    center() const;
+    double         minorRadius() const;
+    double         majorRadius() const;
+    AcGeVector2d   minorAxis() const;
+    AcGeVector2d   majorAxis() const;
+    double         startAng() const;
+    double         endAng() const;
+    AcGePoint2d    startPoint() const;
+    AcGePoint2d    endPoint() const;
+    Adesk::Boolean isClockWise() const;
+
+    PyGeEllipArc2d& setCenter(const AcGePoint2d& cent);
+    PyGeEllipArc2d& setMinorRadius(double rad);
+    PyGeEllipArc2d& setMajorRadius(double rad);
+    PyGeEllipArc2d& setAxes(const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis);
+    PyGeEllipArc2d& setAngles(double startAngle, double endAngle);
+    PyGeEllipArc2d& set1(const AcGePoint2d& cent, const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis, double majorRadius, double minorRadius);
+    PyGeEllipArc2d& set2(const AcGePoint2d& cent, const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis, double majorRadius, double minorRadius, double startAngle, double endAngle);
+    PyGeEllipArc2d& set3(const PyGeCircArc2d& arc);
+
     static std::string className();
 public:
     AcGeEllipArc2d* impObj() const;

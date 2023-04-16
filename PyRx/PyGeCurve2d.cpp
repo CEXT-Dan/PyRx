@@ -791,7 +791,7 @@ boost::python::tuple PyGeCircArc2d::tangent2(const AcGePoint2d& pnt, const AcGeT
         throw PyNullObject();
     AcGeError err;
     AcGeLine2d line;
-    bool flag = imp->tangent(pnt, line,tol,err);
+    bool flag = imp->tangent(pnt, line, tol, err);
     return make_tuple(flag, PyGeLine2d(line), err);
 #endif
 }
@@ -809,7 +809,7 @@ Adesk::Boolean PyGeCircArc2d::isInside2(const AcGePoint2d& pnt, const AcGeTol& t
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
-    return imp->isInside(pnt,tol);
+    return imp->isInside(pnt, tol);
 }
 
 AcGePoint2d PyGeCircArc2d::center() const
@@ -1017,6 +1017,35 @@ void makeAcGeEllipArc2Wrapper()
 {
     static auto wrapper = class_<PyGeEllipArc2d, bases<PyGeCurve2d>>("EllipArc2d")
         .def(init<>())
+#ifndef BRXAPP
+        .def(init<const PyGeCircArc2d&>())
+#endif // !BRXAPP
+        .def(init<const AcGePoint2d&, const AcGeVector2d&, const AcGeVector2d&, double, double>())
+        .def(init<const AcGePoint2d&, const AcGeVector2d&, const AcGeVector2d&, double, double, double, double>())
+        .def("intersectWith", &PyGeEllipArc2d::intersectWith1)
+        .def("intersectWith", &PyGeEllipArc2d::intersectWith2)
+        .def("isCircular", &PyGeEllipArc2d::isCircular1)
+        .def("isCircular", &PyGeEllipArc2d::isCircular2)
+        .def("isInside", &PyGeEllipArc2d::isInside1)
+        .def("isInside", &PyGeEllipArc2d::isInside2)
+        .def("center", &PyGeEllipArc2d::center)
+        .def("minorRadius", &PyGeEllipArc2d::minorRadius)
+        .def("majorRadius", &PyGeEllipArc2d::majorRadius)
+        .def("minorAxis", &PyGeEllipArc2d::minorAxis)
+        .def("majorAxis", &PyGeEllipArc2d::majorAxis)
+        .def("startAng", &PyGeEllipArc2d::startAng)
+        .def("endAng", &PyGeEllipArc2d::endAng)
+        .def("startPoint", &PyGeEllipArc2d::startPoint)
+        .def("endPoint", &PyGeEllipArc2d::endPoint)
+        .def("isClockWise", &PyGeEllipArc2d::isClockWise)
+        .def("setCenter", &PyGeEllipArc2d::setCenter, return_self<>())
+        .def("setMinorRadius", &PyGeEllipArc2d::setMinorRadius, return_self<>())
+        .def("setMajorRadius", &PyGeEllipArc2d::setMajorRadius, return_self<>())
+        .def("setAxes", &PyGeEllipArc2d::setAxes, return_self<>())
+        .def("setAngles", &PyGeEllipArc2d::setAngles, return_self<>())
+        .def("set", &PyGeEllipArc2d::set1, return_self<>())
+        .def("set", &PyGeEllipArc2d::set2, return_self<>())
+        .def("set", &PyGeEllipArc2d::set3, return_self<>())
         .def("className", &PyGeEllipArc2d::className).staticmethod("className")
         ;
 }
@@ -1029,6 +1058,257 @@ PyGeEllipArc2d::PyGeEllipArc2d()
 PyGeEllipArc2d::PyGeEllipArc2d(AcGeEntity2d* pEnt)
     : PyGeCurve2d(pEnt)
 {
+}
+
+PyGeEllipArc2d::PyGeEllipArc2d(const AcGeEllipArc2d& ell)
+    : PyGeCurve2d(new AcGeEllipArc2d(ell))
+{
+}
+#ifndef BRXAPP
+PyGeEllipArc2d::PyGeEllipArc2d(const PyGeCircArc2d& arc)
+    : PyGeCurve2d(new AcGeEllipArc2d(*arc.impObj()))
+{
+}
+#endif
+
+PyGeEllipArc2d::PyGeEllipArc2d(const AcGePoint2d& cent, const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis, double majorRadius, double minorRadius)
+    : PyGeCurve2d(new AcGeEllipArc2d(cent, majorAxis, minorAxis, majorRadius, minorRadius))
+{
+}
+
+PyGeEllipArc2d::PyGeEllipArc2d(const AcGePoint2d& cent, const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis, double majorRadius, double minorRadius, double startAngle, double endAngle)
+    : PyGeCurve2d(new AcGeEllipArc2d(cent, majorAxis, minorAxis, majorRadius, minorRadius, startAngle, endAngle))
+{
+}
+
+boost::python::tuple PyGeEllipArc2d::intersectWith1(const PyGeLinearEnt2d& line) const
+{
+    auto imp = impObj();
+    if (imp == nullptr || line.isNull())
+        throw PyNullObject();
+    int intn;
+    AcGePoint2d p1, p2;
+    bool flag = imp->intersectWith(*line.impObj(), intn, p1, p2);
+    return make_tuple(flag, intn, p1, p2);
+}
+
+boost::python::tuple PyGeEllipArc2d::intersectWith2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr || line.isNull())
+        throw PyNullObject();
+    int intn;
+    AcGePoint2d p1, p2;
+    bool flag = imp->intersectWith(*line.impObj(), intn, p1, p2, tol);
+    return make_tuple(flag, intn, p1, p2);
+}
+
+Adesk::Boolean PyGeEllipArc2d::isCircular1() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isCircular();
+}
+
+Adesk::Boolean PyGeEllipArc2d::isCircular2(const AcGeTol& tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isCircular(tol);
+}
+
+Adesk::Boolean PyGeEllipArc2d::isInside1(const AcGePoint2d& pnt) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isInside(pnt);
+}
+
+Adesk::Boolean PyGeEllipArc2d::isInside2(const AcGePoint2d& pnt, const AcGeTol& tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isInside(pnt,tol);
+}
+
+AcGePoint2d PyGeEllipArc2d::center() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->center();
+}
+
+double PyGeEllipArc2d::minorRadius() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->minorRadius();
+}
+
+double PyGeEllipArc2d::majorRadius() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->majorRadius();
+}
+
+AcGeVector2d PyGeEllipArc2d::minorAxis() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->minorAxis();
+}
+
+AcGeVector2d PyGeEllipArc2d::majorAxis() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->majorAxis();
+}
+
+double PyGeEllipArc2d::startAng() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->startAng();
+}
+
+double PyGeEllipArc2d::endAng() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->endAng();
+}
+
+AcGePoint2d PyGeEllipArc2d::startPoint() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->startPoint();
+}
+
+AcGePoint2d PyGeEllipArc2d::endPoint() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->endPoint();
+}
+
+Adesk::Boolean PyGeEllipArc2d::isClockWise() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isClockWise();
+}
+
+PyGeEllipArc2d& PyGeEllipArc2d::setCenter(const AcGePoint2d& cent)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->setCenter(cent);
+    return *this;
+#endif
+}
+
+PyGeEllipArc2d& PyGeEllipArc2d::setMinorRadius(double rad)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->setMinorRadius(rad);
+    return *this;
+#endif
+}
+
+PyGeEllipArc2d& PyGeEllipArc2d::setMajorRadius(double rad)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->setMajorRadius(rad);
+    return *this;
+#endif
+}
+
+PyGeEllipArc2d& PyGeEllipArc2d::setAxes(const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->setAxes(majorAxis, minorAxis);
+    return *this;
+#endif
+}
+
+PyGeEllipArc2d& PyGeEllipArc2d::setAngles(double startAngle, double endAngle)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->setAngles(startAngle, endAngle);
+    return *this;
+#endif
+}
+
+PyGeEllipArc2d& PyGeEllipArc2d::set1(const AcGePoint2d& cent, const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis, double majorRadius, double minorRadius)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->set(cent, majorAxis, minorAxis, majorRadius, minorRadius);
+    return *this;
+}
+
+PyGeEllipArc2d& PyGeEllipArc2d::set2(const AcGePoint2d& cent, const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis, double majorRadius, double minorRadius, double startAngle, double endAngle)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->set(cent, majorAxis, minorAxis, majorRadius, minorRadius, startAngle, endAngle);
+    return *this;
+}
+
+PyGeEllipArc2d& PyGeEllipArc2d::set3(const PyGeCircArc2d& arc)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr || arc.isNull())
+        throw PyNullObject();
+    imp->set(*arc.impObj());
+    return *this;
+#endif
 }
 
 std::string PyGeEllipArc2d::className()
