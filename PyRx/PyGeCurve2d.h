@@ -134,7 +134,6 @@ public:
     AcGePoint2d    startPoint() const;
     AcGePoint2d    endPoint() const;
 
-
     PyGeCircArc2d& setCenter(const AcGePoint2d& cent);
     PyGeCircArc2d& setRadius(double radius);
     PyGeCircArc2d& setAngles(double startAng, double endAng);

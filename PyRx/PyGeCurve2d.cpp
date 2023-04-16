@@ -651,6 +651,33 @@ void makeAcGeCircArc2dWrapper()
         .def(init<const AcGePoint2d&, double, double, double, const AcGeVector2d&, bool>())
         .def(init<const AcGePoint2d&, const AcGePoint2d&, const AcGePoint2d&>())
         .def(init<const AcGePoint2d&, const AcGePoint2d&, double, bool>())
+        .def("intersectWith", &PyGeCircArc2d::intersectWith1)
+        .def("intersectWith", &PyGeCircArc2d::intersectWith2)
+        .def("intersectWith", &PyGeCircArc2d::intersectWith3)
+        .def("intersectWith", &PyGeCircArc2d::intersectWith4)
+        .def("tangent", &PyGeCircArc2d::tangent1)
+        .def("tangent", &PyGeCircArc2d::tangent2)
+        .def("isInside", &PyGeCircArc2d::isInside1)
+        .def("isInside", &PyGeCircArc2d::isInside2)
+        .def("center", &PyGeCircArc2d::center)
+        .def("radius", &PyGeCircArc2d::radius)
+        .def("startAng", &PyGeCircArc2d::startAng)
+        .def("endAng", &PyGeCircArc2d::endAng)
+        .def("isClockWise", &PyGeCircArc2d::isClockWise)
+        .def("refVec", &PyGeCircArc2d::refVec)
+        .def("startPoint", &PyGeCircArc2d::startPoint)
+        .def("endPoint", &PyGeCircArc2d::endPoint)
+        .def("setCenter", &PyGeCircArc2d::setCenter, return_self<>())
+        .def("setRadius", &PyGeCircArc2d::setRadius, return_self<>())
+        .def("setAngles", &PyGeCircArc2d::setAngles, return_self<>())
+        .def("setToComplement", &PyGeCircArc2d::setToComplement, return_self<>())
+        .def("setRefVec", &PyGeCircArc2d::setRefVec, return_self<>())
+        .def("set", &PyGeCircArc2d::set1, return_self<>())
+        .def("set", &PyGeCircArc2d::set2, return_self<>())
+        .def("set", &PyGeCircArc2d::set3, return_self<>())
+        .def("set", &PyGeCircArc2d::set4, return_self<>())
+        .def("set", &PyGeCircArc2d::set5, return_self<>())
+        .def("set", &PyGeCircArc2d::set6, return_self<>())
         .def("className", &PyGeCircArc2d::className).staticmethod("className")
         ;
 }
@@ -930,15 +957,11 @@ PyGeCircArc2d& PyGeCircArc2d::set3(const AcGePoint2d& startPoint, const AcGePoin
 
 PyGeCircArc2d& PyGeCircArc2d::set4(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, double bulge, Adesk::Boolean bulgeFlag)
 {
-#ifdef BRXAPP
-    throw PyNotimplementedByHost();
-#else
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
     imp->set(startPoint, endPoint, bulge, bulgeFlag);
     return *this;
-#endif
 }
 
 PyGeCircArc2d& PyGeCircArc2d::set5(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, double radius)
