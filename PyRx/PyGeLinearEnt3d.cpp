@@ -45,6 +45,12 @@ PyGeLine3d::PyGeLine3d(AcGeEntity3d* pEnt)
 {
 }
 
+PyGeLine3d::PyGeLine3d(const AcGeLine3d& src)
+    : PyGeLinearEnt3d(new AcGeLine3d(src))
+{
+
+}
+
 std::string PyGeLine3d::className()
 {
     return "AcGeLine3d";

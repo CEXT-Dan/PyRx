@@ -20,6 +20,7 @@ class PyGeLine3d : public PyGeLinearEnt3d
 {
 public:
     PyGeLine3d();
+    PyGeLine3d(const AcGeLine3d& src);
     PyGeLine3d(AcGeEntity3d* pEnt);
     static std::string className();
 public:

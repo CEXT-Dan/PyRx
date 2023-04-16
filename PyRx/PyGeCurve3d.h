@@ -38,8 +38,8 @@ public:
     AcGePoint3d projClosestPointTo1(const AcGePoint3d& pnt, const AcGeVector3d& projectDirection) const;
     AcGePoint3d projClosestPointTo2(const AcGePoint3d& pnt, const AcGeVector3d& projectDirection, const AcGeTol& tol) const;
 
-    boost::python::tuple projClosestPointsTo1(const AcGeCurve3d& curve3d, const AcGeVector3d& projectDirection) const;
-    boost::python::tuple projClosestPointsTo1(const AcGeCurve3d& curve3d, const AcGeVector3d& projectDirection, const AcGeTol& tol) const;
+    boost::python::tuple projClosestPointsTo1(const PyGeCurve3d& curve3d, const AcGeVector3d& projectDirection) const;
+    boost::python::tuple projClosestPointsTo2(const PyGeCurve3d& curve3d, const AcGeVector3d& projectDirection, const AcGeTol& tol) const;
 
     PyGePointOnCurve3d getProjClosestPointTo1(const AcGePoint3d& pnt, const AcGeVector3d& projectDirection) const;
     PyGePointOnCurve3d getProjClosestPointTo2(const AcGePoint3d& pnt, const AcGeVector3d& projectDirection, const AcGeTol& tol) const;
@@ -76,6 +76,46 @@ public:
 
     boost::python::list getTrimmedOffset1(double distance, const AcGeVector3d& planeNormal, AcGe::OffsetCrvExtType extensionType) const;
     boost::python::list getTrimmedOffset2(double distance, const AcGeVector3d& planeNormal, AcGe::OffsetCrvExtType extensionType, const AcGeTol& tol) const;
+
+    Adesk::Boolean isClosed1() const;
+    Adesk::Boolean isClosed2(const AcGeTol& tol) const;
+
+    boost::python::tuple isPlanar1() const;
+    boost::python::tuple isPlanar2(const AcGeTol& tol) const;
+
+    boost::python::tuple isLinear1() const;
+    boost::python::tuple isLinear2(const AcGeTol& tol) const;
+
+    boost::python::tuple isCoplanarWith1(const PyGeCurve3d& curve3d) const;
+    boost::python::tuple isCoplanarWith2(const PyGeCurve3d& curve3d, const AcGeTol& tol) const;
+
+    boost::python::tuple isPeriodic() const;
+
+    double length1(double fromParam, double toParam) const;
+    double length2(double fromParam, double toParam, double tol) const;
+
+    double  paramAtLength1(double datumParam, double length) const;
+    double  paramAtLength2(double datumParam, double length, Adesk::Boolean posParamDir, double tol) const;
+
+    double area1(double startParam, double endParam) const;
+    double area2(double startParam, double endParam, const AcGeTol& tol) const;
+
+    boost::python::tuple isDegenerate1() const;
+    boost::python::tuple isDegenerate2(const AcGeTol& tol) const;
+
+    boost::python::tuple getSplitCurves(double param);
+
+    boost::python::list explode1();
+    boost::python::list explode2(const PyGeInterval& interval);
+
+    bool hasStartPoint() const;
+    bool hasEndPoint() const;
+
+    AcGePoint3d evalPoint1(double param) const;
+    boost::python::tuple evalPoint2(double param, int numDeriv) const;
+
+    boost::python::list getSamplePoints1(int numSample) const;
+    boost::python::list getSamplePoints2(double fromParam, double toParam, double approxEps) const;
 
 
     static std::string className();

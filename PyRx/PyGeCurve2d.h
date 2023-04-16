@@ -90,6 +90,8 @@ public:
     boost::python::list getSamplePoints1(int numSample) const;
     boost::python::list getSamplePoints2(double fromParam, double toParam, double approxEps) const;
 
+    boost::python::tuple getSplitCurves(double param);
+
     static std::string className();
 public:
     AcGeCurve2d* impObj() const;

@@ -67,6 +67,7 @@ void makePyGeCurve2dWrapper()
         .def("evalPoint", &PyGeCurve2d::evalPoint2)
         .def("getSamplePoints", &PyGeCurve2d::getSamplePoints1)
         .def("getSamplePoints", &PyGeCurve2d::getSamplePoints2)
+        .def("getSplitCurves", &PyGeCurve2d::getSplitCurves)
         .def("className", &PyGeCurve2d::className).staticmethod("className")
         ;
 }
@@ -616,6 +617,17 @@ boost::python::list PyGeCurve2d::getSamplePoints2(double fromParam, double toPar
     for (const auto& item : pointArray)
         pointList.append(item);
     return pointList;
+}
+
+boost::python::tuple PyGeCurve2d::getSplitCurves(double param)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGeCurve2d* p1 = nullptr;
+    AcGeCurve2d* p2 = nullptr;
+    imp->getSplitCurves(param, p1, p2);
+    return make_tuple(PyGeCurve2d(p1), PyGeCurve2d(p2));
 }
 
 std::string PyGeCurve2d::className()
