@@ -182,20 +182,24 @@ AcGePoint2d PyGeCurve2d::closestPointTo2(const AcGePoint2d& pnt, const AcGeTol& 
     return imp->closestPointTo(pnt, tol);
 }
 
-AcGePoint2d PyGeCurve2d::closestPointTo3(const PyGeCurve2d& curve2d, AcGePoint2d& pntOnOtherCrv) const
+boost::python::tuple  PyGeCurve2d::closestPointTo3(const PyGeCurve2d& curve2d) const
 {
     auto imp = impObj();
     if (imp == nullptr || curve2d.isNull())
         throw PyNullObject();
-    return imp->closestPointTo(*curve2d.impObj(), pntOnOtherCrv);
+    AcGePoint2d pntOnOtherCrv;
+   auto pnt = imp->closestPointTo(*curve2d.impObj(), pntOnOtherCrv);
+   return make_tuple(pnt, pntOnOtherCrv);
 }
 
-AcGePoint2d PyGeCurve2d::closestPointTo4(const PyGeCurve2d& curve2d, AcGePoint2d& pntOnOtherCrv, const AcGeTol& tol) const
+boost::python::tuple  PyGeCurve2d::closestPointTo4(const PyGeCurve2d& curve2d,const AcGeTol& tol) const
 {
     auto imp = impObj();
     if (imp == nullptr || curve2d.isNull())
         throw PyNullObject();
-    return imp->closestPointTo(*curve2d.impObj(), pntOnOtherCrv, tol);
+    AcGePoint2d pntOnOtherCrv;
+    auto pnt = imp->closestPointTo(*curve2d.impObj(), pntOnOtherCrv, tol);
+    return make_tuple(pnt, pntOnOtherCrv);
 }
 
 PyGePointOnCurve2d PyGeCurve2d::getClosestPointTo1(const AcGePoint2d& pnt)

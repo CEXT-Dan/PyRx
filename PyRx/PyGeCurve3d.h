@@ -1,7 +1,8 @@
 #pragma once
 #include "PyGeEntity3d.h"
 
-
+class PyGeInterval;
+class PyGePointOnCurve3d;
 //-----------------------------------------------------------------------------------
 //PyGeCurve3d
 void makPyGeCurve3dWrapper();
@@ -9,6 +10,46 @@ class PyGeCurve3d : public PyGeEntity3d
 {
 public:
     PyGeCurve3d(AcGeEntity3d* pEnt);
+    PyGeInterval getInterval() const;
+    AcGePoint3d getStartPoint() const;
+    AcGePoint3d getEndPoint() const;
+    PyGeCurve3d& reverseParam();
+    PyGeCurve3d& setInterval1();
+    bool setInterval2(const PyGeInterval& intrvl);
+
+    double  distanceTo1(const AcGePoint3d& pnt) const;
+    double  distanceTo2(const AcGePoint3d& pnt, const AcGeTol& tol) const;
+    double  distanceTo3(const PyGeCurve3d&) const;
+    double  distanceTo4(const PyGeCurve3d&, const AcGeTol& tol) const;
+
+    AcGePoint3d closestPointTo1(const AcGePoint3d& pnt) const;
+    AcGePoint3d closestPointTo2(const AcGePoint3d& pnt, const AcGeTol& tol) const;
+    boost::python::tuple  closestPointTo3(const PyGeCurve3d& curve2d) const;
+    boost::python::tuple  closestPointTo4(const PyGeCurve3d& curve2d, const AcGeTol& tol) const;
+
+    PyGePointOnCurve3d getClosestPointTo1(const AcGePoint3d& pnt);
+    PyGePointOnCurve3d getClosestPointTo2(const AcGePoint3d& pnt, const AcGeTol& tol);
+
+    boost::python::tuple getClosestPointsTo1(const PyGeCurve3d& curve);
+    boost::python::tuple getClosestPointsTo2(const PyGeCurve3d& curve, const AcGeTol& tol);
+
+    AcGePoint3d projClosestPointTo1(const AcGePoint3d& pnt, const AcGeVector3d& projectDirection) const;
+    AcGePoint3d projClosestPointTo2(const AcGePoint3d& pnt, const AcGeVector3d& projectDirection, const AcGeTol& tol) const;
+
+    boost::python::tuple projClosestPointsTo1(const AcGeCurve3d& curve3d, const AcGeVector3d& projectDirection) const;
+    boost::python::tuple projClosestPointsTo1(const AcGeCurve3d& curve3d, const AcGeVector3d& projectDirection, const AcGeTol& tol) const;
+
+    PyGePointOnCurve3d getProjClosestPointTo1(const AcGePoint3d& pnt, const AcGeVector3d& projectDirection) const;
+    PyGePointOnCurve3d getProjClosestPointTo2(const AcGePoint3d& pnt, const AcGeVector3d& projectDirection, const AcGeTol& tol) const;
+
+    boost::python::tuple getProjClosestPointsTo1(const PyGeCurve3d& curve3d, const AcGeVector3d& projectDirection) const;
+    boost::python::tuple getProjClosestPointsTo2(const PyGeCurve3d& curve3d, const AcGeVector3d& projectDirection, const AcGeTol& tol) const;
+
+    PyGePointOnCurve3d getNormalPoint1(const AcGePoint3d& pnt);
+    PyGePointOnCurve3d getNormalPoint2(const AcGePoint3d& pnt, const AcGeTol& tol);
+
+
+
     static std::string className();
 public:
     AcGeCurve3d* impObj() const;

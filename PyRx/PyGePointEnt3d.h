@@ -19,6 +19,7 @@ class PyGePointOnCurve3d : public PyGePointEnt3d
 {
 public:
     PyGePointOnCurve3d();
+    PyGePointOnCurve3d(const AcGePointOnCurve3d& src);
     PyGePointOnCurve3d(AcGeEntity3d* src);
     static std::string className();
 public:
