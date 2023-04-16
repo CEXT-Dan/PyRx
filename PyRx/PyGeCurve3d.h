@@ -3,6 +3,8 @@
 
 class PyGeInterval;
 class PyGePointOnCurve3d;
+class PyGeBoundBlock3d;
+class PyGePlane;
 //-----------------------------------------------------------------------------------
 //PyGeCurve3d
 void makPyGeCurve3dWrapper();
@@ -48,6 +50,32 @@ public:
     PyGePointOnCurve3d getNormalPoint1(const AcGePoint3d& pnt);
     PyGePointOnCurve3d getNormalPoint2(const AcGePoint3d& pnt, const AcGeTol& tol);
 
+    PyGeBoundBlock3d  boundBlock1() const;
+    PyGeBoundBlock3d  boundBlock2(const PyGeInterval& range) const;
+
+    PyGeBoundBlock3d  orthoBoundBlock1() const;
+    PyGeBoundBlock3d  orthoBoundBlock2(const PyGeInterval& range) const;
+
+    PyGeEntity3d project1(const PyGePlane& projectionPlane, const AcGeVector3d& projectDirection) const;
+    PyGeEntity3d project2(const PyGePlane& projectionPlane, const AcGeVector3d& projectDirection, const AcGeTol& tol) const;
+
+    PyGeEntity3d orthoProject1(const PyGePlane& projectionPlane) const;
+    PyGeEntity3d orthoProject2(const PyGePlane& projectionPlane, const AcGeTol& tol) const;
+
+    bool isOn1(const AcGePoint3d& pnt) const;
+    bool isOn2(const AcGePoint3d& pnt, const AcGeTol& tol) const;
+
+    bool isOn3(const AcGePoint3d& pnt, double& param) const;
+    bool isOn4(const AcGePoint3d& pnt, double& param, const AcGeTol& tol) const;
+
+    bool isOn5(double param) const;
+    bool isOn6(double param, const AcGeTol& tol) const;
+
+    double  paramOf1(const AcGePoint3d& pnt) const;
+    double  paramOf2(const AcGePoint3d& pnt, const AcGeTol& tol) const;
+
+    boost::python::list getTrimmedOffset1(double distance, const AcGeVector3d& planeNormal, AcGe::OffsetCrvExtType extensionType) const;
+    boost::python::list getTrimmedOffset2(double distance, const AcGeVector3d& planeNormal, AcGe::OffsetCrvExtType extensionType, const AcGeTol& tol) const;
 
 
     static std::string className();

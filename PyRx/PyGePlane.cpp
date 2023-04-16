@@ -32,7 +32,6 @@ PyGePlane::PyGePlane(AcGeEntity3d* pEnt)
 PyGePlane::PyGePlane(const AcGePlane& ent)
     : PyGePlanarEnt(new AcGePlane(ent))
 {
-
 }
 
 std::string PyGePlane::className()
