@@ -189,11 +189,11 @@ boost::python::tuple  PyGeCurve2d::closestPointTo3(const PyGeCurve2d& curve2d) c
     if (imp == nullptr || curve2d.isNull())
         throw PyNullObject();
     AcGePoint2d pntOnOtherCrv;
-   auto pnt = imp->closestPointTo(*curve2d.impObj(), pntOnOtherCrv);
-   return make_tuple(pnt, pntOnOtherCrv);
+    auto pnt = imp->closestPointTo(*curve2d.impObj(), pntOnOtherCrv);
+    return make_tuple(pnt, pntOnOtherCrv);
 }
 
-boost::python::tuple  PyGeCurve2d::closestPointTo4(const PyGeCurve2d& curve2d,const AcGeTol& tol) const
+boost::python::tuple  PyGeCurve2d::closestPointTo4(const PyGeCurve2d& curve2d, const AcGeTol& tol) const
 {
     auto imp = impObj();
     if (imp == nullptr || curve2d.isNull())
@@ -586,11 +586,11 @@ boost::python::tuple PyGeCurve2d::evalPoint2(double param, int numDeriv) const
         throw PyNullObject();
     boost::python::list vecs;
     AcGeVector2dArray derivArray;
-   AcGePoint2d pnt = imp->evalPoint(param, numDeriv, derivArray);
-   for (const auto& item : derivArray)
-       vecs.append(item);
-   return boost::python::make_tuple(pnt,vecs);
-}    
+    AcGePoint2d pnt = imp->evalPoint(param, numDeriv, derivArray);
+    for (const auto& item : derivArray)
+        vecs.append(item);
+    return boost::python::make_tuple(pnt, vecs);
+}
 
 boost::python::list PyGeCurve2d::getSamplePoints1(int numSample) const
 {
@@ -646,6 +646,11 @@ void makeAcGeCircArc2dWrapper()
 {
     static auto wrapper = class_<PyGeCircArc2d, bases<PyGeCurve2d>>("CircArc2d")
         .def(init<>())
+        .def(init<const AcGePoint2d&, double>())
+        .def(init<const AcGePoint2d&, double, double, double>())
+        .def(init<const AcGePoint2d&, double, double, double, const AcGeVector2d&, bool>())
+        .def(init<const AcGePoint2d&, const AcGePoint2d&, const AcGePoint2d&>())
+        .def(init<const AcGePoint2d&, const AcGePoint2d&, double, bool>())
         .def("className", &PyGeCircArc2d::className).staticmethod("className")
         ;
 }
@@ -658,6 +663,319 @@ PyGeCircArc2d::PyGeCircArc2d()
 PyGeCircArc2d::PyGeCircArc2d(AcGeEntity2d* pEnt)
     : PyGeCurve2d(pEnt)
 {
+}
+
+PyGeCircArc2d::PyGeCircArc2d(const AcGeCircArc2d& src)
+    : PyGeCurve2d(new AcGeCircArc2d(src))
+{
+}
+
+PyGeCircArc2d::PyGeCircArc2d(const AcGePoint2d& cent, double radius)
+    : PyGeCurve2d(new AcGeCircArc2d(cent, radius))
+{
+}
+
+PyGeCircArc2d::PyGeCircArc2d(const AcGePoint2d& cent, double radius, double startAngle, double endAngle)
+    : PyGeCurve2d(new AcGeCircArc2d(cent, radius, startAngle, endAngle))
+{
+}
+
+PyGeCircArc2d::PyGeCircArc2d(const AcGePoint2d& cent, double radius, double startAngle, double endAngle, const AcGeVector2d& refVec, Adesk::Boolean isClockWise)
+    : PyGeCurve2d(new AcGeCircArc2d(cent, radius, startAngle, endAngle, refVec, isClockWise))
+{
+}
+
+PyGeCircArc2d::PyGeCircArc2d(const AcGePoint2d& startPoint, const AcGePoint2d& point, const AcGePoint2d& endPoint)
+    : PyGeCurve2d(new AcGeCircArc2d(startPoint, point, endPoint))
+{
+}
+
+PyGeCircArc2d::PyGeCircArc2d(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, double bulge, bool bulgeFlag)
+    : PyGeCurve2d(new AcGeCircArc2d(startPoint, endPoint, bulge, bulgeFlag))
+{
+}
+
+boost::python::tuple PyGeCircArc2d::intersectWith1(const PyGeLinearEnt2d& line) const
+{
+    auto imp = impObj();
+    if (imp == nullptr || line.isNull())
+        throw PyNullObject();
+    int intn;
+    AcGePoint2d p1, p2;
+    bool flag = imp->intersectWith(*line.impObj(), intn, p1, p2);
+    return make_tuple(flag, intn, p1, p2);
+}
+
+boost::python::tuple PyGeCircArc2d::intersectWith2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr || line.isNull())
+        throw PyNullObject();
+    int intn;
+    AcGePoint2d p1, p2;
+    bool flag = imp->intersectWith(*line.impObj(), intn, p1, p2, tol);
+    return make_tuple(flag, intn, p1, p2);
+}
+
+boost::python::tuple PyGeCircArc2d::intersectWith3(const PyGeCircArc2d& arc) const
+{
+    auto imp = impObj();
+    if (imp == nullptr || arc.isNull())
+        throw PyNullObject();
+    int intn;
+    AcGePoint2d p1, p2;
+    bool flag = imp->intersectWith(*arc.impObj(), intn, p1, p2);
+    return make_tuple(flag, intn, p1, p2);
+}
+
+boost::python::tuple PyGeCircArc2d::intersectWith4(const PyGeCircArc2d& arc, const AcGeTol& tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr || arc.isNull())
+        throw PyNullObject();
+    int intn;
+    AcGePoint2d p1, p2;
+    bool flag = imp->intersectWith(*arc.impObj(), intn, p1, p2, tol);
+    return make_tuple(flag, intn, p1, p2);
+}
+
+boost::python::tuple PyGeCircArc2d::tangent1(const AcGePoint2d& pnt) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGeError err;
+    AcGeLine2d line;
+    bool flag = imp->tangent(pnt, line, AcGeContext::gTol, err);
+    return make_tuple(flag, PyGeLine2d(line), err);
+#endif
+}
+
+boost::python::tuple PyGeCircArc2d::tangent2(const AcGePoint2d& pnt, const AcGeTol& tol) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGeError err;
+    AcGeLine2d line;
+    bool flag = imp->tangent(pnt, line,tol,err);
+    return make_tuple(flag, PyGeLine2d(line), err);
+#endif
+}
+
+Adesk::Boolean PyGeCircArc2d::isInside1(const AcGePoint2d& pnt) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isInside(pnt);
+}
+
+Adesk::Boolean PyGeCircArc2d::isInside2(const AcGePoint2d& pnt, const AcGeTol& tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isInside(pnt,tol);
+}
+
+AcGePoint2d PyGeCircArc2d::center() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->center();
+}
+
+double PyGeCircArc2d::radius() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->radius();
+}
+
+double PyGeCircArc2d::startAng() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->startAng();
+}
+
+double PyGeCircArc2d::endAng() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->endAng();
+}
+
+Adesk::Boolean PyGeCircArc2d::isClockWise() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isClockWise();
+}
+
+AcGeVector2d PyGeCircArc2d::refVec() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->refVec();
+}
+
+AcGePoint2d PyGeCircArc2d::startPoint() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->startPoint();
+}
+
+AcGePoint2d PyGeCircArc2d::endPoint() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->endPoint();
+}
+
+PyGeCircArc2d& PyGeCircArc2d::setCenter(const AcGePoint2d& cent)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->setCenter(cent);
+    return *this;
+}
+
+PyGeCircArc2d& PyGeCircArc2d::setRadius(double radius)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->setRadius(radius);
+    return *this;
+}
+
+PyGeCircArc2d& PyGeCircArc2d::setAngles(double startAng, double endAng)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->setAngles(startAng, endAng);
+    return *this;
+}
+
+PyGeCircArc2d& PyGeCircArc2d::setToComplement()
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->setToComplement();
+    return *this;
+}
+
+PyGeCircArc2d& PyGeCircArc2d::setRefVec(const AcGeVector2d& vec)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->setRefVec(vec);
+    return *this;
+}
+
+PyGeCircArc2d& PyGeCircArc2d::set1(const AcGePoint2d& cent, double radius)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->set(cent, radius);
+    return *this;
+}
+
+PyGeCircArc2d& PyGeCircArc2d::set2(const AcGePoint2d& cent, double radius, double ang1, double ang2, const AcGeVector2d& refVec, Adesk::Boolean isClockWise)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->set(cent, radius, ang1, ang2, refVec, isClockWise);
+    return *this;
+}
+
+PyGeCircArc2d& PyGeCircArc2d::set3(const AcGePoint2d& startPoint, const AcGePoint2d& pnt, const AcGePoint2d& endPoint)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGeError err;
+    imp->set(startPoint, pnt, endPoint, err);
+    if (err != AcGe::kOk)
+        throw PyAcadErrorStatus(eInvalidInput);
+    return *this;
+#endif
+}
+
+PyGeCircArc2d& PyGeCircArc2d::set4(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, double bulge, Adesk::Boolean bulgeFlag)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->set(startPoint, endPoint, bulge, bulgeFlag);
+    return *this;
+#endif
+}
+
+PyGeCircArc2d& PyGeCircArc2d::set5(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, double radius)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr || curve1.isNull() || curve2.isNull())
+        throw PyNullObject();
+    double param1 = 0.0;
+    double param2 = 0.0;
+    Adesk::Boolean success = false;
+    imp->set(*curve1.impObj(), *curve2.impObj(), radius, param1, param2, success);
+    if (success == false)
+        throw PyAcadErrorStatus(eInvalidInput);
+    return *this;
+#endif
+}
+
+PyGeCircArc2d& PyGeCircArc2d::set6(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, const PyGeCurve2d& curve3)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr || curve1.isNull() || curve2.isNull() || curve3.isNull())
+        throw PyNullObject();
+    double param1 = 0.0;
+    double param2 = 0.0;
+    double param3 = 0.0;
+    Adesk::Boolean success = false;
+    imp->set(*curve1.impObj(), *curve2.impObj(), *curve3.impObj(), param1, param2, param3, success);
+    if (success == false)
+        throw PyAcadErrorStatus(eInvalidInput);
+    return *this;
+#endif
 }
 
 std::string PyGeCircArc2d::className()

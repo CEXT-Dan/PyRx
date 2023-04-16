@@ -4,6 +4,7 @@
 class PyGeInterval;
 class PyGePointOnCurve2d;
 class PyGeBoundBlock2d;
+class PyGeLinearEnt2d;
 //-----------------------------------------------------------------------------------------
 //PyGeCurve2d wrapper
 void makePyGeCurve2dWrapper();
@@ -105,7 +106,48 @@ class PyGeCircArc2d : public PyGeCurve2d
 {
 public:
     PyGeCircArc2d();
+    PyGeCircArc2d(const AcGeCircArc2d& src);
+    PyGeCircArc2d(const AcGePoint2d& cent, double radius);
+    PyGeCircArc2d(const AcGePoint2d& cent, double radius, double startAngle, double endAngle);
+    PyGeCircArc2d(const AcGePoint2d& cent, double radius, double startAngle, double endAngle, const AcGeVector2d& refVec, Adesk::Boolean isClockWise);
+    PyGeCircArc2d(const AcGePoint2d& startPoint, const AcGePoint2d& point, const AcGePoint2d& endPoint);
+    PyGeCircArc2d(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, double bulge, bool bulgeFlag);
     PyGeCircArc2d(AcGeEntity2d* pEnt);
+
+    boost::python::tuple intersectWith1(const PyGeLinearEnt2d& line) const;
+    boost::python::tuple intersectWith2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const;
+    boost::python::tuple intersectWith3(const PyGeCircArc2d& arc) const;
+    boost::python::tuple intersectWith4(const PyGeCircArc2d& arc, const AcGeTol& tol) const;
+
+    boost::python::tuple tangent1(const AcGePoint2d& pnt) const;
+    boost::python::tuple tangent2(const AcGePoint2d& pnt, const AcGeTol& tol) const;
+
+    Adesk::Boolean isInside1(const AcGePoint2d& pnt) const;
+    Adesk::Boolean isInside2(const AcGePoint2d& pnt, const AcGeTol& tol) const;
+
+    AcGePoint2d    center() const;
+    double         radius() const;
+    double         startAng() const;
+    double         endAng() const;
+    Adesk::Boolean isClockWise() const;
+    AcGeVector2d   refVec() const;
+    AcGePoint2d    startPoint() const;
+    AcGePoint2d    endPoint() const;
+
+
+    PyGeCircArc2d& setCenter(const AcGePoint2d& cent);
+    PyGeCircArc2d& setRadius(double radius);
+    PyGeCircArc2d& setAngles(double startAng, double endAng);
+    PyGeCircArc2d& setToComplement();
+    PyGeCircArc2d& setRefVec(const AcGeVector2d& vec);
+    PyGeCircArc2d& set1(const AcGePoint2d& cent, double radius);
+    PyGeCircArc2d& set2(const AcGePoint2d& cent, double radius, double ang1, double ang2, const AcGeVector2d& refVec, Adesk::Boolean isClockWise);
+    PyGeCircArc2d& set3(const AcGePoint2d& startPoint, const AcGePoint2d& pnt, const AcGePoint2d& endPoint);
+
+    PyGeCircArc2d& set4(const AcGePoint2d& startPoint, const AcGePoint2d& endPoint, double bulge, Adesk::Boolean bulgeFlag);
+    PyGeCircArc2d& set5(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, double radius);
+    PyGeCircArc2d& set6(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, const PyGeCurve2d& curve3);
+
     static std::string className();
 public:
     AcGeCircArc2d* impObj() const;

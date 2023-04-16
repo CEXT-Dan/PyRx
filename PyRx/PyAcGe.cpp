@@ -757,6 +757,21 @@ BOOST_PYTHON_MODULE(PyGe)
     makAcGeNurbCurve3dWrapper();
     makAcGePolyline3dWrapper();
 
+    enum_<AcGe::ErrorCondition>("AcGeError")
+        .value("kOk", AcGe::ErrorCondition::kOk)
+        .value("k0This", AcGe::ErrorCondition::k0This)
+        .value("k0Arg1", AcGe::ErrorCondition::k0Arg1)
+        .value("k0Arg2", AcGe::ErrorCondition::k0Arg2)
+        .value("kPerpendicularArg1Arg2", AcGe::ErrorCondition::kPerpendicularArg1Arg2)
+        .value("kEqualArg1Arg2", AcGe::ErrorCondition::kEqualArg1Arg2)
+        .value("kEqualArg1Arg3", AcGe::ErrorCondition::kEqualArg1Arg3)
+        .value("kEqualArg2Arg3", AcGe::ErrorCondition::kEqualArg2Arg3)
+        .value("kLinearlyDependentArg1Arg2Arg3", AcGe::ErrorCondition::kLinearlyDependentArg1Arg2Arg3)
+        .value("kArg1TooBig", AcGe::ErrorCondition::kArg1TooBig)
+        .value("kArg1OnThis", AcGe::ErrorCondition::kArg1OnThis)
+        .value("kArg1InsideThis", AcGe::ErrorCondition::kArg1InsideThis)
+        ;
+
     enum_<AcGe::OffsetCrvExtType>("OffsetCrvExtType")
         .value("kFillet", AcGe::OffsetCrvExtType::kFillet)
         .value("kChamfer", AcGe::OffsetCrvExtType::kChamfer)
