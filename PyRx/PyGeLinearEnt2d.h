@@ -19,7 +19,7 @@ public:
     Adesk::Boolean isParallelTo2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const;
 
     Adesk::Boolean   isPerpendicularTo1(const PyGeLinearEnt2d& line) const;
-    Adesk::Boolean   isPerpendicularTo2(const PyGeLinearEnt2d& line,const AcGeTol& tol) const;
+    Adesk::Boolean   isPerpendicularTo2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const;
 
     Adesk::Boolean   isColinearTo1(const PyGeLinearEnt2d& line) const;
     Adesk::Boolean   isColinearTo2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const;
@@ -45,7 +45,7 @@ public:
     PyGeLine2d(const AcGeLine2d& pEnt);
     PyGeLine2d(const AcGePoint2d& pnt, const AcGeVector2d& vec);
     PyGeLine2d(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2);
-    PyGeLine2d(AcGeEntity2d* pEnt); 
+    PyGeLine2d(AcGeEntity2d* pEnt);
     PyGeLine2d& set1(const AcGePoint2d& pnt, const AcGeVector2d& vec);
     PyGeLine2d& set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2);
     static std::string className();
@@ -60,7 +60,26 @@ class PyGeLineSeg2d : public PyGeLinearEnt2d
 {
 public:
     PyGeLineSeg2d();
+    PyGeLineSeg2d(const AcGeLineSeg2d& src);
+    PyGeLineSeg2d(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2);
+    PyGeLineSeg2d(const AcGePoint2d& pnt, const AcGeVector2d& vec);
     PyGeLineSeg2d(AcGeEntity2d* pEnt);
+
+    PyGeLineSeg2d& set1(const AcGePoint2d& pnt, const AcGeVector2d& vec);
+    PyGeLineSeg2d& set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2);
+    PyGeLineSeg2d& set3(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2);
+    PyGeLineSeg2d& set4(const PyGeCurve2d& curve, const AcGePoint2d& point);
+
+    PyGeLine2d getBisector() const;
+
+    AcGePoint2d    baryComb(double blendCoeff) const;
+    AcGePoint2d    startPoint() const;
+    AcGePoint2d    midPoint() const;
+    AcGePoint2d    endPoint() const;
+    double         length1() const;
+    double         length2(double fromParam, double toParam) const;
+    double         length3(double fromParam, double toParam, double tol) const;
+
     static std::string className();
 public:
     AcGeLineSeg2d* impObj() const;
@@ -73,7 +92,13 @@ class PyGeRay2d : public PyGeLinearEnt2d
 {
 public:
     PyGeRay2d();
+    PyGeRay2d(const AcGeRay2d& line);
+    PyGeRay2d(const AcGePoint2d& pnt, const AcGeVector2d& vec);
+    PyGeRay2d(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2);
     PyGeRay2d(AcGeEntity2d* pEnt);
+
+    PyGeRay2d& set1(const AcGePoint2d& pnt, const AcGeVector2d& vec);
+    PyGeRay2d& set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2);
     static std::string className();
 public:
     AcGeRay2d* impObj() const;
