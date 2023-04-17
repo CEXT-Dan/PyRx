@@ -7,6 +7,20 @@ using namespace boost::python;
 void makeAcGeLinearEnt2dWrapper()
 {
     static auto wrapper = class_<PyGeLinearEnt2d, bases<PyGeCurve2d>>("LinearEnt2d", boost::python::no_init)
+        .def("intersectWith", &PyGeLinearEnt2d::intersectWith1)
+        .def("intersectWith", &PyGeLinearEnt2d::intersectWith2)
+        .def("overlap", &PyGeLinearEnt2d::overlap1)
+        .def("overlap", &PyGeLinearEnt2d::overlap2)
+        .def("isParallelTo", &PyGeLinearEnt2d::isParallelTo1)
+        .def("isParallelTo", &PyGeLinearEnt2d::isParallelTo2)
+        .def("isPerpendicularTo", &PyGeLinearEnt2d::isPerpendicularTo1)
+        .def("isPerpendicularTo", &PyGeLinearEnt2d::isPerpendicularTo2)
+        .def("isColinearTo", &PyGeLinearEnt2d::isColinearTo1)
+        .def("isColinearTo", &PyGeLinearEnt2d::isColinearTo2)
+        .def("getPerpLine", &PyGeLinearEnt2d::getPerpLine)
+        .def("getLine", &PyGeLinearEnt2d::getLine)
+        .def("pointOnLine", &PyGeLinearEnt2d::pointOnLine)
+        .def("direction", &PyGeLinearEnt2d::direction)
         .def("className", &PyGeLinearEnt2d::className).staticmethod("className")
         ;
 }
@@ -14,6 +28,130 @@ void makeAcGeLinearEnt2dWrapper()
 PyGeLinearEnt2d::PyGeLinearEnt2d(AcGeEntity2d* pEnt)
     : PyGeCurve2d(pEnt)
 {
+}
+
+boost::python::tuple PyGeLinearEnt2d::intersectWith1(const PyGeLinearEnt2d& line)
+{
+    auto imp = impObj();
+    if (imp == nullptr || line.isNull())
+        throw PyNullObject();
+    AcGePoint2d p1;
+    bool flag = imp->intersectWith(*line.impObj(),p1);
+    return make_tuple(flag, p1);
+}
+
+boost::python::tuple PyGeLinearEnt2d::intersectWith2(const PyGeLinearEnt2d& line, const AcGeTol& tol)
+{
+    auto imp = impObj();
+    if (imp == nullptr || line.isNull())
+        throw PyNullObject();
+    AcGePoint2d p1;
+    bool flag = imp->intersectWith(*line.impObj(), p1, tol);
+    return make_tuple(flag, p1);
+}
+
+boost::python::tuple PyGeLinearEnt2d::overlap1(const PyGeLinearEnt2d& line) const
+{
+    auto imp = impObj();
+    if (imp == nullptr || line.isNull())
+        throw PyNullObject();
+    AcGeLinearEnt2d* poverlap = nullptr;
+    bool flag = imp->overlap(*line.impObj(), poverlap);
+    return make_tuple(flag, PyGeLinearEnt2d(poverlap));
+}
+
+boost::python::tuple PyGeLinearEnt2d::overlap2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr || line.isNull())
+        throw PyNullObject();
+    AcGeLinearEnt2d* poverlap = nullptr;
+    bool flag = imp->overlap(*line.impObj(), poverlap, tol);
+    return make_tuple(flag, PyGeLinearEnt2d(poverlap));
+}
+
+Adesk::Boolean PyGeLinearEnt2d::isParallelTo1(const PyGeLinearEnt2d& line) const
+{
+    auto imp = impObj();
+    if (imp == nullptr || line.isNull())
+        throw PyNullObject();
+    return imp->isParallelTo(*line.impObj());
+}
+
+Adesk::Boolean PyGeLinearEnt2d::isParallelTo2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr || line.isNull())
+        throw PyNullObject();
+    return imp->isParallelTo(*line.impObj(), tol);
+}
+
+Adesk::Boolean PyGeLinearEnt2d::isPerpendicularTo1(const PyGeLinearEnt2d& line) const
+{
+    auto imp = impObj();
+    if (imp == nullptr || line.isNull())
+        throw PyNullObject();
+    return imp->isPerpendicularTo(*line.impObj());
+}
+
+Adesk::Boolean PyGeLinearEnt2d::isPerpendicularTo2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr || line.isNull())
+        throw PyNullObject();
+    return imp->isPerpendicularTo(*line.impObj(),tol);
+}
+
+Adesk::Boolean PyGeLinearEnt2d::isColinearTo1(const PyGeLinearEnt2d& line) const
+{
+    auto imp = impObj();
+    if (imp == nullptr || line.isNull())
+        throw PyNullObject();
+    return imp->isColinearTo(*line.impObj());
+}
+
+Adesk::Boolean PyGeLinearEnt2d::isColinearTo2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr || line.isNull())
+        throw PyNullObject();
+    return imp->isColinearTo(*line.impObj(), tol);
+}
+
+PyGeLine2d PyGeLinearEnt2d::getPerpLine(const AcGePoint2d& pnt) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGeLine2d perpLine;
+    imp->getPerpLine(pnt, perpLine);
+    return PyGeLine2d(perpLine);
+}
+
+PyGeLine2d PyGeLinearEnt2d::getLine() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGeLine2d perpLine;
+    imp->getLine( perpLine);
+    return PyGeLine2d(perpLine);
+}
+
+AcGePoint2d PyGeLinearEnt2d::pointOnLine() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->pointOnLine();
+}
+
+AcGeVector2d PyGeLinearEnt2d::direction() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->direction();
 }
 
 std::string PyGeLinearEnt2d::className()
