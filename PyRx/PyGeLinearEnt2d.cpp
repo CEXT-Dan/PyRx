@@ -164,7 +164,6 @@ AcGeLinearEnt2d* PyGeLinearEnt2d::impObj() const
     return static_cast<AcGeLinearEnt2d*>(m_imp.get());
 }
 
-
 //-----------------------------------------------------------------------------------------
 //AcGeLine2d  wrapper
 void makeAcGeLine2dWrapper()

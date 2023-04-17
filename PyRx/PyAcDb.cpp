@@ -24,13 +24,13 @@ PyDbObject openDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
     throw PyNullObject();
 }
 
-PyDbObject openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
+PyDbEntity openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     if (id.m_id.objectClass()->isDerivedFrom(AcDbEntity::desc()))
     {
         AcDbEntity* pObj = nullptr;
         if (acdbOpenAcDbEntity(pObj, id.m_id, mode) == eOk)
-            return PyDbObject(pObj, true);
+            return PyDbEntity(pObj, true);
     }
     throw PyNullObject();
 }
@@ -79,12 +79,8 @@ BOOST_PYTHON_MODULE(PyDb)
 #ifndef  PyRxDebug
     docstring_options local_docstring_options(false, true, false);
 #endif // ! PyRxDebug
-
-
-#ifdef PyRxDebug
     def("openDbObject", openDbObject);
     def("openDbEntity", openDbEntity);
-#endif
 
     //create in class order!
     makeAcDbExtents2dWrapper();
