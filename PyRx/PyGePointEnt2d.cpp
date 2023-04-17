@@ -236,6 +236,11 @@ AcGePointOnCurve2d* PyGePointOnCurve2d::impObj() const
 void makeAcGePosition2dWrapper()
 {
     static auto wrapper = class_<PyGePosition2d, bases<PyGePointEnt2d>>("Position2d")
+        .def(init<>())
+        .def(init<const AcGePoint2d&>())
+        .def(init<double, double>())
+        .def("set", &PyGePosition2d::set1, return_self<>())
+        .def("set", &PyGePosition2d::set2, return_self<>())
         .def("className", &PyGePosition2d::className).staticmethod("className")
         ;
 }
@@ -243,13 +248,53 @@ void makeAcGePosition2dWrapper()
 PyGePosition2d::PyGePosition2d()
     : PyGePointEnt2d(new AcGePosition2d())
 {
-
 }
 
 PyGePosition2d::PyGePosition2d(AcGeEntity2d* pEnt)
     : PyGePointEnt2d(pEnt)
 {
+}
 
+PyGePosition2d::PyGePosition2d(const AcGePoint2d& pnt)
+    : PyGePointEnt2d(new AcGePosition2d(pnt))
+{
+}
+
+PyGePosition2d::PyGePosition2d(double x, double y)
+    : PyGePointEnt2d(new AcGePosition2d(x,y))
+{
+}
+#ifndef BRXAPP
+PyGePosition2d::PyGePosition2d(const AcGePosition2d& pos)
+    : PyGePointEnt2d(new AcGePosition2d(pos))
+{
+}
+#endif
+
+PyGePosition2d& PyGePosition2d::set1(const AcGePoint2d& pnt)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->set(pnt);
+    return *this;
+#endif
+}
+
+PyGePosition2d& PyGePosition2d::set2(double x, double y)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->set(x,y);
+    return *this;
+#endif
 }
 
 std::string PyGePosition2d::className()

@@ -65,7 +65,16 @@ class PyGePosition2d : public PyGePointEnt2d
 {
 public:
     PyGePosition2d();
+    PyGePosition2d(const AcGePoint2d& pnt);
+    PyGePosition2d(double x, double y);
+#ifndef BRXAPP
+    PyGePosition2d(const AcGePosition2d& pos);
+#endif
     PyGePosition2d(AcGeEntity2d* pEnt);
+
+    PyGePosition2d& set1(const AcGePoint2d&);
+    PyGePosition2d& set2(double x, double y);
+
     static std::string className();
 public:
     AcGePosition2d* impObj() const;
