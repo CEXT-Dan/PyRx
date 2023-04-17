@@ -43,7 +43,11 @@ class PyGeLine2d : public PyGeLinearEnt2d
 public:
     PyGeLine2d();
     PyGeLine2d(const AcGeLine2d& pEnt);
-    PyGeLine2d(AcGeEntity2d* pEnt);
+    PyGeLine2d(const AcGePoint2d& pnt, const AcGeVector2d& vec);
+    PyGeLine2d(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2);
+    PyGeLine2d(AcGeEntity2d* pEnt); 
+    PyGeLine2d& set1(const AcGePoint2d& pnt, const AcGeVector2d& vec);
+    PyGeLine2d& set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2);
     static std::string className();
 public:
     AcGeLine2d* impObj() const;
