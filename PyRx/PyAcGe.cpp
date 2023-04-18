@@ -26,12 +26,23 @@ std::string AcGeScale3dToString(const AcGeScale3d& s)
 {
     return std::format("({},{},{})", s.sx, s.sy, s.sz);
 }
+
 static auto makeAcGeScale3dWrapper()
 {
     static auto wrapper = class_<AcGeScale3d>("Scale3d")
         .def_readwrite("sx", &AcGeScale3d::sx)
         .def_readwrite("sy", &AcGeScale3d::sy)
         .def_readwrite("sz", &AcGeScale3d::sz)
+        .def<AcGeScale3d(AcGeScale3d::*)(double)const>("__mul__", &AcGeScale3d::operator*)
+        .def<AcGeScale3d& (AcGeScale3d::*)(double)>("__imul__", &AcGeScale3d::operator*=, return_self<>())
+        .def<AcGeScale3d(AcGeScale3d::*)(const AcGeScale3d&)const>("__mul__", &AcGeScale3d::operator*)
+        .def<AcGeScale3d& (AcGeScale3d::*)(const AcGeScale3d&)>("__imul__", &AcGeScale3d::operator*=, return_self<>())
+#ifndef BRXAPP
+        .def("preMultBy", &AcGeScale3d::preMultBy, return_self<>())
+        .def("postMultBy", &AcGeScale3d::postMultBy, return_self<>())
+        .def<AcGeScale3d& (AcGeScale3d::*)(const AcGeScale3d&, double)>("setToProduct", &AcGeScale3d::setToProduct, return_self<>())
+        .def<AcGeScale3d& (AcGeScale3d::*)(const AcGeScale3d&, const AcGeScale3d&)>("setToProduct", &AcGeScale3d::setToProduct, return_self<>())
+#endif
         .def("__eq__", &AcGeScale3d::operator==)
         .def("__ne__", &AcGeScale3d::operator!=)
         .def("toString", &AcGeScale3dToString)
@@ -49,10 +60,20 @@ std::string AcGeScale2dToString(const AcGeScale2d& s)
 static auto makeAcGeScale2dWrapper()
 {
     static auto wrapper = class_<AcGeScale2d>("Scale2d")
+#ifndef BRXAPP
+        .def("preMultBy", &AcGeScale2d::preMultBy, return_self<>())
+        .def("postMultBy", &AcGeScale2d::postMultBy, return_self<>())
+        .def<AcGeScale2d& (AcGeScale2d::*)(const AcGeScale2d&, double)>("setToProduct", &AcGeScale2d::setToProduct, return_self<>())
+        .def<AcGeScale2d& (AcGeScale2d::*)(const AcGeScale2d&, const AcGeScale2d&)>("setToProduct", &AcGeScale2d::setToProduct, return_self<>())
+#endif
         .def_readwrite("sx", &AcGeScale2d::sx)
         .def_readwrite("sy", &AcGeScale2d::sy)
         .def("__eq__", &AcGeScale2d::operator==)
         .def("__ne__", &AcGeScale2d::operator!=)
+        .def<AcGeScale2d(AcGeScale2d::*)(double)const>("__mul__", &AcGeScale2d::operator*)
+        .def<AcGeScale2d& (AcGeScale2d::*)(double)>("__imul__", &AcGeScale2d::operator*=, return_self<>())
+        .def<AcGeScale2d(AcGeScale2d::*)(const AcGeScale2d&)const>("__mul__", &AcGeScale2d::operator*)
+        .def<AcGeScale2d& (AcGeScale2d::*)(const AcGeScale2d&)>("__imul__", &AcGeScale2d::operator*=, return_self<>())
         .def("toString", &AcGeScale2dToString)
         .def("__str__", &AcGeScale2dToString)
         ;

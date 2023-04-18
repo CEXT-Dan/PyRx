@@ -169,6 +169,9 @@
     <ClCompile Include="PyGeSplineEnt3d.cpp">
       <Filter>Source Files\PyGe</Filter>
     </ClCompile>
+    <ClCompile Include="PyDbMtext.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -341,6 +344,9 @@
     </ClInclude>
     <ClInclude Include="PyGeSplineEnt3d.h">
       <Filter>Header Files\PyGe</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbMtext.h">
+      <Filter>Header Files\PyDb</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
