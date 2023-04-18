@@ -130,6 +130,12 @@ BOOST_PYTHON_MODULE(PyDb)
     //global
     def("RegApp", &RegApp);
 
+
+    enum_<AcDb::LineSpacingStyle>("LineSpacingStyle")
+        .value("kAtLeast", AcDb::LineSpacingStyle::kAtLeast)
+        .value("kExactly", AcDb::LineSpacingStyle::kExactly)
+        .export_values()
+        ;
     enum_<AcDb::Poly3dType>("Poly3dType")
         .value("k3dSimplePoly", AcDb::Poly3dType::k3dSimplePoly)
         .value("k3dQuadSplinePoly", AcDb::Poly3dType::k3dQuadSplinePoly)
