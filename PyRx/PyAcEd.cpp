@@ -24,6 +24,7 @@ BOOST_PYTHON_MODULE(PyEd)
         .value("kFailed", Acad::PromptStatus::eFailed)
         .value("kKeyword", Acad::PromptStatus::eKeyword)
         .value("keDirect", Acad::PromptStatus::eDirect)
+        .export_values()
         ;
 };
 

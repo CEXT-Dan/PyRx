@@ -791,12 +791,14 @@ BOOST_PYTHON_MODULE(PyGe)
         .value("kArg1TooBig", AcGe::ErrorCondition::kArg1TooBig)
         .value("kArg1OnThis", AcGe::ErrorCondition::kArg1OnThis)
         .value("kArg1InsideThis", AcGe::ErrorCondition::kArg1InsideThis)
+        .export_values()
         ;
 
     enum_<AcGe::OffsetCrvExtType>("OffsetCrvExtType")
         .value("kFillet", AcGe::OffsetCrvExtType::kFillet)
         .value("kChamfer", AcGe::OffsetCrvExtType::kChamfer)
         .value("kExtend", AcGe::OffsetCrvExtType::kExtend)
+        .export_values()
         ;
     enum_<AcGe::EntityId>("EntityId")
         .value("kEntity2d", AcGe::EntityId::kEntity2d)
@@ -882,6 +884,7 @@ BOOST_PYTHON_MODULE(PyGe)
 #ifndef BRXAPP
         .value("Helix", AcGe::EntityId::kHelix)
 #endif // !BRXAPP 
+        .export_values()
         ;
 };
 

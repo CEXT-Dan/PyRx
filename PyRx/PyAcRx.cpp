@@ -81,6 +81,7 @@ BOOST_PYTHON_MODULE(PyRx)
         .value("kT_atom", LispDataType::kT_atom)
         .value("kText", LispDataType::kText)
         .value("kVoid", LispDataType::kVoid)
+        .export_values()
         ;
 };
 

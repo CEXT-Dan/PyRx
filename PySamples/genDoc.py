@@ -33,12 +33,11 @@ def PyRxCmd_pydoit3():
         PyRxApp.Printf(err)
         
 def PyRxCmd_pydoit4():
-    try:
-        PyRxApp.Printf("\nPyGe.Curve2d memebers:\n")      
-        members = inspect.getmembers(PyGe.Curve2d)
+    try:    
+        members = inspect.getmembers(PyDb.MText)
         for member in members:
             if not member[0].startswith("__"):
-                PyRxApp.Printf("{}".format(member[1].__doc__))       
+                PyRxApp.Printf("\n{}, {}".format(member[0],member[1].__doc__))       
     except Exception as err:
         PyRxApp.Printf(err)
 
