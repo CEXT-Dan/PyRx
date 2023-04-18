@@ -6,7 +6,7 @@ using namespace boost::python;
 
 void makePyDbMTextWrapper()
 {
-    static auto wrapper = class_<PyDbMtext, bases<PyDbEntity>>("MText")
+    scope MText = class_<PyDbMtext, bases<PyDbEntity>>("MText")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("location", &PyDbMtext::location)
@@ -30,7 +30,7 @@ void makePyDbMTextWrapper()
         .def("setAttachmentMovingLocation", &PyDbMtext::setAttachmentMovingLocation)
         .def("className", &PyDbMtext::className).staticmethod("className")
         ;
-    enum_<AcDbMText::AttachmentPoint>("AttachmentPoint")
+    enum_<AcDbMText::AttachmentPoint>("MTextAttachmentPoint")
         .value("kTopLeft", AcDbMText::AttachmentPoint::kTopLeft)
         .value("kTopCenter", AcDbMText::AttachmentPoint::kTopCenter)
         .value("kTopRight", AcDbMText::AttachmentPoint::kTopRight)
@@ -57,7 +57,7 @@ void makePyDbMTextWrapper()
         .value("kTopMid", AcDbMText::AttachmentPoint::kTopMid)
         .export_values()
         ;
-    enum_<AcDbMText::FlowDirection>("FlowDirection")
+    enum_<AcDbMText::FlowDirection>("MTextFlowDirection")
         .value("kLtoR", AcDbMText::FlowDirection::kLtoR)
         .value("kRtoL", AcDbMText::FlowDirection::kRtoL)
         .value("kTtoB", AcDbMText::FlowDirection::kTtoB)

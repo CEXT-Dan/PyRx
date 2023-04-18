@@ -13,6 +13,7 @@
 #include "PyDbField.h"
 #include "PyDbEnts.h"
 #include "PyDbCurve.h"
+#include "PyDbMtext.h"
 
 using namespace boost::python;
 
@@ -101,6 +102,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbAttributeWrapper();
     makeDbBlockReferenceWrapper();
     makeDbMInsertBlockeWrapper();
+    makePyDbMTextWrapper();
 
     makeAcDbVertexWrapper();
     makePyDb2dVertexWrapper();

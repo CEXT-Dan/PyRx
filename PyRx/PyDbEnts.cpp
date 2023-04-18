@@ -13,7 +13,7 @@ using namespace boost::python;
 //PyDbText
 void makePyDbTextWrapper()
 {
-    static auto wrapper = class_<PyDbText, bases<PyDbEntity>>("Text")
+    class_<PyDbText, bases<PyDbEntity>>("Text")
         .def(init<>())
         .def(init<AcGePoint3d&, const std::string&>())
         .def(init<AcGePoint3d&, const std::string&, PyDbObjectId&, double, double>())
@@ -55,7 +55,7 @@ void makePyDbTextWrapper()
         .def("className", &PyDbText::className).staticmethod("className")
         ;
 
-    enum_<AcDbText::AcTextAlignment>("AcTextAlignment")
+    enum_<AcDbText::AcTextAlignment>("TextAcTextAlignment")
         .value("kTextAlignmentLeft", AcDbText::AcTextAlignment::kTextAlignmentLeft)
         .value("kTextAlignmentCenter", AcDbText::AcTextAlignment::kTextAlignmentCenter)
         .value("kTextAlignmentRight", AcDbText::AcTextAlignment::kTextAlignmentRight)
@@ -71,6 +71,7 @@ void makePyDbTextWrapper()
         .value("kTextAlignmentBottomLeft", AcDbText::AcTextAlignment::kTextAlignmentBottomLeft)
         .value("kTextAlignmentBottomCenter", AcDbText::AcTextAlignment::kTextAlignmentBottomCenter)
         .value("kTextAlignmentBottomRight", AcDbText::AcTextAlignment::kTextAlignmentBottomRight)
+        .export_values()
         ;
 }
 
@@ -3307,7 +3308,7 @@ double PyDbPolyline::getBulgeAt(unsigned int index) const
     if (imp == nullptr)
         throw PyNullObject();
     double w;
-    if (auto es = imp->getBulgeAt(index,w); es != eOk)
+    if (auto es = imp->getBulgeAt(index, w); es != eOk)
         throw PyAcadErrorStatus(es);
     return w;
 }
@@ -3318,7 +3319,7 @@ double PyDbPolyline::getStartWidthAt(unsigned int index) const
     if (imp == nullptr)
         throw PyNullObject();
     double s, e;
-    if (auto es = imp->getWidthsAt(index,s,e); es != eOk)
+    if (auto es = imp->getWidthsAt(index, s, e); es != eOk)
         throw PyAcadErrorStatus(es);
     return s;
 }
@@ -3460,13 +3461,13 @@ PyDbFace::PyDbFace()
 {
 }
 
-PyDbFace::PyDbFace(const AcGePoint3d& pt0, const AcGePoint3d& pt1, const AcGePoint3d& pt2, Adesk::Boolean e0vis , Adesk::Boolean e1vis , Adesk::Boolean e2vis , Adesk::Boolean e3vis)
+PyDbFace::PyDbFace(const AcGePoint3d& pt0, const AcGePoint3d& pt1, const AcGePoint3d& pt2, Adesk::Boolean e0vis, Adesk::Boolean e1vis, Adesk::Boolean e2vis, Adesk::Boolean e3vis)
     : PyDbEntity(new AcDbFace(pt0, pt1, pt2, e0vis, e1vis, e2vis, e3vis), true)
 {
 }
 
-PyDbFace::PyDbFace(const AcGePoint3d& pt0, const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& pt3, Adesk::Boolean e0vis, Adesk::Boolean e1vis , Adesk::Boolean e2vis , Adesk::Boolean e3vis)
-    : PyDbEntity(new AcDbFace(pt0, pt1, pt2,pt3, e0vis, e1vis, e2vis, e3vis), true)
+PyDbFace::PyDbFace(const AcGePoint3d& pt0, const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& pt3, Adesk::Boolean e0vis, Adesk::Boolean e1vis, Adesk::Boolean e2vis, Adesk::Boolean e3vis)
+    : PyDbEntity(new AcDbFace(pt0, pt1, pt2, pt3, e0vis, e1vis, e2vis, e3vis), true)
 {
 }
 
