@@ -14,6 +14,7 @@
 #include "PyDbEnts.h"
 #include "PyDbCurve.h"
 #include "PyDbMtext.h"
+#include "PyDbTextStyleTableRecord.h"
 
 using namespace boost::python;
 
@@ -124,6 +125,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbSymbolTableRecordWrapper();
     makeAcDbBlockTableRecordWrapper();
     makeAcDbLayerTableRecordWrapper();
+    makeTextStyleTableRecordWrapper();
     makeAcDbDatabaseWrapper();
     makeAcDbHostApplicationServicesWrapper();
 

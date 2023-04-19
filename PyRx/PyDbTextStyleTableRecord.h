@@ -27,8 +27,20 @@ public:
     double obliquingAngle() const;
     Acad::ErrorStatus setObliquingAngle(double obliquingAngle);
 
+    Adesk::UInt8 flagBits() const;
+    void setFlagBits(Adesk::UInt8 flagBits);
+
     double priorSize() const;
     Acad::ErrorStatus setPriorSize(double priorSize);
+
+    std::string fileName();
+    Acad::ErrorStatus setFileName(const std::string& path);
+
+    std::string bigFontFileName();
+    Acad::ErrorStatus setBigFontFileName(const std::string& path);
+
+    Acad::ErrorStatus setFont(const std::string& pTypeface, bool bold,bool italic, int charset, int pitch,int family, bool bAllowMissingFont);
+    boost::python::tuple font();
 
     static std::string className();
 public:
