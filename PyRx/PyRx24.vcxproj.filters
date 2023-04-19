@@ -175,6 +175,7 @@
     <ClCompile Include="PyDbTextStyleTableRecord.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
+    <ClCompile Include="PyDbTable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -354,6 +355,7 @@
     <ClInclude Include="PyDbTextStyleTableRecord.h">
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
+    <ClInclude Include="PyDbTable.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
