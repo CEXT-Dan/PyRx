@@ -6,74 +6,74 @@ using namespace boost::python;
 
 void makePyDbMTextWrapper()
 {
-    scope MText = class_<PyDbMtext, bases<PyDbEntity>>("MText")
+    scope MText = class_<PyDbMText, bases<PyDbEntity>>("MText")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("location", &PyDbMtext::location)
-        .def("setLocation", &PyDbMtext::setLocation)
-        .def("normal", &PyDbMtext::normal)
-        .def("setNormal", &PyDbMtext::setNormal)
-        .def("direction", &PyDbMtext::direction)
-        .def("setDirection", &PyDbMtext::setDirection)
-        .def("rotation", &PyDbMtext::rotation)
-        .def("setRotation", &PyDbMtext::setRotation)
-        .def("width", &PyDbMtext::width)
-        .def("setWidth", &PyDbMtext::setWidth)
-        .def("ascent", &PyDbMtext::ascent)
-        .def("descent", &PyDbMtext::descent)
-        .def("textStyle", &PyDbMtext::textStyle)
-        .def("setTextStyle", &PyDbMtext::setTextStyle)
-        .def("textHeight", &PyDbMtext::textHeight)
-        .def("setTextHeight", &PyDbMtext::setTextHeight)
-        .def("attachment", &PyDbMtext::attachment)
-        .def("setAttachment", &PyDbMtext::setAttachment)
-        .def("setAttachmentMovingLocation", &PyDbMtext::setAttachmentMovingLocation)
-        .def("flowDirection", &PyDbMtext::flowDirection)
-        .def("setFlowDirection", &PyDbMtext::setFlowDirection)
-        .def("contents", &PyDbMtext::contents)
-        .def("setContents", &PyDbMtext::setContents)
-        .def("contentsRTF", &PyDbMtext::contentsRTF)
-        .def("setContentsRTF", &PyDbMtext::setContentsRTF)
-        .def("text", &PyDbMtext::text)
-        .def("actualHeight", &PyDbMtext::actualHeight)
-        .def("actualWidth", &PyDbMtext::actualWidth)
-        .def("correctSpelling", &PyDbMtext::correctSpelling)
-        .def("getBoundingPoints", &PyDbMtext::getBoundingPoints)
-        .def("hitTest", &PyDbMtext::hitTest)
-        .def("setLineSpacingStyle", &PyDbMtext::setLineSpacingStyle)
-        .def("lineSpacingStyle", &PyDbMtext::lineSpacingStyle)
-        .def("setLineSpacingFactor", &PyDbMtext::setLineSpacingFactor)
-        .def("lineSpacingFactor", &PyDbMtext::lineSpacingFactor)
-        .def("backgroundFillOn", &PyDbMtext::backgroundFillOn)
-        .def("setBackgroundFill", &PyDbMtext::setBackgroundFill)
-        .def("getBackgroundFillColor", &PyDbMtext::getBackgroundFillColor)
-        .def("setBackgroundFillColor", &PyDbMtext::setBackgroundFillColor)
-        .def("getBackgroundScaleFactor", &PyDbMtext::getBackgroundScaleFactor)
-        .def("setBackgroundScaleFactor", &PyDbMtext::setBackgroundScaleFactor)
-        .def("getBackgroundTransparency", &PyDbMtext::getBackgroundTransparency)
-        .def("setBackgroundTransparency", &PyDbMtext::setBackgroundTransparency)
-        .def("useBackgroundColorOn", &PyDbMtext::useBackgroundColorOn)
-        .def("setUseBackgroundColor", &PyDbMtext::setUseBackgroundColor)
-        .def("setDynamicColumns", &PyDbMtext::setDynamicColumns)
-        .def("setStaticColumns", &PyDbMtext::setStaticColumns)
-        .def("getColumnType", &PyDbMtext::getColumnType)
-        .def("setColumnType", &PyDbMtext::setColumnType)
-        .def("getColumnAutoHeight", &PyDbMtext::getColumnAutoHeight)
-        .def("setColumnAutoHeight", &PyDbMtext::setColumnAutoHeight)
-        .def("getColumnCount", &PyDbMtext::getColumnCount)
-        .def("setColumnCount", &PyDbMtext::setColumnCount)
-        .def("getColumnWidth", &PyDbMtext::getColumnWidth)
-        .def("setColumnWidth", &PyDbMtext::setColumnWidth)
-        .def("getColumnGutterWidth", &PyDbMtext::getColumnGutterWidth)
-        .def("setColumnGutterWidth", &PyDbMtext::setColumnGutterWidth)
-        .def("getColumnFlowReversed", &PyDbMtext::getColumnFlowReversed)
-        .def("setColumnFlowReversed", &PyDbMtext::setColumnFlowReversed)
-        .def("getColumnHeight", &PyDbMtext::getColumnHeight)
-        .def("setColumnHeight", &PyDbMtext::setColumnHeight)
-        .def("convertFieldToText", &PyDbMtext::convertFieldToText)
-        .def("height", &PyDbMtext::height)
-        .def("setHeight", &PyDbMtext::setHeight)
-        .def("className", &PyDbMtext::className).staticmethod("className")
+        .def("location", &PyDbMText::location)
+        .def("setLocation", &PyDbMText::setLocation)
+        .def("normal", &PyDbMText::normal)
+        .def("setNormal", &PyDbMText::setNormal)
+        .def("direction", &PyDbMText::direction)
+        .def("setDirection", &PyDbMText::setDirection)
+        .def("rotation", &PyDbMText::rotation)
+        .def("setRotation", &PyDbMText::setRotation)
+        .def("width", &PyDbMText::width)
+        .def("setWidth", &PyDbMText::setWidth)
+        .def("ascent", &PyDbMText::ascent)
+        .def("descent", &PyDbMText::descent)
+        .def("textStyle", &PyDbMText::textStyle)
+        .def("setTextStyle", &PyDbMText::setTextStyle)
+        .def("textHeight", &PyDbMText::textHeight)
+        .def("setTextHeight", &PyDbMText::setTextHeight)
+        .def("attachment", &PyDbMText::attachment)
+        .def("setAttachment", &PyDbMText::setAttachment)
+        .def("setAttachmentMovingLocation", &PyDbMText::setAttachmentMovingLocation)
+        .def("flowDirection", &PyDbMText::flowDirection)
+        .def("setFlowDirection", &PyDbMText::setFlowDirection)
+        .def("contents", &PyDbMText::contents)
+        .def("setContents", &PyDbMText::setContents)
+        .def("contentsRTF", &PyDbMText::contentsRTF)
+        .def("setContentsRTF", &PyDbMText::setContentsRTF)
+        .def("text", &PyDbMText::text)
+        .def("actualHeight", &PyDbMText::actualHeight)
+        .def("actualWidth", &PyDbMText::actualWidth)
+        .def("correctSpelling", &PyDbMText::correctSpelling)
+        .def("getBoundingPoints", &PyDbMText::getBoundingPoints)
+        .def("hitTest", &PyDbMText::hitTest)
+        .def("setLineSpacingStyle", &PyDbMText::setLineSpacingStyle)
+        .def("lineSpacingStyle", &PyDbMText::lineSpacingStyle)
+        .def("setLineSpacingFactor", &PyDbMText::setLineSpacingFactor)
+        .def("lineSpacingFactor", &PyDbMText::lineSpacingFactor)
+        .def("backgroundFillOn", &PyDbMText::backgroundFillOn)
+        .def("setBackgroundFill", &PyDbMText::setBackgroundFill)
+        .def("getBackgroundFillColor", &PyDbMText::getBackgroundFillColor)
+        .def("setBackgroundFillColor", &PyDbMText::setBackgroundFillColor)
+        .def("getBackgroundScaleFactor", &PyDbMText::getBackgroundScaleFactor)
+        .def("setBackgroundScaleFactor", &PyDbMText::setBackgroundScaleFactor)
+        .def("getBackgroundTransparency", &PyDbMText::getBackgroundTransparency)
+        .def("setBackgroundTransparency", &PyDbMText::setBackgroundTransparency)
+        .def("useBackgroundColorOn", &PyDbMText::useBackgroundColorOn)
+        .def("setUseBackgroundColor", &PyDbMText::setUseBackgroundColor)
+        .def("setDynamicColumns", &PyDbMText::setDynamicColumns)
+        .def("setStaticColumns", &PyDbMText::setStaticColumns)
+        .def("getColumnType", &PyDbMText::getColumnType)
+        .def("setColumnType", &PyDbMText::setColumnType)
+        .def("getColumnAutoHeight", &PyDbMText::getColumnAutoHeight)
+        .def("setColumnAutoHeight", &PyDbMText::setColumnAutoHeight)
+        .def("getColumnCount", &PyDbMText::getColumnCount)
+        .def("setColumnCount", &PyDbMText::setColumnCount)
+        .def("getColumnWidth", &PyDbMText::getColumnWidth)
+        .def("setColumnWidth", &PyDbMText::setColumnWidth)
+        .def("getColumnGutterWidth", &PyDbMText::getColumnGutterWidth)
+        .def("setColumnGutterWidth", &PyDbMText::setColumnGutterWidth)
+        .def("getColumnFlowReversed", &PyDbMText::getColumnFlowReversed)
+        .def("setColumnFlowReversed", &PyDbMText::setColumnFlowReversed)
+        .def("getColumnHeight", &PyDbMText::getColumnHeight)
+        .def("setColumnHeight", &PyDbMText::setColumnHeight)
+        .def("convertFieldToText", &PyDbMText::convertFieldToText)
+        .def("height", &PyDbMText::height)
+        .def("setHeight", &PyDbMText::setHeight)
+        .def("className", &PyDbMText::className).staticmethod("className")
         ;
     enum_<AcDbMText::AttachmentPoint>("MTextAttachmentPoint")
         .value("kTopLeft", AcDbMText::AttachmentPoint::kTopLeft)
@@ -118,17 +118,17 @@ void makePyDbMTextWrapper()
         ;
 }
 
-PyDbMtext::PyDbMtext()
-    : PyDbMtext::PyDbMtext(new AcDbMText(), true)
+PyDbMText::PyDbMText()
+    : PyDbMText::PyDbMText(new AcDbMText(), true)
 {
 }
 
-PyDbMtext::PyDbMtext(AcDbMText* ptr, bool autoDelete)
+PyDbMText::PyDbMText(AcDbMText* ptr, bool autoDelete)
     : PyDbEntity(ptr, autoDelete)
 {
 }
 
-PyDbMtext::PyDbMtext(const PyDbObjectId& id, AcDb::OpenMode mode)
+PyDbMText::PyDbMText(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbEntity(nullptr, false)
 {
     AcDbMText* pobj = nullptr;
@@ -140,7 +140,7 @@ PyDbMtext::PyDbMtext(const PyDbObjectId& id, AcDb::OpenMode mode)
         throw PyNullObject();
 }
 
-AcGePoint3d PyDbMtext::location() const
+AcGePoint3d PyDbMText::location() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -148,7 +148,7 @@ AcGePoint3d PyDbMtext::location() const
     return imp->location();
 }
 
-Acad::ErrorStatus PyDbMtext::setLocation(const AcGePoint3d& val)
+Acad::ErrorStatus PyDbMText::setLocation(const AcGePoint3d& val)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -156,7 +156,7 @@ Acad::ErrorStatus PyDbMtext::setLocation(const AcGePoint3d& val)
     return imp->setLocation(val);
 }
 
-AcGeVector3d PyDbMtext::normal() const
+AcGeVector3d PyDbMText::normal() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -164,7 +164,7 @@ AcGeVector3d PyDbMtext::normal() const
     return imp->normal();
 }
 
-Acad::ErrorStatus PyDbMtext::setNormal(const AcGeVector3d& val)
+Acad::ErrorStatus PyDbMText::setNormal(const AcGeVector3d& val)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -172,7 +172,7 @@ Acad::ErrorStatus PyDbMtext::setNormal(const AcGeVector3d& val)
     return imp->setNormal(val);
 }
 
-AcGeVector3d PyDbMtext::direction() const
+AcGeVector3d PyDbMText::direction() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -180,7 +180,7 @@ AcGeVector3d PyDbMtext::direction() const
     return imp->direction();
 }
 
-Acad::ErrorStatus PyDbMtext::setDirection(const AcGeVector3d& val)
+Acad::ErrorStatus PyDbMText::setDirection(const AcGeVector3d& val)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -188,7 +188,7 @@ Acad::ErrorStatus PyDbMtext::setDirection(const AcGeVector3d& val)
     return imp->setDirection(val);
 }
 
-double PyDbMtext::rotation() const
+double PyDbMText::rotation() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -196,7 +196,7 @@ double PyDbMtext::rotation() const
     return imp->rotation();
 }
 
-Acad::ErrorStatus PyDbMtext::setRotation(double val)
+Acad::ErrorStatus PyDbMText::setRotation(double val)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -204,7 +204,7 @@ Acad::ErrorStatus PyDbMtext::setRotation(double val)
     return imp->setRotation(val);
 }
 
-double PyDbMtext::width() const
+double PyDbMText::width() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -212,7 +212,7 @@ double PyDbMtext::width() const
     return imp->width();
 }
 
-Acad::ErrorStatus PyDbMtext::setWidth(double val)
+Acad::ErrorStatus PyDbMText::setWidth(double val)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -220,7 +220,7 @@ Acad::ErrorStatus PyDbMtext::setWidth(double val)
     return imp->setWidth(val);
 }
 
-double PyDbMtext::ascent() const
+double PyDbMText::ascent() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -228,7 +228,7 @@ double PyDbMtext::ascent() const
     return imp->ascent();
 }
 
-double PyDbMtext::descent() const
+double PyDbMText::descent() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -236,7 +236,7 @@ double PyDbMtext::descent() const
     return imp->descent();
 }
 
-PyDbObjectId PyDbMtext::textStyle() const
+PyDbObjectId PyDbMText::textStyle() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -244,7 +244,7 @@ PyDbObjectId PyDbMtext::textStyle() const
     return PyDbObjectId(imp->textStyle());
 }
 
-Acad::ErrorStatus PyDbMtext::setTextStyle(const PyDbObjectId& val)
+Acad::ErrorStatus PyDbMText::setTextStyle(const PyDbObjectId& val)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -252,7 +252,7 @@ Acad::ErrorStatus PyDbMtext::setTextStyle(const PyDbObjectId& val)
     return imp->setTextStyle(val.m_id);
 }
 
-double PyDbMtext::textHeight() const
+double PyDbMText::textHeight() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -260,7 +260,7 @@ double PyDbMtext::textHeight() const
     return imp->textHeight();
 }
 
-Acad::ErrorStatus PyDbMtext::setTextHeight(double val)
+Acad::ErrorStatus PyDbMText::setTextHeight(double val)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -268,7 +268,7 @@ Acad::ErrorStatus PyDbMtext::setTextHeight(double val)
     return imp->setTextHeight(val);
 }
 
-AcDbMText::AttachmentPoint PyDbMtext::attachment() const
+AcDbMText::AttachmentPoint PyDbMText::attachment() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -276,7 +276,7 @@ AcDbMText::AttachmentPoint PyDbMtext::attachment() const
     return imp->attachment();
 }
 
-Acad::ErrorStatus PyDbMtext::setAttachment(AcDbMText::AttachmentPoint val)
+Acad::ErrorStatus PyDbMText::setAttachment(AcDbMText::AttachmentPoint val)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -284,7 +284,7 @@ Acad::ErrorStatus PyDbMtext::setAttachment(AcDbMText::AttachmentPoint val)
     return imp->setAttachment(val);
 }
 
-Acad::ErrorStatus PyDbMtext::setAttachmentMovingLocation(AcDbMText::AttachmentPoint val)
+Acad::ErrorStatus PyDbMText::setAttachmentMovingLocation(AcDbMText::AttachmentPoint val)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -292,7 +292,7 @@ Acad::ErrorStatus PyDbMtext::setAttachmentMovingLocation(AcDbMText::AttachmentPo
     return imp->setAttachmentMovingLocation(val);
 }
 
-AcDbMText::FlowDirection PyDbMtext::flowDirection() const
+AcDbMText::FlowDirection PyDbMText::flowDirection() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -300,7 +300,7 @@ AcDbMText::FlowDirection PyDbMtext::flowDirection() const
     return imp->flowDirection();
 }
 
-Acad::ErrorStatus PyDbMtext::setFlowDirection(AcDbMText::FlowDirection val)
+Acad::ErrorStatus PyDbMText::setFlowDirection(AcDbMText::FlowDirection val)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -308,7 +308,7 @@ Acad::ErrorStatus PyDbMtext::setFlowDirection(AcDbMText::FlowDirection val)
     return imp->setFlowDirection(val);
 }
 
-std::string PyDbMtext::contents() const
+std::string PyDbMText::contents() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -319,7 +319,7 @@ std::string PyDbMtext::contents() const
     return wstr_to_utf8(str);
 }
 
-int PyDbMtext::setContents(const std::string& str)
+int PyDbMText::setContents(const std::string& str)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -327,7 +327,7 @@ int PyDbMtext::setContents(const std::string& str)
     return imp->setContents(utf8_to_wstr(str).c_str());
 }
 
-std::string PyDbMtext::contentsRTF() const
+std::string PyDbMText::contentsRTF() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -338,7 +338,7 @@ std::string PyDbMtext::contentsRTF() const
     return wstr_to_utf8(str);
 }
 
-int PyDbMtext::setContentsRTF(const std::string& str)
+int PyDbMText::setContentsRTF(const std::string& str)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -346,7 +346,7 @@ int PyDbMtext::setContentsRTF(const std::string& str)
     return imp->setContentsRTF(utf8_to_wstr(str).c_str());
 }
 
-std::string PyDbMtext::text() const
+std::string PyDbMText::text() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -357,7 +357,7 @@ std::string PyDbMtext::text() const
     return wstr_to_utf8(str);
 }
 
-double PyDbMtext::actualHeight() const
+double PyDbMText::actualHeight() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -365,7 +365,7 @@ double PyDbMtext::actualHeight() const
     return imp->actualHeight();
 }
 
-double PyDbMtext::actualWidth() const
+double PyDbMText::actualWidth() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -373,7 +373,7 @@ double PyDbMtext::actualWidth() const
     return imp->actualWidth();
 }
 
-int PyDbMtext::correctSpelling()
+int PyDbMText::correctSpelling()
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
@@ -385,7 +385,7 @@ int PyDbMtext::correctSpelling()
 #endif
 }
 
-boost::python::list PyDbMtext::getBoundingPoints() const
+boost::python::list PyDbMText::getBoundingPoints() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -398,7 +398,7 @@ boost::python::list PyDbMtext::getBoundingPoints() const
     return l;
 }
 
-bool PyDbMtext::hitTest(const AcGePoint3d& ptHit) const
+bool PyDbMText::hitTest(const AcGePoint3d& ptHit) const
 {
 #ifdef ARXAPP
     auto imp = impObj();
@@ -410,7 +410,7 @@ bool PyDbMtext::hitTest(const AcGePoint3d& ptHit) const
 #endif // ARXAPP
 }
 
-Acad::ErrorStatus PyDbMtext::setLineSpacingStyle(AcDb::LineSpacingStyle eStyle)
+Acad::ErrorStatus PyDbMText::setLineSpacingStyle(AcDb::LineSpacingStyle eStyle)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -418,7 +418,7 @@ Acad::ErrorStatus PyDbMtext::setLineSpacingStyle(AcDb::LineSpacingStyle eStyle)
     return imp->setLineSpacingStyle(eStyle);
 }
 
-AcDb::LineSpacingStyle PyDbMtext::lineSpacingStyle() const
+AcDb::LineSpacingStyle PyDbMText::lineSpacingStyle() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -426,7 +426,7 @@ AcDb::LineSpacingStyle PyDbMtext::lineSpacingStyle() const
     return imp->lineSpacingStyle();
 }
 
-Acad::ErrorStatus PyDbMtext::setLineSpacingFactor(double dFactor)
+Acad::ErrorStatus PyDbMText::setLineSpacingFactor(double dFactor)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -434,7 +434,7 @@ Acad::ErrorStatus PyDbMtext::setLineSpacingFactor(double dFactor)
     return imp->setLineSpacingFactor(dFactor);
 }
 
-double PyDbMtext::lineSpacingFactor() const
+double PyDbMText::lineSpacingFactor() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -442,7 +442,7 @@ double PyDbMtext::lineSpacingFactor() const
     return imp->lineSpacingFactor();
 }
 
-bool PyDbMtext::backgroundFillOn() const
+bool PyDbMText::backgroundFillOn() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -450,7 +450,7 @@ bool PyDbMtext::backgroundFillOn() const
     return imp->backgroundFillOn();
 }
 
-Acad::ErrorStatus PyDbMtext::setBackgroundFill(bool enable)
+Acad::ErrorStatus PyDbMText::setBackgroundFill(bool enable)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -458,7 +458,7 @@ Acad::ErrorStatus PyDbMtext::setBackgroundFill(bool enable)
     return imp->setBackgroundFill(enable);
 }
 
-AcCmColor PyDbMtext::getBackgroundFillColor() const
+AcCmColor PyDbMText::getBackgroundFillColor() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -469,7 +469,7 @@ AcCmColor PyDbMtext::getBackgroundFillColor() const
     return clr;
 }
 
-Acad::ErrorStatus PyDbMtext::setBackgroundFillColor(const AcCmColor& color)
+Acad::ErrorStatus PyDbMText::setBackgroundFillColor(const AcCmColor& color)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -477,7 +477,7 @@ Acad::ErrorStatus PyDbMtext::setBackgroundFillColor(const AcCmColor& color)
     return imp->setBackgroundFillColor(color);
 }
 
-double PyDbMtext::getBackgroundScaleFactor() const
+double PyDbMText::getBackgroundScaleFactor() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -488,7 +488,7 @@ double PyDbMtext::getBackgroundScaleFactor() const
     return val;
 }
 
-Acad::ErrorStatus PyDbMtext::setBackgroundScaleFactor(const double scale)
+Acad::ErrorStatus PyDbMText::setBackgroundScaleFactor(const double scale)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -496,7 +496,7 @@ Acad::ErrorStatus PyDbMtext::setBackgroundScaleFactor(const double scale)
     return imp->setBackgroundScaleFactor(scale);
 }
 
-AcCmTransparency PyDbMtext::getBackgroundTransparency() const
+AcCmTransparency PyDbMText::getBackgroundTransparency() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -507,7 +507,7 @@ AcCmTransparency PyDbMtext::getBackgroundTransparency() const
     return val;
 }
 
-Acad::ErrorStatus PyDbMtext::setBackgroundTransparency(const AcCmTransparency& transp)
+Acad::ErrorStatus PyDbMText::setBackgroundTransparency(const AcCmTransparency& transp)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -515,7 +515,7 @@ Acad::ErrorStatus PyDbMtext::setBackgroundTransparency(const AcCmTransparency& t
     return imp->setBackgroundTransparency(transp);
 }
 
-bool PyDbMtext::useBackgroundColorOn() const
+bool PyDbMText::useBackgroundColorOn() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -523,7 +523,7 @@ bool PyDbMtext::useBackgroundColorOn() const
     return imp->useBackgroundColorOn();
 }
 
-Acad::ErrorStatus PyDbMtext::setUseBackgroundColor(bool enable)
+Acad::ErrorStatus PyDbMText::setUseBackgroundColor(bool enable)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -531,7 +531,7 @@ Acad::ErrorStatus PyDbMtext::setUseBackgroundColor(bool enable)
     return imp->setUseBackgroundColor(enable);
 }
 
-Acad::ErrorStatus PyDbMtext::setDynamicColumns(double width, double gutter, bool auto_height)
+Acad::ErrorStatus PyDbMText::setDynamicColumns(double width, double gutter, bool auto_height)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -539,7 +539,7 @@ Acad::ErrorStatus PyDbMtext::setDynamicColumns(double width, double gutter, bool
     return imp->setDynamicColumns(width, gutter, auto_height);
 }
 
-Acad::ErrorStatus PyDbMtext::setStaticColumns(double width, double gutter, int count)
+Acad::ErrorStatus PyDbMText::setStaticColumns(double width, double gutter, int count)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -547,7 +547,7 @@ Acad::ErrorStatus PyDbMtext::setStaticColumns(double width, double gutter, int c
     return imp->setStaticColumns(width, gutter, count);
 }
 
-AcDbMText::ColumnType PyDbMtext::getColumnType() const
+AcDbMText::ColumnType PyDbMText::getColumnType() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -558,7 +558,7 @@ AcDbMText::ColumnType PyDbMtext::getColumnType() const
     return val;
 }
 
-Acad::ErrorStatus PyDbMtext::setColumnType(AcDbMText::ColumnType val)
+Acad::ErrorStatus PyDbMText::setColumnType(AcDbMText::ColumnType val)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -566,7 +566,7 @@ Acad::ErrorStatus PyDbMtext::setColumnType(AcDbMText::ColumnType val)
     return imp->setUseBackgroundColor(val);
 }
 
-bool PyDbMtext::getColumnAutoHeight() const
+bool PyDbMText::getColumnAutoHeight() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -577,7 +577,7 @@ bool PyDbMtext::getColumnAutoHeight() const
     return val;
 }
 
-Acad::ErrorStatus PyDbMtext::setColumnAutoHeight(bool val)
+Acad::ErrorStatus PyDbMText::setColumnAutoHeight(bool val)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -585,7 +585,7 @@ Acad::ErrorStatus PyDbMtext::setColumnAutoHeight(bool val)
     return imp->setColumnAutoHeight(val);
 }
 
-int PyDbMtext::getColumnCount() const
+int PyDbMText::getColumnCount() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -596,7 +596,7 @@ int PyDbMtext::getColumnCount() const
     return val;
 }
 
-Acad::ErrorStatus PyDbMtext::setColumnCount(int val)
+Acad::ErrorStatus PyDbMText::setColumnCount(int val)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -604,7 +604,7 @@ Acad::ErrorStatus PyDbMtext::setColumnCount(int val)
     return imp->setColumnCount(val);
 }
 
-double PyDbMtext::getColumnWidth() const
+double PyDbMText::getColumnWidth() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -615,7 +615,7 @@ double PyDbMtext::getColumnWidth() const
     return val;
 }
 
-Acad::ErrorStatus PyDbMtext::setColumnWidth(double val)
+Acad::ErrorStatus PyDbMText::setColumnWidth(double val)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -623,7 +623,7 @@ Acad::ErrorStatus PyDbMtext::setColumnWidth(double val)
     return imp->setColumnWidth(val);
 }
 
-double PyDbMtext::getColumnGutterWidth() const
+double PyDbMText::getColumnGutterWidth() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -634,7 +634,7 @@ double PyDbMtext::getColumnGutterWidth() const
     return val;
 }
 
-Acad::ErrorStatus PyDbMtext::setColumnGutterWidth(double val)
+Acad::ErrorStatus PyDbMText::setColumnGutterWidth(double val)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -642,7 +642,7 @@ Acad::ErrorStatus PyDbMtext::setColumnGutterWidth(double val)
     return imp->setColumnGutterWidth(val);
 }
 
-bool PyDbMtext::getColumnFlowReversed() const
+bool PyDbMText::getColumnFlowReversed() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -653,7 +653,7 @@ bool PyDbMtext::getColumnFlowReversed() const
     return val;
 }
 
-Acad::ErrorStatus PyDbMtext::setColumnFlowReversed(bool val)
+Acad::ErrorStatus PyDbMText::setColumnFlowReversed(bool val)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -661,7 +661,7 @@ Acad::ErrorStatus PyDbMtext::setColumnFlowReversed(bool val)
     return imp->setColumnFlowReversed(val);
 }
 
-double PyDbMtext::getColumnHeight(int idx) const
+double PyDbMText::getColumnHeight(int idx) const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -672,7 +672,7 @@ double PyDbMtext::getColumnHeight(int idx) const
     return val;
 }
 
-Acad::ErrorStatus PyDbMtext::setColumnHeight(int idx, double val)
+Acad::ErrorStatus PyDbMText::setColumnHeight(int idx, double val)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -680,7 +680,7 @@ Acad::ErrorStatus PyDbMtext::setColumnHeight(int idx, double val)
     return imp->setColumnHeight(idx,val);
 }
 
-Acad::ErrorStatus PyDbMtext::convertFieldToText()
+Acad::ErrorStatus PyDbMText::convertFieldToText()
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
@@ -692,7 +692,7 @@ Acad::ErrorStatus PyDbMtext::convertFieldToText()
 #endif
 }
 
-double PyDbMtext::height() const
+double PyDbMText::height() const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -700,7 +700,7 @@ double PyDbMtext::height() const
     return imp->height();
 }
 
-Acad::ErrorStatus PyDbMtext::setHeight(double val)
+Acad::ErrorStatus PyDbMText::setHeight(double val)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -708,12 +708,12 @@ Acad::ErrorStatus PyDbMtext::setHeight(double val)
     return imp->setHeight(val);
 }
 
-std::string PyDbMtext::className()
+std::string PyDbMText::className()
 {
     return "AcDbMText";
 }
 
-AcDbMText* PyDbMtext::impObj() const
+AcDbMText* PyDbMText::impObj() const
 {
     return static_cast<AcDbMText*>(m_pImp.get());
 }

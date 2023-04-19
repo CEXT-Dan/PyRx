@@ -13,7 +13,7 @@
 #include "PyDbField.h"
 #include "PyDbEnts.h"
 #include "PyDbCurve.h"
-#include "PyDbMtext.h"
+#include "PyDbMText.h"
 #include "PyDbTextStyleTableRecord.h"
 
 using namespace boost::python;

@@ -4,13 +4,13 @@
 class PyDbObjectId;
 
 void makePyDbMTextWrapper();
-class PyDbMtext : public PyDbEntity
+class PyDbMText : public PyDbEntity
 {
 public:
-    PyDbMtext();
-    PyDbMtext(AcDbMText* ptr, bool autoDelete);
-    PyDbMtext(const PyDbObjectId& id, AcDb::OpenMode mode);
-    virtual ~PyDbMtext() override = default;
+    PyDbMText();
+    PyDbMText(AcDbMText* ptr, bool autoDelete);
+    PyDbMText(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbMText() override = default;
     AcGePoint3d     location() const;
     Acad::ErrorStatus   setLocation(const AcGePoint3d& val);
     AcGeVector3d    normal() const;

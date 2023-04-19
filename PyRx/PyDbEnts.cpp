@@ -5,6 +5,7 @@
 #include "PyGeLinearEnt3d.h"
 #include "PyGeCurve2d.h"
 #include "PyGeCurve3d.h"
+#include "PyDbMText.h"
 
 using namespace boost::python;
 
@@ -55,7 +56,7 @@ void makePyDbTextWrapper()
         .def("className", &PyDbText::className).staticmethod("className")
         ;
 
-    enum_<AcDbText::AcTextAlignment>("TextAcTextAlignment")
+    enum_<AcDbText::AcTextAlignment>("TextAlignment")
         .value("kTextAlignmentLeft", AcDbText::AcTextAlignment::kTextAlignmentLeft)
         .value("kTextAlignmentCenter", AcDbText::AcTextAlignment::kTextAlignmentCenter)
         .value("kTextAlignmentRight", AcDbText::AcTextAlignment::kTextAlignmentRight)
@@ -458,6 +459,8 @@ void makePyDbAttributeDefinitionWrapper()
         .def("isMTextAttributeDefinition", &PyDbAttributeDefinition::isMTextAttributeDefinition)
         .def("convertIntoMTextAttributeDefinition", &PyDbAttributeDefinition::convertIntoMTextAttributeDefinition)
         .def("updateMTextAttributeDefinition", &PyDbAttributeDefinition::updateMTextAttributeDefinition)
+        .def("getMTextAttributeDefinition", &PyDbAttributeDefinition::getMTextAttributeDefinition)
+        .def("setMTextAttributeDefinition", &PyDbAttributeDefinition::setMTextAttributeDefinition)
         .def("className", &PyDbAttributeDefinition::className).staticmethod("className")
         ;
 }
@@ -631,6 +634,25 @@ bool PyDbAttributeDefinition::isMTextAttributeDefinition() const
     if (imp == nullptr)
         throw PyNullObject();
     return imp->isMTextAttributeDefinition();
+}
+
+PyDbMText PyDbAttributeDefinition::getMTextAttributeDefinition() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcDbMText* ptr = imp->getMTextAttributeDefinition();
+    if(ptr == nullptr)
+        throw PyNullObject();
+    return PyDbMText(ptr,true);
+}
+
+Acad::ErrorStatus PyDbAttributeDefinition::setMTextAttributeDefinition(const PyDbMText& mt)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setMTextAttributeDefinition(mt.impObj());
 }
 
 Acad::ErrorStatus PyDbAttributeDefinition::convertIntoMTextAttributeDefinition(Adesk::Boolean val)

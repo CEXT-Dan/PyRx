@@ -6,6 +6,7 @@ class PyGeLineSeg2d;
 class PyGeLineSeg3d;
 class PyGeCircArc2d;
 class PyGeCircArc3d;
+class PyDbMText;
 
 //-----------------------------------------------------------------------------------
 //PyDbText
@@ -120,10 +121,8 @@ public:
 
     // multiline attribute definition support
     bool isMTextAttributeDefinition() const;
-    //AcDbMText* getMTextAttributeDefinition() const;
-    //const AcDbMText* getMTextAttributeDefinitionConst() const;
-    //Acad::ErrorStatus setMTextAttributeDefinition(AcDbMText*);
-    //ACDBCORE2D_PORT Acad::ErrorStatus setMTextAttributeDefinitionConst(const AcDbMText*);
+    PyDbMText getMTextAttributeDefinition() const;
+    Acad::ErrorStatus setMTextAttributeDefinition(const PyDbMText& mt);
     Acad::ErrorStatus convertIntoMTextAttributeDefinition(Adesk::Boolean val);
     Acad::ErrorStatus updateMTextAttributeDefinition();
 
