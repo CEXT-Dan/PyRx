@@ -151,6 +151,7 @@
     <ClCompile Include="PyDbObjectId.cpp" />
     <ClCompile Include="PyDbSymbolTable.cpp" />
     <ClCompile Include="PyDbSymbolTableRecord.cpp" />
+    <ClCompile Include="PyDbTextStyleTableRecord.cpp" />
     <ClCompile Include="PyGeBoundBlock2d.cpp" />
     <ClCompile Include="PyGeBoundBlock3d.cpp" />
     <ClCompile Include="PyGeClipBoundary2d.cpp" />
@@ -211,6 +212,7 @@
     <ClInclude Include="PyDbObjectId.h" />
     <ClInclude Include="PyDbSymbolTable.h" />
     <ClInclude Include="PyDbSymbolTableRecord.h" />
+    <ClInclude Include="PyDbTextStyleTableRecord.h" />
     <ClInclude Include="PyException.h" />
     <ClInclude Include="PyGeBoundBlock2d.h" />
     <ClInclude Include="PyGeBoundBlock3d.h" />
