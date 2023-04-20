@@ -3,7 +3,7 @@
 #include "PyDbObjectId.h"
 
 PyDbTable::PyDbTable()
-    : PyDbTable(new AcDbTable(),true)
+    : PyDbTable(new AcDbTable(), true)
 {
 }
 
@@ -292,7 +292,7 @@ Acad::ErrorStatus PyDbTable::setAlignment2(int row, int col, AcDb::CellAlignment
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
-    return imp->setAlignment(row,col,align);
+    return imp->setAlignment(row, col, align);
 }
 
 bool PyDbTable::isBackgroundColorNone(AcDb::RowType type) const
@@ -308,7 +308,7 @@ bool PyDbTable::isBackgroundColorNone2(int row, int col) const
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
-    return imp->isBackgroundColorNone(row,col);
+    return imp->isBackgroundColorNone(row, col);
 }
 
 Acad::ErrorStatus PyDbTable::setBackgroundColorNone(bool value, AcDb::RowType type)
@@ -316,7 +316,7 @@ Acad::ErrorStatus PyDbTable::setBackgroundColorNone(bool value, AcDb::RowType ty
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
-    return imp->setBackgroundColorNone(value,type);
+    return imp->setBackgroundColorNone(value, type);
 }
 
 Acad::ErrorStatus PyDbTable::setBackgroundColorNone2(int row, int col, bool value)
@@ -324,7 +324,7 @@ Acad::ErrorStatus PyDbTable::setBackgroundColorNone2(int row, int col, bool valu
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
-    return imp->setBackgroundColorNone(row, col,value);
+    return imp->setBackgroundColorNone(row, col, value);
 }
 
 AcCmColor PyDbTable::backgroundColor(AcDb::RowType type) const
@@ -340,7 +340,7 @@ Acad::ErrorStatus PyDbTable::setBackgroundColor(const AcCmColor& color, AcDb::Ro
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
-    return imp->setBackgroundColor(color,type);
+    return imp->setBackgroundColor(color, type);
 }
 
 AcCmColor PyDbTable::contentColor(AcDb::RowType type) const
@@ -356,7 +356,7 @@ AcCmColor PyDbTable::contentColor2(int row, int col) const
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
-    return imp->contentColor(row,col);
+    return imp->contentColor(row, col);
 }
 
 Acad::ErrorStatus PyDbTable::setContentColor(const AcCmColor& color, AcDb::RowType type)
@@ -372,7 +372,7 @@ Acad::ErrorStatus PyDbTable::setContentColor2(int row, int col, const AcCmColor&
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
-    return imp->setContentColor(row, col,color);
+    return imp->setContentColor(row, col, color);
 }
 
 boost::python::list PyDbTable::cellStyleOverrides(int row, int col) const
@@ -382,7 +382,7 @@ boost::python::list PyDbTable::cellStyleOverrides(int row, int col) const
         throw PyNullObject();
     AcDbIntArray overrides;
     boost::python::list l;
-    imp->cellStyleOverrides(row,col,overrides);
+    imp->cellStyleOverrides(row, col, overrides);
     for (auto item : overrides)
         l.append(item);
     return l;
@@ -424,6 +424,19 @@ boost::python::tuple PyDbTable::getDataType(AcDb::RowType type) const
     return boost::python::make_tuple(nDataType, nUnitType);
 }
 
+boost::python::tuple PyDbTable::getDataType2(int row, int col) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcValue::DataType nDataType;
+    AcValue::UnitType nUnitType;
+    if (auto es = imp->getDataType(row, col, nDataType, nUnitType); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return boost::python::make_tuple(nDataType, nUnitType);
+}
+
+
 Acad::ErrorStatus PyDbTable::setDataType1(AcValue::DataType nDataType, AcValue::UnitType nUnitType)
 {
     auto imp = impObj();
@@ -440,12 +453,68 @@ Acad::ErrorStatus PyDbTable::setDataType2(AcValue::DataType nDataType, AcValue::
     return imp->setDataType(nDataType, nUnitType, type);
 }
 
+Acad::ErrorStatus PyDbTable::setDataType3(int row, int col, AcValue::DataType nDataType, AcValue::UnitType nUnitType)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setDataType(row, col, nDataType, nUnitType);
+}
+
+Acad::ErrorStatus PyDbTable::setFormat(int row, int col, const std::string& pszFormat)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setFormat(row, col, utf8_to_wstr(pszFormat).c_str());
+#endif
+
+}
+
+std::string PyDbTable::textString(int row, int col) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return wstr_to_utf8(imp->textStringConst(row, col));
+}
+
+std::string PyDbTable::textString2(int row, int col, AcValue::FormatOption nOption) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcString str;
+    if (auto es = imp->textString(row, col, nOption, str); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return wstr_to_utf8(str);
+}
+
+Acad::ErrorStatus PyDbTable::setTextString(int row, int col, const std::string& text)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setTextString(row, col, utf8_to_wstr(text).c_str());
+}
+
 PyDbObjectId PyDbTable::textStyle(AcDb::RowType type) const
 {
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
     return PyDbObjectId(imp->textStyle(type));
+}
+
+PyDbObjectId PyDbTable::textStyle2(int row, int col) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return PyDbObjectId(imp->textStyle(row,col));
 }
 
 Acad::ErrorStatus PyDbTable::setTextStyle(const PyDbObjectId& id, AcDb::RowType rowTypes)
@@ -456,12 +525,28 @@ Acad::ErrorStatus PyDbTable::setTextStyle(const PyDbObjectId& id, AcDb::RowType 
     return imp->setTextStyle(id.m_id, rowTypes);
 }
 
+Acad::ErrorStatus PyDbTable::setTextStyle2(int row, int col, const PyDbObjectId& id)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setTextStyle(row, col, id.m_id);
+}
+
 double PyDbTable::textHeight(AcDb::RowType type) const
 {
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
     return imp->textHeight(type);
+}
+
+double PyDbTable::textHeight2(int row, int col) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->textHeight(row, col);
 }
 
 Acad::ErrorStatus PyDbTable::setTextHeight(double height, AcDb::RowType rowTypes)
@@ -472,12 +557,20 @@ Acad::ErrorStatus PyDbTable::setTextHeight(double height, AcDb::RowType rowTypes
     return imp->setTextHeight(height, rowTypes);
 }
 
+Acad::ErrorStatus PyDbTable::setTextHeight2(int row, int col, double height)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setTextHeight(row, col, height);
+}
+
 AcDb::LineWeight PyDbTable::gridLineWeight(AcDb::GridLineType gridlineType, AcDb::RowType type) const
 {
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
-    return imp->gridLineWeight(gridlineType,type);
+    return imp->gridLineWeight(gridlineType, type);
 }
 
 Acad::ErrorStatus PyDbTable::setGridLineWeight(AcDb::LineWeight lwt, int nBorders, int nRows)
@@ -577,6 +670,23 @@ AcGePoint3d PyDbTable::attachmentPoint(int row, int col) const
     if (imp == nullptr)
         throw PyNullObject();
     return imp->attachmentPoint(row, col);
+}
+
+PyDbObjectId PyDbTable::fieldId(int row, int col) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return PyDbObjectId( imp->fieldId(row, col) );
+}
+
+
+Acad::ErrorStatus PyDbTable::setFieldId(int row, int col, const PyDbObjectId& fieldId)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setFieldId(row, col, fieldId.m_id);
 }
 
 std::string PyDbTable::className()

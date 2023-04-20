@@ -107,6 +107,28 @@ public:
     Acad::ErrorStatus   deleteCellContent(int row,int col);
     AcDb::RowType       rowType(int row) const;
 
+    boost::python::tuple getDataType2(int row, int col) const;
+    Acad::ErrorStatus    setDataType3(int row, int col, AcValue::DataType nDataType, AcValue::UnitType nUnitType);
+
+    Acad::ErrorStatus    setFormat(int row, int col, const std::string& pszFormat);
+
+    std::string          textString(int row, int col) const;
+    std::string          textString2(int row, int col, AcValue::FormatOption nOption) const;
+
+    Acad::ErrorStatus    setTextString(int row, int col, const std::string& text);
+
+    PyDbObjectId         fieldId(int row, int col) const;
+    Acad::ErrorStatus    setFieldId(int row, int col, const PyDbObjectId& fieldId);
+
+    PyDbObjectId         textStyle2(int row,int col) const;
+    Acad::ErrorStatus    setTextStyle2(int row, int col, const PyDbObjectId& id);
+
+    double               textHeight2(int row,int col) const;
+    Acad::ErrorStatus    setTextHeight2(int row, int col, double height);
+
+
+
+
     static std::string className();
 public:
     AcDbTable* impObj() const;
