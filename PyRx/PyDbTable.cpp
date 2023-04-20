@@ -514,7 +514,7 @@ PyDbObjectId PyDbTable::textStyle2(int row, int col) const
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
-    return PyDbObjectId(imp->textStyle(row,col));
+    return PyDbObjectId(imp->textStyle(row, col));
 }
 
 Acad::ErrorStatus PyDbTable::setTextStyle(const PyDbObjectId& id, AcDb::RowType rowTypes)
@@ -725,7 +725,7 @@ PyDbObjectId PyDbTable::fieldId(int row, int col) const
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
-    return PyDbObjectId( imp->fieldId(row, col) );
+    return PyDbObjectId(imp->fieldId(row, col));
 }
 
 
@@ -822,7 +822,7 @@ Acad::ErrorStatus PyDbTable::insertColumns(int col, double width, int nCols)
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
-    return imp->insertColumns(col,width, nCols);
+    return imp->insertColumns(col, width, nCols);
 }
 
 Acad::ErrorStatus PyDbTable::deleteColumns(int col, int nCols)
@@ -847,6 +847,136 @@ Acad::ErrorStatus PyDbTable::deleteRows(int row, int nRows)
     if (imp == nullptr)
         throw PyNullObject();
     return imp->deleteRows(row, nRows);
+}
+
+Acad::ErrorStatus PyDbTable::mergeCells(int minRow, int maxRow, int minCol, int maxCol)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->mergeCells(minRow, maxRow, minCol, maxCol);
+}
+
+Acad::ErrorStatus PyDbTable::unmergeCells(int minRow, int maxRow, int minCol, int maxCol)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->unmergeCells(minRow, maxRow, minCol, maxCol);
+}
+
+boost::python::tuple PyDbTable::isMergedCell(int row, int col)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    int minRow = -1;
+    int maxRow = -1;
+    int minCol = -1;
+    int maxCol = -1;
+    bool flag = imp->isMergedCell(row, col, &minRow, &maxRow, &minCol, &maxCol);
+    return boost::python::make_tuple(flag, minRow, maxRow, minCol, maxCol);
+}
+
+Acad::ErrorStatus PyDbTable::generateLayout()
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->generateLayout();
+}
+
+Acad::ErrorStatus PyDbTable::recomputeTableBlock(bool forceUpdate)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->recomputeTableBlock(forceUpdate);
+}
+
+boost::python::tuple PyDbTable::hitTest(const AcGePoint3d& wpt, const AcGeVector3d& wviewVec, double wxaper, double wyaper)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    int resultRowIndex = -1;
+    int resultColumnIndex = -1;
+    int contentIndex = -1;
+    AcDb::TableHitItem nItem = AcDb::kTableHitNone;
+    bool flag = imp->hitTest(wpt, wviewVec, wxaper, wyaper, resultRowIndex, resultColumnIndex, contentIndex, nItem);
+    return boost::python::make_tuple(flag, resultRowIndex, resultColumnIndex, contentIndex, nItem);
+#endif
+}
+
+AcCellRange PyDbTable::getSubSelection(void) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->getSubSelection();
+}
+
+Acad::ErrorStatus PyDbTable::setSubSelection(const AcCellRange& range)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setSubSelection(range);
+#endif
+}
+
+void PyDbTable::clearSubSelection()
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->clearSubSelection();
+}
+
+bool PyDbTable::hasSubSelection() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->hasSubSelection();
+}
+
+Acad::ErrorStatus PyDbTable::setPosition(const AcGePoint3d& newVal)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setPosition(newVal);
+}
+
+Acad::ErrorStatus PyDbTable::setNormal(const AcGeVector3d& newVal)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setNormal(newVal);
+}
+
+void PyDbTable::setRegen()
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->setRegen();
+}
+
+void PyDbTable::suppressInvisibleGrid(bool value)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    imp->suppressInvisibleGrid(value);
 }
 
 std::string PyDbTable::className()

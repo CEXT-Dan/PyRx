@@ -156,6 +156,27 @@ public:
     Acad::ErrorStatus   insertRows(int row, double height, int nRows);
     Acad::ErrorStatus   deleteRows(int row, int nRows);
 
+    Acad::ErrorStatus   mergeCells(int minRow, int maxRow, int minCol, int maxCol);
+    Acad::ErrorStatus   unmergeCells(int minRow, int maxRow,int minCol, int maxCol);
+    boost::python::tuple  isMergedCell(int row, int col);
+
+    Acad::ErrorStatus   generateLayout();
+    Acad::ErrorStatus   recomputeTableBlock(bool forceUpdate);
+
+    boost::python::tuple  hitTest(const AcGePoint3d& wpt, const AcGeVector3d& wviewVec, double wxaper, double wyaper);
+
+    AcCellRange         getSubSelection(void) const;
+    Acad::ErrorStatus   setSubSelection(const AcCellRange& range);
+
+    void                clearSubSelection();
+    bool                hasSubSelection() const;
+
+    Acad::ErrorStatus   setPosition(const AcGePoint3d& newVal);
+    Acad::ErrorStatus   setNormal(const AcGeVector3d& newVal);
+
+    void              setRegen();
+    void              suppressInvisibleGrid(bool value);
+
 
 
     static std::string className();
