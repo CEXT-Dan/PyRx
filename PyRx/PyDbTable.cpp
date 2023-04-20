@@ -573,12 +573,28 @@ AcDb::LineWeight PyDbTable::gridLineWeight(AcDb::GridLineType gridlineType, AcDb
     return imp->gridLineWeight(gridlineType, type);
 }
 
+AcDb::LineWeight PyDbTable::gridLineWeight2(int row, int col, AcDb::CellEdgeMask iEdge) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->gridLineWeight(row, col, iEdge);
+}
+
 Acad::ErrorStatus PyDbTable::setGridLineWeight(AcDb::LineWeight lwt, int nBorders, int nRows)
 {
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
     return imp->setGridLineWeight(lwt, nBorders, nRows);
+}
+
+Acad::ErrorStatus PyDbTable::setGridLineWeight2(int row, int col, AcDb::CellEdgeMask nEdges, AcDb::LineWeight value)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setGridLineWeight(row, col, nEdges, value);
 }
 
 AcCmColor PyDbTable::gridColor(AcDb::GridLineType gridlineType, AcDb::RowType type) const
@@ -589,12 +605,28 @@ AcCmColor PyDbTable::gridColor(AcDb::GridLineType gridlineType, AcDb::RowType ty
     return imp->gridColor(gridlineType, type);
 }
 
+AcCmColor PyDbTable::gridColor2(int row, int col, AcDb::CellEdgeMask iEdge) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->gridColor(row, col, iEdge);
+}
+
 Acad::ErrorStatus PyDbTable::setGridColor(const AcCmColor& color, int nBorders, int nRows)
 {
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
     return imp->setGridColor(color, nBorders, nRows);
+}
+
+Acad::ErrorStatus PyDbTable::setGridColor2(int row, int col, AcDb::CellEdgeMask nEdges, const AcCmColor& color)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setGridColor(row, col, nEdges, color);
 }
 
 AcDb::Visibility PyDbTable::gridVisibility(AcDb::GridLineType gridlineType, AcDb::RowType type) const
@@ -605,12 +637,28 @@ AcDb::Visibility PyDbTable::gridVisibility(AcDb::GridLineType gridlineType, AcDb
     return imp->gridVisibility(gridlineType, type);
 }
 
+AcDb::Visibility PyDbTable::gridVisibility2(int row, int col, AcDb::CellEdgeMask iEdge) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->gridVisibility(row, col, iEdge);
+}
+
 Acad::ErrorStatus PyDbTable::setGridVisibility(AcDb::Visibility visible, int nBorders, int nRows)
 {
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
     return imp->setGridVisibility(visible, nBorders, nRows);
+}
+
+Acad::ErrorStatus PyDbTable::setGridVisibility2(int row, int col, AcDb::CellEdgeMask iEdge, AcDb::Visibility value)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setGridVisibility(row, col, iEdge, value);
 }
 
 boost::python::list PyDbTable::tableStyleOverrides() const
@@ -687,6 +735,118 @@ Acad::ErrorStatus PyDbTable::setFieldId(int row, int col, const PyDbObjectId& fi
     if (imp == nullptr)
         throw PyNullObject();
     return imp->setFieldId(row, col, fieldId.m_id);
+}
+
+AcDb::RotationAngle PyDbTable::textRotation(int row, int col) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->textRotation(row, col);
+}
+
+Acad::ErrorStatus PyDbTable::setTextRotation(int row, int col, AcDb::RotationAngle rot)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setTextRotation(row, col, rot);
+}
+
+bool PyDbTable::isAutoScale(int row, int col) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isAutoScale(row, col);
+}
+
+Acad::ErrorStatus PyDbTable::setAutoScale(int row, int col, bool autoFit)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setAutoScale(row, col, autoFit);
+}
+
+PyDbObjectId PyDbTable::blockTableRecordId(int row, int col) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return PyDbObjectId(imp->blockTableRecordId(row, col));
+}
+
+Acad::ErrorStatus PyDbTable::setBlockTableRecordId(int row, int col, const PyDbObjectId& blkId, bool autoFit)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setBlockTableRecordId(row, col, blkId.m_id, autoFit);
+}
+
+double PyDbTable::blockScale(int row, int col) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->blockScale(row, col);
+}
+
+Acad::ErrorStatus PyDbTable::setBlockScale(int row, int col, double scale)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setBlockScale(row, col, scale);
+}
+
+double PyDbTable::blockRotation(int row, int col) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->blockRotation(row, col);
+}
+
+Acad::ErrorStatus PyDbTable::setBlockRotation(int row, int col, double rotAng)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setBlockRotation(row, col, rotAng);
+}
+
+Acad::ErrorStatus PyDbTable::insertColumns(int col, double width, int nCols)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->insertColumns(col,width, nCols);
+}
+
+Acad::ErrorStatus PyDbTable::deleteColumns(int col, int nCols)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->deleteColumns(col, nCols);
+}
+
+Acad::ErrorStatus PyDbTable::insertRows(int row, double height, int nRows)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->insertRows(row, height, nRows);
+}
+
+Acad::ErrorStatus PyDbTable::deleteRows(int row, int nRows)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->deleteRows(row, nRows);
 }
 
 std::string PyDbTable::className()

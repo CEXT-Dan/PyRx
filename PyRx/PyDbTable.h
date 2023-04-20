@@ -126,6 +126,35 @@ public:
     double               textHeight2(int row,int col) const;
     Acad::ErrorStatus    setTextHeight2(int row, int col, double height);
 
+    AcDb::RotationAngle textRotation(int row, int col) const;
+    Acad::ErrorStatus   setTextRotation(int row, int col, AcDb::RotationAngle rot);
+
+    bool                isAutoScale(int row, int col) const;
+    Acad::ErrorStatus   setAutoScale(int row, int col,  bool autoFit);
+
+    PyDbObjectId        blockTableRecordId(int row, int col) const;
+    Acad::ErrorStatus   setBlockTableRecordId(int row, int col, const PyDbObjectId& blkId, bool autoFit);
+
+    double              blockScale(int row, int col) const;
+    Acad::ErrorStatus   setBlockScale(int row,int col, double scale);
+
+    double              blockRotation(int row, int col) const;
+    Acad::ErrorStatus   setBlockRotation(int row, int col, double rotAng);
+
+    AcCmColor           gridColor2(int row, int col, AcDb::CellEdgeMask iEdge) const;
+    Acad::ErrorStatus   setGridColor2(int row, int col, AcDb::CellEdgeMask nEdges, const AcCmColor& color);
+
+    AcDb::Visibility    gridVisibility2(int row, int col, AcDb::CellEdgeMask iEdge) const;
+    Acad::ErrorStatus   setGridVisibility2(int row, int col, AcDb::CellEdgeMask iEdge, AcDb::Visibility value);
+
+    AcDb::LineWeight    gridLineWeight2(int row, int col, AcDb::CellEdgeMask iEdge) const;
+    Acad::ErrorStatus   setGridLineWeight2(int row, int col, AcDb::CellEdgeMask nEdges, AcDb::LineWeight value);
+
+    Acad::ErrorStatus   insertColumns(int col, double width,int nCols);
+    Acad::ErrorStatus   deleteColumns(int col,int nCols);
+
+    Acad::ErrorStatus   insertRows(int row, double height, int nRows);
+    Acad::ErrorStatus   deleteRows(int row, int nRows);
 
 
 
