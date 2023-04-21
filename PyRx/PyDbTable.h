@@ -73,8 +73,8 @@ public:
     double              textHeight(AcDb::RowType type) const;
     Acad::ErrorStatus   setTextHeight(double height, AcDb::RowType rowTypes);
 
-    AcDb::LineWeight    gridLineWeight(AcDb::GridLineType gridlineType,AcDb::RowType type) const;
-    Acad::ErrorStatus   setGridLineWeight(AcDb::LineWeight lwt,int nBorders, int nRows);
+    AcDb::LineWeight    gridLineWeight(AcDb::GridLineType gridlineType, AcDb::RowType type) const;
+    Acad::ErrorStatus   setGridLineWeight(AcDb::LineWeight lwt, int nBorders, int nRows);
 
     AcCmColor           gridColor(AcDb::GridLineType gridlineType, AcDb::RowType type) const;
     Acad::ErrorStatus   setGridColor(const AcCmColor& color, int nBorders, int nRows);
@@ -93,18 +93,18 @@ public:
     AcGePoint3d         attachmentPoint(int row, int col) const;
 
     AcDb::CellAlignment alignment2(int row, int col) const;
-    Acad::ErrorStatus   setAlignment2(int row,int col, AcDb::CellAlignment align);
+    Acad::ErrorStatus   setAlignment2(int row, int col, AcDb::CellAlignment align);
 
-    bool                isBackgroundColorNone2(int row,int col) const;
-    Acad::ErrorStatus   setBackgroundColorNone2(int row,int col,bool value);
+    bool                isBackgroundColorNone2(int row, int col) const;
+    Acad::ErrorStatus   setBackgroundColorNone2(int row, int col, bool value);
 
-    AcCmColor           contentColor2(int row,int col) const;
+    AcCmColor           contentColor2(int row, int col) const;
     Acad::ErrorStatus   setContentColor2(int row, int col, const AcCmColor& color);
 
-    boost::python::list cellStyleOverrides(int row,int col) const;
+    boost::python::list cellStyleOverrides(int row, int col) const;
     void                clearCellOverrides(int row, int column);
 
-    Acad::ErrorStatus   deleteCellContent(int row,int col);
+    Acad::ErrorStatus   deleteCellContent(int row, int col);
     AcDb::RowType       rowType(int row) const;
 
     boost::python::tuple getDataType2(int row, int col) const;
@@ -113,30 +113,30 @@ public:
     Acad::ErrorStatus    setFormat(int row, int col, const std::string& pszFormat);
 
     std::string          textString(int row, int col) const;
-    std::string          textString2(int row, int col, AcValue::FormatOption nOption) const;
+    std::string          textString3(int row, int col, AcValue::FormatOption nOption) const;
 
     Acad::ErrorStatus    setTextString(int row, int col, const std::string& text);
 
     PyDbObjectId         fieldId(int row, int col) const;
     Acad::ErrorStatus    setFieldId(int row, int col, const PyDbObjectId& fieldId);
 
-    PyDbObjectId         textStyle2(int row,int col) const;
+    PyDbObjectId         textStyle2(int row, int col) const;
     Acad::ErrorStatus    setTextStyle2(int row, int col, const PyDbObjectId& id);
 
-    double               textHeight2(int row,int col) const;
+    double               textHeight2(int row, int col) const;
     Acad::ErrorStatus    setTextHeight2(int row, int col, double height);
 
     AcDb::RotationAngle textRotation(int row, int col) const;
     Acad::ErrorStatus   setTextRotation(int row, int col, AcDb::RotationAngle rot);
 
     bool                isAutoScale(int row, int col) const;
-    Acad::ErrorStatus   setAutoScale(int row, int col,  bool autoFit);
+    Acad::ErrorStatus   setAutoScale(int row, int col, bool autoFit);
 
     PyDbObjectId        blockTableRecordId(int row, int col) const;
     Acad::ErrorStatus   setBlockTableRecordId(int row, int col, const PyDbObjectId& blkId, bool autoFit);
 
     double              blockScale(int row, int col) const;
-    Acad::ErrorStatus   setBlockScale(int row,int col, double scale);
+    Acad::ErrorStatus   setBlockScale(int row, int col, double scale);
 
     double              blockRotation(int row, int col) const;
     Acad::ErrorStatus   setBlockRotation(int row, int col, double rotAng);
@@ -150,14 +150,14 @@ public:
     AcDb::LineWeight    gridLineWeight2(int row, int col, AcDb::CellEdgeMask iEdge) const;
     Acad::ErrorStatus   setGridLineWeight2(int row, int col, AcDb::CellEdgeMask nEdges, AcDb::LineWeight value);
 
-    Acad::ErrorStatus   insertColumns(int col, double width,int nCols);
-    Acad::ErrorStatus   deleteColumns(int col,int nCols);
+    Acad::ErrorStatus   insertColumns(int col, double width, int nCols);
+    Acad::ErrorStatus   deleteColumns(int col, int nCols);
 
     Acad::ErrorStatus   insertRows(int row, double height, int nRows);
     Acad::ErrorStatus   deleteRows(int row, int nRows);
 
     Acad::ErrorStatus   mergeCells(int minRow, int maxRow, int minCol, int maxCol);
-    Acad::ErrorStatus   unmergeCells(int minRow, int maxRow,int minCol, int maxCol);
+    Acad::ErrorStatus   unmergeCells(int minRow, int maxRow, int minCol, int maxCol);
     boost::python::tuple  isMergedCell(int row, int col);
 
     Acad::ErrorStatus   generateLayout();
@@ -176,6 +176,70 @@ public:
 
     void              setRegen();
     void              suppressInvisibleGrid(bool value);
+
+    bool            isRegenerateTableSuppressed() const;
+    void            suppressRegenerateTable(bool bSuppress);
+    void            setRecomputeTableBlock(bool newVal);
+
+    Acad::ErrorStatus setSize(int nRows, int nCols);
+    bool              canInsert(int nIndex, bool bRow) const;
+
+    Acad::ErrorStatus insertRowsAndInherit(int nIndex, int nInheritFrom, int nNumRows);
+    Acad::ErrorStatus insertColumnsAndInherit(int col, int nInheritFrom, int nNumCols);
+    bool              canDelete(int nIndex, int nCount, bool bRow) const;
+
+    bool                isEmpty(int nRow, int nCol) const;
+    AcCellRange         getMergeRange(int nRow, int nCol) const;
+
+    //TODO; just return a list of AcCell?
+    //AcDbTableIterator* getIterator(void) const;
+    //AcDbTableIterator* getIterator(const AcCellRange* pRange, AcDb::TableIteratorOption nOption) const;
+
+    bool            isContentEditable(int nRow, int nCol) const;
+    bool            isFormatEditable(int nRow, int nCol) const;
+
+    AcDb::CellState     cellState(int nRow, int nCol) const;
+    Acad::ErrorStatus   setCellState(int nRow, int nCol, AcDb::CellState nLock);
+
+    int               numContents(int nRow, int nCol) const;
+    int               createContent(int nRow, int nCol, int nIndex);
+    Acad::ErrorStatus moveContent(int nRow,int nCol,int nFromIndex,int nToIndex);
+
+    Acad::ErrorStatus deleteContent1(int nRow, int nCol);
+    Acad::ErrorStatus deleteContent2(int nRow,int nCol, int nIndex);
+    Acad::ErrorStatus deleteContent3(const AcCellRange& range);
+
+    AcDb::CellContentType contentType1(int nRow, int nCol) const;
+    AcDb::CellContentType contentType2(int nRow, int nCol,int nIndex) const;
+
+    //AcValue value(int row,int col,int nContent) const;
+    //AcValue value(int row, int col, int nContent,AcValue::FormatOption nOption) const;
+    //Acad::ErrorStatus setValue(int row,int col,int nContent, const AcValue& val);
+    //Acad::ErrorStatus setValue(int row,int col,int nContent,const AcValue& val,AcValue::ParseOption nOption);
+    //Acad::ErrorStatus setValue(int row,int col,int nContent,const wchar_t* pszText, AcValue::ParseOption nOption);
+
+   std::string        dataFormat1(int row,int col) const;
+   std::string        dataFormat2(int row,int col,int nContent) const;
+
+   Acad::ErrorStatus setDataFormat1(int row, int col, const std::string& pszFormat);
+   Acad::ErrorStatus setDataFormat2(int row, int col,int nContent, const std::string& pszFormat);
+
+   std::string        textString2(int row,int col, int nContent) const;
+   std::string        textString4(int row,int col,int nContent,AcValue::FormatOption nOption) const;
+
+   Acad::ErrorStatus  setTextString2(int row,int col,int nContent, const  std::string& text);
+
+   bool               hasFormula(int nRow,int nCol, int nContent) const;
+   std::string        getFormula(int nRow,int nCol,int nContent) const;
+
+   Acad::ErrorStatus  setFormula(int nRow,int nCol,int nContent,const  std::string& pszFormula);
+
+   PyDbObjectId         fieldId2(int row,int col, int nContent) const;
+   Acad::ErrorStatus    setFieldId2(int row,int col,int nContent, const PyDbObjectId& fieldId, AcDb::CellOption nFlag);
+
+   PyDbObjectId         blockTableRecordId2(int row,int col, int nContent) const;
+   Acad::ErrorStatus    setBlockTableRecordId2(int row,int col, int nContent, const PyDbObjectId& blkId, bool autoFit);
+
 
 
 
