@@ -932,7 +932,6 @@ Acad::ErrorStatus PyDbTable::setDataType4(int row, int col, int nContent, AcValu
     return imp->setDataType(row, col, nContent, nDataType, nUnitType);
 }
 
-
 Acad::ErrorStatus PyDbTable::setFormat(int row, int col, const std::string& pszFormat)
 {
 #ifdef BRXAPP
@@ -953,7 +952,6 @@ std::string PyDbTable::textString(int row, int col) const
         throw PyNullObject();
     return wstr_to_utf8(imp->textStringConst(row, col));
 }
-
 
 std::string PyDbTable::textString2(int row, int col, int nContent) const
 {
