@@ -1,6 +1,10 @@
 #pragma once
 #include "PyDbEnts.h"
 
+//-----------------------------------------------------------------------------------
+//PyDbTable
+void makeyDbTableWrapper();
+
 class PyDbTable : public PyDbBlockReference
 {
 public:
@@ -267,10 +271,10 @@ public:
     Acad::ErrorStatus   setTextHeight3(int row, int col, int nContent, double height);
 
     double          rotation(void) const;
-    double          rotation(int row, int col, int nContent) const;
+    double          rotation2(int row, int col, int nContent) const;
 
     Acad::ErrorStatus setRotation(double fAngle) override;
-    Acad::ErrorStatus setRotation(int row, int col, int nContent, double fAngle);
+    Acad::ErrorStatus setRotation2(int row, int col, int nContent, double fAngle);
 
     bool              isAutoScale2(int row, int col, int nContent) const;
     Acad::ErrorStatus setAutoScale2(int row, int col, int nContent, bool autoFit);
@@ -337,6 +341,15 @@ public:
 
     AcGeVector3d      breakOffset(int nIndex) const;
     Acad::ErrorStatus setBreakOffset(int nIndex, const AcGeVector3d& vec);
+
+    AcDb::TableBreakOption breakOption(void) const;
+    Acad::ErrorStatus setBreakOption(AcDb::TableBreakOption nOption);
+
+    double            breakSpacing(void) const;
+    Acad::ErrorStatus setBreakSpacing(double fSpacing);
+
+    AcCellRange       cellRange() const;
+
 
 
     static std::string className();

@@ -2,6 +2,239 @@
 #include "PyDbTable.h"
 #include "PyDbObjectId.h"
 
+using namespace boost::python;
+
+
+//-----------------------------------------------------------------------------------
+//PyDbTable
+void makeyDbTableWrapper()
+{
+    class_<PyDbTable, bases<PyDbBlockReference>>("Table")
+        .def(init<>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("tableStyle", &PyDbTable::tableStyle)
+        .def("setTableStyle", &PyDbTable::setTableStyle)
+        .def("direction", &PyDbTable::direction)
+        .def("setDirection", &PyDbTable::setDirection)
+        .def("numRows", &PyDbTable::numRows)
+        .def("numColumns", &PyDbTable::numColumns)
+        .def("width", &PyDbTable::width)
+        .def("setWidth", &PyDbTable::setWidth)
+        .def("columnWidth", &PyDbTable::columnWidth)
+        .def("setColumnWidth", &PyDbTable::setColumnWidth1)
+        .def("setColumnWidth", &PyDbTable::setColumnWidth2)
+        .def("height", &PyDbTable::height)
+        .def("setHeight", &PyDbTable::setHeight)
+        .def("rowHeight", &PyDbTable::rowHeight)
+        .def("setRowHeight", &PyDbTable::setRowHeight1)
+        .def("setRowHeight", &PyDbTable::setRowHeight2)
+        .def("minimumColumnWidth", &PyDbTable::minimumColumnWidth)
+        .def("minimumRowHeight", &PyDbTable::minimumRowHeight)
+        .def("minimumTableWidth", &PyDbTable::minimumTableWidth)
+        .def("minimumTableHeight", &PyDbTable::minimumTableHeight)
+        .def("horzCellMargin", &PyDbTable::horzCellMargin)
+        .def("setHorzCellMargin", &PyDbTable::setHorzCellMargin)
+        .def("vertCellMargin", &PyDbTable::vertCellMargin)
+        .def("setVertCellMargin", &PyDbTable::setVertCellMargin)
+        .def("flowDirection", &PyDbTable::flowDirection)
+        .def("setFlowDirection", &PyDbTable::setFlowDirection)
+        .def("isTitleSuppressed", &PyDbTable::isTitleSuppressed)
+        .def("suppressTitleRow", &PyDbTable::suppressTitleRow)
+        .def("isHeaderSuppressed", &PyDbTable::isHeaderSuppressed)
+        .def("suppressHeaderRow", &PyDbTable::suppressHeaderRow)
+        .def("alignment", &PyDbTable::alignment)
+        .def("setAlignment", &PyDbTable::setAlignment)
+        .def("isBackgroundColorNone", &PyDbTable::isBackgroundColorNone)
+        .def("setBackgroundColorNone", &PyDbTable::setBackgroundColorNone)
+        .def("backgroundColor", &PyDbTable::backgroundColor)
+        .def("setBackgroundColor", &PyDbTable::setBackgroundColor)
+        .def("contentColor", &PyDbTable::contentColor)
+        .def("setContentColor", &PyDbTable::setContentColor)
+        .def("getDataType", &PyDbTable::getDataType)
+        .def("setDataType", &PyDbTable::setDataType1)
+        .def("setDataType", &PyDbTable::setDataType2)
+        .def("textStyle", &PyDbTable::textStyle)
+        .def("setTextStyle", &PyDbTable::setTextStyle)
+        .def("textHeight", &PyDbTable::textHeight)
+        .def("setTextHeight", &PyDbTable::setTextHeight)
+        .def("gridLineWeight", &PyDbTable::gridLineWeight)
+        .def("setGridLineWeight", &PyDbTable::setGridLineWeight)
+        .def("gridColor", &PyDbTable::gridColor)
+        .def("setGridColor", &PyDbTable::setGridColor)
+        .def("gridVisibility", &PyDbTable::gridVisibility)
+        .def("setGridVisibility", &PyDbTable::setGridVisibility)
+        .def("tableStyleOverrides", &PyDbTable::tableStyleOverrides)
+        .def("clearTableStyleOverrides", &PyDbTable::clearTableStyleOverrides)
+        .def("cellType", &PyDbTable::cellType)
+        .def("setCellType", &PyDbTable::setCellType)
+        .def("getCellExtents", &PyDbTable::getCellExtents)
+        .def("attachmentPoint", &PyDbTable::attachmentPoint)
+        .def("alignment", &PyDbTable::alignment2)
+        .def("setAlignment", &PyDbTable::setAlignment2)
+        .def("isBackgroundColorNone", &PyDbTable::isBackgroundColorNone2)
+        .def("setBackgroundColorNone", &PyDbTable::setBackgroundColorNone2)
+        .def("contentColor", &PyDbTable::contentColor2)
+        .def("setContentColor", &PyDbTable::setContentColor2)
+        .def("cellStyleOverrides", &PyDbTable::cellStyleOverrides)
+        .def("clearCellOverrides", &PyDbTable::clearCellOverrides)
+        .def("deleteCellContent", &PyDbTable::deleteCellContent)
+        .def("rowType", &PyDbTable::rowType)
+        .def("getDataType", &PyDbTable::getDataType2)
+        .def("setDataType", &PyDbTable::setDataType3)
+        .def("setFormat", &PyDbTable::setFormat)
+        .def("textString", &PyDbTable::textString)
+        .def("textString", &PyDbTable::textString3)
+        .def("setTextString", &PyDbTable::setTextString)
+        .def("fieldId", &PyDbTable::fieldId)
+        .def("setFieldId", &PyDbTable::setFieldId)
+        .def("textStyle", &PyDbTable::textStyle2)
+        .def("setTextStyle", &PyDbTable::setTextStyle2)
+        .def("textHeight", &PyDbTable::textHeight2)
+        .def("setTextHeight", &PyDbTable::setTextHeight2)
+        .def("textRotation", &PyDbTable::textRotation)
+        .def("setTextRotation", &PyDbTable::setTextRotation)
+        .def("isAutoScale", &PyDbTable::isAutoScale)
+        .def("setAutoScale", &PyDbTable::setAutoScale)
+        .def("blockTableRecordId", &PyDbTable::blockTableRecordId)
+        .def("setBlockTableRecordId", &PyDbTable::setBlockTableRecordId)
+        .def("blockScale", &PyDbTable::blockScale)
+        .def("setBlockScale", &PyDbTable::setBlockScale)
+        .def("blockRotation", &PyDbTable::blockRotation)
+        .def("setBlockRotation", &PyDbTable::setBlockRotation)
+        .def("gridColor", &PyDbTable::gridColor2)
+        .def("setGridColor", &PyDbTable::setGridColor2)
+        .def("gridVisibility", &PyDbTable::gridVisibility2)
+        .def("setGridVisibility", &PyDbTable::setGridVisibility2)
+        .def("gridLineWeight", &PyDbTable::gridLineWeight2)
+        .def("setGridLineWeight", &PyDbTable::setGridLineWeight2)
+        .def("insertColumns", &PyDbTable::insertColumns)
+        .def("deleteColumns", &PyDbTable::deleteColumns)
+        .def("insertRows", &PyDbTable::insertRows)
+        .def("deleteRows", &PyDbTable::deleteRows)
+        .def("mergeCells", &PyDbTable::mergeCells)
+        .def("unmergeCells", &PyDbTable::unmergeCells)
+        .def("isMergedCell", &PyDbTable::isMergedCell)
+        .def("generateLayout", &PyDbTable::generateLayout)
+        .def("recomputeTableBlock", &PyDbTable::recomputeTableBlock)
+        .def("hitTest", &PyDbTable::hitTest)
+        .def("getSubSelection", &PyDbTable::getSubSelection)
+        .def("setSubSelection", &PyDbTable::setSubSelection)
+        .def("clearSubSelection", &PyDbTable::clearSubSelection)
+        .def("hasSubSelection", &PyDbTable::hasSubSelection)
+        .def("setPosition", &PyDbTable::setPosition)
+        .def("setNormal", &PyDbTable::setNormal)
+        .def("setRegen", &PyDbTable::setRegen)
+        .def("suppressInvisibleGrid", &PyDbTable::suppressInvisibleGrid)
+        .def("isRegenerateTableSuppressed", &PyDbTable::isRegenerateTableSuppressed)
+        .def("suppressRegenerateTable", &PyDbTable::suppressRegenerateTable)
+        .def("setRecomputeTableBlock", &PyDbTable::setRecomputeTableBlock)
+        .def("setSize", &PyDbTable::setSize)
+        .def("canInsert", &PyDbTable::canInsert)
+        .def("insertRowsAndInherit", &PyDbTable::insertRowsAndInherit)
+        .def("insertColumnsAndInherit", &PyDbTable::insertColumnsAndInherit)
+        .def("canDelete", &PyDbTable::canDelete)
+        .def("isEmpty", &PyDbTable::isEmpty)
+        .def("getMergeRange", &PyDbTable::getMergeRange)
+        .def("isContentEditable", &PyDbTable::isContentEditable)
+        .def("isFormatEditable", &PyDbTable::isFormatEditable)
+        .def("cellState", &PyDbTable::cellState)
+        .def("setCellState", &PyDbTable::setCellState)
+        .def("numContents", &PyDbTable::numContents)
+        .def("createContent", &PyDbTable::createContent)
+        .def("moveContent", &PyDbTable::moveContent)
+        .def("deleteContent", &PyDbTable::deleteContent1)
+        .def("deleteContent", &PyDbTable::deleteContent2)
+        .def("deleteContent", &PyDbTable::deleteContent3)
+        .def("contentType", &PyDbTable::contentType1)
+        .def("contentType", &PyDbTable::contentType2)
+        .def("dataFormat", &PyDbTable::dataFormat1)
+        .def("dataFormat", &PyDbTable::dataFormat2)
+        .def("setDataFormat", &PyDbTable::setDataFormat1)
+        .def("setDataFormat", &PyDbTable::setDataFormat2)
+        .def("textString", &PyDbTable::textString2)
+        .def("textString", &PyDbTable::textString4)
+        .def("setTextString", &PyDbTable::setTextString2)
+        .def("hasFormula", &PyDbTable::hasFormula)
+        .def("getFormula", &PyDbTable::getFormula)
+        .def("setFormula", &PyDbTable::setFormula)
+        .def("fieldId", &PyDbTable::fieldId2)
+        .def("setFieldId", &PyDbTable::setFieldId2)
+        .def("blockTableRecordId", &PyDbTable::blockTableRecordId2)
+        .def("setBlockTableRecordId", &PyDbTable::setBlockTableRecordId2)
+        .def("getBlockAttributeValue", &PyDbTable::getBlockAttributeValue1)
+        .def("getBlockAttributeValue", &PyDbTable::getBlockAttributeValue2)
+        .def("setBlockAttributeValue", &PyDbTable::setBlockAttributeValue1)
+        .def("setBlockAttributeValue", &PyDbTable::setBlockAttributeValue2)
+        .def("cellStyle", &PyDbTable::cellStyle)
+        .def("setCellStyle", &PyDbTable::setCellStyle)
+        .def("margin", &PyDbTable::margin)
+        .def("setMargin", &PyDbTable::setMargin)
+        .def("attachmentPoint", &PyDbTable::attachmentPoint2)
+        .def("contentColor", &PyDbTable::contentColor3)
+        .def("setContentColor", &PyDbTable::setContentColor3)
+        .def("getDataType", &PyDbTable::getDataType3)
+        .def("setDataType", &PyDbTable::setDataType4)
+        .def("textStyle", &PyDbTable::textStyle3)
+        .def("setTextStyle", &PyDbTable::setTextStyle3)
+        .def("textHeight", &PyDbTable::textHeight3)
+        .def("setTextHeight", &PyDbTable::setTextHeight3)
+        .def("rotation", &PyDbTable::rotation)
+        .def("rotation", &PyDbTable::rotation2)
+        .def("setRotation", &PyDbTable::setRotation)
+        .def("setRotation", &PyDbTable::setRotation2)
+        .def("isAutoScale", &PyDbTable::isAutoScale2)
+        .def("setAutoScale", &PyDbTable::setAutoScale2)
+        .def("scale", &PyDbTable::scale)
+        .def("setScale", &PyDbTable::setScale)
+        .def("contentLayout", &PyDbTable::contentLayout)
+        .def("setContentLayout", &PyDbTable::setContentLayout)
+        .def("isMergeAllEnabled", &PyDbTable::isMergeAllEnabled)
+        .def("enableMergeAll", &PyDbTable::enableMergeAll)
+        .def("getOverride", &PyDbTable::getOverride1)
+        .def("getOverride", &PyDbTable::getOverride2)
+        .def("setOverride", &PyDbTable::setOverride1)
+        .def("setOverride", &PyDbTable::setOverride2)
+        .def("removeAllOverrides", &PyDbTable::removeAllOverrides)
+        .def("gridLineStyle", &PyDbTable::gridLineStyle)
+        .def("setGridLineStyle", &PyDbTable::setGridLineStyle)
+        .def("gridLineWeight", &PyDbTable::gridLineWeight3)
+        .def("setGridLineWeight", &PyDbTable::setGridLineWeight3)
+        .def("gridLinetype", &PyDbTable::gridLinetype)
+        .def("setGridLinetype", &PyDbTable::setGridLinetype)
+        .def("gridColor", &PyDbTable::gridColor3)
+        .def("setGridColor", &PyDbTable::setGridColor3)
+        .def("gridVisibility", &PyDbTable::gridVisibility3)
+        .def("setGridVisibility3", &PyDbTable::setGridVisibility3)
+        .def("gridDoubleLineSpacing", &PyDbTable::gridDoubleLineSpacing)
+        .def("setGridDoubleLineSpacing", &PyDbTable::setGridDoubleLineSpacing)
+        .def("getGridProperty", &PyDbTable::getGridProperty)
+        .def("setGridProperty", &PyDbTable::setGridProperty1)
+        .def("setGridProperty", &PyDbTable::setGridProperty2)
+        .def("isLinked", &PyDbTable::isLinked)
+        .def("getDataLink", &PyDbTable::getDataLink)
+        .def("setDataLink", &PyDbTable::setDataLink)
+        .def("getDataLinkRange", &PyDbTable::getDataLinkRange)
+        .def("removeDataLink", &PyDbTable::removeDataLink1)
+        .def("removeDataLink", &PyDbTable::removeDataLink2)
+        .def("updateDataLink", &PyDbTable::updateDataLink1)
+        .def("updateDataLink", &PyDbTable::updateDataLink2)
+        .def("isBreakEnabled", &PyDbTable::isBreakEnabled)
+        .def("enableBreak", &PyDbTable::enableBreak)
+        .def("breakFlowDirection", &PyDbTable::breakFlowDirection)
+        .def("setBreakFlowDirection", &PyDbTable::setBreakFlowDirection)
+        .def("breakHeight", &PyDbTable::breakHeight)
+        .def("setBreakHeight", &PyDbTable::setBreakHeight)
+        .def("breakOffset", &PyDbTable::breakOffset)
+        .def("setBreakOffset", &PyDbTable::setBreakOffset)
+        .def("breakOption", &PyDbTable::breakOption)
+        .def("setBreakOption", &PyDbTable::setBreakOption)
+        .def("breakSpacing", &PyDbTable::breakSpacing)
+        .def("setBreakSpacing", &PyDbTable::setBreakSpacing)
+        .def("cellRange", &PyDbTable::cellRange)
+        .def("className", &PyDbTable::className).staticmethod("className")
+        ;
+}
+
 PyDbTable::PyDbTable()
     : PyDbTable(new AcDbTable(), true)
 {
@@ -1601,7 +1834,7 @@ double PyDbTable::rotation(void) const
     return imp->rotation();
 }
 
-double PyDbTable::rotation(int row, int col, int nContent) const
+double PyDbTable::rotation2(int row, int col, int nContent) const
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -1617,7 +1850,7 @@ Acad::ErrorStatus PyDbTable::setRotation(double fAngle)
     return imp->setRotation(fAngle);
 }
 
-Acad::ErrorStatus PyDbTable::setRotation(int row, int col, int nContent, double fAngle)
+Acad::ErrorStatus PyDbTable::setRotation2(int row, int col, int nContent, double fAngle)
 {
     auto imp = impObj();
     if (imp == nullptr)
@@ -1844,7 +2077,7 @@ Acad::ErrorStatus PyDbTable::setGridProperty1(int nRow, int nCol, AcDb::GridLine
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
-   return imp->setGridProperty(nRow, nCol, nGridLineTypes, gridProp);
+    return imp->setGridProperty(nRow, nCol, nGridLineTypes, gridProp);
 #endif
 }
 
@@ -2033,6 +2266,66 @@ Acad::ErrorStatus PyDbTable::setBreakOffset(int nIndex, const AcGeVector3d& vec)
     if (imp == nullptr)
         throw PyNullObject();
     return imp->setBreakOffset(nIndex, vec);
+#endif
+}
+
+AcDb::TableBreakOption PyDbTable::breakOption(void) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->breakOption();
+#endif
+}
+
+Acad::ErrorStatus PyDbTable::setBreakOption(AcDb::TableBreakOption nOption)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setBreakOption(nOption);
+#endif
+}
+
+double PyDbTable::breakSpacing(void) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->breakSpacing();
+#endif
+}
+
+Acad::ErrorStatus PyDbTable::setBreakSpacing(double fSpacing)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setBreakSpacing(fSpacing);
+#endif
+}
+
+AcCellRange PyDbTable::cellRange() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->cellRange();
 #endif
 }
 
