@@ -21,10 +21,26 @@ def OnPyUnloadDwg():
          
 def PyRxCmd_pycmd():
     try: 
-        mtext()
+       table()
     except Exception as err:
         PyRxApp.Printf(err)
         
+def table():
+    try:
+        app =  PyAp.Application()
+        docm = app.docManager()
+        doc = docm.curDocument()
+        ed = doc.editor()
+        val = ed.entsel("\nSelect")
+        if(val[2] == PyEd.PromptStatus.kNormal):
+            tb = PyDb.Table(val[0], PyDb.OpenMode.ForRead)
+            print(tb.position())
+            tb.upgradeOpen()
+            tb.setTextString(1,0,"sup")
+            print(tb.textString(1,0))
+    except Exception as err:
+        PyRxApp.Printf(err)
+            
 def mtext():
     try:
         app =  PyAp.Application()

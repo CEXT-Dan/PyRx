@@ -15,6 +15,7 @@
 #include "PyDbCurve.h"
 #include "PyDbMText.h"
 #include "PyDbTextStyleTableRecord.h"
+#include "PyDbTable.h"
 
 using namespace boost::python;
 
@@ -104,6 +105,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makeDbBlockReferenceWrapper();
     makeDbMInsertBlockeWrapper();
     makePyDbMTextWrapper();
+    makeyDbTableWrapper();
 
     makeAcDbVertexWrapper();
     makePyDb2dVertexWrapper();
