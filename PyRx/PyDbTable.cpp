@@ -359,6 +359,18 @@ AcCmColor PyDbTable::contentColor2(int row, int col) const
     return imp->contentColor(row, col);
 }
 
+AcCmColor PyDbTable::contentColor3(int row, int col, int nContent) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->contentColor(row, col, nContent);
+#endif
+}
+
 Acad::ErrorStatus PyDbTable::setContentColor(const AcCmColor& color, AcDb::RowType type)
 {
     auto imp = impObj();
@@ -367,12 +379,25 @@ Acad::ErrorStatus PyDbTable::setContentColor(const AcCmColor& color, AcDb::RowTy
     return imp->setContentColor(color, type);
 }
 
+
 Acad::ErrorStatus PyDbTable::setContentColor2(int row, int col, const AcCmColor& color)
 {
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
     return imp->setContentColor(row, col, color);
+}
+
+Acad::ErrorStatus PyDbTable::setContentColor3(int row, int col, int nContent, const AcCmColor& color)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setContentColor(row, col, nContent, color);
+#endif
 }
 
 boost::python::list PyDbTable::cellStyleOverrides(int row, int col) const
@@ -436,6 +461,17 @@ boost::python::tuple PyDbTable::getDataType2(int row, int col) const
     return boost::python::make_tuple(nDataType, nUnitType);
 }
 
+boost::python::tuple PyDbTable::getDataType3(int row, int col, int nContent) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcValue::DataType nDataType;
+    AcValue::UnitType nUnitType;
+    if (auto es = imp->getDataType(row, col, nContent, nDataType, nUnitType); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return boost::python::make_tuple(nDataType, nUnitType);
+}
 
 Acad::ErrorStatus PyDbTable::setDataType1(AcValue::DataType nDataType, AcValue::UnitType nUnitType)
 {
@@ -460,6 +496,15 @@ Acad::ErrorStatus PyDbTable::setDataType3(int row, int col, AcValue::DataType nD
         throw PyNullObject();
     return imp->setDataType(row, col, nDataType, nUnitType);
 }
+
+Acad::ErrorStatus PyDbTable::setDataType4(int row, int col, int nContent, AcValue::DataType nDataType, AcValue::UnitType nUnitType)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setDataType(row, col, nContent, nDataType, nUnitType);
+}
+
 
 Acad::ErrorStatus PyDbTable::setFormat(int row, int col, const std::string& pszFormat)
 {
@@ -553,6 +598,18 @@ PyDbObjectId PyDbTable::textStyle2(int row, int col) const
     return PyDbObjectId(imp->textStyle(row, col));
 }
 
+PyDbObjectId PyDbTable::textStyle3(int row, int col, int nContent) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return PyDbObjectId(imp->textStyle(row, col, nContent));
+#endif
+}
+
 Acad::ErrorStatus PyDbTable::setTextStyle(const PyDbObjectId& id, AcDb::RowType rowTypes)
 {
     auto imp = impObj();
@@ -567,6 +624,18 @@ Acad::ErrorStatus PyDbTable::setTextStyle2(int row, int col, const PyDbObjectId&
     if (imp == nullptr)
         throw PyNullObject();
     return imp->setTextStyle(row, col, id.m_id);
+}
+
+Acad::ErrorStatus PyDbTable::setTextStyle3(int row, int col, int nContent, const PyDbObjectId& id)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setTextStyle(row, col, nContent, id.m_id);
+#endif
 }
 
 double PyDbTable::textHeight(AcDb::RowType type) const
@@ -585,6 +654,18 @@ double PyDbTable::textHeight2(int row, int col) const
     return imp->textHeight(row, col);
 }
 
+double PyDbTable::textHeight3(int row, int col, int nContent) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->textHeight(row, col, nContent);
+#endif
+}
+
 Acad::ErrorStatus PyDbTable::setTextHeight(double height, AcDb::RowType rowTypes)
 {
     auto imp = impObj();
@@ -599,6 +680,18 @@ Acad::ErrorStatus PyDbTable::setTextHeight2(int row, int col, double height)
     if (imp == nullptr)
         throw PyNullObject();
     return imp->setTextHeight(row, col, height);
+}
+
+Acad::ErrorStatus PyDbTable::setTextHeight3(int row, int col, int nContent, double height)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setTextHeight(row, col, nContent, height);
+#endif
 }
 
 AcDb::LineWeight PyDbTable::gridLineWeight(AcDb::GridLineType gridlineType, AcDb::RowType type) const
@@ -617,6 +710,14 @@ AcDb::LineWeight PyDbTable::gridLineWeight2(int row, int col, AcDb::CellEdgeMask
     return imp->gridLineWeight(row, col, iEdge);
 }
 
+AcDb::LineWeight PyDbTable::gridLineWeight3(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->gridLineWeight(nRow, nCol, nGridLineType);
+}
+
 Acad::ErrorStatus PyDbTable::setGridLineWeight(AcDb::LineWeight lwt, int nBorders, int nRows)
 {
     auto imp = impObj();
@@ -631,6 +732,14 @@ Acad::ErrorStatus PyDbTable::setGridLineWeight2(int row, int col, AcDb::CellEdge
     if (imp == nullptr)
         throw PyNullObject();
     return imp->setGridLineWeight(row, col, nEdges, value);
+}
+
+Acad::ErrorStatus PyDbTable::setGridLineWeight3(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, AcDb::LineWeight nLineWeight)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setGridLineWeight(nRow, nCol, nGridLineTypes, nLineWeight);
 }
 
 AcCmColor PyDbTable::gridColor(AcDb::GridLineType gridlineType, AcDb::RowType type) const
@@ -649,6 +758,18 @@ AcCmColor PyDbTable::gridColor2(int row, int col, AcDb::CellEdgeMask iEdge) cons
     return imp->gridColor(row, col, iEdge);
 }
 
+AcCmColor PyDbTable::gridColor3(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->gridColor(nRow, nCol, nGridLineType);
+#endif
+}
+
 Acad::ErrorStatus PyDbTable::setGridColor(const AcCmColor& color, int nBorders, int nRows)
 {
     auto imp = impObj();
@@ -663,6 +784,18 @@ Acad::ErrorStatus PyDbTable::setGridColor2(int row, int col, AcDb::CellEdgeMask 
     if (imp == nullptr)
         throw PyNullObject();
     return imp->setGridColor(row, col, nEdges, color);
+}
+
+Acad::ErrorStatus PyDbTable::setGridColor3(int nRow, int nCol, AcDb::GridLineType nGridlineTypes, const AcCmColor& color)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setGridColor(nRow, nCol, nGridlineTypes, color);
+#endif
 }
 
 AcDb::Visibility PyDbTable::gridVisibility(AcDb::GridLineType gridlineType, AcDb::RowType type) const
@@ -681,6 +814,14 @@ AcDb::Visibility PyDbTable::gridVisibility2(int row, int col, AcDb::CellEdgeMask
     return imp->gridVisibility(row, col, iEdge);
 }
 
+AcDb::Visibility PyDbTable::gridVisibility3(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->gridVisibility(nRow, nCol, nGridLineType);
+}
+
 Acad::ErrorStatus PyDbTable::setGridVisibility(AcDb::Visibility visible, int nBorders, int nRows)
 {
     auto imp = impObj();
@@ -695,6 +836,14 @@ Acad::ErrorStatus PyDbTable::setGridVisibility2(int row, int col, AcDb::CellEdge
     if (imp == nullptr)
         throw PyNullObject();
     return imp->setGridVisibility(row, col, iEdge, value);
+}
+
+Acad::ErrorStatus PyDbTable::setGridVisibility3(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, AcDb::Visibility nVisibility)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setGridVisibility(nRow, nCol, nGridLineTypes, nVisibility);
 }
 
 boost::python::list PyDbTable::tableStyleOverrides() const
@@ -756,6 +905,14 @@ AcGePoint3d PyDbTable::attachmentPoint(int row, int col) const
     return imp->attachmentPoint(row, col);
 }
 
+AcGePoint3d PyDbTable::attachmentPoint2(int row, int col, int content) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->attachmentPoint(row, col, content);
+}
+
 PyDbObjectId PyDbTable::fieldId(int row, int col) const
 {
     auto imp = impObj();
@@ -763,7 +920,6 @@ PyDbObjectId PyDbTable::fieldId(int row, int col) const
         throw PyNullObject();
     return PyDbObjectId(imp->fieldId(row, col));
 }
-
 
 PyDbObjectId PyDbTable::fieldId2(int row, int col, int nContent) const
 {
@@ -821,12 +977,28 @@ bool PyDbTable::isAutoScale(int row, int col) const
     return imp->isAutoScale(row, col);
 }
 
+bool PyDbTable::isAutoScale2(int row, int col, int nContent) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isAutoScale(row, col, nContent);
+}
+
 Acad::ErrorStatus PyDbTable::setAutoScale(int row, int col, bool autoFit)
 {
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
     return imp->setAutoScale(row, col, autoFit);
+}
+
+Acad::ErrorStatus PyDbTable::setAutoScale2(int row, int col, int nContent, bool autoFit)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setAutoScale(row, col, nContent, autoFit);
 }
 
 PyDbObjectId PyDbTable::blockTableRecordId(int row, int col) const
@@ -1336,6 +1508,531 @@ Acad::ErrorStatus PyDbTable::setFormula(int nRow, int nCol, int nContent, const 
     if (imp == nullptr)
         throw PyNullObject();
     return imp->setFormula(nRow, nCol, nContent, utf8_to_wstr(pszFormula).c_str());
+#endif
+}
+
+std::string PyDbTable::getBlockAttributeValue1(int row, int col, const PyDbObjectId& attdefId) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    ACHAR* val = nullptr;
+    if (auto es = imp->getBlockAttributeValue(row, col, attdefId.m_id, val); es != eOk)
+        throw PyAcadErrorStatus(es);
+    std::string sval = wstr_to_utf8(val);
+    acutDelString(val);
+    return sval;
+}
+
+std::string PyDbTable::getBlockAttributeValue2(int row, int col, int nContent, const PyDbObjectId& attdefId) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    ACHAR* val = nullptr;
+    if (auto es = imp->getBlockAttributeValue(row, col, nContent, attdefId.m_id, val); es != eOk)
+        throw PyAcadErrorStatus(es);
+    std::string sval = wstr_to_utf8(val);
+    acutDelString(val);
+    return sval;
+#endif
+}
+
+Acad::ErrorStatus PyDbTable::setBlockAttributeValue1(int row, int col, const PyDbObjectId& attdefId, const std::string& value)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setBlockAttributeValue(row, col, attdefId.m_id, utf8_to_wstr(value).c_str());
+}
+
+Acad::ErrorStatus PyDbTable::setBlockAttributeValue2(int row, int col, int nContent, const PyDbObjectId& attdefId, const std::string& value)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setBlockAttributeValue(row, col, nContent, attdefId.m_id, utf8_to_wstr(value).c_str());
+#endif
+}
+
+const std::string PyDbTable::cellStyle(int nRow, int nCol) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return wstr_to_utf8(imp->cellStyle(nRow, nCol));
+}
+
+Acad::ErrorStatus PyDbTable::setCellStyle(int nRow, int nCol, const std::string& pszCellStyle)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setCellStyle(nRow, nCol, utf8_to_wstr(pszCellStyle).c_str());
+}
+
+double PyDbTable::margin(int nRow, int nCol, AcDb::CellMargin nMargin) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->margin(nRow, nCol, nMargin);
+}
+
+Acad::ErrorStatus PyDbTable::setMargin(int nRow, int nCol, AcDb::CellMargin nMargins, double fMargin)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setMargin(nRow, nCol, nMargins, fMargin);
+}
+
+double PyDbTable::rotation(void) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->rotation();
+}
+
+double PyDbTable::rotation(int row, int col, int nContent) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->rotation(row, col, nContent);
+}
+
+Acad::ErrorStatus PyDbTable::setRotation(double fAngle)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setRotation(fAngle);
+}
+
+Acad::ErrorStatus PyDbTable::setRotation(int row, int col, int nContent, double fAngle)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setRotation(row, col, nContent, fAngle);
+}
+
+double PyDbTable::scale(int row, int col, int nContent) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->scale(row, col, nContent);
+#endif
+}
+
+Acad::ErrorStatus PyDbTable::setScale(int row, int col, int nContent, double scale)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setScale(row, col, nContent, scale);
+#endif
+}
+
+AcDb::CellContentLayout PyDbTable::contentLayout(int row, int col) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->contentLayout(row, col);
+}
+
+Acad::ErrorStatus PyDbTable::setContentLayout(int row, int col, AcDb::CellContentLayout nLayout)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setContentLayout(row, col, nLayout);
+}
+
+bool PyDbTable::isMergeAllEnabled(int nRow, int nCol) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isMergeAllEnabled(nRow, nCol);
+#endif
+}
+
+Acad::ErrorStatus PyDbTable::enableMergeAll(int nRow, int nCol, bool bEnable)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->enableMergeAll(nRow, nCol, bEnable);
+#endif
+}
+
+AcDb::CellProperty PyDbTable::getOverride1(int nRow, int nCol, int nContent) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->getOverride(nRow, nCol, nContent);
+#endif
+}
+
+AcDb::GridProperty PyDbTable::getOverride2(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->getOverride(nRow, nCol, nGridLineType);
+#endif
+}
+
+Acad::ErrorStatus PyDbTable::setOverride1(int nRow, int nCol, int nContent, AcDb::CellProperty nOverride)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setOverride(nRow, nCol, nContent, nOverride);
+#endif
+}
+
+Acad::ErrorStatus PyDbTable::setOverride2(int nRow, int nCol, AcDb::GridLineType nGridLineType, AcDb::GridProperty nOverride)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setOverride(nRow, nCol, nGridLineType, nOverride);
+#endif
+}
+
+Acad::ErrorStatus PyDbTable::removeAllOverrides(int nRow, int nCol)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->removeAllOverrides(nRow, nCol);
+#endif
+}
+
+AcDb::GridLineStyle PyDbTable::gridLineStyle(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->gridLineStyle(nRow, nCol, nGridLineType);
+#endif
+}
+
+Acad::ErrorStatus PyDbTable::setGridLineStyle(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, AcDb::GridLineStyle nLineStyle)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setGridLineStyle(nRow, nCol, nGridLineTypes, nLineStyle);
+#endif
+}
+
+PyDbObjectId PyDbTable::gridLinetype(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return PyDbObjectId(imp->gridLinetype(nRow, nCol, nGridLineType));
+#endif
+}
+
+Acad::ErrorStatus PyDbTable::setGridLinetype(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, const PyDbObjectId& idLinetype)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setGridLinetype(nRow, nCol, nGridLineTypes, idLinetype.m_id);
+#endif
+}
+
+double PyDbTable::gridDoubleLineSpacing(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->gridDoubleLineSpacing(nRow, nCol, nGridLineType);
+#endif
+}
+
+Acad::ErrorStatus PyDbTable::setGridDoubleLineSpacing(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, double fSpacing)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setGridDoubleLineSpacing(nRow, nCol, nGridLineTypes, fSpacing);
+#endif
+}
+
+AcGridProperty PyDbTable::getGridProperty(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    AcGridProperty prop;
+    if (auto es = imp->getGridProperty(nRow, nCol, nGridLineType, prop); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return prop;
+#endif
+}
+
+Acad::ErrorStatus PyDbTable::setGridProperty1(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, const AcGridProperty& gridProp)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+   return imp->setGridProperty(nRow, nCol, nGridLineTypes, gridProp);
+#endif
+}
+
+Acad::ErrorStatus PyDbTable::setGridProperty2(const AcCellRange& rangeIn, AcDb::GridLineType nGridLineTypes, const AcGridProperty& gridProp)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setGridProperty(rangeIn, nGridLineTypes, gridProp);
+#endif
+}
+
+bool PyDbTable::isLinked(int nRow, int nCol) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isLinked(nRow, nCol);
+#endif
+}
+
+PyDbObjectId PyDbTable::getDataLink(int nRow, int nCol) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return  PyDbObjectId(imp->getDataLink(nRow, nCol));
+#endif
+}
+
+Acad::ErrorStatus PyDbTable::setDataLink(const AcCellRange& range, const PyDbObjectId& idDataLink, bool bUpdate)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setDataLink(range, idDataLink.m_id, bUpdate);
+#endif
+}
+
+AcCellRange PyDbTable::getDataLinkRange(int nRow, int nCol) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->getDataLinkRange(nRow, nCol);
+#endif
+}
+
+Acad::ErrorStatus PyDbTable::removeDataLink1(void)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->removeDataLink();
+#endif
+}
+
+Acad::ErrorStatus PyDbTable::removeDataLink2(int nRow, int nCol)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->removeDataLink(nRow, nCol);
+#endif
+}
+
+Acad::ErrorStatus PyDbTable::updateDataLink1(AcDb::UpdateDirection nDir, AcDb::UpdateOption nOption)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->updateDataLink(nDir, nOption);
+#endif
+}
+
+Acad::ErrorStatus PyDbTable::updateDataLink2(int nRow, int nCol, AcDb::UpdateDirection nDir, AcDb::UpdateOption nOption)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->updateDataLink(nRow, nCol, nDir, nOption);
+#endif
+}
+
+bool PyDbTable::isBreakEnabled(void) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->isBreakEnabled();
+}
+
+Acad::ErrorStatus PyDbTable::enableBreak(bool bEnable)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->enableBreak(bEnable);
+}
+
+AcDb::TableBreakFlowDirection PyDbTable::breakFlowDirection(void) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->breakFlowDirection();
+#endif
+}
+
+Acad::ErrorStatus PyDbTable::setBreakFlowDirection(AcDb::TableBreakFlowDirection nDir)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setBreakFlowDirection(nDir);
+#endif
+}
+
+double PyDbTable::breakHeight(int nIndex) const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->breakHeight(nIndex);
+}
+
+Acad::ErrorStatus PyDbTable::setBreakHeight(int nIndex, double fHeight)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setBreakHeight(nIndex, fHeight);
+}
+
+AcGeVector3d PyDbTable::breakOffset(int nIndex) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->breakOffset(nIndex);
+#endif
+}
+
+Acad::ErrorStatus PyDbTable::setBreakOffset(int nIndex, const AcGeVector3d& vec)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setBreakOffset(nIndex, vec);
 #endif
 }
 
