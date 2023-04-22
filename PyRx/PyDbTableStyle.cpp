@@ -34,11 +34,8 @@ std::string PyDbTableStyle::getName()
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcString name;
-    if (auto es = imp->getName(name); es != eOk)
+    if (auto es = impObj()->getName(name); es != eOk)
         throw PyAcadErrorStatus(es);
     return wstr_to_utf8(name);
 #endif
@@ -46,58 +43,87 @@ std::string PyDbTableStyle::getName()
 
 Acad::ErrorStatus PyDbTableStyle::setName(const std::string& pszName)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setName(utf8_to_wstr(pszName).c_str());
+    return impObj()->setName(utf8_to_wstr(pszName).c_str());
 }
 
 std::string PyDbTableStyle::description(void) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return wstr_to_utf8(imp->description());
+    return wstr_to_utf8(impObj()->description());
 }
 
 Acad::ErrorStatus PyDbTableStyle::setDescription(const std::string& pszDescription)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setName(utf8_to_wstr(pszDescription).c_str());
+    return impObj()->setName(utf8_to_wstr(pszDescription).c_str());
 }
 
 Adesk::UInt32 PyDbTableStyle::bitFlags() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->bitFlags();
+    return impObj()->bitFlags();
 }
 
 Acad::ErrorStatus PyDbTableStyle::setBitFlags(Adesk::UInt32 flags)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setBitFlags(flags);
+    return impObj()->setBitFlags(flags);
 }
 
 AcDb::FlowDirection PyDbTableStyle::flowDirection(void) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->flowDirection();
+    return impObj()->flowDirection();
 }
 
 Acad::ErrorStatus PyDbTableStyle::setFlowDirection(AcDb::FlowDirection flow)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setFlowDirection(flow);
+    return  impObj()->setFlowDirection(flow);
+}
+
+double PyDbTableStyle::horzCellMargin(void) const
+{
+    return  impObj()->horzCellMargin();
+}
+
+Acad::ErrorStatus PyDbTableStyle::setHorzCellMargin(double dCellMargin)
+{
+    return impObj()->setHorzCellMargin(dCellMargin);
+}
+
+double PyDbTableStyle::vertCellMargin(void) const
+{
+    return impObj()->vertCellMargin();
+}
+
+Acad::ErrorStatus PyDbTableStyle::setVertCellMargin(double dCellMargin)
+{
+    return impObj()->setVertCellMargin(dCellMargin);
+}
+
+bool PyDbTableStyle::isTitleSuppressed(void) const
+{
+    return impObj()->isTitleSuppressed();
+}
+
+Acad::ErrorStatus PyDbTableStyle::suppressTitleRow(bool bValue)
+{
+    return impObj()->suppressTitleRow(bValue);
+}
+
+bool PyDbTableStyle::isHeaderSuppressed(void) const
+{
+    return impObj()->isHeaderSuppressed();
+}
+
+Acad::ErrorStatus PyDbTableStyle::suppressHeaderRow(bool bValue)
+{
+    return impObj()->suppressHeaderRow(bValue);
+}
+
+PyDbObjectId PyDbTableStyle::textStyle(AcDb::RowType rowType) const
+{
+    return PyDbObjectId(impObj()->textStyle(rowType));
+}
+
+Acad::ErrorStatus PyDbTableStyle::setTextStyle(const PyDbObjectId& id, AcDb::RowType rowType)
+{
+    return impObj()->setTextStyle(id.m_id, rowType);
 }
 
 std::string PyDbTableStyle::className()
@@ -107,5 +133,7 @@ std::string PyDbTableStyle::className()
 
 AcDbTableStyle* PyDbTableStyle::impObj() const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject();
     return static_cast<AcDbTableStyle*>(m_pImp.get());
 }

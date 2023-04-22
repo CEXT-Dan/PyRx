@@ -19,11 +19,26 @@ public:
     std::string description(void) const;
     Acad::ErrorStatus  setDescription(const std::string& pszDescription);
 
-    virtual Adesk::UInt32       bitFlags() const;
-    virtual Acad::ErrorStatus   setBitFlags(Adesk::UInt32 flags);
+    Adesk::UInt32       bitFlags() const;
+    Acad::ErrorStatus   setBitFlags(Adesk::UInt32 flags);
 
-    virtual AcDb::FlowDirection flowDirection(void) const;
-    virtual Acad::ErrorStatus   setFlowDirection(AcDb::FlowDirection flow);
+    AcDb::FlowDirection flowDirection(void) const;
+    Acad::ErrorStatus   setFlowDirection(AcDb::FlowDirection flow);
+
+    virtual double horzCellMargin(void) const;
+    Acad::ErrorStatus setHorzCellMargin(double dCellMargin);
+
+    double vertCellMargin(void) const;
+    Acad::ErrorStatus setVertCellMargin(double dCellMargin);
+
+    bool isTitleSuppressed(void) const;
+    Acad::ErrorStatus suppressTitleRow(bool bValue);
+
+    bool isHeaderSuppressed(void) const;
+    Acad::ErrorStatus suppressHeaderRow(bool bValue);
+
+    PyDbObjectId        textStyle(AcDb::RowType rowType) const;
+    Acad::ErrorStatus   setTextStyle(const PyDbObjectId& id, AcDb::RowType rowType);
 
 
     static std::string className();
