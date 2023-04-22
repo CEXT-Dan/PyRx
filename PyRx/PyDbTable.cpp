@@ -4,7 +4,6 @@
 
 using namespace boost::python;
 
-
 //-----------------------------------------------------------------------------------
 //PyDbTable
 void makeyDbTableWrapper()
@@ -234,6 +233,7 @@ void makeyDbTableWrapper()
         .def("getIterator", &PyDbTable::getIterator1)
         .def("getIterator", &PyDbTable::getIterator2)
         .def("getIterator", &PyDbTable::getIterator3)
+        .def("getIterator", &PyDbTable::getIterator4)
         .def("className", &PyDbTable::className).staticmethod("className")
         ;
     class_ <AcCell>("Cell")
@@ -1801,6 +1801,22 @@ boost::python::list PyDbTable::getIterator3(const AcCellRange& pRange, AcDb::Tab
         throw PyNullObject();
     boost::python::list l;
     std::unique_ptr<AcDbTableIterator> iter(imp->getIterator(&pRange, nOption));
+    for (iter->start(); !iter->done(); iter->step())
+        l.append(iter->getCell());
+    return l;
+#endif
+}
+
+boost::python::list PyDbTable::getIterator4(const AcCellRange& pRange) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    boost::python::list l;
+    std::unique_ptr<AcDbTableIterator> iter(imp->getIterator(&pRange, AcDb::kTableIteratorNone));
     for (iter->start(); !iter->done(); iter->step())
         l.append(iter->getCell());
     return l;
