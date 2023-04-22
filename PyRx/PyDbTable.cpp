@@ -231,6 +231,9 @@ void makeyDbTableWrapper()
         .def("breakSpacing", &PyDbTable::breakSpacing)
         .def("setBreakSpacing", &PyDbTable::setBreakSpacing)
         .def("cellRange", &PyDbTable::cellRange)
+        .def("getIterator", &PyDbTable::getIterator1)
+        .def("getIterator", &PyDbTable::getIterator2)
+        .def("getIterator", &PyDbTable::getIterator3)
         .def("className", &PyDbTable::className).staticmethod("className")
         ;
     class_ <AcCell>("Cell")
@@ -1754,6 +1757,54 @@ AcCellRange PyDbTable::getMergeRange(int nRow, int nCol) const
     if (imp == nullptr)
         throw PyNullObject();
     return imp->getMergeRange(nRow, nCol);
+}
+
+boost::python::list PyDbTable::getIterator1()
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    boost::python::list l;
+    std::unique_ptr<AcDbTableIterator> iter(imp->getIterator());
+    for (iter->start(); !iter->done(); iter->step())
+        l.append(iter->getCell());
+    return l;
+#endif
+}
+
+boost::python::list PyDbTable::getIterator2(AcDb::TableIteratorOption nOption) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    boost::python::list l;
+    std::unique_ptr<AcDbTableIterator> iter(imp->getIterator(nullptr, nOption));
+    for (iter->start(); !iter->done(); iter->step())
+        l.append(iter->getCell());
+    return l;
+#endif
+}
+
+boost::python::list PyDbTable::getIterator3(const AcCellRange& pRange, AcDb::TableIteratorOption nOption) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    boost::python::list l;
+    std::unique_ptr<AcDbTableIterator> iter(imp->getIterator(&pRange, nOption));
+    for (iter->start(); !iter->done(); iter->step())
+        l.append(iter->getCell());
+    return l;
+#endif
 }
 
 bool PyDbTable::isContentEditable(int nRow, int nCol) const

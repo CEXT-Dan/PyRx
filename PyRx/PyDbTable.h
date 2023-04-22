@@ -199,6 +199,10 @@ public:
     //AcDbTableIterator* getIterator(void) const;
     //AcDbTableIterator* getIterator(const AcCellRange* pRange, AcDb::TableIteratorOption nOption) const;
 
+    boost::python::list getIterator1();
+    boost::python::list getIterator2(AcDb::TableIteratorOption nOption) const;
+    boost::python::list getIterator3(const AcCellRange& pRange,AcDb::TableIteratorOption nOption) const;
+
     bool            isContentEditable(int nRow, int nCol) const;
     bool            isFormatEditable(int nRow, int nCol) const;
 
