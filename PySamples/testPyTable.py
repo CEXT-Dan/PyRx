@@ -26,10 +26,12 @@ def PyRxCmd_pycreate_table():
         range.bottomRow = 6
         range.rightColumn = 4
         
-        for cell in table.getIterator(range):
+        iter = table.getIterator(range)
+        
+        for cell in iter:
            table.setTextString(cell.row,cell.column,"sup {},{}".format(cell.row, cell.column))
            
-        for cell in table.getIterator(range):
+        for cell in iter:
            print(table.textString(cell.row, cell.column))
            
     except Exception as err:
