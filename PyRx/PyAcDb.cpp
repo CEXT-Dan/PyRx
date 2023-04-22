@@ -16,6 +16,7 @@
 #include "PyDbMText.h"
 #include "PyDbTextStyleTableRecord.h"
 #include "PyDbTable.h"
+#include "PyDbTableStyle.h"
 
 using namespace boost::python;
 
@@ -98,6 +99,8 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbBlockBeginWrapper();
     makeAcDbBlockEndWrapper();
     makeAcDbSequenceEndWrapper();
+
+    makeAcDbTableStyleWrapper();
 
     makePyDbTextWrapper();//combine ents?
     makePyDbAttributeDefinitionWrapper();
