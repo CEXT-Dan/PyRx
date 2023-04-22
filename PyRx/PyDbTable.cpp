@@ -869,8 +869,8 @@ boost::python::tuple PyDbTable::getDataType(AcDb::RowType type) const
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
-    AcValue::DataType nDataType;
-    AcValue::UnitType nUnitType;
+    AcValue::DataType nDataType = AcValue::kUnknown;
+    AcValue::UnitType nUnitType = AcValue::kUnitless;
     if (auto es = imp->getDataType(nDataType, nUnitType, type); es != eOk)
         throw PyAcadErrorStatus(es);
     return boost::python::make_tuple(nDataType, nUnitType);
