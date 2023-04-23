@@ -5,29 +5,51 @@
 
 using namespace boost::python;
 
+
+PyJigBase::PyJigBase()
+    : AcEdJig()
+{
+}
+
+AcDbEntity* PyJigBase::entity() const
+{
+    return nullptr;
+}
+
+AcEdJig::DragStatus PyJigBase::sampler()
+{
+    return AcEdJig::DragStatus::kNoChange;
+}
+
+Adesk::Boolean PyJigBase::update()
+{
+    return false;
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------
 void makeAcEdJigWrapper()
 {
-    class_<PyJig, bases<PyRxObject>>("PyJig")
+    class_<PyJig>("Jig", boost::python::no_init)
+        .def(init<const PyDbEntity&>())
         .def("drag", &PyJig::drag1)
         .def("sampler", &PyJig::sampler)
         .def("update", &PyJig::update)
-        .def("append", &PyJig::append)
-        .def("keywordList", &PyJig::keywordList)
-        .def("setKeywordList", &PyJig::setKeywordList)
-        .def("dispPrompt", &PyJig::dispPrompt)
-        .def("setDispPrompt", &PyJig::setDispPrompt)
-        .def("acquireString", &PyJig::acquireString)
+        .def("append", &PyJig::append1)
+        .def("keywordList", &PyJig::keywordList1)
+        .def("setKeywordList", &PyJig::setKeywordList1)
+        .def("dispPrompt", &PyJig::dispPrompt1)
+        .def("setDispPrompt", &PyJig::setDispPrompt1)
+        .def("acquireString", &PyJig::acquireString1)
         .def("acquireAngle", &PyJig::acquireAngle1)
         .def("acquireAngle", &PyJig::acquireAngle2)
         .def("acquireDist", &PyJig::acquireDist1)
         .def("acquireDist", &PyJig::acquireDist2)
         .def("acquirePoint", &PyJig::acquirePoint1)
         .def("acquirePoint", &PyJig::acquirePoint2)
-        .def("specialCursorType", &PyJig::specialCursorType)
-        .def("setSpecialCursorType", &PyJig::setSpecialCursorType)
-        .def("userInputControls", &PyJig::userInputControls)
-        .def("setUserInputControls", &PyJig::setUserInputControls)
-        .def("entity", &PyJig::entity)
+        .def("specialCursorType", &PyJig::specialCursorType1)
+        .def("setSpecialCursorType", &PyJig::setSpecialCursorType1)
+        .def("userInputControls", &PyJig::userInputControls1)
+        .def("setUserInputControls", &PyJig::setUserInputControls1)
         .def("className", &PyJig::className).staticmethod("className")
         ;
     enum_<AcEdJig::DragStatus>("DragStatus")
@@ -87,14 +109,14 @@ void makeAcEdJigWrapper()
         ;
 }
 
-PyJig::PyJig()
-    : PyRxObject(new AcEdJig(), true, false)
+PyJig::PyJig(const PyDbEntity& ent)
+    : m_pEnt(ent.impObj()), PyJigBase()
 {
 }
 
 AcEdJig::DragStatus PyJig::drag1()
 {
-    return impObj()->drag();
+    return this->drag();
 }
 
 #ifdef NEVER
@@ -106,44 +128,48 @@ AcEdJig::DragStatus PyJig::drag2(const AcEdDragStyle& style)
 
 AcEdJig::DragStatus PyJig::sampler()
 {
-    return impObj()->sampler();
+    if (override f = this->get_override("sampler")) 
+        return f();
+    return AcEdJig::DragStatus::kNoChange;
 }
 
 Adesk::Boolean PyJig::update()
 {
-    return impObj()->update();
+    if (override f = this->get_override("update"))
+        return f();
+    return true;
 }
 
-PyDbObjectId PyJig::append()
+PyDbObjectId PyJig::append1()
 {
-    return PyDbObjectId(impObj()->append());
+    return PyDbObjectId(this->append());
 }
 
-std::string PyJig::keywordList()
+std::string PyJig::keywordList1()
 {
-    return wstr_to_utf8(impObj()->keywordList());
+    return wstr_to_utf8(this->keywordList());
 }
 
-void PyJig::setKeywordList(const std::string& val)
+void PyJig::setKeywordList1(const std::string& val)
 {
-    impObj()->setKeywordList(utf8_to_wstr(val).c_str());
+    this->setKeywordList(utf8_to_wstr(val).c_str());
 }
 
-std::string PyJig::dispPrompt()
+std::string PyJig::dispPrompt1()
 {
-    return wstr_to_utf8(impObj()->dispPrompt());
+    return wstr_to_utf8(this->dispPrompt());
 }
 
-void PyJig::setDispPrompt(const std::string& val)
+void PyJig::setDispPrompt1(const std::string& val)
 {
-    impObj()->setDispPrompt(utf8_to_wstr(val).c_str());
+  this->setDispPrompt(utf8_to_wstr(val).c_str());
 }
 
-boost::python::tuple PyJig::acquireString()
+boost::python::tuple PyJig::acquireString1()
 {
 #ifdef ARXAPP
     AcString value;
-    auto result = impObj()->acquireString(value);
+    auto result = this->acquireString(value);
     return boost::python::make_tuple(result, wstr_to_utf8(value));
 #else
     throw PyNotimplementedByHost();
@@ -153,68 +179,68 @@ boost::python::tuple PyJig::acquireString()
 boost::python::tuple PyJig::acquireAngle1()
 {
     double value;
-    auto result = impObj()->acquireAngle(value);
+    auto result = this->acquireAngle(value);
     return boost::python::make_tuple(result,value);
 }
 
 boost::python::tuple PyJig::acquireAngle2(const AcGePoint3d& basePnt)
 {
     double value;
-    auto result = impObj()->acquireAngle(value, basePnt);
+    auto result = this->acquireAngle(value, basePnt);
     return boost::python::make_tuple(result, value);
 }
 
 boost::python::tuple PyJig::acquireDist1()
 {
     double value;
-    auto result = impObj()->acquireDist(value);
+    auto result = this->acquireDist(value);
     return boost::python::make_tuple(result, value);
 }
 
 boost::python::tuple PyJig::acquireDist2(const AcGePoint3d& basePnt)
 {
     double value;
-    auto result = impObj()->acquireDist(value, basePnt);
+    auto result = this->acquireDist(value, basePnt);
     return boost::python::make_tuple(result, value);
 }
 
 boost::python::tuple PyJig::acquirePoint1()
 {
     AcGePoint3d value;
-    auto result = impObj()->acquirePoint(value);
+    auto result = this->acquirePoint(value);
     return boost::python::make_tuple(result, value);
 }
 
 boost::python::tuple PyJig::acquirePoint2(const AcGePoint3d& basePnt)
 {
     AcGePoint3d value;
-    auto result = impObj()->acquirePoint(value, basePnt);
+    auto result = this->acquirePoint(value, basePnt);
     return boost::python::make_tuple(result, value);
 }
 
-AcEdJig::CursorType PyJig::specialCursorType()
+AcEdJig::CursorType PyJig::specialCursorType1()
 {
-    return impObj()->specialCursorType();
+    return this->specialCursorType();
 }
 
-void PyJig::setSpecialCursorType(AcEdJig::CursorType val)
+void PyJig::setSpecialCursorType1(AcEdJig::CursorType val)
 {
-    impObj()->setSpecialCursorType(val);
+    this->setSpecialCursorType(val);
 }
 
-AcEdJig::UserInputControls PyJig::userInputControls()
+AcEdJig::UserInputControls PyJig::userInputControls1()
 {
-    return impObj()->userInputControls();
+    return this->userInputControls();
 }
 
-void PyJig::setUserInputControls(AcEdJig::UserInputControls val)
+void PyJig::setUserInputControls1(AcEdJig::UserInputControls val)
 {
-    return impObj()->setUserInputControls(val);
+    return this->setUserInputControls(val);
 }
 
-PyDbEntity PyJig::entity() const
+AcDbEntity* PyJig::entity() const
 {
-    return PyDbEntity(nullptr, false);
+    return m_pEnt;
 }
 
 std::string PyJig::className()
@@ -222,9 +248,3 @@ std::string PyJig::className()
     return "AcEdJig";
 }
 
-AcEdJig* PyJig::impObj() const
-{
-    if (m_pImp == nullptr)
-        throw PyNullObject();
-    return static_cast<AcEdJig*>(m_pImp.get());
-}

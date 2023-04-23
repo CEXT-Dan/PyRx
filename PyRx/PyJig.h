@@ -4,13 +4,24 @@
 class PyDbEntity;
 class PyDbObjectId;
 
+class PyJigBase : public AcEdJig
+{
+public:
+    PyJigBase();
+    virtual ~PyJigBase() override = default;
+    virtual AcDbEntity* entity() const;
+    virtual AcEdJig::DragStatus sampler();
+    virtual Adesk::Boolean update();
+};
+
+
 void makeAcEdJigWrapper();
 
-class PyJig : public PyRxObject
+class PyJig : public PyJigBase, public boost::python::wrapper<PyJig>
 
 {
 public:
-    PyJig();
+    PyJig(const PyDbEntity& ent);
     virtual ~PyJig() = default;
 
     AcEdJig::DragStatus drag1();
@@ -21,15 +32,15 @@ public:
     virtual AcEdJig::DragStatus sampler();
     virtual Adesk::Boolean update();
 
-    PyDbObjectId append();
+    PyDbObjectId append1();
 
-    std::string keywordList();
-    void        setKeywordList(const std::string& val);
+    std::string keywordList1();
+    void        setKeywordList1(const std::string& val);
 
-    std::string dispPrompt();
-    void        setDispPrompt(const std::string& val);
+    std::string dispPrompt1();
+    void        setDispPrompt1(const std::string& val);
 
-    boost::python::tuple acquireString();
+    boost::python::tuple acquireString1();
 
     boost::python::tuple acquireAngle1();
     boost::python::tuple acquireAngle2(const AcGePoint3d& basePnt);
@@ -40,16 +51,17 @@ public:
     boost::python::tuple acquirePoint1();
     boost::python::tuple acquirePoint2(const AcGePoint3d& basePnt);
 
-    AcEdJig::CursorType specialCursorType();
-    void                setSpecialCursorType(AcEdJig::CursorType val);
+    AcEdJig::CursorType specialCursorType1();
+    void                setSpecialCursorType1(AcEdJig::CursorType val);
 
-    AcEdJig::UserInputControls userInputControls();
-    void                       setUserInputControls(AcEdJig::UserInputControls val);
+    AcEdJig::UserInputControls userInputControls1();
+    void                       setUserInputControls1(AcEdJig::UserInputControls val);
 
-    virtual PyDbEntity entity() const;
+    virtual AcDbEntity* entity() const override;
 
     static std::string className();
-public:
-    AcEdJig* impObj() const;
+
+    AcDbEntity* m_pEnt = nullptr;
+
 };
 

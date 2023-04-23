@@ -55,7 +55,6 @@ public:
     virtual void resetImp(AcRxObject* ptr, bool autoDelete, bool isDbObject);
     bool isNull();
     static std::string className();
-
 public:
     AcRxObject* impObj() const;
 
