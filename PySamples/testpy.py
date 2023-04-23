@@ -32,7 +32,7 @@ def table():
         doc = docm.curDocument()
         ed = doc.editor()
         val = ed.entsel("\nSelect")
-        if(val[0] == PyEd.PromptStatus.kNormal):
+        if(val[0] == PyEd.PromptStatus.eNormal):
             tb = PyDb.Table(val[1], PyDb.OpenMode.ForRead)
             print(tb.position())
             tb.upgradeOpen()
@@ -48,7 +48,7 @@ def mtext():
         doc = docm.curDocument()
         ed = doc.editor()
         val = ed.entsel("\nSelect")
-        if(val[0] == PyEd.PromptStatus.kNormal):
+        if(val[0] == PyEd.PromptStatus.eNormal):
             mt = PyDb.MText(val[1], PyDb.OpenMode.ForRead)
             print(type(mt.attachment()))
            
@@ -118,7 +118,7 @@ def getSplitCurves():
     entres = ed.entsel("\nSelect")
     pntres = ed.getPoint("\nPoint On Curve")
 
-    if(entres[0] == PyEd.PromptStatus.kNormal):
+    if(entres[0] == PyEd.PromptStatus.eNormal):
         entId = entres[1]
         curve = PyDb.Curve(entId, PyDb.OpenMode.kForRead)
         pnt = pntres[1]

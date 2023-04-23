@@ -8,7 +8,7 @@ import PyGi# = Graphics interface
 import PyDb# = database
 import PyAp# = application, document classes services 
 import PyEd# = editor 
-
+print("testname = pydbtest")
 
 class TestDatabase(unittest.TestCase):
         def test_fail(self):

@@ -19,7 +19,7 @@ class TestDbPoint(unittest.TestCase):
                 model = PyDb.BlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
                 model.appendAcDbEntity(point)
                 self.assertEqual(point.position(),PyGe.Point3d(1,2,3))
-                self.assertNotEqual(point.objectId(), PyDb.DbObjectId())
+                self.assertNotEqual(point.objectId(), PyDb.ObjectId())
                 self.assertEqual(PyDb.Point.className(),"AcDbPoint")
                 point.downgradeOpen()
                 self.assertFalse(point.isWriteEnabled())

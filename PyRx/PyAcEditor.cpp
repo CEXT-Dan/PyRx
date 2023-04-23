@@ -23,7 +23,7 @@ void makeAcEditorWrapper()
         .def("findFile", &PyAcEditor::findFile)
         .def("findTrustedFile", &PyAcEditor::findTrustedFile)
 
-        .def("getInt", &PyAcEditor::getInteger)
+        .def("getInteger", &PyAcEditor::getInteger)
         .def("getDouble", &PyAcEditor::getDouble)
         .def("getReal", &PyAcEditor::getDouble)
         .def("getAngle", &PyAcEditor::getAngle)

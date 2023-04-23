@@ -43,7 +43,7 @@ def PyRxCmd_pyjig():
         ed = doc.editor()
 
         point_result_tuple = ed.getPoint("\nPick startPoint")
-        if point_result_tuple[0] != PyEd.PromptStatus.kNormal:
+        if point_result_tuple[0] != PyEd.PromptStatus.eNormal:
             print('oops')
             return
 
@@ -53,7 +53,7 @@ def PyRxCmd_pyjig():
         line.setDatabaseDefaults()
 
         jig = MyJig(line, point_result_tuple[1])
-        if jig.drag() != PyEd.DragStatus.kNormal:
+        if jig.drag() != PyEd.DragStatus.eNormal:
             print('oops')
             return
 

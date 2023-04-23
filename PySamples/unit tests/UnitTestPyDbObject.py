@@ -28,7 +28,7 @@ class TestDbObject(unittest.TestCase):
                 self.assertEqual(bdo.downgradeOpen(), PyDb.ErrorStatus.Ok)
                 self.assertEqual(bdo.isWriteEnabled(), False)
                 #
-                self.assertEqual(bdo.database(), PyDb.DbHostApplicationServices().workingDatabase())  
+                self.assertEqual(bdo.database(), PyDb.HostApplicationServices().workingDatabase())  
                 #
                 self.assertEqual(bdo.close(), PyDb.ErrorStatus.Ok)  
                 self.assertEqual(bdo.isReadEnabled(), False)
