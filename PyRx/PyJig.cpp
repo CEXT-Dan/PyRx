@@ -5,51 +5,30 @@
 
 using namespace boost::python;
 
-
-PyJigBase::PyJigBase()
-    : AcEdJig()
-{
-}
-
-AcDbEntity* PyJigBase::entity() const
-{
-    return nullptr;
-}
-
-AcEdJig::DragStatus PyJigBase::sampler()
-{
-    return AcEdJig::DragStatus::kNoChange;
-}
-
-Adesk::Boolean PyJigBase::update()
-{
-    return false;
-}
-
 //-----------------------------------------------------------------------------------------------------------------------------------
 void makeAcEdJigWrapper()
 {
-    class_<PyJig>("Jig", boost::python::no_init)
+    class_<PyJig, boost::noncopyable>("Jig", boost::python::no_init)
         .def(init<const PyDbEntity&>())
-        .def("drag", &PyJig::drag1)
+        .def("drag", &PyJig::dragwr1)
         .def("sampler", &PyJig::sampler)
         .def("update", &PyJig::update)
-        .def("append", &PyJig::append1)
-        .def("keywordList", &PyJig::keywordList1)
-        .def("setKeywordList", &PyJig::setKeywordList1)
-        .def("dispPrompt", &PyJig::dispPrompt1)
-        .def("setDispPrompt", &PyJig::setDispPrompt1)
-        .def("acquireString", &PyJig::acquireString1)
-        .def("acquireAngle", &PyJig::acquireAngle1)
-        .def("acquireAngle", &PyJig::acquireAngle2)
-        .def("acquireDist", &PyJig::acquireDist1)
-        .def("acquireDist", &PyJig::acquireDist2)
-        .def("acquirePoint", &PyJig::acquirePoint1)
-        .def("acquirePoint", &PyJig::acquirePoint2)
-        .def("specialCursorType", &PyJig::specialCursorType1)
-        .def("setSpecialCursorType", &PyJig::setSpecialCursorType1)
-        .def("userInputControls", &PyJig::userInputControls1)
-        .def("setUserInputControls", &PyJig::setUserInputControls1)
+        .def("append", &PyJig::appendwr)
+        .def("keywordList", &PyJig::keywordListwr)
+        .def("setKeywordList", &PyJig::setKeywordListwr)
+        .def("dispPrompt", &PyJig::dispPromptwr)
+        .def("setDispPrompt", &PyJig::setDispPromptwr)
+        .def("acquireString", &PyJig::acquireStringwr)
+        .def("acquireAngle", &PyJig::acquireAnglewr1)
+        .def("acquireAngle", &PyJig::acquireAnglewr2)
+        .def("acquireDist", &PyJig::acquireDistwr1)
+        .def("acquireDist", &PyJig::acquireDistwr2)
+        .def("acquirePoint", &PyJig::acquirePointwr1)
+        .def("acquirePoint", &PyJig::acquirePointwr2)
+        .def("specialCursorType", &PyJig::specialCursorTypewr)
+        .def("setSpecialCursorType", &PyJig::setSpecialCursorTypewr)
+        .def("userInputControls", &PyJig::userInputControlswr)
+        .def("setUserInputControls", &PyJig::setUserInputControlswr)
         .def("className", &PyJig::className).staticmethod("className")
         ;
     enum_<AcEdJig::DragStatus>("DragStatus")
@@ -110,17 +89,17 @@ void makeAcEdJigWrapper()
 }
 
 PyJig::PyJig(const PyDbEntity& ent)
-    : m_pEnt(ent.impObj()), PyJigBase()
+    : m_pEnt(ent.impObj()), AcEdJig()
 {
 }
 
-AcEdJig::DragStatus PyJig::drag1()
+AcEdJig::DragStatus PyJig::dragwr1()
 {
     return this->drag();
 }
 
 #ifdef NEVER
-AcEdJig::DragStatus PyJig::drag2(const AcEdDragStyle& style)
+AcEdJig::DragStatus PyJig::dragwr2(const AcEdDragStyle& style)
 {
     return impObj()->drag(style);
 }
@@ -140,32 +119,32 @@ Adesk::Boolean PyJig::update()
     return true;
 }
 
-PyDbObjectId PyJig::append1()
+PyDbObjectId PyJig::appendwr()
 {
     return PyDbObjectId(this->append());
 }
 
-std::string PyJig::keywordList1()
+std::string PyJig::keywordListwr()
 {
     return wstr_to_utf8(this->keywordList());
 }
 
-void PyJig::setKeywordList1(const std::string& val)
+void PyJig::setKeywordListwr(const std::string& val)
 {
     this->setKeywordList(utf8_to_wstr(val).c_str());
 }
 
-std::string PyJig::dispPrompt1()
+std::string PyJig::dispPromptwr()
 {
     return wstr_to_utf8(this->dispPrompt());
 }
 
-void PyJig::setDispPrompt1(const std::string& val)
+void PyJig::setDispPromptwr(const std::string& val)
 {
   this->setDispPrompt(utf8_to_wstr(val).c_str());
 }
 
-boost::python::tuple PyJig::acquireString1()
+boost::python::tuple PyJig::acquireStringwr()
 {
 #ifdef ARXAPP
     AcString value;
@@ -176,64 +155,64 @@ boost::python::tuple PyJig::acquireString1()
 #endif
 }
 
-boost::python::tuple PyJig::acquireAngle1()
+boost::python::tuple PyJig::acquireAnglewr1()
 {
     double value;
     auto result = this->acquireAngle(value);
     return boost::python::make_tuple(result,value);
 }
 
-boost::python::tuple PyJig::acquireAngle2(const AcGePoint3d& basePnt)
+boost::python::tuple PyJig::acquireAnglewr2(const AcGePoint3d& basePnt)
 {
     double value;
     auto result = this->acquireAngle(value, basePnt);
     return boost::python::make_tuple(result, value);
 }
 
-boost::python::tuple PyJig::acquireDist1()
+boost::python::tuple PyJig::acquireDistwr1()
 {
     double value;
     auto result = this->acquireDist(value);
     return boost::python::make_tuple(result, value);
 }
 
-boost::python::tuple PyJig::acquireDist2(const AcGePoint3d& basePnt)
+boost::python::tuple PyJig::acquireDistwr2(const AcGePoint3d& basePnt)
 {
     double value;
     auto result = this->acquireDist(value, basePnt);
     return boost::python::make_tuple(result, value);
 }
 
-boost::python::tuple PyJig::acquirePoint1()
+boost::python::tuple PyJig::acquirePointwr1()
 {
     AcGePoint3d value;
     auto result = this->acquirePoint(value);
     return boost::python::make_tuple(result, value);
 }
 
-boost::python::tuple PyJig::acquirePoint2(const AcGePoint3d& basePnt)
+boost::python::tuple PyJig::acquirePointwr2(const AcGePoint3d& basePnt)
 {
     AcGePoint3d value;
     auto result = this->acquirePoint(value, basePnt);
     return boost::python::make_tuple(result, value);
 }
 
-AcEdJig::CursorType PyJig::specialCursorType1()
+AcEdJig::CursorType PyJig::specialCursorTypewr()
 {
     return this->specialCursorType();
 }
 
-void PyJig::setSpecialCursorType1(AcEdJig::CursorType val)
+void PyJig::setSpecialCursorTypewr(AcEdJig::CursorType val)
 {
     this->setSpecialCursorType(val);
 }
 
-AcEdJig::UserInputControls PyJig::userInputControls1()
+AcEdJig::UserInputControls PyJig::userInputControlswr()
 {
     return this->userInputControls();
 }
 
-void PyJig::setUserInputControls1(AcEdJig::UserInputControls val)
+void PyJig::setUserInputControlswr(AcEdJig::UserInputControls val)
 {
     return this->setUserInputControls(val);
 }

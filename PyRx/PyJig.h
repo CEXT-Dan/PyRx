@@ -4,64 +4,52 @@
 class PyDbEntity;
 class PyDbObjectId;
 
-class PyJigBase : public AcEdJig
-{
-public:
-    PyJigBase();
-    virtual ~PyJigBase() override = default;
-    virtual AcDbEntity* entity() const;
-    virtual AcEdJig::DragStatus sampler();
-    virtual Adesk::Boolean update();
-};
-
-
 void makeAcEdJigWrapper();
 
-class PyJig : public PyJigBase, public boost::python::wrapper<PyJig>
+class PyJig : public AcEdJig, public boost::python::wrapper<PyJig>
 
 {
 public:
     PyJig(const PyDbEntity& ent);
     virtual ~PyJig() = default;
 
-    AcEdJig::DragStatus drag1();
+    AcEdJig::DragStatus dragwr1();
 #ifdef NEVER //TODO:
-    AcEdJig::DragStatus drag2(const AcEdDragStyle& style);
+    AcEdJig::DragStatus dragwr2(const AcEdDragStyle& style);
 #endif
 
-    virtual AcEdJig::DragStatus sampler();
-    virtual Adesk::Boolean update();
-
-    PyDbObjectId append1();
-
-    std::string keywordList1();
-    void        setKeywordList1(const std::string& val);
-
-    std::string dispPrompt1();
-    void        setDispPrompt1(const std::string& val);
-
-    boost::python::tuple acquireString1();
-
-    boost::python::tuple acquireAngle1();
-    boost::python::tuple acquireAngle2(const AcGePoint3d& basePnt);
-
-    boost::python::tuple acquireDist1();
-    boost::python::tuple acquireDist2(const AcGePoint3d& basePnt);
-
-    boost::python::tuple acquirePoint1();
-    boost::python::tuple acquirePoint2(const AcGePoint3d& basePnt);
-
-    AcEdJig::CursorType specialCursorType1();
-    void                setSpecialCursorType1(AcEdJig::CursorType val);
-
-    AcEdJig::UserInputControls userInputControls1();
-    void                       setUserInputControls1(AcEdJig::UserInputControls val);
-
+    virtual AcEdJig::DragStatus sampler() override;
+    virtual Adesk::Boolean update() override;
     virtual AcDbEntity* entity() const override;
+
+    PyDbObjectId appendwr();
+
+    std::string keywordListwr();
+    void        setKeywordListwr(const std::string& val);
+
+    std::string dispPromptwr();
+    void        setDispPromptwr(const std::string& val);
+
+    boost::python::tuple acquireStringwr();
+
+    boost::python::tuple acquireAnglewr1();
+    boost::python::tuple acquireAnglewr2(const AcGePoint3d& basePnt);
+
+    boost::python::tuple acquireDistwr1();
+    boost::python::tuple acquireDistwr2(const AcGePoint3d& basePnt);
+
+    boost::python::tuple acquirePointwr1();
+    boost::python::tuple acquirePointwr2(const AcGePoint3d& basePnt);
+
+    AcEdJig::CursorType specialCursorTypewr();
+    void                setSpecialCursorTypewr(AcEdJig::CursorType val);
+
+    AcEdJig::UserInputControls userInputControlswr();
+    void                       setUserInputControlswr(AcEdJig::UserInputControls val);
 
     static std::string className();
 
+public:
     AcDbEntity* m_pEnt = nullptr;
-
 };
 
