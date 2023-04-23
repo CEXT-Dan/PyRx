@@ -181,6 +181,9 @@
     <ClCompile Include="PyDbTableStyle.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
+    <ClCompile Include="PyJig.cpp">
+      <Filter>Source Files\PyEd</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -365,6 +368,9 @@
     </ClInclude>
     <ClInclude Include="PyDbTableStyle.h">
       <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyJig.h">
+      <Filter>Header Files\PyEd</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -809,7 +809,6 @@ Acad::ErrorStatus PyDbTable::setContentColor(const AcCmColor& color, AcDb::RowTy
     return imp->setContentColor(color, type);
 }
 
-
 Acad::ErrorStatus PyDbTable::setContentColor2(int row, int col, const AcCmColor& color)
 {
     auto imp = impObj();
@@ -945,7 +944,6 @@ Acad::ErrorStatus PyDbTable::setFormat(int row, int col, const std::string& pszF
         throw PyNullObject();
     return imp->setFormat(row, col, utf8_to_wstr(pszFormat).c_str());
 #endif
-
 }
 
 std::string PyDbTable::textString(int row, int col) const

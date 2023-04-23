@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "PyAcEd.h"
 #include "PyAcEditor.h"
-
+#include "PyJig.h"
 
 using namespace boost::python;
 
@@ -11,7 +11,7 @@ BOOST_PYTHON_MODULE(PyEd)
     docstring_options local_docstring_options(false, true, false);
 #endif // ! PyRxDebug
 
-
+    makeAcEdJigWrapper();
     makeAcEditorWrapper();
 
     enum_<Acad::PromptStatus>("PromptStatus")
