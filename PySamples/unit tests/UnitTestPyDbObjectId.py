@@ -26,10 +26,9 @@ class TestDbObjectId(unittest.TestCase):
                 
 def PyRxCmd_pydbobjectid():
         try:
-                print(".\nstart tests----------------------------------------------------------------------")
                 suite = unittest.TestLoader().loadTestsFromTestCase(TestDbObjectId)
-                unittest.TextTestRunner(verbosity=2).run(suite)
-                print(".\nend tests  ----------------------------------------------------------------------")
+                print('TestDbObjectId')
+                print(unittest.TextTestRunner(verbosity=0).run(suite))
         except Exception as err:
                 PyRxApp.Printf(err)
 

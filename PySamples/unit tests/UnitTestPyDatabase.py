@@ -30,10 +30,9 @@ class TestDatabase(unittest.TestCase):
 
 def PyRxCmd_pydbtest():
         try:
-                print(".\nstart tests----------------------------------------------------------------------")
                 suite = unittest.TestLoader().loadTestsFromTestCase(TestDatabase)
-                unittest.TextTestRunner(verbosity=2).run(suite)
-                print(".\nend tests  ----------------------------------------------------------------------")
+                print('TestDatabase')
+                print(unittest.TextTestRunner(verbosity=0).run(suite))
         except Exception as err:
                 PyRxApp.Printf(err)
 

@@ -164,10 +164,9 @@ class TestGe(unittest.TestCase):
 
 def PyRxCmd_pyge():
         try:
-                print(".\nstart tests----------------------------------------------------------------------")
                 suite = unittest.TestLoader().loadTestsFromTestCase(TestGe)
-                unittest.TextTestRunner(verbosity=2).run(suite)
-                print(".\nend tests  ----------------------------------------------------------------------")
+                print('TestGe')
+                print(unittest.TextTestRunner(verbosity=0).run(suite))
         except Exception as err:
                 PyRxApp.Printf(err)
 

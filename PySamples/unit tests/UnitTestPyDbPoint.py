@@ -36,10 +36,9 @@ class TestDbPoint(unittest.TestCase):
 
 def PyRxCmd_pydbpoint():
         try:
-                print(".\nstart tests----------------------------------------------------------------------")
                 suite = unittest.TestLoader().loadTestsFromTestCase(TestDbPoint)
-                unittest.TextTestRunner(verbosity=2).run(suite)
-                print(".\nend tests  ----------------------------------------------------------------------")
+                print('TestDbPoint')
+                print(unittest.TextTestRunner(verbosity=0).run(suite))
         except Exception as err:
                 PyRxApp.Printf(err)
 
