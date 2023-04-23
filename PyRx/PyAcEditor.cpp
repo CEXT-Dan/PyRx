@@ -30,7 +30,7 @@ void makeAcEditorWrapper()
         .def("getString", &PyAcEditor::getString)
 
         .def<boost::python::tuple(PyAcEditor::*)(const std::string&)>("getPoint", &PyAcEditor::getPoint)
-        .def<boost::python::tuple(PyAcEditor::*)(const AcGePoint3d& ,const std::string&)>("getPoint", &PyAcEditor::getPoint)
+        .def<boost::python::tuple(PyAcEditor::*)(const AcGePoint3d&, const std::string&)>("getPoint", &PyAcEditor::getPoint)
 
         .def<boost::python::tuple(PyAcEditor::*)(const std::string&)>("getDist", &PyAcEditor::getDist)
         .def<boost::python::tuple(PyAcEditor::*)(const AcGePoint3d&, const std::string&)>("getDist", &PyAcEditor::getDist)
@@ -105,67 +105,63 @@ boost::python::list PyAcEditor::arxLoaded()
 
 boost::python::tuple PyAcEditor::getInteger(const std::string& prompt)
 {
-    std::pair<int, Acad::PromptStatus> res;
-    res.second = static_cast<Acad::PromptStatus>(acedGetInt(utf8_to_wstr(prompt).c_str(), &res.first));
+    std::pair<Acad::PromptStatus, int> res;
+    res.first = static_cast<Acad::PromptStatus>(acedGetInt(utf8_to_wstr(prompt).c_str(), &res.second));
     return boost::python::make_tuple(res.first, res.second);
 }
 
 boost::python::tuple PyAcEditor::getDouble(const std::string& prompt)
 {
-    std::pair<double, Acad::PromptStatus> res;
-    res.second = static_cast<Acad::PromptStatus>(acedGetReal(utf8_to_wstr(prompt).c_str(), &res.first));
+    std::pair<Acad::PromptStatus, double> res;
+    res.first = static_cast<Acad::PromptStatus>(acedGetReal(utf8_to_wstr(prompt).c_str(), &res.second));
     return boost::python::make_tuple(res.first, res.second);
 }
 
-boost::python::tuple PyAcEditor::getAngle(const AcGePoint3d& basePt,const std::string& prompt)
+boost::python::tuple PyAcEditor::getAngle(const AcGePoint3d& basePt, const std::string& prompt)
 {
-    std::pair<double, Acad::PromptStatus> res;
-    res.second = static_cast<Acad::PromptStatus>(acedGetAngle(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), &res.first));
+    std::pair<Acad::PromptStatus, double> res;
+    res.first = static_cast<Acad::PromptStatus>(acedGetAngle(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), &res.second));
     return boost::python::make_tuple(res.first, res.second);
 }
 
 boost::python::tuple PyAcEditor::getPoint(const std::string& prompt)
 {
     ads_point pnt;
-    std::pair<AcGePoint3d, Acad::PromptStatus> res;
-    res.second = static_cast<Acad::PromptStatus>(acedGetPoint(nullptr, utf8_to_wstr(prompt).c_str(), pnt));
-    res.first = asPnt3d(pnt);
+    std::pair<Acad::PromptStatus, AcGePoint3d> res;
+    res.first = static_cast<Acad::PromptStatus>(acedGetPoint(nullptr, utf8_to_wstr(prompt).c_str(), pnt));
+    res.second = asPnt3d(pnt);
     return boost::python::make_tuple(res.first, res.second);
 }
 
 boost::python::tuple PyAcEditor::getPoint(const AcGePoint3d& basePt, const std::string& prompt)
 {
     ads_point pnt;
-    std::pair<AcGePoint3d, Acad::PromptStatus> res;
-    res.second = static_cast<Acad::PromptStatus>(acedGetPoint(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), pnt));
-    res.first = asPnt3d(pnt);
+    std::pair<Acad::PromptStatus, AcGePoint3d> res;
+    res.first = static_cast<Acad::PromptStatus>(acedGetPoint(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), pnt));
+    res.second = asPnt3d(pnt);
     return boost::python::make_tuple(res.first, res.second);
 }
 
 boost::python::tuple PyAcEditor::getDist(const std::string& prompt)
 {
-    ads_point pnt;
-    std::pair<AcGePoint3d, Acad::PromptStatus> res;
-    res.second = static_cast<Acad::PromptStatus>(acedGetDist(nullptr, utf8_to_wstr(prompt).c_str(), pnt));
-    res.first = asPnt3d(pnt);
+    std::pair<Acad::PromptStatus, double> res;
+    res.first = static_cast<Acad::PromptStatus>(acedGetDist(nullptr, utf8_to_wstr(prompt).c_str(), &res.second));
     return boost::python::make_tuple(res.first, res.second);
 }
 
 boost::python::tuple PyAcEditor::getDist(const AcGePoint3d& basePt, const std::string& prompt)
 {
-    ads_point pnt;
-    std::pair<AcGePoint3d, Acad::PromptStatus> res;
-    res.second = static_cast<Acad::PromptStatus>(acedGetDist(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), pnt));
-    res.first = asPnt3d(pnt);
+    std::pair<Acad::PromptStatus, double> res;
+    res.first = static_cast<Acad::PromptStatus>(acedGetDist(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), &res.second));
     return boost::python::make_tuple(res.first, res.second);
 }
 
 boost::python::tuple PyAcEditor::getString(int cronly, const std::string& prompt)
 {
     AcString str;
-    std::pair<std::string, Acad::PromptStatus> res;
-    res.second = static_cast<Acad::PromptStatus>(acedGetString(cronly, utf8_to_wstr(prompt).c_str(), str));
-    res.first = wstr_to_utf8(str);
+    std::pair<Acad::PromptStatus, std::string> res;
+    res.first = static_cast<Acad::PromptStatus>(acedGetString(cronly, utf8_to_wstr(prompt).c_str(), str));
+    res.second = wstr_to_utf8(str);
     return boost::python::make_tuple(res.first, res.second);
 }
 
@@ -176,7 +172,7 @@ boost::python::tuple PyAcEditor::entsel(const std::string& prompt)
     auto stat = static_cast<Acad::PromptStatus>(acedEntSel(utf8_to_wstr(prompt).c_str(), name, pnt));
     PyDbObjectId id;
     acdbGetObjectId(id.m_id, name);
-    return boost::python::make_tuple<PyDbObjectId, AcGePoint3d, Acad::PromptStatus>(id, asPnt3d(pnt), stat);
+    return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(stat, id, asPnt3d(pnt));
 }
 
 boost::python::tuple PyAcEditor::selectAll()
@@ -191,7 +187,7 @@ boost::python::tuple PyAcEditor::selectAll()
             pyList.append(PyDbObjectId{ id });
     }
     acedSSFree(name);
-    return boost::python::make_tuple<boost::python::list, Acad::PromptStatus>(pyList, stat);
+    return boost::python::make_tuple<Acad::PromptStatus, boost::python::list>(stat, pyList);
 }
 
 boost::python::tuple PyAcEditor::selectAll(const boost::python::list& filter)
@@ -207,7 +203,7 @@ boost::python::tuple PyAcEditor::selectAll(const boost::python::list& filter)
             pyList.append(PyDbObjectId{ id });
     }
     acedSSFree(name);
-    return boost::python::make_tuple<boost::python::list, Acad::PromptStatus>(pyList, stat);
+    return boost::python::make_tuple<Acad::PromptStatus, boost::python::list>(stat, pyList);
 }
 
 AcGeMatrix3d PyAcEditor::curUCS()
