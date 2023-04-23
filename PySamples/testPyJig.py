@@ -10,10 +10,10 @@ import PyEd# = editor
 
 #just like in ARX, ent must not be null
 class MyJig(PyEd.Jig):
-    def __init__(self, table):
-        PyEd.Jig.__init__(self,table)
-        self.table = table
-        self.curPoint = PyGe.Point3d(0,0,0)
+    def __init__(self, line, basepoint):
+        PyEd.Jig.__init__(self,line)
+        self.line = line
+        self.curPoint = basepoint
        
     #C++ sampler returns AcEdJig::DragStatus::kNoChange if not overridden  
     #acquireXXX returns a tuple AcEdJig::DragStatus and Value
@@ -25,7 +25,7 @@ class MyJig(PyEd.Jig):
     
     #C++ update returns True is not overridden
     def update(self):
-        self.table.setPosition(self.curPoint)
+        self.line.setEndPoint(self.curPoint)
         return True
        
     def doit(self):
@@ -35,32 +35,20 @@ class MyJig(PyEd.Jig):
     
 def PyRxCmd_pyjig():
     try: 
-        db = PyAp.Application().docManager().curDocument().database()
+        doc = PyAp.Application().docManager().curDocument()
+        db = doc.database()
+        ed = doc.editor()
+        
+        point_result_tuple = ed.getPoint("\nPick startPoint")
+        start_point = point_result_tuple[0]
+        
         model = PyDb.BlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
-        table = PyDb.Table()
-     
-        table.setSize(6,4)
-        table.setDatabaseDefaults()
-        table.setColumnWidth(80)
-        table.setRowHeight(12)
-        table.generateLayout()
-     
-        range = PyDb.CellRange()
-        range.topRow = 1
-        range.leftColumn = 0
-        range.bottomRow = 6
-        range.rightColumn = 4
+        line = PyDb.Line(start_point,start_point)
+        line.setDatabaseDefaults()
         
-        iter = table.getIterator(range)
-        
-        for cell in iter:
-           table.setTextString(cell.row,cell.column,"sup {},{}".format(cell.row, cell.column))
-           
-        jig = MyJig (table)
-        table.setPosition(jig.doit())
-        
-        model.appendAcDbEntity(table) 
-        table.recomputeTableBlock(True)
-           
+        jig = MyJig (line,start_point)
+        line.setEndPoint(jig.doit())
+        model.appendAcDbEntity(line) 
+
     except Exception as err:
         PyRxApp.Printf(err)
