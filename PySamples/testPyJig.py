@@ -53,7 +53,7 @@ def PyRxCmd_pyjig():
         line.setDatabaseDefaults()
 
         jig = MyJig(line, point_result_tuple[1])
-        if jig.drag() != PyEd.DragStatus.eNormal:
+        if jig.drag() != PyEd.DragStatus.kNormal:
             print('oops')
             return
 
