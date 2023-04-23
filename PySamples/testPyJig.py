@@ -31,10 +31,6 @@ class MyJig(PyEd.Jig):
         self.line.setEndPoint(self.curPoint)
         return True
 
-    def doit(self):
-        self.setDispPrompt("\nInsertion Point: ")
-        return self.drag()
-
 
 def PyRxCmd_pyjig():
     try:
@@ -53,6 +49,7 @@ def PyRxCmd_pyjig():
         line.setDatabaseDefaults()
 
         jig = MyJig(line, point_result_tuple[1])
+        jig.setDispPrompt("\nInsertion Point: ")
         if jig.drag() != PyEd.DragStatus.kNormal:
             print('oops')
             return
