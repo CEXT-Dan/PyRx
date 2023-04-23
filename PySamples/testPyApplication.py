@@ -45,17 +45,17 @@ def PyCurDocTest():
 def PyCurDocEdTest1():
 	try:
 		val = PyAp.Application().docManager().curDocument().editor().getInteger("\nEnter an int")
-		if(val[1] == PyEd.PromptStatus.kNormal):
-			PyRxApp.Printf("\nPASS({})".format(val[0])) 
+		if(val[0] == PyEd.PromptStatus.kNormal):
+			PyRxApp.Printf("\nPASS({})".format(val[1])) 
 	except Exception as err:
 		PyRxApp.Printf(err)
 
 def PyCurDocEdTest2():
 	try:
-		doc =  PyAp.Application().docManager().curDocument()
+		doc = PyAp.Application().docManager().curDocument()
 		val = doc.editor().getInteger("\nEnter an int")
-		if(val[1] == PyEd.PromptStatus.kNormal):
-			PyRxApp.Printf("\nPASS({})".format(val[0])) 
+		if(val[0] == PyEd.PromptStatus.kNormal):
+			PyRxApp.Printf("\nPASS({})".format(val[1])) 
 	except Exception as err:
 		PyRxApp.Printf(err)
 
@@ -66,8 +66,8 @@ def PyCurDocEdTest3():
 		doc = docm.curDocument()
 		ed = doc.editor()
 		val = ed.getString(1, "\nEnter a string")
-		if(val[1] == PyEd.PromptStatus.kNormal):
-			PyRxApp.Printf("\nPASS({})".format(val[0])) 
+		if(val[0] == PyEd.PromptStatus.kNormal):
+			PyRxApp.Printf("\nPASS({})".format(val[1])) 
 	except Exception as err:
 		PyRxApp.Printf(err)
 
@@ -78,10 +78,10 @@ def PyCurDocEntsel():
 		doc = docm.curDocument()
 		ed = doc.editor()
 		val = ed.entsel("\nSelect")
-		if(val[2] == PyEd.PromptStatus.kNormal):
-			dbo = PyDb.DbObject(val[0], PyDb.OpenMode.ForRead)
+		if(val[0] == PyEd.PromptStatus.kNormal):
+			dbo = PyDb.DbObject(val[1], PyDb.OpenMode.ForRead)
 			PyRxApp.Printf("\nPASS({})".format(dbo.isA().name())) 
-			p = val[1]
+			p = val[2]
 			PyRxApp.Printf("\nPASS({},{},{})".format(p.x, p.y, p.z))
 	except Exception as err:
 		PyRxApp.Printf(err)
@@ -93,8 +93,8 @@ def PyCurDocSelectAll():
 		doc = docm.curDocument()
 		ed = doc.editor()
 		val = ed.selectAll()
-		if(val[1] == PyEd.PromptStatus.kNormal):
-			numids = len(val[0])
+		if(val[0] == PyEd.PromptStatus.kNormal):
+			numids = len(val[1])
 			PyRxApp.Printf("\nPASS numids({})".format(numids))
 	except Exception as err:
 		PyRxApp.Printf(err)
@@ -107,8 +107,8 @@ def PyCurDocSelectAllFilter():
 		ed = doc.editor()
 		filter = [(PyDb.DxfCode.DxfStart,"CIRCLE")]
 		val = ed.selectAll(filter)
-		if(val[1] == PyEd.PromptStatus.kNormal):
-			numids = len(val[0])
+		if(val[0] == PyEd.PromptStatus.kNormal):
+			numids = len(val[1])
 			PyRxApp.Printf("\nPASS numids({})".format(numids))
 			for id in val[0]:
 				PyRxApp.Printf("\nPASS({})".format(id.objectClass().name()))

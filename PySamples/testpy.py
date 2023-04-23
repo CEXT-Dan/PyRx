@@ -32,8 +32,8 @@ def table():
         doc = docm.curDocument()
         ed = doc.editor()
         val = ed.entsel("\nSelect")
-        if(val[2] == PyEd.PromptStatus.kNormal):
-            tb = PyDb.Table(val[0], PyDb.OpenMode.ForRead)
+        if(val[0] == PyEd.PromptStatus.kNormal):
+            tb = PyDb.Table(val[1], PyDb.OpenMode.ForRead)
             print(tb.position())
             tb.upgradeOpen()
             tb.setTextString(1,0,"sup")
@@ -48,8 +48,8 @@ def mtext():
         doc = docm.curDocument()
         ed = doc.editor()
         val = ed.entsel("\nSelect")
-        if(val[2] == PyEd.PromptStatus.kNormal):
-            mt = PyDb.MText(val[0], PyDb.OpenMode.ForRead)
+        if(val[0] == PyEd.PromptStatus.kNormal):
+            mt = PyDb.MText(val[1], PyDb.OpenMode.ForRead)
             print(type(mt.attachment()))
            
     except Exception as err:
@@ -118,10 +118,10 @@ def getSplitCurves():
     entres = ed.entsel("\nSelect")
     pntres = ed.getPoint("\nPoint On Curve")
 
-    if(entres[2] == PyEd.PromptStatus.Normal):
-        entId = entres[0]
+    if(entres[0] == PyEd.PromptStatus.Normal):
+        entId = entres[1]
         curve = PyDb.Curve(entId, PyDb.OpenMode.kForRead)
-        pnt = pntres[0]
+        pnt = pntres[1]
         param = curve.getParamAtPoint(pnt)
         params = [param]
         curves = curve.getSplitCurves(params)
