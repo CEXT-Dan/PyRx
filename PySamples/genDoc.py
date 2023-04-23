@@ -34,7 +34,7 @@ def PyRxCmd_pydoit3():
         
 def PyRxCmd_pydoit4():
     try:    
-        members = inspect.getmembers(PyDb.MText)
+        members = inspect.getmembers(PyEd.DragStatus)
         for member in members:
             if not member[0].startswith("__"):
                 PyRxApp.Printf("\n{}, {}".format(member[0],member[1].__doc__))       
