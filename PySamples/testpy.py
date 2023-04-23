@@ -21,7 +21,7 @@ def OnPyUnloadDwg():
          
 def PyRxCmd_pycmd():
     try: 
-       table()
+       getSplitCurves()
     except Exception as err:
         PyRxApp.Printf(err)
         
@@ -118,7 +118,7 @@ def getSplitCurves():
     entres = ed.entsel("\nSelect")
     pntres = ed.getPoint("\nPoint On Curve")
 
-    if(entres[0] == PyEd.PromptStatus.Normal):
+    if(entres[0] == PyEd.PromptStatus.kNormal):
         entId = entres[1]
         curve = PyDb.Curve(entId, PyDb.OpenMode.kForRead)
         pnt = pntres[1]
