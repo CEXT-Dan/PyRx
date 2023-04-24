@@ -11,6 +11,9 @@ void makeAcEdJigWrapper()
     class_<PyJig, boost::noncopyable>("Jig", boost::python::no_init)
         .def(init<const PyDbEntity&>())
         .def("drag", &PyJig::dragwr1)
+#ifndef BRXAPP
+        .def("drag", &PyJig::dragwr2)
+#endif
         .def("sampler", &PyJig::sampler)
         .def("update", &PyJig::update)
         .def("append", &PyJig::appendwr)
@@ -31,6 +34,26 @@ void makeAcEdJigWrapper()
         .def("setUserInputControls", &PyJig::setUserInputControlswr)
         .def("className", &PyJig::className).staticmethod("className")
         ;
+#ifndef BRXAPP
+    class_<AcEdDragStyle>("DragStyle")
+        .def(init<>())
+        .def(init<AcEdDragStyle::StyleType, AcEdDragStyle::StyleType>())
+        .def("styleTypeForOriginal", &AcEdDragStyle::styleTypeForOriginal)
+        .def("styleTypeForDragged", &AcEdDragStyle::styleTypeForDragged)
+        .def("setStyleTypeForOriginal", &AcEdDragStyle::setStyleTypeForOriginal)
+        .def("setStyleTypeForDragged", &AcEdDragStyle::setStyleTypeForDragged)
+        ;
+    enum_<AcEdDragStyle::StyleType>("DragStyleType")
+        .value("kNone", AcEdDragStyle::StyleType::kNone)
+        .value("kHide", AcEdDragStyle::StyleType::kHide)
+        .value("kTransparent25", AcEdDragStyle::StyleType::kTransparent25)
+        .value("kTransparent75", AcEdDragStyle::StyleType::kTransparent75)
+        .value("kDeletedEffect", AcEdDragStyle::StyleType::kDeletedEffect)
+        .value("kHighlight", AcEdDragStyle::StyleType::kHighlight)
+        .value("kNotSet", AcEdDragStyle::StyleType::kNotSet)
+        .export_values()
+        ;
+#endif // !BRXAPP
     enum_<AcEdJig::DragStatus>("DragStatus")
         .value("kModeless", AcEdJig::DragStatus::kModeless)
         .value("kNoChange", AcEdJig::DragStatus::kNoChange)
@@ -56,9 +79,9 @@ void makeAcEdJigWrapper()
         .value("kCrosshair", AcEdJig::CursorType::kCrosshair)
         .value("kRectCursor", AcEdJig::CursorType::kRectCursor)
         .value("kRubberBand", AcEdJig::CursorType::kRubberBand)
-        .value("kNotRotated", AcEdJig::CursorType::kNotRotated )
+        .value("kNotRotated", AcEdJig::CursorType::kNotRotated)
         .value("kTargetBox", AcEdJig::CursorType::kTargetBox)
-        .value("kRotatedCrosshair", AcEdJig::CursorType::kRotatedCrosshair )
+        .value("kRotatedCrosshair", AcEdJig::CursorType::kRotatedCrosshair)
         .value("kCrosshairNoRotate", AcEdJig::CursorType::kCrosshairNoRotate)
         .value("kInvisible", AcEdJig::CursorType::kInvisible)
         .value("kEntitySelect", AcEdJig::CursorType::kEntitySelect)
@@ -100,16 +123,16 @@ AcEdJig::DragStatus PyJig::dragwr1()
     return this->drag();
 }
 
-#ifdef NEVER
+#ifndef BRXAPP
 AcEdJig::DragStatus PyJig::dragwr2(const AcEdDragStyle& style)
 {
-    return impObj()->drag(style);
+    return  this->drag(style);
 }
 #endif
 
 AcEdJig::DragStatus PyJig::sampler()
 {
-    if (override f = this->get_override("sampler")) 
+    if (override f = this->get_override("sampler"))
         return f();
     return AcEdJig::DragStatus::kNoChange;
 }
@@ -143,7 +166,7 @@ std::string PyJig::dispPromptwr()
 
 void PyJig::setDispPromptwr(const std::string& val)
 {
-  this->setDispPrompt(utf8_to_wstr(val).c_str());
+    this->setDispPrompt(utf8_to_wstr(val).c_str());
 }
 
 boost::python::tuple PyJig::acquireStringwr()
@@ -161,7 +184,7 @@ boost::python::tuple PyJig::acquireAnglewr1()
 {
     double value;
     auto result = this->acquireAngle(value);
-    return boost::python::make_tuple(result,value);
+    return boost::python::make_tuple(result, value);
 }
 
 boost::python::tuple PyJig::acquireAnglewr2(const AcGePoint3d& basePnt)

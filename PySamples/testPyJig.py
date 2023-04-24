@@ -59,3 +59,35 @@ def PyRxCmd_pyjig():
 
     except Exception as err:
         PyRxApp.Printf(err)
+        
+def PyRxCmd_pyjigstyle():
+    try:
+        doc = PyAp.Application().docManager().curDocument()
+        db = doc.database()
+        ed = doc.editor()
+        
+        style = PyEd.DragStyle()
+        style.setStyleTypeForDragged(PyEd.DragStyleType.kTransparent75)
+
+        point_result_tuple = ed.getPoint("\nPick startPoint")
+        if point_result_tuple[0] != PyEd.PromptStatus.eNormal:
+            print('oops')
+            return
+
+        model = PyDb.BlockTableRecord(
+            db.modelSpaceId(), PyDb.OpenMode.kForWrite)
+        line = PyDb.Line(point_result_tuple[1], point_result_tuple[1])
+        line.setDatabaseDefaults()
+
+        jig = MyJig(line, point_result_tuple[1])
+        jig.setDispPrompt("\nInsertion Point: ")
+        if jig.drag(style) != PyEd.DragStatus.kNormal:
+            print('oops')
+            return
+
+        line.setEndPoint(jig.curPoint)
+        model.appendAcDbEntity(line)
+
+    except Exception as err:
+        PyRxApp.Printf(err)
+

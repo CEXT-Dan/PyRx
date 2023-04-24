@@ -4,6 +4,8 @@
 class PyDbEntity;
 class PyDbObjectId;
 
+//--------------------------------------------------------------------------------------------------------
+//PyJig
 void makeAcEdJigWrapper();
 
 class PyJig : public AcEdJig, public boost::python::wrapper<PyJig>
@@ -14,10 +16,9 @@ public:
     virtual ~PyJig() = default;
 
     AcEdJig::DragStatus dragwr1();
-#ifdef NEVER //TODO:
+#ifndef BRXAPP
     AcEdJig::DragStatus dragwr2(const AcEdDragStyle& style);
 #endif
-
     virtual AcEdJig::DragStatus sampler() override;
     virtual Adesk::Boolean update() override;
     virtual AcDbEntity* entity() const override;
@@ -52,4 +53,3 @@ public:
 public:
     AcDbEntity* m_pEnt = nullptr;
 };
-
