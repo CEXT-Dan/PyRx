@@ -7,6 +7,80 @@
 using namespace boost::python;
 
 //-----------------------------------------------------------------------------------------
+// WxUserInteraction wrapper
+class WxUserInteraction
+{
+    HWND m_activeWindow;
+    std::vector<HWND> m_wnds;
+public:
+    WxUserInteraction();
+    WxUserInteraction(AcApDocument* pDocument, bool prompting);
+    virtual ~WxUserInteraction(void);
+protected:
+    void userInteraction(AcApDocument* pDocument, bool prompting);
+    void undoUserInteraction();
+};
+
+WxUserInteraction::WxUserInteraction()
+{
+    userInteraction(acDocManagerPtr()->curDocument(), true);
+}
+
+WxUserInteraction::WxUserInteraction(AcApDocument* pDocument, bool prompting)
+{
+    userInteraction(pDocument, prompting);
+}
+
+WxUserInteraction::~WxUserInteraction(void)
+{
+    undoUserInteraction();
+}
+
+void WxUserInteraction::userInteraction(AcApDocument* pDocument, bool prompting)
+{
+    AcApDocManager* pDocMan = acDocManagerPtr();
+    if (pDocMan->curDocument() == pDocument)
+    {
+        pDocMan->disableDocumentActivation();
+        if (!prompting)
+            return;
+
+        HWND hwMainWnd = adsw_acadMainWnd();
+        if (::IsWindowEnabled(hwMainWnd) == TRUE)
+            return;
+
+        m_activeWindow = GetFocus();
+        for (HWND window = ::GetActiveWindow(); window != NULL; window = ::GetWindow(window, GW_OWNER))
+        {
+            if (window == hwMainWnd)
+                break;
+            m_wnds.push_back(window);
+        }
+        ::EnableWindow(hwMainWnd, TRUE);
+        ::SetFocus(hwMainWnd);
+        for (size_t idx = 0; idx < m_wnds.size(); idx++)
+        {
+            ::ShowWindow(m_wnds[idx], SW_HIDE);
+        }
+    }
+}
+
+void WxUserInteraction::undoUserInteraction()
+{
+    acDocManagerPtr()->enableDocumentActivation();
+    if (m_wnds.size() > 0)
+    {
+        for (std::vector<HWND>::reverse_iterator it = m_wnds.rbegin(); it != m_wnds.rend(); ++it)
+        {
+            ::ShowWindow(*it, SW_SHOW);
+        }
+        ::EnableWindow(adsw_acadMainWnd(), FALSE);
+        ::SetFocus(m_activeWindow);
+    }
+}
+
+
+//-----------------------------------------------------------------------------------------
 // PyAcEditor wrapper
 
 void makeAcEditorWrapper()
@@ -105,6 +179,7 @@ boost::python::list PyAcEditor::arxLoaded()
 
 boost::python::tuple PyAcEditor::getInteger(const std::string& prompt)
 {
+    WxUserInteraction ui;
     std::pair<Acad::PromptStatus, int> res;
     res.first = static_cast<Acad::PromptStatus>(acedGetInt(utf8_to_wstr(prompt).c_str(), &res.second));
     return boost::python::make_tuple(res.first, res.second);
@@ -112,6 +187,7 @@ boost::python::tuple PyAcEditor::getInteger(const std::string& prompt)
 
 boost::python::tuple PyAcEditor::getDouble(const std::string& prompt)
 {
+    WxUserInteraction ui;
     std::pair<Acad::PromptStatus, double> res;
     res.first = static_cast<Acad::PromptStatus>(acedGetReal(utf8_to_wstr(prompt).c_str(), &res.second));
     return boost::python::make_tuple(res.first, res.second);
@@ -119,6 +195,7 @@ boost::python::tuple PyAcEditor::getDouble(const std::string& prompt)
 
 boost::python::tuple PyAcEditor::getAngle(const AcGePoint3d& basePt, const std::string& prompt)
 {
+    WxUserInteraction ui;
     std::pair<Acad::PromptStatus, double> res;
     res.first = static_cast<Acad::PromptStatus>(acedGetAngle(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), &res.second));
     return boost::python::make_tuple(res.first, res.second);
@@ -126,6 +203,7 @@ boost::python::tuple PyAcEditor::getAngle(const AcGePoint3d& basePt, const std::
 
 boost::python::tuple PyAcEditor::getPoint(const std::string& prompt)
 {
+    WxUserInteraction ui;
     ads_point pnt;
     std::pair<Acad::PromptStatus, AcGePoint3d> res;
     res.first = static_cast<Acad::PromptStatus>(acedGetPoint(nullptr, utf8_to_wstr(prompt).c_str(), pnt));
@@ -135,6 +213,7 @@ boost::python::tuple PyAcEditor::getPoint(const std::string& prompt)
 
 boost::python::tuple PyAcEditor::getPoint(const AcGePoint3d& basePt, const std::string& prompt)
 {
+    WxUserInteraction ui;
     ads_point pnt;
     std::pair<Acad::PromptStatus, AcGePoint3d> res;
     res.first = static_cast<Acad::PromptStatus>(acedGetPoint(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), pnt));
@@ -144,6 +223,7 @@ boost::python::tuple PyAcEditor::getPoint(const AcGePoint3d& basePt, const std::
 
 boost::python::tuple PyAcEditor::getDist(const std::string& prompt)
 {
+    WxUserInteraction ui;
     std::pair<Acad::PromptStatus, double> res;
     res.first = static_cast<Acad::PromptStatus>(acedGetDist(nullptr, utf8_to_wstr(prompt).c_str(), &res.second));
     return boost::python::make_tuple(res.first, res.second);
@@ -151,6 +231,7 @@ boost::python::tuple PyAcEditor::getDist(const std::string& prompt)
 
 boost::python::tuple PyAcEditor::getDist(const AcGePoint3d& basePt, const std::string& prompt)
 {
+    WxUserInteraction ui;
     std::pair<Acad::PromptStatus, double> res;
     res.first = static_cast<Acad::PromptStatus>(acedGetDist(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), &res.second));
     return boost::python::make_tuple(res.first, res.second);
@@ -158,6 +239,7 @@ boost::python::tuple PyAcEditor::getDist(const AcGePoint3d& basePt, const std::s
 
 boost::python::tuple PyAcEditor::getString(int cronly, const std::string& prompt)
 {
+    WxUserInteraction ui;
     AcString str;
     std::pair<Acad::PromptStatus, std::string> res;
     res.first = static_cast<Acad::PromptStatus>(acedGetString(cronly, utf8_to_wstr(prompt).c_str(), str));
@@ -167,6 +249,7 @@ boost::python::tuple PyAcEditor::getString(int cronly, const std::string& prompt
 
 boost::python::tuple PyAcEditor::entsel(const std::string& prompt)
 {
+    WxUserInteraction ui;
     ads_point pnt;
     ads_name name = { 0L };
     auto stat = static_cast<Acad::PromptStatus>(acedEntSel(utf8_to_wstr(prompt).c_str(), name, pnt));
@@ -177,6 +260,7 @@ boost::python::tuple PyAcEditor::entsel(const std::string& prompt)
 
 boost::python::tuple PyAcEditor::selectAll()
 {
+    WxUserInteraction ui;
     ads_name name = { 0L };
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("A"), nullptr, nullptr, nullptr, name));
     AcDbObjectIdArray ids;
@@ -192,6 +276,7 @@ boost::python::tuple PyAcEditor::selectAll()
 
 boost::python::tuple PyAcEditor::selectAll(const boost::python::list& filter)
 {
+    WxUserInteraction ui;
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("A"), nullptr, nullptr, pFilter.get(), name));

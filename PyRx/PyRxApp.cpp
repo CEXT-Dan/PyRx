@@ -3,7 +3,6 @@
 #include "PyRxAcut.h"
 #include "PyRxAced.h"
 
-
 #include "PyAcGe.h"
 #include "PyAcDb.h"
 #include "PyAcRx.h"
@@ -11,6 +10,88 @@
 #include "PyAcAp.h"
 #include "PyAcEd.h"
 
+#include "wx/setup.h"
+#include "wx/wx.h"
+WXDLLIMPEXP_BASE void wxSetInstance(HINSTANCE hInst);
+
+class WinFrame : public wxFrame
+{
+public:
+    WinFrame(HWND hwnd)
+    {
+        this->SetHWND(hwnd);
+        this->AdoptAttributesFromHWND();
+        this->m_isShown = true;
+        wxTopLevelWindows.Append(this);
+    }
+};
+
+static WinFrame* getMainWindow()
+{
+    static std::unique_ptr<WinFrame> win;
+    if (win == nullptr)
+        win.reset(new WinFrame(adsw_acadMainWnd()));
+    return win.get();
+}
+
+class WxRxApp : public wxApp
+{
+public:
+    virtual bool OnInit();
+    virtual int  OnExit();
+    bool Init_wxPython();
+    static WxRxApp& get();
+private:
+    PyThreadState* m_mainTState;
+};
+
+WxRxApp& WxRxApp::get()
+{
+    static WxRxApp mthis;
+    return mthis;
+}
+
+bool WxRxApp::OnInit()
+{
+    wxSetInstance(acrxGetApp()->GetModuleInstance());
+    wxTheApp->SetTopWindow(getMainWindow());
+    if (wxTheApp->GetMainTopWindow() == nullptr)
+        return false;
+    if (Init_wxPython() == false)
+        return false;
+    return true;
+}
+
+int WxRxApp::OnExit()
+{
+    wxPyEndAllowThreads(m_mainTState);
+    return 0;
+}
+
+bool WxRxApp::Init_wxPython()
+{
+    Py_Initialize();
+    PyEval_InitThreads();
+    if (wxPyGetAPIPtr() == NULL)
+    {
+        acutPrintf(_T("\n*****Error importing the wxPython API!*****"));
+        return false;
+    }
+    m_mainTState = wxPyBeginAllowThreads();
+    WxPyAutoLock::canLock = true;
+    return true;
+}
+
+bool initWxApp()
+{
+    if (wxInitialize())
+    {
+        wxApp::SetInstance(&WxRxApp::get());
+        if (wxTheApp && wxTheApp->CallOnInit())
+            return true;
+    }
+    return false;
+}
 
 std::filesystem::path PyRxApp::modulePath()
 {
@@ -40,7 +121,7 @@ bool PyRxApp::init()
     if (PyImport_AppendInittab(PyAppNamespace, PyInitPyRxModule) == -1)
         acutPrintf(_T("\nPyImport Failed"));
 
-    Py_Initialize();
+    initWxApp();
     if (Py_IsInitialized() && setPyConfig())
     {
         isLoaded = true;
@@ -51,12 +132,14 @@ bool PyRxApp::init()
         if (PyErr_Occurred())
             PyErr_Clear();
         acutPrintf(_T("Failed to load Python Interpreter!"));
+        isLoaded = false;
     }
     return isLoaded;
 }
 
 bool PyRxApp::uninit()
 {
+    WxPyAutoLock lock;
     fnm.clear();
     if (Py_IsInitialized())
         Py_Finalize();
@@ -66,6 +149,8 @@ bool PyRxApp::uninit()
 
 bool PyRxApp::setPyConfig()
 {
+    WxPyAutoLock lock;
+
     AcString _modulePath = modulePath().c_str();
     _modulePath.makeLower();
 
@@ -81,11 +166,14 @@ bool PyRxApp::setPyConfig()
     if (PyList_Append(path.get(), pyString.get()) < 0)
         return false;
     PyRxApp::instance().loadedModulePaths.insert((const TCHAR*)_modulePath);
+
     return true;
 }
 
 bool PyRxApp::pyRxAppendSearchPath(const TCHAR* pModulePath)
 {
+    WxPyAutoLock lock;
+
     AcString _modulePath = pModulePath;
     _modulePath.makeLower();
 
@@ -128,6 +216,7 @@ PyMODINIT_FUNC PyInitPyRxModule(void)
 
 std::wstring PyRxApp::the_error()
 {
+    WxPyAutoLock lock;
     if (PyErr_Occurred())
     {
         PyObject* error_type, * the_error, * the_traceback, * py_error_string, * py_error_unicode;
@@ -169,3 +258,5 @@ std::wstring PyRxApp::the_error()
     }
     return std::wstring{ };
 }
+
+IMPLEMENT_APP_NO_MAIN(WxRxApp)

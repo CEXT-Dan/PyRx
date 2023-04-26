@@ -68,7 +68,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PreprocessorDefinitions>_WIN64;_WINDOWS;ARXBRXTEST_MODULE;_AFXEXT;_ACRXAPP;GRXAPP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>$(GRX23)\arx\inc;$(Py310)\include;$(boost)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(GRX23)\arx\inc;$(Py310)\include;$(boost);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -79,7 +79,7 @@
       <ProgramDatabaseFile>$(OutDir)/$(targetname).pdb</ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)/$(targetname).lib</ImportLibrary>
       <TargetMachine>MachineX64</TargetMachine>
-      <AdditionalLibraryDirectories>$(GRX23)\arx\lib-$(PlatformName);$(Py310)\libs;$(boost)\lib64-msvc-14.2</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(GRX23)\arx\lib-$(PlatformName);$(Py310)\libs;$(boost)\lib64-msvc-14.2;$(WXWIN)\lib\vc_x64_dll</AdditionalLibraryDirectories>
     </Link>
     <ResourceCompile>
       <AdditionalIncludeDirectories>$(NOINHERIT)$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -101,7 +101,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PreprocessorDefinitions>_WIN64;_WINDOWS;ARXBRXTEST_MODULE;NDEBUG;_AFXEXT;_ACRXAPP;GRXAPP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>$(GRX23)\arx\inc;$(Py310)\include;$(boost)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(GRX23)\arx\inc;$(Py310)\include;$(boost);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -113,7 +113,7 @@
       </ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)/$(targetname).lib</ImportLibrary>
       <TargetMachine>MachineX64</TargetMachine>
-      <AdditionalLibraryDirectories>$(GRX23)\arx\lib-$(PlatformName);$(Py310)\libs;$(boost)\lib64-msvc-14.2</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(GRX23)\arx\lib-$(PlatformName);$(Py310)\libs;$(boost)\lib64-msvc-14.2;$(WXWIN)\lib\vc_x64_dll</AdditionalLibraryDirectories>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
     </Link>

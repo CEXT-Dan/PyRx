@@ -220,5 +220,27 @@ using AcDbObjectUPtr = std::unique_ptr < T, decltype([](T* ptr) noexcept
     }
 }) > ;
 
+// Import Python and wxPython headers
+#define WXUSINGDLL
+#define __WXMSW__ 
+#include <wxPython/sip.h>
+#include <wxPython/wxpy_api.h>
+
+class WxPyAutoLock
+{
+public:
+    WxPyAutoLock()
+    {
+        if (canLock)
+            blocked = wxPyBeginBlockThreads();
+    }
+    ~WxPyAutoLock()
+    {
+        if (canLock)
+            wxPyEndBlockThreads(blocked);
+    }
+    wxPyBlock_t blocked{};
+    inline static bool canLock = false;
+};
 #pragma pack (pop)
 

@@ -10,6 +10,7 @@ int PyLispService::execLispFunc()
         auto& lisplispService = PyRxApp::instance().lispService;
         if (lisplispService.lispFuncCodes.contains(fcode))
         {
+            WxPyAutoLock lock;
             auto method = lisplispService.lispFuncCodes.at(fcode);
             if (PyCallable_Check(method))
             {
@@ -57,6 +58,7 @@ int PyLispService::execLispFunc()
 
 bool PyLispService::tryAddFunc(const AcString& pythonFuncName, PyObject* method)
 {
+    WxPyAutoLock lock;
     const AcString lispFuncName = pythonFuncName.substr(PyLispFuncPrefix.length(), pythonFuncName.length() - 1);
     if (PyFunction_Check(method))
     {

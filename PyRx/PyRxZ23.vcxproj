@@ -68,7 +68,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PreprocessorDefinitions>_WIN64;_WINDOWS;ARXBRXTEST_MODULE;_AFXEXT;_ACRXAPP;ZRXAPP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>$(ZRX2023)\arxport;$(Py310)\include;$(Py310)\Lib\site-packages\win32\include;$(Py310)\Lib\site-packages\win32com\include;$(boost)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ZRX2023)\arxport;$(Py310)\include;$(boost);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -79,7 +79,7 @@
       <ProgramDatabaseFile>$(OutDir)/$(targetname).pdb</ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)/$(targetname).lib</ImportLibrary>
       <TargetMachine>MachineX64</TargetMachine>
-      <AdditionalLibraryDirectories>$(ZRX2023)\lib;$(ZRX2023)\lib-$(PlatformName);$(Py310)\libs;$(boost)\lib64-msvc-14.2</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ZRX2023)\lib;$(ZRX2023)\lib-$(PlatformName);$(Py310)\libs;$(boost)\lib64-msvc-14.2;$(WXWIN)\lib\vc_x64_dll</AdditionalLibraryDirectories>
     </Link>
     <ResourceCompile>
       <AdditionalIncludeDirectories>$(NOINHERIT)$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -101,7 +101,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PreprocessorDefinitions>_WIN64;_WINDOWS;ARXBRXTEST_MODULE;NDEBUG;_AFXEXT;_ACRXAPP;ZRXAPP;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
-      <AdditionalIncludeDirectories>$(ZRX2023)\arxport;$(Py310)\include;$(Py310)\Lib\site-packages\win32\include;$(Py310)\Lib\site-packages\win32com\include;$(boost)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ZRX2023)\arxport;$(Py310)\include;$(boost);$(WXWIN)\include;$(WXWIN)\include\msvc;$(WXPYWIN)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -113,7 +113,7 @@
       </ProgramDatabaseFile>
       <ImportLibrary>$(OutDir)/$(targetname).lib</ImportLibrary>
       <TargetMachine>MachineX64</TargetMachine>
-      <AdditionalLibraryDirectories>$(ZRX2023)\lib;$(ZRX2023)\lib-$(PlatformName);$(Py310)\libs;$(boost)\lib64-msvc-14.2</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ZRX2023)\lib;$(ZRX2023)\lib-$(PlatformName);$(Py310)\libs;$(boost)\lib64-msvc-14.2;$(WXWIN)\lib\vc_x64_dll</AdditionalLibraryDirectories>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
     </Link>

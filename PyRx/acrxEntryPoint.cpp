@@ -55,6 +55,7 @@ public:
     virtual AcRx::AppRetCode On_kInitAppMsg(void* pkt)
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
+        acedRegisterOnIdleWinMsg(AcedOnIdleMsgFn);
         return (retCode);
     }
 
@@ -63,6 +64,7 @@ public:
         AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadAppMsg(pkt);
         try
         {
+            WxPyAutoLock lock;
             PyRxApp::instance().uninit();
             acedRegCmds->removeGroup(_T("PYCOMMANDS"));
         }
@@ -78,16 +80,13 @@ public:
             if (!On_kLoadDwgMsgCallOnce)
             {
                 PRINTVER();
-
-                if (!PyRxApp::instance().init())
-                    acutPrintf(_T("\nPyInit Failed"));
-
                 On_kLoadDwgMsgCallOnce = true;
             }
             for (auto& method : PyRxApp::instance().fnm)
             {
                 if (method.second.OnPyLoadDwg != nullptr)
                 {
+                    WxPyAutoLock lock;
                     if (PyCallable_Check(method.second.OnPyLoadDwg))
                         method.second.rslt.reset(PyObject_CallFunction(method.second.OnPyLoadDwg, NULL));
                 }
@@ -107,6 +106,7 @@ public:
             {
                 if (method.second.OnPyUnloadDwg != nullptr)
                 {
+                    WxPyAutoLock lock;
                     if (PyCallable_Check(method.second.OnPyUnloadDwg))
                         method.second.rslt.reset(PyObject_CallFunction(method.second.OnPyUnloadDwg, NULL));
                 }
@@ -118,6 +118,13 @@ public:
 
     virtual void RegisterServerComponents()
     {
+    }
+
+    static void AcedOnIdleMsgFn()
+    {
+        if (!PyRxApp::instance().init())
+            acutPrintf(_T("\nPyInit Failed"));
+        acedRemoveOnIdleWinMsg(AcedOnIdleMsgFn);
     }
 
     static AcString GETVER()
@@ -158,6 +165,7 @@ public:
     {
         try
         {
+            WxPyAutoLock lock;
             if (PyRxApp::instance().fnm.contains(moduleName))
             {
                 auto& method = PyRxApp::instance().fnm.at(moduleName);
@@ -208,6 +216,7 @@ public:
     {
         try
         {
+            WxPyAutoLock lock;
             if (PyRxApp::instance().isLoaded)
             {
                 AcString pathName;
@@ -276,6 +285,7 @@ public:
     {
         try
         {
+            WxPyAutoLock lock;
             if (PyRxApp::instance().isLoaded)
             {
                 AcString pathName;
@@ -351,36 +361,47 @@ public:
         PRINTVER();
     }
 
+    static AcString commandForCurDocument()
+    {
+        AcString cmdName;
+        ACHAR* pGlobalCmdName = nullptr;
+        if (auto es = acedGetCommandForDocument(curDoc(), pGlobalCmdName); es != eOk)
+            return cmdName;
+        cmdName = pGlobalCmdName;
+        acutDelString(pGlobalCmdName);
+        cmdName.makeUpper();
+        return cmdName;
+    }
+
     static void AcRxPyApp_pyfunc(void)
     {
-        PyErr_Clear();
         if (curDoc() != nullptr)
         {
-            ACHAR* pGlobalCmdName = nullptr;
-            if (auto es = acedGetCommandForDocument(curDoc(), pGlobalCmdName); es != eOk)
-                return;
-            AcString cmdName = pGlobalCmdName;
-            acutDelString(pGlobalCmdName);
-            cmdName.makeUpper();
+            const AcString cmdName = commandForCurDocument();
             if (PyRxApp::instance().commands.contains(cmdName))
             {
                 try
                 {
-                    auto& method = PyRxApp::instance().commands.at(cmdName);
+                    PyObject* method = PyRxApp::instance().commands.at(cmdName);
                     if (method != nullptr)
                     {
+                        WxPyAutoLock lock;
+                        PyErr_Clear();
                         if (PyCallable_Check(method))
+                        {
                             PyObjectPtr rslt(PyObject_CallFunction(method, NULL));
-                        else
-                            acutPrintf(_T("\npyfunc failed: "));
+                            if (rslt != nullptr)
+                                return;
+                        }
                     }
                 }
                 catch (...)
                 {
-                    acutPrintf(_T("\npyfunc failed: "));
+                   acutPrintf(_T("\npyfunc failed with exception: "));
                 }
             }
         }
+        acutPrintf(_T("\npyfunc failed: "));
     }
 
     static void AcRxPyApp_doit(void)

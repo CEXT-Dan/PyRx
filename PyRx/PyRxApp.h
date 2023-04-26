@@ -64,7 +64,6 @@ public:
 
     CmdNameMap commands;
     PyLispService lispService;
-
     bool isLoaded = false;
 };
 
