@@ -8,6 +8,9 @@ import PyDb  # = database
 import PyAp  # = application, document classes services
 import PyEd  # = editor
 
+print("command = pyjigstyle")
+print("command = pyjig")
+
 # just like in ARX, ent must not be null
 
 

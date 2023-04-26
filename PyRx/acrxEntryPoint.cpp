@@ -26,18 +26,6 @@
 #include "resource.h"
 #include "PyLispService.h"
 
-PyMODINIT_FUNC PyInitPyRxModule(void);
-
-
-#if ARXAPP
-#define ADSPREFIX(x) zds_ ## x
-#elif GRXAPP
-#define ADSPREFIX(x) gds_ ## x
-#else
-#define ADSPREFIX(x) ads_ ## x
-#endif
-
-
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
 
@@ -45,8 +33,6 @@ PyMODINIT_FUNC PyInitPyRxModule(void);
 //----- ObjectARX EntryPoint
 class AcRxPyApp : public AcRxArxApp
 {
-    bool On_kLoadDwgMsgCallOnce = false;
-
 public:
     AcRxPyApp() : AcRxArxApp()
     {
@@ -77,11 +63,6 @@ public:
         AcRx::AppRetCode retCode = AcRxArxApp::On_kLoadDwgMsg(pkt);
         try
         {
-            if (!On_kLoadDwgMsgCallOnce)
-            {
-                PRINTVER();
-                On_kLoadDwgMsgCallOnce = true;
-            }
             for (auto& method : PyRxApp::instance().fnm)
             {
                 if (method.second.OnPyLoadDwg != nullptr)
@@ -122,6 +103,7 @@ public:
 
     static void AcedOnIdleMsgFn()
     {
+        PRINTVER();
         if (!PyRxApp::instance().init())
             acutPrintf(_T("\nPyInit Failed"));
         acedRemoveOnIdleWinMsg(AcedOnIdleMsgFn);
