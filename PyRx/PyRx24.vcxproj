@@ -186,6 +186,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="WxUserInteraction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DocData.h" />
@@ -250,6 +251,7 @@
     <ClInclude Include="ResultBuffer.h" />
     <ClInclude Include="RxPyString.h" />
     <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="WxUserInteraction.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ArxBrxTest.rc" />

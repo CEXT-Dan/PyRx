@@ -184,6 +184,7 @@
     <ClCompile Include="PyJig.cpp">
       <Filter>Source Files\PyEd</Filter>
     </ClCompile>
+    <ClCompile Include="WxUserInteraction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -372,6 +373,7 @@
     <ClInclude Include="PyJig.h">
       <Filter>Header Files\PyEd</Filter>
     </ClInclude>
+    <ClInclude Include="WxUserInteraction.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
