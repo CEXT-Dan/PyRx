@@ -172,24 +172,16 @@ public:
     AcGePoint3d    endPoint() const;
 
     PyGeCircArc3d& setCenter(const AcGePoint3d&);
-    PyGeCircArc3d& setAxes(const AcGeVector3d& normal,const AcGeVector3d& refVec);
+    PyGeCircArc3d& setAxes(const AcGeVector3d& normal, const AcGeVector3d& refVec);
     PyGeCircArc3d& setRadius(double);
     PyGeCircArc3d& setAngles(double startAngle, double endAngle);
 
     PyGeCircArc3d& set1(const AcGePoint3d& cent, const AcGeVector3d& nrm, double radius);
-    PyGeCircArc3d& set2(const AcGePoint3d& cent,const AcGeVector3d& nrm,const AcGeVector3d& refVec, double radius, double startAngle, double endAngle);
-    PyGeCircArc3d& set3(const AcGePoint3d& startPoint, const AcGePoint3d& pnt,const AcGePoint3d& endPoint);
+    PyGeCircArc3d& set2(const AcGePoint3d& cent, const AcGeVector3d& nrm, const AcGeVector3d& refVec, double radius, double startAngle, double endAngle);
+    PyGeCircArc3d& set3(const AcGePoint3d& startPoint, const AcGePoint3d& pnt, const AcGePoint3d& endPoint);
 
-    PyGeCircArc3d& set4(const PyGeCurve3d& curve1,const PyGeCurve3d& curve2, double radius);
+    PyGeCircArc3d& set4(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, double radius);
     PyGeCircArc3d& set5(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, const PyGeCurve3d& curve3);
-
-
-
-
-
-
-
-
 
     static std::string className();
 public:
@@ -217,7 +209,54 @@ class PyGeEllipArc3d : public PyGeCurve3d
 {
 public:
     PyGeEllipArc3d();
+#ifndef BRXAPP
+    PyGeEllipArc3d(const AcGeEllipArc3d& ell);
+#endif
     PyGeEllipArc3d(AcGeEntity3d* pEnt);
+    PyGeEllipArc3d(const PyGeCircArc3d& arc);
+    PyGeEllipArc3d(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius);
+    PyGeEllipArc3d(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius, double ang1, double ang2);
+
+    boost::python::tuple closestPointToPlane1(const PyGePlanarEnt& plane);
+    boost::python::tuple closestPointToPlane2(const PyGePlanarEnt& plane, const AcGeTol& tol);
+
+    boost::python::tuple intersectWith1(const PyGeLinearEnt3d& line);
+    boost::python::tuple intersectWith2(const PyGeLinearEnt3d& line, const AcGeTol& tol);
+
+    boost::python::tuple intersectWith3(const PyGePlanarEnt& line);
+    boost::python::tuple intersectWith4(const PyGePlanarEnt& line, const AcGeTol& tol);
+
+    boost::python::tuple projIntersectWith1(const PyGeLinearEnt3d& line, const AcGeVector3d& projDir);
+    boost::python::tuple projIntersectWith2(const PyGeLinearEnt3d& line, const AcGeVector3d& projDir, const AcGeTol& tol);
+
+    PyGePlane getPlane();
+
+    Adesk::Boolean isCircular1() const;
+    Adesk::Boolean isCircular2(const AcGeTol& tol) const;
+
+    Adesk::Boolean isInside1(const AcGePoint3d& pnt) const;
+    Adesk::Boolean isInside2(const AcGePoint3d& pnt, const AcGeTol& tol) const;
+
+    AcGePoint3d    center() const;
+    double         minorRadius() const;
+    double         majorRadius() const;
+    AcGeVector3d   minorAxis() const;
+    AcGeVector3d   majorAxis() const;
+    AcGeVector3d   normal() const;
+    double         startAng() const;
+    double         endAng() const;
+    AcGePoint3d    startPoint() const;
+    AcGePoint3d    endPoint() const;
+
+    PyGeEllipArc3d& setCenter(const AcGePoint3d& cent);
+    PyGeEllipArc3d& setMinorRadius(double rad);
+    PyGeEllipArc3d& setMajorRadius(double rad);
+    PyGeEllipArc3d& setAxes(const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis);
+    PyGeEllipArc3d& setAngles(double startAngle, double endAngle);
+    PyGeEllipArc3d& set1(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius);
+    PyGeEllipArc3d& set2(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius, double startAngle, double endAngle);
+    PyGeEllipArc3d& set3(const PyGeCircArc3d&);
+
     static std::string className();
 public:
     AcGeEllipArc3d* impObj() const;

@@ -1069,7 +1069,7 @@ PyGeCircArc3d& PyGeCircArc3d::set3(const AcGePoint3d& startPoint, const AcGePoin
 PyGeCircArc3d& PyGeCircArc3d::set4(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, double radius)
 {
     double param1;
-    double param2; 
+    double param2;
     Adesk::Boolean success;
     impObj()->set(*curve1.impObj(), *curve2.impObj(), radius, param1, param2, success);
     if (success == false)
@@ -1127,15 +1127,51 @@ std::string PyGeCompositeCurve3d::className()
 
 AcGeCompositeCurve3d* PyGeCompositeCurve3d::impObj() const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject();
     return static_cast<AcGeCompositeCurve3d*>(m_imp.get());
 }
-
 
 //-----------------------------------------------------------------------------------------
 //AcGeCircArc3d wrapper
 void makeAcGeEllipArc3dWrapper()
 {
     static auto wrapper = class_<PyGeEllipArc3d, bases<PyGeCurve3d>>("EllipArc3d")
+        .def(init<>())
+        .def(init<const PyGeCircArc3d&>())
+        .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double, double>())
+        .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double, double, double, double>())
+        .def("closestPointToPlane", &PyGeEllipArc3d::closestPointToPlane1)
+        .def("closestPointToPlane", &PyGeEllipArc3d::closestPointToPlane2)
+        .def("intersectWith", &PyGeEllipArc3d::intersectWith1)
+        .def("intersectWith", &PyGeEllipArc3d::intersectWith2)
+        .def("intersectWith", &PyGeEllipArc3d::intersectWith3)
+        .def("intersectWith", &PyGeEllipArc3d::intersectWith4)
+        .def("projIntersectWith", &PyGeEllipArc3d::projIntersectWith1)
+        .def("projIntersectWith", &PyGeEllipArc3d::projIntersectWith2)
+        .def("getPlane", &PyGeEllipArc3d::getPlane)
+        .def("isCircular", &PyGeEllipArc3d::isCircular1)
+        .def("isCircular", &PyGeEllipArc3d::isCircular2)
+        .def("isInside", &PyGeEllipArc3d::isInside1)
+        .def("isInside", &PyGeEllipArc3d::isInside2)
+        .def("center", &PyGeEllipArc3d::center)
+        .def("minorRadius", &PyGeEllipArc3d::minorRadius)
+        .def("majorRadius", &PyGeEllipArc3d::majorRadius)
+        .def("minorAxis", &PyGeEllipArc3d::minorAxis)
+        .def("majorAxis", &PyGeEllipArc3d::majorAxis)
+        .def("normal", &PyGeEllipArc3d::normal)
+        .def("startAng", &PyGeEllipArc3d::startAng)
+        .def("endAng", &PyGeEllipArc3d::endAng)
+        .def("startPoint", &PyGeEllipArc3d::startPoint)
+        .def("endPoint", &PyGeEllipArc3d::endPoint)
+        .def("setCenter", &PyGeEllipArc3d::setCenter, return_self<>())
+        .def("setMinorRadius", &PyGeEllipArc3d::setMinorRadius, return_self<>())
+        .def("setMajorRadius", &PyGeEllipArc3d::setMajorRadius, return_self<>())
+        .def("setAxes", &PyGeEllipArc3d::setAxes, return_self<>())
+        .def("setAngles", &PyGeEllipArc3d::setAngles, return_self<>())
+        .def("set", &PyGeEllipArc3d::set1, return_self<>())
+        .def("set", &PyGeEllipArc3d::set2, return_self<>())
+        .def("set", &PyGeEllipArc3d::set3, return_self<>())
         .def("className", &PyGeEllipArc3d::className).staticmethod("className")
         ;
 }
@@ -1149,6 +1185,214 @@ PyGeEllipArc3d::PyGeEllipArc3d(AcGeEntity3d* pEnt)
     : PyGeCurve3d(pEnt)
 {
 }
+#ifndef BRXAPP
+PyGeEllipArc3d::PyGeEllipArc3d(const AcGeEllipArc3d& ell)
+    : PyGeCurve3d(new AcGeEllipArc3d(ell))
+{
+}
+#endif
+
+PyGeEllipArc3d::PyGeEllipArc3d(const PyGeCircArc3d& arc)
+    : PyGeCurve3d(new AcGeEllipArc3d(*arc.impObj()))
+{
+}
+
+PyGeEllipArc3d::PyGeEllipArc3d(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius)
+    : PyGeCurve3d(new AcGeEllipArc3d(cent, majorAxis, minorAxis, majorRadius, minorRadius))
+{
+}
+
+PyGeEllipArc3d::PyGeEllipArc3d(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius, double ang1, double ang2)
+    : PyGeCurve3d(new AcGeEllipArc3d(cent, majorAxis, minorAxis, majorRadius, minorRadius, ang1, ang2))
+{
+}
+
+boost::python::tuple PyGeEllipArc3d::closestPointToPlane1(const PyGePlanarEnt& plane)
+{
+    AcGePoint3d pointOnPlane;
+    auto result = impObj()->closestPointToPlane(*plane.impObj(), pointOnPlane);
+    return boost::python::make_tuple(result, pointOnPlane);
+}
+
+boost::python::tuple PyGeEllipArc3d::closestPointToPlane2(const PyGePlanarEnt& plane, const AcGeTol& tol)
+{
+    AcGePoint3d pointOnPlane;
+    auto result = impObj()->closestPointToPlane(*plane.impObj(), pointOnPlane, tol);
+    return boost::python::make_tuple(result, pointOnPlane);
+}
+
+boost::python::tuple PyGeEllipArc3d::intersectWith1(const PyGeLinearEnt3d& line)
+{
+    int intn = 0;
+    AcGePoint3d p1, p2;
+    auto result = impObj()->intersectWith(*line.impObj(), intn, p1, p2);
+    return boost::python::make_tuple(result, intn, p1, p2);
+}
+
+boost::python::tuple PyGeEllipArc3d::intersectWith2(const PyGeLinearEnt3d& line, const AcGeTol& tol)
+{
+    int intn = 0;
+    AcGePoint3d p1, p2;
+    auto result = impObj()->intersectWith(*line.impObj(), intn, p1, p2, tol);
+    return boost::python::make_tuple(result, intn, p1, p2);
+}
+
+boost::python::tuple PyGeEllipArc3d::intersectWith3(const PyGePlanarEnt& line)
+{
+    int intn = 0;
+    AcGePoint3d p1, p2;
+    auto result = impObj()->intersectWith(*line.impObj(), intn, p1, p2);
+    return boost::python::make_tuple(result, intn, p1, p2);
+}
+
+boost::python::tuple PyGeEllipArc3d::intersectWith4(const PyGePlanarEnt& line, const AcGeTol& tol)
+{
+    int intn = 0;
+    AcGePoint3d p1, p2;
+    auto result = impObj()->intersectWith(*line.impObj(), intn, p1, p2, tol);
+    return boost::python::make_tuple(result, intn, p1, p2);
+}
+
+boost::python::tuple PyGeEllipArc3d::projIntersectWith1(const PyGeLinearEnt3d& line, const AcGeVector3d& projDir)
+{
+    int intn = 0;
+    AcGePoint3d p1, p2, p3, p4;
+    auto result = impObj()->projIntersectWith(*line.impObj(), projDir, intn, p1, p2, p3, p4);
+    return boost::python::make_tuple(result, intn, p1, p2, p3, p4);
+}
+
+boost::python::tuple PyGeEllipArc3d::projIntersectWith2(const PyGeLinearEnt3d& line, const AcGeVector3d& projDir, const AcGeTol& tol)
+{
+    int intn = 0;
+    AcGePoint3d p1, p2, p3, p4;
+    auto result = impObj()->projIntersectWith(*line.impObj(), projDir, intn, p1, p2, p3, p4, tol);
+    return boost::python::make_tuple(result, intn, p1, p2, p3, p4);
+}
+
+PyGePlane PyGeEllipArc3d::getPlane()
+{
+    AcGePlane plane;
+    impObj()->getPlane(plane);
+    return PyGePlane(plane);
+}
+
+Adesk::Boolean PyGeEllipArc3d::isCircular1() const
+{
+    return impObj()->isCircular();
+}
+
+Adesk::Boolean PyGeEllipArc3d::isCircular2(const AcGeTol& tol) const
+{
+    return impObj()->isCircular(tol);
+}
+
+Adesk::Boolean PyGeEllipArc3d::isInside1(const AcGePoint3d& pnt) const
+{
+    return impObj()->isInside(pnt);
+}
+
+Adesk::Boolean PyGeEllipArc3d::isInside2(const AcGePoint3d& pnt, const AcGeTol& tol) const
+{
+    return impObj()->isInside(pnt, tol);
+}
+
+AcGePoint3d PyGeEllipArc3d::center() const
+{
+    return impObj()->center();
+}
+
+double PyGeEllipArc3d::minorRadius() const
+{
+    return impObj()->minorRadius();
+}
+
+double PyGeEllipArc3d::majorRadius() const
+{
+    return impObj()->majorRadius();
+}
+
+AcGeVector3d PyGeEllipArc3d::minorAxis() const
+{
+    return impObj()->minorAxis();
+}
+
+AcGeVector3d PyGeEllipArc3d::majorAxis() const
+{
+    return impObj()->majorAxis();
+}
+
+AcGeVector3d PyGeEllipArc3d::normal() const
+{
+    return impObj()->normal();
+}
+
+double PyGeEllipArc3d::startAng() const
+{
+    return impObj()->startAng();
+}
+
+double PyGeEllipArc3d::endAng() const
+{
+    return impObj()->endAng();
+}
+
+AcGePoint3d PyGeEllipArc3d::startPoint() const
+{
+    return impObj()->startPoint();
+}
+
+AcGePoint3d PyGeEllipArc3d::endPoint() const
+{
+    return impObj()->endPoint();
+}
+
+PyGeEllipArc3d& PyGeEllipArc3d::setCenter(const AcGePoint3d& cent)
+{
+    impObj()->setCenter(cent);
+    return *this;
+}
+
+PyGeEllipArc3d& PyGeEllipArc3d::setMinorRadius(double rad)
+{
+    impObj()->setMinorRadius(rad);
+    return *this;
+}
+
+PyGeEllipArc3d& PyGeEllipArc3d::setMajorRadius(double rad)
+{
+    impObj()->setMajorRadius(rad);
+    return *this;
+}
+
+PyGeEllipArc3d& PyGeEllipArc3d::setAxes(const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis)
+{
+    impObj()->setAxes(majorAxis, minorAxis);
+    return *this;
+}
+
+PyGeEllipArc3d& PyGeEllipArc3d::setAngles(double startAngle, double endAngle)
+{
+    impObj()->setAngles(startAngle, endAngle);
+    return *this;
+}
+
+PyGeEllipArc3d& PyGeEllipArc3d::set1(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius)
+{
+    impObj()->set(cent, majorAxis, minorAxis, majorRadius, minorRadius);
+    return *this;
+}
+
+PyGeEllipArc3d& PyGeEllipArc3d::set2(const AcGePoint3d& cent, const AcGeVector3d& majorAxis, const AcGeVector3d& minorAxis, double majorRadius, double minorRadius, double startAngle, double endAngle)
+{
+    impObj()->set(cent, majorAxis, minorAxis, majorRadius, minorRadius, startAngle, endAngle);
+    return *this;
+}
+
+PyGeEllipArc3d& PyGeEllipArc3d::set3(const PyGeCircArc3d& arc)
+{
+    impObj()->set(*arc.impObj());
+    return *this;
+}
 
 std::string PyGeEllipArc3d::className()
 {
@@ -1157,6 +1401,8 @@ std::string PyGeEllipArc3d::className()
 
 AcGeEllipArc3d* PyGeEllipArc3d::impObj() const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject();
     return static_cast<AcGeEllipArc3d*>(m_imp.get());
 }
 
@@ -1182,6 +1428,8 @@ std::string PyGeExternalCurve3d::className()
 
 AcGeExternalCurve3d* PyGeExternalCurve3d::impObj() const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject();
     return static_cast<AcGeExternalCurve3d*>(m_imp.get());
 }
 
@@ -1212,5 +1460,7 @@ std::string PyGeOffsetCurve3d::className()
 
 AcGeOffsetCurve3d* PyGeOffsetCurve3d::impObj() const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject();
     return static_cast<AcGeOffsetCurve3d*>(m_imp.get());
 }
