@@ -30,5 +30,7 @@ std::string PyGePlanarEnt::className()
 
 AcGePlanarEnt* PyGePlanarEnt::impObj() const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject();
     return static_cast<AcGePlanarEnt*>(m_imp.get());
 }

@@ -5,6 +5,9 @@
 #include "PyGeBoundBlock3d.h"
 #include "PyGePlane.h"
 #include "PyGeLinearEnt3d.h"
+#include "PyGePlanarEnt.h"
+#include "PyGeLinearEnt3d.h"
+
 using namespace boost::python;
 //-----------------------------------------------------------------------------------
 //PyGeCurve3d
@@ -792,6 +795,8 @@ std::string PyGeCurve3d::className()
 
 AcGeCurve3d* PyGeCurve3d::impObj() const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject();
     return static_cast<AcGeCurve3d*>(m_imp.get());
 }
 
@@ -800,10 +805,45 @@ AcGeCurve3d* PyGeCurve3d::impObj() const
 void makAcGeCircArc3dWrapper()
 {
     static auto wrapper = class_<PyGeCircArc3d, bases<PyGeCurve3d>>("CircArc3d")
+        .def(init<>())
+        .def(init<const AcGePoint3d&, const AcGeVector3d&, double>())
+        .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double, double, double>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
+        .def("closestPointToPlane", &PyGeCircArc3d::closestPointToPlane1)
+        .def("closestPointToPlane", &PyGeCircArc3d::closestPointToPlane2)
+        .def("intersectWith", &PyGeCircArc3d::intersectWith1)
+        .def("intersectWith", &PyGeCircArc3d::intersectWith2)
+        .def("intersectWith", &PyGeCircArc3d::intersectWith3)
+        .def("intersectWith", &PyGeCircArc3d::intersectWith4)
+        .def("intersectWith", &PyGeCircArc3d::intersectWith5)
+        .def("intersectWith", &PyGeCircArc3d::intersectWith6)
+        .def("projIntersectWith", &PyGeCircArc3d::projIntersectWith1)
+        .def("projIntersectWith", &PyGeCircArc3d::projIntersectWith2)
+        .def("tangent", &PyGeCircArc3d::tangent1)
+        .def("tangent", &PyGeCircArc3d::tangent2)
+        .def("getPlane", &PyGeCircArc3d::getPlane)
+        .def("isInside", &PyGeCircArc3d::isInside1)
+        .def("isInside", &PyGeCircArc3d::isInside2)
+        .def("center", &PyGeCircArc3d::center)
+        .def("normal", &PyGeCircArc3d::normal)
+        .def("refVec", &PyGeCircArc3d::refVec)
+        .def("radius", &PyGeCircArc3d::radius)
+        .def("startAng", &PyGeCircArc3d::startAng)
+        .def("endAng", &PyGeCircArc3d::endAng)
+        .def("startPoint", &PyGeCircArc3d::startPoint)
+        .def("endPoint", &PyGeCircArc3d::endPoint)
+        .def("setCenter", &PyGeCircArc3d::setCenter, return_self<>())
+        .def("setAxes", &PyGeCircArc3d::setAxes, return_self<>())
+        .def("setRadius", &PyGeCircArc3d::setRadius, return_self<>())
+        .def("setAngles", &PyGeCircArc3d::setAngles, return_self<>())
+        .def("set", &PyGeCircArc3d::set1, return_self<>())
+        .def("set", &PyGeCircArc3d::set2, return_self<>())
+        .def("set", &PyGeCircArc3d::set3, return_self<>())
+        .def("set", &PyGeCircArc3d::set4, return_self<>())
+        .def("set", &PyGeCircArc3d::set5, return_self<>())
         .def("className", &PyGeCircArc3d::className).staticmethod("className")
         ;
 }
-
 
 PyGeCircArc3d::PyGeCircArc3d()
     :PyGeCurve3d(new AcGeCircArc3d())
@@ -815,6 +855,240 @@ PyGeCircArc3d::PyGeCircArc3d(AcGeEntity3d* pEnt)
 {
 }
 
+PyGeCircArc3d::PyGeCircArc3d(const AcGeCircArc3d& arc)
+    : PyGeCurve3d(new AcGeCircArc3d(arc))
+{
+}
+
+PyGeCircArc3d::PyGeCircArc3d(const AcGePoint3d& cent, const AcGeVector3d& nrm, double radius)
+    : PyGeCurve3d(new AcGeCircArc3d(cent, nrm, radius))
+{
+}
+
+PyGeCircArc3d::PyGeCircArc3d(const AcGePoint3d& cent, const AcGeVector3d& nrm, const AcGeVector3d& refVec, double radius, double startAngle, double endAngle)
+    : PyGeCurve3d(new AcGeCircArc3d(cent, nrm, refVec, radius, startAngle, endAngle))
+{
+}
+
+PyGeCircArc3d::PyGeCircArc3d(const AcGePoint3d& startPoint, const AcGePoint3d& pnt, const AcGePoint3d& endPoint)
+    : PyGeCurve3d(new AcGeCircArc3d(startPoint, pnt, endPoint))
+{
+}
+
+boost::python::tuple PyGeCircArc3d::closestPointToPlane1(const PyGePlanarEnt& plane)
+{
+    AcGePoint3d pointOnPlane;
+    auto result = impObj()->closestPointToPlane(*plane.impObj(), pointOnPlane);
+    return boost::python::make_tuple(result, pointOnPlane);
+}
+
+boost::python::tuple PyGeCircArc3d::closestPointToPlane2(const PyGePlanarEnt& plane, const AcGeTol& tol)
+{
+    AcGePoint3d pointOnPlane;
+    auto result = impObj()->closestPointToPlane(*plane.impObj(), pointOnPlane, tol);
+    return boost::python::make_tuple(result, pointOnPlane);
+}
+
+boost::python::tuple PyGeCircArc3d::intersectWith1(const PyGeLinearEnt3d& line)
+{
+    int intn = 0;
+    AcGePoint3d p1, p2;
+    auto result = impObj()->intersectWith(*line.impObj(), intn, p1, p2);
+    return boost::python::make_tuple(result, intn, p1, p2);
+}
+
+boost::python::tuple PyGeCircArc3d::intersectWith2(const PyGeLinearEnt3d& line, const AcGeTol& tol)
+{
+    int intn = 0;
+    AcGePoint3d p1, p2;
+    auto result = impObj()->intersectWith(*line.impObj(), intn, p1, p2, tol);
+    return boost::python::make_tuple(result, intn, p1, p2);
+}
+
+boost::python::tuple PyGeCircArc3d::intersectWith3(const PyGeCircArc3d& line)
+{
+    int intn = 0;
+    AcGePoint3d p1, p2;
+    auto result = impObj()->intersectWith(*line.impObj(), intn, p1, p2);
+    return boost::python::make_tuple(result, intn, p1, p2);
+}
+
+boost::python::tuple PyGeCircArc3d::intersectWith4(const PyGeCircArc3d& line, const AcGeTol& tol)
+{
+    int intn = 0;
+    AcGePoint3d p1, p2;
+    auto result = impObj()->intersectWith(*line.impObj(), intn, p1, p2, tol);
+    return boost::python::make_tuple(result, intn, p1, p2);
+}
+
+boost::python::tuple PyGeCircArc3d::intersectWith5(const PyGePlanarEnt& line)
+{
+    int intn = 0;
+    AcGePoint3d p1, p2;
+    auto result = impObj()->intersectWith(*line.impObj(), intn, p1, p2);
+    return boost::python::make_tuple(result, intn, p1, p2);
+}
+
+boost::python::tuple PyGeCircArc3d::intersectWith6(const PyGePlanarEnt& line, const AcGeTol& tol)
+{
+    int intn = 0;
+    AcGePoint3d p1, p2;
+    auto result = impObj()->intersectWith(*line.impObj(), intn, p1, p2, tol);
+    return boost::python::make_tuple(result, intn, p1, p2);
+}
+
+boost::python::tuple PyGeCircArc3d::projIntersectWith1(const PyGeLinearEnt3d& line, const AcGeVector3d& projDir)
+{
+    int intn = 0;
+    AcGePoint3d p1, p2, p3, p4;
+    auto result = impObj()->projIntersectWith(*line.impObj(), projDir, intn, p1, p2, p3, p4);
+    return boost::python::make_tuple(result, intn, p1, p2, p3, p4);
+}
+
+boost::python::tuple PyGeCircArc3d::projIntersectWith2(const PyGeLinearEnt3d& line, const AcGeVector3d& projDir, const AcGeTol& tol)
+{
+    int intn = 0;
+    AcGePoint3d p1, p2, p3, p4;
+    auto result = impObj()->projIntersectWith(*line.impObj(), projDir, intn, p1, p2, p3, p4, tol);
+    return boost::python::make_tuple(result, intn, p1, p2, p3, p4);
+}
+
+boost::python::tuple PyGeCircArc3d::tangent1(const AcGePoint3d& pnt) const
+{
+    AcGeLine3d line;
+    auto result = impObj()->tangent(pnt, line, AcGeContext::gTol);
+    return boost::python::make_tuple(result, PyGeLine3d(line));
+}
+
+boost::python::tuple PyGeCircArc3d::tangent2(const AcGePoint3d& pnt, const AcGeTol& tol) const
+{
+    AcGeLine3d line;
+    auto result = impObj()->tangent(pnt, line, tol);
+    return boost::python::make_tuple(result, PyGeLine3d(line));
+}
+
+PyGePlane PyGeCircArc3d::getPlane()
+{
+    AcGePlane plane;
+    impObj()->getPlane(plane);
+    return PyGePlane(plane);
+}
+
+Adesk::Boolean PyGeCircArc3d::isInside1(const AcGePoint3d& pnt) const
+{
+    return impObj()->isInside(pnt);
+}
+
+Adesk::Boolean PyGeCircArc3d::isInside2(const AcGePoint3d& pnt, const AcGeTol& tol) const
+{
+    return impObj()->isInside(pnt, tol);
+}
+
+AcGePoint3d PyGeCircArc3d::center() const
+{
+    return impObj()->center();
+}
+
+AcGeVector3d PyGeCircArc3d::normal() const
+{
+    return impObj()->normal();
+}
+
+AcGeVector3d PyGeCircArc3d::refVec() const
+{
+    return impObj()->refVec();
+}
+
+double PyGeCircArc3d::radius() const
+{
+    return impObj()->radius();
+}
+
+double PyGeCircArc3d::startAng() const
+{
+    return impObj()->startAng();
+}
+
+double PyGeCircArc3d::endAng() const
+{
+    return impObj()->endAng();
+}
+
+AcGePoint3d PyGeCircArc3d::startPoint() const
+{
+    return impObj()->startPoint();
+}
+
+AcGePoint3d PyGeCircArc3d::endPoint() const
+{
+    return impObj()->endPoint();
+}
+
+PyGeCircArc3d& PyGeCircArc3d::setCenter(const AcGePoint3d& val)
+{
+    impObj()->setCenter(val);
+    return *this;
+}
+
+PyGeCircArc3d& PyGeCircArc3d::setAxes(const AcGeVector3d& normal, const AcGeVector3d& refVec)
+{
+    impObj()->setAxes(normal, refVec);
+    return *this;
+}
+
+PyGeCircArc3d& PyGeCircArc3d::setRadius(double val)
+{
+    impObj()->setRadius(val);
+    return *this;
+}
+
+PyGeCircArc3d& PyGeCircArc3d::setAngles(double startAngle, double endAngle)
+{
+    impObj()->setAngles(startAngle, endAngle);
+    return *this;
+}
+
+PyGeCircArc3d& PyGeCircArc3d::set1(const AcGePoint3d& cent, const AcGeVector3d& nrm, double radius)
+{
+    impObj()->set(cent, nrm, radius);
+    return *this;
+}
+
+PyGeCircArc3d& PyGeCircArc3d::set2(const AcGePoint3d& cent, const AcGeVector3d& nrm, const AcGeVector3d& refVec, double radius, double startAngle, double endAngle)
+{
+    impObj()->set(cent, nrm, refVec, radius, startAngle, endAngle);
+    return *this;
+}
+
+PyGeCircArc3d& PyGeCircArc3d::set3(const AcGePoint3d& startPoint, const AcGePoint3d& pnt, const AcGePoint3d& endPoint)
+{
+    impObj()->set(startPoint, pnt, endPoint);
+    return *this;
+}
+
+PyGeCircArc3d& PyGeCircArc3d::set4(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, double radius)
+{
+    double param1;
+    double param2; 
+    Adesk::Boolean success;
+    impObj()->set(*curve1.impObj(), *curve2.impObj(), radius, param1, param2, success);
+    if (success == false)
+        throw PyAcadErrorStatus(eInvalidInput);
+    return *this;
+}
+
+PyGeCircArc3d& PyGeCircArc3d::set5(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, const PyGeCurve3d& curve3)
+{
+    double param1;
+    double param2;
+    double param3;
+    Adesk::Boolean success;
+    impObj()->set(*curve1.impObj(), *curve2.impObj(), *curve3.impObj(), param1, param2, param3, success);
+    if (success == false)
+        throw PyAcadErrorStatus(eInvalidInput);
+    return *this;
+}
+
 std::string PyGeCircArc3d::className()
 {
     return "AcGeCircArc3d";
@@ -822,6 +1096,8 @@ std::string PyGeCircArc3d::className()
 
 AcGeCircArc3d* PyGeCircArc3d::impObj() const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject();
     return static_cast<AcGeCircArc3d*>(m_imp.get());
 }
 

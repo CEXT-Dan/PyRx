@@ -23,6 +23,8 @@ std::string PyGeLinearEnt3d::className()
 
 AcGeLinearEnt3d* PyGeLinearEnt3d::impObj() const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject();
     return static_cast<AcGeLinearEnt3d*>(m_imp.get());
 }
 

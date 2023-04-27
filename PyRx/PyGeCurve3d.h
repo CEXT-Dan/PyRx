@@ -5,6 +5,9 @@ class PyGeInterval;
 class PyGePointOnCurve3d;
 class PyGeBoundBlock3d;
 class PyGePlane;
+class PyGePlanarEnt;
+class PyGeLinearEnt3d;
+
 //-----------------------------------------------------------------------------------
 //PyGeCurve3d
 void makPyGeCurve3dWrapper();
@@ -130,7 +133,64 @@ class PyGeCircArc3d : public PyGeCurve3d
 {
 public:
     PyGeCircArc3d();
+    PyGeCircArc3d(const AcGeCircArc3d& arc);
+    PyGeCircArc3d(const AcGePoint3d& cent, const AcGeVector3d& nrm, double radius);
+    PyGeCircArc3d(const AcGePoint3d& cent, const AcGeVector3d& nrm, const AcGeVector3d& refVec, double radius, double startAngle, double endAngle);
+    PyGeCircArc3d(const AcGePoint3d& startPoint, const AcGePoint3d& pnt, const AcGePoint3d& endPoint);
     PyGeCircArc3d(AcGeEntity3d* pEnt);
+
+    boost::python::tuple closestPointToPlane1(const PyGePlanarEnt& plane);
+    boost::python::tuple closestPointToPlane2(const PyGePlanarEnt& plane, const AcGeTol& tol);
+
+    boost::python::tuple intersectWith1(const PyGeLinearEnt3d& line);
+    boost::python::tuple intersectWith2(const PyGeLinearEnt3d& line, const AcGeTol& tol);
+
+    boost::python::tuple intersectWith3(const PyGeCircArc3d& line);
+    boost::python::tuple intersectWith4(const PyGeCircArc3d& line, const AcGeTol& tol);
+
+    boost::python::tuple intersectWith5(const PyGePlanarEnt& line);
+    boost::python::tuple intersectWith6(const PyGePlanarEnt& line, const AcGeTol& tol);
+
+    boost::python::tuple projIntersectWith1(const PyGeLinearEnt3d& line, const AcGeVector3d& projDir);
+    boost::python::tuple projIntersectWith2(const PyGeLinearEnt3d& line, const AcGeVector3d& projDir, const AcGeTol& tol);
+
+    boost::python::tuple tangent1(const AcGePoint3d& pnt) const;
+    boost::python::tuple tangent2(const AcGePoint3d& pnt, const AcGeTol& tol) const;
+
+    PyGePlane getPlane();
+
+    Adesk::Boolean isInside1(const AcGePoint3d& pnt) const;
+    Adesk::Boolean isInside2(const AcGePoint3d& pnt, const AcGeTol& tol) const;
+
+    AcGePoint3d    center() const;
+    AcGeVector3d   normal() const;
+    AcGeVector3d   refVec() const;
+    double         radius() const;
+    double         startAng() const;
+    double         endAng() const;
+    AcGePoint3d    startPoint() const;
+    AcGePoint3d    endPoint() const;
+
+    PyGeCircArc3d& setCenter(const AcGePoint3d&);
+    PyGeCircArc3d& setAxes(const AcGeVector3d& normal,const AcGeVector3d& refVec);
+    PyGeCircArc3d& setRadius(double);
+    PyGeCircArc3d& setAngles(double startAngle, double endAngle);
+
+    PyGeCircArc3d& set1(const AcGePoint3d& cent, const AcGeVector3d& nrm, double radius);
+    PyGeCircArc3d& set2(const AcGePoint3d& cent,const AcGeVector3d& nrm,const AcGeVector3d& refVec, double radius, double startAngle, double endAngle);
+    PyGeCircArc3d& set3(const AcGePoint3d& startPoint, const AcGePoint3d& pnt,const AcGePoint3d& endPoint);
+
+    PyGeCircArc3d& set4(const PyGeCurve3d& curve1,const PyGeCurve3d& curve2, double radius);
+    PyGeCircArc3d& set5(const PyGeCurve3d& curve1, const PyGeCurve3d& curve2, const PyGeCurve3d& curve3);
+
+
+
+
+
+
+
+
+
     static std::string className();
 public:
     AcGeCircArc3d* impObj() const;
@@ -181,7 +241,7 @@ void makeAcGeOffsetCurve3dWrapper();
 class PyGeOffsetCurve3d : public PyGeCurve3d
 {
 public:
-    PyGeOffsetCurve3d(const PyGeCurve3d& baseCurve, const AcGeVector3d& planeNormal,double offsetDistance);
+    PyGeOffsetCurve3d(const PyGeCurve3d& baseCurve, const AcGeVector3d& planeNormal, double offsetDistance);
     PyGeOffsetCurve3d(AcGeEntity3d* pEnt);
     static std::string className();
 public:
