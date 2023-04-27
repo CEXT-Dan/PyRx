@@ -388,7 +388,7 @@ public:
 
     static void AcRxPyApp_doit(void)
     {
-        const std::size_t ENV_BUF_SIZE = 8096;
+        /*const std::size_t ENV_BUF_SIZE = 8096;
         std::unique_ptr<char[]> chars(new char[ENV_BUF_SIZE]);
 
         std::size_t bufsize = ENV_BUF_SIZE;
@@ -400,9 +400,9 @@ public:
         }
         std::vector<std::string> paths;
         splitA(chars.get(), ';', paths);
-
+        
         for (auto& item : paths)
-            acutPrintf(_T("\n%ls"), utf8_to_wstr(item).c_str());
+            acutPrintf(_T("\n%ls"), utf8_to_wstr(item).c_str());*/
     }
 };
 

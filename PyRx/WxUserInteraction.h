@@ -1,4 +1,13 @@
 #pragma once
+
+//TODO:
+//expose this as functions to python
+//BeginEditorCommand();
+//CancelEditorCommand();
+//ComleteEditorCommand();
+
+
+
 //-----------------------------------------------------------------------------------------
 // WxUserInteraction
 class WxUserInteraction
@@ -13,3 +22,4 @@ protected:
     void userInteraction(AcApDocument* pDocument, bool prompting);
     void undoUserInteraction();
 };
+
