@@ -114,7 +114,7 @@ public:
     {
         constexpr TCHAR MAJOR1 = '1';
         constexpr TCHAR MINOR1 = '1';
-        constexpr TCHAR REVISION1 = '1', REVISION2 = '1', REVISION3 = '3';
+        constexpr TCHAR REVISION1 = '1', REVISION2 = '1', REVISION3 = '4';
 
         constexpr unsigned int compileYear = (__DATE__[7] - '0') * 1000 + (__DATE__[8] - '0') * 100 + (__DATE__[9] - '0') * 10 + (__DATE__[10] - '0');
         constexpr unsigned int compileMonth = (__DATE__[0] == 'J') ? ((__DATE__[1] == 'a') ? 1 : ((__DATE__[2] == 'n') ? 6 : 7))    // Jan, Jun or Jul
@@ -393,9 +393,11 @@ public:
         acutPrintf(_T("\npyfunc failed: "));
     }
 
-    static void AcRxPyApp_doit(void)
+    static std::string findPythonPath()
     {
-        /*const std::size_t ENV_BUF_SIZE = 8096;
+        std::string res;
+
+        const std::size_t ENV_BUF_SIZE = 8096;
         std::unique_ptr<char[]> chars(new char[ENV_BUF_SIZE]);
 
         std::size_t bufsize = ENV_BUF_SIZE;
@@ -403,13 +405,23 @@ public:
         if (e)
         {
             acutPrintf(L"FAIL");
-            return;
+            return res;
         }
         std::vector<std::string> paths;
         splitA(chars.get(), ';', paths);
 
+   
         for (auto& item : paths)
-            acutPrintf(_T("\n%ls"), utf8_to_wstr(item).c_str());*/
+        {
+            if (item.ends_with("python310\\") || item.ends_with("python310"))
+                res = item;
+        }
+        return res;
+    }
+
+    static void AcRxPyApp_doit(void)
+    {
+        acutPrintf(utf8_to_wstr(findPythonPath()).c_str());
     }
 };
 

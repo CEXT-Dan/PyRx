@@ -73,6 +73,9 @@ int WxRxApp::OnExit()
     wxTheApp->GetMainTopWindow()->SetHWND(0);
     wxTheApp->SetTopWindow(nullptr);
     wxTheApp->CleanUp();
+#ifdef NEVER //TODO!
+    wxUninitialize();
+#endif
     return 0;
 }
 
@@ -120,7 +123,7 @@ bool PyRxApp::init()
 {
     try
     {
-        initPyRxModule();//first
+        initPyRxModule();
         initPyGeModule();
         initPyGiModule();
         initPyDbModule();
@@ -162,7 +165,7 @@ bool PyRxApp::uninit()
         PyGILState_STATE state = PyGILState_Ensure();
         if (Py_IsInitialized())
         {
-            WxRxApp::get().OnExit();
+            wxTheApp->OnExit();
 #ifdef NEVER //TODO!
             Py_FinalizeEx();
 #endif
