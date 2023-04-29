@@ -208,6 +208,7 @@ PyMODINIT_FUNC PyInitPyRxModule(void)
     {
         PyModuleDef_HEAD_INIT,  "PyRxApp", "ObjectArx wrappers", -1,  PyRxMethods
     };
+    WxPyAutoLock lock;
     PyObject* m = PyModule_Create(&pyRxModuleDef);
     if (m == NULL)
         return NULL;
