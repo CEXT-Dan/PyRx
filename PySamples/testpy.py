@@ -21,7 +21,8 @@ def OnPyUnloadDwg():
          
 def PyRxCmd_pycmd():
     try: 
-       getSplitCurves()
+       print("Current working directory: {0}".format(os.getcwd()))
+
     except Exception as err:
         PyRxApp.Printf(err)
         

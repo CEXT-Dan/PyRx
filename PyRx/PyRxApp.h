@@ -61,9 +61,12 @@ public:
 
     using CmdNameMap = std::map<AcString, PyObject*>;
     using CmdLispMap = std::map<int, AcString>;
+    using PathForCommand = std::map<AcString, std::filesystem::path>;
 
     CmdNameMap commands;
     PyLispService lispService;
+    PathForCommand pathForCommand;
+
     bool isLoaded = false;
 };
 

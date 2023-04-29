@@ -42,6 +42,7 @@ public:
     {
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
         acedRegisterOnIdleWinMsg(AcedOnIdleMsgFn);
+        acrxLockApplication(pkt);
         return (retCode);
     }
 
@@ -169,10 +170,9 @@ public:
         }
     }
 
-    static bool pyNavFileNavDialog(AcString& pathName, AcString& moduleName)
+    static bool pyNavFileNavDialog(std::filesystem::path& pysyspath, AcString& pathName, AcString& moduleName)
     {
         std::filesystem::path pypath;
-        std::filesystem::path pysyspath;
         struct resbuf* pResBuf = nullptr;
         int ret = acedGetFileNavDialog(_T("Select Python File"), _T(""), _T("py"), _T("Browse Python File"), 0, &pResBuf);
         if (ret != RTNORM)
@@ -203,7 +203,8 @@ public:
             {
                 AcString pathName;
                 AcString moduleName;
-                if (!pyNavFileNavDialog(pathName, moduleName))
+                std::filesystem::path pysyspath;
+                if (!pyNavFileNavDialog(pysyspath, pathName, moduleName))
                     return;
                 if (PyRxApp::instance().fnm.contains(moduleName))
                 {
@@ -232,6 +233,7 @@ public:
                             if (PyFunction_Check(pValue))
                             {
                                 PyRxApp::instance().commands.emplace(commandName.makeUpper(), pValue);
+                                PyRxApp::instance().pathForCommand.emplace(commandName, pysyspath);
                                 acedRegCmds->addCommand(_T("PYCOMMANDS"), commandName, commandName, ACRX_CMD_TRANSPARENT, AcRxPyApp_pyfunc);
                             }
                         }
@@ -272,7 +274,8 @@ public:
             {
                 AcString pathName;
                 AcString moduleName;
-                if (!pyNavFileNavDialog(pathName, moduleName))
+                std::filesystem::path pysyspath;
+                if (!pyNavFileNavDialog(pysyspath, pathName, moduleName))
                     return;
                 if (PyRxApp::instance().fnm.contains(moduleName))
                 {
@@ -302,6 +305,7 @@ public:
                                     else
                                     {
                                         PyRxApp::instance().commands.emplace(commandName, pValue);
+                                        PyRxApp::instance().pathForCommand.emplace(commandName, pysyspath);
                                         acedRegCmds->addCommand(_T("PYCOMMANDS"), commandName, commandName, ACRX_CMD_TRANSPARENT, AcRxPyApp_pyfunc);
                                     }
                                 }
@@ -364,6 +368,9 @@ public:
             {
                 try
                 {
+                    if (PyRxApp::instance().pathForCommand.contains(cmdName))
+                        std::filesystem::current_path(PyRxApp::instance().pathForCommand.at(cmdName));
+
                     PyObject* method = PyRxApp::instance().commands.at(cmdName);
                     if (method != nullptr)
                     {
@@ -400,7 +407,7 @@ public:
         }
         std::vector<std::string> paths;
         splitA(chars.get(), ';', paths);
-        
+
         for (auto& item : paths)
             acutPrintf(_T("\n%ls"), utf8_to_wstr(item).c_str());*/
     }

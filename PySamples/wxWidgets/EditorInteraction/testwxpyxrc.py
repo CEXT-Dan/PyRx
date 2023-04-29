@@ -39,7 +39,6 @@ class TestDialog(wx.Dialog):
             style=wx.DEFAULT_DIALOG_STYLE, name='ID_SELECTTEST'):
         wx.Dialog.__init__(self)   
         self.res = xrc.XmlResource('./selectTest.xrc')
-        self.res.LoadDialog(self, parent, "ID_SELECTTEST")
         if not self.res.LoadDialog(self, parent, "ID_SELECTTEST"):
             raise Exception("failed to find xrc file") 
         

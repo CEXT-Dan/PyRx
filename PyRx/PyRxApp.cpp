@@ -14,6 +14,7 @@
 #include "wx/wx.h"
 WXDLLIMPEXP_BASE void wxSetInstance(HINSTANCE hInst);
 
+
 class WinFrame : public wxFrame
 {
 public:
@@ -24,26 +25,27 @@ public:
         this->m_isShown = true;
         wxTopLevelWindows.Append(this);
     }
-};
 
-static WinFrame* getMainWindow()
-{
-    static std::unique_ptr<WinFrame> win;
-    if (win == nullptr)
-        win.reset(new WinFrame(adsw_acadMainWnd()));
-    return win.get();
-}
+    virtual bool Destroy() override
+    {
+        return true;
+    }
+};
 
 class WxRxApp : public wxApp
 {
 public:
+    WxRxApp() = default;
+    virtual ~WxRxApp() override = default;
     virtual bool OnInit();
     virtual int  OnExit();
     bool Init_wxPython();
     static WxRxApp& get();
-private:
+public:
     PyThreadState* m_mainTState;
+    std::unique_ptr<WinFrame> frame;
 };
+
 
 WxRxApp& WxRxApp::get()
 {
@@ -53,8 +55,9 @@ WxRxApp& WxRxApp::get()
 
 bool WxRxApp::OnInit()
 {
+    frame.reset(new WinFrame(adsw_acadMainWnd()));
     wxSetInstance(acrxGetApp()->GetModuleInstance());
-    wxTheApp->SetTopWindow(getMainWindow());
+    wxTheApp->SetTopWindow(frame.get());
     if (wxTheApp->GetMainTopWindow() == nullptr)
         return false;
     if (Init_wxPython() == false)
@@ -64,13 +67,18 @@ bool WxRxApp::OnInit()
 
 int WxRxApp::OnExit()
 {
+    m_mainTState = wxPyBeginAllowThreads();
     wxPyEndAllowThreads(m_mainTState);
+    frame.release();
+    wxTheApp->GetMainTopWindow()->SetHWND(0);
+    wxTheApp->SetTopWindow(nullptr);
+    wxTheApp->CleanUp();
     return 0;
 }
 
 bool WxRxApp::Init_wxPython()
 {
-    Py_Initialize();
+    Py_InitializeEx(0);
     PyEval_InitThreads();
     if (wxPyGetAPIPtr() == NULL)
     {
@@ -110,28 +118,36 @@ PyRxApp& PyRxApp::instance()
 
 bool PyRxApp::init()
 {
-    initPyRxModule();//first
-    initPyGeModule();
-    initPyGiModule();
-    initPyDbModule();
-    initPyApModule();
-    initPyEdModule();
-
-    //TODO: might not keep this
-    if (PyImport_AppendInittab(PyAppNamespace, PyInitPyRxModule) == -1)
-        acutPrintf(_T("\nPyImport Failed"));
-
-    initWxApp();
-    if (Py_IsInitialized() && setPyConfig())
+    try
     {
-        isLoaded = true;
-        acutPrintf(_T("Python Interpreter Loaded successfully!\n"));
+        initPyRxModule();//first
+        initPyGeModule();
+        initPyGiModule();
+        initPyDbModule();
+        initPyApModule();
+        initPyEdModule();
+
+        //TODO: might not keep this
+        if (PyImport_AppendInittab(PyAppNamespace, PyInitPyRxModule) == -1)
+            acutPrintf(_T("\nPyImport Failed"));
+
+        initWxApp();
+        if (Py_IsInitialized() && setPyConfig())
+        {
+            isLoaded = true;
+            acutPrintf(_T("Python Interpreter Loaded successfully!\n"));
+        }
+        else
+        {
+            if (PyErr_Occurred())
+                PyErr_Clear();
+            acutPrintf(_T("Failed to load Python Interpreter!"));
+            isLoaded = false;
+        }
     }
-    else
+    catch (...)
     {
-        if (PyErr_Occurred())
-            PyErr_Clear();
-        acutPrintf(_T("Failed to load Python Interpreter!"));
+        acutPrintf(_T("exception in uninit"));
         isLoaded = false;
     }
     return isLoaded;
@@ -139,11 +155,24 @@ bool PyRxApp::init()
 
 bool PyRxApp::uninit()
 {
-    WxPyAutoLock lock;
-    fnm.clear();
-    if (Py_IsInitialized())
-        Py_Finalize();
     isLoaded = false;
+    fnm.clear();
+    try
+    {
+        PyGILState_STATE state = PyGILState_Ensure();
+        if (Py_IsInitialized())
+        {
+            WxRxApp::get().OnExit();
+#ifdef NEVER //TODO!
+            Py_FinalizeEx();
+#endif
+        }
+
+    }
+    catch (...)
+    {
+        acutPrintf(_T("exception in uninit"));
+    }
     return !isLoaded;
 }
 
