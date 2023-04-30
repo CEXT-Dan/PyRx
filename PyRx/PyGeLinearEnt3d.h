@@ -124,7 +124,14 @@ class PyGeRay3d : public PyGeLinearEnt3d
 {
 public:
     PyGeRay3d();
+    PyGeRay3d(const AcGeRay3d& line);
+    PyGeRay3d(const AcGePoint3d& pnt, const AcGeVector3d& vec);
+    PyGeRay3d(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
     PyGeRay3d(AcGeEntity3d* pEnt);
+
+    PyGeRay3d& set1(const AcGePoint3d& pnt, const AcGeVector3d& vec);
+    PyGeRay3d& set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
+
     static std::string className();
 public:
     AcGeRay3d* impObj() const;

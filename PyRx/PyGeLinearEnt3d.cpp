@@ -423,6 +423,11 @@ AcGeLineSeg3d* PyGeLineSeg3d::impObj() const
 void makAcGeRay3ddWrapper()
 {
     static auto wrapper = class_<PyGeRay3d, bases<PyGeLinearEnt3d>>("Ray3d")
+        .def(init<>())
+        .def(init<const AcGePoint3d&, const AcGeVector3d&>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&>())
+        .def("set", &PyGeRay3d::set1, return_self<>())
+        .def("set", &PyGeRay3d::set2, return_self<>())
         .def("className", &PyGeRay3d::className).staticmethod("className")
         ;
 }
@@ -437,6 +442,33 @@ PyGeRay3d::PyGeRay3d(AcGeEntity3d* pEnt)
 {
 }
 
+PyGeRay3d::PyGeRay3d(const AcGeRay3d& line)
+    : PyGeLinearEnt3d(new AcGeRay3d(line))
+{
+}
+
+PyGeRay3d::PyGeRay3d(const AcGePoint3d& pnt, const AcGeVector3d& vec)
+    : PyGeLinearEnt3d(new AcGeRay3d(pnt, vec))
+{
+}
+
+PyGeRay3d::PyGeRay3d(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
+    : PyGeLinearEnt3d(new AcGeRay3d(pnt1, pnt2))
+{
+}
+
+PyGeRay3d& PyGeRay3d::set1(const AcGePoint3d& pnt, const AcGeVector3d& vec)
+{
+    impObj()->set(pnt, vec);
+    return *this;
+}
+
+PyGeRay3d& PyGeRay3d::set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
+{
+    impObj()->set(pnt1, pnt2);
+    return *this;
+}
+
 std::string PyGeRay3d::className()
 {
     return "AcGeRay3d";
@@ -444,5 +476,7 @@ std::string PyGeRay3d::className()
 
 AcGeRay3d* PyGeRay3d::impObj() const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject();
     return static_cast<AcGeRay3d*>(m_imp.get());
 }
