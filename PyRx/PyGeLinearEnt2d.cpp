@@ -172,6 +172,8 @@ void makeAcGeLine2dWrapper()
         .def(init<>())
         .def(init<const AcGePoint2d&, const AcGeVector2d&>())
         .def(init<const AcGePoint2d&, const AcGePoint2d&>())
+        .add_static_property("kXAxis", PyGeLine2d::kXAxis)
+        .add_static_property("kYAxis", PyGeLine2d::kYAxis)
         .def("set", &PyGeLine2d::set1, return_self<>())
         .def("set", &PyGeLine2d::set2, return_self<>())
         .def("className", &PyGeLine2d::className).staticmethod("className")
@@ -201,6 +203,16 @@ PyGeLine2d::PyGeLine2d(const AcGePoint2d& pnt, const AcGeVector2d& vec)
 PyGeLine2d::PyGeLine2d(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
     : PyGeLinearEnt2d(new AcGeLine2d(pnt1, pnt2))
 {
+}
+
+PyGeLine2d PyGeLine2d::kXAxis()
+{
+    return PyGeLine2d(AcGeLine2d::kXAxis);
+}
+
+PyGeLine2d PyGeLine2d::kYAxis()
+{
+    return PyGeLine2d(AcGeLine2d::kYAxis);
 }
 
 PyGeLine2d& PyGeLine2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec)

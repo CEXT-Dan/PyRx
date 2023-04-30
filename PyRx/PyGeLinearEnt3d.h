@@ -69,7 +69,17 @@ class PyGeLine3d : public PyGeLinearEnt3d
 public:
     PyGeLine3d();
     PyGeLine3d(const AcGeLine3d& src);
+    PyGeLine3d(const AcGePoint3d& pnt, const AcGeVector3d& vec);
+    PyGeLine3d(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
     PyGeLine3d(AcGeEntity3d* pEnt);
+
+    static PyGeLine3d kXAxis();
+    static PyGeLine3d kYAxis();
+    static PyGeLine3d kZAxis();
+
+    PyGeLine3d& set1(const AcGePoint3d& pnt, const AcGeVector3d& vec);
+    PyGeLine3d& set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
+
     static std::string className();
 public:
     AcGeLine3d* impObj() const;

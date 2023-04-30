@@ -40,7 +40,6 @@ PyAcGeSurface::PyAcGeSurface(AcGeSurface* pEnt)
 PyAcGeSurface::PyAcGeSurface(AcGeEntity3d* pEnt)
     : PyGeEntity3d(pEnt)
 {
-    //TODO: check type
 }
 
 AcGePoint2d PyAcGeSurface::paramOf(const AcGePoint3d& pnt) const

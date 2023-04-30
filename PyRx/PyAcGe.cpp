@@ -624,7 +624,7 @@ static AcGeMatrix3d AcGeMatrix3dplaneToWorld2(const AcGePlane& plane)
 
 std::string AcGeMatrix3dToString(const AcGeMatrix3d& x)
 {
-    return  std::format("(({0},{1},{2},{3}),({4},{5},{6},{7}),({8},{9},{10},{11}),({12},{13},{14},{15}))",
+    return std::format("(({0},{1},{2},{3}),({4},{5},{6},{7}),({8},{9},{10},{11}),({12},{13},{14},{15}))",
         x.entry[0][0], x.entry[0][1], x.entry[0][2], x.entry[0][3],
         x.entry[1][0], x.entry[1][1], x.entry[1][2], x.entry[1][3],
         x.entry[2][0], x.entry[2][1], x.entry[2][2], x.entry[2][3],
@@ -794,7 +794,6 @@ BOOST_PYTHON_MODULE(PyGe)
         .value("kArg1InsideThis", AcGe::ErrorCondition::kArg1InsideThis)
         .export_values()
         ;
-
     enum_<AcGe::OffsetCrvExtType>("OffsetCrvExtType")
         .value("kFillet", AcGe::OffsetCrvExtType::kFillet)
         .value("kChamfer", AcGe::OffsetCrvExtType::kChamfer)

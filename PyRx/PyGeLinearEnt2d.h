@@ -46,6 +46,8 @@ public:
     PyGeLine2d(const AcGePoint2d& pnt, const AcGeVector2d& vec);
     PyGeLine2d(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2);
     PyGeLine2d(AcGeEntity2d* pEnt);
+    static PyGeLine2d kXAxis();
+    static PyGeLine2d kYAxis();
     PyGeLine2d& set1(const AcGePoint2d& pnt, const AcGeVector2d& vec);
     PyGeLine2d& set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2);
     static std::string className();

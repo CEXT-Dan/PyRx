@@ -161,7 +161,20 @@ class TestGe(unittest.TestCase):
                 self.assertEqual(vX,vX2)
                 self.assertEqual(vY,vY2)
                 self.assertEqual(vZ,vZ2)
-
+                
+        def test_pyge_line2d_static_properties(self):
+                xline = PyGe.Line2d.kXAxis
+                yline = PyGe.Line2d.kYAxis
+                self.assertTrue(xline.isPerpendicularTo(yline))
+                
+        def test_pyge_line3d_static_properties(self):
+                xline = PyGe.Line3d.kXAxis
+                yline = PyGe.Line3d.kYAxis
+                zline = PyGe.Line3d.kZAxis
+                self.assertTrue(xline.isPerpendicularTo(yline))
+                self.assertTrue(xline.isPerpendicularTo(zline))
+                
+                
 def PyRxCmd_pyge():
         try:
                 suite = unittest.TestLoader().loadTestsFromTestCase(TestGe)

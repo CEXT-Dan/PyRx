@@ -228,7 +228,15 @@ AcGeLinearEnt3d* PyGeLinearEnt3d::impObj() const
 //AcGeLine3d
 void makAcGeLine3dWrapper()
 {
-    static auto wrapper = class_<PyGeLine3d, bases<PyGeCurve3d>>("Line3d")
+    static auto wrapper = class_<PyGeLine3d, bases<PyGeLinearEnt3d>>("Line3d")
+        .def(init<>())
+        .def(init<const AcGePoint3d&, const AcGeVector3d&>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&>())
+        .add_static_property("kXAxis", PyGeLine3d::kXAxis)
+        .add_static_property("kYAxis", PyGeLine3d::kYAxis)
+        .add_static_property("kZAxis", PyGeLine3d::kZAxis)
+        .def("set", &PyGeLine3d::set1, return_self<>())
+        .def("set", &PyGeLine3d::set2, return_self<>())
         .def("className", &PyGeLine3d::className).staticmethod("className")
         ;
 }
@@ -246,7 +254,43 @@ PyGeLine3d::PyGeLine3d(AcGeEntity3d* pEnt)
 PyGeLine3d::PyGeLine3d(const AcGeLine3d& src)
     : PyGeLinearEnt3d(new AcGeLine3d(src))
 {
+}
 
+PyGeLine3d::PyGeLine3d(const AcGePoint3d& pnt, const AcGeVector3d& vec)
+    : PyGeLinearEnt3d(new AcGeLine3d(pnt, vec))
+{
+}
+
+PyGeLine3d::PyGeLine3d(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
+    : PyGeLinearEnt3d(new AcGeLine3d(pnt1, pnt2))
+{
+}
+
+PyGeLine3d PyGeLine3d::kXAxis()
+{
+    return PyGeLine3d(AcGeLine3d::kXAxis);
+}
+
+PyGeLine3d PyGeLine3d::kYAxis()
+{
+    return PyGeLine3d(AcGeLine3d::kYAxis);
+}
+
+PyGeLine3d PyGeLine3d::kZAxis()
+{
+    return PyGeLine3d(AcGeLine3d::kZAxis);
+}
+
+PyGeLine3d& PyGeLine3d::set1(const AcGePoint3d& pnt, const AcGeVector3d& vec)
+{
+    impObj()->set(pnt, vec);
+    return *this;
+}
+
+PyGeLine3d& PyGeLine3d::set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
+{
+    impObj()->set(pnt1, pnt2);
+    return *this;
 }
 
 std::string PyGeLine3d::className()
@@ -256,6 +300,8 @@ std::string PyGeLine3d::className()
 
 AcGeLine3d* PyGeLine3d::impObj() const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject();
     return static_cast<AcGeLine3d*>(m_imp.get());
 }
 
