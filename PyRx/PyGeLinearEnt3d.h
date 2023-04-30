@@ -93,8 +93,24 @@ class PyGeLineSeg3d : public PyGeLinearEnt3d
 {
 public:
     PyGeLineSeg3d();
+    PyGeLineSeg3d(const AcGePoint3d& pnt, const AcGeVector3d& vec);
+    PyGeLineSeg3d(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
     PyGeLineSeg3d(AcGeEntity3d* pEnt);
     PyGeLineSeg3d(const AcGeLineSeg3d& src);
+
+    PyGePlane           getBisector() const;
+    AcGePoint3d         baryComb(double blendCoeff) const;
+
+    AcGePoint3d    startPoint() const;
+    AcGePoint3d    midPoint() const;
+    AcGePoint3d    endPoint() const;
+    double         length1() const;
+    double         length2(double fromParam, double toParam) const;
+    double         length3(double fromParam, double toParam, double tol) const;
+
+    PyGeLineSeg3d& set1(const AcGePoint3d& pnt, const AcGeVector3d& vec);
+    PyGeLineSeg3d& set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2);
+
     static std::string className();
 public:
     AcGeLineSeg3d* impObj() const;

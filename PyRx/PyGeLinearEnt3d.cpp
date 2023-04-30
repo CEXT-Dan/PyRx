@@ -310,6 +310,19 @@ AcGeLine3d* PyGeLine3d::impObj() const
 void makPyGeLineSeg3dWrapper()
 {
     static auto wrapper = class_<PyGeLineSeg3d, bases<PyGeLinearEnt3d>>("LineSeg3d")
+        .def(init<>())
+        .def(init<const AcGePoint3d&, const AcGeVector3d&>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&>())
+        .def("getBisector", &PyGeLineSeg3d::getBisector)
+        .def("baryComb", &PyGeLineSeg3d::baryComb)
+        .def("startPoint", &PyGeLineSeg3d::startPoint)
+        .def("midPoint", &PyGeLineSeg3d::midPoint)
+        .def("endPoint", &PyGeLineSeg3d::endPoint)
+        .def("length", &PyGeLineSeg3d::length1)
+        .def("length", &PyGeLineSeg3d::length2)
+        .def("length", &PyGeLineSeg3d::length3)
+        .def("set", &PyGeLineSeg3d::set1, return_self<>())
+        .def("set", &PyGeLineSeg3d::set2, return_self<>())
         .def("className", &PyGeLineSeg3d::className).staticmethod("className")
         ;
 }
@@ -329,6 +342,70 @@ PyGeLineSeg3d::PyGeLineSeg3d(const AcGeLineSeg3d& src)
 {
 }
 
+PyGeLineSeg3d::PyGeLineSeg3d(const AcGePoint3d& pnt, const AcGeVector3d& vec)
+    : PyGeLinearEnt3d(new AcGeLineSeg3d(pnt, vec))
+{
+}
+
+PyGeLineSeg3d::PyGeLineSeg3d(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
+    : PyGeLinearEnt3d(new AcGeLineSeg3d(pnt1, pnt2))
+{
+}
+
+PyGePlane PyGeLineSeg3d::getBisector() const
+{
+    AcGePlane plane;
+    impObj()->getBisector(plane);
+    return PyGePlane(plane);
+}
+
+AcGePoint3d PyGeLineSeg3d::baryComb(double blendCoeff) const
+{
+    return impObj()->baryComb(blendCoeff);
+}
+
+AcGePoint3d PyGeLineSeg3d::startPoint() const
+{
+    return impObj()->startPoint();
+}
+
+AcGePoint3d PyGeLineSeg3d::midPoint() const
+{
+    return impObj()->midPoint();
+}
+
+AcGePoint3d PyGeLineSeg3d::endPoint() const
+{
+    return impObj()->endPoint();
+}
+
+double PyGeLineSeg3d::length1() const
+{
+    return impObj()->length();
+}
+
+double PyGeLineSeg3d::length2(double fromParam, double toParam) const
+{
+    return impObj()->length(fromParam, toParam);
+}
+
+double PyGeLineSeg3d::length3(double fromParam, double toParam, double tol) const
+{
+    return impObj()->length(fromParam, toParam, tol);
+}
+
+PyGeLineSeg3d& PyGeLineSeg3d::set1(const AcGePoint3d& pnt, const AcGeVector3d& vec)
+{
+    impObj()->set(pnt, vec);
+    return *this;
+}
+
+PyGeLineSeg3d& PyGeLineSeg3d::set2(const AcGePoint3d& pnt1, const AcGePoint3d& pnt2)
+{
+    impObj()->set(pnt1, pnt2);
+    return *this;
+}
+
 std::string PyGeLineSeg3d::className()
 {
     return "AcGeLineSeg2d";
@@ -336,6 +413,8 @@ std::string PyGeLineSeg3d::className()
 
 AcGeLineSeg3d* PyGeLineSeg3d::impObj() const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject();
     return static_cast<AcGeLineSeg3d*>(m_imp.get());
 }
 
