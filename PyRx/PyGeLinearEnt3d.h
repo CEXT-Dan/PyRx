@@ -84,6 +84,7 @@ class PyGeLineSeg3d : public PyGeLinearEnt3d
 public:
     PyGeLineSeg3d();
     PyGeLineSeg3d(AcGeEntity3d* pEnt);
+    PyGeLineSeg3d(const AcGeLineSeg3d& src);
     static std::string className();
 public:
     AcGeLineSeg3d* impObj() const;

@@ -278,6 +278,11 @@ PyGeLineSeg3d::PyGeLineSeg3d()
 {
 }
 
+PyGeLineSeg3d::PyGeLineSeg3d(const AcGeLineSeg3d& src)
+    : PyGeLinearEnt3d(new AcGeLineSeg3d(src))
+{
+}
+
 std::string PyGeLineSeg3d::className()
 {
     return "AcGeLineSeg2d";

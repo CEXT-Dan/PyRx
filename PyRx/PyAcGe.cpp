@@ -767,6 +767,7 @@ BOOST_PYTHON_MODULE(PyGe)
     makeAcGeSurfaceWrapper();
     makeAcGePlanarEntWrapper();
     makePyGePlaneWrapper();
+    makePyGeBoundedPlaneWrapper();
     makAcGeCircArc3dWrapper();
     makAcGeCompositeCurve3dWrapper();
     makeAcGeEllipArc3dWrapper();

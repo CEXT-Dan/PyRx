@@ -14,7 +14,6 @@
 #include "wx/wx.h"
 WXDLLIMPEXP_BASE void wxSetInstance(HINSTANCE hInst);
 
-
 class WinFrame : public wxFrame
 {
 public:
@@ -42,10 +41,9 @@ public:
     bool Init_wxPython();
     static WxRxApp& get();
 public:
-    PyThreadState* m_mainTState;
+    PyThreadState* m_mainTState = nullptr;
     std::unique_ptr<WinFrame> frame;
 };
-
 
 WxRxApp& WxRxApp::get()
 {
@@ -159,6 +157,7 @@ bool PyRxApp::init()
 bool PyRxApp::uninit()
 {
     isLoaded = false;
+    WxPyAutoLock::canLock = false;
     fnm.clear();
     try
     {
@@ -170,7 +169,6 @@ bool PyRxApp::uninit()
             Py_FinalizeEx();
 #endif
         }
-
     }
     catch (...)
     {
