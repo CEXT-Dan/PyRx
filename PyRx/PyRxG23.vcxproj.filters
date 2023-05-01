@@ -187,6 +187,9 @@
     <ClCompile Include="WxUserInteraction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PyGeKnotVector.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -377,6 +380,9 @@
     </ClInclude>
     <ClInclude Include="WxUserInteraction.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeKnotVector.h">
+      <Filter>Header Files\PyGe</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

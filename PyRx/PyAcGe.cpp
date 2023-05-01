@@ -20,6 +20,7 @@
 #include "PyGeCurveCurveInt3d.h"
 #include "PyGeCurveSurfInt.h"
 #include "PyGeSurfSurfInt.h"
+#include "PyGeKnotVector.h"
 
 using namespace boost::python;
 
@@ -717,6 +718,7 @@ BOOST_PYTHON_MODULE(PyGe)
 
     makeAcGeTolWrapper();
     //
+    makePyGeKnotVectorWrapper();
     makeAcGePoint2dWrapper();
     makeAcGeVector2dWrapper();
     makeAcGeMatrix2dWrapper();

@@ -1,12 +1,13 @@
 #include "stdafx.h"
 #include "PyGeSplineEnt2d.h"
+#include "PyGeKnotVector.h"
 
 using namespace boost::python;
 //-----------------------------------------------------------------------------------------
 //PyGeSplineEnt2d wrapper
 void makePyGeSplineEnt2dWrapper()
 {
-    static auto wrapper = class_<PyGeSplineEnt2d, bases<PyGeCurve2d>>("SplineEnt2d", boost::python::no_init)
+    class_<PyGeSplineEnt2d, bases<PyGeCurve2d>>("SplineEnt2d", boost::python::no_init)
         .def("className", &PyGeSplineEnt2d::className).staticmethod("className")
         ;
 }
@@ -16,6 +17,26 @@ PyGeSplineEnt2d::PyGeSplineEnt2d(AcGeEntity2d* pEnt)
 {
 }
 
+Adesk::Boolean PyGeSplineEnt2d::isRational() const
+{
+    return impObj()->isRational();
+}
+
+int PyGeSplineEnt2d::degree() const
+{
+    return impObj()->degree();
+}
+
+int PyGeSplineEnt2d::order() const
+{
+    return impObj()->order();
+}
+
+int PyGeSplineEnt2d::numKnots() const
+{
+    return impObj()->numKnots();
+}
+
 std::string PyGeSplineEnt2d::className()
 {
     return "AcGeSplineEnt2d";
@@ -23,6 +44,8 @@ std::string PyGeSplineEnt2d::className()
 
 AcGeSplineEnt2d* PyGeSplineEnt2d::impObj() const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject();
     return static_cast<AcGeSplineEnt2d*>(m_imp.get());
 }
 
@@ -30,7 +53,7 @@ AcGeSplineEnt2d* PyGeSplineEnt2d::impObj() const
 //AcGeCubicSplineCurve2d wrapper
 void makAcGeCubicSplineCurve2dWrapper()
 {
-    static auto wrapper = class_<PyGeCubicSplineCurve2d, bases<PyGeSplineEnt2d>>("CubicSplineCurve2d")
+    class_<PyGeCubicSplineCurve2d, bases<PyGeSplineEnt2d>>("CubicSplineCurve2d")
         .def("className", &PyGeCubicSplineCurve2d::className).staticmethod("className")
         ;
 }
@@ -41,7 +64,7 @@ PyGeCubicSplineCurve2d::PyGeCubicSplineCurve2d()
 }
 
 PyGeCubicSplineCurve2d::PyGeCubicSplineCurve2d(AcGeEntity2d* pEnt)
- : PyGeSplineEnt2d(pEnt)
+    : PyGeSplineEnt2d(pEnt)
 {
 }
 
@@ -52,6 +75,8 @@ std::string PyGeCubicSplineCurve2d::className()
 
 AcGeCubicSplineCurve2d* PyGeCubicSplineCurve2d::impObj() const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject();
     return static_cast<AcGeCubicSplineCurve2d*>(m_imp.get());
 }
 
@@ -59,7 +84,7 @@ AcGeCubicSplineCurve2d* PyGeCubicSplineCurve2d::impObj() const
 //AcGeNurbCurve2d  wrapper
 void makAcGeNurbCurve2dWrapper()
 {
-    static auto wrapper = class_<PyGeNurbCurve2d, bases<PyGeSplineEnt2d>>("NurbCurve2d")
+    class_<PyGeNurbCurve2d, bases<PyGeSplineEnt2d>>("NurbCurve2d")
         .def("className", &PyGeNurbCurve2d::className).staticmethod("className")
         ;
 }
@@ -81,6 +106,8 @@ std::string PyGeNurbCurve2d::className()
 
 AcGeNurbCurve2d* PyGeNurbCurve2d::impObj() const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject();
     return static_cast<AcGeNurbCurve2d*>(m_imp.get());
 }
 
@@ -88,7 +115,7 @@ AcGeNurbCurve2d* PyGeNurbCurve2d::impObj() const
 //AcGeNurbCurve2d  wrapper
 void makAcGePolyline2dWrapper()
 {
-    static auto wrapper = class_<PyGePolyline2d, bases<PyGeSplineEnt2d>>("Polyline2d")
+    class_<PyGePolyline2d, bases<PyGeSplineEnt2d>>("Polyline2d")
         .def("className", &PyGePolyline2d::className).staticmethod("className")
         ;
 }
@@ -110,5 +137,7 @@ std::string PyGePolyline2d::className()
 
 AcGePolyline2d* PyGePolyline2d::impObj() const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject();
     return static_cast<AcGePolyline2d*>(m_imp.get());
 }

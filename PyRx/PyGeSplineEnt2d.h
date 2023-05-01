@@ -1,6 +1,9 @@
 #pragma once
 
 #include "PyGeCurve2d.h"
+
+class PyGeKnotVector;
+
 //-----------------------------------------------------------------------------------------
 //PyGeSplineEnt2d wrapper
 void makePyGeSplineEnt2dWrapper();
@@ -8,6 +11,13 @@ class PyGeSplineEnt2d : public PyGeCurve2d
 {
 public:
     PyGeSplineEnt2d(AcGeEntity2d* pEnt);
+
+    Adesk::Boolean    isRational() const;
+    int               degree() const;
+    int               order() const;
+    int               numKnots() const;
+
+
     static std::string className();
 public:
     AcGeSplineEnt2d* impObj() const;
