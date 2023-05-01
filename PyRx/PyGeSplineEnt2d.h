@@ -16,6 +16,22 @@ public:
     int               degree() const;
     int               order() const;
     int               numKnots() const;
+    PyGeKnotVector    knots() const;
+    int               numControlPoints() const;
+    int               continuityAtKnot1(int idx) const;
+    int               continuityAtKnot2(int idx, const AcGeTol& tol) const;
+
+    double            startParam() const;
+    double            endParam() const;
+    AcGePoint2d       startPoint() const;
+    AcGePoint2d       endPoint() const;
+
+    Adesk::Boolean    hasFitData() const;
+    double            knotAt(int idx) const;
+
+    PyGeSplineEnt2d&  setKnotAt(int idx, double val);
+    AcGePoint2d       controlPointAt(int idx) const;
+    PyGeSplineEnt2d&  setControlPointAt(int idx, const AcGePoint2d& pnt);
 
 
     static std::string className();

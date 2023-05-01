@@ -8,6 +8,23 @@ using namespace boost::python;
 void makePyGeSplineEnt2dWrapper()
 {
     class_<PyGeSplineEnt2d, bases<PyGeCurve2d>>("SplineEnt2d", boost::python::no_init)
+        .def("isRational", &PyGeSplineEnt2d::isRational)
+        .def("degree", &PyGeSplineEnt2d::degree)
+        .def("order", &PyGeSplineEnt2d::order)
+        .def("numKnots", &PyGeSplineEnt2d::numKnots)
+        .def("knots", &PyGeSplineEnt2d::knots)
+        .def("numControlPoints", &PyGeSplineEnt2d::numControlPoints)
+        .def("continuityAtKnot", &PyGeSplineEnt2d::continuityAtKnot1)
+        .def("continuityAtKnot", &PyGeSplineEnt2d::continuityAtKnot2)
+        .def("startParam", &PyGeSplineEnt2d::startParam)
+        .def("endParam", &PyGeSplineEnt2d::endParam)
+        .def("startPoint", &PyGeSplineEnt2d::startPoint)
+        .def("endPoint", &PyGeSplineEnt2d::endPoint)
+        .def("hasFitData", &PyGeSplineEnt2d::hasFitData)
+        .def("knotAt", &PyGeSplineEnt2d::knotAt)
+        .def("setKnotAt", &PyGeSplineEnt2d::setKnotAt, return_self<>())
+        .def("controlPointAt", &PyGeSplineEnt2d::controlPointAt)
+        .def("setControlPointAt", &PyGeSplineEnt2d::setControlPointAt, return_self<>())
         .def("className", &PyGeSplineEnt2d::className).staticmethod("className")
         ;
 }
@@ -35,6 +52,85 @@ int PyGeSplineEnt2d::order() const
 int PyGeSplineEnt2d::numKnots() const
 {
     return impObj()->numKnots();
+}
+
+PyGeKnotVector PyGeSplineEnt2d::knots() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return PyGeKnotVector(impObj()->knots());
+#endif
+}
+
+int PyGeSplineEnt2d::numControlPoints() const
+{
+    return impObj()->numControlPoints();
+}
+
+int PyGeSplineEnt2d::continuityAtKnot1(int idx) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->continuityAtKnot(idx);
+#endif
+}
+
+int PyGeSplineEnt2d::continuityAtKnot2(int idx, const AcGeTol& tol) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->continuityAtKnot(idx, tol);
+#endif
+}
+
+double PyGeSplineEnt2d::startParam() const
+{
+    return impObj()->startParam();
+}
+
+double PyGeSplineEnt2d::endParam() const
+{
+    return impObj()->endParam();
+}
+
+AcGePoint2d PyGeSplineEnt2d::startPoint() const
+{
+    return impObj()->startPoint();
+}
+
+AcGePoint2d PyGeSplineEnt2d::endPoint() const
+{
+    return impObj()->endPoint();
+}  
+
+Adesk::Boolean PyGeSplineEnt2d::hasFitData() const
+{
+    return impObj()->hasFitData();
+}
+
+double PyGeSplineEnt2d::knotAt(int idx) const
+{
+    return impObj()->knotAt(idx);
+}
+
+PyGeSplineEnt2d& PyGeSplineEnt2d::setKnotAt(int idx, double val)
+{
+    impObj()->setKnotAt(idx, val);
+    return *this;
+}
+
+AcGePoint2d PyGeSplineEnt2d::controlPointAt(int idx) const
+{
+    return impObj()->controlPointAt(idx);
+}
+
+PyGeSplineEnt2d& PyGeSplineEnt2d::setControlPointAt(int idx, const AcGePoint2d& pnt)
+{
+    impObj()->setControlPointAt(idx, pnt);
+    return *this;
 }
 
 std::string PyGeSplineEnt2d::className()
