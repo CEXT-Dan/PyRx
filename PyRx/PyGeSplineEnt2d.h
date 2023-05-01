@@ -74,7 +74,16 @@ class PyGePolyline2d : public PyGeSplineEnt2d
 {
 public:
     PyGePolyline2d();
+    PyGePolyline2d(const AcGePolyline2d& src);
+    PyGePolyline2d(const boost::python::list& points);
+    PyGePolyline2d(const PyGeKnotVector& knots, const boost::python::list& points);
+    PyGePolyline2d(const PyGeCurve2d& crv, double apprEps);
     PyGePolyline2d(AcGeEntity2d* pEnt);
+
+    int              numFitPoints() const;
+    AcGePoint2d      fitPointAt(int idx) const;
+    PyGeSplineEnt2d& setFitPointAt(int idx, const AcGePoint2d& point);
+    
     static std::string className();
 public:
     AcGePolyline2d* impObj() const;

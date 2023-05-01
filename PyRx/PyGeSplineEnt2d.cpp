@@ -212,6 +212,13 @@ AcGeNurbCurve2d* PyGeNurbCurve2d::impObj() const
 void makAcGePolyline2dWrapper()
 {
     class_<PyGePolyline2d, bases<PyGeSplineEnt2d>>("Polyline2d")
+        .def(init<>())
+        .def(init<const boost::python::list&>())
+        .def(init<const PyGeKnotVector&, const boost::python::list&>())
+        .def(init<const PyGeCurve2d&, double>())
+        .def("numFitPoints", &PyGePolyline2d::numFitPoints)
+        .def("fitPointAt", &PyGePolyline2d::fitPointAt)
+        .def("setFitPointAt", &PyGePolyline2d::setFitPointAt, return_self<>())
         .def("className", &PyGePolyline2d::className).staticmethod("className")
         ;
 }
@@ -224,6 +231,42 @@ PyGePolyline2d::PyGePolyline2d()
 PyGePolyline2d::PyGePolyline2d(AcGeEntity2d* pEnt)
     : PyGeSplineEnt2d(pEnt)
 {
+}
+
+PyGePolyline2d::PyGePolyline2d(const AcGePolyline2d& src)
+    : PyGeSplineEnt2d(new AcGePolyline2d(src))
+{
+}
+
+PyGePolyline2d::PyGePolyline2d(const boost::python::list& points)
+    : PyGeSplineEnt2d(new AcGePolyline2d(PyListToPoint2dArray(points)))
+{
+}
+
+PyGePolyline2d::PyGePolyline2d(const PyGeKnotVector& knots, const boost::python::list& points)
+    : PyGeSplineEnt2d(new AcGePolyline2d(knots.m_imp, PyListToPoint2dArray(points)))
+{
+}
+
+PyGePolyline2d::PyGePolyline2d(const PyGeCurve2d& crv, double apprEps)
+    : PyGeSplineEnt2d(new AcGePolyline2d(*crv.impObj(), apprEps))
+{
+}
+
+int PyGePolyline2d::numFitPoints() const
+{
+    return impObj()->numFitPoints();
+}
+
+AcGePoint2d PyGePolyline2d::fitPointAt(int idx) const
+{
+    return impObj()->fitPointAt(idx);
+}
+
+PyGeSplineEnt2d& PyGePolyline2d::setFitPointAt(int idx, const AcGePoint2d& point)
+{
+    impObj()->setFitPointAt(idx, point);
+    return *this;
 }
 
 std::string PyGePolyline2d::className()
