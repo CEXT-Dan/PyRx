@@ -1,3 +1,5 @@
+Python wrappers for AutoCAD, BricsCAD, ZWCAD ans GStarCAD
+
 **not ready, in production**
 though COM sould work fine, see the COM samples
 

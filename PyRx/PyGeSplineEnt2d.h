@@ -33,7 +33,6 @@ public:
     AcGePoint2d       controlPointAt(int idx) const;
     PyGeSplineEnt2d&  setControlPointAt(int idx, const AcGePoint2d& pnt);
 
-
     static std::string className();
 public:
     AcGeSplineEnt2d* impObj() const;
