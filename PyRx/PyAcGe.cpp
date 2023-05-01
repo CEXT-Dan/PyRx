@@ -19,6 +19,8 @@
 #include "PyGeSplineEnt3d.h"
 #include "PyGeCurveCurveInt3d.h"
 #include "PyGeCurveSurfInt.h"
+#include "PyGeSurfSurfInt.h"
+
 using namespace boost::python;
 
 //---------------------------------------------------------------------------------------------------------------
@@ -752,6 +754,7 @@ BOOST_PYTHON_MODULE(PyGe)
     //3D
     makePyGeEntity3dWrapper();
     makePyGeCurveSurfIntWrapper();
+    makePyGeSurfSurfIntWrapper();
     makPyGeCurve3dWrapper();
     makePyGePointEnt3dWrapper();
     makePyGePointOnCurve3dWrapper();

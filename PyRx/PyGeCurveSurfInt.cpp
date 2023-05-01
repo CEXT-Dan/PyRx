@@ -3,6 +3,8 @@
 #include "PyGeCurve3d.h"
 #include "PyAcGeSurface.h"
 
+//TODO LINK ERROR @CTOR
+
 using namespace boost::python;
 
 void makePyGeCurveSurfIntWrapper()

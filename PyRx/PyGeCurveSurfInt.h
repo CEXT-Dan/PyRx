@@ -4,6 +4,8 @@
 class PyGeCurve3d;
 class PyAcGeSurface;
 
+//TODO LINK ERROR @CTOR
+
 void makePyGeCurveSurfIntWrapper();
 class PyGeCurveSurfInt : public PyGeEntity3d
 {
