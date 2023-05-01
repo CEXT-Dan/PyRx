@@ -136,6 +136,42 @@
 #pragma comment( lib , "gcdb.lib" )
 #endif
 
+#ifdef NEVER
+#pragma comment( lib , "ac1st24.lib" )
+#pragma comment( lib , "acad.lib" )
+#pragma comment( lib , "acapp.lib" )
+#pragma comment( lib , "acapp_crx.lib" )
+#pragma comment( lib , "AcCamera.lib" )
+#pragma comment( lib , "accore.lib" )
+#pragma comment( lib , "acdb24.lib" )
+#pragma comment( lib , "acdbmgd.lib" )
+#pragma comment( lib , "AcDbPointCloudObj.lib" )
+#pragma comment( lib , "AcDrawBridge.lib" )
+#pragma comment( lib , "AcePmClientApp.lib" )
+#pragma comment( lib , "AcFdEval.lib" )
+#pragma comment( lib , "AcFdUi.lib" )
+#pragma comment( lib , "acge24.lib" )
+#pragma comment( lib , "AcGeolocationObj.lib" )
+#pragma comment( lib , "acgeoment.lib" )
+#pragma comment( lib , "acgiapi.lib" )
+#pragma comment( lib , "acismobj24.lib" )
+#pragma comment( lib , "AcJsCoreStub_crx.lib" )
+#pragma comment( lib , "acModelDocObj.lib" )
+#pragma comment( lib , "AcMPolygonObj.lib" )
+#pragma comment( lib , "AcPal.lib" )
+#pragma comment( lib , "AcPublish_crx.lib" )
+#pragma comment( lib , "AcSceneOE.lib" )
+#pragma comment( lib , "AcTc.lib" )
+#pragma comment( lib , "AcTcUi.lib" )
+#pragma comment( lib , "acui24.lib" )
+#pragma comment( lib , "AdApplicationFrame.lib" )
+#pragma comment( lib , "adui24.lib" )
+#pragma comment( lib , "aNav.lib" )
+#pragma comment( lib , "axdb.lib" )
+#pragma comment( lib , "rxapi.lib" )
+#pragma comment( lib , "userdata.lib" )
+#endif
+
 
 static inline const AcString PyCommandPrefix = _T("PyRxCmd_");
 static inline const AcString PyLispFuncPrefix = _T("PyRxLisp_");

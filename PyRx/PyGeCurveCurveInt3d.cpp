@@ -28,5 +28,7 @@ std::string PyGeCurveCurveInt3d::className()
 
 AcGeCurveCurveInt3d* PyGeCurveCurveInt3d::impObj() const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject();
     return static_cast<AcGeCurveCurveInt3d*>(m_imp.get());
 }

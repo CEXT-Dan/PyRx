@@ -18,6 +18,7 @@
 #include "PyGeLinearEnt3d.h"
 #include "PyGeSplineEnt3d.h"
 #include "PyGeCurveCurveInt3d.h"
+#include "PyGeCurveSurfInt.h"
 using namespace boost::python;
 
 //---------------------------------------------------------------------------------------------------------------
@@ -27,9 +28,9 @@ std::string AcGeScale3dToString(const AcGeScale3d& s)
     return std::format("({},{},{})", s.sx, s.sy, s.sz);
 }
 
-static auto makeAcGeScale3dWrapper()
+void makeAcGeScale3dWrapper()
 {
-    static auto wrapper = class_<AcGeScale3d>("Scale3d")
+    class_<AcGeScale3d>("Scale3d")
         .def_readwrite("sx", &AcGeScale3d::sx)
         .def_readwrite("sy", &AcGeScale3d::sy)
         .def_readwrite("sz", &AcGeScale3d::sz)
@@ -48,7 +49,6 @@ static auto makeAcGeScale3dWrapper()
         .def("toString", &AcGeScale3dToString)
         .def("__str__", &AcGeScale3dToString)
         ;
-    return wrapper;
 }
 
 //---------------------------------------------------------------------------------------------------------------
@@ -57,9 +57,10 @@ std::string AcGeScale2dToString(const AcGeScale2d& s)
 {
     return std::format("({},{})", s.sx, s.sy);
 }
-static auto makeAcGeScale2dWrapper()
+
+void makeAcGeScale2dWrapper()
 {
-    static auto wrapper = class_<AcGeScale2d>("Scale2d")
+    class_<AcGeScale2d>("Scale2d")
 #ifndef BRXAPP
         .def("preMultBy", &AcGeScale2d::preMultBy, return_self<>())
         .def("postMultBy", &AcGeScale2d::postMultBy, return_self<>())
@@ -77,7 +78,6 @@ static auto makeAcGeScale2dWrapper()
         .def("toString", &AcGeScale2dToString)
         .def("__str__", &AcGeScale2dToString)
         ;
-    return wrapper;
 }
 
 //---------------------------------------------------------------------------------------------------------------
@@ -111,9 +111,9 @@ static AcGePoint2d AcGePoint2dkOrigin()
     return AcGePoint2d::kOrigin;
 }
 
-static void makeAcGePoint2dWrapper()
+void makeAcGePoint2dWrapper()
 {
-    static auto wrapper = class_<AcGePoint2d>("Point2d")
+    class_<AcGePoint2d>("Point2d")
         .def(init<>())
         .def(init<const AcGePoint2d&>())
         .def(init<double, double>())
@@ -187,9 +187,9 @@ static AcGeVector2d acGeVector2dMulOperatorAcGeMatrix2d(const AcGeVector2d& vec,
     return mat * vec;
 }
 
-static void makeAcGeVector2dWrapper()
+void makeAcGeVector2dWrapper()
 {
-    static auto wrapper = class_<AcGeVector2d>("Vector2d")
+    class_<AcGeVector2d>("Vector2d")
         .def(init<>())
         .def(init<const AcGeVector2d&>())
         .def(init<double, double>())
@@ -307,9 +307,9 @@ static AcGeMatrix2d AcGeMatrix2alignCoordSys
     return AcGeMatrix2d::alignCoordSys(fromOrigin, fromE0, fromE1, toOrigin, toE0, toE1);
 }
 
-static auto makeAcGeMatrix2dWrapper()
+static void makeAcGeMatrix2dWrapper()
 {
-    static auto wrapper = class_<AcGeMatrix2d>("Matrix2d")
+    class_<AcGeMatrix2d>("Matrix2d")
         .add_static_property("kIdentity", &AcGeMatrix2dkIdentity)
         .def("setToIdentity", &AcGeMatrix2d::setToIdentity, return_self<>())
         .def("preMultBy", &AcGeMatrix2d::preMultBy, return_self<>())
@@ -352,7 +352,6 @@ static auto makeAcGeMatrix2dWrapper()
         .def("toString", &AcGeMatrix2dToString)
         .def("__str__", &AcGeMatrix2dToString)
         ;
-    return wrapper;
 }
 
 //---------------------------------------------------------------------------------------------------------------
@@ -377,9 +376,9 @@ AcGePoint3d acAcGePoint3dMulOperatoAcGePoint3d(double val, const AcGePoint3d& pn
     return val * pnt;
 }
 
-static void makeAcGePoint3dWrapper()
+void makeAcGePoint3dWrapper()
 {
-    static auto wrapper = class_<AcGePoint3d>("Point3d")
+    class_<AcGePoint3d>("Point3d")
         .def(init<>())
         .def(init<const AcGePoint3d&>())
         .def(init<double, double, double>())
@@ -468,9 +467,9 @@ AcGePoint3d acAcGeVector3ddMulOperatoAcGeMatrix3d(const AcGeMatrix3d& mat, const
     return mat * pnt;
 }
 
-static auto makeAcGeVector3dWrapper()
+static void makeAcGeVector3dWrapper()
 {
-    static auto wrapper = class_<AcGeVector3d>("Vector3d")
+    class_<AcGeVector3d>("Vector3d")
         .def(init<>())
         .def(init<const AcGeVector3d&>())
         .def(init<double, double, double>())
@@ -552,7 +551,6 @@ static auto makeAcGeVector3dWrapper()
         .def("toString", &AcGeVector3dToString)
         .def("__str__", &AcGeVector3dToString)
         ;
-    return wrapper;
 }
 
 //---------------------------------------------------------------------------------------------------------------
@@ -631,9 +629,9 @@ std::string AcGeMatrix3dToString(const AcGeMatrix3d& x)
         x.entry[3][0], x.entry[3][1], x.entry[3][2], x.entry[3][3]);
 }
 
-static void makeAcGeMatrix3dWrapper()
+void makeAcGeMatrix3dWrapper()
 {
-    static auto wrapper = class_<AcGeMatrix3d>("Matrix3d")
+    class_<AcGeMatrix3d>("Matrix3d")
         .def(init<>())
         .def(init<const AcGeMatrix3d&>())
         .add_static_property("kIdentity", &AcGeMatrix3dkIdentity)
@@ -707,7 +705,6 @@ static void makeAcGeMatrix3dWrapper()
         .def("toString", &AcGeMatrix3dToString)
         .def("__str__", &AcGeMatrix3dToString)
         ;
-    return;
 }
 
 BOOST_PYTHON_MODULE(PyGe)
@@ -754,6 +751,7 @@ BOOST_PYTHON_MODULE(PyGe)
     makeAcGeCompositeCurve2dWrapper();
     //3D
     makePyGeEntity3dWrapper();
+    makePyGeCurveSurfIntWrapper();
     makPyGeCurve3dWrapper();
     makePyGePointEnt3dWrapper();
     makePyGePointOnCurve3dWrapper();
