@@ -278,7 +278,7 @@ public:
     double          rotation(void) const;
     double          rotation2(int row, int col, int nContent) const;
 
-    Acad::ErrorStatus setRotation(double fAngle) override;
+    Acad::ErrorStatus setRotation(double fAngle);
     Acad::ErrorStatus setRotation2(int row, int col, int nContent, double fAngle);
 
     bool              isAutoScale2(int row, int col, int nContent) const;
@@ -354,8 +354,6 @@ public:
     Acad::ErrorStatus setBreakSpacing(double fSpacing);
 
     AcCellRange       cellRange() const;
-
-
 
     static std::string className();
 public:

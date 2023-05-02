@@ -3062,7 +3062,8 @@ void makPyDbPolylineWrapper()
         .def("thickness", &PyDbPolyline::thickness)
         .def("getConstantWidth", &PyDbPolyline::getConstantWidth)
         .def("normal", &PyDbPolyline::normal)
-        .def("addVertexAt", &PyDbPolyline::addVertexAt)
+        .def("addVertexAt", &PyDbPolyline::addVertexAt1)
+        .def("addVertexAt", &PyDbPolyline::addVertexAt2)
         .def("removeVertexAt", &PyDbPolyline::removeVertexAt)
         .def("numVerts", &PyDbPolyline::numVerts)
         .def("getBulgeAt", &PyDbPolyline::getBulgeAt)
@@ -3300,7 +3301,15 @@ AcGeVector3d PyDbPolyline::normal() const
     return imp->normal();
 }
 
-Acad::ErrorStatus PyDbPolyline::addVertexAt(unsigned int index, const AcGePoint2d& pnt, double bulge, double startWidth, double endWidth)
+Acad::ErrorStatus PyDbPolyline::addVertexAt1(unsigned int index, const AcGePoint2d& pnt)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->addVertexAt(index, pnt, 0.0, 0.0, 0.0);
+}
+
+Acad::ErrorStatus PyDbPolyline::addVertexAt2(unsigned int index, const AcGePoint2d& pnt, double bulge, double startWidth, double endWidth)
 {
     auto imp = impObj();
     if (imp == nullptr)

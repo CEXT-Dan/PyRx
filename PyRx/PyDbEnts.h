@@ -66,7 +66,7 @@ public:
 
     int                 correctSpelling();
 
-    virtual Acad::ErrorStatus   adjustAlignment(const PyDbDatabase& pDb);
+    Acad::ErrorStatus   adjustAlignment(const PyDbDatabase& pDb);
 
     Acad::ErrorStatus   convertFieldToText();
     bool hitTest(const AcGePoint3d& ptHit) const;
@@ -114,7 +114,7 @@ public:
     Adesk::UInt16       fieldLength() const;
     Acad::ErrorStatus   setFieldLength(Adesk::UInt16 val);
 
-    Acad::ErrorStatus   adjustAlignment(const PyDbDatabase& pDb) override;
+    Acad::ErrorStatus   adjustAlignment(const PyDbDatabase& pDb);
 
     bool lockPositionInBlock() const;
     Acad::ErrorStatus setLockPositionInBlock(bool bValue);
@@ -189,34 +189,34 @@ public:
     virtual ~PyDbBlockReference() override = default;
 
     PyDbObjectId      blockTableRecord() const;
-    virtual Acad::ErrorStatus setBlockTableRecord(const PyDbObjectId& val);
+    Acad::ErrorStatus setBlockTableRecord(const PyDbObjectId& val);
 
-    virtual AcGePoint3d       position() const;
-    virtual Acad::ErrorStatus setPosition(const AcGePoint3d& val);
+    AcGePoint3d       position() const;
+    Acad::ErrorStatus setPosition(const AcGePoint3d& val);
 
     AcGeScale3d       scaleFactors() const;
     AcGeScale3d       nonAnnotationScaleFactors() const;
-    virtual Acad::ErrorStatus setScaleFactors(const AcGeScale3d& scale);
+    Acad::ErrorStatus setScaleFactors(const AcGeScale3d& scale);
 
     double            rotation() const;
-    virtual Acad::ErrorStatus setRotation(double newVal);
+    Acad::ErrorStatus setRotation(double newVal);
 
     AcGeVector3d      normal() const;
-    virtual Acad::ErrorStatus setNormal(const AcGeVector3d& newVal);
+    Acad::ErrorStatus setNormal(const AcGeVector3d& newVal);
 
     AcGeMatrix3d      blockTransform() const;
     AcGeMatrix3d      nonAnnotationBlockTransform() const;
-    virtual Acad::ErrorStatus setBlockTransform(const AcGeMatrix3d& val);
+    Acad::ErrorStatus setBlockTransform(const AcGeMatrix3d& val);
 
     PyDbObjectId  appendAttribute(PyDbAttribute& att);
     boost::python::list attributeIds() const;
 
-    virtual Adesk::Boolean treatAsAcDbBlockRefForExplode() const;
+    Adesk::Boolean treatAsAcDbBlockRefForExplode() const;
 
     AcDbExtents geomExtentsBestFit1() const;
     AcDbExtents geomExtentsBestFit2(const AcGeMatrix3d& parentXform) const;
 
-    virtual Acad::ErrorStatus explodeToOwnerSpace() const;
+    Acad::ErrorStatus explodeToOwnerSpace() const;
 
     static std::string className();
 public:
@@ -663,20 +663,20 @@ public:
     AcGePoint2d getPoint2dAt(unsigned int) const;
 
     AcDbPolyline::SegType segType(unsigned int index) const;
-    virtual Adesk::Boolean onSegAt(unsigned int index, const AcGePoint2d& pt2d, double param) const;
+    Adesk::Boolean onSegAt(unsigned int index, const AcGePoint2d& pt2d, double param) const;
 
     PyGeLineSeg2d getLineSeg2dAt(unsigned int index);
     PyGeLineSeg3d getLineSeg3dAt(unsigned int index);
     PyGeCircArc2d getArcSeg2dAt(unsigned int index);
     PyGeCircArc3d getArcSeg3dAt(unsigned int index);
 
-    virtual void setClosed(Adesk::Boolean val);
+    void setClosed(Adesk::Boolean val);
     void         setPlinegen(Adesk::Boolean val);
-    virtual void setElevation(double val);
+    void setElevation(double val);
 
-    virtual Acad::ErrorStatus setThickness(double val);
-    virtual Acad::ErrorStatus setConstantWidth(double val);
-    virtual Acad::ErrorStatus setNormal(const AcGeVector3d& val);
+    Acad::ErrorStatus setThickness(double val);
+    Acad::ErrorStatus setConstantWidth(double val);
+    Acad::ErrorStatus setNormal(const AcGeVector3d& val);
 
     Adesk::Boolean    isOnlyLines() const;
     Adesk::Boolean    hasPlinegen() const;
@@ -685,23 +685,24 @@ public:
 
     double getConstantWidth() const;
     AcGeVector3d      normal() const;
-    virtual Acad::ErrorStatus addVertexAt(unsigned int index,const AcGePoint2d&,double bulge,double startWidth, double endWidth);
+    Acad::ErrorStatus addVertexAt1(unsigned int index, const AcGePoint2d&);
+    Acad::ErrorStatus addVertexAt2(unsigned int index, const AcGePoint2d&, double bulge, double startWidth, double endWidth);
 
-    virtual Acad::ErrorStatus removeVertexAt(unsigned int index);
+    Acad::ErrorStatus removeVertexAt(unsigned int index);
     unsigned int      numVerts()const;
 
     double getBulgeAt(unsigned int index) const;
     double getStartWidthAt(unsigned int index) const;
     double getEndWidthAt(unsigned int index) const;
 
-    virtual Acad::ErrorStatus setPointAt(unsigned int index,const AcGePoint2d& pt);
-    virtual Acad::ErrorStatus setBulgeAt(unsigned int index, double bulge);
-    virtual Acad::ErrorStatus setWidthsAt(unsigned int index,double startWidth, double endWidth);
+    Acad::ErrorStatus setPointAt(unsigned int index,const AcGePoint2d& pt);
+    Acad::ErrorStatus setBulgeAt(unsigned int index, double bulge);
+    Acad::ErrorStatus setWidthsAt(unsigned int index,double startWidth, double endWidth);
 
     Acad::ErrorStatus minimizeMemory();
     Acad::ErrorStatus maximizeMemory();
 
-    virtual void reset(Adesk::Boolean reuse,unsigned int numVerts);
+    void reset(Adesk::Boolean reuse,unsigned int numVerts);
 
     Adesk::Boolean     hasBulges()        const;
     Adesk::Boolean     hasVertexIdentifiers()    const;
