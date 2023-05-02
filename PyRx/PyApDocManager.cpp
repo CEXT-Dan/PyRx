@@ -8,12 +8,41 @@ using namespace boost::python;
 //PyApDocManager Wrapper
 void makeAcApDocManagerWrapper()
 {
-    static auto wrapper = class_<PyApDocManager, bases<PyRxObject>>("DocManager", boost::python::no_init)
+    static auto wrapper = class_<PyApDocManager, bases<PyRxObject>>("DocManager")
+        .def("curDocument", &PyApDocManager::curDocument)
+        .def("mdiActiveDocument", &PyApDocManager::mdiActiveDocument)
+        .def("isApplicationContext", &PyApDocManager::isApplicationContext)
+        .def("document", &PyApDocManager::document)
         .def("lockDocument", &PyApDocManager::lockDocument1)
         .def("lockDocument", &PyApDocManager::lockDocument2)
         .def("lockDocument", &PyApDocManager::lockDocument3)
         .def("unlockDocument", &PyApDocManager::unlockDocument)
-        .def("curDocument", &PyApDocManager::curDocument)
+        .def("newAcApDocumentIterator", &PyApDocManager::newAcApDocumentIterator)
+        .def("setDefaultFormatForSave", &PyApDocManager::setDefaultFormatForSave)
+        .def("defaultFormatForSave", &PyApDocManager::defaultFormatForSave)
+        .def("setCurDocument", &PyApDocManager::setCurDocument1)
+        .def("setCurDocument", &PyApDocManager::setCurDocument2)
+        .def("activateDocument", &PyApDocManager::activateDocument1)
+        .def("activateDocument", &PyApDocManager::activateDocument2)
+        .def("sendStringToExecute", &PyApDocManager::sendStringToExecute1)
+        .def("sendStringToExecute", &PyApDocManager::sendStringToExecute2)
+        .def("appContextNewDocument", &PyApDocManager::appContextNewDocument)
+        .def("appContextOpenDocument", &PyApDocManager::appContextOpenDocument)
+        .def("appContextRecoverDocument", &PyApDocManager::appContextRecoverDocument)
+        .def("appContextOpenPackage", &PyApDocManager::appContextOpenPackage)
+        .def("appContextPromptOpenDocument", &PyApDocManager::appContextPromptOpenDocument)
+        .def("appContextCloseDocument", &PyApDocManager::appContextCloseDocument)
+        .def("newDocument", &PyApDocManager::newDocument)
+        .def("openDocument", &PyApDocManager::openDocument)
+        .def("closeDocument", &PyApDocManager::closeDocument)
+        .def("inputPending", &PyApDocManager::inputPending)
+        .def("disableDocumentActivation", &PyApDocManager::disableDocumentActivation)
+        .def("enableDocumentActivation", &PyApDocManager::enableDocumentActivation)
+        .def("isDocumentActivationEnabled", &PyApDocManager::isDocumentActivationEnabled)
+        .def("documentCount", &PyApDocManager::documentCount)
+        .def("pushAcadResourceHandle", &PyApDocManager::pushAcadResourceHandle)
+        .def("popResourceHandle", &PyApDocManager::popResourceHandle)
+        .def("sendModelessInterrupt", &PyApDocManager::sendModelessInterrupt)
         .def("className", &PyApDocManager::className).staticmethod("className")
         ;
 }
@@ -180,6 +209,41 @@ Acad::ErrorStatus PyApDocManager::closeDocument(PyApDocument& pAcTargetDocument)
 int PyApDocManager::inputPending(PyApDocument& pAcTargetDocument)
 {
     return impObj()->inputPending(pAcTargetDocument.impObj());
+}
+
+Acad::ErrorStatus PyApDocManager::disableDocumentActivation()
+{
+    return impObj()->disableDocumentActivation();
+}
+
+Acad::ErrorStatus PyApDocManager::enableDocumentActivation()
+{
+    return impObj()->enableDocumentActivation();
+}
+
+bool PyApDocManager::isDocumentActivationEnabled()
+{
+    return impObj()->isDocumentActivationEnabled();
+}
+
+int PyApDocManager::documentCount() const
+{
+    return impObj()->documentCount();
+}
+
+void PyApDocManager::pushAcadResourceHandle()
+{
+    return impObj()->pushAcadResourceHandle();
+}
+
+void PyApDocManager::popResourceHandle()
+{
+    return impObj()->popResourceHandle();
+}
+
+Acad::ErrorStatus PyApDocManager::sendModelessInterrupt(PyApDocument& pAcTargetDocument)
+{
+    return impObj()->sendModelessInterrupt(pAcTargetDocument.impObj());
 }
 
 std::string PyApDocManager::className()

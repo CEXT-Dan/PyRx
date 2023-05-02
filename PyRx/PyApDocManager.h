@@ -58,6 +58,15 @@ public:
 
     int   inputPending(PyApDocument& pAcTargetDocument);
 
+    Acad::ErrorStatus disableDocumentActivation();
+    Acad::ErrorStatus enableDocumentActivation();
+    bool isDocumentActivationEnabled();
+
+    int documentCount() const;
+    void pushAcadResourceHandle();
+    void popResourceHandle();
+    Acad::ErrorStatus sendModelessInterrupt(PyApDocument& pAcTargetDocument);
+
     static std::string className();
 
 public:
