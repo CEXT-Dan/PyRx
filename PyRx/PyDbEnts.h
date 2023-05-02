@@ -164,7 +164,7 @@ public:
 
     bool              isMTextAttribute() const;
     PyDbMText         getMTextAttribute() const;
-    Acad::ErrorStatus setMTextAttribute(PyDbMText &mt);
+    Acad::ErrorStatus setMTextAttribute(PyDbMText& mt);
     Acad::ErrorStatus convertIntoMTextAttribute(Adesk::Boolean val);
     Acad::ErrorStatus updateMTextAttribute();
     bool              isReallyLocked() const;
@@ -693,14 +693,14 @@ public:
     double getStartWidthAt(unsigned int index) const;
     double getEndWidthAt(unsigned int index) const;
 
-    Acad::ErrorStatus setPointAt(unsigned int index,const AcGePoint2d& pt);
+    Acad::ErrorStatus setPointAt(unsigned int index, const AcGePoint2d& pt);
     Acad::ErrorStatus setBulgeAt(unsigned int index, double bulge);
-    Acad::ErrorStatus setWidthsAt(unsigned int index,double startWidth, double endWidth);
+    Acad::ErrorStatus setWidthsAt(unsigned int index, double startWidth, double endWidth);
 
     Acad::ErrorStatus minimizeMemory();
     Acad::ErrorStatus maximizeMemory();
 
-    void reset(Adesk::Boolean reuse,unsigned int numVerts);
+    void reset(Adesk::Boolean reuse, unsigned int numVerts);
 
     Adesk::Boolean     hasBulges()        const;
     Adesk::Boolean     hasVertexIdentifiers()    const;
