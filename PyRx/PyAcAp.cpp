@@ -35,6 +35,17 @@ BOOST_PYTHON_MODULE(PyAp)
     makeAcApApplictionWrapper();
     makeAcApDocManagerWrapper();
     makeAcApDocumentWrapper();
+
+    enum_<AcAp::DocLockMode>("DocLockMode")
+        .value("kNone", AcAp::DocLockMode::kNone)
+        .value("kAutoWrite", AcAp::DocLockMode::kAutoWrite)
+        .value("kNotLocked", AcAp::DocLockMode::kNotLocked)
+        .value("kWrite", AcAp::DocLockMode::kWrite)
+        .value("kProtectedAutoWrite", AcAp::DocLockMode::kProtectedAutoWrite)
+        .value("kRead", AcAp::DocLockMode::kRead)
+        .value("kXWrite", AcAp::DocLockMode::kXWrite)
+        .export_values()
+        ;
 };
 
 void initPyApModule()

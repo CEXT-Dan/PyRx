@@ -39,7 +39,6 @@ public:
     AcGeSplineEnt3d* impObj() const;
 };
 
-
 //-----------------------------------------------------------------------------------------
 //AcGeCubicSplineCurve3d wrapper
 void makAcGeCubicSplineCurve3dWrapper();
@@ -53,7 +52,6 @@ public:
     AcGeCubicSplineCurve3d* impObj() const;
 };
 
-
 //-----------------------------------------------------------------------------------------
 //AcGeNurbCurve3d  wrapper
 void makAcGeNurbCurve3dWrapper();
@@ -66,7 +64,6 @@ public:
 public:
     AcGeNurbCurve3d* impObj() const;
 };
-
 
 //-----------------------------------------------------------------------------------------
 //PyGePolyline3d  wrapper
