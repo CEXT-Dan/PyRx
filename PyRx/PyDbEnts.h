@@ -163,10 +163,8 @@ public:
     Acad::ErrorStatus setLockPositionInBlock(bool bValue);
 
     bool              isMTextAttribute() const;
-    //AcDbMText*        getMTextAttribute() const;
-    //const AcDbMText*  getMTextAttributeConst() const;
-    //Acad::ErrorStatus setMTextAttribute(AcDbMText*);
-    //Acad::ErrorStatus setMTextAttributeConst(const AcDbMText*);
+    PyDbMText         getMTextAttribute() const;
+    Acad::ErrorStatus setMTextAttribute(PyDbMText &mt);
     Acad::ErrorStatus convertIntoMTextAttribute(Adesk::Boolean val);
     Acad::ErrorStatus updateMTextAttribute();
     bool              isReallyLocked() const;

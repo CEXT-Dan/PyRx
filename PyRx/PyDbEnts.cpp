@@ -703,6 +703,8 @@ void makePyDbAttributeWrapper()
         .def("lockPositionInBlock", &PyDbAttribute::lockPositionInBlock)
         .def("setLockPositionInBlock", &PyDbAttribute::setLockPositionInBlock)
         .def("isMTextAttribute", &PyDbAttribute::isMTextAttribute)
+        .def("getMTextAttribute", &PyDbAttribute::getMTextAttribute)
+        .def("setMTextAttribute", &PyDbAttribute::setMTextAttribute)
         .def("convertIntoMTextAttribute", &PyDbAttribute::convertIntoMTextAttribute)
         .def("updateMTextAttribute", &PyDbAttribute::updateMTextAttribute)
         .def("isReallyLocked", &PyDbAttribute::isReallyLocked)
@@ -847,6 +849,22 @@ bool PyDbAttribute::isMTextAttribute() const
     if (imp == nullptr)
         throw PyNullObject();
     return imp->isMTextAttribute();
+}
+
+PyDbMText PyDbAttribute::getMTextAttribute() const
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return PyDbMText(imp->getMTextAttribute(),true);
+}
+
+Acad::ErrorStatus PyDbAttribute::setMTextAttribute(PyDbMText& mt)
+{
+    auto imp = impObj();
+    if (imp == nullptr)
+        throw PyNullObject();
+    return imp->setMTextAttribute(mt.impObj());
 }
 
 Acad::ErrorStatus PyDbAttribute::convertIntoMTextAttribute(Adesk::Boolean val)
