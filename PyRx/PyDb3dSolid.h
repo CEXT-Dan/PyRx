@@ -24,3 +24,34 @@ public:
     AcDb3dSolid* impObj() const;
 };
 
+//-----------------------------------------------------------------------------------
+//PyDbRegion
+void makePyDbRegionWrapper();
+
+class PyDbRegion : public PyDbEntity
+{
+public:
+    PyDbRegion();
+    PyDbRegion(AcDbRegion* ptr, bool autoDelete);
+    PyDbRegion(const PyDbObjectId& id, AcDb::OpenMode mode);
+    static std::string className();
+public:
+    AcDbRegion* impObj() const;
+};
+
+
+//-----------------------------------------------------------------------------------
+//PyDbBody
+void makeAcDbBodyWrapper();
+
+class PyDbBody : public PyDbEntity
+{
+public:
+    PyDbBody();
+    PyDbBody(AcDbBody* ptr, bool autoDelete);
+    PyDbBody(const PyDbObjectId& id, AcDb::OpenMode mode);
+    static std::string className();
+public:
+    AcDbBody* impObj() const;
+};
+

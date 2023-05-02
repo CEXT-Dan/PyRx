@@ -136,6 +136,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbHostApplicationServicesWrapper();
 
     makePyDb3dSolidWrapper();
+    makePyDbRegionWrapper();
 
     //global
     def("RegApp", &RegApp);

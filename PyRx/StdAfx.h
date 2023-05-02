@@ -206,9 +206,9 @@ constexpr auto makeBlockTableRecordIterator = makeIterator<AcDbBlockTableRecordI
 class PerfTimer
 {
 private:
-    LARGE_INTEGER frequency;
-    LARGE_INTEGER t1;
-    LARGE_INTEGER t2;
+    LARGE_INTEGER frequency{};
+    LARGE_INTEGER t1{};
+    LARGE_INTEGER t2{};
     double elapsedTime = 0;
 public:
     PerfTimer(const CString& funcName);

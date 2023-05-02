@@ -6,7 +6,7 @@ using namespace boost::python;
 
 void makePyDb3dSolidWrapper()
 {
-    class_<PyDb3dSolid, bases<PyDbEntity>>("Text")
+    class_<PyDb3dSolid, bases<PyDbEntity>>("3dSolid")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("createBox", &PyDb3dSolid::createBox)
@@ -37,7 +37,6 @@ PyDb3dSolid::PyDb3dSolid(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDb3dSolid>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
 }
 
 Acad::ErrorStatus PyDb3dSolid::createBox(double xLen, double yLen, double zLen)
@@ -85,4 +84,88 @@ AcDb3dSolid* PyDb3dSolid::impObj() const
     if (m_pImp == nullptr)
         throw PyNullObject();
     return static_cast<AcDb3dSolid*>(m_pImp.get());
+}
+
+
+
+//-----------------------------------------------------------------------------------
+//PyDbRegion
+void makePyDbRegionWrapper()
+{
+    class_<PyDbRegion, bases<PyDbEntity>>("Region")
+        .def(init<>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        ;
+}
+
+PyDbRegion::PyDbRegion()
+    : PyDbEntity(new AcDbRegion(), true)
+{
+}
+
+PyDbRegion::PyDbRegion(AcDbRegion* ptr, bool autoDelete)
+    : PyDbEntity(ptr, autoDelete)
+{
+}
+
+PyDbRegion::PyDbRegion(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbEntity(nullptr, false)
+{
+    AcDbRegion* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbRegion>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    this->resetImp(pobj, false, true);
+}
+
+std::string PyDbRegion::className()
+{
+    return "AcDbRegion";
+}
+
+AcDbRegion* PyDbRegion::impObj() const
+{
+    if (m_pImp == nullptr)
+        throw PyNullObject();
+    return static_cast<AcDbRegion*>(m_pImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyDbBody
+void makeAcDbBodyWrapper()
+{
+    class_<PyDbBody, bases<PyDbEntity>>("Body")
+        .def(init<>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        ;
+}
+
+PyDbBody::PyDbBody()
+    : PyDbEntity(new AcDbBody(), true)
+{
+}
+
+PyDbBody::PyDbBody(AcDbBody* ptr, bool autoDelete)
+    : PyDbEntity(ptr, autoDelete)
+{
+}
+
+PyDbBody::PyDbBody(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbEntity(nullptr, false)
+{
+    AcDbBody* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbBody>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    this->resetImp(pobj, false, true);
+}
+
+std::string PyDbBody::className()
+{
+    return "AcDbBody";
+}
+
+AcDbBody* PyDbBody::impObj() const
+{
+    if (m_pImp == nullptr)
+        throw PyNullObject();
+    return static_cast<AcDbBody*>(m_pImp.get());
 }
