@@ -18,6 +18,7 @@
 #include "PyDbTable.h"
 #include "PyDbTableStyle.h"
 #include "PyDb3dSolid.h"
+#include "PyDbSurface.h"
 
 using namespace boost::python;
 
@@ -137,6 +138,15 @@ BOOST_PYTHON_MODULE(PyDb)
 
     makePyDb3dSolidWrapper();
     makePyDbRegionWrapper();
+
+    makePyDbSurfaceWrapper();
+    makeAcDbExtrudedSurfaceWrapper();
+    makeAcDbLoftedSurfaceWrapper();
+    makePyDbNurbSurfaceWrapper();
+    makePyDbPlaneSurfaceWrapper();
+    makePyDbRevolvedSurfaceWrapper();
+    makePyDbRevolvedSurfaceWrapper();
+
 
     //global
     def("RegApp", &RegApp);

@@ -95,6 +95,7 @@ void makePyDbRegionWrapper()
     class_<PyDbRegion, bases<PyDbEntity>>("Region")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("className", &PyDbRegion::className).staticmethod("className")
         ;
 }
 
@@ -136,6 +137,7 @@ void makeAcDbBodyWrapper()
     class_<PyDbBody, bases<PyDbEntity>>("Body")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("className", &PyDbBody::className).staticmethod("className")
         ;
 }
 

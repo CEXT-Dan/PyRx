@@ -39,7 +39,6 @@ public:
     AcDbRegion* impObj() const;
 };
 
-
 //-----------------------------------------------------------------------------------
 //PyDbBody
 void makeAcDbBodyWrapper();
