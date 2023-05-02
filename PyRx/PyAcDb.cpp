@@ -17,6 +17,7 @@
 #include "PyDbTextStyleTableRecord.h"
 #include "PyDbTable.h"
 #include "PyDbTableStyle.h"
+#include "PyDb3dSolid.h"
 
 using namespace boost::python;
 
@@ -133,6 +134,8 @@ BOOST_PYTHON_MODULE(PyDb)
     makeTextStyleTableRecordWrapper();
     makeAcDbDatabaseWrapper();
     makeAcDbHostApplicationServicesWrapper();
+
+    makePyDb3dSolidWrapper();
 
     //global
     def("RegApp", &RegApp);

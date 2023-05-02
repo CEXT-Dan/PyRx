@@ -137,6 +137,7 @@
     <ClCompile Include="PyApDocManager.cpp" />
     <ClCompile Include="PyApDocument.cpp" />
     <ClCompile Include="PyCmColorBase.cpp" />
+    <ClCompile Include="PyDb3dSolid.cpp" />
     <ClCompile Include="PyDbBlockTableRecord.cpp" />
     <ClCompile Include="PyDbCurve.cpp" />
     <ClCompile Include="PyDbDatabase.cpp" />
@@ -203,6 +204,7 @@
     <ClInclude Include="PyApDocManager.h" />
     <ClInclude Include="PyApDocument.h" />
     <ClInclude Include="PyCmColorBase.h" />
+    <ClInclude Include="PyDb3dSolid.h" />
     <ClInclude Include="PyDbBlockTableRecord.h" />
     <ClInclude Include="PyDbCurve.h" />
     <ClInclude Include="PyDbDatabase.h" />

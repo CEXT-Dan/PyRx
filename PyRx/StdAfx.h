@@ -136,7 +136,7 @@
 #pragma comment( lib , "gcdb.lib" )
 #endif
 
-#ifdef NEVER
+#ifdef ARXAPP
 #pragma comment( lib , "ac1st24.lib" )
 #pragma comment( lib , "acad.lib" )
 #pragma comment( lib , "acapp.lib" )
