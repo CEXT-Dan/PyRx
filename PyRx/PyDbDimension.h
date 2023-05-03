@@ -13,7 +13,7 @@ class PyDbDimension : public PyDbEntity
 public:
     PyDbDimension(AcDbDimension* ptr, bool autoDelete);
     PyDbDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
-
+    virtual ~PyDbDimension() override = default;
     boost::python::tuple textDefinedSize() const;
     void setTextDefinedSize(double width, double height);
     void resetTextDefinedSize();
@@ -189,8 +189,35 @@ class PyDb2LineAngularDimension : public PyDbDimension
 {
 public:
     PyDb2LineAngularDimension();
+    virtual ~PyDb2LineAngularDimension() override = default;
     PyDb2LineAngularDimension(AcDb2LineAngularDimension* ptr, bool autoDelete);
     PyDb2LineAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
+
+    PyDb2LineAngularDimension(const AcGePoint3d& xLine1Start, const AcGePoint3d& xLine1End, 
+        const AcGePoint3d& xLine2Start, const AcGePoint3d& xLine2End, const AcGePoint3d& arcPoint);
+    PyDb2LineAngularDimension(const AcGePoint3d& xLine1Start, const AcGePoint3d& xLine1End, 
+        const AcGePoint3d& xLine2Start, const AcGePoint3d& xLine2End, const AcGePoint3d& arcPoint, const std::string& dimText);
+    PyDb2LineAngularDimension(const AcGePoint3d& xLine1Start, const AcGePoint3d& xLine1End, 
+        const AcGePoint3d& xLine2Start, const AcGePoint3d& xLine2End, const AcGePoint3d& arcPoint, const std::string& dimText, const PyDbObjectId& dimStyle);
+
+    AcGePoint3d         arcPoint() const;
+    Acad::ErrorStatus   setArcPoint(const AcGePoint3d& val);
+
+    AcGePoint3d         xLine1Start() const;
+    Acad::ErrorStatus   setXLine1Start(const AcGePoint3d& val);
+
+    AcGePoint3d         xLine1End() const;
+    Acad::ErrorStatus   setXLine1End(const AcGePoint3d& val);
+
+    AcGePoint3d         xLine2Start() const;
+    Acad::ErrorStatus   setXLine2Start(const AcGePoint3d& val);
+
+    AcGePoint3d         xLine2End() const;
+    Acad::ErrorStatus   setXLine2End(const AcGePoint3d& val);
+
+    bool extArcOn() const;
+    Acad::ErrorStatus setExtArcOn(bool value);
+
     static std::string className();
 public:
     AcDb2LineAngularDimension* impObj() const;
