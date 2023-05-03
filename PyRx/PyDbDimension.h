@@ -266,8 +266,30 @@ class PyDbAlignedDimension : public PyDbDimension
 {
 public:
     PyDbAlignedDimension();
+    PyDbAlignedDimension(const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& dimLinePoint);
+    PyDbAlignedDimension(const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& dimLinePoint, const std::string& dimText);
+    PyDbAlignedDimension(const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& dimLinePoint, const std::string& dimText, const PyDbObjectId& dimStyle);
     PyDbAlignedDimension(AcDbAlignedDimension* ptr, bool autoDelete);
     PyDbAlignedDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
+
+    AcGePoint3d         xLine1Point() const;
+    Acad::ErrorStatus   setXLine1Point(const AcGePoint3d& val);
+
+    AcGePoint3d         xLine2Point() const;
+    Acad::ErrorStatus   setXLine2Point(const AcGePoint3d& val);
+
+    AcGePoint3d         dimLinePoint() const;
+    Acad::ErrorStatus   setDimLinePoint(const AcGePoint3d& val);
+
+    double              oblique() const;
+    Acad::ErrorStatus   setOblique(double val);
+
+    bool jogSymbolOn() const;
+    Acad::ErrorStatus setJogSymbolOn(bool value);
+
+    AcGePoint3d jogSymbolPosition() const;
+    Acad::ErrorStatus setJogSymbolPosition(const AcGePoint3d& pt);
+
     static std::string className();
 public:
     AcDbAlignedDimension* impObj() const;

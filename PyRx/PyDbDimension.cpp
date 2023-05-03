@@ -1299,6 +1299,21 @@ void makeAlignedDimensionWrapper()
     class_<PyDbAlignedDimension, bases<PyDbDimension>>("AlignedDimension")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&, const PyDbObjectId& >())
+        .def("xLine1Point", &PyDbAlignedDimension::xLine1Point)
+        .def("setXLine1Point", &PyDbAlignedDimension::setXLine1Point)
+        .def("xLine2Point", &PyDbAlignedDimension::xLine2Point)
+        .def("setXLine2Point", &PyDbAlignedDimension::setXLine2Point)
+        .def("dimLinePoint", &PyDbAlignedDimension::dimLinePoint)
+        .def("setDimLinePoint", &PyDbAlignedDimension::setDimLinePoint)
+        .def("oblique", &PyDbAlignedDimension::oblique)
+        .def("setOblique", &PyDbAlignedDimension::setOblique)
+        .def("jogSymbolOn", &PyDbAlignedDimension::jogSymbolOn)
+        .def("setJogSymbolOn", &PyDbAlignedDimension::setJogSymbolOn)
+        .def("jogSymbolPosition", &PyDbAlignedDimension::jogSymbolPosition)
+        .def("setJogSymbolPosition", &PyDbAlignedDimension::setJogSymbolPosition)
         .def("className", &PyDbAlignedDimension::className).staticmethod("className")
         ;
 }
@@ -1320,6 +1335,97 @@ PyDbAlignedDimension::PyDbAlignedDimension(const PyDbObjectId& id, AcDb::OpenMod
     if (auto es = acdbOpenObject<AcDbAlignedDimension>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbAlignedDimension::PyDbAlignedDimension(const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& dimLinePoint)
+    : PyDbDimension(new AcDbAlignedDimension(xLine1Point, xLine2Point, dimLinePoint), true)
+{
+}
+
+PyDbAlignedDimension::PyDbAlignedDimension(const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& dimLinePoint, const std::string& dimText)
+    : PyDbDimension(new AcDbAlignedDimension(xLine1Point, xLine2Point, dimLinePoint, utf8_to_wstr(dimText).c_str()), true)
+{
+}
+
+PyDbAlignedDimension::PyDbAlignedDimension(const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& dimLinePoint, const std::string& dimText, const PyDbObjectId& dimStyle)
+    : PyDbDimension(new AcDbAlignedDimension(xLine1Point, xLine2Point, dimLinePoint, utf8_to_wstr(dimText).c_str(), dimStyle.m_id), true)
+{
+}
+
+AcGePoint3d PyDbAlignedDimension::xLine1Point() const
+{
+    return impObj()->xLine1Point();
+}
+
+Acad::ErrorStatus PyDbAlignedDimension::setXLine1Point(const AcGePoint3d& val)
+{
+    return impObj()->setXLine1Point(val);
+}
+
+AcGePoint3d PyDbAlignedDimension::xLine2Point() const
+{
+    return impObj()->xLine2Point();
+}
+
+Acad::ErrorStatus PyDbAlignedDimension::setXLine2Point(const AcGePoint3d& val)
+{
+    return impObj()->setXLine2Point(val);
+}
+
+AcGePoint3d PyDbAlignedDimension::dimLinePoint() const
+{
+    return impObj()->dimLinePoint();
+}
+
+Acad::ErrorStatus PyDbAlignedDimension::setDimLinePoint(const AcGePoint3d& val)
+{
+    return impObj()->setDimLinePoint(val);
+}
+
+double PyDbAlignedDimension::oblique() const
+{
+    return impObj()->oblique();
+}
+
+Acad::ErrorStatus PyDbAlignedDimension::setOblique(double val)
+{
+    return impObj()->setOblique(val);
+}
+
+bool PyDbAlignedDimension::jogSymbolOn() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->jogSymbolOn();
+#endif
+}
+
+Acad::ErrorStatus PyDbAlignedDimension::setJogSymbolOn(bool value)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setJogSymbolOn(value);
+#endif
+}
+
+AcGePoint3d PyDbAlignedDimension::jogSymbolPosition() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->jogSymbolPosition();
+#endif
+}
+
+Acad::ErrorStatus PyDbAlignedDimension::setJogSymbolPosition(const AcGePoint3d& pt)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setJogSymbolPosition(pt);
+#endif
 }
 
 std::string PyDbAlignedDimension::className()
