@@ -3468,14 +3468,6 @@ Acad::ErrorStatus PyDbPolyline::makeClosedIfStartAndEndVertexCoincide(double dis
 #endif
 }
 
-void PyDbPolyline::getEcs(AcGeMatrix3d& retVal) const
-{
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->getEcs(retVal);
-}
-
 std::string PyDbPolyline::className()
 {
     return "AcDbPolyline";
@@ -3501,7 +3493,7 @@ void makPyDbFaceWrapper()
         .def("isEdgeVisibleAt", &PyDbFace::isEdgeVisibleAt)
         .def("makeEdgeVisibleAt", &PyDbFace::makeEdgeVisibleAt)
         .def("makeEdgeInvisibleAt", &PyDbFace::makeEdgeInvisibleAt)
-        .def("className", &PyDbPolyline::className).staticmethod("className")
+        .def("className", &PyDbFace::className).staticmethod("className")
         ;
 }
 
@@ -3582,7 +3574,6 @@ Acad::ErrorStatus PyDbFace::makeEdgeInvisibleAt(Adesk::UInt16 val)
         throw PyNullObject();
     return imp->makeEdgeInvisibleAt(val);
 }
-
 
 std::string PyDbFace::className()
 {

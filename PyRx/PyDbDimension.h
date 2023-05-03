@@ -11,6 +11,61 @@ class PyDbDimension : public PyDbEntity
 public:
     PyDbDimension(AcDbDimension* ptr, bool autoDelete);
     PyDbDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
+
+    boost::python::tuple textDefinedSize() const;
+    void setTextDefinedSize(double width, double height);
+    void resetTextDefinedSize();
+
+    AcGePoint3d textPosition() const;
+    Acad::ErrorStatus setTextPosition(const AcGePoint3d& val);
+
+    Adesk::Boolean isUsingDefaultTextPosition() const;
+
+    Acad::ErrorStatus   useSetTextPosition();
+    Acad::ErrorStatus   useDefaultTextPosition();
+    Acad::ErrorStatus   setUsingDefaultTextPosition(bool);
+
+    AcGeVector3d        normal() const;
+    Acad::ErrorStatus   setNormal(const AcGeVector3d&);
+
+    double              elevation() const;
+    Acad::ErrorStatus   setElevation(double val);
+
+    std::string          dimensionText() const;
+    Acad::ErrorStatus    setDimensionText(const  std::string& val);
+
+    double              textRotation() const;
+    Acad::ErrorStatus   setTextRotation(double val);
+
+    PyDbObjectId        dimensionStyle() const;
+    Acad::ErrorStatus   setDimensionStyle(const PyDbObjectId& val);
+
+    AcDbMText::AttachmentPoint textAttachment() const;
+    Acad::ErrorStatus   setTextAttachment(AcDbMText::AttachmentPoint eAtt);
+
+    AcDb::LineSpacingStyle textLineSpacingStyle() const;
+    Acad::ErrorStatus   setTextLineSpacingStyle(AcDb::LineSpacingStyle eStyle);
+
+    double              textLineSpacingFactor() const;
+    Acad::ErrorStatus   setTextLineSpacingFactor(double dFactor);
+
+    //Acad::ErrorStatus   getDimstyleData(AcDbDimStyleTableRecord*& pRecord) const;
+    //Acad::ErrorStatus   setDimstyleData(AcDbDimStyleTableRecord* pNewData);
+    Acad::ErrorStatus   setDimstyleData(const PyDbObjectId& newDataId);
+
+    double              horizontalRotation() const;
+    Acad::ErrorStatus   setHorizontalRotation(double newVal);
+
+    PyDbObjectId        dimBlockId() const;
+    Acad::ErrorStatus   setDimBlockId(const PyDbObjectId& val);
+    AcGePoint3d         dimBlockPosition() const;
+    Acad::ErrorStatus   setDimBlockPosition(const AcGePoint3d& val);
+    Acad::ErrorStatus   recomputeDimBlock1();
+    Acad::ErrorStatus   recomputeDimBlock2(bool forceUpdate);
+    Acad::ErrorStatus   generateLayout();
+    double              measurement();
+
+
     static std::string className();
 public:
     AcDbDimension* impObj() const;

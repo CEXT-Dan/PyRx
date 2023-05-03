@@ -708,8 +708,6 @@ public:
     Adesk::Boolean     hasWidth()        const;
     Acad::ErrorStatus makeClosedIfStartAndEndVertexCoincide(double distTol);
 
-    void              getEcs(AcGeMatrix3d& retVal) const override;
-
     static std::string className();
 public:
     AcDbPolyline* impObj() const;

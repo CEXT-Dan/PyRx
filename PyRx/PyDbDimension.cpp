@@ -29,6 +29,207 @@ PyDbDimension::PyDbDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
     this->resetImp(pobj, false, true);
 }
 
+boost::python::tuple PyDbDimension::textDefinedSize() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    double width = 1;
+    double height = 1;
+    impObj()->textDefinedSize(width, height);
+    return boost::python::make_tuple(width, height);
+#endif
+}
+
+void PyDbDimension::setTextDefinedSize(double width, double height)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    impObj()->setTextDefinedSize(width, height);
+#endif
+}
+
+void PyDbDimension::resetTextDefinedSize()
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    impObj()->resetTextDefinedSize();
+#endif
+}
+
+AcGePoint3d PyDbDimension::textPosition() const
+{
+    return impObj()->textPosition();
+}
+
+Acad::ErrorStatus PyDbDimension::setTextPosition(const AcGePoint3d& val)
+{
+    return impObj()->setTextPosition(val);
+}
+
+Adesk::Boolean PyDbDimension::isUsingDefaultTextPosition() const
+{
+    return impObj()->isUsingDefaultTextPosition();
+}
+
+Acad::ErrorStatus PyDbDimension::useSetTextPosition()
+{
+    return impObj()->useSetTextPosition();
+}
+
+Acad::ErrorStatus PyDbDimension::useDefaultTextPosition()
+{
+    return impObj()->useDefaultTextPosition();
+}
+
+Acad::ErrorStatus PyDbDimension::setUsingDefaultTextPosition(bool val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setUsingDefaultTextPosition(val);
+#endif
+}
+
+AcGeVector3d PyDbDimension::normal() const
+{
+    return impObj()->normal();
+}
+
+Acad::ErrorStatus PyDbDimension::setNormal(const AcGeVector3d& val)
+{
+    return impObj()->setNormal(val);
+}
+
+double PyDbDimension::elevation() const
+{
+    return impObj()->elevation();
+}
+
+Acad::ErrorStatus PyDbDimension::setElevation(double val)
+{
+    return impObj()->setElevation(val);
+}
+
+std::string PyDbDimension::dimensionText() const
+{
+    return wstr_to_utf8(impObj()->dimensionText());
+}
+
+Acad::ErrorStatus PyDbDimension::setDimensionText(const std::string& val)
+{
+    return impObj()->setDimensionText(utf8_to_wstr(val).c_str());
+}
+
+double PyDbDimension::textRotation() const
+{
+    return impObj()->textRotation();
+}
+
+Acad::ErrorStatus PyDbDimension::setTextRotation(double val)
+{
+    return impObj()->setTextRotation(val);
+}
+
+PyDbObjectId PyDbDimension::dimensionStyle() const
+{
+    return PyDbObjectId(impObj()->dimensionStyle());
+}
+
+Acad::ErrorStatus PyDbDimension::setDimensionStyle(const PyDbObjectId& val)
+{
+    return impObj()->setDimensionStyle(val.m_id);
+}
+
+AcDbMText::AttachmentPoint PyDbDimension::textAttachment() const
+{
+    return impObj()->textAttachment();
+}
+
+Acad::ErrorStatus PyDbDimension::setTextAttachment(AcDbMText::AttachmentPoint eAtt)
+{
+    return impObj()->setTextAttachment(eAtt);
+}
+
+AcDb::LineSpacingStyle PyDbDimension::textLineSpacingStyle() const
+{
+    return impObj()->textLineSpacingStyle();
+}
+
+Acad::ErrorStatus PyDbDimension::setTextLineSpacingStyle(AcDb::LineSpacingStyle eStyle)
+{
+    return impObj()->setTextLineSpacingStyle(eStyle);
+}
+
+double PyDbDimension::textLineSpacingFactor() const
+{
+    return impObj()->textLineSpacingFactor();
+}
+
+Acad::ErrorStatus PyDbDimension::setTextLineSpacingFactor(double dFactor)
+{
+    return impObj()->setTextLineSpacingFactor(dFactor);
+}
+
+Acad::ErrorStatus PyDbDimension::setDimstyleData(const PyDbObjectId& newDataId)
+{
+    return impObj()->setDimstyleData(newDataId.m_id);
+}
+
+double PyDbDimension::horizontalRotation() const
+{
+    return impObj()->horizontalRotation();
+}
+
+Acad::ErrorStatus PyDbDimension::setHorizontalRotation(double newVal)
+{
+    return impObj()->setHorizontalRotation(newVal);
+}
+
+PyDbObjectId PyDbDimension::dimBlockId() const
+{
+    return PyDbObjectId(impObj()->dimBlockId());
+}
+
+Acad::ErrorStatus PyDbDimension::setDimBlockId(const PyDbObjectId& val)
+{
+    return impObj()->setDimBlockId(val.m_id);
+}
+
+AcGePoint3d PyDbDimension::dimBlockPosition() const
+{
+    return impObj()->dimBlockPosition();
+}
+
+Acad::ErrorStatus PyDbDimension::setDimBlockPosition(const AcGePoint3d& val)
+{
+    return impObj()->setDimBlockPosition(val);
+}
+
+Acad::ErrorStatus PyDbDimension::recomputeDimBlock1()
+{
+    return impObj()->recomputeDimBlock();
+}
+
+Acad::ErrorStatus PyDbDimension::recomputeDimBlock2(bool forceUpdate)
+{
+    return impObj()->recomputeDimBlock(forceUpdate);
+}
+
+Acad::ErrorStatus PyDbDimension::generateLayout()
+{
+    return impObj()->generateLayout();
+}
+
+double PyDbDimension::measurement()
+{
+    double m = 0;
+    return impObj()->measurement(m);
+    return m;
+}
+
 std::string PyDbDimension::className()
 {
     return "AcDbRegion";
