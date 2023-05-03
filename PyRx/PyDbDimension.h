@@ -232,8 +232,27 @@ class PyDb3PointAngularDimension : public PyDbDimension
 {
 public:
     PyDb3PointAngularDimension();
+    PyDb3PointAngularDimension(const AcGePoint3d& centerPoint,const AcGePoint3d& xLine1Point,const AcGePoint3d& xLine2Point,const AcGePoint3d& arcPoint);
+    PyDb3PointAngularDimension(const AcGePoint3d& centerPoint, const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& arcPoint, const std::string& dimText);
+    PyDb3PointAngularDimension(const AcGePoint3d& centerPoint, const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& arcPoint, const std::string& dimText, const PyDbObjectId& dimStyle);
     PyDb3PointAngularDimension(AcDb3PointAngularDimension* ptr, bool autoDelete);
     PyDb3PointAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
+
+    AcGePoint3d         arcPoint() const;
+    Acad::ErrorStatus   setArcPoint(const AcGePoint3d& val);
+
+    AcGePoint3d         xLine1Point() const;
+    Acad::ErrorStatus   setXLine1Point(const AcGePoint3d& val);
+
+    AcGePoint3d         xLine2Point() const;
+    Acad::ErrorStatus   setXLine2Point(const AcGePoint3d& val);
+
+    AcGePoint3d         centerPoint() const;
+    Acad::ErrorStatus   setCenterPoint(const AcGePoint3d& val);
+
+    bool extArcOn() const;
+    Acad::ErrorStatus setExtArcOn(bool value);
+
     static std::string className();
 public:
     AcDb3PointAngularDimension* impObj() const;

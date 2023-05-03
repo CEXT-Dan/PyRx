@@ -1026,10 +1026,10 @@ void makePyDb2LineAngularDimensionWrapper()
 {
     class_<PyDb2LineAngularDimension, bases<PyDbDimension>>("LineAngularDimension2")
         .def(init<>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&, const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("arcPoint", &PyDb2LineAngularDimension::arcPoint)
         .def("setArcPoint", &PyDb2LineAngularDimension::setArcPoint)
         .def("xLine1Start", &PyDb2LineAngularDimension::xLine1Start)
@@ -1065,19 +1065,19 @@ PyDb2LineAngularDimension::PyDb2LineAngularDimension(const PyDbObjectId& id, AcD
     this->resetImp(pobj, false, true);
 }
 
-PyDb2LineAngularDimension::PyDb2LineAngularDimension(const AcGePoint3d& xLine1Start, 
+PyDb2LineAngularDimension::PyDb2LineAngularDimension(const AcGePoint3d& xLine1Start,
     const AcGePoint3d& xLine1End, const AcGePoint3d& xLine2Start, const AcGePoint3d& xLine2End, const AcGePoint3d& arcPoint)
-    : PyDbDimension(new AcDb2LineAngularDimension( xLine1Start, xLine1End, xLine2Start, xLine2End, arcPoint), true)
+    : PyDbDimension(new AcDb2LineAngularDimension(xLine1Start, xLine1End, xLine2Start, xLine2End, arcPoint), true)
 {
 }
 
-PyDb2LineAngularDimension::PyDb2LineAngularDimension(const AcGePoint3d& xLine1Start, 
+PyDb2LineAngularDimension::PyDb2LineAngularDimension(const AcGePoint3d& xLine1Start,
     const AcGePoint3d& xLine1End, const AcGePoint3d& xLine2Start, const AcGePoint3d& xLine2End, const AcGePoint3d& arcPoint, const std::string& dimText)
     : PyDbDimension(new AcDb2LineAngularDimension(xLine1Start, xLine1End, xLine2Start, xLine2End, arcPoint, utf8_to_wstr(dimText).c_str()), true)
 {
 }
 
-PyDb2LineAngularDimension::PyDb2LineAngularDimension(const AcGePoint3d& xLine1Start, const AcGePoint3d& xLine1End, 
+PyDb2LineAngularDimension::PyDb2LineAngularDimension(const AcGePoint3d& xLine1Start, const AcGePoint3d& xLine1End,
     const AcGePoint3d& xLine2Start, const AcGePoint3d& xLine2End, const AcGePoint3d& arcPoint, const std::string& dimText, const PyDbObjectId& dimStyle)
     : PyDbDimension(new AcDb2LineAngularDimension(xLine1Start, xLine1End, xLine2Start, xLine2End, arcPoint, utf8_to_wstr(dimText).c_str(), dimStyle.m_id), true)
 {
@@ -1171,6 +1171,19 @@ void makeAcDb3PointAngularDimensionWrapper()
     class_<PyDb3PointAngularDimension, bases<PyDbDimension>>("Point3AngularDimension")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&, const PyDbObjectId&>())
+        .def("arcPoint", &PyDb3PointAngularDimension::arcPoint)
+        .def("setArcPoint", &PyDb3PointAngularDimension::setArcPoint)
+        .def("xLine1Point", &PyDb3PointAngularDimension::xLine1Point)
+        .def("setXLine1Point", &PyDb3PointAngularDimension::setXLine1Point)
+        .def("xLine2Point", &PyDb3PointAngularDimension::xLine2Point)
+        .def("setXLine2Point", &PyDb3PointAngularDimension::setXLine2Point)
+        .def("centerPoint", &PyDb3PointAngularDimension::centerPoint)
+        .def("setCenterPoint", &PyDb3PointAngularDimension::setCenterPoint)
+        .def("extArcOn", &PyDb3PointAngularDimension::extArcOn)
+        .def("setExtArcOn", &PyDb3PointAngularDimension::setExtArcOn)
         .def("className", &PyDb3PointAngularDimension::className).staticmethod("className")
         ;
 }
@@ -1192,6 +1205,79 @@ PyDb3PointAngularDimension::PyDb3PointAngularDimension(const PyDbObjectId& id, A
     if (auto es = acdbOpenObject<AcDb3PointAngularDimension>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDb3PointAngularDimension::PyDb3PointAngularDimension(const AcGePoint3d& centerPoint, const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& arcPoint)
+    : PyDbDimension(new AcDb3PointAngularDimension(centerPoint, xLine1Point, xLine2Point, arcPoint), true)
+{
+}
+
+PyDb3PointAngularDimension::PyDb3PointAngularDimension(const AcGePoint3d& centerPoint, const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& arcPoint, const std::string& dimText)
+    : PyDbDimension(new AcDb3PointAngularDimension(centerPoint, xLine1Point, xLine2Point, arcPoint, utf8_to_wstr(dimText).c_str()), true)
+{
+}
+
+PyDb3PointAngularDimension::PyDb3PointAngularDimension(const AcGePoint3d& centerPoint, const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& arcPoint, const std::string& dimText, const PyDbObjectId& dimStyle)
+    : PyDbDimension(new AcDb3PointAngularDimension(centerPoint, xLine1Point, xLine2Point, arcPoint, utf8_to_wstr(dimText).c_str(), dimStyle.m_id), true)
+{
+}
+
+AcGePoint3d PyDb3PointAngularDimension::arcPoint() const
+{
+    return impObj()->arcPoint();
+}
+
+Acad::ErrorStatus PyDb3PointAngularDimension::setArcPoint(const AcGePoint3d& val)
+{
+    return impObj()->setArcPoint(val);
+}
+
+AcGePoint3d PyDb3PointAngularDimension::xLine1Point() const
+{
+    return impObj()->xLine1Point();
+}
+
+Acad::ErrorStatus PyDb3PointAngularDimension::setXLine1Point(const AcGePoint3d& val)
+{
+    return impObj()->setXLine1Point(val);
+}
+
+AcGePoint3d PyDb3PointAngularDimension::xLine2Point() const
+{
+    return impObj()->xLine1Point();
+}
+
+Acad::ErrorStatus PyDb3PointAngularDimension::setXLine2Point(const AcGePoint3d& val)
+{
+    return impObj()->setXLine2Point(val);
+}
+
+AcGePoint3d PyDb3PointAngularDimension::centerPoint() const
+{
+    return impObj()->centerPoint();
+}
+
+Acad::ErrorStatus PyDb3PointAngularDimension::setCenterPoint(const AcGePoint3d& val)
+{
+    return impObj()->setCenterPoint(val);
+}
+
+bool PyDb3PointAngularDimension::extArcOn() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->extArcOn();
+#endif
+}
+
+Acad::ErrorStatus PyDb3PointAngularDimension::setExtArcOn(bool value)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setExtArcOn(value);
+#endif
 }
 
 std::string PyDb3PointAngularDimension::className()
