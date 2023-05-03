@@ -196,6 +196,9 @@
     <ClCompile Include="PyDbSurface.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
+    <ClCompile Include="PyDbDimension.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -394,6 +397,9 @@
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
     <ClInclude Include="PyDbSurface.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbDimension.h">
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
   </ItemGroup>

@@ -19,6 +19,7 @@
 #include "PyDbTableStyle.h"
 #include "PyDb3dSolid.h"
 #include "PyDbSurface.h"
+#include "PyDbDimension.h"
 
 using namespace boost::python;
 
@@ -146,6 +147,17 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbPlaneSurfaceWrapper();
     makePyDbRevolvedSurfaceWrapper();
     makePyDbRevolvedSurfaceWrapper();
+
+    makePyDbDimensionWrapper();
+    makePyDb2LineAngularDimensionWrapper();
+    makeAcDb3PointAngularDimensionWrapper();
+    makeAlignedDimensionWrapper();
+    makeArcDimensionWrapper();
+    makeDiametricDimensionWrapper();
+    makeOrdinateDimensionWrapper();
+    makeRadialDimensionWrapper();
+    makeRadialDimensionLargeWrapper();
+    makeRotatedDimensionWrapper();
 
 
     //global

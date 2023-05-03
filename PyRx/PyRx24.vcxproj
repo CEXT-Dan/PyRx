@@ -128,6 +128,7 @@
     <ClCompile Include="PyAcGeSurface.cpp" />
     <ClCompile Include="PyDb3dSolid.cpp" />
     <ClCompile Include="PyDbCurve.cpp" />
+    <ClCompile Include="PyDbDimension.cpp" />
     <ClCompile Include="PyDbEnts.cpp" />
     <ClCompile Include="PyAcAp.cpp" />
     <ClCompile Include="PyAcDb.cpp" />
@@ -196,6 +197,7 @@
     <ClInclude Include="PyAcGeSurface.h" />
     <ClInclude Include="PyDb3dSolid.h" />
     <ClInclude Include="PyDbCurve.h" />
+    <ClInclude Include="PyDbDimension.h" />
     <ClInclude Include="PyDbEnts.h" />
     <ClInclude Include="PyAcAp.h" />
     <ClInclude Include="PyAcDb.h" />

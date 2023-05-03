@@ -112,13 +112,11 @@ void makeAcDbLoftedSurfaceWrapper()
 PyDbLoftedSurface::PyDbLoftedSurface()
     : PyDbSurface(new AcDbLoftedSurface(), true)
 {
-
 }
 
 PyDbLoftedSurface::PyDbLoftedSurface(AcDbLoftedSurface* ptr, bool autoDelete)
     : PyDbSurface(ptr, autoDelete)
 {
-
 }
 
 PyDbLoftedSurface::PyDbLoftedSurface(const PyDbObjectId& id, AcDb::OpenMode mode)

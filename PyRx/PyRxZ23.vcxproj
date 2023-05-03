@@ -142,6 +142,7 @@
     <ClCompile Include="PyDbCurve.cpp" />
     <ClCompile Include="PyDbDatabase.cpp" />
     <ClCompile Include="PyDbDictionary.cpp" />
+    <ClCompile Include="PyDbDimension.cpp" />
     <ClCompile Include="PyDbEntity.cpp" />
     <ClCompile Include="PyDbField.cpp" />
     <ClCompile Include="PyDbHostApplicationServices.cpp" />
@@ -210,6 +211,7 @@
     <ClInclude Include="PyDbCurve.h" />
     <ClInclude Include="PyDbDatabase.h" />
     <ClInclude Include="PyDbDictionary.h" />
+    <ClInclude Include="PyDbDimension.h" />
     <ClInclude Include="PyDbEntity.h" />
     <ClInclude Include="PyDbField.h" />
     <ClInclude Include="PyDbHostApplicationServices.h" />
