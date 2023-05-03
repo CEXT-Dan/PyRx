@@ -2,6 +2,8 @@
 #include "PyDbEntity.h"
 
 class PyDbObjectId;
+class PyDbMText;
+
 //-----------------------------------------------------------------------------------
 //PyDbRegion
 void makePyDbDimensionWrapper();
@@ -65,6 +67,114 @@ public:
     Acad::ErrorStatus   generateLayout();
     double              measurement();
 
+    std::string         formatMeasurement1(double measurement);
+    std::string         formatMeasurement2(double measurement, const std::string& dimensionText);
+
+    bool                isDynamicDimension() const;
+    Acad::ErrorStatus   setDynamicDimension(bool newVal);
+
+    PyDbObjectId dimLineLinetype() const;
+    Acad::ErrorStatus setDimLineLinetype(const PyDbObjectId& linetype);
+
+    PyDbObjectId dimExt1Linetype() const;
+    Acad::ErrorStatus setDimExt1Linetype(const PyDbObjectId& linetype);
+
+    PyDbObjectId dimExt2Linetype() const;
+    Acad::ErrorStatus setDimExt2Linetype(const PyDbObjectId& linetype);
+
+    Acad::ErrorStatus   removeTextField();
+    Acad::ErrorStatus   fieldToMText(PyDbMText& pDimMText);
+    Acad::ErrorStatus   fieldFromMText(PyDbMText& pDimMText);
+
+    bool                isHorizontalRefTextRotation() const;
+    Acad::ErrorStatus   setHorizontalRefTextRotation(bool newVal);
+
+    bool getArrowFirstIsFlipped() const;
+    bool getArrowSecondIsFlipped() const;
+    Acad::ErrorStatus setArrowFirstIsFlipped(bool bIsFlipped);
+    Acad::ErrorStatus setArrowSecondIsFlipped(bool bIsFlipped);
+
+    AcGeMatrix3d blockTransform() const;
+
+    bool inspection() const;
+    Acad::ErrorStatus setInspection(bool val);
+
+    int inspectionFrame() const;
+    Acad::ErrorStatus setInspectionFrame(int frame);
+
+    const std::string inspectionLabel() const;
+    Acad::ErrorStatus setInspectionLabel(const std::string& label);
+
+    boost::python::tuple isConstraintObject() const;
+
+    bool  isConstraintDynamic(void) const;
+    Acad::ErrorStatus  setConstraintDynamic(bool bDynamic);
+
+    bool  shouldParticipateInOPM(void) const;
+    void  setShouldParticipateInOPM(bool bShouldParticipate);
+
+    double                centerMarkSize() const;
+
+    std::string           prefix() const;
+    Acad::ErrorStatus     setPrefix(const std::string& val);
+
+    std::string           suffix() const;
+    Acad::ErrorStatus     setSuffix(const std::string& val);
+
+    std::string           alternateSuffix() const;
+    Acad::ErrorStatus     setAlternateSuffix(const std::string& val);
+
+    std::string           alternatePrefix() const;
+    Acad::ErrorStatus     setAlternatePrefix(const std::string& val);
+
+    bool                  suppressAngularLeadingZeros() const;
+    Acad::ErrorStatus     setSuppressAngularLeadingZeros(bool val);
+
+    bool                  suppressAngularTrailingZeros() const;
+    Acad::ErrorStatus     setSuppressAngularTrailingZeros(bool val);
+
+    bool                  altSuppressZeroInches() const;
+    Acad::ErrorStatus     setAltSuppressZeroInches(bool val);
+    bool                  altSuppressZeroFeet() const;
+    Acad::ErrorStatus     setAltSuppressZeroFeet(bool val);
+    bool                  altSuppressTrailingZeros() const;
+    Acad::ErrorStatus     setAltSuppressTrailingZeros(bool val);
+
+    bool                  altToleranceSuppressLeadingZeros() const;
+    Acad::ErrorStatus     setAltToleranceSuppressLeadingZeros(bool val);
+    bool                  altToleranceSuppressZeroInches() const;
+    Acad::ErrorStatus     setAltToleranceSuppressZeroInches(bool val);
+
+    bool                  altToleranceSuppressZeroFeet() const;
+    Acad::ErrorStatus     setAltToleranceSuppressZeroFeet(bool val);
+    bool                  altToleranceSuppressTrailingZeros() const;
+    Acad::ErrorStatus     setAltToleranceSuppressTrailingZeros(bool val);
+
+    bool                  suppressZeroFeet() const;
+    Acad::ErrorStatus     setSuppressZeroFeet(bool val);
+    bool                  suppressTrailingZeros() const;
+    Acad::ErrorStatus     setSuppressTrailingZeros(bool val);
+    bool                  suppressLeadingZeros() const;
+    Acad::ErrorStatus     setSuppressLeadingZeros(bool val);
+    bool                  suppressZeroInches() const;
+    Acad::ErrorStatus     setSuppressZeroInches(bool val);
+
+    bool                  altSuppressLeadingZeros() const;
+    Acad::ErrorStatus     setAltSuppressLeadingZeros(bool val);
+    bool                  toleranceSuppressZeroFeet() const;
+    Acad::ErrorStatus     setToleranceSuppressZeroFeet(bool val);
+
+    bool                  toleranceSuppressTrailingZeros() const;
+    Acad::ErrorStatus     setToleranceSuppressTrailingZeros(bool val);
+    bool                  toleranceSuppressLeadingZeros() const;
+    Acad::ErrorStatus     setToleranceSuppressLeadingZeros(bool val);
+
+    bool                  toleranceSuppressZeroInches() const;
+    Acad::ErrorStatus     setToleranceSuppressZeroInches(bool val);
+
+#ifndef BRXAPP
+    AcDbDimension::CenterMarkType centerMarkType() const;
+#endif
 
     static std::string className();
 public:

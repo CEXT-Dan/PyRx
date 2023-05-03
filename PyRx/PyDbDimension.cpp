@@ -2,6 +2,7 @@
 #include "PyDbDimension.h"
 
 #include "PyDbObjectId.h"
+#include "PyDbMtext.h"
 
 using namespace boost::python;
 
@@ -11,8 +12,140 @@ void makePyDbDimensionWrapper()
 {
     class_<PyDbDimension, bases<PyDbEntity>>("Dimension", no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("textDefinedSize", &PyDbDimension::textDefinedSize)
+        .def("setTextDefinedSize", &PyDbDimension::setTextDefinedSize)
+        .def("resetTextDefinedSize", &PyDbDimension::resetTextDefinedSize)
+        .def("textPosition", &PyDbDimension::textPosition)
+        .def("setTextPosition", &PyDbDimension::setTextPosition)
+        .def("isUsingDefaultTextPosition", &PyDbDimension::isUsingDefaultTextPosition)
+        .def("useSetTextPosition", &PyDbDimension::useSetTextPosition)
+        .def("useDefaultTextPosition", &PyDbDimension::useDefaultTextPosition)
+        .def("setUsingDefaultTextPosition", &PyDbDimension::setUsingDefaultTextPosition)
+        .def("normal", &PyDbDimension::normal)
+        .def("setNormal", &PyDbDimension::setNormal)
+        .def("elevation", &PyDbDimension::elevation)
+        .def("setElevation", &PyDbDimension::setElevation)
+        .def("dimensionText", &PyDbDimension::dimensionText)
+        .def("setDimensionText", &PyDbDimension::setDimensionText)
+        .def("textRotation", &PyDbDimension::textRotation)
+        .def("setTextRotation", &PyDbDimension::setTextRotation)
+        .def("dimensionStyle", &PyDbDimension::dimensionStyle)
+        .def("setDimensionStyle", &PyDbDimension::setDimensionStyle)
+        .def("textAttachment", &PyDbDimension::textAttachment)
+        .def("setTextAttachment", &PyDbDimension::setTextAttachment)
+        .def("textLineSpacingStyle", &PyDbDimension::textLineSpacingStyle)
+        .def("setTextLineSpacingStyle", &PyDbDimension::setTextLineSpacingStyle)
+        .def("textLineSpacingFactor", &PyDbDimension::textLineSpacingFactor)
+        .def("setTextLineSpacingFactor", &PyDbDimension::setTextLineSpacingFactor)
+        .def("setDimstyleData", &PyDbDimension::setDimstyleData)
+        .def("horizontalRotation", &PyDbDimension::horizontalRotation)
+        .def("setHorizontalRotation", &PyDbDimension::setHorizontalRotation)
+        .def("dimBlockId", &PyDbDimension::dimBlockId)
+        .def("setDimBlockId", &PyDbDimension::setDimBlockId)
+        .def("dimBlockPosition", &PyDbDimension::dimBlockPosition)
+        .def("setDimBlockPosition", &PyDbDimension::setDimBlockPosition)
+        .def("recomputeDimBlock", &PyDbDimension::recomputeDimBlock1)
+        .def("recomputeDimBlock", &PyDbDimension::recomputeDimBlock2)
+        .def("generateLayout", &PyDbDimension::generateLayout)
+        .def("measurement", &PyDbDimension::measurement)
+        .def("formatMeasurement", &PyDbDimension::formatMeasurement1)
+        .def("formatMeasurement", &PyDbDimension::formatMeasurement2)
+        .def("isDynamicDimension", &PyDbDimension::isDynamicDimension)
+        .def("setDynamicDimension", &PyDbDimension::setDynamicDimension)
+        .def("dimLineLinetype", &PyDbDimension::dimLineLinetype)
+        .def("setDimLineLinetype", &PyDbDimension::setDimLineLinetype)
+        .def("dimExt1Linetype", &PyDbDimension::dimExt1Linetype)
+        .def("setDimExt1Linetype", &PyDbDimension::setDimExt1Linetype)
+        .def("dimExt2Linetype", &PyDbDimension::dimExt2Linetype)
+        .def("setDimExt2Linetype", &PyDbDimension::setDimExt2Linetype)
+        .def("removeTextField", &PyDbDimension::removeTextField)
+        .def("fieldToMText", &PyDbDimension::fieldToMText)
+        .def("fieldFromMText", &PyDbDimension::fieldFromMText)
+        .def("isHorizontalRefTextRotation", &PyDbDimension::isHorizontalRefTextRotation)
+        .def("setHorizontalRefTextRotation", &PyDbDimension::setHorizontalRefTextRotation)
+        .def("getArrowFirstIsFlipped", &PyDbDimension::getArrowFirstIsFlipped)
+        .def("getArrowSecondIsFlipped", &PyDbDimension::getArrowSecondIsFlipped)
+        .def("setArrowFirstIsFlipped", &PyDbDimension::setArrowFirstIsFlipped)
+        .def("setArrowSecondIsFlipped", &PyDbDimension::setArrowSecondIsFlipped)
+        .def("blockTransform", &PyDbDimension::blockTransform)
+        .def("inspection", &PyDbDimension::inspection)
+        .def("setInspection", &PyDbDimension::setInspection)
+        .def("inspectionFrame", &PyDbDimension::inspectionFrame)
+        .def("setInspectionFrame", &PyDbDimension::setInspectionFrame)
+        .def("inspectionLabel", &PyDbDimension::inspectionLabel)
+        .def("setInspectionLabel", &PyDbDimension::setInspectionLabel)
+        .def("isConstraintObject", &PyDbDimension::isConstraintObject)
+        .def("isConstraintDynamic", &PyDbDimension::isConstraintDynamic)
+        .def("setConstraintDynamic", &PyDbDimension::setConstraintDynamic)
+        .def("shouldParticipateInOPM", &PyDbDimension::shouldParticipateInOPM)
+        .def("setShouldParticipateInOPM", &PyDbDimension::setShouldParticipateInOPM)
+        .def("centerMarkSize", &PyDbDimension::centerMarkSize)
+        .def("prefix", &PyDbDimension::prefix)
+        .def("setPrefix", &PyDbDimension::setPrefix)
+        .def("suffix", &PyDbDimension::suffix)
+        .def("setSuffix", &PyDbDimension::setSuffix)
+        .def("alternateSuffix", &PyDbDimension::alternateSuffix)
+        .def("setAlternateSuffix", &PyDbDimension::setAlternateSuffix)
+        .def("alternatePrefix", &PyDbDimension::alternatePrefix)
+        .def("setAlternatePrefix", &PyDbDimension::setAlternatePrefix)
+        .def("suppressAngularLeadingZeros", &PyDbDimension::suppressAngularLeadingZeros)
+        .def("suppressAngularTrailingZeros", &PyDbDimension::suppressAngularTrailingZeros)
+        .def("setSuppressAngularTrailingZeros", &PyDbDimension::setSuppressAngularTrailingZeros)
+        .def("altSuppressZeroInches", &PyDbDimension::altSuppressZeroInches)
+        .def("setAltSuppressZeroInches", &PyDbDimension::setAltSuppressZeroInches)
+        .def("altSuppressZeroFeet", &PyDbDimension::altSuppressZeroFeet)
+        .def("setAltSuppressZeroFeet", &PyDbDimension::setAltSuppressZeroFeet)
+        .def("altSuppressTrailingZeros", &PyDbDimension::altSuppressTrailingZeros)
+        .def("setAltSuppressTrailingZeros", &PyDbDimension::setAltSuppressTrailingZeros)
+        .def("altToleranceSuppressLeadingZeros", &PyDbDimension::altToleranceSuppressLeadingZeros)
+        .def("setAltToleranceSuppressLeadingZeros", &PyDbDimension::setAltToleranceSuppressLeadingZeros)
+        .def("altToleranceSuppressZeroInches", &PyDbDimension::altToleranceSuppressZeroInches)
+        .def("setAltToleranceSuppressZeroInches", &PyDbDimension::setAltToleranceSuppressZeroInches)
+        .def("altToleranceSuppressZeroFeet", &PyDbDimension::altToleranceSuppressZeroFeet)
+        .def("setAltToleranceSuppressZeroFeet", &PyDbDimension::setAltToleranceSuppressZeroFeet)
+        .def("altToleranceSuppressTrailingZeros", &PyDbDimension::altToleranceSuppressTrailingZeros)
+        .def("setAltToleranceSuppressTrailingZeros", &PyDbDimension::setAltToleranceSuppressTrailingZeros)
+        .def("suppressZeroFeet", &PyDbDimension::suppressZeroFeet)
+        .def("setSuppressZeroFeet", &PyDbDimension::setSuppressZeroFeet)
+        .def("suppressTrailingZeros", &PyDbDimension::suppressTrailingZeros)
+        .def("setSuppressTrailingZeros", &PyDbDimension::setSuppressTrailingZeros)
+        .def("suppressLeadingZeros", &PyDbDimension::suppressLeadingZeros)
+        .def("setSuppressLeadingZeros", &PyDbDimension::setSuppressLeadingZeros)
+        .def("suppressZeroInches", &PyDbDimension::suppressZeroInches)
+        .def("setSuppressZeroInches", &PyDbDimension::setSuppressZeroInches)
+        .def("altSuppressLeadingZeros", &PyDbDimension::altSuppressLeadingZeros)
+        .def("setAltSuppressLeadingZeros", &PyDbDimension::setAltSuppressLeadingZeros)
+        .def("toleranceSuppressZeroFeet", &PyDbDimension::toleranceSuppressZeroFeet)
+        .def("setToleranceSuppressZeroFeet", &PyDbDimension::setToleranceSuppressZeroFeet)
+        .def("toleranceSuppressTrailingZeros", &PyDbDimension::toleranceSuppressTrailingZeros)
+        .def("setToleranceSuppressTrailingZeros", &PyDbDimension::setToleranceSuppressTrailingZeros)
+        .def("toleranceSuppressLeadingZeros", &PyDbDimension::toleranceSuppressLeadingZeros)
+        .def("setToleranceSuppressLeadingZeros", &PyDbDimension::setToleranceSuppressLeadingZeros)
+        .def("toleranceSuppressZeroInches", &PyDbDimension::toleranceSuppressZeroInches)
+        .def("setToleranceSuppressZeroInches", &PyDbDimension::setToleranceSuppressZeroInches)
         .def("className", &PyDbDimension::className).staticmethod("className")
         ;
+
+#ifndef BRXAPP
+    enum_<AcDbDimension::DimInspect>("DimInspect")
+        .value("kShapeRemove", AcDbDimension::DimInspect::kShapeRemove)
+        .value("kShapeRound", AcDbDimension::DimInspect::kShapeRound)
+        .value("kShapeAngular", AcDbDimension::DimInspect::kShapeAngular)
+        .value("kShapeNone", AcDbDimension::DimInspect::kShapeNone)
+        .value("kShapeLabel", AcDbDimension::DimInspect::kShapeLabel)
+        .value("kShapeRate", AcDbDimension::DimInspect::kShapeRate)
+        .export_values()
+        ;
+#endif
+
+#ifndef BRXAPP
+    enum_<AcDbDimension::CenterMarkType>("CenterMarkType")
+        .value("kMark", AcDbDimension::CenterMarkType::kMark)
+        .value("kLine", AcDbDimension::CenterMarkType::kLine)
+        .value("kNone", AcDbDimension::CenterMarkType::kNone)
+        .export_values()
+        ;
+#endif
 }
 
 PyDbDimension::PyDbDimension(AcDbDimension* ptr, bool autoDelete)
@@ -226,10 +359,655 @@ Acad::ErrorStatus PyDbDimension::generateLayout()
 double PyDbDimension::measurement()
 {
     double m = 0;
-    return impObj()->measurement(m);
+    impObj()->measurement(m);
     return m;
 }
 
+std::string PyDbDimension::formatMeasurement1(double measurement)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    AcString str;
+    impObj()->formatMeasurement(str, measurement);
+    return wstr_to_utf8(str);
+#endif
+}
+
+std::string PyDbDimension::formatMeasurement2(double measurement, const std::string& dimensionText)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    AcString str;
+    impObj()->formatMeasurement(str, measurement, utf8_to_wstr(dimensionText).c_str());
+    return wstr_to_utf8(str);
+#endif
+}
+
+bool PyDbDimension::isDynamicDimension() const
+{
+    return impObj()->isDynamicDimension();
+}
+
+Acad::ErrorStatus PyDbDimension::setDynamicDimension(bool newVal)
+{
+    return impObj()->setDynamicDimension(newVal);
+}
+
+PyDbObjectId PyDbDimension::dimLineLinetype() const
+{
+    return PyDbObjectId(impObj()->dimLineLinetype());
+}
+
+Acad::ErrorStatus PyDbDimension::setDimLineLinetype(const PyDbObjectId& linetype)
+{
+    return impObj()->setDimLineLinetype(linetype.m_id);
+}
+
+PyDbObjectId PyDbDimension::dimExt1Linetype() const
+{
+    return PyDbObjectId(impObj()->dimExt1Linetype());
+}
+
+Acad::ErrorStatus PyDbDimension::setDimExt1Linetype(const PyDbObjectId& linetype)
+{
+    return impObj()->setDimExt1Linetype(linetype.m_id);
+}
+
+PyDbObjectId PyDbDimension::dimExt2Linetype() const
+{
+    return PyDbObjectId(impObj()->dimExt2Linetype());
+}
+
+Acad::ErrorStatus PyDbDimension::setDimExt2Linetype(const PyDbObjectId& linetype)
+{
+    return impObj()->setDimExt2Linetype(linetype.m_id);
+}
+
+Acad::ErrorStatus PyDbDimension::removeTextField()
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->removeTextField();
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::fieldToMText(PyDbMText& pDimMText)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->fieldToMText(pDimMText.impObj());
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::fieldFromMText(PyDbMText& pDimMText)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->fieldFromMText(pDimMText.impObj());
+#endif
+}
+
+bool PyDbDimension::isHorizontalRefTextRotation() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->isHorizontalRefTextRotation();
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setHorizontalRefTextRotation(bool newVal)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setHorizontalRefTextRotation(newVal);
+#endif
+}
+
+bool PyDbDimension::getArrowFirstIsFlipped() const
+{
+    return impObj()->getArrowFirstIsFlipped();
+}
+
+bool PyDbDimension::getArrowSecondIsFlipped() const
+{
+    return impObj()->getArrowSecondIsFlipped();
+}
+
+Acad::ErrorStatus PyDbDimension::setArrowFirstIsFlipped(bool bIsFlipped)
+{
+    return impObj()->setArrowFirstIsFlipped(bIsFlipped);
+}
+
+Acad::ErrorStatus PyDbDimension::setArrowSecondIsFlipped(bool bIsFlipped)
+{
+    return impObj()->setArrowSecondIsFlipped(bIsFlipped);
+}
+
+AcGeMatrix3d PyDbDimension::blockTransform() const
+{
+    return impObj()->blockTransform();
+}
+
+bool PyDbDimension::inspection() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->inspection();
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setInspection(bool val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setInspection(val);
+#endif
+}
+
+int PyDbDimension::inspectionFrame() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->inspectionFrame();
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setInspectionFrame(int frame)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setInspectionFrame(frame);
+#endif
+}
+
+const std::string PyDbDimension::inspectionLabel() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return wstr_to_utf8(impObj()->inspectionLabel());
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setInspectionLabel(const std::string& label)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setInspectionLabel(utf8_to_wstr(label).c_str());
+#endif
+}
+
+boost::python::tuple PyDbDimension::isConstraintObject() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    bool hasExpression = false;
+    bool isReferenceConstraint = false;
+    bool flag = impObj()->isConstraintObject(hasExpression, isReferenceConstraint);
+    return boost::python::make_tuple(flag, hasExpression, isReferenceConstraint);
+#endif
+}
+
+bool PyDbDimension::isConstraintDynamic(void) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->isConstraintDynamic();
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setConstraintDynamic(bool bDynamic)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setConstraintDynamic(bDynamic);
+#endif
+}
+
+bool PyDbDimension::shouldParticipateInOPM(void) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->shouldParticipateInOPM();
+#endif
+}
+
+void PyDbDimension::setShouldParticipateInOPM(bool bShouldParticipate)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setShouldParticipateInOPM(bShouldParticipate);
+#endif
+}
+
+double PyDbDimension::centerMarkSize() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->centerMarkSize();
+#endif
+}
+
+std::string PyDbDimension::prefix() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    AcString sPrefix;
+    impObj()->prefix(sPrefix);
+    return wstr_to_utf8(sPrefix);
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setPrefix(const std::string& val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setPrefix(utf8_to_wstr(val).c_str());
+#endif
+}
+
+std::string PyDbDimension::suffix() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    AcString _suffix;
+    impObj()->suffix(_suffix);
+    return wstr_to_utf8(_suffix);
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setSuffix(const std::string& val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setSuffix(utf8_to_wstr(val).c_str());
+#endif
+}
+
+std::string PyDbDimension::alternateSuffix() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    AcString _sval;
+    impObj()->alternateSuffix(_sval);
+    return wstr_to_utf8(_sval);
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setAlternateSuffix(const std::string& val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setAlternateSuffix(utf8_to_wstr(val).c_str());
+#endif
+}
+
+std::string PyDbDimension::alternatePrefix() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    AcString _sval;
+    impObj()->alternatePrefix(_sval);
+    return wstr_to_utf8(_sval);
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setAlternatePrefix(const std::string& val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setAlternatePrefix(utf8_to_wstr(val).c_str());
+#endif
+}
+
+bool PyDbDimension::suppressAngularLeadingZeros() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->suppressAngularLeadingZeros();
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setSuppressAngularLeadingZeros(bool val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setSuppressAngularLeadingZeros(val);
+#endif
+}
+
+bool PyDbDimension::suppressAngularTrailingZeros() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->suppressAngularLeadingZeros();
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setSuppressAngularTrailingZeros(bool val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setSuppressAngularTrailingZeros(val);
+#endif
+}
+
+bool PyDbDimension::altSuppressZeroInches() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->altSuppressZeroInches();
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setAltSuppressZeroInches(bool val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setAltSuppressZeroInches(val);
+#endif
+}
+
+bool PyDbDimension::altSuppressZeroFeet() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->altSuppressZeroFeet();
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setAltSuppressZeroFeet(bool val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setAltSuppressZeroFeet(val);
+#endif
+}
+
+bool PyDbDimension::altSuppressTrailingZeros() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->altSuppressTrailingZeros();
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setAltSuppressTrailingZeros(bool val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setAltSuppressTrailingZeros(val);
+#endif
+}
+
+bool PyDbDimension::altToleranceSuppressLeadingZeros() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->altToleranceSuppressLeadingZeros();
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setAltToleranceSuppressLeadingZeros(bool val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setAltToleranceSuppressLeadingZeros(val);
+#endif
+}
+
+bool PyDbDimension::altToleranceSuppressZeroInches() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->altToleranceSuppressZeroInches();
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setAltToleranceSuppressZeroInches(bool val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setAltToleranceSuppressZeroInches(val);
+#endif
+}
+
+bool PyDbDimension::altToleranceSuppressZeroFeet() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->altToleranceSuppressZeroFeet();
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setAltToleranceSuppressZeroFeet(bool val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setAltToleranceSuppressZeroFeet(val);
+#endif
+}
+
+bool PyDbDimension::altToleranceSuppressTrailingZeros() const
+{
+    return impObj()->altToleranceSuppressTrailingZeros();
+}
+
+Acad::ErrorStatus PyDbDimension::setAltToleranceSuppressTrailingZeros(bool val)
+{
+    return impObj()->setAltToleranceSuppressTrailingZeros(val);
+}
+
+bool PyDbDimension::suppressZeroFeet() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->suppressZeroFeet();
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setSuppressZeroFeet(bool val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setSuppressZeroFeet(val);
+#endif
+}
+
+bool PyDbDimension::suppressTrailingZeros() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->suppressTrailingZeros();
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setSuppressTrailingZeros(bool val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setSuppressTrailingZeros(val);
+#endif
+}
+
+bool PyDbDimension::suppressLeadingZeros() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->suppressLeadingZeros();
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setSuppressLeadingZeros(bool val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setSuppressLeadingZeros(val);
+#endif
+}
+
+bool PyDbDimension::suppressZeroInches() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->suppressZeroInches();
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setSuppressZeroInches(bool val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setSuppressZeroInches(val);
+#endif
+}
+
+bool PyDbDimension::altSuppressLeadingZeros() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->altSuppressLeadingZeros();
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setAltSuppressLeadingZeros(bool val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setAltSuppressLeadingZeros(val);
+#endif
+}
+
+bool PyDbDimension::toleranceSuppressZeroFeet() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->toleranceSuppressZeroFeet();
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setToleranceSuppressZeroFeet(bool val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setToleranceSuppressZeroFeet(val);
+#endif
+}
+
+bool PyDbDimension::toleranceSuppressTrailingZeros() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->toleranceSuppressTrailingZeros();
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setToleranceSuppressTrailingZeros(bool val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setToleranceSuppressTrailingZeros(val);
+#endif
+}
+
+bool PyDbDimension::toleranceSuppressLeadingZeros() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->toleranceSuppressLeadingZeros();
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setToleranceSuppressLeadingZeros(bool val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setToleranceSuppressLeadingZeros(val);
+#endif
+}
+
+bool PyDbDimension::toleranceSuppressZeroInches() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->toleranceSuppressZeroInches();
+#endif
+}
+
+Acad::ErrorStatus PyDbDimension::setToleranceSuppressZeroInches(bool val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setToleranceSuppressZeroInches(val);
+#endif
+}
+
+#ifndef BRXAPP
+AcDbDimension::CenterMarkType PyDbDimension::centerMarkType() const
+{
+    return impObj()->centerMarkType();
+}
+#endif
 std::string PyDbDimension::className()
 {
     return "AcDbRegion";
