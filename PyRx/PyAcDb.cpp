@@ -140,7 +140,6 @@ BOOST_PYTHON_MODULE(PyDb)
 #ifdef SOLID3D_SUPPORT
     makePyDb3dSolidWrapper();
     makePyDbRegionWrapper();
-
     makePyDbSurfaceWrapper();
     makeAcDbExtrudedSurfaceWrapper();
     makeAcDbLoftedSurfaceWrapper();
@@ -160,7 +159,6 @@ BOOST_PYTHON_MODULE(PyDb)
     makeRadialDimensionWrapper();
     makeRadialDimensionLargeWrapper();
     makeRotatedDimensionWrapper();
-
 
     //global
     def("RegApp", &RegApp);

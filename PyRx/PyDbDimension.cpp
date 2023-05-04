@@ -1447,6 +1447,31 @@ void makeArcDimensionWrapper()
     class_<PyDbArcDimension, bases<PyDbDimension>>("ArcDimension")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init <const AcGePoint3d&,const AcGePoint3d&,const AcGePoint3d&,const AcGePoint3d&>())
+        .def(init <const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&>())
+        .def(init <const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&, const PyDbObjectId&>())
+        .def("arcPoint", &PyDbArcDimension::arcPoint)
+        .def("setArcPoint", &PyDbArcDimension::setArcPoint)
+        .def("xLine1Point", &PyDbArcDimension::xLine1Point)
+        .def("setXLine1Point", &PyDbArcDimension::setXLine1Point)
+        .def("xLine2Point", &PyDbArcDimension::xLine2Point)
+        .def("setXLine2Point", &PyDbArcDimension::setXLine2Point)
+        .def("centerPoint", &PyDbArcDimension::centerPoint)
+        .def("setCenterPoint", &PyDbArcDimension::setCenterPoint)
+        .def("isPartial", &PyDbArcDimension::isPartial)
+        .def("setIsPartial", &PyDbArcDimension::setIsPartial)
+        .def("arcStartParam", &PyDbArcDimension::arcStartParam)
+        .def("setArcStartParam", &PyDbArcDimension::setArcStartParam)
+        .def("arcEndParam", &PyDbArcDimension::arcEndParam)
+        .def("setArcEndParam", &PyDbArcDimension::setArcEndParam)
+        .def("hasLeader", &PyDbArcDimension::hasLeader)
+        .def("setHasLeader", &PyDbArcDimension::setHasLeader)
+        .def("leader1Point", &PyDbArcDimension::leader1Point)
+        .def("setLeader1Point", &PyDbArcDimension::setLeader1Point)
+        .def("leader2Point", &PyDbArcDimension::leader2Point)
+        .def("setLeader2Point", &PyDbArcDimension::setLeader2Point)
+        .def("arcSymbolType", &PyDbArcDimension::arcSymbolType)
+        .def("setArcSymbolType", &PyDbArcDimension::setArcSymbolType)
         .def("className", &PyDbArcDimension::className).staticmethod("className")
         ;
 }
@@ -1468,6 +1493,139 @@ PyDbArcDimension::PyDbArcDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbArcDimension>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbArcDimension::PyDbArcDimension(const AcGePoint3d& centerPoint, const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& arcPoint)
+    : PyDbDimension(new AcDbArcDimension(centerPoint, xLine1Point, xLine2Point, arcPoint), true)
+{
+}
+
+PyDbArcDimension::PyDbArcDimension(const AcGePoint3d& centerPoint, const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& arcPoint, const std::string& dimText)
+    : PyDbDimension(new AcDbArcDimension(centerPoint, xLine1Point, xLine2Point, arcPoint, utf8_to_wstr(dimText).c_str()), true)
+{
+}
+
+PyDbArcDimension::PyDbArcDimension(const AcGePoint3d& centerPoint, const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& arcPoint, const std::string& dimText, const PyDbObjectId& styleId)
+    : PyDbDimension(new AcDbArcDimension(centerPoint, xLine1Point, xLine2Point, arcPoint, utf8_to_wstr(dimText).c_str(), styleId.m_id), true)
+{
+}
+
+AcGePoint3d PyDbArcDimension::arcPoint() const
+{
+    return impObj()->arcPoint();
+}
+
+Acad::ErrorStatus PyDbArcDimension::setArcPoint(const AcGePoint3d& arcPt)
+{
+    return impObj()->setArcPoint(arcPt);
+}
+
+AcGePoint3d PyDbArcDimension::xLine1Point() const
+{
+    return impObj()->xLine1Point();
+}
+
+Acad::ErrorStatus PyDbArcDimension::setXLine1Point(const AcGePoint3d& xLine1Pt)
+{
+    return impObj()->setXLine1Point(xLine1Pt);
+}
+
+AcGePoint3d PyDbArcDimension::xLine2Point() const
+{
+    return impObj()->xLine2Point();
+}
+
+Acad::ErrorStatus PyDbArcDimension::setXLine2Point(const AcGePoint3d& xLine2Pt)
+{
+    return impObj()->setXLine2Point(xLine2Pt);
+}
+
+AcGePoint3d PyDbArcDimension::centerPoint() const
+{
+    return impObj()->centerPoint();
+}
+
+Acad::ErrorStatus PyDbArcDimension::setCenterPoint(const AcGePoint3d& ctrPt)
+{
+    return impObj()->setCenterPoint(ctrPt);
+}
+
+bool PyDbArcDimension::isPartial() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->isPartial();
+#endif
+}
+
+Acad::ErrorStatus PyDbArcDimension::setIsPartial(bool partial)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setIsPartial(partial);
+#endif
+}
+
+double PyDbArcDimension::arcStartParam() const
+{
+    return impObj()->arcStartParam();
+}
+
+Acad::ErrorStatus PyDbArcDimension::setArcStartParam(double arcParam)
+{
+    return impObj()->setArcStartParam(arcParam);
+}
+
+double PyDbArcDimension::arcEndParam() const
+{
+    return impObj()->arcEndParam();
+}
+
+Acad::ErrorStatus PyDbArcDimension::setArcEndParam(double arcParam)
+{
+    return impObj()->setArcEndParam(arcParam);
+}
+
+bool PyDbArcDimension::hasLeader() const
+{
+    return impObj()->hasLeader();
+}
+
+Acad::ErrorStatus PyDbArcDimension::setHasLeader(bool leaderVal)
+{
+    return impObj()->setHasLeader(leaderVal);
+}
+
+AcGePoint3d PyDbArcDimension::leader1Point() const
+{
+    return impObj()->leader1Point();
+}
+
+Acad::ErrorStatus PyDbArcDimension::setLeader1Point(const AcGePoint3d& ldr1Pt)
+{
+    return impObj()->setLeader1Point(ldr1Pt);
+}
+
+AcGePoint3d PyDbArcDimension::leader2Point() const
+{
+    return impObj()->leader2Point();
+}
+
+Acad::ErrorStatus PyDbArcDimension::setLeader2Point(const AcGePoint3d& ldr2Pt)
+{
+    return impObj()->setLeader2Point(ldr2Pt);
+}
+
+int PyDbArcDimension::arcSymbolType() const
+{
+    return impObj()->arcSymbolType();
+}
+
+Acad::ErrorStatus PyDbArcDimension::setArcSymbolType(int symbol)
+{
+    return impObj()->setArcSymbolType(symbol);
 }
 
 std::string PyDbArcDimension::className()

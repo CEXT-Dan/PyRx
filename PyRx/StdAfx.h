@@ -139,6 +139,12 @@
 #define SOLID3D_SUPPORT
 
 #ifdef ARXAPP
+  #pragma comment( lib , "AcPal.lib" )
+  #ifdef SOLID3D_SUPPORT
+    #pragma comment( lib , "acgeoment.lib" )
+  #endif
+#endif
+
 //#pragma comment( lib , "ac1st24.lib" )
 //#pragma comment( lib , "acad.lib" )
 //#pragma comment( lib , "acapp.lib" )
@@ -154,16 +160,11 @@
 //#pragma comment( lib , "AcFdUi.lib" )
 //#pragma comment( lib , "acge24.lib" )
 //#pragma comment( lib , "AcGeolocationObj.lib" )
-#ifdef SOLID3D_SUPPORT
-#pragma comment( lib , "acgeoment.lib" )
-#endif
-
 //#pragma comment( lib , "acgiapi.lib" )
 //#pragma comment( lib , "acismobj24.lib" )
 //#pragma comment( lib , "AcJsCoreStub_crx.lib" )
 //#pragma comment( lib , "acModelDocObj.lib" )
 //#pragma comment( lib , "AcMPolygonObj.lib" )
-#pragma comment( lib , "AcPal.lib" )
 //#pragma comment( lib , "AcPublish_crx.lib" )
 //#pragma comment( lib , "AcSceneOE.lib" )
 //#pragma comment( lib , "AcTc.lib" )
@@ -175,7 +176,7 @@
 //#pragma comment( lib , "axdb.lib" )
 //#pragma comment( lib , "rxapi.lib" )
 //#pragma comment( lib , "userdata.lib" )
-#endif
+
 
 
 static inline const AcString PyCommandPrefix = _T("PyRxCmd_");

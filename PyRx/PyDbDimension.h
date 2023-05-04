@@ -193,12 +193,26 @@ public:
     PyDb2LineAngularDimension(AcDb2LineAngularDimension* ptr, bool autoDelete);
     PyDb2LineAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
 
-    PyDb2LineAngularDimension(const AcGePoint3d& xLine1Start, const AcGePoint3d& xLine1End, 
-        const AcGePoint3d& xLine2Start, const AcGePoint3d& xLine2End, const AcGePoint3d& arcPoint);
-    PyDb2LineAngularDimension(const AcGePoint3d& xLine1Start, const AcGePoint3d& xLine1End, 
-        const AcGePoint3d& xLine2Start, const AcGePoint3d& xLine2End, const AcGePoint3d& arcPoint, const std::string& dimText);
-    PyDb2LineAngularDimension(const AcGePoint3d& xLine1Start, const AcGePoint3d& xLine1End, 
-        const AcGePoint3d& xLine2Start, const AcGePoint3d& xLine2End, const AcGePoint3d& arcPoint, const std::string& dimText, const PyDbObjectId& dimStyle);
+    PyDb2LineAngularDimension(const AcGePoint3d& xLine1Start, 
+        const AcGePoint3d& xLine1End, 
+        const AcGePoint3d& xLine2Start,
+        const AcGePoint3d& xLine2End, 
+        const AcGePoint3d& arcPoint);
+
+    PyDb2LineAngularDimension(const AcGePoint3d& xLine1Start,
+        const AcGePoint3d& xLine1End, 
+        const AcGePoint3d& xLine2Start, 
+        const AcGePoint3d& xLine2End, 
+        const AcGePoint3d& arcPoint, 
+        const std::string& dimText);
+
+    PyDb2LineAngularDimension(const AcGePoint3d& xLine1Start,
+        const AcGePoint3d& xLine1End, 
+        const AcGePoint3d& xLine2Start, 
+        const AcGePoint3d& xLine2End, 
+        const AcGePoint3d& arcPoint, 
+        const std::string& dimText, 
+        const PyDbObjectId& dimStyle);
 
     AcGePoint3d         arcPoint() const;
     Acad::ErrorStatus   setArcPoint(const AcGePoint3d& val);
@@ -232,9 +246,24 @@ class PyDb3PointAngularDimension : public PyDbDimension
 {
 public:
     PyDb3PointAngularDimension();
-    PyDb3PointAngularDimension(const AcGePoint3d& centerPoint,const AcGePoint3d& xLine1Point,const AcGePoint3d& xLine2Point,const AcGePoint3d& arcPoint);
-    PyDb3PointAngularDimension(const AcGePoint3d& centerPoint, const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& arcPoint, const std::string& dimText);
-    PyDb3PointAngularDimension(const AcGePoint3d& centerPoint, const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& arcPoint, const std::string& dimText, const PyDbObjectId& dimStyle);
+    PyDb3PointAngularDimension(const AcGePoint3d& centerPoint,
+        const AcGePoint3d& xLine1Point,
+        const AcGePoint3d& xLine2Point,
+        const AcGePoint3d& arcPoint);
+
+    PyDb3PointAngularDimension(const AcGePoint3d& centerPoint, 
+        const AcGePoint3d& xLine1Point, 
+        const AcGePoint3d& xLine2Point, 
+        const AcGePoint3d& arcPoint, 
+        const std::string& dimText);
+
+    PyDb3PointAngularDimension(const AcGePoint3d& centerPoint,
+        const AcGePoint3d& xLine1Point, 
+        const AcGePoint3d& xLine2Point, 
+        const AcGePoint3d& arcPoint,
+        const std::string& dimText,
+        const PyDbObjectId& dimStyle);
+
     PyDb3PointAngularDimension(AcDb3PointAngularDimension* ptr, bool autoDelete);
     PyDb3PointAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
 
@@ -266,9 +295,21 @@ class PyDbAlignedDimension : public PyDbDimension
 {
 public:
     PyDbAlignedDimension();
-    PyDbAlignedDimension(const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& dimLinePoint);
-    PyDbAlignedDimension(const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& dimLinePoint, const std::string& dimText);
-    PyDbAlignedDimension(const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& dimLinePoint, const std::string& dimText, const PyDbObjectId& dimStyle);
+    PyDbAlignedDimension(const AcGePoint3d& xLine1Point, 
+        const AcGePoint3d& xLine2Point, 
+        const AcGePoint3d& dimLinePoint);
+
+    PyDbAlignedDimension(const AcGePoint3d& xLine1Point, 
+        const AcGePoint3d& xLine2Point, 
+        const AcGePoint3d& dimLinePoint,
+        const std::string& dimText);
+
+    PyDbAlignedDimension(const AcGePoint3d& xLine1Point,
+        const AcGePoint3d& xLine2Point, 
+        const AcGePoint3d& dimLinePoint, 
+        const std::string& dimText, 
+        const PyDbObjectId& dimStyle);
+
     PyDbAlignedDimension(AcDbAlignedDimension* ptr, bool autoDelete);
     PyDbAlignedDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
 
@@ -303,8 +344,61 @@ class PyDbArcDimension : public PyDbDimension
 {
 public:
     PyDbArcDimension();
+    PyDbArcDimension(const AcGePoint3d& centerPoint,
+        const AcGePoint3d& xLine1Point,
+        const AcGePoint3d& xLine2Point,
+        const AcGePoint3d& arcPoint);
+
+    PyDbArcDimension(const AcGePoint3d& centerPoint,
+        const AcGePoint3d& xLine1Point,
+        const AcGePoint3d& xLine2Point,
+        const AcGePoint3d& arcPoint, 
+        const std::string& dimText);
+
+    PyDbArcDimension(const AcGePoint3d& centerPoint,
+        const AcGePoint3d& xLine1Point,
+        const AcGePoint3d& xLine2Point,
+        const AcGePoint3d& arcPoint,
+        const std::string& dimText,
+        const PyDbObjectId& styleId);
+
     PyDbArcDimension(AcDbArcDimension* ptr, bool autoDelete);
     PyDbArcDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
+
+    AcGePoint3d         arcPoint() const;
+    Acad::ErrorStatus   setArcPoint(const AcGePoint3d& arcPt);
+
+    AcGePoint3d         xLine1Point() const;
+    Acad::ErrorStatus   setXLine1Point(const AcGePoint3d& xLine1Pt);
+
+    AcGePoint3d         xLine2Point() const;
+    Acad::ErrorStatus   setXLine2Point(const AcGePoint3d& xLine2Pt);
+
+    AcGePoint3d         centerPoint() const;
+    Acad::ErrorStatus   setCenterPoint(const AcGePoint3d& ctrPt);
+
+    bool                isPartial() const;
+    Acad::ErrorStatus   setIsPartial(bool partial);
+
+    double              arcStartParam() const;
+    Acad::ErrorStatus   setArcStartParam(double arcParam);
+
+    double              arcEndParam() const;
+    Acad::ErrorStatus   setArcEndParam(double arcParam);
+
+    bool                hasLeader() const;
+    Acad::ErrorStatus   setHasLeader(bool leaderVal);
+
+    AcGePoint3d         leader1Point() const;
+    Acad::ErrorStatus   setLeader1Point(const AcGePoint3d& ldr1Pt);
+
+    AcGePoint3d         leader2Point() const;
+    Acad::ErrorStatus   setLeader2Point(const AcGePoint3d& ldr2Pt);
+
+    int                 arcSymbolType() const;
+    Acad::ErrorStatus   setArcSymbolType(int symbol);
+
+
     static std::string className();
 public:
     AcDbArcDimension* impObj() const;
