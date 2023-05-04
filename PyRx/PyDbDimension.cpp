@@ -1447,7 +1447,7 @@ void makeArcDimensionWrapper()
     class_<PyDbArcDimension, bases<PyDbDimension>>("ArcDimension")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def(init <const AcGePoint3d&,const AcGePoint3d&,const AcGePoint3d&,const AcGePoint3d&>())
+        .def(init <const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
         .def(init <const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&>())
         .def(init <const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&, const PyDbObjectId&>())
         .def("arcPoint", &PyDbArcDimension::arcPoint)
@@ -1647,6 +1647,19 @@ void makeDiametricDimensionWrapper()
     class_<PyDbDiametricDimension, bases<PyDbDimension>>("DiametricDimension")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, double>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, double, const std::string&>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, double, const std::string&, const PyDbObjectId&>())
+        .def("leaderLength", &PyDbDiametricDimension::leaderLength)
+        .def("setLeaderLength", &PyDbDiametricDimension::setLeaderLength)
+        .def("chordPoint", &PyDbDiametricDimension::chordPoint)
+        .def("setChordPoint", &PyDbDiametricDimension::setChordPoint)
+        .def("farChordPoint", &PyDbDiametricDimension::farChordPoint)
+        .def("setFarChordPoint", &PyDbDiametricDimension::setFarChordPoint)
+        .def("extArcStartAngle", &PyDbDiametricDimension::extArcStartAngle)
+        .def("setExtArcStartAngle", &PyDbDiametricDimension::setExtArcStartAngle)
+        .def("extArcEndAngle", &PyDbDiametricDimension::extArcEndAngle)
+        .def("setExtArcEndAngle", &PyDbDiametricDimension::setExtArcEndAngle)
         .def("className", &PyDbDiametricDimension::className).staticmethod("className")
         ;
 }
@@ -1668,6 +1681,87 @@ PyDbDiametricDimension::PyDbDiametricDimension(const PyDbObjectId& id, AcDb::Ope
     if (auto es = acdbOpenObject<AcDbDiametricDimension>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbDiametricDimension::PyDbDiametricDimension(const AcGePoint3d& chordPoint, const AcGePoint3d& farChordPoint, double leaderLength)
+    : PyDbDimension(new AcDbDiametricDimension(chordPoint, farChordPoint, leaderLength), true)
+{
+}
+
+PyDbDiametricDimension::PyDbDiametricDimension(const AcGePoint3d& chordPoint, const AcGePoint3d& farChordPoint, double leaderLength, const std::string& dimText)
+    : PyDbDimension(new AcDbDiametricDimension(chordPoint, farChordPoint, leaderLength, utf8_to_wstr(dimText).c_str()), true)
+{
+}
+
+PyDbDiametricDimension::PyDbDiametricDimension(const AcGePoint3d& chordPoint, const AcGePoint3d& farChordPoint, double leaderLength, const std::string& dimText, const PyDbObjectId& styleId)
+    : PyDbDimension(new AcDbDiametricDimension(chordPoint, farChordPoint, leaderLength, utf8_to_wstr(dimText).c_str(), styleId.m_id), true)
+{
+}
+
+double PyDbDiametricDimension::leaderLength() const
+{
+    return impObj()->leaderLength();
+}
+
+Acad::ErrorStatus PyDbDiametricDimension::setLeaderLength(double val)
+{
+    return impObj()->setLeaderLength(val);
+}
+
+AcGePoint3d PyDbDiametricDimension::chordPoint() const
+{
+    return impObj()->chordPoint();
+}
+
+Acad::ErrorStatus PyDbDiametricDimension::setChordPoint(const AcGePoint3d& val)
+{
+    return impObj()->setChordPoint(val);
+}
+
+AcGePoint3d PyDbDiametricDimension::farChordPoint() const
+{
+    return impObj()->farChordPoint();
+}
+
+Acad::ErrorStatus PyDbDiametricDimension::setFarChordPoint(const AcGePoint3d& val)
+{
+    return impObj()->setFarChordPoint(val);
+}
+
+double PyDbDiametricDimension::extArcStartAngle() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->extArcStartAngle();
+#endif
+}
+
+Acad::ErrorStatus PyDbDiametricDimension::setExtArcStartAngle(double newAngle)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setExtArcStartAngle(newAngle);
+#endif
+}
+
+double PyDbDiametricDimension::extArcEndAngle() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->extArcEndAngle();
+#endif
+}
+
+Acad::ErrorStatus PyDbDiametricDimension::setExtArcEndAngle(double newAngle)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setExtArcEndAngle(newAngle);
+#endif
 }
 
 std::string PyDbDiametricDimension::className()

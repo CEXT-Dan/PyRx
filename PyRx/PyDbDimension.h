@@ -414,6 +414,38 @@ public:
     PyDbDiametricDimension();
     PyDbDiametricDimension(AcDbDiametricDimension* ptr, bool autoDelete);
     PyDbDiametricDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
+
+    PyDbDiametricDimension(const AcGePoint3d& chordPoint,
+        const AcGePoint3d& farChordPoint,
+        double leaderLength);
+
+    PyDbDiametricDimension(const AcGePoint3d& chordPoint,
+        const AcGePoint3d& farChordPoint,
+        double leaderLength,
+        const std::string& dimText);
+
+    PyDbDiametricDimension(const AcGePoint3d& chordPoint,
+        const AcGePoint3d& farChordPoint,
+        double leaderLength,
+        const std::string& dimText,
+        const PyDbObjectId& styleId);
+
+    double              leaderLength() const;
+    Acad::ErrorStatus   setLeaderLength(double val);
+
+    AcGePoint3d         chordPoint() const;
+    Acad::ErrorStatus   setChordPoint(const AcGePoint3d& val);
+
+    AcGePoint3d         farChordPoint() const;
+    Acad::ErrorStatus   setFarChordPoint(const AcGePoint3d& val);
+
+    double extArcStartAngle() const;
+    Acad::ErrorStatus setExtArcStartAngle(double newAngle);
+
+    double extArcEndAngle() const;
+    Acad::ErrorStatus setExtArcEndAngle(double newAngle);
+
+
     static std::string className();
 public:
     AcDbDiametricDimension* impObj() const;
