@@ -513,6 +513,42 @@ public:
     PyDbRadialDimension();
     PyDbRadialDimension(AcDbRadialDimension* ptr, bool autoDelete);
     PyDbRadialDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
+
+    PyDbRadialDimension(
+        const AcGePoint3d& center,
+        const AcGePoint3d& chordPoint,
+        double leaderLength);
+
+    PyDbRadialDimension(
+        const AcGePoint3d& center,
+        const AcGePoint3d& chordPoint,
+        double leaderLength,
+        const std::string& dimText);
+
+    PyDbRadialDimension(
+        const AcGePoint3d& center,
+        const AcGePoint3d& chordPoint,
+        double leaderLength,
+        const std::string& dimText,
+        const PyDbObjectId& styleId);
+
+
+    double              leaderLength() const;
+    Acad::ErrorStatus   setLeaderLength(double val);
+
+    AcGePoint3d         center() const;
+    Acad::ErrorStatus   setCenter(const AcGePoint3d& val);
+
+    AcGePoint3d         chordPoint() const;
+    Acad::ErrorStatus   setChordPoint(const AcGePoint3d& val);
+
+    double              extArcStartAngle() const;
+    Acad::ErrorStatus   setExtArcStartAngle(double newAngle);
+
+    double              extArcEndAngle() const;
+    Acad::ErrorStatus   setExtArcEndAngle(double newAngle);
+
+
     static std::string className();
 public:
     AcDbRadialDimension* impObj() const;

@@ -1923,6 +1923,19 @@ void makeRadialDimensionWrapper()
     class_<PyDbRadialDimension, bases<PyDbDimension>>("RadialDimension")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, double>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, double, const std::string&>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, double, const std::string&, const PyDbObjectId&>())
+        .def("leaderLength", &PyDbRadialDimension::leaderLength)
+        .def("setLeaderLength", &PyDbRadialDimension::setLeaderLength)
+        .def("center", &PyDbRadialDimension::center)
+        .def("setCenter", &PyDbRadialDimension::setCenter)
+        .def("chordPoint", &PyDbRadialDimension::chordPoint)
+        .def("setChordPoint", &PyDbRadialDimension::setChordPoint)
+        .def("extArcStartAngle", &PyDbRadialDimension::extArcStartAngle)
+        .def("setExtArcStartAngle", &PyDbRadialDimension::setExtArcStartAngle)
+        .def("extArcEndAngle", &PyDbRadialDimension::extArcEndAngle)
+        .def("setExtArcEndAngle", &PyDbRadialDimension::setExtArcEndAngle)
         .def("className", &PyDbRadialDimension::className).staticmethod("className")
         ;
 }
@@ -1944,6 +1957,71 @@ PyDbRadialDimension::PyDbRadialDimension(const PyDbObjectId& id, AcDb::OpenMode 
     if (auto es = acdbOpenObject<AcDbRadialDimension>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbRadialDimension::PyDbRadialDimension(const AcGePoint3d& center, const AcGePoint3d& chordPoint, double leaderLength)
+    : PyDbDimension(new AcDbRadialDimension(center, chordPoint, leaderLength), true)
+{
+}
+
+PyDbRadialDimension::PyDbRadialDimension(const AcGePoint3d& center, const AcGePoint3d& chordPoint, double leaderLength, const std::string& dimText)
+    : PyDbDimension(new AcDbRadialDimension(center, chordPoint, leaderLength, utf8_to_wstr(dimText).c_str()), true)
+{
+}
+
+PyDbRadialDimension::PyDbRadialDimension(const AcGePoint3d& center, const AcGePoint3d& chordPoint, double leaderLength, const std::string& dimText, const PyDbObjectId& styleId)
+    : PyDbDimension(new AcDbRadialDimension(center, chordPoint, leaderLength, utf8_to_wstr(dimText).c_str(), styleId.m_id), true)
+{
+}
+
+double PyDbRadialDimension::leaderLength() const
+{
+    return impObj()->leaderLength();
+}
+
+Acad::ErrorStatus PyDbRadialDimension::setLeaderLength(double val)
+{
+    return impObj()->setLeaderLength(val);
+}
+
+AcGePoint3d PyDbRadialDimension::center() const
+{
+    return impObj()->center();
+}
+
+Acad::ErrorStatus PyDbRadialDimension::setCenter(const AcGePoint3d& val)
+{
+    return impObj()->setCenter(val);
+}
+
+AcGePoint3d PyDbRadialDimension::chordPoint() const
+{
+    return impObj()->chordPoint();
+}
+
+Acad::ErrorStatus PyDbRadialDimension::setChordPoint(const AcGePoint3d& val)
+{
+    return impObj()->setChordPoint(val);
+}
+
+double PyDbRadialDimension::extArcStartAngle() const
+{
+    return impObj()->extArcStartAngle();
+}
+
+Acad::ErrorStatus PyDbRadialDimension::setExtArcStartAngle(double newAngle)
+{
+    return impObj()->setExtArcStartAngle(newAngle);
+}
+
+double PyDbRadialDimension::extArcEndAngle() const
+{
+    return impObj()->extArcEndAngle();
+}
+
+Acad::ErrorStatus PyDbRadialDimension::setExtArcEndAngle(double newAngle)
+{
+    return impObj()->setExtArcEndAngle(newAngle);
 }
 
 std::string PyDbRadialDimension::className()
