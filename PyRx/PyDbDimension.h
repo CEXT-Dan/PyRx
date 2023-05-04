@@ -532,7 +532,6 @@ public:
         const std::string& dimText,
         const PyDbObjectId& styleId);
 
-
     double              leaderLength() const;
     Acad::ErrorStatus   setLeaderLength(double val);
 
@@ -547,7 +546,6 @@ public:
 
     double              extArcEndAngle() const;
     Acad::ErrorStatus   setExtArcEndAngle(double newAngle);
-
 
     static std::string className();
 public:
@@ -564,6 +562,54 @@ public:
     PyDbRadialDimensionLarge();
     PyDbRadialDimensionLarge(AcDbRadialDimensionLarge* ptr, bool autoDelete);
     PyDbRadialDimensionLarge(const PyDbObjectId& id, AcDb::OpenMode mode);
+
+    PyDbRadialDimensionLarge(const AcGePoint3d& center,
+        const AcGePoint3d& chordPoint,
+        const AcGePoint3d& overrideCenter,
+        const AcGePoint3d& jogPoint,
+        double jogAngle);
+
+    PyDbRadialDimensionLarge(const AcGePoint3d& center,
+        const AcGePoint3d& chordPoint,
+        const AcGePoint3d& overrideCenter,
+        const AcGePoint3d& jogPoint,
+        double jogAngle, 
+        const std::string& dimText);
+
+    PyDbRadialDimensionLarge(const AcGePoint3d& center,
+        const AcGePoint3d& chordPoint,
+        const AcGePoint3d& overrideCenter,
+        const AcGePoint3d& jogPoint,
+        double jogAngle,
+        const std::string& dimText,
+        const PyDbObjectId& styleId);
+
+    AcGePoint3d         center() const;
+    Acad::ErrorStatus   setCenter(const AcGePoint3d& centerPoint);
+
+    AcGePoint3d         chordPoint() const;
+    Acad::ErrorStatus   setChordPoint(const AcGePoint3d& chordPoint);
+
+    AcGePoint3d         overrideCenter() const;
+    Acad::ErrorStatus   setOverrideCenter(const AcGePoint3d& overrideCenterPoint);
+
+    AcGePoint3d         jogPoint() const;
+    Acad::ErrorStatus   setJogPoint(const AcGePoint3d& jogPoint);
+
+    double              jogAngle() const;
+    Acad::ErrorStatus   setJogAngle(double jogAngle);
+
+    Acad::ErrorStatus   setOverrideCenterPP(const AcGePoint3d& overrideCenterPointPP);
+    Acad::ErrorStatus   setJogPointPP(const AcGePoint3d& jogPointPP);
+
+    Acad::ErrorStatus   setTextPositionPP(const AcGePoint3d& textPointPP);
+
+    double              extArcStartAngle() const;
+    Acad::ErrorStatus   setExtArcStartAngle(double newAngle);
+
+    double              extArcEndAngle() const;
+    Acad::ErrorStatus   setExtArcEndAngle(double newAngle);
+
     static std::string className();
 public:
     AcDbRadialDimensionLarge* impObj() const;

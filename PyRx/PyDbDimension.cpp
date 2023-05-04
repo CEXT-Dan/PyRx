@@ -2043,6 +2043,26 @@ void makeRadialDimensionLargeWrapper()
     class_<PyDbRadialDimensionLarge, bases<PyDbDimension>>("RadialDimensionLarge")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, double>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, double, const std::string&>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, double, const std::string&, const PyDbObjectId&>())
+        .def("center", &PyDbRadialDimensionLarge::center)
+        .def("setCenter", &PyDbRadialDimensionLarge::setCenter)
+        .def("chordPoint", &PyDbRadialDimensionLarge::chordPoint)
+        .def("setChordPoint", &PyDbRadialDimensionLarge::setChordPoint)
+        .def("overrideCenter", &PyDbRadialDimensionLarge::overrideCenter)
+        .def("setOverrideCenter", &PyDbRadialDimensionLarge::setOverrideCenter)
+        .def("jogPoint", &PyDbRadialDimensionLarge::jogPoint)
+        .def("setJogPoint", &PyDbRadialDimensionLarge::setJogPoint)
+        .def("jogAngle", &PyDbRadialDimensionLarge::jogAngle)
+        .def("setJogAngle", &PyDbRadialDimensionLarge::setJogAngle)
+        .def("setOverrideCenterPP", &PyDbRadialDimensionLarge::setOverrideCenterPP)
+        .def("setJogPointPP", &PyDbRadialDimensionLarge::setJogPointPP)
+        .def("setTextPositionPP", &PyDbRadialDimensionLarge::setTextPositionPP)
+        .def("extArcStartAngle", &PyDbRadialDimensionLarge::extArcStartAngle)
+        .def("setExtArcStartAngle", &PyDbRadialDimensionLarge::setExtArcStartAngle)
+        .def("extArcEndAngle", &PyDbRadialDimensionLarge::extArcEndAngle)
+        .def("setExtArcEndAngle", &PyDbRadialDimensionLarge::setExtArcEndAngle)
         .def("className", &PyDbRadialDimensionLarge::className).staticmethod("className")
         ;
 }
@@ -2064,6 +2084,134 @@ PyDbRadialDimensionLarge::PyDbRadialDimensionLarge(const PyDbObjectId& id, AcDb:
     if (auto es = acdbOpenObject<AcDbRadialDimensionLarge>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbRadialDimensionLarge::PyDbRadialDimensionLarge(const AcGePoint3d& center, const AcGePoint3d& chordPoint, const AcGePoint3d& overrideCenter, const AcGePoint3d& jogPoint, double jogAngle)
+    : PyDbDimension(new AcDbRadialDimensionLarge(center, chordPoint, overrideCenter, jogPoint, jogAngle), true)
+{
+}
+
+PyDbRadialDimensionLarge::PyDbRadialDimensionLarge(const AcGePoint3d& center, const AcGePoint3d& chordPoint, const AcGePoint3d& overrideCenter, const AcGePoint3d& jogPoint, double jogAngle, const std::string& dimText)
+    : PyDbDimension(new AcDbRadialDimensionLarge(center, chordPoint, overrideCenter, jogPoint, jogAngle, utf8_to_wstr(dimText).c_str()), true)
+{
+}
+
+PyDbRadialDimensionLarge::PyDbRadialDimensionLarge(const AcGePoint3d& center, const AcGePoint3d& chordPoint, const AcGePoint3d& overrideCenter, const AcGePoint3d& jogPoint, double jogAngle, const std::string& dimText, const PyDbObjectId& styleId)
+    : PyDbDimension(new AcDbRadialDimensionLarge(center, chordPoint, overrideCenter, jogPoint, jogAngle, utf8_to_wstr(dimText).c_str(), styleId.m_id), true)
+{
+}
+
+AcGePoint3d PyDbRadialDimensionLarge::center() const
+{
+    return impObj()->center();
+}
+
+Acad::ErrorStatus PyDbRadialDimensionLarge::setCenter(const AcGePoint3d& centerPoint)
+{
+    return impObj()->setCenter(centerPoint);
+}
+
+AcGePoint3d PyDbRadialDimensionLarge::chordPoint() const
+{
+    return impObj()->chordPoint();
+}
+
+Acad::ErrorStatus PyDbRadialDimensionLarge::setChordPoint(const AcGePoint3d& chordPoint)
+{
+    return impObj()->setChordPoint(chordPoint);
+}
+
+AcGePoint3d PyDbRadialDimensionLarge::overrideCenter() const
+{
+    return impObj()->overrideCenter();
+}
+
+Acad::ErrorStatus PyDbRadialDimensionLarge::setOverrideCenter(const AcGePoint3d& overrideCenterPoint)
+{
+    return impObj()->setOverrideCenter(overrideCenterPoint);
+}
+
+AcGePoint3d PyDbRadialDimensionLarge::jogPoint() const
+{
+    return impObj()->jogPoint();
+}
+
+Acad::ErrorStatus PyDbRadialDimensionLarge::setJogPoint(const AcGePoint3d& jogPoint)
+{
+    return impObj()->setJogPoint(jogPoint);
+}
+
+double PyDbRadialDimensionLarge::jogAngle() const
+{
+    return impObj()->jogAngle();
+}
+
+Acad::ErrorStatus PyDbRadialDimensionLarge::setJogAngle(double jogAngle)
+{
+    return impObj()->setJogAngle(jogAngle);
+}
+
+Acad::ErrorStatus PyDbRadialDimensionLarge::setOverrideCenterPP(const AcGePoint3d& overrideCenterPointPP)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setOverrideCenterPP(overrideCenterPointPP);
+#endif
+}
+
+Acad::ErrorStatus PyDbRadialDimensionLarge::setJogPointPP(const AcGePoint3d& jogPointPP)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setJogPointPP(jogPointPP);
+#endif
+}
+
+Acad::ErrorStatus PyDbRadialDimensionLarge::setTextPositionPP(const AcGePoint3d& textPointPP)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setTextPositionPP(textPointPP);
+#endif
+}
+
+double PyDbRadialDimensionLarge::extArcStartAngle() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->extArcStartAngle();
+#endif
+}
+
+Acad::ErrorStatus PyDbRadialDimensionLarge::setExtArcStartAngle(double newAngle)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setExtArcStartAngle(newAngle);
+#endif
+}
+
+double PyDbRadialDimensionLarge::extArcEndAngle() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->extArcEndAngle();
+#endif
+}
+
+Acad::ErrorStatus PyDbRadialDimensionLarge::setExtArcEndAngle(double newAngle)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setExtArcEndAngle(newAngle);
+#endif
 }
 
 std::string PyDbRadialDimensionLarge::className()
