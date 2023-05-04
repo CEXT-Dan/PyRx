@@ -445,7 +445,6 @@ public:
     double extArcEndAngle() const;
     Acad::ErrorStatus setExtArcEndAngle(double newAngle);
 
-
     static std::string className();
 public:
     AcDbDiametricDimension* impObj() const;
@@ -461,6 +460,43 @@ public:
     PyDbOrdinateDimension();
     PyDbOrdinateDimension(AcDbOrdinateDimension* ptr, bool autoDelete);
     PyDbOrdinateDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
+
+    PyDbOrdinateDimension(
+        Adesk::Boolean useXAxis,
+        const AcGePoint3d& definingPoint,
+        const AcGePoint3d& leaderEndPoint);
+
+    PyDbOrdinateDimension(
+        Adesk::Boolean useXAxis,
+        const AcGePoint3d& definingPoint,
+        const AcGePoint3d& leaderEndPoint,
+        const std::string& dimText);
+
+    PyDbOrdinateDimension(
+        Adesk::Boolean useXAxis,
+        const AcGePoint3d& definingPoint,
+        const AcGePoint3d& leaderEndPoint,
+        const std::string& dimText,
+        const PyDbObjectId& styleId);
+
+    Adesk::Boolean      isUsingXAxis() const;
+    Adesk::Boolean      isUsingYAxis() const;
+
+    Acad::ErrorStatus   useXAxis();
+    Acad::ErrorStatus   useYAxis();
+
+    Acad::ErrorStatus   setUsingXAxis(bool value);
+    Acad::ErrorStatus   setUsingYAxis(bool value);
+
+    AcGePoint3d         origin() const;
+    Acad::ErrorStatus   setOrigin(const AcGePoint3d& val);
+
+    AcGePoint3d         definingPoint() const;
+    Acad::ErrorStatus   setDefiningPoint(const AcGePoint3d& val);
+
+    AcGePoint3d         leaderEndPoint() const;
+    Acad::ErrorStatus   setLeaderEndPoint(const AcGePoint3d& val);
+
     static std::string className();
 public:
     AcDbOrdinateDimension* impObj() const;

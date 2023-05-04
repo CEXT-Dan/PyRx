@@ -1783,6 +1783,21 @@ void makeOrdinateDimensionWrapper()
     class_<PyDbOrdinateDimension, bases<PyDbDimension>>("OrdinateDimension")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<Adesk::Boolean, const AcGePoint3d&, const AcGePoint3d&>())
+        .def(init<Adesk::Boolean, const AcGePoint3d&, const AcGePoint3d&, const std::string&>())
+        .def(init<Adesk::Boolean, const AcGePoint3d&, const AcGePoint3d&, const std::string&, const PyDbObjectId&>())
+        .def("isUsingXAxis", &PyDbOrdinateDimension::isUsingXAxis)
+        .def("isUsingYAxis", &PyDbOrdinateDimension::isUsingYAxis)
+        .def("useXAxis", &PyDbOrdinateDimension::useXAxis)
+        .def("useYAxis", &PyDbOrdinateDimension::useYAxis)
+        .def("setUsingXAxis", &PyDbOrdinateDimension::setUsingXAxis)
+        .def("setUsingYAxis", &PyDbOrdinateDimension::setUsingYAxis)
+        .def("origin", &PyDbOrdinateDimension::origin)
+        .def("setOrigin", &PyDbOrdinateDimension::setOrigin)
+        .def("definingPoint", &PyDbOrdinateDimension::definingPoint)
+        .def("setDefiningPoint", &PyDbOrdinateDimension::setDefiningPoint)
+        .def("leaderEndPoint", &PyDbOrdinateDimension::leaderEndPoint)
+        .def("setLeaderEndPoint", &PyDbOrdinateDimension::setLeaderEndPoint)
         .def("className", &PyDbOrdinateDimension::className).staticmethod("className")
         ;
 }
@@ -1804,6 +1819,89 @@ PyDbOrdinateDimension::PyDbOrdinateDimension(const PyDbObjectId& id, AcDb::OpenM
     if (auto es = acdbOpenObject<AcDbOrdinateDimension>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbOrdinateDimension::PyDbOrdinateDimension(Adesk::Boolean useXAxis, const AcGePoint3d& definingPoint, const AcGePoint3d& leaderEndPoint)
+    : PyDbDimension(new AcDbOrdinateDimension(useXAxis, definingPoint, leaderEndPoint), true)
+{
+}
+
+PyDbOrdinateDimension::PyDbOrdinateDimension(Adesk::Boolean useXAxis, const AcGePoint3d& definingPoint, const AcGePoint3d& leaderEndPoint, const std::string& dimText)
+    : PyDbDimension(new AcDbOrdinateDimension(useXAxis, definingPoint, leaderEndPoint, utf8_to_wstr(dimText).c_str()), true)
+{
+}
+
+PyDbOrdinateDimension::PyDbOrdinateDimension(Adesk::Boolean useXAxis, const AcGePoint3d& definingPoint, const AcGePoint3d& leaderEndPoint, const std::string& dimText, const PyDbObjectId& styleId)
+    : PyDbDimension(new AcDbOrdinateDimension(useXAxis, definingPoint, leaderEndPoint, utf8_to_wstr(dimText).c_str(), styleId.m_id), true)
+{
+}
+
+Adesk::Boolean PyDbOrdinateDimension::isUsingXAxis() const
+{
+    return impObj()->isUsingXAxis();
+}
+
+Adesk::Boolean PyDbOrdinateDimension::isUsingYAxis() const
+{
+    return impObj()->isUsingYAxis();
+}
+
+Acad::ErrorStatus PyDbOrdinateDimension::useXAxis()
+{
+    return impObj()->useXAxis();
+}
+
+Acad::ErrorStatus PyDbOrdinateDimension::useYAxis()
+{
+    return impObj()->useYAxis();
+}
+
+Acad::ErrorStatus PyDbOrdinateDimension::setUsingXAxis(bool value)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setUsingXAxis(value);
+#endif
+}
+
+Acad::ErrorStatus PyDbOrdinateDimension::setUsingYAxis(bool value)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setUsingYAxis(value);
+#endif
+}
+
+AcGePoint3d PyDbOrdinateDimension::origin() const
+{
+    return impObj()->origin();
+}
+
+Acad::ErrorStatus PyDbOrdinateDimension::setOrigin(const AcGePoint3d& val)
+{
+    return impObj()->setOrigin(val);
+}
+
+AcGePoint3d PyDbOrdinateDimension::definingPoint() const
+{
+    return impObj()->definingPoint();
+}
+
+Acad::ErrorStatus PyDbOrdinateDimension::setDefiningPoint(const AcGePoint3d& val)
+{
+    return impObj()->setDefiningPoint(val);
+}
+
+AcGePoint3d PyDbOrdinateDimension::leaderEndPoint() const
+{
+    return impObj()->leaderEndPoint();
+}
+
+Acad::ErrorStatus PyDbOrdinateDimension::setLeaderEndPoint(const AcGePoint3d& val)
+{
+    return impObj()->setLeaderEndPoint(val);
 }
 
 std::string PyDbOrdinateDimension::className()
