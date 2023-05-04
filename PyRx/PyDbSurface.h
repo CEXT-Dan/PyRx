@@ -2,6 +2,8 @@
 
 #include "PyDbEntity.h"
 
+#ifdef SOLID3D_SUPPORT
+
 class PyDbObjectId;
 class AcDbLoftedSurface;
 class AcDbPlaneSurface;
@@ -109,8 +111,8 @@ public:
 #endif
 
 //----------------------------------------------------------------------
-//AcDbPlaneSurface  
-void makePyDbRevolvedSurfaceWrapper();
+//AcDbSweptSurface  
+void makePyDbSweptSurfaceWrapper();
 
 #if defined(GRXAPP) || defined(ZRXAPP)
 #else
@@ -125,3 +127,6 @@ public:
     AcDbSweptSurface* impObj() const;
 };
 #endif
+
+
+#endif //SOLID3D_SUPPORT

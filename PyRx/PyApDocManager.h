@@ -46,8 +46,6 @@ public:
     Acad::ErrorStatus appContextOpenDocument(const std::string& pszDrawingName);
     Acad::ErrorStatus appContextRecoverDocument(const std::string& pszDrawingName);
 
-    Acad::ErrorStatus appContextOpenPackage(const std::string& pszPackageName);
-
     Acad::ErrorStatus appContextPromptNewDocument();
     Acad::ErrorStatus appContextPromptOpenDocument();
     Acad::ErrorStatus appContextCloseDocument(PyApDocument& pDoc);

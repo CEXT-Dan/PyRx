@@ -1,6 +1,8 @@
 #pragma once
 #include "PyDbEntity.h"
 
+#ifdef SOLID3D_SUPPORT
+
 class PyDbObjectId;
 //-----------------------------------------------------------------------------------
 //PyDb3dSolid
@@ -54,3 +56,4 @@ public:
     AcDbBody* impObj() const;
 };
 
+#endif //SOLID3D_SUPPORT

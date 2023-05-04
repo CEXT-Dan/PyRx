@@ -137,6 +137,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbDatabaseWrapper();
     makeAcDbHostApplicationServicesWrapper();
 
+#ifdef SOLID3D_SUPPORT
     makePyDb3dSolidWrapper();
     makePyDbRegionWrapper();
 
@@ -146,7 +147,8 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbNurbSurfaceWrapper();
     makePyDbPlaneSurfaceWrapper();
     makePyDbRevolvedSurfaceWrapper();
-    makePyDbRevolvedSurfaceWrapper();
+    makePyDbSweptSurfaceWrapper();
+#endif //SOLID3D_SUPPORT
 
     makePyDbDimensionWrapper();
     makePyDb2LineAngularDimensionWrapper();

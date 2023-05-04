@@ -136,7 +136,7 @@ std::string PyApDocument::className()
 
 AcApDocument* PyApDocument::impObj() const
 {
-    if (m_pImp != nullptr)
+    if (m_pImp == nullptr)
         throw PyNullObject();
     return static_cast<AcApDocument*>(m_pImp.get());
 }

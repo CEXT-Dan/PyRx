@@ -29,7 +29,6 @@ void makeAcApDocManagerWrapper()
         .def("appContextNewDocument", &PyApDocManager::appContextNewDocument)
         .def("appContextOpenDocument", &PyApDocManager::appContextOpenDocument)
         .def("appContextRecoverDocument", &PyApDocManager::appContextRecoverDocument)
-        .def("appContextOpenPackage", &PyApDocManager::appContextOpenPackage)
         .def("appContextPromptOpenDocument", &PyApDocManager::appContextPromptOpenDocument)
         .def("appContextCloseDocument", &PyApDocManager::appContextCloseDocument)
         .def("newDocument", &PyApDocManager::newDocument)
@@ -167,15 +166,6 @@ Acad::ErrorStatus PyApDocManager::appContextRecoverDocument(const std::string& p
 #endif
 }
 
-Acad::ErrorStatus PyApDocManager::appContextOpenPackage(const std::string& pszPackageName)
-{
-#ifndef ARXAPP
-    throw PyNotimplementedByHost();
-#else
-    return impObj()->appContextOpenPackage(utf8_to_wstr(pszPackageName).c_str());
-#endif
-}
-
 Acad::ErrorStatus PyApDocManager::appContextPromptNewDocument()
 {
     return impObj()->appContextPromptNewDocument();
@@ -253,7 +243,7 @@ std::string PyApDocManager::className()
 
 AcApDocManager* PyApDocManager::impObj() const
 {
-    if (m_pImp != nullptr)
+    if (m_pImp == nullptr)
         throw PyNullObject();
     return static_cast<AcApDocManager*>(m_pImp.get());
 }

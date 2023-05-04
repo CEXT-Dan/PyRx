@@ -2,6 +2,8 @@
 #include "PyDb3dSolid.h"
 #include "PyDbObjectId.h"
 
+#ifdef SOLID3D_SUPPORT
+
 using namespace boost::python;
 
 void makePyDb3dSolidWrapper()
@@ -171,3 +173,6 @@ AcDbBody* PyDbBody::impObj() const
         throw PyNullObject();
     return static_cast<AcDbBody*>(m_pImp.get());
 }
+
+
+#endif// SOLID3D_SUPPORT

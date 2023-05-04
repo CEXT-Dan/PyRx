@@ -1,4 +1,4 @@
-Python wrappers for AutoCAD, BricsCAD, ZWCAD and GStarCAD
+Python wrappers for AutoCAD 2022, BricsCADv23, ZWCAD23 and GStarCAD23
 uses wxPython for the GUI
 
 read READMEHELP.txt for installation help 
