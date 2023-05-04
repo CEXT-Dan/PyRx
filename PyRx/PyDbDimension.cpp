@@ -2234,6 +2234,23 @@ void makeRotatedDimensionWrapper()
     class_<PyDbRotatedDimension, bases<PyDbDimension>>("RotatedDimension")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<double, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
+        .def(init<double, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&>())
+        .def(init<double, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&, const PyDbObjectId&>())
+        .def("xLine1Point", &PyDbRotatedDimension::xLine1Point)
+        .def("setXLine1Point", &PyDbRotatedDimension::setXLine1Point)
+        .def("xLine2Point", &PyDbRotatedDimension::xLine2Point)
+        .def("setXLine2Point", &PyDbRotatedDimension::setXLine2Point)
+        .def("dimLinePoint", &PyDbRotatedDimension::dimLinePoint)
+        .def("setDimLinePoint", &PyDbRotatedDimension::setDimLinePoint)
+        .def("oblique", &PyDbRotatedDimension::oblique)
+        .def("setOblique", &PyDbRotatedDimension::setOblique)
+        .def("rotation", &PyDbRotatedDimension::rotation)
+        .def("setRotation", &PyDbRotatedDimension::setRotation)
+        .def("jogSymbolOn", &PyDbRotatedDimension::jogSymbolOn)
+        .def("setJogSymbolOn", &PyDbRotatedDimension::setJogSymbolOn)
+        .def("jogSymbolPosition", &PyDbRotatedDimension::jogSymbolPosition)
+        .def("setJogSymbolPosition", &PyDbRotatedDimension::setJogSymbolPosition)
         .def("className", &PyDbRotatedDimension::className).staticmethod("className")
         ;
 }
@@ -2255,6 +2272,107 @@ PyDbRotatedDimension::PyDbRotatedDimension(const PyDbObjectId& id, AcDb::OpenMod
     if (auto es = acdbOpenObject<AcDbRotatedDimension>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbRotatedDimension::PyDbRotatedDimension(double rotation, const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& dimLinePoint)
+    : PyDbDimension(new AcDbRotatedDimension(rotation, xLine1Point, xLine2Point, dimLinePoint), true)
+{
+}
+
+PyDbRotatedDimension::PyDbRotatedDimension(double rotation, const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& dimLinePoint, const std::string& dimText)
+    : PyDbDimension(new AcDbRotatedDimension(rotation, xLine1Point, xLine2Point, dimLinePoint, utf8_to_wstr(dimText).c_str()), true)
+{
+}
+
+PyDbRotatedDimension::PyDbRotatedDimension(double rotation, const AcGePoint3d& xLine1Point, const AcGePoint3d& xLine2Point, const AcGePoint3d& dimLinePoint, const std::string& dimText, const PyDbObjectId& styleId)
+    : PyDbDimension(new AcDbRotatedDimension(rotation, xLine1Point, xLine2Point, dimLinePoint, utf8_to_wstr(dimText).c_str(), styleId.m_id), true)
+{
+}
+
+AcGePoint3d PyDbRotatedDimension::xLine1Point() const
+{
+    return impObj()->xLine1Point();
+}
+
+Acad::ErrorStatus PyDbRotatedDimension::setXLine1Point(const AcGePoint3d& val)
+{
+    return impObj()->setXLine1Point(val);
+}
+
+AcGePoint3d PyDbRotatedDimension::xLine2Point() const
+{
+    return impObj()->xLine2Point();
+}
+
+Acad::ErrorStatus PyDbRotatedDimension::setXLine2Point(const AcGePoint3d& val)
+{
+    return impObj()->setXLine2Point(val);
+}
+
+AcGePoint3d PyDbRotatedDimension::dimLinePoint() const
+{
+    return impObj()->dimLinePoint();
+}
+
+Acad::ErrorStatus PyDbRotatedDimension::setDimLinePoint(const AcGePoint3d& val)
+{
+    return impObj()->setDimLinePoint(val);
+}
+
+double PyDbRotatedDimension::oblique() const
+{
+    return impObj()->oblique();
+}
+
+Acad::ErrorStatus PyDbRotatedDimension::setOblique(double val)
+{
+    return impObj()->setOblique(val);
+}
+
+double PyDbRotatedDimension::rotation() const
+{
+    return impObj()->rotation();
+}
+
+Acad::ErrorStatus PyDbRotatedDimension::setRotation(double val)
+{
+    return impObj()->setRotation(val);
+}
+
+bool PyDbRotatedDimension::jogSymbolOn() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->jogSymbolOn();
+#endif
+}
+
+Acad::ErrorStatus PyDbRotatedDimension::setJogSymbolOn(bool val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setJogSymbolOn(val);
+#endif
+}
+
+AcGePoint3d PyDbRotatedDimension::jogSymbolPosition() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->jogSymbolPosition();
+#endif
+}
+
+Acad::ErrorStatus PyDbRotatedDimension::setJogSymbolPosition(const AcGePoint3d& val)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setJogSymbolPosition(val);
+#endif
 }
 
 std::string PyDbRotatedDimension::className()
