@@ -2226,7 +2226,6 @@ AcDbRadialDimensionLarge* PyDbRadialDimensionLarge::impObj() const
     return static_cast<AcDbRadialDimensionLarge*>(m_pImp.get());
 }
 
-
 //-----------------------------------------------------------------------------------
 //AcDbRotatedDimension
 void makeRotatedDimensionWrapper()

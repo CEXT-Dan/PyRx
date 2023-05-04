@@ -1,8 +1,37 @@
 #pragma once
 #include <exception>
 
+static std::string appHostName()
+{
+#ifdef ARXAPP
+    return  "ARX";
+#endif
+#ifdef BRXAPP
+    return  "BRX";
+#endif
+#ifdef GRXAPP
+    return  "GRX";
+#endif
+#ifdef ZRXAPP
+    return  "GRX";
+#endif
+}
+
 struct PyNotThatKindOfClass
 {
+    std::source_location m_src;
+
+    PyNotThatKindOfClass(const std::source_location& src = std::source_location::current())
+        :m_src(src)
+    {
+    }
+
+    inline std::string format() const
+    {
+        const std::filesystem::path file = m_src.file_name();
+        return std::format("\nNot that kind of class! in function {} {}: ", m_src.function_name(), file.filename().string());
+    }
+
     static void translator(PyNotThatKindOfClass const& x)
     {
         PyErr_SetString(PyExc_RuntimeError, "\nNot that kind of class!");
@@ -11,17 +40,43 @@ struct PyNotThatKindOfClass
 
 struct PyNullObject
 {
+    std::source_location m_src;
+
+    PyNullObject(const std::source_location& src = std::source_location::current())
+        :m_src(src)
+    {
+    }
+
+    inline std::string format() const
+    {
+        const std::filesystem::path file = m_src.file_name();
+        return std::format("\nException,Object is NULL, in function {} {}: ", m_src.function_name(), file.filename().string());
+    }
+
     static void translator(PyNullObject const& x)
     {
-        PyErr_SetString(PyExc_RuntimeError, "\nObject is null!");
+        PyErr_SetString(PyExc_RuntimeError, x.format().c_str());
     }
 };
 
 struct PyEditorError
 {
+    std::source_location m_src;
+
+    PyEditorError(const std::source_location& src = std::source_location::current())
+        :m_src(src)
+    {
+    }
+
+    inline std::string format() const
+    {
+        const std::filesystem::path file = m_src.file_name();
+        return std::format("\nEditor error! function {} {}: ", m_src.function_name(), file.filename().string());
+    }
+
     static void translator(PyEditorError const& x)
     {
-        PyErr_SetString(PyExc_RuntimeError, "\nEditor error!");
+        PyErr_SetString(PyExc_RuntimeError, x.format().c_str());
     }
 };
 
@@ -29,30 +84,41 @@ struct PyEditorError
 struct PyAcadErrorStatus
 {
     Acad::ErrorStatus m_es;
-    explicit PyAcadErrorStatus(Acad::ErrorStatus es)
-        : m_es(es){}
+    std::source_location m_src;
+
+    explicit PyAcadErrorStatus(Acad::ErrorStatus es, const std::source_location& src = std::source_location::current())
+        : m_es(es), m_src(src) {}
+
+    inline std::string format() const
+    {
+        const std::filesystem::path file = m_src.file_name();
+        return std::format("\nException,{}, in function {} {}: ", wstr_to_utf8(acadErrorStatusText(m_es)), m_src.function_name(), file.filename().string());
+    }
+
     inline static void translator(PyAcadErrorStatus const& x)
     {
-        PyErr_SetString(PyExc_RuntimeError, wstr_to_utf8(acadErrorStatusText(x.m_es)).c_str());
+        PyErr_SetString(PyExc_RuntimeError, x.format().c_str());
     }
 };
 
 struct PyNotimplementedByHost
 {
-    static void translator(PyNotimplementedByHost const& x)
+    std::source_location m_src;
+
+    PyNotimplementedByHost(const std::source_location& src = std::source_location::current())
+        :m_src(src)
     {
-#ifdef ARXAPP
-        PyErr_SetString(PyExc_RuntimeError, "\nException, Not implemented in ARX");
-#endif
-#ifdef BRXAPP
-        PyErr_SetString(PyExc_RuntimeError, "\nException, Not implemented in BRX");
-#endif
-#ifdef GRXAPP
-        PyErr_SetString(PyExc_RuntimeError, "\nException, Not implemented in GRX");
-#endif
-#ifdef ZRXAPP
-        PyErr_SetString(PyExc_RuntimeError, "\nException, Not implemented in ZRX");
-#endif
+    }
+
+    inline std::string format() const
+    {
+        const std::filesystem::path file = m_src.file_name();
+        return std::format("\nException, Not implemented in {}, in function {} {}: ", appHostName(), m_src.function_name(), file.filename().string());
+    }
+
+    inline static void translator(PyNotimplementedByHost const& x)
+    {
+        PyErr_SetString(PyExc_RuntimeError, x.format().c_str());
     }
 };
 

@@ -615,7 +615,6 @@ public:
     AcDbRadialDimensionLarge* impObj() const;
 };
 
-
 //-----------------------------------------------------------------------------------
 //AcDbRotatedDimension
 void makeRotatedDimensionWrapper();
