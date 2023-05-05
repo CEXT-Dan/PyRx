@@ -2,6 +2,7 @@
 #include "PyDbSymbolTable.h"
 #include "PyDbObjectId.h"
 #include "PyDbSymbolTableRecord.h"
+#include "PyDbBlockTableRecord.h"
 
 using namespace boost::python;
 
@@ -161,4 +162,76 @@ AcDbDimStyleTable* PyDbDimStyleTable::impObj() const
     if (m_pImp == nullptr)
         throw PyNullObject();
     return static_cast<AcDbDimStyleTable*>(m_pImp.get());
+}
+
+
+//---------------------------------------------------------------------------------------- -
+//PyDbBlockTable
+void makePyDbBlockTableWrapper()
+{
+    class_<PyDbBlockTable, bases<PyDbSymbolTable>>("BlockTable", boost::python::no_init)
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("getAt", &PyDbBlockTable::getAt)
+        .def("add", &PyDbBlockTable::add)
+        .def("recordIds", &PyDbBlockTable::recordIds)
+        .def("className", &PyDbBlockTable::className).staticmethod("className")
+        ;
+}
+
+PyDbBlockTable::PyDbBlockTable(AcDbBlockTable* ptr, bool autoDelete)
+    : PyDbSymbolTable(ptr, autoDelete)
+{
+}
+
+PyDbBlockTable::PyDbBlockTable(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbSymbolTable(nullptr, false)
+{
+    AcDbBlockTable* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbBlockTable>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    this->resetImp(pobj, false, true);
+}
+
+PyDbObjectId PyDbBlockTable::getAt(const std::string& entryName)
+{
+    AcDbObjectId id;
+    if (auto es = impObj()->getAt(utf8_to_wstr(entryName).c_str(), id); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return PyDbObjectId(id);
+}
+
+PyDbObjectId PyDbBlockTable::add(const PyDbBlockTableRecord& entry)
+{
+    AcDbObjectId id;
+    if (auto es = impObj()->add(id, entry.impObj()); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return PyDbObjectId(id);
+}
+
+boost::python::list PyDbBlockTable::recordIds()
+{
+    AcDbBlockTableIterator* pIter = nullptr;
+    if (impObj()->newIterator(pIter) != eOk)
+        throw PyNullObject();
+
+    boost::python::list _items;
+    for (std::unique_ptr<AcDbBlockTableIterator> iter(pIter); !iter->done(); iter->step())
+    {
+        AcDbObjectId id;
+        if (iter->getRecordId(id) == eOk)
+            _items.append(PyDbObjectId(id));
+    }
+    return _items;
+}
+
+std::string PyDbBlockTable::className()
+{
+    return "AcDbBlockTable";
+}
+
+AcDbBlockTable* PyDbBlockTable::impObj() const
+{
+    if (m_pImp == nullptr)
+        throw PyNullObject();
+    return static_cast<AcDbBlockTable*>(m_pImp.get());
 }
