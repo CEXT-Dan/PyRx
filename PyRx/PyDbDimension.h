@@ -237,7 +237,6 @@ public:
     AcDb2LineAngularDimension* impObj() const;
 };
 
-
 //-----------------------------------------------------------------------------------
 //AcDb3PointAngularDimension
 void makeAcDb3PointAngularDimensionWrapper();
@@ -501,7 +500,6 @@ public:
 public:
     AcDbOrdinateDimension* impObj() const;
 };
-
 
 //-----------------------------------------------------------------------------------
 //AcDbRadialDimension

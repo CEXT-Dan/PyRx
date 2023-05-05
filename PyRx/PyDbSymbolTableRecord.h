@@ -23,3 +23,17 @@ public:
     AcDbSymbolTableRecord* impObj() const;
 };
 
+//---------------------------------------------------------------------------------------- -
+// PyDbDimStyleTableRecord 
+void makeAcDbDimStyleTableRecordWrapper();
+class PyDbDimStyleTableRecord : public PyDbSymbolTableRecord
+{
+public:
+    PyDbDimStyleTableRecord();
+    PyDbDimStyleTableRecord(AcDbDimStyleTableRecord* ptr, bool autoDelete);
+    PyDbDimStyleTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode);
+
+    static std::string className();
+public:
+    AcDbDimStyleTableRecord* impObj() const;
+};

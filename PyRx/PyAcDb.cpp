@@ -131,6 +131,8 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbDictionaryWrapper();
     makeAcDbSymbolTableWrapper();
     makeAcDbSymbolTableRecordWrapper();
+    makePyDbDimStyleTableWrapper();
+    makeAcDbDimStyleTableRecordWrapper();
     makeAcDbBlockTableRecordWrapper();
     makeAcDbLayerTableRecordWrapper();
     makeTextStyleTableRecordWrapper();

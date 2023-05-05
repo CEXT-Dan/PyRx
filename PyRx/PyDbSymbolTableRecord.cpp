@@ -7,14 +7,14 @@ using namespace boost::python;
 // PyDbSymbolTableRecord  wrapper
 void makeAcDbSymbolTableRecordWrapper()
 {
-    static auto wrapper = class_<PyDbSymbolTableRecord, bases<PyDbObject>>("SymbolTableRecord", boost::python::no_init)
+    class_<PyDbSymbolTableRecord, bases<PyDbObject>>("SymbolTableRecord", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbSymbolTableRecord::className).staticmethod("className")
         .def("getName", &PyDbSymbolTableRecord::getName)
         .def("setName", &PyDbSymbolTableRecord::setName)
         .def("isDependent", &PyDbSymbolTableRecord::isDependent)
         .def("isResolved", &PyDbSymbolTableRecord::isResolved)
-        .def("isResolved", &PyDbSymbolTableRecord::isResolved)
+        .def("isRenamable", &PyDbSymbolTableRecord::isRenamable)
         ;
 }
 
@@ -90,4 +90,46 @@ std::string PyDbSymbolTableRecord::className()
 AcDbSymbolTableRecord* PyDbSymbolTableRecord::impObj() const
 {
     return static_cast<AcDbSymbolTableRecord*>(m_pImp.get());
+}
+
+//---------------------------------------------------------------------------------------- -
+// PyDbDimStyleTableRecord 
+void makeAcDbDimStyleTableRecordWrapper()
+{
+    class_<PyDbDimStyleTableRecord, bases<PyDbSymbolTableRecord>>("DimStyleTableRecord")
+        .def(init<>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("className", &PyDbDimStyleTableRecord::className).staticmethod("className")
+        ;
+}
+
+PyDbDimStyleTableRecord::PyDbDimStyleTableRecord()
+    : PyDbSymbolTableRecord(new AcDbDimStyleTableRecord(),true)
+{
+}
+
+PyDbDimStyleTableRecord::PyDbDimStyleTableRecord(AcDbDimStyleTableRecord* ptr, bool autoDelete)
+    : PyDbSymbolTableRecord(ptr, autoDelete)
+{
+}
+
+PyDbDimStyleTableRecord::PyDbDimStyleTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbSymbolTableRecord(nullptr, false)
+{
+    AcDbDimStyleTableRecord* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbDimStyleTableRecord>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    this->resetImp(pobj, false, true);
+}
+
+std::string PyDbDimStyleTableRecord::className()
+{
+    return "AcDbDimStyleTableRecord";
+}
+
+AcDbDimStyleTableRecord* PyDbDimStyleTableRecord::impObj() const
+{
+    if (m_pImp == nullptr)
+        throw PyNullObject();
+    return static_cast<AcDbDimStyleTableRecord*>(m_pImp.get());
 }
