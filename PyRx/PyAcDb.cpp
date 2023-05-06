@@ -117,7 +117,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDb2dVertexWrapper();
     makePyAcDb3dPolylineVertexWrapper();
     makePyAcDbPolygonMeshVertexWrapper();
-    makePyAcDbPolygonMeshVertexWrapper();
+    makePyDbPolyFaceMeshVertexWrapper();
     makePyAcDbFaceRecordWrapper();
     makePyDbCurveWrapper();
     makePyDbPointWrapper();
