@@ -12,7 +12,7 @@ public:
     AcGePoint2d     point2d() const;
     static std::string className();
 public:
-    AcGePointEnt2d* impObj() const;
+    AcGePointEnt2d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -54,7 +54,7 @@ public:
 
     static std::string className();
 public:
-    AcGePointOnCurve2d* impObj() const;
+    AcGePointOnCurve2d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -77,7 +77,7 @@ public:
 
     static std::string className();
 public:
-    AcGePosition2d* impObj() const;
+    AcGePosition2d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 

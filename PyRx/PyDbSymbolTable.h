@@ -30,7 +30,7 @@ public:
 
     static std::string className();
 public:
-    AcDbSymbolTable* impObj() const;
+    AcDbSymbolTable* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
@@ -49,7 +49,7 @@ public:
     boost::python::list recordIds();
     static std::string className();
 public:
-    AcDbDimStyleTable* impObj() const;
+    AcDbDimStyleTable* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //---------------------------------------------------------------------------------------- -
@@ -67,5 +67,5 @@ public:
     boost::python::list recordIds();
     static std::string className();
 public:
-    AcDbBlockTable* impObj() const;
+    AcDbBlockTable* impObj(const std::source_location& src = std::source_location::current()) const;
 };

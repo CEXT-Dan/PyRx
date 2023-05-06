@@ -97,404 +97,269 @@ PyGeCurve3d::PyGeCurve3d(AcGeEntity3d* pEnt)
 
 PyGeInterval PyGeCurve3d::getInterval() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGeInterval iv;
-    imp->getInterval(iv);
+    impObj()->getInterval(iv);
     return PyGeInterval(iv);
 }
 
 AcGePoint3d PyGeCurve3d::getStartPoint() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGeInterval iv;
     AcGePoint3d s, e;
-    imp->getInterval(iv, s, e);
+    impObj()->getInterval(iv, s, e);
     return s;
 }
 
 AcGePoint3d PyGeCurve3d::getEndPoint() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGeInterval iv;
     AcGePoint3d s, e;
-    imp->getInterval(iv, s, e);
+    impObj()->getInterval(iv, s, e);
     return e;
 }
 
 PyGeCurve3d& PyGeCurve3d::reverseParam()
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->reverseParam();
+    impObj()->reverseParam();
     return *this;
 }
 
 PyGeCurve3d& PyGeCurve3d::setInterval1()
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->setInterval();
+    impObj()->setInterval();
     return *this;
 }
 
 bool PyGeCurve3d::setInterval2(const PyGeInterval& intrvl)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setInterval(intrvl.imp);
+    return impObj()->setInterval(intrvl.imp);
 }
 
 double PyGeCurve3d::distanceTo1(const AcGePoint3d& pnt) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->distanceTo(pnt);
+    return impObj()->distanceTo(pnt);
 }
 
 double PyGeCurve3d::distanceTo2(const AcGePoint3d& pnt, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->distanceTo(pnt, tol);
+    return impObj()->distanceTo(pnt, tol);
 }
 
 double PyGeCurve3d::distanceTo3(const PyGeCurve3d& c) const
 {
-    auto imp = impObj();
-    if (imp == nullptr || c.isNull())
-        throw PyNullObject();
-    return imp->distanceTo(*c.impObj());
+    return impObj()->distanceTo(*c.impObj());
 }
 
 double PyGeCurve3d::distanceTo4(const PyGeCurve3d& c, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr || c.isNull())
-        throw PyNullObject();
-    return imp->distanceTo(*c.impObj(), tol);
+    return impObj()->distanceTo(*c.impObj(), tol);
 }
 
 AcGePoint3d PyGeCurve3d::closestPointTo1(const AcGePoint3d& pnt) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->closestPointTo(pnt);
+    return impObj()->closestPointTo(pnt);
 }
 
 AcGePoint3d PyGeCurve3d::closestPointTo2(const AcGePoint3d& pnt, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->closestPointTo(pnt, tol);
+    return impObj()->closestPointTo(pnt, tol);
 }
 
 boost::python::tuple PyGeCurve3d::closestPointTo3(const PyGeCurve3d& curve2d) const
 {
-    auto imp = impObj();
-    if (imp == nullptr || curve2d.isNull())
-        throw PyNullObject();
     AcGePoint3d pntOnOtherCrv;
-    auto pnt = imp->closestPointTo(*curve2d.impObj(), pntOnOtherCrv);
+    auto pnt = impObj()->closestPointTo(*curve2d.impObj(), pntOnOtherCrv);
     return make_tuple(pnt, pntOnOtherCrv);
 }
 
 boost::python::tuple PyGeCurve3d::closestPointTo4(const PyGeCurve3d& curve2d, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr || curve2d.isNull())
-        throw PyNullObject();
     AcGePoint3d pntOnOtherCrv;
-    auto pnt = imp->closestPointTo(*curve2d.impObj(), pntOnOtherCrv, tol);
+    auto pnt = impObj()->closestPointTo(*curve2d.impObj(), pntOnOtherCrv, tol);
     return make_tuple(pnt, pntOnOtherCrv);
 }
 
 PyGePointOnCurve3d PyGeCurve3d::getClosestPointTo1(const AcGePoint3d& pnt)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePointOnCurve3d curve;
-    imp->getClosestPointTo(pnt, curve);
+    impObj()->getClosestPointTo(pnt, curve);
     return PyGePointOnCurve3d(curve);
 }
 
 PyGePointOnCurve3d PyGeCurve3d::getClosestPointTo2(const AcGePoint3d& pnt, const AcGeTol& tol)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePointOnCurve3d curve;
-    imp->getClosestPointTo(pnt, curve, tol);
+    impObj()->getClosestPointTo(pnt, curve, tol);
     return PyGePointOnCurve3d(curve);
 }
 
 boost::python::tuple PyGeCurve3d::getClosestPointsTo1(const PyGeCurve3d& curve)
 {
-    auto imp = impObj();
-    if (imp == nullptr && curve.isNull())
-        throw PyNullObject();
     AcGePointOnCurve3d curvea, curveb;
-    imp->getClosestPointTo(*curve.impObj(), curvea, curveb);
+    impObj()->getClosestPointTo(*curve.impObj(), curvea, curveb);
     return make_tuple(PyGePointOnCurve3d(curvea), PyGePointOnCurve3d(curveb));
 }
 
 boost::python::tuple PyGeCurve3d::getClosestPointsTo2(const PyGeCurve3d& curve, const AcGeTol& tol)
 {
-    auto imp = impObj();
-    if (imp == nullptr && curve.isNull())
-        throw PyNullObject();
     AcGePointOnCurve3d curvea, curveb;
-    imp->getClosestPointTo(*curve.impObj(), curvea, curveb, tol);
+    impObj()->getClosestPointTo(*curve.impObj(), curvea, curveb, tol);
     return make_tuple(PyGePointOnCurve3d(curvea), PyGePointOnCurve3d(curveb));
 }
 
 AcGePoint3d PyGeCurve3d::projClosestPointTo1(const AcGePoint3d& pnt, const AcGeVector3d& projectDirection) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->projClosestPointTo(pnt, projectDirection);
+    return impObj()->projClosestPointTo(pnt, projectDirection);
 }
 
 AcGePoint3d PyGeCurve3d::projClosestPointTo2(const AcGePoint3d& pnt, const AcGeVector3d& projectDirection, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->projClosestPointTo(pnt, projectDirection, tol);
+    return impObj()->projClosestPointTo(pnt, projectDirection, tol);
 }
 
 boost::python::tuple PyGeCurve3d::projClosestPointsTo1(const PyGeCurve3d& curve3d, const AcGeVector3d& projectDirection) const
 {
-    auto imp = impObj();
-    if (imp == nullptr || curve3d.isNull())
-        throw PyNullObject();
     AcGePoint3d pntOnOtherCrv;
-    auto pnt = imp->projClosestPointTo(*curve3d.impObj(), projectDirection, pntOnOtherCrv);
+    auto pnt = impObj()->projClosestPointTo(*curve3d.impObj(), projectDirection, pntOnOtherCrv);
     return make_tuple(pnt, pntOnOtherCrv);
 }
 
 boost::python::tuple PyGeCurve3d::projClosestPointsTo2(const PyGeCurve3d& curve3d, const AcGeVector3d& projectDirection, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr || curve3d.isNull())
-        throw PyNullObject();
     AcGePoint3d pntOnOtherCrv;
-    auto pnt = imp->projClosestPointTo(*curve3d.impObj(), projectDirection, pntOnOtherCrv, tol);
+    auto pnt = impObj()->projClosestPointTo(*curve3d.impObj(), projectDirection, pntOnOtherCrv, tol);
     return make_tuple(pnt, pntOnOtherCrv);
 }
 
 PyGePointOnCurve3d PyGeCurve3d::getProjClosestPointTo1(const AcGePoint3d& pnt, const AcGeVector3d& projectDirection) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePointOnCurve3d curve;
-    imp->getProjClosestPointTo(pnt, projectDirection, curve);
+    impObj()->getProjClosestPointTo(pnt, projectDirection, curve);
     return PyGePointOnCurve3d(curve);
 }
 
 PyGePointOnCurve3d PyGeCurve3d::getProjClosestPointTo2(const AcGePoint3d& pnt, const AcGeVector3d& projectDirection, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePointOnCurve3d curve;
-    imp->getProjClosestPointTo(pnt, projectDirection, curve, tol);
+    impObj()->getProjClosestPointTo(pnt, projectDirection, curve, tol);
     return PyGePointOnCurve3d(curve);
 }
 
 boost::python::tuple PyGeCurve3d::getProjClosestPointsTo1(const PyGeCurve3d& curve3d, const AcGeVector3d& projectDirection) const
 {
-    auto imp = impObj();
-    if (imp == nullptr && curve3d.isNull())
-        throw PyNullObject();
     AcGePointOnCurve3d curvea, curveb;
-    imp->getProjClosestPointTo(*curve3d.impObj(), projectDirection, curvea, curveb);
+    impObj()->getProjClosestPointTo(*curve3d.impObj(), projectDirection, curvea, curveb);
     return make_tuple(PyGePointOnCurve3d(curvea), PyGePointOnCurve3d(curveb));
 }
 
 boost::python::tuple PyGeCurve3d::getProjClosestPointsTo2(const PyGeCurve3d& curve3d, const AcGeVector3d& projectDirection, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr && curve3d.isNull())
-        throw PyNullObject();
     AcGePointOnCurve3d curvea, curveb;
-    imp->getProjClosestPointTo(*curve3d.impObj(), projectDirection, curvea, curveb);
+    impObj()->getProjClosestPointTo(*curve3d.impObj(), projectDirection, curvea, curveb);
     return make_tuple(PyGePointOnCurve3d(curvea), PyGePointOnCurve3d(curveb), tol);
 }
 
 PyGePointOnCurve3d PyGeCurve3d::getNormalPoint1(const AcGePoint3d& pnt)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePointOnCurve3d curve;
-    if (auto flag = imp->getNormalPoint(pnt, curve); flag == false)
+    if (auto flag = impObj()->getNormalPoint(pnt, curve); flag == false)
         throw PyAcadErrorStatus(eInvalidInput);
     return PyGePointOnCurve3d(curve);
 }
 
 PyGePointOnCurve3d PyGeCurve3d::getNormalPoint2(const AcGePoint3d& pnt, const AcGeTol& tol)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePointOnCurve3d curve;
-    if (auto flag = imp->getNormalPoint(pnt, curve, tol); flag == false)
+    if (auto flag = impObj()->getNormalPoint(pnt, curve, tol); flag == false)
         throw PyAcadErrorStatus(eInvalidInput);
     return PyGePointOnCurve3d(curve);
 }
 
 PyGeBoundBlock3d PyGeCurve3d::boundBlock1() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return PyGeBoundBlock3d(imp->boundBlock().copy());
+    return PyGeBoundBlock3d(impObj()->boundBlock().copy());
 }
 
 PyGeBoundBlock3d PyGeCurve3d::boundBlock2(const PyGeInterval& range) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return PyGeBoundBlock3d(imp->boundBlock(range.imp).copy());
+    return PyGeBoundBlock3d(impObj()->boundBlock(range.imp).copy());
 }
 
 PyGeBoundBlock3d PyGeCurve3d::orthoBoundBlock1() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return PyGeBoundBlock3d(imp->orthoBoundBlock().copy());
+    return PyGeBoundBlock3d(impObj()->orthoBoundBlock().copy());
 }
 
 PyGeBoundBlock3d PyGeCurve3d::orthoBoundBlock2(const PyGeInterval& range) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return PyGeBoundBlock3d(imp->orthoBoundBlock(range.imp).copy());
+    return PyGeBoundBlock3d(impObj()->orthoBoundBlock(range.imp).copy());
 }
 
 PyGeEntity3d PyGeCurve3d::project1(const PyGePlane& projectionPlane, const AcGeVector3d& projectDirection) const
 {
-    auto imp = impObj();
-    if (imp == nullptr || projectionPlane.isNull())
-        throw PyNullObject();
-    return PyGeEntity3d(imp->project(*projectionPlane.impObj(), projectDirection));
+    return PyGeEntity3d(impObj()->project(*projectionPlane.impObj(), projectDirection));
 }
 
 PyGeEntity3d PyGeCurve3d::project2(const PyGePlane& projectionPlane, const AcGeVector3d& projectDirection, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr || projectionPlane.isNull())
-        throw PyNullObject();
-    return PyGeEntity3d(imp->project(*projectionPlane.impObj(), projectDirection, tol));
+    return PyGeEntity3d(impObj()->project(*projectionPlane.impObj(), projectDirection, tol));
 }
 
 PyGeEntity3d PyGeCurve3d::orthoProject1(const PyGePlane& projectionPlane) const
 {
-    auto imp = impObj();
-    if (imp == nullptr || projectionPlane.isNull())
-        throw PyNullObject();
-    return PyGeEntity3d(imp->orthoProject(*projectionPlane.impObj()));
+    return PyGeEntity3d(impObj()->orthoProject(*projectionPlane.impObj()));
 }
 
 PyGeEntity3d PyGeCurve3d::orthoProject2(const PyGePlane& projectionPlane, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr || projectionPlane.isNull())
-        throw PyNullObject();
-    return PyGeEntity3d(imp->orthoProject(*projectionPlane.impObj(), tol));
+    return PyGeEntity3d(impObj()->orthoProject(*projectionPlane.impObj(), tol));
 }
 
 bool PyGeCurve3d::isOn1(const AcGePoint3d& pnt) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isOn(pnt);
+    return impObj()->isOn(pnt);
 }
 
 bool PyGeCurve3d::isOn2(const AcGePoint3d& pnt, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isOn(pnt, tol);
+    return impObj()->isOn(pnt, tol);
 }
 
 bool PyGeCurve3d::isOn3(const AcGePoint3d& pnt, double& param) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isOn(pnt, param);
+    return impObj()->isOn(pnt, param);
 }
 
 bool PyGeCurve3d::isOn4(const AcGePoint3d& pnt, double& param, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isOn(pnt, param, tol);
+    return impObj()->isOn(pnt, param, tol);
 }
 
 bool PyGeCurve3d::isOn5(double param) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isOn(param);
+    return impObj()->isOn(param);
 }
 
 bool PyGeCurve3d::isOn6(double param, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isOn(param, tol);
+    return impObj()->isOn(param, tol);
 }
 
 double PyGeCurve3d::paramOf1(const AcGePoint3d& pnt) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->paramOf(pnt);
+    return impObj()->paramOf(pnt);
 }
 
 double PyGeCurve3d::paramOf2(const AcGePoint3d& pnt, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->paramOf(pnt, tol);
+    return impObj()->paramOf(pnt, tol);
 }
 
 boost::python::list PyGeCurve3d::getTrimmedOffset1(double distance, const AcGeVector3d& planeNormal, AcGe::OffsetCrvExtType extensionType) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     boost::python::list curves;
     AcGeVoidPointerArray offsetCurveList;
-    imp->getTrimmedOffset(distance, planeNormal, offsetCurveList, extensionType);
+    impObj()->getTrimmedOffset(distance, planeNormal, offsetCurveList, extensionType);
     for (const auto& item : offsetCurveList)
         curves.append(PyGeCurve3d(reinterpret_cast<AcGeCurve3d*>(item)));
     return curves;
@@ -502,12 +367,9 @@ boost::python::list PyGeCurve3d::getTrimmedOffset1(double distance, const AcGeVe
 
 boost::python::list PyGeCurve3d::getTrimmedOffset2(double distance, const AcGeVector3d& planeNormal, AcGe::OffsetCrvExtType extensionType, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     boost::python::list curves;
     AcGeVoidPointerArray offsetCurveList;
-    imp->getTrimmedOffset(distance, planeNormal, offsetCurveList, extensionType, tol);
+    impObj()->getTrimmedOffset(distance, planeNormal, offsetCurveList, extensionType, tol);
     for (const auto& item : offsetCurveList)
         curves.append(PyGeCurve3d(reinterpret_cast<AcGeCurve3d*>(item)));
     return curves;
@@ -515,184 +377,127 @@ boost::python::list PyGeCurve3d::getTrimmedOffset2(double distance, const AcGeVe
 
 Adesk::Boolean PyGeCurve3d::isClosed1() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isClosed();
+    return impObj()->isClosed();
 }
 
 Adesk::Boolean PyGeCurve3d::isClosed2(const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isClosed(tol);
+    return impObj()->isClosed(tol);
 }
 
 boost::python::tuple PyGeCurve3d::isPlanar1() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePlane plane;
-    bool flag = imp->isPlanar(plane);
+    bool flag = impObj()->isPlanar(plane);
     return make_tuple(flag, PyGePlane(plane));
 }
 
 boost::python::tuple PyGeCurve3d::isPlanar2(const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePlane plane;
-    bool flag = imp->isPlanar(plane, tol);
+    bool flag = impObj()->isPlanar(plane, tol);
     return make_tuple(flag, PyGePlane(plane));
 }
 
 boost::python::tuple PyGeCurve3d::isLinear1() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGeLine3d plane;
-    bool flag = imp->isLinear(plane);
+    bool flag = impObj()->isLinear(plane);
     return make_tuple(flag, PyGeLine3d(plane));
 }
 
 boost::python::tuple PyGeCurve3d::isLinear2(const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGeLine3d plane;
-    bool flag = imp->isLinear(plane, tol);
+    bool flag = impObj()->isLinear(plane, tol);
     return make_tuple(flag, PyGeLine3d(plane));
 }
 
 boost::python::tuple PyGeCurve3d::isCoplanarWith1(const PyGeCurve3d& curve3d) const
 {
-    auto imp = impObj();
-    if (imp == nullptr || curve3d.isNull())
-        throw PyNullObject();
     AcGePlane plane;
-    bool flag = imp->isCoplanarWith(*curve3d.impObj(), plane);
+    bool flag = impObj()->isCoplanarWith(*curve3d.impObj(), plane);
     return make_tuple(flag, PyGePlane(plane));
 }
 
 boost::python::tuple PyGeCurve3d::isCoplanarWith2(const PyGeCurve3d& curve3d, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr || curve3d.isNull())
-        throw PyNullObject();
     AcGePlane plane;
-    bool flag = imp->isCoplanarWith(*curve3d.impObj(), plane, tol);
+    bool flag = impObj()->isCoplanarWith(*curve3d.impObj(), plane, tol);
     return make_tuple(flag, PyGePlane(plane));
 }
 
 boost::python::tuple PyGeCurve3d::isPeriodic() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     double val = 0;
-    bool flag = imp->isPeriodic(val);
+    bool flag = impObj()->isPeriodic(val);
     return boost::python::make_tuple(flag, val);
 }
 
 double PyGeCurve3d::length1(double fromParam, double toParam) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->length(fromParam, fromParam);
+    return impObj()->length(fromParam, fromParam);
 }
 
 double PyGeCurve3d::length2(double fromParam, double toParam, double tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->length(fromParam, fromParam, tol);
+    return impObj()->length(fromParam, fromParam, tol);
 }
 
 double PyGeCurve3d::paramAtLength1(double datumParam, double length) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->paramAtLength(datumParam, length);
+    return impObj()->paramAtLength(datumParam, length);
 }
 
 double PyGeCurve3d::paramAtLength2(double datumParam, double length, Adesk::Boolean posParamDir, double tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->paramAtLength(datumParam, length, posParamDir, tol);
+    return impObj()->paramAtLength(datumParam, length, posParamDir, tol);
 }
 
 double PyGeCurve3d::area1(double startParam, double endParam) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     double length = 0;
-    if (bool flag = imp->area(startParam, endParam, length); flag = false)
+    if (bool flag = impObj()->area(startParam, endParam, length); flag = false)
         throw PyAcadErrorStatus(eInvalidInput);
     return length;
 }
 
 double PyGeCurve3d::area2(double startParam, double endParam, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     double length = 0;
-    if (bool flag = imp->area(startParam, endParam, length, tol); flag = false)
+    if (bool flag = impObj()->area(startParam, endParam, length, tol); flag = false)
         throw PyAcadErrorStatus(eInvalidInput);
     return length;
 }
 
 boost::python::tuple PyGeCurve3d::isDegenerate1() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGeEntity3d* pEnt = nullptr;
-    bool flag = imp->isDegenerate(pEnt);
+    bool flag = impObj()->isDegenerate(pEnt);
     return boost::python::make_tuple(flag, PyGeEntity3d(pEnt));
 }
 
 boost::python::tuple PyGeCurve3d::isDegenerate2(const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGeEntity3d* pEnt = nullptr;
-    bool flag = imp->isDegenerate(pEnt, tol);
+    bool flag = impObj()->isDegenerate(pEnt, tol);
     return boost::python::make_tuple(flag, PyGeEntity3d(pEnt));
 }
 
 boost::python::tuple PyGeCurve3d::getSplitCurves(double param)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGeCurve3d* p1 = nullptr;
     AcGeCurve3d* p2 = nullptr;
-    imp->getSplitCurves(param, p1, p2);
+    impObj()->getSplitCurves(param, p1, p2);
     return make_tuple(PyGeCurve3d(p1), PyGeCurve3d(p2));
 }
 
 boost::python::list PyGeCurve3d::explode1()
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     boost::python::list curves;
     AcGeIntArray newExplodedCurve;
     AcGeVoidPointerArray explodedCurves;
-    imp->explode(explodedCurves, newExplodedCurve);
+    impObj()->explode(explodedCurves, newExplodedCurve);
     for (size_t idx = 0; idx < explodedCurves.length(); idx++)
     {
         AcGeCurve3d* pCurve = reinterpret_cast<AcGeCurve3d*>(explodedCurves[idx]);
@@ -705,13 +510,10 @@ boost::python::list PyGeCurve3d::explode1()
 
 boost::python::list PyGeCurve3d::explode2(const PyGeInterval& interval)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     boost::python::list curves;
     AcGeIntArray newExplodedCurve;
     AcGeVoidPointerArray explodedCurves;
-    imp->explode(explodedCurves, newExplodedCurve, &interval.imp);
+    impObj()->explode(explodedCurves, newExplodedCurve, &interval.imp);
     for (size_t idx = 0; idx < explodedCurves.length(); idx++)
     {
         AcGeCurve3d* pCurve = reinterpret_cast<AcGeCurve3d*>(explodedCurves[idx]);
@@ -724,38 +526,26 @@ boost::python::list PyGeCurve3d::explode2(const PyGeInterval& interval)
 
 bool PyGeCurve3d::hasStartPoint() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePoint3d pnt;
-    return imp->hasStartPoint(pnt);
+    return impObj()->hasStartPoint(pnt);
 }
 
 bool PyGeCurve3d::hasEndPoint() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePoint3d pnt;
-    return imp->hasEndPoint(pnt);
+    return impObj()->hasEndPoint(pnt);
 }
 
 AcGePoint3d PyGeCurve3d::evalPoint1(double param) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->evalPoint(param);
+    return impObj()->evalPoint(param);
 }
 
 boost::python::tuple PyGeCurve3d::evalPoint2(double param, int numDeriv) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     boost::python::list vecs;
     AcGeVector3dArray derivArray;
-    AcGePoint3d pnt = imp->evalPoint(param, numDeriv, derivArray);
+    AcGePoint3d pnt = impObj()->evalPoint(param, numDeriv, derivArray);
     for (const auto& item : derivArray)
         vecs.append(item);
     return boost::python::make_tuple(pnt, vecs);
@@ -763,12 +553,9 @@ boost::python::tuple PyGeCurve3d::evalPoint2(double param, int numDeriv) const
 
 boost::python::list PyGeCurve3d::getSamplePoints1(int numSample) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePoint3dArray pointArray;
     boost::python::list pointList;
-    imp->getSamplePoints(numSample, pointArray);
+    impObj()->getSamplePoints(numSample, pointArray);
     for (const auto& item : pointArray)
         pointList.append(item);
     return pointList;
@@ -776,13 +563,10 @@ boost::python::list PyGeCurve3d::getSamplePoints1(int numSample) const
 
 boost::python::list PyGeCurve3d::getSamplePoints2(double fromParam, double toParam, double approxEps) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGeDoubleArray paramArray;
     AcGePoint3dArray pointArray;
     boost::python::list pointList;
-    imp->getSamplePoints(fromParam, toParam, approxEps, pointArray, paramArray);
+    impObj()->getSamplePoints(fromParam, toParam, approxEps, pointArray, paramArray);
     for (const auto& item : pointArray)
         pointList.append(item);
     return pointList;
@@ -793,10 +577,10 @@ std::string PyGeCurve3d::className()
     return "AcGeCurve3d";
 }
 
-AcGeCurve3d* PyGeCurve3d::impObj() const
+AcGeCurve3d* PyGeCurve3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_imp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcGeCurve3d*>(m_imp.get());
 }
 
@@ -1094,10 +878,10 @@ std::string PyGeCircArc3d::className()
     return "AcGeCircArc3d";
 }
 
-AcGeCircArc3d* PyGeCircArc3d::impObj() const
+AcGeCircArc3d* PyGeCircArc3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_imp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcGeCircArc3d*>(m_imp.get());
 }
 
@@ -1125,10 +909,10 @@ std::string PyGeCompositeCurve3d::className()
     return "AcGeCompositeCurve3d";
 }
 
-AcGeCompositeCurve3d* PyGeCompositeCurve3d::impObj() const
+AcGeCompositeCurve3d* PyGeCompositeCurve3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_imp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcGeCompositeCurve3d*>(m_imp.get());
 }
 
@@ -1399,10 +1183,10 @@ std::string PyGeEllipArc3d::className()
     return "AcGeCompositeCurve3d";
 }
 
-AcGeEllipArc3d* PyGeEllipArc3d::impObj() const
+AcGeEllipArc3d* PyGeEllipArc3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_imp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcGeEllipArc3d*>(m_imp.get());
 }
 
@@ -1426,10 +1210,10 @@ std::string PyGeExternalCurve3d::className()
     return "AcGeExternalCurve3d";
 }
 
-AcGeExternalCurve3d* PyGeExternalCurve3d::impObj() const
+AcGeExternalCurve3d* PyGeExternalCurve3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_imp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcGeExternalCurve3d*>(m_imp.get());
 }
 
@@ -1458,9 +1242,9 @@ std::string PyGeOffsetCurve3d::className()
     return "AcGeOffsetCurve3d";
 }
 
-AcGeOffsetCurve3d* PyGeOffsetCurve3d::impObj() const
+AcGeOffsetCurve3d* PyGeOffsetCurve3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_imp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcGeOffsetCurve3d*>(m_imp.get());
 }

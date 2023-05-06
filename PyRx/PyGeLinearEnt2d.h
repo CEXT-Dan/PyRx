@@ -32,7 +32,7 @@ public:
 
     static std::string className();
 public:
-    AcGeLinearEnt2d* impObj() const;
+    AcGeLinearEnt2d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -52,7 +52,7 @@ public:
     PyGeLine2d& set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2);
     static std::string className();
 public:
-    AcGeLine2d* impObj() const;
+    AcGeLine2d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -84,7 +84,7 @@ public:
 
     static std::string className();
 public:
-    AcGeLineSeg2d* impObj() const;
+    AcGeLineSeg2d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -103,7 +103,7 @@ public:
     PyGeRay2d& set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2);
     static std::string className();
 public:
-    AcGeRay2d* impObj() const;
+    AcGeRay2d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 

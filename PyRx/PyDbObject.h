@@ -76,5 +76,5 @@ public:
     static std::string className();
 
 public:
-    AcDbObject* impObj() const;
+    AcDbObject* impObj(const std::source_location& src = std::source_location::current()) const;
 };

@@ -6,10 +6,7 @@
 #include "PyGeCurve2d.h"
 #include "PyGeCurve3d.h"
 #include "PyDbMText.h"
-
 using namespace boost::python;
-
-
 //-----------------------------------------------------------------------------------
 //PyDbText
 void makePyDbTextWrapper()
@@ -55,7 +52,6 @@ void makePyDbTextWrapper()
         .def("getBoundingPoints", &PyDbText::getBoundingPoints)
         .def("className", &PyDbText::className).staticmethod("className")
         ;
-
     enum_<AcDbText::AcTextAlignment>("TextAlignment")
         .value("kTextAlignmentLeft", AcDbText::AcTextAlignment::kTextAlignmentLeft)
         .value("kTextAlignmentCenter", AcDbText::AcTextAlignment::kTextAlignmentCenter)
@@ -103,241 +99,151 @@ PyDbText::PyDbText(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbText>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 AcGePoint3d PyDbText::position() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->position();
+    return impObj()->position();
 }
 
 Acad::ErrorStatus PyDbText::setPosition(const AcGePoint3d& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setPosition(val);
+    return impObj()->setPosition(val);
 }
 
 AcGePoint3d PyDbText::alignmentPoint() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->alignmentPoint();
+    return impObj()->alignmentPoint();
 }
 
 Acad::ErrorStatus PyDbText::setAlignmentPoint(const AcGePoint3d& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setAlignmentPoint(val);
+    return impObj()->setAlignmentPoint(val);
 }
 
 Adesk::Boolean PyDbText::isDefaultAlignment() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isDefaultAlignment();
+    return impObj()->isDefaultAlignment();
 }
 
 AcGeVector3d PyDbText::normal() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->normal();
+    return impObj()->normal();
 }
 
 Acad::ErrorStatus PyDbText::setNormal(const AcGeVector3d& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setNormal(val);
+    return impObj()->setNormal(val);
 }
 
 double PyDbText::thickness() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->thickness();
+    return impObj()->thickness();
 }
 
 Acad::ErrorStatus PyDbText::setThickness(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setThickness(val);
+    return impObj()->setThickness(val);
 }
 
 double PyDbText::oblique() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->oblique();
+    return impObj()->oblique();
 }
 
 Acad::ErrorStatus PyDbText::setOblique(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setOblique(val);
+    return impObj()->setOblique(val);
 }
 
 double PyDbText::rotation() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->rotation();
+    return impObj()->rotation();
 }
 
 Acad::ErrorStatus PyDbText::setRotation(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setRotation(val);
+    return impObj()->setRotation(val);
 }
 
 double PyDbText::height() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->height();
+    return impObj()->height();
 }
 
 Acad::ErrorStatus PyDbText::setHeight(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setHeight(val);
+    return impObj()->setHeight(val);
 }
 
 double PyDbText::widthFactor() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->widthFactor();
+    return impObj()->widthFactor();
 }
 
 Acad::ErrorStatus PyDbText::setWidthFactor(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setWidthFactor(val);
+    return impObj()->setWidthFactor(val);
 }
 
 std::string PyDbText::textString() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return wstr_to_utf8(imp->textStringConst());
+    return wstr_to_utf8(impObj()->textStringConst());
 }
 
 Acad::ErrorStatus PyDbText::setTextString(std::string& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setTextString(utf8_to_wstr(val).c_str());
+    return impObj()->setTextString(utf8_to_wstr(val).c_str());
 }
 
 PyDbObjectId PyDbText::textStyle() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return PyDbObjectId(imp->textStyle());
+    return PyDbObjectId(impObj()->textStyle());
 }
 
 Acad::ErrorStatus PyDbText::setTextStyle(const PyDbObjectId& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setTextStyle(val.m_id);
+    return impObj()->setTextStyle(val.m_id);
 }
 
 Adesk::Boolean PyDbText::isMirroredInX() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isMirroredInX();
+    return impObj()->isMirroredInX();
 }
 
 Acad::ErrorStatus PyDbText::mirrorInX(Adesk::Boolean val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->mirrorInX(val);
+    return impObj()->mirrorInX(val);
 }
 
 Adesk::Boolean PyDbText::isMirroredInY() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isMirroredInY();
+    return impObj()->isMirroredInY();
 }
 
 Acad::ErrorStatus PyDbText::mirrorInY(Adesk::Boolean val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->mirrorInY(val);
+    return impObj()->mirrorInY(val);
 }
 
 AcDb::TextHorzMode PyDbText::horizontalMode() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->horizontalMode();
+    return impObj()->horizontalMode();
 }
 
 Acad::ErrorStatus PyDbText::setHorizontalMode(AcDb::TextHorzMode val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setHorizontalMode(val);
+    return impObj()->setHorizontalMode(val);
 }
 
 AcDb::TextVertMode PyDbText::verticalMode() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->verticalMode();
+    return impObj()->verticalMode();
 }
 
 Acad::ErrorStatus PyDbText::setVerticalMode(AcDb::TextVertMode val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setVerticalMode(val);
+    return impObj()->setVerticalMode(val);
 }
 
 int PyDbText::correctSpelling()
@@ -345,10 +251,7 @@ int PyDbText::correctSpelling()
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->correctSpelling();
+    return impObj()->correctSpelling();
 #endif
 }
 
@@ -357,10 +260,7 @@ Acad::ErrorStatus PyDbText::adjustAlignment(const PyDbDatabase& pDb)
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->adjustAlignment(pDb.impObj());
+    return impObj()->adjustAlignment(pDb.impObj());
 #endif
 }
 
@@ -369,20 +269,14 @@ Acad::ErrorStatus PyDbText::convertFieldToText()
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->convertFieldToText();
+    return impObj()->convertFieldToText();
 #endif
 }
 
 bool PyDbText::hitTest(const AcGePoint3d& ptHit) const
 {
 #ifdef ARXAPP
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->hitTest(ptHit);
+    return impObj()->hitTest(ptHit);
 #else
     throw PyNotimplementedByHost();
 #endif // ARXAPP
@@ -391,12 +285,9 @@ bool PyDbText::hitTest(const AcGePoint3d& ptHit) const
 boost::python::list PyDbText::getBoundingPoints() const
 {
 #ifdef ARXAPP
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     boost::python::list l;
     AcGePoint3dArray arr;
-    imp->getBoundingPoints(arr);
+    impObj()->getBoundingPoints(arr);
     for (const auto& item : arr)
         l.append(item);
     return l;
@@ -407,18 +298,12 @@ boost::python::list PyDbText::getBoundingPoints() const
 
 AcDbText::AcTextAlignment PyDbText::justification() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->justification();
+    return impObj()->justification();
 }
 
 Acad::ErrorStatus PyDbText::setJustification(AcDbText::AcTextAlignment val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setJustification(val);
+    return impObj()->setJustification(val);
 }
 
 std::string PyDbText::className()
@@ -426,8 +311,11 @@ std::string PyDbText::className()
     return "AcDbText";
 }
 
-AcDbText* PyDbText::impObj() const
+AcDbText* PyDbText::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
+
     return static_cast<AcDbText*>(m_pImp.get());
 }
 
@@ -487,188 +375,119 @@ PyDbAttributeDefinition::PyDbAttributeDefinition(const PyDbObjectId& id, AcDb::O
     if (auto es = acdbOpenObject<AcDbAttributeDefinition>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 std::string PyDbAttributeDefinition::prompt() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return wstr_to_utf8(imp->promptConst());
+    return wstr_to_utf8(impObj()->promptConst());
 }
 
 Acad::ErrorStatus PyDbAttributeDefinition::setPrompt(const std::string& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setPrompt(utf8_to_wstr(val).c_str());
+    return impObj()->setPrompt(utf8_to_wstr(val).c_str());
 }
 
 std::string PyDbAttributeDefinition::tag() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return wstr_to_utf8(imp->tagConst());
+    return wstr_to_utf8(impObj()->tagConst());
 }
 
 Acad::ErrorStatus PyDbAttributeDefinition::setTag(const std::string& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setTag(utf8_to_wstr(val).c_str());
+    return impObj()->setTag(utf8_to_wstr(val).c_str());
 }
 
 Adesk::Boolean PyDbAttributeDefinition::isInvisible() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isInvisible();
+    return impObj()->isInvisible();
 }
 
 Acad::ErrorStatus PyDbAttributeDefinition::setInvisible(Adesk::Boolean val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setInvisible(val);
+    return impObj()->setInvisible(val);
 }
 
 Adesk::Boolean PyDbAttributeDefinition::isConstant() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isConstant();
+    return impObj()->isConstant();
 }
 
 Acad::ErrorStatus PyDbAttributeDefinition::setConstant(Adesk::Boolean val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setConstant(val);
+    return impObj()->setConstant(val);
 }
 
 Adesk::Boolean PyDbAttributeDefinition::isVerifiable() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isVerifiable();
+    return impObj()->isVerifiable();
 }
 
 Acad::ErrorStatus PyDbAttributeDefinition::setVerifiable(Adesk::Boolean val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setVerifiable(val);
+    return impObj()->setVerifiable(val);
 }
 
 Adesk::Boolean PyDbAttributeDefinition::isPreset() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isPreset();
+    return impObj()->isPreset();
 }
 
 Acad::ErrorStatus PyDbAttributeDefinition::setPreset(Adesk::Boolean val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setPreset(val);
+    return impObj()->setPreset(val);
 }
 
 Adesk::UInt16 PyDbAttributeDefinition::fieldLength() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->fieldLength();
+    return impObj()->fieldLength();
 }
 
 Acad::ErrorStatus PyDbAttributeDefinition::setFieldLength(Adesk::UInt16 val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setFieldLength(val);
+    return impObj()->setFieldLength(val);
 }
 
 Acad::ErrorStatus PyDbAttributeDefinition::adjustAlignment(const PyDbDatabase& pDb)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->adjustAlignment(pDb.impObj());
+    return impObj()->adjustAlignment(pDb.impObj());
 }
 
 bool PyDbAttributeDefinition::lockPositionInBlock() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->lockPositionInBlock();
+    return impObj()->lockPositionInBlock();
 }
 
 Acad::ErrorStatus PyDbAttributeDefinition::setLockPositionInBlock(bool bValue)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setLockPositionInBlock(bValue);
+    return impObj()->setLockPositionInBlock(bValue);
 }
 
 bool PyDbAttributeDefinition::isMTextAttributeDefinition() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isMTextAttributeDefinition();
+    return impObj()->isMTextAttributeDefinition();
 }
 
 PyDbMText PyDbAttributeDefinition::getMTextAttributeDefinition() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    AcDbMText* ptr = imp->getMTextAttributeDefinition();
-    if(ptr == nullptr)
-        throw PyNullObject();
+    AcDbMText* ptr = impObj()->getMTextAttributeDefinition();
+    if (ptr == nullptr)
+        throw PyNullObject(std::source_location::current());
     return PyDbMText(ptr,true);
 }
 
 Acad::ErrorStatus PyDbAttributeDefinition::setMTextAttributeDefinition(const PyDbMText& mt)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setMTextAttributeDefinition(mt.impObj());
+    return impObj()->setMTextAttributeDefinition(mt.impObj());
 }
 
 Acad::ErrorStatus PyDbAttributeDefinition::convertIntoMTextAttributeDefinition(Adesk::Boolean val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->convertIntoMTextAttributeDefinition(val);
+    return impObj()->convertIntoMTextAttributeDefinition(val);
 }
 
 Acad::ErrorStatus PyDbAttributeDefinition::updateMTextAttributeDefinition()
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->updateMTextAttributeDefinition();
+    return impObj()->updateMTextAttributeDefinition();
 }
 
 std::string PyDbAttributeDefinition::className()
@@ -676,8 +495,10 @@ std::string PyDbAttributeDefinition::className()
     return "AcDbAttributeDefinition";
 }
 
-AcDbAttributeDefinition* PyDbAttributeDefinition::impObj() const
+AcDbAttributeDefinition* PyDbAttributeDefinition::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcDbAttributeDefinition*>(m_pImp.get());
 }
 
@@ -734,153 +555,96 @@ PyDbAttribute::PyDbAttribute(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbAttribute>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 std::string PyDbAttribute::tag() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return wstr_to_utf8(imp->tagConst());
+    return wstr_to_utf8(impObj()->tagConst());
 }
 
 Acad::ErrorStatus PyDbAttribute::setTag(const std::string& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setTag(utf8_to_wstr(val).c_str());
+    return impObj()->setTag(utf8_to_wstr(val).c_str());
 }
 
 Adesk::Boolean PyDbAttribute::isInvisible() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isInvisible();
+    return impObj()->isInvisible();
 }
 
 Acad::ErrorStatus PyDbAttribute::setInvisible(Adesk::Boolean val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setInvisible(val);
+    return impObj()->setInvisible(val);
 }
 
 Adesk::Boolean PyDbAttribute::isConstant() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isConstant();
+    return impObj()->isConstant();
 }
 
 Adesk::Boolean PyDbAttribute::isVerifiable() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isVerifiable();
+    return impObj()->isVerifiable();
 }
 
 Adesk::Boolean PyDbAttribute::isPreset() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isPreset();
+    return impObj()->isPreset();
 }
 
 Adesk::UInt16 PyDbAttribute::fieldLength() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isPreset();
+    return impObj()->isPreset();
 }
 
 Acad::ErrorStatus PyDbAttribute::setFieldLength(Adesk::UInt16 val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setFieldLength(val);
+    return impObj()->setFieldLength(val);
 }
 
 Acad::ErrorStatus PyDbAttribute::setAttributeFromBlock(const AcGeMatrix3d& blkXform)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setAttributeFromBlock(blkXform);
+    return impObj()->setAttributeFromBlock(blkXform);
 }
 
 Acad::ErrorStatus PyDbAttribute::setAttributeFromBlock(const PyDbAttributeDefinition& pAttdef, const AcGeMatrix3d& blkXform)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setAttributeFromBlock(pAttdef.impObj(), blkXform);
+    return impObj()->setAttributeFromBlock(pAttdef.impObj(), blkXform);
 }
 
 bool PyDbAttribute::lockPositionInBlock() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->lockPositionInBlock();
+    return impObj()->lockPositionInBlock();
 }
 
 Acad::ErrorStatus PyDbAttribute::setLockPositionInBlock(bool bValue)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setLockPositionInBlock(bValue);
+    return impObj()->setLockPositionInBlock(bValue);
 }
 
 bool PyDbAttribute::isMTextAttribute() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isMTextAttribute();
+    return impObj()->isMTextAttribute();
 }
 
 PyDbMText PyDbAttribute::getMTextAttribute() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return PyDbMText(imp->getMTextAttribute(),true);
+    return PyDbMText(impObj()->getMTextAttribute(),true);
 }
 
 Acad::ErrorStatus PyDbAttribute::setMTextAttribute(PyDbMText& mt)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setMTextAttribute(mt.impObj());
+    return impObj()->setMTextAttribute(mt.impObj());
 }
 
 Acad::ErrorStatus PyDbAttribute::convertIntoMTextAttribute(Adesk::Boolean val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->convertIntoMTextAttribute(val);
+    return impObj()->convertIntoMTextAttribute(val);
 }
 
 Acad::ErrorStatus PyDbAttribute::updateMTextAttribute()
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->updateMTextAttribute();
+    return impObj()->updateMTextAttribute();
 }
 
 bool PyDbAttribute::isReallyLocked() const
@@ -888,10 +652,7 @@ bool PyDbAttribute::isReallyLocked() const
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isReallyLocked();
+    return impObj()->isReallyLocked();
 #endif
 }
 
@@ -900,8 +661,10 @@ std::string PyDbAttribute::className()
     return "AcDbAttribute";
 }
 
-AcDbAttribute* PyDbAttribute::impObj() const
+AcDbAttribute* PyDbAttribute::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcDbAttribute*>(m_pImp.get());
 }
 
@@ -959,130 +722,82 @@ PyDbBlockReference::PyDbBlockReference(const PyDbObjectId& id, AcDb::OpenMode mo
     if (auto es = acdbOpenObject<AcDbBlockReference>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 PyDbObjectId PyDbBlockReference::blockTableRecord() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return PyDbObjectId(imp->blockTableRecord());
+    return PyDbObjectId(impObj()->blockTableRecord());
 }
 
 Acad::ErrorStatus PyDbBlockReference::setBlockTableRecord(const PyDbObjectId& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setBlockTableRecord(val.m_id);
+    return impObj()->setBlockTableRecord(val.m_id);
 }
 
 AcGePoint3d PyDbBlockReference::position() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->position();
+    return impObj()->position();
 }
 
 Acad::ErrorStatus PyDbBlockReference::setPosition(const AcGePoint3d& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setPosition(val);
+    return impObj()->setPosition(val);
 }
 
 AcGeScale3d PyDbBlockReference::scaleFactors() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->scaleFactors();
+    return impObj()->scaleFactors();
 }
 
 AcGeScale3d PyDbBlockReference::nonAnnotationScaleFactors() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->nonAnnotationScaleFactors();
+    return impObj()->nonAnnotationScaleFactors();
 }
 
 Acad::ErrorStatus PyDbBlockReference::setScaleFactors(const AcGeScale3d& scale)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setScaleFactors(scale);
+    return impObj()->setScaleFactors(scale);
 }
 
 double PyDbBlockReference::rotation() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->rotation();
+    return impObj()->rotation();
 }
 
 Acad::ErrorStatus PyDbBlockReference::setRotation(double newVal)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setRotation(newVal);
+    return impObj()->setRotation(newVal);
 }
 
 AcGeVector3d PyDbBlockReference::normal() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->normal();
+    return impObj()->normal();
 }
 
 Acad::ErrorStatus PyDbBlockReference::setNormal(const AcGeVector3d& newVal)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setNormal(newVal);
+    return impObj()->setNormal(newVal);
 }
 
 AcGeMatrix3d PyDbBlockReference::blockTransform() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->blockTransform();
+    return impObj()->blockTransform();
 }
 
 AcGeMatrix3d PyDbBlockReference::nonAnnotationBlockTransform() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->nonAnnotationBlockTransform();
+    return impObj()->nonAnnotationBlockTransform();
 }
 
 Acad::ErrorStatus PyDbBlockReference::setBlockTransform(const AcGeMatrix3d& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setBlockTransform(val);
+    return impObj()->setBlockTransform(val);
 }
 
 PyDbObjectId PyDbBlockReference::appendAttribute(PyDbAttribute& att)
 {
     AcDbObjectId id;
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    if (auto es = imp->appendAttribute(id, att.impObj()); es != eOk)
+    if (auto es = impObj()->appendAttribute(id, att.impObj()); es != eOk)
         throw PyAcadErrorStatus(es);
     return PyDbObjectId(id);
 }
@@ -1090,21 +805,15 @@ PyDbObjectId PyDbBlockReference::appendAttribute(PyDbAttribute& att)
 boost::python::list PyDbBlockReference::attributeIds() const
 {
     AcDbObjectId id;
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     boost::python::list ids;
-    for (std::unique_ptr<AcDbObjectIterator> iter(imp->attributeIterator()); !iter->done(); iter->step())
+    for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->attributeIterator()); !iter->done(); iter->step())
         ids.append(PyDbObjectId(iter->objectId()));
     return ids;
 }
 
 Adesk::Boolean PyDbBlockReference::treatAsAcDbBlockRefForExplode() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->treatAsAcDbBlockRefForExplode();
+    return impObj()->treatAsAcDbBlockRefForExplode();
 }
 
 AcDbExtents PyDbBlockReference::geomExtentsBestFit1() const
@@ -1114,21 +823,15 @@ AcDbExtents PyDbBlockReference::geomExtentsBestFit1() const
 
 AcDbExtents PyDbBlockReference::geomExtentsBestFit2(const AcGeMatrix3d& parentXform) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcDbExtents ex;
-    if (auto es = imp->geomExtentsBestFit(ex, parentXform); es != eOk)
+    if (auto es = impObj()->geomExtentsBestFit(ex, parentXform); es != eOk)
         throw PyAcadErrorStatus(es);
     return ex;
 }
 
 Acad::ErrorStatus PyDbBlockReference::explodeToOwnerSpace() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->explodeToOwnerSpace();
+    return impObj()->explodeToOwnerSpace();
 }
 
 std::string PyDbBlockReference::className()
@@ -1136,8 +839,10 @@ std::string PyDbBlockReference::className()
     return "AcDbBlockReference";
 }
 
-AcDbBlockReference* PyDbBlockReference::impObj() const
+AcDbBlockReference* PyDbBlockReference::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcDbBlockReference*>(m_pImp.get());
 }
 
@@ -1183,73 +888,46 @@ PyDbMInsertBlock::PyDbMInsertBlock(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbMInsertBlock>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 Adesk::UInt16 PyDbMInsertBlock::columns() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->columns();
+    return impObj()->columns();
 }
 
 Acad::ErrorStatus PyDbMInsertBlock::setColumns(Adesk::UInt16 val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setColumns(val);
+    return impObj()->setColumns(val);
 }
 
 Adesk::UInt16 PyDbMInsertBlock::rows() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->rows();
+    return impObj()->rows();
 }
 
 Acad::ErrorStatus PyDbMInsertBlock::setRows(Adesk::UInt16 val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setRows(val);
+    return impObj()->setRows(val);
 }
 
 double PyDbMInsertBlock::columnSpacing() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->columnSpacing();
+    return impObj()->columnSpacing();
 }
 
 Acad::ErrorStatus PyDbMInsertBlock::setColumnSpacing(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setColumnSpacing(val);
+    return impObj()->setColumnSpacing(val);
 }
 
 double PyDbMInsertBlock::rowSpacing() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->rowSpacing();
+    return impObj()->rowSpacing();
 }
 
 Acad::ErrorStatus PyDbMInsertBlock::setRowSpacing(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setRowSpacing(val);
+    return impObj()->setRowSpacing(val);
 }
 
 std::string PyDbMInsertBlock::className()
@@ -1257,8 +935,10 @@ std::string PyDbMInsertBlock::className()
     return "AcDbMInsertBlock";
 }
 
-AcDbMInsertBlock* PyDbMInsertBlock::impObj() const
+AcDbMInsertBlock* PyDbMInsertBlock::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcDbMInsertBlock*>(m_pImp.get());
 }
 
@@ -1284,9 +964,6 @@ PyDbVertex::PyDbVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbVertex>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 std::string PyDbVertex::className()
@@ -1294,7 +971,7 @@ std::string PyDbVertex::className()
     return "AcDbVertex";
 }
 
-AcDbVertex* PyDbVertex::impObj() const
+AcDbVertex* PyDbVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     return static_cast<AcDbVertex*>(m_pImp.get());
 }
@@ -1346,8 +1023,8 @@ PyDb2dVertex::PyDb2dVertex(const AcGePoint3d& pos, double bulge, double startWid
     : PyDb2dVertex(new AcDb2dVertex(pos, bulge, startWidth, endWidth, tangent, vertexIdentifier), true)
 {
 }
-#endif // !BRXAPP
 
+#endif // !BRXAPP
 PyDb2dVertex::PyDb2dVertex(AcDb2dVertex* ptr, bool autoDelete)
     : PyDbVertex(ptr, autoDelete)
 {
@@ -1360,105 +1037,66 @@ PyDb2dVertex::PyDb2dVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDb2dVertex>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 AcDb::Vertex2dType PyDb2dVertex::vertexType() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->vertexType();
+    return impObj()->vertexType();
 }
 
 AcGePoint3d PyDb2dVertex::position() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->position();
+    return impObj()->position();
 }
 
 Acad::ErrorStatus PyDb2dVertex::setPosition(const AcGePoint3d& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setPosition(val);
+    return impObj()->setPosition(val);
 }
 
 double PyDb2dVertex::startWidth() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->startWidth();
+    return impObj()->startWidth();
 }
 
 Acad::ErrorStatus PyDb2dVertex::setStartWidth(double newVal)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setStartWidth(newVal);
+    return impObj()->setStartWidth(newVal);
 }
 
 double PyDb2dVertex::endWidth() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->endWidth();
+    return impObj()->endWidth();
 }
 
 Acad::ErrorStatus PyDb2dVertex::setEndWidth(double newVal)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setEndWidth(newVal);
+    return impObj()->setEndWidth(newVal);
 }
 
 double PyDb2dVertex::bulge() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->bulge();
+    return impObj()->bulge();
 }
 
 Acad::ErrorStatus PyDb2dVertex::setBulge(double newVal)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setBulge(newVal);
+    return impObj()->setBulge(newVal);
 }
 
 Adesk::Boolean PyDb2dVertex::isTangentUsed() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isTangentUsed();
+    return impObj()->isTangentUsed();
 }
 
 Acad::ErrorStatus PyDb2dVertex::useTangent()
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->useTangent();
+    return impObj()->useTangent();
 }
 
 Acad::ErrorStatus PyDb2dVertex::ignoreTangent()
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->ignoreTangent();
+    return impObj()->ignoreTangent();
 }
 
 Acad::ErrorStatus PyDb2dVertex::setTangentUsed(Adesk::Boolean val)
@@ -1466,27 +1104,18 @@ Acad::ErrorStatus PyDb2dVertex::setTangentUsed(Adesk::Boolean val)
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else // !BRXAPP
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setTangentUsed(val);
+    return impObj()->setTangentUsed(val);
 #endif
 }
 
 double PyDb2dVertex::tangent() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->tangent();
+    return impObj()->tangent();
 }
 
 Acad::ErrorStatus PyDb2dVertex::setTangent(double newVal)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setTangent(newVal);
+    return impObj()->setTangent(newVal);
 }
 
 Acad::ErrorStatus PyDb2dVertex::setVertexIdentifier(Adesk::Int32 suggestedValue)
@@ -1494,10 +1123,7 @@ Acad::ErrorStatus PyDb2dVertex::setVertexIdentifier(Adesk::Int32 suggestedValue)
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else // !BRXAPP
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setVertexIdentifier(suggestedValue);
+    return impObj()->setVertexIdentifier(suggestedValue);
 #endif
 }
 
@@ -1506,10 +1132,7 @@ int PyDb2dVertex::vertexIdentifier() const
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else // !BRXAPP
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->vertexIdentifier();
+    return impObj()->vertexIdentifier();
 #endif
 }
 
@@ -1518,11 +1141,12 @@ std::string PyDb2dVertex::className()
     return "AcDb2dVertex";
 }
 
-AcDb2dVertex* PyDb2dVertex::impObj() const
+AcDb2dVertex* PyDb2dVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcDb2dVertex*>(m_pImp.get());
 }
-
 
 //-------------------------------------------------------------------------------------------------------------
 //AcDb3dPolylineVertex
@@ -1561,33 +1185,21 @@ PyDb3dPolylineVertex::PyDb3dPolylineVertex(const PyDbObjectId& id, AcDb::OpenMod
     if (auto es = acdbOpenObject<AcDb3dPolylineVertex>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 AcDb::Vertex3dType PyDb3dPolylineVertex::vertexType() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->vertexType();
+    return impObj()->vertexType();
 }
 
 AcGePoint3d PyDb3dPolylineVertex::position() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->position();
+    return impObj()->position();
 }
 
 Acad::ErrorStatus PyDb3dPolylineVertex::setPosition(const AcGePoint3d& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setPosition(val);
+    return impObj()->setPosition(val);
 }
 
 std::string PyDb3dPolylineVertex::className()
@@ -1595,8 +1207,11 @@ std::string PyDb3dPolylineVertex::className()
     return "AcDb3dPolylineVertex";
 }
 
-AcDb3dPolylineVertex* PyDb3dPolylineVertex::impObj() const
+AcDb3dPolylineVertex* PyDb3dPolylineVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
+
     return static_cast<AcDb3dPolylineVertex*>(m_pImp.get());
 }
 
@@ -1637,33 +1252,21 @@ PyDbPolygonMeshVertex::PyDbPolygonMeshVertex(const PyDbObjectId& id, AcDb::OpenM
     if (auto es = acdbOpenObject<AcDbPolygonMeshVertex>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 AcDb::Vertex3dType PyDbPolygonMeshVertex::vertexType() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->vertexType();
+    return impObj()->vertexType();
 }
 
 AcGePoint3d PyDbPolygonMeshVertex::position() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->position();
+    return impObj()->position();
 }
 
 Acad::ErrorStatus PyDbPolygonMeshVertex::setPosition(const AcGePoint3d& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setPosition(val);
+    return impObj()->setPosition(val);
 }
 
 std::string PyDbPolygonMeshVertex::className()
@@ -1671,8 +1274,10 @@ std::string PyDbPolygonMeshVertex::className()
     return "AcDbPolygonMeshVertex";
 }
 
-AcDbPolygonMeshVertex* PyDbPolygonMeshVertex::impObj() const
+AcDbPolygonMeshVertex* PyDbPolygonMeshVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcDbPolygonMeshVertex*>(m_pImp.get());
 }
 
@@ -1712,25 +1317,16 @@ PyDbPolyFaceMeshVertex::PyDbPolyFaceMeshVertex(const PyDbObjectId& id, AcDb::Ope
     if (auto es = acdbOpenObject<AcDbPolyFaceMeshVertex>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 AcGePoint3d PyDbPolyFaceMeshVertex::position() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->position();
+    return impObj()->position();
 }
 
 Acad::ErrorStatus PyDbPolyFaceMeshVertex::setPosition(const AcGePoint3d& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setPosition(val);
+    return impObj()->setPosition(val);
 }
 
 std::string PyDbPolyFaceMeshVertex::className()
@@ -1738,14 +1334,15 @@ std::string PyDbPolyFaceMeshVertex::className()
     return "AcDbPolyFaceMeshVertex";
 }
 
-AcDbPolyFaceMeshVertex* PyDbPolyFaceMeshVertex::impObj() const
+AcDbPolyFaceMeshVertex* PyDbPolyFaceMeshVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcDbPolyFaceMeshVertex*>(m_pImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
 //AcDbFaceRecord
-
 void makePyAcDbFaceRecordWrapper()
 {
     static auto wrapper = class_<PyDbFaceRecord, bases<PyDbVertex>>("FaceRecord")
@@ -1783,55 +1380,37 @@ PyDbFaceRecord::PyDbFaceRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbFaceRecord>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 Adesk::Int16 PyDbFaceRecord::getVertexAt(Adesk::UInt16 faceIdx) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     Adesk::Int16 vtxIdx = 0;
-    if (auto es = imp->getVertexAt(faceIdx, vtxIdx); es != eOk)
+    if (auto es = impObj()->getVertexAt(faceIdx, vtxIdx); es != eOk)
         throw PyAcadErrorStatus(es);
     return vtxIdx;
 }
 
 Acad::ErrorStatus PyDbFaceRecord::setVertexAt(Adesk::UInt16 faceIdx, Adesk::Int16 vtxIdx)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setVertexAt(faceIdx, vtxIdx);
+    return impObj()->setVertexAt(faceIdx, vtxIdx);
 }
 
 Adesk::Boolean PyDbFaceRecord::isEdgeVisibleAt(Adesk::UInt16 faceIndex) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     Adesk::Boolean flag = false;
-    if (auto es = imp->isEdgeVisibleAt(faceIndex, flag); es != eOk)
+    if (auto es = impObj()->isEdgeVisibleAt(faceIndex, flag); es != eOk)
         throw PyAcadErrorStatus(es);
     return flag;
 }
 
 Acad::ErrorStatus PyDbFaceRecord::makeEdgeVisibleAt(Adesk::UInt16 faceIndex)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->makeEdgeVisibleAt(faceIndex);
+    return impObj()->makeEdgeVisibleAt(faceIndex);
 }
 
 Acad::ErrorStatus PyDbFaceRecord::makeEdgeInvisibleAt(Adesk::UInt16 faceIndex)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->makeEdgeInvisibleAt(faceIndex);
+    return impObj()->makeEdgeInvisibleAt(faceIndex);
 }
 
 std::string PyDbFaceRecord::className()
@@ -1839,8 +1418,10 @@ std::string PyDbFaceRecord::className()
     return "AcDbFaceRecord";
 }
 
-AcDbFaceRecord* PyDbFaceRecord::impObj() const
+AcDbFaceRecord* PyDbFaceRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcDbFaceRecord*>(m_pImp.get());
 }
 
@@ -1886,73 +1467,46 @@ PyDbPoint::PyDbPoint(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbPoint>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 AcGePoint3d PyDbPoint::position() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->position();
+    return impObj()->position();
 }
 
 Acad::ErrorStatus PyDbPoint::setPosition(const AcGePoint3d& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setPosition(val);
+    return impObj()->setPosition(val);
 }
 
 double PyDbPoint::thickness() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->thickness();
+    return impObj()->thickness();
 }
 
 Acad::ErrorStatus PyDbPoint::setThickness(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setThickness(val);
+    return impObj()->setThickness(val);
 }
 
 AcGeVector3d PyDbPoint::normal() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->normal();
+    return impObj()->normal();
 }
 
 Acad::ErrorStatus PyDbPoint::setNormal(const AcGeVector3d& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setNormal(val);
+    return impObj()->setNormal(val);
 }
 
 double PyDbPoint::ecsRotation() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->ecsRotation();
+    return impObj()->ecsRotation();
 }
 
 Acad::ErrorStatus PyDbPoint::setEcsRotation(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setEcsRotation(val);
+    return impObj()->setEcsRotation(val);
 }
 
 std::string PyDbPoint::className()
@@ -1960,8 +1514,10 @@ std::string PyDbPoint::className()
     return "AcDbPoint";
 }
 
-AcDbPoint* PyDbPoint::impObj() const
+AcDbPoint* PyDbPoint::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcDbPoint*>(m_pImp.get());
 }
 
@@ -2007,16 +1563,12 @@ void makePyDb2dPolylineWrapper()
         .def("setLinetypeGenerationOn", &PyDb2dPolyline::setLinetypeGenerationOn)
         .def("setLinetypeGenerationOff", &PyDb2dPolyline::setLinetypeGenerationOff)
         .def("straighten", &PyDb2dPolyline::straighten)
-
         .def<Acad::ErrorStatus(PyDb2dPolyline::*)(void)>("splineFit", &PyDb2dPolyline::splineFit)
         .def<Acad::ErrorStatus(PyDb2dPolyline::*)(AcDb::Poly2dType, Adesk::Int16)>("splineFit", &PyDb2dPolyline::splineFit)
-
         .def<Acad::ErrorStatus(PyDb2dPolyline::*)(const PyDb2dVertex&)>("appendVertex", &PyDb2dPolyline::appendVertex)
         .def<Acad::ErrorStatus(PyDb2dPolyline::*)(PyDbObjectId&, const PyDb2dVertex&)>("appendVertex", &PyDb2dPolyline::appendVertex)
-
         .def<Acad::ErrorStatus(PyDb2dPolyline::*)(const PyDb2dVertex&, PyDb2dVertex&)>("insertVertexAt", &PyDb2dPolyline::insertVertexAt)
         .def<Acad::ErrorStatus(PyDb2dPolyline::*)(PyDbObjectId&, const PyDbObjectId&, PyDb2dVertex&)>("insertVertexAt", &PyDb2dPolyline::insertVertexAt)
-
         .def("openVertex", &PyDb2dPolyline::openVertex)
         .def("openSequenceEnd", &PyDb2dPolyline::openSequenceEnd)
         .def("vertexIds", &PyDb2dPolyline::vertexIds)
@@ -2043,254 +1595,162 @@ PyDb2dPolyline::PyDb2dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDb2dPolyline>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 PyDb2dPolyline::PyDb2dPolyline(AcDb::Poly2dType type, const boost::python::list& vertices, Adesk::Boolean closed)
     : PyDbCurve(new AcDb2dPolyline(type, listToAcGePoint3dArrayRef(vertices), 0.0, closed), true)
 {
-
 }
 
 AcDb::Poly2dType PyDb2dPolyline::polyType() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->polyType();
+    return impObj()->polyType();
 }
 
 Acad::ErrorStatus PyDb2dPolyline::setPolyType(AcDb::Poly2dType val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setPolyType(val);
+    return impObj()->setPolyType(val);
 }
 
 Acad::ErrorStatus PyDb2dPolyline::convertToPolyType(AcDb::Poly2dType val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->convertToPolyType(val);
+    return impObj()->convertToPolyType(val);
 }
 
 Acad::ErrorStatus PyDb2dPolyline::makeClosed()
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->makeClosed();
+    return impObj()->makeClosed();
 }
 
 Acad::ErrorStatus PyDb2dPolyline::makeOpen()
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->makeOpen();
+    return impObj()->makeOpen();
 }
 
 Acad::ErrorStatus PyDb2dPolyline::setClosed(Adesk::Boolean val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setClosed(val);
+    return impObj()->setClosed(val);
 }
 
 double PyDb2dPolyline::constantWidth() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     double val;
-    if (auto es = imp->constantWidth(val); es != eOk)
+    if (auto es = impObj()->constantWidth(val); es != eOk)
         throw PyAcadErrorStatus(es);
     return val;
 }
 
 Acad::ErrorStatus PyDb2dPolyline::setConstantWidth(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setConstantWidth(val);
+    return impObj()->setConstantWidth(val);
 }
 
 double PyDb2dPolyline::length() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     double val;
-    if (auto es = imp->length(val); es != eOk)
+    if (auto es = impObj()->length(val); es != eOk)
         throw PyAcadErrorStatus(es);
     return val;
 }
 
 double PyDb2dPolyline::defaultStartWidth() const
 {
-
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->defaultStartWidth();
+    return impObj()->defaultStartWidth();
 }
 
 Acad::ErrorStatus PyDb2dPolyline::setDefaultStartWidth(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setDefaultStartWidth(val);
+    return impObj()->setDefaultStartWidth(val);
 }
 
 double PyDb2dPolyline::defaultEndWidth() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->defaultEndWidth();
+    return impObj()->defaultEndWidth();
 }
 
 Acad::ErrorStatus PyDb2dPolyline::setDefaultEndWidth(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setDefaultEndWidth(val);
+    return impObj()->setDefaultEndWidth(val);
 }
 
 double PyDb2dPolyline::thickness() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->thickness();
+    return impObj()->thickness();
 }
 
 Acad::ErrorStatus PyDb2dPolyline::setThickness(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setThickness(val);
+    return impObj()->setThickness(val);
 }
 
 AcGeVector3d PyDb2dPolyline::normal() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->normal();
+    return impObj()->normal();
 }
 
 Acad::ErrorStatus PyDb2dPolyline::setNormal(const AcGeVector3d& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setNormal(val);
+    return impObj()->setNormal(val);
 }
 
 double PyDb2dPolyline::elevation() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->elevation();
+    return impObj()->elevation();
 }
 
 Acad::ErrorStatus PyDb2dPolyline::setElevation(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setElevation(val);
+    return impObj()->setElevation(val);
 }
 
 Adesk::Boolean PyDb2dPolyline::isLinetypeGenerationOn() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isLinetypeGenerationOn();
+    return impObj()->isLinetypeGenerationOn();
 }
 
 Acad::ErrorStatus PyDb2dPolyline::setLinetypeGenerationOn()
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setLinetypeGenerationOn();
+    return impObj()->setLinetypeGenerationOn();
 }
 
 Acad::ErrorStatus PyDb2dPolyline::setLinetypeGenerationOff()
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setLinetypeGenerationOff();
+    return impObj()->setLinetypeGenerationOff();
 }
 
 Acad::ErrorStatus PyDb2dPolyline::straighten()
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->straighten();
+    return impObj()->straighten();
 }
 
 Acad::ErrorStatus PyDb2dPolyline::splineFit()
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->splineFit();
+    return impObj()->splineFit();
 }
 
 Acad::ErrorStatus PyDb2dPolyline::splineFit(AcDb::Poly2dType splineType, Adesk::Int16 splineSegs)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->splineFit(splineType, splineSegs);
+    return impObj()->splineFit(splineType, splineSegs);
 }
 
 Acad::ErrorStatus PyDb2dPolyline::appendVertex(const PyDb2dVertex& vt)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->appendVertex(vt.impObj());
+    return impObj()->appendVertex(vt.impObj());
 }
 
 Acad::ErrorStatus PyDb2dPolyline::appendVertex(PyDbObjectId& id, const PyDb2dVertex& vt)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->appendVertex(id.m_id, vt.impObj());
+    return impObj()->appendVertex(id.m_id, vt.impObj());
 }
 
 Acad::ErrorStatus PyDb2dPolyline::insertVertexAt(const PyDb2dVertex& pIndexVert, PyDb2dVertex& pNewVertex)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->insertVertexAt(pIndexVert.impObj(), pNewVertex.impObj());
+    return impObj()->insertVertexAt(pIndexVert.impObj(), pNewVertex.impObj());
 }
 
 Acad::ErrorStatus PyDb2dPolyline::insertVertexAt(PyDbObjectId& newVertId, const PyDbObjectId& indexVertId, PyDb2dVertex& pNewVertex)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->insertVertexAt(newVertId.m_id, indexVertId.m_id, pNewVertex.impObj());
+    return impObj()->insertVertexAt(newVertId.m_id, indexVertId.m_id, pNewVertex.impObj());
 }
 
 Acad::ErrorStatus PyDb2dPolyline::openVertex(PyDb2dVertex& vt, const PyDbObjectId& vertId, AcDb::OpenMode mode) const
@@ -2301,11 +1761,8 @@ Acad::ErrorStatus PyDb2dPolyline::openVertex(PyDb2dVertex& vt, const PyDbObjectI
 
 Acad::ErrorStatus PyDb2dPolyline::openSequenceEnd(PyDbSequenceEnd& end, AcDb::OpenMode mode)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcDbSequenceEnd* pEnd = nullptr;
-    auto es = imp->openSequenceEnd(pEnd, mode);
+    auto es = impObj()->openSequenceEnd(pEnd, mode);
     if (es == eOk)
         end = PyDbSequenceEnd(pEnd, true);
     return es;
@@ -2313,21 +1770,15 @@ Acad::ErrorStatus PyDb2dPolyline::openSequenceEnd(PyDbSequenceEnd& end, AcDb::Op
 
 boost::python::list PyDb2dPolyline::vertexIds() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     boost::python::list ids;
-    for (std::unique_ptr<AcDbObjectIterator> iter(imp->vertexIterator()); !iter->done(); iter->step())
+    for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->vertexIterator()); !iter->done(); iter->step())
         ids.append(iter->objectId());
     return ids;
 }
 
 AcGePoint3d PyDb2dPolyline::vertexPosition(const AcDb2dVertex& vert) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->vertexPosition(vert);
+    return impObj()->vertexPosition(vert);
 }
 
 Acad::ErrorStatus PyDb2dPolyline::makeClosedIfStartAndEndVertexCoincide(double distTol)
@@ -2335,10 +1786,7 @@ Acad::ErrorStatus PyDb2dPolyline::makeClosedIfStartAndEndVertexCoincide(double d
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->makeClosedIfStartAndEndVertexCoincide(distTol);
+    return impObj()->makeClosedIfStartAndEndVertexCoincide(distTol);
 #endif
 }
 
@@ -2347,8 +1795,10 @@ std::string PyDb2dPolyline::className()
     return "AcDb2dPolyline";
 }
 
-AcDb2dPolyline* PyDb2dPolyline::impObj() const
+AcDb2dPolyline* PyDb2dPolyline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcDb2dPolyline*>(m_pImp.get());
 }
 
@@ -2398,9 +1848,6 @@ PyDb3dPolyline::PyDb3dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDb3dPolyline>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 PyDb3dPolyline::PyDb3dPolyline(AcDb::Poly3dType pt, const boost::python::list& vertices, Adesk::Boolean closed)
@@ -2410,117 +1857,75 @@ PyDb3dPolyline::PyDb3dPolyline(AcDb::Poly3dType pt, const boost::python::list& v
 
 double PyDb3dPolyline::length() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     double val;
-    if (auto es = imp->length(val); es != eOk)
+    if (auto es = impObj()->length(val); es != eOk)
         throw PyAcadErrorStatus(es);
     return val;
 }
 
 Acad::ErrorStatus PyDb3dPolyline::setClosed(Adesk::Boolean val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setClosed(val);
+    return impObj()->setClosed(val);
 }
 
 Acad::ErrorStatus PyDb3dPolyline::makeClosed()
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->makeClosed();
+    return impObj()->makeClosed();
 }
 
 Acad::ErrorStatus PyDb3dPolyline::makeOpen()
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->makeOpen();
+    return impObj()->makeOpen();
 }
 
 AcDb::Poly3dType PyDb3dPolyline::polyType() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->polyType();
+    return impObj()->polyType();
 }
 
 Acad::ErrorStatus PyDb3dPolyline::setPolyType(AcDb::Poly3dType val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setPolyType(val);
+    return impObj()->setPolyType(val);
 }
 
 Acad::ErrorStatus PyDb3dPolyline::convertToPolyType(AcDb::Poly3dType val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->convertToPolyType(val);
+    return impObj()->convertToPolyType(val);
 }
 
 Acad::ErrorStatus PyDb3dPolyline::straighten()
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->straighten();
+    return impObj()->straighten();
 }
 
 Acad::ErrorStatus PyDb3dPolyline::splineFit()
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->splineFit();
+    return impObj()->splineFit();
 }
 
 Acad::ErrorStatus PyDb3dPolyline::splineFit(AcDb::Poly3dType splineType, Adesk::Int16 splineSegs)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->splineFit(splineType, splineSegs);
+    return impObj()->splineFit(splineType, splineSegs);
 }
 
 Acad::ErrorStatus PyDb3dPolyline::appendVertex(const PyDb3dPolylineVertex& vt)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->appendVertex(vt.impObj());
+    return impObj()->appendVertex(vt.impObj());
 }
 
 Acad::ErrorStatus PyDb3dPolyline::appendVertex(PyDbObjectId& id, const PyDb3dPolylineVertex& vt)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->appendVertex(id.m_id, vt.impObj());
+    return impObj()->appendVertex(id.m_id, vt.impObj());
 }
 
 Acad::ErrorStatus PyDb3dPolyline::insertVertexAt(const PyDb3dPolylineVertex& pIndexVert, PyDb3dPolylineVertex& pNewVertex)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->insertVertexAt(pIndexVert.impObj(), pNewVertex.impObj());
+    return impObj()->insertVertexAt(pIndexVert.impObj(), pNewVertex.impObj());
 }
 
 Acad::ErrorStatus PyDb3dPolyline::insertVertexAt(PyDbObjectId& newVertId, const PyDbObjectId& indexVertId, PyDb3dPolylineVertex& pNewVertex)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->insertVertexAt(newVertId.m_id, indexVertId.m_id, pNewVertex.impObj());
+    return impObj()->insertVertexAt(newVertId.m_id, indexVertId.m_id, pNewVertex.impObj());
 }
 
 Acad::ErrorStatus PyDb3dPolyline::openVertex(PyDb3dPolylineVertex& vt, const PyDbObjectId& vertId, AcDb::OpenMode mode) const
@@ -2531,11 +1936,8 @@ Acad::ErrorStatus PyDb3dPolyline::openVertex(PyDb3dPolylineVertex& vt, const PyD
 
 Acad::ErrorStatus PyDb3dPolyline::openSequenceEnd(PyDbSequenceEnd& end, AcDb::OpenMode mode)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcDbSequenceEnd* pEnd = nullptr;
-    auto es = imp->openSequenceEnd(pEnd, mode);
+    auto es = impObj()->openSequenceEnd(pEnd, mode);
     if (es == eOk)
         end = PyDbSequenceEnd(pEnd, true);
     return es;
@@ -2543,11 +1945,8 @@ Acad::ErrorStatus PyDb3dPolyline::openSequenceEnd(PyDbSequenceEnd& end, AcDb::Op
 
 boost::python::list PyDb3dPolyline::vertexIds() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     boost::python::list ids;
-    for (std::unique_ptr<AcDbObjectIterator> iter(imp->vertexIterator()); !iter->done(); iter->step())
+    for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->vertexIterator()); !iter->done(); iter->step())
         ids.append(iter->objectId());
     return ids;
 }
@@ -2557,8 +1956,10 @@ std::string PyDb3dPolyline::className()
     return "AcDb3dPolyline";
 }
 
-AcDb3dPolyline* PyDb3dPolyline::impObj() const
+AcDb3dPolyline* PyDb3dPolyline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcDb3dPolyline*>(m_pImp.get());
 }
 
@@ -2606,9 +2007,6 @@ PyDbArc::PyDbArc(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbArc>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 PyDbArc::PyDbArc(const AcGePoint3d& center, double radius, double startAngle, double endAngle)
@@ -2623,114 +2021,72 @@ PyDbArc::PyDbArc(const AcGePoint3d& center, const AcGeVector3d& normal, double r
 
 AcGePoint3d PyDbArc::center() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->center();
+    return impObj()->center();
 }
 
 Acad::ErrorStatus PyDbArc::setCenter(const AcGePoint3d& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setCenter(val);
+    return impObj()->setCenter(val);
 }
 
 double PyDbArc::radius() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->radius();
+    return impObj()->radius();
 }
 
 Acad::ErrorStatus PyDbArc::setRadius(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setRadius(val);
+    return impObj()->setRadius(val);
 }
 
 double PyDbArc::startAngle() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->startAngle();
+    return impObj()->startAngle();
 }
 
 Acad::ErrorStatus PyDbArc::setStartAngle(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setStartAngle(val);
+    return impObj()->setStartAngle(val);
 }
 
 double PyDbArc::endAngle() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->endAngle();
+    return impObj()->endAngle();
 }
 
 Acad::ErrorStatus PyDbArc::setEndAngle(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setEndAngle(val);
+    return impObj()->setEndAngle(val);
 }
 
 double PyDbArc::totalAngle() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->totalAngle();
+    return impObj()->totalAngle();
 }
 
 double PyDbArc::length() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->length();
+    return impObj()->length();
 }
 
 double PyDbArc::thickness() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->thickness();
+    return impObj()->thickness();
 }
 
 Acad::ErrorStatus PyDbArc::setThickness(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setThickness(val);
+    return impObj()->setThickness(val);
 }
 
 AcGeVector3d PyDbArc::normal() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->normal();
+    return impObj()->normal();
 }
 
 Acad::ErrorStatus PyDbArc::setNormal(const AcGeVector3d& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setNormal(val);
+    return impObj()->setNormal(val);
 }
 
 std::string PyDbArc::className()
@@ -2738,8 +2094,10 @@ std::string PyDbArc::className()
     return "AcDbArc";
 }
 
-AcDbArc* PyDbArc::impObj() const
+AcDbArc* PyDbArc::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcDbArc*>(m_pImp.get());
 }
 
@@ -2784,9 +2142,6 @@ PyDbCircle::PyDbCircle(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbCircle>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 PyDbCircle::PyDbCircle(const AcGePoint3d& cntr, const AcGeVector3d& nrm, double radius)
@@ -2796,66 +2151,42 @@ PyDbCircle::PyDbCircle(const AcGePoint3d& cntr, const AcGeVector3d& nrm, double 
 
 AcGePoint3d PyDbCircle::center() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->center();
+    return impObj()->center();
 }
 
 Acad::ErrorStatus PyDbCircle::setCenter(const AcGePoint3d& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setCenter(val);
+    return impObj()->setCenter(val);
 }
 
 double PyDbCircle::radius() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->radius();
+    return impObj()->radius();
 }
 
 Acad::ErrorStatus PyDbCircle::setRadius(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setRadius(val);
+    return impObj()->setRadius(val);
 }
 
 double PyDbCircle::thickness() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->thickness();
+    return impObj()->thickness();
 }
 
 Acad::ErrorStatus PyDbCircle::setThickness(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setThickness(val);
+    return impObj()->setThickness(val);
 }
 
 AcGeVector3d PyDbCircle::normal() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->normal();
+    return impObj()->normal();
 }
 
 Acad::ErrorStatus PyDbCircle::setNormal(const AcGeVector3d& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setNormal(val);
+    return impObj()->setNormal(val);
 }
 
 double PyDbCircle::circumference() const
@@ -2863,10 +2194,7 @@ double PyDbCircle::circumference() const
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->circumference();
+    return impObj()->circumference();
 #endif
 }
 
@@ -2875,10 +2203,7 @@ Acad::ErrorStatus PyDbCircle::setCircumference(double val)
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setCircumference(val);
+    return impObj()->setCircumference(val);
 #endif
 }
 
@@ -2887,10 +2212,7 @@ double PyDbCircle::diameter() const
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->diameter();
+    return impObj()->diameter();
 #endif
 }
 
@@ -2899,10 +2221,7 @@ Acad::ErrorStatus PyDbCircle::setDiameter(double val)
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setDiameter(val);
+    return impObj()->setDiameter(val);
 #endif
 }
 
@@ -2911,8 +2230,10 @@ std::string PyDbCircle::className()
     return "AcDbCircle";
 }
 
-AcDbCircle* PyDbCircle::impObj() const
+AcDbCircle* PyDbCircle::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcDbCircle*>(m_pImp.get());
 }
 
@@ -2954,9 +2275,6 @@ PyDbLine::PyDbLine(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbLine>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 PyDbLine::PyDbLine(const AcGePoint3d& start, const AcGePoint3d& end)
@@ -2966,76 +2284,49 @@ PyDbLine::PyDbLine(const AcGePoint3d& start, const AcGePoint3d& end)
 
 AcGePoint3d PyDbLine::startPoint() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->startPoint();
+    return impObj()->startPoint();
 }
 
 Acad::ErrorStatus PyDbLine::setStartPoint(const AcGePoint3d& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setStartPoint(val);
+    return impObj()->setStartPoint(val);
 }
 
 AcGePoint3d PyDbLine::endPoint() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->endPoint();
+    return impObj()->endPoint();
 }
 
 Acad::ErrorStatus PyDbLine::setEndPoint(const AcGePoint3d& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setEndPoint(val);
+    return impObj()->setEndPoint(val);
 }
 
 double PyDbLine::thickness() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->thickness();
+    return impObj()->thickness();
 }
 
 Acad::ErrorStatus PyDbLine::setThickness(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setThickness(val);
+    return impObj()->setThickness(val);
 }
 
 AcGeVector3d PyDbLine::normal() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->normal();
+    return impObj()->normal();
 }
 
 Acad::ErrorStatus PyDbLine::setNormal(const AcGeVector3d& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setNormal(val);
+    return impObj()->setNormal(val);
 }
 
 boost::python::list PyDbLine::getOffsetCurvesGivenPlaneNormal(const AcGeVector3d& normal, double offsetDist) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     boost::python::list curves;
     AcDbVoidPtrArray offsetCurves;
-    if (auto es = imp->getOffsetCurvesGivenPlaneNormal(normal, offsetDist, offsetCurves); es != eOk)
+    if (auto es = impObj()->getOffsetCurvesGivenPlaneNormal(normal, offsetDist, offsetCurves); es != eOk)
         throw PyAcadErrorStatus(es);
     for (auto ptr : offsetCurves)
         curves.append(PyDbEntity(static_cast<AcDbEntity*>(ptr), true));
@@ -3047,8 +2338,10 @@ std::string PyDbLine::className()
     return "AcDbLine";
 }
 
-AcDbLine* PyDbLine::impObj() const
+AcDbLine* PyDbLine::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcDbLine*>(m_pImp.get());
 }
 
@@ -3132,328 +2425,217 @@ PyDbPolyline::PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbPolyline>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 AcGePoint3d PyDbPolyline::getPoint3dAt(unsigned int idx) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePoint3d pnt;
-    if (auto es = imp->getPointAt(idx, pnt); es != eOk)
+    if (auto es = impObj()->getPointAt(idx, pnt); es != eOk)
         throw PyAcadErrorStatus(es);
     return pnt;
 }
 
 AcGePoint2d PyDbPolyline::getPoint2dAt(unsigned int idx) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePoint2d pnt;
-    if (auto es = imp->getPointAt(idx, pnt); es != eOk)
+    if (auto es = impObj()->getPointAt(idx, pnt); es != eOk)
         throw PyAcadErrorStatus(es);
     return pnt;
 }
 
 AcDbPolyline::SegType PyDbPolyline::segType(unsigned int index) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->segType(index);
+    return impObj()->segType(index);
 }
 
 Adesk::Boolean PyDbPolyline::onSegAt(unsigned int index, const AcGePoint2d& pt2d, double param) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     double _param = param;
-    return imp->onSegAt(index, pt2d, _param);
+    return impObj()->onSegAt(index, pt2d, _param);
 }
 
 PyGeLineSeg2d PyDbPolyline::getLineSeg2dAt(unsigned int index)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGeLineSeg2d seg;
-    if (auto es = imp->getLineSegAt(index, seg); es != eOk)
+    if (auto es = impObj()->getLineSegAt(index, seg); es != eOk)
         throw PyAcadErrorStatus(es);
     return PyGeLineSeg2d(seg.copy());
 }
 
 PyGeLineSeg3d PyDbPolyline::getLineSeg3dAt(unsigned int index)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGeLineSeg3d seg;
-    if (auto es = imp->getLineSegAt(index, seg); es != eOk)
+    if (auto es = impObj()->getLineSegAt(index, seg); es != eOk)
         throw PyAcadErrorStatus(es);
     return PyGeLineSeg3d(seg.copy());
 }
 
 PyGeCircArc2d PyDbPolyline::getArcSeg2dAt(unsigned int index)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGeCircArc2d seg;
-    if (auto es = imp->getArcSegAt(index, seg); es != eOk)
+    if (auto es = impObj()->getArcSegAt(index, seg); es != eOk)
         throw PyAcadErrorStatus(es);
     return PyGeCircArc2d(seg.copy());
 }
 
 PyGeCircArc3d PyDbPolyline::getArcSeg3dAt(unsigned int index)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGeCircArc3d seg;
-    if (auto es = imp->getArcSegAt(index, seg); es != eOk)
+    if (auto es = impObj()->getArcSegAt(index, seg); es != eOk)
         throw PyAcadErrorStatus(es);
     return PyGeCircArc3d(seg.copy());
 }
 
 void PyDbPolyline::setClosed(Adesk::Boolean val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->setClosed(val);
+    impObj()->setClosed(val);
 }
 
 void PyDbPolyline::setPlinegen(Adesk::Boolean val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->setPlinegen(val);
+    impObj()->setPlinegen(val);
 }
 
 void PyDbPolyline::setElevation(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->setElevation(val);
+    impObj()->setElevation(val);
 }
 
 Acad::ErrorStatus PyDbPolyline::setThickness(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setThickness(val);
+    return impObj()->setThickness(val);
 }
 
 Acad::ErrorStatus PyDbPolyline::setConstantWidth(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setConstantWidth(val);
+    return impObj()->setConstantWidth(val);
 }
 
 Acad::ErrorStatus PyDbPolyline::setNormal(const AcGeVector3d& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setNormal(val);
+    return impObj()->setNormal(val);
 }
 
 Adesk::Boolean PyDbPolyline::isOnlyLines() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isOnlyLines();
+    return impObj()->isOnlyLines();
 }
 
 Adesk::Boolean PyDbPolyline::hasPlinegen() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->hasPlinegen();
+    return impObj()->hasPlinegen();
 }
 
 double PyDbPolyline::elevation() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->elevation();
+    return impObj()->elevation();
 }
 
 double PyDbPolyline::thickness() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->thickness();
+    return impObj()->thickness();
 }
 
 double PyDbPolyline::getConstantWidth() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     double w;
-    if (auto es = imp->getConstantWidth(w); es != eOk)
+    if (auto es = impObj()->getConstantWidth(w); es != eOk)
         throw PyAcadErrorStatus(es);
     return w;
 }
 
 AcGeVector3d PyDbPolyline::normal() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->normal();
+    return impObj()->normal();
 }
 
 Acad::ErrorStatus PyDbPolyline::addVertexAt1(unsigned int index, const AcGePoint2d& pnt)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->addVertexAt(index, pnt, 0.0, 0.0, 0.0);
+    return impObj()->addVertexAt(index, pnt, 0.0, 0.0, 0.0);
 }
 
 Acad::ErrorStatus PyDbPolyline::addVertexAt2(unsigned int index, const AcGePoint2d& pnt, double bulge, double startWidth, double endWidth)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->addVertexAt(index, pnt, bulge, startWidth, endWidth);
+    return impObj()->addVertexAt(index, pnt, bulge, startWidth, endWidth);
 }
 
 Acad::ErrorStatus PyDbPolyline::removeVertexAt(unsigned int index)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->removeVertexAt(index);
+    return impObj()->removeVertexAt(index);
 }
 
 unsigned int PyDbPolyline::numVerts() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->numVerts();
+    return impObj()->numVerts();
 }
 
 double PyDbPolyline::getBulgeAt(unsigned int index) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     double w;
-    if (auto es = imp->getBulgeAt(index, w); es != eOk)
+    if (auto es = impObj()->getBulgeAt(index, w); es != eOk)
         throw PyAcadErrorStatus(es);
     return w;
 }
 
 double PyDbPolyline::getStartWidthAt(unsigned int index) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     double s, e;
-    if (auto es = imp->getWidthsAt(index, s, e); es != eOk)
+    if (auto es = impObj()->getWidthsAt(index, s, e); es != eOk)
         throw PyAcadErrorStatus(es);
     return s;
 }
 
 double PyDbPolyline::getEndWidthAt(unsigned int index) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     double s, e;
-    if (auto es = imp->getWidthsAt(index, s, e); es != eOk)
+    if (auto es = impObj()->getWidthsAt(index, s, e); es != eOk)
         throw PyAcadErrorStatus(es);
     return e;
 }
 
 Acad::ErrorStatus PyDbPolyline::setPointAt(unsigned int index, const AcGePoint2d& pt)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setPointAt(index, pt);
+    return impObj()->setPointAt(index, pt);
 }
 
 Acad::ErrorStatus PyDbPolyline::setBulgeAt(unsigned int index, double bulge)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setBulgeAt(index, bulge);
+    return impObj()->setBulgeAt(index, bulge);
 }
 
 Acad::ErrorStatus PyDbPolyline::setWidthsAt(unsigned int index, double startWidth, double endWidth)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setWidthsAt(index, startWidth, endWidth);
+    return impObj()->setWidthsAt(index, startWidth, endWidth);
 }
 
 Acad::ErrorStatus PyDbPolyline::minimizeMemory()
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->minimizeMemory();
+    return impObj()->minimizeMemory();
 }
 
 Acad::ErrorStatus PyDbPolyline::maximizeMemory()
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->maximizeMemory();
+    return impObj()->maximizeMemory();
 }
 
 void PyDbPolyline::reset(Adesk::Boolean reuse, unsigned int numVerts)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->reset(reuse, numVerts);
+    impObj()->reset(reuse, numVerts);
 }
 
 Adesk::Boolean PyDbPolyline::hasBulges() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->hasBulges();
+    return impObj()->hasBulges();
 }
 
 Adesk::Boolean PyDbPolyline::hasVertexIdentifiers() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->hasVertexIdentifiers();
+    return impObj()->hasVertexIdentifiers();
 }
 
 Adesk::Boolean PyDbPolyline::hasWidth() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->hasWidth();
+    return impObj()->hasWidth();
 }
 
 Acad::ErrorStatus PyDbPolyline::makeClosedIfStartAndEndVertexCoincide(double distTol)
@@ -3461,10 +2643,7 @@ Acad::ErrorStatus PyDbPolyline::makeClosedIfStartAndEndVertexCoincide(double dis
 #ifndef ARXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->makeClosedIfStartAndEndVertexCoincide(distTol);
+    return impObj()->makeClosedIfStartAndEndVertexCoincide(distTol);
 #endif
 }
 
@@ -3473,8 +2652,10 @@ std::string PyDbPolyline::className()
     return "AcDbPolyline";
 }
 
-AcDbPolyline* PyDbPolyline::impObj() const
+AcDbPolyline* PyDbPolyline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcDbPolyline*>(m_pImp.get());
 }
 
@@ -3524,16 +2705,10 @@ PyDbFace::PyDbFace(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbFace>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 AcGePoint3d PyDbFace::getVertexAt(Adesk::UInt16 val) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePoint3d rPoint;
     if (auto es = impObj()->getVertexAt(val, rPoint); es != eOk)
         throw PyAcadErrorStatus(es);
@@ -3542,17 +2717,11 @@ AcGePoint3d PyDbFace::getVertexAt(Adesk::UInt16 val) const
 
 Acad::ErrorStatus PyDbFace::setVertexAt(Adesk::UInt16 val, const AcGePoint3d& pnt)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setVertexAt(val, pnt);
+    return impObj()->setVertexAt(val, pnt);
 }
 
 Adesk::Boolean PyDbFace::isEdgeVisibleAt(Adesk::UInt16 val) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     Adesk::Boolean rval;
     if (auto es = impObj()->isEdgeVisibleAt(val, rval); es != eOk)
         throw PyAcadErrorStatus(es);
@@ -3561,18 +2730,12 @@ Adesk::Boolean PyDbFace::isEdgeVisibleAt(Adesk::UInt16 val) const
 
 Acad::ErrorStatus PyDbFace::makeEdgeVisibleAt(Adesk::UInt16 val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->makeEdgeVisibleAt(val);
+    return impObj()->makeEdgeVisibleAt(val);
 }
 
 Acad::ErrorStatus PyDbFace::makeEdgeInvisibleAt(Adesk::UInt16 val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->makeEdgeInvisibleAt(val);
+    return impObj()->makeEdgeInvisibleAt(val);
 }
 
 std::string PyDbFace::className()
@@ -3580,7 +2743,10 @@ std::string PyDbFace::className()
     return "AcDbFace";
 }
 
-AcDbFace* PyDbFace::impObj() const
+AcDbFace* PyDbFace::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcDbFace*>(m_pImp.get());
 }
+

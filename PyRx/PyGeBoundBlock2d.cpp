@@ -55,123 +55,84 @@ PyGeBoundBlock2d::PyGeBoundBlock2d(const AcGeBoundBlock2d& block)
 
 AcGePoint2d PyGeBoundBlock2d::getMinPoint() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePoint2d min, max;
-    imp->getMinMaxPoints(min, max);
+    impObj()->getMinMaxPoints(min, max);
     return min;
 }
 
 AcGePoint2d PyGeBoundBlock2d::getMaxPoint() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePoint2d min, max;
-    imp->getMinMaxPoints(min, max);
+    impObj()->getMinMaxPoints(min, max);
     return max;
 }
 
 AcGePoint2d PyGeBoundBlock2d::getBasePoint() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePoint2d base;
     AcGeVector2d dir1, dir2;
-    imp->get(base, dir1, dir2);
+    impObj()->get(base, dir1, dir2);
     return base;
 }
 
 AcGeVector2d PyGeBoundBlock2d::getDirection1() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePoint2d base;
     AcGeVector2d dir1, dir2;
-    imp->get(base, dir1, dir2);
+    impObj()->get(base, dir1, dir2);
     return dir1;
 }
 
 AcGeVector2d PyGeBoundBlock2d::getDirection2() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePoint2d base;
     AcGeVector2d dir1, dir2;
-    imp->get(base, dir1, dir2);
+    impObj()->get(base, dir1, dir2);
     return dir2;
 }
 
 PyGeBoundBlock2d& PyGeBoundBlock2d::set1(const AcGePoint2d& point1, const AcGePoint2d& point2)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->set(point1, point2);
+    impObj()->set(point1, point2);
     return *this;
 }
 
 PyGeBoundBlock2d& PyGeBoundBlock2d::set2(const AcGePoint2d& base, const AcGeVector2d& dir1, const AcGeVector2d& dir2)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->set(base, dir1, dir2);
+    impObj()->set(base, dir1, dir2);
     return *this;
 }
 
 PyGeBoundBlock2d& PyGeBoundBlock2d::extend(const AcGePoint2d& point)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->extend(point);
+    impObj()->extend(point);
     return *this;
 }
 
 PyGeBoundBlock2d& PyGeBoundBlock2d::swell(double distance)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->swell(distance);
+    impObj()->swell(distance);
     return *this;
 }
 
 Adesk::Boolean PyGeBoundBlock2d::contains(const AcGePoint2d& point) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->contains(point);
+    return impObj()->contains(point);
 }
 
 Adesk::Boolean PyGeBoundBlock2d::isDisjoint(const PyGeBoundBlock2d& block)
 {
-    auto imp = impObj();
-    if (imp == nullptr || block.isNull())
-        throw PyNullObject();
-    return imp->isDisjoint(*block.impObj());
+    return impObj()->isDisjoint(*block.impObj());
 }
 
 Adesk::Boolean PyGeBoundBlock2d::isBox() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isBox();
+    return impObj()->isBox();
 }
 
 AcGeBoundBlock2d& PyGeBoundBlock2d::setToBox(Adesk::Boolean val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setToBox(val);
+    return impObj()->setToBox(val);
 }
 
 std::string PyGeBoundBlock2d::className()
@@ -179,7 +140,9 @@ std::string PyGeBoundBlock2d::className()
     return "AcGeBoundBlock2d";
 }
 
-AcGeBoundBlock2d* PyGeBoundBlock2d::impObj() const
+AcGeBoundBlock2d* PyGeBoundBlock2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcGeBoundBlock2d*>(m_imp.get());
 }

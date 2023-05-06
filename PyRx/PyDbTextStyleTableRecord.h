@@ -44,6 +44,6 @@ public:
 
     static std::string className();
 public:
-    AcDbTextStyleTableRecord* impObj() const;
+    AcDbTextStyleTableRecord* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 

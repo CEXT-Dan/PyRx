@@ -78,7 +78,7 @@ public:
     static std::string className();
 
 public:
-    AcDbText* impObj() const;
+    AcDbText* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -128,7 +128,7 @@ public:
 
     static std::string className();
 public:
-    AcDbAttributeDefinition* impObj() const;
+    AcDbAttributeDefinition* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -171,7 +171,7 @@ public:
 
     static std::string className();
 public:
-    AcDbAttribute* impObj() const;
+    AcDbAttribute* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -218,7 +218,7 @@ public:
 
     static std::string className();
 public:
-    AcDbBlockReference* impObj() const;
+    AcDbBlockReference* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -245,10 +245,9 @@ public:
     double             rowSpacing() const;
     Acad::ErrorStatus  setRowSpacing(double val);
 
-
     static std::string className();
 public:
-    AcDbMInsertBlock* impObj() const;
+    AcDbMInsertBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-------------------------------------------------------------------------------------------------------------
@@ -262,9 +261,8 @@ public:
     virtual ~PyDbVertex() = default;
     static std::string className();
 public:
-    AcDbVertex* impObj() const;
+    AcDbVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 //-------------------------------------------------------------------------------------------------------------
 //PyDb2dVertex
@@ -306,7 +304,7 @@ public:
 
     static std::string className();
 public:
-    AcDb2dVertex* impObj() const;
+    AcDb2dVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-------------------------------------------------------------------------------------------------------------
@@ -328,7 +326,7 @@ public:
 
     static std::string className();
 public:
-    AcDb3dPolylineVertex* impObj() const;
+    AcDb3dPolylineVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-------------------------------------------------------------------------------------------------------------
@@ -350,7 +348,7 @@ public:
 
     static std::string className();
 public:
-    AcDbPolygonMeshVertex* impObj() const;
+    AcDbPolygonMeshVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-------------------------------------------------------------------------------------------------------------
@@ -370,7 +368,7 @@ public:
 
     static std::string className();
 public:
-    AcDbPolyFaceMeshVertex* impObj() const;
+    AcDbPolyFaceMeshVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
@@ -396,7 +394,7 @@ public:
 
     static std::string className();
 public:
-    AcDbFaceRecord* impObj() const;
+    AcDbFaceRecord* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
@@ -427,7 +425,7 @@ public:
     static std::string className();
 
 public:
-    AcDbPoint* impObj() const;
+    AcDbPoint* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
@@ -496,7 +494,7 @@ public:
 
     static std::string className();
 public:
-    AcDb2dPolyline* impObj() const;
+    AcDb2dPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -537,7 +535,7 @@ public:
 
     static std::string className();
 public:
-    AcDb3dPolyline* impObj() const;
+    AcDb3dPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -576,7 +574,7 @@ public:
 
     static std::string className();
 public:
-    AcDbArc* impObj() const;
+    AcDbArc* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -611,7 +609,7 @@ public:
 
     static std::string className();
 public:
-    AcDbCircle* impObj() const;
+    AcDbCircle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -642,7 +640,7 @@ public:
 
     static std::string className();
 public:
-    AcDbLine* impObj() const;
+    AcDbLine* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -710,7 +708,7 @@ public:
 
     static std::string className();
 public:
-    AcDbPolyline* impObj() const;
+    AcDbPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -748,5 +746,5 @@ public:
 
     static std::string className();
 public:
-    AcDbFace* impObj() const;
+    AcDbFace* impObj(const std::source_location& src = std::source_location::current()) const;
 };

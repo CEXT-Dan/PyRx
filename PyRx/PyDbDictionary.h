@@ -17,5 +17,5 @@ public:
 
     static std::string className();
 public:
-    AcDbDictionary* impObj() const;
+    AcDbDictionary* impObj(const std::source_location& src = std::source_location::current()) const;
 };

@@ -36,6 +36,6 @@ public:
 
     static std::string className();
 public:
-    AcDbField* impObj() const;
+    AcDbField* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 

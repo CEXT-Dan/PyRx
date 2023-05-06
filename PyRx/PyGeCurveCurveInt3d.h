@@ -14,6 +14,6 @@ public:
     PyGeCurveCurveInt3d(AcGeEntity3d* pEnt);
     static std::string className();
 public:
-    AcGeCurveCurveInt3d* impObj() const;
+    AcGeCurveCurveInt3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 

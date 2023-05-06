@@ -68,6 +68,6 @@ public:
     static std::string className();
 
 public:
-    AcApDocManager* impObj() const;
+    AcApDocManager* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 

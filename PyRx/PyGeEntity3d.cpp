@@ -50,115 +50,74 @@ bool PyGeEntity3d::operator!=(PyGeEntity3d const& rhs) const
 
 Adesk::Boolean PyGeEntity3d::isKindOf(AcGe::EntityId entType) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isKindOf(entType);
+    return impObj()->isKindOf(entType);
 }
 
 AcGe::EntityId PyGeEntity3d::type() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->type();
+    return impObj()->type();
 }
 
 PyGeEntity3d PyGeEntity3d::copy() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return PyGeEntity3d(imp->copy());
+    return PyGeEntity3d(impObj()->copy());
 }
 
 Adesk::Boolean PyGeEntity3d::isEqualTo(const PyGeEntity3d& ent, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    if (ent.isNull())
-        throw PyNullObject();
-    return imp->isEqualTo(*ent.impObj(), tol);
+    return impObj()->isEqualTo(*ent.impObj(), tol);
 }
 
 PyGeEntity3d& PyGeEntity3d::transformBy(const AcGeMatrix3d& xfm)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->transformBy(xfm);
+    impObj()->transformBy(xfm);
     return *this;
 }
 
 PyGeEntity3d& PyGeEntity3d::translateBy(const AcGeVector3d& translateVec)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->translateBy(translateVec);
+    impObj()->translateBy(translateVec);
     return *this;
 }
 
 PyGeEntity3d& PyGeEntity3d::rotateBy1(double angle, const AcGeVector3d& vec)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->rotateBy(angle,vec);
+    impObj()->rotateBy(angle,vec);
     return *this;
 }
 
 PyGeEntity3d& PyGeEntity3d::rotateBy2(double angle, const AcGeVector3d& vec, const AcGePoint3d& wrtPoint)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->rotateBy(angle, vec, wrtPoint);
+    impObj()->rotateBy(angle, vec, wrtPoint);
     return *this;
 }
 
 PyGeEntity3d& PyGeEntity3d::mirror(const PyGePlane& plane)
 {
-    auto imp = impObj();
-    if (imp == nullptr || plane.isNull())
-        throw PyNullObject();
-    imp->mirror(*plane.impObj());
+    impObj()->mirror(*plane.impObj());
     return *this;
 }
 
 PyGeEntity3d& PyGeEntity3d::scaleBy1(double scaleFactor)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->scaleBy(scaleFactor);
+    impObj()->scaleBy(scaleFactor);
     return *this;
 }
 
 PyGeEntity3d& PyGeEntity3d::scaleBy2(double scaleFactor, const AcGePoint3d& wrtPoint)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->scaleBy(scaleFactor, wrtPoint);
+    impObj()->scaleBy(scaleFactor, wrtPoint);
     return *this;
 }
 
 Adesk::Boolean PyGeEntity3d::isOn1(const AcGePoint3d& pnt) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isOn(pnt);
+    return impObj()->isOn(pnt);
 }
 
 Adesk::Boolean PyGeEntity3d::isOn2(const AcGePoint3d& pnt, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isOn(pnt, tol);
+    return impObj()->isOn(pnt, tol);
 }
 
 bool PyGeEntity3d::isNull() const
@@ -171,7 +130,9 @@ std::string PyGeEntity3d::className()
     return "AcGeEntity3d";
 }
 
-AcGeEntity3d* PyGeEntity3d::impObj() const
+AcGeEntity3d* PyGeEntity3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject(src);
     return m_imp.get();
 }

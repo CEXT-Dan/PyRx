@@ -167,9 +167,9 @@ std::string PyGePlanarEnt::className()
     return "AcGePlanarEnt";
 }
 
-AcGePlanarEnt* PyGePlanarEnt::impObj() const
+AcGePlanarEnt* PyGePlanarEnt::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_imp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcGePlanarEnt*>(m_imp.get());
 }

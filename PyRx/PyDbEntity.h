@@ -103,7 +103,7 @@ public:
     static std::string className();
 
 public:
-    AcDbEntity* impObj() const;
+    AcDbEntity* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
@@ -117,7 +117,7 @@ public:
     virtual ~PyDbBlockBegin() = default;
     static std::string className();
 public:
-    AcDbBlockBegin* impObj() const;
+    AcDbBlockBegin* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-------------------------------------------------------------------------------------------------------------
@@ -130,7 +130,7 @@ public:
     virtual ~PyDbBlockEnd() = default;
     static std::string className();
 public:
-    AcDbBlockEnd* impObj() const;
+    AcDbBlockEnd* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
@@ -144,5 +144,5 @@ public:
     virtual ~PyDbSequenceEnd() = default;
     static std::string className();
 public:
-    AcDbSequenceEnd* impObj() const;
+    AcDbSequenceEnd* impObj(const std::source_location& src = std::source_location::current()) const;
 };

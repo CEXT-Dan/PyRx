@@ -154,10 +154,10 @@ std::string PyGePlane::className()
     return "AcGePlane";
 }
 
-AcGePlane* PyGePlane::impObj() const
+AcGePlane* PyGePlane::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_imp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcGePlane*>(m_imp.get());
 }
 
@@ -273,9 +273,9 @@ std::string PyGeBoundedPlane::className()
     return "AcGeBoundedPlane";
 }
 
-AcGeBoundedPlane* PyGeBoundedPlane::impObj() const
+AcGeBoundedPlane* PyGeBoundedPlane::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_imp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcGeBoundedPlane*>(m_imp.get());
 }

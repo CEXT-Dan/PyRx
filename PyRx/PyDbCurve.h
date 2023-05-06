@@ -53,6 +53,6 @@ public:
     static std::string className();
 
 public:
-    AcDbCurve* impObj() const;
+    AcDbCurve* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 

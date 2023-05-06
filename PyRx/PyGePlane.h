@@ -39,7 +39,7 @@ public:
 
     static std::string className();
 public:
-    AcGePlane* impObj() const;
+    AcGePlane* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
@@ -70,5 +70,5 @@ public:
 
     static std::string className();
 public:
-    AcGeBoundedPlane* impObj() const;
+    AcGeBoundedPlane* impObj(const std::source_location& src = std::source_location::current()) const;
 };

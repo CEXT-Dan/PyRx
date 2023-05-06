@@ -178,7 +178,7 @@ public:
 
     static std::string className();
 public:
-    AcDbDimension* impObj() const;
+    AcDbDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -234,7 +234,7 @@ public:
 
     static std::string className();
 public:
-    AcDb2LineAngularDimension* impObj() const;
+    AcDb2LineAngularDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -283,7 +283,7 @@ public:
 
     static std::string className();
 public:
-    AcDb3PointAngularDimension* impObj() const;
+    AcDb3PointAngularDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -332,7 +332,7 @@ public:
 
     static std::string className();
 public:
-    AcDbAlignedDimension* impObj() const;
+    AcDbAlignedDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -400,7 +400,7 @@ public:
 
     static std::string className();
 public:
-    AcDbArcDimension* impObj() const;
+    AcDbArcDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -446,7 +446,7 @@ public:
 
     static std::string className();
 public:
-    AcDbDiametricDimension* impObj() const;
+    AcDbDiametricDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -498,7 +498,7 @@ public:
 
     static std::string className();
 public:
-    AcDbOrdinateDimension* impObj() const;
+    AcDbOrdinateDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -547,7 +547,7 @@ public:
 
     static std::string className();
 public:
-    AcDbRadialDimension* impObj() const;
+    AcDbRadialDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -610,7 +610,7 @@ public:
 
     static std::string className();
 public:
-    AcDbRadialDimensionLarge* impObj() const;
+    AcDbRadialDimensionLarge* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -668,5 +668,5 @@ public:
 
     static std::string  className();
 public:
-    AcDbRotatedDimension* impObj() const;
+    AcDbRotatedDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };

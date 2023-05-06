@@ -81,10 +81,10 @@ std::string PyDb3dSolid::className()
     return "AcDb3dSolid";
 }
 
-AcDb3dSolid* PyDb3dSolid::impObj() const
+AcDb3dSolid* PyDb3dSolid::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcDb3dSolid*>(m_pImp.get());
 }
 
@@ -125,10 +125,10 @@ std::string PyDbRegion::className()
     return "AcDbRegion";
 }
 
-AcDbRegion* PyDbRegion::impObj() const
+AcDbRegion* PyDbRegion::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcDbRegion*>(m_pImp.get());
 }
 
@@ -167,10 +167,10 @@ std::string PyDbBody::className()
     return "AcDbBody";
 }
 
-AcDbBody* PyDbBody::impObj() const
+AcDbBody* PyDbBody::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcDbBody*>(m_pImp.get());
 }
 

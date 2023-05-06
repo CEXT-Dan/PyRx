@@ -35,6 +35,6 @@ public:
 
     static std::string className();
 public:
-    AcGeBoundBlock2d* impObj() const;
+    AcGeBoundBlock2d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 

@@ -94,8 +94,8 @@ int PyApDocument::getCountOfLispList() const
 boost::python::tuple PyApDocument::getItemOfLispList(int nIndex) const
 {
     AcLispAppInfo* info = impObj()->GetItemOfLispList(nIndex);
-    if(info == nullptr)
-        throw PyNullObject();
+    if (info == nullptr)
+        throw PyAcadErrorStatus(eNullPtr);
     return boost::python::make_tuple(wstr_to_utf8(info->appFileName), info->bUnloadable);
 }
 
@@ -134,9 +134,9 @@ std::string PyApDocument::className()
     return std::string{ "AcApDocument" };
 }
 
-AcApDocument* PyApDocument::impObj() const
+AcApDocument* PyApDocument::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcApDocument*>(m_pImp.get());
 }

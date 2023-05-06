@@ -44,134 +44,92 @@ PyGeBoundBlock3d::PyGeBoundBlock3d(const AcGePoint3d& base, const AcGeVector3d& 
 
 AcGePoint3d PyGeBoundBlock3d::getMinPoint() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePoint3d min, max;
-    imp->getMinMaxPoints(min, max);
+    impObj()->getMinMaxPoints(min, max);
     return min;
 }
 
 AcGePoint3d PyGeBoundBlock3d::getMaxPoint() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePoint3d min, max;
-    imp->getMinMaxPoints(min, max);
+    impObj()->getMinMaxPoints(min, max);
     return max;
 }
 
 AcGePoint3d PyGeBoundBlock3d::getBasePoint() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePoint3d base;
     AcGeVector3d dir1, dir2, dir3;
-    imp->get(base, dir1, dir2,dir3);
+    impObj()->get(base, dir1, dir2,dir3);
     return base;
 }
 
 AcGeVector3d PyGeBoundBlock3d::getDirection1() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePoint3d base;
     AcGeVector3d dir1, dir2, dir3;
-    imp->get(base, dir1, dir2, dir3);
+    impObj()->get(base, dir1, dir2, dir3);
     return dir1;
 }
 
 AcGeVector3d PyGeBoundBlock3d::getDirection2() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePoint3d base;
     AcGeVector3d dir1, dir2, dir3;
-    imp->get(base, dir1, dir2, dir3);
+    impObj()->get(base, dir1, dir2, dir3);
     return dir2;
 }
 
 AcGeVector3d PyGeBoundBlock3d::getDirection3() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePoint3d base;
     AcGeVector3d dir1, dir2, dir3;
-    imp->get(base, dir1, dir2, dir3);
+    impObj()->get(base, dir1, dir2, dir3);
     return dir3;
 }
 
 PyGeBoundBlock3d& PyGeBoundBlock3d::set1(const AcGePoint3d& point1, const AcGePoint3d& point2)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->set(point1, point2);
+    impObj()->set(point1, point2);
     return *this;
 }
 
 PyGeBoundBlock3d& PyGeBoundBlock3d::set2(const AcGePoint3d& base, const AcGeVector3d& dir1, const AcGeVector3d& dir2, const AcGeVector3d& dir3)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->set(base, dir1, dir2, dir3);
+    impObj()->set(base, dir1, dir2, dir3);
     return *this;
 }
 
 PyGeBoundBlock3d& PyGeBoundBlock3d::extend(const AcGePoint3d& point)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->extend(point);
+    impObj()->extend(point);
     return *this;
 }
 
 PyGeBoundBlock3d& PyGeBoundBlock3d::swell(double distance)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->swell(distance);
+    impObj()->swell(distance);
     return *this;
 }
 
 Adesk::Boolean PyGeBoundBlock3d::contains(const AcGePoint3d& point) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->contains(point);
+    return impObj()->contains(point);
 }
 
 Adesk::Boolean PyGeBoundBlock3d::isDisjoint(const PyGeBoundBlock3d& block) const
 {
-    auto imp = impObj();
-    if (imp == nullptr || block.isNull())
-        throw PyNullObject();
-    return imp->isDisjoint(*block.impObj());
+    return impObj()->isDisjoint(*block.impObj());
 }
 
 Adesk::Boolean PyGeBoundBlock3d::isBox() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isBox();
+    return impObj()->isBox();
 }
 
 PyGeBoundBlock3d& PyGeBoundBlock3d::setToBox(Adesk::Boolean val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->setToBox(val);
+    impObj()->setToBox(val);
     return *this;
 }
 
@@ -180,7 +138,9 @@ std::string PyGeBoundBlock3d::className()
     return "AcGeBoundBlock3d";
 }
 
-AcGeBoundBlock3d* PyGeBoundBlock3d::impObj() const
+AcGeBoundBlock3d* PyGeBoundBlock3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcGeBoundBlock3d*>(m_imp.get());
 }

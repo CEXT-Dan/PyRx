@@ -44,34 +44,22 @@ PyAcGeSurface::PyAcGeSurface(AcGeEntity3d* pEnt)
 
 AcGePoint2d PyAcGeSurface::paramOf(const AcGePoint3d& pnt) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->paramOf(pnt);
+    return impObj()->paramOf(pnt);
 }
 
 AcGePoint2d PyAcGeSurface::paramOfTol(const AcGePoint3d& pnt, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->paramOf(pnt, tol);
+    return impObj()->paramOf(pnt, tol);
 }
 
 Adesk::Boolean PyAcGeSurface::isOn1(const AcGePoint3d& pnt) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isOn(pnt);
+    return impObj()->isOn(pnt);
 }
 
 Adesk::Boolean PyAcGeSurface::isOn2(const AcGePoint3d& pnt, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isOn(pnt, tol);
+    return impObj()->isOn(pnt, tol);
 }
 
 Adesk::Boolean PyAcGeSurface::isOn3(const AcGePoint3d& pnt, AcGePoint2d& paramPoint) const
@@ -79,10 +67,7 @@ Adesk::Boolean PyAcGeSurface::isOn3(const AcGePoint3d& pnt, AcGePoint2d& paramPo
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isOn(pnt, paramPoint);
+    return impObj()->isOn(pnt, paramPoint);
 #endif
 }
 
@@ -91,137 +76,89 @@ Adesk::Boolean PyAcGeSurface::isOn4(const AcGePoint3d& pnt, AcGePoint2d& paramPo
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isOn(pnt, paramPoint, tol);
+    return impObj()->isOn(pnt, paramPoint, tol);
 #endif
 }
 
 AcGePoint3d PyAcGeSurface::closestPointTo1(const AcGePoint3d& pnt) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->closestPointTo(pnt);
+    return impObj()->closestPointTo(pnt);
 }
 
 AcGePoint3d PyAcGeSurface::closestPointTo2(const AcGePoint3d& pnt, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->closestPointTo(pnt, tol);
+    return impObj()->closestPointTo(pnt, tol);
 }
 
 PyGePointOnSurface PyAcGeSurface::getClosestPointTo1(const AcGePoint3d& pnt) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePointOnSurface pos;
-    imp->getClosestPointTo(pnt, pos);
+    impObj()->getClosestPointTo(pnt, pos);
     return PyGePointOnSurface(pos.copy());
 }
 
 PyGePointOnSurface PyAcGeSurface::getClosestPointTo2(const AcGePoint3d& pnt, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGePointOnSurface pos;
-    imp->getClosestPointTo(pnt, pos, tol);
+    impObj()->getClosestPointTo(pnt, pos, tol);
     return PyGePointOnSurface(pos.copy());
 }
 
 double PyAcGeSurface::distanceTo1(const AcGePoint3d& pnt) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->distanceTo(pnt);
+    return impObj()->distanceTo(pnt);
 }
 
 double PyAcGeSurface::distanceTo2(const AcGePoint3d& pnt, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->distanceTo(pnt, tol);
+    return impObj()->distanceTo(pnt, tol);
 }
 
 Adesk::Boolean PyAcGeSurface::isNormalReversed() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isNormalReversed();
+    return impObj()->isNormalReversed();
 }
 
 PyAcGeSurface& PyAcGeSurface::reverseNormal()
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->reverseNormal();
+    impObj()->reverseNormal();
     return *this;
 }
 
 void PyAcGeSurface::getEnvelope(PyGeInterval& intrvlX, PyGeInterval& intrvlY) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->getEnvelope(intrvlX.imp, intrvlY.imp);
+    impObj()->getEnvelope(intrvlX.imp, intrvlY.imp);
 }
 
 Adesk::Boolean PyAcGeSurface::isClosedInU1() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isClosedInU();
+    return impObj()->isClosedInU();
 }
 
 Adesk::Boolean PyAcGeSurface::isClosedInU2(const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isClosedInU(tol);
+    return impObj()->isClosedInU(tol);
 }
 
 Adesk::Boolean PyAcGeSurface::isClosedInV1() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isClosedInV();
+    return impObj()->isClosedInV();
 }
 
 Adesk::Boolean PyAcGeSurface::isClosedInV2(const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isClosedInV(tol);
+    return impObj()->isClosedInV(tol);
 }
 
 AcGePoint3d PyAcGeSurface::evalPoint1(const AcGePoint2d& param) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->evalPoint(param);
+    return impObj()->evalPoint(param);
 }
 
 AcGePoint3d PyAcGeSurface::evalPoint2(const AcGePoint2d& param, int derivOrd, boost::python::list& derivatives) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGeVector3dArray vecs;
-    auto pnt = imp->evalPoint(param, derivOrd, vecs);
+    auto pnt = impObj()->evalPoint(param, derivOrd, vecs);
     for (auto& vec : vecs)
         derivatives.append(vec);
     return pnt;
@@ -229,11 +166,8 @@ AcGePoint3d PyAcGeSurface::evalPoint2(const AcGePoint2d& param, int derivOrd, bo
 
 AcGePoint3d PyAcGeSurface::evalPoint3(const AcGePoint2d& param, int derivOrd, boost::python::list& derivatives, AcGeVector3d& normal) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGeVector3dArray vecs;
-    auto pnt = imp->evalPoint(param, derivOrd, vecs, normal);
+    auto pnt = impObj()->evalPoint(param, derivOrd, vecs, normal);
     for (auto& vec : vecs)
         derivatives.append(vec);
     return pnt;
@@ -244,7 +178,9 @@ std::string PyAcGeSurface::className()
     return "AcGeSurface";
 }
 
-AcGeSurface* PyAcGeSurface::impObj() const
+AcGeSurface* PyAcGeSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcGeSurface*>(m_imp.get());
 }

@@ -58,7 +58,7 @@ public:
 
     static std::string className();
 public:
-    AcGeLinearEnt3d* impObj() const;
+    AcGeLinearEnt3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -82,7 +82,7 @@ public:
 
     static std::string className();
 public:
-    AcGeLine3d* impObj() const;
+    AcGeLine3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
@@ -113,7 +113,7 @@ public:
 
     static std::string className();
 public:
-    AcGeLineSeg3d* impObj() const;
+    AcGeLineSeg3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
@@ -134,6 +134,6 @@ public:
 
     static std::string className();
 public:
-    AcGeRay3d* impObj() const;
+    AcGeRay3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 

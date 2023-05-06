@@ -23,7 +23,7 @@ public:
     Acad::ErrorStatus createWedge(double xLen, double yLen, double zLen);
     static std::string className();
 public:
-    AcDb3dSolid* impObj() const;
+    AcDb3dSolid* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -38,7 +38,7 @@ public:
     PyDbRegion(const PyDbObjectId& id, AcDb::OpenMode mode);
     static std::string className();
 public:
-    AcDbRegion* impObj() const;
+    AcDbRegion* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -53,7 +53,7 @@ public:
     PyDbBody(const PyDbObjectId& id, AcDb::OpenMode mode);
     static std::string className();
 public:
-    AcDbBody* impObj() const;
+    AcDbBody* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 #endif //SOLID3D_SUPPORT

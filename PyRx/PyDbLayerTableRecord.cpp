@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "PyDbLayerTableRecord.h"
 #include "PyDbObjectId.h"
-
 using namespace boost::python;
 //---------------------------------------------------------------------------------------- -
 //AcDbLayerTableRecord wrapper
@@ -18,54 +17,39 @@ void makeAcDbLayerTableRecordWrapper()
         .def("setVPDFLT", &PyDbLayerTableRecord::setVPDFLT)
         .def("isLocked", &PyDbLayerTableRecord::isLocked)
         .def("setIsLocked", &PyDbLayerTableRecord::setIsLocked)
-
         .def<AcCmColor(PyDbLayerTableRecord::*)(void)const>("color", &PyDbLayerTableRecord::color)
         .def<AcCmColor(PyDbLayerTableRecord::*)(const PyDbObjectId&)const>("color", &PyDbLayerTableRecord::color)
-
         .def<void(PyDbLayerTableRecord::*)(const AcCmColor& color)>("setColor", &PyDbLayerTableRecord::setColor)
         .def<Acad::ErrorStatus(PyDbLayerTableRecord::*)(const AcCmColor& color, const PyDbObjectId&)>("setColor", &PyDbLayerTableRecord::setColor)
-
         .def("entityColor", &PyDbLayerTableRecord::entityColor)
-
         .def<AcCmTransparency(PyDbLayerTableRecord::*)(void)const>("transparency", &PyDbLayerTableRecord::transparency)
         .def<AcCmTransparency(PyDbLayerTableRecord::*)(const PyDbObjectId&)const>("transparency", &PyDbLayerTableRecord::transparency)
-
         .def<Acad::ErrorStatus(PyDbLayerTableRecord::*)(const AcCmTransparency&)>("setTransparency", &PyDbLayerTableRecord::setTransparency)
         .def<Acad::ErrorStatus(PyDbLayerTableRecord::*)(const AcCmTransparency&, const PyDbObjectId&)>("setTransparency", &PyDbLayerTableRecord::setTransparency)
-
         .def("linetypeObjectId", &PyDbLayerTableRecord::linetypeObjectId)
         .def("setLinetypeObjectId", &PyDbLayerTableRecord::setLinetypeObjectId)
         .def("materialId", &PyDbLayerTableRecord::materialId)
         .def("setMaterialId", &PyDbLayerTableRecord::setMaterialId)
         .def("isPlottable", &PyDbLayerTableRecord::isPlottable)
         .def("setIsPlottable", &PyDbLayerTableRecord::setIsPlottable)
-
         .def<AcDb::LineWeight(PyDbLayerTableRecord::*)(void)const>("lineWeight", &PyDbLayerTableRecord::lineWeight)
         .def<AcDb::LineWeight(PyDbLayerTableRecord::*)(const PyDbObjectId&)const>("lineWeight", &PyDbLayerTableRecord::lineWeight)
-
         .def<Acad::ErrorStatus(PyDbLayerTableRecord::*)(AcDb::LineWeight)>("setLineWeight", &PyDbLayerTableRecord::setLineWeight)
         .def<Acad::ErrorStatus(PyDbLayerTableRecord::*)(AcDb::LineWeight, const PyDbObjectId&)>("setLineWeight", &PyDbLayerTableRecord::setLineWeight)
-
-
         .def<std::string(PyDbLayerTableRecord::*)(void)const>("plotStyleName", &PyDbLayerTableRecord::plotStyleName)
         .def<std::string(PyDbLayerTableRecord::*)(const PyDbObjectId&)const>("plotStyleName", &PyDbLayerTableRecord::plotStyleName)
-
         .def<PyDbObjectId(PyDbLayerTableRecord::*)(void)const>("plotStyleNameId", &PyDbLayerTableRecord::plotStyleNameId)
         .def<PyDbObjectId(PyDbLayerTableRecord::*)(const PyDbObjectId&)const>("plotStyleNameId", &PyDbLayerTableRecord::plotStyleNameId)
-
         .def<Acad::ErrorStatus(PyDbLayerTableRecord::*)(const std::string&)>("setPlotStyleName", &PyDbLayerTableRecord::setPlotStyleName)
         .def<Acad::ErrorStatus(PyDbLayerTableRecord::*)(const PyDbObjectId&)>("setPlotStyleName", &PyDbLayerTableRecord::setPlotStyleName)
         .def<Acad::ErrorStatus(PyDbLayerTableRecord::*)(const PyDbObjectId&, const PyDbObjectId&)>("setPlotStyleName", &PyDbLayerTableRecord::setPlotStyleName)
         .def<Acad::ErrorStatus(PyDbLayerTableRecord::*)(const std::string&, const PyDbObjectId&)>("setPlotStyleName", &PyDbLayerTableRecord::setPlotStyleName)
-
         .def("isInUse", &PyDbLayerTableRecord::isInUse)
         .def("description", &PyDbLayerTableRecord::description)
         .def("setDescription", &PyDbLayerTableRecord::setDescription)
-
         .def("setIsHidden", &PyDbLayerTableRecord::setIsHidden)
         .def("isHidden", &PyDbLayerTableRecord::isHidden)
         .def("isHidden", &PyDbLayerTableRecord::isHiddenS).staticmethod("isHidden")//TODO: can't override with a static
-
         .def("removeColorOverride", &PyDbLayerTableRecord::removeColorOverride)
         .def("removeLinetypeOverride", &PyDbLayerTableRecord::removeLinetypeOverride)
         .def("removeLineWeightOverride", &PyDbLayerTableRecord::removeLineWeightOverride)
@@ -74,7 +58,6 @@ void makeAcDbLayerTableRecordWrapper()
         .def("removeViewportOverrides", &PyDbLayerTableRecord::removeViewportOverrides)
         .def("removeAllOverrides", &PyDbLayerTableRecord::removeAllOverrides)
         .def("removeAllOverrides", &PyDbLayerTableRecord::removeAllOverrides)
-
         .def("hasOverrides", &PyDbLayerTableRecord::hasOverrides)
         .def("hasAnyOverrides", &PyDbLayerTableRecord::hasAnyOverrides)
         .def("isReconciled", &PyDbLayerTableRecord::isReconciled)
@@ -96,407 +79,256 @@ PyDbLayerTableRecord::PyDbLayerTableRecord(const PyDbObjectId& id, AcDb::OpenMod
     if (auto es = acdbOpenObject<AcDbLayerTableRecord>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 bool PyDbLayerTableRecord::isFrozen() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isFrozen();
-    throw PyNullObject();
+    return impObj()->isFrozen();
 }
 
 Acad::ErrorStatus PyDbLayerTableRecord::setIsFrozen(bool frozen)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setIsFrozen(frozen);
-    throw PyNullObject();
+    return impObj()->setIsFrozen(frozen);
 }
 
 bool PyDbLayerTableRecord::isOff() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isOff();
-    throw PyNullObject();
+    return impObj()->isOff();
 }
 
 void PyDbLayerTableRecord::setIsOff(bool off)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setIsOff(off);
-    throw PyNullObject();
+    return impObj()->setIsOff(off);
 }
 
 bool PyDbLayerTableRecord::VPDFLT() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->VPDFLT();
-    throw PyNullObject();
+    return impObj()->VPDFLT();
 }
 
 void PyDbLayerTableRecord::setVPDFLT(bool frozen)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setVPDFLT(frozen);
-    throw PyNullObject();
+    return impObj()->setVPDFLT(frozen);
 }
 
 bool PyDbLayerTableRecord::isLocked() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isLocked();
-    throw PyNullObject();
+    return impObj()->isLocked();
 }
 
 void PyDbLayerTableRecord::setIsLocked(bool locked)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setIsLocked(locked);
-    throw PyNullObject();
+    return impObj()->setIsLocked(locked);
 }
 
 AcCmColor PyDbLayerTableRecord::color() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->color();
-    throw PyNullObject();
+    return impObj()->color();
 }
 
 AcCmColor PyDbLayerTableRecord::color(const PyDbObjectId& viewportId) const
 {
     bool flag = false;
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->color(viewportId.m_id, flag);
-    throw PyNullObject();
+    return impObj()->color(viewportId.m_id, flag);
 }
 
 void PyDbLayerTableRecord::setColor(const AcCmColor& _color)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setColor(_color);
-    throw PyNullObject();
+    return impObj()->setColor(_color);
 }
 
 Acad::ErrorStatus PyDbLayerTableRecord::setColor(const AcCmColor& color, const PyDbObjectId& viewportId)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setColor(color, viewportId.m_id);
-    throw PyNullObject();
+    return impObj()->setColor(color, viewportId.m_id);
 }
 
 AcCmEntityColor PyDbLayerTableRecord::entityColor(void) const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->entityColor();
-    throw PyNullObject();
+    return impObj()->entityColor();
 }
 
 AcCmTransparency PyDbLayerTableRecord::transparency(void) const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->transparency();
-    throw PyNullObject();
+    return impObj()->transparency();
 }
 
 AcCmTransparency PyDbLayerTableRecord::transparency(const PyDbObjectId& viewportId) const
 {
     bool flag = false;
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->transparency(viewportId.m_id, flag);
-    throw PyNullObject();
+    return impObj()->transparency(viewportId.m_id, flag);
 }
 
 Acad::ErrorStatus PyDbLayerTableRecord::setTransparency(const AcCmTransparency& trans)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setTransparency(trans);
-    throw PyNullObject();
+    return impObj()->setTransparency(trans);
 }
 
 Acad::ErrorStatus PyDbLayerTableRecord::setTransparency(const AcCmTransparency& trans, const PyDbObjectId& viewportId)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setTransparency(trans, viewportId.m_id);
-    throw PyNullObject();
+    return impObj()->setTransparency(trans, viewportId.m_id);
 }
 
 Acad::ErrorStatus PyDbLayerTableRecord::removeColorOverride(const PyDbObjectId& viewportId)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->removeColorOverride(viewportId.m_id);
-    throw PyNullObject();
+    return impObj()->removeColorOverride(viewportId.m_id);
 }
 
 Acad::ErrorStatus PyDbLayerTableRecord::removeLinetypeOverride(const PyDbObjectId& viewportId)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->removeLinetypeOverride(viewportId.m_id);
-    throw PyNullObject();
+    return impObj()->removeLinetypeOverride(viewportId.m_id);
 }
 
 Acad::ErrorStatus PyDbLayerTableRecord::removeLineWeightOverride(const PyDbObjectId& viewportId)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->removeLineWeightOverride(viewportId.m_id);
-    throw PyNullObject();
+    return impObj()->removeLineWeightOverride(viewportId.m_id);
 }
 
 Acad::ErrorStatus PyDbLayerTableRecord::removePlotStyleOverride(const PyDbObjectId& viewportId)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->removePlotStyleOverride(viewportId.m_id);
-    throw PyNullObject();
+    return impObj()->removePlotStyleOverride(viewportId.m_id);
 }
 
 Acad::ErrorStatus PyDbLayerTableRecord::removeTransparencyOverride(const PyDbObjectId& viewportId)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->removeTransparencyOverride(viewportId.m_id);
-    throw PyNullObject();
+    return impObj()->removeTransparencyOverride(viewportId.m_id);
 }
 
 Acad::ErrorStatus PyDbLayerTableRecord::removeViewportOverrides(const PyDbObjectId& viewportId)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->removeViewportOverrides(viewportId.m_id);
-    throw PyNullObject();
+    return impObj()->removeViewportOverrides(viewportId.m_id);
 }
 
 Acad::ErrorStatus PyDbLayerTableRecord::removeAllOverrides()
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->removeAllOverrides();
-    throw PyNullObject();
+    return impObj()->removeAllOverrides();
 }
 
 bool PyDbLayerTableRecord::hasOverrides(const PyDbObjectId& viewportId) const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->hasOverrides(viewportId.m_id);
-    throw PyNullObject();
+    return impObj()->hasOverrides(viewportId.m_id);
 }
 
 bool PyDbLayerTableRecord::hasAnyOverrides() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->hasAnyOverrides();
-    throw PyNullObject();
+    return impObj()->hasAnyOverrides();
 }
 
 PyDbObjectId PyDbLayerTableRecord::linetypeObjectId() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return PyDbObjectId(imp->linetypeObjectId());
-    throw PyNullObject();
+    return PyDbObjectId(impObj()->linetypeObjectId());
 }
 
 Acad::ErrorStatus PyDbLayerTableRecord::setLinetypeObjectId(const PyDbObjectId& id)
 {
-    auto imp = impObj();
 #ifdef BRXAPP
-    if (imp != nullptr)
-    {
-        imp->setLinetypeObjectId(id.m_id);
+        impObj()->setLinetypeObjectId(id.m_id);
         return eOk;
-    }
 #else
-    if (imp != nullptr)
-        return imp->setLinetypeObjectId(id.m_id);
+    return impObj()->setLinetypeObjectId(id.m_id);
 #endif // BRXAPP
-    throw PyNullObject();
 }
 
 PyDbObjectId PyDbLayerTableRecord::materialId() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return PyDbObjectId(imp->linetypeObjectId());
-    throw PyNullObject();
+    return PyDbObjectId(impObj()->linetypeObjectId());
 }
 
 Acad::ErrorStatus PyDbLayerTableRecord::setMaterialId(const PyDbObjectId& id)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setMaterialId(id.m_id);
-    throw PyNullObject();
+    return impObj()->setMaterialId(id.m_id);
 }
 
 bool PyDbLayerTableRecord::isPlottable() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isPlottable();
-    throw PyNullObject();
+    return impObj()->isPlottable();
 }
 
 Acad::ErrorStatus PyDbLayerTableRecord::setIsPlottable(bool plot)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setIsPlottable(plot);
-    throw PyNullObject();
+    return impObj()->setIsPlottable(plot);
 }
 
 AcDb::LineWeight PyDbLayerTableRecord::lineWeight() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->lineWeight();
-    throw PyNullObject();
+    return impObj()->lineWeight();
 }
 
 AcDb::LineWeight PyDbLayerTableRecord::lineWeight(const PyDbObjectId& viewportId) const
 {
     bool flag = false;
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->lineWeight(viewportId.m_id, flag);
-    throw PyNullObject();
+    return impObj()->lineWeight(viewportId.m_id, flag);
 }
 
 Acad::ErrorStatus PyDbLayerTableRecord::setLineWeight(AcDb::LineWeight weight)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setLineWeight(weight);
-    throw PyNullObject();
+    return impObj()->setLineWeight(weight);
 }
 
 Acad::ErrorStatus PyDbLayerTableRecord::setLineWeight(AcDb::LineWeight weight, const PyDbObjectId& viewportId)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setLineWeight(weight, viewportId.m_id);
-    throw PyNullObject();
+    return impObj()->setLineWeight(weight, viewportId.m_id);
 }
 
 std::string PyDbLayerTableRecord::plotStyleName() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return wstr_to_utf8(imp->plotStyleName());
-    throw PyNullObject();
+    return wstr_to_utf8(impObj()->plotStyleName());
 }
 
 std::string PyDbLayerTableRecord::plotStyleName(const PyDbObjectId& viewportId) const
 {
     bool flag = false;
-    auto imp = impObj();
-    if (imp != nullptr)
-        return wstr_to_utf8(imp->plotStyleName(viewportId.m_id, flag));
-    throw PyNullObject();
+    return wstr_to_utf8(impObj()->plotStyleName(viewportId.m_id, flag));
 }
 
 PyDbObjectId PyDbLayerTableRecord::plotStyleNameId() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return PyDbObjectId(imp->plotStyleNameId());
-    throw PyNullObject();
+    return PyDbObjectId(impObj()->plotStyleNameId());
 }
 
 PyDbObjectId PyDbLayerTableRecord::plotStyleNameId(const PyDbObjectId& viewportId) const
 {
     bool flag = false;
-    auto imp = impObj();
-    if (imp != nullptr)
-        return PyDbObjectId(imp->plotStyleNameId(viewportId.m_id, flag));
-    throw PyNullObject();
+    return PyDbObjectId(impObj()->plotStyleNameId(viewportId.m_id, flag));
 }
 
 Acad::ErrorStatus PyDbLayerTableRecord::setPlotStyleName(const std::string& newName)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setPlotStyleName(utf8_to_wstr(newName).c_str());
-    throw PyNullObject();
+    return impObj()->setPlotStyleName(utf8_to_wstr(newName).c_str());
 }
 
 Acad::ErrorStatus PyDbLayerTableRecord::setPlotStyleName(const PyDbObjectId& newId)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setPlotStyleName(newId.m_id);
-    throw PyNullObject();
+    return impObj()->setPlotStyleName(newId.m_id);
 }
 
 Acad::ErrorStatus PyDbLayerTableRecord::setPlotStyleName(const std::string& newName, const PyDbObjectId& viewportId)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setPlotStyleName(utf8_to_wstr(newName).c_str(), viewportId.m_id);
-    throw PyNullObject();
+    return impObj()->setPlotStyleName(utf8_to_wstr(newName).c_str(), viewportId.m_id);
 }
 
 Acad::ErrorStatus PyDbLayerTableRecord::setPlotStyleName(const PyDbObjectId& newId, const PyDbObjectId& viewportId)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setPlotStyleName(newId.m_id, viewportId.m_id);
-    throw PyNullObject();
+    return impObj()->setPlotStyleName(newId.m_id, viewportId.m_id);
 }
 
 bool PyDbLayerTableRecord::isInUse() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isInUse();
-    throw PyNullObject();
+    return impObj()->isInUse();
 }
 
 std::string PyDbLayerTableRecord::description() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return wstr_to_utf8(imp->description());
-    throw PyNullObject();
+    return wstr_to_utf8(impObj()->description());
 }
 
 Acad::ErrorStatus PyDbLayerTableRecord::setDescription(const std::string& description)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setDescription(utf8_to_wstr(description).c_str());
-    throw PyNullObject();
+    return impObj()->setDescription(utf8_to_wstr(description).c_str());
 }
 
 bool PyDbLayerTableRecord::isHidden() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isHidden();
-    throw PyNullObject();
+    return impObj()->isHidden();
 }
 
 bool PyDbLayerTableRecord::isHiddenS(const PyDbObjectId& id)
@@ -506,18 +338,12 @@ bool PyDbLayerTableRecord::isHiddenS(const PyDbObjectId& id)
 
 Acad::ErrorStatus PyDbLayerTableRecord::setIsHidden(bool on)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setIsHidden(on);
-    throw PyNullObject();
+    return impObj()->setIsHidden(on);
 }
 
 bool PyDbLayerTableRecord::isReconciled() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isReconciled();
-    throw PyNullObject();
+    return impObj()->isReconciled();
 }
 
 bool PyDbLayerTableRecord::isReconciledS(const PyDbObjectId& id)
@@ -527,10 +353,7 @@ bool PyDbLayerTableRecord::isReconciledS(const PyDbObjectId& id)
 
 Acad::ErrorStatus PyDbLayerTableRecord::setIsReconciled(bool bReconcile /*= true*/)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setIsReconciled(bReconcile);
-    throw PyNullObject();
+    return impObj()->setIsReconciled(bReconcile);
 }
 
 std::string PyDbLayerTableRecord::className()
@@ -538,7 +361,10 @@ std::string PyDbLayerTableRecord::className()
     return "AcDbLayerTableRecord";
 }
 
-AcDbLayerTableRecord* PyDbLayerTableRecord::impObj() const
+AcDbLayerTableRecord* PyDbLayerTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcDbLayerTableRecord*>(m_pImp.get());
 }
+

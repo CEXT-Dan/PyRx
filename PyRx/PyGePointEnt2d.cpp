@@ -21,10 +21,7 @@ PyGePointEnt2d::PyGePointEnt2d(AcGeEntity2d* pEnt)
 
 AcGePoint2d PyGePointEnt2d::point2d() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->point2d();
+    return impObj()->point2d();
 }
 
 std::string PyGePointEnt2d::className()
@@ -32,8 +29,10 @@ std::string PyGePointEnt2d::className()
     return "AcGePointEnt2d";
 }
 
-AcGePointEnt2d* PyGePointEnt2d::impObj() const
+AcGePointEnt2d* PyGePointEnt2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcGePointEnt2d*>(m_imp.get());
 }
 
@@ -86,29 +85,20 @@ PyGePointOnCurve2d::PyGePointOnCurve2d(const PyGeCurve2d& crv, double param)
 
 const PyGeCurve2d PyGePointOnCurve2d::curve() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    auto result = imp->curve();
+    auto result = impObj()->curve();
     if(result == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(std::source_location::current());
     return PyGeCurve2d(result->copy());
 }
 
 double PyGePointOnCurve2d::parameter() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->parameter();
+    return impObj()->parameter();
 }
 
 AcGePoint2d PyGePointOnCurve2d::point1() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->point();
+    return impObj()->point();
 }
 
 AcGePoint2d PyGePointOnCurve2d::point2(double param)
@@ -116,10 +106,7 @@ AcGePoint2d PyGePointOnCurve2d::point2(double param)
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->point(param);
+    return impObj()->point(param);
 #endif
 }
 
@@ -128,35 +115,23 @@ AcGePoint2d PyGePointOnCurve2d::point3(const PyGeCurve2d& crv, double param)
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp == nullptr || crv.isNull())
-        throw PyNullObject();
-    return imp->point(*crv.impObj(), param);
+    return impObj()->point(*crv.impObj(), param);
 #endif
 }
 
 AcGeVector2d PyGePointOnCurve2d::deriv1(int order) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->deriv(order);
+    return impObj()->deriv(order);
 }
 
 AcGeVector2d PyGePointOnCurve2d::deriv2(int order, double param)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->deriv(order, param);
+    return impObj()->deriv(order, param);
 }
 
 AcGeVector2d PyGePointOnCurve2d::deriv3(int order, const PyGeCurve2d& crv, double param)
 {
-    auto imp = impObj();
-    if (imp == nullptr || crv.isNull())
-        throw PyNullObject();
-    return imp->deriv(order, *crv.impObj(), param);
+    return impObj()->deriv(order, *crv.impObj(), param);
 }
 
 #ifdef NEVER //acad link error
@@ -205,19 +180,13 @@ boost::python::tuple PyGePointOnCurve2d::curvature(double param)
 
 PyGePointOnCurve2d& PyGePointOnCurve2d::setCurve(const PyGeCurve2d& crv)
 {
-    auto imp = impObj();
-    if (imp == nullptr || crv.isNull())
-        throw PyNullObject();
-    imp->setCurve(*crv.impObj());
+    impObj()->setCurve(*crv.impObj());
     return *this;
 }
 
 PyGePointOnCurve2d& PyGePointOnCurve2d::setParameter(double param)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->setParameter(param);
+    impObj()->setParameter(param);
     return *this;
 }
 
@@ -226,8 +195,10 @@ std::string PyGePointOnCurve2d::className()
     return "AcGePointOnCurve2d";
 }
 
-AcGePointOnCurve2d* PyGePointOnCurve2d::impObj() const
+AcGePointOnCurve2d* PyGePointOnCurve2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcGePointOnCurve2d*>(m_imp.get());
 }
 
@@ -276,10 +247,7 @@ PyGePosition2d& PyGePosition2d::set1(const AcGePoint2d& pnt)
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->set(pnt);
+    impObj()->set(pnt);
     return *this;
 #endif
 }
@@ -289,10 +257,7 @@ PyGePosition2d& PyGePosition2d::set2(double x, double y)
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->set(x,y);
+    impObj()->set(x,y);
     return *this;
 #endif
 }
@@ -302,7 +267,7 @@ std::string PyGePosition2d::className()
     return "AcGePosition2d";
 }
 
-AcGePosition2d* PyGePosition2d::impObj() const
+AcGePosition2d* PyGePosition2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     return static_cast<AcGePosition2d*>(m_imp.get());
 }

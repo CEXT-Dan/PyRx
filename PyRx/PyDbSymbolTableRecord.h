@@ -20,7 +20,7 @@ public:
     static std::string className();
 
 public:
-    AcDbSymbolTableRecord* impObj() const;
+    AcDbSymbolTableRecord* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //---------------------------------------------------------------------------------------- -
@@ -35,5 +35,5 @@ public:
 
     static std::string className();
 public:
-    AcDbDimStyleTableRecord* impObj() const;
+    AcDbDimStyleTableRecord* impObj(const std::source_location& src = std::source_location::current()) const;
 };

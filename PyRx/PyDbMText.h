@@ -99,6 +99,6 @@ public:
 
     static std::string className();
 public:
-    AcDbMText* impObj() const;
+    AcDbMText* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 

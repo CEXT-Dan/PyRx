@@ -49,5 +49,5 @@ public:
 
     static std::string className();
 public:
-    AcGeSurface* impObj() const;
+    AcGeSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };

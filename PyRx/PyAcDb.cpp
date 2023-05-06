@@ -28,7 +28,7 @@ PyDbObject openDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
     AcDbObject* pObj = nullptr;
     if (acdbOpenAcDbObject(pObj, id.m_id, mode) == eOk)
         return PyDbObject{ pObj, true };
-    throw PyNullObject();
+    throw PyNullObject(std::source_location::current());
 }
 
 PyDbEntity openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
@@ -39,7 +39,7 @@ PyDbEntity openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
         if (acdbOpenAcDbEntity(pObj, id.m_id, mode) == eOk)
             return PyDbEntity(pObj, true);
     }
-    throw PyNullObject();
+    throw PyNullObject(std::source_location::current());
 }
 
 void makeAcDbExtents2dWrapper()

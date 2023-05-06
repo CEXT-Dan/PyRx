@@ -36,7 +36,7 @@ public:
 
     static std::string className();
 public:
-    AcGeSplineEnt3d* impObj() const;
+    AcGeSplineEnt3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -49,7 +49,7 @@ public:
     PyGeCubicSplineCurve3d(AcGeEntity3d* pEnt);
     static std::string className();
 public:
-    AcGeCubicSplineCurve3d* impObj() const;
+    AcGeCubicSplineCurve3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -62,7 +62,7 @@ public:
     PyGeNurbCurve3d(AcGeEntity3d* pEnt);
     static std::string className();
 public:
-    AcGeNurbCurve3d* impObj() const;
+    AcGeNurbCurve3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -87,7 +87,7 @@ public:
 
     static std::string className();
 public:
-    AcGePolyline3d* impObj() const;
+    AcGePolyline3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 

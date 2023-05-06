@@ -51,125 +51,79 @@ bool PyGeEntity2d::operator!=(PyGeEntity2d const& rhs) const
 
 Adesk::Boolean PyGeEntity2d::isKindOf(AcGe::EntityId entType) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isKindOf(entType);
+    return impObj()->isKindOf(entType);
 }
 
 AcGe::EntityId PyGeEntity2d::type() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->type();
+    return impObj()->type();
 }
 
 PyGeEntity2d PyGeEntity2d::copy() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return PyGeEntity2d(imp->copy());
+    return PyGeEntity2d(impObj()->copy());
 }
 
 Adesk::Boolean PyGeEntity2d::isEqualTo1(const PyGeEntity2d& ent) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    if (ent.isNull())
-        throw PyNullObject();
-    return imp->isEqualTo(*ent.impObj());
+    return impObj()->isEqualTo(*ent.impObj());
 }
 
 Adesk::Boolean PyGeEntity2d::isEqualTo2(const PyGeEntity2d& ent, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    if (ent.isNull())
-        throw PyNullObject();
-    return imp->isEqualTo(*ent.impObj(), tol);
+    return impObj()->isEqualTo(*ent.impObj(), tol);
 }
 
 PyGeEntity2d& PyGeEntity2d::transformBy(const AcGeMatrix2d& xfm)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->transformBy(xfm);
+    impObj()->transformBy(xfm);
     return *this;
 }
 
 PyGeEntity2d& PyGeEntity2d::translateBy(const AcGeVector2d& translateVec)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->translateBy(translateVec);
+    impObj()->translateBy(translateVec);
     return *this;
 }
 
 PyGeEntity2d& PyGeEntity2d::rotateBy1(double angle)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->rotateBy(angle);
+    impObj()->rotateBy(angle);
     return *this;
 }
 
 PyGeEntity2d& PyGeEntity2d::rotateBy2(double angle, const AcGePoint2d& origin)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->rotateBy(angle, origin);
+    impObj()->rotateBy(angle, origin);
     return *this;
 }
 
 PyGeEntity2d& PyGeEntity2d::mirror(const PyGeLine2d& plane)
 {
-    auto imp = impObj();
-    if (imp == nullptr || plane.isNull())
-        throw PyNullObject();
-    imp->mirror(*plane.impObj());
+    impObj()->mirror(*plane.impObj());
     return *this;
 }
 
 PyGeEntity2d& PyGeEntity2d::scaleBy1(double scaleFactor)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->scaleBy(scaleFactor);
+    impObj()->scaleBy(scaleFactor);
     return *this;
 }
 
 PyGeEntity2d& PyGeEntity2d::scaleBy2(double scaleFactor, const AcGePoint2d& wrtPoint)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->scaleBy(scaleFactor, wrtPoint);
+    impObj()->scaleBy(scaleFactor, wrtPoint);
     return *this;
 }
 
 Adesk::Boolean PyGeEntity2d::isOn1(const AcGePoint2d& pnt) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isOn(pnt);
+    return impObj()->isOn(pnt);
 }
 
 Adesk::Boolean PyGeEntity2d::isOn2(const AcGePoint2d& pnt, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isOn(pnt, tol);
+    return impObj()->isOn(pnt, tol);
 }
 
 bool PyGeEntity2d::isNull() const
@@ -182,7 +136,9 @@ std::string PyGeEntity2d::className()
     return "AcGeEntity2d";
 }
 
-AcGeEntity2d* PyGeEntity2d::impObj() const
+AcGeEntity2d* PyGeEntity2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject(src);
     return m_imp.get();
 }

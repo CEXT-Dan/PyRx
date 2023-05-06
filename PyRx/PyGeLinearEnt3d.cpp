@@ -217,10 +217,10 @@ std::string PyGeLinearEnt3d::className()
     return "AcGeLinearEnt2d";
 }
 
-AcGeLinearEnt3d* PyGeLinearEnt3d::impObj() const
+AcGeLinearEnt3d* PyGeLinearEnt3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_imp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcGeLinearEnt3d*>(m_imp.get());
 }
 
@@ -298,10 +298,10 @@ std::string PyGeLine3d::className()
     return "AcGeLine3d";
 }
 
-AcGeLine3d* PyGeLine3d::impObj() const
+AcGeLine3d* PyGeLine3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_imp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcGeLine3d*>(m_imp.get());
 }
 
@@ -411,10 +411,10 @@ std::string PyGeLineSeg3d::className()
     return "AcGeLineSeg2d";
 }
 
-AcGeLineSeg3d* PyGeLineSeg3d::impObj() const
+AcGeLineSeg3d* PyGeLineSeg3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_imp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcGeLineSeg3d*>(m_imp.get());
 }
 
@@ -474,9 +474,9 @@ std::string PyGeRay3d::className()
     return "AcGeRay3d";
 }
 
-AcGeRay3d* PyGeRay3d::impObj() const
+AcGeRay3d* PyGeRay3d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_imp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcGeRay3d*>(m_imp.get());
 }

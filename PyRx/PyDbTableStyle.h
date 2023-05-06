@@ -152,6 +152,6 @@ public:
     static std::string className();
 
 public:
-    AcDbTableStyle* impObj() const;
+    AcDbTableStyle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 

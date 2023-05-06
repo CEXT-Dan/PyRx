@@ -123,7 +123,7 @@ public:
 
     static std::string className();
 public:
-    AcGeCurve3d* impObj() const;
+    AcGeCurve3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -185,7 +185,7 @@ public:
 
     static std::string className();
 public:
-    AcGeCircArc3d* impObj() const;
+    AcGeCircArc3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------
@@ -198,7 +198,7 @@ public:
     PyGeCompositeCurve3d(AcGeEntity3d* pEnt);
     static std::string className();
 public:
-    AcGeCompositeCurve3d* impObj() const;
+    AcGeCompositeCurve3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
@@ -259,7 +259,7 @@ public:
 
     static std::string className();
 public:
-    AcGeEllipArc3d* impObj() const;
+    AcGeEllipArc3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -271,7 +271,7 @@ public:
     PyGeExternalCurve3d(AcGeEntity3d* pEnt);
     static std::string className();
 public:
-    AcGeExternalCurve3d* impObj() const;
+    AcGeExternalCurve3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -284,5 +284,5 @@ public:
     PyGeOffsetCurve3d(AcGeEntity3d* pEnt);
     static std::string className();
 public:
-    AcGeOffsetCurve3d* impObj() const;
+    AcGeOffsetCurve3d* impObj(const std::source_location& src = std::source_location::current()) const;
 };

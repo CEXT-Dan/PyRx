@@ -33,10 +33,7 @@ PyDbSymbolTable::PyDbSymbolTable(const PyDbObjectId& id, AcDb::OpenMode mode)
     AcDbSymbolTable* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbSymbolTable>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
+    this->resetImp(pobj, false, true);;
 }
 
 PyDbObjectId PyDbSymbolTable::getAt(const std::string& entryName)
@@ -49,29 +46,19 @@ PyDbObjectId PyDbSymbolTable::getAt(const std::string& entryName)
 
 bool PyDbSymbolTable::has(const std::string& entryName)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->has(utf8_to_wstr(entryName).c_str());
+    return impObj()->has(utf8_to_wstr(entryName).c_str());
 }
 
 bool PyDbSymbolTable::has(const PyDbObjectId& entryid)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->has(entryid.m_id);
+    return impObj()->has(entryid.m_id);
 }
 
 boost::python::list PyDbSymbolTable::recordIds()
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-
     AcDbSymbolTableIterator* pIter = nullptr;
-    if(imp->newIterator(pIter) != eOk)
-        throw PyNullObject();
+    if(impObj()->newIterator(pIter) != eOk)
+        throw PyAcadErrorStatus(eOutOfMemory);
 
     boost::python::list _items;
     for (std::unique_ptr<AcDbSymbolTableIterator> iter(pIter); !iter->done(); iter->step())
@@ -88,8 +75,10 @@ std::string PyDbSymbolTable::className()
     return "AcDbSymbolTable";
 }
 
-AcDbSymbolTable* PyDbSymbolTable::impObj() const
+AcDbSymbolTable* PyDbSymbolTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcDbSymbolTable*>(m_pImp.get());
 }
 
@@ -140,7 +129,7 @@ boost::python::list PyDbDimStyleTable::recordIds()
 {
     AcDbDimStyleTableIterator* pIter = nullptr;
     if (impObj()->newIterator(pIter) != eOk)
-        throw PyNullObject();
+        throw PyAcadErrorStatus(eOutOfMemory);
 
     boost::python::list _items;
     for (std::unique_ptr<AcDbDimStyleTableIterator> iter(pIter); !iter->done(); iter->step())
@@ -157,10 +146,10 @@ std::string PyDbDimStyleTable::className()
     return "AcDbDimStyleTable";
 }
 
-AcDbDimStyleTable* PyDbDimStyleTable::impObj() const
+AcDbDimStyleTable* PyDbDimStyleTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcDbDimStyleTable*>(m_pImp.get());
 }
 
@@ -212,7 +201,7 @@ boost::python::list PyDbBlockTable::recordIds()
 {
     AcDbBlockTableIterator* pIter = nullptr;
     if (impObj()->newIterator(pIter) != eOk)
-        throw PyNullObject();
+        throw PyAcadErrorStatus(eOutOfMemory);
 
     boost::python::list _items;
     for (std::unique_ptr<AcDbBlockTableIterator> iter(pIter); !iter->done(); iter->step())
@@ -229,9 +218,9 @@ std::string PyDbBlockTable::className()
     return "AcDbBlockTable";
 }
 
-AcDbBlockTable* PyDbBlockTable::impObj() const
+AcDbBlockTable* PyDbBlockTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcDbBlockTable*>(m_pImp.get());
 }

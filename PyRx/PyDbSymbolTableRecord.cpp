@@ -32,42 +32,28 @@ PyDbSymbolTableRecord::PyDbSymbolTableRecord(const PyDbObjectId& id, AcDb::OpenM
     if (auto es = acdbOpenObject<AcDbSymbolTableRecord>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 std::string PyDbSymbolTableRecord::getName()
 {
     AcString arxName;
-    auto imp = impObj();
-    if (imp != nullptr)
-        imp->getName(arxName);
+    impObj()->getName(arxName);
     return wstr_to_utf8(arxName);
 }
 
 Acad::ErrorStatus PyDbSymbolTableRecord::setName(const std::string name)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return  imp->setName(utf8_to_wstr(name).c_str());
-    throw PyNullObject();
+    return impObj()->setName(utf8_to_wstr(name).c_str());
 }
 
 bool PyDbSymbolTableRecord::isDependent() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isDependent();
-    throw PyNullObject();
+    return impObj()->isDependent();
 }
 
 bool PyDbSymbolTableRecord::isResolved() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isResolved();
-    throw PyNullObject();
+    return impObj()->isResolved();
 }
 
 bool PyDbSymbolTableRecord::isRenamable() const
@@ -75,10 +61,7 @@ bool PyDbSymbolTableRecord::isRenamable() const
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isRenamable();
-    throw PyNullObject();
+    return impObj()->isRenamable();
 #endif
 }
 
@@ -87,8 +70,10 @@ std::string PyDbSymbolTableRecord::className()
     return "AcDbSymbolTableRecord";
 }
 
-AcDbSymbolTableRecord* PyDbSymbolTableRecord::impObj() const
+AcDbSymbolTableRecord* PyDbSymbolTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcDbSymbolTableRecord*>(m_pImp.get());
 }
 
@@ -104,7 +89,7 @@ void makeAcDbDimStyleTableRecordWrapper()
 }
 
 PyDbDimStyleTableRecord::PyDbDimStyleTableRecord()
-    : PyDbSymbolTableRecord(new AcDbDimStyleTableRecord(),true)
+    : PyDbSymbolTableRecord(new AcDbDimStyleTableRecord(), true)
 {
 }
 
@@ -127,9 +112,9 @@ std::string PyDbDimStyleTableRecord::className()
     return "AcDbDimStyleTableRecord";
 }
 
-AcDbDimStyleTableRecord* PyDbDimStyleTableRecord::impObj() const
+AcDbDimStyleTableRecord* PyDbDimStyleTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcDbDimStyleTableRecord*>(m_pImp.get());
 }

@@ -2,7 +2,6 @@
 #include "PyDbField.h"
 #include "PyDbObjectId.h"
 using namespace boost::python;
-
 void makeAcDbFieldtWrapper()
 {
     static auto wrapper = class_<PyDbField, bases<PyDbObject>>("Field")
@@ -25,7 +24,6 @@ void makeAcDbFieldtWrapper()
         .def("getValue", &PyDbField::getValue)
         .def("className", &PyDbField::className).staticmethod("className")
         ;
-    
     enum_<AcDbField::State>("State")
         .value("kInitialized", AcDbField::State::kInitialized)
         .value("kCompiled", AcDbField::State::kCompiled)
@@ -94,7 +92,6 @@ PyDbField::PyDbField(const std::string& pszFieldCode, bool bTextField)
 {
 }
 
-
 PyDbField::PyDbField(AcDbField* ptr, bool autoDelete)
     : PyDbObject(ptr, autoDelete)
 {
@@ -107,9 +104,6 @@ PyDbField::PyDbField(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbField>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 Acad::ErrorStatus PyDbField::setInObject(PyDbObject& pObj, const std::string& pszPropName)
@@ -117,75 +111,48 @@ Acad::ErrorStatus PyDbField::setInObject(PyDbObject& pObj, const std::string& ps
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setInObject(pObj.impObj(), utf8_to_wstr(pszPropName).c_str());
-    throw PyNullObject();
+    return impObj()->setInObject(pObj.impObj(), utf8_to_wstr(pszPropName).c_str());
 #endif
 }
 
 Acad::ErrorStatus PyDbField::postInDatabase(PyDbDatabase& pDb)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->postInDatabase(pDb.impObj());
-    throw PyNullObject();
+    return impObj()->postInDatabase(pDb.impObj());
 }
 
 AcDbField::State PyDbField::state(void) const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->state();
-    throw PyNullObject();
+    return impObj()->state();
 }
 
 AcDbField::EvalStatus PyDbField::evaluationStatus() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->evaluationStatus();
-    throw PyNullObject();
+    return impObj()->evaluationStatus();
 }
 
 AcDbField::EvalOption PyDbField::evaluationOption(void) const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->evaluationOption();
-    throw PyNullObject();
+    return impObj()->evaluationOption();
 }
 
 Acad::ErrorStatus PyDbField::setEvaluationOption(AcDbField::EvalOption nEvalOption)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setEvaluationOption(nEvalOption);
-    throw PyNullObject();
+    return impObj()->setEvaluationOption(nEvalOption);
 }
 
 std::string PyDbField::evaluatorId(void) const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return wstr_to_utf8(imp->evaluatorId());
-    throw PyNullObject();
+    return wstr_to_utf8(impObj()->evaluatorId());
 }
 
 Acad::ErrorStatus PyDbField::setEvaluatorId(const std::string& pszEvaluatorId)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setEvaluatorId(utf8_to_wstr(pszEvaluatorId).c_str());
-    throw PyNullObject();
+    return impObj()->setEvaluatorId(utf8_to_wstr(pszEvaluatorId).c_str());
 }
 
 bool PyDbField::isTextField(void) const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isTextField();
-    throw PyNullObject();
+    return impObj()->isTextField();
 }
 
 Acad::ErrorStatus PyDbField::convertToTextField(void)
@@ -193,44 +160,28 @@ Acad::ErrorStatus PyDbField::convertToTextField(void)
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->convertToTextField();
-    throw PyNullObject();
+    return impObj()->convertToTextField();
 #endif
 }
 
 int PyDbField::childCount(void) const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->childCount();
-    throw PyNullObject();
+    return impObj()->childCount();
 }
 
 std::string PyDbField::getFormat(void) const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return wstr_to_utf8(imp->getFormat());
-    throw PyNullObject();
+    return wstr_to_utf8(impObj()->getFormat());
 }
 
 Acad::ErrorStatus PyDbField::setFormat(const std::string& pszFormat)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setFormat(utf8_to_wstr(pszFormat).c_str());
-    throw PyNullObject();
+    return impObj()->setFormat(utf8_to_wstr(pszFormat).c_str());
 }
-
 
 std::string PyDbField::getValue(void) const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return wstr_to_utf8(imp->getValue());
-    throw PyNullObject();
+    return wstr_to_utf8(impObj()->getValue());
 }
 
 std::string PyDbField::className()
@@ -238,8 +189,10 @@ std::string PyDbField::className()
     return "AcDbField";
 }
 
-AcDbField* PyDbField::impObj() const
+AcDbField* PyDbField::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcDbField*>(m_pImp.get());
 }
 

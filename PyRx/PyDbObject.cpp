@@ -3,9 +3,7 @@
 #include "PyDbDatabase.h"
 #include "PyDbObjectId.h"
 #include "ResultBuffer.h"
-
 using namespace boost::python;
-
 void makeAcDbObjectWrapper()
 {
     static auto wrapper = class_<PyDbObject, bases<PyGiDrawable>>("DbObject", boost::python::no_init)
@@ -14,7 +12,6 @@ void makeAcDbObjectWrapper()
         .def("ownerId", &PyDbObject::ownerId)
         .def("setOwnerId", &PyDbObject::setOwnerId)
         .def("database", &PyDbObject::database)
-
 #ifdef NEVER
         .def("databaseToUse", &PyDbObject::databaseToUse)
         .def("intendedDatabase", &PyDbObject::intendedDatabase)
@@ -65,377 +62,240 @@ void makeAcDbObjectWrapper()
 //-----------------------------------------------------------------------------------------
 //PyDbObject
 PyDbObject::PyDbObject(AcDbObject* ptr, bool autoDelete)
-    : PyGiDrawable(ptr, autoDelete,true)
+    : PyGiDrawable(ptr, autoDelete, true)
 {
 }
 
 PyDbObject::PyDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyGiDrawable(nullptr, true,true)
+    : PyGiDrawable(nullptr, true, true)
 {
     AcDbObject* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbObject>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 PyDbObject::~PyDbObject()
 {
-
 }
 
 PyDbObjectId PyDbObject::objectId() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return PyDbObjectId(imp->objectId());
-    throw PyNullObject();
+    return PyDbObjectId(impObj()->objectId());
 }
 
 PyDbObjectId PyDbObject::ownerId() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return PyDbObjectId(imp->ownerId());
-    throw PyNullObject();
+    return PyDbObjectId(impObj()->ownerId());
 }
 
 Acad::ErrorStatus PyDbObject::setOwnerId(const PyDbObjectId& objId)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->setOwnerId(objId.m_id);
-    throw PyNullObject();
+    return impObj()->setOwnerId(objId.m_id);
 }
 
 PyDbDatabase PyDbObject::database() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return PyDbDatabase(imp->database());
-    throw PyNullObject();
+    return PyDbDatabase(impObj()->database());
 }
 
 Acad::ErrorStatus PyDbObject::createExtensionDictionary()
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->createExtensionDictionary();
-    throw PyNullObject();
+    return impObj()->createExtensionDictionary();
 }
 
 PyDbObjectId PyDbObject::extensionDictionary() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return PyDbObjectId(imp->extensionDictionary());
-    throw PyNullObject();
+    return PyDbObjectId(impObj()->extensionDictionary());
 }
 
 Acad::ErrorStatus PyDbObject::releaseExtensionDictionary()
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->releaseExtensionDictionary();
-    throw PyNullObject();
+    return impObj()->releaseExtensionDictionary();
 }
 
 Acad::ErrorStatus PyDbObject::close()
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->close();
-    throw PyNullObject();
+    return impObj()->close();
 }
 
 Acad::ErrorStatus PyDbObject::upgradeOpen()
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->upgradeOpen();
-    throw PyNullObject();
+    return impObj()->upgradeOpen();
 }
 
 Acad::ErrorStatus PyDbObject::upgradeFromNotify(Adesk::Boolean& wasWritable)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->upgradeFromNotify(wasWritable);
-    throw PyNullObject();
+    return impObj()->upgradeFromNotify(wasWritable);
 }
 
 Acad::ErrorStatus PyDbObject::downgradeOpen()
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->downgradeOpen();
-    throw PyNullObject();
+    return impObj()->downgradeOpen();
 }
 
 Acad::ErrorStatus PyDbObject::downgradeToNotify(Adesk::Boolean wasWritable)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->downgradeToNotify(wasWritable);
-    throw PyNullObject();
+    return impObj()->downgradeToNotify(wasWritable);
 }
 
 Acad::ErrorStatus PyDbObject::cancel()
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->cancel();
-    throw PyNullObject();
+    return impObj()->cancel();
 }
 
 Acad::ErrorStatus PyDbObject::erase()
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->erase();
-    throw PyNullObject();
+    return impObj()->erase();
 }
 
 Acad::ErrorStatus PyDbObject::handOverTo(PyDbObject& newObject, Adesk::Boolean keepXData, Adesk::Boolean keepExtDict)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->handOverTo(newObject.impObj(), keepXData, keepExtDict);
-    throw PyNullObject();
+    return impObj()->handOverTo(newObject.impObj(), keepXData, keepExtDict);
 }
 
 Acad::ErrorStatus PyDbObject::swapIdWith(PyDbObjectId& otherId, Adesk::Boolean swapXdata, Adesk::Boolean swapExtDict)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->swapIdWith(otherId.m_id, swapXdata, swapExtDict);
-    throw PyNullObject();
+    return impObj()->swapIdWith(otherId.m_id, swapXdata, swapExtDict);
 }
 
 Acad::ErrorStatus PyDbObject::setXData(const boost::python::list& xdata)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-    {
-        AcResBufPtr pData(listToResbuf(xdata));
-        if (!imp->isWriteEnabled())
-            return eNotOpenForWrite;
-        return imp->setXData(pData.get());
-    }
-    throw PyNullObject();
+    AcResBufPtr pData(listToResbuf(xdata));
+    if (!impObj()->isWriteEnabled())
+        return eNotOpenForWrite;
+    return impObj()->setXData(pData.get());
 }
 
 boost::python::list PyDbObject::xData(const std::string& regappName) const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-    {
-        AcResBufPtr pData(imp->xData(utf8_to_wstr(regappName).c_str()));
-        return resbufToList(pData.get());
-    }
-    throw PyNullObject();
+    AcResBufPtr pData(impObj()->xData(utf8_to_wstr(regappName).c_str()));
+    return resbufToList(pData.get());
 }
 
 Acad::ErrorStatus PyDbObject::xDataTransformBy(const AcGeMatrix3d& xform)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->xDataTransformBy(xform);
-    throw PyNullObject();
+    return impObj()->xDataTransformBy(xform);
 }
 
 Adesk::Boolean PyDbObject::isEraseStatusToggled() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isEraseStatusToggled();
-    throw PyNullObject();
+    return impObj()->isEraseStatusToggled();
 }
 
 Adesk::Boolean PyDbObject::isErased() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isErased();
-    throw PyNullObject();
+    return impObj()->isErased();
 }
 
 Adesk::Boolean PyDbObject::isReadEnabled() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isReadEnabled();
-    throw PyNullObject();
+    return impObj()->isReadEnabled();
 }
 
 Adesk::Boolean PyDbObject::isWriteEnabled() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isWriteEnabled();
-    throw PyNullObject();
+    return impObj()->isWriteEnabled();
 }
 
 Adesk::Boolean PyDbObject::isNotifyEnabled() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isNotifyEnabled();
-    throw PyNullObject();
+    return impObj()->isNotifyEnabled();
 }
 
 Adesk::Boolean PyDbObject::isModified() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isModified();
-    throw PyNullObject();
+    return impObj()->isModified();
 }
 
 Adesk::Boolean PyDbObject::isModifiedXData() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isModifiedXData();
-    throw PyNullObject();
+    return impObj()->isModifiedXData();
 }
 
 Adesk::Boolean PyDbObject::isModifiedGraphics() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isModifiedGraphics();
-    throw PyNullObject();
+    return impObj()->isModifiedGraphics();
 }
 
 Adesk::Boolean PyDbObject::isNewObject() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isNewObject();
-    throw PyNullObject();
+    return impObj()->isNewObject();
 }
 
 Adesk::Boolean PyDbObject::isNotifying() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isNotifying();
-    throw PyNullObject();
+    return impObj()->isNotifying();
 }
 
 Adesk::Boolean PyDbObject::isUndoing() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isUndoing();
-    throw PyNullObject();
+    return impObj()->isUndoing();
 }
 
 Adesk::Boolean PyDbObject::isCancelling() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isCancelling();
-    throw PyNullObject();
+    return impObj()->isCancelling();
 }
 
 Adesk::Boolean PyDbObject::isReallyClosing() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isReallyClosing();
-    throw PyNullObject();
+    return impObj()->isReallyClosing();
 }
 
 Adesk::Boolean PyDbObject::isTransactionResident() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isTransactionResident();
-    throw PyNullObject();
+    return impObj()->isTransactionResident();
 }
 
 Adesk::Boolean PyDbObject::isAProxy() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isAProxy();
-    throw PyNullObject();
+    return impObj()->isAProxy();
 }
 
 void PyDbObject::assertReadEnabled() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        imp->assertReadEnabled();
-    throw PyNullObject();
+    impObj()->assertReadEnabled();
 }
 
 void PyDbObject::assertWriteEnabled()
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        imp->assertWriteEnabled();
-    throw PyNullObject();
+    impObj()->assertWriteEnabled();
 }
 
 void PyDbObject::assertNotifyEnabled() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        imp->assertNotifyEnabled();
-    throw PyNullObject();
+    impObj()->assertNotifyEnabled();
 }
 
 bool PyDbObject::isUndoRecordingDisabled() const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->isUndoRecordingDisabled();
-    throw PyNullObject();
+    return impObj()->isUndoRecordingDisabled();
 }
 
 void PyDbObject::disableUndoRecording(Adesk::Boolean disable)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        imp->disableUndoRecording(disable);
-    throw PyNullObject();
+    impObj()->disableUndoRecording(disable);
 }
 
 Acad::ErrorStatus PyDbObject::addPersistentReactor(const PyDbObjectId& objId)
 {
 #ifdef BRXAPP
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->addPersistentReactor(objId.m_id);
+    impObj()->addPersistentReactor(objId.m_id);
     return eOk;
 #else
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->addPersistentReactor(objId.m_id);
-    throw PyNullObject();
+    return impObj()->addPersistentReactor(objId.m_id);
 #endif
 }
 
 Acad::ErrorStatus PyDbObject::removePersistentReactor(const PyDbObjectId& objId)
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->removePersistentReactor(objId.m_id);
-    throw PyNullObject();
+    return impObj()->removePersistentReactor(objId.m_id);
 }
 
 bool PyDbObject::hasPersistentReactor(const PyDbObjectId& objId) const
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return imp->hasPersistentReactor(objId.m_id);
-    throw PyNullObject();
+    return impObj()->hasPersistentReactor(objId.m_id);
 }
 
 std::string PyDbObject::className()
@@ -443,7 +303,10 @@ std::string PyDbObject::className()
     return "AcDbObject";
 }
 
-AcDbObject* PyDbObject::impObj() const
+AcDbObject* PyDbObject::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcDbObject*>(m_pImp.get());
 }
+

@@ -138,10 +138,10 @@ std::string PyGeSplineEnt2d::className()
     return "AcGeSplineEnt2d";
 }
 
-AcGeSplineEnt2d* PyGeSplineEnt2d::impObj() const
+AcGeSplineEnt2d* PyGeSplineEnt2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_imp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcGeSplineEnt2d*>(m_imp.get());
 }
 
@@ -169,10 +169,10 @@ std::string PyGeCubicSplineCurve2d::className()
     return "AcGeCubicSplineCurve2d";
 }
 
-AcGeCubicSplineCurve2d* PyGeCubicSplineCurve2d::impObj() const
+AcGeCubicSplineCurve2d* PyGeCubicSplineCurve2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_imp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcGeCubicSplineCurve2d*>(m_imp.get());
 }
 
@@ -200,10 +200,10 @@ std::string PyGeNurbCurve2d::className()
     return "AcGeNurbCurve2d";
 }
 
-AcGeNurbCurve2d* PyGeNurbCurve2d::impObj() const
+AcGeNurbCurve2d* PyGeNurbCurve2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_imp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcGeNurbCurve2d*>(m_imp.get());
 }
 
@@ -274,9 +274,9 @@ std::string PyGePolyline2d::className()
     return "AcGePolyline2d";
 }
 
-AcGePolyline2d* PyGePolyline2d::impObj() const
+AcGePolyline2d* PyGePolyline2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_imp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcGePolyline2d*>(m_imp.get());
 }

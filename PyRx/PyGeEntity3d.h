@@ -36,7 +36,7 @@ public:
     bool isNull()const;
     static std::string className();
 public:
-    AcGeEntity3d* impObj() const;
+    AcGeEntity3d* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
     std::shared_ptr<AcGeEntity3d> m_imp;
 };

@@ -63,31 +63,20 @@ PyDbBlockTableRecord::PyDbBlockTableRecord(const PyDbObjectId& id, AcDb::OpenMod
     if (auto es = acdbOpenObject<AcDbBlockTableRecord>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 PyDbObjectId PyDbBlockTableRecord::appendAcDbEntity(const PyDbEntity& ent)
 {
     AcDbObjectId _id;
-    auto imp = impObj();
-    if (imp != nullptr && ent.impObj() != nullptr)
-    {
-        if (auto es = imp->appendAcDbEntity(_id, ent.impObj()); es != eOk)
-            throw PyAcadErrorStatus(es);
-    }
+    if (auto es = impObj()->appendAcDbEntity(_id, ent.impObj()); es != eOk)
+        throw PyAcadErrorStatus(es);
     return PyDbObjectId(_id);
 }
 
 boost::python::list PyDbBlockTableRecord::objectIds()
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-
     boost::python::list pyList;
-    auto [es, iter] = makeBlockTableRecordIterator(*imp);
+    auto [es, iter] = makeBlockTableRecordIterator(*impObj());
     if (es == eOk)
     {
         for (iter->start(); !iter->done(); iter->step())
@@ -105,21 +94,15 @@ std::string PyDbBlockTableRecord::comments()
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcString str;
-    imp->comments(str);
+    impObj()->comments(str);
     return wstr_to_utf8(str);
 #endif
 }
 
 Acad::ErrorStatus PyDbBlockTableRecord::setComments(const std::string& pString)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setComments(utf8_to_wstr(pString).c_str());
+    return impObj()->setComments(utf8_to_wstr(pString).c_str());
 }
 
 std::string PyDbBlockTableRecord::pathName()
@@ -127,47 +110,32 @@ std::string PyDbBlockTableRecord::pathName()
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcString str;
-    imp->pathName(str);
+    impObj()->pathName(str);
     return wstr_to_utf8(str);
 #endif
 }
 
 Acad::ErrorStatus PyDbBlockTableRecord::setPathName(const std::string& pString)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setPathName(utf8_to_wstr(pString).c_str());
+    return impObj()->setPathName(utf8_to_wstr(pString).c_str());
 }
 
 AcGePoint3d PyDbBlockTableRecord::origin() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->origin();
+    return impObj()->origin();
 }
 
 Acad::ErrorStatus PyDbBlockTableRecord::setOrigin(const AcGePoint3d& pt)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setOrigin(pt);
+    return impObj()->setOrigin(pt);
 }
 
 //TODO: wrong
 Acad::ErrorStatus PyDbBlockTableRecord::openBlockBegin(PyDbBlockBegin& pBlockBegin, AcDb::OpenMode openMode)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcDbBlockBegin* pObj = nullptr;
-    auto stat = imp->openBlockBegin(pObj, openMode);
+    auto stat = impObj()->openBlockBegin(pObj, openMode);
     if (stat == eOk)
         pBlockBegin = PyDbBlockBegin(pObj, false);
     return stat;
@@ -175,11 +143,8 @@ Acad::ErrorStatus PyDbBlockTableRecord::openBlockBegin(PyDbBlockBegin& pBlockBeg
 
 Acad::ErrorStatus PyDbBlockTableRecord::openBlockEnd(PyDbBlockEnd& pBlockBegin, AcDb::OpenMode openMode)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcDbBlockEnd* pObj = nullptr;
-    auto stat = imp->openBlockEnd(pObj, openMode);
+    auto stat = impObj()->openBlockEnd(pObj, openMode);
     if (stat == eOk)
         pBlockBegin = PyDbBlockEnd(pObj, false);
     return stat;
@@ -187,34 +152,22 @@ Acad::ErrorStatus PyDbBlockTableRecord::openBlockEnd(PyDbBlockEnd& pBlockBegin, 
 
 bool PyDbBlockTableRecord::hasAttributeDefinitions() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->hasAttributeDefinitions();
+    return impObj()->hasAttributeDefinitions();
 }
 
 bool PyDbBlockTableRecord::isAnonymous() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isAnonymous();
+    return impObj()->isAnonymous();
 }
 
 bool PyDbBlockTableRecord::isFromExternalReference() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isFromExternalReference();
+    return impObj()->isFromExternalReference();
 }
 
 bool PyDbBlockTableRecord::isFromOverlayReference() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isFromOverlayReference();
+    return impObj()->isFromOverlayReference();
 }
 
 Acad::ErrorStatus PyDbBlockTableRecord::setIsFromOverlayReference(bool bIsOverlay)
@@ -222,46 +175,30 @@ Acad::ErrorStatus PyDbBlockTableRecord::setIsFromOverlayReference(bool bIsOverla
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setIsFromOverlayReference(bIsOverlay);
+    return impObj()->setIsFromOverlayReference(bIsOverlay);
 #endif
 }
 
 bool PyDbBlockTableRecord::isLayout() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isLayout();
+    return impObj()->isLayout();
 }
 
 PyDbObjectId PyDbBlockTableRecord::getLayoutId() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return PyDbObjectId(imp->getLayoutId());
+    return PyDbObjectId(impObj()->getLayoutId());
 }
 
 Acad::ErrorStatus PyDbBlockTableRecord::setLayoutId(const PyDbObjectId& id)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setLayoutId(id.m_id);
+    return impObj()->setLayoutId(id.m_id);
 }
 
 boost::python::list PyDbBlockTableRecord::getBlockReferenceIds(bool bDirectOnly, bool bForceValidity)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-
     AcDbObjectIdArray ids;
     boost::python::list lids;
-    imp->getBlockReferenceIds(ids, bDirectOnly, bForceValidity);
+    impObj()->getBlockReferenceIds(ids, bDirectOnly, bForceValidity);
     for (const auto& item : ids)
         lids.append(PyDbObjectId(item));
     return lids;
@@ -269,13 +206,9 @@ boost::python::list PyDbBlockTableRecord::getBlockReferenceIds(bool bDirectOnly,
 
 boost::python::list PyDbBlockTableRecord::getErasedBlockReferenceIds()
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-
     AcDbObjectIdArray ids;
     boost::python::list lids;
-    imp->getErasedBlockReferenceIds(ids);
+    impObj()->getErasedBlockReferenceIds(ids);
     for (const auto& item : ids)
         lids.append(PyDbObjectId(item));
     return lids;
@@ -283,50 +216,35 @@ boost::python::list PyDbBlockTableRecord::getErasedBlockReferenceIds()
 
 PyDbDatabase PyDbBlockTableRecord::xrefDatabase(bool incUnres) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return PyDbDatabase(imp->xrefDatabase(incUnres));
+    return PyDbDatabase(impObj()->xrefDatabase(incUnres));
 }
 
 bool PyDbBlockTableRecord::isUnloaded() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->isUnloaded();
+    return impObj()->isUnloaded();
 }
 
 Acad::ErrorStatus PyDbBlockTableRecord::setIsUnloaded(bool isUnloaded)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setIsUnloaded(isUnloaded);
+    return impObj()->setIsUnloaded(isUnloaded);
 }
 
 AcDb::XrefStatus PyDbBlockTableRecord::xrefStatus() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->xrefStatus();
+    return impObj()->xrefStatus();
 }
 
 Acad::ErrorStatus PyDbBlockTableRecord::assumeOwnershipOf(const boost::python::list& entitiesToMove)
 {
     try
     {
-        auto imp = impObj();
-        if (imp == nullptr)
-            throw PyNullObject();
         const auto PyDbObjectIds = py_list_to_std_vector<PyDbObjectId>(entitiesToMove);
         AcDbObjectIdArray ids;
         for (const auto& pyId : PyDbObjectIds)
             ids.append(pyId.m_id);
-        return imp->assumeOwnershipOf(ids);
+        return impObj()->assumeOwnershipOf(ids);
     }
-    catch(...)
+    catch (...)
     {
         throw PyAcadErrorStatus(eInvalidInput);
     }
@@ -334,69 +252,45 @@ Acad::ErrorStatus PyDbBlockTableRecord::assumeOwnershipOf(const boost::python::l
 
 AcDbBlockTableRecord::BlockScaling PyDbBlockTableRecord::blockScaling() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->blockScaling();
+    return impObj()->blockScaling();
 }
 
 Acad::ErrorStatus PyDbBlockTableRecord::setBlockScaling(AcDbBlockTableRecord::BlockScaling _blockScaling)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setBlockScaling(_blockScaling);
+    return impObj()->setBlockScaling(_blockScaling);
 }
 
 Acad::ErrorStatus PyDbBlockTableRecord::setExplodable(bool bExplodable)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setExplodable(bExplodable);
+    return impObj()->setExplodable(bExplodable);
 }
 
 bool PyDbBlockTableRecord::explodable() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->explodable();
+    return impObj()->explodable();
 }
 
 Acad::ErrorStatus PyDbBlockTableRecord::setBlockInsertUnits(AcDb::UnitsValue insunits)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setBlockInsertUnits(insunits);
+    return impObj()->setBlockInsertUnits(insunits);
 }
 
 AcDb::UnitsValue PyDbBlockTableRecord::blockInsertUnits() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->blockInsertUnits();
+    return impObj()->blockInsertUnits();
 }
 
 int PyDbBlockTableRecord::postProcessAnnotativeBTR(bool bqueryOnly, bool bScale)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     int stripCnt = 0;
-    if (auto stat = imp->postProcessAnnotativeBTR(stripCnt, bqueryOnly, bScale); stat != eOk)
+    if (auto stat = impObj()->postProcessAnnotativeBTR(stripCnt, bqueryOnly, bScale); stat != eOk)
         throw PyAcadErrorStatus(stat);
     return stripCnt;
 }
 
 Acad::ErrorStatus PyDbBlockTableRecord::addAnnoScalestoBlkRefs(bool bScale /*= false*/)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->addAnnoScalestoBlkRefs(bScale);
+    return impObj()->addAnnoScalestoBlkRefs(bScale);
 }
 
 std::string PyDbBlockTableRecord::className()
@@ -404,7 +298,9 @@ std::string PyDbBlockTableRecord::className()
     return  "AcDbBlockTableRecord";
 }
 
-AcDbBlockTableRecord* PyDbBlockTableRecord::impObj() const
+AcDbBlockTableRecord* PyDbBlockTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcDbBlockTableRecord*>(m_pImp.get());
 }

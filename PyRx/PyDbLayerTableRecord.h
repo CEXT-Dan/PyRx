@@ -90,6 +90,6 @@ public:
     static std::string className();
 
 public:
-    AcDbLayerTableRecord* impObj() const;
+    AcDbLayerTableRecord* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 

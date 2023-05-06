@@ -32,126 +32,84 @@ PyGeLinearEnt2d::PyGeLinearEnt2d(AcGeEntity2d* pEnt)
 
 boost::python::tuple PyGeLinearEnt2d::intersectWith1(const PyGeLinearEnt2d& line)
 {
-    auto imp = impObj();
-    if (imp == nullptr || line.isNull())
-        throw PyNullObject();
     AcGePoint2d p1;
-    bool flag = imp->intersectWith(*line.impObj(), p1);
+    bool flag = impObj()->intersectWith(*line.impObj(), p1);
     return make_tuple(flag, p1);
 }
 
 boost::python::tuple PyGeLinearEnt2d::intersectWith2(const PyGeLinearEnt2d& line, const AcGeTol& tol)
 {
-    auto imp = impObj();
-    if (imp == nullptr || line.isNull())
-        throw PyNullObject();
     AcGePoint2d p1;
-    bool flag = imp->intersectWith(*line.impObj(), p1, tol);
+    bool flag = impObj()->intersectWith(*line.impObj(), p1, tol);
     return make_tuple(flag, p1);
 }
 
 boost::python::tuple PyGeLinearEnt2d::overlap1(const PyGeLinearEnt2d& line) const
 {
-    auto imp = impObj();
-    if (imp == nullptr || line.isNull())
-        throw PyNullObject();
     AcGeLinearEnt2d* poverlap = nullptr;
-    bool flag = imp->overlap(*line.impObj(), poverlap);
+    bool flag = impObj()->overlap(*line.impObj(), poverlap);
     return make_tuple(flag, PyGeLinearEnt2d(poverlap));
 }
 
 boost::python::tuple PyGeLinearEnt2d::overlap2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr || line.isNull())
-        throw PyNullObject();
     AcGeLinearEnt2d* poverlap = nullptr;
-    bool flag = imp->overlap(*line.impObj(), poverlap, tol);
+    bool flag = impObj()->overlap(*line.impObj(), poverlap, tol);
     return make_tuple(flag, PyGeLinearEnt2d(poverlap));
 }
 
 Adesk::Boolean PyGeLinearEnt2d::isParallelTo1(const PyGeLinearEnt2d& line) const
 {
-    auto imp = impObj();
-    if (imp == nullptr || line.isNull())
-        throw PyNullObject();
-    return imp->isParallelTo(*line.impObj());
+    return impObj()->isParallelTo(*line.impObj());
 }
 
 Adesk::Boolean PyGeLinearEnt2d::isParallelTo2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr || line.isNull())
-        throw PyNullObject();
-    return imp->isParallelTo(*line.impObj(), tol);
+    return impObj()->isParallelTo(*line.impObj(), tol);
 }
 
 Adesk::Boolean PyGeLinearEnt2d::isPerpendicularTo1(const PyGeLinearEnt2d& line) const
 {
-    auto imp = impObj();
-    if (imp == nullptr || line.isNull())
-        throw PyNullObject();
-    return imp->isPerpendicularTo(*line.impObj());
+    return impObj()->isPerpendicularTo(*line.impObj());
 }
 
 Adesk::Boolean PyGeLinearEnt2d::isPerpendicularTo2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr || line.isNull())
-        throw PyNullObject();
-    return imp->isPerpendicularTo(*line.impObj(), tol);
+    return impObj()->isPerpendicularTo(*line.impObj(), tol);
 }
 
 Adesk::Boolean PyGeLinearEnt2d::isColinearTo1(const PyGeLinearEnt2d& line) const
 {
-    auto imp = impObj();
-    if (imp == nullptr || line.isNull())
-        throw PyNullObject();
-    return imp->isColinearTo(*line.impObj());
+    return impObj()->isColinearTo(*line.impObj());
 }
 
 Adesk::Boolean PyGeLinearEnt2d::isColinearTo2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr || line.isNull())
-        throw PyNullObject();
-    return imp->isColinearTo(*line.impObj(), tol);
+    return impObj()->isColinearTo(*line.impObj(), tol);
 }
 
 PyGeLine2d PyGeLinearEnt2d::getPerpLine(const AcGePoint2d& pnt) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGeLine2d perpLine;
-    imp->getPerpLine(pnt, perpLine);
+    impObj()->getPerpLine(pnt, perpLine);
     return PyGeLine2d(perpLine);
 }
 
 PyGeLine2d PyGeLinearEnt2d::getLine() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGeLine2d perpLine;
-    imp->getLine(perpLine);
+    impObj()->getLine(perpLine);
     return PyGeLine2d(perpLine);
 }
 
 AcGePoint2d PyGeLinearEnt2d::pointOnLine() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->pointOnLine();
+    return impObj()->pointOnLine();
 }
 
 AcGeVector2d PyGeLinearEnt2d::direction() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->direction();
+    return impObj()->direction();
 }
 
 std::string PyGeLinearEnt2d::className()
@@ -159,8 +117,10 @@ std::string PyGeLinearEnt2d::className()
     return "AcGeLinearEnt2d";
 }
 
-AcGeLinearEnt2d* PyGeLinearEnt2d::impObj() const
+AcGeLinearEnt2d* PyGeLinearEnt2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcGeLinearEnt2d*>(m_imp.get());
 }
 
@@ -217,19 +177,13 @@ PyGeLine2d PyGeLine2d::kYAxis()
 
 PyGeLine2d& PyGeLine2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->set(pnt, vec);
+    impObj()->set(pnt, vec);
     return *this;
 }
 
 PyGeLine2d& PyGeLine2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->set(pnt1, pnt2);
+    impObj()->set(pnt1, pnt2);
     return *this;
 }
 
@@ -238,8 +192,10 @@ std::string PyGeLine2d::className()
     return "AcGeLine2d";
 }
 
-AcGeLine2d* PyGeLine2d::impObj() const
+AcGeLine2d* PyGeLine2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcGeLine2d*>(m_imp.get());
 }
 
@@ -294,19 +250,13 @@ PyGeLineSeg2d::PyGeLineSeg2d(const AcGePoint2d& pnt, const AcGeVector2d& vec)
 
 PyGeLineSeg2d& PyGeLineSeg2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->set(pnt, vec);
+    impObj()->set(pnt, vec);
     return *this;
 }
 
 PyGeLineSeg2d& PyGeLineSeg2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->set(pnt1, pnt2);
+    impObj()->set(pnt1, pnt2);
     return *this;
 }
 
@@ -315,12 +265,9 @@ PyGeLineSeg2d& PyGeLineSeg2d::set3(const PyGeCurve2d& curve1, const PyGeCurve2d&
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp == nullptr || curve1.isNull() || curve2.isNull())
-        throw PyNullObject();
     double param1, param2;
     Adesk::Boolean success;
-    imp->set(*curve1.impObj(), *curve2.impObj(), param1, param2, success);
+    impObj()->set(*curve1.impObj(), *curve2.impObj(), param1, param2, success);
     if (!success)
         throw PyAcadErrorStatus(eInvalidInput);
     return *this;
@@ -332,12 +279,9 @@ PyGeLineSeg2d& PyGeLineSeg2d::set4(const PyGeCurve2d& curve, const AcGePoint2d& 
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp == nullptr || curve.isNull())
-        throw PyNullObject();
     double param1;
     Adesk::Boolean success;
-    imp->set(*curve.impObj(), point, param1, success);
+    impObj()->set(*curve.impObj(), point, param1, success);
     if (!success)
         throw PyAcadErrorStatus(eInvalidInput);
     return *this;
@@ -346,68 +290,44 @@ PyGeLineSeg2d& PyGeLineSeg2d::set4(const PyGeCurve2d& curve, const AcGePoint2d& 
 
 PyGeLine2d PyGeLineSeg2d::getBisector() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcGeLine2d line;
-    imp->getBisector(line);
+    impObj()->getBisector(line);
     return PyGeLine2d(line);
 }
 
 AcGePoint2d PyGeLineSeg2d::baryComb(double blendCoeff) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->baryComb(blendCoeff);
+    return impObj()->baryComb(blendCoeff);
 }
 
 AcGePoint2d PyGeLineSeg2d::startPoint() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->startPoint();
+    return impObj()->startPoint();
 }
 
 AcGePoint2d PyGeLineSeg2d::midPoint() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->midPoint();
+    return impObj()->midPoint();
 }
 
 AcGePoint2d PyGeLineSeg2d::endPoint() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->endPoint();
+    return impObj()->endPoint();
 }
 
 double PyGeLineSeg2d::length1() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->length();
+    return impObj()->length();
 }
 
 double PyGeLineSeg2d::length2(double fromParam, double toParam) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->length(fromParam, toParam);
+    return impObj()->length(fromParam, toParam);
 }
 
 double PyGeLineSeg2d::length3(double fromParam, double toParam, double tol) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->length(fromParam, toParam, tol);
+    return impObj()->length(fromParam, toParam, tol);
 }
 
 std::string PyGeLineSeg2d::className()
@@ -415,8 +335,10 @@ std::string PyGeLineSeg2d::className()
     return "AcGeLineSeg2d";
 }
 
-AcGeLineSeg2d* PyGeLineSeg2d::impObj() const
+AcGeLineSeg2d* PyGeLineSeg2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcGeLineSeg2d*>(m_imp.get());
 }
 
@@ -461,19 +383,13 @@ PyGeRay2d::PyGeRay2d(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
 
 PyGeRay2d& PyGeRay2d::set1(const AcGePoint2d& pnt, const AcGeVector2d& vec)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->set(pnt, vec);
+    impObj()->set(pnt, vec);
     return *this;
 }
 
 PyGeRay2d& PyGeRay2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& pnt2)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    imp->set(pnt1, pnt2);
+    impObj()->set(pnt1, pnt2);
     return *this;
 }
 
@@ -482,7 +398,9 @@ std::string PyGeRay2d::className()
     return "AcGeRay2d";
 }
 
-AcGeRay2d* PyGeRay2d::impObj() const
+AcGeRay2d* PyGeRay2d::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_imp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcGeRay2d*>(m_imp.get());
 }

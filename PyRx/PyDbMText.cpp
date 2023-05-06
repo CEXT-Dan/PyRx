@@ -1,9 +1,7 @@
 #include "stdafx.h"
 #include "PyDbMtext.h"
 #include "PyDbObjectId.h"
-
 using namespace boost::python;
-
 void makePyDbMTextWrapper()
 {
     scope MText = class_<PyDbMText, bases<PyDbEntity>>("MText")
@@ -135,242 +133,155 @@ PyDbMText::PyDbMText(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbMText>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 AcGePoint3d PyDbMText::location() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->location();
+    return impObj()->location();
 }
 
 Acad::ErrorStatus PyDbMText::setLocation(const AcGePoint3d& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setLocation(val);
+    return impObj()->setLocation(val);
 }
 
 AcGeVector3d PyDbMText::normal() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->normal();
+    return impObj()->normal();
 }
 
 Acad::ErrorStatus PyDbMText::setNormal(const AcGeVector3d& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setNormal(val);
+    return impObj()->setNormal(val);
 }
 
 AcGeVector3d PyDbMText::direction() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->direction();
+    return impObj()->direction();
 }
 
 Acad::ErrorStatus PyDbMText::setDirection(const AcGeVector3d& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setDirection(val);
+    return impObj()->setDirection(val);
 }
 
 double PyDbMText::rotation() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->rotation();
+    return impObj()->rotation();
 }
 
 Acad::ErrorStatus PyDbMText::setRotation(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setRotation(val);
+    return impObj()->setRotation(val);
 }
 
 double PyDbMText::width() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->width();
+    return impObj()->width();
 }
 
 Acad::ErrorStatus PyDbMText::setWidth(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setWidth(val);
+    return impObj()->setWidth(val);
 }
 
 double PyDbMText::ascent() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->ascent();
+    return impObj()->ascent();
 }
 
 double PyDbMText::descent() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->descent();
+    return impObj()->descent();
 }
 
 PyDbObjectId PyDbMText::textStyle() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return PyDbObjectId(imp->textStyle());
+    return PyDbObjectId(impObj()->textStyle());
 }
 
 Acad::ErrorStatus PyDbMText::setTextStyle(const PyDbObjectId& val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setTextStyle(val.m_id);
+    return impObj()->setTextStyle(val.m_id);
 }
 
 double PyDbMText::textHeight() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->textHeight();
+    return impObj()->textHeight();
 }
 
 Acad::ErrorStatus PyDbMText::setTextHeight(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setTextHeight(val);
+    return impObj()->setTextHeight(val);
 }
 
 AcDbMText::AttachmentPoint PyDbMText::attachment() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->attachment();
+    return impObj()->attachment();
 }
 
 Acad::ErrorStatus PyDbMText::setAttachment(AcDbMText::AttachmentPoint val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setAttachment(val);
+    return impObj()->setAttachment(val);
 }
 
 Acad::ErrorStatus PyDbMText::setAttachmentMovingLocation(AcDbMText::AttachmentPoint val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setAttachmentMovingLocation(val);
+    return impObj()->setAttachmentMovingLocation(val);
 }
 
 AcDbMText::FlowDirection PyDbMText::flowDirection() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->flowDirection();
+    return impObj()->flowDirection();
 }
 
 Acad::ErrorStatus PyDbMText::setFlowDirection(AcDbMText::FlowDirection val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setFlowDirection(val);
+    return impObj()->setFlowDirection(val);
 }
 
 std::string PyDbMText::contents() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcString str;
-    if (auto es = imp->contents(str); es != eOk)
+    if (auto es = impObj()->contents(str); es != eOk)
         throw PyAcadErrorStatus(es);
     return wstr_to_utf8(str);
 }
 
 int PyDbMText::setContents(const std::string& str)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setContents(utf8_to_wstr(str).c_str());
+    return impObj()->setContents(utf8_to_wstr(str).c_str());
 }
 
 std::string PyDbMText::contentsRTF() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcString str;
-    if (auto es = imp->contentsRTF(str); es != eOk)
+    if (auto es = impObj()->contentsRTF(str); es != eOk)
         throw PyAcadErrorStatus(es);
     return wstr_to_utf8(str);
 }
 
 int PyDbMText::setContentsRTF(const std::string& str)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setContentsRTF(utf8_to_wstr(str).c_str());
+    return impObj()->setContentsRTF(utf8_to_wstr(str).c_str());
 }
 
 std::string PyDbMText::text() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcString str;
-    if (auto es = imp->text(str); es != eOk)
+    if (auto es = impObj()->text(str); es != eOk)
         throw PyAcadErrorStatus(es);
     return wstr_to_utf8(str);
 }
 
 double PyDbMText::actualHeight() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->actualHeight();
+    return impObj()->actualHeight();
 }
 
 double PyDbMText::actualWidth() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->actualWidth();
+    return impObj()->actualWidth();
 }
 
 int PyDbMText::correctSpelling()
@@ -378,21 +289,15 @@ int PyDbMText::correctSpelling()
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->correctSpelling();
+    return impObj()->correctSpelling();
 #endif
 }
 
 boost::python::list PyDbMText::getBoundingPoints() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     boost::python::list l;
     AcGePoint3dArray arr;
-    imp->getBoundingPoints(arr);
+    impObj()->getBoundingPoints(arr);
     for (const auto& item : arr)
         l.append(item);
     return l;
@@ -401,10 +306,7 @@ boost::python::list PyDbMText::getBoundingPoints() const
 bool PyDbMText::hitTest(const AcGePoint3d& ptHit) const
 {
 #ifdef ARXAPP
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->hitTest(ptHit);
+    return impObj()->hitTest(ptHit);
 #else
     throw PyNotimplementedByHost();
 #endif // ARXAPP
@@ -412,272 +314,182 @@ bool PyDbMText::hitTest(const AcGePoint3d& ptHit) const
 
 Acad::ErrorStatus PyDbMText::setLineSpacingStyle(AcDb::LineSpacingStyle eStyle)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setLineSpacingStyle(eStyle);
+    return impObj()->setLineSpacingStyle(eStyle);
 }
 
 AcDb::LineSpacingStyle PyDbMText::lineSpacingStyle() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->lineSpacingStyle();
+    return impObj()->lineSpacingStyle();
 }
 
 Acad::ErrorStatus PyDbMText::setLineSpacingFactor(double dFactor)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setLineSpacingFactor(dFactor);
+    return impObj()->setLineSpacingFactor(dFactor);
 }
 
 double PyDbMText::lineSpacingFactor() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->lineSpacingFactor();
+    return impObj()->lineSpacingFactor();
 }
 
 bool PyDbMText::backgroundFillOn() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->backgroundFillOn();
+    return impObj()->backgroundFillOn();
 }
 
 Acad::ErrorStatus PyDbMText::setBackgroundFill(bool enable)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setBackgroundFill(enable);
+    return impObj()->setBackgroundFill(enable);
 }
 
 AcCmColor PyDbMText::getBackgroundFillColor() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcCmColor clr;
-    if (auto es = imp->getBackgroundFillColor(clr); es != eOk)
+    if (auto es = impObj()->getBackgroundFillColor(clr); es != eOk)
         throw PyAcadErrorStatus(es);
     return clr;
 }
 
 Acad::ErrorStatus PyDbMText::setBackgroundFillColor(const AcCmColor& color)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setBackgroundFillColor(color);
+    return impObj()->setBackgroundFillColor(color);
 }
 
 double PyDbMText::getBackgroundScaleFactor() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     double val;
-    if (auto es = imp->getBackgroundScaleFactor(val); es != eOk)
+    if (auto es = impObj()->getBackgroundScaleFactor(val); es != eOk)
         throw PyAcadErrorStatus(es);
     return val;
 }
 
 Acad::ErrorStatus PyDbMText::setBackgroundScaleFactor(const double scale)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setBackgroundScaleFactor(scale);
+    return impObj()->setBackgroundScaleFactor(scale);
 }
 
 AcCmTransparency PyDbMText::getBackgroundTransparency() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcCmTransparency val;
-    if (auto es = imp->getBackgroundTransparency(val); es != eOk)
+    if (auto es = impObj()->getBackgroundTransparency(val); es != eOk)
         throw PyAcadErrorStatus(es);
     return val;
 }
 
 Acad::ErrorStatus PyDbMText::setBackgroundTransparency(const AcCmTransparency& transp)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setBackgroundTransparency(transp);
+    return impObj()->setBackgroundTransparency(transp);
 }
 
 bool PyDbMText::useBackgroundColorOn() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->useBackgroundColorOn();
+    return impObj()->useBackgroundColorOn();
 }
 
 Acad::ErrorStatus PyDbMText::setUseBackgroundColor(bool enable)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setUseBackgroundColor(enable);
+    return impObj()->setUseBackgroundColor(enable);
 }
 
 Acad::ErrorStatus PyDbMText::setDynamicColumns(double width, double gutter, bool auto_height)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setDynamicColumns(width, gutter, auto_height);
+    return impObj()->setDynamicColumns(width, gutter, auto_height);
 }
 
 Acad::ErrorStatus PyDbMText::setStaticColumns(double width, double gutter, int count)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setStaticColumns(width, gutter, count);
+    return impObj()->setStaticColumns(width, gutter, count);
 }
 
 AcDbMText::ColumnType PyDbMText::getColumnType() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     AcDbMText::ColumnType  val;
-    if (auto es = imp->getColumnType(val); es != eOk)
+    if (auto es = impObj()->getColumnType(val); es != eOk)
         throw PyAcadErrorStatus(es);
     return val;
 }
 
 Acad::ErrorStatus PyDbMText::setColumnType(AcDbMText::ColumnType val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setUseBackgroundColor(val);
+    return impObj()->setUseBackgroundColor(val);
 }
 
 bool PyDbMText::getColumnAutoHeight() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     bool  val;
-    if (auto es = imp->getColumnAutoHeight(val); es != eOk)
+    if (auto es = impObj()->getColumnAutoHeight(val); es != eOk)
         throw PyAcadErrorStatus(es);
     return val;
 }
 
 Acad::ErrorStatus PyDbMText::setColumnAutoHeight(bool val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setColumnAutoHeight(val);
+    return impObj()->setColumnAutoHeight(val);
 }
 
 int PyDbMText::getColumnCount() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     int  val;
-    if (auto es = imp->getColumnCount(val); es != eOk)
+    if (auto es = impObj()->getColumnCount(val); es != eOk)
         throw PyAcadErrorStatus(es);
     return val;
 }
 
 Acad::ErrorStatus PyDbMText::setColumnCount(int val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setColumnCount(val);
+    return impObj()->setColumnCount(val);
 }
 
 double PyDbMText::getColumnWidth() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     double  val;
-    if (auto es = imp->getColumnWidth(val); es != eOk)
+    if (auto es = impObj()->getColumnWidth(val); es != eOk)
         throw PyAcadErrorStatus(es);
     return val;
 }
 
 Acad::ErrorStatus PyDbMText::setColumnWidth(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setColumnWidth(val);
+    return impObj()->setColumnWidth(val);
 }
 
 double PyDbMText::getColumnGutterWidth() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     double  val;
-    if (auto es = imp->getColumnGutterWidth(val); es != eOk)
+    if (auto es = impObj()->getColumnGutterWidth(val); es != eOk)
         throw PyAcadErrorStatus(es);
     return val;
 }
 
 Acad::ErrorStatus PyDbMText::setColumnGutterWidth(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setColumnGutterWidth(val);
+    return impObj()->setColumnGutterWidth(val);
 }
 
 bool PyDbMText::getColumnFlowReversed() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     bool  val;
-    if (auto es = imp->getColumnFlowReversed(val); es != eOk)
+    if (auto es = impObj()->getColumnFlowReversed(val); es != eOk)
         throw PyAcadErrorStatus(es);
     return val;
 }
 
 Acad::ErrorStatus PyDbMText::setColumnFlowReversed(bool val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setColumnFlowReversed(val);
+    return impObj()->setColumnFlowReversed(val);
 }
 
 double PyDbMText::getColumnHeight(int idx) const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
     double  val;
-    if (auto es = imp->getColumnHeight(idx, val); es != eOk)
+    if (auto es = impObj()->getColumnHeight(idx, val); es != eOk)
         throw PyAcadErrorStatus(es);
     return val;
 }
 
 Acad::ErrorStatus PyDbMText::setColumnHeight(int idx, double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setColumnHeight(idx,val);
+    return impObj()->setColumnHeight(idx,val);
 }
 
 Acad::ErrorStatus PyDbMText::convertFieldToText()
@@ -685,27 +497,18 @@ Acad::ErrorStatus PyDbMText::convertFieldToText()
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->convertFieldToText();
+    return impObj()->convertFieldToText();
 #endif
 }
 
 double PyDbMText::height() const
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->height();
+    return impObj()->height();
 }
 
 Acad::ErrorStatus PyDbMText::setHeight(double val)
 {
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
-    return imp->setHeight(val);
+    return impObj()->setHeight(val);
 }
 
 std::string PyDbMText::className()
@@ -713,7 +516,10 @@ std::string PyDbMText::className()
     return "AcDbMText";
 }
 
-AcDbMText* PyDbMText::impObj() const
+AcDbMText* PyDbMText::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcDbMText*>(m_pImp.get());
 }
+

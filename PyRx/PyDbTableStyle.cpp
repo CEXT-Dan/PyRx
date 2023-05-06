@@ -119,9 +119,6 @@ PyDbTableStyle::PyDbTableStyle(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbTableStyle>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-    auto imp = impObj();
-    if (imp == nullptr)
-        throw PyNullObject();
 }
 
 std::string PyDbTableStyle::getName()
@@ -769,9 +766,9 @@ std::string PyDbTableStyle::className()
     return "AcDbTableStyle";
 }
 
-AcDbTableStyle* PyDbTableStyle::impObj() const
+AcDbTableStyle* PyDbTableStyle::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcDbTableStyle*>(m_pImp.get());
 }

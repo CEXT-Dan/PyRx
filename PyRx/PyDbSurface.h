@@ -20,7 +20,7 @@ public:
     PyDbSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
     static std::string className();
 public:
-    AcDbSurface* impObj() const;
+    AcDbSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //----------------------------------------------------------------------
@@ -35,7 +35,7 @@ public:
     PyDbExtrudedSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
     static std::string className();
 public:
-    AcDbExtrudedSurface* impObj() const;
+    AcDbExtrudedSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //----------------------------------------------------------------------
@@ -52,7 +52,7 @@ public:
     PyDbLoftedSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
     static std::string className();
 public:
-    AcDbLoftedSurface* impObj() const;
+    AcDbLoftedSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #endif
 
@@ -70,7 +70,7 @@ public:
     PyDbNurbSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
     static std::string className();
 public:
-    AcDbNurbSurface* impObj() const;
+    AcDbNurbSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #endif
 
@@ -88,7 +88,7 @@ public:
     PyDbPlaneSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
     static std::string className();
 public:
-    AcDbPlaneSurface* impObj() const;
+    AcDbPlaneSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #endif
 
@@ -106,7 +106,7 @@ public:
     PyDbRevolvedSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
     static std::string className();
 public:
-    AcDbRevolvedSurface* impObj() const;
+    AcDbRevolvedSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #endif
 
@@ -124,7 +124,7 @@ public:
     PyDbSweptSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
     static std::string className();
 public:
-    AcDbSweptSurface* impObj() const;
+    AcDbSweptSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #endif
 

@@ -357,6 +357,6 @@ public:
 
     static std::string className();
 public:
-    AcDbTable* impObj() const;
+    AcDbTable* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 

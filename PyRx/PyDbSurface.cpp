@@ -47,10 +47,10 @@ std::string PyDbSurface::className()
     return "AcDbSurface";
 }
 
-AcDbSurface* PyDbSurface::impObj() const
+AcDbSurface* PyDbSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcDbSurface*>(m_pImp.get());
 }
 
@@ -88,10 +88,10 @@ std::string PyDbExtrudedSurface::className()
     return "AcDbExtrudedSurface";
 }
 
-AcDbExtrudedSurface* PyDbExtrudedSurface::impObj() const
+AcDbExtrudedSurface* PyDbExtrudedSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcDbExtrudedSurface*>(m_pImp.get());
 }
 
@@ -135,10 +135,10 @@ std::string PyDbLoftedSurface::className()
     return "AcDbLoftedSurface";
 }
 
-AcDbLoftedSurface* PyDbLoftedSurface::impObj() const
+AcDbLoftedSurface* PyDbLoftedSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcDbLoftedSurface*>(m_pImp.get());
 }
 #endif
@@ -185,10 +185,10 @@ std::string PyDbNurbSurface::className()
     return "AcDbNurbSurface";
 }
 
-AcDbNurbSurface* PyDbNurbSurface::impObj() const
+AcDbNurbSurface* PyDbNurbSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcDbNurbSurface*>(m_pImp.get());
 }
 #endif
@@ -233,10 +233,10 @@ std::string PyDbPlaneSurface::className()
     return "AcDbPlaneSurface";
 }
 
-AcDbPlaneSurface* PyDbPlaneSurface::impObj() const
+AcDbPlaneSurface* PyDbPlaneSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcDbPlaneSurface*>(m_pImp.get());
 }
 #endif
@@ -282,10 +282,10 @@ std::string PyDbRevolvedSurface::className()
     return "AcDbPlaneSurface";
 }
 
-AcDbRevolvedSurface* PyDbRevolvedSurface::impObj() const
+AcDbRevolvedSurface* PyDbRevolvedSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcDbRevolvedSurface*>(m_pImp.get());
 }
 #endif
@@ -330,10 +330,10 @@ std::string PyDbSweptSurface::className()
     return "AcDbPlaneSurface";
 }
 
-AcDbSweptSurface* PyDbSweptSurface::impObj() const
+AcDbSweptSurface* PyDbSweptSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
-        throw PyNullObject();
+        throw PyNullObject(src);
     return static_cast<AcDbSweptSurface*>(m_pImp.get());
 }
 #endif
