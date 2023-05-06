@@ -8,7 +8,7 @@ using namespace boost::python;
 //PyApDocManager Wrapper
 void makeAcApDocManagerWrapper()
 {
-    static auto wrapper = class_<PyApDocManager, bases<PyRxObject>>("DocManager")
+   class_<PyApDocManager, bases<PyRxObject>>("DocManager")
         .def("curDocument", &PyApDocManager::curDocument)
         .def("mdiActiveDocument", &PyApDocManager::mdiActiveDocument)
         .def("isApplicationContext", &PyApDocManager::isApplicationContext)

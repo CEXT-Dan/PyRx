@@ -8,7 +8,7 @@ using namespace boost::python;
 //wrapper
 void makeAcDbEntityWrapper()
 {
-    static auto wrapper = class_<PyDbEntity, bases<PyDbObject>>("Entity", boost::python::no_init)
+    class_<PyDbEntity, bases<PyDbObject>>("Entity", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("blockId", &PyDbEntity::blockId)
         .def("color", &PyDbEntity::color)
@@ -419,7 +419,7 @@ AcDbEntity* PyDbEntity::impObj(const std::source_location& src /*= std::source_l
 //PyDbBlockBegin
 void makeAcDbBlockBeginWrapper()
 {
-    static auto wrapper = class_<PyDbBlockBegin, bases<PyDbEntity>>("BlockBegin", boost::python::no_init)
+    class_<PyDbBlockBegin, bases<PyDbEntity>>("BlockBegin", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbBlockBegin::className).staticmethod("className")
         ;
@@ -455,7 +455,7 @@ AcDbBlockBegin* PyDbBlockBegin::impObj(const std::source_location& src /*= std::
 //PyDbBlockEnd
 void makeAcDbBlockEndWrapper()
 {
-    static auto wrapper = class_<PyDbBlockEnd, bases<PyDbEntity>>("BlockEnd", boost::python::no_init)
+    class_<PyDbBlockEnd, bases<PyDbEntity>>("BlockEnd", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbBlockBegin::className).staticmethod("className")
         ;
@@ -493,7 +493,7 @@ AcDbBlockEnd* PyDbBlockEnd::impObj(const std::source_location& src /*= std::sour
 //PyDbBlockEnd
 void makeAcDbSequenceEndWrapper()
 {
-    static auto wrapper = class_<PyDbSequenceEnd, bases<PyDbEntity>>("SequenceEnd", boost::python::no_init)
+    class_<PyDbSequenceEnd, bases<PyDbEntity>>("SequenceEnd", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbSequenceEnd::className).staticmethod("className")
         ;

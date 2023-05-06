@@ -6,7 +6,7 @@
 using namespace boost::python;
 void makeAcDbObjectWrapper()
 {
-    static auto wrapper = class_<PyDbObject, bases<PyGiDrawable>>("DbObject", boost::python::no_init)
+    class_<PyDbObject, bases<PyGiDrawable>>("DbObject", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("objectId", &PyDbObject::objectId)
         .def("ownerId", &PyDbObject::ownerId)

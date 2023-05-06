@@ -7,7 +7,7 @@ using namespace boost::python;
 //PyRxObject wrapper
 void makeAcRxObjectWrapper()
 {
-    static auto wrapper = class_<PyRxObject, boost::noncopyable>("RxObject", boost::python::no_init)
+    class_<PyRxObject, boost::noncopyable>("RxObject", boost::python::no_init)
         .def("isA", &PyRxObject::isA)
         .def("className", &PyRxObject::className).staticmethod("className")
         .def("isNull", &PyRxObject::isNull)
@@ -67,7 +67,7 @@ bool PyRxObject::isNull()
 //PyRxClass Wrapper
 void makeAcRxClassWrapper()
 {
-    static auto wrapper = class_<PyRxClass, bases<PyRxObject>>("RxClass", boost::python::no_init)
+    class_<PyRxClass, bases<PyRxObject>>("RxClass", boost::python::no_init)
         .def("className", &PyRxClass::className).staticmethod("className")
         .def("name", &PyRxClass::name)
         ;

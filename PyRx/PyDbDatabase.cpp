@@ -6,7 +6,7 @@ using namespace boost::python;
 // makeAcDbDatabaseWrapper
 void makeAcDbDatabaseWrapper()
 {
-    static auto wrapper = class_<PyDbDatabase, bases<PyRxObject>>("Database")
+    class_<PyDbDatabase, bases<PyRxObject>>("Database")
         .def(init<>())
         .def(init<bool, bool>())
         .def("angbase", &PyDbDatabase::angbase)

@@ -7,7 +7,7 @@ using namespace boost::python;
 //PyGeBoundBlock2d wrapper
 void makePyGeBoundBlock2dWrapper()
 {
-    static auto wrapper = class_<PyGeBoundBlock2d, bases<PyGeEntity2d>>("BoundBlock2d")
+    class_<PyGeBoundBlock2d, bases<PyGeEntity2d>>("BoundBlock2d")
         .def(init<>())
         .def(init<const AcGePoint2d&, const AcGePoint2d&>())
         .def(init<const AcGePoint2d&, const AcGeVector2d&, const AcGeVector2d&>())

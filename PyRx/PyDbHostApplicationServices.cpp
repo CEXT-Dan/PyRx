@@ -5,7 +5,7 @@ using namespace boost::python;
 
 void makeAcDbHostApplicationServicesWrapper()
 {
-    static auto wrapper = class_<PyDbHostApplicationServices, boost::noncopyable>("HostApplicationServices")
+    class_<PyDbHostApplicationServices, boost::noncopyable>("HostApplicationServices")
         .def(init<>())
         .def("workingDatabase", &PyDbHostApplicationServices::workingDatabase)
         ;

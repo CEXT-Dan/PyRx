@@ -7,7 +7,7 @@ using namespace boost::python;
 //PyGeSplineEnt3d wrapper
 void makePyGeSplineEnt3dWrapper()
 {
-    static auto wrapper = class_<PyGeSplineEnt3d, bases<PyGeCurve3d>>("SplineEnt3d", boost::python::no_init)
+    class_<PyGeSplineEnt3d, bases<PyGeCurve3d>>("SplineEnt3d", boost::python::no_init)
         .def("isRational", &PyGeSplineEnt3d::isRational)
         .def("degree", &PyGeSplineEnt3d::degree)
         .def("order", &PyGeSplineEnt3d::order)
@@ -149,7 +149,7 @@ AcGeSplineEnt3d* PyGeSplineEnt3d::impObj(const std::source_location& src /*= std
 //AcGeCubicSplineCurve3d wrapper
 void makAcGeCubicSplineCurve3dWrapper()
 {
-    static auto wrapper = class_<PyGeCubicSplineCurve3d, bases<PyGeSplineEnt3d>>("CubicSplineCurve3d")
+    class_<PyGeCubicSplineCurve3d, bases<PyGeSplineEnt3d>>("CubicSplineCurve3d")
         .def("className", &PyGeCubicSplineCurve3d::className).staticmethod("className")
         ;
 }
@@ -180,7 +180,7 @@ AcGeCubicSplineCurve3d* PyGeCubicSplineCurve3d::impObj(const std::source_locatio
 //AcGeNurbCurve3d  wrapper
 void makAcGeNurbCurve3dWrapper()
 {
-    static auto wrapper = class_<PyGeNurbCurve3d, bases<PyGeSplineEnt3d>>("NurbCurve3d")
+    class_<PyGeNurbCurve3d, bases<PyGeSplineEnt3d>>("NurbCurve3d")
         .def("className", &PyGeNurbCurve3d::className).staticmethod("className")
         ;
 }
@@ -211,7 +211,7 @@ AcGeNurbCurve3d* PyGeNurbCurve3d::impObj(const std::source_location& src /*= std
 //AcGeNurbCurve3d  wrapper
 void makAcGePolyline3dWrapper()
 {
-    static auto wrapper = class_<PyGePolyline3d, bases<PyGeSplineEnt3d>>("Polyline3d")
+    class_<PyGePolyline3d, bases<PyGeSplineEnt3d>>("Polyline3d")
         .def(init<>())
         .def(init<const boost::python::list&>())
         .def(init<const PyGeKnotVector&, const boost::python::list&>())

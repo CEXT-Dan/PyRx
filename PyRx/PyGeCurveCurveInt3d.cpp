@@ -5,7 +5,7 @@ using namespace boost::python;
 
 void makePyGeCurveCurveInt3dWrapper()
 {
-    static auto wrapper = class_<PyGeCurveCurveInt3d, bases<PyGeEntity3d>>("CurveCurveInt3d")
+    class_<PyGeCurveCurveInt3d, bases<PyGeEntity3d>>("CurveCurveInt3d")
         .def(init<>())
         .def("className", &PyGeEntity3d::className).staticmethod("className")
         ;

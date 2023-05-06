@@ -8,7 +8,7 @@ using namespace boost::python;
 //AcGeSurface wrapper
 void makeAcGeSurfaceWrapper()
 {
-    static auto wrapper = class_<PyAcGeSurface, bases<PyGeEntity3d>>("Surface", boost::python::no_init)
+    class_<PyAcGeSurface, bases<PyGeEntity3d>>("Surface", boost::python::no_init)
         .def("paramOf", &PyAcGeSurface::paramOf)
         .def("paramOf", &PyAcGeSurface::paramOfTol)
         .def("isOn", &PyAcGeSurface::isOn1)

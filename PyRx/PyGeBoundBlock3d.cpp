@@ -6,7 +6,7 @@ using namespace boost::python;
 //PyGeBoundBlock3d
 void makPyGeBoundBlock3dWrapper()
 {
-    static auto wrapper = class_<PyGeBoundBlock3d, bases<PyGeEntity3d>>("BoundBlock3d")
+    class_<PyGeBoundBlock3d, bases<PyGeEntity3d>>("BoundBlock3d")
         .def(init<>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, const AcGeVector3d&>())
         .def("getMinPoint", &PyGeBoundBlock3d::getMinPoint)

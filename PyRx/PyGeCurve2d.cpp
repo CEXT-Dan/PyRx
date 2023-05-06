@@ -9,7 +9,7 @@ using namespace boost::python;
 //PyGeCurve2d wrapper
 void makePyGeCurve2dWrapper()
 {
-    static auto wrapper = class_<PyGeCurve2d, bases<PyGeEntity2d>>("Curve2d", boost::python::no_init)
+    class_<PyGeCurve2d, bases<PyGeEntity2d>>("Curve2d", boost::python::no_init)
         .def("getInterval", &PyGeCurve2d::getInterval)
         .def("getStartPoint", &PyGeCurve2d::getStartPoint)
         .def("getEndPoint", &PyGeCurve2d::getEndPoint)
@@ -478,7 +478,7 @@ AcGeCurve2d* PyGeCurve2d::impObj(const std::source_location& src /*= std::source
 //AcGeCircArc2d wrapper
 void makeAcGeCircArc2dWrapper()
 {
-    static auto wrapper = class_<PyGeCircArc2d, bases<PyGeCurve2d>>("CircArc2d")
+    class_<PyGeCircArc2d, bases<PyGeCurve2d>>("CircArc2d")
         .def(init<>())
         .def(init<const AcGePoint2d&, double>())
         .def(init<const AcGePoint2d&, double, double, double>())
@@ -770,7 +770,7 @@ AcGeCircArc2d* PyGeCircArc2d::impObj(const std::source_location& src /*= std::so
 //AcGeCircArc2d wrapper
 void makeAcGeEllipArc2Wrapper()
 {
-    static auto wrapper = class_<PyGeEllipArc2d, bases<PyGeCurve2d>>("EllipArc2d")
+    class_<PyGeEllipArc2d, bases<PyGeCurve2d>>("EllipArc2d")
         .def(init<>())
 #ifndef BRXAPP
         .def(init<const PyGeCircArc2d&>())
@@ -1012,7 +1012,7 @@ AcGeEllipArc2d* PyGeEllipArc2d::impObj(const std::source_location& src /*= std::
 //PyGeExternalCurve2d wrapper
 void makeAcGeExternalCurve2dWrapper()
 {
-    static auto wrapper = class_<PyGeExternalCurve2d, bases<PyGeCurve2d>>("ExternalCurve2d", boost::python::no_init)
+    class_<PyGeExternalCurve2d, bases<PyGeCurve2d>>("ExternalCurve2d", boost::python::no_init)
         .def("className", &PyGeExternalCurve2d::className).staticmethod("className")
         ;
 }
@@ -1038,7 +1038,7 @@ AcGeExternalCurve2d* PyGeExternalCurve2d::impObj(const std::source_location& src
 //AcGeOffsetCurve2d wrapper
 void makeAcGeOffsetCurve2dWrapper()
 {
-    static auto wrapper = class_<PyGeOffsetCurve2d, bases<PyGeCurve2d>>("OffsetCurve2d", boost::python::no_init)
+    class_<PyGeOffsetCurve2d, bases<PyGeCurve2d>>("OffsetCurve2d", boost::python::no_init)
         .def(init<const PyGeCurve2d&, double>())
         .def("className", &PyGeOffsetCurve2d::className).staticmethod("className")
         ;
@@ -1070,7 +1070,7 @@ AcGeOffsetCurve2d* PyGeOffsetCurve2d::impObj(const std::source_location& src /*=
 //AcGeCompositeCurve2d wrapper
 void makeAcGeCompositeCurve2dWrapper()
 {
-    static auto wrapper = class_<PyGeCompositeCurve2d, bases<PyGeCurve2d>>("CompositeCurve2d")
+    class_<PyGeCompositeCurve2d, bases<PyGeCurve2d>>("CompositeCurve2d")
         .def("className", &PyGeCompositeCurve2d::className).staticmethod("className")
         ;
 }

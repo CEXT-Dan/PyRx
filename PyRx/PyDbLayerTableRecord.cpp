@@ -6,7 +6,7 @@ using namespace boost::python;
 //AcDbLayerTableRecord wrapper
 void makeAcDbLayerTableRecordWrapper()
 {
-    static auto wrapper = class_<PyDbLayerTableRecord, bases<PyDbSymbolTableRecord>>("LayerTableRecord", boost::python::no_init)
+    class_<PyDbLayerTableRecord, bases<PyDbSymbolTableRecord>>("LayerTableRecord", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbLayerTableRecord::className).staticmethod("className")
         .def("isFrozen", &PyDbLayerTableRecord::isFrozen)

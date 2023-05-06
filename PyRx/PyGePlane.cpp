@@ -8,7 +8,7 @@ using namespace boost::python;
 //PyGePlane wrapper
 void makePyGePlaneWrapper()
 {
-    static auto wrapper = class_<PyGePlane, bases<PyGePlanarEnt>>("Plane")
+    class_<PyGePlane, bases<PyGePlanarEnt>>("Plane")
         .def(init<>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
@@ -165,7 +165,7 @@ AcGePlane* PyGePlane::impObj(const std::source_location& src /*= std::source_loc
 //PyGeBoundedPlane wrapper
 void makePyGeBoundedPlaneWrapper()
 {
-    static auto wrapper = class_<PyGeBoundedPlane, bases<PyGePlanarEnt>>("Plane")
+    class_<PyGeBoundedPlane, bases<PyGePlanarEnt>>("Plane")
         .def(init<>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())

@@ -6,7 +6,7 @@ using namespace boost::python;
 //PyGeClipBoundary2d wrapper
 void makePyGeClipBoundary2dWrapper()
 {
-    static auto wrapper = class_<PyGeClipBoundary2d, bases<PyGeEntity2d>>("ClipBoundary2d")
+    class_<PyGeClipBoundary2d, bases<PyGeEntity2d>>("ClipBoundary2d")
         .def(init<>())
 #ifndef BRXAPP
         .def(init<const AcGePoint2d&, const AcGePoint2d&>())

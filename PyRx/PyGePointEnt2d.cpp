@@ -8,7 +8,7 @@ using namespace boost::python;
 //PyGePointEnt2d wrapper
 void makePyGePointEnt2dWrapper()
 {
-    static auto wrapper = class_<PyGePointEnt2d, bases<PyGeEntity2d>>("PointEnt2d", boost::python::no_init)
+    class_<PyGePointEnt2d, bases<PyGeEntity2d>>("PointEnt2d", boost::python::no_init)
         .def("point2d", &PyGePointEnt2d::point2d)
         .def("className", &PyGePointEnt2d::className).staticmethod("className")
         ;
@@ -40,7 +40,7 @@ AcGePointEnt2d* PyGePointEnt2d::impObj(const std::source_location& src /*= std::
 //PyGePointOnCurve2d wrapper
 void makePyGePointOnCurve2dWrapper()
 {
-    static auto wrapper = class_<PyGePointOnCurve2d, bases<PyGePointEnt2d>>("PointOnCurve2d")
+    class_<PyGePointOnCurve2d, bases<PyGePointEnt2d>>("PointOnCurve2d")
         .def(init<>())
         .def(init<const PyGeCurve2d&>())
         .def(init<const PyGeCurve2d&, double>())
@@ -206,7 +206,7 @@ AcGePointOnCurve2d* PyGePointOnCurve2d::impObj(const std::source_location& src /
 //AcGePosition2d wrapper
 void makeAcGePosition2dWrapper()
 {
-    static auto wrapper = class_<PyGePosition2d, bases<PyGePointEnt2d>>("Position2d")
+    class_<PyGePosition2d, bases<PyGePointEnt2d>>("Position2d")
         .def(init<>())
         .def(init<const AcGePoint2d&>())
         .def(init<double, double>())

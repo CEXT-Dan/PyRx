@@ -8,7 +8,7 @@ using namespace boost::python;
 //AcGePlanarEnt wrapper
 void makeAcGePlanarEntWrapper()
 {
-    static auto wrapper = class_<PyGePlanarEnt, bases<PyAcGeSurface>>("PlanarEnt", boost::python::no_init)
+    class_<PyGePlanarEnt, bases<PyAcGeSurface>>("PlanarEnt", boost::python::no_init)
         .def("intersectWith", &PyGePlanarEnt::intersectWith1)
         .def("intersectWith", &PyGePlanarEnt::intersectWith2)
         .def("closestPointToLinearEnt", &PyGePlanarEnt::closestPointToLinearEnt1)

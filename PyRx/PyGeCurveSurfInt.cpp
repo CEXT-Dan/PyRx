@@ -9,7 +9,7 @@ using namespace boost::python;
 
 void makePyGeCurveSurfIntWrapper()
 {
-    static auto wrapper = class_<PyGeCurveSurfInt, bases<PyGeEntity3d>>("CurveSurfInt", boost::python::no_init)
+    class_<PyGeCurveSurfInt, bases<PyGeEntity3d>>("CurveSurfInt", boost::python::no_init)
         .def("className", &PyGeCurveSurfInt::className).staticmethod("className")
         ;
 }

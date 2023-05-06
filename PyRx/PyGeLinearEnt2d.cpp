@@ -6,7 +6,7 @@ using namespace boost::python;
 //AcGeLinearEnt2d wrapper
 void makeAcGeLinearEnt2dWrapper()
 {
-    static auto wrapper = class_<PyGeLinearEnt2d, bases<PyGeCurve2d>>("LinearEnt2d", boost::python::no_init)
+    class_<PyGeLinearEnt2d, bases<PyGeCurve2d>>("LinearEnt2d", boost::python::no_init)
         .def("intersectWith", &PyGeLinearEnt2d::intersectWith1)
         .def("intersectWith", &PyGeLinearEnt2d::intersectWith2)
         .def("overlap", &PyGeLinearEnt2d::overlap1)
@@ -128,7 +128,7 @@ AcGeLinearEnt2d* PyGeLinearEnt2d::impObj(const std::source_location& src /*= std
 //AcGeLine2d  wrapper
 void makeAcGeLine2dWrapper()
 {
-    static auto wrapper = class_<PyGeLine2d, bases<PyGeLinearEnt2d>>("Line2d")
+    class_<PyGeLine2d, bases<PyGeLinearEnt2d>>("Line2d")
         .def(init<>())
         .def(init<const AcGePoint2d&, const AcGeVector2d&>())
         .def(init<const AcGePoint2d&, const AcGePoint2d&>())
@@ -203,7 +203,7 @@ AcGeLine2d* PyGeLine2d::impObj(const std::source_location& src /*= std::source_l
 //AcGeLine2d  wrapper
 void makePyGeLineSeg2dWrapper()
 {
-    static auto wrapper = class_<PyGeLineSeg2d, bases<PyGeLinearEnt2d>>("LineSeg2d")
+    class_<PyGeLineSeg2d, bases<PyGeLinearEnt2d>>("LineSeg2d")
         .def(init<>())
         .def(init<const AcGePoint2d&, const AcGeVector2d&>())
         .def(init<const AcGePoint2d&, const AcGePoint2d&>())
@@ -346,7 +346,7 @@ AcGeLineSeg2d* PyGeLineSeg2d::impObj(const std::source_location& src /*= std::so
 //AcGeRay2d  wrapper
 void makeAcGeRay2dWrapper()
 {
-    static auto wrapper = class_<PyGeRay2d, bases<PyGeLinearEnt2d>>("Ray2d")
+    class_<PyGeRay2d, bases<PyGeLinearEnt2d>>("Ray2d")
         .def(init<>())
         .def(init<const AcGePoint2d&, const AcGeVector2d&>())
         .def(init<const AcGePoint2d&, const AcGePoint2d&>())

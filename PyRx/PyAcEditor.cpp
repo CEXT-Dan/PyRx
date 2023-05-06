@@ -11,7 +11,7 @@ using namespace boost::python;
 
 void makeAcEditorWrapper()
 {
-    static auto wrapper = class_<PyAcEditor>("Editor")
+    class_<PyAcEditor>("Editor")
         .def("className", &PyAcEditor::className).staticmethod("className")
 
         .def("alert", &PyAcEditor::alert)

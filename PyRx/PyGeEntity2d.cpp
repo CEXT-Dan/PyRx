@@ -8,7 +8,7 @@ using namespace boost::python;
 //PyGeEntity2d wrapper
 void makePyGeEntity2dWrapper()
 {
-    static auto wrapper = class_<PyGeEntity2d>("Entity2d", boost::python::no_init)
+    class_<PyGeEntity2d>("Entity2d", boost::python::no_init)
         .def("isKindOf", &PyGeEntity2d::isKindOf)
         .def("type", &PyGeEntity2d::type)
         .def("copy", &PyGeEntity2d::copy)

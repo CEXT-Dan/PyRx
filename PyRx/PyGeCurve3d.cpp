@@ -13,7 +13,7 @@ using namespace boost::python;
 //PyGeCurve3d
 void makPyGeCurve3dWrapper()
 {
-    static auto wrapper = class_<PyGeCurve3d, bases<PyGeEntity3d>>("Curve3d", boost::python::no_init)
+    class_<PyGeCurve3d, bases<PyGeEntity3d>>("Curve3d", boost::python::no_init)
         .def("getInterval", &PyGeCurve3d::getInterval)
         .def("getStartPoint", &PyGeCurve3d::getStartPoint)
         .def("getEndPoint", &PyGeCurve3d::getEndPoint)
@@ -588,7 +588,7 @@ AcGeCurve3d* PyGeCurve3d::impObj(const std::source_location& src /*= std::source
 //AcGeCircArc3d
 void makAcGeCircArc3dWrapper()
 {
-    static auto wrapper = class_<PyGeCircArc3d, bases<PyGeCurve3d>>("CircArc3d")
+    class_<PyGeCircArc3d, bases<PyGeCurve3d>>("CircArc3d")
         .def(init<>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&, double>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double, double, double>())
@@ -889,7 +889,7 @@ AcGeCircArc3d* PyGeCircArc3d::impObj(const std::source_location& src /*= std::so
 //AcGeCompositeCurve3d
 void makAcGeCompositeCurve3dWrapper()
 {
-    static auto wrapper = class_<PyGeCompositeCurve3d, bases<PyGeCurve3d>>("CompositeCurve3d")
+    class_<PyGeCompositeCurve3d, bases<PyGeCurve3d>>("CompositeCurve3d")
         .def("className", &PyGeCompositeCurve3d::className).staticmethod("className")
         ;
 }
@@ -920,7 +920,7 @@ AcGeCompositeCurve3d* PyGeCompositeCurve3d::impObj(const std::source_location& s
 //AcGeCircArc3d wrapper
 void makeAcGeEllipArc3dWrapper()
 {
-    static auto wrapper = class_<PyGeEllipArc3d, bases<PyGeCurve3d>>("EllipArc3d")
+    class_<PyGeEllipArc3d, bases<PyGeCurve3d>>("EllipArc3d")
         .def(init<>())
         .def(init<const PyGeCircArc3d&>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&, double, double>())
@@ -1195,7 +1195,7 @@ AcGeEllipArc3d* PyGeEllipArc3d::impObj(const std::source_location& src /*= std::
 //PyGeExternalCurve3d wrapper
 void makeAcGeExternalCurve3dWrapper()
 {
-    static auto wrapper = class_<PyGeExternalCurve3d, bases<PyGeCurve3d>>("ExternalCurve3d", boost::python::no_init)
+    class_<PyGeExternalCurve3d, bases<PyGeCurve3d>>("ExternalCurve3d", boost::python::no_init)
         .def("className", &PyGeExternalCurve3d::className).staticmethod("className")
         ;
 }
@@ -1221,7 +1221,7 @@ AcGeExternalCurve3d* PyGeExternalCurve3d::impObj(const std::source_location& src
 //AcGeOffsetCurve3d wrapper
 void makeAcGeOffsetCurve3dWrapper()
 {
-    static auto wrapper = class_<PyGeOffsetCurve3d, bases<PyGeCurve3d>>("OffsetCurve3d", boost::python::no_init)
+    class_<PyGeOffsetCurve3d, bases<PyGeCurve3d>>("OffsetCurve3d", boost::python::no_init)
         .def(init<const PyGeCurve3d&, const AcGeVector3d&, double>())
         .def("className", &PyGeOffsetCurve3d::className).staticmethod("className")
         ;

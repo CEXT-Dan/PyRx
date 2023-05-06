@@ -6,7 +6,7 @@ using namespace boost::python;
 
 void makeTextStyleTableRecordWrapper()
 {
-    static auto wrapper = class_<PyDbTextStyleTableRecord, bases<PyDbSymbolTableRecord>>("TextStyleTableRecord", boost::python::no_init)
+    class_<PyDbTextStyleTableRecord, bases<PyDbSymbolTableRecord>>("TextStyleTableRecord", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("isShapeFile", &PyDbTextStyleTableRecord::isShapeFile)
         .def("setIsShapeFile", &PyDbTextStyleTableRecord::setIsShapeFile)

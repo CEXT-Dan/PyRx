@@ -8,7 +8,7 @@ using namespace boost::python;
 //PyGeEntity3d wrapper
 void makePyGeEntity3dWrapper()
 {
-    static auto wrapper = class_<PyGeEntity3d>("Entity3d", boost::python::no_init)
+    class_<PyGeEntity3d>("Entity3d", boost::python::no_init)
         .def("isKindOf", &PyGeEntity3d::isKindOf)
         .def("type", &PyGeEntity3d::type)
         .def("copy", &PyGeEntity3d::copy)

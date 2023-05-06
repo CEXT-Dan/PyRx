@@ -4,7 +4,7 @@
 using namespace boost::python;
 void makeAcDbFieldtWrapper()
 {
-    static auto wrapper = class_<PyDbField, bases<PyDbObject>>("Field")
+    class_<PyDbField, bases<PyDbObject>>("Field")
         .def(init<>())
         .def(init<std::string&, bool>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())

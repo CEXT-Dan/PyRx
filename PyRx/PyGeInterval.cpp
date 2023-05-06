@@ -6,7 +6,7 @@ using namespace boost::python;
 
 void makePyGeIntervalWrapper()
 {
-    static auto wrapper = class_<PyGeInterval>("Interval")
+    class_<PyGeInterval>("Interval")
         .def("className", &PyGeInterval::className).staticmethod("className")
         ;
 }

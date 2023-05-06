@@ -44,7 +44,7 @@ PyDbEntity openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
 
 void makeAcDbExtents2dWrapper()
 {
-    static auto wrapper = class_<AcDbExtents2d>("Extents2d")
+    class_<AcDbExtents2d>("Extents2d")
         .def(init<>())
         .def(init<const AcDbExtents2d&>())
         .def(init<const AcGePoint2d&, const AcGePoint2d&>())
@@ -61,7 +61,7 @@ void makeAcDbExtents2dWrapper()
 }
 void makeAcDbExtentsWrapper()
 {
-    static auto wrapper = class_<AcDbExtents>("Extents")
+    class_<AcDbExtents>("Extents")
         .def(init<>())
         .def(init<const AcDbExtents&>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&>())

@@ -8,7 +8,7 @@ using namespace boost::python;
 //PyGeCurveCurveInt2d wrapper
 void makePyGeCurveCurveInt2dWrapper()
 {
-    static auto wrapper = class_<PyGeCurveCurveInt2d, bases<PyGeEntity2d>>("CurveCurveInt2d")
+    class_<PyGeCurveCurveInt2d, bases<PyGeEntity2d>>("CurveCurveInt2d")
         .def(init<>())
 #ifndef BRXAPP
         .def(init<const AcGeCurve2d&, const AcGeCurve2d&>())

@@ -6,7 +6,7 @@ using namespace boost::python;
 //TODO LINK ERROR @CTOR
 void makePyGeSurfSurfIntWrapper()
 {
-    static auto wrapper = class_<PyGeSurfSurfInt, bases<PyGeEntity3d>>("SurfSurfInt", boost::python::no_init)
+    class_<PyGeSurfSurfInt, bases<PyGeEntity3d>>("SurfSurfInt", boost::python::no_init)
         .def("className", &PyGeSurfSurfInt::className).staticmethod("className")
         ;
 }
