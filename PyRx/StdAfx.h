@@ -139,10 +139,10 @@
 #define SOLID3D_SUPPORT
 
 #ifdef ARXAPP
-  #pragma comment( lib , "AcPal.lib" )
-  #ifdef SOLID3D_SUPPORT
-    #pragma comment( lib , "acgeoment.lib" )
-  #endif
+#pragma comment( lib , "AcPal.lib" )
+#ifdef SOLID3D_SUPPORT
+#pragma comment( lib , "acgeoment.lib" )
+#endif
 #endif
 
 //#pragma comment( lib , "ac1st24.lib" )
@@ -274,14 +274,18 @@ class WxPyAutoLock
 public:
     WxPyAutoLock()
     {
-        if (canLock)
+        if (canLock) [[likely]]
             blocked = wxPyBeginBlockThreads();
     }
     ~WxPyAutoLock()
     {
-        if (canLock)
+        if (canLock) [[likely]]
             wxPyEndBlockThreads(blocked);
     }
+
+    WxPyAutoLock(const WxPyAutoLock&) = delete;
+    WxPyAutoLock& operator=(const WxPyAutoLock&) = delete;
+
     wxPyBlock_t blocked{};
     inline static bool canLock = false;
 };
@@ -290,19 +294,22 @@ struct PyAutoLockGIL
 {
 
     PyAutoLockGIL()
-        : gstate(PyGILState_Ensure())
     {
+        if (canLock)[[likely]]
+            gstate = PyGILState_Ensure();
     }
 
     ~PyAutoLockGIL()
     {
-        PyGILState_Release(gstate);
+        if (canLock) [[likely]]
+            PyGILState_Release(gstate);
     }
 
     PyAutoLockGIL(const PyAutoLockGIL&) = delete;
     PyAutoLockGIL& operator=(const PyAutoLockGIL&) = delete;
 
     PyGILState_STATE gstate;
+    inline static bool canLock = false;
 };
 #pragma pack (pop)
 

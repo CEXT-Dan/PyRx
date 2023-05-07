@@ -88,6 +88,7 @@ bool WxRxApp::Init_wxPython()
     }
     m_mainTState = wxPyBeginAllowThreads();
     WxPyAutoLock::canLock = true;
+    PyAutoLockGIL::canLock = true;
     return true;
 }
 
@@ -158,6 +159,7 @@ bool PyRxApp::uninit()
 {
     isLoaded = false;
     WxPyAutoLock::canLock = false;
+    PyAutoLockGIL::canLock = false;
     fnm.clear();
     try
     {
