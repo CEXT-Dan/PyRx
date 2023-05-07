@@ -285,5 +285,24 @@ public:
     wxPyBlock_t blocked{};
     inline static bool canLock = false;
 };
+
+struct PyAutoLockGIL
+{
+
+    PyAutoLockGIL()
+        : gstate(PyGILState_Ensure())
+    {
+    }
+
+    ~PyAutoLockGIL()
+    {
+        PyGILState_Release(gstate);
+    }
+
+    PyAutoLockGIL(const PyAutoLockGIL&) = delete;
+    PyAutoLockGIL& operator=(const PyAutoLockGIL&) = delete;
+
+    PyGILState_STATE gstate;
+};
 #pragma pack (pop)
 

@@ -132,6 +132,7 @@ AcEdJig::DragStatus PyJig::dragwr2(const AcEdDragStyle& style)
 
 AcEdJig::DragStatus PyJig::sampler()
 {
+    PyAutoLockGIL lock;
     if (override f = this->get_override("sampler"))
         return f();
     return AcEdJig::DragStatus::kNoChange;
@@ -139,6 +140,7 @@ AcEdJig::DragStatus PyJig::sampler()
 
 Adesk::Boolean PyJig::update()
 {
+    PyAutoLockGIL lock;
     if (override f = this->get_override("update"))
         return f();
     return true;

@@ -27,7 +27,14 @@ def OnPyUnloadDwg():
 
 def PyRxCmd_pycmd():
     try:
-        createAlignedDimension()
+        #createAlignedDimension()
+        #table()
+        #mtext()
+        #createPolyLine()
+        #createLine()
+        #createDbp()
+        #createDbps()
+        getSplitCurves()
 
     except Exception as err:
         PyRxApp.Printf(err)
@@ -51,7 +58,7 @@ def table():
         docm = app.docManager()
         doc = docm.curDocument()
         ed = doc.editor()
-        val = ed.entsel("\nSelect")
+        val = ed.entsel("\nSelect table")
         if (val[0] == PyEd.PromptStatus.eNormal):
             tb = PyDb.Table(val[1], PyDb.OpenMode.ForRead)
             print(tb.position())
@@ -68,7 +75,7 @@ def mtext():
         docm = app.docManager()
         doc = docm.curDocument()
         ed = doc.editor()
-        val = ed.entsel("\nSelect")
+        val = ed.entsel("\nSelect mtext")
         if (val[0] == PyEd.PromptStatus.eNormal):
             mt = PyDb.MText(val[1], PyDb.OpenMode.ForRead)
             print(type(mt.attachment()))
@@ -84,10 +91,10 @@ def createPolyLine():
             db.modelSpaceId(), PyDb.OpenMode.kForWrite)
         pline = PyDb.Polyline(4)
         pline.setDatabaseDefaults()
-        pline.addVertexAt(0, PyGe.Point2d(0, 0), 0, 0, 0)
-        pline.addVertexAt(1, PyGe.Point2d(100, 0), 0, 0, 0)
+        pline.addVertexAt(0, PyGe.Point2d(0, 0))
+        pline.addVertexAt(1, PyGe.Point2d(100, 0))
         pline.addVertexAt(2, PyGe.Point2d(100, 100), 3, 0, 0)
-        pline.addVertexAt(3, PyGe.Point2d(0, 100), 0, 0, 0)
+        pline.addVertexAt(3, PyGe.Point2d(0, 100))
         pline.setClosed(True)
         model.appendAcDbEntity(pline)
 
@@ -141,15 +148,22 @@ def createLine():
 def getSplitCurves():
     doc = PyAp.Application().docManager().curDocument()
     ed = doc.editor()
-    entres = ed.entsel("\nSelect")
-    pntres = ed.getPoint("\nPoint On Curve")
+    entres = ed.entsel("\nSelect curve")
+    pntres = ed.getPoint("\nPick Point On Curve")
+    pntres2 = ed.getPoint("\nPick Next Point On Curve")
 
     if (entres[0] == PyEd.PromptStatus.eNormal):
         entId = entres[1]
         curve = PyDb.Curve(entId, PyDb.OpenMode.kForRead)
+        
         pnt = pntres[1]
         param = curve.getParamAtPoint(pnt)
-        params = [param]
+        
+        pnt2 = pntres2[1]
+        param2 = curve.getParamAtPoint(pnt2)
+        
+        params = [param,param2]
+        
         curves = curve.getSplitCurves(params)
         db = doc.database()
         model = PyDb.BlockTableRecord(
@@ -163,7 +177,7 @@ def createDbp():
         db = PyAp.Application().docManager().curDocument().database()
         model = PyDb.BlockTableRecord(
             db.modelSpaceId(), PyDb.OpenMode.kForWrite)
-        dbp = PyDb.DbPoint(PyGe.Point3d(100, 100, 0))
+        dbp = PyDb.Point(PyGe.Point3d(100, 100, 0))
         model.appendAcDbEntity(dbp)
     except Exception as err:
         PyRxApp.Printf(err)
@@ -173,7 +187,7 @@ def createDbps():
     try:
         objs = []
         for x in range(10000):
-            objs.append(PyDb.DbPoint(PyGe.Point3d(x, x, 0)))
+            objs.append(PyDb.Point(PyGe.Point3d(x, x, 0)))
 
         db = PyAp.Application().docManager().curDocument().database()
         model = PyDb.BlockTableRecord(

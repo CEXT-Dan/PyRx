@@ -53,3 +53,9 @@ def PyRxCmd_pydoit5():
                         PyRxApp.Printf("{} ".format(x[1].__doc__))  
     except Exception as err:
         PyRxApp.Printf(err)
+        
+def PyRxCmd_pydoit6():
+    try:
+       print(dir(PyDb))
+    except Exception as err:
+        PyRxApp.Printf(err)

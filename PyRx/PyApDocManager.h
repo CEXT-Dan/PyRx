@@ -5,9 +5,73 @@
 class PyApDocument;
 class PyDbDatabase;
 
-void makeAcApDocManagerWrapper();
+//-----------------------------------------------------------------------------------------
+//PyApDocManagerReactor
+void makePyApDocManagerReactorWrapper();
+class PyApDocManagerReactor :public AcApDocManagerReactor, public boost::python::wrapper<PyApDocManagerReactor>
+{
+public:
+    PyApDocManagerReactor();
+    ~PyApDocManagerReactor();
+    virtual void        documentCreateStarted(AcApDocument* pDocCreating) override;
+    virtual void        documentCreated(AcApDocument* pDocCreating) override;
+    virtual void        documentToBeDestroyed(AcApDocument* pDocToDestroy) override;
+    virtual void        documentDestroyed(const ACHAR* fileName) override;
+    virtual void        documentCreateCanceled(AcApDocument* pDocCreateCancelled) override;
+    virtual void        documentLockModeWillChange(AcApDocument*,
+        AcAp::DocLockMode myCurrentMode,
+        AcAp::DocLockMode myNewMode,
+        AcAp::DocLockMode currentMode,
+        const  ACHAR* pGlobalCmdName) override;
+    virtual void        documentLockModeChangeVetoed(AcApDocument* doc,const ACHAR* pGlobalCmdName) override;
+    virtual void        documentLockModeChanged(AcApDocument* doc,
+        AcAp::DocLockMode myPreviousMode,
+        AcAp::DocLockMode myCurrentMode,
+        AcAp::DocLockMode currentMode,
+        const ACHAR* pGlobalCmdName)override;
+    virtual void        documentBecameCurrent(AcApDocument* doc) override;
+    virtual void        documentToBeActivated(AcApDocument* pActivatingDoc) override;
+    virtual void        documentToBeDeactivated(AcApDocument* pDeActivatedDoc) override;
+    virtual void        documentActivationModified(bool bActivation) override;
+    virtual void        documentActivated(AcApDocument* pActivatedDoc) override;
+
+    ///forwards
+    virtual void        documentCreateStartedWr(PyApDocument& pDocCreating);
+    virtual void        documentCreatedWr(PyApDocument& pDocCreating);
+    virtual void        documentToBeDestroyedWr(PyApDocument& pDocToDestroy);
+    virtual void        documentDestroyedWr(const std::string& fileName);
+    virtual void        documentCreateCanceledWr(PyApDocument& pDocCreateCancelled);
+
+    virtual void        documentLockModeWillChangeWr(PyApDocument& doc,
+        AcAp::DocLockMode myCurrentMode,
+        AcAp::DocLockMode myNewMode,
+        AcAp::DocLockMode currentMode,
+        const std::string& pGlobalCmdName);
+    virtual void        documentLockModeChangeVetoedWr(PyApDocument& doc, const std::string& pGlobalCmdName);
+
+    virtual void        documentLockModeChangedWr(PyApDocument& doc,
+        AcAp::DocLockMode myPreviousMode,
+        AcAp::DocLockMode myCurrentMode,
+        AcAp::DocLockMode currentMode,
+        const std::string& pGlobalCmdName);
+
+    virtual void        documentBecameCurrentWr(PyApDocument& doc);
+    virtual void        documentToBeActivatedWr(PyApDocument& pActivatingDoc);
+    virtual void        documentToBeDeactivatedWr(PyApDocument& pDeActivatedDoc);
+    virtual void        documentActivationModifiedWr(bool bActivation);
+    virtual void        documentActivatedWr(PyApDocument& pActivatedDoc);
+
+    void                addReactor();
+    void                removeReactor();
+
+public:
+    bool m_isActive = false;;
+};
+
 //-----------------------------------------------------------------------------------------
 //PyApDocManager
+void makeAcApDocManagerWrapper();
+
 class PyApDocManager : public PyRxObject
 {
 public:
@@ -26,9 +90,6 @@ public:
     Acad::ErrorStatus unlockDocument(PyApDocument& pDoc);
 
     boost::python::list newAcApDocumentIterator();
-
-    //void addReactor(PyApDocManagerReactor&);
-    //void removeReactor(PyApDocManagerReactor&);
 
     Acad::ErrorStatus setDefaultFormatForSave(AcApDocument::SaveFormat format);
     AcApDocument::SaveFormat defaultFormatForSave() const;

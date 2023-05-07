@@ -13,7 +13,7 @@ def OnPyLoadDwg():
 def OnPyUnloadDwg():
    PyRxApp.Printf("\nOnPyUnloadDwg")
          
-def PyRxAppCmd_testfuncs():
+def PyRxCmd_testfuncs():
 	testFuncDoc()
 	
 def testFuncDoc():
@@ -21,7 +21,7 @@ def testFuncDoc():
 	PyRxApp.Printf(PyRxApp.GetVar.__doc__)
 	PyRxApp.Printf(PyRxApp.SetVar.__doc__)
 
-def PyRxAppCmd_testSetVar():
+def PyRxCmd_testSetVar():
 	try:
 		PyRxApp.SetVar("OSMODE", 0)
 		PyRxApp.Printf(PyRxApp.GetVar("OSMODE"))

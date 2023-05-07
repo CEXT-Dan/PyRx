@@ -4,11 +4,233 @@
 #include "PyDbDatabase.h"
 
 using namespace boost::python;
+
+//-----------------------------------------------------------------------------------------
+//PyApDocManagerReactor
+void makePyApDocManagerReactorWrapper()
+{
+    class_<PyApDocManagerReactor, boost::noncopyable>("DocManagerReactor")
+        .def("documentCreateStarted", &PyApDocManagerReactor::documentCreateStartedWr)
+        .def("documentCreated", &PyApDocManagerReactor::documentCreatedWr)
+        .def("documentToBeDestroyed", &PyApDocManagerReactor::documentToBeDestroyedWr)
+        .def("documentDestroyed", &PyApDocManagerReactor::documentDestroyedWr)
+        .def("documentCreateCanceled", &PyApDocManagerReactor::documentCreateCanceledWr)
+        .def("documentLockModeWillChange", &PyApDocManagerReactor::documentLockModeWillChangeWr)
+        .def("documentLockModeChangeVetoed", &PyApDocManagerReactor::documentLockModeChangeVetoedWr)
+        .def("documentLockModeChanged", &PyApDocManagerReactor::documentLockModeChangedWr)
+        .def("documentBecameCurrent", &PyApDocManagerReactor::documentBecameCurrentWr)
+        .def("documentToBeActivated", &PyApDocManagerReactor::documentToBeActivatedWr)
+        .def("documentToBeDeactivated", &PyApDocManagerReactor::documentToBeDeactivatedWr)
+        .def("documentActivationModified", &PyApDocManagerReactor::documentActivationModifiedWr)
+        .def("documentActivated", &PyApDocManagerReactor::documentActivatedWr)
+        .def("addReactor", &PyApDocManagerReactor::addReactor)
+        .def("removeReactor", &PyApDocManagerReactor::removeReactor)
+        ;
+}
+
+PyApDocManagerReactor::PyApDocManagerReactor()
+{
+}
+
+PyApDocManagerReactor::~PyApDocManagerReactor()
+{
+    if (m_isActive)
+        removeReactor();
+}
+
+void PyApDocManagerReactor::documentCreateStarted(AcApDocument* pDocCreating)
+{
+    PyApDocument doc(pDocCreating, false);
+    documentCreateStartedWr(doc);
+}
+
+void PyApDocManagerReactor::documentCreated(AcApDocument* pDocCreating)
+{
+    PyApDocument doc(pDocCreating, false);
+    documentCreatedWr(doc);
+}
+
+void PyApDocManagerReactor::documentToBeDestroyed(AcApDocument* pDocToDestroy)
+{
+    PyApDocument doc(pDocToDestroy, false);
+    documentToBeDestroyedWr(doc);
+}
+
+void PyApDocManagerReactor::documentDestroyed(const ACHAR* fileName)
+{
+    documentDestroyedWr(wstr_to_utf8(fileName));
+}
+
+void PyApDocManagerReactor::documentCreateCanceled(AcApDocument* pDocCreateCancelled)
+{
+    PyApDocument doc(pDocCreateCancelled, false);
+    documentCreateCanceledWr(doc);
+}
+
+void PyApDocManagerReactor::documentLockModeWillChange(AcApDocument* pDoc, AcAp::DocLockMode myCurrentMode, AcAp::DocLockMode myNewMode, AcAp::DocLockMode currentMode, const ACHAR* pGlobalCmdName)
+{
+    PyApDocument doc(pDoc, false);
+    documentLockModeWillChangeWr(doc, myCurrentMode, myNewMode, currentMode, wstr_to_utf8(pGlobalCmdName));
+}
+
+void PyApDocManagerReactor::documentLockModeChangeVetoed(AcApDocument* pdoc, const ACHAR* pGlobalCmdName)
+{
+    PyApDocument doc(pdoc, false);
+    documentLockModeChangeVetoedWr(doc, wstr_to_utf8(pGlobalCmdName));
+}
+
+void PyApDocManagerReactor::documentLockModeChanged(AcApDocument* pdoc, AcAp::DocLockMode myPreviousMode, AcAp::DocLockMode myCurrentMode, AcAp::DocLockMode currentMode, const ACHAR* pGlobalCmdName)
+{
+    PyApDocument doc(pdoc, false);
+    documentLockModeChangedWr(doc, myPreviousMode, myCurrentMode, currentMode, wstr_to_utf8(pGlobalCmdName));
+}
+
+void PyApDocManagerReactor::documentBecameCurrent(AcApDocument* pdoc)
+{
+    PyApDocument doc(pdoc, false);
+    documentBecameCurrentWr(doc);
+}
+
+void PyApDocManagerReactor::documentToBeActivated(AcApDocument* pActivatingDoc)
+{
+    PyApDocument doc(pActivatingDoc, false);
+    documentToBeActivatedWr(doc);
+}
+
+void PyApDocManagerReactor::documentToBeDeactivated(AcApDocument* pDeActivatedDoc)
+{
+    PyApDocument doc(pDeActivatedDoc, false);
+    documentToBeDeactivatedWr(doc);
+}
+
+void PyApDocManagerReactor::documentActivationModified(bool bActivation)
+{
+    documentActivationModifiedWr(bActivation);
+}
+
+void PyApDocManagerReactor::documentActivated(AcApDocument* pActivatedDoc)
+{
+    PyApDocument doc(pActivatedDoc, false);
+    documentActivatedWr(doc);
+}
+
+void PyApDocManagerReactor::documentCreateStartedWr(PyApDocument& pDocCreating)
+{
+    PyAutoLockGIL lock;
+    if (override pyFunc = this->get_override("documentCreateStarted"))
+       pyFunc(pDocCreating);
+}
+
+void PyApDocManagerReactor::documentCreatedWr(PyApDocument& pDocCreating)
+{
+    PyAutoLockGIL lock;
+   if (override pyFunc = this->get_override("documentCreated"))
+        pyFunc(pDocCreating);
+}
+
+void PyApDocManagerReactor::documentToBeDestroyedWr(PyApDocument& pDocToDestroy)
+{
+    PyAutoLockGIL lock;
+    if (override pyFunc = this->get_override("documentToBeDestroyed"))
+        pyFunc(pDocToDestroy);
+}
+
+void PyApDocManagerReactor::documentDestroyedWr(const std::string& fileName)
+{
+    PyAutoLockGIL lock;
+    if (override pyFunc = this->get_override("documentDestroyed"))
+        pyFunc(fileName);
+}
+
+void PyApDocManagerReactor::documentCreateCanceledWr(PyApDocument& pDocCreateCancelled)
+{
+    PyAutoLockGIL lock;
+    if (override pyFunc = this->get_override("documentCreateCanceled"))
+        pyFunc(pDocCreateCancelled);
+}
+
+void PyApDocManagerReactor::documentLockModeWillChangeWr(PyApDocument& doc, AcAp::DocLockMode myCurrentMode, AcAp::DocLockMode myNewMode, AcAp::DocLockMode currentMode, const std::string& pGlobalCmdName)
+{
+    PyAutoLockGIL lock;
+    if (override pyFunc = this->get_override("documentLockModeWillChange"))
+        pyFunc(doc, myCurrentMode, myNewMode, currentMode, pGlobalCmdName);
+}
+
+void PyApDocManagerReactor::documentLockModeChangeVetoedWr(PyApDocument& doc, const std::string& pGlobalCmdName)
+{
+    PyAutoLockGIL lock;
+    if (override pyFunc = this->get_override("documentLockModeChangeVetoed"))
+        pyFunc(doc, pGlobalCmdName);
+}
+
+void PyApDocManagerReactor::documentLockModeChangedWr(PyApDocument& doc, AcAp::DocLockMode myPreviousMode, AcAp::DocLockMode myCurrentMode, AcAp::DocLockMode currentMode, const std::string& pGlobalCmdName)
+{
+    PyAutoLockGIL lock;
+    if (override pyFunc = this->get_override("documentLockModeChanged"))
+        pyFunc(doc, myPreviousMode, myCurrentMode, currentMode, pGlobalCmdName);
+}
+
+void PyApDocManagerReactor::documentBecameCurrentWr(PyApDocument& doc)
+{
+    PyAutoLockGIL lock;
+    if (override pyFunc = this->get_override("documentBecameCurrent"))
+        pyFunc(doc);
+}
+
+void PyApDocManagerReactor::documentToBeActivatedWr(PyApDocument& pActivatingDoc)
+{
+    PyAutoLockGIL lock;
+    if (override pyFunc = this->get_override("documentToBeActivated"))
+        pyFunc(pActivatingDoc);
+}
+
+void PyApDocManagerReactor::documentToBeDeactivatedWr(PyApDocument& pDeActivatedDoc)
+{
+    PyAutoLockGIL lock;
+    if (override pyFunc = this->get_override("documentToBeDeactivated"))
+        pyFunc(pDeActivatedDoc);
+}
+
+void PyApDocManagerReactor::documentActivationModifiedWr(bool bActivation)
+{
+    PyAutoLockGIL lock;
+    if (override pyFunc = this->get_override("documentActivationModified"))
+        pyFunc(bActivation);
+}
+
+void PyApDocManagerReactor::documentActivatedWr(PyApDocument& pActivatedDoc)
+{
+    PyAutoLockGIL lock;
+    if (override pyFunc = this->get_override("documentActivated"))
+        pyFunc(pActivatedDoc);
+}
+
+void PyApDocManagerReactor::addReactor()
+{
+    if (m_isActive)
+    {
+        acutPrintf(_T("\nReactor already rigistered"));
+        return;
+    }
+    else
+    {
+        acDocManagerPtr()->addReactor(this);
+        m_isActive = true;
+    }
+}
+
+void PyApDocManagerReactor::removeReactor()
+{
+    acDocManagerPtr()->removeReactor(this);
+    m_isActive = false;
+   
+}
+
 //-----------------------------------------------------------------------------------------
 //PyApDocManager Wrapper
 void makeAcApDocManagerWrapper()
 {
-   class_<PyApDocManager, bases<PyRxObject>>("DocManager")
+    class_<PyApDocManager, bases<PyRxObject>>("DocManager")
         .def("curDocument", &PyApDocManager::curDocument)
         .def("mdiActiveDocument", &PyApDocManager::mdiActiveDocument)
         .def("isApplicationContext", &PyApDocManager::isApplicationContext)

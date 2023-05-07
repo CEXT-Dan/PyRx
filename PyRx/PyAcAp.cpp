@@ -35,6 +35,7 @@ BOOST_PYTHON_MODULE(PyAp)
     makeAcApApplictionWrapper();
     makeAcApDocManagerWrapper();
     makeAcApDocumentWrapper();
+    makePyApDocManagerReactorWrapper();
 
     enum_<AcAp::DocLockMode>("DocLockMode")
         .value("kNone", AcAp::DocLockMode::kNone)
