@@ -221,9 +221,11 @@ void PyApDocManagerReactor::addReactor()
 
 void PyApDocManagerReactor::removeReactor()
 {
-    acDocManagerPtr()->removeReactor(this);
-    m_isActive = false;
-   
+    if (m_isActive = true)
+    {
+        acDocManagerPtr()->removeReactor(this);
+        m_isActive = false;
+    }
 }
 
 //-----------------------------------------------------------------------------------------

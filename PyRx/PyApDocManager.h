@@ -65,7 +65,7 @@ public:
     void                removeReactor();
 
 public:
-    bool m_isActive = false;;
+    bool m_isActive = false;
 };
 
 //-----------------------------------------------------------------------------------------

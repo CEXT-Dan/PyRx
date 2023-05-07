@@ -20,6 +20,7 @@
 #include "PyDb3dSolid.h"
 #include "PyDbSurface.h"
 #include "PyDbDimension.h"
+#include "PyDbIdMapping.h"
 
 using namespace boost::python;
 
@@ -162,6 +163,8 @@ BOOST_PYTHON_MODULE(PyDb)
     makeRadialDimensionWrapper();
     makeRadialDimensionLargeWrapper();
     makeRotatedDimensionWrapper();
+    makePyDbIdMappingWrapper();
+
 
     //global
     def("RegApp", &RegApp);

@@ -1,13 +1,15 @@
 
-import PyRxApp  # = all the global methods like acutPrintf,
-import PyRx# = Runtime runtime 
-import PyAp  # = application, document classes services
+import PyRxApp 
+import PyRx
+import PyAp
 
 inst = None #global scope
 
 def OnPyInitApp():
   global inst
   inst = DocReactor()
+
+#TODO check doc.isNull()
 
 class DocReactor(PyAp.DocManagerReactor):
     def __init__(self):

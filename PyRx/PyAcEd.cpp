@@ -2,6 +2,7 @@
 #include "PyAcEd.h"
 #include "PyAcEditor.h"
 #include "PyJig.h"
+#include "PyEditorReactor.h"
 
 using namespace boost::python;
 
@@ -13,6 +14,7 @@ BOOST_PYTHON_MODULE(PyEd)
 
     makeAcEdJigWrapper();
     makeAcEditorWrapper();
+    makePyEditorReactorWrapper();
 
     enum_<Acad::PromptStatus>("PromptStatus")
         .value("eNone", Acad::PromptStatus::eNone)
