@@ -128,6 +128,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makPyDbCircleWrapper();
     makPyDbLineWrapper();
     makPyDbPolylineWrapper();
+    makPyDbFaceWrapper();
 
     makeAcDbDictionaryWrapper();
     makeAcDbSymbolTableWrapper();
@@ -165,10 +166,8 @@ BOOST_PYTHON_MODULE(PyDb)
     makeRotatedDimensionWrapper();
     makePyDbIdMappingWrapper();
 
-
     //global
     def("RegApp", &RegApp);
-
 
     enum_<AcDb::LineSpacingStyle>("LineSpacingStyle")
         .value("kAtLeast", AcDb::LineSpacingStyle::kAtLeast)

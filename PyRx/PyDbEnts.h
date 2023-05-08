@@ -720,19 +720,26 @@ public:
     PyDbFace();
     PyDbFace(const AcGePoint3d& pt0,
         const AcGePoint3d& pt1,
+        const AcGePoint3d& pt2);
+    PyDbFace(const AcGePoint3d& pt0,
+        const AcGePoint3d& pt1,
         const AcGePoint3d& pt2,
-        Adesk::Boolean e0vis = Adesk::kTrue,
-        Adesk::Boolean e1vis = Adesk::kTrue,
-        Adesk::Boolean e2vis = Adesk::kTrue,
-        Adesk::Boolean e3vis = Adesk::kTrue);
+        const AcGePoint3d& pt3);
+    PyDbFace(const AcGePoint3d& pt0,
+        const AcGePoint3d& pt1,
+        const AcGePoint3d& pt2,
+        Adesk::Boolean e0vis,
+        Adesk::Boolean e1vis,
+        Adesk::Boolean e2vis,
+        Adesk::Boolean e3vis);
     PyDbFace(const AcGePoint3d& pt0,
         const AcGePoint3d& pt1,
         const AcGePoint3d& pt2,
         const AcGePoint3d& pt3,
-        Adesk::Boolean e0vis = Adesk::kTrue,
-        Adesk::Boolean e1vis = Adesk::kTrue,
-        Adesk::Boolean e2vis = Adesk::kTrue,
-        Adesk::Boolean e3vis = Adesk::kTrue);
+        Adesk::Boolean e0vis,
+        Adesk::Boolean e1vis,
+        Adesk::Boolean e2vis,
+        Adesk::Boolean e3vis);
     PyDbFace(AcDbPolyline* ptr, bool autoDelete);
     PyDbFace(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbFace() override = default;

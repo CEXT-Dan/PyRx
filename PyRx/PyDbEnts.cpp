@@ -2671,6 +2671,8 @@ void makPyDbFaceWrapper()
 {
     class_<PyDbFace, bases<PyDbEntity>>("Face")
         .def(init<>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
+        .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
@@ -2686,6 +2688,16 @@ void makPyDbFaceWrapper()
 
 PyDbFace::PyDbFace()
     : PyDbEntity(new AcDbFace(), true)
+{
+}
+
+PyDbFace::PyDbFace(const AcGePoint3d& pt0, const AcGePoint3d& pt1, const AcGePoint3d& pt2)
+    : PyDbEntity(new AcDbFace(pt0, pt1, pt2, Adesk::kTrue, Adesk::kTrue, Adesk::kTrue, Adesk::kTrue), true)
+{
+}
+
+PyDbFace::PyDbFace(const AcGePoint3d& pt0, const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& pt3)
+    : PyDbEntity(new AcDbFace(pt0, pt1, pt2, pt3, Adesk::kTrue, Adesk::kTrue, Adesk::kTrue, Adesk::kTrue), true)
 {
 }
 
