@@ -307,7 +307,6 @@ inline boost::python::list std_vector_to_py_list(std::vector<T> vector)
 //TODO avoid copy
 inline AcGePoint2dArray PyListToPoint2dArray(const boost::python::object& iterable)
 {
-    PyAutoLockGIL lock;
     AcGePoint2dArray arr;
     auto vec = py_list_to_std_vector<AcGePoint2d>(iterable);
     for (auto& item : vec)
@@ -318,7 +317,6 @@ inline AcGePoint2dArray PyListToPoint2dArray(const boost::python::object& iterab
 //TODO avoid copy
 inline AcGePoint3dArray PyListToPoint3dArray(const boost::python::object& iterable)
 {
-    PyAutoLockGIL lock;
     AcGePoint3dArray arr;
     auto vec = py_list_to_std_vector<AcGePoint3d>(iterable);
     for (auto& item : vec)
