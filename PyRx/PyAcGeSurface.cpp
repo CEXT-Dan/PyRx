@@ -157,6 +157,7 @@ AcGePoint3d PyAcGeSurface::evalPoint1(const AcGePoint2d& param) const
 
 AcGePoint3d PyAcGeSurface::evalPoint2(const AcGePoint2d& param, int derivOrd, boost::python::list& derivatives) const
 {
+    PyAutoLockGIL lock;
     AcGeVector3dArray vecs;
     auto pnt = impObj()->evalPoint(param, derivOrd, vecs);
     for (auto& vec : vecs)
@@ -166,6 +167,7 @@ AcGePoint3d PyAcGeSurface::evalPoint2(const AcGePoint2d& param, int derivOrd, bo
 
 AcGePoint3d PyAcGeSurface::evalPoint3(const AcGePoint2d& param, int derivOrd, boost::python::list& derivatives, AcGeVector3d& normal) const
 {
+    PyAutoLockGIL lock;
     AcGeVector3dArray vecs;
     auto pnt = impObj()->evalPoint(param, derivOrd, vecs, normal);
     for (auto& vec : vecs)

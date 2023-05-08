@@ -93,6 +93,7 @@ int PyApDocument::getCountOfLispList() const
 
 boost::python::tuple PyApDocument::getItemOfLispList(int nIndex) const
 {
+    PyAutoLockGIL lock;
     AcLispAppInfo* info = impObj()->GetItemOfLispList(nIndex);
     if (info == nullptr)
         throw PyAcadErrorStatus(eNullPtr);

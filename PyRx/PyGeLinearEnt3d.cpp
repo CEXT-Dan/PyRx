@@ -48,6 +48,7 @@ PyGeLinearEnt3d::PyGeLinearEnt3d(AcGeEntity3d* pEnt)
 
 boost::python::tuple PyGeLinearEnt3d::intersectWith1(const PyGeLinearEnt3d& line) const
 {
+    PyAutoLockGIL lock;
     AcGePoint3d intPt;
     auto res = impObj()->intersectWith(*line.impObj(), intPt);
     return boost::python::make_tuple(res, intPt);
@@ -55,6 +56,7 @@ boost::python::tuple PyGeLinearEnt3d::intersectWith1(const PyGeLinearEnt3d& line
 
 boost::python::tuple PyGeLinearEnt3d::intersectWith2(const PyGeLinearEnt3d& line, const AcGeTol& tol) const
 {
+    PyAutoLockGIL lock;
     AcGePoint3d intPt;
     auto res = impObj()->intersectWith(*line.impObj(), intPt, tol);
     return boost::python::make_tuple(res, intPt);
@@ -62,6 +64,7 @@ boost::python::tuple PyGeLinearEnt3d::intersectWith2(const PyGeLinearEnt3d& line
 
 boost::python::tuple PyGeLinearEnt3d::intersectWith3(const PyGePlanarEnt& line) const
 {
+    PyAutoLockGIL lock;
     AcGePoint3d intPt;
     auto res = impObj()->intersectWith(*line.impObj(), intPt);
     return boost::python::make_tuple(res, intPt);
@@ -69,6 +72,7 @@ boost::python::tuple PyGeLinearEnt3d::intersectWith3(const PyGePlanarEnt& line) 
 
 boost::python::tuple PyGeLinearEnt3d::intersectWith4(const PyGePlanarEnt& line, const AcGeTol& tol) const
 {
+    PyAutoLockGIL lock;
     AcGePoint3d intPt;
     auto res = impObj()->intersectWith(*line.impObj(), intPt, tol);
     return boost::python::make_tuple(res, intPt);
@@ -76,6 +80,7 @@ boost::python::tuple PyGeLinearEnt3d::intersectWith4(const PyGePlanarEnt& line, 
 
 boost::python::tuple PyGeLinearEnt3d::projIntersectWith1(const PyGeLinearEnt3d& line, const AcGeVector3d& projDir) const
 {
+    PyAutoLockGIL lock;
     AcGePoint3d pntOnThisLine;
     AcGePoint3d pntOnOtherLine;
     auto res = impObj()->projIntersectWith(*line.impObj(), projDir, pntOnThisLine, pntOnOtherLine);
@@ -84,6 +89,7 @@ boost::python::tuple PyGeLinearEnt3d::projIntersectWith1(const PyGeLinearEnt3d& 
 
 boost::python::tuple PyGeLinearEnt3d::projIntersectWith2(const PyGeLinearEnt3d& line, const AcGeVector3d& projDir, const AcGeTol& tol) const
 {
+    PyAutoLockGIL lock;
     AcGePoint3d pntOnThisLine;
     AcGePoint3d pntOnOtherLine;
     auto res = impObj()->projIntersectWith(*line.impObj(), projDir, pntOnThisLine, pntOnOtherLine, tol);
@@ -92,6 +98,7 @@ boost::python::tuple PyGeLinearEnt3d::projIntersectWith2(const PyGeLinearEnt3d& 
 
 boost::python::tuple PyGeLinearEnt3d::overlap1(const PyGeLinearEnt3d& line) const
 {
+    PyAutoLockGIL lock;
     AcGeLinearEnt3d* pEnt = nullptr;
     auto res = impObj()->overlap(*line.impObj(), pEnt);
     return boost::python::make_tuple(res, PyGeLinearEnt3d(pEnt));
@@ -99,6 +106,7 @@ boost::python::tuple PyGeLinearEnt3d::overlap1(const PyGeLinearEnt3d& line) cons
 
 boost::python::tuple PyGeLinearEnt3d::overlap2(const PyGeLinearEnt3d& line, const AcGeTol& tol) const
 {
+    PyAutoLockGIL lock;
     AcGeLinearEnt3d* pEnt = nullptr;
     auto res = impObj()->overlap(*line.impObj(), pEnt, tol);
     return boost::python::make_tuple(res, PyGeLinearEnt3d(pEnt));
@@ -106,6 +114,7 @@ boost::python::tuple PyGeLinearEnt3d::overlap2(const PyGeLinearEnt3d& line, cons
 
 boost::python::tuple PyGeLinearEnt3d::isOn1(const AcGePoint3d& pnt) const
 {
+    PyAutoLockGIL lock;
     double param = 0;
     auto res = impObj()->isOn(pnt, param);
     return boost::python::make_tuple(res, param);
@@ -113,6 +122,7 @@ boost::python::tuple PyGeLinearEnt3d::isOn1(const AcGePoint3d& pnt) const
 
 boost::python::tuple PyGeLinearEnt3d::isOn2(const AcGePoint3d& pnt, const AcGeTol& tol) const
 {
+    PyAutoLockGIL lock;
     double param = 0;
     auto res = impObj()->isOn(pnt, param, tol);
     return boost::python::make_tuple(res, param);

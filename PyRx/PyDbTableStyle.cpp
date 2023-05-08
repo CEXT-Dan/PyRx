@@ -344,6 +344,7 @@ Acad::ErrorStatus PyDbTableStyle::setBackgroundColorNone(bool bValue, AcDb::RowT
 
 boost::python::tuple PyDbTableStyle::getDataType(AcDb::RowType type) const
 {
+    PyAutoLockGIL lock;
     AcValue::DataType nDataType = AcValue::kUnknown;
     AcValue::UnitType nUnitType = AcValue::kUnitless;
     if (auto es = impObj()->getDataType(nDataType, nUnitType, type); es != eOk)
@@ -356,6 +357,7 @@ boost::python::tuple PyDbTableStyle::getDataType2(const std::string& pszCellStyl
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
+    PyAutoLockGIL lock;
     AcValue::DataType nDataType = AcValue::kUnknown;
     AcValue::UnitType nUnitType = AcValue::kUnitless;
     if (auto es = impObj()->getDataType(nDataType, nUnitType, utf8_to_wstr(pszCellStyle).c_str()); es != eOk)

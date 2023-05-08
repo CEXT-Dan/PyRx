@@ -99,6 +99,7 @@ std::string PyAcEditor::findTrustedFile(const std::string& file)
 
 boost::python::list PyAcEditor::arxLoaded()
 {
+    PyAutoLockGIL lock;
     AcResBufPtr pLoaded(acedArxLoaded());
     return resbufToList(pLoaded.get());
 }

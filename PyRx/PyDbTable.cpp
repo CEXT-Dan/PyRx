@@ -714,6 +714,7 @@ AcDb::RowType PyDbTable::rowType(int row) const
 
 boost::python::tuple PyDbTable::getDataType(AcDb::RowType type) const
 {
+    PyAutoLockGIL lock;
     AcValue::DataType nDataType = AcValue::kUnknown;
     AcValue::UnitType nUnitType = AcValue::kUnitless;
     if (auto es = impObj()->getDataType(nDataType, nUnitType, type); es != eOk)
@@ -723,6 +724,7 @@ boost::python::tuple PyDbTable::getDataType(AcDb::RowType type) const
 
 boost::python::tuple PyDbTable::getDataType2(int row, int col) const
 {
+    PyAutoLockGIL lock;
     AcValue::DataType nDataType;
     AcValue::UnitType nUnitType;
     if (auto es = impObj()->getDataType(row, col, nDataType, nUnitType); es != eOk)
@@ -732,6 +734,7 @@ boost::python::tuple PyDbTable::getDataType2(int row, int col) const
 
 boost::python::tuple PyDbTable::getDataType3(int row, int col, int nContent) const
 {
+    PyAutoLockGIL lock;
     AcValue::DataType nDataType;
     AcValue::UnitType nUnitType;
     if (auto es = impObj()->getDataType(row, col, nContent, nDataType, nUnitType); es != eOk)
@@ -1014,6 +1017,7 @@ Acad::ErrorStatus PyDbTable::setCellType(int row, int col, AcDb::CellType type)
 
 boost::python::list PyDbTable::getCellExtents(int row, int col, bool isOuterCell) const
 {
+    PyAutoLockGIL lock;
     AcGePoint3dArray pts;
     boost::python::list l;
     if (auto es = impObj()->getCellExtents(row, col, isOuterCell, pts); es != eOk)
@@ -1171,6 +1175,7 @@ Acad::ErrorStatus PyDbTable::unmergeCells(int minRow, int maxRow, int minCol, in
 
 boost::python::tuple PyDbTable::isMergedCell(int row, int col)
 {
+    PyAutoLockGIL lock;
     int minRow = -1;
     int maxRow = -1;
     int minCol = -1;
@@ -1194,6 +1199,7 @@ boost::python::tuple PyDbTable::hitTest(const AcGePoint3d& wpt, const AcGeVector
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
+    PyAutoLockGIL lock;
     int resultRowIndex = -1;
     int resultColumnIndex = -1;
     int contentIndex = -1;

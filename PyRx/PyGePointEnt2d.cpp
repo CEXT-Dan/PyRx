@@ -157,6 +157,7 @@ Adesk::Boolean PyGePointOnCurve2d::isSingular2(const AcGeTol& tol) const
 #ifdef NEVER //acad link error
 boost::python::tuple PyGePointOnCurve2d::curvature()
 {
+    PyAutoLockGIL lock;
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();
@@ -169,6 +170,7 @@ boost::python::tuple PyGePointOnCurve2d::curvature()
 #ifdef NEVER //acad link error
 boost::python::tuple PyGePointOnCurve2d::curvature(double param)
 {
+    PyAutoLockGIL lock;
     auto imp = impObj();
     if (imp == nullptr)
         throw PyNullObject();

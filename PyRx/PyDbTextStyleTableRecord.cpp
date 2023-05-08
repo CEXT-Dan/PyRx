@@ -162,6 +162,7 @@ boost::python::tuple PyDbTextStyleTableRecord::font()
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
+    PyAutoLockGIL lock;
     bool bold = false;
     bool italic = false;
     Charset charset = kAnsiCharset;

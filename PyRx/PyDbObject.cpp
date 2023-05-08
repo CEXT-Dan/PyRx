@@ -170,6 +170,7 @@ Acad::ErrorStatus PyDbObject::setXData(const boost::python::list& xdata)
 
 boost::python::list PyDbObject::xData(const std::string& regappName) const
 {
+    PyAutoLockGIL lock;
     AcResBufPtr pData(impObj()->xData(utf8_to_wstr(regappName).c_str()));
     return resbufToList(pData.get());
 }

@@ -147,6 +147,7 @@ AcGePoint2d PyGeCurve2d::closestPointTo2(const AcGePoint2d& pnt, const AcGeTol& 
 
 boost::python::tuple  PyGeCurve2d::closestPointTo3(const PyGeCurve2d& curve2d) const
 {
+    PyAutoLockGIL lock;
     AcGePoint2d pntOnOtherCrv;
     auto pnt = impObj()->closestPointTo(*curve2d.impObj(), pntOnOtherCrv);
     return make_tuple(pnt, pntOnOtherCrv);
@@ -154,6 +155,7 @@ boost::python::tuple  PyGeCurve2d::closestPointTo3(const PyGeCurve2d& curve2d) c
 
 boost::python::tuple  PyGeCurve2d::closestPointTo4(const PyGeCurve2d& curve2d, const AcGeTol& tol) const
 {
+    PyAutoLockGIL lock;
     AcGePoint2d pntOnOtherCrv;
     auto pnt = impObj()->closestPointTo(*curve2d.impObj(), pntOnOtherCrv, tol);
     return make_tuple(pnt, pntOnOtherCrv);
@@ -175,6 +177,7 @@ PyGePointOnCurve2d PyGeCurve2d::getClosestPointTo2(const AcGePoint2d& pnt, const
 
 boost::python::tuple PyGeCurve2d::getClosestPointsTo1(const PyGeCurve2d& curve)
 {
+    PyAutoLockGIL lock;
     AcGePointOnCurve2d curvea, curveb;
     impObj()->getClosestPointTo(*curve.impObj(), curvea, curveb);
     return make_tuple(PyGePointOnCurve2d(curvea), PyGePointOnCurve2d(curveb));
@@ -182,6 +185,7 @@ boost::python::tuple PyGeCurve2d::getClosestPointsTo1(const PyGeCurve2d& curve)
 
 boost::python::tuple PyGeCurve2d::getClosestPointsTo2(const PyGeCurve2d& curve, const AcGeTol& tol)
 {
+    PyAutoLockGIL lock;
     AcGePointOnCurve2d curvea, curveb;
     impObj()->getClosestPointTo(*curve.impObj(), curvea, curveb, tol);
     return make_tuple(PyGePointOnCurve2d(curvea), PyGePointOnCurve2d(curveb));
@@ -277,6 +281,7 @@ Adesk::Boolean PyGeCurve2d::isClosed2(const AcGeTol& tol) const
 
 boost::python::tuple PyGeCurve2d::isPeriodic() const
 {
+    PyAutoLockGIL lock;
     double val = 0;
     bool flag = impObj()->isPeriodic(val);
     return boost::python::make_tuple(flag, val);
@@ -284,6 +289,7 @@ boost::python::tuple PyGeCurve2d::isPeriodic() const
 
 boost::python::tuple PyGeCurve2d::isLinear1() const
 {
+    PyAutoLockGIL lock;
     AcGeLine2d line;
     bool flag = impObj()->isLinear(line);
     return boost::python::make_tuple(flag, PyGeLine2d(line));
@@ -291,6 +297,7 @@ boost::python::tuple PyGeCurve2d::isLinear1() const
 
 boost::python::tuple PyGeCurve2d::isLinear2(const AcGeTol& tol) const
 {
+    PyAutoLockGIL lock;
     AcGeLine2d line;
     bool flag = impObj()->isLinear(line, tol);
     return boost::python::make_tuple(flag, PyGeLine2d(line));
@@ -337,6 +344,7 @@ boost::python::tuple PyGeCurve2d::isDegenerate1() const
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
+    PyAutoLockGIL lock;
     AcGeEntity2d* pEnt = nullptr;
     bool flag = impObj()->isDegenerate(pEnt);
     return boost::python::make_tuple(flag, PyGeEntity2d(pEnt));
@@ -348,6 +356,7 @@ boost::python::tuple PyGeCurve2d::isDegenerate2(const AcGeTol& tol) const
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
+    PyAutoLockGIL lock;
     AcGeEntity2d* pEnt = nullptr;
     bool flag = impObj()->isDegenerate(pEnt, tol);
     return boost::python::make_tuple(flag, PyGeEntity2d(pEnt));
@@ -565,6 +574,7 @@ PyGeCircArc2d::PyGeCircArc2d(const AcGePoint2d& startPoint, const AcGePoint2d& e
 
 boost::python::tuple PyGeCircArc2d::intersectWith1(const PyGeLinearEnt2d& line) const
 {
+    PyAutoLockGIL lock;
     int intn;
     AcGePoint2d p1, p2;
     bool flag = impObj()->intersectWith(*line.impObj(), intn, p1, p2);
@@ -573,6 +583,7 @@ boost::python::tuple PyGeCircArc2d::intersectWith1(const PyGeLinearEnt2d& line) 
 
 boost::python::tuple PyGeCircArc2d::intersectWith2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const
 {
+    PyAutoLockGIL lock;
     int intn;
     AcGePoint2d p1, p2;
     bool flag = impObj()->intersectWith(*line.impObj(), intn, p1, p2, tol);
@@ -581,6 +592,7 @@ boost::python::tuple PyGeCircArc2d::intersectWith2(const PyGeLinearEnt2d& line, 
 
 boost::python::tuple PyGeCircArc2d::intersectWith3(const PyGeCircArc2d& arc) const
 {
+    PyAutoLockGIL lock;
     int intn;
     AcGePoint2d p1, p2;
     bool flag = impObj()->intersectWith(*arc.impObj(), intn, p1, p2);
@@ -589,6 +601,7 @@ boost::python::tuple PyGeCircArc2d::intersectWith3(const PyGeCircArc2d& arc) con
 
 boost::python::tuple PyGeCircArc2d::intersectWith4(const PyGeCircArc2d& arc, const AcGeTol& tol) const
 {
+    PyAutoLockGIL lock;
     int intn;
     AcGePoint2d p1, p2;
     bool flag = impObj()->intersectWith(*arc.impObj(), intn, p1, p2, tol);
@@ -600,6 +613,7 @@ boost::python::tuple PyGeCircArc2d::tangent1(const AcGePoint2d& pnt) const
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
+    PyAutoLockGIL lock;
     AcGeError err;
     AcGeLine2d line;
     bool flag = impObj()->tangent(pnt, line, AcGeContext::gTol, err);
@@ -612,6 +626,7 @@ boost::python::tuple PyGeCircArc2d::tangent2(const AcGePoint2d& pnt, const AcGeT
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
+    PyAutoLockGIL lock;
     AcGeError err;
     AcGeLine2d line;
     bool flag = impObj()->tangent(pnt, line, tol, err);
@@ -846,6 +861,7 @@ PyGeEllipArc2d::PyGeEllipArc2d(const AcGePoint2d& cent, const AcGeVector2d& majo
 
 boost::python::tuple PyGeEllipArc2d::intersectWith1(const PyGeLinearEnt2d& line) const
 {
+    PyAutoLockGIL lock;
     int intn;
     AcGePoint2d p1, p2;
     bool flag = impObj()->intersectWith(*line.impObj(), intn, p1, p2);
@@ -854,6 +870,7 @@ boost::python::tuple PyGeEllipArc2d::intersectWith1(const PyGeLinearEnt2d& line)
 
 boost::python::tuple PyGeEllipArc2d::intersectWith2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const
 {
+    PyAutoLockGIL lock;
     int intn;
     AcGePoint2d p1, p2;
     bool flag = impObj()->intersectWith(*line.impObj(), intn, p1, p2, tol);

@@ -174,6 +174,7 @@ void PyJig::setDispPromptwr(const std::string& val)
 boost::python::tuple PyJig::acquireStringwr()
 {
 #ifdef ARXAPP
+    PyAutoLockGIL lock;
     AcString value;
     auto result = this->acquireString(value);
     return boost::python::make_tuple(result, wstr_to_utf8(value));
@@ -184,6 +185,7 @@ boost::python::tuple PyJig::acquireStringwr()
 
 boost::python::tuple PyJig::acquireAnglewr1()
 {
+    PyAutoLockGIL lock;
     double value;
     auto result = this->acquireAngle(value);
     return boost::python::make_tuple(result, value);
@@ -191,6 +193,7 @@ boost::python::tuple PyJig::acquireAnglewr1()
 
 boost::python::tuple PyJig::acquireAnglewr2(const AcGePoint3d& basePnt)
 {
+    PyAutoLockGIL lock;
     double value;
     auto result = this->acquireAngle(value, basePnt);
     return boost::python::make_tuple(result, value);
@@ -198,6 +201,7 @@ boost::python::tuple PyJig::acquireAnglewr2(const AcGePoint3d& basePnt)
 
 boost::python::tuple PyJig::acquireDistwr1()
 {
+    PyAutoLockGIL lock;
     double value;
     auto result = this->acquireDist(value);
     return boost::python::make_tuple(result, value);
@@ -205,6 +209,7 @@ boost::python::tuple PyJig::acquireDistwr1()
 
 boost::python::tuple PyJig::acquireDistwr2(const AcGePoint3d& basePnt)
 {
+    PyAutoLockGIL lock;
     double value;
     auto result = this->acquireDist(value, basePnt);
     return boost::python::make_tuple(result, value);
@@ -212,6 +217,7 @@ boost::python::tuple PyJig::acquireDistwr2(const AcGePoint3d& basePnt)
 
 boost::python::tuple PyJig::acquirePointwr1()
 {
+    PyAutoLockGIL lock;
     AcGePoint3d value;
     auto result = this->acquirePoint(value);
     return boost::python::make_tuple(result, value);
@@ -219,6 +225,7 @@ boost::python::tuple PyJig::acquirePointwr1()
 
 boost::python::tuple PyJig::acquirePointwr2(const AcGePoint3d& basePnt)
 {
+    PyAutoLockGIL lock;
     AcGePoint3d value;
     auto result = this->acquirePoint(value, basePnt);
     return boost::python::make_tuple(result, value);

@@ -46,6 +46,7 @@ PyGePlanarEnt::PyGePlanarEnt(AcGeEntity3d* pEnt)
 
 boost::python::tuple PyGePlanarEnt::intersectWith1(const PyGeLinearEnt3d& linEnt) const
 {
+    PyAutoLockGIL lock;
     AcGePoint3d pnt;
     auto res = impObj()->intersectWith(*linEnt.impObj(), pnt);
     return boost::python::make_tuple(res, pnt);
@@ -53,6 +54,7 @@ boost::python::tuple PyGePlanarEnt::intersectWith1(const PyGeLinearEnt3d& linEnt
 
 boost::python::tuple PyGePlanarEnt::intersectWith2(const PyGeLinearEnt3d& linEnt, const AcGeTol& tol) const
 {
+    PyAutoLockGIL lock;
     AcGePoint3d pnt;
     auto res = impObj()->intersectWith(*linEnt.impObj(), pnt, tol);
     return boost::python::make_tuple(res, pnt);
@@ -60,6 +62,7 @@ boost::python::tuple PyGePlanarEnt::intersectWith2(const PyGeLinearEnt3d& linEnt
 
 boost::python::tuple PyGePlanarEnt::closestPointToLinearEnt1(const PyGeLinearEnt3d& line) const
 {
+    PyAutoLockGIL lock;
     AcGePoint3d pnt;
     auto res = impObj()->closestPointToLinearEnt(*line.impObj(), pnt);
     return boost::python::make_tuple(res, pnt);
@@ -67,6 +70,7 @@ boost::python::tuple PyGePlanarEnt::closestPointToLinearEnt1(const PyGeLinearEnt
 
 boost::python::tuple PyGePlanarEnt::closestPointToLinearEnt2(const PyGeLinearEnt3d& line, const AcGeTol& tol) const
 {
+    PyAutoLockGIL lock;
     AcGePoint3d pnt;
     auto res = impObj()->closestPointToLinearEnt(*line.impObj(), pnt, tol);
     return boost::python::make_tuple(res, pnt);
@@ -74,6 +78,7 @@ boost::python::tuple PyGePlanarEnt::closestPointToLinearEnt2(const PyGeLinearEnt
 
 boost::python::tuple PyGePlanarEnt::closestPointToPlanarEnt1(const PyGePlanarEnt& line) const
 {
+    PyAutoLockGIL lock;
     AcGePoint3d pnt;
     auto res = impObj()->closestPointToPlanarEnt(*line.impObj(), pnt);
     return boost::python::make_tuple(res, pnt);
@@ -81,6 +86,7 @@ boost::python::tuple PyGePlanarEnt::closestPointToPlanarEnt1(const PyGePlanarEnt
 
 boost::python::tuple PyGePlanarEnt::closestPointToPlanarEnt2(const PyGePlanarEnt& line, const AcGeTol& tol) const
 {
+    PyAutoLockGIL lock;
     AcGePoint3d pnt;
     auto res = impObj()->closestPointToPlanarEnt(*line.impObj(), pnt, tol);
     return boost::python::make_tuple(res, pnt);
@@ -148,6 +154,7 @@ AcGeVector3d PyGePlanarEnt::normal() const
 
 boost::python::tuple PyGePlanarEnt::getCoefficients() const
 {
+    PyAutoLockGIL lock;
     double a, b, c, d;
     impObj()->getCoefficients(a,b,c,d);
     return boost::python::make_tuple(a, b, c, d);
@@ -155,6 +162,7 @@ boost::python::tuple PyGePlanarEnt::getCoefficients() const
 
 boost::python::tuple PyGePlanarEnt::getCoordSystem() const
 {
+    PyAutoLockGIL lock;
     AcGePoint3d origin;
     AcGeVector3d axis1;
     AcGeVector3d axis2;

@@ -32,6 +32,7 @@ PyGeLinearEnt2d::PyGeLinearEnt2d(AcGeEntity2d* pEnt)
 
 boost::python::tuple PyGeLinearEnt2d::intersectWith1(const PyGeLinearEnt2d& line)
 {
+    PyAutoLockGIL lock;
     AcGePoint2d p1;
     bool flag = impObj()->intersectWith(*line.impObj(), p1);
     return make_tuple(flag, p1);
@@ -39,6 +40,7 @@ boost::python::tuple PyGeLinearEnt2d::intersectWith1(const PyGeLinearEnt2d& line
 
 boost::python::tuple PyGeLinearEnt2d::intersectWith2(const PyGeLinearEnt2d& line, const AcGeTol& tol)
 {
+    PyAutoLockGIL lock;
     AcGePoint2d p1;
     bool flag = impObj()->intersectWith(*line.impObj(), p1, tol);
     return make_tuple(flag, p1);
@@ -46,6 +48,7 @@ boost::python::tuple PyGeLinearEnt2d::intersectWith2(const PyGeLinearEnt2d& line
 
 boost::python::tuple PyGeLinearEnt2d::overlap1(const PyGeLinearEnt2d& line) const
 {
+    PyAutoLockGIL lock;
     AcGeLinearEnt2d* poverlap = nullptr;
     bool flag = impObj()->overlap(*line.impObj(), poverlap);
     return make_tuple(flag, PyGeLinearEnt2d(poverlap));
@@ -53,6 +56,7 @@ boost::python::tuple PyGeLinearEnt2d::overlap1(const PyGeLinearEnt2d& line) cons
 
 boost::python::tuple PyGeLinearEnt2d::overlap2(const PyGeLinearEnt2d& line, const AcGeTol& tol) const
 {
+    PyAutoLockGIL lock;
     AcGeLinearEnt2d* poverlap = nullptr;
     bool flag = impObj()->overlap(*line.impObj(), poverlap, tol);
     return make_tuple(flag, PyGeLinearEnt2d(poverlap));

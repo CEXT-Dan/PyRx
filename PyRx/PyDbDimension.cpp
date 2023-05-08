@@ -167,6 +167,7 @@ boost::python::tuple PyDbDimension::textDefinedSize() const
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
+    PyAutoLockGIL lock;
     double width = 1;
     double height = 1;
     impObj()->textDefinedSize(width, height);
@@ -554,6 +555,7 @@ boost::python::tuple PyDbDimension::isConstraintObject() const
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
+    PyAutoLockGIL lock;
     bool hasExpression = false;
     bool isReferenceConstraint = false;
     bool flag = impObj()->isConstraintObject(hasExpression, isReferenceConstraint);
