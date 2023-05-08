@@ -241,8 +241,12 @@ boost::python::tuple PyAcEditor::select3(const std::string& add, const std::stri
     PyAutoLockGIL lock;
     WxUserInteraction ui;
     ads_name name = { 0L };
-    const std::array<const TCHAR*, 2> prompt = { utf8_to_wstr(add).c_str(), utf8_to_wstr(remove).c_str() };
-    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_:$"), prompt.data(),nullptr,nullptr, name));
+
+    CString csAdd = utf8_to_wstr(add).c_str();
+    CString csRem = utf8_to_wstr(remove).c_str();
+    const wchar_t* prompts[] = { (const wchar_t*)csAdd, (const wchar_t*)csRem };
+
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_:$"), prompts,nullptr,nullptr, name));
     AcDbObjectIdArray ids;
     boost::python::list pyList;
     if (acedGetCurrentSelectionSet(ids) == eOk)
@@ -260,8 +264,12 @@ boost::python::tuple PyAcEditor::select4(const std::string& add, const std::stri
     WxUserInteraction ui;
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
-    const std::array<const TCHAR*, 2> prompt = { utf8_to_wstr(add).c_str(), utf8_to_wstr(remove).c_str() };
-    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_:$"), prompt.data(), nullptr, pFilter.get(), name));
+
+    CString csAdd = utf8_to_wstr(add).c_str();
+    CString csRem = utf8_to_wstr(remove).c_str();
+    const wchar_t* prompts[] = { (const wchar_t*)csAdd, (const wchar_t*)csRem };
+
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_:$"), prompts, nullptr, pFilter.get(), name));
     AcDbObjectIdArray ids;
     boost::python::list pyList;
     if (acedGetCurrentSelectionSet(ids) == eOk)
