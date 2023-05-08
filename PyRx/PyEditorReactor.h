@@ -207,6 +207,9 @@ public:
     virtual void fullRegenWillStartWr(PyDbDatabase& pDb);
 
  public:
+     //TODO could use a map or other container
+     //also, can i store the func from get_override?
+     //whats the cost?
      bool reg_commandWillStart = true;
      bool reg_commandEnded = true;
      bool reg_commandCancelled = true;
