@@ -46,10 +46,9 @@ def print_ents(objs):
         e = PyDb.Entity(id, PyDb.OpenMode.kForRead)
         print("\n{}".format(e.isA().name()))
 
-
 def do_select():
     ed = PyAp.Application().docManager().curDocument().editor()
-    ss = ed.select()
+    ss = ed.select("\nSelect the stuff: ", "\nRemove the stuff: ")
     if (ss[0] == PyEd.PromptStatus.eNormal):
         print_ents(ss[1])
 

@@ -33,6 +33,8 @@ public:
 
     boost::python::tuple select1();
     boost::python::tuple select2(const boost::python::list& filter);
+    boost::python::tuple select3(const std::string& add, const std::string& remove);
+    boost::python::tuple select4(const std::string& add, const std::string& remove, const boost::python::list& filter);
 
 
     boost::python::tuple selectAll();

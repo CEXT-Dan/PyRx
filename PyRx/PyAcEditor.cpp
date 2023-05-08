@@ -46,6 +46,8 @@ void makeAcEditorWrapper()
 
         .def("select", &PyAcEditor::select1)
         .def("select", &PyAcEditor::select2)
+        .def("select", &PyAcEditor::select3)
+        .def("select", &PyAcEditor::select4)
 
         .def("selectCrossingWindow", &PyAcEditor::selectCrossingWindow1)
         .def("selectCrossingWindow", &PyAcEditor::selectCrossingWindow2)
@@ -223,6 +225,43 @@ boost::python::tuple PyAcEditor::select2(const boost::python::list& filter)
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(nullptr, nullptr, nullptr, pFilter.get(), name));
+    AcDbObjectIdArray ids;
+    boost::python::list pyList;
+    if (acedGetCurrentSelectionSet(ids) == eOk)
+    {
+        for (const auto& id : ids)
+            pyList.append(PyDbObjectId{ id });
+    }
+    acedSSFree(name);
+    return boost::python::make_tuple<Acad::PromptStatus, boost::python::list>(stat, pyList);
+}
+
+boost::python::tuple PyAcEditor::select3(const std::string& add, const std::string& remove)
+{
+    PyAutoLockGIL lock;
+    WxUserInteraction ui;
+    ads_name name = { 0L };
+    const std::array<const TCHAR*, 2> prompt = { utf8_to_wstr(add).c_str(), utf8_to_wstr(remove).c_str() };
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_:$"), prompt.data(),nullptr,nullptr, name));
+    AcDbObjectIdArray ids;
+    boost::python::list pyList;
+    if (acedGetCurrentSelectionSet(ids) == eOk)
+    {
+        for (const auto& id : ids)
+            pyList.append(PyDbObjectId{ id });
+    }
+    acedSSFree(name);
+    return boost::python::make_tuple<Acad::PromptStatus, boost::python::list>(stat, pyList);
+}
+
+boost::python::tuple PyAcEditor::select4(const std::string& add, const std::string& remove, const boost::python::list& filter)
+{
+    PyAutoLockGIL lock;
+    WxUserInteraction ui;
+    ads_name name = { 0L };
+    AcResBufPtr pFilter(listToResbuf(filter));
+    const std::array<const TCHAR*, 2> prompt = { utf8_to_wstr(add).c_str(), utf8_to_wstr(remove).c_str() };
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_:$"), prompt.data(), nullptr, pFilter.get(), name));
     AcDbObjectIdArray ids;
     boost::python::list pyList;
     if (acedGetCurrentSelectionSet(ids) == eOk)
