@@ -27,6 +27,7 @@ def OnPyUnloadDwg():
 
 def PyRxCmd_pycmd():
     try:
+        do_select()
         #createAlignedDimension()
         #table()
         #mtext()
@@ -34,11 +35,23 @@ def PyRxCmd_pycmd():
         #createLine()
         #createDbp()
         #createDbps()
-        getSplitCurves()
+        #getSplitCurves()
 
     except Exception as err:
         PyRxApp.Printf(err)
 
+
+def print_ents(objs):
+    for id in objs:
+        e = PyDb.Entity(id, PyDb.OpenMode.kForRead)
+        print("\n{}".format(e.isA().name()))
+
+
+def do_select():
+    ed = PyAp.Application().docManager().curDocument().editor()
+    ss = ed.select()
+    if (ss[0] == PyEd.PromptStatus.eNormal):
+        print_ents(ss[1])
 
 def createAlignedDimension():
     ed = PyAp.Application().docManager().curDocument().editor()

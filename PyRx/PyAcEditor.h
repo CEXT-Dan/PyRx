@@ -30,8 +30,20 @@ public:
 
     boost::python::tuple getString(int cronly, const std::string& prompt);
     boost::python::tuple entsel(const std::string& prompt);
+
+    boost::python::tuple select1();
+    boost::python::tuple select2(const boost::python::list& filter);
+
+
     boost::python::tuple selectAll();
     boost::python::tuple selectAll(const boost::python::list& filter);
+
+    boost::python::tuple selectCrossingWindow1(const AcGePoint3d& pt1, const AcGePoint3d& pt2);
+    boost::python::tuple selectCrossingWindow2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const boost::python::list& filter);
+
+
+
+
     AcGeMatrix3d curUCS();
     Acad::ErrorStatus setCurUCS(const AcGeMatrix3d& mat);
 
