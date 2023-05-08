@@ -7,6 +7,23 @@
 using namespace boost::python;
 
 //-----------------------------------------------------------------------------------------
+//helpers
+boost::python::tuple makeSelectionResult(ads_name name, Acad::PromptStatus result)
+{
+    PyAutoLockGIL lock;
+    AcDbObjectIdArray ids;
+    boost::python::list pyList;
+    if (acedGetCurrentSelectionSet(ids) == eOk)
+    {
+        for (const auto& id : ids)
+            pyList.append(PyDbObjectId{ id });
+    }
+    acedSSFree(name);
+    return boost::python::make_tuple<Acad::PromptStatus, boost::python::list>(result, pyList);
+}
+
+
+//-----------------------------------------------------------------------------------------
 // PyAcEditor wrapper
 
 void makeAcEditorWrapper()
@@ -48,7 +65,6 @@ void makeAcEditorWrapper()
         .def("select", &PyAcEditor::select2)
         .def("select", &PyAcEditor::select3)
         .def("select", &PyAcEditor::select4)
-
         .def("selectCrossingWindow", &PyAcEditor::selectCrossingWindow1)
         .def("selectCrossingWindow", &PyAcEditor::selectCrossingWindow2)
         ;
@@ -203,19 +219,10 @@ boost::python::tuple PyAcEditor::entsel(const std::string& prompt)
 
 boost::python::tuple PyAcEditor::select1()
 {
-    PyAutoLockGIL lock;
     WxUserInteraction ui;
     ads_name name = { 0L };
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(nullptr, nullptr, nullptr,nullptr, name));
-    AcDbObjectIdArray ids;
-    boost::python::list pyList;
-    if (acedGetCurrentSelectionSet(ids) == eOk)
-    {
-        for (const auto& id : ids)
-            pyList.append(PyDbObjectId{ id });
-    }
-    acedSSFree(name);
-    return boost::python::make_tuple<Acad::PromptStatus, boost::python::list>(stat, pyList);
+    return makeSelectionResult(name, stat);
 }
 
 boost::python::tuple PyAcEditor::select2(const boost::python::list& filter)
@@ -225,15 +232,7 @@ boost::python::tuple PyAcEditor::select2(const boost::python::list& filter)
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(nullptr, nullptr, nullptr, pFilter.get(), name));
-    AcDbObjectIdArray ids;
-    boost::python::list pyList;
-    if (acedGetCurrentSelectionSet(ids) == eOk)
-    {
-        for (const auto& id : ids)
-            pyList.append(PyDbObjectId{ id });
-    }
-    acedSSFree(name);
-    return boost::python::make_tuple<Acad::PromptStatus, boost::python::list>(stat, pyList);
+    return makeSelectionResult(name, stat);
 }
 
 boost::python::tuple PyAcEditor::select3(const std::string& add, const std::string& remove)
@@ -247,15 +246,7 @@ boost::python::tuple PyAcEditor::select3(const std::string& add, const std::stri
     const wchar_t* prompts[] = { (const wchar_t*)csAdd, (const wchar_t*)csRem };
 
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_:$"), prompts,nullptr,nullptr, name));
-    AcDbObjectIdArray ids;
-    boost::python::list pyList;
-    if (acedGetCurrentSelectionSet(ids) == eOk)
-    {
-        for (const auto& id : ids)
-            pyList.append(PyDbObjectId{ id });
-    }
-    acedSSFree(name);
-    return boost::python::make_tuple<Acad::PromptStatus, boost::python::list>(stat, pyList);
+    return makeSelectionResult(name, stat);
 }
 
 boost::python::tuple PyAcEditor::select4(const std::string& add, const std::string& remove, const boost::python::list& filter)
@@ -270,15 +261,7 @@ boost::python::tuple PyAcEditor::select4(const std::string& add, const std::stri
     const wchar_t* prompts[] = { (const wchar_t*)csAdd, (const wchar_t*)csRem };
 
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_:$"), prompts, nullptr, pFilter.get(), name));
-    AcDbObjectIdArray ids;
-    boost::python::list pyList;
-    if (acedGetCurrentSelectionSet(ids) == eOk)
-    {
-        for (const auto& id : ids)
-            pyList.append(PyDbObjectId{ id });
-    }
-    acedSSFree(name);
-    return boost::python::make_tuple<Acad::PromptStatus, boost::python::list>(stat, pyList);
+    return makeSelectionResult(name, stat);
 }
 
 boost::python::tuple PyAcEditor::selectAll()
@@ -287,15 +270,7 @@ boost::python::tuple PyAcEditor::selectAll()
     WxUserInteraction ui;
     ads_name name = { 0L };
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_A"), nullptr, nullptr, nullptr, name));
-    AcDbObjectIdArray ids;
-    boost::python::list pyList;
-    if (acedGetCurrentSelectionSet(ids) == eOk)
-    {
-        for (const auto& id : ids)
-            pyList.append(PyDbObjectId{ id });
-    }
-    acedSSFree(name);
-    return boost::python::make_tuple<Acad::PromptStatus, boost::python::list>(stat, pyList);
+    return makeSelectionResult(name, stat);
 }
 
 boost::python::tuple PyAcEditor::selectAll(const boost::python::list& filter)
@@ -305,15 +280,7 @@ boost::python::tuple PyAcEditor::selectAll(const boost::python::list& filter)
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_A"), nullptr, nullptr, pFilter.get(), name));
-    AcDbObjectIdArray ids;
-    boost::python::list pyList;
-    if (acedGetCurrentSelectionSet(ids) == eOk)
-    {
-        for (const auto& id : ids)
-            pyList.append(PyDbObjectId{ id });
-    }
-    acedSSFree(name);
-    return boost::python::make_tuple<Acad::PromptStatus, boost::python::list>(stat, pyList);
+    return makeSelectionResult(name, stat);
 }
 
 boost::python::tuple PyAcEditor::selectCrossingWindow1(const AcGePoint3d& pt1, const AcGePoint3d& pt2)
@@ -322,15 +289,7 @@ boost::python::tuple PyAcEditor::selectCrossingWindow1(const AcGePoint3d& pt1, c
     WxUserInteraction ui;
     ads_name name = { 0L };
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_W"), asDblArray(pt1), asDblArray(pt2),nullptr, name));
-    AcDbObjectIdArray ids;
-    boost::python::list pyList;
-    if (acedGetCurrentSelectionSet(ids) == eOk)
-    {
-        for (const auto& id : ids)
-            pyList.append(PyDbObjectId{ id });
-    }
-    acedSSFree(name);
-    return boost::python::make_tuple<Acad::PromptStatus, boost::python::list>(stat, pyList);
+    return makeSelectionResult(name, stat);
 }
 
 boost::python::tuple PyAcEditor::selectCrossingWindow2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const boost::python::list& filter)
@@ -340,15 +299,7 @@ boost::python::tuple PyAcEditor::selectCrossingWindow2(const AcGePoint3d& pt1, c
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_W"),asDblArray(pt1), asDblArray(pt2), pFilter.get(), name));
-    AcDbObjectIdArray ids;
-    boost::python::list pyList;
-    if (acedGetCurrentSelectionSet(ids) == eOk)
-    {
-        for (const auto& id : ids)
-            pyList.append(PyDbObjectId{ id });
-    }
-    acedSSFree(name);
-    return boost::python::make_tuple<Acad::PromptStatus, boost::python::list>(stat, pyList);
+    return makeSelectionResult(name, stat);
 }
 
 AcGeMatrix3d PyAcEditor::curUCS()
