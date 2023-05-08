@@ -688,6 +688,7 @@ Acad::ErrorStatus PyDbTable::setContentColor3(int row, int col, int nContent, co
 
 boost::python::list PyDbTable::cellStyleOverrides(int row, int col) const
 {
+    PyAutoLockGIL lock;
     AcDbIntArray overrides;
     boost::python::list l;
     impObj()->cellStyleOverrides(row, col, overrides);
@@ -987,6 +988,7 @@ Acad::ErrorStatus PyDbTable::setGridVisibility3(int nRow, int nCol, AcDb::GridLi
 
 boost::python::list PyDbTable::tableStyleOverrides() const
 {
+    PyAutoLockGIL lock;
     AcDbIntArray overrides;
     boost::python::list l;
     impObj()->tableStyleOverrides(overrides);
@@ -1316,6 +1318,7 @@ boost::python::list PyDbTable::getIterator1()
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
+    PyAutoLockGIL lock;
     boost::python::list l;
     std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator());
     for (iter->start(); !iter->done(); iter->step())
@@ -1329,6 +1332,7 @@ boost::python::list PyDbTable::getIterator2(AcDb::TableIteratorOption nOption) c
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
+    PyAutoLockGIL lock;
     boost::python::list l;
     std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator(nullptr, nOption));
     for (iter->start(); !iter->done(); iter->step())
@@ -1342,6 +1346,7 @@ boost::python::list PyDbTable::getIterator3(const AcCellRange& pRange, AcDb::Tab
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
+    PyAutoLockGIL lock;
     boost::python::list l;
     std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator(&pRange, nOption));
     for (iter->start(); !iter->done(); iter->step())
@@ -1355,6 +1360,7 @@ boost::python::list PyDbTable::getIterator4(const AcCellRange& pRange) const
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
+    PyAutoLockGIL lock;
     boost::python::list l;
     std::unique_ptr<AcDbTableIterator> iter(impObj()->getIterator(&pRange, AcDb::kTableIteratorNone));
     for (iter->start(); !iter->done(); iter->step())

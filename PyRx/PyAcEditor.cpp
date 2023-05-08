@@ -105,6 +105,7 @@ boost::python::list PyAcEditor::arxLoaded()
 
 boost::python::tuple PyAcEditor::getInteger(const std::string& prompt)
 {
+    PyAutoLockGIL lock;
     WxUserInteraction ui;
     std::pair<Acad::PromptStatus, int> res;
     res.first = static_cast<Acad::PromptStatus>(acedGetInt(utf8_to_wstr(prompt).c_str(), &res.second));
@@ -113,6 +114,7 @@ boost::python::tuple PyAcEditor::getInteger(const std::string& prompt)
 
 boost::python::tuple PyAcEditor::getDouble(const std::string& prompt)
 {
+    PyAutoLockGIL lock;
     WxUserInteraction ui;
     std::pair<Acad::PromptStatus, double> res;
     res.first = static_cast<Acad::PromptStatus>(acedGetReal(utf8_to_wstr(prompt).c_str(), &res.second));
@@ -121,6 +123,7 @@ boost::python::tuple PyAcEditor::getDouble(const std::string& prompt)
 
 boost::python::tuple PyAcEditor::getAngle(const AcGePoint3d& basePt, const std::string& prompt)
 {
+    PyAutoLockGIL lock;
     WxUserInteraction ui;
     std::pair<Acad::PromptStatus, double> res;
     res.first = static_cast<Acad::PromptStatus>(acedGetAngle(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), &res.second));
@@ -129,6 +132,7 @@ boost::python::tuple PyAcEditor::getAngle(const AcGePoint3d& basePt, const std::
 
 boost::python::tuple PyAcEditor::getPoint(const std::string& prompt)
 {
+    PyAutoLockGIL lock;
     WxUserInteraction ui;
     ads_point pnt;
     std::pair<Acad::PromptStatus, AcGePoint3d> res;
@@ -139,6 +143,7 @@ boost::python::tuple PyAcEditor::getPoint(const std::string& prompt)
 
 boost::python::tuple PyAcEditor::getPoint(const AcGePoint3d& basePt, const std::string& prompt)
 {
+    PyAutoLockGIL lock;
     WxUserInteraction ui;
     ads_point pnt;
     std::pair<Acad::PromptStatus, AcGePoint3d> res;
@@ -149,6 +154,7 @@ boost::python::tuple PyAcEditor::getPoint(const AcGePoint3d& basePt, const std::
 
 boost::python::tuple PyAcEditor::getDist(const std::string& prompt)
 {
+    PyAutoLockGIL lock;
     WxUserInteraction ui;
     std::pair<Acad::PromptStatus, double> res;
     res.first = static_cast<Acad::PromptStatus>(acedGetDist(nullptr, utf8_to_wstr(prompt).c_str(), &res.second));
@@ -157,6 +163,7 @@ boost::python::tuple PyAcEditor::getDist(const std::string& prompt)
 
 boost::python::tuple PyAcEditor::getDist(const AcGePoint3d& basePt, const std::string& prompt)
 {
+    PyAutoLockGIL lock;
     WxUserInteraction ui;
     std::pair<Acad::PromptStatus, double> res;
     res.first = static_cast<Acad::PromptStatus>(acedGetDist(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), &res.second));
@@ -165,6 +172,7 @@ boost::python::tuple PyAcEditor::getDist(const AcGePoint3d& basePt, const std::s
 
 boost::python::tuple PyAcEditor::getString(int cronly, const std::string& prompt)
 {
+    PyAutoLockGIL lock;
     WxUserInteraction ui;
     AcString str;
     std::pair<Acad::PromptStatus, std::string> res;
@@ -175,6 +183,7 @@ boost::python::tuple PyAcEditor::getString(int cronly, const std::string& prompt
 
 boost::python::tuple PyAcEditor::entsel(const std::string& prompt)
 {
+    PyAutoLockGIL lock;
     WxUserInteraction ui;
     ads_point pnt;
     ads_name name = { 0L };
@@ -186,6 +195,7 @@ boost::python::tuple PyAcEditor::entsel(const std::string& prompt)
 
 boost::python::tuple PyAcEditor::selectAll()
 {
+    PyAutoLockGIL lock;
     WxUserInteraction ui;
     ads_name name = { 0L };
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("A"), nullptr, nullptr, nullptr, name));
@@ -202,6 +212,7 @@ boost::python::tuple PyAcEditor::selectAll()
 
 boost::python::tuple PyAcEditor::selectAll(const boost::python::list& filter)
 {
+    PyAutoLockGIL lock;
     WxUserInteraction ui;
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));

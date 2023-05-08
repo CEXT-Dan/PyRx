@@ -56,6 +56,7 @@ bool PyDbSymbolTable::has(const PyDbObjectId& entryid)
 
 boost::python::list PyDbSymbolTable::recordIds()
 {
+    PyAutoLockGIL lock;
     AcDbSymbolTableIterator* pIter = nullptr;
     if(impObj()->newIterator(pIter) != eOk)
         throw PyAcadErrorStatus(eOutOfMemory);
@@ -127,6 +128,7 @@ PyDbObjectId PyDbDimStyleTable::add(const PyDbDimStyleTableRecord& entry)
 
 boost::python::list PyDbDimStyleTable::recordIds()
 {
+    PyAutoLockGIL lock;
     AcDbDimStyleTableIterator* pIter = nullptr;
     if (impObj()->newIterator(pIter) != eOk)
         throw PyAcadErrorStatus(eOutOfMemory);
@@ -199,6 +201,7 @@ PyDbObjectId PyDbBlockTable::add(const PyDbBlockTableRecord& entry)
 
 boost::python::list PyDbBlockTable::recordIds()
 {
+    PyAutoLockGIL lock;
     AcDbBlockTableIterator* pIter = nullptr;
     if (impObj()->newIterator(pIter) != eOk)
         throw PyAcadErrorStatus(eOutOfMemory);

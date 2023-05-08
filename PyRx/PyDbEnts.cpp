@@ -285,6 +285,7 @@ bool PyDbText::hitTest(const AcGePoint3d& ptHit) const
 boost::python::list PyDbText::getBoundingPoints() const
 {
 #ifdef ARXAPP
+    PyAutoLockGIL lock;
     boost::python::list l;
     AcGePoint3dArray arr;
     impObj()->getBoundingPoints(arr);
@@ -804,6 +805,7 @@ PyDbObjectId PyDbBlockReference::appendAttribute(PyDbAttribute& att)
 
 boost::python::list PyDbBlockReference::attributeIds() const
 {
+    PyAutoLockGIL lock;
     AcDbObjectId id;
     boost::python::list ids;
     for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->attributeIterator()); !iter->done(); iter->step())
@@ -1525,6 +1527,7 @@ AcDbPoint* PyDbPoint::impObj(const std::source_location& src /*= std::source_loc
 //PyDb2dPolyline
 AcGePoint3dArray& listToAcGePoint3dArrayRef(const boost::python::list& list)
 {
+    PyAutoLockGIL lock;
     //TODO: maybe this can be done better
     auto vec = py_list_to_std_vector<AcGePoint3d>(list);
     static AcGePoint3dArray arr;
@@ -1770,6 +1773,7 @@ Acad::ErrorStatus PyDb2dPolyline::openSequenceEnd(PyDbSequenceEnd& end, AcDb::Op
 
 boost::python::list PyDb2dPolyline::vertexIds() const
 {
+    PyAutoLockGIL lock;
     boost::python::list ids;
     for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->vertexIterator()); !iter->done(); iter->step())
         ids.append(iter->objectId());
@@ -1945,6 +1949,7 @@ Acad::ErrorStatus PyDb3dPolyline::openSequenceEnd(PyDbSequenceEnd& end, AcDb::Op
 
 boost::python::list PyDb3dPolyline::vertexIds() const
 {
+    PyAutoLockGIL lock;
     boost::python::list ids;
     for (std::unique_ptr<AcDbObjectIterator> iter(impObj()->vertexIterator()); !iter->done(); iter->step())
         ids.append(iter->objectId());
@@ -2324,6 +2329,7 @@ Acad::ErrorStatus PyDbLine::setNormal(const AcGeVector3d& val)
 
 boost::python::list PyDbLine::getOffsetCurvesGivenPlaneNormal(const AcGeVector3d& normal, double offsetDist) const
 {
+    PyAutoLockGIL lock;
     boost::python::list curves;
     AcDbVoidPtrArray offsetCurves;
     if (auto es = impObj()->getOffsetCurvesGivenPlaneNormal(normal, offsetDist, offsetCurves); es != eOk)

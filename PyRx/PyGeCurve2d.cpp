@@ -245,6 +245,7 @@ double PyGeCurve2d::paramOf2(const AcGePoint2d& pnt, const AcGeTol& tol) const
 
 boost::python::list PyGeCurve2d::getTrimmedOffset1(double distance, AcGe::OffsetCrvExtType extensionType) const
 {
+    PyAutoLockGIL lock;
     boost::python::list curves;
     AcGeVoidPointerArray offsetCurveList;
     impObj()->getTrimmedOffset(distance, offsetCurveList, extensionType);
@@ -255,6 +256,7 @@ boost::python::list PyGeCurve2d::getTrimmedOffset1(double distance, AcGe::Offset
 
 boost::python::list PyGeCurve2d::getTrimmedOffset2(double distance, AcGe::OffsetCrvExtType extensionType, const AcGeTol& tol) const
 {
+    PyAutoLockGIL lock;
     boost::python::list curves;
     AcGeVoidPointerArray offsetCurveList;
     impObj()->getTrimmedOffset(distance, offsetCurveList, extensionType, tol);
@@ -354,6 +356,7 @@ boost::python::tuple PyGeCurve2d::isDegenerate2(const AcGeTol& tol) const
 
 boost::python::list PyGeCurve2d::explode1()
 {
+    PyAutoLockGIL lock;
     boost::python::list curves;
     AcGeIntArray newExplodedCurve;
     AcGeVoidPointerArray explodedCurves;
@@ -371,6 +374,7 @@ boost::python::list PyGeCurve2d::explode1()
 
 boost::python::list PyGeCurve2d::explode2(const PyGeInterval& interval)
 {
+    PyAutoLockGIL lock;
     boost::python::list curves;
     AcGeIntArray newExplodedCurve;
     AcGeVoidPointerArray explodedCurves;
@@ -424,6 +428,7 @@ AcGePoint2d PyGeCurve2d::evalPoint1(double param) const
 
 boost::python::tuple PyGeCurve2d::evalPoint2(double param, int numDeriv) const
 {
+    PyAutoLockGIL lock;
     boost::python::list vecs;
     AcGeVector2dArray derivArray;
     AcGePoint2d pnt = impObj()->evalPoint(param, numDeriv, derivArray);
@@ -434,6 +439,7 @@ boost::python::tuple PyGeCurve2d::evalPoint2(double param, int numDeriv) const
 
 boost::python::list PyGeCurve2d::getSamplePoints1(int numSample) const
 {
+    PyAutoLockGIL lock;
     AcGePoint2dArray pointArray;
     boost::python::list pointList;
     impObj()->getSamplePoints(numSample, pointArray);
@@ -444,6 +450,7 @@ boost::python::list PyGeCurve2d::getSamplePoints1(int numSample) const
 
 boost::python::list PyGeCurve2d::getSamplePoints2(double fromParam, double toParam, double approxEps) const
 {
+    PyAutoLockGIL lock;
     AcGeDoubleArray paramArray;
     AcGePoint2dArray pointArray;
     boost::python::list pointList;
@@ -455,6 +462,7 @@ boost::python::list PyGeCurve2d::getSamplePoints2(double fromParam, double toPar
 
 boost::python::tuple PyGeCurve2d::getSplitCurves(double param)
 {
+    PyAutoLockGIL lock;
     AcGeCurve2d* p1 = nullptr;
     AcGeCurve2d* p2 = nullptr;
     impObj()->getSplitCurves(param, p1, p2);

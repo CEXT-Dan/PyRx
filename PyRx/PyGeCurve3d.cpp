@@ -357,6 +357,7 @@ double PyGeCurve3d::paramOf2(const AcGePoint3d& pnt, const AcGeTol& tol) const
 
 boost::python::list PyGeCurve3d::getTrimmedOffset1(double distance, const AcGeVector3d& planeNormal, AcGe::OffsetCrvExtType extensionType) const
 {
+    PyAutoLockGIL lock;
     boost::python::list curves;
     AcGeVoidPointerArray offsetCurveList;
     impObj()->getTrimmedOffset(distance, planeNormal, offsetCurveList, extensionType);
@@ -367,6 +368,7 @@ boost::python::list PyGeCurve3d::getTrimmedOffset1(double distance, const AcGeVe
 
 boost::python::list PyGeCurve3d::getTrimmedOffset2(double distance, const AcGeVector3d& planeNormal, AcGe::OffsetCrvExtType extensionType, const AcGeTol& tol) const
 {
+    PyAutoLockGIL lock;
     boost::python::list curves;
     AcGeVoidPointerArray offsetCurveList;
     impObj()->getTrimmedOffset(distance, planeNormal, offsetCurveList, extensionType, tol);
@@ -472,6 +474,7 @@ double PyGeCurve3d::area2(double startParam, double endParam, const AcGeTol& tol
 
 boost::python::tuple PyGeCurve3d::isDegenerate1() const
 {
+    PyAutoLockGIL lock;
     AcGeEntity3d* pEnt = nullptr;
     bool flag = impObj()->isDegenerate(pEnt);
     return boost::python::make_tuple(flag, PyGeEntity3d(pEnt));
@@ -479,6 +482,7 @@ boost::python::tuple PyGeCurve3d::isDegenerate1() const
 
 boost::python::tuple PyGeCurve3d::isDegenerate2(const AcGeTol& tol) const
 {
+    PyAutoLockGIL lock;
     AcGeEntity3d* pEnt = nullptr;
     bool flag = impObj()->isDegenerate(pEnt, tol);
     return boost::python::make_tuple(flag, PyGeEntity3d(pEnt));
@@ -486,6 +490,7 @@ boost::python::tuple PyGeCurve3d::isDegenerate2(const AcGeTol& tol) const
 
 boost::python::tuple PyGeCurve3d::getSplitCurves(double param)
 {
+    PyAutoLockGIL lock;
     AcGeCurve3d* p1 = nullptr;
     AcGeCurve3d* p2 = nullptr;
     impObj()->getSplitCurves(param, p1, p2);
@@ -494,6 +499,7 @@ boost::python::tuple PyGeCurve3d::getSplitCurves(double param)
 
 boost::python::list PyGeCurve3d::explode1()
 {
+    PyAutoLockGIL lock;
     boost::python::list curves;
     AcGeIntArray newExplodedCurve;
     AcGeVoidPointerArray explodedCurves;
@@ -510,6 +516,7 @@ boost::python::list PyGeCurve3d::explode1()
 
 boost::python::list PyGeCurve3d::explode2(const PyGeInterval& interval)
 {
+    PyAutoLockGIL lock;
     boost::python::list curves;
     AcGeIntArray newExplodedCurve;
     AcGeVoidPointerArray explodedCurves;
@@ -543,6 +550,7 @@ AcGePoint3d PyGeCurve3d::evalPoint1(double param) const
 
 boost::python::tuple PyGeCurve3d::evalPoint2(double param, int numDeriv) const
 {
+    PyAutoLockGIL lock;
     boost::python::list vecs;
     AcGeVector3dArray derivArray;
     AcGePoint3d pnt = impObj()->evalPoint(param, numDeriv, derivArray);
@@ -553,6 +561,7 @@ boost::python::tuple PyGeCurve3d::evalPoint2(double param, int numDeriv) const
 
 boost::python::list PyGeCurve3d::getSamplePoints1(int numSample) const
 {
+    PyAutoLockGIL lock;
     AcGePoint3dArray pointArray;
     boost::python::list pointList;
     impObj()->getSamplePoints(numSample, pointArray);
@@ -563,6 +572,7 @@ boost::python::list PyGeCurve3d::getSamplePoints1(int numSample) const
 
 boost::python::list PyGeCurve3d::getSamplePoints2(double fromParam, double toParam, double approxEps) const
 {
+    PyAutoLockGIL lock;
     AcGeDoubleArray paramArray;
     AcGePoint3dArray pointArray;
     boost::python::list pointList;

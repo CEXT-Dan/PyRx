@@ -5,6 +5,7 @@ using namespace boost::python;
 
 resbuf* listToResbuf(const boost::python::list& bpl)
 {
+    PyAutoLockGIL lock;
     try
     {
         //NULL is valid!
@@ -205,6 +206,7 @@ resbuf* listToResbuf(const boost::python::list& bpl)
 
 boost::python::list resbufToList(resbuf* pRb)
 {
+    PyAutoLockGIL lock;
     boost::python::list list;
     for (resbuf* pTail = pRb; pTail != nullptr; pTail = pTail->rbnext)
     {

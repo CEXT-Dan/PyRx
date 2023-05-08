@@ -193,6 +193,7 @@ AcGePoint3d PyDbCurve::getClosestPointTo(const AcGePoint3d& givenPnt, const AcGe
 
 boost::python::list PyDbCurve::getOffsetCurves(double offsetDist) const
 {
+    PyAutoLockGIL lock;
     boost::python::list curves;
     AcDbVoidPtrArray offsetCurves;
 
@@ -205,6 +206,7 @@ boost::python::list PyDbCurve::getOffsetCurves(double offsetDist) const
 
 boost::python::list PyDbCurve::getOffsetCurvesGivenPlaneNormal(const AcGeVector3d& normal, double offsetDist) const
 {
+    PyAutoLockGIL lock;
     boost::python::list curves;
     AcDbVoidPtrArray offsetCurves;
     if (auto es = impObj()->getOffsetCurvesGivenPlaneNormal(normal, offsetDist, offsetCurves); es != eOk)
@@ -218,7 +220,8 @@ boost::python::list PyDbCurve::getSplitCurves(const boost::python::list& params)
 {
     try
     {
-        if (len(params) == 0)
+        PyAutoLockGIL lock;
+        if (boost::python::len(params) == 0)
             throw PyAcadErrorStatus(eInvalidInput);
         extract<double> get_double(params[0]);
         if (get_double.check())
@@ -238,6 +241,7 @@ boost::python::list PyDbCurve::getSplitCurvesAtParams(const boost::python::list&
 {
     try
     {
+        PyAutoLockGIL lock;
         const auto doublesVector = py_list_to_std_vector<double>(params);
         AcGeDoubleArray doublesArray;
         for (const auto& item : doublesVector)
@@ -261,6 +265,7 @@ boost::python::list PyDbCurve::getSplitCurvesAtPoints(const boost::python::list&
 {
     try
     {
+        PyAutoLockGIL lock;
         const auto pointsVector = py_list_to_std_vector<AcGePoint3d>(params);
         AcGePoint3dArray pointsArray;
         for (const auto& item : pointsVector)

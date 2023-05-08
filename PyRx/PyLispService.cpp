@@ -1,11 +1,13 @@
 #include "stdafx.h"
 #include "PyLispService.h"
 #include "ResultBuffer.h"
+#include "PyRxApp.h"
 
 int PyLispService::execLispFunc()
 {
     try
     {
+        PyAutoLockGIL lock;
         const int fcode = acedGetFunCode();
         auto& lisplispService = PyRxApp::instance().lispService;
         if (lisplispService.lispFuncCodes.contains(fcode))

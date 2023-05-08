@@ -907,6 +907,7 @@ AcDb::LineWeight PyDbDatabase::getNearestLineWeight(int weight)
 
 boost::python::list PyDbDatabase::getViewportArray() const
 {
+    PyAutoLockGIL lock;
     AcDbObjectIdArray vportIds;
     boost::python::list pyvportIds;
     {
@@ -922,6 +923,7 @@ boost::python::list PyDbDatabase::getViewportArray() const
 
 boost::python::list PyDbDatabase::getVisualStyleList()
 {
+    PyAutoLockGIL lock;
     boost::python::list pyvstyleList;
     AcArray<const ACHAR*> vstyleList;
     {
@@ -1571,6 +1573,7 @@ bool PyDbDatabase::qtextmode() const
 
 Acad::ErrorStatus PyDbDatabase::reclaimMemoryFromErasedObjects(const boost::python::list& erasedObjects)
 {
+    PyAutoLockGIL lock;
     const auto PyDbObjectIds = py_list_to_std_vector<PyDbObjectId>(erasedObjects);
     AcDbObjectIdArray ids;
     for (const auto& pyId : PyDbObjectIds)
@@ -3095,6 +3098,7 @@ Acad::ErrorStatus PyDbDatabase::wblock(PyDbDatabase& pOutputDb, const PyDbObject
 
 Acad::ErrorStatus PyDbDatabase::wblock(PyDbDatabase& pOutputDb, const boost::python::list& outObjIds, const AcGePoint3d& basePoint)
 {
+    PyAutoLockGIL lock;
     //TODO: maybe we can do better
     const auto PyDbObjectIds = py_list_to_std_vector<PyDbObjectId>(outObjIds);
     AcDbObjectIdArray ids;
@@ -3112,6 +3116,7 @@ Acad::ErrorStatus PyDbDatabase::wblock(PyDbDatabase& pOutputDb, const boost::pyt
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
+    PyAutoLockGIL lock;
     //TODO: maybe we can do better
     const auto PyDbObjectIds = py_list_to_std_vector<PyDbObjectId>(outObjIds);
     AcDbObjectIdArray ids;

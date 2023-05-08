@@ -65,6 +65,22 @@ public:
     void                removeReactor();
 
 public:
+    //
+    bool reg_documentCreateStarted = true;
+    bool reg_documentCreated = true;
+    bool reg_documentDestroyed = true;
+    bool reg_documentToBeDestroyed = true;
+    bool reg_documentCreateCanceled = true;
+    bool reg_documentLockModeWillChange = true;
+    bool reg_documentLockModeChangeVetoed = true;
+    bool reg_documentLockModeChanged = true;
+    bool reg_documentBecameCurrent = true;
+    bool reg_documentToBeActivated = true;
+    bool reg_documentToBeDeactivated = true;
+    bool reg_documentActivationModified = true;
+    bool reg_documentActivated = true;
+
+public:
     bool m_isActive = false;
 };
 

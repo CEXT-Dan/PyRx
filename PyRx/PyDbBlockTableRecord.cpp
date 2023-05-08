@@ -75,6 +75,7 @@ PyDbObjectId PyDbBlockTableRecord::appendAcDbEntity(const PyDbEntity& ent)
 
 boost::python::list PyDbBlockTableRecord::objectIds()
 {
+    PyAutoLockGIL lock;
     boost::python::list pyList;
     auto [es, iter] = makeBlockTableRecordIterator(*impObj());
     if (es == eOk)
@@ -196,6 +197,7 @@ Acad::ErrorStatus PyDbBlockTableRecord::setLayoutId(const PyDbObjectId& id)
 
 boost::python::list PyDbBlockTableRecord::getBlockReferenceIds(bool bDirectOnly, bool bForceValidity)
 {
+    PyAutoLockGIL lock;
     AcDbObjectIdArray ids;
     boost::python::list lids;
     impObj()->getBlockReferenceIds(ids, bDirectOnly, bForceValidity);
@@ -206,6 +208,7 @@ boost::python::list PyDbBlockTableRecord::getBlockReferenceIds(bool bDirectOnly,
 
 boost::python::list PyDbBlockTableRecord::getErasedBlockReferenceIds()
 {
+    PyAutoLockGIL lock;
     AcDbObjectIdArray ids;
     boost::python::list lids;
     impObj()->getErasedBlockReferenceIds(ids);
@@ -238,6 +241,7 @@ Acad::ErrorStatus PyDbBlockTableRecord::assumeOwnershipOf(const boost::python::l
 {
     try
     {
+        PyAutoLockGIL lock;
         const auto PyDbObjectIds = py_list_to_std_vector<PyDbObjectId>(entitiesToMove);
         AcDbObjectIdArray ids;
         for (const auto& pyId : PyDbObjectIds)

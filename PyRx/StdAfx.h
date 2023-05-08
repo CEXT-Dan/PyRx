@@ -114,6 +114,7 @@
 
 #define BOOST_PYTHON_STATIC_LIB
 #define PY_SSIZE_T_CLEAN
+
 #include <Python.h>
 #pragma comment( lib , "python310.lib" )
 
@@ -121,7 +122,6 @@
 #include <boost/python/list.hpp>
 #include <boost/python/extract.hpp>
 
-#include "PyRxApp.h"
 #include "RxPyString.h"
 #include "PyException.h"
 
@@ -144,40 +144,6 @@
 #pragma comment( lib , "acgeoment.lib" )
 #endif
 #endif
-
-//#pragma comment( lib , "ac1st24.lib" )
-//#pragma comment( lib , "acad.lib" )
-//#pragma comment( lib , "acapp.lib" )
-//#pragma comment( lib , "acapp_crx.lib" )
-//#pragma comment( lib , "AcCamera.lib" )
-//#pragma comment( lib , "accore.lib" )
-//#pragma comment( lib , "acdb24.lib" )
-//#pragma comment( lib , "acdbmgd.lib" )
-//#pragma comment( lib , "AcDbPointCloudObj.lib" )
-//#pragma comment( lib , "AcDrawBridge.lib" )
-//#pragma comment( lib , "AcePmClientApp.lib" )
-//#pragma comment( lib , "AcFdEval.lib" )
-//#pragma comment( lib , "AcFdUi.lib" )
-//#pragma comment( lib , "acge24.lib" )
-//#pragma comment( lib , "AcGeolocationObj.lib" )
-//#pragma comment( lib , "acgiapi.lib" )
-//#pragma comment( lib , "acismobj24.lib" )
-//#pragma comment( lib , "AcJsCoreStub_crx.lib" )
-//#pragma comment( lib , "acModelDocObj.lib" )
-//#pragma comment( lib , "AcMPolygonObj.lib" )
-//#pragma comment( lib , "AcPublish_crx.lib" )
-//#pragma comment( lib , "AcSceneOE.lib" )
-//#pragma comment( lib , "AcTc.lib" )
-//#pragma comment( lib , "AcTcUi.lib" )
-//#pragma comment( lib , "acui24.lib" )
-//#pragma comment( lib , "AdApplicationFrame.lib" )
-//#pragma comment( lib , "adui24.lib" )
-//#pragma comment( lib , "aNav.lib" )
-//#pragma comment( lib , "axdb.lib" )
-//#pragma comment( lib , "rxapi.lib" )
-//#pragma comment( lib , "userdata.lib" )
-
-
 
 static inline const AcString PyCommandPrefix = _T("PyRxCmd_");
 static inline const AcString PyLispFuncPrefix = _T("PyRxLisp_");
@@ -308,8 +274,58 @@ struct PyAutoLockGIL
     PyAutoLockGIL(const PyAutoLockGIL&) = delete;
     PyAutoLockGIL& operator=(const PyAutoLockGIL&) = delete;
 
-    PyGILState_STATE gstate;
+    PyGILState_STATE gstate{};
     inline static bool canLock = false;
 };
+
+using PyObjectPtr = std::unique_ptr < PyObject, decltype([](PyObject* ptr) noexcept
+{
+    PyAutoLockGIL lock;
+    Py_XDECREF(ptr);
+}) > ;
+
+template<typename T>
+inline std::vector< T > py_list_to_std_vector(const boost::python::object& iterable)
+{
+    PyAutoLockGIL lock;
+    return std::vector< T >(boost::python::stl_input_iterator< T >(iterable),
+        boost::python::stl_input_iterator< T >());
+}
+
+template <class T>
+inline boost::python::list std_vector_to_py_list(std::vector<T> vector)
+{
+    PyAutoLockGIL lock;
+    typename std::vector<T>::iterator iter;
+    boost::python::list list;
+    for (iter = vector.begin(); iter != vector.end(); ++iter) {
+        list.append(*iter);
+    }
+    return list;
+}
+
+//TODO avoid copy
+inline AcGePoint2dArray PyListToPoint2dArray(const boost::python::object& iterable)
+{
+    PyAutoLockGIL lock;
+    AcGePoint2dArray arr;
+    auto vec = py_list_to_std_vector<AcGePoint2d>(iterable);
+    for (auto& item : vec)
+        arr.append(item);
+    return arr;
+}
+
+//TODO avoid copy
+inline AcGePoint3dArray PyListToPoint3dArray(const boost::python::object& iterable)
+{
+    PyAutoLockGIL lock;
+    AcGePoint3dArray arr;
+    auto vec = py_list_to_std_vector<AcGePoint3d>(iterable);
+    for (auto& item : vec)
+        arr.append(item);
+    return arr;
+}
+
+
 #pragma pack (pop)
 

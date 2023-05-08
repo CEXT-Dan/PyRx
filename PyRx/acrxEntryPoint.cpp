@@ -25,6 +25,7 @@
 #include "StdAfx.h"
 #include "resource.h"
 #include "PyLispService.h"
+#include "PyRxApp.h"
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")

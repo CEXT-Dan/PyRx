@@ -40,76 +40,102 @@ PyApDocManagerReactor::~PyApDocManagerReactor()
 
 void PyApDocManagerReactor::documentCreateStarted(AcApDocument* pDocCreating)
 {
+    if (reg_documentCreateStarted == false)
+        return;
     PyApDocument doc(pDocCreating, false);
     documentCreateStartedWr(doc);
 }
 
 void PyApDocManagerReactor::documentCreated(AcApDocument* pDocCreating)
 {
+    if (reg_documentCreated == false)
+        return;
     PyApDocument doc(pDocCreating, false);
     documentCreatedWr(doc);
 }
 
 void PyApDocManagerReactor::documentToBeDestroyed(AcApDocument* pDocToDestroy)
 {
+    if (reg_documentToBeDestroyed == false)
+        return;
     PyApDocument doc(pDocToDestroy, false);
     documentToBeDestroyedWr(doc);
 }
 
 void PyApDocManagerReactor::documentDestroyed(const ACHAR* fileName)
 {
+    if (reg_documentDestroyed == false)
+        return;
     documentDestroyedWr(wstr_to_utf8(fileName));
 }
 
 void PyApDocManagerReactor::documentCreateCanceled(AcApDocument* pDocCreateCancelled)
 {
+    if (reg_documentCreateCanceled == false)
+        return;
     PyApDocument doc(pDocCreateCancelled, false);
     documentCreateCanceledWr(doc);
 }
 
 void PyApDocManagerReactor::documentLockModeWillChange(AcApDocument* pDoc, AcAp::DocLockMode myCurrentMode, AcAp::DocLockMode myNewMode, AcAp::DocLockMode currentMode, const ACHAR* pGlobalCmdName)
 {
+    if (reg_documentLockModeWillChange == false)
+        return;
     PyApDocument doc(pDoc, false);
     documentLockModeWillChangeWr(doc, myCurrentMode, myNewMode, currentMode, wstr_to_utf8(pGlobalCmdName));
 }
 
 void PyApDocManagerReactor::documentLockModeChangeVetoed(AcApDocument* pdoc, const ACHAR* pGlobalCmdName)
 {
+    if (reg_documentLockModeChangeVetoed == false)
+        return;
     PyApDocument doc(pdoc, false);
     documentLockModeChangeVetoedWr(doc, wstr_to_utf8(pGlobalCmdName));
 }
 
 void PyApDocManagerReactor::documentLockModeChanged(AcApDocument* pdoc, AcAp::DocLockMode myPreviousMode, AcAp::DocLockMode myCurrentMode, AcAp::DocLockMode currentMode, const ACHAR* pGlobalCmdName)
 {
+    if (reg_documentLockModeChanged == false)
+        return;
     PyApDocument doc(pdoc, false);
     documentLockModeChangedWr(doc, myPreviousMode, myCurrentMode, currentMode, wstr_to_utf8(pGlobalCmdName));
 }
 
 void PyApDocManagerReactor::documentBecameCurrent(AcApDocument* pdoc)
 {
+    if (reg_documentBecameCurrent == false)
+        return;
     PyApDocument doc(pdoc, false);
     documentBecameCurrentWr(doc);
 }
 
 void PyApDocManagerReactor::documentToBeActivated(AcApDocument* pActivatingDoc)
 {
+    if (reg_documentToBeActivated == false)
+        return;
     PyApDocument doc(pActivatingDoc, false);
     documentToBeActivatedWr(doc);
 }
 
 void PyApDocManagerReactor::documentToBeDeactivated(AcApDocument* pDeActivatedDoc)
 {
+    if (reg_documentToBeDeactivated == false)
+        return;
     PyApDocument doc(pDeActivatedDoc, false);
     documentToBeDeactivatedWr(doc);
 }
 
 void PyApDocManagerReactor::documentActivationModified(bool bActivation)
 {
+    if (reg_documentActivationModified == false)
+        return;
     documentActivationModifiedWr(bActivation);
 }
 
 void PyApDocManagerReactor::documentActivated(AcApDocument* pActivatedDoc)
 {
+    if (reg_documentActivated == false)
+        return;
     PyApDocument doc(pActivatedDoc, false);
     documentActivatedWr(doc);
 }
@@ -118,14 +144,18 @@ void PyApDocManagerReactor::documentCreateStartedWr(PyApDocument& pDocCreating)
 {
     PyAutoLockGIL lock;
     if (override pyFunc = this->get_override("documentCreateStarted"))
-       pyFunc(pDocCreating);
+        pyFunc(pDocCreating);
+    else
+        reg_documentCreateStarted = false;
 }
 
 void PyApDocManagerReactor::documentCreatedWr(PyApDocument& pDocCreating)
 {
     PyAutoLockGIL lock;
-   if (override pyFunc = this->get_override("documentCreated"))
+    if (override pyFunc = this->get_override("documentCreated"))
         pyFunc(pDocCreating);
+    else
+        reg_documentCreated = false;
 }
 
 void PyApDocManagerReactor::documentToBeDestroyedWr(PyApDocument& pDocToDestroy)
@@ -133,6 +163,8 @@ void PyApDocManagerReactor::documentToBeDestroyedWr(PyApDocument& pDocToDestroy)
     PyAutoLockGIL lock;
     if (override pyFunc = this->get_override("documentToBeDestroyed"))
         pyFunc(pDocToDestroy);
+    else
+        reg_documentToBeDestroyed = false;
 }
 
 void PyApDocManagerReactor::documentDestroyedWr(const std::string& fileName)
@@ -140,6 +172,8 @@ void PyApDocManagerReactor::documentDestroyedWr(const std::string& fileName)
     PyAutoLockGIL lock;
     if (override pyFunc = this->get_override("documentDestroyed"))
         pyFunc(fileName);
+    else
+        reg_documentDestroyed = false;
 }
 
 void PyApDocManagerReactor::documentCreateCanceledWr(PyApDocument& pDocCreateCancelled)
@@ -147,6 +181,8 @@ void PyApDocManagerReactor::documentCreateCanceledWr(PyApDocument& pDocCreateCan
     PyAutoLockGIL lock;
     if (override pyFunc = this->get_override("documentCreateCanceled"))
         pyFunc(pDocCreateCancelled);
+    else
+        reg_documentCreateCanceled = false;
 }
 
 void PyApDocManagerReactor::documentLockModeWillChangeWr(PyApDocument& doc, AcAp::DocLockMode myCurrentMode, AcAp::DocLockMode myNewMode, AcAp::DocLockMode currentMode, const std::string& pGlobalCmdName)
@@ -154,6 +190,8 @@ void PyApDocManagerReactor::documentLockModeWillChangeWr(PyApDocument& doc, AcAp
     PyAutoLockGIL lock;
     if (override pyFunc = this->get_override("documentLockModeWillChange"))
         pyFunc(doc, myCurrentMode, myNewMode, currentMode, pGlobalCmdName);
+    else
+        reg_documentLockModeWillChange = false;
 }
 
 void PyApDocManagerReactor::documentLockModeChangeVetoedWr(PyApDocument& doc, const std::string& pGlobalCmdName)
@@ -161,6 +199,8 @@ void PyApDocManagerReactor::documentLockModeChangeVetoedWr(PyApDocument& doc, co
     PyAutoLockGIL lock;
     if (override pyFunc = this->get_override("documentLockModeChangeVetoed"))
         pyFunc(doc, pGlobalCmdName);
+    else
+        reg_documentLockModeChangeVetoed = false;
 }
 
 void PyApDocManagerReactor::documentLockModeChangedWr(PyApDocument& doc, AcAp::DocLockMode myPreviousMode, AcAp::DocLockMode myCurrentMode, AcAp::DocLockMode currentMode, const std::string& pGlobalCmdName)
@@ -168,6 +208,8 @@ void PyApDocManagerReactor::documentLockModeChangedWr(PyApDocument& doc, AcAp::D
     PyAutoLockGIL lock;
     if (override pyFunc = this->get_override("documentLockModeChanged"))
         pyFunc(doc, myPreviousMode, myCurrentMode, currentMode, pGlobalCmdName);
+    else
+        reg_documentLockModeChanged = false;
 }
 
 void PyApDocManagerReactor::documentBecameCurrentWr(PyApDocument& doc)
@@ -175,6 +217,8 @@ void PyApDocManagerReactor::documentBecameCurrentWr(PyApDocument& doc)
     PyAutoLockGIL lock;
     if (override pyFunc = this->get_override("documentBecameCurrent"))
         pyFunc(doc);
+    else
+        reg_documentBecameCurrent = false;
 }
 
 void PyApDocManagerReactor::documentToBeActivatedWr(PyApDocument& pActivatingDoc)
@@ -182,6 +226,8 @@ void PyApDocManagerReactor::documentToBeActivatedWr(PyApDocument& pActivatingDoc
     PyAutoLockGIL lock;
     if (override pyFunc = this->get_override("documentToBeActivated"))
         pyFunc(pActivatingDoc);
+    else
+        reg_documentToBeActivated = false;
 }
 
 void PyApDocManagerReactor::documentToBeDeactivatedWr(PyApDocument& pDeActivatedDoc)
@@ -189,6 +235,8 @@ void PyApDocManagerReactor::documentToBeDeactivatedWr(PyApDocument& pDeActivated
     PyAutoLockGIL lock;
     if (override pyFunc = this->get_override("documentToBeDeactivated"))
         pyFunc(pDeActivatedDoc);
+    else
+        reg_documentToBeDeactivated = false;
 }
 
 void PyApDocManagerReactor::documentActivationModifiedWr(bool bActivation)
@@ -196,6 +244,8 @@ void PyApDocManagerReactor::documentActivationModifiedWr(bool bActivation)
     PyAutoLockGIL lock;
     if (override pyFunc = this->get_override("documentActivationModified"))
         pyFunc(bActivation);
+    else
+        reg_documentActivationModified = false;
 }
 
 void PyApDocManagerReactor::documentActivatedWr(PyApDocument& pActivatedDoc)
@@ -203,6 +253,8 @@ void PyApDocManagerReactor::documentActivatedWr(PyApDocument& pActivatedDoc)
     PyAutoLockGIL lock;
     if (override pyFunc = this->get_override("documentActivated"))
         pyFunc(pActivatedDoc);
+    else
+        reg_documentActivated = false;
 }
 
 void PyApDocManagerReactor::addReactor()
@@ -325,6 +377,7 @@ Acad::ErrorStatus PyApDocManager::unlockDocument(PyApDocument& pDoc)
 
 boost::python::list PyApDocManager::newAcApDocumentIterator()
 {
+    PyAutoLockGIL lock;
     boost::python::list _list;
     for (std::unique_ptr<AcApDocumentIterator> iter(impObj()->newAcApDocumentIterator()); !iter->done(); iter->step())
         _list.append(PyApDocument(iter->document(), false));
