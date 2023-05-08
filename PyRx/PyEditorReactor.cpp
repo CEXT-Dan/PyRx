@@ -120,13 +120,11 @@ void PyEditorReactor::addReactor()
         acutPrintf(_T("\nReactor already rigistered"));
         return;
     }
-
     else
     {
         acedEditor->addReactor(this);
         m_isActive = true;
     }
-
 }
 
 void PyEditorReactor::removeReactor()
@@ -136,7 +134,6 @@ void PyEditorReactor::removeReactor()
         acedEditor->removeReactor(this);
         m_isActive = false;
     }
-
 }
 
 Acad::ErrorStatus PyEditorReactor::pyveto()
@@ -149,6 +146,8 @@ void PyEditorReactor::commandWillStart(const ACHAR* cmdStr)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_commandWillStart == false)
+        return;
     PyAutoLockGIL lock;
     commandWillStartWr(wstr_to_utf8(cmdStr));
 }
@@ -158,6 +157,8 @@ void PyEditorReactor::commandEnded(const ACHAR* cmdStr)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_commandEnded == false)
+        return;
     PyAutoLockGIL lock;
     commandEndedWr(wstr_to_utf8(cmdStr));
 }
@@ -167,6 +168,8 @@ void PyEditorReactor::commandCancelled(const ACHAR* cmdStr)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_commandCancelled == false)
+        return;
     PyAutoLockGIL lock;
     commandCancelledWr(wstr_to_utf8(cmdStr));
 }
@@ -176,6 +179,8 @@ void PyEditorReactor::commandFailed(const ACHAR* cmdStr)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_commandFailed == false)
+        return;
     PyAutoLockGIL lock;
     commandFailedWr(wstr_to_utf8(cmdStr));
 }
@@ -185,6 +190,8 @@ void PyEditorReactor::lispWillStart(const ACHAR* firstLine)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_lispWillStart == false)
+        return;
     PyAutoLockGIL lock;
     lispWillStartWr(wstr_to_utf8(firstLine));
 }
@@ -194,6 +201,8 @@ void PyEditorReactor::lispEnded()
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_lispEnded == false)
+        return;
     PyAutoLockGIL lock;
     lispEndedWr();
 }
@@ -203,6 +212,8 @@ void PyEditorReactor::lispCancelled()
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_lispCancelled == false)
+        return;
     PyAutoLockGIL lock;
     lispCancelledWr();
 }
@@ -212,6 +223,8 @@ void PyEditorReactor::beginDxfIn(AcDbDatabase* pDb)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_beginDxfIn == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase db(pDb);
     beginDxfInWr(db);
@@ -222,6 +235,8 @@ void PyEditorReactor::abortDxfIn(AcDbDatabase* pDb)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_abortDxfIn == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase db(pDb);
     abortDxfInWr(db);
@@ -232,6 +247,8 @@ void PyEditorReactor::dxfInComplete(AcDbDatabase* pDb)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_dxfInComplete == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase db(pDb);
     dxfInCompleteWr(db);
@@ -242,6 +259,8 @@ void PyEditorReactor::beginDxfOut(AcDbDatabase* pDb)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_beginDxfOut == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase db(pDb);
     beginDxfOutWr(db);
@@ -252,6 +271,8 @@ void PyEditorReactor::abortDxfOut(AcDbDatabase* pDb)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_abortDxfOut == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase db(pDb);
     abortDxfOutWr(db);
@@ -262,6 +283,8 @@ void PyEditorReactor::dxfOutComplete(AcDbDatabase* pDb)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_dxfOutComplete == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase db(pDb);
     dxfOutCompleteWr(db);
@@ -272,6 +295,8 @@ void PyEditorReactor::beginDwgOpen(const ACHAR* filename)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_beginDwgOpen == false)
+        return;
     PyAutoLockGIL lock;
     beginDwgOpenWr(wstr_to_utf8(filename));
 }
@@ -281,6 +306,8 @@ void PyEditorReactor::endDwgOpen(const ACHAR* filename, AcDbDatabase* pDb)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_endDwgOpen == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase db(pDb);
     endDwgOpenWr(wstr_to_utf8(filename), db);
@@ -291,6 +318,8 @@ void PyEditorReactor::initialDwgFileOpenComplete(AcDbDatabase* pDwg)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_initialDwgFileOpenComplete == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase db(pDwg);
     initialDwgFileOpenCompleteWr(db);
@@ -301,6 +330,8 @@ void PyEditorReactor::databaseConstructed(AcDbDatabase* pDb)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_databaseConstructed == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase db(pDb);
     databaseConstructedWr(db);
@@ -311,6 +342,8 @@ void PyEditorReactor::databaseToBeDestroyed(AcDbDatabase* pDb)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_databaseToBeDestroyed == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase db(pDb);
     databaseToBeDestroyedWr(db);
@@ -321,6 +354,8 @@ void PyEditorReactor::beginSave(AcDbDatabase* pDb, const ACHAR* pIntendedName)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_beginSave == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase db(pDb);
     beginSaveWr(db, wstr_to_utf8(pIntendedName));
@@ -331,6 +366,8 @@ void PyEditorReactor::saveComplete(AcDbDatabase* pDb, const ACHAR* pActualName)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_saveComplete == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase db(pDb);
     saveCompleteWr(db, wstr_to_utf8(pActualName));
@@ -341,6 +378,8 @@ void PyEditorReactor::abortSave(AcDbDatabase* pDb)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_abortSave == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase db(pDb);
     abortSaveWr(db);
@@ -351,6 +390,8 @@ void PyEditorReactor::beginInsert(AcDbDatabase* pTo, const ACHAR* pBlockName, Ac
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_beginInsert1 == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase to(pTo);
     PyDbDatabase from(pFrom);
@@ -362,6 +403,8 @@ void PyEditorReactor::beginInsert(AcDbDatabase* pTo, const AcGeMatrix3d& xform, 
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_beginInsert2 == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase to(pTo);
     PyDbDatabase from(pFrom);
@@ -373,6 +416,8 @@ void PyEditorReactor::otherInsert(AcDbDatabase* pTo, AcDbIdMapping& idMap, AcDbD
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_otherInsert == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase to(pTo);
     PyDbDatabase from(pFrom);
@@ -385,6 +430,8 @@ void PyEditorReactor::abortInsert(AcDbDatabase* pTo)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_abortInsert == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase to(pTo);
     abortInsertWr(to);
@@ -395,6 +442,8 @@ void PyEditorReactor::endInsert(AcDbDatabase* pTo)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_endInsert == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase to(pTo);
     abortInsertWr(to);
@@ -405,6 +454,8 @@ void PyEditorReactor::wblockNotice(AcDbDatabase* pDb)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_wblockNotice == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase db(pDb);
     wblockNoticeWr(db);
@@ -415,6 +466,8 @@ void PyEditorReactor::beginWblock(AcDbDatabase* pTo, AcDbDatabase* pFrom, AcDbOb
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_beginWblock == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase to(pTo);
     PyDbDatabase from(pFrom);
@@ -427,6 +480,8 @@ void PyEditorReactor::otherWblock(AcDbDatabase* pTo, AcDbIdMapping& idMap, AcDbD
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_otherWblock == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase to(pTo);
     PyDbDatabase from(pFrom);
@@ -439,6 +494,8 @@ void PyEditorReactor::abortWblock(AcDbDatabase* pTo)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_abortWblock == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase to(pTo);
     abortWblockWr(to);
@@ -449,6 +506,8 @@ void PyEditorReactor::endWblock(AcDbDatabase* pTo)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_endWblock == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase to(pTo);
     endWblockWr(to);
@@ -459,6 +518,8 @@ void PyEditorReactor::beginDeepClone(AcDbDatabase* pTo, AcDbIdMapping& idMap)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_beginDeepClone == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase to(pTo);
     PyDbIdMapping mapping(idMap);
@@ -470,6 +531,8 @@ void PyEditorReactor::beginDeepCloneXlation(AcDbIdMapping& idMap, Acad::ErrorSta
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_beginDeepCloneXlation == false)
+        return;
     PyAutoLockGIL lock;
     PyDbIdMapping mapping(idMap);
     auto stat = beginDeepCloneXlationWr(mapping);
@@ -482,6 +545,8 @@ void PyEditorReactor::abortDeepClone(AcDbIdMapping& idMap)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_abortDeepClone == false)
+        return;
     PyAutoLockGIL lock;
     PyDbIdMapping mapping(idMap);
     abortDeepCloneWr(mapping);
@@ -492,6 +557,8 @@ void PyEditorReactor::endDeepClone(AcDbIdMapping& idMap)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_endDeepClone == false)
+        return;
     PyAutoLockGIL lock;
     PyDbIdMapping mapping(idMap);
     endDeepCloneWr(mapping);
@@ -502,6 +569,8 @@ void PyEditorReactor::sysVarChanged(const ACHAR* varName, bool success)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_sysVarChanged == false)
+        return;
     PyAutoLockGIL lock;
     sysVarChangedWr(wstr_to_utf8(varName), success);
 }
@@ -511,6 +580,8 @@ void PyEditorReactor::sysVarWillChange(const ACHAR* varName)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_sysVarWillChange == false)
+        return;
     PyAutoLockGIL lock;
     sysVarWillChangeWr(wstr_to_utf8(varName));
 }
@@ -520,6 +591,8 @@ void PyEditorReactor::beginAttach(AcDbDatabase* pTo, const ACHAR* name, AcDbData
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_beginAttach == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase to(pTo);
     PyDbDatabase from(pFrom);
@@ -531,6 +604,8 @@ void PyEditorReactor::otherAttach(AcDbDatabase* pTo, AcDbDatabase* pFrom)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_otherAttach == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase to(pTo);
     PyDbDatabase from(pFrom);
@@ -542,6 +617,8 @@ void PyEditorReactor::abortAttach(AcDbDatabase* pFrom)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_abortAttach == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase from(pFrom);
     abortAttachWr(from);
@@ -552,6 +629,8 @@ void PyEditorReactor::endAttach(AcDbDatabase* pTo)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_endAttach == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase to(pTo);
     endAttachWr(to);
@@ -562,6 +641,8 @@ void PyEditorReactor::redirected(AcDbObjectId newId, AcDbObjectId oldId)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_redirected == false)
+        return;
     PyAutoLockGIL lock;
     PyDbObjectId nid(newId);
     PyDbObjectId oid(oldId);
@@ -573,6 +654,8 @@ void PyEditorReactor::comandeered(AcDbDatabase* pTo, AcDbObjectId id, AcDbDataba
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_comandeered == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase to(pTo);
     PyDbObjectId nid(id);
@@ -585,6 +668,8 @@ void PyEditorReactor::beginRestore(AcDbDatabase* pTo, const ACHAR* str, AcDbData
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_beginRestore == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase to(pTo);
     PyDbDatabase from(pFrom);
@@ -596,6 +681,8 @@ void PyEditorReactor::abortRestore(AcDbDatabase* pTo)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_abortRestore == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase to(pTo);
     abortRestoreWr(to);
@@ -606,6 +693,8 @@ void PyEditorReactor::endRestore(AcDbDatabase* pTo)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_endRestore == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase to(pTo);
     endRestoreWr(to);
@@ -616,6 +705,8 @@ void PyEditorReactor::xrefSubcommandBindItem(AcDbDatabase* pHost, int activity, 
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_xrefSubcommandBindItem == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase host(pHost);
     PyDbObjectId id(blockId);
@@ -627,6 +718,8 @@ void PyEditorReactor::xrefSubcommandAttachItem(AcDbDatabase* pHost, int activity
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_xrefSubcommandAttachItem == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase host(pHost);
     xrefSubcommandAttachItemWr(host, activity, wstr_to_utf8(pPath));
@@ -637,6 +730,8 @@ void PyEditorReactor::xrefSubcommandOverlayItem(AcDbDatabase* pHost, int activit
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_xrefSubcommandOverlayItem == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase host(pHost);
     xrefSubcommandOverlayItemWr(host, activity, wstr_to_utf8(pPath));
@@ -647,6 +742,8 @@ void PyEditorReactor::xrefSubcommandDetachItem(AcDbDatabase* pHost, int activity
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_xrefSubcommandDetachItem == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase host(pHost);
     PyDbObjectId id(blockId);
@@ -658,6 +755,8 @@ void PyEditorReactor::xrefSubcommandPathItem(int activity, AcDbObjectId blockId,
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_xrefSubcommandPathItem == false)
+        return;
     PyAutoLockGIL lock;
     PyDbObjectId id(blockId);
     xrefSubcommandPathItemWr(activity, id, wstr_to_utf8(pNewPath));
@@ -668,6 +767,8 @@ void PyEditorReactor::xrefSubcommandReloadItem(AcDbDatabase* pHost, int activity
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_xrefSubcommandReloadItem == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase host(pHost);
     PyDbObjectId id(blockId);
@@ -679,6 +780,8 @@ void PyEditorReactor::xrefSubcommandUnloadItem(AcDbDatabase* pHost, int activity
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_xrefSubcommandUnloadItem == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase host(pHost);
     PyDbObjectId id(blockId);
@@ -691,6 +794,8 @@ void PyEditorReactor::undoSubcommandAuto(int activity, bool state)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_undoSubcommandAuto == false)
+        return;
     PyAutoLockGIL lock;
     undoSubcommandAutoWr(activity, state);
 }
@@ -701,6 +806,8 @@ void PyEditorReactor::undoSubcommandControl(int activity, int option)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_undoSubcommandControl == false)
+        return;
     PyAutoLockGIL lock;
     undoSubcommandControlWr(activity, option);
 }
@@ -710,6 +817,8 @@ void PyEditorReactor::undoSubcommandBegin(int activity)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_undoSubcommandBegin == false)
+        return;
     PyAutoLockGIL lock;
     undoSubcommandBeginWr(activity);
 }
@@ -719,6 +828,8 @@ void PyEditorReactor::undoSubcommandEnd(int activity)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_undoSubcommandEnd == false)
+        return;
     PyAutoLockGIL lock;
     undoSubcommandEndWr(activity);
 }
@@ -728,6 +839,8 @@ void PyEditorReactor::undoSubcommandMark(int activity)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_undoSubcommandMark == false)
+        return;
     PyAutoLockGIL lock;
     undoSubcommandMarkWr(activity);
 }
@@ -737,6 +850,8 @@ void PyEditorReactor::undoSubcommandBack(int activity)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_undoSubcommandBack == false)
+        return;
     PyAutoLockGIL lock;
     undoSubcommandBackWr(activity);
 }
@@ -746,6 +861,8 @@ void PyEditorReactor::undoSubcommandNumber(int activity, int num)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_undoSubcommandNumber == false)
+        return;
     PyAutoLockGIL lock;
     undoSubcommandNumberWr(activity, num);
 }
@@ -755,6 +872,8 @@ void PyEditorReactor::pickfirstModified()
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_pickfirstModified == false)
+        return;
     PyAutoLockGIL lock;
     pickfirstModifiedWr();
 }
@@ -764,6 +883,8 @@ void PyEditorReactor::layoutSwitched(const ACHAR* newLayoutName)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_layoutSwitched == false)
+        return;
     PyAutoLockGIL lock;
     layoutSwitchedWr(wstr_to_utf8(newLayoutName));
 }
@@ -773,6 +894,8 @@ void PyEditorReactor::layoutToBeSwitched(const ACHAR* oldLayoutName, const ACHAR
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_layoutToBeSwitched == false)
+        return;
     PyAutoLockGIL lock;
     layoutToBeSwitchedWr(wstr_to_utf8(oldLayoutName), wstr_to_utf8(newLayoutName));
 }
@@ -782,6 +905,8 @@ void PyEditorReactor::dwgViewResized(Adesk::LongPtr hwndDwgView)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_dwgViewResized == false)
+        return;
     PyAutoLockGIL lock;
     dwgViewResizedWr(hwndDwgView);
 }
@@ -792,6 +917,8 @@ void PyEditorReactor::fullRegenEnded(AcDbDatabase* pDb, const AcDbIntArray& rege
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_fullRegenEnded == false)
+        return;
     PyAutoLockGIL lock;
     boost::python::list _list;
     for (auto item : regenedViewports)
@@ -806,6 +933,8 @@ void PyEditorReactor::docFrameMovedOrResized(Adesk::LongPtr hwndDocFrame, bool b
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_docFrameMovedOrResized == false)
+        return;
     PyAutoLockGIL lock;
     docFrameMovedOrResizedWr(hwndDocFrame, bMoved);
 }
@@ -815,6 +944,8 @@ void PyEditorReactor::mainFrameMovedOrResized(Adesk::LongPtr hwndMainFrame, bool
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_mainFrameMovedOrResized == false)
+        return;
     PyAutoLockGIL lock;
     mainFrameMovedOrResizedWr(hwndMainFrame, bMoved);
 }
@@ -824,6 +955,8 @@ void PyEditorReactor::beginDoubleClick(const AcGePoint3d& clickPoint)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_beginDoubleClick == false)
+        return;
     PyAutoLockGIL lock;
     beginDoubleClickWr(clickPoint);
 }
@@ -833,6 +966,8 @@ void PyEditorReactor::beginRightClick(const AcGePoint3d& clickPoint)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_beginRightClick == false)
+        return;
     PyAutoLockGIL lock;
     beginRightClickWr(clickPoint);
 }
@@ -843,6 +978,8 @@ void PyEditorReactor::toolbarBitmapSizeWillChange(bool bLarge)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_toolbarBitmapSizeWillChange == false)
+        return;
     PyAutoLockGIL lock;
     toolbarBitmapSizeWillChangeWr(bLarge);
 }
@@ -854,6 +991,8 @@ void PyEditorReactor::toolbarBitmapSizeChanged(bool bLarge)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_toolbarBitmapSizeChanged == false)
+        return;
     PyAutoLockGIL lock;
     toolbarBitmapSizeChangedWr(bLarge);
 }
@@ -864,6 +1003,8 @@ void PyEditorReactor::beginWblockObjects(AcDbDatabase* pFrom, AcDbIdMapping& idM
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_beginWblockObjects == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase from(pFrom);
     PyDbIdMapping mapping(idMap);
@@ -875,6 +1016,8 @@ void PyEditorReactor::partialOpenNotice(AcDbDatabase* pDb)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_partialOpenNotice == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase from(pDb);
     partialOpenNoticeWr(from);
@@ -885,6 +1028,8 @@ void PyEditorReactor::objectsLazyLoaded(const AcDbObjectIdArray& idArray)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_objectsLazyLoaded == false)
+        return;
     PyAutoLockGIL lock;
     boost::python::list _list;
     for (auto item : idArray)
@@ -897,6 +1042,8 @@ void PyEditorReactor::beginDocClose(AcDbDatabase* pDwg)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_beginDocClose == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase dwg(pDwg);
     beginDocCloseWr(dwg);
@@ -907,6 +1054,8 @@ void PyEditorReactor::docCloseAborted(AcDbDatabase* pDwg)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_docCloseAborted == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase dwg(pDwg);
     docCloseAbortedWr(dwg);
@@ -917,6 +1066,8 @@ void PyEditorReactor::docCloseWillStart(AcDbDatabase* pDwg)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_docCloseWillStart == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase dwg(pDwg);
     docCloseWillStartWr(dwg);
@@ -928,6 +1079,8 @@ void PyEditorReactor::beginCloseAll()
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_beginCloseAll == false)
+        return;
     PyAutoLockGIL lock;
     beginCloseAllWr();
 }
@@ -938,6 +1091,8 @@ void PyEditorReactor::beginQuit()
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_beginQuit == false)
+        return;
     PyAutoLockGIL lock;
     beginQuitWr();
 }
@@ -947,6 +1102,8 @@ void PyEditorReactor::quitAborted()
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_quitAborted == false)
+        return;
     PyAutoLockGIL lock;
     quitAbortedWr();
 }
@@ -956,6 +1113,8 @@ void PyEditorReactor::quitWillStart()
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_quitWillStart == false)
+        return;
     PyAutoLockGIL lock;
     quitWillStartWr();
 }
@@ -965,6 +1124,8 @@ void PyEditorReactor::modelessOperationWillStart(const ACHAR* contextStr)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_modelessOperationWillStart == false)
+        return;
     PyAutoLockGIL lock;
     modelessOperationWillStartWr(wstr_to_utf8(contextStr));
 }
@@ -974,6 +1135,8 @@ void PyEditorReactor::modelessOperationEnded(const ACHAR* contextStr)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_modelessOperationEnded == false)
+        return;
     PyAutoLockGIL lock;
     modelessOperationEndedWr(wstr_to_utf8(contextStr));
 }
@@ -983,6 +1146,8 @@ void PyEditorReactor::cmdIUnkModified(const ACHAR* strCommand)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_cmdIUnkModified == false)
+        return;
     PyAutoLockGIL lock;
     cmdIUnkModifiedWr(wstr_to_utf8(strCommand));
 }
@@ -992,6 +1157,8 @@ void PyEditorReactor::preXrefLockFile(AcDbObjectId btrId)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_preXrefLockFile == false)
+        return;
     PyAutoLockGIL lock;
     PyDbObjectId id(btrId);
     preXrefLockFileWr(id);
@@ -1002,6 +1169,8 @@ void PyEditorReactor::viewChanged()
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_viewChanged == false)
+        return;
     PyAutoLockGIL lock;
     viewChangedWr();
 }
@@ -1012,6 +1181,8 @@ void PyEditorReactor::fullRegenWillStart(AcDbDatabase* pDb)
 #ifdef PYEDREACTOR_DEBUG
     acutPrintf(_T("\n%ls"), __FUNCTIONW__);
 #endif // PYEDREACTOR_DEBUG
+    if (reg_fullRegenWillStart == false)
+        return;
     PyAutoLockGIL lock;
     PyDbDatabase dwg(pDb);
     fullRegenWillStartWr(dwg);
@@ -1021,122 +1192,165 @@ void PyEditorReactor::fullRegenWillStart(AcDbDatabase* pDb)
 //begin wrapper
 void PyEditorReactor::commandWillStartWr(const std::string& cmdStr)
 {
+#ifdef PYEDREACTOR_DEBUG
+    acutPrintf(_T("\n%ls"), __FUNCTIONW__);
+#endif // PYEDREACTOR_DEBUG
     if (override pyFunc = this->get_override("commandWillStart"))
         pyFunc(cmdStr);
+    else
+        reg_commandWillStart = false;
 }
 
 void PyEditorReactor::commandEndedWr(const std::string& cmdStr)
 {
     if (override pyFunc = this->get_override("commandEnded"))
         pyFunc(cmdStr);
+    else
+        reg_commandEnded = false;
 }
 
 void PyEditorReactor::commandCancelledWr(const std::string& cmdStr)
 {
     if (override pyFunc = this->get_override("commandCancelled"))
         pyFunc(cmdStr);
+    else
+        reg_commandCancelled = false;
 }
 
 void PyEditorReactor::commandFailedWr(const std::string& cmdStr)
 {
     if (override pyFunc = this->get_override("commandCancelled"))
         pyFunc(cmdStr);
+    else
+        reg_commandFailed = false;
 }
 
 void PyEditorReactor::lispWillStartWr(const std::string& firstLine)
 {
     if (override pyFunc = this->get_override("lispWillStart"))
         pyFunc(firstLine);
+    else
+        reg_lispWillStart = false;
 }
 
 void PyEditorReactor::lispEndedWr()
 {
     if (override pyFunc = this->get_override("lispEnded"))
         pyFunc();
+    else
+        reg_lispEnded = false;
 }
 
 void PyEditorReactor::lispCancelledWr()
 {
     if (override pyFunc = this->get_override("lispCancelled"))
         pyFunc();
+    else
+        reg_lispCancelled = false;
 }
 
 void PyEditorReactor::beginDxfInWr(PyDbDatabase& db)
 {
     if (override pyFunc = this->get_override("beginDxfIn"))
         pyFunc(db);
+    else
+        reg_beginDxfIn = false;
 }
 
 void PyEditorReactor::abortDxfInWr(PyDbDatabase& db)
 {
     if (override pyFunc = this->get_override("abortDxfIn"))
         pyFunc(db);
+    else
+        reg_abortDxfIn = false;
 }
 
 void PyEditorReactor::dxfInCompleteWr(PyDbDatabase& db)
 {
     if (override pyFunc = this->get_override("dxfInComplete"))
         pyFunc(db);
+    else
+        reg_dxfInComplete = false;
 }
 
 void PyEditorReactor::beginDxfOutWr(PyDbDatabase& db)
 {
     if (override pyFunc = this->get_override("beginDxfOut"))
         pyFunc(db);
+    else
+        reg_beginDxfOut = false;
 }
 
 void PyEditorReactor::abortDxfOutWr(PyDbDatabase& db)
 {
     if (override pyFunc = this->get_override("abortDxfOut"))
         pyFunc(db);
+    else
+        reg_abortDxfOut = false;
 }
 
 void PyEditorReactor::dxfOutCompleteWr(PyDbDatabase& db)
 {
     if (override pyFunc = this->get_override("dxfOutComplete"))
         pyFunc(db);
+    else
+        reg_dxfOutComplete = false;
 }
 
 void PyEditorReactor::beginDwgOpenWr(const std::string& filename)
 {
     if (override pyFunc = this->get_override("beginDwgOpen"))
         pyFunc(filename);
+    else
+        reg_beginDwgOpen = false;
 }
 
 void PyEditorReactor::endDwgOpenWr(const std::string& filename, PyDbDatabase& db)
 {
     if (override pyFunc = this->get_override("endDwgOpen"))
         pyFunc(filename, db);
+    else
+        reg_endDwgOpen = false;
 }
 
 void PyEditorReactor::initialDwgFileOpenCompleteWr(PyDbDatabase& db)
 {
     if (override pyFunc = this->get_override("initialDwgFileOpenComplete"))
         pyFunc(db);
+    else
+        reg_initialDwgFileOpenComplete = false;
 }
 
 void PyEditorReactor::databaseConstructedWr(PyDbDatabase& db)
 {
     if (override pyFunc = this->get_override("databaseConstructed"))
         pyFunc(db);
+    else
+        reg_databaseConstructed = false;
 }
 
 void PyEditorReactor::databaseToBeDestroyedWr(PyDbDatabase& db)
 {
     if (override pyFunc = this->get_override("databaseToBeDestroyed"))
         pyFunc(db);
+    else
+        reg_databaseToBeDestroyed = false;
 }
 
 void PyEditorReactor::beginSaveWr(PyDbDatabase& db, const std::string& pIntendedName)
 {
     if (override pyFunc = this->get_override("beginSave"))
         pyFunc(db, pIntendedName);
+    else
+        reg_beginSave = false;
 }
 
 void PyEditorReactor::saveCompleteWr(PyDbDatabase& db, const std::string& pActualName)
 {
     if (override pyFunc = this->get_override("saveComplete"))
         pyFunc(db, pActualName);
+    else
+        reg_saveComplete = false;
 }
 
 void PyEditorReactor::abortSaveWr(PyDbDatabase& db)
@@ -1215,7 +1429,7 @@ Acad::ErrorStatus PyEditorReactor::beginDeepCloneXlationWr(PyDbIdMapping& mappin
 {
     if (override pyFunc = this->get_override("beginDeepCloneXlation"))
         return pyFunc(mapping);
-    return eInvalidInput;
+    return eOk;
 }
 
 void PyEditorReactor::abortDeepCloneWr(PyDbIdMapping& mapping)
