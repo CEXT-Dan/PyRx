@@ -343,9 +343,10 @@ public:
                                     }
                                     else
                                     {
+                                        const int commandFlags = getCommandFlags(pValue);
                                         PyRxApp::instance().commands.emplace(commandName, pValue);
                                         PyRxApp::instance().pathForCommand.emplace(commandName, pysyspath);
-                                        acedRegCmds->addCommand(_T("PYCOMMANDS"), commandName, commandName, ACRX_CMD_TRANSPARENT, AcRxPyApp_pyfunc);
+                                        acedRegCmds->addCommand(_T("PYCOMMANDS"), commandName, commandName, commandFlags, AcRxPyApp_pyfunc);
                                     }
                                 }
                             }
@@ -435,11 +436,10 @@ public:
     static std::string findPythonPath()
     {
         std::string res;
-
         const std::size_t ENV_BUF_SIZE = 8096;
         std::unique_ptr<char[]> chars(new char[ENV_BUF_SIZE]);
-
         std::size_t bufsize = ENV_BUF_SIZE;
+
         int e = getenv_s(&bufsize, chars.get(), bufsize, "PATH");
         if (e)
         {
@@ -448,7 +448,6 @@ public:
         }
         std::vector<std::string> paths;
         splitA(chars.get(), ';', paths);
-
 
         for (auto& item : paths)
         {
