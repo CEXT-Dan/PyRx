@@ -203,13 +203,21 @@ public:
             return 1;
         if (str.find(PyCommandFlagPrefix) == -1)
             return 1;
-        const AcString sflag = str.substr(PyCommandFlagPrefix.length()+1, str.length() - 1);
+        AcString sflag = str.substr(PyCommandFlagPrefix.length()+1, str.length() - 1);
+#ifdef BRXAPP
+        CString csFlag = (const TCHAR*)sflag;
+        csFlag.TrimRight(')');
+        return _wtoi(csFlag);
+#else
         return _wtoi(sflag);
+#endif // !BRXAPP
     }
 
     static int getCommandFlags(PyObject *pCommand)
     {
         WxPyAutoLock lock;
+
+        //TODO: maybe leave this module imported for the session?
         PyObjectPtr sys(PyImport_ImportModule("inspect"));
         if (sys == nullptr)
             return 1;

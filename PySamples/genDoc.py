@@ -12,13 +12,7 @@ import PyEd  # = editor
 # just some ideas on getting help, work in progress
 
 
-ACRX_CMD_TRANSPARENT = 0x00000001
-ACRX_CMD_NOHISTORY = 0x00800000
-ACRX_CMD_SESSION = 0x00200000
-ACRX_CMD_NOPAPERSPACE = 0x00000040
-
-
-def PyRxCmd_pydoit(cmdFlags=ACRX_CMD_NOPAPERSPACE):
+def PyRxCmd_pydoit(cmdFlags=PyAp.CmdFlags.TRANSPARENT|PyAp.CmdFlags.NOHISTORY):
     try:
         module = inspect.getmodule(PyGe)
         for members_1 in inspect.getmembers(module):
@@ -27,7 +21,7 @@ def PyRxCmd_pydoit(cmdFlags=ACRX_CMD_NOPAPERSPACE):
         PyRxApp.Printf(err)
 
 
-def PyRxCmd_pydoit2():
+def PyRxCmd_pydoit2(cmdFlags=PyAp.CmdFlags.TRANSPARENT|PyAp.CmdFlags.NOPAPERSPACE):
     try:
         members = inspect.getmembers(PyGe.Curve2d)
         for x in members:

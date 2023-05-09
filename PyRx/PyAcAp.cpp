@@ -37,6 +37,40 @@ BOOST_PYTHON_MODULE(PyAp)
     makeAcApDocumentWrapper();
     makePyApDocManagerReactorWrapper();
 
+    enum_<int>("CmdFlags")
+        .value("MODAL", ACRX_CMD_MODAL)
+        .value("TRANSPARENT", ACRX_CMD_TRANSPARENT)
+        .value("USEPICKSET", ACRX_CMD_USEPICKSET)
+        .value("REDRAW", ACRX_CMD_REDRAW)
+        .value("NOPERSPECTIVE", ACRX_CMD_NOPERSPECTIVE)
+        .value("NOMULTIPLE", ACRX_CMD_NOMULTIPLE)
+        .value("NOTILEMODE", ACRX_CMD_NOTILEMODE)
+        .value("NOPAPERSPACE", ACRX_CMD_NOPAPERSPACE)
+#ifndef BRXAPP
+        .value("DEPRECATED", ACRX_CMD_DEPRECATED)
+#endif
+        .value("NOOEM", ACRX_CMD_NOOEM)
+        .value("UNDEFINED", ACRX_CMD_UNDEFINED)
+        .value("INPROGRESS", ACRX_CMD_INPROGRESS)
+        .value("DEFUN", ACRX_CMD_DEFUN)
+        .value("NOINTERNALLOCK", ACRX_CMD_NOINTERNALLOCK)
+        .value("DOCREADLOCK", ACRX_CMD_DOCREADLOCK)
+        .value("DOCEXCLUSIVELOCK", ACRX_CMD_DOCEXCLUSIVELOCK)
+        .value("SESSION", ACRX_CMD_SESSION)
+        .value("INTERRUPTIBLE", ACRX_CMD_INTERRUPTIBLE)
+        .value("NOHISTORY", ACRX_CMD_NOHISTORY)
+        .value("NO_UNDO_MARKER", ACRX_CMD_NO_UNDO_MARKER)
+        .value("NOBEDIT", ACRX_CMD_NOBEDIT)
+#ifndef BRXAPP
+        .value("NOACTIONRECORDING", ACRX_CMD_NOACTIONRECORDING)
+        .value("ACTIONMACRO", ACRX_CMD_ACTIONMACRO)
+        .value("RELAXASSOC", ACRX_CMD_RELAXASSOC)
+        .value("NOINFERCONSTRAINT", ACRX_CMD_NOINFERCONSTRAINT)
+        .value("TEMPSHOWDYNDIM", ACRX_CMD_TEMPSHOWDYNDIM)
+#endif
+        .export_values()
+        ;
+
     enum_<AcAp::DocLockMode>("DocLockMode")
         .value("kNone", AcAp::DocLockMode::kNone)
         .value("kAutoWrite", AcAp::DocLockMode::kAutoWrite)
