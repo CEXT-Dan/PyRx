@@ -9,6 +9,7 @@ import PyAp  # = application, document classes services
 import PyEd  # = editor
 
 from Delaunator import Delaunator
+from time import perf_counter
 
 def OnPyInitApp():
     PyRxApp.Printf("\nOnPyInitApp")
@@ -21,6 +22,7 @@ def OnPyLoadDwg():
 
 def OnPyUnloadDwg():
    PyRxApp.Printf("\nOnPyUnloadDwg")
+
 
 def do_select():
     filter = [(PyDb.DxfCode.kDxfStart, "POINT")]
@@ -44,18 +46,24 @@ def get_2dpointd(pnt3ds):
 
 def PyRxCmd_pydoit():
     try:
-        db = PyAp.Application().docManager().curDocument().database()
-        model = PyDb.BlockTableRecord(
-            db.modelSpaceId(), PyDb.OpenMode.kForWrite)
         ss = do_select()
+        t1_start = perf_counter()
         pnt3ds = get_3dpointd(ss)
         pnt2ds = get_2dpointd(pnt3ds)
         t = Delaunator(pnt2ds).triangles
+        
+        db = PyAp.Application().docManager().curDocument().database()
+        model = PyDb.BlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
+        
         for i in range(0, len(t), 3):
             a = pnt3ds[t[i]]
             b = pnt3ds[t[i + 1]]
             c = pnt3ds[t[i + 2]]
             f = PyDb.Face(a, b, c)
             model.appendAcDbEntity(f)
+
+        t1_stop = perf_counter()
+        r = "Elapsed time: {t:.4f}".format(t=t1_stop-t1_start)
+        print(r)
     except Exception as err:
         PyRxApp.Printf(err)
