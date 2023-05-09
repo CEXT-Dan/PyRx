@@ -24,7 +24,10 @@ class MyJig(PyEd.Jig):
     # acquireXXX returns a tuple AcEdJig::DragStatus and Value
     def sampler(self):
         self.setUserInputControls(
-            PyEd.kAccept3dCoordinates or PyEd.kNullResponseAccepted)
+           PyEd.UserInputControls(
+               PyEd.UserInputControls.kAccept3dCoordinates | 
+               PyEd.UserInputControls.kNullResponseAccepted))
+        
         point_result_tuple = self.acquirePoint(self.curPoint)
         self.curPoint = point_result_tuple[1]
         return point_result_tuple[0]
@@ -41,7 +44,7 @@ def PyRxCmd_pyjigstyle():
         db = doc.database()
         ed = doc.editor()
 
-        #create a style
+        # create a style
         style = PyEd.DragStyle()
         style.setStyleTypeForDragged(PyEd.DragStyleType.kTransparent75)
 
@@ -57,8 +60,8 @@ def PyRxCmd_pyjigstyle():
 
         jig = MyJig(line, point_result_tuple[1])
         jig.setDispPrompt("\nPick endPoint")
-        
-        #use the style overload
+
+        # use the style overload
         if jig.drag(style) != PyEd.DragStatus.kNormal:
             print('oops')
             return
