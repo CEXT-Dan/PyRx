@@ -147,6 +147,7 @@
 
 static inline const AcString PyCommandPrefix = _T("PyRxCmd_");
 static inline const AcString PyLispFuncPrefix = _T("PyRxLisp_");
+static inline const AcString PyCommandFlagPrefix = _T("cmdFlags=");
 
 static inline constexpr const char* PyAppNamespace = "PyRxApp";
 static inline constexpr const char* PyApNamespace = "PyAp";
@@ -278,11 +279,16 @@ struct PyAutoLockGIL
     inline static bool canLock = false;
 };
 
-using PyObjectPtr = std::unique_ptr < PyObject, decltype([](PyObject* ptr) noexcept
+struct PyObjectDeleter 
 {
-    PyAutoLockGIL lock;
-    Py_XDECREF(ptr);
-}) > ;
+    void operator()(PyObject* ptr)
+    {
+        PyAutoLockGIL lock;
+        Py_XDECREF(ptr);
+    }
+};
+using PyObjectPtr = std::unique_ptr < PyObject, PyObjectDeleter>;
+
 
 template<typename T>
 inline std::vector< T > py_list_to_std_vector(const boost::python::object& iterable)

@@ -10,7 +10,11 @@ import PyAp# = application, document classes services
 import PyEd# = editor
 
 #just some ideas on getting help, work in progress
-def PyRxCmd_pydoit():
+
+
+ACRX_CMD_TRANSPARENT = 0x00000001
+ACRX_CMD_NOHISTORY = 0x00800000
+def PyRxCmd_pydoit(cmdFlags = ACRX_CMD_TRANSPARENT | ACRX_CMD_NOHISTORY):
     try:
         module = inspect.getmodule(PyGe)
         for members_1 in inspect.getmembers(module):
@@ -57,5 +61,12 @@ def PyRxCmd_pydoit5():
 def PyRxCmd_pydoit6():
     try:
        print(dir(PyDb))
+    except Exception as err:
+        PyRxApp.Printf(err)
+        
+def PyRxCmd_pydoit7():
+    try:
+        print(inspect.signature(PyRxCmd_pydoit))
+
     except Exception as err:
         PyRxApp.Printf(err)

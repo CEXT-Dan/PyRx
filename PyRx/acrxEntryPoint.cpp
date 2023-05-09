@@ -194,6 +194,43 @@ public:
         return true;
     }
 
+    static int getCommandFlags(AcString &str)
+    {
+#ifndef BRXAPP
+        str.remove();
+#endif // !BRXAPP
+        if (str.length() == 0)
+            return 1;
+        if (str.find(PyCommandFlagPrefix) == -1)
+            return 1;
+        const AcString sflag = str.substr(PyCommandFlagPrefix.length()+1, str.length() - 1);
+        return _wtoi(sflag);
+    }
+
+    static int getCommandFlags(PyObject *pCommand)
+    {
+        WxPyAutoLock lock;
+        PyObjectPtr sys(PyImport_ImportModule("inspect"));
+        if (sys == nullptr)
+            return 1;
+        PyObjectPtr func(PyObject_GetAttrString(sys.get(), "signature"));
+        if (func == nullptr)
+            return 1;
+        if (PyCallable_Check(func.get()) == 0)
+            return 1;
+        PyObjectPtr args(PyTuple_Pack(1, pCommand));
+        if (args == nullptr)
+            return 1;
+        PyObjectPtr res(PyObject_CallObject(func.get(), args.get()));
+        if (res == nullptr)
+            return 1;
+        PyObjectPtr objStr(PyObject_Str(res.get()));
+        if (res == nullptr)
+            return 1;
+       AcString strFlags = PyUnicode_AsWideCharString(objStr.get(), nullptr);
+       return getCommandFlags(strFlags);
+    }
+
     //TODO: needs improvement 
     static void AcRxPyApp_pyload(void)
     {
@@ -233,9 +270,10 @@ public:
                             AcString commandName = key.substr(PyCommandPrefix.length(), key.length() - 1);
                             if (PyFunction_Check(pValue))
                             {
+                                const int commandFlags = getCommandFlags(pValue);
                                 PyRxApp::instance().commands.emplace(commandName.makeUpper(), pValue);
                                 PyRxApp::instance().pathForCommand.emplace(commandName, pysyspath);
-                                acedRegCmds->addCommand(_T("PYCOMMANDS"), commandName, commandName, ACRX_CMD_TRANSPARENT, AcRxPyApp_pyfunc);
+                                acedRegCmds->addCommand(_T("PYCOMMANDS"), commandName, commandName, commandFlags, AcRxPyApp_pyfunc);
                             }
                         }
                         if (key.find(PyLispFuncPrefix) != -1)
@@ -411,7 +449,7 @@ public:
         std::vector<std::string> paths;
         splitA(chars.get(), ';', paths);
 
-   
+
         for (auto& item : paths)
         {
             if (item.ends_with("python310\\") || item.ends_with("python310"))

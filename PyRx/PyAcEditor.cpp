@@ -227,7 +227,6 @@ boost::python::tuple PyAcEditor::select1()
 
 boost::python::tuple PyAcEditor::select2(const boost::python::list& filter)
 {
-    PyAutoLockGIL lock;
     WxUserInteraction ui;
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
@@ -237,12 +236,11 @@ boost::python::tuple PyAcEditor::select2(const boost::python::list& filter)
 
 boost::python::tuple PyAcEditor::select3(const std::string& add, const std::string& remove)
 {
-    PyAutoLockGIL lock;
     WxUserInteraction ui;
     ads_name name = { 0L };
 
-    CString csAdd = utf8_to_wstr(add).c_str();
-    CString csRem = utf8_to_wstr(remove).c_str();
+    const CString csAdd = utf8_to_wstr(add).c_str();
+    const CString csRem = utf8_to_wstr(remove).c_str();
     const wchar_t* prompts[] = { (const wchar_t*)csAdd, (const wchar_t*)csRem };
 
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_:$"), prompts,nullptr,nullptr, name));
@@ -251,13 +249,12 @@ boost::python::tuple PyAcEditor::select3(const std::string& add, const std::stri
 
 boost::python::tuple PyAcEditor::select4(const std::string& add, const std::string& remove, const boost::python::list& filter)
 {
-    PyAutoLockGIL lock;
     WxUserInteraction ui;
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
 
-    CString csAdd = utf8_to_wstr(add).c_str();
-    CString csRem = utf8_to_wstr(remove).c_str();
+    const CString csAdd = utf8_to_wstr(add).c_str();
+    const CString csRem = utf8_to_wstr(remove).c_str();
     const wchar_t* prompts[] = { (const wchar_t*)csAdd, (const wchar_t*)csRem };
 
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_:$"), prompts, nullptr, pFilter.get(), name));
@@ -266,7 +263,6 @@ boost::python::tuple PyAcEditor::select4(const std::string& add, const std::stri
 
 boost::python::tuple PyAcEditor::selectAll()
 {
-    PyAutoLockGIL lock;
     WxUserInteraction ui;
     ads_name name = { 0L };
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_A"), nullptr, nullptr, nullptr, name));
@@ -275,7 +271,6 @@ boost::python::tuple PyAcEditor::selectAll()
 
 boost::python::tuple PyAcEditor::selectAll(const boost::python::list& filter)
 {
-    PyAutoLockGIL lock;
     WxUserInteraction ui;
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
@@ -285,7 +280,6 @@ boost::python::tuple PyAcEditor::selectAll(const boost::python::list& filter)
 
 boost::python::tuple PyAcEditor::selectCrossingWindow1(const AcGePoint3d& pt1, const AcGePoint3d& pt2)
 {
-    PyAutoLockGIL lock;
     WxUserInteraction ui;
     ads_name name = { 0L };
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_W"), asDblArray(pt1), asDblArray(pt2),nullptr, name));
@@ -294,7 +288,6 @@ boost::python::tuple PyAcEditor::selectCrossingWindow1(const AcGePoint3d& pt1, c
 
 boost::python::tuple PyAcEditor::selectCrossingWindow2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const boost::python::list& filter)
 {
-    PyAutoLockGIL lock;
     WxUserInteraction ui;
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));

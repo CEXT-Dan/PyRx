@@ -137,11 +137,19 @@ constexpr inline std::wstring acstr_to_wstr(const AcString& cstr) noexcept
     return std::wstring(cstr, cstr.length());
 }
 
-
 inline PyObject* wstr_to_py(const std::wstring& str)
 {
     return PyUnicode_FromWideChar(str.data(), str.size());
 }
+
+inline PyObject* acstr_to_py(const AcString& str)
+{
+    return PyUnicode_FromWideChar(str.constPtr(), str.length());
+}
+
+
+
+
 
 
 
