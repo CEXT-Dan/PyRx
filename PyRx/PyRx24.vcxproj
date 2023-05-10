@@ -126,6 +126,7 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="DocData.cpp" />
     <ClCompile Include="PyAcGeSurface.cpp" />
+    <ClCompile Include="PyCmd.cpp" />
     <ClCompile Include="PyDb3dSolid.cpp" />
     <ClCompile Include="PyDbCurve.cpp" />
     <ClCompile Include="PyDbDimension.cpp" />
@@ -197,6 +198,7 @@
   <ItemGroup>
     <ClInclude Include="DocData.h" />
     <ClInclude Include="PyAcGeSurface.h" />
+    <ClInclude Include="PyCmd.h" />
     <ClInclude Include="PyDb3dSolid.h" />
     <ClInclude Include="PyDbCurve.h" />
     <ClInclude Include="PyDbDimension.h" />

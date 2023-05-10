@@ -26,6 +26,7 @@
 #include "resource.h"
 #include "PyLispService.h"
 #include "PyRxApp.h"
+#include "PyCmd.h"
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
@@ -194,51 +195,6 @@ public:
         return true;
     }
 
-    static int getCommandFlags(AcString &str)
-    {
-#ifndef BRXAPP
-        str.remove();
-#endif // !BRXAPP
-        if (str.length() == 0)
-            return 1;
-        if (str.find(PyCommandFlagPrefix) == -1)
-            return 1;
-        AcString sflag = str.substr(PyCommandFlagPrefix.length()+1, str.length() - 1);
-#ifdef BRXAPP
-        CString csFlag = (const TCHAR*)sflag;
-        csFlag.TrimRight(')');
-        return _wtoi(csFlag);
-#else
-        return _wtoi(sflag);
-#endif // !BRXAPP
-    }
-
-    static int getCommandFlags(PyObject *pCommand)
-    {
-        WxPyAutoLock lock;
-
-        //TODO: maybe leave this module imported for the session?
-        PyObjectPtr sys(PyImport_ImportModule("inspect"));
-        if (sys == nullptr)
-            return 1;
-        PyObjectPtr func(PyObject_GetAttrString(sys.get(), "signature"));
-        if (func == nullptr)
-            return 1;
-        if (PyCallable_Check(func.get()) == 0)
-            return 1;
-        PyObjectPtr args(PyTuple_Pack(1, pCommand));
-        if (args == nullptr)
-            return 1;
-        PyObjectPtr res(PyObject_CallObject(func.get(), args.get()));
-        if (res == nullptr)
-            return 1;
-        PyObjectPtr objStr(PyObject_Str(res.get()));
-        if (res == nullptr)
-            return 1;
-       AcString strFlags = PyUnicode_AsWideCharString(objStr.get(), nullptr);
-       return getCommandFlags(strFlags);
-    }
-
     //TODO: needs improvement 
     static void AcRxPyApp_pyload(void)
     {
@@ -278,7 +234,7 @@ public:
                             AcString commandName = key.substr(PyCommandPrefix.length(), key.length() - 1);
                             if (PyFunction_Check(pValue))
                             {
-                                const int commandFlags = getCommandFlags(pValue);
+                                const int commandFlags = PyCmd::getCommandFlags(pValue);
                                 PyRxApp::instance().commands.emplace(commandName.makeUpper(), pValue);
                                 PyRxApp::instance().pathForCommand.emplace(commandName, pysyspath);
                                 acedRegCmds->addCommand(_T("PYCOMMANDS"), commandName, commandName, commandFlags, AcRxPyApp_pyfunc);
@@ -351,7 +307,7 @@ public:
                                     }
                                     else
                                     {
-                                        const int commandFlags = getCommandFlags(pValue);
+                                        const int commandFlags = PyCmd::getCommandFlags(pValue);
                                         PyRxApp::instance().commands.emplace(commandName, pValue);
                                         PyRxApp::instance().pathForCommand.emplace(commandName, pysyspath);
                                         acedRegCmds->addCommand(_T("PYCOMMANDS"), commandName, commandName, commandFlags, AcRxPyApp_pyfunc);

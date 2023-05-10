@@ -12,7 +12,7 @@ import PyEd  # = editor
 # just some ideas on getting help, work in progress
 
 
-def PyRxCmd_pydoit(cmdFlags=PyAp.CmdFlags.TRANSPARENT|PyAp.CmdFlags.NOHISTORY):
+def PyRxCmd_pydoit(cmdFlags=PyAp.CmdFlags.NOPAPERSPACE):
     try:
         module = inspect.getmodule(PyGe)
         for members_1 in inspect.getmembers(module):
