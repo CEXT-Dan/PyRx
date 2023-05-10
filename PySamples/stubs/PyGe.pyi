@@ -6807,11 +6807,11 @@ isConformal( (Matrix2d)arg1, (float)arg2, (float)arg3, (bool)arg4, (Vector2d)arg
     ...
     def isEqualTo (self, *args, **kwargs):
       '''
-isEqualTo( (Matrix2d)arg1, (Matrix2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001BE283537F0>]) -> bool'''
+isEqualTo( (Matrix2d)arg1, (Matrix2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001F1320637F0>]) -> bool'''
     ...
     def isScaledOrtho (self, *args, **kwargs):
       '''
-isScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001BE28353910>]) -> bool'''
+isScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001F132063910>]) -> bool'''
     ...
     def isSingular (self, *args, **kwargs):
       '''
@@ -6819,7 +6819,7 @@ isSingular( (Matrix2d)arg1, (Tol)arg2) -> bool'''
     ...
     def isUniScaledOrtho (self, *args, **kwargs):
       '''
-isUniScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001BE28353880>]) -> bool'''
+isUniScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001F132063880>]) -> bool'''
     ...
     def kIdentity (self, *args, **kwargs):
       '''None'''
@@ -6890,7 +6890,7 @@ setToProduct( (Matrix2d)arg1, (Matrix2d)arg2, (Matrix2d)arg3) -> Matrix2d'''
     ...
     def setToRotation (self, *args, **kwargs):
       '''
-setToRotation( (Matrix2d)arg1, (float)arg2 [, (Point2d)AcGePoint2d=<PyGe.Point2d object at 0x000001BE1A382340>]) -> Matrix2d'''
+setToRotation( (Matrix2d)arg1, (float)arg2 [, (Point2d)AcGePoint2d=<PyGe.Point2d object at 0x000001F1239C2420>]) -> Matrix2d'''
     ...
     def setToScaling (self, *args, **kwargs):
       '''
@@ -8675,7 +8675,7 @@ distanceTo( (Point2d)arg1, (Point2d)arg2) -> float'''
     ...
     def isEqualTo (self, *args, **kwargs):
       '''
-isEqualTo( (Point2d)arg1, (Point2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001BE283532E0>]) -> bool'''
+isEqualTo( (Point2d)arg1, (Point2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001F1320632E0>]) -> bool'''
     ...
     def kOrigin (self, *args, **kwargs):
       '''None'''
@@ -8686,11 +8686,11 @@ mirror( (Point2d)arg1, (object)arg2) -> Point2d'''
     ...
     def rotateBy (self, *args, **kwargs):
       '''
-rotateBy( (Point2d)arg1, (float)arg2 [, (Point2d)AcGePoint2d=<PyGe.Point2d object at 0x000001BE1A382260>]) -> Point2d'''
+rotateBy( (Point2d)arg1, (float)arg2 [, (Point2d)AcGePoint2d=<PyGe.Point2d object at 0x000001F1239C2340>]) -> Point2d'''
     ...
     def scaleBy (self, *args, **kwargs):
       '''
-scaleBy( (Point2d)arg1, (float)arg2 [, (Point2d)AcGePoint2d=<PyGe.Point2d object at 0x000001BE1A3822D0>]) -> Point2d'''
+scaleBy( (Point2d)arg1, (float)arg2 [, (Point2d)AcGePoint2d=<PyGe.Point2d object at 0x000001F1239C23B0>]) -> Point2d'''
     ...
     def set (self, *args, **kwargs):
       '''
@@ -8734,7 +8734,7 @@ distanceTo( (Point3d)arg1, (Point3d)arg2) -> float'''
     ...
     def isEqualTo (self, *args, **kwargs):
       '''
-isEqualTo( (Point3d)arg1, (Point3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001BE283539A0>]) -> bool'''
+isEqualTo( (Point3d)arg1, (Point3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001F1320639A0>]) -> bool'''
     ...
     def kOrigin (self, *args, **kwargs):
       '''None'''
@@ -8753,11 +8753,11 @@ project( (Point3d)arg1, (object)arg2, (Vector3d)arg3) -> Point3d'''
     ...
     def rotateBy (self, *args, **kwargs):
       '''
-rotateBy( (Point3d)arg1, (float)arg2, (Vector3d)arg3 [, (Point3d)AcGePoint3d=<PyGe.Point3d object at 0x000001BE1A395DC0>]) -> Point3d'''
+rotateBy( (Point3d)arg1, (float)arg2, (Vector3d)arg3 [, (Point3d)AcGePoint3d=<PyGe.Point3d object at 0x000001F1239D1E40>]) -> Point3d'''
     ...
     def scaleBy (self, *args, **kwargs):
       '''
-scaleBy( (Point3d)arg1, (float)arg2 [, (Point3d)AcGePoint3d=<PyGe.Point3d object at 0x000001BE1A395E40>]) -> Point3d'''
+scaleBy( (Point3d)arg1, (float)arg2 [, (Point3d)AcGePoint3d=<PyGe.Point3d object at 0x000001F1239D1EC0>]) -> Point3d'''
     ...
     def set (self, *args, **kwargs):
       '''
@@ -11304,27 +11304,27 @@ dotProduct( (Vector2d)arg1, (Vector2d)arg2) -> float'''
     ...
     def isCodirectionalTo (self, *args, **kwargs):
       '''
-isCodirectionalTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001BE28353640>]) -> bool'''
+isCodirectionalTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001F132063640>]) -> bool'''
     ...
     def isEqualTo (self, *args, **kwargs):
       '''
-isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001BE28353760>]) -> bool'''
+isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001F132063760>]) -> bool'''
     ...
     def isParallelTo (self, *args, **kwargs):
       '''
-isParallelTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001BE283535B0>]) -> bool'''
+isParallelTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001F1320635B0>]) -> bool'''
     ...
     def isPerpendicularTo (self, *args, **kwargs):
       '''
-isPerpendicularTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001BE283536D0>]) -> bool'''
+isPerpendicularTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001F1320636D0>]) -> bool'''
     ...
     def isUnitLength (self, *args, **kwargs):
       '''
-isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001BE28353490>]) -> bool'''
+isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001F132063490>]) -> bool'''
     ...
     def isZeroLength (self, *args, **kwargs):
       '''
-isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001BE28353520>]) -> bool'''
+isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001F132063520>]) -> bool'''
     ...
     def kIdentity (self, *args, **kwargs):
       '''None'''
@@ -11353,11 +11353,11 @@ negate( (Vector2d)arg1) -> Vector2d'''
     ...
     def normal (self, *args, **kwargs):
       '''
-normal( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001BE28353370>]) -> Vector2d'''
+normal( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001F132063370>]) -> Vector2d'''
     ...
     def normalize (self, *args, **kwargs):
       '''
-normalize( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001BE28353400>]) -> Vector2d'''
+normalize( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001F132063400>]) -> Vector2d'''
     ...
     def rotateBy (self, *args, **kwargs):
       '''
@@ -11417,27 +11417,27 @@ dotProduct( (Vector3d)arg1, (Vector3d)arg2) -> float'''
     ...
     def isCodirectionalTo (self, *args, **kwargs):
       '''
-isCodirectionalTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001BE28353C70>]) -> bool'''
+isCodirectionalTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001F132063C70>]) -> bool'''
     ...
     def isEqualTo (self, *args, **kwargs):
       '''
-isEqualTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001BE28353D90>]) -> bool'''
+isEqualTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001F132063D90>]) -> bool'''
     ...
     def isParallelTo (self, *args, **kwargs):
       '''
-isParallelTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001BE28353BE0>]) -> bool'''
+isParallelTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001F132063BE0>]) -> bool'''
     ...
     def isPerpendicularTo (self, *args, **kwargs):
       '''
-isPerpendicularTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001BE28353D00>]) -> bool'''
+isPerpendicularTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001F132063D00>]) -> bool'''
     ...
     def isUnitLength (self, *args, **kwargs):
       '''
-isUnitLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001BE28353AC0>]) -> bool'''
+isUnitLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001F132063AC0>]) -> bool'''
     ...
     def isZeroLength (self, *args, **kwargs):
       '''
-isZeroLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001BE28353B50>]) -> bool'''
+isZeroLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001F132063B50>]) -> bool'''
     ...
     def kIdentity (self, *args, **kwargs):
       '''None'''
@@ -11473,7 +11473,7 @@ negate( (Vector3d)arg1) -> Vector3d'''
     ...
     def normal (self, *args, **kwargs):
       '''
-normal( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001BE28353A30>]) -> Vector3d'''
+normal( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001F132063A30>]) -> Vector3d'''
     ...
     def normalize (self, *args, **kwargs):
       '''
