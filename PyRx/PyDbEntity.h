@@ -101,6 +101,7 @@ public:
     Acad::ErrorStatus getGeomExtents(AcDbExtents& extents) const;
 
     static std::string className();
+    static PyRxClass desc();
 
 public:
     AcDbEntity* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -116,6 +117,7 @@ public:
     PyDbBlockBegin(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbBlockBegin() = default;
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDbBlockBegin* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -129,6 +131,7 @@ public:
     PyDbBlockEnd(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbBlockEnd() = default;
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDbBlockEnd* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -143,6 +146,7 @@ public:
     PyDbSequenceEnd(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbSequenceEnd() = default;
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDbSequenceEnd* impObj(const std::source_location& src = std::source_location::current()) const;
 };

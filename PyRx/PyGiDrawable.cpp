@@ -8,6 +8,7 @@ void makeAcGiObjectWrapper()
     class_<PyGiDrawable, bases<PyRxObject>>("Drawable", boost::python::no_init)
         .def("isA", &PyRxObject::isA)
         .def("className", &PyGiDrawable::className).staticmethod("className")
+        .def("desc", &PyGiDrawable::desc).staticmethod("desc")
         ;
 }
 
@@ -21,6 +22,11 @@ PyGiDrawable::PyGiDrawable(AcGiDrawable* ptr, bool autoDelete, bool isDbObject )
 std::string PyGiDrawable::className()
 {
     return "AcGiDrawable";
+}
+
+PyRxClass PyGiDrawable::desc()
+{
+    return PyRxClass(AcGiDrawable::desc(), false);
 }
 
 AcGiDrawable* PyGiDrawable::impObj() const

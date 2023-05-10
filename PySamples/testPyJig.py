@@ -23,11 +23,11 @@ class MyJig(PyEd.Jig):
     # C++ sampler returns AcEdJig::DragStatus::kNoChange if not overridden
     # acquireXXX returns a tuple AcEdJig::DragStatus and Value
     def sampler(self):
-        self.setUserInputControls(
-           PyEd.UserInputControls(
-               PyEd.UserInputControls.kAccept3dCoordinates | 
-               PyEd.UserInputControls.kNullResponseAccepted))
-        
+        self.setUserInputControls
+        (
+            PyEd.UserInputControls(
+                PyEd.UserInputControls.kAccept3dCoordinates | PyEd.UserInputControls.kNullResponseAccepted)
+        )
         point_result_tuple = self.acquirePoint(self.curPoint)
         self.curPoint = point_result_tuple[1]
         return point_result_tuple[0]

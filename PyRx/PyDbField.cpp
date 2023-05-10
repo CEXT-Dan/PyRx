@@ -23,6 +23,7 @@ void makeAcDbFieldtWrapper()
         .def("setFormat", &PyDbField::setFormat)
         .def("getValue", &PyDbField::getValue)
         .def("className", &PyDbField::className).staticmethod("className")
+        .def("desc", &PyDbField::desc).staticmethod("desc")
         ;
     enum_<AcDbField::State>("State")
         .value("kInitialized", AcDbField::State::kInitialized)
@@ -187,6 +188,11 @@ std::string PyDbField::getValue(void) const
 std::string PyDbField::className()
 {
     return "AcDbField";
+}
+
+PyRxClass PyDbField::desc()
+{
+    return PyRxClass(AcDbField::desc(), false);
 }
 
 AcDbField* PyDbField::impObj(const std::source_location& src /*= std::source_location::current()*/) const

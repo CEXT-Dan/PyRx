@@ -62,6 +62,8 @@ void makeAcDbLayerTableRecordWrapper()
         .def("hasAnyOverrides", &PyDbLayerTableRecord::hasAnyOverrides)
         .def("isReconciled", &PyDbLayerTableRecord::isReconciled)
         .def("isReconciled", &PyDbLayerTableRecord::isReconciledS).staticmethod("isReconciled")//TODO: can't override with a static test
+        .def("className", &PyDbLayerTableRecord::className).staticmethod("className")
+        .def("desc", &PyDbLayerTableRecord::desc).staticmethod("desc")
         ;
 }
 
@@ -221,8 +223,8 @@ PyDbObjectId PyDbLayerTableRecord::linetypeObjectId() const
 Acad::ErrorStatus PyDbLayerTableRecord::setLinetypeObjectId(const PyDbObjectId& id)
 {
 #ifdef BRXAPP
-        impObj()->setLinetypeObjectId(id.m_id);
-        return eOk;
+    impObj()->setLinetypeObjectId(id.m_id);
+    return eOk;
 #else
     return impObj()->setLinetypeObjectId(id.m_id);
 #endif // BRXAPP
@@ -359,6 +361,11 @@ Acad::ErrorStatus PyDbLayerTableRecord::setIsReconciled(bool bReconcile /*= true
 std::string PyDbLayerTableRecord::className()
 {
     return "AcDbLayerTableRecord";
+}
+
+PyRxClass PyDbLayerTableRecord::desc()
+{
+    return PyRxClass(AcDbLayerTableRecord::desc(), false);
 }
 
 AcDbLayerTableRecord* PyDbLayerTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const

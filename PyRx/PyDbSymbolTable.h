@@ -29,6 +29,8 @@ public:
     boost::python::list recordIds();
 
     static std::string className();
+    static PyRxClass desc();
+
 public:
     AcDbSymbolTable* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -48,6 +50,8 @@ public:
     PyDbObjectId add(const PyDbDimStyleTableRecord& entry);
     boost::python::list recordIds();
     static std::string className();
+    static PyRxClass desc();
+
 public:
     AcDbDimStyleTable* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -66,6 +70,8 @@ public:
     PyDbObjectId add(const PyDbBlockTableRecord& entry);
     boost::python::list recordIds();
     static std::string className();
+    static PyRxClass desc();
+
 public:
     AcDbBlockTable* impObj(const std::source_location& src = std::source_location::current()) const;
 };

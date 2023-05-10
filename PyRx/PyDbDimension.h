@@ -177,6 +177,8 @@ public:
 #endif
 
     static std::string className();
+    static PyRxClass desc();
+
 public:
     AcDbDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -233,6 +235,8 @@ public:
     Acad::ErrorStatus setExtArcOn(bool value);
 
     static std::string className();
+    static PyRxClass desc();
+
 public:
     AcDb2LineAngularDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -282,6 +286,8 @@ public:
     Acad::ErrorStatus setExtArcOn(bool value);
 
     static std::string className();
+    static PyRxClass desc();
+
 public:
     AcDb3PointAngularDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -331,6 +337,8 @@ public:
     Acad::ErrorStatus setJogSymbolPosition(const AcGePoint3d& pt);
 
     static std::string className();
+    static PyRxClass desc();
+
 public:
     AcDbAlignedDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -399,6 +407,8 @@ public:
 
 
     static std::string className();
+    static PyRxClass desc();
+
 public:
     AcDbArcDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -445,6 +455,8 @@ public:
     Acad::ErrorStatus setExtArcEndAngle(double newAngle);
 
     static std::string className();
+    static PyRxClass desc();
+
 public:
     AcDbDiametricDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -497,6 +509,8 @@ public:
     Acad::ErrorStatus   setLeaderEndPoint(const AcGePoint3d& val);
 
     static std::string className();
+    static PyRxClass desc();
+
 public:
     AcDbOrdinateDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -546,6 +560,8 @@ public:
     Acad::ErrorStatus   setExtArcEndAngle(double newAngle);
 
     static std::string className();
+    static PyRxClass desc();
+
 public:
     AcDbRadialDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -609,6 +625,8 @@ public:
     Acad::ErrorStatus   setExtArcEndAngle(double newAngle);
 
     static std::string className();
+    static PyRxClass desc();
+
 public:
     AcDbRadialDimensionLarge* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -667,6 +685,8 @@ public:
     Acad::ErrorStatus   setJogSymbolPosition(const AcGePoint3d& val);
 
     static std::string  className();
+    static PyRxClass desc();
+
 public:
     AcDbRotatedDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };

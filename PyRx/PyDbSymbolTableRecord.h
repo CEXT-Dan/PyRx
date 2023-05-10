@@ -18,6 +18,7 @@ public:
     bool isResolved() const;
     bool isRenamable() const;
     static std::string className();
+    static PyRxClass desc();
 
 public:
     AcDbSymbolTableRecord* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -34,6 +35,7 @@ public:
     PyDbDimStyleTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode);
 
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDbDimStyleTableRecord* impObj(const std::source_location& src = std::source_location::current()) const;
 };

@@ -17,6 +17,7 @@ void makeAcDbSymbolTableWrapper()
         .def<bool(PyDbSymbolTable::*)(const PyDbObjectId&)>("has", &PyDbSymbolTable::has)
         .def("recordIds", &PyDbSymbolTable::recordIds)
         .def("className", &PyDbSymbolTable::className).staticmethod("className")
+        .def("desc", &PyDbSymbolTable::desc).staticmethod("desc")
         ;
 }
 
@@ -76,6 +77,11 @@ std::string PyDbSymbolTable::className()
     return "AcDbSymbolTable";
 }
 
+PyRxClass PyDbSymbolTable::desc()
+{
+    return PyRxClass(AcDbSymbolTable::desc(), false);
+}
+
 AcDbSymbolTable* PyDbSymbolTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -93,6 +99,7 @@ void makePyDbDimStyleTableWrapper()
         .def("add", &PyDbDimStyleTable::add)
         .def("recordIds", &PyDbSymbolTable::recordIds)
         .def("className", &PyDbDimStyleTable::className).staticmethod("className")
+        .def("desc", &PyDbDimStyleTable::desc).staticmethod("desc")
         ;
 }
 
@@ -148,6 +155,11 @@ std::string PyDbDimStyleTable::className()
     return "AcDbDimStyleTable";
 }
 
+PyRxClass PyDbDimStyleTable::desc()
+{
+    return PyRxClass(AcDbDimStyleTable::desc(), false);
+}
+
 AcDbDimStyleTable* PyDbDimStyleTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -166,6 +178,8 @@ void makePyDbBlockTableWrapper()
         .def("add", &PyDbBlockTable::add)
         .def("recordIds", &PyDbBlockTable::recordIds)
         .def("className", &PyDbBlockTable::className).staticmethod("className")
+        .def("desc", &PyDbBlockTable::desc).staticmethod("desc")
+
         ;
 }
 
@@ -219,6 +233,11 @@ boost::python::list PyDbBlockTable::recordIds()
 std::string PyDbBlockTable::className()
 {
     return "AcDbBlockTable";
+}
+
+PyRxClass PyDbBlockTable::desc()
+{
+    return PyRxClass(AcDbBlockTable::desc(), false);
 }
 
 AcDbBlockTable* PyDbBlockTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const

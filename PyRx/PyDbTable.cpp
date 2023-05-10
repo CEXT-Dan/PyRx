@@ -233,6 +233,7 @@ void makeyDbTableWrapper()
         .def("getIterator", &PyDbTable::getIterator3)
         .def("getIterator", &PyDbTable::getIterator4)
         .def("className", &PyDbTable::className).staticmethod("className")
+        .def("desc", &PyDbTable::desc).staticmethod("desc")
         ;
     class_ <AcCell>("Cell")
         .def_readwrite("row", &AcCell::mnRow)
@@ -1927,6 +1928,11 @@ AcCellRange PyDbTable::cellRange() const
 std::string PyDbTable::className()
 {
     return "AcDbTable";
+}
+
+PyRxClass PyDbTable::desc()
+{
+    return PyRxClass(AcDbTable::desc(), false);
 }
 
 AcDbTable* PyDbTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const

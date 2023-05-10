@@ -43,6 +43,7 @@ public:
     boost::python::tuple font();
 
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDbTextStyleTableRecord* impObj(const std::source_location& src = std::source_location::current()) const;
 };

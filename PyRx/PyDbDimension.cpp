@@ -124,6 +124,7 @@ void makePyDbDimensionWrapper()
         .def("toleranceSuppressZeroInches", &PyDbDimension::toleranceSuppressZeroInches)
         .def("setToleranceSuppressZeroInches", &PyDbDimension::setToleranceSuppressZeroInches)
         .def("className", &PyDbDimension::className).staticmethod("className")
+        .def("desc", &PyDbDimension::desc).staticmethod("desc")
         ;
 
 #ifndef BRXAPP
@@ -1015,6 +1016,11 @@ std::string PyDbDimension::className()
     return "AcDbRegion";
 }
 
+PyRxClass PyDbDimension::desc()
+{
+    return PyRxClass(AcDbDimension::desc(), false);
+}
+
 AcDbDimension* PyDbDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -1045,6 +1051,7 @@ void makePyDb2LineAngularDimensionWrapper()
         .def("extArcOn", &PyDb2LineAngularDimension::extArcOn)
         .def("setExtArcOn", &PyDb2LineAngularDimension::setExtArcOn)
         .def("className", &PyDb2LineAngularDimension::className).staticmethod("className")
+        .def("desc", &PyDb2LineAngularDimension::desc).staticmethod("desc")
         ;
 }
 
@@ -1158,6 +1165,11 @@ std::string PyDb2LineAngularDimension::className()
     return "AcDb2LineAngularDimension";
 }
 
+PyRxClass PyDb2LineAngularDimension::desc()
+{
+    return PyRxClass(AcDb2LineAngularDimension::desc(), false);
+}
+
 AcDb2LineAngularDimension* PyDb2LineAngularDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -1187,6 +1199,7 @@ void makeAcDb3PointAngularDimensionWrapper()
         .def("extArcOn", &PyDb3PointAngularDimension::extArcOn)
         .def("setExtArcOn", &PyDb3PointAngularDimension::setExtArcOn)
         .def("className", &PyDb3PointAngularDimension::className).staticmethod("className")
+        .def("desc", &PyDb3PointAngularDimension::desc).staticmethod("desc")
         ;
 }
 
@@ -1287,6 +1300,11 @@ std::string PyDb3PointAngularDimension::className()
     return "AcDb3PointAngularDimension";
 }
 
+PyRxClass PyDb3PointAngularDimension::desc()
+{
+    return PyRxClass(AcDb3PointAngularDimension::desc(), false);
+}
+
 AcDb3PointAngularDimension* PyDb3PointAngularDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -1317,6 +1335,7 @@ void makeAlignedDimensionWrapper()
         .def("jogSymbolPosition", &PyDbAlignedDimension::jogSymbolPosition)
         .def("setJogSymbolPosition", &PyDbAlignedDimension::setJogSymbolPosition)
         .def("className", &PyDbAlignedDimension::className).staticmethod("className")
+        .def("desc", &PyDbAlignedDimension::desc).staticmethod("desc")
         ;
 }
 
@@ -1435,6 +1454,11 @@ std::string PyDbAlignedDimension::className()
     return "AcDbAlignedDimension";
 }
 
+PyRxClass PyDbAlignedDimension::desc()
+{
+    return PyRxClass(AcDbAlignedDimension::desc(), false);
+}
+
 AcDbAlignedDimension* PyDbAlignedDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -1475,6 +1499,7 @@ void makeArcDimensionWrapper()
         .def("arcSymbolType", &PyDbArcDimension::arcSymbolType)
         .def("setArcSymbolType", &PyDbArcDimension::setArcSymbolType)
         .def("className", &PyDbArcDimension::className).staticmethod("className")
+        .def("desc", &PyDbArcDimension::desc).staticmethod("desc")
         ;
 }
 
@@ -1635,6 +1660,11 @@ std::string PyDbArcDimension::className()
     return "AcDbArcDimension";
 }
 
+PyRxClass PyDbArcDimension::desc()
+{
+    return PyRxClass(AcDbArcDimension::desc(), false);
+}
+
 AcDbArcDimension* PyDbArcDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -1663,6 +1693,7 @@ void makeDiametricDimensionWrapper()
         .def("extArcEndAngle", &PyDbDiametricDimension::extArcEndAngle)
         .def("setExtArcEndAngle", &PyDbDiametricDimension::setExtArcEndAngle)
         .def("className", &PyDbDiametricDimension::className).staticmethod("className")
+        .def("desc", &PyDbDiametricDimension::desc).staticmethod("desc")
         ;
 }
 
@@ -1771,6 +1802,11 @@ std::string PyDbDiametricDimension::className()
     return "AcDbDiametricDimension";
 }
 
+PyRxClass PyDbDiametricDimension::desc()
+{
+    return PyRxClass(AcDbDiametricDimension::desc(), false);
+}
+
 AcDbDiametricDimension* PyDbDiametricDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -1801,6 +1837,7 @@ void makeOrdinateDimensionWrapper()
         .def("leaderEndPoint", &PyDbOrdinateDimension::leaderEndPoint)
         .def("setLeaderEndPoint", &PyDbOrdinateDimension::setLeaderEndPoint)
         .def("className", &PyDbOrdinateDimension::className).staticmethod("className")
+        .def("desc", &PyDbOrdinateDimension::desc).staticmethod("desc")
         ;
 }
 
@@ -1911,6 +1948,11 @@ std::string PyDbOrdinateDimension::className()
     return "AcDbOrdinateDimension";
 }
 
+PyRxClass PyDbOrdinateDimension::desc()
+{
+    return PyRxClass(AcDbOrdinateDimension::desc(), false);
+}
+
 AcDbOrdinateDimension* PyDbOrdinateDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -1939,6 +1981,7 @@ void makeRadialDimensionWrapper()
         .def("extArcEndAngle", &PyDbRadialDimension::extArcEndAngle)
         .def("setExtArcEndAngle", &PyDbRadialDimension::setExtArcEndAngle)
         .def("className", &PyDbRadialDimension::className).staticmethod("className")
+        .def("desc", &PyDbRadialDimension::desc).staticmethod("desc")
         ;
 }
 
@@ -2031,6 +2074,11 @@ std::string PyDbRadialDimension::className()
     return "AcDbRadialDimension";
 }
 
+PyRxClass PyDbRadialDimension::desc()
+{
+    return PyRxClass(AcDbRadialDimension::desc(), false);
+}
+
 AcDbRadialDimension* PyDbRadialDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -2066,6 +2114,7 @@ void makeRadialDimensionLargeWrapper()
         .def("extArcEndAngle", &PyDbRadialDimensionLarge::extArcEndAngle)
         .def("setExtArcEndAngle", &PyDbRadialDimensionLarge::setExtArcEndAngle)
         .def("className", &PyDbRadialDimensionLarge::className).staticmethod("className")
+        .def("desc", &PyDbRadialDimensionLarge::desc).staticmethod("desc")
         ;
 }
 
@@ -2221,6 +2270,11 @@ std::string PyDbRadialDimensionLarge::className()
     return "AcDbRadialDimension";
 }
 
+PyRxClass PyDbRadialDimensionLarge::desc()
+{
+    return PyRxClass(AcDbRadialDimensionLarge::desc(), false);
+}
+
 AcDbRadialDimensionLarge* PyDbRadialDimensionLarge::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -2253,6 +2307,7 @@ void makeRotatedDimensionWrapper()
         .def("jogSymbolPosition", &PyDbRotatedDimension::jogSymbolPosition)
         .def("setJogSymbolPosition", &PyDbRotatedDimension::setJogSymbolPosition)
         .def("className", &PyDbRotatedDimension::className).staticmethod("className")
+        .def("desc", &PyDbRotatedDimension::desc).staticmethod("desc")
         ;
 }
 
@@ -2379,6 +2434,11 @@ Acad::ErrorStatus PyDbRotatedDimension::setJogSymbolPosition(const AcGePoint3d& 
 std::string PyDbRotatedDimension::className()
 {
     return "AcDbRotatedDimension";
+}
+
+PyRxClass PyDbRotatedDimension::desc()
+{
+    return PyRxClass(AcDbRotatedDimension::desc(), false);
 }
 
 AcDbRotatedDimension* PyDbRotatedDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const

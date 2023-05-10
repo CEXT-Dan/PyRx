@@ -16,6 +16,7 @@ public:
     boost::python::dict asDict();
 
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDbDictionary* impObj(const std::source_location& src = std::source_location::current()) const;
 };

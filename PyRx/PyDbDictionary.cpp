@@ -14,6 +14,7 @@ void makeAcDbDictionaryWrapper()
         .def("has", &PyDbDictionary::has)
         .def("asdict", &PyDbDictionary::asDict)
         .def("className", &PyDbDictionary::className).staticmethod("className")
+        .def("desc", &PyDbDictionary::desc).staticmethod("desc")
         ;
 }
 //---------------------------------------------------------------------------------------- -
@@ -56,6 +57,11 @@ boost::python::dict PyDbDictionary::asDict()
 std::string PyDbDictionary::className()
 {
     return "AcDbDictionary";
+}
+
+PyRxClass PyDbDictionary::desc()
+{
+    return PyRxClass(AcDbDictionary::desc(), false);
 }
 
 AcDbDictionary* PyDbDictionary::impObj(const std::source_location& src /*= std::source_location::current()*/) const

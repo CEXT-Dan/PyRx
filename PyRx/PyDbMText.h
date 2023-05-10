@@ -98,6 +98,7 @@ public:
     Acad::ErrorStatus   setHeight(double val);
 
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDbMText* impObj(const std::source_location& src = std::source_location::current()) const;
 };

@@ -19,6 +19,7 @@ void makePyDb3dSolidWrapper()
         .def("createPyramid", &PyDb3dSolid::createPyramid2)
         .def("createWedge", &PyDb3dSolid::createWedge)
         .def("className", &PyDb3dSolid::className).staticmethod("className")
+        .def("desc", &PyDb3dSolid::desc).staticmethod("desc")
         ;
 }
 
@@ -81,6 +82,11 @@ std::string PyDb3dSolid::className()
     return "AcDb3dSolid";
 }
 
+PyRxClass PyDb3dSolid::desc()
+{
+    return PyRxClass(AcDb3dSolid::desc(), false);
+}
+
 AcDb3dSolid* PyDb3dSolid::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -98,6 +104,7 @@ void makePyDbRegionWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbRegion::className).staticmethod("className")
+        .def("desc", &PyDbRegion::desc).staticmethod("desc")
         ;
 }
 
@@ -125,6 +132,11 @@ std::string PyDbRegion::className()
     return "AcDbRegion";
 }
 
+PyRxClass PyDbRegion::desc()
+{
+    return PyRxClass(AcDbRegion::desc(), false);
+}
+
 AcDbRegion* PyDbRegion::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -140,6 +152,7 @@ void makeAcDbBodyWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbBody::className).staticmethod("className")
+        .def("desc", &PyDbBody::desc).staticmethod("desc")
         ;
 }
 
@@ -165,6 +178,11 @@ PyDbBody::PyDbBody(const PyDbObjectId& id, AcDb::OpenMode mode)
 std::string PyDbBody::className()
 {
     return "AcDbBody";
+}
+
+PyRxClass PyDbBody::desc()
+{
+    return PyRxClass(AcDbBody::desc(), false);
 }
 
 AcDbBody* PyDbBody::impObj(const std::source_location& src /*= std::source_location::current()*/) const

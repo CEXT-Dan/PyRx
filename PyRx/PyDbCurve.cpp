@@ -36,6 +36,7 @@ void makePyDbCurveWrapper()
         .def("getArea", &PyDbCurve::getArea)
         .def("reverseCurve", &PyDbCurve::reverseCurve)
         .def("className", &PyDbCurve::className).staticmethod("className")
+        .def("desc", &PyDbCurve::desc).staticmethod("desc")
         ;
 }
 
@@ -311,6 +312,11 @@ Acad::ErrorStatus PyDbCurve::reverseCurve()
 std::string PyDbCurve::className()
 {
     return "AcDbCurve";
+}
+
+PyRxClass PyDbCurve::desc()
+{
+    return PyRxClass(AcDbCurve::desc(), false);
 }
 
 AcDbCurve* PyDbCurve::impObj(const std::source_location& src /*= std::source_location::current()*/) const

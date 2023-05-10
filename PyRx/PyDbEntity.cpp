@@ -70,6 +70,7 @@ void makeAcDbEntityWrapper()
         .def("getGeomExtents", &PyDbEntity::getGeomExtents)//TODO: add test for out param
         .def("draw", &PyDbEntity::draw)
         .def("className", &PyDbEntity::className).staticmethod("className")
+        .def("desc", &PyDbEntity::desc).staticmethod("desc")
         ;
 }
 
@@ -408,6 +409,11 @@ std::string PyDbEntity::className()
     return "AcDbEntity";
 }
 
+PyRxClass PyDbEntity::desc()
+{
+    return PyRxClass(AcDbEntity::desc(), false);
+}
+
 AcDbEntity* PyDbEntity::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -422,6 +428,7 @@ void makeAcDbBlockBeginWrapper()
     class_<PyDbBlockBegin, bases<PyDbEntity>>("BlockBegin", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbBlockBegin::className).staticmethod("className")
+        .def("desc", &PyDbBlockBegin::desc).staticmethod("desc")
         ;
 }
 
@@ -444,6 +451,11 @@ std::string PyDbBlockBegin::className()
     return "AcDbBlockBegin";
 }
 
+PyRxClass PyDbBlockBegin::desc()
+{
+    return PyRxClass(AcDbBlockBegin::desc(), false);
+}
+
 AcDbBlockBegin* PyDbBlockBegin::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -457,7 +469,8 @@ void makeAcDbBlockEndWrapper()
 {
     class_<PyDbBlockEnd, bases<PyDbEntity>>("BlockEnd", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("className", &PyDbBlockBegin::className).staticmethod("className")
+        .def("className", &PyDbBlockEnd::className).staticmethod("className")
+        .def("desc", &PyDbBlockEnd::desc).staticmethod("desc")
         ;
 }
 
@@ -480,6 +493,11 @@ std::string PyDbBlockEnd::className()
     return "AcDbBlockEnd";
 }
 
+PyRxClass PyDbBlockEnd::desc()
+{
+    return PyRxClass(AcDbBlockEnd::desc(), false);
+}
+
 AcDbBlockEnd* PyDbBlockEnd::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -496,6 +514,7 @@ void makeAcDbSequenceEndWrapper()
     class_<PyDbSequenceEnd, bases<PyDbEntity>>("SequenceEnd", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbSequenceEnd::className).staticmethod("className")
+        .def("desc", &PyDbSequenceEnd::desc).staticmethod("desc")
         ;
 }
 
@@ -516,6 +535,11 @@ PyDbSequenceEnd::PyDbSequenceEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
 std::string PyDbSequenceEnd::className()
 {
     return "AcDbSequenceEnd";
+}
+
+PyRxClass PyDbSequenceEnd::desc()
+{
+    return PyRxClass(AcDbSequenceEnd::desc(), false);
 }
 
 AcDbSequenceEnd* PyDbSequenceEnd::impObj(const std::source_location& src /*= std::source_location::current()*/) const

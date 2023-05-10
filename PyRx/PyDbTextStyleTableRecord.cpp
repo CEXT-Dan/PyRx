@@ -29,6 +29,8 @@ void makeTextStyleTableRecordWrapper()
         .def("setFont", &PyDbTextStyleTableRecord::setFont)
         .def("font", &PyDbTextStyleTableRecord::font)
         .def("className", &PyDbTextStyleTableRecord::className).staticmethod("className")
+        .def("desc", &PyDbTextStyleTableRecord::desc).staticmethod("desc")
+
         ;
 }
 
@@ -179,6 +181,11 @@ boost::python::tuple PyDbTextStyleTableRecord::font()
 std::string PyDbTextStyleTableRecord::className()
 {
     return "AcDbTextStyleTableRecord";
+}
+
+PyRxClass PyDbTextStyleTableRecord::desc()
+{
+    return PyRxClass(AcDbTextStyleTableRecord::desc(), false);
 }
 
 AcDbTextStyleTableRecord* PyDbTextStyleTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const

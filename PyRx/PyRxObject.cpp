@@ -48,19 +48,26 @@ void PyRxObject::resetImp(AcRxObject* ptr, bool autoDelete, bool isDbObject)
     m_pImp.reset(ptr, PyRxObjectDeleter(autoDelete, isDbObject));
 }
 
+bool PyRxObject::isNull()
+{
+    return m_pImp == nullptr;
+}
+
+PyRxClass PyRxObject::desc()
+{
+    return PyRxClass(AcRxObject::desc(), false);
+}
+
 std::string PyRxObject::className()
 {
     return "AcRxObject";
 }
 
-AcRxObject* PyRxObject::impObj() const
+AcRxObject* PyRxObject::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return m_pImp.get();
-}
-
-bool PyRxObject::isNull()
-{
-    return m_pImp == nullptr;
 }
 
 //-----------------------------------------------------------------------------------------
@@ -69,6 +76,8 @@ void makeAcRxClassWrapper()
 {
     class_<PyRxClass, bases<PyRxObject>>("RxClass", boost::python::no_init)
         .def("className", &PyRxClass::className).staticmethod("className")
+        .def("isDerivedFrom", &PyRxClass::isDerivedFrom)
+        .def("desc", &PyRxClass::desc).staticmethod("desc")
         .def("name", &PyRxClass::name)
         ;
 }
@@ -80,12 +89,19 @@ PyRxClass::PyRxClass(AcRxClass* ptr, bool autoDelete)
 {
 }
 
+bool PyRxClass::isDerivedFrom(const PyRxClass& other) const
+{
+   return impObj()->isDerivedFrom(other.impObj());
+}
+
 std::string PyRxClass::name()
 {
-    auto imp = impObj();
-    if (imp != nullptr)
-        return wstr_to_utf8(imp->name());
-    return std::string{ "AcRxClass" };
+    return wstr_to_utf8(impObj()->name());
+}
+
+PyRxClass PyRxClass::desc()
+{
+    return PyRxClass(AcRxClass::desc(), false);
 }
 
 std::string PyRxClass::className()
@@ -93,7 +109,9 @@ std::string PyRxClass::className()
     return std::string{ "AcRxClass" };
 }
 
-AcRxClass* PyRxClass::impObj() const
+AcRxClass* PyRxClass::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+    if (m_pImp == nullptr)
+        throw PyNullObject(src);
     return static_cast<AcRxClass*>(m_pImp.get());
 }

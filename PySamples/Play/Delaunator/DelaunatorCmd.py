@@ -54,8 +54,8 @@ def PyRxCmd_pydoit():
         
         db = PyAp.Application().docManager().curDocument().database()
         model = PyDb.BlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
-        
-        for i in range(0, len(t), 3):
+        cnt = len(t)
+        for i in range(0, cnt, 3):
             a = pnt3ds[t[i]]
             b = pnt3ds[t[i + 1]]
             c = pnt3ds[t[i + 2]]

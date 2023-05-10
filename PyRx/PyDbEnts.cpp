@@ -51,6 +51,7 @@ void makePyDbTextWrapper()
         .def("hitTest", &PyDbText::hitTest)
         .def("getBoundingPoints", &PyDbText::getBoundingPoints)
         .def("className", &PyDbText::className).staticmethod("className")
+        .def("desc", &PyDbText::desc).staticmethod("desc")
         ;
     enum_<AcDbText::AcTextAlignment>("TextAlignment")
         .value("kTextAlignmentLeft", AcDbText::AcTextAlignment::kTextAlignmentLeft)
@@ -312,6 +313,11 @@ std::string PyDbText::className()
     return "AcDbText";
 }
 
+PyRxClass PyDbText::desc()
+{
+    return PyRxClass(AcDbText::desc(), false);
+}
+
 AcDbText* PyDbText::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -351,6 +357,7 @@ void makePyDbAttributeDefinitionWrapper()
         .def("getMTextAttributeDefinition", &PyDbAttributeDefinition::getMTextAttributeDefinition)
         .def("setMTextAttributeDefinition", &PyDbAttributeDefinition::setMTextAttributeDefinition)
         .def("className", &PyDbAttributeDefinition::className).staticmethod("className")
+        .def("desc", &PyDbAttributeDefinition::desc).staticmethod("desc")
         ;
 }
 
@@ -496,6 +503,11 @@ std::string PyDbAttributeDefinition::className()
     return "AcDbAttributeDefinition";
 }
 
+PyRxClass PyDbAttributeDefinition::desc()
+{
+    return PyRxClass(AcDbAttributeDefinition::desc(), false);
+}
+
 AcDbAttributeDefinition* PyDbAttributeDefinition::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -530,7 +542,8 @@ void makePyDbAttributeWrapper()
         .def("convertIntoMTextAttribute", &PyDbAttribute::convertIntoMTextAttribute)
         .def("updateMTextAttribute", &PyDbAttribute::updateMTextAttribute)
         .def("isReallyLocked", &PyDbAttribute::isReallyLocked)
-        .def("className", &PyDbAttributeDefinition::className).staticmethod("className")
+        .def("className", &PyDbAttribute::className).staticmethod("className")
+        .def("desc", &PyDbAttribute::desc).staticmethod("desc")
         ;
 }
 
@@ -662,6 +675,11 @@ std::string PyDbAttribute::className()
     return "AcDbAttribute";
 }
 
+PyRxClass PyDbAttribute::desc()
+{
+    return PyRxClass(AcDbAttribute::desc(), false);
+}
+
 AcDbAttribute* PyDbAttribute::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -698,6 +716,7 @@ void makeDbBlockReferenceWrapper()
         .def("geomExtentsBestFit", &PyDbBlockReference::geomExtentsBestFit2)
         .def("explodeToOwnerSpace", &PyDbBlockReference::explodeToOwnerSpace)
         .def("className", &PyDbBlockReference::className).staticmethod("className")
+        .def("desc", &PyDbBlockReference::desc).staticmethod("desc")
         ;
 }
 
@@ -841,6 +860,11 @@ std::string PyDbBlockReference::className()
     return "AcDbBlockReference";
 }
 
+PyRxClass PyDbBlockReference::desc()
+{
+    return PyRxClass(AcDbBlockReference::desc(), false);
+}
+
 AcDbBlockReference* PyDbBlockReference::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -865,6 +889,7 @@ void makeDbMInsertBlockeWrapper()
         .def("rowSpacing", &PyDbMInsertBlock::rowSpacing)
         .def("setRowSpacing", &PyDbMInsertBlock::setRowSpacing)
         .def("className", &PyDbMInsertBlock::className).staticmethod("className")
+        .def("desc", &PyDbMInsertBlock::desc).staticmethod("desc")
         ;
 }
 
@@ -937,6 +962,11 @@ std::string PyDbMInsertBlock::className()
     return "AcDbMInsertBlock";
 }
 
+PyRxClass PyDbMInsertBlock::desc()
+{
+    return PyRxClass(AcDbMInsertBlock::desc(), false);
+}
+
 AcDbMInsertBlock* PyDbMInsertBlock::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -951,6 +981,7 @@ void makeAcDbVertexWrapper()
     class_<PyDbVertex, bases<PyDbEntity>>("Vertex", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbVertex::className).staticmethod("className")
+        .def("desc", &PyDbVertex::desc).staticmethod("desc")
         ;
 }
 
@@ -971,6 +1002,11 @@ PyDbVertex::PyDbVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
 std::string PyDbVertex::className()
 {
     return "AcDbVertex";
+}
+
+PyRxClass PyDbVertex::desc()
+{
+    return PyRxClass(AcDbVertex::desc(), false);
 }
 
 AcDbVertex* PyDbVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1007,6 +1043,7 @@ void makePyDb2dVertexWrapper()
         .def("setVertexIdentifier", &PyDb2dVertex::setVertexIdentifier)
         .def("vertexIdentifier", &PyDb2dVertex::vertexIdentifier)
         .def("className", &PyDb2dVertex::className).staticmethod("className")
+        .def("desc", &PyDb2dVertex::desc).staticmethod("desc")
         ;
 }
 
@@ -1143,6 +1180,11 @@ std::string PyDb2dVertex::className()
     return "AcDb2dVertex";
 }
 
+PyRxClass PyDb2dVertex::desc()
+{
+    return PyRxClass(AcDb2dVertex::desc(), false);
+}
+
 AcDb2dVertex* PyDb2dVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -1162,6 +1204,7 @@ void makePyAcDb3dPolylineVertexWrapper()
         .def("position", &PyDb3dPolylineVertex::position)
         .def("setPosition", &PyDb3dPolylineVertex::setPosition)
         .def("className", &PyDb3dPolylineVertex::className).staticmethod("className")
+        .def("desc", &PyDb3dPolylineVertex::desc).staticmethod("desc")
         ;
 }
 
@@ -1209,6 +1252,11 @@ std::string PyDb3dPolylineVertex::className()
     return "AcDb3dPolylineVertex";
 }
 
+PyRxClass PyDb3dPolylineVertex::desc()
+{
+    return PyRxClass(AcDb3dPolylineVertex::desc(), false);
+}
+
 AcDb3dPolylineVertex* PyDb3dPolylineVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -1229,6 +1277,7 @@ void makePyAcDbPolygonMeshVertexWrapper()
         .def("position", &PyDbPolygonMeshVertex::position)
         .def("setPosition", &PyDbPolygonMeshVertex::setPosition)
         .def("className", &PyDbPolygonMeshVertex::className).staticmethod("className")
+        .def("desc", &PyDbPolygonMeshVertex::desc).staticmethod("desc")
         ;
 }
 
@@ -1276,6 +1325,11 @@ std::string PyDbPolygonMeshVertex::className()
     return "AcDbPolygonMeshVertex";
 }
 
+PyRxClass PyDbPolygonMeshVertex::desc()
+{
+    return PyRxClass(AcDbPolygonMeshVertex::desc(), false);
+}
+
 AcDbPolygonMeshVertex* PyDbPolygonMeshVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -1294,6 +1348,7 @@ void makePyDbPolyFaceMeshVertexWrapper()
         .def("position", &PyDbPolyFaceMeshVertex::position)
         .def("setPosition", &PyDbPolyFaceMeshVertex::setPosition)
         .def("className", &PyDbPolyFaceMeshVertex::className).staticmethod("className")
+        .def("desc", &PyDbPolyFaceMeshVertex::desc).staticmethod("desc")
         ;
 }
 
@@ -1336,6 +1391,11 @@ std::string PyDbPolyFaceMeshVertex::className()
     return "AcDbPolyFaceMeshVertex";
 }
 
+PyRxClass PyDbPolyFaceMeshVertex::desc()
+{
+    return PyRxClass(AcDbPolyFaceMeshVertex::desc(), false);
+}
+
 AcDbPolyFaceMeshVertex* PyDbPolyFaceMeshVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -1357,6 +1417,7 @@ void makePyAcDbFaceRecordWrapper()
         .def("makeEdgeVisibleAt", &PyDbFaceRecord::makeEdgeVisibleAt)
         .def("makeEdgeInvisibleAt", &PyDbFaceRecord::makeEdgeInvisibleAt)
         .def("className", &PyDbFaceRecord::className).staticmethod("className")
+        .def("desc", &PyDbFaceRecord::desc).staticmethod("desc")
         ;
 }
 
@@ -1420,6 +1481,11 @@ std::string PyDbFaceRecord::className()
     return "AcDbFaceRecord";
 }
 
+PyRxClass PyDbFaceRecord::desc()
+{
+    return PyRxClass(AcDbFaceRecord::desc(), false);
+}
+
 AcDbFaceRecord* PyDbFaceRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -1444,6 +1510,7 @@ void makePyDbPointWrapper()
         .def("ecsRotation", &PyDbPoint::ecsRotation)
         .def("setEcsRotation", &PyDbPoint::setEcsRotation)
         .def("className", &PyDbPoint::className).staticmethod("className")
+        .def("desc", &PyDbPoint::desc).staticmethod("desc")
         ;
 }
 
@@ -1516,6 +1583,11 @@ std::string PyDbPoint::className()
     return "AcDbPoint";
 }
 
+PyRxClass PyDbPoint::desc()
+{
+    return PyRxClass(AcDbPoint::desc(), false);
+}
+
 AcDbPoint* PyDbPoint::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -1578,6 +1650,7 @@ void makePyDb2dPolylineWrapper()
         .def("vertexPosition", &PyDb2dPolyline::vertexPosition)
         .def("makeClosedIfStartAndEndVertexCoincide", &PyDb2dPolyline::makeClosedIfStartAndEndVertexCoincide)
         .def("className", &PyDb2dPolyline::className).staticmethod("className")
+        .def("desc", &PyDb2dPolyline::desc).staticmethod("desc")
         ;
 }
 
@@ -1799,6 +1872,11 @@ std::string PyDb2dPolyline::className()
     return "AcDb2dPolyline";
 }
 
+PyRxClass PyDb2dPolyline::desc()
+{
+    return PyRxClass(AcDb2dPolyline::desc(), false);
+}
+
 AcDb2dPolyline* PyDb2dPolyline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -1832,6 +1910,7 @@ void makePyDb3dPolylineWrapper()
         .def("openSequenceEnd", &PyDb3dPolyline::openSequenceEnd)
         .def("vertexIds", &PyDb3dPolyline::vertexIds)
         .def("className", &PyDb3dPolyline::className).staticmethod("className")
+        .def("desc", &PyDb3dPolyline::desc).staticmethod("desc")
         ;
 }
 
@@ -1961,6 +2040,11 @@ std::string PyDb3dPolyline::className()
     return "AcDb3dPolyline";
 }
 
+PyRxClass PyDb3dPolyline::desc()
+{
+    return PyRxClass(AcDb3dPolyline::desc(), false);
+}
+
 AcDb3dPolyline* PyDb3dPolyline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -1992,6 +2076,7 @@ void makePyDbArcWrapper()
         .def("normal", &PyDbArc::normal)
         .def("setNormal", &PyDbArc::setNormal)
         .def("className", &PyDbArc::className).staticmethod("className")
+        .def("desc", &PyDbArc::desc).staticmethod("desc")
         ;
 }
 
@@ -2099,6 +2184,11 @@ std::string PyDbArc::className()
     return "AcDbArc";
 }
 
+PyRxClass PyDbArc::desc()
+{
+    return PyRxClass(AcDbArc::desc(), false);
+}
+
 AcDbArc* PyDbArc::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -2127,6 +2217,7 @@ void makPyDbCircleWrapper()
         .def("diameter", &PyDbCircle::diameter)
         .def("setDiameter", &PyDbCircle::setDiameter)
         .def("className", &PyDbCircle::className).staticmethod("className")
+        .def("desc", &PyDbCircle::desc).staticmethod("desc")
         ;
 }
 
@@ -2235,6 +2326,11 @@ std::string PyDbCircle::className()
     return "AcDbCircle";
 }
 
+PyRxClass PyDbCircle::desc()
+{
+    return PyRxClass(AcDbCircle::desc(), false);
+}
+
 AcDbCircle* PyDbCircle::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -2260,6 +2356,7 @@ void makPyDbLineWrapper()
         .def("setNormal", &PyDbLine::setNormal)
         .def("getOffsetCurvesGivenPlaneNormal", &PyDbLine::getOffsetCurvesGivenPlaneNormal)
         .def("className", &PyDbLine::className).staticmethod("className")
+        .def("desc", &PyDbLine::desc).staticmethod("desc")
         ;
 }
 
@@ -2344,6 +2441,11 @@ std::string PyDbLine::className()
     return "AcDbLine";
 }
 
+PyRxClass PyDbLine::desc()
+{
+    return PyRxClass(AcDbLine::desc(), false);
+}
+
 AcDbLine* PyDbLine::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -2399,7 +2501,9 @@ void makPyDbPolylineWrapper()
         .def("getEcs", &PyDbPolyline::getEcs)
         .def("getEcs", &PyDbPolyline::getEcs)
         .def("className", &PyDbPolyline::className).staticmethod("className")
+        .def("desc", &PyDbPolyline::desc).staticmethod("desc")
         ;
+
     enum_<AcDbPolyline::SegType>("SegType")
         .value("kLine", AcDbPolyline::SegType::kLine)
         .value("kArc", AcDbPolyline::SegType::kArc)
@@ -2658,6 +2762,11 @@ std::string PyDbPolyline::className()
     return "AcDbPolyline";
 }
 
+PyRxClass PyDbPolyline::desc()
+{
+    return PyRxClass(AcDbPolyline::desc(), false);
+}
+
 AcDbPolyline* PyDbPolyline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -2683,6 +2792,7 @@ void makPyDbFaceWrapper()
         .def("makeEdgeVisibleAt", &PyDbFace::makeEdgeVisibleAt)
         .def("makeEdgeInvisibleAt", &PyDbFace::makeEdgeInvisibleAt)
         .def("className", &PyDbFace::className).staticmethod("className")
+        .def("desc", &PyDbFace::desc).staticmethod("desc")
         ;
 }
 
@@ -2759,6 +2869,11 @@ Acad::ErrorStatus PyDbFace::makeEdgeInvisibleAt(Adesk::UInt16 val)
 std::string PyDbFace::className()
 {
     return "AcDbFace";
+}
+
+PyRxClass PyDbFace::desc()
+{
+    return PyRxClass(AcDbFace::desc(), false);
 }
 
 AcDbFace* PyDbFace::impObj(const std::source_location& src /*= std::source_location::current()*/) const

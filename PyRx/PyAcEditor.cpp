@@ -52,7 +52,7 @@ void makeAcEditorWrapper()
         .def<boost::python::tuple(PyAcEditor::*)(const std::string&)>("getDist", &PyAcEditor::getDist)
         .def<boost::python::tuple(PyAcEditor::*)(const AcGePoint3d&, const std::string&)>("getDist", &PyAcEditor::getDist)
 
-        .def("entsel", &PyAcEditor::entsel)
+        .def("entSel", &PyAcEditor::entSel)
         .def("getCurrentUCS", &PyAcEditor::curUCS)
         .def("setCurrentUCS", &PyAcEditor::setCurUCS)
 
@@ -67,6 +67,8 @@ void makeAcEditorWrapper()
         .def("select", &PyAcEditor::select4)
         .def("selectCrossingWindow", &PyAcEditor::selectCrossingWindow1)
         .def("selectCrossingWindow", &PyAcEditor::selectCrossingWindow2)
+        .def("initGet", &PyAcEditor::initGet)
+        .def("getKword", &PyAcEditor::getKword)
         ;
 }
 
@@ -79,7 +81,7 @@ void PyAcEditor::alert(const std::string& prompt)
 
 bool PyAcEditor::arxLoad(const std::string& path)
 {
-    return acedArxLoad(utf8_to_wstr(path).c_str()) == RTNORM;
+    return (acedArxLoad(utf8_to_wstr(path).c_str()) == RTNORM);
 }
 
 bool PyAcEditor::arxUnload(const std::string& app)
@@ -205,7 +207,7 @@ boost::python::tuple PyAcEditor::getString(int cronly, const std::string& prompt
     return boost::python::make_tuple(res.first, res.second);
 }
 
-boost::python::tuple PyAcEditor::entsel(const std::string& prompt)
+boost::python::tuple PyAcEditor::entSel(const std::string& prompt)
 {
     PyAutoLockGIL lock;
     WxUserInteraction ui;
@@ -311,6 +313,21 @@ Acad::ErrorStatus PyAcEditor::setCurUCS(const AcGeMatrix3d& mat)
 PyDbObjectId PyAcEditor::activeViewportId()
 {
     return PyDbObjectId(acedActiveViewportId());
+}
+
+Acad::PromptStatus PyAcEditor::initGet(int val, const std::string& skwl)
+{
+    return static_cast<Acad::PromptStatus>(acedInitGet(val, utf8_to_wstr(skwl).c_str()));
+}
+
+boost::python::tuple PyAcEditor::getKword(const std::string& skwl)
+{
+    PyAutoLockGIL lock;
+    ACHAR* pStr = nullptr;
+    int resval = acedGetFullKword(utf8_to_wstr(skwl).c_str(), pStr);
+    std::string resStr = wstr_to_utf8(pStr);
+    acutDelString(pStr);
+    return boost::python::make_tuple(resval, resStr);
 }
 
 std::string PyAcEditor::className()

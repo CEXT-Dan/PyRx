@@ -25,7 +25,6 @@ void makeAcDbObjectWrapper()
         .def("downgradeOpen", &PyDbObject::downgradeOpen)
         .def("downgradeToNotify", &PyDbObject::downgradeToNotify)
         .def("erase", &PyDbObject::erase)
-        .def("className", &PyDbObject::className).staticmethod("className")
         .def("close", &PyDbObject::close)
         .def("cancel", &PyDbObject::cancel)
         .def("handOverTo", &PyDbObject::handOverTo)
@@ -56,6 +55,8 @@ void makeAcDbObjectWrapper()
         .def("addPersistentReactor", &PyDbObject::addPersistentReactor)
         .def("removePersistentReactor", &PyDbObject::removePersistentReactor)
         .def("hasPersistentReactor", &PyDbObject::hasPersistentReactor)
+        .def("desc", &PyDbObject::desc).staticmethod("desc")
+        .def("className", &PyDbObject::className).staticmethod("className")
         ;
 }
 
@@ -298,6 +299,11 @@ Acad::ErrorStatus PyDbObject::removePersistentReactor(const PyDbObjectId& objId)
 bool PyDbObject::hasPersistentReactor(const PyDbObjectId& objId) const
 {
     return impObj()->hasPersistentReactor(objId.m_id);
+}
+
+PyRxClass PyDbObject::desc()
+{
+    return PyRxClass(AcDbObject::desc(),false);
 }
 
 std::string PyDbObject::className()

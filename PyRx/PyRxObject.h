@@ -54,9 +54,11 @@ public:
     virtual PyRxClass isA() const;
     virtual void resetImp(AcRxObject* ptr, bool autoDelete, bool isDbObject);
     bool isNull();
+
+    static PyRxClass desc();
     static std::string className();
 public:
-    AcRxObject* impObj() const;
+    AcRxObject* impObj(const std::source_location& src = std::source_location::current()) const;
 
 protected:
     std::shared_ptr<AcRxObject> m_pImp;
@@ -71,10 +73,12 @@ class PyRxClass : public PyRxObject
 public:
     PyRxClass(AcRxClass* ptr, bool autoDelete);
     virtual ~PyRxClass() override = default;
+    bool isDerivedFrom(const PyRxClass& other) const;
     std::string name();
+    static PyRxClass desc();
     static std::string className();
 
 public:
-    AcRxClass* impObj() const;
+    AcRxClass* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 

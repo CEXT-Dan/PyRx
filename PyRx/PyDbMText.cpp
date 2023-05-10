@@ -72,7 +72,9 @@ void makePyDbMTextWrapper()
         .def("height", &PyDbMText::height)
         .def("setHeight", &PyDbMText::setHeight)
         .def("className", &PyDbMText::className).staticmethod("className")
+        .def("desc", &PyDbMText::desc).staticmethod("desc")
         ;
+    //TODO: Try scope again
     enum_<AcDbMText::AttachmentPoint>("MTextAttachmentPoint")
         .value("kTopLeft", AcDbMText::AttachmentPoint::kTopLeft)
         .value("kTopCenter", AcDbMText::AttachmentPoint::kTopCenter)
@@ -515,6 +517,11 @@ Acad::ErrorStatus PyDbMText::setHeight(double val)
 std::string PyDbMText::className()
 {
     return "AcDbMText";
+}
+
+PyRxClass PyDbMText::desc()
+{
+    return PyRxClass(AcDbMText::desc(), false);
 }
 
 AcDbMText* PyDbMText::impObj(const std::source_location& src /*= std::source_location::current()*/) const

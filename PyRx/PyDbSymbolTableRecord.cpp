@@ -9,12 +9,13 @@ void makeAcDbSymbolTableRecordWrapper()
 {
     class_<PyDbSymbolTableRecord, bases<PyDbObject>>("SymbolTableRecord", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("className", &PyDbSymbolTableRecord::className).staticmethod("className")
         .def("getName", &PyDbSymbolTableRecord::getName)
         .def("setName", &PyDbSymbolTableRecord::setName)
         .def("isDependent", &PyDbSymbolTableRecord::isDependent)
         .def("isResolved", &PyDbSymbolTableRecord::isResolved)
         .def("isRenamable", &PyDbSymbolTableRecord::isRenamable)
+        .def("className", &PyDbSymbolTableRecord::className).staticmethod("className")
+        .def("desc", &PyDbSymbolTableRecord::desc).staticmethod("desc")
         ;
 }
 
@@ -70,6 +71,11 @@ std::string PyDbSymbolTableRecord::className()
     return "AcDbSymbolTableRecord";
 }
 
+PyRxClass PyDbSymbolTableRecord::desc()
+{
+    return PyRxClass(AcDbSymbolTableRecord::desc(), false);
+}
+
 AcDbSymbolTableRecord* PyDbSymbolTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -85,6 +91,7 @@ void makeAcDbDimStyleTableRecordWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbDimStyleTableRecord::className).staticmethod("className")
+        .def("desc", &PyDbDimStyleTableRecord::desc).staticmethod("desc")
         ;
 }
 
@@ -110,6 +117,11 @@ PyDbDimStyleTableRecord::PyDbDimStyleTableRecord(const PyDbObjectId& id, AcDb::O
 std::string PyDbDimStyleTableRecord::className()
 {
     return "AcDbDimStyleTableRecord";
+}
+
+PyRxClass PyDbDimStyleTableRecord::desc()
+{
+    return PyRxClass(AcDbDimStyleTableRecord::desc(), false);
 }
 
 AcDbDimStyleTableRecord* PyDbDimStyleTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const

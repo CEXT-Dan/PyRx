@@ -29,7 +29,7 @@ public:
     boost::python::tuple getDist(const AcGePoint3d& basePt, const std::string& prompt);
 
     boost::python::tuple getString(int cronly, const std::string& prompt);
-    boost::python::tuple entsel(const std::string& prompt);
+    boost::python::tuple entSel(const std::string& prompt);
 
     boost::python::tuple select1();
     boost::python::tuple select2(const boost::python::list& filter);
@@ -50,6 +50,9 @@ public:
     Acad::ErrorStatus setCurUCS(const AcGeMatrix3d& mat);
 
     PyDbObjectId activeViewportId();
+
+    Acad::PromptStatus initGet(int val, const std::string& skwl);
+    boost::python::tuple getKword(const std::string& skwl);
 
 
     static std::string className();

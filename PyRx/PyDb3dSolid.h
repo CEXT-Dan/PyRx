@@ -22,6 +22,7 @@ public:
     Acad::ErrorStatus createPyramid2(double height, int sides, double radius, double topRadius);
     Acad::ErrorStatus createWedge(double xLen, double yLen, double zLen);
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDb3dSolid* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -37,6 +38,7 @@ public:
     PyDbRegion(AcDbRegion* ptr, bool autoDelete);
     PyDbRegion(const PyDbObjectId& id, AcDb::OpenMode mode);
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDbRegion* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -52,6 +54,7 @@ public:
     PyDbBody(AcDbBody* ptr, bool autoDelete);
     PyDbBody(const PyDbObjectId& id, AcDb::OpenMode mode);
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDbBody* impObj(const std::source_location& src = std::source_location::current()) const;
 };

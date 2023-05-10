@@ -20,6 +20,7 @@ void makePyDbSurfaceWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbSurface::className).staticmethod("className")
+        .def("desc", &PyDbSurface::desc).staticmethod("desc")
         ;
 }
 
@@ -47,6 +48,11 @@ std::string PyDbSurface::className()
     return "AcDbSurface";
 }
 
+PyRxClass PyDbSurface::desc()
+{
+    return PyRxClass(AcDbSurface::desc(), false);
+}
+
 AcDbSurface* PyDbSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -62,6 +68,7 @@ void makeAcDbExtrudedSurfaceWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbExtrudedSurface::className).staticmethod("className")
+        .def("desc", &PyDbExtrudedSurface::desc).staticmethod("desc")
         ;
 }
 
@@ -88,6 +95,11 @@ std::string PyDbExtrudedSurface::className()
     return "AcDbExtrudedSurface";
 }
 
+PyRxClass PyDbExtrudedSurface::desc()
+{
+    return PyRxClass(AcDbExtrudedSurface::desc(), false);
+}
+
 AcDbExtrudedSurface* PyDbExtrudedSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -105,6 +117,7 @@ void makeAcDbLoftedSurfaceWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbLoftedSurface::className).staticmethod("className")
+        .def("desc", &PyDbLoftedSurface::desc).staticmethod("desc")
         ;
 #endif
 }
@@ -135,6 +148,11 @@ std::string PyDbLoftedSurface::className()
     return "AcDbLoftedSurface";
 }
 
+PyRxClass PyDbLoftedSurface::desc()
+{
+    return PyRxClass(AcDbLoftedSurface::desc(), false);
+}
+
 AcDbLoftedSurface* PyDbLoftedSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -154,6 +172,7 @@ void makePyDbNurbSurfaceWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbNurbSurface::className).staticmethod("className")
+        .def("desc", &PyDbNurbSurface::desc).staticmethod("desc")
         ;
 #endif
 }
@@ -185,6 +204,11 @@ std::string PyDbNurbSurface::className()
     return "AcDbNurbSurface";
 }
 
+PyRxClass PyDbNurbSurface::desc()
+{
+    return PyRxClass(AcDbNurbSurface::desc(), false);
+}
+
 AcDbNurbSurface* PyDbNurbSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -203,6 +227,7 @@ void makePyDbPlaneSurfaceWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbPlaneSurface::className).staticmethod("className")
+        .def("desc", &PyDbPlaneSurface::desc).staticmethod("desc")
         ;
 #endif
 }
@@ -233,6 +258,11 @@ std::string PyDbPlaneSurface::className()
     return "AcDbPlaneSurface";
 }
 
+PyRxClass PyDbPlaneSurface::desc()
+{
+    return PyRxClass(AcDbPlaneSurface::desc(), false);
+}
+
 AcDbPlaneSurface* PyDbPlaneSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -252,6 +282,7 @@ void makePyDbRevolvedSurfaceWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbRevolvedSurface::className).staticmethod("className")
+        .def("desc", &PyDbRevolvedSurface::desc).staticmethod("desc")
         ;
 #endif
 }
@@ -282,6 +313,11 @@ std::string PyDbRevolvedSurface::className()
     return "AcDbPlaneSurface";
 }
 
+PyRxClass PyDbRevolvedSurface::desc()
+{
+    return PyRxClass(AcDbRevolvedSurface::desc(), false);
+}
+
 AcDbRevolvedSurface* PyDbRevolvedSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pImp == nullptr)
@@ -300,6 +336,7 @@ void makePyDbSweptSurfaceWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbSweptSurface::className).staticmethod("className")
+        .def("desc", &PyDbSweptSurface::desc).staticmethod("desc")
         ;
 #endif
 }
@@ -328,6 +365,11 @@ PyDbSweptSurface::PyDbSweptSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
 std::string PyDbSweptSurface::className()
 {
     return "AcDbPlaneSurface";
+}
+
+PyRxClass PyDbSweptSurface::desc()
+{
+    return PyRxClass(AcDbSweptSurface::desc(), false);
 }
 
 AcDbSweptSurface* PyDbSweptSurface::impObj(const std::source_location& src /*= std::source_location::current()*/) const

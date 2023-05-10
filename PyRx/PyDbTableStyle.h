@@ -150,6 +150,7 @@ public:
     PyDbObjectId        removeTemplate(void);
 
     static std::string className();
+    static PyRxClass desc();
 
 public:
     AcDbTableStyle* impObj(const std::source_location& src = std::source_location::current()) const;

@@ -10,7 +10,6 @@ void makeAcDbBlockTableRecordWrapper()
 {
     class_<PyDbBlockTableRecord, bases<PyDbSymbolTableRecord>>("BlockTableRecord", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("className", &PyDbBlockTableRecord::className).staticmethod("className")
         .def("appendAcDbEntity", &PyDbBlockTableRecord::appendAcDbEntity)
         .def("objectIds", &PyDbBlockTableRecord::objectIds)
         .def("comments", &PyDbBlockTableRecord::comments)
@@ -45,6 +44,9 @@ void makeAcDbBlockTableRecordWrapper()
         .def("postProcessAnnotativeBTR", &PyDbBlockTableRecord::postProcessAnnotativeBTR)
         .def("addAnnoScalestoBlkRefs", &PyDbBlockTableRecord::addAnnoScalestoBlkRefs)
         .def("aslist", &PyDbBlockTableRecord::objectIds)
+        .def("className", &PyDbBlockTableRecord::className).staticmethod("className")
+        .def("desc", &PyDbBlockTableRecord::desc).staticmethod("desc")
+
         ;
 }
 
@@ -300,6 +302,11 @@ Acad::ErrorStatus PyDbBlockTableRecord::addAnnoScalestoBlkRefs(bool bScale /*= f
 std::string PyDbBlockTableRecord::className()
 {
     return  "AcDbBlockTableRecord";
+}
+
+PyRxClass PyDbBlockTableRecord::desc()
+{
+    return PyRxClass(AcDbBlockTableRecord::desc(), false);
 }
 
 AcDbBlockTableRecord* PyDbBlockTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const

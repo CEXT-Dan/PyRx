@@ -88,6 +88,7 @@ public:
 
 
     static std::string className();
+    static PyRxClass desc();
 
 public:
     AcDbLayerTableRecord* impObj(const std::source_location& src = std::source_location::current()) const;

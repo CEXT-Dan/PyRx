@@ -76,6 +76,7 @@ public:
     Acad::ErrorStatus          setJustification(AcDbText::AcTextAlignment val);
 
     static std::string className();
+    static PyRxClass desc();
 
 public:
     AcDbText* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -127,6 +128,7 @@ public:
     Acad::ErrorStatus updateMTextAttributeDefinition();
 
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDbAttributeDefinition* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -170,6 +172,7 @@ public:
     bool              isReallyLocked() const;
 
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDbAttribute* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -217,6 +220,7 @@ public:
     Acad::ErrorStatus explodeToOwnerSpace() const;
 
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDbBlockReference* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -246,6 +250,7 @@ public:
     Acad::ErrorStatus  setRowSpacing(double val);
 
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDbMInsertBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -260,6 +265,7 @@ public:
     PyDbVertex(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbVertex() = default;
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDbVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -303,6 +309,7 @@ public:
     int                vertexIdentifier() const;
 
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDb2dVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -325,6 +332,7 @@ public:
     Acad::ErrorStatus   setPosition(const AcGePoint3d&);
 
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDb3dPolylineVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -347,6 +355,7 @@ public:
     Acad::ErrorStatus   setPosition(const AcGePoint3d&);
 
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDbPolygonMeshVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -367,6 +376,7 @@ public:
     Acad::ErrorStatus   setPosition(const AcGePoint3d&);
 
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDbPolyFaceMeshVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -393,6 +403,7 @@ public:
     Acad::ErrorStatus makeEdgeInvisibleAt(Adesk::UInt16 faceIndex);
 
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDbFaceRecord* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -423,6 +434,7 @@ public:
     Acad::ErrorStatus   setEcsRotation(double);
 
     static std::string className();
+    static PyRxClass desc();
 
 public:
     AcDbPoint* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -493,6 +505,7 @@ public:
     Acad::ErrorStatus makeClosedIfStartAndEndVertexCoincide(double distTol);
 
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDb2dPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -534,6 +547,7 @@ public:
     boost::python::list vertexIds() const;
 
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDb3dPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -573,6 +587,7 @@ public:
     Acad::ErrorStatus   setNormal(const AcGeVector3d&);
 
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDbArc* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -608,6 +623,7 @@ public:
     Acad::ErrorStatus   setDiameter(double val);
 
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDbCircle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -639,6 +655,7 @@ public:
     boost::python::list getOffsetCurvesGivenPlaneNormal(const AcGeVector3d& normal, double offsetDist) const override;
 
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDbLine* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -707,6 +724,7 @@ public:
     Acad::ErrorStatus makeClosedIfStartAndEndVertexCoincide(double distTol);
 
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDbPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -752,6 +770,7 @@ public:
     Acad::ErrorStatus makeEdgeInvisibleAt(Adesk::UInt16);
 
     static std::string className();
+    static PyRxClass desc();
 public:
     AcDbFace* impObj(const std::source_location& src = std::source_location::current()) const;
 };

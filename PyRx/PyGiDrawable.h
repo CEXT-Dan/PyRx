@@ -10,6 +10,7 @@ public:
     PyGiDrawable(AcGiDrawable* ptr, bool autoDelete, bool isDbObject);
     virtual ~PyGiDrawable() override = default;
     static std::string className();
+    static PyRxClass desc();
 
 public:
     AcGiDrawable* impObj() const;

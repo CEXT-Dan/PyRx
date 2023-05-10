@@ -108,11 +108,14 @@ int PyCmd::getCommandFlags(PyObject* pCommand)
 {
     WxPyAutoLock lock;
 
-    //TODO: maybe leave this module imported for the session?
-    PyObjectPtr sys(PyImport_ImportModule("inspect"));
-    if (sys == nullptr)
+    if (pCommand == nullptr)
         return 1;
-    PyObjectPtr func(PyObject_GetAttrString(sys.get(), "signature"));
+
+    //TODO: maybe leave this module imported for the session?
+    PyObjectPtr inspect(PyImport_ImportModule("inspect"));
+    if (inspect == nullptr)
+        return 1;
+    PyObjectPtr func(PyObject_GetAttrString(inspect.get(), "signature"));
     if (func == nullptr)
         return 1;
     if (PyCallable_Check(func.get()) == 0)

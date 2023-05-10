@@ -99,6 +99,7 @@ void makeAcDbTableStyleWrapper()
         .def("setTemplate", &PyDbTableStyle::setTemplate)
         .def("removeTemplate", &PyDbTableStyle::removeTemplate)
         .def("className", &PyDbTableStyle::className).staticmethod("className")
+        .def("desc", &PyDbTableStyle::desc).staticmethod("desc")
         ;
 }
 
@@ -767,6 +768,11 @@ PyDbObjectId PyDbTableStyle::removeTemplate(void)
 std::string PyDbTableStyle::className()
 {
     return "AcDbTableStyle";
+}
+
+PyRxClass PyDbTableStyle::desc()
+{
+    return PyRxClass(AcDbTableStyle::desc(), false);
 }
 
 AcDbTableStyle* PyDbTableStyle::impObj(const std::source_location& src /*= std::source_location::current()*/) const
