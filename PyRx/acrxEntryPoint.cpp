@@ -421,6 +421,41 @@ public:
         return res;
     }
 
+    static void AcRxPyApp_pycommand(void)
+    {
+
+        try
+        {
+            AcString cmd;
+            WxPyAutoLock lock;
+
+            if (acedGetString(1, _T(">>>: "), cmd) != RTNORM)
+            {
+                acutPrintf(_T("\nOops, something went wrong: "));
+                return;
+            }
+            if (cmd.length() == 0)
+            {
+                acutPrintf(_T("\nOops, something went wrong: "));
+                return;
+            }
+           /* PyObjectPtr _PyRxApp(PyImport_ImportModule("PyRxApp"));
+            PyObjectPtr _PyRx(PyImport_ImportModule("PyRx"));
+            PyObjectPtr _PyGe(PyImport_ImportModule("PyGe"));
+            PyObjectPtr _PyGi(PyImport_ImportModule("PyGi"));
+            PyObjectPtr _PyDb(PyImport_ImportModule("PyDb"));
+            PyObjectPtr _PyAp(PyImport_ImportModule("PyAp"));
+            PyObjectPtr _PyEd(PyImport_ImportModule("PyEd"));*/
+
+            int res = PyRun_SimpleString(wstr_to_utf8((const TCHAR*)cmd).c_str());
+            auto dbg = res;
+        }
+        catch (...)
+        {
+            acutPrintf(_T("\nOops, something went wrong: "));
+        }
+    }
+
     static void AcRxPyApp_doit(void)
     {
         acutPrintf(utf8_to_wstr(findPythonPath()).c_str());
@@ -432,4 +467,5 @@ IMPLEMENT_ARX_ENTRYPOINT(AcRxPyApp)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyload, pyload, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyreload, pyreload, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyrxver, pyrxver, ACRX_CMD_TRANSPARENT, NULL)
+ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycommand, pycommand, ACRX_CMD_TRANSPARENT, NULL)
 //ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _doit, doit, ACRX_CMD_TRANSPARENT, NULL)
