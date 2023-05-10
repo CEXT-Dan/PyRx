@@ -1,8 +1,5 @@
 import os
 
-import sys
-sys.path.insert(0, './stubs')
-
 import PyRxApp  # = all the global methods like acutPrintf,
 import PyRx  # = Runtime runtime
 import PyGe  # = Geometry
@@ -30,9 +27,6 @@ def OnPyUnloadDwg():
 def PyRxCmd_pycmd():
     try:
         do_select()
-        p = PyDb.Line()
-        p.setStartPoint(PyGe.Point3d(0,0,0))
-        
         #createAlignedDimension()
         #table()
         #mtext()
@@ -93,7 +87,7 @@ def mtext():
         docm = app.docManager()
         doc = docm.curDocument()
         ed = doc.editor()
-        val = ed.entsel("\nSelect mtext")
+        val = ed.entSel("\nSelect mtext")
         if (val[0] == PyEd.PromptStatus.eNormal):
             mt = PyDb.MText(val[1], PyDb.OpenMode.ForRead)
             print(type(mt.attachment()))
@@ -166,7 +160,7 @@ def createLine():
 def getSplitCurves():
     doc = PyAp.Application().docManager().curDocument()
     ed = doc.editor()
-    entres = ed.entsel("\nSelect curve")
+    entres = ed.entSel("\nSelect curve")
     pntres = ed.getPoint("\nPick Point On Curve")
     pntres2 = ed.getPoint("\nPick Next Point On Curve")
 

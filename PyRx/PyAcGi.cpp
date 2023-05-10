@@ -7,7 +7,7 @@ using namespace boost::python;
 BOOST_PYTHON_MODULE(PyGi)
 {
 #ifndef  PyRxDebug
-    docstring_options local_docstring_options(false, true, false);
+    docstring_options local_docstring_options(false, true, true);
 #endif // ! PyRxDebug
 
 
