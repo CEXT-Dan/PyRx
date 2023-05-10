@@ -92,6 +92,7 @@ def generate_doc(moduleName, module):
                     f.write('\n    ...\n')
 
 def PyRxCmd_pygendocs():
+    generate_doc('PyRxApp.pyi',PyRxApp)
     generate_doc('PyRx.pyi',PyRx)
     generate_doc('PyGe.pyi',PyGe)
     generate_doc('PyGi.pyi',PyGi)
