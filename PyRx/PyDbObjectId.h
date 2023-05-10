@@ -28,3 +28,8 @@ public:
     AcDbObjectId m_id;
 };
 
+
+class AdsName
+{
+    std::array<int64_t, 2> m_data;
+};

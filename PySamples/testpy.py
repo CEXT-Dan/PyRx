@@ -1,5 +1,8 @@
 import os
 
+import sys
+sys.path.insert(0, './stubs')
+
 import PyRxApp  # = all the global methods like acutPrintf,
 import PyRx  # = Runtime runtime
 import PyGe  # = Geometry
@@ -11,7 +14,6 @@ import PyEd  # = editor
 
 def OnPyInitApp():
     PyRxApp.Printf("\nOnPyInitApp")
-
 
 def OnPyUnloadApp():
    PyRxApp.Printf("\nOnPyUnloadApp")
@@ -28,6 +30,9 @@ def OnPyUnloadDwg():
 def PyRxCmd_pycmd():
     try:
         do_select()
+        p = PyDb.Line()
+        p.setStartPoint(PyGe.Point3d(0,0,0))
+        
         #createAlignedDimension()
         #table()
         #mtext()
