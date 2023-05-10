@@ -157,41 +157,68 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
 class RxClass:
     def className (self, *args, **kwargs):
       '''
-className() -> str'''
+className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
     def desc (self, *args, **kwargs):
       '''
-desc() -> RxClass'''
+desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
     ...
     def isA (self, *args, **kwargs):
       '''
-isA( (RxObject)arg1) -> RxClass'''
+isA( (RxObject)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isDerivedFrom (self, *args, **kwargs):
       '''
-isDerivedFrom( (RxClass)arg1, (RxClass)arg2) -> bool'''
+isDerivedFrom( (RxClass)arg1, (RxClass)arg2) -> bool :
+
+    C++ signature :
+        bool isDerivedFrom(class PyRxClass {lvalue},class PyRxClass)'''
     ...
     def isNull (self, *args, **kwargs):
       '''
-isNull( (RxObject)arg1) -> bool'''
+isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
     ...
     def name (self, *args, **kwargs):
       '''
-name( (RxClass)arg1) -> str'''
+name( (RxClass)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name(class PyRxClass {lvalue})'''
     ...
 
 class RxObject:
     def className (self, *args, **kwargs):
       '''
-className() -> str'''
+className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
     def isA (self, *args, **kwargs):
       '''
-isA( (RxObject)arg1) -> RxClass'''
+isA( (RxObject)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs):
       '''
-isNull( (RxObject)arg1) -> bool'''
+isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
     ...
 
 class __loader__:
@@ -4413,19 +4440,31 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
 class stderr:
     def flush (self, *args, **kwargs):
       '''
-flush( (stderr)arg1) -> None'''
+flush( (stderr)arg1) -> None :
+
+    C++ signature :
+        void flush(class py_redirector<2> {lvalue})'''
     ...
     def write (self, *args, **kwargs):
       '''
-write( (stderr)arg1, (str)arg2) -> None'''
+write( (stderr)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void write(class py_redirector<2> {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
 
 class stdout:
     def flush (self, *args, **kwargs):
       '''
-flush( (stdout)arg1) -> None'''
+flush( (stdout)arg1) -> None :
+
+    C++ signature :
+        void flush(class py_redirector<0> {lvalue})'''
     ...
     def write (self, *args, **kwargs):
       '''
-write( (stdout)arg1, (str)arg2) -> None'''
+write( (stdout)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void write(class py_redirector<0> {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...

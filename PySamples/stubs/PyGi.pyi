@@ -2,19 +2,31 @@
 class Drawable:
     def className (self, *args, **kwargs):
       '''
-className() -> str'''
+className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
     def desc (self, *args, **kwargs):
       '''
-desc() -> RxClass'''
+desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
     ...
     def isA (self, *args, **kwargs):
       '''
-isA( (Drawable)arg1) -> RxClass'''
+isA( (Drawable)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isNull (self, *args, **kwargs):
       '''
-isNull( (RxObject)arg1) -> bool'''
+isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
     ...
 
 class __loader__:

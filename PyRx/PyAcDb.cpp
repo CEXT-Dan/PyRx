@@ -85,7 +85,7 @@ int RegApp(const std::string& app)
 BOOST_PYTHON_MODULE(PyDb)
 {
 #ifndef  PyRxDebug
-    docstring_options local_docstring_options(false, true, false);
+    docstring_options local_docstring_options(false, true, true);
 #endif // ! PyRxDebug
     def("openDbObject", openDbObject);
     def("openDbEntity", openDbEntity);
