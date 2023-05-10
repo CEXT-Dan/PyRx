@@ -8,7 +8,6 @@ void makeAcDbLayerTableRecordWrapper()
 {
     class_<PyDbLayerTableRecord, bases<PyDbSymbolTableRecord>>("LayerTableRecord", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("className", &PyDbLayerTableRecord::className).staticmethod("className")
         .def("isFrozen", &PyDbLayerTableRecord::isFrozen)
         .def("setIsFrozen", &PyDbLayerTableRecord::setIsFrozen)
         .def("isOff", &PyDbLayerTableRecord::isOff)

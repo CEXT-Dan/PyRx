@@ -64,6 +64,7 @@ def createAlignedDimension():
     model.appendAcDbEntity(dim)
 
 
+
 def table():
     try:
         app = PyAp.Application()
