@@ -38,3 +38,39 @@ public:
 public:
     std::array<int64_t, 2> m_data;
 };
+
+
+//
+void makePyDbHardPointerIdWrapper();
+class PyDbHardPointerId : public PyDbObjectId
+{
+public:
+    PyDbHardPointerId();
+    PyDbHardPointerId(const PyDbObjectId& id);
+
+    PyDbHardPointerId& operator =(const PyDbHardPointerId& rhs);
+    PyDbHardPointerId& operator =(const PyDbObjectId& rhs);
+
+    bool operator==(const PyDbHardPointerId& rhs) const;
+    bool operator!=(const PyDbHardPointerId& rhs) const;
+
+public:
+    AcDbHardPointerId m_id;
+};
+//
+void makePySoftPointerIdWrapper();
+class PyDbSoftPointerId : public PyDbObjectId
+{
+public:
+    PyDbSoftPointerId();
+    PyDbSoftPointerId(const PyDbObjectId& id);
+
+    PyDbSoftPointerId& operator =(const PyDbSoftPointerId& rhs);
+    PyDbSoftPointerId& operator =(const PyDbObjectId& rhs);
+
+    bool operator==(const PyDbSoftPointerId& rhs) const;
+    bool operator!=(const PyDbSoftPointerId& rhs) const;
+
+public:
+    AcDbSoftPointerId m_id;
+};
