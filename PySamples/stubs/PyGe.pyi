@@ -1,5 +1,8 @@
 
 class AcGeError:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (self, value, /):
       '''Return self==value.'''
     ...
@@ -11,6 +14,12 @@ class AcGeError:
     ...
     def __ne__ (self, value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
@@ -7410,6 +7419,9 @@ class EntityId:
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (self, value, /):
       '''Return self==value.'''
     ...
@@ -7421,6 +7433,12 @@ class EntityId:
     ...
     def __ne__ (self, value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
@@ -8759,6 +8777,9 @@ type( (Entity3d)arg1) -> EntityId :
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -8770,6 +8791,12 @@ type( (Entity3d)arg1) -> EntityId :
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -13072,6 +13099,13 @@ __eq__( (Matrix2d)arg1, (Matrix2d)arg2) -> bool :
     C++ signature :
         bool __eq__(class AcGeMatrix2d {lvalue},class AcGeMatrix2d)'''
     ...
+    def __imul__ (self, *args, **kwargs):
+      '''
+__imul__( (Matrix2d)arg1, (Matrix2d)arg2) -> Matrix2d :
+
+    C++ signature :
+        class AcGeMatrix2d {lvalue} __imul__(class AcGeMatrix2d {lvalue},class AcGeMatrix2d)'''
+    ...
     def __init__ (self, *args, **kwargs):
       '''
 __init__( (object)arg1) -> None :
@@ -13151,17 +13185,17 @@ isConformal( (Matrix2d)arg1, (float)arg2, (float)arg3, (bool)arg4, (Vector2d)arg
     ...
     def isEqualTo (self, *args, **kwargs):
       '''
-isEqualTo( (Matrix2d)arg1, (Matrix2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B687733760>]) -> bool :
+isEqualTo( (Matrix2d)arg1, (Matrix2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001D401B7F760>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeMatrix2d {lvalue},class AcGeMatrix2d [,class AcGeTol=<PyGe.Tol object at 0x000001B687733760>])'''
+        bool isEqualTo(class AcGeMatrix2d {lvalue},class AcGeMatrix2d [,class AcGeTol=<PyGe.Tol object at 0x000001D401B7F760>])'''
     ...
     def isScaledOrtho (self, *args, **kwargs):
       '''
-isScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B687733880>]) -> bool :
+isScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001D401B7F880>]) -> bool :
 
     C++ signature :
-        bool isScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001B687733880>])'''
+        bool isScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001D401B7F880>])'''
     ...
     def isSingular (self, *args, **kwargs):
       '''
@@ -13172,10 +13206,10 @@ isSingular( (Matrix2d)arg1, (Tol)arg2) -> bool :
     ...
     def isUniScaledOrtho (self, *args, **kwargs):
       '''
-isUniScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B6877337F0>]) -> bool :
+isUniScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001D401B7F7F0>]) -> bool :
 
     C++ signature :
-        bool isUniScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001B6877337F0>])'''
+        bool isUniScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001D401B7F7F0>])'''
     ...
     def kIdentity (self, *args, **kwargs):
       '''None'''
@@ -13282,10 +13316,10 @@ setToProduct( (Matrix2d)arg1, (Matrix2d)arg2, (Matrix2d)arg3) -> Matrix2d :
     ...
     def setToRotation (self, *args, **kwargs):
       '''
-setToRotation( (Matrix2d)arg1, (float)arg2 [, (Point2d)AcGePoint2d=<PyGe.Point2d object at 0x000001B680E56260>]) -> Matrix2d :
+setToRotation( (Matrix2d)arg1, (float)arg2 [, (Point2d)AcGePoint2d=<PyGe.Point2d object at 0x000001D4027962D0>]) -> Matrix2d :
 
     C++ signature :
-        class AcGeMatrix2d {lvalue} setToRotation(class AcGeMatrix2d {lvalue},double [,class AcGePoint2d=<PyGe.Point2d object at 0x000001B680E56260>])'''
+        class AcGeMatrix2d {lvalue} setToRotation(class AcGeMatrix2d {lvalue},double [,class AcGePoint2d=<PyGe.Point2d object at 0x000001D4027962D0>])'''
     ...
     def setToScaling (self, *args, **kwargs):
       '''
@@ -13349,6 +13383,13 @@ __eq__( (Matrix3d)arg1, (Matrix3d)arg2) -> bool :
 
     C++ signature :
         bool __eq__(class AcGeMatrix3d {lvalue},class AcGeMatrix3d)'''
+    ...
+    def __imul__ (self, *args, **kwargs):
+      '''
+__imul__( (Matrix3d)arg1, (Matrix3d)arg2) -> Matrix3d :
+
+    C++ signature :
+        class AcGeMatrix3d {lvalue} __imul__(class AcGeMatrix3d {lvalue},class AcGeMatrix3d)'''
     ...
     def __init__ (self, *args, **kwargs):
       '''
@@ -14934,6 +14975,9 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class OffsetCrvExtType:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (self, value, /):
       '''Return self==value.'''
     ...
@@ -14945,6 +14989,12 @@ class OffsetCrvExtType:
     ...
     def __ne__ (self, value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
@@ -16786,12 +16836,33 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Point2d:
+    def __add__ (self, *args, **kwargs):
+      '''
+__add__( (Point2d)arg1, (Vector2d)arg2) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d __add__(class AcGePoint2d {lvalue},class AcGeVector2d)'''
+    ...
     def __eq__ (self, *args, **kwargs):
       '''
 __eq__( (Point2d)arg1, (Point2d)arg2) -> bool :
 
     C++ signature :
         bool __eq__(class AcGePoint2d {lvalue},class AcGePoint2d)'''
+    ...
+    def __iadd__ (self, *args, **kwargs):
+      '''
+__iadd__( (Point2d)arg1, (Vector2d)arg2) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d {lvalue} __iadd__(class AcGePoint2d {lvalue},class AcGeVector2d)'''
+    ...
+    def __imul__ (self, *args, **kwargs):
+      '''
+__imul__( (Point2d)arg1, (float)arg2) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d {lvalue} __imul__(class AcGePoint2d {lvalue},double)'''
     ...
     def __init__ (self, *args, **kwargs):
       '''
@@ -16815,6 +16886,20 @@ __init__( (object)arg1, (float)arg2, (float)arg3) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,double,double)'''
     ...
+    def __isub__ (self, *args, **kwargs):
+      '''
+__isub__( (Point2d)arg1, (Vector2d)arg2) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d {lvalue} __isub__(class AcGePoint2d {lvalue},class AcGeVector2d)'''
+    ...
+    def __itruediv__ (self, *args, **kwargs):
+      '''
+__itruediv__( (Point2d)arg1, (float)arg2) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d {lvalue} __itruediv__(class AcGePoint2d {lvalue},double)'''
+    ...
     def __mul__ (self, *args, **kwargs):
       '''
 __mul__( (Point2d)arg1, (float)arg2) -> Point2d :
@@ -16828,6 +16913,25 @@ __ne__( (Point2d)arg1, (Point2d)arg2) -> bool :
 
     C++ signature :
         bool __ne__(class AcGePoint2d {lvalue},class AcGePoint2d)'''
+    ...
+    def __sub__ (self, *args, **kwargs):
+      '''
+__sub__( (Point2d)arg1, (Vector2d)arg2) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d __sub__(class AcGePoint2d {lvalue},class AcGeVector2d)
+
+__sub__( (Point2d)arg1, (Point2d)arg2) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d __sub__(class AcGePoint2d {lvalue},class AcGePoint2d)'''
+    ...
+    def __truediv__ (self, *args, **kwargs):
+      '''
+__truediv__( (Point2d)arg1, (float)arg2) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d __truediv__(class AcGePoint2d {lvalue},double)'''
     ...
     def asVector (self, *args, **kwargs):
       '''
@@ -16845,10 +16949,10 @@ distanceTo( (Point2d)arg1, (Point2d)arg2) -> float :
     ...
     def isEqualTo (self, *args, **kwargs):
       '''
-isEqualTo( (Point2d)arg1, (Point2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B687733250>]) -> bool :
+isEqualTo( (Point2d)arg1, (Point2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001D401B7F250>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGePoint2d {lvalue},class AcGePoint2d [,class AcGeTol=<PyGe.Tol object at 0x000001B687733250>])'''
+        bool isEqualTo(class AcGePoint2d {lvalue},class AcGePoint2d [,class AcGeTol=<PyGe.Tol object at 0x000001D401B7F250>])'''
     ...
     def kOrigin (self, *args, **kwargs):
       '''None'''
@@ -16862,17 +16966,17 @@ mirror( (Point2d)arg1, (object)arg2) -> Point2d :
     ...
     def rotateBy (self, *args, **kwargs):
       '''
-rotateBy( (Point2d)arg1, (float)arg2 [, (Point2d)AcGePoint2d=<PyGe.Point2d object at 0x000001B680E56180>]) -> Point2d :
+rotateBy( (Point2d)arg1, (float)arg2 [, (Point2d)AcGePoint2d=<PyGe.Point2d object at 0x000001D4027961F0>]) -> Point2d :
 
     C++ signature :
-        class AcGePoint2d {lvalue} rotateBy(class AcGePoint2d {lvalue},double [,class AcGePoint2d=<PyGe.Point2d object at 0x000001B680E56180>])'''
+        class AcGePoint2d {lvalue} rotateBy(class AcGePoint2d {lvalue},double [,class AcGePoint2d=<PyGe.Point2d object at 0x000001D4027961F0>])'''
     ...
     def scaleBy (self, *args, **kwargs):
       '''
-scaleBy( (Point2d)arg1, (float)arg2 [, (Point2d)AcGePoint2d=<PyGe.Point2d object at 0x000001B680E561F0>]) -> Point2d :
+scaleBy( (Point2d)arg1, (float)arg2 [, (Point2d)AcGePoint2d=<PyGe.Point2d object at 0x000001D402796260>]) -> Point2d :
 
     C++ signature :
-        class AcGePoint2d {lvalue} scaleBy(class AcGePoint2d {lvalue},double [,class AcGePoint2d=<PyGe.Point2d object at 0x000001B680E561F0>])'''
+        class AcGePoint2d {lvalue} scaleBy(class AcGePoint2d {lvalue},double [,class AcGePoint2d=<PyGe.Point2d object at 0x000001D402796260>])'''
     ...
     def set (self, *args, **kwargs):
       '''
@@ -16917,12 +17021,33 @@ transformBy( (Point2d)arg1, (Matrix2d)arg2) -> Point2d :
     ...
 
 class Point3d:
+    def __add__ (self, *args, **kwargs):
+      '''
+__add__( (Point3d)arg1, (Vector3d)arg2) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d __add__(class AcGePoint3d {lvalue},class AcGeVector3d)'''
+    ...
     def __eq__ (self, *args, **kwargs):
       '''
 __eq__( (Point3d)arg1, (Point3d)arg2) -> bool :
 
     C++ signature :
         bool __eq__(class AcGePoint3d {lvalue},class AcGePoint3d)'''
+    ...
+    def __iadd__ (self, *args, **kwargs):
+      '''
+__iadd__( (Point3d)arg1, (Vector3d)arg2) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d {lvalue} __iadd__(class AcGePoint3d {lvalue},class AcGeVector3d)'''
+    ...
+    def __imul__ (self, *args, **kwargs):
+      '''
+__imul__( (Point3d)arg1, (float)arg2) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d {lvalue} __imul__(class AcGePoint3d {lvalue},double)'''
     ...
     def __init__ (self, *args, **kwargs):
       '''
@@ -16950,6 +17075,20 @@ __init__( (object)arg1, (object)arg2, (Point2d)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePlanarEnt,class AcGePoint2d)'''
+    ...
+    def __isub__ (self, *args, **kwargs):
+      '''
+__isub__( (Point3d)arg1, (Vector3d)arg2) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d {lvalue} __isub__(class AcGePoint3d {lvalue},class AcGeVector3d)'''
+    ...
+    def __itruediv__ (self, *args, **kwargs):
+      '''
+__itruediv__( (Point3d)arg1, (float)arg2) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d {lvalue} __itruediv__(class AcGePoint3d {lvalue},double)'''
     ...
     def __matmul__ (self, *args, **kwargs):
       '''
@@ -16982,6 +17121,25 @@ __ne__( (Point3d)arg1, (Point3d)arg2) -> bool :
     C++ signature :
         bool __ne__(class AcGePoint3d {lvalue},class AcGePoint3d)'''
     ...
+    def __sub__ (self, *args, **kwargs):
+      '''
+__sub__( (Point3d)arg1, (Vector3d)arg2) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d __sub__(class AcGePoint3d {lvalue},class AcGeVector3d)
+
+__sub__( (Point3d)arg1, (Point3d)arg2) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d __sub__(class AcGePoint3d {lvalue},class AcGePoint3d)'''
+    ...
+    def __truediv__ (self, *args, **kwargs):
+      '''
+__truediv__( (Point3d)arg1, (float)arg2) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d __truediv__(class AcGePoint3d {lvalue},double)'''
+    ...
     def asVector (self, *args, **kwargs):
       '''
 asVector( (Point3d)arg1) -> Vector3d :
@@ -17005,10 +17163,10 @@ distanceTo( (Point3d)arg1, (Point3d)arg2) -> float :
     ...
     def isEqualTo (self, *args, **kwargs):
       '''
-isEqualTo( (Point3d)arg1, (Point3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B687733910>]) -> bool :
+isEqualTo( (Point3d)arg1, (Point3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001D401B7F910>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGePoint3d {lvalue},class AcGePoint3d [,class AcGeTol=<PyGe.Tol object at 0x000001B687733910>])'''
+        bool isEqualTo(class AcGePoint3d {lvalue},class AcGePoint3d [,class AcGeTol=<PyGe.Tol object at 0x000001D401B7F910>])'''
     ...
     def kOrigin (self, *args, **kwargs):
       '''None'''
@@ -17036,17 +17194,17 @@ project( (Point3d)arg1, (object)arg2, (Vector3d)arg3) -> Point3d :
     ...
     def rotateBy (self, *args, **kwargs):
       '''
-rotateBy( (Point3d)arg1, (float)arg2, (Vector3d)arg3 [, (Point3d)AcGePoint3d=<PyGe.Point3d object at 0x000001B680E5DDC0>]) -> Point3d :
+rotateBy( (Point3d)arg1, (float)arg2, (Vector3d)arg3 [, (Point3d)AcGePoint3d=<PyGe.Point3d object at 0x000001D40279DDC0>]) -> Point3d :
 
     C++ signature :
-        class AcGePoint3d {lvalue} rotateBy(class AcGePoint3d {lvalue},double,class AcGeVector3d [,class AcGePoint3d=<PyGe.Point3d object at 0x000001B680E5DDC0>])'''
+        class AcGePoint3d {lvalue} rotateBy(class AcGePoint3d {lvalue},double,class AcGeVector3d [,class AcGePoint3d=<PyGe.Point3d object at 0x000001D40279DDC0>])'''
     ...
     def scaleBy (self, *args, **kwargs):
       '''
-scaleBy( (Point3d)arg1, (float)arg2 [, (Point3d)AcGePoint3d=<PyGe.Point3d object at 0x000001B680E5DE40>]) -> Point3d :
+scaleBy( (Point3d)arg1, (float)arg2 [, (Point3d)AcGePoint3d=<PyGe.Point3d object at 0x000001D40279DE40>]) -> Point3d :
 
     C++ signature :
-        class AcGePoint3d {lvalue} scaleBy(class AcGePoint3d {lvalue},double [,class AcGePoint3d=<PyGe.Point3d object at 0x000001B680E5DE40>])'''
+        class AcGePoint3d {lvalue} scaleBy(class AcGePoint3d {lvalue},double [,class AcGePoint3d=<PyGe.Point3d object at 0x000001D40279DE40>])'''
     ...
     def set (self, *args, **kwargs):
       '''
@@ -20548,6 +20706,18 @@ __eq__( (Scale2d)arg1, (Scale2d)arg2) -> bool :
     C++ signature :
         bool __eq__(class AcGeScale2d {lvalue},class AcGeScale2d)'''
     ...
+    def __imul__ (self, *args, **kwargs):
+      '''
+__imul__( (Scale2d)arg1, (float)arg2) -> Scale2d :
+
+    C++ signature :
+        class AcGeScale2d {lvalue} __imul__(class AcGeScale2d {lvalue},double)
+
+__imul__( (Scale2d)arg1, (Scale2d)arg2) -> Scale2d :
+
+    C++ signature :
+        class AcGeScale2d {lvalue} __imul__(class AcGeScale2d {lvalue},class AcGeScale2d)'''
+    ...
     def __init__ (self, *args, **kwargs):
       '''
 __init__( (object)arg1) -> None :
@@ -20621,6 +20791,18 @@ __eq__( (Scale3d)arg1, (Scale3d)arg2) -> bool :
 
     C++ signature :
         bool __eq__(class AcGeScale3d {lvalue},class AcGeScale3d)'''
+    ...
+    def __imul__ (self, *args, **kwargs):
+      '''
+__imul__( (Scale3d)arg1, (float)arg2) -> Scale3d :
+
+    C++ signature :
+        class AcGeScale3d {lvalue} __imul__(class AcGeScale3d {lvalue},double)
+
+__imul__( (Scale3d)arg1, (Scale3d)arg2) -> Scale3d :
+
+    C++ signature :
+        class AcGeScale3d {lvalue} __imul__(class AcGeScale3d {lvalue},class AcGeScale3d)'''
     ...
     def __init__ (self, *args, **kwargs):
       '''
@@ -22307,12 +22489,33 @@ setEqualVector( (Tol)arg1, (float)arg2) -> None :
     ...
 
 class Vector2d:
+    def __add__ (self, *args, **kwargs):
+      '''
+__add__( (Vector2d)arg1, (Vector2d)arg2) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d __add__(class AcGeVector2d {lvalue},class AcGeVector2d)'''
+    ...
     def __eq__ (self, *args, **kwargs):
       '''
 __eq__( (Vector2d)arg1, (Vector2d)arg2) -> bool :
 
     C++ signature :
         bool __eq__(class AcGeVector2d {lvalue},class AcGeVector2d)'''
+    ...
+    def __iadd__ (self, *args, **kwargs):
+      '''
+__iadd__( (Vector2d)arg1, (Vector2d)arg2) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d {lvalue} __iadd__(class AcGeVector2d {lvalue},class AcGeVector2d)'''
+    ...
+    def __imul__ (self, *args, **kwargs):
+      '''
+__imul__( (Vector2d)arg1, (float)arg2) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d {lvalue} __imul__(class AcGeVector2d {lvalue},double)'''
     ...
     def __init__ (self, *args, **kwargs):
       '''
@@ -22335,6 +22538,20 @@ __init__( (object)arg1, (float)arg2, (float)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,double,double)'''
+    ...
+    def __isub__ (self, *args, **kwargs):
+      '''
+__isub__( (Vector2d)arg1, (Vector2d)arg2) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d {lvalue} __isub__(class AcGeVector2d {lvalue},class AcGeVector2d)'''
+    ...
+    def __itruediv__ (self, *args, **kwargs):
+      '''
+__itruediv__( (Vector2d)arg1, (float)arg2) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d {lvalue} __itruediv__(class AcGeVector2d {lvalue},double)'''
     ...
     def __matmul__ (self, *args, **kwargs):
       '''
@@ -22367,6 +22584,25 @@ __ne__( (Vector2d)arg1, (Vector2d)arg2) -> bool :
     C++ signature :
         bool __ne__(class AcGeVector2d {lvalue},class AcGeVector2d)'''
     ...
+    def __sub__ (self, *args, **kwargs):
+      '''
+__sub__( (Vector2d)arg1) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d __sub__(class AcGeVector2d {lvalue})
+
+__sub__( (Vector2d)arg1, (Vector2d)arg2) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d __sub__(class AcGeVector2d {lvalue},class AcGeVector2d)'''
+    ...
+    def __truediv__ (self, *args, **kwargs):
+      '''
+__truediv__( (Vector2d)arg1, (float)arg2) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d __truediv__(class AcGeVector2d {lvalue},double)'''
+    ...
     def angle (self, *args, **kwargs):
       '''
 angle( (Vector2d)arg1) -> float :
@@ -22390,45 +22626,45 @@ dotProduct( (Vector2d)arg1, (Vector2d)arg2) -> float :
     ...
     def isCodirectionalTo (self, *args, **kwargs):
       '''
-isCodirectionalTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B6877335B0>]) -> bool :
+isCodirectionalTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001D401B7F5B0>]) -> bool :
 
     C++ signature :
-        bool isCodirectionalTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001B6877335B0>])'''
+        bool isCodirectionalTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001D401B7F5B0>])'''
     ...
     def isEqualTo (self, *args, **kwargs):
       '''
-isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B6877336D0>]) -> bool :
+isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001D401B7F6D0>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001B6877336D0>])'''
+        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001D401B7F6D0>])'''
     ...
     def isParallelTo (self, *args, **kwargs):
       '''
-isParallelTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B687733520>]) -> bool :
+isParallelTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001D401B7F520>]) -> bool :
 
     C++ signature :
-        bool isParallelTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001B687733520>])'''
+        bool isParallelTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001D401B7F520>])'''
     ...
     def isPerpendicularTo (self, *args, **kwargs):
       '''
-isPerpendicularTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B687733640>]) -> bool :
+isPerpendicularTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001D401B7F640>]) -> bool :
 
     C++ signature :
-        bool isPerpendicularTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001B687733640>])'''
+        bool isPerpendicularTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001D401B7F640>])'''
     ...
     def isUnitLength (self, *args, **kwargs):
       '''
-isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B687733400>]) -> bool :
+isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001D401B7F400>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001B687733400>])'''
+        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001D401B7F400>])'''
     ...
     def isZeroLength (self, *args, **kwargs):
       '''
-isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B687733490>]) -> bool :
+isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001D401B7F490>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001B687733490>])'''
+        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001D401B7F490>])'''
     ...
     def kIdentity (self, *args, **kwargs):
       '''None'''
@@ -22469,17 +22705,17 @@ negate( (Vector2d)arg1) -> Vector2d :
     ...
     def normal (self, *args, **kwargs):
       '''
-normal( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B6877332E0>]) -> Vector2d :
+normal( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001D401B7F2E0>]) -> Vector2d :
 
     C++ signature :
-        class AcGeVector2d normal(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001B6877332E0>])'''
+        class AcGeVector2d normal(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001D401B7F2E0>])'''
     ...
     def normalize (self, *args, **kwargs):
       '''
-normalize( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B687733370>]) -> Vector2d :
+normalize( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001D401B7F370>]) -> Vector2d :
 
     C++ signature :
-        class AcGeVector2d {lvalue} normalize(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001B687733370>])'''
+        class AcGeVector2d {lvalue} normalize(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001D401B7F370>])'''
     ...
     def rotateBy (self, *args, **kwargs):
       '''
@@ -22536,12 +22772,33 @@ transformBy( (Vector2d)arg1, (Matrix2d)arg2) -> Vector2d :
     ...
 
 class Vector3d:
+    def __add__ (self, *args, **kwargs):
+      '''
+__add__( (Vector3d)arg1, (Vector3d)arg2) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d __add__(class AcGeVector3d {lvalue},class AcGeVector3d)'''
+    ...
     def __eq__ (self, *args, **kwargs):
       '''
 __eq__( (Vector3d)arg1, (Vector3d)arg2) -> bool :
 
     C++ signature :
         bool __eq__(class AcGeVector3d {lvalue},class AcGeVector3d)'''
+    ...
+    def __iadd__ (self, *args, **kwargs):
+      '''
+__iadd__( (Vector3d)arg1, (Vector3d)arg2) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d {lvalue} __iadd__(class AcGeVector3d {lvalue},class AcGeVector3d)'''
+    ...
+    def __imul__ (self, *args, **kwargs):
+      '''
+__imul__( (Vector3d)arg1, (float)arg2) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d {lvalue} __imul__(class AcGeVector3d {lvalue},double)'''
     ...
     def __init__ (self, *args, **kwargs):
       '''
@@ -22569,6 +22826,20 @@ __init__( (object)arg1, (object)arg2, (Vector2d)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePlanarEnt,class AcGeVector2d)'''
+    ...
+    def __isub__ (self, *args, **kwargs):
+      '''
+__isub__( (Vector3d)arg1, (Vector3d)arg2) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d {lvalue} __isub__(class AcGeVector3d {lvalue},class AcGeVector3d)'''
+    ...
+    def __itruediv__ (self, *args, **kwargs):
+      '''
+__itruediv__( (Vector3d)arg1, (float)arg2) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d {lvalue} __itruediv__(class AcGeVector3d {lvalue},double)'''
     ...
     def __matmul__ (self, *args, **kwargs):
       '''
@@ -22600,6 +22871,20 @@ __ne__( (Vector3d)arg1, (Vector3d)arg2) -> bool :
 
     C++ signature :
         bool __ne__(class AcGeVector3d {lvalue},class AcGeVector3d)'''
+    ...
+    def __sub__ (self, *args, **kwargs):
+      '''
+__sub__( (Vector3d)arg1, (Vector3d)arg2) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d __sub__(class AcGeVector3d {lvalue},class AcGeVector3d)'''
+    ...
+    def __truediv__ (self, *args, **kwargs):
+      '''
+__truediv__( (Vector3d)arg1, (float)arg2) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d __truediv__(class AcGeVector3d {lvalue},double)'''
     ...
     def angleOnPlane (self, *args, **kwargs):
       '''
@@ -22643,45 +22928,45 @@ dotProduct( (Vector3d)arg1, (Vector3d)arg2) -> float :
     ...
     def isCodirectionalTo (self, *args, **kwargs):
       '''
-isCodirectionalTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B687733BE0>]) -> bool :
+isCodirectionalTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001D401B7FBE0>]) -> bool :
 
     C++ signature :
-        bool isCodirectionalTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000001B687733BE0>])'''
+        bool isCodirectionalTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000001D401B7FBE0>])'''
     ...
     def isEqualTo (self, *args, **kwargs):
       '''
-isEqualTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B687733D00>]) -> bool :
+isEqualTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001D401B7FD00>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000001B687733D00>])'''
+        bool isEqualTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000001D401B7FD00>])'''
     ...
     def isParallelTo (self, *args, **kwargs):
       '''
-isParallelTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B687733B50>]) -> bool :
+isParallelTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001D401B7FB50>]) -> bool :
 
     C++ signature :
-        bool isParallelTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000001B687733B50>])'''
+        bool isParallelTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000001D401B7FB50>])'''
     ...
     def isPerpendicularTo (self, *args, **kwargs):
       '''
-isPerpendicularTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B687733C70>]) -> bool :
+isPerpendicularTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001D401B7FC70>]) -> bool :
 
     C++ signature :
-        bool isPerpendicularTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000001B687733C70>])'''
+        bool isPerpendicularTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000001D401B7FC70>])'''
     ...
     def isUnitLength (self, *args, **kwargs):
       '''
-isUnitLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B687733A30>]) -> bool :
+isUnitLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001D401B7FA30>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001B687733A30>])'''
+        bool isUnitLength(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001D401B7FA30>])'''
     ...
     def isZeroLength (self, *args, **kwargs):
       '''
-isZeroLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B687733AC0>]) -> bool :
+isZeroLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001D401B7FAC0>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001B687733AC0>])'''
+        bool isZeroLength(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001D401B7FAC0>])'''
     ...
     def kIdentity (self, *args, **kwargs):
       '''None'''
@@ -22732,10 +23017,10 @@ negate( (Vector3d)arg1) -> Vector3d :
     ...
     def normal (self, *args, **kwargs):
       '''
-normal( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001B6877339A0>]) -> Vector3d :
+normal( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001D401B7F9A0>]) -> Vector3d :
 
     C++ signature :
-        class AcGeVector3d normal(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001B6877339A0>])'''
+        class AcGeVector3d normal(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001D401B7F9A0>])'''
     ...
     def normalize (self, *args, **kwargs):
       '''
@@ -22920,6 +23205,9 @@ errors defaults to 'strict'.'''
         The method is deprecated.  The import machinery does the job itself.
 
         '''
+    ...
+    def __add__ (value, /):
+      '''Return self+value.'''
     ...
     def __eq__ (value, /):
       '''Return self==value.'''
@@ -23262,6 +23550,9 @@ left untouched.  Characters mapped to None are deleted.'''
       '''Pad a numeric string with zeros on the left, to fill a field of the given width.
 
 The string is never truncated.'''
+    ...
+    def __add__ (value, /):
+      '''Return self+value.'''
     ...
     def __eq__ (value, /):
       '''Return self==value.'''
@@ -23691,6 +23982,9 @@ errors defaults to 'strict'.'''
     def submodule_search_locations (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -23702,6 +23996,12 @@ errors defaults to 'strict'.'''
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -23905,6 +24205,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -23916,6 +24219,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -24119,6 +24428,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -24130,6 +24442,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -24333,6 +24651,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -24344,6 +24665,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -24547,6 +24874,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -24558,6 +24888,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -24761,6 +25097,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -24772,6 +25111,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -24978,6 +25323,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -24989,6 +25337,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -25399,6 +25753,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -25410,6 +25767,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -25820,6 +26183,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -25831,6 +26197,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -26241,6 +26613,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -26252,6 +26627,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -26662,6 +27043,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -26673,6 +27057,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -27083,6 +27473,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -27094,6 +27487,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -27501,6 +27900,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -27512,6 +27914,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -27691,6 +28099,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -27702,6 +28113,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -28112,6 +28529,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -28123,6 +28543,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -28533,6 +28959,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -28544,6 +28973,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -28954,6 +29389,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -28965,6 +29403,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -29375,6 +29819,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -29386,6 +29833,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -29796,6 +30249,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -29807,6 +30263,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -30217,6 +30679,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -30228,6 +30693,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -30638,6 +31109,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -30649,6 +31123,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -31059,6 +31539,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -31070,6 +31553,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -31480,6 +31969,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -31491,6 +31983,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -31901,6 +32399,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -31912,6 +32413,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -32322,6 +32829,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -32333,6 +32843,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -32743,6 +33259,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -32754,6 +33273,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -33164,6 +33689,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -33175,6 +33703,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -33585,6 +34119,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -33596,6 +34133,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -34006,6 +34549,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -34017,6 +34563,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -34427,6 +34979,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -34438,6 +34993,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -34848,6 +35409,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -34859,6 +35423,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -35269,6 +35839,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -35280,6 +35853,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -35690,6 +36269,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -35701,6 +36283,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -36111,6 +36699,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -36122,6 +36713,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -36532,6 +37129,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -36543,6 +37143,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -36953,6 +37559,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -36964,6 +37573,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -37374,6 +37989,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -37385,6 +38003,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -37795,6 +38419,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -37806,6 +38433,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -38216,6 +38849,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -38227,6 +38863,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -38637,6 +39279,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -38648,6 +39293,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -39055,6 +39706,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -39066,6 +39720,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -39269,6 +39929,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -39280,6 +39943,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -39483,6 +40152,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -39494,6 +40166,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -39697,6 +40375,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -39708,6 +40389,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -39887,6 +40574,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -39898,6 +40588,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -40308,6 +41004,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -40319,6 +41018,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -40729,6 +41434,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -40740,6 +41448,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -41150,6 +41864,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -41161,6 +41878,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -41571,6 +42294,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -41582,6 +42308,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -41989,6 +42721,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -42000,6 +42735,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -42179,6 +42920,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -42190,6 +42934,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -42600,6 +43350,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -42611,6 +43364,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -43021,6 +43780,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -43032,6 +43794,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -43442,6 +44210,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -43453,6 +44224,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -43863,6 +44640,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -43874,6 +44654,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -44284,6 +45070,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -44295,6 +45084,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -44705,6 +45500,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -44716,6 +45514,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -45126,6 +45930,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -45137,6 +45944,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -45547,6 +46360,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -45558,6 +46374,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -45965,6 +46787,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -45976,6 +46801,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -46182,6 +47013,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -46193,6 +47027,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -46603,6 +47443,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -46614,6 +47457,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -47024,6 +47873,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -47035,6 +47887,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -47445,6 +48303,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -47456,6 +48317,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -47866,6 +48733,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -47877,6 +48747,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -48287,6 +49163,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -48298,6 +49177,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -48708,6 +49593,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -48719,6 +49607,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -49126,6 +50020,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -49137,6 +50034,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -49340,6 +50243,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -49351,6 +50257,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -49557,6 +50469,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -49568,6 +50483,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -49978,6 +50899,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -49989,6 +50913,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -50399,6 +51329,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -50410,6 +51343,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -50820,6 +51759,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -50831,6 +51773,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -51241,6 +52189,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -51252,6 +52203,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -51662,6 +52619,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -51673,6 +52633,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -52083,6 +53049,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -52094,6 +53063,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -52504,6 +53479,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -52515,6 +53493,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -52925,6 +53909,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -52936,6 +53923,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -53346,6 +54339,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -53357,6 +54353,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -53767,6 +54769,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -53778,6 +54783,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -54188,6 +55199,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -54199,6 +55213,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -54609,6 +55629,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -54620,6 +55643,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -55030,6 +56059,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -55041,6 +56073,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -55451,6 +56489,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -55462,6 +56503,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -55872,6 +56919,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -55883,6 +56933,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -56293,6 +57349,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -56304,6 +57363,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -56714,6 +57779,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -56725,6 +57793,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -57135,6 +58209,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -57146,6 +58223,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -57556,6 +58639,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -57567,6 +58653,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -57977,6 +59069,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -57988,6 +59083,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -58398,6 +59499,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -58409,6 +59513,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -58819,6 +59929,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -58830,6 +59943,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -59240,6 +60359,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -59251,6 +60373,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -59661,6 +60789,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -59672,6 +60803,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -60082,6 +61219,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def Helix (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -60093,6 +61233,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.

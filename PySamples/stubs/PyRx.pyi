@@ -1,5 +1,8 @@
 
 class LispDataType:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (self, value, /):
       '''Return self==value.'''
     ...
@@ -11,6 +14,12 @@ class LispDataType:
     ...
     def __ne__ (self, value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
@@ -342,6 +351,9 @@ errors defaults to 'strict'.'''
         The method is deprecated.  The import machinery does the job itself.
 
         '''
+    ...
+    def __add__ (value, /):
+      '''Return self+value.'''
     ...
     def __eq__ (value, /):
       '''Return self==value.'''
@@ -684,6 +696,9 @@ left untouched.  Characters mapped to None are deleted.'''
       '''Pad a numeric string with zeros on the left, to fill a field of the given width.
 
 The string is never truncated.'''
+    ...
+    def __add__ (value, /):
+      '''Return self+value.'''
     ...
     def __eq__ (value, /):
       '''Return self==value.'''
@@ -1113,6 +1128,9 @@ errors defaults to 'strict'.'''
     def submodule_search_locations (self, *args, **kwargs):
       '''None'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -1124,6 +1142,12 @@ errors defaults to 'strict'.'''
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -1339,6 +1363,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -1350,6 +1377,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -1565,6 +1598,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -1576,6 +1612,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -1791,6 +1833,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -1802,6 +1847,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -2017,6 +2068,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -2028,6 +2082,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -2243,6 +2303,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -2254,6 +2317,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -2469,6 +2538,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -2480,6 +2552,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -2695,6 +2773,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -2706,6 +2787,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -2921,6 +3008,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -2932,6 +3022,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -3147,6 +3243,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -3158,6 +3257,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -3373,6 +3478,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -3384,6 +3492,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -3599,6 +3713,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -3610,6 +3727,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -3825,6 +3948,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -3836,6 +3962,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -4051,6 +4183,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -4062,6 +4197,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -4277,6 +4418,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -4288,6 +4432,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.
@@ -4503,6 +4653,9 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -4514,6 +4667,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
     def __ne__ (value, /):
       '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
     ...
     def as_integer_ratio ():
       '''Return integer ratio.

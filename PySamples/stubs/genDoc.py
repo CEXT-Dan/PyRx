@@ -20,7 +20,21 @@ def include_attr(name):
         return True 
     elif name == '__mul__':
         return True 
+    elif name == '__imul__':
+        return True
     elif name == '__matmul__':
+        return True 
+    elif name == '__add__':
+        return True 
+    elif name == '__iadd__':
+        return True 
+    elif name == '__sub__':
+        return True 
+    elif name == '__isub__':
+        return True 
+    elif name == '__truediv__':
+        return True 
+    elif name == '__itruediv__':
         return True 
     elif name.startswith('__'):
         return False

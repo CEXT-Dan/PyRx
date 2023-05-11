@@ -120,6 +120,9 @@ errors defaults to 'strict'.'''
 
         '''
     ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
     def __eq__ (value, /):
       '''Return self==value.'''
     ...
@@ -461,6 +464,9 @@ left untouched.  Characters mapped to None are deleted.'''
       '''Pad a numeric string with zeros on the left, to fill a field of the given width.
 
 The string is never truncated.'''
+    ...
+    def __add__ (value, /):
+      '''Return self+value.'''
     ...
     def __eq__ (value, /):
       '''Return self==value.'''
