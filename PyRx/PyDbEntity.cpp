@@ -14,7 +14,8 @@ void makeAcDbEntityWrapper()
         .def("color", &PyDbEntity::color)
         .def("setColor", &PyDbEntity::setColor)
         .def("colorIndex", &PyDbEntity::colorIndex)
-        .def("setColorIndex", &PyDbEntity::setColorIndex)
+        .def("setColorIndex", &PyDbEntity::setColorIndex1)
+        .def("setColorIndex", &PyDbEntity::setColorIndex2)
         .def("entityColor", &PyDbEntity::entityColor)
         .def("layer", &PyDbEntity::layer)
         .def("layerId", &PyDbEntity::layerId)
@@ -158,7 +159,12 @@ Adesk::UInt16 PyDbEntity::colorIndex() const
     return impObj()->colorIndex();
 }
 
-Acad::ErrorStatus PyDbEntity::setColorIndex(Adesk::UInt16 color, Adesk::Boolean doSubents /*= true*/)
+Acad::ErrorStatus PyDbEntity::setColorIndex1(Adesk::UInt16 color)
+{
+    return impObj()->setColorIndex(color);
+}
+
+Acad::ErrorStatus PyDbEntity::setColorIndex2(Adesk::UInt16 color, Adesk::Boolean doSubents)
 {
     return impObj()->setColorIndex(color, doSubents);
 }
@@ -354,7 +360,7 @@ PyGePlane PyDbEntity::getPlane() const
     AcDb::Planarity val;
     if (auto es = impObj()->getPlane(plane, val); es != eOk)
         throw PyAcadErrorStatus(es);
-    if(val == AcDb::kNonPlanar)
+    if (val == AcDb::kNonPlanar)
         throw PyAcadErrorStatus(Acad::eNotApplicable);
     return PyGePlane(plane);
 }
@@ -433,7 +439,7 @@ void makeAcDbBlockBeginWrapper()
 }
 
 PyDbBlockBegin::PyDbBlockBegin(AcDbBlockBegin* ptr, bool autoDelete)
- : PyDbEntity(ptr, autoDelete)
+    : PyDbEntity(ptr, autoDelete)
 {
 }
 
