@@ -21,6 +21,7 @@
 #include "PyDbSurface.h"
 #include "PyDbDimension.h"
 #include "PyDbIdMapping.h"
+#include "PyDbLeader.h"
 
 using namespace boost::python;
 
@@ -165,6 +166,9 @@ BOOST_PYTHON_MODULE(PyDb)
     makeRadialDimensionWrapper();
     makeRadialDimensionLargeWrapper();
     makeRotatedDimensionWrapper();
+
+    makePyDbLeaderWrapper();
+
     makePyDbIdMappingWrapper();
 
     //global

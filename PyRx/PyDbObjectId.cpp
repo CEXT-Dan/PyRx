@@ -135,3 +135,90 @@ void AdsName::fromObjectId(const PyDbObjectId& id)
     m_data[0] = name[0];
     m_data[1] = name[1];
 }
+
+
+//
+void makePyDbHardPointerIdWrapper()
+{
+    class_<PyDbHardPointerId, bases<PyDbObjectId>>("HardPointerId")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def("__eq__", &PyDbHardPointerId::operator==)
+        .def("__ne__", &PyDbHardPointerId::operator!=)
+        ;
+    implicitly_convertible<PyDbHardPointerId, PyDbObjectId>();
+}
+
+PyDbHardPointerId::PyDbHardPointerId()
+{
+}
+
+PyDbHardPointerId::PyDbHardPointerId(const PyDbObjectId& id)
+    : m_id(id.m_id)
+{
+}
+
+PyDbHardPointerId& PyDbHardPointerId::operator=(const PyDbObjectId& rhs)
+{
+    m_id = rhs.m_id;
+    return *this;
+}
+
+PyDbHardPointerId& PyDbHardPointerId::operator=(const PyDbHardPointerId& rhs)
+{
+    m_id = rhs.m_id;
+    return *this;
+}
+
+bool PyDbHardPointerId::operator!=(const PyDbHardPointerId& rhs) const
+{
+    return m_id != rhs.m_id;
+}
+
+bool PyDbHardPointerId::operator==(const PyDbHardPointerId& rhs) const
+{
+    return m_id == rhs.m_id;
+}
+//
+//
+void makePySoftPointerIdWrapper()
+{
+    class_<PyDbSoftPointerId, bases<PyDbObjectId>>("SoftPointerId")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def("__eq__", &PyDbSoftPointerId::operator==)
+        .def("__ne__", &PyDbSoftPointerId::operator!=)
+        ;
+    implicitly_convertible<PyDbSoftPointerId, PyDbObjectId>();
+}
+
+PyDbSoftPointerId::PyDbSoftPointerId()
+{
+}
+
+PyDbSoftPointerId::PyDbSoftPointerId(const PyDbObjectId& id)
+    : m_id(id.m_id)
+{
+}
+
+PyDbSoftPointerId& PyDbSoftPointerId::operator=(const PyDbObjectId& rhs)
+{
+    m_id = rhs.m_id;
+    return *this;
+}
+
+PyDbSoftPointerId& PyDbSoftPointerId::operator=(const PyDbSoftPointerId& rhs)
+{
+    m_id = rhs.m_id;
+    return *this;
+}
+
+bool PyDbSoftPointerId::operator!=(const PyDbSoftPointerId& rhs) const
+{
+    return m_id != rhs.m_id;
+}
+
+bool PyDbSoftPointerId::operator==(const PyDbSoftPointerId& rhs) const
+{
+    return m_id == rhs.m_id;
+}
