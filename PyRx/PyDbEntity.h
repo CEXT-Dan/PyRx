@@ -23,7 +23,8 @@ public:
     Acad::ErrorStatus          setColor(const AcCmColor& color, bool doSubents, PyDbDatabase& db);
 
     Adesk::UInt16             colorIndex() const;
-    Acad::ErrorStatus setColorIndex(Adesk::UInt16 color, Adesk::Boolean doSubents);
+    Acad::ErrorStatus setColorIndex1(Adesk::UInt16 color);
+    Acad::ErrorStatus setColorIndex2(Adesk::UInt16 color, Adesk::Boolean doSubents);
 
     AcCmEntityColor             entityColor() const;
 

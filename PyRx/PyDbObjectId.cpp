@@ -108,3 +108,30 @@ PyRxClass PyDbObjectId::objectClass() const
 {
     return PyRxClass(m_id.objectClass(), false);
 }
+
+
+//AdsName
+void makeAdsNameWrapper()
+{
+    class_<AdsName>("AdsName")
+        .def("toObjectId", &AdsName::toObjectId)
+        .def("fromObjectId", &AdsName::fromObjectId)
+        ;
+}
+
+PyDbObjectId AdsName::toObjectId() const
+{
+    AcDbObjectId id;
+    if (auto es = acdbGetObjectId(id, m_data.data()); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return PyDbObjectId(id);
+}
+
+void AdsName::fromObjectId(const PyDbObjectId& id)
+{
+    ads_name name = { 0L };
+    if(auto es = acdbGetAdsName(name, id.m_id); es != eOk)
+        throw PyAcadErrorStatus(es);
+    m_data[0] = name[0];
+    m_data[1] = name[1];
+}
