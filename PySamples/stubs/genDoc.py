@@ -9,7 +9,23 @@ import PyDb  # = database
 import PyAp  # = application, document classes services
 import PyEd  # = editor
 
-# just some ideas on getting help, work in progress       
+# just some ideas on getting help, work in progress  
+
+def include_attr(name):
+    if name == '__init__':
+        return True  
+    elif name == '__eq__':
+        return True  
+    elif name == '__ne__':
+        return True 
+    elif name == '__mul__':
+        return True 
+    elif name == '__matmul__':
+        return True 
+    elif name.startswith('__'):
+        return False
+    return True
+    
 def generate_doc(moduleName, module):
     with open(moduleName, 'w') as f:
         for name, obj in inspect.getmembers(module):
@@ -18,7 +34,7 @@ def generate_doc(moduleName, module):
                 f.write(f'class {name}:\n')
 
             for func_name, func in inspect.getmembers(obj):
-                if not func_name.startswith('__'):
+                if include_attr(func_name):
                     try:
                         f.write(f'    def {func_name} {inspect.signature(func)}:\n')
                     except:
