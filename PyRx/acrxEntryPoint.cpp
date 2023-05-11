@@ -428,19 +428,10 @@ public:
         {
             AcString cmd;
             WxPyAutoLock lock;
-
-            if (acedGetString(1, _T(">>>: "), cmd) != RTNORM)
+            while (acedGetString(1, _T(">>>: "), cmd) == RTNORM)
             {
-                acutPrintf(_T("\nOops, something went wrong: "));
-                return;
+                PyRun_SimpleString(wstr_to_utf8((const TCHAR*)cmd).c_str());
             }
-            if (cmd.length() == 0)
-            {
-                acutPrintf(_T("\nOops, something went wrong: "));
-                return;
-            }
-            int res = PyRun_SimpleString(wstr_to_utf8((const TCHAR*)cmd).c_str());
-            auto dbg = res;
         }
         catch (...)
         {
@@ -459,5 +450,5 @@ IMPLEMENT_ARX_ENTRYPOINT(AcRxPyApp)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyload, pyload, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyreload, pyreload, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyrxver, pyrxver, ACRX_CMD_TRANSPARENT, NULL)
-//ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycommand, pycommand, ACRX_CMD_TRANSPARENT, NULL)
+ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycommand, pycommand, ACRX_CMD_TRANSPARENT, NULL)
 //ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _doit, doit, ACRX_CMD_TRANSPARENT, NULL)
