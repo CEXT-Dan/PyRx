@@ -42,20 +42,21 @@ def include_attr(name):
     
 def generate_doc(moduleName, module):
     with open(moduleName, 'w') as f:
+
         for name, obj in inspect.getmembers(module):
             if inspect.isclass(obj):
                 f.write('\n')
                 f.write(f'class {name}:\n')
 
-            for func_name, func in inspect.getmembers(obj):
-                if include_attr(func_name):
-                    try:
-                        f.write(f'    def {func_name} {inspect.signature(func)}:\n')
-                    except:
-                        f.write(f'    def {func_name} (self, *args, **kwargs):\n')
-                    f.write(f"      '''{func.__doc__}'''")
-                    f.write('\n    ...\n')
-
+                for func_name, func in inspect.getmembers(obj):
+                    if include_attr(func_name):
+                        try:
+                            f.write(f'    def {func_name} {inspect.signature(func)}:\n')
+                        except:
+                            f.write(f'    def {func_name} (self, *args, **kwargs):\n')
+                        f.write(f"      '''{func.__doc__}'''")
+                        f.write('\n    ...\n')
+                        
 def PyRxCmd_pygendocs():
     generate_doc('PyRxApp.pyi',PyRxApp)
     generate_doc('PyRx.pyi',PyRx)
