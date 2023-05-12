@@ -18,6 +18,7 @@ def PyRxCmd_pycreate_mtext():
         print(mtext.contents())
         print(mtext.textHeight())
         mtext.setRotation(1.5708)
+        mtext.setAttachment(PyDb.MText.kBottomCenter)
         model.appendAcDbEntity(mtext)
     except Exception as err:
         PyRxApp.Printf(err)

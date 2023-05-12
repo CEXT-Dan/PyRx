@@ -25,8 +25,8 @@ class MyJig(PyEd.Jig):
     def sampler(self):
         self.setUserInputControls
         (
-            PyEd.UserInputControls(
-                PyEd.UserInputControls.kAccept3dCoordinates | PyEd.UserInputControls.kNullResponseAccepted)
+           PyEd.Jig.UserInputControls(
+              PyEd.Jig.UserInputControls.kAccept3dCoordinates | PyEd.Jig.UserInputControls.kNullResponseAccepted)
         )
         point_result_tuple = self.acquirePoint(self.curPoint)
         self.curPoint = point_result_tuple[1]
@@ -62,7 +62,7 @@ def PyRxCmd_pyjigstyle():
         jig.setDispPrompt("\nPick endPoint")
 
         # use the style overload
-        if jig.drag(style) != PyEd.DragStatus.kNormal:
+        if jig.drag(style) != PyEd.Jig.DragStatus.kNormal:
             print('oops')
             return
 
@@ -91,7 +91,7 @@ def PyRxCmd_pyjig():
 
         jig = MyJig(line, point_result_tuple[1])
         jig.setDispPrompt("\nPick endPoint")
-        if jig.drag() != PyEd.DragStatus.kNormal:
+        if jig.drag() != PyEd.Jig.DragStatus.kNormal:
             print('oops')
             return
 

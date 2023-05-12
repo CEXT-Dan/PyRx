@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "PyDbDimension.h"
-
 #include "PyDbObjectId.h"
-#include "PyDbMtext.h"
+
+
 
 using namespace boost::python;
 
@@ -10,7 +10,7 @@ using namespace boost::python;
 //PyDbDimension
 void makePyDbDimensionWrapper()
 {
-    class_<PyDbDimension, bases<PyDbEntity>>("Dimension", no_init)
+    boost::python::scope scope = class_<PyDbDimension, bases<PyDbEntity>>("Dimension", no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("textDefinedSize", &PyDbDimension::textDefinedSize)
         .def("setTextDefinedSize", &PyDbDimension::setTextDefinedSize)
@@ -128,22 +128,22 @@ void makePyDbDimensionWrapper()
         ;
 
 #ifndef BRXAPP
-    enum_<AcDbDimension::DimInspect>("DimInspect")
-        .value("kShapeRemove", AcDbDimension::DimInspect::kShapeRemove)
-        .value("kShapeRound", AcDbDimension::DimInspect::kShapeRound)
-        .value("kShapeAngular", AcDbDimension::DimInspect::kShapeAngular)
-        .value("kShapeNone", AcDbDimension::DimInspect::kShapeNone)
-        .value("kShapeLabel", AcDbDimension::DimInspect::kShapeLabel)
-        .value("kShapeRate", AcDbDimension::DimInspect::kShapeRate)
+    enum_<PyDbDimension::DimInspect>("DimInspect")
+        .value("kShapeRemove", PyDbDimension::DimInspect::kShapeRemove)
+        .value("kShapeRound", PyDbDimension::DimInspect::kShapeRound)
+        .value("kShapeAngular", PyDbDimension::DimInspect::kShapeAngular)
+        .value("kShapeNone", PyDbDimension::DimInspect::kShapeNone)
+        .value("kShapeLabel", PyDbDimension::DimInspect::kShapeLabel)
+        .value("kShapeRate", PyDbDimension::DimInspect::kShapeRate)
         .export_values()
         ;
 #endif
 
 #ifndef BRXAPP
-    enum_<AcDbDimension::CenterMarkType>("CenterMarkType")
-        .value("kMark", AcDbDimension::CenterMarkType::kMark)
-        .value("kLine", AcDbDimension::CenterMarkType::kLine)
-        .value("kNone", AcDbDimension::CenterMarkType::kNone)
+    enum_<PyDbDimension::CenterMarkType>("CenterMarkType")
+        .value("kMark", PyDbDimension::CenterMarkType::kMark)
+        .value("kLine", PyDbDimension::CenterMarkType::kLine)
+        .value("kNone", PyDbDimension::CenterMarkType::kNone)
         .export_values()
         ;
 #endif
@@ -278,14 +278,14 @@ Acad::ErrorStatus PyDbDimension::setDimensionStyle(const PyDbObjectId& val)
     return impObj()->setDimensionStyle(val.m_id);
 }
 
-AcDbMText::AttachmentPoint PyDbDimension::textAttachment() const
+PyDbMText::AttachmentPoint PyDbDimension::textAttachment() const
 {
-    return impObj()->textAttachment();
+    return static_cast<PyDbMText::AttachmentPoint>(impObj()->textAttachment());
 }
 
-Acad::ErrorStatus PyDbDimension::setTextAttachment(AcDbMText::AttachmentPoint eAtt)
+Acad::ErrorStatus PyDbDimension::setTextAttachment(PyDbMText::AttachmentPoint eAtt)
 {
-    return impObj()->setTextAttachment(eAtt);
+    return impObj()->setTextAttachment(static_cast<AcDbMText::AttachmentPoint>(eAtt));
 }
 
 AcDb::LineSpacingStyle PyDbDimension::textLineSpacingStyle() const
@@ -1006,9 +1006,9 @@ Acad::ErrorStatus PyDbDimension::setToleranceSuppressZeroInches(bool val)
 }
 
 #ifndef BRXAPP
-AcDbDimension::CenterMarkType PyDbDimension::centerMarkType() const
+PyDbDimension::CenterMarkType PyDbDimension::centerMarkType() const
 {
-    return impObj()->centerMarkType();
+    return static_cast<PyDbDimension::CenterMarkType>(impObj()->centerMarkType());
 }
 #endif
 std::string PyDbDimension::className()

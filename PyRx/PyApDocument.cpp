@@ -3,11 +3,13 @@
 #include "PyAcEditor.h"
 
 using namespace boost::python;
+
+
 //-----------------------------------------------------------------------------------------
 //PyApDocument Wrapper
 void makeAcApDocumentWrapper()
 {
-    class_<PyApDocument, bases<PyRxObject>>("Document", boost::python::no_init)
+    boost::python::scope scope = class_<PyApDocument, bases<PyRxObject>>("Document", boost::python::no_init)
         .def("className", &PyApDocument::className).staticmethod("className")
         .def("database", &PyApDocument::database)
         .def("editor", &PyApDocument::editor)
@@ -27,18 +29,55 @@ void makeAcApDocumentWrapper()
         .def("upgradeDocOpen", &PyApDocument::upgradeDocOpen)
         .def("downgradeDocOpen", &PyApDocument::downgradeDocOpen)
         ;
+
+    enum_<PyApDocument::SaveFormat>("SaveFormat")
+        .value("kUnknown", PyApDocument::SaveFormat::kUnknown)
+        .value("kR12_dxf", PyApDocument::SaveFormat::kR12_dxf)
+        .value("kR13_dwg", PyApDocument::SaveFormat::kR13_dwg)
+        .value("kR13_dxf", PyApDocument::SaveFormat::kR13_dxf)
+        .value("kR14_dwg", PyApDocument::SaveFormat::kR14_dwg)
+        .value("kR14_dxf", PyApDocument::SaveFormat::kR14_dxf)
+        .value("k2000_dwg", PyApDocument::SaveFormat::k2000_dwg)
+        .value("k2000_dxf", PyApDocument::SaveFormat::k2000_dxf)
+        .value("k2000_Template", PyApDocument::SaveFormat::k2000_Template)
+        .value("k2000_Standard", PyApDocument::SaveFormat::k2000_Standard)
+        .value("k2000_xml", PyApDocument::SaveFormat::k2000_xml)
+        .value("k2004_dwg", PyApDocument::SaveFormat::k2004_dwg)
+        .value("k2004_dxf", PyApDocument::SaveFormat::k2004_dxf)
+        .value("k2004_Template", PyApDocument::SaveFormat::k2004_Template)
+        .value("k2004_Standard", PyApDocument::SaveFormat::k2004_Standard)
+        .value("k2007_dwg", PyApDocument::SaveFormat::k2007_dwg)
+        .value("k2007_dxf", PyApDocument::SaveFormat::k2007_dxf)
+        .value("k2007_Template", PyApDocument::SaveFormat::k2007_Template)
+        .value("k2007_Standard", PyApDocument::SaveFormat::k2007_Standard)
+        .value("k2010_dwg", PyApDocument::SaveFormat::k2010_dwg)
+        .value("k2010_dxf", PyApDocument::SaveFormat::k2010_dxf)
+        .value("k2010_Template", PyApDocument::SaveFormat::k2010_Template)
+        .value("k2010_Standard", PyApDocument::SaveFormat::k2010_Standard)
+        .value("k2013_dwg", PyApDocument::SaveFormat::k2013_dwg)
+        .value("k2013_dxf", PyApDocument::SaveFormat::k2013_dxf)
+        .value("k2013_Template", PyApDocument::SaveFormat::k2013_Template)
+        .value("k2013_Standard", PyApDocument::SaveFormat::k2013_Standard)
+        .value("k2018_dwg", PyApDocument::SaveFormat::k2018_dwg)
+        .value("k2018_dxf", PyApDocument::SaveFormat::k2018_dxf)
+        .value("k2018_Template", PyApDocument::SaveFormat::k2018_Template)
+        .value("k2018_Standard", PyApDocument::SaveFormat::k2018_Standard)
+        .value("kNative", PyApDocument::SaveFormat::kNative)
+        .value("kNative_Template", PyApDocument::SaveFormat::kNative_Template)
+        .export_values()
+        ;
 }
 
 //-----------------------------------------------------------------------------------------
 //PyApDocument
 PyApDocument::PyApDocument(AcApDocument* ptr, bool autoDelete)
-    : PyRxObject(ptr, autoDelete,false)
+    : PyRxObject(ptr, autoDelete, false)
 {
 }
 
 std::string PyApDocument::fileName() const
 {
-   return wstr_to_utf8(impObj()->fileName());
+    return wstr_to_utf8(impObj()->fileName());
 }
 
 PyDbDatabase PyApDocument::database() const
@@ -48,7 +87,7 @@ PyDbDatabase PyApDocument::database() const
 
 AcApDocument::SaveFormat PyApDocument::formatForSave() const
 {
-   return impObj()->formatForSave();
+    return impObj()->formatForSave();
 }
 
 AcAp::DocLockMode PyApDocument::lockMode1() const
