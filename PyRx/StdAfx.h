@@ -330,6 +330,5 @@ inline AcGePoint3dArray PyListToPoint3dArray(const boost::python::object& iterab
     return arr;
 }
 
-
 #pragma pack (pop)
 

@@ -7,6 +7,29 @@
 
 using namespace boost::python;
 
+enum class CmdFlags
+{
+    kMODAL = ACRX_CMD_MODAL,
+    kTRANSPARENT = ACRX_CMD_TRANSPARENT,
+    kUSEPICKSET = ACRX_CMD_USEPICKSET,
+    kREDRAW = ACRX_CMD_REDRAW,
+    kNOPERSPECTIVE = ACRX_CMD_NOPERSPECTIVE,
+    kNOMULTIPLE = ACRX_CMD_NOMULTIPLE,
+    kNOTILEMODE = ACRX_CMD_NOTILEMODE,
+    kNOPAPERSPACE = ACRX_CMD_NOPAPERSPACE,
+    kNOOEM = ACRX_CMD_NOOEM,
+    kUNDEFINED = ACRX_CMD_UNDEFINED,
+    kINPROGRESS = ACRX_CMD_INPROGRESS,
+    kDEFUN = ACRX_CMD_DEFUN,
+    kNOINTERNALLOCK = ACRX_CMD_NOINTERNALLOCK,
+    kDOCREADLOCK = ACRX_CMD_DOCREADLOCK,
+    kDOCEXCLUSIVELOCK = ACRX_CMD_DOCEXCLUSIVELOCK,
+    kSESSION = ACRX_CMD_SESSION,
+    kINTERRUPTIBLE = ACRX_CMD_INTERRUPTIBLE,
+    kNOHISTORY = ACRX_CMD_NOHISTORY,
+    kNO_UNDO_MARKER = ACRX_CMD_NO_UNDO_MARKER,
+    kNOBEDIT = ACRX_CMD_NOBEDIT,
+};
 
 uint64_t acadMainWnd()
 {
@@ -37,37 +60,27 @@ BOOST_PYTHON_MODULE(PyAp)
     makeAcApDocumentWrapper();
     makePyApDocManagerReactorWrapper();
 
-    enum_<int>("CmdFlags")
-        .value("MODAL", ACRX_CMD_MODAL)
-        .value("TRANSPARENT", ACRX_CMD_TRANSPARENT)
-        .value("USEPICKSET", ACRX_CMD_USEPICKSET)
-        .value("REDRAW", ACRX_CMD_REDRAW)
-        .value("NOPERSPECTIVE", ACRX_CMD_NOPERSPECTIVE)
-        .value("NOMULTIPLE", ACRX_CMD_NOMULTIPLE)
-        .value("NOTILEMODE", ACRX_CMD_NOTILEMODE)
-        .value("NOPAPERSPACE", ACRX_CMD_NOPAPERSPACE)
-#ifndef BRXAPP
-        .value("DEPRECATED", ACRX_CMD_DEPRECATED)
-#endif
-        .value("NOOEM", ACRX_CMD_NOOEM)
-        .value("UNDEFINED", ACRX_CMD_UNDEFINED)
-        .value("INPROGRESS", ACRX_CMD_INPROGRESS)
-        .value("DEFUN", ACRX_CMD_DEFUN)
-        .value("NOINTERNALLOCK", ACRX_CMD_NOINTERNALLOCK)
-        .value("DOCREADLOCK", ACRX_CMD_DOCREADLOCK)
-        .value("DOCEXCLUSIVELOCK", ACRX_CMD_DOCEXCLUSIVELOCK)
-        .value("SESSION", ACRX_CMD_SESSION)
-        .value("INTERRUPTIBLE", ACRX_CMD_INTERRUPTIBLE)
-        .value("NOHISTORY", ACRX_CMD_NOHISTORY)
-        .value("NO_UNDO_MARKER", ACRX_CMD_NO_UNDO_MARKER)
-        .value("NOBEDIT", ACRX_CMD_NOBEDIT)
-#ifndef BRXAPP
-        .value("NOACTIONRECORDING", ACRX_CMD_NOACTIONRECORDING)
-        .value("ACTIONMACRO", ACRX_CMD_ACTIONMACRO)
-        .value("RELAXASSOC", ACRX_CMD_RELAXASSOC)
-        .value("NOINFERCONSTRAINT", ACRX_CMD_NOINFERCONSTRAINT)
-        .value("TEMPSHOWDYNDIM", ACRX_CMD_TEMPSHOWDYNDIM)
-#endif
+    enum_<CmdFlags>("CmdFlags")
+        .value("MODAL", CmdFlags::kMODAL)
+        .value("TRANSPARENT", CmdFlags::kTRANSPARENT)
+        .value("USEPICKSET", CmdFlags::kUSEPICKSET)
+        .value("REDRAW", CmdFlags::kREDRAW)
+        .value("NOPERSPECTIVE", CmdFlags::kNOPERSPECTIVE)
+        .value("NOMULTIPLE", CmdFlags::kNOMULTIPLE)
+        .value("NOTILEMODE", CmdFlags::kNOTILEMODE)
+        .value("NOPAPERSPACE", CmdFlags::kNOPAPERSPACE)
+        .value("NOOEM", CmdFlags::kNOOEM)
+        .value("UNDEFINED", CmdFlags::kUNDEFINED)
+        .value("INPROGRESS", CmdFlags::kINPROGRESS)
+        .value("DEFUN", CmdFlags::kDEFUN)
+        .value("NOINTERNALLOCK", CmdFlags::kNOINTERNALLOCK)
+        .value("DOCREADLOCK", CmdFlags::kDOCREADLOCK)
+        .value("DOCEXCLUSIVELOCK", CmdFlags::kDOCEXCLUSIVELOCK)
+        .value("SESSION", CmdFlags::kSESSION)
+        .value("INTERRUPTIBLE", CmdFlags::kINTERRUPTIBLE)
+        .value("NOHISTORY", CmdFlags::kNOHISTORY)
+        .value("NO_UNDO_MARKER", CmdFlags::kNO_UNDO_MARKER)
+        .value("NOBEDIT", CmdFlags::kNOBEDIT)
         .export_values()
         ;
 
@@ -81,42 +94,7 @@ BOOST_PYTHON_MODULE(PyAp)
         .value("kXWrite", AcAp::DocLockMode::kXWrite)
         .export_values()
         ;
-    enum_<AcApDocument::SaveFormat>("SaveFormat")
-        .value("kUnknown", AcApDocument::SaveFormat::kUnknown)
-        .value("kR12_dxf", AcApDocument::SaveFormat::kR12_dxf)
-        .value("kR13_dwg", AcApDocument::SaveFormat::kR13_dwg)
-        .value("kR13_dxf", AcApDocument::SaveFormat::kR13_dxf)
-        .value("kR14_dwg", AcApDocument::SaveFormat::kR14_dwg)
-        .value("kR14_dxf", AcApDocument::SaveFormat::kR14_dxf)
-        .value("k2000_dwg", AcApDocument::SaveFormat::k2000_dwg)
-        .value("k2000_dxf", AcApDocument::SaveFormat::k2000_dxf)
-        .value("k2000_Template", AcApDocument::SaveFormat::k2000_Template)
-        .value("k2000_Standard", AcApDocument::SaveFormat::k2000_Standard)
-        .value("k2000_xml", AcApDocument::SaveFormat::k2000_xml)
-        .value("k2004_dwg", AcApDocument::SaveFormat::k2004_dwg)
-        .value("k2004_dxf", AcApDocument::SaveFormat::k2004_dxf)
-        .value("k2004_Template", AcApDocument::SaveFormat::k2004_Template)
-        .value("k2004_Standard", AcApDocument::SaveFormat::k2004_Standard)
-        .value("k2007_dwg", AcApDocument::SaveFormat::k2007_dwg)
-        .value("k2007_dxf", AcApDocument::SaveFormat::k2007_dxf)
-        .value("k2007_Template", AcApDocument::SaveFormat::k2007_Template)
-        .value("k2007_Standard", AcApDocument::SaveFormat::k2007_Standard)
-        .value("k2010_dwg", AcApDocument::SaveFormat::k2010_dwg)
-        .value("k2010_dxf", AcApDocument::SaveFormat::k2010_dxf)
-        .value("k2010_Template", AcApDocument::SaveFormat::k2010_Template)
-        .value("k2010_Standard", AcApDocument::SaveFormat::k2010_Standard)
-        .value("k2013_dwg", AcApDocument::SaveFormat::k2013_dwg)
-        .value("k2013_dxf", AcApDocument::SaveFormat::k2013_dxf)
-        .value("k2013_Template", AcApDocument::SaveFormat::k2013_Template)
-        .value("k2013_Standard", AcApDocument::SaveFormat::k2013_Standard)
-        .value("k2018_dwg", AcApDocument::SaveFormat::k2018_dwg)
-        .value("k2018_dxf", AcApDocument::SaveFormat::k2018_dxf)
-        .value("k2018_Template", AcApDocument::SaveFormat::k2018_Template)
-        .value("k2018_Standard", AcApDocument::SaveFormat::k2018_Standard)
-        .value("kNative", AcApDocument::SaveFormat::kNative)
-        .value("kNative_Template", AcApDocument::SaveFormat::kNative_Template)
-        .export_values()
-        ;
+
 };
 
 void initPyApModule()

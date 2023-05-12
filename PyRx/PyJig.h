@@ -9,7 +9,6 @@ class PyDbObjectId;
 void makeAcEdJigWrapper();
 
 class PyJig : public AcEdJig, public boost::python::wrapper<PyJig>
-
 {
 public:
     PyJig(const PyDbEntity& ent);

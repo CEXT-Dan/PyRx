@@ -11,7 +11,7 @@ using namespace boost::python;
 //PyDbText
 void makePyDbTextWrapper()
 {
-    class_<PyDbText, bases<PyDbEntity>>("Text")
+    boost::python::scope scope = class_<PyDbText, bases<PyDbEntity>>("Text")
         .def(init<>())
         .def(init<AcGePoint3d&, const std::string&>())
         .def(init<AcGePoint3d&, const std::string&, PyDbObjectId&, double, double>())
@@ -53,22 +53,23 @@ void makePyDbTextWrapper()
         .def("className", &PyDbText::className).staticmethod("className")
         .def("desc", &PyDbText::desc).staticmethod("desc")
         ;
-    enum_<AcDbText::AcTextAlignment>("TextAlignment")
-        .value("kTextAlignmentLeft", AcDbText::AcTextAlignment::kTextAlignmentLeft)
-        .value("kTextAlignmentCenter", AcDbText::AcTextAlignment::kTextAlignmentCenter)
-        .value("kTextAlignmentRight", AcDbText::AcTextAlignment::kTextAlignmentRight)
-        .value("kTextAlignmentAligned", AcDbText::AcTextAlignment::kTextAlignmentAligned)
-        .value("kTextAlignmentMiddle", AcDbText::AcTextAlignment::kTextAlignmentMiddle)
-        .value("kTextAlignmentFit", AcDbText::AcTextAlignment::kTextAlignmentFit)
-        .value("kTextAlignmentTopLeft", AcDbText::AcTextAlignment::kTextAlignmentTopLeft)
-        .value("kTextAlignmentTopCenter", AcDbText::AcTextAlignment::kTextAlignmentTopCenter)
-        .value("kTextAlignmentTopRight", AcDbText::AcTextAlignment::kTextAlignmentTopRight)
-        .value("kTextAlignmentMiddleLeft", AcDbText::AcTextAlignment::kTextAlignmentMiddleLeft)
-        .value("kTextAlignmentMiddleCenter", AcDbText::AcTextAlignment::kTextAlignmentMiddleCenter)
-        .value("kTextAlignmentMiddleRight", AcDbText::AcTextAlignment::kTextAlignmentMiddleRight)
-        .value("kTextAlignmentBottomLeft", AcDbText::AcTextAlignment::kTextAlignmentBottomLeft)
-        .value("kTextAlignmentBottomCenter", AcDbText::AcTextAlignment::kTextAlignmentBottomCenter)
-        .value("kTextAlignmentBottomRight", AcDbText::AcTextAlignment::kTextAlignmentBottomRight)
+
+    enum_<PyDbText::TextAlignment>("TextAlignment")
+        .value("kTextAlignmentLeft", PyDbText::TextAlignment::kTextAlignmentLeft)
+        .value("kTextAlignmentCenter", PyDbText::TextAlignment::kTextAlignmentCenter)
+        .value("kTextAlignmentRight", PyDbText::TextAlignment::kTextAlignmentRight)
+        .value("kTextAlignmentAligned", PyDbText::TextAlignment::kTextAlignmentAligned)
+        .value("kTextAlignmentMiddle", PyDbText::TextAlignment::kTextAlignmentMiddle)
+        .value("kTextAlignmentFit", PyDbText::TextAlignment::kTextAlignmentFit)
+        .value("kTextAlignmentTopLeft", PyDbText::TextAlignment::kTextAlignmentTopLeft)
+        .value("kTextAlignmentTopCenter", PyDbText::TextAlignment::kTextAlignmentTopCenter)
+        .value("kTextAlignmentTopRight", PyDbText::TextAlignment::kTextAlignmentTopRight)
+        .value("kTextAlignmentMiddleLeft", PyDbText::TextAlignment::kTextAlignmentMiddleLeft)
+        .value("kTextAlignmentMiddleCenter", PyDbText::TextAlignment::kTextAlignmentMiddleCenter)
+        .value("kTextAlignmentMiddleRight", PyDbText::TextAlignment::kTextAlignmentMiddleRight)
+        .value("kTextAlignmentBottomLeft", PyDbText::TextAlignment::kTextAlignmentBottomLeft)
+        .value("kTextAlignmentBottomCenter", PyDbText::TextAlignment::kTextAlignmentBottomCenter)
+        .value("kTextAlignmentBottomRight", PyDbText::TextAlignment::kTextAlignmentBottomRight)
         .export_values()
         ;
 }
@@ -298,14 +299,14 @@ boost::python::list PyDbText::getBoundingPoints() const
 #endif // ARXAPP
 }
 
-AcDbText::AcTextAlignment PyDbText::justification() const
+PyDbText::TextAlignment PyDbText::justification() const
 {
-    return impObj()->justification();
+    return static_cast<PyDbText::TextAlignment>(impObj()->justification());
 }
 
-Acad::ErrorStatus PyDbText::setJustification(AcDbText::AcTextAlignment val)
+Acad::ErrorStatus PyDbText::setJustification(PyDbText::TextAlignment val)
 {
-    return impObj()->setJustification(val);
+    return impObj()->setJustification(static_cast<AcDbText::AcTextAlignment>(val));
 }
 
 std::string PyDbText::className()
@@ -480,7 +481,7 @@ PyDbMText PyDbAttributeDefinition::getMTextAttributeDefinition() const
     AcDbMText* ptr = impObj()->getMTextAttributeDefinition();
     if (ptr == nullptr)
         throw PyNullObject(std::source_location::current());
-    return PyDbMText(ptr,true);
+    return PyDbMText(ptr, true);
 }
 
 Acad::ErrorStatus PyDbAttributeDefinition::setMTextAttributeDefinition(const PyDbMText& mt)
@@ -643,7 +644,7 @@ bool PyDbAttribute::isMTextAttribute() const
 
 PyDbMText PyDbAttribute::getMTextAttribute() const
 {
-    return PyDbMText(impObj()->getMTextAttribute(),true);
+    return PyDbMText(impObj()->getMTextAttribute(), true);
 }
 
 Acad::ErrorStatus PyDbAttribute::setMTextAttribute(PyDbMText& mt)
@@ -2457,7 +2458,7 @@ AcDbLine* PyDbLine::impObj(const std::source_location& src /*= std::source_locat
 //PyDbPolyline
 void makPyDbPolylineWrapper()
 {
-    class_<PyDbPolyline, bases<PyDbCurve>>("Polyline")
+    boost::python::scope scope = class_<PyDbPolyline, bases<PyDbCurve>>("Polyline")
         .def(init<>())
         .def(init<unsigned int>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
@@ -2504,12 +2505,12 @@ void makPyDbPolylineWrapper()
         .def("desc", &PyDbPolyline::desc).staticmethod("desc")
         ;
 
-    enum_<AcDbPolyline::SegType>("SegType")
-        .value("kLine", AcDbPolyline::SegType::kLine)
-        .value("kArc", AcDbPolyline::SegType::kArc)
-        .value("kCoincident", AcDbPolyline::SegType::kCoincident)
-        .value("kPoint", AcDbPolyline::SegType::kPoint)
-        .value("kEmpty", AcDbPolyline::SegType::kEmpty)
+    enum_<PyDbPolyline::SegType>("SegType")
+        .value("kLine", PyDbPolyline::SegType::kLine)
+        .value("kArc", PyDbPolyline::SegType::kArc)
+        .value("kCoincident", PyDbPolyline::SegType::kCoincident)
+        .value("kPoint", PyDbPolyline::SegType::kPoint)
+        .value("kEmpty", PyDbPolyline::SegType::kEmpty)
         ;
 }
 
@@ -2553,9 +2554,9 @@ AcGePoint2d PyDbPolyline::getPoint2dAt(unsigned int idx) const
     return pnt;
 }
 
-AcDbPolyline::SegType PyDbPolyline::segType(unsigned int index) const
+PyDbPolyline::SegType PyDbPolyline::segType(unsigned int index) const
 {
-    return impObj()->segType(index);
+    return static_cast<PyDbPolyline::SegType>(impObj()->segType(index));
 }
 
 Adesk::Boolean PyDbPolyline::onSegAt(unsigned int index, const AcGePoint2d& pt2d, double param) const

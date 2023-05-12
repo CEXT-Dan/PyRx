@@ -48,7 +48,7 @@ void makeAcCmColorWrapper()
 //AcCmTransparency no conversion, so we don't need a py wrapper
 void makeAcCmTransparencyWrapper()
 {
-    class_<AcCmTransparency>("Transparency")
+    boost::python::scope scope = class_<AcCmTransparency>("Transparency")
         .def(init<Adesk::UInt8>())
         .def(init<double>())
         .def("setAlpha", &AcCmTransparency::setAlpha)
@@ -77,7 +77,7 @@ void makeAcCmTransparencyWrapper()
 //AcCmEntityColor no conversion, so we don't need a py wrapper
 void makeAcCmEntityColorWrapper()
 {
-    class_<AcCmEntityColor>("EntityColor")
+    boost::python::scope scope = class_<AcCmEntityColor>("EntityColor")
         .def(init<Adesk::UInt8, Adesk::UInt8, Adesk::UInt8>())
 #if defined(GRXAPP) || defined(ZRXAPP)
 #else
@@ -146,7 +146,7 @@ void makeAcCmEntityColorWrapper()
         ;
 
     //TODO: find better enum
-    enum_<AcCmEntityColor::Color>("AcCmColor")
+    enum_<AcCmEntityColor::Color>("Color")
         .value("kRed", AcCmEntityColor::Color::kRed)
         .value("kGreen", AcCmEntityColor::Color::kGreen)
         .value("kBlue", AcCmEntityColor::Color::kBlue)

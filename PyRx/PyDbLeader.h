@@ -10,6 +10,15 @@ void makePyDbLeaderWrapper();
 class PyDbLeader : public PyDbCurve
 {
 public:
+    enum class AnnoType
+    {
+        kMText = AcDbLeader::AnnoType::kMText,
+        kFcf = AcDbLeader::AnnoType::kFcf,
+        kBlockRef = AcDbLeader::AnnoType::kBlockRef,
+        kNoAnno = AcDbLeader::AnnoType::kNoAnno,
+    };
+
+public:
     PyDbLeader();
     virtual ~PyDbLeader() override = default;
     PyDbLeader(AcDbLeader* ptr, bool autoDelete);
@@ -42,7 +51,7 @@ public:
     Acad::ErrorStatus   evaluateLeader();
     AcGeVector3d        annotationOffset() const;
     Acad::ErrorStatus   setAnnotationOffset(const AcGeVector3d& offset);
-    AcDbLeader::AnnoType annoType()   const;
+    PyDbLeader::AnnoType annoType()   const;
     double               annoHeight() const;
     double               annoWidth()  const;
     double               dimasz() const;

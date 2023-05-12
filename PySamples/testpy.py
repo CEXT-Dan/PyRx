@@ -26,7 +26,8 @@ def OnPyUnloadDwg():
 
 def PyRxCmd_pycmd():
     try:
-        do_select()
+        a = PyDb.EntityColor.Color.kRed
+        print(a)
         #createAlignedDimension()
         #table()
         #mtext()

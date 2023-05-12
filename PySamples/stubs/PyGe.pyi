@@ -782,7 +782,7 @@ evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
     C++ signature :
         class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
 
-evalPoint( (Curve2d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
@@ -851,7 +851,7 @@ getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve2d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
@@ -1434,7 +1434,7 @@ evalPoint( (Curve3d)arg1, (float)arg2) -> Point3d :
     C++ signature :
         class AcGePoint3d evalPoint(class PyGeCurve3d {lvalue},double)
 
-evalPoint( (Curve3d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve3d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve3d {lvalue},double,int)'''
@@ -1534,7 +1534,7 @@ getProjClosestPointsTo( (Curve3d)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4)
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve3d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve3d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve3d {lvalue},int)
@@ -2283,7 +2283,7 @@ evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
     C++ signature :
         class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
 
-evalPoint( (Curve2d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
@@ -2352,7 +2352,7 @@ getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve2d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
@@ -2734,7 +2734,7 @@ evalPoint( (Curve3d)arg1, (float)arg2) -> Point3d :
     C++ signature :
         class AcGePoint3d evalPoint(class PyGeCurve3d {lvalue},double)
 
-evalPoint( (Curve3d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve3d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve3d {lvalue},double,int)'''
@@ -2827,7 +2827,7 @@ getProjClosestPointsTo( (Curve3d)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4)
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve3d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve3d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve3d {lvalue},int)
@@ -3242,19 +3242,19 @@ closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
     ...
     def continuityAtKnot (self, *args, **kwargs):
       '''
-continuityAtKnot( (SplineEnt2d)arg1, (CmdFlags)arg2) -> int :
+continuityAtKnot( (SplineEnt2d)arg1, (int)arg2) -> int :
 
     C++ signature :
         int continuityAtKnot(class PyGeSplineEnt2d {lvalue},int)
 
-continuityAtKnot( (SplineEnt2d)arg1, (CmdFlags)arg2, (Tol)arg3) -> int :
+continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
 
     C++ signature :
         int continuityAtKnot(class PyGeSplineEnt2d {lvalue},int,class AcGeTol)'''
     ...
     def controlPointAt (self, *args, **kwargs):
       '''
-controlPointAt( (SplineEnt2d)arg1, (CmdFlags)arg2) -> Point2d :
+controlPointAt( (SplineEnt2d)arg1, (int)arg2) -> Point2d :
 
     C++ signature :
         class AcGePoint2d controlPointAt(class PyGeSplineEnt2d {lvalue},int)'''
@@ -3316,7 +3316,7 @@ evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
     C++ signature :
         class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
 
-evalPoint( (Curve2d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
@@ -3385,7 +3385,7 @@ getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve2d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
@@ -3552,7 +3552,7 @@ isRational( (SplineEnt2d)arg1) -> bool :
     ...
     def knotAt (self, *args, **kwargs):
       '''
-knotAt( (SplineEnt2d)arg1, (CmdFlags)arg2) -> float :
+knotAt( (SplineEnt2d)arg1, (int)arg2) -> float :
 
     C++ signature :
         double knotAt(class PyGeSplineEnt2d {lvalue},int)'''
@@ -3673,7 +3673,7 @@ scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
     ...
     def setControlPointAt (self, *args, **kwargs):
       '''
-setControlPointAt( (SplineEnt2d)arg1, (CmdFlags)arg2, (Point2d)arg3) -> SplineEnt2d :
+setControlPointAt( (SplineEnt2d)arg1, (int)arg2, (Point2d)arg3) -> SplineEnt2d :
 
     C++ signature :
         class PyGeSplineEnt2d {lvalue} setControlPointAt(class PyGeSplineEnt2d {lvalue},int,class AcGePoint2d)'''
@@ -3692,7 +3692,7 @@ setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
     ...
     def setKnotAt (self, *args, **kwargs):
       '''
-setKnotAt( (SplineEnt2d)arg1, (CmdFlags)arg2, (float)arg3) -> SplineEnt2d :
+setKnotAt( (SplineEnt2d)arg1, (int)arg2, (float)arg3) -> SplineEnt2d :
 
     C++ signature :
         class PyGeSplineEnt2d {lvalue} setKnotAt(class PyGeSplineEnt2d {lvalue},int,double)'''
@@ -3810,19 +3810,19 @@ closestPointTo( (Curve3d)arg1, (Curve3d)arg2, (Tol)arg3) -> tuple :
     ...
     def continuityAtKnot (self, *args, **kwargs):
       '''
-continuityAtKnot( (SplineEnt3d)arg1, (CmdFlags)arg2) -> int :
+continuityAtKnot( (SplineEnt3d)arg1, (int)arg2) -> int :
 
     C++ signature :
         int continuityAtKnot(class PyGeSplineEnt3d {lvalue},int)
 
-continuityAtKnot( (SplineEnt3d)arg1, (CmdFlags)arg2, (Tol)arg3) -> int :
+continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
 
     C++ signature :
         int continuityAtKnot(class PyGeSplineEnt3d {lvalue},int,class AcGeTol)'''
     ...
     def controlPointAt (self, *args, **kwargs):
       '''
-controlPointAt( (SplineEnt3d)arg1, (CmdFlags)arg2) -> Point3d :
+controlPointAt( (SplineEnt3d)arg1, (int)arg2) -> Point3d :
 
     C++ signature :
         class AcGePoint3d controlPointAt(class PyGeSplineEnt3d {lvalue},int)'''
@@ -3884,7 +3884,7 @@ evalPoint( (Curve3d)arg1, (float)arg2) -> Point3d :
     C++ signature :
         class AcGePoint3d evalPoint(class PyGeCurve3d {lvalue},double)
 
-evalPoint( (Curve3d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve3d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve3d {lvalue},double,int)'''
@@ -3977,7 +3977,7 @@ getProjClosestPointsTo( (Curve3d)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4)
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve3d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve3d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve3d {lvalue},int)
@@ -4163,7 +4163,7 @@ isRational( (SplineEnt3d)arg1) -> bool :
     ...
     def knotAt (self, *args, **kwargs):
       '''
-knotAt( (SplineEnt3d)arg1, (CmdFlags)arg2) -> float :
+knotAt( (SplineEnt3d)arg1, (int)arg2) -> float :
 
     C++ signature :
         double knotAt(class PyGeSplineEnt3d {lvalue},int)'''
@@ -4332,7 +4332,7 @@ scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
     ...
     def setControlPointAt (self, *args, **kwargs):
       '''
-setControlPointAt( (SplineEnt3d)arg1, (CmdFlags)arg2, (Point3d)arg3) -> SplineEnt3d :
+setControlPointAt( (SplineEnt3d)arg1, (int)arg2, (Point3d)arg3) -> SplineEnt3d :
 
     C++ signature :
         class PyGeSplineEnt3d {lvalue} setControlPointAt(class PyGeSplineEnt3d {lvalue},int,class AcGePoint3d)'''
@@ -4351,7 +4351,7 @@ setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
     ...
     def setKnotAt (self, *args, **kwargs):
       '''
-setKnotAt( (SplineEnt3d)arg1, (CmdFlags)arg2, (float)arg3) -> SplineEnt3d :
+setKnotAt( (SplineEnt3d)arg1, (int)arg2, (float)arg3) -> SplineEnt3d :
 
     C++ signature :
         class PyGeSplineEnt3d {lvalue} setKnotAt(class PyGeSplineEnt3d {lvalue},int,double)'''
@@ -4501,7 +4501,7 @@ evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
     C++ signature :
         class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
 
-evalPoint( (Curve2d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
@@ -4570,7 +4570,7 @@ getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve2d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
@@ -4950,7 +4950,7 @@ evalPoint( (Curve3d)arg1, (float)arg2) -> Point3d :
     C++ signature :
         class AcGePoint3d evalPoint(class PyGeCurve3d {lvalue},double)
 
-evalPoint( (Curve3d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve3d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve3d {lvalue},double,int)'''
@@ -5043,7 +5043,7 @@ getProjClosestPointsTo( (Curve3d)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4)
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve3d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve3d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve3d {lvalue},int)
@@ -5932,7 +5932,7 @@ evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
     C++ signature :
         class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
 
-evalPoint( (Curve2d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
@@ -6001,7 +6001,7 @@ getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve2d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
@@ -6573,7 +6573,7 @@ evalPoint( (Curve3d)arg1, (float)arg2) -> Point3d :
     C++ signature :
         class AcGePoint3d evalPoint(class PyGeCurve3d {lvalue},double)
 
-evalPoint( (Curve3d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve3d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve3d {lvalue},double,int)'''
@@ -6673,7 +6673,7 @@ getProjClosestPointsTo( (Curve3d)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4)
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve3d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve3d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve3d {lvalue},int)
@@ -7895,7 +7895,7 @@ evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
     C++ signature :
         class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
 
-evalPoint( (Curve2d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
@@ -7964,7 +7964,7 @@ getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve2d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
@@ -8344,7 +8344,7 @@ evalPoint( (Curve3d)arg1, (float)arg2) -> Point3d :
     C++ signature :
         class AcGePoint3d evalPoint(class PyGeCurve3d {lvalue},double)
 
-evalPoint( (Curve3d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve3d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve3d {lvalue},double,int)'''
@@ -8437,7 +8437,7 @@ getProjClosestPointsTo( (Curve3d)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4)
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve3d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve3d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve3d {lvalue},int)
@@ -9382,7 +9382,7 @@ evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
     C++ signature :
         class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
 
-evalPoint( (Curve2d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
@@ -9465,7 +9465,7 @@ getPerpLine( (LinearEnt2d)arg1, (Point2d)arg2) -> Line2d :
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve2d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
@@ -9954,7 +9954,7 @@ evalPoint( (Curve3d)arg1, (float)arg2) -> Point3d :
     C++ signature :
         class AcGePoint3d evalPoint(class PyGeCurve3d {lvalue},double)
 
-evalPoint( (Curve3d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve3d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve3d {lvalue},double,int)'''
@@ -10061,7 +10061,7 @@ getProjClosestPointsTo( (Curve3d)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4)
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve3d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve3d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve3d {lvalue},int)
@@ -10676,7 +10676,7 @@ evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
     C++ signature :
         class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
 
-evalPoint( (Curve2d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
@@ -10766,7 +10766,7 @@ getPerpLine( (LinearEnt2d)arg1, (Point2d)arg2) -> Line2d :
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve2d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
@@ -11292,7 +11292,7 @@ evalPoint( (Curve3d)arg1, (float)arg2) -> Point3d :
     C++ signature :
         class AcGePoint3d evalPoint(class PyGeCurve3d {lvalue},double)
 
-evalPoint( (Curve3d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve3d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve3d {lvalue},double,int)'''
@@ -11406,7 +11406,7 @@ getProjClosestPointsTo( (Curve3d)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4)
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve3d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve3d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve3d {lvalue},int)
@@ -12000,7 +12000,7 @@ evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
     C++ signature :
         class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
 
-evalPoint( (Curve2d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
@@ -12083,7 +12083,7 @@ getPerpLine( (LinearEnt2d)arg1, (Point2d)arg2) -> Line2d :
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve2d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
@@ -12537,7 +12537,7 @@ evalPoint( (Curve3d)arg1, (float)arg2) -> Point3d :
     C++ signature :
         class AcGePoint3d evalPoint(class PyGeCurve3d {lvalue},double)
 
-evalPoint( (Curve3d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve3d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve3d {lvalue},double,int)'''
@@ -12644,7 +12644,7 @@ getProjClosestPointsTo( (Curve3d)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4)
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve3d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve3d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve3d {lvalue},int)
@@ -13185,17 +13185,17 @@ isConformal( (Matrix2d)arg1, (float)arg2, (float)arg3, (bool)arg4, (Vector2d)arg
     ...
     def isEqualTo (self, *args, **kwargs):
       '''
-isEqualTo( (Matrix2d)arg1, (Matrix2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023B9BB037F0>]) -> bool :
+isEqualTo( (Matrix2d)arg1, (Matrix2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000285B98937F0>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeMatrix2d {lvalue},class AcGeMatrix2d [,class AcGeTol=<PyGe.Tol object at 0x0000023B9BB037F0>])'''
+        bool isEqualTo(class AcGeMatrix2d {lvalue},class AcGeMatrix2d [,class AcGeTol=<PyGe.Tol object at 0x00000285B98937F0>])'''
     ...
     def isScaledOrtho (self, *args, **kwargs):
       '''
-isScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023B9BB03910>]) -> bool :
+isScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000285B9893910>]) -> bool :
 
     C++ signature :
-        bool isScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000023B9BB03910>])'''
+        bool isScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000285B9893910>])'''
     ...
     def isSingular (self, *args, **kwargs):
       '''
@@ -13206,10 +13206,10 @@ isSingular( (Matrix2d)arg1, (Tol)arg2) -> bool :
     ...
     def isUniScaledOrtho (self, *args, **kwargs):
       '''
-isUniScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023B9BB03880>]) -> bool :
+isUniScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000285B9893880>]) -> bool :
 
     C++ signature :
-        bool isUniScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000023B9BB03880>])'''
+        bool isUniScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000285B9893880>])'''
     ...
     def kIdentity (self, *args, **kwargs):
       '''None'''
@@ -13316,10 +13316,10 @@ setToProduct( (Matrix2d)arg1, (Matrix2d)arg2, (Matrix2d)arg3) -> Matrix2d :
     ...
     def setToRotation (self, *args, **kwargs):
       '''
-setToRotation( (Matrix2d)arg1, (float)arg2 [, (Point2d)AcGePoint2d=<PyGe.Point2d object at 0x0000023B9B07E2D0>]) -> Matrix2d :
+setToRotation( (Matrix2d)arg1, (float)arg2 [, (Point2d)AcGePoint2d=<PyGe.Point2d object at 0x00000285B8F262D0>]) -> Matrix2d :
 
     C++ signature :
-        class AcGeMatrix2d {lvalue} setToRotation(class AcGeMatrix2d {lvalue},double [,class AcGePoint2d=<PyGe.Point2d object at 0x0000023B9B07E2D0>])'''
+        class AcGeMatrix2d {lvalue} setToRotation(class AcGeMatrix2d {lvalue},double [,class AcGePoint2d=<PyGe.Point2d object at 0x00000285B8F262D0>])'''
     ...
     def setToScaling (self, *args, **kwargs):
       '''
@@ -13824,19 +13824,19 @@ closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
     ...
     def continuityAtKnot (self, *args, **kwargs):
       '''
-continuityAtKnot( (SplineEnt2d)arg1, (CmdFlags)arg2) -> int :
+continuityAtKnot( (SplineEnt2d)arg1, (int)arg2) -> int :
 
     C++ signature :
         int continuityAtKnot(class PyGeSplineEnt2d {lvalue},int)
 
-continuityAtKnot( (SplineEnt2d)arg1, (CmdFlags)arg2, (Tol)arg3) -> int :
+continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
 
     C++ signature :
         int continuityAtKnot(class PyGeSplineEnt2d {lvalue},int,class AcGeTol)'''
     ...
     def controlPointAt (self, *args, **kwargs):
       '''
-controlPointAt( (SplineEnt2d)arg1, (CmdFlags)arg2) -> Point2d :
+controlPointAt( (SplineEnt2d)arg1, (int)arg2) -> Point2d :
 
     C++ signature :
         class AcGePoint2d controlPointAt(class PyGeSplineEnt2d {lvalue},int)'''
@@ -13898,7 +13898,7 @@ evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
     C++ signature :
         class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
 
-evalPoint( (Curve2d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
@@ -13967,7 +13967,7 @@ getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve2d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
@@ -14134,7 +14134,7 @@ isRational( (SplineEnt2d)arg1) -> bool :
     ...
     def knotAt (self, *args, **kwargs):
       '''
-knotAt( (SplineEnt2d)arg1, (CmdFlags)arg2) -> float :
+knotAt( (SplineEnt2d)arg1, (int)arg2) -> float :
 
     C++ signature :
         double knotAt(class PyGeSplineEnt2d {lvalue},int)'''
@@ -14255,7 +14255,7 @@ scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
     ...
     def setControlPointAt (self, *args, **kwargs):
       '''
-setControlPointAt( (SplineEnt2d)arg1, (CmdFlags)arg2, (Point2d)arg3) -> SplineEnt2d :
+setControlPointAt( (SplineEnt2d)arg1, (int)arg2, (Point2d)arg3) -> SplineEnt2d :
 
     C++ signature :
         class PyGeSplineEnt2d {lvalue} setControlPointAt(class PyGeSplineEnt2d {lvalue},int,class AcGePoint2d)'''
@@ -14274,7 +14274,7 @@ setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
     ...
     def setKnotAt (self, *args, **kwargs):
       '''
-setKnotAt( (SplineEnt2d)arg1, (CmdFlags)arg2, (float)arg3) -> SplineEnt2d :
+setKnotAt( (SplineEnt2d)arg1, (int)arg2, (float)arg3) -> SplineEnt2d :
 
     C++ signature :
         class PyGeSplineEnt2d {lvalue} setKnotAt(class PyGeSplineEnt2d {lvalue},int,double)'''
@@ -14392,19 +14392,19 @@ closestPointTo( (Curve3d)arg1, (Curve3d)arg2, (Tol)arg3) -> tuple :
     ...
     def continuityAtKnot (self, *args, **kwargs):
       '''
-continuityAtKnot( (SplineEnt3d)arg1, (CmdFlags)arg2) -> int :
+continuityAtKnot( (SplineEnt3d)arg1, (int)arg2) -> int :
 
     C++ signature :
         int continuityAtKnot(class PyGeSplineEnt3d {lvalue},int)
 
-continuityAtKnot( (SplineEnt3d)arg1, (CmdFlags)arg2, (Tol)arg3) -> int :
+continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
 
     C++ signature :
         int continuityAtKnot(class PyGeSplineEnt3d {lvalue},int,class AcGeTol)'''
     ...
     def controlPointAt (self, *args, **kwargs):
       '''
-controlPointAt( (SplineEnt3d)arg1, (CmdFlags)arg2) -> Point3d :
+controlPointAt( (SplineEnt3d)arg1, (int)arg2) -> Point3d :
 
     C++ signature :
         class AcGePoint3d controlPointAt(class PyGeSplineEnt3d {lvalue},int)'''
@@ -14466,7 +14466,7 @@ evalPoint( (Curve3d)arg1, (float)arg2) -> Point3d :
     C++ signature :
         class AcGePoint3d evalPoint(class PyGeCurve3d {lvalue},double)
 
-evalPoint( (Curve3d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve3d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve3d {lvalue},double,int)'''
@@ -14559,7 +14559,7 @@ getProjClosestPointsTo( (Curve3d)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4)
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve3d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve3d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve3d {lvalue},int)
@@ -14745,7 +14745,7 @@ isRational( (SplineEnt3d)arg1) -> bool :
     ...
     def knotAt (self, *args, **kwargs):
       '''
-knotAt( (SplineEnt3d)arg1, (CmdFlags)arg2) -> float :
+knotAt( (SplineEnt3d)arg1, (int)arg2) -> float :
 
     C++ signature :
         double knotAt(class PyGeSplineEnt3d {lvalue},int)'''
@@ -14914,7 +14914,7 @@ scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
     ...
     def setControlPointAt (self, *args, **kwargs):
       '''
-setControlPointAt( (SplineEnt3d)arg1, (CmdFlags)arg2, (Point3d)arg3) -> SplineEnt3d :
+setControlPointAt( (SplineEnt3d)arg1, (int)arg2, (Point3d)arg3) -> SplineEnt3d :
 
     C++ signature :
         class PyGeSplineEnt3d {lvalue} setControlPointAt(class PyGeSplineEnt3d {lvalue},int,class AcGePoint3d)'''
@@ -14933,7 +14933,7 @@ setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
     ...
     def setKnotAt (self, *args, **kwargs):
       '''
-setKnotAt( (SplineEnt3d)arg1, (CmdFlags)arg2, (float)arg3) -> SplineEnt3d :
+setKnotAt( (SplineEnt3d)arg1, (int)arg2, (float)arg3) -> SplineEnt3d :
 
     C++ signature :
         class PyGeSplineEnt3d {lvalue} setKnotAt(class PyGeSplineEnt3d {lvalue},int,double)'''
@@ -15222,7 +15222,7 @@ evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
     C++ signature :
         class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
 
-evalPoint( (Curve2d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
@@ -15291,7 +15291,7 @@ getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve2d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
@@ -15673,7 +15673,7 @@ evalPoint( (Curve3d)arg1, (float)arg2) -> Point3d :
     C++ signature :
         class AcGePoint3d evalPoint(class PyGeCurve3d {lvalue},double)
 
-evalPoint( (Curve3d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve3d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve3d {lvalue},double,int)'''
@@ -15766,7 +15766,7 @@ getProjClosestPointsTo( (Curve3d)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4)
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve3d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve3d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve3d {lvalue},int)
@@ -16193,12 +16193,12 @@ evalPoint( (Surface)arg1, (Point2d)arg2) -> Point3d :
     C++ signature :
         class AcGePoint3d evalPoint(class PyAcGeSurface {lvalue},class AcGePoint2d)
 
-evalPoint( (Surface)arg1, (Point2d)arg2, (CmdFlags)arg3, (list)arg4) -> Point3d :
+evalPoint( (Surface)arg1, (Point2d)arg2, (int)arg3, (list)arg4) -> Point3d :
 
     C++ signature :
         class AcGePoint3d evalPoint(class PyAcGeSurface {lvalue},class AcGePoint2d,int,class boost::python::list {lvalue})
 
-evalPoint( (Surface)arg1, (Point2d)arg2, (CmdFlags)arg3, (list)arg4, (Vector3d)arg5) -> Point3d :
+evalPoint( (Surface)arg1, (Point2d)arg2, (int)arg3, (list)arg4, (Vector3d)arg5) -> Point3d :
 
     C++ signature :
         class AcGePoint3d evalPoint(class PyAcGeSurface {lvalue},class AcGePoint2d,int,class boost::python::list {lvalue},class AcGeVector3d {lvalue})'''
@@ -16551,12 +16551,12 @@ evalPoint( (Surface)arg1, (Point2d)arg2) -> Point3d :
     C++ signature :
         class AcGePoint3d evalPoint(class PyAcGeSurface {lvalue},class AcGePoint2d)
 
-evalPoint( (Surface)arg1, (Point2d)arg2, (CmdFlags)arg3, (list)arg4) -> Point3d :
+evalPoint( (Surface)arg1, (Point2d)arg2, (int)arg3, (list)arg4) -> Point3d :
 
     C++ signature :
         class AcGePoint3d evalPoint(class PyAcGeSurface {lvalue},class AcGePoint2d,int,class boost::python::list {lvalue})
 
-evalPoint( (Surface)arg1, (Point2d)arg2, (CmdFlags)arg3, (list)arg4, (Vector3d)arg5) -> Point3d :
+evalPoint( (Surface)arg1, (Point2d)arg2, (int)arg3, (list)arg4, (Vector3d)arg5) -> Point3d :
 
     C++ signature :
         class AcGePoint3d evalPoint(class PyAcGeSurface {lvalue},class AcGePoint2d,int,class boost::python::list {lvalue},class AcGeVector3d {lvalue})'''
@@ -16949,10 +16949,10 @@ distanceTo( (Point2d)arg1, (Point2d)arg2) -> float :
     ...
     def isEqualTo (self, *args, **kwargs):
       '''
-isEqualTo( (Point2d)arg1, (Point2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023B9BB032E0>]) -> bool :
+isEqualTo( (Point2d)arg1, (Point2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000285B98932E0>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGePoint2d {lvalue},class AcGePoint2d [,class AcGeTol=<PyGe.Tol object at 0x0000023B9BB032E0>])'''
+        bool isEqualTo(class AcGePoint2d {lvalue},class AcGePoint2d [,class AcGeTol=<PyGe.Tol object at 0x00000285B98932E0>])'''
     ...
     def kOrigin (self, *args, **kwargs):
       '''None'''
@@ -16966,17 +16966,17 @@ mirror( (Point2d)arg1, (object)arg2) -> Point2d :
     ...
     def rotateBy (self, *args, **kwargs):
       '''
-rotateBy( (Point2d)arg1, (float)arg2 [, (Point2d)AcGePoint2d=<PyGe.Point2d object at 0x0000023B9B07E1F0>]) -> Point2d :
+rotateBy( (Point2d)arg1, (float)arg2 [, (Point2d)AcGePoint2d=<PyGe.Point2d object at 0x00000285B8F261F0>]) -> Point2d :
 
     C++ signature :
-        class AcGePoint2d {lvalue} rotateBy(class AcGePoint2d {lvalue},double [,class AcGePoint2d=<PyGe.Point2d object at 0x0000023B9B07E1F0>])'''
+        class AcGePoint2d {lvalue} rotateBy(class AcGePoint2d {lvalue},double [,class AcGePoint2d=<PyGe.Point2d object at 0x00000285B8F261F0>])'''
     ...
     def scaleBy (self, *args, **kwargs):
       '''
-scaleBy( (Point2d)arg1, (float)arg2 [, (Point2d)AcGePoint2d=<PyGe.Point2d object at 0x0000023B9B07E260>]) -> Point2d :
+scaleBy( (Point2d)arg1, (float)arg2 [, (Point2d)AcGePoint2d=<PyGe.Point2d object at 0x00000285B8F26260>]) -> Point2d :
 
     C++ signature :
-        class AcGePoint2d {lvalue} scaleBy(class AcGePoint2d {lvalue},double [,class AcGePoint2d=<PyGe.Point2d object at 0x0000023B9B07E260>])'''
+        class AcGePoint2d {lvalue} scaleBy(class AcGePoint2d {lvalue},double [,class AcGePoint2d=<PyGe.Point2d object at 0x00000285B8F26260>])'''
     ...
     def set (self, *args, **kwargs):
       '''
@@ -17163,10 +17163,10 @@ distanceTo( (Point3d)arg1, (Point3d)arg2) -> float :
     ...
     def isEqualTo (self, *args, **kwargs):
       '''
-isEqualTo( (Point3d)arg1, (Point3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023B9BB039A0>]) -> bool :
+isEqualTo( (Point3d)arg1, (Point3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000285B98939A0>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGePoint3d {lvalue},class AcGePoint3d [,class AcGeTol=<PyGe.Tol object at 0x0000023B9BB039A0>])'''
+        bool isEqualTo(class AcGePoint3d {lvalue},class AcGePoint3d [,class AcGeTol=<PyGe.Tol object at 0x00000285B98939A0>])'''
     ...
     def kOrigin (self, *args, **kwargs):
       '''None'''
@@ -17194,17 +17194,17 @@ project( (Point3d)arg1, (object)arg2, (Vector3d)arg3) -> Point3d :
     ...
     def rotateBy (self, *args, **kwargs):
       '''
-rotateBy( (Point3d)arg1, (float)arg2, (Vector3d)arg3 [, (Point3d)AcGePoint3d=<PyGe.Point3d object at 0x0000023B9B08DDC0>]) -> Point3d :
+rotateBy( (Point3d)arg1, (float)arg2, (Vector3d)arg3 [, (Point3d)AcGePoint3d=<PyGe.Point3d object at 0x00000285B8F2DDC0>]) -> Point3d :
 
     C++ signature :
-        class AcGePoint3d {lvalue} rotateBy(class AcGePoint3d {lvalue},double,class AcGeVector3d [,class AcGePoint3d=<PyGe.Point3d object at 0x0000023B9B08DDC0>])'''
+        class AcGePoint3d {lvalue} rotateBy(class AcGePoint3d {lvalue},double,class AcGeVector3d [,class AcGePoint3d=<PyGe.Point3d object at 0x00000285B8F2DDC0>])'''
     ...
     def scaleBy (self, *args, **kwargs):
       '''
-scaleBy( (Point3d)arg1, (float)arg2 [, (Point3d)AcGePoint3d=<PyGe.Point3d object at 0x0000023B9B08DE40>]) -> Point3d :
+scaleBy( (Point3d)arg1, (float)arg2 [, (Point3d)AcGePoint3d=<PyGe.Point3d object at 0x00000285B8F2DE40>]) -> Point3d :
 
     C++ signature :
-        class AcGePoint3d {lvalue} scaleBy(class AcGePoint3d {lvalue},double [,class AcGePoint3d=<PyGe.Point3d object at 0x0000023B9B08DE40>])'''
+        class AcGePoint3d {lvalue} scaleBy(class AcGePoint3d {lvalue},double [,class AcGePoint3d=<PyGe.Point3d object at 0x00000285B8F2DE40>])'''
     ...
     def set (self, *args, **kwargs):
       '''
@@ -17568,17 +17568,17 @@ curve( (PointOnCurve2d)arg1) -> Curve2d :
     ...
     def deriv (self, *args, **kwargs):
       '''
-deriv( (PointOnCurve2d)arg1, (CmdFlags)arg2) -> Vector2d :
+deriv( (PointOnCurve2d)arg1, (int)arg2) -> Vector2d :
 
     C++ signature :
         class AcGeVector2d deriv(class PyGePointOnCurve2d {lvalue},int)
 
-deriv( (PointOnCurve2d)arg1, (CmdFlags)arg2, (float)arg3) -> Vector2d :
+deriv( (PointOnCurve2d)arg1, (int)arg2, (float)arg3) -> Vector2d :
 
     C++ signature :
         class AcGeVector2d deriv(class PyGePointOnCurve2d {lvalue},int,double)
 
-deriv( (PointOnCurve2d)arg1, (CmdFlags)arg2, (Curve2d)arg3, (float)arg4) -> Vector2d :
+deriv( (PointOnCurve2d)arg1, (int)arg2, (Curve2d)arg3, (float)arg4) -> Vector2d :
 
     C++ signature :
         class AcGeVector2d deriv(class PyGePointOnCurve2d {lvalue},int,class PyGeCurve2d,double)'''
@@ -17938,19 +17938,19 @@ closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
     ...
     def continuityAtKnot (self, *args, **kwargs):
       '''
-continuityAtKnot( (SplineEnt2d)arg1, (CmdFlags)arg2) -> int :
+continuityAtKnot( (SplineEnt2d)arg1, (int)arg2) -> int :
 
     C++ signature :
         int continuityAtKnot(class PyGeSplineEnt2d {lvalue},int)
 
-continuityAtKnot( (SplineEnt2d)arg1, (CmdFlags)arg2, (Tol)arg3) -> int :
+continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
 
     C++ signature :
         int continuityAtKnot(class PyGeSplineEnt2d {lvalue},int,class AcGeTol)'''
     ...
     def controlPointAt (self, *args, **kwargs):
       '''
-controlPointAt( (SplineEnt2d)arg1, (CmdFlags)arg2) -> Point2d :
+controlPointAt( (SplineEnt2d)arg1, (int)arg2) -> Point2d :
 
     C++ signature :
         class AcGePoint2d controlPointAt(class PyGeSplineEnt2d {lvalue},int)'''
@@ -18012,7 +18012,7 @@ evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
     C++ signature :
         class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
 
-evalPoint( (Curve2d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
@@ -18031,7 +18031,7 @@ explode( (Curve2d)arg1, (Interval)arg2) -> list :
     ...
     def fitPointAt (self, *args, **kwargs):
       '''
-fitPointAt( (Polyline2d)arg1, (CmdFlags)arg2) -> Point2d :
+fitPointAt( (Polyline2d)arg1, (int)arg2) -> Point2d :
 
     C++ signature :
         class AcGePoint2d fitPointAt(class PyGePolyline2d {lvalue},int)'''
@@ -18088,7 +18088,7 @@ getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve2d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
@@ -18255,7 +18255,7 @@ isRational( (SplineEnt2d)arg1) -> bool :
     ...
     def knotAt (self, *args, **kwargs):
       '''
-knotAt( (SplineEnt2d)arg1, (CmdFlags)arg2) -> float :
+knotAt( (SplineEnt2d)arg1, (int)arg2) -> float :
 
     C++ signature :
         double knotAt(class PyGeSplineEnt2d {lvalue},int)'''
@@ -18383,14 +18383,14 @@ scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
     ...
     def setControlPointAt (self, *args, **kwargs):
       '''
-setControlPointAt( (SplineEnt2d)arg1, (CmdFlags)arg2, (Point2d)arg3) -> SplineEnt2d :
+setControlPointAt( (SplineEnt2d)arg1, (int)arg2, (Point2d)arg3) -> SplineEnt2d :
 
     C++ signature :
         class PyGeSplineEnt2d {lvalue} setControlPointAt(class PyGeSplineEnt2d {lvalue},int,class AcGePoint2d)'''
     ...
     def setFitPointAt (self, *args, **kwargs):
       '''
-setFitPointAt( (Polyline2d)arg1, (CmdFlags)arg2, (Point2d)arg3) -> Polyline2d :
+setFitPointAt( (Polyline2d)arg1, (int)arg2, (Point2d)arg3) -> Polyline2d :
 
     C++ signature :
         class PyGePolyline2d {lvalue} setFitPointAt(class PyGePolyline2d {lvalue},int,class AcGePoint2d)'''
@@ -18409,7 +18409,7 @@ setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
     ...
     def setKnotAt (self, *args, **kwargs):
       '''
-setKnotAt( (SplineEnt2d)arg1, (CmdFlags)arg2, (float)arg3) -> SplineEnt2d :
+setKnotAt( (SplineEnt2d)arg1, (int)arg2, (float)arg3) -> SplineEnt2d :
 
     C++ signature :
         class PyGeSplineEnt2d {lvalue} setKnotAt(class PyGeSplineEnt2d {lvalue},int,double)'''
@@ -18547,19 +18547,19 @@ closestPointTo( (Curve3d)arg1, (Curve3d)arg2, (Tol)arg3) -> tuple :
     ...
     def continuityAtKnot (self, *args, **kwargs):
       '''
-continuityAtKnot( (SplineEnt3d)arg1, (CmdFlags)arg2) -> int :
+continuityAtKnot( (SplineEnt3d)arg1, (int)arg2) -> int :
 
     C++ signature :
         int continuityAtKnot(class PyGeSplineEnt3d {lvalue},int)
 
-continuityAtKnot( (SplineEnt3d)arg1, (CmdFlags)arg2, (Tol)arg3) -> int :
+continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
 
     C++ signature :
         int continuityAtKnot(class PyGeSplineEnt3d {lvalue},int,class AcGeTol)'''
     ...
     def controlPointAt (self, *args, **kwargs):
       '''
-controlPointAt( (SplineEnt3d)arg1, (CmdFlags)arg2) -> Point3d :
+controlPointAt( (SplineEnt3d)arg1, (int)arg2) -> Point3d :
 
     C++ signature :
         class AcGePoint3d controlPointAt(class PyGeSplineEnt3d {lvalue},int)'''
@@ -18621,7 +18621,7 @@ evalPoint( (Curve3d)arg1, (float)arg2) -> Point3d :
     C++ signature :
         class AcGePoint3d evalPoint(class PyGeCurve3d {lvalue},double)
 
-evalPoint( (Curve3d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve3d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve3d {lvalue},double,int)'''
@@ -18640,7 +18640,7 @@ explode( (Curve3d)arg1, (Interval)arg2) -> list :
     ...
     def fitPointAt (self, *args, **kwargs):
       '''
-fitPointAt( (Polyline3d)arg1, (CmdFlags)arg2) -> Point3d :
+fitPointAt( (Polyline3d)arg1, (int)arg2) -> Point3d :
 
     C++ signature :
         class AcGePoint3d fitPointAt(class PyGePolyline3d {lvalue},int)'''
@@ -18721,7 +18721,7 @@ getProjClosestPointsTo( (Curve3d)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4)
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve3d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve3d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve3d {lvalue},int)
@@ -18907,7 +18907,7 @@ isRational( (SplineEnt3d)arg1) -> bool :
     ...
     def knotAt (self, *args, **kwargs):
       '''
-knotAt( (SplineEnt3d)arg1, (CmdFlags)arg2) -> float :
+knotAt( (SplineEnt3d)arg1, (int)arg2) -> float :
 
     C++ signature :
         double knotAt(class PyGeSplineEnt3d {lvalue},int)'''
@@ -19083,14 +19083,14 @@ scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
     ...
     def setControlPointAt (self, *args, **kwargs):
       '''
-setControlPointAt( (SplineEnt3d)arg1, (CmdFlags)arg2, (Point3d)arg3) -> SplineEnt3d :
+setControlPointAt( (SplineEnt3d)arg1, (int)arg2, (Point3d)arg3) -> SplineEnt3d :
 
     C++ signature :
         class PyGeSplineEnt3d {lvalue} setControlPointAt(class PyGeSplineEnt3d {lvalue},int,class AcGePoint3d)'''
     ...
     def setFitPointAt (self, *args, **kwargs):
       '''
-setFitPointAt( (Polyline3d)arg1, (CmdFlags)arg2, (Point3d)arg3) -> Polyline3d :
+setFitPointAt( (Polyline3d)arg1, (int)arg2, (Point3d)arg3) -> Polyline3d :
 
     C++ signature :
         class PyGePolyline3d {lvalue} setFitPointAt(class PyGePolyline3d {lvalue},int,class AcGePoint3d)'''
@@ -19109,7 +19109,7 @@ setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
     ...
     def setKnotAt (self, *args, **kwargs):
       '''
-setKnotAt( (SplineEnt3d)arg1, (CmdFlags)arg2, (float)arg3) -> SplineEnt3d :
+setKnotAt( (SplineEnt3d)arg1, (int)arg2, (float)arg3) -> SplineEnt3d :
 
     C++ signature :
         class PyGeSplineEnt3d {lvalue} setKnotAt(class PyGeSplineEnt3d {lvalue},int,double)'''
@@ -19566,7 +19566,7 @@ evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
     C++ signature :
         class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
 
-evalPoint( (Curve2d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
@@ -19649,7 +19649,7 @@ getPerpLine( (LinearEnt2d)arg1, (Point2d)arg2) -> Line2d :
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve2d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
@@ -20132,7 +20132,7 @@ evalPoint( (Curve3d)arg1, (float)arg2) -> Point3d :
     C++ signature :
         class AcGePoint3d evalPoint(class PyGeCurve3d {lvalue},double)
 
-evalPoint( (Curve3d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve3d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve3d {lvalue},double,int)'''
@@ -20239,7 +20239,7 @@ getProjClosestPointsTo( (Curve3d)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4)
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve3d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve3d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve3d {lvalue},int)
@@ -20948,19 +20948,19 @@ closestPointTo( (Curve2d)arg1, (Curve2d)arg2, (Tol)arg3) -> tuple :
     ...
     def continuityAtKnot (self, *args, **kwargs):
       '''
-continuityAtKnot( (SplineEnt2d)arg1, (CmdFlags)arg2) -> int :
+continuityAtKnot( (SplineEnt2d)arg1, (int)arg2) -> int :
 
     C++ signature :
         int continuityAtKnot(class PyGeSplineEnt2d {lvalue},int)
 
-continuityAtKnot( (SplineEnt2d)arg1, (CmdFlags)arg2, (Tol)arg3) -> int :
+continuityAtKnot( (SplineEnt2d)arg1, (int)arg2, (Tol)arg3) -> int :
 
     C++ signature :
         int continuityAtKnot(class PyGeSplineEnt2d {lvalue},int,class AcGeTol)'''
     ...
     def controlPointAt (self, *args, **kwargs):
       '''
-controlPointAt( (SplineEnt2d)arg1, (CmdFlags)arg2) -> Point2d :
+controlPointAt( (SplineEnt2d)arg1, (int)arg2) -> Point2d :
 
     C++ signature :
         class AcGePoint2d controlPointAt(class PyGeSplineEnt2d {lvalue},int)'''
@@ -21022,7 +21022,7 @@ evalPoint( (Curve2d)arg1, (float)arg2) -> Point2d :
     C++ signature :
         class AcGePoint2d evalPoint(class PyGeCurve2d {lvalue},double)
 
-evalPoint( (Curve2d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve2d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve2d {lvalue},double,int)'''
@@ -21091,7 +21091,7 @@ getNormalPoint( (Curve2d)arg1, (Point2d)arg2, (Tol)arg3) -> PointOnCurve2d :
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve2d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve2d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve2d {lvalue},int)
@@ -21258,7 +21258,7 @@ isRational( (SplineEnt2d)arg1) -> bool :
     ...
     def knotAt (self, *args, **kwargs):
       '''
-knotAt( (SplineEnt2d)arg1, (CmdFlags)arg2) -> float :
+knotAt( (SplineEnt2d)arg1, (int)arg2) -> float :
 
     C++ signature :
         double knotAt(class PyGeSplineEnt2d {lvalue},int)'''
@@ -21379,7 +21379,7 @@ scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
     ...
     def setControlPointAt (self, *args, **kwargs):
       '''
-setControlPointAt( (SplineEnt2d)arg1, (CmdFlags)arg2, (Point2d)arg3) -> SplineEnt2d :
+setControlPointAt( (SplineEnt2d)arg1, (int)arg2, (Point2d)arg3) -> SplineEnt2d :
 
     C++ signature :
         class PyGeSplineEnt2d {lvalue} setControlPointAt(class PyGeSplineEnt2d {lvalue},int,class AcGePoint2d)'''
@@ -21398,7 +21398,7 @@ setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
     ...
     def setKnotAt (self, *args, **kwargs):
       '''
-setKnotAt( (SplineEnt2d)arg1, (CmdFlags)arg2, (float)arg3) -> SplineEnt2d :
+setKnotAt( (SplineEnt2d)arg1, (int)arg2, (float)arg3) -> SplineEnt2d :
 
     C++ signature :
         class PyGeSplineEnt2d {lvalue} setKnotAt(class PyGeSplineEnt2d {lvalue},int,double)'''
@@ -21514,19 +21514,19 @@ closestPointTo( (Curve3d)arg1, (Curve3d)arg2, (Tol)arg3) -> tuple :
     ...
     def continuityAtKnot (self, *args, **kwargs):
       '''
-continuityAtKnot( (SplineEnt3d)arg1, (CmdFlags)arg2) -> int :
+continuityAtKnot( (SplineEnt3d)arg1, (int)arg2) -> int :
 
     C++ signature :
         int continuityAtKnot(class PyGeSplineEnt3d {lvalue},int)
 
-continuityAtKnot( (SplineEnt3d)arg1, (CmdFlags)arg2, (Tol)arg3) -> int :
+continuityAtKnot( (SplineEnt3d)arg1, (int)arg2, (Tol)arg3) -> int :
 
     C++ signature :
         int continuityAtKnot(class PyGeSplineEnt3d {lvalue},int,class AcGeTol)'''
     ...
     def controlPointAt (self, *args, **kwargs):
       '''
-controlPointAt( (SplineEnt3d)arg1, (CmdFlags)arg2) -> Point3d :
+controlPointAt( (SplineEnt3d)arg1, (int)arg2) -> Point3d :
 
     C++ signature :
         class AcGePoint3d controlPointAt(class PyGeSplineEnt3d {lvalue},int)'''
@@ -21588,7 +21588,7 @@ evalPoint( (Curve3d)arg1, (float)arg2) -> Point3d :
     C++ signature :
         class AcGePoint3d evalPoint(class PyGeCurve3d {lvalue},double)
 
-evalPoint( (Curve3d)arg1, (float)arg2, (CmdFlags)arg3) -> tuple :
+evalPoint( (Curve3d)arg1, (float)arg2, (int)arg3) -> tuple :
 
     C++ signature :
         class boost::python::tuple evalPoint(class PyGeCurve3d {lvalue},double,int)'''
@@ -21681,7 +21681,7 @@ getProjClosestPointsTo( (Curve3d)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4)
     ...
     def getSamplePoints (self, *args, **kwargs):
       '''
-getSamplePoints( (Curve3d)arg1, (CmdFlags)arg2) -> list :
+getSamplePoints( (Curve3d)arg1, (int)arg2) -> list :
 
     C++ signature :
         class boost::python::list getSamplePoints(class PyGeCurve3d {lvalue},int)
@@ -21867,7 +21867,7 @@ isRational( (SplineEnt3d)arg1) -> bool :
     ...
     def knotAt (self, *args, **kwargs):
       '''
-knotAt( (SplineEnt3d)arg1, (CmdFlags)arg2) -> float :
+knotAt( (SplineEnt3d)arg1, (int)arg2) -> float :
 
     C++ signature :
         double knotAt(class PyGeSplineEnt3d {lvalue},int)'''
@@ -22036,7 +22036,7 @@ scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
     ...
     def setControlPointAt (self, *args, **kwargs):
       '''
-setControlPointAt( (SplineEnt3d)arg1, (CmdFlags)arg2, (Point3d)arg3) -> SplineEnt3d :
+setControlPointAt( (SplineEnt3d)arg1, (int)arg2, (Point3d)arg3) -> SplineEnt3d :
 
     C++ signature :
         class PyGeSplineEnt3d {lvalue} setControlPointAt(class PyGeSplineEnt3d {lvalue},int,class AcGePoint3d)'''
@@ -22055,7 +22055,7 @@ setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
     ...
     def setKnotAt (self, *args, **kwargs):
       '''
-setKnotAt( (SplineEnt3d)arg1, (CmdFlags)arg2, (float)arg3) -> SplineEnt3d :
+setKnotAt( (SplineEnt3d)arg1, (int)arg2, (float)arg3) -> SplineEnt3d :
 
     C++ signature :
         class PyGeSplineEnt3d {lvalue} setKnotAt(class PyGeSplineEnt3d {lvalue},int,double)'''
@@ -22281,12 +22281,12 @@ evalPoint( (Surface)arg1, (Point2d)arg2) -> Point3d :
     C++ signature :
         class AcGePoint3d evalPoint(class PyAcGeSurface {lvalue},class AcGePoint2d)
 
-evalPoint( (Surface)arg1, (Point2d)arg2, (CmdFlags)arg3, (list)arg4) -> Point3d :
+evalPoint( (Surface)arg1, (Point2d)arg2, (int)arg3, (list)arg4) -> Point3d :
 
     C++ signature :
         class AcGePoint3d evalPoint(class PyAcGeSurface {lvalue},class AcGePoint2d,int,class boost::python::list {lvalue})
 
-evalPoint( (Surface)arg1, (Point2d)arg2, (CmdFlags)arg3, (list)arg4, (Vector3d)arg5) -> Point3d :
+evalPoint( (Surface)arg1, (Point2d)arg2, (int)arg3, (list)arg4, (Vector3d)arg5) -> Point3d :
 
     C++ signature :
         class AcGePoint3d evalPoint(class PyAcGeSurface {lvalue},class AcGePoint2d,int,class boost::python::list {lvalue},class AcGeVector3d {lvalue})'''
@@ -22626,45 +22626,45 @@ dotProduct( (Vector2d)arg1, (Vector2d)arg2) -> float :
     ...
     def isCodirectionalTo (self, *args, **kwargs):
       '''
-isCodirectionalTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023B9BB03640>]) -> bool :
+isCodirectionalTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000285B9893640>]) -> bool :
 
     C++ signature :
-        bool isCodirectionalTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000023B9BB03640>])'''
+        bool isCodirectionalTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x00000285B9893640>])'''
     ...
     def isEqualTo (self, *args, **kwargs):
       '''
-isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023B9BB03760>]) -> bool :
+isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000285B9893760>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000023B9BB03760>])'''
+        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x00000285B9893760>])'''
     ...
     def isParallelTo (self, *args, **kwargs):
       '''
-isParallelTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023B9BB035B0>]) -> bool :
+isParallelTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000285B98935B0>]) -> bool :
 
     C++ signature :
-        bool isParallelTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000023B9BB035B0>])'''
+        bool isParallelTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x00000285B98935B0>])'''
     ...
     def isPerpendicularTo (self, *args, **kwargs):
       '''
-isPerpendicularTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023B9BB036D0>]) -> bool :
+isPerpendicularTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000285B98936D0>]) -> bool :
 
     C++ signature :
-        bool isPerpendicularTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x0000023B9BB036D0>])'''
+        bool isPerpendicularTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x00000285B98936D0>])'''
     ...
     def isUnitLength (self, *args, **kwargs):
       '''
-isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023B9BB03490>]) -> bool :
+isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000285B9893490>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000023B9BB03490>])'''
+        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000285B9893490>])'''
     ...
     def isZeroLength (self, *args, **kwargs):
       '''
-isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023B9BB03520>]) -> bool :
+isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000285B9893520>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000023B9BB03520>])'''
+        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000285B9893520>])'''
     ...
     def kIdentity (self, *args, **kwargs):
       '''None'''
@@ -22705,17 +22705,17 @@ negate( (Vector2d)arg1) -> Vector2d :
     ...
     def normal (self, *args, **kwargs):
       '''
-normal( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023B9BB03370>]) -> Vector2d :
+normal( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000285B9893370>]) -> Vector2d :
 
     C++ signature :
-        class AcGeVector2d normal(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000023B9BB03370>])'''
+        class AcGeVector2d normal(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000285B9893370>])'''
     ...
     def normalize (self, *args, **kwargs):
       '''
-normalize( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023B9BB03400>]) -> Vector2d :
+normalize( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000285B9893400>]) -> Vector2d :
 
     C++ signature :
-        class AcGeVector2d {lvalue} normalize(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000023B9BB03400>])'''
+        class AcGeVector2d {lvalue} normalize(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000285B9893400>])'''
     ...
     def rotateBy (self, *args, **kwargs):
       '''
@@ -22928,45 +22928,45 @@ dotProduct( (Vector3d)arg1, (Vector3d)arg2) -> float :
     ...
     def isCodirectionalTo (self, *args, **kwargs):
       '''
-isCodirectionalTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023B9BB03C70>]) -> bool :
+isCodirectionalTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000285B9893C70>]) -> bool :
 
     C++ signature :
-        bool isCodirectionalTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x0000023B9BB03C70>])'''
+        bool isCodirectionalTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x00000285B9893C70>])'''
     ...
     def isEqualTo (self, *args, **kwargs):
       '''
-isEqualTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023B9BB03D90>]) -> bool :
+isEqualTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000285B9893D90>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x0000023B9BB03D90>])'''
+        bool isEqualTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x00000285B9893D90>])'''
     ...
     def isParallelTo (self, *args, **kwargs):
       '''
-isParallelTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023B9BB03BE0>]) -> bool :
+isParallelTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000285B9893BE0>]) -> bool :
 
     C++ signature :
-        bool isParallelTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x0000023B9BB03BE0>])'''
+        bool isParallelTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x00000285B9893BE0>])'''
     ...
     def isPerpendicularTo (self, *args, **kwargs):
       '''
-isPerpendicularTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023B9BB03D00>]) -> bool :
+isPerpendicularTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000285B9893D00>]) -> bool :
 
     C++ signature :
-        bool isPerpendicularTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x0000023B9BB03D00>])'''
+        bool isPerpendicularTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x00000285B9893D00>])'''
     ...
     def isUnitLength (self, *args, **kwargs):
       '''
-isUnitLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023B9BB03AC0>]) -> bool :
+isUnitLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000285B9893AC0>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000023B9BB03AC0>])'''
+        bool isUnitLength(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000285B9893AC0>])'''
     ...
     def isZeroLength (self, *args, **kwargs):
       '''
-isZeroLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023B9BB03B50>]) -> bool :
+isZeroLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000285B9893B50>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000023B9BB03B50>])'''
+        bool isZeroLength(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000285B9893B50>])'''
     ...
     def kIdentity (self, *args, **kwargs):
       '''None'''
@@ -23017,10 +23017,10 @@ negate( (Vector3d)arg1) -> Vector3d :
     ...
     def normal (self, *args, **kwargs):
       '''
-normal( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x0000023B9BB03A30>]) -> Vector3d :
+normal( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000285B9893A30>]) -> Vector3d :
 
     C++ signature :
-        class AcGeVector3d normal(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x0000023B9BB03A30>])'''
+        class AcGeVector3d normal(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000285B9893A30>])'''
     ...
     def normalize (self, *args, **kwargs):
       '''

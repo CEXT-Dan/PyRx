@@ -1,268 +1,3 @@
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCREADLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INPROGRESS (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INTERRUPTIBLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def MODAL (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOBEDIT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINTERNALLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOMULTIPLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOOEM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPAPERSPACE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPERSPECTIVE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOTILEMODE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NO_UNDO_MARKER (self, *args, **kwargs):
-      '''None'''
-    ...
-    def REDRAW (self, *args, **kwargs):
-      '''None'''
-    ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
-    def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TRANSPARENT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def UNDEFINED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def USEPICKSET (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
 
 class Application:
     def __eq__ (self, value, /):
@@ -294,13 +29,7 @@ docManager( (Application)arg1) -> DocManager :
     ...
 
 class CmdFlags:
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
     def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
       '''None'''
     ...
     def DOCEXCLUSIVELOCK (self, *args, **kwargs):
@@ -318,16 +47,10 @@ class CmdFlags:
     def MODAL (self, *args, **kwargs):
       '''None'''
     ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
     def NOBEDIT (self, *args, **kwargs):
       '''None'''
     ...
     def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
       '''None'''
     ...
     def NOINTERNALLOCK (self, *args, **kwargs):
@@ -354,13 +77,7 @@ class CmdFlags:
     def REDRAW (self, *args, **kwargs):
       '''None'''
     ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
     def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
       '''None'''
     ...
     def TRANSPARENT (self, *args, **kwargs):
@@ -498,13 +215,7 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
     def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
       '''None'''
     ...
     def DOCEXCLUSIVELOCK (self, *args, **kwargs):
@@ -522,16 +233,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def MODAL (self, *args, **kwargs):
       '''None'''
     ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
     def NOBEDIT (self, *args, **kwargs):
       '''None'''
     ...
     def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
       '''None'''
     ...
     def NOINTERNALLOCK (self, *args, **kwargs):
@@ -558,13 +263,7 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def REDRAW (self, *args, **kwargs):
       '''None'''
     ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
     def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
       '''None'''
     ...
     def TRANSPARENT (self, *args, **kwargs):
@@ -763,13 +462,7 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
     def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
       '''None'''
     ...
     def DOCEXCLUSIVELOCK (self, *args, **kwargs):
@@ -787,16 +480,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def MODAL (self, *args, **kwargs):
       '''None'''
     ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
     def NOBEDIT (self, *args, **kwargs):
       '''None'''
     ...
     def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
       '''None'''
     ...
     def NOINTERNALLOCK (self, *args, **kwargs):
@@ -823,13 +510,7 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def REDRAW (self, *args, **kwargs):
       '''None'''
     ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
     def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
       '''None'''
     ...
     def TRANSPARENT (self, *args, **kwargs):
@@ -1028,13 +709,7 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
     def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
       '''None'''
     ...
     def DOCEXCLUSIVELOCK (self, *args, **kwargs):
@@ -1052,16 +727,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def MODAL (self, *args, **kwargs):
       '''None'''
     ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
     def NOBEDIT (self, *args, **kwargs):
       '''None'''
     ...
     def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
       '''None'''
     ...
     def NOINTERNALLOCK (self, *args, **kwargs):
@@ -1088,278 +757,7 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def REDRAW (self, *args, **kwargs):
       '''None'''
     ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
     def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TRANSPARENT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def UNDEFINED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def USEPICKSET (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCREADLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INPROGRESS (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INTERRUPTIBLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def MODAL (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOBEDIT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINTERNALLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOMULTIPLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOOEM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPAPERSPACE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPERSPECTIVE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOTILEMODE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NO_UNDO_MARKER (self, *args, **kwargs):
-      '''None'''
-    ...
-    def REDRAW (self, *args, **kwargs):
-      '''None'''
-    ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
-    def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
       '''None'''
     ...
     def TRANSPARENT (self, *args, **kwargs):
@@ -1800,7 +1198,7 @@ curDocument( (DocManager)arg1) -> Document :
     ...
     def defaultFormatForSave (self, *args, **kwargs):
       '''
-defaultFormatForSave( (DocManager)arg1) -> SaveFormat :
+defaultFormatForSave( (DocManager)arg1) -> object :
 
     C++ signature :
         enum AcApDocument::SaveFormat defaultFormatForSave(class PyApDocManager {lvalue})'''
@@ -1960,7 +1358,7 @@ setCurDocument( (DocManager)arg1, (Document)arg2, (DocLockMode)arg3, (bool)arg4)
     ...
     def setDefaultFormatForSave (self, *args, **kwargs):
       '''
-setDefaultFormatForSave( (DocManager)arg1, (SaveFormat)arg2) -> ErrorStatus :
+setDefaultFormatForSave( (DocManager)arg1, (object)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setDefaultFormatForSave(class PyApDocManager {lvalue},enum AcApDocument::SaveFormat)'''
@@ -2094,6 +1492,9 @@ removeReactor( (DocManagerReactor)arg1) -> None :
     ...
 
 class Document:
+    def SaveFormat (self, *args, **kwargs):
+      '''None'''
+    ...
     def __eq__ (self, *args, **kwargs):
       '''
 __eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
@@ -2157,7 +1558,7 @@ fileName( (Document)arg1) -> str :
     ...
     def formatForSave (self, *args, **kwargs):
       '''
-formatForSave( (Document)arg1) -> SaveFormat :
+formatForSave( (Document)arg1) -> object :
 
     C++ signature :
         enum AcApDocument::SaveFormat formatForSave(class PyApDocument {lvalue})'''
@@ -2171,7 +1572,7 @@ getCountOfLispList( (Document)arg1) -> int :
     ...
     def getItemOfLispList (self, *args, **kwargs):
       '''
-getItemOfLispList( (Document)arg1, (CmdFlags)arg2) -> tuple :
+getItemOfLispList( (Document)arg1, (int)arg2) -> tuple :
 
     C++ signature :
         class boost::python::tuple getItemOfLispList(class PyApDocument {lvalue},int)'''
@@ -2203,4638 +1604,6 @@ isQuiescent( (Document)arg1) -> bool :
 
     C++ signature :
         bool isQuiescent(class PyApDocument {lvalue})'''
-    ...
-    def lockMode (self, *args, **kwargs):
-      '''
-lockMode( (Document)arg1) -> DocLockMode :
-
-    C++ signature :
-        enum AcAp::DocLockMode lockMode(class PyApDocument {lvalue})
-
-lockMode( (Document)arg1, (bool)arg2) -> DocLockMode :
-
-    C++ signature :
-        enum AcAp::DocLockMode lockMode(class PyApDocument {lvalue},bool)'''
-    ...
-    def myLockMode (self, *args, **kwargs):
-      '''
-myLockMode( (Document)arg1) -> DocLockMode :
-
-    C++ signature :
-        enum AcAp::DocLockMode myLockMode(class PyApDocument {lvalue})'''
-    ...
-    def popDbmod (self, *args, **kwargs):
-      '''
-popDbmod( (Document)arg1) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus popDbmod(class PyApDocument {lvalue})'''
-    ...
-    def pushDbmod (self, *args, **kwargs):
-      '''
-pushDbmod( (Document)arg1) -> None :
-
-    C++ signature :
-        void pushDbmod(class PyApDocument {lvalue})'''
-    ...
-    def setDocTitle (self, *args, **kwargs):
-      '''
-setDocTitle( (Document)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setDocTitle(class PyApDocument {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
-    ...
-    def upgradeDocOpen (self, *args, **kwargs):
-      '''
-upgradeDocOpen( (Document)arg1) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus upgradeDocOpen(class PyApDocument {lvalue})'''
-    ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCREADLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INPROGRESS (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INTERRUPTIBLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def MODAL (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOBEDIT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINTERNALLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOMULTIPLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOOEM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPAPERSPACE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPERSPECTIVE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOTILEMODE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NO_UNDO_MARKER (self, *args, **kwargs):
-      '''None'''
-    ...
-    def REDRAW (self, *args, **kwargs):
-      '''None'''
-    ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
-    def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TRANSPARENT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def UNDEFINED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def USEPICKSET (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCREADLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INPROGRESS (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INTERRUPTIBLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def MODAL (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOBEDIT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINTERNALLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOMULTIPLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOOEM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPAPERSPACE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPERSPECTIVE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOTILEMODE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NO_UNDO_MARKER (self, *args, **kwargs):
-      '''None'''
-    ...
-    def REDRAW (self, *args, **kwargs):
-      '''None'''
-    ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
-    def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TRANSPARENT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def UNDEFINED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def USEPICKSET (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCREADLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INPROGRESS (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INTERRUPTIBLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def MODAL (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOBEDIT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINTERNALLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOMULTIPLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOOEM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPAPERSPACE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPERSPECTIVE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOTILEMODE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NO_UNDO_MARKER (self, *args, **kwargs):
-      '''None'''
-    ...
-    def REDRAW (self, *args, **kwargs):
-      '''None'''
-    ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
-    def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TRANSPARENT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def UNDEFINED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def USEPICKSET (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCREADLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INPROGRESS (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INTERRUPTIBLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def MODAL (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOBEDIT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINTERNALLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOMULTIPLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOOEM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPAPERSPACE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPERSPECTIVE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOTILEMODE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NO_UNDO_MARKER (self, *args, **kwargs):
-      '''None'''
-    ...
-    def REDRAW (self, *args, **kwargs):
-      '''None'''
-    ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
-    def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TRANSPARENT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def UNDEFINED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def USEPICKSET (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCREADLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INPROGRESS (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INTERRUPTIBLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def MODAL (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOBEDIT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINTERNALLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOMULTIPLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOOEM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPAPERSPACE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPERSPECTIVE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOTILEMODE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NO_UNDO_MARKER (self, *args, **kwargs):
-      '''None'''
-    ...
-    def REDRAW (self, *args, **kwargs):
-      '''None'''
-    ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
-    def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TRANSPARENT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def UNDEFINED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def USEPICKSET (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCREADLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INPROGRESS (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INTERRUPTIBLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def MODAL (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOBEDIT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINTERNALLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOMULTIPLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOOEM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPAPERSPACE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPERSPECTIVE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOTILEMODE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NO_UNDO_MARKER (self, *args, **kwargs):
-      '''None'''
-    ...
-    def REDRAW (self, *args, **kwargs):
-      '''None'''
-    ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
-    def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TRANSPARENT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def UNDEFINED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def USEPICKSET (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCREADLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INPROGRESS (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INTERRUPTIBLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def MODAL (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOBEDIT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINTERNALLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOMULTIPLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOOEM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPAPERSPACE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPERSPECTIVE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOTILEMODE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NO_UNDO_MARKER (self, *args, **kwargs):
-      '''None'''
-    ...
-    def REDRAW (self, *args, **kwargs):
-      '''None'''
-    ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
-    def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TRANSPARENT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def UNDEFINED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def USEPICKSET (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCREADLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INPROGRESS (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INTERRUPTIBLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def MODAL (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOBEDIT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINTERNALLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOMULTIPLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOOEM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPAPERSPACE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPERSPECTIVE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOTILEMODE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NO_UNDO_MARKER (self, *args, **kwargs):
-      '''None'''
-    ...
-    def REDRAW (self, *args, **kwargs):
-      '''None'''
-    ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
-    def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TRANSPARENT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def UNDEFINED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def USEPICKSET (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCREADLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INPROGRESS (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INTERRUPTIBLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def MODAL (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOBEDIT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINTERNALLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOMULTIPLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOOEM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPAPERSPACE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPERSPECTIVE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOTILEMODE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NO_UNDO_MARKER (self, *args, **kwargs):
-      '''None'''
-    ...
-    def REDRAW (self, *args, **kwargs):
-      '''None'''
-    ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
-    def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TRANSPARENT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def UNDEFINED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def USEPICKSET (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCREADLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INPROGRESS (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INTERRUPTIBLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def MODAL (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOBEDIT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINTERNALLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOMULTIPLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOOEM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPAPERSPACE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPERSPECTIVE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOTILEMODE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NO_UNDO_MARKER (self, *args, **kwargs):
-      '''None'''
-    ...
-    def REDRAW (self, *args, **kwargs):
-      '''None'''
-    ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
-    def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TRANSPARENT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def UNDEFINED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def USEPICKSET (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCREADLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INPROGRESS (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INTERRUPTIBLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def MODAL (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOBEDIT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINTERNALLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOMULTIPLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOOEM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPAPERSPACE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPERSPECTIVE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOTILEMODE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NO_UNDO_MARKER (self, *args, **kwargs):
-      '''None'''
-    ...
-    def REDRAW (self, *args, **kwargs):
-      '''None'''
-    ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
-    def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TRANSPARENT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def UNDEFINED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def USEPICKSET (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCREADLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INPROGRESS (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INTERRUPTIBLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def MODAL (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOBEDIT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINTERNALLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOMULTIPLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOOEM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPAPERSPACE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPERSPECTIVE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOTILEMODE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NO_UNDO_MARKER (self, *args, **kwargs):
-      '''None'''
-    ...
-    def REDRAW (self, *args, **kwargs):
-      '''None'''
-    ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
-    def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TRANSPARENT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def UNDEFINED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def USEPICKSET (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCREADLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INPROGRESS (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INTERRUPTIBLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def MODAL (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOBEDIT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINTERNALLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOMULTIPLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOOEM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPAPERSPACE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPERSPECTIVE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOTILEMODE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NO_UNDO_MARKER (self, *args, **kwargs):
-      '''None'''
-    ...
-    def REDRAW (self, *args, **kwargs):
-      '''None'''
-    ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
-    def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TRANSPARENT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def UNDEFINED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def USEPICKSET (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCREADLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INPROGRESS (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INTERRUPTIBLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def MODAL (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOBEDIT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINTERNALLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOMULTIPLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOOEM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPAPERSPACE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPERSPECTIVE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOTILEMODE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NO_UNDO_MARKER (self, *args, **kwargs):
-      '''None'''
-    ...
-    def REDRAW (self, *args, **kwargs):
-      '''None'''
-    ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
-    def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TRANSPARENT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def UNDEFINED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def USEPICKSET (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCREADLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INPROGRESS (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INTERRUPTIBLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def MODAL (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOBEDIT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINTERNALLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOMULTIPLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOOEM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPAPERSPACE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPERSPECTIVE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOTILEMODE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NO_UNDO_MARKER (self, *args, **kwargs):
-      '''None'''
-    ...
-    def REDRAW (self, *args, **kwargs):
-      '''None'''
-    ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
-    def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TRANSPARENT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def UNDEFINED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def USEPICKSET (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCREADLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INPROGRESS (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INTERRUPTIBLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def MODAL (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOBEDIT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINTERNALLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOMULTIPLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOOEM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPAPERSPACE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPERSPECTIVE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOTILEMODE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NO_UNDO_MARKER (self, *args, **kwargs):
-      '''None'''
-    ...
-    def REDRAW (self, *args, **kwargs):
-      '''None'''
-    ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
-    def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TRANSPARENT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def UNDEFINED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def USEPICKSET (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DOCREADLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INPROGRESS (self, *args, **kwargs):
-      '''None'''
-    ...
-    def INTERRUPTIBLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def MODAL (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOBEDIT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINTERNALLOCK (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOMULTIPLE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOOEM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPAPERSPACE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOPERSPECTIVE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOTILEMODE (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NO_UNDO_MARKER (self, *args, **kwargs):
-      '''None'''
-    ...
-    def REDRAW (self, *args, **kwargs):
-      '''None'''
-    ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
-    def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TRANSPARENT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def UNDEFINED (self, *args, **kwargs):
-      '''None'''
-    ...
-    def USEPICKSET (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-
-class SaveFormat:
-    def __add__ (self, value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (self, value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (self, /, *args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (self, value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (self, value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (self, value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (self, value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio (self, /):
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count (self, /):
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length (self, /):
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''the denominator of a rational number in lowest terms'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''the imaginary part of a complex number'''
     ...
     def k2000_Standard (self, *args, **kwargs):
       '''None'''
@@ -6935,61 +1704,54 @@ Also known as the population count.
     def kUnknown (self, *args, **kwargs):
       '''None'''
     ...
-    def name (self, *args, **kwargs):
-      '''None'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''the numerator of a rational number in lowest terms'''
-    ...
-    def real (self, *args, **kwargs):
-      '''the real part of a complex number'''
-    ...
-    def to_bytes (self, /, length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
+    def lockMode (self, *args, **kwargs):
+      '''
+lockMode( (Document)arg1) -> DocLockMode :
 
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
+    C++ signature :
+        enum AcAp::DocLockMode lockMode(class PyApDocument {lvalue})
+
+lockMode( (Document)arg1, (bool)arg2) -> DocLockMode :
+
+    C++ signature :
+        enum AcAp::DocLockMode lockMode(class PyApDocument {lvalue},bool)'''
     ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    def myLockMode (self, *args, **kwargs):
+      '''
+myLockMode( (Document)arg1) -> DocLockMode :
+
+    C++ signature :
+        enum AcAp::DocLockMode myLockMode(class PyApDocument {lvalue})'''
     ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
+    def popDbmod (self, *args, **kwargs):
+      '''
+popDbmod( (Document)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus popDbmod(class PyApDocument {lvalue})'''
+    ...
+    def pushDbmod (self, *args, **kwargs):
+      '''
+pushDbmod( (Document)arg1) -> None :
+
+    C++ signature :
+        void pushDbmod(class PyApDocument {lvalue})'''
+    ...
+    def setDocTitle (self, *args, **kwargs):
+      '''
+setDocTitle( (Document)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setDocTitle(class PyApDocument {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def upgradeDocOpen (self, *args, **kwargs):
+      '''
+upgradeDocOpen( (Document)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus upgradeDocOpen(class PyApDocument {lvalue})'''
     ...
     def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
       '''None'''
     ...
     def DOCEXCLUSIVELOCK (self, *args, **kwargs):
@@ -7007,16 +1769,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def MODAL (self, *args, **kwargs):
       '''None'''
     ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
     def NOBEDIT (self, *args, **kwargs):
       '''None'''
     ...
     def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
       '''None'''
     ...
     def NOINTERNALLOCK (self, *args, **kwargs):
@@ -7043,13 +1799,7 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def REDRAW (self, *args, **kwargs):
       '''None'''
     ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
     def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
       '''None'''
     ...
     def TRANSPARENT (self, *args, **kwargs):
@@ -7248,13 +1998,7 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
     def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
       '''None'''
     ...
     def DOCEXCLUSIVELOCK (self, *args, **kwargs):
@@ -7272,16 +2016,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def MODAL (self, *args, **kwargs):
       '''None'''
     ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
     def NOBEDIT (self, *args, **kwargs):
       '''None'''
     ...
     def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
       '''None'''
     ...
     def NOINTERNALLOCK (self, *args, **kwargs):
@@ -7308,13 +2046,7 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def REDRAW (self, *args, **kwargs):
       '''None'''
     ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
     def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
       '''None'''
     ...
     def TRANSPARENT (self, *args, **kwargs):
@@ -7513,13 +2245,7 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
     def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
       '''None'''
     ...
     def DOCEXCLUSIVELOCK (self, *args, **kwargs):
@@ -7537,16 +2263,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def MODAL (self, *args, **kwargs):
       '''None'''
     ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
     def NOBEDIT (self, *args, **kwargs):
       '''None'''
     ...
     def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
       '''None'''
     ...
     def NOINTERNALLOCK (self, *args, **kwargs):
@@ -7573,13 +2293,7 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def REDRAW (self, *args, **kwargs):
       '''None'''
     ...
-    def RELAXASSOC (self, *args, **kwargs):
-      '''None'''
-    ...
     def SESSION (self, *args, **kwargs):
-      '''None'''
-    ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
       '''None'''
     ...
     def TRANSPARENT (self, *args, **kwargs):
@@ -7778,13 +2492,7 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def ACTIONMACRO (self, *args, **kwargs):
-      '''None'''
-    ...
     def DEFUN (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DEPRECATED (self, *args, **kwargs):
       '''None'''
     ...
     def DOCEXCLUSIVELOCK (self, *args, **kwargs):
@@ -7802,16 +2510,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def MODAL (self, *args, **kwargs):
       '''None'''
     ...
-    def NOACTIONRECORDING (self, *args, **kwargs):
-      '''None'''
-    ...
     def NOBEDIT (self, *args, **kwargs):
       '''None'''
     ...
     def NOHISTORY (self, *args, **kwargs):
-      '''None'''
-    ...
-    def NOINFERCONSTRAINT (self, *args, **kwargs):
       '''None'''
     ...
     def NOINTERNALLOCK (self, *args, **kwargs):
@@ -7838,13 +2540,3218 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     def REDRAW (self, *args, **kwargs):
       '''None'''
     ...
-    def RELAXASSOC (self, *args, **kwargs):
+    def SESSION (self, *args, **kwargs):
+      '''None'''
+    ...
+    def TRANSPARENT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def UNDEFINED (self, *args, **kwargs):
+      '''None'''
+    ...
+    def USEPICKSET (self, *args, **kwargs):
+      '''None'''
+    ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (*args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio ():
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count ():
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length ():
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def name (self, *args, **kwargs):
+      '''str(object='') -> str
+str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def real (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def to_bytes (length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def DEFUN (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCREADLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INPROGRESS (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INTERRUPTIBLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def MODAL (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOBEDIT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOHISTORY (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOINTERNALLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOMULTIPLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOOEM (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPAPERSPACE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPERSPECTIVE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOTILEMODE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NO_UNDO_MARKER (self, *args, **kwargs):
+      '''None'''
+    ...
+    def REDRAW (self, *args, **kwargs):
       '''None'''
     ...
     def SESSION (self, *args, **kwargs):
       '''None'''
     ...
-    def TEMPSHOWDYNDIM (self, *args, **kwargs):
+    def TRANSPARENT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def UNDEFINED (self, *args, **kwargs):
+      '''None'''
+    ...
+    def USEPICKSET (self, *args, **kwargs):
+      '''None'''
+    ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (*args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio ():
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count ():
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length ():
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def name (self, *args, **kwargs):
+      '''str(object='') -> str
+str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def real (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def to_bytes (length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def DEFUN (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCREADLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INPROGRESS (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INTERRUPTIBLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def MODAL (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOBEDIT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOHISTORY (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOINTERNALLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOMULTIPLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOOEM (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPAPERSPACE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPERSPECTIVE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOTILEMODE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NO_UNDO_MARKER (self, *args, **kwargs):
+      '''None'''
+    ...
+    def REDRAW (self, *args, **kwargs):
+      '''None'''
+    ...
+    def SESSION (self, *args, **kwargs):
+      '''None'''
+    ...
+    def TRANSPARENT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def UNDEFINED (self, *args, **kwargs):
+      '''None'''
+    ...
+    def USEPICKSET (self, *args, **kwargs):
+      '''None'''
+    ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (*args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio ():
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count ():
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length ():
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def name (self, *args, **kwargs):
+      '''str(object='') -> str
+str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def real (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def to_bytes (length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def DEFUN (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCREADLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INPROGRESS (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INTERRUPTIBLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def MODAL (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOBEDIT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOHISTORY (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOINTERNALLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOMULTIPLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOOEM (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPAPERSPACE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPERSPECTIVE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOTILEMODE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NO_UNDO_MARKER (self, *args, **kwargs):
+      '''None'''
+    ...
+    def REDRAW (self, *args, **kwargs):
+      '''None'''
+    ...
+    def SESSION (self, *args, **kwargs):
+      '''None'''
+    ...
+    def TRANSPARENT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def UNDEFINED (self, *args, **kwargs):
+      '''None'''
+    ...
+    def USEPICKSET (self, *args, **kwargs):
+      '''None'''
+    ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (*args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio ():
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count ():
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length ():
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def name (self, *args, **kwargs):
+      '''str(object='') -> str
+str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def real (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def to_bytes (length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def DEFUN (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCREADLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INPROGRESS (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INTERRUPTIBLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def MODAL (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOBEDIT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOHISTORY (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOINTERNALLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOMULTIPLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOOEM (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPAPERSPACE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPERSPECTIVE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOTILEMODE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NO_UNDO_MARKER (self, *args, **kwargs):
+      '''None'''
+    ...
+    def REDRAW (self, *args, **kwargs):
+      '''None'''
+    ...
+    def SESSION (self, *args, **kwargs):
+      '''None'''
+    ...
+    def TRANSPARENT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def UNDEFINED (self, *args, **kwargs):
+      '''None'''
+    ...
+    def USEPICKSET (self, *args, **kwargs):
+      '''None'''
+    ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (*args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio ():
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count ():
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length ():
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def name (self, *args, **kwargs):
+      '''str(object='') -> str
+str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def real (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def to_bytes (length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def DEFUN (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCREADLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INPROGRESS (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INTERRUPTIBLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def MODAL (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOBEDIT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOHISTORY (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOINTERNALLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOMULTIPLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOOEM (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPAPERSPACE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPERSPECTIVE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOTILEMODE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NO_UNDO_MARKER (self, *args, **kwargs):
+      '''None'''
+    ...
+    def REDRAW (self, *args, **kwargs):
+      '''None'''
+    ...
+    def SESSION (self, *args, **kwargs):
+      '''None'''
+    ...
+    def TRANSPARENT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def UNDEFINED (self, *args, **kwargs):
+      '''None'''
+    ...
+    def USEPICKSET (self, *args, **kwargs):
+      '''None'''
+    ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (*args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio ():
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count ():
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length ():
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def name (self, *args, **kwargs):
+      '''str(object='') -> str
+str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def real (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def to_bytes (length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def DEFUN (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCREADLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INPROGRESS (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INTERRUPTIBLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def MODAL (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOBEDIT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOHISTORY (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOINTERNALLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOMULTIPLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOOEM (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPAPERSPACE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPERSPECTIVE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOTILEMODE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NO_UNDO_MARKER (self, *args, **kwargs):
+      '''None'''
+    ...
+    def REDRAW (self, *args, **kwargs):
+      '''None'''
+    ...
+    def SESSION (self, *args, **kwargs):
+      '''None'''
+    ...
+    def TRANSPARENT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def UNDEFINED (self, *args, **kwargs):
+      '''None'''
+    ...
+    def USEPICKSET (self, *args, **kwargs):
+      '''None'''
+    ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (*args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio ():
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count ():
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length ():
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def name (self, *args, **kwargs):
+      '''str(object='') -> str
+str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def real (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def to_bytes (length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def DEFUN (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCREADLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INPROGRESS (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INTERRUPTIBLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def MODAL (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOBEDIT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOHISTORY (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOINTERNALLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOMULTIPLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOOEM (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPAPERSPACE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPERSPECTIVE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOTILEMODE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NO_UNDO_MARKER (self, *args, **kwargs):
+      '''None'''
+    ...
+    def REDRAW (self, *args, **kwargs):
+      '''None'''
+    ...
+    def SESSION (self, *args, **kwargs):
+      '''None'''
+    ...
+    def TRANSPARENT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def UNDEFINED (self, *args, **kwargs):
+      '''None'''
+    ...
+    def USEPICKSET (self, *args, **kwargs):
+      '''None'''
+    ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (*args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio ():
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count ():
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length ():
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def name (self, *args, **kwargs):
+      '''str(object='') -> str
+str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def real (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def to_bytes (length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def DEFUN (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCREADLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INPROGRESS (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INTERRUPTIBLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def MODAL (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOBEDIT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOHISTORY (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOINTERNALLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOMULTIPLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOOEM (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPAPERSPACE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPERSPECTIVE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOTILEMODE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NO_UNDO_MARKER (self, *args, **kwargs):
+      '''None'''
+    ...
+    def REDRAW (self, *args, **kwargs):
+      '''None'''
+    ...
+    def SESSION (self, *args, **kwargs):
+      '''None'''
+    ...
+    def TRANSPARENT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def UNDEFINED (self, *args, **kwargs):
+      '''None'''
+    ...
+    def USEPICKSET (self, *args, **kwargs):
+      '''None'''
+    ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (*args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio ():
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count ():
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length ():
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def name (self, *args, **kwargs):
+      '''str(object='') -> str
+str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def real (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def to_bytes (length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def DEFUN (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCREADLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INPROGRESS (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INTERRUPTIBLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def MODAL (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOBEDIT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOHISTORY (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOINTERNALLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOMULTIPLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOOEM (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPAPERSPACE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPERSPECTIVE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOTILEMODE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NO_UNDO_MARKER (self, *args, **kwargs):
+      '''None'''
+    ...
+    def REDRAW (self, *args, **kwargs):
+      '''None'''
+    ...
+    def SESSION (self, *args, **kwargs):
+      '''None'''
+    ...
+    def TRANSPARENT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def UNDEFINED (self, *args, **kwargs):
+      '''None'''
+    ...
+    def USEPICKSET (self, *args, **kwargs):
+      '''None'''
+    ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (*args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio ():
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count ():
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length ():
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def name (self, *args, **kwargs):
+      '''str(object='') -> str
+str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def real (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def to_bytes (length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def DEFUN (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCREADLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INPROGRESS (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INTERRUPTIBLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def MODAL (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOBEDIT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOHISTORY (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOINTERNALLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOMULTIPLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOOEM (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPAPERSPACE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPERSPECTIVE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOTILEMODE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NO_UNDO_MARKER (self, *args, **kwargs):
+      '''None'''
+    ...
+    def REDRAW (self, *args, **kwargs):
+      '''None'''
+    ...
+    def SESSION (self, *args, **kwargs):
+      '''None'''
+    ...
+    def TRANSPARENT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def UNDEFINED (self, *args, **kwargs):
+      '''None'''
+    ...
+    def USEPICKSET (self, *args, **kwargs):
+      '''None'''
+    ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (*args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio ():
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count ():
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length ():
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def name (self, *args, **kwargs):
+      '''str(object='') -> str
+str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def real (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def to_bytes (length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def DEFUN (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCREADLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INPROGRESS (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INTERRUPTIBLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def MODAL (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOBEDIT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOHISTORY (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOINTERNALLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOMULTIPLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOOEM (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPAPERSPACE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPERSPECTIVE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOTILEMODE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NO_UNDO_MARKER (self, *args, **kwargs):
+      '''None'''
+    ...
+    def REDRAW (self, *args, **kwargs):
+      '''None'''
+    ...
+    def SESSION (self, *args, **kwargs):
+      '''None'''
+    ...
+    def TRANSPARENT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def UNDEFINED (self, *args, **kwargs):
+      '''None'''
+    ...
+    def USEPICKSET (self, *args, **kwargs):
+      '''None'''
+    ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (*args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio ():
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count ():
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length ():
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def name (self, *args, **kwargs):
+      '''str(object='') -> str
+str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def real (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def to_bytes (length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def DEFUN (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCREADLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INPROGRESS (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INTERRUPTIBLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def MODAL (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOBEDIT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOHISTORY (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOINTERNALLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOMULTIPLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOOEM (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPAPERSPACE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPERSPECTIVE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOTILEMODE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NO_UNDO_MARKER (self, *args, **kwargs):
+      '''None'''
+    ...
+    def REDRAW (self, *args, **kwargs):
+      '''None'''
+    ...
+    def SESSION (self, *args, **kwargs):
+      '''None'''
+    ...
+    def TRANSPARENT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def UNDEFINED (self, *args, **kwargs):
+      '''None'''
+    ...
+    def USEPICKSET (self, *args, **kwargs):
+      '''None'''
+    ...
+    def __add__ (value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (*args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio ():
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count ():
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length ():
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def name (self, *args, **kwargs):
+      '''str(object='') -> str
+str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def real (self, *args, **kwargs):
+      '''int([x]) -> integer
+int(x, base=10) -> integer
+
+Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.__int__().  For floating point
+numbers, this truncates towards zero.
+
+If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.
+>>> int('0b100', base=0)
+4'''
+    ...
+    def to_bytes (length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def DEFUN (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCEXCLUSIVELOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def DOCREADLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INPROGRESS (self, *args, **kwargs):
+      '''None'''
+    ...
+    def INTERRUPTIBLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def MODAL (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOBEDIT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOHISTORY (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOINTERNALLOCK (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOMULTIPLE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOOEM (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPAPERSPACE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOPERSPECTIVE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NOTILEMODE (self, *args, **kwargs):
+      '''None'''
+    ...
+    def NO_UNDO_MARKER (self, *args, **kwargs):
+      '''None'''
+    ...
+    def REDRAW (self, *args, **kwargs):
+      '''None'''
+    ...
+    def SESSION (self, *args, **kwargs):
       '''None'''
     ...
     def TRANSPARENT (self, *args, **kwargs):
@@ -9014,7156 +6921,6 @@ Base 0 means to interpret the base from the string as an integer literal.
 >>> int('0b100', base=0)
 4'''
     ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
     def kAutoWrite (self, *args, **kwargs):
       '''None'''
     ...
@@ -16183,578 +6940,6 @@ Base 0 means to interpret the base from the string as an integer literal.
       '''None'''
     ...
     def kXWrite (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
       '''None'''
     ...
     def name (self, *args, **kwargs):
@@ -17568,1436 +7753,6 @@ Base 0 means to interpret the base from the string as an integer literal.
 >>> int('0b100', base=0)
 4'''
     ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
     def kAutoWrite (self, *args, **kwargs):
       '''None'''
     ...
@@ -19017,292 +7772,6 @@ Base 0 means to interpret the base from the string as an integer literal.
       '''None'''
     ...
     def kXWrite (self, *args, **kwargs):
-      '''None'''
-    ...
-    def name (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def names (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def numerator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def real (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def to_bytes (length, byteorder, *, signed=False):
-      '''Return an array of bytes representing an integer.
-
-  length
-    Length of bytes object to use.  An OverflowError is raised if the
-    integer is not representable with the given number of bytes.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Determines whether two's complement is used to represent the integer.
-    If signed is False and a negative integer is given, an OverflowError
-    is raised.'''
-    ...
-    def values (self, *args, **kwargs):
-      '''dict() -> new empty dictionary
-dict(mapping) -> new dictionary initialized from a mapping object's
-    (key, value) pairs
-dict(iterable) -> new dictionary initialized as if via:
-    d = {}
-    for k, v in iterable:
-        d[k] = v
-dict(**kwargs) -> new dictionary initialized with the name=value pairs
-    in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-    def __add__ (value, /):
-      '''Return self+value.'''
-    ...
-    def __eq__ (value, /):
-      '''Return self==value.'''
-    ...
-    def __init__ (*args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __mul__ (value, /):
-      '''Return self*value.'''
-    ...
-    def __ne__ (value, /):
-      '''Return self!=value.'''
-    ...
-    def __sub__ (value, /):
-      '''Return self-value.'''
-    ...
-    def __truediv__ (value, /):
-      '''Return self/value.'''
-    ...
-    def as_integer_ratio ():
-      '''Return integer ratio.
-
-Return a pair of integers, whose ratio is exactly equal to the original int
-and with a positive denominator.
-
->>> (10).as_integer_ratio()
-(10, 1)
->>> (-10).as_integer_ratio()
-(-10, 1)
->>> (0).as_integer_ratio()
-(0, 1)'''
-    ...
-    def bit_count ():
-      '''Number of ones in the binary representation of the absolute value of self.
-
-Also known as the population count.
-
->>> bin(13)
-'0b1101'
->>> (13).bit_count()
-3'''
-    ...
-    def bit_length ():
-      '''Number of bits necessary to represent self in binary.
-
->>> bin(37)
-'0b100101'
->>> (37).bit_length()
-6'''
-    ...
-    def conjugate (self, *args, **kwargs):
-      '''Returns self, the complex conjugate of any int.'''
-    ...
-    def denominator (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def from_bytes (bytes, byteorder, *, signed=False):
-      '''Return the integer represented by the given array of bytes.
-
-  bytes
-    Holds the array of bytes to convert.  The argument must either
-    support the buffer protocol or be an iterable object producing bytes.
-    Bytes and bytearray are examples of built-in objects that support the
-    buffer protocol.
-  byteorder
-    The byte order used to represent the integer.  If byteorder is 'big',
-    the most significant byte is at the beginning of the byte array.  If
-    byteorder is 'little', the most significant byte is at the end of the
-    byte array.  To request the native byte order of the host system, use
-    `sys.byteorder' as the byte order value.
-  signed
-    Indicates whether two's complement is used to represent the integer.'''
-    ...
-    def imag (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def k2000_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2000_xml (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2004_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2007_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2010_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2013_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Standard (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def k2018_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNative_Template (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR12_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR13_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dwg (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kR14_dxf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUnknown (self, *args, **kwargs):
       '''None'''
     ...
     def name (self, *args, **kwargs):
