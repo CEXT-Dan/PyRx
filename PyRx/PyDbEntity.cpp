@@ -12,7 +12,9 @@ void makeAcDbEntityWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("blockId", &PyDbEntity::blockId)
         .def("color", &PyDbEntity::color)
-        .def("setColor", &PyDbEntity::setColor)
+        .def("setColor", &PyDbEntity::setColor1)
+        .def("setColor", &PyDbEntity::setColor2)
+        .def("setColor", &PyDbEntity::setColor3)
         .def("colorIndex", &PyDbEntity::colorIndex)
         .def("setColorIndex", &PyDbEntity::setColorIndex1)
         .def("setColorIndex", &PyDbEntity::setColorIndex2)
@@ -149,7 +151,17 @@ PyDbObjectId PyDbEntity::getPlotStyleNameId() const
     return PyDbObjectId(id);
 }
 
-Acad::ErrorStatus PyDbEntity::setColor(const AcCmColor& color, bool doSubents, PyDbDatabase& db)
+Acad::ErrorStatus PyDbEntity::setColor1(const AcCmColor& color)
+{
+    return impObj()->setColor(color);
+}
+
+Acad::ErrorStatus PyDbEntity::setColor2(const AcCmColor& color, bool doSubents)
+{
+    return impObj()->setColor(color, doSubents);
+}
+
+Acad::ErrorStatus PyDbEntity::setColor3(const AcCmColor& color, bool doSubents, PyDbDatabase& db)
 {
     return impObj()->setColor(color, doSubents, db.impObj());
 }

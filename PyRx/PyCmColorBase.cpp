@@ -145,7 +145,8 @@ void makeAcCmEntityColorWrapper()
 #endif
         ;
 
-    enum_<AcCmEntityColor::Color>("Color")
+    //TODO: find better enum
+    enum_<AcCmEntityColor::Color>("AcCmColor")
         .value("kRed", AcCmEntityColor::Color::kRed)
         .value("kGreen", AcCmEntityColor::Color::kGreen)
         .value("kBlue", AcCmEntityColor::Color::kBlue)

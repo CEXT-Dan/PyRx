@@ -20,7 +20,10 @@ public:
     PyDbObjectId blockId() const;
 
     AcCmColor                 color() const;
-    Acad::ErrorStatus          setColor(const AcCmColor& color, bool doSubents, PyDbDatabase& db);
+
+    Acad::ErrorStatus          setColor1(const AcCmColor& color);
+    Acad::ErrorStatus          setColor2(const AcCmColor& color, bool doSubents);
+    Acad::ErrorStatus          setColor3(const AcCmColor& color, bool doSubents, PyDbDatabase& db);
 
     Adesk::UInt16             colorIndex() const;
     Acad::ErrorStatus setColorIndex1(Adesk::UInt16 color);

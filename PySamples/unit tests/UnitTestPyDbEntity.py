@@ -21,6 +21,7 @@ class TestDbEntity(unittest.TestCase):
         line2.setPropertiesFrom(line)
         self.assertEqual(line2.colorIndex(), 7)
         
+        
 def PyRxCmd_pyentity():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestDbEntity)
