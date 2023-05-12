@@ -34,6 +34,7 @@ void makeAcDbFieldtWrapper()
 #ifndef BRXAPP
         .value("kHasFormattedString", PyDbField::State::kHasFormattedString)
 #endif // BRXAPP
+        .export_values()
         ;
     enum_<PyDbField::EvalOption>("EvalOption")
         .value("kDisable", PyDbField::EvalOption::kDisable)
@@ -44,6 +45,7 @@ void makeAcDbFieldtWrapper()
         .value("kOnRegen", PyDbField::EvalOption::kOnRegen)
         .value("kOnDemand", PyDbField::EvalOption::kOnDemand)
         .value("kAutomatic", PyDbField::EvalOption::kAutomatic)
+        .export_values()
         ;
     enum_<PyDbField::EvalContext>("EvalContext")
         .value("kOpen", PyDbField::EvalContext::kOpen)
@@ -54,6 +56,7 @@ void makeAcDbFieldtWrapper()
         .value("kDemand", PyDbField::EvalContext::kDemand)
         .value("kPreview", PyDbField::EvalContext::kPreview)
         .value("kPlotPreview", PyDbField::EvalContext::kPlotPreview)
+        .export_values()
         ;
     enum_<PyDbField::EvalStatus>("EvalStatus")
         .value("kNotYetEvaluated", PyDbField::EvalStatus::kNotYetEvaluated)
@@ -63,6 +66,7 @@ void makeAcDbFieldtWrapper()
         .value("kInvalidCode", PyDbField::EvalStatus::kInvalidCode)
         .value("kInvalidContext", PyDbField::EvalStatus::kInvalidContext)
         .value("kOtherError", PyDbField::EvalStatus::kOtherError)
+        .export_values()
         ;
     enum_<PyDbField::FieldCodeFlag>("FieldCodeFlag")
         .value("kFieldCode", PyDbField::FieldCodeFlag::kFieldCode)
@@ -74,11 +78,13 @@ void makeAcDbFieldtWrapper()
         .value("kStripOptions", PyDbField::FieldCodeFlag::kStripOptions)
         .value("kPreserveFields", PyDbField::FieldCodeFlag::kPreserveFields)
         .value("kTextField", PyDbField::FieldCodeFlag::kTextField)
+        .export_values()
 #ifndef BRXAPP
         .value("kPreserveOptions", PyDbField::FieldCodeFlag::kPreserveOptions)
         .value("kDetachChildren", PyDbField::FieldCodeFlag::kDetachChildren)
         .value("kChildObjectReference", PyDbField::FieldCodeFlag::kChildObjectReference)
         .value("kForExpression", PyDbField::FieldCodeFlag::kForExpression)
+        .export_values()
 #endif
         ;
 }

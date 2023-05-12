@@ -27,6 +27,13 @@ docManager( (Application)arg1) -> DocManager :
     C++ signature :
         class PyApDocManager docManager(class PyApApplication {lvalue})'''
     ...
+    def mainWnd (self, *args, **kwargs):
+      '''
+mainWnd() -> int :
+
+    C++ signature :
+        __int64 mainWnd()'''
+    ...
 
 class CmdFlags:
     def DEFUN (self, *args, **kwargs):
@@ -793,6 +800,13 @@ docTitle( (Document)arg1) -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > docTitle(class PyApDocument {lvalue})'''
+    ...
+    def docWnd (self, *args, **kwargs):
+      '''
+docWnd() -> int :
+
+    C++ signature :
+        __int64 docWnd()'''
     ...
     def downgradeDocOpen (self, *args, **kwargs):
       '''
