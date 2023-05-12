@@ -10,7 +10,6 @@ using namespace boost::python;
 void makeAcApDocumentWrapper()
 {
     boost::python::scope scope = class_<PyApDocument, bases<PyRxObject>>("Document", boost::python::no_init)
-        .def("className", &PyApDocument::className).staticmethod("className")
         .def("database", &PyApDocument::database)
         .def("editor", &PyApDocument::editor)
         .def("fileName", &PyApDocument::fileName)
@@ -28,7 +27,7 @@ void makeAcApDocumentWrapper()
         .def("popDbmod", &PyApDocument::popDbmod)
         .def("upgradeDocOpen", &PyApDocument::upgradeDocOpen)
         .def("downgradeDocOpen", &PyApDocument::downgradeDocOpen)
-
+        //static
         .def("docWnd", &PyApDocument::docWnd).staticmethod("docWnd")
         .def("className", &PyApDocument::className).staticmethod("className")
         ;
