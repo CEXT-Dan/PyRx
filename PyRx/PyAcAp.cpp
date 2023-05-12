@@ -7,6 +7,7 @@
 
 using namespace boost::python;
 
+
 enum class CmdFlags
 {
     kMODAL = ACRX_CMD_MODAL,
@@ -30,6 +31,7 @@ enum class CmdFlags
     kNO_UNDO_MARKER = ACRX_CMD_NO_UNDO_MARKER,
     kNOBEDIT = ACRX_CMD_NOBEDIT,
 };
+
 
 uint64_t acadMainWnd()
 {
@@ -55,10 +57,17 @@ BOOST_PYTHON_MODULE(PyAp)
     register_exception_translator<PyAcadErrorStatus>(PyAcadErrorStatus::translator);
     register_exception_translator<PyNotThatKindOfClass>(PyNotThatKindOfClass::translator);
     register_exception_translator<PyNotimplementedByHost>(PyNotimplementedByHost::translator);
-    makeAcApApplictionWrapper();
-    makeAcApDocManagerWrapper();
-    makeAcApDocumentWrapper();
-    makePyApDocManagerReactorWrapper();
+
+    enum_<AcAp::DocLockMode>("DocLockMode")
+        .value("kNone", AcAp::DocLockMode::kNone)
+        .value("kAutoWrite", AcAp::DocLockMode::kAutoWrite)
+        .value("kNotLocked", AcAp::DocLockMode::kNotLocked)
+        .value("kWrite", AcAp::DocLockMode::kWrite)
+        .value("kProtectedAutoWrite", AcAp::DocLockMode::kProtectedAutoWrite)
+        .value("kRead", AcAp::DocLockMode::kRead)
+        .value("kXWrite", AcAp::DocLockMode::kXWrite)
+        .export_values()
+        ;
 
     enum_<CmdFlags>("CmdFlags")
         .value("MODAL", CmdFlags::kMODAL)
@@ -84,16 +93,10 @@ BOOST_PYTHON_MODULE(PyAp)
         .export_values()
         ;
 
-    enum_<AcAp::DocLockMode>("DocLockMode")
-        .value("kNone", AcAp::DocLockMode::kNone)
-        .value("kAutoWrite", AcAp::DocLockMode::kAutoWrite)
-        .value("kNotLocked", AcAp::DocLockMode::kNotLocked)
-        .value("kWrite", AcAp::DocLockMode::kWrite)
-        .value("kProtectedAutoWrite", AcAp::DocLockMode::kProtectedAutoWrite)
-        .value("kRead", AcAp::DocLockMode::kRead)
-        .value("kXWrite", AcAp::DocLockMode::kXWrite)
-        .export_values()
-        ;
+    makeAcApApplictionWrapper();
+    makeAcApDocManagerWrapper();
+    makeAcApDocumentWrapper();
+    makePyApDocManagerReactorWrapper();
 
 };
 
