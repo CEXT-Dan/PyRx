@@ -28,8 +28,10 @@ def PyRxCmd_pytestLeader():
         leader.setDatabaseDefaults()
         leader.appendVertex(PyGe.Point3d(0,0,0))
         leader.appendVertex(PyGe.Point3d(100,100,0))
+        
+        #set leader to red
         c = PyDb.Color()
-        c.setRGB(225,0,0)
+        c.setRGB(255,0,0)
         leader.setColor(c)
         
         #add leader to db
