@@ -32,25 +32,13 @@ enum class CmdFlags
     kNOBEDIT = ACRX_CMD_NOBEDIT,
 };
 
-
-uint64_t acadMainWnd()
-{
-    return reinterpret_cast<int64_t>(adsw_acadMainWnd());
-}
-
-uint64_t acadDocWnd()
-{
-    return reinterpret_cast<uint64_t>(adsw_acadDocWnd());
-}
-
 BOOST_PYTHON_MODULE(PyAp)
 {
 #ifndef  PyRxDebug
     docstring_options local_docstring_options(false, true, true);
 #endif // ! PyRxDebug
 
-    def("acadMainWnd", acadMainWnd);
-    def("acadDocWnd", acadDocWnd);
+  
 
     register_exception_translator<PyNullObject>(PyNullObject::translator);
     register_exception_translator<PyEditorError>(PyEditorError::translator);

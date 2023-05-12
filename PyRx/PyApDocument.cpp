@@ -28,6 +28,9 @@ void makeAcApDocumentWrapper()
         .def("popDbmod", &PyApDocument::popDbmod)
         .def("upgradeDocOpen", &PyApDocument::upgradeDocOpen)
         .def("downgradeDocOpen", &PyApDocument::downgradeDocOpen)
+
+        .def("docWnd", &PyApDocument::docWnd).staticmethod("docWnd")
+        .def("className", &PyApDocument::className).staticmethod("className")
         ;
 
     enum_<PyApDocument::SaveFormat>("SaveFormat")
@@ -162,6 +165,11 @@ Acad::ErrorStatus PyApDocument::upgradeDocOpen()
 Acad::ErrorStatus PyApDocument::downgradeDocOpen(bool bPromptForSave)
 {
     return impObj()->downgradeDocOpen(bPromptForSave);
+}
+
+int64_t PyApDocument::docWnd()
+{
+    return reinterpret_cast<uint64_t>(adsw_acadDocWnd());
 }
 
 PyAcEditor PyApDocument::editor()
