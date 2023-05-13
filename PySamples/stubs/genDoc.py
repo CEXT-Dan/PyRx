@@ -44,7 +44,7 @@ def include_attr(name):
     return True
 
 
-def generate_doc(moduleName, module):
+def generate_pyi(moduleName, module):
     with open(moduleName, 'w') as f:
 
         for name, obj in inspect.getmembers(module):
@@ -64,31 +64,44 @@ def generate_doc(moduleName, module):
                         f.write('\n    ...\n')
 
 
-def generate_help(moduleName, module):
+def generate_html_help(moduleName, module):
+    str = pydoc.html.docmodule(module)
+    with open(moduleName, mode='w') as f:
+	    print(str, file=f)
+     
+def generate_txt_help(moduleName, module):
     doc_content = io.StringIO()
     helper = pydoc.Helper(output=doc_content)
     helper.help(module)
-
     with open(moduleName, mode='w') as f:
-	    print(doc_content.getvalue(), file=f)
+	    print(str, file=f)
 
                         
-def PyRxCmd_pygendocs():
-    generate_doc('PyRxApp.pyi',PyRxApp)
-    generate_doc('PyRx.pyi',PyRx)
-    generate_doc('PyGe.pyi',PyGe)
-    generate_doc('PyGi.pyi',PyGi)
-    generate_doc('PyDb.pyi',PyDb)
-    generate_doc('PyAp.pyi',PyAp)
-    generate_doc('PyEd.pyi',PyEd)
+def PyRxCmd_pygenpyi():
+    generate_pyi('PyRxApp.pyi',PyRxApp)
+    generate_pyi('PyRx.pyi',PyRx)
+    generate_pyi('PyGe.pyi',PyGe)
+    generate_pyi('PyGi.pyi',PyGi)
+    generate_pyi('PyDb.pyi',PyDb)
+    generate_pyi('PyAp.pyi',PyAp)
+    generate_pyi('PyEd.pyi',PyEd)
     
-def PyRxCmd_genhelp():
-    generate_help('PyRxApp.txt',PyRxApp)
-    generate_help('PyRx.txt',PyRx)
-    generate_help('PyGe.txt',PyGe)
-    generate_help('PyGi.txt',PyGi)
-    generate_help('PyDb.txt',PyDb)
-    generate_help('PyAp.txt',PyAp)
-    generate_help('PyEd.txt',PyEd)
+def PyRxCmd_pygenhtmlhelp():
+    generate_html_help('PyRxApp.html',PyRxApp)
+    generate_html_help('PyRx.html',PyRx)
+    generate_html_help('PyGe.html',PyGe)
+    generate_html_help('PyGi.html',PyGi)
+    generate_html_help('PyDb.html',PyDb)
+    generate_html_help('PyAp.html',PyAp)
+    generate_html_help('PyEd.html',PyEd)
+    
+def PyRxCmd_pygentxthelp():
+    generate_txt_help('PyRxApp.txt',PyRxApp)
+    generate_txt_help('PyRx.txt',PyRx)
+    generate_txt_help('PyGe.txt',PyGe)
+    generate_txt_help('PyGi.txt',PyGi)
+    generate_txt_help('PyDb.txt',PyDb)
+    generate_txt_help('PyAp.txt',PyAp)
+    generate_txt_help('PyEd.txt',PyEd)
 
     
