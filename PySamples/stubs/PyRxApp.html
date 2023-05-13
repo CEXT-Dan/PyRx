@@ -1,0 +1,44 @@
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>PyRxApp</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br>(built-in)</font></td></tr></table>
+    <p><tt>ObjectArx&nbsp;wrappers</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-GetString"><strong>GetString</strong></a>(...)</dt><dd><tt>getstring([cronly]&nbsp;[,&nbsp;prompt])&nbsp;&nbsp;-&gt;&nbsp;&nbsp;float&nbsp;or&nbsp;keyword<br>
+&nbsp;<br>
+Prompts&nbsp;the&nbsp;user&nbsp;for&nbsp;an&nbsp;string&nbsp;interactively&nbsp;and&nbsp;returns&nbsp;that&nbsp;string.<br>
+The&nbsp;prompt&nbsp;argument&nbsp;is&nbsp;a&nbsp;string&nbsp;and&nbsp;is&nbsp;printed&nbsp;to&nbsp;the&nbsp;console.<br>
+On&nbsp;R14&nbsp;or&nbsp;earlier,&nbsp;the&nbsp;returned&nbsp;string&nbsp;is&nbsp;truncated&nbsp;to&nbsp;132&nbsp;characters.<br>
+If&nbsp;the&nbsp;integer&nbsp;cronly&nbsp;argument&nbsp;exists&nbsp;and&nbsp;is&nbsp;nonzero,&nbsp;the&nbsp;string&nbsp;can<br>
+contain&nbsp;spaces&nbsp;and&nbsp;the&nbsp;user&nbsp;must&nbsp;terminate&nbsp;it&nbsp;by&nbsp;entering&nbsp;&lt;Return&gt;.<br>
+If&nbsp;cronly&nbsp;is&nbsp;emitted&nbsp;or&nbsp;zero,&nbsp;entering&nbsp;either&nbsp;a&nbsp;space&nbsp;or&nbsp;&lt;Return&gt;;<br>
+terminates&nbsp;the&nbsp;string.<br>
+&nbsp;<br>
+If&nbsp;a&nbsp;call&nbsp;to&nbsp;initget()&nbsp;before&nbsp;the&nbsp;getreal()&nbsp;specified&nbsp;keywords,<br>
+then&nbsp;one&nbsp;of&nbsp;those&nbsp;keywords&nbsp;can&nbsp;be&nbsp;returned.&nbsp;Flags&nbsp;to&nbsp;initget()&nbsp;are<br>
+respected&nbsp;where&nbsp;appropriate.</tt></dd></dl>
+ <dl><dt><a name="-GetVar"><strong>GetVar</strong></a>(...)</dt><dd><tt>getvar(varname)&nbsp;&nbsp;-&gt;&nbsp;&nbsp;Value<br>
+&nbsp;<br>
+Get&nbsp;the&nbsp;value&nbsp;of&nbsp;an&nbsp;Autocad&nbsp;system&nbsp;variable&nbsp;(varname&nbsp;is&nbsp;a&nbsp;string).<br>
+If&nbsp;the&nbsp;variable&nbsp;varname&nbsp;doesn't&nbsp;exist,&nbsp;or&nbsp;if&nbsp;the&nbsp;value&nbsp;can't&nbsp;be<br>
+converted&nbsp;to&nbsp;a&nbsp;Python&nbsp;datatype,&nbsp;a&nbsp;ValueError&nbsp;exception&nbsp;is&nbsp;raised.</tt></dd></dl>
+ <dl><dt><a name="-Printf"><strong>Printf</strong></a>(...)</dt><dd><tt>Wraps&nbsp;acutPrintf&nbsp;<br>
+Sends&nbsp;a&nbsp;string&nbsp;to&nbsp;the&nbsp;command&nbsp;line</tt></dd></dl>
+ <dl><dt><a name="-SetVar"><strong>SetVar</strong></a>(...)</dt><dd><tt>setvar(varname,&nbsp;value)<br>
+&nbsp;<br>
+Set&nbsp;the&nbsp;value&nbsp;of&nbsp;an&nbsp;Autocad&nbsp;system&nbsp;variable.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;variable&nbsp;varname&nbsp;doesn't&nbsp;exist,&nbsp;if&nbsp;the&nbsp;value&nbsp;can't<br>
+be&nbsp;converted&nbsp;to&nbsp;an&nbsp;Autolisp&nbsp;datatype,&nbsp;if&nbsp;the&nbsp;value&nbsp;doesn't<br>
+match&nbsp;the&nbsp;type&nbsp;or&nbsp;range&nbsp;of&nbsp;the&nbsp;variable&nbsp;or&nbsp;if&nbsp;the&nbsp;variable<br>
+is&nbsp;read-only,&nbsp;a&nbsp;ValueError&nbsp;exception&nbsp;is&nbsp;raised.</tt></dd></dl>
+</td></tr></table>
