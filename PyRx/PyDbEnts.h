@@ -14,26 +14,6 @@ void makePyDbTextWrapper();
 class PyDbText : public PyDbEntity
 {
 public:
-    enum class TextAlignment
-    {
-        kTextAlignmentLeft = AcDbText::AcTextAlignment::kTextAlignmentLeft,
-        kTextAlignmentCenter = AcDbText::AcTextAlignment::kTextAlignmentCenter,
-        kTextAlignmentRight = AcDbText::AcTextAlignment::kTextAlignmentRight,
-        kTextAlignmentAligned = AcDbText::AcTextAlignment::kTextAlignmentAligned,
-        kTextAlignmentMiddle = AcDbText::AcTextAlignment::kTextAlignmentMiddle,
-        kTextAlignmentFit = AcDbText::AcTextAlignment::kTextAlignmentFit,
-        kTextAlignmentTopLeft = AcDbText::AcTextAlignment::kTextAlignmentTopLeft,
-        kTextAlignmentTopCenter = AcDbText::AcTextAlignment::kTextAlignmentTopCenter,
-        kTextAlignmentTopRight = AcDbText::AcTextAlignment::kTextAlignmentTopRight,
-        kTextAlignmentMiddleLeft = AcDbText::AcTextAlignment::kTextAlignmentMiddleLeft,
-        kTextAlignmentMiddleCenter = AcDbText::AcTextAlignment::kTextAlignmentMiddleCenter,
-        kTextAlignmentMiddleRight = AcDbText::AcTextAlignment::kTextAlignmentMiddleRight,
-        kTextAlignmentBottomLeft = AcDbText::AcTextAlignment::kTextAlignmentBottomLeft,
-        kTextAlignmentBottomCenter = AcDbText::AcTextAlignment::kTextAlignmentBottomCenter,
-        kTextAlignmentBottomRight = AcDbText::AcTextAlignment::kTextAlignmentBottomRight,
-    };
-
-public:
     PyDbText();
     PyDbText(const AcGePoint3d& position, const std::string& text);
     PyDbText(const AcGePoint3d& position, const std::string& text, PyDbObjectId& style, double height, double rotation);
@@ -92,8 +72,8 @@ public:
     bool hitTest(const AcGePoint3d& ptHit) const;
     boost::python::list getBoundingPoints() const;
 
-    PyDbText::TextAlignment    justification() const;
-    Acad::ErrorStatus          setJustification(PyDbText::TextAlignment val);
+    AcDbText::AcTextAlignment    justification() const;
+    Acad::ErrorStatus          setJustification(AcDbText::AcTextAlignment val);
 
     static std::string className();
     static PyRxClass desc();
@@ -686,15 +666,6 @@ void makPyDbPolylineWrapper();
 class PyDbPolyline : public PyDbCurve
 {
 public:
-    enum class SegType
-    {
-        kLine = AcDbPolyline::SegType::kLine,
-        kArc = AcDbPolyline::SegType::kArc,
-        kCoincident = AcDbPolyline::SegType::kCoincident,
-        kPoint = AcDbPolyline::SegType::kPoint,
-        kEmpty = AcDbPolyline::SegType::kEmpty,
-    };
-public:
     PyDbPolyline();
     PyDbPolyline(unsigned int num_verts);
     PyDbPolyline(AcDbPolyline* ptr, bool autoDelete);
@@ -704,7 +675,7 @@ public:
     AcGePoint3d getPoint3dAt(unsigned int) const;
     AcGePoint2d getPoint2dAt(unsigned int) const;
 
-    PyDbPolyline::SegType segType(unsigned int index) const;
+    AcDbPolyline::SegType segType(unsigned int index) const;
     Adesk::Boolean onSegAt(unsigned int index, const AcGePoint2d& pt2d, double param) const;
 
     PyGeLineSeg2d getLineSeg2dAt(unsigned int index);

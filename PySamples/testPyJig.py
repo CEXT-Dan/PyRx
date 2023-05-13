@@ -75,7 +75,7 @@ def PyRxCmd_pyjigstyle():
 
 def PyRxCmd_pyjig():
     try:
-        doc = PyAp.Application().docManager().curDocument()
+        doc = PyAp.docManager().curDocument()
         db = doc.database()
         ed = doc.editor()
 

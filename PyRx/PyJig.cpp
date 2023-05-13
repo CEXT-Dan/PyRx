@@ -8,8 +8,8 @@ using namespace boost::python;
 //-----------------------------------------------------------------------------------------------------------------------------------
 void makeAcEdJigWrapper()
 {
-    {//scope
-        boost::python::scope scope = class_<PyJig, boost::noncopyable>("Jig", boost::python::no_init)
+    {
+        class_<PyJig, boost::noncopyable>("Jig", boost::python::no_init)
             .def(init<const PyDbEntity&>())
             .def("drag", &PyJig::dragwr1)
 #ifndef BRXAPP
@@ -93,11 +93,11 @@ void makeAcEdJigWrapper()
             .value("kDisableDirectDistanceInput", PyJig::UserInputControls::kDisableDirectDistanceInput)
             .export_values()
             ;
-    }//end scope
+    }
 
 #ifndef BRXAPP
-    {//scope
-        boost::python::scope scope = class_<AcEdDragStyle>("DragStyle")
+    {
+        class_<AcEdDragStyle>("DragStyle")
             .def(init<>())
             .def(init<AcEdDragStyle::StyleType, AcEdDragStyle::StyleType>())
             .def("styleTypeForOriginal", &AcEdDragStyle::styleTypeForOriginal)
@@ -115,7 +115,7 @@ void makeAcEdJigWrapper()
             .value("kNotSet", AcEdDragStyle::StyleType::kNotSet)
             .export_values()
             ;
-    } // end scope
+    }
 #endif
 
 }

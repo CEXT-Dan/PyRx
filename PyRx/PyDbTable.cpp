@@ -245,7 +245,7 @@ void makeyDbTableWrapper()
         .def_readwrite("bottomRow", &AcCellRange::mnBottomRow)
         .def_readwrite("rightColumn", &AcCellRange::mnRightColumn)
         ;
-    enum_<AcDb::FlowDirection>("FlowDirection")
+    enum_<AcDb::FlowDirection>("TableFlowDirection")
         .value("kTtoB", AcDb::FlowDirection::kTtoB)
         .value("kExactly", AcDb::FlowDirection::kBtoT)
         .export_values()

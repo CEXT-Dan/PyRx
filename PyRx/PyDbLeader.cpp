@@ -10,7 +10,7 @@ using namespace boost::python;
 //PyDbLeader
 void makePyDbLeaderWrapper()
 {
-    boost::python::scope scope = class_<PyDbLeader, bases<PyDbCurve>>("Leader")
+   class_<PyDbLeader, bases<PyDbCurve>>("Leader")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("setPlane", &PyDbLeader::setPlane)
@@ -74,11 +74,11 @@ void makePyDbLeaderWrapper()
         .def("desc", &PyDbLeader::desc).staticmethod("desc")
         ;
 
-    enum_<PyDbLeader::AnnoType>("AnnoType")
-        .value("kMText", PyDbLeader::AnnoType::kMText)
-        .value("kFcf", PyDbLeader::AnnoType::kFcf)
-        .value("kBlockRef", PyDbLeader::AnnoType::kBlockRef)
-        .value("kNoAnno", PyDbLeader::AnnoType::kNoAnno)
+    enum_<AcDbLeader::AnnoType>("AnnoType")
+        .value("kMText", AcDbLeader::AnnoType::kMText)
+        .value("kFcf", AcDbLeader::AnnoType::kFcf)
+        .value("kBlockRef", AcDbLeader::AnnoType::kBlockRef)
+        .value("kNoAnno", AcDbLeader::AnnoType::kNoAnno)
         .export_values()
         ;
 }
@@ -254,9 +254,9 @@ Acad::ErrorStatus PyDbLeader::setAnnotationOffset(const AcGeVector3d& offset)
     return impObj()->setAnnotationOffset(offset);
 }
 
-PyDbLeader::AnnoType PyDbLeader::annoType() const
+AcDbLeader::AnnoType PyDbLeader::annoType() const
 {
-    return static_cast<PyDbLeader::AnnoType>(impObj()->annoType());
+    return impObj()->annoType();
 }
 
 double PyDbLeader::annoHeight() const

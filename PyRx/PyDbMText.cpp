@@ -4,7 +4,7 @@
 using namespace boost::python;
 void makePyDbMTextWrapper()
 {
-    boost::python::scope scope = class_<PyDbMText, bases<PyDbEntity>>("MText")
+    class_<PyDbMText, bases<PyDbEntity>>("MText")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("location", &PyDbMText::location)
@@ -75,45 +75,45 @@ void makePyDbMTextWrapper()
         .def("desc", &PyDbMText::desc).staticmethod("desc")
         ;
 
-    enum_<PyDbMText::AttachmentPoint>("AttachmentPoint")
-        .value("kTopLeft", PyDbMText::AttachmentPoint::kTopLeft)
-        .value("kTopCenter", PyDbMText::AttachmentPoint::kTopCenter)
-        .value("kTopRight", PyDbMText::AttachmentPoint::kTopRight)
-        .value("kMiddleLeft", PyDbMText::AttachmentPoint::kMiddleLeft)
-        .value("kMiddleCenter", PyDbMText::AttachmentPoint::kMiddleCenter)
-        .value("kMiddleRight", PyDbMText::AttachmentPoint::kMiddleRight)
-        .value("kBottomLeft", PyDbMText::AttachmentPoint::kBottomLeft)
-        .value("kBottomCenter", PyDbMText::AttachmentPoint::kBottomCenter)
-        .value("kBottomRight", PyDbMText::AttachmentPoint::kBottomRight)
-        .value("kBaseLeft", PyDbMText::AttachmentPoint::kBaseLeft)
-        .value("kBaseCenter", PyDbMText::AttachmentPoint::kBaseCenter)
-        .value("kBaseRight", PyDbMText::AttachmentPoint::kBaseRight)
-        .value("kBaseAlign", PyDbMText::AttachmentPoint::kBaseAlign)
-        .value("kBottomAlign", PyDbMText::AttachmentPoint::kBottomAlign)
-        .value("kMiddleAlign", PyDbMText::AttachmentPoint::kMiddleAlign)
-        .value("kTopAlign", PyDbMText::AttachmentPoint::kTopAlign)
-        .value("kBaseFit", PyDbMText::AttachmentPoint::kBaseFit)
-        .value("kBottomFit", PyDbMText::AttachmentPoint::kBottomFit)
-        .value("kMiddleFit", PyDbMText::AttachmentPoint::kMiddleFit)
-        .value("kTopFit", PyDbMText::AttachmentPoint::kTopFit)
-        .value("kBaseMid", PyDbMText::AttachmentPoint::kBaseMid)
-        .value("kBottomMid", PyDbMText::AttachmentPoint::kBottomMid)
-        .value("kMiddleMid", PyDbMText::AttachmentPoint::kMiddleMid)
-        .value("kTopMid", PyDbMText::AttachmentPoint::kTopMid)
+    enum_<AcDbMText::AttachmentPoint>("MTextAttachmentPoint")
+        .value("kTopLeft", AcDbMText::AttachmentPoint::kTopLeft)
+        .value("kTopCenter", AcDbMText::AttachmentPoint::kTopCenter)
+        .value("kTopRight", AcDbMText::AttachmentPoint::kTopRight)
+        .value("kMiddleLeft", AcDbMText::AttachmentPoint::kMiddleLeft)
+        .value("kMiddleCenter", AcDbMText::AttachmentPoint::kMiddleCenter)
+        .value("kMiddleRight", AcDbMText::AttachmentPoint::kMiddleRight)
+        .value("kBottomLeft", AcDbMText::AttachmentPoint::kBottomLeft)
+        .value("kBottomCenter", AcDbMText::AttachmentPoint::kBottomCenter)
+        .value("kBottomRight", AcDbMText::AttachmentPoint::kBottomRight)
+        .value("kBaseLeft", AcDbMText::AttachmentPoint::kBaseLeft)
+        .value("kBaseCenter", AcDbMText::AttachmentPoint::kBaseCenter)
+        .value("kBaseRight", AcDbMText::AttachmentPoint::kBaseRight)
+        .value("kBaseAlign", AcDbMText::AttachmentPoint::kBaseAlign)
+        .value("kBottomAlign", AcDbMText::AttachmentPoint::kBottomAlign)
+        .value("kMiddleAlign", AcDbMText::AttachmentPoint::kMiddleAlign)
+        .value("kTopAlign", AcDbMText::AttachmentPoint::kTopAlign)
+        .value("kBaseFit", AcDbMText::AttachmentPoint::kBaseFit)
+        .value("kBottomFit", AcDbMText::AttachmentPoint::kBottomFit)
+        .value("kMiddleFit", AcDbMText::AttachmentPoint::kMiddleFit)
+        .value("kTopFit", AcDbMText::AttachmentPoint::kTopFit)
+        .value("kBaseMid", AcDbMText::AttachmentPoint::kBaseMid)
+        .value("kBottomMid", AcDbMText::AttachmentPoint::kBottomMid)
+        .value("kMiddleMid", AcDbMText::AttachmentPoint::kMiddleMid)
+        .value("kTopMid", AcDbMText::AttachmentPoint::kTopMid)
         .export_values()
         ;
-    enum_<PyDbMText::FlowDirection>("FlowDirection")
-        .value("kLtoR", PyDbMText::FlowDirection::kLtoR)
-        .value("kRtoL", PyDbMText::FlowDirection::kRtoL)
-        .value("kTtoB", PyDbMText::FlowDirection::kTtoB)
-        .value("kBtoT", PyDbMText::FlowDirection::kBtoT)
-        .value("kByStyle", PyDbMText::FlowDirection::kByStyle)
+    enum_<AcDbMText::FlowDirection>("MTextFlowDirection")
+        .value("kLtoR", AcDbMText::FlowDirection::kLtoR)
+        .value("kRtoL", AcDbMText::FlowDirection::kRtoL)
+        .value("kTtoB", AcDbMText::FlowDirection::kTtoB)
+        .value("kBtoT", AcDbMText::FlowDirection::kBtoT)
+        .value("kByStyle", AcDbMText::FlowDirection::kByStyle)
         .export_values()
         ;
-    enum_<PyDbMText::ColumnType>("ColumnType")
-        .value("kNoColumns", PyDbMText::ColumnType::kNoColumns)
-        .value("kStaticColumns", PyDbMText::ColumnType::kStaticColumns)
-        .value("kDynamicColumns", PyDbMText::ColumnType::kDynamicColumns)
+    enum_<AcDbMText::ColumnType>("MTextColumnType")
+        .value("kNoColumns", AcDbMText::ColumnType::kNoColumns)
+        .value("kStaticColumns", AcDbMText::ColumnType::kStaticColumns)
+        .value("kDynamicColumns", AcDbMText::ColumnType::kDynamicColumns)
         .export_values()
         ;
 }
@@ -217,29 +217,29 @@ Acad::ErrorStatus PyDbMText::setTextHeight(double val)
     return impObj()->setTextHeight(val);
 }
 
-PyDbMText::AttachmentPoint PyDbMText::attachment() const
+AcDbMText::AttachmentPoint PyDbMText::attachment() const
 {
-    return static_cast<PyDbMText::AttachmentPoint>(impObj()->attachment());
+    return impObj()->attachment();
 }
 
-Acad::ErrorStatus PyDbMText::setAttachment(PyDbMText::AttachmentPoint val)
+Acad::ErrorStatus PyDbMText::setAttachment(AcDbMText::AttachmentPoint val)
 {
-    return impObj()->setAttachment(static_cast<AcDbMText::AttachmentPoint>(val));
+    return impObj()->setAttachment(val);
 }
 
-Acad::ErrorStatus PyDbMText::setAttachmentMovingLocation(PyDbMText::AttachmentPoint val)
+Acad::ErrorStatus PyDbMText::setAttachmentMovingLocation(AcDbMText::AttachmentPoint val)
 {
-    return impObj()->setAttachmentMovingLocation(static_cast<AcDbMText::AttachmentPoint>(val));
+    return impObj()->setAttachmentMovingLocation(val);
 }
 
-PyDbMText::FlowDirection PyDbMText::flowDirection() const
+AcDbMText::FlowDirection PyDbMText::flowDirection() const
 {
-    return static_cast<PyDbMText::FlowDirection>(impObj()->flowDirection());
+    return impObj()->flowDirection();
 }
 
-Acad::ErrorStatus PyDbMText::setFlowDirection(PyDbMText::FlowDirection val)
+Acad::ErrorStatus PyDbMText::setFlowDirection(AcDbMText::FlowDirection val)
 {
-    return impObj()->setFlowDirection(static_cast<AcDbMText::FlowDirection>(val));
+    return impObj()->setFlowDirection(val);
 }
 
 std::string PyDbMText::contents() const
@@ -404,17 +404,17 @@ Acad::ErrorStatus PyDbMText::setStaticColumns(double width, double gutter, int c
     return impObj()->setStaticColumns(width, gutter, count);
 }
 
-PyDbMText::ColumnType PyDbMText::getColumnType() const
+AcDbMText::ColumnType PyDbMText::getColumnType() const
 {
     AcDbMText::ColumnType  val;
     if (auto es = impObj()->getColumnType(val); es != eOk)
         throw PyAcadErrorStatus(es);
-    return static_cast<PyDbMText::ColumnType>(val);
+    return val;
 }
 
-Acad::ErrorStatus PyDbMText::setColumnType(PyDbMText::ColumnType val)
+Acad::ErrorStatus PyDbMText::setColumnType(AcDbMText::ColumnType val)
 {
-    return impObj()->setUseBackgroundColor(static_cast<AcDbMText::ColumnType>(val));
+    return impObj()->setUseBackgroundColor(val);
 }
 
 bool PyDbMText::getColumnAutoHeight() const
