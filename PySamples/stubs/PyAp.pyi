@@ -464,7 +464,7 @@ curDocument( (DocManager)arg1) -> Document :
     ...
     def defaultFormatForSave (self, *args, **kwargs):
       '''
-defaultFormatForSave( (DocManager)arg1) -> object :
+defaultFormatForSave( (DocManager)arg1) -> SaveFormat :
 
     C++ signature :
         enum AcApDocument::SaveFormat defaultFormatForSave(class PyApDocManager {lvalue})'''
@@ -624,7 +624,7 @@ setCurDocument( (DocManager)arg1, (Document)arg2, (DocLockMode)arg3, (bool)arg4)
     ...
     def setDefaultFormatForSave (self, *args, **kwargs):
       '''
-setDefaultFormatForSave( (DocManager)arg1, (object)arg2) -> ErrorStatus :
+setDefaultFormatForSave( (DocManager)arg1, (SaveFormat)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setDefaultFormatForSave(class PyApDocManager {lvalue},enum AcApDocument::SaveFormat)'''
@@ -758,9 +758,6 @@ removeReactor( (DocManagerReactor)arg1) -> None :
     ...
 
 class Document:
-    def SaveFormat (self, *args, **kwargs):
-      '''None'''
-    ...
     def __eq__ (self, *args, **kwargs):
       '''
 __eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
@@ -831,7 +828,7 @@ fileName( (Document)arg1) -> str :
     ...
     def formatForSave (self, *args, **kwargs):
       '''
-formatForSave( (Document)arg1) -> object :
+formatForSave( (Document)arg1) -> SaveFormat :
 
     C++ signature :
         enum AcApDocument::SaveFormat formatForSave(class PyApDocument {lvalue})'''
@@ -877,6 +874,133 @@ isQuiescent( (Document)arg1) -> bool :
 
     C++ signature :
         bool isQuiescent(class PyApDocument {lvalue})'''
+    ...
+    def lockMode (self, *args, **kwargs):
+      '''
+lockMode( (Document)arg1) -> DocLockMode :
+
+    C++ signature :
+        enum AcAp::DocLockMode lockMode(class PyApDocument {lvalue})
+
+lockMode( (Document)arg1, (bool)arg2) -> DocLockMode :
+
+    C++ signature :
+        enum AcAp::DocLockMode lockMode(class PyApDocument {lvalue},bool)'''
+    ...
+    def myLockMode (self, *args, **kwargs):
+      '''
+myLockMode( (Document)arg1) -> DocLockMode :
+
+    C++ signature :
+        enum AcAp::DocLockMode myLockMode(class PyApDocument {lvalue})'''
+    ...
+    def popDbmod (self, *args, **kwargs):
+      '''
+popDbmod( (Document)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus popDbmod(class PyApDocument {lvalue})'''
+    ...
+    def pushDbmod (self, *args, **kwargs):
+      '''
+pushDbmod( (Document)arg1) -> None :
+
+    C++ signature :
+        void pushDbmod(class PyApDocument {lvalue})'''
+    ...
+    def setDocTitle (self, *args, **kwargs):
+      '''
+setDocTitle( (Document)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setDocTitle(class PyApDocument {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def upgradeDocOpen (self, *args, **kwargs):
+      '''
+upgradeDocOpen( (Document)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus upgradeDocOpen(class PyApDocument {lvalue})'''
+    ...
+
+class SaveFormat:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
     ...
     def k2000_Standard (self, *args, **kwargs):
       '''None'''
@@ -977,52 +1101,53 @@ isQuiescent( (Document)arg1) -> bool :
     def kUnknown (self, *args, **kwargs):
       '''None'''
     ...
-    def lockMode (self, *args, **kwargs):
-      '''
-lockMode( (Document)arg1) -> DocLockMode :
-
-    C++ signature :
-        enum AcAp::DocLockMode lockMode(class PyApDocument {lvalue})
-
-lockMode( (Document)arg1, (bool)arg2) -> DocLockMode :
-
-    C++ signature :
-        enum AcAp::DocLockMode lockMode(class PyApDocument {lvalue},bool)'''
+    def name (self, *args, **kwargs):
+      '''None'''
     ...
-    def myLockMode (self, *args, **kwargs):
-      '''
-myLockMode( (Document)arg1) -> DocLockMode :
-
-    C++ signature :
-        enum AcAp::DocLockMode myLockMode(class PyApDocument {lvalue})'''
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def popDbmod (self, *args, **kwargs):
-      '''
-popDbmod( (Document)arg1) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus popDbmod(class PyApDocument {lvalue})'''
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
     ...
-    def pushDbmod (self, *args, **kwargs):
-      '''
-pushDbmod( (Document)arg1) -> None :
-
-    C++ signature :
-        void pushDbmod(class PyApDocument {lvalue})'''
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
     ...
-    def setDocTitle (self, *args, **kwargs):
-      '''
-setDocTitle( (Document)arg1, (str)arg2) -> None :
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
 
-    C++ signature :
-        void setDocTitle(class PyApDocument {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
     ...
-    def upgradeDocOpen (self, *args, **kwargs):
-      '''
-upgradeDocOpen( (Document)arg1) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus upgradeDocOpen(class PyApDocument {lvalue})'''
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
 class __loader__:

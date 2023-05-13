@@ -791,6 +791,161 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
         enum Acad::ErrorStatus xDataTransformBy(class PyDbObject {lvalue},class AcGeMatrix3d)'''
     ...
 
+class ACIcolorMethod:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kACIbyBlock (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kACIbyLayer (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kACIclear (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kACIforeground (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kACIfrozenLayer (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kACImaximum (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kACIminimum (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kACInone (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kACIstandard (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
 class AdsName:
     def __eq__ (self, value, /):
       '''Return self==value.'''
@@ -821,12 +976,6 @@ toObjectId( (AdsName)arg1) -> ObjectId :
     ...
 
 class AlignedDimension:
-    def CenterMarkType (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DimInspect (self, *args, **kwargs):
-      '''None'''
-    ...
     def __eq__ (self, *args, **kwargs):
       '''
 __eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
@@ -1480,33 +1629,6 @@ jogSymbolPosition( (AlignedDimension)arg1) -> Point3d :
     C++ signature :
         class AcGePoint3d jogSymbolPosition(class PyDbAlignedDimension {lvalue})'''
     ...
-    def kLine (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kMark (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNone (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeAngular (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeLabel (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeNone (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRate (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRemove (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRound (self, *args, **kwargs):
-      '''None'''
-    ...
     def layer (self, *args, **kwargs):
       '''
 layer( (Entity)arg1) -> str :
@@ -2158,10 +2280,10 @@ setSuppressZeroInches( (Dimension)arg1, (bool)arg2) -> ErrorStatus :
     ...
     def setTextAttachment (self, *args, **kwargs):
       '''
-setTextAttachment( (Dimension)arg1, (AttachmentPoint)arg2) -> ErrorStatus :
+setTextAttachment( (Dimension)arg1, (MTextAttachmentPoint)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus setTextAttachment(class PyDbDimension {lvalue},enum PyDbMText::AttachmentPoint)'''
+        enum Acad::ErrorStatus setTextAttachment(class PyDbDimension {lvalue},enum AcDbMText::AttachmentPoint)'''
     ...
     def setTextDefinedSize (self, *args, **kwargs):
       '''
@@ -2331,10 +2453,10 @@ swapIdWith( (DbObject)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
     ...
     def textAttachment (self, *args, **kwargs):
       '''
-textAttachment( (Dimension)arg1) -> AttachmentPoint :
+textAttachment( (Dimension)arg1) -> MTextAttachmentPoint :
 
     C++ signature :
-        enum PyDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
+        enum AcDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
     ...
     def textDefinedSize (self, *args, **kwargs):
       '''
@@ -2468,6 +2590,146 @@ xLine2Point( (AlignedDimension)arg1) -> Point3d :
 
     C++ signature :
         class AcGePoint3d xLine2Point(class PyDbAlignedDimension {lvalue})'''
+    ...
+
+class AnnoType:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kBlockRef (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kFcf (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kMText (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNoAnno (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
 class Arc:
@@ -3505,12 +3767,6 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class ArcDimension:
-    def CenterMarkType (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DimInspect (self, *args, **kwargs):
-      '''None'''
-    ...
     def __eq__ (self, *args, **kwargs):
       '''
 __eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
@@ -4191,33 +4447,6 @@ isWriteEnabled( (DbObject)arg1) -> bool :
 
     C++ signature :
         bool isWriteEnabled(class PyDbObject {lvalue})'''
-    ...
-    def kLine (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kMark (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNone (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeAngular (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeLabel (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeNone (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRate (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRemove (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRound (self, *args, **kwargs):
-      '''None'''
     ...
     def layer (self, *args, **kwargs):
       '''
@@ -4912,10 +5141,10 @@ setSuppressZeroInches( (Dimension)arg1, (bool)arg2) -> ErrorStatus :
     ...
     def setTextAttachment (self, *args, **kwargs):
       '''
-setTextAttachment( (Dimension)arg1, (AttachmentPoint)arg2) -> ErrorStatus :
+setTextAttachment( (Dimension)arg1, (MTextAttachmentPoint)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus setTextAttachment(class PyDbDimension {lvalue},enum PyDbMText::AttachmentPoint)'''
+        enum Acad::ErrorStatus setTextAttachment(class PyDbDimension {lvalue},enum AcDbMText::AttachmentPoint)'''
     ...
     def setTextDefinedSize (self, *args, **kwargs):
       '''
@@ -5085,10 +5314,10 @@ swapIdWith( (DbObject)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
     ...
     def textAttachment (self, *args, **kwargs):
       '''
-textAttachment( (Dimension)arg1) -> AttachmentPoint :
+textAttachment( (Dimension)arg1) -> MTextAttachmentPoint :
 
     C++ signature :
-        enum PyDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
+        enum AcDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
     ...
     def textDefinedSize (self, *args, **kwargs):
       '''
@@ -5224,1177 +5453,7 @@ xLine2Point( (ArcDimension)arg1) -> Point3d :
         class AcGePoint3d xLine2Point(class PyDbArcDimension {lvalue})'''
     ...
 
-class Attribute:
-    def TextAlignment (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyRxObject {lvalue},class PyRxObject)'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point3d)arg2, (str)arg3, (str)arg4, (ObjectId)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (RxObject)arg1, (RxObject)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyRxObject {lvalue},class PyRxObject)'''
-    ...
-    def addPersistentReactor (self, *args, **kwargs):
-      '''
-addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus addPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
-    ...
-    def adjustAlignment (self, *args, **kwargs):
-      '''
-adjustAlignment( (Text)arg1, (Database)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus adjustAlignment(class PyDbText {lvalue},class PyDbDatabase)'''
-    ...
-    def alignmentPoint (self, *args, **kwargs):
-      '''
-alignmentPoint( (Text)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d alignmentPoint(class PyDbText {lvalue})'''
-    ...
-    def assertNotifyEnabled (self, *args, **kwargs):
-      '''
-assertNotifyEnabled( (DbObject)arg1) -> None :
-
-    C++ signature :
-        void assertNotifyEnabled(class PyDbObject {lvalue})'''
-    ...
-    def assertReadEnabled (self, *args, **kwargs):
-      '''
-assertReadEnabled( (DbObject)arg1) -> None :
-
-    C++ signature :
-        void assertReadEnabled(class PyDbObject {lvalue})'''
-    ...
-    def assertWriteEnabled (self, *args, **kwargs):
-      '''
-assertWriteEnabled( (DbObject)arg1) -> None :
-
-    C++ signature :
-        void assertWriteEnabled(class PyDbObject {lvalue})'''
-    ...
-    def blockId (self, *args, **kwargs):
-      '''
-blockId( (Entity)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
-    ...
-    def cancel (self, *args, **kwargs):
-      '''
-cancel( (DbObject)arg1) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
-    ...
-    def castShadows (self, *args, **kwargs):
-      '''
-castShadows( (Entity)arg1) -> bool :
-
-    C++ signature :
-        bool castShadows(class PyDbEntity {lvalue})'''
-    ...
-    def className (self, *args, **kwargs):
-      '''
-className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
-    ...
-    def close (self, *args, **kwargs):
-      '''
-close( (DbObject)arg1) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus close(class PyDbObject {lvalue})'''
-    ...
-    def collisionType (self, *args, **kwargs):
-      '''
-collisionType( (Entity)arg1) -> CollisionType :
-
-    C++ signature :
-        enum AcDb::CollisionType collisionType(class PyDbEntity {lvalue})'''
-    ...
-    def color (self, *args, **kwargs):
-      '''
-color( (Entity)arg1) -> Color :
-
-    C++ signature :
-        class AcCmColor color(class PyDbEntity {lvalue})'''
-    ...
-    def colorIndex (self, *args, **kwargs):
-      '''
-colorIndex( (Entity)arg1) -> int :
-
-    C++ signature :
-        unsigned short colorIndex(class PyDbEntity {lvalue})'''
-    ...
-    def convertFieldToText (self, *args, **kwargs):
-      '''
-convertFieldToText( (Text)arg1) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus convertFieldToText(class PyDbText {lvalue})'''
-    ...
-    def convertIntoMTextAttribute (self, *args, **kwargs):
-      '''
-convertIntoMTextAttribute( (Attribute)arg1, (bool)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus convertIntoMTextAttribute(class PyDbAttribute {lvalue},bool)'''
-    ...
-    def correctSpelling (self, *args, **kwargs):
-      '''
-correctSpelling( (Text)arg1) -> int :
-
-    C++ signature :
-        int correctSpelling(class PyDbText {lvalue})'''
-    ...
-    def createExtensionDictionary (self, *args, **kwargs):
-      '''
-createExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
-    ...
-    def database (self, *args, **kwargs):
-      '''
-database( (DbObject)arg1) -> Database :
-
-    C++ signature :
-        class PyDbDatabase database(class PyDbObject {lvalue})'''
-    ...
-    def desc (self, *args, **kwargs):
-      '''
-desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
-    ...
-    def disableUndoRecording (self, *args, **kwargs):
-      '''
-disableUndoRecording( (DbObject)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void disableUndoRecording(class PyDbObject {lvalue},bool)'''
-    ...
-    def downgradeOpen (self, *args, **kwargs):
-      '''
-downgradeOpen( (DbObject)arg1) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus downgradeOpen(class PyDbObject {lvalue})'''
-    ...
-    def downgradeToNotify (self, *args, **kwargs):
-      '''
-downgradeToNotify( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus downgradeToNotify(class PyDbObject {lvalue},bool)'''
-    ...
-    def draw (self, *args, **kwargs):
-      '''
-draw( (Entity)arg1) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
-    ...
-    def entityColor (self, *args, **kwargs):
-      '''
-entityColor( (Entity)arg1) -> EntityColor :
-
-    C++ signature :
-        class AcCmEntityColor entityColor(class PyDbEntity {lvalue})'''
-    ...
-    def erase (self, *args, **kwargs):
-      '''
-erase( (DbObject)arg1) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
-    ...
-    def extensionDictionary (self, *args, **kwargs):
-      '''
-extensionDictionary( (DbObject)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId extensionDictionary(class PyDbObject {lvalue})'''
-    ...
-    def fieldLength (self, *args, **kwargs):
-      '''
-fieldLength( (Attribute)arg1) -> int :
-
-    C++ signature :
-        unsigned short fieldLength(class PyDbAttribute {lvalue})'''
-    ...
-    def getBoundingPoints (self, *args, **kwargs):
-      '''
-getBoundingPoints( (Text)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getBoundingPoints(class PyDbText {lvalue})'''
-    ...
-    def getCompoundObjectTransform (self, *args, **kwargs):
-      '''
-getCompoundObjectTransform( (Entity)arg1, (Matrix3d)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus getCompoundObjectTransform(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
-    ...
-    def getEcs (self, *args, **kwargs):
-      '''
-getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
-
-    C++ signature :
-        void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
-    ...
-    def getGeomExtents (self, *args, **kwargs):
-      '''
-getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
-    ...
-    def getMTextAttribute (self, *args, **kwargs):
-      '''
-getMTextAttribute( (Attribute)arg1) -> MText :
-
-    C++ signature :
-        class PyDbMText getMTextAttribute(class PyDbAttribute {lvalue})'''
-    ...
-    def getPlane (self, *args, **kwargs):
-      '''
-getPlane( (Entity)arg1) -> Plane :
-
-    C++ signature :
-        class PyGePlane getPlane(class PyDbEntity {lvalue})'''
-    ...
-    def getPlotStyleNameId (self, *args, **kwargs):
-      '''
-getPlotStyleNameId( (Entity)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getPlotStyleNameId(class PyDbEntity {lvalue})'''
-    ...
-    def handOverTo (self, *args, **kwargs):
-      '''
-handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
-    ...
-    def hasPersistentReactor (self, *args, **kwargs):
-      '''
-hasPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> bool :
-
-    C++ signature :
-        bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
-    ...
-    def height (self, *args, **kwargs):
-      '''
-height( (Text)arg1) -> float :
-
-    C++ signature :
-        double height(class PyDbText {lvalue})'''
-    ...
-    def hitTest (self, *args, **kwargs):
-      '''
-hitTest( (Text)arg1, (Point3d)arg2) -> bool :
-
-    C++ signature :
-        bool hitTest(class PyDbText {lvalue},class AcGePoint3d)'''
-    ...
-    def horizontalMode (self, *args, **kwargs):
-      '''
-horizontalMode( (Text)arg1) -> TextHorzMode :
-
-    C++ signature :
-        enum AcDb::TextHorzMode horizontalMode(class PyDbText {lvalue})'''
-    ...
-    def isA (self, *args, **kwargs):
-      '''
-isA( (Drawable)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
-    ...
-    def isAProxy (self, *args, **kwargs):
-      '''
-isAProxy( (DbObject)arg1) -> bool :
-
-    C++ signature :
-        bool isAProxy(class PyDbObject {lvalue})'''
-    ...
-    def isCancelling (self, *args, **kwargs):
-      '''
-isCancelling( (DbObject)arg1) -> bool :
-
-    C++ signature :
-        bool isCancelling(class PyDbObject {lvalue})'''
-    ...
-    def isConstant (self, *args, **kwargs):
-      '''
-isConstant( (Attribute)arg1) -> bool :
-
-    C++ signature :
-        bool isConstant(class PyDbAttribute {lvalue})'''
-    ...
-    def isDefaultAlignment (self, *args, **kwargs):
-      '''
-isDefaultAlignment( (Text)arg1) -> bool :
-
-    C++ signature :
-        bool isDefaultAlignment(class PyDbText {lvalue})'''
-    ...
-    def isEraseStatusToggled (self, *args, **kwargs):
-      '''
-isEraseStatusToggled( (DbObject)arg1) -> bool :
-
-    C++ signature :
-        bool isEraseStatusToggled(class PyDbObject {lvalue})'''
-    ...
-    def isErased (self, *args, **kwargs):
-      '''
-isErased( (DbObject)arg1) -> bool :
-
-    C++ signature :
-        bool isErased(class PyDbObject {lvalue})'''
-    ...
-    def isInvisible (self, *args, **kwargs):
-      '''
-isInvisible( (Attribute)arg1) -> bool :
-
-    C++ signature :
-        bool isInvisible(class PyDbAttribute {lvalue})'''
-    ...
-    def isMTextAttribute (self, *args, **kwargs):
-      '''
-isMTextAttribute( (Attribute)arg1) -> bool :
-
-    C++ signature :
-        bool isMTextAttribute(class PyDbAttribute {lvalue})'''
-    ...
-    def isMirroredInX (self, *args, **kwargs):
-      '''
-isMirroredInX( (Text)arg1) -> bool :
-
-    C++ signature :
-        bool isMirroredInX(class PyDbText {lvalue})'''
-    ...
-    def isMirroredInY (self, *args, **kwargs):
-      '''
-isMirroredInY( (Text)arg1) -> bool :
-
-    C++ signature :
-        bool isMirroredInY(class PyDbText {lvalue})'''
-    ...
-    def isModified (self, *args, **kwargs):
-      '''
-isModified( (DbObject)arg1) -> bool :
-
-    C++ signature :
-        bool isModified(class PyDbObject {lvalue})'''
-    ...
-    def isModifiedGraphics (self, *args, **kwargs):
-      '''
-isModifiedGraphics( (DbObject)arg1) -> bool :
-
-    C++ signature :
-        bool isModifiedGraphics(class PyDbObject {lvalue})'''
-    ...
-    def isModifiedXData (self, *args, **kwargs):
-      '''
-isModifiedXData( (DbObject)arg1) -> bool :
-
-    C++ signature :
-        bool isModifiedXData(class PyDbObject {lvalue})'''
-    ...
-    def isNewObject (self, *args, **kwargs):
-      '''
-isNewObject( (DbObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNewObject(class PyDbObject {lvalue})'''
-    ...
-    def isNotifyEnabled (self, *args, **kwargs):
-      '''
-isNotifyEnabled( (DbObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNotifyEnabled(class PyDbObject {lvalue})'''
-    ...
-    def isNotifying (self, *args, **kwargs):
-      '''
-isNotifying( (DbObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNotifying(class PyDbObject {lvalue})'''
-    ...
-    def isNull (self, *args, **kwargs):
-      '''
-isNull( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
-    ...
-    def isPlanar (self, *args, **kwargs):
-      '''
-isPlanar( (Entity)arg1) -> bool :
-
-    C++ signature :
-        bool isPlanar(class PyDbEntity {lvalue})'''
-    ...
-    def isPreset (self, *args, **kwargs):
-      '''
-isPreset( (Attribute)arg1) -> bool :
-
-    C++ signature :
-        bool isPreset(class PyDbAttribute {lvalue})'''
-    ...
-    def isReadEnabled (self, *args, **kwargs):
-      '''
-isReadEnabled( (DbObject)arg1) -> bool :
-
-    C++ signature :
-        bool isReadEnabled(class PyDbObject {lvalue})'''
-    ...
-    def isReallyClosing (self, *args, **kwargs):
-      '''
-isReallyClosing( (DbObject)arg1) -> bool :
-
-    C++ signature :
-        bool isReallyClosing(class PyDbObject {lvalue})'''
-    ...
-    def isReallyLocked (self, *args, **kwargs):
-      '''
-isReallyLocked( (Attribute)arg1) -> bool :
-
-    C++ signature :
-        bool isReallyLocked(class PyDbAttribute {lvalue})'''
-    ...
-    def isTransactionResident (self, *args, **kwargs):
-      '''
-isTransactionResident( (DbObject)arg1) -> bool :
-
-    C++ signature :
-        bool isTransactionResident(class PyDbObject {lvalue})'''
-    ...
-    def isUndoRecordingDisabled (self, *args, **kwargs):
-      '''
-isUndoRecordingDisabled( (DbObject)arg1) -> bool :
-
-    C++ signature :
-        bool isUndoRecordingDisabled(class PyDbObject {lvalue})'''
-    ...
-    def isUndoing (self, *args, **kwargs):
-      '''
-isUndoing( (DbObject)arg1) -> bool :
-
-    C++ signature :
-        bool isUndoing(class PyDbObject {lvalue})'''
-    ...
-    def isVerifiable (self, *args, **kwargs):
-      '''
-isVerifiable( (Attribute)arg1) -> bool :
-
-    C++ signature :
-        bool isVerifiable(class PyDbAttribute {lvalue})'''
-    ...
-    def isWriteEnabled (self, *args, **kwargs):
-      '''
-isWriteEnabled( (DbObject)arg1) -> bool :
-
-    C++ signature :
-        bool isWriteEnabled(class PyDbObject {lvalue})'''
-    ...
-    def kTextAlignmentAligned (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentBottomCenter (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentBottomLeft (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentBottomRight (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentCenter (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentFit (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentLeft (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentMiddle (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentMiddleCenter (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentMiddleLeft (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentMiddleRight (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentRight (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentTopCenter (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentTopLeft (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentTopRight (self, *args, **kwargs):
-      '''None'''
-    ...
-    def layer (self, *args, **kwargs):
-      '''
-layer( (Entity)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > layer(class PyDbEntity {lvalue})'''
-    ...
-    def layerId (self, *args, **kwargs):
-      '''
-layerId( (Entity)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId layerId(class PyDbEntity {lvalue})'''
-    ...
-    def lineWeight (self, *args, **kwargs):
-      '''
-lineWeight( (Entity)arg1) -> LineWeight :
-
-    C++ signature :
-        enum AcDb::LineWeight lineWeight(class PyDbEntity {lvalue})'''
-    ...
-    def linetype (self, *args, **kwargs):
-      '''
-linetype( (Entity)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > linetype(class PyDbEntity {lvalue})'''
-    ...
-    def linetypeId (self, *args, **kwargs):
-      '''
-linetypeId( (Entity)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId linetypeId(class PyDbEntity {lvalue})'''
-    ...
-    def linetypeScale (self, *args, **kwargs):
-      '''
-linetypeScale( (Entity)arg1) -> float :
-
-    C++ signature :
-        double linetypeScale(class PyDbEntity {lvalue})'''
-    ...
-    def list (self, *args, **kwargs):
-      '''
-list( (Entity)arg1) -> None :
-
-    C++ signature :
-        void list(class PyDbEntity {lvalue})'''
-    ...
-    def lockPositionInBlock (self, *args, **kwargs):
-      '''
-lockPositionInBlock( (Attribute)arg1) -> bool :
-
-    C++ signature :
-        bool lockPositionInBlock(class PyDbAttribute {lvalue})'''
-    ...
-    def material (self, *args, **kwargs):
-      '''
-material( (Entity)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > material(class PyDbEntity {lvalue})'''
-    ...
-    def materialId (self, *args, **kwargs):
-      '''
-materialId( (Entity)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
-    ...
-    def mirrorInX (self, *args, **kwargs):
-      '''
-mirrorInX( (Text)arg1, (bool)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus mirrorInX(class PyDbText {lvalue},bool)'''
-    ...
-    def mirrorInY (self, *args, **kwargs):
-      '''
-mirrorInY( (Text)arg1, (bool)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus mirrorInY(class PyDbText {lvalue},bool)'''
-    ...
-    def normal (self, *args, **kwargs):
-      '''
-normal( (Text)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbText {lvalue})'''
-    ...
-    def objectId (self, *args, **kwargs):
-      '''
-objectId( (DbObject)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId objectId(class PyDbObject {lvalue})'''
-    ...
-    def oblique (self, *args, **kwargs):
-      '''
-oblique( (Text)arg1) -> float :
-
-    C++ signature :
-        double oblique(class PyDbText {lvalue})'''
-    ...
-    def ownerId (self, *args, **kwargs):
-      '''
-ownerId( (DbObject)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
-    ...
-    def plotStyleName (self, *args, **kwargs):
-      '''
-plotStyleName( (Entity)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > plotStyleName(class PyDbEntity {lvalue})'''
-    ...
-    def position (self, *args, **kwargs):
-      '''
-position( (Text)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d position(class PyDbText {lvalue})'''
-    ...
-    def receiveShadows (self, *args, **kwargs):
-      '''
-receiveShadows( (Entity)arg1) -> bool :
-
-    C++ signature :
-        bool receiveShadows(class PyDbEntity {lvalue})'''
-    ...
-    def recordGraphicsModified (self, *args, **kwargs):
-      '''
-recordGraphicsModified( (Entity)arg1) -> None :
-
-    C++ signature :
-        void recordGraphicsModified(class PyDbEntity {lvalue})
-
-recordGraphicsModified( (Entity)arg1) -> None :
-
-    C++ signature :
-        void recordGraphicsModified(class PyDbEntity {lvalue})'''
-    ...
-    def releaseExtensionDictionary (self, *args, **kwargs):
-      '''
-releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
-    ...
-    def removePersistentReactor (self, *args, **kwargs):
-      '''
-removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus removePersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
-    ...
-    def rotation (self, *args, **kwargs):
-      '''
-rotation( (Text)arg1) -> float :
-
-    C++ signature :
-        double rotation(class PyDbText {lvalue})'''
-    ...
-    def setAlignmentPoint (self, *args, **kwargs):
-      '''
-setAlignmentPoint( (Text)arg1, (Point3d)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setAlignmentPoint(class PyDbText {lvalue},class AcGePoint3d)'''
-    ...
-    def setAttributeFromBlock (self, *args, **kwargs):
-      '''
-setAttributeFromBlock( (Attribute)arg1, (Matrix3d)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setAttributeFromBlock(class PyDbAttribute {lvalue},class AcGeMatrix3d)
-
-setAttributeFromBlock( (Attribute)arg1, (AttributeDefinition)arg2, (Matrix3d)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setAttributeFromBlock(class PyDbAttribute {lvalue},class PyDbAttributeDefinition,class AcGeMatrix3d)'''
-    ...
-    def setCastShadows (self, *args, **kwargs):
-      '''
-setCastShadows( (Entity)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setCastShadows(class PyDbEntity {lvalue},bool)'''
-    ...
-    def setColor (self, *args, **kwargs):
-      '''
-setColor( (Entity)arg1, (Color)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setColor(class PyDbEntity {lvalue},class AcCmColor)
-
-setColor( (Entity)arg1, (Color)arg2, (bool)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setColor(class PyDbEntity {lvalue},class AcCmColor,bool)
-
-setColor( (Entity)arg1, (Color)arg2, (bool)arg3, (Database)arg4) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setColor(class PyDbEntity {lvalue},class AcCmColor,bool,class PyDbDatabase {lvalue})'''
-    ...
-    def setColorIndex (self, *args, **kwargs):
-      '''
-setColorIndex( (Entity)arg1, (int)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setColorIndex(class PyDbEntity {lvalue},unsigned short)
-
-setColorIndex( (Entity)arg1, (int)arg2, (bool)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setColorIndex(class PyDbEntity {lvalue},unsigned short,bool)'''
-    ...
-    def setDatabaseDefaults (self, *args, **kwargs):
-      '''
-setDatabaseDefaults( (Entity)arg1) -> None :
-
-    C++ signature :
-        void setDatabaseDefaults(class PyDbEntity {lvalue})
-
-setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
-    ...
-    def setFieldLength (self, *args, **kwargs):
-      '''
-setFieldLength( (Attribute)arg1, (int)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setFieldLength(class PyDbAttribute {lvalue},unsigned short)'''
-    ...
-    def setHeight (self, *args, **kwargs):
-      '''
-setHeight( (Text)arg1, (float)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setHeight(class PyDbText {lvalue},double)'''
-    ...
-    def setHorizontalMode (self, *args, **kwargs):
-      '''
-setHorizontalMode( (Text)arg1, (TextHorzMode)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setHorizontalMode(class PyDbText {lvalue},enum AcDb::TextHorzMode)'''
-    ...
-    def setInvisible (self, *args, **kwargs):
-      '''
-setInvisible( (Attribute)arg1, (bool)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setInvisible(class PyDbAttribute {lvalue},bool)'''
-    ...
-    def setLayer (self, *args, **kwargs):
-      '''
-setLayer( (Entity)arg1, (str)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-setLayer( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
-
-setLayer( (Entity)arg1, (str)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,bool)
-
-setLayer( (Entity)arg1, (ObjectId)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class PyDbObjectId)
-
-setLayer( (Entity)arg1, (ObjectId)arg2, (bool)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class PyDbObjectId,bool)
-
-setLayer( (Entity)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class PyDbObjectId,bool,bool)'''
-    ...
-    def setLineWeight (self, *args, **kwargs):
-      '''
-setLineWeight( (Entity)arg1, (LineWeight)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setLineWeight(class PyDbEntity {lvalue},enum AcDb::LineWeight)
-
-setLineWeight( (Entity)arg1, (LineWeight)arg2, (bool)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setLineWeight(class PyDbEntity {lvalue},enum AcDb::LineWeight,bool)'''
-    ...
-    def setLinetype (self, *args, **kwargs):
-      '''
-setLinetype( (Entity)arg1, (str)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-setLinetype( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
-
-setLinetype( (Entity)arg1, (ObjectId)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class PyDbObjectId)
-
-setLinetype( (Entity)arg1, (ObjectId)arg2, (bool)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class PyDbObjectId,bool)'''
-    ...
-    def setLinetypeScale (self, *args, **kwargs):
-      '''
-setLinetypeScale( (Entity)arg1, (float)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setLinetypeScale(class PyDbEntity {lvalue},double)
-
-setLinetypeScale( (Entity)arg1, (float)arg2, (bool)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setLinetypeScale(class PyDbEntity {lvalue},double,bool)'''
-    ...
-    def setLockPositionInBlock (self, *args, **kwargs):
-      '''
-setLockPositionInBlock( (Attribute)arg1, (bool)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setLockPositionInBlock(class PyDbAttribute {lvalue},bool)'''
-    ...
-    def setMTextAttribute (self, *args, **kwargs):
-      '''
-setMTextAttribute( (Attribute)arg1, (MText)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setMTextAttribute(class PyDbAttribute {lvalue},class PyDbMText {lvalue})'''
-    ...
-    def setMaterial (self, *args, **kwargs):
-      '''
-setMaterial( (Entity)arg1, (str)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-setMaterial( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
-
-setMaterial( (Entity)arg1, (ObjectId)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class PyDbObjectId)
-
-setMaterial( (Entity)arg1, (ObjectId)arg2, (bool)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class PyDbObjectId,bool)'''
-    ...
-    def setNormal (self, *args, **kwargs):
-      '''
-setNormal( (Text)arg1, (Vector3d)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setNormal(class PyDbText {lvalue},class AcGeVector3d)'''
-    ...
-    def setOblique (self, *args, **kwargs):
-      '''
-setOblique( (Text)arg1, (float)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setOblique(class PyDbText {lvalue},double)'''
-    ...
-    def setOwnerId (self, *args, **kwargs):
-      '''
-setOwnerId( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setOwnerId(class PyDbObject {lvalue},class PyDbObjectId)'''
-    ...
-    def setPlotStyleName (self, *args, **kwargs):
-      '''
-setPlotStyleName( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setPlotStyleName(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
-
-setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (bool)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,bool)
-
-setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)arg4) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
-    ...
-    def setPosition (self, *args, **kwargs):
-      '''
-setPosition( (Text)arg1, (Point3d)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setPosition(class PyDbText {lvalue},class AcGePoint3d)'''
-    ...
-    def setPropertiesFrom (self, *args, **kwargs):
-      '''
-setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
-    ...
-    def setReceiveShadows (self, *args, **kwargs):
-      '''
-setReceiveShadows( (Entity)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setReceiveShadows(class PyDbEntity {lvalue},bool)'''
-    ...
-    def setRotation (self, *args, **kwargs):
-      '''
-setRotation( (Text)arg1, (float)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setRotation(class PyDbText {lvalue},double)'''
-    ...
-    def setTag (self, *args, **kwargs):
-      '''
-setTag( (Attribute)arg1, (str)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setTag(class PyDbAttribute {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
-    ...
-    def setTextString (self, *args, **kwargs):
-      '''
-setTextString( (Text)arg1, (str)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setTextString(class PyDbText {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > {lvalue})'''
-    ...
-    def setTextStyle (self, *args, **kwargs):
-      '''
-setTextStyle( (Text)arg1, (ObjectId)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setTextStyle(class PyDbText {lvalue},class PyDbObjectId)'''
-    ...
-    def setThickness (self, *args, **kwargs):
-      '''
-setThickness( (Text)arg1, (float)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setThickness(class PyDbText {lvalue},double)'''
-    ...
-    def setVerticalMode (self, *args, **kwargs):
-      '''
-setVerticalMode( (Text)arg1, (TextHorzMode)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setVerticalMode(class PyDbText {lvalue},enum AcDb::TextVertMode)'''
-    ...
-    def setVisibility (self, *args, **kwargs):
-      '''
-setVisibility( (Entity)arg1, (Visibility)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility)
-
-setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
-    ...
-    def setWidthFactor (self, *args, **kwargs):
-      '''
-setWidthFactor( (Text)arg1, (float)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setWidthFactor(class PyDbText {lvalue},double)'''
-    ...
-    def setXData (self, *args, **kwargs):
-      '''
-setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setXData(class PyDbObject {lvalue},class boost::python::list)'''
-    ...
-    def swapIdWith (self, *args, **kwargs):
-      '''
-swapIdWith( (DbObject)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus swapIdWith(class PyDbObject {lvalue},class PyDbObjectId {lvalue},bool,bool)'''
-    ...
-    def tag (self, *args, **kwargs):
-      '''
-tag( (Attribute)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > tag(class PyDbAttribute {lvalue})'''
-    ...
-    def textString (self, *args, **kwargs):
-      '''
-textString( (Text)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > textString(class PyDbText {lvalue})'''
-    ...
-    def textStyle (self, *args, **kwargs):
-      '''
-textStyle( (Text)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId textStyle(class PyDbText {lvalue})'''
-    ...
-    def thickness (self, *args, **kwargs):
-      '''
-thickness( (Text)arg1) -> float :
-
-    C++ signature :
-        double thickness(class PyDbText {lvalue})'''
-    ...
-    def transformBy (self, *args, **kwargs):
-      '''
-transformBy( (Entity)arg1, (Matrix3d)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus transformBy(class PyDbEntity {lvalue},class AcGeMatrix3d)'''
-    ...
-    def updateMTextAttribute (self, *args, **kwargs):
-      '''
-updateMTextAttribute( (Attribute)arg1) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus updateMTextAttribute(class PyDbAttribute {lvalue})'''
-    ...
-    def upgradeFromNotify (self, *args, **kwargs):
-      '''
-upgradeFromNotify( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus upgradeFromNotify(class PyDbObject {lvalue},bool {lvalue})'''
-    ...
-    def upgradeOpen (self, *args, **kwargs):
-      '''
-upgradeOpen( (DbObject)arg1) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus upgradeOpen(class PyDbObject {lvalue})'''
-    ...
-    def verticalMode (self, *args, **kwargs):
-      '''
-verticalMode( (Text)arg1) -> TextHorzMode :
-
-    C++ signature :
-        enum AcDb::TextVertMode verticalMode(class PyDbText {lvalue})'''
-    ...
-    def visibility (self, *args, **kwargs):
-      '''
-visibility( (Entity)arg1) -> Visibility :
-
-    C++ signature :
-        enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
-    ...
-    def widthFactor (self, *args, **kwargs):
-      '''
-widthFactor( (Text)arg1) -> float :
-
-    C++ signature :
-        double widthFactor(class PyDbText {lvalue})'''
-    ...
-    def xData (self, *args, **kwargs):
-      '''
-xData( (DbObject)arg1, (str)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list xData(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
-    ...
-    def xDataTransformBy (self, *args, **kwargs):
-      '''
-xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus xDataTransformBy(class PyDbObject {lvalue},class AcGeMatrix3d)'''
-    ...
-
 class AttributeDefinition:
-    def TextAlignment (self, *args, **kwargs):
-      '''None'''
-    ...
     def __eq__ (self, *args, **kwargs):
       '''
 __eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
@@ -6899,51 +5958,6 @@ isWriteEnabled( (DbObject)arg1) -> bool :
 
     C++ signature :
         bool isWriteEnabled(class PyDbObject {lvalue})'''
-    ...
-    def kTextAlignmentAligned (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentBottomCenter (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentBottomLeft (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentBottomRight (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentCenter (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentFit (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentLeft (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentMiddle (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentMiddleCenter (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentMiddleLeft (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentMiddleRight (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentRight (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentTopCenter (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentTopLeft (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentTopRight (self, *args, **kwargs):
-      '''None'''
     ...
     def layer (self, *args, **kwargs):
       '''
@@ -7523,6 +6537,1125 @@ updateMTextAttributeDefinition( (AttributeDefinition)arg1) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus updateMTextAttributeDefinition(class PyDbAttributeDefinition {lvalue})'''
+    ...
+    def upgradeFromNotify (self, *args, **kwargs):
+      '''
+upgradeFromNotify( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus upgradeFromNotify(class PyDbObject {lvalue},bool {lvalue})'''
+    ...
+    def upgradeOpen (self, *args, **kwargs):
+      '''
+upgradeOpen( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus upgradeOpen(class PyDbObject {lvalue})'''
+    ...
+    def verticalMode (self, *args, **kwargs):
+      '''
+verticalMode( (Text)arg1) -> TextHorzMode :
+
+    C++ signature :
+        enum AcDb::TextVertMode verticalMode(class PyDbText {lvalue})'''
+    ...
+    def visibility (self, *args, **kwargs):
+      '''
+visibility( (Entity)arg1) -> Visibility :
+
+    C++ signature :
+        enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def widthFactor (self, *args, **kwargs):
+      '''
+widthFactor( (Text)arg1) -> float :
+
+    C++ signature :
+        double widthFactor(class PyDbText {lvalue})'''
+    ...
+    def xData (self, *args, **kwargs):
+      '''
+xData( (DbObject)arg1, (str)arg2) -> list :
+
+    C++ signature :
+        class boost::python::list xData(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def xDataTransformBy (self, *args, **kwargs):
+      '''
+xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus xDataTransformBy(class PyDbObject {lvalue},class AcGeMatrix3d)'''
+    ...
+
+class AttributeReference:
+    def __eq__ (self, *args, **kwargs):
+      '''
+__eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __eq__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def __init__ (self, *args, **kwargs):
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point3d)arg2, (str)arg3, (str)arg4, (ObjectId)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def __ne__ (self, *args, **kwargs):
+      '''
+__ne__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __ne__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def addPersistentReactor (self, *args, **kwargs):
+      '''
+addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus addPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def adjustAlignment (self, *args, **kwargs):
+      '''
+adjustAlignment( (Text)arg1, (Database)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus adjustAlignment(class PyDbText {lvalue},class PyDbDatabase)'''
+    ...
+    def alignmentPoint (self, *args, **kwargs):
+      '''
+alignmentPoint( (Text)arg1) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d alignmentPoint(class PyDbText {lvalue})'''
+    ...
+    def assertNotifyEnabled (self, *args, **kwargs):
+      '''
+assertNotifyEnabled( (DbObject)arg1) -> None :
+
+    C++ signature :
+        void assertNotifyEnabled(class PyDbObject {lvalue})'''
+    ...
+    def assertReadEnabled (self, *args, **kwargs):
+      '''
+assertReadEnabled( (DbObject)arg1) -> None :
+
+    C++ signature :
+        void assertReadEnabled(class PyDbObject {lvalue})'''
+    ...
+    def assertWriteEnabled (self, *args, **kwargs):
+      '''
+assertWriteEnabled( (DbObject)arg1) -> None :
+
+    C++ signature :
+        void assertWriteEnabled(class PyDbObject {lvalue})'''
+    ...
+    def blockId (self, *args, **kwargs):
+      '''
+blockId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def cancel (self, *args, **kwargs):
+      '''
+cancel( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
+    ...
+    def castShadows (self, *args, **kwargs):
+      '''
+castShadows( (Entity)arg1) -> bool :
+
+    C++ signature :
+        bool castShadows(class PyDbEntity {lvalue})'''
+    ...
+    def className (self, *args, **kwargs):
+      '''
+className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def close (self, *args, **kwargs):
+      '''
+close( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus close(class PyDbObject {lvalue})'''
+    ...
+    def collisionType (self, *args, **kwargs):
+      '''
+collisionType( (Entity)arg1) -> CollisionType :
+
+    C++ signature :
+        enum AcDb::CollisionType collisionType(class PyDbEntity {lvalue})'''
+    ...
+    def color (self, *args, **kwargs):
+      '''
+color( (Entity)arg1) -> Color :
+
+    C++ signature :
+        class AcCmColor color(class PyDbEntity {lvalue})'''
+    ...
+    def colorIndex (self, *args, **kwargs):
+      '''
+colorIndex( (Entity)arg1) -> int :
+
+    C++ signature :
+        unsigned short colorIndex(class PyDbEntity {lvalue})'''
+    ...
+    def convertFieldToText (self, *args, **kwargs):
+      '''
+convertFieldToText( (Text)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus convertFieldToText(class PyDbText {lvalue})'''
+    ...
+    def convertIntoMTextAttribute (self, *args, **kwargs):
+      '''
+convertIntoMTextAttribute( (AttributeReference)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus convertIntoMTextAttribute(class PyDbAttribute {lvalue},bool)'''
+    ...
+    def correctSpelling (self, *args, **kwargs):
+      '''
+correctSpelling( (Text)arg1) -> int :
+
+    C++ signature :
+        int correctSpelling(class PyDbText {lvalue})'''
+    ...
+    def createExtensionDictionary (self, *args, **kwargs):
+      '''
+createExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def database (self, *args, **kwargs):
+      '''
+database( (DbObject)arg1) -> Database :
+
+    C++ signature :
+        class PyDbDatabase database(class PyDbObject {lvalue})'''
+    ...
+    def desc (self, *args, **kwargs):
+      '''
+desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def disableUndoRecording (self, *args, **kwargs):
+      '''
+disableUndoRecording( (DbObject)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void disableUndoRecording(class PyDbObject {lvalue},bool)'''
+    ...
+    def downgradeOpen (self, *args, **kwargs):
+      '''
+downgradeOpen( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus downgradeOpen(class PyDbObject {lvalue})'''
+    ...
+    def downgradeToNotify (self, *args, **kwargs):
+      '''
+downgradeToNotify( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus downgradeToNotify(class PyDbObject {lvalue},bool)'''
+    ...
+    def draw (self, *args, **kwargs):
+      '''
+draw( (Entity)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def entityColor (self, *args, **kwargs):
+      '''
+entityColor( (Entity)arg1) -> EntityColor :
+
+    C++ signature :
+        class AcCmEntityColor entityColor(class PyDbEntity {lvalue})'''
+    ...
+    def erase (self, *args, **kwargs):
+      '''
+erase( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+    ...
+    def extensionDictionary (self, *args, **kwargs):
+      '''
+extensionDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId extensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def fieldLength (self, *args, **kwargs):
+      '''
+fieldLength( (AttributeReference)arg1) -> int :
+
+    C++ signature :
+        unsigned short fieldLength(class PyDbAttribute {lvalue})'''
+    ...
+    def getBoundingPoints (self, *args, **kwargs):
+      '''
+getBoundingPoints( (Text)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getBoundingPoints(class PyDbText {lvalue})'''
+    ...
+    def getCompoundObjectTransform (self, *args, **kwargs):
+      '''
+getCompoundObjectTransform( (Entity)arg1, (Matrix3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus getCompoundObjectTransform(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
+    ...
+    def getEcs (self, *args, **kwargs):
+      '''
+getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
+
+    C++ signature :
+        void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
+    ...
+    def getGeomExtents (self, *args, **kwargs):
+      '''
+getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getMTextAttribute (self, *args, **kwargs):
+      '''
+getMTextAttribute( (AttributeReference)arg1) -> MText :
+
+    C++ signature :
+        class PyDbMText getMTextAttribute(class PyDbAttribute {lvalue})'''
+    ...
+    def getPlane (self, *args, **kwargs):
+      '''
+getPlane( (Entity)arg1) -> Plane :
+
+    C++ signature :
+        class PyGePlane getPlane(class PyDbEntity {lvalue})'''
+    ...
+    def getPlotStyleNameId (self, *args, **kwargs):
+      '''
+getPlotStyleNameId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getPlotStyleNameId(class PyDbEntity {lvalue})'''
+    ...
+    def handOverTo (self, *args, **kwargs):
+      '''
+handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasPersistentReactor (self, *args, **kwargs):
+      '''
+hasPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> bool :
+
+    C++ signature :
+        bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def height (self, *args, **kwargs):
+      '''
+height( (Text)arg1) -> float :
+
+    C++ signature :
+        double height(class PyDbText {lvalue})'''
+    ...
+    def hitTest (self, *args, **kwargs):
+      '''
+hitTest( (Text)arg1, (Point3d)arg2) -> bool :
+
+    C++ signature :
+        bool hitTest(class PyDbText {lvalue},class AcGePoint3d)'''
+    ...
+    def horizontalMode (self, *args, **kwargs):
+      '''
+horizontalMode( (Text)arg1) -> TextHorzMode :
+
+    C++ signature :
+        enum AcDb::TextHorzMode horizontalMode(class PyDbText {lvalue})'''
+    ...
+    def isA (self, *args, **kwargs):
+      '''
+isA( (Drawable)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+    ...
+    def isAProxy (self, *args, **kwargs):
+      '''
+isAProxy( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isAProxy(class PyDbObject {lvalue})'''
+    ...
+    def isCancelling (self, *args, **kwargs):
+      '''
+isCancelling( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isCancelling(class PyDbObject {lvalue})'''
+    ...
+    def isConstant (self, *args, **kwargs):
+      '''
+isConstant( (AttributeReference)arg1) -> bool :
+
+    C++ signature :
+        bool isConstant(class PyDbAttribute {lvalue})'''
+    ...
+    def isDefaultAlignment (self, *args, **kwargs):
+      '''
+isDefaultAlignment( (Text)arg1) -> bool :
+
+    C++ signature :
+        bool isDefaultAlignment(class PyDbText {lvalue})'''
+    ...
+    def isEraseStatusToggled (self, *args, **kwargs):
+      '''
+isEraseStatusToggled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isEraseStatusToggled(class PyDbObject {lvalue})'''
+    ...
+    def isErased (self, *args, **kwargs):
+      '''
+isErased( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isErased(class PyDbObject {lvalue})'''
+    ...
+    def isInvisible (self, *args, **kwargs):
+      '''
+isInvisible( (AttributeReference)arg1) -> bool :
+
+    C++ signature :
+        bool isInvisible(class PyDbAttribute {lvalue})'''
+    ...
+    def isMTextAttribute (self, *args, **kwargs):
+      '''
+isMTextAttribute( (AttributeReference)arg1) -> bool :
+
+    C++ signature :
+        bool isMTextAttribute(class PyDbAttribute {lvalue})'''
+    ...
+    def isMirroredInX (self, *args, **kwargs):
+      '''
+isMirroredInX( (Text)arg1) -> bool :
+
+    C++ signature :
+        bool isMirroredInX(class PyDbText {lvalue})'''
+    ...
+    def isMirroredInY (self, *args, **kwargs):
+      '''
+isMirroredInY( (Text)arg1) -> bool :
+
+    C++ signature :
+        bool isMirroredInY(class PyDbText {lvalue})'''
+    ...
+    def isModified (self, *args, **kwargs):
+      '''
+isModified( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isModified(class PyDbObject {lvalue})'''
+    ...
+    def isModifiedGraphics (self, *args, **kwargs):
+      '''
+isModifiedGraphics( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isModifiedGraphics(class PyDbObject {lvalue})'''
+    ...
+    def isModifiedXData (self, *args, **kwargs):
+      '''
+isModifiedXData( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isModifiedXData(class PyDbObject {lvalue})'''
+    ...
+    def isNewObject (self, *args, **kwargs):
+      '''
+isNewObject( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNewObject(class PyDbObject {lvalue})'''
+    ...
+    def isNotifyEnabled (self, *args, **kwargs):
+      '''
+isNotifyEnabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNotifyEnabled(class PyDbObject {lvalue})'''
+    ...
+    def isNotifying (self, *args, **kwargs):
+      '''
+isNotifying( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNotifying(class PyDbObject {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs):
+      '''
+isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def isPlanar (self, *args, **kwargs):
+      '''
+isPlanar( (Entity)arg1) -> bool :
+
+    C++ signature :
+        bool isPlanar(class PyDbEntity {lvalue})'''
+    ...
+    def isPreset (self, *args, **kwargs):
+      '''
+isPreset( (AttributeReference)arg1) -> bool :
+
+    C++ signature :
+        bool isPreset(class PyDbAttribute {lvalue})'''
+    ...
+    def isReadEnabled (self, *args, **kwargs):
+      '''
+isReadEnabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isReadEnabled(class PyDbObject {lvalue})'''
+    ...
+    def isReallyClosing (self, *args, **kwargs):
+      '''
+isReallyClosing( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isReallyClosing(class PyDbObject {lvalue})'''
+    ...
+    def isReallyLocked (self, *args, **kwargs):
+      '''
+isReallyLocked( (AttributeReference)arg1) -> bool :
+
+    C++ signature :
+        bool isReallyLocked(class PyDbAttribute {lvalue})'''
+    ...
+    def isTransactionResident (self, *args, **kwargs):
+      '''
+isTransactionResident( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isTransactionResident(class PyDbObject {lvalue})'''
+    ...
+    def isUndoRecordingDisabled (self, *args, **kwargs):
+      '''
+isUndoRecordingDisabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isUndoRecordingDisabled(class PyDbObject {lvalue})'''
+    ...
+    def isUndoing (self, *args, **kwargs):
+      '''
+isUndoing( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isUndoing(class PyDbObject {lvalue})'''
+    ...
+    def isVerifiable (self, *args, **kwargs):
+      '''
+isVerifiable( (AttributeReference)arg1) -> bool :
+
+    C++ signature :
+        bool isVerifiable(class PyDbAttribute {lvalue})'''
+    ...
+    def isWriteEnabled (self, *args, **kwargs):
+      '''
+isWriteEnabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isWriteEnabled(class PyDbObject {lvalue})'''
+    ...
+    def layer (self, *args, **kwargs):
+      '''
+layer( (Entity)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > layer(class PyDbEntity {lvalue})'''
+    ...
+    def layerId (self, *args, **kwargs):
+      '''
+layerId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId layerId(class PyDbEntity {lvalue})'''
+    ...
+    def lineWeight (self, *args, **kwargs):
+      '''
+lineWeight( (Entity)arg1) -> LineWeight :
+
+    C++ signature :
+        enum AcDb::LineWeight lineWeight(class PyDbEntity {lvalue})'''
+    ...
+    def linetype (self, *args, **kwargs):
+      '''
+linetype( (Entity)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > linetype(class PyDbEntity {lvalue})'''
+    ...
+    def linetypeId (self, *args, **kwargs):
+      '''
+linetypeId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId linetypeId(class PyDbEntity {lvalue})'''
+    ...
+    def linetypeScale (self, *args, **kwargs):
+      '''
+linetypeScale( (Entity)arg1) -> float :
+
+    C++ signature :
+        double linetypeScale(class PyDbEntity {lvalue})'''
+    ...
+    def list (self, *args, **kwargs):
+      '''
+list( (Entity)arg1) -> None :
+
+    C++ signature :
+        void list(class PyDbEntity {lvalue})'''
+    ...
+    def lockPositionInBlock (self, *args, **kwargs):
+      '''
+lockPositionInBlock( (AttributeReference)arg1) -> bool :
+
+    C++ signature :
+        bool lockPositionInBlock(class PyDbAttribute {lvalue})'''
+    ...
+    def material (self, *args, **kwargs):
+      '''
+material( (Entity)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > material(class PyDbEntity {lvalue})'''
+    ...
+    def materialId (self, *args, **kwargs):
+      '''
+materialId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
+    ...
+    def mirrorInX (self, *args, **kwargs):
+      '''
+mirrorInX( (Text)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus mirrorInX(class PyDbText {lvalue},bool)'''
+    ...
+    def mirrorInY (self, *args, **kwargs):
+      '''
+mirrorInY( (Text)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus mirrorInY(class PyDbText {lvalue},bool)'''
+    ...
+    def normal (self, *args, **kwargs):
+      '''
+normal( (Text)arg1) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d normal(class PyDbText {lvalue})'''
+    ...
+    def objectId (self, *args, **kwargs):
+      '''
+objectId( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId objectId(class PyDbObject {lvalue})'''
+    ...
+    def oblique (self, *args, **kwargs):
+      '''
+oblique( (Text)arg1) -> float :
+
+    C++ signature :
+        double oblique(class PyDbText {lvalue})'''
+    ...
+    def ownerId (self, *args, **kwargs):
+      '''
+ownerId( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
+    ...
+    def plotStyleName (self, *args, **kwargs):
+      '''
+plotStyleName( (Entity)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > plotStyleName(class PyDbEntity {lvalue})'''
+    ...
+    def position (self, *args, **kwargs):
+      '''
+position( (Text)arg1) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d position(class PyDbText {lvalue})'''
+    ...
+    def receiveShadows (self, *args, **kwargs):
+      '''
+receiveShadows( (Entity)arg1) -> bool :
+
+    C++ signature :
+        bool receiveShadows(class PyDbEntity {lvalue})'''
+    ...
+    def recordGraphicsModified (self, *args, **kwargs):
+      '''
+recordGraphicsModified( (Entity)arg1) -> None :
+
+    C++ signature :
+        void recordGraphicsModified(class PyDbEntity {lvalue})
+
+recordGraphicsModified( (Entity)arg1) -> None :
+
+    C++ signature :
+        void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def releaseExtensionDictionary (self, *args, **kwargs):
+      '''
+releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def removePersistentReactor (self, *args, **kwargs):
+      '''
+removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removePersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def rotation (self, *args, **kwargs):
+      '''
+rotation( (Text)arg1) -> float :
+
+    C++ signature :
+        double rotation(class PyDbText {lvalue})'''
+    ...
+    def setAlignmentPoint (self, *args, **kwargs):
+      '''
+setAlignmentPoint( (Text)arg1, (Point3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setAlignmentPoint(class PyDbText {lvalue},class AcGePoint3d)'''
+    ...
+    def setAttributeFromBlock (self, *args, **kwargs):
+      '''
+setAttributeFromBlock( (AttributeReference)arg1, (Matrix3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setAttributeFromBlock(class PyDbAttribute {lvalue},class AcGeMatrix3d)
+
+setAttributeFromBlock( (AttributeReference)arg1, (AttributeDefinition)arg2, (Matrix3d)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setAttributeFromBlock(class PyDbAttribute {lvalue},class PyDbAttributeDefinition,class AcGeMatrix3d)'''
+    ...
+    def setCastShadows (self, *args, **kwargs):
+      '''
+setCastShadows( (Entity)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setCastShadows(class PyDbEntity {lvalue},bool)'''
+    ...
+    def setColor (self, *args, **kwargs):
+      '''
+setColor( (Entity)arg1, (Color)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColor(class PyDbEntity {lvalue},class AcCmColor)
+
+setColor( (Entity)arg1, (Color)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColor(class PyDbEntity {lvalue},class AcCmColor,bool)
+
+setColor( (Entity)arg1, (Color)arg2, (bool)arg3, (Database)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColor(class PyDbEntity {lvalue},class AcCmColor,bool,class PyDbDatabase {lvalue})'''
+    ...
+    def setColorIndex (self, *args, **kwargs):
+      '''
+setColorIndex( (Entity)arg1, (int)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColorIndex(class PyDbEntity {lvalue},unsigned short)
+
+setColorIndex( (Entity)arg1, (int)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColorIndex(class PyDbEntity {lvalue},unsigned short,bool)'''
+    ...
+    def setDatabaseDefaults (self, *args, **kwargs):
+      '''
+setDatabaseDefaults( (Entity)arg1) -> None :
+
+    C++ signature :
+        void setDatabaseDefaults(class PyDbEntity {lvalue})
+
+setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
+
+    C++ signature :
+        void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setFieldLength (self, *args, **kwargs):
+      '''
+setFieldLength( (AttributeReference)arg1, (int)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setFieldLength(class PyDbAttribute {lvalue},unsigned short)'''
+    ...
+    def setHeight (self, *args, **kwargs):
+      '''
+setHeight( (Text)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setHeight(class PyDbText {lvalue},double)'''
+    ...
+    def setHorizontalMode (self, *args, **kwargs):
+      '''
+setHorizontalMode( (Text)arg1, (TextHorzMode)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setHorizontalMode(class PyDbText {lvalue},enum AcDb::TextHorzMode)'''
+    ...
+    def setInvisible (self, *args, **kwargs):
+      '''
+setInvisible( (AttributeReference)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setInvisible(class PyDbAttribute {lvalue},bool)'''
+    ...
+    def setLayer (self, *args, **kwargs):
+      '''
+setLayer( (Entity)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setLayer( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setLayer( (Entity)arg1, (str)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,bool)
+
+setLayer( (Entity)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class PyDbObjectId)
+
+setLayer( (Entity)arg1, (ObjectId)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class PyDbObjectId,bool)
+
+setLayer( (Entity)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class PyDbObjectId,bool,bool)'''
+    ...
+    def setLineWeight (self, *args, **kwargs):
+      '''
+setLineWeight( (Entity)arg1, (LineWeight)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLineWeight(class PyDbEntity {lvalue},enum AcDb::LineWeight)
+
+setLineWeight( (Entity)arg1, (LineWeight)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLineWeight(class PyDbEntity {lvalue},enum AcDb::LineWeight,bool)'''
+    ...
+    def setLinetype (self, *args, **kwargs):
+      '''
+setLinetype( (Entity)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setLinetype( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setLinetype( (Entity)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class PyDbObjectId)
+
+setLinetype( (Entity)arg1, (ObjectId)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class PyDbObjectId,bool)'''
+    ...
+    def setLinetypeScale (self, *args, **kwargs):
+      '''
+setLinetypeScale( (Entity)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetypeScale(class PyDbEntity {lvalue},double)
+
+setLinetypeScale( (Entity)arg1, (float)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetypeScale(class PyDbEntity {lvalue},double,bool)'''
+    ...
+    def setLockPositionInBlock (self, *args, **kwargs):
+      '''
+setLockPositionInBlock( (AttributeReference)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLockPositionInBlock(class PyDbAttribute {lvalue},bool)'''
+    ...
+    def setMTextAttribute (self, *args, **kwargs):
+      '''
+setMTextAttribute( (AttributeReference)arg1, (MText)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMTextAttribute(class PyDbAttribute {lvalue},class PyDbMText {lvalue})'''
+    ...
+    def setMaterial (self, *args, **kwargs):
+      '''
+setMaterial( (Entity)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setMaterial( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setMaterial( (Entity)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class PyDbObjectId)
+
+setMaterial( (Entity)arg1, (ObjectId)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class PyDbObjectId,bool)'''
+    ...
+    def setNormal (self, *args, **kwargs):
+      '''
+setNormal( (Text)arg1, (Vector3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setNormal(class PyDbText {lvalue},class AcGeVector3d)'''
+    ...
+    def setOblique (self, *args, **kwargs):
+      '''
+setOblique( (Text)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setOblique(class PyDbText {lvalue},double)'''
+    ...
+    def setOwnerId (self, *args, **kwargs):
+      '''
+setOwnerId( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setOwnerId(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def setPlotStyleName (self, *args, **kwargs):
+      '''
+setPlotStyleName( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPlotStyleName(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,bool)
+
+setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
+    ...
+    def setPosition (self, *args, **kwargs):
+      '''
+setPosition( (Text)arg1, (Point3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPosition(class PyDbText {lvalue},class AcGePoint3d)'''
+    ...
+    def setPropertiesFrom (self, *args, **kwargs):
+      '''
+setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
+
+setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    ...
+    def setReceiveShadows (self, *args, **kwargs):
+      '''
+setReceiveShadows( (Entity)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setReceiveShadows(class PyDbEntity {lvalue},bool)'''
+    ...
+    def setRotation (self, *args, **kwargs):
+      '''
+setRotation( (Text)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setRotation(class PyDbText {lvalue},double)'''
+    ...
+    def setTag (self, *args, **kwargs):
+      '''
+setTag( (AttributeReference)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setTag(class PyDbAttribute {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setTextString (self, *args, **kwargs):
+      '''
+setTextString( (Text)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setTextString(class PyDbText {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > {lvalue})'''
+    ...
+    def setTextStyle (self, *args, **kwargs):
+      '''
+setTextStyle( (Text)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setTextStyle(class PyDbText {lvalue},class PyDbObjectId)'''
+    ...
+    def setThickness (self, *args, **kwargs):
+      '''
+setThickness( (Text)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setThickness(class PyDbText {lvalue},double)'''
+    ...
+    def setVerticalMode (self, *args, **kwargs):
+      '''
+setVerticalMode( (Text)arg1, (TextHorzMode)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setVerticalMode(class PyDbText {lvalue},enum AcDb::TextVertMode)'''
+    ...
+    def setVisibility (self, *args, **kwargs):
+      '''
+setVisibility( (Entity)arg1, (Visibility)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility)
+
+setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
+    ...
+    def setWidthFactor (self, *args, **kwargs):
+      '''
+setWidthFactor( (Text)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setWidthFactor(class PyDbText {lvalue},double)'''
+    ...
+    def setXData (self, *args, **kwargs):
+      '''
+setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setXData(class PyDbObject {lvalue},class boost::python::list)'''
+    ...
+    def swapIdWith (self, *args, **kwargs):
+      '''
+swapIdWith( (DbObject)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus swapIdWith(class PyDbObject {lvalue},class PyDbObjectId {lvalue},bool,bool)'''
+    ...
+    def tag (self, *args, **kwargs):
+      '''
+tag( (AttributeReference)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > tag(class PyDbAttribute {lvalue})'''
+    ...
+    def textString (self, *args, **kwargs):
+      '''
+textString( (Text)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > textString(class PyDbText {lvalue})'''
+    ...
+    def textStyle (self, *args, **kwargs):
+      '''
+textStyle( (Text)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId textStyle(class PyDbText {lvalue})'''
+    ...
+    def thickness (self, *args, **kwargs):
+      '''
+thickness( (Text)arg1) -> float :
+
+    C++ signature :
+        double thickness(class PyDbText {lvalue})'''
+    ...
+    def transformBy (self, *args, **kwargs):
+      '''
+transformBy( (Entity)arg1, (Matrix3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus transformBy(class PyDbEntity {lvalue},class AcGeMatrix3d)'''
+    ...
+    def updateMTextAttribute (self, *args, **kwargs):
+      '''
+updateMTextAttribute( (AttributeReference)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus updateMTextAttribute(class PyDbAttribute {lvalue})'''
     ...
     def upgradeFromNotify (self, *args, **kwargs):
       '''
@@ -9090,7 +9223,7 @@ addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
     ...
     def appendAttribute (self, *args, **kwargs):
       '''
-appendAttribute( (BlockReference)arg1, (Attribute)arg2) -> ObjectId :
+appendAttribute( (BlockReference)arg1, (AttributeReference)arg2) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId appendAttribute(class PyDbBlockReference {lvalue},class PyDbAttribute {lvalue})'''
@@ -12323,6 +12456,143 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class CenterMarkType:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kLine (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kMark (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNone (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
 class Circle:
     def __eq__ (self, *args, **kwargs):
       '''
@@ -13637,6 +13907,161 @@ setRGBM( (Color)arg1, (int)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setRGBM(class AcCmColor {lvalue},unsigned int)'''
+    ...
+
+class ColorMethod:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kByACI (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kByBlock (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kByColor (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kByLayer (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kByPen (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kForeground (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kLayerFrozen (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kLayerOff (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNone (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
 class Curve:
@@ -18060,12 +18485,6 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class DiametricDimension:
-    def CenterMarkType (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DimInspect (self, *args, **kwargs):
-      '''None'''
-    ...
     def __eq__ (self, *args, **kwargs):
       '''
 __eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
@@ -18726,33 +19145,6 @@ isWriteEnabled( (DbObject)arg1) -> bool :
     C++ signature :
         bool isWriteEnabled(class PyDbObject {lvalue})'''
     ...
-    def kLine (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kMark (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNone (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeAngular (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeLabel (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeNone (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRate (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRemove (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRound (self, *args, **kwargs):
-      '''None'''
-    ...
     def layer (self, *args, **kwargs):
       '''
 layer( (Entity)arg1) -> str :
@@ -19411,10 +19803,10 @@ setSuppressZeroInches( (Dimension)arg1, (bool)arg2) -> ErrorStatus :
     ...
     def setTextAttachment (self, *args, **kwargs):
       '''
-setTextAttachment( (Dimension)arg1, (AttachmentPoint)arg2) -> ErrorStatus :
+setTextAttachment( (Dimension)arg1, (MTextAttachmentPoint)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus setTextAttachment(class PyDbDimension {lvalue},enum PyDbMText::AttachmentPoint)'''
+        enum Acad::ErrorStatus setTextAttachment(class PyDbDimension {lvalue},enum AcDbMText::AttachmentPoint)'''
     ...
     def setTextDefinedSize (self, *args, **kwargs):
       '''
@@ -19570,10 +19962,10 @@ swapIdWith( (DbObject)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
     ...
     def textAttachment (self, *args, **kwargs):
       '''
-textAttachment( (Dimension)arg1) -> AttachmentPoint :
+textAttachment( (Dimension)arg1) -> MTextAttachmentPoint :
 
     C++ signature :
-        enum PyDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
+        enum AcDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
     ...
     def textDefinedSize (self, *args, **kwargs):
       '''
@@ -20059,6 +20451,152 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus xDataTransformBy(class PyDbObject {lvalue},class AcGeMatrix3d)'''
+    ...
+
+class DimInspect:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kShapeAngular (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kShapeLabel (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kShapeNone (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kShapeRate (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kShapeRemove (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kShapeRound (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
 class DimStyleTable:
@@ -20830,12 +21368,6 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Dimension:
-    def CenterMarkType (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DimInspect (self, *args, **kwargs):
-      '''None'''
-    ...
     def __eq__ (self, *args, **kwargs):
       '''
 __eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
@@ -21442,33 +21974,6 @@ isWriteEnabled( (DbObject)arg1) -> bool :
 
     C++ signature :
         bool isWriteEnabled(class PyDbObject {lvalue})'''
-    ...
-    def kLine (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kMark (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNone (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeAngular (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeLabel (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeNone (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRate (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRemove (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRound (self, *args, **kwargs):
-      '''None'''
     ...
     def layer (self, *args, **kwargs):
       '''
@@ -22086,10 +22591,10 @@ setSuppressZeroInches( (Dimension)arg1, (bool)arg2) -> ErrorStatus :
     ...
     def setTextAttachment (self, *args, **kwargs):
       '''
-setTextAttachment( (Dimension)arg1, (AttachmentPoint)arg2) -> ErrorStatus :
+setTextAttachment( (Dimension)arg1, (MTextAttachmentPoint)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus setTextAttachment(class PyDbDimension {lvalue},enum PyDbMText::AttachmentPoint)'''
+        enum Acad::ErrorStatus setTextAttachment(class PyDbDimension {lvalue},enum AcDbMText::AttachmentPoint)'''
     ...
     def setTextDefinedSize (self, *args, **kwargs):
       '''
@@ -22245,10 +22750,10 @@ swapIdWith( (DbObject)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
     ...
     def textAttachment (self, *args, **kwargs):
       '''
-textAttachment( (Dimension)arg1) -> AttachmentPoint :
+textAttachment( (Dimension)arg1) -> MTextAttachmentPoint :
 
     C++ signature :
-        enum PyDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
+        enum AcDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
     ...
     def textDefinedSize (self, *args, **kwargs):
       '''
@@ -24027,9 +24532,6 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class EntityColor:
-    def ACIcolorMethod (self, *args, **kwargs):
-      '''None'''
-    ...
     def ByBlock (self, *args, **kwargs):
       '''
 ByBlock() -> EntityColor :
@@ -24043,12 +24545,6 @@ ByLayer() -> EntityColor :
 
     C++ signature :
         class AcCmEntityColor ByLayer()'''
-    ...
-    def Color (self, *args, **kwargs):
-      '''None'''
-    ...
-    def ColorMethod (self, *args, **kwargs):
-      '''None'''
     ...
     def Foreground (self, *args, **kwargs):
       '''
@@ -28488,21 +28984,6 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Field:
-    def EvalContext (self, *args, **kwargs):
-      '''None'''
-    ...
-    def EvalOption (self, *args, **kwargs):
-      '''None'''
-    ...
-    def EvalStatus (self, *args, **kwargs):
-      '''None'''
-    ...
-    def FieldCodeFlag (self, *args, **kwargs):
-      '''None'''
-    ...
-    def State (self, *args, **kwargs):
-      '''None'''
-    ...
     def __eq__ (self, *args, **kwargs):
       '''
 __eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
@@ -28653,17 +29134,17 @@ erase( (DbObject)arg1) -> ErrorStatus :
     ...
     def evaluationOption (self, *args, **kwargs):
       '''
-evaluationOption( (Field)arg1) -> EvalOption :
+evaluationOption( (Field)arg1) -> FieldEvalOption :
 
     C++ signature :
-        enum PyDbField::EvalOption evaluationOption(class PyDbField {lvalue})'''
+        enum AcDbField::EvalOption evaluationOption(class PyDbField {lvalue})'''
     ...
     def evaluationStatus (self, *args, **kwargs):
       '''
-evaluationStatus( (Field)arg1) -> EvalStatus :
+evaluationStatus( (Field)arg1) -> FieldEvalStatus :
 
     C++ signature :
-        enum PyDbField::EvalStatus evaluationStatus(class PyDbField {lvalue})'''
+        enum AcDbField::EvalStatus evaluationStatus(class PyDbField {lvalue})'''
     ...
     def evaluatorId (self, *args, **kwargs):
       '''
@@ -28840,132 +29321,6 @@ isWriteEnabled( (DbObject)arg1) -> bool :
     C++ signature :
         bool isWriteEnabled(class PyDbObject {lvalue})'''
     ...
-    def kAddMarkers (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kAutomatic (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kChildObjectReference (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kCompiled (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kDemand (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kDetachChildren (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kDisable (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kEscapeBackslash (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kEtransmit (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kEvaluated (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kEvaluatedChildren (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kEvaluatedText (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kEvaluatorNotFound (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kFieldCode (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kForExpression (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kHasCache (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kHasFormattedString (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kInitialized (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kInvalidCode (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kInvalidContext (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kModified (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNotYetEvaluated (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kObjectReference (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kOnDemand (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kOnEtransmit (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kOnOpen (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kOnPlot (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kOnRegen (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kOnSave (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kOpen (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kOtherError (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kPlot (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kPlotPreview (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kPreserveFields (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kPreserveOptions (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kPreview (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kRegen (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kSave (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kStripOptions (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kSuccess (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kSyntaxError (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextField (self, *args, **kwargs):
-      '''None'''
-    ...
     def objectId (self, *args, **kwargs):
       '''
 objectId( (DbObject)arg1) -> ObjectId :
@@ -29003,10 +29358,10 @@ removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
     ...
     def setEvaluationOption (self, *args, **kwargs):
       '''
-setEvaluationOption( (Field)arg1, (EvalOption)arg2) -> ErrorStatus :
+setEvaluationOption( (Field)arg1, (FieldEvalOption)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus setEvaluationOption(class PyDbField {lvalue},enum PyDbField::EvalOption)'''
+        enum Acad::ErrorStatus setEvaluationOption(class PyDbField {lvalue},enum AcDbField::EvalOption)'''
     ...
     def setEvaluatorId (self, *args, **kwargs):
       '''
@@ -29045,10 +29400,10 @@ setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     ...
     def state (self, *args, **kwargs):
       '''
-state( (Field)arg1) -> State :
+state( (Field)arg1) -> FieldState :
 
     C++ signature :
-        enum PyDbField::State state(class PyDbField {lvalue})'''
+        enum AcDbField::State state(class PyDbField {lvalue})'''
     ...
     def swapIdWith (self, *args, **kwargs):
       '''
@@ -29086,7 +29441,7 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
         enum Acad::ErrorStatus xDataTransformBy(class PyDbObject {lvalue},class AcGeMatrix3d)'''
     ...
 
-class FlowDirection:
+class FieldCodeFlag:
     def __add__ (self, value, /):
       '''Return self+value.'''
     ...
@@ -29165,10 +29520,642 @@ Also known as the population count.
     def imag (self, *args, **kwargs):
       '''the imaginary part of a complex number'''
     ...
-    def kExactly (self, *args, **kwargs):
+    def kAddMarkers (self, *args, **kwargs):
       '''None'''
     ...
-    def kTtoB (self, *args, **kwargs):
+    def kChildObjectReference (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kDetachChildren (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kEscapeBackslash (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kEvaluatedChildren (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kEvaluatedText (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kFieldCode (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kForExpression (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kObjectReference (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kPreserveFields (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kPreserveOptions (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kStripOptions (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTextField (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class FieldEvalContext:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kDemand (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kEtransmit (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kOpen (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kPlot (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kPlotPreview (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kPreview (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kRegen (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kSave (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class FieldEvalOption:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kAutomatic (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kDisable (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kOnDemand (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kOnEtransmit (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kOnOpen (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kOnPlot (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kOnRegen (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kOnSave (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class FieldEvalStatus:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kEvaluatorNotFound (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kInvalidCode (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kInvalidContext (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNotYetEvaluated (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kOtherError (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kSuccess (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kSyntaxError (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class FieldState:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kCompiled (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kEvaluated (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kHasCache (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kHasFormattedString (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kInitialized (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kModified (self, *args, **kwargs):
       '''None'''
     ...
     def name (self, *args, **kwargs):
@@ -30581,9 +31568,6 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Leader:
-    def AnnoType (self, *args, **kwargs):
-      '''None'''
-    ...
     def __eq__ (self, *args, **kwargs):
       '''
 __eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
@@ -30634,7 +31618,7 @@ annoHeight( (Leader)arg1) -> float :
 annoType( (Leader)arg1) -> AnnoType :
 
     C++ signature :
-        enum PyDbLeader::AnnoType annoType(class PyDbLeader {lvalue})'''
+        enum AcDbLeader::AnnoType annoType(class PyDbLeader {lvalue})'''
     ...
     def annoWidth (self, *args, **kwargs):
       '''
@@ -31318,18 +32302,6 @@ isWriteEnabled( (DbObject)arg1) -> bool :
 
     C++ signature :
         bool isWriteEnabled(class PyDbObject {lvalue})'''
-    ...
-    def kBlockRef (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kFcf (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kMText (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNoAnno (self, *args, **kwargs):
-      '''None'''
     ...
     def lastVertex (self, *args, **kwargs):
       '''
@@ -32890,12 +33862,6 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class LineAngularDimension2:
-    def CenterMarkType (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DimInspect (self, *args, **kwargs):
-      '''None'''
-    ...
     def __eq__ (self, *args, **kwargs):
       '''
 __eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
@@ -33542,33 +34508,6 @@ isWriteEnabled( (DbObject)arg1) -> bool :
     C++ signature :
         bool isWriteEnabled(class PyDbObject {lvalue})'''
     ...
-    def kLine (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kMark (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNone (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeAngular (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeLabel (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeNone (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRate (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRemove (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRound (self, *args, **kwargs):
-      '''None'''
-    ...
     def layer (self, *args, **kwargs):
       '''
 layer( (Entity)arg1) -> str :
@@ -34199,10 +35138,10 @@ setSuppressZeroInches( (Dimension)arg1, (bool)arg2) -> ErrorStatus :
     ...
     def setTextAttachment (self, *args, **kwargs):
       '''
-setTextAttachment( (Dimension)arg1, (AttachmentPoint)arg2) -> ErrorStatus :
+setTextAttachment( (Dimension)arg1, (MTextAttachmentPoint)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus setTextAttachment(class PyDbDimension {lvalue},enum PyDbMText::AttachmentPoint)'''
+        enum Acad::ErrorStatus setTextAttachment(class PyDbDimension {lvalue},enum AcDbMText::AttachmentPoint)'''
     ...
     def setTextDefinedSize (self, *args, **kwargs):
       '''
@@ -34386,10 +35325,10 @@ swapIdWith( (DbObject)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
     ...
     def textAttachment (self, *args, **kwargs):
       '''
-textAttachment( (Dimension)arg1) -> AttachmentPoint :
+textAttachment( (Dimension)arg1) -> MTextAttachmentPoint :
 
     C++ signature :
-        enum PyDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
+        enum AcDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
     ...
     def textDefinedSize (self, *args, **kwargs):
       '''
@@ -35673,7 +36612,7 @@ addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
     ...
     def appendAttribute (self, *args, **kwargs):
       '''
-appendAttribute( (BlockReference)arg1, (Attribute)arg2) -> ObjectId :
+appendAttribute( (BlockReference)arg1, (AttributeReference)arg2) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId appendAttribute(class PyDbBlockReference {lvalue},class PyDbAttribute {lvalue})'''
@@ -36572,15 +37511,6 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class MText:
-    def AttachmentPoint (self, *args, **kwargs):
-      '''None'''
-    ...
-    def ColumnType (self, *args, **kwargs):
-      '''None'''
-    ...
-    def FlowDirection (self, *args, **kwargs):
-      '''None'''
-    ...
     def __eq__ (self, *args, **kwargs):
       '''
 __eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
@@ -36663,10 +37593,10 @@ assertWriteEnabled( (DbObject)arg1) -> None :
     ...
     def attachment (self, *args, **kwargs):
       '''
-attachment( (MText)arg1) -> AttachmentPoint :
+attachment( (MText)arg1) -> MTextAttachmentPoint :
 
     C++ signature :
-        enum PyDbMText::AttachmentPoint attachment(class PyDbMText {lvalue})'''
+        enum AcDbMText::AttachmentPoint attachment(class PyDbMText {lvalue})'''
     ...
     def backgroundFillOn (self, *args, **kwargs):
       '''
@@ -36845,10 +37775,10 @@ extensionDictionary( (DbObject)arg1) -> ObjectId :
     ...
     def flowDirection (self, *args, **kwargs):
       '''
-flowDirection( (MText)arg1) -> FlowDirection :
+flowDirection( (MText)arg1) -> MTextFlowDirection :
 
     C++ signature :
-        enum PyDbMText::FlowDirection flowDirection(class PyDbMText {lvalue})'''
+        enum AcDbMText::FlowDirection flowDirection(class PyDbMText {lvalue})'''
     ...
     def getBackgroundFillColor (self, *args, **kwargs):
       '''
@@ -36915,10 +37845,10 @@ getColumnHeight( (MText)arg1, (int)arg2) -> float :
     ...
     def getColumnType (self, *args, **kwargs):
       '''
-getColumnType( (MText)arg1) -> ColumnType :
+getColumnType( (MText)arg1) -> MTextColumnType :
 
     C++ signature :
-        enum PyDbMText::ColumnType getColumnType(class PyDbMText {lvalue})'''
+        enum AcDbMText::ColumnType getColumnType(class PyDbMText {lvalue})'''
     ...
     def getColumnWidth (self, *args, **kwargs):
       '''
@@ -37123,102 +38053,6 @@ isWriteEnabled( (DbObject)arg1) -> bool :
     C++ signature :
         bool isWriteEnabled(class PyDbObject {lvalue})'''
     ...
-    def kBaseAlign (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kBaseCenter (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kBaseFit (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kBaseLeft (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kBaseMid (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kBaseRight (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kBottomAlign (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kBottomCenter (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kBottomFit (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kBottomLeft (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kBottomMid (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kBottomRight (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kBtoT (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kByStyle (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kDynamicColumns (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kLtoR (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kMiddleAlign (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kMiddleCenter (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kMiddleFit (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kMiddleLeft (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kMiddleMid (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kMiddleRight (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNoColumns (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kRtoL (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kStaticColumns (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTopAlign (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTopCenter (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTopFit (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTopLeft (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTopMid (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTopRight (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTtoB (self, *args, **kwargs):
-      '''None'''
-    ...
     def layer (self, *args, **kwargs):
       '''
 layer( (Entity)arg1) -> str :
@@ -37373,17 +38207,17 @@ rotation( (MText)arg1) -> float :
     ...
     def setAttachment (self, *args, **kwargs):
       '''
-setAttachment( (MText)arg1, (AttachmentPoint)arg2) -> ErrorStatus :
+setAttachment( (MText)arg1, (MTextAttachmentPoint)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus setAttachment(class PyDbMText {lvalue},enum PyDbMText::AttachmentPoint)'''
+        enum Acad::ErrorStatus setAttachment(class PyDbMText {lvalue},enum AcDbMText::AttachmentPoint)'''
     ...
     def setAttachmentMovingLocation (self, *args, **kwargs):
       '''
-setAttachmentMovingLocation( (MText)arg1, (AttachmentPoint)arg2) -> ErrorStatus :
+setAttachmentMovingLocation( (MText)arg1, (MTextAttachmentPoint)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus setAttachmentMovingLocation(class PyDbMText {lvalue},enum PyDbMText::AttachmentPoint)'''
+        enum Acad::ErrorStatus setAttachmentMovingLocation(class PyDbMText {lvalue},enum AcDbMText::AttachmentPoint)'''
     ...
     def setBackgroundFill (self, *args, **kwargs):
       '''
@@ -37486,10 +38320,10 @@ setColumnHeight( (MText)arg1, (int)arg2, (float)arg3) -> ErrorStatus :
     ...
     def setColumnType (self, *args, **kwargs):
       '''
-setColumnType( (MText)arg1, (ColumnType)arg2) -> ErrorStatus :
+setColumnType( (MText)arg1, (MTextColumnType)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus setColumnType(class PyDbMText {lvalue},enum PyDbMText::ColumnType)'''
+        enum Acad::ErrorStatus setColumnType(class PyDbMText {lvalue},enum AcDbMText::ColumnType)'''
     ...
     def setColumnWidth (self, *args, **kwargs):
       '''
@@ -37540,10 +38374,10 @@ setDynamicColumns( (MText)arg1, (float)arg2, (float)arg3, (bool)arg4) -> ErrorSt
     ...
     def setFlowDirection (self, *args, **kwargs):
       '''
-setFlowDirection( (MText)arg1, (FlowDirection)arg2) -> ErrorStatus :
+setFlowDirection( (MText)arg1, (MTextFlowDirection)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus setFlowDirection(class PyDbMText {lvalue},enum PyDbMText::FlowDirection)'''
+        enum Acad::ErrorStatus setFlowDirection(class PyDbMText {lvalue},enum AcDbMText::FlowDirection)'''
     ...
     def setHeight (self, *args, **kwargs):
       '''
@@ -37867,6 +38701,486 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus xDataTransformBy(class PyDbObject {lvalue},class AcGeMatrix3d)'''
+    ...
+
+class MTextAttachmentPoint:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kBaseAlign (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kBaseCenter (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kBaseFit (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kBaseLeft (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kBaseMid (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kBaseRight (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kBottomAlign (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kBottomCenter (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kBottomFit (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kBottomLeft (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kBottomMid (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kBottomRight (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kMiddleAlign (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kMiddleCenter (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kMiddleFit (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kMiddleLeft (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kMiddleMid (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kMiddleRight (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTopAlign (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTopCenter (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTopFit (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTopLeft (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTopMid (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTopRight (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class MTextColumnType:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kDynamicColumns (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNoColumns (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kStaticColumns (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class MTextFlowDirection:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kBtoT (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kByStyle (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kLtoR (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kRtoL (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTtoB (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
 class MeasurementValue:
@@ -39136,12 +40450,6 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class OrdinateDimension:
-    def CenterMarkType (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DimInspect (self, *args, **kwargs):
-      '''None'''
-    ...
     def __eq__ (self, *args, **kwargs):
       '''
 __eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
@@ -39795,33 +41103,6 @@ isWriteEnabled( (DbObject)arg1) -> bool :
     C++ signature :
         bool isWriteEnabled(class PyDbObject {lvalue})'''
     ...
-    def kLine (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kMark (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNone (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeAngular (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeLabel (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeNone (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRate (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRemove (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRound (self, *args, **kwargs):
-      '''None'''
-    ...
     def layer (self, *args, **kwargs):
       '''
 layer( (Entity)arg1) -> str :
@@ -40473,10 +41754,10 @@ setSuppressZeroInches( (Dimension)arg1, (bool)arg2) -> ErrorStatus :
     ...
     def setTextAttachment (self, *args, **kwargs):
       '''
-setTextAttachment( (Dimension)arg1, (AttachmentPoint)arg2) -> ErrorStatus :
+setTextAttachment( (Dimension)arg1, (MTextAttachmentPoint)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus setTextAttachment(class PyDbDimension {lvalue},enum PyDbMText::AttachmentPoint)'''
+        enum Acad::ErrorStatus setTextAttachment(class PyDbDimension {lvalue},enum AcDbMText::AttachmentPoint)'''
     ...
     def setTextDefinedSize (self, *args, **kwargs):
       '''
@@ -40646,10 +41927,10 @@ swapIdWith( (DbObject)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
     ...
     def textAttachment (self, *args, **kwargs):
       '''
-textAttachment( (Dimension)arg1) -> AttachmentPoint :
+textAttachment( (Dimension)arg1) -> MTextAttachmentPoint :
 
     C++ signature :
-        enum PyDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
+        enum AcDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
     ...
     def textDefinedSize (self, *args, **kwargs):
       '''
@@ -42763,12 +44044,6 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Point3AngularDimension:
-    def CenterMarkType (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DimInspect (self, *args, **kwargs):
-      '''None'''
-    ...
     def __eq__ (self, *args, **kwargs):
       '''
 __eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
@@ -43422,33 +44697,6 @@ isWriteEnabled( (DbObject)arg1) -> bool :
     C++ signature :
         bool isWriteEnabled(class PyDbObject {lvalue})'''
     ...
-    def kLine (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kMark (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNone (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeAngular (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeLabel (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeNone (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRate (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRemove (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRound (self, *args, **kwargs):
-      '''None'''
-    ...
     def layer (self, *args, **kwargs):
       '''
 layer( (Entity)arg1) -> str :
@@ -44086,10 +45334,10 @@ setSuppressZeroInches( (Dimension)arg1, (bool)arg2) -> ErrorStatus :
     ...
     def setTextAttachment (self, *args, **kwargs):
       '''
-setTextAttachment( (Dimension)arg1, (AttachmentPoint)arg2) -> ErrorStatus :
+setTextAttachment( (Dimension)arg1, (MTextAttachmentPoint)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus setTextAttachment(class PyDbDimension {lvalue},enum PyDbMText::AttachmentPoint)'''
+        enum Acad::ErrorStatus setTextAttachment(class PyDbDimension {lvalue},enum AcDbMText::AttachmentPoint)'''
     ...
     def setTextDefinedSize (self, *args, **kwargs):
       '''
@@ -44259,10 +45507,10 @@ swapIdWith( (DbObject)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
     ...
     def textAttachment (self, *args, **kwargs):
       '''
-textAttachment( (Dimension)arg1) -> AttachmentPoint :
+textAttachment( (Dimension)arg1) -> MTextAttachmentPoint :
 
     C++ signature :
-        enum PyDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
+        enum AcDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
     ...
     def textDefinedSize (self, *args, **kwargs):
       '''
@@ -46211,9 +47459,6 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Polyline:
-    def SegType (self, *args, **kwargs):
-      '''None'''
-    ...
     def __eq__ (self, *args, **kwargs):
       '''
 __eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
@@ -47074,7 +48319,7 @@ reverseCurve( (Curve)arg1) -> ErrorStatus :
 segType( (Polyline)arg1, (int)arg2) -> SegType :
 
     C++ signature :
-        enum PyDbPolyline::SegType segType(class PyDbPolyline {lvalue},unsigned int)'''
+        enum AcDbPolyline::SegType segType(class PyDbPolyline {lvalue},unsigned int)'''
     ...
     def setBulgeAt (self, *args, **kwargs):
       '''
@@ -50385,12 +51630,6 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class RadialDimension:
-    def CenterMarkType (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DimInspect (self, *args, **kwargs):
-      '''None'''
-    ...
     def __eq__ (self, *args, **kwargs):
       '''
 __eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
@@ -51051,33 +52290,6 @@ isWriteEnabled( (DbObject)arg1) -> bool :
     C++ signature :
         bool isWriteEnabled(class PyDbObject {lvalue})'''
     ...
-    def kLine (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kMark (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNone (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeAngular (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeLabel (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeNone (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRate (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRemove (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRound (self, *args, **kwargs):
-      '''None'''
-    ...
     def layer (self, *args, **kwargs):
       '''
 layer( (Entity)arg1) -> str :
@@ -51736,10 +52948,10 @@ setSuppressZeroInches( (Dimension)arg1, (bool)arg2) -> ErrorStatus :
     ...
     def setTextAttachment (self, *args, **kwargs):
       '''
-setTextAttachment( (Dimension)arg1, (AttachmentPoint)arg2) -> ErrorStatus :
+setTextAttachment( (Dimension)arg1, (MTextAttachmentPoint)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus setTextAttachment(class PyDbDimension {lvalue},enum PyDbMText::AttachmentPoint)'''
+        enum Acad::ErrorStatus setTextAttachment(class PyDbDimension {lvalue},enum AcDbMText::AttachmentPoint)'''
     ...
     def setTextDefinedSize (self, *args, **kwargs):
       '''
@@ -51895,10 +53107,10 @@ swapIdWith( (DbObject)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
     ...
     def textAttachment (self, *args, **kwargs):
       '''
-textAttachment( (Dimension)arg1) -> AttachmentPoint :
+textAttachment( (Dimension)arg1) -> MTextAttachmentPoint :
 
     C++ signature :
-        enum PyDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
+        enum AcDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
     ...
     def textDefinedSize (self, *args, **kwargs):
       '''
@@ -52021,12 +53233,6 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class RadialDimensionLarge:
-    def CenterMarkType (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DimInspect (self, *args, **kwargs):
-      '''None'''
-    ...
     def __eq__ (self, *args, **kwargs):
       '''
 __eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
@@ -52700,33 +53906,6 @@ jogPoint( (RadialDimensionLarge)arg1) -> Point3d :
 
     C++ signature :
         class AcGePoint3d jogPoint(class PyDbRadialDimensionLarge {lvalue})'''
-    ...
-    def kLine (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kMark (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNone (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeAngular (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeLabel (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeNone (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRate (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRemove (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRound (self, *args, **kwargs):
-      '''None'''
     ...
     def layer (self, *args, **kwargs):
       '''
@@ -53414,10 +54593,10 @@ setSuppressZeroInches( (Dimension)arg1, (bool)arg2) -> ErrorStatus :
     ...
     def setTextAttachment (self, *args, **kwargs):
       '''
-setTextAttachment( (Dimension)arg1, (AttachmentPoint)arg2) -> ErrorStatus :
+setTextAttachment( (Dimension)arg1, (MTextAttachmentPoint)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus setTextAttachment(class PyDbDimension {lvalue},enum PyDbMText::AttachmentPoint)'''
+        enum Acad::ErrorStatus setTextAttachment(class PyDbDimension {lvalue},enum AcDbMText::AttachmentPoint)'''
     ...
     def setTextDefinedSize (self, *args, **kwargs):
       '''
@@ -53580,10 +54759,10 @@ swapIdWith( (DbObject)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
     ...
     def textAttachment (self, *args, **kwargs):
       '''
-textAttachment( (Dimension)arg1) -> AttachmentPoint :
+textAttachment( (Dimension)arg1) -> MTextAttachmentPoint :
 
     C++ signature :
-        enum PyDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
+        enum AcDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
     ...
     def textDefinedSize (self, *args, **kwargs):
       '''
@@ -55196,12 +56375,6 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class RotatedDimension:
-    def CenterMarkType (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DimInspect (self, *args, **kwargs):
-      '''None'''
-    ...
     def __eq__ (self, *args, **kwargs):
       '''
 __eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
@@ -55854,33 +57027,6 @@ jogSymbolPosition( (RotatedDimension)arg1) -> Point3d :
 
     C++ signature :
         class AcGePoint3d jogSymbolPosition(class PyDbRotatedDimension {lvalue})'''
-    ...
-    def kLine (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kMark (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNone (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeAngular (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeLabel (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeNone (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRate (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRemove (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kShapeRound (self, *args, **kwargs):
-      '''None'''
     ...
     def layer (self, *args, **kwargs):
       '''
@@ -56547,10 +57693,10 @@ setSuppressZeroInches( (Dimension)arg1, (bool)arg2) -> ErrorStatus :
     ...
     def setTextAttachment (self, *args, **kwargs):
       '''
-setTextAttachment( (Dimension)arg1, (AttachmentPoint)arg2) -> ErrorStatus :
+setTextAttachment( (Dimension)arg1, (MTextAttachmentPoint)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus setTextAttachment(class PyDbDimension {lvalue},enum PyDbMText::AttachmentPoint)'''
+        enum Acad::ErrorStatus setTextAttachment(class PyDbDimension {lvalue},enum AcDbMText::AttachmentPoint)'''
     ...
     def setTextDefinedSize (self, *args, **kwargs):
       '''
@@ -56720,10 +57866,10 @@ swapIdWith( (DbObject)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
     ...
     def textAttachment (self, *args, **kwargs):
       '''
-textAttachment( (Dimension)arg1) -> AttachmentPoint :
+textAttachment( (Dimension)arg1) -> MTextAttachmentPoint :
 
     C++ signature :
-        enum PyDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
+        enum AcDbMText::AttachmentPoint textAttachment(class PyDbDimension {lvalue})'''
     ...
     def textDefinedSize (self, *args, **kwargs):
       '''
@@ -57094,6 +58240,149 @@ Also known as the population count.
       '''None'''
     ...
     def kUnknownRow (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class SegType:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kArc (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kCoincident (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kEmpty (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kLine (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kPoint (self, *args, **kwargs):
       '''None'''
     ...
     def name (self, *args, **kwargs):
@@ -60174,7 +61463,7 @@ alignment( (Table)arg1, (int)arg2, (int)arg3) -> CellAlignment :
     ...
     def appendAttribute (self, *args, **kwargs):
       '''
-appendAttribute( (BlockReference)arg1, (Attribute)arg2) -> ObjectId :
+appendAttribute( (BlockReference)arg1, (AttributeReference)arg2) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId appendAttribute(class PyDbBlockReference {lvalue},class PyDbAttribute {lvalue})'''
@@ -60639,7 +61928,7 @@ fieldId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> ObjectId :
     ...
     def flowDirection (self, *args, **kwargs):
       '''
-flowDirection( (Table)arg1) -> FlowDirection :
+flowDirection( (Table)arg1) -> TableFlowDirection :
 
     C++ signature :
         enum AcDb::FlowDirection flowDirection(class PyDbTable {lvalue})'''
@@ -61759,7 +63048,7 @@ setFieldId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)arg5, (objec
     ...
     def setFlowDirection (self, *args, **kwargs):
       '''
-setFlowDirection( (Table)arg1, (FlowDirection)arg2) -> ErrorStatus :
+setFlowDirection( (Table)arg1, (TableFlowDirection)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setFlowDirection(class PyDbTable {lvalue},enum AcDb::FlowDirection)'''
@@ -62691,6 +63980,140 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class TableFlowDirection:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kExactly (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTtoB (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
 class TableHitItem:
     def __add__ (self, value, /):
       '''Return self+value.'''
@@ -63223,7 +64646,7 @@ extensionDictionary( (DbObject)arg1) -> ObjectId :
     ...
     def flowDirection (self, *args, **kwargs):
       '''
-flowDirection( (TableStyle)arg1) -> FlowDirection :
+flowDirection( (TableStyle)arg1) -> TableFlowDirection :
 
     C++ signature :
         enum AcDb::FlowDirection flowDirection(class PyDbTableStyle {lvalue})'''
@@ -63677,7 +65100,7 @@ setDescription( (TableStyle)arg1, (str)arg2) -> ErrorStatus :
     ...
     def setFlowDirection (self, *args, **kwargs):
       '''
-setFlowDirection( (TableStyle)arg1, (FlowDirection)arg2) -> ErrorStatus :
+setFlowDirection( (TableStyle)arg1, (TableFlowDirection)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setFlowDirection(class PyDbTableStyle {lvalue},enum AcDb::FlowDirection)'''
@@ -63925,9 +65348,6 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Text:
-    def TextAlignment (self, *args, **kwargs):
-      '''None'''
-    ...
     def __eq__ (self, *args, **kwargs):
       '''
 __eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
@@ -64381,51 +65801,6 @@ isWriteEnabled( (DbObject)arg1) -> bool :
 
     C++ signature :
         bool isWriteEnabled(class PyDbObject {lvalue})'''
-    ...
-    def kTextAlignmentAligned (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentBottomCenter (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentBottomLeft (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentBottomRight (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentCenter (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentFit (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentLeft (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentMiddle (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentMiddleCenter (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentMiddleLeft (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentMiddleRight (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentRight (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentTopCenter (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentTopLeft (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTextAlignmentTopRight (self, *args, **kwargs):
-      '''None'''
     ...
     def layer (self, *args, **kwargs):
       '''
@@ -64963,6 +66338,179 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus xDataTransformBy(class PyDbObject {lvalue},class AcGeMatrix3d)'''
+    ...
+
+class TextAlignment:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kTextAlignmentAligned (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTextAlignmentBottomCenter (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTextAlignmentBottomLeft (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTextAlignmentBottomRight (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTextAlignmentCenter (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTextAlignmentFit (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTextAlignmentLeft (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTextAlignmentMiddle (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTextAlignmentMiddleCenter (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTextAlignmentMiddleLeft (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTextAlignmentMiddleRight (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTextAlignmentRight (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTextAlignmentTopCenter (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTextAlignmentTopLeft (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTextAlignmentTopRight (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
 class TextHorzMode:
@@ -65632,9 +67180,6 @@ xScale( (TextStyleTableRecord)arg1) -> float :
     ...
 
 class Transparency:
-    def TransparencyMethod (self, *args, **kwargs):
-      '''None'''
-    ...
     def __eq__ (self, value, /):
       '''Return self==value.'''
     ...
@@ -65727,6 +67272,146 @@ setAlphaPercent( (Transparency)arg1, (float)arg2) -> None :
 
     C++ signature :
         void setAlphaPercent(class AcCmTransparency {lvalue},double)'''
+    ...
+
+class TransparencyMethod:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kByAlpha (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kByBlock (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kByLayer (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kErrorValue (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
 class UnitsValue:

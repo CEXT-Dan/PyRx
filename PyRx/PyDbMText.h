@@ -1,56 +1,12 @@
 #pragma once
 #include "PyDbEntity.h"
+#include "PyDbMtext.h"
 
 class PyDbObjectId;
 
 void makePyDbMTextWrapper();
 class PyDbMText : public PyDbEntity
 {
-public:
-    enum class AttachmentPoint
-    {
-       kTopLeft= AcDbMText::AttachmentPoint::kTopLeft,
-       kTopCenter= AcDbMText::AttachmentPoint::kTopCenter,
-       kTopRight= AcDbMText::AttachmentPoint::kTopRight,
-       kMiddleLeft= AcDbMText::AttachmentPoint::kMiddleLeft,
-       kMiddleCenter= AcDbMText::AttachmentPoint::kMiddleCenter,
-       kMiddleRight= AcDbMText::AttachmentPoint::kMiddleRight,
-       kBottomLeft= AcDbMText::AttachmentPoint::kBottomLeft,
-       kBottomCenter= AcDbMText::AttachmentPoint::kBottomCenter,
-       kBottomRight= AcDbMText::AttachmentPoint::kBottomRight,
-       kBaseLeft= AcDbMText::AttachmentPoint::kBaseLeft,
-       kBaseCenter= AcDbMText::AttachmentPoint::kBaseCenter,
-       kBaseRight= AcDbMText::AttachmentPoint::kBaseRight,
-       kBaseAlign= AcDbMText::AttachmentPoint::kBaseAlign,
-       kBottomAlign= AcDbMText::AttachmentPoint::kBottomAlign,
-       kMiddleAlign= AcDbMText::AttachmentPoint::kMiddleAlign,
-       kTopAlign= AcDbMText::AttachmentPoint::kTopAlign,
-       kBaseFit= AcDbMText::AttachmentPoint::kBaseFit,
-       kBottomFit= AcDbMText::AttachmentPoint::kBottomFit,
-       kMiddleFit= AcDbMText::AttachmentPoint::kMiddleFit,
-       kTopFit= AcDbMText::AttachmentPoint::kTopFit,
-       kBaseMid= AcDbMText::AttachmentPoint::kBaseMid,
-       kBottomMid= AcDbMText::AttachmentPoint::kBottomMid,
-       kMiddleMid= AcDbMText::AttachmentPoint::kMiddleMid,
-       kTopMid= AcDbMText::AttachmentPoint::kTopMid,
-    };
-
-    enum class FlowDirection
-    {
-        kLtoR = AcDbMText::FlowDirection::kLtoR,
-        kRtoL = AcDbMText::FlowDirection::kRtoL,
-        kTtoB = AcDbMText::FlowDirection::kTtoB,
-        kBtoT = AcDbMText::FlowDirection::kBtoT,
-        kByStyle = AcDbMText::FlowDirection::kByStyle,
-    };
-
-    enum class ColumnType
-    {
-        kNoColumns = AcDbMText::ColumnType::kNoColumns,
-        kStaticColumns= AcDbMText::ColumnType::kStaticColumns,
-        kDynamicColumns= AcDbMText::ColumnType::kDynamicColumns,
-    };
-
 public:
     PyDbMText();
     PyDbMText(AcDbMText* ptr, bool autoDelete);
@@ -72,12 +28,12 @@ public:
     Acad::ErrorStatus   setTextStyle(const PyDbObjectId& val);
     double      textHeight() const;
     Acad::ErrorStatus   setTextHeight(double val);
-    PyDbMText::AttachmentPoint attachment() const;
-    Acad::ErrorStatus   setAttachment(PyDbMText::AttachmentPoint val);
-    Acad::ErrorStatus   setAttachmentMovingLocation(PyDbMText::AttachmentPoint val);
+    AcDbMText::AttachmentPoint attachment() const;
+    Acad::ErrorStatus   setAttachment(AcDbMText::AttachmentPoint val);
+    Acad::ErrorStatus   setAttachmentMovingLocation(AcDbMText::AttachmentPoint val);
 
-    PyDbMText::FlowDirection       flowDirection() const;
-    Acad::ErrorStatus   setFlowDirection(PyDbMText::FlowDirection);
+    AcDbMText::FlowDirection       flowDirection() const;
+    Acad::ErrorStatus   setFlowDirection(AcDbMText::FlowDirection);
 
     std::string contents() const;
     int         setContents(const std::string& str);
@@ -118,8 +74,8 @@ public:
 
     Acad::ErrorStatus setDynamicColumns(double width, double gutter, bool auto_height);
     Acad::ErrorStatus setStaticColumns(double width, double gutter, int count);
-    PyDbMText::ColumnType getColumnType() const;
-    Acad::ErrorStatus setColumnType(PyDbMText::ColumnType val);
+    AcDbMText::ColumnType getColumnType() const;
+    Acad::ErrorStatus setColumnType(AcDbMText::ColumnType val);
 
     bool getColumnAutoHeight() const;
     Acad::ErrorStatus setColumnAutoHeight(bool val);

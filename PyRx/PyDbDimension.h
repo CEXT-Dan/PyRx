@@ -1,9 +1,9 @@
 #pragma once
 #include "PyDbEntity.h"
-#include "PyDbMtext.h"
+
 
 class PyDbObjectId;
-
+class PyDbMText;
 
 //-----------------------------------------------------------------------------------
 //PyDbRegion
@@ -11,25 +11,6 @@ void makePyDbDimensionWrapper();
 
 class PyDbDimension : public PyDbEntity
 {
-public:
-#ifndef BRXAPP
-    enum class DimInspect
-    {
-        kShapeRemove = AcDbDimension::DimInspect::kShapeRemove,
-        kShapeRound = AcDbDimension::DimInspect::kShapeRound,
-        kShapeAngular = AcDbDimension::DimInspect::kShapeAngular,
-        kShapeNone = AcDbDimension::DimInspect::kShapeNone,
-        kShapeLabel = AcDbDimension::DimInspect::kShapeLabel,
-        kShapeRate = AcDbDimension::DimInspect::kShapeRate,
-    };
-
-    enum class CenterMarkType
-    {
-        kMark = AcDbDimension::CenterMarkType::kMark,
-        kLine = AcDbDimension::CenterMarkType::kLine,
-        kNone = AcDbDimension::CenterMarkType::kNone,
-    };
-#endif // !BRXAPP
 public:
     PyDbDimension(AcDbDimension* ptr, bool autoDelete);
     PyDbDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
@@ -62,8 +43,8 @@ public:
     PyDbObjectId        dimensionStyle() const;
     Acad::ErrorStatus   setDimensionStyle(const PyDbObjectId& val);
 
-    PyDbMText::AttachmentPoint textAttachment() const;
-    Acad::ErrorStatus   setTextAttachment(PyDbMText::AttachmentPoint eAtt);
+    AcDbMText::AttachmentPoint textAttachment() const;
+    Acad::ErrorStatus   setTextAttachment(AcDbMText::AttachmentPoint eAtt);
 
     AcDb::LineSpacingStyle textLineSpacingStyle() const;
     Acad::ErrorStatus   setTextLineSpacingStyle(AcDb::LineSpacingStyle eStyle);
@@ -193,7 +174,7 @@ public:
     Acad::ErrorStatus     setToleranceSuppressZeroInches(bool val);
 
 #ifndef BRXAPP
-    PyDbDimension::CenterMarkType centerMarkType() const;
+    AcDbDimension::CenterMarkType centerMarkType() const;
 #endif
 
     static std::string className();

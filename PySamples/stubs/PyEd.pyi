@@ -1,8 +1,354 @@
 
-class DragStyle:
-    def DragStyleType (self, *args, **kwargs):
+class CursorType:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kCrosshair (self, *args, **kwargs):
       '''None'''
     ...
+    def kCrosshairDashed (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kCrosshairNoRotate (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kEntitySelect (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kEntitySelectNoPersp (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kInvisible (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNoSpecialCursor (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNotRotated (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kParallelogram (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kPkfirstOrGrips (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kRectCursor (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kRotatedCrosshair (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kRubberBand (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTargetBox (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class DragStatus:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def eNormal (self, *args, **kwargs):
+      '''None'''
+    ...
+    def eOk (self, *args, **kwargs):
+      '''None'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kCancel (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kKW1 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kKW2 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kKW3 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kKW4 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kKW5 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kKW6 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kKW7 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kKW8 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kKW9 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kModeless (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNoChange (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNormal (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNull (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kOther (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class DragStyle:
     def __eq__ (self, value, /):
       '''Return self==value.'''
     ...
@@ -25,27 +371,6 @@ __init__( (object)arg1, (DragStyleType)arg2, (DragStyleType)arg3) -> None :
     ...
     def __ne__ (self, value, /):
       '''Return self!=value.'''
-    ...
-    def kDeletedEffect (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kHide (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kHighlight (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNone (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNotSet (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTransparent25 (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTransparent75 (self, *args, **kwargs):
-      '''None'''
     ...
     def setStyleTypeForDragged (self, *args, **kwargs):
       '''
@@ -74,6 +399,155 @@ styleTypeForOriginal( (DragStyle)arg1) -> DragStyleType :
 
     C++ signature :
         enum AcEdDragStyle::StyleType styleTypeForOriginal(class AcEdDragStyle {lvalue})'''
+    ...
+
+class DragStyleType:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kDeletedEffect (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kHide (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kHighlight (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNone (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNotSet (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTransparent25 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTransparent75 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
 class Editor:
@@ -945,15 +1419,6 @@ xrefSubcommandUnloadItem( (EditorReactor)arg1, (Database)arg2, (int)arg3, (Objec
     ...
 
 class Jig:
-    def CursorType (self, *args, **kwargs):
-      '''None'''
-    ...
-    def DragStatus (self, *args, **kwargs):
-      '''None'''
-    ...
-    def UserInputControls (self, *args, **kwargs):
-      '''None'''
-    ...
     def __eq__ (self, value, /):
       '''Return self==value.'''
     ...
@@ -1042,150 +1507,6 @@ drag( (Jig)arg1, (DragStyle)arg2) -> DragStatus :
 
     C++ signature :
         enum AcEdJig::DragStatus drag(class PyJig {lvalue},class AcEdDragStyle)'''
-    ...
-    def eNormal (self, *args, **kwargs):
-      '''None'''
-    ...
-    def eOk (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kAccept3dCoordinates (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kAcceptMouseUpAsPoint (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kAcceptOtherInputString (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kAnyBlankTerminatesInput (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kCancel (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kCrosshair (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kCrosshairDashed (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kCrosshairNoRotate (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kDisableDirectDistanceInput (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kDontEchoCancelForCtrlC (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kDontUpdateLastPoint (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kEntitySelect (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kEntitySelectNoPersp (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kGovernedByOrthoMode (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kGovernedByUCSDetect (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kImpliedFaceForUCSChange (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kInitialBlankTerminatesInput (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kInvisible (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kKW1 (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kKW2 (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kKW3 (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kKW4 (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kKW5 (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kKW6 (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kKW7 (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kKW8 (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kKW9 (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kModeless (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNoChange (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNoDwgLimitsChecking (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNoNegativeResponseAccepted (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNoSpecialCursor (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNoZDirectionOrtho (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNoZeroResponseAccepted (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNormal (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNotRotated (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNull (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kNullResponseAccepted (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kOther (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kParallelogram (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kPkfirstOrGrips (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kRectCursor (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kRotatedCrosshair (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kRubberBand (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kTargetBox (self, *args, **kwargs):
-      '''None'''
-    ...
-    def kUseBasePointElevation (self, *args, **kwargs):
-      '''None'''
     ...
     def keywordList (self, *args, **kwargs):
       '''
@@ -1361,6 +1682,185 @@ Also known as the population count.
       '''the imaginary part of a complex number'''
     ...
     def kNormal (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class UserInputControls:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kAccept3dCoordinates (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kAcceptMouseUpAsPoint (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kAcceptOtherInputString (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kAnyBlankTerminatesInput (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kDisableDirectDistanceInput (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kDontEchoCancelForCtrlC (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kDontUpdateLastPoint (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kGovernedByOrthoMode (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kGovernedByUCSDetect (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kImpliedFaceForUCSChange (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kInitialBlankTerminatesInput (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNoDwgLimitsChecking (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNoNegativeResponseAccepted (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNoZDirectionOrtho (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNoZeroResponseAccepted (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNullResponseAccepted (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kUseBasePointElevation (self, *args, **kwargs):
       '''None'''
     ...
     def name (self, *args, **kwargs):

@@ -4,7 +4,7 @@
 using namespace boost::python;
 void makeAcDbFieldtWrapper()
 {
-    boost::python::scope scope = class_<PyDbField, bases<PyDbObject>>("Field")
+    class_<PyDbField, bases<PyDbObject>>("Field")
         .def(init<>())
         .def(init<std::string&, bool>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
@@ -25,65 +25,65 @@ void makeAcDbFieldtWrapper()
         .def("className", &PyDbField::className).staticmethod("className")
         .def("desc", &PyDbField::desc).staticmethod("desc")
         ;
-    enum_<PyDbField::State>("State")
-        .value("kInitialized", PyDbField::State::kInitialized)
-        .value("kCompiled", PyDbField::State::kCompiled)
-        .value("kModified", PyDbField::State::kModified)
-        .value("kEvaluated", PyDbField::State::kEvaluated)
-        .value("kHasCache", PyDbField::State::kHasCache)
+    enum_<AcDbField::State>("FieldState")
+        .value("kInitialized", AcDbField::State::kInitialized)
+        .value("kCompiled", AcDbField::State::kCompiled)
+        .value("kModified", AcDbField::State::kModified)
+        .value("kEvaluated", AcDbField::State::kEvaluated)
+        .value("kHasCache", AcDbField::State::kHasCache)
 #ifndef BRXAPP
-        .value("kHasFormattedString", PyDbField::State::kHasFormattedString)
+        .value("kHasFormattedString", AcDbField::State::kHasFormattedString)
 #endif // BRXAPP
         .export_values()
         ;
-    enum_<PyDbField::EvalOption>("EvalOption")
-        .value("kDisable", PyDbField::EvalOption::kDisable)
-        .value("kOnOpen", PyDbField::EvalOption::kOnOpen)
-        .value("kOnSave", PyDbField::EvalOption::kOnSave)
-        .value("kOnPlot", PyDbField::EvalOption::kOnPlot)
-        .value("kOnEtransmit", PyDbField::EvalOption::kOnEtransmit)
-        .value("kOnRegen", PyDbField::EvalOption::kOnRegen)
-        .value("kOnDemand", PyDbField::EvalOption::kOnDemand)
-        .value("kAutomatic", PyDbField::EvalOption::kAutomatic)
+    enum_<AcDbField::EvalOption>("FieldEvalOption")
+        .value("kDisable", AcDbField::EvalOption::kDisable)
+        .value("kOnOpen", AcDbField::EvalOption::kOnOpen)
+        .value("kOnSave", AcDbField::EvalOption::kOnSave)
+        .value("kOnPlot", AcDbField::EvalOption::kOnPlot)
+        .value("kOnEtransmit", AcDbField::EvalOption::kOnEtransmit)
+        .value("kOnRegen", AcDbField::EvalOption::kOnRegen)
+        .value("kOnDemand", AcDbField::EvalOption::kOnDemand)
+        .value("kAutomatic", AcDbField::EvalOption::kAutomatic)
         .export_values()
         ;
-    enum_<PyDbField::EvalContext>("EvalContext")
-        .value("kOpen", PyDbField::EvalContext::kOpen)
-        .value("kSave", PyDbField::EvalContext::kSave)
-        .value("kPlot", PyDbField::EvalContext::kPlot)
-        .value("kEtransmit", PyDbField::EvalContext::kEtransmit)
-        .value("kRegen", PyDbField::EvalContext::kRegen)
-        .value("kDemand", PyDbField::EvalContext::kDemand)
-        .value("kPreview", PyDbField::EvalContext::kPreview)
-        .value("kPlotPreview", PyDbField::EvalContext::kPlotPreview)
+    enum_<AcDbField::EvalContext>("FieldEvalContext")
+        .value("kOpen", AcDbField::EvalContext::kOpen)
+        .value("kSave", AcDbField::EvalContext::kSave)
+        .value("kPlot", AcDbField::EvalContext::kPlot)
+        .value("kEtransmit", AcDbField::EvalContext::kEtransmit)
+        .value("kRegen", AcDbField::EvalContext::kRegen)
+        .value("kDemand", AcDbField::EvalContext::kDemand)
+        .value("kPreview", AcDbField::EvalContext::kPreview)
+        .value("kPlotPreview", AcDbField::EvalContext::kPlotPreview)
         .export_values()
         ;
-    enum_<PyDbField::EvalStatus>("EvalStatus")
-        .value("kNotYetEvaluated", PyDbField::EvalStatus::kNotYetEvaluated)
-        .value("kSuccess", PyDbField::EvalStatus::kSuccess)
-        .value("kEvaluatorNotFound", PyDbField::EvalStatus::kEvaluatorNotFound)
-        .value("kSyntaxError", PyDbField::EvalStatus::kSyntaxError)
-        .value("kInvalidCode", PyDbField::EvalStatus::kInvalidCode)
-        .value("kInvalidContext", PyDbField::EvalStatus::kInvalidContext)
-        .value("kOtherError", PyDbField::EvalStatus::kOtherError)
+    enum_<AcDbField::EvalStatus>("FieldEvalStatus")
+        .value("kNotYetEvaluated", AcDbField::EvalStatus::kNotYetEvaluated)
+        .value("kSuccess", AcDbField::EvalStatus::kSuccess)
+        .value("kEvaluatorNotFound", AcDbField::EvalStatus::kEvaluatorNotFound)
+        .value("kSyntaxError", AcDbField::EvalStatus::kSyntaxError)
+        .value("kInvalidCode", AcDbField::EvalStatus::kInvalidCode)
+        .value("kInvalidContext", AcDbField::EvalStatus::kInvalidContext)
+        .value("kOtherError", AcDbField::EvalStatus::kOtherError)
         .export_values()
         ;
-    enum_<PyDbField::FieldCodeFlag>("FieldCodeFlag")
-        .value("kFieldCode", PyDbField::FieldCodeFlag::kFieldCode)
-        .value("kEvaluatedText", PyDbField::FieldCodeFlag::kEvaluatedText)
-        .value("kEvaluatedChildren", PyDbField::FieldCodeFlag::kEvaluatedChildren)
-        .value("kObjectReference", PyDbField::FieldCodeFlag::kObjectReference)
-        .value("kAddMarkers", PyDbField::FieldCodeFlag::kAddMarkers)
-        .value("kEscapeBackslash", PyDbField::FieldCodeFlag::kEscapeBackslash)
-        .value("kStripOptions", PyDbField::FieldCodeFlag::kStripOptions)
-        .value("kPreserveFields", PyDbField::FieldCodeFlag::kPreserveFields)
-        .value("kTextField", PyDbField::FieldCodeFlag::kTextField)
+    enum_<AcDbField::FieldCodeFlag>("FieldCodeFlag")
+        .value("kFieldCode", AcDbField::FieldCodeFlag::kFieldCode)
+        .value("kEvaluatedText", AcDbField::FieldCodeFlag::kEvaluatedText)
+        .value("kEvaluatedChildren", AcDbField::FieldCodeFlag::kEvaluatedChildren)
+        .value("kObjectReference", AcDbField::FieldCodeFlag::kObjectReference)
+        .value("kAddMarkers", AcDbField::FieldCodeFlag::kAddMarkers)
+        .value("kEscapeBackslash", AcDbField::FieldCodeFlag::kEscapeBackslash)
+        .value("kStripOptions", AcDbField::FieldCodeFlag::kStripOptions)
+        .value("kPreserveFields", AcDbField::FieldCodeFlag::kPreserveFields)
+        .value("kTextField", AcDbField::FieldCodeFlag::kTextField)
         .export_values()
 #ifndef BRXAPP
-        .value("kPreserveOptions", PyDbField::FieldCodeFlag::kPreserveOptions)
-        .value("kDetachChildren", PyDbField::FieldCodeFlag::kDetachChildren)
-        .value("kChildObjectReference", PyDbField::FieldCodeFlag::kChildObjectReference)
-        .value("kForExpression", PyDbField::FieldCodeFlag::kForExpression)
+        .value("kPreserveOptions", AcDbField::FieldCodeFlag::kPreserveOptions)
+        .value("kDetachChildren", AcDbField::FieldCodeFlag::kDetachChildren)
+        .value("kChildObjectReference", AcDbField::FieldCodeFlag::kChildObjectReference)
+        .value("kForExpression", AcDbField::FieldCodeFlag::kForExpression)
         .export_values()
 #endif
         ;
@@ -127,24 +127,24 @@ Acad::ErrorStatus PyDbField::postInDatabase(PyDbDatabase& pDb)
     return impObj()->postInDatabase(pDb.impObj());
 }
 
-PyDbField::State PyDbField::state(void) const
+AcDbField::State PyDbField::state(void) const
 {
-    return static_cast<PyDbField::State>(impObj()->state());
+    return impObj()->state();
 }
 
-PyDbField::EvalStatus PyDbField::evaluationStatus() const
+AcDbField::EvalStatus PyDbField::evaluationStatus() const
 {
-    return static_cast<PyDbField::EvalStatus>(impObj()->evaluationStatus());
+    return impObj()->evaluationStatus();
 }
 
-PyDbField::EvalOption PyDbField::evaluationOption(void) const
+AcDbField::EvalOption PyDbField::evaluationOption(void) const
 {
-    return static_cast<PyDbField::EvalOption>(impObj()->evaluationOption());
+    return impObj()->evaluationOption();
 }
 
-Acad::ErrorStatus PyDbField::setEvaluationOption(PyDbField::EvalOption nEvalOption)
+Acad::ErrorStatus PyDbField::setEvaluationOption(AcDbField::EvalOption nEvalOption)
 {
-    return impObj()->setEvaluationOption(static_cast<AcDbField::EvalOption>( nEvalOption));
+    return impObj()->setEvaluationOption(nEvalOption);
 }
 
 std::string PyDbField::evaluatorId(void) const
