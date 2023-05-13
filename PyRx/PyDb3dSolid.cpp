@@ -8,7 +8,7 @@ using namespace boost::python;
 
 void makePyDb3dSolidWrapper()
 {
-    class_<PyDb3dSolid, bases<PyDbEntity>>("3dSolid")
+    class_<PyDb3dSolid, bases<PyDbEntity>>("Solid3d")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("createBox", &PyDb3dSolid::createBox)
