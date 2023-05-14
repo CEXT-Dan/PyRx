@@ -8,3 +8,5 @@
 /PySamples/*.err
 *.pyc
 /PySamples/__pycache__
+/PySamples/autoComplete.py
+/PySamples/doit.py

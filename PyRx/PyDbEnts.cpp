@@ -558,7 +558,7 @@ PyDbAttribute::PyDbAttribute(const AcGePoint3d& position, const std::string& tex
 {
 }
 
-PyDbAttribute::PyDbAttribute(AcDbAttributeDefinition* ptr, bool autoDelete)
+PyDbAttribute::PyDbAttribute(AcDbAttribute* ptr, bool autoDelete)
     : PyDbText(ptr, autoDelete)
 {
 }

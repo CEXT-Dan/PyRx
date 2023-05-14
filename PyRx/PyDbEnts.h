@@ -141,7 +141,7 @@ class PyDbAttribute : public PyDbText
 public:
     PyDbAttribute();
     PyDbAttribute(const AcGePoint3d& position, const std::string& text, const std::string& tag, const PyDbObjectId& style);
-    PyDbAttribute(AcDbAttributeDefinition* ptr, bool autoDelete);
+    PyDbAttribute(AcDbAttribute* ptr, bool autoDelete);
     PyDbAttribute(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbAttribute() override = default;
 
