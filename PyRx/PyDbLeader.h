@@ -7,6 +7,7 @@ class PyDbHardPointerId;
 class PyDbAttribute;
 class PyDbMText;
 class PyDbMLeaderStyle;
+
 //----------------------------------------------------------------------------------
 //PyDbLeader
 void makePyDbLeaderWrapper();

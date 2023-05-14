@@ -39846,6 +39846,34 @@ addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus addPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
+    def alignSpace (self, *args, **kwargs):
+      '''
+alignSpace( (MLeaderStyle)arg1) -> float :
+
+    C++ signature :
+        double alignSpace(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def annotative (self, *args, **kwargs):
+      '''
+annotative( (MLeaderStyle)arg1) -> bool :
+
+    C++ signature :
+        bool annotative(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def arrowSize (self, *args, **kwargs):
+      '''
+arrowSize( (MLeaderStyle)arg1) -> float :
+
+    C++ signature :
+        double arrowSize(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def arrowSymbolId (self, *args, **kwargs):
+      '''
+arrowSymbolId( (MLeaderStyle)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId arrowSymbolId(class PyDbMLeaderStyle {lvalue})'''
+    ...
     def assertNotifyEnabled (self, *args, **kwargs):
       '''
 assertNotifyEnabled( (DbObject)arg1) -> None :
@@ -39866,6 +39894,55 @@ assertWriteEnabled( (DbObject)arg1) -> None :
 
     C++ signature :
         void assertWriteEnabled(class PyDbObject {lvalue})'''
+    ...
+    def bitFlags (self, *args, **kwargs):
+      '''
+bitFlags( (MLeaderStyle)arg1) -> int :
+
+    C++ signature :
+        unsigned int bitFlags(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def blockColor (self, *args, **kwargs):
+      '''
+blockColor( (MLeaderStyle)arg1) -> Color :
+
+    C++ signature :
+        class AcCmColor blockColor(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def blockConnectionType (self, *args, **kwargs):
+      '''
+blockConnectionType( (MLeaderStyle)arg1) -> MLeaderBlockConnectionType :
+
+    C++ signature :
+        enum AcDbMLeaderStyle::BlockConnectionType blockConnectionType(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def blockId (self, *args, **kwargs):
+      '''
+blockId( (MLeaderStyle)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId blockId(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def blockRotation (self, *args, **kwargs):
+      '''
+blockRotation( (MLeaderStyle)arg1) -> float :
+
+    C++ signature :
+        double blockRotation(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def blockScale (self, *args, **kwargs):
+      '''
+blockScale( (MLeaderStyle)arg1) -> Scale3d :
+
+    C++ signature :
+        class AcGeScale3d blockScale(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def breakSize (self, *args, **kwargs):
+      '''
+breakSize( (MLeaderStyle)arg1) -> float :
+
+    C++ signature :
+        double breakSize(class PyDbMLeaderStyle {lvalue})'''
     ...
     def cancel (self, *args, **kwargs):
       '''
@@ -39888,6 +39965,13 @@ close( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus close(class PyDbObject {lvalue})'''
     ...
+    def contentType (self, *args, **kwargs):
+      '''
+contentType( (MLeaderStyle)arg1) -> MLeaderContentType :
+
+    C++ signature :
+        enum AcDbMLeaderStyle::ContentType contentType(class PyDbMLeaderStyle {lvalue})'''
+    ...
     def createExtensionDictionary (self, *args, **kwargs):
       '''
 createExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -39902,6 +39986,13 @@ database( (DbObject)arg1) -> Database :
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
     ...
+    def defaultMText (self, *args, **kwargs):
+      '''
+defaultMText( (MLeaderStyle)arg1) -> MText :
+
+    C++ signature :
+        class PyDbMText defaultMText(class PyDbMLeaderStyle {lvalue})'''
+    ...
     def desc (self, *args, **kwargs):
       '''
 desc() -> RxClass :
@@ -39909,12 +40000,26 @@ desc() -> RxClass :
     C++ signature :
         class PyRxClass desc()'''
     ...
+    def description (self, *args, **kwargs):
+      '''
+description( (MLeaderStyle)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > description(class PyDbMLeaderStyle {lvalue})'''
+    ...
     def disableUndoRecording (self, *args, **kwargs):
       '''
 disableUndoRecording( (DbObject)arg1, (bool)arg2) -> None :
 
     C++ signature :
         void disableUndoRecording(class PyDbObject {lvalue},bool)'''
+    ...
+    def doglegLength (self, *args, **kwargs):
+      '''
+doglegLength( (MLeaderStyle)arg1) -> float :
+
+    C++ signature :
+        double doglegLength(class PyDbMLeaderStyle {lvalue})'''
     ...
     def downgradeOpen (self, *args, **kwargs):
       '''
@@ -39930,6 +40035,60 @@ downgradeToNotify( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus downgradeToNotify(class PyDbObject {lvalue},bool)'''
     ...
+    def drawLeaderOrderType (self, *args, **kwargs):
+      '''
+drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
+
+    C++ signature :
+        enum AcDbMLeaderStyle::DrawLeaderOrderType drawLeaderOrderType(class PyDbMLeaderStyle {lvalue})
+
+drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
+
+    C++ signature :
+        enum AcDbMLeaderStyle::DrawLeaderOrderType drawLeaderOrderType(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def drawMLeaderOrderType (self, *args, **kwargs):
+      '''
+drawMLeaderOrderType( (MLeaderStyle)arg1) -> DrawMLeaderOrderType :
+
+    C++ signature :
+        enum AcDbMLeaderStyle::DrawMLeaderOrderType drawMLeaderOrderType(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def enableBlockRotation (self, *args, **kwargs):
+      '''
+enableBlockRotation( (MLeaderStyle)arg1) -> bool :
+
+    C++ signature :
+        bool enableBlockRotation(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def enableBlockScale (self, *args, **kwargs):
+      '''
+enableBlockScale( (MLeaderStyle)arg1) -> bool :
+
+    C++ signature :
+        bool enableBlockScale(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def enableDogleg (self, *args, **kwargs):
+      '''
+enableDogleg( (MLeaderStyle)arg1) -> bool :
+
+    C++ signature :
+        bool enableDogleg(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def enableFrameText (self, *args, **kwargs):
+      '''
+enableFrameText( (MLeaderStyle)arg1) -> bool :
+
+    C++ signature :
+        bool enableFrameText(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def enableLanding (self, *args, **kwargs):
+      '''
+enableLanding( (MLeaderStyle)arg1) -> bool :
+
+    C++ signature :
+        bool enableLanding(class PyDbMLeaderStyle {lvalue})'''
+    ...
     def erase (self, *args, **kwargs):
       '''
 erase( (DbObject)arg1) -> ErrorStatus :
@@ -39937,12 +40096,33 @@ erase( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
     ...
+    def extendLeaderToText (self, *args, **kwargs):
+      '''
+extendLeaderToText( (MLeaderStyle)arg1) -> bool :
+
+    C++ signature :
+        bool extendLeaderToText(class PyDbMLeaderStyle {lvalue})'''
+    ...
     def extensionDictionary (self, *args, **kwargs):
       '''
 extensionDictionary( (DbObject)arg1) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId extensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def firstSegmentAngleConstraint (self, *args, **kwargs):
+      '''
+firstSegmentAngleConstraint( (MLeaderStyle)arg1) -> MLeaderSegmentAngleType :
+
+    C++ signature :
+        enum AcDbMLeaderStyle::SegmentAngleType firstSegmentAngleConstraint(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def getName (self, *args, **kwargs):
+      '''
+getName( (MLeaderStyle)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbMLeaderStyle {lvalue})'''
     ...
     def handOverTo (self, *args, **kwargs):
       '''
@@ -40056,6 +40236,13 @@ isReallyClosing( (DbObject)arg1) -> bool :
     C++ signature :
         bool isReallyClosing(class PyDbObject {lvalue})'''
     ...
+    def isRenamable (self, *args, **kwargs):
+      '''
+isRenamable( (MLeaderStyle)arg1) -> bool :
+
+    C++ signature :
+        bool isRenamable(class PyDbMLeaderStyle {lvalue})'''
+    ...
     def isTransactionResident (self, *args, **kwargs):
       '''
 isTransactionResident( (DbObject)arg1) -> bool :
@@ -40084,6 +40271,48 @@ isWriteEnabled( (DbObject)arg1) -> bool :
     C++ signature :
         bool isWriteEnabled(class PyDbObject {lvalue})'''
     ...
+    def landingGap (self, *args, **kwargs):
+      '''
+landingGap( (MLeaderStyle)arg1) -> float :
+
+    C++ signature :
+        double landingGap(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def leaderLineColor (self, *args, **kwargs):
+      '''
+leaderLineColor( (MLeaderStyle)arg1) -> Color :
+
+    C++ signature :
+        class AcCmColor leaderLineColor(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def leaderLineType (self, *args, **kwargs):
+      '''
+leaderLineType( (MLeaderStyle)arg1) -> MLeaderLeaderType :
+
+    C++ signature :
+        enum AcDbMLeaderStyle::LeaderType leaderLineType(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def leaderLineTypeId (self, *args, **kwargs):
+      '''
+leaderLineTypeId( (MLeaderStyle)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId leaderLineTypeId(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def leaderLineWeight (self, *args, **kwargs):
+      '''
+leaderLineWeight( (MLeaderStyle)arg1) -> LineWeight :
+
+    C++ signature :
+        enum AcDb::LineWeight leaderLineWeight(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def maxLeaderSegmentsPoints (self, *args, **kwargs):
+      '''
+maxLeaderSegmentsPoints( (MLeaderStyle)arg1) -> int :
+
+    C++ signature :
+        int maxLeaderSegmentsPoints(class PyDbMLeaderStyle {lvalue})'''
+    ...
     def objectId (self, *args, **kwargs):
       '''
 objectId( (DbObject)arg1) -> ObjectId :
@@ -40091,12 +40320,26 @@ objectId( (DbObject)arg1) -> ObjectId :
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
+    def overwritePropChanged (self, *args, **kwargs):
+      '''
+overwritePropChanged( (MLeaderStyle)arg1) -> bool :
+
+    C++ signature :
+        bool overwritePropChanged(class PyDbMLeaderStyle {lvalue})'''
+    ...
     def ownerId (self, *args, **kwargs):
       '''
 ownerId( (DbObject)arg1) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
+    ...
+    def postMLeaderStyleToDb (self, *args, **kwargs):
+      '''
+postMLeaderStyleToDb( (MLeaderStyle)arg1, (Database)arg2, (str)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId postMLeaderStyleToDb(class PyDbMLeaderStyle {lvalue},class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -40112,12 +40355,328 @@ removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus removePersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
+    def scale (self, *args, **kwargs):
+      '''
+scale( (MLeaderStyle)arg1) -> float :
+
+    C++ signature :
+        double scale(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def secondSegmentAngleConstraint (self, *args, **kwargs):
+      '''
+secondSegmentAngleConstraint( (MLeaderStyle)arg1) -> MLeaderSegmentAngleType :
+
+    C++ signature :
+        enum AcDbMLeaderStyle::SegmentAngleType secondSegmentAngleConstraint(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def setAlignSpace (self, *args, **kwargs):
+      '''
+setAlignSpace( (MLeaderStyle)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setAlignSpace(class PyDbMLeaderStyle {lvalue},double)'''
+    ...
+    def setAnnotative (self, *args, **kwargs):
+      '''
+setAnnotative( (MLeaderStyle)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setAnnotative(class PyDbMLeaderStyle {lvalue},bool)'''
+    ...
+    def setArrowSize (self, *args, **kwargs):
+      '''
+setArrowSize( (MLeaderStyle)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setArrowSize(class PyDbMLeaderStyle {lvalue},double)'''
+    ...
+    def setArrowSymbolId (self, *args, **kwargs):
+      '''
+setArrowSymbolId( (MLeaderStyle)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setArrowSymbolId(class PyDbMLeaderStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setArrowSymbolId( (MLeaderStyle)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setArrowSymbolId(class PyDbMLeaderStyle {lvalue},class PyDbObjectId)'''
+    ...
+    def setBitFlags (self, *args, **kwargs):
+      '''
+setBitFlags( (MLeaderStyle)arg1, (int)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setBitFlags(class PyDbMLeaderStyle {lvalue},unsigned int)'''
+    ...
+    def setBlockColor (self, *args, **kwargs):
+      '''
+setBlockColor( (MLeaderStyle)arg1, (Color)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setBlockColor(class PyDbMLeaderStyle {lvalue},class AcCmColor)'''
+    ...
+    def setBlockConnectionType (self, *args, **kwargs):
+      '''
+setBlockConnectionType( (MLeaderStyle)arg1, (MLeaderBlockConnectionType)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setBlockConnectionType(class PyDbMLeaderStyle {lvalue},enum AcDbMLeaderStyle::BlockConnectionType)'''
+    ...
+    def setBlockId (self, *args, **kwargs):
+      '''
+setBlockId( (MLeaderStyle)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setBlockId(class PyDbMLeaderStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setBlockId( (MLeaderStyle)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setBlockId(class PyDbMLeaderStyle {lvalue},class PyDbObjectId)'''
+    ...
+    def setBlockRotation (self, *args, **kwargs):
+      '''
+setBlockRotation( (MLeaderStyle)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setBlockRotation(class PyDbMLeaderStyle {lvalue},double)'''
+    ...
+    def setBlockScale (self, *args, **kwargs):
+      '''
+setBlockScale( (MLeaderStyle)arg1, (Scale3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setBlockScale(class PyDbMLeaderStyle {lvalue},class AcGeScale3d)'''
+    ...
+    def setBreakSize (self, *args, **kwargs):
+      '''
+setBreakSize( (MLeaderStyle)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setBreakSize(class PyDbMLeaderStyle {lvalue},double)'''
+    ...
+    def setContentType (self, *args, **kwargs):
+      '''
+setContentType( (MLeaderStyle)arg1, (MLeaderContentType)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setContentType(class PyDbMLeaderStyle {lvalue},enum AcDbMLeaderStyle::ContentType)'''
+    ...
+    def setDefaultMText (self, *args, **kwargs):
+      '''
+setDefaultMText( (MLeaderStyle)arg1, (MText)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setDefaultMText(class PyDbMLeaderStyle {lvalue},class PyDbMText)'''
+    ...
+    def setDescription (self, *args, **kwargs):
+      '''
+setDescription( (MLeaderStyle)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setDescription(class PyDbMLeaderStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setDoglegLength (self, *args, **kwargs):
+      '''
+setDoglegLength( (MLeaderStyle)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setDoglegLength(class PyDbMLeaderStyle {lvalue},double)'''
+    ...
+    def setDrawLeaderOrderType (self, *args, **kwargs):
+      '''
+setDrawLeaderOrderType( (MLeaderStyle)arg1, (DrawLeaderOrderType)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setDrawLeaderOrderType(class PyDbMLeaderStyle {lvalue},enum AcDbMLeaderStyle::DrawLeaderOrderType)
+
+setDrawLeaderOrderType( (MLeaderStyle)arg1, (DrawLeaderOrderType)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setDrawLeaderOrderType(class PyDbMLeaderStyle {lvalue},enum AcDbMLeaderStyle::DrawLeaderOrderType)'''
+    ...
+    def setDrawMLeaderOrderType (self, *args, **kwargs):
+      '''
+setDrawMLeaderOrderType( (MLeaderStyle)arg1, (DrawMLeaderOrderType)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setDrawMLeaderOrderType(class PyDbMLeaderStyle {lvalue},enum AcDbMLeaderStyle::DrawMLeaderOrderType)'''
+    ...
+    def setEnableBlockRotation (self, *args, **kwargs):
+      '''
+setEnableBlockRotation( (MLeaderStyle)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setEnableBlockRotation(class PyDbMLeaderStyle {lvalue},bool)'''
+    ...
+    def setEnableBlockScale (self, *args, **kwargs):
+      '''
+setEnableBlockScale( (MLeaderStyle)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setEnableBlockScale(class PyDbMLeaderStyle {lvalue},bool)'''
+    ...
+    def setEnableDogleg (self, *args, **kwargs):
+      '''
+setEnableDogleg( (MLeaderStyle)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setEnableDogleg(class PyDbMLeaderStyle {lvalue},bool)'''
+    ...
+    def setEnableFrameText (self, *args, **kwargs):
+      '''
+setEnableFrameText( (MLeaderStyle)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setEnableFrameText(class PyDbMLeaderStyle {lvalue},bool)'''
+    ...
+    def setEnableLanding (self, *args, **kwargs):
+      '''
+setEnableLanding( (MLeaderStyle)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setEnableLanding(class PyDbMLeaderStyle {lvalue},bool)'''
+    ...
+    def setExtendLeaderToText (self, *args, **kwargs):
+      '''
+setExtendLeaderToText( (MLeaderStyle)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setExtendLeaderToText(class PyDbMLeaderStyle {lvalue},bool)'''
+    ...
+    def setFirstSegmentAngleConstraint (self, *args, **kwargs):
+      '''
+setFirstSegmentAngleConstraint( (MLeaderStyle)arg1, (MLeaderSegmentAngleType)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setFirstSegmentAngleConstraint(class PyDbMLeaderStyle {lvalue},enum AcDbMLeaderStyle::SegmentAngleType)'''
+    ...
+    def setLandingGap (self, *args, **kwargs):
+      '''
+setLandingGap( (MLeaderStyle)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLandingGap(class PyDbMLeaderStyle {lvalue},double)'''
+    ...
+    def setLeaderLineColor (self, *args, **kwargs):
+      '''
+setLeaderLineColor( (MLeaderStyle)arg1, (Color)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLeaderLineColor(class PyDbMLeaderStyle {lvalue},class AcCmColor)'''
+    ...
+    def setLeaderLineType (self, *args, **kwargs):
+      '''
+setLeaderLineType( (MLeaderStyle)arg1, (MLeaderLeaderType)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLeaderLineType(class PyDbMLeaderStyle {lvalue},enum AcDbMLeaderStyle::LeaderType)'''
+    ...
+    def setLeaderLineTypeId (self, *args, **kwargs):
+      '''
+setLeaderLineTypeId( (MLeaderStyle)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLeaderLineTypeId(class PyDbMLeaderStyle {lvalue},class PyDbObjectId)'''
+    ...
+    def setLeaderLineWeight (self, *args, **kwargs):
+      '''
+setLeaderLineWeight( (MLeaderStyle)arg1, (LineWeight)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLeaderLineWeight(class PyDbMLeaderStyle {lvalue},enum AcDb::LineWeight)'''
+    ...
+    def setMaxLeaderSegmentsPoints (self, *args, **kwargs):
+      '''
+setMaxLeaderSegmentsPoints( (MLeaderStyle)arg1, (int)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaxLeaderSegmentsPoints(class PyDbMLeaderStyle {lvalue},int)'''
+    ...
+    def setName (self, *args, **kwargs):
+      '''
+setName( (MLeaderStyle)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setName(class PyDbMLeaderStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def setOwnerId (self, *args, **kwargs):
       '''
 setOwnerId( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setOwnerId(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def setScale (self, *args, **kwargs):
+      '''
+setScale( (MLeaderStyle)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setScale(class PyDbMLeaderStyle {lvalue},double)'''
+    ...
+    def setSecondSegmentAngleConstraint (self, *args, **kwargs):
+      '''
+setSecondSegmentAngleConstraint( (MLeaderStyle)arg1, (MLeaderSegmentAngleType)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSecondSegmentAngleConstraint(class PyDbMLeaderStyle {lvalue},enum AcDbMLeaderStyle::SegmentAngleType)'''
+    ...
+    def setTextAlignAlwaysLeft (self, *args, **kwargs):
+      '''
+setTextAlignAlwaysLeft( (MLeaderStyle)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setTextAlignAlwaysLeft(class PyDbMLeaderStyle {lvalue},bool)'''
+    ...
+    def setTextAlignmentType (self, *args, **kwargs):
+      '''
+setTextAlignmentType( (MLeaderStyle)arg1, (MLeaderTextAlignmentType)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setTextAlignmentType(class PyDbMLeaderStyle {lvalue},enum AcDbMLeaderStyle::TextAlignmentType)'''
+    ...
+    def setTextAngleType (self, *args, **kwargs):
+      '''
+setTextAngleType( (MLeaderStyle)arg1, (MLeaderTextAngleType)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setTextAngleType(class PyDbMLeaderStyle {lvalue},enum AcDbMLeaderStyle::TextAngleType)'''
+    ...
+    def setTextAttachmentDirection (self, *args, **kwargs):
+      '''
+setTextAttachmentDirection( (MLeaderStyle)arg1, (MLeaderTextAttachmentDirection)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setTextAttachmentDirection(class PyDbMLeaderStyle {lvalue},enum AcDbMLeaderStyle::TextAttachmentDirection)'''
+    ...
+    def setTextAttachmentType (self, *args, **kwargs):
+      '''
+setTextAttachmentType( (MLeaderStyle)arg1, (MLeaderTextAttachmentType)arg2 [, (MLeaderLeaderDirectionType)arg3]) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setTextAttachmentType(class PyDbMLeaderStyle {lvalue},enum AcDbMLeaderStyle::TextAttachmentType [,enum AcDbMLeaderStyle::LeaderDirectionType])'''
+    ...
+    def setTextColor (self, *args, **kwargs):
+      '''
+setTextColor( (MLeaderStyle)arg1, (Color)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setTextColor(class PyDbMLeaderStyle {lvalue},class AcCmColor)'''
+    ...
+    def setTextHeight (self, *args, **kwargs):
+      '''
+setTextHeight( (MLeaderStyle)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setTextHeight(class PyDbMLeaderStyle {lvalue},double)'''
+    ...
+    def setTextStyleId (self, *args, **kwargs):
+      '''
+setTextStyleId( (MLeaderStyle)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setTextStyleId(class PyDbMLeaderStyle {lvalue},class PyDbObjectId)'''
     ...
     def setXData (self, *args, **kwargs):
       '''
@@ -40132,6 +40691,62 @@ swapIdWith( (DbObject)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus swapIdWith(class PyDbObject {lvalue},class PyDbObjectId {lvalue},bool,bool)'''
+    ...
+    def textAlignAlwaysLeft (self, *args, **kwargs):
+      '''
+textAlignAlwaysLeft( (MLeaderStyle)arg1) -> bool :
+
+    C++ signature :
+        bool textAlignAlwaysLeft(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def textAlignmentType (self, *args, **kwargs):
+      '''
+textAlignmentType( (MLeaderStyle)arg1) -> MLeaderTextAlignmentType :
+
+    C++ signature :
+        enum AcDbMLeaderStyle::TextAlignmentType textAlignmentType(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def textAngleType (self, *args, **kwargs):
+      '''
+textAngleType( (MLeaderStyle)arg1) -> MLeaderTextAngleType :
+
+    C++ signature :
+        enum AcDbMLeaderStyle::TextAngleType textAngleType(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def textAttachmentDirection (self, *args, **kwargs):
+      '''
+textAttachmentDirection( (MLeaderStyle)arg1) -> MLeaderTextAttachmentDirection :
+
+    C++ signature :
+        enum AcDbMLeaderStyle::TextAttachmentDirection textAttachmentDirection(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def textAttachmentType (self, *args, **kwargs):
+      '''
+textAttachmentType( (MLeaderStyle)arg1 [, (MLeaderLeaderDirectionType)arg2]) -> MLeaderTextAttachmentType :
+
+    C++ signature :
+        enum AcDbMLeaderStyle::TextAttachmentType textAttachmentType(class PyDbMLeaderStyle {lvalue} [,enum AcDbMLeaderStyle::LeaderDirectionType])'''
+    ...
+    def textColor (self, *args, **kwargs):
+      '''
+textColor( (MLeaderStyle)arg1) -> Color :
+
+    C++ signature :
+        class AcCmColor textColor(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def textHeight (self, *args, **kwargs):
+      '''
+textHeight( (MLeaderStyle)arg1) -> float :
+
+    C++ signature :
+        double textHeight(class PyDbMLeaderStyle {lvalue})'''
+    ...
+    def textStyleId (self, *args, **kwargs):
+      '''
+textStyleId( (MLeaderStyle)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId textStyleId(class PyDbMLeaderStyle {lvalue})'''
     ...
     def upgradeFromNotify (self, *args, **kwargs):
       '''
