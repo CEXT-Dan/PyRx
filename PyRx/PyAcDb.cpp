@@ -168,6 +168,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makeRotatedDimensionWrapper();
 
     makePyDbLeaderWrapper();
+    makePyDbMLeaderWrapper();
 
     makePyDbIdMappingWrapper();
 
