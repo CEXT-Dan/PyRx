@@ -6,7 +6,7 @@ class PyDbObjectId;
 class PyDbHardPointerId;
 class PyDbAttribute;
 class PyDbMText;
-
+class PyDbMLeaderStyle;
 //----------------------------------------------------------------------------------
 //PyDbLeader
 void makePyDbLeaderWrapper();
@@ -206,7 +206,7 @@ public:
     bool                enableAnnotationScale() const;
     Acad::ErrorStatus   setMLeaderStyle(const PyDbObjectId& blockId);
     PyDbObjectId        MLeaderStyle();
-    //Acad::ErrorStatus getOverridedMLeaderStyle(AcDbMLeaderStyle& mleaderStyle);
+    Acad::ErrorStatus   getOverridedMLeaderStyle(PyDbMLeaderStyle& mleaderStyle);
     //Acad::ErrorStatus setContextDataManager(void* pContextDataManager);
     //void* getContextDataManager() const;
     Acad::ErrorStatus   setBlockPosition(const AcGePoint3d& position);
@@ -234,4 +234,113 @@ public:
 
 public:
     AcDbMLeader* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//----------------------------------------------------------------------------------
+//PyDbMLeaderStyle
+void makePyDbMLeaderStyleWrapper();
+
+class PyDbMLeaderStyle : public PyDbObject
+{
+public:
+    PyDbMLeaderStyle();
+    virtual ~PyDbMLeaderStyle() override = default;
+    PyDbMLeaderStyle(AcDbMLeaderStyle* ptr, bool autoDelete);
+    PyDbMLeaderStyle(const PyDbObjectId& id, AcDb::OpenMode mode);
+    std::string               getName() const;
+    Acad::ErrorStatus         setName(const std::string& pszName);
+    bool                      isRenamable() const;
+    const  std::string        description(void) const;
+    Acad::ErrorStatus         setDescription(const std::string& pszDescription);
+    Adesk::UInt32             bitFlags() const;
+    Acad::ErrorStatus         setBitFlags(Adesk::UInt32 flags);
+    AcDbMLeaderStyle::ContentType contentType() const;
+    Acad::ErrorStatus         setContentType(AcDbMLeaderStyle::ContentType contentType);
+    Acad::ErrorStatus         setDrawMLeaderOrderType(AcDbMLeaderStyle::DrawMLeaderOrderType drawMLeaderOrderType);
+    AcDbMLeaderStyle::DrawMLeaderOrderType drawMLeaderOrderType() const;
+    Acad::ErrorStatus         setDrawLeaderOrderType(AcDbMLeaderStyle::DrawLeaderOrderType drawLeaderOrderType);
+    AcDbMLeaderStyle::DrawLeaderOrderType drawLeaderOrderType() const;
+    Acad::ErrorStatus         setMaxLeaderSegmentsPoints(int maxLeaderSegmentsPoints);
+    int                       maxLeaderSegmentsPoints() const;
+    Acad::ErrorStatus         setFirstSegmentAngleConstraint(AcDbMLeaderStyle::SegmentAngleType angle);
+    AcDbMLeaderStyle::SegmentAngleType firstSegmentAngleConstraint() const;
+    Acad::ErrorStatus         setSecondSegmentAngleConstraint(AcDbMLeaderStyle::SegmentAngleType angle);
+    AcDbMLeaderStyle::SegmentAngleType secondSegmentAngleConstraint() const;
+    Acad::ErrorStatus         setLeaderLineType(AcDbMLeaderStyle::LeaderType leaderLineType);
+    AcDbMLeaderStyle::LeaderType leaderLineType() const;
+    Acad::ErrorStatus         setLeaderLineColor(const AcCmColor& leaderLineColor);
+    AcCmColor                 leaderLineColor() const;
+    Acad::ErrorStatus         setLeaderLineTypeId(const PyDbObjectId& leaderLineTypeId);
+    PyDbObjectId              leaderLineTypeId() const;
+    Acad::ErrorStatus         setLeaderLineWeight(AcDb::LineWeight leaderLineWeight);
+    AcDb::LineWeight          leaderLineWeight() const;
+    Acad::ErrorStatus         setEnableLanding(bool enableLanding);
+    bool                      enableLanding() const;
+    Acad::ErrorStatus         setLandingGap(double landingGap);
+    double                    landingGap() const;
+    Acad::ErrorStatus         setEnableDogleg(bool enableDogleg);
+    bool                      enableDogleg() const;
+    Acad::ErrorStatus         setDoglegLength(double doglegLength);
+    double                    doglegLength() const;
+    Acad::ErrorStatus         setArrowSymbolId1(const std::string& name);
+    Acad::ErrorStatus         setArrowSymbolId2(const PyDbObjectId& arrowSymbolId);
+    PyDbObjectId              arrowSymbolId() const;
+    Acad::ErrorStatus         setArrowSize(double arrowSize);
+    double                    arrowSize() const;
+    Acad::ErrorStatus         setDefaultMText(const PyDbMText& defaultMText);
+    PyDbMText                 defaultMText() const;
+    Acad::ErrorStatus         setTextStyleId(const PyDbObjectId& textStyleId);
+    PyDbObjectId              textStyleId() const;
+    Acad::ErrorStatus         setTextAttachmentType1(AcDbMLeaderStyle::TextAttachmentType textAttachmentType, AcDbMLeaderStyle::LeaderDirectionType leaderDirection);
+    AcDbMLeaderStyle::TextAttachmentType   textAttachmentType1(AcDbMLeaderStyle::LeaderDirectionType leaderDirection) const;
+    Acad::ErrorStatus         setTextAttachmentType2(AcDbMLeaderStyle::TextAttachmentType textAttachmentType);
+    AcDbMLeaderStyle::TextAttachmentType   textAttachmentType2() const;
+    Acad::ErrorStatus         setTextAngleType(AcDbMLeaderStyle::TextAngleType textAngleType);
+    AcDbMLeaderStyle::TextAngleType textAngleType() const;
+    Acad::ErrorStatus         setTextAlignmentType(AcDbMLeaderStyle::TextAlignmentType textAlignmentType);
+    AcDbMLeaderStyle::TextAlignmentType textAlignmentType() const;
+    Acad::ErrorStatus         setTextAlignAlwaysLeft(bool bAlwaysLeft);
+    bool                      textAlignAlwaysLeft() const;
+    Acad::ErrorStatus         setTextColor(const AcCmColor& textColor);
+    AcCmColor                 textColor() const;
+    Acad::ErrorStatus         setTextHeight(double textHeight);
+    double                    textHeight() const;
+    Acad::ErrorStatus         setEnableFrameText(bool enableFrameText);
+    bool                      enableFrameText() const;
+    Acad::ErrorStatus         setAlignSpace(double alignSpace);
+    double                    alignSpace() const;
+    Acad::ErrorStatus         setBlockId1(const std::string& name);
+    Acad::ErrorStatus         setBlockId2(const PyDbObjectId& blockId);
+    PyDbObjectId              blockId() const;
+    Acad::ErrorStatus         setBlockColor(const AcCmColor& blockColor);
+    AcCmColor                 blockColor() const;
+    Acad::ErrorStatus         setBlockScale(const AcGeScale3d& scale);
+    AcGeScale3d               blockScale() const;
+    Acad::ErrorStatus         setEnableBlockScale(bool enableBlockScale);
+    bool                      enableBlockScale() const;
+    Acad::ErrorStatus         setBlockRotation(double rotation);
+    double                    blockRotation() const;
+    Acad::ErrorStatus         setEnableBlockRotation(bool enableBlockRotation);
+    bool                      enableBlockRotation() const;
+    Acad::ErrorStatus         setBlockConnectionType(AcDbMLeaderStyle::BlockConnectionType blockConnectionType);
+    AcDbMLeaderStyle::BlockConnectionType blockConnectionType() const;
+    Acad::ErrorStatus         setScale(double scale);
+    double                    scale() const;
+    bool                      overwritePropChanged() const;
+    PyDbObjectId              postMLeaderStyleToDb(PyDbDatabase& pDb, const std::string& styleName);
+    Acad::ErrorStatus         setAnnotative(bool isAnnotative);
+    bool                      annotative() const;
+    Acad::ErrorStatus         setBreakSize(double size);
+    double                    breakSize() const;
+    Acad::ErrorStatus         setTextAttachmentDirection(AcDbMLeaderStyle::TextAttachmentDirection textAttachmentDirection);
+    AcDbMLeaderStyle::TextAttachmentDirection   textAttachmentDirection() const;
+    Acad::ErrorStatus         setExtendLeaderToText(bool value);
+    bool                      extendLeaderToText() const;
+
+public:
+    static std::string  className();
+    static PyRxClass    desc();
+
+public:
+    AcDbMLeaderStyle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
