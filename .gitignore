@@ -13,3 +13,5 @@
 /RxInstall/x64
 /RxUninstall/x64
 /RxUninstall
+/PyRxSetup/Release/*.msi
+/PyRxSetup/Release/*.exe
