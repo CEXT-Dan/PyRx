@@ -19,6 +19,8 @@ public:
     bool isValid() const;
     bool isWellBehaved() const;
     bool convertToRedirectedId();
+    std::string repr();
+    std::string str();
 
     PyDbDatabase database() const;
     PyDbDatabase originalDatabase() const;

@@ -13295,10 +13295,10 @@ entGet( (ObjectId)arg1) -> list :
     ...
     def entMod (self, *args, **kwargs):
       '''
-entMod( (ObjectId)arg1) -> list :
+entMod( (list)arg1) -> int :
 
     C++ signature :
-        class boost::python::list entMod(class PyDbObjectId)'''
+        int entMod(class boost::python::list)'''
     ...
     def openDbEntity (self, *args, **kwargs):
       '''
@@ -44120,6 +44120,11 @@ __init__( (object)arg1) -> None :
     ...
     def __ne__ (self, *args, **kwargs):
       '''
+__ne__( (ObjectId)arg1, (ObjectId)arg2) -> bool :
+
+    C++ signature :
+        bool __ne__(class PyDbObjectId {lvalue},class PyDbObjectId)
+
 __ne__( (ObjectId)arg1, (ObjectId)arg2) -> bool :
 
     C++ signature :
