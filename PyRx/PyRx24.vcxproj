@@ -123,6 +123,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="acrxEntryPoint.cpp" />
+    <ClCompile Include="DbCore.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="DocData.cpp" />
     <ClCompile Include="PyAcGeSurface.cpp" />
@@ -197,6 +198,7 @@
     <ClCompile Include="WxUserInteraction.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DbCore.h" />
     <ClInclude Include="DocData.h" />
     <ClInclude Include="PyAcGeSurface.h" />
     <ClInclude Include="PyCmd.h" />
