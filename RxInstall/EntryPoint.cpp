@@ -13,14 +13,14 @@ std::filesystem::path getModulePath()
 
 EXTERN_C DllExport UINT WINAPI RxInstall(MSIHANDLE hInstall)
 {
-	MessageBox(NULL, L"RxInstall", L"RxInstall", MB_OK);
+	//MessageBox(NULL, L"RxInstall", L"RxInstall", MB_OK);
 	std::filesystem::path path = getModulePath();
 	return ERROR_SUCCESS;
 }
 
 EXTERN_C DllExport UINT WINAPI RxUninstall(MSIHANDLE hInstall)
 {
-	MessageBox(NULL, L"RxUninstall", L"RxUninstall", MB_OK);
+	//MessageBox(NULL, L"RxUninstall", L"RxUninstall", MB_OK);
 	std::filesystem::path path = getModulePath();
 	return ERROR_SUCCESS;
 }

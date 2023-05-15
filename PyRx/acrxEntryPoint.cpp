@@ -423,7 +423,6 @@ public:
 
     static void AcRxPyApp_pycommand(void)
     {
-
         try
         {
             AcString cmd;
