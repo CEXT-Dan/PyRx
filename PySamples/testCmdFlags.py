@@ -20,7 +20,7 @@ def PyRxCmd_pynobedit(CmdFlags = Ap.CmdFlags.NOHISTORY | Ap.CmdFlags.NOBEDIT):
     except Exception as err:
         PyRxApp.Printf(err)
         
-        # or them up   
+# or them up   
 def PyRxCmd_pynopaper(CmdFlags = Ap.CmdFlags.TRANSPARENT | Ap.CmdFlags.NOPAPERSPACE):
     try:
         print(CmdFlags)
