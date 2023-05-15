@@ -13286,6 +13286,20 @@ __init__( (object)arg1) -> None :
     def __ne__ (self, value, /):
       '''Return self!=value.'''
     ...
+    def entGet (self, *args, **kwargs):
+      '''
+entGet( (ObjectId)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list entGet(class PyDbObjectId)'''
+    ...
+    def entMod (self, *args, **kwargs):
+      '''
+entMod( (ObjectId)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list entMod(class PyDbObjectId)'''
+    ...
     def openDbEntity (self, *args, **kwargs):
       '''
 openDbEntity( (ObjectId)arg1, (OpenMode)arg2) -> Entity :
@@ -13306,6 +13320,13 @@ regApp( (str)arg1) -> int :
 
     C++ signature :
         int regApp(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def updateDimension (self, *args, **kwargs):
+      '''
+updateDimension( (ObjectId)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus updateDimension(class PyDbObjectId)'''
     ...
 
 class Curve:
