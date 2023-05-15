@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PyRxG23", "PyRx\PyRxG23.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PyRxZ23", "PyRx\PyRxZ23.vcxproj", "{254ED7F5-4891-44D2-A6BD-F5B3891CCCFF}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PyRxSetup", "PyRxSetup\PyRxSetup.vdproj", "{1EA1BA00-4857-45D9-91F4-D0E1CC641062}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -33,6 +35,8 @@ Global
 		{254ED7F5-4891-44D2-A6BD-F5B3891CCCFF}.Debug|x64.Build.0 = Debug|x64
 		{254ED7F5-4891-44D2-A6BD-F5B3891CCCFF}.Release|x64.ActiveCfg = Release|x64
 		{254ED7F5-4891-44D2-A6BD-F5B3891CCCFF}.Release|x64.Build.0 = Release|x64
+		{1EA1BA00-4857-45D9-91F4-D0E1CC641062}.Debug|x64.ActiveCfg = Debug
+		{1EA1BA00-4857-45D9-91F4-D0E1CC641062}.Release|x64.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
