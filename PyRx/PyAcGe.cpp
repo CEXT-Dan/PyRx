@@ -364,6 +364,11 @@ std::string AcGePoint3dToString(const AcGePoint3d& p)
     return std::format("({},{},{})", p.x, p.y, p.z);
 }
 
+std::string AcGePoint3dToStringRepr(const AcGePoint3d& p)
+{
+	return std::format("<PyGe.Point3d object ({},{},{})>", p.x, p.y, p.z);
+}
+
 static AcGePoint3d AcGePoint3dkOrigin()
 {
     return AcGePoint3d::kOrigin;
@@ -430,6 +435,7 @@ void makeAcGePoint3dWrapper()
 
         .def("toString", &AcGePoint3dToString)
         .def("__str__", &AcGePoint3dToString)
+        .def("__repr__", &AcGePoint3dToStringRepr)
         ;
 }
 
