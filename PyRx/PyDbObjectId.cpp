@@ -21,10 +21,13 @@ void makeAcDbObjectIdWrapper()
         .def("originalDatabase", &PyDbObjectId::originalDatabase)
         .def("convertToRedirectedId", &PyDbObjectId::convertToRedirectedId)
         .def("objectClass", &PyDbObjectId::objectClass)
-
+        .def("__str__", &PyDbObjectId::str)
+        .def("__repr__", &PyDbObjectId::repr)
         //operators
         .def("__eq__", &PyDbObjectId::operator==)
         .def("__ne__", &PyDbObjectId::operator!=)
+        .def("__ne__", &PyDbObjectId::operator!=)
+
         ;
 }
 
@@ -92,6 +95,16 @@ bool PyDbObjectId::convertToRedirectedId()
 #else
     return m_id.convertToRedirectedId();
 #endif // GRXAPP
+}
+
+std::string PyDbObjectId::repr()
+{
+	return std::format("<PyDb.ObjectId object {:x}>",  (INT_PTR)(AcDbStub*)m_id);
+}
+
+std::string PyDbObjectId::str()
+{
+    return std::format("{:x}", (INT_PTR)(AcDbStub*)m_id);
 }
 
 PyDbDatabase PyDbObjectId::database() const

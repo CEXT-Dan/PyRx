@@ -147,7 +147,7 @@
 
 static inline const AcString PyCommandPrefix = _T("PyRxCmd_");
 static inline const AcString PyLispFuncPrefix = _T("PyRxLisp_");
-static inline const AcString PyCommandFlagPrefix = _T("cmdFlags=");
+static inline const AcString PyCommandFlagPrefix = _T("cmdflags=");
 
 static inline constexpr const char* PyAppNamespace = "PyRxApp";
 static inline constexpr const char* PyApNamespace = "PyAp";
