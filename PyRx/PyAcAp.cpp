@@ -81,7 +81,6 @@ BOOST_PYTHON_MODULE(PyAp)
     makeAcApDocManagerWrapper();
     makeAcApDocumentWrapper();
     makePyApDocManagerReactorWrapper();
-
 };
 
 void initPyApModule()
