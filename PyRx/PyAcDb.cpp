@@ -22,27 +22,9 @@
 #include "PyDbDimension.h"
 #include "PyDbIdMapping.h"
 #include "PyDbLeader.h"
+#include "DbCore.h"
 
 using namespace boost::python;
-
-PyDbObject openDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    AcDbObject* pObj = nullptr;
-    if (acdbOpenAcDbObject(pObj, id.m_id, mode) == eOk)
-        return PyDbObject{ pObj, true };
-    throw PyNullObject(std::source_location::current());
-}
-
-PyDbEntity openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
-{
-    if (id.m_id.objectClass()->isDerivedFrom(AcDbEntity::desc()))
-    {
-        AcDbEntity* pObj = nullptr;
-        if (acdbOpenAcDbEntity(pObj, id.m_id, mode) == eOk)
-            return PyDbEntity(pObj, true);
-    }
-    throw PyNullObject(std::source_location::current());
-}
 
 void makeAcDbExtents2dWrapper()
 {
@@ -78,18 +60,11 @@ void makeAcDbExtentsWrapper()
         ;
 }
 
-int RegApp(const std::string& app)
-{
-    return acdbRegApp(utf8_to_wstr(app).c_str());
-}
-
 BOOST_PYTHON_MODULE(PyDb)
 {
 #ifndef  PyRxDebug
     docstring_options local_docstring_options(false, true, true);
 #endif // ! PyRxDebug
-    def("openDbObject", openDbObject);
-    def("openDbEntity", openDbEntity);
 
     //create in class order!
     makeAcDbExtents2dWrapper();
@@ -173,8 +148,7 @@ BOOST_PYTHON_MODULE(PyDb)
 
     makePyDbIdMappingWrapper();
 
-    //global
-    def("RegApp", &RegApp);
+    makeDbCoreWrapper();//LAST
 
     enum_<AcDb::LineSpacingStyle>("LineSpacingStyle")
         .value("kAtLeast", AcDb::LineSpacingStyle::kAtLeast)

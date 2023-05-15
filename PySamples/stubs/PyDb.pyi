@@ -13272,6 +13272,42 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class Core:
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, *args, **kwargs):
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def openDbEntity (self, *args, **kwargs):
+      '''
+openDbEntity( (ObjectId)arg1, (OpenMode)arg2) -> Entity :
+
+    C++ signature :
+        class PyDbEntity openDbEntity(class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def openDbObject (self, *args, **kwargs):
+      '''
+openDbObject( (ObjectId)arg1, (OpenMode)arg2) -> DbObject :
+
+    C++ signature :
+        class PyDbObject openDbObject(class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def regApp (self, *args, **kwargs):
+      '''
+regApp( (str)arg1) -> int :
+
+    C++ signature :
+        int regApp(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+
 class Curve:
     def __eq__ (self, *args, **kwargs):
       '''

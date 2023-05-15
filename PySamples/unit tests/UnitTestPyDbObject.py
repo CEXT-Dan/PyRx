@@ -49,7 +49,7 @@ class TestDbObject(unittest.TestCase):
 
         def test_xdata(self):
                 #regapp
-                success = PyDb.RegApp("PYTHONTEST")
+                success = PyDb.Core.regApp("PYTHONTEST")
                 self.assertEqual(success, 5100)
 
                 #set
