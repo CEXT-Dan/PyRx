@@ -27,8 +27,8 @@ public:
     Acad::ErrorStatus   setNormal(const AcGeVector3d&);
     double              elevation() const;
     Acad::ErrorStatus   setElevation(double val);
-    std::string          dimensionText() const;
-    Acad::ErrorStatus    setDimensionText(const  std::string& val);
+    std::string         dimensionText() const;
+    Acad::ErrorStatus   setDimensionText(const  std::string& val);
     double              textRotation() const;
     Acad::ErrorStatus   setTextRotation(double val);
     PyDbObjectId        dimensionStyle() const;
