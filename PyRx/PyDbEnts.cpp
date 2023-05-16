@@ -2884,3 +2884,207 @@ AcDbFace* PyDbFace::impObj(const std::source_location& src /*= std::source_locat
     return static_cast<AcDbFace*>(m_pImp.get());
 }
 
+//-----------------------------------------------------------------------------------
+//AcDbFcf
+void makPyDbFcfWrapper()
+{
+    class_<PyDbFcf, bases<PyDbEntity>>("Fcf")
+        .def(init<>())
+        ;
+
+}
+PyDbFcf::PyDbFcf()
+    : PyDbEntity(new AcDbFcf(), true)
+{
+}
+
+PyDbFcf::PyDbFcf(AcDbFcf* ptr, bool autoDelete)
+    : PyDbEntity(ptr, autoDelete)
+{
+}
+
+PyDbFcf::PyDbFcf(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbEntity(nullptr, false)
+{
+    AcDbFcf* pobj = nullptr;
+	if (auto es = acdbOpenObject<AcDbFcf>(pobj, id.m_id, mode); es != eOk)
+		throw PyAcadErrorStatus(es);
+	this->resetImp(pobj, false, true);
+}
+
+PyDbFcf::PyDbFcf(const std::string& str, const AcGePoint3d& pnt, const AcGeVector3d& normal, const AcGeVector3d& direction)
+    : PyDbEntity(new AcDbFcf(utf8_to_wstr(str).c_str(),pnt,normal,direction), true)
+{
+}
+
+void PyDbFcf::setText(const std::string& val)
+{
+    impObj()->setText(utf8_to_wstr(val).c_str());
+}
+
+std::string PyDbFcf::text(int lineNo) const
+{
+    return wstr_to_utf8(impObj()->text(lineNo));
+}
+
+std::string PyDbFcf::textAll() const
+{
+    return wstr_to_utf8(impObj()->text());
+}
+
+void PyDbFcf::setLocation(const AcGePoint3d& val)
+{
+    impObj()->setLocation(val);
+}
+
+AcGePoint3d PyDbFcf::location() const
+{
+    return impObj()->location();
+}
+
+void PyDbFcf::setOrientation(const AcGeVector3d& norm, const AcGeVector3d& dir)
+{
+    impObj()->setOrientation(norm, dir);
+}
+
+AcGeVector3d PyDbFcf::normal() const
+{
+    return impObj()->normal();
+}
+
+AcGeVector3d PyDbFcf::direction() const
+{
+    return impObj()->direction();
+}
+
+boost::python::list PyDbFcf::getBoundingPoints() const
+{
+    PyAutoLockGIL loc;
+    AcGePoint3dArray a;
+    boost::python::list l;
+    impObj()->getBoundingPoints(a);
+    for (auto& p : a)
+        l.append(p);
+    return l;
+}
+
+boost::python::list PyDbFcf::getBoundingPline() const
+{
+	PyAutoLockGIL loc;
+	AcGePoint3dArray a;
+	boost::python::list l;
+	impObj()->getBoundingPline(a);
+	for (auto& p : a)
+		l.append(p);
+	return l;
+}
+
+void PyDbFcf::setDimensionStyle(const PyDbHardPointerId& id)
+{
+    impObj()->setDimensionStyle(id.m_id);
+}
+
+PyDbHardPointerId PyDbFcf::dimensionStyle() const
+{
+    return PyDbHardPointerId(impObj()->dimensionStyle());
+}
+
+PyDbDimStyleTableRecord PyDbFcf::getDimstyleData() const
+{
+	AcDbDimStyleTableRecord* pSyle = nullptr;
+	if (auto es = impObj()->getDimstyleData(pSyle); es != eOk)
+		throw PyAcadErrorStatus(es);
+	return PyDbDimStyleTableRecord(pSyle, true);
+}
+
+Acad::ErrorStatus PyDbFcf::setDimstyleData2(const PyDbDimStyleTableRecord& pNewData)
+{
+    return impObj()->setDimstyleData(pNewData.impObj());
+}
+
+Acad::ErrorStatus PyDbFcf::setDimstyleData1(const PyDbObjectId& newDataId)
+{
+    return impObj()->setDimstyleData(newDataId.m_id);
+}
+
+void PyDbFcf::setDimVars()
+{
+    impObj()->setDimVars();
+}
+
+AcCmColor PyDbFcf::dimclrd() const
+{
+    return impObj()->dimclrd();
+}
+
+AcCmColor PyDbFcf::dimclrt() const
+{
+    return impObj()->dimclrt();
+}
+
+double PyDbFcf::dimgap() const
+{
+    return impObj()->dimgap();
+}
+
+double PyDbFcf::dimscale() const
+{
+    return impObj()->dimscale();
+}
+
+PyDbObjectId PyDbFcf::dimtxsty() const
+{
+    return PyDbObjectId(impObj()->dimtxsty());
+}
+
+double PyDbFcf::dimtxt() const
+{
+    return impObj()->dimtxt();
+}
+
+Acad::ErrorStatus PyDbFcf::setDimclrd(AcCmColor& val)
+{
+    return impObj()->setDimclrd(val);
+}
+
+Acad::ErrorStatus PyDbFcf::setDimclrt(AcCmColor& val)
+{
+    return impObj()->setDimclrt(val);
+}
+
+Acad::ErrorStatus PyDbFcf::setDimgap(double val)
+{
+    return impObj()->setDimgap(val);
+}
+
+Acad::ErrorStatus PyDbFcf::setDimscale(double val)
+{
+    return impObj()->setDimscale(val);
+}
+
+Acad::ErrorStatus PyDbFcf::setDimtxsty(PyDbObjectId& val)
+{
+    return impObj()->setDimtxsty(val.m_id);
+}
+
+Acad::ErrorStatus PyDbFcf::setDimtxt(double val)
+{
+    return impObj()->setDimtxt(val);
+}
+
+std::string PyDbFcf::className()
+{
+    return "AcDbFcf";
+}
+
+PyRxClass PyDbFcf::desc()
+{
+    return PyRxClass(AcDbFcf::desc(), false);
+}
+
+AcDbFcf* PyDbFcf::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+	if (m_pImp == nullptr)
+		throw PyNullObject(src);
+	return static_cast<AcDbFcf*>(m_pImp.get());
+}
