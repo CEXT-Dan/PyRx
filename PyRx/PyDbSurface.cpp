@@ -2,7 +2,6 @@
 #include "PyDbSurface.h"
 #include "PyDbObjectId.h"
 
-#ifdef SOLID3D_SUPPORT
 
 #include "dbextrudedsurf.h"
 #include "dbloftedsurf.h"
@@ -380,4 +379,3 @@ AcDbSweptSurface* PyDbSweptSurface::impObj(const std::source_location& src /*= s
 }
 #endif
 
-#endif //SOLID3D_SUPPORT

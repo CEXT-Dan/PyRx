@@ -99,7 +99,7 @@ bool PyDbObjectId::convertToRedirectedId()
 
 std::string PyDbObjectId::repr()
 {
-	return std::format("<PyDb.ObjectId object {:x}>",  (INT_PTR)(AcDbStub*)m_id);
+	return std::format("{}.ObjectId object {:x}>", PyDbNamespace,(INT_PTR)(AcDbStub*)m_id);
 }
 
 std::string PyDbObjectId::str()

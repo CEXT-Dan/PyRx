@@ -2,7 +2,7 @@
 
 #include "PyDbEntity.h"
 
-#ifdef SOLID3D_SUPPORT
+
 
 class PyDbObjectId;
 class AcDbLoftedSurface;
@@ -135,5 +135,3 @@ public:
 };
 #endif
 
-
-#endif //SOLID3D_SUPPORT

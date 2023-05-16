@@ -86,7 +86,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbMLeaderStyleWrapper();
     makPyDbMlineStyleWrapper();
 
-    makePyDbTextWrapper();//combine ents?
+    makePyDbTextWrapper();
     makePyDbAttributeDefinitionWrapper();
     makePyDbAttributeWrapper();
     makeDbBlockReferenceWrapper();
@@ -124,7 +124,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbDatabaseWrapper();
     makeAcDbHostApplicationServicesWrapper();
 
-#ifdef SOLID3D_SUPPORT
+
     makePyDb3dSolidWrapper();
     makePyDbRegionWrapper();
     makePyDbSurfaceWrapper();
@@ -134,7 +134,6 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbPlaneSurfaceWrapper();
     makePyDbRevolvedSurfaceWrapper();
     makePyDbSweptSurfaceWrapper();
-#endif //SOLID3D_SUPPORT
 
     makePyDbDimensionWrapper();
     makePyDb2LineAngularDimensionWrapper();

@@ -2,7 +2,6 @@
 #include "PyDb3dSolid.h"
 #include "PyDbObjectId.h"
 
-#ifdef SOLID3D_SUPPORT
 
 using namespace boost::python;
 
@@ -191,6 +190,3 @@ AcDbBody* PyDbBody::impObj(const std::source_location& src /*= std::source_locat
         throw PyNullObject(src);
     return static_cast<AcDbBody*>(m_pImp.get());
 }
-
-
-#endif// SOLID3D_SUPPORT

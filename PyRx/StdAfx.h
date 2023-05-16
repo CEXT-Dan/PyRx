@@ -136,13 +136,9 @@
 #pragma comment( lib , "gcdb.lib" )
 #endif
 
-#define SOLID3D_SUPPORT
-
 #ifdef ARXAPP
 #pragma comment( lib , "AcPal.lib" )
-#ifdef SOLID3D_SUPPORT
 #pragma comment( lib , "acgeoment.lib" )
-#endif
 #endif
 
 static inline const AcString PyCommandPrefix = _T("PyRxCmd_");
