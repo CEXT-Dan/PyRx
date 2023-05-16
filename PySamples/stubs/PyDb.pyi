@@ -16430,7 +16430,7 @@ setOrthomode( (Database)arg1, (bool)arg2) -> ErrorStatus :
     ...
     def setPdfframe (self, *args, **kwargs):
       '''
-setPdfframe( (Database)arg1, (int)arg2) -> ErrorStatus :
+setPdfframe( (Database)arg1, (MlineJustification)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setPdfframe(class PyDbDatabase {lvalue},signed char)'''
@@ -44383,6 +44383,1669 @@ dict(iterable) -> new dictionary initialized as if via:
         d[k] = v
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class Mline:
+    def __eq__ (self, *args, **kwargs):
+      '''
+__eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __eq__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def __init__ (self, *args, **kwargs):
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def __ne__ (self, *args, **kwargs):
+      '''
+__ne__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __ne__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def addPersistentReactor (self, *args, **kwargs):
+      '''
+addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus addPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def appendSeg (self, *args, **kwargs):
+      '''
+appendSeg( (Mline)arg1, (Point3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus appendSeg(class PyDbMline {lvalue},class AcGePoint3d)'''
+    ...
+    def assertNotifyEnabled (self, *args, **kwargs):
+      '''
+assertNotifyEnabled( (DbObject)arg1) -> None :
+
+    C++ signature :
+        void assertNotifyEnabled(class PyDbObject {lvalue})'''
+    ...
+    def assertReadEnabled (self, *args, **kwargs):
+      '''
+assertReadEnabled( (DbObject)arg1) -> None :
+
+    C++ signature :
+        void assertReadEnabled(class PyDbObject {lvalue})'''
+    ...
+    def assertWriteEnabled (self, *args, **kwargs):
+      '''
+assertWriteEnabled( (DbObject)arg1) -> None :
+
+    C++ signature :
+        void assertWriteEnabled(class PyDbObject {lvalue})'''
+    ...
+    def axisAt (self, *args, **kwargs):
+      '''
+axisAt( (Mline)arg1, (int)arg2) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d axisAt(class PyDbMline {lvalue},int)'''
+    ...
+    def blockId (self, *args, **kwargs):
+      '''
+blockId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def cancel (self, *args, **kwargs):
+      '''
+cancel( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
+    ...
+    def castShadows (self, *args, **kwargs):
+      '''
+castShadows( (Entity)arg1) -> bool :
+
+    C++ signature :
+        bool castShadows(class PyDbEntity {lvalue})'''
+    ...
+    def className (self, *args, **kwargs):
+      '''
+className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def close (self, *args, **kwargs):
+      '''
+close( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus close(class PyDbObject {lvalue})'''
+    ...
+    def closedMline (self, *args, **kwargs):
+      '''
+closedMline( (Mline)arg1) -> bool :
+
+    C++ signature :
+        bool closedMline(class PyDbMline {lvalue})'''
+    ...
+    def collisionType (self, *args, **kwargs):
+      '''
+collisionType( (Entity)arg1) -> CollisionType :
+
+    C++ signature :
+        enum AcDb::CollisionType collisionType(class PyDbEntity {lvalue})'''
+    ...
+    def color (self, *args, **kwargs):
+      '''
+color( (Entity)arg1) -> Color :
+
+    C++ signature :
+        class AcCmColor color(class PyDbEntity {lvalue})'''
+    ...
+    def colorIndex (self, *args, **kwargs):
+      '''
+colorIndex( (Entity)arg1) -> int :
+
+    C++ signature :
+        unsigned short colorIndex(class PyDbEntity {lvalue})'''
+    ...
+    def createExtensionDictionary (self, *args, **kwargs):
+      '''
+createExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def database (self, *args, **kwargs):
+      '''
+database( (DbObject)arg1) -> Database :
+
+    C++ signature :
+        class PyDbDatabase database(class PyDbObject {lvalue})'''
+    ...
+    def desc (self, *args, **kwargs):
+      '''
+desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def disableUndoRecording (self, *args, **kwargs):
+      '''
+disableUndoRecording( (DbObject)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void disableUndoRecording(class PyDbObject {lvalue},bool)'''
+    ...
+    def downgradeOpen (self, *args, **kwargs):
+      '''
+downgradeOpen( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus downgradeOpen(class PyDbObject {lvalue})'''
+    ...
+    def downgradeToNotify (self, *args, **kwargs):
+      '''
+downgradeToNotify( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus downgradeToNotify(class PyDbObject {lvalue},bool)'''
+    ...
+    def draw (self, *args, **kwargs):
+      '''
+draw( (Entity)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def element (self, *args, **kwargs):
+      '''
+element( (Mline)arg1, (Point3d)arg2) -> int :
+
+    C++ signature :
+        int element(class PyDbMline {lvalue},class AcGePoint3d)'''
+    ...
+    def entityColor (self, *args, **kwargs):
+      '''
+entityColor( (Entity)arg1) -> EntityColor :
+
+    C++ signature :
+        class AcCmEntityColor entityColor(class PyDbEntity {lvalue})'''
+    ...
+    def erase (self, *args, **kwargs):
+      '''
+erase( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+    ...
+    def extensionDictionary (self, *args, **kwargs):
+      '''
+extensionDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId extensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def getClosestPointTo (self, *args, **kwargs):
+      '''
+getClosestPointTo( (Mline)arg1, (Point3d)arg2, (bool)arg3) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d getClosestPointTo(class PyDbMline {lvalue},class AcGePoint3d,bool)
+
+getClosestPointTo( (Mline)arg1, (Point3d)arg2, (bool)arg3, (bool)arg4) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d getClosestPointTo(class PyDbMline {lvalue},class AcGePoint3d,bool,bool)
+
+getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d getClosestPointTo(class PyDbMline {lvalue},class AcGePoint3d,class AcGeVector3d,bool)
+
+getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4, (bool)arg5) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d getClosestPointTo(class PyDbMline {lvalue},class AcGePoint3d,class AcGeVector3d,bool,bool)'''
+    ...
+    def getCompoundObjectTransform (self, *args, **kwargs):
+      '''
+getCompoundObjectTransform( (Entity)arg1, (Matrix3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus getCompoundObjectTransform(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
+    ...
+    def getEcs (self, *args, **kwargs):
+      '''
+getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
+
+    C++ signature :
+        void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
+    ...
+    def getGeomExtents (self, *args, **kwargs):
+      '''
+getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getPlane (self, *args, **kwargs):
+      '''
+getPlane( (Mline)arg1) -> Plane :
+
+    C++ signature :
+        class PyGePlane getPlane(class PyDbMline {lvalue})'''
+    ...
+    def getPlotStyleNameId (self, *args, **kwargs):
+      '''
+getPlotStyleNameId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getPlotStyleNameId(class PyDbEntity {lvalue})'''
+    ...
+    def handOverTo (self, *args, **kwargs):
+      '''
+handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasPersistentReactor (self, *args, **kwargs):
+      '''
+hasPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> bool :
+
+    C++ signature :
+        bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def isA (self, *args, **kwargs):
+      '''
+isA( (Drawable)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+    ...
+    def isAProxy (self, *args, **kwargs):
+      '''
+isAProxy( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isAProxy(class PyDbObject {lvalue})'''
+    ...
+    def isCancelling (self, *args, **kwargs):
+      '''
+isCancelling( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isCancelling(class PyDbObject {lvalue})'''
+    ...
+    def isEraseStatusToggled (self, *args, **kwargs):
+      '''
+isEraseStatusToggled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isEraseStatusToggled(class PyDbObject {lvalue})'''
+    ...
+    def isErased (self, *args, **kwargs):
+      '''
+isErased( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isErased(class PyDbObject {lvalue})'''
+    ...
+    def isModified (self, *args, **kwargs):
+      '''
+isModified( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isModified(class PyDbObject {lvalue})'''
+    ...
+    def isModifiedGraphics (self, *args, **kwargs):
+      '''
+isModifiedGraphics( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isModifiedGraphics(class PyDbObject {lvalue})'''
+    ...
+    def isModifiedXData (self, *args, **kwargs):
+      '''
+isModifiedXData( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isModifiedXData(class PyDbObject {lvalue})'''
+    ...
+    def isNewObject (self, *args, **kwargs):
+      '''
+isNewObject( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNewObject(class PyDbObject {lvalue})'''
+    ...
+    def isNotifyEnabled (self, *args, **kwargs):
+      '''
+isNotifyEnabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNotifyEnabled(class PyDbObject {lvalue})'''
+    ...
+    def isNotifying (self, *args, **kwargs):
+      '''
+isNotifying( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNotifying(class PyDbObject {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs):
+      '''
+isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def isPlanar (self, *args, **kwargs):
+      '''
+isPlanar( (Entity)arg1) -> bool :
+
+    C++ signature :
+        bool isPlanar(class PyDbEntity {lvalue})'''
+    ...
+    def isReadEnabled (self, *args, **kwargs):
+      '''
+isReadEnabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isReadEnabled(class PyDbObject {lvalue})'''
+    ...
+    def isReallyClosing (self, *args, **kwargs):
+      '''
+isReallyClosing( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isReallyClosing(class PyDbObject {lvalue})'''
+    ...
+    def isTransactionResident (self, *args, **kwargs):
+      '''
+isTransactionResident( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isTransactionResident(class PyDbObject {lvalue})'''
+    ...
+    def isUndoRecordingDisabled (self, *args, **kwargs):
+      '''
+isUndoRecordingDisabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isUndoRecordingDisabled(class PyDbObject {lvalue})'''
+    ...
+    def isUndoing (self, *args, **kwargs):
+      '''
+isUndoing( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isUndoing(class PyDbObject {lvalue})'''
+    ...
+    def isWriteEnabled (self, *args, **kwargs):
+      '''
+isWriteEnabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isWriteEnabled(class PyDbObject {lvalue})'''
+    ...
+    def justification (self, *args, **kwargs):
+      '''
+justification( (Mline)arg1) -> int :
+
+    C++ signature :
+        signed char justification(class PyDbMline {lvalue})'''
+    ...
+    def layer (self, *args, **kwargs):
+      '''
+layer( (Entity)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > layer(class PyDbEntity {lvalue})'''
+    ...
+    def layerId (self, *args, **kwargs):
+      '''
+layerId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId layerId(class PyDbEntity {lvalue})'''
+    ...
+    def lineWeight (self, *args, **kwargs):
+      '''
+lineWeight( (Entity)arg1) -> LineWeight :
+
+    C++ signature :
+        enum AcDb::LineWeight lineWeight(class PyDbEntity {lvalue})'''
+    ...
+    def linetype (self, *args, **kwargs):
+      '''
+linetype( (Entity)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > linetype(class PyDbEntity {lvalue})'''
+    ...
+    def linetypeId (self, *args, **kwargs):
+      '''
+linetypeId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId linetypeId(class PyDbEntity {lvalue})'''
+    ...
+    def linetypeScale (self, *args, **kwargs):
+      '''
+linetypeScale( (Entity)arg1) -> float :
+
+    C++ signature :
+        double linetypeScale(class PyDbEntity {lvalue})'''
+    ...
+    def list (self, *args, **kwargs):
+      '''
+list( (Entity)arg1) -> None :
+
+    C++ signature :
+        void list(class PyDbEntity {lvalue})'''
+    ...
+    def material (self, *args, **kwargs):
+      '''
+material( (Entity)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > material(class PyDbEntity {lvalue})'''
+    ...
+    def materialId (self, *args, **kwargs):
+      '''
+materialId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
+    ...
+    def miterAt (self, *args, **kwargs):
+      '''
+miterAt( (Mline)arg1, (int)arg2) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d miterAt(class PyDbMline {lvalue},int)'''
+    ...
+    def moveVertexAt (self, *args, **kwargs):
+      '''
+moveVertexAt( (Mline)arg1, (int)arg2, (Point3d)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus moveVertexAt(class PyDbMline {lvalue},int,class AcGePoint3d)'''
+    ...
+    def normal (self, *args, **kwargs):
+      '''
+normal( (Mline)arg1) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d normal(class PyDbMline {lvalue})'''
+    ...
+    def numVertices (self, *args, **kwargs):
+      '''
+numVertices( (Mline)arg1) -> int :
+
+    C++ signature :
+        int numVertices(class PyDbMline {lvalue})'''
+    ...
+    def objectId (self, *args, **kwargs):
+      '''
+objectId( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId objectId(class PyDbObject {lvalue})'''
+    ...
+    def ownerId (self, *args, **kwargs):
+      '''
+ownerId( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
+    ...
+    def plotStyleName (self, *args, **kwargs):
+      '''
+plotStyleName( (Entity)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > plotStyleName(class PyDbEntity {lvalue})'''
+    ...
+    def receiveShadows (self, *args, **kwargs):
+      '''
+receiveShadows( (Entity)arg1) -> bool :
+
+    C++ signature :
+        bool receiveShadows(class PyDbEntity {lvalue})'''
+    ...
+    def recordGraphicsModified (self, *args, **kwargs):
+      '''
+recordGraphicsModified( (Entity)arg1) -> None :
+
+    C++ signature :
+        void recordGraphicsModified(class PyDbEntity {lvalue})
+
+recordGraphicsModified( (Entity)arg1) -> None :
+
+    C++ signature :
+        void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def releaseExtensionDictionary (self, *args, **kwargs):
+      '''
+releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def removeLastSeg (self, *args, **kwargs):
+      '''
+removeLastSeg( (Mline)arg1, (Point3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeLastSeg(class PyDbMline {lvalue},class AcGePoint3d {lvalue})'''
+    ...
+    def removePersistentReactor (self, *args, **kwargs):
+      '''
+removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removePersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def scale (self, *args, **kwargs):
+      '''
+scale( (Mline)arg1) -> float :
+
+    C++ signature :
+        double scale(class PyDbMline {lvalue})'''
+    ...
+    def setCastShadows (self, *args, **kwargs):
+      '''
+setCastShadows( (Entity)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setCastShadows(class PyDbEntity {lvalue},bool)'''
+    ...
+    def setClosedMline (self, *args, **kwargs):
+      '''
+setClosedMline( (Mline)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setClosedMline(class PyDbMline {lvalue},bool)'''
+    ...
+    def setColor (self, *args, **kwargs):
+      '''
+setColor( (Entity)arg1, (Color)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColor(class PyDbEntity {lvalue},class AcCmColor)
+
+setColor( (Entity)arg1, (Color)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColor(class PyDbEntity {lvalue},class AcCmColor,bool)
+
+setColor( (Entity)arg1, (Color)arg2, (bool)arg3, (Database)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColor(class PyDbEntity {lvalue},class AcCmColor,bool,class PyDbDatabase {lvalue})'''
+    ...
+    def setColorIndex (self, *args, **kwargs):
+      '''
+setColorIndex( (Entity)arg1, (int)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColorIndex(class PyDbEntity {lvalue},unsigned short)
+
+setColorIndex( (Entity)arg1, (int)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColorIndex(class PyDbEntity {lvalue},unsigned short,bool)'''
+    ...
+    def setDatabaseDefaults (self, *args, **kwargs):
+      '''
+setDatabaseDefaults( (Entity)arg1) -> None :
+
+    C++ signature :
+        void setDatabaseDefaults(class PyDbEntity {lvalue})
+
+setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
+
+    C++ signature :
+        void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setJustification (self, *args, **kwargs):
+      '''
+setJustification( (Mline)arg1, (MlineJustification)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setJustification(class PyDbMline {lvalue},signed char)'''
+    ...
+    def setLayer (self, *args, **kwargs):
+      '''
+setLayer( (Entity)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setLayer( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setLayer( (Entity)arg1, (str)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,bool)
+
+setLayer( (Entity)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class PyDbObjectId)
+
+setLayer( (Entity)arg1, (ObjectId)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class PyDbObjectId,bool)
+
+setLayer( (Entity)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class PyDbObjectId,bool,bool)'''
+    ...
+    def setLineWeight (self, *args, **kwargs):
+      '''
+setLineWeight( (Entity)arg1, (LineWeight)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLineWeight(class PyDbEntity {lvalue},enum AcDb::LineWeight)
+
+setLineWeight( (Entity)arg1, (LineWeight)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLineWeight(class PyDbEntity {lvalue},enum AcDb::LineWeight,bool)'''
+    ...
+    def setLinetype (self, *args, **kwargs):
+      '''
+setLinetype( (Entity)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setLinetype( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setLinetype( (Entity)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class PyDbObjectId)
+
+setLinetype( (Entity)arg1, (ObjectId)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class PyDbObjectId,bool)'''
+    ...
+    def setLinetypeScale (self, *args, **kwargs):
+      '''
+setLinetypeScale( (Entity)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetypeScale(class PyDbEntity {lvalue},double)
+
+setLinetypeScale( (Entity)arg1, (float)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetypeScale(class PyDbEntity {lvalue},double,bool)'''
+    ...
+    def setMaterial (self, *args, **kwargs):
+      '''
+setMaterial( (Entity)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setMaterial( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setMaterial( (Entity)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class PyDbObjectId)
+
+setMaterial( (Entity)arg1, (ObjectId)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class PyDbObjectId,bool)'''
+    ...
+    def setNormal (self, *args, **kwargs):
+      '''
+setNormal( (Mline)arg1, (Vector3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setNormal(class PyDbMline {lvalue},class AcGeVector3d)'''
+    ...
+    def setOwnerId (self, *args, **kwargs):
+      '''
+setOwnerId( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setOwnerId(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def setPlotStyleName (self, *args, **kwargs):
+      '''
+setPlotStyleName( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPlotStyleName(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,bool)
+
+setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
+    ...
+    def setPropertiesFrom (self, *args, **kwargs):
+      '''
+setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
+
+setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    ...
+    def setReceiveShadows (self, *args, **kwargs):
+      '''
+setReceiveShadows( (Entity)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setReceiveShadows(class PyDbEntity {lvalue},bool)'''
+    ...
+    def setScale (self, *args, **kwargs):
+      '''
+setScale( (Mline)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setScale(class PyDbMline {lvalue},double)'''
+    ...
+    def setStyle (self, *args, **kwargs):
+      '''
+setStyle( (Mline)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setStyle(class PyDbMline {lvalue},class PyDbObjectId)'''
+    ...
+    def setSupressEndCaps (self, *args, **kwargs):
+      '''
+setSupressEndCaps( (Mline)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setSupressEndCaps(class PyDbMline {lvalue},bool)'''
+    ...
+    def setSupressStartCaps (self, *args, **kwargs):
+      '''
+setSupressStartCaps( (Mline)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setSupressStartCaps(class PyDbMline {lvalue},bool)'''
+    ...
+    def setVisibility (self, *args, **kwargs):
+      '''
+setVisibility( (Entity)arg1, (Visibility)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility)
+
+setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
+    ...
+    def setXData (self, *args, **kwargs):
+      '''
+setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setXData(class PyDbObject {lvalue},class boost::python::list)'''
+    ...
+    def style (self, *args, **kwargs):
+      '''
+style( (Mline)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId style(class PyDbMline {lvalue})'''
+    ...
+    def supressEndCaps (self, *args, **kwargs):
+      '''
+supressEndCaps( (Mline)arg1) -> bool :
+
+    C++ signature :
+        bool supressEndCaps(class PyDbMline {lvalue})'''
+    ...
+    def supressStartCaps (self, *args, **kwargs):
+      '''
+supressStartCaps( (Mline)arg1) -> bool :
+
+    C++ signature :
+        bool supressStartCaps(class PyDbMline {lvalue})'''
+    ...
+    def swapIdWith (self, *args, **kwargs):
+      '''
+swapIdWith( (DbObject)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus swapIdWith(class PyDbObject {lvalue},class PyDbObjectId {lvalue},bool,bool)'''
+    ...
+    def transformBy (self, *args, **kwargs):
+      '''
+transformBy( (Entity)arg1, (Matrix3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus transformBy(class PyDbEntity {lvalue},class AcGeMatrix3d)'''
+    ...
+    def upgradeFromNotify (self, *args, **kwargs):
+      '''
+upgradeFromNotify( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus upgradeFromNotify(class PyDbObject {lvalue},bool {lvalue})'''
+    ...
+    def upgradeOpen (self, *args, **kwargs):
+      '''
+upgradeOpen( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus upgradeOpen(class PyDbObject {lvalue})'''
+    ...
+    def vertexAt (self, *args, **kwargs):
+      '''
+vertexAt( (Mline)arg1, (int)arg2) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d vertexAt(class PyDbMline {lvalue},int)'''
+    ...
+    def visibility (self, *args, **kwargs):
+      '''
+visibility( (Entity)arg1) -> Visibility :
+
+    C++ signature :
+        enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def xData (self, *args, **kwargs):
+      '''
+xData( (DbObject)arg1, (str)arg2) -> list :
+
+    C++ signature :
+        class boost::python::list xData(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def xDataTransformBy (self, *args, **kwargs):
+      '''
+xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus xDataTransformBy(class PyDbObject {lvalue},class AcGeMatrix3d)'''
+    ...
+
+class MlineJustification:
+    def __add__ (self, value, /):
+      '''Return self+value.'''
+    ...
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def __mul__ (self, value, /):
+      '''Return self*value.'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def __sub__ (self, value, /):
+      '''Return self-value.'''
+    ...
+    def __truediv__ (self, value, /):
+      '''Return self/value.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kBottom (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kClosed (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kMerged (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kOpen (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTop (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kZero (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class MlineStyle:
+    def __eq__ (self, *args, **kwargs):
+      '''
+__eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __eq__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def __init__ (self, *args, **kwargs):
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def __ne__ (self, *args, **kwargs):
+      '''
+__ne__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __ne__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def addElement (self, *args, **kwargs):
+      '''
+addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4) -> int :
+
+    C++ signature :
+        int addElement(class PyDbMlineStyle {lvalue},double,class AcCmColor,class PyDbObjectId {lvalue})
+
+addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)arg5) -> int :
+
+    C++ signature :
+        int addElement(class PyDbMlineStyle {lvalue},double,class AcCmColor,class PyDbObjectId {lvalue},bool)'''
+    ...
+    def addPersistentReactor (self, *args, **kwargs):
+      '''
+addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus addPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def assertNotifyEnabled (self, *args, **kwargs):
+      '''
+assertNotifyEnabled( (DbObject)arg1) -> None :
+
+    C++ signature :
+        void assertNotifyEnabled(class PyDbObject {lvalue})'''
+    ...
+    def assertReadEnabled (self, *args, **kwargs):
+      '''
+assertReadEnabled( (DbObject)arg1) -> None :
+
+    C++ signature :
+        void assertReadEnabled(class PyDbObject {lvalue})'''
+    ...
+    def assertWriteEnabled (self, *args, **kwargs):
+      '''
+assertWriteEnabled( (DbObject)arg1) -> None :
+
+    C++ signature :
+        void assertWriteEnabled(class PyDbObject {lvalue})'''
+    ...
+    def cancel (self, *args, **kwargs):
+      '''
+cancel( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
+    ...
+    def className (self, *args, **kwargs):
+      '''
+className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def close (self, *args, **kwargs):
+      '''
+close( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus close(class PyDbObject {lvalue})'''
+    ...
+    def createExtensionDictionary (self, *args, **kwargs):
+      '''
+createExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def database (self, *args, **kwargs):
+      '''
+database( (DbObject)arg1) -> Database :
+
+    C++ signature :
+        class PyDbDatabase database(class PyDbObject {lvalue})'''
+    ...
+    def desc (self, *args, **kwargs):
+      '''
+desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def description (self, *args, **kwargs):
+      '''
+description( (MlineStyle)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > description(class PyDbMlineStyle {lvalue})'''
+    ...
+    def disableUndoRecording (self, *args, **kwargs):
+      '''
+disableUndoRecording( (DbObject)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void disableUndoRecording(class PyDbObject {lvalue},bool)'''
+    ...
+    def downgradeOpen (self, *args, **kwargs):
+      '''
+downgradeOpen( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus downgradeOpen(class PyDbObject {lvalue})'''
+    ...
+    def downgradeToNotify (self, *args, **kwargs):
+      '''
+downgradeToNotify( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus downgradeToNotify(class PyDbObject {lvalue},bool)'''
+    ...
+    def endAngle (self, *args, **kwargs):
+      '''
+endAngle( (MlineStyle)arg1) -> float :
+
+    C++ signature :
+        double endAngle(class PyDbMlineStyle {lvalue})'''
+    ...
+    def endInnerArcs (self, *args, **kwargs):
+      '''
+endInnerArcs( (MlineStyle)arg1) -> bool :
+
+    C++ signature :
+        bool endInnerArcs(class PyDbMlineStyle {lvalue})'''
+    ...
+    def endRoundCap (self, *args, **kwargs):
+      '''
+endRoundCap( (MlineStyle)arg1) -> bool :
+
+    C++ signature :
+        bool endRoundCap(class PyDbMlineStyle {lvalue})'''
+    ...
+    def endSquareCap (self, *args, **kwargs):
+      '''
+endSquareCap( (MlineStyle)arg1) -> bool :
+
+    C++ signature :
+        bool endSquareCap(class PyDbMlineStyle {lvalue})'''
+    ...
+    def erase (self, *args, **kwargs):
+      '''
+erase( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+    ...
+    def extensionDictionary (self, *args, **kwargs):
+      '''
+extensionDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId extensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def fillColor (self, *args, **kwargs):
+      '''
+fillColor( (MlineStyle)arg1) -> Color :
+
+    C++ signature :
+        class AcCmColor fillColor(class PyDbMlineStyle {lvalue})'''
+    ...
+    def filled (self, *args, **kwargs):
+      '''
+filled( (MlineStyle)arg1) -> bool :
+
+    C++ signature :
+        bool filled(class PyDbMlineStyle {lvalue})'''
+    ...
+    def getElementAt (self, *args, **kwargs):
+      '''
+getElementAt( (MlineStyle)arg1, (int)arg2) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getElementAt(class PyDbMlineStyle {lvalue},int)'''
+    ...
+    def handOverTo (self, *args, **kwargs):
+      '''
+handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasPersistentReactor (self, *args, **kwargs):
+      '''
+hasPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> bool :
+
+    C++ signature :
+        bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def initMlineStyle (self, *args, **kwargs):
+      '''
+initMlineStyle( (MlineStyle)arg1) -> None :
+
+    C++ signature :
+        void initMlineStyle(class PyDbMlineStyle {lvalue})'''
+    ...
+    def isA (self, *args, **kwargs):
+      '''
+isA( (Drawable)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+    ...
+    def isAProxy (self, *args, **kwargs):
+      '''
+isAProxy( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isAProxy(class PyDbObject {lvalue})'''
+    ...
+    def isCancelling (self, *args, **kwargs):
+      '''
+isCancelling( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isCancelling(class PyDbObject {lvalue})'''
+    ...
+    def isEraseStatusToggled (self, *args, **kwargs):
+      '''
+isEraseStatusToggled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isEraseStatusToggled(class PyDbObject {lvalue})'''
+    ...
+    def isErased (self, *args, **kwargs):
+      '''
+isErased( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isErased(class PyDbObject {lvalue})'''
+    ...
+    def isModified (self, *args, **kwargs):
+      '''
+isModified( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isModified(class PyDbObject {lvalue})'''
+    ...
+    def isModifiedGraphics (self, *args, **kwargs):
+      '''
+isModifiedGraphics( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isModifiedGraphics(class PyDbObject {lvalue})'''
+    ...
+    def isModifiedXData (self, *args, **kwargs):
+      '''
+isModifiedXData( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isModifiedXData(class PyDbObject {lvalue})'''
+    ...
+    def isNewObject (self, *args, **kwargs):
+      '''
+isNewObject( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNewObject(class PyDbObject {lvalue})'''
+    ...
+    def isNotifyEnabled (self, *args, **kwargs):
+      '''
+isNotifyEnabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNotifyEnabled(class PyDbObject {lvalue})'''
+    ...
+    def isNotifying (self, *args, **kwargs):
+      '''
+isNotifying( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNotifying(class PyDbObject {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs):
+      '''
+isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def isReadEnabled (self, *args, **kwargs):
+      '''
+isReadEnabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isReadEnabled(class PyDbObject {lvalue})'''
+    ...
+    def isReallyClosing (self, *args, **kwargs):
+      '''
+isReallyClosing( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isReallyClosing(class PyDbObject {lvalue})'''
+    ...
+    def isTransactionResident (self, *args, **kwargs):
+      '''
+isTransactionResident( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isTransactionResident(class PyDbObject {lvalue})'''
+    ...
+    def isUndoRecordingDisabled (self, *args, **kwargs):
+      '''
+isUndoRecordingDisabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isUndoRecordingDisabled(class PyDbObject {lvalue})'''
+    ...
+    def isUndoing (self, *args, **kwargs):
+      '''
+isUndoing( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isUndoing(class PyDbObject {lvalue})'''
+    ...
+    def isWriteEnabled (self, *args, **kwargs):
+      '''
+isWriteEnabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isWriteEnabled(class PyDbObject {lvalue})'''
+    ...
+    def name (self, *args, **kwargs):
+      '''
+name( (MlineStyle)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name(class PyDbMlineStyle {lvalue})'''
+    ...
+    def numElements (self, *args, **kwargs):
+      '''
+numElements( (MlineStyle)arg1) -> int :
+
+    C++ signature :
+        int numElements(class PyDbMlineStyle {lvalue})'''
+    ...
+    def objectId (self, *args, **kwargs):
+      '''
+objectId( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId objectId(class PyDbObject {lvalue})'''
+    ...
+    def ownerId (self, *args, **kwargs):
+      '''
+ownerId( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
+    ...
+    def releaseExtensionDictionary (self, *args, **kwargs):
+      '''
+releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def removeElementAt (self, *args, **kwargs):
+      '''
+removeElementAt( (MlineStyle)arg1, (int)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeElementAt(class PyDbMlineStyle {lvalue},int)'''
+    ...
+    def removePersistentReactor (self, *args, **kwargs):
+      '''
+removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removePersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def set (self, *args, **kwargs):
+      '''
+set( (MlineStyle)arg1, (MlineStyle)arg2) -> None :
+
+    C++ signature :
+        void set(class PyDbMlineStyle {lvalue},class PyDbMlineStyle)
+
+set( (MlineStyle)arg1, (MlineStyle)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void set(class PyDbMlineStyle {lvalue},class PyDbMlineStyle,bool)'''
+    ...
+    def setDescription (self, *args, **kwargs):
+      '''
+setDescription( (MlineStyle)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setDescription(class PyDbMlineStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setElement (self, *args, **kwargs):
+      '''
+setElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4) -> int :
+
+    C++ signature :
+        int setElement(class PyDbMlineStyle {lvalue},double,class AcCmColor,class PyDbObjectId {lvalue})'''
+    ...
+    def setEndAngle (self, *args, **kwargs):
+      '''
+setEndAngle( (MlineStyle)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setEndAngle(class PyDbMlineStyle {lvalue},double)'''
+    ...
+    def setEndInnerArcs (self, *args, **kwargs):
+      '''
+setEndInnerArcs( (MlineStyle)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setEndInnerArcs(class PyDbMlineStyle {lvalue},bool)'''
+    ...
+    def setEndRoundCap (self, *args, **kwargs):
+      '''
+setEndRoundCap( (MlineStyle)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setEndRoundCap(class PyDbMlineStyle {lvalue},bool)'''
+    ...
+    def setEndSquareCap (self, *args, **kwargs):
+      '''
+setEndSquareCap( (MlineStyle)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setEndSquareCap(class PyDbMlineStyle {lvalue},bool)'''
+    ...
+    def setFillColor (self, *args, **kwargs):
+      '''
+setFillColor( (MlineStyle)arg1, (Color)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setFillColor(class PyDbMlineStyle {lvalue},class AcCmColor)'''
+    ...
+    def setFilled (self, *args, **kwargs):
+      '''
+setFilled( (MlineStyle)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setFilled(class PyDbMlineStyle {lvalue},bool)'''
+    ...
+    def setName (self, *args, **kwargs):
+      '''
+setName( (MlineStyle)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setName(class PyDbMlineStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setOwnerId (self, *args, **kwargs):
+      '''
+setOwnerId( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setOwnerId(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def setShowMiters (self, *args, **kwargs):
+      '''
+setShowMiters( (MlineStyle)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setShowMiters(class PyDbMlineStyle {lvalue},bool)'''
+    ...
+    def setStartAngle (self, *args, **kwargs):
+      '''
+setStartAngle( (MlineStyle)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setStartAngle(class PyDbMlineStyle {lvalue},double)'''
+    ...
+    def setStartInnerArcs (self, *args, **kwargs):
+      '''
+setStartInnerArcs( (MlineStyle)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setStartInnerArcs(class PyDbMlineStyle {lvalue},bool)'''
+    ...
+    def setStartRoundCap (self, *args, **kwargs):
+      '''
+setStartRoundCap( (MlineStyle)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setStartRoundCap(class PyDbMlineStyle {lvalue},bool)'''
+    ...
+    def setStartSquareCap (self, *args, **kwargs):
+      '''
+setStartSquareCap( (MlineStyle)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setStartSquareCap(class PyDbMlineStyle {lvalue},bool)'''
+    ...
+    def setXData (self, *args, **kwargs):
+      '''
+setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setXData(class PyDbObject {lvalue},class boost::python::list)'''
+    ...
+    def showMiters (self, *args, **kwargs):
+      '''
+showMiters( (MlineStyle)arg1) -> bool :
+
+    C++ signature :
+        bool showMiters(class PyDbMlineStyle {lvalue})'''
+    ...
+    def startAngle (self, *args, **kwargs):
+      '''
+startAngle( (MlineStyle)arg1) -> float :
+
+    C++ signature :
+        double startAngle(class PyDbMlineStyle {lvalue})'''
+    ...
+    def startInnerArcs (self, *args, **kwargs):
+      '''
+startInnerArcs( (MlineStyle)arg1) -> bool :
+
+    C++ signature :
+        bool startInnerArcs(class PyDbMlineStyle {lvalue})'''
+    ...
+    def startRoundCap (self, *args, **kwargs):
+      '''
+startRoundCap( (MlineStyle)arg1) -> bool :
+
+    C++ signature :
+        bool startRoundCap(class PyDbMlineStyle {lvalue})'''
+    ...
+    def startSquareCap (self, *args, **kwargs):
+      '''
+startSquareCap( (MlineStyle)arg1) -> bool :
+
+    C++ signature :
+        bool startSquareCap(class PyDbMlineStyle {lvalue})'''
+    ...
+    def swapIdWith (self, *args, **kwargs):
+      '''
+swapIdWith( (DbObject)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus swapIdWith(class PyDbObject {lvalue},class PyDbObjectId {lvalue},bool,bool)'''
+    ...
+    def upgradeFromNotify (self, *args, **kwargs):
+      '''
+upgradeFromNotify( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus upgradeFromNotify(class PyDbObject {lvalue},bool {lvalue})'''
+    ...
+    def upgradeOpen (self, *args, **kwargs):
+      '''
+upgradeOpen( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus upgradeOpen(class PyDbObject {lvalue})'''
+    ...
+    def xData (self, *args, **kwargs):
+      '''
+xData( (DbObject)arg1, (str)arg2) -> list :
+
+    C++ signature :
+        class boost::python::list xData(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def xDataTransformBy (self, *args, **kwargs):
+      '''
+xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus xDataTransformBy(class PyDbObject {lvalue},class AcGeMatrix3d)'''
     ...
 
 class NurbSurface:

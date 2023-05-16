@@ -23,6 +23,7 @@
 #include "PyDbIdMapping.h"
 #include "PyDbLeader.h"
 #include "DbCore.h"
+#include "PyDbMline.h"
 
 using namespace boost::python;
 
@@ -83,6 +84,7 @@ BOOST_PYTHON_MODULE(PyDb)
 
     makeAcDbTableStyleWrapper();
     makePyDbMLeaderStyleWrapper();
+    makPyDbMlineStyleWrapper();
 
     makePyDbTextWrapper();//combine ents?
     makePyDbAttributeDefinitionWrapper();
@@ -108,6 +110,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makPyDbPolylineWrapper();
     makPyDbFaceWrapper();
     makPyDbFcfWrapper();
+    makPyDbMlineWrapper();
 
     makeAcDbDictionaryWrapper();
     makeAcDbSymbolTableWrapper();
