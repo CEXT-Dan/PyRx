@@ -642,7 +642,7 @@ public:
 	std::string			textAll() const;
 	void				setLocation(const AcGePoint3d& val);
 	AcGePoint3d			location() const;
-	void				setOrientation(const AcGeVector3d& norm,const AcGeVector3d& dir);
+	void				setOrientation(const AcGeVector3d& norm, const AcGeVector3d& dir);
 	AcGeVector3d		normal()    const;
 	AcGeVector3d		direction() const;
 	boost::python::list getBoundingPoints() const;
