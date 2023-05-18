@@ -363,6 +363,7 @@ boost::python::tuple PyGeCurve2d::isDegenerate2(const AcGeTol& tol) const
 #endif
 }
 
+//TODO: Test ... leak... looks wonky?
 boost::python::list PyGeCurve2d::explode1()
 {
     PyAutoLockGIL lock;

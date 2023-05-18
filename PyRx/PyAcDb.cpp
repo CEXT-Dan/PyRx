@@ -24,6 +24,7 @@
 #include "PyDbLeader.h"
 #include "DbCore.h"
 #include "PyDbMline.h"
+#include "PyDbHatch.h"
 
 using namespace boost::python;
 
@@ -111,6 +112,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makPyDbFaceWrapper();
     makPyDbFcfWrapper();
     makPyDbMlineWrapper();
+    makePyDbHatchWrapper();
 
     makeAcDbDictionaryWrapper();
     makeAcDbSymbolTableWrapper();
