@@ -512,6 +512,7 @@ boost::python::tuple PyGeCurve3d::getSplitCurves(double param)
     return make_tuple(PyGeCurve3d(p1), PyGeCurve3d(p2));
 }
 
+//TODO: Test ... leak... looks wonky?
 boost::python::list PyGeCurve3d::explode1()
 {
     PyAutoLockGIL lock;
@@ -529,6 +530,7 @@ boost::python::list PyGeCurve3d::explode1()
     return curves;
 }
 
+//TODO: Test ... leak... looks wonky?
 boost::python::list PyGeCurve3d::explode2(const PyGeInterval& interval)
 {
     PyAutoLockGIL lock;
