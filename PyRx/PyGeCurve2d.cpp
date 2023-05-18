@@ -382,6 +382,7 @@ boost::python::list PyGeCurve2d::explode1()
     return curves;
 }
 
+//TODO: Test ... leak... looks wonky?
 boost::python::list PyGeCurve2d::explode2(const PyGeInterval& interval)
 {
     PyAutoLockGIL lock;

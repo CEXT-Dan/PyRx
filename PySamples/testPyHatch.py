@@ -11,8 +11,7 @@ import PyEd# = editor
 def PyRxCmd_pycreate_hatch():
     try: 
         db = PyDb.HostApplicationServices().workingDatabase()
-        model = PyDb.BlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
-        
+       
         hatch = PyDb.Hatch()
         hatch.setDatabaseDefaults()
         normal = PyGe.Vector3d(0,0,1)
@@ -53,6 +52,7 @@ def PyRxCmd_pycreate_hatch():
         hatch.appendLoopEdges(PyDb.HatchLoopType.kDefault, edgePtrs, edgeTypes)
         hatch.evaluateHatch()
         
+        model = PyDb.BlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
         model.appendAcDbEntity(hatch)      
     except Exception as err:
         PyRxApp.Printf(err)

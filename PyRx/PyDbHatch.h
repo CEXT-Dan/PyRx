@@ -85,6 +85,5 @@ public:
 	static PyRxClass   desc();
 public:
 	AcDbHatch* impObj(const std::source_location& src = std::source_location::current()) const;
-
 };
 
