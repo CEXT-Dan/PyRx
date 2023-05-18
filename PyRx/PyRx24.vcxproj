@@ -148,6 +148,7 @@
     <ClCompile Include="PyDbDictionary.cpp" />
     <ClCompile Include="PyDbEntity.cpp" />
     <ClCompile Include="PyDbField.cpp" />
+    <ClCompile Include="PyDbHatch.cpp" />
     <ClCompile Include="PyDbHostApplicationServices.cpp" />
     <ClCompile Include="PyDbIdMapping.cpp" />
     <ClCompile Include="PyDbLayerTableRecord.cpp" />
@@ -223,6 +224,7 @@
     <ClInclude Include="PyDbDictionary.h" />
     <ClInclude Include="PyDbEntity.h" />
     <ClInclude Include="PyDbField.h" />
+    <ClInclude Include="PyDbHatch.h" />
     <ClInclude Include="PyDbHostApplicationServices.h" />
     <ClInclude Include="PyDbIdMapping.h" />
     <ClInclude Include="PyDbLayerTableRecord.h" />
