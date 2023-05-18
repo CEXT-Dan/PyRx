@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "RxEnvironment.h"
 
 static HMODULE ghThisModule = NULL;
 
@@ -13,8 +14,9 @@ std::filesystem::path getModulePath()
 
 EXTERN_C DllExport UINT WINAPI RxInstall(MSIHANDLE hInstall)
 {
-	//MessageBox(NULL, L"RxInstall", L"RxInstall", MB_OK);
 	std::filesystem::path path = getModulePath();
+	RxEnvironment& env = RxEnvironment::instance();
+	env.install();
 	return ERROR_SUCCESS;
 }
 

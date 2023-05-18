@@ -12,6 +12,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PyRxZ23", "PyRx\PyRxZ23.vcxproj", "{254ED7F5-4891-44D2-A6BD-F5B3891CCCFF}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PyRxSetup", "PyRxSetup\PyRxSetup.vdproj", "{1EA1BA00-4857-45D9-91F4-D0E1CC641062}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0E9D9CE9-1030-4CE7-BD55-420D1EF83708} = {0E9D9CE9-1030-4CE7-BD55-420D1EF83708}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RxInstall", "RxInstall\RxInstall.vcxproj", "{0E9D9CE9-1030-4CE7-BD55-420D1EF83708}"
 EndProject

@@ -12,7 +12,6 @@ public:
 	PyDbHatch(AcDbHatch* ptr, bool autoDelete);
 	PyDbHatch(const PyDbObjectId& id, AcDb::OpenMode mode);
 	virtual ~PyDbHatch() override = default;
-
 	double				elevation() const;
 	Acad::ErrorStatus	setElevation(double elevation);
 	AcGeVector3d		normal() const;
