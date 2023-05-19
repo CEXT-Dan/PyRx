@@ -6,6 +6,10 @@
 #include <string>
 #include <filesystem>
 
+#pragma comment( lib , "msi.lib" )
+
+#define MYDEBUGMODE
+
 template <typename Out>
 constexpr inline void split(const std::wstring& s, wchar_t delim, Out result) noexcept {
 	std::wistringstream iss(s);
