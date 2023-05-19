@@ -7,7 +7,7 @@ std::wstring installDir(MSIHANDLE hInstall)
 	std::wstring res;
 	DWORD dwSize = MAX_PATH;
 	std::unique_ptr<wchar_t[]> buf(new wchar_t[MAX_PATH]());
-	if(auto result = MsiGetProperty(hInstall, TEXT("CustomActionData"), buf.get(), &dwSize);result == ERROR_SUCCESS)
+	if (auto result = MsiGetProperty(hInstall, TEXT("CustomActionData"), buf.get(), &dwSize); result == ERROR_SUCCESS)
 		res = buf.get();
 	return res;
 }
@@ -36,6 +36,14 @@ void showFailedToWrite(MSIHANDLE hInstall)
 	MsiCloseHandle(hRecord);
 }
 
+void showFailMessage(MSIHANDLE hInstall, const std::wstring& msg)
+{
+	auto hRecord = MsiCreateRecord(1);
+	MsiRecordSetString(hRecord, 0, msg.c_str());
+	MsiProcessMessage(hInstall, INSTALLMESSAGE_ERROR, hRecord);
+	MsiCloseHandle(hRecord);
+}
+
 RxEnvironment::RxEnvironment(std::filesystem::path _modulePath, MSIHANDLE _hInstall)
 	: modulePath(_modulePath), hInstall(_hInstall)
 
@@ -47,13 +55,12 @@ std::wstring RxEnvironment::findPythonPathPath()
 	std::wstring res;
 	try
 	{
-		res = win32::RegGetString(HKEY_CURRENT_USER, L"Environment", L"PYTHONPATH");
+		if (auto result = win32::RegGetString(HKEY_CURRENT_USER, L"Environment", L"PYTHONPATH"); result.first == ERROR_SUCCESS)
+			return result.second;
 	}
 	catch (...)
 	{
-#ifdef MYDEBUGMODE
-		MessageBox(NULL, L"exception in findPythonPathPath", L"OK", MB_OK);
-#endif
+		showFailMessage(hInstall, L"exception in findPythonPathPath");
 	}
 	return res;
 }
@@ -63,22 +70,24 @@ std::wstring RxEnvironment::findPythonPath()
 	std::wstring res;
 	try
 	{
-		std::wstring path = win32::RegGetString(HKEY_CURRENT_USER, L"Environment", L"PATH");
-		std::vector<std::wstring> elems;
-		split(path, ';', elems);
-		for (auto& item : elems)
+		if (auto result = win32::RegGetString(HKEY_CURRENT_USER, L"Environment", L"PATH"); result.first == ERROR_SUCCESS)
 		{
-			if (item.ends_with(L"python310\\") || item.ends_with(L"python310/") || item.ends_with(L"python310"))
-				res = item;
-			else if (item.ends_with(L"Python310\\") || item.ends_with(L"Python310/") || item.ends_with(L"Python310"))
-				res = item;
+			if (result.second.size() == 0)
+				return res;
+			std::vector<std::wstring> elems;
+			split(result.second, ';', elems);
+			for (auto& item : elems)
+			{
+				if (item.ends_with(L"python310\\") || item.ends_with(L"python310/") || item.ends_with(L"python310"))
+					res = item;
+				else if (item.ends_with(L"Python310\\") || item.ends_with(L"Python310/") || item.ends_with(L"Python310"))
+					res = item;
+			}
 		}
 	}
 	catch (...)
 	{
-#ifdef MYDEBUGMODE
-		MessageBox(NULL, L"exception in findPythonPath", L"OK", MB_OK);
-#endif
+		showFailMessage(hInstall, L"exception in findPythonPath");
 	}
 	return res;
 }
@@ -88,23 +97,25 @@ std::wstring RxEnvironment::findWxPythonPath()
 	std::wstring res;
 	try
 	{
-		std::wstring path = win32::RegGetString(HKEY_CURRENT_USER, L"Environment", L"PATH");
-		std::vector<std::wstring> elems;
-		split(path, ';', elems);
-		for (auto& item : elems)
+		if (auto result = win32::RegGetString(HKEY_CURRENT_USER, L"Environment", L"PATH"); result.first == ERROR_SUCCESS)
 		{
-			if (item.find(L"site-packages") != std::string::npos)
+			if (result.second.size() == 0)
+				return res;
+			std::vector<std::wstring> elems;
+			split(result.second, ';', elems);
+			for (auto& item : elems)
 			{
-				if (item.ends_with(L"wx\\") || item.ends_with(L"wx/") || item.ends_with(L"wx"))
-					res = item;
+				if (item.find(L"site-packages") != std::string::npos)
+				{
+					if (item.ends_with(L"wx\\") || item.ends_with(L"wx/") || item.ends_with(L"wx"))
+						res = item;
+				}
 			}
 		}
 	}
 	catch (...)
 	{
-#ifdef MYDEBUGMODE
-		MessageBox(NULL, L"exception in findWxPythonPath", L"OK", MB_OK);
-#endif
+		showFailMessage(hInstall, L"exception in findWxPythonPath");
 	}
 	return res;
 }
@@ -114,22 +125,22 @@ std::wstring RxEnvironment::findStubPath()
 	std::wstring res;
 	try
 	{
-		std::wstring path = win32::RegGetString(HKEY_CURRENT_USER, L"Environment", L"PYTHONPATH");
-		if (path.size() == 0)
-			return res;
-		std::vector<std::wstring> elems;
-		split(path, ';', elems);
-		for (auto& item : elems)
+		if (auto result = win32::RegGetString(HKEY_CURRENT_USER, L"Environment", L"PYTHONPATH"); result.first == ERROR_SUCCESS)
 		{
-			if (item.ends_with(L"PyRxStubs\\") || item.ends_with(L"PyRxStubs/") || item.ends_with(L"PyRxStubs"))
-				res = item;
+			if (result.second.size() == 0)
+				return res;
+			std::vector<std::wstring> elems;
+			split(result.second, ';', elems);
+			for (auto& item : elems)
+			{
+				if (item.ends_with(L"PyRxStubs\\") || item.ends_with(L"PyRxStubs/") || item.ends_with(L"PyRxStubs"))
+					res = item;
+			}
 		}
 	}
 	catch (...)
 	{
-#ifdef MYDEBUGMODE
-		MessageBox(NULL, L"exception in findStubPath", L"OK", MB_OK);
-#endif
+		showFailMessage(hInstall, L"exception in findStubPath");
 	}
 	return res;
 }
@@ -162,17 +173,20 @@ bool RxEnvironment::install()
 		const auto wxRegPath = findWxPythonPath();
 		if (wxRegPath.size() == 0)
 		{
-			std::wstring path = win32::RegGetString(HKEY_CURRENT_USER, L"Environment", L"PATH");
-			path += L";";
-			path += wxLibPath;
-
-			auto key = win32::RegOpenKey(HKEY_CURRENT_USER, L"Environment");
-			if (key.IsValid())
+			if (auto result = win32::RegGetString(HKEY_CURRENT_USER, L"Environment", L"PATH"); result.first == ERROR_SUCCESS)
 			{
-				const DWORD sz = ((DWORD)path.size() + 1) * sizeof(wchar_t);
-				if (RegSetValueEx(key.Get(), L"PATH", 0, REG_SZ, (LPBYTE)path.c_str(), sz) != ERROR_SUCCESS)
-					showFailedToWrite(hInstall);
+				std::wstring path = result.second;
+				path += L";";
+				path += wxLibPath;
 
+				auto key = win32::RegOpenKey(HKEY_CURRENT_USER, L"Environment");
+				if (key.IsValid())
+				{
+					const DWORD sz = ((DWORD)path.size() + 1) * sizeof(wchar_t);
+					if (RegSetValueEx(key.Get(), L"PATH", 0, REG_SZ, (LPBYTE)path.c_str(), sz) != ERROR_SUCCESS)
+						showFailedToWrite(hInstall);
+
+				}
 			}
 		}
 
@@ -202,7 +216,7 @@ bool RxEnvironment::install()
 	}
 	catch (...)
 	{
-		MessageBox(NULL, L"fail with exception", L"fail", MB_OK);
+		showFailMessage(hInstall, L"fail with exception");
 	}
 	return true;
 }

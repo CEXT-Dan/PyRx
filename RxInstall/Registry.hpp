@@ -58,11 +58,11 @@ namespace win32
 	// Wrappers for getting registry values
 	// 
 
-	DWORD                       RegGetDword(HKEY hKey, const std::wstring& subKey, const std::wstring& value);
-	ULONGLONG                   RegGetQword(HKEY hKey, const std::wstring& subKey, const std::wstring& value);
-	std::wstring                RegGetString(HKEY hKey, const std::wstring& subKey, const std::wstring& value);
-	std::vector<std::wstring>   RegGetMultiString(HKEY hKey, const std::wstring& subKey, const std::wstring& value);
-	std::vector<BYTE>           RegGetBinary(HKEY hKey, const std::wstring& subKey, const std::wstring& value);
+	std::pair<int32_t, DWORD>           RegGetDword(HKEY hKey, const std::wstring& subKey, const std::wstring& value);
+	std::pair<int32_t, ULONGLONG>       RegGetQword(HKEY hKey, const std::wstring& subKey, const std::wstring& value);
+	std::pair<int32_t, std::wstring>    RegGetString(HKEY hKey, const std::wstring& subKey, const std::wstring& value);
+	std::pair<int32_t, std::vector<std::wstring>>   RegGetMultiString(HKEY hKey, const std::wstring& subKey, const std::wstring& value);
+	std::pair< int32_t, std::vector<BYTE>>          RegGetBinary(HKEY hKey, const std::wstring& subKey, const std::wstring& value);
 
 
 	//
@@ -349,7 +349,7 @@ namespace win32
 	// Inline Function Implementations
 	// 
 
-	inline DWORD RegGetDword(HKEY hKey, const std::wstring& subKey, const std::wstring& value)
+	inline std::pair<int32_t, DWORD> RegGetDword(HKEY hKey, const std::wstring& subKey, const std::wstring& value)
 	{
 		//
 		// Read a 32-bit DWORD value from the registry
@@ -364,16 +364,11 @@ namespace win32
 			nullptr,
 			&data,
 			&dataSize);
-		if (retCode != ERROR_SUCCESS)
-		{
-			throw RegistryError{ "Cannot read DWORD from registry.", retCode };
-		}
-
-		return data;
+		return std::make_pair(retCode, data);
 	}
 
 
-	inline ULONGLONG RegGetQword(HKEY hKey, const std::wstring& subKey, const std::wstring& value)
+	inline std::pair < int32_t, ULONGLONG> RegGetQword(HKEY hKey, const std::wstring& subKey, const std::wstring& value)
 	{
 		//
 		// Read a 64-bit QWORD value from the registry
@@ -388,16 +383,11 @@ namespace win32
 			nullptr,
 			&data,
 			&dataSize);
-		if (retCode != ERROR_SUCCESS)
-		{
-			throw RegistryError{ "Cannot read QWORD from registry.", retCode };
-		}
-
-		return data;
+		return std::make_pair(retCode, data);
 	}
 
 
-	inline std::wstring RegGetString(HKEY hKey, const std::wstring& subKey, const std::wstring& value)
+	inline std::pair < int32_t, std::wstring> RegGetString(HKEY hKey, const std::wstring& subKey, const std::wstring& value)
 	{
 		//
 		// Request the size of the string, in bytes
@@ -413,7 +403,7 @@ namespace win32
 			&dataSize);
 		if (retCode != ERROR_SUCCESS)
 		{
-			throw RegistryError{ "Cannot read string from registry", retCode };
+			return std::make_pair(retCode, std::wstring{});
 		}
 
 		//
@@ -438,7 +428,7 @@ namespace win32
 			&dataSize);
 		if (retCode != ERROR_SUCCESS)
 		{
-			throw RegistryError{ "Cannot read string from registry", retCode };
+			return std::make_pair(retCode, std::wstring{});
 		}
 
 		//
@@ -451,16 +441,17 @@ namespace win32
 		stringLengthInWchars--; // exclude the NUL written by the Win32 API
 		data.resize(stringLengthInWchars);
 
-		return data;
+		return std::make_pair(retCode, data);
 	}
 
 
-	inline std::vector<std::wstring>
+	inline  std::pair < int32_t, std::vector<std::wstring>>
 		RegGetMultiString(HKEY hKey, const std::wstring& subKey, const std::wstring& value)
 	{
 		//
 		// Request the size of the multi-string, in bytes
 		//
+		std::vector<std::wstring> result;
 		DWORD dataSize{};
 		LONG retCode = ::RegGetValue(
 			hKey,
@@ -472,7 +463,7 @@ namespace win32
 			&dataSize);
 		if (retCode != ERROR_SUCCESS)
 		{
-			throw RegistryError{ "Cannot read multi-string from registry", retCode };
+			return std::make_pair(retCode, result);
 		}
 
 		//
@@ -496,7 +487,7 @@ namespace win32
 			&dataSize);
 		if (retCode != ERROR_SUCCESS)
 		{
-			throw RegistryError{ "Cannot read multi-string from registry", retCode };
+			return std::make_pair(retCode, result);
 		}
 
 		//
@@ -509,7 +500,6 @@ namespace win32
 		//
 		// Parse the double-NUL-terminated string into a vector<wstring>
 		//
-		std::vector<std::wstring> result;
 		const wchar_t* currStringPtr = &data[0];
 		while (*currStringPtr != L'\0')
 		{
@@ -523,15 +513,16 @@ namespace win32
 			currStringPtr += currStringLength + 1;
 		}
 
-		return result;
+		return std::make_pair(retCode, result);;
 	}
 
 
-	inline std::vector<BYTE> RegGetBinary(HKEY hKey, const std::wstring& subKey, const std::wstring& value)
+	inline  std::pair < int32_t, std::vector<BYTE>> RegGetBinary(HKEY hKey, const std::wstring& subKey, const std::wstring& value)
 	{
 		//
 		// Request the size of the binary data, in bytes
 		//
+		std::vector<BYTE> data;
 		DWORD dataSize{};
 		LONG retCode = ::RegGetValue(
 			hKey,
@@ -543,13 +534,12 @@ namespace win32
 			&dataSize);
 		if (retCode != ERROR_SUCCESS)
 		{
-			throw RegistryError{ "Cannot read binary data from registry", retCode };
+			return std::make_pair(retCode, data);
 		}
 
 		//
 		// Allocate room for the result binary data
 		// 
-		std::vector<BYTE> data;
 		data.resize(dataSize);
 
 		//
@@ -574,7 +564,7 @@ namespace win32
 		data.resize(dataSize);
 
 
-		return data;
+		return std::make_pair(retCode, data);
 	}
 
 
