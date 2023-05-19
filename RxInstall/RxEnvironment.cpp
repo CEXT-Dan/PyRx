@@ -18,6 +18,16 @@ void showWxPythonNotFound(MSIHANDLE hInstall)
 	MsiCloseHandle(hRecord);
 }
 
+void showFailedToWrite(MSIHANDLE hInstall)
+{
+	auto hRecord = MsiCreateRecord(1);
+	MsiRecordSetString(hRecord, 0, L"Failed to write value to registry!");
+	MsiProcessMessage(hInstall, INSTALLMESSAGE_ERROR, hRecord);
+	MsiCloseHandle(hRecord);
+}
+
+
+
 
 RxEnvironment::RxEnvironment(std::filesystem::path _modulePath, MSIHANDLE _hInstall)
 	: modulePath(_modulePath), hInstall(_hInstall)
@@ -98,7 +108,18 @@ bool RxEnvironment::install()
 	auto wxRegPath = findWxPythonPath();
 	if (wxRegPath.size() == 0)
 	{
-		//append to PATH
+		std::wstring path = win32::RegGetString(HKEY_CURRENT_USER, L"Environment", L"PATH");
+		path += L";";
+		path += wxLibPath;
+
+		auto key = win32::RegOpenKey(HKEY_CURRENT_USER, L"Environment");
+		if (key.IsValid())
+		{
+			const DWORD sz = ((DWORD)path.size() + 1) * sizeof(wchar_t);
+			if (RegSetValueEx(key.Get(), L"PATH", 0, REG_SZ, (LPBYTE)path.c_str(), sz) != ERROR_SUCCESS)
+				showFailedToWrite(hInstall);
+
+		}
 	}
 
 	auto regStubPath = findStubPath();
