@@ -15,7 +15,19 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_0446DB8CAA3C48649D4185183EC71647"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_05BB4054E25448CBB9E88B623419ACA3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0A2DDCA33BEB45E4800CEB27F7680C9E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -81,13 +93,31 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_731DDB5C77AD4E0FBCE5C7ADE6756E6E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_833EC3A877794C00A486F4641886C4CD"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
+        "MsmKey" = "8:_872A80756CDB4D92954CA20BE5090C90"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_8B70B58F6ED04E398B30DAB84725B28B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_AAF364842AE84D7892C088153AB1A96A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -111,6 +141,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C917E3DCC46344258107112682C84997"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_CE9BB842826F4C6FB712839B76AEB1E9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -123,13 +159,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
+        "MsmKey" = "8:_E709909449FE44EA93342D88E79C7BD7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_FCC34FAE92C345F49434D3D1ED462A5D"
+        "MsmKey" = "8:_FB5365C0C70E4357B09AFE0841C5C631"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -158,6 +194,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -242,12 +286,52 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0446DB8CAA3C48649D4185183EC71647"
+            {
+            "SourcePath" = "8:..\\PySamples\\testPyTable.py"
+            "TargetName" = "8:testPyTable.py"
+            "Tag" = "8:"
+            "Folder" = "8:_C060845E20DC449B8C253A71660A81FF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_05BB4054E25448CBB9E88B623419ACA3"
             {
             "SourcePath" = "8:..\\PySamples\\stubs\\PyGi.html"
             "TargetName" = "8:PyGi.html"
             "Tag" = "8:"
             "Folder" = "8:_4079D664F70E400284955FB86F99C7BB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0A2DDCA33BEB45E4800CEB27F7680C9E"
+            {
+            "SourcePath" = "8:..\\PySamples\\testPyDbMLeader.py"
+            "TargetName" = "8:testPyDbMLeader.py"
+            "Tag" = "8:"
+            "Folder" = "8:_C060845E20DC449B8C253A71660A81FF"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -422,6 +506,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_731DDB5C77AD4E0FBCE5C7ADE6756E6E"
+            {
+            "SourcePath" = "8:..\\PySamples\\testPyHatch.py"
+            "TargetName" = "8:testPyHatch.py"
+            "Tag" = "8:"
+            "Folder" = "8:_C060845E20DC449B8C253A71660A81FF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_833EC3A877794C00A486F4641886C4CD"
             {
             "SourcePath" = "8:..\\PySamples\\stubs\\PyEd.pyi"
@@ -442,12 +546,52 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_872A80756CDB4D92954CA20BE5090C90"
+            {
+            "SourcePath" = "8:..\\PySamples\\testpylisp.py"
+            "TargetName" = "8:testpylisp.py"
+            "Tag" = "8:"
+            "Folder" = "8:_C060845E20DC449B8C253A71660A81FF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8B70B58F6ED04E398B30DAB84725B28B"
             {
             "SourcePath" = "8:..\\PySamples\\stubs\\PyGe.html"
             "TargetName" = "8:PyGe.html"
             "Tag" = "8:"
             "Folder" = "8:_4079D664F70E400284955FB86F99C7BB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AAF364842AE84D7892C088153AB1A96A"
+            {
+            "SourcePath" = "8:..\\PySamples\\testCmdFlags.py"
+            "TargetName" = "8:testCmdFlags.py"
+            "Tag" = "8:"
+            "Folder" = "8:_C060845E20DC449B8C253A71660A81FF"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -502,6 +646,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C917E3DCC46344258107112682C84997"
+            {
+            "SourcePath" = "8:..\\PySamples\\testPyDbLeader.py"
+            "TargetName" = "8:testPyDbLeader.py"
+            "Tag" = "8:"
+            "Folder" = "8:_C060845E20DC449B8C253A71660A81FF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CE9BB842826F4C6FB712839B76AEB1E9"
             {
             "SourcePath" = "8:..\\PySamples\\stubs\\PyGi.pyi"
@@ -542,12 +706,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FCC34FAE92C345F49434D3D1ED462A5D"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E709909449FE44EA93342D88E79C7BD7"
             {
-            "SourcePath" = "8:..\\PySamples\\Play\\offset.py"
-            "TargetName" = "8:offset.py"
+            "SourcePath" = "8:..\\PySamples\\testPyJig.py"
+            "TargetName" = "8:testPyJig.py"
             "Tag" = "8:"
-            "Folder" = "8:_1DB367D4871B44C38FE5532C2D9D0AE9"
+            "Folder" = "8:_C060845E20DC449B8C253A71660A81FF"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -602,18 +766,29 @@
                 {
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_1DB367D4871B44C38FE5532C2D9D0AE9"
                     {
-                    "Name" = "8:samples"
+                    "Name" = "8:PyRxSamples"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
                     "Property" = "8:_625C4FC882C34D788033767160DBA914"
                         "Folders"
                         {
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_C060845E20DC449B8C253A71660A81FF"
+                            {
+                            "Name" = "8:Tests"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_F9B6A01E8F1A446C8E1490971AB39BD8"
+                                "Folders"
+                                {
+                                }
+                            }
                         }
                     }
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_4079D664F70E400284955FB86F99C7BB"
                     {
-                    "Name" = "8:help"
+                    "Name" = "8:PyRxHelp"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
@@ -624,7 +799,7 @@
                     }
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_EAA49D00F3CB4A38AF073F908AEB795B"
                     {
-                    "Name" = "8:stubs"
+                    "Name" = "8:PyRxStubs"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
@@ -663,7 +838,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PyRxSetup"
         "ProductCode" = "8:{51386679-D611-4231-A17E-B959075AD6CA}"
-        "PackageCode" = "8:{F1BF893F-1E2E-4F38-B57C-52E499D41036}"
+        "PackageCode" = "8:{AA0073A1-E338-4C53-ACE2-C6A47FCF3D75}"
         "UpgradeCode" = "8:{7DE3E792-70E4-4E32-BBC9-3AB04F5B000E}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1001,28 +1176,6 @@
                             }
                         }
                     }
-                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_34E2E3E0572C4BBBBCF378D1478B79E9"
-                    {
-                    "Sequence" = "3:200"
-                    "DisplayName" = "8:Installation Folder"
-                    "UseDynamicProperties" = "11:TRUE"
-                    "IsDependency" = "11:FALSE"
-                    "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFolderDlg.wid"
-                        "Properties"
-                        {
-                            "BannerBitmap"
-                            {
-                            "Name" = "8:BannerBitmap"
-                            "DisplayName" = "8:#1001"
-                            "Description" = "8:#1101"
-                            "Type" = "3:8"
-                            "ContextData" = "8:Bitmap"
-                            "Attributes" = "3:4"
-                            "Setting" = "3:1"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                        }
-                    }
                 }
             }
             "{2479F3F5-0309-486D-8047-8187E2CE5BA0}:_B17F59EEDE5B479CBD0C3FBF7542106D"
@@ -1056,41 +1209,6 @@
                             "ContextData" = "8:Bitmap"
                             "Attributes" = "3:4"
                             "Setting" = "3:1"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                        }
-                    }
-                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_5577048A864A4151838A818D7FD242E8"
-                    {
-                    "Sequence" = "3:200"
-                    "DisplayName" = "8:Installation Folder"
-                    "UseDynamicProperties" = "11:TRUE"
-                    "IsDependency" = "11:FALSE"
-                    "SourcePath" = "8:<VsdDialogDir>\\VsdFolderDlg.wid"
-                        "Properties"
-                        {
-                            "BannerBitmap"
-                            {
-                            "Name" = "8:BannerBitmap"
-                            "DisplayName" = "8:#1001"
-                            "Description" = "8:#1101"
-                            "Type" = "3:8"
-                            "ContextData" = "8:Bitmap"
-                            "Attributes" = "3:4"
-                            "Setting" = "3:1"
-                            "UsePlugInResources" = "11:TRUE"
-                            }
-                            "InstallAllUsersVisible"
-                            {
-                            "Name" = "8:InstallAllUsersVisible"
-                            "DisplayName" = "8:#1059"
-                            "Description" = "8:#1159"
-                            "Type" = "3:5"
-                            "ContextData" = "8:1;True=1;False=0"
-                            "Attributes" = "3:0"
-                            "Setting" = "3:0"
-                            "Value" = "3:0"
-                            "DefaultValue" = "3:1"
                             "UsePlugInResources" = "11:TRUE"
                             }
                         }

@@ -1,93 +1,85 @@
 #include "pch.h"
 #include "RxEnvironment.h"
+#include "Registry.hpp"
 
-std::string RxEnvironment::findPythonPath()
+
+RxEnvironment::RxEnvironment(std::filesystem::path _modulePath, MSIHANDLE _hInstall)
+	: modulePath(_modulePath), hInstall(_hInstall)
+
 {
-	std::string res;
-	std::string env = std::getenv("PATH");
-	std::vector<std::string> paths;
-	splitA(env, ';', paths);
-	for (auto& item : paths)
+}
+
+std::wstring RxEnvironment::findPythonPath()
+{
+	std::wstring res;
+	std::wstring path = win32::RegGetString(HKEY_CURRENT_USER, L"Environment", L"PATH");
+	std::vector<std::wstring> elems;
+	split(path,';', elems);
+	for (auto& item : elems)
 	{
-		if (item.ends_with("python310\\") || item.ends_with("python310/") || item.ends_with("python310"))
+		if (item.ends_with(L"python310\\") || item.ends_with(L"python310/") || item.ends_with(L"python310"))
+			res = item;
+		else if(item.ends_with(L"Python310\\") || item.ends_with(L"Python310/") || item.ends_with(L"Python310"))
 			res = item;
 	}
 	return res;
 }
 
-std::string RxEnvironment::findWxPythonPath()
+std::wstring RxEnvironment::findWxPythonPath()
 {
-	std::string res;
-	std::string env = std::getenv("PATH");
-	std::vector<std::string> paths;
-	splitA(env, ';', paths);
-	for (auto& item : paths)
+	std::wstring res;
+	std::wstring path = win32::RegGetString(HKEY_CURRENT_USER, L"Environment", L"PATH");
+	std::vector<std::wstring> elems;
+	split(path, ';', elems);
+	for (auto& item : elems)
 	{
-		if (item.find("site-packages") != std::string::npos)
+		if (item.find(L"site-packages") != std::string::npos)
 		{
-			if (item.ends_with("wx\\") || item.ends_with("wx/") || item.ends_with("wx"))
+			if (item.ends_with(L"wx\\") || item.ends_with(L"wx/") || item.ends_with(L"wx"))
 				res = item;
 		}
 	}
 	return res;
 }
 
-std::string RxEnvironment::findStubPath()
+std::wstring RxEnvironment::findStubPath()
 {
-	std::string res;
+	std::wstring res;
+	std::wstring path = win32::RegGetString(HKEY_CURRENT_USER, L"Environment", L"PYTHONPATH");
+	std::vector<std::wstring> elems;
+	split(path, ';', elems);
+	for (auto& item : elems)
+	{
+		if (item.ends_with(L"PyRxStubs\\") || item.ends_with(L"PyRxStubs/") || item.ends_with(L"PyRxStubs"))
+			res = item;
+	}
 	return res;
 }
 
 bool RxEnvironment::install()
 {
-	MessageBoxA(NULL, "install", "OK", MB_OK);
-	std::string pyPath = findPythonPath();
+	MessageBox(NULL, L"install", L"OK", MB_OK);
+	auto pyPath = findPythonPath();
 	if (pyPath.size() == 0)
 	{
 		MessageBoxA(NULL, "FAIL @ findPythonPath", "FAIL", MB_OK);
 		return false;
 	}
-
-	std::string wxPath= findWxPythonPath();
-	if (wxPath.size() != 0)
-	{
-		MessageBoxA(NULL, "findWxPythonPath found", "OK", MB_OK);
-		return true;
-	}
-
-	rtrim(pyPath, '/');
-	rtrim(pyPath, '\\');
-
-	std::stringstream ss;
-	ss << std::getenv("PATH");;
-	ss << ";" << pyPath + "\\Lib\\site-packages\\wx";
-	ss << '\0';
-	std::string env = ss.str();
-
-	auto e = _putenv_s("PATH", env.c_str());
-
-	if (e)
-	{
-		MessageBoxA(NULL, "FAIL", "FAIL", MB_OK);
-		return false;
-	}
-
-	std::string wxPathCheck = findWxPythonPath();
-	if (wxPathCheck.size() != 0)
-	{
-		MessageBoxA(NULL, wxPathCheck.c_str(), "YAY", MB_OK);
-		return true;
-	}
 	else
 	{
-		MessageBoxA(NULL, "FAIL @ check", "FAIL", MB_OK);
+		MessageBoxA(NULL, "YAY", "YAY", MB_OK);
 	}
-
-	return false;
+	return true;
 }
 
-RxEnvironment& RxEnvironment::instance()
+bool RxEnvironment::uninstall()
 {
-	static RxEnvironment mthis;
+	MessageBox(NULL, L"uninstall", L"OK", MB_OK);
+	return true;
+}
+
+RxEnvironment& RxEnvironment::instance(std::filesystem::path modulePath, MSIHANDLE hInstall)
+{
+	static RxEnvironment mthis(modulePath, hInstall);
 	return mthis;
 }

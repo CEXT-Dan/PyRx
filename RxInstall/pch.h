@@ -7,31 +7,31 @@
 #include <filesystem>
 
 template <typename Out>
-constexpr inline void splitA(const std::string& s, char delim, Out result) noexcept {
-	std::istringstream iss(s);
-	std::string item;
+constexpr inline void split(const std::wstring& s, wchar_t delim, Out result) noexcept {
+	std::wistringstream iss(s);
+	std::wstring item;
 	while (std::getline(iss, item, delim)) {
 		*result++ = item;
 	}
 }
 
-constexpr inline void splitA(const std::string& s, char delim, std::vector<std::string>& elems) noexcept {
-	splitA(s, delim, std::back_inserter(elems));
+constexpr inline void split(const std::wstring& s, wchar_t delim, std::vector<std::wstring>& elems) noexcept {
+	split(s, delim, std::back_inserter(elems));
 }
 
-constexpr inline void ltrim(std::string& s, char chr) noexcept {
-	s.erase(s.begin(), std::find_if(s.begin(), s.end(), [&](char ch) {
+constexpr inline void ltrim(std::wstring& s, wchar_t chr) noexcept {
+	s.erase(s.begin(), std::find_if(s.begin(), s.end(), [&](wchar_t ch) {
 		return chr != ch;
 		}));
 }
 
-constexpr inline void rtrim(std::string& s, char chr) noexcept {
-	s.erase(std::find_if(s.rbegin(), s.rend(), [&](char ch) {
+constexpr inline void rtrim(std::wstring& s, wchar_t chr) noexcept {
+	s.erase(std::find_if(s.rbegin(), s.rend(), [&](wchar_t ch) {
 		return chr != ch;
 		}).base(), s.end());
 }
 
-constexpr inline void trim(std::string& s, char chr) noexcept {
+constexpr inline void trim(std::wstring& s, wchar_t chr) noexcept {
 	ltrim(s, chr);
 	rtrim(s, chr);
 }

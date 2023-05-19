@@ -158,6 +158,7 @@
   <ItemGroup>
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Registry.hpp" />
     <ClInclude Include="RxEnvironment.h" />
   </ItemGroup>
   <ItemGroup>
