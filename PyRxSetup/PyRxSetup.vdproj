@@ -268,7 +268,7 @@
             "Sequence" = "3:1"
             "Identifier" = "8:_3ECFDC09_03A8_4DD6_BDAF_AFEA00EDBAAC"
             "InstallerClass" = "11:FALSE"
-            "CustomActionData" = "8:"
+            "CustomActionData" = "8:[LocalAppDataFolder]PyRx"
             "Run64Bit" = "11:TRUE"
             }
         }
@@ -838,7 +838,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PyRxSetup"
         "ProductCode" = "8:{51386679-D611-4231-A17E-B959075AD6CA}"
-        "PackageCode" = "8:{A16F395C-B3B3-41BC-8B32-2F82A9E3A465}"
+        "PackageCode" = "8:{E862DE96-CD76-43A6-AB6F-91CB1A0B1DFA}"
         "UpgradeCode" = "8:{7DE3E792-70E4-4E32-BBC9-3AB04F5B000E}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
