@@ -15,15 +15,16 @@ std::filesystem::path getModulePath()
 EXTERN_C DllExport UINT WINAPI RxInstall(MSIHANDLE hInstall)
 {
 	std::filesystem::path path = getModulePath();
-	RxEnvironment& env = RxEnvironment::instance();
+	RxEnvironment& env = RxEnvironment::instance(path, hInstall);
 	env.install();
 	return ERROR_SUCCESS;
 }
 
 EXTERN_C DllExport UINT WINAPI RxUninstall(MSIHANDLE hInstall)
 {
-	//MessageBox(NULL, L"RxUninstall", L"RxUninstall", MB_OK);
 	std::filesystem::path path = getModulePath();
+	RxEnvironment& env = RxEnvironment::instance(path, hInstall);
+	env.uninstall();
 	return ERROR_SUCCESS;
 }
 

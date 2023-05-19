@@ -2,12 +2,16 @@
 class RxEnvironment
 {
 public:
-
-	std::string findPythonPath();
-	std::string findWxPythonPath();
-	std::string findStubPath();
+	RxEnvironment(std::filesystem::path modulePath, MSIHANDLE hInstall);
+	std::wstring findPythonPath();
+	std::wstring findWxPythonPath();
+	std::wstring findStubPath();
 
 	bool install();
-	static RxEnvironment& instance();
+	bool uninstall();
+	static RxEnvironment& instance(std::filesystem::path modulePath, MSIHANDLE hInstall);
+
+	std::filesystem::path modulePath;
+	MSIHANDLE hInstall;
 };
 
