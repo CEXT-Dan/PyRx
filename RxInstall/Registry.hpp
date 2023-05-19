@@ -773,7 +773,7 @@ namespace win32
 		);
 		if (retCode != ERROR_SUCCESS)
 		{
-			throw RegistryError{ "Cannot create registry key: RegCreateKeyEx failed.", retCode };
+			return RegKey{ nullptr };
 		}
 
 		//
@@ -802,7 +802,7 @@ namespace win32
 		);
 		if (retCode != ERROR_SUCCESS)
 		{
-			throw RegistryError{ "Cannot open registry key: RegOpenKeyEx failed.", retCode };
+			return RegKey{ nullptr };
 		}
 
 		//
