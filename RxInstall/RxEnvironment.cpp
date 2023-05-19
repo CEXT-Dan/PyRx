@@ -46,7 +46,6 @@ void showFailMessage(MSIHANDLE hInstall, const std::wstring& msg)
 
 RxEnvironment::RxEnvironment(std::filesystem::path _modulePath, MSIHANDLE _hInstall)
 	: modulePath(_modulePath), hInstall(_hInstall)
-
 {
 }
 
@@ -145,13 +144,18 @@ std::wstring RxEnvironment::findStubPath()
 	return res;
 }
 
+DWORD RxEnvironment::calcBufferSize(const std::wstring& str)
+{
+	return ((DWORD)str.size() + 1) * sizeof(wchar_t);
+}
+
 bool RxEnvironment::install()
 {
 	try
 	{
 
-#ifdef MYDEBUGMODE
-		MessageBox(NULL, L"install", L"OK", MB_OK);
+#ifdef MYDEBUGMODE//Break here
+		MessageBox(NULL, L"install", L"PyRxInstallerBreakPoint", MB_OK);
 #endif
 		const auto pyRegPath = findPythonPath();
 		if (pyRegPath.size() == 0)
@@ -159,7 +163,6 @@ bool RxEnvironment::install()
 			showPythonNotFound(hInstall);
 			return true;
 		}
-
 		std::filesystem::path wxLibPath = pyRegPath;
 		wxLibPath /= L"Lib\\site-packages\\wx";
 
@@ -169,7 +172,6 @@ bool RxEnvironment::install()
 			showWxPythonNotFound(hInstall);
 			return true;
 		}
-
 		const auto wxRegPath = findWxPythonPath();
 		if (wxRegPath.size() == 0)
 		{
@@ -182,14 +184,13 @@ bool RxEnvironment::install()
 				auto key = win32::RegOpenKey(HKEY_CURRENT_USER, L"Environment");
 				if (key.IsValid())
 				{
-					const DWORD sz = ((DWORD)path.size() + 1) * sizeof(wchar_t);
+					const DWORD sz = calcBufferSize(path);
 					if (RegSetValueEx(key.Get(), L"PATH", 0, REG_SZ, (LPBYTE)path.c_str(), sz) != ERROR_SUCCESS)
 						showFailedToWrite(hInstall);
 
 				}
 			}
 		}
-
 		const auto regStubPath = findStubPath();
 		if (regStubPath.size() == 0)
 		{
@@ -208,7 +209,7 @@ bool RxEnvironment::install()
 			}
 			if (auto rootKey = win32::RegOpenKey(HKEY_CURRENT_USER, L"Environment"); rootKey.IsValid())
 			{
-				const DWORD sz = ((DWORD)path.size() + 1) * sizeof(wchar_t);
+				const DWORD sz = calcBufferSize(path);
 				if (RegSetValueEx(rootKey.Get(), L"PYTHONPATH", 0, REG_SZ, (LPBYTE)path.c_str(), sz) != ERROR_SUCCESS)
 					showFailedToWrite(hInstall);
 			}

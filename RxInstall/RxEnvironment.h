@@ -7,6 +7,7 @@ public:
 	std::wstring findPythonPath();
 	std::wstring findWxPythonPath();
 	std::wstring findStubPath();
+	DWORD calcBufferSize(const std::wstring& str);
 
 	bool install();
 	bool uninstall();
