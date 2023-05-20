@@ -12,6 +12,14 @@ void makePyDbXrecordWrapper()
 	class_<PyDbXrecord, bases<PyDbObject>>("Xrecord")
 		.def(init<>())
 		.def(init<const PyDbObjectId&, AcDb::OpenMode>())
+		.def("rbChain", &PyDbXrecord::rbChain1)
+		.def("rbChain", &PyDbXrecord::rbChain2)
+		.def("setFromRbChain", &PyDbXrecord::setFromRbChain1)
+		.def("setFromRbChain", &PyDbXrecord::setFromRbChain2)
+		.def("isXlateReferences", &PyDbXrecord::isXlateReferences)
+		.def("setXlateReferences", &PyDbXrecord::setXlateReferences)
+		.def("mergeStyle", &PyDbXrecord::mergeStyle)
+		.def("setMergeStyle", &PyDbXrecord::setMergeStyle)
 		.def("className", &PyDbXrecord::className).staticmethod("className")
 		.def("desc", &PyDbXrecord::desc).staticmethod("desc")
 		;
@@ -115,11 +123,4 @@ AcDbXrecord* PyDbXrecord::impObj(const std::source_location& src /*= std::source
 	if (m_pImp == nullptr)
 		throw PyNullObject(src);
 	return static_cast<AcDbXrecord*>(m_pImp.get());
-}
-
-//---------------------------------------------------------------------------------------- -
-//makePyDbXrecordIteratorWrapper
-void makePyDbXrecordIteratorWrapper()
-{
-
 }
