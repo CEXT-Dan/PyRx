@@ -38,8 +38,8 @@ PyDbXrecord::PyDbXrecord(AcDbObject* ptr, bool autoDelete)
 PyDbXrecord::PyDbXrecord(const PyDbObjectId& id, AcDb::OpenMode mode)
 	: PyDbObject(nullptr, false)
 {
-	AcDbTableStyle* pobj = nullptr;
-	if (auto es = acdbOpenObject<AcDbTableStyle>(pobj, id.m_id, mode); es != eOk)
+	AcDbXrecord* pobj = nullptr;
+	if (auto es = acdbOpenObject<AcDbXrecord>(pobj, id.m_id, mode); es != eOk)
 		throw PyAcadErrorStatus(es);
 	this->resetImp(pobj, false, true);
 }
