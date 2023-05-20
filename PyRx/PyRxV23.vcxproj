@@ -163,6 +163,7 @@
     <ClCompile Include="PyDbTable.cpp" />
     <ClCompile Include="PyDbTableStyle.cpp" />
     <ClCompile Include="PyDbTextStyleTableRecord.cpp" />
+    <ClCompile Include="PyDbXrecord.cpp" />
     <ClCompile Include="PyEditorReactor.cpp" />
     <ClCompile Include="PyGeBoundBlock2d.cpp" />
     <ClCompile Include="PyGeBoundBlock3d.cpp" />
@@ -239,6 +240,7 @@
     <ClInclude Include="PyDbTable.h" />
     <ClInclude Include="PyDbTableStyle.h" />
     <ClInclude Include="PyDbTextStyleTableRecord.h" />
+    <ClInclude Include="PyDbXrecord.h" />
     <ClInclude Include="PyEditorReactor.h" />
     <ClInclude Include="PyException.h" />
     <ClInclude Include="PyGeBoundBlock2d.h" />

@@ -220,6 +220,9 @@
     <ClCompile Include="PyDbHatch.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
+    <ClCompile Include="PyDbXrecord.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -442,6 +445,9 @@
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
     <ClInclude Include="PyDbHatch.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbXrecord.h">
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
   </ItemGroup>
