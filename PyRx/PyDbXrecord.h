@@ -1,0 +1,40 @@
+#pragma once
+
+#include "PyDbObject.h"
+
+class PyDbObjectId;
+class PyDbDatabase;
+//---------------------------------------------------------------------------------------- -
+//makePyDbXrecordWrapper
+void makePyDbXrecordWrapper();
+
+class PyDbXrecord : public PyDbObject
+{
+public:
+	PyDbXrecord();
+	PyDbXrecord(AcDbObject* ptr, bool autoDelete);
+	PyDbXrecord(const PyDbObjectId& id, AcDb::OpenMode mode);
+	virtual ~PyDbXrecord() override = default;
+
+	boost::python::list rbChain1() const;
+	boost::python::list rbChain2(PyDbDatabase& auxDb) const;
+	Acad::ErrorStatus	setFromRbChain1(const boost::python::list& pRb);
+	Acad::ErrorStatus	setFromRbChain2(const boost::python::list& pRb, PyDbDatabase& auxDb);
+	bool				isXlateReferences() const;
+	void				setXlateReferences(bool translate);
+	AcDb::DuplicateRecordCloning mergeStyle() const;
+    void				setMergeStyle(AcDb::DuplicateRecordCloning style);
+	static std::string	className();
+	static PyRxClass	desc();
+public:
+	AcDbXrecord* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+//---------------------------------------------------------------------------------------- -
+//makePyDbXrecordIteratorWrapper
+void makePyDbXrecordIteratorWrapper();
+
+class PyDbXrecordIterator
+{
+};

@@ -25,6 +25,7 @@
 #include "DbCore.h"
 #include "PyDbMline.h"
 #include "PyDbHatch.h"
+#include "PyDbXrecord.h"
 
 using namespace boost::python;
 
@@ -82,6 +83,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbBlockBeginWrapper();
     makeAcDbBlockEndWrapper();
     makeAcDbSequenceEndWrapper();
+    makePyDbXrecordWrapper();
 
     makeAcDbTableStyleWrapper();
     makePyDbMLeaderStyleWrapper();

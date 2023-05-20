@@ -163,7 +163,7 @@ bool RxEnvironment::install()
 	{
 
 #ifdef MYDEBUGMODE//Break here
-		MessageBox(NULL, L"install", L"PyRxInstallerBreakPoint", MB_OK);
+		MessageBox(NULL, L"PyRxInstallerBreakPoint", L"PyRxInstallerBreakPoint", MB_OK);
 #endif
 		const auto pyRegPath = findPythonPath();
 		if (pyRegPath.size() == 0)
