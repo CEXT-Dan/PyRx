@@ -38,35 +38,40 @@ resbuf* listToResbuf(const boost::python::list& bpl)
                     }
                     case AcDb::kDwgInt8:
                     {
-                        pTail->rbnext = acutBuildList(code, extract<int>(tpl[1]), 0);
+                        int val = extract<int>(tpl[1]);
+                        pTail->rbnext = acutBuildList(code, val, 0);
                         if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
                         break;
                     }
                     case AcDb::kDwgInt16:
                     {
-                        pTail->rbnext = acutBuildList(code, extract<int>(tpl[1]), 0);
+                        int val = extract<int>(tpl[1]);
+                        pTail->rbnext = acutBuildList(code, val, 0);
                         if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
                         break;
                     }
                     case AcDb::kDwgInt32:
                     {
-                        pTail->rbnext = acutBuildList(code, extract<int>(tpl[1]), 0);
+                        int val = extract<int>(tpl[1]);
+                        pTail->rbnext = acutBuildList(code, val, 0);
                         if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
                         break;
                     }
                     case AcDb::kDwgReal:
-                    {
-                        pTail->rbnext = acutBuildList(code, extract<double>(tpl[1]), 0);
+                    {  
+                        double val = extract<double>(tpl[1]);
+                        pTail->rbnext = acutBuildList(code, val, 0);
                         if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
                         break;
                     }
                     case AcDb::kDwg3Real:
                     {
-                        pTail->rbnext = acutBuildList(code, asDblArray(extract<AcGePoint3d>(tpl[1])), 0);
+                        const auto val = asDblArray(extract<AcGePoint3d>(tpl[1]));
+                        pTail->rbnext = acutBuildList(code, val, 0);
                         if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
                         break;
