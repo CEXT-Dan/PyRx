@@ -259,7 +259,7 @@
             "Sequence" = "3:1"
             "Identifier" = "8:_4141C239_245F_4A4E_B92A_3345EC046A02"
             "InstallerClass" = "11:FALSE"
-            "CustomActionData" = "8:[CommonAppDataFolder]\\Autodesk\\ApplicationPlugins\\[ProductName].bundle\\Contents"
+            "CustomActionData" = "8:[CommonAppDataFolder]Autodesk\\ApplicationPlugins\\[ProductName].bundle\\Contents"
             "Run64Bit" = "11:TRUE"
             }
             "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_96937141FC23444BB0141E59D311F975"
@@ -274,7 +274,7 @@
             "Sequence" = "3:1"
             "Identifier" = "8:_3ECFDC09_03A8_4DD6_BDAF_AFEA00EDBAAC"
             "InstallerClass" = "11:FALSE"
-            "CustomActionData" = "8:[CommonAppDataFolder]\\Autodesk\\ApplicationPlugins\\[ProductName].bundle\\Contents"
+            "CustomActionData" = "8:[CommonAppDataFolder]Autodesk\\ApplicationPlugins\\[ProductName].bundle\\Contents"
             "Run64Bit" = "11:TRUE"
             }
         }
@@ -760,7 +760,7 @@
         {
             "{994432C3-9487-495D-8656-3E829A8DBDDE}:_567E5A1CC5CD4F988BEBA09BBA46F53D"
             {
-            "DefaultLocation" = "8:[CommonAppDataFolder]\\Autodesk\\ApplicationPlugins\\[ProductName].bundle"
+            "DefaultLocation" = "8:[CommonAppDataFolder]Autodesk\\ApplicationPlugins\\[ProductName].bundle"
             "Name" = "8:Program64Data"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -772,7 +772,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_C417D9F4A4F143FEA3567CC0E6251182"
             {
-            "DefaultLocation" = "8:[CommonAppDataFolder]\\Autodesk\\ApplicationPlugins\\[ProductName].bundle\\Contents"
+            "DefaultLocation" = "8:[CommonAppDataFolder]Autodesk\\ApplicationPlugins\\[ProductName].bundle\\Contents"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:TRUE"
             "Condition" = "8:"
@@ -843,7 +843,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PyRxSetup"
         "ProductCode" = "8:{51386679-D611-4231-A17E-B959075AD6CA}"
-        "PackageCode" = "8:{FAFF86A9-9A1F-4E06-B4CF-A17BB2579088}"
+        "PackageCode" = "8:{C22A4D9A-7F97-4DD3-8B3F-01917DD91FDC}"
         "UpgradeCode" = "8:{7DE3E792-70E4-4E32-BBC9-3AB04F5B000E}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

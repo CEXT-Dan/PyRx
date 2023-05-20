@@ -414,35 +414,8 @@ public:
 		}
 	}
 
-	static std::string findPythonPath()
-	{
-		std::string res;
-		const std::size_t ENV_BUF_SIZE = 8096;
-		std::unique_ptr<char[]> chars(new char[ENV_BUF_SIZE]);
-		std::size_t bufsize = ENV_BUF_SIZE;
-
-		int e = getenv_s(&bufsize, chars.get(), bufsize, "PATH");
-		if (e)
-		{
-			acutPrintf(L"FAIL");
-			return res;
-		}
-		acutPrintf(utf8_to_wstr(chars.get()).c_str());
-		std::vector<std::string> paths;
-		splitA(chars.get(), ';', paths);
-
-		for (auto& item : paths)
-		{
-			if (item.ends_with("python310\\") || item.ends_with("python310"))
-				res = item;
-		}
-		return res;
-	}
-
 	static void AcRxPyApp_doit(void)
 	{
-		std::string str = std::getenv("PATH");
-		acutPrintf(utf8_to_wstr(str).c_str());
 	}
 };
 
@@ -452,4 +425,4 @@ ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyload, pyload, ACRX_CMD_TRANS
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyreload, pyreload, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyrxver, pyrxver, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycommand, pycommand, ACRX_CMD_TRANSPARENT, NULL)
-ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _doit, doit, ACRX_CMD_TRANSPARENT, NULL)
+//ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _doit, doit, ACRX_CMD_TRANSPARENT, NULL)

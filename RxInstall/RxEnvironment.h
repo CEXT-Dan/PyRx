@@ -7,7 +7,9 @@ public:
 	std::wstring findPythonPath();
 	std::wstring findWxPythonPath();
 	std::wstring findStubPath();
+	std::wstring installDir();
 	DWORD calcBufferSize(const std::wstring& str);
+	void appendPath(std::wstring& src, const std::wstring& pathToAppend);
 
 	bool install();
 	bool uninstall();
