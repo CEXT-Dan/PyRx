@@ -79317,6 +79317,413 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class Xrecord:
+    def __eq__ (self, *args, **kwargs):
+      '''
+__eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __eq__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def __init__ (self, *args, **kwargs):
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def __ne__ (self, *args, **kwargs):
+      '''
+__ne__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __ne__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def addPersistentReactor (self, *args, **kwargs):
+      '''
+addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus addPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def assertNotifyEnabled (self, *args, **kwargs):
+      '''
+assertNotifyEnabled( (DbObject)arg1) -> None :
+
+    C++ signature :
+        void assertNotifyEnabled(class PyDbObject {lvalue})'''
+    ...
+    def assertReadEnabled (self, *args, **kwargs):
+      '''
+assertReadEnabled( (DbObject)arg1) -> None :
+
+    C++ signature :
+        void assertReadEnabled(class PyDbObject {lvalue})'''
+    ...
+    def assertWriteEnabled (self, *args, **kwargs):
+      '''
+assertWriteEnabled( (DbObject)arg1) -> None :
+
+    C++ signature :
+        void assertWriteEnabled(class PyDbObject {lvalue})'''
+    ...
+    def cancel (self, *args, **kwargs):
+      '''
+cancel( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
+    ...
+    def className (self, *args, **kwargs):
+      '''
+className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def close (self, *args, **kwargs):
+      '''
+close( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus close(class PyDbObject {lvalue})'''
+    ...
+    def createExtensionDictionary (self, *args, **kwargs):
+      '''
+createExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def database (self, *args, **kwargs):
+      '''
+database( (DbObject)arg1) -> Database :
+
+    C++ signature :
+        class PyDbDatabase database(class PyDbObject {lvalue})'''
+    ...
+    def desc (self, *args, **kwargs):
+      '''
+desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def disableUndoRecording (self, *args, **kwargs):
+      '''
+disableUndoRecording( (DbObject)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void disableUndoRecording(class PyDbObject {lvalue},bool)'''
+    ...
+    def downgradeOpen (self, *args, **kwargs):
+      '''
+downgradeOpen( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus downgradeOpen(class PyDbObject {lvalue})'''
+    ...
+    def downgradeToNotify (self, *args, **kwargs):
+      '''
+downgradeToNotify( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus downgradeToNotify(class PyDbObject {lvalue},bool)'''
+    ...
+    def erase (self, *args, **kwargs):
+      '''
+erase( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+    ...
+    def extensionDictionary (self, *args, **kwargs):
+      '''
+extensionDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId extensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def handOverTo (self, *args, **kwargs):
+      '''
+handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasPersistentReactor (self, *args, **kwargs):
+      '''
+hasPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> bool :
+
+    C++ signature :
+        bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def isA (self, *args, **kwargs):
+      '''
+isA( (Drawable)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+    ...
+    def isAProxy (self, *args, **kwargs):
+      '''
+isAProxy( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isAProxy(class PyDbObject {lvalue})'''
+    ...
+    def isCancelling (self, *args, **kwargs):
+      '''
+isCancelling( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isCancelling(class PyDbObject {lvalue})'''
+    ...
+    def isEraseStatusToggled (self, *args, **kwargs):
+      '''
+isEraseStatusToggled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isEraseStatusToggled(class PyDbObject {lvalue})'''
+    ...
+    def isErased (self, *args, **kwargs):
+      '''
+isErased( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isErased(class PyDbObject {lvalue})'''
+    ...
+    def isModified (self, *args, **kwargs):
+      '''
+isModified( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isModified(class PyDbObject {lvalue})'''
+    ...
+    def isModifiedGraphics (self, *args, **kwargs):
+      '''
+isModifiedGraphics( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isModifiedGraphics(class PyDbObject {lvalue})'''
+    ...
+    def isModifiedXData (self, *args, **kwargs):
+      '''
+isModifiedXData( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isModifiedXData(class PyDbObject {lvalue})'''
+    ...
+    def isNewObject (self, *args, **kwargs):
+      '''
+isNewObject( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNewObject(class PyDbObject {lvalue})'''
+    ...
+    def isNotifyEnabled (self, *args, **kwargs):
+      '''
+isNotifyEnabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNotifyEnabled(class PyDbObject {lvalue})'''
+    ...
+    def isNotifying (self, *args, **kwargs):
+      '''
+isNotifying( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNotifying(class PyDbObject {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs):
+      '''
+isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def isReadEnabled (self, *args, **kwargs):
+      '''
+isReadEnabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isReadEnabled(class PyDbObject {lvalue})'''
+    ...
+    def isReallyClosing (self, *args, **kwargs):
+      '''
+isReallyClosing( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isReallyClosing(class PyDbObject {lvalue})'''
+    ...
+    def isTransactionResident (self, *args, **kwargs):
+      '''
+isTransactionResident( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isTransactionResident(class PyDbObject {lvalue})'''
+    ...
+    def isUndoRecordingDisabled (self, *args, **kwargs):
+      '''
+isUndoRecordingDisabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isUndoRecordingDisabled(class PyDbObject {lvalue})'''
+    ...
+    def isUndoing (self, *args, **kwargs):
+      '''
+isUndoing( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isUndoing(class PyDbObject {lvalue})'''
+    ...
+    def isWriteEnabled (self, *args, **kwargs):
+      '''
+isWriteEnabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isWriteEnabled(class PyDbObject {lvalue})'''
+    ...
+    def isXlateReferences (self, *args, **kwargs):
+      '''
+isXlateReferences( (Xrecord)arg1) -> bool :
+
+    C++ signature :
+        bool isXlateReferences(class PyDbXrecord {lvalue})'''
+    ...
+    def mergeStyle (self, *args, **kwargs):
+      '''
+mergeStyle( (Xrecord)arg1) -> DuplicateRecordCloning :
+
+    C++ signature :
+        enum AcDb::DuplicateRecordCloning mergeStyle(class PyDbXrecord {lvalue})'''
+    ...
+    def objectId (self, *args, **kwargs):
+      '''
+objectId( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId objectId(class PyDbObject {lvalue})'''
+    ...
+    def ownerId (self, *args, **kwargs):
+      '''
+ownerId( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
+    ...
+    def rbChain (self, *args, **kwargs):
+      '''
+rbChain( (Xrecord)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list rbChain(class PyDbXrecord {lvalue})
+
+rbChain( (Xrecord)arg1, (Database)arg2) -> list :
+
+    C++ signature :
+        class boost::python::list rbChain(class PyDbXrecord {lvalue},class PyDbDatabase {lvalue})'''
+    ...
+    def releaseExtensionDictionary (self, *args, **kwargs):
+      '''
+releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def removePersistentReactor (self, *args, **kwargs):
+      '''
+removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removePersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def setFromRbChain (self, *args, **kwargs):
+      '''
+setFromRbChain( (Xrecord)arg1, (list)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setFromRbChain(class PyDbXrecord {lvalue},class boost::python::list)
+
+setFromRbChain( (Xrecord)arg1, (list)arg2, (Database)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setFromRbChain(class PyDbXrecord {lvalue},class boost::python::list,class PyDbDatabase {lvalue})'''
+    ...
+    def setMergeStyle (self, *args, **kwargs):
+      '''
+setMergeStyle( (Xrecord)arg1, (DuplicateRecordCloning)arg2) -> None :
+
+    C++ signature :
+        void setMergeStyle(class PyDbXrecord {lvalue},enum AcDb::DuplicateRecordCloning)'''
+    ...
+    def setOwnerId (self, *args, **kwargs):
+      '''
+setOwnerId( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setOwnerId(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def setXData (self, *args, **kwargs):
+      '''
+setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setXData(class PyDbObject {lvalue},class boost::python::list)'''
+    ...
+    def setXlateReferences (self, *args, **kwargs):
+      '''
+setXlateReferences( (Xrecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setXlateReferences(class PyDbXrecord {lvalue},bool)'''
+    ...
+    def swapIdWith (self, *args, **kwargs):
+      '''
+swapIdWith( (DbObject)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus swapIdWith(class PyDbObject {lvalue},class PyDbObjectId {lvalue},bool,bool)'''
+    ...
+    def upgradeFromNotify (self, *args, **kwargs):
+      '''
+upgradeFromNotify( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus upgradeFromNotify(class PyDbObject {lvalue},bool {lvalue})'''
+    ...
+    def upgradeOpen (self, *args, **kwargs):
+      '''
+upgradeOpen( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus upgradeOpen(class PyDbObject {lvalue})'''
+    ...
+    def xData (self, *args, **kwargs):
+      '''
+xData( (DbObject)arg1, (str)arg2) -> list :
+
+    C++ signature :
+        class boost::python::list xData(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def xDataTransformBy (self, *args, **kwargs):
+      '''
+xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus xDataTransformBy(class PyDbObject {lvalue},class AcGeMatrix3d)'''
+    ...
+
 class XrefStatus:
     def __add__ (self, value, /):
       '''Return self+value.'''

@@ -23,7 +23,7 @@ public:
 	bool				isXlateReferences() const;
 	void				setXlateReferences(bool translate);
 	AcDb::DuplicateRecordCloning mergeStyle() const;
-    void				setMergeStyle(AcDb::DuplicateRecordCloning style);
+	void				setMergeStyle(AcDb::DuplicateRecordCloning style);
 	static std::string	className();
 	static PyRxClass	desc();
 public:
@@ -31,10 +31,13 @@ public:
 };
 
 
+#ifdef NEVER
 //---------------------------------------------------------------------------------------- -
 //makePyDbXrecordIteratorWrapper
 void makePyDbXrecordIteratorWrapper();
 
 class PyDbXrecordIterator
 {
+
 };
+#endif
