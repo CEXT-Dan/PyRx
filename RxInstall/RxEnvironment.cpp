@@ -2,16 +2,6 @@
 #include "RxEnvironment.h"
 #include "Registry.hpp"
 
-std::wstring installDir(MSIHANDLE hInstall)
-{
-	std::wstring res;
-	DWORD dwSize = MAX_PATH;
-	std::unique_ptr<wchar_t[]> buf(new wchar_t[MAX_PATH]());
-	if (auto result = MsiGetProperty(hInstall, TEXT("CustomActionData"), buf.get(), &dwSize); result == ERROR_SUCCESS)
-		res = buf.get();
-	return res;
-}
-
 void showPythonNotFound(MSIHANDLE hInstall)
 {
 	auto hRecord = MsiCreateRecord(1);
@@ -59,7 +49,7 @@ std::wstring RxEnvironment::findPythonPathPath()
 	}
 	catch (...)
 	{
-		showFailMessage(hInstall, L"exception in findPythonPathPath");
+		showFailMessage(hInstall, L"exception in findPythonPathPath! ");
 	}
 	return res;
 }
@@ -86,7 +76,7 @@ std::wstring RxEnvironment::findPythonPath()
 	}
 	catch (...)
 	{
-		showFailMessage(hInstall, L"exception in findPythonPath");
+		showFailMessage(hInstall, L"exception in findPythonPath! ");
 	}
 	return res;
 }
@@ -114,7 +104,7 @@ std::wstring RxEnvironment::findWxPythonPath()
 	}
 	catch (...)
 	{
-		showFailMessage(hInstall, L"exception in findWxPythonPath");
+		showFailMessage(hInstall, L"exception in findWxPythonPath! ");
 	}
 	return res;
 }
@@ -139,14 +129,32 @@ std::wstring RxEnvironment::findStubPath()
 	}
 	catch (...)
 	{
-		showFailMessage(hInstall, L"exception in findStubPath");
+		showFailMessage(hInstall, L"exception in findStubPath! ");
 	}
+	return res;
+}
+
+std::wstring RxEnvironment::installDir()
+{
+	std::wstring res;
+	DWORD dwSize = MAX_PATH;
+	std::unique_ptr<wchar_t[]> buf(new wchar_t[MAX_PATH]());
+	if (auto result = MsiGetProperty(hInstall, TEXT("CustomActionData"), buf.get(), &dwSize); result == ERROR_SUCCESS)
+		res = buf.get();
 	return res;
 }
 
 DWORD RxEnvironment::calcBufferSize(const std::wstring& str)
 {
 	return ((DWORD)str.size() + 1) * sizeof(wchar_t);
+}
+
+void RxEnvironment::appendPath(std::wstring& src, const std::wstring& pathToAppend)
+{
+	rtrim(src, ';');
+	src += L";";
+	src += pathToAppend;
+	src += L";";
 }
 
 bool RxEnvironment::install()
@@ -166,21 +174,19 @@ bool RxEnvironment::install()
 		std::filesystem::path wxLibPath = pyRegPath;
 		wxLibPath /= L"Lib\\site-packages\\wx";
 
-		std::error_code _Ec;
-		if (!std::filesystem::exists(wxLibPath, _Ec))
+		if (std::error_code _Ec; !std::filesystem::exists(wxLibPath, _Ec))
 		{
 			showWxPythonNotFound(hInstall);
 			return true;
 		}
-		const auto wxRegPath = findWxPythonPath();
-		if (wxRegPath.size() == 0)
+		
+		if (const auto wxRegPath = findWxPythonPath(); wxRegPath.size() == 0)
 		{
 			if (auto result = win32::RegGetString(HKEY_CURRENT_USER, L"Environment", L"PATH"); result.first == ERROR_SUCCESS)
 			{
-				std::wstring path = result.second;
-				path += L";";
-				path += wxLibPath;
 
+				std::wstring path = result.second;
+				appendPath(path, wxLibPath);
 				auto key = win32::RegOpenKey(HKEY_CURRENT_USER, L"Environment");
 				if (key.IsValid())
 				{
@@ -190,21 +196,18 @@ bool RxEnvironment::install()
 				}
 			}
 		}
-		const auto regStubPath = findStubPath();
-		if (regStubPath.size() == 0)
+		
+		if (const auto regStubPath = findStubPath(); regStubPath.size() == 0)
 		{
-			std::filesystem::path stub = installDir(hInstall);
+			std::filesystem::path stub = installDir();
 			stub /= L"PyRxStubs";
 
 			std::wstring path = findPythonPathPath();
-			if (path.size() != 0)
 			{
-				path += L";";
-				path += stub;
-			}
-			else
-			{
-				path = stub.wstring();
+				if (path.size() != 0)
+					appendPath(path, stub);
+				else
+					path = stub.wstring();
 			}
 			if (auto rootKey = win32::RegOpenKey(HKEY_CURRENT_USER, L"Environment"); rootKey.IsValid())
 			{
@@ -216,7 +219,7 @@ bool RxEnvironment::install()
 	}
 	catch (...)
 	{
-		showFailMessage(hInstall, L"fail with exception");
+		showFailMessage(hInstall, L"Install failed with exception! ");
 	}
 	return true;
 }
