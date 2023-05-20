@@ -187,7 +187,6 @@ bool RxEnvironment::install()
 					const DWORD sz = calcBufferSize(path);
 					if (RegSetValueEx(key.Get(), L"PATH", 0, REG_SZ, (LPBYTE)path.c_str(), sz) != ERROR_SUCCESS)
 						showFailedToWrite(hInstall);
-
 				}
 			}
 		}

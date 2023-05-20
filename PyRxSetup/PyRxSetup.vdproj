@@ -169,6 +169,12 @@
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_FE0D2F90E0404850B7BA577410EBEE6C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -253,7 +259,7 @@
             "Sequence" = "3:1"
             "Identifier" = "8:_4141C239_245F_4A4E_B92A_3345EC046A02"
             "InstallerClass" = "11:FALSE"
-            "CustomActionData" = "8:"
+            "CustomActionData" = "8:[CommonAppDataFolder]\\Autodesk\\ApplicationPlugins\\[ProductName].bundle\\Contents"
             "Run64Bit" = "11:TRUE"
             }
             "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_96937141FC23444BB0141E59D311F975"
@@ -268,7 +274,7 @@
             "Sequence" = "3:1"
             "Identifier" = "8:_3ECFDC09_03A8_4DD6_BDAF_AFEA00EDBAAC"
             "InstallerClass" = "11:FALSE"
-            "CustomActionData" = "8:[LocalAppDataFolder]PyRx"
+            "CustomActionData" = "8:[CommonAppDataFolder]\\Autodesk\\ApplicationPlugins\\[ProductName].bundle\\Contents"
             "Run64Bit" = "11:TRUE"
             }
         }
@@ -726,37 +732,47 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FE0D2F90E0404850B7BA577410EBEE6C"
+            {
+            "SourcePath" = "8:Include\\PackageContents.xml"
+            "TargetName" = "8:PackageContents.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_567E5A1CC5CD4F988BEBA09BBA46F53D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
         }
         "Folder"
         {
-            "{1525181F-901A-416C-8A58-119130FE478E}:_22AE2312DFEC4E64A2662D51E008237B"
+            "{994432C3-9487-495D-8656-3E829A8DBDDE}:_567E5A1CC5CD4F988BEBA09BBA46F53D"
             {
-            "Name" = "8:#1915"
+            "DefaultLocation" = "8:[CommonAppDataFolder]\\Autodesk\\ApplicationPlugins\\[ProductName].bundle"
+            "Name" = "8:Program64Data"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
-            "Property" = "8:AppDataFolder"
-                "Folders"
-                {
-                }
-            }
-            "{1525181F-901A-416C-8A58-119130FE478E}:_3DE002FE10B34CE3B30078CFAFC79DA8"
-            {
-            "Name" = "8:#1916"
-            "AlwaysCreate" = "11:FALSE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Property" = "8:DesktopFolder"
+            "Property" = "8:PRODUCTROOT"
                 "Folders"
                 {
                 }
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_C417D9F4A4F143FEA3567CC0E6251182"
             {
-            "DefaultLocation" = "8:[LocalAppDataFolder]\\PyRx"
+            "DefaultLocation" = "8:[CommonAppDataFolder]\\Autodesk\\ApplicationPlugins\\[ProductName].bundle\\Contents"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:TRUE"
             "Condition" = "8:"
@@ -810,17 +826,6 @@
                     }
                 }
             }
-            "{1525181F-901A-416C-8A58-119130FE478E}:_C88EB71494354B6594B3BDD0847442AB"
-            {
-            "Name" = "8:#1919"
-            "AlwaysCreate" = "11:FALSE"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Property" = "8:ProgramMenuFolder"
-                "Folders"
-                {
-                }
-            }
         }
         "LaunchCondition"
         {
@@ -838,7 +843,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PyRxSetup"
         "ProductCode" = "8:{51386679-D611-4231-A17E-B959075AD6CA}"
-        "PackageCode" = "8:{E862DE96-CD76-43A6-AB6F-91CB1A0B1DFA}"
+        "PackageCode" = "8:{FAFF86A9-9A1F-4E06-B4CF-A17BB2579088}"
         "UpgradeCode" = "8:{7DE3E792-70E4-4E32-BBC9-3AB04F5B000E}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
