@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationPackage SchemaVersion="1.0" AutodeskProduct="AutoCAD" ProductType="Application" 
+Name="PyRx" AppVersion="1.2.319" 
+Description="Python wrappers" 
+Author="PyRx" 
+
+
+ProductCode="{51386679-D611-4231-A17E-B959075AD6CA}" 
+UpgradeCode="{7DE3E792-70E4-4E32-BBC9-3AB04F5B000E}" 
+SupportedLocales="Enu" FriendlyVersion="1.1.6">	
+
+  <CompanyDetails Name="PyRx" Phone="867-5309" Url="https://github.com/CEXT-Dan/PyRx" Email="support@cadext.com" />
+  <RuntimeRequirements />
+  
+  <Components Description="2022 to 2024 Parts">
+    <RuntimeRequirements OS="Win64" Platform="AutoCAD*|ADSTPR" SeriesMin="R24.1" SeriesMax="R24.3" />
+	
+	<ComponentEntry AppName="Python wrappers" Version="1.1.6" ModuleName="./Contents/PyRx24.arx" 
+	AppDescription="Python wrappers" LoadOnAutoCADStartup="True">
+    </ComponentEntry>
+	
+  </Components>
+</ApplicationPackage>
