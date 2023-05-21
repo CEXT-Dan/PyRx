@@ -6,7 +6,7 @@ void makeAcDbFieldtWrapper()
 {
     class_<PyDbField, bases<PyDbObject>>("Field")
         .def(init<>())
-        .def(init<std::string&, bool>())
+        .def(init<const std::string&, bool>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("setInObject", &PyDbField::setInObject)
         .def("postInDatabase", &PyDbField::postInDatabase)
@@ -22,6 +22,9 @@ void makeAcDbFieldtWrapper()
         .def("getFormat", &PyDbField::getFormat)
         .def("setFormat", &PyDbField::setFormat)
         .def("getValue", &PyDbField::getValue)
+        .def("evaluate", &PyDbField::evaluate1)
+        .def("evaluate", &PyDbField::evaluate2)
+        .def("evaluate", &PyDbField::evaluate3)
         .def("className", &PyDbField::className).staticmethod("className")
         .def("desc", &PyDbField::desc).staticmethod("desc")
         ;
@@ -90,12 +93,12 @@ void makeAcDbFieldtWrapper()
 }
 
 PyDbField::PyDbField()
-    : PyDbField(new AcDbField(), true)
+    : PyDbObject(new AcDbField(), true)
 {
 }
 
 PyDbField::PyDbField(const std::string& pszFieldCode, bool bTextField)
-    : PyDbField(new AcDbField(utf8_to_wstr(pszFieldCode).c_str(), bTextField), true)
+    : PyDbObject(new AcDbField(utf8_to_wstr(pszFieldCode).c_str(), bTextField), true)
 {
 }
 
@@ -189,6 +192,21 @@ Acad::ErrorStatus PyDbField::setFormat(const std::string& pszFormat)
 std::string PyDbField::getValue(void) const
 {
     return wstr_to_utf8(impObj()->getValue());
+}
+
+Acad::ErrorStatus PyDbField::evaluate1()
+{
+    return impObj()->evaluate(32, acdbHostApplicationServices()->workingDatabase());
+} 
+
+Acad::ErrorStatus PyDbField::evaluate2(AcDbField::EvalContext nContext)
+{
+    return impObj()->evaluate(nContext, acdbHostApplicationServices()->workingDatabase());
+}
+
+Acad::ErrorStatus PyDbField::evaluate3(AcDbField::EvalContext nContext, PyDbDatabase& db)
+{
+    return impObj()->evaluate(nContext, db.impObj());
 }
 
 std::string PyDbField::className()

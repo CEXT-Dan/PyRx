@@ -31,8 +31,11 @@ public:
     std::string getFormat(void) const;
     Acad::ErrorStatus setFormat(const std::string& pszFormat);
 
-
     std::string getValue(void) const;
+
+	Acad::ErrorStatus evaluate1();
+    Acad::ErrorStatus evaluate2(AcDbField::EvalContext nContext);
+    Acad::ErrorStatus evaluate3(AcDbField::EvalContext nContext, PyDbDatabase& db);
 
     static std::string className();
     static PyRxClass desc();
