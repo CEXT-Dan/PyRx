@@ -33,7 +33,7 @@ def PyRxCmd_pymakefield():
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.kForWrite)
         model.appendAcDbEntity(mtext)
 
-        field = Db.Field("%<\\AcExpr (9+9*42)>%", True)
+        field = Db.Field("%<\\AcExpr (9+9*42)>%")
         mtext.setField(field)
         field.evaluate()
 
