@@ -3,6 +3,8 @@
 #include "PyDbDatabase.h"
 #include "PyDbObjectId.h"
 #include "ResultBuffer.h"
+#include "PyDbField.h"
+
 using namespace boost::python;
 void makeAcDbObjectWrapper()
 {
@@ -55,6 +57,14 @@ void makeAcDbObjectWrapper()
         .def("addPersistentReactor", &PyDbObject::addPersistentReactor)
         .def("removePersistentReactor", &PyDbObject::removePersistentReactor)
         .def("hasPersistentReactor", &PyDbObject::hasPersistentReactor)
+        .def("hasFields", &PyDbObject::hasFields)
+        .def("getField", &PyDbObject::getField1)
+        .def("getField", &PyDbObject::getField2)
+        .def("setField", &PyDbObject::setField1)
+        .def("setField", &PyDbObject::setField2)
+        .def("removeField", &PyDbObject::removeField1)
+        .def("removeField", &PyDbObject::removeField2)
+        .def("getFieldDictionary", &PyDbObject::getFieldDictionary)
         .def("desc", &PyDbObject::desc).staticmethod("desc")
         .def("className", &PyDbObject::className).staticmethod("className")
         ;
@@ -299,6 +309,58 @@ Acad::ErrorStatus PyDbObject::removePersistentReactor(const PyDbObjectId& objId)
 bool PyDbObject::hasPersistentReactor(const PyDbObjectId& objId) const
 {
     return impObj()->hasPersistentReactor(objId.m_id);
+}
+
+bool PyDbObject::hasFields(void) const
+{
+    return  impObj()->hasFields();
+}
+
+PyDbObjectId PyDbObject::getField1()
+{
+	AcDbObjectId id;
+	if (auto es = impObj()->getField(L"TEXT", id); es != eOk)
+		throw PyAcadErrorStatus(es);
+	return PyDbObjectId(id);
+}
+
+PyDbObjectId PyDbObject::getField2(const std::string& propName)
+{
+    AcDbObjectId id;
+    if (auto es = impObj()->getField(utf8_to_wstr(propName).c_str(), id); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return PyDbObjectId(id);
+}
+
+PyDbObjectId PyDbObject::setField1(PyDbField& pField)
+{
+	AcDbObjectId id;
+	if (auto es = impObj()->setField(L"TEXT", pField.impObj(), id); es != eOk)
+		throw PyAcadErrorStatus(es);
+	return PyDbObjectId(id);
+}
+
+PyDbObjectId PyDbObject::setField2(const std::string& propName, PyDbField& pField)
+{
+	AcDbObjectId id;
+	if (auto es = impObj()->setField(utf8_to_wstr(propName).c_str(), pField.impObj(), id); es != eOk)
+		throw PyAcadErrorStatus(es);
+	return PyDbObjectId(id);
+}
+
+Acad::ErrorStatus PyDbObject::removeField1(const PyDbObjectId& fieldId)
+{
+    return impObj()->removeField(fieldId.m_id);
+}
+
+Acad::ErrorStatus PyDbObject::removeField2(const std::string& propName)
+{
+    return impObj()->removeField(utf8_to_wstr(propName).c_str());
+}
+
+PyDbObjectId PyDbObject::getFieldDictionary(void) const
+{
+	return PyDbObjectId(impObj()->getFieldDictionary());
 }
 
 PyRxClass PyDbObject::desc()

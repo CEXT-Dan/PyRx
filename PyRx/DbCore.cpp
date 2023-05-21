@@ -20,6 +20,7 @@ void makeDbCoreWrapper()
         .def("openDbEntity", &DbCore::openDbEntity).staticmethod("openDbEntity")
         .def("regApp", &DbCore::regApp).staticmethod("regApp")
         .def("updateDimension", &DbCore::updateDimension).staticmethod("updateDimension")
+        .def("resbufTest", &DbCore::resbufTest).staticmethod("resbufTest")
         ;
 }
 
@@ -108,4 +109,10 @@ bool DbCore::regApp(const std::string& app)
 Acad::ErrorStatus DbCore::updateDimension(const PyDbObjectId& id)
 {
     return acdbUpdateDimension(id.m_id);
+}
+
+boost::python::list DbCore::resbufTest(const boost::python::list& list)
+{
+    AcResBufPtr ptr(listToResbuf(list));
+    return resbufToList(ptr.get());
 }

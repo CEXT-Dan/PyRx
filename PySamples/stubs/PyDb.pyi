@@ -599,6 +599,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -626,6 +645,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -994,6 +1020,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -1235,6 +1273,18 @@ setElevation( (Dimension)arg1, (float)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setElevation(class PyDbDimension {lvalue},double)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setHorizontalRefTextRotation (self, *args, **kwargs):
       '''
@@ -2235,6 +2285,25 @@ getEndPoint( (Curve)arg1) -> Point3d :
     C++ signature :
         class AcGePoint3d getEndPoint(class PyDbCurve {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getFirstDeriv (self, *args, **kwargs):
       '''
 getFirstDeriv( (Curve)arg1, (float)arg2) -> Vector3d :
@@ -2363,6 +2432,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -2649,6 +2725,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -2724,6 +2812,18 @@ setEndAngle( (Arc)arg1, (float)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setEndAngle(class PyDbArc {lvalue},double)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -3430,6 +3530,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -3457,6 +3576,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasLeader (self, *args, **kwargs):
       '''
@@ -3832,6 +3958,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -4101,6 +4239,18 @@ setElevation( (Dimension)arg1, (float)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setElevation(class PyDbDimension {lvalue},double)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setHasLeader (self, *args, **kwargs):
       '''
@@ -4939,6 +5089,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -4973,6 +5142,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -5350,6 +5526,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -5425,6 +5613,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setFieldLength (self, *args, **kwargs):
       '''
@@ -6074,6 +6274,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -6108,6 +6327,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -6485,6 +6711,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -6565,6 +6803,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setFieldLength (self, *args, **kwargs):
       '''
@@ -7129,6 +7379,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -7156,6 +7425,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -7407,6 +7683,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -7461,6 +7749,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -7864,6 +8164,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -7891,6 +8210,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -8142,6 +8468,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -8196,6 +8534,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -8661,6 +9011,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -8688,6 +9057,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -8967,6 +9343,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -9049,6 +9437,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -9572,6 +9972,25 @@ getAt( (BlockTable)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId getAt(class PyDbBlockTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def handOverTo (self, *args, **kwargs):
       '''
 handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
@@ -9590,6 +10009,13 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
 
     C++ signature :
         bool has(class PyDbSymbolTable {lvalue},class PyDbObjectId)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -9752,12 +10178,36 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus removePersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setOwnerId (self, *args, **kwargs):
       '''
@@ -10006,6 +10456,25 @@ getErasedBlockReferenceIds( (BlockTableRecord)arg1) -> list :
     C++ signature :
         class boost::python::list getErasedBlockReferenceIds(class PyDbBlockTableRecord {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getLayoutId (self, *args, **kwargs):
       '''
 getLayoutId( (BlockTableRecord)arg1) -> ObjectId :
@@ -10033,6 +10502,13 @@ hasAttributeDefinitions( (BlockTableRecord)arg1) -> bool :
 
     C++ signature :
         bool hasAttributeDefinitions(class PyDbBlockTableRecord {lvalue})'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -10286,6 +10762,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -10320,6 +10808,18 @@ setExplodable( (BlockTableRecord)arg1, (bool)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setExplodable(class PyDbBlockTableRecord {lvalue},bool)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setIsFromOverlayReference (self, *args, **kwargs):
       '''
@@ -12110,6 +12610,25 @@ getEndPoint( (Curve)arg1) -> Point3d :
     C++ signature :
         class AcGePoint3d getEndPoint(class PyDbCurve {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getFirstDeriv (self, *args, **kwargs):
       '''
 getFirstDeriv( (Curve)arg1, (float)arg2) -> Vector3d :
@@ -12238,6 +12757,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -12517,6 +13043,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -12599,6 +13137,18 @@ setDiameter( (Circle)arg1, (float)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setDiameter(class PyDbCircle {lvalue},double)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -13373,6 +13923,13 @@ regApp( (str)arg1) -> bool :
     C++ signature :
         bool regApp(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def resbufTest (self, *args, **kwargs):
+      '''
+resbufTest( (list)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list resbufTest(class boost::python::list)'''
+    ...
     def updateDimension (self, *args, **kwargs):
       '''
 updateDimension( (ObjectId)arg1) -> ErrorStatus :
@@ -13630,6 +14187,25 @@ getEndPoint( (Curve)arg1) -> Point3d :
     C++ signature :
         class AcGePoint3d getEndPoint(class PyDbCurve {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getFirstDeriv (self, *args, **kwargs):
       '''
 getFirstDeriv( (Curve)arg1, (float)arg2) -> Vector3d :
@@ -13758,6 +14334,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -14023,6 +14606,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -14084,6 +14679,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -17583,12 +18190,38 @@ extensionDictionary( (DbObject)arg1) -> ObjectId :
     C++ signature :
         class PyDbObjectId extensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def handOverTo (self, *args, **kwargs):
       '''
 handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -17744,12 +18377,36 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus removePersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setOwnerId (self, *args, **kwargs):
       '''
@@ -18238,6 +18895,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -18265,6 +18941,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -18619,6 +19302,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -18881,6 +19576,18 @@ setFarChordPoint( (DiametricDimension)arg1, (Point3d)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setFarChordPoint(class PyDbDiametricDimension {lvalue},class AcGePoint3d)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setHorizontalRefTextRotation (self, *args, **kwargs):
       '''
@@ -19557,6 +20264,25 @@ getAt( (Dictionary)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId getAt(class PyDbDictionary {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def handOverTo (self, *args, **kwargs):
       '''
 handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
@@ -19570,6 +20296,13 @@ has( (Dictionary)arg1, (str)arg2) -> bool :
 
     C++ signature :
         bool has(class PyDbDictionary {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -19725,12 +20458,36 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus removePersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setOwnerId (self, *args, **kwargs):
       '''
@@ -20069,6 +20826,25 @@ getAt( (DimStyleTable)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId getAt(class PyDbDimStyleTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def handOverTo (self, *args, **kwargs):
       '''
 handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
@@ -20087,6 +20863,13 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
 
     C++ signature :
         bool has(class PyDbSymbolTable {lvalue},class PyDbObjectId)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -20249,12 +21032,36 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus removePersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setOwnerId (self, *args, **kwargs):
       '''
@@ -20443,6 +21250,25 @@ extensionDictionary( (DbObject)arg1) -> ObjectId :
     C++ signature :
         class PyDbObjectId extensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getName (self, *args, **kwargs):
       '''
 getName( (SymbolTableRecord)arg1) -> str :
@@ -20456,6 +21282,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -20632,12 +21465,36 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus removePersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setName (self, *args, **kwargs):
       '''
@@ -21080,6 +21937,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -21107,6 +21983,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -21454,6 +22337,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -21688,6 +22583,18 @@ setElevation( (Dimension)arg1, (float)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setElevation(class PyDbDimension {lvalue},double)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setHorizontalRefTextRotation (self, *args, **kwargs):
       '''
@@ -23595,6 +24502,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -23622,6 +24548,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -23873,6 +24806,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -23927,6 +24872,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -26457,6 +27414,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -26484,6 +27460,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -26735,6 +27718,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -26789,6 +27784,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -27222,6 +28229,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -27256,6 +28282,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -27528,6 +28561,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -27582,6 +28627,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -28012,6 +29069,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -28046,6 +29122,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -28318,6 +29401,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -28372,6 +29467,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -28874,6 +29981,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -28901,6 +30027,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -29166,6 +30299,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -29288,6 +30433,18 @@ setDimtxt( (Fcf)arg1, (float)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setDimtxt(class PyDbFcf {lvalue},double)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -29559,7 +30716,7 @@ __init__( (object)arg1) -> None :
 __init__( (object)arg1, (str)arg2, (bool)arg3) -> None :
 
     C++ signature :
-        void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > {lvalue},bool)
+        void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -29685,6 +30842,23 @@ erase( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
     ...
+    def evaluate (self, *args, **kwargs):
+      '''
+evaluate( (Field)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus evaluate(class PyDbField {lvalue})
+
+evaluate( (Field)arg1, (FieldEvalContext)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus evaluate(class PyDbField {lvalue},enum AcDbField::EvalContext)
+
+evaluate( (Field)arg1, (FieldEvalContext)arg2, (Database)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus evaluate(class PyDbField {lvalue},enum AcDbField::EvalContext,class PyDbDatabase {lvalue})'''
+    ...
     def evaluationOption (self, *args, **kwargs):
       '''
 evaluationOption( (Field)arg1) -> FieldEvalOption :
@@ -29713,6 +30887,25 @@ extensionDictionary( (DbObject)arg1) -> ObjectId :
     C++ signature :
         class PyDbObjectId extensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getFormat (self, *args, **kwargs):
       '''
 getFormat( (Field)arg1) -> str :
@@ -29733,6 +30926,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -29902,6 +31102,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -29922,6 +31134,18 @@ setEvaluatorId( (Field)arg1, (str)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setEvaluatorId(class PyDbField {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setFormat (self, *args, **kwargs):
       '''
@@ -31506,6 +32730,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -31624,6 +32867,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -32008,6 +33258,18 @@ removeAssocObjIds( (Hatch)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus removeAssocObjIds(class PyDbHatch {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removeHatchLines (self, *args, **kwargs):
       '''
 removeHatchLines( (Hatch)arg1) -> None :
@@ -32097,6 +33359,18 @@ setElevation( (Hatch)arg1, (float)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setElevation(class PyDbHatch {lvalue},double)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setGradient (self, *args, **kwargs):
       '''
@@ -33631,6 +34905,25 @@ extensionDictionary( (DbObject)arg1) -> ObjectId :
     C++ signature :
         class PyDbObjectId extensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getName (self, *args, **kwargs):
       '''
 getName( (SymbolTableRecord)arg1) -> str :
@@ -33651,6 +34944,13 @@ hasAnyOverrides( (LayerTableRecord)arg1) -> bool :
 
     C++ signature :
         bool hasAnyOverrides(class PyDbLayerTableRecord {lvalue})'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasOverrides (self, *args, **kwargs):
       '''
@@ -33962,6 +35262,18 @@ removeColorOverride( (LayerTableRecord)arg1, (ObjectId)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus removeColorOverride(class PyDbLayerTableRecord {lvalue},class PyDbObjectId)'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removeLineWeightOverride (self, *args, **kwargs):
       '''
 removeLineWeightOverride( (LayerTableRecord)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -34022,6 +35334,18 @@ setDescription( (LayerTableRecord)arg1, (str)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setDescription(class PyDbLayerTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setIsFrozen (self, *args, **kwargs):
       '''
@@ -34619,6 +35943,25 @@ getEndPoint( (Curve)arg1) -> Point3d :
     C++ signature :
         class AcGePoint3d getEndPoint(class PyDbCurve {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getFirstDeriv (self, *args, **kwargs):
       '''
 getFirstDeriv( (Curve)arg1, (float)arg2) -> Vector3d :
@@ -34761,6 +36104,13 @@ hasArrowHead( (Leader)arg1) -> bool :
 
     C++ signature :
         bool hasArrowHead(class PyDbLeader {lvalue})'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasHookLine (self, *args, **kwargs):
       '''
@@ -35068,6 +36418,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removeLastVertex (self, *args, **kwargs):
       '''
 removeLastVertex( (Leader)arg1) -> None :
@@ -35239,6 +36601,18 @@ setDimtxt( (Leader)arg1, (float)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setDimtxt(class PyDbLeader {lvalue},double)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setHasArrowHead (self, *args, **kwargs):
       '''
@@ -35772,6 +37146,25 @@ getEndPoint( (Curve)arg1) -> Point3d :
     C++ signature :
         class AcGePoint3d getEndPoint(class PyDbCurve {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getFirstDeriv (self, *args, **kwargs):
       '''
 getFirstDeriv( (Curve)arg1, (float)arg2) -> Vector3d :
@@ -35900,6 +37293,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -36172,6 +37572,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -36240,6 +37652,18 @@ setEndPoint( (Line)arg1, (Point3d)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setEndPoint(class PyDbLine {lvalue},class AcGePoint3d)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -36911,6 +38335,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -36938,6 +38381,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -37285,6 +38735,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -37533,6 +38995,18 @@ setExtArcOn( (LineAngularDimension2)arg1, (bool)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setExtArcOn(class PyDb2LineAngularDimension {lvalue},bool)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setHorizontalRefTextRotation (self, *args, **kwargs):
       '''
@@ -38660,6 +40134,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -38687,6 +40180,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -38938,6 +40438,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -38992,6 +40504,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -39471,6 +40995,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -39498,6 +41041,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -39777,6 +41327,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -39887,6 +41449,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -40553,6 +42127,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getFirstVertex (self, *args, **kwargs):
       '''
 getFirstVertex( (MLeader)arg1, (int)arg2) -> Point3d :
@@ -40683,6 +42276,13 @@ hasContent( (MLeader)arg1) -> bool :
 
     C++ signature :
         bool hasContent(class PyDbMLeader {lvalue})'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -41058,6 +42658,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removeFirstVertex (self, *args, **kwargs):
       '''
 removeFirstVertex( (MLeader)arg1, (int)arg2) -> ErrorStatus :
@@ -41293,6 +42905,18 @@ setExtendLeaderToText( (MLeader)arg1, (bool)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setExtendLeaderToText(class PyDbMLeader {lvalue},bool)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setFirstVertex (self, *args, **kwargs):
       '''
@@ -43280,6 +44904,25 @@ firstSegmentAngleConstraint( (MLeaderStyle)arg1) -> MLeaderSegmentAngleType :
     C++ signature :
         enum AcDbMLeaderStyle::SegmentAngleType firstSegmentAngleConstraint(class PyDbMLeaderStyle {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getName (self, *args, **kwargs):
       '''
 getName( (MLeaderStyle)arg1) -> str :
@@ -43293,6 +44936,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -43511,6 +45161,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -43707,6 +45369,18 @@ setExtendLeaderToText( (MLeaderStyle)arg1, (bool)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setExtendLeaderToText(class PyDbMLeaderStyle {lvalue},bool)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setFirstSegmentAngleConstraint (self, *args, **kwargs):
       '''
@@ -44870,6 +46544,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -44897,6 +46590,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -45190,6 +46890,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -45370,6 +47082,18 @@ setDynamicColumns( (MText)arg1, (float)arg2, (float)arg3, (bool)arg4) -> ErrorSt
 
     C++ signature :
         enum Acad::ErrorStatus setDynamicColumns(class PyDbMText {lvalue},double,double,bool)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setFlowDirection (self, *args, **kwargs):
       '''
@@ -46709,6 +48433,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -46736,6 +48479,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -47022,6 +48772,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removeLastSeg (self, *args, **kwargs):
       '''
 removeLastSeg( (Mline)arg1, (Point3d)arg2) -> ErrorStatus :
@@ -47097,6 +48859,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setJustification (self, *args, **kwargs):
       '''
@@ -47731,12 +49505,38 @@ getElementAt( (MlineStyle)arg1, (int)arg2) -> tuple :
     C++ signature :
         class boost::python::tuple getElementAt(class PyDbMlineStyle {lvalue},int)'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def handOverTo (self, *args, **kwargs):
       '''
 handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -47920,6 +49720,18 @@ removeElementAt( (MlineStyle)arg1, (int)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus removeElementAt(class PyDbMlineStyle {lvalue},int)'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -47980,6 +49792,18 @@ setEndSquareCap( (MlineStyle)arg1, (bool)arg2) -> None :
 
     C++ signature :
         void setEndSquareCap(class PyDbMlineStyle {lvalue},bool)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setFillColor (self, *args, **kwargs):
       '''
@@ -48322,6 +50146,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -48349,6 +50192,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -48600,6 +50450,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -48654,6 +50516,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -49532,6 +51406,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -49559,6 +51452,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -49934,6 +51834,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -50175,6 +52087,18 @@ setElevation( (Dimension)arg1, (float)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setElevation(class PyDbDimension {lvalue},double)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setHorizontalRefTextRotation (self, *args, **kwargs):
       '''
@@ -51231,6 +53155,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -51258,6 +53201,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -51509,6 +53459,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -51563,6 +53525,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -52128,6 +54102,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -52155,6 +54148,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -52420,6 +54420,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -52481,6 +54493,18 @@ setEcsRotation( (Point)arg1, (float)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setEcsRotation(class PyDbPoint {lvalue},double)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -53152,6 +55176,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -53179,6 +55222,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -53526,6 +55576,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -53781,6 +55843,18 @@ setExtArcOn( (Point3AngularDimension)arg1, (bool)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setExtArcOn(class PyDb3PointAngularDimension {lvalue},bool)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setHorizontalRefTextRotation (self, *args, **kwargs):
       '''
@@ -54819,6 +56893,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -54846,6 +56939,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -55104,6 +57204,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -55158,6 +57270,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -55583,6 +57707,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -55610,6 +57753,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -55868,6 +58018,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -55922,6 +58084,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -56472,6 +58646,25 @@ getEndWidthAt( (Polyline)arg1, (int)arg2) -> float :
     C++ signature :
         double getEndWidthAt(class PyDbPolyline {lvalue},unsigned int)'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getFirstDeriv (self, *args, **kwargs):
       '''
 getFirstDeriv( (Curve)arg1, (float)arg2) -> Vector3d :
@@ -56642,6 +58835,13 @@ hasBulges( (Polyline)arg1) -> bool :
 
     C++ signature :
         bool hasBulges(class PyDbPolyline {lvalue})'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -56977,6 +59177,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -57087,6 +59299,18 @@ setElevation( (Polyline)arg1, (float)arg2) -> None :
 
     C++ signature :
         void setElevation(class PyDbPolyline {lvalue},double)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -57653,6 +59877,25 @@ getEndPoint( (Curve)arg1) -> Point3d :
     C++ signature :
         class AcGePoint3d getEndPoint(class PyDbCurve {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getFirstDeriv (self, *args, **kwargs):
       '''
 getFirstDeriv( (Curve)arg1, (float)arg2) -> Vector3d :
@@ -57781,6 +60024,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -58121,6 +60371,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -58217,6 +60479,18 @@ setElevation( (Polyline2d)arg1, (float)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setElevation(class PyDb2dPolyline {lvalue},double)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -58788,6 +61062,25 @@ getEndPoint( (Curve)arg1) -> Point3d :
     C++ signature :
         class AcGePoint3d getEndPoint(class PyDbCurve {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getFirstDeriv (self, *args, **kwargs):
       '''
 getFirstDeriv( (Curve)arg1, (float)arg2) -> Vector3d :
@@ -58916,6 +61209,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -59235,6 +61535,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -59303,6 +61615,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -59754,6 +62078,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -59781,6 +62124,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -60039,6 +62389,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -60093,6 +62455,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -60757,6 +63131,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -60784,6 +63177,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -61138,6 +63538,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -61400,6 +63812,18 @@ setExtArcStartAngle( (RadialDimension)arg1, (float)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setExtArcStartAngle(class PyDbRadialDimension {lvalue},double)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setHorizontalRefTextRotation (self, *args, **kwargs):
       '''
@@ -62372,6 +64796,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -62399,6 +64842,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -62767,6 +65217,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -63029,6 +65491,18 @@ setExtArcStartAngle( (RadialDimensionLarge)arg1, (float)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setExtArcStartAngle(class PyDbRadialDimensionLarge {lvalue},double)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setHorizontalRefTextRotation (self, *args, **kwargs):
       '''
@@ -63799,6 +66273,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -63826,6 +66319,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -64077,6 +66577,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -64131,6 +66643,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -64544,6 +67068,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -64571,6 +67114,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -64822,6 +67372,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -64876,6 +67438,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -65505,6 +68079,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -65532,6 +68125,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -65900,6 +68500,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -66148,6 +68760,18 @@ setElevation( (Dimension)arg1, (float)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setElevation(class PyDbDimension {lvalue},double)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setHorizontalRefTextRotation (self, *args, **kwargs):
       '''
@@ -67351,6 +69975,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -67378,6 +70021,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -67629,6 +70279,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -67683,6 +70345,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -68143,6 +70817,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -68170,6 +70863,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -68421,6 +71121,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -68475,6 +71187,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -68888,6 +71612,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -68915,6 +71658,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -69166,6 +71916,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -69220,6 +71982,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -69633,6 +72407,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -69660,6 +72453,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -69911,6 +72711,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -69965,6 +72777,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -70312,6 +73136,25 @@ getAt( (SymbolTable)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def handOverTo (self, *args, **kwargs):
       '''
 handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
@@ -70330,6 +73173,13 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
 
     C++ signature :
         bool has(class PyDbSymbolTable {lvalue},class PyDbObjectId)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -70492,12 +73342,36 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus removePersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setOwnerId (self, *args, **kwargs):
       '''
@@ -70676,6 +73550,25 @@ extensionDictionary( (DbObject)arg1) -> ObjectId :
     C++ signature :
         class PyDbObjectId extensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getName (self, *args, **kwargs):
       '''
 getName( (SymbolTableRecord)arg1) -> str :
@@ -70689,6 +73582,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -70865,12 +73765,36 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus removePersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setName (self, *args, **kwargs):
       '''
@@ -71535,6 +74459,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getFormula (self, *args, **kwargs):
       '''
 getFormula( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> str :
@@ -71691,6 +74634,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasFormula (self, *args, **kwargs):
       '''
@@ -72223,6 +75173,18 @@ removeDataLink( (Table)arg1, (int)arg2, (int)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus removeDataLink(class PyDbTable {lvalue},int,int)'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -72552,6 +75514,18 @@ setDirection( (Table)arg1, (Vector3d)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setDirection(class PyDbTable {lvalue},class AcGeVector3d)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setFieldId (self, *args, **kwargs):
       '''
@@ -74206,6 +77180,25 @@ getDataType( (TableStyle)arg1, (str)arg2) -> tuple :
     C++ signature :
         class boost::python::tuple getDataType(class PyDbTableStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGridProperty (self, *args, **kwargs):
       '''
 getGridProperty( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> object :
@@ -74290,6 +77283,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -74508,6 +77508,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -74616,6 +77628,18 @@ setDescription( (TableStyle)arg1, (str)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setDescription(class PyDbTableStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setFlowDirection (self, *args, **kwargs):
       '''
@@ -75111,6 +78135,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -75138,6 +78181,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -75466,6 +78516,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -75534,6 +78596,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setHeight (self, *args, **kwargs):
       '''
@@ -76333,6 +79407,25 @@ font( (TextStyleTableRecord)arg1) -> tuple :
     C++ signature :
         class boost::python::tuple font(class PyDbTextStyleTableRecord {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getName (self, *args, **kwargs):
       '''
 getName( (SymbolTableRecord)arg1) -> str :
@@ -76346,6 +79439,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -76550,6 +79650,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -76563,6 +79675,18 @@ setBigFontFileName( (TextStyleTableRecord)arg1, (str)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setBigFontFileName(class PyDbTextStyleTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setFileName (self, *args, **kwargs):
       '''
@@ -77624,6 +80748,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -77651,6 +80794,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -77902,6 +81052,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -77956,6 +81118,18 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -78393,6 +81567,25 @@ getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def getGeomExtents (self, *args, **kwargs):
       '''
 getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
@@ -78420,6 +81613,13 @@ handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStat
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -78692,6 +81892,18 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -78760,6 +81972,18 @@ setEndWidth( (Vertex2d)arg1, (float)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setEndWidth(class PyDb2dVertex {lvalue},double)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setLayer (self, *args, **kwargs):
       '''
@@ -79454,12 +82678,38 @@ extensionDictionary( (DbObject)arg1) -> ObjectId :
     C++ signature :
         class PyDbObjectId extensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
     def handOverTo (self, *args, **kwargs):
       '''
 handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
     ...
     def hasPersistentReactor (self, *args, **kwargs):
       '''
@@ -79641,12 +82891,36 @@ releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
     ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def removePersistentReactor (self, *args, **kwargs):
       '''
 removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus removePersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
     ...
     def setFromRbChain (self, *args, **kwargs):
       '''

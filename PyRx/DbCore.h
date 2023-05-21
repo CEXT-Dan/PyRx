@@ -19,5 +19,6 @@ public:
     static PyDbEntity openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode);
     static bool regApp(const std::string& app);
     static Acad::ErrorStatus updateDimension(const PyDbObjectId& id);
+    static boost::python::list resbufTest(const boost::python::list& list);
 };
 

@@ -5,6 +5,7 @@
 
 class PyDbObjectId;
 class PyDbDatabase;
+class PyDbField;
 
 void makeAcDbObjectWrapper();
 //---------------------------------------------------------------------------------------- -
@@ -70,8 +71,20 @@ public:
 
     Acad::ErrorStatus addPersistentReactor(const PyDbObjectId& objId);
     Acad::ErrorStatus removePersistentReactor(const PyDbObjectId& objId);
-
     bool hasPersistentReactor(const PyDbObjectId& objId) const;
+
+    bool              hasFields(void) const;
+    PyDbObjectId      getField1();
+    PyDbObjectId      getField2(const std::string& propName);
+    PyDbObjectId      setField1(PyDbField& pField);
+    PyDbObjectId      setField2(const std::string& propName, PyDbField& pField);
+    Acad::ErrorStatus removeField1(const PyDbObjectId& fieldId);
+    Acad::ErrorStatus removeField2(const std::string& propName);
+    PyDbObjectId      getFieldDictionary(void) const;
+
+
+
+
 
     static PyRxClass desc();
     static std::string className();
