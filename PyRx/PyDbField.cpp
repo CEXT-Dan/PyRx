@@ -6,6 +6,7 @@ void makeAcDbFieldtWrapper()
 {
     class_<PyDbField, bases<PyDbObject>>("Field")
         .def(init<>())
+        .def(init<const std::string&>())
         .def(init<const std::string&, bool>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("setInObject", &PyDbField::setInObject)
@@ -94,6 +95,11 @@ void makeAcDbFieldtWrapper()
 
 PyDbField::PyDbField()
     : PyDbObject(new AcDbField(), true)
+{
+}
+
+PyDbField::PyDbField(const std::string& pszFieldCode)
+	: PyDbObject(new AcDbField(utf8_to_wstr(pszFieldCode).c_str(), true), true)
 {
 }
 
