@@ -15,3 +15,5 @@
 /RxUninstall
 /PyRxSetup/Release/*.msi
 /PyRxSetup/Release/*.exe
+/PyRxSetup/Debug
+/PyRxSetup/Release
