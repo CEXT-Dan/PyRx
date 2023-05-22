@@ -10,6 +10,7 @@ public:
 	std::wstring installDir();
 	DWORD calcBufferSize(const std::wstring& str);
 	void appendPath(std::wstring& src, const std::wstring& pathToAppend);
+	void flushEnvironment();
 
 	bool install();
 	bool uninstall();

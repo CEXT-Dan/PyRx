@@ -34,6 +34,14 @@ void showFailMessage(MSIHANDLE hInstall, const std::wstring& msg)
 	MsiCloseHandle(hRecord);
 }
 
+void showRebootMessage(MSIHANDLE hInstall)
+{
+	auto hRecord = MsiCreateRecord(1);
+	MsiRecordSetString(hRecord, 0, L"Install success! \n A reboot is required for changes to take effect!");
+	MsiProcessMessage(hInstall, INSTALLMESSAGE_USER, hRecord);
+	MsiCloseHandle(hRecord);
+}
+
 RxEnvironment::RxEnvironment(std::filesystem::path _modulePath, MSIHANDLE _hInstall)
 	: modulePath(_modulePath), hInstall(_hInstall)
 {
@@ -157,6 +165,12 @@ void RxEnvironment::appendPath(std::wstring& src, const std::wstring& pathToAppe
 	src += L";";
 }
 
+void RxEnvironment::flushEnvironment()
+{
+	if (RegFlushKey(HKEY_CURRENT_USER) != ERROR_SUCCESS)
+		showFailMessage(hInstall, L"Failed to flush registry");
+}
+
 bool RxEnvironment::install()
 {
 	try
@@ -179,12 +193,11 @@ bool RxEnvironment::install()
 			showWxPythonNotFound(hInstall);
 			return true;
 		}
-		
+
 		if (const auto wxRegPath = findWxPythonPath(); wxRegPath.size() == 0)
 		{
 			if (auto result = win32::RegGetString(HKEY_CURRENT_USER, L"Environment", L"PATH"); result.first == ERROR_SUCCESS)
 			{
-
 				std::wstring path = result.second;
 				appendPath(path, wxLibPath);
 				auto key = win32::RegOpenKey(HKEY_CURRENT_USER, L"Environment");
@@ -196,7 +209,8 @@ bool RxEnvironment::install()
 				}
 			}
 		}
-		
+
+		//validate
 		if (const auto regStubPath = findStubPath(); regStubPath.size() == 0)
 		{
 			std::filesystem::path stub = installDir();
@@ -216,6 +230,10 @@ bool RxEnvironment::install()
 					showFailedToWrite(hInstall);
 			}
 		}
+		flushEnvironment();
+
+		if (const auto wxRegPath = findWxPythonPath(); wxRegPath.size() != 0)
+			showRebootMessage(hInstall);
 	}
 	catch (...)
 	{

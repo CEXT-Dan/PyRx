@@ -17,6 +17,7 @@ WM_ACAD_KEEPFOCUS = 28929
 
 def OnPyInitApp():
     print("\nOnPyInitApp")
+    print("Added command 'wxpyxrcm'")
 
 def OnPyUnloadApp():
     print("\nOnPyUnloadApp")
@@ -28,7 +29,7 @@ def OnPyUnloadDwg():
    print("\nOnPyUnloadDwg")
 
 #command to launch the dialog
-def PyRxCmd_wxpyxrc():
+def PyRxCmd_wxpyxrcm():
     try: 
         dlg = TestDialog(None, -1, "")
         dlg.Show()
