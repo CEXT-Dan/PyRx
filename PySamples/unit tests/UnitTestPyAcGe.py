@@ -18,10 +18,8 @@ class TestGe(unittest.TestCase):
                 self.assertEqual(PyGe.BoundBlock3d.className(), 'AcGeBoundBlock3d')
                 self.assertEqual(PyGe.CircArc2d.className(), 'AcGeCircArc2d')
                 self.assertEqual(PyGe.CircArc3d.className(), 'AcGeCircArc3d')
-                self.assertEqual(PyGe.EntityId., 'AcGeCircArc3d')
+                self.assertEqual(PyGe.CircArc3d().type(), PyGe.EntityId.kCircArc3d)
                 
-                
-        
         def test_point2d_add(self):
                 point = PyGe.Point2d(100,100)
                 p = point +  PyGe.Vector2d.kXAxis
