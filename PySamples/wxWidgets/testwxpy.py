@@ -11,6 +11,7 @@ import PyEd# = editor
 
 def OnPyInitApp():
     PyRxApp.Printf("\nOnPyInitApp")
+    print("Added command 'wxpy'")
 
 def OnPyUnloadApp():
    PyRxApp.Printf("\nOnPyUnloadApp")

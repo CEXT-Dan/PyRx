@@ -11,6 +11,7 @@ import PyEd# = editor
 
 def OnPyInitApp():
     print("\nOnPyInitApp")
+	print("Added command 'wxpyxrc'")
 
 def OnPyUnloadApp():
     print("\nOnPyUnloadApp")
@@ -20,7 +21,7 @@ def OnPyLoadDwg():
 
 def OnPyUnloadDwg():
    print("\nOnPyUnloadDwg")
-
+   
 #command to launch the dialog
 def PyRxCmd_wxpyxrc():
     try: 
