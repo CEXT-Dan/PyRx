@@ -2,6 +2,7 @@
 #include "PyJig.h"
 #include "PyDbObjectId.h"
 #include "PyDbEntity.h"
+#include "PyGiCommonDraw.h"
 
 using namespace boost::python;
 
@@ -268,3 +269,204 @@ std::string PyJig::className()
     return "AcEdJig";
 }
 
+//--------------------------------------------------------------------------------------------------------
+//PyDrawJig
+void makeAcEdDrawJigWrapper()
+{
+	class_<PyDrawJig, boost::noncopyable>("DrawJig")
+		.def("drag", &PyDrawJig::dragwr1)
+#ifndef BRXAPP
+		.def("drag", &PyDrawJig::dragwr2)
+#endif
+		.def("sampler", &PyDrawJig::sampler)
+		.def("update", &PyDrawJig::update)
+		.def("keywordList", &PyDrawJig::keywordListwr)
+		.def("setKeywordList", &PyDrawJig::setKeywordListwr)
+		.def("dispPrompt", &PyDrawJig::dispPromptwr)
+		.def("setDispPrompt", &PyDrawJig::setDispPromptwr)
+		.def("acquireString", &PyDrawJig::acquireStringwr)
+		.def("acquireAngle", &PyDrawJig::acquireAnglewr1)
+		.def("acquireAngle", &PyDrawJig::acquireAnglewr2)
+		.def("acquireDist", &PyDrawJig::acquireDistwr1)
+		.def("acquireDist", &PyDrawJig::acquireDistwr2)
+		.def("acquirePoint", &PyDrawJig::acquirePointwr1)
+		.def("acquirePoint", &PyDrawJig::acquirePointwr2)
+		.def("specialCursorType", &PyDrawJig::specialCursorTypewr)
+		.def("setSpecialCursorType", &PyDrawJig::setSpecialCursorTypewr)
+		.def("userInputControls", &PyDrawJig::userInputControlswr)
+		.def("setUserInputControls", &PyDrawJig::setUserInputControlswr)
+		.def("worldDraw", &PyDrawJig::worldDrawwr)
+		.def("viewportDraw", &PyDrawJig::viewportDrawwr)
+		.def("className", &PyDrawJig::className).staticmethod("className")
+		;
+}
+
+PyDrawJig::PyDrawJig()
+{
+	this->setDatabaseDefaults();
+}
+
+AcEdJig::DragStatus PyDrawJig::dragwr1()
+{
+	return this->drag();
+}
+
+#ifndef BRXAPP
+AcEdJig::DragStatus PyDrawJig::dragwr2(const AcEdDragStyle& style)
+{
+	return this->drag(style);
+}
+#endif
+
+AcEdJig::DragStatus PyDrawJig::sampler()
+{
+	PyAutoLockGIL lock;
+	if (override f = this->get_override("sampler"))
+		return f();
+	return AcEdJig::DragStatus::kNoChange;
+}
+
+Adesk::Boolean PyDrawJig::update()
+{
+	PyAutoLockGIL lock;
+	if (override f = this->get_override("update"))
+		return f();
+	return true;
+}
+
+std::string PyDrawJig::keywordListwr()
+{
+	return wstr_to_utf8(this->keywordList());
+}
+
+void PyDrawJig::setKeywordListwr(const std::string& val)
+{
+	this->setKeywordList(utf8_to_wstr(val).c_str());
+}
+
+std::string PyDrawJig::dispPromptwr()
+{
+	return wstr_to_utf8(this->dispPrompt());
+}
+
+void PyDrawJig::setDispPromptwr(const std::string& val)
+{
+	this->setDispPrompt(utf8_to_wstr(val).c_str());
+}
+
+boost::python::tuple PyDrawJig::acquireStringwr()
+{
+#ifdef ARXAPP
+	PyAutoLockGIL lock;
+	AcString value;
+	auto result = this->acquireString(value);
+	return boost::python::make_tuple(result, wstr_to_utf8(value));
+#else
+	throw PyNotimplementedByHost();
+#endif
+}
+
+boost::python::tuple PyDrawJig::acquireAnglewr1()
+{
+	PyAutoLockGIL lock;
+	double value;
+	auto result = this->acquireAngle(value);
+	return boost::python::make_tuple(result, value);
+}
+
+boost::python::tuple PyDrawJig::acquireAnglewr2(const AcGePoint3d& basePnt)
+{
+	PyAutoLockGIL lock;
+	double value;
+	auto result = this->acquireAngle(value, basePnt);
+	return boost::python::make_tuple(result, value);
+}
+
+boost::python::tuple PyDrawJig::acquireDistwr1()
+{
+	PyAutoLockGIL lock;
+	double value;
+	auto result = this->acquireDist(value);
+	return boost::python::make_tuple(result, value);
+}
+
+boost::python::tuple PyDrawJig::acquireDistwr2(const AcGePoint3d& basePnt)
+{
+	PyAutoLockGIL lock;
+	double value;
+	auto result = this->acquireDist(value, basePnt);
+	return boost::python::make_tuple(result, value);
+}
+
+boost::python::tuple PyDrawJig::acquirePointwr1()
+{
+	PyAutoLockGIL lock;
+	AcGePoint3d value;
+	auto result = this->acquirePoint(value);
+	return boost::python::make_tuple(result, value);
+}
+
+boost::python::tuple PyDrawJig::acquirePointwr2(const AcGePoint3d& basePnt)
+{
+	PyAutoLockGIL lock;
+	AcGePoint3d value;
+	auto result = this->acquirePoint(value, basePnt);
+	return boost::python::make_tuple(result, value);
+}
+
+AcEdJig::CursorType PyDrawJig::specialCursorTypewr()
+{
+	return this->specialCursorType();
+}
+
+void PyDrawJig::setSpecialCursorTypewr(AcEdJig::CursorType val)
+{
+	this->setSpecialCursorType(val);
+}
+
+AcEdJig::UserInputControls PyDrawJig::userInputControlswr()
+{
+	return this->userInputControls();
+}
+
+void PyDrawJig::setUserInputControlswr(AcEdJig::UserInputControls val)
+{
+	return this->setUserInputControls(val);
+}
+
+Adesk::Boolean PyDrawJig::worldDrawwr(PyGiWorldDraw& wd)
+{
+	PyAutoLockGIL lock;
+	if (override f = this->get_override("worldDraw"))
+		return f(wd);
+	return false;
+}
+
+void PyDrawJig::viewportDrawwr(PyGiViewportDraw& vd)
+{
+	PyAutoLockGIL lock;
+	if (override f = this->get_override("ViewportDraw"))
+		f(vd);
+}
+
+Adesk::Boolean PyDrawJig::subWorldDraw(AcGiWorldDraw* wd)
+{
+	PyGiWorldDraw draw(wd, false);
+	return worldDrawwr(draw);
+}
+
+void PyDrawJig::subViewportDraw(AcGiViewportDraw* vd)
+{
+	PyGiViewportDraw draw(vd, false);
+	viewportDrawwr(draw);
+}
+
+AcDbEntity* PyDrawJig::entity() const
+{
+	return const_cast<AcDbEntity*>(static_cast<const AcDbEntity*>(this));
+}
+
+std::string PyDrawJig::className()
+{
+	return "AcEdJig";
+}

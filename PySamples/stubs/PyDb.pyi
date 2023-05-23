@@ -10302,13 +10302,6 @@ appendAcDbEntity( (BlockTableRecord)arg1, (Entity)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId appendAcDbEntity(class PyDbBlockTableRecord {lvalue},class PyDbEntity)'''
     ...
-    def aslist (self, *args, **kwargs):
-      '''
-aslist( (BlockTableRecord)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list aslist(class PyDbBlockTableRecord {lvalue})'''
-    ...
     def assertNotifyEnabled (self, *args, **kwargs):
       '''
 assertNotifyEnabled( (DbObject)arg1) -> None :
@@ -10444,6 +10437,11 @@ extensionDictionary( (DbObject)arg1) -> ObjectId :
     ...
     def getBlockReferenceIds (self, *args, **kwargs):
       '''
+getBlockReferenceIds( (BlockTableRecord)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getBlockReferenceIds(class PyDbBlockTableRecord {lvalue})
+
 getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
 
     C++ signature :
@@ -10708,6 +10706,11 @@ objectId( (DbObject)arg1) -> ObjectId :
     ...
     def objectIds (self, *args, **kwargs):
       '''
+objectIds( (BlockTableRecord)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list objectIds(class PyDbBlockTableRecord {lvalue})
+
 objectIds( (BlockTableRecord)arg1) -> list :
 
     C++ signature :
@@ -30712,6 +30715,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
 
 __init__( (object)arg1, (str)arg2, (bool)arg3) -> None :
 

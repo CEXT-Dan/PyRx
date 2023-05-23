@@ -41,7 +41,8 @@ public:
     PyDbObjectId      getLayoutId() const;
     Acad::ErrorStatus setLayoutId(const PyDbObjectId& id);
 
-    boost::python::list getBlockReferenceIds(bool bDirectOnly, bool bForceValidity);
+    boost::python::list getBlockReferenceIds1();
+    boost::python::list getBlockReferenceIds2(bool bDirectOnly, bool bForceValidity);
     boost::python::list getErasedBlockReferenceIds();
 
     PyDbDatabase xrefDatabase(bool incUnres) const;
