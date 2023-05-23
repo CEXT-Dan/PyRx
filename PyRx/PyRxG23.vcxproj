@@ -186,6 +186,7 @@
     <ClCompile Include="PyGeSplineEnt2d.cpp" />
     <ClCompile Include="PyGeSplineEnt3d.cpp" />
     <ClCompile Include="PyGeSurfSurfInt.cpp" />
+    <ClCompile Include="PyGiCommonDraw.cpp" />
     <ClCompile Include="PyGiDrawable.cpp" />
     <ClCompile Include="PyJig.cpp" />
     <ClCompile Include="PyLispService.cpp" />
@@ -264,6 +265,7 @@
     <ClInclude Include="PyGeSplineEnt2d.h" />
     <ClInclude Include="PyGeSplineEnt3d.h" />
     <ClInclude Include="PyGeSurfSurfInt.h" />
+    <ClInclude Include="PyGiCommonDraw.h" />
     <ClInclude Include="PyGiDrawable.h" />
     <ClInclude Include="PyJig.h" />
     <ClInclude Include="PyLispService.h" />

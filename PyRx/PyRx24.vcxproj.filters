@@ -223,6 +223,9 @@
     <ClCompile Include="PyDbXrecord.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
+    <ClCompile Include="PyGiCommonDraw.cpp">
+      <Filter>Source Files\PyGi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -449,6 +452,9 @@
     </ClInclude>
     <ClInclude Include="PyDbXrecord.h">
       <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGiCommonDraw.h">
+      <Filter>Header Files\PyGi</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

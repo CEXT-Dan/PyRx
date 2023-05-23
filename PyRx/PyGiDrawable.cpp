@@ -2,7 +2,8 @@
 #include "PyGiDrawable.h"
 
 using namespace boost::python;
-
+//-----------------------------------------------------------------------------------------
+//PyGiDrawable
 void makeAcGiObjectWrapper()
 {
     class_<PyGiDrawable, bases<PyRxObject>>("Drawable", boost::python::no_init)
@@ -12,8 +13,7 @@ void makeAcGiObjectWrapper()
         ;
 }
 
-//-----------------------------------------------------------------------------------------
-//PyGiDrawable
+
 PyGiDrawable::PyGiDrawable(AcGiDrawable* ptr, bool autoDelete, bool isDbObject )
     : PyRxObject(ptr, autoDelete, isDbObject)
 {
@@ -29,7 +29,9 @@ PyRxClass PyGiDrawable::desc()
     return PyRxClass(AcGiDrawable::desc(), false);
 }
 
-AcGiDrawable* PyGiDrawable::impObj() const
+AcGiDrawable* PyGiDrawable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
+	if (m_pImp == nullptr)
+		throw PyNullObject(src);
     return static_cast<AcGiDrawable*>(m_pImp.get());
 }

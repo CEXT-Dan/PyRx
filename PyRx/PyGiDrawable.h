@@ -1,9 +1,9 @@
 #pragma once
 #include "PyRxObject.h"
-
-void makeAcGiObjectWrapper();
 //-----------------------------------------------------------------------------------------
 //PyGiDrawable
+void makeAcGiObjectWrapper();
+
 class PyGiDrawable : public PyRxObject
 {
 public:
@@ -13,5 +13,5 @@ public:
     static PyRxClass desc();
 
 public:
-    AcGiDrawable* impObj() const;
+    AcGiDrawable* impObj(const std::source_location& src = std::source_location::current()) const;
 };

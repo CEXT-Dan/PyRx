@@ -13,6 +13,7 @@ BOOST_PYTHON_MODULE(PyEd)
 #endif // ! PyRxDebug
 
     makeAcEdJigWrapper();
+    makeAcEdDrawJigWrapper();
     makeAcEditorWrapper();
     makePyEditorReactorWrapper();
 

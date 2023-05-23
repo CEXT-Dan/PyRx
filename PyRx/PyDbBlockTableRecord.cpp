@@ -28,7 +28,8 @@ void makeAcDbBlockTableRecordWrapper()
         .def("isLayout", &PyDbBlockTableRecord::isLayout)
         .def("getLayoutId", &PyDbBlockTableRecord::getLayoutId)
         .def("setLayoutId", &PyDbBlockTableRecord::setLayoutId)
-        .def("getBlockReferenceIds", &PyDbBlockTableRecord::getBlockReferenceIds)
+        .def("getBlockReferenceIds", &PyDbBlockTableRecord::getBlockReferenceIds1)
+        .def("getBlockReferenceIds", &PyDbBlockTableRecord::getBlockReferenceIds2)
         .def("getErasedBlockReferenceIds", &PyDbBlockTableRecord::getErasedBlockReferenceIds)
         .def("xrefDatabase", &PyDbBlockTableRecord::xrefDatabase)
         .def("isUnloaded", &PyDbBlockTableRecord::isUnloaded)
@@ -43,10 +44,8 @@ void makeAcDbBlockTableRecordWrapper()
         .def("blockInsertUnits", &PyDbBlockTableRecord::blockInsertUnits)
         .def("postProcessAnnotativeBTR", &PyDbBlockTableRecord::postProcessAnnotativeBTR)
         .def("addAnnoScalestoBlkRefs", &PyDbBlockTableRecord::addAnnoScalestoBlkRefs)
-        .def("aslist", &PyDbBlockTableRecord::objectIds)
         .def("className", &PyDbBlockTableRecord::className).staticmethod("className")
         .def("desc", &PyDbBlockTableRecord::desc).staticmethod("desc")
-
         ;
 }
 
@@ -55,7 +54,6 @@ void makeAcDbBlockTableRecordWrapper()
 PyDbBlockTableRecord::PyDbBlockTableRecord(AcDbBlockTableRecord* ptr, bool autoDelete)
     : PyDbSymbolTableRecord(ptr, autoDelete)
 {
-
 }
 
 PyDbBlockTableRecord::PyDbBlockTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
@@ -197,7 +195,18 @@ Acad::ErrorStatus PyDbBlockTableRecord::setLayoutId(const PyDbObjectId& id)
     return impObj()->setLayoutId(id.m_id);
 }
 
-boost::python::list PyDbBlockTableRecord::getBlockReferenceIds(bool bDirectOnly, bool bForceValidity)
+boost::python::list PyDbBlockTableRecord::getBlockReferenceIds1()
+{
+	PyAutoLockGIL lock;
+	AcDbObjectIdArray ids;
+	boost::python::list lids;
+	impObj()->getBlockReferenceIds(ids);
+	for (const auto& item : ids)
+		lids.append(PyDbObjectId(item));
+	return lids;
+}
+
+boost::python::list PyDbBlockTableRecord::getBlockReferenceIds2(bool bDirectOnly, bool bForceValidity)
 {
     PyAutoLockGIL lock;
     AcDbObjectIdArray ids;
