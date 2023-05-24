@@ -74,6 +74,7 @@ void makeAcDbEntityWrapper()
         .def("draw", &PyDbEntity::draw)
         .def("className", &PyDbEntity::className).staticmethod("className")
         .def("desc", &PyDbEntity::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbEntity::cloneFrom).staticmethod("cloneFrom")
         ;
 }
 
@@ -430,6 +431,13 @@ std::string PyDbEntity::className()
 PyRxClass PyDbEntity::desc()
 {
     return PyRxClass(AcDbEntity::desc(), false);
+}
+
+PyDbEntity PyDbEntity::cloneFrom(PyRxObject& src)
+{
+	if (!src.impObj()->isKindOf(AcDbEntity::desc()))
+		throw PyAcadErrorStatus(eNotThatKindOfClass);
+	return PyDbEntity(static_cast<AcDbEntity*>(src.impObj()->clone()), true);
 }
 
 AcDbEntity* PyDbEntity::impObj(const std::source_location& src /*= std::source_location::current()*/) const

@@ -82,12 +82,9 @@ public:
     Acad::ErrorStatus removeField2(const std::string& propName);
     PyDbObjectId      getFieldDictionary(void) const;
 
-
-
-
-
     static PyRxClass desc();
     static std::string className();
+    static PyDbObject cloneFrom(PyRxObject& src);
 
 public:
     AcDbObject* impObj(const std::source_location& src = std::source_location::current()) const;

@@ -44,6 +44,7 @@ public:
 public:
 	static std::string  className();
 	static PyRxClass    desc();
+	static PyDbMline	cloneFrom(PyRxObject& src);
 public:
 	AcDbMline* impObj(const std::source_location & src = std::source_location::current()) const;
 };

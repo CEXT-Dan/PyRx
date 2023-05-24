@@ -82,6 +82,7 @@ public:
 public:
     static std::string  className();
     static PyRxClass    desc();
+    static PyDbLeader   cloneFrom(PyRxObject& src);
 
 public:
     AcDbLeader* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -232,6 +233,7 @@ public:
 public:
     static std::string  className();
     static PyRxClass    desc();
+    static PyDbMLeader  cloneFrom(PyRxObject& src);
 
 public:
     AcDbMLeader* impObj(const std::source_location& src = std::source_location::current()) const;

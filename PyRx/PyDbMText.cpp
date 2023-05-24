@@ -73,6 +73,7 @@ void makePyDbMTextWrapper()
         .def("setHeight", &PyDbMText::setHeight)
         .def("className", &PyDbMText::className).staticmethod("className")
         .def("desc", &PyDbMText::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbMText::cloneFrom).staticmethod("cloneFrom")
         ;
 
     enum_<AcDbMText::AttachmentPoint>("MTextAttachmentPoint")
@@ -522,6 +523,13 @@ std::string PyDbMText::className()
 PyRxClass PyDbMText::desc()
 {
     return PyRxClass(AcDbMText::desc(), false);
+}
+
+PyDbMText PyDbMText::cloneFrom(PyRxObject& src)
+{
+	if (!src.impObj()->isKindOf(AcDbMText::desc()))
+		throw PyAcadErrorStatus(eNotThatKindOfClass);
+	return PyDbMText(static_cast<AcDbMText*>(src.impObj()->clone()), true);
 }
 
 AcDbMText* PyDbMText::impObj(const std::source_location& src /*= std::source_location::current()*/) const

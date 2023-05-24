@@ -133,6 +133,7 @@ public:
 #endif
     static std::string className();
     static PyRxClass desc();
+    static PyDbDimension cloneFrom(PyRxObject& src);
 public:
     AcDbDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };

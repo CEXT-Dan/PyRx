@@ -40,6 +40,7 @@ void makPyDbMlineWrapper()
 		.def("getPlane", &PyDbMline::getPlane)
 		.def("className", &PyDbMline::className).staticmethod("className")
 		.def("desc", &PyDbMline::desc).staticmethod("desc")
+		.def("cloneFrom", &PyDbMline::cloneFrom).staticmethod("cloneFrom")
 		;
 
 	enum_<Mline::MlineJustification>("MlineJustification")
@@ -261,6 +262,13 @@ std::string PyDbMline::className()
 PyRxClass PyDbMline::desc()
 {
 	return PyRxClass(AcDbFcf::desc(), false);
+}
+
+PyDbMline PyDbMline::cloneFrom(PyRxObject& src)
+{
+	if (!src.impObj()->isKindOf(AcDbMline::desc()))
+		throw PyAcadErrorStatus(eNotThatKindOfClass);
+	return PyDbMline(static_cast<AcDbMline*>(src.impObj()->clone()), true);
 }
 
 AcDbMline* PyDbMline::impObj(const std::source_location& src /*= std::source_location::current()*/) const

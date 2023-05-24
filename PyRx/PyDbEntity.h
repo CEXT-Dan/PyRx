@@ -106,6 +106,7 @@ public:
 
     static std::string className();
     static PyRxClass desc();
+    static PyDbEntity cloneFrom(PyRxObject& src);
 
 public:
     AcDbEntity* impObj(const std::source_location& src = std::source_location::current()) const;

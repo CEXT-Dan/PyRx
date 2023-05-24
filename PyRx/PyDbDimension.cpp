@@ -128,6 +128,7 @@ void makePyDbDimensionWrapper()
 		.def("setToleranceSuppressZeroInches", &PyDbDimension::setToleranceSuppressZeroInches)
 		.def("className", &PyDbDimension::className).staticmethod("className")
 		.def("desc", &PyDbDimension::desc).staticmethod("desc")
+		.def("cloneFrom", &PyDbDimension::cloneFrom).staticmethod("cloneFrom")
 		;
 
 #ifndef BRXAPP
@@ -1035,6 +1036,13 @@ std::string PyDbDimension::className()
 PyRxClass PyDbDimension::desc()
 {
 	return PyRxClass(AcDbDimension::desc(), false);
+}
+
+PyDbDimension PyDbDimension::cloneFrom(PyRxObject& src)
+{
+	if (!src.impObj()->isKindOf(AcDbDimension::desc()))
+		throw PyAcadErrorStatus(eNotThatKindOfClass);
+	return PyDbDimension(static_cast<AcDbDimension*>(src.impObj()->clone()), true);
 }
 
 AcDbDimension* PyDbDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
