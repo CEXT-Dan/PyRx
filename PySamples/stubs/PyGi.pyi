@@ -1,4 +1,53 @@
 
+class CommonDraw:
+    def __eq__ (self, *args, **kwargs):
+      '''
+__eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __eq__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
+    def __ne__ (self, *args, **kwargs):
+      '''
+__ne__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __ne__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def className (self, *args, **kwargs):
+      '''
+className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def desc (self, *args, **kwargs):
+      '''
+desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def isA (self, *args, **kwargs):
+      '''
+isA( (RxObject)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyRxObject {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs):
+      '''
+isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+
 class Drawable:
     def __eq__ (self, *args, **kwargs):
       '''
@@ -46,6 +95,296 @@ isNull( (RxObject)arg1) -> bool :
 
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
+    ...
+
+class Geometry:
+    def __eq__ (self, *args, **kwargs):
+      '''
+__eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __eq__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
+    def __ne__ (self, *args, **kwargs):
+      '''
+__ne__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __ne__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def className (self, *args, **kwargs):
+      '''
+className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def desc (self, *args, **kwargs):
+      '''
+desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def draw (self, *args, **kwargs):
+      '''
+draw( (Geometry)arg1, (Drawable)arg2) -> bool :
+
+    C++ signature :
+        bool draw(class PyGiGeometry {lvalue},class PyGiDrawable {lvalue})'''
+    ...
+    def getModelToWorldTransform (self, *args, **kwargs):
+      '''
+getModelToWorldTransform( (Geometry)arg1) -> Matrix3d :
+
+    C++ signature :
+        class AcGeMatrix3d getModelToWorldTransform(class PyGiGeometry {lvalue})'''
+    ...
+    def getWorldToModelTransform (self, *args, **kwargs):
+      '''
+getWorldToModelTransform( (Geometry)arg1) -> Matrix3d :
+
+    C++ signature :
+        class AcGeMatrix3d getWorldToModelTransform(class PyGiGeometry {lvalue})'''
+    ...
+    def isA (self, *args, **kwargs):
+      '''
+isA( (RxObject)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyRxObject {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs):
+      '''
+isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def popModelTransform (self, *args, **kwargs):
+      '''
+popModelTransform( (Geometry)arg1) -> bool :
+
+    C++ signature :
+        bool popModelTransform(class PyGiGeometry {lvalue})'''
+    ...
+    def pushModelTransform (self, *args, **kwargs):
+      '''
+pushModelTransform( (Geometry)arg1, (Vector3d)arg2) -> bool :
+
+    C++ signature :
+        bool pushModelTransform(class PyGiGeometry {lvalue},class AcGeVector3d)
+
+pushModelTransform( (Geometry)arg1, (Matrix3d)arg2) -> bool :
+
+    C++ signature :
+        bool pushModelTransform(class PyGiGeometry {lvalue},class AcGeMatrix3d)'''
+    ...
+
+class ViewportDraw:
+    def __eq__ (self, *args, **kwargs):
+      '''
+__eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __eq__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
+    def __ne__ (self, *args, **kwargs):
+      '''
+__ne__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __ne__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def className (self, *args, **kwargs):
+      '''
+className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def desc (self, *args, **kwargs):
+      '''
+desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def geometry (self, *args, **kwargs):
+      '''
+geometry( (ViewportDraw)arg1) -> object :
+
+    C++ signature :
+        class PyGiViewportGeometry geometry(class PyGiViewportDraw {lvalue})'''
+    ...
+    def isA (self, *args, **kwargs):
+      '''
+isA( (RxObject)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyRxObject {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs):
+      '''
+isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+
+class WorldDraw:
+    def __eq__ (self, *args, **kwargs):
+      '''
+__eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __eq__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
+    def __ne__ (self, *args, **kwargs):
+      '''
+__ne__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __ne__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def className (self, *args, **kwargs):
+      '''
+className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def desc (self, *args, **kwargs):
+      '''
+desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def geometry (self, *args, **kwargs):
+      '''
+geometry( (WorldDraw)arg1) -> WorldGeometry :
+
+    C++ signature :
+        class PyGiWorldGeometry geometry(class PyGiWorldDraw {lvalue})'''
+    ...
+    def isA (self, *args, **kwargs):
+      '''
+isA( (RxObject)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyRxObject {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs):
+      '''
+isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+
+class WorldGeometry:
+    def __eq__ (self, *args, **kwargs):
+      '''
+__eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __eq__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
+    def __ne__ (self, *args, **kwargs):
+      '''
+__ne__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __ne__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def className (self, *args, **kwargs):
+      '''
+className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def desc (self, *args, **kwargs):
+      '''
+desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def draw (self, *args, **kwargs):
+      '''
+draw( (Geometry)arg1, (Drawable)arg2) -> bool :
+
+    C++ signature :
+        bool draw(class PyGiGeometry {lvalue},class PyGiDrawable {lvalue})'''
+    ...
+    def getModelToWorldTransform (self, *args, **kwargs):
+      '''
+getModelToWorldTransform( (Geometry)arg1) -> Matrix3d :
+
+    C++ signature :
+        class AcGeMatrix3d getModelToWorldTransform(class PyGiGeometry {lvalue})'''
+    ...
+    def getWorldToModelTransform (self, *args, **kwargs):
+      '''
+getWorldToModelTransform( (Geometry)arg1) -> Matrix3d :
+
+    C++ signature :
+        class AcGeMatrix3d getWorldToModelTransform(class PyGiGeometry {lvalue})'''
+    ...
+    def isA (self, *args, **kwargs):
+      '''
+isA( (RxObject)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyRxObject {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs):
+      '''
+isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def popModelTransform (self, *args, **kwargs):
+      '''
+popModelTransform( (Geometry)arg1) -> bool :
+
+    C++ signature :
+        bool popModelTransform(class PyGiGeometry {lvalue})'''
+    ...
+    def pushModelTransform (self, *args, **kwargs):
+      '''
+pushModelTransform( (Geometry)arg1, (Vector3d)arg2) -> bool :
+
+    C++ signature :
+        bool pushModelTransform(class PyGiGeometry {lvalue},class AcGeVector3d)
+
+pushModelTransform( (Geometry)arg1, (Matrix3d)arg2) -> bool :
+
+    C++ signature :
+        bool pushModelTransform(class PyGiGeometry {lvalue},class AcGeMatrix3d)'''
     ...
 
 class __loader__:

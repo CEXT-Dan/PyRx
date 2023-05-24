@@ -10709,11 +10709,6 @@ objectId( (DbObject)arg1) -> ObjectId :
 objectIds( (BlockTableRecord)arg1) -> list :
 
     C++ signature :
-        class boost::python::list objectIds(class PyDbBlockTableRecord {lvalue})
-
-objectIds( (BlockTableRecord)arg1) -> list :
-
-    C++ signature :
         class boost::python::list objectIds(class PyDbBlockTableRecord {lvalue})'''
     ...
     def openBlockBegin (self, *args, **kwargs):

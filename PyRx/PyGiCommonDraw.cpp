@@ -38,7 +38,7 @@ AcGiCommonDraw* PyGiCommonDraw::impObj(const std::source_location& src /*= std::
 void makePyGiWorldDrawWrapper()
 {
 	class_<PyGiWorldDraw, bases<PyGiCommonDraw>>("WorldDraw", boost::python::no_init)
-		.def("draw", &PyGiWorldDraw::draw)
+		.def("worldGeometry", &PyGiWorldDraw::geometry)
 		.def("className", &PyGiWorldDraw::className).staticmethod("className")
 		.def("desc", &PyGiWorldDraw::desc).staticmethod("desc")
 		;
@@ -49,9 +49,9 @@ PyGiWorldDraw::PyGiWorldDraw(AcGiWorldDraw* ptr, bool autoDelete)
 {
 }
 
-bool PyGiWorldDraw::draw(PyGiDrawable& drawable)
+PyGiWorldGeometry PyGiWorldDraw::geometry() const
 {
-	return impObj()->geometry().draw(drawable.impObj());
+	return PyGiWorldGeometry(std::addressof(impObj()->geometry()), false);
 }
 
 std::string PyGiWorldDraw::className()
@@ -76,7 +76,7 @@ AcGiWorldDraw* PyGiWorldDraw::impObj(const std::source_location& src /*= std::so
 void makeAcGiViewportDrawWrapper()
 {
 	class_<PyGiViewportDraw, bases<PyGiCommonDraw>>("ViewportDraw", boost::python::no_init)
-		.def("draw", &PyGiViewportDraw::draw)
+		.def("viewportGeometry", &PyGiViewportDraw::geometry)
 		.def("className", &PyGiViewportDraw::className).staticmethod("className")
 		.def("desc", &PyGiViewportDraw::desc).staticmethod("desc")
 		;
@@ -87,9 +87,9 @@ PyGiViewportDraw::PyGiViewportDraw(AcGiViewportDraw* ptr, bool autoDelete)
 {
 }
 
-bool PyGiViewportDraw::draw(PyGiDrawable& drawable)
+PyGiViewportGeometry PyGiViewportDraw::geometry() const
 {
-	return impObj()->geometry().draw(drawable.impObj());
+	return PyGiViewportGeometry(std::addressof(impObj()->geometry()), false);
 }
 
 std::string PyGiViewportDraw::className()
@@ -107,4 +107,141 @@ AcGiViewportDraw* PyGiViewportDraw::impObj(const std::source_location& src /*= s
 	if (m_pImp == nullptr)
 		throw PyNullObject(src);
 	return static_cast<AcGiViewportDraw*>(m_pImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+//PyGiGeometry
+void makeAcGiGeometryWrapper()
+{
+	class_<PyGiGeometry, bases<PyRxObject>>("Geometry", boost::python::no_init)
+
+		.def("getModelToWorldTransform", &PyGiGeometry::getModelToWorldTransform)
+		.def("getWorldToModelTransform", &PyGiGeometry::getWorldToModelTransform)
+		.def("pushModelTransform", &PyGiGeometry::pushModelTransform1)
+		.def("pushModelTransform", &PyGiGeometry::pushModelTransform2)
+		.def("popModelTransform", &PyGiGeometry::popModelTransform)
+		.def("draw", &PyGiGeometry::draw)
+		.def("className", &PyGiGeometry::className).staticmethod("className")
+		.def("desc", &PyGiGeometry::desc).staticmethod("desc")
+		;
+}
+
+PyGiGeometry::PyGiGeometry(AcGiGeometry* ptr, bool autoDelete)
+	: PyRxObject(ptr, autoDelete, false)
+{
+}
+
+AcGeMatrix3d PyGiGeometry::getModelToWorldTransform() const
+{
+	AcGeMatrix3d mat;
+	impObj()->getModelToWorldTransform(mat);
+	return mat;
+}
+
+AcGeMatrix3d PyGiGeometry::getWorldToModelTransform() const
+{
+	AcGeMatrix3d mat;
+	impObj()->getWorldToModelTransform(mat);
+	return mat;
+}
+
+Adesk::Boolean PyGiGeometry::pushModelTransform1(const AcGeVector3d& vNormal)
+{
+	return impObj()->pushModelTransform(vNormal);
+}
+
+Adesk::Boolean PyGiGeometry::pushModelTransform2(const AcGeMatrix3d& xMat)
+{
+	return impObj()->pushModelTransform(xMat);
+}
+
+Adesk::Boolean PyGiGeometry::popModelTransform()
+{
+	return impObj()->popModelTransform();
+}
+
+Adesk::Boolean PyGiGeometry::draw(PyGiDrawable& drawable)
+{
+	return impObj()->draw(drawable.impObj());
+}
+
+std::string PyGiGeometry::className()
+{
+	return "AcGiGeometry";
+}
+
+PyRxClass PyGiGeometry::desc()
+{
+	return PyRxClass(AcGiGeometry::desc(), false);
+}
+
+AcGiGeometry* PyGiGeometry::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+	if (m_pImp == nullptr)
+		throw PyNullObject(src);
+	return static_cast<AcGiGeometry*>(m_pImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+//PyGiWorldGeometry
+void makeAcGiWorldGeometryWrapper()
+{
+	class_<PyGiWorldGeometry, bases<PyGiGeometry>>("WorldGeometry", boost::python::no_init)
+		.def("className", &PyGiGeometry::className).staticmethod("className")
+		.def("desc", &PyGiGeometry::desc).staticmethod("desc")
+		;
+}
+
+PyGiWorldGeometry::PyGiWorldGeometry(AcGiWorldGeometry* ptr, bool autoDelete)
+	: PyGiGeometry(ptr, autoDelete)
+{
+}
+
+std::string PyGiWorldGeometry::className()
+{
+	return "AcGiWorldGeometry";
+}
+
+PyRxClass PyGiWorldGeometry::desc()
+{
+	return PyRxClass(AcGiWorldGeometry::desc(), false);
+}
+
+AcGiWorldGeometry* PyGiWorldGeometry::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+	if (m_pImp == nullptr)
+		throw PyNullObject(src);
+	return static_cast<AcGiWorldGeometry*>(m_pImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+//AcGiViewportGeometry
+void makeAcGiViewportGeometryWrapper()
+{
+	class_<PyGiViewportGeometry, bases<PyGiGeometry>>("ViewportGeometry", boost::python::no_init)
+		.def("className", &PyGiGeometry::className).staticmethod("className")
+		.def("desc", &PyGiGeometry::desc).staticmethod("desc")
+		;
+}
+
+PyGiViewportGeometry::PyGiViewportGeometry(AcGiViewportGeometry* ptr, bool autoDelete)
+	: PyGiGeometry(ptr, autoDelete)
+{
+}
+
+std::string PyGiViewportGeometry::className()
+{
+	return "AcGiViewportGeometry";
+}
+
+PyRxClass PyGiViewportGeometry::desc()
+{
+	return PyRxClass(AcGiViewportGeometry::desc(), false);
+}
+
+AcGiViewportGeometry* PyGiViewportGeometry::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+	if (m_pImp == nullptr)
+		throw PyNullObject(src);
+	return static_cast<AcGiViewportGeometry*>(m_pImp.get());
 }
