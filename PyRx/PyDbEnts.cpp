@@ -2452,6 +2452,7 @@ PyRxClass PyDbLine::desc()
 
 PyDbLine PyDbLine::copyAs(PyRxObject& src)
 {
+	//TODO
 	if (!src.impObj()->isKindOf(AcDbLine::desc()))
 		throw PyAcadErrorStatus(eInvalidInput);
 	return PyDbLine((AcDbLine*)src.impObj()->clone(), true);
