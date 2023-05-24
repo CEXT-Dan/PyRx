@@ -14,47 +14,62 @@ print("command = pydrawjig")
 # just like in ARX, ent must not be null
 
 
-class DrawJig(PyEd.DrawJig):
+class MyDrawJig(PyEd.DrawJig):
     def __init__(self, basepoint):
-        PyEd.DrawJig.__init__(self)
-        self.curPoint = basepoint
-        self.basepoint = basepoint
+        try:
+            PyEd.DrawJig.__init__(self)
+            self.curpoint = basepoint
+            self.basepoint = basepoint
+            self.lastpoint = basepoint
+        
+            self.line = PyDb.Line(PyGe.Point3d(0, 0, 0), PyGe.Point3d(100, 100, 0))
+            self.line.setDatabaseDefaults()
 
-        self.line = PyDb.Line(PyGe.Point3d(0, 0, 0), PyGe.Point3d(100, 100, 0))
-        self.line.setDatabaseDefaults()
-
-        self.circle = PyDb.Circle(PyGe.Point3d(
-            50, 50, 0), PyGe.Vector3d.kZAxis, 10)
-        self.circle.setDatabaseDefaults()
+            self.circle = PyDb.Circle(PyGe.Point3d(50, 50, 0), PyGe.Vector3d.kZAxis, 10)
+            self.circle.setDatabaseDefaults()
+        except Exception as err:
+            print(err)
 
     def sampler(self):
-        self.setUserInputControls
-        (
-            PyEd.UserInputControls(
+        try:
+            self.setUserInputControls
+            (
+                PyEd.UserInputControls(
                 PyEd.UserInputControls.kAccept3dCoordinates |
                 PyEd.UserInputControls.kNullResponseAccepted)
-        )
-        point_result_tuple = self.acquirePoint(self.curPoint)
-        self.curPoint = point_result_tuple[1]
-        return point_result_tuple[0]
+            )
+            point_result_tuple = self.acquirePoint(self.curpoint)
+            self.curpoint = point_result_tuple[1]
+            return point_result_tuple[0]
+        except Exception as err:
+            print(err)
 
     # C++ update returns True is not overridden
     def update(self):
-        mat = PyGe.Matrix3d.translation(PyGe.Point3d(0, 0, 0) - self.curPoint)
-        self.line.transformBy(mat)
-        self.circle.transformBy(mat)
-        return True
+        try:
+            if self.lastpoint == self.curpoint:
+                return False
+            self.lastpoint = self.curpoint
+            return True
+        except Exception as err:
+            print(err)
 
     #worldDraw
     def worldDraw(self, wd):
-        wd.draw(self.line)
-        wd.draw(self.circle)
-        return True
-
+        try:
+            mat = PyGe.Matrix3d.translation(self.curpoint-self.basepoint)
+            geo = wd.worldGeometry()
+            geo.pushModelTransform(mat)
+            geo.draw(self.line)
+            geo.draw(self.circle)
+            geo.popModelTransform()
+            return True
+        except Exception as err:
+            print(err)
 
 def PyRxCmd_pydrawjig():
     try:
-        jig = DrawJig(PyGe.Point3d(0, 0, 0))
+        jig = MyDrawJig(PyGe.Point3d(0, 0, 0))
         jig.setDispPrompt("\nPick endPoint")
         if jig.drag() != PyEd.DragStatus.kNormal:
             print('oops')
