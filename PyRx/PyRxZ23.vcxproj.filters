@@ -226,6 +226,9 @@
     <ClCompile Include="PyGiCommonDraw.cpp">
       <Filter>Source Files\PyGi</Filter>
     </ClCompile>
+    <ClCompile Include="PyRxOverrule.cpp">
+      <Filter>Source Files\PyRx</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -455,6 +458,9 @@
     </ClInclude>
     <ClInclude Include="PyGiCommonDraw.h">
       <Filter>Header Files\PyGi</Filter>
+    </ClInclude>
+    <ClInclude Include="PyRxOverrule.h">
+      <Filter>Header Files\PyRx</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
