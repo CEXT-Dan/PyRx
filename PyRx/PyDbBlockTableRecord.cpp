@@ -320,7 +320,7 @@ PyRxClass PyDbBlockTableRecord::desc()
 
 AcDbBlockTableRecord* PyDbBlockTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbBlockTableRecord*>(m_pImp.get());
+    return static_cast<AcDbBlockTableRecord*>(m_pyImp.get());
 }

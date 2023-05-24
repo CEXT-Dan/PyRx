@@ -321,10 +321,10 @@ PyRxClass PyDbText::desc()
 
 AcDbText* PyDbText::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
 
-    return static_cast<AcDbText*>(m_pImp.get());
+    return static_cast<AcDbText*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -511,9 +511,9 @@ PyRxClass PyDbAttributeDefinition::desc()
 
 AcDbAttributeDefinition* PyDbAttributeDefinition::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbAttributeDefinition*>(m_pImp.get());
+    return static_cast<AcDbAttributeDefinition*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -683,9 +683,9 @@ PyRxClass PyDbAttribute::desc()
 
 AcDbAttribute* PyDbAttribute::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbAttribute*>(m_pImp.get());
+    return static_cast<AcDbAttribute*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -868,9 +868,9 @@ PyRxClass PyDbBlockReference::desc()
 
 AcDbBlockReference* PyDbBlockReference::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbBlockReference*>(m_pImp.get());
+    return static_cast<AcDbBlockReference*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -970,9 +970,9 @@ PyRxClass PyDbMInsertBlock::desc()
 
 AcDbMInsertBlock* PyDbMInsertBlock::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbMInsertBlock*>(m_pImp.get());
+    return static_cast<AcDbMInsertBlock*>(m_pyImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -1012,9 +1012,9 @@ PyRxClass PyDbVertex::desc()
 
 AcDbVertex* PyDbVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-	if (m_pImp == nullptr)
+	if (m_pyImp == nullptr)
 		throw PyNullObject(src);
-    return static_cast<AcDbVertex*>(m_pImp.get());
+    return static_cast<AcDbVertex*>(m_pyImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -1190,9 +1190,9 @@ PyRxClass PyDb2dVertex::desc()
 
 AcDb2dVertex* PyDb2dVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDb2dVertex*>(m_pImp.get());
+    return static_cast<AcDb2dVertex*>(m_pyImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -1262,10 +1262,10 @@ PyRxClass PyDb3dPolylineVertex::desc()
 
 AcDb3dPolylineVertex* PyDb3dPolylineVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
 
-    return static_cast<AcDb3dPolylineVertex*>(m_pImp.get());
+    return static_cast<AcDb3dPolylineVertex*>(m_pyImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -1335,9 +1335,9 @@ PyRxClass PyDbPolygonMeshVertex::desc()
 
 AcDbPolygonMeshVertex* PyDbPolygonMeshVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbPolygonMeshVertex*>(m_pImp.get());
+    return static_cast<AcDbPolygonMeshVertex*>(m_pyImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -1401,9 +1401,9 @@ PyRxClass PyDbPolyFaceMeshVertex::desc()
 
 AcDbPolyFaceMeshVertex* PyDbPolyFaceMeshVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbPolyFaceMeshVertex*>(m_pImp.get());
+    return static_cast<AcDbPolyFaceMeshVertex*>(m_pyImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -1491,9 +1491,9 @@ PyRxClass PyDbFaceRecord::desc()
 
 AcDbFaceRecord* PyDbFaceRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbFaceRecord*>(m_pImp.get());
+    return static_cast<AcDbFaceRecord*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -1593,9 +1593,9 @@ PyRxClass PyDbPoint::desc()
 
 AcDbPoint* PyDbPoint::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbPoint*>(m_pImp.get());
+    return static_cast<AcDbPoint*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -1882,9 +1882,9 @@ PyRxClass PyDb2dPolyline::desc()
 
 AcDb2dPolyline* PyDb2dPolyline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDb2dPolyline*>(m_pImp.get());
+    return static_cast<AcDb2dPolyline*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -2050,9 +2050,9 @@ PyRxClass PyDb3dPolyline::desc()
 
 AcDb3dPolyline* PyDb3dPolyline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDb3dPolyline*>(m_pImp.get());
+    return static_cast<AcDb3dPolyline*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -2194,9 +2194,9 @@ PyRxClass PyDbArc::desc()
 
 AcDbArc* PyDbArc::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbArc*>(m_pImp.get());
+    return static_cast<AcDbArc*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -2336,9 +2336,9 @@ PyRxClass PyDbCircle::desc()
 
 AcDbCircle* PyDbCircle::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbCircle*>(m_pImp.get());
+    return static_cast<AcDbCircle*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -2360,6 +2360,7 @@ void makPyDbLineWrapper()
         .def("getOffsetCurvesGivenPlaneNormal", &PyDbLine::getOffsetCurvesGivenPlaneNormal)
         .def("className", &PyDbLine::className).staticmethod("className")
         .def("desc", &PyDbLine::desc).staticmethod("desc")
+        .def("copyAs", &PyDbLine::copyAs).staticmethod("copyAs")
         ;
 }
 
@@ -2449,11 +2450,25 @@ PyRxClass PyDbLine::desc()
     return PyRxClass(AcDbLine::desc(), false);
 }
 
+PyDbLine PyDbLine::copyAs(PyRxObject& src)
+{
+    try
+    {
+        if (!src.impObj()->isKindOf(AcDbLine::desc()))
+            throw PyAcadErrorStatus(eInvalidInput);
+        return PyDbLine((AcDbLine*)src.impObj()->clone(),true);
+    }
+    catch(...)
+    {
+        throw PyAcadErrorStatus(eInvalidInput);
+    }
+}
+
 AcDbLine* PyDbLine::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbLine*>(m_pImp.get());
+    return static_cast<AcDbLine*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -2772,9 +2787,9 @@ PyRxClass PyDbPolyline::desc()
 
 AcDbPolyline* PyDbPolyline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbPolyline*>(m_pImp.get());
+    return static_cast<AcDbPolyline*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -2881,9 +2896,9 @@ PyRxClass PyDbFace::desc()
 
 AcDbFace* PyDbFace::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbFace*>(m_pImp.get());
+    return static_cast<AcDbFace*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -3117,7 +3132,7 @@ PyRxClass PyDbFcf::desc()
 
 AcDbFcf* PyDbFcf::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-	if (m_pImp == nullptr)
+	if (m_pyImp == nullptr)
 		throw PyNullObject(src);
-	return static_cast<AcDbFcf*>(m_pImp.get());
+	return static_cast<AcDbFcf*>(m_pyImp.get());
 }

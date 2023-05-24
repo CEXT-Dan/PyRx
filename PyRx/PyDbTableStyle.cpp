@@ -777,7 +777,7 @@ PyRxClass PyDbTableStyle::desc()
 
 AcDbTableStyle* PyDbTableStyle::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbTableStyle*>(m_pImp.get());
+    return static_cast<AcDbTableStyle*>(m_pyImp.get());
 }

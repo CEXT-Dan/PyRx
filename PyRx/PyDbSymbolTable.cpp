@@ -84,9 +84,9 @@ PyRxClass PyDbSymbolTable::desc()
 
 AcDbSymbolTable* PyDbSymbolTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbSymbolTable*>(m_pImp.get());
+    return static_cast<AcDbSymbolTable*>(m_pyImp.get());
 }
 
 //---------------------------------------------------------------------------------------- -
@@ -162,9 +162,9 @@ PyRxClass PyDbDimStyleTable::desc()
 
 AcDbDimStyleTable* PyDbDimStyleTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbDimStyleTable*>(m_pImp.get());
+    return static_cast<AcDbDimStyleTable*>(m_pyImp.get());
 }
 
 
@@ -242,7 +242,7 @@ PyRxClass PyDbBlockTable::desc()
 
 AcDbBlockTable* PyDbBlockTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbBlockTable*>(m_pImp.get());
+    return static_cast<AcDbBlockTable*>(m_pyImp.get());
 }

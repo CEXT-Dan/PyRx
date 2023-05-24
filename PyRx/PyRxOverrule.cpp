@@ -5,9 +5,15 @@ using namespace boost::python;
 
 //-----------------------------------------------------------------------------------------
 //PyRxOverruleBase
-void makePyRxOverruleBaseWrapper()
+void makePyRxOverruleWrapper()
 {
 	class_<PyRxOverrule, bases<PyRxObject>>("Overrule", boost::python::no_init)
+		.def("addOverrule", &PyRxOverrule::addOverrule1).staticmethod("addOverrule")
+		.def("addOverruleLast", &PyRxOverrule::addOverrule2).staticmethod("addOverruleLast")
+		.def("removeOverrule", &PyRxOverrule::removeOverrule).staticmethod("removeOverrule")
+		.def("setIsOverruling", &PyRxOverrule::setIsOverruling).staticmethod("setIsOverruling")
+		.def("isOverruling", &PyRxOverrule::isOverruling).staticmethod("isOverruling")
+		.def("hasOverrule", &PyRxOverrule::hasOverrule).staticmethod("hasOverrule")
 		.def("className", &PyRxOverrule::className).staticmethod("className")
 		.def("desc", &PyRxOverrule::desc).staticmethod("desc")
 		;
@@ -18,17 +24,12 @@ PyRxOverrule::PyRxOverrule(AcRxOverrule* ptr, bool autoDelete)
 {
 }
 
-bool PyRxOverrule::isApplicable(PyRxObject& pOverruledSubject) const
-{
-	return impObj()->isApplicable(pOverruledSubject.impObj());
-}
-
 Acad::ErrorStatus PyRxOverrule::addOverrule1(PyRxClass& pClass, PyRxOverrule& pOverrule)
 {
 	return AcRxOverrule::addOverrule(pClass.impObj(), pOverrule.impObj());
 }
 
-Acad::ErrorStatus PyRxOverrule::addOverrule2(PyRxClass& pClass, PyRxOverrule& pOverrule, bool bAddAtLast)
+Acad::ErrorStatus PyRxOverrule::addOverrule2(PyRxClass& pClass,  PyRxOverrule& pOverrule, bool bAddAtLast)
 {
 	return AcRxOverrule::addOverrule(pClass.impObj(), pOverrule.impObj(), bAddAtLast);
 }
@@ -65,7 +66,7 @@ PyRxClass PyRxOverrule::desc()
 
 AcRxOverrule* PyRxOverrule::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-	if (m_pImp == nullptr)
+	if (m_pyImp == nullptr)
 		throw PyNullObject(src);
-	return static_cast<AcRxOverrule*>(m_pImp.get());
+	return static_cast<AcRxOverrule*>(m_pyImp.get());
 }

@@ -265,9 +265,9 @@ PyRxClass PyDbMline::desc()
 
 AcDbMline* PyDbMline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-	if (m_pImp == nullptr)
+	if (m_pyImp == nullptr)
 		throw PyNullObject(src);
-	return static_cast<AcDbMline*>(m_pImp.get());
+	return static_cast<AcDbMline*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -538,7 +538,7 @@ PyRxClass PyDbMlineStyle::desc()
 
 AcDbMlineStyle* PyDbMlineStyle::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-	if (m_pImp == nullptr)
+	if (m_pyImp == nullptr)
 		throw PyNullObject(src);
-	return static_cast<AcDbMlineStyle*>(m_pImp.get());
+	return static_cast<AcDbMlineStyle*>(m_pyImp.get());
 }

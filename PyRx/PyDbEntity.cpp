@@ -434,9 +434,9 @@ PyRxClass PyDbEntity::desc()
 
 AcDbEntity* PyDbEntity::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbEntity*>(m_pImp.get());
+    return static_cast<AcDbEntity*>(m_pyImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -476,9 +476,9 @@ PyRxClass PyDbBlockBegin::desc()
 
 AcDbBlockBegin* PyDbBlockBegin::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbBlockBegin*>(m_pImp.get());
+    return static_cast<AcDbBlockBegin*>(m_pyImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -518,9 +518,9 @@ PyRxClass PyDbBlockEnd::desc()
 
 AcDbBlockEnd* PyDbBlockEnd::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbBlockEnd*>(m_pImp.get());
+    return static_cast<AcDbBlockEnd*>(m_pyImp.get());
 }
 
 //-------------------------------------------------------------------------------------------------------------
@@ -562,8 +562,8 @@ PyRxClass PyDbSequenceEnd::desc()
 
 AcDbSequenceEnd* PyDbSequenceEnd::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbSequenceEnd*>(m_pImp.get());
+    return static_cast<AcDbSequenceEnd*>(m_pyImp.get());
 }
 

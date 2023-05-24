@@ -525,6 +525,7 @@ public:
 	boost::python::list getOffsetCurvesGivenPlaneNormal(const AcGeVector3d& normal, double offsetDist) const override;
 	static std::string  className();
 	static PyRxClass    desc();
+	static PyDbLine		copyAs(PyRxObject& src);
 public:
 	AcDbLine* impObj(const std::source_location& src = std::source_location::current()) const;
 };
