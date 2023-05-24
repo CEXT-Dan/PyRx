@@ -2,6 +2,7 @@
 #include "PyAcRx.h"
 #include "PyRxObject.h"
 #include <boost/function.hpp>
+#include "PyRxOverrule.h"
 
 using namespace boost::python;
 
@@ -62,7 +63,7 @@ BOOST_PYTHON_MODULE(PyRx)
 
     makeAcRxObjectWrapper();
     makeAcRxClassWrapper();
-
+    makePyRxOverruleWrapper();
 
     enum_<LispDataType>("LispDataType")
         .value("kAngle", LispDataType::kAngle)

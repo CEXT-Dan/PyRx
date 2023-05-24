@@ -88,9 +88,9 @@ PyRxClass PyDb3dSolid::desc()
 
 AcDb3dSolid* PyDb3dSolid::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDb3dSolid*>(m_pImp.get());
+    return static_cast<AcDb3dSolid*>(m_pyImp.get());
 }
 
 
@@ -138,9 +138,9 @@ PyRxClass PyDbRegion::desc()
 
 AcDbRegion* PyDbRegion::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbRegion*>(m_pImp.get());
+    return static_cast<AcDbRegion*>(m_pyImp.get());
 }
 
 //-----------------------------------------------------------------------------------
@@ -186,7 +186,7 @@ PyRxClass PyDbBody::desc()
 
 AcDbBody* PyDbBody::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbBody*>(m_pImp.get());
+    return static_cast<AcDbBody*>(m_pyImp.get());
 }

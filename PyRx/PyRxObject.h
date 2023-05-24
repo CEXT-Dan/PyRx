@@ -45,6 +45,7 @@ void makeAcRxObjectWrapper();
 class PyRxObject
 {
 public:
+    PyRxObject(const AcRxObject* ptr);
     PyRxObject(AcRxObject* ptr, bool autoDelete, bool isDbObject);
     virtual ~PyRxObject();
 
@@ -60,8 +61,8 @@ public:
 public:
     AcRxObject* impObj(const std::source_location& src = std::source_location::current()) const;
 
-protected:
-    std::shared_ptr<AcRxObject> m_pImp;
+public:
+    std::shared_ptr<AcRxObject> m_pyImp;
 };
 
 

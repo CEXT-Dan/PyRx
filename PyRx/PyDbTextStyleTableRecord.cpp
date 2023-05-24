@@ -190,7 +190,7 @@ PyRxClass PyDbTextStyleTableRecord::desc()
 
 AcDbTextStyleTableRecord* PyDbTextStyleTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcDbTextStyleTableRecord*>(m_pImp.get());
+    return static_cast<AcDbTextStyleTableRecord*>(m_pyImp.get());
 }

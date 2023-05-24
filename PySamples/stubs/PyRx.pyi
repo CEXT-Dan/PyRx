@@ -175,6 +175,104 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class Overrule:
+    def __eq__ (self, *args, **kwargs):
+      '''
+__eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __eq__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
+    def __ne__ (self, *args, **kwargs):
+      '''
+__ne__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __ne__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def addOverrule (self, *args, **kwargs):
+      '''
+addOverrule( (RxClass)arg1, (Overrule)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus addOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
+    ...
+    def addOverruleLast (self, *args, **kwargs):
+      '''
+addOverruleLast( (RxClass)arg1, (Overrule)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus addOverruleLast(class PyRxClass {lvalue},class PyRxOverrule {lvalue},bool)'''
+    ...
+    def className (self, *args, **kwargs):
+      '''
+className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def desc (self, *args, **kwargs):
+      '''
+desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def hasOverrule (self, *args, **kwargs):
+      '''
+hasOverrule( (RxObject)arg1, (RxClass)arg2) -> bool :
+
+    C++ signature :
+        bool hasOverrule(class PyRxObject {lvalue},class PyRxClass {lvalue})'''
+    ...
+    def isA (self, *args, **kwargs):
+      '''
+isA( (RxObject)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyRxObject {lvalue})'''
+    ...
+    def isApplicable (self, *args, **kwargs):
+      '''
+isApplicable( (Overrule)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool isApplicable(class PyRxOverrule {lvalue},class PyRxObject {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs):
+      '''
+isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def isOverruling (self, *args, **kwargs):
+      '''
+isOverruling() -> bool :
+
+    C++ signature :
+        bool isOverruling()'''
+    ...
+    def removeOverrule (self, *args, **kwargs):
+      '''
+removeOverrule( (RxClass)arg1, (Overrule)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
+    ...
+    def setIsOverruling (self, *args, **kwargs):
+      '''
+setIsOverruling( (bool)arg1) -> None :
+
+    C++ signature :
+        void setIsOverruling(bool)'''
+    ...
+
 class RxClass:
     def __eq__ (self, *args, **kwargs):
       '''

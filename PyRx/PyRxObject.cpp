@@ -7,7 +7,7 @@ using namespace boost::python;
 //PyRxObject wrapper
 void makeAcRxObjectWrapper()
 {
-    class_<PyRxObject, boost::noncopyable>("RxObject", boost::python::no_init)
+    class_<PyRxObject>("RxObject", boost::python::no_init)
         .def("isA", &PyRxObject::isA)
         .def("className", &PyRxObject::className).staticmethod("className")
         .def("isNull", &PyRxObject::isNull)
@@ -19,8 +19,13 @@ void makeAcRxObjectWrapper()
 
 //-----------------------------------------------------------------------------------------
 //PyRxObject
+PyRxObject::PyRxObject(const AcRxObject* ptr)
+    : m_pyImp(const_cast<AcRxObject*>(ptr), PyRxObjectDeleter(false, false))
+{
+}
+
 PyRxObject::PyRxObject(AcRxObject* ptr, bool autoDelete, bool isDbOject)
-    : m_pImp(ptr, PyRxObjectDeleter(autoDelete, isDbOject))
+    : m_pyImp(ptr, PyRxObjectDeleter(autoDelete, isDbOject))
 {
 }
 
@@ -40,17 +45,17 @@ bool PyRxObject::operator!=(const PyRxObject& rhs) const
 
 PyRxClass PyRxObject::isA() const
 {
-    return PyRxClass(m_pImp->isA(), false);
+    return PyRxClass(m_pyImp->isA(), false);
 }
 
 void PyRxObject::resetImp(AcRxObject* ptr, bool autoDelete, bool isDbObject)
 {
-    m_pImp.reset(ptr, PyRxObjectDeleter(autoDelete, isDbObject));
+    m_pyImp.reset(ptr, PyRxObjectDeleter(autoDelete, isDbObject));
 }
 
 bool PyRxObject::isNull()
 {
-    return m_pImp == nullptr;
+    return m_pyImp == nullptr;
 }
 
 PyRxClass PyRxObject::desc()
@@ -65,9 +70,9 @@ std::string PyRxObject::className()
 
 AcRxObject* PyRxObject::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return m_pImp.get();
+    return m_pyImp.get();
 }
 
 //-----------------------------------------------------------------------------------------
@@ -111,7 +116,7 @@ std::string PyRxClass::className()
 
 AcRxClass* PyRxClass::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_pImp == nullptr)
+    if (m_pyImp == nullptr)
         throw PyNullObject(src);
-    return static_cast<AcRxClass*>(m_pImp.get());
+    return static_cast<AcRxClass*>(m_pyImp.get());
 }

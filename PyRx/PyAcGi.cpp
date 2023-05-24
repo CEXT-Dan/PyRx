@@ -16,6 +16,8 @@ BOOST_PYTHON_MODULE(PyGi)
     makePyGiWorldDrawWrapper();
     makeAcGiViewportDrawWrapper();
 
+    makeAcGiDrawableOverruleWrapper();
+
     makeAcGiGeometryWrapper();
     makeAcGiWorldGeometryWrapper();
     makeAcGiViewportGeometryWrapper();

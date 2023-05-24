@@ -120,7 +120,7 @@ PyRxClass PyDbXrecord::desc()
 
 AcDbXrecord* PyDbXrecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
-	if (m_pImp == nullptr)
+	if (m_pyImp == nullptr)
 		throw PyNullObject(src);
-	return static_cast<AcDbXrecord*>(m_pImp.get());
+	return static_cast<AcDbXrecord*>(m_pyImp.get());
 }
