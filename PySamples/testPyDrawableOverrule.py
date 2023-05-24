@@ -14,6 +14,7 @@ class MyDrawableOverrule(PyGi.DrawableOverrule):
         PyGi.DrawableOverrule.__init__(self)
         self.circle = PyDb.Circle(PyGe.Point3d(0, 0, 0), PyGe.Vector3d.kZAxis, 10)
         self.circle.setDatabaseDefaults()
+        self.circle.setColorIndex(40)
     
     #override
     def isApplicable(self, subject):
@@ -22,20 +23,29 @@ class MyDrawableOverrule(PyGi.DrawableOverrule):
     #override
     def worldDraw(self, subject, wd):
         try:
-            line = PyDb.Line.copyAs(subject)#todo
+            #draw the subject first
+            flag = self.baseWorldDraw(subject,wd)
+            
+            #no cast in python, create a clone
+            line = PyDb.Line.cloneFrom(subject)
+            
+            #modify the circle
             seg = PyGe.LineSeg3d(line.endPoint(), line.startPoint())
             cen = PyGe.Point3d(seg.midPoint())
             rad = seg.length() * 0.3
             self.circle.setCenter(cen)
             self.circle.setRadius(rad)
-            self.circle.setColorIndex(40)
+            
+            #draw the custom stuff
             geo = wd.worldGeometry()
             geo.draw(self.circle)
-            return self.baseWorldDraw(subject,wd)
+            
+            #returing false here will go to viewport
+            return flag
         except Exception as err:
             print(err)
     
-#global       
+#put this in global space   
 overrule = MyDrawableOverrule()
 
 #cmds

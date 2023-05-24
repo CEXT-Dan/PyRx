@@ -73,6 +73,7 @@ void makePyDbLeaderWrapper()
         .def("setColorIndex", &PyDbLeader::setColorIndex2)
         .def("className", &PyDbLeader::className).staticmethod("className")
         .def("desc", &PyDbLeader::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbLeader::cloneFrom).staticmethod("cloneFrom")
         ;
 
     enum_<AcDbLeader::AnnoType>("AnnoType")
@@ -420,6 +421,13 @@ PyRxClass PyDbLeader::desc()
     return PyRxClass(AcDbLeader::desc(), false);
 }
 
+PyDbLeader PyDbLeader::cloneFrom(PyRxObject& src)
+{
+	if (!src.impObj()->isKindOf(AcDbLeader::desc()))
+		throw PyAcadErrorStatus(eNotThatKindOfClass);
+	return PyDbLeader(static_cast<AcDbLeader*>(src.impObj()->clone()), true);
+}
+
 AcDbLeader* PyDbLeader::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr)
@@ -564,6 +572,7 @@ void makePyDbMLeaderWrapper()
         .def("extendLeaderToText", &PyDbMLeader::extendLeaderToText)
         .def("className", &PyDbMLeader::className).staticmethod("className")
         .def("desc", &PyDbMLeader::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbMLeader::cloneFrom).staticmethod("cloneFrom")
         ;
 
     enum_<AcDbMLeader::MoveType>("MLeaderMoveType")
@@ -1477,6 +1486,13 @@ std::string PyDbMLeader::className()
 PyRxClass PyDbMLeader::desc()
 {
     return PyRxClass(AcDbLeader::desc(), false);
+}
+
+PyDbMLeader PyDbMLeader::cloneFrom(PyRxObject& src)
+{
+	if (!src.impObj()->isKindOf(AcDbMLeader::desc()))
+		throw PyAcadErrorStatus(eNotThatKindOfClass);
+	return PyDbMLeader(static_cast<AcDbMLeader*>(src.impObj()->clone()), true);
 }
 
 AcDbMLeader* PyDbMLeader::impObj(const std::source_location& src /*= std::source_location::current()*/) const

@@ -100,6 +100,7 @@ public:
 
     static std::string className();
     static PyRxClass desc();
+    static PyDbMText cloneFrom(PyRxObject& src);
 public:
     AcDbMText* impObj(const std::source_location& src = std::source_location::current()) const;
 };

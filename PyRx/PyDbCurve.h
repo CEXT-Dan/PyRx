@@ -52,6 +52,7 @@ public:
 
     static std::string className();
     static PyRxClass desc();
+    static PyDbCurve cloneFrom(PyRxObject& src);
 
 public:
     AcDbCurve* impObj(const std::source_location& src = std::source_location::current()) const;

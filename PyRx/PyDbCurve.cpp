@@ -37,6 +37,7 @@ void makePyDbCurveWrapper()
         .def("reverseCurve", &PyDbCurve::reverseCurve)
         .def("className", &PyDbCurve::className).staticmethod("className")
         .def("desc", &PyDbCurve::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbCurve::cloneFrom).staticmethod("cloneFrom")
         ;
 }
 
@@ -317,6 +318,13 @@ std::string PyDbCurve::className()
 PyRxClass PyDbCurve::desc()
 {
     return PyRxClass(AcDbCurve::desc(), false);
+}
+
+PyDbCurve PyDbCurve::cloneFrom(PyRxObject& src)
+{
+	if (!src.impObj()->isKindOf(AcDbCurve::desc()))
+		throw PyAcadErrorStatus(eNotThatKindOfClass);
+	return PyDbCurve(static_cast<AcDbCurve*>(src.impObj()->clone()), true);
 }
 
 AcDbCurve* PyDbCurve::impObj(const std::source_location& src /*= std::source_location::current()*/) const
