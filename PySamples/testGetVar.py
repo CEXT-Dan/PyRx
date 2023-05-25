@@ -12,12 +12,12 @@ def PyRxCmd_pygetvar():
     try:
         ed = Ed.Editor()
         
-        #result is a tuple (True/False , VALUE)
+        #result VALUE or None
         result = ed.getVar("FILLETRAD")
         print(result)
        
         #returns a bool
-        ed.setVar("FILLETRAD", (Rx.LispDataType.kDouble, 1.25))
+        result = ed.setVar("FILLETRAD", 1.25)
        
         result = ed.getVar("FILLETRAD")
         print(result)
@@ -29,6 +29,6 @@ def PyRxCmd_pygetvar():
         print(err)
         
 #Command: PYGETVAR
-#(True, 0.0)
-#(True, 1.25)
+#0.0
+#1.25
 #(False, None)

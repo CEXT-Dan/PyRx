@@ -332,7 +332,7 @@ boost::python::tuple PyAcEditor::getKword(const std::string& skwl)
     return boost::python::make_tuple(resval, resStr);
 }
 
-boost::python::tuple PyAcEditor::getVar(const std::string& sym)
+boost::python::object PyAcEditor::getVar(const std::string& sym)
 {
     PyAutoLockGIL lock;
     try
@@ -346,35 +346,35 @@ boost::python::tuple PyAcEditor::getVar(const std::string& sym)
         {
             case RTSHORT:
             {
-                return boost::python::make_tuple(true, buf.resval.rint);
+                return boost::python::object(buf.resval.rint);
             }
             case RTLONG:
             {
-                return boost::python::make_tuple(true, buf.resval.rlong);
+                return boost::python::object(buf.resval.rlong);
             }
             case RTREAL:
             {
-                return boost::python::make_tuple(true, buf.resval.rreal);
+                return boost::python::object(buf.resval.rreal);
             }
             case RTSTR:
             {
                 std::string val = wstr_to_utf8(buf.resval.rstring);
                 acutDelString(buf.resval.rstring);
-                return boost::python::make_tuple(true, val);
+                return boost::python::object(val);
             }
             case RTPOINT:
             {
                 AcGePoint2d pnt = asPnt2d(buf.resval.rpoint);
-                return boost::python::make_tuple(true, pnt);
+                return boost::python::object(pnt);
             }
             case RT3DPOINT:
             {
                 AcGePoint3d pnt = asPnt3d(buf.resval.rpoint);
-                return boost::python::make_tuple(true, pnt);
+                return boost::python::object(pnt);
             }
             default:
             {
-                return boost::python::make_tuple(false, boost::python::object());
+                return boost::python::object();
             }
         }
     }
@@ -382,58 +382,43 @@ boost::python::tuple PyAcEditor::getVar(const std::string& sym)
     {
         acutPrintf(_T("\nExeption @ %ls"), __FUNCTIONW__);
     }
-    return boost::python::make_tuple(false, boost::python::object());
+    return boost::python::object();
 }
 
-bool PyAcEditor::setVar(const std::string& sym, const boost::python::tuple& src)
+bool PyAcEditor::setVar(const std::string& sym, const  boost::python::object& src)
 {
+    PyAutoLockGIL lock;
     try
     {
-        tuple tpl = extract<tuple>(src);
-        if (boost::python::len(tpl) != 2)
-            return false;
-        int code = extract<int>(tpl[0]);
-
-        switch (code)
+        if (extract<double>(src).check())
         {
-            case RTANG:
-            case RTREAL:
-            {
-                const double val = extract<double>(tpl[1]);
-                AcResBufPtr buf(acutBuildList(code, val, 0));
-                return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
-            }
-            case RTORINT:
-            case RT3DPOINT:
-            {
-                const auto val = asDblArray(extract<AcGePoint3d>(tpl[1]));
-                AcResBufPtr buf(acutBuildList(code, val, 0));
-                return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
-            }
-            case RTPOINT:
-            {
-                const auto val = asDblArray(extract<AcGePoint2d>(tpl[1]));
-                AcResBufPtr buf(acutBuildList(code, val, 0));
-                return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
-            }
-            case RTSHORT:
-            {
-                const short val = extract<int>(tpl[1]);
-                AcResBufPtr buf(acutBuildList(code, val, 0));
-                return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
-            }
-            case RTLONG:
-            {
-                const int val = extract<int>(tpl[1]);
-                AcResBufPtr buf(acutBuildList(code, val, 0));
-                return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
-            }
-            case RTSTR:
-            {
-                const AcString str = utf8_to_wstr(extract<char*>(tpl[1])).c_str();
-                AcResBufPtr buf(acutBuildList(code, (const TCHAR*)str, 0));
-                return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
-            }
+            const double val = extract<double>(src);
+            AcResBufPtr buf(acutBuildList(RTREAL, val, 0));
+            return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
+        }
+        else if (extract<int>(src).check())
+        {
+            const int val = extract<int>(src);
+            AcResBufPtr buf(acutBuildList(RTLONG, val, 0));
+            return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
+        }
+        else if (extract<AcGePoint2d>(src).check())
+        {
+            const auto val = asDblArray(extract<AcGePoint2d>(src));
+            AcResBufPtr buf(acutBuildList(RTPOINT, val, 0));
+            return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
+        }
+        else if (extract<AcGePoint3d>(src).check())
+        {
+            const auto val = asDblArray(extract<AcGePoint3d>(src));
+            AcResBufPtr buf(acutBuildList(RT3DPOINT, val, 0));
+            return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
+        }
+        else if (extract<char*>(src).check())
+        {
+            const AcString str = utf8_to_wstr(extract<char*>(src)).c_str();
+            AcResBufPtr buf(acutBuildList(RTSTR, (const TCHAR*)str, 0));
+            return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
         }
     }
     catch (...)

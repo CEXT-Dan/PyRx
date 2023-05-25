@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "PyRxApp.h"
 #include "PyRxAcut.h"
-#include "PyRxAced.h"
 
 #include "PyAcGe.h"
 #include "PyAcDb.h"
@@ -231,9 +230,6 @@ PyMODINIT_FUNC PyInitPyRxModule(void)
     static PyMethodDef PyRxMethods[] =
     {
         {"Printf", PyRxAcut::Printf, METH_VARARGS, PyRxAcut::PrintfDoc()},
-        {"GetString", PyRxAced::GetString, METH_VARARGS, PyRxAced::GetStringDoc()},
-        {"GetVar", PyRxAced::GetVar, METH_VARARGS, PyRxAced::GetVarDoc()},
-        {"SetVar", PyRxAced::SetVar, METH_VARARGS, PyRxAced::SetVarDoc()},
         {NULL, NULL, 0 , NULL}
     };
     static PyModuleDef pyRxModuleDef =

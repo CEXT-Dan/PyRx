@@ -397,12 +397,22 @@ public:
         acutPrintf(_T("\npyfunc failed: "));
     }
 
-    static void AcRxPyApp_pycommand(void)
+    static void AcRxPyApp_pycmdprompt(void)
     {
         try
         {
             AcString cmd;
             WxPyAutoLock lock;
+
+            //embedded modules
+            PyObjectPtr PyRxApp(PyImport_ImportModule("PyRxApp"));
+            PyObjectPtr PyRx(PyImport_ImportModule("PyRx"));
+            PyObjectPtr PyGe(PyImport_ImportModule("PyGe"));
+            PyObjectPtr PyGi(PyImport_ImportModule("PyGi"));
+            PyObjectPtr PyDb(PyImport_ImportModule("PyDb"));
+            PyObjectPtr PyAp(PyImport_ImportModule("PyAp"));
+            PyObjectPtr PyEd(PyImport_ImportModule("PyEd"));
+
             while (acedGetString(1, _T(">>>: "), cmd) == RTNORM)
             {
                 PyRun_SimpleString(wstr_to_utf8((const TCHAR*)cmd).c_str());
@@ -425,5 +435,5 @@ IMPLEMENT_ARX_ENTRYPOINT(AcRxPyApp)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyload, pyload, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyreload, pyreload, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyrxver, pyrxver, ACRX_CMD_TRANSPARENT, NULL)
-ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycommand, pycommand, ACRX_CMD_TRANSPARENT, NULL)
+ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycmdprompt, pycmdprompt, ACRX_CMD_TRANSPARENT, NULL)
 //ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _doit, doit, ACRX_CMD_TRANSPARENT, NULL)
