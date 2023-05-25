@@ -38,8 +38,8 @@ public:
     PyDbObjectId         activeViewportId();
     Acad::PromptStatus   initGet(int val, const std::string& skwl);
     boost::python::tuple getKword(const std::string& skwl);
-    boost::python::tuple getVar(const std::string& sym);
-    bool                 setVar(const std::string& sym, const boost::python::tuple&);
+    boost::python::object getVar(const std::string& sym);
+    bool                 setVar(const std::string& sym, const  boost::python::object&);
 
 
 
