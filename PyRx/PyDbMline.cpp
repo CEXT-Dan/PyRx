@@ -492,7 +492,7 @@ double PyDbMlineStyle::endAngle() const
 int PyDbMlineStyle::addElement1(double offset, const AcCmColor& color, PyDbObjectId& linetypeId)
 {
 	int idx = 0;
-	if (auto es = impObj()->addElement(idx,offset, color, linetypeId.m_id); es != eOk)
+	if (auto es = impObj()->addElement(idx, offset, color, linetypeId.m_id); es != eOk)
 		throw PyAcadErrorStatus(es);
 	return idx;
 }
