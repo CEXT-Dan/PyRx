@@ -8,13 +8,13 @@ void makeAcEditorWrapper();
 class PyAcEditor
 {
 public:
-    void                alert(const std::string& prompt);
-    bool                arxLoad(const std::string& path);
-    bool                arxUnload(const std::string& app);
-    Acad::ErrorStatus   audit(const PyDbDatabase& db, bool bFixErrors, bool bCmdLnEcho);
-    bool                cmdS(const boost::python::list& lst);
-    std::string         findFile(const std::string& file);
-    std::string         findTrustedFile(const std::string& file);
+    void                 alert(const std::string& prompt);
+    bool                 arxLoad(const std::string& path);
+    bool                 arxUnload(const std::string& app);
+    Acad::ErrorStatus    audit(const PyDbDatabase& db, bool bFixErrors, bool bCmdLnEcho);
+    bool                 cmdS(const boost::python::list& lst);
+    std::string          findFile(const std::string& file);
+    std::string          findTrustedFile(const std::string& file);
     boost::python::list  arxLoaded();
     boost::python::tuple getInteger(const std::string& prompt);
     boost::python::tuple getDouble(const std::string& prompt);
@@ -33,11 +33,14 @@ public:
     boost::python::tuple selectAll(const boost::python::list& filter);
     boost::python::tuple selectCrossingWindow1(const AcGePoint3d& pt1, const AcGePoint3d& pt2);
     boost::python::tuple selectCrossingWindow2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const boost::python::list& filter);
-    AcGeMatrix3d        curUCS();
-    Acad::ErrorStatus   setCurUCS(const AcGeMatrix3d& mat);
-    PyDbObjectId        activeViewportId();
-    Acad::PromptStatus  initGet(int val, const std::string& skwl);
+    AcGeMatrix3d         curUCS();
+    Acad::ErrorStatus    setCurUCS(const AcGeMatrix3d& mat);
+    PyDbObjectId         activeViewportId();
+    Acad::PromptStatus   initGet(int val, const std::string& skwl);
     boost::python::tuple getKword(const std::string& skwl);
+    boost::python::tuple getVar(const std::string& sym);
+    bool                 setVar(const std::string& sym, const boost::python::tuple&);
+
 
 
     static std::string className();
