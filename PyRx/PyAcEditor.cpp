@@ -373,7 +373,9 @@ boost::python::tuple PyAcEditor::getVar(const std::string& sym)
                 return boost::python::make_tuple(true, pnt);
             }
             default:
+            {
                 return boost::python::make_tuple(false, boost::python::object());
+            }
         }
     }
     catch (...)
