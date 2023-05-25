@@ -370,6 +370,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Dimension :
+
+    C++ signature :
+        class PyDbDimension cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -2107,6 +2114,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Arc :
+
+    C++ signature :
+        class PyDbArc cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -3307,6 +3321,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Dimension :
+
+    C++ signature :
+        class PyDbDimension cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -4942,6 +4963,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> AttributeDefinition :
+
+    C++ signature :
+        class PyDbAttributeDefinition cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -6127,6 +6155,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> AttributeReference :
+
+    C++ signature :
+        class PyDbAttribute cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -7267,6 +7302,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Entity :
+
+    C++ signature :
+        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -8051,6 +8093,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Entity :
+
+    C++ signature :
+        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -8879,6 +8928,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> BlockReference :
+
+    C++ signature :
+        class PyDbBlockReference cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -9902,6 +9958,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> DbObject :
+
+    C++ signature :
+        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -10357,6 +10420,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> DbObject :
+
+    C++ signature :
+        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -12430,6 +12500,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Circle :
+
+    C++ signature :
+        class PyDbCircle cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -14013,6 +14090,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Curve :
+
+    C++ signature :
+        class PyDbCurve cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -18125,6 +18209,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> DbObject :
+
+    C++ signature :
+        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -18649,6 +18740,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Dimension :
+
+    C++ signature :
+        class PyDbDimension cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -20192,6 +20290,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> DbObject :
+
+    C++ signature :
+        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -20754,6 +20859,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> DbObject :
+
+    C++ signature :
+        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -21184,6 +21296,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> DbObject :
+
+    C++ signature :
+        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -21712,6 +21831,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Dimension :
+
+    C++ signature :
+        class PyDbDimension cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -24387,6 +24513,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Entity :
+
+    C++ signature :
+        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -27300,6 +27433,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Entity :
+
+    C++ signature :
+        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -28114,6 +28254,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Face :
+
+    C++ signature :
+        class PyDbFace cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -28955,6 +29102,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> FaceRecord :
+
+    C++ signature :
+        class PyDbFaceRecord cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -29789,6 +29943,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Fcf :
+
+    C++ signature :
+        class PyDbFcf cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -30781,6 +30942,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Field :
+
+    C++ signature :
+        class PyDbField cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -32559,6 +32727,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Hatch :
+
+    C++ signature :
+        class PyDbHatch cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -34819,6 +34994,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> DbObject :
+
+    C++ signature :
+        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -35657,6 +35839,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Leader :
+
+    C++ signature :
+        class PyDbLeader cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -36971,6 +37160,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Line :
+
+    C++ signature :
+        class PyDbLine cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -38108,6 +38304,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Dimension :
+
+    C++ signature :
+        class PyDbDimension cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -40025,6 +40228,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Entity :
+
+    C++ signature :
+        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -40852,6 +41062,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> MInsertBlock :
+
+    C++ signature :
+        class PyDbMInsertBlock cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -41902,6 +42119,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> MLeader :
+
+    C++ signature :
+        class PyDbMLeader cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -44748,6 +44972,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> DbObject :
+
+    C++ signature :
+        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -46308,6 +46539,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> MText :
+
+    C++ signature :
+        class PyDbMText cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -48288,6 +48526,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Mline :
+
+    C++ signature :
+        class PyDbMline cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -49389,6 +49634,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> DbObject :
+
+    C++ signature :
+        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -50036,6 +50288,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Entity :
+
+    C++ signature :
+        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -51179,6 +51438,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Dimension :
+
+    C++ signature :
+        class PyDbDimension cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -53046,6 +53312,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Entity :
+
+    C++ signature :
+        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -53985,6 +54258,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Point :
+
+    C++ signature :
+        class PyDbPoint cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -54949,6 +55229,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Dimension :
+
+    C++ signature :
+        class PyDbDimension cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -56784,6 +57071,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> PolyFaceMeshVertex :
+
+    C++ signature :
+        class PyDbPolyFaceMeshVertex cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -57597,6 +57891,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> PolygonMeshVertex :
+
+    C++ signature :
+        class PyDbPolygonMeshVertex cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -58430,6 +58731,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Polyline :
+
+    C++ signature :
+        class PyDbPolyline cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -59674,6 +59982,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Polyline2d :
+
+    C++ signature :
+        class PyDb2dPolyline cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -60887,6 +61202,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Polyline3d :
+
+    C++ signature :
+        class PyDb3dPolyline cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -61969,6 +62291,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Polyline3dVertex :
+
+    C++ signature :
+        class PyDb3dPolylineVertex cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -62897,6 +63226,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Dimension :
+
+    C++ signature :
+        class PyDbDimension cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -64563,6 +64899,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Dimension :
+
+    C++ signature :
+        class PyDbDimension cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -66164,6 +66507,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Entity :
+
+    C++ signature :
+        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -66958,6 +67308,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Entity :
+
+    C++ signature :
+        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -67852,6 +68209,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Dimension :
+
+    C++ signature :
+        class PyDbDimension cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -69866,6 +70230,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Entity :
+
+    C++ signature :
+        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -70660,6 +71031,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Entity :
+
+    C++ signature :
+        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -71503,6 +71881,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Entity :
+
+    C++ signature :
+        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -72298,6 +72683,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Entity :
+
+    C++ signature :
+        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -73069,6 +73461,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> DbObject :
+
+    C++ signature :
+        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -73489,6 +73888,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> DbObject :
+
+    C++ signature :
+        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -74133,6 +74539,13 @@ clearTableStyleOverrides( (Table)arg1) -> None :
 
     C++ signature :
         void clearTableStyleOverrides(class PyDbTable {lvalue})'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Table :
+
+    C++ signature :
+        class PyDbTable cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -77020,6 +77433,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> DbObject :
+
+    C++ signature :
+        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -78004,6 +78424,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Text :
+
+    C++ signature :
+        class PyDbText cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -79326,6 +79753,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> DbObject :
+
+    C++ signature :
+        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -80639,6 +81073,13 @@ className() -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Vertex :
+
+    C++ signature :
+        class PyDbVertex cloneFrom(class PyRxObject {lvalue})'''
+    ...
     def close (self, *args, **kwargs):
       '''
 close( (DbObject)arg1) -> ErrorStatus :
@@ -81450,6 +81891,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> Vertex2d :
+
+    C++ signature :
+        class PyDb2dVertex cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -82617,6 +83065,13 @@ className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> DbObject :
+
+    C++ signature :
+        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
     ...
     def close (self, *args, **kwargs):
       '''

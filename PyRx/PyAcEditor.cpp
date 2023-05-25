@@ -69,6 +69,8 @@ void makeAcEditorWrapper()
         .def("selectCrossingWindow", &PyAcEditor::selectCrossingWindow2)
         .def("initGet", &PyAcEditor::initGet)
         .def("getKword", &PyAcEditor::getKword)
+        .def("getVar", &PyAcEditor::getVar)
+        .def("setVar", &PyAcEditor::setVar)
         ;
 }
 
@@ -328,6 +330,115 @@ boost::python::tuple PyAcEditor::getKword(const std::string& skwl)
     std::string resStr = wstr_to_utf8(pStr);
     acutDelString(pStr);
     return boost::python::make_tuple(resval, resStr);
+}
+
+boost::python::tuple PyAcEditor::getVar(const std::string& sym)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        resbuf buf;
+        if (acedGetVar(utf8_to_wstr(sym).c_str(), &buf) != RTNORM)
+        {
+            return boost::python::make_tuple(false, boost::python::object());
+        }
+        switch (buf.restype)
+        {
+            case RTSHORT:
+            {
+                return boost::python::make_tuple(true, buf.resval.rint);
+            }
+            case RTLONG:
+            {
+                return boost::python::make_tuple(true, buf.resval.rlong);
+            }
+            case RTREAL:
+            {
+                return boost::python::make_tuple(true, buf.resval.rreal);
+            }
+            case RTSTR:
+            {
+                std::string val = wstr_to_utf8(buf.resval.rstring);
+                acutDelString(buf.resval.rstring);
+                return boost::python::make_tuple(true, val);
+            }
+            case RTPOINT:
+            {
+                AcGePoint2d pnt = asPnt2d(buf.resval.rpoint);
+                return boost::python::make_tuple(true, pnt);
+            }
+            case RT3DPOINT:
+            {
+                AcGePoint3d pnt = asPnt3d(buf.resval.rpoint);
+                return boost::python::make_tuple(true, pnt);
+            }
+            default:
+                return boost::python::make_tuple(false, boost::python::object());
+        }
+    }
+    catch (...)
+    {
+        acutPrintf(_T("\nExeption @ %ls"), __FUNCTIONW__);
+    }
+    return boost::python::make_tuple(false, boost::python::object());
+}
+
+bool PyAcEditor::setVar(const std::string& sym, const boost::python::tuple& src)
+{
+    try
+    {
+        tuple tpl = extract<tuple>(src);
+        if (boost::python::len(tpl) != 2)
+            return false;
+        int code = extract<int>(tpl[0]);
+
+        switch (code)
+        {
+            case RTANG:
+            case RTREAL:
+            {
+                const double val = extract<double>(tpl[1]);
+                AcResBufPtr buf(acutBuildList(code, val, 0));
+                return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
+            }
+            case RTORINT:
+            case RT3DPOINT:
+            {
+                const auto val = asDblArray(extract<AcGePoint3d>(tpl[1]));
+                AcResBufPtr buf(acutBuildList(code, val, 0));
+                return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
+            }
+            case RTPOINT:
+            {
+                const auto val = asDblArray(extract<AcGePoint2d>(tpl[1]));
+                AcResBufPtr buf(acutBuildList(code, val, 0));
+                return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
+            }
+            case RTSHORT:
+            {
+                const short val = extract<int>(tpl[1]);
+                AcResBufPtr buf(acutBuildList(code, val, 0));
+                return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
+            }
+            case RTLONG:
+            {
+                const int val = extract<int>(tpl[1]);
+                AcResBufPtr buf(acutBuildList(code, val, 0));
+                return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
+            }
+            case RTSTR:
+            {
+                const AcString str = utf8_to_wstr(extract<char*>(tpl[1])).c_str();
+                AcResBufPtr buf(acutBuildList(code, (const TCHAR*)str, 0));
+                return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
+            }
+        }
+    }
+    catch (...)
+    {
+        acutPrintf(_T("\nExeption @ %ls"), __FUNCTIONW__);
+    }
+    return false;
 }
 
 std::string PyAcEditor::className()

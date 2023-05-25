@@ -875,6 +875,13 @@ getString( (Editor)arg1, (int)arg2, (str)arg3) -> tuple :
     C++ signature :
         class boost::python::tuple getString(class PyAcEditor {lvalue},int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def getVar (self, *args, **kwargs):
+      '''
+getVar( (Editor)arg1, (str)arg2) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getVar(class PyAcEditor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def initGet (self, *args, **kwargs):
       '''
 initGet( (Editor)arg1, (int)arg2, (str)arg3) -> PromptStatus :
@@ -934,6 +941,13 @@ setCurrentUCS( (Editor)arg1, (Matrix3d)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setCurrentUCS(class PyAcEditor {lvalue},class AcGeMatrix3d)'''
+    ...
+    def setVar (self, *args, **kwargs):
+      '''
+setVar( (Editor)arg1, (str)arg2, (tuple)arg3) -> bool :
+
+    C++ signature :
+        bool setVar(class PyAcEditor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::tuple)'''
     ...
 
 class EditorReactor:

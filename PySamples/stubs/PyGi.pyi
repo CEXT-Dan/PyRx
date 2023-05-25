@@ -133,6 +133,13 @@ addOverruleLast( (RxClass)arg1, (Overrule)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus addOverruleLast(class PyRxClass {lvalue},class PyRxOverrule {lvalue},bool)'''
     ...
+    def baseWorldDraw (self, *args, **kwargs):
+      '''
+baseWorldDraw( (DrawableOverrule)arg1, (Drawable)arg2, (WorldDraw)arg3) -> bool :
+
+    C++ signature :
+        bool baseWorldDraw(class PyGiDrawableOverrule {lvalue},class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
+    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -163,10 +170,10 @@ isA( (RxObject)arg1) -> RxClass :
     ...
     def isApplicable (self, *args, **kwargs):
       '''
-isApplicable( (Overrule)arg1, (RxObject)arg2) -> bool :
+isApplicable( (DrawableOverrule)arg1, (RxObject)arg2) -> bool :
 
     C++ signature :
-        bool isApplicable(class PyRxOverrule {lvalue},class PyRxObject {lvalue})'''
+        bool isApplicable(class PyGiDrawableOverrule {lvalue},class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs):
       '''

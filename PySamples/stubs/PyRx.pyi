@@ -237,13 +237,6 @@ isA( (RxObject)arg1) -> RxClass :
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
-    def isApplicable (self, *args, **kwargs):
-      '''
-isApplicable( (Overrule)arg1, (RxObject)arg2) -> bool :
-
-    C++ signature :
-        bool isApplicable(class PyRxOverrule {lvalue},class PyRxObject {lvalue})'''
-    ...
     def isNull (self, *args, **kwargs):
       '''
 isNull( (RxObject)arg1) -> bool :
