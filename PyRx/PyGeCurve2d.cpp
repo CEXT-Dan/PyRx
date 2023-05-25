@@ -896,7 +896,7 @@ Adesk::Boolean PyGeEllipArc2d::isInside1(const AcGePoint2d& pnt) const
 
 Adesk::Boolean PyGeEllipArc2d::isInside2(const AcGePoint2d& pnt, const AcGeTol& tol) const
 {
-    return impObj()->isInside(pnt,tol);
+    return impObj()->isInside(pnt, tol);
 }
 
 AcGePoint2d PyGeEllipArc2d::center() const
@@ -1017,7 +1017,7 @@ PyGeEllipArc2d& PyGeEllipArc2d::set3(const PyGeCircArc2d& arc)
     throw PyNotimplementedByHost();
 #else
     if (impObj() == nullptr || arc.isNull())
-    impObj()->set(*arc.impObj());
+        impObj()->set(*arc.impObj());
     return *this;
 #endif
 }

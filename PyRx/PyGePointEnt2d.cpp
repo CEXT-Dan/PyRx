@@ -86,7 +86,7 @@ PyGePointOnCurve2d::PyGePointOnCurve2d(const PyGeCurve2d& crv, double param)
 const PyGeCurve2d PyGePointOnCurve2d::curve() const
 {
     auto result = impObj()->curve();
-    if(result == nullptr)
+    if (result == nullptr)
         throw PyNullObject(std::source_location::current());
     return PyGeCurve2d(result->copy());
 }
@@ -175,7 +175,7 @@ boost::python::tuple PyGePointOnCurve2d::curvature(double param)
     if (imp == nullptr)
         throw PyNullObject();
     double res = 0;
-    auto flag = imp->curvature(param,res);
+    auto flag = imp->curvature(param, res);
     return make_tuple(flag, res);
 }
 #endif
@@ -234,7 +234,7 @@ PyGePosition2d::PyGePosition2d(const AcGePoint2d& pnt)
 }
 
 PyGePosition2d::PyGePosition2d(double x, double y)
-    : PyGePointEnt2d(new AcGePosition2d(x,y))
+    : PyGePointEnt2d(new AcGePosition2d(x, y))
 {
 }
 #ifndef BRXAPP
@@ -259,7 +259,7 @@ PyGePosition2d& PyGePosition2d::set2(double x, double y)
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    impObj()->set(x,y);
+    impObj()->set(x, y);
     return *this;
 #endif
 }

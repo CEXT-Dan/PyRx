@@ -13,7 +13,7 @@ public:
     PyDb3dSolid(AcDb3dSolid* ptr, bool autoDelete);
     PyDb3dSolid(const PyDbObjectId& id, AcDb::OpenMode mode);
     Acad::ErrorStatus createBox(double xLen, double yLen, double zLen);
-    Acad::ErrorStatus createFrustum(double height, double xRadius,double yRadius, double topXRadius);
+    Acad::ErrorStatus createFrustum(double height, double xRadius, double yRadius, double topXRadius);
     Acad::ErrorStatus createSphere(double radius);
     Acad::ErrorStatus createTorus(double majorRadius, double minorRadius);
     Acad::ErrorStatus createPyramid1(double height, int sides, double radius);

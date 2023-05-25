@@ -33,7 +33,7 @@ PyGeBoundBlock3d::PyGeBoundBlock3d()
 }
 
 PyGeBoundBlock3d::PyGeBoundBlock3d(AcGeEntity3d* pEnt)
-    :PyGeEntity3d(pEnt)
+    : PyGeEntity3d(pEnt)
 {
 }
 
@@ -60,7 +60,7 @@ AcGePoint3d PyGeBoundBlock3d::getBasePoint() const
 {
     AcGePoint3d base;
     AcGeVector3d dir1, dir2, dir3;
-    impObj()->get(base, dir1, dir2,dir3);
+    impObj()->get(base, dir1, dir2, dir3);
     return base;
 }
 

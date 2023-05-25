@@ -27,18 +27,14 @@ public:
     PyGePointOnCurve2d(const PyGeCurve2d& crv);
     PyGePointOnCurve2d(const PyGeCurve2d& crv, double param);
     PyGePointOnCurve2d(AcGeEntity2d* pEnt);
-
-    const PyGeCurve2d curve() const;
-    double            parameter() const;
-
+    const PyGeCurve2d   curve() const;
+    double              parameter() const;
     AcGePoint2d         point1() const;
     AcGePoint2d         point2(double param);
     AcGePoint2d         point3(const PyGeCurve2d& crv, double param);
-
     AcGeVector2d        deriv1(int order) const;
     AcGeVector2d        deriv2(int order, double param);
     AcGeVector2d        deriv3(int order, const PyGeCurve2d& crv, double param);
-
 #ifdef NEVER //acad link error
     Adesk::Boolean      isSingular1() const;
     Adesk::Boolean      isSingular2(const AcGeTol& tol) const;
@@ -48,7 +44,6 @@ public:
     boost::python::tuple   curvature();
     boost::python::tuple   curvature(double param);
 #endif
-
     PyGePointOnCurve2d& setCurve(const PyGeCurve2d& crv);
     PyGePointOnCurve2d& setParameter(double param);
 
@@ -71,10 +66,8 @@ public:
     PyGePosition2d(const AcGePosition2d& pos);
 #endif
     PyGePosition2d(AcGeEntity2d* pEnt);
-
     PyGePosition2d& set1(const AcGePoint2d&);
     PyGePosition2d& set2(double x, double y);
-
     static std::string className();
 public:
     AcGePosition2d* impObj(const std::source_location& src = std::source_location::current()) const;

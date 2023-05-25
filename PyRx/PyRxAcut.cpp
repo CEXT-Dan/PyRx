@@ -13,9 +13,9 @@ PyObject* PyRxAcut::Printf(PyObject* self, PyObject* args)
     if (!PyArg_ParseTuple(args, "O:Printf()", &obj))
         return NULL;
 
-    if (PyUnicode_Check(obj)) 
+    if (PyUnicode_Check(obj))
         strobj = obj;
-    else 
+    else
         strobj = PyObject_Str(obj);
 
     if (const wchar_t* text = PyUnicode_AsWideCharString(strobj, nullptr); text != nullptr)

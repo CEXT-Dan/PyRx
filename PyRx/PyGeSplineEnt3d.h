@@ -10,7 +10,6 @@ class PyGeSplineEnt3d : public PyGeCurve3d
 {
 public:
     PyGeSplineEnt3d(AcGeEntity3d* pEnt);
-
     Adesk::Boolean    isRational() const;
     int               degree() const;
     int               order() const;
@@ -19,21 +18,15 @@ public:
     int               numControlPoints() const;
     int               continuityAtKnot1(int idx) const;
     int               continuityAtKnot2(int idx, const AcGeTol& tol) const;
-
     double            startParam() const;
     double            endParam() const;
     AcGePoint3d       startPoint() const;
     AcGePoint3d       endPoint() const;
-
     Adesk::Boolean    hasFitData() const;
-
-
     double            knotAt(int idx) const;
-    PyGeSplineEnt3d& setKnotAt(int idx, double val);
-
+    PyGeSplineEnt3d&  setKnotAt(int idx, double val);
     AcGePoint3d       controlPointAt(int idx) const;
-    PyGeSplineEnt3d& setControlPointAt(int idx, const AcGePoint3d& pnt);
-
+    PyGeSplineEnt3d&  setControlPointAt(int idx, const AcGePoint3d& pnt);
     static std::string className();
 public:
     AcGeSplineEnt3d* impObj(const std::source_location& src = std::source_location::current()) const;

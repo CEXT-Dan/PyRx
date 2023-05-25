@@ -312,7 +312,7 @@ public:
     static std::string  className();
     static PyRxClass    desc();
 public:
-    AcDbArcDimension*   impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbArcDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-----------------------------------------------------------------------------------

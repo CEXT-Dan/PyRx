@@ -12,7 +12,7 @@ public:
     PyDbField(AcDbField* ptr, bool autoDelete);
     PyDbField(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbField() override = default;
-    Acad::ErrorStatus   setInObject(PyDbObject& pObj,const std::string& pszPropName);
+    Acad::ErrorStatus   setInObject(PyDbObject& pObj, const std::string& pszPropName);
     Acad::ErrorStatus   postInDatabase(PyDbDatabase& pDb);
     AcDbField::State    state(void) const;
     AcDbField::EvalStatus evaluationStatus() const;
@@ -26,7 +26,7 @@ public:
     std::string         getFormat(void) const;
     Acad::ErrorStatus   setFormat(const std::string& pszFormat);
     std::string         getValue(void) const;
-	Acad::ErrorStatus   evaluate1();
+    Acad::ErrorStatus   evaluate1();
     Acad::ErrorStatus   evaluate2(AcDbField::EvalContext nContext);
     Acad::ErrorStatus   evaluate3(AcDbField::EvalContext nContext, PyDbDatabase& db);
     static std::string  className();

@@ -13,5 +13,5 @@ void makeAcDbHostApplicationServicesWrapper()
 
 PyDbDatabase PyDbHostApplicationServices::workingDatabase() const
 {
-   return PyDbDatabase(pDbHostApp->workingDatabase());
+    return PyDbDatabase(pDbHostApp->workingDatabase());
 }

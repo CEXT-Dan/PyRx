@@ -20,7 +20,7 @@ void makeAcDbDictionaryWrapper()
 //---------------------------------------------------------------------------------------- -
 //PyDbDictionary
 PyDbDictionary::PyDbDictionary(AcDbDictionary* ptr, bool autoDelete)
-: PyDbObject(ptr, autoDelete)
+    : PyDbObject(ptr, autoDelete)
 {
 }
 

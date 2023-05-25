@@ -20,19 +20,15 @@ public:
     int               numControlPoints() const;
     int               continuityAtKnot1(int idx) const;
     int               continuityAtKnot2(int idx, const AcGeTol& tol) const;
-
     double            startParam() const;
     double            endParam() const;
     AcGePoint2d       startPoint() const;
     AcGePoint2d       endPoint() const;
-
     Adesk::Boolean    hasFitData() const;
     double            knotAt(int idx) const;
-
     PyGeSplineEnt2d&  setKnotAt(int idx, double val);
     AcGePoint2d       controlPointAt(int idx) const;
     PyGeSplineEnt2d&  setControlPointAt(int idx, const AcGePoint2d& pnt);
-
     static std::string className();
 public:
     AcGeSplineEnt2d* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -79,11 +75,9 @@ public:
     PyGePolyline2d(const PyGeKnotVector& knots, const boost::python::list& points);
     PyGePolyline2d(const PyGeCurve2d& crv, double apprEps);
     PyGePolyline2d(AcGeEntity2d* pEnt);
-
     int              numFitPoints() const;
     AcGePoint2d      fitPointAt(int idx) const;
     PyGeSplineEnt2d& setFitPointAt(int idx, const AcGePoint2d& point);
-    
     static std::string className();
 public:
     AcGePolyline2d* impObj(const std::source_location& src = std::source_location::current()) const;

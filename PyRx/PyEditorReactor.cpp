@@ -1303,7 +1303,7 @@ void PyEditorReactor::xrefSubcommandBindItemWr(PyDbDatabase& pHost, int activity
     if (override pyFunc = this->get_override("xrefSubcommandBindItem"))
         pyFunc(pHost, activity, blockId);
     else
-        reg_xrefSubcommandBindItem= false;
+        reg_xrefSubcommandBindItem = false;
 }
 
 void PyEditorReactor::xrefSubcommandAttachItemWr(PyDbDatabase& pHost, int activity, const std::string& pPath)

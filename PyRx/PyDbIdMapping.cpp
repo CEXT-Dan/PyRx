@@ -11,13 +11,13 @@ void makePyDbIdMappingWrapper()
 }
 
 PyDbIdMapping::PyDbIdMapping()
-  : m_imp(new AcDbIdMapping())
+    : m_imp(new AcDbIdMapping())
 {
 }
 
 PyDbIdMapping::PyDbIdMapping(const AcDbIdMapping& mapping)
     : m_imp(new AcDbIdMapping())
 {
-   if(auto es = m_imp->copyFrom(&mapping); es != eOk)
-       throw PyAcadErrorStatus(es);
+    if (auto es = m_imp->copyFrom(&mapping); es != eOk)
+        throw PyAcadErrorStatus(es);
 }

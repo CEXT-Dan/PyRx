@@ -175,7 +175,7 @@ Adesk::Boolean PyGeLinearEnt3d::isPerpendicularTo1(const PyGeLinearEnt3d& line) 
 
 Adesk::Boolean PyGeLinearEnt3d::isPerpendicularTo2(const PyGeLinearEnt3d& line, const AcGeTol& tol) const
 {
-    return impObj()->isPerpendicularTo(*line.impObj(),tol);
+    return impObj()->isPerpendicularTo(*line.impObj(), tol);
 }
 
 Adesk::Boolean PyGeLinearEnt3d::isPerpendicularTo3(const PyGePlanarEnt& plane) const
@@ -207,7 +207,7 @@ PyGePlane PyGeLinearEnt3d::getPerpPlane(const AcGePoint3d& pnt) const
 
 AcGePoint3d PyGeLinearEnt3d::pointOnLine() const
 {
-   return impObj()->pointOnLine();
+    return impObj()->pointOnLine();
 }
 
 AcGeVector3d PyGeLinearEnt3d::direction() const
@@ -252,7 +252,7 @@ void makAcGeLine3dWrapper()
 }
 
 PyGeLine3d::PyGeLine3d()
-  : PyGeLinearEnt3d(new AcGeLine3d())
+    : PyGeLinearEnt3d(new AcGeLine3d())
 {
 }
 
@@ -448,7 +448,7 @@ PyGeRay3d::PyGeRay3d()
 }
 
 PyGeRay3d::PyGeRay3d(AcGeEntity3d* pEnt)
-    :PyGeLinearEnt3d(pEnt)
+    : PyGeLinearEnt3d(pEnt)
 {
 }
 

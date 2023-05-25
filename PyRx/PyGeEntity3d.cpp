@@ -82,7 +82,7 @@ PyGeEntity3d& PyGeEntity3d::translateBy(const AcGeVector3d& translateVec)
 
 PyGeEntity3d& PyGeEntity3d::rotateBy1(double angle, const AcGeVector3d& vec)
 {
-    impObj()->rotateBy(angle,vec);
+    impObj()->rotateBy(angle, vec);
     return *this;
 }
 

@@ -23,7 +23,7 @@ public:
         AcAp::DocLockMode myNewMode,
         AcAp::DocLockMode currentMode,
         const  ACHAR* pGlobalCmdName) override;
-    virtual void        documentLockModeChangeVetoed(AcApDocument* doc,const ACHAR* pGlobalCmdName) override;
+    virtual void        documentLockModeChangeVetoed(AcApDocument* doc, const ACHAR* pGlobalCmdName) override;
     virtual void        documentLockModeChanged(AcApDocument* doc,
         AcAp::DocLockMode myPreviousMode,
         AcAp::DocLockMode myCurrentMode,

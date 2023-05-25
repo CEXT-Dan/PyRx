@@ -96,7 +96,7 @@ PyRxClass::PyRxClass(AcRxClass* ptr, bool autoDelete)
 
 bool PyRxClass::isDerivedFrom(const PyRxClass& other) const
 {
-   return impObj()->isDerivedFrom(other.impObj());
+    return impObj()->isDerivedFrom(other.impObj());
 }
 
 std::string PyRxClass::name()

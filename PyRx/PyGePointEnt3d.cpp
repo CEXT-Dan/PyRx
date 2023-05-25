@@ -48,7 +48,7 @@ PyGePointOnCurve3d::PyGePointOnCurve3d(const AcGePointOnCurve3d& src)
 }
 
 PyGePointOnCurve3d::PyGePointOnCurve3d(AcGeEntity3d* src)
-  : PyGePointEnt3d(src)
+    : PyGePointEnt3d(src)
 {
 }
 
