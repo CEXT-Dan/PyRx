@@ -406,12 +406,6 @@ public:
 
             //embedded modules
             PyObjectPtr PyRxApp(PyImport_ImportModule("PyRxApp"));
-            PyObjectPtr PyRx(PyImport_ImportModule("PyRx"));
-            PyObjectPtr PyGe(PyImport_ImportModule("PyGe"));
-            PyObjectPtr PyGi(PyImport_ImportModule("PyGi"));
-            PyObjectPtr PyDb(PyImport_ImportModule("PyDb"));
-            PyObjectPtr PyAp(PyImport_ImportModule("PyAp"));
-            PyObjectPtr PyEd(PyImport_ImportModule("PyEd"));
 
             while (acedGetString(1, _T(">>>: "), cmd) == RTNORM)
             {
