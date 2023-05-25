@@ -25,8 +25,8 @@ public:
     virtual AcGeVector3d        getFirstDeriv(const AcGePoint3d& pnt) const;
     virtual AcGeVector3d        getSecondDeriv(double param) const;
     virtual AcGeVector3d        getSecondDeriv(const AcGePoint3d& pnt) const;
-    virtual AcGePoint3d         getClosestPointTo(const AcGePoint3d& givenPnt,Adesk::Boolean extend) const;
-    virtual AcGePoint3d         getClosestPointTo(const AcGePoint3d& givenPnt,const AcGeVector3d& direction, Adesk::Boolean extend) const;
+    virtual AcGePoint3d         getClosestPointTo(const AcGePoint3d& givenPnt, Adesk::Boolean extend) const;
+    virtual AcGePoint3d         getClosestPointTo(const AcGePoint3d& givenPnt, const AcGeVector3d& direction, Adesk::Boolean extend) const;
     virtual boost::python::list getOffsetCurves(double offsetDist) const;
     virtual boost::python::list getOffsetCurvesGivenPlaneNormal(const AcGeVector3d& normal, double offsetDist) const;
     virtual boost::python::list getSplitCurves(const boost::python::list& params) const;

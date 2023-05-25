@@ -18,7 +18,7 @@ void makeAcApApplictionWrapper()
 //PyApApplication  Wrapper
 PyApDocManager PyApApplication::docManager()
 {
-   return PyApDocManager(acDocManager, false);
+    return PyApDocManager(acDocManager, false);
 }
 
 int64_t PyApApplication::mainWnd()

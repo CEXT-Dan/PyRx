@@ -13,13 +13,13 @@ void makePyDbSurfaceWrapper();
 class PyDbSurface : public PyDbEntity
 {
 public:
-	PyDbSurface();
-	PyDbSurface(AcDbSurface* ptr, bool autoDelete);
-	PyDbSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
-	static std::string className();
-	static PyRxClass desc();
+    PyDbSurface();
+    PyDbSurface(AcDbSurface* ptr, bool autoDelete);
+    PyDbSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
+    static std::string className();
+    static PyRxClass desc();
 public:
-	AcDbSurface* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //----------------------------------------------------------------------
@@ -29,13 +29,13 @@ void makeAcDbExtrudedSurfaceWrapper();
 class PyDbExtrudedSurface : public PyDbSurface
 {
 public:
-	PyDbExtrudedSurface();
-	PyDbExtrudedSurface(AcDbExtrudedSurface* ptr, bool autoDelete);
-	PyDbExtrudedSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
-	static std::string className();
-	static PyRxClass desc();
+    PyDbExtrudedSurface();
+    PyDbExtrudedSurface(AcDbExtrudedSurface* ptr, bool autoDelete);
+    PyDbExtrudedSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
+    static std::string className();
+    static PyRxClass desc();
 public:
-	AcDbExtrudedSurface* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbExtrudedSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //----------------------------------------------------------------------
@@ -47,13 +47,13 @@ void makeAcDbLoftedSurfaceWrapper();
 class PyDbLoftedSurface : public PyDbSurface
 {
 public:
-	PyDbLoftedSurface();
-	PyDbLoftedSurface(AcDbLoftedSurface* ptr, bool autoDelete);
-	PyDbLoftedSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
-	static std::string className();
-	static PyRxClass desc();
+    PyDbLoftedSurface();
+    PyDbLoftedSurface(AcDbLoftedSurface* ptr, bool autoDelete);
+    PyDbLoftedSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
+    static std::string className();
+    static PyRxClass desc();
 public:
-	AcDbLoftedSurface* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbLoftedSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #endif
 
@@ -66,13 +66,13 @@ void makePyDbNurbSurfaceWrapper();
 class PyDbNurbSurface : public PyDbSurface
 {
 public:
-	PyDbNurbSurface();
-	PyDbNurbSurface(AcDbNurbSurface* ptr, bool autoDelete);
-	PyDbNurbSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
-	static std::string className();
-	static PyRxClass desc();
+    PyDbNurbSurface();
+    PyDbNurbSurface(AcDbNurbSurface* ptr, bool autoDelete);
+    PyDbNurbSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
+    static std::string className();
+    static PyRxClass desc();
 public:
-	AcDbNurbSurface* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbNurbSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #endif
 
@@ -85,13 +85,13 @@ void makePyDbPlaneSurfaceWrapper();
 class PyDbPlaneSurface : public PyDbSurface
 {
 public:
-	PyDbPlaneSurface();
-	PyDbPlaneSurface(AcDbPlaneSurface* ptr, bool autoDelete);
-	PyDbPlaneSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
-	static std::string className();
-	static PyRxClass desc();
+    PyDbPlaneSurface();
+    PyDbPlaneSurface(AcDbPlaneSurface* ptr, bool autoDelete);
+    PyDbPlaneSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
+    static std::string className();
+    static PyRxClass desc();
 public:
-	AcDbPlaneSurface* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbPlaneSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #endif
 
@@ -104,13 +104,13 @@ void makePyDbRevolvedSurfaceWrapper();
 class PyDbRevolvedSurface : public PyDbSurface
 {
 public:
-	PyDbRevolvedSurface();
-	PyDbRevolvedSurface(AcDbRevolvedSurface* ptr, bool autoDelete);
-	PyDbRevolvedSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
-	static std::string className();
-	static PyRxClass desc();
+    PyDbRevolvedSurface();
+    PyDbRevolvedSurface(AcDbRevolvedSurface* ptr, bool autoDelete);
+    PyDbRevolvedSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
+    static std::string className();
+    static PyRxClass desc();
 public:
-	AcDbRevolvedSurface* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbRevolvedSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #endif
 
@@ -123,13 +123,13 @@ void makePyDbSweptSurfaceWrapper();
 class PyDbSweptSurface : public PyDbSurface
 {
 public:
-	PyDbSweptSurface();
-	PyDbSweptSurface(AcDbSweptSurface* ptr, bool autoDelete);
-	PyDbSweptSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
-	static std::string className();
-	static PyRxClass desc();
+    PyDbSweptSurface();
+    PyDbSweptSurface(AcDbSweptSurface* ptr, bool autoDelete);
+    PyDbSweptSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
+    static std::string className();
+    static PyRxClass desc();
 public:
-	AcDbSweptSurface* impObj(const std::source_location& src = std::source_location::current()) const;
+    AcDbSweptSurface* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 #endif
 

@@ -9,7 +9,7 @@ using namespace boost::python;
 //PyApDocument Wrapper
 void makeAcApDocumentWrapper()
 {
-   class_<PyApDocument, bases<PyRxObject>>("Document", boost::python::no_init)
+    class_<PyApDocument, bases<PyRxObject>>("Document", boost::python::no_init)
         .def("database", &PyApDocument::database)
         .def("editor", &PyApDocument::editor)
         .def("fileName", &PyApDocument::fileName)

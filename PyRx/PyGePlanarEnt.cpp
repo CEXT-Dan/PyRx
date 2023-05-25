@@ -156,7 +156,7 @@ boost::python::tuple PyGePlanarEnt::getCoefficients() const
 {
     PyAutoLockGIL lock;
     double a, b, c, d;
-    impObj()->getCoefficients(a,b,c,d);
+    impObj()->getCoefficients(a, b, c, d);
     return boost::python::make_tuple(a, b, c, d);
 }
 

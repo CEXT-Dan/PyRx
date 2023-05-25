@@ -78,7 +78,7 @@ int PyGeSplineEnt3d::continuityAtKnot2(int idx, const AcGeTol& tol) const
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->continuityAtKnot(idx,tol);
+    return impObj()->continuityAtKnot(idx, tol);
 #endif
 }
 
@@ -246,13 +246,13 @@ PyGePolyline3d::PyGePolyline3d(const boost::python::list& points)
 }
 
 PyGePolyline3d::PyGePolyline3d(const PyGeKnotVector& knots, const boost::python::list& points)
-    : PyGeSplineEnt3d(new AcGePolyline3d(knots.m_imp,PyListToPoint3dArray(points)))
+    : PyGeSplineEnt3d(new AcGePolyline3d(knots.m_imp, PyListToPoint3dArray(points)))
 {
 }
 
 #ifndef BRXAPP
 PyGePolyline3d::PyGePolyline3d(const PyGeCurve3d& crv, double apprEps)
-    : PyGeSplineEnt3d(new AcGePolyline3d(*crv.impObj(),apprEps))
+    : PyGeSplineEnt3d(new AcGePolyline3d(*crv.impObj(), apprEps))
 {
 }
 #endif

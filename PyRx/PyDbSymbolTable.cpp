@@ -10,7 +10,7 @@ using namespace boost::python;
 //PyDbSymbolTable wrapper
 void makeAcDbSymbolTableWrapper()
 {
-   class_<PyDbSymbolTable, bases<PyDbObject>>("SymbolTable", boost::python::no_init)
+    class_<PyDbSymbolTable, bases<PyDbObject>>("SymbolTable", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("getAt", &PyDbSymbolTable::getAt)
         .def<bool(PyDbSymbolTable::*)(const std::string&)>("has", &PyDbSymbolTable::has)
@@ -59,7 +59,7 @@ boost::python::list PyDbSymbolTable::recordIds()
 {
     PyAutoLockGIL lock;
     AcDbSymbolTableIterator* pIter = nullptr;
-    if(impObj()->newIterator(pIter) != eOk)
+    if (impObj()->newIterator(pIter) != eOk)
         throw PyAcadErrorStatus(eOutOfMemory);
 
     boost::python::list _items;
@@ -104,7 +104,7 @@ void makePyDbDimStyleTableWrapper()
 }
 
 PyDbDimStyleTable::PyDbDimStyleTable(AcDbDimStyleTable* ptr, bool autoDelete)
- : PyDbSymbolTable(ptr, autoDelete)
+    : PyDbSymbolTable(ptr, autoDelete)
 {
 }
 

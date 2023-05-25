@@ -14,7 +14,7 @@ void makePyGeCurveCurveInt2dWrapper()
         .def(init<const AcGeCurve2d&, const AcGeCurve2d&>())
         .def(init<const AcGeCurve2d&, const AcGeCurve2d&, const AcGeTol&>())
         .def(init<const AcGeCurve2d&, const AcGeCurve2d&, const PyGeInterval&, const PyGeInterval&>())
-        .def(init<const AcGeCurve2d&, const AcGeCurve2d&, const PyGeInterval& , const PyGeInterval& ,const AcGeTol&>())
+        .def(init<const AcGeCurve2d&, const AcGeCurve2d&, const PyGeInterval&, const PyGeInterval&, const AcGeTol&>())
 #endif
         .def("className", &PyGeEntity2d::className).staticmethod("className")
         ;
@@ -44,7 +44,7 @@ PyGeCurveCurveInt2d::PyGeCurveCurveInt2d(const AcGeCurve2d& curve1, const AcGeCu
 #endif // !BRXAPP
 #ifndef BRXAPP
 PyGeCurveCurveInt2d::PyGeCurveCurveInt2d(const AcGeCurve2d& curve1, const AcGeCurve2d& curve2, const PyGeInterval& range1, const PyGeInterval& range2, const AcGeTol& tol)
-    : PyGeEntity2d(new AcGeCurveCurveInt2d(curve1, curve2, range1.imp, range2.imp,tol))
+    : PyGeEntity2d(new AcGeCurveCurveInt2d(curve1, curve2, range1.imp, range2.imp, tol))
 {
 }
 #endif // !BRXAPP

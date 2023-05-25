@@ -27,63 +27,156 @@ resbuf* listToResbuf(const boost::python::list& bpl)
             {
                 switch (acdbGroupCodeToType(code))
                 {
-                    case AcDb::kDwgText:
+                case AcDb::kDwgText:
+                {
+                    int _code = code == 0 ? RTDXF0 : code;
+                    AcString str = utf8_to_wstr(extract<char*>(tpl[1])).c_str();
+                    pTail->rbnext = acutBuildList(_code, (const TCHAR*)str, 0);
+                    if (pTail->rbnext != nullptr)
+                        pTail = pTail->rbnext;
+                    break;
+                }
+                case AcDb::kDwgInt8:
+                {
+                    int val = extract<int>(tpl[1]);
+                    pTail->rbnext = acutBuildList(code, val, 0);
+                    if (pTail->rbnext != nullptr)
+                        pTail = pTail->rbnext;
+                    break;
+                }
+                case AcDb::kDwgInt16:
+                {
+                    int val = extract<int>(tpl[1]);
+                    pTail->rbnext = acutBuildList(code, val, 0);
+                    if (pTail->rbnext != nullptr)
+                        pTail = pTail->rbnext;
+                    break;
+                }
+                case AcDb::kDwgInt32:
+                {
+                    int val = extract<int>(tpl[1]);
+                    pTail->rbnext = acutBuildList(code, val, 0);
+                    if (pTail->rbnext != nullptr)
+                        pTail = pTail->rbnext;
+                    break;
+                }
+                case AcDb::kDwgReal:
+                {
+                    double val = extract<double>(tpl[1]);
+                    pTail->rbnext = acutBuildList(code, val, 0);
+                    if (pTail->rbnext != nullptr)
+                        pTail = pTail->rbnext;
+                    break;
+                }
+                case AcDb::kDwg3Real:
+                {
+                    const auto val = asDblArray(extract<AcGePoint3d>(tpl[1]));
+                    pTail->rbnext = acutBuildList(code, val, 0);
+                    if (pTail->rbnext != nullptr)
+                        pTail = pTail->rbnext;
+                    break;
+                }
+                case AcDb::kDwgHandle:
+                case AcDb::kDwgHardOwnershipId:
+                case AcDb::kDwgSoftOwnershipId:
+                case AcDb::kDwgHardPointerId:
+                case AcDb::kDwgSoftPointerId:
+                {
+                    ads_name name = { 0L };
+                    PyDbObjectId id = extract<PyDbObjectId>(tpl[1]);
+                    if (acdbGetAdsName(name, id.m_id) == eOk)
                     {
-                        int _code = code == 0 ? RTDXF0 : code;
-                        AcString str = utf8_to_wstr(extract<char*>(tpl[1])).c_str();
-                        pTail->rbnext = acutBuildList(_code, (const TCHAR*)str, 0);
+                        pTail->rbnext = acutBuildList(code, name, 0);
                         if (pTail->rbnext != nullptr)
                             pTail = pTail->rbnext;
-                        break;
                     }
-                    case AcDb::kDwgInt8:
-                    {
-                        int val = extract<int>(tpl[1]);
-                        pTail->rbnext = acutBuildList(code, val, 0);
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
-                        break;
-                    }
-                    case AcDb::kDwgInt16:
-                    {
-                        int val = extract<int>(tpl[1]);
-                        pTail->rbnext = acutBuildList(code, val, 0);
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
-                        break;
-                    }
-                    case AcDb::kDwgInt32:
-                    {
-                        int val = extract<int>(tpl[1]);
-                        pTail->rbnext = acutBuildList(code, val, 0);
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
-                        break;
-                    }
-                    case AcDb::kDwgReal:
-                    {  
-                        double val = extract<double>(tpl[1]);
-                        pTail->rbnext = acutBuildList(code, val, 0);
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
-                        break;
-                    }
-                    case AcDb::kDwg3Real:
-                    {
-                        const auto val = asDblArray(extract<AcGePoint3d>(tpl[1]));
-                        pTail->rbnext = acutBuildList(code, val, 0);
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
-                        break;
-                    }
-                    case AcDb::kDwgHandle:
-                    case AcDb::kDwgHardOwnershipId:
-                    case AcDb::kDwgSoftOwnershipId:
-                    case AcDb::kDwgHardPointerId:
-                    case AcDb::kDwgSoftPointerId:
+                }
+                break;
+                }
+            }
+            else
+            {
+                switch (code)
+                {
+                case RTT:
+                case RTDXF0:
+                case RTNIL:
+                case RTDOTE:
+                case RTVOID:
+                case RTLB:
+                case RTLE:
+                case RTNONE:
+                {
+                    pTail->rbnext = acutBuildList(code, 0, 0);
+                    if (pTail->rbnext != nullptr)
+                        pTail = pTail->rbnext;
+                    break;
+                }
+                case RTANG:
+                case RTREAL:
+                {
+                    const double val = extract<double>(tpl[1]);
+                    pTail->rbnext = acutBuildList(code, val, 0);
+                    if (pTail->rbnext != nullptr)
+                        pTail = pTail->rbnext;
+                    break;
+                }
+                case RTORINT:
+                case RT3DPOINT:
+                {
+                    const auto val = asDblArray(extract<AcGePoint3d>(tpl[1]));
+                    pTail->rbnext = acutBuildList(code, val, 0);
+                    if (pTail->rbnext != nullptr)
+                        pTail = pTail->rbnext;
+                    break;
+                }
+                case RTPOINT:
+                {
+                    const auto val = asDblArray(extract<AcGePoint2d>(tpl[1]));
+                    pTail->rbnext = acutBuildList(code, val, 0);
+                    if (pTail->rbnext != nullptr)
+                        pTail = pTail->rbnext;
+                    break;
+                }
+                case RTSHORT:
+                {
+                    const short val = extract<int>(tpl[1]);
+                    pTail->rbnext = acutBuildList(code, val, 0);
+                    if (pTail->rbnext != nullptr)
+                        pTail = pTail->rbnext;
+                    break;
+                }
+                case RTLONG:
+                {
+                    const int val = extract<int>(tpl[1]);
+                    pTail->rbnext = acutBuildList(code, val, 0);
+                    if (pTail->rbnext != nullptr)
+                        pTail = pTail->rbnext;
+                    break;
+                }
+                case RTLONG_PTR:
+                case RTINT64:
+                {
+                    const int64_t val = extract<int64_t>(tpl[1]);
+                    pTail->rbnext = acutBuildList(code, val, 0);
+                    if (pTail->rbnext != nullptr)
+                        pTail = pTail->rbnext;
+                    break;
+                }
+                case RTSTR:
+                {
+                    const AcString str = utf8_to_wstr(extract<char*>(tpl[1])).c_str();
+                    pTail->rbnext = acutBuildList(code, (const TCHAR*)str, 0);
+                    if (pTail->rbnext != nullptr)
+                        pTail = pTail->rbnext;
+                    break;
+                }
+                case RTPICKS:
+                case RTENAME:
+                {
                     {
                         ads_name name = { 0L };
-                        PyDbObjectId id = extract<PyDbObjectId>(tpl[1]);
+                        const PyDbObjectId id = extract<PyDbObjectId>(tpl[1]);
                         if (acdbGetAdsName(name, id.m_id) == eOk)
                         {
                             pTail->rbnext = acutBuildList(code, name, 0);
@@ -91,107 +184,14 @@ resbuf* listToResbuf(const boost::python::list& bpl)
                                 pTail = pTail->rbnext;
                         }
                     }
-                    break;
                 }
-            }
-            else
-            {
-                switch (code)
-                {
-                    case RTT:
-                    case RTDXF0:
-                    case RTNIL:
-                    case RTDOTE:
-                    case RTVOID:
-                    case RTLB:
-                    case RTLE:
-                    case RTNONE:
-                    {
-                        pTail->rbnext = acutBuildList(code, 0, 0);
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
-                        break;
-                    }
-                    case RTANG:
-                    case RTREAL:
-                    {
-                        const double val = extract<double>(tpl[1]);
-                        pTail->rbnext = acutBuildList(code, val, 0);
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
-                        break;
-                    }
-                    case RTORINT:
-                    case RT3DPOINT:
-                    {
-                        const auto val = asDblArray(extract<AcGePoint3d>(tpl[1]));
-                        pTail->rbnext = acutBuildList(code, val, 0);
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
-                        break;
-                    }
-                    case RTPOINT:
-                    {
-                        const auto val = asDblArray(extract<AcGePoint2d>(tpl[1]));
-                        pTail->rbnext = acutBuildList(code, val, 0);
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
-                        break;
-                    }
-                    case RTSHORT:
-                    {
-                        const short val = extract<int>(tpl[1]);
-                        pTail->rbnext = acutBuildList(code, val, 0);
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
-                        break;
-                    }
-                    case RTLONG:
-                    {
-                        const int val = extract<int>(tpl[1]);
-                        pTail->rbnext = acutBuildList(code, val, 0);
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
-                        break;
-                    }
-                    case RTLONG_PTR:
-                    case RTINT64:
-                    {
-                        const int64_t val = extract<int64_t>(tpl[1]);
-                        pTail->rbnext = acutBuildList(code, val, 0);
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
-                        break;
-                    }
-                    case RTSTR:
-                    {
-                        const AcString str = utf8_to_wstr(extract<char*>(tpl[1])).c_str();
-                        pTail->rbnext = acutBuildList(code, (const TCHAR*)str, 0);
-                        if (pTail->rbnext != nullptr)
-                            pTail = pTail->rbnext;
-                        break;
-                    }
-                    case RTPICKS:
-                    case RTENAME:
-                    {
-                        {
-                            ads_name name = { 0L };
-                            const PyDbObjectId id = extract<PyDbObjectId>(tpl[1]);
-                            if (acdbGetAdsName(name, id.m_id) == eOk)
-                            {
-                                pTail->rbnext = acutBuildList(code, name, 0);
-                                if (pTail->rbnext != nullptr)
-                                    pTail = pTail->rbnext;
-                            }
-                        }
-                    }
-                    break;
+                break;
 #ifdef NEVER
-                    case RTRESBUF:
-                    {
-                        list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rbinary.buf));
-                    }
-                    break;
+                case RTRESBUF:
+                {
+                    list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rbinary.buf));
+                }
+                break;
 #endif
                 }
             }
@@ -200,7 +200,7 @@ resbuf* listToResbuf(const boost::python::list& bpl)
         resbuf* rbToReturn = pRbRead->rbnext;
         pRbRead->rbnext = nullptr;
         acutRelRb(pRbRead);
-        return rbToReturn; 
+        return rbToReturn;
     }
     catch (...)
     {
@@ -219,89 +219,89 @@ boost::python::list resbufToList(resbuf* pRb)
         {
             switch (acdbGroupCodeToType(pTail->restype))
             {
-                case AcDb::kDwgText:
-                    list.append(boost::python::make_tuple(pTail->restype, wstr_to_utf8(pTail->resval.rstring)));
-                    break;
-                case AcDb::kDwgInt8:
-                    list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rint));
-                    break;
-                case AcDb::kDwgInt16:
-                    list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rint));
-                    break;
-                case AcDb::kDwgInt32:
-                    list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rlong));
-                    break;
-                case AcDb::kDwgReal:
-                    list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rreal));
-                    break;
-                case AcDb::kDwg3Real:
-                    list.append(boost::python::make_tuple(pTail->restype, asPnt3d(pTail->resval.rpoint)));
-                    break;
-                case AcDb::kDwgHandle:
-                case AcDb::kDwgHardOwnershipId:
-                case AcDb::kDwgSoftOwnershipId:
-                case AcDb::kDwgHardPointerId:
-                case AcDb::kDwgSoftPointerId:
-                {
-                    AcDbObjectId id;
-                    if (acdbGetObjectId(id, pTail->resval.rlname) == eOk)
-                        list.append(boost::python::make_tuple(pTail->restype, PyDbObjectId(id)));
-                }
+            case AcDb::kDwgText:
+                list.append(boost::python::make_tuple(pTail->restype, wstr_to_utf8(pTail->resval.rstring)));
                 break;
+            case AcDb::kDwgInt8:
+                list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rint));
+                break;
+            case AcDb::kDwgInt16:
+                list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rint));
+                break;
+            case AcDb::kDwgInt32:
+                list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rlong));
+                break;
+            case AcDb::kDwgReal:
+                list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rreal));
+                break;
+            case AcDb::kDwg3Real:
+                list.append(boost::python::make_tuple(pTail->restype, asPnt3d(pTail->resval.rpoint)));
+                break;
+            case AcDb::kDwgHandle:
+            case AcDb::kDwgHardOwnershipId:
+            case AcDb::kDwgSoftOwnershipId:
+            case AcDb::kDwgHardPointerId:
+            case AcDb::kDwgSoftPointerId:
+            {
+                AcDbObjectId id;
+                if (acdbGetObjectId(id, pTail->resval.rlname) == eOk)
+                    list.append(boost::python::make_tuple(pTail->restype, PyDbObjectId(id)));
+            }
+            break;
             }
         }
         else
         {
             switch (pTail->restype)
             {
-                case RTT:
-                case RTDXF0:
-                case RTNIL:
-                case RTDOTE:
-                case RTVOID:
-                case RTLB:
-                case RTLE:
-                case RTNONE:
-                    list.append(boost::python::make_tuple(pTail->restype, 0));
-                    break;
-                case RTANG:
-                case RTREAL:
-                    list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rreal));
-                    break;
-                case RTORINT:
-                case RT3DPOINT:
-                    list.append(boost::python::make_tuple(pTail->restype, asPnt3d(pTail->resval.rpoint)));
-                    break;
-                case RTPOINT:
-                    list.append(boost::python::make_tuple(pTail->restype, asPnt2d(pTail->resval.rpoint)));
-                    break;
-                case RTSHORT:
-                    list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rint));
-                    break;
-                case RTLONG:
-                    list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rlong));
-                    break;
-                case RTLONG_PTR:
-                case RTINT64:
-                    list.append(boost::python::make_tuple(pTail->restype, pTail->resval.mnInt64));
-                    break;
-                case RTSTR:
-                    list.append(boost::python::make_tuple(pTail->restype, wstr_to_utf8(pTail->resval.rstring)));
-                    break;
-                case RTPICKS:
-                case RTENAME:
-                {
-                    AcDbObjectId id;
-                    if (acdbGetObjectId(id, pTail->resval.rlname) == eOk)
-                        list.append(boost::python::make_tuple(pTail->restype, PyDbObjectId(id)));
-                }
+            case RTT:
+            case RTDXF0:
+            case RTNIL:
+            case RTDOTE:
+            case RTVOID:
+            case RTLB:
+            case RTLE:
+            case RTNONE:
+                list.append(boost::python::make_tuple(pTail->restype, 0));
                 break;
+            case RTANG:
+            case RTREAL:
+                list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rreal));
+                break;
+            case RTORINT:
+            case RT3DPOINT:
+                list.append(boost::python::make_tuple(pTail->restype, asPnt3d(pTail->resval.rpoint)));
+                break;
+            case RTPOINT:
+                list.append(boost::python::make_tuple(pTail->restype, asPnt2d(pTail->resval.rpoint)));
+                break;
+            case RTSHORT:
+                list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rint));
+                break;
+            case RTLONG:
+                list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rlong));
+                break;
+            case RTLONG_PTR:
+            case RTINT64:
+                list.append(boost::python::make_tuple(pTail->restype, pTail->resval.mnInt64));
+                break;
+            case RTSTR:
+                list.append(boost::python::make_tuple(pTail->restype, wstr_to_utf8(pTail->resval.rstring)));
+                break;
+            case RTPICKS:
+            case RTENAME:
+            {
+                AcDbObjectId id;
+                if (acdbGetObjectId(id, pTail->resval.rlname) == eOk)
+                    list.append(boost::python::make_tuple(pTail->restype, PyDbObjectId(id)));
+            }
+            break;
 #ifdef NEVER
-                case RTRESBUF:
-                {
-                    list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rbinary.buf));
-                }
-                break;
+            case RTRESBUF:
+            {
+                list.append(boost::python::make_tuple(pTail->restype, pTail->resval.rbinary.buf));
+            }
+            break;
 #endif
             }
         }

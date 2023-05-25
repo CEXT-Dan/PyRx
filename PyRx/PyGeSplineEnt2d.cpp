@@ -104,7 +104,7 @@ AcGePoint2d PyGeSplineEnt2d::startPoint() const
 AcGePoint2d PyGeSplineEnt2d::endPoint() const
 {
     return impObj()->endPoint();
-}  
+}
 
 Adesk::Boolean PyGeSplineEnt2d::hasFitData() const
 {

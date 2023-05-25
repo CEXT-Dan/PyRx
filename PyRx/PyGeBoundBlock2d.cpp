@@ -23,7 +23,7 @@ void makePyGeBoundBlock2dWrapper()
         .def("contains", &PyGeBoundBlock2d::contains)
         .def("isDisjoint", &PyGeBoundBlock2d::isDisjoint)
         .def("isBox", &PyGeBoundBlock2d::isBox)
-        .def("setToBox", &PyGeBoundBlock2d::setToBox,return_self<>())
+        .def("setToBox", &PyGeBoundBlock2d::setToBox, return_self<>())
         .def("className", &PyGeBoundBlock2d::className).staticmethod("className")
         ;
 }

@@ -30,7 +30,6 @@ void makeTextStyleTableRecordWrapper()
         .def("font", &PyDbTextStyleTableRecord::font)
         .def("className", &PyDbTextStyleTableRecord::className).staticmethod("className")
         .def("desc", &PyDbTextStyleTableRecord::desc).staticmethod("desc")
-
         ;
 }
 

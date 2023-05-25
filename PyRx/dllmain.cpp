@@ -33,7 +33,7 @@ AC_IMPLEMENT_EXTENSION_MODULE(ArxBrxTestDLL)
 //- running properly. The object will not compile but is require by .NET to recognize
 //- this project as being an MFC project
 #ifdef NEVER
-AFX_EXTENSION_MODULE ArxBrxTestExtDLL ={ NULL, NULL } ;
+AFX_EXTENSION_MODULE ArxBrxTestExtDLL = { NULL, NULL };
 #endif
 
 //- Now you can use the CAcModuleResourceOverride class in
@@ -43,17 +43,18 @@ AFX_EXTENSION_MODULE ArxBrxTestExtDLL ={ NULL, NULL } ;
 //-----------------------------------------------------------------------------
 //- DLL Entry Point
 extern "C"
-BOOL WINAPI DllMain (HINSTANCE hInstance, DWORD dwReason, LPVOID lpReserved) {
-	//- Remove this if you use lpReserved
-	UNREFERENCED_PARAMETER(lpReserved) ;
+BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID lpReserved) {
+    //- Remove this if you use lpReserved
+    UNREFERENCED_PARAMETER(lpReserved);
 
-	if ( dwReason == DLL_PROCESS_ATTACH ) {
-        _hdllInstance =hInstance ;
-		ArxBrxTestDLL.AttachInstance (hInstance) ;
-		InitAcUiDLL () ;
-	} else if ( dwReason == DLL_PROCESS_DETACH ) {
-		ArxBrxTestDLL.DetachInstance () ;
-	}
-	return (TRUE) ;
+    if (dwReason == DLL_PROCESS_ATTACH) {
+        _hdllInstance = hInstance;
+        ArxBrxTestDLL.AttachInstance(hInstance);
+        InitAcUiDLL();
+    }
+    else if (dwReason == DLL_PROCESS_DETACH) {
+        ArxBrxTestDLL.DetachInstance();
+    }
+    return (TRUE);
 }
 

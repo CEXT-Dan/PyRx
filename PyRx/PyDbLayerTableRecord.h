@@ -48,7 +48,7 @@ public:
     Acad::ErrorStatus setPlotStyleName(const std::string& newName, const PyDbObjectId& viewportId);
     Acad::ErrorStatus setPlotStyleName(const PyDbObjectId& newId, const PyDbObjectId& viewportId);
     AcCmTransparency  transparency(const PyDbObjectId& viewportId) const;
-    Acad::ErrorStatus setTransparency(const AcCmTransparency& trans,const PyDbObjectId& viewportId);
+    Acad::ErrorStatus setTransparency(const AcCmTransparency& trans, const PyDbObjectId& viewportId);
     Acad::ErrorStatus removeColorOverride(const PyDbObjectId& viewportId);
     Acad::ErrorStatus removeLinetypeOverride(const PyDbObjectId& viewportId);
     Acad::ErrorStatus removeLineWeightOverride(const PyDbObjectId& viewportId);

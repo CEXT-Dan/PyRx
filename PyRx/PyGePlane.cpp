@@ -87,7 +87,7 @@ boost::python::tuple PyGePlane::intersectWith2(const PyGeLinearEnt3d& linEnt, co
 {
     PyAutoLockGIL lock;
     AcGePoint3d resultPnt;
-    auto res = impObj()->intersectWith(*linEnt.impObj(), resultPnt,tol);
+    auto res = impObj()->intersectWith(*linEnt.impObj(), resultPnt, tol);
     return boost::python::make_tuple(res, resultPnt);
 }
 
@@ -126,7 +126,7 @@ boost::python::tuple PyGePlane::intersectWith6(const PyGeBoundedPlane& bndPln, c
 #else
     PyAutoLockGIL lock;
     AcGeLineSeg3d resultLine;
-    auto res = impObj()->intersectWith(*bndPln.impObj(), resultLine,tol);
+    auto res = impObj()->intersectWith(*bndPln.impObj(), resultLine, tol);
     return boost::python::make_tuple(res, PyGeLineSeg3d(resultLine));
 #endif
 }
@@ -145,7 +145,7 @@ PyGePlane& PyGePlane::set2(const AcGePoint3d& pntU, const AcGePoint3d& org, cons
 
 PyGePlane& PyGePlane::set3(double a, double b, double c, double d)
 {
-    impObj()->set(a,b,c,d);
+    impObj()->set(a, b, c, d);
     return *this;
 }
 
@@ -224,7 +224,7 @@ boost::python::tuple PyGeBoundedPlane::intersectWith2(const PyGeLinearEnt3d& lin
 {
     PyAutoLockGIL lock;
     AcGePoint3d resultPnt;
-    auto res = impObj()->intersectWith(*linEnt.impObj(), resultPnt,tol);
+    auto res = impObj()->intersectWith(*linEnt.impObj(), resultPnt, tol);
     return boost::python::make_tuple(res, resultPnt);
 }
 
@@ -247,7 +247,7 @@ boost::python::tuple PyGeBoundedPlane::intersectWith4(const PyGePlane& otherPln,
 #else
     PyAutoLockGIL lock;
     AcGeLineSeg3d resultLine;
-    auto res = impObj()->intersectWith(*otherPln.impObj(), resultLine,tol);
+    auto res = impObj()->intersectWith(*otherPln.impObj(), resultLine, tol);
     return boost::python::make_tuple(res, PyGeLineSeg3d(resultLine));
 #endif
 }

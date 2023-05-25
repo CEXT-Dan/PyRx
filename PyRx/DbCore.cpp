@@ -26,9 +26,9 @@ void makeDbCoreWrapper()
 
 bool DbCore::entDel(const PyDbObjectId& id)
 {
-	ads_name name = { 0L };
-	if (auto es = acdbGetAdsName(name, id.m_id); es != eOk)
-		throw PyAcadErrorStatus(es);
+    ads_name name = { 0L };
+    if (auto es = acdbGetAdsName(name, id.m_id); es != eOk)
+        throw PyAcadErrorStatus(es);
     return acdbEntDel(name) == RTNORM;
 }
 
@@ -38,19 +38,19 @@ boost::python::list DbCore::entGet(const PyDbObjectId& id)
     if (auto es = acdbGetAdsName(name, id.m_id); es != eOk)
         throw PyAcadErrorStatus(es);
     AcResBufPtr ptr(acdbEntGet(name));
-    if(ptr == nullptr)
+    if (ptr == nullptr)
         throw PyAcadErrorStatus(eInvalidInput);
     return resbufToList(ptr.get());
 }
 
 PyDbObjectId DbCore::entLast()
 {
-	ads_name name = { 0L };
-	if (auto es = acdbEntLast(name); es != RTNORM)
-		throw PyAcadErrorStatus(eInvalidInput);
+    ads_name name = { 0L };
+    if (auto es = acdbEntLast(name); es != RTNORM)
+        throw PyAcadErrorStatus(eInvalidInput);
     AcDbObjectId id;
-	if (auto es = acdbGetObjectId(id,name); es != eOk)
-		throw PyAcadErrorStatus(es);
+    if (auto es = acdbGetObjectId(id, name); es != eOk)
+        throw PyAcadErrorStatus(es);
     return PyDbObjectId(id);
 }
 
@@ -65,20 +65,20 @@ PyDbObjectId DbCore::entNext(const PyDbObjectId& id)
     AcDbObjectId idOut;
     ads_name nameIn = { 0L };
     ads_name nameOut = { 0L };
-	if (auto es = acdbGetAdsName(nameIn, id.m_id); es != eOk)
-		throw PyAcadErrorStatus(es);
-	if (auto es = acdbEntNext(nameIn, nameOut); es != RTNORM)
-		throw PyAcadErrorStatus(eInvalidInput);
-	if (auto es = acdbGetObjectId(idOut, nameOut); es != eOk)
-		throw PyAcadErrorStatus(es);
-	return PyDbObjectId(idOut);
+    if (auto es = acdbGetAdsName(nameIn, id.m_id); es != eOk)
+        throw PyAcadErrorStatus(es);
+    if (auto es = acdbEntNext(nameIn, nameOut); es != RTNORM)
+        throw PyAcadErrorStatus(eInvalidInput);
+    if (auto es = acdbGetObjectId(idOut, nameOut); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return PyDbObjectId(idOut);
 }
 
 bool DbCore::entUpd(const PyDbObjectId& id)
 {
-	ads_name name = { 0L };
-	if (auto es = acdbGetAdsName(name, id.m_id); es != eOk)
-		throw PyAcadErrorStatus(es);
+    ads_name name = { 0L };
+    if (auto es = acdbGetAdsName(name, id.m_id); es != eOk)
+        throw PyAcadErrorStatus(es);
     return acdbEntUpd(name) == RTNORM;
 }
 

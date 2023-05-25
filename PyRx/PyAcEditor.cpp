@@ -223,7 +223,7 @@ boost::python::tuple PyAcEditor::select1()
 {
     WxUserInteraction ui;
     ads_name name = { 0L };
-    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(nullptr, nullptr, nullptr,nullptr, name));
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(nullptr, nullptr, nullptr, nullptr, name));
     return makeSelectionResult(name, stat);
 }
 
@@ -245,7 +245,7 @@ boost::python::tuple PyAcEditor::select3(const std::string& add, const std::stri
     const CString csRem = utf8_to_wstr(remove).c_str();
     const wchar_t* prompts[] = { (const wchar_t*)csAdd, (const wchar_t*)csRem };
 
-    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_:$"), prompts,nullptr,nullptr, name));
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_:$"), prompts, nullptr, nullptr, name));
     return makeSelectionResult(name, stat);
 }
 
@@ -284,7 +284,7 @@ boost::python::tuple PyAcEditor::selectCrossingWindow1(const AcGePoint3d& pt1, c
 {
     WxUserInteraction ui;
     ads_name name = { 0L };
-    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_W"), asDblArray(pt1), asDblArray(pt2),nullptr, name));
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_W"), asDblArray(pt1), asDblArray(pt2), nullptr, name));
     return makeSelectionResult(name, stat);
 }
 
@@ -293,7 +293,7 @@ boost::python::tuple PyAcEditor::selectCrossingWindow2(const AcGePoint3d& pt1, c
     WxUserInteraction ui;
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
-    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_W"),asDblArray(pt1), asDblArray(pt2), pFilter.get(), name));
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_W"), asDblArray(pt1), asDblArray(pt2), pFilter.get(), name));
     return makeSelectionResult(name, stat);
 }
 

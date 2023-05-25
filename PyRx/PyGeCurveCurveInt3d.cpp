@@ -17,7 +17,7 @@ PyGeCurveCurveInt3d::PyGeCurveCurveInt3d()
 }
 
 PyGeCurveCurveInt3d::PyGeCurveCurveInt3d(AcGeEntity3d* pEnt)
-    : PyGeEntity3d (pEnt)
+    : PyGeEntity3d(pEnt)
 {
 }
 

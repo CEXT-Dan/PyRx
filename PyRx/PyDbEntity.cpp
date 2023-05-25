@@ -435,9 +435,9 @@ PyRxClass PyDbEntity::desc()
 
 PyDbEntity PyDbEntity::cloneFrom(PyRxObject& src)
 {
-	if (!src.impObj()->isKindOf(AcDbEntity::desc()))
-		throw PyAcadErrorStatus(eNotThatKindOfClass);
-	return PyDbEntity(static_cast<AcDbEntity*>(src.impObj()->clone()), true);
+    if (!src.impObj()->isKindOf(AcDbEntity::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbEntity(static_cast<AcDbEntity*>(src.impObj()->clone()), true);
 }
 
 AcDbEntity* PyDbEntity::impObj(const std::source_location& src /*= std::source_location::current()*/) const
