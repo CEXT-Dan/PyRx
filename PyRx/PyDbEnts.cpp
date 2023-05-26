@@ -53,6 +53,7 @@ void makePyDbTextWrapper()
         .def("className", &PyDbText::className).staticmethod("className")
         .def("desc", &PyDbText::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbText::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbText::cast).staticmethod("cast")
         ;
 
     enum_<AcDbText::AcTextAlignment>("TextAlignment")
@@ -320,11 +321,19 @@ PyRxClass PyDbText::desc()
     return PyRxClass(AcDbText::desc(), false);
 }
 
-PyDbText PyDbText::cloneFrom(PyRxObject& src)
+PyDbText PyDbText::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbText::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbText(static_cast<AcDbText*>(src.impObj()->clone()), true);
+}
+
+PyDbText PyDbText::cast(const PyRxObject& src)
+{
+    PyDbText dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbText* PyDbText::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -367,6 +376,7 @@ void makePyDbAttributeDefinitionWrapper()
         .def("className", &PyDbAttributeDefinition::className).staticmethod("className")
         .def("desc", &PyDbAttributeDefinition::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbAttributeDefinition::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbAttributeDefinition::cast).staticmethod("cast")
         ;
 }
 
@@ -517,11 +527,19 @@ PyRxClass PyDbAttributeDefinition::desc()
     return PyRxClass(AcDbAttributeDefinition::desc(), false);
 }
 
-PyDbAttributeDefinition PyDbAttributeDefinition::cloneFrom(PyRxObject& src)
+PyDbAttributeDefinition PyDbAttributeDefinition::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbAttributeDefinition::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbAttributeDefinition(static_cast<AcDbAttributeDefinition*>(src.impObj()->clone()), true);
+}
+
+PyDbAttributeDefinition PyDbAttributeDefinition::cast(const PyRxObject& src)
+{
+    PyDbAttributeDefinition dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbAttributeDefinition* PyDbAttributeDefinition::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -561,6 +579,7 @@ void makePyDbAttributeWrapper()
         .def("className", &PyDbAttribute::className).staticmethod("className")
         .def("desc", &PyDbAttribute::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbAttribute::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbAttribute::cast).staticmethod("cast")
         ;
 }
 
@@ -697,11 +716,19 @@ PyRxClass PyDbAttribute::desc()
     return PyRxClass(AcDbAttribute::desc(), false);
 }
 
-PyDbAttribute PyDbAttribute::cloneFrom(PyRxObject& src)
+PyDbAttribute PyDbAttribute::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbAttribute::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbAttribute(static_cast<AcDbAttribute*>(src.impObj()->clone()), true);
+}
+
+PyDbAttribute PyDbAttribute::cast(const PyRxObject& src)
+{
+    PyDbAttribute dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbAttribute* PyDbAttribute::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -742,6 +769,7 @@ void makeDbBlockReferenceWrapper()
         .def("className", &PyDbBlockReference::className).staticmethod("className")
         .def("desc", &PyDbBlockReference::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbBlockReference::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbBlockReference::cast).staticmethod("cast")
         ;
 }
 
@@ -890,11 +918,19 @@ PyRxClass PyDbBlockReference::desc()
     return PyRxClass(AcDbBlockReference::desc(), false);
 }
 
-PyDbBlockReference PyDbBlockReference::cloneFrom(PyRxObject& src)
+PyDbBlockReference PyDbBlockReference::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbBlockReference::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbBlockReference(static_cast<AcDbBlockReference*>(src.impObj()->clone()), true);
+}
+
+PyDbBlockReference PyDbBlockReference::cast(const PyRxObject& src)
+{
+    PyDbBlockReference dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbBlockReference* PyDbBlockReference::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -923,6 +959,7 @@ void makeDbMInsertBlockeWrapper()
         .def("className", &PyDbMInsertBlock::className).staticmethod("className")
         .def("desc", &PyDbMInsertBlock::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbMInsertBlock::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbMInsertBlock::cast).staticmethod("cast")
         ;
 }
 
@@ -1000,11 +1037,19 @@ PyRxClass PyDbMInsertBlock::desc()
     return PyRxClass(AcDbMInsertBlock::desc(), false);
 }
 
-PyDbMInsertBlock PyDbMInsertBlock::cloneFrom(PyRxObject& src)
+PyDbMInsertBlock PyDbMInsertBlock::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbMInsertBlock::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbMInsertBlock(static_cast<AcDbMInsertBlock*>(src.impObj()->clone()), true);
+}
+
+PyDbMInsertBlock PyDbMInsertBlock::cast(const PyRxObject& src)
+{
+    PyDbMInsertBlock dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbMInsertBlock* PyDbMInsertBlock::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1023,6 +1068,7 @@ void makeAcDbVertexWrapper()
         .def("className", &PyDbVertex::className).staticmethod("className")
         .def("desc", &PyDbVertex::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbVertex::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbVertex::cast).staticmethod("cast")
         ;
 }
 
@@ -1050,11 +1096,19 @@ PyRxClass PyDbVertex::desc()
     return PyRxClass(AcDbVertex::desc(), false);
 }
 
-PyDbVertex PyDbVertex::cloneFrom(PyRxObject& src)
+PyDbVertex PyDbVertex::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbVertex::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbVertex(static_cast<AcDbVertex*>(src.impObj()->clone()), true);
+}
+
+PyDbVertex PyDbVertex::cast(const PyRxObject& src)
+{
+    PyDbVertex dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbVertex* PyDbVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1095,6 +1149,7 @@ void makePyDb2dVertexWrapper()
         .def("className", &PyDb2dVertex::className).staticmethod("className")
         .def("desc", &PyDb2dVertex::desc).staticmethod("desc")
         .def("cloneFrom", &PyDb2dVertex::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDb2dVertex::cast).staticmethod("cast")
         ;
 }
 
@@ -1236,12 +1291,20 @@ PyRxClass PyDb2dVertex::desc()
     return PyRxClass(AcDb2dVertex::desc(), false);
 }
 
-PyDb2dVertex PyDb2dVertex::cloneFrom(PyRxObject& src)
+PyDb2dVertex PyDb2dVertex::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDb2dVertex::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDb2dVertex(static_cast<AcDb2dVertex*>(src.impObj()->clone()), true);
 
+}
+
+PyDb2dVertex PyDb2dVertex::cast(const PyRxObject& src)
+{
+    PyDb2dVertex dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDb2dVertex* PyDb2dVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1265,6 +1328,7 @@ void makePyAcDb3dPolylineVertexWrapper()
         .def("className", &PyDb3dPolylineVertex::className).staticmethod("className")
         .def("desc", &PyDb3dPolylineVertex::desc).staticmethod("desc")
         .def("cloneFrom", &PyDb3dPolylineVertex::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDb3dPolylineVertex::cast).staticmethod("cast")
         ;
 }
 
@@ -1317,11 +1381,19 @@ PyRxClass PyDb3dPolylineVertex::desc()
     return PyRxClass(AcDb3dPolylineVertex::desc(), false);
 }
 
-PyDb3dPolylineVertex PyDb3dPolylineVertex::cloneFrom(PyRxObject& src)
+PyDb3dPolylineVertex PyDb3dPolylineVertex::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbEntity::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDb3dPolylineVertex(static_cast<AcDb3dPolylineVertex*>(src.impObj()->clone()), true);
+}
+
+PyDb3dPolylineVertex PyDb3dPolylineVertex::cast(const PyRxObject& src)
+{
+    PyDb3dPolylineVertex dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDb3dPolylineVertex* PyDb3dPolylineVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1346,6 +1418,7 @@ void makePyAcDbPolygonMeshVertexWrapper()
         .def("className", &PyDbPolygonMeshVertex::className).staticmethod("className")
         .def("desc", &PyDbPolygonMeshVertex::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbPolygonMeshVertex::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbPolygonMeshVertex::cast).staticmethod("cast")
         ;
 }
 
@@ -1398,11 +1471,19 @@ PyRxClass PyDbPolygonMeshVertex::desc()
     return PyRxClass(AcDbPolygonMeshVertex::desc(), false);
 }
 
-PyDbPolygonMeshVertex PyDbPolygonMeshVertex::cloneFrom(PyRxObject& src)
+PyDbPolygonMeshVertex PyDbPolygonMeshVertex::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbPolygonMeshVertex::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbPolygonMeshVertex(static_cast<AcDbPolygonMeshVertex*>(src.impObj()->clone()), true);
+}
+
+PyDbPolygonMeshVertex PyDbPolygonMeshVertex::cast(const PyRxObject& src)
+{
+    PyDbPolygonMeshVertex dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbPolygonMeshVertex* PyDbPolygonMeshVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1425,6 +1506,7 @@ void makePyDbPolyFaceMeshVertexWrapper()
         .def("className", &PyDbPolyFaceMeshVertex::className).staticmethod("className")
         .def("desc", &PyDbPolyFaceMeshVertex::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbPolyFaceMeshVertex::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbPolyFaceMeshVertex::cast).staticmethod("cast")
         ;
 }
 
@@ -1472,11 +1554,19 @@ PyRxClass PyDbPolyFaceMeshVertex::desc()
     return PyRxClass(AcDbPolyFaceMeshVertex::desc(), false);
 }
 
-PyDbPolyFaceMeshVertex PyDbPolyFaceMeshVertex::cloneFrom(PyRxObject& src)
+PyDbPolyFaceMeshVertex PyDbPolyFaceMeshVertex::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbPolyFaceMeshVertex::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbPolyFaceMeshVertex(static_cast<AcDbPolyFaceMeshVertex*>(src.impObj()->clone()), true);
+}
+
+PyDbPolyFaceMeshVertex PyDbPolyFaceMeshVertex::cast(const PyRxObject& src)
+{
+    PyDbPolyFaceMeshVertex dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbPolyFaceMeshVertex* PyDbPolyFaceMeshVertex::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1502,6 +1592,7 @@ void makePyAcDbFaceRecordWrapper()
         .def("className", &PyDbFaceRecord::className).staticmethod("className")
         .def("desc", &PyDbFaceRecord::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbFaceRecord::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbFaceRecord::cast).staticmethod("cast")
         ;
 }
 
@@ -1570,11 +1661,19 @@ PyRxClass PyDbFaceRecord::desc()
     return PyRxClass(AcDbFaceRecord::desc(), false);
 }
 
-PyDbFaceRecord PyDbFaceRecord::cloneFrom(PyRxObject& src)
+PyDbFaceRecord PyDbFaceRecord::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbFaceRecord::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbFaceRecord(static_cast<AcDbFaceRecord*>(src.impObj()->clone()), true);
+}
+
+PyDbFaceRecord PyDbFaceRecord::cast(const PyRxObject& src)
+{
+    PyDbFaceRecord dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbFaceRecord* PyDbFaceRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1603,6 +1702,7 @@ void makePyDbPointWrapper()
         .def("className", &PyDbPoint::className).staticmethod("className")
         .def("desc", &PyDbPoint::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbPoint::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbPoint::cast).staticmethod("cast")
         ;
 }
 
@@ -1680,11 +1780,19 @@ PyRxClass PyDbPoint::desc()
     return PyRxClass(AcDbPoint::desc(), false);
 }
 
-PyDbPoint PyDbPoint::cloneFrom(PyRxObject& src)
+PyDbPoint PyDbPoint::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbPoint::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbPoint(static_cast<AcDbPoint*>(src.impObj()->clone()), true);
+}
+
+PyDbPoint PyDbPoint::cast(const PyRxObject& src)
+{
+    PyDbPoint dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbPoint* PyDbPoint::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1751,6 +1859,7 @@ void makePyDb2dPolylineWrapper()
         .def("className", &PyDb2dPolyline::className).staticmethod("className")
         .def("desc", &PyDb2dPolyline::desc).staticmethod("desc")
         .def("cloneFrom", &PyDb2dPolyline::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDb2dPolyline::cast).staticmethod("cast")
         ;
 }
 
@@ -1977,11 +2086,19 @@ PyRxClass PyDb2dPolyline::desc()
     return PyRxClass(AcDb2dPolyline::desc(), false);
 }
 
-PyDb2dPolyline PyDb2dPolyline::cloneFrom(PyRxObject& src)
+PyDb2dPolyline PyDb2dPolyline::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbEntity::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDb2dPolyline(static_cast<AcDb2dPolyline*>(src.impObj()->clone()), true);
+}
+
+PyDb2dPolyline PyDb2dPolyline::cast(const PyRxObject& src)
+{
+    PyDb2dPolyline dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDb2dPolyline* PyDb2dPolyline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2019,6 +2136,7 @@ void makePyDb3dPolylineWrapper()
         .def("className", &PyDb3dPolyline::className).staticmethod("className")
         .def("desc", &PyDb3dPolyline::desc).staticmethod("desc")
         .def("cloneFrom", &PyDb3dPolyline::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDb3dPolyline::cast).staticmethod("cast")
         ;
 }
 
@@ -2153,11 +2271,19 @@ PyRxClass PyDb3dPolyline::desc()
     return PyRxClass(AcDb3dPolyline::desc(), false);
 }
 
-PyDb3dPolyline PyDb3dPolyline::cloneFrom(PyRxObject& src)
+PyDb3dPolyline PyDb3dPolyline::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDb3dPolyline::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDb3dPolyline(static_cast<AcDb3dPolyline*>(src.impObj()->clone()), true);
+}
+
+PyDb3dPolyline PyDb3dPolyline::cast(const PyRxObject& src)
+{
+    PyDb3dPolyline dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDb3dPolyline* PyDb3dPolyline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2193,6 +2319,7 @@ void makePyDbArcWrapper()
         .def("className", &PyDbArc::className).staticmethod("className")
         .def("desc", &PyDbArc::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbArc::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbArc::cast).staticmethod("cast")
         ;
 }
 
@@ -2305,11 +2432,19 @@ PyRxClass PyDbArc::desc()
     return PyRxClass(AcDbArc::desc(), false);
 }
 
-PyDbArc PyDbArc::cloneFrom(PyRxObject& src)
+PyDbArc PyDbArc::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbArc::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbArc(static_cast<AcDbArc*>(src.impObj()->clone()), true);
+}
+
+PyDbArc PyDbArc::cast(const PyRxObject& src)
+{
+    PyDbArc dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbArc* PyDbArc::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2342,6 +2477,7 @@ void makPyDbCircleWrapper()
         .def("className", &PyDbCircle::className).staticmethod("className")
         .def("desc", &PyDbCircle::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbCircle::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbCircle::cast).staticmethod("cast")
         ;
 }
 
@@ -2455,11 +2591,19 @@ PyRxClass PyDbCircle::desc()
     return PyRxClass(AcDbCircle::desc(), false);
 }
 
-PyDbCircle PyDbCircle::cloneFrom(PyRxObject& src)
+PyDbCircle PyDbCircle::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbCircle::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbCircle(static_cast<AcDbCircle*>(src.impObj()->clone()), true);
+}
+
+PyDbCircle PyDbCircle::cast(const PyRxObject& src)
+{
+    PyDbCircle dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbCircle* PyDbCircle::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2489,6 +2633,7 @@ void makPyDbLineWrapper()
         .def("className", &PyDbLine::className).staticmethod("className")
         .def("desc", &PyDbLine::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbLine::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbLine::cast).staticmethod("cast")
         ;
 }
 
@@ -2578,11 +2723,19 @@ PyRxClass PyDbLine::desc()
     return PyRxClass(AcDbLine::desc(), false);
 }
 
-PyDbLine PyDbLine::cloneFrom(PyRxObject& src)
+PyDbLine PyDbLine::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbLine::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbLine(static_cast<AcDbLine*>(src.impObj()->clone()), true);
+}
+
+PyDbLine PyDbLine::cast(const PyRxObject& src)
+{
+    PyDbLine dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbLine* PyDbLine::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2642,6 +2795,7 @@ void makPyDbPolylineWrapper()
         .def("className", &PyDbPolyline::className).staticmethod("className")
         .def("desc", &PyDbPolyline::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbPolyline::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbPolyline::cast).staticmethod("cast")
         ;
 
     enum_<AcDbPolyline::SegType>("SegType")
@@ -2907,11 +3061,19 @@ PyRxClass PyDbPolyline::desc()
     return PyRxClass(AcDbPolyline::desc(), false);
 }
 
-PyDbPolyline PyDbPolyline::cloneFrom(PyRxObject& src)
+PyDbPolyline PyDbPolyline::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbPolyline::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbPolyline(static_cast<AcDbPolyline*>(src.impObj()->clone()), true);
+}
+
+PyDbPolyline PyDbPolyline::cast(const PyRxObject& src)
+{
+    PyDbPolyline dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbPolyline* PyDbPolyline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -2941,6 +3103,7 @@ void makPyDbFaceWrapper()
         .def("className", &PyDbFace::className).staticmethod("className")
         .def("desc", &PyDbFace::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbFace::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbFace::cast).staticmethod("cast")
         ;
 }
 
@@ -3024,11 +3187,19 @@ PyRxClass PyDbFace::desc()
     return PyRxClass(AcDbFace::desc(), false);
 }
 
-PyDbFace PyDbFace::cloneFrom(PyRxObject& src)
+PyDbFace PyDbFace::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbFace::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbFace(static_cast<AcDbFace*>(src.impObj()->clone()), true);
+}
+
+PyDbFace PyDbFace::cast(const PyRxObject& src)
+{
+    PyDbFace dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbFace* PyDbFace::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -3077,6 +3248,7 @@ void makPyDbFcfWrapper()
         .def("className", &PyDbFcf::className).staticmethod("className")
         .def("desc", &PyDbFcf::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbFcf::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbFcf::cast).staticmethod("cast")
         ;
 }
 PyDbFcf::PyDbFcf()
@@ -3268,11 +3440,19 @@ PyRxClass PyDbFcf::desc()
     return PyRxClass(AcDbFcf::desc(), false);
 }
 
-PyDbFcf PyDbFcf::cloneFrom(PyRxObject& src)
+PyDbFcf PyDbFcf::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbFcf::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbFcf(static_cast<AcDbFcf*>(src.impObj()->clone()), true);
+}
+
+PyDbFcf PyDbFcf::cast(const PyRxObject& src)
+{
+    PyDbFcf dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbFcf* PyDbFcf::impObj(const std::source_location& src /*= std::source_location::current()*/) const

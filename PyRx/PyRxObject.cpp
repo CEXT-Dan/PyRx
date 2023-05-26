@@ -11,6 +11,7 @@ void makeAcRxObjectWrapper()
         .def("isA", &PyRxObject::isA)
         .def("className", &PyRxObject::className).staticmethod("className")
         .def("isNull", &PyRxObject::isNull)
+        .def("refCount", &PyRxObject::refCount)
         .def("__eq__", &PyRxObject::operator==)
         .def("__ne__", &PyRxObject::operator!=)
         ;
@@ -56,6 +57,11 @@ void PyRxObject::resetImp(AcRxObject* ptr, bool autoDelete, bool isDbObject)
 bool PyRxObject::isNull()
 {
     return m_pyImp == nullptr;
+}
+
+int PyRxObject::refCount()
+{
+    return m_pyImp.use_count();
 }
 
 PyRxClass PyRxObject::desc()
