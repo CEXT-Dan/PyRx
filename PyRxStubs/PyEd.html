@@ -1,0 +1,2330 @@
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>PyEd</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br>(built-in)</font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial">Boost.Python.enum(<a href="builtins.html#int">builtins.int</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="PyEd.html#CursorType">CursorType</a>
+</font></dt><dt><font face="helvetica, arial"><a href="PyEd.html#DragStatus">DragStatus</a>
+</font></dt><dt><font face="helvetica, arial"><a href="PyEd.html#DragStyleType">DragStyleType</a>
+</font></dt><dt><font face="helvetica, arial"><a href="PyEd.html#PromptStatus">PromptStatus</a>
+</font></dt><dt><font face="helvetica, arial"><a href="PyEd.html#UserInputControls">UserInputControls</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial">Boost.Python.instance(<a href="builtins.html#object">builtins.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="PyEd.html#DragStyle">DragStyle</a>
+</font></dt><dt><font face="helvetica, arial"><a href="PyEd.html#DrawJig">DrawJig</a>
+</font></dt><dt><font face="helvetica, arial"><a href="PyEd.html#Editor">Editor</a>
+</font></dt><dt><font face="helvetica, arial"><a href="PyEd.html#EditorReactor">EditorReactor</a>
+</font></dt><dt><font face="helvetica, arial"><a href="PyEd.html#Jig">Jig</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="CursorType">class <strong>CursorType</strong></a>(Boost.Python.enum)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="PyEd.html#CursorType">CursorType</a></dd>
+<dd>Boost.Python.enum</dd>
+<dd><a href="builtins.html#int">builtins.int</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>kCrosshair</strong> = PyEd.CursorType.kCrosshair</dl>
+
+<dl><dt><strong>kCrosshairDashed</strong> = PyEd.CursorType.kCrosshairDashed</dl>
+
+<dl><dt><strong>kCrosshairNoRotate</strong> = PyEd.CursorType.kCrosshairNoRotate</dl>
+
+<dl><dt><strong>kEntitySelect</strong> = PyEd.CursorType.kEntitySelect</dl>
+
+<dl><dt><strong>kEntitySelectNoPersp</strong> = PyEd.CursorType.kEntitySelectNoPersp</dl>
+
+<dl><dt><strong>kInvisible</strong> = PyEd.CursorType.kInvisible</dl>
+
+<dl><dt><strong>kNoSpecialCursor</strong> = PyEd.CursorType.kNoSpecialCursor</dl>
+
+<dl><dt><strong>kNotRotated</strong> = PyEd.CursorType.kNotRotated</dl>
+
+<dl><dt><strong>kParallelogram</strong> = PyEd.CursorType.kParallelogram</dl>
+
+<dl><dt><strong>kPkfirstOrGrips</strong> = PyEd.CursorType.kPkfirstOrGrips</dl>
+
+<dl><dt><strong>kRectCursor</strong> = PyEd.CursorType.kRectCursor</dl>
+
+<dl><dt><strong>kRotatedCrosshair</strong> = PyEd.CursorType.kRotatedCrosshair</dl>
+
+<dl><dt><strong>kRubberBand</strong> = PyEd.CursorType.kRubberBand</dl>
+
+<dl><dt><strong>kTargetBox</strong> = PyEd.CursorType.kTargetBox</dl>
+
+<dl><dt><strong>names</strong> = {'kCrosshair': PyEd.CursorType.kCrosshair, 'kCrosshairDashed': PyEd.CursorType.kCrosshairDashed, 'kCrosshairNoRotate': PyEd.CursorType.kCrosshairNoRotate, 'kEntitySelect': PyEd.CursorType.kEntitySelect, 'kEntitySelectNoPersp': PyEd.CursorType.kEntitySelectNoPersp, 'kInvisible': PyEd.CursorType.kInvisible, 'kNoSpecialCursor': PyEd.CursorType.kNoSpecialCursor, 'kNotRotated': PyEd.CursorType.kNotRotated, 'kParallelogram': PyEd.CursorType.kParallelogram, 'kPkfirstOrGrips': PyEd.CursorType.kPkfirstOrGrips, ...}</dl>
+
+<dl><dt><strong>values</strong> = {-1: PyEd.CursorType.kNoSpecialCursor, 0: PyEd.CursorType.kCrosshair, 1: PyEd.CursorType.kRectCursor, 2: PyEd.CursorType.kRubberBand, 3: PyEd.CursorType.kNotRotated, 4: PyEd.CursorType.kTargetBox, 5: PyEd.CursorType.kRotatedCrosshair, 6: PyEd.CursorType.kCrosshairNoRotate, 7: PyEd.CursorType.kInvisible, 8: PyEd.CursorType.kEntitySelect, ...}</dl>
+
+<hr>
+Methods inherited from Boost.Python.enum:<br>
+<dl><dt><a name="CursorType-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from Boost.Python.enum:<br>
+<dl><dt><strong>name</strong></dt>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="CursorType-__abs__"><strong>__abs__</strong></a>(self, /)</dt><dd><tt>abs(self)</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__add__"><strong>__add__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self+value.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__and__"><strong>__and__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&amp;value.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__bool__"><strong>__bool__</strong></a>(self, /)</dt><dd><tt>True&nbsp;if&nbsp;self&nbsp;else&nbsp;False</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__ceil__"><strong>__ceil__</strong></a>(...)</dt><dd><tt>Ceiling&nbsp;of&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__divmod__"><strong>__divmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;divmod(self,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__float__"><strong>__float__</strong></a>(self, /)</dt><dd><tt>float(self)</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__floor__"><strong>__floor__</strong></a>(...)</dt><dd><tt>Flooring&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__floordiv__"><strong>__floordiv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self//value.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__format__"><strong>__format__</strong></a>(self, format_spec, /)</dt><dd><tt>Default&nbsp;object&nbsp;formatter.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__getnewargs__"><strong>__getnewargs__</strong></a>(self, /)</dt></dl>
+
+<dl><dt><a name="CursorType-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;hash(self).</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__index__"><strong>__index__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;self&nbsp;converted&nbsp;to&nbsp;an&nbsp;integer,&nbsp;if&nbsp;self&nbsp;is&nbsp;suitable&nbsp;for&nbsp;use&nbsp;as&nbsp;an&nbsp;index&nbsp;into&nbsp;a&nbsp;list.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__int__"><strong>__int__</strong></a>(self, /)</dt><dd><tt>int(self)</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__invert__"><strong>__invert__</strong></a>(self, /)</dt><dd><tt>~self</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__lshift__"><strong>__lshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__mod__"><strong>__mod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self%value.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__mul__"><strong>__mul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self*value.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__neg__"><strong>__neg__</strong></a>(self, /)</dt><dd><tt>-self</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__or__"><strong>__or__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self|value.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__pos__"><strong>__pos__</strong></a>(self, /)</dt><dd><tt>+self</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__pow__"><strong>__pow__</strong></a>(self, value, mod=None, /)</dt><dd><tt>Return&nbsp;pow(self,&nbsp;value,&nbsp;mod).</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__radd__"><strong>__radd__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value+self.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__rand__"><strong>__rand__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&amp;self.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__rdivmod__"><strong>__rdivmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;divmod(value,&nbsp;self).</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__rfloordiv__"><strong>__rfloordiv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value//self.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__rlshift__"><strong>__rlshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&lt;&lt;self.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__rmod__"><strong>__rmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value%self.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__rmul__"><strong>__rmul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value*self.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__ror__"><strong>__ror__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value|self.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__round__"><strong>__round__</strong></a>(...)</dt><dd><tt>Rounding&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.<br>
+&nbsp;<br>
+Rounding&nbsp;with&nbsp;an&nbsp;ndigits&nbsp;argument&nbsp;also&nbsp;returns&nbsp;an&nbsp;integer.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__rpow__"><strong>__rpow__</strong></a>(self, value, mod=None, /)</dt><dd><tt>Return&nbsp;pow(value,&nbsp;self,&nbsp;mod).</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__rrshift__"><strong>__rrshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&gt;&gt;self.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__rshift__"><strong>__rshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__rsub__"><strong>__rsub__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value-self.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__rtruediv__"><strong>__rtruediv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value/self.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__rxor__"><strong>__rxor__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value^self.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__sizeof__"><strong>__sizeof__</strong></a>(self, /)</dt><dd><tt>Returns&nbsp;size&nbsp;in&nbsp;memory,&nbsp;in&nbsp;bytes.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__sub__"><strong>__sub__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self-value.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__truediv__"><strong>__truediv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self/value.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__trunc__"><strong>__trunc__</strong></a>(...)</dt><dd><tt>Truncating&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-__xor__"><strong>__xor__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self^value.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-as_integer_ratio"><strong>as_integer_ratio</strong></a>(self, /)</dt><dd><tt>Return&nbsp;integer&nbsp;ratio.<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;pair&nbsp;of&nbsp;integers,&nbsp;whose&nbsp;ratio&nbsp;is&nbsp;exactly&nbsp;equal&nbsp;to&nbsp;the&nbsp;original&nbsp;int<br>
+and&nbsp;with&nbsp;a&nbsp;positive&nbsp;denominator.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;(10).<a href="#CursorType-as_integer_ratio">as_integer_ratio</a>()<br>
+(10,&nbsp;1)<br>
+&gt;&gt;&gt;&nbsp;(-10).<a href="#CursorType-as_integer_ratio">as_integer_ratio</a>()<br>
+(-10,&nbsp;1)<br>
+&gt;&gt;&gt;&nbsp;(0).<a href="#CursorType-as_integer_ratio">as_integer_ratio</a>()<br>
+(0,&nbsp;1)</tt></dd></dl>
+
+<dl><dt><a name="CursorType-bit_count"><strong>bit_count</strong></a>(self, /)</dt><dd><tt>Number&nbsp;of&nbsp;ones&nbsp;in&nbsp;the&nbsp;binary&nbsp;representation&nbsp;of&nbsp;the&nbsp;absolute&nbsp;value&nbsp;of&nbsp;self.<br>
+&nbsp;<br>
+Also&nbsp;known&nbsp;as&nbsp;the&nbsp;population&nbsp;count.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;bin(13)<br>
+'0b1101'<br>
+&gt;&gt;&gt;&nbsp;(13).<a href="#CursorType-bit_count">bit_count</a>()<br>
+3</tt></dd></dl>
+
+<dl><dt><a name="CursorType-bit_length"><strong>bit_length</strong></a>(self, /)</dt><dd><tt>Number&nbsp;of&nbsp;bits&nbsp;necessary&nbsp;to&nbsp;represent&nbsp;self&nbsp;in&nbsp;binary.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;bin(37)<br>
+'0b100101'<br>
+&gt;&gt;&gt;&nbsp;(37).<a href="#CursorType-bit_length">bit_length</a>()<br>
+6</tt></dd></dl>
+
+<dl><dt><a name="CursorType-conjugate"><strong>conjugate</strong></a>(...)</dt><dd><tt>Returns&nbsp;self,&nbsp;the&nbsp;complex&nbsp;conjugate&nbsp;of&nbsp;any&nbsp;int.</tt></dd></dl>
+
+<dl><dt><a name="CursorType-to_bytes"><strong>to_bytes</strong></a>(self, /, length, byteorder, *, signed=False)</dt><dd><tt>Return&nbsp;an&nbsp;array&nbsp;of&nbsp;bytes&nbsp;representing&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+length<br>
+&nbsp;&nbsp;Length&nbsp;of&nbsp;bytes&nbsp;object&nbsp;to&nbsp;use.&nbsp;&nbsp;An&nbsp;OverflowError&nbsp;is&nbsp;raised&nbsp;if&nbsp;the<br>
+&nbsp;&nbsp;integer&nbsp;is&nbsp;not&nbsp;representable&nbsp;with&nbsp;the&nbsp;given&nbsp;number&nbsp;of&nbsp;bytes.<br>
+byteorder<br>
+&nbsp;&nbsp;The&nbsp;byte&nbsp;order&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.&nbsp;&nbsp;If&nbsp;byteorder&nbsp;is&nbsp;'big',<br>
+&nbsp;&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;byte&nbsp;array.&nbsp;&nbsp;If<br>
+&nbsp;&nbsp;byteorder&nbsp;is&nbsp;'little',&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;byte&nbsp;array.&nbsp;&nbsp;To&nbsp;request&nbsp;the&nbsp;native&nbsp;byte&nbsp;order&nbsp;of&nbsp;the&nbsp;host&nbsp;system,&nbsp;use<br>
+&nbsp;&nbsp;`sys.byteorder'&nbsp;as&nbsp;the&nbsp;byte&nbsp;order&nbsp;value.<br>
+signed<br>
+&nbsp;&nbsp;Determines&nbsp;whether&nbsp;two's&nbsp;complement&nbsp;is&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.<br>
+&nbsp;&nbsp;If&nbsp;signed&nbsp;is&nbsp;False&nbsp;and&nbsp;a&nbsp;negative&nbsp;integer&nbsp;is&nbsp;given,&nbsp;an&nbsp;OverflowError<br>
+&nbsp;&nbsp;is&nbsp;raised.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="CursorType-from_bytes"><strong>from_bytes</strong></a>(bytes, byteorder, *, signed=False)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Return&nbsp;the&nbsp;integer&nbsp;represented&nbsp;by&nbsp;the&nbsp;given&nbsp;array&nbsp;of&nbsp;bytes.<br>
+&nbsp;<br>
+bytes<br>
+&nbsp;&nbsp;Holds&nbsp;the&nbsp;array&nbsp;of&nbsp;bytes&nbsp;to&nbsp;convert.&nbsp;&nbsp;The&nbsp;argument&nbsp;must&nbsp;either<br>
+&nbsp;&nbsp;support&nbsp;the&nbsp;buffer&nbsp;protocol&nbsp;or&nbsp;be&nbsp;an&nbsp;iterable&nbsp;object&nbsp;producing&nbsp;bytes.<br>
+&nbsp;&nbsp;Bytes&nbsp;and&nbsp;bytearray&nbsp;are&nbsp;examples&nbsp;of&nbsp;built-in&nbsp;objects&nbsp;that&nbsp;support&nbsp;the<br>
+&nbsp;&nbsp;buffer&nbsp;protocol.<br>
+byteorder<br>
+&nbsp;&nbsp;The&nbsp;byte&nbsp;order&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.&nbsp;&nbsp;If&nbsp;byteorder&nbsp;is&nbsp;'big',<br>
+&nbsp;&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;byte&nbsp;array.&nbsp;&nbsp;If<br>
+&nbsp;&nbsp;byteorder&nbsp;is&nbsp;'little',&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;byte&nbsp;array.&nbsp;&nbsp;To&nbsp;request&nbsp;the&nbsp;native&nbsp;byte&nbsp;order&nbsp;of&nbsp;the&nbsp;host&nbsp;system,&nbsp;use<br>
+&nbsp;&nbsp;`sys.byteorder'&nbsp;as&nbsp;the&nbsp;byte&nbsp;order&nbsp;value.<br>
+signed<br>
+&nbsp;&nbsp;Indicates&nbsp;whether&nbsp;two's&nbsp;complement&nbsp;is&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="CursorType-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><strong>denominator</strong></dt>
+<dd><tt>the&nbsp;denominator&nbsp;of&nbsp;a&nbsp;rational&nbsp;number&nbsp;in&nbsp;lowest&nbsp;terms</tt></dd>
+</dl>
+<dl><dt><strong>imag</strong></dt>
+<dd><tt>the&nbsp;imaginary&nbsp;part&nbsp;of&nbsp;a&nbsp;complex&nbsp;number</tt></dd>
+</dl>
+<dl><dt><strong>numerator</strong></dt>
+<dd><tt>the&nbsp;numerator&nbsp;of&nbsp;a&nbsp;rational&nbsp;number&nbsp;in&nbsp;lowest&nbsp;terms</tt></dd>
+</dl>
+<dl><dt><strong>real</strong></dt>
+<dd><tt>the&nbsp;real&nbsp;part&nbsp;of&nbsp;a&nbsp;complex&nbsp;number</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="DragStatus">class <strong>DragStatus</strong></a>(Boost.Python.enum)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="PyEd.html#DragStatus">DragStatus</a></dd>
+<dd>Boost.Python.enum</dd>
+<dd><a href="builtins.html#int">builtins.int</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>eNormal</strong> = PyEd.DragStatus.eNormal</dl>
+
+<dl><dt><strong>eOk</strong> = PyEd.DragStatus.eOk</dl>
+
+<dl><dt><strong>kCancel</strong> = PyEd.DragStatus.kCancel</dl>
+
+<dl><dt><strong>kKW1</strong> = PyEd.DragStatus.kKW1</dl>
+
+<dl><dt><strong>kKW2</strong> = PyEd.DragStatus.kKW2</dl>
+
+<dl><dt><strong>kKW3</strong> = PyEd.DragStatus.kKW3</dl>
+
+<dl><dt><strong>kKW4</strong> = PyEd.DragStatus.kKW4</dl>
+
+<dl><dt><strong>kKW5</strong> = PyEd.DragStatus.kKW5</dl>
+
+<dl><dt><strong>kKW6</strong> = PyEd.DragStatus.kKW6</dl>
+
+<dl><dt><strong>kKW7</strong> = PyEd.DragStatus.kKW7</dl>
+
+<dl><dt><strong>kKW8</strong> = PyEd.DragStatus.kKW8</dl>
+
+<dl><dt><strong>kKW9</strong> = PyEd.DragStatus.kKW9</dl>
+
+<dl><dt><strong>kModeless</strong> = PyEd.DragStatus.kModeless</dl>
+
+<dl><dt><strong>kNoChange</strong> = PyEd.DragStatus.kNoChange</dl>
+
+<dl><dt><strong>kNormal</strong> = PyEd.DragStatus.kNormal</dl>
+
+<dl><dt><strong>kNull</strong> = PyEd.DragStatus.kNull</dl>
+
+<dl><dt><strong>kOther</strong> = PyEd.DragStatus.kOther</dl>
+
+<dl><dt><strong>names</strong> = {'eNormal': PyEd.DragStatus.eNormal, 'eOk': PyEd.DragStatus.eOk, 'kCancel': PyEd.DragStatus.kCancel, 'kKW1': PyEd.DragStatus.kKW1, 'kKW2': PyEd.DragStatus.kKW2, 'kKW3': PyEd.DragStatus.kKW3, 'kKW4': PyEd.DragStatus.kKW4, 'kKW5': PyEd.DragStatus.kKW5, 'kKW6': PyEd.DragStatus.kKW6, 'kKW7': PyEd.DragStatus.kKW7, ...}</dl>
+
+<dl><dt><strong>values</strong> = {-17: PyEd.DragStatus.kModeless, -6: PyEd.DragStatus.kNoChange, -4: PyEd.DragStatus.kCancel, -3: PyEd.DragStatus.kOther, -1: PyEd.DragStatus.kNull, 0: PyEd.DragStatus.eOk, 1: PyEd.DragStatus.kKW1, 2: PyEd.DragStatus.kKW2, 3: PyEd.DragStatus.kKW3, 4: PyEd.DragStatus.kKW4, ...}</dl>
+
+<hr>
+Methods inherited from Boost.Python.enum:<br>
+<dl><dt><a name="DragStatus-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from Boost.Python.enum:<br>
+<dl><dt><strong>name</strong></dt>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="DragStatus-__abs__"><strong>__abs__</strong></a>(self, /)</dt><dd><tt>abs(self)</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__add__"><strong>__add__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self+value.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__and__"><strong>__and__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&amp;value.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__bool__"><strong>__bool__</strong></a>(self, /)</dt><dd><tt>True&nbsp;if&nbsp;self&nbsp;else&nbsp;False</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__ceil__"><strong>__ceil__</strong></a>(...)</dt><dd><tt>Ceiling&nbsp;of&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__divmod__"><strong>__divmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;divmod(self,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__float__"><strong>__float__</strong></a>(self, /)</dt><dd><tt>float(self)</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__floor__"><strong>__floor__</strong></a>(...)</dt><dd><tt>Flooring&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__floordiv__"><strong>__floordiv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self//value.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__format__"><strong>__format__</strong></a>(self, format_spec, /)</dt><dd><tt>Default&nbsp;object&nbsp;formatter.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__getnewargs__"><strong>__getnewargs__</strong></a>(self, /)</dt></dl>
+
+<dl><dt><a name="DragStatus-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;hash(self).</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__index__"><strong>__index__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;self&nbsp;converted&nbsp;to&nbsp;an&nbsp;integer,&nbsp;if&nbsp;self&nbsp;is&nbsp;suitable&nbsp;for&nbsp;use&nbsp;as&nbsp;an&nbsp;index&nbsp;into&nbsp;a&nbsp;list.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__int__"><strong>__int__</strong></a>(self, /)</dt><dd><tt>int(self)</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__invert__"><strong>__invert__</strong></a>(self, /)</dt><dd><tt>~self</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__lshift__"><strong>__lshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__mod__"><strong>__mod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self%value.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__mul__"><strong>__mul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self*value.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__neg__"><strong>__neg__</strong></a>(self, /)</dt><dd><tt>-self</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__or__"><strong>__or__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self|value.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__pos__"><strong>__pos__</strong></a>(self, /)</dt><dd><tt>+self</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__pow__"><strong>__pow__</strong></a>(self, value, mod=None, /)</dt><dd><tt>Return&nbsp;pow(self,&nbsp;value,&nbsp;mod).</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__radd__"><strong>__radd__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value+self.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__rand__"><strong>__rand__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&amp;self.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__rdivmod__"><strong>__rdivmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;divmod(value,&nbsp;self).</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__rfloordiv__"><strong>__rfloordiv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value//self.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__rlshift__"><strong>__rlshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&lt;&lt;self.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__rmod__"><strong>__rmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value%self.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__rmul__"><strong>__rmul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value*self.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__ror__"><strong>__ror__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value|self.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__round__"><strong>__round__</strong></a>(...)</dt><dd><tt>Rounding&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.<br>
+&nbsp;<br>
+Rounding&nbsp;with&nbsp;an&nbsp;ndigits&nbsp;argument&nbsp;also&nbsp;returns&nbsp;an&nbsp;integer.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__rpow__"><strong>__rpow__</strong></a>(self, value, mod=None, /)</dt><dd><tt>Return&nbsp;pow(value,&nbsp;self,&nbsp;mod).</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__rrshift__"><strong>__rrshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&gt;&gt;self.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__rshift__"><strong>__rshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__rsub__"><strong>__rsub__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value-self.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__rtruediv__"><strong>__rtruediv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value/self.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__rxor__"><strong>__rxor__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value^self.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__sizeof__"><strong>__sizeof__</strong></a>(self, /)</dt><dd><tt>Returns&nbsp;size&nbsp;in&nbsp;memory,&nbsp;in&nbsp;bytes.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__sub__"><strong>__sub__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self-value.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__truediv__"><strong>__truediv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self/value.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__trunc__"><strong>__trunc__</strong></a>(...)</dt><dd><tt>Truncating&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-__xor__"><strong>__xor__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self^value.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-as_integer_ratio"><strong>as_integer_ratio</strong></a>(self, /)</dt><dd><tt>Return&nbsp;integer&nbsp;ratio.<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;pair&nbsp;of&nbsp;integers,&nbsp;whose&nbsp;ratio&nbsp;is&nbsp;exactly&nbsp;equal&nbsp;to&nbsp;the&nbsp;original&nbsp;int<br>
+and&nbsp;with&nbsp;a&nbsp;positive&nbsp;denominator.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;(10).<a href="#DragStatus-as_integer_ratio">as_integer_ratio</a>()<br>
+(10,&nbsp;1)<br>
+&gt;&gt;&gt;&nbsp;(-10).<a href="#DragStatus-as_integer_ratio">as_integer_ratio</a>()<br>
+(-10,&nbsp;1)<br>
+&gt;&gt;&gt;&nbsp;(0).<a href="#DragStatus-as_integer_ratio">as_integer_ratio</a>()<br>
+(0,&nbsp;1)</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-bit_count"><strong>bit_count</strong></a>(self, /)</dt><dd><tt>Number&nbsp;of&nbsp;ones&nbsp;in&nbsp;the&nbsp;binary&nbsp;representation&nbsp;of&nbsp;the&nbsp;absolute&nbsp;value&nbsp;of&nbsp;self.<br>
+&nbsp;<br>
+Also&nbsp;known&nbsp;as&nbsp;the&nbsp;population&nbsp;count.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;bin(13)<br>
+'0b1101'<br>
+&gt;&gt;&gt;&nbsp;(13).<a href="#DragStatus-bit_count">bit_count</a>()<br>
+3</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-bit_length"><strong>bit_length</strong></a>(self, /)</dt><dd><tt>Number&nbsp;of&nbsp;bits&nbsp;necessary&nbsp;to&nbsp;represent&nbsp;self&nbsp;in&nbsp;binary.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;bin(37)<br>
+'0b100101'<br>
+&gt;&gt;&gt;&nbsp;(37).<a href="#DragStatus-bit_length">bit_length</a>()<br>
+6</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-conjugate"><strong>conjugate</strong></a>(...)</dt><dd><tt>Returns&nbsp;self,&nbsp;the&nbsp;complex&nbsp;conjugate&nbsp;of&nbsp;any&nbsp;int.</tt></dd></dl>
+
+<dl><dt><a name="DragStatus-to_bytes"><strong>to_bytes</strong></a>(self, /, length, byteorder, *, signed=False)</dt><dd><tt>Return&nbsp;an&nbsp;array&nbsp;of&nbsp;bytes&nbsp;representing&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+length<br>
+&nbsp;&nbsp;Length&nbsp;of&nbsp;bytes&nbsp;object&nbsp;to&nbsp;use.&nbsp;&nbsp;An&nbsp;OverflowError&nbsp;is&nbsp;raised&nbsp;if&nbsp;the<br>
+&nbsp;&nbsp;integer&nbsp;is&nbsp;not&nbsp;representable&nbsp;with&nbsp;the&nbsp;given&nbsp;number&nbsp;of&nbsp;bytes.<br>
+byteorder<br>
+&nbsp;&nbsp;The&nbsp;byte&nbsp;order&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.&nbsp;&nbsp;If&nbsp;byteorder&nbsp;is&nbsp;'big',<br>
+&nbsp;&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;byte&nbsp;array.&nbsp;&nbsp;If<br>
+&nbsp;&nbsp;byteorder&nbsp;is&nbsp;'little',&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;byte&nbsp;array.&nbsp;&nbsp;To&nbsp;request&nbsp;the&nbsp;native&nbsp;byte&nbsp;order&nbsp;of&nbsp;the&nbsp;host&nbsp;system,&nbsp;use<br>
+&nbsp;&nbsp;`sys.byteorder'&nbsp;as&nbsp;the&nbsp;byte&nbsp;order&nbsp;value.<br>
+signed<br>
+&nbsp;&nbsp;Determines&nbsp;whether&nbsp;two's&nbsp;complement&nbsp;is&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.<br>
+&nbsp;&nbsp;If&nbsp;signed&nbsp;is&nbsp;False&nbsp;and&nbsp;a&nbsp;negative&nbsp;integer&nbsp;is&nbsp;given,&nbsp;an&nbsp;OverflowError<br>
+&nbsp;&nbsp;is&nbsp;raised.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="DragStatus-from_bytes"><strong>from_bytes</strong></a>(bytes, byteorder, *, signed=False)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Return&nbsp;the&nbsp;integer&nbsp;represented&nbsp;by&nbsp;the&nbsp;given&nbsp;array&nbsp;of&nbsp;bytes.<br>
+&nbsp;<br>
+bytes<br>
+&nbsp;&nbsp;Holds&nbsp;the&nbsp;array&nbsp;of&nbsp;bytes&nbsp;to&nbsp;convert.&nbsp;&nbsp;The&nbsp;argument&nbsp;must&nbsp;either<br>
+&nbsp;&nbsp;support&nbsp;the&nbsp;buffer&nbsp;protocol&nbsp;or&nbsp;be&nbsp;an&nbsp;iterable&nbsp;object&nbsp;producing&nbsp;bytes.<br>
+&nbsp;&nbsp;Bytes&nbsp;and&nbsp;bytearray&nbsp;are&nbsp;examples&nbsp;of&nbsp;built-in&nbsp;objects&nbsp;that&nbsp;support&nbsp;the<br>
+&nbsp;&nbsp;buffer&nbsp;protocol.<br>
+byteorder<br>
+&nbsp;&nbsp;The&nbsp;byte&nbsp;order&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.&nbsp;&nbsp;If&nbsp;byteorder&nbsp;is&nbsp;'big',<br>
+&nbsp;&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;byte&nbsp;array.&nbsp;&nbsp;If<br>
+&nbsp;&nbsp;byteorder&nbsp;is&nbsp;'little',&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;byte&nbsp;array.&nbsp;&nbsp;To&nbsp;request&nbsp;the&nbsp;native&nbsp;byte&nbsp;order&nbsp;of&nbsp;the&nbsp;host&nbsp;system,&nbsp;use<br>
+&nbsp;&nbsp;`sys.byteorder'&nbsp;as&nbsp;the&nbsp;byte&nbsp;order&nbsp;value.<br>
+signed<br>
+&nbsp;&nbsp;Indicates&nbsp;whether&nbsp;two's&nbsp;complement&nbsp;is&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="DragStatus-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><strong>denominator</strong></dt>
+<dd><tt>the&nbsp;denominator&nbsp;of&nbsp;a&nbsp;rational&nbsp;number&nbsp;in&nbsp;lowest&nbsp;terms</tt></dd>
+</dl>
+<dl><dt><strong>imag</strong></dt>
+<dd><tt>the&nbsp;imaginary&nbsp;part&nbsp;of&nbsp;a&nbsp;complex&nbsp;number</tt></dd>
+</dl>
+<dl><dt><strong>numerator</strong></dt>
+<dd><tt>the&nbsp;numerator&nbsp;of&nbsp;a&nbsp;rational&nbsp;number&nbsp;in&nbsp;lowest&nbsp;terms</tt></dd>
+</dl>
+<dl><dt><strong>real</strong></dt>
+<dd><tt>the&nbsp;real&nbsp;part&nbsp;of&nbsp;a&nbsp;complex&nbsp;number</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="DragStyle">class <strong>DragStyle</strong></a>(Boost.Python.instance)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="PyEd.html#DragStyle">DragStyle</a></dd>
+<dd>Boost.Python.instance</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="DragStyle-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt><a href="#DragStyle-__init__">__init__</a>(&nbsp;(object)arg1)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DragStyle-__init__">__init__</a>(struct&nbsp;_object&nbsp;*&nbsp;__ptr64)<br>
+&nbsp;<br>
+<a href="#DragStyle-__init__">__init__</a>(&nbsp;(object)arg1)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DragStyle-__init__">__init__</a>(struct&nbsp;_object&nbsp;*&nbsp;__ptr64)<br>
+&nbsp;<br>
+<a href="#DragStyle-__init__">__init__</a>(&nbsp;(object)arg1,&nbsp;(<a href="#DragStyleType">DragStyleType</a>)arg2,&nbsp;(<a href="#DragStyleType">DragStyleType</a>)arg3)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DragStyle-__init__">__init__</a>(struct&nbsp;_object&nbsp;*&nbsp;__ptr64,enum&nbsp;AcEdDragStyle::StyleType,enum&nbsp;AcEdDragStyle::StyleType)</tt></dd></dl>
+
+<dl><dt><a name="DragStyle-__reduce__"><strong>__reduce__</strong></a> = <unnamed Boost.Python function>(...)</dt></dl>
+
+<dl><dt><a name="DragStyle-setStyleTypeForDragged"><strong>setStyleTypeForDragged</strong></a>(...)</dt><dd><tt><a href="#DragStyle-setStyleTypeForDragged">setStyleTypeForDragged</a>(&nbsp;(<a href="#DragStyle">DragStyle</a>)arg1,&nbsp;(<a href="#DragStyleType">DragStyleType</a>)arg2)&nbsp;-&gt;&nbsp;ErrorStatus&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;Acad::ErrorStatus&nbsp;<a href="#DragStyle-setStyleTypeForDragged">setStyleTypeForDragged</a>(class&nbsp;AcEdDragStyle&nbsp;{lvalue},enum&nbsp;AcEdDragStyle::StyleType)</tt></dd></dl>
+
+<dl><dt><a name="DragStyle-setStyleTypeForOriginal"><strong>setStyleTypeForOriginal</strong></a>(...)</dt><dd><tt><a href="#DragStyle-setStyleTypeForOriginal">setStyleTypeForOriginal</a>(&nbsp;(<a href="#DragStyle">DragStyle</a>)arg1,&nbsp;(<a href="#DragStyleType">DragStyleType</a>)arg2)&nbsp;-&gt;&nbsp;ErrorStatus&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;Acad::ErrorStatus&nbsp;<a href="#DragStyle-setStyleTypeForOriginal">setStyleTypeForOriginal</a>(class&nbsp;AcEdDragStyle&nbsp;{lvalue},enum&nbsp;AcEdDragStyle::StyleType)</tt></dd></dl>
+
+<dl><dt><a name="DragStyle-styleTypeForDragged"><strong>styleTypeForDragged</strong></a>(...)</dt><dd><tt><a href="#DragStyle-styleTypeForDragged">styleTypeForDragged</a>(&nbsp;(<a href="#DragStyle">DragStyle</a>)arg1)&nbsp;-&gt;&nbsp;<a href="#DragStyleType">DragStyleType</a>&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;AcEdDragStyle::StyleType&nbsp;<a href="#DragStyle-styleTypeForDragged">styleTypeForDragged</a>(class&nbsp;AcEdDragStyle&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DragStyle-styleTypeForOriginal"><strong>styleTypeForOriginal</strong></a>(...)</dt><dd><tt><a href="#DragStyle-styleTypeForOriginal">styleTypeForOriginal</a>(&nbsp;(<a href="#DragStyle">DragStyle</a>)arg1)&nbsp;-&gt;&nbsp;<a href="#DragStyleType">DragStyleType</a>&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;AcEdDragStyle::StyleType&nbsp;<a href="#DragStyle-styleTypeForOriginal">styleTypeForOriginal</a>(class&nbsp;AcEdDragStyle&nbsp;{lvalue})</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__instance_size__</strong> = 40</dl>
+
+<hr>
+Static methods inherited from Boost.Python.instance:<br>
+<dl><dt><a name="DragStyle-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from Boost.Python.class</font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from Boost.Python.instance:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="DragStyleType">class <strong>DragStyleType</strong></a>(Boost.Python.enum)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="PyEd.html#DragStyleType">DragStyleType</a></dd>
+<dd>Boost.Python.enum</dd>
+<dd><a href="builtins.html#int">builtins.int</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>kDeletedEffect</strong> = PyEd.DragStyleType.kDeletedEffect</dl>
+
+<dl><dt><strong>kHide</strong> = PyEd.DragStyleType.kHide</dl>
+
+<dl><dt><strong>kHighlight</strong> = PyEd.DragStyleType.kHighlight</dl>
+
+<dl><dt><strong>kNone</strong> = PyEd.DragStyleType.kNone</dl>
+
+<dl><dt><strong>kNotSet</strong> = PyEd.DragStyleType.kNotSet</dl>
+
+<dl><dt><strong>kTransparent25</strong> = PyEd.DragStyleType.kTransparent25</dl>
+
+<dl><dt><strong>kTransparent75</strong> = PyEd.DragStyleType.kTransparent75</dl>
+
+<dl><dt><strong>names</strong> = {'kDeletedEffect': PyEd.DragStyleType.kDeletedEffect, 'kHide': PyEd.DragStyleType.kHide, 'kHighlight': PyEd.DragStyleType.kHighlight, 'kNone': PyEd.DragStyleType.kNone, 'kNotSet': PyEd.DragStyleType.kNotSet, 'kTransparent25': PyEd.DragStyleType.kTransparent25, 'kTransparent75': PyEd.DragStyleType.kTransparent75}</dl>
+
+<dl><dt><strong>values</strong> = {0: PyEd.DragStyleType.kNone, 1: PyEd.DragStyleType.kHide, 2: PyEd.DragStyleType.kTransparent25, 3: PyEd.DragStyleType.kTransparent75, 4: PyEd.DragStyleType.kDeletedEffect, 5: PyEd.DragStyleType.kHighlight, 6: PyEd.DragStyleType.kNotSet}</dl>
+
+<hr>
+Methods inherited from Boost.Python.enum:<br>
+<dl><dt><a name="DragStyleType-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from Boost.Python.enum:<br>
+<dl><dt><strong>name</strong></dt>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="DragStyleType-__abs__"><strong>__abs__</strong></a>(self, /)</dt><dd><tt>abs(self)</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__add__"><strong>__add__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self+value.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__and__"><strong>__and__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&amp;value.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__bool__"><strong>__bool__</strong></a>(self, /)</dt><dd><tt>True&nbsp;if&nbsp;self&nbsp;else&nbsp;False</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__ceil__"><strong>__ceil__</strong></a>(...)</dt><dd><tt>Ceiling&nbsp;of&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__divmod__"><strong>__divmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;divmod(self,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__float__"><strong>__float__</strong></a>(self, /)</dt><dd><tt>float(self)</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__floor__"><strong>__floor__</strong></a>(...)</dt><dd><tt>Flooring&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__floordiv__"><strong>__floordiv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self//value.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__format__"><strong>__format__</strong></a>(self, format_spec, /)</dt><dd><tt>Default&nbsp;object&nbsp;formatter.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__getnewargs__"><strong>__getnewargs__</strong></a>(self, /)</dt></dl>
+
+<dl><dt><a name="DragStyleType-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;hash(self).</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__index__"><strong>__index__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;self&nbsp;converted&nbsp;to&nbsp;an&nbsp;integer,&nbsp;if&nbsp;self&nbsp;is&nbsp;suitable&nbsp;for&nbsp;use&nbsp;as&nbsp;an&nbsp;index&nbsp;into&nbsp;a&nbsp;list.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__int__"><strong>__int__</strong></a>(self, /)</dt><dd><tt>int(self)</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__invert__"><strong>__invert__</strong></a>(self, /)</dt><dd><tt>~self</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__lshift__"><strong>__lshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__mod__"><strong>__mod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self%value.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__mul__"><strong>__mul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self*value.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__neg__"><strong>__neg__</strong></a>(self, /)</dt><dd><tt>-self</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__or__"><strong>__or__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self|value.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__pos__"><strong>__pos__</strong></a>(self, /)</dt><dd><tt>+self</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__pow__"><strong>__pow__</strong></a>(self, value, mod=None, /)</dt><dd><tt>Return&nbsp;pow(self,&nbsp;value,&nbsp;mod).</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__radd__"><strong>__radd__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value+self.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__rand__"><strong>__rand__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&amp;self.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__rdivmod__"><strong>__rdivmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;divmod(value,&nbsp;self).</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__rfloordiv__"><strong>__rfloordiv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value//self.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__rlshift__"><strong>__rlshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&lt;&lt;self.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__rmod__"><strong>__rmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value%self.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__rmul__"><strong>__rmul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value*self.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__ror__"><strong>__ror__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value|self.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__round__"><strong>__round__</strong></a>(...)</dt><dd><tt>Rounding&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.<br>
+&nbsp;<br>
+Rounding&nbsp;with&nbsp;an&nbsp;ndigits&nbsp;argument&nbsp;also&nbsp;returns&nbsp;an&nbsp;integer.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__rpow__"><strong>__rpow__</strong></a>(self, value, mod=None, /)</dt><dd><tt>Return&nbsp;pow(value,&nbsp;self,&nbsp;mod).</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__rrshift__"><strong>__rrshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&gt;&gt;self.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__rshift__"><strong>__rshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__rsub__"><strong>__rsub__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value-self.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__rtruediv__"><strong>__rtruediv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value/self.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__rxor__"><strong>__rxor__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value^self.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__sizeof__"><strong>__sizeof__</strong></a>(self, /)</dt><dd><tt>Returns&nbsp;size&nbsp;in&nbsp;memory,&nbsp;in&nbsp;bytes.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__sub__"><strong>__sub__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self-value.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__truediv__"><strong>__truediv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self/value.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__trunc__"><strong>__trunc__</strong></a>(...)</dt><dd><tt>Truncating&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-__xor__"><strong>__xor__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self^value.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-as_integer_ratio"><strong>as_integer_ratio</strong></a>(self, /)</dt><dd><tt>Return&nbsp;integer&nbsp;ratio.<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;pair&nbsp;of&nbsp;integers,&nbsp;whose&nbsp;ratio&nbsp;is&nbsp;exactly&nbsp;equal&nbsp;to&nbsp;the&nbsp;original&nbsp;int<br>
+and&nbsp;with&nbsp;a&nbsp;positive&nbsp;denominator.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;(10).<a href="#DragStyleType-as_integer_ratio">as_integer_ratio</a>()<br>
+(10,&nbsp;1)<br>
+&gt;&gt;&gt;&nbsp;(-10).<a href="#DragStyleType-as_integer_ratio">as_integer_ratio</a>()<br>
+(-10,&nbsp;1)<br>
+&gt;&gt;&gt;&nbsp;(0).<a href="#DragStyleType-as_integer_ratio">as_integer_ratio</a>()<br>
+(0,&nbsp;1)</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-bit_count"><strong>bit_count</strong></a>(self, /)</dt><dd><tt>Number&nbsp;of&nbsp;ones&nbsp;in&nbsp;the&nbsp;binary&nbsp;representation&nbsp;of&nbsp;the&nbsp;absolute&nbsp;value&nbsp;of&nbsp;self.<br>
+&nbsp;<br>
+Also&nbsp;known&nbsp;as&nbsp;the&nbsp;population&nbsp;count.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;bin(13)<br>
+'0b1101'<br>
+&gt;&gt;&gt;&nbsp;(13).<a href="#DragStyleType-bit_count">bit_count</a>()<br>
+3</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-bit_length"><strong>bit_length</strong></a>(self, /)</dt><dd><tt>Number&nbsp;of&nbsp;bits&nbsp;necessary&nbsp;to&nbsp;represent&nbsp;self&nbsp;in&nbsp;binary.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;bin(37)<br>
+'0b100101'<br>
+&gt;&gt;&gt;&nbsp;(37).<a href="#DragStyleType-bit_length">bit_length</a>()<br>
+6</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-conjugate"><strong>conjugate</strong></a>(...)</dt><dd><tt>Returns&nbsp;self,&nbsp;the&nbsp;complex&nbsp;conjugate&nbsp;of&nbsp;any&nbsp;int.</tt></dd></dl>
+
+<dl><dt><a name="DragStyleType-to_bytes"><strong>to_bytes</strong></a>(self, /, length, byteorder, *, signed=False)</dt><dd><tt>Return&nbsp;an&nbsp;array&nbsp;of&nbsp;bytes&nbsp;representing&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+length<br>
+&nbsp;&nbsp;Length&nbsp;of&nbsp;bytes&nbsp;object&nbsp;to&nbsp;use.&nbsp;&nbsp;An&nbsp;OverflowError&nbsp;is&nbsp;raised&nbsp;if&nbsp;the<br>
+&nbsp;&nbsp;integer&nbsp;is&nbsp;not&nbsp;representable&nbsp;with&nbsp;the&nbsp;given&nbsp;number&nbsp;of&nbsp;bytes.<br>
+byteorder<br>
+&nbsp;&nbsp;The&nbsp;byte&nbsp;order&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.&nbsp;&nbsp;If&nbsp;byteorder&nbsp;is&nbsp;'big',<br>
+&nbsp;&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;byte&nbsp;array.&nbsp;&nbsp;If<br>
+&nbsp;&nbsp;byteorder&nbsp;is&nbsp;'little',&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;byte&nbsp;array.&nbsp;&nbsp;To&nbsp;request&nbsp;the&nbsp;native&nbsp;byte&nbsp;order&nbsp;of&nbsp;the&nbsp;host&nbsp;system,&nbsp;use<br>
+&nbsp;&nbsp;`sys.byteorder'&nbsp;as&nbsp;the&nbsp;byte&nbsp;order&nbsp;value.<br>
+signed<br>
+&nbsp;&nbsp;Determines&nbsp;whether&nbsp;two's&nbsp;complement&nbsp;is&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.<br>
+&nbsp;&nbsp;If&nbsp;signed&nbsp;is&nbsp;False&nbsp;and&nbsp;a&nbsp;negative&nbsp;integer&nbsp;is&nbsp;given,&nbsp;an&nbsp;OverflowError<br>
+&nbsp;&nbsp;is&nbsp;raised.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="DragStyleType-from_bytes"><strong>from_bytes</strong></a>(bytes, byteorder, *, signed=False)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Return&nbsp;the&nbsp;integer&nbsp;represented&nbsp;by&nbsp;the&nbsp;given&nbsp;array&nbsp;of&nbsp;bytes.<br>
+&nbsp;<br>
+bytes<br>
+&nbsp;&nbsp;Holds&nbsp;the&nbsp;array&nbsp;of&nbsp;bytes&nbsp;to&nbsp;convert.&nbsp;&nbsp;The&nbsp;argument&nbsp;must&nbsp;either<br>
+&nbsp;&nbsp;support&nbsp;the&nbsp;buffer&nbsp;protocol&nbsp;or&nbsp;be&nbsp;an&nbsp;iterable&nbsp;object&nbsp;producing&nbsp;bytes.<br>
+&nbsp;&nbsp;Bytes&nbsp;and&nbsp;bytearray&nbsp;are&nbsp;examples&nbsp;of&nbsp;built-in&nbsp;objects&nbsp;that&nbsp;support&nbsp;the<br>
+&nbsp;&nbsp;buffer&nbsp;protocol.<br>
+byteorder<br>
+&nbsp;&nbsp;The&nbsp;byte&nbsp;order&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.&nbsp;&nbsp;If&nbsp;byteorder&nbsp;is&nbsp;'big',<br>
+&nbsp;&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;byte&nbsp;array.&nbsp;&nbsp;If<br>
+&nbsp;&nbsp;byteorder&nbsp;is&nbsp;'little',&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;byte&nbsp;array.&nbsp;&nbsp;To&nbsp;request&nbsp;the&nbsp;native&nbsp;byte&nbsp;order&nbsp;of&nbsp;the&nbsp;host&nbsp;system,&nbsp;use<br>
+&nbsp;&nbsp;`sys.byteorder'&nbsp;as&nbsp;the&nbsp;byte&nbsp;order&nbsp;value.<br>
+signed<br>
+&nbsp;&nbsp;Indicates&nbsp;whether&nbsp;two's&nbsp;complement&nbsp;is&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="DragStyleType-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><strong>denominator</strong></dt>
+<dd><tt>the&nbsp;denominator&nbsp;of&nbsp;a&nbsp;rational&nbsp;number&nbsp;in&nbsp;lowest&nbsp;terms</tt></dd>
+</dl>
+<dl><dt><strong>imag</strong></dt>
+<dd><tt>the&nbsp;imaginary&nbsp;part&nbsp;of&nbsp;a&nbsp;complex&nbsp;number</tt></dd>
+</dl>
+<dl><dt><strong>numerator</strong></dt>
+<dd><tt>the&nbsp;numerator&nbsp;of&nbsp;a&nbsp;rational&nbsp;number&nbsp;in&nbsp;lowest&nbsp;terms</tt></dd>
+</dl>
+<dl><dt><strong>real</strong></dt>
+<dd><tt>the&nbsp;real&nbsp;part&nbsp;of&nbsp;a&nbsp;complex&nbsp;number</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="DrawJig">class <strong>DrawJig</strong></a>(Boost.Python.instance)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="PyEd.html#DrawJig">DrawJig</a></dd>
+<dd>Boost.Python.instance</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="DrawJig-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt><a href="#DrawJig-__init__">__init__</a>(&nbsp;(object)arg1)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawJig-__init__">__init__</a>(struct&nbsp;_object&nbsp;*&nbsp;__ptr64)</tt></dd></dl>
+
+<dl><dt><a name="DrawJig-__reduce__"><strong>__reduce__</strong></a> = <unnamed Boost.Python function>(...)</dt></dl>
+
+<dl><dt><a name="DrawJig-acquireAngle"><strong>acquireAngle</strong></a>(...)</dt><dd><tt><a href="#DrawJig-acquireAngle">acquireAngle</a>(&nbsp;(<a href="#DrawJig">DrawJig</a>)arg1)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#DrawJig-acquireAngle">acquireAngle</a>(class&nbsp;PyDrawJig&nbsp;{lvalue})<br>
+&nbsp;<br>
+<a href="#DrawJig-acquireAngle">acquireAngle</a>(&nbsp;(<a href="#DrawJig">DrawJig</a>)arg1,&nbsp;(Point3d)arg2)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#DrawJig-acquireAngle">acquireAngle</a>(class&nbsp;PyDrawJig&nbsp;{lvalue},class&nbsp;AcGePoint3d)</tt></dd></dl>
+
+<dl><dt><a name="DrawJig-acquireDist"><strong>acquireDist</strong></a>(...)</dt><dd><tt><a href="#DrawJig-acquireDist">acquireDist</a>(&nbsp;(<a href="#DrawJig">DrawJig</a>)arg1)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#DrawJig-acquireDist">acquireDist</a>(class&nbsp;PyDrawJig&nbsp;{lvalue})<br>
+&nbsp;<br>
+<a href="#DrawJig-acquireDist">acquireDist</a>(&nbsp;(<a href="#DrawJig">DrawJig</a>)arg1,&nbsp;(Point3d)arg2)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#DrawJig-acquireDist">acquireDist</a>(class&nbsp;PyDrawJig&nbsp;{lvalue},class&nbsp;AcGePoint3d)</tt></dd></dl>
+
+<dl><dt><a name="DrawJig-acquirePoint"><strong>acquirePoint</strong></a>(...)</dt><dd><tt><a href="#DrawJig-acquirePoint">acquirePoint</a>(&nbsp;(<a href="#DrawJig">DrawJig</a>)arg1)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#DrawJig-acquirePoint">acquirePoint</a>(class&nbsp;PyDrawJig&nbsp;{lvalue})<br>
+&nbsp;<br>
+<a href="#DrawJig-acquirePoint">acquirePoint</a>(&nbsp;(<a href="#DrawJig">DrawJig</a>)arg1,&nbsp;(Point3d)arg2)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#DrawJig-acquirePoint">acquirePoint</a>(class&nbsp;PyDrawJig&nbsp;{lvalue},class&nbsp;AcGePoint3d)</tt></dd></dl>
+
+<dl><dt><a name="DrawJig-acquireString"><strong>acquireString</strong></a>(...)</dt><dd><tt><a href="#DrawJig-acquireString">acquireString</a>(&nbsp;(<a href="#DrawJig">DrawJig</a>)arg1)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#DrawJig-acquireString">acquireString</a>(class&nbsp;PyDrawJig&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawJig-className"><strong>className</strong></a>(...)</dt><dd><tt><a href="#DrawJig-className">className</a>()&nbsp;-&gt;&nbsp;str&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;&nbsp;<a href="#DrawJig-className">className</a>()</tt></dd></dl>
+
+<dl><dt><a name="DrawJig-dispPrompt"><strong>dispPrompt</strong></a>(...)</dt><dd><tt><a href="#DrawJig-dispPrompt">dispPrompt</a>(&nbsp;(<a href="#DrawJig">DrawJig</a>)arg1)&nbsp;-&gt;&nbsp;str&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;&nbsp;<a href="#DrawJig-dispPrompt">dispPrompt</a>(class&nbsp;PyDrawJig&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawJig-drag"><strong>drag</strong></a>(...)</dt><dd><tt><a href="#DrawJig-drag">drag</a>(&nbsp;(<a href="#DrawJig">DrawJig</a>)arg1)&nbsp;-&gt;&nbsp;<a href="#DragStatus">DragStatus</a>&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;AcEdJig::<a href="#DragStatus">DragStatus</a>&nbsp;<a href="#DrawJig-drag">drag</a>(class&nbsp;PyDrawJig&nbsp;{lvalue})<br>
+&nbsp;<br>
+<a href="#DrawJig-drag">drag</a>(&nbsp;(<a href="#DrawJig">DrawJig</a>)arg1,&nbsp;(<a href="#DragStyle">DragStyle</a>)arg2)&nbsp;-&gt;&nbsp;<a href="#DragStatus">DragStatus</a>&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;AcEdJig::<a href="#DragStatus">DragStatus</a>&nbsp;<a href="#DrawJig-drag">drag</a>(class&nbsp;PyDrawJig&nbsp;{lvalue},class&nbsp;AcEdDragStyle)</tt></dd></dl>
+
+<dl><dt><a name="DrawJig-keywordList"><strong>keywordList</strong></a>(...)</dt><dd><tt><a href="#DrawJig-keywordList">keywordList</a>(&nbsp;(<a href="#DrawJig">DrawJig</a>)arg1)&nbsp;-&gt;&nbsp;str&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;&nbsp;<a href="#DrawJig-keywordList">keywordList</a>(class&nbsp;PyDrawJig&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawJig-sampler"><strong>sampler</strong></a>(...)</dt><dd><tt><a href="#DrawJig-sampler">sampler</a>(&nbsp;(<a href="#DrawJig">DrawJig</a>)arg1)&nbsp;-&gt;&nbsp;<a href="#DragStatus">DragStatus</a>&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;AcEdJig::<a href="#DragStatus">DragStatus</a>&nbsp;<a href="#DrawJig-sampler">sampler</a>(class&nbsp;PyDrawJig&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawJig-setDispPrompt"><strong>setDispPrompt</strong></a>(...)</dt><dd><tt><a href="#DrawJig-setDispPrompt">setDispPrompt</a>(&nbsp;(<a href="#DrawJig">DrawJig</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawJig-setDispPrompt">setDispPrompt</a>(class&nbsp;PyDrawJig&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="DrawJig-setKeywordList"><strong>setKeywordList</strong></a>(...)</dt><dd><tt><a href="#DrawJig-setKeywordList">setKeywordList</a>(&nbsp;(<a href="#DrawJig">DrawJig</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawJig-setKeywordList">setKeywordList</a>(class&nbsp;PyDrawJig&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="DrawJig-setSpecialCursorType"><strong>setSpecialCursorType</strong></a>(...)</dt><dd><tt><a href="#DrawJig-setSpecialCursorType">setSpecialCursorType</a>(&nbsp;(<a href="#DrawJig">DrawJig</a>)arg1,&nbsp;(<a href="#CursorType">CursorType</a>)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawJig-setSpecialCursorType">setSpecialCursorType</a>(class&nbsp;PyDrawJig&nbsp;{lvalue},enum&nbsp;AcEdJig::<a href="#CursorType">CursorType</a>)</tt></dd></dl>
+
+<dl><dt><a name="DrawJig-setUserInputControls"><strong>setUserInputControls</strong></a>(...)</dt><dd><tt><a href="#DrawJig-setUserInputControls">setUserInputControls</a>(&nbsp;(<a href="#DrawJig">DrawJig</a>)arg1,&nbsp;(<a href="#UserInputControls">UserInputControls</a>)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawJig-setUserInputControls">setUserInputControls</a>(class&nbsp;PyDrawJig&nbsp;{lvalue},enum&nbsp;AcEdJig::<a href="#UserInputControls">UserInputControls</a>)</tt></dd></dl>
+
+<dl><dt><a name="DrawJig-specialCursorType"><strong>specialCursorType</strong></a>(...)</dt><dd><tt><a href="#DrawJig-specialCursorType">specialCursorType</a>(&nbsp;(<a href="#DrawJig">DrawJig</a>)arg1)&nbsp;-&gt;&nbsp;<a href="#CursorType">CursorType</a>&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;AcEdJig::<a href="#CursorType">CursorType</a>&nbsp;<a href="#DrawJig-specialCursorType">specialCursorType</a>(class&nbsp;PyDrawJig&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawJig-update"><strong>update</strong></a>(...)</dt><dd><tt><a href="#DrawJig-update">update</a>(&nbsp;(<a href="#DrawJig">DrawJig</a>)arg1)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#DrawJig-update">update</a>(class&nbsp;PyDrawJig&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawJig-userInputControls"><strong>userInputControls</strong></a>(...)</dt><dd><tt><a href="#DrawJig-userInputControls">userInputControls</a>(&nbsp;(<a href="#DrawJig">DrawJig</a>)arg1)&nbsp;-&gt;&nbsp;<a href="#UserInputControls">UserInputControls</a>&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;AcEdJig::<a href="#UserInputControls">UserInputControls</a>&nbsp;<a href="#DrawJig-userInputControls">userInputControls</a>(class&nbsp;PyDrawJig&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawJig-viewportDraw"><strong>viewportDraw</strong></a>(...)</dt><dd><tt><a href="#DrawJig-viewportDraw">viewportDraw</a>(&nbsp;(<a href="#DrawJig">DrawJig</a>)arg1,&nbsp;(ViewportDraw)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawJig-viewportDraw">viewportDraw</a>(class&nbsp;PyDrawJig&nbsp;{lvalue},class&nbsp;PyGiViewportDraw&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawJig-worldDraw"><strong>worldDraw</strong></a>(...)</dt><dd><tt><a href="#DrawJig-worldDraw">worldDraw</a>(&nbsp;(<a href="#DrawJig">DrawJig</a>)arg1,&nbsp;(WorldDraw)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#DrawJig-worldDraw">worldDraw</a>(class&nbsp;PyDrawJig&nbsp;{lvalue},class&nbsp;PyGiWorldDraw&nbsp;{lvalue})</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__instance_size__</strong> = 72</dl>
+
+<hr>
+Static methods inherited from Boost.Python.instance:<br>
+<dl><dt><a name="DrawJig-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from Boost.Python.class</font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from Boost.Python.instance:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Editor">class <strong>Editor</strong></a>(Boost.Python.instance)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="PyEd.html#Editor">Editor</a></dd>
+<dd>Boost.Python.instance</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="Editor-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt><a href="#Editor-__init__">__init__</a>(&nbsp;(object)arg1)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#Editor-__init__">__init__</a>(struct&nbsp;_object&nbsp;*&nbsp;__ptr64)</tt></dd></dl>
+
+<dl><dt><a name="Editor-__reduce__"><strong>__reduce__</strong></a> = <unnamed Boost.Python function>(...)</dt></dl>
+
+<dl><dt><a name="Editor-activeViewportId"><strong>activeViewportId</strong></a>(...)</dt><dd><tt><a href="#Editor-activeViewportId">activeViewportId</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1)&nbsp;-&gt;&nbsp;ObjectId&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyDbObjectId&nbsp;<a href="#Editor-activeViewportId">activeViewportId</a>(class&nbsp;PyAcEditor&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="Editor-alert"><strong>alert</strong></a>(...)</dt><dd><tt><a href="#Editor-alert">alert</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#Editor-alert">alert</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="Editor-arxLoad"><strong>arxLoad</strong></a>(...)</dt><dd><tt><a href="#Editor-arxLoad">arxLoad</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#Editor-arxLoad">arxLoad</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="Editor-arxLoaded"><strong>arxLoaded</strong></a>(...)</dt><dd><tt><a href="#Editor-arxLoaded">arxLoaded</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1)&nbsp;-&gt;&nbsp;list&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::list&nbsp;<a href="#Editor-arxLoaded">arxLoaded</a>(class&nbsp;PyAcEditor&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="Editor-arxUnload"><strong>arxUnload</strong></a>(...)</dt><dd><tt><a href="#Editor-arxUnload">arxUnload</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#Editor-arxUnload">arxUnload</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="Editor-audit"><strong>audit</strong></a>(...)</dt><dd><tt><a href="#Editor-audit">audit</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(Database)arg2,&nbsp;(bool)arg3,&nbsp;(bool)arg4)&nbsp;-&gt;&nbsp;ErrorStatus&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;Acad::ErrorStatus&nbsp;<a href="#Editor-audit">audit</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;PyDbDatabase,bool,bool)</tt></dd></dl>
+
+<dl><dt><a name="Editor-className"><strong>className</strong></a>(...)</dt><dd><tt><a href="#Editor-className">className</a>()&nbsp;-&gt;&nbsp;str&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;&nbsp;<a href="#Editor-className">className</a>()</tt></dd></dl>
+
+<dl><dt><a name="Editor-cmdS"><strong>cmdS</strong></a>(...)</dt><dd><tt><a href="#Editor-cmdS">cmdS</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(list)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#Editor-cmdS">cmdS</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;boost::python::list)</tt></dd></dl>
+
+<dl><dt><a name="Editor-entSel"><strong>entSel</strong></a>(...)</dt><dd><tt><a href="#Editor-entSel">entSel</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Editor-entSel">entSel</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="Editor-findFile"><strong>findFile</strong></a>(...)</dt><dd><tt><a href="#Editor-findFile">findFile</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;str&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;&nbsp;<a href="#Editor-findFile">findFile</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="Editor-findTrustedFile"><strong>findTrustedFile</strong></a>(...)</dt><dd><tt><a href="#Editor-findTrustedFile">findTrustedFile</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;str&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;&nbsp;<a href="#Editor-findTrustedFile">findTrustedFile</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="Editor-getAngle"><strong>getAngle</strong></a>(...)</dt><dd><tt><a href="#Editor-getAngle">getAngle</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(Point3d)arg2,&nbsp;(str)arg3)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Editor-getAngle">getAngle</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;AcGePoint3d,class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="Editor-getCurrentUCS"><strong>getCurrentUCS</strong></a>(...)</dt><dd><tt><a href="#Editor-getCurrentUCS">getCurrentUCS</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1)&nbsp;-&gt;&nbsp;Matrix3d&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;AcGeMatrix3d&nbsp;<a href="#Editor-getCurrentUCS">getCurrentUCS</a>(class&nbsp;PyAcEditor&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="Editor-getDist"><strong>getDist</strong></a>(...)</dt><dd><tt><a href="#Editor-getDist">getDist</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Editor-getDist">getDist</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)<br>
+&nbsp;<br>
+<a href="#Editor-getDist">getDist</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(Point3d)arg2,&nbsp;(str)arg3)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Editor-getDist">getDist</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;AcGePoint3d,class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="Editor-getDouble"><strong>getDouble</strong></a>(...)</dt><dd><tt><a href="#Editor-getDouble">getDouble</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Editor-getDouble">getDouble</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="Editor-getInteger"><strong>getInteger</strong></a>(...)</dt><dd><tt><a href="#Editor-getInteger">getInteger</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Editor-getInteger">getInteger</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="Editor-getKword"><strong>getKword</strong></a>(...)</dt><dd><tt><a href="#Editor-getKword">getKword</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Editor-getKword">getKword</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="Editor-getPoint"><strong>getPoint</strong></a>(...)</dt><dd><tt><a href="#Editor-getPoint">getPoint</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Editor-getPoint">getPoint</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)<br>
+&nbsp;<br>
+<a href="#Editor-getPoint">getPoint</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(Point3d)arg2,&nbsp;(str)arg3)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Editor-getPoint">getPoint</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;AcGePoint3d,class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="Editor-getReal"><strong>getReal</strong></a>(...)</dt><dd><tt><a href="#Editor-getReal">getReal</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Editor-getReal">getReal</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="Editor-getString"><strong>getString</strong></a>(...)</dt><dd><tt><a href="#Editor-getString">getString</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(int)arg2,&nbsp;(str)arg3)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Editor-getString">getString</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},int,class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="Editor-initGet"><strong>initGet</strong></a>(...)</dt><dd><tt><a href="#Editor-initGet">initGet</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(int)arg2,&nbsp;(str)arg3)&nbsp;-&gt;&nbsp;<a href="#PromptStatus">PromptStatus</a>&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;Acad::<a href="#PromptStatus">PromptStatus</a>&nbsp;<a href="#Editor-initGet">initGet</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},int,class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="Editor-select"><strong>select</strong></a>(...)</dt><dd><tt><a href="#Editor-select">select</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Editor-select">select</a>(class&nbsp;PyAcEditor&nbsp;{lvalue})<br>
+&nbsp;<br>
+<a href="#Editor-select">select</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(list)arg2)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Editor-select">select</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;boost::python::list)<br>
+&nbsp;<br>
+<a href="#Editor-select">select</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(str)arg2,&nbsp;(str)arg3)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Editor-select">select</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;,class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)<br>
+&nbsp;<br>
+<a href="#Editor-select">select</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(str)arg2,&nbsp;(str)arg3,&nbsp;(list)arg4)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Editor-select">select</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;,class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;,class&nbsp;boost::python::list)</tt></dd></dl>
+
+<dl><dt><a name="Editor-selectAll"><strong>selectAll</strong></a>(...)</dt><dd><tt><a href="#Editor-selectAll">selectAll</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Editor-selectAll">selectAll</a>(class&nbsp;PyAcEditor&nbsp;{lvalue})<br>
+&nbsp;<br>
+<a href="#Editor-selectAll">selectAll</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(list)arg2)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Editor-selectAll">selectAll</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;boost::python::list)</tt></dd></dl>
+
+<dl><dt><a name="Editor-selectCrossingWindow"><strong>selectCrossingWindow</strong></a>(...)</dt><dd><tt><a href="#Editor-selectCrossingWindow">selectCrossingWindow</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(Point3d)arg2,&nbsp;(Point3d)arg3)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Editor-selectCrossingWindow">selectCrossingWindow</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;AcGePoint3d,class&nbsp;AcGePoint3d)<br>
+&nbsp;<br>
+<a href="#Editor-selectCrossingWindow">selectCrossingWindow</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(Point3d)arg2,&nbsp;(Point3d)arg3,&nbsp;(list)arg4)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Editor-selectCrossingWindow">selectCrossingWindow</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;AcGePoint3d,class&nbsp;AcGePoint3d,class&nbsp;boost::python::list)</tt></dd></dl>
+
+<dl><dt><a name="Editor-setCurrentUCS"><strong>setCurrentUCS</strong></a>(...)</dt><dd><tt><a href="#Editor-setCurrentUCS">setCurrentUCS</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(Matrix3d)arg2)&nbsp;-&gt;&nbsp;ErrorStatus&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;Acad::ErrorStatus&nbsp;<a href="#Editor-setCurrentUCS">setCurrentUCS</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;AcGeMatrix3d)</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__instance_size__</strong> = 32</dl>
+
+<hr>
+Static methods inherited from Boost.Python.instance:<br>
+<dl><dt><a name="Editor-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from Boost.Python.class</font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from Boost.Python.instance:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="EditorReactor">class <strong>EditorReactor</strong></a>(Boost.Python.instance)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="PyEd.html#EditorReactor">EditorReactor</a></dd>
+<dd>Boost.Python.instance</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="EditorReactor-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-__init__">__init__</a>(&nbsp;(object)arg1)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-__init__">__init__</a>(struct&nbsp;_object&nbsp;*&nbsp;__ptr64)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-__reduce__"><strong>__reduce__</strong></a> = <unnamed Boost.Python function>(...)</dt></dl>
+
+<dl><dt><a name="EditorReactor-abortAttach"><strong>abortAttach</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-abortAttach">abortAttach</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-abortAttach">abortAttach</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-abortDeepClone"><strong>abortDeepClone</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-abortDeepClone">abortDeepClone</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(IdMapping)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-abortDeepClone">abortDeepClone</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbIdMapping&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-abortDxfIn"><strong>abortDxfIn</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-abortDxfIn">abortDxfIn</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-abortDxfIn">abortDxfIn</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-abortDxfOut"><strong>abortDxfOut</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-abortDxfOut">abortDxfOut</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-abortDxfOut">abortDxfOut</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-abortInsert"><strong>abortInsert</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-abortInsert">abortInsert</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-abortInsert">abortInsert</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-abortRestore"><strong>abortRestore</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-abortRestore">abortRestore</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-abortRestore">abortRestore</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-abortSave"><strong>abortSave</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-abortSave">abortSave</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-abortSave">abortSave</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-abortWblock"><strong>abortWblock</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-abortWblock">abortWblock</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-abortWblock">abortWblock</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-addReactor"><strong>addReactor</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-addReactor">addReactor</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-addReactor">addReactor</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-beginAttach"><strong>beginAttach</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-beginAttach">beginAttach</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2,&nbsp;(str)arg3,&nbsp;(Database)arg4)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-beginAttach">beginAttach</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;,class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-beginCloseAll"><strong>beginCloseAll</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-beginCloseAll">beginCloseAll</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-beginCloseAll">beginCloseAll</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-beginDeepClone"><strong>beginDeepClone</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-beginDeepClone">beginDeepClone</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2,&nbsp;(IdMapping)arg3)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-beginDeepClone">beginDeepClone</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue},class&nbsp;PyDbIdMapping&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-beginDeepCloneXlation"><strong>beginDeepCloneXlation</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-beginDeepCloneXlation">beginDeepCloneXlation</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(IdMapping)arg2)&nbsp;-&gt;&nbsp;ErrorStatus&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;Acad::ErrorStatus&nbsp;<a href="#EditorReactor-beginDeepCloneXlation">beginDeepCloneXlation</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbIdMapping&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-beginDocClose"><strong>beginDocClose</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-beginDocClose">beginDocClose</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-beginDocClose">beginDocClose</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-beginDoubleClick"><strong>beginDoubleClick</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-beginDoubleClick">beginDoubleClick</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Point3d)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-beginDoubleClick">beginDoubleClick</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;AcGePoint3d)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-beginDwgOpen"><strong>beginDwgOpen</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-beginDwgOpen">beginDwgOpen</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-beginDwgOpen">beginDwgOpen</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-beginDxfIn"><strong>beginDxfIn</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-beginDxfIn">beginDxfIn</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-beginDxfIn">beginDxfIn</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-beginDxfOut"><strong>beginDxfOut</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-beginDxfOut">beginDxfOut</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-beginDxfOut">beginDxfOut</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-beginInsert"><strong>beginInsert</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-beginInsert">beginInsert</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2,&nbsp;(str)arg3,&nbsp;(Database)arg4)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-beginInsert">beginInsert</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;,class&nbsp;PyDbDatabase&nbsp;{lvalue})<br>
+&nbsp;<br>
+<a href="#EditorReactor-beginInsert">beginInsert</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2,&nbsp;(Matrix3d)arg3,&nbsp;(Database)arg4)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-beginInsert">beginInsert</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue},class&nbsp;AcGeMatrix3d,class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-beginQuit"><strong>beginQuit</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-beginQuit">beginQuit</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-beginQuit">beginQuit</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-beginRestore"><strong>beginRestore</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-beginRestore">beginRestore</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2,&nbsp;(str)arg3,&nbsp;(Database)arg4)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-beginRestore">beginRestore</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;,class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-beginRightClick"><strong>beginRightClick</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-beginRightClick">beginRightClick</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Point3d)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-beginRightClick">beginRightClick</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;AcGePoint3d)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-beginSave"><strong>beginSave</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-beginSave">beginSave</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2,&nbsp;(str)arg3)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-beginSave">beginSave</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-beginWblock"><strong>beginWblock</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-beginWblock">beginWblock</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2,&nbsp;(Database)arg3,&nbsp;(ObjectId)arg4)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-beginWblock">beginWblock</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue},class&nbsp;PyDbObjectId&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-beginWblockObjects"><strong>beginWblockObjects</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-beginWblockObjects">beginWblockObjects</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2,&nbsp;(IdMapping)arg3)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-beginWblockObjects">beginWblockObjects</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue},class&nbsp;PyDbIdMapping&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-cmdIUnkModified"><strong>cmdIUnkModified</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-cmdIUnkModified">cmdIUnkModified</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-cmdIUnkModified">cmdIUnkModified</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-comandeered"><strong>comandeered</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-comandeered">comandeered</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2,&nbsp;(ObjectId)arg3,&nbsp;(Database)arg4)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-comandeered">comandeered</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue},class&nbsp;PyDbObjectId&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-commandCancelled"><strong>commandCancelled</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-commandCancelled">commandCancelled</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-commandCancelled">commandCancelled</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-commandEnded"><strong>commandEnded</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-commandEnded">commandEnded</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-commandEnded">commandEnded</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-commandFailed"><strong>commandFailed</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-commandFailed">commandFailed</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-commandFailed">commandFailed</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-commandWillStart"><strong>commandWillStart</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-commandWillStart">commandWillStart</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-commandWillStart">commandWillStart</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-databaseConstructed"><strong>databaseConstructed</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-databaseConstructed">databaseConstructed</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-databaseConstructed">databaseConstructed</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-databaseToBeDestroyed"><strong>databaseToBeDestroyed</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-databaseToBeDestroyed">databaseToBeDestroyed</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-databaseToBeDestroyed">databaseToBeDestroyed</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-docCloseAborted"><strong>docCloseAborted</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-docCloseAborted">docCloseAborted</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-docCloseAborted">docCloseAborted</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-docCloseWillStart"><strong>docCloseWillStart</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-docCloseWillStart">docCloseWillStart</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-docCloseWillStart">docCloseWillStart</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-docFrameMovedOrResized"><strong>docFrameMovedOrResized</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-docFrameMovedOrResized">docFrameMovedOrResized</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(int)arg2,&nbsp;(bool)arg3)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-docFrameMovedOrResized">docFrameMovedOrResized</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},__int64,bool)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-dwgViewResized"><strong>dwgViewResized</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-dwgViewResized">dwgViewResized</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(int)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-dwgViewResized">dwgViewResized</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},__int64)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-dxfInComplete"><strong>dxfInComplete</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-dxfInComplete">dxfInComplete</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-dxfInComplete">dxfInComplete</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-dxfOutComplete"><strong>dxfOutComplete</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-dxfOutComplete">dxfOutComplete</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-dxfOutComplete">dxfOutComplete</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-endAttach"><strong>endAttach</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-endAttach">endAttach</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-endAttach">endAttach</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-endDeepClone"><strong>endDeepClone</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-endDeepClone">endDeepClone</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(IdMapping)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-endDeepClone">endDeepClone</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbIdMapping&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-endDwgOpen"><strong>endDwgOpen</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-endDwgOpen">endDwgOpen</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(str)arg2,&nbsp;(Database)arg3)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-endDwgOpen">endDwgOpen</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;,class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-endInsert"><strong>endInsert</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-endInsert">endInsert</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-endInsert">endInsert</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-endRestore"><strong>endRestore</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-endRestore">endRestore</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-endRestore">endRestore</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-endWblock"><strong>endWblock</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-endWblock">endWblock</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-endWblock">endWblock</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-fullRegenEnded"><strong>fullRegenEnded</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-fullRegenEnded">fullRegenEnded</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2,&nbsp;(list)arg3)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-fullRegenEnded">fullRegenEnded</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue},class&nbsp;boost::python::list)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-fullRegenWillStart"><strong>fullRegenWillStart</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-fullRegenWillStart">fullRegenWillStart</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-fullRegenWillStart">fullRegenWillStart</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-initialDwgFileOpenComplete"><strong>initialDwgFileOpenComplete</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-initialDwgFileOpenComplete">initialDwgFileOpenComplete</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-initialDwgFileOpenComplete">initialDwgFileOpenComplete</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-layoutSwitched"><strong>layoutSwitched</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-layoutSwitched">layoutSwitched</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-layoutSwitched">layoutSwitched</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-layoutToBeSwitched"><strong>layoutToBeSwitched</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-layoutToBeSwitched">layoutToBeSwitched</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(str)arg2,&nbsp;(str)arg3)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-layoutToBeSwitched">layoutToBeSwitched</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;,class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-lispCancelled"><strong>lispCancelled</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-lispCancelled">lispCancelled</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-lispCancelled">lispCancelled</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-lispEnded"><strong>lispEnded</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-lispEnded">lispEnded</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-lispEnded">lispEnded</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-lispWillStart"><strong>lispWillStart</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-lispWillStart">lispWillStart</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-lispWillStart">lispWillStart</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-mainFrameMovedOrResized"><strong>mainFrameMovedOrResized</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-mainFrameMovedOrResized">mainFrameMovedOrResized</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(int)arg2,&nbsp;(bool)arg3)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-mainFrameMovedOrResized">mainFrameMovedOrResized</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},__int64,bool)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-modelessOperationEnded"><strong>modelessOperationEnded</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-modelessOperationEnded">modelessOperationEnded</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-modelessOperationEnded">modelessOperationEnded</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-modelessOperationWillStart"><strong>modelessOperationWillStart</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-modelessOperationWillStart">modelessOperationWillStart</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-modelessOperationWillStart">modelessOperationWillStart</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-objectsLazyLoaded"><strong>objectsLazyLoaded</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-objectsLazyLoaded">objectsLazyLoaded</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(list)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-objectsLazyLoaded">objectsLazyLoaded</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;boost::python::list)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-otherAttach"><strong>otherAttach</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-otherAttach">otherAttach</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2,&nbsp;(Database)arg3)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-otherAttach">otherAttach</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-otherInsert"><strong>otherInsert</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-otherInsert">otherInsert</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2,&nbsp;(IdMapping)arg3,&nbsp;(Database)arg4)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-otherInsert">otherInsert</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue},class&nbsp;PyDbIdMapping&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-otherWblock"><strong>otherWblock</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-otherWblock">otherWblock</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2,&nbsp;(IdMapping)arg3,&nbsp;(Database)arg4)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-otherWblock">otherWblock</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue},class&nbsp;PyDbIdMapping&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-partialOpenNotice"><strong>partialOpenNotice</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-partialOpenNotice">partialOpenNotice</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-partialOpenNotice">partialOpenNotice</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-pickfirstModified"><strong>pickfirstModified</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-pickfirstModified">pickfirstModified</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-pickfirstModified">pickfirstModified</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-preXrefLockFile"><strong>preXrefLockFile</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-preXrefLockFile">preXrefLockFile</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(ObjectId)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-preXrefLockFile">preXrefLockFile</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbObjectId&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-quitAborted"><strong>quitAborted</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-quitAborted">quitAborted</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-quitAborted">quitAborted</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-quitWillStart"><strong>quitWillStart</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-quitWillStart">quitWillStart</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-quitWillStart">quitWillStart</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-redirected"><strong>redirected</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-redirected">redirected</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(ObjectId)arg2,&nbsp;(ObjectId)arg3)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-redirected">redirected</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbObjectId&nbsp;{lvalue},class&nbsp;PyDbObjectId&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-removeReactor"><strong>removeReactor</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-removeReactor">removeReactor</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-removeReactor">removeReactor</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-saveComplete"><strong>saveComplete</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-saveComplete">saveComplete</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2,&nbsp;(str)arg3)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-saveComplete">saveComplete</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-sysVarChanged"><strong>sysVarChanged</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-sysVarChanged">sysVarChanged</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(str)arg2,&nbsp;(bool)arg3)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-sysVarChanged">sysVarChanged</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;,bool)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-sysVarWillChange"><strong>sysVarWillChange</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-sysVarWillChange">sysVarWillChange</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-sysVarWillChange">sysVarWillChange</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-toolbarBitmapSizeChanged"><strong>toolbarBitmapSizeChanged</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-toolbarBitmapSizeChanged">toolbarBitmapSizeChanged</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(bool)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-toolbarBitmapSizeChanged">toolbarBitmapSizeChanged</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},bool)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-toolbarBitmapSizeWillChange"><strong>toolbarBitmapSizeWillChange</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-toolbarBitmapSizeWillChange">toolbarBitmapSizeWillChange</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(bool)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-toolbarBitmapSizeWillChange">toolbarBitmapSizeWillChange</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},bool)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-undoSubcommandAuto"><strong>undoSubcommandAuto</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-undoSubcommandAuto">undoSubcommandAuto</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(int)arg2,&nbsp;(bool)arg3)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-undoSubcommandAuto">undoSubcommandAuto</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},int,bool)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-undoSubcommandBack"><strong>undoSubcommandBack</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-undoSubcommandBack">undoSubcommandBack</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(int)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-undoSubcommandBack">undoSubcommandBack</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},int)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-undoSubcommandBegin"><strong>undoSubcommandBegin</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-undoSubcommandBegin">undoSubcommandBegin</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(int)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-undoSubcommandBegin">undoSubcommandBegin</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},int)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-undoSubcommandControl"><strong>undoSubcommandControl</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-undoSubcommandControl">undoSubcommandControl</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(int)arg2,&nbsp;(int)arg3)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-undoSubcommandControl">undoSubcommandControl</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},int,int)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-undoSubcommandEnd"><strong>undoSubcommandEnd</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-undoSubcommandEnd">undoSubcommandEnd</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(int)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-undoSubcommandEnd">undoSubcommandEnd</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},int)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-undoSubcommandMark"><strong>undoSubcommandMark</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-undoSubcommandMark">undoSubcommandMark</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(int)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-undoSubcommandMark">undoSubcommandMark</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},int)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-undoSubcommandNumber"><strong>undoSubcommandNumber</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-undoSubcommandNumber">undoSubcommandNumber</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(int)arg2,&nbsp;(int)arg3)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-undoSubcommandNumber">undoSubcommandNumber</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},int,int)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-veto"><strong>veto</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-veto">veto</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1)&nbsp;-&gt;&nbsp;ErrorStatus&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;Acad::ErrorStatus&nbsp;<a href="#EditorReactor-veto">veto</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-viewChanged"><strong>viewChanged</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-viewChanged">viewChanged</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-viewChanged">viewChanged</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-wblockNotice"><strong>wblockNotice</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-wblockNotice">wblockNotice</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-wblockNotice">wblockNotice</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-xrefSubcommandAttachItem"><strong>xrefSubcommandAttachItem</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-xrefSubcommandAttachItem">xrefSubcommandAttachItem</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2,&nbsp;(int)arg3,&nbsp;(str)arg4)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-xrefSubcommandAttachItem">xrefSubcommandAttachItem</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue},int,class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-xrefSubcommandBindItem"><strong>xrefSubcommandBindItem</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-xrefSubcommandBindItem">xrefSubcommandBindItem</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2,&nbsp;(int)arg3,&nbsp;(ObjectId)arg4)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-xrefSubcommandBindItem">xrefSubcommandBindItem</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue},int,class&nbsp;PyDbObjectId&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-xrefSubcommandDetachItem"><strong>xrefSubcommandDetachItem</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-xrefSubcommandDetachItem">xrefSubcommandDetachItem</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2,&nbsp;(int)arg3,&nbsp;(ObjectId)arg4)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-xrefSubcommandDetachItem">xrefSubcommandDetachItem</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue},int,class&nbsp;PyDbObjectId&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-xrefSubcommandOverlayItem"><strong>xrefSubcommandOverlayItem</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-xrefSubcommandOverlayItem">xrefSubcommandOverlayItem</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2,&nbsp;(int)arg3,&nbsp;(str)arg4)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-xrefSubcommandOverlayItem">xrefSubcommandOverlayItem</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue},int,class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-xrefSubcommandPathItem"><strong>xrefSubcommandPathItem</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-xrefSubcommandPathItem">xrefSubcommandPathItem</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(int)arg2,&nbsp;(ObjectId)arg3,&nbsp;(str)arg4)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-xrefSubcommandPathItem">xrefSubcommandPathItem</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},int,class&nbsp;PyDbObjectId&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-xrefSubcommandReloadItem"><strong>xrefSubcommandReloadItem</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-xrefSubcommandReloadItem">xrefSubcommandReloadItem</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2,&nbsp;(int)arg3,&nbsp;(ObjectId)arg4)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-xrefSubcommandReloadItem">xrefSubcommandReloadItem</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue},int,class&nbsp;PyDbObjectId&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="EditorReactor-xrefSubcommandUnloadItem"><strong>xrefSubcommandUnloadItem</strong></a>(...)</dt><dd><tt><a href="#EditorReactor-xrefSubcommandUnloadItem">xrefSubcommandUnloadItem</a>(&nbsp;(<a href="#EditorReactor">EditorReactor</a>)arg1,&nbsp;(Database)arg2,&nbsp;(int)arg3,&nbsp;(ObjectId)arg4)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#EditorReactor-xrefSubcommandUnloadItem">xrefSubcommandUnloadItem</a>(class&nbsp;PyEditorReactor&nbsp;{lvalue},class&nbsp;PyDbDatabase&nbsp;{lvalue},int,class&nbsp;PyDbObjectId&nbsp;{lvalue})</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__instance_size__</strong> = 136</dl>
+
+<hr>
+Static methods inherited from Boost.Python.instance:<br>
+<dl><dt><a name="EditorReactor-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from Boost.Python.class</font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from Boost.Python.instance:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Jig">class <strong>Jig</strong></a>(Boost.Python.instance)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="PyEd.html#Jig">Jig</a></dd>
+<dd>Boost.Python.instance</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="Jig-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt><a href="#Jig-__init__">__init__</a>(&nbsp;(object)arg1,&nbsp;(Entity)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#Jig-__init__">__init__</a>(struct&nbsp;_object&nbsp;*&nbsp;__ptr64,class&nbsp;PyDbEntity)</tt></dd></dl>
+
+<dl><dt><a name="Jig-__reduce__"><strong>__reduce__</strong></a> = <unnamed Boost.Python function>(...)</dt></dl>
+
+<dl><dt><a name="Jig-acquireAngle"><strong>acquireAngle</strong></a>(...)</dt><dd><tt><a href="#Jig-acquireAngle">acquireAngle</a>(&nbsp;(<a href="#Jig">Jig</a>)arg1)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Jig-acquireAngle">acquireAngle</a>(class&nbsp;PyJig&nbsp;{lvalue})<br>
+&nbsp;<br>
+<a href="#Jig-acquireAngle">acquireAngle</a>(&nbsp;(<a href="#Jig">Jig</a>)arg1,&nbsp;(Point3d)arg2)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Jig-acquireAngle">acquireAngle</a>(class&nbsp;PyJig&nbsp;{lvalue},class&nbsp;AcGePoint3d)</tt></dd></dl>
+
+<dl><dt><a name="Jig-acquireDist"><strong>acquireDist</strong></a>(...)</dt><dd><tt><a href="#Jig-acquireDist">acquireDist</a>(&nbsp;(<a href="#Jig">Jig</a>)arg1)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Jig-acquireDist">acquireDist</a>(class&nbsp;PyJig&nbsp;{lvalue})<br>
+&nbsp;<br>
+<a href="#Jig-acquireDist">acquireDist</a>(&nbsp;(<a href="#Jig">Jig</a>)arg1,&nbsp;(Point3d)arg2)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Jig-acquireDist">acquireDist</a>(class&nbsp;PyJig&nbsp;{lvalue},class&nbsp;AcGePoint3d)</tt></dd></dl>
+
+<dl><dt><a name="Jig-acquirePoint"><strong>acquirePoint</strong></a>(...)</dt><dd><tt><a href="#Jig-acquirePoint">acquirePoint</a>(&nbsp;(<a href="#Jig">Jig</a>)arg1)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Jig-acquirePoint">acquirePoint</a>(class&nbsp;PyJig&nbsp;{lvalue})<br>
+&nbsp;<br>
+<a href="#Jig-acquirePoint">acquirePoint</a>(&nbsp;(<a href="#Jig">Jig</a>)arg1,&nbsp;(Point3d)arg2)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Jig-acquirePoint">acquirePoint</a>(class&nbsp;PyJig&nbsp;{lvalue},class&nbsp;AcGePoint3d)</tt></dd></dl>
+
+<dl><dt><a name="Jig-acquireString"><strong>acquireString</strong></a>(...)</dt><dd><tt><a href="#Jig-acquireString">acquireString</a>(&nbsp;(<a href="#Jig">Jig</a>)arg1)&nbsp;-&gt;&nbsp;tuple&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::tuple&nbsp;<a href="#Jig-acquireString">acquireString</a>(class&nbsp;PyJig&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="Jig-append"><strong>append</strong></a>(...)</dt><dd><tt><a href="#Jig-append">append</a>(&nbsp;(<a href="#Jig">Jig</a>)arg1)&nbsp;-&gt;&nbsp;ObjectId&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyDbObjectId&nbsp;<a href="#Jig-append">append</a>(class&nbsp;PyJig&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="Jig-className"><strong>className</strong></a>(...)</dt><dd><tt><a href="#Jig-className">className</a>()&nbsp;-&gt;&nbsp;str&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;&nbsp;<a href="#Jig-className">className</a>()</tt></dd></dl>
+
+<dl><dt><a name="Jig-dispPrompt"><strong>dispPrompt</strong></a>(...)</dt><dd><tt><a href="#Jig-dispPrompt">dispPrompt</a>(&nbsp;(<a href="#Jig">Jig</a>)arg1)&nbsp;-&gt;&nbsp;str&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;&nbsp;<a href="#Jig-dispPrompt">dispPrompt</a>(class&nbsp;PyJig&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="Jig-drag"><strong>drag</strong></a>(...)</dt><dd><tt><a href="#Jig-drag">drag</a>(&nbsp;(<a href="#Jig">Jig</a>)arg1)&nbsp;-&gt;&nbsp;<a href="#DragStatus">DragStatus</a>&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;AcEdJig::<a href="#DragStatus">DragStatus</a>&nbsp;<a href="#Jig-drag">drag</a>(class&nbsp;PyJig&nbsp;{lvalue})<br>
+&nbsp;<br>
+<a href="#Jig-drag">drag</a>(&nbsp;(<a href="#Jig">Jig</a>)arg1,&nbsp;(<a href="#DragStyle">DragStyle</a>)arg2)&nbsp;-&gt;&nbsp;<a href="#DragStatus">DragStatus</a>&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;AcEdJig::<a href="#DragStatus">DragStatus</a>&nbsp;<a href="#Jig-drag">drag</a>(class&nbsp;PyJig&nbsp;{lvalue},class&nbsp;AcEdDragStyle)</tt></dd></dl>
+
+<dl><dt><a name="Jig-keywordList"><strong>keywordList</strong></a>(...)</dt><dd><tt><a href="#Jig-keywordList">keywordList</a>(&nbsp;(<a href="#Jig">Jig</a>)arg1)&nbsp;-&gt;&nbsp;str&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;&nbsp;<a href="#Jig-keywordList">keywordList</a>(class&nbsp;PyJig&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="Jig-sampler"><strong>sampler</strong></a>(...)</dt><dd><tt><a href="#Jig-sampler">sampler</a>(&nbsp;(<a href="#Jig">Jig</a>)arg1)&nbsp;-&gt;&nbsp;<a href="#DragStatus">DragStatus</a>&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;AcEdJig::<a href="#DragStatus">DragStatus</a>&nbsp;<a href="#Jig-sampler">sampler</a>(class&nbsp;PyJig&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="Jig-setDispPrompt"><strong>setDispPrompt</strong></a>(...)</dt><dd><tt><a href="#Jig-setDispPrompt">setDispPrompt</a>(&nbsp;(<a href="#Jig">Jig</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#Jig-setDispPrompt">setDispPrompt</a>(class&nbsp;PyJig&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="Jig-setKeywordList"><strong>setKeywordList</strong></a>(...)</dt><dd><tt><a href="#Jig-setKeywordList">setKeywordList</a>(&nbsp;(<a href="#Jig">Jig</a>)arg1,&nbsp;(str)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#Jig-setKeywordList">setKeywordList</a>(class&nbsp;PyJig&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="Jig-setSpecialCursorType"><strong>setSpecialCursorType</strong></a>(...)</dt><dd><tt><a href="#Jig-setSpecialCursorType">setSpecialCursorType</a>(&nbsp;(<a href="#Jig">Jig</a>)arg1,&nbsp;(<a href="#CursorType">CursorType</a>)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#Jig-setSpecialCursorType">setSpecialCursorType</a>(class&nbsp;PyJig&nbsp;{lvalue},enum&nbsp;AcEdJig::<a href="#CursorType">CursorType</a>)</tt></dd></dl>
+
+<dl><dt><a name="Jig-setUserInputControls"><strong>setUserInputControls</strong></a>(...)</dt><dd><tt><a href="#Jig-setUserInputControls">setUserInputControls</a>(&nbsp;(<a href="#Jig">Jig</a>)arg1,&nbsp;(<a href="#UserInputControls">UserInputControls</a>)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#Jig-setUserInputControls">setUserInputControls</a>(class&nbsp;PyJig&nbsp;{lvalue},enum&nbsp;AcEdJig::<a href="#UserInputControls">UserInputControls</a>)</tt></dd></dl>
+
+<dl><dt><a name="Jig-specialCursorType"><strong>specialCursorType</strong></a>(...)</dt><dd><tt><a href="#Jig-specialCursorType">specialCursorType</a>(&nbsp;(<a href="#Jig">Jig</a>)arg1)&nbsp;-&gt;&nbsp;<a href="#CursorType">CursorType</a>&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;AcEdJig::<a href="#CursorType">CursorType</a>&nbsp;<a href="#Jig-specialCursorType">specialCursorType</a>(class&nbsp;PyJig&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="Jig-update"><strong>update</strong></a>(...)</dt><dd><tt><a href="#Jig-update">update</a>(&nbsp;(<a href="#Jig">Jig</a>)arg1)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#Jig-update">update</a>(class&nbsp;PyJig&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="Jig-userInputControls"><strong>userInputControls</strong></a>(...)</dt><dd><tt><a href="#Jig-userInputControls">userInputControls</a>(&nbsp;(<a href="#Jig">Jig</a>)arg1)&nbsp;-&gt;&nbsp;<a href="#UserInputControls">UserInputControls</a>&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;AcEdJig::<a href="#UserInputControls">UserInputControls</a>&nbsp;<a href="#Jig-userInputControls">userInputControls</a>(class&nbsp;PyJig&nbsp;{lvalue})</tt></dd></dl>
+
+<hr>
+Static methods inherited from Boost.Python.instance:<br>
+<dl><dt><a name="Jig-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from Boost.Python.class</font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from Boost.Python.instance:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="PromptStatus">class <strong>PromptStatus</strong></a>(Boost.Python.enum)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="PyEd.html#PromptStatus">PromptStatus</a></dd>
+<dd>Boost.Python.enum</dd>
+<dd><a href="builtins.html#int">builtins.int</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>eCancel</strong> = PyEd.PromptStatus.eCancel</dl>
+
+<dl><dt><strong>eDirect</strong> = PyEd.PromptStatus.eDirect</dl>
+
+<dl><dt><strong>eError</strong> = PyEd.PromptStatus.eError</dl>
+
+<dl><dt><strong>eFailed</strong> = PyEd.PromptStatus.eFailed</dl>
+
+<dl><dt><strong>eKeyword</strong> = PyEd.PromptStatus.eKeyword</dl>
+
+<dl><dt><strong>eModeless</strong> = PyEd.PromptStatus.eModeless</dl>
+
+<dl><dt><strong>eNone</strong> = PyEd.PromptStatus.eNone</dl>
+
+<dl><dt><strong>eNormal</strong> = PyEd.PromptStatus.eNormal</dl>
+
+<dl><dt><strong>eOk</strong> = PyEd.PromptStatus.eOk</dl>
+
+<dl><dt><strong>eRejected</strong> = PyEd.PromptStatus.eRejected</dl>
+
+<dl><dt><strong>kNormal</strong> = PyEd.PromptStatus.kNormal</dl>
+
+<dl><dt><strong>names</strong> = {'eCancel': PyEd.PromptStatus.eCancel, 'eDirect': PyEd.PromptStatus.eDirect, 'eError': PyEd.PromptStatus.eError, 'eFailed': PyEd.PromptStatus.eFailed, 'eKeyword': PyEd.PromptStatus.eKeyword, 'eModeless': PyEd.PromptStatus.eModeless, 'eNone': PyEd.PromptStatus.eNone, 'eNormal': PyEd.PromptStatus.eNormal, 'eOk': PyEd.PromptStatus.eOk, 'eRejected': PyEd.PromptStatus.eRejected, ...}</dl>
+
+<dl><dt><strong>values</strong> = {-5999: PyEd.PromptStatus.eDirect, -5005: PyEd.PromptStatus.eKeyword, -5004: PyEd.PromptStatus.eFailed, -5003: PyEd.PromptStatus.eRejected, -5002: PyEd.PromptStatus.eCancel, -5001: PyEd.PromptStatus.eError, 5000: PyEd.PromptStatus.eNone, 5027: PyEd.PromptStatus.eModeless, 5100: PyEd.PromptStatus.eOk}</dl>
+
+<hr>
+Methods inherited from Boost.Python.enum:<br>
+<dl><dt><a name="PromptStatus-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from Boost.Python.enum:<br>
+<dl><dt><strong>name</strong></dt>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="PromptStatus-__abs__"><strong>__abs__</strong></a>(self, /)</dt><dd><tt>abs(self)</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__add__"><strong>__add__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self+value.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__and__"><strong>__and__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&amp;value.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__bool__"><strong>__bool__</strong></a>(self, /)</dt><dd><tt>True&nbsp;if&nbsp;self&nbsp;else&nbsp;False</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__ceil__"><strong>__ceil__</strong></a>(...)</dt><dd><tt>Ceiling&nbsp;of&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__divmod__"><strong>__divmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;divmod(self,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__float__"><strong>__float__</strong></a>(self, /)</dt><dd><tt>float(self)</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__floor__"><strong>__floor__</strong></a>(...)</dt><dd><tt>Flooring&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__floordiv__"><strong>__floordiv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self//value.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__format__"><strong>__format__</strong></a>(self, format_spec, /)</dt><dd><tt>Default&nbsp;object&nbsp;formatter.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__getnewargs__"><strong>__getnewargs__</strong></a>(self, /)</dt></dl>
+
+<dl><dt><a name="PromptStatus-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;hash(self).</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__index__"><strong>__index__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;self&nbsp;converted&nbsp;to&nbsp;an&nbsp;integer,&nbsp;if&nbsp;self&nbsp;is&nbsp;suitable&nbsp;for&nbsp;use&nbsp;as&nbsp;an&nbsp;index&nbsp;into&nbsp;a&nbsp;list.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__int__"><strong>__int__</strong></a>(self, /)</dt><dd><tt>int(self)</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__invert__"><strong>__invert__</strong></a>(self, /)</dt><dd><tt>~self</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__lshift__"><strong>__lshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__mod__"><strong>__mod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self%value.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__mul__"><strong>__mul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self*value.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__neg__"><strong>__neg__</strong></a>(self, /)</dt><dd><tt>-self</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__or__"><strong>__or__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self|value.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__pos__"><strong>__pos__</strong></a>(self, /)</dt><dd><tt>+self</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__pow__"><strong>__pow__</strong></a>(self, value, mod=None, /)</dt><dd><tt>Return&nbsp;pow(self,&nbsp;value,&nbsp;mod).</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__radd__"><strong>__radd__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value+self.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__rand__"><strong>__rand__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&amp;self.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__rdivmod__"><strong>__rdivmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;divmod(value,&nbsp;self).</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__rfloordiv__"><strong>__rfloordiv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value//self.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__rlshift__"><strong>__rlshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&lt;&lt;self.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__rmod__"><strong>__rmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value%self.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__rmul__"><strong>__rmul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value*self.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__ror__"><strong>__ror__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value|self.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__round__"><strong>__round__</strong></a>(...)</dt><dd><tt>Rounding&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.<br>
+&nbsp;<br>
+Rounding&nbsp;with&nbsp;an&nbsp;ndigits&nbsp;argument&nbsp;also&nbsp;returns&nbsp;an&nbsp;integer.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__rpow__"><strong>__rpow__</strong></a>(self, value, mod=None, /)</dt><dd><tt>Return&nbsp;pow(value,&nbsp;self,&nbsp;mod).</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__rrshift__"><strong>__rrshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&gt;&gt;self.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__rshift__"><strong>__rshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__rsub__"><strong>__rsub__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value-self.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__rtruediv__"><strong>__rtruediv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value/self.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__rxor__"><strong>__rxor__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value^self.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__sizeof__"><strong>__sizeof__</strong></a>(self, /)</dt><dd><tt>Returns&nbsp;size&nbsp;in&nbsp;memory,&nbsp;in&nbsp;bytes.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__sub__"><strong>__sub__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self-value.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__truediv__"><strong>__truediv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self/value.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__trunc__"><strong>__trunc__</strong></a>(...)</dt><dd><tt>Truncating&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-__xor__"><strong>__xor__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self^value.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-as_integer_ratio"><strong>as_integer_ratio</strong></a>(self, /)</dt><dd><tt>Return&nbsp;integer&nbsp;ratio.<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;pair&nbsp;of&nbsp;integers,&nbsp;whose&nbsp;ratio&nbsp;is&nbsp;exactly&nbsp;equal&nbsp;to&nbsp;the&nbsp;original&nbsp;int<br>
+and&nbsp;with&nbsp;a&nbsp;positive&nbsp;denominator.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;(10).<a href="#PromptStatus-as_integer_ratio">as_integer_ratio</a>()<br>
+(10,&nbsp;1)<br>
+&gt;&gt;&gt;&nbsp;(-10).<a href="#PromptStatus-as_integer_ratio">as_integer_ratio</a>()<br>
+(-10,&nbsp;1)<br>
+&gt;&gt;&gt;&nbsp;(0).<a href="#PromptStatus-as_integer_ratio">as_integer_ratio</a>()<br>
+(0,&nbsp;1)</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-bit_count"><strong>bit_count</strong></a>(self, /)</dt><dd><tt>Number&nbsp;of&nbsp;ones&nbsp;in&nbsp;the&nbsp;binary&nbsp;representation&nbsp;of&nbsp;the&nbsp;absolute&nbsp;value&nbsp;of&nbsp;self.<br>
+&nbsp;<br>
+Also&nbsp;known&nbsp;as&nbsp;the&nbsp;population&nbsp;count.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;bin(13)<br>
+'0b1101'<br>
+&gt;&gt;&gt;&nbsp;(13).<a href="#PromptStatus-bit_count">bit_count</a>()<br>
+3</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-bit_length"><strong>bit_length</strong></a>(self, /)</dt><dd><tt>Number&nbsp;of&nbsp;bits&nbsp;necessary&nbsp;to&nbsp;represent&nbsp;self&nbsp;in&nbsp;binary.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;bin(37)<br>
+'0b100101'<br>
+&gt;&gt;&gt;&nbsp;(37).<a href="#PromptStatus-bit_length">bit_length</a>()<br>
+6</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-conjugate"><strong>conjugate</strong></a>(...)</dt><dd><tt>Returns&nbsp;self,&nbsp;the&nbsp;complex&nbsp;conjugate&nbsp;of&nbsp;any&nbsp;int.</tt></dd></dl>
+
+<dl><dt><a name="PromptStatus-to_bytes"><strong>to_bytes</strong></a>(self, /, length, byteorder, *, signed=False)</dt><dd><tt>Return&nbsp;an&nbsp;array&nbsp;of&nbsp;bytes&nbsp;representing&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+length<br>
+&nbsp;&nbsp;Length&nbsp;of&nbsp;bytes&nbsp;object&nbsp;to&nbsp;use.&nbsp;&nbsp;An&nbsp;OverflowError&nbsp;is&nbsp;raised&nbsp;if&nbsp;the<br>
+&nbsp;&nbsp;integer&nbsp;is&nbsp;not&nbsp;representable&nbsp;with&nbsp;the&nbsp;given&nbsp;number&nbsp;of&nbsp;bytes.<br>
+byteorder<br>
+&nbsp;&nbsp;The&nbsp;byte&nbsp;order&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.&nbsp;&nbsp;If&nbsp;byteorder&nbsp;is&nbsp;'big',<br>
+&nbsp;&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;byte&nbsp;array.&nbsp;&nbsp;If<br>
+&nbsp;&nbsp;byteorder&nbsp;is&nbsp;'little',&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;byte&nbsp;array.&nbsp;&nbsp;To&nbsp;request&nbsp;the&nbsp;native&nbsp;byte&nbsp;order&nbsp;of&nbsp;the&nbsp;host&nbsp;system,&nbsp;use<br>
+&nbsp;&nbsp;`sys.byteorder'&nbsp;as&nbsp;the&nbsp;byte&nbsp;order&nbsp;value.<br>
+signed<br>
+&nbsp;&nbsp;Determines&nbsp;whether&nbsp;two's&nbsp;complement&nbsp;is&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.<br>
+&nbsp;&nbsp;If&nbsp;signed&nbsp;is&nbsp;False&nbsp;and&nbsp;a&nbsp;negative&nbsp;integer&nbsp;is&nbsp;given,&nbsp;an&nbsp;OverflowError<br>
+&nbsp;&nbsp;is&nbsp;raised.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="PromptStatus-from_bytes"><strong>from_bytes</strong></a>(bytes, byteorder, *, signed=False)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Return&nbsp;the&nbsp;integer&nbsp;represented&nbsp;by&nbsp;the&nbsp;given&nbsp;array&nbsp;of&nbsp;bytes.<br>
+&nbsp;<br>
+bytes<br>
+&nbsp;&nbsp;Holds&nbsp;the&nbsp;array&nbsp;of&nbsp;bytes&nbsp;to&nbsp;convert.&nbsp;&nbsp;The&nbsp;argument&nbsp;must&nbsp;either<br>
+&nbsp;&nbsp;support&nbsp;the&nbsp;buffer&nbsp;protocol&nbsp;or&nbsp;be&nbsp;an&nbsp;iterable&nbsp;object&nbsp;producing&nbsp;bytes.<br>
+&nbsp;&nbsp;Bytes&nbsp;and&nbsp;bytearray&nbsp;are&nbsp;examples&nbsp;of&nbsp;built-in&nbsp;objects&nbsp;that&nbsp;support&nbsp;the<br>
+&nbsp;&nbsp;buffer&nbsp;protocol.<br>
+byteorder<br>
+&nbsp;&nbsp;The&nbsp;byte&nbsp;order&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.&nbsp;&nbsp;If&nbsp;byteorder&nbsp;is&nbsp;'big',<br>
+&nbsp;&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;byte&nbsp;array.&nbsp;&nbsp;If<br>
+&nbsp;&nbsp;byteorder&nbsp;is&nbsp;'little',&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;byte&nbsp;array.&nbsp;&nbsp;To&nbsp;request&nbsp;the&nbsp;native&nbsp;byte&nbsp;order&nbsp;of&nbsp;the&nbsp;host&nbsp;system,&nbsp;use<br>
+&nbsp;&nbsp;`sys.byteorder'&nbsp;as&nbsp;the&nbsp;byte&nbsp;order&nbsp;value.<br>
+signed<br>
+&nbsp;&nbsp;Indicates&nbsp;whether&nbsp;two's&nbsp;complement&nbsp;is&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="PromptStatus-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><strong>denominator</strong></dt>
+<dd><tt>the&nbsp;denominator&nbsp;of&nbsp;a&nbsp;rational&nbsp;number&nbsp;in&nbsp;lowest&nbsp;terms</tt></dd>
+</dl>
+<dl><dt><strong>imag</strong></dt>
+<dd><tt>the&nbsp;imaginary&nbsp;part&nbsp;of&nbsp;a&nbsp;complex&nbsp;number</tt></dd>
+</dl>
+<dl><dt><strong>numerator</strong></dt>
+<dd><tt>the&nbsp;numerator&nbsp;of&nbsp;a&nbsp;rational&nbsp;number&nbsp;in&nbsp;lowest&nbsp;terms</tt></dd>
+</dl>
+<dl><dt><strong>real</strong></dt>
+<dd><tt>the&nbsp;real&nbsp;part&nbsp;of&nbsp;a&nbsp;complex&nbsp;number</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="UserInputControls">class <strong>UserInputControls</strong></a>(Boost.Python.enum)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="PyEd.html#UserInputControls">UserInputControls</a></dd>
+<dd>Boost.Python.enum</dd>
+<dd><a href="builtins.html#int">builtins.int</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>kAccept3dCoordinates</strong> = PyEd.UserInputControls.kAccept3dCoordinates</dl>
+
+<dl><dt><strong>kAcceptMouseUpAsPoint</strong> = PyEd.UserInputControls.kAcceptMouseUpAsPoint</dl>
+
+<dl><dt><strong>kAcceptOtherInputString</strong> = PyEd.UserInputControls.kAcceptOtherInputString</dl>
+
+<dl><dt><strong>kAnyBlankTerminatesInput</strong> = PyEd.UserInputControls.kAnyBlankTerminatesInput</dl>
+
+<dl><dt><strong>kDisableDirectDistanceInput</strong> = PyEd.UserInputControls.kDisableDirectDistanceInput</dl>
+
+<dl><dt><strong>kDontEchoCancelForCtrlC</strong> = PyEd.UserInputControls.kDontEchoCancelForCtrlC</dl>
+
+<dl><dt><strong>kDontUpdateLastPoint</strong> = PyEd.UserInputControls.kDontUpdateLastPoint</dl>
+
+<dl><dt><strong>kGovernedByOrthoMode</strong> = PyEd.UserInputControls.kGovernedByOrthoMode</dl>
+
+<dl><dt><strong>kGovernedByUCSDetect</strong> = PyEd.UserInputControls.kGovernedByUCSDetect</dl>
+
+<dl><dt><strong>kImpliedFaceForUCSChange</strong> = PyEd.UserInputControls.kImpliedFaceForUCSChange</dl>
+
+<dl><dt><strong>kInitialBlankTerminatesInput</strong> = PyEd.UserInputControls.kInitialBlankTerminatesInput</dl>
+
+<dl><dt><strong>kNoDwgLimitsChecking</strong> = PyEd.UserInputControls.kNoDwgLimitsChecking</dl>
+
+<dl><dt><strong>kNoNegativeResponseAccepted</strong> = PyEd.UserInputControls.kNoNegativeResponseAccepted</dl>
+
+<dl><dt><strong>kNoZDirectionOrtho</strong> = PyEd.UserInputControls.kNoZDirectionOrtho</dl>
+
+<dl><dt><strong>kNoZeroResponseAccepted</strong> = PyEd.UserInputControls.kNoZeroResponseAccepted</dl>
+
+<dl><dt><strong>kNullResponseAccepted</strong> = PyEd.UserInputControls.kNullResponseAccepted</dl>
+
+<dl><dt><strong>kUseBasePointElevation</strong> = PyEd.UserInputControls.kUseBasePointElevation</dl>
+
+<dl><dt><strong>names</strong> = {'kAccept3dCoordinates': PyEd.UserInputControls.kAccept3dCoordinates, 'kAcceptMouseUpAsPoint': PyEd.UserInputControls.kAcceptMouseUpAsPoint, 'kAcceptOtherInputString': PyEd.UserInputControls.kAcceptOtherInputString, 'kAnyBlankTerminatesInput': PyEd.UserInputControls.kAnyBlankTerminatesInput, 'kDisableDirectDistanceInput': PyEd.UserInputControls.kDisableDirectDistanceInput, 'kDontEchoCancelForCtrlC': PyEd.UserInputControls.kDontEchoCancelForCtrlC, 'kDontUpdateLastPoint': PyEd.UserInputControls.kDontUpdateLastPoint, 'kGovernedByOrthoMode': PyEd.UserInputControls.kGovernedByOrthoMode, 'kGovernedByUCSDetect': PyEd.UserInputControls.kGovernedByUCSDetect, 'kImpliedFaceForUCSChange': PyEd.UserInputControls.kImpliedFaceForUCSChange, ...}</dl>
+
+<dl><dt><strong>values</strong> = {1: PyEd.UserInputControls.kGovernedByOrthoMode, 2: PyEd.UserInputControls.kNullResponseAccepted, 4: PyEd.UserInputControls.kDontEchoCancelForCtrlC, 8: PyEd.UserInputControls.kDontUpdateLastPoint, 16: PyEd.UserInputControls.kNoDwgLimitsChecking, 32: PyEd.UserInputControls.kNoZeroResponseAccepted, 64: PyEd.UserInputControls.kNoNegativeResponseAccepted, 128: PyEd.UserInputControls.kAccept3dCoordinates, 256: PyEd.UserInputControls.kAcceptMouseUpAsPoint, 512: PyEd.UserInputControls.kAnyBlankTerminatesInput, ...}</dl>
+
+<hr>
+Methods inherited from Boost.Python.enum:<br>
+<dl><dt><a name="UserInputControls-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from Boost.Python.enum:<br>
+<dl><dt><strong>name</strong></dt>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="UserInputControls-__abs__"><strong>__abs__</strong></a>(self, /)</dt><dd><tt>abs(self)</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__add__"><strong>__add__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self+value.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__and__"><strong>__and__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&amp;value.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__bool__"><strong>__bool__</strong></a>(self, /)</dt><dd><tt>True&nbsp;if&nbsp;self&nbsp;else&nbsp;False</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__ceil__"><strong>__ceil__</strong></a>(...)</dt><dd><tt>Ceiling&nbsp;of&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__divmod__"><strong>__divmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;divmod(self,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__float__"><strong>__float__</strong></a>(self, /)</dt><dd><tt>float(self)</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__floor__"><strong>__floor__</strong></a>(...)</dt><dd><tt>Flooring&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__floordiv__"><strong>__floordiv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self//value.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__format__"><strong>__format__</strong></a>(self, format_spec, /)</dt><dd><tt>Default&nbsp;object&nbsp;formatter.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__getnewargs__"><strong>__getnewargs__</strong></a>(self, /)</dt></dl>
+
+<dl><dt><a name="UserInputControls-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;hash(self).</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__index__"><strong>__index__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;self&nbsp;converted&nbsp;to&nbsp;an&nbsp;integer,&nbsp;if&nbsp;self&nbsp;is&nbsp;suitable&nbsp;for&nbsp;use&nbsp;as&nbsp;an&nbsp;index&nbsp;into&nbsp;a&nbsp;list.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__int__"><strong>__int__</strong></a>(self, /)</dt><dd><tt>int(self)</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__invert__"><strong>__invert__</strong></a>(self, /)</dt><dd><tt>~self</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__lshift__"><strong>__lshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__mod__"><strong>__mod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self%value.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__mul__"><strong>__mul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self*value.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__neg__"><strong>__neg__</strong></a>(self, /)</dt><dd><tt>-self</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__or__"><strong>__or__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self|value.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__pos__"><strong>__pos__</strong></a>(self, /)</dt><dd><tt>+self</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__pow__"><strong>__pow__</strong></a>(self, value, mod=None, /)</dt><dd><tt>Return&nbsp;pow(self,&nbsp;value,&nbsp;mod).</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__radd__"><strong>__radd__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value+self.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__rand__"><strong>__rand__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&amp;self.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__rdivmod__"><strong>__rdivmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;divmod(value,&nbsp;self).</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__rfloordiv__"><strong>__rfloordiv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value//self.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__rlshift__"><strong>__rlshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&lt;&lt;self.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__rmod__"><strong>__rmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value%self.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__rmul__"><strong>__rmul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value*self.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__ror__"><strong>__ror__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value|self.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__round__"><strong>__round__</strong></a>(...)</dt><dd><tt>Rounding&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.<br>
+&nbsp;<br>
+Rounding&nbsp;with&nbsp;an&nbsp;ndigits&nbsp;argument&nbsp;also&nbsp;returns&nbsp;an&nbsp;integer.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__rpow__"><strong>__rpow__</strong></a>(self, value, mod=None, /)</dt><dd><tt>Return&nbsp;pow(value,&nbsp;self,&nbsp;mod).</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__rrshift__"><strong>__rrshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&gt;&gt;self.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__rshift__"><strong>__rshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__rsub__"><strong>__rsub__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value-self.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__rtruediv__"><strong>__rtruediv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value/self.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__rxor__"><strong>__rxor__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value^self.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__sizeof__"><strong>__sizeof__</strong></a>(self, /)</dt><dd><tt>Returns&nbsp;size&nbsp;in&nbsp;memory,&nbsp;in&nbsp;bytes.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__sub__"><strong>__sub__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self-value.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__truediv__"><strong>__truediv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self/value.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__trunc__"><strong>__trunc__</strong></a>(...)</dt><dd><tt>Truncating&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-__xor__"><strong>__xor__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self^value.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-as_integer_ratio"><strong>as_integer_ratio</strong></a>(self, /)</dt><dd><tt>Return&nbsp;integer&nbsp;ratio.<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;pair&nbsp;of&nbsp;integers,&nbsp;whose&nbsp;ratio&nbsp;is&nbsp;exactly&nbsp;equal&nbsp;to&nbsp;the&nbsp;original&nbsp;int<br>
+and&nbsp;with&nbsp;a&nbsp;positive&nbsp;denominator.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;(10).<a href="#UserInputControls-as_integer_ratio">as_integer_ratio</a>()<br>
+(10,&nbsp;1)<br>
+&gt;&gt;&gt;&nbsp;(-10).<a href="#UserInputControls-as_integer_ratio">as_integer_ratio</a>()<br>
+(-10,&nbsp;1)<br>
+&gt;&gt;&gt;&nbsp;(0).<a href="#UserInputControls-as_integer_ratio">as_integer_ratio</a>()<br>
+(0,&nbsp;1)</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-bit_count"><strong>bit_count</strong></a>(self, /)</dt><dd><tt>Number&nbsp;of&nbsp;ones&nbsp;in&nbsp;the&nbsp;binary&nbsp;representation&nbsp;of&nbsp;the&nbsp;absolute&nbsp;value&nbsp;of&nbsp;self.<br>
+&nbsp;<br>
+Also&nbsp;known&nbsp;as&nbsp;the&nbsp;population&nbsp;count.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;bin(13)<br>
+'0b1101'<br>
+&gt;&gt;&gt;&nbsp;(13).<a href="#UserInputControls-bit_count">bit_count</a>()<br>
+3</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-bit_length"><strong>bit_length</strong></a>(self, /)</dt><dd><tt>Number&nbsp;of&nbsp;bits&nbsp;necessary&nbsp;to&nbsp;represent&nbsp;self&nbsp;in&nbsp;binary.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;bin(37)<br>
+'0b100101'<br>
+&gt;&gt;&gt;&nbsp;(37).<a href="#UserInputControls-bit_length">bit_length</a>()<br>
+6</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-conjugate"><strong>conjugate</strong></a>(...)</dt><dd><tt>Returns&nbsp;self,&nbsp;the&nbsp;complex&nbsp;conjugate&nbsp;of&nbsp;any&nbsp;int.</tt></dd></dl>
+
+<dl><dt><a name="UserInputControls-to_bytes"><strong>to_bytes</strong></a>(self, /, length, byteorder, *, signed=False)</dt><dd><tt>Return&nbsp;an&nbsp;array&nbsp;of&nbsp;bytes&nbsp;representing&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+length<br>
+&nbsp;&nbsp;Length&nbsp;of&nbsp;bytes&nbsp;object&nbsp;to&nbsp;use.&nbsp;&nbsp;An&nbsp;OverflowError&nbsp;is&nbsp;raised&nbsp;if&nbsp;the<br>
+&nbsp;&nbsp;integer&nbsp;is&nbsp;not&nbsp;representable&nbsp;with&nbsp;the&nbsp;given&nbsp;number&nbsp;of&nbsp;bytes.<br>
+byteorder<br>
+&nbsp;&nbsp;The&nbsp;byte&nbsp;order&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.&nbsp;&nbsp;If&nbsp;byteorder&nbsp;is&nbsp;'big',<br>
+&nbsp;&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;byte&nbsp;array.&nbsp;&nbsp;If<br>
+&nbsp;&nbsp;byteorder&nbsp;is&nbsp;'little',&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;byte&nbsp;array.&nbsp;&nbsp;To&nbsp;request&nbsp;the&nbsp;native&nbsp;byte&nbsp;order&nbsp;of&nbsp;the&nbsp;host&nbsp;system,&nbsp;use<br>
+&nbsp;&nbsp;`sys.byteorder'&nbsp;as&nbsp;the&nbsp;byte&nbsp;order&nbsp;value.<br>
+signed<br>
+&nbsp;&nbsp;Determines&nbsp;whether&nbsp;two's&nbsp;complement&nbsp;is&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.<br>
+&nbsp;&nbsp;If&nbsp;signed&nbsp;is&nbsp;False&nbsp;and&nbsp;a&nbsp;negative&nbsp;integer&nbsp;is&nbsp;given,&nbsp;an&nbsp;OverflowError<br>
+&nbsp;&nbsp;is&nbsp;raised.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="UserInputControls-from_bytes"><strong>from_bytes</strong></a>(bytes, byteorder, *, signed=False)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Return&nbsp;the&nbsp;integer&nbsp;represented&nbsp;by&nbsp;the&nbsp;given&nbsp;array&nbsp;of&nbsp;bytes.<br>
+&nbsp;<br>
+bytes<br>
+&nbsp;&nbsp;Holds&nbsp;the&nbsp;array&nbsp;of&nbsp;bytes&nbsp;to&nbsp;convert.&nbsp;&nbsp;The&nbsp;argument&nbsp;must&nbsp;either<br>
+&nbsp;&nbsp;support&nbsp;the&nbsp;buffer&nbsp;protocol&nbsp;or&nbsp;be&nbsp;an&nbsp;iterable&nbsp;object&nbsp;producing&nbsp;bytes.<br>
+&nbsp;&nbsp;Bytes&nbsp;and&nbsp;bytearray&nbsp;are&nbsp;examples&nbsp;of&nbsp;built-in&nbsp;objects&nbsp;that&nbsp;support&nbsp;the<br>
+&nbsp;&nbsp;buffer&nbsp;protocol.<br>
+byteorder<br>
+&nbsp;&nbsp;The&nbsp;byte&nbsp;order&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.&nbsp;&nbsp;If&nbsp;byteorder&nbsp;is&nbsp;'big',<br>
+&nbsp;&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;byte&nbsp;array.&nbsp;&nbsp;If<br>
+&nbsp;&nbsp;byteorder&nbsp;is&nbsp;'little',&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;byte&nbsp;array.&nbsp;&nbsp;To&nbsp;request&nbsp;the&nbsp;native&nbsp;byte&nbsp;order&nbsp;of&nbsp;the&nbsp;host&nbsp;system,&nbsp;use<br>
+&nbsp;&nbsp;`sys.byteorder'&nbsp;as&nbsp;the&nbsp;byte&nbsp;order&nbsp;value.<br>
+signed<br>
+&nbsp;&nbsp;Indicates&nbsp;whether&nbsp;two's&nbsp;complement&nbsp;is&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="UserInputControls-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><strong>denominator</strong></dt>
+<dd><tt>the&nbsp;denominator&nbsp;of&nbsp;a&nbsp;rational&nbsp;number&nbsp;in&nbsp;lowest&nbsp;terms</tt></dd>
+</dl>
+<dl><dt><strong>imag</strong></dt>
+<dd><tt>the&nbsp;imaginary&nbsp;part&nbsp;of&nbsp;a&nbsp;complex&nbsp;number</tt></dd>
+</dl>
+<dl><dt><strong>numerator</strong></dt>
+<dd><tt>the&nbsp;numerator&nbsp;of&nbsp;a&nbsp;rational&nbsp;number&nbsp;in&nbsp;lowest&nbsp;terms</tt></dd>
+</dl>
+<dl><dt><strong>real</strong></dt>
+<dd><tt>the&nbsp;real&nbsp;part&nbsp;of&nbsp;a&nbsp;complex&nbsp;number</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>eCancel</strong> = PyEd.PromptStatus.eCancel<br>
+<strong>eDirect</strong> = PyEd.PromptStatus.eDirect<br>
+<strong>eError</strong> = PyEd.PromptStatus.eError<br>
+<strong>eFailed</strong> = PyEd.PromptStatus.eFailed<br>
+<strong>eKeyword</strong> = PyEd.PromptStatus.eKeyword<br>
+<strong>eModeless</strong> = PyEd.PromptStatus.eModeless<br>
+<strong>eNone</strong> = PyEd.PromptStatus.eNone<br>
+<strong>eNormal</strong> = PyEd.PromptStatus.eNormal<br>
+<strong>eOk</strong> = PyEd.PromptStatus.eOk<br>
+<strong>eRejected</strong> = PyEd.PromptStatus.eRejected<br>
+<strong>kAccept3dCoordinates</strong> = PyEd.UserInputControls.kAccept3dCoordinates<br>
+<strong>kAcceptMouseUpAsPoint</strong> = PyEd.UserInputControls.kAcceptMouseUpAsPoint<br>
+<strong>kAcceptOtherInputString</strong> = PyEd.UserInputControls.kAcceptOtherInputString<br>
+<strong>kAnyBlankTerminatesInput</strong> = PyEd.UserInputControls.kAnyBlankTerminatesInput<br>
+<strong>kCancel</strong> = PyEd.DragStatus.kCancel<br>
+<strong>kCrosshair</strong> = PyEd.CursorType.kCrosshair<br>
+<strong>kCrosshairDashed</strong> = PyEd.CursorType.kCrosshairDashed<br>
+<strong>kCrosshairNoRotate</strong> = PyEd.CursorType.kCrosshairNoRotate<br>
+<strong>kDeletedEffect</strong> = PyEd.DragStyleType.kDeletedEffect<br>
+<strong>kDisableDirectDistanceInput</strong> = PyEd.UserInputControls.kDisableDirectDistanceInput<br>
+<strong>kDontEchoCancelForCtrlC</strong> = PyEd.UserInputControls.kDontEchoCancelForCtrlC<br>
+<strong>kDontUpdateLastPoint</strong> = PyEd.UserInputControls.kDontUpdateLastPoint<br>
+<strong>kEntitySelect</strong> = PyEd.CursorType.kEntitySelect<br>
+<strong>kEntitySelectNoPersp</strong> = PyEd.CursorType.kEntitySelectNoPersp<br>
+<strong>kGovernedByOrthoMode</strong> = PyEd.UserInputControls.kGovernedByOrthoMode<br>
+<strong>kGovernedByUCSDetect</strong> = PyEd.UserInputControls.kGovernedByUCSDetect<br>
+<strong>kHide</strong> = PyEd.DragStyleType.kHide<br>
+<strong>kHighlight</strong> = PyEd.DragStyleType.kHighlight<br>
+<strong>kImpliedFaceForUCSChange</strong> = PyEd.UserInputControls.kImpliedFaceForUCSChange<br>
+<strong>kInitialBlankTerminatesInput</strong> = PyEd.UserInputControls.kInitialBlankTerminatesInput<br>
+<strong>kInvisible</strong> = PyEd.CursorType.kInvisible<br>
+<strong>kKW1</strong> = PyEd.DragStatus.kKW1<br>
+<strong>kKW2</strong> = PyEd.DragStatus.kKW2<br>
+<strong>kKW3</strong> = PyEd.DragStatus.kKW3<br>
+<strong>kKW4</strong> = PyEd.DragStatus.kKW4<br>
+<strong>kKW5</strong> = PyEd.DragStatus.kKW5<br>
+<strong>kKW6</strong> = PyEd.DragStatus.kKW6<br>
+<strong>kKW7</strong> = PyEd.DragStatus.kKW7<br>
+<strong>kKW8</strong> = PyEd.DragStatus.kKW8<br>
+<strong>kKW9</strong> = PyEd.DragStatus.kKW9<br>
+<strong>kModeless</strong> = PyEd.DragStatus.kModeless<br>
+<strong>kNoChange</strong> = PyEd.DragStatus.kNoChange<br>
+<strong>kNoDwgLimitsChecking</strong> = PyEd.UserInputControls.kNoDwgLimitsChecking<br>
+<strong>kNoNegativeResponseAccepted</strong> = PyEd.UserInputControls.kNoNegativeResponseAccepted<br>
+<strong>kNoSpecialCursor</strong> = PyEd.CursorType.kNoSpecialCursor<br>
+<strong>kNoZDirectionOrtho</strong> = PyEd.UserInputControls.kNoZDirectionOrtho<br>
+<strong>kNoZeroResponseAccepted</strong> = PyEd.UserInputControls.kNoZeroResponseAccepted<br>
+<strong>kNone</strong> = PyEd.DragStyleType.kNone<br>
+<strong>kNormal</strong> = PyEd.PromptStatus.kNormal<br>
+<strong>kNotRotated</strong> = PyEd.CursorType.kNotRotated<br>
+<strong>kNotSet</strong> = PyEd.DragStyleType.kNotSet<br>
+<strong>kNull</strong> = PyEd.DragStatus.kNull<br>
+<strong>kNullResponseAccepted</strong> = PyEd.UserInputControls.kNullResponseAccepted<br>
+<strong>kOther</strong> = PyEd.DragStatus.kOther<br>
+<strong>kParallelogram</strong> = PyEd.CursorType.kParallelogram<br>
+<strong>kPkfirstOrGrips</strong> = PyEd.CursorType.kPkfirstOrGrips<br>
+<strong>kRectCursor</strong> = PyEd.CursorType.kRectCursor<br>
+<strong>kRotatedCrosshair</strong> = PyEd.CursorType.kRotatedCrosshair<br>
+<strong>kRubberBand</strong> = PyEd.CursorType.kRubberBand<br>
+<strong>kTargetBox</strong> = PyEd.CursorType.kTargetBox<br>
+<strong>kTransparent25</strong> = PyEd.DragStyleType.kTransparent25<br>
+<strong>kTransparent75</strong> = PyEd.DragStyleType.kTransparent75<br>
+<strong>kUseBasePointElevation</strong> = PyEd.UserInputControls.kUseBasePointElevation</td></tr></table>
