@@ -47,6 +47,13 @@ isNull( (RxObject)arg1) -> bool :
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
 
 class Drawable:
     def __eq__ (self, *args, **kwargs):
@@ -95,6 +102,13 @@ isNull( (RxObject)arg1) -> bool :
 
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
 
 class DrawableOverrule:
@@ -188,6 +202,13 @@ isOverruling() -> bool :
 
     C++ signature :
         bool isOverruling()'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def removeOverrule (self, *args, **kwargs):
       '''
@@ -313,6 +334,13 @@ pushModelTransform( (Geometry)arg1, (Matrix3d)arg2) -> bool :
     C++ signature :
         bool pushModelTransform(class PyGiGeometry {lvalue},class AcGeMatrix3d)'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
 
 class ViewportDraw:
     def __eq__ (self, *args, **kwargs):
@@ -361,6 +389,13 @@ isNull( (RxObject)arg1) -> bool :
 
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def viewportGeometry (self, *args, **kwargs):
       '''
@@ -458,6 +493,13 @@ pushModelTransform( (Geometry)arg1, (Matrix3d)arg2) -> bool :
     C++ signature :
         bool pushModelTransform(class PyGiGeometry {lvalue},class AcGeMatrix3d)'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
 
 class WorldDraw:
     def __eq__ (self, *args, **kwargs):
@@ -506,6 +548,13 @@ isNull( (RxObject)arg1) -> bool :
 
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def worldGeometry (self, *args, **kwargs):
       '''
@@ -602,6 +651,13 @@ pushModelTransform( (Geometry)arg1, (Matrix3d)arg2) -> bool :
 
     C++ signature :
         bool pushModelTransform(class PyGiGeometry {lvalue},class AcGeMatrix3d)'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
 
 class __loader__:

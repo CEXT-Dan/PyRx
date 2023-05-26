@@ -251,6 +251,13 @@ isOverruling() -> bool :
     C++ signature :
         bool isOverruling()'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def removeOverrule (self, *args, **kwargs):
       '''
 removeOverrule( (RxClass)arg1, (Overrule)arg2) -> ErrorStatus :
@@ -328,6 +335,13 @@ name( (RxClass)arg1) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name(class PyRxClass {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
 
 class RxObject:
     def __eq__ (self, *args, **kwargs):
@@ -369,6 +383,13 @@ isNull( (RxObject)arg1) -> bool :
 
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
 
 class __loader__:

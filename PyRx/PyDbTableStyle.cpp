@@ -100,6 +100,8 @@ void makeAcDbTableStyleWrapper()
         .def("removeTemplate", &PyDbTableStyle::removeTemplate)
         .def("className", &PyDbTableStyle::className).staticmethod("className")
         .def("desc", &PyDbTableStyle::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbTableStyle::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbTableStyle::cast).staticmethod("cast")
         ;
 }
 
@@ -773,6 +775,21 @@ std::string PyDbTableStyle::className()
 PyRxClass PyDbTableStyle::desc()
 {
     return PyRxClass(AcDbTableStyle::desc(), false);
+}
+
+PyDbTableStyle PyDbTableStyle::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbTableStyle::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbTableStyle(static_cast<AcDbTableStyle*>(src.impObj()->clone()), true);
+}
+
+PyDbTableStyle PyDbTableStyle::cast(const PyRxObject& src)
+{
+    PyDbTableStyle dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbTableStyle* PyDbTableStyle::impObj(const std::source_location& src /*= std::source_location::current()*/) const

@@ -877,10 +877,10 @@ getString( (Editor)arg1, (int)arg2, (str)arg3) -> tuple :
     ...
     def getVar (self, *args, **kwargs):
       '''
-getVar( (Editor)arg1, (str)arg2) -> tuple :
+getVar( (Editor)arg1, (str)arg2) -> object :
 
     C++ signature :
-        class boost::python::tuple getVar(class PyAcEditor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        class boost::python::api::object getVar(class PyAcEditor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def initGet (self, *args, **kwargs):
       '''
@@ -944,10 +944,10 @@ setCurrentUCS( (Editor)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
     def setVar (self, *args, **kwargs):
       '''
-setVar( (Editor)arg1, (str)arg2, (tuple)arg3) -> bool :
+setVar( (Editor)arg1, (str)arg2, (object)arg3) -> bool :
 
     C++ signature :
-        bool setVar(class PyAcEditor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::tuple)'''
+        bool setVar(class PyAcEditor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::api::object)'''
     ...
 
 class EditorReactor:

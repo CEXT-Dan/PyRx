@@ -129,6 +129,7 @@ void makePyDbDimensionWrapper()
         .def("className", &PyDbDimension::className).staticmethod("className")
         .def("desc", &PyDbDimension::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbDimension::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbDimension::cast).staticmethod("cast")
         ;
 
 #ifndef BRXAPP
@@ -1038,11 +1039,19 @@ PyRxClass PyDbDimension::desc()
     return PyRxClass(AcDbDimension::desc(), false);
 }
 
-PyDbDimension PyDbDimension::cloneFrom(PyRxObject& src)
+PyDbDimension PyDbDimension::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbDimension::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbDimension(static_cast<AcDbDimension*>(src.impObj()->clone()), true);
+}
+
+PyDbDimension PyDbDimension::cast(const PyRxObject& src)
+{
+    PyDbDimension dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbDimension* PyDbDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -1076,6 +1085,8 @@ void makePyDb2LineAngularDimensionWrapper()
         .def("setExtArcOn", &PyDb2LineAngularDimension::setExtArcOn)
         .def("className", &PyDb2LineAngularDimension::className).staticmethod("className")
         .def("desc", &PyDb2LineAngularDimension::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDb2LineAngularDimension::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDb2LineAngularDimension::cast).staticmethod("cast")
         ;
 }
 
@@ -1194,6 +1205,21 @@ PyRxClass PyDb2LineAngularDimension::desc()
     return PyRxClass(AcDb2LineAngularDimension::desc(), false);
 }
 
+PyDb2LineAngularDimension PyDb2LineAngularDimension::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDb2LineAngularDimension::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDb2LineAngularDimension(static_cast<AcDb2LineAngularDimension*>(src.impObj()->clone()), true);
+}
+
+PyDb2LineAngularDimension PyDb2LineAngularDimension::cast(const PyRxObject& src)
+{
+    PyDb2LineAngularDimension dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 AcDb2LineAngularDimension* PyDb2LineAngularDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr)
@@ -1224,6 +1250,8 @@ void makeAcDb3PointAngularDimensionWrapper()
         .def("setExtArcOn", &PyDb3PointAngularDimension::setExtArcOn)
         .def("className", &PyDb3PointAngularDimension::className).staticmethod("className")
         .def("desc", &PyDb3PointAngularDimension::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDb3PointAngularDimension::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDb3PointAngularDimension::cast).staticmethod("cast")
         ;
 }
 
@@ -1329,6 +1357,21 @@ PyRxClass PyDb3PointAngularDimension::desc()
     return PyRxClass(AcDb3PointAngularDimension::desc(), false);
 }
 
+PyDb3PointAngularDimension PyDb3PointAngularDimension::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDb3PointAngularDimension::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDb3PointAngularDimension(static_cast<AcDb3PointAngularDimension*>(src.impObj()->clone()), true);
+}
+
+PyDb3PointAngularDimension PyDb3PointAngularDimension::cast(const PyRxObject& src)
+{
+    PyDb3PointAngularDimension dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 AcDb3PointAngularDimension* PyDb3PointAngularDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr)
@@ -1360,6 +1403,8 @@ void makeAlignedDimensionWrapper()
         .def("setJogSymbolPosition", &PyDbAlignedDimension::setJogSymbolPosition)
         .def("className", &PyDbAlignedDimension::className).staticmethod("className")
         .def("desc", &PyDbAlignedDimension::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbAlignedDimension::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbAlignedDimension::cast).staticmethod("cast")
         ;
 }
 
@@ -1483,6 +1528,22 @@ PyRxClass PyDbAlignedDimension::desc()
     return PyRxClass(AcDbAlignedDimension::desc(), false);
 }
 
+PyDbAlignedDimension PyDbAlignedDimension::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbAlignedDimension::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbAlignedDimension(static_cast<AcDbAlignedDimension*>(src.impObj()->clone()), true);
+
+}
+
+PyDbAlignedDimension PyDbAlignedDimension::cast(const PyRxObject& src)
+{
+    PyDbAlignedDimension dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 AcDbAlignedDimension* PyDbAlignedDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr)
@@ -1524,6 +1585,8 @@ void makeArcDimensionWrapper()
         .def("setArcSymbolType", &PyDbArcDimension::setArcSymbolType)
         .def("className", &PyDbArcDimension::className).staticmethod("className")
         .def("desc", &PyDbArcDimension::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbArcDimension::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbArcDimension::cast).staticmethod("cast")
         ;
 }
 
@@ -1689,6 +1752,21 @@ PyRxClass PyDbArcDimension::desc()
     return PyRxClass(AcDbArcDimension::desc(), false);
 }
 
+PyDbArcDimension PyDbArcDimension::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbArcDimension::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbArcDimension(static_cast<AcDbArcDimension*>(src.impObj()->clone()), true);
+}
+
+PyDbArcDimension PyDbArcDimension::cast(const PyRxObject& src)
+{
+    PyDbArcDimension dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 AcDbArcDimension* PyDbArcDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr)
@@ -1718,6 +1796,8 @@ void makeDiametricDimensionWrapper()
         .def("setExtArcEndAngle", &PyDbDiametricDimension::setExtArcEndAngle)
         .def("className", &PyDbDiametricDimension::className).staticmethod("className")
         .def("desc", &PyDbDiametricDimension::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbDiametricDimension::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbDiametricDimension::cast).staticmethod("cast")
         ;
 }
 
@@ -1831,6 +1911,21 @@ PyRxClass PyDbDiametricDimension::desc()
     return PyRxClass(AcDbDiametricDimension::desc(), false);
 }
 
+PyDbDiametricDimension PyDbDiametricDimension::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbDiametricDimension::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbDiametricDimension(static_cast<AcDbDiametricDimension*>(src.impObj()->clone()), true);
+}
+
+PyDbDiametricDimension PyDbDiametricDimension::cast(const PyRxObject& src)
+{
+    PyDbDiametricDimension dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 AcDbDiametricDimension* PyDbDiametricDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr)
@@ -1862,6 +1957,8 @@ void makeOrdinateDimensionWrapper()
         .def("setLeaderEndPoint", &PyDbOrdinateDimension::setLeaderEndPoint)
         .def("className", &PyDbOrdinateDimension::className).staticmethod("className")
         .def("desc", &PyDbOrdinateDimension::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbOrdinateDimension::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbOrdinateDimension::cast).staticmethod("cast")
         ;
 }
 
@@ -1977,6 +2074,21 @@ PyRxClass PyDbOrdinateDimension::desc()
     return PyRxClass(AcDbOrdinateDimension::desc(), false);
 }
 
+PyDbOrdinateDimension PyDbOrdinateDimension::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbOrdinateDimension::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbOrdinateDimension(static_cast<AcDbOrdinateDimension*>(src.impObj()->clone()), true);
+}
+
+PyDbOrdinateDimension PyDbOrdinateDimension::cast(const PyRxObject& src)
+{
+    PyDbOrdinateDimension dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 AcDbOrdinateDimension* PyDbOrdinateDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr)
@@ -2006,6 +2118,8 @@ void makeRadialDimensionWrapper()
         .def("setExtArcEndAngle", &PyDbRadialDimension::setExtArcEndAngle)
         .def("className", &PyDbRadialDimension::className).staticmethod("className")
         .def("desc", &PyDbRadialDimension::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbRadialDimension::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbRadialDimension::cast).staticmethod("cast")
         ;
 }
 
@@ -2103,6 +2217,21 @@ PyRxClass PyDbRadialDimension::desc()
     return PyRxClass(AcDbRadialDimension::desc(), false);
 }
 
+PyDbRadialDimension PyDbRadialDimension::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbRadialDimension::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbRadialDimension(static_cast<AcDbRadialDimension*>(src.impObj()->clone()), true);
+}
+
+PyDbRadialDimension PyDbRadialDimension::cast(const PyRxObject& src)
+{
+    PyDbRadialDimension dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 AcDbRadialDimension* PyDbRadialDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr)
@@ -2139,6 +2268,8 @@ void makeRadialDimensionLargeWrapper()
         .def("setExtArcEndAngle", &PyDbRadialDimensionLarge::setExtArcEndAngle)
         .def("className", &PyDbRadialDimensionLarge::className).staticmethod("className")
         .def("desc", &PyDbRadialDimensionLarge::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbRadialDimensionLarge::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbRadialDimensionLarge::cast).staticmethod("cast")
         ;
 }
 
@@ -2299,6 +2430,21 @@ PyRxClass PyDbRadialDimensionLarge::desc()
     return PyRxClass(AcDbRadialDimensionLarge::desc(), false);
 }
 
+PyDbRadialDimensionLarge PyDbRadialDimensionLarge::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbRadialDimensionLarge::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbRadialDimensionLarge(static_cast<AcDbRadialDimensionLarge*>(src.impObj()->clone()), true);
+}
+
+PyDbRadialDimensionLarge PyDbRadialDimensionLarge::cast(const PyRxObject& src)
+{
+    PyDbRadialDimensionLarge dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 AcDbRadialDimensionLarge* PyDbRadialDimensionLarge::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr)
@@ -2332,6 +2478,8 @@ void makeRotatedDimensionWrapper()
         .def("setJogSymbolPosition", &PyDbRotatedDimension::setJogSymbolPosition)
         .def("className", &PyDbRotatedDimension::className).staticmethod("className")
         .def("desc", &PyDbRotatedDimension::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbRotatedDimension::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbRotatedDimension::cast).staticmethod("cast")
         ;
 }
 
@@ -2463,6 +2611,21 @@ std::string PyDbRotatedDimension::className()
 PyRxClass PyDbRotatedDimension::desc()
 {
     return PyRxClass(AcDbRotatedDimension::desc(), false);
+}
+
+PyDbRotatedDimension PyDbRotatedDimension::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbRotatedDimension::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbRotatedDimension(static_cast<AcDbRotatedDimension*>(src.impObj()->clone()), true);
+}
+
+PyDbRotatedDimension PyDbRotatedDimension::cast(const PyRxObject& src)
+{
+    PyDbRotatedDimension dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbRotatedDimension* PyDbRotatedDimension::impObj(const std::source_location& src /*= std::source_location::current()*/) const

@@ -26,7 +26,8 @@
 <dt><font face="helvetica, arial"><a href="PyRx.html#RxObject">RxObject</a>
 </font></dt><dd>
 <dl>
-<dt><font face="helvetica, arial"><a href="PyRx.html#RxClass">RxClass</a>
+<dt><font face="helvetica, arial"><a href="PyRx.html#Overrule">Overrule</a>
+</font></dt><dt><font face="helvetica, arial"><a href="PyRx.html#RxClass">RxClass</a>
 </font></dt></dl>
 </dd>
 <dt><font face="helvetica, arial"><a href="PyRx.html#stderr">stderr</a>
@@ -283,6 +284,103 @@ Data descriptors inherited from <a href="builtins.html#int">builtins.int</a>:<br
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Overrule">class <strong>Overrule</strong></a>(<a href="PyRx.html#RxObject">RxObject</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="PyRx.html#Overrule">Overrule</a></dd>
+<dd><a href="PyRx.html#RxObject">RxObject</a></dd>
+<dd>Boost.Python.instance</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="Overrule-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>Raises&nbsp;an&nbsp;exception<br>
+This&nbsp;class&nbsp;cannot&nbsp;be&nbsp;instantiated&nbsp;from&nbsp;Python</tt></dd></dl>
+
+<dl><dt><a name="Overrule-__reduce__"><strong>__reduce__</strong></a> = <unnamed Boost.Python function>(...)</dt></dl>
+
+<dl><dt><a name="Overrule-addOverrule"><strong>addOverrule</strong></a>(...)</dt><dd><tt><a href="#Overrule-addOverrule">addOverrule</a>(&nbsp;(<a href="#RxClass">RxClass</a>)arg1,&nbsp;(<a href="#Overrule">Overrule</a>)arg2)&nbsp;-&gt;&nbsp;ErrorStatus&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;Acad::ErrorStatus&nbsp;<a href="#Overrule-addOverrule">addOverrule</a>(class&nbsp;PyRxClass&nbsp;{lvalue},class&nbsp;PyRxOverrule&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="Overrule-addOverruleLast"><strong>addOverruleLast</strong></a>(...)</dt><dd><tt><a href="#Overrule-addOverruleLast">addOverruleLast</a>(&nbsp;(<a href="#RxClass">RxClass</a>)arg1,&nbsp;(<a href="#Overrule">Overrule</a>)arg2,&nbsp;(bool)arg3)&nbsp;-&gt;&nbsp;ErrorStatus&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;Acad::ErrorStatus&nbsp;<a href="#Overrule-addOverruleLast">addOverruleLast</a>(class&nbsp;PyRxClass&nbsp;{lvalue},class&nbsp;PyRxOverrule&nbsp;{lvalue},bool)</tt></dd></dl>
+
+<dl><dt><a name="Overrule-className"><strong>className</strong></a>(...)</dt><dd><tt><a href="#Overrule-className">className</a>()&nbsp;-&gt;&nbsp;str&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;&nbsp;<a href="#Overrule-className">className</a>()</tt></dd></dl>
+
+<dl><dt><a name="Overrule-desc"><strong>desc</strong></a>(...)</dt><dd><tt><a href="#Overrule-desc">desc</a>()&nbsp;-&gt;&nbsp;<a href="#RxClass">RxClass</a>&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyRxClass&nbsp;<a href="#Overrule-desc">desc</a>()</tt></dd></dl>
+
+<dl><dt><a name="Overrule-hasOverrule"><strong>hasOverrule</strong></a>(...)</dt><dd><tt><a href="#Overrule-hasOverrule">hasOverrule</a>(&nbsp;(<a href="#RxObject">RxObject</a>)arg1,&nbsp;(<a href="#RxClass">RxClass</a>)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#Overrule-hasOverrule">hasOverrule</a>(class&nbsp;PyRxObject&nbsp;{lvalue},class&nbsp;PyRxClass&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="Overrule-isOverruling"><strong>isOverruling</strong></a>(...)</dt><dd><tt><a href="#Overrule-isOverruling">isOverruling</a>()&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#Overrule-isOverruling">isOverruling</a>()</tt></dd></dl>
+
+<dl><dt><a name="Overrule-removeOverrule"><strong>removeOverrule</strong></a>(...)</dt><dd><tt><a href="#Overrule-removeOverrule">removeOverrule</a>(&nbsp;(<a href="#RxClass">RxClass</a>)arg1,&nbsp;(<a href="#Overrule">Overrule</a>)arg2)&nbsp;-&gt;&nbsp;ErrorStatus&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;Acad::ErrorStatus&nbsp;<a href="#Overrule-removeOverrule">removeOverrule</a>(class&nbsp;PyRxClass&nbsp;{lvalue},class&nbsp;PyRxOverrule&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="Overrule-setIsOverruling"><strong>setIsOverruling</strong></a>(...)</dt><dd><tt><a href="#Overrule-setIsOverruling">setIsOverruling</a>(&nbsp;(bool)arg1)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#Overrule-setIsOverruling">setIsOverruling</a>(bool)</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="PyRx.html#RxObject">RxObject</a>:<br>
+<dl><dt><a name="Overrule-__eq__"><strong>__eq__</strong></a>(...)</dt><dd><tt><a href="#Overrule-__eq__">__eq__</a>(&nbsp;(<a href="#RxObject">RxObject</a>)arg1,&nbsp;(<a href="#RxObject">RxObject</a>)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#Overrule-__eq__">__eq__</a>(class&nbsp;PyRxObject&nbsp;{lvalue},class&nbsp;PyRxObject)</tt></dd></dl>
+
+<dl><dt><a name="Overrule-__ne__"><strong>__ne__</strong></a>(...)</dt><dd><tt><a href="#Overrule-__ne__">__ne__</a>(&nbsp;(<a href="#RxObject">RxObject</a>)arg1,&nbsp;(<a href="#RxObject">RxObject</a>)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#Overrule-__ne__">__ne__</a>(class&nbsp;PyRxObject&nbsp;{lvalue},class&nbsp;PyRxObject)</tt></dd></dl>
+
+<dl><dt><a name="Overrule-isA"><strong>isA</strong></a>(...)</dt><dd><tt><a href="#Overrule-isA">isA</a>(&nbsp;(<a href="#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;<a href="#RxClass">RxClass</a>&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyRxClass&nbsp;<a href="#Overrule-isA">isA</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="Overrule-isNull"><strong>isNull</strong></a>(...)</dt><dd><tt><a href="#Overrule-isNull">isNull</a>(&nbsp;(<a href="#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#Overrule-isNull">isNull</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="Overrule-refCount"><strong>refCount</strong></a>(...)</dt><dd><tt><a href="#Overrule-refCount">refCount</a>(&nbsp;(<a href="#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;int&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<a href="#Overrule-refCount">refCount</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
+<hr>
+Static methods inherited from Boost.Python.instance:<br>
+<dl><dt><a name="Overrule-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from Boost.Python.class</font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from Boost.Python.instance:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
 <font color="#000000" face="helvetica, arial"><a name="RxClass">class <strong>RxClass</strong></a>(<a href="PyRx.html#RxObject">RxObject</a>)</font></td></tr>
     
 <tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
@@ -341,6 +439,11 @@ Static methods inherited from <a href="PyRx.html#RxObject">RxObject</a>:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#RxClass-isNull">isNull</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
 
+<dl><dt><a name="RxClass-refCount"><strong>refCount</strong></a>(...)</dt><dd><tt><a href="#RxClass-refCount">refCount</a>(&nbsp;(<a href="#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;int&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<a href="#RxClass-refCount">refCount</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
 <hr>
 Static methods inherited from Boost.Python.instance:<br>
 <dl><dt><a name="RxClass-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from Boost.Python.class</font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
@@ -394,6 +497,11 @@ This&nbsp;class&nbsp;cannot&nbsp;be&nbsp;instantiated&nbsp;from&nbsp;Python</tt>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#RxObject-isNull">isNull</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="RxObject-refCount"><strong>refCount</strong></a>(...)</dt><dd><tt><a href="#RxObject-refCount">refCount</a>(&nbsp;(<a href="#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;int&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<a href="#RxObject-refCount">refCount</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
 
 <hr>
 Static methods inherited from Boost.Python.instance:<br>

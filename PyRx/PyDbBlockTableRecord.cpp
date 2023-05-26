@@ -46,6 +46,8 @@ void makeAcDbBlockTableRecordWrapper()
         .def("addAnnoScalestoBlkRefs", &PyDbBlockTableRecord::addAnnoScalestoBlkRefs)
         .def("className", &PyDbBlockTableRecord::className).staticmethod("className")
         .def("desc", &PyDbBlockTableRecord::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbBlockTableRecord::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbBlockTableRecord::cast).staticmethod("cast")
         ;
 }
 
@@ -316,6 +318,21 @@ std::string PyDbBlockTableRecord::className()
 PyRxClass PyDbBlockTableRecord::desc()
 {
     return PyRxClass(AcDbBlockTableRecord::desc(), false);
+}
+
+PyDbBlockTableRecord PyDbBlockTableRecord::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbBlockTableRecord::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbBlockTableRecord(static_cast<AcDbBlockTableRecord*>(src.impObj()->clone()), true);
+}
+
+PyDbBlockTableRecord PyDbBlockTableRecord::cast(const PyRxObject& src)
+{
+    PyDbBlockTableRecord dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbBlockTableRecord* PyDbBlockTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const

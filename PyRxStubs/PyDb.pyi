@@ -349,6 +349,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> AlignedDimension :
+
+    C++ signature :
+        class PyDbAlignedDimension cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -372,10 +379,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> Dimension :
+cloneFrom( (RxObject)arg1) -> AlignedDimension :
 
     C++ signature :
-        class PyDbDimension cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbAlignedDimension cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -1019,6 +1026,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -2093,6 +2107,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Arc :
+
+    C++ signature :
+        class PyDbArc cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -2119,7 +2140,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> Arc :
 
     C++ signature :
-        class PyDbArc cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbArc cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -2732,6 +2753,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
 releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -3294,6 +3322,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> ArcDimension :
+
+    C++ signature :
+        class PyDbArcDimension cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -3324,10 +3359,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> Dimension :
+cloneFrom( (RxObject)arg1) -> ArcDimension :
 
     C++ signature :
-        class PyDbDimension cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbArcDimension cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -3971,6 +4006,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -4949,6 +4991,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> AttributeDefinition :
+
+    C++ signature :
+        class PyDbAttributeDefinition cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -4968,7 +5017,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> AttributeDefinition :
 
     C++ signature :
-        class PyDbAttributeDefinition cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbAttributeDefinition cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -5546,6 +5595,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -6141,6 +6197,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> AttributeReference :
+
+    C++ signature :
+        class PyDbAttribute cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -6160,7 +6223,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> AttributeReference :
 
     C++ signature :
-        class PyDbAttribute cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbAttribute cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -6739,6 +6802,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
 releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -7288,6 +7358,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> BlockBegin :
+
+    C++ signature :
+        class PyDbBlockBegin cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -7304,10 +7381,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> Entity :
+cloneFrom( (RxObject)arg1) -> BlockBegin :
 
     C++ signature :
-        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbBlockBegin cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -7717,6 +7794,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -8080,6 +8164,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> BlockEnd :
+
+    C++ signature :
+        class PyDbBlockEnd cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -8096,10 +8187,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> Entity :
+cloneFrom( (RxObject)arg1) -> BlockEnd :
 
     C++ signature :
-        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbBlockEnd cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -8509,6 +8600,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -8915,6 +9013,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> BlockReference :
+
+    C++ signature :
+        class PyDbBlockReference cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -8934,7 +9039,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> BlockReference :
 
     C++ signature :
-        class PyDbBlockReference cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbBlockReference cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -9391,6 +9496,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -9951,6 +10063,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> BlockTable :
+
+    C++ signature :
+        class PyDbBlockTable cast(class PyRxObject)'''
+    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -9960,10 +10079,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> DbObject :
+cloneFrom( (RxObject)arg1) -> BlockTable :
 
     C++ signature :
-        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbBlockTable cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -10234,6 +10353,13 @@ recordIds( (BlockTable)arg1) -> list :
     C++ signature :
         class boost::python::list recordIds(class PyDbBlockTable {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
 releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -10414,6 +10540,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> BlockTableRecord :
+
+    C++ signature :
+        class PyDbBlockTableRecord cast(class PyRxObject)'''
+    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -10423,10 +10556,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> DbObject :
+cloneFrom( (RxObject)arg1) -> BlockTableRecord :
 
     C++ signature :
-        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbBlockTableRecord cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -10822,6 +10955,13 @@ postProcessAnnotativeBTR( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> int
 
     C++ signature :
         int postProcessAnnotativeBTR(class PyDbBlockTableRecord {lvalue},bool,bool)'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -12472,6 +12612,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Circle :
+
+    C++ signature :
+        class PyDbCircle cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -12505,7 +12652,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> Circle :
 
     C++ signature :
-        class PyDbCircle cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbCircle cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -13110,6 +13257,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -14077,6 +14231,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Curve :
+
+    C++ signature :
+        class PyDbCurve cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -14096,7 +14257,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> Curve :
 
     C++ signature :
-        class PyDbCurve cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbCurve cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -14680,6 +14841,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -16346,6 +16514,13 @@ reclaimMemoryFromErasedObjects( (Database)arg1, (list)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus reclaimMemoryFromErasedObjects(class PyDbDatabase {lvalue},class boost::python::list)'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def regAppTableId (self, *args, **kwargs):
       '''
@@ -18202,6 +18377,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> DbObject :
+
+    C++ signature :
+        class PyDbObject cast(class PyRxObject)'''
+    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -18214,7 +18396,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> DbObject :
 
     C++ signature :
-        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbObject cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -18458,6 +18640,13 @@ ownerId( (DbObject)arg1) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -18713,6 +18902,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> DiametricDimension :
+
+    C++ signature :
+        class PyDbDiametricDimension cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -18743,10 +18939,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> Dimension :
+cloneFrom( (RxObject)arg1) -> DiametricDimension :
 
     C++ signature :
-        class PyDbDimension cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbDiametricDimension cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -19390,6 +19586,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -20283,6 +20486,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Dictionary :
+
+    C++ signature :
+        class PyDbDictionary cast(class PyRxObject)'''
+    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -20292,10 +20502,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> DbObject :
+cloneFrom( (RxObject)arg1) -> Dictionary :
 
     C++ signature :
-        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbDictionary cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -20553,6 +20763,13 @@ ownerId( (DbObject)arg1) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -20852,6 +21069,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> DimStyleTable :
+
+    C++ signature :
+        class PyDbDimStyleTable cast(class PyRxObject)'''
+    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -20861,10 +21085,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> DbObject :
+cloneFrom( (RxObject)arg1) -> DimStyleTable :
 
     C++ signature :
-        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbDimStyleTable cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -21135,6 +21359,13 @@ recordIds( (DimStyleTable)arg1) -> list :
     C++ signature :
         class boost::python::list recordIds(class PyDbDimStyleTable {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
 releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -21290,6 +21521,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> SymbolTableRecord :
+
+    C++ signature :
+        class PyDbSymbolTableRecord cast(class PyRxObject)'''
+    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -21299,10 +21537,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> DbObject :
+cloneFrom( (RxObject)arg1) -> SymbolTableRecord :
 
     C++ signature :
-        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbSymbolTableRecord cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -21575,6 +21813,13 @@ ownerId( (DbObject)arg1) -> ObjectId :
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
 releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -21811,6 +22056,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Dimension :
+
+    C++ signature :
+        class PyDbDimension cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -21837,7 +22089,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> Dimension :
 
     C++ signature :
-        class PyDbDimension cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbDimension cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -22453,6 +22705,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -24500,6 +24759,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Entity :
+
+    C++ signature :
+        class PyDbEntity cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -24519,7 +24785,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> Entity :
 
     C++ signature :
-        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbEntity cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -24929,6 +25195,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -27419,6 +27692,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> ExtrudedSurface :
+
+    C++ signature :
+        class PyDbExtrudedSurface cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -27435,10 +27715,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> Entity :
+cloneFrom( (RxObject)arg1) -> ExtrudedSurface :
 
     C++ signature :
-        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbExtrudedSurface cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -27849,6 +28129,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
 releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -28241,6 +28528,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Face :
+
+    C++ signature :
+        class PyDbFace cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -28260,7 +28554,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> Face :
 
     C++ signature :
-        class PyDbFace cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbFace cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -28699,6 +28993,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
 releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -29088,6 +29389,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> FaceRecord :
+
+    C++ signature :
+        class PyDbFaceRecord cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -29107,7 +29415,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> FaceRecord :
 
     C++ signature :
-        class PyDbFaceRecord cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbFaceRecord cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -29546,6 +29854,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
 releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -29930,6 +30245,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Fcf :
+
+    C++ signature :
+        class PyDbFcf cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -29949,7 +30271,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> Fcf :
 
     C++ signature :
-        class PyDbFcf cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbFcf cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -30451,6 +30773,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
 releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -30929,6 +31258,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Field :
+
+    C++ signature :
+        class PyDbField cast(class PyRxObject)'''
+    ...
     def childCount (self, *args, **kwargs):
       '''
 childCount( (Field)arg1) -> int :
@@ -30948,7 +31284,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> Field :
 
     C++ signature :
-        class PyDbField cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbField cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -31265,6 +31601,13 @@ postInDatabase( (Field)arg1, (Database)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus postInDatabase(class PyDbField {lvalue},class PyDbDatabase {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -32714,6 +33057,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Hatch :
+
+    C++ signature :
+        class PyDbHatch cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -32733,7 +33083,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> Hatch :
 
     C++ signature :
-        class PyDbHatch cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbHatch cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -33421,6 +33771,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -34987,6 +35344,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> LayerTableRecord :
+
+    C++ signature :
+        class PyDbLayerTableRecord cast(class PyRxObject)'''
+    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -34996,10 +35360,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> DbObject :
+cloneFrom( (RxObject)arg1) -> LayerTableRecord :
 
     C++ signature :
-        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbLayerTableRecord cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -35421,6 +35785,13 @@ plotStyleNameId( (LayerTableRecord)arg1, (ObjectId)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId plotStyleNameId(class PyDbLayerTableRecord {lvalue},class PyDbObjectId)'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
 releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -35826,6 +36197,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Leader :
+
+    C++ signature :
+        class PyDbLeader cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -35845,7 +36223,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> Leader :
 
     C++ signature :
-        class PyDbLeader cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbLeader cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -36603,6 +36981,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
 releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -37146,6 +37531,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Line :
+
+    C++ signature :
+        class PyDbLine cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -37165,7 +37557,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> Line :
 
     C++ signature :
-        class PyDbLine cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbLine cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -37764,6 +38156,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
 releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -38284,6 +38683,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> LineAngularDimension2 :
+
+    C++ signature :
+        class PyDb2LineAngularDimension cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -38307,10 +38713,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> Dimension :
+cloneFrom( (RxObject)arg1) -> LineAngularDimension2 :
 
     C++ signature :
-        class PyDbDimension cloneFrom(class PyRxObject {lvalue})'''
+        class PyDb2LineAngularDimension cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -38933,6 +39339,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -40214,6 +40627,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> LoftedSurface :
+
+    C++ signature :
+        class PyDbLoftedSurface cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -40230,10 +40650,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> Entity :
+cloneFrom( (RxObject)arg1) -> LoftedSurface :
 
     C++ signature :
-        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbLoftedSurface cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -40644,6 +41064,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
 releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -41049,6 +41476,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> MInsertBlock :
+
+    C++ signature :
+        class PyDbMInsertBlock cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -41068,7 +41502,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> MInsertBlock :
 
     C++ signature :
-        class PyDbMInsertBlock cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbMInsertBlock cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -41539,6 +41973,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -42106,6 +42547,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> MLeader :
+
+    C++ signature :
+        class PyDbMLeader cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -42125,7 +42573,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> MLeader :
 
     C++ signature :
-        class PyDbMLeader cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbMLeader cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -42877,6 +43325,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -44965,6 +45420,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> DbObject :
+
+    C++ signature :
+        class PyDbObject cast(class PyRxObject)'''
+    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -44977,7 +45439,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> DbObject :
 
     C++ signature :
-        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbObject cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -45387,6 +45849,13 @@ postMLeaderStyleToDb( (MLeaderStyle)arg1, (Database)arg2, (str)arg3) -> ObjectId
 
     C++ signature :
         class PyDbObjectId postMLeaderStyleToDb(class PyDbMLeaderStyle {lvalue},class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -46526,6 +46995,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> MText :
+
+    C++ signature :
+        class PyDbMText cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -46545,7 +47021,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> MText :
 
     C++ signature :
-        class PyDbMText cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbMText cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -47123,6 +47599,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -48512,6 +48995,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Mline :
+
+    C++ signature :
+        class PyDbMline cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -48531,7 +49021,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> Mline :
 
     C++ signature :
-        class PyDbMline cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbMline cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -49012,6 +49502,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -49627,6 +50124,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> MlineStyle :
+
+    C++ signature :
+        class PyDbMlineStyle cast(class PyRxObject)'''
+    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -49636,10 +50140,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> DbObject :
+cloneFrom( (RxObject)arg1) -> MlineStyle :
 
     C++ signature :
-        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbMlineStyle cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -49961,6 +50465,13 @@ ownerId( (DbObject)arg1) -> ObjectId :
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
 releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -50275,6 +50786,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> NurbSurface :
+
+    C++ signature :
+        class PyDbNurbSurface cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -50291,10 +50809,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> Entity :
+cloneFrom( (RxObject)arg1) -> NurbSurface :
 
     C++ signature :
-        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbNurbSurface cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -50704,6 +51222,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -51418,6 +51943,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> OrdinateDimension :
+
+    C++ signature :
+        class PyDbOrdinateDimension cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -51441,10 +51973,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> Dimension :
+cloneFrom( (RxObject)arg1) -> OrdinateDimension :
 
     C++ signature :
-        class PyDbDimension cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbOrdinateDimension cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -52095,6 +52627,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -53298,6 +53837,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> PlaneSurface :
+
+    C++ signature :
+        class PyDbPlaneSurface cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -53314,10 +53860,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> Entity :
+cloneFrom( (RxObject)arg1) -> PlaneSurface :
 
     C++ signature :
-        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbPlaneSurface cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -53727,6 +54273,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -54245,6 +54798,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Point :
+
+    C++ signature :
+        class PyDbPoint cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -54264,7 +54824,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> Point :
 
     C++ signature :
-        class PyDbPoint cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbPoint cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -54695,6 +55255,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -55202,6 +55769,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Point3AngularDimension :
+
+    C++ signature :
+        class PyDb3PointAngularDimension cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -55232,10 +55806,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> Dimension :
+cloneFrom( (RxObject)arg1) -> Point3AngularDimension :
 
     C++ signature :
-        class PyDbDimension cloneFrom(class PyRxObject {lvalue})'''
+        class PyDb3PointAngularDimension cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -55858,6 +56432,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -57057,6 +57638,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> PolyFaceMeshVertex :
+
+    C++ signature :
+        class PyDbPolyFaceMeshVertex cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -57076,7 +57664,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> PolyFaceMeshVertex :
 
     C++ signature :
-        class PyDbPolyFaceMeshVertex cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbPolyFaceMeshVertex cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -57494,6 +58082,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
 releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -57878,6 +58473,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> PolygonMeshVertex :
+
+    C++ signature :
+        class PyDbPolygonMeshVertex cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -57897,7 +58499,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> PolygonMeshVertex :
 
     C++ signature :
-        class PyDbPolygonMeshVertex cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbPolygonMeshVertex cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -58315,6 +58917,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
 releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -58718,6 +59327,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Polyline :
+
+    C++ signature :
+        class PyDbPolyline cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -58737,7 +59353,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> Polyline :
 
     C++ signature :
-        class PyDbPolyline cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbPolyline cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -59481,6 +60097,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
 releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -59968,6 +60591,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Polyline2d :
+
+    C++ signature :
+        class PyDb2dPolyline cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -59987,7 +60617,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> Polyline2d :
 
     C++ signature :
-        class PyDb2dPolyline cloneFrom(class PyRxObject {lvalue})'''
+        class PyDb2dPolyline cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -60682,6 +61312,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
 releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -61188,6 +61825,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Polyline3d :
+
+    C++ signature :
+        class PyDb3dPolyline cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -61207,7 +61851,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> Polyline3d :
 
     C++ signature :
-        class PyDb3dPolyline cloneFrom(class PyRxObject {lvalue})'''
+        class PyDb3dPolyline cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -61853,6 +62497,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
 releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -62277,6 +62928,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Polyline3dVertex :
+
+    C++ signature :
+        class PyDb3dPolylineVertex cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -62296,7 +62954,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> Polyline3dVertex :
 
     C++ signature :
-        class PyDb3dPolylineVertex cloneFrom(class PyRxObject {lvalue})'''
+        class PyDb3dPolylineVertex cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -62713,6 +63371,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -63192,6 +63857,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> RadialDimension :
+
+    C++ signature :
+        class PyDbRadialDimension cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -63229,10 +63901,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> Dimension :
+cloneFrom( (RxObject)arg1) -> RadialDimension :
 
     C++ signature :
-        class PyDbDimension cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbRadialDimension cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -63869,6 +64541,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -64864,6 +65543,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> RadialDimensionLarge :
+
+    C++ signature :
+        class PyDbRadialDimensionLarge cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -64901,10 +65587,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> Dimension :
+cloneFrom( (RxObject)arg1) -> RadialDimensionLarge :
 
     C++ signature :
-        class PyDbDimension cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbRadialDimensionLarge cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -65555,6 +66241,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -66493,6 +67186,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Region :
+
+    C++ signature :
+        class PyDbRegion cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -66509,10 +67209,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> Entity :
+cloneFrom( (RxObject)arg1) -> Region :
 
     C++ signature :
-        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbRegion cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -66922,6 +67622,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -67295,6 +68002,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> RevolvedSurface :
+
+    C++ signature :
+        class PyDbRevolvedSurface cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -67311,10 +68025,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> Entity :
+cloneFrom( (RxObject)arg1) -> RevolvedSurface :
 
     C++ signature :
-        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbRevolvedSurface cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -67724,6 +68438,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -68189,6 +68910,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> RotatedDimension :
+
+    C++ signature :
+        class PyDbRotatedDimension cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -68212,10 +68940,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> Dimension :
+cloneFrom( (RxObject)arg1) -> RotatedDimension :
 
     C++ signature :
-        class PyDbDimension cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbRotatedDimension cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -68859,6 +69587,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -70216,6 +70951,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> SequenceEnd :
+
+    C++ signature :
+        class PyDbSequenceEnd cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -70232,10 +70974,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> Entity :
+cloneFrom( (RxObject)arg1) -> SequenceEnd :
 
     C++ signature :
-        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbSequenceEnd cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -70646,6 +71388,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
 releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -71018,6 +71767,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Solid3d :
+
+    C++ signature :
+        class PyDb3dSolid cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -71034,10 +71790,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> Entity :
+cloneFrom( (RxObject)arg1) -> Solid3d :
 
     C++ signature :
-        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
+        class PyDb3dSolid cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -71495,6 +72251,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
 releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -71867,6 +72630,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Surface :
+
+    C++ signature :
+        class PyDbSurface cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -71883,10 +72653,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> Entity :
+cloneFrom( (RxObject)arg1) -> Surface :
 
     C++ signature :
-        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbSurface cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -72296,6 +73066,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -72669,6 +73446,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> SweptSurface :
+
+    C++ signature :
+        class PyDbSweptSurface cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -72685,10 +73469,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> Entity :
+cloneFrom( (RxObject)arg1) -> SweptSurface :
 
     C++ signature :
-        class PyDbEntity cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbSweptSurface cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -73099,6 +73883,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
 releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -73454,6 +74245,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> SymbolTable :
+
+    C++ signature :
+        class PyDbSymbolTable cast(class PyRxObject)'''
+    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -73463,10 +74261,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> DbObject :
+cloneFrom( (RxObject)arg1) -> SymbolTable :
 
     C++ signature :
-        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbSymbolTable cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -73737,6 +74535,13 @@ recordIds( (SymbolTable)arg1) -> list :
     C++ signature :
         class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
 releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -73882,6 +74687,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> SymbolTableRecord :
+
+    C++ signature :
+        class PyDbSymbolTableRecord cast(class PyRxObject)'''
+    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -73891,10 +74703,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> DbObject :
+cloneFrom( (RxObject)arg1) -> SymbolTableRecord :
 
     C++ signature :
-        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbSymbolTableRecord cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -74166,6 +74978,13 @@ ownerId( (DbObject)arg1) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -74470,6 +75289,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Table :
+
+    C++ signature :
+        class PyDbTable cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -74545,7 +75371,7 @@ clearTableStyleOverrides( (Table)arg1) -> None :
 cloneFrom( (RxObject)arg1) -> Table :
 
     C++ signature :
-        class PyDbTable cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbTable cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -75562,6 +76388,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -77419,6 +78252,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> TableStyle :
+
+    C++ signature :
+        class PyDbTableStyle cast(class PyRxObject)'''
+    ...
     def cellClass (self, *args, **kwargs):
       '''
 cellClass( (TableStyle)arg1, (str)arg2) -> int :
@@ -77435,10 +78275,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> DbObject :
+cloneFrom( (RxObject)arg1) -> TableStyle :
 
     C++ signature :
-        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbTableStyle cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -77923,6 +78763,13 @@ postTableStyleToDb( (TableStyle)arg1, (Database)arg2, (str)arg3) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId postTableStyleToDb(class PyDbTableStyle {lvalue},class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -78411,6 +79258,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Text :
+
+    C++ signature :
+        class PyDbText cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -78430,7 +79284,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> Text :
 
     C++ signature :
-        class PyDbText cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbText cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -78938,6 +79792,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -79746,6 +80607,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> TextStyleTableRecord :
+
+    C++ signature :
+        class PyDbTextStyleTableRecord cast(class PyRxObject)'''
+    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -79755,10 +80623,10 @@ className() -> str :
     ...
     def cloneFrom (self, *args, **kwargs):
       '''
-cloneFrom( (RxObject)arg1) -> DbObject :
+cloneFrom( (RxObject)arg1) -> TextStyleTableRecord :
 
     C++ signature :
-        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbTextStyleTableRecord cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -80079,6 +80947,13 @@ priorSize( (TextStyleTableRecord)arg1) -> float :
 
     C++ signature :
         double priorSize(class PyDbTextStyleTableRecord {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -81059,6 +81934,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Vertex :
+
+    C++ signature :
+        class PyDbVertex cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -81078,7 +81960,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> Vertex :
 
     C++ signature :
-        class PyDbVertex cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbVertex cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -81489,6 +82371,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
 releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
@@ -81878,6 +82767,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> Vertex2d :
+
+    C++ signature :
+        class PyDb2dVertex cast(class PyRxObject)'''
+    ...
     def castShadows (self, *args, **kwargs):
       '''
 castShadows( (Entity)arg1) -> bool :
@@ -81897,7 +82793,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> Vertex2d :
 
     C++ signature :
-        class PyDb2dVertex cloneFrom(class PyRxObject {lvalue})'''
+        class PyDb2dVertex cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -82335,6 +83231,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''
@@ -83059,6 +83962,13 @@ cancel( (DbObject)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
     ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> DbObject :
+
+    C++ signature :
+        class PyDbObject cast(class PyRxObject)'''
+    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -83071,7 +83981,7 @@ className() -> str :
 cloneFrom( (RxObject)arg1) -> DbObject :
 
     C++ signature :
-        class PyDbObject cloneFrom(class PyRxObject {lvalue})'''
+        class PyDbObject cloneFrom(class PyRxObject)'''
     ...
     def close (self, *args, **kwargs):
       '''
@@ -83341,6 +84251,13 @@ rbChain( (Xrecord)arg1, (Database)arg2) -> list :
 
     C++ signature :
         class boost::python::list rbChain(class PyDbXrecord {lvalue},class PyDbDatabase {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self, *args, **kwargs):
       '''

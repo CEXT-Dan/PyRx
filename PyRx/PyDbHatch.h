@@ -82,7 +82,8 @@ public:
     void               removeHatchLines();
     static std::string className();
     static PyRxClass   desc();
-    static PyDbHatch   cloneFrom(PyRxObject& src);
+    static PyDbHatch   cloneFrom(const PyRxObject& src);
+    static PyDbHatch   cast(const PyRxObject& src);
 public:
     AcDbHatch* impObj(const std::source_location& src = std::source_location::current()) const;
 };

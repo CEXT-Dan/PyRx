@@ -81,6 +81,7 @@ void makePyDbHatchWrapper()
         .def("className", &PyDbHatch::className).staticmethod("className")
         .def("desc", &PyDbHatch::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbHatch::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbHatch::cast).staticmethod("cast")
         ;
 
     enum_<AcDbHatch::HatchObjectType>("HatchObjectType")
@@ -644,11 +645,19 @@ PyRxClass PyDbHatch::desc()
     return PyRxClass(AcDbHatch::desc(), false);
 }
 
-PyDbHatch PyDbHatch::cloneFrom(PyRxObject& src)
+PyDbHatch PyDbHatch::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbHatch::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbHatch(static_cast<AcDbHatch*>(src.impObj()->clone()), true);
+}
+
+PyDbHatch PyDbHatch::cast(const PyRxObject& src)
+{
+    PyDbHatch dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbHatch* PyDbHatch::impObj(const std::source_location& src /*= std::source_location::current()*/) const

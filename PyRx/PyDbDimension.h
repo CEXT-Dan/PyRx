@@ -133,7 +133,8 @@ public:
 #endif
     static std::string className();
     static PyRxClass desc();
-    static PyDbDimension cloneFrom(PyRxObject& src);
+    static PyDbDimension cloneFrom(const PyRxObject& src);
+    static PyDbDimension cast(const PyRxObject& src);
 public:
     AcDbDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -180,6 +181,8 @@ public:
     Acad::ErrorStatus   setExtArcOn(bool value);
     static std::string  className();
     static PyRxClass    desc();
+    static PyDb2LineAngularDimension cloneFrom(const PyRxObject& src);
+    static PyDb2LineAngularDimension cast(const PyRxObject& src);
 public:
     AcDb2LineAngularDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -220,6 +223,8 @@ public:
     Acad::ErrorStatus   setExtArcOn(bool value);
     static std::string  className();
     static PyRxClass    desc();
+    static PyDb3PointAngularDimension cloneFrom(const PyRxObject& src);
+    static PyDb3PointAngularDimension cast(const PyRxObject& src);
 public:
     AcDb3PointAngularDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -259,6 +264,8 @@ public:
     Acad::ErrorStatus   setJogSymbolPosition(const AcGePoint3d& pt);
     static std::string  className();
     static PyRxClass    desc();
+    static PyDbAlignedDimension cloneFrom(const PyRxObject& src);
+    static PyDbAlignedDimension cast(const PyRxObject& src);
 public:
     AcDbAlignedDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -311,6 +318,8 @@ public:
     Acad::ErrorStatus   setArcSymbolType(int symbol);
     static std::string  className();
     static PyRxClass    desc();
+    static PyDbArcDimension cloneFrom(const PyRxObject& src);
+    static PyDbArcDimension cast(const PyRxObject& src);
 public:
     AcDbArcDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -348,6 +357,8 @@ public:
     Acad::ErrorStatus   setExtArcEndAngle(double newAngle);
     static std::string  className();
     static PyRxClass    desc();
+    static PyDbDiametricDimension cloneFrom(const PyRxObject& src);
+    static PyDbDiametricDimension cast(const PyRxObject& src);
 public:
     AcDbDiametricDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -390,6 +401,8 @@ public:
     Acad::ErrorStatus   setLeaderEndPoint(const AcGePoint3d& val);
     static std::string  className();
     static PyRxClass    desc();
+    static PyDbOrdinateDimension cloneFrom(const PyRxObject& src);
+    static PyDbOrdinateDimension cast(const PyRxObject& src);
 public:
     AcDbOrdinateDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -430,6 +443,8 @@ public:
     Acad::ErrorStatus   setExtArcEndAngle(double newAngle);
     static std::string  className();
     static PyRxClass    desc();
+    static PyDbRadialDimension cloneFrom(const PyRxObject& src);
+    static PyDbRadialDimension cast(const PyRxObject& src);
 public:
     AcDbRadialDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -480,6 +495,8 @@ public:
     Acad::ErrorStatus   setExtArcEndAngle(double newAngle);
     static std::string  className();
     static PyRxClass    desc();
+    static PyDbRadialDimensionLarge cloneFrom(const PyRxObject& src);
+    static PyDbRadialDimensionLarge cast(const PyRxObject& src);
 public:
     AcDbRadialDimensionLarge* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -527,6 +544,8 @@ public:
     Acad::ErrorStatus   setJogSymbolPosition(const AcGePoint3d& val);
     static std::string  className();
     static PyRxClass    desc();
+    static PyDbRotatedDimension cloneFrom(const PyRxObject& src);
+    static PyDbRotatedDimension cast(const PyRxObject& src);
 public:
     AcDbRotatedDimension* impObj(const std::source_location& src = std::source_location::current()) const;
 };

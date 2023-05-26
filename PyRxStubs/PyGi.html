@@ -14,6 +14,12 @@
     
 <tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="PyRx.html#Overrule">PyRx.Overrule</a>(<a href="PyRx.html#RxObject">PyRx.RxObject</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="PyGi.html#DrawableOverrule">DrawableOverrule</a>
+</font></dt></dl>
+</dd>
 <dt><font face="helvetica, arial"><a href="PyRx.html#RxObject">PyRx.RxObject</a>(Boost.Python.instance)
 </font></dt><dd>
 <dl>
@@ -25,7 +31,14 @@
 </font></dt></dl>
 </dd>
 <dt><font face="helvetica, arial"><a href="PyGi.html#Drawable">Drawable</a>
+</font></dt><dt><font face="helvetica, arial"><a href="PyGi.html#Geometry">Geometry</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="PyGi.html#ViewportGeometry">ViewportGeometry</a>
+</font></dt><dt><font face="helvetica, arial"><a href="PyGi.html#WorldGeometry">WorldGeometry</a>
 </font></dt></dl>
+</dd>
+</dl>
 </dd>
 </dl>
  <p>
@@ -79,6 +92,11 @@ Static methods inherited from <a href="PyRx.html#RxObject">PyRx.RxObject</a>:<br
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#CommonDraw-isNull">isNull</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="CommonDraw-refCount"><strong>refCount</strong></a>(...)</dt><dd><tt><a href="#CommonDraw-refCount">refCount</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;int&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<a href="#CommonDraw-refCount">refCount</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
 
 <hr>
 Static methods inherited from Boost.Python.instance:<br>
@@ -142,9 +160,242 @@ Static methods inherited from <a href="PyRx.html#RxObject">PyRx.RxObject</a>:<br
 &nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#Drawable-isNull">isNull</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
 
+<dl><dt><a name="Drawable-refCount"><strong>refCount</strong></a>(...)</dt><dd><tt><a href="#Drawable-refCount">refCount</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;int&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<a href="#Drawable-refCount">refCount</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
 <hr>
 Static methods inherited from Boost.Python.instance:<br>
 <dl><dt><a name="Drawable-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from Boost.Python.class</font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from Boost.Python.instance:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="DrawableOverrule">class <strong>DrawableOverrule</strong></a>(<a href="PyRx.html#Overrule">PyRx.Overrule</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="PyGi.html#DrawableOverrule">DrawableOverrule</a></dd>
+<dd><a href="PyRx.html#Overrule">PyRx.Overrule</a></dd>
+<dd><a href="PyRx.html#RxObject">PyRx.RxObject</a></dd>
+<dd>Boost.Python.instance</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="DrawableOverrule-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt><a href="#DrawableOverrule-__init__">__init__</a>(&nbsp;(object)arg1)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawableOverrule-__init__">__init__</a>(struct&nbsp;_object&nbsp;*&nbsp;__ptr64)</tt></dd></dl>
+
+<dl><dt><a name="DrawableOverrule-__reduce__"><strong>__reduce__</strong></a> = <unnamed Boost.Python function>(...)</dt></dl>
+
+<dl><dt><a name="DrawableOverrule-baseWorldDraw"><strong>baseWorldDraw</strong></a>(...)</dt><dd><tt><a href="#DrawableOverrule-baseWorldDraw">baseWorldDraw</a>(&nbsp;(<a href="#DrawableOverrule">DrawableOverrule</a>)arg1,&nbsp;(<a href="#Drawable">Drawable</a>)arg2,&nbsp;(<a href="#WorldDraw">WorldDraw</a>)arg3)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#DrawableOverrule-baseWorldDraw">baseWorldDraw</a>(class&nbsp;PyGiDrawableOverrule&nbsp;{lvalue},class&nbsp;PyGiDrawable&nbsp;{lvalue},class&nbsp;PyGiWorldDraw&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableOverrule-className"><strong>className</strong></a>(...)</dt><dd><tt><a href="#DrawableOverrule-className">className</a>()&nbsp;-&gt;&nbsp;str&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;&nbsp;<a href="#DrawableOverrule-className">className</a>()</tt></dd></dl>
+
+<dl><dt><a name="DrawableOverrule-desc"><strong>desc</strong></a>(...)</dt><dd><tt><a href="#DrawableOverrule-desc">desc</a>()&nbsp;-&gt;&nbsp;RxClass&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyRxClass&nbsp;<a href="#DrawableOverrule-desc">desc</a>()</tt></dd></dl>
+
+<dl><dt><a name="DrawableOverrule-isApplicable"><strong>isApplicable</strong></a>(...)</dt><dd><tt><a href="#DrawableOverrule-isApplicable">isApplicable</a>(&nbsp;(<a href="#DrawableOverrule">DrawableOverrule</a>)arg1,&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#DrawableOverrule-isApplicable">isApplicable</a>(class&nbsp;PyGiDrawableOverrule&nbsp;{lvalue},class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableOverrule-viewportDraw"><strong>viewportDraw</strong></a>(...)</dt><dd><tt><a href="#DrawableOverrule-viewportDraw">viewportDraw</a>(&nbsp;(<a href="#DrawableOverrule">DrawableOverrule</a>)arg1,&nbsp;(<a href="#Drawable">Drawable</a>)arg2,&nbsp;(<a href="#ViewportDraw">ViewportDraw</a>)arg3)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawableOverrule-viewportDraw">viewportDraw</a>(class&nbsp;PyGiDrawableOverrule&nbsp;{lvalue},class&nbsp;PyGiDrawable&nbsp;{lvalue},class&nbsp;PyGiViewportDraw&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableOverrule-viewportDrawLogicalFlags"><strong>viewportDrawLogicalFlags</strong></a>(...)</dt><dd><tt><a href="#DrawableOverrule-viewportDrawLogicalFlags">viewportDrawLogicalFlags</a>(&nbsp;(<a href="#DrawableOverrule">DrawableOverrule</a>)arg1,&nbsp;(<a href="#Drawable">Drawable</a>)arg2,&nbsp;(<a href="#ViewportDraw">ViewportDraw</a>)arg3)&nbsp;-&gt;&nbsp;int&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;int&nbsp;<a href="#DrawableOverrule-viewportDrawLogicalFlags">viewportDrawLogicalFlags</a>(class&nbsp;PyGiDrawableOverrule&nbsp;{lvalue},class&nbsp;PyGiDrawable&nbsp;{lvalue},class&nbsp;PyGiViewportDraw&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableOverrule-worldDraw"><strong>worldDraw</strong></a>(...)</dt><dd><tt><a href="#DrawableOverrule-worldDraw">worldDraw</a>(&nbsp;(<a href="#DrawableOverrule">DrawableOverrule</a>)arg1,&nbsp;(<a href="#Drawable">Drawable</a>)arg2,&nbsp;(<a href="#WorldDraw">WorldDraw</a>)arg3)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#DrawableOverrule-worldDraw">worldDraw</a>(class&nbsp;PyGiDrawableOverrule&nbsp;{lvalue},class&nbsp;PyGiDrawable&nbsp;{lvalue},class&nbsp;PyGiWorldDraw&nbsp;{lvalue})</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__instance_size__</strong> = 72</dl>
+
+<hr>
+Static methods inherited from <a href="PyRx.html#Overrule">PyRx.Overrule</a>:<br>
+<dl><dt><a name="DrawableOverrule-addOverrule"><strong>addOverrule</strong></a>(...)</dt><dd><tt><a href="#DrawableOverrule-addOverrule">addOverrule</a>(&nbsp;(RxClass)arg1,&nbsp;(<a href="PyRx.html#Overrule">Overrule</a>)arg2)&nbsp;-&gt;&nbsp;ErrorStatus&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;Acad::ErrorStatus&nbsp;<a href="#DrawableOverrule-addOverrule">addOverrule</a>(class&nbsp;PyRxClass&nbsp;{lvalue},class&nbsp;PyRxOverrule&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableOverrule-addOverruleLast"><strong>addOverruleLast</strong></a>(...)</dt><dd><tt><a href="#DrawableOverrule-addOverruleLast">addOverruleLast</a>(&nbsp;(RxClass)arg1,&nbsp;(<a href="PyRx.html#Overrule">Overrule</a>)arg2,&nbsp;(bool)arg3)&nbsp;-&gt;&nbsp;ErrorStatus&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;Acad::ErrorStatus&nbsp;<a href="#DrawableOverrule-addOverruleLast">addOverruleLast</a>(class&nbsp;PyRxClass&nbsp;{lvalue},class&nbsp;PyRxOverrule&nbsp;{lvalue},bool)</tt></dd></dl>
+
+<dl><dt><a name="DrawableOverrule-hasOverrule"><strong>hasOverrule</strong></a>(...)</dt><dd><tt><a href="#DrawableOverrule-hasOverrule">hasOverrule</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1,&nbsp;(RxClass)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#DrawableOverrule-hasOverrule">hasOverrule</a>(class&nbsp;PyRxObject&nbsp;{lvalue},class&nbsp;PyRxClass&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableOverrule-isOverruling"><strong>isOverruling</strong></a>(...)</dt><dd><tt><a href="#DrawableOverrule-isOverruling">isOverruling</a>()&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#DrawableOverrule-isOverruling">isOverruling</a>()</tt></dd></dl>
+
+<dl><dt><a name="DrawableOverrule-removeOverrule"><strong>removeOverrule</strong></a>(...)</dt><dd><tt><a href="#DrawableOverrule-removeOverrule">removeOverrule</a>(&nbsp;(RxClass)arg1,&nbsp;(<a href="PyRx.html#Overrule">Overrule</a>)arg2)&nbsp;-&gt;&nbsp;ErrorStatus&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;Acad::ErrorStatus&nbsp;<a href="#DrawableOverrule-removeOverrule">removeOverrule</a>(class&nbsp;PyRxClass&nbsp;{lvalue},class&nbsp;PyRxOverrule&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableOverrule-setIsOverruling"><strong>setIsOverruling</strong></a>(...)</dt><dd><tt><a href="#DrawableOverrule-setIsOverruling">setIsOverruling</a>(&nbsp;(bool)arg1)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawableOverrule-setIsOverruling">setIsOverruling</a>(bool)</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="PyRx.html#RxObject">PyRx.RxObject</a>:<br>
+<dl><dt><a name="DrawableOverrule-__eq__"><strong>__eq__</strong></a>(...)</dt><dd><tt><a href="#DrawableOverrule-__eq__">__eq__</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1,&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#DrawableOverrule-__eq__">__eq__</a>(class&nbsp;PyRxObject&nbsp;{lvalue},class&nbsp;PyRxObject)</tt></dd></dl>
+
+<dl><dt><a name="DrawableOverrule-__ne__"><strong>__ne__</strong></a>(...)</dt><dd><tt><a href="#DrawableOverrule-__ne__">__ne__</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1,&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#DrawableOverrule-__ne__">__ne__</a>(class&nbsp;PyRxObject&nbsp;{lvalue},class&nbsp;PyRxObject)</tt></dd></dl>
+
+<dl><dt><a name="DrawableOverrule-isA"><strong>isA</strong></a>(...)</dt><dd><tt><a href="#DrawableOverrule-isA">isA</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;RxClass&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyRxClass&nbsp;<a href="#DrawableOverrule-isA">isA</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableOverrule-isNull"><strong>isNull</strong></a>(...)</dt><dd><tt><a href="#DrawableOverrule-isNull">isNull</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#DrawableOverrule-isNull">isNull</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableOverrule-refCount"><strong>refCount</strong></a>(...)</dt><dd><tt><a href="#DrawableOverrule-refCount">refCount</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;int&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<a href="#DrawableOverrule-refCount">refCount</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
+<hr>
+Static methods inherited from Boost.Python.instance:<br>
+<dl><dt><a name="DrawableOverrule-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from Boost.Python.class</font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from Boost.Python.instance:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Geometry">class <strong>Geometry</strong></a>(<a href="PyRx.html#RxObject">PyRx.RxObject</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="PyGi.html#Geometry">Geometry</a></dd>
+<dd><a href="PyRx.html#RxObject">PyRx.RxObject</a></dd>
+<dd>Boost.Python.instance</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="Geometry-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>Raises&nbsp;an&nbsp;exception<br>
+This&nbsp;class&nbsp;cannot&nbsp;be&nbsp;instantiated&nbsp;from&nbsp;Python</tt></dd></dl>
+
+<dl><dt><a name="Geometry-__reduce__"><strong>__reduce__</strong></a> = <unnamed Boost.Python function>(...)</dt></dl>
+
+<dl><dt><a name="Geometry-className"><strong>className</strong></a>(...)</dt><dd><tt><a href="#Geometry-className">className</a>()&nbsp;-&gt;&nbsp;str&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;&nbsp;<a href="#Geometry-className">className</a>()</tt></dd></dl>
+
+<dl><dt><a name="Geometry-desc"><strong>desc</strong></a>(...)</dt><dd><tt><a href="#Geometry-desc">desc</a>()&nbsp;-&gt;&nbsp;RxClass&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyRxClass&nbsp;<a href="#Geometry-desc">desc</a>()</tt></dd></dl>
+
+<dl><dt><a name="Geometry-draw"><strong>draw</strong></a>(...)</dt><dd><tt><a href="#Geometry-draw">draw</a>(&nbsp;(<a href="#Geometry">Geometry</a>)arg1,&nbsp;(<a href="#Drawable">Drawable</a>)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#Geometry-draw">draw</a>(class&nbsp;PyGiGeometry&nbsp;{lvalue},class&nbsp;PyGiDrawable&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="Geometry-getModelToWorldTransform"><strong>getModelToWorldTransform</strong></a>(...)</dt><dd><tt><a href="#Geometry-getModelToWorldTransform">getModelToWorldTransform</a>(&nbsp;(<a href="#Geometry">Geometry</a>)arg1)&nbsp;-&gt;&nbsp;Matrix3d&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;AcGeMatrix3d&nbsp;<a href="#Geometry-getModelToWorldTransform">getModelToWorldTransform</a>(class&nbsp;PyGiGeometry&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="Geometry-getWorldToModelTransform"><strong>getWorldToModelTransform</strong></a>(...)</dt><dd><tt><a href="#Geometry-getWorldToModelTransform">getWorldToModelTransform</a>(&nbsp;(<a href="#Geometry">Geometry</a>)arg1)&nbsp;-&gt;&nbsp;Matrix3d&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;AcGeMatrix3d&nbsp;<a href="#Geometry-getWorldToModelTransform">getWorldToModelTransform</a>(class&nbsp;PyGiGeometry&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="Geometry-popModelTransform"><strong>popModelTransform</strong></a>(...)</dt><dd><tt><a href="#Geometry-popModelTransform">popModelTransform</a>(&nbsp;(<a href="#Geometry">Geometry</a>)arg1)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#Geometry-popModelTransform">popModelTransform</a>(class&nbsp;PyGiGeometry&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="Geometry-pushModelTransform"><strong>pushModelTransform</strong></a>(...)</dt><dd><tt><a href="#Geometry-pushModelTransform">pushModelTransform</a>(&nbsp;(<a href="#Geometry">Geometry</a>)arg1,&nbsp;(Vector3d)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#Geometry-pushModelTransform">pushModelTransform</a>(class&nbsp;PyGiGeometry&nbsp;{lvalue},class&nbsp;AcGeVector3d)<br>
+&nbsp;<br>
+<a href="#Geometry-pushModelTransform">pushModelTransform</a>(&nbsp;(<a href="#Geometry">Geometry</a>)arg1,&nbsp;(Matrix3d)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#Geometry-pushModelTransform">pushModelTransform</a>(class&nbsp;PyGiGeometry&nbsp;{lvalue},class&nbsp;AcGeMatrix3d)</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="PyRx.html#RxObject">PyRx.RxObject</a>:<br>
+<dl><dt><a name="Geometry-__eq__"><strong>__eq__</strong></a>(...)</dt><dd><tt><a href="#Geometry-__eq__">__eq__</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1,&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#Geometry-__eq__">__eq__</a>(class&nbsp;PyRxObject&nbsp;{lvalue},class&nbsp;PyRxObject)</tt></dd></dl>
+
+<dl><dt><a name="Geometry-__ne__"><strong>__ne__</strong></a>(...)</dt><dd><tt><a href="#Geometry-__ne__">__ne__</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1,&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#Geometry-__ne__">__ne__</a>(class&nbsp;PyRxObject&nbsp;{lvalue},class&nbsp;PyRxObject)</tt></dd></dl>
+
+<dl><dt><a name="Geometry-isA"><strong>isA</strong></a>(...)</dt><dd><tt><a href="#Geometry-isA">isA</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;RxClass&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyRxClass&nbsp;<a href="#Geometry-isA">isA</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="Geometry-isNull"><strong>isNull</strong></a>(...)</dt><dd><tt><a href="#Geometry-isNull">isNull</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#Geometry-isNull">isNull</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="Geometry-refCount"><strong>refCount</strong></a>(...)</dt><dd><tt><a href="#Geometry-refCount">refCount</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;int&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<a href="#Geometry-refCount">refCount</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
+<hr>
+Static methods inherited from Boost.Python.instance:<br>
+<dl><dt><a name="Geometry-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from Boost.Python.class</font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
 
 <hr>
 Data descriptors inherited from Boost.Python.instance:<br>
@@ -183,10 +434,10 @@ This&nbsp;class&nbsp;cannot&nbsp;be&nbsp;instantiated&nbsp;from&nbsp;Python</tt>
 &nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyRxClass&nbsp;<a href="#ViewportDraw-desc">desc</a>()</tt></dd></dl>
 
-<dl><dt><a name="ViewportDraw-draw"><strong>draw</strong></a>(...)</dt><dd><tt><a href="#ViewportDraw-draw">draw</a>(&nbsp;(<a href="#ViewportDraw">ViewportDraw</a>)arg1,&nbsp;(<a href="#Drawable">Drawable</a>)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+<dl><dt><a name="ViewportDraw-viewportGeometry"><strong>viewportGeometry</strong></a>(...)</dt><dd><tt><a href="#ViewportDraw-viewportGeometry">viewportGeometry</a>(&nbsp;(<a href="#ViewportDraw">ViewportDraw</a>)arg1)&nbsp;-&gt;&nbsp;<a href="#ViewportGeometry">ViewportGeometry</a>&nbsp;:<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#ViewportDraw-draw">draw</a>(class&nbsp;PyGiViewportDraw&nbsp;{lvalue},class&nbsp;PyGiDrawable&nbsp;{lvalue})</tt></dd></dl>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyGiViewportGeometry&nbsp;<a href="#ViewportDraw-viewportGeometry">viewportGeometry</a>(class&nbsp;PyGiViewportDraw&nbsp;{lvalue})</tt></dd></dl>
 
 <hr>
 Static methods inherited from <a href="PyRx.html#RxObject">PyRx.RxObject</a>:<br>
@@ -210,9 +461,114 @@ Static methods inherited from <a href="PyRx.html#RxObject">PyRx.RxObject</a>:<br
 &nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#ViewportDraw-isNull">isNull</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
 
+<dl><dt><a name="ViewportDraw-refCount"><strong>refCount</strong></a>(...)</dt><dd><tt><a href="#ViewportDraw-refCount">refCount</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;int&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<a href="#ViewportDraw-refCount">refCount</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
 <hr>
 Static methods inherited from Boost.Python.instance:<br>
 <dl><dt><a name="ViewportDraw-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from Boost.Python.class</font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from Boost.Python.instance:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ViewportGeometry">class <strong>ViewportGeometry</strong></a>(<a href="PyGi.html#Geometry">Geometry</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="PyGi.html#ViewportGeometry">ViewportGeometry</a></dd>
+<dd><a href="PyGi.html#Geometry">Geometry</a></dd>
+<dd><a href="PyRx.html#RxObject">PyRx.RxObject</a></dd>
+<dd>Boost.Python.instance</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="ViewportGeometry-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>Raises&nbsp;an&nbsp;exception<br>
+This&nbsp;class&nbsp;cannot&nbsp;be&nbsp;instantiated&nbsp;from&nbsp;Python</tt></dd></dl>
+
+<dl><dt><a name="ViewportGeometry-__reduce__"><strong>__reduce__</strong></a> = <unnamed Boost.Python function>(...)</dt></dl>
+
+<dl><dt><a name="ViewportGeometry-className"><strong>className</strong></a>(...)</dt><dd><tt><a href="#ViewportGeometry-className">className</a>()&nbsp;-&gt;&nbsp;str&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;&nbsp;<a href="#ViewportGeometry-className">className</a>()</tt></dd></dl>
+
+<dl><dt><a name="ViewportGeometry-desc"><strong>desc</strong></a>(...)</dt><dd><tt><a href="#ViewportGeometry-desc">desc</a>()&nbsp;-&gt;&nbsp;RxClass&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyRxClass&nbsp;<a href="#ViewportGeometry-desc">desc</a>()</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="PyGi.html#Geometry">Geometry</a>:<br>
+<dl><dt><a name="ViewportGeometry-draw"><strong>draw</strong></a>(...)</dt><dd><tt><a href="#ViewportGeometry-draw">draw</a>(&nbsp;(<a href="#Geometry">Geometry</a>)arg1,&nbsp;(<a href="#Drawable">Drawable</a>)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#ViewportGeometry-draw">draw</a>(class&nbsp;PyGiGeometry&nbsp;{lvalue},class&nbsp;PyGiDrawable&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="ViewportGeometry-getModelToWorldTransform"><strong>getModelToWorldTransform</strong></a>(...)</dt><dd><tt><a href="#ViewportGeometry-getModelToWorldTransform">getModelToWorldTransform</a>(&nbsp;(<a href="#Geometry">Geometry</a>)arg1)&nbsp;-&gt;&nbsp;Matrix3d&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;AcGeMatrix3d&nbsp;<a href="#ViewportGeometry-getModelToWorldTransform">getModelToWorldTransform</a>(class&nbsp;PyGiGeometry&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="ViewportGeometry-getWorldToModelTransform"><strong>getWorldToModelTransform</strong></a>(...)</dt><dd><tt><a href="#ViewportGeometry-getWorldToModelTransform">getWorldToModelTransform</a>(&nbsp;(<a href="#Geometry">Geometry</a>)arg1)&nbsp;-&gt;&nbsp;Matrix3d&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;AcGeMatrix3d&nbsp;<a href="#ViewportGeometry-getWorldToModelTransform">getWorldToModelTransform</a>(class&nbsp;PyGiGeometry&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="ViewportGeometry-popModelTransform"><strong>popModelTransform</strong></a>(...)</dt><dd><tt><a href="#ViewportGeometry-popModelTransform">popModelTransform</a>(&nbsp;(<a href="#Geometry">Geometry</a>)arg1)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#ViewportGeometry-popModelTransform">popModelTransform</a>(class&nbsp;PyGiGeometry&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="ViewportGeometry-pushModelTransform"><strong>pushModelTransform</strong></a>(...)</dt><dd><tt><a href="#ViewportGeometry-pushModelTransform">pushModelTransform</a>(&nbsp;(<a href="#Geometry">Geometry</a>)arg1,&nbsp;(Vector3d)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#ViewportGeometry-pushModelTransform">pushModelTransform</a>(class&nbsp;PyGiGeometry&nbsp;{lvalue},class&nbsp;AcGeVector3d)<br>
+&nbsp;<br>
+<a href="#ViewportGeometry-pushModelTransform">pushModelTransform</a>(&nbsp;(<a href="#Geometry">Geometry</a>)arg1,&nbsp;(Matrix3d)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#ViewportGeometry-pushModelTransform">pushModelTransform</a>(class&nbsp;PyGiGeometry&nbsp;{lvalue},class&nbsp;AcGeMatrix3d)</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="PyRx.html#RxObject">PyRx.RxObject</a>:<br>
+<dl><dt><a name="ViewportGeometry-__eq__"><strong>__eq__</strong></a>(...)</dt><dd><tt><a href="#ViewportGeometry-__eq__">__eq__</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1,&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#ViewportGeometry-__eq__">__eq__</a>(class&nbsp;PyRxObject&nbsp;{lvalue},class&nbsp;PyRxObject)</tt></dd></dl>
+
+<dl><dt><a name="ViewportGeometry-__ne__"><strong>__ne__</strong></a>(...)</dt><dd><tt><a href="#ViewportGeometry-__ne__">__ne__</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1,&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#ViewportGeometry-__ne__">__ne__</a>(class&nbsp;PyRxObject&nbsp;{lvalue},class&nbsp;PyRxObject)</tt></dd></dl>
+
+<dl><dt><a name="ViewportGeometry-isA"><strong>isA</strong></a>(...)</dt><dd><tt><a href="#ViewportGeometry-isA">isA</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;RxClass&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyRxClass&nbsp;<a href="#ViewportGeometry-isA">isA</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="ViewportGeometry-isNull"><strong>isNull</strong></a>(...)</dt><dd><tt><a href="#ViewportGeometry-isNull">isNull</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#ViewportGeometry-isNull">isNull</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="ViewportGeometry-refCount"><strong>refCount</strong></a>(...)</dt><dd><tt><a href="#ViewportGeometry-refCount">refCount</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;int&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<a href="#ViewportGeometry-refCount">refCount</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
+<hr>
+Static methods inherited from Boost.Python.instance:<br>
+<dl><dt><a name="ViewportGeometry-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from Boost.Python.class</font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
 
 <hr>
 Data descriptors inherited from Boost.Python.instance:<br>
@@ -251,10 +607,10 @@ This&nbsp;class&nbsp;cannot&nbsp;be&nbsp;instantiated&nbsp;from&nbsp;Python</tt>
 &nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyRxClass&nbsp;<a href="#WorldDraw-desc">desc</a>()</tt></dd></dl>
 
-<dl><dt><a name="WorldDraw-draw"><strong>draw</strong></a>(...)</dt><dd><tt><a href="#WorldDraw-draw">draw</a>(&nbsp;(<a href="#WorldDraw">WorldDraw</a>)arg1,&nbsp;(<a href="#Drawable">Drawable</a>)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+<dl><dt><a name="WorldDraw-worldGeometry"><strong>worldGeometry</strong></a>(...)</dt><dd><tt><a href="#WorldDraw-worldGeometry">worldGeometry</a>(&nbsp;(<a href="#WorldDraw">WorldDraw</a>)arg1)&nbsp;-&gt;&nbsp;<a href="#WorldGeometry">WorldGeometry</a>&nbsp;:<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#WorldDraw-draw">draw</a>(class&nbsp;PyGiWorldDraw&nbsp;{lvalue},class&nbsp;PyGiDrawable&nbsp;{lvalue})</tt></dd></dl>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyGiWorldGeometry&nbsp;<a href="#WorldDraw-worldGeometry">worldGeometry</a>(class&nbsp;PyGiWorldDraw&nbsp;{lvalue})</tt></dd></dl>
 
 <hr>
 Static methods inherited from <a href="PyRx.html#RxObject">PyRx.RxObject</a>:<br>
@@ -278,9 +634,114 @@ Static methods inherited from <a href="PyRx.html#RxObject">PyRx.RxObject</a>:<br
 &nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#WorldDraw-isNull">isNull</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
 
+<dl><dt><a name="WorldDraw-refCount"><strong>refCount</strong></a>(...)</dt><dd><tt><a href="#WorldDraw-refCount">refCount</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;int&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<a href="#WorldDraw-refCount">refCount</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
 <hr>
 Static methods inherited from Boost.Python.instance:<br>
 <dl><dt><a name="WorldDraw-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from Boost.Python.class</font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from Boost.Python.instance:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="WorldGeometry">class <strong>WorldGeometry</strong></a>(<a href="PyGi.html#Geometry">Geometry</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="PyGi.html#WorldGeometry">WorldGeometry</a></dd>
+<dd><a href="PyGi.html#Geometry">Geometry</a></dd>
+<dd><a href="PyRx.html#RxObject">PyRx.RxObject</a></dd>
+<dd>Boost.Python.instance</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="WorldGeometry-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>Raises&nbsp;an&nbsp;exception<br>
+This&nbsp;class&nbsp;cannot&nbsp;be&nbsp;instantiated&nbsp;from&nbsp;Python</tt></dd></dl>
+
+<dl><dt><a name="WorldGeometry-__reduce__"><strong>__reduce__</strong></a> = <unnamed Boost.Python function>(...)</dt></dl>
+
+<dl><dt><a name="WorldGeometry-className"><strong>className</strong></a>(...)</dt><dd><tt><a href="#WorldGeometry-className">className</a>()&nbsp;-&gt;&nbsp;str&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;&nbsp;<a href="#WorldGeometry-className">className</a>()</tt></dd></dl>
+
+<dl><dt><a name="WorldGeometry-desc"><strong>desc</strong></a>(...)</dt><dd><tt><a href="#WorldGeometry-desc">desc</a>()&nbsp;-&gt;&nbsp;RxClass&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyRxClass&nbsp;<a href="#WorldGeometry-desc">desc</a>()</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="PyGi.html#Geometry">Geometry</a>:<br>
+<dl><dt><a name="WorldGeometry-draw"><strong>draw</strong></a>(...)</dt><dd><tt><a href="#WorldGeometry-draw">draw</a>(&nbsp;(<a href="#Geometry">Geometry</a>)arg1,&nbsp;(<a href="#Drawable">Drawable</a>)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#WorldGeometry-draw">draw</a>(class&nbsp;PyGiGeometry&nbsp;{lvalue},class&nbsp;PyGiDrawable&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="WorldGeometry-getModelToWorldTransform"><strong>getModelToWorldTransform</strong></a>(...)</dt><dd><tt><a href="#WorldGeometry-getModelToWorldTransform">getModelToWorldTransform</a>(&nbsp;(<a href="#Geometry">Geometry</a>)arg1)&nbsp;-&gt;&nbsp;Matrix3d&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;AcGeMatrix3d&nbsp;<a href="#WorldGeometry-getModelToWorldTransform">getModelToWorldTransform</a>(class&nbsp;PyGiGeometry&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="WorldGeometry-getWorldToModelTransform"><strong>getWorldToModelTransform</strong></a>(...)</dt><dd><tt><a href="#WorldGeometry-getWorldToModelTransform">getWorldToModelTransform</a>(&nbsp;(<a href="#Geometry">Geometry</a>)arg1)&nbsp;-&gt;&nbsp;Matrix3d&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;AcGeMatrix3d&nbsp;<a href="#WorldGeometry-getWorldToModelTransform">getWorldToModelTransform</a>(class&nbsp;PyGiGeometry&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="WorldGeometry-popModelTransform"><strong>popModelTransform</strong></a>(...)</dt><dd><tt><a href="#WorldGeometry-popModelTransform">popModelTransform</a>(&nbsp;(<a href="#Geometry">Geometry</a>)arg1)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#WorldGeometry-popModelTransform">popModelTransform</a>(class&nbsp;PyGiGeometry&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="WorldGeometry-pushModelTransform"><strong>pushModelTransform</strong></a>(...)</dt><dd><tt><a href="#WorldGeometry-pushModelTransform">pushModelTransform</a>(&nbsp;(<a href="#Geometry">Geometry</a>)arg1,&nbsp;(Vector3d)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#WorldGeometry-pushModelTransform">pushModelTransform</a>(class&nbsp;PyGiGeometry&nbsp;{lvalue},class&nbsp;AcGeVector3d)<br>
+&nbsp;<br>
+<a href="#WorldGeometry-pushModelTransform">pushModelTransform</a>(&nbsp;(<a href="#Geometry">Geometry</a>)arg1,&nbsp;(Matrix3d)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#WorldGeometry-pushModelTransform">pushModelTransform</a>(class&nbsp;PyGiGeometry&nbsp;{lvalue},class&nbsp;AcGeMatrix3d)</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="PyRx.html#RxObject">PyRx.RxObject</a>:<br>
+<dl><dt><a name="WorldGeometry-__eq__"><strong>__eq__</strong></a>(...)</dt><dd><tt><a href="#WorldGeometry-__eq__">__eq__</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1,&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#WorldGeometry-__eq__">__eq__</a>(class&nbsp;PyRxObject&nbsp;{lvalue},class&nbsp;PyRxObject)</tt></dd></dl>
+
+<dl><dt><a name="WorldGeometry-__ne__"><strong>__ne__</strong></a>(...)</dt><dd><tt><a href="#WorldGeometry-__ne__">__ne__</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1,&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#WorldGeometry-__ne__">__ne__</a>(class&nbsp;PyRxObject&nbsp;{lvalue},class&nbsp;PyRxObject)</tt></dd></dl>
+
+<dl><dt><a name="WorldGeometry-isA"><strong>isA</strong></a>(...)</dt><dd><tt><a href="#WorldGeometry-isA">isA</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;RxClass&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyRxClass&nbsp;<a href="#WorldGeometry-isA">isA</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="WorldGeometry-isNull"><strong>isNull</strong></a>(...)</dt><dd><tt><a href="#WorldGeometry-isNull">isNull</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#WorldGeometry-isNull">isNull</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="WorldGeometry-refCount"><strong>refCount</strong></a>(...)</dt><dd><tt><a href="#WorldGeometry-refCount">refCount</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;int&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<a href="#WorldGeometry-refCount">refCount</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
+<hr>
+Static methods inherited from Boost.Python.instance:<br>
+<dl><dt><a name="WorldGeometry-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from Boost.Python.class</font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
 
 <hr>
 Data descriptors inherited from Boost.Python.instance:<br>

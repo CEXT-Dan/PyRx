@@ -63,6 +63,8 @@ public:
     static bool       isReconciledS(const PyDbObjectId& id);
     static std::string className();
     static PyRxClass  desc();
+    static PyDbLayerTableRecord	cloneFrom(const PyRxObject& src);
+    static PyDbLayerTableRecord cast(const PyRxObject& src);
 public:
     AcDbLayerTableRecord* impObj(const std::source_location& src = std::source_location::current()) const;
 };

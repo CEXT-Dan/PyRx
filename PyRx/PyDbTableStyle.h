@@ -99,8 +99,11 @@ public:
     PyDbObjectId        getTemplate(void) const;
     Acad::ErrorStatus   setTemplate(const PyDbObjectId& templateId, AcDb::MergeCellStyleOption nOption);
     PyDbObjectId        removeTemplate(void);
+public:
     static std::string  className();
     static PyRxClass    desc();
+    static PyDbTableStyle cloneFrom(const PyRxObject& src);
+    static PyDbTableStyle cast(const PyRxObject& src);
 public:
     AcDbTableStyle* impObj(const std::source_location& src = std::source_location::current()) const;
 };

@@ -738,6 +738,13 @@ pushAcadResourceHandle( (DocManager)arg1) -> None :
     C++ signature :
         void pushAcadResourceHandle(class PyApDocManager {lvalue})'''
     ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
     def sendModelessInterrupt (self, *args, **kwargs):
       '''
 sendModelessInterrupt( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
@@ -1054,6 +1061,13 @@ pushDbmod( (Document)arg1) -> None :
 
     C++ signature :
         void pushDbmod(class PyApDocument {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
     ...
     def setDocTitle (self, *args, **kwargs):
       '''

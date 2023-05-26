@@ -63,6 +63,8 @@ void makeAcDbLayerTableRecordWrapper()
         .def("isReconciled", &PyDbLayerTableRecord::isReconciledS).staticmethod("isReconciled")//TODO: can't override with a static test
         .def("className", &PyDbLayerTableRecord::className).staticmethod("className")
         .def("desc", &PyDbLayerTableRecord::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbLayerTableRecord::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbLayerTableRecord::cast).staticmethod("cast")
         ;
 }
 
@@ -365,6 +367,22 @@ std::string PyDbLayerTableRecord::className()
 PyRxClass PyDbLayerTableRecord::desc()
 {
     return PyRxClass(AcDbLayerTableRecord::desc(), false);
+}
+
+PyDbLayerTableRecord PyDbLayerTableRecord::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbLayerTableRecord::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbLayerTableRecord(static_cast<AcDbLayerTableRecord*>(src.impObj()->clone()), true);
+
+}
+
+PyDbLayerTableRecord PyDbLayerTableRecord::cast(const PyRxObject& src)
+{
+    PyDbLayerTableRecord dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbLayerTableRecord* PyDbLayerTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const

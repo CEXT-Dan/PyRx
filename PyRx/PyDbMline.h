@@ -44,7 +44,8 @@ public:
 public:
     static std::string  className();
     static PyRxClass    desc();
-    static PyDbMline	cloneFrom(PyRxObject& src);
+    static PyDbMline	cloneFrom(const PyRxObject& src);
+    static PyDbMline    cast(const PyRxObject& src);
 public:
     AcDbMline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -99,6 +100,8 @@ public:
 public:
     static std::string  className();
     static PyRxClass    desc();
+    static PyDbMlineStyle cloneFrom(const PyRxObject& src);
+    static PyDbMlineStyle cast(const PyRxObject& src);
 public:
     AcDbMlineStyle* impObj(const std::source_location& src = std::source_location::current()) const;
 };

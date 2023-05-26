@@ -240,9 +240,11 @@ public:
     double              breakSpacing(void) const;
     Acad::ErrorStatus   setBreakSpacing(double fSpacing);
     AcCellRange         cellRange() const;
+    public:
     static std::string  className();
     static PyRxClass    desc();
-    static PyDbTable    cloneFrom(PyRxObject& src);
+    static PyDbTable    cloneFrom(const PyRxObject& src);
+    static PyDbTable    cast(const PyRxObject& src);
 public:
     AcDbTable* impObj(const std::source_location& src = std::source_location::current()) const;
 };

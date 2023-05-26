@@ -28,8 +28,11 @@ public:
 	Acad::ErrorStatus   setBigFontFileName(const std::string& path);
 	Acad::ErrorStatus   setFont(const std::string& pTypeface, bool bold, bool italic, int charset, int pitch, int family, bool bAllowMissingFont);
 	boost::python::tuple font();
+public:
 	static std::string  className();
 	static PyRxClass    desc();
+    static PyDbTextStyleTableRecord cloneFrom(const PyRxObject& src);
+    static PyDbTextStyleTableRecord cast(const PyRxObject& src);
 public:
 	AcDbTextStyleTableRecord* impObj(const std::source_location& src = std::source_location::current()) const;
 };

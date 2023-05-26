@@ -24,8 +24,11 @@ public:
     void				setXlateReferences(bool translate);
     AcDb::DuplicateRecordCloning mergeStyle() const;
     void				setMergeStyle(AcDb::DuplicateRecordCloning style);
+public:
     static std::string	className();
     static PyRxClass	desc();
+    static PyDbXrecord  cloneFrom(const PyRxObject& src);
+    static PyDbXrecord  cast(const PyRxObject& src);
 public:
     AcDbXrecord* impObj(const std::source_location& src = std::source_location::current()) const;
 };

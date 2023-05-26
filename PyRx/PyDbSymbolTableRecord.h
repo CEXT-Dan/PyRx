@@ -12,14 +12,16 @@ public:
     PyDbSymbolTableRecord(AcDbSymbolTableRecord* ptr, bool autoDelete);
     PyDbSymbolTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbSymbolTableRecord() override = default;
-    std::string getName();
-    Acad::ErrorStatus setName(const std::string name);
-    bool isDependent() const;
-    bool isResolved() const;
-    bool isRenamable() const;
-    static std::string className();
-    static PyRxClass desc();
-
+    std::string         getName();
+    Acad::ErrorStatus   setName(const std::string name);
+    bool                isDependent() const;
+    bool                isResolved() const;
+    bool                isRenamable() const;
+public:
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyDbSymbolTableRecord cloneFrom(const PyRxObject& src);
+    static PyDbSymbolTableRecord cast(const PyRxObject& src);
 public:
     AcDbSymbolTableRecord* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -33,9 +35,11 @@ public:
     PyDbDimStyleTableRecord();
     PyDbDimStyleTableRecord(AcDbDimStyleTableRecord* ptr, bool autoDelete);
     PyDbDimStyleTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode);
-
+public:
     static std::string className();
     static PyRxClass desc();
+    static PyDbSymbolTableRecord cloneFrom(const PyRxObject& src);
+    static PyDbSymbolTableRecord cast(const PyRxObject& src);
 public:
     AcDbDimStyleTableRecord* impObj(const std::source_location& src = std::source_location::current()) const;
 };

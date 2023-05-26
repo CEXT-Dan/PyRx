@@ -64,7 +64,8 @@ public:
     PyDbObjectId        getFieldDictionary(void) const;
     static PyRxClass    desc();
     static std::string  className();
-    static PyDbObject   cloneFrom(PyRxObject& src);
+    static PyDbObject   cloneFrom(const PyRxObject& src);
+    static PyDbObject   cast(const PyRxObject& src);
 public:
     AcDbObject* impObj(const std::source_location& src = std::source_location::current()) const;
 };
