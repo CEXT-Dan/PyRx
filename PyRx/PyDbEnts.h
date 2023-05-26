@@ -60,7 +60,8 @@ public:
     Acad::ErrorStatus   setJustification(AcDbText::AcTextAlignment val);
     static std::string  className();
     static PyRxClass    desc();
-    static PyDbText		cloneFrom(PyRxObject& src);
+    static PyDbText		cloneFrom(const PyRxObject& src);
+    static PyDbText     cast(const PyRxObject& src);
 public:
     AcDbText* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -100,7 +101,8 @@ public:
     Acad::ErrorStatus   updateMTextAttributeDefinition();
     static std::string  className();
     static PyRxClass    desc();
-    static PyDbAttributeDefinition	cloneFrom(PyRxObject& src);
+    static PyDbAttributeDefinition	cloneFrom(const PyRxObject& src);
+    static PyDbAttributeDefinition  cast(const PyRxObject& src);
 public:
     AcDbAttributeDefinition* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -137,7 +139,8 @@ public:
     bool                isReallyLocked() const;
     static std::string  className();
     static PyRxClass    desc();
-    static PyDbAttribute cloneFrom(PyRxObject& src);
+    static PyDbAttribute cloneFrom(const PyRxObject& src);
+    static PyDbAttribute cast(const PyRxObject& src);
 public:
     AcDbAttribute* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -175,7 +178,8 @@ public:
     Acad::ErrorStatus   explodeToOwnerSpace() const;
     static std::string  className();
     static PyRxClass    desc();
-    static PyDbBlockReference cloneFrom(PyRxObject& src);
+    static PyDbBlockReference cloneFrom(const PyRxObject& src);
+    static PyDbBlockReference cast(const PyRxObject& src);
 public:
     AcDbBlockReference* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -201,7 +205,8 @@ public:
     Acad::ErrorStatus  setRowSpacing(double val);
     static std::string className();
     static PyRxClass   desc();
-    static PyDbMInsertBlock cloneFrom(PyRxObject& src);
+    static PyDbMInsertBlock cloneFrom(const PyRxObject& src);
+    static PyDbMInsertBlock cast(const PyRxObject& src);
 public:
     AcDbMInsertBlock* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -217,7 +222,8 @@ public:
     virtual ~PyDbVertex() = default;
     static std::string  className();
     static PyRxClass    desc();
-    static PyDbVertex cloneFrom(PyRxObject& src);
+    static PyDbVertex cloneFrom(const PyRxObject& src);
+    static PyDbVertex cast(const PyRxObject& src);
 public:
     AcDbVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -253,7 +259,8 @@ public:
     int                 vertexIdentifier() const;
     static std::string  className();
     static PyRxClass    desc();
-    static PyDb2dVertex cloneFrom(PyRxObject& src);
+    static PyDb2dVertex cloneFrom(const PyRxObject& src);
+    static PyDb2dVertex cast(const PyRxObject& src);
 public:
     AcDb2dVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -274,7 +281,8 @@ public:
     Acad::ErrorStatus   setPosition(const AcGePoint3d&);
     static std::string  className();
     static PyRxClass    desc();
-    static PyDb3dPolylineVertex cloneFrom(PyRxObject& src);
+    static PyDb3dPolylineVertex cloneFrom(const PyRxObject& src);
+    static PyDb3dPolylineVertex cast(const PyRxObject& src);
 public:
     AcDb3dPolylineVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -295,7 +303,8 @@ public:
     Acad::ErrorStatus   setPosition(const AcGePoint3d&);
     static std::string  className();
     static PyRxClass    desc();
-    static PyDbPolygonMeshVertex cloneFrom(PyRxObject& src);
+    static PyDbPolygonMeshVertex cloneFrom(const PyRxObject& src);
+    static PyDbPolygonMeshVertex cast(const PyRxObject& src);
 public:
     AcDbPolygonMeshVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -315,7 +324,8 @@ public:
     Acad::ErrorStatus   setPosition(const AcGePoint3d&);
     static std::string  className();
     static PyRxClass    desc();
-    static PyDbPolyFaceMeshVertex cloneFrom(PyRxObject& src);
+    static PyDbPolyFaceMeshVertex cloneFrom(const PyRxObject& src);
+    static PyDbPolyFaceMeshVertex cast(const PyRxObject& src);
 public:
     AcDbPolyFaceMeshVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -338,7 +348,8 @@ public:
     Acad::ErrorStatus   makeEdgeInvisibleAt(Adesk::UInt16 faceIndex);
     static std::string  className();
     static PyRxClass    desc();
-    static PyDbFaceRecord cloneFrom(PyRxObject& src);
+    static PyDbFaceRecord cloneFrom(const PyRxObject& src);
+    static PyDbFaceRecord cast(const PyRxObject& src);
 public:
     AcDbFaceRecord* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -364,7 +375,8 @@ public:
     Acad::ErrorStatus   setEcsRotation(double);
     static std::string  className();
     static PyRxClass    desc();
-    static PyDbPoint	cloneFrom(PyRxObject& src);
+    static PyDbPoint	cloneFrom(const PyRxObject& src);
+    static PyDbPoint    cast(const PyRxObject& src);
 public:
     AcDbPoint* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -416,7 +428,8 @@ public:
     Acad::ErrorStatus   makeClosedIfStartAndEndVertexCoincide(double distTol);
     static std::string  className();
     static PyRxClass    desc();
-    static PyDb2dPolyline	cloneFrom(PyRxObject& src);
+    static PyDb2dPolyline	cloneFrom(const PyRxObject& src);
+    static PyDb2dPolyline   cast(const PyRxObject& src);
 public:
     AcDb2dPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -451,7 +464,8 @@ public:
     boost::python::list vertexIds() const;
     static std::string  className();
     static PyRxClass    desc();
-    static PyDb3dPolyline	cloneFrom(PyRxObject& src);
+    static PyDb3dPolyline cloneFrom(const PyRxObject& src);
+    static PyDb3dPolyline cast(const PyRxObject& src);
 public:
     AcDb3dPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -484,7 +498,8 @@ public:
     Acad::ErrorStatus   setNormal(const AcGeVector3d&);
     static std::string  className();
     static PyRxClass    desc();
-    static PyDbArc		cloneFrom(PyRxObject& src);
+    static PyDbArc		cloneFrom(const PyRxObject& src);
+    static PyDbArc      cast(const PyRxObject& src);
 public:
     AcDbArc* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -514,7 +529,8 @@ public:
     Acad::ErrorStatus   setDiameter(double val);
     static std::string  className();
     static PyRxClass    desc();
-    static PyDbCircle	cloneFrom(PyRxObject& src);
+    static PyDbCircle	cloneFrom(const PyRxObject& src);
+    static PyDbCircle   cast(const PyRxObject& src);
 public:
     AcDbCircle* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -541,7 +557,8 @@ public:
     boost::python::list getOffsetCurvesGivenPlaneNormal(const AcGeVector3d& normal, double offsetDist) const override;
     static std::string  className();
     static PyRxClass    desc();
-    static PyDbLine		cloneFrom(PyRxObject& src);
+    static PyDbLine		cloneFrom(const PyRxObject& src);
+    static PyDbLine     cast(const PyRxObject& src);
 public:
     AcDbLine* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -596,7 +613,8 @@ public:
     Acad::ErrorStatus   makeClosedIfStartAndEndVertexCoincide(double distTol);
     static std::string  className();
     static PyRxClass    desc();
-    static PyDbPolyline		cloneFrom(PyRxObject& src);
+    static PyDbPolyline	cloneFrom(const PyRxObject& src);
+    static PyDbPolyline cast(const PyRxObject& src);
 public:
     AcDbPolyline* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -640,7 +658,8 @@ public:
     Acad::ErrorStatus   makeEdgeInvisibleAt(Adesk::UInt16);
     static std::string  className();
     static PyRxClass    desc();
-    static PyDbFace		cloneFrom(PyRxObject& src);
+    static PyDbFace		cloneFrom(const PyRxObject& src);
+    static PyDbFace     cast(const PyRxObject& src);
 public:
     AcDbFace* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -688,7 +707,8 @@ public:
 public:
     static std::string  className();
     static PyRxClass    desc();
-    static PyDbFcf		cloneFrom(PyRxObject& src);
+    static PyDbFcf		cloneFrom(const PyRxObject& src);
+    static PyDbFcf      cast(const PyRxObject& src);
 public:
     AcDbFcf* impObj(const std::source_location& src = std::source_location::current()) const;
 };

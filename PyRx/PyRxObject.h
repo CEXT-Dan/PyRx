@@ -52,9 +52,10 @@ public:
     bool operator==(const PyRxObject& rhs) const;
     bool operator!=(const PyRxObject& rhs) const;
 
-    virtual PyRxClass isA() const;
-    virtual void resetImp(AcRxObject* ptr, bool autoDelete, bool isDbObject);
+    PyRxClass isA() const;
+    void resetImp(AcRxObject* ptr, bool autoDelete, bool isDbObject);
     bool isNull();
+    int refCount();
 
     static PyRxClass desc();
     static std::string className();

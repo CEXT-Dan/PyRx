@@ -26,8 +26,8 @@ class MyDrawableOverrule(PyGi.DrawableOverrule):
             #draw the subject first
             flag = self.baseWorldDraw(subject,wd)
             
-            #no cast in python, create a clone
-            line = PyDb.Line.cloneFrom(subject)
+            #cast subject to a line
+            line = PyDb.Line.cast(subject)
             
             #modify the circle
             seg = PyGe.LineSeg3d(line.endPoint(), line.startPoint())
