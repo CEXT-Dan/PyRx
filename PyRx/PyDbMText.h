@@ -76,7 +76,8 @@ public:
     Acad::ErrorStatus   setHeight(double val);
     static std::string  className();
     static PyRxClass    desc();
-    static PyDbMText    cloneFrom(PyRxObject& src);
+    static PyDbMText    cloneFrom(const PyRxObject& src);
+    static PyDbMText    cast(const PyRxObject& src);
 public:
     AcDbMText* impObj(const std::source_location& src = std::source_location::current()) const;
 };

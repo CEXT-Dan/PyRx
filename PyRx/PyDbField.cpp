@@ -29,6 +29,7 @@ void makeAcDbFieldtWrapper()
         .def("className", &PyDbField::className).staticmethod("className")
         .def("desc", &PyDbField::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbField::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbField::cast).staticmethod("cast")
         ;
     enum_<AcDbField::State>("FieldState")
         .value("kInitialized", AcDbField::State::kInitialized)
@@ -226,11 +227,19 @@ PyRxClass PyDbField::desc()
     return PyRxClass(AcDbField::desc(), false);
 }
 
-PyDbField PyDbField::cloneFrom(PyRxObject& src)
+PyDbField PyDbField::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbField::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbField(static_cast<AcDbField*>(src.impObj()->clone()), true);
+}
+
+PyDbField PyDbField::cast(const PyRxObject& src)
+{
+    PyDbField dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbField* PyDbField::impObj(const std::source_location& src /*= std::source_location::current()*/) const

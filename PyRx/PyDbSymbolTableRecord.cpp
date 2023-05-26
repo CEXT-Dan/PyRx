@@ -16,6 +16,8 @@ void makeAcDbSymbolTableRecordWrapper()
         .def("isRenamable", &PyDbSymbolTableRecord::isRenamable)
         .def("className", &PyDbSymbolTableRecord::className).staticmethod("className")
         .def("desc", &PyDbSymbolTableRecord::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbSymbolTableRecord::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbSymbolTableRecord::cast).staticmethod("cast")
         ;
 }
 
@@ -76,6 +78,21 @@ PyRxClass PyDbSymbolTableRecord::desc()
     return PyRxClass(AcDbSymbolTableRecord::desc(), false);
 }
 
+PyDbSymbolTableRecord PyDbSymbolTableRecord::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbSymbolTableRecord::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbSymbolTableRecord(static_cast<AcDbSymbolTableRecord*>(src.impObj()->clone()), true);
+}
+
+PyDbSymbolTableRecord PyDbSymbolTableRecord::cast(const PyRxObject& src)
+{
+    PyDbSymbolTableRecord dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 AcDbSymbolTableRecord* PyDbSymbolTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr)
@@ -92,6 +109,8 @@ void makeAcDbDimStyleTableRecordWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbDimStyleTableRecord::className).staticmethod("className")
         .def("desc", &PyDbDimStyleTableRecord::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbDimStyleTableRecord::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbDimStyleTableRecord::cast).staticmethod("cast")
         ;
 }
 
@@ -122,6 +141,21 @@ std::string PyDbDimStyleTableRecord::className()
 PyRxClass PyDbDimStyleTableRecord::desc()
 {
     return PyRxClass(AcDbDimStyleTableRecord::desc(), false);
+}
+
+PyDbSymbolTableRecord PyDbDimStyleTableRecord::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbDimStyleTableRecord::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbSymbolTableRecord(static_cast<AcDbDimStyleTableRecord*>(src.impObj()->clone()), true);
+}
+
+PyDbSymbolTableRecord PyDbDimStyleTableRecord::cast(const PyRxObject& src)
+{
+    PyDbSymbolTableRecord dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbDimStyleTableRecord* PyDbDimStyleTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const

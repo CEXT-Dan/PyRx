@@ -31,7 +31,8 @@ public:
     Acad::ErrorStatus   evaluate3(AcDbField::EvalContext nContext, PyDbDatabase& db);
     static std::string  className();
     static PyRxClass    desc();
-    static PyDbField    cloneFrom(PyRxObject& src);
+    static PyDbField    cloneFrom(const PyRxObject& src);
+    static PyDbField    cast(const PyRxObject& src);
 public:
     AcDbField* impObj(const std::source_location& src = std::source_location::current()) const;
 };

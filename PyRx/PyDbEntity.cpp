@@ -75,6 +75,7 @@ void makeAcDbEntityWrapper()
         .def("className", &PyDbEntity::className).staticmethod("className")
         .def("desc", &PyDbEntity::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbEntity::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbEntity::cast).staticmethod("cast")
         ;
 }
 
@@ -433,11 +434,19 @@ PyRxClass PyDbEntity::desc()
     return PyRxClass(AcDbEntity::desc(), false);
 }
 
-PyDbEntity PyDbEntity::cloneFrom(PyRxObject& src)
+PyDbEntity PyDbEntity::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbEntity::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbEntity(static_cast<AcDbEntity*>(src.impObj()->clone()), true);
+}
+
+PyDbEntity PyDbEntity::cast(const PyRxObject& src)
+{
+    PyDbEntity dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbEntity* PyDbEntity::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -455,6 +464,8 @@ void makeAcDbBlockBeginWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbBlockBegin::className).staticmethod("className")
         .def("desc", &PyDbBlockBegin::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbBlockBegin::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbBlockBegin::cast).staticmethod("cast")
         ;
 }
 
@@ -482,6 +493,21 @@ PyRxClass PyDbBlockBegin::desc()
     return PyRxClass(AcDbBlockBegin::desc(), false);
 }
 
+PyDbBlockBegin PyDbBlockBegin::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbBlockBegin::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbBlockBegin(static_cast<AcDbBlockBegin*>(src.impObj()->clone()), true);
+}
+
+PyDbBlockBegin PyDbBlockBegin::cast(const PyRxObject& src)
+{
+    PyDbBlockBegin dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 AcDbBlockBegin* PyDbBlockBegin::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr)
@@ -497,6 +523,8 @@ void makeAcDbBlockEndWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbBlockEnd::className).staticmethod("className")
         .def("desc", &PyDbBlockEnd::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbBlockEnd::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbBlockEnd::cast).staticmethod("cast")
         ;
 }
 
@@ -524,6 +552,21 @@ PyRxClass PyDbBlockEnd::desc()
     return PyRxClass(AcDbBlockEnd::desc(), false);
 }
 
+PyDbBlockEnd PyDbBlockEnd::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbBlockEnd::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbBlockEnd(static_cast<AcDbBlockEnd*>(src.impObj()->clone()), true);
+}
+
+PyDbBlockEnd PyDbBlockEnd::cast(const PyRxObject& src)
+{
+    PyDbBlockEnd dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 AcDbBlockEnd* PyDbBlockEnd::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr)
@@ -541,6 +584,8 @@ void makeAcDbSequenceEndWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbSequenceEnd::className).staticmethod("className")
         .def("desc", &PyDbSequenceEnd::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbSequenceEnd::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbSequenceEnd::cast).staticmethod("cast")
         ;
 }
 
@@ -566,6 +611,21 @@ std::string PyDbSequenceEnd::className()
 PyRxClass PyDbSequenceEnd::desc()
 {
     return PyRxClass(AcDbSequenceEnd::desc(), false);
+}
+
+PyDbSequenceEnd PyDbSequenceEnd::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbSequenceEnd::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbSequenceEnd(static_cast<AcDbSequenceEnd*>(src.impObj()->clone()), true);
+}
+
+PyDbSequenceEnd PyDbSequenceEnd::cast(const PyRxObject& src)
+{
+    PyDbSequenceEnd dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbSequenceEnd* PyDbSequenceEnd::impObj(const std::source_location& src /*= std::source_location::current()*/) const

@@ -18,6 +18,8 @@ void makeAcDbSymbolTableWrapper()
         .def("recordIds", &PyDbSymbolTable::recordIds)
         .def("className", &PyDbSymbolTable::className).staticmethod("className")
         .def("desc", &PyDbSymbolTable::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbSymbolTable::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbSymbolTable::cast).staticmethod("cast")
         ;
 }
 
@@ -82,6 +84,21 @@ PyRxClass PyDbSymbolTable::desc()
     return PyRxClass(AcDbSymbolTable::desc(), false);
 }
 
+PyDbSymbolTable PyDbSymbolTable::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbSymbolTable::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbSymbolTable(static_cast<AcDbSymbolTable*>(src.impObj()->clone()), true);
+}
+
+PyDbSymbolTable PyDbSymbolTable::cast(const PyRxObject& src)
+{
+    PyDbSymbolTable dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 AcDbSymbolTable* PyDbSymbolTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr)
@@ -100,6 +117,8 @@ void makePyDbDimStyleTableWrapper()
         .def("recordIds", &PyDbSymbolTable::recordIds)
         .def("className", &PyDbDimStyleTable::className).staticmethod("className")
         .def("desc", &PyDbDimStyleTable::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbDimStyleTable::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbDimStyleTable::cast).staticmethod("cast")
         ;
 }
 
@@ -160,6 +179,21 @@ PyRxClass PyDbDimStyleTable::desc()
     return PyRxClass(AcDbDimStyleTable::desc(), false);
 }
 
+PyDbDimStyleTable PyDbDimStyleTable::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbDimStyleTable::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbDimStyleTable(static_cast<AcDbDimStyleTable*>(src.impObj()->clone()), true);
+}
+
+PyDbDimStyleTable PyDbDimStyleTable::cast(const PyRxObject& src)
+{
+    PyDbDimStyleTable dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 AcDbDimStyleTable* PyDbDimStyleTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr)
@@ -179,7 +213,8 @@ void makePyDbBlockTableWrapper()
         .def("recordIds", &PyDbBlockTable::recordIds)
         .def("className", &PyDbBlockTable::className).staticmethod("className")
         .def("desc", &PyDbBlockTable::desc).staticmethod("desc")
-
+        .def("cloneFrom", &PyDbBlockTable::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbBlockTable::cast).staticmethod("cast")
         ;
 }
 
@@ -238,6 +273,21 @@ std::string PyDbBlockTable::className()
 PyRxClass PyDbBlockTable::desc()
 {
     return PyRxClass(AcDbBlockTable::desc(), false);
+}
+
+PyDbBlockTable PyDbBlockTable::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbBlockTable::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbBlockTable(static_cast<AcDbBlockTable*>(src.impObj()->clone()), true);
+}
+
+PyDbBlockTable PyDbBlockTable::cast(const PyRxObject& src)
+{
+    PyDbBlockTable dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbBlockTable* PyDbBlockTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const

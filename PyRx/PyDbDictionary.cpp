@@ -15,8 +15,11 @@ void makeAcDbDictionaryWrapper()
         .def("asdict", &PyDbDictionary::asDict)
         .def("className", &PyDbDictionary::className).staticmethod("className")
         .def("desc", &PyDbDictionary::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbDictionary::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbDictionary::cast).staticmethod("cast")
         ;
 }
+
 //---------------------------------------------------------------------------------------- -
 //PyDbDictionary
 PyDbDictionary::PyDbDictionary(AcDbDictionary* ptr, bool autoDelete)
@@ -62,6 +65,22 @@ std::string PyDbDictionary::className()
 PyRxClass PyDbDictionary::desc()
 {
     return PyRxClass(AcDbDictionary::desc(), false);
+}
+
+PyDbDictionary PyDbDictionary::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbDictionary::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbDictionary(static_cast<AcDbDictionary*>(src.impObj()->clone()), true);
+
+}
+
+PyDbDictionary PyDbDictionary::cast(const PyRxObject& src)
+{
+    PyDbDictionary dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbDictionary* PyDbDictionary::impObj(const std::source_location& src /*= std::source_location::current()*/) const

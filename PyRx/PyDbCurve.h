@@ -38,7 +38,8 @@ public:
     virtual Acad::ErrorStatus   reverseCurve();
     static std::string          className();
     static PyRxClass            desc();
-    static PyDbCurve            cloneFrom(PyRxObject& src);
+    static PyDbCurve            cloneFrom(const PyRxObject& src);
+    static PyDbCurve            cast(const PyRxObject& src);
 public:
     AcDbCurve* impObj(const std::source_location& src = std::source_location::current()) const;
 };

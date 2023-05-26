@@ -41,6 +41,7 @@ void makPyDbMlineWrapper()
         .def("className", &PyDbMline::className).staticmethod("className")
         .def("desc", &PyDbMline::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbMline::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbMline::cast).staticmethod("cast")
         ;
 
     enum_<Mline::MlineJustification>("MlineJustification")
@@ -264,11 +265,19 @@ PyRxClass PyDbMline::desc()
     return PyRxClass(AcDbFcf::desc(), false);
 }
 
-PyDbMline PyDbMline::cloneFrom(PyRxObject& src)
+PyDbMline PyDbMline::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbMline::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbMline(static_cast<AcDbMline*>(src.impObj()->clone()), true);
+}
+
+PyDbMline PyDbMline::cast(const PyRxObject& src)
+{
+    PyDbMline dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbMline* PyDbMline::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -322,6 +331,8 @@ void makPyDbMlineStyleWrapper()
         .def("getElementAt", &PyDbMlineStyle::getElementAt)
         .def("className", &PyDbMlineStyle::className).staticmethod("className")
         .def("desc", &PyDbMlineStyle::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbMlineStyle::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbMlineStyle::cast).staticmethod("cast")
         ;
 }
 
@@ -542,6 +553,21 @@ std::string PyDbMlineStyle::className()
 PyRxClass PyDbMlineStyle::desc()
 {
     return PyRxClass(AcDbMlineStyle::desc(), false);
+}
+
+PyDbMlineStyle PyDbMlineStyle::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbMlineStyle::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbMlineStyle(static_cast<AcDbMlineStyle*>(src.impObj()->clone()), true);
+}
+
+PyDbMlineStyle PyDbMlineStyle::cast(const PyRxObject& src)
+{
+    PyDbMlineStyle dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbMlineStyle* PyDbMlineStyle::impObj(const std::source_location& src /*= std::source_location::current()*/) const

@@ -235,6 +235,7 @@ void makeyDbTableWrapper()
         .def("className", &PyDbTable::className).staticmethod("className")
         .def("desc", &PyDbTable::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbTable::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbTable::cast).staticmethod("cast")
         ;
     class_ <AcCell>("Cell")
         .def_readwrite("row", &AcCell::mnRow)
@@ -1936,11 +1937,19 @@ PyRxClass PyDbTable::desc()
     return PyRxClass(AcDbTable::desc(), false);
 }
 
-PyDbTable PyDbTable::cloneFrom(PyRxObject& src)
+PyDbTable PyDbTable::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbTable::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbTable(static_cast<AcDbTable*>(src.impObj()->clone()), true);
+}
+
+PyDbTable PyDbTable::cast(const PyRxObject& src)
+{
+    PyDbTable dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbTable* PyDbTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const

@@ -68,6 +68,7 @@ void makeAcDbObjectWrapper()
         .def("desc", &PyDbObject::desc).staticmethod("desc")
         .def("className", &PyDbObject::className).staticmethod("className")
         .def("cloneFrom", &PyDbObject::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbObject::cast).staticmethod("cast")
         ;
 }
 
@@ -374,11 +375,19 @@ std::string PyDbObject::className()
     return "AcDbObject";
 }
 
-PyDbObject PyDbObject::cloneFrom(PyRxObject& src)
+PyDbObject PyDbObject::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbObject::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbObject(static_cast<AcDbObject*>(src.impObj()->clone()), true);
+}
+
+PyDbObject PyDbObject::cast(const PyRxObject& src)
+{
+    PyDbObject dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbObject* PyDbObject::impObj(const std::source_location& src /*= std::source_location::current()*/) const

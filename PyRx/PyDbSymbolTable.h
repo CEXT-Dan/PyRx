@@ -23,13 +23,15 @@ public:
     PyDbSymbolTable(AcDbSymbolTable* ptr, bool autoDelete);
     PyDbSymbolTable(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbSymbolTable() override = default;
-    PyDbObjectId getAt(const std::string& entryName);
-    bool has(const std::string& entryName);
-    bool has(const PyDbObjectId& entryid);
+    PyDbObjectId    getAt(const std::string& entryName);
+    bool            has(const std::string& entryName);
+    bool            has(const PyDbObjectId& entryid);
     boost::python::list recordIds();
 
-    static std::string className();
-    static PyRxClass desc();
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyDbSymbolTable cloneFrom(const PyRxObject& src);
+    static PyDbSymbolTable cast(const PyRxObject& src);
 
 public:
     AcDbSymbolTable* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -46,11 +48,13 @@ public:
     PyDbDimStyleTable(AcDbDimStyleTable* ptr, bool autoDelete);
     PyDbDimStyleTable(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbDimStyleTable() override = default;
-    PyDbObjectId getAt(const std::string& entryName);
-    PyDbObjectId add(const PyDbDimStyleTableRecord& entry);
+    PyDbObjectId        getAt(const std::string& entryName);
+    PyDbObjectId        add(const PyDbDimStyleTableRecord& entry);
     boost::python::list recordIds();
-    static std::string className();
-    static PyRxClass desc();
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyDbDimStyleTable cloneFrom(const PyRxObject& src);
+    static PyDbDimStyleTable cast(const PyRxObject& src);
 
 public:
     AcDbDimStyleTable* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -66,11 +70,13 @@ public:
     PyDbBlockTable(AcDbBlockTable* ptr, bool autoDelete);
     PyDbBlockTable(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbBlockTable() override = default;
-    PyDbObjectId getAt(const std::string& entryName);
-    PyDbObjectId add(const PyDbBlockTableRecord& entry);
+    PyDbObjectId        getAt(const std::string& entryName);
+    PyDbObjectId        add(const PyDbBlockTableRecord& entry);
     boost::python::list recordIds();
-    static std::string className();
-    static PyRxClass desc();
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyDbBlockTable cloneFrom(const PyRxObject& src);
+    static PyDbBlockTable cast(const PyRxObject& src);
 
 public:
     AcDbBlockTable* impObj(const std::source_location& src = std::source_location::current()) const;

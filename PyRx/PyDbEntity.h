@@ -79,7 +79,8 @@ public:
     Acad::ErrorStatus   getGeomExtents(AcDbExtents& extents) const;
     static std::string  className();
     static PyRxClass    desc();
-    static PyDbEntity   cloneFrom(PyRxObject& src);
+    static PyDbEntity   cloneFrom(const PyRxObject& src);
+    static PyDbEntity   cast(const PyRxObject& src);
 public:
     AcDbEntity* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -91,8 +92,10 @@ public:
     PyDbBlockBegin(AcDbBlockBegin* ptr, bool autoDelete);
     PyDbBlockBegin(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbBlockBegin() = default;
-    static std::string  className();
-    static PyRxClass    desc();
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyDbBlockBegin   cloneFrom(const PyRxObject& src);
+    static PyDbBlockBegin   cast(const PyRxObject& src);
 public:
     AcDbBlockBegin* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -104,8 +107,10 @@ public:
     PyDbBlockEnd(AcDbBlockEnd* ptr, bool autoDelete);
     PyDbBlockEnd(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbBlockEnd() = default;
-    static std::string  className();
-    static PyRxClass    desc();
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyDbBlockEnd     cloneFrom(const PyRxObject& src);
+    static PyDbBlockEnd     cast(const PyRxObject& src);
 public:
     AcDbBlockEnd* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -117,8 +122,10 @@ public:
     PyDbSequenceEnd(AcDbSequenceEnd* ptr, bool autoDelete);
     PyDbSequenceEnd(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbSequenceEnd() = default;
-    static std::string  className();
-    static PyRxClass    desc();
+    static std::string      className();
+    static PyRxClass        desc();
+    static PyDbSequenceEnd  cloneFrom(const PyRxObject& src);
+    static PyDbSequenceEnd  cast(const PyRxObject& src);
 public:
     AcDbSequenceEnd* impObj(const std::source_location& src = std::source_location::current()) const;
 };

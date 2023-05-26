@@ -74,6 +74,7 @@ void makePyDbLeaderWrapper()
         .def("className", &PyDbLeader::className).staticmethod("className")
         .def("desc", &PyDbLeader::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbLeader::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbLeader::cast).staticmethod("cast")
         ;
 
     enum_<AcDbLeader::AnnoType>("AnnoType")
@@ -421,11 +422,19 @@ PyRxClass PyDbLeader::desc()
     return PyRxClass(AcDbLeader::desc(), false);
 }
 
-PyDbLeader PyDbLeader::cloneFrom(PyRxObject& src)
+PyDbLeader PyDbLeader::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbLeader::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbLeader(static_cast<AcDbLeader*>(src.impObj()->clone()), true);
+}
+
+PyDbLeader PyDbLeader::cast(const PyRxObject& src)
+{
+    PyDbLeader dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbLeader* PyDbLeader::impObj(const std::source_location& src /*= std::source_location::current()*/) const
@@ -573,6 +582,7 @@ void makePyDbMLeaderWrapper()
         .def("className", &PyDbMLeader::className).staticmethod("className")
         .def("desc", &PyDbMLeader::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbMLeader::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbMLeader::cast).staticmethod("cast")
         ;
 
     enum_<AcDbMLeader::MoveType>("MLeaderMoveType")
@@ -1488,11 +1498,19 @@ PyRxClass PyDbMLeader::desc()
     return PyRxClass(AcDbLeader::desc(), false);
 }
 
-PyDbMLeader PyDbMLeader::cloneFrom(PyRxObject& src)
+PyDbMLeader PyDbMLeader::cloneFrom(const PyRxObject& src)
 {
     if (!src.impObj()->isKindOf(AcDbMLeader::desc()))
         throw PyAcadErrorStatus(eNotThatKindOfClass);
     return PyDbMLeader(static_cast<AcDbMLeader*>(src.impObj()->clone()), true);
+}
+
+PyDbMLeader PyDbMLeader::cast(const PyRxObject& src)
+{
+    PyDbMLeader dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbMLeader* PyDbMLeader::impObj(const std::source_location& src /*= std::source_location::current()*/) const

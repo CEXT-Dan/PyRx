@@ -47,6 +47,8 @@ public:
     Acad::ErrorStatus   addAnnoScalestoBlkRefs(bool bScale);
     static std::string  className();
     static PyRxClass    desc();
+    static PyDbBlockTableRecord	cloneFrom(const PyRxObject& src);
+    static PyDbBlockTableRecord cast(const PyRxObject& src);
 public:
     AcDbBlockTableRecord* impObj(const std::source_location& src = std::source_location::current()) const;
 };

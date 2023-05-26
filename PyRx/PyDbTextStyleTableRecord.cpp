@@ -30,6 +30,8 @@ void makeTextStyleTableRecordWrapper()
         .def("font", &PyDbTextStyleTableRecord::font)
         .def("className", &PyDbTextStyleTableRecord::className).staticmethod("className")
         .def("desc", &PyDbTextStyleTableRecord::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbTextStyleTableRecord::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbTextStyleTableRecord::cast).staticmethod("cast")
         ;
 }
 
@@ -185,6 +187,21 @@ std::string PyDbTextStyleTableRecord::className()
 PyRxClass PyDbTextStyleTableRecord::desc()
 {
     return PyRxClass(AcDbTextStyleTableRecord::desc(), false);
+}
+
+PyDbTextStyleTableRecord PyDbTextStyleTableRecord::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbTextStyleTableRecord::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbTextStyleTableRecord(static_cast<AcDbTextStyleTableRecord*>(src.impObj()->clone()), true);
+}
+
+PyDbTextStyleTableRecord PyDbTextStyleTableRecord::cast(const PyRxObject& src)
+{
+    PyDbTextStyleTableRecord dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbTextStyleTableRecord* PyDbTextStyleTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const

@@ -19,6 +19,8 @@ void makePyDb3dSolidWrapper()
         .def("createWedge", &PyDb3dSolid::createWedge)
         .def("className", &PyDb3dSolid::className).staticmethod("className")
         .def("desc", &PyDb3dSolid::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDb3dSolid::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDb3dSolid::cast).staticmethod("cast")
         ;
 }
 
@@ -86,13 +88,27 @@ PyRxClass PyDb3dSolid::desc()
     return PyRxClass(AcDb3dSolid::desc(), false);
 }
 
+PyDb3dSolid PyDb3dSolid::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDb3dSolid::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDb3dSolid(static_cast<AcDb3dSolid*>(src.impObj()->clone()), true);
+}
+
+PyDb3dSolid PyDb3dSolid::cast(const PyRxObject& src)
+{
+    PyDb3dSolid dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 AcDb3dSolid* PyDb3dSolid::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr)
         throw PyNullObject(src);
     return static_cast<AcDb3dSolid*>(m_pyImp.get());
 }
-
 
 
 //-----------------------------------------------------------------------------------
@@ -104,6 +120,8 @@ void makePyDbRegionWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbRegion::className).staticmethod("className")
         .def("desc", &PyDbRegion::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbRegion::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbRegion::cast).staticmethod("cast")
         ;
 }
 
@@ -136,6 +154,21 @@ PyRxClass PyDbRegion::desc()
     return PyRxClass(AcDbRegion::desc(), false);
 }
 
+PyDbRegion PyDbRegion::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbRegion::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbRegion(static_cast<AcDbRegion*>(src.impObj()->clone()), true);
+}
+
+PyDbRegion PyDbRegion::cast(const PyRxObject& src)
+{
+    PyDbRegion dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 AcDbRegion* PyDbRegion::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr)
@@ -152,6 +185,8 @@ void makeAcDbBodyWrapper()
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbBody::className).staticmethod("className")
         .def("desc", &PyDbBody::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbBody::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbBody::cast).staticmethod("cast")
         ;
 }
 
@@ -182,6 +217,21 @@ std::string PyDbBody::className()
 PyRxClass PyDbBody::desc()
 {
     return PyRxClass(AcDbBody::desc(), false);
+}
+
+PyDbBody PyDbBody::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbBody::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbBody(static_cast<AcDbBody*>(src.impObj()->clone()), true);
+}
+
+PyDbBody PyDbBody::cast(const PyRxObject& src)
+{
+    PyDbBody dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
 }
 
 AcDbBody* PyDbBody::impObj(const std::source_location& src /*= std::source_location::current()*/) const

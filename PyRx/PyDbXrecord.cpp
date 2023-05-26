@@ -118,6 +118,21 @@ PyRxClass PyDbXrecord::desc()
     return PyRxClass(AcDbXrecord::desc(), false);
 }
 
+PyDbXrecord PyDbXrecord::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbXrecord::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbXrecord(static_cast<AcDbXrecord*>(src.impObj()->clone()), true);
+}
+
+PyDbXrecord PyDbXrecord::cast(const PyRxObject& src)
+{
+    PyDbXrecord dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
 AcDbXrecord* PyDbXrecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr)
