@@ -5,16 +5,20 @@
 #include "dbdimassoc.h"
 #include "ResultBuffer.h"
 
+
 using namespace boost::python;
+
 struct DbCoreDocStrings
 {
-    static constexpr const char* DbCoreopenDbObject = "\n\
-Args:\n\
-param1(PyDbObjectId) : object id for the object you with to open.\n\
-param2(PyDb.OpenMode) :one of: kForRead, kForWrite, kForNotify.\n\
-\n\
-Returns :\n\
-The database object, or exception\n";
+    static constexpr const char* DbCoreopenDbObject = "\
+Args :\
+\n    \n\
+\t1, PyDb.ObjectId : object id for the object to open.  \n\
+\t2, PyDb.OpenMode : kForRead, kForWrite or kForNotify. \n\
+\n    \n\
+Returns :\
+\n    \n\
+\tThe PyDb.DbObject or PyAp.PyAcadErrorStatus exception";
 };
 
 void makeDbCoreWrapper()

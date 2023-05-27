@@ -14141,14 +14141,15 @@ openDbEntity( (ObjectId)arg1, (OpenMode)arg2) -> Entity :
     def openDbObject (self, *args, **kwargs):
       '''
 openDbObject( (ObjectId)arg1, (OpenMode)arg2) -> DbObject :
+    Args :
+        
+    	1, PyDb.ObjectId : object id for the object to open.  
+    	2, PyDb.OpenMode : kForRead, kForWrite or kForNotify. 
     
-    Args:
-    param1(PyDbObjectId) : object id for the object you with to open.
-    param2(PyDb.OpenMode) :one of: kForRead, kForWrite, kForNotify.
-    
+        
     Returns :
-    The database object, or exception
-    
+        
+    	The PyDb.DbObject or PyAp.PyAcadErrorStatus exception
 
     C++ signature :
         class PyDbObject openDbObject(class PyDbObjectId,enum AcDb::OpenMode)'''

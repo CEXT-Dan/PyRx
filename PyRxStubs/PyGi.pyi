@@ -376,6 +376,13 @@ desc() -> RxClass :
     C++ signature :
         class PyRxClass desc()'''
     ...
+    def geometry (self, *args, **kwargs):
+      '''
+geometry( (ViewportDraw)arg1) -> ViewportGeometry :
+
+    C++ signature :
+        class PyGiViewportGeometry geometry(class PyGiViewportDraw {lvalue})'''
+    ...
     def isA (self, *args, **kwargs):
       '''
 isA( (RxObject)arg1) -> RxClass :
@@ -396,13 +403,6 @@ refCount( (RxObject)arg1) -> int :
 
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
-    ...
-    def viewportGeometry (self, *args, **kwargs):
-      '''
-viewportGeometry( (ViewportDraw)arg1) -> ViewportGeometry :
-
-    C++ signature :
-        class PyGiViewportGeometry viewportGeometry(class PyGiViewportDraw {lvalue})'''
     ...
 
 class ViewportGeometry:
@@ -535,6 +535,13 @@ desc() -> RxClass :
     C++ signature :
         class PyRxClass desc()'''
     ...
+    def geometry (self, *args, **kwargs):
+      '''
+geometry( (WorldDraw)arg1) -> WorldGeometry :
+
+    C++ signature :
+        class PyGiWorldGeometry geometry(class PyGiWorldDraw {lvalue})'''
+    ...
     def isA (self, *args, **kwargs):
       '''
 isA( (RxObject)arg1) -> RxClass :
@@ -555,13 +562,6 @@ refCount( (RxObject)arg1) -> int :
 
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
-    ...
-    def worldGeometry (self, *args, **kwargs):
-      '''
-worldGeometry( (WorldDraw)arg1) -> WorldGeometry :
-
-    C++ signature :
-        class PyGiWorldGeometry worldGeometry(class PyGiWorldDraw {lvalue})'''
     ...
 
 class WorldGeometry:
