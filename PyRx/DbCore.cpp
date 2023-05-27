@@ -6,6 +6,16 @@
 #include "ResultBuffer.h"
 
 using namespace boost::python;
+struct DbCoreDocStrings
+{
+    static constexpr const char* DbCoreopenDbObject = "\n\
+Args:\n\
+param1(PyDbObjectId) : object id for the object you with to open.\n\
+param2(PyDb.OpenMode) :one of: kForRead, kForWrite, kForNotify.\n\
+\n\
+Returns :\n\
+The database object, or exception\n";
+};
 
 void makeDbCoreWrapper()
 {
@@ -16,7 +26,7 @@ void makeDbCoreWrapper()
         .def("entMod", &DbCore::entMod).staticmethod("entMod")
         .def("entNext", &DbCore::entNext).staticmethod("entNext")
         .def("entUpd", &DbCore::entUpd).staticmethod("entUpd")
-        .def("openDbObject", &DbCore::openDbObject).staticmethod("openDbObject")
+        .def("openDbObject", &DbCore::openDbObject, DbCoreDocStrings::DbCoreopenDbObject).staticmethod("openDbObject")
         .def("openDbEntity", &DbCore::openDbEntity).staticmethod("openDbEntity")
         .def("regApp", &DbCore::regApp).staticmethod("regApp")
         .def("updateDimension", &DbCore::updateDimension).staticmethod("updateDimension")

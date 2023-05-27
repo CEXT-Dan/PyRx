@@ -44,7 +44,9 @@ public:
     bool                isBackgroundColorNone(AcDb::RowType type) const;
     Acad::ErrorStatus   setBackgroundColorNone(bool value, AcDb::RowType type);
     AcCmColor           backgroundColor(AcDb::RowType type) const;
+    AcCmColor           backgroundColor2(int row, int col) const;
     Acad::ErrorStatus   setBackgroundColor(const AcCmColor& color, AcDb::RowType type);
+    Acad::ErrorStatus   setBackgroundColor2(int row, int col, const AcCmColor& color);
     AcCmColor           contentColor(AcDb::RowType type) const;
     Acad::ErrorStatus   setContentColor(const AcCmColor& color, AcDb::RowType type);
     boost::python::tuple getDataType(AcDb::RowType type) const;
@@ -79,7 +81,7 @@ public:
     boost::python::tuple getDataType2(int row, int col) const;
     Acad::ErrorStatus   setDataType3(int row, int col, AcValue::DataType nDataType, AcValue::UnitType nUnitType);
     Acad::ErrorStatus   setFormat(int row, int col, const std::string& pszFormat);
-    std::string          textString(int row, int col) const;
+    std::string         textString(int row, int col) const;
     std::string         textString3(int row, int col, AcValue::FormatOption nOption) const;
     Acad::ErrorStatus   setTextString(int row, int col, const std::string& text);
     PyDbObjectId        fieldId(int row, int col) const;

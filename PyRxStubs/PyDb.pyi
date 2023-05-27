@@ -14141,6 +14141,14 @@ openDbEntity( (ObjectId)arg1, (OpenMode)arg2) -> Entity :
     def openDbObject (self, *args, **kwargs):
       '''
 openDbObject( (ObjectId)arg1, (OpenMode)arg2) -> DbObject :
+    
+    Args:
+    param1(PyDbObjectId) : object id for the object you with to open.
+    param2(PyDb.OpenMode) :one of: kForRead, kForWrite, kForNotify.
+    
+    Returns :
+    The database object, or exception
+    
 
     C++ signature :
         class PyDbObject openDbObject(class PyDbObjectId,enum AcDb::OpenMode)'''
@@ -75184,7 +75192,12 @@ attributeIds( (BlockReference)arg1) -> list :
 backgroundColor( (Table)arg1, (RowType)arg2) -> Color :
 
     C++ signature :
-        class AcCmColor backgroundColor(class PyDbTable {lvalue},enum AcDb::RowType)'''
+        class AcCmColor backgroundColor(class PyDbTable {lvalue},enum AcDb::RowType)
+
+backgroundColor( (Table)arg1, (int)arg2, (int)arg3) -> Color :
+
+    C++ signature :
+        class AcCmColor backgroundColor(class PyDbTable {lvalue},int,int)'''
     ...
     def blockId (self, *args, **kwargs):
       '''
@@ -76510,7 +76523,12 @@ setAutoScale( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (bool)arg5) -> Error
 setBackgroundColor( (Table)arg1, (Color)arg2, (RowType)arg3) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus setBackgroundColor(class PyDbTable {lvalue},class AcCmColor,enum AcDb::RowType)'''
+        enum Acad::ErrorStatus setBackgroundColor(class PyDbTable {lvalue},class AcCmColor,enum AcDb::RowType)
+
+setBackgroundColor( (Table)arg1, (int)arg2, (int)arg3, (Color)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setBackgroundColor(class PyDbTable {lvalue},int,int,class AcCmColor)'''
     ...
     def setBackgroundColorNone (self, *args, **kwargs):
       '''
