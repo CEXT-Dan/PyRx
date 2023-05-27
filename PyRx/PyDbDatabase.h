@@ -265,6 +265,7 @@ public:
     Acad::ErrorStatus	setFingerprintGuid(const std::string& newGuid);
     void				setFullSaveRequired();
     Acad::ErrorStatus	readDwgFile(const char* fileName);
+    Acad::ErrorStatus	readDwgFile2(const char* fileName, int mode, bool bAllowCPConversion ,const std::string& password);
     std::string			getFilename();
     PyDbObjectId		currentSpaceId() const;
     PyDbObjectId		blockTableId() const;

@@ -455,6 +455,7 @@ void makeAcDbDatabaseWrapper()
         .def<Acad::ErrorStatus(PyDbDatabase::*)(PyDbDatabase&)>("wblock", &PyDbDatabase::wblock)
         .def("getFilename", &PyDbDatabase::getFilename)
         .def("readDwgFile", &PyDbDatabase::readDwgFile)
+        .def("readDwgFile", &PyDbDatabase::readDwgFile2)
         .def("blockTableId", &PyDbDatabase::blockTableId)
         .def("modelSpaceId", &PyDbDatabase::modelSpaceId)
         .def("currentSpaceId", &PyDbDatabase::currentSpaceId)
@@ -1933,10 +1934,15 @@ void PyDbDatabase::setFullSaveRequired()
 
 Acad::ErrorStatus PyDbDatabase::readDwgFile(const char* fileName)
 {
-    std::wstring wsfileName{ utf8_to_wstr(fileName) }
-    ;
+    std::wstring wsfileName{ utf8_to_wstr(fileName) };
     return impObj()->readDwgFile(wsfileName.c_str());
-    return eNullPtr;
+}
+
+Acad::ErrorStatus PyDbDatabase::readDwgFile2(const char* fileName, int mode, bool bAllowCPConversion, const std::string& password)
+{
+    std::wstring wsfileName{ utf8_to_wstr(fileName) };
+    std::wstring wspassword{ utf8_to_wstr(password) };
+    return impObj()->readDwgFile(wsfileName.c_str(),(AcDbDatabase::OpenMode)mode, bAllowCPConversion, wspassword.c_str());
 }
 
 std::string PyDbDatabase::getFilename()
