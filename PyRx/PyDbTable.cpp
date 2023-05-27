@@ -44,7 +44,9 @@ void makeyDbTableWrapper()
         .def("isBackgroundColorNone", &PyDbTable::isBackgroundColorNone)
         .def("setBackgroundColorNone", &PyDbTable::setBackgroundColorNone)
         .def("backgroundColor", &PyDbTable::backgroundColor)
+        .def("backgroundColor", &PyDbTable::backgroundColor2)
         .def("setBackgroundColor", &PyDbTable::setBackgroundColor)
+        .def("setBackgroundColor", &PyDbTable::setBackgroundColor2)
         .def("contentColor", &PyDbTable::contentColor)
         .def("setContentColor", &PyDbTable::setContentColor)
         .def("getDataType", &PyDbTable::getDataType)
@@ -646,9 +648,19 @@ AcCmColor PyDbTable::backgroundColor(AcDb::RowType type) const
     return impObj()->backgroundColor(type);
 }
 
+AcCmColor PyDbTable::backgroundColor2(int row, int col) const
+{
+    return impObj()->backgroundColor(row, col);
+}
+
 Acad::ErrorStatus PyDbTable::setBackgroundColor(const AcCmColor& color, AcDb::RowType type)
 {
     return impObj()->setBackgroundColor(color, type);
+}
+
+Acad::ErrorStatus PyDbTable::setBackgroundColor2(int row, int col, const AcCmColor& color)
+{
+    return impObj()->setBackgroundColor(row, col, color);
 }
 
 AcCmColor PyDbTable::contentColor(AcDb::RowType type) const

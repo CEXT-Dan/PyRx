@@ -66,7 +66,7 @@ void makeAcDbExtentsWrapper()
 BOOST_PYTHON_MODULE(PyDb)
 {
 #ifndef  PyRxDebug
-    docstring_options local_docstring_options(false, true, true);
+    docstring_options local_docstring_options(true, true, true);
 #endif // ! PyRxDebug
 
     //create in class order!
