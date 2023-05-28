@@ -226,6 +226,9 @@
     <ClCompile Include="PyRxOverrule.cpp">
       <Filter>Source Files\PyRx</Filter>
     </ClCompile>
+    <ClCompile Include="PyGiSubEntityTraits.cpp">
+      <Filter>Source Files\PyGi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -455,6 +458,9 @@
     </ClInclude>
     <ClInclude Include="PyRxOverrule.h">
       <Filter>Header Files\PyRx</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGiSubEntityTraits.h">
+      <Filter>Header Files\PyGi</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

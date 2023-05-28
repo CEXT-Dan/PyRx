@@ -9,46 +9,52 @@ import PyEd  # = editor
 print("command = pydrawoverrule")
 print("command = pystopoverrule")
 
+
 class MyDrawableOverrule(PyGi.DrawableOverrule):
     def __init__(self):
         PyGi.DrawableOverrule.__init__(self)
-        self.circle = PyDb.Circle(PyGe.Point3d(0, 0, 0), PyGe.Vector3d.kZAxis, 10)
-        self.circle.setDatabaseDefaults()
-        self.circle.setColorIndex(40)
-    
-    #override
+
+    # override
     def isApplicable(self, subject):
         return True
-    
-    #override
+
+    # override
     def worldDraw(self, subject, wd):
         try:
-            #draw the subject first
-            flag = self.baseWorldDraw(subject,wd)
-            
-            #cast subject to a line
+            # draw the subject first
+            flag = self.baseWorldDraw(subject, wd)
+
+            # cast subject to a line
             line = PyDb.Line.cast(subject)
-            
-            #modify the circle
+
+            #circle info
             seg = PyGe.LineSeg3d(line.endPoint(), line.startPoint())
             cen = PyGe.Point3d(seg.midPoint())
             rad = seg.length() * 0.3
-            self.circle.setCenter(cen)
-            self.circle.setRadius(rad)
+
+            # draw circle
+            traits = wd.subEntityTraits()
+            traits.setColor(1)
+            geo = wd.geometry()
+            geo.circle(cen, rad, PyGe.Vector3d.kZAxis)
             
-            #draw the custom stuff
-            geo = wd.worldGeometry()
-            geo.draw(self.circle)
-            
-            #returing false here will go to viewport
+            #draw text
+            testpos = cen + (seg.direction().perpVector().normalize() * 3)
+            geo.text(testpos, PyGe.Vector3d.kZAxis,
+                     seg.direction(), 10, 1.0, 0, "SUP Bruh")
+
+            # returing false here will go to viewport
             return flag
         except Exception as err:
             print(err)
-    
-#put this in global space   
+
+
+# put this in global space
 overrule = MyDrawableOverrule()
 
-#cmds
+# cmds
+
+
 def PyRxCmd_pydrawoverrule():
     try:
         if overrule.addOverrule(PyDb.Line.desc(), overrule) == PyDb.ErrorStatus.eOk:
@@ -57,7 +63,8 @@ def PyRxCmd_pydrawoverrule():
             print("fail")
     except Exception as err:
         PyRxApp.Printf(err)
-        
+
+
 def PyRxCmd_pystopoverrule():
     try:
         if overrule == None:

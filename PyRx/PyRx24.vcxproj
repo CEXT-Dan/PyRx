@@ -188,6 +188,7 @@
     <ClCompile Include="PyGeSurfSurfInt.cpp" />
     <ClCompile Include="PyGiCommonDraw.cpp" />
     <ClCompile Include="PyGiDrawable.cpp" />
+    <ClCompile Include="PyGiSubEntityTraits.cpp" />
     <ClCompile Include="PyJig.cpp" />
     <ClCompile Include="PyLispService.cpp" />
     <ClCompile Include="PyRxAcut.cpp" />
@@ -267,6 +268,7 @@
     <ClInclude Include="PyGeSurfSurfInt.h" />
     <ClInclude Include="PyGiCommonDraw.h" />
     <ClInclude Include="PyGiDrawable.h" />
+    <ClInclude Include="PyGiSubEntityTraits.h" />
     <ClInclude Include="PyJig.h" />
     <ClInclude Include="PyLispService.h" />
     <ClInclude Include="PyRxAcut.h" />

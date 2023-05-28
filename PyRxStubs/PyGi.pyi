@@ -751,6 +751,13 @@ refCount( (RxObject)arg1) -> int :
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
     ...
+    def subEntityTraits (self, *args, **kwargs):
+      '''
+subEntityTraits( (CommonDraw)arg1) -> SubEntityTraits :
+
+    C++ signature :
+        class PyGiSubEntityTraits subEntityTraits(class PyGiCommonDraw {lvalue})'''
+    ...
 
 class Drawable:
     def __eq__ (self, *args, **kwargs):
@@ -955,6 +962,69 @@ worldDraw( (DrawableOverrule)arg1, (Drawable)arg2, (WorldDraw)arg3) -> bool :
 
     C++ signature :
         bool worldDraw(class PyGiDrawableOverrule {lvalue},class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
+    ...
+
+class DrawableTraits:
+    def __eq__ (self, *args, **kwargs):
+      '''
+__eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __eq__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
+    def __ne__ (self, *args, **kwargs):
+      '''
+__ne__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __ne__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def className (self, *args, **kwargs):
+      '''
+className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def desc (self, *args, **kwargs):
+      '''
+desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def isA (self, *args, **kwargs):
+      '''
+isA( (RxObject)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyRxObject {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs):
+      '''
+isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
+    def setColor (self, *args, **kwargs):
+      '''
+setColor( (SubEntityTraits)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setColor(class PyGiSubEntityTraits {lvalue},unsigned short)'''
     ...
 
 class Geometry:
@@ -1203,6 +1273,69 @@ xline( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
         bool xline(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d)'''
     ...
 
+class SubEntityTraits:
+    def __eq__ (self, *args, **kwargs):
+      '''
+__eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __eq__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
+    def __ne__ (self, *args, **kwargs):
+      '''
+__ne__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __ne__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def className (self, *args, **kwargs):
+      '''
+className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def desc (self, *args, **kwargs):
+      '''
+desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def isA (self, *args, **kwargs):
+      '''
+isA( (RxObject)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyRxObject {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs):
+      '''
+isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
+    def setColor (self, *args, **kwargs):
+      '''
+setColor( (SubEntityTraits)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setColor(class PyGiSubEntityTraits {lvalue},unsigned short)'''
+    ...
+
 class TransparencyMode:
     def __add__ (self, value, /):
       '''Return self+value.'''
@@ -1401,6 +1534,13 @@ refCount( (RxObject)arg1) -> int :
 
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
+    ...
+    def subEntityTraits (self, *args, **kwargs):
+      '''
+subEntityTraits( (CommonDraw)arg1) -> SubEntityTraits :
+
+    C++ signature :
+        class PyGiSubEntityTraits subEntityTraits(class PyGiCommonDraw {lvalue})'''
     ...
 
 class ViewportGeometry:
@@ -1710,6 +1850,13 @@ refCount( (RxObject)arg1) -> int :
 
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
+    ...
+    def subEntityTraits (self, *args, **kwargs):
+      '''
+subEntityTraits( (CommonDraw)arg1) -> SubEntityTraits :
+
+    C++ signature :
+        class PyGiSubEntityTraits subEntityTraits(class PyGiCommonDraw {lvalue})'''
     ...
 
 class WorldGeometry:

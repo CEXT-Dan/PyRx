@@ -4,6 +4,7 @@
 
 class PyGiWorldDraw;
 class PyGiViewportDraw;
+class PyGiDrawableTraits;
 
 //-----------------------------------------------------------------------------------------
 //PyGiDrawable
@@ -31,7 +32,7 @@ public:
 	PyGiDrawableOverrule();
 	PyGiDrawableOverrule(AcGiDrawableOverrule* ptr, bool autoDelete);
 	virtual ~PyGiDrawableOverrule() override = default;
-	//Adesk::UInt32 setAttributes(AcGiDrawable* pSubject, AcGiDrawableTraits* traits);
+	Adesk::UInt32 setAttributes(PyGiDrawable& pSubject, PyGiDrawableTraits& traits);
 
 	//python subclasses these
 	bool			isApplicableWr(PyRxObject& pOverruledSubject) const;

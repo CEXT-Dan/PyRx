@@ -2,6 +2,7 @@
 #include "PyAcGi.h"
 #include "PyGiDrawable.h"
 #include "PyGiCommonDraw.h"
+#include "PyGiSubEntityTraits.h"
 
 using namespace boost::python;
 
@@ -17,6 +18,9 @@ BOOST_PYTHON_MODULE(PyGi)
     makeAcGiViewportDrawWrapper();
 
     makeAcGiDrawableOverruleWrapper();
+
+    makePyGiSubEntityTraitsWrapper();
+    makePyGiDrawableTraitsWrapper();
 
     makeAcGiGeometryWrapper();
     makeAcGiWorldGeometryWrapper();
