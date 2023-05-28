@@ -3,11 +3,13 @@
 #include "PyGiDrawable.h"
 #include "PyDbEnts.h"
 #include "PyGeCurve2d.h"
+#include "PyGiSubEntityTraits.h"
 
 using namespace boost::python;
 void makePyGiCommonDrawWrapper()
 {
     class_<PyGiCommonDraw, bases<PyRxObject>>("CommonDraw", boost::python::no_init)
+        .def("subEntityTraits", &PyGiCommonDraw::subEntityTraits)
         .def("className", &PyGiCommonDraw::className).staticmethod("className")
         .def("desc", &PyGiCommonDraw::desc).staticmethod("desc")
         ;
@@ -16,6 +18,11 @@ void makePyGiCommonDrawWrapper()
 PyGiCommonDraw::PyGiCommonDraw(AcGiCommonDraw* ptr, bool autoDelete)
     : PyRxObject(ptr, autoDelete, false)
 {
+}
+
+PyGiSubEntityTraits PyGiCommonDraw::subEntityTraits() const
+{
+    return PyGiSubEntityTraits(std::addressof(impObj()->subEntityTraits()), false);
 }
 
 std::string PyGiCommonDraw::className()

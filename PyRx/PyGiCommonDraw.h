@@ -6,6 +6,7 @@ class PyGiDrawable;
 class PyGiWorldGeometry;
 class PyGiViewportGeometry;
 class PyDbPolyline;
+class PyGiSubEntityTraits;
 
 //-----------------------------------------------------------------------------------------
 //PyGiCommonDraw
@@ -17,6 +18,7 @@ public:
     PyGiCommonDraw(AcGiCommonDraw* ptr, bool autoDelete);
     virtual ~PyGiCommonDraw() override = default;
 public:
+    PyGiSubEntityTraits subEntityTraits() const;
     static std::string  className();
     static PyRxClass    desc();
 public:

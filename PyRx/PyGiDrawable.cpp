@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PyGiDrawable.h"
 #include "PyGiCommonDraw.h"
+#include "PyGiSubEntityTraits.h"
 
 using namespace boost::python;
 //-----------------------------------------------------------------------------------------
@@ -38,6 +39,8 @@ AcGiDrawable* PyGiDrawable::impObj(const std::source_location& src /*= std::sour
 
 //-----------------------------------------------------------------------------------------
 //PyGiDrawableOverrule
+
+std::mutex PyGiDrawableOverruleMutex;
 void makeAcGiDrawableOverruleWrapper()
 {
     class_<PyGiDrawableOverrule, bases<PyRxOverrule>>("DrawableOverrule")
@@ -66,6 +69,11 @@ PyGiDrawableOverrule::PyGiDrawableOverrule()
 PyGiDrawableOverrule::PyGiDrawableOverrule(AcGiDrawableOverrule* ptr, bool autoDelete)
     : PyRxOverrule(ptr, autoDelete)
 {
+}
+
+Adesk::UInt32 PyGiDrawableOverrule::setAttributes(PyGiDrawable& pSubject, PyGiDrawableTraits& traits)
+{
+    return impObj()->setAttributes(pSubject.impObj(), traits.impObj());
 }
 
 bool PyGiDrawableOverrule::isApplicableWr(PyRxObject& pOverruledSubject) const
@@ -144,12 +152,14 @@ void PyGiDrawableOverrule::baseViewportDrawLogicalFlags(PyGiDrawable& pSubject, 
 
 bool PyGiDrawableOverrule::isApplicable(const AcRxObject* pOverruledSubject) const
 {
+    std::lock_guard<std::mutex> guard(PyGiDrawableOverruleMutex);
     PyRxObject obj(pOverruledSubject);
     return this->isApplicableWr(obj);
 }
 
 Adesk::Boolean PyGiDrawableOverrule::worldDraw(AcGiDrawable* pSubject, AcGiWorldDraw* wd)
 {
+    std::lock_guard<std::mutex> guard(PyGiDrawableOverruleMutex);
     PyGiWorldDraw _wd(wd, false);
     PyGiDrawable _dr(pSubject, false, false);
     return worldDrawWr(_dr, _wd);
@@ -157,6 +167,7 @@ Adesk::Boolean PyGiDrawableOverrule::worldDraw(AcGiDrawable* pSubject, AcGiWorld
 
 void PyGiDrawableOverrule::viewportDraw(AcGiDrawable* pSubject, AcGiViewportDraw* vd)
 {
+    std::lock_guard<std::mutex> guard(PyGiDrawableOverruleMutex);
     PyGiViewportDraw _vd(vd, false);
     PyGiDrawable _dr(pSubject, false, false);
     return viewportDrawWr(_dr, _vd);
@@ -164,6 +175,7 @@ void PyGiDrawableOverrule::viewportDraw(AcGiDrawable* pSubject, AcGiViewportDraw
 
 Adesk::UInt32 PyGiDrawableOverrule::viewportDrawLogicalFlags(AcGiDrawable* pSubject, AcGiViewportDraw* vd)
 {
+    std::lock_guard<std::mutex> guard(PyGiDrawableOverruleMutex);
     PyGiViewportDraw _vd(vd, false);
     PyGiDrawable _dr(pSubject, false, false);
     return viewportDrawLogicalFlagsWr(_dr, _vd);
