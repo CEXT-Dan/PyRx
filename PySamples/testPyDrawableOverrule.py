@@ -39,6 +39,7 @@ class MyDrawableOverrule(PyGi.DrawableOverrule):
             geo.circle(cen, rad, PyGe.Vector3d.kZAxis)
             
             #draw text
+            traits.setColor(2)
             testpos = cen + (seg.direction().perpVector().normalize() * 3)
             geo.text(testpos, PyGe.Vector3d.kZAxis,
                      seg.direction(), 10, 1.0, 0, "SUP Bruh")
