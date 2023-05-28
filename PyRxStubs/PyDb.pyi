@@ -16515,7 +16515,12 @@ qtextmode( (Database)arg1) -> bool :
 readDwgFile( (Database)arg1, (str)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus readDwgFile(class PyDbDatabase {lvalue},char const * __ptr64)'''
+        enum Acad::ErrorStatus readDwgFile(class PyDbDatabase {lvalue},char const * __ptr64)
+
+readDwgFile( (Database)arg1, (str)arg2, (int)arg3, (bool)arg4, (str)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus readDwgFile(class PyDbDatabase {lvalue},char const * __ptr64,int,bool,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def reclaimMemoryFromErasedObjects (self, *args, **kwargs):
       '''

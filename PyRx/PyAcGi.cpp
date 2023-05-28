@@ -21,6 +21,48 @@ BOOST_PYTHON_MODULE(PyGi)
     makeAcGiGeometryWrapper();
     makeAcGiWorldGeometryWrapper();
     makeAcGiViewportGeometryWrapper();
+
+    enum_<AcGiPositionTransformBehavior>("AcGiPositionTransformBehavior")
+        .value("kAcGiWorldPosition", AcGiPositionTransformBehavior::kAcGiWorldPosition)
+        .value("kAcGiViewportPosition", AcGiPositionTransformBehavior::kAcGiViewportPosition)
+        .value("kAcGiScreenPosition", AcGiPositionTransformBehavior::kAcGiScreenPosition)
+        .value("kAcGiScreenLocalOriginPosition", AcGiPositionTransformBehavior::kAcGiScreenLocalOriginPosition)
+        .value("kAcGiWorldWithScreenOffsetPosition", AcGiPositionTransformBehavior::kAcGiWorldWithScreenOffsetPosition)
+        .export_values()
+        ;
+    enum_<AcGiScaleTransformBehavior>("AcGiScaleTransformBehavior")
+        .value("kAcGiWorldScale", AcGiScaleTransformBehavior::kAcGiWorldScale)
+        .value("kAcGiViewportScale", AcGiScaleTransformBehavior::kAcGiViewportScale)
+        .value("kAcGiScreenScale", AcGiScaleTransformBehavior::kAcGiScreenScale)
+        .value("kAcGiViewportLocalOriginScale", AcGiScaleTransformBehavior::kAcGiViewportLocalOriginScale)
+        .value("kAcGiScreenLocalOriginScale", AcGiScaleTransformBehavior::kAcGiScreenLocalOriginScale)
+        .export_values()
+        ;
+    enum_<AcGiOrientationTransformBehavior>("AcGiOrientationTransformBehavior")
+        .value("kAcGiWorldOrientation", AcGiOrientationTransformBehavior::kAcGiWorldOrientation)
+        .value("kAcGiScreenOrientation", AcGiOrientationTransformBehavior::kAcGiScreenOrientation)
+        .value("kAcGiZAxisOrientation", AcGiOrientationTransformBehavior::kAcGiZAxisOrientation)
+        .export_values()
+        ;
+    enum_<AcGiGeometry::TransparencyMode>("TransparencyMode")//TODO: check for clash
+        .value("kTransparencyOff", AcGiGeometry::TransparencyMode::kTransparencyOff)
+        .value("kTransparency1Bit", AcGiGeometry::TransparencyMode::kTransparency1Bit)
+        .value("kTransparency8Bit", AcGiGeometry::TransparencyMode::kTransparency8Bit)
+        .export_values()
+        ;
+    enum_<AcGiArcType>("AcGiArcType")
+        .value("kAcGiArcSimple", AcGiArcType::kAcGiArcSimple)
+        .value("kAcGiArcSector", AcGiArcType::kAcGiArcSector)
+        .value("kAcGiArcChord", AcGiArcType::kAcGiArcChord)
+        .export_values()
+        ;
+    enum_<AcGiOrientationType>("AcGiOrientationType")
+        .value("kAcGiCounterClockwise", AcGiOrientationType::kAcGiCounterClockwise)
+        .value("kAcGiNoOrientation", AcGiOrientationType::kAcGiNoOrientation)
+        .value("kAcGiClockwise", AcGiOrientationType::kAcGiClockwise)
+        .export_values()
+        ;
+
 }
 
 void initPyGiModule()
