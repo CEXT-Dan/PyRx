@@ -18,10 +18,15 @@
 </font></dt><dd>
 <dl>
 <dt><font face="helvetica, arial"><a href="PyGi.html#AcGiArcType">AcGiArcType</a>
+</font></dt><dt><font face="helvetica, arial"><a href="PyGi.html#AcGiFillType">AcGiFillType</a>
 </font></dt><dt><font face="helvetica, arial"><a href="PyGi.html#AcGiOrientationTransformBehavior">AcGiOrientationTransformBehavior</a>
 </font></dt><dt><font face="helvetica, arial"><a href="PyGi.html#AcGiOrientationType">AcGiOrientationType</a>
 </font></dt><dt><font face="helvetica, arial"><a href="PyGi.html#AcGiPositionTransformBehavior">AcGiPositionTransformBehavior</a>
 </font></dt><dt><font face="helvetica, arial"><a href="PyGi.html#AcGiScaleTransformBehavior">AcGiScaleTransformBehavior</a>
+</font></dt><dt><font face="helvetica, arial"><a href="PyGi.html#AcGiVisibility">AcGiVisibility</a>
+</font></dt><dt><font face="helvetica, arial"><a href="PyGi.html#DrawFlags">DrawFlags</a>
+</font></dt><dt><font face="helvetica, arial"><a href="PyGi.html#SelectionFlags">SelectionFlags</a>
+</font></dt><dt><font face="helvetica, arial"><a href="PyGi.html#ShadowFlags">ShadowFlags</a>
 </font></dt><dt><font face="helvetica, arial"><a href="PyGi.html#TransparencyMode">TransparencyMode</a>
 </font></dt></dl>
 </dd>
@@ -47,6 +52,12 @@
 <dl>
 <dt><font face="helvetica, arial"><a href="PyGi.html#ViewportGeometry">ViewportGeometry</a>
 </font></dt><dt><font face="helvetica, arial"><a href="PyGi.html#WorldGeometry">WorldGeometry</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="PyGi.html#SubEntityTraits">SubEntityTraits</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="PyGi.html#DrawableTraits">DrawableTraits</a>
 </font></dt></dl>
 </dd>
 </dl>
@@ -256,6 +267,223 @@ signed<br>
 <hr>
 Static methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
 <dl><dt><a name="AcGiArcType-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><strong>denominator</strong></dt>
+<dd><tt>the&nbsp;denominator&nbsp;of&nbsp;a&nbsp;rational&nbsp;number&nbsp;in&nbsp;lowest&nbsp;terms</tt></dd>
+</dl>
+<dl><dt><strong>imag</strong></dt>
+<dd><tt>the&nbsp;imaginary&nbsp;part&nbsp;of&nbsp;a&nbsp;complex&nbsp;number</tt></dd>
+</dl>
+<dl><dt><strong>numerator</strong></dt>
+<dd><tt>the&nbsp;numerator&nbsp;of&nbsp;a&nbsp;rational&nbsp;number&nbsp;in&nbsp;lowest&nbsp;terms</tt></dd>
+</dl>
+<dl><dt><strong>real</strong></dt>
+<dd><tt>the&nbsp;real&nbsp;part&nbsp;of&nbsp;a&nbsp;complex&nbsp;number</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="AcGiFillType">class <strong>AcGiFillType</strong></a>(Boost.Python.enum)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="PyGi.html#AcGiFillType">AcGiFillType</a></dd>
+<dd>Boost.Python.enum</dd>
+<dd><a href="builtins.html#int">builtins.int</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>kAcGiFillAlways</strong> = PyGi.AcGiFillType.kAcGiFillAlways</dl>
+
+<dl><dt><strong>kAcGiFillNever</strong> = PyGi.AcGiFillType.kAcGiFillNever</dl>
+
+<dl><dt><strong>names</strong> = {'kAcGiFillAlways': PyGi.AcGiFillType.kAcGiFillAlways, 'kAcGiFillNever': PyGi.AcGiFillType.kAcGiFillNever}</dl>
+
+<dl><dt><strong>values</strong> = {1: PyGi.AcGiFillType.kAcGiFillAlways, 2: PyGi.AcGiFillType.kAcGiFillNever}</dl>
+
+<hr>
+Methods inherited from Boost.Python.enum:<br>
+<dl><dt><a name="AcGiFillType-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from Boost.Python.enum:<br>
+<dl><dt><strong>name</strong></dt>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="AcGiFillType-__abs__"><strong>__abs__</strong></a>(self, /)</dt><dd><tt>abs(self)</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__add__"><strong>__add__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self+value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__and__"><strong>__and__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&amp;value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__bool__"><strong>__bool__</strong></a>(self, /)</dt><dd><tt>True&nbsp;if&nbsp;self&nbsp;else&nbsp;False</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__ceil__"><strong>__ceil__</strong></a>(...)</dt><dd><tt>Ceiling&nbsp;of&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__divmod__"><strong>__divmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;divmod(self,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__float__"><strong>__float__</strong></a>(self, /)</dt><dd><tt>float(self)</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__floor__"><strong>__floor__</strong></a>(...)</dt><dd><tt>Flooring&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__floordiv__"><strong>__floordiv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self//value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__format__"><strong>__format__</strong></a>(self, format_spec, /)</dt><dd><tt>Default&nbsp;object&nbsp;formatter.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__getnewargs__"><strong>__getnewargs__</strong></a>(self, /)</dt></dl>
+
+<dl><dt><a name="AcGiFillType-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;hash(self).</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__index__"><strong>__index__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;self&nbsp;converted&nbsp;to&nbsp;an&nbsp;integer,&nbsp;if&nbsp;self&nbsp;is&nbsp;suitable&nbsp;for&nbsp;use&nbsp;as&nbsp;an&nbsp;index&nbsp;into&nbsp;a&nbsp;list.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__int__"><strong>__int__</strong></a>(self, /)</dt><dd><tt>int(self)</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__invert__"><strong>__invert__</strong></a>(self, /)</dt><dd><tt>~self</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__lshift__"><strong>__lshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__mod__"><strong>__mod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self%value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__mul__"><strong>__mul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self*value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__neg__"><strong>__neg__</strong></a>(self, /)</dt><dd><tt>-self</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__or__"><strong>__or__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self|value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__pos__"><strong>__pos__</strong></a>(self, /)</dt><dd><tt>+self</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__pow__"><strong>__pow__</strong></a>(self, value, mod=None, /)</dt><dd><tt>Return&nbsp;pow(self,&nbsp;value,&nbsp;mod).</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__radd__"><strong>__radd__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value+self.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__rand__"><strong>__rand__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&amp;self.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__rdivmod__"><strong>__rdivmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;divmod(value,&nbsp;self).</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__rfloordiv__"><strong>__rfloordiv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value//self.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__rlshift__"><strong>__rlshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&lt;&lt;self.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__rmod__"><strong>__rmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value%self.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__rmul__"><strong>__rmul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value*self.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__ror__"><strong>__ror__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value|self.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__round__"><strong>__round__</strong></a>(...)</dt><dd><tt>Rounding&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.<br>
+&nbsp;<br>
+Rounding&nbsp;with&nbsp;an&nbsp;ndigits&nbsp;argument&nbsp;also&nbsp;returns&nbsp;an&nbsp;integer.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__rpow__"><strong>__rpow__</strong></a>(self, value, mod=None, /)</dt><dd><tt>Return&nbsp;pow(value,&nbsp;self,&nbsp;mod).</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__rrshift__"><strong>__rrshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&gt;&gt;self.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__rshift__"><strong>__rshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__rsub__"><strong>__rsub__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value-self.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__rtruediv__"><strong>__rtruediv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value/self.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__rxor__"><strong>__rxor__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value^self.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__sizeof__"><strong>__sizeof__</strong></a>(self, /)</dt><dd><tt>Returns&nbsp;size&nbsp;in&nbsp;memory,&nbsp;in&nbsp;bytes.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__sub__"><strong>__sub__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self-value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__truediv__"><strong>__truediv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self/value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__trunc__"><strong>__trunc__</strong></a>(...)</dt><dd><tt>Truncating&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-__xor__"><strong>__xor__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self^value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-as_integer_ratio"><strong>as_integer_ratio</strong></a>(self, /)</dt><dd><tt>Return&nbsp;integer&nbsp;ratio.<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;pair&nbsp;of&nbsp;integers,&nbsp;whose&nbsp;ratio&nbsp;is&nbsp;exactly&nbsp;equal&nbsp;to&nbsp;the&nbsp;original&nbsp;int<br>
+and&nbsp;with&nbsp;a&nbsp;positive&nbsp;denominator.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;(10).<a href="#AcGiFillType-as_integer_ratio">as_integer_ratio</a>()<br>
+(10,&nbsp;1)<br>
+&gt;&gt;&gt;&nbsp;(-10).<a href="#AcGiFillType-as_integer_ratio">as_integer_ratio</a>()<br>
+(-10,&nbsp;1)<br>
+&gt;&gt;&gt;&nbsp;(0).<a href="#AcGiFillType-as_integer_ratio">as_integer_ratio</a>()<br>
+(0,&nbsp;1)</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-bit_count"><strong>bit_count</strong></a>(self, /)</dt><dd><tt>Number&nbsp;of&nbsp;ones&nbsp;in&nbsp;the&nbsp;binary&nbsp;representation&nbsp;of&nbsp;the&nbsp;absolute&nbsp;value&nbsp;of&nbsp;self.<br>
+&nbsp;<br>
+Also&nbsp;known&nbsp;as&nbsp;the&nbsp;population&nbsp;count.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;bin(13)<br>
+'0b1101'<br>
+&gt;&gt;&gt;&nbsp;(13).<a href="#AcGiFillType-bit_count">bit_count</a>()<br>
+3</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-bit_length"><strong>bit_length</strong></a>(self, /)</dt><dd><tt>Number&nbsp;of&nbsp;bits&nbsp;necessary&nbsp;to&nbsp;represent&nbsp;self&nbsp;in&nbsp;binary.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;bin(37)<br>
+'0b100101'<br>
+&gt;&gt;&gt;&nbsp;(37).<a href="#AcGiFillType-bit_length">bit_length</a>()<br>
+6</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-conjugate"><strong>conjugate</strong></a>(...)</dt><dd><tt>Returns&nbsp;self,&nbsp;the&nbsp;complex&nbsp;conjugate&nbsp;of&nbsp;any&nbsp;int.</tt></dd></dl>
+
+<dl><dt><a name="AcGiFillType-to_bytes"><strong>to_bytes</strong></a>(self, /, length, byteorder, *, signed=False)</dt><dd><tt>Return&nbsp;an&nbsp;array&nbsp;of&nbsp;bytes&nbsp;representing&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+length<br>
+&nbsp;&nbsp;Length&nbsp;of&nbsp;bytes&nbsp;object&nbsp;to&nbsp;use.&nbsp;&nbsp;An&nbsp;OverflowError&nbsp;is&nbsp;raised&nbsp;if&nbsp;the<br>
+&nbsp;&nbsp;integer&nbsp;is&nbsp;not&nbsp;representable&nbsp;with&nbsp;the&nbsp;given&nbsp;number&nbsp;of&nbsp;bytes.<br>
+byteorder<br>
+&nbsp;&nbsp;The&nbsp;byte&nbsp;order&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.&nbsp;&nbsp;If&nbsp;byteorder&nbsp;is&nbsp;'big',<br>
+&nbsp;&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;byte&nbsp;array.&nbsp;&nbsp;If<br>
+&nbsp;&nbsp;byteorder&nbsp;is&nbsp;'little',&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;byte&nbsp;array.&nbsp;&nbsp;To&nbsp;request&nbsp;the&nbsp;native&nbsp;byte&nbsp;order&nbsp;of&nbsp;the&nbsp;host&nbsp;system,&nbsp;use<br>
+&nbsp;&nbsp;`sys.byteorder'&nbsp;as&nbsp;the&nbsp;byte&nbsp;order&nbsp;value.<br>
+signed<br>
+&nbsp;&nbsp;Determines&nbsp;whether&nbsp;two's&nbsp;complement&nbsp;is&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.<br>
+&nbsp;&nbsp;If&nbsp;signed&nbsp;is&nbsp;False&nbsp;and&nbsp;a&nbsp;negative&nbsp;integer&nbsp;is&nbsp;given,&nbsp;an&nbsp;OverflowError<br>
+&nbsp;&nbsp;is&nbsp;raised.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="AcGiFillType-from_bytes"><strong>from_bytes</strong></a>(bytes, byteorder, *, signed=False)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Return&nbsp;the&nbsp;integer&nbsp;represented&nbsp;by&nbsp;the&nbsp;given&nbsp;array&nbsp;of&nbsp;bytes.<br>
+&nbsp;<br>
+bytes<br>
+&nbsp;&nbsp;Holds&nbsp;the&nbsp;array&nbsp;of&nbsp;bytes&nbsp;to&nbsp;convert.&nbsp;&nbsp;The&nbsp;argument&nbsp;must&nbsp;either<br>
+&nbsp;&nbsp;support&nbsp;the&nbsp;buffer&nbsp;protocol&nbsp;or&nbsp;be&nbsp;an&nbsp;iterable&nbsp;object&nbsp;producing&nbsp;bytes.<br>
+&nbsp;&nbsp;Bytes&nbsp;and&nbsp;bytearray&nbsp;are&nbsp;examples&nbsp;of&nbsp;built-in&nbsp;objects&nbsp;that&nbsp;support&nbsp;the<br>
+&nbsp;&nbsp;buffer&nbsp;protocol.<br>
+byteorder<br>
+&nbsp;&nbsp;The&nbsp;byte&nbsp;order&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.&nbsp;&nbsp;If&nbsp;byteorder&nbsp;is&nbsp;'big',<br>
+&nbsp;&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;byte&nbsp;array.&nbsp;&nbsp;If<br>
+&nbsp;&nbsp;byteorder&nbsp;is&nbsp;'little',&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;byte&nbsp;array.&nbsp;&nbsp;To&nbsp;request&nbsp;the&nbsp;native&nbsp;byte&nbsp;order&nbsp;of&nbsp;the&nbsp;host&nbsp;system,&nbsp;use<br>
+&nbsp;&nbsp;`sys.byteorder'&nbsp;as&nbsp;the&nbsp;byte&nbsp;order&nbsp;value.<br>
+signed<br>
+&nbsp;&nbsp;Indicates&nbsp;whether&nbsp;two's&nbsp;complement&nbsp;is&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="AcGiFillType-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
 
 <hr>
 Data descriptors inherited from <a href="builtins.html#int">builtins.int</a>:<br>
@@ -1159,6 +1387,225 @@ Data descriptors inherited from <a href="builtins.html#int">builtins.int</a>:<br
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="AcGiVisibility">class <strong>AcGiVisibility</strong></a>(Boost.Python.enum)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="PyGi.html#AcGiVisibility">AcGiVisibility</a></dd>
+<dd>Boost.Python.enum</dd>
+<dd><a href="builtins.html#int">builtins.int</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>kAcGiInvisible</strong> = PyGi.AcGiVisibility.kAcGiInvisible</dl>
+
+<dl><dt><strong>kAcGiSilhouette</strong> = PyGi.AcGiVisibility.kAcGiSilhouette</dl>
+
+<dl><dt><strong>kAcGiVisible</strong> = PyGi.AcGiVisibility.kAcGiVisible</dl>
+
+<dl><dt><strong>names</strong> = {'kAcGiInvisible': PyGi.AcGiVisibility.kAcGiInvisible, 'kAcGiSilhouette': PyGi.AcGiVisibility.kAcGiSilhouette, 'kAcGiVisible': PyGi.AcGiVisibility.kAcGiVisible}</dl>
+
+<dl><dt><strong>values</strong> = {0: PyGi.AcGiVisibility.kAcGiInvisible, 1: PyGi.AcGiVisibility.kAcGiVisible, 2: PyGi.AcGiVisibility.kAcGiSilhouette}</dl>
+
+<hr>
+Methods inherited from Boost.Python.enum:<br>
+<dl><dt><a name="AcGiVisibility-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from Boost.Python.enum:<br>
+<dl><dt><strong>name</strong></dt>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="AcGiVisibility-__abs__"><strong>__abs__</strong></a>(self, /)</dt><dd><tt>abs(self)</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__add__"><strong>__add__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self+value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__and__"><strong>__and__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&amp;value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__bool__"><strong>__bool__</strong></a>(self, /)</dt><dd><tt>True&nbsp;if&nbsp;self&nbsp;else&nbsp;False</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__ceil__"><strong>__ceil__</strong></a>(...)</dt><dd><tt>Ceiling&nbsp;of&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__divmod__"><strong>__divmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;divmod(self,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__float__"><strong>__float__</strong></a>(self, /)</dt><dd><tt>float(self)</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__floor__"><strong>__floor__</strong></a>(...)</dt><dd><tt>Flooring&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__floordiv__"><strong>__floordiv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self//value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__format__"><strong>__format__</strong></a>(self, format_spec, /)</dt><dd><tt>Default&nbsp;object&nbsp;formatter.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__getnewargs__"><strong>__getnewargs__</strong></a>(self, /)</dt></dl>
+
+<dl><dt><a name="AcGiVisibility-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;hash(self).</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__index__"><strong>__index__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;self&nbsp;converted&nbsp;to&nbsp;an&nbsp;integer,&nbsp;if&nbsp;self&nbsp;is&nbsp;suitable&nbsp;for&nbsp;use&nbsp;as&nbsp;an&nbsp;index&nbsp;into&nbsp;a&nbsp;list.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__int__"><strong>__int__</strong></a>(self, /)</dt><dd><tt>int(self)</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__invert__"><strong>__invert__</strong></a>(self, /)</dt><dd><tt>~self</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__lshift__"><strong>__lshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__mod__"><strong>__mod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self%value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__mul__"><strong>__mul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self*value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__neg__"><strong>__neg__</strong></a>(self, /)</dt><dd><tt>-self</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__or__"><strong>__or__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self|value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__pos__"><strong>__pos__</strong></a>(self, /)</dt><dd><tt>+self</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__pow__"><strong>__pow__</strong></a>(self, value, mod=None, /)</dt><dd><tt>Return&nbsp;pow(self,&nbsp;value,&nbsp;mod).</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__radd__"><strong>__radd__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value+self.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__rand__"><strong>__rand__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&amp;self.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__rdivmod__"><strong>__rdivmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;divmod(value,&nbsp;self).</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__rfloordiv__"><strong>__rfloordiv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value//self.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__rlshift__"><strong>__rlshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&lt;&lt;self.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__rmod__"><strong>__rmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value%self.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__rmul__"><strong>__rmul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value*self.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__ror__"><strong>__ror__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value|self.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__round__"><strong>__round__</strong></a>(...)</dt><dd><tt>Rounding&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.<br>
+&nbsp;<br>
+Rounding&nbsp;with&nbsp;an&nbsp;ndigits&nbsp;argument&nbsp;also&nbsp;returns&nbsp;an&nbsp;integer.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__rpow__"><strong>__rpow__</strong></a>(self, value, mod=None, /)</dt><dd><tt>Return&nbsp;pow(value,&nbsp;self,&nbsp;mod).</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__rrshift__"><strong>__rrshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&gt;&gt;self.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__rshift__"><strong>__rshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__rsub__"><strong>__rsub__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value-self.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__rtruediv__"><strong>__rtruediv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value/self.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__rxor__"><strong>__rxor__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value^self.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__sizeof__"><strong>__sizeof__</strong></a>(self, /)</dt><dd><tt>Returns&nbsp;size&nbsp;in&nbsp;memory,&nbsp;in&nbsp;bytes.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__sub__"><strong>__sub__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self-value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__truediv__"><strong>__truediv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self/value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__trunc__"><strong>__trunc__</strong></a>(...)</dt><dd><tt>Truncating&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-__xor__"><strong>__xor__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self^value.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-as_integer_ratio"><strong>as_integer_ratio</strong></a>(self, /)</dt><dd><tt>Return&nbsp;integer&nbsp;ratio.<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;pair&nbsp;of&nbsp;integers,&nbsp;whose&nbsp;ratio&nbsp;is&nbsp;exactly&nbsp;equal&nbsp;to&nbsp;the&nbsp;original&nbsp;int<br>
+and&nbsp;with&nbsp;a&nbsp;positive&nbsp;denominator.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;(10).<a href="#AcGiVisibility-as_integer_ratio">as_integer_ratio</a>()<br>
+(10,&nbsp;1)<br>
+&gt;&gt;&gt;&nbsp;(-10).<a href="#AcGiVisibility-as_integer_ratio">as_integer_ratio</a>()<br>
+(-10,&nbsp;1)<br>
+&gt;&gt;&gt;&nbsp;(0).<a href="#AcGiVisibility-as_integer_ratio">as_integer_ratio</a>()<br>
+(0,&nbsp;1)</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-bit_count"><strong>bit_count</strong></a>(self, /)</dt><dd><tt>Number&nbsp;of&nbsp;ones&nbsp;in&nbsp;the&nbsp;binary&nbsp;representation&nbsp;of&nbsp;the&nbsp;absolute&nbsp;value&nbsp;of&nbsp;self.<br>
+&nbsp;<br>
+Also&nbsp;known&nbsp;as&nbsp;the&nbsp;population&nbsp;count.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;bin(13)<br>
+'0b1101'<br>
+&gt;&gt;&gt;&nbsp;(13).<a href="#AcGiVisibility-bit_count">bit_count</a>()<br>
+3</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-bit_length"><strong>bit_length</strong></a>(self, /)</dt><dd><tt>Number&nbsp;of&nbsp;bits&nbsp;necessary&nbsp;to&nbsp;represent&nbsp;self&nbsp;in&nbsp;binary.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;bin(37)<br>
+'0b100101'<br>
+&gt;&gt;&gt;&nbsp;(37).<a href="#AcGiVisibility-bit_length">bit_length</a>()<br>
+6</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-conjugate"><strong>conjugate</strong></a>(...)</dt><dd><tt>Returns&nbsp;self,&nbsp;the&nbsp;complex&nbsp;conjugate&nbsp;of&nbsp;any&nbsp;int.</tt></dd></dl>
+
+<dl><dt><a name="AcGiVisibility-to_bytes"><strong>to_bytes</strong></a>(self, /, length, byteorder, *, signed=False)</dt><dd><tt>Return&nbsp;an&nbsp;array&nbsp;of&nbsp;bytes&nbsp;representing&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+length<br>
+&nbsp;&nbsp;Length&nbsp;of&nbsp;bytes&nbsp;object&nbsp;to&nbsp;use.&nbsp;&nbsp;An&nbsp;OverflowError&nbsp;is&nbsp;raised&nbsp;if&nbsp;the<br>
+&nbsp;&nbsp;integer&nbsp;is&nbsp;not&nbsp;representable&nbsp;with&nbsp;the&nbsp;given&nbsp;number&nbsp;of&nbsp;bytes.<br>
+byteorder<br>
+&nbsp;&nbsp;The&nbsp;byte&nbsp;order&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.&nbsp;&nbsp;If&nbsp;byteorder&nbsp;is&nbsp;'big',<br>
+&nbsp;&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;byte&nbsp;array.&nbsp;&nbsp;If<br>
+&nbsp;&nbsp;byteorder&nbsp;is&nbsp;'little',&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;byte&nbsp;array.&nbsp;&nbsp;To&nbsp;request&nbsp;the&nbsp;native&nbsp;byte&nbsp;order&nbsp;of&nbsp;the&nbsp;host&nbsp;system,&nbsp;use<br>
+&nbsp;&nbsp;`sys.byteorder'&nbsp;as&nbsp;the&nbsp;byte&nbsp;order&nbsp;value.<br>
+signed<br>
+&nbsp;&nbsp;Determines&nbsp;whether&nbsp;two's&nbsp;complement&nbsp;is&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.<br>
+&nbsp;&nbsp;If&nbsp;signed&nbsp;is&nbsp;False&nbsp;and&nbsp;a&nbsp;negative&nbsp;integer&nbsp;is&nbsp;given,&nbsp;an&nbsp;OverflowError<br>
+&nbsp;&nbsp;is&nbsp;raised.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="AcGiVisibility-from_bytes"><strong>from_bytes</strong></a>(bytes, byteorder, *, signed=False)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Return&nbsp;the&nbsp;integer&nbsp;represented&nbsp;by&nbsp;the&nbsp;given&nbsp;array&nbsp;of&nbsp;bytes.<br>
+&nbsp;<br>
+bytes<br>
+&nbsp;&nbsp;Holds&nbsp;the&nbsp;array&nbsp;of&nbsp;bytes&nbsp;to&nbsp;convert.&nbsp;&nbsp;The&nbsp;argument&nbsp;must&nbsp;either<br>
+&nbsp;&nbsp;support&nbsp;the&nbsp;buffer&nbsp;protocol&nbsp;or&nbsp;be&nbsp;an&nbsp;iterable&nbsp;object&nbsp;producing&nbsp;bytes.<br>
+&nbsp;&nbsp;Bytes&nbsp;and&nbsp;bytearray&nbsp;are&nbsp;examples&nbsp;of&nbsp;built-in&nbsp;objects&nbsp;that&nbsp;support&nbsp;the<br>
+&nbsp;&nbsp;buffer&nbsp;protocol.<br>
+byteorder<br>
+&nbsp;&nbsp;The&nbsp;byte&nbsp;order&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.&nbsp;&nbsp;If&nbsp;byteorder&nbsp;is&nbsp;'big',<br>
+&nbsp;&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;byte&nbsp;array.&nbsp;&nbsp;If<br>
+&nbsp;&nbsp;byteorder&nbsp;is&nbsp;'little',&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;byte&nbsp;array.&nbsp;&nbsp;To&nbsp;request&nbsp;the&nbsp;native&nbsp;byte&nbsp;order&nbsp;of&nbsp;the&nbsp;host&nbsp;system,&nbsp;use<br>
+&nbsp;&nbsp;`sys.byteorder'&nbsp;as&nbsp;the&nbsp;byte&nbsp;order&nbsp;value.<br>
+signed<br>
+&nbsp;&nbsp;Indicates&nbsp;whether&nbsp;two's&nbsp;complement&nbsp;is&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="AcGiVisibility-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><strong>denominator</strong></dt>
+<dd><tt>the&nbsp;denominator&nbsp;of&nbsp;a&nbsp;rational&nbsp;number&nbsp;in&nbsp;lowest&nbsp;terms</tt></dd>
+</dl>
+<dl><dt><strong>imag</strong></dt>
+<dd><tt>the&nbsp;imaginary&nbsp;part&nbsp;of&nbsp;a&nbsp;complex&nbsp;number</tt></dd>
+</dl>
+<dl><dt><strong>numerator</strong></dt>
+<dd><tt>the&nbsp;numerator&nbsp;of&nbsp;a&nbsp;rational&nbsp;number&nbsp;in&nbsp;lowest&nbsp;terms</tt></dd>
+</dl>
+<dl><dt><strong>real</strong></dt>
+<dd><tt>the&nbsp;real&nbsp;part&nbsp;of&nbsp;a&nbsp;complex&nbsp;number</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
 <font color="#000000" face="helvetica, arial"><a name="CommonDraw">class <strong>CommonDraw</strong></a>(<a href="PyRx.html#RxObject">PyRx.RxObject</a>)</font></td></tr>
     
 <tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
@@ -1184,6 +1631,11 @@ This&nbsp;class&nbsp;cannot&nbsp;be&nbsp;instantiated&nbsp;from&nbsp;Python</tt>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyRxClass&nbsp;<a href="#CommonDraw-desc">desc</a>()</tt></dd></dl>
+
+<dl><dt><a name="CommonDraw-subEntityTraits"><strong>subEntityTraits</strong></a>(...)</dt><dd><tt><a href="#CommonDraw-subEntityTraits">subEntityTraits</a>(&nbsp;(<a href="#CommonDraw">CommonDraw</a>)arg1)&nbsp;-&gt;&nbsp;<a href="#SubEntityTraits">SubEntityTraits</a>&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyGiSubEntityTraits&nbsp;<a href="#CommonDraw-subEntityTraits">subEntityTraits</a>(class&nbsp;PyGiCommonDraw&nbsp;{lvalue})</tt></dd></dl>
 
 <hr>
 Static methods inherited from <a href="PyRx.html#RxObject">PyRx.RxObject</a>:<br>
@@ -1221,6 +1673,245 @@ Data descriptors inherited from Boost.Python.instance:<br>
 <dl><dt><strong>__dict__</strong></dt>
 </dl>
 <dl><dt><strong>__weakref__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="DrawFlags">class <strong>DrawFlags</strong></a>(Boost.Python.enum)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="PyGi.html#DrawFlags">DrawFlags</a></dd>
+<dd>Boost.Python.enum</dd>
+<dd><a href="builtins.html#int">builtins.int</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>KDrawIsInWCS</strong> = PyGi.DrawFlags.KDrawIsInWCS</dl>
+
+<dl><dt><strong>kDrawFillSelectionWindow</strong> = PyGi.DrawFlags.kDrawFillSelectionWindow</dl>
+
+<dl><dt><strong>kDrawFillTextBoundaryEnd</strong> = PyGi.DrawFlags.kDrawFillTextBoundaryEnd</dl>
+
+<dl><dt><strong>kDrawFillTextBoundaryStart</strong> = PyGi.DrawFlags.kDrawFillTextBoundaryStart</dl>
+
+<dl><dt><strong>kDrawFrontfacesOnly</strong> = PyGi.DrawFlags.kDrawFrontfacesOnly</dl>
+
+<dl><dt><strong>kDrawGradientFill</strong> = PyGi.DrawFlags.kDrawGradientFill</dl>
+
+<dl><dt><strong>kDrawHatchGroup</strong> = PyGi.DrawFlags.kDrawHatchGroup</dl>
+
+<dl><dt><strong>kDrawNoForceByLayer</strong> = PyGi.DrawFlags.kDrawNoForceByLayer</dl>
+
+<dl><dt><strong>kDrawNoLineWeight</strong> = PyGi.DrawFlags.kDrawNoLineWeight</dl>
+
+<dl><dt><strong>kDrawNoOptimization</strong> = PyGi.DrawFlags.kDrawNoOptimization</dl>
+
+<dl><dt><strong>kDrawSolidFill</strong> = PyGi.DrawFlags.kDrawSolidFill</dl>
+
+<dl><dt><strong>kDrawUseAcGiEntityForDgnLineType</strong> = PyGi.DrawFlags.kDrawUseAcGiEntityForDgnLineType</dl>
+
+<dl><dt><strong>kNoDrawFlags</strong> = PyGi.DrawFlags.kNoDrawFlags</dl>
+
+<dl><dt><strong>names</strong> = {'KDrawIsInWCS': PyGi.DrawFlags.KDrawIsInWCS, 'kDrawFillSelectionWindow': PyGi.DrawFlags.kDrawFillSelectionWindow, 'kDrawFillTextBoundaryEnd': PyGi.DrawFlags.kDrawFillTextBoundaryEnd, 'kDrawFillTextBoundaryStart': PyGi.DrawFlags.kDrawFillTextBoundaryStart, 'kDrawFrontfacesOnly': PyGi.DrawFlags.kDrawFrontfacesOnly, 'kDrawGradientFill': PyGi.DrawFlags.kDrawGradientFill, 'kDrawHatchGroup': PyGi.DrawFlags.kDrawHatchGroup, 'kDrawNoForceByLayer': PyGi.DrawFlags.kDrawNoForceByLayer, 'kDrawNoLineWeight': PyGi.DrawFlags.kDrawNoLineWeight, 'kDrawNoOptimization': PyGi.DrawFlags.kDrawNoOptimization, ...}</dl>
+
+<dl><dt><strong>values</strong> = {0: PyGi.DrawFlags.kNoDrawFlags, 2: PyGi.DrawFlags.kDrawHatchGroup, 4: PyGi.DrawFlags.kDrawFrontfacesOnly, 8: PyGi.DrawFlags.kDrawGradientFill, 16: PyGi.DrawFlags.kDrawSolidFill, 32: PyGi.DrawFlags.kDrawNoLineWeight, 64: PyGi.DrawFlags.kDrawNoOptimization, 128: PyGi.DrawFlags.kDrawUseAcGiEntityForDgnLineType, 256: PyGi.DrawFlags.kDrawFillTextBoundaryStart, 512: PyGi.DrawFlags.kDrawFillTextBoundaryEnd, ...}</dl>
+
+<hr>
+Methods inherited from Boost.Python.enum:<br>
+<dl><dt><a name="DrawFlags-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from Boost.Python.enum:<br>
+<dl><dt><strong>name</strong></dt>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="DrawFlags-__abs__"><strong>__abs__</strong></a>(self, /)</dt><dd><tt>abs(self)</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__add__"><strong>__add__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self+value.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__and__"><strong>__and__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&amp;value.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__bool__"><strong>__bool__</strong></a>(self, /)</dt><dd><tt>True&nbsp;if&nbsp;self&nbsp;else&nbsp;False</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__ceil__"><strong>__ceil__</strong></a>(...)</dt><dd><tt>Ceiling&nbsp;of&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__divmod__"><strong>__divmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;divmod(self,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__float__"><strong>__float__</strong></a>(self, /)</dt><dd><tt>float(self)</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__floor__"><strong>__floor__</strong></a>(...)</dt><dd><tt>Flooring&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__floordiv__"><strong>__floordiv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self//value.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__format__"><strong>__format__</strong></a>(self, format_spec, /)</dt><dd><tt>Default&nbsp;object&nbsp;formatter.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__getnewargs__"><strong>__getnewargs__</strong></a>(self, /)</dt></dl>
+
+<dl><dt><a name="DrawFlags-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;hash(self).</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__index__"><strong>__index__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;self&nbsp;converted&nbsp;to&nbsp;an&nbsp;integer,&nbsp;if&nbsp;self&nbsp;is&nbsp;suitable&nbsp;for&nbsp;use&nbsp;as&nbsp;an&nbsp;index&nbsp;into&nbsp;a&nbsp;list.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__int__"><strong>__int__</strong></a>(self, /)</dt><dd><tt>int(self)</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__invert__"><strong>__invert__</strong></a>(self, /)</dt><dd><tt>~self</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__lshift__"><strong>__lshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__mod__"><strong>__mod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self%value.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__mul__"><strong>__mul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self*value.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__neg__"><strong>__neg__</strong></a>(self, /)</dt><dd><tt>-self</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__or__"><strong>__or__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self|value.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__pos__"><strong>__pos__</strong></a>(self, /)</dt><dd><tt>+self</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__pow__"><strong>__pow__</strong></a>(self, value, mod=None, /)</dt><dd><tt>Return&nbsp;pow(self,&nbsp;value,&nbsp;mod).</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__radd__"><strong>__radd__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value+self.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__rand__"><strong>__rand__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&amp;self.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__rdivmod__"><strong>__rdivmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;divmod(value,&nbsp;self).</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__rfloordiv__"><strong>__rfloordiv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value//self.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__rlshift__"><strong>__rlshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&lt;&lt;self.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__rmod__"><strong>__rmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value%self.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__rmul__"><strong>__rmul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value*self.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__ror__"><strong>__ror__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value|self.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__round__"><strong>__round__</strong></a>(...)</dt><dd><tt>Rounding&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.<br>
+&nbsp;<br>
+Rounding&nbsp;with&nbsp;an&nbsp;ndigits&nbsp;argument&nbsp;also&nbsp;returns&nbsp;an&nbsp;integer.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__rpow__"><strong>__rpow__</strong></a>(self, value, mod=None, /)</dt><dd><tt>Return&nbsp;pow(value,&nbsp;self,&nbsp;mod).</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__rrshift__"><strong>__rrshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&gt;&gt;self.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__rshift__"><strong>__rshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__rsub__"><strong>__rsub__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value-self.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__rtruediv__"><strong>__rtruediv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value/self.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__rxor__"><strong>__rxor__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value^self.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__sizeof__"><strong>__sizeof__</strong></a>(self, /)</dt><dd><tt>Returns&nbsp;size&nbsp;in&nbsp;memory,&nbsp;in&nbsp;bytes.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__sub__"><strong>__sub__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self-value.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__truediv__"><strong>__truediv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self/value.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__trunc__"><strong>__trunc__</strong></a>(...)</dt><dd><tt>Truncating&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-__xor__"><strong>__xor__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self^value.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-as_integer_ratio"><strong>as_integer_ratio</strong></a>(self, /)</dt><dd><tt>Return&nbsp;integer&nbsp;ratio.<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;pair&nbsp;of&nbsp;integers,&nbsp;whose&nbsp;ratio&nbsp;is&nbsp;exactly&nbsp;equal&nbsp;to&nbsp;the&nbsp;original&nbsp;int<br>
+and&nbsp;with&nbsp;a&nbsp;positive&nbsp;denominator.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;(10).<a href="#DrawFlags-as_integer_ratio">as_integer_ratio</a>()<br>
+(10,&nbsp;1)<br>
+&gt;&gt;&gt;&nbsp;(-10).<a href="#DrawFlags-as_integer_ratio">as_integer_ratio</a>()<br>
+(-10,&nbsp;1)<br>
+&gt;&gt;&gt;&nbsp;(0).<a href="#DrawFlags-as_integer_ratio">as_integer_ratio</a>()<br>
+(0,&nbsp;1)</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-bit_count"><strong>bit_count</strong></a>(self, /)</dt><dd><tt>Number&nbsp;of&nbsp;ones&nbsp;in&nbsp;the&nbsp;binary&nbsp;representation&nbsp;of&nbsp;the&nbsp;absolute&nbsp;value&nbsp;of&nbsp;self.<br>
+&nbsp;<br>
+Also&nbsp;known&nbsp;as&nbsp;the&nbsp;population&nbsp;count.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;bin(13)<br>
+'0b1101'<br>
+&gt;&gt;&gt;&nbsp;(13).<a href="#DrawFlags-bit_count">bit_count</a>()<br>
+3</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-bit_length"><strong>bit_length</strong></a>(self, /)</dt><dd><tt>Number&nbsp;of&nbsp;bits&nbsp;necessary&nbsp;to&nbsp;represent&nbsp;self&nbsp;in&nbsp;binary.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;bin(37)<br>
+'0b100101'<br>
+&gt;&gt;&gt;&nbsp;(37).<a href="#DrawFlags-bit_length">bit_length</a>()<br>
+6</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-conjugate"><strong>conjugate</strong></a>(...)</dt><dd><tt>Returns&nbsp;self,&nbsp;the&nbsp;complex&nbsp;conjugate&nbsp;of&nbsp;any&nbsp;int.</tt></dd></dl>
+
+<dl><dt><a name="DrawFlags-to_bytes"><strong>to_bytes</strong></a>(self, /, length, byteorder, *, signed=False)</dt><dd><tt>Return&nbsp;an&nbsp;array&nbsp;of&nbsp;bytes&nbsp;representing&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+length<br>
+&nbsp;&nbsp;Length&nbsp;of&nbsp;bytes&nbsp;object&nbsp;to&nbsp;use.&nbsp;&nbsp;An&nbsp;OverflowError&nbsp;is&nbsp;raised&nbsp;if&nbsp;the<br>
+&nbsp;&nbsp;integer&nbsp;is&nbsp;not&nbsp;representable&nbsp;with&nbsp;the&nbsp;given&nbsp;number&nbsp;of&nbsp;bytes.<br>
+byteorder<br>
+&nbsp;&nbsp;The&nbsp;byte&nbsp;order&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.&nbsp;&nbsp;If&nbsp;byteorder&nbsp;is&nbsp;'big',<br>
+&nbsp;&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;byte&nbsp;array.&nbsp;&nbsp;If<br>
+&nbsp;&nbsp;byteorder&nbsp;is&nbsp;'little',&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;byte&nbsp;array.&nbsp;&nbsp;To&nbsp;request&nbsp;the&nbsp;native&nbsp;byte&nbsp;order&nbsp;of&nbsp;the&nbsp;host&nbsp;system,&nbsp;use<br>
+&nbsp;&nbsp;`sys.byteorder'&nbsp;as&nbsp;the&nbsp;byte&nbsp;order&nbsp;value.<br>
+signed<br>
+&nbsp;&nbsp;Determines&nbsp;whether&nbsp;two's&nbsp;complement&nbsp;is&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.<br>
+&nbsp;&nbsp;If&nbsp;signed&nbsp;is&nbsp;False&nbsp;and&nbsp;a&nbsp;negative&nbsp;integer&nbsp;is&nbsp;given,&nbsp;an&nbsp;OverflowError<br>
+&nbsp;&nbsp;is&nbsp;raised.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="DrawFlags-from_bytes"><strong>from_bytes</strong></a>(bytes, byteorder, *, signed=False)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Return&nbsp;the&nbsp;integer&nbsp;represented&nbsp;by&nbsp;the&nbsp;given&nbsp;array&nbsp;of&nbsp;bytes.<br>
+&nbsp;<br>
+bytes<br>
+&nbsp;&nbsp;Holds&nbsp;the&nbsp;array&nbsp;of&nbsp;bytes&nbsp;to&nbsp;convert.&nbsp;&nbsp;The&nbsp;argument&nbsp;must&nbsp;either<br>
+&nbsp;&nbsp;support&nbsp;the&nbsp;buffer&nbsp;protocol&nbsp;or&nbsp;be&nbsp;an&nbsp;iterable&nbsp;object&nbsp;producing&nbsp;bytes.<br>
+&nbsp;&nbsp;Bytes&nbsp;and&nbsp;bytearray&nbsp;are&nbsp;examples&nbsp;of&nbsp;built-in&nbsp;objects&nbsp;that&nbsp;support&nbsp;the<br>
+&nbsp;&nbsp;buffer&nbsp;protocol.<br>
+byteorder<br>
+&nbsp;&nbsp;The&nbsp;byte&nbsp;order&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.&nbsp;&nbsp;If&nbsp;byteorder&nbsp;is&nbsp;'big',<br>
+&nbsp;&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;byte&nbsp;array.&nbsp;&nbsp;If<br>
+&nbsp;&nbsp;byteorder&nbsp;is&nbsp;'little',&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;byte&nbsp;array.&nbsp;&nbsp;To&nbsp;request&nbsp;the&nbsp;native&nbsp;byte&nbsp;order&nbsp;of&nbsp;the&nbsp;host&nbsp;system,&nbsp;use<br>
+&nbsp;&nbsp;`sys.byteorder'&nbsp;as&nbsp;the&nbsp;byte&nbsp;order&nbsp;value.<br>
+signed<br>
+&nbsp;&nbsp;Indicates&nbsp;whether&nbsp;two's&nbsp;complement&nbsp;is&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="DrawFlags-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><strong>denominator</strong></dt>
+<dd><tt>the&nbsp;denominator&nbsp;of&nbsp;a&nbsp;rational&nbsp;number&nbsp;in&nbsp;lowest&nbsp;terms</tt></dd>
+</dl>
+<dl><dt><strong>imag</strong></dt>
+<dd><tt>the&nbsp;imaginary&nbsp;part&nbsp;of&nbsp;a&nbsp;complex&nbsp;number</tt></dd>
+</dl>
+<dl><dt><strong>numerator</strong></dt>
+<dd><tt>the&nbsp;numerator&nbsp;of&nbsp;a&nbsp;rational&nbsp;number&nbsp;in&nbsp;lowest&nbsp;terms</tt></dd>
+</dl>
+<dl><dt><strong>real</strong></dt>
+<dd><tt>the&nbsp;real&nbsp;part&nbsp;of&nbsp;a&nbsp;complex&nbsp;number</tt></dd>
 </dl>
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -1423,6 +2114,251 @@ Static methods inherited from <a href="PyRx.html#RxObject">PyRx.RxObject</a>:<br
 <hr>
 Static methods inherited from Boost.Python.instance:<br>
 <dl><dt><a name="DrawableOverrule-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from Boost.Python.class</font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from Boost.Python.instance:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="DrawableTraits">class <strong>DrawableTraits</strong></a>(<a href="PyGi.html#SubEntityTraits">SubEntityTraits</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="PyGi.html#DrawableTraits">DrawableTraits</a></dd>
+<dd><a href="PyGi.html#SubEntityTraits">SubEntityTraits</a></dd>
+<dd><a href="PyRx.html#RxObject">PyRx.RxObject</a></dd>
+<dd>Boost.Python.instance</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="DrawableTraits-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>Raises&nbsp;an&nbsp;exception<br>
+This&nbsp;class&nbsp;cannot&nbsp;be&nbsp;instantiated&nbsp;from&nbsp;Python</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-__reduce__"><strong>__reduce__</strong></a> = <unnamed Boost.Python function>(...)</dt></dl>
+
+<dl><dt><a name="DrawableTraits-className"><strong>className</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-className">className</a>()&nbsp;-&gt;&nbsp;str&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;&nbsp;<a href="#DrawableTraits-className">className</a>()</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-desc"><strong>desc</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-desc">desc</a>()&nbsp;-&gt;&nbsp;RxClass&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyRxClass&nbsp;<a href="#DrawableTraits-desc">desc</a>()</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="PyGi.html#SubEntityTraits">SubEntityTraits</a>:<br>
+<dl><dt><a name="DrawableTraits-color"><strong>color</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-color">color</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;int&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;short&nbsp;<a href="#DrawableTraits-color">color</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-drawFlags"><strong>drawFlags</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-drawFlags">drawFlags</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;int&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;int&nbsp;<a href="#DrawableTraits-drawFlags">drawFlags</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-fillType"><strong>fillType</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-fillType">fillType</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;<a href="#AcGiFillType">AcGiFillType</a>&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;<a href="#AcGiFillType">AcGiFillType</a>&nbsp;<a href="#DrawableTraits-fillType">fillType</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-getPlotStyleNameId"><strong>getPlotStyleNameId</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-getPlotStyleNameId">getPlotStyleNameId</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;ObjectId&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyDbObjectId&nbsp;<a href="#DrawableTraits-getPlotStyleNameId">getPlotStyleNameId</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-layerId"><strong>layerId</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-layerId">layerId</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;ObjectId&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyDbObjectId&nbsp;<a href="#DrawableTraits-layerId">layerId</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-lineTypeId"><strong>lineTypeId</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-lineTypeId">lineTypeId</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;ObjectId&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyDbObjectId&nbsp;<a href="#DrawableTraits-lineTypeId">lineTypeId</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-lineTypeScale"><strong>lineTypeScale</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-lineTypeScale">lineTypeScale</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;float&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double&nbsp;<a href="#DrawableTraits-lineTypeScale">lineTypeScale</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-lineWeight"><strong>lineWeight</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-lineWeight">lineWeight</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;LineWeight&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;AcDb::LineWeight&nbsp;<a href="#DrawableTraits-lineWeight">lineWeight</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-materialId"><strong>materialId</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-materialId">materialId</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;ObjectId&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyDbObjectId&nbsp;<a href="#DrawableTraits-materialId">materialId</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-sectionable"><strong>sectionable</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-sectionable">sectionable</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#DrawableTraits-sectionable">sectionable</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-selectionGeom"><strong>selectionGeom</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-selectionGeom">selectionGeom</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#DrawableTraits-selectionGeom">selectionGeom</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-setColor"><strong>setColor</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-setColor">setColor</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(int)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawableTraits-setColor">setColor</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},unsigned&nbsp;short)</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-setDrawFlags"><strong>setDrawFlags</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-setDrawFlags">setDrawFlags</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(int)arg2)&nbsp;-&gt;&nbsp;ErrorStatus&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;Acad::ErrorStatus&nbsp;<a href="#DrawableTraits-setDrawFlags">setDrawFlags</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},unsigned&nbsp;int)</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-setFillType"><strong>setFillType</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-setFillType">setFillType</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(<a href="#AcGiFillType">AcGiFillType</a>)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawableTraits-setFillType">setFillType</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},enum&nbsp;<a href="#AcGiFillType">AcGiFillType</a>)</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-setLayer"><strong>setLayer</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-setLayer">setLayer</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(ObjectId)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawableTraits-setLayer">setLayer</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},class&nbsp;PyDbObjectId)</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-setLineType"><strong>setLineType</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-setLineType">setLineType</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(ObjectId)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawableTraits-setLineType">setLineType</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},class&nbsp;PyDbObjectId)</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-setLineTypeScale"><strong>setLineTypeScale</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-setLineTypeScale">setLineTypeScale</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawableTraits-setLineTypeScale">setLineTypeScale</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})<br>
+&nbsp;<br>
+<a href="#DrawableTraits-setLineTypeScale">setLineTypeScale</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(float)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawableTraits-setLineTypeScale">setLineTypeScale</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},double)</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-setLineWeight"><strong>setLineWeight</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-setLineWeight">setLineWeight</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(LineWeight)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawableTraits-setLineWeight">setLineWeight</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},enum&nbsp;AcDb::LineWeight)</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-setMaterial"><strong>setMaterial</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-setMaterial">setMaterial</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(ObjectId)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawableTraits-setMaterial">setMaterial</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},class&nbsp;PyDbObjectId)</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-setPlotStyleName"><strong>setPlotStyleName</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-setPlotStyleName">setPlotStyleName</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(PlotStyleNameType)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawableTraits-setPlotStyleName">setPlotStyleName</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},enum&nbsp;AcDb::PlotStyleNameType)<br>
+&nbsp;<br>
+<a href="#DrawableTraits-setPlotStyleName">setPlotStyleName</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(PlotStyleNameType)arg2,&nbsp;(ObjectId)arg3)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawableTraits-setPlotStyleName">setPlotStyleName</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},enum&nbsp;AcDb::PlotStyleNameType,class&nbsp;PyDbObjectId)</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-setSectionable"><strong>setSectionable</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-setSectionable">setSectionable</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(bool)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawableTraits-setSectionable">setSectionable</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},bool)</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-setSelectionGeom"><strong>setSelectionGeom</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-setSelectionGeom">setSelectionGeom</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(bool)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawableTraits-setSelectionGeom">setSelectionGeom</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},bool)</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-setSelectionMarker"><strong>setSelectionMarker</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-setSelectionMarker">setSelectionMarker</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(int)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawableTraits-setSelectionMarker">setSelectionMarker</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},__int64)</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-setShadowFlags"><strong>setShadowFlags</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-setShadowFlags">setShadowFlags</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(<a href="#ShadowFlags">ShadowFlags</a>)arg2)&nbsp;-&gt;&nbsp;ErrorStatus&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;Acad::ErrorStatus&nbsp;<a href="#DrawableTraits-setShadowFlags">setShadowFlags</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},enum&nbsp;AcGiSubEntityTraits::<a href="#ShadowFlags">ShadowFlags</a>)</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-setThickness"><strong>setThickness</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-setThickness">setThickness</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(float)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawableTraits-setThickness">setThickness</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},double)</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-setTransparency"><strong>setTransparency</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-setTransparency">setTransparency</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(Transparency)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawableTraits-setTransparency">setTransparency</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},class&nbsp;AcCmTransparency)</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-setTrueColor"><strong>setTrueColor</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-setTrueColor">setTrueColor</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(EntityColor)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawableTraits-setTrueColor">setTrueColor</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},class&nbsp;AcCmEntityColor)</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-setVisualStyle"><strong>setVisualStyle</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-setVisualStyle">setVisualStyle</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(ObjectId)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#DrawableTraits-setVisualStyle">setVisualStyle</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},class&nbsp;PyDbObjectId)</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-shadowFlags"><strong>shadowFlags</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-shadowFlags">shadowFlags</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;<a href="#ShadowFlags">ShadowFlags</a>&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;AcGiSubEntityTraits::<a href="#ShadowFlags">ShadowFlags</a>&nbsp;<a href="#DrawableTraits-shadowFlags">shadowFlags</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-thickness"><strong>thickness</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-thickness">thickness</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;float&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double&nbsp;<a href="#DrawableTraits-thickness">thickness</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-transparency"><strong>transparency</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-transparency">transparency</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;Transparency&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;AcCmTransparency&nbsp;<a href="#DrawableTraits-transparency">transparency</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-trueColor"><strong>trueColor</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-trueColor">trueColor</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;EntityColor&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;AcCmEntityColor&nbsp;<a href="#DrawableTraits-trueColor">trueColor</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-visualStyle"><strong>visualStyle</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-visualStyle">visualStyle</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;ObjectId&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyDbObjectId&nbsp;<a href="#DrawableTraits-visualStyle">visualStyle</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="PyRx.html#RxObject">PyRx.RxObject</a>:<br>
+<dl><dt><a name="DrawableTraits-__eq__"><strong>__eq__</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-__eq__">__eq__</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1,&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#DrawableTraits-__eq__">__eq__</a>(class&nbsp;PyRxObject&nbsp;{lvalue},class&nbsp;PyRxObject)</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-__ne__"><strong>__ne__</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-__ne__">__ne__</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1,&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#DrawableTraits-__ne__">__ne__</a>(class&nbsp;PyRxObject&nbsp;{lvalue},class&nbsp;PyRxObject)</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-isA"><strong>isA</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-isA">isA</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;RxClass&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyRxClass&nbsp;<a href="#DrawableTraits-isA">isA</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-isNull"><strong>isNull</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-isNull">isNull</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#DrawableTraits-isNull">isNull</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="DrawableTraits-refCount"><strong>refCount</strong></a>(...)</dt><dd><tt><a href="#DrawableTraits-refCount">refCount</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;int&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<a href="#DrawableTraits-refCount">refCount</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
+<hr>
+Static methods inherited from Boost.Python.instance:<br>
+<dl><dt><a name="DrawableTraits-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from Boost.Python.class</font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
 
 <hr>
 Data descriptors inherited from Boost.Python.instance:<br>
@@ -1640,6 +2576,686 @@ Static methods inherited from <a href="PyRx.html#RxObject">PyRx.RxObject</a>:<br
 <hr>
 Static methods inherited from Boost.Python.instance:<br>
 <dl><dt><a name="Geometry-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from Boost.Python.class</font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from Boost.Python.instance:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SelectionFlags">class <strong>SelectionFlags</strong></a>(Boost.Python.enum)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="PyGi.html#SelectionFlags">SelectionFlags</a></dd>
+<dd>Boost.Python.enum</dd>
+<dd><a href="builtins.html#int">builtins.int</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>kNoSelectionFlags</strong> = PyGi.SelectionFlags.kNoSelectionFlags</dl>
+
+<dl><dt><strong>kSelectionIgnore</strong> = PyGi.SelectionFlags.kSelectionIgnore</dl>
+
+<dl><dt><strong>names</strong> = {'kNoSelectionFlags': PyGi.SelectionFlags.kNoSelectionFlags, 'kSelectionIgnore': PyGi.SelectionFlags.kSelectionIgnore}</dl>
+
+<dl><dt><strong>values</strong> = {0: PyGi.SelectionFlags.kNoSelectionFlags, 1: PyGi.SelectionFlags.kSelectionIgnore}</dl>
+
+<hr>
+Methods inherited from Boost.Python.enum:<br>
+<dl><dt><a name="SelectionFlags-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from Boost.Python.enum:<br>
+<dl><dt><strong>name</strong></dt>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="SelectionFlags-__abs__"><strong>__abs__</strong></a>(self, /)</dt><dd><tt>abs(self)</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__add__"><strong>__add__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self+value.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__and__"><strong>__and__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&amp;value.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__bool__"><strong>__bool__</strong></a>(self, /)</dt><dd><tt>True&nbsp;if&nbsp;self&nbsp;else&nbsp;False</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__ceil__"><strong>__ceil__</strong></a>(...)</dt><dd><tt>Ceiling&nbsp;of&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__divmod__"><strong>__divmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;divmod(self,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__float__"><strong>__float__</strong></a>(self, /)</dt><dd><tt>float(self)</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__floor__"><strong>__floor__</strong></a>(...)</dt><dd><tt>Flooring&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__floordiv__"><strong>__floordiv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self//value.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__format__"><strong>__format__</strong></a>(self, format_spec, /)</dt><dd><tt>Default&nbsp;object&nbsp;formatter.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__getnewargs__"><strong>__getnewargs__</strong></a>(self, /)</dt></dl>
+
+<dl><dt><a name="SelectionFlags-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;hash(self).</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__index__"><strong>__index__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;self&nbsp;converted&nbsp;to&nbsp;an&nbsp;integer,&nbsp;if&nbsp;self&nbsp;is&nbsp;suitable&nbsp;for&nbsp;use&nbsp;as&nbsp;an&nbsp;index&nbsp;into&nbsp;a&nbsp;list.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__int__"><strong>__int__</strong></a>(self, /)</dt><dd><tt>int(self)</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__invert__"><strong>__invert__</strong></a>(self, /)</dt><dd><tt>~self</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__lshift__"><strong>__lshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__mod__"><strong>__mod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self%value.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__mul__"><strong>__mul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self*value.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__neg__"><strong>__neg__</strong></a>(self, /)</dt><dd><tt>-self</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__or__"><strong>__or__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self|value.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__pos__"><strong>__pos__</strong></a>(self, /)</dt><dd><tt>+self</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__pow__"><strong>__pow__</strong></a>(self, value, mod=None, /)</dt><dd><tt>Return&nbsp;pow(self,&nbsp;value,&nbsp;mod).</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__radd__"><strong>__radd__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value+self.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__rand__"><strong>__rand__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&amp;self.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__rdivmod__"><strong>__rdivmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;divmod(value,&nbsp;self).</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__rfloordiv__"><strong>__rfloordiv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value//self.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__rlshift__"><strong>__rlshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&lt;&lt;self.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__rmod__"><strong>__rmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value%self.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__rmul__"><strong>__rmul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value*self.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__ror__"><strong>__ror__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value|self.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__round__"><strong>__round__</strong></a>(...)</dt><dd><tt>Rounding&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.<br>
+&nbsp;<br>
+Rounding&nbsp;with&nbsp;an&nbsp;ndigits&nbsp;argument&nbsp;also&nbsp;returns&nbsp;an&nbsp;integer.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__rpow__"><strong>__rpow__</strong></a>(self, value, mod=None, /)</dt><dd><tt>Return&nbsp;pow(value,&nbsp;self,&nbsp;mod).</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__rrshift__"><strong>__rrshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&gt;&gt;self.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__rshift__"><strong>__rshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__rsub__"><strong>__rsub__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value-self.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__rtruediv__"><strong>__rtruediv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value/self.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__rxor__"><strong>__rxor__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value^self.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__sizeof__"><strong>__sizeof__</strong></a>(self, /)</dt><dd><tt>Returns&nbsp;size&nbsp;in&nbsp;memory,&nbsp;in&nbsp;bytes.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__sub__"><strong>__sub__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self-value.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__truediv__"><strong>__truediv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self/value.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__trunc__"><strong>__trunc__</strong></a>(...)</dt><dd><tt>Truncating&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-__xor__"><strong>__xor__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self^value.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-as_integer_ratio"><strong>as_integer_ratio</strong></a>(self, /)</dt><dd><tt>Return&nbsp;integer&nbsp;ratio.<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;pair&nbsp;of&nbsp;integers,&nbsp;whose&nbsp;ratio&nbsp;is&nbsp;exactly&nbsp;equal&nbsp;to&nbsp;the&nbsp;original&nbsp;int<br>
+and&nbsp;with&nbsp;a&nbsp;positive&nbsp;denominator.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;(10).<a href="#SelectionFlags-as_integer_ratio">as_integer_ratio</a>()<br>
+(10,&nbsp;1)<br>
+&gt;&gt;&gt;&nbsp;(-10).<a href="#SelectionFlags-as_integer_ratio">as_integer_ratio</a>()<br>
+(-10,&nbsp;1)<br>
+&gt;&gt;&gt;&nbsp;(0).<a href="#SelectionFlags-as_integer_ratio">as_integer_ratio</a>()<br>
+(0,&nbsp;1)</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-bit_count"><strong>bit_count</strong></a>(self, /)</dt><dd><tt>Number&nbsp;of&nbsp;ones&nbsp;in&nbsp;the&nbsp;binary&nbsp;representation&nbsp;of&nbsp;the&nbsp;absolute&nbsp;value&nbsp;of&nbsp;self.<br>
+&nbsp;<br>
+Also&nbsp;known&nbsp;as&nbsp;the&nbsp;population&nbsp;count.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;bin(13)<br>
+'0b1101'<br>
+&gt;&gt;&gt;&nbsp;(13).<a href="#SelectionFlags-bit_count">bit_count</a>()<br>
+3</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-bit_length"><strong>bit_length</strong></a>(self, /)</dt><dd><tt>Number&nbsp;of&nbsp;bits&nbsp;necessary&nbsp;to&nbsp;represent&nbsp;self&nbsp;in&nbsp;binary.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;bin(37)<br>
+'0b100101'<br>
+&gt;&gt;&gt;&nbsp;(37).<a href="#SelectionFlags-bit_length">bit_length</a>()<br>
+6</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-conjugate"><strong>conjugate</strong></a>(...)</dt><dd><tt>Returns&nbsp;self,&nbsp;the&nbsp;complex&nbsp;conjugate&nbsp;of&nbsp;any&nbsp;int.</tt></dd></dl>
+
+<dl><dt><a name="SelectionFlags-to_bytes"><strong>to_bytes</strong></a>(self, /, length, byteorder, *, signed=False)</dt><dd><tt>Return&nbsp;an&nbsp;array&nbsp;of&nbsp;bytes&nbsp;representing&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+length<br>
+&nbsp;&nbsp;Length&nbsp;of&nbsp;bytes&nbsp;object&nbsp;to&nbsp;use.&nbsp;&nbsp;An&nbsp;OverflowError&nbsp;is&nbsp;raised&nbsp;if&nbsp;the<br>
+&nbsp;&nbsp;integer&nbsp;is&nbsp;not&nbsp;representable&nbsp;with&nbsp;the&nbsp;given&nbsp;number&nbsp;of&nbsp;bytes.<br>
+byteorder<br>
+&nbsp;&nbsp;The&nbsp;byte&nbsp;order&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.&nbsp;&nbsp;If&nbsp;byteorder&nbsp;is&nbsp;'big',<br>
+&nbsp;&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;byte&nbsp;array.&nbsp;&nbsp;If<br>
+&nbsp;&nbsp;byteorder&nbsp;is&nbsp;'little',&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;byte&nbsp;array.&nbsp;&nbsp;To&nbsp;request&nbsp;the&nbsp;native&nbsp;byte&nbsp;order&nbsp;of&nbsp;the&nbsp;host&nbsp;system,&nbsp;use<br>
+&nbsp;&nbsp;`sys.byteorder'&nbsp;as&nbsp;the&nbsp;byte&nbsp;order&nbsp;value.<br>
+signed<br>
+&nbsp;&nbsp;Determines&nbsp;whether&nbsp;two's&nbsp;complement&nbsp;is&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.<br>
+&nbsp;&nbsp;If&nbsp;signed&nbsp;is&nbsp;False&nbsp;and&nbsp;a&nbsp;negative&nbsp;integer&nbsp;is&nbsp;given,&nbsp;an&nbsp;OverflowError<br>
+&nbsp;&nbsp;is&nbsp;raised.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="SelectionFlags-from_bytes"><strong>from_bytes</strong></a>(bytes, byteorder, *, signed=False)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Return&nbsp;the&nbsp;integer&nbsp;represented&nbsp;by&nbsp;the&nbsp;given&nbsp;array&nbsp;of&nbsp;bytes.<br>
+&nbsp;<br>
+bytes<br>
+&nbsp;&nbsp;Holds&nbsp;the&nbsp;array&nbsp;of&nbsp;bytes&nbsp;to&nbsp;convert.&nbsp;&nbsp;The&nbsp;argument&nbsp;must&nbsp;either<br>
+&nbsp;&nbsp;support&nbsp;the&nbsp;buffer&nbsp;protocol&nbsp;or&nbsp;be&nbsp;an&nbsp;iterable&nbsp;object&nbsp;producing&nbsp;bytes.<br>
+&nbsp;&nbsp;Bytes&nbsp;and&nbsp;bytearray&nbsp;are&nbsp;examples&nbsp;of&nbsp;built-in&nbsp;objects&nbsp;that&nbsp;support&nbsp;the<br>
+&nbsp;&nbsp;buffer&nbsp;protocol.<br>
+byteorder<br>
+&nbsp;&nbsp;The&nbsp;byte&nbsp;order&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.&nbsp;&nbsp;If&nbsp;byteorder&nbsp;is&nbsp;'big',<br>
+&nbsp;&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;byte&nbsp;array.&nbsp;&nbsp;If<br>
+&nbsp;&nbsp;byteorder&nbsp;is&nbsp;'little',&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;byte&nbsp;array.&nbsp;&nbsp;To&nbsp;request&nbsp;the&nbsp;native&nbsp;byte&nbsp;order&nbsp;of&nbsp;the&nbsp;host&nbsp;system,&nbsp;use<br>
+&nbsp;&nbsp;`sys.byteorder'&nbsp;as&nbsp;the&nbsp;byte&nbsp;order&nbsp;value.<br>
+signed<br>
+&nbsp;&nbsp;Indicates&nbsp;whether&nbsp;two's&nbsp;complement&nbsp;is&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="SelectionFlags-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><strong>denominator</strong></dt>
+<dd><tt>the&nbsp;denominator&nbsp;of&nbsp;a&nbsp;rational&nbsp;number&nbsp;in&nbsp;lowest&nbsp;terms</tt></dd>
+</dl>
+<dl><dt><strong>imag</strong></dt>
+<dd><tt>the&nbsp;imaginary&nbsp;part&nbsp;of&nbsp;a&nbsp;complex&nbsp;number</tt></dd>
+</dl>
+<dl><dt><strong>numerator</strong></dt>
+<dd><tt>the&nbsp;numerator&nbsp;of&nbsp;a&nbsp;rational&nbsp;number&nbsp;in&nbsp;lowest&nbsp;terms</tt></dd>
+</dl>
+<dl><dt><strong>real</strong></dt>
+<dd><tt>the&nbsp;real&nbsp;part&nbsp;of&nbsp;a&nbsp;complex&nbsp;number</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ShadowFlags">class <strong>ShadowFlags</strong></a>(Boost.Python.enum)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="PyGi.html#ShadowFlags">ShadowFlags</a></dd>
+<dd>Boost.Python.enum</dd>
+<dd><a href="builtins.html#int">builtins.int</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>kNoDrawFlags</strong> = PyGi.ShadowFlags.kNoDrawFlags</dl>
+
+<dl><dt><strong>kShadowsDoesNotCast</strong> = PyGi.ShadowFlags.kShadowsDoesNotCast</dl>
+
+<dl><dt><strong>kShadowsDoesNotReceive</strong> = PyGi.ShadowFlags.kShadowsDoesNotReceive</dl>
+
+<dl><dt><strong>kShadowsIgnore</strong> = PyGi.ShadowFlags.kShadowsIgnore</dl>
+
+<dl><dt><strong>names</strong> = {'kNoDrawFlags': PyGi.ShadowFlags.kNoDrawFlags, 'kShadowsDoesNotCast': PyGi.ShadowFlags.kShadowsDoesNotCast, 'kShadowsDoesNotReceive': PyGi.ShadowFlags.kShadowsDoesNotReceive, 'kShadowsIgnore': PyGi.ShadowFlags.kShadowsIgnore}</dl>
+
+<dl><dt><strong>values</strong> = {0: PyGi.ShadowFlags.kNoDrawFlags, 1: PyGi.ShadowFlags.kShadowsDoesNotCast, 2: PyGi.ShadowFlags.kShadowsDoesNotReceive, 3: PyGi.ShadowFlags.kShadowsIgnore}</dl>
+
+<hr>
+Methods inherited from Boost.Python.enum:<br>
+<dl><dt><a name="ShadowFlags-__repr__"><strong>__repr__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;repr(self).</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__str__"><strong>__str__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;str(self).</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from Boost.Python.enum:<br>
+<dl><dt><strong>name</strong></dt>
+</dl>
+<hr>
+Methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="ShadowFlags-__abs__"><strong>__abs__</strong></a>(self, /)</dt><dd><tt>abs(self)</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__add__"><strong>__add__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self+value.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__and__"><strong>__and__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&amp;value.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__bool__"><strong>__bool__</strong></a>(self, /)</dt><dd><tt>True&nbsp;if&nbsp;self&nbsp;else&nbsp;False</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__ceil__"><strong>__ceil__</strong></a>(...)</dt><dd><tt>Ceiling&nbsp;of&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__divmod__"><strong>__divmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;divmod(self,&nbsp;value).</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__eq__"><strong>__eq__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self==value.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__float__"><strong>__float__</strong></a>(self, /)</dt><dd><tt>float(self)</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__floor__"><strong>__floor__</strong></a>(...)</dt><dd><tt>Flooring&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__floordiv__"><strong>__floordiv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self//value.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__format__"><strong>__format__</strong></a>(self, format_spec, /)</dt><dd><tt>Default&nbsp;object&nbsp;formatter.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__ge__"><strong>__ge__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;=value.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__getattribute__"><strong>__getattribute__</strong></a>(self, name, /)</dt><dd><tt>Return&nbsp;getattr(self,&nbsp;name).</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__getnewargs__"><strong>__getnewargs__</strong></a>(self, /)</dt></dl>
+
+<dl><dt><a name="ShadowFlags-__gt__"><strong>__gt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__hash__"><strong>__hash__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;hash(self).</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__index__"><strong>__index__</strong></a>(self, /)</dt><dd><tt>Return&nbsp;self&nbsp;converted&nbsp;to&nbsp;an&nbsp;integer,&nbsp;if&nbsp;self&nbsp;is&nbsp;suitable&nbsp;for&nbsp;use&nbsp;as&nbsp;an&nbsp;index&nbsp;into&nbsp;a&nbsp;list.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__int__"><strong>__int__</strong></a>(self, /)</dt><dd><tt>int(self)</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__invert__"><strong>__invert__</strong></a>(self, /)</dt><dd><tt>~self</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__le__"><strong>__le__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;=value.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__lshift__"><strong>__lshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__lt__"><strong>__lt__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&lt;value.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__mod__"><strong>__mod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self%value.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__mul__"><strong>__mul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self*value.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__ne__"><strong>__ne__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self!=value.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__neg__"><strong>__neg__</strong></a>(self, /)</dt><dd><tt>-self</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__or__"><strong>__or__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self|value.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__pos__"><strong>__pos__</strong></a>(self, /)</dt><dd><tt>+self</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__pow__"><strong>__pow__</strong></a>(self, value, mod=None, /)</dt><dd><tt>Return&nbsp;pow(self,&nbsp;value,&nbsp;mod).</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__radd__"><strong>__radd__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value+self.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__rand__"><strong>__rand__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&amp;self.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__rdivmod__"><strong>__rdivmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;divmod(value,&nbsp;self).</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__rfloordiv__"><strong>__rfloordiv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value//self.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__rlshift__"><strong>__rlshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&lt;&lt;self.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__rmod__"><strong>__rmod__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value%self.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__rmul__"><strong>__rmul__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value*self.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__ror__"><strong>__ror__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value|self.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__round__"><strong>__round__</strong></a>(...)</dt><dd><tt>Rounding&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.<br>
+&nbsp;<br>
+Rounding&nbsp;with&nbsp;an&nbsp;ndigits&nbsp;argument&nbsp;also&nbsp;returns&nbsp;an&nbsp;integer.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__rpow__"><strong>__rpow__</strong></a>(self, value, mod=None, /)</dt><dd><tt>Return&nbsp;pow(value,&nbsp;self,&nbsp;mod).</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__rrshift__"><strong>__rrshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value&gt;&gt;self.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__rshift__"><strong>__rshift__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self&gt;&gt;value.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__rsub__"><strong>__rsub__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value-self.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__rtruediv__"><strong>__rtruediv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value/self.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__rxor__"><strong>__rxor__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;value^self.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__sizeof__"><strong>__sizeof__</strong></a>(self, /)</dt><dd><tt>Returns&nbsp;size&nbsp;in&nbsp;memory,&nbsp;in&nbsp;bytes.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__sub__"><strong>__sub__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self-value.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__truediv__"><strong>__truediv__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self/value.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__trunc__"><strong>__trunc__</strong></a>(...)</dt><dd><tt>Truncating&nbsp;an&nbsp;Integral&nbsp;returns&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-__xor__"><strong>__xor__</strong></a>(self, value, /)</dt><dd><tt>Return&nbsp;self^value.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-as_integer_ratio"><strong>as_integer_ratio</strong></a>(self, /)</dt><dd><tt>Return&nbsp;integer&nbsp;ratio.<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;pair&nbsp;of&nbsp;integers,&nbsp;whose&nbsp;ratio&nbsp;is&nbsp;exactly&nbsp;equal&nbsp;to&nbsp;the&nbsp;original&nbsp;int<br>
+and&nbsp;with&nbsp;a&nbsp;positive&nbsp;denominator.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;(10).<a href="#ShadowFlags-as_integer_ratio">as_integer_ratio</a>()<br>
+(10,&nbsp;1)<br>
+&gt;&gt;&gt;&nbsp;(-10).<a href="#ShadowFlags-as_integer_ratio">as_integer_ratio</a>()<br>
+(-10,&nbsp;1)<br>
+&gt;&gt;&gt;&nbsp;(0).<a href="#ShadowFlags-as_integer_ratio">as_integer_ratio</a>()<br>
+(0,&nbsp;1)</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-bit_count"><strong>bit_count</strong></a>(self, /)</dt><dd><tt>Number&nbsp;of&nbsp;ones&nbsp;in&nbsp;the&nbsp;binary&nbsp;representation&nbsp;of&nbsp;the&nbsp;absolute&nbsp;value&nbsp;of&nbsp;self.<br>
+&nbsp;<br>
+Also&nbsp;known&nbsp;as&nbsp;the&nbsp;population&nbsp;count.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;bin(13)<br>
+'0b1101'<br>
+&gt;&gt;&gt;&nbsp;(13).<a href="#ShadowFlags-bit_count">bit_count</a>()<br>
+3</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-bit_length"><strong>bit_length</strong></a>(self, /)</dt><dd><tt>Number&nbsp;of&nbsp;bits&nbsp;necessary&nbsp;to&nbsp;represent&nbsp;self&nbsp;in&nbsp;binary.<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;bin(37)<br>
+'0b100101'<br>
+&gt;&gt;&gt;&nbsp;(37).<a href="#ShadowFlags-bit_length">bit_length</a>()<br>
+6</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-conjugate"><strong>conjugate</strong></a>(...)</dt><dd><tt>Returns&nbsp;self,&nbsp;the&nbsp;complex&nbsp;conjugate&nbsp;of&nbsp;any&nbsp;int.</tt></dd></dl>
+
+<dl><dt><a name="ShadowFlags-to_bytes"><strong>to_bytes</strong></a>(self, /, length, byteorder, *, signed=False)</dt><dd><tt>Return&nbsp;an&nbsp;array&nbsp;of&nbsp;bytes&nbsp;representing&nbsp;an&nbsp;integer.<br>
+&nbsp;<br>
+length<br>
+&nbsp;&nbsp;Length&nbsp;of&nbsp;bytes&nbsp;object&nbsp;to&nbsp;use.&nbsp;&nbsp;An&nbsp;OverflowError&nbsp;is&nbsp;raised&nbsp;if&nbsp;the<br>
+&nbsp;&nbsp;integer&nbsp;is&nbsp;not&nbsp;representable&nbsp;with&nbsp;the&nbsp;given&nbsp;number&nbsp;of&nbsp;bytes.<br>
+byteorder<br>
+&nbsp;&nbsp;The&nbsp;byte&nbsp;order&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.&nbsp;&nbsp;If&nbsp;byteorder&nbsp;is&nbsp;'big',<br>
+&nbsp;&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;byte&nbsp;array.&nbsp;&nbsp;If<br>
+&nbsp;&nbsp;byteorder&nbsp;is&nbsp;'little',&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;byte&nbsp;array.&nbsp;&nbsp;To&nbsp;request&nbsp;the&nbsp;native&nbsp;byte&nbsp;order&nbsp;of&nbsp;the&nbsp;host&nbsp;system,&nbsp;use<br>
+&nbsp;&nbsp;`sys.byteorder'&nbsp;as&nbsp;the&nbsp;byte&nbsp;order&nbsp;value.<br>
+signed<br>
+&nbsp;&nbsp;Determines&nbsp;whether&nbsp;two's&nbsp;complement&nbsp;is&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.<br>
+&nbsp;&nbsp;If&nbsp;signed&nbsp;is&nbsp;False&nbsp;and&nbsp;a&nbsp;negative&nbsp;integer&nbsp;is&nbsp;given,&nbsp;an&nbsp;OverflowError<br>
+&nbsp;&nbsp;is&nbsp;raised.</tt></dd></dl>
+
+<hr>
+Class methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="ShadowFlags-from_bytes"><strong>from_bytes</strong></a>(bytes, byteorder, *, signed=False)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Return&nbsp;the&nbsp;integer&nbsp;represented&nbsp;by&nbsp;the&nbsp;given&nbsp;array&nbsp;of&nbsp;bytes.<br>
+&nbsp;<br>
+bytes<br>
+&nbsp;&nbsp;Holds&nbsp;the&nbsp;array&nbsp;of&nbsp;bytes&nbsp;to&nbsp;convert.&nbsp;&nbsp;The&nbsp;argument&nbsp;must&nbsp;either<br>
+&nbsp;&nbsp;support&nbsp;the&nbsp;buffer&nbsp;protocol&nbsp;or&nbsp;be&nbsp;an&nbsp;iterable&nbsp;object&nbsp;producing&nbsp;bytes.<br>
+&nbsp;&nbsp;Bytes&nbsp;and&nbsp;bytearray&nbsp;are&nbsp;examples&nbsp;of&nbsp;built-in&nbsp;objects&nbsp;that&nbsp;support&nbsp;the<br>
+&nbsp;&nbsp;buffer&nbsp;protocol.<br>
+byteorder<br>
+&nbsp;&nbsp;The&nbsp;byte&nbsp;order&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.&nbsp;&nbsp;If&nbsp;byteorder&nbsp;is&nbsp;'big',<br>
+&nbsp;&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;byte&nbsp;array.&nbsp;&nbsp;If<br>
+&nbsp;&nbsp;byteorder&nbsp;is&nbsp;'little',&nbsp;the&nbsp;most&nbsp;significant&nbsp;byte&nbsp;is&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;byte&nbsp;array.&nbsp;&nbsp;To&nbsp;request&nbsp;the&nbsp;native&nbsp;byte&nbsp;order&nbsp;of&nbsp;the&nbsp;host&nbsp;system,&nbsp;use<br>
+&nbsp;&nbsp;`sys.byteorder'&nbsp;as&nbsp;the&nbsp;byte&nbsp;order&nbsp;value.<br>
+signed<br>
+&nbsp;&nbsp;Indicates&nbsp;whether&nbsp;two's&nbsp;complement&nbsp;is&nbsp;used&nbsp;to&nbsp;represent&nbsp;the&nbsp;integer.</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><a name="ShadowFlags-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="builtins.html#type">builtins.type</a></font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="builtins.html#int">builtins.int</a>:<br>
+<dl><dt><strong>denominator</strong></dt>
+<dd><tt>the&nbsp;denominator&nbsp;of&nbsp;a&nbsp;rational&nbsp;number&nbsp;in&nbsp;lowest&nbsp;terms</tt></dd>
+</dl>
+<dl><dt><strong>imag</strong></dt>
+<dd><tt>the&nbsp;imaginary&nbsp;part&nbsp;of&nbsp;a&nbsp;complex&nbsp;number</tt></dd>
+</dl>
+<dl><dt><strong>numerator</strong></dt>
+<dd><tt>the&nbsp;numerator&nbsp;of&nbsp;a&nbsp;rational&nbsp;number&nbsp;in&nbsp;lowest&nbsp;terms</tt></dd>
+</dl>
+<dl><dt><strong>real</strong></dt>
+<dd><tt>the&nbsp;real&nbsp;part&nbsp;of&nbsp;a&nbsp;complex&nbsp;number</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SubEntityTraits">class <strong>SubEntityTraits</strong></a>(<a href="PyRx.html#RxObject">PyRx.RxObject</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="PyGi.html#SubEntityTraits">SubEntityTraits</a></dd>
+<dd><a href="PyRx.html#RxObject">PyRx.RxObject</a></dd>
+<dd>Boost.Python.instance</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="SubEntityTraits-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>Raises&nbsp;an&nbsp;exception<br>
+This&nbsp;class&nbsp;cannot&nbsp;be&nbsp;instantiated&nbsp;from&nbsp;Python</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-__reduce__"><strong>__reduce__</strong></a> = <unnamed Boost.Python function>(...)</dt></dl>
+
+<dl><dt><a name="SubEntityTraits-className"><strong>className</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-className">className</a>()&nbsp;-&gt;&nbsp;str&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;&nbsp;<a href="#SubEntityTraits-className">className</a>()</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-color"><strong>color</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-color">color</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;int&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;short&nbsp;<a href="#SubEntityTraits-color">color</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-desc"><strong>desc</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-desc">desc</a>()&nbsp;-&gt;&nbsp;RxClass&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyRxClass&nbsp;<a href="#SubEntityTraits-desc">desc</a>()</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-drawFlags"><strong>drawFlags</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-drawFlags">drawFlags</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;int&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unsigned&nbsp;int&nbsp;<a href="#SubEntityTraits-drawFlags">drawFlags</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-fillType"><strong>fillType</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-fillType">fillType</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;<a href="#AcGiFillType">AcGiFillType</a>&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;<a href="#AcGiFillType">AcGiFillType</a>&nbsp;<a href="#SubEntityTraits-fillType">fillType</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-getPlotStyleNameId"><strong>getPlotStyleNameId</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-getPlotStyleNameId">getPlotStyleNameId</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;ObjectId&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyDbObjectId&nbsp;<a href="#SubEntityTraits-getPlotStyleNameId">getPlotStyleNameId</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-layerId"><strong>layerId</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-layerId">layerId</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;ObjectId&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyDbObjectId&nbsp;<a href="#SubEntityTraits-layerId">layerId</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-lineTypeId"><strong>lineTypeId</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-lineTypeId">lineTypeId</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;ObjectId&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyDbObjectId&nbsp;<a href="#SubEntityTraits-lineTypeId">lineTypeId</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-lineTypeScale"><strong>lineTypeScale</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-lineTypeScale">lineTypeScale</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;float&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double&nbsp;<a href="#SubEntityTraits-lineTypeScale">lineTypeScale</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-lineWeight"><strong>lineWeight</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-lineWeight">lineWeight</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;LineWeight&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;AcDb::LineWeight&nbsp;<a href="#SubEntityTraits-lineWeight">lineWeight</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-materialId"><strong>materialId</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-materialId">materialId</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;ObjectId&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyDbObjectId&nbsp;<a href="#SubEntityTraits-materialId">materialId</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-sectionable"><strong>sectionable</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-sectionable">sectionable</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#SubEntityTraits-sectionable">sectionable</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-selectionGeom"><strong>selectionGeom</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-selectionGeom">selectionGeom</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#SubEntityTraits-selectionGeom">selectionGeom</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-setColor"><strong>setColor</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-setColor">setColor</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(int)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#SubEntityTraits-setColor">setColor</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},unsigned&nbsp;short)</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-setDrawFlags"><strong>setDrawFlags</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-setDrawFlags">setDrawFlags</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(int)arg2)&nbsp;-&gt;&nbsp;ErrorStatus&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;Acad::ErrorStatus&nbsp;<a href="#SubEntityTraits-setDrawFlags">setDrawFlags</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},unsigned&nbsp;int)</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-setFillType"><strong>setFillType</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-setFillType">setFillType</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(<a href="#AcGiFillType">AcGiFillType</a>)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#SubEntityTraits-setFillType">setFillType</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},enum&nbsp;<a href="#AcGiFillType">AcGiFillType</a>)</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-setLayer"><strong>setLayer</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-setLayer">setLayer</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(ObjectId)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#SubEntityTraits-setLayer">setLayer</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},class&nbsp;PyDbObjectId)</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-setLineType"><strong>setLineType</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-setLineType">setLineType</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(ObjectId)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#SubEntityTraits-setLineType">setLineType</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},class&nbsp;PyDbObjectId)</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-setLineTypeScale"><strong>setLineTypeScale</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-setLineTypeScale">setLineTypeScale</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#SubEntityTraits-setLineTypeScale">setLineTypeScale</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})<br>
+&nbsp;<br>
+<a href="#SubEntityTraits-setLineTypeScale">setLineTypeScale</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(float)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#SubEntityTraits-setLineTypeScale">setLineTypeScale</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},double)</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-setLineWeight"><strong>setLineWeight</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-setLineWeight">setLineWeight</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(LineWeight)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#SubEntityTraits-setLineWeight">setLineWeight</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},enum&nbsp;AcDb::LineWeight)</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-setMaterial"><strong>setMaterial</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-setMaterial">setMaterial</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(ObjectId)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#SubEntityTraits-setMaterial">setMaterial</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},class&nbsp;PyDbObjectId)</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-setPlotStyleName"><strong>setPlotStyleName</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-setPlotStyleName">setPlotStyleName</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(PlotStyleNameType)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#SubEntityTraits-setPlotStyleName">setPlotStyleName</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},enum&nbsp;AcDb::PlotStyleNameType)<br>
+&nbsp;<br>
+<a href="#SubEntityTraits-setPlotStyleName">setPlotStyleName</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(PlotStyleNameType)arg2,&nbsp;(ObjectId)arg3)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#SubEntityTraits-setPlotStyleName">setPlotStyleName</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},enum&nbsp;AcDb::PlotStyleNameType,class&nbsp;PyDbObjectId)</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-setSectionable"><strong>setSectionable</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-setSectionable">setSectionable</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(bool)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#SubEntityTraits-setSectionable">setSectionable</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},bool)</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-setSelectionGeom"><strong>setSelectionGeom</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-setSelectionGeom">setSelectionGeom</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(bool)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#SubEntityTraits-setSelectionGeom">setSelectionGeom</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},bool)</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-setSelectionMarker"><strong>setSelectionMarker</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-setSelectionMarker">setSelectionMarker</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(int)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#SubEntityTraits-setSelectionMarker">setSelectionMarker</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},__int64)</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-setShadowFlags"><strong>setShadowFlags</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-setShadowFlags">setShadowFlags</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(<a href="#ShadowFlags">ShadowFlags</a>)arg2)&nbsp;-&gt;&nbsp;ErrorStatus&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;Acad::ErrorStatus&nbsp;<a href="#SubEntityTraits-setShadowFlags">setShadowFlags</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},enum&nbsp;AcGiSubEntityTraits::<a href="#ShadowFlags">ShadowFlags</a>)</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-setThickness"><strong>setThickness</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-setThickness">setThickness</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(float)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#SubEntityTraits-setThickness">setThickness</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},double)</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-setTransparency"><strong>setTransparency</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-setTransparency">setTransparency</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(Transparency)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#SubEntityTraits-setTransparency">setTransparency</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},class&nbsp;AcCmTransparency)</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-setTrueColor"><strong>setTrueColor</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-setTrueColor">setTrueColor</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(EntityColor)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#SubEntityTraits-setTrueColor">setTrueColor</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},class&nbsp;AcCmEntityColor)</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-setVisualStyle"><strong>setVisualStyle</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-setVisualStyle">setVisualStyle</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1,&nbsp;(ObjectId)arg2)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#SubEntityTraits-setVisualStyle">setVisualStyle</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue},class&nbsp;PyDbObjectId)</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-shadowFlags"><strong>shadowFlags</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-shadowFlags">shadowFlags</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;<a href="#ShadowFlags">ShadowFlags</a>&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;AcGiSubEntityTraits::<a href="#ShadowFlags">ShadowFlags</a>&nbsp;<a href="#SubEntityTraits-shadowFlags">shadowFlags</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-thickness"><strong>thickness</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-thickness">thickness</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;float&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double&nbsp;<a href="#SubEntityTraits-thickness">thickness</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-transparency"><strong>transparency</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-transparency">transparency</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;Transparency&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;AcCmTransparency&nbsp;<a href="#SubEntityTraits-transparency">transparency</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-trueColor"><strong>trueColor</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-trueColor">trueColor</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;EntityColor&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;AcCmEntityColor&nbsp;<a href="#SubEntityTraits-trueColor">trueColor</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-visualStyle"><strong>visualStyle</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-visualStyle">visualStyle</a>(&nbsp;(<a href="#SubEntityTraits">SubEntityTraits</a>)arg1)&nbsp;-&gt;&nbsp;ObjectId&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyDbObjectId&nbsp;<a href="#SubEntityTraits-visualStyle">visualStyle</a>(class&nbsp;PyGiSubEntityTraits&nbsp;{lvalue})</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="PyRx.html#RxObject">PyRx.RxObject</a>:<br>
+<dl><dt><a name="SubEntityTraits-__eq__"><strong>__eq__</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-__eq__">__eq__</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1,&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#SubEntityTraits-__eq__">__eq__</a>(class&nbsp;PyRxObject&nbsp;{lvalue},class&nbsp;PyRxObject)</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-__ne__"><strong>__ne__</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-__ne__">__ne__</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1,&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#SubEntityTraits-__ne__">__ne__</a>(class&nbsp;PyRxObject&nbsp;{lvalue},class&nbsp;PyRxObject)</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-isA"><strong>isA</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-isA">isA</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;RxClass&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyRxClass&nbsp;<a href="#SubEntityTraits-isA">isA</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-isNull"><strong>isNull</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-isNull">isNull</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#SubEntityTraits-isNull">isNull</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
+<dl><dt><a name="SubEntityTraits-refCount"><strong>refCount</strong></a>(...)</dt><dd><tt><a href="#SubEntityTraits-refCount">refCount</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1)&nbsp;-&gt;&nbsp;int&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<a href="#SubEntityTraits-refCount">refCount</a>(class&nbsp;PyRxObject&nbsp;{lvalue})</tt></dd></dl>
+
+<hr>
+Static methods inherited from Boost.Python.instance:<br>
+<dl><dt><a name="SubEntityTraits-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from Boost.Python.class</font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
 
 <hr>
 Data descriptors inherited from Boost.Python.instance:<br>
@@ -1901,6 +3517,13 @@ This&nbsp;class&nbsp;cannot&nbsp;be&nbsp;instantiated&nbsp;from&nbsp;Python</tt>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyGiViewportGeometry&nbsp;<a href="#ViewportDraw-geometry">geometry</a>(class&nbsp;PyGiViewportDraw&nbsp;{lvalue})</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="PyGi.html#CommonDraw">CommonDraw</a>:<br>
+<dl><dt><a name="ViewportDraw-subEntityTraits"><strong>subEntityTraits</strong></a>(...)</dt><dd><tt><a href="#ViewportDraw-subEntityTraits">subEntityTraits</a>(&nbsp;(<a href="#CommonDraw">CommonDraw</a>)arg1)&nbsp;-&gt;&nbsp;<a href="#SubEntityTraits">SubEntityTraits</a>&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyGiSubEntityTraits&nbsp;<a href="#ViewportDraw-subEntityTraits">subEntityTraits</a>(class&nbsp;PyGiCommonDraw&nbsp;{lvalue})</tt></dd></dl>
 
 <hr>
 Static methods inherited from <a href="PyRx.html#RxObject">PyRx.RxObject</a>:<br>
@@ -2196,6 +3819,13 @@ This&nbsp;class&nbsp;cannot&nbsp;be&nbsp;instantiated&nbsp;from&nbsp;Python</tt>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyGiWorldGeometry&nbsp;<a href="#WorldDraw-geometry">geometry</a>(class&nbsp;PyGiWorldDraw&nbsp;{lvalue})</tt></dd></dl>
 
 <hr>
+Static methods inherited from <a href="PyGi.html#CommonDraw">CommonDraw</a>:<br>
+<dl><dt><a name="WorldDraw-subEntityTraits"><strong>subEntityTraits</strong></a>(...)</dt><dd><tt><a href="#WorldDraw-subEntityTraits">subEntityTraits</a>(&nbsp;(<a href="#CommonDraw">CommonDraw</a>)arg1)&nbsp;-&gt;&nbsp;<a href="#SubEntityTraits">SubEntityTraits</a>&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyGiSubEntityTraits&nbsp;<a href="#WorldDraw-subEntityTraits">subEntityTraits</a>(class&nbsp;PyGiCommonDraw&nbsp;{lvalue})</tt></dd></dl>
+
+<hr>
 Static methods inherited from <a href="PyRx.html#RxObject">PyRx.RxObject</a>:<br>
 <dl><dt><a name="WorldDraw-__eq__"><strong>__eq__</strong></a>(...)</dt><dd><tt><a href="#WorldDraw-__eq__">__eq__</a>(&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg1,&nbsp;(<a href="PyRx.html#RxObject">RxObject</a>)arg2)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
 &nbsp;<br>
@@ -2459,25 +4089,48 @@ Data descriptors inherited from Boost.Python.instance:<br>
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>kAcGiArcChord</strong> = PyGi.AcGiArcType.kAcGiArcChord<br>
+<td width="100%"><strong>KDrawIsInWCS</strong> = PyGi.DrawFlags.KDrawIsInWCS<br>
+<strong>kAcGiArcChord</strong> = PyGi.AcGiArcType.kAcGiArcChord<br>
 <strong>kAcGiArcSector</strong> = PyGi.AcGiArcType.kAcGiArcSector<br>
 <strong>kAcGiArcSimple</strong> = PyGi.AcGiArcType.kAcGiArcSimple<br>
 <strong>kAcGiClockwise</strong> = PyGi.AcGiOrientationType.kAcGiClockwise<br>
 <strong>kAcGiCounterClockwise</strong> = PyGi.AcGiOrientationType.kAcGiCounterClockwise<br>
+<strong>kAcGiFillAlways</strong> = PyGi.AcGiFillType.kAcGiFillAlways<br>
+<strong>kAcGiFillNever</strong> = PyGi.AcGiFillType.kAcGiFillNever<br>
+<strong>kAcGiInvisible</strong> = PyGi.AcGiVisibility.kAcGiInvisible<br>
 <strong>kAcGiNoOrientation</strong> = PyGi.AcGiOrientationType.kAcGiNoOrientation<br>
 <strong>kAcGiScreenLocalOriginPosition</strong> = PyGi.AcGiPositionTransformBehavior.kAcGiScreenLocalOriginPosition<br>
 <strong>kAcGiScreenLocalOriginScale</strong> = PyGi.AcGiScaleTransformBehavior.kAcGiScreenLocalOriginScale<br>
 <strong>kAcGiScreenOrientation</strong> = PyGi.AcGiOrientationTransformBehavior.kAcGiScreenOrientation<br>
 <strong>kAcGiScreenPosition</strong> = PyGi.AcGiPositionTransformBehavior.kAcGiScreenPosition<br>
 <strong>kAcGiScreenScale</strong> = PyGi.AcGiScaleTransformBehavior.kAcGiScreenScale<br>
+<strong>kAcGiSilhouette</strong> = PyGi.AcGiVisibility.kAcGiSilhouette<br>
 <strong>kAcGiViewportLocalOriginScale</strong> = PyGi.AcGiScaleTransformBehavior.kAcGiViewportLocalOriginScale<br>
 <strong>kAcGiViewportPosition</strong> = PyGi.AcGiPositionTransformBehavior.kAcGiViewportPosition<br>
 <strong>kAcGiViewportScale</strong> = PyGi.AcGiScaleTransformBehavior.kAcGiViewportScale<br>
+<strong>kAcGiVisible</strong> = PyGi.AcGiVisibility.kAcGiVisible<br>
 <strong>kAcGiWorldOrientation</strong> = PyGi.AcGiOrientationTransformBehavior.kAcGiWorldOrientation<br>
 <strong>kAcGiWorldPosition</strong> = PyGi.AcGiPositionTransformBehavior.kAcGiWorldPosition<br>
 <strong>kAcGiWorldScale</strong> = PyGi.AcGiScaleTransformBehavior.kAcGiWorldScale<br>
 <strong>kAcGiWorldWithScreenOffsetPosition</strong> = PyGi.AcGiPositionTransformBehavior.kAcGiWorldWithScreenOffsetPosition<br>
 <strong>kAcGiZAxisOrientation</strong> = PyGi.AcGiOrientationTransformBehavior.kAcGiZAxisOrientation<br>
+<strong>kDrawFillSelectionWindow</strong> = PyGi.DrawFlags.kDrawFillSelectionWindow<br>
+<strong>kDrawFillTextBoundaryEnd</strong> = PyGi.DrawFlags.kDrawFillTextBoundaryEnd<br>
+<strong>kDrawFillTextBoundaryStart</strong> = PyGi.DrawFlags.kDrawFillTextBoundaryStart<br>
+<strong>kDrawFrontfacesOnly</strong> = PyGi.DrawFlags.kDrawFrontfacesOnly<br>
+<strong>kDrawGradientFill</strong> = PyGi.DrawFlags.kDrawGradientFill<br>
+<strong>kDrawHatchGroup</strong> = PyGi.DrawFlags.kDrawHatchGroup<br>
+<strong>kDrawNoForceByLayer</strong> = PyGi.DrawFlags.kDrawNoForceByLayer<br>
+<strong>kDrawNoLineWeight</strong> = PyGi.DrawFlags.kDrawNoLineWeight<br>
+<strong>kDrawNoOptimization</strong> = PyGi.DrawFlags.kDrawNoOptimization<br>
+<strong>kDrawSolidFill</strong> = PyGi.DrawFlags.kDrawSolidFill<br>
+<strong>kDrawUseAcGiEntityForDgnLineType</strong> = PyGi.DrawFlags.kDrawUseAcGiEntityForDgnLineType<br>
+<strong>kNoDrawFlags</strong> = PyGi.ShadowFlags.kNoDrawFlags<br>
+<strong>kNoSelectionFlags</strong> = PyGi.SelectionFlags.kNoSelectionFlags<br>
+<strong>kSelectionIgnore</strong> = PyGi.SelectionFlags.kSelectionIgnore<br>
+<strong>kShadowsDoesNotCast</strong> = PyGi.ShadowFlags.kShadowsDoesNotCast<br>
+<strong>kShadowsDoesNotReceive</strong> = PyGi.ShadowFlags.kShadowsDoesNotReceive<br>
+<strong>kShadowsIgnore</strong> = PyGi.ShadowFlags.kShadowsIgnore<br>
 <strong>kTransparency1Bit</strong> = PyGi.TransparencyMode.kTransparency1Bit<br>
 <strong>kTransparency8Bit</strong> = PyGi.TransparencyMode.kTransparency8Bit<br>
 <strong>kTransparencyOff</strong> = PyGi.TransparencyMode.kTransparencyOff</td></tr></table>
