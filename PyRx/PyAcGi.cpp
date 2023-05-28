@@ -66,7 +66,17 @@ BOOST_PYTHON_MODULE(PyGi)
         .value("kAcGiClockwise", AcGiOrientationType::kAcGiClockwise)
         .export_values()
         ;
-
+    enum_<AcGiFillType>("AcGiFillType")
+        .value("kAcGiFillAlways", AcGiFillType::kAcGiFillAlways)
+        .value("kAcGiFillNever", AcGiFillType::kAcGiFillNever)
+        .export_values()
+        ;
+    enum_<AcGiVisibility>("AcGiVisibility")
+        .value("kAcGiInvisible", AcGiVisibility::kAcGiInvisible)
+        .value("kAcGiVisible", AcGiVisibility::kAcGiVisible)
+        .value("kAcGiSilhouette", AcGiVisibility::kAcGiSilhouette)
+        .export_values()
+        ;
 }
 
 void initPyGiModule()
