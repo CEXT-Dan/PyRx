@@ -6,14 +6,13 @@ import PyDb  # = database
 import PyAp  # = application, document classes services
 import PyEd  # = editor
 
-print("command = pydrawoverrule")
-print("command = pystopoverrule")
-
+def OnPyInitApp():
+    print("\ncommand = pydrawoverrule")
+    print("\ncommand = pystopoverrule")
 
 def OnPyUnloadApp():
     #please exit cleanly
     PyRxCmd_pystopoverrule()
-
 
 class MyDrawableOverrule(PyGi.DrawableOverrule):
     def __init__(self):

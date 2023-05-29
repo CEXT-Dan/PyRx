@@ -114,7 +114,10 @@ bool PyApDocument::isQuiescent() const
 
 std::string PyApDocument::docTitle() const
 {
-    return wstr_to_utf8(impObj()->docTitle());
+    const TCHAR* title = impObj()->docTitle();
+    if (title != nullptr)
+        return wstr_to_utf8(impObj()->docTitle());
+    return std::string{};
 }
 
 void PyApDocument::setDocTitle(const std::string& title)

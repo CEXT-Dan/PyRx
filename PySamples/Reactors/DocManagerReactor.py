@@ -1,19 +1,18 @@
-
-import PyRxApp
+import PyRxApp 
 import PyRx
+import PyGe
+import PyGi
+import PyDb
 import PyAp
-
-inst = None  # global scope
-
-
-#Check if the doc is null, it can happen, i.e. on the start tab
-
+import PyEd
 
 def OnPyInitApp():
-  global inst
-  inst = DocReactor()
+    print("\nadded command pyregdocreactor")
+    print("\nadded command pyunregdocreactor")
 
-
+def OnPyUnloadApp():
+    PyRxCmd_pyunregdocreactor()
+   
 class DocReactor(PyAp.DocManagerReactor):
     def __init__(self):
         PyAp.DocManagerReactor.__init__(self)
@@ -72,12 +71,18 @@ class DocReactor(PyAp.DocManagerReactor):
 
 def PyRxCmd_pyregdocreactor():
     try:
-       inst.addReactor()
+        global docReactorInstance
+        docReactorInstance = DocReactor()
+        docReactorInstance.addReactor()
     except Exception as err:
         PyRxApp.Printf(err)
 
 def PyRxCmd_pyunregdocreactor():
     try:
-        inst.removeReactor()
+        global docReactorInstance
+        if docReactorInstance == None:
+            return
+        docReactorInstance.removeReactor()
+        del(docReactorInstance)
     except Exception as err:
         PyRxApp.Printf(err)
