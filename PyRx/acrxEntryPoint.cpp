@@ -421,7 +421,23 @@ public:
 
     static void AcRxPyApp_doit(void)
     {
-        //AcDbXrecord
+        constexpr const double PI = 3.14159265358979323846;
+
+
+
+        /*  auto v = AcGeVector2d(1, 1);
+          auto m = AcGeMatrix2d();
+          m.setToRotation(PI,AcGePoint2d::kOrigin);
+          v = m * v;
+          acutPrintf(_T("\n(%f,%f)"), v.x, v.y);*/
+
+
+
+        auto v = AcGeVector2d::kXAxis;
+        auto m = AcGeMatrix2d();
+        m.setToRotation(PI, AcGePoint2d::kOrigin);
+        v.setToProduct(m, AcGeVector2d::kYAxis);
+        acutPrintf(_T("\n(%.14f,%.14f)"), v.x, v.y); 
     }
 };
 
@@ -431,4 +447,4 @@ ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyload, pyload, ACRX_CMD_TRANS
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyreload, pyreload, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyrxver, pyrxver, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycmdprompt, pycmdprompt, ACRX_CMD_TRANSPARENT, NULL)
-//ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _doit, doit, ACRX_CMD_TRANSPARENT, NULL)
+ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _doit, doit, ACRX_CMD_TRANSPARENT, NULL)

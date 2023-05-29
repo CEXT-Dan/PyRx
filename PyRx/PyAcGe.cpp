@@ -26,42 +26,6 @@ using namespace boost::python;
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGeScale3d
-std::string AcGeScale3dToString(const AcGeScale3d& s)
-{
-    return std::format("({},{},{})", s.sx, s.sy, s.sz);
-}
-
-std::string AcGeScale3dToStringRepr(const AcGeScale3d& s)
-{
-    return std::format("<{}.Scale3d object ({},{},{})>", PyGeNamespace, s.sx, s.sy, s.sz);
-}
-
-void makeAcGeScale3dWrapper()
-{
-    class_<AcGeScale3d>("Scale3d")
-        .def_readwrite("sx", &AcGeScale3d::sx)
-        .def_readwrite("sy", &AcGeScale3d::sy)
-        .def_readwrite("sz", &AcGeScale3d::sz)
-        .def<AcGeScale3d(AcGeScale3d::*)(double)const>("__mul__", &AcGeScale3d::operator*)
-        .def<AcGeScale3d& (AcGeScale3d::*)(double)>("__imul__", &AcGeScale3d::operator*=, return_self<>())
-        .def<AcGeScale3d(AcGeScale3d::*)(const AcGeScale3d&)const>("__mul__", &AcGeScale3d::operator*)
-        .def<AcGeScale3d& (AcGeScale3d::*)(const AcGeScale3d&)>("__imul__", &AcGeScale3d::operator*=, return_self<>())
-#ifndef BRXAPP
-        .def("preMultBy", &AcGeScale3d::preMultBy, return_self<>())
-        .def("postMultBy", &AcGeScale3d::postMultBy, return_self<>())
-        .def<AcGeScale3d& (AcGeScale3d::*)(const AcGeScale3d&, double)>("setToProduct", &AcGeScale3d::setToProduct, return_self<>())
-        .def<AcGeScale3d& (AcGeScale3d::*)(const AcGeScale3d&, const AcGeScale3d&)>("setToProduct", &AcGeScale3d::setToProduct, return_self<>())
-#endif
-        .def("__eq__", &AcGeScale3d::operator==)
-        .def("__ne__", &AcGeScale3d::operator!=)
-        .def("toString", &AcGeScale3dToString)
-        .def("__str__", &AcGeScale3dToString)
-        .def("__repr__", &AcGeScale3dToStringRepr)
-        ;
-}
-
-//---------------------------------------------------------------------------------------------------------------
-//AcGeScale3d
 std::string AcGeScale2dToString(const AcGeScale2d& s)
 {
     return std::format("({},{})", s.sx, s.sy);
@@ -75,6 +39,10 @@ std::string AcGeScale2dToStringRepr(const AcGeScale2d& s)
 void makeAcGeScale2dWrapper()
 {
     class_<AcGeScale2d>("Scale2d")
+        .def(init<>())
+        .def(init<double>())
+        .def(init<double,double>())
+        .def(init<const AcGeScale2d&>())
 #ifndef BRXAPP
         .def("preMultBy", &AcGeScale2d::preMultBy, return_self<>())
         .def("postMultBy", &AcGeScale2d::postMultBy, return_self<>())
@@ -194,15 +162,16 @@ static AcGeVector2d AcGeVector2dkYAxis()
     return AcGeVector2d::kYAxis;
 }
 
-static AcGeVector2d acGeVector2dMulOperatorDouble(const double scl, const AcGeVector2d& vec)
+static AcGeVector2d rmul_double_AcGeVector2d(const AcGeVector2d& vec, double scl)
 {
-    return vec * scl;
+    return scl * vec;
 }
 
-static AcGeVector2d acGeVector2dMulOperatorAcGeMatrix2d(const AcGeVector2d& vec, const AcGeMatrix2d& mat)
+static AcGeVector2d rmul_AcGeMatrix2d_AcGeVector2d(const AcGeVector2d& vec, const AcGeMatrix2d& mat)
 {
     return mat * vec;
 }
+
 
 void makeAcGeVector2dWrapper()
 {
@@ -240,9 +209,8 @@ void makeAcGeVector2dWrapper()
         .def("__ne__", &AcGeVector2d::operator!=)
         .def<AcGeVector2d(AcGeVector2d::*)(double) const>("__mul__", &AcGeVector2d::operator*)
         .def<AcGeVector2d& (AcGeVector2d::*)(double)>("__imul__", &AcGeVector2d::operator*=, return_self<>())
-        .def("__mul__", &acGeVector2dMulOperatorDouble)
-        .def("__mul__", &acGeVector2dMulOperatorAcGeMatrix2d)
-        .def("__matmul__", &acGeVector2dMulOperatorAcGeMatrix2d)
+        .def("__rmul__", &rmul_double_AcGeVector2d)
+        .def("__rmul__", &rmul_AcGeMatrix2d_AcGeVector2d)
         .def<AcGeVector2d(AcGeVector2d::*)(double)const>("__truediv__", &AcGeVector2d::operator/)
         .def<AcGeVector2d& (AcGeVector2d::*)(double)>("__itruediv__", &AcGeVector2d::operator/=, return_self<>())
         .def<AcGeVector2d(AcGeVector2d::*)(const AcGeVector2d&)const>("__add__", &AcGeVector2d::operator+)
@@ -254,8 +222,6 @@ void makeAcGeVector2dWrapper()
         .def("__str__", &AcGeVector2ToString)
         .def("__repr__", &AcGeVector2dToStringRepr)
         ;
-
-    implicitly_convertible<AcGeVector2d, AcGeMatrix2d>();
 }
 
 //---------------------------------------------------------------------------------------------------------------
@@ -359,11 +325,46 @@ static void makeAcGeMatrix2dWrapper()
         .def("__ne__", &AcGeMatrix2d::operator!=)
         .def<AcGeMatrix2d(AcGeMatrix2d::*)(const AcGeMatrix2d&) const>("__mul__", &AcGeMatrix2d::operator*)
         .def<AcGeMatrix2d& (AcGeMatrix2d::*)(const AcGeMatrix2d&)>("__imul__", &AcGeMatrix2d::operator*=, return_self<>())
-        .def<AcGeMatrix2d(AcGeMatrix2d::*)(const AcGeMatrix2d&) const>("__matmul__", &AcGeMatrix2d::operator*)
-        .def<AcGeMatrix2d& (AcGeMatrix2d::*)(const AcGeMatrix2d&)>("__imatmul__", &AcGeMatrix2d::operator*=, return_self<>())
         .def("toString", &AcGeMatrix2dToString)
         .def("__str__", &AcGeMatrix2dToString)
         .def("__repr__", &AcGeMatrix2dToStringRepr)
+        ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------
+//AcGeScale3d
+std::string AcGeScale3dToString(const AcGeScale3d& s)
+{
+    return std::format("({},{},{})", s.sx, s.sy, s.sz);
+}
+
+std::string AcGeScale3dToStringRepr(const AcGeScale3d& s)
+{
+    return std::format("<{}.Scale3d object ({},{},{})>", PyGeNamespace, s.sx, s.sy, s.sz);
+}
+
+void makeAcGeScale3dWrapper()
+{
+    class_<AcGeScale3d>("Scale3d")
+        .def_readwrite("sx", &AcGeScale3d::sx)
+        .def_readwrite("sy", &AcGeScale3d::sy)
+        .def_readwrite("sz", &AcGeScale3d::sz)
+        .def<AcGeScale3d(AcGeScale3d::*)(double)const>("__mul__", &AcGeScale3d::operator*)
+        .def<AcGeScale3d& (AcGeScale3d::*)(double)>("__imul__", &AcGeScale3d::operator*=, return_self<>())
+        .def<AcGeScale3d(AcGeScale3d::*)(const AcGeScale3d&)const>("__mul__", &AcGeScale3d::operator*)
+        .def<AcGeScale3d& (AcGeScale3d::*)(const AcGeScale3d&)>("__imul__", &AcGeScale3d::operator*=, return_self<>())
+#ifndef BRXAPP
+        .def("preMultBy", &AcGeScale3d::preMultBy, return_self<>())
+        .def("postMultBy", &AcGeScale3d::postMultBy, return_self<>())
+        .def<AcGeScale3d& (AcGeScale3d::*)(const AcGeScale3d&, double)>("setToProduct", &AcGeScale3d::setToProduct, return_self<>())
+        .def<AcGeScale3d& (AcGeScale3d::*)(const AcGeScale3d&, const AcGeScale3d&)>("setToProduct", &AcGeScale3d::setToProduct, return_self<>())
+#endif
+        .def("__eq__", &AcGeScale3d::operator==)
+        .def("__ne__", &AcGeScale3d::operator!=)
+        .def("toString", &AcGeScale3dToString)
+        .def("__str__", &AcGeScale3dToString)
+        .def("__repr__", &AcGeScale3dToStringRepr)
         ;
 }
 
@@ -384,12 +385,12 @@ static AcGePoint3d AcGePoint3dkOrigin()
     return AcGePoint3d::kOrigin;
 }
 
-AcGePoint3d acAcGePoint3dMulOperatoAcGeMatrix3d(const AcGeMatrix3d& mat, const AcGePoint3d& pnt)
+AcGePoint3d rmul_AcGePoint3d_AcGeMatrix3d(const AcGePoint3d& pnt, const AcGeMatrix3d& mat)
 {
     return mat * pnt;
 }
 
-AcGePoint3d acAcGePoint3dMulOperatoAcGePoint3d(double val, const AcGePoint3d& pnt)
+AcGePoint3d rmul_double_AcGepoint3d(const AcGePoint3d& pnt, double val)
 {
     return val * pnt;
 }
@@ -423,9 +424,8 @@ void makeAcGePoint3dWrapper()
         .def("__ne__", &AcGePoint3d::operator!=)
         .def<AcGePoint3d(AcGePoint3d::*)(double)const>("__mul__", &AcGePoint3d::operator*)
         .def<AcGePoint3d& (AcGePoint3d::*)(double)>("__imul__", &AcGePoint3d::operator*=, return_self<>())
-        .def("__mul__", &acAcGePoint3dMulOperatoAcGePoint3d)
-        .def("__mul__", &acAcGePoint3dMulOperatoAcGeMatrix3d)
-        .def("__matmul__", &acAcGePoint3dMulOperatoAcGeMatrix3d)
+        .def("__rmul__", &rmul_double_AcGepoint3d)
+        .def("__rmul__", &rmul_AcGePoint3d_AcGeMatrix3d)
         .def<AcGePoint3d(AcGePoint3d::*)(double)const>("__truediv__", &AcGePoint3d::operator/)
         .def<AcGePoint3d& (AcGePoint3d::*)(double)>("__itruediv__", &AcGePoint3d::operator/=, return_self<>())
         .def<AcGePoint3d(AcGePoint3d::*)(const AcGeVector3d&)const>("__add__", &AcGePoint3d::operator+)
@@ -471,14 +471,14 @@ std::string AcGeVector3dToStringRepr(const AcGePoint3d& p)
     return std::format("<{}.Vector3d object ({},{},{})>", PyGeNamespace, p.x, p.y, p.z);
 }
 
-AcGePoint3d acAcGeVector3dMulOperatoAcGePoint3d(double val, const AcGePoint3d& pnt)
+AcGeVector3d rmul_double_AcGeVector3d(const AcGeVector3d& vec, double val)
 {
-    return val * pnt;
+    return val * vec;
 }
 
-AcGePoint3d acAcGeVector3ddMulOperatoAcGeMatrix3d(const AcGeMatrix3d& mat, const AcGePoint3d& pnt)
+AcGeVector3d rmul_AcGeMatrix3d_AcGeVector3d(const AcGeVector3d& vec, const AcGeMatrix3d& mat)
 {
-    return mat * pnt;
+    return mat * vec;
 }
 
 static void makeAcGeVector3dWrapper()
@@ -532,9 +532,8 @@ static void makeAcGeVector3dWrapper()
         .def("__ne__", &AcGeVector3d::operator!=)
         .def<AcGeVector3d(AcGeVector3d::*)(double)const>("__mul__", &AcGeVector3d::operator*)
         .def<AcGeVector3d& (AcGeVector3d::*)(double)>("__imul__", &AcGeVector3d::operator*=, return_self<>())
-        .def("__mul__", &acAcGeVector3dMulOperatoAcGePoint3d)//TODO: Write test
-        .def("__mul__", &acAcGeVector3ddMulOperatoAcGeMatrix3d)
-        .def("__matmul__", &acAcGeVector3ddMulOperatoAcGeMatrix3d)
+        .def("__rmul__", &rmul_double_AcGeVector3d)
+        .def("__rmul__", &rmul_AcGeMatrix3d_AcGeVector3d)
         .def<AcGeVector3d(AcGeVector3d::*)(double)const>("__truediv__", &AcGeVector3d::operator/)
         .def<AcGeVector3d& (AcGeVector3d::*)(double)>("__itruediv__", &AcGeVector3d::operator/=, return_self<>())
         .def<AcGeVector3d(AcGeVector3d::*)(const AcGeVector3d&)const>("__add__", &AcGeVector3d::operator+)
@@ -691,8 +690,6 @@ void makeAcGeMatrix3dWrapper()
         .def("__ne__", &AcGeMatrix3d::operator!=)
         .def<AcGeMatrix3d(AcGeMatrix3d::*)(const AcGeMatrix3d&) const>("__mul__", &AcGeMatrix3d::operator*)
         .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeMatrix3d&)>("__imul__", &AcGeMatrix3d::operator*=, return_self<>())
-        .def<AcGeMatrix3d(AcGeMatrix3d::*)(const AcGeMatrix3d&) const>("__matmul__", &AcGeMatrix3d::operator*)
-        .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeMatrix3d&)>("__imatmul__", &AcGeMatrix3d::operator*=, return_self<>())
         .def<double(AcGeMatrix3d::*)(unsigned int, unsigned int)const>("elementAt", &AcGeMatrix3d::operator())
         .def("toString", &AcGeMatrix3dToString)
         .def("__str__", &AcGeMatrix3dToString)
