@@ -58,7 +58,7 @@ public:
                 if (method.second.OnPyUnloadApp != nullptr)
                 {
                     WxPyAutoLock lock;
-                    if (PyCallable_Check(method.second.OnPyLoadDwg))
+                    if (PyCallable_Check(method.second.OnPyUnloadApp))
                         method.second.rslt.reset(PyObject_CallFunction(method.second.OnPyUnloadApp, NULL));
                 }
             }

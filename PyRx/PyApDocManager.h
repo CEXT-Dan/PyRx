@@ -36,30 +36,30 @@ public:
     virtual void        documentActivated(AcApDocument* pActivatedDoc) override;
 
     ///forwards
-    virtual void        documentCreateStartedWr(PyApDocument& pDocCreating);
-    virtual void        documentCreatedWr(PyApDocument& pDocCreating);
-    virtual void        documentToBeDestroyedWr(PyApDocument& pDocToDestroy);
-    virtual void        documentDestroyedWr(const std::string& fileName);
-    virtual void        documentCreateCanceledWr(PyApDocument& pDocCreateCancelled);
-
-    virtual void        documentLockModeWillChangeWr(PyApDocument& doc,
+    void        documentCreateStartedWr(PyApDocument& pDocCreating);
+    void        documentCreatedWr(PyApDocument& pDocCreating);
+    void        documentToBeDestroyedWr(PyApDocument& pDocToDestroy);
+    void        documentDestroyedWr(const std::string& fileName);
+    void        documentCreateCanceledWr(PyApDocument& pDocCreateCancelled);
+    
+    void        documentLockModeWillChangeWr(PyApDocument& doc,
         AcAp::DocLockMode myCurrentMode,
         AcAp::DocLockMode myNewMode,
         AcAp::DocLockMode currentMode,
         const std::string& pGlobalCmdName);
-    virtual void        documentLockModeChangeVetoedWr(PyApDocument& doc, const std::string& pGlobalCmdName);
+    void        documentLockModeChangeVetoedWr(PyApDocument& doc, const std::string& pGlobalCmdName);
 
-    virtual void        documentLockModeChangedWr(PyApDocument& doc,
+    void        documentLockModeChangedWr(PyApDocument& doc,
         AcAp::DocLockMode myPreviousMode,
         AcAp::DocLockMode myCurrentMode,
         AcAp::DocLockMode currentMode,
         const std::string& pGlobalCmdName);
 
-    virtual void        documentBecameCurrentWr(PyApDocument& doc);
-    virtual void        documentToBeActivatedWr(PyApDocument& pActivatingDoc);
-    virtual void        documentToBeDeactivatedWr(PyApDocument& pDeActivatedDoc);
-    virtual void        documentActivationModifiedWr(bool bActivation);
-    virtual void        documentActivatedWr(PyApDocument& pActivatedDoc);
+    void        documentBecameCurrentWr(PyApDocument& doc);
+    void        documentToBeActivatedWr(PyApDocument& pActivatingDoc);
+    void        documentToBeDeactivatedWr(PyApDocument& pDeActivatedDoc);
+    void        documentActivationModifiedWr(bool bActivation);
+    void        documentActivatedWr(PyApDocument& pActivatedDoc);
 
     void                addReactor();
     void                removeReactor();
