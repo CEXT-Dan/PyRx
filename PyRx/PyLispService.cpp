@@ -93,3 +93,14 @@ void PyLispService::On_kLoadDwgMsg()
         }
     }
 }
+
+void PyLispService::cleanup()
+{
+    WxPyAutoLock lock;
+    for (auto& item : lispFuncCodes)
+    {
+        auto& val = item.second;
+        Py_DecRef(val);
+    }
+    lispFuncCodes.clear();
+}
