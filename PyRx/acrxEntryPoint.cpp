@@ -53,9 +53,20 @@ public:
         AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadAppMsg(pkt);
         try
         {
+            for (auto& method : PyRxApp::instance().funcNameMap)
+            {
+                if (method.second.OnPyUnloadApp != nullptr)
+                {
+                    WxPyAutoLock lock;
+                    if (PyCallable_Check(method.second.OnPyLoadDwg))
+                        method.second.rslt.reset(PyObject_CallFunction(method.second.OnPyUnloadApp, NULL));
+                }
+            }
+#ifdef NEVER //TODO!
             WxPyAutoLock lock;
             PyRxApp::instance().uninit();
             acedRegCmds->removeGroup(_T("PYCOMMANDS"));
+#endif
         }
         catch (...) {}
         return (retCode);
@@ -66,7 +77,7 @@ public:
         AcRx::AppRetCode retCode = AcRxArxApp::On_kLoadDwgMsg(pkt);
         try
         {
-            for (auto& method : PyRxApp::instance().fnm)
+            for (auto& method : PyRxApp::instance().funcNameMap)
             {
                 if (method.second.OnPyLoadDwg != nullptr)
                 {
@@ -86,7 +97,7 @@ public:
         AcRx::AppRetCode retCode = AcRxArxApp::On_kUnloadDwgMsg(pkt);
         try
         {
-            for (auto& method : PyRxApp::instance().fnm)
+            for (auto& method : PyRxApp::instance().funcNameMap)
             {
                 if (method.second.OnPyUnloadDwg != nullptr)
                 {
@@ -151,9 +162,9 @@ public:
         try
         {
             WxPyAutoLock lock;
-            if (PyRxApp::instance().fnm.contains(moduleName))
+            if (PyRxApp::instance().funcNameMap.contains(moduleName))
             {
-                auto& method = PyRxApp::instance().fnm.at(moduleName);
+                auto& method = PyRxApp::instance().funcNameMap.at(moduleName);
                 if (method.OnPyInitApp != nullptr)
                 {
                     if (PyCallable_Check(method.OnPyInitApp))
@@ -208,7 +219,7 @@ public:
                 std::filesystem::path pysyspath;
                 if (!pyNavFileNavDialog(pysyspath, pathName, moduleName))
                     return;
-                if (PyRxApp::instance().fnm.contains(moduleName))
+                if (PyRxApp::instance().funcNameMap.contains(moduleName))
                 {
                     acutPrintf(_T("\nModule %ls Already loaded, use pyreload"), (const TCHAR*)moduleName);
                     return;
@@ -245,7 +256,7 @@ public:
                             PyRxApp::instance().lispService.tryAddFunc(key, pValue);
                         }
                     }
-                    PyRxApp::instance().fnm.emplace(moduleName, std::move(method));
+                    PyRxApp::instance().funcNameMap.emplace(moduleName, std::move(method));
                     acutPrintf(_T("\nSuccess module %ls is loaded: "), (const TCHAR*)moduleName);
                     onload(moduleName);
                 }
@@ -257,7 +268,7 @@ public:
                         return;
                     }
                     acutPrintf(_T("\nFailed to import %ls module: "), (const TCHAR*)moduleName);
-                    PyRxApp::instance().fnm.erase(moduleName);
+                    PyRxApp::instance().funcNameMap.erase(moduleName);
                 }
             }
         }
@@ -280,9 +291,9 @@ public:
                 std::filesystem::path pysyspath;
                 if (!pyNavFileNavDialog(pysyspath, pathName, moduleName))
                     return;
-                if (PyRxApp::instance().fnm.contains(moduleName))
+                if (PyRxApp::instance().funcNameMap.contains(moduleName))
                 {
-                    PyRxMethod& method = PyRxApp::instance().fnm.at(moduleName);
+                    PyRxMethod& method = PyRxApp::instance().funcNameMap.at(moduleName);
                     method.mod.reset(PyImport_ReloadModule(method.mod.get()));
                     if (method.mod != nullptr)
                     {
@@ -319,13 +330,13 @@ public:
                                 PyRxApp::instance().lispService.tryAddFunc(key, pValue);
                             }
                         }
-                        PyRxApp::instance().fnm.emplace(moduleName, std::move(method));
+                        PyRxApp::instance().funcNameMap.emplace(moduleName, std::move(method));
                         acutPrintf(_T("\nSuccess module %ls is reloaded: "), (const TCHAR*)moduleName);
                         onload(moduleName);
                     }
                     else
                     {
-                        PyRxApp::instance().fnm.erase(moduleName);
+                        PyRxApp::instance().funcNameMap.erase(moduleName);
                         if (PyErr_Occurred() != NULL)
                         {
                             acutPrintf(_T("\nPyErr %ls: "), PyRxApp::the_error().c_str());
@@ -437,9 +448,9 @@ public:
         auto m = AcGeMatrix2d();
         m.setToRotation(PI, AcGePoint2d::kOrigin);
         v.setToProduct(m, AcGeVector2d::kYAxis);
-        acutPrintf(_T("\n(%.14f,%.14f)"), v.x, v.y); 
+        acutPrintf(_T("\n(%.14f,%.14f)"), v.x, v.y);
     }
-};
+        };
 
 //-----------------------------------------------------------------------------
 IMPLEMENT_ARX_ENTRYPOINT(AcRxPyApp)

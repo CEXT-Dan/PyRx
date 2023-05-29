@@ -10,6 +10,11 @@ print("command = pydrawoverrule")
 print("command = pystopoverrule")
 
 
+def OnPyUnloadApp():
+    #please exit cleanly
+    PyRxCmd_pystopoverrule()
+
+
 class MyDrawableOverrule(PyGi.DrawableOverrule):
     def __init__(self):
         PyGi.DrawableOverrule.__init__(self)
@@ -23,16 +28,16 @@ class MyDrawableOverrule(PyGi.DrawableOverrule):
         try:
             # draw the subject first
             flag = self.baseWorldDraw(subject, wd)
-            
+
             # cast subject to a line
             line = PyDb.Line.cast(subject)
-            
+
             # Transparency
             traits = wd.subEntityTraits()
             trans = PyDb.Transparency(0.3)
             traits.setTransparency(trans)
 
-            #circle info
+            # circle info
             seg = PyGe.LineSeg3d(line.endPoint(), line.startPoint())
             cen = PyGe.Point3d(seg.midPoint())
             rad = seg.length() * 0.3
@@ -41,8 +46,8 @@ class MyDrawableOverrule(PyGi.DrawableOverrule):
             traits.setColor(1)
             geo = wd.geometry()
             geo.circle(cen, rad, PyGe.Vector3d.kZAxis)
-            
-            #draw text
+
+            # draw text
             traits.setColor(2)
             testpos = cen + (seg.direction().perpVector().normalize() * 3)
             geo.text(testpos, PyGe.Vector3d.kZAxis,
@@ -53,13 +58,10 @@ class MyDrawableOverrule(PyGi.DrawableOverrule):
         except Exception as err:
             print(err)
 
-
-# put this in global space
-overrule = MyDrawableOverrule()
-
-# cmds
 def PyRxCmd_pydrawoverrule():
     try:
+        global overrule
+        overrule = MyDrawableOverrule()
         if overrule.addOverrule(PyDb.Line.desc(), overrule) == PyDb.ErrorStatus.eOk:
             overrule.setIsOverruling(True)
         else:
@@ -70,9 +72,11 @@ def PyRxCmd_pydrawoverrule():
 
 def PyRxCmd_pystopoverrule():
     try:
+        global overrule
         if overrule == None:
             return
         if overrule.removeOverrule(PyDb.Line.desc(), overrule) == PyDb.ErrorStatus.eOk:
             overrule.setIsOverruling(False)
+        del (overrule)
     except Exception as err:
         PyRxApp.Printf(err)

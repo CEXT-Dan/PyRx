@@ -10,6 +10,8 @@ public:
     using CmdNameMap = std::map<AcString, funcode>;
     using CmdLispMap = std::map<funcode, PyObject*>;
 
+    void cleanup();
+
     CmdNameMap lispFuncs;
     CmdLispMap lispFuncCodes;
 };

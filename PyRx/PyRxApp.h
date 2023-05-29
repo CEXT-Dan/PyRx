@@ -28,8 +28,9 @@ public:
     static PyRxApp& instance();
 public:
 
+    void cleanUpCommands();
     using FuncNameMap = std::map<AcString, PyRxMethod>;
-    FuncNameMap fnm;
+    FuncNameMap funcNameMap;
 
     using LoadedPaths = std::set<std::filesystem::path>;
     LoadedPaths loadedModulePaths;
