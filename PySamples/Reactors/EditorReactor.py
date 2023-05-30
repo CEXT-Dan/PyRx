@@ -7,14 +7,13 @@ import PyDb
 import PyGe
 import PyEd
 
-inst = None #global scope
-
 def OnPyInitApp():
-  global inst
-  inst = EdReactor()
+    print("\nadded command pyregedreactor")
+    print("\nadded command pyunregedreactor")
 
-#TODO check doc.isNull()
-
+def OnPyUnloadApp():
+    PyRxCmd_pyunregedreactor()
+    
 class EdReactor(PyEd.EditorReactor):
     def __init__(self):
         PyEd.EditorReactor.__init__(self)
@@ -31,14 +30,20 @@ class EdReactor(PyEd.EditorReactor):
     def beginSave(self, db , fileName):
         print("\nbeginSave-{} {}".format(db.getFilename(), fileName))
 
-def PyRxCmd_pyreg_edreactor():
+def PyRxCmd_pyregedreactor():
     try:
-       inst.addReactor()
+        global inst
+        inst = EdReactor()
+        inst.addReactor()
     except Exception as err:
         PyRxApp.Printf(err)
 
-def PyRxCmd_pyunreg_edreactor():
+def PyRxCmd_pyunregedreactor():
     try:
+        global inst
+        if inst == None:
+            return
         inst.removeReactor()
+        del(inst)
     except Exception as err:
         PyRxApp.Printf(err)
