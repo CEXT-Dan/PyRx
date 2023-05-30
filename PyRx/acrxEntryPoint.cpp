@@ -270,6 +270,69 @@ public:
         }
     }
 
+    static void doPyLoad(AcString& pathName, AcString& moduleName, std::filesystem::path& pysyspath)
+    {
+        if (PyRxApp::instance().funcNameMap.contains(moduleName))
+        {
+            acutPrintf(_T("\nModule %ls Already loaded, use pyreload"), (const TCHAR*)moduleName);
+            return;
+        }
+        PyRxMethod method;
+        method.modname.reset(wstr_to_py((const TCHAR*)pathName));
+        method.mod.reset(PyImport_Import(method.modname.get()));
+        if (method.mod != nullptr)
+        {
+            method.mdict = PyModule_GetDict(method.mod.get());
+            loadPyAppReactors(method);
+            loadCommands(method, pysyspath);
+            PyRxApp::instance().funcNameMap.emplace(moduleName, std::move(method));
+            acutPrintf(_T("\nSuccess module %ls is loaded: "), (const TCHAR*)moduleName);
+            onload(moduleName);
+        }
+        else
+        {
+            if (PyErr_Occurred() != NULL)
+            {
+                acutPrintf(_T("\nPyErr %ls: "), PyRxApp::the_error().c_str());
+                return;
+            }
+            acutPrintf(_T("\nFailed to import %ls module: "), (const TCHAR*)moduleName);
+            PyRxApp::instance().funcNameMap.erase(moduleName);
+        }
+    }
+
+    static void doPyReload(AcString& pathName, AcString& moduleName, std::filesystem::path& pysyspath)
+    {
+        if (PyRxApp::instance().funcNameMap.contains(moduleName))
+        {
+            PyRxMethod& method = PyRxApp::instance().funcNameMap.at(moduleName);
+            method.mod.reset(PyImport_ReloadModule(method.mod.get()));
+            if (method.mod != nullptr)
+            {
+                method.mdict = PyModule_GetDict(method.mod.get());
+                loadPyAppReactors(method);
+                reloadCommands(method, pysyspath);
+                PyRxApp::instance().funcNameMap.emplace(moduleName, std::move(method));
+                acutPrintf(_T("\nSuccess module %ls is reloaded: "), (const TCHAR*)moduleName);
+                onload(moduleName);
+            }
+            else
+            {
+                PyRxApp::instance().funcNameMap.erase(moduleName);
+                if (PyErr_Occurred() != NULL)
+                {
+                    acutPrintf(_T("\nPyErr %ls: "), PyRxApp::the_error().c_str());
+                    return;
+                }
+                acutPrintf(_T("\nFailed to import %ls module: "), (const TCHAR*)moduleName);
+            }
+        }
+        else
+        {
+            acutPrintf(_T("\nModule %ls was never loaded, use pyload"), (const TCHAR*)moduleName);
+        }
+    }
+
     static void AcRxPyApp_pyload(void)
     {
         try
@@ -282,33 +345,7 @@ public:
                 std::filesystem::path pysyspath;
                 if (!pyNavFileNavDialog(pysyspath, pathName, moduleName))
                     return;
-                if (PyRxApp::instance().funcNameMap.contains(moduleName))
-                {
-                    acutPrintf(_T("\nModule %ls Already loaded, use pyreload"), (const TCHAR*)moduleName);
-                    return;
-                }
-                PyRxMethod method;
-                method.modname.reset(wstr_to_py((const TCHAR*)pathName));
-                method.mod.reset(PyImport_Import(method.modname.get()));
-                if (method.mod != nullptr)
-                {
-                    method.mdict = PyModule_GetDict(method.mod.get());
-                    loadPyAppReactors(method);
-                    loadCommands(method, pysyspath);
-                    PyRxApp::instance().funcNameMap.emplace(moduleName, std::move(method));
-                    acutPrintf(_T("\nSuccess module %ls is loaded: "), (const TCHAR*)moduleName);
-                    onload(moduleName);
-                }
-                else
-                {
-                    if (PyErr_Occurred() != NULL)
-                    {
-                        acutPrintf(_T("\nPyErr %ls: "), PyRxApp::the_error().c_str());
-                        return;
-                    }
-                    acutPrintf(_T("\nFailed to import %ls module: "), (const TCHAR*)moduleName);
-                    PyRxApp::instance().funcNameMap.erase(moduleName);
-                }
+                doPyLoad(pathName, moduleName, pysyspath);
             }
         }
         catch (...)
@@ -330,34 +367,7 @@ public:
                 std::filesystem::path pysyspath;
                 if (!pyNavFileNavDialog(pysyspath, pathName, moduleName))
                     return;
-                if (PyRxApp::instance().funcNameMap.contains(moduleName))
-                {
-                    PyRxMethod& method = PyRxApp::instance().funcNameMap.at(moduleName);
-                    method.mod.reset(PyImport_ReloadModule(method.mod.get()));
-                    if (method.mod != nullptr)
-                    {
-                        method.mdict = PyModule_GetDict(method.mod.get());
-                        loadPyAppReactors(method);
-                        reloadCommands(method, pysyspath);
-                        PyRxApp::instance().funcNameMap.emplace(moduleName, std::move(method));
-                        acutPrintf(_T("\nSuccess module %ls is reloaded: "), (const TCHAR*)moduleName);
-                        onload(moduleName);
-                    }
-                    else
-                    {
-                        PyRxApp::instance().funcNameMap.erase(moduleName);
-                        if (PyErr_Occurred() != NULL)
-                        {
-                            acutPrintf(_T("\nPyErr %ls: "), PyRxApp::the_error().c_str());
-                            return;
-                        }
-                        acutPrintf(_T("\nFailed to import %ls module: "), (const TCHAR*)moduleName);
-                    }
-                }
-                else
-                {
-                    acutPrintf(_T("\nModule %ls was never loaded, use pyload"), (const TCHAR*)moduleName);
-                }
+                doPyReload(pathName, moduleName, pysyspath);
             }
         }
         catch (...)
