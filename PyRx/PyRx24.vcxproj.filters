@@ -229,6 +229,9 @@
     <ClCompile Include="PyGiSubEntityTraits.cpp">
       <Filter>Source Files\PyGi</Filter>
     </ClCompile>
+    <ClCompile Include="PyDbUnderlayReference.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -461,6 +464,9 @@
     </ClInclude>
     <ClInclude Include="PyGiSubEntityTraits.h">
       <Filter>Header Files\PyGi</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbUnderlayReference.h">
+      <Filter>Header Files\PyDb</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -148,12 +148,6 @@
     <ClCompile Include="PyGeCurve2d.cpp">
       <Filter>Source Files\PyGe</Filter>
     </ClCompile>
-    <ClCompile Include="PyGeCurveCurveInt2d.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PyGePointEnt2d.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PyGeLinearEnt2d.cpp">
       <Filter>Source Files\PyGe</Filter>
     </ClCompile>
@@ -228,6 +222,15 @@
     </ClCompile>
     <ClCompile Include="PyGiSubEntityTraits.cpp">
       <Filter>Source Files\PyGi</Filter>
+    </ClCompile>
+    <ClCompile Include="PyDbUnderlayReference.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGePointEnt2d.cpp">
+      <Filter>Source Files\PyGe</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGeCurveCurveInt2d.cpp">
+      <Filter>Source Files\PyGe</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -378,9 +381,6 @@
     <ClInclude Include="PyGeClipBoundary2d.h">
       <Filter>Header Files\PyGe</Filter>
     </ClInclude>
-    <ClInclude Include="PyGeCurve2d.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="PyGeCurveCurveInt2d.h">
       <Filter>Header Files\PyGe</Filter>
     </ClInclude>
@@ -461,6 +461,12 @@
     </ClInclude>
     <ClInclude Include="PyGiSubEntityTraits.h">
       <Filter>Header Files\PyGi</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbUnderlayReference.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeCurve2d.h">
+      <Filter>Header Files\PyGe</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
