@@ -229,6 +229,9 @@
     <ClCompile Include="PyGiSubEntityTraits.cpp">
       <Filter>Source Files\PyGi</Filter>
     </ClCompile>
+    <ClCompile Include="PyDbUnderlayReference.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -375,9 +378,6 @@
     <ClInclude Include="PyGeBoundBlock2d.h">
       <Filter>Header Files\PyGe</Filter>
     </ClInclude>
-    <ClInclude Include="PyGeClipBoundary2d.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="PyGeCurve2d.h">
       <Filter>Header Files\PyGe</Filter>
     </ClInclude>
@@ -461,6 +461,12 @@
     </ClInclude>
     <ClInclude Include="PyGiSubEntityTraits.h">
       <Filter>Header Files\PyGi</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbUnderlayReference.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGeClipBoundary2d.h">
+      <Filter>Header Files\PyGe</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
