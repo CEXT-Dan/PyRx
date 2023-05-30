@@ -207,7 +207,69 @@ public:
     }
 
     //TODO: needs improvement 
-    //
+    static void loadPyAppReactors(PyRxMethod& method)
+    {
+        method.OnPyInitApp = PyDict_GetItemString(method.mdict, "OnPyInitApp");
+        method.OnPyUnloadApp = PyDict_GetItemString(method.mdict, "OnPyUnloadApp");
+        method.OnPyLoadDwg = PyDict_GetItemString(method.mdict, "OnPyLoadDwg");
+        method.OnPyUnloadDwg = PyDict_GetItemString(method.mdict, "OnPyUnloadDwg");
+    }
+
+    static void loadCommands(PyRxMethod& method, std::filesystem::path pysyspath)
+    {
+        PyObject* pKey = nullptr, * pValue = nullptr;
+        for (Py_ssize_t i = 0; PyDict_Next(method.mdict, &i, &pKey, &pValue);)
+        {
+            const AcString key = utf8_to_wstr(PyUnicode_AsUTF8(pKey)).c_str();
+            if (key.find(PyCommandPrefix) != -1)
+            {
+                AcString commandName = key.substr(PyCommandPrefix.length(), key.length() - 1);
+                if (PyFunction_Check(pValue))
+                {
+                    const int commandFlags = PyCmd::getCommandFlags(pValue);
+                    PyRxApp::instance().commands.emplace(commandName.makeUpper(), pValue);
+                    PyRxApp::instance().pathForCommand.emplace(commandName, pysyspath);
+                    acedRegCmds->addCommand(_T("PYCOMMANDS"), commandName, commandName, commandFlags, AcRxPyApp_pyfunc);
+                }
+            }
+            if (key.find(PyLispFuncPrefix) != -1)
+            {
+                PyRxApp::instance().lispService.tryAddFunc(key, pValue);
+            }
+        }
+    }
+
+    static void reloadCommands(PyRxMethod& method, std::filesystem::path pysyspath)
+    {
+        PyObject* pKey = nullptr, * pValue = nullptr;
+        for (Py_ssize_t i = 0; PyDict_Next(method.mdict, &i, &pKey, &pValue);)
+        {
+            AcString key = utf8_to_wstr(PyUnicode_AsUTF8(pKey)).c_str();
+            if (key.find(PyCommandPrefix) != -1)
+            {
+                AcString commandName = key.substr(PyCommandPrefix.length(), key.length() - 1);
+                if (PyFunction_Check(pValue))
+                {
+                    if (PyRxApp::instance().commands.contains(commandName.makeUpper()))
+                    {
+                        PyRxApp::instance().commands[commandName] = pValue;
+                    }
+                    else
+                    {
+                        const int commandFlags = PyCmd::getCommandFlags(pValue);
+                        PyRxApp::instance().commands.emplace(commandName, pValue);
+                        PyRxApp::instance().pathForCommand.emplace(commandName, pysyspath);
+                        acedRegCmds->addCommand(_T("PYCOMMANDS"), commandName, commandName, commandFlags, AcRxPyApp_pyfunc);
+                    }
+                }
+            }
+            if (key.find(PyLispFuncPrefix) != -1)
+            {
+                PyRxApp::instance().lispService.tryAddFunc(key, pValue);
+            }
+        }
+    }
+
     static void AcRxPyApp_pyload(void)
     {
         try
@@ -230,33 +292,9 @@ public:
                 method.mod.reset(PyImport_Import(method.modname.get()));
                 if (method.mod != nullptr)
                 {
-                    //module initapp
                     method.mdict = PyModule_GetDict(method.mod.get());
-                    method.OnPyInitApp = PyDict_GetItemString(method.mdict, "OnPyInitApp");
-                    method.OnPyUnloadApp = PyDict_GetItemString(method.mdict, "OnPyUnloadApp");
-                    method.OnPyLoadDwg = PyDict_GetItemString(method.mdict, "OnPyLoadDwg");
-                    method.OnPyUnloadDwg = PyDict_GetItemString(method.mdict, "OnPyUnloadDwg");
-
-                    PyObject* pKey = nullptr, * pValue = nullptr;
-                    for (Py_ssize_t i = 0; PyDict_Next(method.mdict, &i, &pKey, &pValue);)
-                    {
-                        const AcString key = utf8_to_wstr(PyUnicode_AsUTF8(pKey)).c_str();
-                        if (key.find(PyCommandPrefix) != -1)
-                        {
-                            AcString commandName = key.substr(PyCommandPrefix.length(), key.length() - 1);
-                            if (PyFunction_Check(pValue))
-                            {
-                                const int commandFlags = PyCmd::getCommandFlags(pValue);
-                                PyRxApp::instance().commands.emplace(commandName.makeUpper(), pValue);
-                                PyRxApp::instance().pathForCommand.emplace(commandName, pysyspath);
-                                acedRegCmds->addCommand(_T("PYCOMMANDS"), commandName, commandName, commandFlags, AcRxPyApp_pyfunc);
-                            }
-                        }
-                        if (key.find(PyLispFuncPrefix) != -1)
-                        {
-                            PyRxApp::instance().lispService.tryAddFunc(key, pValue);
-                        }
-                    }
+                    loadPyAppReactors(method);
+                    loadCommands(method, pysyspath);
                     PyRxApp::instance().funcNameMap.emplace(moduleName, std::move(method));
                     acutPrintf(_T("\nSuccess module %ls is loaded: "), (const TCHAR*)moduleName);
                     onload(moduleName);
@@ -299,38 +337,8 @@ public:
                     if (method.mod != nullptr)
                     {
                         method.mdict = PyModule_GetDict(method.mod.get());
-                        method.OnPyInitApp = PyDict_GetItemString(method.mdict, "OnPyInitApp");
-                        method.OnPyUnloadApp = PyDict_GetItemString(method.mdict, "OnPyUnloadApp");
-                        method.OnPyLoadDwg = PyDict_GetItemString(method.mdict, "OnPyLoadDwg");
-                        method.OnPyUnloadDwg = PyDict_GetItemString(method.mdict, "OnPyUnloadDwg");
-
-                        PyObject* pKey = nullptr, * pValue = nullptr;
-                        for (Py_ssize_t i = 0; PyDict_Next(method.mdict, &i, &pKey, &pValue);)
-                        {
-                            AcString key = utf8_to_wstr(PyUnicode_AsUTF8(pKey)).c_str();
-                            if (key.find(PyCommandPrefix) != -1)
-                            {
-                                AcString commandName = key.substr(PyCommandPrefix.length(), key.length() - 1);
-                                if (PyFunction_Check(pValue))
-                                {
-                                    if (PyRxApp::instance().commands.contains(commandName.makeUpper()))
-                                    {
-                                        PyRxApp::instance().commands[commandName] = pValue;
-                                    }
-                                    else
-                                    {
-                                        const int commandFlags = PyCmd::getCommandFlags(pValue);
-                                        PyRxApp::instance().commands.emplace(commandName, pValue);
-                                        PyRxApp::instance().pathForCommand.emplace(commandName, pysyspath);
-                                        acedRegCmds->addCommand(_T("PYCOMMANDS"), commandName, commandName, commandFlags, AcRxPyApp_pyfunc);
-                                    }
-                                }
-                            }
-                            if (key.find(PyLispFuncPrefix) != -1)
-                            {
-                                PyRxApp::instance().lispService.tryAddFunc(key, pValue);
-                            }
-                        }
+                        loadPyAppReactors(method);
+                        reloadCommands(method, pysyspath);
                         PyRxApp::instance().funcNameMap.emplace(moduleName, std::move(method));
                         acutPrintf(_T("\nSuccess module %ls is reloaded: "), (const TCHAR*)moduleName);
                         onload(moduleName);
