@@ -28,12 +28,12 @@ using namespace boost::python;
 //AcGeScale3d
 std::string AcGeScale2dToString(const AcGeScale2d& s)
 {
-    return std::format("({},{})", s.sx, s.sy);
+    return std::format("({:.14f},{:.14f})", s.sx, s.sy);
 }
 
 std::string AcGeScale2dToStringRepr(const AcGeScale2d& s)
 {
-    return std::format("<{}.Scale2d object ({},{})>", PyGeNamespace, s.sx, s.sy);
+    return std::format("<{}.Scale2d object ({:.14f},{:.14f})>", PyGeNamespace, s.sx, s.sy);
 }
 
 void makeAcGeScale2dWrapper()
@@ -86,12 +86,12 @@ void makeAcGeTolWrapper()
 //AcGePoint2d
 std::string AcGePoint2dToString(const AcGePoint2d& p)
 {
-    return std::format("({},{})", p.x, p.y);
+    return std::format("({:.14f},{:.14f})", p.x, p.y);
 }
 
 std::string AcGePoint2dToStringRepr(const AcGePoint2d& s)
 {
-    return std::format("<{}.Point2d object ({},{})>", PyGeNamespace, s.x, s.y);
+    return std::format("<{}.Point2d object ({:.14f},{:.14f})>", PyGeNamespace, s.x, s.y);
 }
 
 static AcGePoint2d AcGePoint2dkOrigin()
@@ -139,12 +139,12 @@ void makeAcGePoint2dWrapper()
 //AcGeVector2d
 std::string AcGeVector2ToString(const AcGeVector2d& p)
 {
-    return std::format("({},{})", p.x, p.y);
+    return std::format("({:.14f},{:.14f})", p.x, p.y);
 }
 
 std::string AcGeVector2dToStringRepr(const AcGePoint2d& s)
 {
-    return std::format("<{}.Vector2d object ({},{})>", PyGeNamespace, s.x, s.y);
+    return std::format("<{}.Vector2d object ({:.14f},{:.14f})>", PyGeNamespace, s.x, s.y);
 }
 
 static AcGeVector2d AcGeVector2dkIdentity()
@@ -336,12 +336,12 @@ static void makeAcGeMatrix2dWrapper()
 //AcGeScale3d
 std::string AcGeScale3dToString(const AcGeScale3d& s)
 {
-    return std::format("({},{},{})", s.sx, s.sy, s.sz);
+    return std::format("({:.14f},{:.14f},{:.14f})", s.sx, s.sy, s.sz);
 }
 
 std::string AcGeScale3dToStringRepr(const AcGeScale3d& s)
 {
-    return std::format("<{}.Scale3d object ({},{},{})>", PyGeNamespace, s.sx, s.sy, s.sz);
+    return std::format("<{}.Scale3d object ({:.14f},{:.14f},{:.14f})>", PyGeNamespace, s.sx, s.sy, s.sz);
 }
 
 void makeAcGeScale3dWrapper()
@@ -372,12 +372,12 @@ void makeAcGeScale3dWrapper()
 //AcGePoint3d
 std::string AcGePoint3dToString(const AcGePoint3d& p)
 {
-    return std::format("({},{},{})", p.x, p.y, p.z);
+    return std::format("({:.14f},{:.14f},{:.14f})", p.x, p.y, p.z);
 }
 
 std::string AcGePoint3dToStringRepr(const AcGePoint3d& p)
 {
-    return std::format("<{}.Point3d object ({},{},{})>", PyGeNamespace, p.x, p.y, p.z);
+    return std::format("<{}.Point3d object ({:.14f},{:.14f},{:.14f})>", PyGeNamespace, p.x, p.y, p.z);
 }
 
 static AcGePoint3d AcGePoint3dkOrigin()
@@ -463,12 +463,12 @@ static AcGeVector3d AcGeVector3dkZAxis()
 
 std::string AcGeVector3dToString(const AcGeVector3d& p)
 {
-    return std::format("({},{},{})", p.x, p.y, p.z);
+    return std::format("({:.14f},{:.14f},{:.14f})", p.x, p.y, p.z);
 }
 
 std::string AcGeVector3dToStringRepr(const AcGePoint3d& p)
 {
-    return std::format("<{}.Vector3d object ({},{},{})>", PyGeNamespace, p.x, p.y, p.z);
+    return std::format("<{}.Vector3d object ({:.14f},{:.14f},{:.14f})>", PyGeNamespace, p.x, p.y, p.z);
 }
 
 AcGeVector3d rmul_double_AcGeVector3d(const AcGeVector3d& vec, double val)
