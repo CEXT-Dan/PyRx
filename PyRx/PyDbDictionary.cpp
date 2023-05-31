@@ -78,7 +78,7 @@ std::string PyDbDictionary::nameAt(const PyDbObjectId& id)
 
 Adesk::UInt32 PyDbDictionary::numEntries() const
 {
-    return impObj()->numEntries()
+    return impObj()->numEntries();
 }
 
 PyDbObjectId PyDbDictionary::setAt(const std::string& srchKey, PyDbObject& newValue)
