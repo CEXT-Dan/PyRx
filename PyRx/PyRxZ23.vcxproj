@@ -150,6 +150,7 @@
     <ClCompile Include="PyDbHatch.cpp" />
     <ClCompile Include="PyDbHostApplicationServices.cpp" />
     <ClCompile Include="PyDbIdMapping.cpp" />
+    <ClCompile Include="PyDbImage.cpp" />
     <ClCompile Include="PyDbLayerTableRecord.cpp" />
     <ClCompile Include="PyDbLeader.cpp" />
     <ClCompile Include="PyDbMline.cpp" />
@@ -230,6 +231,7 @@
     <ClInclude Include="PyDbHatch.h" />
     <ClInclude Include="PyDbHostApplicationServices.h" />
     <ClInclude Include="PyDbIdMapping.h" />
+    <ClInclude Include="PyDbImage.h" />
     <ClInclude Include="PyDbLayerTableRecord.h" />
     <ClInclude Include="PyDbLeader.h" />
     <ClInclude Include="PyDbMline.h" />
