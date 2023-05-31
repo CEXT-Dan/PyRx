@@ -8,7 +8,14 @@ using namespace boost::python;
 //PyUnderlayLayer
 void makePyUnderlayLayerWrapper()
 {
-
+    class_<PyUnderlayLayer>("UnderlayLayer")
+#ifndef BRXAPP
+        .def("name", &PyUnderlayLayer::name)
+        .def("state", &PyUnderlayLayer::state)
+        .def("setName", &PyUnderlayLayer::setName)
+        .def("setState", &PyUnderlayLayer::setState)
+#endif
+        ;
 }
 
 PyUnderlayLayer::PyUnderlayLayer()
@@ -23,47 +30,41 @@ PyUnderlayLayer::PyUnderlayLayer(const AcUnderlayLayer& layer)
 
 std::string PyUnderlayLayer::name()
 {
-#ifdef BRXAPP
-    throw PyNotimplementedByHost();
-#else
     return wstr_to_utf8(imp.name());
-#endif
 }
 
 bool PyUnderlayLayer::state() const
 {
-#ifdef BRXAPP
-    throw PyNotimplementedByHost();
-#else
     return imp.state() == AcUnderlayLayer::kOn;
-#endif
 }
 
 Acad::ErrorStatus PyUnderlayLayer::setName(const std::string& name)
 {
-#ifdef BRXAPP
-    throw PyNotimplementedByHost();
-#else
     return imp.setName(utf8_to_wstr(name).c_str());
-#endif
 }
 
 Acad::ErrorStatus PyUnderlayLayer::setState(bool state)
 {
-#ifdef BRXAPP
-    throw PyNotimplementedByHost();
-#else
     return imp.setState(state ? AcUnderlayLayer::kOn : AcUnderlayLayer::kOff);
-#endif
 }
-
 #endif
+
 //-----------------------------------------------------------------------------------
 //PyDbUnderlayDefinition
 void makePyDbUnderlayDefinitionWrapper()
 {
     class_<PyDbUnderlayDefinition, bases<PyDbObject>>("UnderlayDefinition", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("setSourceFileName", &PyDbUnderlayDefinition::setSourceFileName)
+        .def("getSourceFileName", &PyDbUnderlayDefinition::getSourceFileName)
+        .def("getActiveFileName", &PyDbUnderlayDefinition::getActiveFileName)
+        .def("setItemName", &PyDbUnderlayDefinition::setItemName)
+        .def("getItemName", &PyDbUnderlayDefinition::getItemName)
+        .def("load", &PyDbUnderlayDefinition::load1)
+        .def("load", &PyDbUnderlayDefinition::load2)
+        .def("unload", &PyDbUnderlayDefinition::unload)
+        .def("isLoaded", &PyDbUnderlayDefinition::isLoaded)
+        .def("dictionaryKey", &PyDbUnderlayDefinition::className).staticmethod("dictionaryKey")
         .def("className", &PyDbUnderlayDefinition::className).staticmethod("className")
         .def("desc", &PyDbUnderlayDefinition::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbUnderlayDefinition::cloneFrom).staticmethod("cloneFrom")
@@ -177,6 +178,49 @@ void makePyDbUnderlayReferenceWrapper()
 {
     class_<PyDbUnderlayReference, bases<PyDbEntity>>("UnderlayReference", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("position", &PyDbUnderlayReference::position)
+        .def("setPosition", &PyDbUnderlayReference::setPosition)
+        .def("scaleFactors", &PyDbUnderlayReference::scaleFactors)
+        .def("setScaleFactors", &PyDbUnderlayReference::setScaleFactors)
+        .def("rotation", &PyDbUnderlayReference::rotation)
+        .def("setRotation", &PyDbUnderlayReference::setRotation)
+        .def("normal", &PyDbUnderlayReference::normal)
+        .def("setNormal", &PyDbUnderlayReference::setNormal)
+        .def("transform", &PyDbUnderlayReference::transform)
+        .def("setTransform", &PyDbUnderlayReference::setTransform)
+        .def("definitionId", &PyDbUnderlayReference::definitionId)
+        .def("setDefinitionId", &PyDbUnderlayReference::setDefinitionId)
+        .def("setWidth", &PyDbUnderlayReference::setWidth)
+        .def("width", &PyDbUnderlayReference::width)
+        .def("setHeight", &PyDbUnderlayReference::setHeight)
+        .def("height", &PyDbUnderlayReference::height)
+        .def("clipBoundary", &PyDbUnderlayReference::clipBoundary)
+        .def("setClipBoundary", &PyDbUnderlayReference::setClipBoundary)
+        .def("isClipped", &PyDbUnderlayReference::isClipped)
+        .def("setIsClipped", &PyDbUnderlayReference::setIsClipped)
+        .def("contrast", &PyDbUnderlayReference::contrast)
+        .def("setContrast", &PyDbUnderlayReference::setContrast)
+        .def("fade", &PyDbUnderlayReference::fade)
+        .def("setFade", &PyDbUnderlayReference::setFade)
+        .def("isOn", &PyDbUnderlayReference::isOn)
+        .def("setIsOn", &PyDbUnderlayReference::setIsOn)
+        .def("isMonochrome", &PyDbUnderlayReference::isMonochrome)
+        .def("setIsMonochrome", &PyDbUnderlayReference::setIsMonochrome)
+        .def("isAdjustedForBackground", &PyDbUnderlayReference::isAdjustedForBackground)
+        .def("setIsAdjustedForBackground", &PyDbUnderlayReference::setIsAdjustedForBackground)
+        .def("isFrameVisible", &PyDbUnderlayReference::isFrameVisible)
+        .def("isFramePlottable", &PyDbUnderlayReference::isFramePlottable)
+        .def("underlayLayerCount", &PyDbUnderlayReference::underlayLayerCount)
+        .def("getUnderlayLayer", &PyDbUnderlayReference::getUnderlayLayer)
+        .def("setUnderlayLayer", &PyDbUnderlayReference::setUnderlayLayer)
+        .def("isClipInverted", &PyDbUnderlayReference::isClipInverted)
+        .def("setClipInverted", &PyDbUnderlayReference::setClipInverted)
+        .def("generateClipBoundaryFromPline", &PyDbUnderlayReference::generateClipBoundaryFromPline)
+        .def("contrastLowerLimit", &PyDbUnderlayReference::contrastLowerLimit).staticmethod("contrastLowerLimit")
+        .def("contrastDefault", &PyDbUnderlayReference::contrastDefault).staticmethod("contrastDefault")
+        .def("fadeLowerLimit", &PyDbUnderlayReference::fadeLowerLimit).staticmethod("fadeLowerLimit")
+        .def("fadeUpperLimit", &PyDbUnderlayReference::fadeUpperLimit).staticmethod("fadeUpperLimit")
+        .def("fadeDefault", &PyDbUnderlayReference::fadeDefault).staticmethod("fadeDefault")
         .def("className", &PyDbUnderlayReference::className).staticmethod("className")
         .def("desc", &PyDbUnderlayReference::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbUnderlayReference::cloneFrom).staticmethod("cloneFrom")
@@ -504,3 +548,136 @@ AcDbUnderlayReference* PyDbUnderlayReference::impObj(const std::source_location&
     return static_cast<AcDbUnderlayReference*>(m_pyImp.get());
 }
 
+
+
+//-----------------------------------------------------------------------------------
+//PyDbPdfDefinition
+void makePyDbPdfDefinitionWrapper()
+{
+    class_<PyDbPdfDefinition, bases<PyDbUnderlayDefinition>>("PdfDefinition")
+        .def(init<>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("className", &PyDbUnderlayDefinition::className).staticmethod("className")
+        .def("desc", &PyDbUnderlayDefinition::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbUnderlayDefinition::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbUnderlayDefinition::cast).staticmethod("cast")
+        ;
+}
+
+PyDbPdfDefinition::PyDbPdfDefinition()
+  : PyDbUnderlayDefinition(new AcDbPdfDefinition(), true)
+{
+
+}
+
+PyDbPdfDefinition::PyDbPdfDefinition(AcDbUnderlayDefinition* ptr, bool autoDelete)
+    : PyDbUnderlayDefinition(ptr, autoDelete)
+{
+
+}
+
+PyDbPdfDefinition::PyDbPdfDefinition(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbUnderlayDefinition(nullptr, false)
+{
+    AcDbPdfDefinition* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbPdfDefinition>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    this->resetImp(pobj, false, true);
+}
+
+std::string PyDbPdfDefinition::className()
+{
+    return "AcDbPdfDefinition";
+}
+
+PyRxClass PyDbPdfDefinition::desc()
+{
+    return PyRxClass(AcDbPdfDefinition::desc(), false);
+}
+
+PyDbPdfDefinition PyDbPdfDefinition::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbPdfDefinition::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbPdfDefinition(static_cast<AcDbPdfDefinition*>(src.impObj()->clone()), true);
+}
+
+PyDbPdfDefinition PyDbPdfDefinition::cast(const PyRxObject& src)
+{
+    PyDbPdfDefinition dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+AcDbPdfDefinition* PyDbPdfDefinition::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr)
+        throw PyNullObject(src);
+    return static_cast<AcDbPdfDefinition*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyDbPdfReference
+void makePyDbPdfReferenceWrapper()
+{
+    class_<PyDbPdfReference, bases<PyDbUnderlayReference>>("PdfReference")
+        .def(init<>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("className", &PyDbPdfReference::className).staticmethod("className")
+        .def("desc", &PyDbPdfReference::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbPdfReference::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbPdfReference::cast).staticmethod("cast")
+        ;
+}
+
+PyDbPdfReference::PyDbPdfReference()
+    : PyDbUnderlayReference(new AcDbPdfReference(), true)
+{
+}
+
+PyDbPdfReference::PyDbPdfReference(AcDbPdfReference* ptr, bool autoDelete)
+    : PyDbUnderlayReference(ptr, autoDelete)
+{
+}
+
+PyDbPdfReference::PyDbPdfReference(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbUnderlayReference(nullptr,false)
+{
+    AcDbPdfReference* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbPdfReference>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    this->resetImp(pobj, false, true);
+}
+
+std::string PyDbPdfReference::className()
+{
+    return "AcDbPdfReference";
+}
+
+PyRxClass PyDbPdfReference::desc()
+{
+    return PyRxClass(AcDbPdfReference::desc(), false);
+}
+
+PyDbPdfReference PyDbPdfReference::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbPdfReference::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbPdfReference(static_cast<AcDbPdfReference*>(src.impObj()->clone()), true);
+}
+
+PyDbPdfReference PyDbPdfReference::cast(const PyRxObject& src)
+{
+    PyDbPdfReference dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+AcDbPdfReference* PyDbPdfReference::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr)
+        throw PyNullObject(src);
+    return static_cast<AcDbPdfReference*>(m_pyImp.get());
+}

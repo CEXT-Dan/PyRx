@@ -15,13 +15,11 @@ public:
     PyUnderlayLayer();
 #ifndef BRXAPP
     PyUnderlayLayer(const AcUnderlayLayer& layer);
-#endif
-    std::string name();;
+    std::string name();
     bool state() const;
     Acad::ErrorStatus setName(const std::string& name);
     Acad::ErrorStatus setState(bool state);
 public:
-#ifndef BRXAPP
     AcUnderlayLayer imp;
 #endif
 };
@@ -125,4 +123,48 @@ public:
     static PyDbUnderlayReference     cast(const PyRxObject& src);
 public:
     AcDbUnderlayReference* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------------
+//PyDbPdfDefinition
+void makePyDbPdfDefinitionWrapper();
+
+class PyDbPdfDefinition : public PyDbUnderlayDefinition
+{
+public:
+    PyDbPdfDefinition();
+    PyDbPdfDefinition(AcDbUnderlayDefinition* ptr, bool autoDelete);
+    PyDbPdfDefinition(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbPdfDefinition() override = default;
+
+public:
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyDbPdfDefinition   cloneFrom(const PyRxObject& src);
+    static PyDbPdfDefinition   cast(const PyRxObject& src);
+public:
+    AcDbPdfDefinition* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+
+//-----------------------------------------------------------------------------------
+//PyDbPdfReference
+void makePyDbPdfReferenceWrapper();
+
+class PyDbPdfReference : public PyDbUnderlayReference
+{
+public:
+    PyDbPdfReference();
+    PyDbPdfReference(AcDbPdfReference* ptr, bool autoDelete);
+    PyDbPdfReference(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbPdfReference() override = default;
+    
+public:
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyDbPdfReference	 cloneFrom(const PyRxObject& src);
+    static PyDbPdfReference     cast(const PyRxObject& src);
+public:
+    AcDbPdfReference* impObj(const std::source_location& src = std::source_location::current()) const;
 };
