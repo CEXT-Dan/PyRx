@@ -53775,10 +53775,10 @@ desc() -> RxClass :
     ...
     def dictionaryKey (self, *args, **kwargs):
       '''
-dictionaryKey() -> str :
+dictionaryKey( (RxClass)arg1) -> str :
 
     C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dictionaryKey()'''
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dictionaryKey(class PyRxClass)'''
     ...
     def disableUndoRecording (self, *args, **kwargs):
       '''
@@ -83129,10 +83129,10 @@ desc() -> RxClass :
     ...
     def dictionaryKey (self, *args, **kwargs):
       '''
-dictionaryKey() -> str :
+dictionaryKey( (RxClass)arg1) -> str :
 
     C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dictionaryKey()'''
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dictionaryKey(class PyRxClass)'''
     ...
     def disableUndoRecording (self, *args, **kwargs):
       '''
