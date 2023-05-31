@@ -8,13 +8,21 @@ void makeAcDbDictionaryWrapper();
 class PyDbDictionary : public PyDbObject
 {
 public:
+    PyDbDictionary();
     PyDbDictionary(AcDbDictionary* ptr, bool autoDelete);
     PyDbDictionary(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbDictionary() override = default;
     PyDbObjectId            getAt(const std::string& entryName);
-    bool                    has(const std::string& entryName);
+    bool                    has1(const std::string& entryName);
+    bool                    has2(const PyDbObjectId& id);
+    std::string             nameAt(const PyDbObjectId& id);
+    Adesk::UInt32           numEntries() const;
+    PyDbObjectId            setAt(const std::string& srchKey, PyDbObject& newValue);
+    Acad::ErrorStatus       remove1(const std::string& key);
+    Acad::ErrorStatus       remove2(const std::string& key, PyDbObjectId& returnId);
+    Acad::ErrorStatus       remove3(PyDbObjectId&  objId);
+    bool                    setName(const std::string& oldName, const std::string& newName);
     boost::python::dict     asDict();
-
     static std::string      className();
     static PyRxClass        desc();
     static PyDbDictionary   cloneFrom(const PyRxObject& src);
