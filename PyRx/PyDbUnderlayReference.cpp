@@ -64,7 +64,7 @@ void makePyDbUnderlayDefinitionWrapper()
         .def("load", &PyDbUnderlayDefinition::load2)
         .def("unload", &PyDbUnderlayDefinition::unload)
         .def("isLoaded", &PyDbUnderlayDefinition::isLoaded)
-        .def("dictionaryKey", &PyDbUnderlayDefinition::className).staticmethod("dictionaryKey")
+        .def("dictionaryKey", &PyDbUnderlayDefinition::dictionaryKey).staticmethod("dictionaryKey")
         .def("className", &PyDbUnderlayDefinition::className).staticmethod("className")
         .def("desc", &PyDbUnderlayDefinition::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbUnderlayDefinition::cloneFrom).staticmethod("cloneFrom")
@@ -89,7 +89,6 @@ PyDbUnderlayDefinition::PyDbUnderlayDefinition(const PyDbObjectId& id, AcDb::Ope
 Acad::ErrorStatus PyDbUnderlayDefinition::setSourceFileName(const std::string& file)
 {
     return impObj()->setSourceFileName(utf8_to_wstr(file).c_str());
-
 }
 
 const std::string PyDbUnderlayDefinition::getSourceFileName() const

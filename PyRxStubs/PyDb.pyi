@@ -20446,6 +20446,16 @@ __eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
     ...
     def __init__ (self, *args, **kwargs):
       '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -20810,6 +20820,13 @@ removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus removePersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def setAt (self, *args, **kwargs):
+      '''
+setAt( (Dictionary)arg1, (str)arg2, (DbObject)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setAt(class PyDbDictionary {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObject {lvalue})'''
     ...
     def setField (self, *args, **kwargs):
       '''
@@ -53640,6 +53657,1617 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class PdfDefinition:
+    def __eq__ (self, *args, **kwargs):
+      '''
+__eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __eq__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def __init__ (self, *args, **kwargs):
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def __ne__ (self, *args, **kwargs):
+      '''
+__ne__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __ne__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def addPersistentReactor (self, *args, **kwargs):
+      '''
+addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus addPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def assertNotifyEnabled (self, *args, **kwargs):
+      '''
+assertNotifyEnabled( (DbObject)arg1) -> None :
+
+    C++ signature :
+        void assertNotifyEnabled(class PyDbObject {lvalue})'''
+    ...
+    def assertReadEnabled (self, *args, **kwargs):
+      '''
+assertReadEnabled( (DbObject)arg1) -> None :
+
+    C++ signature :
+        void assertReadEnabled(class PyDbObject {lvalue})'''
+    ...
+    def assertWriteEnabled (self, *args, **kwargs):
+      '''
+assertWriteEnabled( (DbObject)arg1) -> None :
+
+    C++ signature :
+        void assertWriteEnabled(class PyDbObject {lvalue})'''
+    ...
+    def cancel (self, *args, **kwargs):
+      '''
+cancel( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
+    ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> UnderlayDefinition :
+
+    C++ signature :
+        class PyDbUnderlayDefinition cast(class PyRxObject)'''
+    ...
+    def className (self, *args, **kwargs):
+      '''
+className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> UnderlayDefinition :
+
+    C++ signature :
+        class PyDbUnderlayDefinition cloneFrom(class PyRxObject)'''
+    ...
+    def close (self, *args, **kwargs):
+      '''
+close( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus close(class PyDbObject {lvalue})'''
+    ...
+    def createExtensionDictionary (self, *args, **kwargs):
+      '''
+createExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def database (self, *args, **kwargs):
+      '''
+database( (DbObject)arg1) -> Database :
+
+    C++ signature :
+        class PyDbDatabase database(class PyDbObject {lvalue})'''
+    ...
+    def desc (self, *args, **kwargs):
+      '''
+desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def dictionaryKey (self, *args, **kwargs):
+      '''
+dictionaryKey() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dictionaryKey()'''
+    ...
+    def disableUndoRecording (self, *args, **kwargs):
+      '''
+disableUndoRecording( (DbObject)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void disableUndoRecording(class PyDbObject {lvalue},bool)'''
+    ...
+    def downgradeOpen (self, *args, **kwargs):
+      '''
+downgradeOpen( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus downgradeOpen(class PyDbObject {lvalue})'''
+    ...
+    def downgradeToNotify (self, *args, **kwargs):
+      '''
+downgradeToNotify( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus downgradeToNotify(class PyDbObject {lvalue},bool)'''
+    ...
+    def erase (self, *args, **kwargs):
+      '''
+erase( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+    ...
+    def extensionDictionary (self, *args, **kwargs):
+      '''
+extensionDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId extensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def getActiveFileName (self, *args, **kwargs):
+      '''
+getActiveFileName( (UnderlayDefinition)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getActiveFileName(class PyDbUnderlayDefinition {lvalue})'''
+    ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
+    def getItemName (self, *args, **kwargs):
+      '''
+getItemName( (UnderlayDefinition)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getItemName(class PyDbUnderlayDefinition {lvalue})'''
+    ...
+    def getSourceFileName (self, *args, **kwargs):
+      '''
+getSourceFileName( (UnderlayDefinition)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getSourceFileName(class PyDbUnderlayDefinition {lvalue})'''
+    ...
+    def handOverTo (self, *args, **kwargs):
+      '''
+handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
+    ...
+    def hasPersistentReactor (self, *args, **kwargs):
+      '''
+hasPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> bool :
+
+    C++ signature :
+        bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def isA (self, *args, **kwargs):
+      '''
+isA( (Drawable)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+    ...
+    def isAProxy (self, *args, **kwargs):
+      '''
+isAProxy( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isAProxy(class PyDbObject {lvalue})'''
+    ...
+    def isCancelling (self, *args, **kwargs):
+      '''
+isCancelling( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isCancelling(class PyDbObject {lvalue})'''
+    ...
+    def isEraseStatusToggled (self, *args, **kwargs):
+      '''
+isEraseStatusToggled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isEraseStatusToggled(class PyDbObject {lvalue})'''
+    ...
+    def isErased (self, *args, **kwargs):
+      '''
+isErased( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isErased(class PyDbObject {lvalue})'''
+    ...
+    def isLoaded (self, *args, **kwargs):
+      '''
+isLoaded( (UnderlayDefinition)arg1) -> bool :
+
+    C++ signature :
+        bool isLoaded(class PyDbUnderlayDefinition {lvalue})'''
+    ...
+    def isModified (self, *args, **kwargs):
+      '''
+isModified( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isModified(class PyDbObject {lvalue})'''
+    ...
+    def isModifiedGraphics (self, *args, **kwargs):
+      '''
+isModifiedGraphics( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isModifiedGraphics(class PyDbObject {lvalue})'''
+    ...
+    def isModifiedXData (self, *args, **kwargs):
+      '''
+isModifiedXData( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isModifiedXData(class PyDbObject {lvalue})'''
+    ...
+    def isNewObject (self, *args, **kwargs):
+      '''
+isNewObject( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNewObject(class PyDbObject {lvalue})'''
+    ...
+    def isNotifyEnabled (self, *args, **kwargs):
+      '''
+isNotifyEnabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNotifyEnabled(class PyDbObject {lvalue})'''
+    ...
+    def isNotifying (self, *args, **kwargs):
+      '''
+isNotifying( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNotifying(class PyDbObject {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs):
+      '''
+isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def isReadEnabled (self, *args, **kwargs):
+      '''
+isReadEnabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isReadEnabled(class PyDbObject {lvalue})'''
+    ...
+    def isReallyClosing (self, *args, **kwargs):
+      '''
+isReallyClosing( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isReallyClosing(class PyDbObject {lvalue})'''
+    ...
+    def isTransactionResident (self, *args, **kwargs):
+      '''
+isTransactionResident( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isTransactionResident(class PyDbObject {lvalue})'''
+    ...
+    def isUndoRecordingDisabled (self, *args, **kwargs):
+      '''
+isUndoRecordingDisabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isUndoRecordingDisabled(class PyDbObject {lvalue})'''
+    ...
+    def isUndoing (self, *args, **kwargs):
+      '''
+isUndoing( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isUndoing(class PyDbObject {lvalue})'''
+    ...
+    def isWriteEnabled (self, *args, **kwargs):
+      '''
+isWriteEnabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isWriteEnabled(class PyDbObject {lvalue})'''
+    ...
+    def load (self, *args, **kwargs):
+      '''
+load( (UnderlayDefinition)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus load(class PyDbUnderlayDefinition {lvalue})
+
+load( (UnderlayDefinition)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus load(class PyDbUnderlayDefinition {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def objectId (self, *args, **kwargs):
+      '''
+objectId( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId objectId(class PyDbObject {lvalue})'''
+    ...
+    def ownerId (self, *args, **kwargs):
+      '''
+ownerId( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
+    def releaseExtensionDictionary (self, *args, **kwargs):
+      '''
+releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def removePersistentReactor (self, *args, **kwargs):
+      '''
+removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removePersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
+    ...
+    def setItemName (self, *args, **kwargs):
+      '''
+setItemName( (UnderlayDefinition)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setItemName(class PyDbUnderlayDefinition {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setOwnerId (self, *args, **kwargs):
+      '''
+setOwnerId( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setOwnerId(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def setSourceFileName (self, *args, **kwargs):
+      '''
+setSourceFileName( (UnderlayDefinition)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSourceFileName(class PyDbUnderlayDefinition {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setXData (self, *args, **kwargs):
+      '''
+setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setXData(class PyDbObject {lvalue},class boost::python::list)'''
+    ...
+    def swapIdWith (self, *args, **kwargs):
+      '''
+swapIdWith( (DbObject)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus swapIdWith(class PyDbObject {lvalue},class PyDbObjectId {lvalue},bool,bool)'''
+    ...
+    def unload (self, *args, **kwargs):
+      '''
+unload( (UnderlayDefinition)arg1) -> None :
+
+    C++ signature :
+        void unload(class PyDbUnderlayDefinition {lvalue})'''
+    ...
+    def upgradeFromNotify (self, *args, **kwargs):
+      '''
+upgradeFromNotify( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus upgradeFromNotify(class PyDbObject {lvalue},bool {lvalue})'''
+    ...
+    def upgradeOpen (self, *args, **kwargs):
+      '''
+upgradeOpen( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus upgradeOpen(class PyDbObject {lvalue})'''
+    ...
+    def xData (self, *args, **kwargs):
+      '''
+xData( (DbObject)arg1, (str)arg2) -> list :
+
+    C++ signature :
+        class boost::python::list xData(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def xDataTransformBy (self, *args, **kwargs):
+      '''
+xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus xDataTransformBy(class PyDbObject {lvalue},class AcGeMatrix3d)'''
+    ...
+
+class PdfReference:
+    def __eq__ (self, *args, **kwargs):
+      '''
+__eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __eq__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def __init__ (self, *args, **kwargs):
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def __ne__ (self, *args, **kwargs):
+      '''
+__ne__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __ne__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def addPersistentReactor (self, *args, **kwargs):
+      '''
+addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus addPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def assertNotifyEnabled (self, *args, **kwargs):
+      '''
+assertNotifyEnabled( (DbObject)arg1) -> None :
+
+    C++ signature :
+        void assertNotifyEnabled(class PyDbObject {lvalue})'''
+    ...
+    def assertReadEnabled (self, *args, **kwargs):
+      '''
+assertReadEnabled( (DbObject)arg1) -> None :
+
+    C++ signature :
+        void assertReadEnabled(class PyDbObject {lvalue})'''
+    ...
+    def assertWriteEnabled (self, *args, **kwargs):
+      '''
+assertWriteEnabled( (DbObject)arg1) -> None :
+
+    C++ signature :
+        void assertWriteEnabled(class PyDbObject {lvalue})'''
+    ...
+    def blockId (self, *args, **kwargs):
+      '''
+blockId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def cancel (self, *args, **kwargs):
+      '''
+cancel( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
+    ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> PdfReference :
+
+    C++ signature :
+        class PyDbPdfReference cast(class PyRxObject)'''
+    ...
+    def castShadows (self, *args, **kwargs):
+      '''
+castShadows( (Entity)arg1) -> bool :
+
+    C++ signature :
+        bool castShadows(class PyDbEntity {lvalue})'''
+    ...
+    def className (self, *args, **kwargs):
+      '''
+className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def clipBoundary (self, *args, **kwargs):
+      '''
+clipBoundary( (UnderlayReference)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list clipBoundary(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> PdfReference :
+
+    C++ signature :
+        class PyDbPdfReference cloneFrom(class PyRxObject)'''
+    ...
+    def close (self, *args, **kwargs):
+      '''
+close( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus close(class PyDbObject {lvalue})'''
+    ...
+    def collisionType (self, *args, **kwargs):
+      '''
+collisionType( (Entity)arg1) -> CollisionType :
+
+    C++ signature :
+        enum AcDb::CollisionType collisionType(class PyDbEntity {lvalue})'''
+    ...
+    def color (self, *args, **kwargs):
+      '''
+color( (Entity)arg1) -> Color :
+
+    C++ signature :
+        class AcCmColor color(class PyDbEntity {lvalue})'''
+    ...
+    def colorIndex (self, *args, **kwargs):
+      '''
+colorIndex( (Entity)arg1) -> int :
+
+    C++ signature :
+        unsigned short colorIndex(class PyDbEntity {lvalue})'''
+    ...
+    def contrast (self, *args, **kwargs):
+      '''
+contrast( (UnderlayReference)arg1) -> int :
+
+    C++ signature :
+        unsigned char contrast(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def contrastDefault (self, *args, **kwargs):
+      '''
+contrastDefault() -> int :
+
+    C++ signature :
+        unsigned char contrastDefault()'''
+    ...
+    def contrastLowerLimit (self, *args, **kwargs):
+      '''
+contrastLowerLimit() -> int :
+
+    C++ signature :
+        unsigned char contrastLowerLimit()'''
+    ...
+    def createExtensionDictionary (self, *args, **kwargs):
+      '''
+createExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def database (self, *args, **kwargs):
+      '''
+database( (DbObject)arg1) -> Database :
+
+    C++ signature :
+        class PyDbDatabase database(class PyDbObject {lvalue})'''
+    ...
+    def definitionId (self, *args, **kwargs):
+      '''
+definitionId( (UnderlayReference)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId definitionId(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def desc (self, *args, **kwargs):
+      '''
+desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def disableUndoRecording (self, *args, **kwargs):
+      '''
+disableUndoRecording( (DbObject)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void disableUndoRecording(class PyDbObject {lvalue},bool)'''
+    ...
+    def downgradeOpen (self, *args, **kwargs):
+      '''
+downgradeOpen( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus downgradeOpen(class PyDbObject {lvalue})'''
+    ...
+    def downgradeToNotify (self, *args, **kwargs):
+      '''
+downgradeToNotify( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus downgradeToNotify(class PyDbObject {lvalue},bool)'''
+    ...
+    def draw (self, *args, **kwargs):
+      '''
+draw( (Entity)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def entityColor (self, *args, **kwargs):
+      '''
+entityColor( (Entity)arg1) -> EntityColor :
+
+    C++ signature :
+        class AcCmEntityColor entityColor(class PyDbEntity {lvalue})'''
+    ...
+    def erase (self, *args, **kwargs):
+      '''
+erase( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+    ...
+    def extensionDictionary (self, *args, **kwargs):
+      '''
+extensionDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId extensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def fade (self, *args, **kwargs):
+      '''
+fade( (UnderlayReference)arg1) -> int :
+
+    C++ signature :
+        unsigned char fade(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def fadeDefault (self, *args, **kwargs):
+      '''
+fadeDefault() -> int :
+
+    C++ signature :
+        unsigned char fadeDefault()'''
+    ...
+    def fadeLowerLimit (self, *args, **kwargs):
+      '''
+fadeLowerLimit() -> int :
+
+    C++ signature :
+        unsigned char fadeLowerLimit()'''
+    ...
+    def fadeUpperLimit (self, *args, **kwargs):
+      '''
+fadeUpperLimit() -> int :
+
+    C++ signature :
+        unsigned char fadeUpperLimit()'''
+    ...
+    def generateClipBoundaryFromPline (self, *args, **kwargs):
+      '''
+generateClipBoundaryFromPline( (UnderlayReference)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus generateClipBoundaryFromPline(class PyDbUnderlayReference {lvalue},class PyDbObjectId {lvalue})'''
+    ...
+    def getCompoundObjectTransform (self, *args, **kwargs):
+      '''
+getCompoundObjectTransform( (Entity)arg1, (Matrix3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus getCompoundObjectTransform(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
+    ...
+    def getEcs (self, *args, **kwargs):
+      '''
+getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
+
+    C++ signature :
+        void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
+    ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
+    def getGeomExtents (self, *args, **kwargs):
+      '''
+getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getPlane (self, *args, **kwargs):
+      '''
+getPlane( (Entity)arg1) -> Plane :
+
+    C++ signature :
+        class PyGePlane getPlane(class PyDbEntity {lvalue})'''
+    ...
+    def getPlotStyleNameId (self, *args, **kwargs):
+      '''
+getPlotStyleNameId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getPlotStyleNameId(class PyDbEntity {lvalue})'''
+    ...
+    def getUnderlayLayer (self, *args, **kwargs):
+      '''
+getUnderlayLayer( (UnderlayReference)arg1, (int)arg2) -> UnderlayLayer :
+
+    C++ signature :
+        class PyUnderlayLayer getUnderlayLayer(class PyDbUnderlayReference {lvalue},int)'''
+    ...
+    def handOverTo (self, *args, **kwargs):
+      '''
+handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
+    ...
+    def hasPersistentReactor (self, *args, **kwargs):
+      '''
+hasPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> bool :
+
+    C++ signature :
+        bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def height (self, *args, **kwargs):
+      '''
+height( (UnderlayReference)arg1) -> float :
+
+    C++ signature :
+        double height(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def isA (self, *args, **kwargs):
+      '''
+isA( (Drawable)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+    ...
+    def isAProxy (self, *args, **kwargs):
+      '''
+isAProxy( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isAProxy(class PyDbObject {lvalue})'''
+    ...
+    def isAdjustedForBackground (self, *args, **kwargs):
+      '''
+isAdjustedForBackground( (UnderlayReference)arg1) -> bool :
+
+    C++ signature :
+        bool isAdjustedForBackground(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def isCancelling (self, *args, **kwargs):
+      '''
+isCancelling( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isCancelling(class PyDbObject {lvalue})'''
+    ...
+    def isClipInverted (self, *args, **kwargs):
+      '''
+isClipInverted( (UnderlayReference)arg1) -> bool :
+
+    C++ signature :
+        bool isClipInverted(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def isClipped (self, *args, **kwargs):
+      '''
+isClipped( (UnderlayReference)arg1) -> bool :
+
+    C++ signature :
+        bool isClipped(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def isEraseStatusToggled (self, *args, **kwargs):
+      '''
+isEraseStatusToggled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isEraseStatusToggled(class PyDbObject {lvalue})'''
+    ...
+    def isErased (self, *args, **kwargs):
+      '''
+isErased( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isErased(class PyDbObject {lvalue})'''
+    ...
+    def isFramePlottable (self, *args, **kwargs):
+      '''
+isFramePlottable( (UnderlayReference)arg1) -> bool :
+
+    C++ signature :
+        bool isFramePlottable(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def isFrameVisible (self, *args, **kwargs):
+      '''
+isFrameVisible( (UnderlayReference)arg1) -> bool :
+
+    C++ signature :
+        bool isFrameVisible(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def isModified (self, *args, **kwargs):
+      '''
+isModified( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isModified(class PyDbObject {lvalue})'''
+    ...
+    def isModifiedGraphics (self, *args, **kwargs):
+      '''
+isModifiedGraphics( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isModifiedGraphics(class PyDbObject {lvalue})'''
+    ...
+    def isModifiedXData (self, *args, **kwargs):
+      '''
+isModifiedXData( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isModifiedXData(class PyDbObject {lvalue})'''
+    ...
+    def isMonochrome (self, *args, **kwargs):
+      '''
+isMonochrome( (UnderlayReference)arg1) -> bool :
+
+    C++ signature :
+        bool isMonochrome(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def isNewObject (self, *args, **kwargs):
+      '''
+isNewObject( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNewObject(class PyDbObject {lvalue})'''
+    ...
+    def isNotifyEnabled (self, *args, **kwargs):
+      '''
+isNotifyEnabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNotifyEnabled(class PyDbObject {lvalue})'''
+    ...
+    def isNotifying (self, *args, **kwargs):
+      '''
+isNotifying( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNotifying(class PyDbObject {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs):
+      '''
+isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def isOn (self, *args, **kwargs):
+      '''
+isOn( (UnderlayReference)arg1) -> bool :
+
+    C++ signature :
+        bool isOn(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def isPlanar (self, *args, **kwargs):
+      '''
+isPlanar( (Entity)arg1) -> bool :
+
+    C++ signature :
+        bool isPlanar(class PyDbEntity {lvalue})'''
+    ...
+    def isReadEnabled (self, *args, **kwargs):
+      '''
+isReadEnabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isReadEnabled(class PyDbObject {lvalue})'''
+    ...
+    def isReallyClosing (self, *args, **kwargs):
+      '''
+isReallyClosing( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isReallyClosing(class PyDbObject {lvalue})'''
+    ...
+    def isTransactionResident (self, *args, **kwargs):
+      '''
+isTransactionResident( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isTransactionResident(class PyDbObject {lvalue})'''
+    ...
+    def isUndoRecordingDisabled (self, *args, **kwargs):
+      '''
+isUndoRecordingDisabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isUndoRecordingDisabled(class PyDbObject {lvalue})'''
+    ...
+    def isUndoing (self, *args, **kwargs):
+      '''
+isUndoing( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isUndoing(class PyDbObject {lvalue})'''
+    ...
+    def isWriteEnabled (self, *args, **kwargs):
+      '''
+isWriteEnabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isWriteEnabled(class PyDbObject {lvalue})'''
+    ...
+    def layer (self, *args, **kwargs):
+      '''
+layer( (Entity)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > layer(class PyDbEntity {lvalue})'''
+    ...
+    def layerId (self, *args, **kwargs):
+      '''
+layerId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId layerId(class PyDbEntity {lvalue})'''
+    ...
+    def lineWeight (self, *args, **kwargs):
+      '''
+lineWeight( (Entity)arg1) -> LineWeight :
+
+    C++ signature :
+        enum AcDb::LineWeight lineWeight(class PyDbEntity {lvalue})'''
+    ...
+    def linetype (self, *args, **kwargs):
+      '''
+linetype( (Entity)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > linetype(class PyDbEntity {lvalue})'''
+    ...
+    def linetypeId (self, *args, **kwargs):
+      '''
+linetypeId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId linetypeId(class PyDbEntity {lvalue})'''
+    ...
+    def linetypeScale (self, *args, **kwargs):
+      '''
+linetypeScale( (Entity)arg1) -> float :
+
+    C++ signature :
+        double linetypeScale(class PyDbEntity {lvalue})'''
+    ...
+    def list (self, *args, **kwargs):
+      '''
+list( (Entity)arg1) -> None :
+
+    C++ signature :
+        void list(class PyDbEntity {lvalue})'''
+    ...
+    def material (self, *args, **kwargs):
+      '''
+material( (Entity)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > material(class PyDbEntity {lvalue})'''
+    ...
+    def materialId (self, *args, **kwargs):
+      '''
+materialId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
+    ...
+    def normal (self, *args, **kwargs):
+      '''
+normal( (UnderlayReference)arg1) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d normal(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def objectId (self, *args, **kwargs):
+      '''
+objectId( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId objectId(class PyDbObject {lvalue})'''
+    ...
+    def ownerId (self, *args, **kwargs):
+      '''
+ownerId( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
+    ...
+    def plotStyleName (self, *args, **kwargs):
+      '''
+plotStyleName( (Entity)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > plotStyleName(class PyDbEntity {lvalue})'''
+    ...
+    def position (self, *args, **kwargs):
+      '''
+position( (UnderlayReference)arg1) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d position(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def receiveShadows (self, *args, **kwargs):
+      '''
+receiveShadows( (Entity)arg1) -> bool :
+
+    C++ signature :
+        bool receiveShadows(class PyDbEntity {lvalue})'''
+    ...
+    def recordGraphicsModified (self, *args, **kwargs):
+      '''
+recordGraphicsModified( (Entity)arg1) -> None :
+
+    C++ signature :
+        void recordGraphicsModified(class PyDbEntity {lvalue})
+
+recordGraphicsModified( (Entity)arg1) -> None :
+
+    C++ signature :
+        void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
+    def releaseExtensionDictionary (self, *args, **kwargs):
+      '''
+releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def removePersistentReactor (self, *args, **kwargs):
+      '''
+removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removePersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def rotation (self, *args, **kwargs):
+      '''
+rotation( (UnderlayReference)arg1) -> float :
+
+    C++ signature :
+        double rotation(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def scaleFactors (self, *args, **kwargs):
+      '''
+scaleFactors( (UnderlayReference)arg1) -> Scale3d :
+
+    C++ signature :
+        class AcGeScale3d scaleFactors(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def setCastShadows (self, *args, **kwargs):
+      '''
+setCastShadows( (Entity)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setCastShadows(class PyDbEntity {lvalue},bool)'''
+    ...
+    def setClipBoundary (self, *args, **kwargs):
+      '''
+setClipBoundary( (UnderlayReference)arg1, (list)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setClipBoundary(class PyDbUnderlayReference {lvalue},class boost::python::list)'''
+    ...
+    def setClipInverted (self, *args, **kwargs):
+      '''
+setClipInverted( (UnderlayReference)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setClipInverted(class PyDbUnderlayReference {lvalue},bool)'''
+    ...
+    def setColor (self, *args, **kwargs):
+      '''
+setColor( (Entity)arg1, (Color)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColor(class PyDbEntity {lvalue},class AcCmColor)
+
+setColor( (Entity)arg1, (Color)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColor(class PyDbEntity {lvalue},class AcCmColor,bool)
+
+setColor( (Entity)arg1, (Color)arg2, (bool)arg3, (Database)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColor(class PyDbEntity {lvalue},class AcCmColor,bool,class PyDbDatabase {lvalue})'''
+    ...
+    def setColorIndex (self, *args, **kwargs):
+      '''
+setColorIndex( (Entity)arg1, (int)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColorIndex(class PyDbEntity {lvalue},unsigned short)
+
+setColorIndex( (Entity)arg1, (int)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColorIndex(class PyDbEntity {lvalue},unsigned short,bool)'''
+    ...
+    def setContrast (self, *args, **kwargs):
+      '''
+setContrast( (UnderlayReference)arg1, (int)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setContrast(class PyDbUnderlayReference {lvalue},unsigned char)'''
+    ...
+    def setDatabaseDefaults (self, *args, **kwargs):
+      '''
+setDatabaseDefaults( (Entity)arg1) -> None :
+
+    C++ signature :
+        void setDatabaseDefaults(class PyDbEntity {lvalue})
+
+setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
+
+    C++ signature :
+        void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setDefinitionId (self, *args, **kwargs):
+      '''
+setDefinitionId( (UnderlayReference)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setDefinitionId(class PyDbUnderlayReference {lvalue},class PyDbObjectId)'''
+    ...
+    def setFade (self, *args, **kwargs):
+      '''
+setFade( (UnderlayReference)arg1, (int)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setFade(class PyDbUnderlayReference {lvalue},unsigned char)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
+    ...
+    def setHeight (self, *args, **kwargs):
+      '''
+setHeight( (UnderlayReference)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setHeight(class PyDbUnderlayReference {lvalue},double)'''
+    ...
+    def setIsAdjustedForBackground (self, *args, **kwargs):
+      '''
+setIsAdjustedForBackground( (UnderlayReference)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setIsAdjustedForBackground(class PyDbUnderlayReference {lvalue},bool)'''
+    ...
+    def setIsClipped (self, *args, **kwargs):
+      '''
+setIsClipped( (UnderlayReference)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setIsClipped(class PyDbUnderlayReference {lvalue},bool)'''
+    ...
+    def setIsMonochrome (self, *args, **kwargs):
+      '''
+setIsMonochrome( (UnderlayReference)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setIsMonochrome(class PyDbUnderlayReference {lvalue},bool)'''
+    ...
+    def setIsOn (self, *args, **kwargs):
+      '''
+setIsOn( (UnderlayReference)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setIsOn(class PyDbUnderlayReference {lvalue},bool)'''
+    ...
+    def setLayer (self, *args, **kwargs):
+      '''
+setLayer( (Entity)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setLayer( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setLayer( (Entity)arg1, (str)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,bool)
+
+setLayer( (Entity)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class PyDbObjectId)
+
+setLayer( (Entity)arg1, (ObjectId)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class PyDbObjectId,bool)
+
+setLayer( (Entity)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class PyDbObjectId,bool,bool)'''
+    ...
+    def setLineWeight (self, *args, **kwargs):
+      '''
+setLineWeight( (Entity)arg1, (LineWeight)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLineWeight(class PyDbEntity {lvalue},enum AcDb::LineWeight)
+
+setLineWeight( (Entity)arg1, (LineWeight)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLineWeight(class PyDbEntity {lvalue},enum AcDb::LineWeight,bool)'''
+    ...
+    def setLinetype (self, *args, **kwargs):
+      '''
+setLinetype( (Entity)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setLinetype( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setLinetype( (Entity)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class PyDbObjectId)
+
+setLinetype( (Entity)arg1, (ObjectId)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class PyDbObjectId,bool)'''
+    ...
+    def setLinetypeScale (self, *args, **kwargs):
+      '''
+setLinetypeScale( (Entity)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetypeScale(class PyDbEntity {lvalue},double)
+
+setLinetypeScale( (Entity)arg1, (float)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetypeScale(class PyDbEntity {lvalue},double,bool)'''
+    ...
+    def setMaterial (self, *args, **kwargs):
+      '''
+setMaterial( (Entity)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setMaterial( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setMaterial( (Entity)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class PyDbObjectId)
+
+setMaterial( (Entity)arg1, (ObjectId)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class PyDbObjectId,bool)'''
+    ...
+    def setNormal (self, *args, **kwargs):
+      '''
+setNormal( (UnderlayReference)arg1, (Vector3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setNormal(class PyDbUnderlayReference {lvalue},class AcGeVector3d)'''
+    ...
+    def setOwnerId (self, *args, **kwargs):
+      '''
+setOwnerId( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setOwnerId(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def setPlotStyleName (self, *args, **kwargs):
+      '''
+setPlotStyleName( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPlotStyleName(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,bool)
+
+setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
+    ...
+    def setPosition (self, *args, **kwargs):
+      '''
+setPosition( (UnderlayReference)arg1, (Point3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPosition(class PyDbUnderlayReference {lvalue},class AcGePoint3d)'''
+    ...
+    def setPropertiesFrom (self, *args, **kwargs):
+      '''
+setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
+
+setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    ...
+    def setReceiveShadows (self, *args, **kwargs):
+      '''
+setReceiveShadows( (Entity)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setReceiveShadows(class PyDbEntity {lvalue},bool)'''
+    ...
+    def setRotation (self, *args, **kwargs):
+      '''
+setRotation( (UnderlayReference)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setRotation(class PyDbUnderlayReference {lvalue},double)'''
+    ...
+    def setScaleFactors (self, *args, **kwargs):
+      '''
+setScaleFactors( (UnderlayReference)arg1, (Scale3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setScaleFactors(class PyDbUnderlayReference {lvalue},class AcGeScale3d)'''
+    ...
+    def setTransform (self, *args, **kwargs):
+      '''
+setTransform( (UnderlayReference)arg1, (Matrix3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setTransform(class PyDbUnderlayReference {lvalue},class AcGeMatrix3d)'''
+    ...
+    def setUnderlayLayer (self, *args, **kwargs):
+      '''
+setUnderlayLayer( (UnderlayReference)arg1, (int)arg2, (UnderlayLayer)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUnderlayLayer(class PyDbUnderlayReference {lvalue},int,class PyUnderlayLayer)'''
+    ...
+    def setVisibility (self, *args, **kwargs):
+      '''
+setVisibility( (Entity)arg1, (Visibility)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility)
+
+setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
+    ...
+    def setWidth (self, *args, **kwargs):
+      '''
+setWidth( (UnderlayReference)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setWidth(class PyDbUnderlayReference {lvalue},double)'''
+    ...
+    def setXData (self, *args, **kwargs):
+      '''
+setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setXData(class PyDbObject {lvalue},class boost::python::list)'''
+    ...
+    def swapIdWith (self, *args, **kwargs):
+      '''
+swapIdWith( (DbObject)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus swapIdWith(class PyDbObject {lvalue},class PyDbObjectId {lvalue},bool,bool)'''
+    ...
+    def transform (self, *args, **kwargs):
+      '''
+transform( (UnderlayReference)arg1) -> Matrix3d :
+
+    C++ signature :
+        class AcGeMatrix3d transform(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def transformBy (self, *args, **kwargs):
+      '''
+transformBy( (Entity)arg1, (Matrix3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus transformBy(class PyDbEntity {lvalue},class AcGeMatrix3d)'''
+    ...
+    def underlayLayerCount (self, *args, **kwargs):
+      '''
+underlayLayerCount( (UnderlayReference)arg1) -> int :
+
+    C++ signature :
+        unsigned int underlayLayerCount(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def upgradeFromNotify (self, *args, **kwargs):
+      '''
+upgradeFromNotify( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus upgradeFromNotify(class PyDbObject {lvalue},bool {lvalue})'''
+    ...
+    def upgradeOpen (self, *args, **kwargs):
+      '''
+upgradeOpen( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus upgradeOpen(class PyDbObject {lvalue})'''
+    ...
+    def visibility (self, *args, **kwargs):
+      '''
+visibility( (Entity)arg1) -> Visibility :
+
+    C++ signature :
+        enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def width (self, *args, **kwargs):
+      '''
+width( (UnderlayReference)arg1) -> float :
+
+    C++ signature :
+        double width(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def xData (self, *args, **kwargs):
+      '''
+xData( (DbObject)arg1, (str)arg2) -> list :
+
+    C++ signature :
+        class boost::python::list xData(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def xDataTransformBy (self, *args, **kwargs):
+      '''
+xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus xDataTransformBy(class PyDbObject {lvalue},class AcGeMatrix3d)'''
+    ...
+
 class Planarity:
     def __add__ (self, value, /):
       '''Return self+value.'''
@@ -81391,6 +83019,1640 @@ dict(iterable) -> new dictionary initialized as if via:
         d[k] = v
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class UnderlayDefinition:
+    def __eq__ (self, *args, **kwargs):
+      '''
+__eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __eq__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def __init__ (self, *args, **kwargs):
+      '''
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def __ne__ (self, *args, **kwargs):
+      '''
+__ne__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __ne__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def addPersistentReactor (self, *args, **kwargs):
+      '''
+addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus addPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def assertNotifyEnabled (self, *args, **kwargs):
+      '''
+assertNotifyEnabled( (DbObject)arg1) -> None :
+
+    C++ signature :
+        void assertNotifyEnabled(class PyDbObject {lvalue})'''
+    ...
+    def assertReadEnabled (self, *args, **kwargs):
+      '''
+assertReadEnabled( (DbObject)arg1) -> None :
+
+    C++ signature :
+        void assertReadEnabled(class PyDbObject {lvalue})'''
+    ...
+    def assertWriteEnabled (self, *args, **kwargs):
+      '''
+assertWriteEnabled( (DbObject)arg1) -> None :
+
+    C++ signature :
+        void assertWriteEnabled(class PyDbObject {lvalue})'''
+    ...
+    def cancel (self, *args, **kwargs):
+      '''
+cancel( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
+    ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> UnderlayDefinition :
+
+    C++ signature :
+        class PyDbUnderlayDefinition cast(class PyRxObject)'''
+    ...
+    def className (self, *args, **kwargs):
+      '''
+className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> UnderlayDefinition :
+
+    C++ signature :
+        class PyDbUnderlayDefinition cloneFrom(class PyRxObject)'''
+    ...
+    def close (self, *args, **kwargs):
+      '''
+close( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus close(class PyDbObject {lvalue})'''
+    ...
+    def createExtensionDictionary (self, *args, **kwargs):
+      '''
+createExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def database (self, *args, **kwargs):
+      '''
+database( (DbObject)arg1) -> Database :
+
+    C++ signature :
+        class PyDbDatabase database(class PyDbObject {lvalue})'''
+    ...
+    def desc (self, *args, **kwargs):
+      '''
+desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def dictionaryKey (self, *args, **kwargs):
+      '''
+dictionaryKey() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dictionaryKey()'''
+    ...
+    def disableUndoRecording (self, *args, **kwargs):
+      '''
+disableUndoRecording( (DbObject)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void disableUndoRecording(class PyDbObject {lvalue},bool)'''
+    ...
+    def downgradeOpen (self, *args, **kwargs):
+      '''
+downgradeOpen( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus downgradeOpen(class PyDbObject {lvalue})'''
+    ...
+    def downgradeToNotify (self, *args, **kwargs):
+      '''
+downgradeToNotify( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus downgradeToNotify(class PyDbObject {lvalue},bool)'''
+    ...
+    def erase (self, *args, **kwargs):
+      '''
+erase( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+    ...
+    def extensionDictionary (self, *args, **kwargs):
+      '''
+extensionDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId extensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def getActiveFileName (self, *args, **kwargs):
+      '''
+getActiveFileName( (UnderlayDefinition)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getActiveFileName(class PyDbUnderlayDefinition {lvalue})'''
+    ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
+    def getItemName (self, *args, **kwargs):
+      '''
+getItemName( (UnderlayDefinition)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getItemName(class PyDbUnderlayDefinition {lvalue})'''
+    ...
+    def getSourceFileName (self, *args, **kwargs):
+      '''
+getSourceFileName( (UnderlayDefinition)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getSourceFileName(class PyDbUnderlayDefinition {lvalue})'''
+    ...
+    def handOverTo (self, *args, **kwargs):
+      '''
+handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
+    ...
+    def hasPersistentReactor (self, *args, **kwargs):
+      '''
+hasPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> bool :
+
+    C++ signature :
+        bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def isA (self, *args, **kwargs):
+      '''
+isA( (Drawable)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+    ...
+    def isAProxy (self, *args, **kwargs):
+      '''
+isAProxy( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isAProxy(class PyDbObject {lvalue})'''
+    ...
+    def isCancelling (self, *args, **kwargs):
+      '''
+isCancelling( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isCancelling(class PyDbObject {lvalue})'''
+    ...
+    def isEraseStatusToggled (self, *args, **kwargs):
+      '''
+isEraseStatusToggled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isEraseStatusToggled(class PyDbObject {lvalue})'''
+    ...
+    def isErased (self, *args, **kwargs):
+      '''
+isErased( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isErased(class PyDbObject {lvalue})'''
+    ...
+    def isLoaded (self, *args, **kwargs):
+      '''
+isLoaded( (UnderlayDefinition)arg1) -> bool :
+
+    C++ signature :
+        bool isLoaded(class PyDbUnderlayDefinition {lvalue})'''
+    ...
+    def isModified (self, *args, **kwargs):
+      '''
+isModified( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isModified(class PyDbObject {lvalue})'''
+    ...
+    def isModifiedGraphics (self, *args, **kwargs):
+      '''
+isModifiedGraphics( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isModifiedGraphics(class PyDbObject {lvalue})'''
+    ...
+    def isModifiedXData (self, *args, **kwargs):
+      '''
+isModifiedXData( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isModifiedXData(class PyDbObject {lvalue})'''
+    ...
+    def isNewObject (self, *args, **kwargs):
+      '''
+isNewObject( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNewObject(class PyDbObject {lvalue})'''
+    ...
+    def isNotifyEnabled (self, *args, **kwargs):
+      '''
+isNotifyEnabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNotifyEnabled(class PyDbObject {lvalue})'''
+    ...
+    def isNotifying (self, *args, **kwargs):
+      '''
+isNotifying( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNotifying(class PyDbObject {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs):
+      '''
+isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def isReadEnabled (self, *args, **kwargs):
+      '''
+isReadEnabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isReadEnabled(class PyDbObject {lvalue})'''
+    ...
+    def isReallyClosing (self, *args, **kwargs):
+      '''
+isReallyClosing( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isReallyClosing(class PyDbObject {lvalue})'''
+    ...
+    def isTransactionResident (self, *args, **kwargs):
+      '''
+isTransactionResident( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isTransactionResident(class PyDbObject {lvalue})'''
+    ...
+    def isUndoRecordingDisabled (self, *args, **kwargs):
+      '''
+isUndoRecordingDisabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isUndoRecordingDisabled(class PyDbObject {lvalue})'''
+    ...
+    def isUndoing (self, *args, **kwargs):
+      '''
+isUndoing( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isUndoing(class PyDbObject {lvalue})'''
+    ...
+    def isWriteEnabled (self, *args, **kwargs):
+      '''
+isWriteEnabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isWriteEnabled(class PyDbObject {lvalue})'''
+    ...
+    def load (self, *args, **kwargs):
+      '''
+load( (UnderlayDefinition)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus load(class PyDbUnderlayDefinition {lvalue})
+
+load( (UnderlayDefinition)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus load(class PyDbUnderlayDefinition {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def objectId (self, *args, **kwargs):
+      '''
+objectId( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId objectId(class PyDbObject {lvalue})'''
+    ...
+    def ownerId (self, *args, **kwargs):
+      '''
+ownerId( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
+    def releaseExtensionDictionary (self, *args, **kwargs):
+      '''
+releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def removePersistentReactor (self, *args, **kwargs):
+      '''
+removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removePersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
+    ...
+    def setItemName (self, *args, **kwargs):
+      '''
+setItemName( (UnderlayDefinition)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setItemName(class PyDbUnderlayDefinition {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setOwnerId (self, *args, **kwargs):
+      '''
+setOwnerId( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setOwnerId(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def setSourceFileName (self, *args, **kwargs):
+      '''
+setSourceFileName( (UnderlayDefinition)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSourceFileName(class PyDbUnderlayDefinition {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setXData (self, *args, **kwargs):
+      '''
+setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setXData(class PyDbObject {lvalue},class boost::python::list)'''
+    ...
+    def swapIdWith (self, *args, **kwargs):
+      '''
+swapIdWith( (DbObject)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus swapIdWith(class PyDbObject {lvalue},class PyDbObjectId {lvalue},bool,bool)'''
+    ...
+    def unload (self, *args, **kwargs):
+      '''
+unload( (UnderlayDefinition)arg1) -> None :
+
+    C++ signature :
+        void unload(class PyDbUnderlayDefinition {lvalue})'''
+    ...
+    def upgradeFromNotify (self, *args, **kwargs):
+      '''
+upgradeFromNotify( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus upgradeFromNotify(class PyDbObject {lvalue},bool {lvalue})'''
+    ...
+    def upgradeOpen (self, *args, **kwargs):
+      '''
+upgradeOpen( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus upgradeOpen(class PyDbObject {lvalue})'''
+    ...
+    def xData (self, *args, **kwargs):
+      '''
+xData( (DbObject)arg1, (str)arg2) -> list :
+
+    C++ signature :
+        class boost::python::list xData(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def xDataTransformBy (self, *args, **kwargs):
+      '''
+xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus xDataTransformBy(class PyDbObject {lvalue},class AcGeMatrix3d)'''
+    ...
+
+class UnderlayLayer:
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, *args, **kwargs):
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def name (self, *args, **kwargs):
+      '''
+name( (UnderlayLayer)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name(class PyUnderlayLayer {lvalue})'''
+    ...
+    def setName (self, *args, **kwargs):
+      '''
+setName( (UnderlayLayer)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setName(class PyUnderlayLayer {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setState (self, *args, **kwargs):
+      '''
+setState( (UnderlayLayer)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setState(class PyUnderlayLayer {lvalue},bool)'''
+    ...
+    def state (self, *args, **kwargs):
+      '''
+state( (UnderlayLayer)arg1) -> bool :
+
+    C++ signature :
+        bool state(class PyUnderlayLayer {lvalue})'''
+    ...
+
+class UnderlayReference:
+    def __eq__ (self, *args, **kwargs):
+      '''
+__eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __eq__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def __init__ (self, *args, **kwargs):
+      '''
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def __ne__ (self, *args, **kwargs):
+      '''
+__ne__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __ne__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def addPersistentReactor (self, *args, **kwargs):
+      '''
+addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus addPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def assertNotifyEnabled (self, *args, **kwargs):
+      '''
+assertNotifyEnabled( (DbObject)arg1) -> None :
+
+    C++ signature :
+        void assertNotifyEnabled(class PyDbObject {lvalue})'''
+    ...
+    def assertReadEnabled (self, *args, **kwargs):
+      '''
+assertReadEnabled( (DbObject)arg1) -> None :
+
+    C++ signature :
+        void assertReadEnabled(class PyDbObject {lvalue})'''
+    ...
+    def assertWriteEnabled (self, *args, **kwargs):
+      '''
+assertWriteEnabled( (DbObject)arg1) -> None :
+
+    C++ signature :
+        void assertWriteEnabled(class PyDbObject {lvalue})'''
+    ...
+    def blockId (self, *args, **kwargs):
+      '''
+blockId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def cancel (self, *args, **kwargs):
+      '''
+cancel( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus cancel(class PyDbObject {lvalue})'''
+    ...
+    def cast (self, *args, **kwargs):
+      '''
+cast( (RxObject)arg1) -> UnderlayReference :
+
+    C++ signature :
+        class PyDbUnderlayReference cast(class PyRxObject)'''
+    ...
+    def castShadows (self, *args, **kwargs):
+      '''
+castShadows( (Entity)arg1) -> bool :
+
+    C++ signature :
+        bool castShadows(class PyDbEntity {lvalue})'''
+    ...
+    def className (self, *args, **kwargs):
+      '''
+className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def clipBoundary (self, *args, **kwargs):
+      '''
+clipBoundary( (UnderlayReference)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list clipBoundary(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def cloneFrom (self, *args, **kwargs):
+      '''
+cloneFrom( (RxObject)arg1) -> UnderlayReference :
+
+    C++ signature :
+        class PyDbUnderlayReference cloneFrom(class PyRxObject)'''
+    ...
+    def close (self, *args, **kwargs):
+      '''
+close( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus close(class PyDbObject {lvalue})'''
+    ...
+    def collisionType (self, *args, **kwargs):
+      '''
+collisionType( (Entity)arg1) -> CollisionType :
+
+    C++ signature :
+        enum AcDb::CollisionType collisionType(class PyDbEntity {lvalue})'''
+    ...
+    def color (self, *args, **kwargs):
+      '''
+color( (Entity)arg1) -> Color :
+
+    C++ signature :
+        class AcCmColor color(class PyDbEntity {lvalue})'''
+    ...
+    def colorIndex (self, *args, **kwargs):
+      '''
+colorIndex( (Entity)arg1) -> int :
+
+    C++ signature :
+        unsigned short colorIndex(class PyDbEntity {lvalue})'''
+    ...
+    def contrast (self, *args, **kwargs):
+      '''
+contrast( (UnderlayReference)arg1) -> int :
+
+    C++ signature :
+        unsigned char contrast(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def contrastDefault (self, *args, **kwargs):
+      '''
+contrastDefault() -> int :
+
+    C++ signature :
+        unsigned char contrastDefault()'''
+    ...
+    def contrastLowerLimit (self, *args, **kwargs):
+      '''
+contrastLowerLimit() -> int :
+
+    C++ signature :
+        unsigned char contrastLowerLimit()'''
+    ...
+    def createExtensionDictionary (self, *args, **kwargs):
+      '''
+createExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def database (self, *args, **kwargs):
+      '''
+database( (DbObject)arg1) -> Database :
+
+    C++ signature :
+        class PyDbDatabase database(class PyDbObject {lvalue})'''
+    ...
+    def definitionId (self, *args, **kwargs):
+      '''
+definitionId( (UnderlayReference)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId definitionId(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def desc (self, *args, **kwargs):
+      '''
+desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def disableUndoRecording (self, *args, **kwargs):
+      '''
+disableUndoRecording( (DbObject)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void disableUndoRecording(class PyDbObject {lvalue},bool)'''
+    ...
+    def downgradeOpen (self, *args, **kwargs):
+      '''
+downgradeOpen( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus downgradeOpen(class PyDbObject {lvalue})'''
+    ...
+    def downgradeToNotify (self, *args, **kwargs):
+      '''
+downgradeToNotify( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus downgradeToNotify(class PyDbObject {lvalue},bool)'''
+    ...
+    def draw (self, *args, **kwargs):
+      '''
+draw( (Entity)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def entityColor (self, *args, **kwargs):
+      '''
+entityColor( (Entity)arg1) -> EntityColor :
+
+    C++ signature :
+        class AcCmEntityColor entityColor(class PyDbEntity {lvalue})'''
+    ...
+    def erase (self, *args, **kwargs):
+      '''
+erase( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+    ...
+    def extensionDictionary (self, *args, **kwargs):
+      '''
+extensionDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId extensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def fade (self, *args, **kwargs):
+      '''
+fade( (UnderlayReference)arg1) -> int :
+
+    C++ signature :
+        unsigned char fade(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def fadeDefault (self, *args, **kwargs):
+      '''
+fadeDefault() -> int :
+
+    C++ signature :
+        unsigned char fadeDefault()'''
+    ...
+    def fadeLowerLimit (self, *args, **kwargs):
+      '''
+fadeLowerLimit() -> int :
+
+    C++ signature :
+        unsigned char fadeLowerLimit()'''
+    ...
+    def fadeUpperLimit (self, *args, **kwargs):
+      '''
+fadeUpperLimit() -> int :
+
+    C++ signature :
+        unsigned char fadeUpperLimit()'''
+    ...
+    def generateClipBoundaryFromPline (self, *args, **kwargs):
+      '''
+generateClipBoundaryFromPline( (UnderlayReference)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus generateClipBoundaryFromPline(class PyDbUnderlayReference {lvalue},class PyDbObjectId {lvalue})'''
+    ...
+    def getCompoundObjectTransform (self, *args, **kwargs):
+      '''
+getCompoundObjectTransform( (Entity)arg1, (Matrix3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus getCompoundObjectTransform(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
+    ...
+    def getEcs (self, *args, **kwargs):
+      '''
+getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
+
+    C++ signature :
+        void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
+    ...
+    def getField (self, *args, **kwargs):
+      '''
+getField( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue})
+
+getField( (DbObject)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getFieldDictionary (self, *args, **kwargs):
+      '''
+getFieldDictionary( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
+    def getGeomExtents (self, *args, **kwargs):
+      '''
+getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getPlane (self, *args, **kwargs):
+      '''
+getPlane( (Entity)arg1) -> Plane :
+
+    C++ signature :
+        class PyGePlane getPlane(class PyDbEntity {lvalue})'''
+    ...
+    def getPlotStyleNameId (self, *args, **kwargs):
+      '''
+getPlotStyleNameId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getPlotStyleNameId(class PyDbEntity {lvalue})'''
+    ...
+    def getUnderlayLayer (self, *args, **kwargs):
+      '''
+getUnderlayLayer( (UnderlayReference)arg1, (int)arg2) -> UnderlayLayer :
+
+    C++ signature :
+        class PyUnderlayLayer getUnderlayLayer(class PyDbUnderlayReference {lvalue},int)'''
+    ...
+    def handOverTo (self, *args, **kwargs):
+      '''
+handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus handOverTo(class PyDbObject {lvalue},class PyDbObject {lvalue},bool,bool)'''
+    ...
+    def hasFields (self, *args, **kwargs):
+      '''
+hasFields( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool hasFields(class PyDbObject {lvalue})'''
+    ...
+    def hasPersistentReactor (self, *args, **kwargs):
+      '''
+hasPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> bool :
+
+    C++ signature :
+        bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def height (self, *args, **kwargs):
+      '''
+height( (UnderlayReference)arg1) -> float :
+
+    C++ signature :
+        double height(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def isA (self, *args, **kwargs):
+      '''
+isA( (Drawable)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+    ...
+    def isAProxy (self, *args, **kwargs):
+      '''
+isAProxy( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isAProxy(class PyDbObject {lvalue})'''
+    ...
+    def isAdjustedForBackground (self, *args, **kwargs):
+      '''
+isAdjustedForBackground( (UnderlayReference)arg1) -> bool :
+
+    C++ signature :
+        bool isAdjustedForBackground(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def isCancelling (self, *args, **kwargs):
+      '''
+isCancelling( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isCancelling(class PyDbObject {lvalue})'''
+    ...
+    def isClipInverted (self, *args, **kwargs):
+      '''
+isClipInverted( (UnderlayReference)arg1) -> bool :
+
+    C++ signature :
+        bool isClipInverted(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def isClipped (self, *args, **kwargs):
+      '''
+isClipped( (UnderlayReference)arg1) -> bool :
+
+    C++ signature :
+        bool isClipped(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def isEraseStatusToggled (self, *args, **kwargs):
+      '''
+isEraseStatusToggled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isEraseStatusToggled(class PyDbObject {lvalue})'''
+    ...
+    def isErased (self, *args, **kwargs):
+      '''
+isErased( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isErased(class PyDbObject {lvalue})'''
+    ...
+    def isFramePlottable (self, *args, **kwargs):
+      '''
+isFramePlottable( (UnderlayReference)arg1) -> bool :
+
+    C++ signature :
+        bool isFramePlottable(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def isFrameVisible (self, *args, **kwargs):
+      '''
+isFrameVisible( (UnderlayReference)arg1) -> bool :
+
+    C++ signature :
+        bool isFrameVisible(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def isModified (self, *args, **kwargs):
+      '''
+isModified( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isModified(class PyDbObject {lvalue})'''
+    ...
+    def isModifiedGraphics (self, *args, **kwargs):
+      '''
+isModifiedGraphics( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isModifiedGraphics(class PyDbObject {lvalue})'''
+    ...
+    def isModifiedXData (self, *args, **kwargs):
+      '''
+isModifiedXData( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isModifiedXData(class PyDbObject {lvalue})'''
+    ...
+    def isMonochrome (self, *args, **kwargs):
+      '''
+isMonochrome( (UnderlayReference)arg1) -> bool :
+
+    C++ signature :
+        bool isMonochrome(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def isNewObject (self, *args, **kwargs):
+      '''
+isNewObject( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNewObject(class PyDbObject {lvalue})'''
+    ...
+    def isNotifyEnabled (self, *args, **kwargs):
+      '''
+isNotifyEnabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNotifyEnabled(class PyDbObject {lvalue})'''
+    ...
+    def isNotifying (self, *args, **kwargs):
+      '''
+isNotifying( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNotifying(class PyDbObject {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs):
+      '''
+isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def isOn (self, *args, **kwargs):
+      '''
+isOn( (UnderlayReference)arg1) -> bool :
+
+    C++ signature :
+        bool isOn(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def isPlanar (self, *args, **kwargs):
+      '''
+isPlanar( (Entity)arg1) -> bool :
+
+    C++ signature :
+        bool isPlanar(class PyDbEntity {lvalue})'''
+    ...
+    def isReadEnabled (self, *args, **kwargs):
+      '''
+isReadEnabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isReadEnabled(class PyDbObject {lvalue})'''
+    ...
+    def isReallyClosing (self, *args, **kwargs):
+      '''
+isReallyClosing( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isReallyClosing(class PyDbObject {lvalue})'''
+    ...
+    def isTransactionResident (self, *args, **kwargs):
+      '''
+isTransactionResident( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isTransactionResident(class PyDbObject {lvalue})'''
+    ...
+    def isUndoRecordingDisabled (self, *args, **kwargs):
+      '''
+isUndoRecordingDisabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isUndoRecordingDisabled(class PyDbObject {lvalue})'''
+    ...
+    def isUndoing (self, *args, **kwargs):
+      '''
+isUndoing( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isUndoing(class PyDbObject {lvalue})'''
+    ...
+    def isWriteEnabled (self, *args, **kwargs):
+      '''
+isWriteEnabled( (DbObject)arg1) -> bool :
+
+    C++ signature :
+        bool isWriteEnabled(class PyDbObject {lvalue})'''
+    ...
+    def layer (self, *args, **kwargs):
+      '''
+layer( (Entity)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > layer(class PyDbEntity {lvalue})'''
+    ...
+    def layerId (self, *args, **kwargs):
+      '''
+layerId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId layerId(class PyDbEntity {lvalue})'''
+    ...
+    def lineWeight (self, *args, **kwargs):
+      '''
+lineWeight( (Entity)arg1) -> LineWeight :
+
+    C++ signature :
+        enum AcDb::LineWeight lineWeight(class PyDbEntity {lvalue})'''
+    ...
+    def linetype (self, *args, **kwargs):
+      '''
+linetype( (Entity)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > linetype(class PyDbEntity {lvalue})'''
+    ...
+    def linetypeId (self, *args, **kwargs):
+      '''
+linetypeId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId linetypeId(class PyDbEntity {lvalue})'''
+    ...
+    def linetypeScale (self, *args, **kwargs):
+      '''
+linetypeScale( (Entity)arg1) -> float :
+
+    C++ signature :
+        double linetypeScale(class PyDbEntity {lvalue})'''
+    ...
+    def list (self, *args, **kwargs):
+      '''
+list( (Entity)arg1) -> None :
+
+    C++ signature :
+        void list(class PyDbEntity {lvalue})'''
+    ...
+    def material (self, *args, **kwargs):
+      '''
+material( (Entity)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > material(class PyDbEntity {lvalue})'''
+    ...
+    def materialId (self, *args, **kwargs):
+      '''
+materialId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
+    ...
+    def normal (self, *args, **kwargs):
+      '''
+normal( (UnderlayReference)arg1) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d normal(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def objectId (self, *args, **kwargs):
+      '''
+objectId( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId objectId(class PyDbObject {lvalue})'''
+    ...
+    def ownerId (self, *args, **kwargs):
+      '''
+ownerId( (DbObject)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
+    ...
+    def plotStyleName (self, *args, **kwargs):
+      '''
+plotStyleName( (Entity)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > plotStyleName(class PyDbEntity {lvalue})'''
+    ...
+    def position (self, *args, **kwargs):
+      '''
+position( (UnderlayReference)arg1) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d position(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def receiveShadows (self, *args, **kwargs):
+      '''
+receiveShadows( (Entity)arg1) -> bool :
+
+    C++ signature :
+        bool receiveShadows(class PyDbEntity {lvalue})'''
+    ...
+    def recordGraphicsModified (self, *args, **kwargs):
+      '''
+recordGraphicsModified( (Entity)arg1) -> None :
+
+    C++ signature :
+        void recordGraphicsModified(class PyDbEntity {lvalue})
+
+recordGraphicsModified( (Entity)arg1) -> None :
+
+    C++ signature :
+        void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
+    def releaseExtensionDictionary (self, *args, **kwargs):
+      '''
+releaseExtensionDictionary( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus releaseExtensionDictionary(class PyDbObject {lvalue})'''
+    ...
+    def removeField (self, *args, **kwargs):
+      '''
+removeField( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class PyDbObjectId)
+
+removeField( (DbObject)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def removePersistentReactor (self, *args, **kwargs):
+      '''
+removePersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removePersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def rotation (self, *args, **kwargs):
+      '''
+rotation( (UnderlayReference)arg1) -> float :
+
+    C++ signature :
+        double rotation(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def scaleFactors (self, *args, **kwargs):
+      '''
+scaleFactors( (UnderlayReference)arg1) -> Scale3d :
+
+    C++ signature :
+        class AcGeScale3d scaleFactors(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def setCastShadows (self, *args, **kwargs):
+      '''
+setCastShadows( (Entity)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setCastShadows(class PyDbEntity {lvalue},bool)'''
+    ...
+    def setClipBoundary (self, *args, **kwargs):
+      '''
+setClipBoundary( (UnderlayReference)arg1, (list)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setClipBoundary(class PyDbUnderlayReference {lvalue},class boost::python::list)'''
+    ...
+    def setClipInverted (self, *args, **kwargs):
+      '''
+setClipInverted( (UnderlayReference)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setClipInverted(class PyDbUnderlayReference {lvalue},bool)'''
+    ...
+    def setColor (self, *args, **kwargs):
+      '''
+setColor( (Entity)arg1, (Color)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColor(class PyDbEntity {lvalue},class AcCmColor)
+
+setColor( (Entity)arg1, (Color)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColor(class PyDbEntity {lvalue},class AcCmColor,bool)
+
+setColor( (Entity)arg1, (Color)arg2, (bool)arg3, (Database)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColor(class PyDbEntity {lvalue},class AcCmColor,bool,class PyDbDatabase {lvalue})'''
+    ...
+    def setColorIndex (self, *args, **kwargs):
+      '''
+setColorIndex( (Entity)arg1, (int)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColorIndex(class PyDbEntity {lvalue},unsigned short)
+
+setColorIndex( (Entity)arg1, (int)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColorIndex(class PyDbEntity {lvalue},unsigned short,bool)'''
+    ...
+    def setContrast (self, *args, **kwargs):
+      '''
+setContrast( (UnderlayReference)arg1, (int)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setContrast(class PyDbUnderlayReference {lvalue},unsigned char)'''
+    ...
+    def setDatabaseDefaults (self, *args, **kwargs):
+      '''
+setDatabaseDefaults( (Entity)arg1) -> None :
+
+    C++ signature :
+        void setDatabaseDefaults(class PyDbEntity {lvalue})
+
+setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
+
+    C++ signature :
+        void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setDefinitionId (self, *args, **kwargs):
+      '''
+setDefinitionId( (UnderlayReference)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setDefinitionId(class PyDbUnderlayReference {lvalue},class PyDbObjectId)'''
+    ...
+    def setFade (self, *args, **kwargs):
+      '''
+setFade( (UnderlayReference)arg1, (int)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setFade(class PyDbUnderlayReference {lvalue},unsigned char)'''
+    ...
+    def setField (self, *args, **kwargs):
+      '''
+setField( (DbObject)arg1, (Field)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class PyDbField {lvalue})
+
+setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId setField(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbField {lvalue})'''
+    ...
+    def setHeight (self, *args, **kwargs):
+      '''
+setHeight( (UnderlayReference)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setHeight(class PyDbUnderlayReference {lvalue},double)'''
+    ...
+    def setIsAdjustedForBackground (self, *args, **kwargs):
+      '''
+setIsAdjustedForBackground( (UnderlayReference)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setIsAdjustedForBackground(class PyDbUnderlayReference {lvalue},bool)'''
+    ...
+    def setIsClipped (self, *args, **kwargs):
+      '''
+setIsClipped( (UnderlayReference)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setIsClipped(class PyDbUnderlayReference {lvalue},bool)'''
+    ...
+    def setIsMonochrome (self, *args, **kwargs):
+      '''
+setIsMonochrome( (UnderlayReference)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setIsMonochrome(class PyDbUnderlayReference {lvalue},bool)'''
+    ...
+    def setIsOn (self, *args, **kwargs):
+      '''
+setIsOn( (UnderlayReference)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setIsOn(class PyDbUnderlayReference {lvalue},bool)'''
+    ...
+    def setLayer (self, *args, **kwargs):
+      '''
+setLayer( (Entity)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setLayer( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setLayer( (Entity)arg1, (str)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,bool)
+
+setLayer( (Entity)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class PyDbObjectId)
+
+setLayer( (Entity)arg1, (ObjectId)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class PyDbObjectId,bool)
+
+setLayer( (Entity)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class PyDbObjectId,bool,bool)'''
+    ...
+    def setLineWeight (self, *args, **kwargs):
+      '''
+setLineWeight( (Entity)arg1, (LineWeight)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLineWeight(class PyDbEntity {lvalue},enum AcDb::LineWeight)
+
+setLineWeight( (Entity)arg1, (LineWeight)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLineWeight(class PyDbEntity {lvalue},enum AcDb::LineWeight,bool)'''
+    ...
+    def setLinetype (self, *args, **kwargs):
+      '''
+setLinetype( (Entity)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setLinetype( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setLinetype( (Entity)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class PyDbObjectId)
+
+setLinetype( (Entity)arg1, (ObjectId)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class PyDbObjectId,bool)'''
+    ...
+    def setLinetypeScale (self, *args, **kwargs):
+      '''
+setLinetypeScale( (Entity)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetypeScale(class PyDbEntity {lvalue},double)
+
+setLinetypeScale( (Entity)arg1, (float)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetypeScale(class PyDbEntity {lvalue},double,bool)'''
+    ...
+    def setMaterial (self, *args, **kwargs):
+      '''
+setMaterial( (Entity)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setMaterial( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setMaterial( (Entity)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class PyDbObjectId)
+
+setMaterial( (Entity)arg1, (ObjectId)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class PyDbObjectId,bool)'''
+    ...
+    def setNormal (self, *args, **kwargs):
+      '''
+setNormal( (UnderlayReference)arg1, (Vector3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setNormal(class PyDbUnderlayReference {lvalue},class AcGeVector3d)'''
+    ...
+    def setOwnerId (self, *args, **kwargs):
+      '''
+setOwnerId( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setOwnerId(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def setPlotStyleName (self, *args, **kwargs):
+      '''
+setPlotStyleName( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPlotStyleName(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,bool)
+
+setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
+    ...
+    def setPosition (self, *args, **kwargs):
+      '''
+setPosition( (UnderlayReference)arg1, (Point3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPosition(class PyDbUnderlayReference {lvalue},class AcGePoint3d)'''
+    ...
+    def setPropertiesFrom (self, *args, **kwargs):
+      '''
+setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
+
+setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    ...
+    def setReceiveShadows (self, *args, **kwargs):
+      '''
+setReceiveShadows( (Entity)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setReceiveShadows(class PyDbEntity {lvalue},bool)'''
+    ...
+    def setRotation (self, *args, **kwargs):
+      '''
+setRotation( (UnderlayReference)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setRotation(class PyDbUnderlayReference {lvalue},double)'''
+    ...
+    def setScaleFactors (self, *args, **kwargs):
+      '''
+setScaleFactors( (UnderlayReference)arg1, (Scale3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setScaleFactors(class PyDbUnderlayReference {lvalue},class AcGeScale3d)'''
+    ...
+    def setTransform (self, *args, **kwargs):
+      '''
+setTransform( (UnderlayReference)arg1, (Matrix3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setTransform(class PyDbUnderlayReference {lvalue},class AcGeMatrix3d)'''
+    ...
+    def setUnderlayLayer (self, *args, **kwargs):
+      '''
+setUnderlayLayer( (UnderlayReference)arg1, (int)arg2, (UnderlayLayer)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUnderlayLayer(class PyDbUnderlayReference {lvalue},int,class PyUnderlayLayer)'''
+    ...
+    def setVisibility (self, *args, **kwargs):
+      '''
+setVisibility( (Entity)arg1, (Visibility)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility)
+
+setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
+    ...
+    def setWidth (self, *args, **kwargs):
+      '''
+setWidth( (UnderlayReference)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setWidth(class PyDbUnderlayReference {lvalue},double)'''
+    ...
+    def setXData (self, *args, **kwargs):
+      '''
+setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setXData(class PyDbObject {lvalue},class boost::python::list)'''
+    ...
+    def swapIdWith (self, *args, **kwargs):
+      '''
+swapIdWith( (DbObject)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus swapIdWith(class PyDbObject {lvalue},class PyDbObjectId {lvalue},bool,bool)'''
+    ...
+    def transform (self, *args, **kwargs):
+      '''
+transform( (UnderlayReference)arg1) -> Matrix3d :
+
+    C++ signature :
+        class AcGeMatrix3d transform(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def transformBy (self, *args, **kwargs):
+      '''
+transformBy( (Entity)arg1, (Matrix3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus transformBy(class PyDbEntity {lvalue},class AcGeMatrix3d)'''
+    ...
+    def underlayLayerCount (self, *args, **kwargs):
+      '''
+underlayLayerCount( (UnderlayReference)arg1) -> int :
+
+    C++ signature :
+        unsigned int underlayLayerCount(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def upgradeFromNotify (self, *args, **kwargs):
+      '''
+upgradeFromNotify( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus upgradeFromNotify(class PyDbObject {lvalue},bool {lvalue})'''
+    ...
+    def upgradeOpen (self, *args, **kwargs):
+      '''
+upgradeOpen( (DbObject)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus upgradeOpen(class PyDbObject {lvalue})'''
+    ...
+    def visibility (self, *args, **kwargs):
+      '''
+visibility( (Entity)arg1) -> Visibility :
+
+    C++ signature :
+        enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def width (self, *args, **kwargs):
+      '''
+width( (UnderlayReference)arg1) -> float :
+
+    C++ signature :
+        double width(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def xData (self, *args, **kwargs):
+      '''
+xData( (DbObject)arg1, (str)arg2) -> list :
+
+    C++ signature :
+        class boost::python::list xData(class PyDbObject {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def xDataTransformBy (self, *args, **kwargs):
+      '''
+xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus xDataTransformBy(class PyDbObject {lvalue},class AcGeMatrix3d)'''
     ...
 
 class UnitsValue:
