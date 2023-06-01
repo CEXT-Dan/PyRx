@@ -87,7 +87,7 @@ namespace win32
 		const std::wstring& keyName,
 		LPTSTR keyClass = REG_NONE,
 		DWORD options = REG_OPTION_NON_VOLATILE,
-		REGSAM access = KEY_READ | KEY_WRITE,
+		REGSAM access = KEY_ALL_ACCESS,
 		SECURITY_ATTRIBUTES* securityAttributes = nullptr,
 		DWORD* disposition = nullptr
 	);
@@ -95,7 +95,7 @@ namespace win32
 	RegKey RegOpenKey(
 		HKEY hKeyParent,
 		const std::wstring& keyName,
-		REGSAM access = KEY_READ | KEY_WRITE
+		REGSAM access = KEY_ALL_ACCESS
 	);
 
 

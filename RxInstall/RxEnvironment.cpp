@@ -167,8 +167,15 @@ void RxEnvironment::appendPath(std::wstring& src, const std::wstring& pathToAppe
 
 void RxEnvironment::flushEnvironment()
 {
-	if (RegFlushKey(HKEY_CURRENT_USER) != ERROR_SUCCESS)
+	if (auto rootKey = win32::RegOpenKey(HKEY_CURRENT_USER, L"Environment"); rootKey.IsValid())
+	{
+		if (RegFlushKey(rootKey.Get()) != ERROR_SUCCESS)
+			showFailMessage(hInstall, L"Failed to flush registry");
+	}
+	else
+	{
 		showFailMessage(hInstall, L"Failed to flush registry");
+	}
 }
 
 bool RxEnvironment::install()
