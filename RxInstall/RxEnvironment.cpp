@@ -34,10 +34,10 @@ void showFailMessage(MSIHANDLE hInstall, const std::wstring& msg)
 	MsiCloseHandle(hRecord);
 }
 
-void showRebootMessage(MSIHANDLE hInstall)
+void showSuccessMessage(MSIHANDLE hInstall)
 {
 	auto hRecord = MsiCreateRecord(1);
-	MsiRecordSetString(hRecord, 0, L"Install success! \n A reboot is required for changes to take effect!");
+	MsiRecordSetString(hRecord, 0, L"Install success!");
 	MsiProcessMessage(hInstall, INSTALLMESSAGE_USER, hRecord);
 	MsiCloseHandle(hRecord);
 }
@@ -169,6 +169,7 @@ void RxEnvironment::flushEnvironment()
 {
 	if (auto rootKey = win32::RegOpenKey(HKEY_CURRENT_USER, L"Environment"); rootKey.IsValid())
 	{
+		SendNotifyMessage(HWND_BROADCAST, WM_SETTINGCHANGE, 0, (LPARAM)TEXT("Environment"));
 		if (RegFlushKey(rootKey.Get()) != ERROR_SUCCESS)
 			showFailMessage(hInstall, L"Failed to flush registry");
 	}
@@ -240,7 +241,7 @@ bool RxEnvironment::install()
 		flushEnvironment();
 
 		if (const auto wxRegPath = findWxPythonPath(); wxRegPath.size() != 0)
-			showRebootMessage(hInstall);
+			showSuccessMessage(hInstall);
 	}
 	catch (...)
 	{
