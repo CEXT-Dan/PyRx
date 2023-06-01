@@ -31,6 +31,20 @@
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
 
+
+#ifdef ZRXAPP
+#define ADSPREFIX(x) zds_ ## x
+#endif
+#ifdef GRXAPP
+#define ADSPREFIX(x) gds_ ## x
+#endif
+#ifdef BRXAPP
+#define ADSPREFIX(x) ads_ ## x
+#endif
+#ifdef ARXAPP
+#define ADSPREFIX(x) ads_ ## x
+#endif
+
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
 class AcRxPyApp : public AcRxArxApp
@@ -270,12 +284,12 @@ public:
         }
     }
 
-    static void doPyLoad(AcString& pathName, AcString& moduleName, std::filesystem::path& pysyspath)
+    static bool doPyLoad(AcString& pathName, AcString& moduleName, std::filesystem::path& pysyspath)
     {
         if (PyRxApp::instance().funcNameMap.contains(moduleName))
         {
             acutPrintf(_T("\nModule %ls Already loaded, use pyreload"), (const TCHAR*)moduleName);
-            return;
+            return true;
         }
         PyRxMethod method;
         method.modname.reset(wstr_to_py((const TCHAR*)pathName));
@@ -288,17 +302,19 @@ public:
             PyRxApp::instance().funcNameMap.emplace(moduleName, std::move(method));
             acutPrintf(_T("\nSuccess module %ls is loaded: "), (const TCHAR*)moduleName);
             onload(moduleName);
+            return true;
         }
         else
         {
             if (PyErr_Occurred() != NULL)
             {
                 acutPrintf(_T("\nPyErr %ls: "), PyRxApp::the_error().c_str());
-                return;
+                return false;
             }
             acutPrintf(_T("\nFailed to import %ls module: "), (const TCHAR*)moduleName);
             PyRxApp::instance().funcNameMap.erase(moduleName);
         }
+        return false;
     }
 
     static void doPyReload(AcString& pathName, AcString& moduleName, std::filesystem::path& pysyspath)
@@ -449,6 +465,35 @@ public:
         }
     }
 
+
+    //TODO: Fix this mess : |
+    static int ADSPREFIX(adspyload(void))
+    {
+     
+        std::filesystem::path pysyspath;
+        std::filesystem::path pypath;
+        AcString pathName;
+        AcString moduleName;
+
+        WxPyAutoLock lock;
+        AcResBufPtr pArgs(acedGetArgs());
+
+        if (pArgs != nullptr && pArgs->restype == RTSTR)
+        {
+            pypath = pArgs->resval.rstring;
+            pysyspath = pArgs->resval.rstring;
+            pysyspath.remove_filename();
+            PyRxApp::pyRxAppendSearchPath(pysyspath.c_str());
+            pypath.replace_extension(_T(""));
+            pathName = pypath.filename().c_str();
+            moduleName = pathName;
+            moduleName.makeUpper();
+            bool flag = doPyLoad(pathName, moduleName, pysyspath);
+            flag ? acedRetT() : acedRetNil();
+        }
+        return RSRSLT;
+    }
+
     static void AcRxPyApp_doit(void)
     {
 
@@ -461,4 +506,6 @@ ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyload, pyload, ACRX_CMD_TRANS
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyreload, pyreload, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pyrxver, pyrxver, ACRX_CMD_TRANSPARENT, NULL)
 ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _pycmdprompt, pycmdprompt, ACRX_CMD_TRANSPARENT, NULL)
+ACED_ADSSYMBOL_ENTRY_AUTO(AcRxPyApp, adspyload, false)
+
 //ACED_ARXCOMMAND_ENTRY_AUTO(AcRxPyApp, AcRxPyApp, _doit, doit, ACRX_CMD_TRANSPARENT, NULL)
