@@ -1,7 +1,6 @@
 #pragma once
 #include "PyDbEntity.h"
-class PyDbImage :
-    public PyDbEntity
+class PyDbImage : public PyDbEntity
 {
 };
 
