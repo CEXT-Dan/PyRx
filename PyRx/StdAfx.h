@@ -294,6 +294,26 @@ struct PyObjectDeleter
 using PyObjectPtr = std::unique_ptr < PyObject, PyObjectDeleter>;
 
 
+AcGePoint3d py_list_to_point3d(const boost::python::object& iterable)
+{
+    PyAutoLockGIL lock;
+    auto vec = std::vector<double>(boost::python::stl_input_iterator<double>(iterable),
+        boost::python::stl_input_iterator<double>());
+    if (vec.size() != 3)
+        throw PyAcadErrorStatus(eInvalidInput);
+    return AcGePoint3d(vec[0], vec[1], vec[2]);
+}
+
+AcGeVector3d py_list_to_vector3d(const boost::python::object& iterable)
+{
+    PyAutoLockGIL lock;
+    auto vec = std::vector<double>(boost::python::stl_input_iterator<double>(iterable),
+        boost::python::stl_input_iterator<double>());
+    if (vec.size() != 3)
+        throw PyAcadErrorStatus(eInvalidInput);
+    return AcGeVector3d(vec[0], vec[1], vec[2]);
+}
+
 template<typename T>
 inline std::vector< T > py_list_to_std_vector(const boost::python::object& iterable)
 {

@@ -370,6 +370,21 @@ void makeAcGeScale3dWrapper()
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGePoint3d
+boost::python::tuple AcGePoint3dToTuple(const AcGePoint3d& p)
+{
+    return boost::python::make_tuple(p.x, p.y, p.z);
+}
+
+boost::python::list AcGePoint3dToList(const AcGePoint3d& p)
+{
+    PyAutoLockGIL lock;
+    boost::python::list l;
+    l.append(p.x);
+    l.append(p.y);
+    l.append(p.z);
+    return l;
+}
+
 std::string AcGePoint3dToString(const AcGePoint3d& p)
 {
     return std::format("({:.14f},{:.14f},{:.14f})", p.x, p.y, p.z);
@@ -433,6 +448,8 @@ void makeAcGePoint3dWrapper()
         .def<AcGePoint3d(AcGePoint3d::*)(const AcGeVector3d&)const>("__sub__", &AcGePoint3d::operator-)
         .def<AcGePoint3d& (AcGePoint3d::*)(const AcGeVector3d&)>("__isub__", &AcGePoint3d::operator-=, return_self<>())
         .def<AcGeVector3d(AcGePoint3d::*)(const AcGePoint3d&)const>("__sub__", &AcGePoint3d::operator-)
+        .def("toList", &AcGePoint3dToList)
+        .def("toTuple", &AcGePoint3dToTuple)
         .def("toString", &AcGePoint3dToString)
         .def("__str__", &AcGePoint3dToString)
         .def("__repr__", &AcGePoint3dToStringRepr)

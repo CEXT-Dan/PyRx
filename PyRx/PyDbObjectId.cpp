@@ -21,6 +21,7 @@ void makeAcDbObjectIdWrapper()
         .def("originalDatabase", &PyDbObjectId::originalDatabase)
         .def("convertToRedirectedId", &PyDbObjectId::convertToRedirectedId)
         .def("objectClass", &PyDbObjectId::objectClass)
+        .def("isDerivedFrom", &PyDbObjectId::isDerivedFrom)
         .def("__str__", &PyDbObjectId::str)
         .def("__repr__", &PyDbObjectId::repr)
         //operators
@@ -121,6 +122,10 @@ PyRxClass PyDbObjectId::objectClass() const
     return PyRxClass(m_id.objectClass(), false);
 }
 
+bool PyDbObjectId::isDerivedFrom(const PyRxClass& other) const
+{
+    return m_id.objectClass()->isDerivedFrom(other.impObj());
+}
 
 //AdsName
 void makeAdsNameWrapper()

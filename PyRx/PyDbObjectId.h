@@ -20,6 +20,8 @@ public:
     PyDbDatabase database() const;
     PyDbDatabase originalDatabase() const;
     PyRxClass objectClass() const;
+    bool isDerivedFrom(const PyRxClass& other) const;
+
 public:
     AcDbObjectId m_id;
 };
