@@ -109,6 +109,35 @@ std::size_t AcGePoint2dHash(const AcGePoint2d& p)
     return seed;
 }
 
+double AcGePoint2dGetItem(const AcGePoint2d& p, int idx)
+{
+    switch (idx)
+    {
+        case 0:
+            return p.x;
+        case 1:
+            return p.y;
+        default:
+            throw PyAcadErrorStatus(eOutOfRange);
+    }
+}
+
+
+void AcGePoint2dSetItem(AcGePoint2d& p, int idx, double val)
+{
+    switch (idx)
+    {
+        case 0:
+            p.x = val;
+            break;
+        case 1:
+            p.y = val;
+            break;
+        default:
+            throw PyAcadErrorStatus(eOutOfRange);
+    }
+}
+
 void makeAcGePoint2dWrapper()
 {
     class_<AcGePoint2d>("Point2d")
@@ -143,6 +172,8 @@ void makeAcGePoint2dWrapper()
         .def("__str__", &AcGePoint2dToString)
         .def("__repr__", &AcGePoint2dToStringRepr)
         .def("__hash__", &AcGePoint2dHash)
+        .def("__getitem__", &AcGePoint2dGetItem)
+        .def("__setitem__", &AcGePoint2dSetItem)
         ;
 }
 
@@ -183,6 +214,35 @@ static AcGeVector2d rmul_AcGeMatrix2d_AcGeVector2d(const AcGeVector2d& vec, cons
     return mat * vec;
 }
 
+
+double AcGeVector2dGetItem(const AcGeVector2d& p, int idx)
+{
+    switch (idx)
+    {
+        case 0:
+            return p.x;
+        case 1:
+            return p.y;
+        default:
+            throw PyAcadErrorStatus(eOutOfRange);
+    }
+}
+
+
+void AcGeVector2dSetItem(AcGeVector2d& p, int idx, double val)
+{
+    switch (idx)
+    {
+        case 0:
+            p.x = val;
+            break;
+        case 1:
+            p.y = val;
+            break;
+        default:
+            throw PyAcadErrorStatus(eOutOfRange);
+    }
+}
 
 void makeAcGeVector2dWrapper()
 {
@@ -232,6 +292,8 @@ void makeAcGeVector2dWrapper()
         .def("toString", &AcGeVector2ToString)
         .def("__str__", &AcGeVector2ToString)
         .def("__repr__", &AcGeVector2dToStringRepr)
+        .def("__getitem__", &AcGeVector2dGetItem)
+        .def("__setitem__", &AcGeVector2dSetItem)
         ;
 }
 
@@ -430,6 +492,40 @@ std::size_t AcGePoint3dHash(const AcGePoint3d& p)
     return seed;
 }
 
+double AcGePoint3dGetItem(const AcGePoint3d& p, int idx)
+{
+    switch (idx)
+    {
+        case 0:
+            return p.x;
+        case 1:
+            return p.y;
+        case 2:
+            return p.z;
+        default:
+            throw PyAcadErrorStatus(eOutOfRange);
+    }
+}
+
+
+void AcGePoint3dSetItem(AcGePoint3d& p, int idx, double val)
+{
+    switch (idx)
+    {
+        case 0:
+            p.x = val;
+            break;
+        case 1:
+            p.y = val;
+            break;
+        case 2:
+            p.z = val;
+            break;
+        default:
+            throw PyAcadErrorStatus(eOutOfRange);
+    }
+}
+
 void makeAcGePoint3dWrapper()
 {
     class_<AcGePoint3d>("Point3d")
@@ -474,6 +570,8 @@ void makeAcGePoint3dWrapper()
         .def("__str__", &AcGePoint3dToString)
         .def("__repr__", &AcGePoint3dToStringRepr)
         .def("__hash__", &AcGePoint3dHash)
+        .def("__getitem__", &AcGePoint3dGetItem)
+        .def("__setitem__", &AcGePoint3dSetItem)
         ;
 }
 
@@ -517,6 +615,40 @@ AcGeVector3d rmul_double_AcGeVector3d(const AcGeVector3d& vec, double val)
 AcGeVector3d rmul_AcGeMatrix3d_AcGeVector3d(const AcGeVector3d& vec, const AcGeMatrix3d& mat)
 {
     return mat * vec;
+}
+
+double AcGeVector3dGetItem(const AcGeVector3d& p, int idx)
+{
+    switch (idx)
+    {
+        case 0:
+            return p.x;
+        case 1:
+            return p.y;
+        case 2:
+            return p.z;
+        default:
+            throw PyAcadErrorStatus(eOutOfRange);
+    }
+}
+
+
+void AcGeVector3dSetItem(AcGeVector3d& p, int idx, double val)
+{
+    switch (idx)
+    {
+        case 0:
+            p.x = val;
+            break;
+        case 1:
+            p.y = val;
+            break;
+        case 2:
+            p.z = val;
+            break;
+        default:
+            throw PyAcadErrorStatus(eOutOfRange);
+    }
 }
 
 static void makeAcGeVector3dWrapper()
@@ -581,6 +713,8 @@ static void makeAcGeVector3dWrapper()
         .def("toString", &AcGeVector3dToString)
         .def("__str__", &AcGeVector3dToString)
         .def("__repr__", &AcGeVector3dToStringRepr)
+        .def("__getitem__", &AcGeVector3dGetItem)
+        .def("__setitem__", &AcGeVector3dSetItem)
         ;
 }
 
