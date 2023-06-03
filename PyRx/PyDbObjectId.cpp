@@ -24,6 +24,7 @@ void makeAcDbObjectIdWrapper()
         .def("isDerivedFrom", &PyDbObjectId::isDerivedFrom)
         .def("__str__", &PyDbObjectId::str)
         .def("__repr__", &PyDbObjectId::repr)
+        .def("__hash__", &PyDbObjectId::hash)
         //operators
         .def("__eq__", &PyDbObjectId::operator==)
         .def("__ne__", &PyDbObjectId::operator!=)
@@ -125,6 +126,11 @@ PyRxClass PyDbObjectId::objectClass() const
 bool PyDbObjectId::isDerivedFrom(const PyRxClass& other) const
 {
     return m_id.objectClass()->isDerivedFrom(other.impObj());
+}
+
+std::size_t PyDbObjectId::hash()
+{
+    return (std::size_t)(AcDbStub*)m_id;
 }
 
 //AdsName
