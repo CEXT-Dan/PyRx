@@ -22,6 +22,8 @@
 #include "PyGeSurfSurfInt.h"
 #include "PyGeKnotVector.h"
 
+#include <boost/functional/hash.hpp>
+
 using namespace boost::python;
 
 //---------------------------------------------------------------------------------------------------------------
@@ -99,6 +101,14 @@ static AcGePoint2d AcGePoint2dkOrigin()
     return AcGePoint2d::kOrigin;
 }
 
+std::size_t AcGePoint2dHash(const AcGePoint2d& p)
+{
+    std::size_t seed = 0;
+    boost::hash_combine(seed, p.x);
+    boost::hash_combine(seed, p.y);
+    return seed;
+}
+
 void makeAcGePoint2dWrapper()
 {
     class_<AcGePoint2d>("Point2d")
@@ -132,6 +142,7 @@ void makeAcGePoint2dWrapper()
         .def("toString", &AcGePoint2dToString)
         .def("__str__", &AcGePoint2dToString)
         .def("__repr__", &AcGePoint2dToStringRepr)
+        .def("__hash__", &AcGePoint2dHash)
         ;
 }
 
@@ -410,6 +421,15 @@ AcGePoint3d rmul_double_AcGepoint3d(const AcGePoint3d& pnt, double val)
     return val * pnt;
 }
 
+std::size_t AcGePoint3dHash(const AcGePoint3d& p)
+{
+    std::size_t seed = 0;
+    boost::hash_combine(seed, p.x);
+    boost::hash_combine(seed, p.y);
+    boost::hash_combine(seed, p.z);
+    return seed;
+}
+
 void makeAcGePoint3dWrapper()
 {
     class_<AcGePoint3d>("Point3d")
@@ -453,6 +473,7 @@ void makeAcGePoint3dWrapper()
         .def("toString", &AcGePoint3dToString)
         .def("__str__", &AcGePoint3dToString)
         .def("__repr__", &AcGePoint3dToStringRepr)
+        .def("__hash__", &AcGePoint3dHash)
         ;
 }
 

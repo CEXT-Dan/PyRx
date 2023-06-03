@@ -21,6 +21,7 @@ public:
     PyDbDatabase originalDatabase() const;
     PyRxClass objectClass() const;
     bool isDerivedFrom(const PyRxClass& other) const;
+    std::size_t hash();
 
 public:
     AcDbObjectId m_id;
