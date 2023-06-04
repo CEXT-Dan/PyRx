@@ -51821,11 +51821,6 @@ __init__( (object)arg1) -> None :
 __ne__( (ObjectId)arg1, (ObjectId)arg2) -> bool :
 
     C++ signature :
-        bool __ne__(class PyDbObjectId {lvalue},class PyDbObjectId)
-
-__ne__( (ObjectId)arg1, (ObjectId)arg2) -> bool :
-
-    C++ signature :
         bool __ne__(class PyDbObjectId {lvalue},class PyDbObjectId)'''
     ...
     def asOldId (self, *args, **kwargs):

@@ -1908,6 +1908,47 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class SelectionSet:
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def clear (self, *args, **kwargs):
+      '''
+clear( (SelectionSet)arg1) -> None :
+
+    C++ signature :
+        void clear(class PyEdSelectionSet {lvalue})'''
+    ...
+    def isInitialized (self, *args, **kwargs):
+      '''
+isInitialized( (SelectionSet)arg1) -> bool :
+
+    C++ signature :
+        bool isInitialized(class PyEdSelectionSet {lvalue})'''
+    ...
+    def size (self, *args, **kwargs):
+      '''
+size( (SelectionSet)arg1) -> int :
+
+    C++ signature :
+        unsigned __int64 size(class PyEdSelectionSet {lvalue})'''
+    ...
+    def toList (self, *args, **kwargs):
+      '''
+toList( (SelectionSet)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list toList(class PyEdSelectionSet {lvalue})'''
+    ...
+
 class UserInputControls:
     def __add__ (self, value, /):
       '''Return self+value.'''
