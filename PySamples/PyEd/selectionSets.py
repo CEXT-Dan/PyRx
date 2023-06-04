@@ -9,10 +9,12 @@ import PyEd as Ed
 print("added command = pyselectall")
 print("added command = pyselectallf")
 
+#The SelectionSet class has resources that should be cleared 
+#if the class is created in the global scope, clean up when you're done
+#using del
 
 def PyRxCmd_pyselectall():
     try:
-
         # get the Editor class
         ed = Ed.Editor()
 
@@ -47,6 +49,7 @@ def PyRxCmd_pyselectall():
 
 def PyRxCmd_pyselectallf():
     try:
+        #example using a filter
         # create a filter, a list of tuples
         filter = [(Db.DxfCode.kDxfStart, "CIRCLE"),  # type
                   (Db.DxfCode.kDxfLayerName, "0")]  # layer
