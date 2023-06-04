@@ -10,6 +10,9 @@ void makePyEdSelectionSetWrapper()
         .def("isInitialized", &PyEdSelectionSet::isInitialized)
         .def("size", &PyEdSelectionSet::size)
         .def("clear", &PyEdSelectionSet::clear)
+        .def("add", &PyEdSelectionSet::add)
+        .def("remove", &PyEdSelectionSet::remove)
+        .def("hasMember", &PyEdSelectionSet::hasMember)
         .def("toList", &PyEdSelectionSet::toList)
         ;
 }
@@ -44,7 +47,34 @@ size_t PyEdSelectionSet::size()
 
 void PyEdSelectionSet::clear()
 {
-    m_pSet.reset(new std::array<int64_t, 2>());
+    m_pSet.reset(new PySSName());
+}
+
+void PyEdSelectionSet::add(const PyDbObjectId& objId)
+{
+    ads_name ent = { 0 };
+    if (auto es = acdbGetAdsName(ent, objId.m_id); es != eOk)
+        throw PyAcadErrorStatus(es);
+    acedSSAdd(ent, impObj()->data(), impObj()->data());
+}
+
+void PyEdSelectionSet::remove(const PyDbObjectId& objId)
+{
+    ads_name ent = { 0 };
+    if (auto es = acdbGetAdsName(ent, objId.m_id); es != eOk)
+        throw PyAcadErrorStatus(es);
+    acedSSDel(ent, impObj()->data());
+}
+
+bool PyEdSelectionSet::hasMember(const PyDbObjectId& objId)
+{
+    ads_name ent = { 0 };
+    if (auto es = acdbGetAdsName(ent, objId.m_id); es != eOk)
+        throw PyAcadErrorStatus(es);
+    if (acedSSMemb(ent, impObj()->data()) == RTNORM)
+        return true;
+    else
+        return false;
 }
 
 boost::python::list PyEdSelectionSet::toList()
@@ -67,7 +97,7 @@ boost::python::list PyEdSelectionSet::toList()
     return idList;
 }
 
-std::array<int64_t, 2>* PyEdSelectionSet::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+PySSName* PyEdSelectionSet::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pSet == nullptr)
         throw PyNullObject(src);

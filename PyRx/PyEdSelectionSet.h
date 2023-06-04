@@ -1,8 +1,10 @@
 #pragma once
 
-void makePyEdSelectionSetWrapper();
-
+class PyDbObjectId;
 typedef std::array<int64_t, 2> PySSName;
+
+
+void makePyEdSelectionSetWrapper();
 
 struct PyEdSSDeleter
 {
@@ -25,6 +27,9 @@ public:
     bool			    isInitialized() const;
     size_t              size();
     void                clear();
+    void                add(const PyDbObjectId& objId);
+    void                remove(const PyDbObjectId& objId);
+    bool                hasMember(const PyDbObjectId& objId);
     boost::python::list toList();
 
 public:
