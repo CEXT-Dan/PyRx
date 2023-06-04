@@ -3,23 +3,17 @@
 #include "PyDbObjectId.h"
 #include "ResultBuffer.h"
 #include "acedCmdNF.h"
+#include "PyEdSelectionSet.h"
 
 using namespace boost::python;
 
 //-----------------------------------------------------------------------------------------
 //helpers
-boost::python::tuple makeSelectionResult(ads_name name, Acad::PromptStatus result)
+boost::python::tuple makeSelectionResult(const ads_name& name, Acad::PromptStatus result)
 {
     PyAutoLockGIL lock;
-    AcDbObjectIdArray ids;
-    boost::python::list pyList;
-    if (acedGetCurrentSelectionSet(ids) == eOk)
-    {
-        for (const auto& id : ids)
-            pyList.append(PyDbObjectId{ id });
-    }
-    acedSSFree(name);
-    return boost::python::make_tuple<Acad::PromptStatus, boost::python::list>(result, pyList);
+    PyEdSelectionSet set(name);
+    return boost::python::make_tuple<Acad::PromptStatus, PyEdSelectionSet>(result, set);
 }
 
 

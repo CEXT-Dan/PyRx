@@ -235,6 +235,9 @@
     <ClCompile Include="PyDbImage.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
+    <ClCompile Include="PyEdSelectionSet.cpp">
+      <Filter>Source Files\PyEd</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -473,6 +476,9 @@
     </ClInclude>
     <ClInclude Include="PyDbImage.h">
       <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyEdSelectionSet.h">
+      <Filter>Header Files\PyEd</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

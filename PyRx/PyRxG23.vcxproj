@@ -167,6 +167,7 @@
     <ClCompile Include="PyDbUnderlayReference.cpp" />
     <ClCompile Include="PyDbXrecord.cpp" />
     <ClCompile Include="PyEditorReactor.cpp" />
+    <ClCompile Include="PyEdSelectionSet.cpp" />
     <ClCompile Include="PyGeBoundBlock2d.cpp" />
     <ClCompile Include="PyGeBoundBlock3d.cpp" />
     <ClCompile Include="PyGeClipBoundary2d.cpp" />
@@ -248,6 +249,7 @@
     <ClInclude Include="PyDbUnderlayReference.h" />
     <ClInclude Include="PyDbXrecord.h" />
     <ClInclude Include="PyEditorReactor.h" />
+    <ClInclude Include="PyEdSelectionSet.h" />
     <ClInclude Include="PyException.h" />
     <ClInclude Include="PyGeBoundBlock2d.h" />
     <ClInclude Include="PyGeBoundBlock3d.h" />
