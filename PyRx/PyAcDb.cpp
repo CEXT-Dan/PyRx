@@ -27,6 +27,7 @@
 #include "PyDbHatch.h"
 #include "PyDbXrecord.h"
 #include "PyDbUnderlayReference.h"
+#include "PyDbImage.h"
 
 using namespace boost::python;
 
@@ -159,6 +160,10 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbUnderlayReferenceWrapper();
     makePyDbPdfDefinitionWrapper();
     makePyDbPdfReferenceWrapper();
+
+    makePyDbImageWrapper();
+    makePyDbRasterImageDefWrapper();
+    makePyDbRasterImageWrapper();
 
     makePyDbIdMappingWrapper();
 
