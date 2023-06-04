@@ -617,6 +617,15 @@ AcGeVector3d rmul_AcGeMatrix3d_AcGeVector3d(const AcGeVector3d& vec, const AcGeM
     return mat * vec;
 }
 
+std::size_t AcGeVector3dHash(const AcGeVector3d& p)
+{
+    std::size_t seed = 0;
+    boost::hash_combine(seed, p.x);
+    boost::hash_combine(seed, p.y);
+    boost::hash_combine(seed, p.z);
+    return seed;
+}
+
 double AcGeVector3dGetItem(const AcGeVector3d& p, int idx)
 {
     switch (idx)
@@ -713,6 +722,7 @@ static void makeAcGeVector3dWrapper()
         .def("toString", &AcGeVector3dToString)
         .def("__str__", &AcGeVector3dToString)
         .def("__repr__", &AcGeVector3dToStringRepr)
+        .def("__hash__", AcGeVector3dHash)
         .def("__getitem__", &AcGeVector3dGetItem)
         .def("__setitem__", &AcGeVector3dSetItem)
         ;
@@ -783,6 +793,42 @@ static AcGeMatrix3d AcGeMatrix3dplaneToWorld1(const AcGeVector3d& normal)
 static AcGeMatrix3d AcGeMatrix3dplaneToWorld2(const AcGePlane& plane)
 {
     return AcGeMatrix3d::planeToWorld(plane);
+}
+
+boost::python::list AcGeMatrix3dToList(const AcGeMatrix3d& x)
+{
+    PyAutoLockGIL lock;
+    boost::python::list r0;
+    r0.append(x.entry[0][0]);
+    r0.append(x.entry[0][1]);
+    r0.append(x.entry[0][2]);
+    r0.append(x.entry[0][3]);
+
+    boost::python::list r1;
+    r1.append(x.entry[1][0]);
+    r1.append(x.entry[1][1]);
+    r1.append(x.entry[1][2]);
+    r1.append(x.entry[1][3]);
+
+    boost::python::list r2;
+    r2.append(x.entry[2][0]);
+    r2.append(x.entry[2][1]);
+    r2.append(x.entry[2][2]);
+    r2.append(x.entry[2][3]);
+
+    boost::python::list r3;
+    r3.append(x.entry[3][0]);
+    r3.append(x.entry[3][1]);
+    r3.append(x.entry[3][2]);
+    r3.append(x.entry[3][3]);
+
+    boost::python::list m;
+    m.append(r0);
+    m.append(r1);
+    m.append(r2);
+    m.append(r3);
+   
+    return m;
 }
 
 std::string AcGeMatrix3dToString(const AcGeMatrix3d& x)
@@ -864,6 +910,7 @@ void makeAcGeMatrix3dWrapper()
         .def<AcGeMatrix3d& (AcGeMatrix3d::*)(const AcGeMatrix3d&)>("__imul__", &AcGeMatrix3d::operator*=, return_self<>())
         .def<double(AcGeMatrix3d::*)(unsigned int, unsigned int)const>("elementAt", &AcGeMatrix3d::operator())
         .def("toString", &AcGeMatrix3dToString)
+        .def("toList", &AcGeMatrix3dToList)
         .def("__str__", &AcGeMatrix3dToString)
         .def("__repr__", &AcGeMatrix3dToStringRepr)
         ;
