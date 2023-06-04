@@ -86,6 +86,21 @@ void makeAcGeTolWrapper()
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGePoint2d
+boost::python::tuple AcGePoint2dToTuple(const AcGePoint2d& p)
+{
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(p.x, p.y);
+}
+
+boost::python::list AcGePoint2dToList(const AcGePoint2d& p)
+{
+    PyAutoLockGIL lock;
+    boost::python::list l;
+    l.append(p.x);
+    l.append(p.y);
+    return l;
+}
+
 std::string AcGePoint2dToString(const AcGePoint2d& p)
 {
     return std::format("({:.14f},{:.14f})", p.x, p.y);
@@ -121,7 +136,6 @@ double AcGePoint2dGetItem(const AcGePoint2d& p, int idx)
             throw PyAcadErrorStatus(eOutOfRange);
     }
 }
-
 
 void AcGePoint2dSetItem(AcGePoint2d& p, int idx, double val)
 {
@@ -169,6 +183,8 @@ void makeAcGePoint2dWrapper()
         .def<AcGePoint2d& (AcGePoint2d::*)(const AcGeVector2d&)>("__isub__", &AcGePoint2d::operator-=, return_self<>())
         .def<AcGeVector2d(AcGePoint2d::*)(const AcGePoint2d&)const>("__sub__", &AcGePoint2d::operator-)
         .def("toString", &AcGePoint2dToString)
+        .def("toTuple", &AcGePoint2dToTuple)
+        .def("toList", &AcGePoint2dToList)
         .def("__str__", &AcGePoint2dToString)
         .def("__repr__", &AcGePoint2dToStringRepr)
         .def("__hash__", &AcGePoint2dHash)
@@ -214,7 +230,6 @@ static AcGeVector2d rmul_AcGeMatrix2d_AcGeVector2d(const AcGeVector2d& vec, cons
     return mat * vec;
 }
 
-
 double AcGeVector2dGetItem(const AcGeVector2d& p, int idx)
 {
     switch (idx)
@@ -227,7 +242,6 @@ double AcGeVector2dGetItem(const AcGeVector2d& p, int idx)
             throw PyAcadErrorStatus(eOutOfRange);
     }
 }
-
 
 void AcGeVector2dSetItem(AcGeVector2d& p, int idx, double val)
 {
@@ -320,7 +334,6 @@ std::string AcGeMatrix2dToStringRepr(const AcGeMatrix2d& x)
         x.entry[1][0], x.entry[1][1], x.entry[1][2],
         x.entry[2][0], x.entry[2][1], x.entry[2][2]);
 }
-
 
 static AcGeMatrix2d AcGeMatrix2dtranslation(const AcGeVector2d& vec)
 {
@@ -445,6 +458,7 @@ void makeAcGeScale3dWrapper()
 //AcGePoint3d
 boost::python::tuple AcGePoint3dToTuple(const AcGePoint3d& p)
 {
+    PyAutoLockGIL lock;
     return boost::python::make_tuple(p.x, p.y, p.z);
 }
 
@@ -506,7 +520,6 @@ double AcGePoint3dGetItem(const AcGePoint3d& p, int idx)
             throw PyAcadErrorStatus(eOutOfRange);
     }
 }
-
 
 void AcGePoint3dSetItem(AcGePoint3d& p, int idx, double val)
 {
@@ -640,7 +653,6 @@ double AcGeVector3dGetItem(const AcGeVector3d& p, int idx)
             throw PyAcadErrorStatus(eOutOfRange);
     }
 }
-
 
 void AcGeVector3dSetItem(AcGeVector3d& p, int idx, double val)
 {
@@ -803,31 +815,26 @@ boost::python::list AcGeMatrix3dToList(const AcGeMatrix3d& x)
     r0.append(x.entry[0][1]);
     r0.append(x.entry[0][2]);
     r0.append(x.entry[0][3]);
-
     boost::python::list r1;
     r1.append(x.entry[1][0]);
     r1.append(x.entry[1][1]);
     r1.append(x.entry[1][2]);
     r1.append(x.entry[1][3]);
-
     boost::python::list r2;
     r2.append(x.entry[2][0]);
     r2.append(x.entry[2][1]);
     r2.append(x.entry[2][2]);
     r2.append(x.entry[2][3]);
-
     boost::python::list r3;
     r3.append(x.entry[3][0]);
     r3.append(x.entry[3][1]);
     r3.append(x.entry[3][2]);
     r3.append(x.entry[3][3]);
-
     boost::python::list m;
     m.append(r0);
     m.append(r1);
     m.append(r2);
     m.append(r3);
-   
     return m;
 }
 
