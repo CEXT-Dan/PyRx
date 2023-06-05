@@ -175,7 +175,7 @@ public:
         acutPrintf(_T("\nPyRx version <%ls> loaded:\n"), GETVER().constPtr());
     }
 
-    static void onload(AcString& moduleName)
+    static void onLoadPyModule(AcString& moduleName)
     {
         try
         {
@@ -305,7 +305,7 @@ public:
             loadCommands(method, pysyspath);
             PyRxApp::instance().funcNameMap.emplace(moduleName, std::move(method));
             acutPrintf(_T("\nSuccess module %ls is loaded: "), (const TCHAR*)moduleName);
-            onload(moduleName);
+            onLoadPyModule(moduleName);
             return true;
         }
         else
@@ -334,7 +334,7 @@ public:
                 reloadCommands(method, pysyspath);
                 PyRxApp::instance().funcNameMap.emplace(moduleName, std::move(method));
                 acutPrintf(_T("\nSuccess module %ls is reloaded: "), (const TCHAR*)moduleName);
-                onload(moduleName);
+                onLoadPyModule(moduleName);
             }
             else
             {
@@ -468,7 +468,6 @@ public:
             acutPrintf(_T("\nOops, something went wrong: "));
         }
     }
-
 
     //TODO: Fix this mess : |
     static int ADSPREFIX(adspyload(void))
