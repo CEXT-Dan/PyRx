@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PyDbDatabase.h"
 #include "PyDbObjectId.h"
+#include "PyDbObject.h"
 using namespace boost::python;
 //---------------------------------------------------------------------------------------------------
 // makeAcDbDatabaseWrapper
@@ -9,6 +10,7 @@ void makeAcDbDatabaseWrapper()
     class_<PyDbDatabase, bases<PyRxObject>>("Database")
         .def(init<>())
         .def(init<bool, bool>())
+        .def("addObject", &PyDbDatabase::addAcDbObject)
         .def("angbase", &PyDbDatabase::angbase)
         .def("angdir", &PyDbDatabase::angdir)
         .def("annoAllVisible", &PyDbDatabase::annoAllVisible)
@@ -483,6 +485,14 @@ PyDbDatabase::PyDbDatabase(AcDbDatabase* _pDb, bool autoDelete)
 PyDbDatabase::PyDbDatabase(bool buildDefaultDrawing, bool noDocument)
     : PyRxObject(new AcDbDatabase(buildDefaultDrawing, noDocument), true, false)
 {
+}
+
+PyDbObjectId PyDbDatabase::addAcDbObject(PyDbObject& obj)
+{
+    PyDbObjectId id;
+    if (auto es = impObj()->addAcDbObject(id.m_id, obj.impObj()); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return id;
 }
 
 double PyDbDatabase::angbase() const

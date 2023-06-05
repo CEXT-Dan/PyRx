@@ -163,6 +163,7 @@ BOOST_PYTHON_MODULE(PyDb)
 
     makePyDbImageWrapper();
     makePyDbRasterImageDefWrapper();
+    makePyDbRasterImageDefReactorWrapper();
     makePyDbRasterImageWrapper();
 
     makePyDbIdMappingWrapper();
