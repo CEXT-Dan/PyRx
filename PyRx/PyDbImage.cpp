@@ -297,6 +297,77 @@ AcDbRasterImageDef* PyDbRasterImageDef::impObj(const std::source_location& src /
 }
 
 //-----------------------------------------------------------------------------------
+//PyDbRasterImageDefReactor
+void makePyDbRasterImageDefReactorWrapper()
+{
+    class_<PyDbRasterImageDefReactor, bases<PyDbObject>>("RasterImageDefReactor")
+        .def(init<>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("setEnable", &PyDbRasterImageDefReactor::setEnable).staticmethod("setEnable")
+        .def("className", &PyDbRasterImageDefReactor::className).staticmethod("className")
+        .def("desc", &PyDbRasterImageDefReactor::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbRasterImageDefReactor::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbRasterImageDefReactor::cast).staticmethod("cast")
+        ;
+}
+
+PyDbRasterImageDefReactor::PyDbRasterImageDefReactor()
+    : PyDbObject(new AcDbRasterImageDefReactor(), true)
+{
+}
+
+PyDbRasterImageDefReactor::PyDbRasterImageDefReactor(AcDbRasterImageDefReactor* ptr, bool autoDelete)
+    : PyDbObject(ptr, autoDelete)
+{
+}
+
+PyDbRasterImageDefReactor::PyDbRasterImageDefReactor(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbObject(nullptr, false)
+{
+    AcDbRasterImageDefReactor* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbRasterImageDefReactor>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    this->resetImp(pobj, false, true);
+}
+
+void PyDbRasterImageDefReactor::setEnable(Adesk::Boolean enable)
+{
+    AcDbRasterImageDefReactor::setEnable(enable);
+}
+
+std::string PyDbRasterImageDefReactor::className()
+{
+    return "AcDbRasterImageDefReactor";
+}
+
+PyRxClass PyDbRasterImageDefReactor::desc()
+{
+    return PyRxClass(AcDbRasterImageDefReactor::desc(), false);
+}
+
+PyDbRasterImageDefReactor PyDbRasterImageDefReactor::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbRasterImageDefReactor::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbRasterImageDefReactor(static_cast<AcDbRasterImageDefReactor*>(src.impObj()->clone()), true);
+}
+
+PyDbRasterImageDefReactor PyDbRasterImageDefReactor::cast(const PyRxObject& src)
+{
+    PyDbRasterImageDefReactor dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+AcDbRasterImageDefReactor* PyDbRasterImageDefReactor::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr)
+        throw PyNullObject(src);
+    return static_cast<AcDbRasterImageDefReactor*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
 //AcDbRasterImage
 void makePyDbRasterImageWrapper()
 {

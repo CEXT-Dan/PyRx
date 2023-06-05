@@ -66,6 +66,28 @@ public:
 };
 
 //-----------------------------------------------------------------------------------
+//PyDbRasterImageDefReactor
+void makePyDbRasterImageDefReactorWrapper();
+class PyDbRasterImageDefReactor : public PyDbObject
+{
+public:
+    PyDbRasterImageDefReactor();
+    PyDbRasterImageDefReactor(AcDbRasterImageDefReactor* ptr, bool autoDelete);
+    PyDbRasterImageDefReactor(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbRasterImageDefReactor() override = default;
+
+    static void     setEnable(Adesk::Boolean enable);
+public:
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyDbRasterImageDefReactor	cloneFrom(const PyRxObject& src);
+    static PyDbRasterImageDefReactor    cast(const PyRxObject& src);
+public:
+    AcDbRasterImageDefReactor* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+//-----------------------------------------------------------------------------------
 //AcDbRasterImage
 void makePyDbRasterImageWrapper();
 
@@ -124,4 +146,3 @@ public:
 public:
     AcDbRasterImage* impObj(const std::source_location & src = std::source_location::current()) const;
 };
-

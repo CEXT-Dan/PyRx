@@ -1920,6 +1920,13 @@ This class cannot be instantiated from Python
     def __ne__ (self, value, /):
       '''Return self!=value.'''
     ...
+    def add (self, *args, **kwargs):
+      '''
+add( (SelectionSet)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void add(class PyEdSelectionSet {lvalue},class PyDbObjectId)'''
+    ...
     def clear (self, *args, **kwargs):
       '''
 clear( (SelectionSet)arg1) -> None :
@@ -1927,12 +1934,26 @@ clear( (SelectionSet)arg1) -> None :
     C++ signature :
         void clear(class PyEdSelectionSet {lvalue})'''
     ...
+    def hasMember (self, *args, **kwargs):
+      '''
+hasMember( (SelectionSet)arg1, (ObjectId)arg2) -> bool :
+
+    C++ signature :
+        bool hasMember(class PyEdSelectionSet {lvalue},class PyDbObjectId)'''
+    ...
     def isInitialized (self, *args, **kwargs):
       '''
 isInitialized( (SelectionSet)arg1) -> bool :
 
     C++ signature :
         bool isInitialized(class PyEdSelectionSet {lvalue})'''
+    ...
+    def remove (self, *args, **kwargs):
+      '''
+remove( (SelectionSet)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void remove(class PyEdSelectionSet {lvalue},class PyDbObjectId)'''
     ...
     def size (self, *args, **kwargs):
       '''

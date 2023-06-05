@@ -1,6 +1,8 @@
 #pragma once
 #include "PyRxObject.h"
+class PyDbObject;
 class PyDbObjectId;
+
 void makeAcDbDatabaseWrapper();
 class PyDbDatabase : public PyRxObject
 {
@@ -10,6 +12,8 @@ public:
     PyDbDatabase(AcDbDatabase* pDb, bool autoDelete);
     PyDbDatabase(bool buildDefaultDrawing, bool noDocument);
     virtual ~PyDbDatabase() override = default;
+
+    PyDbObjectId        addAcDbObject(PyDbObject& obj);
     double              angbase() const;
     bool                angdir() const;
     bool                annoAllVisible() const;
