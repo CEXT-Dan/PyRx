@@ -25,6 +25,9 @@ def OnPyUnloadDwg():
 #command to launch the dialog
 def PyRxCmd_wxpy():
     try: 
+        #calls CAcModuleResourceOverride
+        res = PyAp.ResourceOverride()
+        
         dlg = TestDialog(None, -1, "mY fRirst diaLog",wx.Size(700,300))
         if dlg.ShowModal() == wx.ID_OK:
             print(dlg.text1.GetValue())
