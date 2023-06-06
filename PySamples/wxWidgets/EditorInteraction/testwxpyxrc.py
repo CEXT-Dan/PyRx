@@ -11,7 +11,7 @@ import PyEd# = editor
 
 def OnPyInitApp():
     print("\nOnPyInitApp")
-	print("Added command 'wxpyxrc'")
+    print("Added command 'wxpyxrc'")
 
 def OnPyUnloadApp():
     print("\nOnPyUnloadApp")
@@ -25,6 +25,8 @@ def OnPyUnloadDwg():
 #command to launch the dialog
 def PyRxCmd_wxpyxrc():
     try: 
+        #CAcModuleResourceOverride
+        resource = PyAp.ResourceOverride()
         dlg = TestDialog(None, -1, "")
         if dlg.ShowModal() == wx.ID_OK:
             print('woohoo')

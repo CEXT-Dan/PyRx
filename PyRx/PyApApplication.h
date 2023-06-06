@@ -15,3 +15,16 @@ public:
     static std::string className();
 };
 
+//-----------------------------------------------------------------------------------------
+//PyApApplication  Wrapper
+void makeAPyApResourceOverrideWrapper();
+
+class PyApResourceOverride
+{
+public:
+    PyApResourceOverride() = default;
+    ~PyApResourceOverride() = default;
+
+    CAcModuleResourceOverride myResources;
+};
+

@@ -238,7 +238,9 @@
     <ClCompile Include="PyEdSelectionSet.cpp">
       <Filter>Source Files\PyEd</Filter>
     </ClCompile>
-    <ClCompile Include="PyDbViewport.cpp" />
+    <ClCompile Include="PyDbViewport.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -481,7 +483,9 @@
     <ClInclude Include="PyEdSelectionSet.h">
       <Filter>Header Files\PyEd</Filter>
     </ClInclude>
-    <ClInclude Include="PyDbViewport.h" />
+    <ClInclude Include="PyDbViewport.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

@@ -1084,6 +1084,21 @@ upgradeDocOpen( (Document)arg1) -> ErrorStatus :
         enum Acad::ErrorStatus upgradeDocOpen(class PyApDocument {lvalue})'''
     ...
 
+class ResourceOverride:
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, *args, **kwargs):
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+
 class SaveFormat:
     def __add__ (self, value, /):
       '''Return self+value.'''
