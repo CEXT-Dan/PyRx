@@ -77,10 +77,12 @@ BOOST_PYTHON_MODULE(PyAp)
         .export_values()
         ;
 
+    makeAPyApResourceOverrideWrapper();
     makeAcApApplictionWrapper();
     makeAcApDocManagerWrapper();
     makeAcApDocumentWrapper();
     makePyApDocManagerReactorWrapper();
+
 };
 
 void initPyApModule()

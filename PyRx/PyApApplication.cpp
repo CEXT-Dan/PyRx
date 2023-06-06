@@ -14,8 +14,6 @@ void makeAcApApplictionWrapper()
         ;
 }
 
-//-----------------------------------------------------------------------------------------
-//PyApApplication  Wrapper
 PyApDocManager PyApApplication::docManager()
 {
     return PyApDocManager(acDocManager, false);
@@ -29,4 +27,13 @@ int64_t PyApApplication::mainWnd()
 std::string PyApApplication::className()
 {
     return std::string{ "AcApApplication" };
+}
+
+
+//-----------------------------------------------------------------------------------------
+//makeAPyApResourceOverrideWrapper  Wrapper
+void makeAPyApResourceOverrideWrapper()
+{
+    class_<PyApResourceOverride>("ResourceOverride")
+        ;
 }
