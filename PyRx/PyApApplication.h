@@ -10,7 +10,7 @@ class PyApApplication
 {
 public:
     PyApDocManager docManager();
-
+public:
     static int64_t mainWnd();
     static std::string className();
 };
@@ -24,7 +24,8 @@ class PyApResourceOverride
 public:
     PyApResourceOverride() = default;
     ~PyApResourceOverride() = default;
-
+    static std::string className();
+public:
     CAcModuleResourceOverride myResources;
 };
 

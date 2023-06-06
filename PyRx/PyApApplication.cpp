@@ -35,5 +35,11 @@ std::string PyApApplication::className()
 void makeAPyApResourceOverrideWrapper()
 {
     class_<PyApResourceOverride>("ResourceOverride")
+        .def("className", &PyApApplication::className).staticmethod("className")
         ;
+}
+
+std::string PyApResourceOverride::className()
+{
+    return std::string{ "CAcModuleResourceOverride" };
 }
