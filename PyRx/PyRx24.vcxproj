@@ -126,6 +126,7 @@
     <ClCompile Include="DbCore.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="DocData.cpp" />
+    <ClCompile Include="EdCore.cpp" />
     <ClCompile Include="PyAcGeSurface.cpp" />
     <ClCompile Include="PyCmd.cpp" />
     <ClCompile Include="PyDb3dSolid.cpp" />
@@ -148,6 +149,7 @@
     <ClCompile Include="PyDbDictionary.cpp" />
     <ClCompile Include="PyDbEntity.cpp" />
     <ClCompile Include="PyDbField.cpp" />
+    <ClCompile Include="PyDbgDwgFiler.cpp" />
     <ClCompile Include="PyDbHatch.cpp" />
     <ClCompile Include="PyDbHostApplicationServices.cpp" />
     <ClCompile Include="PyDbIdMapping.cpp" />
@@ -209,6 +211,7 @@
   <ItemGroup>
     <ClInclude Include="DbCore.h" />
     <ClInclude Include="DocData.h" />
+    <ClInclude Include="EdCore.h" />
     <ClInclude Include="PyAcGeSurface.h" />
     <ClInclude Include="PyCmd.h" />
     <ClInclude Include="PyDb3dSolid.h" />
@@ -231,6 +234,7 @@
     <ClInclude Include="PyDbDictionary.h" />
     <ClInclude Include="PyDbEntity.h" />
     <ClInclude Include="PyDbField.h" />
+    <ClInclude Include="PyDbgDwgFiler.h" />
     <ClInclude Include="PyDbHatch.h" />
     <ClInclude Include="PyDbHostApplicationServices.h" />
     <ClInclude Include="PyDbIdMapping.h" />

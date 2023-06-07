@@ -241,6 +241,12 @@
     <ClCompile Include="PyDbViewport.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
+    <ClCompile Include="PyDbgDwgFiler.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="EdCore.cpp">
+      <Filter>Source Files\PyEd</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -485,6 +491,12 @@
     </ClInclude>
     <ClInclude Include="PyDbViewport.h">
       <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbgDwgFiler.h">
+      <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="EdCore.h">
+      <Filter>Header Files\PyEd</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
