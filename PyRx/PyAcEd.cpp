@@ -4,6 +4,7 @@
 #include "PyJig.h"
 #include "PyEditorReactor.h"
 #include "PyEdSelectionSet.h"
+#include "EdCore.h"
 
 using namespace boost::python;
 
@@ -13,6 +14,7 @@ BOOST_PYTHON_MODULE(PyEd)
     docstring_options local_docstring_options(false, true, true);
 #endif // ! PyRxDebug
 
+    makeEdCoreWrapper();
     makePyEdSelectionSetWrapper();
     makeAcEdJigWrapper();
     makeAcEdDrawJigWrapper();
