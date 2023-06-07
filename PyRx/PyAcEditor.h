@@ -11,7 +11,8 @@ public:
     void                 alert(const std::string& prompt);
     bool                 arxLoad(const std::string& path);
     bool                 arxUnload(const std::string& app);
-    Acad::ErrorStatus    audit(const PyDbDatabase& db, bool bFixErrors, bool bCmdLnEcho);
+    Acad::ErrorStatus    audit(const PyDbDatabase& db, bool bFixErrors);
+    Acad::ErrorStatus    audit2(const PyDbDatabase& db, bool bFixErrors, bool bCmdLnEcho);
     bool                 cmdS(const boost::python::list& lst);
     std::string          findFile(const std::string& file);
     std::string          findTrustedFile(const std::string& file);
