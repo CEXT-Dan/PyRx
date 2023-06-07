@@ -30,6 +30,7 @@ void makeAcEditorWrapper()
         .def("arxUnload", &PyAcEditor::arxUnload)
         .def("arxLoaded", &PyAcEditor::arxLoaded)
         .def("audit", &PyAcEditor::audit)
+        .def("audit", &PyAcEditor::audit2)
         .def("cmdS", &PyAcEditor::cmdS)
         .def("findFile", &PyAcEditor::findFile)
         .def("findTrustedFile", &PyAcEditor::findTrustedFile)
@@ -85,7 +86,16 @@ bool PyAcEditor::arxUnload(const std::string& app)
     return acedArxUnload(utf8_to_wstr(app).c_str()) == RTNORM;
 }
 
-Acad::ErrorStatus PyAcEditor::audit(const PyDbDatabase& db, bool bFixErrors, bool bCmdLnEcho)
+Acad::ErrorStatus PyAcEditor::audit(const PyDbDatabase& db, bool bFixErrors)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return acedAudit(db.impObj(), bFixErrors);
+#endif
+}
+
+Acad::ErrorStatus PyAcEditor::audit2(const PyDbDatabase& db, bool bFixErrors, bool bCmdLnEcho)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();

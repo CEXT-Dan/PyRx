@@ -25,6 +25,7 @@
     <UseOfAtl>false</UseOfAtl>
     <CLRSupport>false</CLRSupport>
     <PlatformToolset>v142</PlatformToolset>
+	<PreferredToolArchitecture>x64</PreferredToolArchitecture>
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -33,6 +34,7 @@
     <UseOfAtl>false</UseOfAtl>
     <CLRSupport>false</CLRSupport>
     <PlatformToolset>v142</PlatformToolset>
+	<PreferredToolArchitecture>x64</PreferredToolArchitecture>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
