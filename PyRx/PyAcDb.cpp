@@ -28,6 +28,7 @@
 #include "PyDbXrecord.h"
 #include "PyDbUnderlayReference.h"
 #include "PyDbImage.h"
+#include "PyDbTransactionManager.h"
 
 using namespace boost::python;
 
@@ -168,6 +169,8 @@ BOOST_PYTHON_MODULE(PyDb)
 
     makePyDbIdMappingWrapper();
 
+    makePyDbTransactionManager();
+    makePyTransaction();
 
     makeDbCoreWrapper();//LAST
 
