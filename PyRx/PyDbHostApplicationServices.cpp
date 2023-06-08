@@ -14,6 +14,7 @@ void makeAcDbHostApplicationServicesWrapper()
         .def("findFile", &PyDbHostApplicationServices::findFile1)
         .def("findFile", &PyDbHostApplicationServices::findFile2)
         .def("findFile", &PyDbHostApplicationServices::findFile3)
+        .def("product", &PyDbHostApplicationServices::product)
         ;
 
     enum_<AcDbHostApplicationServices::FindFileHint>("FindFileHint")
@@ -75,4 +76,9 @@ std::string PyDbHostApplicationServices::findFile3(const std::string& fileName, 
     if (auto es = pDbHostApp->findFile(fileOut, utf8_to_wstr(fileName).c_str(), db.impObj(), hint); es != eOk)
         throw PyAcadErrorStatus(es);
     return wstr_to_utf8(fileOut);
+}
+
+std::string PyDbHostApplicationServices::product() const
+{
+    return  wstr_to_utf8(pDbHostApp->product());
 }

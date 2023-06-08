@@ -28,7 +28,7 @@ public:
     }
 };
 
-typedef py_redirector<eStdin>	stdout_redirector;
+typedef py_redirector<eStdout>	stdout_redirector;
 typedef py_redirector<eStderr>	stderr_redirector;
 
 static boost::shared_ptr<stdout_redirector> make_stdout_redirector()
@@ -58,6 +58,7 @@ BOOST_PYTHON_MODULE(PyRx)
         .def("write", &stderr_redirector::write)
         .def("flush", &stderr_redirector::flush)
         ;
+
     boost::python::import("sys").attr("stdout") = make_stdout_redirector().get();
     boost::python::import("sys").attr("stderr") = make_stderr_redirector().get();
 
