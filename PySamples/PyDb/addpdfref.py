@@ -31,8 +31,9 @@ def PyRxCmd_pyaddpdf():
         pdfDef = Db.PdfDefinition()
         pdfDef.setSourceFileName("E:\\JacksonSetup.pdf")
         
-        #required for BricsCAD
-        #pdfDef.load("")
+        #required for BricsCAD, just an example of a platform condition
+        if  Db.HostApplicationServices().product() == "BricsCAD":
+            pdfDef.load("")
 
         pdfDict =  Db.Dictionary(nod.getAt(defDictKey), Db.OpenMode.kForWrite)
         idPdfDef = pdfDict.setAt("WOOHOO", pdfDef)
