@@ -1,4 +1,92 @@
 
+class Core:
+    def __eq__ (self, value, /):
+      '''Return self==value.'''
+    ...
+    def __init__ (self, *args, **kwargs):
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def __ne__ (self, value, /):
+      '''Return self!=value.'''
+    ...
+    def activeViewportId (self, *args, **kwargs):
+      '''
+activeViewportId() -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId activeViewportId()'''
+    ...
+    def alert (self, *args, **kwargs):
+      '''
+alert( (str)arg1) -> int :
+
+    C++ signature :
+        int alert(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def arxLoad (self, *args, **kwargs):
+      '''
+arxLoad( (str)arg1) -> int :
+
+    C++ signature :
+        int arxLoad(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def arxLoaded (self, *args, **kwargs):
+      '''
+arxLoaded() -> list :
+
+    C++ signature :
+        class boost::python::list arxLoaded()'''
+    ...
+    def arxUnload (self, *args, **kwargs):
+      '''
+arxUnload( (str)arg1) -> int :
+
+    C++ signature :
+        int arxUnload(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def audit (self, *args, **kwargs):
+      '''
+audit( (Database)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus audit(class PyDbDatabase {lvalue},bool)
+
+audit( (Database)arg1, (bool)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus audit(class PyDbDatabase {lvalue},bool,bool)'''
+    ...
+    def callBackOnCancel (self, *args, **kwargs):
+      '''
+callBackOnCancel() -> None :
+
+    C++ signature :
+        void callBackOnCancel()'''
+    ...
+    def clearOLELock (self, *args, **kwargs):
+      '''
+clearOLELock( (int)arg1) -> bool :
+
+    C++ signature :
+        bool clearOLELock(int)'''
+    ...
+    def xrefDetach (self, *args, **kwargs):
+      '''
+xrefDetach( (str)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus xrefDetach(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+xrefDetach( (str)arg1, (bool)arg2, (Database)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus xrefDetach(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,class PyDbDatabase {lvalue})'''
+    ...
+
 class CursorType:
     def __add__ (self, value, /):
       '''Return self+value.'''
@@ -762,6 +850,11 @@ arxUnload( (Editor)arg1, (str)arg2) -> bool :
     ...
     def audit (self, *args, **kwargs):
       '''
+audit( (Editor)arg1, (Database)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus audit(class PyAcEditor {lvalue},class PyDbDatabase,bool)
+
 audit( (Editor)arg1, (Database)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
 
     C++ signature :

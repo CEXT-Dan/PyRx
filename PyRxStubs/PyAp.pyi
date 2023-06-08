@@ -1098,6 +1098,13 @@ __init__( (object)arg1) -> None :
     def __ne__ (self, value, /):
       '''Return self!=value.'''
     ...
+    def className (self, *args, **kwargs):
+      '''
+className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
 
 class SaveFormat:
     def __add__ (self, value, /):

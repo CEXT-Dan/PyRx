@@ -514,12 +514,12 @@ __init__( (object)arg1) -> object :
 flush( (stdout)arg1) -> None :
 
     C++ signature :
-        void flush(class py_redirector<0> {lvalue})'''
+        void flush(class py_redirector<1> {lvalue})'''
     ...
     def write (self, *args, **kwargs):
       '''
 write( (stdout)arg1, (str)arg2) -> None :
 
     C++ signature :
-        void write(class py_redirector<0> {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        void write(class py_redirector<1> {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...

@@ -27,7 +27,8 @@
 <dt><font face="helvetica, arial">Boost.Python.instance(<a href="builtins.html#object">builtins.object</a>)
 </font></dt><dd>
 <dl>
-<dt><font face="helvetica, arial"><a href="PyEd.html#DragStyle">DragStyle</a>
+<dt><font face="helvetica, arial"><a href="PyEd.html#Core">Core</a>
+</font></dt><dt><font face="helvetica, arial"><a href="PyEd.html#DragStyle">DragStyle</a>
 </font></dt><dt><font face="helvetica, arial"><a href="PyEd.html#DrawJig">DrawJig</a>
 </font></dt><dt><font face="helvetica, arial"><a href="PyEd.html#Editor">Editor</a>
 </font></dt><dt><font face="helvetica, arial"><a href="PyEd.html#EditorReactor">EditorReactor</a>
@@ -37,6 +38,96 @@
 </dd>
 </dl>
  <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Core">class <strong>Core</strong></a>(Boost.Python.instance)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="PyEd.html#Core">Core</a></dd>
+<dd>Boost.Python.instance</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="Core-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt><a href="#Core-__init__">__init__</a>(&nbsp;(object)arg1)&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#Core-__init__">__init__</a>(struct&nbsp;_object&nbsp;*&nbsp;__ptr64)</tt></dd></dl>
+
+<dl><dt><a name="Core-__reduce__"><strong>__reduce__</strong></a> = <unnamed Boost.Python function>(...)</dt></dl>
+
+<dl><dt><a name="Core-activeViewportId"><strong>activeViewportId</strong></a>(...)</dt><dd><tt><a href="#Core-activeViewportId">activeViewportId</a>()&nbsp;-&gt;&nbsp;ObjectId&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;PyDbObjectId&nbsp;<a href="#Core-activeViewportId">activeViewportId</a>()</tt></dd></dl>
+
+<dl><dt><a name="Core-alert"><strong>alert</strong></a>(...)</dt><dd><tt><a href="#Core-alert">alert</a>(&nbsp;(str)arg1)&nbsp;-&gt;&nbsp;int&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<a href="#Core-alert">alert</a>(class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="Core-arxLoad"><strong>arxLoad</strong></a>(...)</dt><dd><tt><a href="#Core-arxLoad">arxLoad</a>(&nbsp;(str)arg1)&nbsp;-&gt;&nbsp;int&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<a href="#Core-arxLoad">arxLoad</a>(class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="Core-arxLoaded"><strong>arxLoaded</strong></a>(...)</dt><dd><tt><a href="#Core-arxLoaded">arxLoaded</a>()&nbsp;-&gt;&nbsp;list&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;boost::python::list&nbsp;<a href="#Core-arxLoaded">arxLoaded</a>()</tt></dd></dl>
+
+<dl><dt><a name="Core-arxUnload"><strong>arxUnload</strong></a>(...)</dt><dd><tt><a href="#Core-arxUnload">arxUnload</a>(&nbsp;(str)arg1)&nbsp;-&gt;&nbsp;int&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;<a href="#Core-arxUnload">arxUnload</a>(class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
+
+<dl><dt><a name="Core-audit"><strong>audit</strong></a>(...)</dt><dd><tt><a href="#Core-audit">audit</a>(&nbsp;(Database)arg1,&nbsp;(bool)arg2)&nbsp;-&gt;&nbsp;ErrorStatus&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;Acad::ErrorStatus&nbsp;<a href="#Core-audit">audit</a>(class&nbsp;PyDbDatabase&nbsp;{lvalue},bool)<br>
+&nbsp;<br>
+<a href="#Core-audit">audit</a>(&nbsp;(Database)arg1,&nbsp;(bool)arg2,&nbsp;(bool)arg3)&nbsp;-&gt;&nbsp;ErrorStatus&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;Acad::ErrorStatus&nbsp;<a href="#Core-audit">audit</a>(class&nbsp;PyDbDatabase&nbsp;{lvalue},bool,bool)</tt></dd></dl>
+
+<dl><dt><a name="Core-callBackOnCancel"><strong>callBackOnCancel</strong></a>(...)</dt><dd><tt><a href="#Core-callBackOnCancel">callBackOnCancel</a>()&nbsp;-&gt;&nbsp;None&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;<a href="#Core-callBackOnCancel">callBackOnCancel</a>()</tt></dd></dl>
+
+<dl><dt><a name="Core-clearOLELock"><strong>clearOLELock</strong></a>(...)</dt><dd><tt><a href="#Core-clearOLELock">clearOLELock</a>(&nbsp;(int)arg1)&nbsp;-&gt;&nbsp;bool&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#Core-clearOLELock">clearOLELock</a>(int)</tt></dd></dl>
+
+<dl><dt><a name="Core-xrefDetach"><strong>xrefDetach</strong></a>(...)</dt><dd><tt><a href="#Core-xrefDetach">xrefDetach</a>(&nbsp;(str)arg1)&nbsp;-&gt;&nbsp;ErrorStatus&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;Acad::ErrorStatus&nbsp;<a href="#Core-xrefDetach">xrefDetach</a>(class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)<br>
+&nbsp;<br>
+<a href="#Core-xrefDetach">xrefDetach</a>(&nbsp;(str)arg1,&nbsp;(bool)arg2,&nbsp;(Database)arg3)&nbsp;-&gt;&nbsp;ErrorStatus&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;Acad::ErrorStatus&nbsp;<a href="#Core-xrefDetach">xrefDetach</a>(class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;,bool,class&nbsp;PyDbDatabase&nbsp;{lvalue})</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__instance_size__</strong> = 32</dl>
+
+<hr>
+Static methods inherited from Boost.Python.instance:<br>
+<dl><dt><a name="Core-__new__"><strong>__new__</strong></a>(*args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from Boost.Python.class</font></font></dt><dd><tt>Create&nbsp;and&nbsp;return&nbsp;a&nbsp;new&nbsp;object.&nbsp;&nbsp;See&nbsp;help(type)&nbsp;for&nbsp;accurate&nbsp;signature.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from Boost.Python.instance:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+</dl>
+</td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -1007,7 +1098,12 @@ Static methods defined here:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bool&nbsp;<a href="#Editor-arxUnload">arxUnload</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;std::basic_string&lt;char,struct&nbsp;std::char_traits&lt;char&gt;,class&nbsp;std::allocator&lt;char&gt;&nbsp;&gt;)</tt></dd></dl>
 
-<dl><dt><a name="Editor-audit"><strong>audit</strong></a>(...)</dt><dd><tt><a href="#Editor-audit">audit</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(Database)arg2,&nbsp;(bool)arg3,&nbsp;(bool)arg4)&nbsp;-&gt;&nbsp;ErrorStatus&nbsp;:<br>
+<dl><dt><a name="Editor-audit"><strong>audit</strong></a>(...)</dt><dd><tt><a href="#Editor-audit">audit</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(Database)arg2,&nbsp;(bool)arg3)&nbsp;-&gt;&nbsp;ErrorStatus&nbsp;:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;Acad::ErrorStatus&nbsp;<a href="#Editor-audit">audit</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;PyDbDatabase,bool)<br>
+&nbsp;<br>
+<a href="#Editor-audit">audit</a>(&nbsp;(<a href="#Editor">Editor</a>)arg1,&nbsp;(Database)arg2,&nbsp;(bool)arg3,&nbsp;(bool)arg4)&nbsp;-&gt;&nbsp;ErrorStatus&nbsp;:<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;C++&nbsp;signature&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;Acad::ErrorStatus&nbsp;<a href="#Editor-audit">audit</a>(class&nbsp;PyAcEditor&nbsp;{lvalue},class&nbsp;PyDbDatabase,bool,bool)</tt></dd></dl>
