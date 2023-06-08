@@ -30,6 +30,9 @@ def PyRxCmd_pyaddpdf():
             
         pdfDef = Db.PdfDefinition()
         pdfDef.setSourceFileName("E:\\JacksonSetup.pdf")
+        
+        #required for BricsCAD
+        #pdfDef.load("")
 
         pdfDict =  Db.Dictionary(nod.getAt(defDictKey), Db.OpenMode.kForWrite)
         idPdfDef = pdfDict.setAt("WOOHOO", pdfDef)
