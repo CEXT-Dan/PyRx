@@ -3,6 +3,7 @@
 #include "PyDbDatabase.h "
 
 class PyAcEditor;
+class PyTransactionManager;
 
 void makeAcApDocumentWrapper();
 
@@ -38,6 +39,8 @@ public:
 
     Acad::ErrorStatus upgradeDocOpen();
     Acad::ErrorStatus downgradeDocOpen(bool bPromptForSave);
+
+    PyTransactionManager transactionManager();
 
     static int64_t docWnd();
     static std::string className();

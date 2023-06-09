@@ -1076,6 +1076,13 @@ setDocTitle( (Document)arg1, (str)arg2) -> None :
     C++ signature :
         void setDocTitle(class PyApDocument {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def transactionManager (self, *args, **kwargs):
+      '''
+transactionManager( (Document)arg1) -> TransactionManager :
+
+    C++ signature :
+        class PyTransactionManager transactionManager(class PyApDocument {lvalue})'''
+    ...
     def upgradeDocOpen (self, *args, **kwargs):
       '''
 upgradeDocOpen( (Document)arg1) -> ErrorStatus :
@@ -1331,6 +1338,163 @@ dict(iterable) -> new dictionary initialized as if via:
         d[k] = v
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class TransactionManager:
+    def __eq__ (self, *args, **kwargs):
+      '''
+__eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __eq__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def __init__ (self, *args, **kwargs):
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def __ne__ (self, *args, **kwargs):
+      '''
+__ne__( (RxObject)arg1, (RxObject)arg2) -> bool :
+
+    C++ signature :
+        bool __ne__(class PyRxObject {lvalue},class PyRxObject)'''
+    ...
+    def abortTransaction (self, *args, **kwargs):
+      '''
+abortTransaction( (TransactionManager)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus abortTransaction(class PyDbTransactionManager {lvalue})'''
+    ...
+    def addNewlyCreatedDBRObject (self, *args, **kwargs):
+      '''
+addNewlyCreatedDBRObject( (TransactionManager)arg1, (DbObject)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus addNewlyCreatedDBRObject(class PyDbTransactionManager {lvalue},class PyDbObject {lvalue})
+
+addNewlyCreatedDBRObject( (TransactionManager)arg1, (DbObject)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus addNewlyCreatedDBRObject(class PyDbTransactionManager {lvalue},class PyDbObject {lvalue},bool)'''
+    ...
+    def className (self, *args, **kwargs):
+      '''
+className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def desc (self, *args, **kwargs):
+      '''
+desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def enableGraphicsFlush (self, *args, **kwargs):
+      '''
+enableGraphicsFlush( (TransactionManager)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus enableGraphicsFlush(class PyTransactionManager {lvalue},bool)'''
+    ...
+    def endTransaction (self, *args, **kwargs):
+      '''
+endTransaction( (TransactionManager)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus endTransaction(class PyDbTransactionManager {lvalue})'''
+    ...
+    def flushGraphics (self, *args, **kwargs):
+      '''
+flushGraphics( (TransactionManager)arg1) -> None :
+
+    C++ signature :
+        void flushGraphics(class PyTransactionManager {lvalue})'''
+    ...
+    def getAllObjects (self, *args, **kwargs):
+      '''
+getAllObjects( (TransactionManager)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getAllObjects(class PyDbTransactionManager {lvalue})'''
+    ...
+    def getObject (self, *args, **kwargs):
+      '''
+getObject( (TransactionManager)arg1, (ObjectId)arg2) -> DbObject :
+
+    C++ signature :
+        class PyDbObject getObject(class PyDbTransactionManager {lvalue},class PyDbObjectId)
+
+getObject( (TransactionManager)arg1, (ObjectId)arg2, (OpenMode)arg3) -> DbObject :
+
+    C++ signature :
+        class PyDbObject getObject(class PyDbTransactionManager {lvalue},class PyDbObjectId,enum AcDb::OpenMode)
+
+getObject( (TransactionManager)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> DbObject :
+
+    C++ signature :
+        class PyDbObject getObject(class PyDbTransactionManager {lvalue},class PyDbObjectId,enum AcDb::OpenMode,bool)'''
+    ...
+    def isA (self, *args, **kwargs):
+      '''
+isA( (RxObject)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyRxObject {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs):
+      '''
+isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def numActiveTransactions (self, *args, **kwargs):
+      '''
+numActiveTransactions( (TransactionManager)arg1) -> int :
+
+    C++ signature :
+        int numActiveTransactions(class PyDbTransactionManager {lvalue})'''
+    ...
+    def numOpenedObjects (self, *args, **kwargs):
+      '''
+numOpenedObjects( (TransactionManager)arg1) -> int :
+
+    C++ signature :
+        int numOpenedObjects(class PyDbTransactionManager {lvalue})'''
+    ...
+    def queueForGraphicsFlush (self, *args, **kwargs):
+      '''
+queueForGraphicsFlush( (TransactionManager)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus queueForGraphicsFlush(class PyDbTransactionManager {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs):
+      '''
+refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
+    def startTransaction (self, *args, **kwargs):
+      '''
+startTransaction( (TransactionManager)arg1) -> Transaction :
+
+    C++ signature :
+        class PyTransaction startTransaction(class PyDbTransactionManager {lvalue})'''
+    ...
+    def topTransaction (self, *args, **kwargs):
+      '''
+topTransaction( (TransactionManager)arg1) -> Transaction :
+
+    C++ signature :
+        class PyTransaction topTransaction(class PyDbTransactionManager {lvalue})'''
     ...
 
 class __loader__:

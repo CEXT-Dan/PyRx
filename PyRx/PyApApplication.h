@@ -17,7 +17,7 @@ public:
 
 //-----------------------------------------------------------------------------------------
 //PyApApplication  Wrapper
-void makeAPyApResourceOverrideWrapper();
+void makePyApResourceOverrideWrapper();
 
 class PyApResourceOverride
 {

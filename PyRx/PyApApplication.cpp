@@ -32,7 +32,7 @@ std::string PyApApplication::className()
 
 //-----------------------------------------------------------------------------------------
 //makeAPyApResourceOverrideWrapper  Wrapper
-void makeAPyApResourceOverrideWrapper()
+void makePyApResourceOverrideWrapper()
 {
     class_<PyApResourceOverride>("ResourceOverride")
         .def("className", &PyApApplication::className).staticmethod("className")

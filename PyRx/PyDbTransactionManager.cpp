@@ -33,6 +33,12 @@ PyDbTransactionManager::PyDbTransactionManager()
 {
 }
 
+PyDbTransactionManager::PyDbTransactionManager(AcDbTransactionManager* ptr)
+    : PyRxObject(ptr,false,false)
+{
+
+}
+
 PyTransaction PyDbTransactionManager::startTransaction()
 {
     return PyTransaction(impObj()->startTransaction());
@@ -133,6 +139,55 @@ AcDbTransactionManager* PyDbTransactionManager::impObj(const std::source_locatio
     return static_cast<AcDbTransactionManager*>(m_pyImp.get());
 }
 
+//-----------------------------------------------------------------------------
+//----- AcTransactionManager
+void makePyTransactionManagerManager()
+{
+    class_<PyTransactionManager, bases<PyDbTransactionManager>>("TransactionManager")
+      
+        .def("flushGraphics", &PyTransactionManager::flushGraphics)
+        .def("enableGraphicsFlush", &PyTransactionManager::enableGraphicsFlush)
+        .def("desc", &PyTransactionManager::desc).staticmethod("desc")
+        .def("className", &PyTransactionManager::className).staticmethod("className")
+        ;
+}
+
+PyTransactionManager::PyTransactionManager()
+    : PyDbTransactionManager(acTransactionManagerPtr())
+{
+}
+
+PyTransactionManager::PyTransactionManager(AcTransactionManager* ptr)
+    : PyDbTransactionManager(ptr)
+{
+}
+
+Acad::ErrorStatus PyTransactionManager::enableGraphicsFlush(bool doEnable)
+{
+    return impObj()->enableGraphicsFlush(doEnable);
+}
+
+void PyTransactionManager::flushGraphics()
+{
+    return impObj()->flushGraphics();
+}
+
+PyRxClass PyTransactionManager::desc()
+{
+    return PyRxClass(AcTransactionManager::desc(), false);
+}
+
+std::string PyTransactionManager::className()
+{
+    return "AcTransactionManager";
+}
+
+AcTransactionManager* PyTransactionManager::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr)
+        throw PyNullObject(src);
+    return static_cast<AcTransactionManager*>(m_pyImp.get());
+}
 
 //-----------------------------------------------------------------------------
 //----- PyTransaction
