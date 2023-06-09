@@ -1,6 +1,13 @@
 #pragma once
 class PyRxClass;
 
+// if the object is dbo, close it and return out
+// objects that derived from PyDbObject have m_isDbObject set to true
+// id the object is some sort of global pointer or should not be deleted m_autoDelete should be false
+// examples would be document or current database
+// note: PyDbObject::cast resets the pointer, which call this, but it's not a double delete
+// define PyRxDebug when running unit tests
+
 struct PyRxObjectDeleter
 {
     inline PyRxObjectDeleter(bool autoDelete, bool isDbObject)
@@ -20,6 +27,8 @@ struct PyRxObjectDeleter
             if (!dbo->objectId().isNull())
             {
 #ifdef PyRxDebug
+                if(!dbo->isReadEnabled() && !dbo->isWriteEnabled())
+                    acutPrintf(_T("\nIs already closed!: "));
                 if (auto es = dbo->close(); es != eOk)
                     acutPrintf(_T("\nStatus = %ls in %ls: "), acadErrorStatusText(es), __FUNCTIONW__);
 #else
@@ -36,11 +45,6 @@ struct PyRxObjectDeleter
 
     inline void operator()(AcRxObject* p) const
     {
-#ifdef PyRxDebug
-        std::wstring name;
-        if (p != nullptr)
-            name = p->isA()->name();
-#endif
         if (p == nullptr)
             return;
         else if (isDbroThenClose(p))
