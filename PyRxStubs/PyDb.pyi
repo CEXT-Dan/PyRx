@@ -15301,13 +15301,6 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Database:
-    def  setLimmin (self, *args, **kwargs):
-      '''
- setLimmin( (Database)arg1, (Point2d)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus  setLimmin(class PyDbDatabase {lvalue},class AcGePoint2d)'''
-    ...
     def UCSTableId (self, *args, **kwargs):
       '''
 UCSTableId( (Database)arg1) -> ObjectId :
@@ -17289,6 +17282,13 @@ setLimmax( (Database)arg1, (Point2d)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setLimmax(class PyDbDatabase {lvalue},class AcGePoint2d)'''
     ...
+    def setLimmin (self, *args, **kwargs):
+      '''
+setLimmin( (Database)arg1, (Point2d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLimmin(class PyDbDatabase {lvalue},class AcGePoint2d)'''
+    ...
     def setLineWeightDisplay (self, *args, **kwargs):
       '''
 setLineWeightDisplay( (Database)arg1, (bool)arg2) -> ErrorStatus :
@@ -18219,6 +18219,13 @@ tracewid( (Database)arg1) -> float :
 
     C++ signature :
         double tracewid(class PyDbDatabase {lvalue})'''
+    ...
+    def transactionManager (self, *args, **kwargs):
+      '''
+transactionManager( (Database)arg1) -> TransactionManager :
+
+    C++ signature :
+        class PyDbTransactionManager transactionManager(class PyDbDatabase {lvalue})'''
     ...
     def treedepth (self, *args, **kwargs):
       '''
