@@ -12,6 +12,7 @@ class PyDbTransactionManager : public PyRxObject
 {
 public:
     PyDbTransactionManager();   
+    PyDbTransactionManager(AcDbTransactionManager* ptr);
     virtual ~PyDbTransactionManager() override = default;
 
     PyTransaction       startTransaction();
@@ -36,6 +37,25 @@ public:
 };
 
 //-----------------------------------------------------------------------------
+//----- AcTransactionManager  ** this is init in PyAp Module!!!
+void makePyTransactionManagerManager();
+
+class PyTransactionManager : public PyDbTransactionManager
+{
+public:
+    PyTransactionManager();
+    PyTransactionManager(AcTransactionManager* ptr);
+    virtual ~PyTransactionManager() override = default;
+    Acad::ErrorStatus   enableGraphicsFlush(bool doEnable);
+    void                flushGraphics();
+public:
+    static PyRxClass desc();
+    static std::string className();
+public:
+    AcTransactionManager* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-----------------------------------------------------------------------------
 //----- PyTransaction
 void makePyTransaction();
 
@@ -56,3 +76,5 @@ public:
 public:
     AcTransaction* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+

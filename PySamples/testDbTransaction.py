@@ -7,6 +7,7 @@ import PyAp as Ap
 import PyEd as Ed
 
 print("added command = doittr")
+print("added command = doitdtr")
 
 def do_something(tr):
     for obj in tr.getAllObjects():
@@ -16,7 +17,7 @@ def do_something(tr):
         
 def make_objects(db,tmr):
     model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
-    for ind in range(0,1):
+    for ind in range(0,100):
         pnt = Db.Point(Ge.Point3d(ind,ind,0))
         model.appendAcDbEntity(pnt)
         tmr.addNewlyCreatedDBRObject(pnt)
@@ -30,8 +31,26 @@ def PyRxCmd_doittr():
         make_objects(db,tmr)
             
         do_something(tr)
-        tmr.abortTransaction()
-        #tmr.endTransaction()
+        #tmr.abortTransaction()
+        tmr.endTransaction()
+        
+    except Exception as err:
+        print(err)
+        
+def PyRxCmd_doitdtr():
+    try:
+        db = Db.HostApplicationServices().workingDatabase()
+        tmr = Ap.DocManager().curDocument().transactionManager()
+        tr = tmr.startTransaction()
+        
+        make_objects(db,tmr)
+            
+        do_something(tr)
+        #tmr.abortTransaction()
+        tmr.enableGraphicsFlush(True)
+        tmr.flushGraphics()
+        
+        tmr.endTransaction()
         
     except Exception as err:
         print(err)

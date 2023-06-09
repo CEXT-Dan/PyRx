@@ -4,9 +4,9 @@
 #include "PyApDocument.h"
 #include "PyApDocManager.h"
 #include "PyApApplication.h"
+#include "PyDbTransactionManager.h"
 
 using namespace boost::python;
-
 
 struct CmdFlags
 {
@@ -77,7 +77,8 @@ BOOST_PYTHON_MODULE(PyAp)
         .export_values()
         ;
 
-    makeAPyApResourceOverrideWrapper();
+    makePyTransactionManagerManager();
+    makePyApResourceOverrideWrapper();
     makeAcApApplictionWrapper();
     makeAcApDocManagerWrapper();
     makeAcApDocumentWrapper();

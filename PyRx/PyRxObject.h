@@ -27,7 +27,7 @@ struct PyRxObjectDeleter
             if (!dbo->objectId().isNull())
             {
 #ifdef PyRxDebug
-                if(!dbo->isReadEnabled() && !dbo->isWriteEnabled())
+                if (!dbo->isReadEnabled() && !dbo->isWriteEnabled())
                     acutPrintf(_T("\nIs already closed!: "));
                 if (auto es = dbo->close(); es != eOk)
                     acutPrintf(_T("\nStatus = %ls in %ls: "), acadErrorStatusText(es), __FUNCTIONW__);
@@ -37,10 +37,7 @@ struct PyRxObjectDeleter
                 return true;
             }
         }
-        else
-        {
-            return false;
-        }
+        return false;
     }
 
     inline void operator()(AcRxObject* p) const
