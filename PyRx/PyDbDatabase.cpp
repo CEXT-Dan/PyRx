@@ -2,6 +2,8 @@
 #include "PyDbDatabase.h"
 #include "PyDbObjectId.h"
 #include "PyDbObject.h"
+#include "PyDbTransactionManager.h"
+
 using namespace boost::python;
 //---------------------------------------------------------------------------------------------------
 // makeAcDbDatabaseWrapper
@@ -280,7 +282,7 @@ void makeAcDbDatabaseWrapper()
         .def("setLightsInBlocks", &PyDbDatabase::setLightsInBlocks)
         .def("setLimcheck", &PyDbDatabase::setLimcheck)
         .def("setLimmax", &PyDbDatabase::setLimmax)
-        .def(" setLimmin", &PyDbDatabase::setLimmin)
+        .def("setLimmin", &PyDbDatabase::setLimmin)
         .def("setLineWeightDisplay", &PyDbDatabase::setLineWeightDisplay)
         .def("setLoftAng1", &PyDbDatabase::setLoftAng1)
         .def("setLoftAng2", &PyDbDatabase::setLoftAng2)
@@ -415,6 +417,7 @@ void makeAcDbDatabaseWrapper()
         .def("timeZone", &PyDbDatabase::timeZone)
         .def("tracewid", &PyDbDatabase::tracewid)
         .def("treedepth", &PyDbDatabase::treedepth)
+        .def("transactionManager", &PyDbDatabase::transactionManager)
         .def("tstackalign", &PyDbDatabase::tstackalign)
         .def("tstacksize", &PyDbDatabase::tstacksize)
         .def("ucsBase", &PyDbDatabase::ucsBase)
@@ -2938,6 +2941,11 @@ int PyDbDatabase::timeZone() const
 double PyDbDatabase::tracewid() const
 {
     return impObj()->tracewid();
+}
+
+PyDbTransactionManager PyDbDatabase::transactionManager() const
+{
+    return PyDbTransactionManager(impObj()->transactionManager());
 }
 
 Adesk::Int16 PyDbDatabase::treedepth() const

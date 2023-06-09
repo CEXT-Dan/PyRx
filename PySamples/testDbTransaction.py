@@ -6,8 +6,21 @@ import PyDb as Db
 import PyAp as Ap
 import PyEd as Ed
 
-print("added command = doittr")
-print("added command = doitdtr")
+print("added command = dodbtrans")
+print("added command = dodoctrans")
+
+#from acdbHostApplicationServices()->workingTransactionManager();
+#Db.TransactionManager()
+
+#from acDocManager->curDocument()->transactionManager()
+#Ap.TransactionManager()
+
+#for this database
+#Db.Database().transactionManager()
+
+#for this doc
+#Ap.DocManager().activateDocument().transactionManager()
+
 
 def do_something(tr):
     for obj in tr.getAllObjects():
@@ -22,7 +35,7 @@ def make_objects(db,tmr):
         model.appendAcDbEntity(pnt)
         tmr.addNewlyCreatedDBRObject(pnt)
     
-def PyRxCmd_doittr():
+def PyRxCmd_dodbtrans():
     try:
         db = Db.HostApplicationServices().workingDatabase()
         tmr = Db.TransactionManager()
@@ -37,20 +50,21 @@ def PyRxCmd_doittr():
     except Exception as err:
         print(err)
         
-def PyRxCmd_doitdtr():
+def PyRxCmd_dodoctrans():
     try:
         db = Db.HostApplicationServices().workingDatabase()
         tmr = Ap.DocManager().curDocument().transactionManager()
-        tr = tmr.startTransaction()
-        
-        make_objects(db,tmr)
-            
-        do_something(tr)
-        #tmr.abortTransaction()
         tmr.enableGraphicsFlush(True)
-        tmr.flushGraphics()
         
+        tr = tmr.startTransaction()
+        make_objects(db,tmr)
+        
+        tmr.queueForGraphicsFlush()
+        do_something(tr)
+        
+        tmr.flushGraphics()
         tmr.endTransaction()
+        #tmr.abortTransaction()
         
     except Exception as err:
         print(err)

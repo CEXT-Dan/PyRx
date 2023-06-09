@@ -2,6 +2,7 @@
 #include "PyRxObject.h"
 class PyDbObject;
 class PyDbObjectId;
+class PyDbTransactionManager;
 
 void makeAcDbDatabaseWrapper();
 class PyDbDatabase : public PyRxObject
@@ -445,7 +446,7 @@ public:
     Adesk::UInt8		tileModeLightSynch() const;
     int					timeZone() const;
     double				tracewid() const;
-    //AcDbTransactionManager* transactionManager() const; //TODO:
+    PyDbTransactionManager transactionManager() const;
     Adesk::Int16		treedepth() const;
     int					tstackalign() const;
     int					tstacksize() const;
