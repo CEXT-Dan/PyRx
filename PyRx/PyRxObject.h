@@ -1,5 +1,4 @@
 #pragma once
-#include "boost/shared_ptr.hpp"
 class PyRxClass;
 
 struct PyRxObjectDeleter
@@ -9,31 +8,47 @@ struct PyRxObjectDeleter
     {
     }
 
-    inline bool isdbro(AcRxObject* p) const
+    inline bool isDbroThenClose(AcRxObject* p) const
     {
         if (!m_isDbObject)
+        {
             return false;
-        if (p == nullptr)
-            return false;
-        if (p->isA()->isDerivedFrom(AcDbObject::desc()))
+        }
+        else if (p->isA()->isDerivedFrom(AcDbObject::desc()))
         {
             const auto dbo = static_cast<AcDbObject*>(p);
             if (!dbo->objectId().isNull())
             {
+#ifdef PyRxDebug
+                if (auto es = dbo->close(); es != eOk)
+                    acutPrintf(_T("\nStatus = %ls in %ls: "), acadErrorStatusText(es), __FUNCTIONW__);
+#else
                 dbo->close();
+#endif
                 return true;
             }
         }
-        return false;
+        else
+        {
+            return false;
+        }
     }
 
     inline void operator()(AcRxObject* p) const
     {
-        if (isdbro(p))
+#ifdef PyRxDebug
+        std::wstring name;
+        if (p != nullptr)
+            name = p->isA()->name();
+#endif
+        if (p == nullptr)
             return;
-        if (!m_autoDelete)
+        else if (isDbroThenClose(p))
             return;
-        delete p;
+        else if (!m_autoDelete)
+            return;
+        else
+            delete p;
     }
 
     bool m_autoDelete = true;
