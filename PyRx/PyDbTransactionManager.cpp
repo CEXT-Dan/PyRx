@@ -88,7 +88,7 @@ boost::python::list PyDbTransactionManager::getAllObjects()
     if (auto es = impObj()->getAllObjects(objs); es != eOk)
         throw PyAcadErrorStatus(es);
     for (auto item : objs)
-        pyObjs(PyDbObject(item, true)); //TODO TEST
+        pyObjs.append(PyDbObject(item, true));
     return pyObjs;
 #endif
 }
@@ -183,7 +183,7 @@ boost::python::list PyTransaction::getAllObjects()
     if (auto es = impObj()->getAllObjects(objs); es != eOk)
         throw PyAcadErrorStatus(es);
     for (auto item : objs)
-        pyObjs(PyDbObject(item, true)); //TODO TEST
+        pyObjs.append(PyDbObject(item, true));
     return pyObjs;
 #endif
 }
