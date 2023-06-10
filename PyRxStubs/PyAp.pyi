@@ -1,122 +1,5 @@
 
 class Application:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, value, /):
-      '''Return self==value.'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, value, /):
-      '''Return self!=value.'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def applyHostIcon (self, *args, **kwargs):
       '''
 applyHostIcon( (int)arg1) -> None :
@@ -474,252 +357,136 @@ Base 0 means to interpret the base from the string as an integer literal.
 >>> int('0b100', base=0)
 4'''
     ...
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, value, /):
-      '''Return self==value.'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, value, /):
-      '''Return self!=value.'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
 
 class DocLockMode:
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kAutoWrite (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNone (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNotLocked (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kProtectedAutoWrite (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kRead (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kWrite (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kXWrite (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
 
 class DocManager:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyRxObject {lvalue},class PyRxObject)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (RxObject)arg1, (RxObject)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyRxObject {lvalue},class PyRxObject)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def activateDocument (self, *args, **kwargs):
       '''
 activateDocument( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
@@ -971,123 +738,6 @@ unlockDocument( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
     ...
 
 class DocManagerReactor:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, value, /):
-      '''Return self==value.'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, value, /):
-      '''Return self!=value.'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def addReactor (self, *args, **kwargs):
       '''
 addReactor( (DocManagerReactor)arg1) -> None :
@@ -1195,113 +845,6 @@ removeReactor( (DocManagerReactor)arg1) -> None :
     ...
 
 class Document:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyRxObject {lvalue},class PyRxObject)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''Raises an exception
-This class cannot be instantiated from Python
-'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (RxObject)arg1, (RxObject)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyRxObject {lvalue},class PyRxObject)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -1463,123 +1006,6 @@ upgradeDocOpen( (Document)arg1) -> ErrorStatus :
     ...
 
 class ResourceOverride:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, value, /):
-      '''Return self==value.'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, value, /):
-      '''Return self!=value.'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -1589,133 +1015,212 @@ className() -> str :
     ...
 
 class SaveFormat:
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def k2000_Standard (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2000_Template (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2000_dwg (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2000_dxf (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2000_xml (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2004_Standard (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2004_Template (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2004_dwg (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2004_dxf (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2007_Standard (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2007_Template (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2007_dwg (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2007_dxf (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2010_Standard (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2010_Template (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2010_dwg (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2010_dxf (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2013_Standard (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2013_Template (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2013_dwg (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2013_dxf (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2018_Standard (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2018_Template (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2018_dwg (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2018_dxf (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNative (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNative_Template (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kR12_dxf (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kR13_dwg (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kR13_dxf (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kR14_dwg (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kR14_dxf (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kUnknown (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
 
 class TransactionManager:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (RxObject)arg1, (RxObject)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyRxObject {lvalue},class PyRxObject)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (RxObject)arg1, (RxObject)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyRxObject {lvalue},class PyRxObject)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def abortTransaction (self, *args, **kwargs):
       '''
 abortTransaction( (TransactionManager)arg1) -> ErrorStatus :
@@ -1863,113 +1368,6 @@ Otherwise, returns the result of object.__str__() (if defined)
 or repr(object).
 encoding defaults to sys.getdefaultencoding().
 errors defaults to 'strict'.'''
-    ...
-    def __class__ (self, *args, **kwargs):
-      '''type(object) -> the object's type
-type(name, bases, dict, **kwds) -> a new type'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __eq__ (self, value, /):
-      '''Return self==value.'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, /, *args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, value, /):
-      '''Return self!=value.'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, /):
-      '''Helper for pickle.'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''list of weak references to the object (if defined)'''
     ...
     def create_module (spec):
       '''Create a built-in module'''

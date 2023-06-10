@@ -1,147 +1,148 @@
 
 class AcGeError:
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def k0Arg1 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k0Arg2 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k0This (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kArg1InsideThis (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kArg1OnThis (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kArg1TooBig (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kEqualArg1Arg2 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kEqualArg1Arg3 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kEqualArg2Arg3 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kLinearlyDependentArg1Arg2Arg3 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kOk (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kPerpendicularArg1Arg2 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
 
 class BoundBlock2d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d)
-
-__init__( (object)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGeVector2d,class AcGeVector2d)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -337,141 +338,6 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class BoundBlock3d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (Vector3d)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,class AcGeVector3d)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -667,161 +533,6 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class CircArc2d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point2d)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,double)
-
-__init__( (object)arg1, (Point2d)arg2, (float)arg3, (float)arg4, (float)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,double,double,double)
-
-__init__( (object)arg1, (Point2d)arg2, (float)arg3, (float)arg4, (float)arg5, (Vector2d)arg6, (bool)arg7) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,double,double,double,class AcGeVector2d,bool)
-
-__init__( (object)arg1, (Point2d)arg2, (Point2d)arg3, (Point2d)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d,class AcGePoint2d)
-
-__init__( (object)arg1, (Point2d)arg2, (Point2d)arg3, (float)arg4, (bool)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d,double,bool)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -1421,151 +1132,6 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class CircArc3d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,double)
-
-__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6, (float)arg7) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -2285,146 +1851,6 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class ClipBoundary2d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d)
-
-__init__( (object)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -2531,131 +1957,6 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class CompositeCurve2d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -3086,131 +2387,6 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class CompositeCurve3d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -3732,131 +2908,6 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class CubicSplineCurve2d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -4404,131 +3455,6 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class CubicSplineCurve3d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -5167,113 +4093,6 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Curve2d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''Raises an exception
-This class cannot be instantiated from Python
-'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -5704,113 +4523,6 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class Curve3d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''Raises an exception
-This class cannot be instantiated from Python
-'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -6332,156 +5044,6 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class CurveCurveInt2d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (object)arg2, (object)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGeCurve2d,class AcGeCurve2d)
-
-__init__( (object)arg1, (object)arg2, (object)arg3, (Tol)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGeCurve2d,class AcGeCurve2d,class AcGeTol)
-
-__init__( (object)arg1, (object)arg2, (object)arg3, (Interval)arg4, (Interval)arg5) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGeCurve2d,class AcGeCurve2d,class PyGeInterval,class PyGeInterval)
-
-__init__( (object)arg1, (object)arg2, (object)arg3, (Interval)arg4, (Interval)arg5, (Tol)arg6) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGeCurve2d,class AcGeCurve2d,class PyGeInterval,class PyGeInterval,class AcGeTol)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -6588,136 +5150,6 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class CurveCurveInt3d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -6819,113 +5251,6 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class CurveSurfInt:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''Raises an exception
-This class cannot be instantiated from Python
-'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -7027,151 +5352,6 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class EllipArc2d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (CircArc2d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeCircArc2d)
-
-__init__( (object)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4, (float)arg5, (float)arg6) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGeVector2d,class AcGeVector2d,double,double)
-
-__init__( (object)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4, (float)arg5, (float)arg6, (float)arg7, (float)arg8) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGeVector2d,class AcGeVector2d,double,double,double,double)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -7760,151 +5940,6 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class EllipArc3d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (CircArc3d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeCircArc3d)
-
-__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double)
-
-__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6, (float)arg7, (float)arg8) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double,double)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -8625,113 +6660,6 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Entity2d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''Raises an exception
-This class cannot be instantiated from Python
-'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -8838,113 +6766,6 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class Entity3d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''Raises an exception
-This class cannot be instantiated from Python
-'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -9046,115 +6867,356 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class EntityId:
+    def Helix (self, *args, **kwargs):
+      '''None'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kAugPolyline2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kAugPolyline3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kBezierCurve3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kBoundBlock2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kBoundBlock3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kBoundedPlane (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kCircArc2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kCircArc3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kClipBoundary2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kCompositeCrv2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kCompositeCrv3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kCone (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kConic2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kConic3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kCubicSplineCurve2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kCubicSplineCurve3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kCurve2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kCurve3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kCurveBoundedSurface (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kCurveCurveInt2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kCurveCurveInt3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kCurveSampleData (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kCurveSurfaceInt (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kCylinder (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kDSpline2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kDSpline3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kEllipArc2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kEllipArc3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kEllipCone (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kEllipCylinder (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kEntity2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kEntity3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kEnvelope2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kExternalBoundedSurface (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kExternalCurve2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kExternalCurve3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kExternalObject (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kExternalSurface (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kFitData3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kHatch (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kIntervalBoundBlock (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kLine2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kLine3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kLineSeg2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kLineSeg3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kLinearEnt2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kLinearEnt3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNurbCurve2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNurbCurve3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNurbSurface (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kObject (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kOffsetCurve2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kOffsetCurve3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kOffsetSurface (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kPlanarEnt (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kPlane (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kPointEnt2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kPointEnt3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kPointOnCurve2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kPointOnCurve3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kPointOnSurface (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kPolyline2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kPolyline3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kPolynomCurve3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kPosition2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kPosition3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kRay2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kRay3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kSphere (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kSplineEnt2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kSplineEnt3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kSurface (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kSurfaceCurve2dTo3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kSurfaceCurve3dTo2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kSurfaceSurfaceInt (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTorus (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTrimmedCrv2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTrimmedCurve2d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTrimmedCurve3d (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kTrimmedSurface (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
 
 class ExternalCurve2d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''Raises an exception
-This class cannot be instantiated from Python
-'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -9585,113 +7647,6 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class ExternalCurve3d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''Raises an exception
-This class cannot be instantiated from Python
-'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -10213,123 +8168,6 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Interval:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, value, /):
-      '''Return self==value.'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, value, /):
-      '''Return self!=value.'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -10339,123 +8177,6 @@ className() -> str :
     ...
 
 class KnotVector:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, value, /):
-      '''Return self==value.'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, value, /):
-      '''Return self!=value.'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -10465,146 +8186,6 @@ className() -> str :
     ...
 
 class Line2d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point2d)arg2, (Vector2d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGeVector2d)
-
-__init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -11141,146 +8722,6 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class Line3d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -11953,146 +9394,6 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class LineSeg2d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point2d)arg2, (Vector2d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGeVector2d)
-
-__init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -12673,146 +9974,6 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class LineSeg3d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -13516,113 +10677,6 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class LinearEnt2d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''Raises an exception
-This class cannot be instantiated from Python
-'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -14141,113 +11195,6 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class LinearEnt3d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''Raises an exception
-This class cannot be instantiated from Python
-'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -14899,153 +11846,6 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Matrix2d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Matrix2d)arg1, (Matrix2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class AcGeMatrix2d {lvalue},class AcGeMatrix2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __imul__ (self, *args, **kwargs):
-      '''
-__imul__( (Matrix2d)arg1, (Matrix2d)arg2) -> Matrix2d :
-
-    C++ signature :
-        class AcGeMatrix2d {lvalue} __imul__(class AcGeMatrix2d {lvalue},class AcGeMatrix2d)'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __mul__ (self, *args, **kwargs):
-      '''
-__mul__( (Matrix2d)arg1, (Matrix2d)arg2) -> Matrix2d :
-
-    C++ signature :
-        class AcGeMatrix2d __mul__(class AcGeMatrix2d {lvalue},class AcGeMatrix2d)'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Matrix2d)arg1, (Matrix2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class AcGeMatrix2d {lvalue},class AcGeMatrix2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, *args, **kwargs):
-      '''
-__repr__( (Matrix2d)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __repr__(class AcGeMatrix2d)'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, *args, **kwargs):
-      '''
-__str__( (Matrix2d)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __str__(class AcGeMatrix2d)'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def alignCoordSys (self, *args, **kwargs):
       '''
 alignCoordSys( (Point2d)arg1, (Vector2d)arg2, (Vector2d)arg3, (Point2d)arg4, (Vector2d)arg5, (Vector2d)arg6) -> Matrix2d :
@@ -15289,163 +12089,6 @@ transposeIt( (Matrix2d)arg1) -> Matrix2d :
     ...
 
 class Matrix3d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Matrix3d)arg1, (Matrix3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class AcGeMatrix3d {lvalue},class AcGeMatrix3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __imul__ (self, *args, **kwargs):
-      '''
-__imul__( (Matrix3d)arg1, (Matrix3d)arg2) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d {lvalue} __imul__(class AcGeMatrix3d {lvalue},class AcGeMatrix3d)'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Matrix3d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGeMatrix3d)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __mul__ (self, *args, **kwargs):
-      '''
-__mul__( (Matrix3d)arg1, (Matrix3d)arg2) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d __mul__(class AcGeMatrix3d {lvalue},class AcGeMatrix3d)'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Matrix3d)arg1, (Matrix3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class AcGeMatrix3d {lvalue},class AcGeMatrix3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, *args, **kwargs):
-      '''
-__repr__( (Matrix3d)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __repr__(class AcGeMatrix3d)'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, *args, **kwargs):
-      '''
-__str__( (Matrix3d)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __str__(class AcGeMatrix3d)'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def alignCoordSys (self, *args, **kwargs):
       '''
 alignCoordSys( (Point3d)arg1, (Vector3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (Point3d)arg5, (Vector3d)arg6, (Vector3d)arg7, (Vector3d)arg8) -> Matrix3d :
@@ -15772,131 +12415,6 @@ worldToPlane( (object)arg1) -> Matrix3d :
     ...
 
 class NurbCurve2d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -16444,131 +12962,6 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class NurbCurve3d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -17207,117 +13600,122 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class OffsetCrvExtType:
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kChamfer (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kExtend (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kFillet (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs):
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
 
 class OffsetCurve2d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1, (Curve2d)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeCurve2d,double)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -17748,115 +14146,6 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class OffsetCurve3d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1, (Curve3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeCurve3d,class AcGeVector3d,double)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -18378,113 +14667,6 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class PlanarEnt:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''Raises an exception
-This class cannot be instantiated from Python
-'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -18807,146 +14989,6 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Plane:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -19301,233 +15343,6 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Point2d:
-    def __add__ (self, *args, **kwargs):
-      '''
-__add__( (Point2d)arg1, (Vector2d)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d __add__(class AcGePoint2d {lvalue},class AcGeVector2d)'''
-    ...
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Point2d)arg1, (Point2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class AcGePoint2d {lvalue},class AcGePoint2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __getitem__ (self, *args, **kwargs):
-      '''
-__getitem__( (Point2d)arg1, (int)arg2) -> float :
-
-    C++ signature :
-        double __getitem__(class AcGePoint2d,int)'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, *args, **kwargs):
-      '''
-__hash__( (Point2d)arg1) -> int :
-
-    C++ signature :
-        unsigned __int64 __hash__(class AcGePoint2d)'''
-    ...
-    def __iadd__ (self, *args, **kwargs):
-      '''
-__iadd__( (Point2d)arg1, (Vector2d)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d {lvalue} __iadd__(class AcGePoint2d {lvalue},class AcGeVector2d)'''
-    ...
-    def __imul__ (self, *args, **kwargs):
-      '''
-__imul__( (Point2d)arg1, (float)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d {lvalue} __imul__(class AcGePoint2d {lvalue},double)'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d)
-
-__init__( (object)arg1, (float)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,double,double)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __isub__ (self, *args, **kwargs):
-      '''
-__isub__( (Point2d)arg1, (Vector2d)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d {lvalue} __isub__(class AcGePoint2d {lvalue},class AcGeVector2d)'''
-    ...
-    def __itruediv__ (self, *args, **kwargs):
-      '''
-__itruediv__( (Point2d)arg1, (float)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d {lvalue} __itruediv__(class AcGePoint2d {lvalue},double)'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __mul__ (self, *args, **kwargs):
-      '''
-__mul__( (Point2d)arg1, (float)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d __mul__(class AcGePoint2d {lvalue},double)'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Point2d)arg1, (Point2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class AcGePoint2d {lvalue},class AcGePoint2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, *args, **kwargs):
-      '''
-__repr__( (Point2d)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __repr__(class AcGePoint2d)'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __setitem__ (self, *args, **kwargs):
-      '''
-__setitem__( (Point2d)arg1, (int)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __setitem__(class AcGePoint2d {lvalue},int,double)'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, *args, **kwargs):
-      '''
-__str__( (Point2d)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __str__(class AcGePoint2d)'''
-    ...
-    def __sub__ (self, *args, **kwargs):
-      '''
-__sub__( (Point2d)arg1, (Vector2d)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d __sub__(class AcGePoint2d {lvalue},class AcGeVector2d)
-
-__sub__( (Point2d)arg1, (Point2d)arg2) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d __sub__(class AcGePoint2d {lvalue},class AcGePoint2d)'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __truediv__ (self, *args, **kwargs):
-      '''
-__truediv__( (Point2d)arg1, (float)arg2) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d __truediv__(class AcGePoint2d {lvalue},double)'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def asVector (self, *args, **kwargs):
       '''
 asVector( (Point2d)arg1) -> Vector2d :
@@ -19630,250 +15445,6 @@ transformBy( (Point2d)arg1, (Matrix2d)arg2) -> Point2d :
     ...
 
 class Point3d:
-    def __add__ (self, *args, **kwargs):
-      '''
-__add__( (Point3d)arg1, (Vector3d)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d __add__(class AcGePoint3d {lvalue},class AcGeVector3d)'''
-    ...
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Point3d)arg1, (Point3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class AcGePoint3d {lvalue},class AcGePoint3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __getitem__ (self, *args, **kwargs):
-      '''
-__getitem__( (Point3d)arg1, (int)arg2) -> float :
-
-    C++ signature :
-        double __getitem__(class AcGePoint3d,int)'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, *args, **kwargs):
-      '''
-__hash__( (Point3d)arg1) -> int :
-
-    C++ signature :
-        unsigned __int64 __hash__(class AcGePoint3d)'''
-    ...
-    def __iadd__ (self, *args, **kwargs):
-      '''
-__iadd__( (Point3d)arg1, (Vector3d)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d {lvalue} __iadd__(class AcGePoint3d {lvalue},class AcGeVector3d)'''
-    ...
-    def __imul__ (self, *args, **kwargs):
-      '''
-__imul__( (Point3d)arg1, (float)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d {lvalue} __imul__(class AcGePoint3d {lvalue},double)'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d)
-
-__init__( (object)arg1, (float)arg2, (float)arg3, (float)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,double,double,double)
-
-__init__( (object)arg1, (object)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePlanarEnt,class AcGePoint2d)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __isub__ (self, *args, **kwargs):
-      '''
-__isub__( (Point3d)arg1, (Vector3d)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d {lvalue} __isub__(class AcGePoint3d {lvalue},class AcGeVector3d)'''
-    ...
-    def __itruediv__ (self, *args, **kwargs):
-      '''
-__itruediv__( (Point3d)arg1, (float)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d {lvalue} __itruediv__(class AcGePoint3d {lvalue},double)'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __mul__ (self, *args, **kwargs):
-      '''
-__mul__( (Point3d)arg1, (float)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d __mul__(class AcGePoint3d {lvalue},double)'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Point3d)arg1, (Point3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class AcGePoint3d {lvalue},class AcGePoint3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, *args, **kwargs):
-      '''
-__repr__( (Point3d)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __repr__(class AcGePoint3d)'''
-    ...
-    def __rmul__ (self, *args, **kwargs):
-      '''
-__rmul__( (Point3d)arg1, (float)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d __rmul__(class AcGePoint3d,double)
-
-__rmul__( (Point3d)arg1, (Matrix3d)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d __rmul__(class AcGePoint3d,class AcGeMatrix3d)'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __setitem__ (self, *args, **kwargs):
-      '''
-__setitem__( (Point3d)arg1, (int)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __setitem__(class AcGePoint3d {lvalue},int,double)'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, *args, **kwargs):
-      '''
-__str__( (Point3d)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __str__(class AcGePoint3d)'''
-    ...
-    def __sub__ (self, *args, **kwargs):
-      '''
-__sub__( (Point3d)arg1, (Vector3d)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d __sub__(class AcGePoint3d {lvalue},class AcGeVector3d)
-
-__sub__( (Point3d)arg1, (Point3d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d __sub__(class AcGePoint3d {lvalue},class AcGePoint3d)'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __truediv__ (self, *args, **kwargs):
-      '''
-__truediv__( (Point3d)arg1, (float)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d __truediv__(class AcGePoint3d {lvalue},double)'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def asVector (self, *args, **kwargs):
       '''
 asVector( (Point3d)arg1) -> Vector3d :
@@ -20005,113 +15576,6 @@ transformBy( (Point3d)arg1, (Matrix3d)arg2) -> Point3d :
     ...
 
 class PointEnt2d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''Raises an exception
-This class cannot be instantiated from Python
-'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -20225,113 +15689,6 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class PointEnt3d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''Raises an exception
-This class cannot be instantiated from Python
-'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -20433,146 +15790,6 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class PointOnCurve2d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Curve2d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeCurve2d)
-
-__init__( (object)arg1, (Curve2d)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeCurve2d,double)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -20748,131 +15965,6 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class PointOnCurve3d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -20974,151 +16066,6 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Polyline2d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list)
-
-__init__( (object)arg1, (KnotVector)arg2, (list)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeKnotVector,class boost::python::list)
-
-__init__( (object)arg1, (Curve2d)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeCurve2d,double)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -21687,151 +16634,6 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class Polyline3d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class boost::python::list)
-
-__init__( (object)arg1, (KnotVector)arg2, (list)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeKnotVector,class boost::python::list)
-
-__init__( (object)arg1, (Curve3d)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyGeCurve3d,double)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -22491,146 +17293,6 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Position2d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d)
-
-__init__( (object)arg1, (float)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,double,double)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -22756,131 +17418,6 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class Position3d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -22982,146 +17519,6 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Ray2d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point2d)arg2, (Vector2d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGeVector2d)
-
-__init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -23652,146 +18049,6 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class Ray3d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d)
-
-__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -24455,183 +18712,6 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Scale2d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Scale2d)arg1, (Scale2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class AcGeScale2d {lvalue},class AcGeScale2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __imul__ (self, *args, **kwargs):
-      '''
-__imul__( (Scale2d)arg1, (float)arg2) -> Scale2d :
-
-    C++ signature :
-        class AcGeScale2d {lvalue} __imul__(class AcGeScale2d {lvalue},double)
-
-__imul__( (Scale2d)arg1, (Scale2d)arg2) -> Scale2d :
-
-    C++ signature :
-        class AcGeScale2d {lvalue} __imul__(class AcGeScale2d {lvalue},class AcGeScale2d)'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,double)
-
-__init__( (object)arg1, (float)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,double,double)
-
-__init__( (object)arg1, (Scale2d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGeScale2d)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __mul__ (self, *args, **kwargs):
-      '''
-__mul__( (Scale2d)arg1, (float)arg2) -> Scale2d :
-
-    C++ signature :
-        class AcGeScale2d __mul__(class AcGeScale2d {lvalue},double)
-
-__mul__( (Scale2d)arg1, (Scale2d)arg2) -> Scale2d :
-
-    C++ signature :
-        class AcGeScale2d __mul__(class AcGeScale2d {lvalue},class AcGeScale2d)'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Scale2d)arg1, (Scale2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class AcGeScale2d {lvalue},class AcGeScale2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, *args, **kwargs):
-      '''
-__repr__( (Scale2d)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __repr__(class AcGeScale2d)'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, *args, **kwargs):
-      '''
-__str__( (Scale2d)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __str__(class AcGeScale2d)'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def postMultBy (self, *args, **kwargs):
       '''
 postMultBy( (Scale2d)arg1, (Scale2d)arg2) -> Scale2d :
@@ -24673,163 +18753,6 @@ toString( (Scale2d)arg1) -> str :
     ...
 
 class Scale3d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Scale3d)arg1, (Scale3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class AcGeScale3d {lvalue},class AcGeScale3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __imul__ (self, *args, **kwargs):
-      '''
-__imul__( (Scale3d)arg1, (float)arg2) -> Scale3d :
-
-    C++ signature :
-        class AcGeScale3d {lvalue} __imul__(class AcGeScale3d {lvalue},double)
-
-__imul__( (Scale3d)arg1, (Scale3d)arg2) -> Scale3d :
-
-    C++ signature :
-        class AcGeScale3d {lvalue} __imul__(class AcGeScale3d {lvalue},class AcGeScale3d)'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __mul__ (self, *args, **kwargs):
-      '''
-__mul__( (Scale3d)arg1, (float)arg2) -> Scale3d :
-
-    C++ signature :
-        class AcGeScale3d __mul__(class AcGeScale3d {lvalue},double)
-
-__mul__( (Scale3d)arg1, (Scale3d)arg2) -> Scale3d :
-
-    C++ signature :
-        class AcGeScale3d __mul__(class AcGeScale3d {lvalue},class AcGeScale3d)'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Scale3d)arg1, (Scale3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class AcGeScale3d {lvalue},class AcGeScale3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, *args, **kwargs):
-      '''
-__repr__( (Scale3d)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __repr__(class AcGeScale3d)'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, *args, **kwargs):
-      '''
-__str__( (Scale3d)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __str__(class AcGeScale3d)'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def postMultBy (self, *args, **kwargs):
       '''
 postMultBy( (Scale3d)arg1, (Scale3d)arg2) -> Scale3d :
@@ -24874,113 +18797,6 @@ toString( (Scale3d)arg1) -> str :
     ...
 
 class SplineEnt2d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''Raises an exception
-This class cannot be instantiated from Python
-'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity2d)arg1, (Entity2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity2d {lvalue},class PyGeEntity2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -25528,113 +19344,6 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class SplineEnt3d:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''Raises an exception
-This class cannot be instantiated from Python
-'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def area (self, *args, **kwargs):
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -26273,113 +19982,6 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class SurfSurfInt:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''Raises an exception
-This class cannot be instantiated from Python
-'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -26481,113 +20083,6 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Surface:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''Raises an exception
-This class cannot be instantiated from Python
-'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Entity3d)arg1, (Entity3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class PyGeEntity3d {lvalue},class PyGeEntity3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -26790,128 +20285,6 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Tol:
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, value, /):
-      '''Return self==value.'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, value, /):
-      '''Return self!=value.'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def current (self, *args, **kwargs):
       '''None'''
     ...
@@ -26945,241 +20318,6 @@ setEqualVector( (Tol)arg1, (float)arg2) -> None :
     ...
 
 class Vector2d:
-    def __add__ (self, *args, **kwargs):
-      '''
-__add__( (Vector2d)arg1, (Vector2d)arg2) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d __add__(class AcGeVector2d {lvalue},class AcGeVector2d)'''
-    ...
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Vector2d)arg1, (Vector2d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class AcGeVector2d {lvalue},class AcGeVector2d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __getitem__ (self, *args, **kwargs):
-      '''
-__getitem__( (Vector2d)arg1, (int)arg2) -> float :
-
-    C++ signature :
-        double __getitem__(class AcGeVector2d,int)'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __iadd__ (self, *args, **kwargs):
-      '''
-__iadd__( (Vector2d)arg1, (Vector2d)arg2) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d {lvalue} __iadd__(class AcGeVector2d {lvalue},class AcGeVector2d)'''
-    ...
-    def __imul__ (self, *args, **kwargs):
-      '''
-__imul__( (Vector2d)arg1, (float)arg2) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d {lvalue} __imul__(class AcGeVector2d {lvalue},double)'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Vector2d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGeVector2d)
-
-__init__( (object)arg1, (float)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,double,double)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __isub__ (self, *args, **kwargs):
-      '''
-__isub__( (Vector2d)arg1, (Vector2d)arg2) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d {lvalue} __isub__(class AcGeVector2d {lvalue},class AcGeVector2d)'''
-    ...
-    def __itruediv__ (self, *args, **kwargs):
-      '''
-__itruediv__( (Vector2d)arg1, (float)arg2) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d {lvalue} __itruediv__(class AcGeVector2d {lvalue},double)'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __mul__ (self, *args, **kwargs):
-      '''
-__mul__( (Vector2d)arg1, (float)arg2) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d __mul__(class AcGeVector2d {lvalue},double)'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Vector2d)arg1, (Vector2d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class AcGeVector2d {lvalue},class AcGeVector2d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, *args, **kwargs):
-      '''
-__repr__( (Point2d)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __repr__(class AcGePoint2d)'''
-    ...
-    def __rmul__ (self, *args, **kwargs):
-      '''
-__rmul__( (Vector2d)arg1, (float)arg2) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d __rmul__(class AcGeVector2d,double)
-
-__rmul__( (Vector2d)arg1, (Matrix2d)arg2) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d __rmul__(class AcGeVector2d,class AcGeMatrix2d)'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __setitem__ (self, *args, **kwargs):
-      '''
-__setitem__( (Vector2d)arg1, (int)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __setitem__(class AcGeVector2d {lvalue},int,double)'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, *args, **kwargs):
-      '''
-__str__( (Vector2d)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __str__(class AcGeVector2d)'''
-    ...
-    def __sub__ (self, *args, **kwargs):
-      '''
-__sub__( (Vector2d)arg1) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d __sub__(class AcGeVector2d {lvalue})
-
-__sub__( (Vector2d)arg1, (Vector2d)arg2) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d __sub__(class AcGeVector2d {lvalue},class AcGeVector2d)'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __truediv__ (self, *args, **kwargs):
-      '''
-__truediv__( (Vector2d)arg1, (float)arg2) -> Vector2d :
-
-    C++ signature :
-        class AcGeVector2d __truediv__(class AcGeVector2d {lvalue},double)'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def angle (self, *args, **kwargs):
       '''
 angle( (Vector2d)arg1) -> float :
@@ -27349,245 +20487,6 @@ transformBy( (Vector2d)arg1, (Matrix2d)arg2) -> Vector2d :
     ...
 
 class Vector3d:
-    def __add__ (self, *args, **kwargs):
-      '''
-__add__( (Vector3d)arg1, (Vector3d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d __add__(class AcGeVector3d {lvalue},class AcGeVector3d)'''
-    ...
-    def __class__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __eq__ (self, *args, **kwargs):
-      '''
-__eq__( (Vector3d)arg1, (Vector3d)arg2) -> bool :
-
-    C++ signature :
-        bool __eq__(class AcGeVector3d {lvalue},class AcGeVector3d)'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __getitem__ (self, *args, **kwargs):
-      '''
-__getitem__( (Vector3d)arg1, (int)arg2) -> float :
-
-    C++ signature :
-        double __getitem__(class AcGeVector3d,int)'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, *args, **kwargs):
-      '''
-__hash__( (Vector3d)arg1) -> int :
-
-    C++ signature :
-        unsigned __int64 __hash__(class AcGeVector3d)'''
-    ...
-    def __iadd__ (self, *args, **kwargs):
-      '''
-__iadd__( (Vector3d)arg1, (Vector3d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d {lvalue} __iadd__(class AcGeVector3d {lvalue},class AcGeVector3d)'''
-    ...
-    def __imul__ (self, *args, **kwargs):
-      '''
-__imul__( (Vector3d)arg1, (float)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d {lvalue} __imul__(class AcGeVector3d {lvalue},double)'''
-    ...
-    def __init__ (self, *args, **kwargs):
-      '''
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGeVector3d)
-
-__init__( (object)arg1, (float)arg2, (float)arg3, (float)arg4) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,double,double,double)
-
-__init__( (object)arg1, (object)arg2, (Vector2d)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePlanarEnt,class AcGeVector2d)'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __instance_size__ (self, *args, **kwargs):
-      '''int([x]) -> integer
-int(x, base=10) -> integer
-
-Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.__int__().  For floating point
-numbers, this truncates towards zero.
-
-If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.
->>> int('0b100', base=0)
-4'''
-    ...
-    def __isub__ (self, *args, **kwargs):
-      '''
-__isub__( (Vector3d)arg1, (Vector3d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d {lvalue} __isub__(class AcGeVector3d {lvalue},class AcGeVector3d)'''
-    ...
-    def __itruediv__ (self, *args, **kwargs):
-      '''
-__itruediv__( (Vector3d)arg1, (float)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d {lvalue} __itruediv__(class AcGeVector3d {lvalue},double)'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __mul__ (self, *args, **kwargs):
-      '''
-__mul__( (Vector3d)arg1, (float)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d __mul__(class AcGeVector3d {lvalue},double)'''
-    ...
-    def __ne__ (self, *args, **kwargs):
-      '''
-__ne__( (Vector3d)arg1, (Vector3d)arg2) -> bool :
-
-    C++ signature :
-        bool __ne__(class AcGeVector3d {lvalue},class AcGeVector3d)'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, *args, **kwargs):
-      '''
-__repr__( (Point3d)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __repr__(class AcGePoint3d)'''
-    ...
-    def __rmul__ (self, *args, **kwargs):
-      '''
-__rmul__( (Vector3d)arg1, (float)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d __rmul__(class AcGeVector3d,double)
-
-__rmul__( (Vector3d)arg1, (Matrix3d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d __rmul__(class AcGeVector3d,class AcGeMatrix3d)'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __setitem__ (self, *args, **kwargs):
-      '''
-__setitem__( (Vector3d)arg1, (int)arg2, (float)arg3) -> None :
-
-    C++ signature :
-        void __setitem__(class AcGeVector3d {lvalue},int,double)'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, *args, **kwargs):
-      '''
-__str__( (Vector3d)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __str__(class AcGeVector3d)'''
-    ...
-    def __sub__ (self, *args, **kwargs):
-      '''
-__sub__( (Vector3d)arg1, (Vector3d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d __sub__(class AcGeVector3d {lvalue},class AcGeVector3d)'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __truediv__ (self, *args, **kwargs):
-      '''
-__truediv__( (Vector3d)arg1, (float)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d __truediv__(class AcGeVector3d {lvalue},double)'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''None'''
-    ...
     def angleOnPlane (self, *args, **kwargs):
       '''
 angleOnPlane( (Vector3d)arg1, (object)arg2) -> float :
@@ -27848,113 +20747,6 @@ Otherwise, returns the result of object.__str__() (if defined)
 or repr(object).
 encoding defaults to sys.getdefaultencoding().
 errors defaults to 'strict'.'''
-    ...
-    def __class__ (self, *args, **kwargs):
-      '''type(object) -> the object's type
-type(name, bases, dict, **kwds) -> a new type'''
-    ...
-    def __delattr__ (self, name, /):
-      '''Implement delattr(self, name).'''
-    ...
-    def __dict__ (self, *args, **kwargs):
-      '''None'''
-    ...
-    def __dir__ (self, /):
-      '''Default dir() implementation.'''
-    ...
-    def __doc__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __eq__ (self, value, /):
-      '''Return self==value.'''
-    ...
-    def __format__ (self, format_spec, /):
-      '''Default object formatter.'''
-    ...
-    def __ge__ (self, value, /):
-      '''Return self>=value.'''
-    ...
-    def __getattribute__ (self, name, /):
-      '''Return getattr(self, name).'''
-    ...
-    def __gt__ (self, value, /):
-      '''Return self>value.'''
-    ...
-    def __hash__ (self, /):
-      '''Return hash(self).'''
-    ...
-    def __init__ (self, /, *args, **kwargs):
-      '''Initialize self.  See help(type(self)) for accurate signature.'''
-    ...
-    def __init_subclass__ (self, *args, **kwargs):
-      '''This method is called when a class is subclassed.
-
-The default implementation does nothing. It may be
-overridden to extend subclasses.
-'''
-    ...
-    def __le__ (self, value, /):
-      '''Return self<=value.'''
-    ...
-    def __lt__ (self, value, /):
-      '''Return self<value.'''
-    ...
-    def __module__ (self, *args, **kwargs):
-      '''str(object='') -> str
-str(bytes_or_buffer[, encoding[, errors]]) -> str
-
-Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.__str__() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.'''
-    ...
-    def __ne__ (self, value, /):
-      '''Return self!=value.'''
-    ...
-    def __new__ (*args, **kwargs):
-      '''Create and return a new object.  See help(type) for accurate signature.'''
-    ...
-    def __reduce__ (self, /):
-      '''Helper for pickle.'''
-    ...
-    def __reduce_ex__ (self, protocol, /):
-      '''Helper for pickle.'''
-    ...
-    def __repr__ (self, /):
-      '''Return repr(self).'''
-    ...
-    def __setattr__ (self, name, value, /):
-      '''Implement setattr(self, name, value).'''
-    ...
-    def __sizeof__ (self, /):
-      '''Size of object in memory, in bytes.'''
-    ...
-    def __str__ (self, /):
-      '''Return str(self).'''
-    ...
-    def __subclasshook__ (self, *args, **kwargs):
-      '''Abstract classes can override this to customize issubclass().
-
-This is invoked early on by abc.ABCMeta.__subclasscheck__().
-It should return True, False or NotImplemented.  If it returns
-NotImplemented, the normal algorithm is used.  Otherwise, it
-overrides the normal algorithm (and the outcome is cached).
-'''
-    ...
-    def __weakref__ (self, *args, **kwargs):
-      '''list of weak references to the object (if defined)'''
     ...
     def create_module (spec):
       '''Create a built-in module'''

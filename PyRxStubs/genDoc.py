@@ -14,10 +14,9 @@ import PyEd  # = editor
 
 # just some ideas on getting help, work in progress
 
-def include_attr(obj, name):
+def include_attr(name):
     try:
-        str = "{0}".format(obj.__repr__)
-        if "enum" in str:
+        if name.startswith('__'):
             return False
         return True
     except:
@@ -33,7 +32,7 @@ def generate_pyi(moduleName, module):
                 f.write(f'class {name}:\n')
 
                 for func_name, func in inspect.getmembers(obj):
-                    if include_attr(obj,func_name):
+                    if include_attr(func_name):
                         try:
                             f.write(f'    def {func_name} {inspect.signature(func)}:\n')
                         except:
