@@ -32,6 +32,12 @@ struct CmdFlags
     inline static int kNOBEDIT = ACRX_CMD_NOBEDIT;
 };
 
+
+static PyApDocument curPyDoc()
+{
+    return PyApDocument(curDoc(), false);
+}
+
 BOOST_PYTHON_MODULE(PyAp)
 {
 #ifndef  PyRxDebug
@@ -84,6 +90,7 @@ BOOST_PYTHON_MODULE(PyAp)
     makeAcApDocumentWrapper();
     makePyApDocManagerReactorWrapper();
 
+    def("curDoc", curPyDoc);
 };
 
 void initPyApModule()

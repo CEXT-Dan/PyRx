@@ -55,10 +55,9 @@ class TestDialog(wx.Dialog):
         self.textDistResult = xrc.XRCCTRL(self,'ID_TEXTCTRL_DIST_RESULT')
         
         PyAp.Application.applyHostIcon(self.GetHandle())
-        #PyAp.Application.setTitleThemeDark(self.GetHandle())
       
     def onGetPoint(self, event):
-        val = PyAp.Application().docManager().curDocument().editor().getPoint("\nGetPoint\n")
+        val = PyEd.Editor().getPoint("\nGetPoint\n")
         if val[0] == PyEd.PromptStatus.eNormal :
             self.textPointResult.SetValue(val[1].__str__())
             

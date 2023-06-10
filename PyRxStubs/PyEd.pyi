@@ -815,50 +815,50 @@ __init__( (object)arg1) -> None :
     ...
     def activeViewportId (self, *args, **kwargs):
       '''
-activeViewportId( (Editor)arg1) -> ObjectId :
+activeViewportId() -> ObjectId :
 
     C++ signature :
-        class PyDbObjectId activeViewportId(class PyAcEditor {lvalue})'''
+        class PyDbObjectId activeViewportId()'''
     ...
     def alert (self, *args, **kwargs):
       '''
-alert( (Editor)arg1, (str)arg2) -> None :
+alert( (str)arg1) -> None :
 
     C++ signature :
-        void alert(class PyAcEditor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        void alert(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def arxLoad (self, *args, **kwargs):
       '''
-arxLoad( (Editor)arg1, (str)arg2) -> bool :
+arxLoad( (str)arg1) -> bool :
 
     C++ signature :
-        bool arxLoad(class PyAcEditor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        bool arxLoad(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def arxLoaded (self, *args, **kwargs):
       '''
-arxLoaded( (Editor)arg1) -> list :
+arxLoaded() -> list :
 
     C++ signature :
-        class boost::python::list arxLoaded(class PyAcEditor {lvalue})'''
+        class boost::python::list arxLoaded()'''
     ...
     def arxUnload (self, *args, **kwargs):
       '''
-arxUnload( (Editor)arg1, (str)arg2) -> bool :
+arxUnload( (str)arg1) -> bool :
 
     C++ signature :
-        bool arxUnload(class PyAcEditor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        bool arxUnload(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def audit (self, *args, **kwargs):
       '''
-audit( (Editor)arg1, (Database)arg2, (bool)arg3) -> ErrorStatus :
+audit( (Database)arg1, (bool)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus audit(class PyAcEditor {lvalue},class PyDbDatabase,bool)
+        enum Acad::ErrorStatus audit(class PyDbDatabase,bool)
 
-audit( (Editor)arg1, (Database)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+audit( (Database)arg1, (bool)arg2, (bool)arg3) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus audit(class PyAcEditor {lvalue},class PyDbDatabase,bool,bool)'''
+        enum Acad::ErrorStatus audit(class PyDbDatabase,bool,bool)'''
     ...
     def className (self, *args, **kwargs):
       '''
@@ -869,178 +869,178 @@ className() -> str :
     ...
     def cmdS (self, *args, **kwargs):
       '''
-cmdS( (Editor)arg1, (list)arg2) -> bool :
+cmdS( (list)arg1) -> bool :
 
     C++ signature :
-        bool cmdS(class PyAcEditor {lvalue},class boost::python::list)'''
+        bool cmdS(class boost::python::list)'''
     ...
     def entSel (self, *args, **kwargs):
       '''
-entSel( (Editor)arg1, (str)arg2) -> tuple :
+entSel( (str)arg1) -> tuple :
 
     C++ signature :
-        class boost::python::tuple entSel(class PyAcEditor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        class boost::python::tuple entSel(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def findFile (self, *args, **kwargs):
       '''
-findFile( (Editor)arg1, (str)arg2) -> str :
+findFile( (str)arg1) -> str :
 
     C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > findFile(class PyAcEditor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > findFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def findTrustedFile (self, *args, **kwargs):
       '''
-findTrustedFile( (Editor)arg1, (str)arg2) -> str :
+findTrustedFile( (str)arg1) -> str :
 
     C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > findTrustedFile(class PyAcEditor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > findTrustedFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def getAngle (self, *args, **kwargs):
       '''
-getAngle( (Editor)arg1, (Point3d)arg2, (str)arg3) -> tuple :
+getAngle( (Point3d)arg1, (str)arg2) -> tuple :
 
     C++ signature :
-        class boost::python::tuple getAngle(class PyAcEditor {lvalue},class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        class boost::python::tuple getAngle(class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def getCurrentUCS (self, *args, **kwargs):
       '''
-getCurrentUCS( (Editor)arg1) -> Matrix3d :
+getCurrentUCS() -> Matrix3d :
 
     C++ signature :
-        class AcGeMatrix3d getCurrentUCS(class PyAcEditor {lvalue})'''
+        class AcGeMatrix3d getCurrentUCS()'''
     ...
     def getDist (self, *args, **kwargs):
       '''
-getDist( (Editor)arg1, (str)arg2) -> tuple :
+getDist( (str)arg1) -> tuple :
 
     C++ signature :
-        class boost::python::tuple getDist(class PyAcEditor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+        class boost::python::tuple getDist(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
 
-getDist( (Editor)arg1, (Point3d)arg2, (str)arg3) -> tuple :
+getDist( (Point3d)arg1, (str)arg2) -> tuple :
 
     C++ signature :
-        class boost::python::tuple getDist(class PyAcEditor {lvalue},class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        class boost::python::tuple getDist(class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def getDouble (self, *args, **kwargs):
       '''
-getDouble( (Editor)arg1, (str)arg2) -> tuple :
+getDouble( (str)arg1) -> tuple :
 
     C++ signature :
-        class boost::python::tuple getDouble(class PyAcEditor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        class boost::python::tuple getDouble(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def getInteger (self, *args, **kwargs):
       '''
-getInteger( (Editor)arg1, (str)arg2) -> tuple :
+getInteger( (str)arg1) -> tuple :
 
     C++ signature :
-        class boost::python::tuple getInteger(class PyAcEditor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        class boost::python::tuple getInteger(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def getKword (self, *args, **kwargs):
       '''
-getKword( (Editor)arg1, (str)arg2) -> tuple :
+getKword( (str)arg1) -> tuple :
 
     C++ signature :
-        class boost::python::tuple getKword(class PyAcEditor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        class boost::python::tuple getKword(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def getPoint (self, *args, **kwargs):
       '''
-getPoint( (Editor)arg1, (str)arg2) -> tuple :
+getPoint( (str)arg1) -> tuple :
 
     C++ signature :
-        class boost::python::tuple getPoint(class PyAcEditor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+        class boost::python::tuple getPoint(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
 
-getPoint( (Editor)arg1, (Point3d)arg2, (str)arg3) -> tuple :
+getPoint( (Point3d)arg1, (str)arg2) -> tuple :
 
     C++ signature :
-        class boost::python::tuple getPoint(class PyAcEditor {lvalue},class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        class boost::python::tuple getPoint(class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def getReal (self, *args, **kwargs):
       '''
-getReal( (Editor)arg1, (str)arg2) -> tuple :
+getReal( (str)arg1) -> tuple :
 
     C++ signature :
-        class boost::python::tuple getReal(class PyAcEditor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        class boost::python::tuple getReal(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def getString (self, *args, **kwargs):
       '''
-getString( (Editor)arg1, (int)arg2, (str)arg3) -> tuple :
+getString( (int)arg1, (str)arg2) -> tuple :
 
     C++ signature :
-        class boost::python::tuple getString(class PyAcEditor {lvalue},int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        class boost::python::tuple getString(int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def getVar (self, *args, **kwargs):
       '''
-getVar( (Editor)arg1, (str)arg2) -> object :
+getVar( (str)arg1) -> object :
 
     C++ signature :
-        class boost::python::api::object getVar(class PyAcEditor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        class boost::python::api::object getVar(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def initGet (self, *args, **kwargs):
       '''
-initGet( (Editor)arg1, (int)arg2, (str)arg3) -> PromptStatus :
+initGet( (int)arg1, (str)arg2) -> PromptStatus :
 
     C++ signature :
-        enum Acad::PromptStatus initGet(class PyAcEditor {lvalue},int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        enum Acad::PromptStatus initGet(int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def select (self, *args, **kwargs):
       '''
-select( (Editor)arg1) -> tuple :
+select() -> tuple :
 
     C++ signature :
-        class boost::python::tuple select(class PyAcEditor {lvalue})
+        class boost::python::tuple select()
 
-select( (Editor)arg1, (list)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple select(class PyAcEditor {lvalue},class boost::python::list)
-
-select( (Editor)arg1, (str)arg2, (str)arg3) -> tuple :
+select( (list)arg1) -> tuple :
 
     C++ signature :
-        class boost::python::tuple select(class PyAcEditor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+        class boost::python::tuple select(class boost::python::list)
 
-select( (Editor)arg1, (str)arg2, (str)arg3, (list)arg4) -> tuple :
+select( (str)arg1, (str)arg2) -> tuple :
 
     C++ signature :
-        class boost::python::tuple select(class PyAcEditor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::list)'''
+        class boost::python::tuple select(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+select( (str)arg1, (str)arg2, (list)arg3) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple select(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::list)'''
     ...
     def selectAll (self, *args, **kwargs):
       '''
-selectAll( (Editor)arg1) -> tuple :
+selectAll() -> tuple :
 
     C++ signature :
-        class boost::python::tuple selectAll(class PyAcEditor {lvalue})
+        class boost::python::tuple selectAll()
 
-selectAll( (Editor)arg1, (list)arg2) -> tuple :
+selectAll( (list)arg1) -> tuple :
 
     C++ signature :
-        class boost::python::tuple selectAll(class PyAcEditor {lvalue},class boost::python::list)'''
+        class boost::python::tuple selectAll(class boost::python::list)'''
     ...
     def selectCrossingWindow (self, *args, **kwargs):
       '''
-selectCrossingWindow( (Editor)arg1, (Point3d)arg2, (Point3d)arg3) -> tuple :
+selectCrossingWindow( (Point3d)arg1, (Point3d)arg2) -> tuple :
 
     C++ signature :
-        class boost::python::tuple selectCrossingWindow(class PyAcEditor {lvalue},class AcGePoint3d,class AcGePoint3d)
+        class boost::python::tuple selectCrossingWindow(class AcGePoint3d,class AcGePoint3d)
 
-selectCrossingWindow( (Editor)arg1, (Point3d)arg2, (Point3d)arg3, (list)arg4) -> tuple :
+selectCrossingWindow( (Point3d)arg1, (Point3d)arg2, (list)arg3) -> tuple :
 
     C++ signature :
-        class boost::python::tuple selectCrossingWindow(class PyAcEditor {lvalue},class AcGePoint3d,class AcGePoint3d,class boost::python::list)'''
+        class boost::python::tuple selectCrossingWindow(class AcGePoint3d,class AcGePoint3d,class boost::python::list)'''
     ...
     def setCurrentUCS (self, *args, **kwargs):
       '''
-setCurrentUCS( (Editor)arg1, (Matrix3d)arg2) -> ErrorStatus :
+setCurrentUCS( (Matrix3d)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus setCurrentUCS(class PyAcEditor {lvalue},class AcGeMatrix3d)'''
+        enum Acad::ErrorStatus setCurrentUCS(class AcGeMatrix3d)'''
     ...
     def setVar (self, *args, **kwargs):
       '''
-setVar( (Editor)arg1, (str)arg2, (object)arg3) -> bool :
+setVar( (str)arg1, (object)arg2) -> bool :
 
     C++ signature :
-        bool setVar(class PyAcEditor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::api::object)'''
+        bool setVar(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::api::object)'''
     ...
 
 class EditorReactor:

@@ -13,6 +13,13 @@ __init__( (object)arg1) -> None :
     def __ne__ (self, value, /):
       '''Return self!=value.'''
     ...
+    def applyHostIcon (self, *args, **kwargs):
+      '''
+applyHostIcon( (int)arg1) -> None :
+
+    C++ signature :
+        void applyHostIcon(unsigned __int64)'''
+    ...
     def className (self, *args, **kwargs):
       '''
 className() -> str :
@@ -36,10 +43,10 @@ mainWnd() -> int :
     ...
     def setTitleThemeDark (self, *args, **kwargs):
       '''
-setTitleThemeDark( (object)arg1) -> None :
+setTitleThemeDark( (int)arg1) -> None :
 
     C++ signature :
-        void setTitleThemeDark(struct HWND__ * __ptr64)'''
+        void setTitleThemeDark(unsigned __int64)'''
     ...
 
 class CmdFlags:

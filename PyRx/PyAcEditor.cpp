@@ -24,48 +24,40 @@ void makeAcEditorWrapper()
 {
     class_<PyAcEditor>("Editor")
         .def("className", &PyAcEditor::className).staticmethod("className")
-
-        .def("alert", &PyAcEditor::alert)
-        .def("arxLoad", &PyAcEditor::arxLoad)
-        .def("arxUnload", &PyAcEditor::arxUnload)
-        .def("arxLoaded", &PyAcEditor::arxLoaded)
+        .def("alert", &PyAcEditor::alert).staticmethod("alert")
+        .def("arxLoad", &PyAcEditor::arxLoad).staticmethod("arxLoad")
+        .def("arxUnload", &PyAcEditor::arxUnload).staticmethod("arxUnload")
+        .def("arxLoaded", &PyAcEditor::arxLoaded).staticmethod("arxLoaded")
         .def("audit", &PyAcEditor::audit)
-        .def("audit", &PyAcEditor::audit2)
-        .def("cmdS", &PyAcEditor::cmdS)
-        .def("findFile", &PyAcEditor::findFile)
-        .def("findTrustedFile", &PyAcEditor::findTrustedFile)
-
-        .def("getInteger", &PyAcEditor::getInteger)
-        .def("getDouble", &PyAcEditor::getDouble)
-        .def("getReal", &PyAcEditor::getDouble)
-        .def("getAngle", &PyAcEditor::getAngle)
-        .def("getString", &PyAcEditor::getString)
-
-        .def<boost::python::tuple(PyAcEditor::*)(const std::string&)>("getPoint", &PyAcEditor::getPoint)
-        .def<boost::python::tuple(PyAcEditor::*)(const AcGePoint3d&, const std::string&)>("getPoint", &PyAcEditor::getPoint)
-
-        .def<boost::python::tuple(PyAcEditor::*)(const std::string&)>("getDist", &PyAcEditor::getDist)
-        .def<boost::python::tuple(PyAcEditor::*)(const AcGePoint3d&, const std::string&)>("getDist", &PyAcEditor::getDist)
-
-        .def("entSel", &PyAcEditor::entSel)
-        .def("getCurrentUCS", &PyAcEditor::curUCS)
-        .def("setCurrentUCS", &PyAcEditor::setCurUCS)
-
-        .def("activeViewportId", &PyAcEditor::activeViewportId)
-
-        .def<boost::python::tuple(PyAcEditor::*)(void)>("selectAll", &PyAcEditor::selectAll)
-        .def<boost::python::tuple(PyAcEditor::*)(const boost::python::list&)>("selectAll", &PyAcEditor::selectAll)
-
+        .def("audit", &PyAcEditor::audit2).staticmethod("audit")
+        .def("cmdS", &PyAcEditor::cmdS).staticmethod("cmdS")
+        .def("findFile", &PyAcEditor::findFile).staticmethod("findFile")
+        .def("findTrustedFile", &PyAcEditor::findTrustedFile).staticmethod("findTrustedFile")
+        .def("getInteger", &PyAcEditor::getInteger).staticmethod("getInteger")
+        .def("getDouble", &PyAcEditor::getDouble).staticmethod("getDouble")
+        .def("getReal", &PyAcEditor::getDouble).staticmethod("getReal")
+        .def("getAngle", &PyAcEditor::getAngle).staticmethod("getAngle")
+        .def("getString", &PyAcEditor::getString).staticmethod("getString")
+        .def("getPoint", &PyAcEditor::getPoint1)
+        .def("getPoint", &PyAcEditor::getPoint2).staticmethod("getPoint")
+        .def("getDist", &PyAcEditor::getDist1)
+        .def("getDist", &PyAcEditor::getDist2).staticmethod("getDist")
+        .def("entSel", &PyAcEditor::entSel).staticmethod("entSel")
+        .def("getCurrentUCS", &PyAcEditor::curUCS).staticmethod("getCurrentUCS")
+        .def("setCurrentUCS", &PyAcEditor::setCurUCS).staticmethod("setCurrentUCS")
+        .def("activeViewportId", &PyAcEditor::activeViewportId).staticmethod("activeViewportId")
+        .def("selectAll", &PyAcEditor::selectAll1)
+        .def("selectAll", &PyAcEditor::selectAll2).staticmethod("selectAll")
         .def("select", &PyAcEditor::select1)
         .def("select", &PyAcEditor::select2)
         .def("select", &PyAcEditor::select3)
-        .def("select", &PyAcEditor::select4)
+        .def("select", &PyAcEditor::select4).staticmethod("select")
         .def("selectCrossingWindow", &PyAcEditor::selectCrossingWindow1)
-        .def("selectCrossingWindow", &PyAcEditor::selectCrossingWindow2)
-        .def("initGet", &PyAcEditor::initGet)
-        .def("getKword", &PyAcEditor::getKword)
-        .def("getVar", &PyAcEditor::getVar)
-        .def("setVar", &PyAcEditor::setVar)
+        .def("selectCrossingWindow", &PyAcEditor::selectCrossingWindow2).staticmethod("selectCrossingWindow")
+        .def("initGet", &PyAcEditor::initGet).staticmethod("initGet")
+        .def("getKword", &PyAcEditor::getKword).staticmethod("getKword")
+        .def("getVar", &PyAcEditor::getVar).staticmethod("getVar")
+        .def("setVar", &PyAcEditor::setVar).staticmethod("setVar")
         ;
 }
 
@@ -162,7 +154,7 @@ boost::python::tuple PyAcEditor::getAngle(const AcGePoint3d& basePt, const std::
     return boost::python::make_tuple(res.first, res.second);
 }
 
-boost::python::tuple PyAcEditor::getPoint(const std::string& prompt)
+boost::python::tuple PyAcEditor::getPoint1(const std::string& prompt)
 {
     PyAutoLockGIL lock;
     WxUserInteraction ui;
@@ -173,7 +165,7 @@ boost::python::tuple PyAcEditor::getPoint(const std::string& prompt)
     return boost::python::make_tuple(res.first, res.second);
 }
 
-boost::python::tuple PyAcEditor::getPoint(const AcGePoint3d& basePt, const std::string& prompt)
+boost::python::tuple PyAcEditor::getPoint2(const AcGePoint3d& basePt, const std::string& prompt)
 {
     PyAutoLockGIL lock;
     WxUserInteraction ui;
@@ -184,7 +176,7 @@ boost::python::tuple PyAcEditor::getPoint(const AcGePoint3d& basePt, const std::
     return boost::python::make_tuple(res.first, res.second);
 }
 
-boost::python::tuple PyAcEditor::getDist(const std::string& prompt)
+boost::python::tuple PyAcEditor::getDist1(const std::string& prompt)
 {
     PyAutoLockGIL lock;
     WxUserInteraction ui;
@@ -193,7 +185,7 @@ boost::python::tuple PyAcEditor::getDist(const std::string& prompt)
     return boost::python::make_tuple(res.first, res.second);
 }
 
-boost::python::tuple PyAcEditor::getDist(const AcGePoint3d& basePt, const std::string& prompt)
+boost::python::tuple PyAcEditor::getDist2(const AcGePoint3d& basePt, const std::string& prompt)
 {
     PyAutoLockGIL lock;
     WxUserInteraction ui;
@@ -269,7 +261,7 @@ boost::python::tuple PyAcEditor::select4(const std::string& add, const std::stri
     return makeSelectionResult(name, stat);
 }
 
-boost::python::tuple PyAcEditor::selectAll()
+boost::python::tuple PyAcEditor::selectAll1()
 {
     WxUserInteraction ui;
     ads_name name = { 0L };
@@ -277,7 +269,7 @@ boost::python::tuple PyAcEditor::selectAll()
     return makeSelectionResult(name, stat);
 }
 
-boost::python::tuple PyAcEditor::selectAll(const boost::python::list& filter)
+boost::python::tuple PyAcEditor::selectAll2(const boost::python::list& filter)
 {
     WxUserInteraction ui;
     ads_name name = { 0L };
