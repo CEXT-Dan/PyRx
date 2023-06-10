@@ -33,10 +33,13 @@ def generate_pyi(moduleName, module):
 
                 for func_name, func in inspect.getmembers(obj):
                     if include_attr(func_name):
+                        sig = "{0}".format(func.__doc__)
+                        pos1 = sig.find('->')
+                        pos2 = sig.find(':')
                         try:
                             f.write(f'    def {func_name} {inspect.signature(func)}:\n')
                         except:
-                            f.write(f'    def {func_name} (self, *args, **kwargs):\n')
+                            f.write(f'    def {func_name} (self, *args, **kwargs){sig[pos1:pos2]}:\n')
                         f.write(f"      '''{func.__doc__}'''")
                         f.write('\n    ...\n')
                         

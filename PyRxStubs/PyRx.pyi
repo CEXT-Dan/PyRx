@@ -108,7 +108,10 @@ Also known as the population count.
     def name (self, *args, **kwargs):
       '''None'''
     ...
-    def names (self, *args, **kwargs):
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
       '''dict() -> new empty dictionary
 dict(mapping) -> new dictionary initialized from a mapping object's
     (key, value) pairs
@@ -142,7 +145,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     If signed is False and a negative integer is given, an OverflowError
     is raised.'''
     ...
-    def values (self, *args, **kwargs):
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
       '''dict() -> new empty dictionary
 dict(mapping) -> new dictionary initialized from a mapping object's
     (key, value) pairs
@@ -155,77 +161,77 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class Overrule:
-    def addOverrule (self, *args, **kwargs):
+    def addOverrule (self, *args, **kwargs)-> ErrorStatus :
       '''
 addOverrule( (RxClass)arg1, (Overrule)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus addOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
     ...
-    def addOverruleLast (self, *args, **kwargs):
+    def addOverruleLast (self, *args, **kwargs)-> ErrorStatus :
       '''
 addOverruleLast( (RxClass)arg1, (Overrule)arg2, (bool)arg3) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus addOverruleLast(class PyRxClass {lvalue},class PyRxOverrule {lvalue},bool)'''
     ...
-    def className (self, *args, **kwargs):
+    def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def desc (self, *args, **kwargs):
+    def desc (self, *args, **kwargs)-> RxClass :
       '''
 desc() -> RxClass :
 
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def hasOverrule (self, *args, **kwargs):
+    def hasOverrule (self, *args, **kwargs)-> bool :
       '''
 hasOverrule( (RxObject)arg1, (RxClass)arg2) -> bool :
 
     C++ signature :
         bool hasOverrule(class PyRxObject {lvalue},class PyRxClass {lvalue})'''
     ...
-    def isA (self, *args, **kwargs):
+    def isA (self, *args, **kwargs)-> RxClass :
       '''
 isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
-    def isNull (self, *args, **kwargs):
+    def isNull (self, *args, **kwargs)-> bool :
       '''
 isNull( (RxObject)arg1) -> bool :
 
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
     ...
-    def isOverruling (self, *args, **kwargs):
+    def isOverruling (self, *args, **kwargs)-> bool :
       '''
 isOverruling() -> bool :
 
     C++ signature :
         bool isOverruling()'''
     ...
-    def refCount (self, *args, **kwargs):
+    def refCount (self, *args, **kwargs)-> int :
       '''
 refCount( (RxObject)arg1) -> int :
 
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
     ...
-    def removeOverrule (self, *args, **kwargs):
+    def removeOverrule (self, *args, **kwargs)-> ErrorStatus :
       '''
 removeOverrule( (RxClass)arg1, (Overrule)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus removeOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
     ...
-    def setIsOverruling (self, *args, **kwargs):
+    def setIsOverruling (self, *args, **kwargs)-> None :
       '''
 setIsOverruling( (bool)arg1) -> None :
 
@@ -234,49 +240,49 @@ setIsOverruling( (bool)arg1) -> None :
     ...
 
 class RxClass:
-    def className (self, *args, **kwargs):
+    def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def desc (self, *args, **kwargs):
+    def desc (self, *args, **kwargs)-> RxClass :
       '''
 desc() -> RxClass :
 
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def isA (self, *args, **kwargs):
+    def isA (self, *args, **kwargs)-> RxClass :
       '''
 isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
-    def isDerivedFrom (self, *args, **kwargs):
+    def isDerivedFrom (self, *args, **kwargs)-> bool :
       '''
 isDerivedFrom( (RxClass)arg1, (RxClass)arg2) -> bool :
 
     C++ signature :
         bool isDerivedFrom(class PyRxClass {lvalue},class PyRxClass)'''
     ...
-    def isNull (self, *args, **kwargs):
+    def isNull (self, *args, **kwargs)-> bool :
       '''
 isNull( (RxObject)arg1) -> bool :
 
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> str :
       '''
 name( (RxClass)arg1) -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name(class PyRxClass {lvalue})'''
     ...
-    def refCount (self, *args, **kwargs):
+    def refCount (self, *args, **kwargs)-> int :
       '''
 refCount( (RxObject)arg1) -> int :
 
@@ -285,28 +291,28 @@ refCount( (RxObject)arg1) -> int :
     ...
 
 class RxObject:
-    def className (self, *args, **kwargs):
+    def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def isA (self, *args, **kwargs):
+    def isA (self, *args, **kwargs)-> RxClass :
       '''
 isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
-    def isNull (self, *args, **kwargs):
+    def isNull (self, *args, **kwargs)-> bool :
       '''
 isNull( (RxObject)arg1) -> bool :
 
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
     ...
-    def refCount (self, *args, **kwargs):
+    def refCount (self, *args, **kwargs)-> int :
       '''
 refCount( (RxObject)arg1) -> int :
 
@@ -315,7 +321,16 @@ refCount( (RxObject)arg1) -> int :
     ...
 
 class __loader__:
-    def _ORIGIN (self, *args, **kwargs):
+    def _ORIGIN (self, *args, **kwargs)-> str
+str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict':
       '''str(object='') -> str
 str(bytes_or_buffer[, encoding[, errors]]) -> str
 
@@ -370,14 +385,14 @@ errors defaults to 'strict'.'''
     ...
 
 class stderr:
-    def flush (self, *args, **kwargs):
+    def flush (self, *args, **kwargs)-> None :
       '''
 flush( (stderr)arg1) -> None :
 
     C++ signature :
         void flush(class py_redirector<2> {lvalue})'''
     ...
-    def write (self, *args, **kwargs):
+    def write (self, *args, **kwargs)-> None :
       '''
 write( (stderr)arg1, (str)arg2) -> None :
 
@@ -386,14 +401,14 @@ write( (stderr)arg1, (str)arg2) -> None :
     ...
 
 class stdout:
-    def flush (self, *args, **kwargs):
+    def flush (self, *args, **kwargs)-> None :
       '''
 flush( (stdout)arg1) -> None :
 
     C++ signature :
         void flush(class py_redirector<1> {lvalue})'''
     ...
-    def write (self, *args, **kwargs):
+    def write (self, *args, **kwargs)-> None :
       '''
 write( (stdout)arg1, (str)arg2) -> None :
 

@@ -1,41 +1,41 @@
 
 class Core:
-    def activeViewportId (self, *args, **kwargs):
+    def activeViewportId (self, *args, **kwargs)-> ObjectId :
       '''
 activeViewportId() -> ObjectId :
 
     C++ signature :
         class PyDbObjectId activeViewportId()'''
     ...
-    def alert (self, *args, **kwargs):
+    def alert (self, *args, **kwargs)-> int :
       '''
 alert( (str)arg1) -> int :
 
     C++ signature :
         int alert(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def arxLoad (self, *args, **kwargs):
+    def arxLoad (self, *args, **kwargs)-> int :
       '''
 arxLoad( (str)arg1) -> int :
 
     C++ signature :
         int arxLoad(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def arxLoaded (self, *args, **kwargs):
+    def arxLoaded (self, *args, **kwargs)-> list :
       '''
 arxLoaded() -> list :
 
     C++ signature :
         class boost::python::list arxLoaded()'''
     ...
-    def arxUnload (self, *args, **kwargs):
+    def arxUnload (self, *args, **kwargs)-> int :
       '''
 arxUnload( (str)arg1) -> int :
 
     C++ signature :
         int arxUnload(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def audit (self, *args, **kwargs):
+    def audit (self, *args, **kwargs)-> ErrorStatus :
       '''
 audit( (Database)arg1, (bool)arg2) -> ErrorStatus :
 
@@ -47,21 +47,21 @@ audit( (Database)arg1, (bool)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus audit(class PyDbDatabase {lvalue},bool,bool)'''
     ...
-    def callBackOnCancel (self, *args, **kwargs):
+    def callBackOnCancel (self, *args, **kwargs)-> None :
       '''
 callBackOnCancel() -> None :
 
     C++ signature :
         void callBackOnCancel()'''
     ...
-    def clearOLELock (self, *args, **kwargs):
+    def clearOLELock (self, *args, **kwargs)-> bool :
       '''
 clearOLELock( (int)arg1) -> bool :
 
     C++ signature :
         bool clearOLELock(int)'''
     ...
-    def xrefDetach (self, *args, **kwargs):
+    def xrefDetach (self, *args, **kwargs)-> ErrorStatus :
       '''
 xrefDetach( (str)arg1) -> ErrorStatus :
 
@@ -177,7 +177,10 @@ Also known as the population count.
     def name (self, *args, **kwargs):
       '''None'''
     ...
-    def names (self, *args, **kwargs):
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
       '''dict() -> new empty dictionary
 dict(mapping) -> new dictionary initialized from a mapping object's
     (key, value) pairs
@@ -211,7 +214,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     If signed is False and a negative integer is given, an OverflowError
     is raised.'''
     ...
-    def values (self, *args, **kwargs):
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
       '''dict() -> new empty dictionary
 dict(mapping) -> new dictionary initialized from a mapping object's
     (key, value) pairs
@@ -335,7 +341,10 @@ Also known as the population count.
     def name (self, *args, **kwargs):
       '''None'''
     ...
-    def names (self, *args, **kwargs):
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
       '''dict() -> new empty dictionary
 dict(mapping) -> new dictionary initialized from a mapping object's
     (key, value) pairs
@@ -369,7 +378,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     If signed is False and a negative integer is given, an OverflowError
     is raised.'''
     ...
-    def values (self, *args, **kwargs):
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
       '''dict() -> new empty dictionary
 dict(mapping) -> new dictionary initialized from a mapping object's
     (key, value) pairs
@@ -382,28 +394,28 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class DragStyle:
-    def setStyleTypeForDragged (self, *args, **kwargs):
+    def setStyleTypeForDragged (self, *args, **kwargs)-> ErrorStatus :
       '''
 setStyleTypeForDragged( (DragStyle)arg1, (DragStyleType)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setStyleTypeForDragged(class AcEdDragStyle {lvalue},enum AcEdDragStyle::StyleType)'''
     ...
-    def setStyleTypeForOriginal (self, *args, **kwargs):
+    def setStyleTypeForOriginal (self, *args, **kwargs)-> ErrorStatus :
       '''
 setStyleTypeForOriginal( (DragStyle)arg1, (DragStyleType)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setStyleTypeForOriginal(class AcEdDragStyle {lvalue},enum AcEdDragStyle::StyleType)'''
     ...
-    def styleTypeForDragged (self, *args, **kwargs):
+    def styleTypeForDragged (self, *args, **kwargs)-> DragStyleType :
       '''
 styleTypeForDragged( (DragStyle)arg1) -> DragStyleType :
 
     C++ signature :
         enum AcEdDragStyle::StyleType styleTypeForDragged(class AcEdDragStyle {lvalue})'''
     ...
-    def styleTypeForOriginal (self, *args, **kwargs):
+    def styleTypeForOriginal (self, *args, **kwargs)-> DragStyleType :
       '''
 styleTypeForOriginal( (DragStyle)arg1) -> DragStyleType :
 
@@ -493,7 +505,10 @@ Also known as the population count.
     def name (self, *args, **kwargs):
       '''None'''
     ...
-    def names (self, *args, **kwargs):
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
       '''dict() -> new empty dictionary
 dict(mapping) -> new dictionary initialized from a mapping object's
     (key, value) pairs
@@ -527,7 +542,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     If signed is False and a negative integer is given, an OverflowError
     is raised.'''
     ...
-    def values (self, *args, **kwargs):
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
       '''dict() -> new empty dictionary
 dict(mapping) -> new dictionary initialized from a mapping object's
     (key, value) pairs
@@ -540,7 +558,7 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class DrawJig:
-    def acquireAngle (self, *args, **kwargs):
+    def acquireAngle (self, *args, **kwargs)-> tuple :
       '''
 acquireAngle( (DrawJig)arg1) -> tuple :
 
@@ -552,7 +570,7 @@ acquireAngle( (DrawJig)arg1, (Point3d)arg2) -> tuple :
     C++ signature :
         class boost::python::tuple acquireAngle(class PyDrawJig {lvalue},class AcGePoint3d)'''
     ...
-    def acquireDist (self, *args, **kwargs):
+    def acquireDist (self, *args, **kwargs)-> tuple :
       '''
 acquireDist( (DrawJig)arg1) -> tuple :
 
@@ -564,7 +582,7 @@ acquireDist( (DrawJig)arg1, (Point3d)arg2) -> tuple :
     C++ signature :
         class boost::python::tuple acquireDist(class PyDrawJig {lvalue},class AcGePoint3d)'''
     ...
-    def acquirePoint (self, *args, **kwargs):
+    def acquirePoint (self, *args, **kwargs)-> tuple :
       '''
 acquirePoint( (DrawJig)arg1) -> tuple :
 
@@ -576,28 +594,28 @@ acquirePoint( (DrawJig)arg1, (Point3d)arg2) -> tuple :
     C++ signature :
         class boost::python::tuple acquirePoint(class PyDrawJig {lvalue},class AcGePoint3d)'''
     ...
-    def acquireString (self, *args, **kwargs):
+    def acquireString (self, *args, **kwargs)-> tuple :
       '''
 acquireString( (DrawJig)arg1) -> tuple :
 
     C++ signature :
         class boost::python::tuple acquireString(class PyDrawJig {lvalue})'''
     ...
-    def className (self, *args, **kwargs):
+    def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def dispPrompt (self, *args, **kwargs):
+    def dispPrompt (self, *args, **kwargs)-> str :
       '''
 dispPrompt( (DrawJig)arg1) -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dispPrompt(class PyDrawJig {lvalue})'''
     ...
-    def drag (self, *args, **kwargs):
+    def drag (self, *args, **kwargs)-> DragStatus :
       '''
 drag( (DrawJig)arg1) -> DragStatus :
 
@@ -609,77 +627,77 @@ drag( (DrawJig)arg1, (DragStyle)arg2) -> DragStatus :
     C++ signature :
         enum AcEdJig::DragStatus drag(class PyDrawJig {lvalue},class AcEdDragStyle)'''
     ...
-    def keywordList (self, *args, **kwargs):
+    def keywordList (self, *args, **kwargs)-> str :
       '''
 keywordList( (DrawJig)arg1) -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > keywordList(class PyDrawJig {lvalue})'''
     ...
-    def sampler (self, *args, **kwargs):
+    def sampler (self, *args, **kwargs)-> DragStatus :
       '''
 sampler( (DrawJig)arg1) -> DragStatus :
 
     C++ signature :
         enum AcEdJig::DragStatus sampler(class PyDrawJig {lvalue})'''
     ...
-    def setDispPrompt (self, *args, **kwargs):
+    def setDispPrompt (self, *args, **kwargs)-> None :
       '''
 setDispPrompt( (DrawJig)arg1, (str)arg2) -> None :
 
     C++ signature :
         void setDispPrompt(class PyDrawJig {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setKeywordList (self, *args, **kwargs):
+    def setKeywordList (self, *args, **kwargs)-> None :
       '''
 setKeywordList( (DrawJig)arg1, (str)arg2) -> None :
 
     C++ signature :
         void setKeywordList(class PyDrawJig {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setSpecialCursorType (self, *args, **kwargs):
+    def setSpecialCursorType (self, *args, **kwargs)-> None :
       '''
 setSpecialCursorType( (DrawJig)arg1, (CursorType)arg2) -> None :
 
     C++ signature :
         void setSpecialCursorType(class PyDrawJig {lvalue},enum AcEdJig::CursorType)'''
     ...
-    def setUserInputControls (self, *args, **kwargs):
+    def setUserInputControls (self, *args, **kwargs)-> None :
       '''
 setUserInputControls( (DrawJig)arg1, (UserInputControls)arg2) -> None :
 
     C++ signature :
         void setUserInputControls(class PyDrawJig {lvalue},enum AcEdJig::UserInputControls)'''
     ...
-    def specialCursorType (self, *args, **kwargs):
+    def specialCursorType (self, *args, **kwargs)-> CursorType :
       '''
 specialCursorType( (DrawJig)arg1) -> CursorType :
 
     C++ signature :
         enum AcEdJig::CursorType specialCursorType(class PyDrawJig {lvalue})'''
     ...
-    def update (self, *args, **kwargs):
+    def update (self, *args, **kwargs)-> bool :
       '''
 update( (DrawJig)arg1) -> bool :
 
     C++ signature :
         bool update(class PyDrawJig {lvalue})'''
     ...
-    def userInputControls (self, *args, **kwargs):
+    def userInputControls (self, *args, **kwargs)-> UserInputControls :
       '''
 userInputControls( (DrawJig)arg1) -> UserInputControls :
 
     C++ signature :
         enum AcEdJig::UserInputControls userInputControls(class PyDrawJig {lvalue})'''
     ...
-    def viewportDraw (self, *args, **kwargs):
+    def viewportDraw (self, *args, **kwargs)-> None :
       '''
 viewportDraw( (DrawJig)arg1, (ViewportDraw)arg2) -> None :
 
     C++ signature :
         void viewportDraw(class PyDrawJig {lvalue},class PyGiViewportDraw {lvalue})'''
     ...
-    def worldDraw (self, *args, **kwargs):
+    def worldDraw (self, *args, **kwargs)-> bool :
       '''
 worldDraw( (DrawJig)arg1, (WorldDraw)arg2) -> bool :
 
@@ -688,42 +706,42 @@ worldDraw( (DrawJig)arg1, (WorldDraw)arg2) -> bool :
     ...
 
 class Editor:
-    def activeViewportId (self, *args, **kwargs):
+    def activeViewportId (self, *args, **kwargs)-> ObjectId :
       '''
 activeViewportId() -> ObjectId :
 
     C++ signature :
         class PyDbObjectId activeViewportId()'''
     ...
-    def alert (self, *args, **kwargs):
+    def alert (self, *args, **kwargs)-> None :
       '''
 alert( (str)arg1) -> None :
 
     C++ signature :
         void alert(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def arxLoad (self, *args, **kwargs):
+    def arxLoad (self, *args, **kwargs)-> bool :
       '''
 arxLoad( (str)arg1) -> bool :
 
     C++ signature :
         bool arxLoad(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def arxLoaded (self, *args, **kwargs):
+    def arxLoaded (self, *args, **kwargs)-> list :
       '''
 arxLoaded() -> list :
 
     C++ signature :
         class boost::python::list arxLoaded()'''
     ...
-    def arxUnload (self, *args, **kwargs):
+    def arxUnload (self, *args, **kwargs)-> bool :
       '''
 arxUnload( (str)arg1) -> bool :
 
     C++ signature :
         bool arxUnload(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def audit (self, *args, **kwargs):
+    def audit (self, *args, **kwargs)-> ErrorStatus :
       '''
 audit( (Database)arg1, (bool)arg2) -> ErrorStatus :
 
@@ -735,56 +753,56 @@ audit( (Database)arg1, (bool)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus audit(class PyDbDatabase,bool,bool)'''
     ...
-    def className (self, *args, **kwargs):
+    def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def cmdS (self, *args, **kwargs):
+    def cmdS (self, *args, **kwargs)-> bool :
       '''
 cmdS( (list)arg1) -> bool :
 
     C++ signature :
         bool cmdS(class boost::python::list)'''
     ...
-    def entSel (self, *args, **kwargs):
+    def entSel (self, *args, **kwargs)-> tuple :
       '''
 entSel( (str)arg1) -> tuple :
 
     C++ signature :
         class boost::python::tuple entSel(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def findFile (self, *args, **kwargs):
+    def findFile (self, *args, **kwargs)-> str :
       '''
 findFile( (str)arg1) -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > findFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def findTrustedFile (self, *args, **kwargs):
+    def findTrustedFile (self, *args, **kwargs)-> str :
       '''
 findTrustedFile( (str)arg1) -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > findTrustedFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getAngle (self, *args, **kwargs):
+    def getAngle (self, *args, **kwargs)-> tuple :
       '''
 getAngle( (Point3d)arg1, (str)arg2) -> tuple :
 
     C++ signature :
         class boost::python::tuple getAngle(class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getCurrentUCS (self, *args, **kwargs):
+    def getCurrentUCS (self, *args, **kwargs)-> Matrix3d :
       '''
 getCurrentUCS() -> Matrix3d :
 
     C++ signature :
         class AcGeMatrix3d getCurrentUCS()'''
     ...
-    def getDist (self, *args, **kwargs):
+    def getDist (self, *args, **kwargs)-> tuple :
       '''
 getDist( (str)arg1) -> tuple :
 
@@ -796,28 +814,28 @@ getDist( (Point3d)arg1, (str)arg2) -> tuple :
     C++ signature :
         class boost::python::tuple getDist(class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getDouble (self, *args, **kwargs):
+    def getDouble (self, *args, **kwargs)-> tuple :
       '''
 getDouble( (str)arg1) -> tuple :
 
     C++ signature :
         class boost::python::tuple getDouble(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getInteger (self, *args, **kwargs):
+    def getInteger (self, *args, **kwargs)-> tuple :
       '''
 getInteger( (str)arg1) -> tuple :
 
     C++ signature :
         class boost::python::tuple getInteger(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getKword (self, *args, **kwargs):
+    def getKword (self, *args, **kwargs)-> tuple :
       '''
 getKword( (str)arg1) -> tuple :
 
     C++ signature :
         class boost::python::tuple getKword(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getPoint (self, *args, **kwargs):
+    def getPoint (self, *args, **kwargs)-> tuple :
       '''
 getPoint( (str)arg1) -> tuple :
 
@@ -829,35 +847,35 @@ getPoint( (Point3d)arg1, (str)arg2) -> tuple :
     C++ signature :
         class boost::python::tuple getPoint(class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getReal (self, *args, **kwargs):
+    def getReal (self, *args, **kwargs)-> tuple :
       '''
 getReal( (str)arg1) -> tuple :
 
     C++ signature :
         class boost::python::tuple getReal(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getString (self, *args, **kwargs):
+    def getString (self, *args, **kwargs)-> tuple :
       '''
 getString( (int)arg1, (str)arg2) -> tuple :
 
     C++ signature :
         class boost::python::tuple getString(int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getVar (self, *args, **kwargs):
+    def getVar (self, *args, **kwargs)-> object :
       '''
 getVar( (str)arg1) -> object :
 
     C++ signature :
         class boost::python::api::object getVar(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def initGet (self, *args, **kwargs):
+    def initGet (self, *args, **kwargs)-> PromptStatus :
       '''
 initGet( (int)arg1, (str)arg2) -> PromptStatus :
 
     C++ signature :
         enum Acad::PromptStatus initGet(int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def select (self, *args, **kwargs):
+    def select (self, *args, **kwargs)-> tuple :
       '''
 select() -> tuple :
 
@@ -879,7 +897,7 @@ select( (str)arg1, (str)arg2, (list)arg3) -> tuple :
     C++ signature :
         class boost::python::tuple select(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::list)'''
     ...
-    def selectAll (self, *args, **kwargs):
+    def selectAll (self, *args, **kwargs)-> tuple :
       '''
 selectAll() -> tuple :
 
@@ -891,7 +909,7 @@ selectAll( (list)arg1) -> tuple :
     C++ signature :
         class boost::python::tuple selectAll(class boost::python::list)'''
     ...
-    def selectCrossingWindow (self, *args, **kwargs):
+    def selectCrossingWindow (self, *args, **kwargs)-> tuple :
       '''
 selectCrossingWindow( (Point3d)arg1, (Point3d)arg2) -> tuple :
 
@@ -903,14 +921,14 @@ selectCrossingWindow( (Point3d)arg1, (Point3d)arg2, (list)arg3) -> tuple :
     C++ signature :
         class boost::python::tuple selectCrossingWindow(class AcGePoint3d,class AcGePoint3d,class boost::python::list)'''
     ...
-    def setCurrentUCS (self, *args, **kwargs):
+    def setCurrentUCS (self, *args, **kwargs)-> ErrorStatus :
       '''
 setCurrentUCS( (Matrix3d)arg1) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setCurrentUCS(class AcGeMatrix3d)'''
     ...
-    def setVar (self, *args, **kwargs):
+    def setVar (self, *args, **kwargs)-> bool :
       '''
 setVar( (str)arg1, (object)arg2) -> bool :
 
@@ -919,133 +937,133 @@ setVar( (str)arg1, (object)arg2) -> bool :
     ...
 
 class EditorReactor:
-    def abortAttach (self, *args, **kwargs):
+    def abortAttach (self, *args, **kwargs)-> None :
       '''
 abortAttach( (EditorReactor)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void abortAttach(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def abortDeepClone (self, *args, **kwargs):
+    def abortDeepClone (self, *args, **kwargs)-> None :
       '''
 abortDeepClone( (EditorReactor)arg1, (IdMapping)arg2) -> None :
 
     C++ signature :
         void abortDeepClone(class PyEditorReactor {lvalue},class PyDbIdMapping {lvalue})'''
     ...
-    def abortDxfIn (self, *args, **kwargs):
+    def abortDxfIn (self, *args, **kwargs)-> None :
       '''
 abortDxfIn( (EditorReactor)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void abortDxfIn(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def abortDxfOut (self, *args, **kwargs):
+    def abortDxfOut (self, *args, **kwargs)-> None :
       '''
 abortDxfOut( (EditorReactor)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void abortDxfOut(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def abortInsert (self, *args, **kwargs):
+    def abortInsert (self, *args, **kwargs)-> None :
       '''
 abortInsert( (EditorReactor)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void abortInsert(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def abortRestore (self, *args, **kwargs):
+    def abortRestore (self, *args, **kwargs)-> None :
       '''
 abortRestore( (EditorReactor)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void abortRestore(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def abortSave (self, *args, **kwargs):
+    def abortSave (self, *args, **kwargs)-> None :
       '''
 abortSave( (EditorReactor)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void abortSave(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def abortWblock (self, *args, **kwargs):
+    def abortWblock (self, *args, **kwargs)-> None :
       '''
 abortWblock( (EditorReactor)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void abortWblock(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def addReactor (self, *args, **kwargs):
+    def addReactor (self, *args, **kwargs)-> None :
       '''
 addReactor( (EditorReactor)arg1) -> None :
 
     C++ signature :
         void addReactor(class PyEditorReactor {lvalue})'''
     ...
-    def beginAttach (self, *args, **kwargs):
+    def beginAttach (self, *args, **kwargs)-> None :
       '''
 beginAttach( (EditorReactor)arg1, (Database)arg2, (str)arg3, (Database)arg4) -> None :
 
     C++ signature :
         void beginAttach(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
     ...
-    def beginCloseAll (self, *args, **kwargs):
+    def beginCloseAll (self, *args, **kwargs)-> None :
       '''
 beginCloseAll( (EditorReactor)arg1) -> None :
 
     C++ signature :
         void beginCloseAll(class PyEditorReactor {lvalue})'''
     ...
-    def beginDeepClone (self, *args, **kwargs):
+    def beginDeepClone (self, *args, **kwargs)-> None :
       '''
 beginDeepClone( (EditorReactor)arg1, (Database)arg2, (IdMapping)arg3) -> None :
 
     C++ signature :
         void beginDeepClone(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class PyDbIdMapping {lvalue})'''
     ...
-    def beginDeepCloneXlation (self, *args, **kwargs):
+    def beginDeepCloneXlation (self, *args, **kwargs)-> ErrorStatus :
       '''
 beginDeepCloneXlation( (EditorReactor)arg1, (IdMapping)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus beginDeepCloneXlation(class PyEditorReactor {lvalue},class PyDbIdMapping {lvalue})'''
     ...
-    def beginDocClose (self, *args, **kwargs):
+    def beginDocClose (self, *args, **kwargs)-> None :
       '''
 beginDocClose( (EditorReactor)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void beginDocClose(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def beginDoubleClick (self, *args, **kwargs):
+    def beginDoubleClick (self, *args, **kwargs)-> None :
       '''
 beginDoubleClick( (EditorReactor)arg1, (Point3d)arg2) -> None :
 
     C++ signature :
         void beginDoubleClick(class PyEditorReactor {lvalue},class AcGePoint3d)'''
     ...
-    def beginDwgOpen (self, *args, **kwargs):
+    def beginDwgOpen (self, *args, **kwargs)-> None :
       '''
 beginDwgOpen( (EditorReactor)arg1, (str)arg2) -> None :
 
     C++ signature :
         void beginDwgOpen(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def beginDxfIn (self, *args, **kwargs):
+    def beginDxfIn (self, *args, **kwargs)-> None :
       '''
 beginDxfIn( (EditorReactor)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void beginDxfIn(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def beginDxfOut (self, *args, **kwargs):
+    def beginDxfOut (self, *args, **kwargs)-> None :
       '''
 beginDxfOut( (EditorReactor)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void beginDxfOut(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def beginInsert (self, *args, **kwargs):
+    def beginInsert (self, *args, **kwargs)-> None :
       '''
 beginInsert( (EditorReactor)arg1, (Database)arg2, (str)arg3, (Database)arg4) -> None :
 
@@ -1057,490 +1075,490 @@ beginInsert( (EditorReactor)arg1, (Database)arg2, (Matrix3d)arg3, (Database)arg4
     C++ signature :
         void beginInsert(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class AcGeMatrix3d,class PyDbDatabase {lvalue})'''
     ...
-    def beginQuit (self, *args, **kwargs):
+    def beginQuit (self, *args, **kwargs)-> None :
       '''
 beginQuit( (EditorReactor)arg1) -> None :
 
     C++ signature :
         void beginQuit(class PyEditorReactor {lvalue})'''
     ...
-    def beginRestore (self, *args, **kwargs):
+    def beginRestore (self, *args, **kwargs)-> None :
       '''
 beginRestore( (EditorReactor)arg1, (Database)arg2, (str)arg3, (Database)arg4) -> None :
 
     C++ signature :
         void beginRestore(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
     ...
-    def beginRightClick (self, *args, **kwargs):
+    def beginRightClick (self, *args, **kwargs)-> None :
       '''
 beginRightClick( (EditorReactor)arg1, (Point3d)arg2) -> None :
 
     C++ signature :
         void beginRightClick(class PyEditorReactor {lvalue},class AcGePoint3d)'''
     ...
-    def beginSave (self, *args, **kwargs):
+    def beginSave (self, *args, **kwargs)-> None :
       '''
 beginSave( (EditorReactor)arg1, (Database)arg2, (str)arg3) -> None :
 
     C++ signature :
         void beginSave(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def beginWblock (self, *args, **kwargs):
+    def beginWblock (self, *args, **kwargs)-> None :
       '''
 beginWblock( (EditorReactor)arg1, (Database)arg2, (Database)arg3, (ObjectId)arg4) -> None :
 
     C++ signature :
         void beginWblock(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class PyDbDatabase {lvalue},class PyDbObjectId {lvalue})'''
     ...
-    def beginWblockObjects (self, *args, **kwargs):
+    def beginWblockObjects (self, *args, **kwargs)-> None :
       '''
 beginWblockObjects( (EditorReactor)arg1, (Database)arg2, (IdMapping)arg3) -> None :
 
     C++ signature :
         void beginWblockObjects(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class PyDbIdMapping {lvalue})'''
     ...
-    def cmdIUnkModified (self, *args, **kwargs):
+    def cmdIUnkModified (self, *args, **kwargs)-> None :
       '''
 cmdIUnkModified( (EditorReactor)arg1, (str)arg2) -> None :
 
     C++ signature :
         void cmdIUnkModified(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def comandeered (self, *args, **kwargs):
+    def comandeered (self, *args, **kwargs)-> None :
       '''
 comandeered( (EditorReactor)arg1, (Database)arg2, (ObjectId)arg3, (Database)arg4) -> None :
 
     C++ signature :
         void comandeered(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class PyDbObjectId {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def commandCancelled (self, *args, **kwargs):
+    def commandCancelled (self, *args, **kwargs)-> None :
       '''
 commandCancelled( (EditorReactor)arg1, (str)arg2) -> None :
 
     C++ signature :
         void commandCancelled(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def commandEnded (self, *args, **kwargs):
+    def commandEnded (self, *args, **kwargs)-> None :
       '''
 commandEnded( (EditorReactor)arg1, (str)arg2) -> None :
 
     C++ signature :
         void commandEnded(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def commandFailed (self, *args, **kwargs):
+    def commandFailed (self, *args, **kwargs)-> None :
       '''
 commandFailed( (EditorReactor)arg1, (str)arg2) -> None :
 
     C++ signature :
         void commandFailed(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def commandWillStart (self, *args, **kwargs):
+    def commandWillStart (self, *args, **kwargs)-> None :
       '''
 commandWillStart( (EditorReactor)arg1, (str)arg2) -> None :
 
     C++ signature :
         void commandWillStart(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def databaseConstructed (self, *args, **kwargs):
+    def databaseConstructed (self, *args, **kwargs)-> None :
       '''
 databaseConstructed( (EditorReactor)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void databaseConstructed(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def databaseToBeDestroyed (self, *args, **kwargs):
+    def databaseToBeDestroyed (self, *args, **kwargs)-> None :
       '''
 databaseToBeDestroyed( (EditorReactor)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void databaseToBeDestroyed(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def docCloseAborted (self, *args, **kwargs):
+    def docCloseAborted (self, *args, **kwargs)-> None :
       '''
 docCloseAborted( (EditorReactor)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void docCloseAborted(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def docCloseWillStart (self, *args, **kwargs):
+    def docCloseWillStart (self, *args, **kwargs)-> None :
       '''
 docCloseWillStart( (EditorReactor)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void docCloseWillStart(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def docFrameMovedOrResized (self, *args, **kwargs):
+    def docFrameMovedOrResized (self, *args, **kwargs)-> None :
       '''
 docFrameMovedOrResized( (EditorReactor)arg1, (int)arg2, (bool)arg3) -> None :
 
     C++ signature :
         void docFrameMovedOrResized(class PyEditorReactor {lvalue},__int64,bool)'''
     ...
-    def dwgViewResized (self, *args, **kwargs):
+    def dwgViewResized (self, *args, **kwargs)-> None :
       '''
 dwgViewResized( (EditorReactor)arg1, (int)arg2) -> None :
 
     C++ signature :
         void dwgViewResized(class PyEditorReactor {lvalue},__int64)'''
     ...
-    def dxfInComplete (self, *args, **kwargs):
+    def dxfInComplete (self, *args, **kwargs)-> None :
       '''
 dxfInComplete( (EditorReactor)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void dxfInComplete(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def dxfOutComplete (self, *args, **kwargs):
+    def dxfOutComplete (self, *args, **kwargs)-> None :
       '''
 dxfOutComplete( (EditorReactor)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void dxfOutComplete(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def endAttach (self, *args, **kwargs):
+    def endAttach (self, *args, **kwargs)-> None :
       '''
 endAttach( (EditorReactor)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void endAttach(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def endDeepClone (self, *args, **kwargs):
+    def endDeepClone (self, *args, **kwargs)-> None :
       '''
 endDeepClone( (EditorReactor)arg1, (IdMapping)arg2) -> None :
 
     C++ signature :
         void endDeepClone(class PyEditorReactor {lvalue},class PyDbIdMapping {lvalue})'''
     ...
-    def endDwgOpen (self, *args, **kwargs):
+    def endDwgOpen (self, *args, **kwargs)-> None :
       '''
 endDwgOpen( (EditorReactor)arg1, (str)arg2, (Database)arg3) -> None :
 
     C++ signature :
         void endDwgOpen(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
     ...
-    def endInsert (self, *args, **kwargs):
+    def endInsert (self, *args, **kwargs)-> None :
       '''
 endInsert( (EditorReactor)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void endInsert(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def endRestore (self, *args, **kwargs):
+    def endRestore (self, *args, **kwargs)-> None :
       '''
 endRestore( (EditorReactor)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void endRestore(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def endWblock (self, *args, **kwargs):
+    def endWblock (self, *args, **kwargs)-> None :
       '''
 endWblock( (EditorReactor)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void endWblock(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def fullRegenEnded (self, *args, **kwargs):
+    def fullRegenEnded (self, *args, **kwargs)-> None :
       '''
 fullRegenEnded( (EditorReactor)arg1, (Database)arg2, (list)arg3) -> None :
 
     C++ signature :
         void fullRegenEnded(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class boost::python::list)'''
     ...
-    def fullRegenWillStart (self, *args, **kwargs):
+    def fullRegenWillStart (self, *args, **kwargs)-> None :
       '''
 fullRegenWillStart( (EditorReactor)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void fullRegenWillStart(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def initialDwgFileOpenComplete (self, *args, **kwargs):
+    def initialDwgFileOpenComplete (self, *args, **kwargs)-> None :
       '''
 initialDwgFileOpenComplete( (EditorReactor)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void initialDwgFileOpenComplete(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def layoutSwitched (self, *args, **kwargs):
+    def layoutSwitched (self, *args, **kwargs)-> None :
       '''
 layoutSwitched( (EditorReactor)arg1, (str)arg2) -> None :
 
     C++ signature :
         void layoutSwitched(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def layoutToBeSwitched (self, *args, **kwargs):
+    def layoutToBeSwitched (self, *args, **kwargs)-> None :
       '''
 layoutToBeSwitched( (EditorReactor)arg1, (str)arg2, (str)arg3) -> None :
 
     C++ signature :
         void layoutToBeSwitched(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def lispCancelled (self, *args, **kwargs):
+    def lispCancelled (self, *args, **kwargs)-> None :
       '''
 lispCancelled( (EditorReactor)arg1) -> None :
 
     C++ signature :
         void lispCancelled(class PyEditorReactor {lvalue})'''
     ...
-    def lispEnded (self, *args, **kwargs):
+    def lispEnded (self, *args, **kwargs)-> None :
       '''
 lispEnded( (EditorReactor)arg1) -> None :
 
     C++ signature :
         void lispEnded(class PyEditorReactor {lvalue})'''
     ...
-    def lispWillStart (self, *args, **kwargs):
+    def lispWillStart (self, *args, **kwargs)-> None :
       '''
 lispWillStart( (EditorReactor)arg1, (str)arg2) -> None :
 
     C++ signature :
         void lispWillStart(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def mainFrameMovedOrResized (self, *args, **kwargs):
+    def mainFrameMovedOrResized (self, *args, **kwargs)-> None :
       '''
 mainFrameMovedOrResized( (EditorReactor)arg1, (int)arg2, (bool)arg3) -> None :
 
     C++ signature :
         void mainFrameMovedOrResized(class PyEditorReactor {lvalue},__int64,bool)'''
     ...
-    def modelessOperationEnded (self, *args, **kwargs):
+    def modelessOperationEnded (self, *args, **kwargs)-> None :
       '''
 modelessOperationEnded( (EditorReactor)arg1, (str)arg2) -> None :
 
     C++ signature :
         void modelessOperationEnded(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def modelessOperationWillStart (self, *args, **kwargs):
+    def modelessOperationWillStart (self, *args, **kwargs)-> None :
       '''
 modelessOperationWillStart( (EditorReactor)arg1, (str)arg2) -> None :
 
     C++ signature :
         void modelessOperationWillStart(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def objectsLazyLoaded (self, *args, **kwargs):
+    def objectsLazyLoaded (self, *args, **kwargs)-> None :
       '''
 objectsLazyLoaded( (EditorReactor)arg1, (list)arg2) -> None :
 
     C++ signature :
         void objectsLazyLoaded(class PyEditorReactor {lvalue},class boost::python::list)'''
     ...
-    def otherAttach (self, *args, **kwargs):
+    def otherAttach (self, *args, **kwargs)-> None :
       '''
 otherAttach( (EditorReactor)arg1, (Database)arg2, (Database)arg3) -> None :
 
     C++ signature :
         void otherAttach(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def otherInsert (self, *args, **kwargs):
+    def otherInsert (self, *args, **kwargs)-> None :
       '''
 otherInsert( (EditorReactor)arg1, (Database)arg2, (IdMapping)arg3, (Database)arg4) -> None :
 
     C++ signature :
         void otherInsert(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class PyDbIdMapping {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def otherWblock (self, *args, **kwargs):
+    def otherWblock (self, *args, **kwargs)-> None :
       '''
 otherWblock( (EditorReactor)arg1, (Database)arg2, (IdMapping)arg3, (Database)arg4) -> None :
 
     C++ signature :
         void otherWblock(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class PyDbIdMapping {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def partialOpenNotice (self, *args, **kwargs):
+    def partialOpenNotice (self, *args, **kwargs)-> None :
       '''
 partialOpenNotice( (EditorReactor)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void partialOpenNotice(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def pickfirstModified (self, *args, **kwargs):
+    def pickfirstModified (self, *args, **kwargs)-> None :
       '''
 pickfirstModified( (EditorReactor)arg1) -> None :
 
     C++ signature :
         void pickfirstModified(class PyEditorReactor {lvalue})'''
     ...
-    def preXrefLockFile (self, *args, **kwargs):
+    def preXrefLockFile (self, *args, **kwargs)-> None :
       '''
 preXrefLockFile( (EditorReactor)arg1, (ObjectId)arg2) -> None :
 
     C++ signature :
         void preXrefLockFile(class PyEditorReactor {lvalue},class PyDbObjectId {lvalue})'''
     ...
-    def quitAborted (self, *args, **kwargs):
+    def quitAborted (self, *args, **kwargs)-> None :
       '''
 quitAborted( (EditorReactor)arg1) -> None :
 
     C++ signature :
         void quitAborted(class PyEditorReactor {lvalue})'''
     ...
-    def quitWillStart (self, *args, **kwargs):
+    def quitWillStart (self, *args, **kwargs)-> None :
       '''
 quitWillStart( (EditorReactor)arg1) -> None :
 
     C++ signature :
         void quitWillStart(class PyEditorReactor {lvalue})'''
     ...
-    def redirected (self, *args, **kwargs):
+    def redirected (self, *args, **kwargs)-> None :
       '''
 redirected( (EditorReactor)arg1, (ObjectId)arg2, (ObjectId)arg3) -> None :
 
     C++ signature :
         void redirected(class PyEditorReactor {lvalue},class PyDbObjectId {lvalue},class PyDbObjectId {lvalue})'''
     ...
-    def removeReactor (self, *args, **kwargs):
+    def removeReactor (self, *args, **kwargs)-> None :
       '''
 removeReactor( (EditorReactor)arg1) -> None :
 
     C++ signature :
         void removeReactor(class PyEditorReactor {lvalue})'''
     ...
-    def saveComplete (self, *args, **kwargs):
+    def saveComplete (self, *args, **kwargs)-> None :
       '''
 saveComplete( (EditorReactor)arg1, (Database)arg2, (str)arg3) -> None :
 
     C++ signature :
         void saveComplete(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def sysVarChanged (self, *args, **kwargs):
+    def sysVarChanged (self, *args, **kwargs)-> None :
       '''
 sysVarChanged( (EditorReactor)arg1, (str)arg2, (bool)arg3) -> None :
 
     C++ signature :
         void sysVarChanged(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)'''
     ...
-    def sysVarWillChange (self, *args, **kwargs):
+    def sysVarWillChange (self, *args, **kwargs)-> None :
       '''
 sysVarWillChange( (EditorReactor)arg1, (str)arg2) -> None :
 
     C++ signature :
         void sysVarWillChange(class PyEditorReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def toolbarBitmapSizeChanged (self, *args, **kwargs):
+    def toolbarBitmapSizeChanged (self, *args, **kwargs)-> None :
       '''
 toolbarBitmapSizeChanged( (EditorReactor)arg1, (bool)arg2) -> None :
 
     C++ signature :
         void toolbarBitmapSizeChanged(class PyEditorReactor {lvalue},bool)'''
     ...
-    def toolbarBitmapSizeWillChange (self, *args, **kwargs):
+    def toolbarBitmapSizeWillChange (self, *args, **kwargs)-> None :
       '''
 toolbarBitmapSizeWillChange( (EditorReactor)arg1, (bool)arg2) -> None :
 
     C++ signature :
         void toolbarBitmapSizeWillChange(class PyEditorReactor {lvalue},bool)'''
     ...
-    def undoSubcommandAuto (self, *args, **kwargs):
+    def undoSubcommandAuto (self, *args, **kwargs)-> None :
       '''
 undoSubcommandAuto( (EditorReactor)arg1, (int)arg2, (bool)arg3) -> None :
 
     C++ signature :
         void undoSubcommandAuto(class PyEditorReactor {lvalue},int,bool)'''
     ...
-    def undoSubcommandBack (self, *args, **kwargs):
+    def undoSubcommandBack (self, *args, **kwargs)-> None :
       '''
 undoSubcommandBack( (EditorReactor)arg1, (int)arg2) -> None :
 
     C++ signature :
         void undoSubcommandBack(class PyEditorReactor {lvalue},int)'''
     ...
-    def undoSubcommandBegin (self, *args, **kwargs):
+    def undoSubcommandBegin (self, *args, **kwargs)-> None :
       '''
 undoSubcommandBegin( (EditorReactor)arg1, (int)arg2) -> None :
 
     C++ signature :
         void undoSubcommandBegin(class PyEditorReactor {lvalue},int)'''
     ...
-    def undoSubcommandControl (self, *args, **kwargs):
+    def undoSubcommandControl (self, *args, **kwargs)-> None :
       '''
 undoSubcommandControl( (EditorReactor)arg1, (int)arg2, (int)arg3) -> None :
 
     C++ signature :
         void undoSubcommandControl(class PyEditorReactor {lvalue},int,int)'''
     ...
-    def undoSubcommandEnd (self, *args, **kwargs):
+    def undoSubcommandEnd (self, *args, **kwargs)-> None :
       '''
 undoSubcommandEnd( (EditorReactor)arg1, (int)arg2) -> None :
 
     C++ signature :
         void undoSubcommandEnd(class PyEditorReactor {lvalue},int)'''
     ...
-    def undoSubcommandMark (self, *args, **kwargs):
+    def undoSubcommandMark (self, *args, **kwargs)-> None :
       '''
 undoSubcommandMark( (EditorReactor)arg1, (int)arg2) -> None :
 
     C++ signature :
         void undoSubcommandMark(class PyEditorReactor {lvalue},int)'''
     ...
-    def undoSubcommandNumber (self, *args, **kwargs):
+    def undoSubcommandNumber (self, *args, **kwargs)-> None :
       '''
 undoSubcommandNumber( (EditorReactor)arg1, (int)arg2, (int)arg3) -> None :
 
     C++ signature :
         void undoSubcommandNumber(class PyEditorReactor {lvalue},int,int)'''
     ...
-    def veto (self, *args, **kwargs):
+    def veto (self, *args, **kwargs)-> ErrorStatus :
       '''
 veto( (EditorReactor)arg1) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus veto(class PyEditorReactor {lvalue})'''
     ...
-    def viewChanged (self, *args, **kwargs):
+    def viewChanged (self, *args, **kwargs)-> None :
       '''
 viewChanged( (EditorReactor)arg1) -> None :
 
     C++ signature :
         void viewChanged(class PyEditorReactor {lvalue})'''
     ...
-    def wblockNotice (self, *args, **kwargs):
+    def wblockNotice (self, *args, **kwargs)-> None :
       '''
 wblockNotice( (EditorReactor)arg1, (Database)arg2) -> None :
 
     C++ signature :
         void wblockNotice(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def xrefSubcommandAttachItem (self, *args, **kwargs):
+    def xrefSubcommandAttachItem (self, *args, **kwargs)-> None :
       '''
 xrefSubcommandAttachItem( (EditorReactor)arg1, (Database)arg2, (int)arg3, (str)arg4) -> None :
 
     C++ signature :
         void xrefSubcommandAttachItem(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def xrefSubcommandBindItem (self, *args, **kwargs):
+    def xrefSubcommandBindItem (self, *args, **kwargs)-> None :
       '''
 xrefSubcommandBindItem( (EditorReactor)arg1, (Database)arg2, (int)arg3, (ObjectId)arg4) -> None :
 
     C++ signature :
         void xrefSubcommandBindItem(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},int,class PyDbObjectId {lvalue})'''
     ...
-    def xrefSubcommandDetachItem (self, *args, **kwargs):
+    def xrefSubcommandDetachItem (self, *args, **kwargs)-> None :
       '''
 xrefSubcommandDetachItem( (EditorReactor)arg1, (Database)arg2, (int)arg3, (ObjectId)arg4) -> None :
 
     C++ signature :
         void xrefSubcommandDetachItem(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},int,class PyDbObjectId {lvalue})'''
     ...
-    def xrefSubcommandOverlayItem (self, *args, **kwargs):
+    def xrefSubcommandOverlayItem (self, *args, **kwargs)-> None :
       '''
 xrefSubcommandOverlayItem( (EditorReactor)arg1, (Database)arg2, (int)arg3, (str)arg4) -> None :
 
     C++ signature :
         void xrefSubcommandOverlayItem(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def xrefSubcommandPathItem (self, *args, **kwargs):
+    def xrefSubcommandPathItem (self, *args, **kwargs)-> None :
       '''
 xrefSubcommandPathItem( (EditorReactor)arg1, (int)arg2, (ObjectId)arg3, (str)arg4) -> None :
 
     C++ signature :
         void xrefSubcommandPathItem(class PyEditorReactor {lvalue},int,class PyDbObjectId {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def xrefSubcommandReloadItem (self, *args, **kwargs):
+    def xrefSubcommandReloadItem (self, *args, **kwargs)-> None :
       '''
 xrefSubcommandReloadItem( (EditorReactor)arg1, (Database)arg2, (int)arg3, (ObjectId)arg4) -> None :
 
     C++ signature :
         void xrefSubcommandReloadItem(class PyEditorReactor {lvalue},class PyDbDatabase {lvalue},int,class PyDbObjectId {lvalue})'''
     ...
-    def xrefSubcommandUnloadItem (self, *args, **kwargs):
+    def xrefSubcommandUnloadItem (self, *args, **kwargs)-> None :
       '''
 xrefSubcommandUnloadItem( (EditorReactor)arg1, (Database)arg2, (int)arg3, (ObjectId)arg4) -> None :
 
@@ -1549,7 +1567,7 @@ xrefSubcommandUnloadItem( (EditorReactor)arg1, (Database)arg2, (int)arg3, (Objec
     ...
 
 class Jig:
-    def acquireAngle (self, *args, **kwargs):
+    def acquireAngle (self, *args, **kwargs)-> tuple :
       '''
 acquireAngle( (Jig)arg1) -> tuple :
 
@@ -1561,7 +1579,7 @@ acquireAngle( (Jig)arg1, (Point3d)arg2) -> tuple :
     C++ signature :
         class boost::python::tuple acquireAngle(class PyJig {lvalue},class AcGePoint3d)'''
     ...
-    def acquireDist (self, *args, **kwargs):
+    def acquireDist (self, *args, **kwargs)-> tuple :
       '''
 acquireDist( (Jig)arg1) -> tuple :
 
@@ -1573,7 +1591,7 @@ acquireDist( (Jig)arg1, (Point3d)arg2) -> tuple :
     C++ signature :
         class boost::python::tuple acquireDist(class PyJig {lvalue},class AcGePoint3d)'''
     ...
-    def acquirePoint (self, *args, **kwargs):
+    def acquirePoint (self, *args, **kwargs)-> tuple :
       '''
 acquirePoint( (Jig)arg1) -> tuple :
 
@@ -1585,35 +1603,35 @@ acquirePoint( (Jig)arg1, (Point3d)arg2) -> tuple :
     C++ signature :
         class boost::python::tuple acquirePoint(class PyJig {lvalue},class AcGePoint3d)'''
     ...
-    def acquireString (self, *args, **kwargs):
+    def acquireString (self, *args, **kwargs)-> tuple :
       '''
 acquireString( (Jig)arg1) -> tuple :
 
     C++ signature :
         class boost::python::tuple acquireString(class PyJig {lvalue})'''
     ...
-    def append (self, *args, **kwargs):
+    def append (self, *args, **kwargs)-> ObjectId :
       '''
 append( (Jig)arg1) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId append(class PyJig {lvalue})'''
     ...
-    def className (self, *args, **kwargs):
+    def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def dispPrompt (self, *args, **kwargs):
+    def dispPrompt (self, *args, **kwargs)-> str :
       '''
 dispPrompt( (Jig)arg1) -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dispPrompt(class PyJig {lvalue})'''
     ...
-    def drag (self, *args, **kwargs):
+    def drag (self, *args, **kwargs)-> DragStatus :
       '''
 drag( (Jig)arg1) -> DragStatus :
 
@@ -1625,63 +1643,63 @@ drag( (Jig)arg1, (DragStyle)arg2) -> DragStatus :
     C++ signature :
         enum AcEdJig::DragStatus drag(class PyJig {lvalue},class AcEdDragStyle)'''
     ...
-    def keywordList (self, *args, **kwargs):
+    def keywordList (self, *args, **kwargs)-> str :
       '''
 keywordList( (Jig)arg1) -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > keywordList(class PyJig {lvalue})'''
     ...
-    def sampler (self, *args, **kwargs):
+    def sampler (self, *args, **kwargs)-> DragStatus :
       '''
 sampler( (Jig)arg1) -> DragStatus :
 
     C++ signature :
         enum AcEdJig::DragStatus sampler(class PyJig {lvalue})'''
     ...
-    def setDispPrompt (self, *args, **kwargs):
+    def setDispPrompt (self, *args, **kwargs)-> None :
       '''
 setDispPrompt( (Jig)arg1, (str)arg2) -> None :
 
     C++ signature :
         void setDispPrompt(class PyJig {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setKeywordList (self, *args, **kwargs):
+    def setKeywordList (self, *args, **kwargs)-> None :
       '''
 setKeywordList( (Jig)arg1, (str)arg2) -> None :
 
     C++ signature :
         void setKeywordList(class PyJig {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setSpecialCursorType (self, *args, **kwargs):
+    def setSpecialCursorType (self, *args, **kwargs)-> None :
       '''
 setSpecialCursorType( (Jig)arg1, (CursorType)arg2) -> None :
 
     C++ signature :
         void setSpecialCursorType(class PyJig {lvalue},enum AcEdJig::CursorType)'''
     ...
-    def setUserInputControls (self, *args, **kwargs):
+    def setUserInputControls (self, *args, **kwargs)-> None :
       '''
 setUserInputControls( (Jig)arg1, (UserInputControls)arg2) -> None :
 
     C++ signature :
         void setUserInputControls(class PyJig {lvalue},enum AcEdJig::UserInputControls)'''
     ...
-    def specialCursorType (self, *args, **kwargs):
+    def specialCursorType (self, *args, **kwargs)-> CursorType :
       '''
 specialCursorType( (Jig)arg1) -> CursorType :
 
     C++ signature :
         enum AcEdJig::CursorType specialCursorType(class PyJig {lvalue})'''
     ...
-    def update (self, *args, **kwargs):
+    def update (self, *args, **kwargs)-> bool :
       '''
 update( (Jig)arg1) -> bool :
 
     C++ signature :
         bool update(class PyJig {lvalue})'''
     ...
-    def userInputControls (self, *args, **kwargs):
+    def userInputControls (self, *args, **kwargs)-> UserInputControls :
       '''
 userInputControls( (Jig)arg1) -> UserInputControls :
 
@@ -1783,7 +1801,10 @@ Also known as the population count.
     def name (self, *args, **kwargs):
       '''None'''
     ...
-    def names (self, *args, **kwargs):
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
       '''dict() -> new empty dictionary
 dict(mapping) -> new dictionary initialized from a mapping object's
     (key, value) pairs
@@ -1817,7 +1838,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     If signed is False and a negative integer is given, an OverflowError
     is raised.'''
     ...
-    def values (self, *args, **kwargs):
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
       '''dict() -> new empty dictionary
 dict(mapping) -> new dictionary initialized from a mapping object's
     (key, value) pairs
@@ -1830,49 +1854,49 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class SelectionSet:
-    def add (self, *args, **kwargs):
+    def add (self, *args, **kwargs)-> None :
       '''
 add( (SelectionSet)arg1, (ObjectId)arg2) -> None :
 
     C++ signature :
         void add(class PyEdSelectionSet {lvalue},class PyDbObjectId)'''
     ...
-    def clear (self, *args, **kwargs):
+    def clear (self, *args, **kwargs)-> None :
       '''
 clear( (SelectionSet)arg1) -> None :
 
     C++ signature :
         void clear(class PyEdSelectionSet {lvalue})'''
     ...
-    def hasMember (self, *args, **kwargs):
+    def hasMember (self, *args, **kwargs)-> bool :
       '''
 hasMember( (SelectionSet)arg1, (ObjectId)arg2) -> bool :
 
     C++ signature :
         bool hasMember(class PyEdSelectionSet {lvalue},class PyDbObjectId)'''
     ...
-    def isInitialized (self, *args, **kwargs):
+    def isInitialized (self, *args, **kwargs)-> bool :
       '''
 isInitialized( (SelectionSet)arg1) -> bool :
 
     C++ signature :
         bool isInitialized(class PyEdSelectionSet {lvalue})'''
     ...
-    def remove (self, *args, **kwargs):
+    def remove (self, *args, **kwargs)-> None :
       '''
 remove( (SelectionSet)arg1, (ObjectId)arg2) -> None :
 
     C++ signature :
         void remove(class PyEdSelectionSet {lvalue},class PyDbObjectId)'''
     ...
-    def size (self, *args, **kwargs):
+    def size (self, *args, **kwargs)-> int :
       '''
 size( (SelectionSet)arg1) -> int :
 
     C++ signature :
         unsigned __int64 size(class PyEdSelectionSet {lvalue})'''
     ...
-    def toList (self, *args, **kwargs):
+    def toList (self, *args, **kwargs)-> list :
       '''
 toList( (SelectionSet)arg1) -> list :
 
@@ -1992,7 +2016,10 @@ Also known as the population count.
     def name (self, *args, **kwargs):
       '''None'''
     ...
-    def names (self, *args, **kwargs):
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
       '''dict() -> new empty dictionary
 dict(mapping) -> new dictionary initialized from a mapping object's
     (key, value) pairs
@@ -2026,7 +2053,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     If signed is False and a negative integer is given, an OverflowError
     is raised.'''
     ...
-    def values (self, *args, **kwargs):
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
       '''dict() -> new empty dictionary
 dict(mapping) -> new dictionary initialized from a mapping object's
     (key, value) pairs
@@ -2039,7 +2069,16 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class __loader__:
-    def _ORIGIN (self, *args, **kwargs):
+    def _ORIGIN (self, *args, **kwargs)-> str
+str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict':
       '''str(object='') -> str
 str(bytes_or_buffer[, encoding[, errors]]) -> str
 
