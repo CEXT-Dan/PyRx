@@ -32,6 +32,11 @@
 
 using namespace boost::python;
 
+static PyDbDatabase curPyDb()
+{
+    return PyDbDatabase(acdbHostApplicationServices()->workingDatabase(), false);
+}
+
 void makeAcDbExtents2dWrapper()
 {
     class_<AcDbExtents2d>("Extents2d")
@@ -131,7 +136,6 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbDatabaseWrapper();
     makeAcDbHostApplicationServicesWrapper();
 
-
     makePyDb3dSolidWrapper();
     makePyDbRegionWrapper();
     makePyDbSurfaceWrapper();
@@ -173,6 +177,9 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyTransaction();
 
     makeDbCoreWrapper();//LAST
+
+
+    def("curDb", curPyDb);
 
     enum_<AcDb::LineSpacingStyle>("LineSpacingStyle")
         .value("kAtLeast", AcDb::LineSpacingStyle::kAtLeast)
