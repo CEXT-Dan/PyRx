@@ -1,5 +1,8 @@
 
 class AcGiArcType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -122,6 +125,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class AcGiFillType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -241,6 +247,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class AcGiOrientationTransformBehavior:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -363,6 +372,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class AcGiOrientationType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -485,6 +497,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class AcGiPositionTransformBehavior:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -613,6 +628,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class AcGiScaleTransformBehavior:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -741,6 +759,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class AcGiVisibility:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -863,6 +884,11 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class CommonDraw:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -909,6 +935,9 @@ subEntityTraits( (CommonDraw)arg1) -> SubEntityTraits :
 class DrawFlags:
     def KDrawIsInWCS (self, *args, **kwargs):
       '''None'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
@@ -1059,6 +1088,11 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class Drawable:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -1096,6 +1130,13 @@ refCount( (RxObject)arg1) -> int :
     ...
 
 class DrawableOverrule:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def addOverrule (self, *args, **kwargs)-> ErrorStatus :
       '''
 addOverrule( (RxClass)arg1, (Overrule)arg2) -> ErrorStatus :
@@ -1224,6 +1265,11 @@ worldDraw( (DrawableOverrule)arg1, (Drawable)arg2, (WorldDraw)arg3) -> bool :
     ...
 
 class DrawableTraits:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -1502,6 +1548,11 @@ visualStyle( (SubEntityTraits)arg1) -> ObjectId :
     ...
 
 class Geometry:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def circle (self, *args, **kwargs)-> bool :
       '''
 circle( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4) -> bool :
@@ -1729,6 +1780,9 @@ xline( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
     ...
 
 class SelectionFlags:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -1848,6 +1902,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class ShadowFlags:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -1973,6 +2030,11 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class SubEntityTraits:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -2251,6 +2313,9 @@ visualStyle( (SubEntityTraits)arg1) -> ObjectId :
     ...
 
 class TransparencyMode:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -2373,6 +2438,11 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class ViewportDraw:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -2424,6 +2494,11 @@ subEntityTraits( (CommonDraw)arg1) -> SubEntityTraits :
     ...
 
 class ViewportGeometry:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def circle (self, *args, **kwargs)-> bool :
       '''
 circle( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4) -> bool :
@@ -2651,6 +2726,11 @@ xline( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
     ...
 
 class WorldDraw:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -2702,6 +2782,11 @@ subEntityTraits( (CommonDraw)arg1) -> SubEntityTraits :
     ...
 
 class WorldGeometry:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def circle (self, *args, **kwargs)-> bool :
       '''
 circle( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4) -> bool :
@@ -2949,6 +3034,9 @@ Otherwise, returns the result of object.__str__() (if defined)
 or repr(object).
 encoding defaults to sys.getdefaultencoding().
 errors defaults to 'strict'.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def create_module (spec):
       '''Create a built-in module'''

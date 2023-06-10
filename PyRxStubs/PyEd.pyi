@@ -1,5 +1,12 @@
 
 class Core:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def activeViewportId (self, *args, **kwargs)-> ObjectId :
       '''
 activeViewportId() -> ObjectId :
@@ -75,6 +82,9 @@ xrefDetach( (str)arg1, (bool)arg2, (Database)arg3) -> ErrorStatus :
     ...
 
 class CursorType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -230,6 +240,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class DragStatus:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -394,6 +407,23 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class DragStyle:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (DragStyleType)arg2, (DragStyleType)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,enum AcEdDragStyle::StyleType,enum AcEdDragStyle::StyleType)'''
+    ...
     def setStyleTypeForDragged (self, *args, **kwargs)-> ErrorStatus :
       '''
 setStyleTypeForDragged( (DragStyle)arg1, (DragStyleType)arg2) -> ErrorStatus :
@@ -424,6 +454,9 @@ styleTypeForOriginal( (DragStyle)arg1) -> DragStyleType :
     ...
 
 class DragStyleType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -558,6 +591,13 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class DrawJig:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def acquireAngle (self, *args, **kwargs)-> tuple :
       '''
 acquireAngle( (DrawJig)arg1) -> tuple :
@@ -706,6 +746,13 @@ worldDraw( (DrawJig)arg1, (WorldDraw)arg2) -> bool :
     ...
 
 class Editor:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def activeViewportId (self, *args, **kwargs)-> ObjectId :
       '''
 activeViewportId() -> ObjectId :
@@ -937,6 +984,13 @@ setVar( (str)arg1, (object)arg2) -> bool :
     ...
 
 class EditorReactor:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def abortAttach (self, *args, **kwargs)-> None :
       '''
 abortAttach( (EditorReactor)arg1, (Database)arg2) -> None :
@@ -1567,6 +1621,13 @@ xrefSubcommandUnloadItem( (EditorReactor)arg1, (Database)arg2, (int)arg3, (Objec
     ...
 
 class Jig:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1, (Entity)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbEntity)'''
+    ...
     def acquireAngle (self, *args, **kwargs)-> tuple :
       '''
 acquireAngle( (Jig)arg1) -> tuple :
@@ -1708,6 +1769,9 @@ userInputControls( (Jig)arg1) -> UserInputControls :
     ...
 
 class PromptStatus:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -1854,6 +1918,11 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class SelectionSet:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def add (self, *args, **kwargs)-> None :
       '''
 add( (SelectionSet)arg1, (ObjectId)arg2) -> None :
@@ -1905,6 +1974,9 @@ toList( (SelectionSet)arg1) -> list :
     ...
 
 class UserInputControls:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -2089,6 +2161,9 @@ Otherwise, returns the result of object.__str__() (if defined)
 or repr(object).
 encoding defaults to sys.getdefaultencoding().
 errors defaults to 'strict'.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def create_module (spec):
       '''Create a built-in module'''

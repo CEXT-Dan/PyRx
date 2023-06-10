@@ -14,15 +14,18 @@ import PyEd  # = editor
 
 # just some ideas on getting help, work in progress
 
+
 def include_attr(name):
     try:
-        if name.startswith('__'):
+        if name == '__init__':
+            return True
+        elif name.startswith('__'):
             return False
         return True
     except:
         return True
 
-   
+
 def generate_pyi(moduleName, module):
     with open(moduleName, 'w') as f:
 
@@ -34,15 +37,15 @@ def generate_pyi(moduleName, module):
                 for func_name, func in inspect.getmembers(obj):
                     if include_attr(func_name):
                         sig = "{0}".format(func.__doc__)
-                        pos1 = sig.find('->')
-                        pos2 = sig.find(':')
+                        ib = sig.find('->')
+                        ie = sig.find(':')
                         try:
                             f.write(f'    def {func_name} {inspect.signature(func)}:\n')
                         except:
-                            f.write(f'    def {func_name} (self, *args, **kwargs){sig[pos1:pos2]}:\n')
+                            f.write(f'    def {func_name} (self, *args, **kwargs){sig[ib:ie]}:\n')
                         f.write(f"      '''{func.__doc__}'''")
                         f.write('\n    ...\n')
-                        
+
             elif inspect.isbuiltin(obj):
                 f.write('\n')
                 f.write(f'function {name}:\n')
@@ -53,14 +56,13 @@ def generate_pyi(moduleName, module):
                 except Exception as err:
                     print(err)
 
-            
-            
-                
+
 def generate_html_help(moduleName, module):
     str = pydoc.html.docmodule(module)
     with open(moduleName, mode='w') as f:
 	    print(str, file=f)
-     
+
+
 def generate_txt_help(moduleName, module):
     doc_content = io.StringIO()
     helper = pydoc.Helper(output=doc_content)
@@ -68,32 +70,32 @@ def generate_txt_help(moduleName, module):
     with open(moduleName, mode='w') as f:
 	    print(str, file=f)
 
-                        
-def PyRxCmd_pygenpyi():
-    generate_pyi('PyRxApp.pyi',PyRxApp)
-    generate_pyi('PyRx.pyi',PyRx)
-    generate_pyi('PyGe.pyi',PyGe)
-    generate_pyi('PyGi.pyi',PyGi)
-    generate_pyi('PyDb.pyi',PyDb)
-    generate_pyi('PyAp.pyi',PyAp)
-    generate_pyi('PyEd.pyi',PyEd)
-    
-def PyRxCmd_pygenhtmlhelp():
-    generate_html_help('PyRxApp.html',PyRxApp)
-    generate_html_help('PyRx.html',PyRx)
-    generate_html_help('PyGe.html',PyGe)
-    generate_html_help('PyGi.html',PyGi)
-    generate_html_help('PyDb.html',PyDb)
-    generate_html_help('PyAp.html',PyAp)
-    generate_html_help('PyEd.html',PyEd)
-    
-def PyRxCmd_pygentxthelp():
-    generate_txt_help('PyRxApp.txt',PyRxApp)
-    generate_txt_help('PyRx.txt',PyRx)
-    generate_txt_help('PyGe.txt',PyGe)
-    generate_txt_help('PyGi.txt',PyGi)
-    generate_txt_help('PyDb.txt',PyDb)
-    generate_txt_help('PyAp.txt',PyAp)
-    generate_txt_help('PyEd.txt',PyEd)
 
-    
+def PyRxCmd_pygenpyi():
+    generate_pyi('PyRxApp.pyi', PyRxApp)
+    generate_pyi('PyRx.pyi', PyRx)
+    generate_pyi('PyGe.pyi', PyGe)
+    generate_pyi('PyGi.pyi', PyGi)
+    generate_pyi('PyDb.pyi', PyDb)
+    generate_pyi('PyAp.pyi', PyAp)
+    generate_pyi('PyEd.pyi', PyEd)
+
+
+def PyRxCmd_pygenhtmlhelp():
+    generate_html_help('PyRxApp.html', PyRxApp)
+    generate_html_help('PyRx.html', PyRx)
+    generate_html_help('PyGe.html', PyGe)
+    generate_html_help('PyGi.html', PyGi)
+    generate_html_help('PyDb.html', PyDb)
+    generate_html_help('PyAp.html', PyAp)
+    generate_html_help('PyEd.html', PyEd)
+
+
+def PyRxCmd_pygentxthelp():
+    generate_txt_help('PyRxApp.txt', PyRxApp)
+    generate_txt_help('PyRx.txt', PyRx)
+    generate_txt_help('PyGe.txt', PyGe)
+    generate_txt_help('PyGi.txt', PyGi)
+    generate_txt_help('PyDb.txt', PyDb)
+    generate_txt_help('PyAp.txt', PyAp)
+    generate_txt_help('PyEd.txt', PyEd)

@@ -1,5 +1,8 @@
 
 class ACIcolorMethod:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -140,6 +143,13 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class AdsName:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def fromObjectId (self, *args, **kwargs)-> None :
       '''
 fromObjectId( (AdsName)arg1, (ObjectId)arg2) -> None :
@@ -156,6 +166,38 @@ toObjectId( (AdsName)arg1) -> ObjectId :
     ...
 
 class AlignedDimension:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (ObjectId)arg6) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -1810,6 +1852,9 @@ xLine2Point( (AlignedDimension)arg1) -> Point3d :
     ...
 
 class AnnoType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -1935,6 +1980,33 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class Arc:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
+
+__init__( (object)arg1, (Point3d)arg2, (float)arg3, (float)arg4, (float)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,double,double,double)
+
+__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5, (float)arg6) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,double,double,double)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -2999,6 +3071,38 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class ArcDimension:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (str)arg6) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (str)arg6, (ObjectId)arg7) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -4723,6 +4827,28 @@ xLine2Point( (ArcDimension)arg1) -> Point3d :
     ...
 
 class AttributeDefinition:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point3d)arg2, (str)arg3, (str)arg4, (str)arg5, (ObjectId)arg6) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -5893,6 +6019,28 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class AttributeReference:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point3d)arg2, (str)arg3, (str)arg4, (ObjectId)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -7047,6 +7195,13 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class BlockBegin:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -7832,6 +7987,13 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class BlockEnd:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -8617,6 +8779,28 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class BlockReference:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d {lvalue},class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -9540,6 +9724,9 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class BlockScaling:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -9659,6 +9846,13 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class BlockTable:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def add (self, *args, **kwargs)-> ObjectId :
       '''
 add( (BlockTable)arg1, (BlockTableRecord)arg2) -> ObjectId :
@@ -10087,6 +10281,13 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class BlockTableRecord:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addAnnoScalestoBlkRefs (self, *args, **kwargs)-> ErrorStatus :
       '''
 addAnnoScalestoBlkRefs( (BlockTableRecord)arg1, (bool)arg2) -> ErrorStatus :
@@ -10753,6 +10954,13 @@ xrefStatus( (BlockTableRecord)arg1) -> XrefStatus :
     ...
 
 class Cell:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def column (self, *args, **kwargs):
       '''None'''
     ...
@@ -10761,6 +10969,9 @@ class Cell:
     ...
 
 class CellAlignment:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -10901,6 +11112,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class CellContentLayout:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -11023,6 +11237,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class CellContentType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -11148,6 +11365,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class CellEdgeMask:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -11273,6 +11493,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class CellMargin:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -11404,6 +11627,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class CellProperty:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -11589,6 +11815,13 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class CellRange:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def bottomRow (self, *args, **kwargs):
       '''None'''
     ...
@@ -11603,6 +11836,9 @@ class CellRange:
     ...
 
 class CellState:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -11743,6 +11979,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class CellType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -11868,6 +12107,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class CenterMarkType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -11990,6 +12232,28 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class Circle:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
+
+__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,double)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -13040,6 +13304,9 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class ClipBoundaryType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -13162,6 +13429,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class CollisionType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -13281,6 +13551,13 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class Color:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def blue (self, *args, **kwargs)-> int :
       '''
 blue( (Color)arg1) -> int :
@@ -13435,6 +13712,9 @@ setRGBM( (Color)arg1, (int)arg2) -> ErrorStatus :
     ...
 
 class ColorMethod:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -13575,6 +13855,13 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class Core:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def entDel (self, *args, **kwargs)-> bool :
       '''
 entDel( (ObjectId)arg1) -> bool :
@@ -13663,6 +13950,13 @@ updateDimension( (ObjectId)arg1) -> ErrorStatus :
     ...
 
 class Curve:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -14635,6 +14929,23 @@ UCSTableId( (Database)arg1) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId UCSTableId(class PyDbDatabase {lvalue})'''
+    ...
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (bool)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,bool,bool)'''
     ...
     def addObject (self, *args, **kwargs)-> ObjectId :
       '''
@@ -17783,6 +18094,13 @@ xrefEditEnabled( (Database)arg1) -> bool :
     ...
 
 class DbObject:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -18178,6 +18496,38 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class DiametricDimension:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,double)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (ObjectId)arg6) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -19818,6 +20168,23 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Dictionary:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -20284,6 +20651,9 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class DimInspect:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -20415,6 +20785,13 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class DimStyleTable:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def add (self, *args, **kwargs)-> ObjectId :
       '''
 add( (DimStyleTable)arg1, (DimStyleTableRecord)arg2) -> ObjectId :
@@ -20843,6 +21220,23 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class DimStyleTableRecord:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -21273,6 +21667,13 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Dimension:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -22843,6 +23244,9 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class DrawLeaderOrderType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -22962,6 +23366,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class DrawMLeaderOrderType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -23081,6 +23488,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class DuplicateRecordCloning:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -23212,6 +23622,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class DxfCode:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -23832,6 +24245,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class EndCaps:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -23957,6 +24373,13 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class Entity:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -24770,6 +25193,18 @@ None() -> EntityColor :
     C++ signature :
         class AcCmEntityColor None()'''
     ...
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (int)arg2, (int)arg3, (int)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,unsigned char,unsigned char,unsigned char)'''
+    ...
     def black (self, *args, **kwargs)-> EntityColor :
       '''
 black() -> EntityColor :
@@ -25024,6 +25459,9 @@ white() -> EntityColor :
 class ErrorStatus:
     def Ok (self, *args, **kwargs):
       '''None'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
@@ -26668,6 +27106,28 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class Extents:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Extents)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcDbExtents)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d)'''
+    ...
     def addExt (self, *args, **kwargs)-> None :
       '''
 addExt( (Extents)arg1, (Extents)arg2) -> None :
@@ -26719,6 +27179,28 @@ transformBy( (Extents)arg1, (Matrix3d)arg2) -> None :
     ...
 
 class Extents2d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Extents2d)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcDbExtents2d)
+
+__init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d)'''
+    ...
     def addExt (self, *args, **kwargs)-> None :
       '''
 addExt( (Extents2d)arg1, (Extents2d)arg2) -> None :
@@ -26770,6 +27252,23 @@ transformBy( (Extents2d)arg1, (Matrix2d)arg2) -> None :
     ...
 
 class ExtrudedSurface:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -27555,6 +28054,43 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Face:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (bool)arg5, (bool)arg6, (bool)arg7, (bool)arg8) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,bool,bool,bool,bool)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (bool)arg6, (bool)arg7, (bool)arg8, (bool)arg9) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,bool,bool,bool,bool)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -28380,6 +28916,28 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class FaceRecord:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (DxfCode)arg2, (DxfCode)arg3, (DxfCode)arg4, (DxfCode)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,short,short,short,short)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -29200,6 +29758,28 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Fcf:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
+
+__init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -30179,6 +30759,33 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Field:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+__init__( (object)arg1, (str)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -30689,6 +31296,9 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class FieldCodeFlag:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -30841,6 +31451,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class FieldEvalContext:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -30978,6 +31591,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class FieldEvalOption:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -31115,6 +31731,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class FieldEvalStatus:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -31249,6 +31868,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class FieldState:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -31380,6 +32002,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class FindFileHint:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -31535,6 +32160,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class GridLineStyle:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -31654,6 +32282,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class GridLineType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -31803,6 +32434,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class GridProperty:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -31940,6 +32574,23 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class Hatch:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -33199,6 +33850,9 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class HatchEdgeType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -33324,6 +33978,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class HatchGradientPatternType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -33443,6 +34100,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class HatchLoopType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -33601,6 +34261,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class HatchObjectType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -33720,6 +34383,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class HatchPatternType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -33842,6 +34508,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class HatchStyle:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -33964,6 +34633,18 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class HostApplicationServices:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def findFile (self, *args, **kwargs)-> str :
       '''
 findFile( (HostApplicationServices)arg1, (str)arg2) -> str :
@@ -34004,8 +34685,27 @@ workingDatabase( (HostApplicationServices)arg1) -> Database :
     ...
 
 class IdMapping:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
 
 class Image:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -34791,6 +35491,9 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class ImageDisplayOpt:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -34916,6 +35619,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class ImageUnits:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -35092,6 +35798,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class JoinStyle:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -35223,6 +35932,13 @@ VPDFLT( (LayerTableRecord)arg1) -> bool :
 
     C++ signature :
         bool VPDFLT(class PyDbLayerTableRecord {lvalue})'''
+    ...
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
@@ -35990,6 +36706,23 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Leader:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -37337,6 +38070,28 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Line:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -38359,6 +39114,38 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class LineAngularDimension2:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (Point3d)arg6) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (Point3d)arg6, (str)arg7) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (Point3d)arg6, (str)arg7, (ObjectId)arg8) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -40013,6 +40800,9 @@ xLine2Start( (LineAngularDimension2)arg1) -> Point3d :
     ...
 
 class LineSpacingStyle:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -40132,6 +40922,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class LineWeight:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -40326,6 +41119,23 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class LoftedSurface:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -41111,6 +41921,28 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class MInsertBlock:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3, (int)arg4, (int)arg5, (float)arg6, (float)arg7) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d {lvalue},class PyDbObjectId,unsigned short,unsigned short,double,double)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -42096,6 +42928,23 @@ MLeaderStyle( (MLeader)arg1) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId MLeaderStyle(class PyDbMLeader {lvalue})'''
+    ...
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
     def addFirstVertex (self, *args, **kwargs)-> ErrorStatus :
       '''
@@ -43732,6 +44581,9 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class MLeaderBlockConnectionType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -43851,6 +44703,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class MLeaderContentType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -43976,6 +44831,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class MLeaderGsMarkType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -44116,6 +44974,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class MLeaderLeaderDirectionType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -44244,6 +45105,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class MLeaderLeaderType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -44366,6 +45230,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class MLeaderMoveType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -44488,6 +45355,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class MLeaderPropertyOverrideType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -44697,6 +45567,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class MLeaderSegmentAngleType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -44831,6 +45704,23 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class MLeaderStyle:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -45841,6 +46731,9 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class MLeaderTextAlignmentType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -45963,6 +46856,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class MLeaderTextAngleType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -46085,6 +46981,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class MLeaderTextAttachmentDirection:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -46204,6 +47103,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class MLeaderTextAttachmentType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -46350,6 +47252,23 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class MText:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def actualHeight (self, *args, **kwargs)-> float :
       '''
 actualHeight( (MText)arg1) -> float :
@@ -47583,6 +48502,9 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class MTextAttachmentPoint:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -47768,6 +48690,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class MTextColumnType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -47890,6 +48815,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class MTextFlowDirection:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -48018,6 +48946,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class MeasurementValue:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -48137,6 +49068,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class MergeCellStyleOption:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -48265,6 +49199,23 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class Mline:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -49226,6 +50177,9 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class MlineJustification:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -49357,6 +50311,23 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class MlineStyle:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addElement (self, *args, **kwargs)-> int :
       '''
 addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4) -> int :
@@ -49993,6 +50964,23 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class NurbSurface:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -50778,6 +51766,18 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class ObjectId:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def asOldId (self, *args, **kwargs)-> int :
       '''
 asOldId( (ObjectId)arg1) -> int :
@@ -50865,6 +51865,9 @@ class OpenMode:
     ...
     def ForWrite (self, *args, **kwargs):
       '''None'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
@@ -50988,6 +51991,38 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class OrdinateDimension:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
+
+__init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,bool,class AcGePoint3d,class AcGePoint3d)
+
+__init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,bool,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+__init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (ObjectId)arg6) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,bool,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -52642,6 +53677,9 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class OrthographicView:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -52776,6 +53814,23 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class PdfDefinition:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -53239,6 +54294,23 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class PdfReference:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -54325,6 +55397,9 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Planarity:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -54447,6 +55522,23 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class PlaneSurface:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -55232,6 +56324,9 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class PlotStyleNameType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -55357,6 +56452,28 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class Point:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point3d)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d {lvalue})
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -56198,6 +57315,38 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Point3AngularDimension:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (str)arg6) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (str)arg6, (ObjectId)arg7) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -57838,6 +58987,9 @@ xLine2Point( (Point3AngularDimension)arg1) -> Point3d :
     ...
 
 class Poly2dType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -57963,6 +59115,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class Poly3dType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -58085,6 +59240,28 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class PolyFaceMeshVertex:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point3d)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -58884,6 +60061,28 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class PolygonMeshVertex:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point3d)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -59690,6 +60889,28 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Polyline:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,unsigned int)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -60918,6 +62139,28 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Polyline2d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
+
+__init__( (object)arg1, (Poly2dType)arg2, (list)arg3, (bool)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,enum AcDb::Poly2dType,class boost::python::list,bool)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -62116,6 +63359,28 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Polyline3d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
+
+__init__( (object)arg1, (Poly3dType)arg2, (list)arg3, (bool)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,enum AcDb::Poly3dType,class boost::python::list,bool)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -63195,6 +64460,28 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Polyline3dVertex:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point3d)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -64001,6 +65288,38 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class RadialDimension:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,double)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (ObjectId)arg6) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -65641,6 +66960,38 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class RadialDimensionLarge:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (float)arg6) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,double)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (float)arg6, (str)arg7) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (float)arg6, (str)arg7, (ObjectId)arg8) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -67330,6 +68681,23 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class RasterImage:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -68393,6 +69761,23 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class RasterImageDef:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def activeFileName (self, *args, **kwargs)-> str :
       '''
 activeFileName( (RasterImageDef)arg1) -> str :
@@ -68940,6 +70325,23 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class RasterImageDefReactor:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -69342,6 +70744,23 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Region:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -70127,6 +71546,9 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class RemapFileContext:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -70252,6 +71674,23 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class RevolvedSurface:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -71037,6 +72476,38 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class RotatedDimension:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
+
+__init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,double,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)
+
+__init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (str)arg6) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,double,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+__init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (str)arg6, (ObjectId)arg7) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,double,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -72705,6 +74176,9 @@ xLine2Point( (RotatedDimension)arg1) -> Point3d :
     ...
 
 class RotationAngle:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -72833,6 +74307,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class RowType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -72961,6 +74438,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class SegType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -73089,6 +74569,13 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class SequenceEnd:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -73874,6 +75361,23 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Solid3d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -74706,6 +76210,23 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Surface:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -75491,6 +77012,23 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class SweptSurface:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -76276,6 +77814,13 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class SymbolTable:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -76697,6 +78242,13 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class SymbolTableRecord:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -77127,6 +78679,23 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Table:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -79464,6 +81033,9 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class TableBreakFlowDirection:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -79586,6 +81158,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class TableBreakOption:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -79717,6 +81292,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class TableFlowDirection:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -79836,6 +81414,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class TableHitItem:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -79964,6 +81545,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class TableIteratorOption:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -80104,6 +81688,23 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class TableStyle:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -81079,6 +82680,33 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Text:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point3d)arg2, (str)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+__init__( (object)arg1, (Point3d)arg2, (str)arg3, (ObjectId)arg4, (float)arg5, (float)arg6) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},double,double)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -82102,6 +83730,9 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class TextAlignment:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -82260,6 +83891,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class TextHorzMode:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -82391,6 +84025,13 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class TextStyleTableRecord:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -82961,6 +84602,11 @@ xScale( (TextStyleTableRecord)arg1) -> float :
     ...
 
 class Transaction:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -83029,6 +84675,13 @@ refCount( (RxObject)arg1) -> int :
     ...
 
 class TransactionManager:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def abortTransaction (self, *args, **kwargs)-> ErrorStatus :
       '''
 abortTransaction( (TransactionManager)arg1) -> ErrorStatus :
@@ -83151,6 +84804,23 @@ topTransaction( (TransactionManager)arg1) -> Transaction :
     ...
 
 class Transparency:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,unsigned char)
+
+__init__( (object)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,double)'''
+    ...
     def alpha (self, *args, **kwargs)-> int :
       '''
 alpha( (Transparency)arg1) -> int :
@@ -83223,6 +84893,9 @@ setAlphaPercent( (Transparency)arg1, (float)arg2) -> None :
     ...
 
 class TransparencyMethod:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -83348,6 +85021,13 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class UnderlayDefinition:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -83811,6 +85491,13 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class UnderlayLayer:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def name (self, *args, **kwargs)-> str :
       '''
 name( (UnderlayLayer)arg1) -> str :
@@ -83841,6 +85528,13 @@ state( (UnderlayLayer)arg1) -> bool :
     ...
 
 class UnderlayReference:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -84927,6 +86621,9 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class UnitsValue:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -85118,6 +86815,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class UpdateDirection:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -85237,6 +86937,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class UpdateOption:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -85383,6 +87086,13 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class Vertex:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -86168,6 +87878,33 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Vertex2d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point3d)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d)
+
+__init__( (object)arg1, (Point3d)arg2, (float)arg3, (float)arg4, (float)arg5, (float)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,double,double,double,double,int)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -87072,6 +88809,9 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class Vertex2dType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -87197,6 +88937,9 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class Visibility:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -87316,6 +89059,23 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class Xrecord:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
     def addPersistentReactor (self, *args, **kwargs)-> ErrorStatus :
       '''
 addPersistentReactor( (DbObject)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -87763,6 +89523,9 @@ xDataTransformBy( (DbObject)arg1, (Matrix3d)arg2) -> ErrorStatus :
     ...
 
 class XrefStatus:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -87914,6 +89677,9 @@ Otherwise, returns the result of object.__str__() (if defined)
 or repr(object).
 encoding defaults to sys.getdefaultencoding().
 errors defaults to 'strict'.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def create_module (spec):
       '''Create a built-in module'''

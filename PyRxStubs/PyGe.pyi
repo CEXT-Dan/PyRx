@@ -1,5 +1,8 @@
 
 class AcGeError:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -149,6 +152,28 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class BoundBlock2d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d)
+
+__init__( (object)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGeVector2d,class AcGeVector2d)'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -344,6 +369,23 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class BoundBlock3d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (Vector3d)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,class AcGeVector3d)'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -539,6 +581,43 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class CircArc2d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point2d)arg2, (float)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d,double)
+
+__init__( (object)arg1, (Point2d)arg2, (float)arg3, (float)arg4, (float)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d,double,double,double)
+
+__init__( (object)arg1, (Point2d)arg2, (float)arg3, (float)arg4, (float)arg5, (Vector2d)arg6, (bool)arg7) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d,double,double,double,class AcGeVector2d,bool)
+
+__init__( (object)arg1, (Point2d)arg2, (Point2d)arg3, (Point2d)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d,class AcGePoint2d)
+
+__init__( (object)arg1, (Point2d)arg2, (Point2d)arg3, (float)arg4, (bool)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d,double,bool)'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -1138,6 +1217,33 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class CircArc3d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,double)
+
+__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6, (float)arg7) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -1857,6 +1963,28 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class ClipBoundary2d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d)
+
+__init__( (object)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list)'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -1963,6 +2091,13 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class CompositeCurve2d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -2393,6 +2528,13 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class CompositeCurve3d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -2914,6 +3056,13 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class CubicSplineCurve2d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -3461,6 +3610,13 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class CubicSplineCurve3d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -4099,6 +4255,11 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Curve2d:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -4529,6 +4690,11 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class Curve3d:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -5050,6 +5216,38 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class CurveCurveInt2d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (object)arg2, (object)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGeCurve2d,class AcGeCurve2d)
+
+__init__( (object)arg1, (object)arg2, (object)arg3, (Tol)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGeCurve2d,class AcGeCurve2d,class AcGeTol)
+
+__init__( (object)arg1, (object)arg2, (object)arg3, (Interval)arg4, (Interval)arg5) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGeCurve2d,class AcGeCurve2d,class PyGeInterval,class PyGeInterval)
+
+__init__( (object)arg1, (object)arg2, (object)arg3, (Interval)arg4, (Interval)arg5, (Tol)arg6) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGeCurve2d,class AcGeCurve2d,class PyGeInterval,class PyGeInterval,class AcGeTol)'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -5156,6 +5354,18 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class CurveCurveInt3d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -5257,6 +5467,11 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class CurveSurfInt:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -5358,6 +5573,33 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class EllipArc2d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (CircArc2d)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyGeCircArc2d)
+
+__init__( (object)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4, (float)arg5, (float)arg6) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGeVector2d,class AcGeVector2d,double,double)
+
+__init__( (object)arg1, (Point2d)arg2, (Vector2d)arg3, (Vector2d)arg4, (float)arg5, (float)arg6, (float)arg7, (float)arg8) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGeVector2d,class AcGeVector2d,double,double,double,double)'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -5946,6 +6188,33 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class EllipArc3d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (CircArc3d)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyGeCircArc3d)
+
+__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double)
+
+__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6, (float)arg7, (float)arg8) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double,double)'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -6666,6 +6935,11 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Entity2d:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -6772,6 +7046,11 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class Entity3d:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -6875,6 +7154,9 @@ type( (Entity3d)arg1) -> EntityId :
 class EntityId:
     def Helix (self, *args, **kwargs):
       '''None'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
@@ -7229,6 +7511,11 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class ExternalCurve2d:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -7659,6 +7946,11 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class ExternalCurve3d:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -8180,6 +8472,13 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Interval:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -8189,6 +8488,13 @@ className() -> str :
     ...
 
 class KnotVector:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -8198,6 +8504,28 @@ className() -> str :
     ...
 
 class Line2d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point2d)arg2, (Vector2d)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGeVector2d)
+
+__init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d)'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -8734,6 +9062,28 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class Line3d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d)'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -9406,6 +9756,28 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class LineSeg2d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point2d)arg2, (Vector2d)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGeVector2d)
+
+__init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d)'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -9986,6 +10358,28 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class LineSeg3d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d)'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -10689,6 +11083,11 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class LinearEnt2d:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -11207,6 +11606,11 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class LinearEnt3d:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -11858,6 +12262,13 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Matrix2d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def alignCoordSys (self, *args, **kwargs)-> Matrix2d :
       '''
 alignCoordSys( (Point2d)arg1, (Vector2d)arg2, (Vector2d)arg3, (Point2d)arg4, (Vector2d)arg5, (Vector2d)arg6) -> Matrix2d :
@@ -11909,17 +12320,17 @@ isConformal( (Matrix2d)arg1, (float)arg2, (float)arg3, (bool)arg4, (Vector2d)arg
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
       '''
-isEqualTo( (Matrix2d)arg1, (Matrix2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001C20167D480>]) -> bool :
+isEqualTo( (Matrix2d)arg1, (Matrix2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001E4829D1480>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeMatrix2d {lvalue},class AcGeMatrix2d [,class AcGeTol=<PyGe.Tol object at 0x000001C20167D480>])'''
+        bool isEqualTo(class AcGeMatrix2d {lvalue},class AcGeMatrix2d [,class AcGeTol=<PyGe.Tol object at 0x000001E4829D1480>])'''
     ...
     def isScaledOrtho (self, *args, **kwargs)-> bool :
       '''
-isScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001C20167D5A0>]) -> bool :
+isScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001E4829D15A0>]) -> bool :
 
     C++ signature :
-        bool isScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001C20167D5A0>])'''
+        bool isScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001E4829D15A0>])'''
     ...
     def isSingular (self, *args, **kwargs)-> bool :
       '''
@@ -11930,10 +12341,10 @@ isSingular( (Matrix2d)arg1, (Tol)arg2) -> bool :
     ...
     def isUniScaledOrtho (self, *args, **kwargs)-> bool :
       '''
-isUniScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001C20167D510>]) -> bool :
+isUniScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001E4829D1510>]) -> bool :
 
     C++ signature :
-        bool isUniScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001C20167D510>])'''
+        bool isUniScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001E4829D1510>])'''
     ...
     def kIdentity (self, *args, **kwargs):
       '''None'''
@@ -12106,6 +12517,23 @@ transposeIt( (Matrix2d)arg1) -> Matrix2d :
     ...
 
 class Matrix3d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Matrix3d)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGeMatrix3d)'''
+    ...
     def alignCoordSys (self, *args, **kwargs)-> Matrix3d :
       '''
 alignCoordSys( (Point3d)arg1, (Vector3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (Point3d)arg5, (Vector3d)arg6, (Vector3d)arg7, (Vector3d)arg8) -> Matrix3d :
@@ -12432,6 +12860,13 @@ worldToPlane( (object)arg1) -> Matrix3d :
     ...
 
 class NurbCurve2d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -12979,6 +13414,13 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class NurbCurve3d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -13617,6 +14059,9 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class OffsetCrvExtType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -13739,6 +14184,13 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class OffsetCurve2d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1, (Curve2d)arg2, (float)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyGeCurve2d,double)'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -14169,6 +14621,13 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class OffsetCurve3d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1, (Curve3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyGeCurve3d,class AcGeVector3d,double)'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -14690,6 +15149,11 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class PlanarEnt:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -15012,6 +15476,28 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Plane:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d,class AcGeVector3d)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -15366,6 +15852,28 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Point2d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point2d)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d)
+
+__init__( (object)arg1, (float)arg2, (float)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,double,double)'''
+    ...
     def asVector (self, *args, **kwargs)-> Vector2d :
       '''
 asVector( (Point2d)arg1) -> Vector2d :
@@ -15382,10 +15890,10 @@ distanceTo( (Point2d)arg1, (Point2d)arg2) -> float :
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
       '''
-isEqualTo( (Point2d)arg1, (Point2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001C20167CF70>]) -> bool :
+isEqualTo( (Point2d)arg1, (Point2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001E4829D0F70>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGePoint2d {lvalue},class AcGePoint2d [,class AcGeTol=<PyGe.Tol object at 0x000001C20167CF70>])'''
+        bool isEqualTo(class AcGePoint2d {lvalue},class AcGePoint2d [,class AcGeTol=<PyGe.Tol object at 0x000001E4829D0F70>])'''
     ...
     def kOrigin (self, *args, **kwargs):
       '''None'''
@@ -15468,6 +15976,33 @@ transformBy( (Point2d)arg1, (Matrix2d)arg2) -> Point2d :
     ...
 
 class Point3d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point3d)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d)
+
+__init__( (object)arg1, (float)arg2, (float)arg3, (float)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,double,double,double)
+
+__init__( (object)arg1, (object)arg2, (Point2d)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePlanarEnt,class AcGePoint2d)'''
+    ...
     def asVector (self, *args, **kwargs)-> Vector3d :
       '''
 asVector( (Point3d)arg1) -> Vector3d :
@@ -15491,10 +16026,10 @@ distanceTo( (Point3d)arg1, (Point3d)arg2) -> float :
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
       '''
-isEqualTo( (Point3d)arg1, (Point3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001C20167D630>]) -> bool :
+isEqualTo( (Point3d)arg1, (Point3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001E4829D1630>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGePoint3d {lvalue},class AcGePoint3d [,class AcGeTol=<PyGe.Tol object at 0x000001C20167D630>])'''
+        bool isEqualTo(class AcGePoint3d {lvalue},class AcGePoint3d [,class AcGeTol=<PyGe.Tol object at 0x000001E4829D1630>])'''
     ...
     def kOrigin (self, *args, **kwargs):
       '''None'''
@@ -15599,6 +16134,11 @@ transformBy( (Point3d)arg1, (Matrix3d)arg2) -> Point3d :
     ...
 
 class PointEnt2d:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -15712,6 +16252,11 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class PointEnt3d:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -15813,6 +16358,28 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class PointOnCurve2d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Curve2d)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyGeCurve2d)
+
+__init__( (object)arg1, (Curve2d)arg2, (float)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyGeCurve2d,double)'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -15988,6 +16555,13 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class PointOnCurve3d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -16089,6 +16663,33 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Polyline2d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list)
+
+__init__( (object)arg1, (KnotVector)arg2, (list)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyGeKnotVector,class boost::python::list)
+
+__init__( (object)arg1, (Curve2d)arg2, (float)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyGeCurve2d,double)'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -16657,6 +17258,33 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class Polyline3d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class boost::python::list)
+
+__init__( (object)arg1, (KnotVector)arg2, (list)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyGeKnotVector,class boost::python::list)
+
+__init__( (object)arg1, (Curve3d)arg2, (float)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyGeCurve3d,double)'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -17316,6 +17944,28 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Position2d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point2d)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d)
+
+__init__( (object)arg1, (float)arg2, (float)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,double,double)'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -17441,6 +18091,13 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class Position3d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -17542,6 +18199,28 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Ray2d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point2d)arg2, (Vector2d)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGeVector2d)
+
+__init__( (object)arg1, (Point2d)arg2, (Point2d)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d,class AcGePoint2d)'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -18072,6 +18751,28 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class Ray3d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGeVector3d)
+
+__init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d)'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -18735,6 +19436,33 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Scale2d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,double)
+
+__init__( (object)arg1, (float)arg2, (float)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,double,double)
+
+__init__( (object)arg1, (Scale2d)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGeScale2d)'''
+    ...
     def postMultBy (self, *args, **kwargs)-> Scale2d :
       '''
 postMultBy( (Scale2d)arg1, (Scale2d)arg2) -> Scale2d :
@@ -18776,6 +19504,13 @@ toString( (Scale2d)arg1) -> str :
     ...
 
 class Scale3d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def postMultBy (self, *args, **kwargs)-> Scale3d :
       '''
 postMultBy( (Scale3d)arg1, (Scale3d)arg2) -> Scale3d :
@@ -18820,6 +19555,11 @@ toString( (Scale3d)arg1) -> str :
     ...
 
 class SplineEnt2d:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve2d)arg1, (float)arg2, (float)arg3) -> float :
@@ -19367,6 +20107,11 @@ type( (Entity2d)arg1) -> EntityId :
     ...
 
 class SplineEnt3d:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def area (self, *args, **kwargs)-> float :
       '''
 area( (Curve3d)arg1, (float)arg2, (float)arg3) -> float :
@@ -20005,6 +20750,11 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class SurfSurfInt:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -20106,6 +20856,11 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Surface:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -20308,6 +21063,18 @@ type( (Entity3d)arg1) -> EntityId :
     ...
 
 class Tol:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def current (self, *args, **kwargs):
       '''None'''
     ...
@@ -20341,6 +21108,28 @@ setEqualVector( (Tol)arg1, (float)arg2) -> None :
     ...
 
 class Vector2d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Vector2d)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGeVector2d)
+
+__init__( (object)arg1, (float)arg2, (float)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,double,double)'''
+    ...
     def angle (self, *args, **kwargs)-> float :
       '''
 angle( (Vector2d)arg1) -> float :
@@ -20364,45 +21153,45 @@ dotProduct( (Vector2d)arg1, (Vector2d)arg2) -> float :
     ...
     def isCodirectionalTo (self, *args, **kwargs)-> bool :
       '''
-isCodirectionalTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001C20167D2D0>]) -> bool :
+isCodirectionalTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001E4829D12D0>]) -> bool :
 
     C++ signature :
-        bool isCodirectionalTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001C20167D2D0>])'''
+        bool isCodirectionalTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001E4829D12D0>])'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
       '''
-isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001C20167D3F0>]) -> bool :
+isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001E4829D13F0>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001C20167D3F0>])'''
+        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001E4829D13F0>])'''
     ...
     def isParallelTo (self, *args, **kwargs)-> bool :
       '''
-isParallelTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001C20167D240>]) -> bool :
+isParallelTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001E4829D1240>]) -> bool :
 
     C++ signature :
-        bool isParallelTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001C20167D240>])'''
+        bool isParallelTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001E4829D1240>])'''
     ...
     def isPerpendicularTo (self, *args, **kwargs)-> bool :
       '''
-isPerpendicularTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001C20167D360>]) -> bool :
+isPerpendicularTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001E4829D1360>]) -> bool :
 
     C++ signature :
-        bool isPerpendicularTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001C20167D360>])'''
+        bool isPerpendicularTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000001E4829D1360>])'''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
       '''
-isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001C20167D120>]) -> bool :
+isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001E4829D1120>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001C20167D120>])'''
+        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001E4829D1120>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
       '''
-isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001C20167D1B0>]) -> bool :
+isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001E4829D11B0>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001C20167D1B0>])'''
+        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001E4829D11B0>])'''
     ...
     def kIdentity (self, *args, **kwargs):
       '''None'''
@@ -20443,17 +21232,17 @@ negate( (Vector2d)arg1) -> Vector2d :
     ...
     def normal (self, *args, **kwargs)-> Vector2d :
       '''
-normal( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001C20167D000>]) -> Vector2d :
+normal( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001E4829D1000>]) -> Vector2d :
 
     C++ signature :
-        class AcGeVector2d normal(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001C20167D000>])'''
+        class AcGeVector2d normal(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001E4829D1000>])'''
     ...
     def normalize (self, *args, **kwargs)-> Vector2d :
       '''
-normalize( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001C20167D090>]) -> Vector2d :
+normalize( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001E4829D1090>]) -> Vector2d :
 
     C++ signature :
-        class AcGeVector2d {lvalue} normalize(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001C20167D090>])'''
+        class AcGeVector2d {lvalue} normalize(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001E4829D1090>])'''
     ...
     def rotateBy (self, *args, **kwargs)-> Vector2d :
       '''
@@ -20510,6 +21299,33 @@ transformBy( (Vector2d)arg1, (Matrix2d)arg2) -> Vector2d :
     ...
 
 class Vector3d:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (Vector3d)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGeVector3d)
+
+__init__( (object)arg1, (float)arg2, (float)arg3, (float)arg4) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,double,double,double)
+
+__init__( (object)arg1, (object)arg2, (Vector2d)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePlanarEnt,class AcGeVector2d)'''
+    ...
     def angleOnPlane (self, *args, **kwargs)-> float :
       '''
 angleOnPlane( (Vector3d)arg1, (object)arg2) -> float :
@@ -20552,45 +21368,45 @@ dotProduct( (Vector3d)arg1, (Vector3d)arg2) -> float :
     ...
     def isCodirectionalTo (self, *args, **kwargs)-> bool :
       '''
-isCodirectionalTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001C20167D990>]) -> bool :
+isCodirectionalTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001E4829D1990>]) -> bool :
 
     C++ signature :
-        bool isCodirectionalTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000001C20167D990>])'''
+        bool isCodirectionalTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000001E4829D1990>])'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
       '''
-isEqualTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001C20167DAB0>]) -> bool :
+isEqualTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001E4829D1AB0>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000001C20167DAB0>])'''
+        bool isEqualTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000001E4829D1AB0>])'''
     ...
     def isParallelTo (self, *args, **kwargs)-> bool :
       '''
-isParallelTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001C20167D900>]) -> bool :
+isParallelTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001E4829D1900>]) -> bool :
 
     C++ signature :
-        bool isParallelTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000001C20167D900>])'''
+        bool isParallelTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000001E4829D1900>])'''
     ...
     def isPerpendicularTo (self, *args, **kwargs)-> bool :
       '''
-isPerpendicularTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001C20167DA20>]) -> bool :
+isPerpendicularTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001E4829D1A20>]) -> bool :
 
     C++ signature :
-        bool isPerpendicularTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000001C20167DA20>])'''
+        bool isPerpendicularTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000001E4829D1A20>])'''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
       '''
-isUnitLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001C20167D7E0>]) -> bool :
+isUnitLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001E4829D17E0>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001C20167D7E0>])'''
+        bool isUnitLength(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001E4829D17E0>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
       '''
-isZeroLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001C20167D870>]) -> bool :
+isZeroLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001E4829D1870>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001C20167D870>])'''
+        bool isZeroLength(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001E4829D1870>])'''
     ...
     def kIdentity (self, *args, **kwargs):
       '''None'''
@@ -20641,17 +21457,17 @@ negate( (Vector3d)arg1) -> Vector3d :
     ...
     def normal (self, *args, **kwargs)-> Vector3d :
       '''
-normal( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001C20167D750>]) -> Vector3d :
+normal( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001E4829D1750>]) -> Vector3d :
 
     C++ signature :
-        class AcGeVector3d normal(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001C20167D750>])'''
+        class AcGeVector3d normal(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001E4829D1750>])'''
     ...
     def normalize (self, *args, **kwargs)-> Vector3d :
       '''
-normalize( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001C20167D6C0>]) -> Vector3d :
+normalize( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000001E4829D16C0>]) -> Vector3d :
 
     C++ signature :
-        class AcGeVector3d {lvalue} normalize(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001C20167D6C0>])
+        class AcGeVector3d {lvalue} normalize(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000001E4829D16C0>])
 
 normalize( (Vector3d)arg1, (Tol)arg2, (AcGeError)arg3) -> Vector3d :
 
@@ -20779,6 +21595,9 @@ Otherwise, returns the result of object.__str__() (if defined)
 or repr(object).
 encoding defaults to sys.getdefaultencoding().
 errors defaults to 'strict'.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def create_module (spec):
       '''Create a built-in module'''

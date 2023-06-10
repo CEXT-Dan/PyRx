@@ -27,6 +27,9 @@ or repr(object).
 encoding defaults to sys.getdefaultencoding().
 errors defaults to 'strict'.'''
     ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def create_module (spec):
       '''Create a built-in module'''
     ...

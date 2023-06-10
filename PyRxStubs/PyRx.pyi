@@ -1,5 +1,8 @@
 
 class LispDataType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -161,6 +164,11 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class Overrule:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def addOverrule (self, *args, **kwargs)-> ErrorStatus :
       '''
 addOverrule( (RxClass)arg1, (Overrule)arg2) -> ErrorStatus :
@@ -240,6 +248,11 @@ setIsOverruling( (bool)arg1) -> None :
     ...
 
 class RxClass:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -291,6 +304,11 @@ refCount( (RxObject)arg1) -> int :
     ...
 
 class RxObject:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -342,6 +360,9 @@ or repr(object).
 encoding defaults to sys.getdefaultencoding().
 errors defaults to 'strict'.'''
     ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def create_module (spec):
       '''Create a built-in module'''
     ...
@@ -385,6 +406,18 @@ errors defaults to 'strict'.'''
     ...
 
 class stderr:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> object :
+
+    C++ signature :
+        void * __ptr64 __init__(class boost::python::api::object)'''
+    ...
     def flush (self, *args, **kwargs)-> None :
       '''
 flush( (stderr)arg1) -> None :
@@ -401,6 +434,18 @@ write( (stderr)arg1, (str)arg2) -> None :
     ...
 
 class stdout:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> object :
+
+    C++ signature :
+        void * __ptr64 __init__(class boost::python::api::object)'''
+    ...
     def flush (self, *args, **kwargs)-> None :
       '''
 flush( (stdout)arg1) -> None :

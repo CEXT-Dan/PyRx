@@ -1,5 +1,12 @@
 
 class Application:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def applyHostIcon (self, *args, **kwargs)-> None :
       '''
 applyHostIcon( (int)arg1) -> None :
@@ -617,8 +624,18 @@ Base 0 means to interpret the base from the string as an integer literal.
 >>> int('0b100', base=0)
 4'''
     ...
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
 
 class DocLockMode:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -753,6 +770,13 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class DocManager:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def activateDocument (self, *args, **kwargs)-> ErrorStatus :
       '''
 activateDocument( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
@@ -1004,6 +1028,13 @@ unlockDocument( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
     ...
 
 class DocManagerReactor:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def addReactor (self, *args, **kwargs)-> None :
       '''
 addReactor( (DocManagerReactor)arg1) -> None :
@@ -1111,6 +1142,11 @@ removeReactor( (DocManagerReactor)arg1) -> None :
     ...
 
 class Document:
+    def __init__ (self, *args, **kwargs):
+      '''Raises an exception
+This class cannot be instantiated from Python
+'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -1272,6 +1308,13 @@ upgradeDocOpen( (Document)arg1) -> ErrorStatus :
     ...
 
 class ResourceOverride:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''
 className() -> str :
@@ -1281,6 +1324,9 @@ className() -> str :
     ...
 
 class SaveFormat:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
     def as_integer_ratio (self, /):
       '''Return integer ratio.
 
@@ -1493,6 +1539,13 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class TransactionManager:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
     def abortTransaction (self, *args, **kwargs)-> ErrorStatus :
       '''
 abortTransaction( (TransactionManager)arg1) -> ErrorStatus :
@@ -1649,6 +1702,9 @@ Otherwise, returns the result of object.__str__() (if defined)
 or repr(object).
 encoding defaults to sys.getdefaultencoding().
 errors defaults to 'strict'.'''
+    ...
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...
     def create_module (spec):
       '''Create a built-in module'''
