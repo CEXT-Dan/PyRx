@@ -2,6 +2,7 @@ import os
 import inspect
 import io
 import pydoc
+import enum
 
 import PyRxApp  # = all the global methods like acutPrintf,
 import PyRx  # = Runtime runtime
@@ -13,37 +14,16 @@ import PyEd  # = editor
 
 # just some ideas on getting help, work in progress
 
+def include_attr(obj, name):
+    try:
+        str = "{0}".format(obj.__repr__)
+        if "enum" in str:
+            return False
+        return True
+    except:
+        return True
 
-def include_attr(name):
-    if name == '__init__':
-        return True
-    elif name == '__eq__':
-        return True
-    elif name == '__ne__':
-        return True
-    elif name == '__mul__':
-        return True
-    elif name == '__imul__':
-        return True
-    elif name == '__matmul__':
-        return True
-    elif name == '__add__':
-        return True
-    elif name == '__iadd__':
-        return True
-    elif name == '__sub__':
-        return True
-    elif name == '__isub__':
-        return True
-    elif name == '__truediv__':
-        return True
-    elif name == '__itruediv__':
-        return True
-    elif name.startswith('__'):
-        return False
-    return True
-
-
+   
 def generate_pyi(moduleName, module):
     with open(moduleName, 'w') as f:
 
@@ -53,7 +33,7 @@ def generate_pyi(moduleName, module):
                 f.write(f'class {name}:\n')
 
                 for func_name, func in inspect.getmembers(obj):
-                    if include_attr(func_name):
+                    if include_attr(obj,func_name):
                         try:
                             f.write(f'    def {func_name} {inspect.signature(func)}:\n')
                         except:
