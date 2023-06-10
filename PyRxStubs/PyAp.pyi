@@ -34,6 +34,13 @@ mainWnd() -> int :
     C++ signature :
         __int64 mainWnd()'''
     ...
+    def setTitleThemeDark (self, *args, **kwargs):
+      '''
+setTitleThemeDark( (object)arg1) -> None :
+
+    C++ signature :
+        void setTitleThemeDark(struct HWND__ * __ptr64)'''
+    ...
 
 class CmdFlags:
     def DEFUN (self, *args, **kwargs):

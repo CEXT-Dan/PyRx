@@ -36,7 +36,6 @@ PyDbTransactionManager::PyDbTransactionManager()
 PyDbTransactionManager::PyDbTransactionManager(AcDbTransactionManager* ptr)
     : PyRxObject(ptr,false,false)
 {
-
 }
 
 PyTransaction PyDbTransactionManager::startTransaction()
@@ -85,8 +84,15 @@ Acad::ErrorStatus PyDbTransactionManager::addNewlyCreatedDBRObject2(PyDbObject& 
 
 boost::python::list PyDbTransactionManager::getAllObjects()
 {
-#ifdef BRXAPP
-    throw PyNotimplementedByHost();
+#ifdef BRXAPPV23 // SR159573
+    PyAutoLockGIL lock;
+    AcDbVoidPtrArray objs;
+    boost::python::list pyObjs;
+    if (auto es = impObj()->getAllObjects(objs); es != eOk)
+        throw PyAcadErrorStatus(es);
+    for (auto item : objs)
+        pyObjs.append(PyDbObject((AcDbObject*)item, true));
+    return pyObjs;
 #else
     PyAutoLockGIL lock;
     AcArray<AcDbObject*> objs;
@@ -229,8 +235,15 @@ PyDbObject PyTransaction::getObject3(const PyDbObjectId& id, AcDb::OpenMode mode
 
 boost::python::list PyTransaction::getAllObjects()
 {
-#ifdef BRXAPP
-    throw PyNotimplementedByHost();
+#ifdef BRXAPPV23
+    PyAutoLockGIL lock;
+    AcDbVoidPtrArray objs;
+    boost::python::list pyObjs;
+    if (auto es = impObj()->getAllObjects(objs); es != eOk)
+        throw PyAcadErrorStatus(es);
+    for (auto item : objs)
+        pyObjs.append(PyDbObject((AcDbObject*)item, true));
+    return pyObjs;
 #else
     PyAutoLockGIL lock;
     AcArray<AcDbObject*> objs;
