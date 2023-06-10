@@ -55,15 +55,25 @@ def generate_pyi(moduleName, module):
                 for func_name, func in inspect.getmembers(obj):
                     if include_attr(func_name):
                         try:
-                            f.write(
-                                f'    def {func_name} {inspect.signature(func)}:\n')
+                            f.write(f'    def {func_name} {inspect.signature(func)}:\n')
                         except:
-                            f.write(
-                                f'    def {func_name} (self, *args, **kwargs):\n')
+                            f.write(f'    def {func_name} (self, *args, **kwargs):\n')
                         f.write(f"      '''{func.__doc__}'''")
                         f.write('\n    ...\n')
+                        
+            elif inspect.isbuiltin(obj):
+                f.write('\n')
+                f.write(f'function {name}:\n')
+                try:
+                    f.write(f'    def {name} (self, *args, **kwargs):\n')
+                    f.write(f"      '''{obj.__doc__}'''")
+                    f.write('\n    ...\n')
+                except Exception as err:
+                    print(err)
 
-
+            
+            
+                
 def generate_html_help(moduleName, module):
     str = pydoc.html.docmodule(module)
     with open(moduleName, mode='w') as f:
