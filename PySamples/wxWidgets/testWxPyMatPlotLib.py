@@ -51,6 +51,7 @@ class TestDialog(wx.Dialog):
         wx.Dialog.__init__(self)
         self.SetExtraStyle(wx.DIALOG_EX_CONTEXTHELP)
         self.Create(parent, id, title, pos, size, style, name)
+        PyAp.Application.setTitleThemeDark(self.GetHandle())
         
         self.pltpanel = CanvasPanel(self)
         self.pltpanel.draw()

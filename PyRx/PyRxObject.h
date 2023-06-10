@@ -28,7 +28,7 @@ struct PyRxObjectDeleter
             {
 #ifdef PyRxDebug
                 if (!dbo->isReadEnabled() && !dbo->isWriteEnabled())
-                    acutPrintf(_T("\nIs already closed!: "));
+                    acutPrintf(_T("\nobject already closed: "));
                 if (auto es = dbo->close(); es != eOk)
                     acutPrintf(_T("\nStatus = %ls in %ls: "), acadErrorStatusText(es), __FUNCTIONW__);
 #else

@@ -54,6 +54,18 @@ class TestDialog(wx.Dialog):
         self.textPointResult = xrc.XRCCTRL(self,'ID_TEXTCTRL_POINT_RESULT')
         self.textDistResult = xrc.XRCCTRL(self,'ID_TEXTCTRL_DIST_RESULT')
         
+        #PyAp.Application.setTitleThemeDark(self.GetHandle())
+        #self.dark_bg_color = "#252525"  # Dark background color
+        #self.dark_fg_color = "#FFFFFF"  # Dark foreground color
+        #self.SetBackgroundColour(self.dark_bg_color)
+        #self.set_dark_mode(self)
+        
+    def set_dark_mode(self, control):
+        for child in control.GetChildren():
+            child.SetForegroundColour(self.dark_fg_color)
+            child.SetBackgroundColour(self.dark_bg_color)
+            self.set_dark_mode(child)
+        
     def onGetPoint(self, event):
         val = PyAp.Application().docManager().curDocument().editor().getPoint("\nGetPoint\n")
         if val[0] == PyEd.PromptStatus.eNormal :
