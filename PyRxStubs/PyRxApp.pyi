@@ -1,4 +1,10 @@
 
+function Printf:
+    def Printf (self, *args, **kwargs):
+      '''Wraps acutPrintf 
+Sends a string to the command line'''
+    ...
+
 class __loader__:
     def _ORIGIN (self, *args, **kwargs):
       '''str(object='') -> str

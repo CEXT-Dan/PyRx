@@ -91877,3 +91877,12 @@ errors defaults to 'strict'.'''
 
         '''
     ...
+
+function curDb:
+    def curDb (self, *args, **kwargs):
+      '''
+curDb() -> Database :
+
+    C++ signature :
+        class PyDbDatabase curDb()'''
+    ...

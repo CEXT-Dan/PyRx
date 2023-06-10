@@ -1574,3 +1574,12 @@ errors defaults to 'strict'.'''
 
         '''
     ...
+
+function curDoc:
+    def curDoc (self, *args, **kwargs):
+      '''
+curDoc() -> Document :
+
+    C++ signature :
+        class PyApDocument curDoc()'''
+    ...
