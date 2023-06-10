@@ -11,6 +11,8 @@ class PyApApplication
 public:
     PyApDocManager docManager();
 public:
+
+    static void applyHostIcon(UINT_PTR hwnd);
     static void setTitleThemeDark(UINT_PTR hwnd);
     static int64_t mainWnd();
     static std::string className();

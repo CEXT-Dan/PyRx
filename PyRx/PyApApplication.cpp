@@ -15,12 +15,37 @@ void makeAcApApplictionWrapper()
         .def("className", &PyApApplication::className).staticmethod("className")
         .def("mainWnd", &PyApApplication::mainWnd).staticmethod("mainWnd")
         .def("setTitleThemeDark", &PyApApplication::setTitleThemeDark).staticmethod("setTitleThemeDark")
+        .def("applyHostIcon", &PyApApplication::applyHostIcon).staticmethod("applyHostIcon")
         ;
 }
 
 PyApDocManager PyApApplication::docManager()
 {
     return PyApDocManager(acDocManager, false);
+}
+
+void PyApApplication::applyHostIcon(UINT_PTR _hwnd)
+{
+    HICON hIcon = 0;
+#ifdef BRXAPPV23
+    hIcon = LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(31233));
+#endif
+#ifdef ZRXAPPZ23
+    hIcon = LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(20001));
+#endif
+#ifdef ARXAPP
+    auto main = CWnd::FromHandle(adsw_acadMainWnd());
+    if (main == nullptr)
+        return;
+    hIcon = main->GetIcon(TRUE);
+#endif // ARXAPP
+    if (hIcon == 0)
+        return;
+    auto child = CWnd::FromHandle((HWND)_hwnd);
+    if (child == nullptr)
+        return;
+    child->ModifyStyle(0, WS_POPUPWINDOW);
+    child->SetIcon(hIcon, FALSE);
 }
 
 void PyApApplication::setTitleThemeDark(UINT_PTR _hwnd)
