@@ -71,3 +71,32 @@ public:
 public:
     AcDbSoftPointerId m_id;
 };
+
+//
+void makePyDbHandleWrapper();
+class PyDbHandle
+{
+public:
+    PyDbHandle();
+    PyDbHandle(int lo, int hi);
+    PyDbHandle(const std::string& src );
+    PyDbHandle(const Adesk::UInt64 src);
+    bool           isNull() const;
+    void           setNull();
+    Adesk::UInt32  low() const;
+    Adesk::UInt32  high() const;
+    void           setLow(Adesk::UInt32 low);
+    void           setHigh(Adesk::UInt32 high);
+    void           setValue(Adesk::UInt64);
+    bool           isOne(void) const;
+    Adesk::UInt64  value() const;
+    std::string    toString() const;
+    std::string    repr() const;
+    std::size_t    hash();
+    bool operator==(const PyDbHandle& rhs) const;
+    bool operator!=(const PyDbHandle& rhs) const;
+
+
+public:
+    AcDbHandle m_hnd;
+};

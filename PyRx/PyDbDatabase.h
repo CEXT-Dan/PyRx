@@ -3,6 +3,7 @@
 class PyDbObject;
 class PyDbObjectId;
 class PyDbTransactionManager;
+class PyDbHandle;
 
 void makeAcDbDatabaseWrapper();
 class PyDbDatabase : public PyRxObject
@@ -79,7 +80,8 @@ public:
     std::string         geoCoordinateSystemId() const;
     bool                geoMarkerVisibility() const;
     double              get3dDwfPrec() const;
-    //TODO: Acad::ErrorStatus getAcDbObjectId
+    Acad::ErrorStatus   getAcDbObjectId1(PyDbObjectId& retId, bool createIfNotFound, const PyDbHandle& objHandle);
+    Acad::ErrorStatus   getAcDbObjectId2(PyDbObjectId& retId, bool createIfNotFound, const PyDbHandle& objHandle, Adesk::UInt32 xRefId);
     AcDb::PlotStyleNameType getCePlotStyleNameId(PyDbObjectId& id) const;
     bool                isAppRegistered(const std::string& pszAppName) const;
     std::string         dimapost() const;
@@ -97,7 +99,7 @@ public:
     Acad::ErrorStatus   insert(PyDbObjectId& blockId, const std::string& pSourceBlockName, const std::string& pDestinationBlockName, PyDbDatabase& db, bool preserveSourceDatabase);
     Acad::ErrorStatus   insert(const AcGeMatrix3d& xform, PyDbDatabase& db, bool preserveSourceDatabase);
     Adesk::UInt8        haloGap() const;
-    //AcDbHandle handseed() const; TODO:
+    PyDbHandle          handseed() const;
     bool                hasClass(const PyRxClass& pClass) const;
     Adesk::UInt8        hideText() const;
     bool                hpInherit() const;
@@ -277,7 +279,7 @@ public:
     PyDbObjectId		modelSpaceId() const;
     Acad::ErrorStatus	setGeoMarkerVisibility(bool value);
     Acad::ErrorStatus	setHaloGap(Adesk::UInt8 val);
-    //Acad::ErrorStatus setHandseed(const AcDbHandle& handle); TODO: AcDbHandle
+    Acad::ErrorStatus   setHandseed(const PyDbHandle& handle);
     Acad::ErrorStatus	setHideText(Adesk::UInt8 val);
     Acad::ErrorStatus	setHpInherit(const bool inherit);
     Acad::ErrorStatus	setHpOrigin(const AcGePoint2d& origin);

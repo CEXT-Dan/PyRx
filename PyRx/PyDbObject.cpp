@@ -62,6 +62,7 @@ void makeAcDbObjectWrapper()
         .def("getField", &PyDbObject::getField2)
         .def("setField", &PyDbObject::setField1)
         .def("setField", &PyDbObject::setField2)
+        .def("getHandle", &PyDbObject::getHandle)
         .def("removeField", &PyDbObject::removeField1)
         .def("removeField", &PyDbObject::removeField2)
         .def("getFieldDictionary", &PyDbObject::getFieldDictionary)
@@ -348,6 +349,13 @@ PyDbObjectId PyDbObject::setField2(const std::string& propName, PyDbField& pFiel
     if (auto es = impObj()->setField(utf8_to_wstr(propName).c_str(), pField.impObj(), id); es != eOk)
         throw PyAcadErrorStatus(es);
     return PyDbObjectId(id);
+}
+
+PyDbHandle PyDbObject::getHandle() const
+{
+    PyDbHandle handle;
+    impObj()->getAcDbHandle(handle.m_hnd);
+    return handle;
 }
 
 Acad::ErrorStatus PyDbObject::removeField1(const PyDbObjectId& fieldId)

@@ -82,6 +82,8 @@ void makeAcDbDatabaseWrapper()
         .def("geoCoordinateSystemId", &PyDbDatabase::geoCoordinateSystemId)
         .def("geoMarkerVisibility", &PyDbDatabase::geoMarkerVisibility)
         .def("get3dDwfPrec", &PyDbDatabase::get3dDwfPrec)
+        .def("getAcDbObjectId", &PyDbDatabase::getAcDbObjectId1)
+        .def("getAcDbObjectId", &PyDbDatabase::getAcDbObjectId2)
         .def("getCePlotStyleNameId", &PyDbDatabase::getCePlotStyleNameId)
         .def("getDimstyleParentId", &PyDbDatabase::getDimstyleParentId)
         .def("getNearestLineWeight", &PyDbDatabase::getNearestLineWeight).staticmethod("getNearestLineWeight")//static
@@ -90,6 +92,7 @@ void makeAcDbDatabaseWrapper()
         .def("globalMaterial", &PyDbDatabase::globalMaterial)
         .def("groupDictionaryId", &PyDbDatabase::groupDictionaryId)
         .def("haloGap", &PyDbDatabase::haloGap)
+        .def("handseed", &PyDbDatabase::handseed)
         .def("hasClass", &PyDbDatabase::hasClass)
         .def("hideText", &PyDbDatabase::hideText)
         .def("hpInherit", &PyDbDatabase::hpInherit)
@@ -260,6 +263,7 @@ void makeAcDbDatabaseWrapper()
         .def("setFullSaveRequired", &PyDbDatabase::setFullSaveRequired)
         .def("setGeoMarkerVisibility", &PyDbDatabase::setGeoMarkerVisibility)
         .def("setHaloGap", &PyDbDatabase::setHaloGap)
+        .def("setHandseed", &PyDbDatabase::setHandseed)
         .def("setHideText", &PyDbDatabase::setHideText)
         .def("setHpInherit", &PyDbDatabase::setHpInherit)
         .def("setHpOrigin", &PyDbDatabase::setHpOrigin)
@@ -870,6 +874,16 @@ double PyDbDatabase::get3dDwfPrec() const
 #endif
 }
 
+Acad::ErrorStatus PyDbDatabase::getAcDbObjectId1(PyDbObjectId& retId, bool createIfNotFound, const PyDbHandle& objHandle)
+{
+    return impObj()->getAcDbObjectId(retId.m_id, createIfNotFound, objHandle.m_hnd);
+}
+
+Acad::ErrorStatus PyDbDatabase::getAcDbObjectId2(PyDbObjectId& retId, bool createIfNotFound, const PyDbHandle& objHandle, Adesk::UInt32 xRefId)
+{
+    return impObj()->getAcDbObjectId(retId.m_id, createIfNotFound, objHandle.m_hnd, xRefId);
+}
+
 AcDb::PlotStyleNameType PyDbDatabase::getCePlotStyleNameId(PyDbObjectId& id) const
 {
     return impObj()->getCePlotStyleNameId(id.m_id);
@@ -983,6 +997,13 @@ Adesk::UInt8 PyDbDatabase::haloGap() const
 #else
     return impObj()->haloGap();
 #endif
+}
+
+PyDbHandle PyDbDatabase::handseed() const
+{
+    PyDbHandle handle;
+    handle.m_hnd = impObj()->handseed();
+    return  handle;
 }
 
 bool PyDbDatabase::hasClass(const PyRxClass& pClass) const
@@ -1955,7 +1976,7 @@ Acad::ErrorStatus PyDbDatabase::readDwgFile2(const char* fileName, int mode, boo
 {
     std::wstring wsfileName{ utf8_to_wstr(fileName) };
     std::wstring wspassword{ utf8_to_wstr(password) };
-    return impObj()->readDwgFile(wsfileName.c_str(),(AcDbDatabase::OpenMode)mode, bAllowCPConversion, wspassword.c_str());
+    return impObj()->readDwgFile(wsfileName.c_str(), (AcDbDatabase::OpenMode)mode, bAllowCPConversion, wspassword.c_str());
 }
 
 std::string PyDbDatabase::getFilename()
@@ -1996,6 +2017,15 @@ Acad::ErrorStatus PyDbDatabase::setHaloGap(Adesk::UInt8 val)
     throw PyNotimplementedByHost();
 #else
     return impObj()->setHaloGap(val);
+#endif
+}
+
+Acad::ErrorStatus PyDbDatabase::setHandseed(const PyDbHandle& handle)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setHandseed(handle.m_hnd);
 #endif
 }
 
