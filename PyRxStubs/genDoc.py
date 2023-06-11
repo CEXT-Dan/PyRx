@@ -50,7 +50,10 @@ def generate_pyi(moduleName, module):
                 f.write('\n')
                 f.write(f'function {name}:\n')
                 try:
-                    f.write(f'    def {name} (self, *args, **kwargs):\n')
+                    sig = "{0}".format(obj.__doc__)
+                    ib = sig.find('->')
+                    ie = sig.find(':')
+                    f.write(f'    def {name} (*args, **kwargs){sig[ib:ie]}:\n')
                     f.write(f"      '''{obj.__doc__}'''")
                     f.write('\n    ...\n')
                 except Exception as err:

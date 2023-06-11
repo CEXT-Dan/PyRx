@@ -90360,7 +90360,7 @@ errors defaults to 'strict'.'''
     ...
 
 function curDb:
-    def curDb (self, *args, **kwargs):
+    def curDb (*args, **kwargs)-> Database :
       '''
 curDb() -> Database :
 
