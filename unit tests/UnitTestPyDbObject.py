@@ -50,7 +50,7 @@ class TestDbObject(unittest.TestCase):
         def test_xdata(self):
                 #regapp
                 success = PyDb.Core.regApp("PYTHONTEST")
-                self.assertEqual(success, 5100)
+                self.assertEqual(success, True)
 
                 #set
                 id = PyDb.HostApplicationServices().workingDatabase().blockTableId()
@@ -65,6 +65,7 @@ class TestDbObject(unittest.TestCase):
                 self.assertEqual(p.x, 1)
                 self.assertEqual(p.y, 10)
                 self.assertEqual(p.z, 100)
+                
                 
                 
                
