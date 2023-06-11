@@ -13,8 +13,6 @@ import PyAp  # = application, document classes services
 import PyEd  # = editor
 
 # just some ideas on getting help, work in progress
-
-
 def include_attr(name):
     try:
         if name == '__init__':
@@ -24,8 +22,42 @@ def include_attr(name):
         return True
     except:
         return True
+    
+def removeArgStr(sig):
+    try:
+        argb = sig.find('![(')
+        arge = sig.find(')]!')
+        if argb != -1:
+            argstr = sig[argb:arge+3]
+            newDocString = sig.replace(argstr,"")
+            return newDocString.strip('\n')
+        return sig.strip('\n')
+    except:
+        return sig
 
 
+def findArgs(sig):
+    try:
+        argb = sig.find('![(')
+        arge = sig.find(')]!')
+        if argb != -1:
+            return sig[argb+2:arge+1]
+        return ""
+    except:
+        return ""
+
+def findReturnType(sig):
+    try:
+        ib = sig.find('->')
+        ie = sig.find(':')
+        if ib != -1:
+            return sig[ib:ie]
+        return ""
+    except:
+        return ""
+
+# todo: boost generates a doc string that has the function signature
+# it should be able to parse this, or add something in the doc user string
 def generate_pyi(moduleName, module):
     with open(moduleName, 'w') as f:
 
@@ -37,13 +69,18 @@ def generate_pyi(moduleName, module):
                 for func_name, func in inspect.getmembers(obj):
                     if include_attr(func_name):
                         sig = "{0}".format(func.__doc__)
-                        ib = sig.find('->')
-                        ie = sig.find(':')
+                        args = findArgs(sig)
+                        returnType = findReturnType(sig)
+                        newDocString = removeArgStr(sig)
+                        
                         try:
                             f.write(f'    def {func_name} {inspect.signature(func)}:\n')
                         except:
-                            f.write(f'    def {func_name} (self, *args, **kwargs){sig[ib:ie]}:\n')
-                        f.write(f"      '''{func.__doc__}'''")
+                            if len(args) != 0:
+                                f.write(f'    def {func_name} {args}{returnType}:\n')
+                            else:
+                                f.write(f'    def {func_name} (self, *args, **kwargs){returnType}:\n')
+                        f.write(f"      '''{newDocString}'''")
                         f.write('\n    ...\n')
 
             elif inspect.isbuiltin(obj):
@@ -51,10 +88,10 @@ def generate_pyi(moduleName, module):
                 f.write(f'function {name}:\n')
                 try:
                     sig = "{0}".format(obj.__doc__)
-                    ib = sig.find('->')
-                    ie = sig.find(':')
-                    f.write(f'    def {name} (*args, **kwargs){sig[ib:ie]}:\n')
-                    f.write(f"      '''{obj.__doc__}'''")
+                    returnType = findReturnType(sig)
+                    newDocString = removeArgStr(sig)
+                    f.write(f'    def {name} (*args, **kwargs){returnType}:\n')
+                    f.write(f"      '''{newDocString}'''")
                     f.write('\n    ...\n')
                 except Exception as err:
                     print(err)

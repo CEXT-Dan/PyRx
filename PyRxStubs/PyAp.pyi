@@ -1,43 +1,37 @@
 
 class Application:
     def __init__ (self, *args, **kwargs)-> None :
-      '''
-__init__( (object)arg1) -> None :
+      '''__init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
     def applyHostIcon (self, *args, **kwargs)-> None :
-      '''
-applyHostIcon( (int)arg1) -> None :
+      '''applyHostIcon( (int)arg1) -> None :
 
     C++ signature :
         void applyHostIcon(unsigned __int64)'''
     ...
     def className (self, *args, **kwargs)-> str :
-      '''
-className() -> str :
+      '''className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
     def docManager (self, *args, **kwargs)-> DocManager :
-      '''
-docManager( (Application)arg1) -> DocManager :
+      '''docManager( (Application)arg1) -> DocManager :
 
     C++ signature :
         class PyApDocManager docManager(class PyApApplication {lvalue})'''
     ...
     def mainWnd (self, *args, **kwargs)-> int :
-      '''
-mainWnd() -> int :
+      '''mainWnd() -> int :
 
     C++ signature :
         __int64 mainWnd()'''
     ...
     def setTitleThemeDark (self, *args, **kwargs)-> None :
-      '''
-setTitleThemeDark( (int)arg1) -> None :
+      '''setTitleThemeDark( (int)arg1) -> None :
 
     C++ signature :
         void setTitleThemeDark(unsigned __int64)'''
@@ -625,8 +619,7 @@ Base 0 means to interpret the base from the string as an integer literal.
 4'''
     ...
     def __init__ (self, *args, **kwargs)-> None :
-      '''
-__init__( (object)arg1) -> None :
+      '''__init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)'''
@@ -771,15 +764,13 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
 
 class DocManager:
     def __init__ (self, *args, **kwargs)-> None :
-      '''
-__init__( (object)arg1) -> None :
+      '''__init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
     def activateDocument (self, *args, **kwargs)-> ErrorStatus :
-      '''
-activateDocument( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
+      '''activateDocument( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus activateDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})
@@ -790,134 +781,115 @@ activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> ErrorStatus :
         enum Acad::ErrorStatus activateDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue},bool)'''
     ...
     def appContextCloseDocument (self, *args, **kwargs)-> ErrorStatus :
-      '''
-appContextCloseDocument( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
+      '''appContextCloseDocument( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus appContextCloseDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})'''
     ...
     def appContextNewDocument (self, *args, **kwargs)-> ErrorStatus :
-      '''
-appContextNewDocument( (DocManager)arg1, (str)arg2) -> ErrorStatus :
+      '''appContextNewDocument( (DocManager)arg1, (str)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus appContextNewDocument(class PyApDocManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def appContextOpenDocument (self, *args, **kwargs)-> ErrorStatus :
-      '''
-appContextOpenDocument( (DocManager)arg1, (str)arg2) -> ErrorStatus :
+      '''appContextOpenDocument( (DocManager)arg1, (str)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus appContextOpenDocument(class PyApDocManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def appContextPromptOpenDocument (self, *args, **kwargs)-> ErrorStatus :
-      '''
-appContextPromptOpenDocument( (DocManager)arg1) -> ErrorStatus :
+      '''appContextPromptOpenDocument( (DocManager)arg1) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus appContextPromptOpenDocument(class PyApDocManager {lvalue})'''
     ...
     def appContextRecoverDocument (self, *args, **kwargs)-> ErrorStatus :
-      '''
-appContextRecoverDocument( (DocManager)arg1, (str)arg2) -> ErrorStatus :
+      '''appContextRecoverDocument( (DocManager)arg1, (str)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus appContextRecoverDocument(class PyApDocManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def className (self, *args, **kwargs)-> str :
-      '''
-className() -> str :
+      '''className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
     def closeDocument (self, *args, **kwargs)-> ErrorStatus :
-      '''
-closeDocument( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
+      '''closeDocument( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus closeDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})'''
     ...
     def curDocument (self, *args, **kwargs)-> Document :
-      '''
-curDocument( (DocManager)arg1) -> Document :
+      '''curDocument( (DocManager)arg1) -> Document :
 
     C++ signature :
         class PyApDocument curDocument(class PyApDocManager {lvalue})'''
     ...
     def defaultFormatForSave (self, *args, **kwargs)-> SaveFormat :
-      '''
-defaultFormatForSave( (DocManager)arg1) -> SaveFormat :
+      '''defaultFormatForSave( (DocManager)arg1) -> SaveFormat :
 
     C++ signature :
         enum AcApDocument::SaveFormat defaultFormatForSave(class PyApDocManager {lvalue})'''
     ...
     def disableDocumentActivation (self, *args, **kwargs)-> ErrorStatus :
-      '''
-disableDocumentActivation( (DocManager)arg1) -> ErrorStatus :
+      '''disableDocumentActivation( (DocManager)arg1) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus disableDocumentActivation(class PyApDocManager {lvalue})'''
     ...
     def document (self, *args, **kwargs)-> Document :
-      '''
-document( (DocManager)arg1, (Database)arg2) -> Document :
+      '''document( (DocManager)arg1, (Database)arg2) -> Document :
 
     C++ signature :
         class PyApDocument document(class PyApDocManager {lvalue},class PyDbDatabase)'''
     ...
     def documentCount (self, *args, **kwargs)-> int :
-      '''
-documentCount( (DocManager)arg1) -> int :
+      '''documentCount( (DocManager)arg1) -> int :
 
     C++ signature :
         int documentCount(class PyApDocManager {lvalue})'''
     ...
     def enableDocumentActivation (self, *args, **kwargs)-> ErrorStatus :
-      '''
-enableDocumentActivation( (DocManager)arg1) -> ErrorStatus :
+      '''enableDocumentActivation( (DocManager)arg1) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus enableDocumentActivation(class PyApDocManager {lvalue})'''
     ...
     def inputPending (self, *args, **kwargs)-> int :
-      '''
-inputPending( (DocManager)arg1, (Document)arg2) -> int :
+      '''inputPending( (DocManager)arg1, (Document)arg2) -> int :
 
     C++ signature :
         int inputPending(class PyApDocManager {lvalue},class PyApDocument {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
-      '''
-isA( (RxObject)arg1) -> RxClass :
+      '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isApplicationContext (self, *args, **kwargs)-> bool :
-      '''
-isApplicationContext( (DocManager)arg1) -> bool :
+      '''isApplicationContext( (DocManager)arg1) -> bool :
 
     C++ signature :
         bool isApplicationContext(class PyApDocManager {lvalue})'''
     ...
     def isDocumentActivationEnabled (self, *args, **kwargs)-> bool :
-      '''
-isDocumentActivationEnabled( (DocManager)arg1) -> bool :
+      '''isDocumentActivationEnabled( (DocManager)arg1) -> bool :
 
     C++ signature :
         bool isDocumentActivationEnabled(class PyApDocManager {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
-      '''
-isNull( (RxObject)arg1) -> bool :
+      '''isNull( (RxObject)arg1) -> bool :
 
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
     ...
     def lockDocument (self, *args, **kwargs)-> ErrorStatus :
-      '''
-lockDocument( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
+      '''lockDocument( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus lockDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})
@@ -933,64 +905,55 @@ lockDocument( (DocManager)arg1, (Document)arg2, (DocLockMode)arg3, (str)arg4, (s
         enum Acad::ErrorStatus lockDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue},enum AcAp::DocLockMode,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)'''
     ...
     def mdiActiveDocument (self, *args, **kwargs)-> Document :
-      '''
-mdiActiveDocument( (DocManager)arg1) -> Document :
+      '''mdiActiveDocument( (DocManager)arg1) -> Document :
 
     C++ signature :
         class PyApDocument mdiActiveDocument(class PyApDocManager {lvalue})'''
     ...
     def newAcApDocumentIterator (self, *args, **kwargs)-> list :
-      '''
-newAcApDocumentIterator( (DocManager)arg1) -> list :
+      '''newAcApDocumentIterator( (DocManager)arg1) -> list :
 
     C++ signature :
         class boost::python::list newAcApDocumentIterator(class PyApDocManager {lvalue})'''
     ...
     def newDocument (self, *args, **kwargs)-> ErrorStatus :
-      '''
-newDocument( (DocManager)arg1) -> ErrorStatus :
+      '''newDocument( (DocManager)arg1) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus newDocument(class PyApDocManager {lvalue})'''
     ...
     def openDocument (self, *args, **kwargs)-> ErrorStatus :
-      '''
-openDocument( (DocManager)arg1) -> ErrorStatus :
+      '''openDocument( (DocManager)arg1) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus openDocument(class PyApDocManager {lvalue})'''
     ...
     def popResourceHandle (self, *args, **kwargs)-> None :
-      '''
-popResourceHandle( (DocManager)arg1) -> None :
+      '''popResourceHandle( (DocManager)arg1) -> None :
 
     C++ signature :
         void popResourceHandle(class PyApDocManager {lvalue})'''
     ...
     def pushAcadResourceHandle (self, *args, **kwargs)-> None :
-      '''
-pushAcadResourceHandle( (DocManager)arg1) -> None :
+      '''pushAcadResourceHandle( (DocManager)arg1) -> None :
 
     C++ signature :
         void pushAcadResourceHandle(class PyApDocManager {lvalue})'''
     ...
     def refCount (self, *args, **kwargs)-> int :
-      '''
-refCount( (RxObject)arg1) -> int :
+      '''refCount( (RxObject)arg1) -> int :
 
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
     ...
     def sendModelessInterrupt (self, *args, **kwargs)-> ErrorStatus :
-      '''
-sendModelessInterrupt( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
+      '''sendModelessInterrupt( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus sendModelessInterrupt(class PyApDocManager {lvalue},class PyApDocument {lvalue})'''
     ...
     def sendStringToExecute (self, *args, **kwargs)-> ErrorStatus :
-      '''
-sendStringToExecute( (DocManager)arg1, (Document)arg2, (str)arg3) -> ErrorStatus :
+      '''sendStringToExecute( (DocManager)arg1, (Document)arg2, (str)arg3) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus sendStringToExecute(class PyApDocManager {lvalue},class PyApDocument {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
@@ -1001,8 +964,7 @@ sendStringToExecute( (DocManager)arg1, (Document)arg2, (str)arg3, (bool)arg4, (b
         enum Acad::ErrorStatus sendStringToExecute(class PyApDocManager {lvalue},class PyApDocument {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,bool,bool)'''
     ...
     def setCurDocument (self, *args, **kwargs)-> ErrorStatus :
-      '''
-setCurDocument( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
+      '''setCurDocument( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setCurDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})
@@ -1013,15 +975,13 @@ setCurDocument( (DocManager)arg1, (Document)arg2, (DocLockMode)arg3, (bool)arg4)
         enum Acad::ErrorStatus setCurDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue},enum AcAp::DocLockMode,bool)'''
     ...
     def setDefaultFormatForSave (self, *args, **kwargs)-> ErrorStatus :
-      '''
-setDefaultFormatForSave( (DocManager)arg1, (SaveFormat)arg2) -> ErrorStatus :
+      '''setDefaultFormatForSave( (DocManager)arg1, (SaveFormat)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setDefaultFormatForSave(class PyApDocManager {lvalue},enum AcApDocument::SaveFormat)'''
     ...
     def unlockDocument (self, *args, **kwargs)-> ErrorStatus :
-      '''
-unlockDocument( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
+      '''unlockDocument( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus unlockDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})'''
@@ -1029,113 +989,97 @@ unlockDocument( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
 
 class DocManagerReactor:
     def __init__ (self, *args, **kwargs)-> None :
-      '''
-__init__( (object)arg1) -> None :
+      '''__init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
     def addReactor (self, *args, **kwargs)-> None :
-      '''
-addReactor( (DocManagerReactor)arg1) -> None :
+      '''addReactor( (DocManagerReactor)arg1) -> None :
 
     C++ signature :
         void addReactor(class PyApDocManagerReactor {lvalue})'''
     ...
     def documentActivated (self, *args, **kwargs)-> None :
-      '''
-documentActivated( (DocManagerReactor)arg1, (Document)arg2) -> None :
+      '''documentActivated( (DocManagerReactor)arg1, (Document)arg2) -> None :
 
     C++ signature :
         void documentActivated(class PyApDocManagerReactor {lvalue},class PyApDocument {lvalue})'''
     ...
     def documentActivationModified (self, *args, **kwargs)-> None :
-      '''
-documentActivationModified( (DocManagerReactor)arg1, (bool)arg2) -> None :
+      '''documentActivationModified( (DocManagerReactor)arg1, (bool)arg2) -> None :
 
     C++ signature :
         void documentActivationModified(class PyApDocManagerReactor {lvalue},bool)'''
     ...
     def documentBecameCurrent (self, *args, **kwargs)-> None :
-      '''
-documentBecameCurrent( (DocManagerReactor)arg1, (Document)arg2) -> None :
+      '''documentBecameCurrent( (DocManagerReactor)arg1, (Document)arg2) -> None :
 
     C++ signature :
         void documentBecameCurrent(class PyApDocManagerReactor {lvalue},class PyApDocument {lvalue})'''
     ...
     def documentCreateCanceled (self, *args, **kwargs)-> None :
-      '''
-documentCreateCanceled( (DocManagerReactor)arg1, (Document)arg2) -> None :
+      '''documentCreateCanceled( (DocManagerReactor)arg1, (Document)arg2) -> None :
 
     C++ signature :
         void documentCreateCanceled(class PyApDocManagerReactor {lvalue},class PyApDocument {lvalue})'''
     ...
     def documentCreateStarted (self, *args, **kwargs)-> None :
-      '''
-documentCreateStarted( (DocManagerReactor)arg1, (Document)arg2) -> None :
+      '''documentCreateStarted( (DocManagerReactor)arg1, (Document)arg2) -> None :
 
     C++ signature :
         void documentCreateStarted(class PyApDocManagerReactor {lvalue},class PyApDocument {lvalue})'''
     ...
     def documentCreated (self, *args, **kwargs)-> None :
-      '''
-documentCreated( (DocManagerReactor)arg1, (Document)arg2) -> None :
+      '''documentCreated( (DocManagerReactor)arg1, (Document)arg2) -> None :
 
     C++ signature :
         void documentCreated(class PyApDocManagerReactor {lvalue},class PyApDocument {lvalue})'''
     ...
     def documentDestroyed (self, *args, **kwargs)-> None :
-      '''
-documentDestroyed( (DocManagerReactor)arg1, (str)arg2) -> None :
+      '''documentDestroyed( (DocManagerReactor)arg1, (str)arg2) -> None :
 
     C++ signature :
         void documentDestroyed(class PyApDocManagerReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def documentLockModeChangeVetoed (self, *args, **kwargs)-> None :
-      '''
-documentLockModeChangeVetoed( (DocManagerReactor)arg1, (Document)arg2, (str)arg3) -> None :
+      '''documentLockModeChangeVetoed( (DocManagerReactor)arg1, (Document)arg2, (str)arg3) -> None :
 
     C++ signature :
         void documentLockModeChangeVetoed(class PyApDocManagerReactor {lvalue},class PyApDocument {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def documentLockModeChanged (self, *args, **kwargs)-> None :
-      '''
-documentLockModeChanged( (DocManagerReactor)arg1, (Document)arg2, (DocLockMode)arg3, (DocLockMode)arg4, (DocLockMode)arg5, (str)arg6) -> None :
+      '''documentLockModeChanged( (DocManagerReactor)arg1, (Document)arg2, (DocLockMode)arg3, (DocLockMode)arg4, (DocLockMode)arg5, (str)arg6) -> None :
 
     C++ signature :
         void documentLockModeChanged(class PyApDocManagerReactor {lvalue},class PyApDocument {lvalue},enum AcAp::DocLockMode,enum AcAp::DocLockMode,enum AcAp::DocLockMode,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def documentLockModeWillChange (self, *args, **kwargs)-> None :
-      '''
-documentLockModeWillChange( (DocManagerReactor)arg1, (Document)arg2, (DocLockMode)arg3, (DocLockMode)arg4, (DocLockMode)arg5, (str)arg6) -> None :
+      '''documentLockModeWillChange( (DocManagerReactor)arg1, (Document)arg2, (DocLockMode)arg3, (DocLockMode)arg4, (DocLockMode)arg5, (str)arg6) -> None :
 
     C++ signature :
         void documentLockModeWillChange(class PyApDocManagerReactor {lvalue},class PyApDocument {lvalue},enum AcAp::DocLockMode,enum AcAp::DocLockMode,enum AcAp::DocLockMode,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def documentToBeActivated (self, *args, **kwargs)-> None :
-      '''
-documentToBeActivated( (DocManagerReactor)arg1, (Document)arg2) -> None :
+      '''documentToBeActivated( (DocManagerReactor)arg1, (Document)arg2) -> None :
 
     C++ signature :
         void documentToBeActivated(class PyApDocManagerReactor {lvalue},class PyApDocument {lvalue})'''
     ...
     def documentToBeDeactivated (self, *args, **kwargs)-> None :
-      '''
-documentToBeDeactivated( (DocManagerReactor)arg1, (Document)arg2) -> None :
+      '''documentToBeDeactivated( (DocManagerReactor)arg1, (Document)arg2) -> None :
 
     C++ signature :
         void documentToBeDeactivated(class PyApDocManagerReactor {lvalue},class PyApDocument {lvalue})'''
     ...
     def documentToBeDestroyed (self, *args, **kwargs)-> None :
-      '''
-documentToBeDestroyed( (DocManagerReactor)arg1, (Document)arg2) -> None :
+      '''documentToBeDestroyed( (DocManagerReactor)arg1, (Document)arg2) -> None :
 
     C++ signature :
         void documentToBeDestroyed(class PyApDocManagerReactor {lvalue},class PyApDocument {lvalue})'''
     ...
     def removeReactor (self, *args, **kwargs)-> None :
-      '''
-removeReactor( (DocManagerReactor)arg1) -> None :
+      '''removeReactor( (DocManagerReactor)arg1) -> None :
 
     C++ signature :
         void removeReactor(class PyApDocManagerReactor {lvalue})'''
@@ -1144,110 +1088,94 @@ removeReactor( (DocManagerReactor)arg1) -> None :
 class Document:
     def __init__ (self, *args, **kwargs):
       '''Raises an exception
-This class cannot be instantiated from Python
-'''
+This class cannot be instantiated from Python'''
     ...
     def className (self, *args, **kwargs)-> str :
-      '''
-className() -> str :
+      '''className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
     def database (self, *args, **kwargs)-> Database :
-      '''
-database( (Document)arg1) -> Database :
+      '''database( (Document)arg1) -> Database :
 
     C++ signature :
         class PyDbDatabase database(class PyApDocument {lvalue})'''
     ...
     def docTitle (self, *args, **kwargs)-> str :
-      '''
-docTitle( (Document)arg1) -> str :
+      '''docTitle( (Document)arg1) -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > docTitle(class PyApDocument {lvalue})'''
     ...
     def docWnd (self, *args, **kwargs)-> int :
-      '''
-docWnd() -> int :
+      '''docWnd() -> int :
 
     C++ signature :
         __int64 docWnd()'''
     ...
     def downgradeDocOpen (self, *args, **kwargs)-> ErrorStatus :
-      '''
-downgradeDocOpen( (Document)arg1, (bool)arg2) -> ErrorStatus :
+      '''downgradeDocOpen( (Document)arg1, (bool)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus downgradeDocOpen(class PyApDocument {lvalue},bool)'''
     ...
     def editor (self, *args, **kwargs)-> Editor :
-      '''
-editor( (Document)arg1) -> Editor :
+      '''editor( (Document)arg1) -> Editor :
 
     C++ signature :
         class PyAcEditor editor(class PyApDocument {lvalue})'''
     ...
     def fileName (self, *args, **kwargs)-> str :
-      '''
-fileName( (Document)arg1) -> str :
+      '''fileName( (Document)arg1) -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > fileName(class PyApDocument {lvalue})'''
     ...
     def formatForSave (self, *args, **kwargs)-> SaveFormat :
-      '''
-formatForSave( (Document)arg1) -> SaveFormat :
+      '''formatForSave( (Document)arg1) -> SaveFormat :
 
     C++ signature :
         enum AcApDocument::SaveFormat formatForSave(class PyApDocument {lvalue})'''
     ...
     def getCountOfLispList (self, *args, **kwargs)-> int :
-      '''
-getCountOfLispList( (Document)arg1) -> int :
+      '''getCountOfLispList( (Document)arg1) -> int :
 
     C++ signature :
         int getCountOfLispList(class PyApDocument {lvalue})'''
     ...
     def getItemOfLispList (self, *args, **kwargs)-> tuple :
-      '''
-getItemOfLispList( (Document)arg1, (int)arg2) -> tuple :
+      '''getItemOfLispList( (Document)arg1, (int)arg2) -> tuple :
 
     C++ signature :
         class boost::python::tuple getItemOfLispList(class PyApDocument {lvalue},int)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
-      '''
-isA( (RxObject)arg1) -> RxClass :
+      '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isCommandInputInactive (self, *args, **kwargs)-> bool :
-      '''
-isCommandInputInactive( (Document)arg1) -> bool :
+      '''isCommandInputInactive( (Document)arg1) -> bool :
 
     C++ signature :
         bool isCommandInputInactive(class PyApDocument {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
-      '''
-isNull( (RxObject)arg1) -> bool :
+      '''isNull( (RxObject)arg1) -> bool :
 
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
     ...
     def isQuiescent (self, *args, **kwargs)-> bool :
-      '''
-isQuiescent( (Document)arg1) -> bool :
+      '''isQuiescent( (Document)arg1) -> bool :
 
     C++ signature :
         bool isQuiescent(class PyApDocument {lvalue})'''
     ...
     def lockMode (self, *args, **kwargs)-> DocLockMode :
-      '''
-lockMode( (Document)arg1) -> DocLockMode :
+      '''lockMode( (Document)arg1) -> DocLockMode :
 
     C++ signature :
         enum AcAp::DocLockMode lockMode(class PyApDocument {lvalue})
@@ -1258,50 +1186,43 @@ lockMode( (Document)arg1, (bool)arg2) -> DocLockMode :
         enum AcAp::DocLockMode lockMode(class PyApDocument {lvalue},bool)'''
     ...
     def myLockMode (self, *args, **kwargs)-> DocLockMode :
-      '''
-myLockMode( (Document)arg1) -> DocLockMode :
+      '''myLockMode( (Document)arg1) -> DocLockMode :
 
     C++ signature :
         enum AcAp::DocLockMode myLockMode(class PyApDocument {lvalue})'''
     ...
     def popDbmod (self, *args, **kwargs)-> ErrorStatus :
-      '''
-popDbmod( (Document)arg1) -> ErrorStatus :
+      '''popDbmod( (Document)arg1) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus popDbmod(class PyApDocument {lvalue})'''
     ...
     def pushDbmod (self, *args, **kwargs)-> None :
-      '''
-pushDbmod( (Document)arg1) -> None :
+      '''pushDbmod( (Document)arg1) -> None :
 
     C++ signature :
         void pushDbmod(class PyApDocument {lvalue})'''
     ...
     def refCount (self, *args, **kwargs)-> int :
-      '''
-refCount( (RxObject)arg1) -> int :
+      '''refCount( (RxObject)arg1) -> int :
 
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
     ...
     def setDocTitle (self, *args, **kwargs)-> None :
-      '''
-setDocTitle( (Document)arg1, (str)arg2) -> None :
+      '''setDocTitle( (Document)arg1, (str)arg2) -> None :
 
     C++ signature :
         void setDocTitle(class PyApDocument {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def transactionManager (self, *args, **kwargs)-> TransactionManager :
-      '''
-transactionManager( (Document)arg1) -> TransactionManager :
+      '''transactionManager( (Document)arg1) -> TransactionManager :
 
     C++ signature :
         class PyTransactionManager transactionManager(class PyApDocument {lvalue})'''
     ...
     def upgradeDocOpen (self, *args, **kwargs)-> ErrorStatus :
-      '''
-upgradeDocOpen( (Document)arg1) -> ErrorStatus :
+      '''upgradeDocOpen( (Document)arg1) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus upgradeDocOpen(class PyApDocument {lvalue})'''
@@ -1309,15 +1230,13 @@ upgradeDocOpen( (Document)arg1) -> ErrorStatus :
 
 class ResourceOverride:
     def __init__ (self, *args, **kwargs)-> None :
-      '''
-__init__( (object)arg1) -> None :
+      '''__init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
     def className (self, *args, **kwargs)-> str :
-      '''
-className() -> str :
+      '''className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
@@ -1540,22 +1459,19 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
 
 class TransactionManager:
     def __init__ (self, *args, **kwargs)-> None :
-      '''
-__init__( (object)arg1) -> None :
+      '''__init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
     def abortTransaction (self, *args, **kwargs)-> ErrorStatus :
-      '''
-abortTransaction( (TransactionManager)arg1) -> ErrorStatus :
+      '''abortTransaction( (TransactionManager)arg1) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus abortTransaction(class PyDbTransactionManager {lvalue})'''
     ...
     def addNewlyCreatedDBRObject (self, *args, **kwargs)-> ErrorStatus :
-      '''
-addNewlyCreatedDBRObject( (TransactionManager)arg1, (DbObject)arg2) -> ErrorStatus :
+      '''addNewlyCreatedDBRObject( (TransactionManager)arg1, (DbObject)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus addNewlyCreatedDBRObject(class PyDbTransactionManager {lvalue},class PyDbObject {lvalue})
@@ -1566,50 +1482,43 @@ addNewlyCreatedDBRObject( (TransactionManager)arg1, (DbObject)arg2, (bool)arg3) 
         enum Acad::ErrorStatus addNewlyCreatedDBRObject(class PyDbTransactionManager {lvalue},class PyDbObject {lvalue},bool)'''
     ...
     def className (self, *args, **kwargs)-> str :
-      '''
-className() -> str :
+      '''className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
     def desc (self, *args, **kwargs)-> RxClass :
-      '''
-desc() -> RxClass :
+      '''desc() -> RxClass :
 
     C++ signature :
         class PyRxClass desc()'''
     ...
     def enableGraphicsFlush (self, *args, **kwargs)-> ErrorStatus :
-      '''
-enableGraphicsFlush( (TransactionManager)arg1, (bool)arg2) -> ErrorStatus :
+      '''enableGraphicsFlush( (TransactionManager)arg1, (bool)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus enableGraphicsFlush(class PyTransactionManager {lvalue},bool)'''
     ...
     def endTransaction (self, *args, **kwargs)-> ErrorStatus :
-      '''
-endTransaction( (TransactionManager)arg1) -> ErrorStatus :
+      '''endTransaction( (TransactionManager)arg1) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus endTransaction(class PyDbTransactionManager {lvalue})'''
     ...
     def flushGraphics (self, *args, **kwargs)-> None :
-      '''
-flushGraphics( (TransactionManager)arg1) -> None :
+      '''flushGraphics( (TransactionManager)arg1) -> None :
 
     C++ signature :
         void flushGraphics(class PyTransactionManager {lvalue})'''
     ...
     def getAllObjects (self, *args, **kwargs)-> list :
-      '''
-getAllObjects( (TransactionManager)arg1) -> list :
+      '''getAllObjects( (TransactionManager)arg1) -> list :
 
     C++ signature :
         class boost::python::list getAllObjects(class PyDbTransactionManager {lvalue})'''
     ...
     def getObject (self, *args, **kwargs)-> DbObject :
-      '''
-getObject( (TransactionManager)arg1, (ObjectId)arg2) -> DbObject :
+      '''getObject( (TransactionManager)arg1, (ObjectId)arg2) -> DbObject :
 
     C++ signature :
         class PyDbObject getObject(class PyDbTransactionManager {lvalue},class PyDbObjectId)
@@ -1625,57 +1534,49 @@ getObject( (TransactionManager)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4)
         class PyDbObject getObject(class PyDbTransactionManager {lvalue},class PyDbObjectId,enum AcDb::OpenMode,bool)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
-      '''
-isA( (RxObject)arg1) -> RxClass :
+      '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
-      '''
-isNull( (RxObject)arg1) -> bool :
+      '''isNull( (RxObject)arg1) -> bool :
 
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
     ...
     def numActiveTransactions (self, *args, **kwargs)-> int :
-      '''
-numActiveTransactions( (TransactionManager)arg1) -> int :
+      '''numActiveTransactions( (TransactionManager)arg1) -> int :
 
     C++ signature :
         int numActiveTransactions(class PyDbTransactionManager {lvalue})'''
     ...
     def numOpenedObjects (self, *args, **kwargs)-> int :
-      '''
-numOpenedObjects( (TransactionManager)arg1) -> int :
+      '''numOpenedObjects( (TransactionManager)arg1) -> int :
 
     C++ signature :
         int numOpenedObjects(class PyDbTransactionManager {lvalue})'''
     ...
     def queueForGraphicsFlush (self, *args, **kwargs)-> ErrorStatus :
-      '''
-queueForGraphicsFlush( (TransactionManager)arg1) -> ErrorStatus :
+      '''queueForGraphicsFlush( (TransactionManager)arg1) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus queueForGraphicsFlush(class PyDbTransactionManager {lvalue})'''
     ...
     def refCount (self, *args, **kwargs)-> int :
-      '''
-refCount( (RxObject)arg1) -> int :
+      '''refCount( (RxObject)arg1) -> int :
 
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
     ...
     def startTransaction (self, *args, **kwargs)-> Transaction :
-      '''
-startTransaction( (TransactionManager)arg1) -> Transaction :
+      '''startTransaction( (TransactionManager)arg1) -> Transaction :
 
     C++ signature :
         class PyTransaction startTransaction(class PyDbTransactionManager {lvalue})'''
     ...
     def topTransaction (self, *args, **kwargs)-> Transaction :
-      '''
-topTransaction( (TransactionManager)arg1) -> Transaction :
+      '''topTransaction( (TransactionManager)arg1) -> Transaction :
 
     C++ signature :
         class PyTransaction topTransaction(class PyDbTransactionManager {lvalue})'''
@@ -1750,8 +1651,7 @@ errors defaults to 'strict'.'''
 
 function curDoc:
     def curDoc (*args, **kwargs)-> Document :
-      '''
-curDoc() -> Document :
+      '''curDoc() -> Document :
 
     C++ signature :
         class PyApDocument curDoc()'''

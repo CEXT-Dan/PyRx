@@ -166,82 +166,70 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
 class Overrule:
     def __init__ (self, *args, **kwargs):
       '''Raises an exception
-This class cannot be instantiated from Python
-'''
+This class cannot be instantiated from Python'''
     ...
     def addOverrule (self, *args, **kwargs)-> ErrorStatus :
-      '''
-addOverrule( (RxClass)arg1, (Overrule)arg2) -> ErrorStatus :
+      '''addOverrule( (RxClass)arg1, (Overrule)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus addOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
     ...
     def addOverruleLast (self, *args, **kwargs)-> ErrorStatus :
-      '''
-addOverruleLast( (RxClass)arg1, (Overrule)arg2, (bool)arg3) -> ErrorStatus :
+      '''addOverruleLast( (RxClass)arg1, (Overrule)arg2, (bool)arg3) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus addOverruleLast(class PyRxClass {lvalue},class PyRxOverrule {lvalue},bool)'''
     ...
     def className (self, *args, **kwargs)-> str :
-      '''
-className() -> str :
+      '''className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
     def desc (self, *args, **kwargs)-> RxClass :
-      '''
-desc() -> RxClass :
+      '''desc() -> RxClass :
 
     C++ signature :
         class PyRxClass desc()'''
     ...
     def hasOverrule (self, *args, **kwargs)-> bool :
-      '''
-hasOverrule( (RxObject)arg1, (RxClass)arg2) -> bool :
+      '''hasOverrule( (RxObject)arg1, (RxClass)arg2) -> bool :
 
     C++ signature :
         bool hasOverrule(class PyRxObject {lvalue},class PyRxClass {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
-      '''
-isA( (RxObject)arg1) -> RxClass :
+      '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
-      '''
-isNull( (RxObject)arg1) -> bool :
+      '''isNull( (RxObject)arg1) -> bool :
 
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
     ...
     def isOverruling (self, *args, **kwargs)-> bool :
-      '''
-isOverruling() -> bool :
+      '''isOverruling() -> bool :
 
     C++ signature :
         bool isOverruling()'''
     ...
     def refCount (self, *args, **kwargs)-> int :
-      '''
-refCount( (RxObject)arg1) -> int :
+      '''refCount( (RxObject)arg1) -> int :
 
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
     ...
     def removeOverrule (self, *args, **kwargs)-> ErrorStatus :
-      '''
-removeOverrule( (RxClass)arg1, (Overrule)arg2) -> ErrorStatus :
+      '''removeOverrule( (RxClass)arg1, (Overrule)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus removeOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
     ...
     def setIsOverruling (self, *args, **kwargs)-> None :
-      '''
-setIsOverruling( (bool)arg1) -> None :
+      '''setIsOverruling( (bool)arg1) -> None :
 
     C++ signature :
         void setIsOverruling(bool)'''
@@ -250,54 +238,46 @@ setIsOverruling( (bool)arg1) -> None :
 class RxClass:
     def __init__ (self, *args, **kwargs):
       '''Raises an exception
-This class cannot be instantiated from Python
-'''
+This class cannot be instantiated from Python'''
     ...
     def className (self, *args, **kwargs)-> str :
-      '''
-className() -> str :
+      '''className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
     def desc (self, *args, **kwargs)-> RxClass :
-      '''
-desc() -> RxClass :
+      '''desc() -> RxClass :
 
     C++ signature :
         class PyRxClass desc()'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
-      '''
-isA( (RxObject)arg1) -> RxClass :
+      '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isDerivedFrom (self, *args, **kwargs)-> bool :
-      '''
-isDerivedFrom( (RxClass)arg1, (RxClass)arg2) -> bool :
+      '''isDerivedFrom( (RxClass)arg1, (RxClass)arg2) -> bool :
 
     C++ signature :
         bool isDerivedFrom(class PyRxClass {lvalue},class PyRxClass)'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
-      '''
-isNull( (RxObject)arg1) -> bool :
+      '''isNull( (RxObject)arg1) -> bool :
 
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
     ...
     def name (self, *args, **kwargs)-> str :
-      '''
-name( (RxClass)arg1) -> str :
+      '''name( (RxClass)arg1) -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name(class PyRxClass {lvalue})'''
     ...
     def refCount (self, *args, **kwargs)-> int :
-      '''
-refCount( (RxObject)arg1) -> int :
+      '''refCount( (RxObject)arg1) -> int :
 
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
@@ -306,33 +286,28 @@ refCount( (RxObject)arg1) -> int :
 class RxObject:
     def __init__ (self, *args, **kwargs):
       '''Raises an exception
-This class cannot be instantiated from Python
-'''
+This class cannot be instantiated from Python'''
     ...
     def className (self, *args, **kwargs)-> str :
-      '''
-className() -> str :
+      '''className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
-      '''
-isA( (RxObject)arg1) -> RxClass :
+      '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
-      '''
-isNull( (RxObject)arg1) -> bool :
+      '''isNull( (RxObject)arg1) -> bool :
 
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
     ...
     def refCount (self, *args, **kwargs)-> int :
-      '''
-refCount( (RxObject)arg1) -> int :
+      '''refCount( (RxObject)arg1) -> int :
 
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
@@ -407,8 +382,7 @@ errors defaults to 'strict'.'''
 
 class stderr:
     def __init__ (self, *args, **kwargs)-> None :
-      '''
-__init__( (object)arg1) -> None :
+      '''__init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
@@ -419,15 +393,13 @@ __init__( (object)arg1) -> object :
         void * __ptr64 __init__(class boost::python::api::object)'''
     ...
     def flush (self, *args, **kwargs)-> None :
-      '''
-flush( (stderr)arg1) -> None :
+      '''flush( (stderr)arg1) -> None :
 
     C++ signature :
         void flush(class py_redirector<2> {lvalue})'''
     ...
     def write (self, *args, **kwargs)-> None :
-      '''
-write( (stderr)arg1, (str)arg2) -> None :
+      '''write( (stderr)arg1, (str)arg2) -> None :
 
     C++ signature :
         void write(class py_redirector<2> {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
@@ -435,8 +407,7 @@ write( (stderr)arg1, (str)arg2) -> None :
 
 class stdout:
     def __init__ (self, *args, **kwargs)-> None :
-      '''
-__init__( (object)arg1) -> None :
+      '''__init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
@@ -447,15 +418,13 @@ __init__( (object)arg1) -> object :
         void * __ptr64 __init__(class boost::python::api::object)'''
     ...
     def flush (self, *args, **kwargs)-> None :
-      '''
-flush( (stdout)arg1) -> None :
+      '''flush( (stdout)arg1) -> None :
 
     C++ signature :
         void flush(class py_redirector<1> {lvalue})'''
     ...
     def write (self, *args, **kwargs)-> None :
-      '''
-write( (stdout)arg1, (str)arg2) -> None :
+      '''write( (stdout)arg1, (str)arg2) -> None :
 
     C++ signature :
         void write(class py_redirector<1> {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''

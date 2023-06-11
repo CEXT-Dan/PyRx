@@ -886,47 +886,40 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
 class CommonDraw:
     def __init__ (self, *args, **kwargs):
       '''Raises an exception
-This class cannot be instantiated from Python
-'''
+This class cannot be instantiated from Python'''
     ...
     def className (self, *args, **kwargs)-> str :
-      '''
-className() -> str :
+      '''className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
     def desc (self, *args, **kwargs)-> RxClass :
-      '''
-desc() -> RxClass :
+      '''desc() -> RxClass :
 
     C++ signature :
         class PyRxClass desc()'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
-      '''
-isA( (RxObject)arg1) -> RxClass :
+      '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
-      '''
-isNull( (RxObject)arg1) -> bool :
+      '''isNull( (RxObject)arg1) -> bool :
 
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
     ...
     def refCount (self, *args, **kwargs)-> int :
-      '''
-refCount( (RxObject)arg1) -> int :
+      '''refCount( (RxObject)arg1) -> int :
 
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
     ...
     def subEntityTraits (self, *args, **kwargs)-> SubEntityTraits :
-      '''
-subEntityTraits( (CommonDraw)arg1) -> SubEntityTraits :
+      '''subEntityTraits( (CommonDraw)arg1) -> SubEntityTraits :
 
     C++ signature :
         class PyGiSubEntityTraits subEntityTraits(class PyGiCommonDraw {lvalue})'''
@@ -1090,40 +1083,34 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
 class Drawable:
     def __init__ (self, *args, **kwargs):
       '''Raises an exception
-This class cannot be instantiated from Python
-'''
+This class cannot be instantiated from Python'''
     ...
     def className (self, *args, **kwargs)-> str :
-      '''
-className() -> str :
+      '''className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
     def desc (self, *args, **kwargs)-> RxClass :
-      '''
-desc() -> RxClass :
+      '''desc() -> RxClass :
 
     C++ signature :
         class PyRxClass desc()'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
-      '''
-isA( (Drawable)arg1) -> RxClass :
+      '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
         class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
-      '''
-isNull( (RxObject)arg1) -> bool :
+      '''isNull( (RxObject)arg1) -> bool :
 
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
     ...
     def refCount (self, *args, **kwargs)-> int :
-      '''
-refCount( (RxObject)arg1) -> int :
+      '''refCount( (RxObject)arg1) -> int :
 
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
@@ -1131,134 +1118,115 @@ refCount( (RxObject)arg1) -> int :
 
 class DrawableOverrule:
     def __init__ (self, *args, **kwargs)-> None :
-      '''
-__init__( (object)arg1) -> None :
+      '''__init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
     def addOverrule (self, *args, **kwargs)-> ErrorStatus :
-      '''
-addOverrule( (RxClass)arg1, (Overrule)arg2) -> ErrorStatus :
+      '''addOverrule( (RxClass)arg1, (Overrule)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus addOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
     ...
     def addOverruleLast (self, *args, **kwargs)-> ErrorStatus :
-      '''
-addOverruleLast( (RxClass)arg1, (Overrule)arg2, (bool)arg3) -> ErrorStatus :
+      '''addOverruleLast( (RxClass)arg1, (Overrule)arg2, (bool)arg3) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus addOverruleLast(class PyRxClass {lvalue},class PyRxOverrule {lvalue},bool)'''
     ...
     def baseViewportDraw (self, *args, **kwargs)-> None :
-      '''
-baseViewportDraw( (DrawableOverrule)arg1, (Drawable)arg2, (ViewportDraw)arg3) -> None :
+      '''baseViewportDraw( (DrawableOverrule)arg1, (Drawable)arg2, (ViewportDraw)arg3) -> None :
 
     C++ signature :
         void baseViewportDraw(class PyGiDrawableOverrule {lvalue},class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
     ...
     def baseViewportDrawLogicalFlags (self, *args, **kwargs)-> None :
-      '''
-baseViewportDrawLogicalFlags( (DrawableOverrule)arg1, (Drawable)arg2, (ViewportDraw)arg3) -> None :
+      '''baseViewportDrawLogicalFlags( (DrawableOverrule)arg1, (Drawable)arg2, (ViewportDraw)arg3) -> None :
 
     C++ signature :
         void baseViewportDrawLogicalFlags(class PyGiDrawableOverrule {lvalue},class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
     ...
     def baseWorldDraw (self, *args, **kwargs)-> bool :
-      '''
-baseWorldDraw( (DrawableOverrule)arg1, (Drawable)arg2, (WorldDraw)arg3) -> bool :
+      '''baseWorldDraw( (DrawableOverrule)arg1, (Drawable)arg2, (WorldDraw)arg3) -> bool :
 
     C++ signature :
         bool baseWorldDraw(class PyGiDrawableOverrule {lvalue},class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def className (self, *args, **kwargs)-> str :
-      '''
-className() -> str :
+      '''className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
     def desc (self, *args, **kwargs)-> RxClass :
-      '''
-desc() -> RxClass :
+      '''desc() -> RxClass :
 
     C++ signature :
         class PyRxClass desc()'''
     ...
     def hasOverrule (self, *args, **kwargs)-> bool :
-      '''
-hasOverrule( (RxObject)arg1, (RxClass)arg2) -> bool :
+      '''hasOverrule( (RxObject)arg1, (RxClass)arg2) -> bool :
 
     C++ signature :
         bool hasOverrule(class PyRxObject {lvalue},class PyRxClass {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
-      '''
-isA( (RxObject)arg1) -> RxClass :
+      '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isApplicable (self, *args, **kwargs)-> bool :
-      '''
-isApplicable( (DrawableOverrule)arg1, (RxObject)arg2) -> bool :
+      '''isApplicable( (DrawableOverrule)arg1, (RxObject)arg2) -> bool :
 
     C++ signature :
         bool isApplicable(class PyGiDrawableOverrule {lvalue},class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
-      '''
-isNull( (RxObject)arg1) -> bool :
+      '''isNull( (RxObject)arg1) -> bool :
 
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
     ...
     def isOverruling (self, *args, **kwargs)-> bool :
-      '''
-isOverruling() -> bool :
+      '''isOverruling() -> bool :
 
     C++ signature :
         bool isOverruling()'''
     ...
     def refCount (self, *args, **kwargs)-> int :
-      '''
-refCount( (RxObject)arg1) -> int :
+      '''refCount( (RxObject)arg1) -> int :
 
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
     ...
     def removeOverrule (self, *args, **kwargs)-> ErrorStatus :
-      '''
-removeOverrule( (RxClass)arg1, (Overrule)arg2) -> ErrorStatus :
+      '''removeOverrule( (RxClass)arg1, (Overrule)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus removeOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
     ...
     def setIsOverruling (self, *args, **kwargs)-> None :
-      '''
-setIsOverruling( (bool)arg1) -> None :
+      '''setIsOverruling( (bool)arg1) -> None :
 
     C++ signature :
         void setIsOverruling(bool)'''
     ...
     def viewportDraw (self, *args, **kwargs)-> None :
-      '''
-viewportDraw( (DrawableOverrule)arg1, (Drawable)arg2, (ViewportDraw)arg3) -> None :
+      '''viewportDraw( (DrawableOverrule)arg1, (Drawable)arg2, (ViewportDraw)arg3) -> None :
 
     C++ signature :
         void viewportDraw(class PyGiDrawableOverrule {lvalue},class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
     ...
     def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
-      '''
-viewportDrawLogicalFlags( (DrawableOverrule)arg1, (Drawable)arg2, (ViewportDraw)arg3) -> int :
+      '''viewportDrawLogicalFlags( (DrawableOverrule)arg1, (Drawable)arg2, (ViewportDraw)arg3) -> int :
 
     C++ signature :
         unsigned int viewportDrawLogicalFlags(class PyGiDrawableOverrule {lvalue},class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
     ...
     def worldDraw (self, *args, **kwargs)-> bool :
-      '''
-worldDraw( (DrawableOverrule)arg1, (Drawable)arg2, (WorldDraw)arg3) -> bool :
+      '''worldDraw( (DrawableOverrule)arg1, (Drawable)arg2, (WorldDraw)arg3) -> bool :
 
     C++ signature :
         bool worldDraw(class PyGiDrawableOverrule {lvalue},class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
@@ -1267,159 +1235,136 @@ worldDraw( (DrawableOverrule)arg1, (Drawable)arg2, (WorldDraw)arg3) -> bool :
 class DrawableTraits:
     def __init__ (self, *args, **kwargs):
       '''Raises an exception
-This class cannot be instantiated from Python
-'''
+This class cannot be instantiated from Python'''
     ...
     def className (self, *args, **kwargs)-> str :
-      '''
-className() -> str :
+      '''className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
     def color (self, *args, **kwargs)-> int :
-      '''
-color( (SubEntityTraits)arg1) -> int :
+      '''color( (SubEntityTraits)arg1) -> int :
 
     C++ signature :
         unsigned short color(class PyGiSubEntityTraits {lvalue})'''
     ...
     def desc (self, *args, **kwargs)-> RxClass :
-      '''
-desc() -> RxClass :
+      '''desc() -> RxClass :
 
     C++ signature :
         class PyRxClass desc()'''
     ...
     def drawFlags (self, *args, **kwargs)-> int :
-      '''
-drawFlags( (SubEntityTraits)arg1) -> int :
+      '''drawFlags( (SubEntityTraits)arg1) -> int :
 
     C++ signature :
         unsigned int drawFlags(class PyGiSubEntityTraits {lvalue})'''
     ...
     def fillType (self, *args, **kwargs)-> AcGiFillType :
-      '''
-fillType( (SubEntityTraits)arg1) -> AcGiFillType :
+      '''fillType( (SubEntityTraits)arg1) -> AcGiFillType :
 
     C++ signature :
         enum AcGiFillType fillType(class PyGiSubEntityTraits {lvalue})'''
     ...
     def getPlotStyleNameId (self, *args, **kwargs)-> ObjectId :
-      '''
-getPlotStyleNameId( (SubEntityTraits)arg1) -> ObjectId :
+      '''getPlotStyleNameId( (SubEntityTraits)arg1) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId getPlotStyleNameId(class PyGiSubEntityTraits {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
-      '''
-isA( (RxObject)arg1) -> RxClass :
+      '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
-      '''
-isNull( (RxObject)arg1) -> bool :
+      '''isNull( (RxObject)arg1) -> bool :
 
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
     ...
     def layerId (self, *args, **kwargs)-> ObjectId :
-      '''
-layerId( (SubEntityTraits)arg1) -> ObjectId :
+      '''layerId( (SubEntityTraits)arg1) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId layerId(class PyGiSubEntityTraits {lvalue})'''
     ...
     def lineTypeId (self, *args, **kwargs)-> ObjectId :
-      '''
-lineTypeId( (SubEntityTraits)arg1) -> ObjectId :
+      '''lineTypeId( (SubEntityTraits)arg1) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId lineTypeId(class PyGiSubEntityTraits {lvalue})'''
     ...
     def lineTypeScale (self, *args, **kwargs)-> float :
-      '''
-lineTypeScale( (SubEntityTraits)arg1) -> float :
+      '''lineTypeScale( (SubEntityTraits)arg1) -> float :
 
     C++ signature :
         double lineTypeScale(class PyGiSubEntityTraits {lvalue})'''
     ...
     def lineWeight (self, *args, **kwargs)-> LineWeight :
-      '''
-lineWeight( (SubEntityTraits)arg1) -> LineWeight :
+      '''lineWeight( (SubEntityTraits)arg1) -> LineWeight :
 
     C++ signature :
         enum AcDb::LineWeight lineWeight(class PyGiSubEntityTraits {lvalue})'''
     ...
     def materialId (self, *args, **kwargs)-> ObjectId :
-      '''
-materialId( (SubEntityTraits)arg1) -> ObjectId :
+      '''materialId( (SubEntityTraits)arg1) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId materialId(class PyGiSubEntityTraits {lvalue})'''
     ...
     def refCount (self, *args, **kwargs)-> int :
-      '''
-refCount( (RxObject)arg1) -> int :
+      '''refCount( (RxObject)arg1) -> int :
 
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
     ...
     def sectionable (self, *args, **kwargs)-> bool :
-      '''
-sectionable( (SubEntityTraits)arg1) -> bool :
+      '''sectionable( (SubEntityTraits)arg1) -> bool :
 
     C++ signature :
         bool sectionable(class PyGiSubEntityTraits {lvalue})'''
     ...
     def selectionGeom (self, *args, **kwargs)-> bool :
-      '''
-selectionGeom( (SubEntityTraits)arg1) -> bool :
+      '''selectionGeom( (SubEntityTraits)arg1) -> bool :
 
     C++ signature :
         bool selectionGeom(class PyGiSubEntityTraits {lvalue})'''
     ...
     def setColor (self, *args, **kwargs)-> None :
-      '''
-setColor( (SubEntityTraits)arg1, (int)arg2) -> None :
+      '''setColor( (SubEntityTraits)arg1, (int)arg2) -> None :
 
     C++ signature :
         void setColor(class PyGiSubEntityTraits {lvalue},unsigned short)'''
     ...
     def setDrawFlags (self, *args, **kwargs)-> ErrorStatus :
-      '''
-setDrawFlags( (SubEntityTraits)arg1, (int)arg2) -> ErrorStatus :
+      '''setDrawFlags( (SubEntityTraits)arg1, (int)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setDrawFlags(class PyGiSubEntityTraits {lvalue},unsigned int)'''
     ...
     def setFillType (self, *args, **kwargs)-> None :
-      '''
-setFillType( (SubEntityTraits)arg1, (AcGiFillType)arg2) -> None :
+      '''setFillType( (SubEntityTraits)arg1, (AcGiFillType)arg2) -> None :
 
     C++ signature :
         void setFillType(class PyGiSubEntityTraits {lvalue},enum AcGiFillType)'''
     ...
     def setLayer (self, *args, **kwargs)-> None :
-      '''
-setLayer( (SubEntityTraits)arg1, (ObjectId)arg2) -> None :
+      '''setLayer( (SubEntityTraits)arg1, (ObjectId)arg2) -> None :
 
     C++ signature :
         void setLayer(class PyGiSubEntityTraits {lvalue},class PyDbObjectId)'''
     ...
     def setLineType (self, *args, **kwargs)-> None :
-      '''
-setLineType( (SubEntityTraits)arg1, (ObjectId)arg2) -> None :
+      '''setLineType( (SubEntityTraits)arg1, (ObjectId)arg2) -> None :
 
     C++ signature :
         void setLineType(class PyGiSubEntityTraits {lvalue},class PyDbObjectId)'''
     ...
     def setLineTypeScale (self, *args, **kwargs)-> None :
-      '''
-setLineTypeScale( (SubEntityTraits)arg1) -> None :
+      '''setLineTypeScale( (SubEntityTraits)arg1) -> None :
 
     C++ signature :
         void setLineTypeScale(class PyGiSubEntityTraits {lvalue})
@@ -1430,22 +1375,19 @@ setLineTypeScale( (SubEntityTraits)arg1, (float)arg2) -> None :
         void setLineTypeScale(class PyGiSubEntityTraits {lvalue},double)'''
     ...
     def setLineWeight (self, *args, **kwargs)-> None :
-      '''
-setLineWeight( (SubEntityTraits)arg1, (LineWeight)arg2) -> None :
+      '''setLineWeight( (SubEntityTraits)arg1, (LineWeight)arg2) -> None :
 
     C++ signature :
         void setLineWeight(class PyGiSubEntityTraits {lvalue},enum AcDb::LineWeight)'''
     ...
     def setMaterial (self, *args, **kwargs)-> None :
-      '''
-setMaterial( (SubEntityTraits)arg1, (ObjectId)arg2) -> None :
+      '''setMaterial( (SubEntityTraits)arg1, (ObjectId)arg2) -> None :
 
     C++ signature :
         void setMaterial(class PyGiSubEntityTraits {lvalue},class PyDbObjectId)'''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
-      '''
-setPlotStyleName( (SubEntityTraits)arg1, (PlotStyleNameType)arg2) -> None :
+      '''setPlotStyleName( (SubEntityTraits)arg1, (PlotStyleNameType)arg2) -> None :
 
     C++ signature :
         void setPlotStyleName(class PyGiSubEntityTraits {lvalue},enum AcDb::PlotStyleNameType)
@@ -1456,92 +1398,79 @@ setPlotStyleName( (SubEntityTraits)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3
         void setPlotStyleName(class PyGiSubEntityTraits {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId)'''
     ...
     def setSectionable (self, *args, **kwargs)-> None :
-      '''
-setSectionable( (SubEntityTraits)arg1, (bool)arg2) -> None :
+      '''setSectionable( (SubEntityTraits)arg1, (bool)arg2) -> None :
 
     C++ signature :
         void setSectionable(class PyGiSubEntityTraits {lvalue},bool)'''
     ...
     def setSelectionGeom (self, *args, **kwargs)-> None :
-      '''
-setSelectionGeom( (SubEntityTraits)arg1, (bool)arg2) -> None :
+      '''setSelectionGeom( (SubEntityTraits)arg1, (bool)arg2) -> None :
 
     C++ signature :
         void setSelectionGeom(class PyGiSubEntityTraits {lvalue},bool)'''
     ...
     def setSelectionMarker (self, *args, **kwargs)-> None :
-      '''
-setSelectionMarker( (SubEntityTraits)arg1, (int)arg2) -> None :
+      '''setSelectionMarker( (SubEntityTraits)arg1, (int)arg2) -> None :
 
     C++ signature :
         void setSelectionMarker(class PyGiSubEntityTraits {lvalue},__int64)'''
     ...
     def setShadowFlags (self, *args, **kwargs)-> ErrorStatus :
-      '''
-setShadowFlags( (SubEntityTraits)arg1, (ShadowFlags)arg2) -> ErrorStatus :
+      '''setShadowFlags( (SubEntityTraits)arg1, (ShadowFlags)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setShadowFlags(class PyGiSubEntityTraits {lvalue},enum AcGiSubEntityTraits::ShadowFlags)'''
     ...
     def setThickness (self, *args, **kwargs)-> None :
-      '''
-setThickness( (SubEntityTraits)arg1, (float)arg2) -> None :
+      '''setThickness( (SubEntityTraits)arg1, (float)arg2) -> None :
 
     C++ signature :
         void setThickness(class PyGiSubEntityTraits {lvalue},double)'''
     ...
     def setTransparency (self, *args, **kwargs)-> None :
-      '''
-setTransparency( (SubEntityTraits)arg1, (Transparency)arg2) -> None :
+      '''setTransparency( (SubEntityTraits)arg1, (Transparency)arg2) -> None :
 
     C++ signature :
         void setTransparency(class PyGiSubEntityTraits {lvalue},class AcCmTransparency)'''
     ...
     def setTrueColor (self, *args, **kwargs)-> None :
-      '''
-setTrueColor( (SubEntityTraits)arg1, (EntityColor)arg2) -> None :
+      '''setTrueColor( (SubEntityTraits)arg1, (EntityColor)arg2) -> None :
 
     C++ signature :
         void setTrueColor(class PyGiSubEntityTraits {lvalue},class AcCmEntityColor)'''
     ...
     def setVisualStyle (self, *args, **kwargs)-> None :
-      '''
-setVisualStyle( (SubEntityTraits)arg1, (ObjectId)arg2) -> None :
+      '''setVisualStyle( (SubEntityTraits)arg1, (ObjectId)arg2) -> None :
 
     C++ signature :
         void setVisualStyle(class PyGiSubEntityTraits {lvalue},class PyDbObjectId)'''
     ...
     def shadowFlags (self, *args, **kwargs)-> ShadowFlags :
-      '''
-shadowFlags( (SubEntityTraits)arg1) -> ShadowFlags :
+      '''shadowFlags( (SubEntityTraits)arg1) -> ShadowFlags :
 
     C++ signature :
         enum AcGiSubEntityTraits::ShadowFlags shadowFlags(class PyGiSubEntityTraits {lvalue})'''
     ...
     def thickness (self, *args, **kwargs)-> float :
-      '''
-thickness( (SubEntityTraits)arg1) -> float :
+      '''thickness( (SubEntityTraits)arg1) -> float :
 
     C++ signature :
         double thickness(class PyGiSubEntityTraits {lvalue})'''
     ...
     def transparency (self, *args, **kwargs)-> Transparency :
-      '''
-transparency( (SubEntityTraits)arg1) -> Transparency :
+      '''transparency( (SubEntityTraits)arg1) -> Transparency :
 
     C++ signature :
         class AcCmTransparency transparency(class PyGiSubEntityTraits {lvalue})'''
     ...
     def trueColor (self, *args, **kwargs)-> EntityColor :
-      '''
-trueColor( (SubEntityTraits)arg1) -> EntityColor :
+      '''trueColor( (SubEntityTraits)arg1) -> EntityColor :
 
     C++ signature :
         class AcCmEntityColor trueColor(class PyGiSubEntityTraits {lvalue})'''
     ...
     def visualStyle (self, *args, **kwargs)-> ObjectId :
-      '''
-visualStyle( (SubEntityTraits)arg1) -> ObjectId :
+      '''visualStyle( (SubEntityTraits)arg1) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId visualStyle(class PyGiSubEntityTraits {lvalue})'''
@@ -1550,12 +1479,10 @@ visualStyle( (SubEntityTraits)arg1) -> ObjectId :
 class Geometry:
     def __init__ (self, *args, **kwargs):
       '''Raises an exception
-This class cannot be instantiated from Python
-'''
+This class cannot be instantiated from Python'''
     ...
     def circle (self, *args, **kwargs)-> bool :
-      '''
-circle( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4) -> bool :
+      '''circle( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4) -> bool :
 
     C++ signature :
         bool circle(class PyGiGeometry {lvalue},class AcGePoint3d,double,class AcGeVector3d)
@@ -1566,8 +1493,7 @@ circle( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> bool :
         bool circle(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)'''
     ...
     def circularArc (self, *args, **kwargs)-> bool :
-      '''
-circularArc( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4, (Vector3d)arg5, (float)arg6) -> bool :
+      '''circularArc( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4, (Vector3d)arg5, (float)arg6) -> bool :
 
     C++ signature :
         bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,double,class AcGeVector3d,class AcGeVector3d,double)
@@ -1588,36 +1514,31 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
         bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,enum AcGiArcType)'''
     ...
     def className (self, *args, **kwargs)-> str :
-      '''
-className() -> str :
+      '''className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
     def desc (self, *args, **kwargs)-> RxClass :
-      '''
-desc() -> RxClass :
+      '''desc() -> RxClass :
 
     C++ signature :
         class PyRxClass desc()'''
     ...
     def draw (self, *args, **kwargs)-> bool :
-      '''
-draw( (Geometry)arg1, (Drawable)arg2) -> bool :
+      '''draw( (Geometry)arg1, (Drawable)arg2) -> bool :
 
     C++ signature :
         bool draw(class PyGiGeometry {lvalue},class PyGiDrawable {lvalue})'''
     ...
     def edge (self, *args, **kwargs)-> bool :
-      '''
-edge( (Geometry)arg1, (list)arg2) -> bool :
+      '''edge( (Geometry)arg1, (list)arg2) -> bool :
 
     C++ signature :
         bool edge(class PyGiGeometry {lvalue},class boost::python::list)'''
     ...
     def ellipticalArc (self, *args, **kwargs)-> bool :
-      '''
-ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5, (float)arg6, (float)arg7, (float)arg8) -> bool :
+      '''ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5, (float)arg6, (float)arg7, (float)arg8) -> bool :
 
     C++ signature :
         bool ellipticalArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGeVector3d,double,double,double,double,double)
@@ -1628,36 +1549,31 @@ ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (floa
         bool ellipticalArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGeVector3d,double,double,double,double,double,enum AcGiArcType)'''
     ...
     def getModelToWorldTransform (self, *args, **kwargs)-> Matrix3d :
-      '''
-getModelToWorldTransform( (Geometry)arg1) -> Matrix3d :
+      '''getModelToWorldTransform( (Geometry)arg1) -> Matrix3d :
 
     C++ signature :
         class AcGeMatrix3d getModelToWorldTransform(class PyGiGeometry {lvalue})'''
     ...
     def getWorldToModelTransform (self, *args, **kwargs)-> Matrix3d :
-      '''
-getWorldToModelTransform( (Geometry)arg1) -> Matrix3d :
+      '''getWorldToModelTransform( (Geometry)arg1) -> Matrix3d :
 
     C++ signature :
         class AcGeMatrix3d getWorldToModelTransform(class PyGiGeometry {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
-      '''
-isA( (RxObject)arg1) -> RxClass :
+      '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
-      '''
-isNull( (RxObject)arg1) -> bool :
+      '''isNull( (RxObject)arg1) -> bool :
 
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
     ...
     def pline (self, *args, **kwargs)-> bool :
-      '''
-pline( (Geometry)arg1, (Polyline)arg2) -> bool :
+      '''pline( (Geometry)arg1, (Polyline)arg2) -> bool :
 
     C++ signature :
         bool pline(class PyGiGeometry {lvalue},class PyDbPolyline)
@@ -1668,15 +1584,13 @@ pline( (Geometry)arg1, (Polyline)arg2, (int)arg3, (int)arg4) -> bool :
         bool pline(class PyGiGeometry {lvalue},class PyDbPolyline,unsigned int,unsigned int)'''
     ...
     def polygon (self, *args, **kwargs)-> bool :
-      '''
-polygon( (Geometry)arg1, (list)arg2) -> bool :
+      '''polygon( (Geometry)arg1, (list)arg2) -> bool :
 
     C++ signature :
         bool polygon(class PyGiGeometry {lvalue},class boost::python::list)'''
     ...
     def polyline (self, *args, **kwargs)-> bool :
-      '''
-polyline( (Geometry)arg1, (list)arg2) -> bool :
+      '''polyline( (Geometry)arg1, (list)arg2) -> bool :
 
     C++ signature :
         bool polyline(class PyGiGeometry {lvalue},class boost::python::list)
@@ -1687,15 +1601,13 @@ polyline( (Geometry)arg1, (list)arg2, (Vector3d)arg3, (int)arg4) -> bool :
         bool polyline(class PyGiGeometry {lvalue},class boost::python::list,class AcGeVector3d,__int64)'''
     ...
     def popModelTransform (self, *args, **kwargs)-> bool :
-      '''
-popModelTransform( (Geometry)arg1) -> bool :
+      '''popModelTransform( (Geometry)arg1) -> bool :
 
     C++ signature :
         bool popModelTransform(class PyGiGeometry {lvalue})'''
     ...
     def pushModelTransform (self, *args, **kwargs)-> bool :
-      '''
-pushModelTransform( (Geometry)arg1, (Vector3d)arg2) -> bool :
+      '''pushModelTransform( (Geometry)arg1, (Vector3d)arg2) -> bool :
 
     C++ signature :
         bool pushModelTransform(class PyGiGeometry {lvalue},class AcGeVector3d)
@@ -1706,15 +1618,13 @@ pushModelTransform( (Geometry)arg1, (Matrix3d)arg2) -> bool :
         bool pushModelTransform(class PyGiGeometry {lvalue},class AcGeMatrix3d)'''
     ...
     def pushOrientationTransform (self, *args, **kwargs)-> Matrix3d :
-      '''
-pushOrientationTransform( (Geometry)arg1, (AcGiOrientationTransformBehavior)arg2) -> Matrix3d :
+      '''pushOrientationTransform( (Geometry)arg1, (AcGiOrientationTransformBehavior)arg2) -> Matrix3d :
 
     C++ signature :
         class AcGeMatrix3d pushOrientationTransform(class PyGiGeometry {lvalue},enum AcGiOrientationTransformBehavior)'''
     ...
     def pushPositionTransform (self, *args, **kwargs)-> Matrix3d :
-      '''
-pushPositionTransform( (Geometry)arg1, (AcGiPositionTransformBehavior)arg2, (Point3d)arg3) -> Matrix3d :
+      '''pushPositionTransform( (Geometry)arg1, (AcGiPositionTransformBehavior)arg2, (Point3d)arg3) -> Matrix3d :
 
     C++ signature :
         class AcGeMatrix3d pushPositionTransform(class PyGiGeometry {lvalue},enum AcGiPositionTransformBehavior,class AcGePoint3d)
@@ -1725,8 +1635,7 @@ pushPositionTransform( (Geometry)arg1, (AcGiPositionTransformBehavior)arg2, (Poi
         class AcGeMatrix3d pushPositionTransform(class PyGiGeometry {lvalue},enum AcGiPositionTransformBehavior,class AcGePoint2d)'''
     ...
     def pushScaleTransform (self, *args, **kwargs)-> Matrix3d :
-      '''
-pushScaleTransform( (Geometry)arg1, (AcGiScaleTransformBehavior)arg2, (Point3d)arg3) -> Matrix3d :
+      '''pushScaleTransform( (Geometry)arg1, (AcGiScaleTransformBehavior)arg2, (Point3d)arg3) -> Matrix3d :
 
     C++ signature :
         class AcGeMatrix3d pushScaleTransform(class PyGiGeometry {lvalue},enum AcGiScaleTransformBehavior,class AcGePoint3d)
@@ -1737,43 +1646,37 @@ pushScaleTransform( (Geometry)arg1, (AcGiScaleTransformBehavior)arg2, (Point2d)a
         class AcGeMatrix3d pushScaleTransform(class PyGiGeometry {lvalue},enum AcGiScaleTransformBehavior,class AcGePoint2d)'''
     ...
     def ray (self, *args, **kwargs)-> bool :
-      '''
-ray( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
+      '''ray( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
 
     C++ signature :
         bool ray(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d)'''
     ...
     def refCount (self, *args, **kwargs)-> int :
-      '''
-refCount( (RxObject)arg1) -> int :
+      '''refCount( (RxObject)arg1) -> int :
 
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
     ...
     def rowOfDots (self, *args, **kwargs)-> bool :
-      '''
-rowOfDots( (Geometry)arg1, (int)arg2, (Point3d)arg3, (Vector3d)arg4) -> bool :
+      '''rowOfDots( (Geometry)arg1, (int)arg2, (Point3d)arg3, (Vector3d)arg4) -> bool :
 
     C++ signature :
         bool rowOfDots(class PyGiGeometry {lvalue},int,class AcGePoint3d,class AcGeVector3d)'''
     ...
     def text (self, *args, **kwargs)-> bool :
-      '''
-text( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6, (float)arg7, (str)arg8) -> bool :
+      '''text( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6, (float)arg7, (str)arg8) -> bool :
 
     C++ signature :
         bool text(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def worldLine (self, *args, **kwargs)-> bool :
-      '''
-worldLine( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
+      '''worldLine( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
 
     C++ signature :
         bool worldLine(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d)'''
     ...
     def xline (self, *args, **kwargs)-> bool :
-      '''
-xline( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
+      '''xline( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
 
     C++ signature :
         bool xline(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d)'''
@@ -2032,159 +1935,136 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
 class SubEntityTraits:
     def __init__ (self, *args, **kwargs):
       '''Raises an exception
-This class cannot be instantiated from Python
-'''
+This class cannot be instantiated from Python'''
     ...
     def className (self, *args, **kwargs)-> str :
-      '''
-className() -> str :
+      '''className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
     def color (self, *args, **kwargs)-> int :
-      '''
-color( (SubEntityTraits)arg1) -> int :
+      '''color( (SubEntityTraits)arg1) -> int :
 
     C++ signature :
         unsigned short color(class PyGiSubEntityTraits {lvalue})'''
     ...
     def desc (self, *args, **kwargs)-> RxClass :
-      '''
-desc() -> RxClass :
+      '''desc() -> RxClass :
 
     C++ signature :
         class PyRxClass desc()'''
     ...
     def drawFlags (self, *args, **kwargs)-> int :
-      '''
-drawFlags( (SubEntityTraits)arg1) -> int :
+      '''drawFlags( (SubEntityTraits)arg1) -> int :
 
     C++ signature :
         unsigned int drawFlags(class PyGiSubEntityTraits {lvalue})'''
     ...
     def fillType (self, *args, **kwargs)-> AcGiFillType :
-      '''
-fillType( (SubEntityTraits)arg1) -> AcGiFillType :
+      '''fillType( (SubEntityTraits)arg1) -> AcGiFillType :
 
     C++ signature :
         enum AcGiFillType fillType(class PyGiSubEntityTraits {lvalue})'''
     ...
     def getPlotStyleNameId (self, *args, **kwargs)-> ObjectId :
-      '''
-getPlotStyleNameId( (SubEntityTraits)arg1) -> ObjectId :
+      '''getPlotStyleNameId( (SubEntityTraits)arg1) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId getPlotStyleNameId(class PyGiSubEntityTraits {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
-      '''
-isA( (RxObject)arg1) -> RxClass :
+      '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
-      '''
-isNull( (RxObject)arg1) -> bool :
+      '''isNull( (RxObject)arg1) -> bool :
 
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
     ...
     def layerId (self, *args, **kwargs)-> ObjectId :
-      '''
-layerId( (SubEntityTraits)arg1) -> ObjectId :
+      '''layerId( (SubEntityTraits)arg1) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId layerId(class PyGiSubEntityTraits {lvalue})'''
     ...
     def lineTypeId (self, *args, **kwargs)-> ObjectId :
-      '''
-lineTypeId( (SubEntityTraits)arg1) -> ObjectId :
+      '''lineTypeId( (SubEntityTraits)arg1) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId lineTypeId(class PyGiSubEntityTraits {lvalue})'''
     ...
     def lineTypeScale (self, *args, **kwargs)-> float :
-      '''
-lineTypeScale( (SubEntityTraits)arg1) -> float :
+      '''lineTypeScale( (SubEntityTraits)arg1) -> float :
 
     C++ signature :
         double lineTypeScale(class PyGiSubEntityTraits {lvalue})'''
     ...
     def lineWeight (self, *args, **kwargs)-> LineWeight :
-      '''
-lineWeight( (SubEntityTraits)arg1) -> LineWeight :
+      '''lineWeight( (SubEntityTraits)arg1) -> LineWeight :
 
     C++ signature :
         enum AcDb::LineWeight lineWeight(class PyGiSubEntityTraits {lvalue})'''
     ...
     def materialId (self, *args, **kwargs)-> ObjectId :
-      '''
-materialId( (SubEntityTraits)arg1) -> ObjectId :
+      '''materialId( (SubEntityTraits)arg1) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId materialId(class PyGiSubEntityTraits {lvalue})'''
     ...
     def refCount (self, *args, **kwargs)-> int :
-      '''
-refCount( (RxObject)arg1) -> int :
+      '''refCount( (RxObject)arg1) -> int :
 
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
     ...
     def sectionable (self, *args, **kwargs)-> bool :
-      '''
-sectionable( (SubEntityTraits)arg1) -> bool :
+      '''sectionable( (SubEntityTraits)arg1) -> bool :
 
     C++ signature :
         bool sectionable(class PyGiSubEntityTraits {lvalue})'''
     ...
     def selectionGeom (self, *args, **kwargs)-> bool :
-      '''
-selectionGeom( (SubEntityTraits)arg1) -> bool :
+      '''selectionGeom( (SubEntityTraits)arg1) -> bool :
 
     C++ signature :
         bool selectionGeom(class PyGiSubEntityTraits {lvalue})'''
     ...
     def setColor (self, *args, **kwargs)-> None :
-      '''
-setColor( (SubEntityTraits)arg1, (int)arg2) -> None :
+      '''setColor( (SubEntityTraits)arg1, (int)arg2) -> None :
 
     C++ signature :
         void setColor(class PyGiSubEntityTraits {lvalue},unsigned short)'''
     ...
     def setDrawFlags (self, *args, **kwargs)-> ErrorStatus :
-      '''
-setDrawFlags( (SubEntityTraits)arg1, (int)arg2) -> ErrorStatus :
+      '''setDrawFlags( (SubEntityTraits)arg1, (int)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setDrawFlags(class PyGiSubEntityTraits {lvalue},unsigned int)'''
     ...
     def setFillType (self, *args, **kwargs)-> None :
-      '''
-setFillType( (SubEntityTraits)arg1, (AcGiFillType)arg2) -> None :
+      '''setFillType( (SubEntityTraits)arg1, (AcGiFillType)arg2) -> None :
 
     C++ signature :
         void setFillType(class PyGiSubEntityTraits {lvalue},enum AcGiFillType)'''
     ...
     def setLayer (self, *args, **kwargs)-> None :
-      '''
-setLayer( (SubEntityTraits)arg1, (ObjectId)arg2) -> None :
+      '''setLayer( (SubEntityTraits)arg1, (ObjectId)arg2) -> None :
 
     C++ signature :
         void setLayer(class PyGiSubEntityTraits {lvalue},class PyDbObjectId)'''
     ...
     def setLineType (self, *args, **kwargs)-> None :
-      '''
-setLineType( (SubEntityTraits)arg1, (ObjectId)arg2) -> None :
+      '''setLineType( (SubEntityTraits)arg1, (ObjectId)arg2) -> None :
 
     C++ signature :
         void setLineType(class PyGiSubEntityTraits {lvalue},class PyDbObjectId)'''
     ...
     def setLineTypeScale (self, *args, **kwargs)-> None :
-      '''
-setLineTypeScale( (SubEntityTraits)arg1) -> None :
+      '''setLineTypeScale( (SubEntityTraits)arg1) -> None :
 
     C++ signature :
         void setLineTypeScale(class PyGiSubEntityTraits {lvalue})
@@ -2195,22 +2075,19 @@ setLineTypeScale( (SubEntityTraits)arg1, (float)arg2) -> None :
         void setLineTypeScale(class PyGiSubEntityTraits {lvalue},double)'''
     ...
     def setLineWeight (self, *args, **kwargs)-> None :
-      '''
-setLineWeight( (SubEntityTraits)arg1, (LineWeight)arg2) -> None :
+      '''setLineWeight( (SubEntityTraits)arg1, (LineWeight)arg2) -> None :
 
     C++ signature :
         void setLineWeight(class PyGiSubEntityTraits {lvalue},enum AcDb::LineWeight)'''
     ...
     def setMaterial (self, *args, **kwargs)-> None :
-      '''
-setMaterial( (SubEntityTraits)arg1, (ObjectId)arg2) -> None :
+      '''setMaterial( (SubEntityTraits)arg1, (ObjectId)arg2) -> None :
 
     C++ signature :
         void setMaterial(class PyGiSubEntityTraits {lvalue},class PyDbObjectId)'''
     ...
     def setPlotStyleName (self, *args, **kwargs)-> None :
-      '''
-setPlotStyleName( (SubEntityTraits)arg1, (PlotStyleNameType)arg2) -> None :
+      '''setPlotStyleName( (SubEntityTraits)arg1, (PlotStyleNameType)arg2) -> None :
 
     C++ signature :
         void setPlotStyleName(class PyGiSubEntityTraits {lvalue},enum AcDb::PlotStyleNameType)
@@ -2221,92 +2098,79 @@ setPlotStyleName( (SubEntityTraits)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3
         void setPlotStyleName(class PyGiSubEntityTraits {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId)'''
     ...
     def setSectionable (self, *args, **kwargs)-> None :
-      '''
-setSectionable( (SubEntityTraits)arg1, (bool)arg2) -> None :
+      '''setSectionable( (SubEntityTraits)arg1, (bool)arg2) -> None :
 
     C++ signature :
         void setSectionable(class PyGiSubEntityTraits {lvalue},bool)'''
     ...
     def setSelectionGeom (self, *args, **kwargs)-> None :
-      '''
-setSelectionGeom( (SubEntityTraits)arg1, (bool)arg2) -> None :
+      '''setSelectionGeom( (SubEntityTraits)arg1, (bool)arg2) -> None :
 
     C++ signature :
         void setSelectionGeom(class PyGiSubEntityTraits {lvalue},bool)'''
     ...
     def setSelectionMarker (self, *args, **kwargs)-> None :
-      '''
-setSelectionMarker( (SubEntityTraits)arg1, (int)arg2) -> None :
+      '''setSelectionMarker( (SubEntityTraits)arg1, (int)arg2) -> None :
 
     C++ signature :
         void setSelectionMarker(class PyGiSubEntityTraits {lvalue},__int64)'''
     ...
     def setShadowFlags (self, *args, **kwargs)-> ErrorStatus :
-      '''
-setShadowFlags( (SubEntityTraits)arg1, (ShadowFlags)arg2) -> ErrorStatus :
+      '''setShadowFlags( (SubEntityTraits)arg1, (ShadowFlags)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setShadowFlags(class PyGiSubEntityTraits {lvalue},enum AcGiSubEntityTraits::ShadowFlags)'''
     ...
     def setThickness (self, *args, **kwargs)-> None :
-      '''
-setThickness( (SubEntityTraits)arg1, (float)arg2) -> None :
+      '''setThickness( (SubEntityTraits)arg1, (float)arg2) -> None :
 
     C++ signature :
         void setThickness(class PyGiSubEntityTraits {lvalue},double)'''
     ...
     def setTransparency (self, *args, **kwargs)-> None :
-      '''
-setTransparency( (SubEntityTraits)arg1, (Transparency)arg2) -> None :
+      '''setTransparency( (SubEntityTraits)arg1, (Transparency)arg2) -> None :
 
     C++ signature :
         void setTransparency(class PyGiSubEntityTraits {lvalue},class AcCmTransparency)'''
     ...
     def setTrueColor (self, *args, **kwargs)-> None :
-      '''
-setTrueColor( (SubEntityTraits)arg1, (EntityColor)arg2) -> None :
+      '''setTrueColor( (SubEntityTraits)arg1, (EntityColor)arg2) -> None :
 
     C++ signature :
         void setTrueColor(class PyGiSubEntityTraits {lvalue},class AcCmEntityColor)'''
     ...
     def setVisualStyle (self, *args, **kwargs)-> None :
-      '''
-setVisualStyle( (SubEntityTraits)arg1, (ObjectId)arg2) -> None :
+      '''setVisualStyle( (SubEntityTraits)arg1, (ObjectId)arg2) -> None :
 
     C++ signature :
         void setVisualStyle(class PyGiSubEntityTraits {lvalue},class PyDbObjectId)'''
     ...
     def shadowFlags (self, *args, **kwargs)-> ShadowFlags :
-      '''
-shadowFlags( (SubEntityTraits)arg1) -> ShadowFlags :
+      '''shadowFlags( (SubEntityTraits)arg1) -> ShadowFlags :
 
     C++ signature :
         enum AcGiSubEntityTraits::ShadowFlags shadowFlags(class PyGiSubEntityTraits {lvalue})'''
     ...
     def thickness (self, *args, **kwargs)-> float :
-      '''
-thickness( (SubEntityTraits)arg1) -> float :
+      '''thickness( (SubEntityTraits)arg1) -> float :
 
     C++ signature :
         double thickness(class PyGiSubEntityTraits {lvalue})'''
     ...
     def transparency (self, *args, **kwargs)-> Transparency :
-      '''
-transparency( (SubEntityTraits)arg1) -> Transparency :
+      '''transparency( (SubEntityTraits)arg1) -> Transparency :
 
     C++ signature :
         class AcCmTransparency transparency(class PyGiSubEntityTraits {lvalue})'''
     ...
     def trueColor (self, *args, **kwargs)-> EntityColor :
-      '''
-trueColor( (SubEntityTraits)arg1) -> EntityColor :
+      '''trueColor( (SubEntityTraits)arg1) -> EntityColor :
 
     C++ signature :
         class AcCmEntityColor trueColor(class PyGiSubEntityTraits {lvalue})'''
     ...
     def visualStyle (self, *args, **kwargs)-> ObjectId :
-      '''
-visualStyle( (SubEntityTraits)arg1) -> ObjectId :
+      '''visualStyle( (SubEntityTraits)arg1) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId visualStyle(class PyGiSubEntityTraits {lvalue})'''
@@ -2440,54 +2304,46 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
 class ViewportDraw:
     def __init__ (self, *args, **kwargs):
       '''Raises an exception
-This class cannot be instantiated from Python
-'''
+This class cannot be instantiated from Python'''
     ...
     def className (self, *args, **kwargs)-> str :
-      '''
-className() -> str :
+      '''className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
     def desc (self, *args, **kwargs)-> RxClass :
-      '''
-desc() -> RxClass :
+      '''desc() -> RxClass :
 
     C++ signature :
         class PyRxClass desc()'''
     ...
     def geometry (self, *args, **kwargs)-> ViewportGeometry :
-      '''
-geometry( (ViewportDraw)arg1) -> ViewportGeometry :
+      '''geometry( (ViewportDraw)arg1) -> ViewportGeometry :
 
     C++ signature :
         class PyGiViewportGeometry geometry(class PyGiViewportDraw {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
-      '''
-isA( (RxObject)arg1) -> RxClass :
+      '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
-      '''
-isNull( (RxObject)arg1) -> bool :
+      '''isNull( (RxObject)arg1) -> bool :
 
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
     ...
     def refCount (self, *args, **kwargs)-> int :
-      '''
-refCount( (RxObject)arg1) -> int :
+      '''refCount( (RxObject)arg1) -> int :
 
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
     ...
     def subEntityTraits (self, *args, **kwargs)-> SubEntityTraits :
-      '''
-subEntityTraits( (CommonDraw)arg1) -> SubEntityTraits :
+      '''subEntityTraits( (CommonDraw)arg1) -> SubEntityTraits :
 
     C++ signature :
         class PyGiSubEntityTraits subEntityTraits(class PyGiCommonDraw {lvalue})'''
@@ -2496,12 +2352,10 @@ subEntityTraits( (CommonDraw)arg1) -> SubEntityTraits :
 class ViewportGeometry:
     def __init__ (self, *args, **kwargs):
       '''Raises an exception
-This class cannot be instantiated from Python
-'''
+This class cannot be instantiated from Python'''
     ...
     def circle (self, *args, **kwargs)-> bool :
-      '''
-circle( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4) -> bool :
+      '''circle( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4) -> bool :
 
     C++ signature :
         bool circle(class PyGiGeometry {lvalue},class AcGePoint3d,double,class AcGeVector3d)
@@ -2512,8 +2366,7 @@ circle( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> bool :
         bool circle(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)'''
     ...
     def circularArc (self, *args, **kwargs)-> bool :
-      '''
-circularArc( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4, (Vector3d)arg5, (float)arg6) -> bool :
+      '''circularArc( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4, (Vector3d)arg5, (float)arg6) -> bool :
 
     C++ signature :
         bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,double,class AcGeVector3d,class AcGeVector3d,double)
@@ -2534,36 +2387,31 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
         bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,enum AcGiArcType)'''
     ...
     def className (self, *args, **kwargs)-> str :
-      '''
-className() -> str :
+      '''className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
     def desc (self, *args, **kwargs)-> RxClass :
-      '''
-desc() -> RxClass :
+      '''desc() -> RxClass :
 
     C++ signature :
         class PyRxClass desc()'''
     ...
     def draw (self, *args, **kwargs)-> bool :
-      '''
-draw( (Geometry)arg1, (Drawable)arg2) -> bool :
+      '''draw( (Geometry)arg1, (Drawable)arg2) -> bool :
 
     C++ signature :
         bool draw(class PyGiGeometry {lvalue},class PyGiDrawable {lvalue})'''
     ...
     def edge (self, *args, **kwargs)-> bool :
-      '''
-edge( (Geometry)arg1, (list)arg2) -> bool :
+      '''edge( (Geometry)arg1, (list)arg2) -> bool :
 
     C++ signature :
         bool edge(class PyGiGeometry {lvalue},class boost::python::list)'''
     ...
     def ellipticalArc (self, *args, **kwargs)-> bool :
-      '''
-ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5, (float)arg6, (float)arg7, (float)arg8) -> bool :
+      '''ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5, (float)arg6, (float)arg7, (float)arg8) -> bool :
 
     C++ signature :
         bool ellipticalArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGeVector3d,double,double,double,double,double)
@@ -2574,36 +2422,31 @@ ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (floa
         bool ellipticalArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGeVector3d,double,double,double,double,double,enum AcGiArcType)'''
     ...
     def getModelToWorldTransform (self, *args, **kwargs)-> Matrix3d :
-      '''
-getModelToWorldTransform( (Geometry)arg1) -> Matrix3d :
+      '''getModelToWorldTransform( (Geometry)arg1) -> Matrix3d :
 
     C++ signature :
         class AcGeMatrix3d getModelToWorldTransform(class PyGiGeometry {lvalue})'''
     ...
     def getWorldToModelTransform (self, *args, **kwargs)-> Matrix3d :
-      '''
-getWorldToModelTransform( (Geometry)arg1) -> Matrix3d :
+      '''getWorldToModelTransform( (Geometry)arg1) -> Matrix3d :
 
     C++ signature :
         class AcGeMatrix3d getWorldToModelTransform(class PyGiGeometry {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
-      '''
-isA( (RxObject)arg1) -> RxClass :
+      '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
-      '''
-isNull( (RxObject)arg1) -> bool :
+      '''isNull( (RxObject)arg1) -> bool :
 
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
     ...
     def pline (self, *args, **kwargs)-> bool :
-      '''
-pline( (Geometry)arg1, (Polyline)arg2) -> bool :
+      '''pline( (Geometry)arg1, (Polyline)arg2) -> bool :
 
     C++ signature :
         bool pline(class PyGiGeometry {lvalue},class PyDbPolyline)
@@ -2614,15 +2457,13 @@ pline( (Geometry)arg1, (Polyline)arg2, (int)arg3, (int)arg4) -> bool :
         bool pline(class PyGiGeometry {lvalue},class PyDbPolyline,unsigned int,unsigned int)'''
     ...
     def polygon (self, *args, **kwargs)-> bool :
-      '''
-polygon( (Geometry)arg1, (list)arg2) -> bool :
+      '''polygon( (Geometry)arg1, (list)arg2) -> bool :
 
     C++ signature :
         bool polygon(class PyGiGeometry {lvalue},class boost::python::list)'''
     ...
     def polyline (self, *args, **kwargs)-> bool :
-      '''
-polyline( (Geometry)arg1, (list)arg2) -> bool :
+      '''polyline( (Geometry)arg1, (list)arg2) -> bool :
 
     C++ signature :
         bool polyline(class PyGiGeometry {lvalue},class boost::python::list)
@@ -2633,15 +2474,13 @@ polyline( (Geometry)arg1, (list)arg2, (Vector3d)arg3, (int)arg4) -> bool :
         bool polyline(class PyGiGeometry {lvalue},class boost::python::list,class AcGeVector3d,__int64)'''
     ...
     def popModelTransform (self, *args, **kwargs)-> bool :
-      '''
-popModelTransform( (Geometry)arg1) -> bool :
+      '''popModelTransform( (Geometry)arg1) -> bool :
 
     C++ signature :
         bool popModelTransform(class PyGiGeometry {lvalue})'''
     ...
     def pushModelTransform (self, *args, **kwargs)-> bool :
-      '''
-pushModelTransform( (Geometry)arg1, (Vector3d)arg2) -> bool :
+      '''pushModelTransform( (Geometry)arg1, (Vector3d)arg2) -> bool :
 
     C++ signature :
         bool pushModelTransform(class PyGiGeometry {lvalue},class AcGeVector3d)
@@ -2652,15 +2491,13 @@ pushModelTransform( (Geometry)arg1, (Matrix3d)arg2) -> bool :
         bool pushModelTransform(class PyGiGeometry {lvalue},class AcGeMatrix3d)'''
     ...
     def pushOrientationTransform (self, *args, **kwargs)-> Matrix3d :
-      '''
-pushOrientationTransform( (Geometry)arg1, (AcGiOrientationTransformBehavior)arg2) -> Matrix3d :
+      '''pushOrientationTransform( (Geometry)arg1, (AcGiOrientationTransformBehavior)arg2) -> Matrix3d :
 
     C++ signature :
         class AcGeMatrix3d pushOrientationTransform(class PyGiGeometry {lvalue},enum AcGiOrientationTransformBehavior)'''
     ...
     def pushPositionTransform (self, *args, **kwargs)-> Matrix3d :
-      '''
-pushPositionTransform( (Geometry)arg1, (AcGiPositionTransformBehavior)arg2, (Point3d)arg3) -> Matrix3d :
+      '''pushPositionTransform( (Geometry)arg1, (AcGiPositionTransformBehavior)arg2, (Point3d)arg3) -> Matrix3d :
 
     C++ signature :
         class AcGeMatrix3d pushPositionTransform(class PyGiGeometry {lvalue},enum AcGiPositionTransformBehavior,class AcGePoint3d)
@@ -2671,8 +2508,7 @@ pushPositionTransform( (Geometry)arg1, (AcGiPositionTransformBehavior)arg2, (Poi
         class AcGeMatrix3d pushPositionTransform(class PyGiGeometry {lvalue},enum AcGiPositionTransformBehavior,class AcGePoint2d)'''
     ...
     def pushScaleTransform (self, *args, **kwargs)-> Matrix3d :
-      '''
-pushScaleTransform( (Geometry)arg1, (AcGiScaleTransformBehavior)arg2, (Point3d)arg3) -> Matrix3d :
+      '''pushScaleTransform( (Geometry)arg1, (AcGiScaleTransformBehavior)arg2, (Point3d)arg3) -> Matrix3d :
 
     C++ signature :
         class AcGeMatrix3d pushScaleTransform(class PyGiGeometry {lvalue},enum AcGiScaleTransformBehavior,class AcGePoint3d)
@@ -2683,43 +2519,37 @@ pushScaleTransform( (Geometry)arg1, (AcGiScaleTransformBehavior)arg2, (Point2d)a
         class AcGeMatrix3d pushScaleTransform(class PyGiGeometry {lvalue},enum AcGiScaleTransformBehavior,class AcGePoint2d)'''
     ...
     def ray (self, *args, **kwargs)-> bool :
-      '''
-ray( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
+      '''ray( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
 
     C++ signature :
         bool ray(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d)'''
     ...
     def refCount (self, *args, **kwargs)-> int :
-      '''
-refCount( (RxObject)arg1) -> int :
+      '''refCount( (RxObject)arg1) -> int :
 
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
     ...
     def rowOfDots (self, *args, **kwargs)-> bool :
-      '''
-rowOfDots( (Geometry)arg1, (int)arg2, (Point3d)arg3, (Vector3d)arg4) -> bool :
+      '''rowOfDots( (Geometry)arg1, (int)arg2, (Point3d)arg3, (Vector3d)arg4) -> bool :
 
     C++ signature :
         bool rowOfDots(class PyGiGeometry {lvalue},int,class AcGePoint3d,class AcGeVector3d)'''
     ...
     def text (self, *args, **kwargs)-> bool :
-      '''
-text( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6, (float)arg7, (str)arg8) -> bool :
+      '''text( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6, (float)arg7, (str)arg8) -> bool :
 
     C++ signature :
         bool text(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def worldLine (self, *args, **kwargs)-> bool :
-      '''
-worldLine( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
+      '''worldLine( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
 
     C++ signature :
         bool worldLine(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d)'''
     ...
     def xline (self, *args, **kwargs)-> bool :
-      '''
-xline( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
+      '''xline( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
 
     C++ signature :
         bool xline(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d)'''
@@ -2728,54 +2558,46 @@ xline( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
 class WorldDraw:
     def __init__ (self, *args, **kwargs):
       '''Raises an exception
-This class cannot be instantiated from Python
-'''
+This class cannot be instantiated from Python'''
     ...
     def className (self, *args, **kwargs)-> str :
-      '''
-className() -> str :
+      '''className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
     def desc (self, *args, **kwargs)-> RxClass :
-      '''
-desc() -> RxClass :
+      '''desc() -> RxClass :
 
     C++ signature :
         class PyRxClass desc()'''
     ...
     def geometry (self, *args, **kwargs)-> WorldGeometry :
-      '''
-geometry( (WorldDraw)arg1) -> WorldGeometry :
+      '''geometry( (WorldDraw)arg1) -> WorldGeometry :
 
     C++ signature :
         class PyGiWorldGeometry geometry(class PyGiWorldDraw {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
-      '''
-isA( (RxObject)arg1) -> RxClass :
+      '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
-      '''
-isNull( (RxObject)arg1) -> bool :
+      '''isNull( (RxObject)arg1) -> bool :
 
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
     ...
     def refCount (self, *args, **kwargs)-> int :
-      '''
-refCount( (RxObject)arg1) -> int :
+      '''refCount( (RxObject)arg1) -> int :
 
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
     ...
     def subEntityTraits (self, *args, **kwargs)-> SubEntityTraits :
-      '''
-subEntityTraits( (CommonDraw)arg1) -> SubEntityTraits :
+      '''subEntityTraits( (CommonDraw)arg1) -> SubEntityTraits :
 
     C++ signature :
         class PyGiSubEntityTraits subEntityTraits(class PyGiCommonDraw {lvalue})'''
@@ -2784,12 +2606,10 @@ subEntityTraits( (CommonDraw)arg1) -> SubEntityTraits :
 class WorldGeometry:
     def __init__ (self, *args, **kwargs):
       '''Raises an exception
-This class cannot be instantiated from Python
-'''
+This class cannot be instantiated from Python'''
     ...
     def circle (self, *args, **kwargs)-> bool :
-      '''
-circle( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4) -> bool :
+      '''circle( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4) -> bool :
 
     C++ signature :
         bool circle(class PyGiGeometry {lvalue},class AcGePoint3d,double,class AcGeVector3d)
@@ -2800,8 +2620,7 @@ circle( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> bool :
         bool circle(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d)'''
     ...
     def circularArc (self, *args, **kwargs)-> bool :
-      '''
-circularArc( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4, (Vector3d)arg5, (float)arg6) -> bool :
+      '''circularArc( (Geometry)arg1, (Point3d)arg2, (float)arg3, (Vector3d)arg4, (Vector3d)arg5, (float)arg6) -> bool :
 
     C++ signature :
         bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,double,class AcGeVector3d,class AcGeVector3d,double)
@@ -2822,36 +2641,31 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
         bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,enum AcGiArcType)'''
     ...
     def className (self, *args, **kwargs)-> str :
-      '''
-className() -> str :
+      '''className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
     def desc (self, *args, **kwargs)-> RxClass :
-      '''
-desc() -> RxClass :
+      '''desc() -> RxClass :
 
     C++ signature :
         class PyRxClass desc()'''
     ...
     def draw (self, *args, **kwargs)-> bool :
-      '''
-draw( (Geometry)arg1, (Drawable)arg2) -> bool :
+      '''draw( (Geometry)arg1, (Drawable)arg2) -> bool :
 
     C++ signature :
         bool draw(class PyGiGeometry {lvalue},class PyGiDrawable {lvalue})'''
     ...
     def edge (self, *args, **kwargs)-> bool :
-      '''
-edge( (Geometry)arg1, (list)arg2) -> bool :
+      '''edge( (Geometry)arg1, (list)arg2) -> bool :
 
     C++ signature :
         bool edge(class PyGiGeometry {lvalue},class boost::python::list)'''
     ...
     def ellipticalArc (self, *args, **kwargs)-> bool :
-      '''
-ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5, (float)arg6, (float)arg7, (float)arg8) -> bool :
+      '''ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5, (float)arg6, (float)arg7, (float)arg8) -> bool :
 
     C++ signature :
         bool ellipticalArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGeVector3d,double,double,double,double,double)
@@ -2862,36 +2676,31 @@ ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (floa
         bool ellipticalArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGeVector3d,double,double,double,double,double,enum AcGiArcType)'''
     ...
     def getModelToWorldTransform (self, *args, **kwargs)-> Matrix3d :
-      '''
-getModelToWorldTransform( (Geometry)arg1) -> Matrix3d :
+      '''getModelToWorldTransform( (Geometry)arg1) -> Matrix3d :
 
     C++ signature :
         class AcGeMatrix3d getModelToWorldTransform(class PyGiGeometry {lvalue})'''
     ...
     def getWorldToModelTransform (self, *args, **kwargs)-> Matrix3d :
-      '''
-getWorldToModelTransform( (Geometry)arg1) -> Matrix3d :
+      '''getWorldToModelTransform( (Geometry)arg1) -> Matrix3d :
 
     C++ signature :
         class AcGeMatrix3d getWorldToModelTransform(class PyGiGeometry {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
-      '''
-isA( (RxObject)arg1) -> RxClass :
+      '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
-      '''
-isNull( (RxObject)arg1) -> bool :
+      '''isNull( (RxObject)arg1) -> bool :
 
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
     ...
     def pline (self, *args, **kwargs)-> bool :
-      '''
-pline( (Geometry)arg1, (Polyline)arg2) -> bool :
+      '''pline( (Geometry)arg1, (Polyline)arg2) -> bool :
 
     C++ signature :
         bool pline(class PyGiGeometry {lvalue},class PyDbPolyline)
@@ -2902,15 +2711,13 @@ pline( (Geometry)arg1, (Polyline)arg2, (int)arg3, (int)arg4) -> bool :
         bool pline(class PyGiGeometry {lvalue},class PyDbPolyline,unsigned int,unsigned int)'''
     ...
     def polygon (self, *args, **kwargs)-> bool :
-      '''
-polygon( (Geometry)arg1, (list)arg2) -> bool :
+      '''polygon( (Geometry)arg1, (list)arg2) -> bool :
 
     C++ signature :
         bool polygon(class PyGiGeometry {lvalue},class boost::python::list)'''
     ...
     def polyline (self, *args, **kwargs)-> bool :
-      '''
-polyline( (Geometry)arg1, (list)arg2) -> bool :
+      '''polyline( (Geometry)arg1, (list)arg2) -> bool :
 
     C++ signature :
         bool polyline(class PyGiGeometry {lvalue},class boost::python::list)
@@ -2921,15 +2728,13 @@ polyline( (Geometry)arg1, (list)arg2, (Vector3d)arg3, (int)arg4) -> bool :
         bool polyline(class PyGiGeometry {lvalue},class boost::python::list,class AcGeVector3d,__int64)'''
     ...
     def popModelTransform (self, *args, **kwargs)-> bool :
-      '''
-popModelTransform( (Geometry)arg1) -> bool :
+      '''popModelTransform( (Geometry)arg1) -> bool :
 
     C++ signature :
         bool popModelTransform(class PyGiGeometry {lvalue})'''
     ...
     def pushModelTransform (self, *args, **kwargs)-> bool :
-      '''
-pushModelTransform( (Geometry)arg1, (Vector3d)arg2) -> bool :
+      '''pushModelTransform( (Geometry)arg1, (Vector3d)arg2) -> bool :
 
     C++ signature :
         bool pushModelTransform(class PyGiGeometry {lvalue},class AcGeVector3d)
@@ -2940,15 +2745,13 @@ pushModelTransform( (Geometry)arg1, (Matrix3d)arg2) -> bool :
         bool pushModelTransform(class PyGiGeometry {lvalue},class AcGeMatrix3d)'''
     ...
     def pushOrientationTransform (self, *args, **kwargs)-> Matrix3d :
-      '''
-pushOrientationTransform( (Geometry)arg1, (AcGiOrientationTransformBehavior)arg2) -> Matrix3d :
+      '''pushOrientationTransform( (Geometry)arg1, (AcGiOrientationTransformBehavior)arg2) -> Matrix3d :
 
     C++ signature :
         class AcGeMatrix3d pushOrientationTransform(class PyGiGeometry {lvalue},enum AcGiOrientationTransformBehavior)'''
     ...
     def pushPositionTransform (self, *args, **kwargs)-> Matrix3d :
-      '''
-pushPositionTransform( (Geometry)arg1, (AcGiPositionTransformBehavior)arg2, (Point3d)arg3) -> Matrix3d :
+      '''pushPositionTransform( (Geometry)arg1, (AcGiPositionTransformBehavior)arg2, (Point3d)arg3) -> Matrix3d :
 
     C++ signature :
         class AcGeMatrix3d pushPositionTransform(class PyGiGeometry {lvalue},enum AcGiPositionTransformBehavior,class AcGePoint3d)
@@ -2959,8 +2762,7 @@ pushPositionTransform( (Geometry)arg1, (AcGiPositionTransformBehavior)arg2, (Poi
         class AcGeMatrix3d pushPositionTransform(class PyGiGeometry {lvalue},enum AcGiPositionTransformBehavior,class AcGePoint2d)'''
     ...
     def pushScaleTransform (self, *args, **kwargs)-> Matrix3d :
-      '''
-pushScaleTransform( (Geometry)arg1, (AcGiScaleTransformBehavior)arg2, (Point3d)arg3) -> Matrix3d :
+      '''pushScaleTransform( (Geometry)arg1, (AcGiScaleTransformBehavior)arg2, (Point3d)arg3) -> Matrix3d :
 
     C++ signature :
         class AcGeMatrix3d pushScaleTransform(class PyGiGeometry {lvalue},enum AcGiScaleTransformBehavior,class AcGePoint3d)
@@ -2971,43 +2773,37 @@ pushScaleTransform( (Geometry)arg1, (AcGiScaleTransformBehavior)arg2, (Point2d)a
         class AcGeMatrix3d pushScaleTransform(class PyGiGeometry {lvalue},enum AcGiScaleTransformBehavior,class AcGePoint2d)'''
     ...
     def ray (self, *args, **kwargs)-> bool :
-      '''
-ray( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
+      '''ray( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
 
     C++ signature :
         bool ray(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d)'''
     ...
     def refCount (self, *args, **kwargs)-> int :
-      '''
-refCount( (RxObject)arg1) -> int :
+      '''refCount( (RxObject)arg1) -> int :
 
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
     ...
     def rowOfDots (self, *args, **kwargs)-> bool :
-      '''
-rowOfDots( (Geometry)arg1, (int)arg2, (Point3d)arg3, (Vector3d)arg4) -> bool :
+      '''rowOfDots( (Geometry)arg1, (int)arg2, (Point3d)arg3, (Vector3d)arg4) -> bool :
 
     C++ signature :
         bool rowOfDots(class PyGiGeometry {lvalue},int,class AcGePoint3d,class AcGeVector3d)'''
     ...
     def text (self, *args, **kwargs)-> bool :
-      '''
-text( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6, (float)arg7, (str)arg8) -> bool :
+      '''text( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6, (float)arg7, (str)arg8) -> bool :
 
     C++ signature :
         bool text(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def worldLine (self, *args, **kwargs)-> bool :
-      '''
-worldLine( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
+      '''worldLine( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
 
     C++ signature :
         bool worldLine(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d)'''
     ...
     def xline (self, *args, **kwargs)-> bool :
-      '''
-xline( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
+      '''xline( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
 
     C++ signature :
         bool xline(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d)'''

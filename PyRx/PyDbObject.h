@@ -26,7 +26,8 @@ public:
     Acad::ErrorStatus   downgradeOpen();
     Acad::ErrorStatus   downgradeToNotify(Adesk::Boolean wasWritable);
     Acad::ErrorStatus   cancel();
-    Acad::ErrorStatus   erase();
+    Acad::ErrorStatus   erase1();
+    Acad::ErrorStatus   erase2(Adesk::Boolean erasing);
     Acad::ErrorStatus   handOverTo(PyDbObject& newObject, Adesk::Boolean keepXData, Adesk::Boolean keepExtDict);
     Acad::ErrorStatus   swapIdWith(PyDbObjectId& otherId, Adesk::Boolean swapXdata, Adesk::Boolean swapExtDict);
     virtual Acad::ErrorStatus setXData(const boost::python::list& xdata);
