@@ -5,14 +5,18 @@
 #include "ResultBuffer.h"
 #include "PyDbField.h"
 
+
 using namespace boost::python;
 void makeAcDbObjectWrapper()
 {
+    constexpr const char* pDocStr_init1 = "![(self: DbObject, id: ObjectId, mode: OpenMode)]!";
+    constexpr const char* pDocStr_setOwnerId = "![(self: DbObject, id: ObjectId)]!";
+
     class_<PyDbObject, bases<PyGiDrawable>>("DbObject", boost::python::no_init)
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(pDocStr_init1))
         .def("objectId", &PyDbObject::objectId)
         .def("ownerId", &PyDbObject::ownerId)
-        .def("setOwnerId", &PyDbObject::setOwnerId)
+        .def("setOwnerId", &PyDbObject::setOwnerId, pDocStr_setOwnerId)
         .def("database", &PyDbObject::database)
 #ifdef NEVER
         .def("databaseToUse", &PyDbObject::databaseToUse)
@@ -26,7 +30,8 @@ void makeAcDbObjectWrapper()
         .def("upgradeFromNotify", &PyDbObject::upgradeFromNotify)
         .def("downgradeOpen", &PyDbObject::downgradeOpen)
         .def("downgradeToNotify", &PyDbObject::downgradeToNotify)
-        .def("erase", &PyDbObject::erase)
+        .def("erase", &PyDbObject::erase1)
+        .def("erase", &PyDbObject::erase2)
         .def("close", &PyDbObject::close)
         .def("cancel", &PyDbObject::cancel)
         .def("handOverTo", &PyDbObject::handOverTo)
@@ -158,9 +163,14 @@ Acad::ErrorStatus PyDbObject::cancel()
     return impObj()->cancel();
 }
 
-Acad::ErrorStatus PyDbObject::erase()
+Acad::ErrorStatus PyDbObject::erase1()
 {
     return impObj()->erase();
+}
+
+Acad::ErrorStatus PyDbObject::erase2(Adesk::Boolean erasing)
+{
+    return impObj()->erase(erasing);
 }
 
 Acad::ErrorStatus PyDbObject::handOverTo(PyDbObject& newObject, Adesk::Boolean keepXData, Adesk::Boolean keepExtDict)
