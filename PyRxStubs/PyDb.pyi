@@ -607,6 +607,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
 getPlane( (Entity)arg1) -> Plane :
@@ -2300,6 +2307,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getOffsetCurves (self, *args, **kwargs)-> list :
       '''
 getOffsetCurves( (Curve)arg1, (float)arg2) -> list :
@@ -3539,6 +3553,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -5106,6 +5127,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getMTextAttributeDefinition (self, *args, **kwargs)-> MText :
       '''
 getMTextAttributeDefinition( (AttributeDefinition)arg1) -> MText :
@@ -6298,6 +6326,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getMTextAttribute (self, *args, **kwargs)-> MText :
       '''
 getMTextAttribute( (AttributeReference)arg1) -> MText :
@@ -7410,6 +7445,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
 getPlane( (Entity)arg1) -> Plane :
@@ -8201,6 +8243,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -9055,6 +9104,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -10005,6 +10061,13 @@ getFieldDictionary( (DbObject)arg1) -> ObjectId :
     C++ signature :
         class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def handOverTo (self, *args, **kwargs)-> ErrorStatus :
       '''
 handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
@@ -10493,6 +10556,13 @@ getFieldDictionary( (DbObject)arg1) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getLayoutId (self, *args, **kwargs)-> ObjectId :
       '''
@@ -12554,6 +12624,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getOffsetCurves (self, *args, **kwargs)-> list :
       '''
 getOffsetCurves( (Curve)arg1, (float)arg2) -> list :
@@ -14236,6 +14313,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getOffsetCurves (self, *args, **kwargs)-> list :
       '''
 getOffsetCurves( (Curve)arg1, (float)arg2) -> list :
@@ -15458,6 +15542,18 @@ get3dDwfPrec( (Database)arg1) -> float :
     C++ signature :
         double get3dDwfPrec(class PyDbDatabase {lvalue})'''
     ...
+    def getAcDbObjectId (self, *args, **kwargs)-> ErrorStatus :
+      '''
+getAcDbObjectId( (Database)arg1, (ObjectId)arg2, (bool)arg3, (Handle)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus getAcDbObjectId(class PyDbDatabase {lvalue},class PyDbObjectId {lvalue},bool,class PyDbHandle)
+
+getAcDbObjectId( (Database)arg1, (ObjectId)arg2, (bool)arg3, (Handle)arg4, (int)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus getAcDbObjectId(class PyDbDatabase {lvalue},class PyDbObjectId {lvalue},bool,class PyDbHandle,unsigned int)'''
+    ...
     def getCePlotStyleNameId (self, *args, **kwargs)-> PlotStyleNameType :
       '''
 getCePlotStyleNameId( (Database)arg1, (ObjectId)arg2) -> PlotStyleNameType :
@@ -15520,6 +15616,13 @@ haloGap( (Database)arg1) -> int :
 
     C++ signature :
         unsigned char haloGap(class PyDbDatabase {lvalue})'''
+    ...
+    def handseed (self, *args, **kwargs)-> Handle :
+      '''
+handseed( (Database)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle handseed(class PyDbDatabase {lvalue})'''
     ...
     def hasClass (self, *args, **kwargs)-> bool :
       '''
@@ -16735,6 +16838,13 @@ setHaloGap( (Database)arg1, (int)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setHaloGap(class PyDbDatabase {lvalue},unsigned char)'''
+    ...
+    def setHandseed (self, *args, **kwargs)-> ErrorStatus :
+      '''
+setHandseed( (Database)arg1, (Handle)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setHandseed(class PyDbDatabase {lvalue},class PyDbHandle)'''
     ...
     def setHideText (self, *args, **kwargs)-> ErrorStatus :
       '''
@@ -18239,6 +18349,13 @@ getFieldDictionary( (DbObject)arg1) -> ObjectId :
     C++ signature :
         class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def handOverTo (self, *args, **kwargs)-> ErrorStatus :
       '''
 handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
@@ -18957,6 +19074,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -20337,6 +20461,13 @@ getFieldDictionary( (DbObject)arg1) -> ObjectId :
     C++ signature :
         class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def handOverTo (self, *args, **kwargs)-> ErrorStatus :
       '''
 handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
@@ -20944,6 +21075,13 @@ getFieldDictionary( (DbObject)arg1) -> ObjectId :
     C++ signature :
         class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def handOverTo (self, *args, **kwargs)-> ErrorStatus :
       '''
 handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
@@ -21374,6 +21512,13 @@ getFieldDictionary( (DbObject)arg1) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getName (self, *args, **kwargs)-> str :
       '''
@@ -22075,6 +22220,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -24587,6 +24739,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -27477,6 +27636,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
 getPlane( (Entity)arg1) -> Plane :
@@ -28298,6 +28464,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -29145,6 +29318,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -30065,6 +30245,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
 getPlane( (Entity)arg1) -> Plane :
@@ -30982,6 +31169,13 @@ getFormat( (Field)arg1) -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getFormat(class PyDbField {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getValue (self, *args, **kwargs)-> str :
       '''
@@ -32573,6 +32767,105 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class Handle:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (int)arg2, (int)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,int,int)
+
+__init__( (object)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+__init__( (object)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,unsigned __int64)'''
+    ...
+    def high (self, *args, **kwargs)-> int :
+      '''
+high( (Handle)arg1) -> int :
+
+    C++ signature :
+        unsigned int high(class PyDbHandle {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs)-> bool :
+      '''
+isNull( (Handle)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyDbHandle {lvalue})'''
+    ...
+    def isOne (self, *args, **kwargs)-> bool :
+      '''
+isOne( (Handle)arg1) -> bool :
+
+    C++ signature :
+        bool isOne(class PyDbHandle {lvalue})'''
+    ...
+    def low (self, *args, **kwargs)-> int :
+      '''
+low( (Handle)arg1) -> int :
+
+    C++ signature :
+        unsigned int low(class PyDbHandle {lvalue})'''
+    ...
+    def setHigh (self, *args, **kwargs)-> None :
+      '''
+setHigh( (Handle)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setHigh(class PyDbHandle {lvalue},unsigned int)'''
+    ...
+    def setLow (self, *args, **kwargs)-> None :
+      '''
+setLow( (Handle)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setLow(class PyDbHandle {lvalue},unsigned int)'''
+    ...
+    def setNull (self, *args, **kwargs)-> None :
+      '''
+setNull( (Handle)arg1) -> None :
+
+    C++ signature :
+        void setNull(class PyDbHandle {lvalue})'''
+    ...
+    def setValue (self, *args, **kwargs)-> None :
+      '''
+setValue( (Handle)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setValue(class PyDbHandle {lvalue},unsigned __int64)'''
+    ...
+    def toString (self, *args, **kwargs)-> str :
+      '''
+toString( (Handle)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > toString(class PyDbHandle {lvalue})'''
+    ...
+    def value (self, *args, **kwargs)-> int :
+      '''
+value( (Handle)arg1) -> int :
+
+    C++ signature :
+        unsigned __int64 value(class PyDbHandle {lvalue})'''
+    ...
+
 class Hatch:
     def __init__ (self, *args, **kwargs)-> None :
       '''
@@ -32908,6 +33201,13 @@ getGradientOneColorMode( (Hatch)arg1) -> bool :
 
     C++ signature :
         bool getGradientOneColorMode(class PyDbHatch {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getHatchLineDataAt (self, *args, **kwargs)-> tuple :
       '''
@@ -34914,6 +35214,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
 getPlane( (Entity)arg1) -> Plane :
@@ -36104,6 +36411,13 @@ getFieldDictionary( (DbObject)arg1) -> ObjectId :
     C++ signature :
         class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getName (self, *args, **kwargs)-> str :
       '''
 getName( (SymbolTableRecord)arg1) -> str :
@@ -37167,6 +37481,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getOffsetCurves (self, *args, **kwargs)-> list :
       '''
@@ -38378,6 +38699,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getOffsetCurves (self, *args, **kwargs)-> list :
       '''
 getOffsetCurves( (Curve)arg1, (float)arg2) -> list :
@@ -39561,6 +39889,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -41344,6 +41679,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
 getPlane( (Entity)arg1) -> Plane :
@@ -42211,6 +42553,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -43357,6 +43706,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getLastVertex (self, *args, **kwargs)-> Point3d :
       '''
@@ -46032,6 +46388,13 @@ getFieldDictionary( (DbObject)arg1) -> ObjectId :
     C++ signature :
         class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getName (self, *args, **kwargs)-> str :
       '''
 getName( (MLeaderStyle)arg1) -> str :
@@ -47637,6 +48000,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -49474,6 +49844,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
 getPlane( (Mline)arg1) -> Plane :
@@ -50534,6 +50911,13 @@ getFieldDictionary( (DbObject)arg1) -> ObjectId :
     C++ signature :
         class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def handOverTo (self, *args, **kwargs)-> ErrorStatus :
       '''
 handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
@@ -51188,6 +51572,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -52431,6 +52822,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -53983,6 +54381,13 @@ getFieldDictionary( (DbObject)arg1) -> ObjectId :
     C++ signature :
         class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getItemName (self, *args, **kwargs)-> str :
       '''
 getItemName( (UnderlayDefinition)arg1) -> str :
@@ -54588,6 +54993,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -55747,6 +56159,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
 getPlane( (Entity)arg1) -> Plane :
@@ -56688,6 +57107,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -57769,6 +58195,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -59470,6 +59903,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
 getPlane( (Entity)arg1) -> Plane :
@@ -60290,6 +60730,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -61248,6 +61695,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getLineSeg2dAt (self, *args, **kwargs)-> LineSeg2d :
       '''
@@ -62487,6 +62941,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getOffsetCurves (self, *args, **kwargs)-> list :
       '''
 getOffsetCurves( (Curve)arg1, (float)arg2) -> list :
@@ -63679,6 +64140,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getOffsetCurves (self, *args, **kwargs)-> list :
       '''
 getOffsetCurves( (Curve)arg1, (float)arg2) -> list :
@@ -64689,6 +65157,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -65749,6 +66224,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -67422,6 +67904,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
 getPlane( (Entity)arg1) -> Plane :
@@ -68941,6 +69430,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getOrientation (self, *args, **kwargs)-> None :
       '''
 getOrientation( (RasterImage)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
@@ -69951,6 +70447,13 @@ getFieldDictionary( (DbObject)arg1) -> ObjectId :
     C++ signature :
         class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def handOverTo (self, *args, **kwargs)-> ErrorStatus :
       '''
 handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
@@ -70480,6 +70983,13 @@ getFieldDictionary( (DbObject)arg1) -> ObjectId :
     C++ signature :
         class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def handOverTo (self, *args, **kwargs)-> ErrorStatus :
       '''
 handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
@@ -70968,6 +71478,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -71898,6 +72415,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -72916,6 +73440,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -74784,6 +75315,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
 getPlane( (Entity)arg1) -> Plane :
@@ -75633,6 +76171,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
 getPlane( (Entity)arg1) -> Plane :
@@ -76434,6 +76979,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -77237,6 +77789,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
 getPlane( (Entity)arg1) -> Plane :
@@ -77966,6 +78525,13 @@ getFieldDictionary( (DbObject)arg1) -> ObjectId :
     C++ signature :
         class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def handOverTo (self, *args, **kwargs)-> ErrorStatus :
       '''
 handOverTo( (DbObject)arg1, (DbObject)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
@@ -78386,6 +78952,13 @@ getFieldDictionary( (DbObject)arg1) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getName (self, *args, **kwargs)-> str :
       '''
@@ -79328,6 +79901,13 @@ getGridProperty( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> objec
 
     C++ signature :
         struct AcGridProperty getGridProperty(class PyDbTable {lvalue},int,int,enum AcDb::GridLineType)'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getIterator (self, *args, **kwargs)-> list :
       '''
@@ -81988,6 +82568,13 @@ getGridProperty( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> object :
     C++ signature :
         struct AcGridProperty getGridProperty(class PyDbTableStyle {lvalue},enum AcDb::GridLineType,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getName (self, *args, **kwargs)-> str :
       '''
 getName( (TableStyle)arg1) -> str :
@@ -82949,6 +83536,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -84198,6 +84792,13 @@ getFieldDictionary( (DbObject)arg1) -> ObjectId :
     C++ signature :
         class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getName (self, *args, **kwargs)-> str :
       '''
 getName( (SymbolTableRecord)arg1) -> str :
@@ -85180,6 +85781,13 @@ getFieldDictionary( (DbObject)arg1) -> ObjectId :
     C++ signature :
         class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getItemName (self, *args, **kwargs)-> str :
       '''
 getItemName( (UnderlayDefinition)arg1) -> str :
@@ -85812,6 +86420,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -87301,6 +87916,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
     ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
+    ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
 getPlane( (Entity)arg1) -> Plane :
@@ -88126,6 +88748,13 @@ getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''
@@ -89213,6 +89842,13 @@ getFieldDictionary( (DbObject)arg1) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId getFieldDictionary(class PyDbObject {lvalue})'''
+    ...
+    def getHandle (self, *args, **kwargs)-> Handle :
+      '''
+getHandle( (DbObject)arg1) -> Handle :
+
+    C++ signature :
+        class PyDbHandle getHandle(class PyDbObject {lvalue})'''
     ...
     def handOverTo (self, *args, **kwargs)-> ErrorStatus :
       '''
