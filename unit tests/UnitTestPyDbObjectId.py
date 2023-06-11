@@ -24,6 +24,18 @@ class TestDbObjectId(unittest.TestCase):
                 self.assertNotEqual(id.database(), None)
                 self.assertEqual(id.objectClass().name(),"AcDbBlockTable")
                 
+        def test_handle(self):
+                db = PyDb.HostApplicationServices().workingDatabase()
+                id = db.blockTableId()
+                bt = PyDb.BlockTable(id, PyDb.OpenMode.ForRead)
+                hn = bt.getHandle()
+                self.assertEqual(hn.isNull(),False)
+                id2 = PyDb.ObjectId()
+                db.getAcDbObjectId(id2,False,hn)
+                self.assertEqual(id,id2)
+                self.assertTrue(id.isValid())
+                self.assertTrue(id2.isValid())
+                
 def PyRxCmd_pydbobjectid():
         try:
                 suite = unittest.TestLoader().loadTestsFromTestCase(TestDbObjectId)
