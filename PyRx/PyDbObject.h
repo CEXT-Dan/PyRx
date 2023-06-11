@@ -3,6 +3,7 @@
 class PyDbObjectId;
 class PyDbDatabase;
 class PyDbField;
+class PyDbHandle;
 void makeAcDbObjectWrapper();
 //---------------------------------------------------------------------------------------- -
 //PyDbObject
@@ -59,6 +60,7 @@ public:
     PyDbObjectId        getField2(const std::string& propName);
     PyDbObjectId        setField1(PyDbField& pField);
     PyDbObjectId        setField2(const std::string& propName, PyDbField& pField);
+    PyDbHandle          getHandle() const;
     Acad::ErrorStatus   removeField1(const PyDbObjectId& fieldId);
     Acad::ErrorStatus   removeField2(const std::string& propName);
     PyDbObjectId        getFieldDictionary(void) const;

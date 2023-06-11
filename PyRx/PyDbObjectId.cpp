@@ -268,3 +268,123 @@ bool PyDbSoftPointerId::operator==(const PyDbSoftPointerId& rhs) const
 {
     return m_id == rhs.m_id;
 }
+
+//
+void makePyDbHandleWrapper()
+{
+    class_<PyDbHandle>("Handle")
+        .def(init<>())
+        .def(init<int, int>())
+        .def(init<const std::string&>())
+        .def(init<const Adesk::UInt64&>())
+        .def("isNull", &PyDbHandle::isNull)
+        .def("setNull", &PyDbHandle::setNull)
+        .def("low", &PyDbHandle::low)
+        .def("high", &PyDbHandle::high)
+        .def("setLow", &PyDbHandle::setLow)
+        .def("setHigh", &PyDbHandle::setHigh)
+        .def("setValue", &PyDbHandle::setValue)
+        .def("isOne", &PyDbHandle::isOne)
+        .def("value", &PyDbHandle::value)
+        .def("toString", &PyDbHandle::toString)
+        .def("__str__", &PyDbHandle::toString)
+        .def("__repr__", &PyDbHandle::repr)
+        .def("__hash__", &PyDbHandle::hash)
+        //operators
+        .def("__eq__", &PyDbHandle::operator==)
+        .def("__ne__", &PyDbHandle::operator!=)
+        ;
+}
+
+PyDbHandle::PyDbHandle()
+{
+}
+
+PyDbHandle::PyDbHandle(int lo, int hi)
+    : m_hnd(lo, hi)
+{
+}
+
+PyDbHandle::PyDbHandle(const std::string& src)
+    : m_hnd(utf8_to_wstr(src).c_str())
+{
+}
+
+PyDbHandle::PyDbHandle(const Adesk::UInt64 src)
+    : m_hnd(src)
+{
+}
+
+bool PyDbHandle::isNull() const
+{
+    return m_hnd.isNull();
+}
+
+void PyDbHandle::setNull()
+{
+    return m_hnd.setNull();
+}
+
+Adesk::UInt32 PyDbHandle::low() const
+{
+    return m_hnd.low();
+}
+
+Adesk::UInt32 PyDbHandle::high() const
+{
+    return m_hnd.high();
+}
+
+void PyDbHandle::setLow(Adesk::UInt32 low)
+{
+    return m_hnd.setLow(low);
+}
+
+void PyDbHandle::setHigh(Adesk::UInt32 high)
+{
+    return m_hnd.setLow(high);
+}
+
+void PyDbHandle::setValue(Adesk::UInt64 src)
+{
+    m_hnd = src;
+}
+
+bool PyDbHandle::isOne(void) const
+{
+    return m_hnd.isOne();
+}
+
+Adesk::UInt64 PyDbHandle::value() const
+{
+    Adesk::UInt64 val = m_hnd;
+    return val;
+}
+
+std::string PyDbHandle::toString() const
+{
+    wchar_t buf[AcDbHandle::kStrSiz] = { 0 };
+    if (m_hnd.getIntoAsciiBuffer(buf, AcDbHandle::kStrSiz) != true)
+        throw PyAcadErrorStatus(eBrokenHandle);
+    return wstr_to_utf8(buf);
+}
+
+std::string PyDbHandle::repr() const
+{
+    return std::format("{}.Handle object {:x}>", PyDbNamespace, value());
+}
+
+std::size_t PyDbHandle::hash()
+{
+    return (std::size_t)value();
+}
+
+bool PyDbHandle::operator!=(const PyDbHandle& rhs) const
+{
+    return m_hnd != rhs.m_hnd;
+}
+
+bool PyDbHandle::operator==(const PyDbHandle& rhs) const
+{
+    return m_hnd == rhs.m_hnd;
+}
