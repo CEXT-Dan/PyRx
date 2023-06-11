@@ -356,8 +356,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -456,7 +457,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -828,8 +834,9 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class AcGeVector3d normal(class PyDbDimension {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
@@ -840,8 +847,9 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         double oblique(class PyDbAlignedDimension {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -1889,8 +1897,9 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5,
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -1941,7 +1950,12 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5,
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extend (self, *args, **kwargs)-> ErrorStatus :
       '''extend( (Curve)arg1, (float)arg2) -> ErrorStatus :
@@ -2352,14 +2366,16 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     C++ signature :
         class AcGeVector3d normal(class PyDbArc {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -2956,8 +2972,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -3050,7 +3067,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -3434,14 +3456,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class AcGeVector3d normal(class PyDbDimension {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -4410,8 +4434,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -4456,7 +4481,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -4811,8 +4841,9 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class AcGeVector3d normal(class PyDbText {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
@@ -4823,8 +4854,9 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         double oblique(class PyDbText {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -5459,8 +5491,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -5505,7 +5538,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -5866,8 +5904,9 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class AcGeVector3d normal(class PyDbText {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
@@ -5878,8 +5917,9 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         double oblique(class PyDbText {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -6450,8 +6490,9 @@ class BlockBegin:
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -6496,7 +6537,12 @@ class BlockBegin:
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -6743,14 +6789,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -7154,8 +7202,9 @@ class BlockEnd:
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -7200,7 +7249,12 @@ class BlockEnd:
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -7447,14 +7501,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -7897,8 +7953,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -7943,7 +8000,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def explodeToOwnerSpace (self, *args, **kwargs)-> ErrorStatus :
       '''explodeToOwnerSpace( (BlockReference)arg1) -> ErrorStatus :
@@ -8225,14 +8287,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class AcGeVector3d normal(class PyDbBlockReference {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -8794,8 +8858,9 @@ class BlockTable:
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -8828,7 +8893,12 @@ class BlockTable:
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -9002,14 +9072,16 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     C++ signature :
         bool isWriteEnabled(class PyDbObject {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -9207,8 +9279,9 @@ class BlockTableRecord:
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -9241,7 +9314,12 @@ class BlockTableRecord:
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def explodable (self, *args, **kwargs)-> bool :
       '''explodable( (BlockTableRecord)arg1) -> bool :
@@ -9487,8 +9565,9 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         bool isWriteEnabled(class PyDbObject {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
@@ -9517,8 +9596,9 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class AcGePoint3d origin(class PyDbBlockTableRecord {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -11091,8 +11171,9 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -11143,7 +11224,12 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extend (self, *args, **kwargs)-> ErrorStatus :
       '''extend( (Curve)arg1, (float)arg2) -> ErrorStatus :
@@ -11548,14 +11634,16 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     C++ signature :
         class AcGeVector3d normal(class PyDbCircle {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -12625,8 +12713,9 @@ class Curve:
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -12671,7 +12760,12 @@ class Curve:
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extend (self, *args, **kwargs)-> ErrorStatus :
       '''extend( (Curve)arg1, (float)arg2) -> ErrorStatus :
@@ -13070,14 +13164,16 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -16205,8 +16301,9 @@ class DbObject:
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -16239,7 +16336,12 @@ class DbObject:
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -16396,14 +16498,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         bool isWriteEnabled(class PyDbObject {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -16692,8 +16796,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -16786,7 +16891,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extArcEndAngle (self, *args, **kwargs)-> float :
       '''extArcEndAngle( (DiametricDimension)arg1) -> float :
@@ -17170,14 +17280,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class AcGeVector3d normal(class PyDbDimension {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -18039,8 +18151,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -18073,7 +18186,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -18259,14 +18377,16 @@ has( (Dictionary)arg1, (ObjectId)arg2) -> bool :
     C++ signature :
         unsigned int numEntries(class PyDbDictionary {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -18590,8 +18710,9 @@ class DimStyleTable:
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -18624,7 +18745,12 @@ class DimStyleTable:
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -18798,14 +18924,16 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     C++ signature :
         bool isWriteEnabled(class PyDbObject {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -18977,8 +19105,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -19011,7 +19140,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -19192,14 +19326,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         bool isWriteEnabled(class PyDbObject {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -19463,8 +19599,9 @@ class Dimension:
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -19557,7 +19694,12 @@ class Dimension:
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -19917,14 +20059,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class AcGeVector3d normal(class PyDbDimension {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -21899,8 +22043,9 @@ class Entity:
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -21945,7 +22090,12 @@ class Entity:
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -22192,14 +22342,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -24644,8 +24796,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -24690,7 +24843,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -24937,14 +25095,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -25378,8 +25538,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -25424,7 +25585,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -25695,14 +25861,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -26132,8 +26300,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -26178,7 +26347,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -26449,14 +26623,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -26881,8 +27057,9 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -26975,7 +27152,12 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -27252,14 +27434,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class AcGeVector3d normal(class PyDbFcf {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -27754,8 +27938,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -27788,7 +27973,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def evaluate (self, *args, **kwargs)-> ErrorStatus :
       '''evaluate( (Field)arg1) -> ErrorStatus :
@@ -27997,14 +28187,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         bool isWriteEnabled(class PyDbObject {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -29632,8 +29824,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -29684,7 +29877,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def evaluateGradientColorAt (self, *args, **kwargs)-> Color :
       '''evaluateGradientColorAt( (Hatch)arg1, (float)arg2) -> Color :
@@ -30122,8 +30320,9 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         int numPatternDefinitions(class PyDbHatch {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
@@ -30134,8 +30333,9 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class AcGePoint2d originPoint(class PyDbHatch {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -31556,8 +31756,9 @@ class Image:
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -31602,7 +31803,12 @@ class Image:
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -31849,14 +32055,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -32682,8 +32890,9 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -32728,7 +32937,12 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -32996,14 +33210,16 @@ lineWeight( (LayerTableRecord)arg1, (ObjectId)arg2) -> LineWeight :
     C++ signature :
         class PyDbObjectId materialId(class PyDbLayerTableRecord {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -33441,8 +33657,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -33559,7 +33776,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def erased (self, *args, **kwargs)-> None :
       '''erased( (Leader)arg1, (DbObject)arg2) -> None :
@@ -34029,14 +34251,16 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     C++ signature :
         int numVertices(class PyDbLeader {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -34598,8 +34822,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -34650,7 +34875,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extend (self, *args, **kwargs)-> ErrorStatus :
       '''extend( (Curve)arg1, (float)arg2) -> ErrorStatus :
@@ -35055,14 +35285,16 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     C++ signature :
         class AcGeVector3d normal(class PyDbLine {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -35611,8 +35843,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -35705,7 +35938,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extArcOn (self, *args, **kwargs)-> bool :
       '''extArcOn( (LineAngularDimension2)arg1) -> bool :
@@ -36071,14 +36309,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class AcGeVector3d normal(class PyDbDimension {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -37313,8 +37553,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -37359,7 +37600,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -37606,14 +37852,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -38068,8 +38316,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -38114,7 +38363,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def explodeToOwnerSpace (self, *args, **kwargs)-> ErrorStatus :
       '''explodeToOwnerSpace( (BlockReference)arg1) -> ErrorStatus :
@@ -38396,14 +38650,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class AcGeVector3d normal(class PyDbBlockReference {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -39007,8 +39263,9 @@ connectionPoint( (MLeader)arg1, (Vector3d)arg2, (MLeaderTextAttachmentDirection)
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -39083,7 +39340,12 @@ connectionPoint( (MLeader)arg1, (Vector3d)arg2, (MLeaderTextAttachmentDirection)
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extendLeaderToText (self, *args, **kwargs)-> bool :
       '''extendLeaderToText( (MLeader)arg1) -> bool :
@@ -39561,14 +39823,16 @@ moveMLeader( (MLeader)arg1, (Vector3d)arg2, (MLeaderMoveType)arg3, (bool)arg4) -
     C++ signature :
         void objectClosed(class PyDbMLeader {lvalue},class PyDbObjectId)'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -41538,8 +41802,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -41637,7 +41902,12 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extendLeaderToText (self, *args, **kwargs)-> bool :
       '''extendLeaderToText( (MLeaderStyle)arg1) -> bool :
@@ -41854,8 +42124,9 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         int maxLeaderSegmentsPoints(class PyDbMLeaderStyle {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
@@ -41866,8 +42137,9 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         bool overwritePropChanged(class PyDbMLeaderStyle {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -42965,8 +43237,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -43023,7 +43296,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -43378,14 +43656,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class AcGeVector3d normal(class PyDbMText {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -44724,8 +45004,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -44776,7 +45057,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -45074,14 +45360,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         int numVertices(class PyDbMline {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -45688,8 +45976,9 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -45752,7 +46041,12 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -45945,14 +46239,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         int numElements(class PyDbMlineStyle {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -46279,8 +46575,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -46325,7 +46622,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -46572,14 +46874,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -47293,8 +47597,9 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -47393,7 +47698,12 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -47771,8 +48081,9 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class AcGeVector3d normal(class PyDbDimension {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
@@ -47783,8 +48094,9 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class AcGePoint3d origin(class PyDbOrdinateDimension {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -48789,8 +49101,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -48829,7 +49142,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -49021,14 +49339,16 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus load(class PyDbUnderlayDefinition {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -49266,8 +49586,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -49318,7 +49639,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -49655,14 +49981,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class AcGeVector3d normal(class PyDbUnderlayReference {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -50339,8 +50667,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -50385,7 +50714,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -50632,14 +50966,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -51186,8 +51522,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -51238,7 +51575,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -51491,14 +51833,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class AcGeVector3d normal(class PyDbPoint {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -52047,8 +52391,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -52141,7 +52486,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extArcOn (self, *args, **kwargs)-> bool :
       '''extArcOn( (Point3AngularDimension)arg1) -> bool :
@@ -52507,14 +52857,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class AcGeVector3d normal(class PyDbDimension {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -53670,8 +54022,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -53716,7 +54069,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -53963,14 +54321,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -54401,8 +54761,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -54447,7 +54808,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -54694,14 +55060,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -55149,8 +55517,9 @@ addVertexAt( (Polyline)arg1, (int)arg2, (Point2d)arg3, (float)arg4, (float)arg5,
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -55201,7 +55570,12 @@ addVertexAt( (Polyline)arg1, (int)arg2, (Point2d)arg3, (float)arg4, (float)arg5,
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extend (self, *args, **kwargs)-> ErrorStatus :
       '''extend( (Curve)arg1, (float)arg2) -> ErrorStatus :
@@ -55725,8 +56099,9 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     C++ signature :
         unsigned int numVerts(class PyDbPolyline {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
@@ -55737,8 +56112,9 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     C++ signature :
         bool onSegAt(class PyDbPolyline {lvalue},unsigned int,class AcGePoint2d,double)'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -56264,8 +56640,9 @@ appendVertex( (Polyline2d)arg1, (ObjectId)arg2, (Vertex2d)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -56328,7 +56705,12 @@ appendVertex( (Polyline2d)arg1, (ObjectId)arg2, (Vertex2d)arg3) -> ErrorStatus :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extend (self, *args, **kwargs)-> ErrorStatus :
       '''extend( (Curve)arg1, (float)arg2) -> ErrorStatus :
@@ -56774,8 +57156,9 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     C++ signature :
         class AcGeVector3d normal(class PyDb2dPolyline {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
@@ -56792,8 +57175,9 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     C++ signature :
         enum Acad::ErrorStatus openVertex(class PyDb2dPolyline {lvalue},class PyDb2dVertex {lvalue},class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -57336,8 +57720,9 @@ appendVertex( (Polyline3d)arg1, (ObjectId)arg2, (Polyline3dVertex)arg3) -> Error
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -57382,7 +57767,12 @@ appendVertex( (Polyline3d)arg1, (ObjectId)arg2, (Polyline3dVertex)arg3) -> Error
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extend (self, *args, **kwargs)-> ErrorStatus :
       '''extend( (Curve)arg1, (float)arg2) -> ErrorStatus :
@@ -57810,8 +58200,9 @@ insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVer
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
@@ -57828,8 +58219,9 @@ insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVer
     C++ signature :
         enum Acad::ErrorStatus openVertex(class PyDb3dPolyline {lvalue},class PyDb3dPolylineVertex {lvalue},class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -58295,8 +58687,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -58341,7 +58734,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -58588,14 +58986,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -59126,8 +59526,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -59220,7 +59621,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extArcEndAngle (self, *args, **kwargs)-> float :
       '''extArcEndAngle( (RadialDimension)arg1) -> float :
@@ -59598,14 +60004,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class AcGeVector3d normal(class PyDbDimension {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -60590,8 +60998,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -60684,7 +61093,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extArcEndAngle (self, *args, **kwargs)-> float :
       '''extArcEndAngle( (RadialDimensionLarge)arg1) -> float :
@@ -61068,8 +61482,9 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class AcGeVector3d normal(class PyDbDimension {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
@@ -61080,8 +61495,9 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class AcGePoint3d overrideCenter(class PyDbRadialDimensionLarge {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -62021,8 +62437,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -62067,7 +62484,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -62409,14 +62831,16 @@ imageSize( (RasterImage)arg1, (bool)arg2) -> Vector2d :
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -62932,8 +63356,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId createImageDictionary(class PyDbDatabase {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -62978,7 +63403,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -63165,14 +63595,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         enum Acad::ErrorStatus load(class PyDbRasterImageDef {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -63415,8 +63847,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -63449,7 +63882,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -63606,14 +64044,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         bool isWriteEnabled(class PyDbObject {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -63815,8 +64255,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -63861,7 +64302,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -64108,14 +64554,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -64657,8 +65105,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -64703,7 +65152,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -64950,14 +65404,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -65458,8 +65914,9 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -65558,7 +66015,12 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -65930,8 +66392,9 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class AcGeVector3d normal(class PyDbDimension {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
@@ -65942,8 +66405,9 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         double oblique(class PyDbRotatedDimension {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -67242,8 +67706,9 @@ class SequenceEnd:
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -67288,7 +67753,12 @@ class SequenceEnd:
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -67535,14 +68005,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -67997,8 +68469,9 @@ createPyramid( (Solid3d)arg1, (float)arg2, (int)arg3, (float)arg4, (float)arg5) 
     C++ signature :
         enum Acad::ErrorStatus createWedge(class PyDb3dSolid {lvalue},double,double,double)'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -68043,7 +68516,12 @@ createPyramid( (Solid3d)arg1, (float)arg2, (int)arg3, (float)arg4, (float)arg5) 
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -68290,14 +68768,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -68711,8 +69191,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -68757,7 +69238,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -69004,14 +69490,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -69425,8 +69913,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -69471,7 +69960,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -69718,14 +70212,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -70099,8 +70595,9 @@ class SymbolTable:
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -70133,7 +70630,12 @@ class SymbolTable:
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -70307,14 +70809,16 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     C++ signature :
         bool isWriteEnabled(class PyDbObject {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -70476,8 +70980,9 @@ class SymbolTableRecord:
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -70510,7 +71015,12 @@ class SymbolTableRecord:
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -70691,14 +71201,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         bool isWriteEnabled(class PyDbObject {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -71126,8 +71638,9 @@ dataFormat( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dataFormat(class PyDbTable {lvalue},int,int,int)'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -71224,7 +71737,12 @@ deleteContent( (Table)arg1, (CellRange)arg2) -> ErrorStatus :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def explodeToOwnerSpace (self, *args, **kwargs)-> ErrorStatus :
       '''explodeToOwnerSpace( (BlockReference)arg1) -> ErrorStatus :
@@ -71887,14 +72405,16 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
     C++ signature :
         unsigned int numRows(class PyDbTable {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -73682,8 +74202,9 @@ createCellStyle( (TableStyle)arg1, (str)arg2, (str)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -73734,7 +74255,12 @@ createCellStyle( (TableStyle)arg1, (str)arg2, (str)arg3) -> ErrorStatus :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -74047,14 +74573,16 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     C++ signature :
         int numCellStyles(class PyDbTableStyle {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -74558,8 +75086,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -74604,7 +75133,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -74911,8 +75445,9 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class AcGeVector3d normal(class PyDbText {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
@@ -74923,8 +75458,9 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         double oblique(class PyDbText {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -75713,8 +76249,9 @@ class TextStyleTableRecord:
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -75747,7 +76284,12 @@ class TextStyleTableRecord:
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -75958,8 +76500,9 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         bool isWriteEnabled(class PyDbObject {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
@@ -75970,8 +76513,9 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         double obliquingAngle(class PyDbTextStyleTableRecord {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -76594,8 +77138,9 @@ class UnderlayDefinition:
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -76634,7 +77179,12 @@ class UnderlayDefinition:
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -76826,14 +77376,16 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus load(class PyDbUnderlayDefinition {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -77093,8 +77645,9 @@ class UnderlayReference:
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -77145,7 +77698,12 @@ class UnderlayReference:
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -77482,14 +78040,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class AcGeVector3d normal(class PyDbUnderlayReference {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -78496,8 +79056,9 @@ class Vertex:
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -78542,7 +79103,12 @@ class Vertex:
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -78789,14 +79355,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -79226,8 +79794,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -79278,7 +79847,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -79537,14 +80111,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''
@@ -80256,8 +80832,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus createExtensionDictionary(class PyDbObject {lvalue})'''
     ...
-    def database (self, *args, **kwargs)-> Database :
+    def database (self: DbObject)-> Database :
       '''database( (DbObject)arg1) -> Database :
+    
 
     C++ signature :
         class PyDbDatabase database(class PyDbObject {lvalue})'''
@@ -80290,7 +80867,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''erase( (DbObject)arg1) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})'''
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue})
+
+erase( (DbObject)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus erase(class PyDbObject {lvalue},bool)'''
     ...
     def extensionDictionary (self, *args, **kwargs)-> ObjectId :
       '''extensionDictionary( (DbObject)arg1) -> ObjectId :
@@ -80459,14 +81041,16 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         enum AcDb::DuplicateRecordCloning mergeStyle(class PyDbXrecord {lvalue})'''
     ...
-    def objectId (self, *args, **kwargs)-> ObjectId :
+    def objectId (self: DbObject)-> ObjectId :
       '''objectId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId objectId(class PyDbObject {lvalue})'''
     ...
-    def ownerId (self, *args, **kwargs)-> ObjectId :
+    def ownerId (self: DbObject)-> ObjectId :
       '''ownerId( (DbObject)arg1) -> ObjectId :
+    
 
     C++ signature :
         class PyDbObjectId ownerId(class PyDbObject {lvalue})'''

@@ -5,19 +5,21 @@
 #include "ResultBuffer.h"
 #include "PyDbField.h"
 
-
 using namespace boost::python;
+
+
 void makeAcDbObjectWrapper()
 {
-    constexpr const char* pDocStr_init1 = "![(self: DbObject, id: ObjectId, mode: OpenMode)]!";
-    constexpr const char* pDocStr_setOwnerId = "![(self: DbObject, id: ObjectId)]!";
+    constexpr const char* pDsNoArg = "![(self: DbObject)]!";
+    constexpr const char* pDsInit1 = "![(self: DbObject, id: ObjectId, mode: OpenMode)]!";
+    constexpr const char* pDsSetOwnerId = "![(self: DbObject, id: ObjectId)]!";
 
     class_<PyDbObject, bases<PyGiDrawable>>("DbObject", boost::python::no_init)
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(pDocStr_init1))
-        .def("objectId", &PyDbObject::objectId)
-        .def("ownerId", &PyDbObject::ownerId)
-        .def("setOwnerId", &PyDbObject::setOwnerId, pDocStr_setOwnerId)
-        .def("database", &PyDbObject::database)
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(pDsInit1))
+        .def("objectId", &PyDbObject::objectId,pDsNoArg)
+        .def("ownerId", &PyDbObject::ownerId, pDsNoArg)
+        .def("setOwnerId", &PyDbObject::setOwnerId, pDsSetOwnerId)
+        .def("database", &PyDbObject::database, pDsNoArg)
 #ifdef NEVER
         .def("databaseToUse", &PyDbObject::databaseToUse)
         .def("intendedDatabase", &PyDbObject::intendedDatabase)
