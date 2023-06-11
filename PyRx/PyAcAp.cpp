@@ -32,7 +32,6 @@ struct CmdFlags
     inline static int kNOBEDIT = ACRX_CMD_NOBEDIT;
 };
 
-
 static PyApDocument curPyDoc()
 {
     return PyApDocument(curDoc(), false);
