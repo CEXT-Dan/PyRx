@@ -44,9 +44,7 @@ static boost::shared_ptr<stderr_redirector> make_stderr_redirector()
 //
 BOOST_PYTHON_MODULE(PyRx)
 {
-#ifndef  PyRxDebug
-    docstring_options local_docstring_options(false, true, true);
-#endif // ! PyRxDebug
+    docstring_options local_docstring_options(true, true, true);
 
     class_<stdout_redirector>("stdout", init<>())
         .def("__init__", make_constructor(make_stdout_redirector))

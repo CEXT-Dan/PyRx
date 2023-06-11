@@ -925,9 +925,7 @@ void makeAcGeMatrix3dWrapper()
 
 BOOST_PYTHON_MODULE(PyGe)
 {
-#ifndef  PyRxDebug
-    docstring_options local_docstring_options(false, true, true);
-#endif // ! PyRxDebug
+    docstring_options local_docstring_options(true, true, true);
 
     makeAcGeTolWrapper();
     //
