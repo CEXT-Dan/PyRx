@@ -40,9 +40,7 @@ static PyApDocument curPyDoc()
 
 BOOST_PYTHON_MODULE(PyAp)
 {
-#ifndef  PyRxDebug
-    docstring_options local_docstring_options(false, true, true);
-#endif // ! PyRxDebug
+    docstring_options local_docstring_options(true, true, true);
 
     register_exception_translator<PyNullObject>(PyNullObject::translator);
     register_exception_translator<PyEditorError>(PyEditorError::translator);
