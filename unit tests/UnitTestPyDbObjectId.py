@@ -35,6 +35,7 @@ class TestDbObjectId(unittest.TestCase):
                 self.assertEqual(id,id2)
                 self.assertTrue(id.isValid())
                 self.assertTrue(id2.isValid())
+                bt.close()
                 
 def PyRxCmd_pydbobjectid():
         try:
