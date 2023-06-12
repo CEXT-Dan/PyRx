@@ -612,6 +612,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -2174,6 +2195,27 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -3227,6 +3269,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -4601,6 +4664,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         enum AcDb::TextHorzMode horizontalMode(class PyDbText {lvalue})'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -5658,6 +5742,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         enum AcDb::TextHorzMode horizontalMode(class PyDbText {lvalue})'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -6621,6 +6726,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -7332,6 +7458,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
 
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -8100,6 +8247,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
 
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -11448,6 +11616,27 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -12983,6 +13172,27 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
 
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -17064,6 +17274,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -19849,6 +20080,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -22173,6 +22425,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
 
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -24927,6 +25200,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -25674,6 +25968,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
 
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -26436,6 +26751,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
 
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -27253,6 +27589,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
 
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -30104,6 +30461,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         enum Acad::ErrorStatus insertLoopAt(class PyDbHatch {lvalue},int,int,class boost::python::list)'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -31887,6 +32265,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -32621,6 +33020,134 @@ Also known as the population count.
       '''None'''
     ...
     def kYard (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class Intersect:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kExtendArg (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kExtendBoth (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kExtendThis (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kOnBothOperands (self, *args, **kwargs):
       '''None'''
     ...
     def name (self, *args, **kwargs):
@@ -34041,6 +34568,27 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -35099,6 +35647,27 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -36098,6 +36667,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -37684,6 +38274,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -38463,6 +39074,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
 
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -39565,6 +40197,27 @@ getLeaderLineIndexes( (MLeader)arg1, (int)arg2) -> list :
 
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -43464,6 +44117,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         bool hitTest(class PyDbMText {lvalue},class AcGePoint3d)'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -45162,6 +45836,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -46706,6 +47401,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -47852,6 +48568,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -49765,6 +50502,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         double height(class PyDbUnderlayReference {lvalue})'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -50798,6 +51556,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -51658,6 +52437,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
 
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -52646,6 +53446,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -54153,6 +54974,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -54891,6 +55733,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
 
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -55882,6 +56745,27 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
 
     C++ signature :
         bool hasWidth(class PyDbPolyline {lvalue})'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -56939,6 +57823,27 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
 
     C++ signature :
         enum Acad::ErrorStatus insertVertexAt(class PyDb2dPolyline {lvalue},class PyDbObjectId {lvalue},class PyDbObjectId,class PyDb2dVertex {lvalue})'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -58002,6 +58907,27 @@ insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVer
     C++ signature :
         enum Acad::ErrorStatus insertVertexAt(class PyDb3dPolyline {lvalue},class PyDbObjectId {lvalue},class PyDbObjectId,class PyDb3dPolylineVertex {lvalue})'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -58817,6 +59743,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
 
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -59787,6 +60734,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -61260,6 +62228,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -62626,6 +63615,27 @@ imageSize( (RasterImage)arg1, (bool)arg2) -> Vector2d :
 
     C++ signature :
         double imageWidth(class PyDbRasterImage {lvalue})'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -64386,6 +65396,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -65235,6 +66266,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
 
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -66169,6 +67221,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -67837,6 +68910,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -68600,6 +69694,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -69322,6 +70437,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -70043,6 +71179,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
 
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -72076,6 +73233,27 @@ gridVisibility( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> Visibi
 
     C++ signature :
         enum Acad::ErrorStatus insertRowsAndInherit(class PyDbTable {lvalue},int,int,int)'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -75241,6 +76419,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         enum AcDb::TextHorzMode horizontalMode(class PyDbText {lvalue})'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -77824,6 +79023,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         double height(class PyDbUnderlayReference {lvalue})'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -79187,6 +80407,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         bool hasPersistentReactor(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -79936,6 +81177,27 @@ getField( (DbObject)arg1, (str)arg2) -> ObjectId :
 
     C++ signature :
         enum Acad::ErrorStatus ignoreTangent(class PyDb2dVertex {lvalue})'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :

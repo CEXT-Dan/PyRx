@@ -908,6 +908,17 @@ selectCrossingWindow( (Point3d)arg1, (Point3d)arg2, (list)arg3) -> tuple :
     C++ signature :
         class boost::python::tuple selectCrossingWindow(class AcGePoint3d,class AcGePoint3d,class boost::python::list)'''
     ...
+    def selectFence (self, *args, **kwargs)-> tuple :
+      '''selectFence( (list)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple selectFence(class boost::python::list)
+
+selectFence( (list)arg1, (list)arg2) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple selectFence(class boost::python::list,class boost::python::list)'''
+    ...
     def setCurrentUCS (self, *args, **kwargs)-> ErrorStatus :
       '''setCurrentUCS( (Matrix3d)arg1) -> ErrorStatus :
 

@@ -77,6 +77,10 @@ public:
     void                setDatabaseDefaults(const PyDbDatabase& pDb);
     Acad::ErrorStatus   getCompoundObjectTransform(AcGeMatrix3d& xMat) const;
     Acad::ErrorStatus   getGeomExtents(AcDbExtents& extents) const;
+    Acad::ErrorStatus   intersectWith1(const PyDbEntity&, AcDb::Intersect, boost::python::list&) const;
+    Acad::ErrorStatus   intersectWith2(const PyDbEntity&, AcDb::Intersect, boost::python::list&, Adesk::GsMarker, Adesk::GsMarker) const;
+    Acad::ErrorStatus   intersectWith3(const PyDbEntity&, AcDb::Intersect, const PyGePlane&, boost::python::list&) const;
+    Acad::ErrorStatus   intersectWith4(const PyDbEntity&, AcDb::Intersect, const PyGePlane&, boost::python::list&, Adesk::GsMarker, Adesk::GsMarker) const;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbEntity   cloneFrom(const PyRxObject& src);
