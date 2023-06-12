@@ -180,6 +180,13 @@ BOOST_PYTHON_MODULE(PyDb)
 
     def("curDb", curPyDb);
 
+    enum_<AcDb::Intersect>("Intersect")
+        .value("kOnBothOperands", AcDb::Intersect::kOnBothOperands)
+        .value("kExtendThis", AcDb::Intersect::kExtendThis)
+        .value("kExtendArg", AcDb::Intersect::kExtendArg)
+        .value("kExtendBoth", AcDb::Intersect::kExtendBoth)
+        .export_values()
+        ;
     enum_<AcDb::LineSpacingStyle>("LineSpacingStyle")
         .value("kAtLeast", AcDb::LineSpacingStyle::kAtLeast)
         .value("kExactly", AcDb::LineSpacingStyle::kExactly)

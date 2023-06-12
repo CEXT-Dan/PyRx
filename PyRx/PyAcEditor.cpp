@@ -54,6 +54,8 @@ void makeAcEditorWrapper()
         .def("select", &PyAcEditor::select4).staticmethod("select")
         .def("selectCrossingWindow", &PyAcEditor::selectCrossingWindow1)
         .def("selectCrossingWindow", &PyAcEditor::selectCrossingWindow2).staticmethod("selectCrossingWindow")
+        .def("selectFence", &PyAcEditor::selectFence1)
+        .def("selectFence", &PyAcEditor::selectFence2).staticmethod("selectFence")
         .def("initGet", &PyAcEditor::initGet).staticmethod("initGet")
         .def("getKword", &PyAcEditor::getKword).staticmethod("getKword")
         .def("getVar", &PyAcEditor::getVar).staticmethod("getVar")
@@ -292,6 +294,26 @@ boost::python::tuple PyAcEditor::selectCrossingWindow2(const AcGePoint3d& pt1, c
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_W"), asDblArray(pt1), asDblArray(pt2), pFilter.get(), name));
+    return makeSelectionResult(name, stat);
+}
+
+boost::python::tuple PyAcEditor::selectFence1(const boost::python::list& points)
+{
+    WxUserInteraction ui;
+    ads_name name = { 0L };
+    AcResBufPtr rbPoints(acGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_F"), rbPoints.get(), nullptr,nullptr, name));
+    return makeSelectionResult(name, stat);
+}
+
+boost::python::tuple PyAcEditor::selectFence2(const boost::python::list& points, const boost::python::list& filter)
+{
+    WxUserInteraction ui;
+    auto pnts = PyListToPoint3dArray(points);
+    ads_name name = { 0L };
+    AcResBufPtr pFilter(listToResbuf(filter));
+    AcResBufPtr rbPoints(acGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_F"), rbPoints.get(), nullptr, pFilter.get(), name));
     return makeSelectionResult(name, stat);
 }
 

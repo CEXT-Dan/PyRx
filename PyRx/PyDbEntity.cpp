@@ -64,6 +64,10 @@ void makeAcDbEntityWrapper()
         .def("getPlane", &PyDbEntity::getPlane)
         .def("getEcs", &PyDbEntity::getEcs)
         .def("list", &PyDbEntity::list)
+        .def("intersectWith", &PyDbEntity::intersectWith1)
+        .def("intersectWith", &PyDbEntity::intersectWith2)
+        .def("intersectWith", &PyDbEntity::intersectWith3)
+        .def("intersectWith", &PyDbEntity::intersectWith4)
         .def("transformBy", &PyDbEntity::transformBy)
         .def("recordGraphicsModified", &PyDbEntity::recordGraphicsModified)
         .def("recordGraphicsModified", &PyDbEntity::recordGraphicsModified)
@@ -422,6 +426,36 @@ Acad::ErrorStatus PyDbEntity::getCompoundObjectTransform(AcGeMatrix3d& xMat) con
 Acad::ErrorStatus PyDbEntity::getGeomExtents(AcDbExtents& extents) const
 {
     return impObj()->getGeomExtents(extents);
+}
+
+Acad::ErrorStatus PyDbEntity::intersectWith1(const PyDbEntity& pEnt, AcDb::Intersect intType, boost::python::list& points) const
+{
+    return intersectWith2(pEnt, intType, points, 0, 0);
+}
+
+Acad::ErrorStatus PyDbEntity::intersectWith2(const PyDbEntity& pEnt, AcDb::Intersect intType, boost::python::list& points, Adesk::GsMarker thisGsMarker, Adesk::GsMarker otherGsMarker) const
+{
+    PyAutoLockGIL lock;
+    AcGePoint3dArray pnts;
+    auto es = impObj()->intersectWith(pEnt.impObj(), intType, pnts, thisGsMarker, otherGsMarker);
+    for (const auto& item : pnts)
+        points.append(item);
+    return es;
+}
+
+Acad::ErrorStatus PyDbEntity::intersectWith3(const PyDbEntity& pEnt, AcDb::Intersect intType, const PyGePlane& projPlane, boost::python::list& points) const
+{
+    return intersectWith4(pEnt, intType, projPlane, points, 0, 0);
+}
+
+Acad::ErrorStatus PyDbEntity::intersectWith4(const PyDbEntity& pEnt, AcDb::Intersect intType, const PyGePlane& projPlane, boost::python::list& points, Adesk::GsMarker thisGsMarker, Adesk::GsMarker otherGsMarker) const
+{
+    PyAutoLockGIL lock;
+    AcGePoint3dArray pnts;
+    auto es = impObj()->intersectWith(pEnt.impObj(), intType, *projPlane.impObj(), pnts, thisGsMarker, otherGsMarker);
+    for (const auto& item : pnts)
+        points.append(item);
+    return es;
 }
 
 std::string PyDbEntity::className()
