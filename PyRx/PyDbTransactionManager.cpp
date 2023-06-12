@@ -9,22 +9,24 @@ using namespace boost::python;
 //----- PyDbTransactionManager
 void makePyDbTransactionManager()
 {
+    PyDocStr DS("TransactionManager");
     class_<PyDbTransactionManager, bases<PyRxObject>>("TransactionManager")
-        .def("startTransaction", &PyDbTransactionManager::startTransaction)
-        .def("endTransaction", &PyDbTransactionManager::endTransaction)
-        .def("abortTransaction", &PyDbTransactionManager::abortTransaction)
-        .def("numActiveTransactions", &PyDbTransactionManager::numActiveTransactions)
-        .def("numOpenedObjects", &PyDbTransactionManager::numOpenedObjects)
-        .def("topTransaction", &PyDbTransactionManager::topTransaction)
+        .def(init<>(DS.CLASSARGS()))
+        .def("startTransaction", &PyDbTransactionManager::startTransaction, DS.CLASSARGS())
+        .def("endTransaction", &PyDbTransactionManager::endTransaction, DS.CLASSARGS())
+        .def("abortTransaction", &PyDbTransactionManager::abortTransaction, DS.CLASSARGS())
+        .def("numActiveTransactions", &PyDbTransactionManager::numActiveTransactions, DS.CLASSARGS())
+        .def("numOpenedObjects", &PyDbTransactionManager::numOpenedObjects, DS.CLASSARGS())
+        .def("topTransaction", &PyDbTransactionManager::topTransaction, DS.CLASSARGS())
         .def("addNewlyCreatedDBRObject", &PyDbTransactionManager::addNewlyCreatedDBRObject1)
-        .def("addNewlyCreatedDBRObject", &PyDbTransactionManager::addNewlyCreatedDBRObject2)
-        .def("getAllObjects", &PyDbTransactionManager::getAllObjects)
+        .def("addNewlyCreatedDBRObject", &PyDbTransactionManager::addNewlyCreatedDBRObject2, DS.CLASSARGS({ "obj: DbObject","add: bool=True" }))
+        .def("getAllObjects", &PyDbTransactionManager::getAllObjects, DS.CLASSARGS())
         .def("getObject", &PyDbTransactionManager::getObject1)
         .def("getObject", &PyDbTransactionManager::getObject2)
-        .def("getObject", &PyDbTransactionManager::getObject3)
-        .def("queueForGraphicsFlush", &PyDbTransactionManager::queueForGraphicsFlush)
-        .def("desc", &PyDbTransactionManager::desc).staticmethod("desc")
-        .def("className", &PyDbTransactionManager::className).staticmethod("className")
+        .def("getObject", &PyDbTransactionManager::getObject3, DS.CLASSARGS({ "id: ObjectId","mode: OpenMode=OpenMode.kForRead","openErasedObject: bool=False" }))
+        .def("queueForGraphicsFlush", &PyDbTransactionManager::queueForGraphicsFlush, DS.CLASSARGS())
+        .def("desc", &PyDbTransactionManager::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
+        .def("className", &PyDbTransactionManager::className, DS.CLASSARGSSTATIC()).staticmethod("className")
         ;
 }
 
@@ -34,14 +36,14 @@ PyDbTransactionManager::PyDbTransactionManager()
 }
 
 PyDbTransactionManager::PyDbTransactionManager(AcDbTransactionManager* ptr)
-    : PyRxObject(ptr,false,false)
+    : PyRxObject(ptr, false, false)
 {
 }
 
 PyTransaction PyDbTransactionManager::startTransaction()
 {
     return PyTransaction(impObj()->startTransaction());
-}  
+}
 
 Acad::ErrorStatus PyDbTransactionManager::endTransaction()
 {
@@ -150,7 +152,7 @@ AcDbTransactionManager* PyDbTransactionManager::impObj(const std::source_locatio
 void makePyTransactionManagerManager()
 {
     class_<PyTransactionManager, bases<PyDbTransactionManager>>("TransactionManager")
-      
+
         .def("flushGraphics", &PyTransactionManager::flushGraphics)
         .def("enableGraphicsFlush", &PyTransactionManager::enableGraphicsFlush)
         .def("desc", &PyTransactionManager::desc).staticmethod("desc")

@@ -126,7 +126,7 @@
 #include "RxPyString.h"
 #include "PyException.h"
 
-#define PyRxDebug
+//#define PyRxDebug
 
 #ifdef GRXAPP
 #pragma comment( lib , "gcad.lib" )
