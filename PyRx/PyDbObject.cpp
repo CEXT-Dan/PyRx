@@ -69,10 +69,10 @@ void makeAcDbObjectWrapper()
         .def("removeField", &PyDbObject::removeField1, DS.CLASSARGS({ "id: ObjectId" }))
         .def("removeField", &PyDbObject::removeField2)
         .def("getFieldDictionary", &PyDbObject::getFieldDictionary, DS.CLASSARGS())
-        .def("desc", &PyDbObject::desc).staticmethod("desc")
-        .def("className", &PyDbObject::className).staticmethod("className")
-        .def("cloneFrom", &PyDbObject::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbObject::cast).staticmethod("cast")
+        .def("desc", &PyDbObject::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
+        .def("className", &PyDbObject::className, DS.CLASSARGSSTATIC()).staticmethod("className")
+        .def("cloneFrom", &PyDbObject::cloneFrom, DS.CLASSARGSSTATIC({ "otherObject: RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbObject::cast, DS.CLASSARGSSTATIC({ "otherObject: RxObject" })).staticmethod("cast")
         ;
 }
 

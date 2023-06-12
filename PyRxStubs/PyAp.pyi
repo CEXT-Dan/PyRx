@@ -1464,19 +1464,21 @@ class TransactionManager:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def abortTransaction (self, *args, **kwargs)-> ErrorStatus :
+    def abortTransaction (self: TransactionManager)-> ErrorStatus :
       '''abortTransaction( (TransactionManager)arg1) -> ErrorStatus :
+    
 
     C++ signature :
         enum Acad::ErrorStatus abortTransaction(class PyDbTransactionManager {lvalue})'''
     ...
-    def addNewlyCreatedDBRObject (self, *args, **kwargs)-> ErrorStatus :
+    def addNewlyCreatedDBRObject (self: TransactionManager,obj: DbObject,add: bool=True)-> ErrorStatus :
       '''addNewlyCreatedDBRObject( (TransactionManager)arg1, (DbObject)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus addNewlyCreatedDBRObject(class PyDbTransactionManager {lvalue},class PyDbObject {lvalue})
 
 addNewlyCreatedDBRObject( (TransactionManager)arg1, (DbObject)arg2, (bool)arg3) -> ErrorStatus :
+    
 
     C++ signature :
         enum Acad::ErrorStatus addNewlyCreatedDBRObject(class PyDbTransactionManager {lvalue},class PyDbObject {lvalue},bool)'''
@@ -1499,8 +1501,9 @@ addNewlyCreatedDBRObject( (TransactionManager)arg1, (DbObject)arg2, (bool)arg3) 
     C++ signature :
         enum Acad::ErrorStatus enableGraphicsFlush(class PyTransactionManager {lvalue},bool)'''
     ...
-    def endTransaction (self, *args, **kwargs)-> ErrorStatus :
+    def endTransaction (self: TransactionManager)-> ErrorStatus :
       '''endTransaction( (TransactionManager)arg1) -> ErrorStatus :
+    
 
     C++ signature :
         enum Acad::ErrorStatus endTransaction(class PyDbTransactionManager {lvalue})'''
@@ -1511,13 +1514,14 @@ addNewlyCreatedDBRObject( (TransactionManager)arg1, (DbObject)arg2, (bool)arg3) 
     C++ signature :
         void flushGraphics(class PyTransactionManager {lvalue})'''
     ...
-    def getAllObjects (self, *args, **kwargs)-> list :
+    def getAllObjects (self: TransactionManager)-> list :
       '''getAllObjects( (TransactionManager)arg1) -> list :
+    
 
     C++ signature :
         class boost::python::list getAllObjects(class PyDbTransactionManager {lvalue})'''
     ...
-    def getObject (self, *args, **kwargs)-> DbObject :
+    def getObject (self: TransactionManager,id: ObjectId,mode: OpenMode=OpenMode.kForRead,openErasedObject: bool=False)-> DbObject :
       '''getObject( (TransactionManager)arg1, (ObjectId)arg2) -> DbObject :
 
     C++ signature :
@@ -1529,6 +1533,7 @@ getObject( (TransactionManager)arg1, (ObjectId)arg2, (OpenMode)arg3) -> DbObject
         class PyDbObject getObject(class PyDbTransactionManager {lvalue},class PyDbObjectId,enum AcDb::OpenMode)
 
 getObject( (TransactionManager)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> DbObject :
+    
 
     C++ signature :
         class PyDbObject getObject(class PyDbTransactionManager {lvalue},class PyDbObjectId,enum AcDb::OpenMode,bool)'''
@@ -1545,20 +1550,23 @@ getObject( (TransactionManager)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4)
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
     ...
-    def numActiveTransactions (self, *args, **kwargs)-> int :
+    def numActiveTransactions (self: TransactionManager)-> int :
       '''numActiveTransactions( (TransactionManager)arg1) -> int :
+    
 
     C++ signature :
         int numActiveTransactions(class PyDbTransactionManager {lvalue})'''
     ...
-    def numOpenedObjects (self, *args, **kwargs)-> int :
+    def numOpenedObjects (self: TransactionManager)-> int :
       '''numOpenedObjects( (TransactionManager)arg1) -> int :
+    
 
     C++ signature :
         int numOpenedObjects(class PyDbTransactionManager {lvalue})'''
     ...
-    def queueForGraphicsFlush (self, *args, **kwargs)-> ErrorStatus :
+    def queueForGraphicsFlush (self: TransactionManager)-> ErrorStatus :
       '''queueForGraphicsFlush( (TransactionManager)arg1) -> ErrorStatus :
+    
 
     C++ signature :
         enum Acad::ErrorStatus queueForGraphicsFlush(class PyDbTransactionManager {lvalue})'''
@@ -1569,14 +1577,16 @@ getObject( (TransactionManager)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4)
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
     ...
-    def startTransaction (self, *args, **kwargs)-> Transaction :
+    def startTransaction (self: TransactionManager)-> Transaction :
       '''startTransaction( (TransactionManager)arg1) -> Transaction :
+    
 
     C++ signature :
         class PyTransaction startTransaction(class PyDbTransactionManager {lvalue})'''
     ...
-    def topTransaction (self, *args, **kwargs)-> Transaction :
+    def topTransaction (self: TransactionManager)-> Transaction :
       '''topTransaction( (TransactionManager)arg1) -> Transaction :
+    
 
     C++ signature :
         class PyTransaction topTransaction(class PyDbTransactionManager {lvalue})'''
