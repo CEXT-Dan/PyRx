@@ -1512,7 +1512,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -2805,7 +2805,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -4288,7 +4288,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -5512,7 +5512,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setWidthFactor(class PyDbText {lvalue},double)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -6621,7 +6621,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setWidthFactor(class PyDbText {lvalue},double)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -7440,7 +7440,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -8217,7 +8217,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -9122,7 +9122,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -9697,7 +9697,7 @@ setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
     C++ signature :
         enum Acad::ErrorStatus setOwnerId(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -10324,7 +10324,7 @@ setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
     C++ signature :
         enum Acad::ErrorStatus setPathName(class PyDbBlockTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -12616,7 +12616,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -14169,7 +14169,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -17335,7 +17335,7 @@ setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
     C++ signature :
         enum Acad::ErrorStatus setOwnerId(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -18740,7 +18740,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -19351,7 +19351,7 @@ setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
     C++ signature :
         enum Acad::ErrorStatus setOwnerId(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -19920,7 +19920,7 @@ setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
     C++ signature :
         enum Acad::ErrorStatus setOwnerId(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -20366,7 +20366,7 @@ setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
     C++ signature :
         enum Acad::ErrorStatus setOwnerId(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -21686,7 +21686,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -23712,7 +23712,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -26530,7 +26530,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -27372,7 +27372,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -28194,7 +28194,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -29141,7 +29141,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -29685,7 +29685,7 @@ setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
     C++ signature :
         enum Acad::ErrorStatus setOwnerId(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -32239,7 +32239,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -33859,7 +33859,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -35163,7 +35163,7 @@ setTransparency( (LayerTableRecord)arg1, (Transparency)arg2, (ObjectId)arg3) -> 
     C++ signature :
         void setVPDFLT(class PyDbLayerTableRecord {lvalue},bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -36429,7 +36429,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -37421,7 +37421,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -38814,7 +38814,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -40088,7 +40088,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -41041,7 +41041,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -42527,7 +42527,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -44613,7 +44613,7 @@ setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
     C++ signature :
         enum Acad::ErrorStatus setTextStyleId(class PyDbMLeaderStyle {lvalue},class PyDbObjectId)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -46311,7 +46311,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setWidth(class PyDbMText {lvalue},double)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -47954,7 +47954,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -48718,7 +48718,7 @@ setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
     C++ signature :
         void setStartSquareCap(class PyDbMlineStyle {lvalue},bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -49523,7 +49523,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -51153,7 +51153,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -51903,7 +51903,7 @@ setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
     C++ signature :
         enum Acad::ErrorStatus setSourceFileName(class PyDbUnderlayDefinition {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -52924,7 +52924,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setWidth(class PyDbUnderlayReference {lvalue},double)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -53854,7 +53854,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -54816,7 +54816,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -56215,7 +56215,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -57416,7 +57416,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -58220,7 +58220,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -59396,7 +59396,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setWidthsAt(class PyDbPolyline {lvalue},unsigned int,double,double)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -60518,7 +60518,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -61579,7 +61579,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -62406,7 +62406,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -63829,7 +63829,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -65408,7 +65408,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -66548,7 +66548,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setWidth(class PyDbRasterImage {lvalue},double)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -67078,7 +67078,7 @@ setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
     C++ signature :
         enum Acad::ErrorStatus setSourceFileName(class PyDbRasterImageDef {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -67535,7 +67535,7 @@ setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
     C++ signature :
         enum Acad::ErrorStatus setOwnerId(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -68310,7 +68310,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -69225,7 +69225,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -70642,7 +70642,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -71956,7 +71956,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -72784,7 +72784,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -73571,7 +73571,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -74358,7 +74358,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -74799,7 +74799,7 @@ setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
     C++ signature :
         enum Acad::ErrorStatus setOwnerId(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -75235,7 +75235,7 @@ setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
     C++ signature :
         enum Acad::ErrorStatus setOwnerId(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -77256,7 +77256,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setWidth(class PyDbTable {lvalue},double)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -78944,7 +78944,7 @@ setTextStyle( (TableStyle)arg1, (ObjectId)arg2, (str)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVertCellMargin(class PyDbTableStyle {lvalue},double)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -79943,7 +79943,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setWidthFactor(class PyDbText {lvalue},double)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -80818,7 +80818,7 @@ setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
     C++ signature :
         enum Acad::ErrorStatus setTextSize(class PyDbTextStyleTableRecord {lvalue},double)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -81678,7 +81678,7 @@ setField( (DbObject)arg1, (str)arg2, (Field)arg3) -> ObjectId :
     C++ signature :
         enum Acad::ErrorStatus setSourceFileName(class PyDbUnderlayDefinition {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -82721,7 +82721,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setWidth(class PyDbUnderlayReference {lvalue},double)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -83981,7 +83981,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -84850,7 +84850,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 
@@ -85598,7 +85598,7 @@ setFromRbChain( (Xrecord)arg1, (list)arg2, (Database)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setOwnerId(class PyDbObject {lvalue},class PyDbObjectId)'''
     ...
-    def setXData (self: DbObject,xdlist: list)-> ErrorStatus :
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''setXData( (DbObject)arg1, (list)arg2) -> ErrorStatus :
     
 

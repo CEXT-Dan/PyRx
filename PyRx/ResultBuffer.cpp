@@ -315,17 +315,21 @@ resbuf* acGePoint3dArrayToResbuf(const AcGePoint3dArray& ptArrayWCS)
     resbuf* lastRb = NULL;        // place holder to end of list
     resbuf* rb;
     int len = ptArrayWCS.length();
-    for (int i = 0; i < len; i++) {
-        if ((rb = acutNewRb(RT3DPOINT)) == NULL) {
+    for (int i = 0; i < len; i++) 
+    {
+        if ((rb = acutNewRb(RT3DPOINT)) == NULL) 
+        {
             acutRelRb(ptList);
             return NULL;
         }
         acdbWcs2Ucs(asDblArray(ptArrayWCS.at(i)), rb->resval.rpoint, false);
-        if (ptList == NULL) {
+        if (ptList == NULL) 
+        {
             ptList = rb;
             lastRb = rb;
         }
-        else {
+        else 
+        {
             lastRb->rbnext = rb;
             lastRb = rb;
         }
