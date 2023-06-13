@@ -309,12 +309,12 @@ boost::python::list resbufToList(resbuf* pRb)
     return list;
 }
 
-resbuf* acGePoint3dArrayToResbuf(const AcGePoint3dArray& ptArrayWCS)
+resbuf* acGePoint3dArrayToResbuf(const AcGePoint3dArray& ptArray)
 {
     resbuf* ptList = NULL;        // overall list
     resbuf* lastRb = NULL;        // place holder to end of list
     resbuf* rb;
-    int len = ptArrayWCS.length();
+    int len = ptArray.length();
     for (int i = 0; i < len; i++) 
     {
         if ((rb = acutNewRb(RT3DPOINT)) == NULL) 
@@ -322,7 +322,9 @@ resbuf* acGePoint3dArrayToResbuf(const AcGePoint3dArray& ptArrayWCS)
             acutRelRb(ptList);
             return NULL;
         }
-        acdbWcs2Ucs(asDblArray(ptArrayWCS.at(i)), rb->resval.rpoint, false);
+        rb->resval.rpoint[0] = ptArray.at(i).x;
+        rb->resval.rpoint[1] = ptArray.at(i).y;
+        rb->resval.rpoint[2] = ptArray.at(i).z;
         if (ptList == NULL) 
         {
             ptList = rb;

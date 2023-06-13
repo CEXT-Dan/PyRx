@@ -75,12 +75,15 @@ def generate_pyi(moduleName, module):
                         
                         try:
                             f.write(f'    def {func_name} {inspect.signature(func)}:\n')
+                            f.write(f"      '''{newDocString}'''")
                         except:
                             if len(args) != 0:
                                 f.write(f'    def {func_name} {args}{returnType}:\n')
+                                f.write(f"      '''                             '''")
                             else:
                                 f.write(f'    def {func_name} (self, *args, **kwargs){returnType}:\n')
-                        f.write(f"      '''{newDocString}'''")
+                                f.write(f"      '''{newDocString}'''")
+                                
                         f.write('\n    ...\n')
 
             elif inspect.isbuiltin(obj):
