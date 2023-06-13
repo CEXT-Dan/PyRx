@@ -9,7 +9,7 @@ using namespace boost::python;
 //----- PyDbTransactionManager
 void makePyDbTransactionManager()
 {
-    PyDocStr DS("TransactionManager");
+    PyDocString DS("TransactionManager");
     class_<PyDbTransactionManager, bases<PyRxObject>>("TransactionManager")
         .def(init<>(DS.CLASSARGS()))
         .def("startTransaction", &PyDbTransactionManager::startTransaction, DS.CLASSARGS())
