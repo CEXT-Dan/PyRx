@@ -322,9 +322,10 @@ resbuf* acGePoint3dArrayToResbuf(const AcGePoint3dArray& ptArray)
             acutRelRb(ptList);
             return NULL;
         }
-        rb->resval.rpoint[0] = ptArray.at(i).x;
-        rb->resval.rpoint[1] = ptArray.at(i).y;
-        rb->resval.rpoint[2] = ptArray.at(i).z;
+        const AcGePoint3d& p = ptArray.at(i);
+        rb->resval.rpoint[0] = p.x;
+        rb->resval.rpoint[1] = p.y;
+        rb->resval.rpoint[2] = p.z;
         if (ptList == NULL) 
         {
             ptList = rb;

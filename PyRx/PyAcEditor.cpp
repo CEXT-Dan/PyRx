@@ -9,6 +9,37 @@ using namespace boost::python;
 
 //-----------------------------------------------------------------------------------------
 //helpers
+class ssArgExtracter
+{
+public:
+    ssArgExtracter(const boost::python::object& obj)
+        :m_obj(obj)
+    {
+    }
+
+    const void* extractArg()
+    {
+        if (extract<AcGePoint3d>(m_obj).check())
+        {
+            return asDblArray(extract<AcGePoint3d>(m_obj));
+        }
+        else if (extract<boost::python::list>(m_obj).check())
+        {
+            ptr.reset(acGePoint3dArrayToResbuf(PyListToPoint3dArray(m_obj)));
+            return ptr.get();
+        }
+        else if (extract<char*>(m_obj).check())
+        {
+            return utf8_to_wstr(extract<char*>(m_obj)).c_str();
+        }
+        return nullptr;
+    }
+
+    AcResBufPtr ptr;
+    const boost::python::object& m_obj;
+};
+
+
 boost::python::tuple makeSelectionResult(const ads_name& name, Acad::PromptStatus result)
 {
     PyAutoLockGIL lock;
@@ -50,12 +81,20 @@ void makeAcEditorWrapper()
         .def("selectAll", &PyAcEditor::selectAll2).staticmethod("selectAll")
         .def("select", &PyAcEditor::select1)
         .def("select", &PyAcEditor::select2)
-        .def("select", &PyAcEditor::select3)
-        .def("select", &PyAcEditor::select4).staticmethod("select")
-        .def("selectCrossingWindow", &PyAcEditor::selectCrossingWindow1)
-        .def("selectCrossingWindow", &PyAcEditor::selectCrossingWindow2).staticmethod("selectCrossingWindow")
+        .def("selectPrompt", &PyAcEditor::select3)
+        .def("selectPrompt", &PyAcEditor::select4).staticmethod("selectPrompt")
+        .def("selectWindow", &PyAcEditor::selectWindow1)
+        .def("selectWindow", &PyAcEditor::selectWindow2).staticmethod("selectWindow")
+        .def("selectWindowPolygon", &PyAcEditor::selectWindowPolygon1)
+        .def("selectWindowPolygon", &PyAcEditor::selectWindowPolygon2).staticmethod("selectWindowPolygon")
         .def("selectFence", &PyAcEditor::selectFence1)
         .def("selectFence", &PyAcEditor::selectFence2).staticmethod("selectFence")
+        .def("selectPrevious", &PyAcEditor::selectPrevious1)
+        .def("selectPrevious", &PyAcEditor::selectPrevious2).staticmethod("selectPrevious")
+        .def("selectLast", &PyAcEditor::selectLast1)
+        .def("selectLast", &PyAcEditor::selectLast2).staticmethod("selectLast")
+        .def("ssget", &PyAcEditor::ssget1)
+        .def("ssget", &PyAcEditor::ssget2).staticmethod("ssget1")
         .def("initGet", &PyAcEditor::initGet).staticmethod("initGet")
         .def("getKword", &PyAcEditor::getKword).staticmethod("getKword")
         .def("getVar", &PyAcEditor::getVar).staticmethod("getVar")
@@ -240,11 +279,9 @@ boost::python::tuple PyAcEditor::select3(const std::string& add, const std::stri
 {
     WxUserInteraction ui;
     ads_name name = { 0L };
-
     const CString csAdd = utf8_to_wstr(add).c_str();
     const CString csRem = utf8_to_wstr(remove).c_str();
     const wchar_t* prompts[] = { (const wchar_t*)csAdd, (const wchar_t*)csRem };
-
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_:$"), prompts, nullptr, nullptr, name));
     return makeSelectionResult(name, stat);
 }
@@ -254,11 +291,9 @@ boost::python::tuple PyAcEditor::select4(const std::string& add, const std::stri
     WxUserInteraction ui;
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
-
     const CString csAdd = utf8_to_wstr(add).c_str();
     const CString csRem = utf8_to_wstr(remove).c_str();
     const wchar_t* prompts[] = { (const wchar_t*)csAdd, (const wchar_t*)csRem };
-
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_:$"), prompts, nullptr, pFilter.get(), name));
     return makeSelectionResult(name, stat);
 }
@@ -280,7 +315,7 @@ boost::python::tuple PyAcEditor::selectAll2(const boost::python::list& filter)
     return makeSelectionResult(name, stat);
 }
 
-boost::python::tuple PyAcEditor::selectCrossingWindow1(const AcGePoint3d& pt1, const AcGePoint3d& pt2)
+boost::python::tuple PyAcEditor::selectWindow1(const AcGePoint3d& pt1, const AcGePoint3d& pt2)
 {
     WxUserInteraction ui;
     ads_name name = { 0L };
@@ -288,7 +323,7 @@ boost::python::tuple PyAcEditor::selectCrossingWindow1(const AcGePoint3d& pt1, c
     return makeSelectionResult(name, stat);
 }
 
-boost::python::tuple PyAcEditor::selectCrossingWindow2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const boost::python::list& filter)
+boost::python::tuple PyAcEditor::selectWindow2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const boost::python::list& filter)
 {
     WxUserInteraction ui;
     ads_name name = { 0L };
@@ -309,11 +344,84 @@ boost::python::tuple PyAcEditor::selectFence1(const boost::python::list& points)
 boost::python::tuple PyAcEditor::selectFence2(const boost::python::list& points, const boost::python::list& filter)
 {
     WxUserInteraction ui;
-    auto pnts = PyListToPoint3dArray(points);
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     AcResBufPtr rbPoints(acGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_F"), rbPoints.get(), nullptr, pFilter.get(), name));
+    return makeSelectionResult(name, stat);
+}
+
+boost::python::tuple PyAcEditor::selectWindowPolygon1(const boost::python::list& points)
+{
+    WxUserInteraction ui;
+    ads_name name = { 0L };
+    AcResBufPtr rbPoints(acGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_WP"), rbPoints.get(), nullptr, nullptr, name));
+    return makeSelectionResult(name, stat);
+}
+
+boost::python::tuple PyAcEditor::selectWindowPolygon2(const boost::python::list& points, const boost::python::list& filter)
+{
+    WxUserInteraction ui;
+    ads_name name = { 0L };
+    AcResBufPtr pFilter(listToResbuf(filter));
+    AcResBufPtr rbPoints(acGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_WP"), rbPoints.get(), nullptr, pFilter.get(), name));
+    return makeSelectionResult(name, stat);
+}
+
+boost::python::tuple PyAcEditor::selectPrevious1()
+{
+    WxUserInteraction ui;
+    ads_name name = { 0L };
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_P"), nullptr, nullptr, nullptr, name));
+    return makeSelectionResult(name, stat);
+}
+
+boost::python::tuple PyAcEditor::selectPrevious2(const boost::python::list& filter)
+{
+    WxUserInteraction ui;
+    ads_name name = { 0L };
+    AcResBufPtr pFilter(listToResbuf(filter));
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_P"), nullptr, nullptr, pFilter.get(), name));
+    return makeSelectionResult(name, stat);
+}
+
+boost::python::tuple PyAcEditor::selectLast1()
+{
+    WxUserInteraction ui;
+    ads_name name = { 0L };
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_L"), nullptr, nullptr, nullptr, name));
+    return makeSelectionResult(name, stat);
+}
+
+boost::python::tuple PyAcEditor::selectLast2(const boost::python::list& filter)
+{
+    WxUserInteraction ui;
+    ads_name name = { 0L };
+    AcResBufPtr pFilter(listToResbuf(filter));
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_L"), nullptr, nullptr, pFilter.get(), name));
+    return makeSelectionResult(name, stat);
+}
+
+boost::python::tuple PyAcEditor::ssget1(std::string args,const boost::python::object& arg1,const boost::python::object& arg2)
+{
+    WxUserInteraction ui;
+    ads_name name = { 0L };
+    ssArgExtracter ssarg1(arg1);
+    ssArgExtracter ssarg2(arg2);
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(utf8_to_wstr(args).c_str(), ssarg1.extractArg(), ssarg2.extractArg(), nullptr, name));
+    return makeSelectionResult(name, stat);
+}
+
+boost::python::tuple PyAcEditor::ssget2(std::string args, const boost::python::object& arg1, const boost::python::object& arg2, const boost::python::list& filter)
+{
+    WxUserInteraction ui;
+    ads_name name = { 0L };
+    ssArgExtracter ssarg1(arg1);
+    ssArgExtracter ssarg2(arg2);
+    AcResBufPtr pFilter(listToResbuf(filter));
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(utf8_to_wstr(args).c_str(), ssarg1.extractArg(), ssarg2.extractArg(), pFilter.get(), name));
     return makeSelectionResult(name, stat);
 }
 
