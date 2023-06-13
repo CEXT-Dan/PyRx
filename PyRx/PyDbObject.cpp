@@ -9,7 +9,7 @@ using namespace boost::python;
 
 void makeAcDbObjectWrapper()
 {
-    PyDocStr DS("DbObject");
+    PyDocString DS("DbObject");
     class_<PyDbObject, bases<PyGiDrawable>>("DbObject", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.CLASSARGS({ "id: ObjectId", "mode: OpenMode" })))
         .def("objectId", &PyDbObject::objectId, DS.CLASSARGS())

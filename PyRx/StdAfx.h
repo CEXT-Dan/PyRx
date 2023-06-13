@@ -240,6 +240,8 @@ using AcDbObjectUPtr = std::unique_ptr < T, decltype([](T* ptr) noexcept
 #include <wxPython/sip.h>
 #include <wxPython/wxpy_api.h>
 #include "WxUserInteraction.h"
+#include "PyDocString.h"
+
 
 class WxPyAutoLock
 {
@@ -354,92 +356,6 @@ inline AcGePoint3dArray PyListToPoint3dArray(const boost::python::object& iterab
         arr.append(item);
     return arr;
 }
-
-//TODO breakup this header
-class PyDocStr
-{
-public:
-    explicit PyDocStr(const std::string& className)
-        : m_className(className)
-    {
-    }
-
-    PyDocStr& args(std::initializer_list<std::string> a_args)
-    {
-        m_args.clear();
-        for (auto& arg : a_args)
-            m_args.push_back(arg);
-        return *this;
-    }
-
-    const char* CLASSARGS()
-    {
-        return gME();
-    }
-
-    const char* CLASSARGS(std::initializer_list<std::string> pyargs)
-    {
-        return args(pyargs).gM();
-    }
-
-    const char* CLASSARGSSTATIC()
-    {
-        return gSE();
-    }
-
-    const char* CLASSARGSSTATIC(std::initializer_list<std::string> pyargs)
-    {
-        return args(pyargs).gS();
-    }
-
-private:
-    const char* gME()
-    {
-        outstr = m_argBegin;
-        outstr += std::format("self: {}", m_className);
-        outstr += m_argEnd;
-        return outstr.c_str();
-    }
-
-    const char* gM()
-    {
-        outstr = m_argBegin;
-        outstr += std::format("self: {}", m_className);
-        for (auto & arg : m_args)
-        {
-            outstr += ",";
-            outstr += std::format("{}", arg);
-        }
-        outstr += m_argEnd;
-        return outstr.c_str();
-    }
-
-    const char* gS()
-    {
-        outstr = m_argBegin;
-        for (auto & arg : m_args)
-        {
-            outstr += ",";
-            outstr += std::format("{}", arg);
-        }
-        outstr += m_argEnd;
-        return outstr.c_str();
-    }
-
-    const char* gSE()
-    {
-        outstr = m_argBegin;
-        outstr += m_argEnd;
-        return outstr.c_str();
-    }
-
-    std::string outstr;
-    std::string m_className;
-    std::vector<std::string> m_args;
-    inline static std::string m_argBegin = "![(";
-    inline static std::string m_argEnd = ")]!";
-};
-
 
 #pragma pack (pop)
 
