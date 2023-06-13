@@ -250,7 +250,9 @@
     <ClCompile Include="PyDbTransactionManager.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
-    <ClCompile Include="PyDocString.cpp" />
+    <ClCompile Include="PyDocString.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -505,7 +507,9 @@
     <ClInclude Include="PyDbTransactionManager.h">
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
-    <ClInclude Include="PyDocString.h" />
+    <ClInclude Include="PyDocString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
