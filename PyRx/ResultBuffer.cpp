@@ -165,6 +165,7 @@ resbuf* listToResbuf(const boost::python::list& bpl)
                 }
                 case RTSTR:
                 {
+                    //TODO extract<char*> seems to work on None, test
                     const AcString str = utf8_to_wstr(extract<char*>(tpl[1])).c_str();
                     pTail->rbnext = acutBuildList(code, (const TCHAR*)str, 0);
                     if (pTail->rbnext != nullptr)

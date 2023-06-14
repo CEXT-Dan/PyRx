@@ -16,7 +16,6 @@ public:
         :m_obj(obj)
     {
     }
-
     const void* extractArg()
     {
         if (extract<AcGePoint3d>(m_obj).check())
@@ -28,10 +27,29 @@ public:
             ptr.reset(acGePoint3dArrayToResbuf(PyListToPoint3dArray(m_obj)));
             return ptr.get();
         }
+        else if (extract<boost::python::tuple>(m_obj).check())
+        {
+            PyAutoLockGIL lock;
+            tuple tpl = extract<tuple>(m_obj);
+            if (boost::python::len(tpl) != 2)
+                throw PyAcadErrorStatus(Acad::eInvalidInput);
+            if (!(extract<std::string>(tpl[0]).check() && extract<std::string>(tpl[1]).check()))
+                throw PyAcadErrorStatus(Acad::eInvalidInput);
+            add = utf8_to_wstr(extract<std::string>(tpl[0])).c_str();
+            rem = utf8_to_wstr(extract<std::string>(tpl[1])).c_str();
+            prompts = { (const wchar_t*)add, (const wchar_t*)rem };
+            return prompts.data();
+        }
         return nullptr;
     }
 
+public:
+    //holders so extractArg() can return something alive
+    CString add;
+    CString rem;
     AcResBufPtr ptr;
+    std::array<const wchar_t*, 2> prompts = { 0 };
+private:
     const boost::python::object& m_obj;
 };
 
