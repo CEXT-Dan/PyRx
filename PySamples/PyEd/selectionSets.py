@@ -71,3 +71,13 @@ def PyRxCmd_pyselectallf():
 
     except Exception as err:
 	    print(err)
+
+#this is just in case one of the supplied wrappers doesn't fit, roll you own
+def PyRxCmd_pyuserselect():
+  try:
+    ssResult = Ed.Editor.ssget("F",[Ge.Point3d(0,0,0),Ge.Point3d(100,100,0)],None)
+    if ssResult[0] == Ed.PromptStatus.eNormal : 
+      print(len(ssResult[1].toList()))
+    
+  except Exception as err:
+    print(err)
