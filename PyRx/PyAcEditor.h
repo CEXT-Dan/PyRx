@@ -8,15 +8,7 @@ void makeAcEditorWrapper();
 class PyAcEditor
 {
 public:
-    static void                 alert(const std::string& prompt);//
-    static bool                 arxLoad(const std::string& path);//
-    static bool                 arxUnload(const std::string& app);//
-    static Acad::ErrorStatus    audit(const PyDbDatabase& db, bool bFixErrors);//
-    static Acad::ErrorStatus    audit2(const PyDbDatabase& db, bool bFixErrors, bool bCmdLnEcho);//
-    static bool                 cmdS(const boost::python::list& lst);//
-    static std::string          findFile(const std::string& file);//
-    static std::string          findTrustedFile(const std::string& file);//
-    static boost::python::list  arxLoaded();//
+    static void                 alert(const std::string& prompt);
     static boost::python::tuple getInteger(const std::string& prompt);
     static boost::python::tuple getDouble(const std::string& prompt);
     static boost::python::tuple getAngle(const AcGePoint3d& basePt, const std::string& prompt);

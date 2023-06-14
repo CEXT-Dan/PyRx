@@ -56,14 +56,6 @@ void makeAcEditorWrapper()
     class_<PyAcEditor>("Editor")
         .def("className", &PyAcEditor::className).staticmethod("className")
         .def("alert", &PyAcEditor::alert).staticmethod("alert")
-        .def("arxLoad", &PyAcEditor::arxLoad).staticmethod("arxLoad")
-        .def("arxUnload", &PyAcEditor::arxUnload).staticmethod("arxUnload")
-        .def("arxLoaded", &PyAcEditor::arxLoaded).staticmethod("arxLoaded")
-        .def("audit", &PyAcEditor::audit)
-        .def("audit", &PyAcEditor::audit2).staticmethod("audit")
-        .def("cmdS", &PyAcEditor::cmdS).staticmethod("cmdS")
-        .def("findFile", &PyAcEditor::findFile).staticmethod("findFile")
-        .def("findTrustedFile", &PyAcEditor::findTrustedFile).staticmethod("findTrustedFile")
         .def("getInteger", &PyAcEditor::getInteger).staticmethod("getInteger")
         .def("getDouble", &PyAcEditor::getDouble).staticmethod("getDouble")
         .def("getReal", &PyAcEditor::getDouble).staticmethod("getReal")
@@ -107,65 +99,6 @@ void makeAcEditorWrapper()
 void PyAcEditor::alert(const std::string& prompt)
 {
     acedAlert(utf8_to_wstr(prompt).c_str());
-}
-
-bool PyAcEditor::arxLoad(const std::string& path)
-{
-    return (acedArxLoad(utf8_to_wstr(path).c_str()) == RTNORM);
-}
-
-bool PyAcEditor::arxUnload(const std::string& app)
-{
-    return acedArxUnload(utf8_to_wstr(app).c_str()) == RTNORM;
-}
-
-Acad::ErrorStatus PyAcEditor::audit(const PyDbDatabase& db, bool bFixErrors)
-{
-#ifdef BRXAPP
-    throw PyNotimplementedByHost();
-#else
-    return acedAudit(db.impObj(), bFixErrors);
-#endif
-}
-
-Acad::ErrorStatus PyAcEditor::audit2(const PyDbDatabase& db, bool bFixErrors, bool bCmdLnEcho)
-{
-#ifdef BRXAPP
-    throw PyNotimplementedByHost();
-#else
-    return acedAudit(db.impObj(), bFixErrors, bCmdLnEcho);
-#endif
-}
-
-bool PyAcEditor::cmdS(const boost::python::list& lst)
-{
-    AcResBufPtr pcmd(listToResbuf(lst));
-    return acedCmdS(pcmd.get()) == RTNORM;
-}
-
-std::string PyAcEditor::findFile(const std::string& file)
-{
-    std::array<wchar_t, MAX_PATH> data;
-    acedFindFile(utf8_to_wstr(file).c_str(), data.data(), data.size());
-    return wstr_to_utf8(data.data());
-}
-
-std::string PyAcEditor::findTrustedFile(const std::string& file)
-{
-#ifdef BRXAPP
-    throw PyNotimplementedByHost();
-#else
-    std::array<wchar_t, MAX_PATH> data;
-    acedFindTrustedFile(utf8_to_wstr(file).c_str(), data.data(), data.size());
-    return wstr_to_utf8(data.data());
-#endif
-}
-
-boost::python::list PyAcEditor::arxLoaded()
-{
-    PyAutoLockGIL lock;
-    AcResBufPtr pLoaded(acedArxLoaded());
-    return resbufToList(pLoaded.get());
 }
 
 boost::python::tuple PyAcEditor::getInteger(const std::string& prompt)
