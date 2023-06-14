@@ -22,6 +22,9 @@ void makeEdCoreWrapper()
         .def("clearOLELock", &EdCore::clearOLELock).staticmethod("clearOLELock")
         .def("xrefDetach", &EdCore::xrefDetach1)//.staticmethod("xrefDetach")
         .def("xrefDetach", &EdCore::xrefDetach2).staticmethod("xrefDetach")
+        .def("cmdS", &EdCore::cmdS).staticmethod("cmdS")
+        .def("findFile", &EdCore::findFile).staticmethod("findFile")
+        .def("findTrustedFile", &EdCore::findTrustedFile).staticmethod("findTrustedFile")
         ;
 }
 
@@ -78,6 +81,30 @@ void EdCore::callBackOnCancel()
 bool EdCore::clearOLELock(int handle)
 {
     return acedClearOLELock(handle);
+}
+
+bool EdCore::cmdS(const boost::python::list& lst)
+{
+    AcResBufPtr pcmd(listToResbuf(lst));
+    return acedCmdS(pcmd.get()) == RTNORM;
+}
+
+std::string EdCore::findFile(const std::string& file)
+{
+    std::array<wchar_t, MAX_PATH> data;
+    acedFindFile(utf8_to_wstr(file).c_str(), data.data(), data.size());
+    return wstr_to_utf8(data.data());
+}
+
+std::string EdCore::findTrustedFile(const std::string& file)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    std::array<wchar_t, MAX_PATH> data;
+    acedFindTrustedFile(utf8_to_wstr(file).c_str(), data.data(), data.size());
+    return wstr_to_utf8(data.data());
+#endif
 }
 
 Acad::ErrorStatus EdCore::xrefDetach1(const std::string& XrefBlockname)

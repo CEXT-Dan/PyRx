@@ -17,6 +17,10 @@ public:
   static void callBackOnCancel();
   static bool clearOLELock(int handle);
 
+  static bool           cmdS(const boost::python::list& lst);
+  static std::string    findFile(const std::string& file);
+  static std::string    findTrustedFile(const std::string& file);
+
 
   static Acad::ErrorStatus xrefDetach1(const std::string& XrefBlockname);
   static Acad::ErrorStatus xrefDetach2(const std::string& XrefBlockname, bool bQuiet, PyDbDatabase& db);
