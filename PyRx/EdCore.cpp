@@ -11,7 +11,6 @@ using namespace boost::python;
 void makeEdCoreWrapper()
 {
     class_<EdCore>("Core")
-        .def("activeViewportId", &EdCore::activeViewportId).staticmethod("activeViewportId")
         .def("alert", &EdCore::alert).staticmethod("alert")
         .def("arxLoad", &EdCore::arxLoad).staticmethod("arxLoad")
         .def("arxLoaded", &EdCore::arxLoaded).staticmethod("arxLoaded")
@@ -26,11 +25,6 @@ void makeEdCoreWrapper()
         .def("findFile", &EdCore::findFile).staticmethod("findFile")
         .def("findTrustedFile", &EdCore::findTrustedFile).staticmethod("findTrustedFile")
         ;
-}
-
-PyDbObjectId EdCore::activeViewportId()
-{
-    return PyDbObjectId(acedActiveViewportId());
 }
 
 int EdCore::alert(const std::string& msg)

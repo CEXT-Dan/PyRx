@@ -28,10 +28,6 @@ public:
             ptr.reset(acGePoint3dArrayToResbuf(PyListToPoint3dArray(m_obj)));
             return ptr.get();
         }
-        else if (extract<char*>(m_obj).check())
-        {
-            return utf8_to_wstr(extract<char*>(m_obj)).c_str();
-        }
         return nullptr;
     }
 
@@ -39,14 +35,12 @@ public:
     const boost::python::object& m_obj;
 };
 
-
 boost::python::tuple makeSelectionResult(const ads_name& name, Acad::PromptStatus result)
 {
     PyAutoLockGIL lock;
     PyEdSelectionSet set(name);
     return boost::python::make_tuple<Acad::PromptStatus, PyEdSelectionSet>(result, set);
 }
-
 
 //-----------------------------------------------------------------------------------------
 // PyAcEditor wrapper
@@ -86,7 +80,7 @@ void makeAcEditorWrapper()
         .def("selectLast", &PyAcEditor::selectLast1)
         .def("selectLast", &PyAcEditor::selectLast2).staticmethod("selectLast")
         .def("ssget", &PyAcEditor::ssget1)
-        .def("ssget", &PyAcEditor::ssget2).staticmethod("ssget1")
+        .def("ssget", &PyAcEditor::ssget2).staticmethod("ssget")
         .def("initGet", &PyAcEditor::initGet).staticmethod("initGet")
         .def("getKword", &PyAcEditor::getKword).staticmethod("getKword")
         .def("getVar", &PyAcEditor::getVar).staticmethod("getVar")
@@ -337,24 +331,26 @@ boost::python::tuple PyAcEditor::selectLast2(const boost::python::list& filter)
     return makeSelectionResult(name, stat);
 }
 
-boost::python::tuple PyAcEditor::ssget1(std::string args,const boost::python::object& arg1,const boost::python::object& arg2)
+boost::python::tuple PyAcEditor::ssget1(const std::string& args,const boost::python::object& arg1,const boost::python::object& arg2)
 {
     WxUserInteraction ui;
     ads_name name = { 0L };
     ssArgExtracter ssarg1(arg1);
     ssArgExtracter ssarg2(arg2);
-    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(utf8_to_wstr(args).c_str(), ssarg1.extractArg(), ssarg2.extractArg(), nullptr, name));
+    AcString strArg = utf8_to_wstr(args).c_str();
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(strArg, ssarg1.extractArg(), ssarg2.extractArg(), nullptr, name));
     return makeSelectionResult(name, stat);
 }
 
-boost::python::tuple PyAcEditor::ssget2(std::string args, const boost::python::object& arg1, const boost::python::object& arg2, const boost::python::list& filter)
+boost::python::tuple PyAcEditor::ssget2(const std::string& args, const boost::python::object& arg1, const boost::python::object& arg2, const boost::python::list& filter)
 {
     WxUserInteraction ui;
     ads_name name = { 0L };
     ssArgExtracter ssarg1(arg1);
     ssArgExtracter ssarg2(arg2);
     AcResBufPtr pFilter(listToResbuf(filter));
-    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(utf8_to_wstr(args).c_str(), ssarg1.extractArg(), ssarg2.extractArg(), pFilter.get(), name));
+    AcString strArg = utf8_to_wstr(args).c_str();
+    auto stat = static_cast<Acad::PromptStatus>(acedSSGet(strArg, ssarg1.extractArg(), ssarg2.extractArg(), pFilter.get(), name));
     return makeSelectionResult(name, stat);
 }
 

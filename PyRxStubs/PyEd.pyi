@@ -6,12 +6,6 @@ class Core:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def activeViewportId (self, *args, **kwargs)-> ObjectId :
-      '''activeViewportId() -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId activeViewportId()'''
-    ...
     def alert (self, *args, **kwargs)-> int :
       '''alert( (str)arg1) -> int :
 
@@ -58,6 +52,24 @@ audit( (Database)arg1, (bool)arg2, (bool)arg3) -> ErrorStatus :
 
     C++ signature :
         bool clearOLELock(int)'''
+    ...
+    def cmdS (self, *args, **kwargs)-> bool :
+      '''cmdS( (list)arg1) -> bool :
+
+    C++ signature :
+        bool cmdS(class boost::python::list)'''
+    ...
+    def findFile (self, *args, **kwargs)-> str :
+      '''findFile( (str)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > findFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def findTrustedFile (self, *args, **kwargs)-> str :
+      '''findTrustedFile( (str)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > findTrustedFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def xrefDetach (self, *args, **kwargs)-> ErrorStatus :
       '''xrefDetach( (str)arg1) -> ErrorStatus :
@@ -730,64 +742,17 @@ class Editor:
     C++ signature :
         void alert(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def arxLoad (self, *args, **kwargs)-> bool :
-      '''arxLoad( (str)arg1) -> bool :
-
-    C++ signature :
-        bool arxLoad(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
-    ...
-    def arxLoaded (self, *args, **kwargs)-> list :
-      '''arxLoaded() -> list :
-
-    C++ signature :
-        class boost::python::list arxLoaded()'''
-    ...
-    def arxUnload (self, *args, **kwargs)-> bool :
-      '''arxUnload( (str)arg1) -> bool :
-
-    C++ signature :
-        bool arxUnload(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
-    ...
-    def audit (self, *args, **kwargs)-> ErrorStatus :
-      '''audit( (Database)arg1, (bool)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus audit(class PyDbDatabase,bool)
-
-audit( (Database)arg1, (bool)arg2, (bool)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus audit(class PyDbDatabase,bool,bool)'''
-    ...
     def className (self, *args, **kwargs)-> str :
       '''className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def cmdS (self, *args, **kwargs)-> bool :
-      '''cmdS( (list)arg1) -> bool :
-
-    C++ signature :
-        bool cmdS(class boost::python::list)'''
-    ...
     def entSel (self, *args, **kwargs)-> tuple :
       '''entSel( (str)arg1) -> tuple :
 
     C++ signature :
         class boost::python::tuple entSel(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
-    ...
-    def findFile (self, *args, **kwargs)-> str :
-      '''findFile( (str)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > findFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
-    ...
-    def findTrustedFile (self, *args, **kwargs)-> str :
-      '''findTrustedFile( (str)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > findTrustedFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def getAngle (self, *args, **kwargs)-> tuple :
       '''getAngle( (Point3d)arg1, (str)arg2) -> tuple :
@@ -874,17 +839,7 @@ getPoint( (Point3d)arg1, (str)arg2) -> tuple :
 select( (list)arg1) -> tuple :
 
     C++ signature :
-        class boost::python::tuple select(class boost::python::list)
-
-select( (str)arg1, (str)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple select(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-select( (str)arg1, (str)arg2, (list)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple select(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::list)'''
+        class boost::python::tuple select(class boost::python::list)'''
     ...
     def selectAll (self, *args, **kwargs)-> tuple :
       '''selectAll() -> tuple :
@@ -897,17 +852,6 @@ selectAll( (list)arg1) -> tuple :
     C++ signature :
         class boost::python::tuple selectAll(class boost::python::list)'''
     ...
-    def selectCrossingWindow (self, *args, **kwargs)-> tuple :
-      '''selectCrossingWindow( (Point3d)arg1, (Point3d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple selectCrossingWindow(class AcGePoint3d,class AcGePoint3d)
-
-selectCrossingWindow( (Point3d)arg1, (Point3d)arg2, (list)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple selectCrossingWindow(class AcGePoint3d,class AcGePoint3d,class boost::python::list)'''
-    ...
     def selectFence (self, *args, **kwargs)-> tuple :
       '''selectFence( (list)arg1) -> tuple :
 
@@ -918,6 +862,61 @@ selectFence( (list)arg1, (list)arg2) -> tuple :
 
     C++ signature :
         class boost::python::tuple selectFence(class boost::python::list,class boost::python::list)'''
+    ...
+    def selectLast (self, *args, **kwargs)-> tuple :
+      '''selectLast() -> tuple :
+
+    C++ signature :
+        class boost::python::tuple selectLast()
+
+selectLast( (list)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple selectLast(class boost::python::list)'''
+    ...
+    def selectPrevious (self, *args, **kwargs)-> tuple :
+      '''selectPrevious() -> tuple :
+
+    C++ signature :
+        class boost::python::tuple selectPrevious()
+
+selectPrevious( (list)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple selectPrevious(class boost::python::list)'''
+    ...
+    def selectPrompt (self, *args, **kwargs)-> tuple :
+      '''selectPrompt( (str)arg1, (str)arg2) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple selectPrompt(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+selectPrompt( (str)arg1, (str)arg2, (list)arg3) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple selectPrompt(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::list)'''
+    ...
+    def selectWindow (self, *args, **kwargs)-> tuple :
+      '''selectWindow( (Point3d)arg1, (Point3d)arg2) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple selectWindow(class AcGePoint3d,class AcGePoint3d)
+
+selectWindow( (Point3d)arg1, (Point3d)arg2, (list)arg3) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple selectWindow(class AcGePoint3d,class AcGePoint3d,class boost::python::list)'''
+    ...
+    def selectWindowPolygon (self, *args, **kwargs)-> tuple :
+      '''selectWindowPolygon( (list)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple selectWindowPolygon(class boost::python::list)
+
+selectWindowPolygon( (list)arg1, (list)arg2) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple selectWindowPolygon(class boost::python::list,class boost::python::list)'''
     ...
     def setCurrentUCS (self, *args, **kwargs)-> ErrorStatus :
       '''setCurrentUCS( (Matrix3d)arg1) -> ErrorStatus :
@@ -930,6 +929,17 @@ selectFence( (list)arg1, (list)arg2) -> tuple :
 
     C++ signature :
         bool setVar(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::api::object)'''
+    ...
+    def ssget (self, *args, **kwargs)-> tuple :
+      '''ssget( (str)arg1, (object)arg2, (object)arg3) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple ssget(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::api::object,class boost::python::api::object)
+
+ssget( (str)arg1, (object)arg2, (object)arg3, (list)arg4) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple ssget(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::api::object,class boost::python::api::object,class boost::python::list)'''
     ...
 
 class EditorReactor:
