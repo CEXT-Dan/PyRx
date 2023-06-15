@@ -36,8 +36,7 @@ bool PyEdSelectionSet::isInitialized() const
         return false;
     else if ((m_pSet->at(0) == 0) && (m_pSet->at(1) == 0))
         return false;
-    else
-        return true;
+    return true;
 }
 
 size_t PyEdSelectionSet::size()
@@ -98,8 +97,7 @@ bool PyEdSelectionSet::ssSetFirst()
     if (m_pSet == nullptr)
         throw PyAcadErrorStatus(eInvalidInput);
     ads_name dummy = { 0 };
-    ads_name ssname = { m_pSet->at(0) ,  m_pSet->at(1) };
-    return acedSSSetFirst(ssname, dummy) == RTNORM;
+    return acedSSSetFirst(m_pSet->data(), dummy) == RTNORM;
 }
 
 boost::python::list PyEdSelectionSet::ssNameX1()
@@ -112,13 +110,9 @@ boost::python::list PyEdSelectionSet::ssNameX2(int idx)
     PyAutoLockGIL lock;
     if (m_pSet == nullptr)
         throw PyAcadErrorStatus(eInvalidInput);
-
     resbuf* rb = nullptr;
-    ads_name ssname = { m_pSet->at(0) ,  m_pSet->at(1) };
-
-    if (RTNORM != acedSSNameX(&rb, ssname, idx))
+    if (RTNORM != acedSSNameX(&rb, m_pSet->data(), idx))
         throw PyAcadErrorStatus(eInvalidInput);
-
     AcResBufPtr ptr(rb);
     return resbufToList(rb);
 }
@@ -129,7 +123,6 @@ boost::python::list PyEdSelectionSet::toList()
     PyDbObjectId objId;
     ads_name ent = { 0 };
     boost::python::list idList;
-
     const size_t len = size();
     for (size_t i = 0; i < len; i++)
     {

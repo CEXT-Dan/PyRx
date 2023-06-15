@@ -29,7 +29,6 @@ void makeAcCmColorWrapper()
         .def<Acad::ErrorStatus(AcCmColor::*)(Adesk::RGBQuad)>("setRGB", &AcCmColor::setRGB)
 #endif
         .def<Acad::ErrorStatus(AcCmColor::*)(Adesk::UInt8, Adesk::UInt8, Adesk::UInt8)>("setRGB", &AcCmColor::setRGB)
-
         .def("red", &AcCmColor::red)
         .def("green", &AcCmColor::green)
         .def("blue", &AcCmColor::blue)
@@ -41,6 +40,11 @@ void makeAcCmColorWrapper()
         .def("setRGBM", &AcCmColor::setRGBM)
         .def("getRGBM", &AcCmColor::getRGBM)
 #endif
+        .def("colorIndex", &AcCmColor::colorIndex)
+        .def("setColorIndex", &AcCmColor::setColorIndex)
+        .def("penIndex", &AcCmColor::penIndex)
+        .def("setPenIndex", &AcCmColor::setPenIndex)
+        .def("entityColor", &AcCmColor::entityColor)
         ;
 }
 
@@ -142,6 +146,15 @@ void makeAcCmEntityColorWrapper()
 #else
         .def("canResolveRGB", &AcCmEntityColor::canResolveRGB)
         .def("makeTrueColor", &AcCmEntityColor::makeTrueColor)
+#endif
+#if defined(GRXAPP) || defined(ZRXAPP)
+#else
+        .def("None", &AcCmEntityColor::None).staticmethod("None")
+        .def("ByBlock", &AcCmEntityColor::ByBlock).staticmethod("ByBlock")
+        .def("ByLayer", &AcCmEntityColor::ByLayer).staticmethod("ByLayer")
+        .def("Foreground", &AcCmEntityColor::Foreground).staticmethod("Foreground")
+        .def("white", &AcCmEntityColor::white).staticmethod("white")
+        .def("black", &AcCmEntityColor::black).staticmethod("black")
 #endif
         ;
     enum_<AcCmEntityColor::ColorMethod>("ColorMethod")
