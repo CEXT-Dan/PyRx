@@ -10605,6 +10605,18 @@ class Color:
     C++ signature :
         unsigned char blue(class AcCmColor {lvalue})'''
     ...
+    def colorIndex (self, *args, **kwargs)-> int :
+      '''colorIndex( (Color)arg1) -> int :
+
+    C++ signature :
+        unsigned short colorIndex(class AcCmColor {lvalue})'''
+    ...
+    def entityColor (self, *args, **kwargs)-> EntityColor :
+      '''entityColor( (Color)arg1) -> EntityColor :
+
+    C++ signature :
+        class AcCmEntityColor entityColor(class AcCmColor {lvalue})'''
+    ...
     def getCOLORREF (self, *args, **kwargs)-> int :
       '''getCOLORREF( (Color)arg1) -> int :
 
@@ -10671,6 +10683,12 @@ class Color:
     C++ signature :
         bool isNone(class AcCmColor {lvalue})'''
     ...
+    def penIndex (self, *args, **kwargs)-> int :
+      '''penIndex( (Color)arg1) -> int :
+
+    C++ signature :
+        unsigned short penIndex(class AcCmColor {lvalue})'''
+    ...
     def red (self, *args, **kwargs)-> int :
       '''red( (Color)arg1) -> int :
 
@@ -10695,6 +10713,12 @@ class Color:
     C++ signature :
         enum Acad::ErrorStatus setCOLORREF(class AcCmColor {lvalue},unsigned int)'''
     ...
+    def setColorIndex (self, *args, **kwargs)-> ErrorStatus :
+      '''setColorIndex( (Color)arg1, (int)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColorIndex(class AcCmColor {lvalue},unsigned short)'''
+    ...
     def setForeground (self, *args, **kwargs)-> None :
       '''setForeground( (Color)arg1) -> None :
 
@@ -10712,6 +10736,12 @@ class Color:
 
     C++ signature :
         void setNone(class AcCmColor {lvalue})'''
+    ...
+    def setPenIndex (self, *args, **kwargs)-> ErrorStatus :
+      '''setPenIndex( (Color)arg1, (int)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPenIndex(class AcCmColor {lvalue},unsigned short)'''
     ...
     def setRGB (self, *args, **kwargs)-> ErrorStatus :
       '''setRGB( (Color)arg1, (int)arg2) -> ErrorStatus :
@@ -19728,10 +19758,20 @@ class EntityColor:
       '''ByBlock() -> EntityColor :
 
     C++ signature :
+        class AcCmEntityColor ByBlock()
+
+ByBlock() -> EntityColor :
+
+    C++ signature :
         class AcCmEntityColor ByBlock()'''
     ...
     def ByLayer (self, *args, **kwargs)-> EntityColor :
       '''ByLayer() -> EntityColor :
+
+    C++ signature :
+        class AcCmEntityColor ByLayer()
+
+ByLayer() -> EntityColor :
 
     C++ signature :
         class AcCmEntityColor ByLayer()'''
@@ -19740,10 +19780,20 @@ class EntityColor:
       '''Foreground() -> EntityColor :
 
     C++ signature :
+        class AcCmEntityColor Foreground()
+
+Foreground() -> EntityColor :
+
+    C++ signature :
         class AcCmEntityColor Foreground()'''
     ...
     def None (self, *args, **kwargs)-> EntityColor :
       '''None() -> EntityColor :
+
+    C++ signature :
+        class AcCmEntityColor None()
+
+None() -> EntityColor :
 
     C++ signature :
         class AcCmEntityColor None()'''
@@ -19761,6 +19811,11 @@ __init__( (object)arg1, (int)arg2, (int)arg3, (int)arg4) -> None :
     ...
     def black (self, *args, **kwargs)-> EntityColor :
       '''black() -> EntityColor :
+
+    C++ signature :
+        class AcCmEntityColor black()
+
+black() -> EntityColor :
 
     C++ signature :
         class AcCmEntityColor black()'''
@@ -19970,6 +20025,11 @@ setRGB( (EntityColor)arg1, (int)arg2, (int)arg3, (int)arg4) -> ErrorStatus :
     ...
     def white (self, *args, **kwargs)-> EntityColor :
       '''white() -> EntityColor :
+
+    C++ signature :
+        class AcCmEntityColor white()
+
+white() -> EntityColor :
 
     C++ signature :
         class AcCmEntityColor white()'''

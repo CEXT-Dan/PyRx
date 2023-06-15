@@ -71,6 +71,24 @@ audit( (Database)arg1, (bool)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > findTrustedFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def getFileD (self, *args, **kwargs)-> list :
+      '''getFileD( (str)arg1, (str)arg2, (str)arg3, (int)arg4) -> list :
+
+    C++ signature :
+        class boost::python::list getFileD(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    ...
+    def getFileNavDialog (self, *args, **kwargs)-> list :
+      '''getFileNavDialog( (str)arg1, (str)arg2, (str)arg3, (str)arg4, (int)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list getFileNavDialog(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    ...
+    def getPredefinedHatchPatterns (self, *args, **kwargs)-> list :
+      '''getPredefinedHatchPatterns() -> list :
+
+    C++ signature :
+        class boost::python::list getPredefinedHatchPatterns()'''
+    ...
     def xrefDetach (self, *args, **kwargs)-> ErrorStatus :
       '''xrefDetach( (str)arg1) -> ErrorStatus :
 

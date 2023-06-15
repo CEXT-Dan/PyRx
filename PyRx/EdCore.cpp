@@ -27,6 +27,8 @@ void makeEdCoreWrapper()
         .def("findFile", &EdCore::findFile).staticmethod("findFile")
         .def("findTrustedFile", &EdCore::findTrustedFile).staticmethod("findTrustedFile")
         .def("getPredefinedHatchPatterns", &EdCore::getPredefinedPattens).staticmethod("getPredefinedHatchPatterns")
+        .def("getFileD", &EdCore::getFileD).staticmethod("getFileD")
+        .def("getFileNavDialog", &EdCore::getFileNavDialog).staticmethod("getFileNavDialog")
         ;
 }
 
@@ -129,4 +131,21 @@ Acad::ErrorStatus EdCore::xrefDetach1(const std::string& XrefBlockname)
 Acad::ErrorStatus EdCore::xrefDetach2(const std::string& XrefBlockname, bool bQuiet, PyDbDatabase& db)
 {
     return acedXrefDetach(utf8_to_wstr(XrefBlockname).c_str(), bQuiet, db.impObj());
+}
+
+boost::python::list EdCore::getFileD(const std::string& title, const std::string& defawlt, const std::string& ext, int flags)
+{
+    PyAutoLockGIL lock;
+    AcResBufPtr result(acutNewRb(RTSTR));
+    acedGetFileD(utf8_to_wstr(title).c_str(), utf8_to_wstr(defawlt).c_str(), utf8_to_wstr(ext).c_str(), flags, result.get());
+    return resbufToList(result.get());
+}
+
+boost::python::list EdCore::getFileNavDialog(const std::string& title, const std::string& defawlt, const std::string& ext, const std::string& dlgname, int flags)
+{
+    PyAutoLockGIL lock;
+    resbuf* result = nullptr;
+    acedGetFileNavDialog(utf8_to_wstr(title).c_str(), utf8_to_wstr(defawlt).c_str(), utf8_to_wstr(ext).c_str(), utf8_to_wstr(dlgname).c_str(),flags, &result);
+    AcResBufPtr resultptr(result);
+    return resbufToList(result);
 }
