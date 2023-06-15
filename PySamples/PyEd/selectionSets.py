@@ -73,21 +73,31 @@ def PyRxCmd_pyselectallf():
 	    print(err)
 
 #this is just in case one of the supplied wrappers doesn't fit, roll you own
-def PyRxCmd_pyuserselect1():
+def PyRxCmd_pyssget1():
   try:
+    #pass points using a list
     ssResult = Ed.Editor.ssget("F",[Ge.Point3d(0,0,0),Ge.Point3d(100,100,0)],None)
     if ssResult[0] == Ed.PromptStatus.eNormal : 
       print(len(ssResult[1].toList()))
-    
   except Exception as err:
     print(err)
 
-def PyRxCmd_pyuserselect2():
+def PyRxCmd_pyssget2():
   try:
     #note this is a tuple
     ssResult = Ed.Editor.ssget("_:$",("MYADD","MYREMOVE"),None)
     if ssResult[0] == Ed.PromptStatus.eNormal : 
       print(len(ssResult[1].toList()))
-    
+  except Exception as err:
+    print(err)
+
+def PyRxCmd_pyssget3():
+  try:
+    ssResult = Ed.Editor.ssget("_:n",None,None)
+    if ssResult[0] != Ed.PromptStatus.eNormal :
+      return 
+    ss = ssResult[1]
+    nestedInfo = ss.ssNameX()
+    print(nestedInfo)
   except Exception as err:
     print(err)

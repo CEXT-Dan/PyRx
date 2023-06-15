@@ -1779,6 +1779,12 @@ This class cannot be instantiated from Python'''
     C++ signature :
         void add(class PyEdSelectionSet {lvalue},class PyDbObjectId)'''
     ...
+    def adsname (self, *args, **kwargs)-> AdsName :
+      '''adsname( (SelectionSet)arg1) -> AdsName :
+
+    C++ signature :
+        class AdsName adsname(class PyEdSelectionSet {lvalue})'''
+    ...
     def clear (self, *args, **kwargs)-> None :
       '''clear( (SelectionSet)arg1) -> None :
 
@@ -1808,6 +1814,23 @@ This class cannot be instantiated from Python'''
 
     C++ signature :
         unsigned __int64 size(class PyEdSelectionSet {lvalue})'''
+    ...
+    def ssNameX (self, *args, **kwargs)-> list :
+      '''ssNameX( (SelectionSet)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list ssNameX(class PyEdSelectionSet {lvalue})
+
+ssNameX( (SelectionSet)arg1, (int)arg2) -> list :
+
+    C++ signature :
+        class boost::python::list ssNameX(class PyEdSelectionSet {lvalue},int)'''
+    ...
+    def ssSetFirst (self, *args, **kwargs)-> bool :
+      '''ssSetFirst( (SelectionSet)arg1) -> bool :
+
+    C++ signature :
+        bool ssSetFirst(class PyEdSelectionSet {lvalue})'''
     ...
     def toList (self, *args, **kwargs)-> list :
       '''toList( (SelectionSet)arg1) -> list :
