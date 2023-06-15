@@ -133,19 +133,28 @@ Acad::ErrorStatus EdCore::xrefDetach2(const std::string& XrefBlockname, bool bQu
     return acedXrefDetach(utf8_to_wstr(XrefBlockname).c_str(), bQuiet, db.impObj());
 }
 
-boost::python::list EdCore::getFileD(const std::string& title, const std::string& defawlt, const std::string& ext, int flags)
+std::string EdCore::getFileD(const std::string & title, const std::string & defawlt, const std::string & ext, int flags)
 {
-    PyAutoLockGIL lock;
+    std::string path;
     AcResBufPtr result(acutNewRb(RTSTR));
-    acedGetFileD(utf8_to_wstr(title).c_str(), utf8_to_wstr(defawlt).c_str(), utf8_to_wstr(ext).c_str(), flags, result.get());
-    return resbufToList(result.get());
+    if (acedGetFileD(utf8_to_wstr(title).c_str(), utf8_to_wstr(defawlt).c_str(), utf8_to_wstr(ext).c_str(), flags, result.get()) == RTNORM)
+        path = wstr_to_utf8(result->resval.rstring);
+    return path;
 }
 
 boost::python::list EdCore::getFileNavDialog(const std::string& title, const std::string& defawlt, const std::string& ext, const std::string& dlgname, int flags)
 {
     PyAutoLockGIL lock;
     resbuf* result = nullptr;
-    acedGetFileNavDialog(utf8_to_wstr(title).c_str(), utf8_to_wstr(defawlt).c_str(), utf8_to_wstr(ext).c_str(), utf8_to_wstr(dlgname).c_str(),flags, &result);
-    AcResBufPtr resultptr(result);
-    return resbufToList(result);
+    boost::python::list pyList;
+    if (acedGetFileNavDialog(utf8_to_wstr(title).c_str(), utf8_to_wstr(defawlt).c_str(), utf8_to_wstr(ext).c_str(), utf8_to_wstr(dlgname).c_str(), flags, &result) == RTNORM)
+    {
+        AcResBufPtr resultptr(result);
+        for (resbuf* pbuf = result; pbuf != nullptr; pbuf = pbuf->rbnext)
+        {
+            if (pbuf->restype == RTSTR)
+                pyList.append(wstr_to_utf8(pbuf->resval.rstring));
+        }
+    }
+    return pyList;
 }
