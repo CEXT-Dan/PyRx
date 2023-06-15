@@ -6,6 +6,8 @@
 
 #include "acedCmdNF.h"
 
+extern "C" bool acedGetPredefinedPattens(AcStringArray & patterns);
+
 using namespace boost::python;
 
 void makeEdCoreWrapper()
@@ -24,6 +26,7 @@ void makeEdCoreWrapper()
         .def("cmdS", &EdCore::cmdS).staticmethod("cmdS")
         .def("findFile", &EdCore::findFile).staticmethod("findFile")
         .def("findTrustedFile", &EdCore::findTrustedFile).staticmethod("findTrustedFile")
+        .def("getPredefinedHatchPatterns", &EdCore::getPredefinedPattens).staticmethod("getPredefinedHatchPatterns")
         ;
 }
 
@@ -98,6 +101,23 @@ std::string EdCore::findTrustedFile(const std::string& file)
     std::array<wchar_t, MAX_PATH> data;
     acedFindTrustedFile(utf8_to_wstr(file).c_str(), data.data(), data.size());
     return wstr_to_utf8(data.data());
+#endif
+}
+
+boost::python::list EdCore::getPredefinedPattens()
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    PyAutoLockGIL lock;
+    AcStringArray patterns;
+    boost::python::list py_patterns;
+    if (acedGetPredefinedPattens(patterns) == true)
+    {
+        for (auto& pattern : patterns)
+            py_patterns.append(wstr_to_utf8(pattern));
+    }
+    return py_patterns;
 #endif
 }
 
