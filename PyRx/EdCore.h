@@ -23,5 +23,7 @@ public:
   static boost::python::list getPredefinedPattens();
   static Acad::ErrorStatus  xrefDetach1(const std::string& XrefBlockname);
   static Acad::ErrorStatus  xrefDetach2(const std::string& XrefBlockname, bool bQuiet, PyDbDatabase& db);
+  static boost::python::list getFileD(const std::string& title, const std::string& defawlt, const std::string& ext, int flags);
+  static boost::python::list getFileNavDialog(const std::string& title, const std::string& defawlt, const std::string& ext, const std::string& dlgname, int flags);
 };
 
