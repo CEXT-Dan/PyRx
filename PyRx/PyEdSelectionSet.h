@@ -1,6 +1,7 @@
 #pragma once
 
 class PyDbObjectId;
+class AdsName;
 typedef std::array<int64_t, 2> PySSName;
 
 
@@ -30,6 +31,10 @@ public:
     void                add(const PyDbObjectId& objId);
     void                remove(const PyDbObjectId& objId);
     bool                hasMember(const PyDbObjectId& objId);
+    AdsName             adsname() const;
+    bool                ssSetFirst();
+    boost::python::list ssNameX1();
+    boost::python::list ssNameX2(int ind);
     boost::python::list toList();
 
 public:

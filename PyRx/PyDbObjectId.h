@@ -39,7 +39,7 @@ public:
     PyDbObjectId toObjectId() const;
     void fromObjectId(const PyDbObjectId& id);
 public:
-    std::array<int64_t, 2> m_data;
+    std::array<int64_t, 2> m_data = { 0 };
 };
 
 //

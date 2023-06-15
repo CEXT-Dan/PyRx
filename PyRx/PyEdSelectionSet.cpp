@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PyEdSelectionSet.h"
 #include "PyDbObjectId.h"
+#include "ResultBuffer.h"
 
 using namespace boost::python;
 
@@ -14,6 +15,10 @@ void makePyEdSelectionSetWrapper()
         .def("remove", &PyEdSelectionSet::remove)
         .def("hasMember", &PyEdSelectionSet::hasMember)
         .def("toList", &PyEdSelectionSet::toList)
+        .def("adsname", &PyEdSelectionSet::adsname)
+        .def("ssNameX", &PyEdSelectionSet::ssNameX1)
+        .def("ssNameX", &PyEdSelectionSet::ssNameX2)
+        .def("ssSetFirst", &PyEdSelectionSet::ssSetFirst)
         ;
 }
 
@@ -77,10 +82,50 @@ bool PyEdSelectionSet::hasMember(const PyDbObjectId& objId)
         return false;
 }
 
+AdsName PyEdSelectionSet::adsname() const
+{
+    AdsName _name;
+    if (m_pSet != nullptr)
+    {
+        _name.m_data[0] = m_pSet->at(0);
+        _name.m_data[1] = m_pSet->at(1);
+    }
+    return _name;
+}
+
+bool PyEdSelectionSet::ssSetFirst()
+{
+    if (m_pSet == nullptr)
+        throw PyAcadErrorStatus(eInvalidInput);
+    ads_name dummy = { 0 };
+    ads_name ssname = { m_pSet->at(0) ,  m_pSet->at(1) };
+    return acedSSSetFirst(ssname, dummy) == RTNORM;
+}
+
+boost::python::list PyEdSelectionSet::ssNameX1()
+{
+    return ssNameX2(0);
+}
+
+boost::python::list PyEdSelectionSet::ssNameX2(int idx)
+{
+    PyAutoLockGIL lock;
+    if (m_pSet == nullptr)
+        throw PyAcadErrorStatus(eInvalidInput);
+
+    resbuf* rb = nullptr;
+    ads_name ssname = { m_pSet->at(0) ,  m_pSet->at(1) };
+
+    if (RTNORM != acedSSNameX(&rb, ssname, idx))
+        throw PyAcadErrorStatus(eInvalidInput);
+
+    AcResBufPtr ptr(rb);
+    return resbufToList(rb);
+}
+
 boost::python::list PyEdSelectionSet::toList()
 {
     PyAutoLockGIL lock;
-
     PyDbObjectId objId;
     ads_name ent = { 0 };
     boost::python::list idList;
