@@ -83,9 +83,10 @@ public:
 };
 
 
-void makeAcRxClassWrapper();
 //-----------------------------------------------------------------------------------------
 //PrRxClass
+void makeAcRxClassWrapper();
+
 class PyRxClass : public PyRxObject
 {
 public:

@@ -253,6 +253,9 @@
     <ClCompile Include="PyDocString.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PyDbEval.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -509,6 +512,9 @@
     </ClInclude>
     <ClInclude Include="PyDocString.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbEval.h">
+      <Filter>Header Files\PyDb</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
