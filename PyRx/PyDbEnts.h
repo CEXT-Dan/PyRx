@@ -185,6 +185,30 @@ public:
 };
 
 //-----------------------------------------------------------------------------------
+//PyDbDynBlockReference
+void makePyDbDynBlockReferenceWrapper();
+class PyDbDynBlockReference
+{
+public:
+    PyDbDynBlockReference(const PyDbObjectId& id);
+    ~PyDbDynBlockReference() = default;
+    bool                isDynamicBlock1() const;
+    PyDbObjectId        blockId() const;
+    Acad::ErrorStatus   resetBlock();
+    Acad::ErrorStatus   convertToStaticBlock1();
+    Acad::ErrorStatus   convertToStaticBlock2(const std::string& newBlockName);
+    PyDbObjectId        dynamicBlockTableRecord() const;
+    PyDbObjectId        anonymousBlockTableRecord() const;
+    boost::python::list getBlockProperties() const;
+    static bool         isDynamicBlock2(const PyDbObjectId& blockTableRecordId);
+    static std::string  className();
+public:
+    AcDbDynBlockReference* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<AcDbDynBlockReference> m_imp;
+};
+
+//-----------------------------------------------------------------------------------
 //PyDbMInsertBlock
 void makeDbMInsertBlockeWrapper();
 class PyDbMInsertBlock : public  PyDbBlockReference

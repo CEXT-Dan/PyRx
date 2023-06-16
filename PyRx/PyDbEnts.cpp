@@ -941,7 +941,104 @@ AcDbBlockReference* PyDbBlockReference::impObj(const std::source_location& src /
 }
 
 //-----------------------------------------------------------------------------------
-//PyDbBlockReference
+//PyDbDynBlockReference
+void makePyDbDynBlockReferenceWrapper() //TODO: Make test
+{
+    class_<PyDbDynBlockReference>("DynBlockReference", no_init)
+        .def(init<const PyDbObjectId&>())
+        .def("isDynamicBlock", &PyDbDynBlockReference::isDynamicBlock1)
+        .def("blockId", &PyDbDynBlockReference::blockId)
+        .def("resetBlock", &PyDbDynBlockReference::resetBlock)
+        .def("convertToStaticBlock", &PyDbDynBlockReference::convertToStaticBlock1)
+        .def("convertToStaticBlock", &PyDbDynBlockReference::convertToStaticBlock2)
+        .def("dynamicBlockTableRecord", &PyDbDynBlockReference::dynamicBlockTableRecord)
+        .def("anonymousBlockTableRecord", &PyDbDynBlockReference::anonymousBlockTableRecord)
+        .def("getBlockProperties", &PyDbDynBlockReference::getBlockProperties)
+        .def("getIsDynamicBlock", &PyDbDynBlockReference::isDynamicBlock2).staticmethod("getIsDynamicBlock")
+        .def("className", &PyDbDynBlockReference::className).staticmethod("className")
+        ;
+}
+
+PyDbDynBlockReference::PyDbDynBlockReference(const PyDbObjectId& id)
+    : m_imp(new AcDbDynBlockReference(id.m_id))
+{
+}
+
+bool PyDbDynBlockReference::isDynamicBlock1() const
+{
+    return impObj()->isDynamicBlock();
+}
+
+PyDbObjectId PyDbDynBlockReference::blockId() const
+{
+    return PyDbObjectId(impObj()->blockId());
+}
+
+Acad::ErrorStatus PyDbDynBlockReference::resetBlock()
+{
+    return impObj()->resetBlock();
+}
+
+Acad::ErrorStatus PyDbDynBlockReference::convertToStaticBlock1()
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->convertToStaticBlock();
+#endif
+}
+
+Acad::ErrorStatus PyDbDynBlockReference::convertToStaticBlock2(const std::string& newBlockName)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->convertToStaticBlock(utf8_to_wstr(newBlockName).c_str());
+#endif
+}
+
+PyDbObjectId PyDbDynBlockReference::dynamicBlockTableRecord() const
+{
+    return PyDbObjectId(impObj()->dynamicBlockTableRecord());
+}
+
+PyDbObjectId PyDbDynBlockReference::anonymousBlockTableRecord() const
+{
+    return PyDbObjectId(impObj()->anonymousBlockTableRecord());
+}
+
+boost::python::list PyDbDynBlockReference::getBlockProperties() const
+{
+    throw PyAcadErrorStatus(eNotImplementedYet);
+    //
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    AcDbDynBlockReferencePropertyArray properties;
+    impObj()->getBlockProperties(properties);
+    for (const auto& item : properties)
+        pyList.append(item);
+    return pyList;
+}
+
+bool PyDbDynBlockReference::isDynamicBlock2(const PyDbObjectId& blockTableRecordId)
+{
+    return AcDbDynBlockReference::isDynamicBlock(blockTableRecordId.m_id);
+}
+
+std::string PyDbDynBlockReference::className()
+{
+    return "AcDbDynBlockReference";
+}
+
+AcDbDynBlockReference* PyDbDynBlockReference::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_imp == nullptr)
+        throw PyNullObject(src);
+    return static_cast<AcDbDynBlockReference*>(m_imp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//DbMInsertBlock
 void makeDbMInsertBlockeWrapper()
 {
     class_<PyDbMInsertBlock, bases<PyDbBlockReference>>("MInsertBlock")

@@ -19060,6 +19060,73 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class DynBlockReference:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)'''
+    ...
+    def anonymousBlockTableRecord (self, *args, **kwargs)-> ObjectId :
+      '''anonymousBlockTableRecord( (DynBlockReference)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId anonymousBlockTableRecord(class PyDbDynBlockReference {lvalue})'''
+    ...
+    def blockId (self, *args, **kwargs)-> ObjectId :
+      '''blockId( (DynBlockReference)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId blockId(class PyDbDynBlockReference {lvalue})'''
+    ...
+    def className (self, *args, **kwargs)-> str :
+      '''className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def convertToStaticBlock (self, *args, **kwargs)-> ErrorStatus :
+      '''convertToStaticBlock( (DynBlockReference)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus convertToStaticBlock(class PyDbDynBlockReference {lvalue})
+
+convertToStaticBlock( (DynBlockReference)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus convertToStaticBlock(class PyDbDynBlockReference {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def dynamicBlockTableRecord (self, *args, **kwargs)-> ObjectId :
+      '''dynamicBlockTableRecord( (DynBlockReference)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId dynamicBlockTableRecord(class PyDbDynBlockReference {lvalue})'''
+    ...
+    def getBlockProperties (self, *args, **kwargs)-> list :
+      '''getBlockProperties( (DynBlockReference)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getBlockProperties(class PyDbDynBlockReference {lvalue})'''
+    ...
+    def getIsDynamicBlock (self, *args, **kwargs)-> bool :
+      '''getIsDynamicBlock( (ObjectId)arg1) -> bool :
+
+    C++ signature :
+        bool getIsDynamicBlock(class PyDbObjectId)'''
+    ...
+    def isDynamicBlock (self, *args, **kwargs)-> bool :
+      '''isDynamicBlock( (DynBlockReference)arg1) -> bool :
+
+    C++ signature :
+        bool isDynamicBlock(class PyDbDynBlockReference {lvalue})'''
+    ...
+    def resetBlock (self, *args, **kwargs)-> ErrorStatus :
+      '''resetBlock( (DynBlockReference)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus resetBlock(class PyDbDynBlockReference {lvalue})'''
+    ...
+
 class EndCaps:
     def __init__ (self, /, *args, **kwargs):
       '''Initialize self.  See help(type(self)) for accurate signature.'''

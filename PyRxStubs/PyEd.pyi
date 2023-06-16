@@ -71,11 +71,11 @@ audit( (Database)arg1, (bool)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > findTrustedFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getFileD (self, *args, **kwargs)-> list :
-      '''getFileD( (str)arg1, (str)arg2, (str)arg3, (int)arg4) -> list :
+    def getFileD (self, *args, **kwargs)-> str :
+      '''getFileD( (str)arg1, (str)arg2, (str)arg3, (int)arg4) -> str :
 
     C++ signature :
-        class boost::python::list getFileD(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getFileD(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
     ...
     def getFileNavDialog (self, *args, **kwargs)-> list :
       '''getFileNavDialog( (str)arg1, (str)arg2, (str)arg3, (str)arg4, (int)arg5) -> list :
