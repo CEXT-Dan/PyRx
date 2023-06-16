@@ -184,6 +184,25 @@ BOOST_PYTHON_MODULE(PyDb)
 
     def("curDb", curPyDb);
 
+    enum_<AcDb::DwgDataType>("DwgDataType")
+        .value("kDwgNull", AcDb::DwgDataType::kDwgNull)
+        .value("kDwgReal", AcDb::DwgDataType::kDwgReal)
+        .value("kDwgInt32", AcDb::DwgDataType::kDwgInt32)
+        .value("kDwgInt16", AcDb::DwgDataType::kDwgInt16)
+        .value("kDwgInt8", AcDb::DwgDataType::kDwgInt8)
+        .value("kDwgText", AcDb::DwgDataType::kDwgText)
+        .value("kDwgBChunk", AcDb::DwgDataType::kDwgBChunk)
+        .value("kDwgHandle", AcDb::DwgDataType::kDwgHandle)
+        .value("kDwgHardOwnershipId", AcDb::DwgDataType::kDwgHardOwnershipId)
+        .value("kDwgSoftOwnershipId", AcDb::DwgDataType::kDwgSoftOwnershipId)
+        .value("kDwgHardPointerId", AcDb::DwgDataType::kDwgHardPointerId)
+        .value("kDwgSoftPointerId", AcDb::DwgDataType::kDwgSoftPointerId)
+        .value("kDwg3Real", AcDb::DwgDataType::kDwg3Real)
+        .value("kDwgInt64", AcDb::DwgDataType::kDwgInt64)
+        .value("kDwgNotRecognized", AcDb::DwgDataType::kDwgNotRecognized)
+        .export_values()
+        ;
+
     enum_<AcDb::Intersect>("Intersect")
         .value("kOnBothOperands", AcDb::Intersect::kOnBothOperands)
         .value("kExtendThis", AcDb::Intersect::kExtendThis)

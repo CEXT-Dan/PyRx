@@ -238,7 +238,7 @@ boost::python::list resbufToList(resbuf* pRb)
             case AcDb::kDwg3Real:
                 list.append(boost::python::make_tuple(pTail->restype, asPnt3d(pTail->resval.rpoint)));
                 break;
-            case AcDb::kDwgHandle:
+            case AcDb::kDwgHandle://TODO!! this is wrong?
             case AcDb::kDwgHardOwnershipId:
             case AcDb::kDwgSoftOwnershipId:
             case AcDb::kDwgHardPointerId:
