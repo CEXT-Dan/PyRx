@@ -21751,6 +21751,175 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class EvalVariant:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,double)
+
+__init__( (object)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,int)
+
+__init__( (object)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (Point2d)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint2d)
+
+__init__( (object)arg1, (Point3d)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d)'''
+    ...
+    def className (self, *args, **kwargs)-> str :
+      '''className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def clear (self, *args, **kwargs)-> None :
+      '''clear( (EvalVariant)arg1) -> None :
+
+    C++ signature :
+        void clear(class PyDbEvalVariant {lvalue})'''
+    ...
+    def copyFrom (self, *args, **kwargs)-> ErrorStatus :
+      '''copyFrom( (EvalVariant)arg1, (RxObject)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus copyFrom(class PyDbEvalVariant {lvalue},class PyRxObject)'''
+    ...
+    def desc (self, *args, **kwargs)-> RxClass :
+      '''desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def getDouble (self, *args, **kwargs)-> float :
+      '''getDouble( (EvalVariant)arg1) -> float :
+
+    C++ signature :
+        double getDouble(class PyDbEvalVariant {lvalue})'''
+    ...
+    def getInt16 (self, *args, **kwargs)-> int :
+      '''getInt16( (EvalVariant)arg1) -> int :
+
+    C++ signature :
+        short getInt16(class PyDbEvalVariant {lvalue})'''
+    ...
+    def getInt32 (self, *args, **kwargs)-> int :
+      '''getInt32( (EvalVariant)arg1) -> int :
+
+    C++ signature :
+        int getInt32(class PyDbEvalVariant {lvalue})'''
+    ...
+    def getObjectId (self, *args, **kwargs)-> ObjectId :
+      '''getObjectId( (EvalVariant)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getObjectId(class PyDbEvalVariant {lvalue})'''
+    ...
+    def getPoint2d (self, *args, **kwargs)-> Point2d :
+      '''getPoint2d( (EvalVariant)arg1) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d getPoint2d(class PyDbEvalVariant {lvalue})'''
+    ...
+    def getPoint3d (self, *args, **kwargs)-> Point3d :
+      '''getPoint3d( (EvalVariant)arg1) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d getPoint3d(class PyDbEvalVariant {lvalue})'''
+    ...
+    def getString (self, *args, **kwargs)-> str :
+      '''getString( (EvalVariant)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getString(class PyDbEvalVariant {lvalue})'''
+    ...
+    def isA (self, *args, **kwargs)-> RxClass :
+      '''isA( (RxObject)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyRxObject {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs)-> bool :
+      '''isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs)-> int :
+      '''refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
+    def setDouble (self, *args, **kwargs)-> ErrorStatus :
+      '''setDouble( (EvalVariant)arg1, (DxfCode)arg2, (float)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setDouble(class PyDbEvalVariant {lvalue},short,double)'''
+    ...
+    def setInt16 (self, *args, **kwargs)-> ErrorStatus :
+      '''setInt16( (EvalVariant)arg1, (DxfCode)arg2, (DxfCode)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setInt16(class PyDbEvalVariant {lvalue},short,short)'''
+    ...
+    def setInt32 (self, *args, **kwargs)-> ErrorStatus :
+      '''setInt32( (EvalVariant)arg1, (DxfCode)arg2, (int)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setInt32(class PyDbEvalVariant {lvalue},short,int)'''
+    ...
+    def setObjectId (self, *args, **kwargs)-> ErrorStatus :
+      '''setObjectId( (EvalVariant)arg1, (DxfCode)arg2, (ObjectId)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setObjectId(class PyDbEvalVariant {lvalue},short,class PyDbObjectId)'''
+    ...
+    def setPoint2d (self, *args, **kwargs)-> ErrorStatus :
+      '''setPoint2d( (EvalVariant)arg1, (DxfCode)arg2, (Point2d)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPoint2d(class PyDbEvalVariant {lvalue},short,class AcGePoint2d)'''
+    ...
+    def setPoint3d (self, *args, **kwargs)-> ErrorStatus :
+      '''setPoint3d( (EvalVariant)arg1, (DxfCode)arg2, (Point3d)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPoint3d(class PyDbEvalVariant {lvalue},short,class AcGePoint3d)'''
+    ...
+    def setString (self, *args, **kwargs)-> ErrorStatus :
+      '''setString( (EvalVariant)arg1, (DxfCode)arg2, (str)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setString(class PyDbEvalVariant {lvalue},short,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+
 class Extents:
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
