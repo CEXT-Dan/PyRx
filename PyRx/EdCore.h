@@ -2,8 +2,6 @@
 class PyDbObjectId;
 class PyDbDatabase;
 
-
-
 void makeEdCoreWrapper();
 
 class EdCore

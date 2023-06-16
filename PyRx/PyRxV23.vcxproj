@@ -149,6 +149,7 @@
     <ClCompile Include="PyDbDictionary.cpp" />
     <ClCompile Include="PyDbDimension.cpp" />
     <ClCompile Include="PyDbEntity.cpp" />
+    <ClCompile Include="PyDbEval.cpp" />
     <ClCompile Include="PyDbField.cpp" />
     <ClCompile Include="PyDbgDwgFiler.cpp" />
     <ClCompile Include="PyDbHatch.cpp" />
@@ -236,6 +237,7 @@
     <ClInclude Include="PyDbDictionary.h" />
     <ClInclude Include="PyDbDimension.h" />
     <ClInclude Include="PyDbEntity.h" />
+    <ClInclude Include="PyDbEval.h" />
     <ClInclude Include="PyDbField.h" />
     <ClInclude Include="PyDbgDwgFiler.h" />
     <ClInclude Include="PyDbHatch.h" />
