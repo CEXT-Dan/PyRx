@@ -9,19 +9,18 @@ void makePyDbEvalVariantWrapper()
     class_<PyDbEvalVariant, bases<PyRxObject>>("EvalVariant")
         .def(init<>())
         .def(init<double>())
-        .def(init<short>())
         .def(init<Adesk::Int32>())
         .def(init<const std::string&>())
         .def(init<const PyDbObjectId&>())
         .def(init<const AcGePoint2d&>())
         .def(init<const AcGePoint3d&>())
-        .def("setValue", &PyDbEvalVariant::setValue1)
-        .def("setValue", &PyDbEvalVariant::setValue2)
-        .def("setValue", &PyDbEvalVariant::setValue3)
-        .def("setValue", &PyDbEvalVariant::setValue4)
-        .def("setValue", &PyDbEvalVariant::setValue5)
-        .def("setValue", &PyDbEvalVariant::setValue6)
-        .def("setValue", &PyDbEvalVariant::setValue7)
+        .def("setDouble", &PyDbEvalVariant::setDouble)
+        .def("setInt16", &PyDbEvalVariant::setInt16)
+        .def("setInt32", &PyDbEvalVariant::setInt32)
+        .def("setString", &PyDbEvalVariant::setString)
+        .def("setObjectId", &PyDbEvalVariant::setObjectId)
+        .def("setPoint3d", &PyDbEvalVariant::setPoint3d)
+        .def("setPoint2d", &PyDbEvalVariant::setPoint2d)
         .def("getDouble", &PyDbEvalVariant::getDouble)
         .def("getInt16", &PyDbEvalVariant::getInt16)
         .def("getInt32", &PyDbEvalVariant::getInt32)
@@ -51,11 +50,6 @@ PyDbEvalVariant::PyDbEvalVariant()
 
 PyDbEvalVariant::PyDbEvalVariant(double dVal)
     : PyRxObject(new AcDbEvalVariant(dVal), true, false)
-{
-}
-
-PyDbEvalVariant::PyDbEvalVariant(short iVal)
-    : PyRxObject(new AcDbEvalVariant(iVal), true, false)
 {
 }
 
@@ -130,41 +124,41 @@ bool PyDbEvalVariant::operator!=(const PyDbEvalVariant& val) const
     return *impObj() != *val.impObj();
 }
 
-Acad::ErrorStatus PyDbEvalVariant::setValue1(AcDb::DxfCode groupcode, double value)
+Acad::ErrorStatus PyDbEvalVariant::setDouble(AcDb::DxfCode groupcode, double value)
 {
     impObj()->restype = groupcode;
     impObj()->resval.rreal = value;
     return eOk;
 }
 
-Acad::ErrorStatus PyDbEvalVariant::setValue2(AcDb::DxfCode groupcode, short value)
+Acad::ErrorStatus PyDbEvalVariant::setInt16(AcDb::DxfCode groupcode, short value)
 {
     impObj()->restype = groupcode;
     impObj()->resval.rint = value;
     return eOk;
 }
 
-Acad::ErrorStatus PyDbEvalVariant::setValue3(AcDb::DxfCode groupcode, Adesk::Int32 value)
+Acad::ErrorStatus PyDbEvalVariant::setInt32(AcDb::DxfCode groupcode, Adesk::Int32 value)
 {
     impObj()->restype = groupcode;
     impObj()->resval.rlong = value;
     return eOk;
 }
 
-Acad::ErrorStatus PyDbEvalVariant::setValue4(AcDb::DxfCode groupcode, const std::string& value)
+Acad::ErrorStatus PyDbEvalVariant::setString(AcDb::DxfCode groupcode, const std::string& value)
 {
     impObj()->restype = groupcode;
     impObj()->resval.rstring = _wcsdup(utf8_to_wstr(value).c_str());
     return eOk;
 }
 
-Acad::ErrorStatus PyDbEvalVariant::setValue5(AcDb::DxfCode groupcode, const PyDbObjectId& value)
+Acad::ErrorStatus PyDbEvalVariant::setObjectId(AcDb::DxfCode groupcode, const PyDbObjectId& value)
 {
     impObj()->restype = groupcode;
     return acdbGetAdsName(impObj()->resval.rlname, value.m_id);
 }
 
-Acad::ErrorStatus PyDbEvalVariant::setValue6(AcDb::DxfCode groupcode, const AcGePoint3d& value)
+Acad::ErrorStatus PyDbEvalVariant::setPoint3d(AcDb::DxfCode groupcode, const AcGePoint3d& value)
 {
     impObj()->restype = groupcode;
     impObj()->resval.rpoint[0] = value[0];
@@ -173,7 +167,7 @@ Acad::ErrorStatus PyDbEvalVariant::setValue6(AcDb::DxfCode groupcode, const AcGe
     return eOk;
 }
 
-Acad::ErrorStatus PyDbEvalVariant::setValue7(AcDb::DxfCode groupcode, const AcGePoint2d& value)
+Acad::ErrorStatus PyDbEvalVariant::setPoint2d(AcDb::DxfCode groupcode, const AcGePoint2d& value)
 {
     impObj()->restype = groupcode;
     impObj()->resval.rpoint[0] = value[0];

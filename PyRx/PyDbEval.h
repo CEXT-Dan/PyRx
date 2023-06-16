@@ -10,8 +10,7 @@ class PyDbEvalVariant : public PyRxObject
 {
 public:
     PyDbEvalVariant();
-    PyDbEvalVariant(double       dVal);
-    PyDbEvalVariant(short        iVal);
+    PyDbEvalVariant(double dVal);
     PyDbEvalVariant(const std::string& szVal);
     PyDbEvalVariant(Adesk::Int32 lVal);
     PyDbEvalVariant(const PyDbObjectId& id);
@@ -21,6 +20,7 @@ public:
     PyDbEvalVariant(const AcDbEvalVariant& ptr);
     PyDbEvalVariant(AcDbEvalVariant* ptr, bool autoDelete);
     ~PyDbEvalVariant() = default;
+
     bool operator < (const PyDbEvalVariant& val) const;
     bool operator > (const PyDbEvalVariant& val) const;
     bool operator <= (const PyDbEvalVariant& val) const;
@@ -28,13 +28,13 @@ public:
     bool operator == (const PyDbEvalVariant& val) const;
     bool operator != (const PyDbEvalVariant& val) const;
 
-    Acad::ErrorStatus setValue1(AcDb::DxfCode groupcode, double value);
-    Acad::ErrorStatus setValue2(AcDb::DxfCode groupcode, short value);
-    Acad::ErrorStatus setValue3(AcDb::DxfCode groupcode, Adesk::Int32 value);
-    Acad::ErrorStatus setValue4(AcDb::DxfCode groupcode, const std::string& value);
-    Acad::ErrorStatus setValue5(AcDb::DxfCode groupcode, const PyDbObjectId& value);
-    Acad::ErrorStatus setValue6(AcDb::DxfCode groupcode, const AcGePoint3d& value);
-    Acad::ErrorStatus setValue7(AcDb::DxfCode groupcode, const AcGePoint2d& value);
+    Acad::ErrorStatus setDouble(AcDb::DxfCode groupcode, double value);
+    Acad::ErrorStatus setInt16(AcDb::DxfCode groupcode, short value);
+    Acad::ErrorStatus setInt32(AcDb::DxfCode groupcode, Adesk::Int32 value);
+    Acad::ErrorStatus setString(AcDb::DxfCode groupcode, const std::string& value);
+    Acad::ErrorStatus setObjectId(AcDb::DxfCode groupcode, const PyDbObjectId& value);
+    Acad::ErrorStatus setPoint3d(AcDb::DxfCode groupcode, const AcGePoint3d& value);
+    Acad::ErrorStatus setPoint2d(AcDb::DxfCode groupcode, const AcGePoint2d& value);
 
     double          getDouble();
     short           getInt16();
