@@ -30,6 +30,7 @@ void makePyDbEvalVariantWrapper()
         .def("getPoint3d", &PyDbEvalVariant::getPoint3d)
         .def("clear", &PyDbEvalVariant::clear)
         .def("copyFrom", &PyDbEvalVariant::copyFrom)
+        .def("getType", &PyDbEvalVariant::getType)
         //operators
         .def("__eq__", &PyDbEvalVariant::operator==)
         .def("__ne__", &PyDbEvalVariant::operator!=)
@@ -210,17 +211,26 @@ std::string PyDbEvalVariant::getString()
 PyDbObjectId PyDbEvalVariant::getObjectId()
 {
     PyDbObjectId val;
-    if (impObj()->restype != RTENAME)
-        throw PyAcadErrorStatus(eInvalidInput);
-    if (auto es = acdbGetObjectId(val.m_id, impObj()->resval.rlname); es != eOk)
-        throw PyAcadErrorStatus(es);
+    switch (impObj()->getType())
+    {
+        case AcDb::kDwgHardOwnershipId:
+        case AcDb::kDwgSoftOwnershipId:
+        case AcDb::kDwgHardPointerId:
+        case AcDb::kDwgSoftPointerId:
+            if (auto es = acdbGetObjectId(val.m_id, impObj()->resval.rlname); es != eOk)
+                throw PyAcadErrorStatus(es);
+            break;
+        default:
+            throw PyAcadErrorStatus(eInvalidInput);
+    }
     return val;
 }
 
 AcGePoint2d PyDbEvalVariant::getPoint2d()
 {
     AcGePoint2d val;
-    if (impObj()->restype != RTPOINT)
+    int restype = impObj()->restype;
+    if (restype != RTPOINT)
         throw PyAcadErrorStatus(eInvalidInput);
     val[0] = impObj()->resval.rpoint[0];
     val[1] = impObj()->resval.rpoint[1];
@@ -243,6 +253,11 @@ void PyDbEvalVariant::clear()
 Acad::ErrorStatus PyDbEvalVariant::copyFrom(const PyRxObject& pOther)
 {
     return impObj()->copyFrom(pOther.impObj());
+}
+
+AcDb::DwgDataType PyDbEvalVariant::getType() const
+{
+    return impObj()->getType();
 }
 
 PyRxClass PyDbEvalVariant::desc()

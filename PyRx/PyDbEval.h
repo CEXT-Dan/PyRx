@@ -4,6 +4,8 @@
 class PyDbObjectId;
 //-----------------------------------------------------------------------------------------
 //PyDbEvalVariant
+
+//AcDb::DwgDataType doesn't have a point2d option
 void makePyDbEvalVariantWrapper();
 
 class PyDbEvalVariant : public PyRxObject
@@ -49,6 +51,7 @@ public:
 
     void clear();
     Acad::ErrorStatus copyFrom(const PyRxObject& pOther);
+    AcDb::DwgDataType getType() const;
 
     static PyRxClass desc();
     static std::string className();
@@ -56,3 +59,6 @@ public:
     AcDbEvalVariant* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+
+
+//AcDbDynBlockReferenceProperty
