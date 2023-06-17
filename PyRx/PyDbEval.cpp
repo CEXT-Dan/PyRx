@@ -277,3 +277,126 @@ AcDbEvalVariant* PyDbEvalVariant::impObj(const std::source_location& src /*= std
     return static_cast<AcDbEvalVariant*>(m_pyImp.get());
 }
 
+//-----------------------------------------------------------------------------------------
+//PyDbDynBlockReferenceProperty
+void makePyDbDynBlockReferencePropertyWrapper()
+{
+    class_<PyDbDynBlockReferenceProperty>("DynBlockReferenceProperty")
+        .def(init<>())
+        .def("blockId", &PyDbDynBlockReferenceProperty::blockId)
+        .def("propertyName", &PyDbDynBlockReferenceProperty::propertyName)
+        .def("propertyType", &PyDbDynBlockReferenceProperty::propertyType)
+        .def("readOnly", &PyDbDynBlockReferenceProperty::readOnly)
+        .def("show", &PyDbDynBlockReferenceProperty::show)
+        .def("visibleInCurrentVisibilityState", &PyDbDynBlockReferenceProperty::visibleInCurrentVisibilityState)
+        .def("description", &PyDbDynBlockReferenceProperty::description)
+        .def("unitsType", &PyDbDynBlockReferenceProperty::unitsType)
+        .def("getAllowedValues", &PyDbDynBlockReferenceProperty::getAllowedValues)
+        .def("value", &PyDbDynBlockReferenceProperty::value)
+        .def("setValue", &PyDbDynBlockReferenceProperty::setValue)
+        //operators
+        .def("__eq__", &PyDbDynBlockReferenceProperty::operator==)
+        //static
+        .def("className", &PyDbDynBlockReferenceProperty::className).staticmethod("className")
+        ;
+    enum_<AcDbDynBlockReferenceProperty::UnitsType>("DynUnitsType")
+        .value("kNoUnits", AcDbDynBlockReferenceProperty::UnitsType::kNoUnits)
+        .value("kAngular", AcDbDynBlockReferenceProperty::UnitsType::kAngular)
+        .value("kDistance", AcDbDynBlockReferenceProperty::UnitsType::kDistance)
+        .value("kArea", AcDbDynBlockReferenceProperty::UnitsType::kArea)
+        .export_values()
+        ;
+}
+
+PyDbDynBlockReferenceProperty::PyDbDynBlockReferenceProperty()
+    : m_pyImp(new AcDbDynBlockReferenceProperty())
+{
+}
+
+PyDbDynBlockReferenceProperty::PyDbDynBlockReferenceProperty(const AcDbDynBlockReferenceProperty& other)
+    : m_pyImp(new AcDbDynBlockReferenceProperty(other))
+{
+}
+
+bool PyDbDynBlockReferenceProperty::operator==(const PyDbDynBlockReferenceProperty& other)
+{
+    return impObj()->blockId() == other.impObj()->blockId();
+}
+
+PyDbObjectId PyDbDynBlockReferenceProperty::blockId() const
+{
+    return PyDbObjectId(impObj()->blockId());
+}
+
+std::string PyDbDynBlockReferenceProperty::propertyName() const
+{
+    return wstr_to_utf8(impObj()->propertyName());
+}
+
+AcDb::DwgDataType PyDbDynBlockReferenceProperty::propertyType() const
+{
+    return impObj()->propertyType();
+}
+
+bool PyDbDynBlockReferenceProperty::readOnly() const
+{
+    return impObj()->readOnly();
+}
+
+bool PyDbDynBlockReferenceProperty::show() const
+{
+    return impObj()->show();
+}
+
+bool PyDbDynBlockReferenceProperty::visibleInCurrentVisibilityState() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->visibleInCurrentVisibilityState();
+#endif
+}
+
+std::string PyDbDynBlockReferenceProperty::description() const
+{
+    return wstr_to_utf8(impObj()->description());
+}
+
+AcDbDynBlockReferenceProperty::UnitsType PyDbDynBlockReferenceProperty::unitsType() const
+{
+    return impObj()->unitsType();
+}
+
+boost::python::list PyDbDynBlockReferenceProperty::getAllowedValues()
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    AcDbEvalVariantArray values;
+    if (auto es = impObj()->getAllowedValues(values); es != eOk)
+        throw PyAcadErrorStatus(es);
+    for (const auto item : values)
+        pyList.append(PyDbEvalVariant(item));
+    return pyList;
+}
+
+PyDbEvalVariant PyDbDynBlockReferenceProperty::value() const
+{
+    return PyDbEvalVariant(impObj()->value());
+}
+
+Acad::ErrorStatus PyDbDynBlockReferenceProperty::setValue(const PyDbEvalVariant& value)
+{
+    return impObj()->setValue(*value.impObj());
+}
+
+std::string PyDbDynBlockReferenceProperty::className()
+{
+    return "AcDbDynBlockReferenceProperty";
+}
+
+AcDbDynBlockReferenceProperty* PyDbDynBlockReferenceProperty::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr)
+        throw PyNullObject(src);
+    return static_cast<AcDbDynBlockReferenceProperty*>(m_pyImp.get());
+}

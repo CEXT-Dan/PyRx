@@ -178,6 +178,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyTransaction();
 
     makePyDbEvalVariantWrapper();
+    makePyDbDynBlockReferencePropertyWrapper();
 
     makeDbCoreWrapper();//LAST
 

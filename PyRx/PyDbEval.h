@@ -60,5 +60,33 @@ public:
 };
 
 
+//-----------------------------------------------------------------------------------------
+//PyDbDynBlockReferenceProperty
+void makePyDbDynBlockReferencePropertyWrapper();
 
-//AcDbDynBlockReferenceProperty
+class PyDbDynBlockReferenceProperty
+{
+public:
+    PyDbDynBlockReferenceProperty();
+    PyDbDynBlockReferenceProperty(const AcDbDynBlockReferenceProperty& other);
+
+    bool operator==(const PyDbDynBlockReferenceProperty& other);
+
+    PyDbObjectId          blockId() const;
+    std::string           propertyName() const;
+    AcDb::DwgDataType     propertyType() const;
+    bool                  readOnly() const;
+    bool                  show() const;
+    bool                  visibleInCurrentVisibilityState() const;
+    std::string           description()    const;
+    AcDbDynBlockReferenceProperty::UnitsType unitsType() const;
+    boost::python::list   getAllowedValues();
+    PyDbEvalVariant       value() const;
+    Acad::ErrorStatus     setValue(const PyDbEvalVariant& value);
+
+    static std::string className();
+public:
+    AcDbDynBlockReferenceProperty* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    std::shared_ptr<AcDbDynBlockReferenceProperty> m_pyImp;
+};
