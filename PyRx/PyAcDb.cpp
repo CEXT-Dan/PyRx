@@ -207,7 +207,6 @@ BOOST_PYTHON_MODULE(PyDb)
         .value("kDwgNotRecognized", AcDb::DwgDataType::kDwgNotRecognized)
         .export_values()
         ;
-
     enum_<AcDb::Intersect>("Intersect")
         .value("kOnBothOperands", AcDb::Intersect::kOnBothOperands)
         .value("kExtendThis", AcDb::Intersect::kExtendThis)
