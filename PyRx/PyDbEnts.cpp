@@ -6,6 +6,8 @@
 #include "PyGeCurve2d.h"
 #include "PyGeCurve3d.h"
 #include "PyDbMText.h"
+#include "PyDbEval.h"
+
 using namespace boost::python;
 //-----------------------------------------------------------------------------------
 //PyDbText
@@ -1009,14 +1011,12 @@ PyDbObjectId PyDbDynBlockReference::anonymousBlockTableRecord() const
 
 boost::python::list PyDbDynBlockReference::getBlockProperties() const
 {
-    throw PyAcadErrorStatus(eNotImplementedYet);
-    //
     PyAutoLockGIL lock;
     boost::python::list pyList;
     AcDbDynBlockReferencePropertyArray properties;
     impObj()->getBlockProperties(properties);
     for (const auto& item : properties)
-        pyList.append(item);
+        pyList.append(PyDbDynBlockReferenceProperty(item));
     return pyList;
 }
 

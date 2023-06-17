@@ -73,7 +73,7 @@ class TestPyDbEvalVariant(unittest.TestCase):
 def PyRxCmd_pydbeval(): 
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestPyDbEvalVariant)
-        print('TestDatabase')
+        print('TestDbEval')
         print(unittest.TextTestRunner(verbosity=0).run(suite))
     except Exception as err:
         PyRxApp.Printf(err)
