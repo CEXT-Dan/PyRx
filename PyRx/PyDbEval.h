@@ -1,6 +1,7 @@
 #pragma once
 #include "PyRxObject.h"
 
+class AcRxValue;
 class PyDbObjectId;
 //-----------------------------------------------------------------------------------------
 //PyDbEvalVariant
@@ -59,7 +60,6 @@ public:
     AcDbEvalVariant* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
 //-----------------------------------------------------------------------------------------
 //PyDbDynBlockReferenceProperty
 void makePyDbDynBlockReferencePropertyWrapper();
@@ -90,3 +90,4 @@ public:
 public:
     std::shared_ptr<AcDbDynBlockReferenceProperty> m_pyImp;
 };
+
