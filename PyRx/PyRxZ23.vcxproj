@@ -157,6 +157,7 @@
     <ClCompile Include="PyDbIdMapping.cpp" />
     <ClCompile Include="PyDbImage.cpp" />
     <ClCompile Include="PyDbLayerTableRecord.cpp" />
+    <ClCompile Include="PyDbLayout.cpp" />
     <ClCompile Include="PyDbLeader.cpp" />
     <ClCompile Include="PyDbMline.cpp" />
     <ClCompile Include="PyDbMText.cpp" />
@@ -245,6 +246,7 @@
     <ClInclude Include="PyDbIdMapping.h" />
     <ClInclude Include="PyDbImage.h" />
     <ClInclude Include="PyDbLayerTableRecord.h" />
+    <ClInclude Include="PyDbLayout.h" />
     <ClInclude Include="PyDbLeader.h" />
     <ClInclude Include="PyDbMline.h" />
     <ClInclude Include="PyDbMText.h" />
