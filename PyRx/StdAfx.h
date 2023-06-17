@@ -260,7 +260,7 @@ public:
     WxPyAutoLock(const WxPyAutoLock&) = delete;
     WxPyAutoLock& operator=(const WxPyAutoLock&) = delete;
 
-    wxPyBlock_t blocked{};
+    wxPyBlock_t blocked = PyGILState_UNLOCKED;
     inline static bool canLock = false;
 };
 
@@ -282,7 +282,7 @@ struct PyAutoLockGIL
     PyAutoLockGIL(const PyAutoLockGIL&) = delete;
     PyAutoLockGIL& operator=(const PyAutoLockGIL&) = delete;
 
-    PyGILState_STATE gstate{};
+    PyGILState_STATE gstate = PyGILState_UNLOCKED;
     inline static bool canLock = false;
 };
 
