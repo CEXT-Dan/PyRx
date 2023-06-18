@@ -15,7 +15,7 @@ void makeAcDbHostApplicationServicesWrapper()
         .def("findFile", &PyDbHostApplicationServices::findFile2)
         .def("findFile", &PyDbHostApplicationServices::findFile3)
         .def("product", &PyDbHostApplicationServices::product)
-        .def("dbLayoutManager", &PyDbHostApplicationServices::dbLayoutManager)
+        .def("LayoutManager", &PyDbHostApplicationServices::dbLayoutManager)
         ;
 
     enum_<AcDbHostApplicationServices::FindFileHint>("FindFileHint")
