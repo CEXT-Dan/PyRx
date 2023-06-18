@@ -34,10 +34,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -57,58 +57,58 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kAngle (self, *args, **kwargs):
+    def kAngle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDottedPair (self, *args, **kwargs):
+    def kDottedPair (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDouble (self, *args, **kwargs):
+    def kDouble (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kInt16 (self, *args, **kwargs):
+    def kInt16 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kInt32 (self, *args, **kwargs):
+    def kInt32 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kListBegin (self, *args, **kwargs):
+    def kListBegin (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kListEnd (self, *args, **kwargs):
+    def kListEnd (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kNil (self, *args, **kwargs):
+    def kNil (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kNone (self, *args, **kwargs):
+    def kNone (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kObjectId (self, *args, **kwargs):
+    def kObjectId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kOrientation (self, *args, **kwargs):
+    def kOrientation (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPoint2d (self, *args, **kwargs):
+    def kPoint2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPoint3d (self, *args, **kwargs):
+    def kPoint3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kT_atom (self, *args, **kwargs):
+    def kT_atom (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kText (self, *args, **kwargs):
+    def kText (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kVoid (self, *args, **kwargs):
+    def kVoid (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -125,10 +125,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -164,7 +164,7 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class Overrule:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -236,7 +236,7 @@ This class cannot be instantiated from Python'''
     ...
 
 class RxClass:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -284,7 +284,7 @@ This class cannot be instantiated from Python'''
     ...
 
 class RxObject:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...

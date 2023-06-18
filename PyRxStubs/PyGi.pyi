@@ -34,10 +34,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -57,19 +57,19 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kAcGiArcChord (self, *args, **kwargs):
+    def kAcGiArcChord (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAcGiArcSector (self, *args, **kwargs):
+    def kAcGiArcSector (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAcGiArcSimple (self, *args, **kwargs):
+    def kAcGiArcSimple (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -86,10 +86,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -159,10 +159,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -182,16 +182,16 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kAcGiFillAlways (self, *args, **kwargs):
+    def kAcGiFillAlways (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAcGiFillNever (self, *args, **kwargs):
+    def kAcGiFillNever (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -208,10 +208,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -281,10 +281,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -304,19 +304,19 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kAcGiScreenOrientation (self, *args, **kwargs):
+    def kAcGiScreenOrientation (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAcGiWorldOrientation (self, *args, **kwargs):
+    def kAcGiWorldOrientation (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAcGiZAxisOrientation (self, *args, **kwargs):
+    def kAcGiZAxisOrientation (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -333,10 +333,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -406,10 +406,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -429,19 +429,19 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kAcGiClockwise (self, *args, **kwargs):
+    def kAcGiClockwise (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAcGiCounterClockwise (self, *args, **kwargs):
+    def kAcGiCounterClockwise (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAcGiNoOrientation (self, *args, **kwargs):
+    def kAcGiNoOrientation (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -458,10 +458,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -531,10 +531,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -554,25 +554,25 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kAcGiScreenLocalOriginPosition (self, *args, **kwargs):
+    def kAcGiScreenLocalOriginPosition (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAcGiScreenPosition (self, *args, **kwargs):
+    def kAcGiScreenPosition (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAcGiViewportPosition (self, *args, **kwargs):
+    def kAcGiViewportPosition (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAcGiWorldPosition (self, *args, **kwargs):
+    def kAcGiWorldPosition (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAcGiWorldWithScreenOffsetPosition (self, *args, **kwargs):
+    def kAcGiWorldWithScreenOffsetPosition (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -589,10 +589,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -662,10 +662,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -685,25 +685,25 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kAcGiScreenLocalOriginScale (self, *args, **kwargs):
+    def kAcGiScreenLocalOriginScale (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAcGiScreenScale (self, *args, **kwargs):
+    def kAcGiScreenScale (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAcGiViewportLocalOriginScale (self, *args, **kwargs):
+    def kAcGiViewportLocalOriginScale (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAcGiViewportScale (self, *args, **kwargs):
+    def kAcGiViewportScale (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAcGiWorldScale (self, *args, **kwargs):
+    def kAcGiWorldScale (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -720,10 +720,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -793,10 +793,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -816,19 +816,19 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kAcGiInvisible (self, *args, **kwargs):
+    def kAcGiInvisible (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAcGiSilhouette (self, *args, **kwargs):
+    def kAcGiSilhouette (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAcGiVisible (self, *args, **kwargs):
+    def kAcGiVisible (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -845,10 +845,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -884,7 +884,7 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class CommonDraw:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -926,7 +926,7 @@ This class cannot be instantiated from Python'''
     ...
 
 class DrawFlags:
-    def KDrawIsInWCS (self, *args, **kwargs):
+    def KDrawIsInWCS (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def __init__ (self, /, *args, **kwargs):
@@ -963,10 +963,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -986,46 +986,46 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kDrawFillSelectionWindow (self, *args, **kwargs):
+    def kDrawFillSelectionWindow (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDrawFillTextBoundaryEnd (self, *args, **kwargs):
+    def kDrawFillTextBoundaryEnd (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDrawFillTextBoundaryStart (self, *args, **kwargs):
+    def kDrawFillTextBoundaryStart (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDrawFrontfacesOnly (self, *args, **kwargs):
+    def kDrawFrontfacesOnly (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDrawGradientFill (self, *args, **kwargs):
+    def kDrawGradientFill (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDrawHatchGroup (self, *args, **kwargs):
+    def kDrawHatchGroup (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDrawNoForceByLayer (self, *args, **kwargs):
+    def kDrawNoForceByLayer (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDrawNoLineWeight (self, *args, **kwargs):
+    def kDrawNoLineWeight (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDrawNoOptimization (self, *args, **kwargs):
+    def kDrawNoOptimization (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDrawSolidFill (self, *args, **kwargs):
+    def kDrawSolidFill (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDrawUseAcGiEntityForDgnLineType (self, *args, **kwargs):
+    def kDrawUseAcGiEntityForDgnLineType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kNoDrawFlags (self, *args, **kwargs):
+    def kNoDrawFlags (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -1042,10 +1042,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -1081,7 +1081,7 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class Drawable:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -1233,7 +1233,7 @@ class DrawableOverrule:
     ...
 
 class DrawableTraits:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -1477,7 +1477,7 @@ setPlotStyleName( (SubEntityTraits)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3
     ...
 
 class Geometry:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -1717,10 +1717,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -1740,16 +1740,16 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kNoSelectionFlags (self, *args, **kwargs):
+    def kNoSelectionFlags (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kSelectionIgnore (self, *args, **kwargs):
+    def kSelectionIgnore (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -1766,10 +1766,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -1839,10 +1839,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -1862,22 +1862,22 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kNoDrawFlags (self, *args, **kwargs):
+    def kNoDrawFlags (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kShadowsDoesNotCast (self, *args, **kwargs):
+    def kShadowsDoesNotCast (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kShadowsDoesNotReceive (self, *args, **kwargs):
+    def kShadowsDoesNotReceive (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kShadowsIgnore (self, *args, **kwargs):
+    def kShadowsIgnore (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -1894,10 +1894,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -1933,7 +1933,7 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class SubEntityTraits:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -2211,10 +2211,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -2234,19 +2234,19 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kTransparency1Bit (self, *args, **kwargs):
+    def kTransparency1Bit (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTransparency8Bit (self, *args, **kwargs):
+    def kTransparency8Bit (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTransparencyOff (self, *args, **kwargs):
+    def kTransparencyOff (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -2263,10 +2263,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -2302,7 +2302,7 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class ViewportDraw:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -2350,7 +2350,7 @@ This class cannot be instantiated from Python'''
     ...
 
 class ViewportGeometry:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -2556,7 +2556,7 @@ pushScaleTransform( (Geometry)arg1, (AcGiScaleTransformBehavior)arg2, (Point2d)a
     ...
 
 class WorldDraw:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -2604,7 +2604,7 @@ This class cannot be instantiated from Python'''
     ...
 
 class WorldGeometry:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...

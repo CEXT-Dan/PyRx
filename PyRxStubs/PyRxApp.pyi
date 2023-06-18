@@ -1,6 +1,6 @@
 
 function Printf:
-    def Printf (*args, **kwargs):
+    def Printf (*args, **kwargs)-> None:
       '''Wraps acutPrintf 
 Sends a string to the command line'''
     ...

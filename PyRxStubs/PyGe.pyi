@@ -34,10 +34,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -57,46 +57,46 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def k0Arg1 (self, *args, **kwargs):
+    def k0Arg1 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k0Arg2 (self, *args, **kwargs):
+    def k0Arg2 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k0This (self, *args, **kwargs):
+    def k0This (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kArg1InsideThis (self, *args, **kwargs):
+    def kArg1InsideThis (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kArg1OnThis (self, *args, **kwargs):
+    def kArg1OnThis (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kArg1TooBig (self, *args, **kwargs):
+    def kArg1TooBig (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kEqualArg1Arg2 (self, *args, **kwargs):
+    def kEqualArg1Arg2 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kEqualArg1Arg3 (self, *args, **kwargs):
+    def kEqualArg1Arg3 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kEqualArg2Arg3 (self, *args, **kwargs):
+    def kEqualArg2Arg3 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLinearlyDependentArg1Arg2Arg3 (self, *args, **kwargs):
+    def kLinearlyDependentArg1Arg2Arg3 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kOk (self, *args, **kwargs):
+    def kOk (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPerpendicularArg1Arg2 (self, *args, **kwargs):
+    def kPerpendicularArg1Arg2 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -113,10 +113,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -3860,7 +3860,7 @@ setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
     ...
 
 class Curve2d:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -4255,7 +4255,7 @@ setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
     ...
 
 class Curve3d:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -4958,7 +4958,7 @@ scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
     ...
 
 class CurveSurfInt:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -6284,7 +6284,7 @@ setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
     ...
 
 class Entity2d:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -6382,7 +6382,7 @@ scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
     ...
 
 class Entity3d:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -6475,7 +6475,7 @@ scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
     ...
 
 class EntityId:
-    def Helix (self, *args, **kwargs):
+    def Helix (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def __init__ (self, /, *args, **kwargs):
@@ -6512,10 +6512,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -6535,250 +6535,250 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kAugPolyline2d (self, *args, **kwargs):
+    def kAugPolyline2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAugPolyline3d (self, *args, **kwargs):
+    def kAugPolyline3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBezierCurve3d (self, *args, **kwargs):
+    def kBezierCurve3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBoundBlock2d (self, *args, **kwargs):
+    def kBoundBlock2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBoundBlock3d (self, *args, **kwargs):
+    def kBoundBlock3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBoundedPlane (self, *args, **kwargs):
+    def kBoundedPlane (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCircArc2d (self, *args, **kwargs):
+    def kCircArc2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCircArc3d (self, *args, **kwargs):
+    def kCircArc3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kClipBoundary2d (self, *args, **kwargs):
+    def kClipBoundary2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCompositeCrv2d (self, *args, **kwargs):
+    def kCompositeCrv2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCompositeCrv3d (self, *args, **kwargs):
+    def kCompositeCrv3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCone (self, *args, **kwargs):
+    def kCone (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kConic2d (self, *args, **kwargs):
+    def kConic2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kConic3d (self, *args, **kwargs):
+    def kConic3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCubicSplineCurve2d (self, *args, **kwargs):
+    def kCubicSplineCurve2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCubicSplineCurve3d (self, *args, **kwargs):
+    def kCubicSplineCurve3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCurve2d (self, *args, **kwargs):
+    def kCurve2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCurve3d (self, *args, **kwargs):
+    def kCurve3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCurveBoundedSurface (self, *args, **kwargs):
+    def kCurveBoundedSurface (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCurveCurveInt2d (self, *args, **kwargs):
+    def kCurveCurveInt2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCurveCurveInt3d (self, *args, **kwargs):
+    def kCurveCurveInt3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCurveSampleData (self, *args, **kwargs):
+    def kCurveSampleData (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCurveSurfaceInt (self, *args, **kwargs):
+    def kCurveSurfaceInt (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCylinder (self, *args, **kwargs):
+    def kCylinder (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDSpline2d (self, *args, **kwargs):
+    def kDSpline2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDSpline3d (self, *args, **kwargs):
+    def kDSpline3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kEllipArc2d (self, *args, **kwargs):
+    def kEllipArc2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kEllipArc3d (self, *args, **kwargs):
+    def kEllipArc3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kEllipCone (self, *args, **kwargs):
+    def kEllipCone (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kEllipCylinder (self, *args, **kwargs):
+    def kEllipCylinder (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kEntity2d (self, *args, **kwargs):
+    def kEntity2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kEntity3d (self, *args, **kwargs):
+    def kEntity3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kEnvelope2d (self, *args, **kwargs):
+    def kEnvelope2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kExternalBoundedSurface (self, *args, **kwargs):
+    def kExternalBoundedSurface (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kExternalCurve2d (self, *args, **kwargs):
+    def kExternalCurve2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kExternalCurve3d (self, *args, **kwargs):
+    def kExternalCurve3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kExternalObject (self, *args, **kwargs):
+    def kExternalObject (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kExternalSurface (self, *args, **kwargs):
+    def kExternalSurface (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kFitData3d (self, *args, **kwargs):
+    def kFitData3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kHatch (self, *args, **kwargs):
+    def kHatch (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kIntervalBoundBlock (self, *args, **kwargs):
+    def kIntervalBoundBlock (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLine2d (self, *args, **kwargs):
+    def kLine2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLine3d (self, *args, **kwargs):
+    def kLine3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLineSeg2d (self, *args, **kwargs):
+    def kLineSeg2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLineSeg3d (self, *args, **kwargs):
+    def kLineSeg3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLinearEnt2d (self, *args, **kwargs):
+    def kLinearEnt2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLinearEnt3d (self, *args, **kwargs):
+    def kLinearEnt3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kNurbCurve2d (self, *args, **kwargs):
+    def kNurbCurve2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kNurbCurve3d (self, *args, **kwargs):
+    def kNurbCurve3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kNurbSurface (self, *args, **kwargs):
+    def kNurbSurface (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kObject (self, *args, **kwargs):
+    def kObject (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kOffsetCurve2d (self, *args, **kwargs):
+    def kOffsetCurve2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kOffsetCurve3d (self, *args, **kwargs):
+    def kOffsetCurve3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kOffsetSurface (self, *args, **kwargs):
+    def kOffsetSurface (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPlanarEnt (self, *args, **kwargs):
+    def kPlanarEnt (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPlane (self, *args, **kwargs):
+    def kPlane (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPointEnt2d (self, *args, **kwargs):
+    def kPointEnt2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPointEnt3d (self, *args, **kwargs):
+    def kPointEnt3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPointOnCurve2d (self, *args, **kwargs):
+    def kPointOnCurve2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPointOnCurve3d (self, *args, **kwargs):
+    def kPointOnCurve3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPointOnSurface (self, *args, **kwargs):
+    def kPointOnSurface (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPolyline2d (self, *args, **kwargs):
+    def kPolyline2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPolyline3d (self, *args, **kwargs):
+    def kPolyline3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPolynomCurve3d (self, *args, **kwargs):
+    def kPolynomCurve3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPosition2d (self, *args, **kwargs):
+    def kPosition2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPosition3d (self, *args, **kwargs):
+    def kPosition3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kRay2d (self, *args, **kwargs):
+    def kRay2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kRay3d (self, *args, **kwargs):
+    def kRay3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kSphere (self, *args, **kwargs):
+    def kSphere (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kSplineEnt2d (self, *args, **kwargs):
+    def kSplineEnt2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kSplineEnt3d (self, *args, **kwargs):
+    def kSplineEnt3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kSurface (self, *args, **kwargs):
+    def kSurface (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kSurfaceCurve2dTo3d (self, *args, **kwargs):
+    def kSurfaceCurve2dTo3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kSurfaceCurve3dTo2d (self, *args, **kwargs):
+    def kSurfaceCurve3dTo2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kSurfaceSurfaceInt (self, *args, **kwargs):
+    def kSurfaceSurfaceInt (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTorus (self, *args, **kwargs):
+    def kTorus (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTrimmedCrv2d (self, *args, **kwargs):
+    def kTrimmedCrv2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTrimmedCurve2d (self, *args, **kwargs):
+    def kTrimmedCurve2d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTrimmedCurve3d (self, *args, **kwargs):
+    def kTrimmedCurve3d (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTrimmedSurface (self, *args, **kwargs):
+    def kTrimmedSurface (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -6795,10 +6795,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -6834,7 +6834,7 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class ExternalCurve2d:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -7229,7 +7229,7 @@ setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
     ...
 
 class ExternalCurve3d:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -8100,10 +8100,10 @@ isPerpendicularTo( (LinearEnt2d)arg1, (LinearEnt2d)arg2, (Tol)arg3) -> bool :
     C++ signature :
         bool isPerpendicularTo(class PyGeLinearEnt2d {lvalue},class PyGeLinearEnt2d,class AcGeTol)'''
     ...
-    def kXAxis (self, *args, **kwargs):
+    def kXAxis (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kYAxis (self, *args, **kwargs):
+    def kYAxis (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def length (self, *args, **kwargs)-> float :
@@ -8677,13 +8677,13 @@ isPlanar( (Curve3d)arg1, (Tol)arg2) -> tuple :
     C++ signature :
         class boost::python::tuple isPlanar(class PyGeCurve3d {lvalue},class AcGeTol)'''
     ...
-    def kXAxis (self, *args, **kwargs):
+    def kXAxis (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kYAxis (self, *args, **kwargs):
+    def kYAxis (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kZAxis (self, *args, **kwargs):
+    def kZAxis (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def length (self, *args, **kwargs)-> float :
@@ -10086,7 +10086,7 @@ setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
     ...
 
 class LinearEnt2d:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -10560,7 +10560,7 @@ setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
     ...
 
 class LinearEnt3d:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -11207,16 +11207,16 @@ class Matrix2d:
         bool isConformal(class AcGeMatrix2d {lvalue},double {lvalue},double {lvalue},bool {lvalue},class AcGeVector2d {lvalue})'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Matrix2d)arg1, (Matrix2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000219B1E41510>]) -> bool :
+      '''isEqualTo( (Matrix2d)arg1, (Matrix2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002191E9F5510>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeMatrix2d {lvalue},class AcGeMatrix2d [,class AcGeTol=<PyGe.Tol object at 0x00000219B1E41510>])'''
+        bool isEqualTo(class AcGeMatrix2d {lvalue},class AcGeMatrix2d [,class AcGeTol=<PyGe.Tol object at 0x000002191E9F5510>])'''
     ...
     def isScaledOrtho (self, *args, **kwargs)-> bool :
-      '''isScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000219B1E41630>]) -> bool :
+      '''isScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002191E9F5630>]) -> bool :
 
     C++ signature :
-        bool isScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000219B1E41630>])'''
+        bool isScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002191E9F5630>])'''
     ...
     def isSingular (self, *args, **kwargs)-> bool :
       '''isSingular( (Matrix2d)arg1, (Tol)arg2) -> bool :
@@ -11225,12 +11225,12 @@ class Matrix2d:
         bool isSingular(class AcGeMatrix2d {lvalue},class AcGeTol)'''
     ...
     def isUniScaledOrtho (self, *args, **kwargs)-> bool :
-      '''isUniScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000219B1E415A0>]) -> bool :
+      '''isUniScaledOrtho( (Matrix2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002191E9F55A0>]) -> bool :
 
     C++ signature :
-        bool isUniScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000219B1E415A0>])'''
+        bool isUniScaledOrtho(class AcGeMatrix2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002191E9F55A0>])'''
     ...
-    def kIdentity (self, *args, **kwargs):
+    def kIdentity (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def mirroring (self, *args, **kwargs)-> Matrix2d :
@@ -11475,7 +11475,7 @@ inverse( (Matrix3d)arg1, (Matrix3d)arg2, (float)arg3) -> bool :
     C++ signature :
         bool isUniScaledOrtho(class AcGeMatrix3d {lvalue},class AcGeTol)'''
     ...
-    def kIdentity (self, *args, **kwargs):
+    def kIdentity (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def mirroring (self, *args, **kwargs)-> Matrix3d :
@@ -12800,10 +12800,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -12823,19 +12823,19 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kChamfer (self, *args, **kwargs):
+    def kChamfer (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kExtend (self, *args, **kwargs):
+    def kExtend (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kFillet (self, *args, **kwargs):
+    def kFillet (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -12852,10 +12852,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -13768,7 +13768,7 @@ setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
     ...
 
 class PlanarEnt:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -14442,12 +14442,12 @@ __init__( (object)arg1, (float)arg2, (float)arg3) -> None :
         double distanceTo(class AcGePoint2d {lvalue},class AcGePoint2d)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Point2d)arg1, (Point2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000219B1E41000>]) -> bool :
+      '''isEqualTo( (Point2d)arg1, (Point2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002191E9F5000>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGePoint2d {lvalue},class AcGePoint2d [,class AcGeTol=<PyGe.Tol object at 0x00000219B1E41000>])'''
+        bool isEqualTo(class AcGePoint2d {lvalue},class AcGePoint2d [,class AcGeTol=<PyGe.Tol object at 0x000002191E9F5000>])'''
     ...
-    def kOrigin (self, *args, **kwargs):
+    def kOrigin (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def mirror (self, *args, **kwargs)-> Point2d :
@@ -14510,10 +14510,10 @@ __init__( (object)arg1, (float)arg2, (float)arg3) -> None :
     C++ signature :
         class AcGePoint2d {lvalue} transformBy(class AcGePoint2d {lvalue},class AcGeMatrix2d)'''
     ...
-    def x (self, *args, **kwargs):
+    def x (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def y (self, *args, **kwargs):
+    def y (self, *args, **kwargs)-> None:
       '''None'''
     ...
 
@@ -14540,12 +14540,12 @@ class Point3d:
         double distanceTo(class AcGePoint3d {lvalue},class AcGePoint3d)'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Point3d)arg1, (Point3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000219B1E416C0>]) -> bool :
+      '''isEqualTo( (Point3d)arg1, (Point3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002191E9F56C0>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGePoint3d {lvalue},class AcGePoint3d [,class AcGeTol=<PyGe.Tol object at 0x00000219B1E416C0>])'''
+        bool isEqualTo(class AcGePoint3d {lvalue},class AcGePoint3d [,class AcGeTol=<PyGe.Tol object at 0x000002191E9F56C0>])'''
     ...
-    def kOrigin (self, *args, **kwargs):
+    def kOrigin (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def mirror (self: Point3d,pln: Plane)-> Point3d :
@@ -14613,18 +14613,18 @@ set( (Point3d)arg1, (object)arg2, (Point2d)arg3) -> Point3d :
     def transformBy (self: Point3d,mat: Matrix3d)-> Point3d :
       '''                             '''
     ...
-    def x (self, *args, **kwargs):
+    def x (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def y (self, *args, **kwargs):
+    def y (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def z (self, *args, **kwargs):
+    def z (self, *args, **kwargs)-> None:
       '''None'''
     ...
 
 class PointEnt2d:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -14728,7 +14728,7 @@ scaleBy( (Entity2d)arg1, (float)arg2, (Point2d)arg3) -> Entity2d :
     ...
 
 class PointEnt3d:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -17652,10 +17652,10 @@ setToProduct( (Scale2d)arg1, (Scale2d)arg2, (Scale2d)arg3) -> Scale2d :
     C++ signature :
         class AcGeScale2d {lvalue} setToProduct(class AcGeScale2d {lvalue},class AcGeScale2d,class AcGeScale2d)'''
     ...
-    def sx (self, *args, **kwargs):
+    def sx (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def sy (self, *args, **kwargs):
+    def sy (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def toString (self, *args, **kwargs)-> str :
@@ -17695,13 +17695,13 @@ setToProduct( (Scale3d)arg1, (Scale3d)arg2, (Scale3d)arg3) -> Scale3d :
     C++ signature :
         class AcGeScale3d {lvalue} setToProduct(class AcGeScale3d {lvalue},class AcGeScale3d,class AcGeScale3d)'''
     ...
-    def sx (self, *args, **kwargs):
+    def sx (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def sy (self, *args, **kwargs):
+    def sy (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def sz (self, *args, **kwargs):
+    def sz (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def toString (self, *args, **kwargs)-> str :
@@ -17712,7 +17712,7 @@ setToProduct( (Scale3d)arg1, (Scale3d)arg2, (Scale3d)arg3) -> Scale3d :
     ...
 
 class SplineEnt2d:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -18208,7 +18208,7 @@ setInterval( (Curve2d)arg1, (Interval)arg2) -> bool :
     ...
 
 class SplineEnt3d:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -18787,7 +18787,7 @@ setInterval( (Curve3d)arg1, (Interval)arg2) -> bool :
     ...
 
 class SurfSurfInt:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -18880,7 +18880,7 @@ scaleBy( (Entity3d)arg1, (float)arg2, (Point3d)arg3) -> Entity3d :
     ...
 
 class Surface:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -19077,7 +19077,7 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def current (self, *args, **kwargs):
+    def current (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def equalPoint (self, *args, **kwargs)-> float :
@@ -19146,48 +19146,48 @@ __init__( (object)arg1, (float)arg2, (float)arg3) -> None :
         double dotProduct(class AcGeVector2d {lvalue},class AcGeVector2d)'''
     ...
     def isCodirectionalTo (self, *args, **kwargs)-> bool :
-      '''isCodirectionalTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000219B1E41360>]) -> bool :
+      '''isCodirectionalTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002191E9F5360>]) -> bool :
 
     C++ signature :
-        bool isCodirectionalTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x00000219B1E41360>])'''
+        bool isCodirectionalTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002191E9F5360>])'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000219B1E41480>]) -> bool :
+      '''isEqualTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002191E9F5480>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x00000219B1E41480>])'''
+        bool isEqualTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002191E9F5480>])'''
     ...
     def isParallelTo (self, *args, **kwargs)-> bool :
-      '''isParallelTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000219B1E412D0>]) -> bool :
+      '''isParallelTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002191E9F52D0>]) -> bool :
 
     C++ signature :
-        bool isParallelTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x00000219B1E412D0>])'''
+        bool isParallelTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002191E9F52D0>])'''
     ...
     def isPerpendicularTo (self, *args, **kwargs)-> bool :
-      '''isPerpendicularTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000219B1E413F0>]) -> bool :
+      '''isPerpendicularTo( (Vector2d)arg1, (Vector2d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002191E9F53F0>]) -> bool :
 
     C++ signature :
-        bool isPerpendicularTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x00000219B1E413F0>])'''
+        bool isPerpendicularTo(class AcGeVector2d {lvalue},class AcGeVector2d [,class AcGeTol=<PyGe.Tol object at 0x000002191E9F53F0>])'''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
-      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000219B1E411B0>]) -> bool :
+      '''isUnitLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002191E9F51B0>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000219B1E411B0>])'''
+        bool isUnitLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002191E9F51B0>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
-      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000219B1E41240>]) -> bool :
+      '''isZeroLength( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002191E9F5240>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000219B1E41240>])'''
+        bool isZeroLength(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002191E9F5240>])'''
     ...
-    def kIdentity (self, *args, **kwargs):
+    def kIdentity (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kXAxis (self, *args, **kwargs):
+    def kXAxis (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kYAxis (self, *args, **kwargs):
+    def kYAxis (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def length (self, *args, **kwargs)-> float :
@@ -19215,16 +19215,16 @@ __init__( (object)arg1, (float)arg2, (float)arg3) -> None :
         class AcGeVector2d {lvalue} negate(class AcGeVector2d {lvalue})'''
     ...
     def normal (self, *args, **kwargs)-> Vector2d :
-      '''normal( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000219B1E41090>]) -> Vector2d :
+      '''normal( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002191E9F5090>]) -> Vector2d :
 
     C++ signature :
-        class AcGeVector2d normal(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000219B1E41090>])'''
+        class AcGeVector2d normal(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002191E9F5090>])'''
     ...
     def normalize (self, *args, **kwargs)-> Vector2d :
-      '''normalize( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000219B1E41120>]) -> Vector2d :
+      '''normalize( (Vector2d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002191E9F5120>]) -> Vector2d :
 
     C++ signature :
-        class AcGeVector2d {lvalue} normalize(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000219B1E41120>])'''
+        class AcGeVector2d {lvalue} normalize(class AcGeVector2d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002191E9F5120>])'''
     ...
     def rotateBy (self, *args, **kwargs)-> Vector2d :
       '''rotateBy( (Vector2d)arg1, (float)arg2) -> Vector2d :
@@ -19267,10 +19267,10 @@ setToProduct( (Vector2d)arg1, (Matrix2d)arg2, (Vector2d)arg3) -> Vector2d :
     C++ signature :
         class AcGeVector2d {lvalue} transformBy(class AcGeVector2d {lvalue},class AcGeMatrix2d)'''
     ...
-    def x (self, *args, **kwargs):
+    def x (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def y (self, *args, **kwargs):
+    def y (self, *args, **kwargs)-> None:
       '''None'''
     ...
 
@@ -19337,51 +19337,51 @@ angleTo( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> float :
         double dotProduct(class AcGeVector3d {lvalue},class AcGeVector3d)'''
     ...
     def isCodirectionalTo (self, *args, **kwargs)-> bool :
-      '''isCodirectionalTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000219B1E41A20>]) -> bool :
+      '''isCodirectionalTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002191E9F5A20>]) -> bool :
 
     C++ signature :
-        bool isCodirectionalTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x00000219B1E41A20>])'''
+        bool isCodirectionalTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000002191E9F5A20>])'''
     ...
     def isEqualTo (self, *args, **kwargs)-> bool :
-      '''isEqualTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000219B1E41B40>]) -> bool :
+      '''isEqualTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002191E9F5B40>]) -> bool :
 
     C++ signature :
-        bool isEqualTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x00000219B1E41B40>])'''
+        bool isEqualTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000002191E9F5B40>])'''
     ...
     def isParallelTo (self, *args, **kwargs)-> bool :
-      '''isParallelTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000219B1E41990>]) -> bool :
+      '''isParallelTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002191E9F5990>]) -> bool :
 
     C++ signature :
-        bool isParallelTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x00000219B1E41990>])'''
+        bool isParallelTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000002191E9F5990>])'''
     ...
     def isPerpendicularTo (self, *args, **kwargs)-> bool :
-      '''isPerpendicularTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000219B1E41AB0>]) -> bool :
+      '''isPerpendicularTo( (Vector3d)arg1, (Vector3d)arg2 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002191E9F5AB0>]) -> bool :
 
     C++ signature :
-        bool isPerpendicularTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x00000219B1E41AB0>])'''
+        bool isPerpendicularTo(class AcGeVector3d {lvalue},class AcGeVector3d [,class AcGeTol=<PyGe.Tol object at 0x000002191E9F5AB0>])'''
     ...
     def isUnitLength (self, *args, **kwargs)-> bool :
-      '''isUnitLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000219B1E41870>]) -> bool :
+      '''isUnitLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002191E9F5870>]) -> bool :
 
     C++ signature :
-        bool isUnitLength(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000219B1E41870>])'''
+        bool isUnitLength(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002191E9F5870>])'''
     ...
     def isZeroLength (self, *args, **kwargs)-> bool :
-      '''isZeroLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000219B1E41900>]) -> bool :
+      '''isZeroLength( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002191E9F5900>]) -> bool :
 
     C++ signature :
-        bool isZeroLength(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000219B1E41900>])'''
+        bool isZeroLength(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002191E9F5900>])'''
     ...
-    def kIdentity (self, *args, **kwargs):
+    def kIdentity (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kXAxis (self, *args, **kwargs):
+    def kXAxis (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kYAxis (self, *args, **kwargs):
+    def kYAxis (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kZAxis (self, *args, **kwargs):
+    def kZAxis (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def largestElement (self, *args, **kwargs)-> int :
@@ -19415,16 +19415,16 @@ angleTo( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> float :
         class AcGeVector3d {lvalue} negate(class AcGeVector3d {lvalue})'''
     ...
     def normal (self, *args, **kwargs)-> Vector3d :
-      '''normal( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000219B1E417E0>]) -> Vector3d :
+      '''normal( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002191E9F57E0>]) -> Vector3d :
 
     C++ signature :
-        class AcGeVector3d normal(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000219B1E417E0>])'''
+        class AcGeVector3d normal(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002191E9F57E0>])'''
     ...
     def normalize (self, *args, **kwargs)-> Vector3d :
-      '''normalize( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x00000219B1E41750>]) -> Vector3d :
+      '''normalize( (Vector3d)arg1 [, (Tol)AcGeTol=<PyGe.Tol object at 0x000002191E9F5750>]) -> Vector3d :
 
     C++ signature :
-        class AcGeVector3d {lvalue} normalize(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x00000219B1E41750>])
+        class AcGeVector3d {lvalue} normalize(class AcGeVector3d {lvalue} [,class AcGeTol=<PyGe.Tol object at 0x000002191E9F5750>])
 
 normalize( (Vector3d)arg1, (Tol)arg2, (AcGeError)arg3) -> Vector3d :
 
@@ -19511,13 +19511,13 @@ setToProduct( (Vector3d)arg1, (Matrix3d)arg2, (Vector3d)arg3) -> Vector3d :
     C++ signature :
         class AcGeVector3d {lvalue} transformBy(class AcGeVector3d {lvalue},class AcGeMatrix3d)'''
     ...
-    def x (self, *args, **kwargs):
+    def x (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def y (self, *args, **kwargs):
+    def y (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def z (self, *args, **kwargs):
+    def z (self, *args, **kwargs)-> None:
       '''None'''
     ...
 

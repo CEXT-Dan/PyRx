@@ -34,10 +34,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -57,37 +57,37 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kACIbyBlock (self, *args, **kwargs):
+    def kACIbyBlock (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kACIbyLayer (self, *args, **kwargs):
+    def kACIbyLayer (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kACIclear (self, *args, **kwargs):
+    def kACIclear (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kACIforeground (self, *args, **kwargs):
+    def kACIforeground (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kACIfrozenLayer (self, *args, **kwargs):
+    def kACIfrozenLayer (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kACImaximum (self, *args, **kwargs):
+    def kACImaximum (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kACIminimum (self, *args, **kwargs):
+    def kACIminimum (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kACInone (self, *args, **kwargs):
+    def kACInone (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kACIstandard (self, *args, **kwargs):
+    def kACIstandard (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -104,10 +104,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -1534,10 +1534,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -1557,22 +1557,22 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kBlockRef (self, *args, **kwargs):
+    def kBlockRef (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kFcf (self, *args, **kwargs):
+    def kFcf (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMText (self, *args, **kwargs):
+    def kMText (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kNoAnno (self, *args, **kwargs):
+    def kNoAnno (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -1589,10 +1589,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -7522,10 +7522,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -7545,16 +7545,16 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kAny (self, *args, **kwargs):
+    def kAny (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUniform (self, *args, **kwargs):
+    def kUniform (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -7571,10 +7571,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -8266,10 +8266,10 @@ class Cell:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def column (self, *args, **kwargs):
+    def column (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def row (self, *args, **kwargs):
+    def row (self, *args, **kwargs)-> None:
       '''None'''
     ...
 
@@ -8308,10 +8308,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -8331,37 +8331,37 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kBottomCenter (self, *args, **kwargs):
+    def kBottomCenter (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBottomLeft (self, *args, **kwargs):
+    def kBottomLeft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBottomRight (self, *args, **kwargs):
+    def kBottomRight (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMiddleCenter (self, *args, **kwargs):
+    def kMiddleCenter (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMiddleLeft (self, *args, **kwargs):
+    def kMiddleLeft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMiddleRight (self, *args, **kwargs):
+    def kMiddleRight (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTopCenter (self, *args, **kwargs):
+    def kTopCenter (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTopLeft (self, *args, **kwargs):
+    def kTopLeft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTopRight (self, *args, **kwargs):
+    def kTopRight (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -8378,10 +8378,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -8451,10 +8451,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -8474,19 +8474,19 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kCellContentLayoutStackedHorizontal (self, *args, **kwargs):
+    def kCellContentLayoutStackedHorizontal (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellContentLayoutStackedVertical (self, *args, **kwargs):
+    def kCellContentLayoutStackedVertical (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellStateNone (self, *args, **kwargs):
+    def kCellStateNone (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -8503,10 +8503,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -8576,10 +8576,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -8599,22 +8599,22 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kCellContentTypeBlock (self, *args, **kwargs):
+    def kCellContentTypeBlock (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellContentTypeField (self, *args, **kwargs):
+    def kCellContentTypeField (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellContentTypeUnknown (self, *args, **kwargs):
+    def kCellContentTypeUnknown (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellContentTypeValue (self, *args, **kwargs):
+    def kCellContentTypeValue (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -8631,10 +8631,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -8704,10 +8704,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -8727,22 +8727,22 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kBottomMask (self, *args, **kwargs):
+    def kBottomMask (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLeftMask (self, *args, **kwargs):
+    def kLeftMask (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kRightMask (self, *args, **kwargs):
+    def kRightMask (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTopMask (self, *args, **kwargs):
+    def kTopMask (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -8759,10 +8759,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -8832,10 +8832,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -8855,28 +8855,28 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kCellMarginBottom (self, *args, **kwargs):
+    def kCellMarginBottom (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellMarginHorzSpacing (self, *args, **kwargs):
+    def kCellMarginHorzSpacing (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellMarginLeft (self, *args, **kwargs):
+    def kCellMarginLeft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellMarginRight (self, *args, **kwargs):
+    def kCellMarginRight (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellMarginTop (self, *args, **kwargs):
+    def kCellMarginTop (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellMarginVertSpacing (self, *args, **kwargs):
+    def kCellMarginVertSpacing (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -8893,10 +8893,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -8966,10 +8966,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -8989,82 +8989,82 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kCellPropAlignment (self, *args, **kwargs):
+    def kCellPropAlignment (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellPropAll (self, *args, **kwargs):
+    def kCellPropAll (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellPropAutoScale (self, *args, **kwargs):
+    def kCellPropAutoScale (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellPropBackgroundColor (self, *args, **kwargs):
+    def kCellPropBackgroundColor (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellPropBitProperties (self, *args, **kwargs):
+    def kCellPropBitProperties (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellPropContent (self, *args, **kwargs):
+    def kCellPropContent (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellPropContentColor (self, *args, **kwargs):
+    def kCellPropContentColor (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellPropContentLayout (self, *args, **kwargs):
+    def kCellPropContentLayout (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellPropDataFormat (self, *args, **kwargs):
+    def kCellPropDataFormat (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellPropDataType (self, *args, **kwargs):
+    def kCellPropDataType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellPropDataTypeAndFormat (self, *args, **kwargs):
+    def kCellPropDataTypeAndFormat (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellPropFlowDirBtoT (self, *args, **kwargs):
+    def kCellPropFlowDirBtoT (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellPropInvalid (self, *args, **kwargs):
+    def kCellPropInvalid (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellPropMarginBottom (self, *args, **kwargs):
+    def kCellPropMarginBottom (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellPropMarginHorzSpacing (self, *args, **kwargs):
+    def kCellPropMarginHorzSpacing (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellPropMarginLeft (self, *args, **kwargs):
+    def kCellPropMarginLeft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellPropMarginRight (self, *args, **kwargs):
+    def kCellPropMarginRight (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellPropMarginTop (self, *args, **kwargs):
+    def kCellPropMarginTop (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellPropMarginVertSpacing (self, *args, **kwargs):
+    def kCellPropMarginVertSpacing (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellPropMergeAll (self, *args, **kwargs):
+    def kCellPropMergeAll (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellPropRotation (self, *args, **kwargs):
+    def kCellPropRotation (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellPropScale (self, *args, **kwargs):
+    def kCellPropScale (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellPropTextHeight (self, *args, **kwargs):
+    def kCellPropTextHeight (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellPropTextStyle (self, *args, **kwargs):
+    def kCellPropTextStyle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -9081,10 +9081,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -9126,16 +9126,16 @@ class CellRange:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def bottomRow (self, *args, **kwargs):
+    def bottomRow (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def leftColumn (self, *args, **kwargs):
+    def leftColumn (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def rightColumn (self, *args, **kwargs):
+    def rightColumn (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def topRow (self, *args, **kwargs):
+    def topRow (self, *args, **kwargs)-> None:
       '''None'''
     ...
 
@@ -9174,10 +9174,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -9197,37 +9197,37 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kAllCellStates (self, *args, **kwargs):
+    def kAllCellStates (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellStateContentLocked (self, *args, **kwargs):
+    def kCellStateContentLocked (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellStateContentModifiedAfterUpdate (self, *args, **kwargs):
+    def kCellStateContentModifiedAfterUpdate (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellStateContentReadOnly (self, *args, **kwargs):
+    def kCellStateContentReadOnly (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellStateFormatLocked (self, *args, **kwargs):
+    def kCellStateFormatLocked (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellStateFormatModifiedAfterUpdate (self, *args, **kwargs):
+    def kCellStateFormatModifiedAfterUpdate (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellStateFormatReadOnly (self, *args, **kwargs):
+    def kCellStateFormatReadOnly (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellStateLinked (self, *args, **kwargs):
+    def kCellStateLinked (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCellStateNone (self, *args, **kwargs):
+    def kCellStateNone (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -9244,10 +9244,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -9317,10 +9317,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -9340,22 +9340,22 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kBlockCell (self, *args, **kwargs):
+    def kBlockCell (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMultipleContentCell (self, *args, **kwargs):
+    def kMultipleContentCell (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextCell (self, *args, **kwargs):
+    def kTextCell (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnknownCell (self, *args, **kwargs):
+    def kUnknownCell (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -9372,10 +9372,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -9445,10 +9445,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -9468,19 +9468,19 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kLine (self, *args, **kwargs):
+    def kLine (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMark (self, *args, **kwargs):
+    def kMark (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kNone (self, *args, **kwargs):
+    def kNone (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -9497,10 +9497,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -10380,10 +10380,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -10403,19 +10403,19 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kInvalid (self, *args, **kwargs):
+    def kInvalid (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPoly (self, *args, **kwargs):
+    def kPoly (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kRect (self, *args, **kwargs):
+    def kRect (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -10432,10 +10432,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -10505,10 +10505,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -10528,16 +10528,16 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kCollisionTypeNone (self, *args, **kwargs):
+    def kCollisionTypeNone (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCollisionTypeSolid (self, *args, **kwargs):
+    def kCollisionTypeSolid (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -10554,10 +10554,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -10796,10 +10796,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -10819,37 +10819,37 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kByACI (self, *args, **kwargs):
+    def kByACI (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kByBlock (self, *args, **kwargs):
+    def kByBlock (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kByColor (self, *args, **kwargs):
+    def kByColor (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kByLayer (self, *args, **kwargs):
+    def kByLayer (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kByPen (self, *args, **kwargs):
+    def kByPen (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kForeground (self, *args, **kwargs):
+    def kForeground (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLayerFrozen (self, *args, **kwargs):
+    def kLayerFrozen (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLayerOff (self, *args, **kwargs):
+    def kLayerOff (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kNone (self, *args, **kwargs):
+    def kNone (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -10866,10 +10866,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -16263,10 +16263,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -16286,28 +16286,28 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kShapeAngular (self, *args, **kwargs):
+    def kShapeAngular (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kShapeLabel (self, *args, **kwargs):
+    def kShapeLabel (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kShapeNone (self, *args, **kwargs):
+    def kShapeNone (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kShapeRate (self, *args, **kwargs):
+    def kShapeRate (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kShapeRemove (self, *args, **kwargs):
+    def kShapeRemove (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kShapeRound (self, *args, **kwargs):
+    def kShapeRound (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -16324,10 +16324,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -18094,10 +18094,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -18117,16 +18117,16 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kDrawLeaderHeadFirst (self, *args, **kwargs):
+    def kDrawLeaderHeadFirst (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDrawLeaderTailFirst (self, *args, **kwargs):
+    def kDrawLeaderTailFirst (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -18143,10 +18143,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -18216,10 +18216,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -18239,16 +18239,16 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kDrawContentFirst (self, *args, **kwargs):
+    def kDrawContentFirst (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDrawLeaderFirst (self, *args, **kwargs):
+    def kDrawLeaderFirst (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -18265,10 +18265,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -18338,10 +18338,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -18361,28 +18361,28 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kDrcIgnore (self, *args, **kwargs):
+    def kDrcIgnore (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDrcMangleName (self, *args, **kwargs):
+    def kDrcMangleName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDrcNotApplicable (self, *args, **kwargs):
+    def kDrcNotApplicable (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDrcReplace (self, *args, **kwargs):
+    def kDrcReplace (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDrcUnmangleName (self, *args, **kwargs):
+    def kDrcUnmangleName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDrcXrefMangleName (self, *args, **kwargs):
+    def kDrcXrefMangleName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -18399,10 +18399,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -18472,10 +18472,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -18495,55 +18495,55 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kDwg3Real (self, *args, **kwargs):
+    def kDwg3Real (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDwgBChunk (self, *args, **kwargs):
+    def kDwgBChunk (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDwgHandle (self, *args, **kwargs):
+    def kDwgHandle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDwgHardOwnershipId (self, *args, **kwargs):
+    def kDwgHardOwnershipId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDwgHardPointerId (self, *args, **kwargs):
+    def kDwgHardPointerId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDwgInt16 (self, *args, **kwargs):
+    def kDwgInt16 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDwgInt32 (self, *args, **kwargs):
+    def kDwgInt32 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDwgInt64 (self, *args, **kwargs):
+    def kDwgInt64 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDwgInt8 (self, *args, **kwargs):
+    def kDwgInt8 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDwgNotRecognized (self, *args, **kwargs):
+    def kDwgNotRecognized (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDwgNull (self, *args, **kwargs):
+    def kDwgNull (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDwgReal (self, *args, **kwargs):
+    def kDwgReal (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDwgSoftOwnershipId (self, *args, **kwargs):
+    def kDwgSoftOwnershipId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDwgSoftPointerId (self, *args, **kwargs):
+    def kDwgSoftPointerId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDwgText (self, *args, **kwargs):
+    def kDwgText (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -18560,10 +18560,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -18633,10 +18633,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -18656,517 +18656,517 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kDxfAlpha (self, *args, **kwargs):
+    def kDxfAlpha (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfAngle (self, *args, **kwargs):
+    def kDxfAngle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfArbHandle (self, *args, **kwargs):
+    def kDxfArbHandle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfAttributePrompt (self, *args, **kwargs):
+    def kDxfAttributePrompt (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfAttributeTag (self, *args, **kwargs):
+    def kDxfAttributeTag (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfBinaryChunk (self, *args, **kwargs):
+    def kDxfBinaryChunk (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfBlockName (self, *args, **kwargs):
+    def kDxfBlockName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfBool (self, *args, **kwargs):
+    def kDxfBool (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfCLShapeName (self, *args, **kwargs):
+    def kDxfCLShapeName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfCLShapeText (self, *args, **kwargs):
+    def kDxfCLShapeText (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfCircleSides (self, *args, **kwargs):
+    def kDxfCircleSides (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfColor (self, *args, **kwargs):
+    def kDxfColor (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfColorName (self, *args, **kwargs):
+    def kDxfColorName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfColorRGB (self, *args, **kwargs):
+    def kDxfColorRGB (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfComment (self, *args, **kwargs):
+    def kDxfComment (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfControlString (self, *args, **kwargs):
+    def kDxfControlString (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfDashLength (self, *args, **kwargs):
+    def kDxfDashLength (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfDefaultLightingOn (self, *args, **kwargs):
+    def kDxfDefaultLightingOn (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfDefaultLightingType (self, *args, **kwargs):
+    def kDxfDefaultLightingType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfDescription (self, *args, **kwargs):
+    def kDxfDescription (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfDimAPostStr (self, *args, **kwargs):
+    def kDxfDimAPostStr (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfDimBlk (self, *args, **kwargs):
+    def kDxfDimBlk (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfDimBlk1 (self, *args, **kwargs):
+    def kDxfDimBlk1 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfDimBlk2 (self, *args, **kwargs):
+    def kDxfDimBlk2 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfDimPostStr (self, *args, **kwargs):
+    def kDxfDimPostStr (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfDimStyleName (self, *args, **kwargs):
+    def kDxfDimStyleName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfDimVarHandle (self, *args, **kwargs):
+    def kDxfDimVarHandle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfDragVisualStyleId (self, *args, **kwargs):
+    def kDxfDragVisualStyleId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfEdgeStyleId (self, *args, **kwargs):
+    def kDxfEdgeStyleId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfElevation (self, *args, **kwargs):
+    def kDxfElevation (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfEmbeddedObjectStart (self, *args, **kwargs):
+    def kDxfEmbeddedObjectStart (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfEnd (self, *args, **kwargs):
+    def kDxfEnd (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfFaceStyleId (self, *args, **kwargs):
+    def kDxfFaceStyleId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfFirstEntId (self, *args, **kwargs):
+    def kDxfFirstEntId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfGradientAngle (self, *args, **kwargs):
+    def kDxfGradientAngle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfGradientColCount (self, *args, **kwargs):
+    def kDxfGradientColCount (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfGradientColVal (self, *args, **kwargs):
+    def kDxfGradientColVal (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfGradientName (self, *args, **kwargs):
+    def kDxfGradientName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfGradientObjType (self, *args, **kwargs):
+    def kDxfGradientObjType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfGradientPatType (self, *args, **kwargs):
+    def kDxfGradientPatType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfGradientShift (self, *args, **kwargs):
+    def kDxfGradientShift (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfGradientTintType (self, *args, **kwargs):
+    def kDxfGradientTintType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfGradientTintVal (self, *args, **kwargs):
+    def kDxfGradientTintVal (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfHandle (self, *args, **kwargs):
+    def kDxfHandle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfHardOwnershipId (self, *args, **kwargs):
+    def kDxfHardOwnershipId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfHardPointerId (self, *args, **kwargs):
+    def kDxfHardPointerId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfHasSubentities (self, *args, **kwargs):
+    def kDxfHasSubentities (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfHeaderId (self, *args, **kwargs):
+    def kDxfHeaderId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfInt16 (self, *args, **kwargs):
+    def kDxfInt16 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfInt32 (self, *args, **kwargs):
+    def kDxfInt32 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfInt64 (self, *args, **kwargs):
+    def kDxfInt64 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfInt8 (self, *args, **kwargs):
+    def kDxfInt8 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfInvalid (self, *args, **kwargs):
+    def kDxfInvalid (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfLayerLinetype (self, *args, **kwargs):
+    def kDxfLayerLinetype (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfLayerName (self, *args, **kwargs):
+    def kDxfLayerName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfLayoutName (self, *args, **kwargs):
+    def kDxfLayoutName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfLineWeight (self, *args, **kwargs):
+    def kDxfLineWeight (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfLinetypeAlign (self, *args, **kwargs):
+    def kDxfLinetypeAlign (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfLinetypeElement (self, *args, **kwargs):
+    def kDxfLinetypeElement (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfLinetypeName (self, *args, **kwargs):
+    def kDxfLinetypeName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfLinetypePDC (self, *args, **kwargs):
+    def kDxfLinetypePDC (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfLinetypeProse (self, *args, **kwargs):
+    def kDxfLinetypeProse (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfLinetypeScale (self, *args, **kwargs):
+    def kDxfLinetypeScale (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfLiveSectionId (self, *args, **kwargs):
+    def kDxfLiveSectionId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfLiveSectionName (self, *args, **kwargs):
+    def kDxfLiveSectionName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfMaterialId (self, *args, **kwargs):
+    def kDxfMaterialId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfMlineOffset (self, *args, **kwargs):
+    def kDxfMlineOffset (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfMstyleName (self, *args, **kwargs):
+    def kDxfMstyleName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfNormalX (self, *args, **kwargs):
+    def kDxfNormalX (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfNormalY (self, *args, **kwargs):
+    def kDxfNormalY (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfNormalZ (self, *args, **kwargs):
+    def kDxfNormalZ (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfObjVisualStyleId (self, *args, **kwargs):
+    def kDxfObjVisualStyleId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfOperator (self, *args, **kwargs):
+    def kDxfOperator (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfPReactors (self, *args, **kwargs):
+    def kDxfPReactors (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfPixelScale (self, *args, **kwargs):
+    def kDxfPixelScale (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfPlotStyleNameId (self, *args, **kwargs):
+    def kDxfPlotStyleNameId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfPlotStyleNameType (self, *args, **kwargs):
+    def kDxfPlotStyleNameType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfReal (self, *args, **kwargs):
+    def kDxfReal (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfRegAppFlags (self, *args, **kwargs):
+    def kDxfRegAppFlags (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfRegAppName (self, *args, **kwargs):
+    def kDxfRegAppName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfRenderMode (self, *args, **kwargs):
+    def kDxfRenderMode (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfShadePlotId (self, *args, **kwargs):
+    def kDxfShadePlotId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfShadowFlags (self, *args, **kwargs):
+    def kDxfShadowFlags (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfShapeName (self, *args, **kwargs):
+    def kDxfShapeName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfShapeScale (self, *args, **kwargs):
+    def kDxfShapeScale (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfShapeXOffset (self, *args, **kwargs):
+    def kDxfShapeXOffset (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfShapeYOffset (self, *args, **kwargs):
+    def kDxfShapeYOffset (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfSoftOwnershipId (self, *args, **kwargs):
+    def kDxfSoftOwnershipId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfSoftPointerId (self, *args, **kwargs):
+    def kDxfSoftPointerId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfStart (self, *args, **kwargs):
+    def kDxfStart (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfSubclass (self, *args, **kwargs):
+    def kDxfSubclass (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfSunId (self, *args, **kwargs):
+    def kDxfSunId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfSymTableRecComments (self, *args, **kwargs):
+    def kDxfSymTableRecComments (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfSymTableRecName (self, *args, **kwargs):
+    def kDxfSymTableRecName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfSymbolTableName (self, *args, **kwargs):
+    def kDxfSymbolTableName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfText (self, *args, **kwargs):
+    def kDxfText (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfTextBigFontFile (self, *args, **kwargs):
+    def kDxfTextBigFontFile (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfTextFontFile (self, *args, **kwargs):
+    def kDxfTextFontFile (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfTextStyleName (self, *args, **kwargs):
+    def kDxfTextStyleName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfThickness (self, *args, **kwargs):
+    def kDxfThickness (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfTxtSize (self, *args, **kwargs):
+    def kDxfTxtSize (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfTxtStyleFlags (self, *args, **kwargs):
+    def kDxfTxtStyleFlags (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfTxtStylePSize (self, *args, **kwargs):
+    def kDxfTxtStylePSize (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfTxtStyleXScale (self, *args, **kwargs):
+    def kDxfTxtStyleXScale (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfUCSOrg (self, *args, **kwargs):
+    def kDxfUCSOrg (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfUCSOriX (self, *args, **kwargs):
+    def kDxfUCSOriX (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfUCSOriY (self, *args, **kwargs):
+    def kDxfUCSOriY (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfVertexIdentifier (self, *args, **kwargs):
+    def kDxfVertexIdentifier (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfViewBackClip (self, *args, **kwargs):
+    def kDxfViewBackClip (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfViewBackgroundId (self, *args, **kwargs):
+    def kDxfViewBackgroundId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfViewBrightness (self, *args, **kwargs):
+    def kDxfViewBrightness (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfViewContrast (self, *args, **kwargs):
+    def kDxfViewContrast (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfViewFrontClip (self, *args, **kwargs):
+    def kDxfViewFrontClip (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfViewHeight (self, *args, **kwargs):
+    def kDxfViewHeight (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfViewLensLength (self, *args, **kwargs):
+    def kDxfViewLensLength (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfViewMode (self, *args, **kwargs):
+    def kDxfViewMode (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfViewWidth (self, *args, **kwargs):
+    def kDxfViewWidth (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfViewportActive (self, *args, **kwargs):
+    def kDxfViewportActive (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfViewportAspect (self, *args, **kwargs):
+    def kDxfViewportAspect (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfViewportGrid (self, *args, **kwargs):
+    def kDxfViewportGrid (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfViewportGridDisplay (self, *args, **kwargs):
+    def kDxfViewportGridDisplay (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfViewportGridMajor (self, *args, **kwargs):
+    def kDxfViewportGridMajor (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfViewportHeight (self, *args, **kwargs):
+    def kDxfViewportHeight (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfViewportIcon (self, *args, **kwargs):
+    def kDxfViewportIcon (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfViewportNumber (self, *args, **kwargs):
+    def kDxfViewportNumber (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfViewportSnap (self, *args, **kwargs):
+    def kDxfViewportSnap (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfViewportSnapAngle (self, *args, **kwargs):
+    def kDxfViewportSnapAngle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfViewportSnapPair (self, *args, **kwargs):
+    def kDxfViewportSnapPair (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfViewportSnapStyle (self, *args, **kwargs):
+    def kDxfViewportSnapStyle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfViewportTwist (self, *args, **kwargs):
+    def kDxfViewportTwist (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfViewportVisibility (self, *args, **kwargs):
+    def kDxfViewportVisibility (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfViewportZoom (self, *args, **kwargs):
+    def kDxfViewportZoom (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfVisibility (self, *args, **kwargs):
+    def kDxfVisibility (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfVisualStyleId (self, *args, **kwargs):
+    def kDxfVisualStyleId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfVpVisualStyleId (self, *args, **kwargs):
+    def kDxfVpVisualStyleId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXCoord (self, *args, **kwargs):
+    def kDxfXCoord (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXDataStart (self, *args, **kwargs):
+    def kDxfXDataStart (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXDictionary (self, *args, **kwargs):
+    def kDxfXDictionary (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXInt16 (self, *args, **kwargs):
+    def kDxfXInt16 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXReal (self, *args, **kwargs):
+    def kDxfXReal (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXRefPath (self, *args, **kwargs):
+    def kDxfXRefPath (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXTextString (self, *args, **kwargs):
+    def kDxfXTextString (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXXInt16 (self, *args, **kwargs):
+    def kDxfXXInt16 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXXXInt16 (self, *args, **kwargs):
+    def kDxfXXXInt16 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXdAsciiString (self, *args, **kwargs):
+    def kDxfXdAsciiString (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXdBinaryChunk (self, *args, **kwargs):
+    def kDxfXdBinaryChunk (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXdControlString (self, *args, **kwargs):
+    def kDxfXdControlString (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXdDist (self, *args, **kwargs):
+    def kDxfXdDist (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXdHandle (self, *args, **kwargs):
+    def kDxfXdHandle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXdInteger16 (self, *args, **kwargs):
+    def kDxfXdInteger16 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXdInteger32 (self, *args, **kwargs):
+    def kDxfXdInteger32 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXdLayerName (self, *args, **kwargs):
+    def kDxfXdLayerName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXdMax (self, *args, **kwargs):
+    def kDxfXdMax (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXdReal (self, *args, **kwargs):
+    def kDxfXdReal (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXdScale (self, *args, **kwargs):
+    def kDxfXdScale (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXdWorldXCoord (self, *args, **kwargs):
+    def kDxfXdWorldXCoord (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXdWorldXDir (self, *args, **kwargs):
+    def kDxfXdWorldXDir (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXdWorldXDisp (self, *args, **kwargs):
+    def kDxfXdWorldXDisp (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXdWorldYCoord (self, *args, **kwargs):
+    def kDxfXdWorldYCoord (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXdWorldYDir (self, *args, **kwargs):
+    def kDxfXdWorldYDir (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXdWorldYDisp (self, *args, **kwargs):
+    def kDxfXdWorldYDisp (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXdWorldZCoord (self, *args, **kwargs):
+    def kDxfXdWorldZCoord (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXdWorldZDir (self, *args, **kwargs):
+    def kDxfXdWorldZDir (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXdWorldZDisp (self, *args, **kwargs):
+    def kDxfXdWorldZDisp (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXdXCoord (self, *args, **kwargs):
+    def kDxfXdXCoord (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXdYCoord (self, *args, **kwargs):
+    def kDxfXdYCoord (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfXdZCoord (self, *args, **kwargs):
+    def kDxfXdZCoord (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfYCoord (self, *args, **kwargs):
+    def kDxfYCoord (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDxfZCoord (self, *args, **kwargs):
+    def kDxfZCoord (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -19183,10 +19183,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -19408,10 +19408,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -19431,22 +19431,22 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kAngular (self, *args, **kwargs):
+    def kAngular (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kArea (self, *args, **kwargs):
+    def kArea (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDistance (self, *args, **kwargs):
+    def kDistance (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kNoUnits (self, *args, **kwargs):
+    def kNoUnits (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -19463,10 +19463,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -19536,10 +19536,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -19559,22 +19559,22 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kEndCapAngle (self, *args, **kwargs):
+    def kEndCapAngle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kEndCapNone (self, *args, **kwargs):
+    def kEndCapNone (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kEndCapRound (self, *args, **kwargs):
+    def kEndCapRound (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kEndCapSquare (self, *args, **kwargs):
+    def kEndCapSquare (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -19591,10 +19591,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -20477,7 +20477,7 @@ white() -> EntityColor :
     ...
 
 class ErrorStatus:
-    def Ok (self, *args, **kwargs):
+    def Ok (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def __init__ (self, /, *args, **kwargs):
@@ -20514,1540 +20514,1540 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
-    def eAbortPreview (self, *args, **kwargs):
+    def eAbortPreview (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eAllInSameRigidSet (self, *args, **kwargs):
+    def eAllInSameRigidSet (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eAlreadyActive (self, *args, **kwargs):
+    def eAlreadyActive (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eAlreadyHasRepresentation (self, *args, **kwargs):
+    def eAlreadyHasRepresentation (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eAlreadyInDb (self, *args, **kwargs):
+    def eAlreadyInDb (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eAlreadyInGroup (self, *args, **kwargs):
+    def eAlreadyInGroup (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eAlreadyInactive (self, *args, **kwargs):
+    def eAlreadyInactive (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eAlreadyInferred (self, *args, **kwargs):
+    def eAlreadyInferred (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eAmbiguousInput (self, *args, **kwargs):
+    def eAmbiguousInput (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eAmbiguousOutput (self, *args, **kwargs):
+    def eAmbiguousOutput (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eAnonymousEntry (self, *args, **kwargs):
+    def eAnonymousEntry (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eAtMaxReaders (self, *args, **kwargs):
+    def eAtMaxReaders (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eBackgroundPlotInProgress (self, *args, **kwargs):
+    def eBackgroundPlotInProgress (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eBadColor (self, *args, **kwargs):
+    def eBadColor (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eBadColorIndex (self, *args, **kwargs):
+    def eBadColorIndex (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eBadDwgHeader (self, *args, **kwargs):
+    def eBadDwgHeader (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eBadDxfFile (self, *args, **kwargs):
+    def eBadDxfFile (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eBadDxfSequence (self, *args, **kwargs):
+    def eBadDxfSequence (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eBadLayerName (self, *args, **kwargs):
+    def eBadLayerName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eBadLineWeightValue (self, *args, **kwargs):
+    def eBadLineWeightValue (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eBadLinetypeName (self, *args, **kwargs):
+    def eBadLinetypeName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eBadLinetypeScale (self, *args, **kwargs):
+    def eBadLinetypeScale (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eBadMaterialName (self, *args, **kwargs):
+    def eBadMaterialName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eBadPaperspaceView (self, *args, **kwargs):
+    def eBadPaperspaceView (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eBadPlotStyleName (self, *args, **kwargs):
+    def eBadPlotStyleName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eBadPlotStyleNameHandle (self, *args, **kwargs):
+    def eBadPlotStyleNameHandle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eBadPlotStyleType (self, *args, **kwargs):
+    def eBadPlotStyleType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eBadUCS (self, *args, **kwargs):
+    def eBadUCS (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eBadVisibilityValue (self, *args, **kwargs):
+    def eBadVisibilityValue (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eBadlyNestedAppData (self, *args, **kwargs):
+    def eBadlyNestedAppData (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eBinaryDataSizeExceeded (self, *args, **kwargs):
+    def eBinaryDataSizeExceeded (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eBlockDefInEntitySection (self, *args, **kwargs):
+    def eBlockDefInEntitySection (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eBrokenHandle (self, *args, **kwargs):
+    def eBrokenHandle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eBufferTooSmall (self, *args, **kwargs):
+    def eBufferTooSmall (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eCannotBeErasedByCaller (self, *args, **kwargs):
+    def eCannotBeErasedByCaller (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eCannotBeResurrected (self, *args, **kwargs):
+    def eCannotBeResurrected (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eCannotChangeActiveViewport (self, *args, **kwargs):
+    def eCannotChangeActiveViewport (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eCannotChangeColumnType (self, *args, **kwargs):
+    def eCannotChangeColumnType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eCannotExplodeEntity (self, *args, **kwargs):
+    def eCannotExplodeEntity (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eCannotNestBlockDefs (self, *args, **kwargs):
+    def eCannotNestBlockDefs (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eCannotPlotToFile (self, *args, **kwargs):
+    def eCannotPlotToFile (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eCannotRestoreFromAcisFile (self, *args, **kwargs):
+    def eCannotRestoreFromAcisFile (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eCannotScaleNonUniformly (self, *args, **kwargs):
+    def eCannotScaleNonUniformly (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eCantOpenFile (self, *args, **kwargs):
+    def eCantOpenFile (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eChangedAgainstAssociativity (self, *args, **kwargs):
+    def eChangedAgainstAssociativity (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eCloseFailObjectDamaged (self, *args, **kwargs):
+    def eCloseFailObjectDamaged (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eCloseModifyAborted (self, *args, **kwargs):
+    def eCloseModifyAborted (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eClosePartialFailure (self, *args, **kwargs):
+    def eClosePartialFailure (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eCloseWasNotifying (self, *args, **kwargs):
+    def eCloseWasNotifying (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eCommandWasInProgress (self, *args, **kwargs):
+    def eCommandWasInProgress (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eContainerNotEmpty (self, *args, **kwargs):
+    def eContainerNotEmpty (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eConvertImageFormatFailed (self, *args, **kwargs):
+    def eConvertImageFormatFailed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eCopyDoesNotExist (self, *args, **kwargs):
+    def eCopyDoesNotExist (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eCopyFailed (self, *args, **kwargs):
+    def eCopyFailed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eCopyInvalidName (self, *args, **kwargs):
+    def eCopyInvalidName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eCopyIsModelSpace (self, *args, **kwargs):
+    def eCopyIsModelSpace (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eCopyNameExists (self, *args, **kwargs):
+    def eCopyNameExists (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eCreateFailed (self, *args, **kwargs):
+    def eCreateFailed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eCreateInvalidName (self, *args, **kwargs):
+    def eCreateInvalidName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eCustomSizeNotPossible (self, *args, **kwargs):
+    def eCustomSizeNotPossible (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eCyclicDependency (self, *args, **kwargs):
+    def eCyclicDependency (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDataLinkAdapterNotFound (self, *args, **kwargs):
+    def eDataLinkAdapterNotFound (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDataLinkBadConnectionString (self, *args, **kwargs):
+    def eDataLinkBadConnectionString (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDataLinkConnectionFailed (self, *args, **kwargs):
+    def eDataLinkConnectionFailed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDataLinkExcelNotFound (self, *args, **kwargs):
+    def eDataLinkExcelNotFound (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDataLinkInvalidAdapterId (self, *args, **kwargs):
+    def eDataLinkInvalidAdapterId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDataLinkNotFound (self, *args, **kwargs):
+    def eDataLinkNotFound (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDataLinkNotUpdatedYet (self, *args, **kwargs):
+    def eDataLinkNotUpdatedYet (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDataLinkOtherError (self, *args, **kwargs):
+    def eDataLinkOtherError (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDataLinkSourceIsWriteProtected (self, *args, **kwargs):
+    def eDataLinkSourceIsWriteProtected (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDataLinkSourceNotFound (self, *args, **kwargs):
+    def eDataLinkSourceNotFound (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDataLinkSourceUpdateNotAllowed (self, *args, **kwargs):
+    def eDataLinkSourceUpdateNotAllowed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDataTooLarge (self, *args, **kwargs):
+    def eDataTooLarge (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDatabaseObjectsOpen (self, *args, **kwargs):
+    def eDatabaseObjectsOpen (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDegenerateGeometry (self, *args, **kwargs):
+    def eDegenerateGeometry (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDelDoesNotExist (self, *args, **kwargs):
+    def eDelDoesNotExist (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDelIsModelSpace (self, *args, **kwargs):
+    def eDelIsModelSpace (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDelLastLayout (self, *args, **kwargs):
+    def eDelLastLayout (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDelUnableToFind (self, *args, **kwargs):
+    def eDelUnableToFind (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDelUnableToSetCurrent (self, *args, **kwargs):
+    def eDelUnableToSetCurrent (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDelayMore (self, *args, **kwargs):
+    def eDelayMore (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDeleteEntity (self, *args, **kwargs):
+    def eDeleteEntity (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDeletedEntry (self, *args, **kwargs):
+    def eDeletedEntry (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDependentOnObjectErased (self, *args, **kwargs):
+    def eDependentOnObjectErased (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDeviceNotFound (self, *args, **kwargs):
+    def eDeviceNotFound (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDocumentSwitchDisabled (self, *args, **kwargs):
+    def eDocumentSwitchDisabled (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDuplicateBlockDefinition (self, *args, **kwargs):
+    def eDuplicateBlockDefinition (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDuplicateBlockName (self, *args, **kwargs):
+    def eDuplicateBlockName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDuplicateDxfField (self, *args, **kwargs):
+    def eDuplicateDxfField (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDuplicateIndex (self, *args, **kwargs):
+    def eDuplicateIndex (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDuplicateKey (self, *args, **kwargs):
+    def eDuplicateKey (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDuplicateLayerName (self, *args, **kwargs):
+    def eDuplicateLayerName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDuplicateRecordName (self, *args, **kwargs):
+    def eDuplicateRecordName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDwgCRCDoesNotMatch (self, *args, **kwargs):
+    def eDwgCRCDoesNotMatch (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDwgNeedsAFullSave (self, *args, **kwargs):
+    def eDwgNeedsAFullSave (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDwgNotRecoverable (self, *args, **kwargs):
+    def eDwgNotRecoverable (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDwgObjectImproperlyRead (self, *args, **kwargs):
+    def eDwgObjectImproperlyRead (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDwgRecoveredOK (self, *args, **kwargs):
+    def eDwgRecoveredOK (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDwgSentinelDoesNotMatch (self, *args, **kwargs):
+    def eDwgSentinelDoesNotMatch (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDwgShareDemandLoad (self, *args, **kwargs):
+    def eDwgShareDemandLoad (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDwgShareReadAccess (self, *args, **kwargs):
+    def eDwgShareReadAccess (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDwgShareWriteAccess (self, *args, **kwargs):
+    def eDwgShareWriteAccess (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDwkLockFileFound (self, *args, **kwargs):
+    def eDwkLockFileFound (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDxbPartiallyRead (self, *args, **kwargs):
+    def eDxbPartiallyRead (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDxbReadAborted (self, *args, **kwargs):
+    def eDxbReadAborted (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDxfPartiallyRead (self, *args, **kwargs):
+    def eDxfPartiallyRead (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eDxfReadAborted (self, *args, **kwargs):
+    def eDxfReadAborted (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eEmbeddedIntersections (self, *args, **kwargs):
+    def eEmbeddedIntersections (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eEmptyOperand (self, *args, **kwargs):
+    def eEmptyOperand (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eEndOfFile (self, *args, **kwargs):
+    def eEndOfFile (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eEndOfObject (self, *args, **kwargs):
+    def eEndOfObject (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eEndPreview (self, *args, **kwargs):
+    def eEndPreview (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eEntityInInactiveLayout (self, *args, **kwargs):
+    def eEntityInInactiveLayout (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eEntityRestricedInDOF (self, *args, **kwargs):
+    def eEntityRestricedInDOF (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eExcessiveItemCount (self, *args, **kwargs):
+    def eExcessiveItemCount (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eExplodeBeforeTransform (self, *args, **kwargs):
+    def eExplodeBeforeTransform (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eFSMError (self, *args, **kwargs):
+    def eFSMError (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eFailedCurveCheck (self, *args, **kwargs):
+    def eFailedCurveCheck (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eFailedToBlend (self, *args, **kwargs):
+    def eFailedToBlend (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eFailedToEvaluate (self, *args, **kwargs):
+    def eFailedToEvaluate (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eFailedToEvaluateDependents (self, *args, **kwargs):
+    def eFailedToEvaluateDependents (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eFailedToSetEdgeChamfers (self, *args, **kwargs):
+    def eFailedToSetEdgeChamfers (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eFailedToSetEdgeRounds (self, *args, **kwargs):
+    def eFailedToSetEdgeRounds (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eFailedToSetVertexRounds (self, *args, **kwargs):
+    def eFailedToSetVertexRounds (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eFileAccessErr (self, *args, **kwargs):
+    def eFileAccessErr (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eFileExists (self, *args, **kwargs):
+    def eFileExists (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eFileInternalErr (self, *args, **kwargs):
+    def eFileInternalErr (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eFileLockedByACAD (self, *args, **kwargs):
+    def eFileLockedByACAD (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eFileMissingSections (self, *args, **kwargs):
+    def eFileMissingSections (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eFileNotFound (self, *args, **kwargs):
+    def eFileNotFound (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eFileNotInCloud (self, *args, **kwargs):
+    def eFileNotInCloud (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eFileSharingViolation (self, *args, **kwargs):
+    def eFileSharingViolation (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eFileSystemErr (self, *args, **kwargs):
+    def eFileSystemErr (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eFileTooManyOpen (self, *args, **kwargs):
+    def eFileTooManyOpen (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eFilerError (self, *args, **kwargs):
+    def eFilerError (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eFixedAllErrors (self, *args, **kwargs):
+    def eFixedAllErrors (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eGeneralModelingFailure (self, *args, **kwargs):
+    def eGeneralModelingFailure (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eGetAdIntImgServicesFailed (self, *args, **kwargs):
+    def eGetAdIntImgServicesFailed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eGetImageBytesFailed (self, *args, **kwargs):
+    def eGetImageBytesFailed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eGetImageDIBFailed (self, *args, **kwargs):
+    def eGetImageDIBFailed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eGetPreviewImageFailed (self, *args, **kwargs):
+    def eGetPreviewImageFailed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eGraphContainsProxies (self, *args, **kwargs):
+    def eGraphContainsProxies (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eGraphCyclesFound (self, *args, **kwargs):
+    def eGraphCyclesFound (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eGraphEdgeAlreadyExists (self, *args, **kwargs):
+    def eGraphEdgeAlreadyExists (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eGraphEdgeNotFound (self, *args, **kwargs):
+    def eGraphEdgeNotFound (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eGraphNodeAlreadyExists (self, *args, **kwargs):
+    def eGraphNodeAlreadyExists (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eGraphNodeNotFound (self, *args, **kwargs):
+    def eGraphNodeNotFound (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eGraphicsNotGenerated (self, *args, **kwargs):
+    def eGraphicsNotGenerated (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eGuidNoAddress (self, *args, **kwargs):
+    def eGuidNoAddress (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eHadMultipleReaders (self, *args, **kwargs):
+    def eHadMultipleReaders (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eHandleExists (self, *args, **kwargs):
+    def eHandleExists (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eHandleInUse (self, *args, **kwargs):
+    def eHandleInUse (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eHatchTooDense (self, *args, **kwargs):
+    def eHatchTooDense (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eIgnoredLinetypeRedef (self, *args, **kwargs):
+    def eIgnoredLinetypeRedef (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eIllegalEntityType (self, *args, **kwargs):
+    def eIllegalEntityType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eIllegalReplacement (self, *args, **kwargs):
+    def eIllegalReplacement (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInProcessOfCommitting (self, *args, **kwargs):
+    def eInProcessOfCommitting (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eIncompatiblePlotSettings (self, *args, **kwargs):
+    def eIncompatiblePlotSettings (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eIncompleteBlockDefinition (self, *args, **kwargs):
+    def eIncompleteBlockDefinition (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eIncompleteComplexObject (self, *args, **kwargs):
+    def eIncompleteComplexObject (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInconsistentConstraint (self, *args, **kwargs):
+    def eInconsistentConstraint (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetBadPath (self, *args, **kwargs):
+    def eInetBadPath (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetBase (self, *args, **kwargs):
+    def eInetBase (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetCreateInternetSessionFailed (self, *args, **kwargs):
+    def eInetCreateInternetSessionFailed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetDirectoryFull (self, *args, **kwargs):
+    def eInetDirectoryFull (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetDiskFull (self, *args, **kwargs):
+    def eInetDiskFull (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetFileAccessDenied (self, *args, **kwargs):
+    def eInetFileAccessDenied (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetFileGenericError (self, *args, **kwargs):
+    def eInetFileGenericError (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetFileNotFound (self, *args, **kwargs):
+    def eInetFileNotFound (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetFileOpenFailed (self, *args, **kwargs):
+    def eInetFileOpenFailed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetGenericException (self, *args, **kwargs):
+    def eInetGenericException (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetHardwareError (self, *args, **kwargs):
+    def eInetHardwareError (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetHttpAccessDenied (self, *args, **kwargs):
+    def eInetHttpAccessDenied (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetHttpBadGateway (self, *args, **kwargs):
+    def eInetHttpBadGateway (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetHttpBadMethod (self, *args, **kwargs):
+    def eInetHttpBadMethod (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetHttpBadRequest (self, *args, **kwargs):
+    def eInetHttpBadRequest (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetHttpConflict (self, *args, **kwargs):
+    def eInetHttpConflict (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetHttpGatewayTimeout (self, *args, **kwargs):
+    def eInetHttpGatewayTimeout (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetHttpLengthRequired (self, *args, **kwargs):
+    def eInetHttpLengthRequired (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetHttpNoAcceptableResponse (self, *args, **kwargs):
+    def eInetHttpNoAcceptableResponse (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetHttpNotSupported (self, *args, **kwargs):
+    def eInetHttpNotSupported (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetHttpObjectNotFound (self, *args, **kwargs):
+    def eInetHttpObjectNotFound (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetHttpOpenRequestFailed (self, *args, **kwargs):
+    def eInetHttpOpenRequestFailed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetHttpPaymentRequired (self, *args, **kwargs):
+    def eInetHttpPaymentRequired (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetHttpPreconditionFailure (self, *args, **kwargs):
+    def eInetHttpPreconditionFailure (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetHttpProxyAuthorizationRequired (self, *args, **kwargs):
+    def eInetHttpProxyAuthorizationRequired (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetHttpRequestForbidden (self, *args, **kwargs):
+    def eInetHttpRequestForbidden (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetHttpRequestTooLarge (self, *args, **kwargs):
+    def eInetHttpRequestTooLarge (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetHttpResourceGone (self, *args, **kwargs):
+    def eInetHttpResourceGone (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetHttpServerError (self, *args, **kwargs):
+    def eInetHttpServerError (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetHttpServiceUnavailable (self, *args, **kwargs):
+    def eInetHttpServiceUnavailable (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetHttpTimedOut (self, *args, **kwargs):
+    def eInetHttpTimedOut (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetHttpUnsupportedMedia (self, *args, **kwargs):
+    def eInetHttpUnsupportedMedia (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetHttpUriTooLong (self, *args, **kwargs):
+    def eInetHttpUriTooLong (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetHttpVersionNotSupported (self, *args, **kwargs):
+    def eInetHttpVersionNotSupported (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetInCache (self, *args, **kwargs):
+    def eInetInCache (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetInternetError (self, *args, **kwargs):
+    def eInetInternetError (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetInternetSessionConnectFailed (self, *args, **kwargs):
+    def eInetInternetSessionConnectFailed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetInternetSessionOpenFailed (self, *args, **kwargs):
+    def eInetInternetSessionOpenFailed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetInvalidAccessType (self, *args, **kwargs):
+    def eInetInvalidAccessType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetInvalidFileHandle (self, *args, **kwargs):
+    def eInetInvalidFileHandle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetNoAcadInet (self, *args, **kwargs):
+    def eInetNoAcadInet (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetNoWinInet (self, *args, **kwargs):
+    def eInetNoWinInet (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetNotAnURL (self, *args, **kwargs):
+    def eInetNotAnURL (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetNotImplemented (self, *args, **kwargs):
+    def eInetNotImplemented (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetOk (self, *args, **kwargs):
+    def eInetOk (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetOldWinInet (self, *args, **kwargs):
+    def eInetOldWinInet (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetProtocolNotSupported (self, *args, **kwargs):
+    def eInetProtocolNotSupported (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetSharingViolation (self, *args, **kwargs):
+    def eInetSharingViolation (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetTooManyOpenFiles (self, *args, **kwargs):
+    def eInetTooManyOpenFiles (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetUnknownError (self, *args, **kwargs):
+    def eInetUnknownError (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetUserCancelledTransfer (self, *args, **kwargs):
+    def eInetUserCancelledTransfer (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInetValidURL (self, *args, **kwargs):
+    def eInetValidURL (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInsertAfter (self, *args, **kwargs):
+    def eInsertAfter (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidAdsName (self, *args, **kwargs):
+    def eInvalidAdsName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidAxis (self, *args, **kwargs):
+    def eInvalidAxis (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidBlockName (self, *args, **kwargs):
+    def eInvalidBlockName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidContext (self, *args, **kwargs):
+    def eInvalidContext (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidDimStyle (self, *args, **kwargs):
+    def eInvalidDimStyle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidDwgVersion (self, *args, **kwargs):
+    def eInvalidDwgVersion (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidDxf2dPoint (self, *args, **kwargs):
+    def eInvalidDxf2dPoint (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidDxf3dPoint (self, *args, **kwargs):
+    def eInvalidDxf3dPoint (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidDxfCode (self, *args, **kwargs):
+    def eInvalidDxfCode (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidDxfSectionName (self, *args, **kwargs):
+    def eInvalidDxfSectionName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidEngineState (self, *args, **kwargs):
+    def eInvalidEngineState (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidExpression (self, *args, **kwargs):
+    def eInvalidExpression (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidExtents (self, *args, **kwargs):
+    def eInvalidExtents (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidFaceVertexIndex (self, *args, **kwargs):
+    def eInvalidFaceVertexIndex (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidFileExtension (self, *args, **kwargs):
+    def eInvalidFileExtension (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidFix (self, *args, **kwargs):
+    def eInvalidFix (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidIdMap (self, *args, **kwargs):
+    def eInvalidIdMap (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidIndex (self, *args, **kwargs):
+    def eInvalidIndex (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidInput (self, *args, **kwargs):
+    def eInvalidInput (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidKey (self, *args, **kwargs):
+    def eInvalidKey (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidLayer (self, *args, **kwargs):
+    def eInvalidLayer (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidMeshVertexIndex (self, *args, **kwargs):
+    def eInvalidMeshVertexIndex (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidNormal (self, *args, **kwargs):
+    def eInvalidNormal (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidObjectId (self, *args, **kwargs):
+    def eInvalidObjectId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidOffset (self, *args, **kwargs):
+    def eInvalidOffset (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidOpenState  (self, *args, **kwargs):
+    def eInvalidOpenState  (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidOwnerObject (self, *args, **kwargs):
+    def eInvalidOwnerObject (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidParameterName (self, *args, **kwargs):
+    def eInvalidParameterName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidPlotArea (self, *args, **kwargs):
+    def eInvalidPlotArea (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidPlotInfo (self, *args, **kwargs):
+    def eInvalidPlotInfo (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidPreviewImage (self, *args, **kwargs):
+    def eInvalidPreviewImage (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidProfileName (self, *args, **kwargs):
+    def eInvalidProfileName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidREFIID (self, *args, **kwargs):
+    def eInvalidREFIID (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidResBuf (self, *args, **kwargs):
+    def eInvalidResBuf (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidStyle (self, *args, **kwargs):
+    def eInvalidStyle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidSymTableFlag (self, *args, **kwargs):
+    def eInvalidSymTableFlag (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidSymbolTableName (self, *args, **kwargs):
+    def eInvalidSymbolTableName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidTextStyle (self, *args, **kwargs):
+    def eInvalidTextStyle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidView (self, *args, **kwargs):
+    def eInvalidView (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidWindowArea (self, *args, **kwargs):
+    def eInvalidWindowArea (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eInvalidXrefObjectId (self, *args, **kwargs):
+    def eInvalidXrefObjectId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eIsAnEntity (self, *args, **kwargs):
+    def eIsAnEntity (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eIsReading (self, *args, **kwargs):
+    def eIsReading (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eIsWriteProtected (self, *args, **kwargs):
+    def eIsWriteProtected (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eIsWriting (self, *args, **kwargs):
+    def eIsWriting (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eIsXRefObject (self, *args, **kwargs):
+    def eIsXRefObject (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eItemCountChanged (self, *args, **kwargs):
+    def eItemCountChanged (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eIteratorDone (self, *args, **kwargs):
+    def eIteratorDone (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eKeyNotFound (self, *args, **kwargs):
+    def eKeyNotFound (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eLISPActive (self, *args, **kwargs):
+    def eLISPActive (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eLayerGroupCodeMissing (self, *args, **kwargs):
+    def eLayerGroupCodeMissing (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eLayoutNotCurrent (self, *args, **kwargs):
+    def eLayoutNotCurrent (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eLeftErrorsUnfixed (self, *args, **kwargs):
+    def eLeftErrorsUnfixed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eLoadFailed (self, *args, **kwargs):
+    def eLoadFailed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eLockChangeInProgress (self, *args, **kwargs):
+    def eLockChangeInProgress (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eLockConflict (self, *args, **kwargs):
+    def eLockConflict (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eLockViolation (self, *args, **kwargs):
+    def eLockViolation (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eLongTransReferenceError (self, *args, **kwargs):
+    def eLongTransReferenceError (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMakeMeProxy (self, *args, **kwargs):
+    def eMakeMeProxy (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMakeMeProxyAndResurrect (self, *args, **kwargs):
+    def eMakeMeProxyAndResurrect (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMaxLayouts (self, *args, **kwargs):
+    def eMaxLayouts (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMaxNodes (self, *args, **kwargs):
+    def eMaxNodes (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMissingBlockName (self, *args, **kwargs):
+    def eMissingBlockName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMissingDxfField (self, *args, **kwargs):
+    def eMissingDxfField (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMissingDxfSection (self, *args, **kwargs):
+    def eMissingDxfSection (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMissingSymbolTable (self, *args, **kwargs):
+    def eMissingSymbolTable (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMissingSymbolTableRec (self, *args, **kwargs):
+    def eMissingSymbolTableRec (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eModifyingAssociativeEntity (self, *args, **kwargs):
+    def eModifyingAssociativeEntity (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eModifyingDimensionWithExpression (self, *args, **kwargs):
+    def eModifyingDimensionWithExpression (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMustBe0to2 (self, *args, **kwargs):
+    def eMustBe0to2 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMustBe0to3 (self, *args, **kwargs):
+    def eMustBe0to3 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMustBe0to4 (self, *args, **kwargs):
+    def eMustBe0to4 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMustBe0to5 (self, *args, **kwargs):
+    def eMustBe0to5 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMustBe0to8 (self, *args, **kwargs):
+    def eMustBe0to8 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMustBe1to15 (self, *args, **kwargs):
+    def eMustBe1to15 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMustBe1to6 (self, *args, **kwargs):
+    def eMustBe1to6 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMustBe1to8 (self, *args, **kwargs):
+    def eMustBe1to8 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMustBeInteger (self, *args, **kwargs):
+    def eMustBeInteger (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMustBeNonNegative (self, *args, **kwargs):
+    def eMustBeNonNegative (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMustBeNonZero (self, *args, **kwargs):
+    def eMustBeNonZero (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMustBePositive (self, *args, **kwargs):
+    def eMustBePositive (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMustBePositiveInteger (self, *args, **kwargs):
+    def eMustBePositiveInteger (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMustFirstAddBlockToDb (self, *args, **kwargs):
+    def eMustFirstAddBlockToDb (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMustOpenThruOwner (self, *args, **kwargs):
+    def eMustOpenThruOwner (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eMustPlotToFile (self, *args, **kwargs):
+    def eMustPlotToFile (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNLSFileNotAvailable (self, *args, **kwargs):
+    def eNLSFileNotAvailable (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNearSizeLimit (self, *args, **kwargs):
+    def eNearSizeLimit (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNegativeValueNotAllowed (self, *args, **kwargs):
+    def eNegativeValueNotAllowed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoAcDbHostApplication (self, *args, **kwargs):
+    def eNoAcDbHostApplication (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoActiveTransactions (self, *args, **kwargs):
+    def eNoActiveTransactions (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoBlockBegin (self, *args, **kwargs):
+    def eNoBlockBegin (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoClassId (self, *args, **kwargs):
+    def eNoClassId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoConnectedBlendSet (self, *args, **kwargs):
+    def eNoConnectedBlendSet (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoCurrentConfig (self, *args, **kwargs):
+    def eNoCurrentConfig (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoDatabase (self, *args, **kwargs):
+    def eNoDatabase (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoDocument (self, *args, **kwargs):
+    def eNoDocument (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoEntitiesFromPersistentIds (self, *args, **kwargs):
+    def eNoEntitiesFromPersistentIds (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoErrorHandler (self, *args, **kwargs):
+    def eNoErrorHandler (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoFileName (self, *args, **kwargs):
+    def eNoFileName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoInputFiler (self, *args, **kwargs):
+    def eNoInputFiler (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoInputPath (self, *args, **kwargs):
+    def eNoInputPath (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoInternalSpace (self, *args, **kwargs):
+    def eNoInternalSpace (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoIntersections (self, *args, **kwargs):
+    def eNoIntersections (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoLabelBlock (self, *args, **kwargs):
+    def eNoLabelBlock (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoLayout (self, *args, **kwargs):
+    def eNoLayout (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoMatchingMedia (self, *args, **kwargs):
+    def eNoMatchingMedia (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoNodeActive (self, *args, **kwargs):
+    def eNoNodeActive (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoOverride (self, *args, **kwargs):
+    def eNoOverride (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoPlotStyleTranslationTable (self, *args, **kwargs):
+    def eNoPlotStyleTranslationTable (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoPreviewContext (self, *args, **kwargs):
+    def eNoPreviewContext (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoRepresentation (self, *args, **kwargs):
+    def eNoRepresentation (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoStoredOverrides (self, *args, **kwargs):
+    def eNoStoredOverrides (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoStoredReconcileStatus (self, *args, **kwargs):
+    def eNoStoredReconcileStatus (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoThumbnailBitmap (self, *args, **kwargs):
+    def eNoThumbnailBitmap (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoUnderlayHost (self, *args, **kwargs):
+    def eNoUnderlayHost (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoViewAssociation (self, *args, **kwargs):
+    def eNoViewAssociation (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNoWorkSet (self, *args, **kwargs):
+    def eNoWorkSet (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNonCoplanarGeometry (self, *args, **kwargs):
+    def eNonCoplanarGeometry (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNonPlanarEntity (self, *args, **kwargs):
+    def eNonPlanarEntity (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNonePlotDevice (self, *args, **kwargs):
+    def eNonePlotDevice (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotAllowedForThisProxy (self, *args, **kwargs):
+    def eNotAllowedForThisProxy (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotAnEntity (self, *args, **kwargs):
+    def eNotAnEntity (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotApplicable (self, *args, **kwargs):
+    def eNotApplicable (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotAssociative (self, *args, **kwargs):
+    def eNotAssociative (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotClonedPrimaryProxy (self, *args, **kwargs):
+    def eNotClonedPrimaryProxy (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotConnected (self, *args, **kwargs):
+    def eNotConnected (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotCurrentDatabase (self, *args, **kwargs):
+    def eNotCurrentDatabase (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotDxfHeaderGroupCode (self, *args, **kwargs):
+    def eNotDxfHeaderGroupCode (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotFromThisDocument (self, *args, **kwargs):
+    def eNotFromThisDocument (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotG1Continuous (self, *args, **kwargs):
+    def eNotG1Continuous (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotHandled (self, *args, **kwargs):
+    def eNotHandled (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotImplementedYet (self, *args, **kwargs):
+    def eNotImplementedYet (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotInBlock (self, *args, **kwargs):
+    def eNotInBlock (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotInDatabase (self, *args, **kwargs):
+    def eNotInDatabase (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotInGroup (self, *args, **kwargs):
+    def eNotInGroup (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotInPaperspace (self, *args, **kwargs):
+    def eNotInPaperspace (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotInitializedYet (self, *args, **kwargs):
+    def eNotInitializedYet (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotMultiPageCapable (self, *args, **kwargs):
+    def eNotMultiPageCapable (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotNewlyCreated (self, *args, **kwargs):
+    def eNotNewlyCreated (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotOnBoundary (self, *args, **kwargs):
+    def eNotOnBoundary (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotOpenForRead (self, *args, **kwargs):
+    def eNotOpenForRead (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotOpenForWrite (self, *args, **kwargs):
+    def eNotOpenForWrite (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotShownInPropertyPalette (self, *args, **kwargs):
+    def eNotShownInPropertyPalette (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotSupportedInDwgApi (self, *args, **kwargs):
+    def eNotSupportedInDwgApi (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotThatKindOfClass (self, *args, **kwargs):
+    def eNotThatKindOfClass (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNotTopTransaction (self, *args, **kwargs):
+    def eNotTopTransaction (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNullBlockName (self, *args, **kwargs):
+    def eNullBlockName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNullEntityPointer (self, *args, **kwargs):
+    def eNullEntityPointer (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNullExtents (self, *args, **kwargs):
+    def eNullExtents (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNullHandle (self, *args, **kwargs):
+    def eNullHandle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNullIterator (self, *args, **kwargs):
+    def eNullIterator (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNullNodeId (self, *args, **kwargs):
+    def eNullNodeId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNullObjectId (self, *args, **kwargs):
+    def eNullObjectId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNullObjectPointer (self, *args, **kwargs):
+    def eNullObjectPointer (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNullPtr (self, *args, **kwargs):
+    def eNullPtr (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eNumberOfCopiesNotSupported (self, *args, **kwargs):
+    def eNumberOfCopiesNotSupported (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eObjectIsReferenced (self, *args, **kwargs):
+    def eObjectIsReferenced (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eObjectToBeDeleted (self, *args, **kwargs):
+    def eObjectToBeDeleted (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eObsoleteFileFormat (self, *args, **kwargs):
+    def eObsoleteFileFormat (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eOk (self, *args, **kwargs):
+    def eOk (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eOnLockedLayer (self, *args, **kwargs):
+    def eOnLockedLayer (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eOpenFileCancelled (self, *args, **kwargs):
+    def eOpenFileCancelled (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eOtherObjectsBusy (self, *args, **kwargs):
+    def eOtherObjectsBusy (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eOutOfDisk (self, *args, **kwargs):
+    def eOutOfDisk (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eOutOfMemory (self, *args, **kwargs):
+    def eOutOfMemory (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eOutOfPagerMemory (self, *args, **kwargs):
+    def eOutOfPagerMemory (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eOutOfRange (self, *args, **kwargs):
+    def eOutOfRange (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eOverDefinedConstraint (self, *args, **kwargs):
+    def eOverDefinedConstraint (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eOwnerNotInDatabase (self, *args, **kwargs):
+    def eOwnerNotInDatabase (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eOwnerNotOpenForRead (self, *args, **kwargs):
+    def eOwnerNotOpenForRead (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eOwnerNotOpenForWrite (self, *args, **kwargs):
+    def eOwnerNotOpenForWrite (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eOwnerNotSet (self, *args, **kwargs):
+    def eOwnerNotSet (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eOwnerToBeTransformed (self, *args, **kwargs):
+    def eOwnerToBeTransformed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePCCoordSysAssignFail (self, *args, **kwargs):
+    def ePCCoordSysAssignFail (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePCCoordSysReprojectFail (self, *args, **kwargs):
+    def ePCCoordSysReprojectFail (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePCDiskSpaceTooSmall (self, *args, **kwargs):
+    def ePCDiskSpaceTooSmall (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePCFileDataSelectorInvalid (self, *args, **kwargs):
+    def ePCFileDataSelectorInvalid (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePCFileNotClosed (self, *args, **kwargs):
+    def ePCFileNotClosed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePCFileNotCreated (self, *args, **kwargs):
+    def ePCFileNotCreated (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePCFileNotErased (self, *args, **kwargs):
+    def ePCFileNotErased (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePCFileNotFound (self, *args, **kwargs):
+    def ePCFileNotFound (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePCFileNotOpened (self, *args, **kwargs):
+    def ePCFileNotOpened (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePCFileNotWritten (self, *args, **kwargs):
+    def ePCFileNotWritten (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePCFileWrongFormat (self, *args, **kwargs):
+    def ePCFileWrongFormat (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePCInProgress (self, *args, **kwargs):
+    def ePCInProgress (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePCLargeData (self, *args, **kwargs):
+    def ePCLargeData (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePCLastImporterUnfinished (self, *args, **kwargs):
+    def ePCLastImporterUnfinished (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePCNoEngineInfo (self, *args, **kwargs):
+    def ePCNoEngineInfo (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePCThreadTerminated (self, *args, **kwargs):
+    def ePCThreadTerminated (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePCUnknown (self, *args, **kwargs):
+    def ePCUnknown (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePCUnknownFileType (self, *args, **kwargs):
+    def ePCUnknownFileType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePageCancelled (self, *args, **kwargs):
+    def ePageCancelled (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePagerError (self, *args, **kwargs):
+    def ePagerError (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePagerWriteError (self, *args, **kwargs):
+    def ePagerWriteError (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePermanentlyErased (self, *args, **kwargs):
+    def ePermanentlyErased (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePlotAlreadyStarted (self, *args, **kwargs):
+    def ePlotAlreadyStarted (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePlotCancelled (self, *args, **kwargs):
+    def ePlotCancelled (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePlotStyleInColorDependentMode (self, *args, **kwargs):
+    def ePlotStyleInColorDependentMode (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePointNotOnEntity (self, *args, **kwargs):
+    def ePointNotOnEntity (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePolyWidthLost (self, *args, **kwargs):
+    def ePolyWidthLost (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ePreviewFailed (self, *args, **kwargs):
+    def ePreviewFailed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eProfileDoesNotExist (self, *args, **kwargs):
+    def eProfileDoesNotExist (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eProfileIsInUse (self, *args, **kwargs):
+    def eProfileIsInUse (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eProperClassSeparatorExpected (self, *args, **kwargs):
+    def eProperClassSeparatorExpected (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eReadImageBufferFailed (self, *args, **kwargs):
+    def eReadImageBufferFailed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eRecordNotInTable (self, *args, **kwargs):
+    def eRecordNotInTable (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eReferencedInEquation (self, *args, **kwargs):
+    def eReferencedInEquation (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eRegappIdNotFound (self, *args, **kwargs):
+    def eRegappIdNotFound (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eRegistryAccessError (self, *args, **kwargs):
+    def eRegistryAccessError (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eRegistryCreateError (self, *args, **kwargs):
+    def eRegistryCreateError (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eRenameDoesNotExist (self, *args, **kwargs):
+    def eRenameDoesNotExist (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eRenameInvalidLayoutName (self, *args, **kwargs):
+    def eRenameInvalidLayoutName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eRenameInvalidName (self, *args, **kwargs):
+    def eRenameInvalidName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eRenameIsModelSpace (self, *args, **kwargs):
+    def eRenameIsModelSpace (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eRenameLayoutAlreadyExists (self, *args, **kwargs):
+    def eRenameLayoutAlreadyExists (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eRepeatEntity (self, *args, **kwargs):
+    def eRepeatEntity (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eRepeatedDwgRead (self, *args, **kwargs):
+    def eRepeatedDwgRead (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eRowsMustMatchColumns (self, *args, **kwargs):
+    def eRowsMustMatchColumns (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eSecErrorCipherNotSupported (self, *args, **kwargs):
+    def eSecErrorCipherNotSupported (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eSecErrorComputingSignature (self, *args, **kwargs):
+    def eSecErrorComputingSignature (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eSecErrorDecryptingData (self, *args, **kwargs):
+    def eSecErrorDecryptingData (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eSecErrorEncryptingData (self, *args, **kwargs):
+    def eSecErrorEncryptingData (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eSecErrorGeneratingTimestamp (self, *args, **kwargs):
+    def eSecErrorGeneratingTimestamp (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eSecErrorReadingFile (self, *args, **kwargs):
+    def eSecErrorReadingFile (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eSecErrorWritingFile (self, *args, **kwargs):
+    def eSecErrorWritingFile (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eSecErrorWritingSignature (self, *args, **kwargs):
+    def eSecErrorWritingSignature (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eSecInitializationFailure (self, *args, **kwargs):
+    def eSecInitializationFailure (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eSecInvalidDigitalID (self, *args, **kwargs):
+    def eSecInvalidDigitalID (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eSelfIntersecting (self, *args, **kwargs):
+    def eSelfIntersecting (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eSelfReference (self, *args, **kwargs):
+    def eSelfReference (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eSetFailed (self, *args, **kwargs):
+    def eSetFailed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eSilentOpenFileCancelled (self, *args, **kwargs):
+    def eSilentOpenFileCancelled (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eSingularPoint (self, *args, **kwargs):
+    def eSingularPoint (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eSomeInputDataLeftUnread (self, *args, **kwargs):
+    def eSomeInputDataLeftUnread (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eStringNotAllowedInExpression (self, *args, **kwargs):
+    def eStringNotAllowedInExpression (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eStringTooLong (self, *args, **kwargs):
+    def eStringTooLong (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eSubSelectionSetEmpty (self, *args, **kwargs):
+    def eSubSelectionSetEmpty (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eSubentitiesStillOpen (self, *args, **kwargs):
+    def eSubentitiesStillOpen (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eTargetDocNotQuiescent (self, *args, **kwargs):
+    def eTargetDocNotQuiescent (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eTooFewLineTypeElements (self, *args, **kwargs):
+    def eTooFewLineTypeElements (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eTooFewVertices (self, *args, **kwargs):
+    def eTooFewVertices (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eTooManyActiveCommands (self, *args, **kwargs):
+    def eTooManyActiveCommands (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eTooManyLineTypeElements (self, *args, **kwargs):
+    def eTooManyLineTypeElements (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eTooManyVertices (self, *args, **kwargs):
+    def eTooManyVertices (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eTransactionOpenWhileCommandEnded (self, *args, **kwargs):
+    def eTransactionOpenWhileCommandEnded (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eUnableToGetLabelBlock (self, *args, **kwargs):
+    def eUnableToGetLabelBlock (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eUnableToGetViewAssociation (self, *args, **kwargs):
+    def eUnableToGetViewAssociation (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eUnableToRemoveAssociation  (self, *args, **kwargs):
+    def eUnableToRemoveAssociation  (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eUnableToRemoveOverrides (self, *args, **kwargs):
+    def eUnableToRemoveOverrides (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eUnableToRetrieveOverrides (self, *args, **kwargs):
+    def eUnableToRetrieveOverrides (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eUnableToSetLabelBlock (self, *args, **kwargs):
+    def eUnableToSetLabelBlock (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eUnableToSetViewAssociation (self, *args, **kwargs):
+    def eUnableToSetViewAssociation (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eUnableToStoreOverrides (self, *args, **kwargs):
+    def eUnableToStoreOverrides (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eUnableToStoreReconcileStatus (self, *args, **kwargs):
+    def eUnableToStoreReconcileStatus (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eUnableToSyncModelView (self, *args, **kwargs):
+    def eUnableToSyncModelView (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eUnableToTrimLastPiece (self, *args, **kwargs):
+    def eUnableToTrimLastPiece (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eUnableToTrimSurface (self, *args, **kwargs):
+    def eUnableToTrimSurface (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eUndefineShapeName (self, *args, **kwargs):
+    def eUndefineShapeName (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eUndefinedDxfGroupCode (self, *args, **kwargs):
+    def eUndefinedDxfGroupCode (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eUndefinedLineType (self, *args, **kwargs):
+    def eUndefinedLineType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eUndoNoGroupBegin (self, *args, **kwargs):
+    def eUndoNoGroupBegin (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eUndoOperationNotAvailable (self, *args, **kwargs):
+    def eUndoOperationNotAvailable (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eUnknownDxfFileFormat (self, *args, **kwargs):
+    def eUnknownDxfFileFormat (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eUnknownHandle (self, *args, **kwargs):
+    def eUnknownHandle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eUnrecoverableErrors (self, *args, **kwargs):
+    def eUnrecoverableErrors (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eUnsupportedFileFormat (self, *args, **kwargs):
+    def eUnsupportedFileFormat (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eUserBreak (self, *args, **kwargs):
+    def eUserBreak (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eUserUnloaded (self, *args, **kwargs):
+    def eUserUnloaded (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eVSAPIOnlyValues (self, *args, **kwargs):
+    def eVSAPIOnlyValues (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eVSAlreadyExists (self, *args, **kwargs):
+    def eVSAlreadyExists (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eVSFalse (self, *args, **kwargs):
+    def eVSFalse (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eVSIsAcadDefault (self, *args, **kwargs):
+    def eVSIsAcadDefault (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eVSIsInUse (self, *args, **kwargs):
+    def eVSIsInUse (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eVSNotFound (self, *args, **kwargs):
+    def eVSNotFound (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eVSOneOffCreated (self, *args, **kwargs):
+    def eVSOneOffCreated (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eVSTrue (self, *args, **kwargs):
+    def eVSTrue (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eVertexAfterFace (self, *args, **kwargs):
+    def eVertexAfterFace (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eVetoed (self, *args, **kwargs):
+    def eVetoed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eWasErased (self, *args, **kwargs):
+    def eWasErased (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eWasNotErased (self, *args, **kwargs):
+    def eWasNotErased (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eWasNotForwarding (self, *args, **kwargs):
+    def eWasNotForwarding (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eWasNotOpenForWrite (self, *args, **kwargs):
+    def eWasNotOpenForWrite (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eWasNotifying (self, *args, **kwargs):
+    def eWasNotifying (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eWasOpenForNotify (self, *args, **kwargs):
+    def eWasOpenForNotify (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eWasOpenForRead (self, *args, **kwargs):
+    def eWasOpenForRead (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eWasOpenForUndo (self, *args, **kwargs):
+    def eWasOpenForUndo (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eWasOpenForWrite (self, *args, **kwargs):
+    def eWasOpenForWrite (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eWriteImageBufferFailed (self, *args, **kwargs):
+    def eWriteImageBufferFailed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eWrongCellType (self, *args, **kwargs):
+    def eWrongCellType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eWrongDatabase (self, *args, **kwargs):
+    def eWrongDatabase (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eWrongObjectType (self, *args, **kwargs):
+    def eWrongObjectType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eWrongSubentityType (self, *args, **kwargs):
+    def eWrongSubentityType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eXRefDependent (self, *args, **kwargs):
+    def eXRefDependent (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eXdataSizeExceeded (self, *args, **kwargs):
+    def eXdataSizeExceeded (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eXrefReloadImpossibleAtThisTime (self, *args, **kwargs):
+    def eXrefReloadImpossibleAtThisTime (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def eXrefReloaded (self, *args, **kwargs):
+    def eXrefReloaded (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -22067,10 +22067,10 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -22087,10 +22087,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -25341,10 +25341,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -25364,49 +25364,49 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kAddMarkers (self, *args, **kwargs):
+    def kAddMarkers (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kChildObjectReference (self, *args, **kwargs):
+    def kChildObjectReference (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDetachChildren (self, *args, **kwargs):
+    def kDetachChildren (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kEscapeBackslash (self, *args, **kwargs):
+    def kEscapeBackslash (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kEvaluatedChildren (self, *args, **kwargs):
+    def kEvaluatedChildren (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kEvaluatedText (self, *args, **kwargs):
+    def kEvaluatedText (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kFieldCode (self, *args, **kwargs):
+    def kFieldCode (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kForExpression (self, *args, **kwargs):
+    def kForExpression (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kObjectReference (self, *args, **kwargs):
+    def kObjectReference (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPreserveFields (self, *args, **kwargs):
+    def kPreserveFields (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPreserveOptions (self, *args, **kwargs):
+    def kPreserveOptions (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kStripOptions (self, *args, **kwargs):
+    def kStripOptions (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextField (self, *args, **kwargs):
+    def kTextField (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -25423,10 +25423,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -25496,10 +25496,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -25519,34 +25519,34 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kDemand (self, *args, **kwargs):
+    def kDemand (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kEtransmit (self, *args, **kwargs):
+    def kEtransmit (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kOpen (self, *args, **kwargs):
+    def kOpen (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPlot (self, *args, **kwargs):
+    def kPlot (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPlotPreview (self, *args, **kwargs):
+    def kPlotPreview (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPreview (self, *args, **kwargs):
+    def kPreview (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kRegen (self, *args, **kwargs):
+    def kRegen (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kSave (self, *args, **kwargs):
+    def kSave (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -25563,10 +25563,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -25636,10 +25636,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -25659,34 +25659,34 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kAutomatic (self, *args, **kwargs):
+    def kAutomatic (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDisable (self, *args, **kwargs):
+    def kDisable (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kOnDemand (self, *args, **kwargs):
+    def kOnDemand (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kOnEtransmit (self, *args, **kwargs):
+    def kOnEtransmit (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kOnOpen (self, *args, **kwargs):
+    def kOnOpen (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kOnPlot (self, *args, **kwargs):
+    def kOnPlot (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kOnRegen (self, *args, **kwargs):
+    def kOnRegen (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kOnSave (self, *args, **kwargs):
+    def kOnSave (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -25703,10 +25703,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -25776,10 +25776,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -25799,31 +25799,31 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kEvaluatorNotFound (self, *args, **kwargs):
+    def kEvaluatorNotFound (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kInvalidCode (self, *args, **kwargs):
+    def kInvalidCode (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kInvalidContext (self, *args, **kwargs):
+    def kInvalidContext (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kNotYetEvaluated (self, *args, **kwargs):
+    def kNotYetEvaluated (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kOtherError (self, *args, **kwargs):
+    def kOtherError (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kSuccess (self, *args, **kwargs):
+    def kSuccess (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kSyntaxError (self, *args, **kwargs):
+    def kSyntaxError (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -25840,10 +25840,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -25913,10 +25913,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -25936,28 +25936,28 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kCompiled (self, *args, **kwargs):
+    def kCompiled (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kEvaluated (self, *args, **kwargs):
+    def kEvaluated (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kHasCache (self, *args, **kwargs):
+    def kHasCache (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kHasFormattedString (self, *args, **kwargs):
+    def kHasFormattedString (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kInitialized (self, *args, **kwargs):
+    def kInitialized (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kModified (self, *args, **kwargs):
+    def kModified (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -25974,10 +25974,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -26047,10 +26047,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -26070,52 +26070,52 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kARXApplication (self, *args, **kwargs):
+    def kARXApplication (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCloudOrProjectFile (self, *args, **kwargs):
+    def kCloudOrProjectFile (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCompiledShapeFile (self, *args, **kwargs):
+    def kCompiledShapeFile (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDataLinkFile (self, *args, **kwargs):
+    def kDataLinkFile (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDefault (self, *args, **kwargs):
+    def kDefault (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kEmbeddedImageFile (self, *args, **kwargs):
+    def kEmbeddedImageFile (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kFontFile (self, *args, **kwargs):
+    def kFontFile (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kFontMapFile (self, *args, **kwargs):
+    def kFontMapFile (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMaterialMapFile (self, *args, **kwargs):
+    def kMaterialMapFile (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPatternFile (self, *args, **kwargs):
+    def kPatternFile (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPhotometricWebFile (self, *args, **kwargs):
+    def kPhotometricWebFile (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTrueTypeFontFile (self, *args, **kwargs):
+    def kTrueTypeFontFile (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnderlayFile (self, *args, **kwargs):
+    def kUnderlayFile (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kXRefDrawing (self, *args, **kwargs):
+    def kXRefDrawing (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -26132,10 +26132,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -26205,10 +26205,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -26228,16 +26228,16 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kGridLineStyleDouble (self, *args, **kwargs):
+    def kGridLineStyleDouble (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kGridLineStyleSingle (self, *args, **kwargs):
+    def kGridLineStyleSingle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -26254,10 +26254,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -26327,10 +26327,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -26350,46 +26350,46 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kAllGridLineTypes (self, *args, **kwargs):
+    def kAllGridLineTypes (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kHorzBottom (self, *args, **kwargs):
+    def kHorzBottom (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kHorzGridLineTypes (self, *args, **kwargs):
+    def kHorzGridLineTypes (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kHorzInside (self, *args, **kwargs):
+    def kHorzInside (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kHorzTop (self, *args, **kwargs):
+    def kHorzTop (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kInnerGridLineTypes (self, *args, **kwargs):
+    def kInnerGridLineTypes (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kInvalidGridLine (self, *args, **kwargs):
+    def kInvalidGridLine (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kOuterGridLineTypes (self, *args, **kwargs):
+    def kOuterGridLineTypes (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kVertGridLineTypes (self, *args, **kwargs):
+    def kVertGridLineTypes (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kVertInside (self, *args, **kwargs):
+    def kVertInside (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kVertLeft (self, *args, **kwargs):
+    def kVertLeft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kVertRight (self, *args, **kwargs):
+    def kVertRight (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -26406,10 +26406,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -26479,10 +26479,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -26502,34 +26502,34 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kGridPropAll (self, *args, **kwargs):
+    def kGridPropAll (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kGridPropColor (self, *args, **kwargs):
+    def kGridPropColor (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kGridPropDoubleLineSpacing (self, *args, **kwargs):
+    def kGridPropDoubleLineSpacing (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kGridPropInvalid (self, *args, **kwargs):
+    def kGridPropInvalid (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kGridPropLineStyle (self, *args, **kwargs):
+    def kGridPropLineStyle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kGridPropLineWeight (self, *args, **kwargs):
+    def kGridPropLineWeight (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kGridPropLinetype (self, *args, **kwargs):
+    def kGridPropLinetype (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kGridPropVisibility (self, *args, **kwargs):
+    def kGridPropVisibility (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -26546,10 +26546,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -27689,10 +27689,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -27712,22 +27712,22 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kCirArc (self, *args, **kwargs):
+    def kCirArc (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kEllArc (self, *args, **kwargs):
+    def kEllArc (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLine (self, *args, **kwargs):
+    def kLine (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kSpline (self, *args, **kwargs):
+    def kSpline (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -27744,10 +27744,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -27817,10 +27817,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -27840,16 +27840,16 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kPreDefinedGradient (self, *args, **kwargs):
+    def kPreDefinedGradient (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUserDefinedGradient (self, *args, **kwargs):
+    def kUserDefinedGradient (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -27866,10 +27866,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -27939,10 +27939,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -27962,55 +27962,55 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kDefault (self, *args, **kwargs):
+    def kDefault (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDerived (self, *args, **kwargs):
+    def kDerived (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDoesNotSupportScale (self, *args, **kwargs):
+    def kDoesNotSupportScale (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDuplicate (self, *args, **kwargs):
+    def kDuplicate (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kExternal (self, *args, **kwargs):
+    def kExternal (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kForceAnnoAllVisible (self, *args, **kwargs):
+    def kForceAnnoAllVisible (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kIsAnnotative (self, *args, **kwargs):
+    def kIsAnnotative (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kIsAnnotativeBlock (self, *args, **kwargs):
+    def kIsAnnotativeBlock (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kNotClosed (self, *args, **kwargs):
+    def kNotClosed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kOrientToPaper (self, *args, **kwargs):
+    def kOrientToPaper (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kOutermost (self, *args, **kwargs):
+    def kOutermost (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPolyline (self, *args, **kwargs):
+    def kPolyline (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kSelfIntersecting (self, *args, **kwargs):
+    def kSelfIntersecting (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextIsland (self, *args, **kwargs):
+    def kTextIsland (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextbox (self, *args, **kwargs):
+    def kTextbox (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -28027,10 +28027,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -28100,10 +28100,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -28123,16 +28123,16 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kGradientObject (self, *args, **kwargs):
+    def kGradientObject (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kHatchObject (self, *args, **kwargs):
+    def kHatchObject (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -28149,10 +28149,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -28222,10 +28222,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -28245,19 +28245,19 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kCustomDefined (self, *args, **kwargs):
+    def kCustomDefined (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPreDefined (self, *args, **kwargs):
+    def kPreDefined (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUserDefined (self, *args, **kwargs):
+    def kUserDefined (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -28274,10 +28274,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -28347,10 +28347,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -28370,19 +28370,19 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kIgnore (self, *args, **kwargs):
+    def kIgnore (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kNormal (self, *args, **kwargs):
+    def kNormal (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kOuter (self, *args, **kwargs):
+    def kOuter (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -28399,10 +28399,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -29103,10 +29103,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -29126,22 +29126,22 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kClip (self, *args, **kwargs):
+    def kClip (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kShow (self, *args, **kwargs):
+    def kShow (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kShowUnAligned (self, *args, **kwargs):
+    def kShowUnAligned (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTransparent (self, *args, **kwargs):
+    def kTransparent (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -29158,10 +29158,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -29231,10 +29231,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -29254,73 +29254,73 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kAngstroms (self, *args, **kwargs):
+    def kAngstroms (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAstronomical (self, *args, **kwargs):
+    def kAstronomical (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCentimeter (self, *args, **kwargs):
+    def kCentimeter (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDecimeters (self, *args, **kwargs):
+    def kDecimeters (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDekameters (self, *args, **kwargs):
+    def kDekameters (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kFoot (self, *args, **kwargs):
+    def kFoot (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kGigameters (self, *args, **kwargs):
+    def kGigameters (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kHectometers (self, *args, **kwargs):
+    def kHectometers (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kInch (self, *args, **kwargs):
+    def kInch (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kKilometer (self, *args, **kwargs):
+    def kKilometer (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLightYears (self, *args, **kwargs):
+    def kLightYears (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMeter (self, *args, **kwargs):
+    def kMeter (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMicroinches (self, *args, **kwargs):
+    def kMicroinches (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMicrons (self, *args, **kwargs):
+    def kMicrons (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMile (self, *args, **kwargs):
+    def kMile (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMillimeter (self, *args, **kwargs):
+    def kMillimeter (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMils (self, *args, **kwargs):
+    def kMils (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kNanometers (self, *args, **kwargs):
+    def kNanometers (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kNone (self, *args, **kwargs):
+    def kNone (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kParsecs (self, *args, **kwargs):
+    def kParsecs (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kYard (self, *args, **kwargs):
+    def kYard (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -29337,10 +29337,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -29410,10 +29410,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -29433,22 +29433,22 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kExtendArg (self, *args, **kwargs):
+    def kExtendArg (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kExtendBoth (self, *args, **kwargs):
+    def kExtendBoth (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kExtendThis (self, *args, **kwargs):
+    def kExtendThis (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kOnBothOperands (self, *args, **kwargs):
+    def kOnBothOperands (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -29465,10 +29465,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -29538,10 +29538,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -29561,22 +29561,22 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kJnStylAngle (self, *args, **kwargs):
+    def kJnStylAngle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kJnStylFlat (self, *args, **kwargs):
+    def kJnStylFlat (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kJnStylNone (self, *args, **kwargs):
+    def kJnStylNone (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kJnStylRound (self, *args, **kwargs):
+    def kJnStylRound (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -29593,10 +29593,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -34146,10 +34146,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -34169,16 +34169,16 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kAtLeast (self, *args, **kwargs):
+    def kAtLeast (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kExactly (self, *args, **kwargs):
+    def kExactly (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -34195,10 +34195,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -34268,10 +34268,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -34291,91 +34291,91 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kLnWt000 (self, *args, **kwargs):
+    def kLnWt000 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWt005 (self, *args, **kwargs):
+    def kLnWt005 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWt009 (self, *args, **kwargs):
+    def kLnWt009 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWt013 (self, *args, **kwargs):
+    def kLnWt013 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWt015 (self, *args, **kwargs):
+    def kLnWt015 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWt018 (self, *args, **kwargs):
+    def kLnWt018 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWt020 (self, *args, **kwargs):
+    def kLnWt020 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWt025 (self, *args, **kwargs):
+    def kLnWt025 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWt030 (self, *args, **kwargs):
+    def kLnWt030 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWt035 (self, *args, **kwargs):
+    def kLnWt035 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWt040 (self, *args, **kwargs):
+    def kLnWt040 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWt050 (self, *args, **kwargs):
+    def kLnWt050 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWt053 (self, *args, **kwargs):
+    def kLnWt053 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWt060 (self, *args, **kwargs):
+    def kLnWt060 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWt070 (self, *args, **kwargs):
+    def kLnWt070 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWt080 (self, *args, **kwargs):
+    def kLnWt080 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWt090 (self, *args, **kwargs):
+    def kLnWt090 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWt100 (self, *args, **kwargs):
+    def kLnWt100 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWt106 (self, *args, **kwargs):
+    def kLnWt106 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWt120 (self, *args, **kwargs):
+    def kLnWt120 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWt140 (self, *args, **kwargs):
+    def kLnWt140 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWt158 (self, *args, **kwargs):
+    def kLnWt158 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWt200 (self, *args, **kwargs):
+    def kLnWt200 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWt211 (self, *args, **kwargs):
+    def kLnWt211 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWtByBlock (self, *args, **kwargs):
+    def kLnWtByBlock (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWtByLayer (self, *args, **kwargs):
+    def kLnWtByLayer (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLnWtByLwDefault (self, *args, **kwargs):
+    def kLnWtByLwDefault (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -34392,10 +34392,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -37108,10 +37108,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -37131,16 +37131,16 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kConnectBase (self, *args, **kwargs):
+    def kConnectBase (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kConnectExtents (self, *args, **kwargs):
+    def kConnectExtents (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -37157,10 +37157,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -37230,10 +37230,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -37253,22 +37253,22 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kBlockContent (self, *args, **kwargs):
+    def kBlockContent (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMTextContent (self, *args, **kwargs):
+    def kMTextContent (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kNoneContent (self, *args, **kwargs):
+    def kNoneContent (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kToleranceContent (self, *args, **kwargs):
+    def kToleranceContent (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -37285,10 +37285,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -37358,10 +37358,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -37381,37 +37381,37 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kArrowMark (self, *args, **kwargs):
+    def kArrowMark (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBlockAttribute (self, *args, **kwargs):
+    def kBlockAttribute (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBlockMark (self, *args, **kwargs):
+    def kBlockMark (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDoglegMark (self, *args, **kwargs):
+    def kDoglegMark (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLeaderLineMark (self, *args, **kwargs):
+    def kLeaderLineMark (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMTextMark (self, *args, **kwargs):
+    def kMTextMark (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMTextUnderLineMark (self, *args, **kwargs):
+    def kMTextUnderLineMark (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kNone (self, *args, **kwargs):
+    def kNone (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kToleranceMark (self, *args, **kwargs):
+    def kToleranceMark (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -37428,10 +37428,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -37501,10 +37501,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -37524,25 +37524,25 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kBottomLeader (self, *args, **kwargs):
+    def kBottomLeader (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLeftLeader (self, *args, **kwargs):
+    def kLeftLeader (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kRightLeader (self, *args, **kwargs):
+    def kRightLeader (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTopLeader (self, *args, **kwargs):
+    def kTopLeader (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnknownLeader (self, *args, **kwargs):
+    def kUnknownLeader (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -37559,10 +37559,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -37632,10 +37632,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -37655,19 +37655,19 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kInVisibleLeader (self, *args, **kwargs):
+    def kInVisibleLeader (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kSplineLeader (self, *args, **kwargs):
+    def kSplineLeader (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kStraightLeader (self, *args, **kwargs):
+    def kStraightLeader (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -37684,10 +37684,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -37757,10 +37757,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -37780,19 +37780,19 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kMoveAllExceptArrowHeaderPoints (self, *args, **kwargs):
+    def kMoveAllExceptArrowHeaderPoints (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMoveAllPoints (self, *args, **kwargs):
+    def kMoveAllPoints (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMoveContentAndDoglegPoints (self, *args, **kwargs):
+    def kMoveContentAndDoglegPoints (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -37809,10 +37809,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -37882,10 +37882,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -37905,106 +37905,106 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kArrowSize (self, *args, **kwargs):
+    def kArrowSize (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kArrowSymbolId (self, *args, **kwargs):
+    def kArrowSymbolId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBlockColor (self, *args, **kwargs):
+    def kBlockColor (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBlockConnectionType (self, *args, **kwargs):
+    def kBlockConnectionType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBlockId (self, *args, **kwargs):
+    def kBlockId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBlockRotation (self, *args, **kwargs):
+    def kBlockRotation (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBlockScale (self, *args, **kwargs):
+    def kBlockScale (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kContentType (self, *args, **kwargs):
+    def kContentType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDefaultMText (self, *args, **kwargs):
+    def kDefaultMText (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDoglegLength (self, *args, **kwargs):
+    def kDoglegLength (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kEnableDogleg (self, *args, **kwargs):
+    def kEnableDogleg (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kEnableFrameText (self, *args, **kwargs):
+    def kEnableFrameText (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kEnableLanding (self, *args, **kwargs):
+    def kEnableLanding (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kExtendLeaderToText (self, *args, **kwargs):
+    def kExtendLeaderToText (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLandingGap (self, *args, **kwargs):
+    def kLandingGap (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLeaderLineColor (self, *args, **kwargs):
+    def kLeaderLineColor (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLeaderLineType (self, *args, **kwargs):
+    def kLeaderLineType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLeaderLineTypeId (self, *args, **kwargs):
+    def kLeaderLineTypeId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLeaderLineWeight (self, *args, **kwargs):
+    def kLeaderLineWeight (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kScale (self, *args, **kwargs):
+    def kScale (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kSize (self, *args, **kwargs):
+    def kSize (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextAlignmentType (self, *args, **kwargs):
+    def kTextAlignmentType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextAngleType (self, *args, **kwargs):
+    def kTextAngleType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextAttachmentDirection (self, *args, **kwargs):
+    def kTextAttachmentDirection (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextBottomAttachmentType (self, *args, **kwargs):
+    def kTextBottomAttachmentType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextColor (self, *args, **kwargs):
+    def kTextColor (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextHeight (self, *args, **kwargs):
+    def kTextHeight (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextLeftAttachmentType (self, *args, **kwargs):
+    def kTextLeftAttachmentType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextRightAttachmentType (self, *args, **kwargs):
+    def kTextRightAttachmentType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextStyleId (self, *args, **kwargs):
+    def kTextStyleId (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextSwitchAlignmentType (self, *args, **kwargs):
+    def kTextSwitchAlignmentType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextTopAttachmentType (self, *args, **kwargs):
+    def kTextTopAttachmentType (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -38021,10 +38021,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -38094,10 +38094,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -38117,31 +38117,31 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def k15 (self, *args, **kwargs):
+    def k15 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k30 (self, *args, **kwargs):
+    def k30 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k45 (self, *args, **kwargs):
+    def k45 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k60 (self, *args, **kwargs):
+    def k60 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k90 (self, *args, **kwargs):
+    def k90 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAny (self, *args, **kwargs):
+    def kAny (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kHorz (self, *args, **kwargs):
+    def kHorz (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -38158,10 +38158,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -38959,10 +38959,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -38982,19 +38982,19 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kCenterAlignment (self, *args, **kwargs):
+    def kCenterAlignment (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLeftAlignment (self, *args, **kwargs):
+    def kLeftAlignment (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kRightAlignment (self, *args, **kwargs):
+    def kRightAlignment (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -39011,10 +39011,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -39084,10 +39084,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -39107,19 +39107,19 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kAlwaysRightReadingAngle (self, *args, **kwargs):
+    def kAlwaysRightReadingAngle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kHorizontalAngle (self, *args, **kwargs):
+    def kHorizontalAngle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kInsertAngle (self, *args, **kwargs):
+    def kInsertAngle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -39136,10 +39136,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -39209,10 +39209,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -39232,16 +39232,16 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kAttachmentHorizontal (self, *args, **kwargs):
+    def kAttachmentHorizontal (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAttachmentVertical (self, *args, **kwargs):
+    def kAttachmentVertical (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -39258,10 +39258,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -39331,10 +39331,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -39354,43 +39354,43 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kAttachmentAllLine (self, *args, **kwargs):
+    def kAttachmentAllLine (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAttachmentBottomLine (self, *args, **kwargs):
+    def kAttachmentBottomLine (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAttachmentBottomOfBottom (self, *args, **kwargs):
+    def kAttachmentBottomOfBottom (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAttachmentBottomOfTop (self, *args, **kwargs):
+    def kAttachmentBottomOfTop (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAttachmentBottomOfTopLine (self, *args, **kwargs):
+    def kAttachmentBottomOfTopLine (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAttachmentCenter (self, *args, **kwargs):
+    def kAttachmentCenter (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAttachmentLinedCenter (self, *args, **kwargs):
+    def kAttachmentLinedCenter (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAttachmentMiddle (self, *args, **kwargs):
+    def kAttachmentMiddle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAttachmentMiddleOfBottom (self, *args, **kwargs):
+    def kAttachmentMiddleOfBottom (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAttachmentMiddleOfTop (self, *args, **kwargs):
+    def kAttachmentMiddleOfTop (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kAttachmentTopOfTop (self, *args, **kwargs):
+    def kAttachmentTopOfTop (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -39407,10 +39407,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -40439,10 +40439,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -40462,82 +40462,82 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kBaseAlign (self, *args, **kwargs):
+    def kBaseAlign (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBaseCenter (self, *args, **kwargs):
+    def kBaseCenter (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBaseFit (self, *args, **kwargs):
+    def kBaseFit (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBaseLeft (self, *args, **kwargs):
+    def kBaseLeft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBaseMid (self, *args, **kwargs):
+    def kBaseMid (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBaseRight (self, *args, **kwargs):
+    def kBaseRight (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBottomAlign (self, *args, **kwargs):
+    def kBottomAlign (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBottomCenter (self, *args, **kwargs):
+    def kBottomCenter (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBottomFit (self, *args, **kwargs):
+    def kBottomFit (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBottomLeft (self, *args, **kwargs):
+    def kBottomLeft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBottomMid (self, *args, **kwargs):
+    def kBottomMid (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBottomRight (self, *args, **kwargs):
+    def kBottomRight (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMiddleAlign (self, *args, **kwargs):
+    def kMiddleAlign (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMiddleCenter (self, *args, **kwargs):
+    def kMiddleCenter (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMiddleFit (self, *args, **kwargs):
+    def kMiddleFit (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMiddleLeft (self, *args, **kwargs):
+    def kMiddleLeft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMiddleMid (self, *args, **kwargs):
+    def kMiddleMid (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMiddleRight (self, *args, **kwargs):
+    def kMiddleRight (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTopAlign (self, *args, **kwargs):
+    def kTopAlign (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTopCenter (self, *args, **kwargs):
+    def kTopCenter (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTopFit (self, *args, **kwargs):
+    def kTopFit (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTopLeft (self, *args, **kwargs):
+    def kTopLeft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTopMid (self, *args, **kwargs):
+    def kTopMid (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTopRight (self, *args, **kwargs):
+    def kTopRight (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -40554,10 +40554,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -40627,10 +40627,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -40650,19 +40650,19 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kDynamicColumns (self, *args, **kwargs):
+    def kDynamicColumns (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kNoColumns (self, *args, **kwargs):
+    def kNoColumns (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kStaticColumns (self, *args, **kwargs):
+    def kStaticColumns (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -40679,10 +40679,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -40752,10 +40752,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -40775,25 +40775,25 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kBtoT (self, *args, **kwargs):
+    def kBtoT (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kByStyle (self, *args, **kwargs):
+    def kByStyle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLtoR (self, *args, **kwargs):
+    def kLtoR (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kRtoL (self, *args, **kwargs):
+    def kRtoL (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTtoB (self, *args, **kwargs):
+    def kTtoB (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -40810,10 +40810,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -40883,10 +40883,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -40906,16 +40906,16 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kEnglish (self, *args, **kwargs):
+    def kEnglish (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMetric (self, *args, **kwargs):
+    def kMetric (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -40932,10 +40932,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -41005,10 +41005,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -41028,25 +41028,25 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kMergeCellStyleConvertDuplicatesToOverrides (self, *args, **kwargs):
+    def kMergeCellStyleConvertDuplicatesToOverrides (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMergeCellStyleCopyDuplicates (self, *args, **kwargs):
+    def kMergeCellStyleCopyDuplicates (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMergeCellStyleIgnoreNewStyles (self, *args, **kwargs):
+    def kMergeCellStyleIgnoreNewStyles (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMergeCellStyleNone (self, *args, **kwargs):
+    def kMergeCellStyleNone (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMergeCellStyleOverwriteDuplicates (self, *args, **kwargs):
+    def kMergeCellStyleOverwriteDuplicates (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -41063,10 +41063,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -41864,10 +41864,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -41887,28 +41887,28 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kBottom (self, *args, **kwargs):
+    def kBottom (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kClosed (self, *args, **kwargs):
+    def kClosed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMerged (self, *args, **kwargs):
+    def kMerged (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kOpen (self, *args, **kwargs):
+    def kOpen (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTop (self, *args, **kwargs):
+    def kTop (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kZero (self, *args, **kwargs):
+    def kZero (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -41925,10 +41925,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -43030,13 +43030,13 @@ __init__( (object)arg1) -> None :
     ...
 
 class OpenMode:
-    def ForNotify (self, *args, **kwargs):
+    def ForNotify (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ForRead (self, *args, **kwargs):
+    def ForRead (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def ForWrite (self, *args, **kwargs):
+    def ForWrite (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def __init__ (self, /, *args, **kwargs):
@@ -43073,10 +43073,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -43096,19 +43096,19 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kForNotify (self, *args, **kwargs):
+    def kForNotify (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kForRead (self, *args, **kwargs):
+    def kForRead (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kForWrite (self, *args, **kwargs):
+    def kForWrite (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -43125,10 +43125,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -44535,10 +44535,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -44558,31 +44558,31 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kBackView (self, *args, **kwargs):
+    def kBackView (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kBottomView (self, *args, **kwargs):
+    def kBottomView (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kFrontView (self, *args, **kwargs):
+    def kFrontView (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLeftView (self, *args, **kwargs):
+    def kLeftView (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kNonOrthoView (self, *args, **kwargs):
+    def kNonOrthoView (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kRightView (self, *args, **kwargs):
+    def kRightView (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTopView (self, *args, **kwargs):
+    def kTopView (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -44599,10 +44599,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -45768,10 +45768,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -45791,19 +45791,19 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kLinear (self, *args, **kwargs):
+    def kLinear (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kNonPlanar (self, *args, **kwargs):
+    def kNonPlanar (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPlanar (self, *args, **kwargs):
+    def kPlanar (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -45820,10 +45820,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -46468,10 +46468,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -46491,19 +46491,19 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kInches (self, *args, **kwargs):
+    def kInches (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMillimeters (self, *args, **kwargs):
+    def kMillimeters (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPixels (self, *args, **kwargs):
+    def kPixels (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -46520,10 +46520,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -46593,10 +46593,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -46616,22 +46616,22 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def k0degrees (self, *args, **kwargs):
+    def k0degrees (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k180degrees (self, *args, **kwargs):
+    def k180degrees (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k270degrees (self, *args, **kwargs):
+    def k270degrees (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k90degrees (self, *args, **kwargs):
+    def k90degrees (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -46648,10 +46648,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -47205,10 +47205,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -47228,22 +47228,22 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kPlotStyleNameByBlock (self, *args, **kwargs):
+    def kPlotStyleNameByBlock (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPlotStyleNameById (self, *args, **kwargs):
+    def kPlotStyleNameById (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPlotStyleNameByLayer (self, *args, **kwargs):
+    def kPlotStyleNameByLayer (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPlotStyleNameIsDictDefault (self, *args, **kwargs):
+    def kPlotStyleNameIsDictDefault (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -47260,10 +47260,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -47333,10 +47333,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -47356,28 +47356,28 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kDisplay (self, *args, **kwargs):
+    def kDisplay (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kExtents (self, *args, **kwargs):
+    def kExtents (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLayout (self, *args, **kwargs):
+    def kLayout (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLimits (self, *args, **kwargs):
+    def kLimits (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kView (self, *args, **kwargs):
+    def kView (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kWindow (self, *args, **kwargs):
+    def kWindow (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -47394,10 +47394,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -49420,10 +49420,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -49443,22 +49443,22 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def k2dCubicSplinePoly (self, *args, **kwargs):
+    def k2dCubicSplinePoly (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k2dFitCurvePoly (self, *args, **kwargs):
+    def k2dFitCurvePoly (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k2dQuadSplinePoly (self, *args, **kwargs):
+    def k2dQuadSplinePoly (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k2dSimplePoly (self, *args, **kwargs):
+    def k2dSimplePoly (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -49475,10 +49475,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -49548,10 +49548,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -49571,19 +49571,19 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def k3dCubicSplinePoly (self, *args, **kwargs):
+    def k3dCubicSplinePoly (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k3dQuadSplinePoly (self, *args, **kwargs):
+    def k3dQuadSplinePoly (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k3dSimplePoly (self, *args, **kwargs):
+    def k3dSimplePoly (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -49600,10 +49600,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -58827,10 +58827,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -58850,22 +58850,22 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kAfterXrefResolution (self, *args, **kwargs):
+    def kAfterXrefResolution (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDrawingOpen (self, *args, **kwargs):
+    def kDrawingOpen (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kRasterResolution (self, *args, **kwargs):
+    def kRasterResolution (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kXrefResolution (self, *args, **kwargs):
+    def kXrefResolution (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -58882,10 +58882,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -60879,10 +60879,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -60902,25 +60902,25 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kDegrees000 (self, *args, **kwargs):
+    def kDegrees000 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDegrees090 (self, *args, **kwargs):
+    def kDegrees090 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDegrees180 (self, *args, **kwargs):
+    def kDegrees180 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDegrees270 (self, *args, **kwargs):
+    def kDegrees270 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDegreesUnknown (self, *args, **kwargs):
+    def kDegreesUnknown (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -60937,10 +60937,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -61010,10 +61010,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -61033,25 +61033,25 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kAllRowTypes (self, *args, **kwargs):
+    def kAllRowTypes (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kDataRow (self, *args, **kwargs):
+    def kDataRow (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kHeaderRow (self, *args, **kwargs):
+    def kHeaderRow (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTitleRow (self, *args, **kwargs):
+    def kTitleRow (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnknownRow (self, *args, **kwargs):
+    def kUnknownRow (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -61068,10 +61068,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -61141,10 +61141,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -61164,25 +61164,25 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kArc (self, *args, **kwargs):
+    def kArc (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCoincident (self, *args, **kwargs):
+    def kCoincident (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kEmpty (self, *args, **kwargs):
+    def kEmpty (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kLine (self, *args, **kwargs):
+    def kLine (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPoint (self, *args, **kwargs):
+    def kPoint (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -61199,10 +61199,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -61837,10 +61837,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -61860,28 +61860,28 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kAsDisplayed (self, *args, **kwargs):
+    def kAsDisplayed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kCustom (self, *args, **kwargs):
+    def kCustom (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kMaximum (self, *args, **kwargs):
+    def kMaximum (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kNormal (self, *args, **kwargs):
+    def kNormal (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPresentation (self, *args, **kwargs):
+    def kPresentation (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kPreview (self, *args, **kwargs):
+    def kPreview (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -61898,10 +61898,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -61971,10 +61971,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -61994,28 +61994,28 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kAsDisplayed (self, *args, **kwargs):
+    def kAsDisplayed (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kHidden (self, *args, **kwargs):
+    def kHidden (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kRenderPreset (self, *args, **kwargs):
+    def kRenderPreset (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kRendered (self, *args, **kwargs):
+    def kRendered (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kVisualStyle (self, *args, **kwargs):
+    def kVisualStyle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kWireframe (self, *args, **kwargs):
+    def kWireframe (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -62032,10 +62032,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -62721,10 +62721,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -62744,115 +62744,115 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def k1000_1 (self, *args, **kwargs):
+    def k1000_1 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k100_1 (self, *args, **kwargs):
+    def k100_1 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k10_1 (self, *args, **kwargs):
+    def k10_1 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k1_1 (self, *args, **kwargs):
+    def k1_1 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k1_10 (self, *args, **kwargs):
+    def k1_10 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k1_100 (self, *args, **kwargs):
+    def k1_100 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k1_128in_1ft (self, *args, **kwargs):
+    def k1_128in_1ft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k1_16 (self, *args, **kwargs):
+    def k1_16 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k1_16in_1ft (self, *args, **kwargs):
+    def k1_16in_1ft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k1_2 (self, *args, **kwargs):
+    def k1_2 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k1_20 (self, *args, **kwargs):
+    def k1_20 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k1_2in_1ft (self, *args, **kwargs):
+    def k1_2in_1ft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k1_30 (self, *args, **kwargs):
+    def k1_30 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k1_32in_1ft (self, *args, **kwargs):
+    def k1_32in_1ft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k1_4 (self, *args, **kwargs):
+    def k1_4 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k1_40 (self, *args, **kwargs):
+    def k1_40 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k1_4in_1ft (self, *args, **kwargs):
+    def k1_4in_1ft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k1_5 (self, *args, **kwargs):
+    def k1_5 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k1_50 (self, *args, **kwargs):
+    def k1_50 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k1_64in_1ft (self, *args, **kwargs):
+    def k1_64in_1ft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k1_8 (self, *args, **kwargs):
+    def k1_8 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k1_8in_1ft (self, *args, **kwargs):
+    def k1_8in_1ft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k1and1_2in_1ft (self, *args, **kwargs):
+    def k1and1_2in_1ft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k1ft_1ft (self, *args, **kwargs):
+    def k1ft_1ft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k1in_1ft (self, *args, **kwargs):
+    def k1in_1ft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k2_1 (self, *args, **kwargs):
+    def k2_1 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k3_16in_1ft (self, *args, **kwargs):
+    def k3_16in_1ft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k3_32in_1ft (self, *args, **kwargs):
+    def k3_32in_1ft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k3_4in_1ft (self, *args, **kwargs):
+    def k3_4in_1ft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k3_8in_1ft (self, *args, **kwargs):
+    def k3_8in_1ft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k3in_1ft (self, *args, **kwargs):
+    def k3in_1ft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k4_1 (self, *args, **kwargs):
+    def k4_1 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k6in_1ft (self, *args, **kwargs):
+    def k6in_1ft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k8_1 (self, *args, **kwargs):
+    def k8_1 (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kScaleToFit (self, *args, **kwargs):
+    def kScaleToFit (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -62869,10 +62869,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -66484,10 +66484,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -66507,19 +66507,19 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kTableBreakFlowDownOrUp (self, *args, **kwargs):
+    def kTableBreakFlowDownOrUp (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTableBreakFlowLeft (self, *args, **kwargs):
+    def kTableBreakFlowLeft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTableIteratorNone (self, *args, **kwargs):
+    def kTableIteratorNone (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -66536,10 +66536,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -66609,10 +66609,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -66632,28 +66632,28 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kTableBreakAllowManualHeights (self, *args, **kwargs):
+    def kTableBreakAllowManualHeights (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTableBreakAllowManualPositions (self, *args, **kwargs):
+    def kTableBreakAllowManualPositions (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTableBreakEnableBreaking (self, *args, **kwargs):
+    def kTableBreakEnableBreaking (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTableBreakNone (self, *args, **kwargs):
+    def kTableBreakNone (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTableBreakRepeatBottomLabels (self, *args, **kwargs):
+    def kTableBreakRepeatBottomLabels (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTableBreakRepeatTopLabels (self, *args, **kwargs):
+    def kTableBreakRepeatTopLabels (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -66670,10 +66670,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -66743,10 +66743,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -66766,16 +66766,16 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kExactly (self, *args, **kwargs):
+    def kExactly (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTtoB (self, *args, **kwargs):
+    def kTtoB (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -66792,10 +66792,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -66865,10 +66865,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -66888,25 +66888,25 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kTableHitCell (self, *args, **kwargs):
+    def kTableHitCell (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTableHitColumnIndicator (self, *args, **kwargs):
+    def kTableHitColumnIndicator (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTableHitGridLine (self, *args, **kwargs):
+    def kTableHitGridLine (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTableHitNone (self, *args, **kwargs):
+    def kTableHitNone (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTableHitRowIndicator (self, *args, **kwargs):
+    def kTableHitRowIndicator (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -66923,10 +66923,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -66996,10 +66996,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -67019,37 +67019,37 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kTableIteratorIterateColumns (self, *args, **kwargs):
+    def kTableIteratorIterateColumns (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTableIteratorIterateDataLinks (self, *args, **kwargs):
+    def kTableIteratorIterateDataLinks (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTableIteratorIterateRows (self, *args, **kwargs):
+    def kTableIteratorIterateRows (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTableIteratorIterateSelection (self, *args, **kwargs):
+    def kTableIteratorIterateSelection (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTableIteratorNone (self, *args, **kwargs):
+    def kTableIteratorNone (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTableIteratorReverseOrder (self, *args, **kwargs):
+    def kTableIteratorReverseOrder (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTableIteratorSkipMerged (self, *args, **kwargs):
+    def kTableIteratorSkipMerged (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTableIteratorSkipReadOnlyContent (self, *args, **kwargs):
+    def kTableIteratorSkipReadOnlyContent (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTableIteratorSkipReadOnlyFormat (self, *args, **kwargs):
+    def kTableIteratorSkipReadOnlyFormat (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -67066,10 +67066,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -68647,10 +68647,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -68670,55 +68670,55 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kTextAlignmentAligned (self, *args, **kwargs):
+    def kTextAlignmentAligned (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextAlignmentBottomCenter (self, *args, **kwargs):
+    def kTextAlignmentBottomCenter (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextAlignmentBottomLeft (self, *args, **kwargs):
+    def kTextAlignmentBottomLeft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextAlignmentBottomRight (self, *args, **kwargs):
+    def kTextAlignmentBottomRight (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextAlignmentCenter (self, *args, **kwargs):
+    def kTextAlignmentCenter (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextAlignmentFit (self, *args, **kwargs):
+    def kTextAlignmentFit (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextAlignmentLeft (self, *args, **kwargs):
+    def kTextAlignmentLeft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextAlignmentMiddle (self, *args, **kwargs):
+    def kTextAlignmentMiddle (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextAlignmentMiddleCenter (self, *args, **kwargs):
+    def kTextAlignmentMiddleCenter (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextAlignmentMiddleLeft (self, *args, **kwargs):
+    def kTextAlignmentMiddleLeft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextAlignmentMiddleRight (self, *args, **kwargs):
+    def kTextAlignmentMiddleRight (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextAlignmentRight (self, *args, **kwargs):
+    def kTextAlignmentRight (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextAlignmentTopCenter (self, *args, **kwargs):
+    def kTextAlignmentTopCenter (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextAlignmentTopLeft (self, *args, **kwargs):
+    def kTextAlignmentTopLeft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextAlignmentTopRight (self, *args, **kwargs):
+    def kTextAlignmentTopRight (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -68735,10 +68735,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -68808,10 +68808,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -68831,28 +68831,28 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kTextAlign (self, *args, **kwargs):
+    def kTextAlign (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextCenter (self, *args, **kwargs):
+    def kTextCenter (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextFit (self, *args, **kwargs):
+    def kTextFit (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextLeft (self, *args, **kwargs):
+    def kTextLeft (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextMid (self, *args, **kwargs):
+    def kTextMid (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kTextRight (self, *args, **kwargs):
+    def kTextRight (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -68869,10 +68869,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -69252,7 +69252,7 @@ class TextStyleTableRecord:
     ...
 
 class Transaction:
-    def __init__ (self, *args, **kwargs):
+    def __init__ (self, *args, **kwargs)-> None:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
@@ -69487,10 +69487,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -69510,22 +69510,22 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kByAlpha (self, *args, **kwargs):
+    def kByAlpha (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kByBlock (self, *args, **kwargs):
+    def kByBlock (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kByLayer (self, *args, **kwargs):
+    def kByLayer (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kErrorValue (self, *args, **kwargs):
+    def kErrorValue (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -69542,10 +69542,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -70723,10 +70723,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -70746,88 +70746,88 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kUnitsAngstroms (self, *args, **kwargs):
+    def kUnitsAngstroms (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsAstronomical (self, *args, **kwargs):
+    def kUnitsAstronomical (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsCentimeters (self, *args, **kwargs):
+    def kUnitsCentimeters (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsDecimeters (self, *args, **kwargs):
+    def kUnitsDecimeters (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsDekameters (self, *args, **kwargs):
+    def kUnitsDekameters (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsFeet (self, *args, **kwargs):
+    def kUnitsFeet (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsGigameters (self, *args, **kwargs):
+    def kUnitsGigameters (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsHectometers (self, *args, **kwargs):
+    def kUnitsHectometers (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsInches (self, *args, **kwargs):
+    def kUnitsInches (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsKilometers (self, *args, **kwargs):
+    def kUnitsKilometers (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsLightYears (self, *args, **kwargs):
+    def kUnitsLightYears (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsMax (self, *args, **kwargs):
+    def kUnitsMax (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsMeters (self, *args, **kwargs):
+    def kUnitsMeters (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsMicroinches (self, *args, **kwargs):
+    def kUnitsMicroinches (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsMicrons (self, *args, **kwargs):
+    def kUnitsMicrons (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsMiles (self, *args, **kwargs):
+    def kUnitsMiles (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsMillimeters (self, *args, **kwargs):
+    def kUnitsMillimeters (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsMils (self, *args, **kwargs):
+    def kUnitsMils (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsNanometers (self, *args, **kwargs):
+    def kUnitsNanometers (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsParsecs (self, *args, **kwargs):
+    def kUnitsParsecs (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsUSSurveyFeet (self, *args, **kwargs):
+    def kUnitsUSSurveyFeet (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsUSSurveyInch (self, *args, **kwargs):
+    def kUnitsUSSurveyInch (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsUSSurveyMile (self, *args, **kwargs):
+    def kUnitsUSSurveyMile (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsUSSurveyYard (self, *args, **kwargs):
+    def kUnitsUSSurveyYard (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsUndefined (self, *args, **kwargs):
+    def kUnitsUndefined (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUnitsYards (self, *args, **kwargs):
+    def kUnitsYards (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -70844,10 +70844,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -70917,10 +70917,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -70940,16 +70940,16 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kUpdateDirDataToSource (self, *args, **kwargs):
+    def kUpdateDirDataToSource (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUpdateDirSourceToData (self, *args, **kwargs):
+    def kUpdateDirSourceToData (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -70966,10 +70966,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -71039,10 +71039,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -71062,43 +71062,43 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kSkipFormatAfterFirstUpdate (self, *args, **kwargs):
+    def kSkipFormatAfterFirstUpdate (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUpdateOptionAllowSourceUpdate (self, *args, **kwargs):
+    def kUpdateOptionAllowSourceUpdate (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUpdateOptionForPreview (self, *args, **kwargs):
+    def kUpdateOptionForPreview (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUpdateOptionForceFullSourceUpdate (self, *args, **kwargs):
+    def kUpdateOptionForceFullSourceUpdate (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUpdateOptionIncludeXrefs (self, *args, **kwargs):
+    def kUpdateOptionIncludeXrefs (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUpdateOptionNone (self, *args, **kwargs):
+    def kUpdateOptionNone (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUpdateOptionOverwriteContentModifiedAfterUpdate (self, *args, **kwargs):
+    def kUpdateOptionOverwriteContentModifiedAfterUpdate (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUpdateOptionOverwriteFormatModifiedAfterUpdate (self, *args, **kwargs):
+    def kUpdateOptionOverwriteFormatModifiedAfterUpdate (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUpdateOptionSkipFormat (self, *args, **kwargs):
+    def kUpdateOptionSkipFormat (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUpdateOptionUpdateColumnWidth (self, *args, **kwargs):
+    def kUpdateOptionUpdateColumnWidth (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kUpdateOptionUpdateRowHeight (self, *args, **kwargs):
+    def kUpdateOptionUpdateRowHeight (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -71115,10 +71115,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -72440,10 +72440,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -72463,22 +72463,22 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def k2dCurveFitVertex (self, *args, **kwargs):
+    def k2dCurveFitVertex (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k2dSplineCtlVertex (self, *args, **kwargs):
+    def k2dSplineCtlVertex (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k2dSplineFitVertex (self, *args, **kwargs):
+    def k2dSplineFitVertex (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def k2dVertex (self, *args, **kwargs):
+    def k2dVertex (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -72495,10 +72495,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -72568,10 +72568,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -72591,16 +72591,16 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kInvisible (self, *args, **kwargs):
+    def kInvisible (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kVisible (self, *args, **kwargs):
+    def kVisible (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -72617,10 +72617,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
@@ -72934,10 +72934,10 @@ Also known as the population count.
 >>> (37).bit_length()
 6'''
     ...
-    def conjugate (self, *args, **kwargs):
+    def conjugate (self, *args, **kwargs)-> None:
       '''Returns self, the complex conjugate of any int.'''
     ...
-    def denominator (self, *args, **kwargs):
+    def denominator (self, *args, **kwargs)-> None:
       '''the denominator of a rational number in lowest terms'''
     ...
     def from_bytes (bytes, byteorder, *, signed=False):
@@ -72957,28 +72957,28 @@ Also known as the population count.
   signed
     Indicates whether two's complement is used to represent the integer.'''
     ...
-    def imag (self, *args, **kwargs):
+    def imag (self, *args, **kwargs)-> None:
       '''the imaginary part of a complex number'''
     ...
-    def kXrfFileNotFound (self, *args, **kwargs):
+    def kXrfFileNotFound (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kXrfNotAnXref (self, *args, **kwargs):
+    def kXrfNotAnXref (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kXrfResolved (self, *args, **kwargs):
+    def kXrfResolved (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kXrfUnloaded (self, *args, **kwargs):
+    def kXrfUnloaded (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kXrfUnreferenced (self, *args, **kwargs):
+    def kXrfUnreferenced (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def kXrfUnresolved (self, *args, **kwargs):
+    def kXrfUnresolved (self, *args, **kwargs)-> None:
       '''None'''
     ...
-    def name (self, *args, **kwargs):
+    def name (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def names (self, *args, **kwargs)-> new empty dictionary
@@ -72995,10 +72995,10 @@ dict(iterable) -> new dictionary initialized as if via:
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
-    def numerator (self, *args, **kwargs):
+    def numerator (self, *args, **kwargs)-> None:
       '''the numerator of a rational number in lowest terms'''
     ...
-    def real (self, *args, **kwargs):
+    def real (self, *args, **kwargs)-> None:
       '''the real part of a complex number'''
     ...
     def to_bytes (self, /, length, byteorder, *, signed=False):
