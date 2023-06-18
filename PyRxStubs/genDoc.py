@@ -52,9 +52,9 @@ def findReturnType(sig):
         ie = sig.find(':')
         if ib != -1:
             return sig[ib:ie]
-        return ""
+        return "-> None"
     except:
-        return ""
+        return "-> None"
 
 # todo: boost generates a doc string that has the function signature
 # it should be able to parse this, or add something in the doc user string
