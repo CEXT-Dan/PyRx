@@ -94,6 +94,8 @@ public:
     virtual ~PyRxClass() override = default;
     bool isDerivedFrom(const PyRxClass& other) const;
     std::string name();
+    std::string appName() const;
+    std::string dxfName() const;
     static PyRxClass desc();
     static std::string className();
 

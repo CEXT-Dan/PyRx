@@ -86,10 +86,12 @@ AcRxObject* PyRxObject::impObj(const std::source_location& src /*= std::source_l
 void makeAcRxClassWrapper()
 {
     class_<PyRxClass, bases<PyRxObject>>("RxClass", boost::python::no_init)
-        .def("className", &PyRxClass::className).staticmethod("className")
         .def("isDerivedFrom", &PyRxClass::isDerivedFrom)
-        .def("desc", &PyRxClass::desc).staticmethod("desc")
+        .def("appName", &PyRxClass::appName)
+        .def("dxfName", &PyRxClass::dxfName)
         .def("name", &PyRxClass::name)
+        .def("desc", &PyRxClass::desc).staticmethod("desc")
+        .def("className", &PyRxClass::className).staticmethod("className")
         ;
 }
 
@@ -108,6 +110,16 @@ bool PyRxClass::isDerivedFrom(const PyRxClass& other) const
 std::string PyRxClass::name()
 {
     return wstr_to_utf8(impObj()->name());
+}
+
+std::string PyRxClass::appName() const
+{
+    return wstr_to_utf8(impObj()->appName());
+}
+
+std::string PyRxClass::dxfName() const
+{
+    return wstr_to_utf8(impObj()->dxfName());
 }
 
 PyRxClass PyRxClass::desc()
