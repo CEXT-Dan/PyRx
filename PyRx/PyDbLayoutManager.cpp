@@ -8,7 +8,7 @@ using namespace boost::python;
 
 void makePyDbLayoutManagerWrapper()
 {
-    class_<PyDbLayoutManager, bases<PyRxObject>>("RxClass")
+    class_<PyDbLayoutManager, bases<PyRxObject>>("LayoutManager")
         .def("setCurrentLayout", &PyDbLayoutManager::setCurrentLayout1)
         .def("setCurrentLayout", &PyDbLayoutManager::setCurrentLayout2)
         .def("setCurrentLayoutId", &PyDbLayoutManager::setCurrentLayoutId)

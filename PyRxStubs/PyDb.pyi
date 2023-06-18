@@ -28449,8 +28449,8 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def dbLayoutManager (self, *args, **kwargs)-> RxClass :
-      '''dbLayoutManager( (HostApplicationServices)arg1) -> RxClass :
+    def dbLayoutManager (self, *args, **kwargs)-> LayoutManager :
+      '''dbLayoutManager( (HostApplicationServices)arg1) -> LayoutManager :
 
     C++ signature :
         class PyDbLayoutManager dbLayoutManager(class PyDbHostApplicationServices {lvalue})'''
@@ -30731,6 +30731,200 @@ setShadePlot( (PlotSettings)arg1, (ShadePlotType)arg2, (ObjectId)arg3) -> ErrorS
     ...
     def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> ErrorStatus :
       '''                             '''
+    ...
+
+class LayoutManager:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def className (self, *args, **kwargs)-> str :
+      '''className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def clearSetupForLayouts (self, *args, **kwargs)-> ErrorStatus :
+      '''clearSetupForLayouts( (int)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus clearSetupForLayouts(unsigned __int64)'''
+    ...
+    def cloneLayout (self, *args, **kwargs)-> ErrorStatus :
+      '''cloneLayout( (LayoutManager)arg1, (Layout)arg2, (str)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus cloneLayout(class PyDbLayoutManager {lvalue},class PyDbLayout {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+cloneLayout( (LayoutManager)arg1, (Layout)arg2, (str)arg3, (int)arg4, (Database)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus cloneLayout(class PyDbLayoutManager {lvalue},class PyDbLayout {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,class PyDbDatabase {lvalue})'''
+    ...
+    def copyLayout (self, *args, **kwargs)-> ErrorStatus :
+      '''copyLayout( (LayoutManager)arg1, (str)arg2, (str)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus copyLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+copyLayout( (LayoutManager)arg1, (str)arg2, (str)arg3, (Database)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus copyLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    ...
+    def countLayouts (self, *args, **kwargs)-> int :
+      '''countLayouts( (LayoutManager)arg1) -> int :
+
+    C++ signature :
+        int countLayouts(class PyDbLayoutManager {lvalue})
+
+countLayouts( (LayoutManager)arg1, (Database)arg2) -> int :
+
+    C++ signature :
+        int countLayouts(class PyDbLayoutManager {lvalue},class PyDbDatabase {lvalue})'''
+    ...
+    def createLayout (self, *args, **kwargs)-> ErrorStatus :
+      '''createLayout( (LayoutManager)arg1, (str)arg2, (ObjectId)arg3, (ObjectId)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus createLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},class PyDbObjectId {lvalue})
+
+createLayout( (LayoutManager)arg1, (str)arg2, (ObjectId)arg3, (ObjectId)arg4, (Database)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus createLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},class PyDbObjectId {lvalue},class PyDbDatabase {lvalue})'''
+    ...
+    def deleteLayout (self, *args, **kwargs)-> ErrorStatus :
+      '''deleteLayout( (LayoutManager)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus deleteLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+deleteLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus deleteLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
+    ...
+    def desc (self, *args, **kwargs)-> RxClass :
+      '''desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def findLayoutNamed (self, *args, **kwargs)-> ObjectId :
+      '''findLayoutNamed( (LayoutManager)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId findLayoutNamed(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+findLayoutNamed( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId findLayoutNamed(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    ...
+    def getActiveLayoutBTRId (self, *args, **kwargs)-> ObjectId :
+      '''getActiveLayoutBTRId( (LayoutManager)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getActiveLayoutBTRId(class PyDbLayoutManager {lvalue})
+
+getActiveLayoutBTRId( (LayoutManager)arg1, (Database)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getActiveLayoutBTRId(class PyDbLayoutManager {lvalue},class PyDbDatabase)'''
+    ...
+    def getActiveLayoutName (self, *args, **kwargs)-> str :
+      '''getActiveLayoutName( (LayoutManager)arg1, (bool)arg2) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getActiveLayoutName(class PyDbLayoutManager {lvalue},bool)
+
+getActiveLayoutName( (LayoutManager)arg1, (bool)arg2, (Database)arg3) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getActiveLayoutName(class PyDbLayoutManager {lvalue},bool,class PyDbDatabase {lvalue})'''
+    ...
+    def getNonRectVPIdFromClipId (self, *args, **kwargs)-> ObjectId :
+      '''getNonRectVPIdFromClipId( (LayoutManager)arg1, (ObjectId)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getNonRectVPIdFromClipId(class PyDbLayoutManager {lvalue},class PyDbObjectId {lvalue})'''
+    ...
+    def isA (self, *args, **kwargs)-> RxClass :
+      '''isA( (RxObject)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyRxObject {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs)-> bool :
+      '''isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def isVpnumClipped (self, *args, **kwargs)-> bool :
+      '''isVpnumClipped( (LayoutManager)arg1, (int)arg2) -> bool :
+
+    C++ signature :
+        bool isVpnumClipped(class PyDbLayoutManager {lvalue},int)
+
+isVpnumClipped( (LayoutManager)arg1, (int)arg2, (Database)arg3) -> bool :
+
+    C++ signature :
+        bool isVpnumClipped(class PyDbLayoutManager {lvalue},int,class PyDbDatabase)'''
+    ...
+    def layoutExists (self, *args, **kwargs)-> bool :
+      '''layoutExists( (LayoutManager)arg1, (str)arg2) -> bool :
+
+    C++ signature :
+        bool layoutExists(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+layoutExists( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> bool :
+
+    C++ signature :
+        bool layoutExists(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    ...
+    def refCount (self, *args, **kwargs)-> int :
+      '''refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
+    def renameLayout (self, *args, **kwargs)-> ErrorStatus :
+      '''renameLayout( (LayoutManager)arg1, (str)arg2, (str)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus renameLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+renameLayout( (LayoutManager)arg1, (str)arg2, (str)arg3, (Database)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus renameLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
+    ...
+    def setCurrentLayout (self, *args, **kwargs)-> ErrorStatus :
+      '''setCurrentLayout( (LayoutManager)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setCurrentLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setCurrentLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setCurrentLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
+    ...
+    def setCurrentLayoutId (self, *args, **kwargs)-> ErrorStatus :
+      '''setCurrentLayoutId( (LayoutManager)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setCurrentLayoutId(class PyDbLayoutManager {lvalue},class PyDbObjectId)'''
+    ...
+    def setupForLayouts (self, *args, **kwargs)-> int :
+      '''setupForLayouts( (Database)arg1) -> int :
+
+    C++ signature :
+        unsigned __int64 setupForLayouts(class PyDbDatabase {lvalue})'''
     ...
 
 class Leader:
@@ -60910,200 +61104,6 @@ dict(iterable) -> new dictionary initialized as if via:
         d[k] = v
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
-    ...
-
-class RxClass:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
-    ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
-    ...
-    def clearSetupForLayouts (self, *args, **kwargs)-> ErrorStatus :
-      '''clearSetupForLayouts( (int)arg1) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus clearSetupForLayouts(unsigned __int64)'''
-    ...
-    def cloneLayout (self, *args, **kwargs)-> ErrorStatus :
-      '''cloneLayout( (RxClass)arg1, (Layout)arg2, (str)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus cloneLayout(class PyDbLayoutManager {lvalue},class PyDbLayout {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-cloneLayout( (RxClass)arg1, (Layout)arg2, (str)arg3, (int)arg4, (Database)arg5) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus cloneLayout(class PyDbLayoutManager {lvalue},class PyDbLayout {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,class PyDbDatabase {lvalue})'''
-    ...
-    def copyLayout (self, *args, **kwargs)-> ErrorStatus :
-      '''copyLayout( (RxClass)arg1, (str)arg2, (str)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus copyLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-copyLayout( (RxClass)arg1, (str)arg2, (str)arg3, (Database)arg4) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus copyLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
-    ...
-    def countLayouts (self, *args, **kwargs)-> int :
-      '''countLayouts( (RxClass)arg1) -> int :
-
-    C++ signature :
-        int countLayouts(class PyDbLayoutManager {lvalue})
-
-countLayouts( (RxClass)arg1, (Database)arg2) -> int :
-
-    C++ signature :
-        int countLayouts(class PyDbLayoutManager {lvalue},class PyDbDatabase {lvalue})'''
-    ...
-    def createLayout (self, *args, **kwargs)-> ErrorStatus :
-      '''createLayout( (RxClass)arg1, (str)arg2, (ObjectId)arg3, (ObjectId)arg4) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus createLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},class PyDbObjectId {lvalue})
-
-createLayout( (RxClass)arg1, (str)arg2, (ObjectId)arg3, (ObjectId)arg4, (Database)arg5) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus createLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},class PyDbObjectId {lvalue},class PyDbDatabase {lvalue})'''
-    ...
-    def deleteLayout (self, *args, **kwargs)-> ErrorStatus :
-      '''deleteLayout( (RxClass)arg1, (str)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus deleteLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-deleteLayout( (RxClass)arg1, (str)arg2, (Database)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus deleteLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
-    ...
-    def desc (self, *args, **kwargs)-> RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
-    ...
-    def findLayoutNamed (self, *args, **kwargs)-> ObjectId :
-      '''findLayoutNamed( (RxClass)arg1, (str)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId findLayoutNamed(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-findLayoutNamed( (RxClass)arg1, (str)arg2, (Database)arg3) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId findLayoutNamed(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
-    ...
-    def getActiveLayoutBTRId (self, *args, **kwargs)-> ObjectId :
-      '''getActiveLayoutBTRId( (RxClass)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getActiveLayoutBTRId(class PyDbLayoutManager {lvalue})
-
-getActiveLayoutBTRId( (RxClass)arg1, (Database)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getActiveLayoutBTRId(class PyDbLayoutManager {lvalue},class PyDbDatabase)'''
-    ...
-    def getActiveLayoutName (self, *args, **kwargs)-> str :
-      '''getActiveLayoutName( (RxClass)arg1, (bool)arg2) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getActiveLayoutName(class PyDbLayoutManager {lvalue},bool)
-
-getActiveLayoutName( (RxClass)arg1, (bool)arg2, (Database)arg3) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getActiveLayoutName(class PyDbLayoutManager {lvalue},bool,class PyDbDatabase {lvalue})'''
-    ...
-    def getNonRectVPIdFromClipId (self, *args, **kwargs)-> ObjectId :
-      '''getNonRectVPIdFromClipId( (RxClass)arg1, (ObjectId)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getNonRectVPIdFromClipId(class PyDbLayoutManager {lvalue},class PyDbObjectId {lvalue})'''
-    ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (RxObject)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
-    ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
-    ...
-    def isVpnumClipped (self, *args, **kwargs)-> bool :
-      '''isVpnumClipped( (RxClass)arg1, (int)arg2) -> bool :
-
-    C++ signature :
-        bool isVpnumClipped(class PyDbLayoutManager {lvalue},int)
-
-isVpnumClipped( (RxClass)arg1, (int)arg2, (Database)arg3) -> bool :
-
-    C++ signature :
-        bool isVpnumClipped(class PyDbLayoutManager {lvalue},int,class PyDbDatabase)'''
-    ...
-    def layoutExists (self, *args, **kwargs)-> bool :
-      '''layoutExists( (RxClass)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool layoutExists(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-layoutExists( (RxClass)arg1, (str)arg2, (Database)arg3) -> bool :
-
-    C++ signature :
-        bool layoutExists(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
-    ...
-    def renameLayout (self, *args, **kwargs)-> ErrorStatus :
-      '''renameLayout( (RxClass)arg1, (str)arg2, (str)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus renameLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-renameLayout( (RxClass)arg1, (str)arg2, (str)arg3, (Database)arg4) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus renameLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
-    ...
-    def setCurrentLayout (self, *args, **kwargs)-> ErrorStatus :
-      '''setCurrentLayout( (RxClass)arg1, (str)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setCurrentLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-setCurrentLayout( (RxClass)arg1, (str)arg2, (Database)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setCurrentLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
-    ...
-    def setCurrentLayoutId (self, *args, **kwargs)-> ErrorStatus :
-      '''setCurrentLayoutId( (RxClass)arg1, (ObjectId)arg2) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus setCurrentLayoutId(class PyDbLayoutManager {lvalue},class PyDbObjectId)'''
-    ...
-    def setupForLayouts (self, *args, **kwargs)-> int :
-      '''setupForLayouts( (Database)arg1) -> int :
-
-    C++ signature :
-        unsigned __int64 setupForLayouts(class PyDbDatabase {lvalue})'''
     ...
 
 class SegType:
