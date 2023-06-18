@@ -1,6 +1,7 @@
 #pragma once
 
 class PyDbDatabase;
+class PyDbLayoutManager;
 void makeAcDbHostApplicationServicesWrapper();
 
 class PyDbHostApplicationServices
@@ -12,6 +13,7 @@ public:
     std::string findFile2(const std::string& fileName, const PyDbDatabase& db);
     std::string findFile3(const std::string& fileName, const PyDbDatabase& db, AcDbHostApplicationServices::FindFileHint hint);
     std::string product() const;
+    PyDbLayoutManager dbLayoutManager();
 
 
 
