@@ -12,6 +12,9 @@ import PyDb  # = database
 import PyAp  # = application, document classes services
 import PyEd  # = editor
 
+#TODO iterate all the above modules, and add imports ant type aliasing 
+#to each
+
 # just some ideas on getting help, work in progress
 def include_attr(name):
     try:
