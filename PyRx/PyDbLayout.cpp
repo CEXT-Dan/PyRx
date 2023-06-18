@@ -501,6 +501,22 @@ void makePyDbLayoutWrapper()
     class_<PyDbLayout, bases<PyDbPlotSettings>>("Layout")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("getBlockTableRecordId", &PyDbLayout::getBlockTableRecordId)
+        .def("setBlockTableRecordId", &PyDbLayout::setBlockTableRecordId)
+        .def("addToLayoutDict", &PyDbLayout::addToLayoutDict)
+        .def("getLayoutName", &PyDbLayout::getLayoutName)
+        .def("setLayoutName", &PyDbLayout::setLayoutName)
+        .def("getTabOrder", &PyDbLayout::getTabOrder)
+        .def("setTabOrder", &PyDbLayout::setTabOrder)
+        .def("getTabSelected", &PyDbLayout::getTabSelected)
+        .def("setTabSelected", &PyDbLayout::setTabSelected)
+        .def("getViewportArray", &PyDbLayout::getViewportArray)
+        .def("getLimits", &PyDbLayout::getLimits)
+        .def("getExtents", &PyDbLayout::getExtents)
+        .def("initialize", &PyDbLayout::initialize1)
+        .def("initialize", &PyDbLayout::initialize2)
+        .def("annoAllVisible", &PyDbLayout::annoAllVisible)
+        .def("setAnnoAllVisible", &PyDbLayout::setAnnoAllVisible)
         .def("className", &PyDbLayout::className).staticmethod("className")
         .def("desc", &PyDbLayout::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbLayout::cloneFrom).staticmethod("cloneFrom")
@@ -524,6 +540,107 @@ PyDbLayout::PyDbLayout(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbLayout>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbObjectId PyDbLayout::getBlockTableRecordId() const
+{
+    return PyDbObjectId(impObj()->getBlockTableRecordId());
+}
+
+Acad::ErrorStatus PyDbLayout::setBlockTableRecordId(PyDbObjectId& BlockTableRecordId)
+{
+    return impObj()->setBlockTableRecordId(BlockTableRecordId.m_id);
+}
+
+Acad::ErrorStatus PyDbLayout::addToLayoutDict(PyDbDatabase& towhichDb, PyDbObjectId BlockTableRecordId)
+{
+    return impObj()->addToLayoutDict(towhichDb.impObj(), BlockTableRecordId.m_id);
+}
+
+std::string PyDbLayout::getLayoutName() const
+{
+    const ACHAR* layoutName = nullptr;
+    if (auto es = impObj()->getLayoutName(layoutName); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return wstr_to_utf8(layoutName);
+}
+
+Acad::ErrorStatus PyDbLayout::setLayoutName(const std::string& layoutName)
+{
+    return impObj()->setLayoutName(utf8_to_wstr(layoutName).c_str());
+}
+
+int PyDbLayout::getTabOrder() const
+{
+    return impObj()->getTabOrder();
+}
+
+void PyDbLayout::setTabOrder(int newOrder)
+{
+    impObj()->setTabOrder(newOrder);
+}
+
+bool PyDbLayout::getTabSelected() const
+{
+    return impObj()->getTabSelected();
+}
+
+void PyDbLayout::setTabSelected(Adesk::Boolean tabSelected)
+{
+    impObj()->setTabSelected(tabSelected);
+}
+
+boost::python::list PyDbLayout::getViewportArray() const
+{
+    PyAutoLockGIL lock;
+    AcDbObjectIdArray ids;
+    boost::python::list pyids;
+    ids = impObj()->getViewportArray();
+    for (auto& id : ids)
+        pyids.append(PyDbObjectId(id));
+    return pyids;
+}
+
+boost::python::tuple PyDbLayout::getLimits() const
+{
+    PyAutoLockGIL lock;
+    AcGePoint2d limMin; 
+    AcGePoint2d limMax;
+    impObj()->getLimits(limMin, limMax);
+    return boost::python::make_tuple(limMin, limMax);
+}
+
+boost::python::tuple PyDbLayout::getExtents() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    PyAutoLockGIL lock;
+    AcGePoint3d extMin;
+    AcGePoint3d extMax;
+    impObj()->getExtents(extMin, extMax);
+    return boost::python::make_tuple(extMin, extMax);
+#endif
+}
+
+Acad::ErrorStatus PyDbLayout::initialize1()
+{
+    return impObj()->initialize();
+}
+
+Acad::ErrorStatus PyDbLayout::initialize2(PyDbObjectId& paperVportId)
+{
+    return impObj()->initialize(&paperVportId.m_id);
+}
+
+bool PyDbLayout::annoAllVisible() const
+{
+    return impObj()->annoAllVisible();
+}
+
+Acad::ErrorStatus PyDbLayout::setAnnoAllVisible(bool newVal)
+{
+    return impObj()->setAnnoAllVisible(newVal);
 }
 
 std::string PyDbLayout::className()

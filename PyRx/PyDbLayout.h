@@ -83,6 +83,23 @@ public:
     PyDbLayout(const PyDbObjectId& id, AcDb::OpenMode mode);
     ~PyDbLayout() override = default;
 
+    PyDbObjectId        getBlockTableRecordId() const;
+    Acad::ErrorStatus   setBlockTableRecordId(PyDbObjectId& BlockTableRecordId);
+    Acad::ErrorStatus   addToLayoutDict(PyDbDatabase& towhichDb, PyDbObjectId BlockTableRecordId);
+    std::string         getLayoutName() const;
+    Acad::ErrorStatus   setLayoutName(const std::string& layoutName);
+    int                 getTabOrder() const;
+    void                setTabOrder(int newOrder);
+    bool                getTabSelected() const;
+    void                setTabSelected(Adesk::Boolean tabSelected);
+    boost::python::list getViewportArray() const;
+    boost::python::tuple getLimits() const;
+    boost::python::tuple getExtents() const;
+    Acad::ErrorStatus   initialize1();
+    Acad::ErrorStatus   initialize2(PyDbObjectId& paperVportId);
+    bool                annoAllVisible() const;
+    Acad::ErrorStatus   setAnnoAllVisible(bool newVal);
+
 public:
     static std::string    className();
     static PyRxClass      desc();
