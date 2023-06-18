@@ -28449,6 +28449,12 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+    def dbLayoutManager (self, *args, **kwargs)-> RxClass :
+      '''dbLayoutManager( (HostApplicationServices)arg1) -> RxClass :
+
+    C++ signature :
+        class PyDbLayoutManager dbLayoutManager(class PyDbHostApplicationServices {lvalue})'''
+    ...
     def findFile (self, *args, **kwargs)-> str :
       '''findFile( (HostApplicationServices)arg1, (str)arg2) -> str :
 
@@ -30145,6 +30151,580 @@ transparency( (LayerTableRecord)arg1, (ObjectId)arg2) -> Transparency :
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def xData (self: DbObject,appname: str)-> list :
+      '''                             '''
+    ...
+    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> ErrorStatus :
+      '''                             '''
+    ...
+
+class Layout:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addPersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def addToLayoutDict (self, *args, **kwargs)-> ErrorStatus :
+      '''addToLayoutDict( (Layout)arg1, (Database)arg2, (ObjectId)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus addToLayoutDict(class PyDbLayout {lvalue},class PyDbDatabase {lvalue},class PyDbObjectId)'''
+    ...
+    def addToPlotSettingsDict (self, *args, **kwargs)-> ErrorStatus :
+      '''addToPlotSettingsDict( (PlotSettings)arg1, (Database)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus addToPlotSettingsDict(class PyDbPlotSettings {lvalue},class PyDbDatabase {lvalue})'''
+    ...
+    def annoAllVisible (self, *args, **kwargs)-> bool :
+      '''annoAllVisible( (Layout)arg1) -> bool :
+
+    C++ signature :
+        bool annoAllVisible(class PyDbLayout {lvalue})'''
+    ...
+    def assertNotifyEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertReadEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertWriteEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def cancel (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def cast (self, *args, **kwargs)-> Layout :
+      '''cast( (RxObject)arg1) -> Layout :
+
+    C++ signature :
+        class PyDbLayout cast(class PyRxObject)'''
+    ...
+    def className (self, *args, **kwargs)-> str :
+      '''className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs)-> Layout :
+      '''cloneFrom( (RxObject)arg1) -> Layout :
+
+    C++ signature :
+        class PyDbLayout cloneFrom(class PyRxObject)'''
+    ...
+    def close (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def createExtensionDictionary (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def database (self: DbObject)-> Database :
+      '''                             '''
+    ...
+    def desc (self, *args, **kwargs)-> RxClass :
+      '''desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def disableUndoRecording (self: DbObject,disable: bool)-> None :
+      '''                             '''
+    ...
+    def downgradeOpen (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def drawViewportsFirst (self, *args, **kwargs)-> bool :
+      '''drawViewportsFirst( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool drawViewportsFirst(class PyDbPlotSettings {lvalue})'''
+    ...
+    def erase (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def extensionDictionary (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getBlockTableRecordId (self, *args, **kwargs)-> ObjectId :
+      '''getBlockTableRecordId( (Layout)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getBlockTableRecordId(class PyDbLayout {lvalue})'''
+    ...
+    def getCanonicalMediaName (self, *args, **kwargs)-> str :
+      '''getCanonicalMediaName( (PlotSettings)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getCanonicalMediaName(class PyDbPlotSettings {lvalue})'''
+    ...
+    def getCurrentStyleSheet (self, *args, **kwargs)-> str :
+      '''getCurrentStyleSheet( (PlotSettings)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getCurrentStyleSheet(class PyDbPlotSettings {lvalue})'''
+    ...
+    def getCustomPrintScale (self, *args, **kwargs)-> tuple :
+      '''getCustomPrintScale( (PlotSettings)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getCustomPrintScale(class PyDbPlotSettings {lvalue})'''
+    ...
+    def getExtents (self, *args, **kwargs)-> tuple :
+      '''getExtents( (Layout)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getExtents(class PyDbLayout {lvalue})'''
+    ...
+    def getField (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getFieldDictionary (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getHandle (self: DbObject)-> Handle :
+      '''                             '''
+    ...
+    def getLayoutName (self, *args, **kwargs)-> str :
+      '''getLayoutName( (Layout)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getLayoutName(class PyDbLayout {lvalue})'''
+    ...
+    def getLimits (self, *args, **kwargs)-> tuple :
+      '''getLimits( (Layout)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getLimits(class PyDbLayout {lvalue})'''
+    ...
+    def getPlotCfgName (self, *args, **kwargs)-> str :
+      '''getPlotCfgName( (PlotSettings)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getPlotCfgName(class PyDbPlotSettings {lvalue})'''
+    ...
+    def getPlotOrigin (self, *args, **kwargs)-> tuple :
+      '''getPlotOrigin( (PlotSettings)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getPlotOrigin(class PyDbPlotSettings {lvalue})'''
+    ...
+    def getPlotPaperMargins (self, *args, **kwargs)-> tuple :
+      '''getPlotPaperMargins( (PlotSettings)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getPlotPaperMargins(class PyDbPlotSettings {lvalue})'''
+    ...
+    def getPlotPaperSize (self, *args, **kwargs)-> tuple :
+      '''getPlotPaperSize( (PlotSettings)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getPlotPaperSize(class PyDbPlotSettings {lvalue})'''
+    ...
+    def getPlotSettingsName (self, *args, **kwargs)-> str :
+      '''getPlotSettingsName( (PlotSettings)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getPlotSettingsName(class PyDbPlotSettings {lvalue})'''
+    ...
+    def getPlotViewName (self, *args, **kwargs)-> str :
+      '''getPlotViewName( (PlotSettings)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getPlotViewName(class PyDbPlotSettings {lvalue})'''
+    ...
+    def getPlotWindowArea (self, *args, **kwargs)-> tuple :
+      '''getPlotWindowArea( (PlotSettings)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getPlotWindowArea(class PyDbPlotSettings {lvalue})'''
+    ...
+    def getStdScale (self, *args, **kwargs)-> float :
+      '''getStdScale( (PlotSettings)arg1) -> float :
+
+    C++ signature :
+        double getStdScale(class PyDbPlotSettings {lvalue})'''
+    ...
+    def getTabOrder (self, *args, **kwargs)-> int :
+      '''getTabOrder( (Layout)arg1) -> int :
+
+    C++ signature :
+        int getTabOrder(class PyDbLayout {lvalue})'''
+    ...
+    def getTabSelected (self, *args, **kwargs)-> bool :
+      '''getTabSelected( (Layout)arg1) -> bool :
+
+    C++ signature :
+        bool getTabSelected(class PyDbLayout {lvalue})'''
+    ...
+    def getViewportArray (self, *args, **kwargs)-> list :
+      '''getViewportArray( (Layout)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getViewportArray(class PyDbLayout {lvalue})'''
+    ...
+    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def hasFields (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def initialize (self, *args, **kwargs)-> ErrorStatus :
+      '''initialize( (Layout)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus initialize(class PyDbLayout {lvalue})
+
+initialize( (Layout)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus initialize(class PyDbLayout {lvalue},class PyDbObjectId {lvalue})'''
+    ...
+    def isA (self, *args, **kwargs)-> RxClass :
+      '''isA( (Drawable)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+    ...
+    def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isCancelling (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isEraseStatusToggled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isErased (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModified (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedGraphics (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedXData (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNewObject (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifyEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifying (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNull (self, *args, **kwargs)-> bool :
+      '''isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def isReadEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isReallyClosing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isTransactionResident (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoRecordingDisabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isWriteEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def modelType (self, *args, **kwargs)-> bool :
+      '''modelType( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool modelType(class PyDbPlotSettings {lvalue})'''
+    ...
+    def objectId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def plotAsRaster (self, *args, **kwargs)-> bool :
+      '''plotAsRaster( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool plotAsRaster(class PyDbPlotSettings {lvalue})'''
+    ...
+    def plotCentered (self, *args, **kwargs)-> bool :
+      '''plotCentered( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool plotCentered(class PyDbPlotSettings {lvalue})'''
+    ...
+    def plotHidden (self, *args, **kwargs)-> bool :
+      '''plotHidden( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool plotHidden(class PyDbPlotSettings {lvalue})'''
+    ...
+    def plotPaperUnits (self, *args, **kwargs)-> PlotPaperUnits :
+      '''plotPaperUnits( (PlotSettings)arg1) -> PlotPaperUnits :
+
+    C++ signature :
+        enum AcDbPlotSettings::PlotPaperUnits plotPaperUnits(class PyDbPlotSettings {lvalue})'''
+    ...
+    def plotPlotStyles (self, *args, **kwargs)-> bool :
+      '''plotPlotStyles( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool plotPlotStyles(class PyDbPlotSettings {lvalue})'''
+    ...
+    def plotRotation (self, *args, **kwargs)-> PlotRotation :
+      '''plotRotation( (PlotSettings)arg1) -> PlotRotation :
+
+    C++ signature :
+        enum AcDbPlotSettings::PlotRotation plotRotation(class PyDbPlotSettings {lvalue})'''
+    ...
+    def plotTransparency (self, *args, **kwargs)-> bool :
+      '''plotTransparency( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool plotTransparency(class PyDbPlotSettings {lvalue})'''
+    ...
+    def plotType (self, *args, **kwargs)-> PlotType :
+      '''plotType( (PlotSettings)arg1) -> PlotType :
+
+    C++ signature :
+        enum AcDbPlotSettings::PlotType plotType(class PyDbPlotSettings {lvalue})'''
+    ...
+    def plotViewportBorders (self, *args, **kwargs)-> bool :
+      '''plotViewportBorders( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool plotViewportBorders(class PyDbPlotSettings {lvalue})'''
+    ...
+    def plotWireframe (self, *args, **kwargs)-> bool :
+      '''plotWireframe( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool plotWireframe(class PyDbPlotSettings {lvalue})'''
+    ...
+    def printLineweights (self, *args, **kwargs)-> bool :
+      '''printLineweights( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool printLineweights(class PyDbPlotSettings {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs)-> int :
+      '''refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
+    def releaseExtensionDictionary (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def removeField (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def scaleLineweights (self, *args, **kwargs)-> bool :
+      '''scaleLineweights( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool scaleLineweights(class PyDbPlotSettings {lvalue})'''
+    ...
+    def setAnnoAllVisible (self, *args, **kwargs)-> ErrorStatus :
+      '''setAnnoAllVisible( (Layout)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setAnnoAllVisible(class PyDbLayout {lvalue},bool)'''
+    ...
+    def setBlockTableRecordId (self, *args, **kwargs)-> ErrorStatus :
+      '''setBlockTableRecordId( (Layout)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setBlockTableRecordId(class PyDbLayout {lvalue},class PyDbObjectId {lvalue})'''
+    ...
+    def setDrawViewportsFirst (self, *args, **kwargs)-> None :
+      '''setDrawViewportsFirst( (PlotSettings)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setDrawViewportsFirst(class PyDbPlotSettings {lvalue},bool)'''
+    ...
+    def setField (self: DbObject,obj: Field)-> ObjectId :
+      '''                             '''
+    ...
+    def setLayoutName (self, *args, **kwargs)-> ErrorStatus :
+      '''setLayoutName( (Layout)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayoutName(class PyDbLayout {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setOwnerId (self: DbObject,owner: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def setPlotHidden (self, *args, **kwargs)-> None :
+      '''setPlotHidden( (PlotSettings)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setPlotHidden(class PyDbPlotSettings {lvalue},bool)'''
+    ...
+    def setPlotPlotStyles (self, *args, **kwargs)-> None :
+      '''setPlotPlotStyles( (PlotSettings)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setPlotPlotStyles(class PyDbPlotSettings {lvalue},bool)'''
+    ...
+    def setPlotSettingsName (self, *args, **kwargs)-> ErrorStatus :
+      '''setPlotSettingsName( (PlotSettings)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPlotSettingsName(class PyDbPlotSettings {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setPlotTransparency (self, *args, **kwargs)-> None :
+      '''setPlotTransparency( (PlotSettings)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setPlotTransparency(class PyDbPlotSettings {lvalue},bool)'''
+    ...
+    def setPlotViewportBorders (self, *args, **kwargs)-> None :
+      '''setPlotViewportBorders( (PlotSettings)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setPlotViewportBorders(class PyDbPlotSettings {lvalue},bool)'''
+    ...
+    def setPrintLineweights (self, *args, **kwargs)-> None :
+      '''setPrintLineweights( (PlotSettings)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setPrintLineweights(class PyDbPlotSettings {lvalue},bool)'''
+    ...
+    def setScaleLineweights (self, *args, **kwargs)-> None :
+      '''setScaleLineweights( (PlotSettings)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setScaleLineweights(class PyDbPlotSettings {lvalue},bool)'''
+    ...
+    def setShadePlot (self, *args, **kwargs)-> ErrorStatus :
+      '''setShadePlot( (PlotSettings)arg1, (ShadePlotType)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setShadePlot(class PyDbPlotSettings {lvalue},enum AcDbPlotSettings::ShadePlotType)
+
+setShadePlot( (PlotSettings)arg1, (ShadePlotType)arg2, (ObjectId)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setShadePlot(class PyDbPlotSettings {lvalue},enum AcDbPlotSettings::ShadePlotType,class PyDbObjectId)'''
+    ...
+    def setShadePlotCustomDPI (self, *args, **kwargs)-> ErrorStatus :
+      '''setShadePlotCustomDPI( (PlotSettings)arg1, (DxfCode)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setShadePlotCustomDPI(class PyDbPlotSettings {lvalue},short)'''
+    ...
+    def setShadePlotResLevel (self, *args, **kwargs)-> ErrorStatus :
+      '''setShadePlotResLevel( (PlotSettings)arg1, (ShadePlotResLevel)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setShadePlotResLevel(class PyDbPlotSettings {lvalue},enum AcDbPlotSettings::ShadePlotResLevel)'''
+    ...
+    def setShowPlotStyles (self, *args, **kwargs)-> None :
+      '''setShowPlotStyles( (PlotSettings)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setShowPlotStyles(class PyDbPlotSettings {lvalue},bool)'''
+    ...
+    def setTabOrder (self, *args, **kwargs)-> None :
+      '''setTabOrder( (Layout)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setTabOrder(class PyDbLayout {lvalue},int)'''
+    ...
+    def setTabSelected (self, *args, **kwargs)-> None :
+      '''setTabSelected( (Layout)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setTabSelected(class PyDbLayout {lvalue},bool)'''
+    ...
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
+      '''                             '''
+    ...
+    def shadePlot (self, *args, **kwargs)-> ShadePlotType :
+      '''shadePlot( (PlotSettings)arg1) -> ShadePlotType :
+
+    C++ signature :
+        enum AcDbPlotSettings::ShadePlotType shadePlot(class PyDbPlotSettings {lvalue})'''
+    ...
+    def shadePlotCustomDPI (self, *args, **kwargs)-> int :
+      '''shadePlotCustomDPI( (PlotSettings)arg1) -> int :
+
+    C++ signature :
+        short shadePlotCustomDPI(class PyDbPlotSettings {lvalue})'''
+    ...
+    def shadePlotId (self, *args, **kwargs)-> ObjectId :
+      '''shadePlotId( (PlotSettings)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId shadePlotId(class PyDbPlotSettings {lvalue})'''
+    ...
+    def shadePlotResLevel (self, *args, **kwargs)-> ShadePlotResLevel :
+      '''shadePlotResLevel( (PlotSettings)arg1) -> ShadePlotResLevel :
+
+    C++ signature :
+        enum AcDbPlotSettings::ShadePlotResLevel shadePlotResLevel(class PyDbPlotSettings {lvalue})'''
+    ...
+    def showPlotStyles (self, *args, **kwargs)-> bool :
+      '''showPlotStyles( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool showPlotStyles(class PyDbPlotSettings {lvalue})'''
+    ...
+    def stdScaleType (self, *args, **kwargs)-> StdScaleType :
+      '''stdScaleType( (PlotSettings)arg1) -> StdScaleType :
+
+    C++ signature :
+        enum AcDbPlotSettings::StdScaleType stdScaleType(class PyDbPlotSettings {lvalue})'''
+    ...
+    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def upgradeFromNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def upgradeOpen (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def useStandardScale (self, *args, **kwargs)-> bool :
+      '''useStandardScale( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool useStandardScale(class PyDbPlotSettings {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -45659,6 +46239,743 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
       '''                             '''
     ...
 
+class PlotPaperUnits:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kInches (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kMillimeters (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kPixels (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class PlotRotation:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def k0degrees (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k180degrees (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k270degrees (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k90degrees (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class PlotSettings:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,bool)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addPersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def addToPlotSettingsDict (self, *args, **kwargs)-> ErrorStatus :
+      '''addToPlotSettingsDict( (PlotSettings)arg1, (Database)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus addToPlotSettingsDict(class PyDbPlotSettings {lvalue},class PyDbDatabase {lvalue})'''
+    ...
+    def assertNotifyEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertReadEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertWriteEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def cancel (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def cast (self, *args, **kwargs)-> PlotSettings :
+      '''cast( (RxObject)arg1) -> PlotSettings :
+
+    C++ signature :
+        class PyDbPlotSettings cast(class PyRxObject)'''
+    ...
+    def className (self, *args, **kwargs)-> str :
+      '''className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs)-> PlotSettings :
+      '''cloneFrom( (RxObject)arg1) -> PlotSettings :
+
+    C++ signature :
+        class PyDbPlotSettings cloneFrom(class PyRxObject)'''
+    ...
+    def close (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def createExtensionDictionary (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def database (self: DbObject)-> Database :
+      '''                             '''
+    ...
+    def desc (self, *args, **kwargs)-> RxClass :
+      '''desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def disableUndoRecording (self: DbObject,disable: bool)-> None :
+      '''                             '''
+    ...
+    def downgradeOpen (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def drawViewportsFirst (self, *args, **kwargs)-> bool :
+      '''drawViewportsFirst( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool drawViewportsFirst(class PyDbPlotSettings {lvalue})'''
+    ...
+    def erase (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def extensionDictionary (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getCanonicalMediaName (self, *args, **kwargs)-> str :
+      '''getCanonicalMediaName( (PlotSettings)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getCanonicalMediaName(class PyDbPlotSettings {lvalue})'''
+    ...
+    def getCurrentStyleSheet (self, *args, **kwargs)-> str :
+      '''getCurrentStyleSheet( (PlotSettings)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getCurrentStyleSheet(class PyDbPlotSettings {lvalue})'''
+    ...
+    def getCustomPrintScale (self, *args, **kwargs)-> tuple :
+      '''getCustomPrintScale( (PlotSettings)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getCustomPrintScale(class PyDbPlotSettings {lvalue})'''
+    ...
+    def getField (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getFieldDictionary (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getHandle (self: DbObject)-> Handle :
+      '''                             '''
+    ...
+    def getPlotCfgName (self, *args, **kwargs)-> str :
+      '''getPlotCfgName( (PlotSettings)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getPlotCfgName(class PyDbPlotSettings {lvalue})'''
+    ...
+    def getPlotOrigin (self, *args, **kwargs)-> tuple :
+      '''getPlotOrigin( (PlotSettings)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getPlotOrigin(class PyDbPlotSettings {lvalue})'''
+    ...
+    def getPlotPaperMargins (self, *args, **kwargs)-> tuple :
+      '''getPlotPaperMargins( (PlotSettings)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getPlotPaperMargins(class PyDbPlotSettings {lvalue})'''
+    ...
+    def getPlotPaperSize (self, *args, **kwargs)-> tuple :
+      '''getPlotPaperSize( (PlotSettings)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getPlotPaperSize(class PyDbPlotSettings {lvalue})'''
+    ...
+    def getPlotSettingsName (self, *args, **kwargs)-> str :
+      '''getPlotSettingsName( (PlotSettings)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getPlotSettingsName(class PyDbPlotSettings {lvalue})'''
+    ...
+    def getPlotViewName (self, *args, **kwargs)-> str :
+      '''getPlotViewName( (PlotSettings)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getPlotViewName(class PyDbPlotSettings {lvalue})'''
+    ...
+    def getPlotWindowArea (self, *args, **kwargs)-> tuple :
+      '''getPlotWindowArea( (PlotSettings)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getPlotWindowArea(class PyDbPlotSettings {lvalue})'''
+    ...
+    def getStdScale (self, *args, **kwargs)-> float :
+      '''getStdScale( (PlotSettings)arg1) -> float :
+
+    C++ signature :
+        double getStdScale(class PyDbPlotSettings {lvalue})'''
+    ...
+    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def hasFields (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def isA (self, *args, **kwargs)-> RxClass :
+      '''isA( (Drawable)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+    ...
+    def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isCancelling (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isEraseStatusToggled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isErased (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModified (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedGraphics (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedXData (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNewObject (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifyEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifying (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNull (self, *args, **kwargs)-> bool :
+      '''isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def isReadEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isReallyClosing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isTransactionResident (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoRecordingDisabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isWriteEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def modelType (self, *args, **kwargs)-> bool :
+      '''modelType( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool modelType(class PyDbPlotSettings {lvalue})'''
+    ...
+    def objectId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def plotAsRaster (self, *args, **kwargs)-> bool :
+      '''plotAsRaster( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool plotAsRaster(class PyDbPlotSettings {lvalue})'''
+    ...
+    def plotCentered (self, *args, **kwargs)-> bool :
+      '''plotCentered( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool plotCentered(class PyDbPlotSettings {lvalue})'''
+    ...
+    def plotHidden (self, *args, **kwargs)-> bool :
+      '''plotHidden( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool plotHidden(class PyDbPlotSettings {lvalue})'''
+    ...
+    def plotPaperUnits (self, *args, **kwargs)-> PlotPaperUnits :
+      '''plotPaperUnits( (PlotSettings)arg1) -> PlotPaperUnits :
+
+    C++ signature :
+        enum AcDbPlotSettings::PlotPaperUnits plotPaperUnits(class PyDbPlotSettings {lvalue})'''
+    ...
+    def plotPlotStyles (self, *args, **kwargs)-> bool :
+      '''plotPlotStyles( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool plotPlotStyles(class PyDbPlotSettings {lvalue})'''
+    ...
+    def plotRotation (self, *args, **kwargs)-> PlotRotation :
+      '''plotRotation( (PlotSettings)arg1) -> PlotRotation :
+
+    C++ signature :
+        enum AcDbPlotSettings::PlotRotation plotRotation(class PyDbPlotSettings {lvalue})'''
+    ...
+    def plotTransparency (self, *args, **kwargs)-> bool :
+      '''plotTransparency( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool plotTransparency(class PyDbPlotSettings {lvalue})'''
+    ...
+    def plotType (self, *args, **kwargs)-> PlotType :
+      '''plotType( (PlotSettings)arg1) -> PlotType :
+
+    C++ signature :
+        enum AcDbPlotSettings::PlotType plotType(class PyDbPlotSettings {lvalue})'''
+    ...
+    def plotViewportBorders (self, *args, **kwargs)-> bool :
+      '''plotViewportBorders( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool plotViewportBorders(class PyDbPlotSettings {lvalue})'''
+    ...
+    def plotWireframe (self, *args, **kwargs)-> bool :
+      '''plotWireframe( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool plotWireframe(class PyDbPlotSettings {lvalue})'''
+    ...
+    def printLineweights (self, *args, **kwargs)-> bool :
+      '''printLineweights( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool printLineweights(class PyDbPlotSettings {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs)-> int :
+      '''refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
+    def releaseExtensionDictionary (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def removeField (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def scaleLineweights (self, *args, **kwargs)-> bool :
+      '''scaleLineweights( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool scaleLineweights(class PyDbPlotSettings {lvalue})'''
+    ...
+    def setDrawViewportsFirst (self, *args, **kwargs)-> None :
+      '''setDrawViewportsFirst( (PlotSettings)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setDrawViewportsFirst(class PyDbPlotSettings {lvalue},bool)'''
+    ...
+    def setField (self: DbObject,obj: Field)-> ObjectId :
+      '''                             '''
+    ...
+    def setOwnerId (self: DbObject,owner: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def setPlotHidden (self, *args, **kwargs)-> None :
+      '''setPlotHidden( (PlotSettings)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setPlotHidden(class PyDbPlotSettings {lvalue},bool)'''
+    ...
+    def setPlotPlotStyles (self, *args, **kwargs)-> None :
+      '''setPlotPlotStyles( (PlotSettings)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setPlotPlotStyles(class PyDbPlotSettings {lvalue},bool)'''
+    ...
+    def setPlotSettingsName (self, *args, **kwargs)-> ErrorStatus :
+      '''setPlotSettingsName( (PlotSettings)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPlotSettingsName(class PyDbPlotSettings {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setPlotTransparency (self, *args, **kwargs)-> None :
+      '''setPlotTransparency( (PlotSettings)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setPlotTransparency(class PyDbPlotSettings {lvalue},bool)'''
+    ...
+    def setPlotViewportBorders (self, *args, **kwargs)-> None :
+      '''setPlotViewportBorders( (PlotSettings)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setPlotViewportBorders(class PyDbPlotSettings {lvalue},bool)'''
+    ...
+    def setPrintLineweights (self, *args, **kwargs)-> None :
+      '''setPrintLineweights( (PlotSettings)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setPrintLineweights(class PyDbPlotSettings {lvalue},bool)'''
+    ...
+    def setScaleLineweights (self, *args, **kwargs)-> None :
+      '''setScaleLineweights( (PlotSettings)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setScaleLineweights(class PyDbPlotSettings {lvalue},bool)'''
+    ...
+    def setShadePlot (self, *args, **kwargs)-> ErrorStatus :
+      '''setShadePlot( (PlotSettings)arg1, (ShadePlotType)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setShadePlot(class PyDbPlotSettings {lvalue},enum AcDbPlotSettings::ShadePlotType)
+
+setShadePlot( (PlotSettings)arg1, (ShadePlotType)arg2, (ObjectId)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setShadePlot(class PyDbPlotSettings {lvalue},enum AcDbPlotSettings::ShadePlotType,class PyDbObjectId)'''
+    ...
+    def setShadePlotCustomDPI (self, *args, **kwargs)-> ErrorStatus :
+      '''setShadePlotCustomDPI( (PlotSettings)arg1, (DxfCode)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setShadePlotCustomDPI(class PyDbPlotSettings {lvalue},short)'''
+    ...
+    def setShadePlotResLevel (self, *args, **kwargs)-> ErrorStatus :
+      '''setShadePlotResLevel( (PlotSettings)arg1, (ShadePlotResLevel)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setShadePlotResLevel(class PyDbPlotSettings {lvalue},enum AcDbPlotSettings::ShadePlotResLevel)'''
+    ...
+    def setShowPlotStyles (self, *args, **kwargs)-> None :
+      '''setShowPlotStyles( (PlotSettings)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setShowPlotStyles(class PyDbPlotSettings {lvalue},bool)'''
+    ...
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
+      '''                             '''
+    ...
+    def shadePlot (self, *args, **kwargs)-> ShadePlotType :
+      '''shadePlot( (PlotSettings)arg1) -> ShadePlotType :
+
+    C++ signature :
+        enum AcDbPlotSettings::ShadePlotType shadePlot(class PyDbPlotSettings {lvalue})'''
+    ...
+    def shadePlotCustomDPI (self, *args, **kwargs)-> int :
+      '''shadePlotCustomDPI( (PlotSettings)arg1) -> int :
+
+    C++ signature :
+        short shadePlotCustomDPI(class PyDbPlotSettings {lvalue})'''
+    ...
+    def shadePlotId (self, *args, **kwargs)-> ObjectId :
+      '''shadePlotId( (PlotSettings)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId shadePlotId(class PyDbPlotSettings {lvalue})'''
+    ...
+    def shadePlotResLevel (self, *args, **kwargs)-> ShadePlotResLevel :
+      '''shadePlotResLevel( (PlotSettings)arg1) -> ShadePlotResLevel :
+
+    C++ signature :
+        enum AcDbPlotSettings::ShadePlotResLevel shadePlotResLevel(class PyDbPlotSettings {lvalue})'''
+    ...
+    def showPlotStyles (self, *args, **kwargs)-> bool :
+      '''showPlotStyles( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool showPlotStyles(class PyDbPlotSettings {lvalue})'''
+    ...
+    def stdScaleType (self, *args, **kwargs)-> StdScaleType :
+      '''stdScaleType( (PlotSettings)arg1) -> StdScaleType :
+
+    C++ signature :
+        enum AcDbPlotSettings::StdScaleType stdScaleType(class PyDbPlotSettings {lvalue})'''
+    ...
+    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def upgradeFromNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def upgradeOpen (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def useStandardScale (self, *args, **kwargs)-> bool :
+      '''useStandardScale( (PlotSettings)arg1) -> bool :
+
+    C++ signature :
+        bool useStandardScale(class PyDbPlotSettings {lvalue})'''
+    ...
+    def xData (self: DbObject,appname: str)-> list :
+      '''                             '''
+    ...
+    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> ErrorStatus :
+      '''                             '''
+    ...
+
 class PlotStyleNameType:
     def __init__ (self, /, *args, **kwargs):
       '''Initialize self.  See help(type(self)) for accurate signature.'''
@@ -45730,6 +47047,140 @@ Also known as the population count.
       '''None'''
     ...
     def kPlotStyleNameIsDictDefault (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class PlotType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kDisplay (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kExtents (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kLayout (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kLimits (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kView (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kWindow (self, *args, **kwargs):
       '''None'''
     ...
     def name (self, *args, **kwargs):
@@ -59461,6 +60912,200 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class RxClass:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def className (self, *args, **kwargs)-> str :
+      '''className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def clearSetupForLayouts (self, *args, **kwargs)-> ErrorStatus :
+      '''clearSetupForLayouts( (int)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus clearSetupForLayouts(unsigned __int64)'''
+    ...
+    def cloneLayout (self, *args, **kwargs)-> ErrorStatus :
+      '''cloneLayout( (RxClass)arg1, (Layout)arg2, (str)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus cloneLayout(class PyDbLayoutManager {lvalue},class PyDbLayout {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+cloneLayout( (RxClass)arg1, (Layout)arg2, (str)arg3, (int)arg4, (Database)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus cloneLayout(class PyDbLayoutManager {lvalue},class PyDbLayout {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,class PyDbDatabase {lvalue})'''
+    ...
+    def copyLayout (self, *args, **kwargs)-> ErrorStatus :
+      '''copyLayout( (RxClass)arg1, (str)arg2, (str)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus copyLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+copyLayout( (RxClass)arg1, (str)arg2, (str)arg3, (Database)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus copyLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    ...
+    def countLayouts (self, *args, **kwargs)-> int :
+      '''countLayouts( (RxClass)arg1) -> int :
+
+    C++ signature :
+        int countLayouts(class PyDbLayoutManager {lvalue})
+
+countLayouts( (RxClass)arg1, (Database)arg2) -> int :
+
+    C++ signature :
+        int countLayouts(class PyDbLayoutManager {lvalue},class PyDbDatabase {lvalue})'''
+    ...
+    def createLayout (self, *args, **kwargs)-> ErrorStatus :
+      '''createLayout( (RxClass)arg1, (str)arg2, (ObjectId)arg3, (ObjectId)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus createLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},class PyDbObjectId {lvalue})
+
+createLayout( (RxClass)arg1, (str)arg2, (ObjectId)arg3, (ObjectId)arg4, (Database)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus createLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},class PyDbObjectId {lvalue},class PyDbDatabase {lvalue})'''
+    ...
+    def deleteLayout (self, *args, **kwargs)-> ErrorStatus :
+      '''deleteLayout( (RxClass)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus deleteLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+deleteLayout( (RxClass)arg1, (str)arg2, (Database)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus deleteLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
+    ...
+    def desc (self, *args, **kwargs)-> RxClass :
+      '''desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def findLayoutNamed (self, *args, **kwargs)-> ObjectId :
+      '''findLayoutNamed( (RxClass)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId findLayoutNamed(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+findLayoutNamed( (RxClass)arg1, (str)arg2, (Database)arg3) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId findLayoutNamed(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    ...
+    def getActiveLayoutBTRId (self, *args, **kwargs)-> ObjectId :
+      '''getActiveLayoutBTRId( (RxClass)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getActiveLayoutBTRId(class PyDbLayoutManager {lvalue})
+
+getActiveLayoutBTRId( (RxClass)arg1, (Database)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getActiveLayoutBTRId(class PyDbLayoutManager {lvalue},class PyDbDatabase)'''
+    ...
+    def getActiveLayoutName (self, *args, **kwargs)-> str :
+      '''getActiveLayoutName( (RxClass)arg1, (bool)arg2) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getActiveLayoutName(class PyDbLayoutManager {lvalue},bool)
+
+getActiveLayoutName( (RxClass)arg1, (bool)arg2, (Database)arg3) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getActiveLayoutName(class PyDbLayoutManager {lvalue},bool,class PyDbDatabase {lvalue})'''
+    ...
+    def getNonRectVPIdFromClipId (self, *args, **kwargs)-> ObjectId :
+      '''getNonRectVPIdFromClipId( (RxClass)arg1, (ObjectId)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getNonRectVPIdFromClipId(class PyDbLayoutManager {lvalue},class PyDbObjectId {lvalue})'''
+    ...
+    def isA (self, *args, **kwargs)-> RxClass :
+      '''isA( (RxObject)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyRxObject {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs)-> bool :
+      '''isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def isVpnumClipped (self, *args, **kwargs)-> bool :
+      '''isVpnumClipped( (RxClass)arg1, (int)arg2) -> bool :
+
+    C++ signature :
+        bool isVpnumClipped(class PyDbLayoutManager {lvalue},int)
+
+isVpnumClipped( (RxClass)arg1, (int)arg2, (Database)arg3) -> bool :
+
+    C++ signature :
+        bool isVpnumClipped(class PyDbLayoutManager {lvalue},int,class PyDbDatabase)'''
+    ...
+    def layoutExists (self, *args, **kwargs)-> bool :
+      '''layoutExists( (RxClass)arg1, (str)arg2) -> bool :
+
+    C++ signature :
+        bool layoutExists(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+layoutExists( (RxClass)arg1, (str)arg2, (Database)arg3) -> bool :
+
+    C++ signature :
+        bool layoutExists(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    ...
+    def refCount (self, *args, **kwargs)-> int :
+      '''refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
+    def renameLayout (self, *args, **kwargs)-> ErrorStatus :
+      '''renameLayout( (RxClass)arg1, (str)arg2, (str)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus renameLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+renameLayout( (RxClass)arg1, (str)arg2, (str)arg3, (Database)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus renameLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
+    ...
+    def setCurrentLayout (self, *args, **kwargs)-> ErrorStatus :
+      '''setCurrentLayout( (RxClass)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setCurrentLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setCurrentLayout( (RxClass)arg1, (str)arg2, (Database)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setCurrentLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
+    ...
+    def setCurrentLayoutId (self, *args, **kwargs)-> ErrorStatus :
+      '''setCurrentLayoutId( (RxClass)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setCurrentLayoutId(class PyDbLayoutManager {lvalue},class PyDbObjectId)'''
+    ...
+    def setupForLayouts (self, *args, **kwargs)-> int :
+      '''setupForLayouts( (Database)arg1) -> int :
+
+    C++ signature :
+        unsigned __int64 setupForLayouts(class PyDbDatabase {lvalue})'''
+    ...
+
 class SegType:
     def __init__ (self, /, *args, **kwargs):
       '''Initialize self.  See help(type(self)) for accurate signature.'''
@@ -60157,6 +61802,274 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
       '''                             '''
     ...
 
+class ShadePlotResLevel:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kAsDisplayed (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kCustom (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kMaximum (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kNormal (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kPresentation (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kPreview (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class ShadePlotType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def kAsDisplayed (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kHidden (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kRenderPreset (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kRendered (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kVisualStyle (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kWireframe (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
 class Solid3d:
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
@@ -60771,6 +62684,227 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     ...
     def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> ErrorStatus :
       '''                             '''
+    ...
+
+class StdScaleType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs):
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs):
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs):
+      '''the imaginary part of a complex number'''
+    ...
+    def k1000_1 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k100_1 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k10_1 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k1_1 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k1_10 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k1_100 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k1_128in_1ft (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k1_16 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k1_16in_1ft (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k1_2 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k1_20 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k1_2in_1ft (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k1_30 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k1_32in_1ft (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k1_4 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k1_40 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k1_4in_1ft (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k1_5 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k1_50 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k1_64in_1ft (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k1_8 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k1_8in_1ft (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k1and1_2in_1ft (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k1ft_1ft (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k1in_1ft (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k2_1 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k3_16in_1ft (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k3_32in_1ft (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k3_4in_1ft (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k3_8in_1ft (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k3in_1ft (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k4_1 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k6in_1ft (self, *args, **kwargs):
+      '''None'''
+    ...
+    def k8_1 (self, *args, **kwargs):
+      '''None'''
+    ...
+    def kScaleToFit (self, *args, **kwargs):
+      '''None'''
+    ...
+    def name (self, *args, **kwargs):
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs):
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs):
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
 class Surface:
