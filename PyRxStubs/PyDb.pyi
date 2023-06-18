@@ -28438,6 +28438,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class HostApplicationServices:
+    def LayoutManager (self, *args, **kwargs)-> LayoutManager :
+      '''LayoutManager( (HostApplicationServices)arg1) -> LayoutManager :
+
+    C++ signature :
+        class PyDbLayoutManager LayoutManager(class PyDbHostApplicationServices {lvalue})'''
+    ...
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
 
@@ -28448,12 +28454,6 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)'''
-    ...
-    def dbLayoutManager (self, *args, **kwargs)-> LayoutManager :
-      '''dbLayoutManager( (HostApplicationServices)arg1) -> LayoutManager :
-
-    C++ signature :
-        class PyDbLayoutManager dbLayoutManager(class PyDbHostApplicationServices {lvalue})'''
     ...
     def findFile (self, *args, **kwargs)-> str :
       '''findFile( (HostApplicationServices)arg1, (str)arg2) -> str :
