@@ -5,6 +5,7 @@
 #include "PyApDocManager.h"
 #include "PyApApplication.h"
 #include "PyDbTransactionManager.h"
+#include "PyApLayoutManager.h"
 
 using namespace boost::python;
 
@@ -86,6 +87,7 @@ BOOST_PYTHON_MODULE(PyAp)
     makeAcApDocManagerWrapper();
     makeAcApDocumentWrapper();
     makePyApDocManagerReactorWrapper();
+    makePyApLayoutManagerWrapper();
 
     def("curDoc", curPyDoc);
 };
