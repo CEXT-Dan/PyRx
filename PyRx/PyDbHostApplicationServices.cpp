@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "PyDbHostApplicationServices.h"
 #include "PyDbDatabase.h"
-
+#include "PyDbLayoutManager.h"
 
 using namespace boost::python;
 
@@ -15,6 +15,7 @@ void makeAcDbHostApplicationServicesWrapper()
         .def("findFile", &PyDbHostApplicationServices::findFile2)
         .def("findFile", &PyDbHostApplicationServices::findFile3)
         .def("product", &PyDbHostApplicationServices::product)
+        .def("dbLayoutManager", &PyDbHostApplicationServices::dbLayoutManager)
         ;
 
     enum_<AcDbHostApplicationServices::FindFileHint>("FindFileHint")
@@ -81,4 +82,9 @@ std::string PyDbHostApplicationServices::findFile3(const std::string& fileName, 
 std::string PyDbHostApplicationServices::product() const
 {
     return  wstr_to_utf8(pDbHostApp->product());
+}
+
+PyDbLayoutManager PyDbHostApplicationServices::dbLayoutManager()
+{
+    return PyDbLayoutManager(pDbHostApp->layoutManager(), false);
 }

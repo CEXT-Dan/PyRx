@@ -31,6 +31,7 @@
 #include "PyDbTransactionManager.h"
 #include "PyDbEval.h"
 #include "PyDbLayout.h"
+#include "PyDbLayoutManager.h"
 
 using namespace boost::python;
 
@@ -180,6 +181,7 @@ BOOST_PYTHON_MODULE(PyDb)
 
     makePyDbPlotSettingsWrapper();
     makePyDbLayoutWrapper();
+    makePyDbLayoutManagerWrapper();
 
     makePyDbEvalVariantWrapper();
     makePyDbDynBlockReferencePropertyWrapper();
