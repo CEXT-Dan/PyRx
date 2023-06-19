@@ -100,3 +100,25 @@ public:
 public:
     AcDbHandle m_hnd;
 };
+
+void makePyDbXrefObjectIdWrapper();
+
+class PyDbXrefObjectId
+{
+public:
+    PyDbXrefObjectId();
+    PyDbXrefObjectId(const AcDbXrefObjectId& id);
+    bool operator== (const PyDbXrefObjectId& other) const;
+    bool operator!= (const PyDbXrefObjectId& other) const;
+    bool                isValid(void) const;
+    bool                isXref(void) const;
+    bool                isNull(void) const;
+    Acad::ErrorStatus   setNull(void);
+    Acad::ErrorStatus   setXrefId(PyDbObjectId& xrefBlkId, const PyDbHandle& hObject);
+    Acad::ErrorStatus   getXrefId(PyDbObjectId& xrefBlkId, PyDbHandle& hObject) const;
+    Acad::ErrorStatus   setLocalId(PyDbObjectId& objId);
+    Acad::ErrorStatus   getLocalId(PyDbObjectId& objId) const;
+    Acad::ErrorStatus   resolveObjectId(PyDbObjectId& id) const;
+public:
+    AcDbXrefObjectId m_imp;
+};

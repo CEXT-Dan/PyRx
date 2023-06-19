@@ -868,7 +868,7 @@ activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> ErrorStatus :
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isApplicationContext (self, *args, **kwargs)-> bool :
       '''isApplicationContext( (DocManager)arg1) -> bool :
@@ -1154,7 +1154,7 @@ This class cannot be instantiated from Python'''
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isCommandInputInactive (self, *args, **kwargs)-> bool :
       '''isCommandInputInactive( (Document)arg1) -> bool :
@@ -1323,7 +1323,7 @@ deleteLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> ErrorStatus :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def findLayoutNamed (self, *args, **kwargs)-> ObjectId :
       '''findLayoutNamed( (LayoutManager)arg1, (str)arg2) -> ObjectId :
@@ -1391,7 +1391,7 @@ getActiveLayoutName( (LayoutManager)arg1, (bool)arg2, (Database)arg3) -> str :
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (RxObject)arg1) -> bool :
@@ -1831,7 +1831,7 @@ class TransactionManager:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def enableGraphicsFlush (self, *args, **kwargs)-> ErrorStatus :
       '''enableGraphicsFlush( (TransactionManager)arg1, (bool)arg2) -> ErrorStatus :
@@ -1858,7 +1858,7 @@ class TransactionManager:
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (RxObject)arg1) -> bool :

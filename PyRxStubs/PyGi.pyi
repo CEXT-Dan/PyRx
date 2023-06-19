@@ -898,13 +898,13 @@ This class cannot be instantiated from Python'''
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (RxObject)arg1) -> bool :
@@ -1095,13 +1095,13 @@ This class cannot be instantiated from Python'''
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (RxObject)arg1) -> bool :
@@ -1127,13 +1127,13 @@ class DrawableOverrule:
       '''addOverrule( (RxClass)arg1, (Overrule)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus addOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
+        enum Acad::ErrorStatus addOverrule(class PyRx::PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
     ...
     def addOverruleLast (self, *args, **kwargs)-> ErrorStatus :
       '''addOverruleLast( (RxClass)arg1, (Overrule)arg2, (bool)arg3) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus addOverruleLast(class PyRxClass {lvalue},class PyRxOverrule {lvalue},bool)'''
+        enum Acad::ErrorStatus addOverruleLast(class PyRx::PyRxClass {lvalue},class PyRxOverrule {lvalue},bool)'''
     ...
     def baseViewportDraw (self, *args, **kwargs)-> None :
       '''baseViewportDraw( (DrawableOverrule)arg1, (Drawable)arg2, (ViewportDraw)arg3) -> None :
@@ -1163,19 +1163,19 @@ class DrawableOverrule:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def hasOverrule (self, *args, **kwargs)-> bool :
       '''hasOverrule( (RxObject)arg1, (RxClass)arg2) -> bool :
 
     C++ signature :
-        bool hasOverrule(class PyRxObject {lvalue},class PyRxClass {lvalue})'''
+        bool hasOverrule(class PyRxObject {lvalue},class PyRx::PyRxClass {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isApplicable (self, *args, **kwargs)-> bool :
       '''isApplicable( (DrawableOverrule)arg1, (RxObject)arg2) -> bool :
@@ -1205,7 +1205,7 @@ class DrawableOverrule:
       '''removeOverrule( (RxClass)arg1, (Overrule)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus removeOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
+        enum Acad::ErrorStatus removeOverrule(class PyRx::PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
     ...
     def setIsOverruling (self, *args, **kwargs)-> None :
       '''setIsOverruling( (bool)arg1) -> None :
@@ -1253,7 +1253,7 @@ This class cannot be instantiated from Python'''
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def drawFlags (self, *args, **kwargs)-> int :
       '''drawFlags( (SubEntityTraits)arg1) -> int :
@@ -1277,7 +1277,7 @@ This class cannot be instantiated from Python'''
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (RxObject)arg1) -> bool :
@@ -1523,7 +1523,7 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def draw (self, *args, **kwargs)-> bool :
       '''draw( (Geometry)arg1, (Drawable)arg2) -> bool :
@@ -1564,7 +1564,7 @@ ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (floa
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (RxObject)arg1) -> bool :
@@ -1953,7 +1953,7 @@ This class cannot be instantiated from Python'''
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def drawFlags (self, *args, **kwargs)-> int :
       '''drawFlags( (SubEntityTraits)arg1) -> int :
@@ -1977,7 +1977,7 @@ This class cannot be instantiated from Python'''
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (RxObject)arg1) -> bool :
@@ -2316,7 +2316,7 @@ This class cannot be instantiated from Python'''
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def geometry (self, *args, **kwargs)-> ViewportGeometry :
       '''geometry( (ViewportDraw)arg1) -> ViewportGeometry :
@@ -2328,7 +2328,7 @@ This class cannot be instantiated from Python'''
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (RxObject)arg1) -> bool :
@@ -2396,7 +2396,7 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def draw (self, *args, **kwargs)-> bool :
       '''draw( (Geometry)arg1, (Drawable)arg2) -> bool :
@@ -2437,7 +2437,7 @@ ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (floa
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (RxObject)arg1) -> bool :
@@ -2570,7 +2570,7 @@ This class cannot be instantiated from Python'''
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def geometry (self, *args, **kwargs)-> WorldGeometry :
       '''geometry( (WorldDraw)arg1) -> WorldGeometry :
@@ -2582,7 +2582,7 @@ This class cannot be instantiated from Python'''
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (RxObject)arg1) -> bool :
@@ -2650,7 +2650,7 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def draw (self, *args, **kwargs)-> bool :
       '''draw( (Geometry)arg1, (Drawable)arg2) -> bool :
@@ -2691,7 +2691,7 @@ ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (floa
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (RxObject)arg1) -> bool :

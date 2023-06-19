@@ -342,7 +342,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def dimBlockId (self, *args, **kwargs)-> ObjectId :
       '''dimBlockId( (Dimension)arg1) -> ObjectId :
@@ -569,7 +569,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -1736,7 +1736,7 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5,
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -1984,7 +1984,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -2664,7 +2664,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def dimBlockId (self, *args, **kwargs)-> ObjectId :
       '''dimBlockId( (Dimension)arg1) -> ObjectId :
@@ -2891,7 +2891,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -3979,7 +3979,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -4117,7 +4117,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -4889,7 +4889,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -5027,7 +5027,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -5741,7 +5741,7 @@ class BlockBegin:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -5843,7 +5843,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -6306,7 +6306,7 @@ class BlockEnd:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -6408,7 +6408,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -6910,7 +6910,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -7029,7 +7029,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -7668,7 +7668,7 @@ class BlockTable:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -7724,7 +7724,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -7921,7 +7921,7 @@ class BlockTableRecord:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -8001,7 +8001,7 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -9645,7 +9645,7 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def diameter (self, *args, **kwargs)-> float :
       '''diameter( (Circle)arg1) -> float :
@@ -9893,7 +9893,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -11070,7 +11070,7 @@ class Curve:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -11312,7 +11312,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -11887,7 +11887,7 @@ __init__( (object)arg1, (bool)arg2, (bool)arg3) -> None :
       '''classDxfName( (Database)arg1, (RxClass)arg2) -> str :
 
     C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > classDxfName(class PyDbDatabase {lvalue},class PyRxClass)'''
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > classDxfName(class PyDbDatabase {lvalue},class PyRx::PyRxClass)'''
     ...
     def className (self, *args, **kwargs)-> str :
       '''className() -> str :
@@ -12246,7 +12246,7 @@ getAcDbObjectId( (Database)arg1, (ObjectId)arg2, (bool)arg3, (Handle)arg4, (int)
       '''hasClass( (Database)arg1, (RxClass)arg2) -> bool :
 
     C++ signature :
-        bool hasClass(class PyDbDatabase {lvalue},class PyRxClass)'''
+        bool hasClass(class PyDbDatabase {lvalue},class PyRx::PyRxClass)'''
     ...
     def hideText (self, *args, **kwargs)-> int :
       '''hideText( (Database)arg1) -> int :
@@ -12320,7 +12320,7 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> ErrorStat
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isAppRegistered (self, *args, **kwargs)-> bool :
       '''isAppRegistered( (Database)arg1, (str)arg2) -> bool :
@@ -14534,7 +14534,7 @@ class DbObject:
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -14822,7 +14822,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def dimBlockId (self, *args, **kwargs)-> ObjectId :
       '''dimBlockId( (Dimension)arg1) -> ObjectId :
@@ -15061,7 +15061,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -16030,7 +16030,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -16086,7 +16086,7 @@ has( (Dictionary)arg1, (ObjectId)arg2) -> bool :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -16421,7 +16421,7 @@ class DimStyleTable:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -16477,7 +16477,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -16648,7 +16648,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -16693,7 +16693,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -16974,7 +16974,7 @@ class Dimension:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def dimBlockId (self, *args, **kwargs)-> ObjectId :
       '''dimBlockId( (Dimension)arg1) -> ObjectId :
@@ -17195,7 +17195,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -19712,7 +19712,7 @@ class Entity:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -19814,7 +19814,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -22189,7 +22189,7 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def getDouble (self, *args, **kwargs)-> float :
       '''getDouble( (EvalVariant)arg1) -> float :
@@ -22243,7 +22243,7 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (RxObject)arg1) -> bool :
@@ -22523,7 +22523,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -22625,7 +22625,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -23118,7 +23118,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -23226,7 +23226,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -23733,7 +23733,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -23841,7 +23841,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -24343,7 +24343,7 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def dimclrd (self, *args, **kwargs)-> Color :
       '''dimclrd( (Fcf)arg1) -> Color :
@@ -24511,7 +24511,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -25077,7 +25077,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -25162,7 +25162,7 @@ evaluate( (Field)arg1, (FieldEvalContext)arg2, (Database)arg3) -> ErrorStatus :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -26795,7 +26795,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -27046,7 +27046,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -28586,7 +28586,7 @@ class Image:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -28688,7 +28688,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -29701,7 +29701,7 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def description (self, *args, **kwargs)-> str :
       '''description( (LayerTableRecord)arg1) -> str :
@@ -29770,7 +29770,7 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -30240,7 +30240,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -30404,7 +30404,7 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> ErrorStatus :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -30811,7 +30811,7 @@ deleteLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> ErrorStatus :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def findLayoutNamed (self, *args, **kwargs)-> ObjectId :
       '''findLayoutNamed( (LayoutManager)arg1, (str)arg2) -> ObjectId :
@@ -30856,7 +30856,7 @@ getActiveLayoutName( (LayoutManager)arg1, (bool)arg2, (Database)arg3) -> str :
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (RxObject)arg1) -> bool :
@@ -31068,7 +31068,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def detachAnnotation (self, *args, **kwargs)-> ErrorStatus :
       '''detachAnnotation( (Leader)arg1) -> ErrorStatus :
@@ -31423,7 +31423,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -32086,7 +32086,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -32334,7 +32334,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -32960,7 +32960,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def dimBlockId (self, *args, **kwargs)-> ObjectId :
       '''dimBlockId( (Dimension)arg1) -> ObjectId :
@@ -33187,7 +33187,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -34523,7 +34523,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -34625,7 +34625,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -35139,7 +35139,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -35258,7 +35258,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -35939,7 +35939,7 @@ connectionPoint( (MLeader)arg1, (Vector3d)arg2, (MLeaderTextAttachmentDirection)
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -36213,7 +36213,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -38331,7 +38331,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def description (self, *args, **kwargs)-> str :
       '''description( (MLeaderStyle)arg1) -> str :
@@ -38447,7 +38447,7 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -39592,7 +39592,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def descent (self, *args, **kwargs)-> float :
       '''descent( (MText)arg1) -> float :
@@ -39790,7 +39790,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -41212,7 +41212,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -41341,7 +41341,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -42037,7 +42037,7 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def description (self, *args, **kwargs)-> str :
       '''description( (MlineStyle)arg1) -> str :
@@ -42130,7 +42130,7 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -42468,7 +42468,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -42570,7 +42570,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -42984,7 +42984,7 @@ __init__( (object)arg1) -> None :
       '''isDerivedFrom( (ObjectId)arg1, (RxClass)arg2) -> bool :
 
     C++ signature :
-        bool isDerivedFrom(class PyDbObjectId {lvalue},class PyRxClass)'''
+        bool isDerivedFrom(class PyDbObjectId {lvalue},class PyRx::PyRxClass)'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (ObjectId)arg1) -> bool :
@@ -43014,7 +43014,7 @@ __init__( (object)arg1) -> None :
       '''objectClass( (ObjectId)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass objectClass(class PyDbObjectId {lvalue})'''
+        class PyRx::PyRxClass objectClass(class PyDbObjectId {lvalue})'''
     ...
     def originalDatabase (self, *args, **kwargs)-> Database :
       '''originalDatabase( (ObjectId)arg1) -> Database :
@@ -43349,7 +43349,7 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def dimBlockId (self, *args, **kwargs)-> ObjectId :
       '''dimBlockId( (Dimension)arg1) -> ObjectId :
@@ -43570,7 +43570,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -44700,13 +44700,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def dictionaryKey (self, *args, **kwargs)-> str :
       '''dictionaryKey( (RxClass)arg1) -> str :
 
     C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dictionaryKey(class PyRxClass)'''
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dictionaryKey(class PyRx::PyRxClass)'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -44763,7 +44763,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -45023,7 +45023,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -45167,7 +45167,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -45951,7 +45951,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -46053,7 +46053,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -46760,7 +46760,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -46871,7 +46871,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -47530,7 +47530,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -47638,7 +47638,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -48252,7 +48252,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def dimBlockId (self, *args, **kwargs)-> ObjectId :
       '''dimBlockId( (Dimension)arg1) -> ObjectId :
@@ -48479,7 +48479,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -49736,7 +49736,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -49838,7 +49838,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -50328,7 +50328,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -50430,7 +50430,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -50937,7 +50937,7 @@ addVertexAt( (Polyline)arg1, (int)arg2, (Point2d)arg3, (float)arg4, (float)arg5,
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -51274,7 +51274,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -51925,7 +51925,7 @@ appendVertex( (Polyline2d)arg1, (ObjectId)arg2, (Vertex2d)arg3) -> ErrorStatus :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -52184,7 +52184,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -52846,7 +52846,7 @@ appendVertex( (Polyline3d)arg1, (ObjectId)arg2, (Polyline3dVertex)arg3) -> Error
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -53099,7 +53099,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -53666,7 +53666,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -53768,7 +53768,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -54358,7 +54358,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def dimBlockId (self, *args, **kwargs)-> ObjectId :
       '''dimBlockId( (Dimension)arg1) -> ObjectId :
@@ -54591,7 +54591,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -55683,7 +55683,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def dimBlockId (self, *args, **kwargs)-> ObjectId :
       '''dimBlockId( (Dimension)arg1) -> ObjectId :
@@ -55916,7 +55916,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -56975,7 +56975,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -57136,7 +57136,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -57747,7 +57747,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -57810,7 +57810,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -58070,7 +58070,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -58109,7 +58109,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -58310,7 +58310,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -58412,7 +58412,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -59013,7 +59013,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -59115,7 +59115,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -59675,7 +59675,7 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def dimBlockId (self, *args, **kwargs)-> ObjectId :
       '''dimBlockId( (Dimension)arg1) -> ObjectId :
@@ -59902,7 +59902,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -61320,7 +61320,7 @@ class SequenceEnd:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -61422,7 +61422,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -62204,7 +62204,7 @@ createPyramid( (Solid3d)arg1, (float)arg2, (int)arg3, (float)arg4, (float)arg5) 
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -62306,7 +62306,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -63000,7 +63000,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -63102,7 +63102,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -63575,7 +63575,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -63677,7 +63677,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -64110,7 +64110,7 @@ class SymbolTable:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -64166,7 +64166,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -64327,7 +64327,7 @@ class SymbolTableRecord:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -64372,7 +64372,7 @@ class SymbolTableRecord:
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -64851,7 +64851,7 @@ deleteContent( (Table)arg1, (CellRange)arg2) -> ErrorStatus :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def direction (self, *args, **kwargs)-> Vector3d :
       '''direction( (Table)arg1) -> Vector3d :
@@ -65227,7 +65227,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -67240,7 +67240,7 @@ createCellStyle( (TableStyle)arg1, (str)arg2, (str)arg3) -> ErrorStatus :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def description (self, *args, **kwargs)-> str :
       '''description( (TableStyle)arg1) -> str :
@@ -67405,7 +67405,7 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -67950,7 +67950,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -68076,7 +68076,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -68966,7 +68966,7 @@ class TextStyleTableRecord:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -69029,7 +69029,7 @@ class TextStyleTableRecord:
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -69266,7 +69266,7 @@ This class cannot be instantiated from Python'''
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def getAllObjects (self, *args, **kwargs)-> list :
       '''getAllObjects( (Transaction)arg1) -> list :
@@ -69294,7 +69294,7 @@ getObject( (Transaction)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> DbO
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (RxObject)arg1) -> bool :
@@ -69344,7 +69344,7 @@ class TransactionManager:
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (RxObject)arg1) -> bool :
@@ -69633,13 +69633,13 @@ class UnderlayDefinition:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def dictionaryKey (self, *args, **kwargs)-> str :
       '''dictionaryKey( (RxClass)arg1) -> str :
 
     C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dictionaryKey(class PyRxClass)'''
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dictionaryKey(class PyRx::PyRxClass)'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -69696,7 +69696,7 @@ class UnderlayDefinition:
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -69978,7 +69978,7 @@ class UnderlayReference:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -70122,7 +70122,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -71236,7 +71236,7 @@ class Vertex:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -71338,7 +71338,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -71827,7 +71827,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -71941,7 +71941,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -72712,7 +72712,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRxClass desc()'''
+        class PyRx::PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -72751,7 +72751,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
