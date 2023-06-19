@@ -120,5 +120,10 @@ public:
     Acad::ErrorStatus   getLocalId(PyDbObjectId& objId) const;
     Acad::ErrorStatus   resolveObjectId(PyDbObjectId& id) const;
 public:
+#ifdef BRXAPP
+    int m_imp;
+#else
     AcDbXrefObjectId m_imp;
+#endif
+
 };
