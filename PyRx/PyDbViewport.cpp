@@ -9,7 +9,7 @@ void makePyDbViewportWrapper()
 }
 
 PyDbViewport::PyDbViewport()
-  : PyDbViewport(new AcDbViewport(), true)
+    : PyDbViewport(new AcDbViewport(), true)
 {
 }
 
@@ -409,6 +409,407 @@ Acad::ErrorStatus PyDbViewport::setSnapOff()
 Acad::ErrorStatus PyDbViewport::setSnapOn2(bool bOn)
 {
     return impObj()->setSnapOn(bOn);
+}
+
+bool PyDbViewport::isSnapIsometric() const
+{
+    return impObj()->isSnapIsometric();
+}
+
+Acad::ErrorStatus PyDbViewport::setSnapIsometric1()
+{
+    return impObj()->setSnapIsometric();
+}
+
+Acad::ErrorStatus PyDbViewport::setSnapStandard()
+{
+    return impObj()->setSnapStandard();
+}
+
+Acad::ErrorStatus PyDbViewport::setSnapIsometric2(bool bOn)
+{
+    return impObj()->setSnapIsometric(bOn);
+}
+
+double PyDbViewport::snapAngle() const
+{
+    return impObj()->snapAngle();
+}
+
+Acad::ErrorStatus PyDbViewport::setSnapAngle(double val)
+{
+    return impObj()->setSnapAngle(val);
+}
+
+AcGePoint2d PyDbViewport::snapBasePoint() const
+{
+    return impObj()->snapBasePoint();
+}
+
+Acad::ErrorStatus PyDbViewport::setSnapBasePoint(const AcGePoint2d& val)
+{
+    return impObj()->setSnapBasePoint(val);
+}
+
+AcGeVector2d PyDbViewport::snapIncrement() const
+{
+    return impObj()->snapIncrement();
+}
+
+Acad::ErrorStatus PyDbViewport::setSnapIncrement(const AcGeVector2d& val)
+{
+    return impObj()->setSnapIncrement(val);
+}
+
+Adesk::UInt16 PyDbViewport::snapIsoPair() const
+{
+    return impObj()->snapIsoPair();
+}
+
+Acad::ErrorStatus PyDbViewport::setSnapIsoPair(Adesk::UInt16 val)
+{
+    return impObj()->setSnapIsoPair(val);
+}
+
+bool PyDbViewport::isGridOn() const
+{
+    return impObj()->isGridOn();
+}
+
+Acad::ErrorStatus PyDbViewport::setGridOn1()
+{
+    return impObj()->setGridOn();
+}
+
+Acad::ErrorStatus PyDbViewport::setGridOff()
+{
+    return impObj()->setGridOff();
+}
+
+Acad::ErrorStatus PyDbViewport::setGridOn2(bool val)
+{
+    return impObj()->setGridOn(val);
+}
+
+bool PyDbViewport::isGridBoundToLimits() const
+{
+    return impObj()->isGridBoundToLimits();
+}
+
+Acad::ErrorStatus PyDbViewport::setGridBoundToLimits(bool bNewVal)
+{
+    return impObj()->setGridBoundToLimits(bNewVal);
+}
+
+bool PyDbViewport::isGridAdaptive() const
+{
+    return impObj()->isGridAdaptive();
+}
+
+Acad::ErrorStatus PyDbViewport::setGridAdaptive(bool bNewVal)
+{
+    return impObj()->setGridAdaptive(bNewVal);
+}
+
+bool PyDbViewport::isGridSubdivisionRestricted() const
+{
+    return impObj()->isGridSubdivisionRestricted();
+}
+
+Acad::ErrorStatus PyDbViewport::setGridSubdivisionRestricted(bool bNewVal)
+{
+    return impObj()->setGridSubdivisionRestricted(bNewVal);
+}
+
+bool PyDbViewport::isGridFollow() const
+{
+    return impObj()->isGridFollow();
+}
+
+Acad::ErrorStatus PyDbViewport::setGridFollow(bool bNewVal)
+{
+    return impObj()->setGridFollow(bNewVal);
+}
+
+Adesk::UInt16 PyDbViewport::gridMajor() const
+{
+    return impObj()->gridMajor();
+}
+
+Acad::ErrorStatus PyDbViewport::setGridMajor(Adesk::UInt16 val)
+{
+    return impObj()->setGridMajor(val);
+}
+
+AcGeVector2d PyDbViewport::gridIncrement() const
+{
+    return impObj()->gridIncrement();
+}
+
+Acad::ErrorStatus PyDbViewport::setGridIncrement(const AcGeVector2d& val)
+{
+    return impObj()->setGridIncrement(val);
+}
+
+bool PyDbViewport::hiddenLinesRemoved() const
+{
+    return impObj()->hiddenLinesRemoved();
+}
+
+Acad::ErrorStatus PyDbViewport::showHiddenLines()
+{
+    return impObj()->showHiddenLines();
+}
+
+Acad::ErrorStatus PyDbViewport::removeHiddenLines1()
+{
+    return impObj()->removeHiddenLines();
+}
+
+Acad::ErrorStatus PyDbViewport::removeHiddenLines2(bool val)
+{
+    return impObj()->removeHiddenLines(val);
+}
+
+Acad::ErrorStatus PyDbViewport::freezeLayersInViewport(const boost::python::list& pyids)
+{
+    AcDbObjectIdArray ids;
+    auto vec = py_list_to_std_vector<PyDbObjectId>(pyids);
+    for (auto& id : vec)
+        ids.append(id.m_id);
+    return impObj()->freezeLayersInViewport(ids);
+}
+
+Acad::ErrorStatus PyDbViewport::thawLayersInViewport(const boost::python::list& pyids)
+{
+    AcDbObjectIdArray ids;
+    auto vec = py_list_to_std_vector<PyDbObjectId>(pyids);
+    for (auto& id : vec)
+        ids.append(id.m_id);
+    return impObj()->thawLayersInViewport(ids);
+}
+
+Acad::ErrorStatus PyDbViewport::thawAllLayersInViewport()
+{
+    return impObj()->thawAllLayersInViewport();
+}
+
+bool PyDbViewport::isLayerFrozenInViewport(const PyDbObjectId& layerId) const
+{
+    return impObj()->isLayerFrozenInViewport(layerId.m_id);
+}
+
+boost::python::list PyDbViewport::getFrozenLayerList() const
+{
+    PyAutoLockGIL lock;
+    AcDbObjectIdArray ids;
+    boost::python::list pyids;
+    if (auto es = impObj()->getFrozenLayerList(ids); es != eOk)
+        throw PyAcadErrorStatus(es);
+    for (auto& id : ids)
+        pyids.append(PyDbObjectId(id));
+    return pyids;
+}
+
+Acad::ErrorStatus PyDbViewport::updateDisplay() const
+{
+    return impObj()->updateDisplay();
+}
+
+PyDbObjectId PyDbViewport::background() const
+{
+    return PyDbObjectId(impObj()->background());
+}
+
+Acad::ErrorStatus PyDbViewport::setBackground(PyDbObjectId& backgroundId)
+{
+    return impObj()->setBackground(backgroundId.m_id);
+}
+
+PyDbObjectId PyDbViewport::previousBackground1() const
+{
+    return PyDbObjectId(impObj()->previousBackground());
+}
+
+PyDbObjectId PyDbViewport::previousBackground2(AcGiDrawable::DrawableType type) const
+{
+    return PyDbObjectId(impObj()->previousBackground(type));
+}
+
+Acad::ErrorStatus PyDbViewport::setPreviousBackground1(PyDbObjectId& backgroundId)
+{
+    return impObj()->setPreviousBackground(backgroundId.m_id);
+}
+
+Acad::ErrorStatus PyDbViewport::setPreviousBackground2(PyDbObjectId& backgroundId, AcGiDrawable::DrawableType type)
+{
+    return impObj()->setPreviousBackground(backgroundId.m_id, type);
+}
+
+Acad::ErrorStatus PyDbViewport::setPreviousBackground3(PyDbObjectId& backgroundId, AcGiDrawable::DrawableType type, bool force)
+{
+    return impObj()->setPreviousBackground(backgroundId.m_id, type, force);
+}
+
+bool PyDbViewport::previousBackgroundForcedSwitch(void) const
+{
+    return impObj()->previousBackgroundForcedSwitch();
+}
+
+PyDbObjectId PyDbViewport::visualStyle() const
+{
+    return PyDbObjectId(impObj()->visualStyle());
+}
+
+Acad::ErrorStatus PyDbViewport::setVisualStyle(const PyDbObjectId& oidVisualStyle)
+{
+    return impObj()->setVisualStyle(oidVisualStyle.m_id);
+}
+
+bool PyDbViewport::isDefaultLightingOn() const
+{
+    return impObj()->isDefaultLightingOn();
+}
+
+Acad::ErrorStatus PyDbViewport::setDefaultLightingOn(bool on)
+{
+    return impObj()->setDefaultLightingOn(on);
+}
+
+AcGiViewportTraits::DefaultLightingType PyDbViewport::defaultLightingType() const
+{
+    return impObj()->defaultLightingType();
+}
+
+Acad::ErrorStatus PyDbViewport::setDefaultLightingType(AcGiViewportTraits::DefaultLightingType typ)
+{
+    return impObj()->setDefaultLightingType(typ);
+}
+
+double PyDbViewport::brightness() const
+{
+    return impObj()->brightness();
+}
+
+Acad::ErrorStatus PyDbViewport::setBrightness(double val)
+{
+    return impObj()->setBrightness(val);
+}
+
+double PyDbViewport::contrast() const
+{
+    return impObj()->contrast();
+}
+
+Acad::ErrorStatus PyDbViewport::setContrast(double val)
+{
+    return impObj()->setContrast(val);
+}
+
+AcCmColor PyDbViewport::ambientLightColor() const
+{
+    return impObj()->ambientLightColor();
+}
+
+Acad::ErrorStatus PyDbViewport::setAmbientLightColor(const AcCmColor& clr)
+{
+    return impObj()->setAmbientLightColor(clr);
+}
+
+PyDbObjectId PyDbViewport::sunId() const
+{
+    return PyDbObjectId(impObj()->sunId());
+}
+
+Acad::ErrorStatus PyDbViewport::setSun1(PyDbObjectId& retId, PyDbObject& pSun)
+{
+    return impObj()->setSun(retId.m_id, pSun.impObj());
+}
+
+Acad::ErrorStatus PyDbViewport::setSun2(PyDbObjectId& retId, PyDbObject& pSun, bool eraseOldSun)
+{
+    return impObj()->setSun(retId.m_id, pSun.impObj(), eraseOldSun);
+}
+
+bool PyDbViewport::isLocked() const
+{
+    return impObj()->isLocked();
+}
+
+Acad::ErrorStatus PyDbViewport::setLocked1()
+{
+    return impObj()->setLocked();
+}
+
+Acad::ErrorStatus PyDbViewport::setUnlocked()
+{
+    return impObj()->setUnlocked();
+}
+
+Acad::ErrorStatus PyDbViewport::setLocked2(bool val)
+{
+    return impObj()->setLocked(val);
+}
+
+bool PyDbViewport::isTransparent() const
+{
+    return impObj()->isTransparent();
+}
+
+Acad::ErrorStatus PyDbViewport::setTransparent1()
+{
+    return impObj()->setTransparent();
+}
+
+Acad::ErrorStatus PyDbViewport::setOpaque()
+{
+    return impObj()->setOpaque();
+}
+
+Acad::ErrorStatus PyDbViewport::setTransparent2(bool val)
+{
+    return impObj()->setTransparent(val);
+}
+
+double PyDbViewport::customScale() const
+{
+    return impObj()->customScale();
+}
+
+Acad::ErrorStatus PyDbViewport::setCustomScale(double val)
+{
+    return impObj()->setCustomScale(val);
+}
+
+AcDbViewport::StandardScaleType PyDbViewport::standardScale() const
+{
+    return impObj()->standardScale();
+}
+
+Acad::ErrorStatus PyDbViewport::setStandardScale(const AcDbViewport::StandardScaleType val)
+{
+    return impObj()->setStandardScale(val);
+}
+
+std::string PyDbViewport::plotStyleSheet() const
+{
+    const ACHAR* val = nullptr;
+    if (auto es = impObj()->plotStyleSheet(val); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return wstr_to_utf8(val);
+}
+
+std::string PyDbViewport::effectivePlotStyleSheet()
+{
+    const ACHAR* val = nullptr;
+    if (auto es = impObj()->effectivePlotStyleSheet(val); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return wstr_to_utf8(val);
+}
+
+Acad::ErrorStatus PyDbViewport::setPlotStyleSheet(const std::string& val)
+{
+    return impObj()->setPlotStyleSheet(utf8_to_wstr(val).c_str());
 }
 
 std::string PyDbViewport::className()
