@@ -388,3 +388,87 @@ bool PyDbHandle::operator==(const PyDbHandle& rhs) const
 {
     return m_hnd == rhs.m_hnd;
 }
+
+//
+void makePyDbXrefObjectIdWrapper()
+{
+    class_<PyDbXrefObjectId>("XrefObjectId")
+        .def(init<>())
+        .def("isValid", &PyDbXrefObjectId::isValid)
+        .def("isXref", &PyDbXrefObjectId::isXref)
+        .def("isNull", &PyDbXrefObjectId::isNull)
+        .def("setNull", &PyDbXrefObjectId::setNull)
+        .def("setXrefId", &PyDbXrefObjectId::setXrefId)
+        .def("getXrefId", &PyDbXrefObjectId::getXrefId)
+        .def("setLocalId", &PyDbXrefObjectId::setLocalId)
+        .def("getLocalId", &PyDbXrefObjectId::getLocalId)
+        .def("resolveObjectId", &PyDbXrefObjectId::resolveObjectId)
+        //operators
+        .def("__eq__", &PyDbXrefObjectId::operator==)
+        .def("__ne__", &PyDbXrefObjectId::operator!=)
+        ;
+}
+
+PyDbXrefObjectId::PyDbXrefObjectId()
+{
+}
+
+PyDbXrefObjectId::PyDbXrefObjectId(const AcDbXrefObjectId& id)
+    : m_imp(id)
+{
+}
+
+bool PyDbXrefObjectId::isValid(void) const
+{
+    return m_imp.isValid();
+}
+
+bool PyDbXrefObjectId::isXref(void) const
+{
+    return m_imp.isXref();
+}
+
+bool PyDbXrefObjectId::isNull(void) const
+{
+    return m_imp.isNull();
+}
+
+Acad::ErrorStatus PyDbXrefObjectId::setNull(void)
+{
+    return m_imp.setNull();
+}
+
+Acad::ErrorStatus PyDbXrefObjectId::setXrefId(PyDbObjectId& xrefBlkId, const PyDbHandle& hObject)
+{
+    return m_imp.setXrefId(xrefBlkId.m_id, hObject.m_hnd);
+}
+
+Acad::ErrorStatus PyDbXrefObjectId::getXrefId(PyDbObjectId& xrefBlkId, PyDbHandle& hObject) const
+{
+    return m_imp.getXrefId(xrefBlkId.m_id, hObject.m_hnd);
+}
+
+Acad::ErrorStatus PyDbXrefObjectId::setLocalId(PyDbObjectId& objId)
+{
+    return m_imp.setLocalId(objId.m_id);
+}
+
+Acad::ErrorStatus PyDbXrefObjectId::getLocalId(PyDbObjectId& objId) const
+{
+    return m_imp.getLocalId(objId.m_id);
+}
+
+Acad::ErrorStatus PyDbXrefObjectId::resolveObjectId(PyDbObjectId& id) const
+{
+    return m_imp.resolveObjectId(id.m_id);
+}
+
+bool PyDbXrefObjectId::operator!=(const PyDbXrefObjectId& other) const
+{
+    return m_imp != other.m_imp;
+}
+
+bool PyDbXrefObjectId::operator==(const PyDbXrefObjectId& other) const
+{
+    return m_imp == other.m_imp;
+}

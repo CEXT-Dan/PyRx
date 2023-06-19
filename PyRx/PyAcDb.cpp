@@ -86,6 +86,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcCmTransparencyWrapper();
     makeAcDbObjectIdWrapper();
     makePyDbHandleWrapper();
+    makePyDbXrefObjectIdWrapper();
     makeAdsNameWrapper();
     makeAcDbObjectWrapper();
     makeAcDbFieldtWrapper();

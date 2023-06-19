@@ -17,3 +17,4 @@
 /PyRxSetup/Release/*.exe
 /PyRxSetup/Debug
 /PyRxSetup/Release
+/PyRxStubs/genDocTest.py
