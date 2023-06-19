@@ -240,6 +240,12 @@ class RxClass:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
+    def appName (self, *args, **kwargs)-> str :
+      '''appName( (RxClass)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > appName(class PyRxClass {lvalue})'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''className() -> str :
 
@@ -251,6 +257,12 @@ This class cannot be instantiated from Python'''
 
     C++ signature :
         class PyRxClass desc()'''
+    ...
+    def dxfName (self, *args, **kwargs)-> str :
+      '''dxfName( (RxClass)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dxfName(class PyRxClass {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (RxObject)arg1) -> RxClass :
