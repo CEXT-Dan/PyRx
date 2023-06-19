@@ -413,62 +413,109 @@ PyDbXrefObjectId::PyDbXrefObjectId()
 {
 }
 
+#ifndef BRXAPP
 PyDbXrefObjectId::PyDbXrefObjectId(const AcDbXrefObjectId& id)
     : m_imp(id)
 {
 }
 
+#endif // !BRXAPP
+
 bool PyDbXrefObjectId::isValid(void) const
 {
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
     return m_imp.isValid();
+#endif
 }
 
 bool PyDbXrefObjectId::isXref(void) const
 {
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
     return m_imp.isXref();
+#endif
 }
 
 bool PyDbXrefObjectId::isNull(void) const
 {
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
     return m_imp.isNull();
+#endif
 }
 
 Acad::ErrorStatus PyDbXrefObjectId::setNull(void)
 {
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
     return m_imp.setNull();
+#endif
 }
 
 Acad::ErrorStatus PyDbXrefObjectId::setXrefId(PyDbObjectId& xrefBlkId, const PyDbHandle& hObject)
 {
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
     return m_imp.setXrefId(xrefBlkId.m_id, hObject.m_hnd);
+#endif
 }
 
 Acad::ErrorStatus PyDbXrefObjectId::getXrefId(PyDbObjectId& xrefBlkId, PyDbHandle& hObject) const
 {
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
     return m_imp.getXrefId(xrefBlkId.m_id, hObject.m_hnd);
+#endif
 }
 
 Acad::ErrorStatus PyDbXrefObjectId::setLocalId(PyDbObjectId& objId)
 {
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
     return m_imp.setLocalId(objId.m_id);
+#endif
 }
 
 Acad::ErrorStatus PyDbXrefObjectId::getLocalId(PyDbObjectId& objId) const
 {
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
     return m_imp.getLocalId(objId.m_id);
+#endif
 }
 
 Acad::ErrorStatus PyDbXrefObjectId::resolveObjectId(PyDbObjectId& id) const
 {
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
     return m_imp.resolveObjectId(id.m_id);
+#endif
 }
 
 bool PyDbXrefObjectId::operator!=(const PyDbXrefObjectId& other) const
 {
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
     return m_imp != other.m_imp;
+#endif
 }
 
 bool PyDbXrefObjectId::operator==(const PyDbXrefObjectId& other) const
 {
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
     return m_imp == other.m_imp;
+#endif
 }

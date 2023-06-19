@@ -38,7 +38,7 @@ public:
     AcGePoint3d         viewTarget() const;
     Acad::ErrorStatus   setViewTarget(const AcGePoint3d& val);
     AcGeVector3d        viewDirection() const;
-    Acad::ErrorStatus   setViewDirection(const AcGeVector3d& val);
+    Acad::ErrorStatus   setViewDirection1(const AcGeVector3d& val);
     double              viewHeight() const;
     Acad::ErrorStatus   setViewHeight(double ht);
     AcGePoint2d         viewCenter() const;
@@ -167,6 +167,38 @@ public:
     std::string         plotStyleSheet() const;
     std::string         effectivePlotStyleSheet();
     Acad::ErrorStatus   setPlotStyleSheet(const std::string& val);
+    bool                isNonRectClipOn() const;
+    Acad::ErrorStatus   setNonRectClipOn1();
+    Acad::ErrorStatus   setNonRectClipOff();
+    Acad::ErrorStatus   setNonRectClipOn2(bool bOn);
+    PyDbObjectId        nonRectClipEntityId() const;
+    Acad::ErrorStatus   setNonRectClipEntityId(const PyDbObjectId& val);
+    void                erased(const PyDbObject& obj, Adesk::Boolean val);
+    void                modified(const PyDbObject& obj);
+    void                copied(const PyDbObject& pDbObj, const PyDbObject& pNewObj);
+    void                subObjModified(const PyDbObject& pDbObj, const PyDbObject& pSubObj);
+    Acad::ErrorStatus   getUcs(AcGePoint3d& origin, AcGeVector3d& xAxis, AcGeVector3d& yAxis) const;
+    boost::python::tuple isUcsOrthographic() const;
+    PyDbObjectId        ucsName() const;
+    double              elevation() const;
+    Acad::ErrorStatus   setUcs1(const AcGePoint3d& origin,const AcGeVector3d& xAxis, const AcGeVector3d& yAxis);
+    Acad::ErrorStatus   setUcs2(AcDb::OrthographicView view);
+    Acad::ErrorStatus   setUcs3(const PyDbObjectId& ucsId);
+    Acad::ErrorStatus   setUcsToWorld();
+    Acad::ErrorStatus   setElevation(double elev);
+    boost::python::tuple isViewOrthographic() const;
+    Acad::ErrorStatus   setViewDirection2(AcDb::OrthographicView view);
+    bool                isUcsSavedWithViewport() const;
+    void                setUcsPerViewport(bool ucsvp);
+    AcDbViewport::ShadePlotType shadePlot() const;
+    Acad::ErrorStatus   setShadePlot(const AcDbViewport::ShadePlotType);
+    PyDbObjectId        shadePlotId() const;
+    Acad::ErrorStatus   setShadePlot(const AcDbViewport::ShadePlotType type,const PyDbObjectId shadePlotId);
+    bool                plotWireframe() const;
+    bool                plotAsRaster()  const;
+
+    //Acad::ErrorStatus toneOperatorParameters(AcGiToneOperatorParameters& params) const;
+    //Acad::ErrorStatus setToneOperatorParameters(const AcGiToneOperatorParameters& params);
 
 
     static std::string      className();

@@ -32,6 +32,7 @@
 #include "PyDbEval.h"
 #include "PyDbLayout.h"
 #include "PyDbLayoutManager.h"
+#include "PyDbViewport.h"
 
 using namespace boost::python;
 
@@ -108,6 +109,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makeDbMInsertBlockeWrapper();
     makePyDbMTextWrapper();
     makeyDbTableWrapper();
+    makePyDbViewportWrapper();
 
     makeAcDbVertexWrapper();
     makePyDb2dVertexWrapper();
