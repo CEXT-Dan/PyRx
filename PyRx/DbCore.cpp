@@ -42,7 +42,7 @@ void makeDbCoreWrapper()
         .def("ucs2Ucs", &DbCore::ucs2Ucs1)
         .def("ucs2Ucs", &DbCore::ucs2Ucs2).staticmethod("ucs2Ucs")
         .def("ecs2Wcs", &DbCore::ecs2Wcs1)
-        .def("ucs2Ucs", &DbCore::ecs2Wcs2).staticmethod("ecs2Wcs")
+        .def("ecs2Wcs", &DbCore::ecs2Wcs2).staticmethod("ecs2Wcs")
         ;
 }
 
