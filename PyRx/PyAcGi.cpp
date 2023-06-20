@@ -75,6 +75,15 @@ BOOST_PYTHON_MODULE(PyGi)
         .value("kAcGiSilhouette", AcGiVisibility::kAcGiSilhouette)
         .export_values()
         ;
+    enum_<AcGiRegenType>("AcGiRegenType")
+        .value("eAcGiRegenTypeInvalid", AcGiRegenType::eAcGiRegenTypeInvalid)
+        .value("kAcGiStandardDisplay", AcGiRegenType::kAcGiStandardDisplay)
+        .value("kAcGiHideOrShadeCommand", AcGiRegenType::kAcGiHideOrShadeCommand)
+        .value("kAcGiShadedDisplay", AcGiRegenType::kAcGiShadedDisplay)
+        .value("kAcGiForExplode", AcGiRegenType::kAcGiForExplode)
+        .value("kAcGiSaveWorldDrawForProxy", AcGiRegenType::kAcGiSaveWorldDrawForProxy)
+        .export_values()
+        ;
 }
 
 void initPyGiModule()

@@ -19,6 +19,9 @@ public:
     virtual ~PyGiCommonDraw() override = default;
 public:
     PyGiSubEntityTraits subEntityTraits() const;
+    AcGiRegenType       regenType() const;
+    Adesk::Boolean      regenAbort() const;
+    Adesk::Boolean      isDragging() const;
     static std::string  className();
     static PyRxClass    desc();
 public:
