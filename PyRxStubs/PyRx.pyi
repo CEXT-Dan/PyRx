@@ -172,13 +172,13 @@ This class cannot be instantiated from Python'''
       '''addOverrule( (RxClass)arg1, (Overrule)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus addOverrule(class PyRx::PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
+        enum Acad::ErrorStatus addOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
     ...
     def addOverruleLast (self, *args, **kwargs)-> ErrorStatus :
       '''addOverruleLast( (RxClass)arg1, (Overrule)arg2, (bool)arg3) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus addOverruleLast(class PyRx::PyRxClass {lvalue},class PyRxOverrule {lvalue},bool)'''
+        enum Acad::ErrorStatus addOverruleLast(class PyRxClass {lvalue},class PyRxOverrule {lvalue},bool)'''
     ...
     def className (self, *args, **kwargs)-> str :
       '''className() -> str :
@@ -190,19 +190,19 @@ This class cannot be instantiated from Python'''
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def hasOverrule (self, *args, **kwargs)-> bool :
       '''hasOverrule( (RxObject)arg1, (RxClass)arg2) -> bool :
 
     C++ signature :
-        bool hasOverrule(class PyRxObject {lvalue},class PyRx::PyRxClass {lvalue})'''
+        bool hasOverrule(class PyRxObject {lvalue},class PyRxClass {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (RxObject)arg1) -> bool :
@@ -226,7 +226,7 @@ This class cannot be instantiated from Python'''
       '''removeOverrule( (RxClass)arg1, (Overrule)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus removeOverrule(class PyRx::PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
+        enum Acad::ErrorStatus removeOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
     ...
     def setIsOverruling (self, *args, **kwargs)-> None :
       '''setIsOverruling( (bool)arg1) -> None :
@@ -244,7 +244,7 @@ This class cannot be instantiated from Python'''
       '''appName( (RxClass)arg1) -> str :
 
     C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > appName(class PyRx::PyRxClass {lvalue})'''
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > appName(class PyRxClass {lvalue})'''
     ...
     def className (self, *args, **kwargs)-> str :
       '''className() -> str :
@@ -256,25 +256,25 @@ This class cannot be instantiated from Python'''
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def dxfName (self, *args, **kwargs)-> str :
       '''dxfName( (RxClass)arg1) -> str :
 
     C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dxfName(class PyRx::PyRxClass {lvalue})'''
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dxfName(class PyRxClass {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isDerivedFrom (self, *args, **kwargs)-> bool :
       '''isDerivedFrom( (RxClass)arg1, (RxClass)arg2) -> bool :
 
     C++ signature :
-        bool isDerivedFrom(class PyRx::PyRxClass {lvalue},class PyRx::PyRxClass)'''
+        bool isDerivedFrom(class PyRxClass {lvalue},class PyRxClass)'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (RxObject)arg1) -> bool :
@@ -286,7 +286,7 @@ This class cannot be instantiated from Python'''
       '''name( (RxClass)arg1) -> str :
 
     C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name(class PyRx::PyRxClass {lvalue})'''
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name(class PyRxClass {lvalue})'''
     ...
     def refCount (self, *args, **kwargs)-> int :
       '''refCount( (RxObject)arg1) -> int :
@@ -310,7 +310,7 @@ This class cannot be instantiated from Python'''
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (RxObject)arg1) -> bool :

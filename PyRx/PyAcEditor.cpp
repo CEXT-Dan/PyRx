@@ -81,6 +81,7 @@ void makeAcEditorWrapper()
         .def("getCurrentUCS", &PyAcEditor::curUCS).staticmethod("getCurrentUCS")
         .def("setCurrentUCS", &PyAcEditor::setCurUCS).staticmethod("setCurrentUCS")
         .def("activeViewportId", &PyAcEditor::activeViewportId).staticmethod("activeViewportId")
+        .def("curViewportObjectId", &PyAcEditor::curViewportObjectId).staticmethod("curViewportObjectId")
         .def("selectAll", &PyAcEditor::selectAll1)
         .def("selectAll", &PyAcEditor::selectAll2).staticmethod("selectAll")
         .def("select", &PyAcEditor::select1)
@@ -388,6 +389,11 @@ Acad::ErrorStatus PyAcEditor::setCurUCS(const AcGeMatrix3d& mat)
 PyDbObjectId PyAcEditor::activeViewportId()
 {
     return PyDbObjectId(acedActiveViewportId());
+}
+
+PyDbObjectId PyAcEditor::curViewportObjectId()
+{
+    return PyDbObjectId(acedGetCurViewportObjectId());
 }
 
 Acad::PromptStatus PyAcEditor::initGet(int val, const std::string& skwl)

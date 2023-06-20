@@ -6,7 +6,7 @@ using namespace boost::python;
 
 void makePyDbViewportWrapper()
 {
-    class_<PyDbViewport, bases<PyDbEntity>>("Entity")
+    class_<PyDbViewport, bases<PyDbEntity>>("Viewport")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("setModelView", &PyDbViewport::setModelView)

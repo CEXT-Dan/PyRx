@@ -766,6 +766,12 @@ class Editor:
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
+    def curViewportObjectId (self, *args, **kwargs)-> ObjectId :
+      '''curViewportObjectId() -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId curViewportObjectId()'''
+    ...
     def entSel (self, *args, **kwargs)-> tuple :
       '''entSel( (str)arg1) -> tuple :
 

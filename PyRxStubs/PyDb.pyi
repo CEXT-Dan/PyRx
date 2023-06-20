@@ -342,7 +342,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def dimBlockId (self, *args, **kwargs)-> ObjectId :
       '''dimBlockId( (Dimension)arg1) -> ObjectId :
@@ -569,7 +569,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -1736,7 +1736,7 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5,
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -1984,7 +1984,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -2664,7 +2664,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def dimBlockId (self, *args, **kwargs)-> ObjectId :
       '''dimBlockId( (Dimension)arg1) -> ObjectId :
@@ -2891,7 +2891,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -3979,7 +3979,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -4117,7 +4117,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -4889,7 +4889,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -5027,7 +5027,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -5741,7 +5741,7 @@ class BlockBegin:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -5843,7 +5843,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -6306,7 +6306,7 @@ class BlockEnd:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -6408,7 +6408,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -6910,7 +6910,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -7029,7 +7029,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -7668,7 +7668,7 @@ class BlockTable:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -7724,7 +7724,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -7921,7 +7921,7 @@ class BlockTableRecord:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -8001,7 +8001,7 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -9645,7 +9645,7 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def diameter (self, *args, **kwargs)-> float :
       '''diameter( (Circle)arg1) -> float :
@@ -9893,7 +9893,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -11070,7 +11070,7 @@ class Curve:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -11312,7 +11312,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -11887,7 +11887,7 @@ __init__( (object)arg1, (bool)arg2, (bool)arg3) -> None :
       '''classDxfName( (Database)arg1, (RxClass)arg2) -> str :
 
     C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > classDxfName(class PyDbDatabase {lvalue},class PyRx::PyRxClass)'''
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > classDxfName(class PyDbDatabase {lvalue},class PyRxClass)'''
     ...
     def className (self, *args, **kwargs)-> str :
       '''className() -> str :
@@ -12246,7 +12246,7 @@ getAcDbObjectId( (Database)arg1, (ObjectId)arg2, (bool)arg3, (Handle)arg4, (int)
       '''hasClass( (Database)arg1, (RxClass)arg2) -> bool :
 
     C++ signature :
-        bool hasClass(class PyDbDatabase {lvalue},class PyRx::PyRxClass)'''
+        bool hasClass(class PyDbDatabase {lvalue},class PyRxClass)'''
     ...
     def hideText (self, *args, **kwargs)-> int :
       '''hideText( (Database)arg1) -> int :
@@ -12320,7 +12320,7 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> ErrorStat
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isAppRegistered (self, *args, **kwargs)-> bool :
       '''isAppRegistered( (Database)arg1, (str)arg2) -> bool :
@@ -14534,7 +14534,7 @@ class DbObject:
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -14822,7 +14822,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def dimBlockId (self, *args, **kwargs)-> ObjectId :
       '''dimBlockId( (Dimension)arg1) -> ObjectId :
@@ -15061,7 +15061,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -16030,7 +16030,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -16086,7 +16086,7 @@ has( (Dictionary)arg1, (ObjectId)arg2) -> bool :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -16421,7 +16421,7 @@ class DimStyleTable:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -16477,7 +16477,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -16648,7 +16648,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -16693,7 +16693,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -16974,7 +16974,7 @@ class Dimension:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def dimBlockId (self, *args, **kwargs)-> ObjectId :
       '''dimBlockId( (Dimension)arg1) -> ObjectId :
@@ -17195,7 +17195,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -19712,7 +19712,7 @@ class Entity:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -19814,7 +19814,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -22189,7 +22189,7 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def getDouble (self, *args, **kwargs)-> float :
       '''getDouble( (EvalVariant)arg1) -> float :
@@ -22243,7 +22243,7 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (RxObject)arg1) -> bool :
@@ -22523,7 +22523,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -22625,7 +22625,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -23118,7 +23118,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -23226,7 +23226,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -23733,7 +23733,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -23841,7 +23841,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -24343,7 +24343,7 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def dimclrd (self, *args, **kwargs)-> Color :
       '''dimclrd( (Fcf)arg1) -> Color :
@@ -24511,7 +24511,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -25077,7 +25077,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -25162,7 +25162,7 @@ evaluate( (Field)arg1, (FieldEvalContext)arg2, (Database)arg3) -> ErrorStatus :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -26795,7 +26795,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -27046,7 +27046,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -28586,7 +28586,7 @@ class Image:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -28688,7 +28688,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -29701,7 +29701,7 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def description (self, *args, **kwargs)-> str :
       '''description( (LayerTableRecord)arg1) -> str :
@@ -29770,7 +29770,7 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -30240,7 +30240,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -30404,7 +30404,7 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> ErrorStatus :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -30811,7 +30811,7 @@ deleteLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> ErrorStatus :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def findLayoutNamed (self, *args, **kwargs)-> ObjectId :
       '''findLayoutNamed( (LayoutManager)arg1, (str)arg2) -> ObjectId :
@@ -30856,7 +30856,7 @@ getActiveLayoutName( (LayoutManager)arg1, (bool)arg2, (Database)arg3) -> str :
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (RxObject)arg1) -> bool :
@@ -31068,7 +31068,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def detachAnnotation (self, *args, **kwargs)-> ErrorStatus :
       '''detachAnnotation( (Leader)arg1) -> ErrorStatus :
@@ -31423,7 +31423,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -32086,7 +32086,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -32334,7 +32334,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -32960,7 +32960,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def dimBlockId (self, *args, **kwargs)-> ObjectId :
       '''dimBlockId( (Dimension)arg1) -> ObjectId :
@@ -33187,7 +33187,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -34523,7 +34523,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -34625,7 +34625,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -35139,7 +35139,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -35258,7 +35258,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -35939,7 +35939,7 @@ connectionPoint( (MLeader)arg1, (Vector3d)arg2, (MLeaderTextAttachmentDirection)
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -36213,7 +36213,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -38331,7 +38331,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def description (self, *args, **kwargs)-> str :
       '''description( (MLeaderStyle)arg1) -> str :
@@ -38447,7 +38447,7 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -39592,7 +39592,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def descent (self, *args, **kwargs)-> float :
       '''descent( (MText)arg1) -> float :
@@ -39790,7 +39790,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -41212,7 +41212,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -41341,7 +41341,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -42037,7 +42037,7 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def description (self, *args, **kwargs)-> str :
       '''description( (MlineStyle)arg1) -> str :
@@ -42130,7 +42130,7 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -42468,7 +42468,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -42570,7 +42570,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -42984,7 +42984,7 @@ __init__( (object)arg1) -> None :
       '''isDerivedFrom( (ObjectId)arg1, (RxClass)arg2) -> bool :
 
     C++ signature :
-        bool isDerivedFrom(class PyDbObjectId {lvalue},class PyRx::PyRxClass)'''
+        bool isDerivedFrom(class PyDbObjectId {lvalue},class PyRxClass)'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (ObjectId)arg1) -> bool :
@@ -43014,7 +43014,7 @@ __init__( (object)arg1) -> None :
       '''objectClass( (ObjectId)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass objectClass(class PyDbObjectId {lvalue})'''
+        class PyRxClass objectClass(class PyDbObjectId {lvalue})'''
     ...
     def originalDatabase (self, *args, **kwargs)-> Database :
       '''originalDatabase( (ObjectId)arg1) -> Database :
@@ -43349,7 +43349,7 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def dimBlockId (self, *args, **kwargs)-> ObjectId :
       '''dimBlockId( (Dimension)arg1) -> ObjectId :
@@ -43570,7 +43570,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -44700,13 +44700,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def dictionaryKey (self, *args, **kwargs)-> str :
       '''dictionaryKey( (RxClass)arg1) -> str :
 
     C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dictionaryKey(class PyRx::PyRxClass)'''
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dictionaryKey(class PyRxClass)'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -44763,7 +44763,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -45023,7 +45023,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -45167,7 +45167,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -45951,7 +45951,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -46053,7 +46053,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -46760,7 +46760,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -46871,7 +46871,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -47530,7 +47530,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -47638,7 +47638,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -48252,7 +48252,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def dimBlockId (self, *args, **kwargs)-> ObjectId :
       '''dimBlockId( (Dimension)arg1) -> ObjectId :
@@ -48479,7 +48479,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -49736,7 +49736,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -49838,7 +49838,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -50328,7 +50328,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -50430,7 +50430,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -50937,7 +50937,7 @@ addVertexAt( (Polyline)arg1, (int)arg2, (Point2d)arg3, (float)arg4, (float)arg5,
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -51274,7 +51274,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -51925,7 +51925,7 @@ appendVertex( (Polyline2d)arg1, (ObjectId)arg2, (Vertex2d)arg3) -> ErrorStatus :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -52184,7 +52184,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -52846,7 +52846,7 @@ appendVertex( (Polyline3d)arg1, (ObjectId)arg2, (Polyline3dVertex)arg3) -> Error
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -53099,7 +53099,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -53666,7 +53666,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -53768,7 +53768,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -54358,7 +54358,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def dimBlockId (self, *args, **kwargs)-> ObjectId :
       '''dimBlockId( (Dimension)arg1) -> ObjectId :
@@ -54591,7 +54591,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -55683,7 +55683,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def dimBlockId (self, *args, **kwargs)-> ObjectId :
       '''dimBlockId( (Dimension)arg1) -> ObjectId :
@@ -55916,7 +55916,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -56975,7 +56975,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -57136,7 +57136,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -57747,7 +57747,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -57810,7 +57810,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -58070,7 +58070,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -58109,7 +58109,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -58310,7 +58310,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -58412,7 +58412,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -59013,7 +59013,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -59115,7 +59115,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -59675,7 +59675,7 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def dimBlockId (self, *args, **kwargs)-> ObjectId :
       '''dimBlockId( (Dimension)arg1) -> ObjectId :
@@ -59902,7 +59902,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -61320,7 +61320,7 @@ class SequenceEnd:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -61422,7 +61422,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -62204,7 +62204,7 @@ createPyramid( (Solid3d)arg1, (float)arg2, (int)arg3, (float)arg4, (float)arg5) 
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -62306,7 +62306,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -62686,6 +62686,227 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
       '''                             '''
     ...
 
+class StandardScaleType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None:
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None:
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None:
+      '''the imaginary part of a complex number'''
+    ...
+    def k100_1 (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k10_1 (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k1_1 (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k1_10 (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k1_100 (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k1_128in_1ft (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k1_16 (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k1_16in_1ft (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k1_2 (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k1_20 (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k1_2in_1ft (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k1_30 (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k1_32in_1ft (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k1_4 (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k1_40 (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k1_4in_1ft (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k1_5 (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k1_50 (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k1_64in_1ft (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k1_8 (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k1_8in_1ft (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k1and1_2in_1ft (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k1ft_1ft (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k1in_1ft (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k2_1 (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k3_16in_1ft (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k3_32in_1ft (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k3_4in_1ft (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k3_8in_1ft (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k3in_1ft (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k4_1 (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k6in_1ft (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def k8_1 (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kCustomScale (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kScaleToFit (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None:
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None:
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
 class StdScaleType:
     def __init__ (self, /, *args, **kwargs):
       '''Initialize self.  See help(type(self)) for accurate signature.'''
@@ -63000,7 +63221,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -63102,7 +63323,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -63575,7 +63796,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -63677,7 +63898,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -64110,7 +64331,7 @@ class SymbolTable:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -64166,7 +64387,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -64327,7 +64548,7 @@ class SymbolTableRecord:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -64372,7 +64593,7 @@ class SymbolTableRecord:
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -64851,7 +65072,7 @@ deleteContent( (Table)arg1, (CellRange)arg2) -> ErrorStatus :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def direction (self, *args, **kwargs)-> Vector3d :
       '''direction( (Table)arg1) -> Vector3d :
@@ -65227,7 +65448,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -67240,7 +67461,7 @@ createCellStyle( (TableStyle)arg1, (str)arg2, (str)arg3) -> ErrorStatus :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def description (self, *args, **kwargs)-> str :
       '''description( (TableStyle)arg1) -> str :
@@ -67405,7 +67626,7 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -67950,7 +68171,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -68076,7 +68297,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -68966,7 +69187,7 @@ class TextStyleTableRecord:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -69029,7 +69250,7 @@ class TextStyleTableRecord:
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -69266,7 +69487,7 @@ This class cannot be instantiated from Python'''
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def getAllObjects (self, *args, **kwargs)-> list :
       '''getAllObjects( (Transaction)arg1) -> list :
@@ -69294,7 +69515,7 @@ getObject( (Transaction)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> DbO
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (RxObject)arg1) -> bool :
@@ -69344,7 +69565,7 @@ class TransactionManager:
       '''isA( (RxObject)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyRxObject {lvalue})'''
+        class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
     def isNull (self, *args, **kwargs)-> bool :
       '''isNull( (RxObject)arg1) -> bool :
@@ -69633,13 +69854,13 @@ class UnderlayDefinition:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def dictionaryKey (self, *args, **kwargs)-> str :
       '''dictionaryKey( (RxClass)arg1) -> str :
 
     C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dictionaryKey(class PyRx::PyRxClass)'''
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dictionaryKey(class PyRxClass)'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -69696,7 +69917,7 @@ class UnderlayDefinition:
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -69978,7 +70199,7 @@ class UnderlayReference:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -70122,7 +70343,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -71236,7 +71457,7 @@ class Vertex:
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -71338,7 +71559,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -71827,7 +72048,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -71941,7 +72162,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -72533,6 +72754,1644 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class Viewport:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addPersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def ambientLightColor (self, *args, **kwargs)-> Color :
+      '''ambientLightColor( (Viewport)arg1) -> Color :
+
+    C++ signature :
+        class AcCmColor ambientLightColor(class PyDbViewport {lvalue})'''
+    ...
+    def assertNotifyEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertReadEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertWriteEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def backClipDistance (self, *args, **kwargs)-> float :
+      '''backClipDistance( (Viewport)arg1) -> float :
+
+    C++ signature :
+        double backClipDistance(class PyDbViewport {lvalue})'''
+    ...
+    def background (self, *args, **kwargs)-> ObjectId :
+      '''background( (Viewport)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId background(class PyDbViewport {lvalue})'''
+    ...
+    def blockId (self, *args, **kwargs)-> ObjectId :
+      '''blockId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def brightness (self, *args, **kwargs)-> float :
+      '''brightness( (Viewport)arg1) -> float :
+
+    C++ signature :
+        double brightness(class PyDbViewport {lvalue})'''
+    ...
+    def cancel (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def cast (self, *args, **kwargs)-> Viewport :
+      '''cast( (RxObject)arg1) -> Viewport :
+
+    C++ signature :
+        class PyDbViewport cast(class PyRxObject)'''
+    ...
+    def castShadows (self, *args, **kwargs)-> bool :
+      '''castShadows( (Entity)arg1) -> bool :
+
+    C++ signature :
+        bool castShadows(class PyDbEntity {lvalue})'''
+    ...
+    def centerPoint (self, *args, **kwargs)-> Point3d :
+      '''centerPoint( (Viewport)arg1) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d centerPoint(class PyDbViewport {lvalue})'''
+    ...
+    def circleSides (self, *args, **kwargs)-> int :
+      '''circleSides( (Viewport)arg1) -> int :
+
+    C++ signature :
+        unsigned short circleSides(class PyDbViewport {lvalue})'''
+    ...
+    def className (self, *args, **kwargs)-> str :
+      '''className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs)-> Viewport :
+      '''cloneFrom( (RxObject)arg1) -> Viewport :
+
+    C++ signature :
+        class PyDbViewport cloneFrom(class PyRxObject)'''
+    ...
+    def close (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def collisionType (self, *args, **kwargs)-> CollisionType :
+      '''collisionType( (Entity)arg1) -> CollisionType :
+
+    C++ signature :
+        enum AcDb::CollisionType collisionType(class PyDbEntity {lvalue})'''
+    ...
+    def color (self, *args, **kwargs)-> Color :
+      '''color( (Entity)arg1) -> Color :
+
+    C++ signature :
+        class AcCmColor color(class PyDbEntity {lvalue})'''
+    ...
+    def colorIndex (self, *args, **kwargs)-> int :
+      '''colorIndex( (Entity)arg1) -> int :
+
+    C++ signature :
+        unsigned short colorIndex(class PyDbEntity {lvalue})'''
+    ...
+    def contrast (self, *args, **kwargs)-> float :
+      '''contrast( (Viewport)arg1) -> float :
+
+    C++ signature :
+        double contrast(class PyDbViewport {lvalue})'''
+    ...
+    def copied (self, *args, **kwargs)-> None :
+      '''copied( (Viewport)arg1, (DbObject)arg2, (DbObject)arg3) -> None :
+
+    C++ signature :
+        void copied(class PyDbViewport {lvalue},class PyDbObject,class PyDbObject)'''
+    ...
+    def createExtensionDictionary (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def customScale (self, *args, **kwargs)-> float :
+      '''customScale( (Viewport)arg1) -> float :
+
+    C++ signature :
+        double customScale(class PyDbViewport {lvalue})'''
+    ...
+    def database (self: DbObject)-> Database :
+      '''                             '''
+    ...
+    def defaultLightingType (self, *args, **kwargs)-> object :
+      '''defaultLightingType( (Viewport)arg1) -> object :
+
+    C++ signature :
+        enum AcGiViewportTraits::DefaultLightingType defaultLightingType(class PyDbViewport {lvalue})'''
+    ...
+    def desc (self, *args, **kwargs)-> RxClass :
+      '''desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def disableUndoRecording (self: DbObject,disable: bool)-> None :
+      '''                             '''
+    ...
+    def downgradeOpen (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def draw (self, *args, **kwargs)-> ErrorStatus :
+      '''draw( (Entity)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def effectivePlotStyleSheet (self, *args, **kwargs)-> str :
+      '''effectivePlotStyleSheet( (Viewport)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > effectivePlotStyleSheet(class PyDbViewport {lvalue})'''
+    ...
+    def elevation (self, *args, **kwargs)-> float :
+      '''elevation( (Viewport)arg1) -> float :
+
+    C++ signature :
+        double elevation(class PyDbViewport {lvalue})'''
+    ...
+    def entityColor (self, *args, **kwargs)-> EntityColor :
+      '''entityColor( (Entity)arg1) -> EntityColor :
+
+    C++ signature :
+        class AcCmEntityColor entityColor(class PyDbEntity {lvalue})'''
+    ...
+    def erase (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def erased (self, *args, **kwargs)-> None :
+      '''erased( (Viewport)arg1, (DbObject)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void erased(class PyDbViewport {lvalue},class PyDbObject,bool)'''
+    ...
+    def extensionDictionary (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def freezeLayersInViewport (self, *args, **kwargs)-> ErrorStatus :
+      '''freezeLayersInViewport( (Viewport)arg1, (list)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus freezeLayersInViewport(class PyDbViewport {lvalue},class boost::python::list)'''
+    ...
+    def frontClipDistance (self, *args, **kwargs)-> float :
+      '''frontClipDistance( (Viewport)arg1) -> float :
+
+    C++ signature :
+        double frontClipDistance(class PyDbViewport {lvalue})'''
+    ...
+    def getCompoundObjectTransform (self, *args, **kwargs)-> ErrorStatus :
+      '''getCompoundObjectTransform( (Entity)arg1, (Matrix3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus getCompoundObjectTransform(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
+    ...
+    def getEcs (self, *args, **kwargs)-> None :
+      '''getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
+
+    C++ signature :
+        void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
+    ...
+    def getField (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getFieldDictionary (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getFrozenLayerList (self, *args, **kwargs)-> list :
+      '''getFrozenLayerList( (Viewport)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getFrozenLayerList(class PyDbViewport {lvalue})'''
+    ...
+    def getGeomExtents (self, *args, **kwargs)-> ErrorStatus :
+      '''getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self: DbObject)-> Handle :
+      '''                             '''
+    ...
+    def getLabelBlock (self, *args, **kwargs)-> ObjectId :
+      '''getLabelBlock( (Viewport)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getLabelBlock(class PyDbViewport {lvalue})'''
+    ...
+    def getModelView (self, *args, **kwargs)-> XrefObjectId :
+      '''getModelView( (Viewport)arg1) -> XrefObjectId :
+
+    C++ signature :
+        class PyDbXrefObjectId getModelView(class PyDbViewport {lvalue})'''
+    ...
+    def getPlane (self, *args, **kwargs)-> Plane :
+      '''getPlane( (Entity)arg1) -> Plane :
+
+    C++ signature :
+        class PyGePlane getPlane(class PyDbEntity {lvalue})'''
+    ...
+    def getPlotStyleNameId (self, *args, **kwargs)-> ObjectId :
+      '''getPlotStyleNameId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getPlotStyleNameId(class PyDbEntity {lvalue})'''
+    ...
+    def getSheetView (self, *args, **kwargs)-> ObjectId :
+      '''getSheetView( (Viewport)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getSheetView(class PyDbViewport {lvalue})'''
+    ...
+    def getUcs (self, *args, **kwargs)-> ErrorStatus :
+      '''getUcs( (Viewport)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus getUcs(class PyDbViewport {lvalue},class AcGePoint3d {lvalue},class AcGeVector3d {lvalue},class AcGeVector3d {lvalue})'''
+    ...
+    def gridIncrement (self, *args, **kwargs)-> Vector2d :
+      '''gridIncrement( (Viewport)arg1) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d gridIncrement(class PyDbViewport {lvalue})'''
+    ...
+    def gridMajor (self, *args, **kwargs)-> int :
+      '''gridMajor( (Viewport)arg1) -> int :
+
+    C++ signature :
+        unsigned short gridMajor(class PyDbViewport {lvalue})'''
+    ...
+    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def hasFields (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def height (self, *args, **kwargs)-> float :
+      '''height( (Viewport)arg1) -> float :
+
+    C++ signature :
+        double height(class PyDbViewport {lvalue})'''
+    ...
+    def hiddenLinesRemoved (self, *args, **kwargs)-> bool :
+      '''hiddenLinesRemoved( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool hiddenLinesRemoved(class PyDbViewport {lvalue})'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
+    def isA (self, *args, **kwargs)-> RxClass :
+      '''isA( (Drawable)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+    ...
+    def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isBackClipOn (self, *args, **kwargs)-> bool :
+      '''isBackClipOn( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool isBackClipOn(class PyDbViewport {lvalue})'''
+    ...
+    def isCancelling (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isDefaultLightingOn (self, *args, **kwargs)-> bool :
+      '''isDefaultLightingOn( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool isDefaultLightingOn(class PyDbViewport {lvalue})'''
+    ...
+    def isEraseStatusToggled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isErased (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isFastZoomOn (self, *args, **kwargs)-> bool :
+      '''isFastZoomOn( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool isFastZoomOn(class PyDbViewport {lvalue})'''
+    ...
+    def isFrontClipAtEyeOn (self, *args, **kwargs)-> bool :
+      '''isFrontClipAtEyeOn( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool isFrontClipAtEyeOn(class PyDbViewport {lvalue})'''
+    ...
+    def isFrontClipOn (self, *args, **kwargs)-> bool :
+      '''isFrontClipOn( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool isFrontClipOn(class PyDbViewport {lvalue})'''
+    ...
+    def isGridAdaptive (self, *args, **kwargs)-> bool :
+      '''isGridAdaptive( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool isGridAdaptive(class PyDbViewport {lvalue})'''
+    ...
+    def isGridBoundToLimits (self, *args, **kwargs)-> bool :
+      '''isGridBoundToLimits( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool isGridBoundToLimits(class PyDbViewport {lvalue})'''
+    ...
+    def isGridFollow (self, *args, **kwargs)-> bool :
+      '''isGridFollow( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool isGridFollow(class PyDbViewport {lvalue})'''
+    ...
+    def isGridOn (self, *args, **kwargs)-> bool :
+      '''isGridOn( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool isGridOn(class PyDbViewport {lvalue})'''
+    ...
+    def isGridSubdivisionRestricted (self, *args, **kwargs)-> bool :
+      '''isGridSubdivisionRestricted( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool isGridSubdivisionRestricted(class PyDbViewport {lvalue})'''
+    ...
+    def isLayerFrozenInViewport (self, *args, **kwargs)-> bool :
+      '''isLayerFrozenInViewport( (Viewport)arg1, (ObjectId)arg2) -> bool :
+
+    C++ signature :
+        bool isLayerFrozenInViewport(class PyDbViewport {lvalue},class PyDbObjectId)'''
+    ...
+    def isLocked (self, *args, **kwargs)-> bool :
+      '''isLocked( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool isLocked(class PyDbViewport {lvalue})'''
+    ...
+    def isModified (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedGraphics (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedXData (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNewObject (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNonRectClipOn (self, *args, **kwargs)-> bool :
+      '''isNonRectClipOn( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool isNonRectClipOn(class PyDbViewport {lvalue})'''
+    ...
+    def isNotifyEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifying (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNull (self, *args, **kwargs)-> bool :
+      '''isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def isOn (self, *args, **kwargs)-> bool :
+      '''isOn( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool isOn(class PyDbViewport {lvalue})'''
+    ...
+    def isPerspectiveOn (self, *args, **kwargs)-> bool :
+      '''isPerspectiveOn( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool isPerspectiveOn(class PyDbViewport {lvalue})'''
+    ...
+    def isPlanar (self, *args, **kwargs)-> bool :
+      '''isPlanar( (Entity)arg1) -> bool :
+
+    C++ signature :
+        bool isPlanar(class PyDbEntity {lvalue})'''
+    ...
+    def isReadEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isReallyClosing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isSnapIsometric (self, *args, **kwargs)-> bool :
+      '''isSnapIsometric( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool isSnapIsometric(class PyDbViewport {lvalue})'''
+    ...
+    def isSnapOn (self, *args, **kwargs)-> bool :
+      '''isSnapOn( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool isSnapOn(class PyDbViewport {lvalue})'''
+    ...
+    def isTransactionResident (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isTransparent (self, *args, **kwargs)-> bool :
+      '''isTransparent( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool isTransparent(class PyDbViewport {lvalue})'''
+    ...
+    def isUcsFollowModeOn (self, *args, **kwargs)-> bool :
+      '''isUcsFollowModeOn( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool isUcsFollowModeOn(class PyDbViewport {lvalue})'''
+    ...
+    def isUcsIconAtOrigin (self, *args, **kwargs)-> bool :
+      '''isUcsIconAtOrigin( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool isUcsIconAtOrigin(class PyDbViewport {lvalue})'''
+    ...
+    def isUcsIconVisible (self, *args, **kwargs)-> bool :
+      '''isUcsIconVisible( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool isUcsIconVisible(class PyDbViewport {lvalue})'''
+    ...
+    def isUcsOrthographic (self, *args, **kwargs)-> tuple :
+      '''isUcsOrthographic( (Viewport)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple isUcsOrthographic(class PyDbViewport {lvalue})'''
+    ...
+    def isUcsSavedWithViewport (self, *args, **kwargs)-> bool :
+      '''isUcsSavedWithViewport( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool isUcsSavedWithViewport(class PyDbViewport {lvalue})'''
+    ...
+    def isUndoRecordingDisabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isViewOrthographic (self, *args, **kwargs)-> tuple :
+      '''isViewOrthographic( (Viewport)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple isViewOrthographic(class PyDbViewport {lvalue})'''
+    ...
+    def isWriteEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def layer (self, *args, **kwargs)-> str :
+      '''layer( (Entity)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > layer(class PyDbEntity {lvalue})'''
+    ...
+    def layerId (self, *args, **kwargs)-> ObjectId :
+      '''layerId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId layerId(class PyDbEntity {lvalue})'''
+    ...
+    def lensLength (self, *args, **kwargs)-> float :
+      '''lensLength( (Viewport)arg1) -> float :
+
+    C++ signature :
+        double lensLength(class PyDbViewport {lvalue})'''
+    ...
+    def lineWeight (self, *args, **kwargs)-> LineWeight :
+      '''lineWeight( (Entity)arg1) -> LineWeight :
+
+    C++ signature :
+        enum AcDb::LineWeight lineWeight(class PyDbEntity {lvalue})'''
+    ...
+    def linetype (self, *args, **kwargs)-> str :
+      '''linetype( (Entity)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > linetype(class PyDbEntity {lvalue})'''
+    ...
+    def linetypeId (self, *args, **kwargs)-> ObjectId :
+      '''linetypeId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId linetypeId(class PyDbEntity {lvalue})'''
+    ...
+    def linetypeScale (self, *args, **kwargs)-> float :
+      '''linetypeScale( (Entity)arg1) -> float :
+
+    C++ signature :
+        double linetypeScale(class PyDbEntity {lvalue})'''
+    ...
+    def list (self, *args, **kwargs)-> None :
+      '''list( (Entity)arg1) -> None :
+
+    C++ signature :
+        void list(class PyDbEntity {lvalue})'''
+    ...
+    def material (self, *args, **kwargs)-> str :
+      '''material( (Entity)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > material(class PyDbEntity {lvalue})'''
+    ...
+    def materialId (self, *args, **kwargs)-> ObjectId :
+      '''materialId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
+    ...
+    def modified (self, *args, **kwargs)-> None :
+      '''modified( (Viewport)arg1, (DbObject)arg2) -> None :
+
+    C++ signature :
+        void modified(class PyDbViewport {lvalue},class PyDbObject)'''
+    ...
+    def nonRectClipEntityId (self, *args, **kwargs)-> ObjectId :
+      '''nonRectClipEntityId( (Viewport)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId nonRectClipEntityId(class PyDbViewport {lvalue})'''
+    ...
+    def number (self, *args, **kwargs)-> int :
+      '''number( (Viewport)arg1) -> int :
+
+    C++ signature :
+        short number(class PyDbViewport {lvalue})'''
+    ...
+    def objectId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def plotAsRaster (self, *args, **kwargs)-> bool :
+      '''plotAsRaster( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool plotAsRaster(class PyDbViewport {lvalue})'''
+    ...
+    def plotStyleName (self, *args, **kwargs)-> str :
+      '''plotStyleName( (Entity)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > plotStyleName(class PyDbEntity {lvalue})'''
+    ...
+    def plotStyleSheet (self, *args, **kwargs)-> str :
+      '''plotStyleSheet( (Viewport)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > plotStyleSheet(class PyDbViewport {lvalue})'''
+    ...
+    def plotWireframe (self, *args, **kwargs)-> bool :
+      '''plotWireframe( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool plotWireframe(class PyDbViewport {lvalue})'''
+    ...
+    def previousBackground (self, *args, **kwargs)-> ObjectId :
+      '''previousBackground( (Viewport)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId previousBackground(class PyDbViewport {lvalue})
+
+previousBackground( (Viewport)arg1, (object)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId previousBackground(class PyDbViewport {lvalue},enum AcGiDrawable::DrawableType)'''
+    ...
+    def previousBackgroundForcedSwitch (self, *args, **kwargs)-> bool :
+      '''previousBackgroundForcedSwitch( (Viewport)arg1) -> bool :
+
+    C++ signature :
+        bool previousBackgroundForcedSwitch(class PyDbViewport {lvalue})'''
+    ...
+    def receiveShadows (self, *args, **kwargs)-> bool :
+      '''receiveShadows( (Entity)arg1) -> bool :
+
+    C++ signature :
+        bool receiveShadows(class PyDbEntity {lvalue})'''
+    ...
+    def recordGraphicsModified (self, *args, **kwargs)-> None :
+      '''recordGraphicsModified( (Entity)arg1) -> None :
+
+    C++ signature :
+        void recordGraphicsModified(class PyDbEntity {lvalue})
+
+recordGraphicsModified( (Entity)arg1) -> None :
+
+    C++ signature :
+        void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs)-> int :
+      '''refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
+    def releaseExtensionDictionary (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def removeField (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def removeHiddenLines (self, *args, **kwargs)-> ErrorStatus :
+      '''removeHiddenLines( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeHiddenLines(class PyDbViewport {lvalue})
+
+removeHiddenLines( (Viewport)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeHiddenLines(class PyDbViewport {lvalue},bool)'''
+    ...
+    def removeLabelBlock (self, *args, **kwargs)-> ErrorStatus :
+      '''removeLabelBlock( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeLabelBlock(class PyDbViewport {lvalue})'''
+    ...
+    def removeModelView (self, *args, **kwargs)-> ErrorStatus :
+      '''removeModelView( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeModelView(class PyDbViewport {lvalue})'''
+    ...
+    def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def removeSheetView (self, *args, **kwargs)-> ErrorStatus :
+      '''removeSheetView( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeSheetView(class PyDbViewport {lvalue})'''
+    ...
+    def setAmbientLightColor (self, *args, **kwargs)-> ErrorStatus :
+      '''setAmbientLightColor( (Viewport)arg1, (Color)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setAmbientLightColor(class PyDbViewport {lvalue},class AcCmColor)'''
+    ...
+    def setBackClipDistance (self, *args, **kwargs)-> ErrorStatus :
+      '''setBackClipDistance( (Viewport)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setBackClipDistance(class PyDbViewport {lvalue},double)'''
+    ...
+    def setBackClipOff (self, *args, **kwargs)-> ErrorStatus :
+      '''setBackClipOff( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setBackClipOff(class PyDbViewport {lvalue})'''
+    ...
+    def setBackClipOn (self, *args, **kwargs)-> ErrorStatus :
+      '''setBackClipOn( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setBackClipOn(class PyDbViewport {lvalue})
+
+setBackClipOn( (Viewport)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setBackClipOn(class PyDbViewport {lvalue},bool)'''
+    ...
+    def setBackground (self, *args, **kwargs)-> ErrorStatus :
+      '''setBackground( (Viewport)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setBackground(class PyDbViewport {lvalue},class PyDbObjectId {lvalue})'''
+    ...
+    def setBrightness (self, *args, **kwargs)-> ErrorStatus :
+      '''setBrightness( (Viewport)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setBrightness(class PyDbViewport {lvalue},double)'''
+    ...
+    def setCastShadows (self, *args, **kwargs)-> None :
+      '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setCastShadows(class PyDbEntity {lvalue},bool)'''
+    ...
+    def setCenterPoint (self, *args, **kwargs)-> ErrorStatus :
+      '''setCenterPoint( (Viewport)arg1, (Point3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setCenterPoint(class PyDbViewport {lvalue},class AcGePoint3d)'''
+    ...
+    def setCircleSides (self, *args, **kwargs)-> ErrorStatus :
+      '''setCircleSides( (Viewport)arg1, (int)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setCircleSides(class PyDbViewport {lvalue},unsigned short)'''
+    ...
+    def setColor (self, *args, **kwargs)-> ErrorStatus :
+      '''setColor( (Entity)arg1, (Color)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColor(class PyDbEntity {lvalue},class AcCmColor)
+
+setColor( (Entity)arg1, (Color)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColor(class PyDbEntity {lvalue},class AcCmColor,bool)
+
+setColor( (Entity)arg1, (Color)arg2, (bool)arg3, (Database)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColor(class PyDbEntity {lvalue},class AcCmColor,bool,class PyDbDatabase {lvalue})'''
+    ...
+    def setColorIndex (self, *args, **kwargs)-> ErrorStatus :
+      '''setColorIndex( (Entity)arg1, (int)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColorIndex(class PyDbEntity {lvalue},unsigned short)
+
+setColorIndex( (Entity)arg1, (int)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColorIndex(class PyDbEntity {lvalue},unsigned short,bool)'''
+    ...
+    def setContrast (self, *args, **kwargs)-> ErrorStatus :
+      '''setContrast( (Viewport)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setContrast(class PyDbViewport {lvalue},double)'''
+    ...
+    def setCustomScale (self, *args, **kwargs)-> ErrorStatus :
+      '''setCustomScale( (Viewport)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setCustomScale(class PyDbViewport {lvalue},double)'''
+    ...
+    def setDatabaseDefaults (self, *args, **kwargs)-> None :
+      '''setDatabaseDefaults( (Entity)arg1) -> None :
+
+    C++ signature :
+        void setDatabaseDefaults(class PyDbEntity {lvalue})
+
+setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
+
+    C++ signature :
+        void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setDefaultLightingOn (self, *args, **kwargs)-> ErrorStatus :
+      '''setDefaultLightingOn( (Viewport)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setDefaultLightingOn(class PyDbViewport {lvalue},bool)'''
+    ...
+    def setDefaultLightingType (self, *args, **kwargs)-> ErrorStatus :
+      '''setDefaultLightingType( (Viewport)arg1, (object)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setDefaultLightingType(class PyDbViewport {lvalue},enum AcGiViewportTraits::DefaultLightingType)'''
+    ...
+    def setElevation (self, *args, **kwargs)-> ErrorStatus :
+      '''setElevation( (Viewport)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setElevation(class PyDbViewport {lvalue},double)'''
+    ...
+    def setFastZoomOff (self, *args, **kwargs)-> ErrorStatus :
+      '''setFastZoomOff( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setFastZoomOff(class PyDbViewport {lvalue})'''
+    ...
+    def setFastZoomOn (self, *args, **kwargs)-> ErrorStatus :
+      '''setFastZoomOn( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setFastZoomOn(class PyDbViewport {lvalue})
+
+setFastZoomOn( (Viewport)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setFastZoomOn(class PyDbViewport {lvalue},bool)'''
+    ...
+    def setField (self: DbObject,obj: Field)-> ObjectId :
+      '''                             '''
+    ...
+    def setFrontClipAtEyeOff (self, *args, **kwargs)-> ErrorStatus :
+      '''setFrontClipAtEyeOff( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setFrontClipAtEyeOff(class PyDbViewport {lvalue})'''
+    ...
+    def setFrontClipAtEyeOn (self, *args, **kwargs)-> ErrorStatus :
+      '''setFrontClipAtEyeOn( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setFrontClipAtEyeOn(class PyDbViewport {lvalue})
+
+setFrontClipAtEyeOn( (Viewport)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setFrontClipAtEyeOn(class PyDbViewport {lvalue},bool)'''
+    ...
+    def setFrontClipDistance (self, *args, **kwargs)-> ErrorStatus :
+      '''setFrontClipDistance( (Viewport)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setFrontClipDistance(class PyDbViewport {lvalue},double)'''
+    ...
+    def setFrontClipOff (self, *args, **kwargs)-> ErrorStatus :
+      '''setFrontClipOff( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setFrontClipOff(class PyDbViewport {lvalue})'''
+    ...
+    def setFrontClipOn (self, *args, **kwargs)-> ErrorStatus :
+      '''setFrontClipOn( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setFrontClipOn(class PyDbViewport {lvalue})
+
+setFrontClipOn( (Viewport)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setFrontClipOn(class PyDbViewport {lvalue},bool)'''
+    ...
+    def setGridAdaptive (self, *args, **kwargs)-> ErrorStatus :
+      '''setGridAdaptive( (Viewport)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setGridAdaptive(class PyDbViewport {lvalue},bool)'''
+    ...
+    def setGridBoundToLimits (self, *args, **kwargs)-> ErrorStatus :
+      '''setGridBoundToLimits( (Viewport)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setGridBoundToLimits(class PyDbViewport {lvalue},bool)'''
+    ...
+    def setGridFollow (self, *args, **kwargs)-> ErrorStatus :
+      '''setGridFollow( (Viewport)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setGridFollow(class PyDbViewport {lvalue},bool)'''
+    ...
+    def setGridIncrement (self, *args, **kwargs)-> ErrorStatus :
+      '''setGridIncrement( (Viewport)arg1, (Vector2d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setGridIncrement(class PyDbViewport {lvalue},class AcGeVector2d)'''
+    ...
+    def setGridMajor (self, *args, **kwargs)-> ErrorStatus :
+      '''setGridMajor( (Viewport)arg1, (int)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setGridMajor(class PyDbViewport {lvalue},unsigned short)'''
+    ...
+    def setGridOff (self, *args, **kwargs)-> ErrorStatus :
+      '''setGridOff( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setGridOff(class PyDbViewport {lvalue})'''
+    ...
+    def setGridOn (self, *args, **kwargs)-> ErrorStatus :
+      '''setGridOn( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setGridOn(class PyDbViewport {lvalue})
+
+setGridOn( (Viewport)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setGridOn(class PyDbViewport {lvalue},bool)'''
+    ...
+    def setGridSubdivisionRestricted (self, *args, **kwargs)-> ErrorStatus :
+      '''setGridSubdivisionRestricted( (Viewport)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setGridSubdivisionRestricted(class PyDbViewport {lvalue},bool)'''
+    ...
+    def setHeight (self, *args, **kwargs)-> ErrorStatus :
+      '''setHeight( (Viewport)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setHeight(class PyDbViewport {lvalue},double)'''
+    ...
+    def setIsOn (self, *args, **kwargs)-> ErrorStatus :
+      '''setIsOn( (Viewport)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setIsOn(class PyDbViewport {lvalue},bool)'''
+    ...
+    def setLabelBlock (self, *args, **kwargs)-> ErrorStatus :
+      '''setLabelBlock( (Viewport)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLabelBlock(class PyDbViewport {lvalue},class PyDbObjectId {lvalue})'''
+    ...
+    def setLayer (self, *args, **kwargs)-> ErrorStatus :
+      '''setLayer( (Entity)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setLayer( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setLayer( (Entity)arg1, (str)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,bool)
+
+setLayer( (Entity)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class PyDbObjectId)
+
+setLayer( (Entity)arg1, (ObjectId)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class PyDbObjectId,bool)
+
+setLayer( (Entity)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class PyDbObjectId,bool,bool)'''
+    ...
+    def setLensLength (self, *args, **kwargs)-> ErrorStatus :
+      '''setLensLength( (Viewport)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLensLength(class PyDbViewport {lvalue},double)'''
+    ...
+    def setLineWeight (self, *args, **kwargs)-> ErrorStatus :
+      '''setLineWeight( (Entity)arg1, (LineWeight)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLineWeight(class PyDbEntity {lvalue},enum AcDb::LineWeight)
+
+setLineWeight( (Entity)arg1, (LineWeight)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLineWeight(class PyDbEntity {lvalue},enum AcDb::LineWeight,bool)'''
+    ...
+    def setLinetype (self, *args, **kwargs)-> ErrorStatus :
+      '''setLinetype( (Entity)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setLinetype( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setLinetype( (Entity)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class PyDbObjectId)
+
+setLinetype( (Entity)arg1, (ObjectId)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class PyDbObjectId,bool)'''
+    ...
+    def setLinetypeScale (self, *args, **kwargs)-> ErrorStatus :
+      '''setLinetypeScale( (Entity)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetypeScale(class PyDbEntity {lvalue},double)
+
+setLinetypeScale( (Entity)arg1, (float)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetypeScale(class PyDbEntity {lvalue},double,bool)'''
+    ...
+    def setLocked (self, *args, **kwargs)-> ErrorStatus :
+      '''setLocked( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLocked(class PyDbViewport {lvalue})
+
+setLocked( (Viewport)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLocked(class PyDbViewport {lvalue},bool)'''
+    ...
+    def setMaterial (self, *args, **kwargs)-> ErrorStatus :
+      '''setMaterial( (Entity)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setMaterial( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setMaterial( (Entity)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class PyDbObjectId)
+
+setMaterial( (Entity)arg1, (ObjectId)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class PyDbObjectId,bool)'''
+    ...
+    def setModelView (self, *args, **kwargs)-> ErrorStatus :
+      '''setModelView( (Viewport)arg1, (XrefObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setModelView(class PyDbViewport {lvalue},class PyDbXrefObjectId)'''
+    ...
+    def setNonRectClipEntityId (self, *args, **kwargs)-> ErrorStatus :
+      '''setNonRectClipEntityId( (Viewport)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setNonRectClipEntityId(class PyDbViewport {lvalue},class PyDbObjectId)'''
+    ...
+    def setNonRectClipOff (self, *args, **kwargs)-> ErrorStatus :
+      '''setNonRectClipOff( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setNonRectClipOff(class PyDbViewport {lvalue})'''
+    ...
+    def setNonRectClipOn (self, *args, **kwargs)-> ErrorStatus :
+      '''setNonRectClipOn( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setNonRectClipOn(class PyDbViewport {lvalue})
+
+setNonRectClipOn( (Viewport)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setNonRectClipOn(class PyDbViewport {lvalue},bool)'''
+    ...
+    def setOff (self, *args, **kwargs)-> ErrorStatus :
+      '''setOff( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setOff(class PyDbViewport {lvalue})
+
+setOff( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setOff(class PyDbViewport {lvalue})'''
+    ...
+    def setOn (self, *args, **kwargs)-> ErrorStatus :
+      '''setOn( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setOn(class PyDbViewport {lvalue})'''
+    ...
+    def setOpaque (self, *args, **kwargs)-> ErrorStatus :
+      '''setOpaque( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setOpaque(class PyDbViewport {lvalue})'''
+    ...
+    def setOwnerId (self: DbObject,owner: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def setPerspectiveOff (self, *args, **kwargs)-> ErrorStatus :
+      '''setPerspectiveOff( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPerspectiveOff(class PyDbViewport {lvalue})'''
+    ...
+    def setPerspectiveOn (self, *args, **kwargs)-> ErrorStatus :
+      '''setPerspectiveOn( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPerspectiveOn(class PyDbViewport {lvalue})
+
+setPerspectiveOn( (Viewport)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPerspectiveOn(class PyDbViewport {lvalue},bool)'''
+    ...
+    def setPlotStyleName (self, *args, **kwargs)-> ErrorStatus :
+      '''setPlotStyleName( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPlotStyleName(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,bool)
+
+setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
+    ...
+    def setPlotStyleSheet (self, *args, **kwargs)-> ErrorStatus :
+      '''setPlotStyleSheet( (Viewport)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPlotStyleSheet(class PyDbViewport {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setPreviousBackground (self, *args, **kwargs)-> ErrorStatus :
+      '''setPreviousBackground( (Viewport)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPreviousBackground(class PyDbViewport {lvalue},class PyDbObjectId {lvalue})
+
+setPreviousBackground( (Viewport)arg1, (ObjectId)arg2, (object)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPreviousBackground(class PyDbViewport {lvalue},class PyDbObjectId {lvalue},enum AcGiDrawable::DrawableType)
+
+setPreviousBackground( (Viewport)arg1, (ObjectId)arg2, (object)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPreviousBackground(class PyDbViewport {lvalue},class PyDbObjectId {lvalue},enum AcGiDrawable::DrawableType,bool)'''
+    ...
+    def setPropertiesFrom (self, *args, **kwargs)-> ErrorStatus :
+      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
+
+setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    ...
+    def setReceiveShadows (self, *args, **kwargs)-> None :
+      '''setReceiveShadows( (Entity)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setReceiveShadows(class PyDbEntity {lvalue},bool)'''
+    ...
+    def setShadePlot (self, *args, **kwargs)-> ErrorStatus :
+      '''setShadePlot( (Viewport)arg1, (VpShadePlotType)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setShadePlot(class PyDbViewport {lvalue},enum AcDbViewport::ShadePlotType)
+
+setShadePlot( (Viewport)arg1, (VpShadePlotType)arg2, (ObjectId)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setShadePlot(class PyDbViewport {lvalue},enum AcDbViewport::ShadePlotType,class PyDbObjectId)'''
+    ...
+    def setSheetView (self, *args, **kwargs)-> ErrorStatus :
+      '''setSheetView( (Viewport)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSheetView(class PyDbViewport {lvalue},class PyDbObjectId)'''
+    ...
+    def setSnapAngle (self, *args, **kwargs)-> ErrorStatus :
+      '''setSnapAngle( (Viewport)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSnapAngle(class PyDbViewport {lvalue},double)'''
+    ...
+    def setSnapBasePoint (self, *args, **kwargs)-> ErrorStatus :
+      '''setSnapBasePoint( (Viewport)arg1, (Point2d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSnapBasePoint(class PyDbViewport {lvalue},class AcGePoint2d)'''
+    ...
+    def setSnapIncrement (self, *args, **kwargs)-> ErrorStatus :
+      '''setSnapIncrement( (Viewport)arg1, (Vector2d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSnapIncrement(class PyDbViewport {lvalue},class AcGeVector2d)'''
+    ...
+    def setSnapIsoPair (self, *args, **kwargs)-> ErrorStatus :
+      '''setSnapIsoPair( (Viewport)arg1, (int)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSnapIsoPair(class PyDbViewport {lvalue},unsigned short)'''
+    ...
+    def setSnapIsometric (self, *args, **kwargs)-> ErrorStatus :
+      '''setSnapIsometric( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSnapIsometric(class PyDbViewport {lvalue})
+
+setSnapIsometric( (Viewport)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSnapIsometric(class PyDbViewport {lvalue},bool)'''
+    ...
+    def setSnapOff (self, *args, **kwargs)-> ErrorStatus :
+      '''setSnapOff( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSnapOff(class PyDbViewport {lvalue})'''
+    ...
+    def setSnapOn (self, *args, **kwargs)-> ErrorStatus :
+      '''setSnapOn( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSnapOn(class PyDbViewport {lvalue})
+
+setSnapOn( (Viewport)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSnapOn(class PyDbViewport {lvalue},bool)'''
+    ...
+    def setSnapStandard (self, *args, **kwargs)-> ErrorStatus :
+      '''setSnapStandard( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSnapStandard(class PyDbViewport {lvalue})'''
+    ...
+    def setStandardScale (self, *args, **kwargs)-> ErrorStatus :
+      '''setStandardScale( (Viewport)arg1, (StandardScaleType)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setStandardScale(class PyDbViewport {lvalue},enum AcDbViewport::StandardScaleType)'''
+    ...
+    def setSun (self, *args, **kwargs)-> ErrorStatus :
+      '''setSun( (Viewport)arg1, (ObjectId)arg2, (DbObject)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSun(class PyDbViewport {lvalue},class PyDbObjectId {lvalue},class PyDbObject {lvalue})
+
+setSun( (Viewport)arg1, (ObjectId)arg2, (DbObject)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSun(class PyDbViewport {lvalue},class PyDbObjectId {lvalue},class PyDbObject {lvalue},bool)'''
+    ...
+    def setTransparent (self, *args, **kwargs)-> ErrorStatus :
+      '''setTransparent( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setTransparent(class PyDbViewport {lvalue})
+
+setTransparent( (Viewport)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setTransparent(class PyDbViewport {lvalue},bool)'''
+    ...
+    def setTwistAngle (self, *args, **kwargs)-> ErrorStatus :
+      '''setTwistAngle( (Viewport)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setTwistAngle(class PyDbViewport {lvalue},double)'''
+    ...
+    def setUcs (self, *args, **kwargs)-> ErrorStatus :
+      '''setUcs( (Viewport)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcs(class PyDbViewport {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d)
+
+setUcs( (Viewport)arg1, (OrthographicView)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcs(class PyDbViewport {lvalue},enum AcDb::OrthographicView)
+
+setUcs( (Viewport)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcs(class PyDbViewport {lvalue},class PyDbObjectId)'''
+    ...
+    def setUcsFollowModeOff (self, *args, **kwargs)-> ErrorStatus :
+      '''setUcsFollowModeOff( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcsFollowModeOff(class PyDbViewport {lvalue})'''
+    ...
+    def setUcsFollowModeOn (self, *args, **kwargs)-> ErrorStatus :
+      '''setUcsFollowModeOn( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcsFollowModeOn(class PyDbViewport {lvalue})
+
+setUcsFollowModeOn( (Viewport)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcsFollowModeOn(class PyDbViewport {lvalue},bool)'''
+    ...
+    def setUcsIconAtCorner (self, *args, **kwargs)-> ErrorStatus :
+      '''setUcsIconAtCorner( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcsIconAtCorner(class PyDbViewport {lvalue})'''
+    ...
+    def setUcsIconAtOrigin (self, *args, **kwargs)-> ErrorStatus :
+      '''setUcsIconAtOrigin( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcsIconAtOrigin(class PyDbViewport {lvalue})
+
+setUcsIconAtOrigin( (Viewport)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcsIconAtOrigin(class PyDbViewport {lvalue},bool)'''
+    ...
+    def setUcsIconInvisible (self, *args, **kwargs)-> ErrorStatus :
+      '''setUcsIconInvisible( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcsIconInvisible(class PyDbViewport {lvalue})'''
+    ...
+    def setUcsIconVisible (self, *args, **kwargs)-> ErrorStatus :
+      '''setUcsIconVisible( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcsIconVisible(class PyDbViewport {lvalue})
+
+setUcsIconVisible( (Viewport)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcsIconVisible(class PyDbViewport {lvalue},bool)'''
+    ...
+    def setUcsPerViewport (self, *args, **kwargs)-> None :
+      '''setUcsPerViewport( (Viewport)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setUcsPerViewport(class PyDbViewport {lvalue},bool)'''
+    ...
+    def setUcsToWorld (self, *args, **kwargs)-> ErrorStatus :
+      '''setUcsToWorld( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcsToWorld(class PyDbViewport {lvalue})'''
+    ...
+    def setUnlocked (self, *args, **kwargs)-> ErrorStatus :
+      '''setUnlocked( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUnlocked(class PyDbViewport {lvalue})'''
+    ...
+    def setViewCenter (self, *args, **kwargs)-> ErrorStatus :
+      '''setViewCenter( (Viewport)arg1, (Point2d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setViewCenter(class PyDbViewport {lvalue},class AcGePoint2d)'''
+    ...
+    def setViewDirection (self, *args, **kwargs)-> ErrorStatus :
+      '''setViewDirection( (Viewport)arg1, (OrthographicView)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setViewDirection(class PyDbViewport {lvalue},enum AcDb::OrthographicView)'''
+    ...
+    def setViewDirection1 (self, *args, **kwargs)-> ErrorStatus :
+      '''setViewDirection1( (Viewport)arg1, (Vector3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setViewDirection1(class PyDbViewport {lvalue},class AcGeVector3d)'''
+    ...
+    def setViewHeight (self, *args, **kwargs)-> ErrorStatus :
+      '''setViewHeight( (Viewport)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setViewHeight(class PyDbViewport {lvalue},double)'''
+    ...
+    def setViewTarget (self, *args, **kwargs)-> ErrorStatus :
+      '''setViewTarget( (Viewport)arg1, (Point3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setViewTarget(class PyDbViewport {lvalue},class AcGePoint3d)'''
+    ...
+    def setVisibility (self, *args, **kwargs)-> ErrorStatus :
+      '''setVisibility( (Entity)arg1, (Visibility)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility)
+
+setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
+    ...
+    def setVisualStyle (self, *args, **kwargs)-> ErrorStatus :
+      '''setVisualStyle( (Viewport)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setVisualStyle(class PyDbViewport {lvalue},class PyDbObjectId)'''
+    ...
+    def setWidth (self, *args, **kwargs)-> ErrorStatus :
+      '''setWidth( (Viewport)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setWidth(class PyDbViewport {lvalue},double)'''
+    ...
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
+      '''                             '''
+    ...
+    def shadePlot (self, *args, **kwargs)-> VpShadePlotType :
+      '''shadePlot( (Viewport)arg1) -> VpShadePlotType :
+
+    C++ signature :
+        enum AcDbViewport::ShadePlotType shadePlot(class PyDbViewport {lvalue})'''
+    ...
+    def shadePlotId (self, *args, **kwargs)-> ObjectId :
+      '''shadePlotId( (Viewport)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId shadePlotId(class PyDbViewport {lvalue})'''
+    ...
+    def showHiddenLines (self, *args, **kwargs)-> ErrorStatus :
+      '''showHiddenLines( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus showHiddenLines(class PyDbViewport {lvalue})'''
+    ...
+    def snapAngle (self, *args, **kwargs)-> float :
+      '''snapAngle( (Viewport)arg1) -> float :
+
+    C++ signature :
+        double snapAngle(class PyDbViewport {lvalue})'''
+    ...
+    def snapBasePoint (self, *args, **kwargs)-> Point2d :
+      '''snapBasePoint( (Viewport)arg1) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d snapBasePoint(class PyDbViewport {lvalue})'''
+    ...
+    def snapIncrement (self, *args, **kwargs)-> Vector2d :
+      '''snapIncrement( (Viewport)arg1) -> Vector2d :
+
+    C++ signature :
+        class AcGeVector2d snapIncrement(class PyDbViewport {lvalue})'''
+    ...
+    def snapIsoPair (self, *args, **kwargs)-> int :
+      '''snapIsoPair( (Viewport)arg1) -> int :
+
+    C++ signature :
+        unsigned short snapIsoPair(class PyDbViewport {lvalue})'''
+    ...
+    def standardScale (self, *args, **kwargs)-> StandardScaleType :
+      '''standardScale( (Viewport)arg1) -> StandardScaleType :
+
+    C++ signature :
+        enum AcDbViewport::StandardScaleType standardScale(class PyDbViewport {lvalue})'''
+    ...
+    def subObjModified (self, *args, **kwargs)-> None :
+      '''subObjModified( (Viewport)arg1, (DbObject)arg2, (DbObject)arg3) -> None :
+
+    C++ signature :
+        void subObjModified(class PyDbViewport {lvalue},class PyDbObject,class PyDbObject)'''
+    ...
+    def sunId (self, *args, **kwargs)-> ObjectId :
+      '''sunId( (Viewport)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId sunId(class PyDbViewport {lvalue})'''
+    ...
+    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def syncModelView (self, *args, **kwargs)-> ErrorStatus :
+      '''syncModelView( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus syncModelView(class PyDbViewport {lvalue})'''
+    ...
+    def thawAllLayersInViewport (self, *args, **kwargs)-> ErrorStatus :
+      '''thawAllLayersInViewport( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus thawAllLayersInViewport(class PyDbViewport {lvalue})'''
+    ...
+    def thawLayersInViewport (self, *args, **kwargs)-> ErrorStatus :
+      '''thawLayersInViewport( (Viewport)arg1, (list)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus thawLayersInViewport(class PyDbViewport {lvalue},class boost::python::list)'''
+    ...
+    def transformBy (self, *args, **kwargs)-> ErrorStatus :
+      '''transformBy( (Entity)arg1, (Matrix3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus transformBy(class PyDbEntity {lvalue},class AcGeMatrix3d)'''
+    ...
+    def twistAngle (self, *args, **kwargs)-> float :
+      '''twistAngle( (Viewport)arg1) -> float :
+
+    C++ signature :
+        double twistAngle(class PyDbViewport {lvalue})'''
+    ...
+    def ucsName (self, *args, **kwargs)-> ObjectId :
+      '''ucsName( (Viewport)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId ucsName(class PyDbViewport {lvalue})'''
+    ...
+    def updateDisplay (self, *args, **kwargs)-> ErrorStatus :
+      '''updateDisplay( (Viewport)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus updateDisplay(class PyDbViewport {lvalue})'''
+    ...
+    def upgradeFromNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def upgradeOpen (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def viewCenter (self, *args, **kwargs)-> Point2d :
+      '''viewCenter( (Viewport)arg1) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d viewCenter(class PyDbViewport {lvalue})'''
+    ...
+    def viewDirection (self, *args, **kwargs)-> Vector3d :
+      '''viewDirection( (Viewport)arg1) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d viewDirection(class PyDbViewport {lvalue})'''
+    ...
+    def viewHeight (self, *args, **kwargs)-> float :
+      '''viewHeight( (Viewport)arg1) -> float :
+
+    C++ signature :
+        double viewHeight(class PyDbViewport {lvalue})'''
+    ...
+    def viewTarget (self, *args, **kwargs)-> Point3d :
+      '''viewTarget( (Viewport)arg1) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d viewTarget(class PyDbViewport {lvalue})'''
+    ...
+    def visibility (self, *args, **kwargs)-> Visibility :
+      '''visibility( (Entity)arg1) -> Visibility :
+
+    C++ signature :
+        enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def visualStyle (self, *args, **kwargs)-> ObjectId :
+      '''visualStyle( (Viewport)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId visualStyle(class PyDbViewport {lvalue})'''
+    ...
+    def width (self, *args, **kwargs)-> float :
+      '''width( (Viewport)arg1) -> float :
+
+    C++ signature :
+        double width(class PyDbViewport {lvalue})'''
+    ...
+    def xData (self: DbObject,appname: str)-> list :
+      '''                             '''
+    ...
+    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> ErrorStatus :
+      '''                             '''
+    ...
+
 class Visibility:
     def __init__ (self, /, *args, **kwargs):
       '''Initialize self.  See help(type(self)) for accurate signature.'''
@@ -72655,6 +74514,140 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class VpShadePlotType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None:
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None:
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None:
+      '''the imaginary part of a complex number'''
+    ...
+    def kAsDisplayed (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kHidden (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kRenderPreset (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kRendered (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kVisualStyle (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kWireframe (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None:
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None:
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
 class Xrecord:
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
@@ -72712,7 +74705,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''desc() -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass desc()'''
+        class PyRxClass desc()'''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -72751,7 +74744,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
-        class PyRx::PyRxClass isA(class PyGiDrawable {lvalue})'''
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
@@ -72897,6 +74890,73 @@ setFromRbChain( (Xrecord)arg1, (list)arg2, (Database)arg3) -> ErrorStatus :
     ...
     def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> ErrorStatus :
       '''                             '''
+    ...
+
+class XrefObjectId:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def getLocalId (self, *args, **kwargs)-> ErrorStatus :
+      '''getLocalId( (XrefObjectId)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus getLocalId(class PyDbXrefObjectId {lvalue},class PyDbObjectId {lvalue})'''
+    ...
+    def getXrefId (self, *args, **kwargs)-> ErrorStatus :
+      '''getXrefId( (XrefObjectId)arg1, (ObjectId)arg2, (Handle)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus getXrefId(class PyDbXrefObjectId {lvalue},class PyDbObjectId {lvalue},class PyDbHandle {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs)-> bool :
+      '''isNull( (XrefObjectId)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyDbXrefObjectId {lvalue})'''
+    ...
+    def isValid (self, *args, **kwargs)-> bool :
+      '''isValid( (XrefObjectId)arg1) -> bool :
+
+    C++ signature :
+        bool isValid(class PyDbXrefObjectId {lvalue})'''
+    ...
+    def isXref (self, *args, **kwargs)-> bool :
+      '''isXref( (XrefObjectId)arg1) -> bool :
+
+    C++ signature :
+        bool isXref(class PyDbXrefObjectId {lvalue})'''
+    ...
+    def resolveObjectId (self, *args, **kwargs)-> ErrorStatus :
+      '''resolveObjectId( (XrefObjectId)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus resolveObjectId(class PyDbXrefObjectId {lvalue},class PyDbObjectId {lvalue})'''
+    ...
+    def setLocalId (self, *args, **kwargs)-> ErrorStatus :
+      '''setLocalId( (XrefObjectId)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLocalId(class PyDbXrefObjectId {lvalue},class PyDbObjectId {lvalue})'''
+    ...
+    def setNull (self, *args, **kwargs)-> ErrorStatus :
+      '''setNull( (XrefObjectId)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setNull(class PyDbXrefObjectId {lvalue})'''
+    ...
+    def setXrefId (self, *args, **kwargs)-> ErrorStatus :
+      '''setXrefId( (XrefObjectId)arg1, (ObjectId)arg2, (Handle)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setXrefId(class PyDbXrefObjectId {lvalue},class PyDbObjectId {lvalue},class PyDbHandle)'''
     ...
 
 class XrefStatus:
