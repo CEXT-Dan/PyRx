@@ -36,9 +36,10 @@ public:
     static boost::python::tuple selectLast2(const boost::python::list& filter);
     static boost::python::tuple ssget1(const std::string& args, const boost::python::object& arg1, const boost::python::object& arg2);
     static boost::python::tuple ssget2(const std::string& args, const boost::python::object& arg1, const boost::python::object& arg2, const boost::python::list& filter);
-    static AcGeMatrix3d         curUCS();//
-    static Acad::ErrorStatus    setCurUCS(const AcGeMatrix3d& mat);//
-    static PyDbObjectId         activeViewportId();//
+    static AcGeMatrix3d         curUCS();
+    static Acad::ErrorStatus    setCurUCS(const AcGeMatrix3d& mat);
+    static PyDbObjectId         activeViewportId();
+    static PyDbObjectId         curViewportObjectId();
     static Acad::PromptStatus   initGet(int val, const std::string& skwl);
     static boost::python::tuple getKword(const std::string& skwl);
     static boost::python::object getVar(const std::string& sym);//
