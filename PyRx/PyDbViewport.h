@@ -13,7 +13,6 @@ public:
     PyDbViewport(AcDbViewport* ptr, bool autoDelete);
     PyDbViewport(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbViewport() override = default;
-
     Acad::ErrorStatus   setModelView(const PyDbXrefObjectId& xrefObjId);
     PyDbXrefObjectId    getModelView() const;
     Acad::ErrorStatus   removeModelView(void);
@@ -191,16 +190,13 @@ public:
     bool                isUcsSavedWithViewport() const;
     void                setUcsPerViewport(bool ucsvp);
     AcDbViewport::ShadePlotType shadePlot() const;
-    Acad::ErrorStatus   setShadePlot(const AcDbViewport::ShadePlotType);
+    Acad::ErrorStatus   setShadePlot1(const AcDbViewport::ShadePlotType);
     PyDbObjectId        shadePlotId() const;
-    Acad::ErrorStatus   setShadePlot(const AcDbViewport::ShadePlotType type,const PyDbObjectId shadePlotId);
+    Acad::ErrorStatus   setShadePlot2(const AcDbViewport::ShadePlotType type,const PyDbObjectId shadePlotId);
     bool                plotWireframe() const;
     bool                plotAsRaster()  const;
-
     //Acad::ErrorStatus toneOperatorParameters(AcGiToneOperatorParameters& params) const;
     //Acad::ErrorStatus setToneOperatorParameters(const AcGiToneOperatorParameters& params);
-
-
     static std::string      className();
     static PyRxClass        desc();
     static PyDbViewport     cloneFrom(const PyRxObject& src);
