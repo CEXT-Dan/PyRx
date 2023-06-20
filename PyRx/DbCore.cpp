@@ -35,6 +35,14 @@ void makeDbCoreWrapper()
         .def("regApp", &DbCore::regApp).staticmethod("regApp")
         .def("updateDimension", &DbCore::updateDimension).staticmethod("updateDimension")
         .def("resbufTest", &DbCore::resbufTest).staticmethod("resbufTest")
+        .def("ucs2Wcs", &DbCore::ucs2Wcs1)
+        .def("ucs2Wcs", &DbCore::ucs2Wcs2).staticmethod("ucs2Wcs")
+        .def("wcs2Ecs", &DbCore::wcs2Ecs1)
+        .def("wcs2Ecs", &DbCore::wcs2Ecs2).staticmethod("wcs2Ecs")
+        .def("ucs2Ucs", &DbCore::ucs2Ucs1)
+        .def("ucs2Ucs", &DbCore::ucs2Ucs2).staticmethod("ucs2Ucs")
+        .def("ecs2Wcs", &DbCore::ecs2Wcs1)
+        .def("ucs2Ucs", &DbCore::ecs2Wcs2).staticmethod("ecs2Wcs")
         ;
 }
 
@@ -129,4 +137,68 @@ boost::python::list DbCore::resbufTest(const boost::python::list& list)
 {
     AcResBufPtr ptr(listToResbuf(list));
     return resbufToList(ptr.get());
+}
+
+bool DbCore::ucs2Wcs1(const AcGePoint3d& p, AcGePoint3d& q)
+{
+    ads_point pnt;
+    bool flag = acdbUcs2Wcs(asDblArray(p), pnt,false);
+    q = asPnt3d(pnt);
+    return flag;
+}
+
+bool DbCore::ucs2Wcs2(const AcGeVector3d& p, AcGeVector3d& q)
+{
+    ads_point pnt;
+    bool flag = acdbUcs2Wcs(asDblArray(p), pnt, true);
+    q = asVec3d(pnt);
+    return flag;
+}
+
+bool DbCore::wcs2Ecs1(const AcGePoint3d& p, const AcGeVector3d& normal, AcGePoint3d& q)
+{
+    ads_point pnt;
+    bool flag = acdbWcs2Ecs(asDblArray(p), pnt, asDblArray(normal), true);
+    q = asPnt3d(pnt);
+    return flag;
+}
+
+bool DbCore::wcs2Ecs2(const AcGeVector3d& p, const AcGeVector3d& normal, AcGeVector3d& q)
+{
+    ads_point pnt;
+    bool flag = acdbWcs2Ecs(asDblArray(p), pnt, asDblArray(normal), true);
+    q = asVec3d(pnt);
+    return flag;
+}
+
+bool DbCore::ucs2Ucs1(const AcGePoint3d& p, AcGePoint3d& q)
+{
+    ads_point pnt;
+    bool flag = acdbWcs2Ucs(asDblArray(p), pnt, false);
+    q = asPnt3d(pnt);
+    return flag;
+}
+
+bool DbCore::ucs2Ucs2(const AcGeVector3d& p, AcGeVector3d& q)
+{
+    ads_point pnt;
+    bool flag = acdbWcs2Ucs(asDblArray(p), pnt, false);
+    q = asVec3d(pnt);
+    return flag;
+}
+
+bool DbCore::ecs2Wcs1(const AcGePoint3d& p, const AcGeVector3d& normal, AcGePoint3d& q)
+{
+    ads_point pnt;
+    bool flag = acdbEcs2Wcs(asDblArray(p), pnt, asDblArray(normal), true);
+    q = asPnt3d(pnt);
+    return flag;
+}
+
+bool DbCore::ecs2Wcs2(const AcGeVector3d& p, const AcGeVector3d& normal, AcGeVector3d& q)
+{
+    ads_point pnt;
+    bool flag = acdbEcs2Wcs(asDblArray(p), pnt, asDblArray(normal), true);
+    q = asVec3d(pnt);
+    return flag;
 }
