@@ -10911,6 +10911,17 @@ class Core:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+    def ecs2Wcs (self, *args, **kwargs)-> bool :
+      '''ecs2Wcs( (Point3d)arg1, (Vector3d)arg2, (Point3d)arg3) -> bool :
+
+    C++ signature :
+        bool ecs2Wcs(class AcGePoint3d,class AcGeVector3d,class AcGePoint3d {lvalue})
+
+ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
+
+    C++ signature :
+        bool ecs2Wcs(class AcGeVector3d,class AcGeVector3d,class AcGeVector3d {lvalue})'''
+    ...
     def entDel (self, *args, **kwargs)-> bool :
       '''entDel( (ObjectId)arg1) -> bool :
 
@@ -10980,11 +10991,44 @@ class Core:
     C++ signature :
         class boost::python::list resbufTest(class boost::python::list)'''
     ...
+    def ucs2Ucs (self, *args, **kwargs)-> bool :
+      '''ucs2Ucs( (Point3d)arg1, (Point3d)arg2) -> bool :
+
+    C++ signature :
+        bool ucs2Ucs(class AcGePoint3d,class AcGePoint3d {lvalue})
+
+ucs2Ucs( (Vector3d)arg1, (Vector3d)arg2) -> bool :
+
+    C++ signature :
+        bool ucs2Ucs(class AcGeVector3d,class AcGeVector3d {lvalue})'''
+    ...
+    def ucs2Wcs (self, *args, **kwargs)-> bool :
+      '''ucs2Wcs( (Point3d)arg1, (Point3d)arg2) -> bool :
+
+    C++ signature :
+        bool ucs2Wcs(class AcGePoint3d,class AcGePoint3d {lvalue})
+
+ucs2Wcs( (Vector3d)arg1, (Vector3d)arg2) -> bool :
+
+    C++ signature :
+        bool ucs2Wcs(class AcGeVector3d,class AcGeVector3d {lvalue})'''
+    ...
     def updateDimension (self, *args, **kwargs)-> ErrorStatus :
       '''updateDimension( (ObjectId)arg1) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus updateDimension(class PyDbObjectId)'''
+    ...
+    def wcs2Ecs (self, *args, **kwargs)-> bool :
+      '''wcs2Ecs( (Point3d)arg1, (Vector3d)arg2, (Point3d)arg3) -> bool :
+
+    C++ signature :
+        bool wcs2Ecs(class AcGePoint3d,class AcGeVector3d,class AcGePoint3d {lvalue})
+
+wcs2Ecs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
+
+    C++ signature :
+        bool wcs2Ecs(class AcGeVector3d,class AcGeVector3d,class AcGeVector3d {lvalue})'''
     ...
 
 class Curve:
