@@ -9,6 +9,9 @@ using namespace boost::python;
 void makePyGiCommonDrawWrapper()
 {
     class_<PyGiCommonDraw, bases<PyRxObject>>("CommonDraw", boost::python::no_init)
+        .def("regenType", &PyGiCommonDraw::regenType)
+        .def("regenAbort", &PyGiCommonDraw::regenAbort)
+        .def("isDragging", &PyGiCommonDraw::isDragging)
         .def("subEntityTraits", &PyGiCommonDraw::subEntityTraits)
         .def("className", &PyGiCommonDraw::className).staticmethod("className")
         .def("desc", &PyGiCommonDraw::desc).staticmethod("desc")
@@ -23,6 +26,21 @@ PyGiCommonDraw::PyGiCommonDraw(AcGiCommonDraw* ptr, bool autoDelete)
 PyGiSubEntityTraits PyGiCommonDraw::subEntityTraits() const
 {
     return PyGiSubEntityTraits(std::addressof(impObj()->subEntityTraits()), false);
+}
+
+AcGiRegenType PyGiCommonDraw::regenType() const
+{
+    return impObj()->regenType();
+}
+
+Adesk::Boolean PyGiCommonDraw::regenAbort() const
+{
+    return impObj()->regenAbort();
+}
+
+Adesk::Boolean PyGiCommonDraw::isDragging() const
+{
+    return impObj()->isDragging();
 }
 
 std::string PyGiCommonDraw::className()
