@@ -8,7 +8,6 @@
 #include "PyDbDictionary.h"
 #include "PyDbSymbolTable.h"
 #include "PyCmColorBase.h"
-#include "PyDbLayerTableRecord.h"
 #include "PyDbField.h"
 #include "PyDbEnts.h"
 #include "PyDbCurve.h"
