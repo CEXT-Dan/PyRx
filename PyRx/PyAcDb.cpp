@@ -12,7 +12,6 @@
 #include "PyDbEnts.h"
 #include "PyDbCurve.h"
 #include "PyDbMText.h"
-#include "PyDbTextStyleTableRecord.h"
 #include "PyDbTable.h"
 #include "PyDbTableStyle.h"
 #include "PyDb3dSolid.h"
