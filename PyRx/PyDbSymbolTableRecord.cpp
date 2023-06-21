@@ -472,7 +472,7 @@ Acad::ErrorStatus PyDbAbstractViewTableRecord::setSun2(PyDbObjectId& retId, PyDb
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setSun(retId.m_id,pSun.impObj(), eraseOldSun);
+    return impObj()->setSun(retId.m_id, pSun.impObj(), eraseOldSun);
 #endif
 }
 
@@ -571,6 +571,55 @@ void makePyDbViewportTableRecordWrapper()
     class_<PyDbViewportTableRecord, bases<PyDbAbstractViewTableRecord>>("ViewportTableRecord")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("number", &PyDbViewportTableRecord::number)
+        .def("lowerLeftCorner", &PyDbViewportTableRecord::lowerLeftCorner)
+        .def("setLowerLeftCorner", &PyDbViewportTableRecord::setLowerLeftCorner)
+        .def("upperRightCorner", &PyDbViewportTableRecord::upperRightCorner)
+        .def("setUpperRightCorner", &PyDbViewportTableRecord::setUpperRightCorner)
+        .def("ucsFollowMode", &PyDbViewportTableRecord::ucsFollowMode)
+        .def("setUcsFollowMode", &PyDbViewportTableRecord::setUcsFollowMode)
+        .def("circleSides", &PyDbViewportTableRecord::circleSides)
+        .def("setCircleSides", &PyDbViewportTableRecord::setCircleSides)
+        .def("fastZoomsEnabled", &PyDbViewportTableRecord::fastZoomsEnabled)
+        .def("setFastZoomsEnabled", &PyDbViewportTableRecord::setFastZoomsEnabled)
+        .def("iconEnabled", &PyDbViewportTableRecord::iconEnabled)
+        .def("setIconEnabled", &PyDbViewportTableRecord::setIconEnabled)
+        .def("iconAtOrigin", &PyDbViewportTableRecord::iconAtOrigin)
+        .def("setIconAtOrigin", &PyDbViewportTableRecord::setIconAtOrigin)
+        .def("gridEnabled", &PyDbViewportTableRecord::gridEnabled)
+        .def("setGridEnabled", &PyDbViewportTableRecord::setGridEnabled)
+        .def("gridIncrements", &PyDbViewportTableRecord::gridIncrements)
+        .def("setGridIncrements", &PyDbViewportTableRecord::setGridIncrements)
+        .def("snapEnabled", &PyDbViewportTableRecord::snapEnabled)
+        .def("setSnapEnabled", &PyDbViewportTableRecord::setSnapEnabled)
+        .def("isometricSnapEnabled", &PyDbViewportTableRecord::isometricSnapEnabled)
+        .def("setIsometricSnapEnabled", &PyDbViewportTableRecord::setIsometricSnapEnabled)
+        .def("snapPair", &PyDbViewportTableRecord::snapPair)
+        .def("setSnapPair", &PyDbViewportTableRecord::setSnapPair)
+        .def("snapAngle", &PyDbViewportTableRecord::snapAngle)
+        .def("setSnapAngle", &PyDbViewportTableRecord::setSnapAngle)
+        .def("snapBase", &PyDbViewportTableRecord::snapBase)
+        .def("setSnapBase", &PyDbViewportTableRecord::setSnapBase)
+        .def("snapIncrements", &PyDbViewportTableRecord::snapIncrements)
+        .def("setSnapIncrements", &PyDbViewportTableRecord::setSnapIncrements)
+        .def("isUcsSavedWithViewport", &PyDbViewportTableRecord::isUcsSavedWithViewport)
+        .def("setUcsPerViewport", &PyDbViewportTableRecord::setUcsPerViewport)
+        .def("isGridBoundToLimits", &PyDbViewportTableRecord::isGridBoundToLimits)
+        .def("setGridBoundToLimits", &PyDbViewportTableRecord::setGridBoundToLimits)
+        .def("isGridAdaptive", &PyDbViewportTableRecord::isGridAdaptive)
+        .def("setGridAdaptive", &PyDbViewportTableRecord::setGridAdaptive)
+        .def("isGridSubdivisionRestricted", &PyDbViewportTableRecord::isGridSubdivisionRestricted)
+        .def("setGridSubdivisionRestricted", &PyDbViewportTableRecord::setGridSubdivisionRestricted)
+        .def("isGridFollow", &PyDbViewportTableRecord::isGridFollow)
+        .def("setGridFollow", &PyDbViewportTableRecord::setGridFollow)
+        .def("gridMajor", &PyDbViewportTableRecord::gridMajor)
+        .def("setGridMajor", &PyDbViewportTableRecord::setGridMajor)
+        .def("setBackground", &PyDbViewportTableRecord::setBackground)
+        .def("previousBackground", &PyDbViewportTableRecord::previousBackground1)
+        .def("previousBackground", &PyDbViewportTableRecord::previousBackground2)
+        .def("setPreviousBackground", &PyDbViewportTableRecord::setPreviousBackground1)
+        .def("setPreviousBackground", &PyDbViewportTableRecord::setPreviousBackground2)
+        .def("previousBackgroundForcedSwitch", &PyDbViewportTableRecord::previousBackgroundForcedSwitch)
         .def("className", &PyDbViewportTableRecord::className).staticmethod("className")
         .def("desc", &PyDbViewportTableRecord::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbViewportTableRecord::cloneFrom).staticmethod("cloneFrom")
@@ -595,6 +644,311 @@ PyDbViewportTableRecord::PyDbViewportTableRecord(const PyDbObjectId& id, AcDb::O
     if (auto es = acdbOpenObject<AcDbViewportTableRecord>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+Adesk::Int16 PyDbViewportTableRecord::number() const
+{
+    return impObj()->number();
+}
+
+AcGePoint2d PyDbViewportTableRecord::lowerLeftCorner() const
+{
+    return impObj()->lowerLeftCorner();
+}
+
+void PyDbViewportTableRecord::setLowerLeftCorner(const AcGePoint2d& pt)
+{
+    return impObj()->setLowerLeftCorner(pt);
+}
+
+AcGePoint2d PyDbViewportTableRecord::upperRightCorner() const
+{
+    return impObj()->upperRightCorner();
+}
+
+void PyDbViewportTableRecord::setUpperRightCorner(const AcGePoint2d& pt)
+{
+    return impObj()->setUpperRightCorner(pt);
+}
+
+bool PyDbViewportTableRecord::ucsFollowMode() const
+{
+    return impObj()->ucsFollowMode();
+}
+
+void PyDbViewportTableRecord::setUcsFollowMode(bool enabled)
+{
+    return impObj()->setUcsFollowMode(enabled);
+}
+
+Adesk::UInt16 PyDbViewportTableRecord::circleSides() const
+{
+    return impObj()->circleSides();
+}
+
+void PyDbViewportTableRecord::setCircleSides(Adesk::UInt16 circleSides)
+{
+    return impObj()->setCircleSides(circleSides);
+}
+
+bool PyDbViewportTableRecord::fastZoomsEnabled() const
+{
+    return impObj()->fastZoomsEnabled();
+}
+
+void PyDbViewportTableRecord::setFastZoomsEnabled(bool enabled)
+{
+    return impObj()->setFastZoomsEnabled(enabled);
+}
+
+bool PyDbViewportTableRecord::iconEnabled() const
+{
+    return impObj()->iconEnabled();
+}
+
+void PyDbViewportTableRecord::setIconEnabled(bool enabled)
+{
+    return impObj()->setIconEnabled(enabled);
+}
+
+bool PyDbViewportTableRecord::iconAtOrigin() const
+{
+    return impObj()->iconAtOrigin();
+}
+
+void PyDbViewportTableRecord::setIconAtOrigin(bool atOrigin)
+{
+    return impObj()->setIconAtOrigin(atOrigin);
+}
+
+bool PyDbViewportTableRecord::gridEnabled() const
+{
+    return impObj()->gridEnabled();
+}
+
+void PyDbViewportTableRecord::setGridEnabled(bool enabled)
+{
+    return impObj()->setGridEnabled(enabled);
+}
+
+AcGePoint2d PyDbViewportTableRecord::gridIncrements() const
+{
+    return impObj()->gridIncrements();
+}
+
+void PyDbViewportTableRecord::setGridIncrements(const AcGePoint2d& base)
+{
+    return impObj()->setGridIncrements(base);
+}
+
+bool PyDbViewportTableRecord::snapEnabled() const
+{
+    return impObj()->snapEnabled();
+}
+
+void PyDbViewportTableRecord::setSnapEnabled(bool enabled)
+{
+    return impObj()->setSnapEnabled(enabled);
+}
+
+bool PyDbViewportTableRecord::isometricSnapEnabled() const
+{
+    return impObj()->isometricSnapEnabled();
+}
+
+void PyDbViewportTableRecord::setIsometricSnapEnabled(bool enabled)
+{
+    return impObj()->setIsometricSnapEnabled(enabled);
+}
+
+Adesk::Int16 PyDbViewportTableRecord::snapPair() const
+{
+    return impObj()->snapPair();
+}
+
+void PyDbViewportTableRecord::setSnapPair(Adesk::Int16 pairType)
+{
+    return impObj()->setSnapPair(pairType);
+}
+
+double PyDbViewportTableRecord::snapAngle() const
+{
+    return impObj()->snapAngle();
+}
+
+void PyDbViewportTableRecord::setSnapAngle(double angle)
+{
+    return impObj()->setSnapAngle(angle);
+}
+
+AcGePoint2d PyDbViewportTableRecord::snapBase() const
+{
+    return impObj()->snapBase();
+}
+
+void PyDbViewportTableRecord::setSnapBase(const AcGePoint2d& base)
+{
+    return impObj()->setSnapBase(base);
+}
+
+AcGePoint2d PyDbViewportTableRecord::snapIncrements() const
+{
+    return impObj()->snapIncrements();
+}
+
+void PyDbViewportTableRecord::setSnapIncrements(const AcGePoint2d& base)
+{
+    return impObj()->setSnapIncrements(base);
+}
+
+bool PyDbViewportTableRecord::isUcsSavedWithViewport() const
+{
+    return impObj()->isUcsSavedWithViewport();
+}
+
+void PyDbViewportTableRecord::setUcsPerViewport(bool ucsvp)
+{
+    return impObj()->setUcsPerViewport(ucsvp);
+}
+
+bool PyDbViewportTableRecord::isGridBoundToLimits() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->isGridBoundToLimits();
+#endif
+}
+
+void PyDbViewportTableRecord::setGridBoundToLimits(bool enabled)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setGridBoundToLimits(enabled);
+#endif
+}
+
+bool PyDbViewportTableRecord::isGridAdaptive() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->isGridAdaptive();
+#endif
+}
+
+void PyDbViewportTableRecord::setGridAdaptive(bool enabled)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setGridAdaptive(enabled);
+#endif
+}
+
+bool PyDbViewportTableRecord::isGridSubdivisionRestricted() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->isGridSubdivisionRestricted();
+#endif
+}
+
+void PyDbViewportTableRecord::setGridSubdivisionRestricted(bool enabled)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setGridSubdivisionRestricted(enabled);
+#endif
+}
+
+bool PyDbViewportTableRecord::isGridFollow() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->isGridFollow();
+#endif
+}
+
+void PyDbViewportTableRecord::setGridFollow(bool enabled)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setGridFollow(enabled);
+#endif
+}
+
+Adesk::Int16 PyDbViewportTableRecord::gridMajor() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->gridMajor();
+#endif
+}
+
+void PyDbViewportTableRecord::setGridMajor(Adesk::Int16 value)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setGridMajor(value);
+#endif
+}
+
+Acad::ErrorStatus PyDbViewportTableRecord::setBackground(const PyDbObjectId& backgroundId)
+{
+    return impObj()->setBackground(backgroundId.m_id);
+}
+
+PyDbObjectId PyDbViewportTableRecord::previousBackground1() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return PyDbObjectId(impObj()->previousBackground());
+#endif
+}
+
+PyDbObjectId PyDbViewportTableRecord::previousBackground2(AcGiDrawable::DrawableType type) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return PyDbObjectId(impObj()->previousBackground(type));
+#endif
+}
+
+Acad::ErrorStatus PyDbViewportTableRecord::setPreviousBackground1(PyDbObjectId& backgroundId)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setPreviousBackground(backgroundId.m_id);
+#endif
+}
+
+Acad::ErrorStatus PyDbViewportTableRecord::setPreviousBackground2(PyDbObjectId& backgroundId, AcGiDrawable::DrawableType type, bool bForcedSwitch)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setPreviousBackground(backgroundId.m_id, type, bForcedSwitch);
+#endif
+}
+
+bool PyDbViewportTableRecord::previousBackgroundForcedSwitch(void) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->previousBackgroundForcedSwitch();
+#endif
 }
 
 std::string PyDbViewportTableRecord::className()
