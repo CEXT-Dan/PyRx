@@ -169,7 +169,6 @@
     <ClCompile Include="PyDbSymbolTableRecord.cpp" />
     <ClCompile Include="PyDbTable.cpp" />
     <ClCompile Include="PyDbTableStyle.cpp" />
-    <ClCompile Include="PyDbTextStyleTableRecord.cpp" />
     <ClCompile Include="PyDbTransactionManager.cpp" />
     <ClCompile Include="PyDbUnderlayReference.cpp" />
     <ClCompile Include="PyDbViewport.cpp" />
@@ -258,7 +257,6 @@
     <ClInclude Include="PyDbSymbolTableRecord.h" />
     <ClInclude Include="PyDbTable.h" />
     <ClInclude Include="PyDbTableStyle.h" />
-    <ClInclude Include="PyDbTextStyleTableRecord.h" />
     <ClInclude Include="PyDbTransactionManager.h" />
     <ClInclude Include="PyDbUnderlayReference.h" />
     <ClInclude Include="PyDbViewport.h" />

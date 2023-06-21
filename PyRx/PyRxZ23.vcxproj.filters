@@ -157,9 +157,6 @@
     <ClCompile Include="PyDbMText.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
-    <ClCompile Include="PyDbTextStyleTableRecord.cpp">
-      <Filter>Source Files\PyDb</Filter>
-    </ClCompile>
     <ClCompile Include="PyDbTable.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
@@ -421,9 +418,6 @@
       <Filter>Header Files\PyGe</Filter>
     </ClInclude>
     <ClInclude Include="PyDbMText.h">
-      <Filter>Header Files\PyDb</Filter>
-    </ClInclude>
-    <ClInclude Include="PyDbTextStyleTableRecord.h">
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
     <ClInclude Include="PyDbTable.h">
