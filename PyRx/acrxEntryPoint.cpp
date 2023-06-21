@@ -208,7 +208,7 @@ public:
         int ret = acedGetFileNavDialog(_T("Select Python File"), _T(""), _T("py"), _T("Browse Python File"), 0, &pResBuf);
         if (ret != RTNORM)
         {
-            acutPrintf(_T("\nacedGetFileNavDialog Failed"));
+            acutPrintf(_T("\nFailed to read file: "));
             return false;
         }
         pypath = pResBuf->resval.rstring;
