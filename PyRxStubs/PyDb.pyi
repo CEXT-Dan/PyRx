@@ -75620,6 +75620,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class AcGePoint2d centerPoint(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
+    def circleSides (self, *args, **kwargs)-> int :
+      '''circleSides( (ViewportTableRecord)arg1) -> int :
+
+    C++ signature :
+        unsigned short circleSides(class PyDbViewportTableRecord {lvalue})'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''className() -> str :
 
@@ -75680,6 +75686,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
+    def fastZoomsEnabled (self, *args, **kwargs)-> bool :
+      '''fastZoomsEnabled( (ViewportTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool fastZoomsEnabled(class PyDbViewportTableRecord {lvalue})'''
+    ...
     def frontClipAtEye (self, *args, **kwargs)-> bool :
       '''frontClipAtEye( (AbstractViewTableRecord)arg1) -> bool :
 
@@ -75719,6 +75731,24 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus getUcs(class PyDbAbstractViewTableRecord {lvalue},class AcGePoint3d {lvalue},class AcGeVector3d {lvalue},class AcGeVector3d {lvalue})'''
     ...
+    def gridEnabled (self, *args, **kwargs)-> bool :
+      '''gridEnabled( (ViewportTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool gridEnabled(class PyDbViewportTableRecord {lvalue})'''
+    ...
+    def gridIncrements (self, *args, **kwargs)-> Point2d :
+      '''gridIncrements( (ViewportTableRecord)arg1) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d gridIncrements(class PyDbViewportTableRecord {lvalue})'''
+    ...
+    def gridMajor (self, *args, **kwargs)-> int :
+      '''gridMajor( (ViewportTableRecord)arg1) -> int :
+
+    C++ signature :
+        short gridMajor(class PyDbViewportTableRecord {lvalue})'''
+    ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> ErrorStatus :
       '''                             '''
     ...
@@ -75733,6 +75763,18 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         double height(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def iconAtOrigin (self, *args, **kwargs)-> bool :
+      '''iconAtOrigin( (ViewportTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool iconAtOrigin(class PyDbViewportTableRecord {lvalue})'''
+    ...
+    def iconEnabled (self, *args, **kwargs)-> bool :
+      '''iconEnabled( (ViewportTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool iconEnabled(class PyDbViewportTableRecord {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -75763,6 +75805,30 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def isErased (self: DbObject)-> bool :
       '''                             '''
+    ...
+    def isGridAdaptive (self, *args, **kwargs)-> bool :
+      '''isGridAdaptive( (ViewportTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool isGridAdaptive(class PyDbViewportTableRecord {lvalue})'''
+    ...
+    def isGridBoundToLimits (self, *args, **kwargs)-> bool :
+      '''isGridBoundToLimits( (ViewportTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool isGridBoundToLimits(class PyDbViewportTableRecord {lvalue})'''
+    ...
+    def isGridFollow (self, *args, **kwargs)-> bool :
+      '''isGridFollow( (ViewportTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool isGridFollow(class PyDbViewportTableRecord {lvalue})'''
+    ...
+    def isGridSubdivisionRestricted (self, *args, **kwargs)-> bool :
+      '''isGridSubdivisionRestricted( (ViewportTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool isGridSubdivisionRestricted(class PyDbViewportTableRecord {lvalue})'''
     ...
     def isModified (self: DbObject)-> bool :
       '''                             '''
@@ -75815,6 +75881,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class boost::python::tuple isUcsOrthographic(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
+    def isUcsSavedWithViewport (self, *args, **kwargs)-> bool :
+      '''isUcsSavedWithViewport( (ViewportTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool isUcsSavedWithViewport(class PyDbViewportTableRecord {lvalue})'''
+    ...
     def isUndoRecordingDisabled (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -75830,11 +75902,29 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isometricSnapEnabled (self, *args, **kwargs)-> bool :
+      '''isometricSnapEnabled( (ViewportTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool isometricSnapEnabled(class PyDbViewportTableRecord {lvalue})'''
+    ...
     def lensLength (self, *args, **kwargs)-> float :
       '''lensLength( (AbstractViewTableRecord)arg1) -> float :
 
     C++ signature :
         double lensLength(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def lowerLeftCorner (self, *args, **kwargs)-> Point2d :
+      '''lowerLeftCorner( (ViewportTableRecord)arg1) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d lowerLeftCorner(class PyDbViewportTableRecord {lvalue})'''
+    ...
+    def number (self, *args, **kwargs)-> int :
+      '''number( (ViewportTableRecord)arg1) -> int :
+
+    C++ signature :
+        short number(class PyDbViewportTableRecord {lvalue})'''
     ...
     def objectId (self: DbObject)-> ObjectId :
       '''                             '''
@@ -75847,6 +75937,23 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         bool perspectiveEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def previousBackground (self, *args, **kwargs)-> ObjectId :
+      '''previousBackground( (ViewportTableRecord)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId previousBackground(class PyDbViewportTableRecord {lvalue})
+
+previousBackground( (ViewportTableRecord)arg1, (object)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId previousBackground(class PyDbViewportTableRecord {lvalue},enum AcGiDrawable::DrawableType)'''
+    ...
+    def previousBackgroundForcedSwitch (self, *args, **kwargs)-> bool :
+      '''previousBackgroundForcedSwitch( (ViewportTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool previousBackgroundForcedSwitch(class PyDbViewportTableRecord {lvalue})'''
     ...
     def refCount (self, *args, **kwargs)-> int :
       '''refCount( (RxObject)arg1) -> int :
@@ -75882,10 +75989,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         void setBackClipEnabled(class PyDbAbstractViewTableRecord {lvalue},bool)'''
     ...
     def setBackground (self, *args, **kwargs)-> ErrorStatus :
-      '''setBackground( (AbstractViewTableRecord)arg1, (ObjectId)arg2) -> ErrorStatus :
+      '''setBackground( (ViewportTableRecord)arg1, (ObjectId)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus setBackground(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId)'''
+        enum Acad::ErrorStatus setBackground(class PyDbViewportTableRecord {lvalue},class PyDbObjectId)'''
     ...
     def setBrightness (self, *args, **kwargs)-> ErrorStatus :
       '''setBrightness( (AbstractViewTableRecord)arg1, (float)arg2) -> ErrorStatus :
@@ -75898,6 +76005,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void setCenterPoint(class PyDbAbstractViewTableRecord {lvalue},class AcGePoint2d)'''
+    ...
+    def setCircleSides (self, *args, **kwargs)-> None :
+      '''setCircleSides( (ViewportTableRecord)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setCircleSides(class PyDbViewportTableRecord {lvalue},unsigned short)'''
     ...
     def setContrast (self, *args, **kwargs)-> ErrorStatus :
       '''setContrast( (AbstractViewTableRecord)arg1, (float)arg2) -> ErrorStatus :
@@ -75923,6 +76036,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus setElevation(class PyDbAbstractViewTableRecord {lvalue},double)'''
     ...
+    def setFastZoomsEnabled (self, *args, **kwargs)-> None :
+      '''setFastZoomsEnabled( (ViewportTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setFastZoomsEnabled(class PyDbViewportTableRecord {lvalue},bool)'''
+    ...
     def setField (self: DbObject,obj: Field)-> ObjectId :
       '''                             '''
     ...
@@ -75944,17 +76063,83 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setFrontClipEnabled(class PyDbAbstractViewTableRecord {lvalue},bool)'''
     ...
+    def setGridAdaptive (self, *args, **kwargs)-> None :
+      '''setGridAdaptive( (ViewportTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setGridAdaptive(class PyDbViewportTableRecord {lvalue},bool)'''
+    ...
+    def setGridBoundToLimits (self, *args, **kwargs)-> None :
+      '''setGridBoundToLimits( (ViewportTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setGridBoundToLimits(class PyDbViewportTableRecord {lvalue},bool)'''
+    ...
+    def setGridEnabled (self, *args, **kwargs)-> None :
+      '''setGridEnabled( (ViewportTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setGridEnabled(class PyDbViewportTableRecord {lvalue},bool)'''
+    ...
+    def setGridFollow (self, *args, **kwargs)-> None :
+      '''setGridFollow( (ViewportTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setGridFollow(class PyDbViewportTableRecord {lvalue},bool)'''
+    ...
+    def setGridIncrements (self, *args, **kwargs)-> None :
+      '''setGridIncrements( (ViewportTableRecord)arg1, (Point2d)arg2) -> None :
+
+    C++ signature :
+        void setGridIncrements(class PyDbViewportTableRecord {lvalue},class AcGePoint2d)'''
+    ...
+    def setGridMajor (self, *args, **kwargs)-> None :
+      '''setGridMajor( (ViewportTableRecord)arg1, (DxfCode)arg2) -> None :
+
+    C++ signature :
+        void setGridMajor(class PyDbViewportTableRecord {lvalue},short)'''
+    ...
+    def setGridSubdivisionRestricted (self, *args, **kwargs)-> None :
+      '''setGridSubdivisionRestricted( (ViewportTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setGridSubdivisionRestricted(class PyDbViewportTableRecord {lvalue},bool)'''
+    ...
     def setHeight (self, *args, **kwargs)-> None :
       '''setHeight( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
 
     C++ signature :
         void setHeight(class PyDbAbstractViewTableRecord {lvalue},double)'''
     ...
+    def setIconAtOrigin (self, *args, **kwargs)-> None :
+      '''setIconAtOrigin( (ViewportTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setIconAtOrigin(class PyDbViewportTableRecord {lvalue},bool)'''
+    ...
+    def setIconEnabled (self, *args, **kwargs)-> None :
+      '''setIconEnabled( (ViewportTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setIconEnabled(class PyDbViewportTableRecord {lvalue},bool)'''
+    ...
+    def setIsometricSnapEnabled (self, *args, **kwargs)-> None :
+      '''setIsometricSnapEnabled( (ViewportTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setIsometricSnapEnabled(class PyDbViewportTableRecord {lvalue},bool)'''
+    ...
     def setLensLength (self, *args, **kwargs)-> None :
       '''setLensLength( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
 
     C++ signature :
         void setLensLength(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    ...
+    def setLowerLeftCorner (self, *args, **kwargs)-> None :
+      '''setLowerLeftCorner( (ViewportTableRecord)arg1, (Point2d)arg2) -> None :
+
+    C++ signature :
+        void setLowerLeftCorner(class PyDbViewportTableRecord {lvalue},class AcGePoint2d)'''
     ...
     def setName (self, *args, **kwargs)-> ErrorStatus :
       '''setName( (SymbolTableRecord)arg1, (str)arg2) -> ErrorStatus :
@@ -75970,6 +76155,47 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void setPerspectiveEnabled(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    ...
+    def setPreviousBackground (self, *args, **kwargs)-> ErrorStatus :
+      '''setPreviousBackground( (ViewportTableRecord)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPreviousBackground(class PyDbViewportTableRecord {lvalue},class PyDbObjectId {lvalue})
+
+setPreviousBackground( (ViewportTableRecord)arg1, (ObjectId)arg2, (object)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPreviousBackground(class PyDbViewportTableRecord {lvalue},class PyDbObjectId {lvalue},enum AcGiDrawable::DrawableType,bool)'''
+    ...
+    def setSnapAngle (self, *args, **kwargs)-> None :
+      '''setSnapAngle( (ViewportTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setSnapAngle(class PyDbViewportTableRecord {lvalue},double)'''
+    ...
+    def setSnapBase (self, *args, **kwargs)-> None :
+      '''setSnapBase( (ViewportTableRecord)arg1, (Point2d)arg2) -> None :
+
+    C++ signature :
+        void setSnapBase(class PyDbViewportTableRecord {lvalue},class AcGePoint2d)'''
+    ...
+    def setSnapEnabled (self, *args, **kwargs)-> None :
+      '''setSnapEnabled( (ViewportTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setSnapEnabled(class PyDbViewportTableRecord {lvalue},bool)'''
+    ...
+    def setSnapIncrements (self, *args, **kwargs)-> None :
+      '''setSnapIncrements( (ViewportTableRecord)arg1, (Point2d)arg2) -> None :
+
+    C++ signature :
+        void setSnapIncrements(class PyDbViewportTableRecord {lvalue},class AcGePoint2d)'''
+    ...
+    def setSnapPair (self, *args, **kwargs)-> None :
+      '''setSnapPair( (ViewportTableRecord)arg1, (DxfCode)arg2) -> None :
+
+    C++ signature :
+        void setSnapPair(class PyDbViewportTableRecord {lvalue},short)'''
     ...
     def setSun (self, *args, **kwargs)-> ErrorStatus :
       '''setSun( (AbstractViewTableRecord)arg1, (ObjectId)arg2, (DbObject)arg3) -> ErrorStatus :
@@ -76004,11 +76230,29 @@ setUcs( (AbstractViewTableRecord)arg1, (ObjectId)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setUcs(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId)'''
     ...
+    def setUcsFollowMode (self, *args, **kwargs)-> None :
+      '''setUcsFollowMode( (ViewportTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setUcsFollowMode(class PyDbViewportTableRecord {lvalue},bool)'''
+    ...
+    def setUcsPerViewport (self, *args, **kwargs)-> None :
+      '''setUcsPerViewport( (ViewportTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setUcsPerViewport(class PyDbViewportTableRecord {lvalue},bool)'''
+    ...
     def setUcsToWorld (self, *args, **kwargs)-> ErrorStatus :
       '''setUcsToWorld( (AbstractViewTableRecord)arg1) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setUcsToWorld(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def setUpperRightCorner (self, *args, **kwargs)-> None :
+      '''setUpperRightCorner( (ViewportTableRecord)arg1, (Point2d)arg2) -> None :
+
+    C++ signature :
+        void setUpperRightCorner(class PyDbViewportTableRecord {lvalue},class AcGePoint2d)'''
     ...
     def setViewDirection (self, *args, **kwargs)-> None :
       '''setViewDirection( (AbstractViewTableRecord)arg1, (Vector3d)arg2) -> None :
@@ -76042,6 +76286,36 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> Erro
     def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''                             '''
     ...
+    def snapAngle (self, *args, **kwargs)-> float :
+      '''snapAngle( (ViewportTableRecord)arg1) -> float :
+
+    C++ signature :
+        double snapAngle(class PyDbViewportTableRecord {lvalue})'''
+    ...
+    def snapBase (self, *args, **kwargs)-> Point2d :
+      '''snapBase( (ViewportTableRecord)arg1) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d snapBase(class PyDbViewportTableRecord {lvalue})'''
+    ...
+    def snapEnabled (self, *args, **kwargs)-> bool :
+      '''snapEnabled( (ViewportTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool snapEnabled(class PyDbViewportTableRecord {lvalue})'''
+    ...
+    def snapIncrements (self, *args, **kwargs)-> Point2d :
+      '''snapIncrements( (ViewportTableRecord)arg1) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d snapIncrements(class PyDbViewportTableRecord {lvalue})'''
+    ...
+    def snapPair (self, *args, **kwargs)-> int :
+      '''snapPair( (ViewportTableRecord)arg1) -> int :
+
+    C++ signature :
+        short snapPair(class PyDbViewportTableRecord {lvalue})'''
+    ...
     def sunId (self, *args, **kwargs)-> ObjectId :
       '''sunId( (AbstractViewTableRecord)arg1) -> ObjectId :
 
@@ -76057,6 +76331,12 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> Erro
     C++ signature :
         class AcGePoint3d target(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
+    def ucsFollowMode (self, *args, **kwargs)-> bool :
+      '''ucsFollowMode( (ViewportTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool ucsFollowMode(class PyDbViewportTableRecord {lvalue})'''
+    ...
     def ucsName (self, *args, **kwargs)-> ObjectId :
       '''ucsName( (AbstractViewTableRecord)arg1) -> ObjectId :
 
@@ -76068,6 +76348,12 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> Erro
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def upperRightCorner (self, *args, **kwargs)-> Point2d :
+      '''upperRightCorner( (ViewportTableRecord)arg1) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d upperRightCorner(class PyDbViewportTableRecord {lvalue})'''
     ...
     def viewDirection (self, *args, **kwargs)-> Vector3d :
       '''viewDirection( (AbstractViewTableRecord)arg1) -> Vector3d :
