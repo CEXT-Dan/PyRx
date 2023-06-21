@@ -990,8 +990,28 @@ void makePyDbViewTableRecordWrapper()
     class_<PyDbViewTableRecord, bases<PyDbAbstractViewTableRecord>>("ViewTableRecord")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("setParametersFromViewport", &PyDbViewTableRecord::setParametersFromViewport)
+        .def("isPaperspaceView", &PyDbViewTableRecord::isPaperspaceView)
+        .def("setIsPaperspaceView", &PyDbViewTableRecord::setIsPaperspaceView)
+        .def("isUcsAssociatedToView", &PyDbViewTableRecord::isUcsAssociatedToView)
+        .def("disassociateUcsFromView", &PyDbViewTableRecord::disassociateUcsFromView)
+        .def("getCategoryName", &PyDbViewTableRecord::getCategoryName)
+        .def("setCategoryName", &PyDbViewTableRecord::setCategoryName)
+        .def("getLayerState", &PyDbViewTableRecord::getLayerState)
+        .def("setLayerState", &PyDbViewTableRecord::setLayerState)
         .def("getLayout", &PyDbViewTableRecord::getLayout)
         .def("setLayout", &PyDbViewTableRecord::setLayout)
+        .def("isViewAssociatedToViewport", &PyDbViewTableRecord::isViewAssociatedToViewport)
+        .def("setViewAssociatedToViewport", &PyDbViewTableRecord::setViewAssociatedToViewport)
+        .def("isCameraPlottable", &PyDbViewTableRecord::isCameraPlottable)
+        .def("setIsCameraPlottable", &PyDbViewTableRecord::setIsCameraPlottable)
+        .def("liveSection", &PyDbViewTableRecord::liveSection)
+        .def("setLiveSection", &PyDbViewTableRecord::setLiveSection)
+        .def("camera", &PyDbViewTableRecord::camera)
+        .def("setCamera", &PyDbViewTableRecord::setCamera)
+        .def("sunId", &PyDbViewTableRecord::sunId)
+        .def("setSun", &PyDbViewTableRecord::setSun1)
+        .def("setSun", &PyDbViewTableRecord::setSun2)
         .def("className", &PyDbViewTableRecord::className).staticmethod("className")
         .def("desc", &PyDbViewTableRecord::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbViewTableRecord::cloneFrom).staticmethod("cloneFrom")
@@ -1018,6 +1038,65 @@ PyDbViewTableRecord::PyDbViewTableRecord(const PyDbObjectId& id, AcDb::OpenMode 
     this->resetImp(pobj, false, true);
 }
 
+Acad::ErrorStatus PyDbViewTableRecord::setParametersFromViewport(PyDbObjectId& objId)
+{
+    return impObj()->setParametersFromViewport(objId.m_id);
+}
+
+bool PyDbViewTableRecord::isPaperspaceView() const
+{
+    return impObj()->isPaperspaceView();
+}
+
+void PyDbViewTableRecord::setIsPaperspaceView(bool pspace)
+{
+    return impObj()->setIsPaperspaceView(pspace);
+}
+
+bool PyDbViewTableRecord::isUcsAssociatedToView() const
+{
+    return impObj()->isUcsAssociatedToView();
+}
+
+Acad::ErrorStatus PyDbViewTableRecord::disassociateUcsFromView()
+{
+    return impObj()->disassociateUcsFromView();
+}
+
+std::string PyDbViewTableRecord::getCategoryName() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    AcString str;
+    if (auto es = impObj()->getCategoryName(str); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return wstr_to_utf8(str);
+#endif
+}
+
+Acad::ErrorStatus PyDbViewTableRecord::setCategoryName(const std::string& categoryName)
+{
+    return impObj()->setCategoryName(utf8_to_wstr(categoryName).c_str());
+}
+
+std::string PyDbViewTableRecord::getLayerState() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    AcString str;
+    if (auto es = impObj()->getLayerState(str); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return wstr_to_utf8(str);
+#endif
+}
+
+Acad::ErrorStatus PyDbViewTableRecord::setLayerState(const std::string& layerStateName)
+{
+    return impObj()->setLayerState(utf8_to_wstr(layerStateName).c_str());
+}
+
 PyDbObjectId PyDbViewTableRecord::getLayout() const
 {
     PyDbObjectId id;
@@ -1029,6 +1108,81 @@ PyDbObjectId PyDbViewTableRecord::getLayout() const
 Acad::ErrorStatus PyDbViewTableRecord::setLayout(const PyDbObjectId& layoutId)
 {
     return impObj()->setLayout(layoutId.m_id);
+}
+
+bool PyDbViewTableRecord::isViewAssociatedToViewport() const
+{
+    return impObj()->isViewAssociatedToViewport();
+}
+
+Acad::ErrorStatus PyDbViewTableRecord::setViewAssociatedToViewport(bool bVPflag)
+{
+    return impObj()->setViewAssociatedToViewport(bVPflag);
+}
+
+bool PyDbViewTableRecord::isCameraPlottable() const
+{
+    return impObj()->isCameraPlottable();
+}
+
+Acad::ErrorStatus PyDbViewTableRecord::setIsCameraPlottable(bool plottable)
+{
+    return impObj()->setIsCameraPlottable(plottable);
+}
+
+PyDbObjectId PyDbViewTableRecord::liveSection() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return PyDbObjectId(impObj()->liveSection());
+#endif
+}
+
+Acad::ErrorStatus PyDbViewTableRecord::setLiveSection(const PyDbObjectId& liveSectionId)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setLiveSection(liveSectionId.m_id);
+#endif
+}
+
+PyDbObjectId PyDbViewTableRecord::camera() const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return PyDbObjectId(impObj()->camera());
+#endif
+}
+
+Acad::ErrorStatus PyDbViewTableRecord::setCamera(const PyDbObjectId& cameraId)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setCamera(cameraId.m_id);
+#endif
+}
+
+PyDbObjectId PyDbViewTableRecord::sunId() const
+{
+    return PyDbObjectId(impObj()->sunId());
+}
+
+Acad::ErrorStatus PyDbViewTableRecord::setSun1(PyDbObjectId& retId, PyDbObject& pSun)
+{
+    return impObj()->setSun(retId.m_id, pSun.impObj());
+}
+
+Acad::ErrorStatus PyDbViewTableRecord::setSun2(PyDbObjectId& retId, PyDbObject& pSun, bool eraseOldSun)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setSun(retId.m_id, pSun.impObj(), eraseOldSun);
+#endif
 }
 
 std::string PyDbViewTableRecord::className()

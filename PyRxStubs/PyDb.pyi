@@ -73401,6 +73401,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         double brightness(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
+    def camera (self, *args, **kwargs)-> ObjectId :
+      '''camera( (ViewTableRecord)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId camera(class PyDbViewTableRecord {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -73458,6 +73464,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
     ...
+    def disassociateUcsFromView (self, *args, **kwargs)-> ErrorStatus :
+      '''disassociateUcsFromView( (ViewTableRecord)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus disassociateUcsFromView(class PyDbViewTableRecord {lvalue})'''
+    ...
     def downgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -73494,6 +73506,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         bool frontClipEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
+    def getCategoryName (self, *args, **kwargs)-> str :
+      '''getCategoryName( (ViewTableRecord)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getCategoryName(class PyDbViewTableRecord {lvalue})'''
+    ...
     def getField (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -73502,6 +73520,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
+    ...
+    def getLayerState (self, *args, **kwargs)-> str :
+      '''getLayerState( (ViewTableRecord)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getLayerState(class PyDbViewTableRecord {lvalue})'''
     ...
     def getLayout (self, *args, **kwargs)-> ObjectId :
       '''getLayout( (ViewTableRecord)arg1) -> ObjectId :
@@ -73544,6 +73568,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def isAProxy (self: DbObject)-> bool :
       '''                             '''
+    ...
+    def isCameraPlottable (self, *args, **kwargs)-> bool :
+      '''isCameraPlottable( (ViewTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool isCameraPlottable(class PyDbViewTableRecord {lvalue})'''
     ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
@@ -73590,6 +73620,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         bool isNull(class PyRxObject {lvalue})'''
     ...
+    def isPaperspaceView (self, *args, **kwargs)-> bool :
+      '''isPaperspaceView( (ViewTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool isPaperspaceView(class PyDbViewTableRecord {lvalue})'''
+    ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
@@ -73611,6 +73647,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isTransactionResident (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isUcsAssociatedToView (self, *args, **kwargs)-> bool :
+      '''isUcsAssociatedToView( (ViewTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool isUcsAssociatedToView(class PyDbViewTableRecord {lvalue})'''
+    ...
     def isUcsOrthographic (self, *args, **kwargs)-> tuple :
       '''isUcsOrthographic( (AbstractViewTableRecord)arg1) -> tuple :
 
@@ -73622,6 +73664,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def isUndoing (self: DbObject)-> bool :
       '''                             '''
+    ...
+    def isViewAssociatedToViewport (self, *args, **kwargs)-> bool :
+      '''isViewAssociatedToViewport( (ViewTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool isViewAssociatedToViewport(class PyDbViewTableRecord {lvalue})'''
     ...
     def isViewOrthographic (self, *args, **kwargs)-> tuple :
       '''isViewOrthographic( (AbstractViewTableRecord)arg1) -> tuple :
@@ -73637,6 +73685,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         double lensLength(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def liveSection (self, *args, **kwargs)-> ObjectId :
+      '''liveSection( (ViewTableRecord)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId liveSection(class PyDbViewTableRecord {lvalue})'''
     ...
     def objectId (self: DbObject)-> ObjectId :
       '''                             '''
@@ -73695,6 +73749,18 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus setBrightness(class PyDbAbstractViewTableRecord {lvalue},double)'''
     ...
+    def setCamera (self, *args, **kwargs)-> ErrorStatus :
+      '''setCamera( (ViewTableRecord)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setCamera(class PyDbViewTableRecord {lvalue},class PyDbObjectId)'''
+    ...
+    def setCategoryName (self, *args, **kwargs)-> ErrorStatus :
+      '''setCategoryName( (ViewTableRecord)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setCategoryName(class PyDbViewTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def setCenterPoint (self, *args, **kwargs)-> None :
       '''setCenterPoint( (AbstractViewTableRecord)arg1, (Point2d)arg2) -> None :
 
@@ -73752,6 +73818,24 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setHeight(class PyDbAbstractViewTableRecord {lvalue},double)'''
     ...
+    def setIsCameraPlottable (self, *args, **kwargs)-> ErrorStatus :
+      '''setIsCameraPlottable( (ViewTableRecord)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setIsCameraPlottable(class PyDbViewTableRecord {lvalue},bool)'''
+    ...
+    def setIsPaperspaceView (self, *args, **kwargs)-> None :
+      '''setIsPaperspaceView( (ViewTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setIsPaperspaceView(class PyDbViewTableRecord {lvalue},bool)'''
+    ...
+    def setLayerState (self, *args, **kwargs)-> ErrorStatus :
+      '''setLayerState( (ViewTableRecord)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayerState(class PyDbViewTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def setLayout (self, *args, **kwargs)-> ErrorStatus :
       '''setLayout( (ViewTableRecord)arg1, (ObjectId)arg2) -> ErrorStatus :
 
@@ -73764,6 +73848,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setLensLength(class PyDbAbstractViewTableRecord {lvalue},double)'''
     ...
+    def setLiveSection (self, *args, **kwargs)-> ErrorStatus :
+      '''setLiveSection( (ViewTableRecord)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLiveSection(class PyDbViewTableRecord {lvalue},class PyDbObjectId)'''
+    ...
     def setName (self, *args, **kwargs)-> ErrorStatus :
       '''setName( (SymbolTableRecord)arg1, (str)arg2) -> ErrorStatus :
 
@@ -73773,6 +73863,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setOwnerId (self: DbObject,owner: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def setParametersFromViewport (self, *args, **kwargs)-> ErrorStatus :
+      '''setParametersFromViewport( (ViewTableRecord)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setParametersFromViewport(class PyDbViewTableRecord {lvalue},class PyDbObjectId {lvalue})'''
+    ...
     def setPerspectiveEnabled (self, *args, **kwargs)-> None :
       '''setPerspectiveEnabled( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
 
@@ -73780,15 +73876,15 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         void setPerspectiveEnabled(class PyDbAbstractViewTableRecord {lvalue},bool)'''
     ...
     def setSun (self, *args, **kwargs)-> ErrorStatus :
-      '''setSun( (AbstractViewTableRecord)arg1, (ObjectId)arg2, (DbObject)arg3) -> ErrorStatus :
+      '''setSun( (ViewTableRecord)arg1, (ObjectId)arg2, (DbObject)arg3) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus setSun(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId {lvalue},class PyDbObject {lvalue})
+        enum Acad::ErrorStatus setSun(class PyDbViewTableRecord {lvalue},class PyDbObjectId {lvalue},class PyDbObject {lvalue})
 
-setSun( (AbstractViewTableRecord)arg1, (ObjectId)arg2, (DbObject)arg3, (bool)arg4) -> ErrorStatus :
+setSun( (ViewTableRecord)arg1, (ObjectId)arg2, (DbObject)arg3, (bool)arg4) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus setSun(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId {lvalue},class PyDbObject {lvalue},bool)'''
+        enum Acad::ErrorStatus setSun(class PyDbViewTableRecord {lvalue},class PyDbObjectId {lvalue},class PyDbObject {lvalue},bool)'''
     ...
     def setTarget (self, *args, **kwargs)-> None :
       '''setTarget( (AbstractViewTableRecord)arg1, (Point3d)arg2) -> None :
@@ -73817,6 +73913,12 @@ setUcs( (AbstractViewTableRecord)arg1, (ObjectId)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setUcsToWorld(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def setViewAssociatedToViewport (self, *args, **kwargs)-> ErrorStatus :
+      '''setViewAssociatedToViewport( (ViewTableRecord)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setViewAssociatedToViewport(class PyDbViewTableRecord {lvalue},bool)'''
     ...
     def setViewDirection (self, *args, **kwargs)-> None :
       '''setViewDirection( (AbstractViewTableRecord)arg1, (Vector3d)arg2) -> None :
@@ -73851,10 +73953,10 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> Erro
       '''                             '''
     ...
     def sunId (self, *args, **kwargs)-> ObjectId :
-      '''sunId( (AbstractViewTableRecord)arg1) -> ObjectId :
+      '''sunId( (ViewTableRecord)arg1) -> ObjectId :
 
     C++ signature :
-        class PyDbObjectId sunId(class PyDbAbstractViewTableRecord {lvalue})'''
+        class PyDbObjectId sunId(class PyDbViewTableRecord {lvalue})'''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> ErrorStatus :
       '''                             '''

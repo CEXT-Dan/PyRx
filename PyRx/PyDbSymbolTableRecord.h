@@ -1,6 +1,9 @@
 #pragma once
 #include "PyDbObject.h"
 
+class PyDbEntity;
+class PyDbBlockBegin;
+class PyDbBlockEnd;
 
 void makeAcDbSymbolTableRecordWrapper();
 
@@ -208,9 +211,30 @@ public:
     PyDbViewTableRecord(AcDbViewTableRecord* ptr, bool autoDelete);
     PyDbViewTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbViewTableRecord() override = default;
-
-    PyDbObjectId getLayout() const;
-    Acad::ErrorStatus setLayout(const PyDbObjectId& layoutId);
+    Acad::ErrorStatus   setParametersFromViewport(PyDbObjectId& objId);
+    bool                isPaperspaceView() const;
+    void                setIsPaperspaceView(bool pspace);
+    bool                isUcsAssociatedToView() const;
+    Acad::ErrorStatus   disassociateUcsFromView();
+    std::string         getCategoryName() const;
+    Acad::ErrorStatus   setCategoryName(const std::string& categoryName);
+    std::string         getLayerState() const;
+    Acad::ErrorStatus   setLayerState(const std::string& layerStateName);
+    PyDbObjectId        getLayout() const;
+    Acad::ErrorStatus   setLayout(const PyDbObjectId& layoutId);
+    bool                isViewAssociatedToViewport() const;
+    Acad::ErrorStatus   setViewAssociatedToViewport(bool bVPflag);
+    bool                isCameraPlottable() const;
+    Acad::ErrorStatus   setIsCameraPlottable(bool plottable);
+    PyDbObjectId        liveSection() const;
+    Acad::ErrorStatus   setLiveSection(const PyDbObjectId& liveSectionId);
+    PyDbObjectId        camera() const;
+    Acad::ErrorStatus   setCamera(const PyDbObjectId& cameraId);
+    //AcDbAnnotationScale* annotationScale() const;
+    //Acad::ErrorStatus setAnnotationScale(const AcDbAnnotationScale* pScaleObj);
+    PyDbObjectId        sunId() const;
+    Acad::ErrorStatus   setSun1(PyDbObjectId& retId, PyDbObject& pSun);
+    Acad::ErrorStatus   setSun2(PyDbObjectId& retId, PyDbObject& pSun, bool eraseOldSun);
 
 public:
     static std::string className();
