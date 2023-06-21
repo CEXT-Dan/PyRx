@@ -2,7 +2,7 @@
 #include "PyDbSymbolTable.h"
 #include "PyDbObjectId.h"
 #include "PyDbSymbolTableRecord.h"
-#include "PyDbBlockTableRecord.h"
+
 
 using namespace boost::python;
 

@@ -4,7 +4,6 @@
 #include "PyDbObjectId.h"
 #include "PyDbDatabase.h"
 #include "PyDbHostApplicationServices.h"
-#include "PyDbBlockTableRecord.h"
 #include "PyDbSymbolTableRecord.h"
 #include "PyDbDictionary.h"
 #include "PyDbSymbolTable.h"

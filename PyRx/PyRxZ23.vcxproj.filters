@@ -55,9 +55,6 @@
     <ClCompile Include="PyDbSymbolTableRecord.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
-    <ClCompile Include="PyDbBlockTableRecord.cpp">
-      <Filter>Source Files\PyDb</Filter>
-    </ClCompile>
     <ClCompile Include="PyApApplication.cpp">
       <Filter>Source Files\PyAp</Filter>
     </ClCompile>
@@ -322,9 +319,6 @@
       <Filter>Header Files\PyAp</Filter>
     </ClInclude>
     <ClInclude Include="PyDbSymbolTableRecord.h">
-      <Filter>Header Files\PyDb</Filter>
-    </ClInclude>
-    <ClInclude Include="PyDbBlockTableRecord.h">
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
     <ClInclude Include="PyException.h">

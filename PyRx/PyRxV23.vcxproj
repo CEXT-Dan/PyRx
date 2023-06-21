@@ -144,7 +144,6 @@
     <ClCompile Include="PyCmColorBase.cpp" />
     <ClCompile Include="PyCmd.cpp" />
     <ClCompile Include="PyDb3dSolid.cpp" />
-    <ClCompile Include="PyDbBlockTableRecord.cpp" />
     <ClCompile Include="PyDbCurve.cpp" />
     <ClCompile Include="PyDbDatabase.cpp" />
     <ClCompile Include="PyDbDictionary.cpp" />
@@ -235,7 +234,6 @@
     <ClInclude Include="PyCmColorBase.h" />
     <ClInclude Include="PyCmd.h" />
     <ClInclude Include="PyDb3dSolid.h" />
-    <ClInclude Include="PyDbBlockTableRecord.h" />
     <ClInclude Include="PyDbCurve.h" />
     <ClInclude Include="PyDbDatabase.h" />
     <ClInclude Include="PyDbDictionary.h" />
