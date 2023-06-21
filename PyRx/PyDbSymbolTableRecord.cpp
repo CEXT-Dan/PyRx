@@ -171,6 +171,60 @@ void makePyDbAbstractViewTableRecordWrapper()
 {
     class_<PyDbAbstractViewTableRecord, bases<PyDbSymbolTableRecord>>("AbstractViewTableRecord", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("centerPoint", &PyDbAbstractViewTableRecord::centerPoint)
+        .def("setCenterPoint", &PyDbAbstractViewTableRecord::setCenterPoint)
+        .def("height", &PyDbAbstractViewTableRecord::height)
+        .def("setHeight", &PyDbAbstractViewTableRecord::setHeight)
+        .def("width", &PyDbAbstractViewTableRecord::width)
+        .def("setWidth", &PyDbAbstractViewTableRecord::setWidth)
+        .def("target", &PyDbAbstractViewTableRecord::target)
+        .def("setTarget", &PyDbAbstractViewTableRecord::setTarget)
+        .def("viewDirection", &PyDbAbstractViewTableRecord::viewDirection)
+        .def("setViewDirection", &PyDbAbstractViewTableRecord::setViewDirection1)
+        .def("viewTwist", &PyDbAbstractViewTableRecord::viewTwist)
+        .def("setViewTwist", &PyDbAbstractViewTableRecord::setViewTwist)
+        .def("lensLength", &PyDbAbstractViewTableRecord::lensLength)
+        .def("setLensLength", &PyDbAbstractViewTableRecord::setLensLength)
+        .def("frontClipDistance", &PyDbAbstractViewTableRecord::frontClipDistance)
+        .def("setFrontClipDistance", &PyDbAbstractViewTableRecord::setFrontClipDistance)
+        .def("backClipDistance", &PyDbAbstractViewTableRecord::backClipDistance)
+        .def("setBackClipDistance", &PyDbAbstractViewTableRecord::setBackClipDistance)
+        .def("perspectiveEnabled", &PyDbAbstractViewTableRecord::perspectiveEnabled)
+        .def("setPerspectiveEnabled", &PyDbAbstractViewTableRecord::setPerspectiveEnabled)
+        .def("frontClipEnabled", &PyDbAbstractViewTableRecord::frontClipEnabled)
+        .def("setFrontClipEnabled", &PyDbAbstractViewTableRecord::setFrontClipEnabled)
+        .def("backClipEnabled", &PyDbAbstractViewTableRecord::backClipEnabled)
+        .def("setBackClipEnabled", &PyDbAbstractViewTableRecord::setBackClipEnabled)
+        .def("frontClipAtEye", &PyDbAbstractViewTableRecord::frontClipAtEye)
+        .def("setFrontClipAtEye", &PyDbAbstractViewTableRecord::setFrontClipAtEye)
+        .def("background", &PyDbAbstractViewTableRecord::background)
+        .def("setBackground", &PyDbAbstractViewTableRecord::setBackground)
+        .def("visualStyle", &PyDbAbstractViewTableRecord::visualStyle)
+        .def("setVisualStyle", &PyDbAbstractViewTableRecord::setVisualStyle)
+        .def("isDefaultLightingOn", &PyDbAbstractViewTableRecord::isDefaultLightingOn)
+        .def("setDefaultLightingOn", &PyDbAbstractViewTableRecord::setDefaultLightingOn)
+        .def("defaultLightingType", &PyDbAbstractViewTableRecord::defaultLightingType)
+        .def("setDefaultLightingType", &PyDbAbstractViewTableRecord::setDefaultLightingType)
+        .def("brightness", &PyDbAbstractViewTableRecord::brightness)
+        .def("setBrightness", &PyDbAbstractViewTableRecord::setBrightness)
+        .def("contrast", &PyDbAbstractViewTableRecord::contrast)
+        .def("setContrast", &PyDbAbstractViewTableRecord::setContrast)
+        .def("ambientLightColor", &PyDbAbstractViewTableRecord::ambientLightColor)
+        .def("setAmbientLightColor", &PyDbAbstractViewTableRecord::setAmbientLightColor)
+        .def("sunId", &PyDbAbstractViewTableRecord::sunId)
+        .def("setSun", &PyDbAbstractViewTableRecord::setSun1)
+        .def("setSun", &PyDbAbstractViewTableRecord::setSun2)
+        .def("getUcs", &PyDbAbstractViewTableRecord::getUcs)
+        .def("isUcsOrthographic", &PyDbAbstractViewTableRecord::isUcsOrthographic)
+        .def("ucsName", &PyDbAbstractViewTableRecord::ucsName)
+        .def("elevation", &PyDbAbstractViewTableRecord::elevation)
+        .def("setUcs", &PyDbAbstractViewTableRecord::setUcs1)
+        .def("setUcs", &PyDbAbstractViewTableRecord::setUcs2)
+        .def("setUcs", &PyDbAbstractViewTableRecord::setUcs3)
+        .def("setUcsToWorld", &PyDbAbstractViewTableRecord::setUcsToWorld)
+        .def("setElevation", &PyDbAbstractViewTableRecord::setElevation)
+        .def("isViewOrthographic", &PyDbAbstractViewTableRecord::isViewOrthographic)
+        .def("setViewDirection", &PyDbAbstractViewTableRecord::setViewDirection2)
         .def("className", &PyDbAbstractViewTableRecord::className).staticmethod("className")
         .def("desc", &PyDbAbstractViewTableRecord::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbAbstractViewTableRecord::cloneFrom).staticmethod("cloneFrom")
@@ -196,6 +250,286 @@ PyDbAbstractViewTableRecord::PyDbAbstractViewTableRecord(const PyDbObjectId& id,
     if (auto es = acdbOpenObject<AcDbAbstractViewTableRecord>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+AcGePoint2d PyDbAbstractViewTableRecord::centerPoint() const
+{
+    return impObj()->centerPoint();
+}
+
+void PyDbAbstractViewTableRecord::setCenterPoint(const AcGePoint2d& val)
+{
+    return impObj()->setCenterPoint(val);
+}
+
+double PyDbAbstractViewTableRecord::height() const
+{
+    return impObj()->height();
+}
+
+void PyDbAbstractViewTableRecord::setHeight(double val)
+{
+    return impObj()->setHeight(val);
+}
+
+double PyDbAbstractViewTableRecord::width() const
+{
+    return impObj()->width();
+}
+
+void PyDbAbstractViewTableRecord::setWidth(double val)
+{
+    return impObj()->setWidth(val);
+}
+
+AcGePoint3d PyDbAbstractViewTableRecord::target() const
+{
+    return impObj()->target();
+}
+
+void PyDbAbstractViewTableRecord::setTarget(const AcGePoint3d& target)
+{
+    return impObj()->setTarget(target);
+}
+
+AcGeVector3d PyDbAbstractViewTableRecord::viewDirection() const
+{
+    return impObj()->viewDirection();
+}
+
+void PyDbAbstractViewTableRecord::setViewDirection1(const AcGeVector3d& viewDirection)
+{
+    return impObj()->setViewDirection(viewDirection);
+}
+
+Acad::ErrorStatus PyDbAbstractViewTableRecord::setViewDirection2(AcDb::OrthographicView view)
+{
+    return impObj()->setViewDirection(view);
+}
+
+double PyDbAbstractViewTableRecord::viewTwist() const
+{
+    return impObj()->viewTwist();
+}
+
+void PyDbAbstractViewTableRecord::setViewTwist(double angle)
+{
+    return impObj()->setViewTwist(angle);
+}
+
+double PyDbAbstractViewTableRecord::lensLength() const
+{
+    return impObj()->lensLength();
+}
+
+void PyDbAbstractViewTableRecord::setLensLength(double length)
+{
+    return impObj()->setLensLength(length);
+}
+
+double PyDbAbstractViewTableRecord::frontClipDistance() const
+{
+    return impObj()->frontClipDistance();
+}
+
+void PyDbAbstractViewTableRecord::setFrontClipDistance(double distance)
+{
+    return impObj()->setFrontClipDistance(distance);
+}
+
+double PyDbAbstractViewTableRecord::backClipDistance() const
+{
+    return impObj()->backClipDistance();
+}
+
+void PyDbAbstractViewTableRecord::setBackClipDistance(double distance)
+{
+    return impObj()->setBackClipDistance(distance);
+}
+
+bool PyDbAbstractViewTableRecord::perspectiveEnabled() const
+{
+    return impObj()->perspectiveEnabled();
+}
+
+void PyDbAbstractViewTableRecord::setPerspectiveEnabled(bool enabled)
+{
+    return impObj()->setPerspectiveEnabled(enabled);
+}
+
+bool PyDbAbstractViewTableRecord::frontClipEnabled() const
+{
+    return impObj()->frontClipEnabled();
+}
+
+void PyDbAbstractViewTableRecord::setFrontClipEnabled(bool enabled)
+{
+    return impObj()->setFrontClipEnabled(enabled);
+}
+
+bool PyDbAbstractViewTableRecord::backClipEnabled() const
+{
+    return impObj()->backClipEnabled();
+}
+
+void PyDbAbstractViewTableRecord::setBackClipEnabled(bool enabled)
+{
+    return impObj()->setBackClipEnabled(enabled);
+}
+
+bool PyDbAbstractViewTableRecord::frontClipAtEye() const
+{
+    return impObj()->frontClipAtEye();
+}
+
+void PyDbAbstractViewTableRecord::setFrontClipAtEye(bool atEye)
+{
+    return impObj()->setFrontClipAtEye(atEye);
+}
+
+PyDbObjectId PyDbAbstractViewTableRecord::background() const
+{
+    return PyDbObjectId(impObj()->background());
+}
+
+Acad::ErrorStatus PyDbAbstractViewTableRecord::setBackground(const PyDbObjectId& backgroundId)
+{
+    return impObj()->setBackground(backgroundId.m_id);
+}
+
+PyDbObjectId PyDbAbstractViewTableRecord::visualStyle() const
+{
+    return PyDbObjectId(impObj()->visualStyle());
+}
+
+Acad::ErrorStatus PyDbAbstractViewTableRecord::setVisualStyle(const PyDbObjectId& visualStyleId)
+{
+    return impObj()->setVisualStyle(visualStyleId.m_id);
+}
+
+bool PyDbAbstractViewTableRecord::isDefaultLightingOn() const
+{
+    return impObj()->isDefaultLightingOn();
+}
+
+Acad::ErrorStatus PyDbAbstractViewTableRecord::setDefaultLightingOn(bool on)
+{
+    return impObj()->setDefaultLightingOn(on);
+}
+
+AcGiViewportTraits::DefaultLightingType PyDbAbstractViewTableRecord::defaultLightingType() const
+{
+    return impObj()->defaultLightingType();
+}
+
+Acad::ErrorStatus PyDbAbstractViewTableRecord::setDefaultLightingType(AcGiViewportTraits::DefaultLightingType typ)
+{
+    return impObj()->setDefaultLightingType(typ);
+}
+
+double PyDbAbstractViewTableRecord::brightness() const
+{
+    return impObj()->brightness();
+}
+
+Acad::ErrorStatus PyDbAbstractViewTableRecord::setBrightness(double val)
+{
+    return impObj()->setBrightness(val);
+}
+
+double PyDbAbstractViewTableRecord::contrast() const
+{
+    return impObj()->contrast();
+}
+
+Acad::ErrorStatus PyDbAbstractViewTableRecord::setContrast(double val)
+{
+    return impObj()->setContrast(val);
+}
+
+AcCmColor PyDbAbstractViewTableRecord::ambientLightColor() const
+{
+    return impObj()->ambientLightColor();
+}
+
+Acad::ErrorStatus PyDbAbstractViewTableRecord::setAmbientLightColor(const AcCmColor& clr)
+{
+    return impObj()->setAmbientLightColor(clr);
+}
+
+PyDbObjectId PyDbAbstractViewTableRecord::sunId() const
+{
+    return PyDbObjectId(impObj()->sunId());
+}
+
+Acad::ErrorStatus PyDbAbstractViewTableRecord::setSun1(PyDbObjectId& retId, PyDbObject& pSun)
+{
+    return impObj()->setSun(retId.m_id, pSun.impObj());
+}
+
+Acad::ErrorStatus PyDbAbstractViewTableRecord::setSun2(PyDbObjectId& retId, PyDbObject& pSun, bool eraseOldSun)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setSun(retId.m_id,pSun.impObj(), eraseOldSun);
+#endif
+}
+
+Acad::ErrorStatus PyDbAbstractViewTableRecord::getUcs(AcGePoint3d& origin, AcGeVector3d& xAxis, AcGeVector3d& yAxis) const
+{
+    return impObj()->getUcs(origin, xAxis, yAxis);
+}
+
+boost::python::tuple PyDbAbstractViewTableRecord::isUcsOrthographic() const
+{
+    PyAutoLockGIL lock;
+    AcDb::OrthographicView view;
+    bool flag = impObj()->isUcsOrthographic(view);
+    return boost::python::make_tuple(flag, view);
+}
+
+PyDbObjectId PyDbAbstractViewTableRecord::ucsName() const
+{
+    return PyDbObjectId(impObj()->ucsName());
+}
+
+double PyDbAbstractViewTableRecord::elevation() const
+{
+    return impObj()->elevation();
+}
+
+Acad::ErrorStatus PyDbAbstractViewTableRecord::setUcs1(const AcGePoint3d& origin, const AcGeVector3d& xAxis, const AcGeVector3d& yAxis)
+{
+    return impObj()->setUcs(origin, xAxis, yAxis);
+}
+
+Acad::ErrorStatus PyDbAbstractViewTableRecord::setUcs2(AcDb::OrthographicView view)
+{
+    return impObj()->setUcs(view);
+}
+
+Acad::ErrorStatus PyDbAbstractViewTableRecord::setUcs3(const PyDbObjectId& ucsId)
+{
+    return impObj()->setUcs(ucsId.m_id);
+}
+
+Acad::ErrorStatus PyDbAbstractViewTableRecord::setUcsToWorld()
+{
+    return impObj()->setUcsToWorld();
+}
+
+Acad::ErrorStatus PyDbAbstractViewTableRecord::setElevation(double elev)
+{
+    return impObj()->setElevation(elev);
+}
+
+boost::python::tuple PyDbAbstractViewTableRecord::isViewOrthographic() const
+{
+    PyAutoLockGIL lock;
+    AcDb::OrthographicView view;
+    bool flag = impObj()->isViewOrthographic(view);
+    return boost::python::make_tuple(flag, view);
 }
 
 std::string PyDbAbstractViewTableRecord::className()

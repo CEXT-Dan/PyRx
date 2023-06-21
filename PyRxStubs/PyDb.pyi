@@ -152,6 +152,12 @@ class AbstractViewTableRecord:
     def addPersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def ambientLightColor (self, *args, **kwargs)-> Color :
+      '''ambientLightColor( (AbstractViewTableRecord)arg1) -> Color :
+
+    C++ signature :
+        class AcCmColor ambientLightColor(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -161,6 +167,30 @@ class AbstractViewTableRecord:
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
+    def backClipDistance (self, *args, **kwargs)-> float :
+      '''backClipDistance( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double backClipDistance(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def backClipEnabled (self, *args, **kwargs)-> bool :
+      '''backClipEnabled( (AbstractViewTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool backClipEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def background (self, *args, **kwargs)-> ObjectId :
+      '''background( (AbstractViewTableRecord)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId background(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def brightness (self, *args, **kwargs)-> float :
+      '''brightness( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double brightness(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -169,6 +199,12 @@ class AbstractViewTableRecord:
 
     C++ signature :
         class PyDbAbstractViewTableRecord cast(class PyRxObject)'''
+    ...
+    def centerPoint (self, *args, **kwargs)-> Point2d :
+      '''centerPoint( (AbstractViewTableRecord)arg1) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d centerPoint(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def className (self, *args, **kwargs)-> str :
       '''className() -> str :
@@ -185,11 +221,23 @@ class AbstractViewTableRecord:
     def close (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def contrast (self, *args, **kwargs)-> float :
+      '''contrast( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double contrast(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
     def createExtensionDictionary (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
     def database (self: DbObject)-> Database :
       '''                             '''
+    ...
+    def defaultLightingType (self, *args, **kwargs)-> object :
+      '''defaultLightingType( (AbstractViewTableRecord)arg1) -> object :
+
+    C++ signature :
+        enum AcGiViewportTraits::DefaultLightingType defaultLightingType(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def desc (self, *args, **kwargs)-> RxClass :
       '''desc() -> RxClass :
@@ -206,11 +254,35 @@ class AbstractViewTableRecord:
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def elevation (self, *args, **kwargs)-> float :
+      '''elevation( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double elevation(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
+    ...
+    def frontClipAtEye (self, *args, **kwargs)-> bool :
+      '''frontClipAtEye( (AbstractViewTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool frontClipAtEye(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def frontClipDistance (self, *args, **kwargs)-> float :
+      '''frontClipDistance( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double frontClipDistance(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def frontClipEnabled (self, *args, **kwargs)-> bool :
+      '''frontClipEnabled( (AbstractViewTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool frontClipEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def getField (self: DbObject)-> ObjectId :
       '''                             '''
@@ -227,6 +299,12 @@ class AbstractViewTableRecord:
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbSymbolTableRecord {lvalue})'''
     ...
+    def getUcs (self, *args, **kwargs)-> ErrorStatus :
+      '''getUcs( (AbstractViewTableRecord)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus getUcs(class PyDbAbstractViewTableRecord {lvalue},class AcGePoint3d {lvalue},class AcGeVector3d {lvalue},class AcGeVector3d {lvalue})'''
+    ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> ErrorStatus :
       '''                             '''
     ...
@@ -235,6 +313,12 @@ class AbstractViewTableRecord:
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
+    ...
+    def height (self, *args, **kwargs)-> float :
+      '''height( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double height(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -247,6 +331,12 @@ class AbstractViewTableRecord:
     ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
+    ...
+    def isDefaultLightingOn (self, *args, **kwargs)-> bool :
+      '''isDefaultLightingOn( (AbstractViewTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool isDefaultLightingOn(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def isDependent (self, *args, **kwargs)-> bool :
       '''isDependent( (SymbolTableRecord)arg1) -> bool :
@@ -305,20 +395,44 @@ class AbstractViewTableRecord:
     def isTransactionResident (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isUcsOrthographic (self, *args, **kwargs)-> tuple :
+      '''isUcsOrthographic( (AbstractViewTableRecord)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple isUcsOrthographic(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
     def isUndoRecordingDisabled (self: DbObject)-> bool :
       '''                             '''
     ...
     def isUndoing (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isViewOrthographic (self, *args, **kwargs)-> tuple :
+      '''isViewOrthographic( (AbstractViewTableRecord)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple isViewOrthographic(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
+    ...
+    def lensLength (self, *args, **kwargs)-> float :
+      '''lensLength( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double lensLength(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def objectId (self: DbObject)-> ObjectId :
       '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
       '''                             '''
+    ...
+    def perspectiveEnabled (self, *args, **kwargs)-> bool :
+      '''perspectiveEnabled( (AbstractViewTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool perspectiveEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def refCount (self, *args, **kwargs)-> int :
       '''refCount( (RxObject)arg1) -> int :
@@ -335,8 +449,98 @@ class AbstractViewTableRecord:
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def setAmbientLightColor (self, *args, **kwargs)-> ErrorStatus :
+      '''setAmbientLightColor( (AbstractViewTableRecord)arg1, (Color)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setAmbientLightColor(class PyDbAbstractViewTableRecord {lvalue},class AcCmColor)'''
+    ...
+    def setBackClipDistance (self, *args, **kwargs)-> None :
+      '''setBackClipDistance( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setBackClipDistance(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    ...
+    def setBackClipEnabled (self, *args, **kwargs)-> None :
+      '''setBackClipEnabled( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setBackClipEnabled(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    ...
+    def setBackground (self, *args, **kwargs)-> ErrorStatus :
+      '''setBackground( (AbstractViewTableRecord)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setBackground(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId)'''
+    ...
+    def setBrightness (self, *args, **kwargs)-> ErrorStatus :
+      '''setBrightness( (AbstractViewTableRecord)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setBrightness(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    ...
+    def setCenterPoint (self, *args, **kwargs)-> None :
+      '''setCenterPoint( (AbstractViewTableRecord)arg1, (Point2d)arg2) -> None :
+
+    C++ signature :
+        void setCenterPoint(class PyDbAbstractViewTableRecord {lvalue},class AcGePoint2d)'''
+    ...
+    def setContrast (self, *args, **kwargs)-> ErrorStatus :
+      '''setContrast( (AbstractViewTableRecord)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setContrast(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    ...
+    def setDefaultLightingOn (self, *args, **kwargs)-> ErrorStatus :
+      '''setDefaultLightingOn( (AbstractViewTableRecord)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setDefaultLightingOn(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    ...
+    def setDefaultLightingType (self, *args, **kwargs)-> ErrorStatus :
+      '''setDefaultLightingType( (AbstractViewTableRecord)arg1, (object)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setDefaultLightingType(class PyDbAbstractViewTableRecord {lvalue},enum AcGiViewportTraits::DefaultLightingType)'''
+    ...
+    def setElevation (self, *args, **kwargs)-> ErrorStatus :
+      '''setElevation( (AbstractViewTableRecord)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setElevation(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    ...
     def setField (self: DbObject,obj: Field)-> ObjectId :
       '''                             '''
+    ...
+    def setFrontClipAtEye (self, *args, **kwargs)-> None :
+      '''setFrontClipAtEye( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setFrontClipAtEye(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    ...
+    def setFrontClipDistance (self, *args, **kwargs)-> None :
+      '''setFrontClipDistance( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setFrontClipDistance(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    ...
+    def setFrontClipEnabled (self, *args, **kwargs)-> None :
+      '''setFrontClipEnabled( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setFrontClipEnabled(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    ...
+    def setHeight (self, *args, **kwargs)-> None :
+      '''setHeight( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setHeight(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    ...
+    def setLensLength (self, *args, **kwargs)-> None :
+      '''setLensLength( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setLensLength(class PyDbAbstractViewTableRecord {lvalue},double)'''
     ...
     def setName (self, *args, **kwargs)-> ErrorStatus :
       '''setName( (SymbolTableRecord)arg1, (str)arg2) -> ErrorStatus :
@@ -347,17 +551,133 @@ class AbstractViewTableRecord:
     def setOwnerId (self: DbObject,owner: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def setPerspectiveEnabled (self, *args, **kwargs)-> None :
+      '''setPerspectiveEnabled( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setPerspectiveEnabled(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    ...
+    def setSun (self, *args, **kwargs)-> ErrorStatus :
+      '''setSun( (AbstractViewTableRecord)arg1, (ObjectId)arg2, (DbObject)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSun(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId {lvalue},class PyDbObject {lvalue})
+
+setSun( (AbstractViewTableRecord)arg1, (ObjectId)arg2, (DbObject)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSun(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId {lvalue},class PyDbObject {lvalue},bool)'''
+    ...
+    def setTarget (self, *args, **kwargs)-> None :
+      '''setTarget( (AbstractViewTableRecord)arg1, (Point3d)arg2) -> None :
+
+    C++ signature :
+        void setTarget(class PyDbAbstractViewTableRecord {lvalue},class AcGePoint3d)'''
+    ...
+    def setUcs (self, *args, **kwargs)-> ErrorStatus :
+      '''setUcs( (AbstractViewTableRecord)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcs(class PyDbAbstractViewTableRecord {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d)
+
+setUcs( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcs(class PyDbAbstractViewTableRecord {lvalue},enum AcDb::OrthographicView)
+
+setUcs( (AbstractViewTableRecord)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcs(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId)'''
+    ...
+    def setUcsToWorld (self, *args, **kwargs)-> ErrorStatus :
+      '''setUcsToWorld( (AbstractViewTableRecord)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcsToWorld(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def setViewDirection (self, *args, **kwargs)-> None :
+      '''setViewDirection( (AbstractViewTableRecord)arg1, (Vector3d)arg2) -> None :
+
+    C++ signature :
+        void setViewDirection(class PyDbAbstractViewTableRecord {lvalue},class AcGeVector3d)
+
+setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setViewDirection(class PyDbAbstractViewTableRecord {lvalue},enum AcDb::OrthographicView)'''
+    ...
+    def setViewTwist (self, *args, **kwargs)-> None :
+      '''setViewTwist( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setViewTwist(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    ...
+    def setVisualStyle (self, *args, **kwargs)-> ErrorStatus :
+      '''setVisualStyle( (AbstractViewTableRecord)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setVisualStyle(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId)'''
+    ...
+    def setWidth (self, *args, **kwargs)-> None :
+      '''setWidth( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setWidth(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    ...
     def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''                             '''
     ...
+    def sunId (self, *args, **kwargs)-> ObjectId :
+      '''sunId( (AbstractViewTableRecord)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId sunId(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> ErrorStatus :
       '''                             '''
+    ...
+    def target (self, *args, **kwargs)-> Point3d :
+      '''target( (AbstractViewTableRecord)arg1) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d target(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def ucsName (self, *args, **kwargs)-> ObjectId :
+      '''ucsName( (AbstractViewTableRecord)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId ucsName(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def viewDirection (self, *args, **kwargs)-> Vector3d :
+      '''viewDirection( (AbstractViewTableRecord)arg1) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d viewDirection(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def viewTwist (self, *args, **kwargs)-> float :
+      '''viewTwist( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double viewTwist(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def visualStyle (self, *args, **kwargs)-> ObjectId :
+      '''visualStyle( (AbstractViewTableRecord)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId visualStyle(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def width (self, *args, **kwargs)-> float :
+      '''width( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double width(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -73042,6 +73362,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def ambientLightColor (self, *args, **kwargs)-> Color :
+      '''ambientLightColor( (AbstractViewTableRecord)arg1) -> Color :
+
+    C++ signature :
+        class AcCmColor ambientLightColor(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -73051,6 +73377,30 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
+    def backClipDistance (self, *args, **kwargs)-> float :
+      '''backClipDistance( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double backClipDistance(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def backClipEnabled (self, *args, **kwargs)-> bool :
+      '''backClipEnabled( (AbstractViewTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool backClipEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def background (self, *args, **kwargs)-> ObjectId :
+      '''background( (AbstractViewTableRecord)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId background(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def brightness (self, *args, **kwargs)-> float :
+      '''brightness( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double brightness(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -73059,6 +73409,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbViewTableRecord cast(class PyRxObject)'''
+    ...
+    def centerPoint (self, *args, **kwargs)-> Point2d :
+      '''centerPoint( (AbstractViewTableRecord)arg1) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d centerPoint(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def className (self, *args, **kwargs)-> str :
       '''className() -> str :
@@ -73075,11 +73431,23 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def contrast (self, *args, **kwargs)-> float :
+      '''contrast( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double contrast(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
     def createExtensionDictionary (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
     def database (self: DbObject)-> Database :
       '''                             '''
+    ...
+    def defaultLightingType (self, *args, **kwargs)-> object :
+      '''defaultLightingType( (AbstractViewTableRecord)arg1) -> object :
+
+    C++ signature :
+        enum AcGiViewportTraits::DefaultLightingType defaultLightingType(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def desc (self, *args, **kwargs)-> RxClass :
       '''desc() -> RxClass :
@@ -73096,11 +73464,35 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def elevation (self, *args, **kwargs)-> float :
+      '''elevation( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double elevation(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
+    ...
+    def frontClipAtEye (self, *args, **kwargs)-> bool :
+      '''frontClipAtEye( (AbstractViewTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool frontClipAtEye(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def frontClipDistance (self, *args, **kwargs)-> float :
+      '''frontClipDistance( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double frontClipDistance(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def frontClipEnabled (self, *args, **kwargs)-> bool :
+      '''frontClipEnabled( (AbstractViewTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool frontClipEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def getField (self: DbObject)-> ObjectId :
       '''                             '''
@@ -73123,6 +73515,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbSymbolTableRecord {lvalue})'''
     ...
+    def getUcs (self, *args, **kwargs)-> ErrorStatus :
+      '''getUcs( (AbstractViewTableRecord)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus getUcs(class PyDbAbstractViewTableRecord {lvalue},class AcGePoint3d {lvalue},class AcGeVector3d {lvalue},class AcGeVector3d {lvalue})'''
+    ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> ErrorStatus :
       '''                             '''
     ...
@@ -73131,6 +73529,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
+    ...
+    def height (self, *args, **kwargs)-> float :
+      '''height( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double height(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -73143,6 +73547,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
+    ...
+    def isDefaultLightingOn (self, *args, **kwargs)-> bool :
+      '''isDefaultLightingOn( (AbstractViewTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool isDefaultLightingOn(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def isDependent (self, *args, **kwargs)-> bool :
       '''isDependent( (SymbolTableRecord)arg1) -> bool :
@@ -73201,20 +73611,44 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isTransactionResident (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isUcsOrthographic (self, *args, **kwargs)-> tuple :
+      '''isUcsOrthographic( (AbstractViewTableRecord)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple isUcsOrthographic(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
     def isUndoRecordingDisabled (self: DbObject)-> bool :
       '''                             '''
     ...
     def isUndoing (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isViewOrthographic (self, *args, **kwargs)-> tuple :
+      '''isViewOrthographic( (AbstractViewTableRecord)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple isViewOrthographic(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
+    ...
+    def lensLength (self, *args, **kwargs)-> float :
+      '''lensLength( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double lensLength(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def objectId (self: DbObject)-> ObjectId :
       '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
       '''                             '''
+    ...
+    def perspectiveEnabled (self, *args, **kwargs)-> bool :
+      '''perspectiveEnabled( (AbstractViewTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool perspectiveEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def refCount (self, *args, **kwargs)-> int :
       '''refCount( (RxObject)arg1) -> int :
@@ -73231,14 +73665,104 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def setAmbientLightColor (self, *args, **kwargs)-> ErrorStatus :
+      '''setAmbientLightColor( (AbstractViewTableRecord)arg1, (Color)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setAmbientLightColor(class PyDbAbstractViewTableRecord {lvalue},class AcCmColor)'''
+    ...
+    def setBackClipDistance (self, *args, **kwargs)-> None :
+      '''setBackClipDistance( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setBackClipDistance(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    ...
+    def setBackClipEnabled (self, *args, **kwargs)-> None :
+      '''setBackClipEnabled( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setBackClipEnabled(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    ...
+    def setBackground (self, *args, **kwargs)-> ErrorStatus :
+      '''setBackground( (AbstractViewTableRecord)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setBackground(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId)'''
+    ...
+    def setBrightness (self, *args, **kwargs)-> ErrorStatus :
+      '''setBrightness( (AbstractViewTableRecord)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setBrightness(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    ...
+    def setCenterPoint (self, *args, **kwargs)-> None :
+      '''setCenterPoint( (AbstractViewTableRecord)arg1, (Point2d)arg2) -> None :
+
+    C++ signature :
+        void setCenterPoint(class PyDbAbstractViewTableRecord {lvalue},class AcGePoint2d)'''
+    ...
+    def setContrast (self, *args, **kwargs)-> ErrorStatus :
+      '''setContrast( (AbstractViewTableRecord)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setContrast(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    ...
+    def setDefaultLightingOn (self, *args, **kwargs)-> ErrorStatus :
+      '''setDefaultLightingOn( (AbstractViewTableRecord)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setDefaultLightingOn(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    ...
+    def setDefaultLightingType (self, *args, **kwargs)-> ErrorStatus :
+      '''setDefaultLightingType( (AbstractViewTableRecord)arg1, (object)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setDefaultLightingType(class PyDbAbstractViewTableRecord {lvalue},enum AcGiViewportTraits::DefaultLightingType)'''
+    ...
+    def setElevation (self, *args, **kwargs)-> ErrorStatus :
+      '''setElevation( (AbstractViewTableRecord)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setElevation(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    ...
     def setField (self: DbObject,obj: Field)-> ObjectId :
       '''                             '''
+    ...
+    def setFrontClipAtEye (self, *args, **kwargs)-> None :
+      '''setFrontClipAtEye( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setFrontClipAtEye(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    ...
+    def setFrontClipDistance (self, *args, **kwargs)-> None :
+      '''setFrontClipDistance( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setFrontClipDistance(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    ...
+    def setFrontClipEnabled (self, *args, **kwargs)-> None :
+      '''setFrontClipEnabled( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setFrontClipEnabled(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    ...
+    def setHeight (self, *args, **kwargs)-> None :
+      '''setHeight( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setHeight(class PyDbAbstractViewTableRecord {lvalue},double)'''
     ...
     def setLayout (self, *args, **kwargs)-> ErrorStatus :
       '''setLayout( (ViewTableRecord)arg1, (ObjectId)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setLayout(class PyDbViewTableRecord {lvalue},class PyDbObjectId)'''
+    ...
+    def setLensLength (self, *args, **kwargs)-> None :
+      '''setLensLength( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setLensLength(class PyDbAbstractViewTableRecord {lvalue},double)'''
     ...
     def setName (self, *args, **kwargs)-> ErrorStatus :
       '''setName( (SymbolTableRecord)arg1, (str)arg2) -> ErrorStatus :
@@ -73249,17 +73773,133 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setOwnerId (self: DbObject,owner: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def setPerspectiveEnabled (self, *args, **kwargs)-> None :
+      '''setPerspectiveEnabled( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setPerspectiveEnabled(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    ...
+    def setSun (self, *args, **kwargs)-> ErrorStatus :
+      '''setSun( (AbstractViewTableRecord)arg1, (ObjectId)arg2, (DbObject)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSun(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId {lvalue},class PyDbObject {lvalue})
+
+setSun( (AbstractViewTableRecord)arg1, (ObjectId)arg2, (DbObject)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSun(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId {lvalue},class PyDbObject {lvalue},bool)'''
+    ...
+    def setTarget (self, *args, **kwargs)-> None :
+      '''setTarget( (AbstractViewTableRecord)arg1, (Point3d)arg2) -> None :
+
+    C++ signature :
+        void setTarget(class PyDbAbstractViewTableRecord {lvalue},class AcGePoint3d)'''
+    ...
+    def setUcs (self, *args, **kwargs)-> ErrorStatus :
+      '''setUcs( (AbstractViewTableRecord)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcs(class PyDbAbstractViewTableRecord {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d)
+
+setUcs( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcs(class PyDbAbstractViewTableRecord {lvalue},enum AcDb::OrthographicView)
+
+setUcs( (AbstractViewTableRecord)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcs(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId)'''
+    ...
+    def setUcsToWorld (self, *args, **kwargs)-> ErrorStatus :
+      '''setUcsToWorld( (AbstractViewTableRecord)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcsToWorld(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def setViewDirection (self, *args, **kwargs)-> None :
+      '''setViewDirection( (AbstractViewTableRecord)arg1, (Vector3d)arg2) -> None :
+
+    C++ signature :
+        void setViewDirection(class PyDbAbstractViewTableRecord {lvalue},class AcGeVector3d)
+
+setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setViewDirection(class PyDbAbstractViewTableRecord {lvalue},enum AcDb::OrthographicView)'''
+    ...
+    def setViewTwist (self, *args, **kwargs)-> None :
+      '''setViewTwist( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setViewTwist(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    ...
+    def setVisualStyle (self, *args, **kwargs)-> ErrorStatus :
+      '''setVisualStyle( (AbstractViewTableRecord)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setVisualStyle(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId)'''
+    ...
+    def setWidth (self, *args, **kwargs)-> None :
+      '''setWidth( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setWidth(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    ...
     def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''                             '''
     ...
+    def sunId (self, *args, **kwargs)-> ObjectId :
+      '''sunId( (AbstractViewTableRecord)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId sunId(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> ErrorStatus :
       '''                             '''
+    ...
+    def target (self, *args, **kwargs)-> Point3d :
+      '''target( (AbstractViewTableRecord)arg1) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d target(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def ucsName (self, *args, **kwargs)-> ObjectId :
+      '''ucsName( (AbstractViewTableRecord)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId ucsName(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def viewDirection (self, *args, **kwargs)-> Vector3d :
+      '''viewDirection( (AbstractViewTableRecord)arg1) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d viewDirection(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def viewTwist (self, *args, **kwargs)-> float :
+      '''viewTwist( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double viewTwist(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def visualStyle (self, *args, **kwargs)-> ObjectId :
+      '''visualStyle( (AbstractViewTableRecord)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId visualStyle(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def width (self, *args, **kwargs)-> float :
+      '''width( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double width(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -74926,6 +75566,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def ambientLightColor (self, *args, **kwargs)-> Color :
+      '''ambientLightColor( (AbstractViewTableRecord)arg1) -> Color :
+
+    C++ signature :
+        class AcCmColor ambientLightColor(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -74935,6 +75581,30 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
+    def backClipDistance (self, *args, **kwargs)-> float :
+      '''backClipDistance( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double backClipDistance(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def backClipEnabled (self, *args, **kwargs)-> bool :
+      '''backClipEnabled( (AbstractViewTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool backClipEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def background (self, *args, **kwargs)-> ObjectId :
+      '''background( (AbstractViewTableRecord)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId background(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def brightness (self, *args, **kwargs)-> float :
+      '''brightness( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double brightness(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -74943,6 +75613,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbViewportTableRecord cast(class PyRxObject)'''
+    ...
+    def centerPoint (self, *args, **kwargs)-> Point2d :
+      '''centerPoint( (AbstractViewTableRecord)arg1) -> Point2d :
+
+    C++ signature :
+        class AcGePoint2d centerPoint(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def className (self, *args, **kwargs)-> str :
       '''className() -> str :
@@ -74959,11 +75635,23 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def close (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def contrast (self, *args, **kwargs)-> float :
+      '''contrast( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double contrast(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
     def createExtensionDictionary (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
     def database (self: DbObject)-> Database :
       '''                             '''
+    ...
+    def defaultLightingType (self, *args, **kwargs)-> object :
+      '''defaultLightingType( (AbstractViewTableRecord)arg1) -> object :
+
+    C++ signature :
+        enum AcGiViewportTraits::DefaultLightingType defaultLightingType(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def desc (self, *args, **kwargs)-> RxClass :
       '''desc() -> RxClass :
@@ -74980,11 +75668,35 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def elevation (self, *args, **kwargs)-> float :
+      '''elevation( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double elevation(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
+    ...
+    def frontClipAtEye (self, *args, **kwargs)-> bool :
+      '''frontClipAtEye( (AbstractViewTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool frontClipAtEye(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def frontClipDistance (self, *args, **kwargs)-> float :
+      '''frontClipDistance( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double frontClipDistance(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def frontClipEnabled (self, *args, **kwargs)-> bool :
+      '''frontClipEnabled( (AbstractViewTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool frontClipEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def getField (self: DbObject)-> ObjectId :
       '''                             '''
@@ -75001,6 +75713,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbSymbolTableRecord {lvalue})'''
     ...
+    def getUcs (self, *args, **kwargs)-> ErrorStatus :
+      '''getUcs( (AbstractViewTableRecord)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus getUcs(class PyDbAbstractViewTableRecord {lvalue},class AcGePoint3d {lvalue},class AcGeVector3d {lvalue},class AcGeVector3d {lvalue})'''
+    ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> ErrorStatus :
       '''                             '''
     ...
@@ -75009,6 +75727,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
+    ...
+    def height (self, *args, **kwargs)-> float :
+      '''height( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double height(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -75021,6 +75745,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
+    ...
+    def isDefaultLightingOn (self, *args, **kwargs)-> bool :
+      '''isDefaultLightingOn( (AbstractViewTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool isDefaultLightingOn(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def isDependent (self, *args, **kwargs)-> bool :
       '''isDependent( (SymbolTableRecord)arg1) -> bool :
@@ -75079,20 +75809,44 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isTransactionResident (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isUcsOrthographic (self, *args, **kwargs)-> tuple :
+      '''isUcsOrthographic( (AbstractViewTableRecord)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple isUcsOrthographic(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
     def isUndoRecordingDisabled (self: DbObject)-> bool :
       '''                             '''
     ...
     def isUndoing (self: DbObject)-> bool :
       '''                             '''
     ...
+    def isViewOrthographic (self, *args, **kwargs)-> tuple :
+      '''isViewOrthographic( (AbstractViewTableRecord)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple isViewOrthographic(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
+    ...
+    def lensLength (self, *args, **kwargs)-> float :
+      '''lensLength( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double lensLength(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def objectId (self: DbObject)-> ObjectId :
       '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
       '''                             '''
+    ...
+    def perspectiveEnabled (self, *args, **kwargs)-> bool :
+      '''perspectiveEnabled( (AbstractViewTableRecord)arg1) -> bool :
+
+    C++ signature :
+        bool perspectiveEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def refCount (self, *args, **kwargs)-> int :
       '''refCount( (RxObject)arg1) -> int :
@@ -75109,8 +75863,98 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def setAmbientLightColor (self, *args, **kwargs)-> ErrorStatus :
+      '''setAmbientLightColor( (AbstractViewTableRecord)arg1, (Color)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setAmbientLightColor(class PyDbAbstractViewTableRecord {lvalue},class AcCmColor)'''
+    ...
+    def setBackClipDistance (self, *args, **kwargs)-> None :
+      '''setBackClipDistance( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setBackClipDistance(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    ...
+    def setBackClipEnabled (self, *args, **kwargs)-> None :
+      '''setBackClipEnabled( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setBackClipEnabled(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    ...
+    def setBackground (self, *args, **kwargs)-> ErrorStatus :
+      '''setBackground( (AbstractViewTableRecord)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setBackground(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId)'''
+    ...
+    def setBrightness (self, *args, **kwargs)-> ErrorStatus :
+      '''setBrightness( (AbstractViewTableRecord)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setBrightness(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    ...
+    def setCenterPoint (self, *args, **kwargs)-> None :
+      '''setCenterPoint( (AbstractViewTableRecord)arg1, (Point2d)arg2) -> None :
+
+    C++ signature :
+        void setCenterPoint(class PyDbAbstractViewTableRecord {lvalue},class AcGePoint2d)'''
+    ...
+    def setContrast (self, *args, **kwargs)-> ErrorStatus :
+      '''setContrast( (AbstractViewTableRecord)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setContrast(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    ...
+    def setDefaultLightingOn (self, *args, **kwargs)-> ErrorStatus :
+      '''setDefaultLightingOn( (AbstractViewTableRecord)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setDefaultLightingOn(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    ...
+    def setDefaultLightingType (self, *args, **kwargs)-> ErrorStatus :
+      '''setDefaultLightingType( (AbstractViewTableRecord)arg1, (object)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setDefaultLightingType(class PyDbAbstractViewTableRecord {lvalue},enum AcGiViewportTraits::DefaultLightingType)'''
+    ...
+    def setElevation (self, *args, **kwargs)-> ErrorStatus :
+      '''setElevation( (AbstractViewTableRecord)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setElevation(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    ...
     def setField (self: DbObject,obj: Field)-> ObjectId :
       '''                             '''
+    ...
+    def setFrontClipAtEye (self, *args, **kwargs)-> None :
+      '''setFrontClipAtEye( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setFrontClipAtEye(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    ...
+    def setFrontClipDistance (self, *args, **kwargs)-> None :
+      '''setFrontClipDistance( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setFrontClipDistance(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    ...
+    def setFrontClipEnabled (self, *args, **kwargs)-> None :
+      '''setFrontClipEnabled( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setFrontClipEnabled(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    ...
+    def setHeight (self, *args, **kwargs)-> None :
+      '''setHeight( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setHeight(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    ...
+    def setLensLength (self, *args, **kwargs)-> None :
+      '''setLensLength( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setLensLength(class PyDbAbstractViewTableRecord {lvalue},double)'''
     ...
     def setName (self, *args, **kwargs)-> ErrorStatus :
       '''setName( (SymbolTableRecord)arg1, (str)arg2) -> ErrorStatus :
@@ -75121,17 +75965,133 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setOwnerId (self: DbObject,owner: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def setPerspectiveEnabled (self, *args, **kwargs)-> None :
+      '''setPerspectiveEnabled( (AbstractViewTableRecord)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setPerspectiveEnabled(class PyDbAbstractViewTableRecord {lvalue},bool)'''
+    ...
+    def setSun (self, *args, **kwargs)-> ErrorStatus :
+      '''setSun( (AbstractViewTableRecord)arg1, (ObjectId)arg2, (DbObject)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSun(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId {lvalue},class PyDbObject {lvalue})
+
+setSun( (AbstractViewTableRecord)arg1, (ObjectId)arg2, (DbObject)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSun(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId {lvalue},class PyDbObject {lvalue},bool)'''
+    ...
+    def setTarget (self, *args, **kwargs)-> None :
+      '''setTarget( (AbstractViewTableRecord)arg1, (Point3d)arg2) -> None :
+
+    C++ signature :
+        void setTarget(class PyDbAbstractViewTableRecord {lvalue},class AcGePoint3d)'''
+    ...
+    def setUcs (self, *args, **kwargs)-> ErrorStatus :
+      '''setUcs( (AbstractViewTableRecord)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcs(class PyDbAbstractViewTableRecord {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d)
+
+setUcs( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcs(class PyDbAbstractViewTableRecord {lvalue},enum AcDb::OrthographicView)
+
+setUcs( (AbstractViewTableRecord)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcs(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId)'''
+    ...
+    def setUcsToWorld (self, *args, **kwargs)-> ErrorStatus :
+      '''setUcsToWorld( (AbstractViewTableRecord)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setUcsToWorld(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def setViewDirection (self, *args, **kwargs)-> None :
+      '''setViewDirection( (AbstractViewTableRecord)arg1, (Vector3d)arg2) -> None :
+
+    C++ signature :
+        void setViewDirection(class PyDbAbstractViewTableRecord {lvalue},class AcGeVector3d)
+
+setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setViewDirection(class PyDbAbstractViewTableRecord {lvalue},enum AcDb::OrthographicView)'''
+    ...
+    def setViewTwist (self, *args, **kwargs)-> None :
+      '''setViewTwist( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setViewTwist(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    ...
+    def setVisualStyle (self, *args, **kwargs)-> ErrorStatus :
+      '''setVisualStyle( (AbstractViewTableRecord)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setVisualStyle(class PyDbAbstractViewTableRecord {lvalue},class PyDbObjectId)'''
+    ...
+    def setWidth (self, *args, **kwargs)-> None :
+      '''setWidth( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setWidth(class PyDbAbstractViewTableRecord {lvalue},double)'''
+    ...
     def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''                             '''
     ...
+    def sunId (self, *args, **kwargs)-> ObjectId :
+      '''sunId( (AbstractViewTableRecord)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId sunId(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> ErrorStatus :
       '''                             '''
+    ...
+    def target (self, *args, **kwargs)-> Point3d :
+      '''target( (AbstractViewTableRecord)arg1) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d target(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def ucsName (self, *args, **kwargs)-> ObjectId :
+      '''ucsName( (AbstractViewTableRecord)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId ucsName(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def viewDirection (self, *args, **kwargs)-> Vector3d :
+      '''viewDirection( (AbstractViewTableRecord)arg1) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d viewDirection(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def viewTwist (self, *args, **kwargs)-> float :
+      '''viewTwist( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double viewTwist(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def visualStyle (self, *args, **kwargs)-> ObjectId :
+      '''visualStyle( (AbstractViewTableRecord)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId visualStyle(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def width (self, *args, **kwargs)-> float :
+      '''width( (AbstractViewTableRecord)arg1) -> float :
+
+    C++ signature :
+        double width(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
