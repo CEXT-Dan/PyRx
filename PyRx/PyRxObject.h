@@ -55,9 +55,11 @@ struct PyRxObjectDeleter
     bool m_autoDelete = true;
     bool m_isDbObject = false;
 };
-void makeAcRxObjectWrapper();
+
 //-----------------------------------------------------------------------------------------
 //PyRxObject
+void makeAcRxObjectWrapper();
+
 class PyRxObject
 {
 public:
