@@ -457,3 +457,23 @@ public:
 public:
     AcDbRegAppTableRecord* impObj(const std::source_location& src = std::source_location::current()) const;
 };
+
+//---------------------------------------------------------------------------------------- -
+// PyDbLinetypeTableRecord
+void makePyDbLinetypeTableRecordWrapper();
+
+class PyDbLinetypeTableRecord : public PyDbSymbolTableRecord
+{
+public:
+    PyDbLinetypeTableRecord();
+    PyDbLinetypeTableRecord(AcDbLinetypeTableRecord* ptr, bool autoDelete);
+    PyDbLinetypeTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbLinetypeTableRecord() override = default;
+public:
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyDbLinetypeTableRecord cloneFrom(const PyRxObject& src);
+    static PyDbLinetypeTableRecord cast(const PyRxObject& src);
+public:
+    AcDbLinetypeTableRecord* impObj(const std::source_location& src = std::source_location::current()) const;
+};

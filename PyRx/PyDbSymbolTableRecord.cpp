@@ -2380,3 +2380,67 @@ AcDbRegAppTableRecord* PyDbRegAppTableRecord::impObj(const std::source_location&
     return static_cast<AcDbRegAppTableRecord*>(m_pyImp.get());
 }
 
+//---------------------------------------------------------------------------------------- -
+// PyDbLinetypeTableRecord
+void makePyDbLinetypeTableRecordWrapper()
+{
+    class_<PyDbLinetypeTableRecord, bases<PyDbSymbolTableRecord>>("LinetypeTableRecord")
+        .def(init<>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("className", &PyDbLinetypeTableRecord::className).staticmethod("className")
+        .def("desc", &PyDbLinetypeTableRecord::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbLinetypeTableRecord::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbLinetypeTableRecord::cast).staticmethod("cast")
+        ;
+}
+
+PyDbLinetypeTableRecord::PyDbLinetypeTableRecord()
+    : PyDbSymbolTableRecord(new AcDbLinetypeTableRecord(), true)
+{
+}
+
+PyDbLinetypeTableRecord::PyDbLinetypeTableRecord(AcDbLinetypeTableRecord* ptr, bool autoDelete)
+    : PyDbSymbolTableRecord(ptr, autoDelete)
+{
+}
+
+PyDbLinetypeTableRecord::PyDbLinetypeTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbSymbolTableRecord(nullptr, false)
+{
+    AcDbLinetypeTableRecord* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbLinetypeTableRecord>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    this->resetImp(pobj, false, true);
+}
+
+std::string PyDbLinetypeTableRecord::className()
+{
+    return "AcDbLinetypeTableRecord";
+}
+
+PyRxClass PyDbLinetypeTableRecord::desc()
+{
+    return PyRxClass(AcDbLinetypeTableRecord::desc(), false);
+}
+
+PyDbLinetypeTableRecord PyDbLinetypeTableRecord::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbLinetypeTableRecord::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbLinetypeTableRecord(static_cast<AcDbLinetypeTableRecord*>(src.impObj()->clone()), true);
+}
+
+PyDbLinetypeTableRecord PyDbLinetypeTableRecord::cast(const PyRxObject& src)
+{
+    PyDbLinetypeTableRecord dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+AcDbLinetypeTableRecord* PyDbLinetypeTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr)
+        throw PyNullObject(src);
+    return static_cast<AcDbLinetypeTableRecord*>(m_pyImp.get());
+}
