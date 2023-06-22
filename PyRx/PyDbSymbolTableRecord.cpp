@@ -2,6 +2,7 @@
 #include "PyDbSymbolTableRecord.h"
 #include "PyDbObjectId.h"
 #include "PyDbEntity.h"
+#include "PyDbObjectContext.h"
 
 using namespace boost::python;
 //---------------------------------------------------------------------------------------- -
@@ -1164,6 +1165,24 @@ Acad::ErrorStatus PyDbViewTableRecord::setCamera(const PyDbObjectId& cameraId)
     throw PyNotimplementedByHost();
 #else
     return impObj()->setCamera(cameraId.m_id);
+#endif
+}
+
+PyDbAnnotationScale PyDbViewTableRecord::annotationScale() const
+{
+#ifdef ZRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return PyDbAnnotationScale(impObj()->annotationScale());
+#endif
+}
+
+Acad::ErrorStatus PyDbViewTableRecord::setAnnotationScale(const PyDbAnnotationScale& pScaleObj)
+{
+#ifdef ZRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setAnnotationScale(pScaleObj.impObj());
 #endif
 }
 

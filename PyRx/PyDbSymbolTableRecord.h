@@ -5,6 +5,7 @@ class PyDbEntity;
 class PyDbBlockBegin;
 class PyDbBlockEnd;
 class PyDbObjectId;
+class PyDbAnnotationScale;
 
 
 void makeAcDbSymbolTableRecordWrapper();
@@ -232,8 +233,8 @@ public:
     Acad::ErrorStatus   setLiveSection(const PyDbObjectId& liveSectionId);
     PyDbObjectId        camera() const;
     Acad::ErrorStatus   setCamera(const PyDbObjectId& cameraId);
-    //AcDbAnnotationScale* annotationScale() const;
-    //Acad::ErrorStatus setAnnotationScale(const AcDbAnnotationScale* pScaleObj);
+    PyDbAnnotationScale annotationScale() const;
+    Acad::ErrorStatus   setAnnotationScale(const PyDbAnnotationScale& pScaleObj);
     PyDbObjectId        sunId() const;
     Acad::ErrorStatus   setSun1(PyDbObjectId& retId, PyDbObject& pSun);
     Acad::ErrorStatus   setSun2(PyDbObjectId& retId, PyDbObject& pSun, bool eraseOldSun);
