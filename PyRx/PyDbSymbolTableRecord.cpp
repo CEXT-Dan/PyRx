@@ -1658,7 +1658,7 @@ PyDbLayerTableRecord::PyDbLayerTableRecord()
 }
 
 PyDbLayerTableRecord::PyDbLayerTableRecord(AcDbLayerTableRecord* ptr, bool autoDelete)
-    :PyDbSymbolTableRecord(ptr, false)
+    : PyDbSymbolTableRecord(ptr, false)
 {
 }
 
@@ -2314,3 +2314,69 @@ AcDbUCSTableRecord* PyDbUCSTableRecord::impObj(const std::source_location& src /
         throw PyNullObject(src);
     return static_cast<AcDbUCSTableRecord*>(m_pyImp.get());
 }
+
+//---------------------------------------------------------------------------------------- -
+// PyDbRegAppTableRecord
+void makePyDbRegAppTableRecordWrapper()
+{
+    class_<PyDbUCSTableRecord, bases<PyDbSymbolTableRecord>>("UCSTableRecord")
+        .def(init<>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("className", &PyDbUCSTableRecord::className).staticmethod("className")
+        .def("desc", &PyDbUCSTableRecord::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbUCSTableRecord::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbUCSTableRecord::cast).staticmethod("cast")
+        ;
+}
+
+PyDbRegAppTableRecord::PyDbRegAppTableRecord()
+    : PyDbSymbolTableRecord(new AcDbRegAppTableRecord(), true)
+{
+}
+
+PyDbRegAppTableRecord::PyDbRegAppTableRecord(AcDbRegAppTableRecord* ptr, bool autoDelete)
+    : PyDbSymbolTableRecord(ptr, autoDelete)
+{
+}
+
+PyDbRegAppTableRecord::PyDbRegAppTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbSymbolTableRecord(nullptr, false)
+{
+    AcDbRegAppTableRecord* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbRegAppTableRecord>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    this->resetImp(pobj, false, true);
+}
+
+std::string PyDbRegAppTableRecord::className()
+{
+    return "AcDbRegAppTableRecord";
+}
+
+PyRxClass PyDbRegAppTableRecord::desc()
+{
+    return PyRxClass(AcDbRegAppTableRecord::desc(), false);
+}
+
+PyDbRegAppTableRecord PyDbRegAppTableRecord::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbRegAppTableRecord::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbRegAppTableRecord(static_cast<AcDbRegAppTableRecord*>(src.impObj()->clone()), true);
+}
+
+PyDbRegAppTableRecord PyDbRegAppTableRecord::cast(const PyRxObject& src)
+{
+    PyDbRegAppTableRecord dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+AcDbRegAppTableRecord* PyDbRegAppTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr)
+        throw PyNullObject(src);
+    return static_cast<AcDbRegAppTableRecord*>(m_pyImp.get());
+}
+
