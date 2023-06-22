@@ -2171,6 +2171,121 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class AnnotationScale:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def className (self, *args, **kwargs)-> str :
+      '''className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def collectionName (self, *args, **kwargs)-> str :
+      '''collectionName( (AnnotationScale)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > collectionName(class PyDbAnnotationScale {lvalue})'''
+    ...
+    def copyFrom (self, *args, **kwargs)-> ErrorStatus :
+      '''copyFrom( (AnnotationScale)arg1, (RxObject)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus copyFrom(class PyDbAnnotationScale {lvalue},class PyRxObject)'''
+    ...
+    def desc (self, *args, **kwargs)-> RxClass :
+      '''desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def getDrawingUnits (self, *args, **kwargs)-> float :
+      '''getDrawingUnits( (AnnotationScale)arg1) -> float :
+
+    C++ signature :
+        double getDrawingUnits(class PyDbAnnotationScale {lvalue})'''
+    ...
+    def getIsTemporaryScale (self, *args, **kwargs)-> bool :
+      '''getIsTemporaryScale( (AnnotationScale)arg1) -> bool :
+
+    C++ signature :
+        bool getIsTemporaryScale(class PyDbAnnotationScale {lvalue})'''
+    ...
+    def getName (self, *args, **kwargs)-> str :
+      '''getName( (AnnotationScale)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbAnnotationScale {lvalue})'''
+    ...
+    def getPaperUnits (self, *args, **kwargs)-> float :
+      '''getPaperUnits( (AnnotationScale)arg1) -> float :
+
+    C++ signature :
+        double getPaperUnits(class PyDbAnnotationScale {lvalue})'''
+    ...
+    def getScale (self, *args, **kwargs)-> float :
+      '''getScale( (AnnotationScale)arg1) -> float :
+
+    C++ signature :
+        double getScale(class PyDbAnnotationScale {lvalue})'''
+    ...
+    def isA (self, *args, **kwargs)-> RxClass :
+      '''isA( (RxObject)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyRxObject {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs)-> bool :
+      '''isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def matchScaleId (self, *args, **kwargs)-> bool :
+      '''matchScaleId( (AnnotationScale)arg1, (int)arg2) -> bool :
+
+    C++ signature :
+        bool matchScaleId(class PyDbAnnotationScale {lvalue},__int64)'''
+    ...
+    def refCount (self, *args, **kwargs)-> int :
+      '''refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
+    def setDrawingUnits (self, *args, **kwargs)-> ErrorStatus :
+      '''setDrawingUnits( (AnnotationScale)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setDrawingUnits(class PyDbAnnotationScale {lvalue},double)'''
+    ...
+    def setName (self, *args, **kwargs)-> ErrorStatus :
+      '''setName( (AnnotationScale)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setName(class PyDbAnnotationScale {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > {lvalue})'''
+    ...
+    def setPaperUnits (self, *args, **kwargs)-> ErrorStatus :
+      '''setPaperUnits( (AnnotationScale)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPaperUnits(class PyDbAnnotationScale {lvalue},double)'''
+    ...
+    def uniqueIdentifier (self, *args, **kwargs)-> int :
+      '''uniqueIdentifier( (AnnotationScale)arg1) -> int :
+
+    C++ signature :
+        __int64 uniqueIdentifier(class PyDbAnnotationScale {lvalue})'''
+    ...
+
 class Arc:
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
@@ -43536,6 +43651,66 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     ...
     def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> ErrorStatus :
       '''                             '''
+    ...
+
+class ObjectContext:
+    def __init__ (self, *args, **kwargs)-> None:
+      '''Raises an exception
+This class cannot be instantiated from Python'''
+    ...
+    def className (self, *args, **kwargs)-> str :
+      '''className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def collectionName (self, *args, **kwargs)-> str :
+      '''collectionName( (ObjectContext)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > collectionName(class PyDbObjectContext {lvalue})'''
+    ...
+    def desc (self, *args, **kwargs)-> RxClass :
+      '''desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def getName (self, *args, **kwargs)-> str :
+      '''getName( (ObjectContext)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbObjectContext {lvalue})'''
+    ...
+    def isA (self, *args, **kwargs)-> RxClass :
+      '''isA( (RxObject)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyRxObject {lvalue})'''
+    ...
+    def isNull (self, *args, **kwargs)-> bool :
+      '''isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs)-> int :
+      '''refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
+    def setName (self, *args, **kwargs)-> ErrorStatus :
+      '''setName( (ObjectContext)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setName(class PyDbObjectContext {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > {lvalue})'''
+    ...
+    def uniqueIdentifier (self, *args, **kwargs)-> int :
+      '''uniqueIdentifier( (ObjectContext)arg1) -> int :
+
+    C++ signature :
+        __int64 uniqueIdentifier(class PyDbObjectContext {lvalue})'''
     ...
 
 class ObjectId:
