@@ -73543,6 +73543,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class AcCmColor ambientLightColor(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
+    def annotationScale (self, *args, **kwargs)-> AnnotationScale :
+      '''annotationScale( (ViewTableRecord)arg1) -> AnnotationScale :
+
+    C++ signature :
+        class PyDbAnnotationScale annotationScale(class PyDbViewTableRecord {lvalue})'''
+    ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
     ...
@@ -73900,6 +73906,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus setAmbientLightColor(class PyDbAbstractViewTableRecord {lvalue},class AcCmColor)'''
     ...
+    def setAnnotationScale (self, *args, **kwargs)-> ErrorStatus :
+      '''setAnnotationScale( (ViewTableRecord)arg1, (AnnotationScale)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setAnnotationScale(class PyDbViewTableRecord {lvalue},class PyDbAnnotationScale)'''
+    ...
     def setBackClipDistance (self, *args, **kwargs)-> None :
       '''setBackClipDistance( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
 
@@ -74210,6 +74222,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class AcCmColor ambientLightColor(class PyDbViewport {lvalue})'''
+    ...
+    def annotationScale (self, *args, **kwargs)-> AnnotationScale :
+      '''annotationScale( (Viewport)arg1) -> AnnotationScale :
+
+    C++ signature :
+        class PyDbAnnotationScale annotationScale(class PyDbViewport {lvalue})'''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
@@ -74921,6 +74939,12 @@ removeHiddenLines( (Viewport)arg1, (bool)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setAmbientLightColor(class PyDbViewport {lvalue},class AcCmColor)'''
+    ...
+    def setAnnotationScale (self, *args, **kwargs)-> ErrorStatus :
+      '''setAnnotationScale( (Viewport)arg1, (AnnotationScale)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setAnnotationScale(class PyDbViewport {lvalue},class PyDbAnnotationScale)'''
     ...
     def setBackClipDistance (self, *args, **kwargs)-> ErrorStatus :
       '''setBackClipDistance( (Viewport)arg1, (float)arg2) -> ErrorStatus :

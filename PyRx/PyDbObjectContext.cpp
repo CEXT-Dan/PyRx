@@ -41,7 +41,7 @@ std::string PyDbObjectContext::getName() const
     return wstr_to_utf8(str);
 }
 
-Acad::ErrorStatus PyDbObjectContext::setName(std::string& name)
+Acad::ErrorStatus PyDbObjectContext::setName(const std::string& name)
 {
     return impObj()->setName(utf8_to_wstr(name).c_str());
 }
@@ -82,14 +82,10 @@ void makePyDbAnnotationScaleWrapper()
     class_<PyDbAnnotationScale, bases<PyDbObjectContext>>("AnnotationScale")
         .def(init<>())
         .def("copyFrom", &PyDbAnnotationScale::copyFrom)
-        .def("collectionName", &PyDbAnnotationScale::collectionName)
-        .def("uniqueIdentifier", &PyDbAnnotationScale::uniqueIdentifier)
-        .def("getName", &PyDbAnnotationScale::getName)
         .def("getPaperUnits", &PyDbAnnotationScale::getPaperUnits)
         .def("getDrawingUnits", &PyDbAnnotationScale::getDrawingUnits)
         .def("getScale", &PyDbAnnotationScale::getScale)
         .def("getIsTemporaryScale", &PyDbAnnotationScale::getIsTemporaryScale)
-        .def("setName", &PyDbAnnotationScale::setName)
         .def("setPaperUnits", &PyDbAnnotationScale::setPaperUnits)
         .def("setDrawingUnits", &PyDbAnnotationScale::setDrawingUnits)
         .def("matchScaleId", &PyDbAnnotationScale::matchScaleId)
@@ -118,24 +114,6 @@ PyDbAnnotationScale::PyDbAnnotationScale(AcDbAnnotationScale* pt, bool autoDelet
 Acad::ErrorStatus PyDbAnnotationScale::copyFrom(const PyRxObject& val)
 {
     return impObj()->copyFrom(val.impObj());
-}
-
-std::string PyDbAnnotationScale::collectionName() const
-{
-    return wstr_to_utf8(impObj()->collectionName());
-}
-
-Adesk::LongPtr PyDbAnnotationScale::uniqueIdentifier() const
-{
-    return impObj()->uniqueIdentifier();
-}
-
-std::string PyDbAnnotationScale::getName() const
-{
-    AcString str;
-    if (auto es = impObj()->getName(str); es != eOk)
-        throw PyAcadErrorStatus(es);
-    return wstr_to_utf8(str);
 }
 
 double PyDbAnnotationScale::getPaperUnits() const
@@ -168,11 +146,6 @@ bool PyDbAnnotationScale::getIsTemporaryScale() const
     if (auto es = impObj()->getIsTemporaryScale(val); es != eOk)
         throw PyAcadErrorStatus(es);
     return val;
-}
-
-Acad::ErrorStatus PyDbAnnotationScale::setName(std::string& val)
-{
-    return impObj()->setName(utf8_to_wstr(val).c_str());
 }
 
 Acad::ErrorStatus PyDbAnnotationScale::setPaperUnits(double val)
