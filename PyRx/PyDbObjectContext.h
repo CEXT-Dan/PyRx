@@ -13,6 +13,7 @@ class PyDbObjectContext : public PyRxObject
 #ifndef ZRXAPP
 public:
     PyDbObjectContext(AcDbObjectContext* pt);
+    PyDbObjectContext(AcDbObjectContext* pt, bool autoDelete, bool isDbOject);
     virtual ~PyDbObjectContext() = default;
     std::string           getName() const;
     Acad::ErrorStatus     setName(std::string& name);
@@ -34,10 +35,10 @@ class PyDbAnnotationScale : public PyDbObjectContext
 {
 #ifndef ZRXAPP
 public:
-    PyDbAnnotationScale();
+    PyDbAnnotationScale();//TODO: TEST!
     PyDbAnnotationScale(AcDbAnnotationScale* pt);
+    PyDbAnnotationScale(AcDbAnnotationScale* pt, bool autoDelete, bool isDbOject);
     virtual ~PyDbAnnotationScale() = default;
-
     Acad::ErrorStatus   copyFrom(const PyRxObject& val);
     std::string         collectionName() const;
     Adesk::LongPtr      uniqueIdentifier() const;

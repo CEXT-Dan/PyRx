@@ -28,6 +28,11 @@ PyDbObjectContext::PyDbObjectContext(AcDbObjectContext* pt)
 {
 }
 
+PyDbObjectContext::PyDbObjectContext(AcDbObjectContext* pt, bool autoDelete, bool isDbOject)
+    : PyRxObject(pt, autoDelete, isDbOject)
+{
+}
+
 std::string PyDbObjectContext::getName() const
 {
     AcString str;
@@ -96,12 +101,17 @@ void makePyDbAnnotationScaleWrapper()
 
 #ifndef ZRXAPP
 PyDbAnnotationScale::PyDbAnnotationScale()
-    : PyDbObjectContext(new AcDbAnnotationScale())
+    : PyDbObjectContext(new AcDbAnnotationScale(), true, false)
 {
 }
 
 PyDbAnnotationScale::PyDbAnnotationScale(AcDbAnnotationScale* pt)
     : PyDbObjectContext(pt)
+{
+}
+
+PyDbAnnotationScale::PyDbAnnotationScale(AcDbAnnotationScale* pt, bool autoDelete, bool isDbOject)
+    : PyDbObjectContext(pt, autoDelete, isDbOject)
 {
 }
 
