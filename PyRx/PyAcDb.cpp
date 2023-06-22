@@ -28,7 +28,6 @@
 #include "PyDbTransactionManager.h"
 #include "PyDbEval.h"
 #include "PyDbLayout.h"
-#include "PyDbLayoutManager.h"
 #include "PyDbViewport.h"
 
 using namespace boost::python;
