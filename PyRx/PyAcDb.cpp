@@ -147,6 +147,8 @@ BOOST_PYTHON_MODULE(PyDb)
     makeTextStyleTableRecordWrapper();
     makePyDbUCSTableRecordWrapper();
     makePyDbRegAppTableRecordWrapper();
+    makePyDbLinetypeTableRecordWrapper();
+    makePyDbLinetypeTableRecordWrapper();
     makeAcDbDatabaseWrapper();
     makeAcDbHostApplicationServicesWrapper();
 
