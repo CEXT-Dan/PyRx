@@ -253,6 +253,9 @@
     <ClCompile Include="PyApLayoutManager.cpp">
       <Filter>Source Files\PyAp</Filter>
     </ClCompile>
+    <ClCompile Include="PyDbObjectContext.cpp">
+      <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -509,6 +512,9 @@
     </ClInclude>
     <ClInclude Include="PyApLayoutManager.h">
       <Filter>Header Files\PyAp</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbObjectContext.h">
+      <Filter>Header Files\PyDb</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

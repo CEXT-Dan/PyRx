@@ -29,6 +29,8 @@
 #include "PyDbEval.h"
 #include "PyDbLayout.h"
 #include "PyDbViewport.h"
+#include "PyDbObjectContext.h"
+
 
 using namespace boost::python;
 
@@ -92,6 +94,8 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbBlockEndWrapper();
     makeAcDbSequenceEndWrapper();
     makePyDbXrecordWrapper();
+
+    makePyDbObjectContextWrapper();
 
     makeAcDbTableStyleWrapper();
     makePyDbMLeaderStyleWrapper();
