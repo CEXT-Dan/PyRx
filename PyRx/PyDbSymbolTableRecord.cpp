@@ -1243,7 +1243,8 @@ AcDbViewTableRecord* PyDbViewTableRecord::impObj(const std::source_location& src
 //PyDbBlockTableRecord wrapper
 void makeAcDbBlockTableRecordWrapper()
 {
-    class_<PyDbBlockTableRecord, bases<PyDbSymbolTableRecord>>("BlockTableRecord", boost::python::no_init)
+    class_<PyDbBlockTableRecord, bases<PyDbSymbolTableRecord>>("BlockTableRecord")
+        .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("appendAcDbEntity", &PyDbBlockTableRecord::appendAcDbEntity)
         .def("objectIds", &PyDbBlockTableRecord::objectIds)
@@ -1288,6 +1289,11 @@ void makeAcDbBlockTableRecordWrapper()
 
 //---------------------------------------------------------------------------------------- -
 //PyDbBlockTableRecord
+PyDbBlockTableRecord::PyDbBlockTableRecord()
+    : PyDbSymbolTableRecord(new AcDbBlockTableRecord(), true)
+{
+}
+
 PyDbBlockTableRecord::PyDbBlockTableRecord(AcDbBlockTableRecord* ptr, bool autoDelete)
     : PyDbSymbolTableRecord(ptr, autoDelete)
 {
@@ -1581,7 +1587,8 @@ AcDbBlockTableRecord* PyDbBlockTableRecord::impObj(const std::source_location& s
 //AcDbLayerTableRecord wrapper
 void makeAcDbLayerTableRecordWrapper()
 {
-    class_<PyDbLayerTableRecord, bases<PyDbSymbolTableRecord>>("LayerTableRecord", boost::python::no_init)
+    class_<PyDbLayerTableRecord, bases<PyDbSymbolTableRecord>>("LayerTableRecord")
+        .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("isFrozen", &PyDbLayerTableRecord::isFrozen)
         .def("setIsFrozen", &PyDbLayerTableRecord::setIsFrozen)
@@ -1645,7 +1652,12 @@ void makeAcDbLayerTableRecordWrapper()
 
 //---------------------------------------------------------------------------------------- -
 //AcDbLayerTableRecord wrapper
-PyDbLayerTableRecord::PyDbLayerTableRecord(AcDbSymbolTableRecord* ptr, bool autoDelete)
+PyDbLayerTableRecord::PyDbLayerTableRecord()
+    :PyDbSymbolTableRecord(new AcDbLayerTableRecord(), true)
+{
+}
+
+PyDbLayerTableRecord::PyDbLayerTableRecord(AcDbLayerTableRecord* ptr, bool autoDelete)
     :PyDbSymbolTableRecord(ptr, false)
 {
 }
@@ -1971,7 +1983,8 @@ AcDbLayerTableRecord* PyDbLayerTableRecord::impObj(const std::source_location& s
 // PyDbTextStyleTableRecord
 void makeTextStyleTableRecordWrapper()
 {
-    class_<PyDbTextStyleTableRecord, bases<PyDbSymbolTableRecord>>("TextStyleTableRecord", boost::python::no_init)
+    class_<PyDbTextStyleTableRecord, bases<PyDbSymbolTableRecord>>("TextStyleTableRecord")
+        .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("isShapeFile", &PyDbTextStyleTableRecord::isShapeFile)
         .def("setIsShapeFile", &PyDbTextStyleTableRecord::setIsShapeFile)
@@ -1998,6 +2011,11 @@ void makeTextStyleTableRecordWrapper()
         .def("cloneFrom", &PyDbTextStyleTableRecord::cloneFrom).staticmethod("cloneFrom")
         .def("cast", &PyDbTextStyleTableRecord::cast).staticmethod("cast")
         ;
+}
+
+PyDbTextStyleTableRecord::PyDbTextStyleTableRecord()
+    : PyDbSymbolTableRecord(new AcDbTextStyleTableRecord(), true)
+{
 }
 
 PyDbTextStyleTableRecord::PyDbTextStyleTableRecord(AcDbTextStyleTableRecord* ptr, bool autoDelete)
@@ -2176,3 +2194,123 @@ AcDbTextStyleTableRecord* PyDbTextStyleTableRecord::impObj(const std::source_loc
     return static_cast<AcDbTextStyleTableRecord*>(m_pyImp.get());
 }
 
+//---------------------------------------------------------------------------------------- -
+// PyDbUCSTableRecord
+void makePyDbUCSTableRecordWrapper()
+{
+    class_<PyDbUCSTableRecord, bases<PyDbSymbolTableRecord>>("UCSTableRecord")
+        .def(init<>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("origin", &PyDbUCSTableRecord::origin)
+        .def("setOrigin", &PyDbUCSTableRecord::setOrigin)
+        .def("xAxis", &PyDbUCSTableRecord::xAxis)
+        .def("setXAxis", &PyDbUCSTableRecord::setXAxis)
+        .def("yAxis", &PyDbUCSTableRecord::yAxis)
+        .def("setYAxis", &PyDbUCSTableRecord::setYAxis)
+        .def("ucsBaseOrigin", &PyDbUCSTableRecord::ucsBaseOrigin)
+        .def("setUcsBaseOrigin", &PyDbUCSTableRecord::setUcsBaseOrigin)
+        .def("className", &PyDbUCSTableRecord::className).staticmethod("className")
+        .def("desc", &PyDbUCSTableRecord::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbUCSTableRecord::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbUCSTableRecord::cast).staticmethod("cast")
+        ;
+}
+
+PyDbUCSTableRecord::PyDbUCSTableRecord()
+    : PyDbSymbolTableRecord(new AcDbUCSTableRecord(), true)
+{
+}
+
+PyDbUCSTableRecord::PyDbUCSTableRecord(AcDbUCSTableRecord* ptr, bool autoDelete)
+    : PyDbSymbolTableRecord(ptr, autoDelete)
+{
+}
+
+PyDbUCSTableRecord::PyDbUCSTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbSymbolTableRecord(nullptr, false)
+{
+    AcDbUCSTableRecord* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbUCSTableRecord>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    this->resetImp(pobj, false, true);
+}
+
+AcGePoint3d PyDbUCSTableRecord::origin() const
+{
+    return impObj()->origin();
+}
+
+void PyDbUCSTableRecord::setOrigin(const AcGePoint3d& newOrigin)
+{
+    return impObj()->setOrigin(newOrigin);
+}
+
+AcGeVector3d PyDbUCSTableRecord::xAxis() const
+{
+    return impObj()->xAxis();
+}
+
+void PyDbUCSTableRecord::setXAxis(const AcGeVector3d& xAxis)
+{
+    return impObj()->setXAxis(xAxis);
+}
+
+AcGeVector3d PyDbUCSTableRecord::yAxis() const
+{
+    return impObj()->yAxis();
+}
+
+void PyDbUCSTableRecord::setYAxis(const AcGeVector3d& yAxis)
+{
+    return impObj()->setXAxis(yAxis);
+}
+
+AcGePoint3d PyDbUCSTableRecord::ucsBaseOrigin(AcDb::OrthographicView view) const
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->ucsBaseOrigin(view);
+#endif
+}
+
+Acad::ErrorStatus PyDbUCSTableRecord::setUcsBaseOrigin(const AcGePoint3d& origin, AcDb::OrthographicView view)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setUcsBaseOrigin(origin, view);
+#endif
+}
+
+std::string PyDbUCSTableRecord::className()
+{
+    return "AcDbUCSTableRecord";
+}
+
+PyRxClass PyDbUCSTableRecord::desc()
+{
+    return PyRxClass(AcDbUCSTableRecord::desc(), false);
+}
+
+PyDbUCSTableRecord PyDbUCSTableRecord::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbUCSTableRecord::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbUCSTableRecord(static_cast<AcDbUCSTableRecord*>(src.impObj()->clone()), true);
+}
+
+PyDbUCSTableRecord PyDbUCSTableRecord::cast(const PyRxObject& src)
+{
+    PyDbUCSTableRecord dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+AcDbUCSTableRecord* PyDbUCSTableRecord::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr)
+        throw PyNullObject(src);
+    return static_cast<AcDbUCSTableRecord*>(m_pyImp.get());
+}
