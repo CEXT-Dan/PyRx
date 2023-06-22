@@ -410,7 +410,6 @@ public:
     AcDbTextStyleTableRecord* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
-
 //---------------------------------------------------------------------------------------- -
 // PyDbUCSTableRecord
 void makePyDbUCSTableRecordWrapper();
@@ -422,7 +421,6 @@ public:
     PyDbUCSTableRecord(AcDbUCSTableRecord* ptr, bool autoDelete);
     PyDbUCSTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbUCSTableRecord() override = default;
-
     AcGePoint3d         origin() const;
     void                setOrigin(const AcGePoint3d& newOrigin);
     AcGeVector3d        xAxis() const;
@@ -431,7 +429,6 @@ public:
     void                setYAxis(const AcGeVector3d& yAxis);
     AcGePoint3d         ucsBaseOrigin(AcDb::OrthographicView view) const;
     Acad::ErrorStatus   setUcsBaseOrigin(const AcGePoint3d& origin, AcDb::OrthographicView view);
-  
 public:
     static std::string  className();
     static PyRxClass    desc();
@@ -439,4 +436,24 @@ public:
     static PyDbUCSTableRecord cast(const PyRxObject& src);
 public:
     AcDbUCSTableRecord* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//---------------------------------------------------------------------------------------- -
+// PyDbRegAppTableRecord
+void makePyDbRegAppTableRecordWrapper();
+
+class PyDbRegAppTableRecord : public PyDbSymbolTableRecord
+{
+public:
+    PyDbRegAppTableRecord();
+    PyDbRegAppTableRecord(AcDbRegAppTableRecord* ptr, bool autoDelete);
+    PyDbRegAppTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbRegAppTableRecord() override = default;
+public:
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyDbRegAppTableRecord cloneFrom(const PyRxObject& src);
+    static PyDbRegAppTableRecord cast(const PyRxObject& src);
+public:
+    AcDbRegAppTableRecord* impObj(const std::source_location& src = std::source_location::current()) const;
 };
