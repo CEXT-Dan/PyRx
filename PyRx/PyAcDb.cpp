@@ -95,7 +95,10 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbSequenceEndWrapper();
     makePyDbXrecordWrapper();
 
+#ifndef ZRXAPP
     makePyDbObjectContextWrapper();
+    makePyDbAnnotationScaleWrapper();
+#endif
 
     makeAcDbTableStyleWrapper();
     makePyDbMLeaderStyleWrapper();
