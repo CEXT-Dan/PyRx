@@ -469,6 +469,33 @@ public:
     PyDbLinetypeTableRecord(AcDbLinetypeTableRecord* ptr, bool autoDelete);
     PyDbLinetypeTableRecord(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbLinetypeTableRecord() override = default;
+    std::string         comments() const;
+    Acad::ErrorStatus   setComments(const std::string& pstring);
+    double              patternLength() const;
+    Acad::ErrorStatus   setPatternLength(double patternLength);
+    int                 numDashes() const;
+    Acad::ErrorStatus   setNumDashes(int count);
+    double              dashLengthAt(int index) const;
+    Acad::ErrorStatus   setDashLengthAt(int index, double value);
+    PyDbObjectId        shapeStyleAt(int index) const;
+    Acad::ErrorStatus   setShapeStyleAt(int index, PyDbObjectId& id);
+    int                 shapeNumberAt(int index) const;
+    Acad::ErrorStatus   setShapeNumberAt(int index, int shapeNumber);
+    AcGeVector2d        shapeOffsetAt(int index) const;
+    Acad::ErrorStatus   setShapeOffsetAt(int index, const AcGeVector2d& offset);
+    double              shapeScaleAt(int index) const;
+    Acad::ErrorStatus   setShapeScaleAt(int index, double scale);
+    bool                isScaledToFit() const;
+    void                setIsScaledToFit(bool scaledToFit);
+    bool                shapeIsUcsOrientedAt(int index) const;
+    Acad::ErrorStatus   setShapeIsUcsOrientedAt(int index, bool isUcsOriented);
+    bool                shapeIsUprightAt(int index) const;
+    Acad::ErrorStatus   setShapeIsUprightAt(int index, bool isUpright);
+    double              shapeRotationAt(int index) const;
+    Acad::ErrorStatus   setShapeRotationAt(int index, double rotation);
+    std::string         textAt(int index);
+    Acad::ErrorStatus   setTextAt(int index, const std::string& pstring);
+
 public:
     static std::string  className();
     static PyRxClass    desc();

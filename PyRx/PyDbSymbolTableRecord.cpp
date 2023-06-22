@@ -2387,6 +2387,32 @@ void makePyDbLinetypeTableRecordWrapper()
     class_<PyDbLinetypeTableRecord, bases<PyDbSymbolTableRecord>>("LinetypeTableRecord")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("comments", &PyDbLinetypeTableRecord::comments)
+        .def("setComments", &PyDbLinetypeTableRecord::setComments)
+        .def("patternLength", &PyDbLinetypeTableRecord::patternLength)
+        .def("setPatternLength", &PyDbLinetypeTableRecord::setPatternLength)
+        .def("numDashes", &PyDbLinetypeTableRecord::numDashes)
+        .def("setNumDashes", &PyDbLinetypeTableRecord::setNumDashes)
+        .def("dashLengthAt", &PyDbLinetypeTableRecord::dashLengthAt)
+        .def("setDashLengthAt", &PyDbLinetypeTableRecord::setDashLengthAt)
+        .def("shapeStyleAt", &PyDbLinetypeTableRecord::shapeStyleAt)
+        .def("setShapeStyleAt", &PyDbLinetypeTableRecord::setShapeStyleAt)
+        .def("shapeNumberAt", &PyDbLinetypeTableRecord::shapeNumberAt)
+        .def("setShapeNumberAt", &PyDbLinetypeTableRecord::setShapeNumberAt)
+        .def("shapeOffsetAt", &PyDbLinetypeTableRecord::shapeOffsetAt)
+        .def("setShapeOffsetAt", &PyDbLinetypeTableRecord::setShapeOffsetAt)
+        .def("shapeScaleAt", &PyDbLinetypeTableRecord::shapeScaleAt)
+        .def("setShapeScaleAt", &PyDbLinetypeTableRecord::setShapeScaleAt)
+        .def("isScaledToFit", &PyDbLinetypeTableRecord::isScaledToFit)
+        .def("setIsScaledToFit", &PyDbLinetypeTableRecord::setIsScaledToFit)
+        .def("shapeIsUcsOrientedAt", &PyDbLinetypeTableRecord::shapeIsUcsOrientedAt)
+        .def("setShapeIsUcsOrientedAt", &PyDbLinetypeTableRecord::setShapeIsUcsOrientedAt)
+        .def("shapeIsUprightAt", &PyDbLinetypeTableRecord::shapeIsUprightAt)
+        .def("setShapeIsUprightAt", &PyDbLinetypeTableRecord::setShapeIsUprightAt)
+        .def("shapeRotationAt", &PyDbLinetypeTableRecord::shapeRotationAt)
+        .def("setShapeRotationAt", &PyDbLinetypeTableRecord::setShapeRotationAt)
+        .def("textAt", &PyDbLinetypeTableRecord::textAt)
+        .def("setTextAt", &PyDbLinetypeTableRecord::setTextAt)
         .def("className", &PyDbLinetypeTableRecord::className).staticmethod("className")
         .def("desc", &PyDbLinetypeTableRecord::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbLinetypeTableRecord::cloneFrom).staticmethod("cloneFrom")
@@ -2411,6 +2437,142 @@ PyDbLinetypeTableRecord::PyDbLinetypeTableRecord(const PyDbObjectId& id, AcDb::O
     if (auto es = acdbOpenObject<AcDbLinetypeTableRecord>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+std::string PyDbLinetypeTableRecord::comments() const
+{
+    const wchar_t* val = nullptr;
+    if (auto es = impObj()->comments(val); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return wstr_to_utf8(val);
+}
+
+Acad::ErrorStatus PyDbLinetypeTableRecord::setComments(const std::string& pstring)
+{
+    return impObj()->setComments(utf8_to_wstr(pstring).c_str());
+}
+
+double PyDbLinetypeTableRecord::patternLength() const
+{
+    return impObj()->patternLength();
+}
+
+Acad::ErrorStatus PyDbLinetypeTableRecord::setPatternLength(double patternLength)
+{
+    return impObj()->setPatternLength(patternLength);
+}
+
+int PyDbLinetypeTableRecord::numDashes() const
+{
+    return impObj()->numDashes();
+}
+
+Acad::ErrorStatus PyDbLinetypeTableRecord::setNumDashes(int count)
+{
+    return impObj()->setNumDashes(count);
+}
+
+double PyDbLinetypeTableRecord::dashLengthAt(int index) const
+{
+    return impObj()->dashLengthAt(index);
+}
+
+Acad::ErrorStatus PyDbLinetypeTableRecord::setDashLengthAt(int index, double value)
+{
+    return impObj()->setDashLengthAt(index, value);
+}
+
+PyDbObjectId PyDbLinetypeTableRecord::shapeStyleAt(int index) const
+{
+    return PyDbObjectId(impObj()->shapeStyleAt(index));
+}
+
+Acad::ErrorStatus PyDbLinetypeTableRecord::setShapeStyleAt(int index, PyDbObjectId& id)
+{
+    return impObj()->setShapeStyleAt(index, id.m_id);
+}
+
+int PyDbLinetypeTableRecord::shapeNumberAt(int index) const
+{
+    return impObj()->shapeNumberAt(index);
+}
+
+Acad::ErrorStatus PyDbLinetypeTableRecord::setShapeNumberAt(int index, int shapeNumber)
+{
+    return impObj()->setShapeNumberAt(index, shapeNumber);
+}
+
+AcGeVector2d PyDbLinetypeTableRecord::shapeOffsetAt(int index) const
+{
+    return impObj()->shapeOffsetAt(index);
+}
+
+Acad::ErrorStatus PyDbLinetypeTableRecord::setShapeOffsetAt(int index, const AcGeVector2d& offset)
+{
+    return impObj()->setShapeOffsetAt(index, offset);
+}
+
+double PyDbLinetypeTableRecord::shapeScaleAt(int index) const
+{
+    return impObj()->shapeScaleAt(index);
+}
+
+Acad::ErrorStatus PyDbLinetypeTableRecord::setShapeScaleAt(int index, double scale)
+{
+    return impObj()->setShapeScaleAt(index, scale);
+}
+
+bool PyDbLinetypeTableRecord::isScaledToFit() const
+{
+    return impObj()->isScaledToFit();
+}
+
+void PyDbLinetypeTableRecord::setIsScaledToFit(bool scaledToFit)
+{
+    return impObj()->setIsScaledToFit(scaledToFit);
+}
+
+bool PyDbLinetypeTableRecord::shapeIsUcsOrientedAt(int index) const
+{
+    return impObj()->shapeIsUcsOrientedAt(index);
+}
+
+Acad::ErrorStatus PyDbLinetypeTableRecord::setShapeIsUcsOrientedAt(int index, bool isUcsOriented)
+{
+    return impObj()->setShapeIsUcsOrientedAt(index, isUcsOriented);
+}
+
+bool PyDbLinetypeTableRecord::shapeIsUprightAt(int index) const
+{
+    return impObj()->shapeIsUprightAt(index);
+}
+
+Acad::ErrorStatus PyDbLinetypeTableRecord::setShapeIsUprightAt(int index, bool isUpright)
+{
+    return impObj()->setShapeIsUprightAt(index, isUpright);
+}
+
+double PyDbLinetypeTableRecord::shapeRotationAt(int index) const
+{
+    return impObj()->shapeRotationAt(index);
+}
+
+Acad::ErrorStatus PyDbLinetypeTableRecord::setShapeRotationAt(int index, double rotation)
+{
+    return impObj()->setShapeRotationAt(index, rotation);
+}
+
+std::string PyDbLinetypeTableRecord::textAt(int index)
+{
+    const wchar_t* val = nullptr;
+    if (auto es = impObj()->textAt(index, val); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return wstr_to_utf8(val);
+}
+
+Acad::ErrorStatus PyDbLinetypeTableRecord::setTextAt(int index, const std::string& pstring)
+{
+    return impObj()->setTextAt(index, utf8_to_wstr(pstring).c_str());
 }
 
 std::string PyDbLinetypeTableRecord::className()
