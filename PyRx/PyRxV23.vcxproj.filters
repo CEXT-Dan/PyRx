@@ -250,9 +250,6 @@
     <ClCompile Include="PyDbLayout.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
-    <ClCompile Include="PyDbLayoutManager.cpp">
-      <Filter>Source Files\PyDb</Filter>
-    </ClCompile>
     <ClCompile Include="PyApLayoutManager.cpp">
       <Filter>Source Files\PyAp</Filter>
     </ClCompile>
@@ -508,9 +505,6 @@
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
     <ClInclude Include="PyDbLayout.h">
-      <Filter>Header Files\PyDb</Filter>
-    </ClInclude>
-    <ClInclude Include="PyDbLayoutManager.h">
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
     <ClInclude Include="PyApLayoutManager.h">

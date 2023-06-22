@@ -6,11 +6,8 @@ class PyDbObjectId;
 class PyDbDimStyleTableRecord;
 class PyDbBlockTableRecord;
 
-//AcDbAbstractViewTable
-//AcDbLayerTable
 //AcDbLinetypeTable
 //AcDbRegAppTable
-//AcDbTextStyleTable
 //AcDbUCSTable
 
 //---------------------------------------------------------------------------------------- -
@@ -36,7 +33,6 @@ public:
 public:
     AcDbSymbolTable* impObj(const std::source_location& src = std::source_location::current()) const;
 };
-
 
 //---------------------------------------------------------------------------------------- -
 //AcDbDimStyleTable

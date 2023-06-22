@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "PyDbHostApplicationServices.h"
 #include "PyDbDatabase.h"
-#include "PyDbLayoutManager.h"
+#include "PyDbLayout.h"
 
 using namespace boost::python;
 
