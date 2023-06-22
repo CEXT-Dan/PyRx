@@ -3,6 +3,7 @@
 
 class PyDbObjectId;
 class PyDbXrefObjectId;
+class PyDbAnnotationScale;
 
 void makePyDbViewportWrapper();
 
@@ -153,8 +154,8 @@ public:
     Acad::ErrorStatus   setLocked1();
     Acad::ErrorStatus   setUnlocked();
     Acad::ErrorStatus   setLocked2(bool val);
-    //Acad::ErrorStatus setAnnotationScale(const AcDbAnnotationScale* pScaleObj);
-    //AcDbAnnotationScale* annotationScale() const;
+    PyDbAnnotationScale annotationScale() const;
+    Acad::ErrorStatus   setAnnotationScale(const PyDbAnnotationScale& pScaleObj);
     bool                isTransparent() const;
     Acad::ErrorStatus   setTransparent1();
     Acad::ErrorStatus   setOpaque();

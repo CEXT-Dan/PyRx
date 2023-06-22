@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PyDbViewport.h"
 #include "PyDbObjectId.h"
+#include "PyDbObjectContext.h"
 
 using namespace boost::python;
 
@@ -1217,6 +1218,24 @@ Acad::ErrorStatus PyDbViewport::setLocked2(bool val)
     throw PyNotimplementedByHost();
 #else
     return impObj()->setLocked(val);
+#endif
+}
+
+PyDbAnnotationScale PyDbViewport::annotationScale() const
+{
+#ifdef ZRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return PyDbAnnotationScale(impObj()->annotationScale());
+#endif
+}
+
+Acad::ErrorStatus PyDbViewport::setAnnotationScale(const PyDbAnnotationScale& pScaleObj)
+{
+#ifdef ZRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setAnnotationScale(pScaleObj.impObj());
 #endif
 }
 
