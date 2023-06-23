@@ -2319,13 +2319,13 @@ AcDbUCSTableRecord* PyDbUCSTableRecord::impObj(const std::source_location& src /
 // PyDbRegAppTableRecord
 void makePyDbRegAppTableRecordWrapper()
 {
-    class_<PyDbUCSTableRecord, bases<PyDbSymbolTableRecord>>("UCSTableRecord")
+    class_<PyDbRegAppTableRecord, bases<PyDbSymbolTableRecord>>("RegAppTableRecord")
         .def(init<>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("className", &PyDbUCSTableRecord::className).staticmethod("className")
-        .def("desc", &PyDbUCSTableRecord::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbUCSTableRecord::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbUCSTableRecord::cast).staticmethod("cast")
+        .def("className", &PyDbRegAppTableRecord::className).staticmethod("className")
+        .def("desc", &PyDbRegAppTableRecord::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbRegAppTableRecord::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbRegAppTableRecord::cast).staticmethod("cast")
         ;
 }
 
