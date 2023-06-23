@@ -197,7 +197,7 @@ std::string PyDbText::textString() const
     return wstr_to_utf8(impObj()->textStringConst());
 }
 
-Acad::ErrorStatus PyDbText::setTextString(std::string& val)
+Acad::ErrorStatus PyDbText::setTextString(const std::string& val)
 {
     return impObj()->setTextString(utf8_to_wstr(val).c_str());
 }
