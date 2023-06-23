@@ -1,5 +1,6 @@
 import os
 import unittest
+import math
 
 import PyRxApp
 import PyRx as Rx
@@ -40,6 +41,15 @@ class TestDbEntity(unittest.TestCase):
         line.setStartPoint(Ge.Point3d(1, 11, 0))
         self.assertEqual(line.startPoint(), Ge.Point3d(1, 11, 0))
         
+    def test_dbarc(self):
+        arc = Db.Arc(Ge.Point3d(0, 0, 0), 20, 0, math.pi)
+        self.assertEqual(arc.startAngle(), 0)
+        self.assertEqual(arc.endAngle(),  math.pi)
+        self.assertEqual(arc.totalAngle(),  math.pi)
+        #curve
+        self.assertEqual(arc.getStartPoint(),  Ge.Point3d(20, 0, 0))
+        self.assertEqual(arc.getEndPoint(),  Ge.Point3d(-20, 0, 0))
+
     def test_dbtext(self):
         db = Db.curDb()
         text = Db.Text()
@@ -51,19 +61,8 @@ class TestDbEntity(unittest.TestCase):
         text.setTextStyle(db.textstyle())
         text.setJustification(Db.TextAlignment.kTextAlignmentMiddleCenter)
         self.assertEqual(text.justification(),Db.TextAlignment.kTextAlignmentMiddleCenter)
-        
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
         model.appendAcDbEntity(text)
-        
-        
-        
-       
-        
-        
-
-        
-    
-
         
 def PyRxCmd_pyentity():
     try:
