@@ -965,6 +965,12 @@ ssget( (str)arg1, (object)arg2, (object)arg3, (list)arg4) -> tuple :
     C++ signature :
         class boost::python::tuple ssget(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::api::object,class boost::python::api::object,class boost::python::list)'''
     ...
+    def traceBoundary (self, *args, **kwargs)-> list :
+      '''traceBoundary( (Point3d)arg1, (bool)arg2) -> list :
+
+    C++ signature :
+        class boost::python::list traceBoundary(class AcGePoint3d,bool)'''
+    ...
 
 class EditorReactor:
     def __init__ (self, *args, **kwargs)-> None :

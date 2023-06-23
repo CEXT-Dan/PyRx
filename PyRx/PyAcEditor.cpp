@@ -4,6 +4,7 @@
 #include "ResultBuffer.h"
 #include "acedCmdNF.h"
 #include "PyEdSelectionSet.h"
+#include "PyDbEntity.h"
 
 using namespace boost::python;
 
@@ -104,6 +105,7 @@ void makeAcEditorWrapper()
         .def("getKword", &PyAcEditor::getKword).staticmethod("getKword")
         .def("getVar", &PyAcEditor::getVar).staticmethod("getVar")
         .def("setVar", &PyAcEditor::setVar).staticmethod("setVar")
+        .def("traceBoundary", &PyAcEditor::traceBoundary).staticmethod("traceBoundary")
         ;
 }
 
@@ -505,6 +507,18 @@ bool PyAcEditor::setVar(const std::string& sym, const  boost::python::object& sr
         acutPrintf(_T("\nExeption @ %ls"), __FUNCTIONW__);
     }
     return false;
+}
+
+boost::python::list PyAcEditor::traceBoundary(const AcGePoint3d& seedPoint, bool detectIslands)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    AcDbVoidPtrArray resultingBoundarySet;
+    if (auto es = acedTraceBoundary(seedPoint, detectIslands, resultingBoundarySet); es != eOk)
+        throw PyAcadErrorStatus(es);
+    for (auto ptr : resultingBoundarySet)
+        pyList.append(PyDbEntity(static_cast<AcDbEntity*>(ptr), true));
+    return pyList;
 }
 
 std::string PyAcEditor::className()
