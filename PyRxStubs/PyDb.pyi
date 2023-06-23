@@ -4886,6 +4886,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
+    def justification (self, *args, **kwargs)-> TextAlignment :
+      '''justification( (Text)arg1) -> TextAlignment :
+
+    C++ signature :
+        enum AcDbText::AcTextAlignment justification(class PyDbText {lvalue})'''
+    ...
     def layer (self, *args, **kwargs)-> str :
       '''layer( (Entity)arg1) -> str :
 
@@ -5115,6 +5121,12 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
     C++ signature :
         enum Acad::ErrorStatus setInvisible(class PyDbAttributeDefinition {lvalue},bool)'''
     ...
+    def setJustification (self, *args, **kwargs)-> ErrorStatus :
+      '''setJustification( (Text)arg1, (TextAlignment)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setJustification(class PyDbText {lvalue},enum AcDbText::AcTextAlignment)'''
+    ...
     def setLayer (self, *args, **kwargs)-> ErrorStatus :
       '''setLayer( (Entity)arg1, (str)arg2) -> ErrorStatus :
 
@@ -5304,7 +5316,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> ErrorStatus :
       '''setTextString( (Text)arg1, (str)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus setTextString(class PyDbText {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > {lvalue})'''
+        enum Acad::ErrorStatus setTextString(class PyDbText {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def setTextStyle (self, *args, **kwargs)-> ErrorStatus :
       '''setTextStyle( (Text)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -5802,6 +5814,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
+    def justification (self, *args, **kwargs)-> TextAlignment :
+      '''justification( (Text)arg1) -> TextAlignment :
+
+    C++ signature :
+        enum AcDbText::AcTextAlignment justification(class PyDbText {lvalue})'''
+    ...
     def layer (self, *args, **kwargs)-> str :
       '''layer( (Entity)arg1) -> str :
 
@@ -6030,6 +6048,12 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
     C++ signature :
         enum Acad::ErrorStatus setInvisible(class PyDbAttribute {lvalue},bool)'''
     ...
+    def setJustification (self, *args, **kwargs)-> ErrorStatus :
+      '''setJustification( (Text)arg1, (TextAlignment)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setJustification(class PyDbText {lvalue},enum AcDbText::AcTextAlignment)'''
+    ...
     def setLayer (self, *args, **kwargs)-> ErrorStatus :
       '''setLayer( (Entity)arg1, (str)arg2) -> ErrorStatus :
 
@@ -6207,7 +6231,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> ErrorStatus :
       '''setTextString( (Text)arg1, (str)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus setTextString(class PyDbText {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > {lvalue})'''
+        enum Acad::ErrorStatus setTextString(class PyDbText {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def setTextStyle (self, *args, **kwargs)-> ErrorStatus :
       '''setTextStyle( (Text)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -69784,6 +69808,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
+    def justification (self, *args, **kwargs)-> TextAlignment :
+      '''justification( (Text)arg1) -> TextAlignment :
+
+    C++ signature :
+        enum AcDbText::AcTextAlignment justification(class PyDbText {lvalue})'''
+    ...
     def layer (self, *args, **kwargs)-> str :
       '''layer( (Entity)arg1) -> str :
 
@@ -69983,6 +70013,12 @@ setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
     C++ signature :
         enum Acad::ErrorStatus setHorizontalMode(class PyDbText {lvalue},enum AcDb::TextHorzMode)'''
     ...
+    def setJustification (self, *args, **kwargs)-> ErrorStatus :
+      '''setJustification( (Text)arg1, (TextAlignment)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setJustification(class PyDbText {lvalue},enum AcDbText::AcTextAlignment)'''
+    ...
     def setLayer (self, *args, **kwargs)-> ErrorStatus :
       '''setLayer( (Entity)arg1, (str)arg2) -> ErrorStatus :
 
@@ -70142,7 +70178,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> ErrorStatus :
       '''setTextString( (Text)arg1, (str)arg2) -> ErrorStatus :
 
     C++ signature :
-        enum Acad::ErrorStatus setTextString(class PyDbText {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > {lvalue})'''
+        enum Acad::ErrorStatus setTextString(class PyDbText {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def setTextStyle (self, *args, **kwargs)-> ErrorStatus :
       '''setTextStyle( (Text)arg1, (ObjectId)arg2) -> ErrorStatus :

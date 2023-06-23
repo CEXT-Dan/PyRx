@@ -79,8 +79,8 @@ public:
     virtual ~PyDbAttributeDefinition() override = default;
     std::string         prompt() const;
     Acad::ErrorStatus   setPrompt(const std::string& val);
-    std::string          tag() const;
-    Acad::ErrorStatus    setTag(const std::string& val);
+    std::string         tag() const;
+    Acad::ErrorStatus   setTag(const std::string& val);
     Adesk::Boolean      isInvisible() const;
     Acad::ErrorStatus   setInvisible(Adesk::Boolean val);
     Adesk::Boolean      isConstant() const;
@@ -99,6 +99,8 @@ public:
     Acad::ErrorStatus   setMTextAttributeDefinition(const PyDbMText& mt);
     Acad::ErrorStatus   convertIntoMTextAttributeDefinition(Adesk::Boolean val);
     Acad::ErrorStatus   updateMTextAttributeDefinition();
+    AcDbText::AcTextAlignment  justification() const;
+    Acad::ErrorStatus   setJustification(AcDbText::AcTextAlignment);
     static std::string  className();
     static PyRxClass    desc();
     static PyDbAttributeDefinition	cloneFrom(const PyRxObject& src);
