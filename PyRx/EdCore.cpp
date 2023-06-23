@@ -5,8 +5,9 @@
 #include "ResultBuffer.h"
 
 #include "acedCmdNF.h"
-
+#ifdef ARXAPP
 extern "C" bool acedGetPredefinedPattens(AcStringArray & patterns);
+#endif
 
 using namespace boost::python;
 
