@@ -40,7 +40,7 @@ public:
     double              widthFactor() const;
     Acad::ErrorStatus   setWidthFactor(double val);
     std::string         textString() const;
-    Acad::ErrorStatus   setTextString(std::string& val);
+    Acad::ErrorStatus   setTextString(const std::string& val);
     PyDbObjectId        textStyle() const;
     Acad::ErrorStatus   setTextStyle(const PyDbObjectId& val);
     Adesk::Boolean      isMirroredInX() const;
