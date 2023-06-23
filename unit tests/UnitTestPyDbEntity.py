@@ -51,8 +51,11 @@ class TestDbEntity(unittest.TestCase):
         text.setTextStyle(db.textstyle())
         text.setJustification(Db.TextAlignment.kTextAlignmentMiddleCenter)
         self.assertEqual(text.justification(),Db.TextAlignment.kTextAlignmentMiddleCenter)
+        
         model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
         model.appendAcDbEntity(text)
+        
+        
         
        
         

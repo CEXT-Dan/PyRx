@@ -99,8 +99,6 @@ public:
     Acad::ErrorStatus   setMTextAttributeDefinition(const PyDbMText& mt);
     Acad::ErrorStatus   convertIntoMTextAttributeDefinition(Adesk::Boolean val);
     Acad::ErrorStatus   updateMTextAttributeDefinition();
-    AcDbText::AcTextAlignment  justification() const;
-    Acad::ErrorStatus   setJustification(AcDbText::AcTextAlignment);
     static std::string  className();
     static PyRxClass    desc();
     static PyDbAttributeDefinition	cloneFrom(const PyRxObject& src);
