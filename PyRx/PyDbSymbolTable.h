@@ -27,7 +27,7 @@ public:
     bool                has(const std::string& entryName);
     bool                has(const PyDbObjectId& entryid);
     PyDbObjectId        add(const PyDbSymbolTableRecord& pRecord);
-    boost::python::list ids();
+    boost::python::list recordIds();
     boost::python::dict toDict();
     static std::string  className();
     static PyRxClass    desc();

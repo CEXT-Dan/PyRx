@@ -17,7 +17,7 @@ void makeAcDbSymbolTableWrapper()
         .def("add", &PyDbSymbolTable::add)
         .def<bool(PyDbSymbolTable::*)(const std::string&)>("has", &PyDbSymbolTable::has)
         .def<bool(PyDbSymbolTable::*)(const PyDbObjectId&)>("has", &PyDbSymbolTable::has)
-        .def("ids", &PyDbSymbolTable::ids)
+        .def("recordIds", &PyDbSymbolTable::recordIds)
         .def("toDict", &PyDbSymbolTable::toDict)
         .def("className", &PyDbSymbolTable::className).staticmethod("className")
         .def("desc", &PyDbSymbolTable::desc).staticmethod("desc")
@@ -75,7 +75,7 @@ PyDbObjectId PyDbSymbolTable::add(const PyDbSymbolTableRecord& pRecord)
     return recordId;
 }
 
-boost::python::list PyDbSymbolTable::ids()
+boost::python::list PyDbSymbolTable::recordIds()
 {
     PyAutoLockGIL lock;
     AcDbSymbolTableIterator* pIter = nullptr;
