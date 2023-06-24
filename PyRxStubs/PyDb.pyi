@@ -142,6 +142,240 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class AbstractViewTable:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def add (self, *args, **kwargs)-> ObjectId :
+      '''add( (AbstractViewTable)arg1, (AbstractViewTableRecord)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId add(class PyDbAbstractViewTable {lvalue},class PyDbAbstractViewTableRecord)'''
+    ...
+    def addPersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def assertNotifyEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertReadEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertWriteEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def cancel (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def cast (self, *args, **kwargs)-> AbstractViewTable :
+      '''cast( (RxObject)arg1) -> AbstractViewTable :
+
+    C++ signature :
+        class PyDbAbstractViewTable cast(class PyRxObject)'''
+    ...
+    def className (self, *args, **kwargs)-> str :
+      '''className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs)-> AbstractViewTable :
+      '''cloneFrom( (RxObject)arg1) -> AbstractViewTable :
+
+    C++ signature :
+        class PyDbAbstractViewTable cloneFrom(class PyRxObject)'''
+    ...
+    def close (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def createExtensionDictionary (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def database (self: DbObject)-> Database :
+      '''                             '''
+    ...
+    def desc (self, *args, **kwargs)-> RxClass :
+      '''desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def disableUndoRecording (self: DbObject,disable: bool)-> None :
+      '''                             '''
+    ...
+    def downgradeOpen (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def erase (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def extensionDictionary (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getAt (self, *args, **kwargs)-> ObjectId :
+      '''getAt( (SymbolTable)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getField (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getFieldDictionary (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getHandle (self: DbObject)-> Handle :
+      '''                             '''
+    ...
+    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def has (self, *args, **kwargs)-> bool :
+      '''has( (SymbolTable)arg1, (str)arg2) -> bool :
+
+    C++ signature :
+        bool has(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
+
+    C++ signature :
+        bool has(class PyDbSymbolTable {lvalue},class PyDbObjectId)'''
+    ...
+    def hasFields (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def isA (self, *args, **kwargs)-> RxClass :
+      '''isA( (Drawable)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+    ...
+    def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isCancelling (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isEraseStatusToggled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isErased (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModified (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedGraphics (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedXData (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNewObject (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifyEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifying (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNull (self, *args, **kwargs)-> bool :
+      '''isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def isReadEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isReallyClosing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isTransactionResident (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoRecordingDisabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isWriteEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def objectId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def recordIds (self, *args, **kwargs)-> list :
+      '''recordIds( (SymbolTable)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs)-> int :
+      '''refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
+    def releaseExtensionDictionary (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def removeField (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def setField (self: DbObject,obj: Field)-> ObjectId :
+      '''                             '''
+    ...
+    def setOwnerId (self: DbObject,owner: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
+      '''                             '''
+    ...
+    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def toDict (self, *args, **kwargs)-> dict :
+      '''toDict( (SymbolTable)arg1) -> dict :
+
+    C++ signature :
+        class boost::python::dict toDict(class PyDbSymbolTable {lvalue})'''
+    ...
+    def upgradeFromNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def upgradeOpen (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def xData (self: DbObject,appname: str)-> list :
+      '''                             '''
+    ...
+    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> ErrorStatus :
+      '''                             '''
+    ...
+
 class AbstractViewTableRecord:
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
@@ -8305,10 +8539,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
     def add (self, *args, **kwargs)-> ObjectId :
-      '''add( (BlockTable)arg1, (BlockTableRecord)arg2) -> ObjectId :
+      '''add( (BlockTable)arg1, (TextStyleTableRecord)arg2) -> ObjectId :
 
     C++ signature :
-        class PyDbObjectId add(class PyDbBlockTable {lvalue},class PyDbBlockTableRecord)'''
+        class PyDbObjectId add(class PyDbTextStyleTable {lvalue},class PyDbTextStyleTableRecord)'''
     ...
     def addPersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
@@ -8329,7 +8563,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''cast( (RxObject)arg1) -> BlockTable :
 
     C++ signature :
-        class PyDbBlockTable cast(class PyRxObject)'''
+        class PyDbTextStyleTable cast(class PyRxObject)'''
     ...
     def className (self, *args, **kwargs)-> str :
       '''className() -> str :
@@ -8341,7 +8575,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''cloneFrom( (RxObject)arg1) -> BlockTable :
 
     C++ signature :
-        class PyDbBlockTable cloneFrom(class PyRxObject)'''
+        class PyDbTextStyleTable cloneFrom(class PyRxObject)'''
     ...
     def close (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -8408,12 +8642,6 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
-    def ids (self, *args, **kwargs)-> list :
-      '''ids( (SymbolTable)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list ids(class PyDbSymbolTable {lvalue})'''
-    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -8479,6 +8707,12 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     ...
     def ownerId (self: DbObject)-> ObjectId :
       '''                             '''
+    ...
+    def recordIds (self, *args, **kwargs)-> list :
+      '''recordIds( (SymbolTable)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
     ...
     def refCount (self, *args, **kwargs)-> int :
       '''refCount( (RxObject)arg1) -> int :
@@ -17226,12 +17460,6 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
-    def ids (self, *args, **kwargs)-> list :
-      '''ids( (SymbolTable)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list ids(class PyDbSymbolTable {lvalue})'''
-    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -17297,6 +17525,12 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     ...
     def ownerId (self: DbObject)-> ObjectId :
       '''                             '''
+    ...
+    def recordIds (self, *args, **kwargs)-> list :
+      '''recordIds( (SymbolTable)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
     ...
     def refCount (self, *args, **kwargs)-> int :
       '''refCount( (RxObject)arg1) -> int :
@@ -30390,6 +30624,240 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class LayerTable:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def add (self, *args, **kwargs)-> ObjectId :
+      '''add( (LayerTable)arg1, (LayerTableRecord)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId add(class PyDbLayerTable {lvalue},class PyDbLayerTableRecord)'''
+    ...
+    def addPersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def assertNotifyEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertReadEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertWriteEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def cancel (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def cast (self, *args, **kwargs)-> LayerTable :
+      '''cast( (RxObject)arg1) -> LayerTable :
+
+    C++ signature :
+        class PyDbLayerTable cast(class PyRxObject)'''
+    ...
+    def className (self, *args, **kwargs)-> str :
+      '''className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs)-> LayerTable :
+      '''cloneFrom( (RxObject)arg1) -> LayerTable :
+
+    C++ signature :
+        class PyDbLayerTable cloneFrom(class PyRxObject)'''
+    ...
+    def close (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def createExtensionDictionary (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def database (self: DbObject)-> Database :
+      '''                             '''
+    ...
+    def desc (self, *args, **kwargs)-> RxClass :
+      '''desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def disableUndoRecording (self: DbObject,disable: bool)-> None :
+      '''                             '''
+    ...
+    def downgradeOpen (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def erase (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def extensionDictionary (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getAt (self, *args, **kwargs)-> ObjectId :
+      '''getAt( (SymbolTable)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getField (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getFieldDictionary (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getHandle (self: DbObject)-> Handle :
+      '''                             '''
+    ...
+    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def has (self, *args, **kwargs)-> bool :
+      '''has( (SymbolTable)arg1, (str)arg2) -> bool :
+
+    C++ signature :
+        bool has(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
+
+    C++ signature :
+        bool has(class PyDbSymbolTable {lvalue},class PyDbObjectId)'''
+    ...
+    def hasFields (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def isA (self, *args, **kwargs)-> RxClass :
+      '''isA( (Drawable)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+    ...
+    def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isCancelling (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isEraseStatusToggled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isErased (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModified (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedGraphics (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedXData (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNewObject (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifyEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifying (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNull (self, *args, **kwargs)-> bool :
+      '''isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def isReadEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isReallyClosing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isTransactionResident (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoRecordingDisabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isWriteEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def objectId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def recordIds (self, *args, **kwargs)-> list :
+      '''recordIds( (SymbolTable)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs)-> int :
+      '''refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
+    def releaseExtensionDictionary (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def removeField (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def setField (self: DbObject,obj: Field)-> ObjectId :
+      '''                             '''
+    ...
+    def setOwnerId (self: DbObject,owner: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
+      '''                             '''
+    ...
+    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def toDict (self, *args, **kwargs)-> dict :
+      '''toDict( (SymbolTable)arg1) -> dict :
+
+    C++ signature :
+        class boost::python::dict toDict(class PyDbSymbolTable {lvalue})'''
+    ...
+    def upgradeFromNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def upgradeOpen (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def xData (self: DbObject,appname: str)-> list :
+      '''                             '''
+    ...
+    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> ErrorStatus :
+      '''                             '''
+    ...
+
 class LayerTableRecord:
     def VPDFLT (self, *args, **kwargs)-> bool :
       '''VPDFLT( (LayerTableRecord)arg1) -> bool :
@@ -35197,6 +35665,240 @@ dict(iterable) -> new dictionary initialized as if via:
         d[k] = v
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class LinetypeTable:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def add (self, *args, **kwargs)-> ObjectId :
+      '''add( (LinetypeTable)arg1, (LinetypeTableRecord)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId add(class PyDbLinetypeTable {lvalue},class PyDbLinetypeTableRecord)'''
+    ...
+    def addPersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def assertNotifyEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertReadEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertWriteEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def cancel (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def cast (self, *args, **kwargs)-> LinetypeTable :
+      '''cast( (RxObject)arg1) -> LinetypeTable :
+
+    C++ signature :
+        class PyDbLinetypeTable cast(class PyRxObject)'''
+    ...
+    def className (self, *args, **kwargs)-> str :
+      '''className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs)-> LinetypeTable :
+      '''cloneFrom( (RxObject)arg1) -> LinetypeTable :
+
+    C++ signature :
+        class PyDbLinetypeTable cloneFrom(class PyRxObject)'''
+    ...
+    def close (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def createExtensionDictionary (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def database (self: DbObject)-> Database :
+      '''                             '''
+    ...
+    def desc (self, *args, **kwargs)-> RxClass :
+      '''desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def disableUndoRecording (self: DbObject,disable: bool)-> None :
+      '''                             '''
+    ...
+    def downgradeOpen (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def erase (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def extensionDictionary (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getAt (self, *args, **kwargs)-> ObjectId :
+      '''getAt( (SymbolTable)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getField (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getFieldDictionary (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getHandle (self: DbObject)-> Handle :
+      '''                             '''
+    ...
+    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def has (self, *args, **kwargs)-> bool :
+      '''has( (SymbolTable)arg1, (str)arg2) -> bool :
+
+    C++ signature :
+        bool has(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
+
+    C++ signature :
+        bool has(class PyDbSymbolTable {lvalue},class PyDbObjectId)'''
+    ...
+    def hasFields (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def isA (self, *args, **kwargs)-> RxClass :
+      '''isA( (Drawable)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+    ...
+    def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isCancelling (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isEraseStatusToggled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isErased (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModified (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedGraphics (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedXData (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNewObject (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifyEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifying (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNull (self, *args, **kwargs)-> bool :
+      '''isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def isReadEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isReallyClosing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isTransactionResident (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoRecordingDisabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isWriteEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def objectId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def recordIds (self, *args, **kwargs)-> list :
+      '''recordIds( (SymbolTable)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs)-> int :
+      '''refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
+    def releaseExtensionDictionary (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def removeField (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def setField (self: DbObject,obj: Field)-> ObjectId :
+      '''                             '''
+    ...
+    def setOwnerId (self: DbObject,owner: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
+      '''                             '''
+    ...
+    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def toDict (self, *args, **kwargs)-> dict :
+      '''toDict( (SymbolTable)arg1) -> dict :
+
+    C++ signature :
+        class boost::python::dict toDict(class PyDbSymbolTable {lvalue})'''
+    ...
+    def upgradeFromNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def upgradeOpen (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def xData (self: DbObject,appname: str)-> list :
+      '''                             '''
+    ...
+    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> ErrorStatus :
+      '''                             '''
     ...
 
 class LinetypeTableRecord:
@@ -59436,6 +60138,240 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
 
+class RegAppTable:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def add (self, *args, **kwargs)-> ObjectId :
+      '''add( (RegAppTable)arg1, (RegAppTableRecord)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId add(class PyDbRegAppTable {lvalue},class PyDbRegAppTableRecord)'''
+    ...
+    def addPersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def assertNotifyEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertReadEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertWriteEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def cancel (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def cast (self, *args, **kwargs)-> RegAppTable :
+      '''cast( (RxObject)arg1) -> RegAppTable :
+
+    C++ signature :
+        class PyDbRegAppTable cast(class PyRxObject)'''
+    ...
+    def className (self, *args, **kwargs)-> str :
+      '''className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs)-> RegAppTable :
+      '''cloneFrom( (RxObject)arg1) -> RegAppTable :
+
+    C++ signature :
+        class PyDbRegAppTable cloneFrom(class PyRxObject)'''
+    ...
+    def close (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def createExtensionDictionary (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def database (self: DbObject)-> Database :
+      '''                             '''
+    ...
+    def desc (self, *args, **kwargs)-> RxClass :
+      '''desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def disableUndoRecording (self: DbObject,disable: bool)-> None :
+      '''                             '''
+    ...
+    def downgradeOpen (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def erase (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def extensionDictionary (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getAt (self, *args, **kwargs)-> ObjectId :
+      '''getAt( (SymbolTable)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getField (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getFieldDictionary (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getHandle (self: DbObject)-> Handle :
+      '''                             '''
+    ...
+    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def has (self, *args, **kwargs)-> bool :
+      '''has( (SymbolTable)arg1, (str)arg2) -> bool :
+
+    C++ signature :
+        bool has(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
+
+    C++ signature :
+        bool has(class PyDbSymbolTable {lvalue},class PyDbObjectId)'''
+    ...
+    def hasFields (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def isA (self, *args, **kwargs)-> RxClass :
+      '''isA( (Drawable)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+    ...
+    def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isCancelling (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isEraseStatusToggled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isErased (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModified (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedGraphics (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedXData (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNewObject (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifyEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifying (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNull (self, *args, **kwargs)-> bool :
+      '''isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def isReadEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isReallyClosing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isTransactionResident (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoRecordingDisabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isWriteEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def objectId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def recordIds (self, *args, **kwargs)-> list :
+      '''recordIds( (SymbolTable)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs)-> int :
+      '''refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
+    def releaseExtensionDictionary (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def removeField (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def setField (self: DbObject,obj: Field)-> ObjectId :
+      '''                             '''
+    ...
+    def setOwnerId (self: DbObject,owner: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
+      '''                             '''
+    ...
+    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def toDict (self, *args, **kwargs)-> dict :
+      '''toDict( (SymbolTable)arg1) -> dict :
+
+    C++ signature :
+        class boost::python::dict toDict(class PyDbSymbolTable {lvalue})'''
+    ...
+    def upgradeFromNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def upgradeOpen (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def xData (self: DbObject,appname: str)-> list :
+      '''                             '''
+    ...
+    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> ErrorStatus :
+      '''                             '''
+    ...
+
 class RegAppTableRecord:
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
@@ -65847,12 +66783,6 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
-    def ids (self, *args, **kwargs)-> list :
-      '''ids( (SymbolTable)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list ids(class PyDbSymbolTable {lvalue})'''
-    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -65918,6 +66848,12 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     ...
     def ownerId (self: DbObject)-> ObjectId :
       '''                             '''
+    ...
+    def recordIds (self, *args, **kwargs)-> list :
+      '''recordIds( (SymbolTable)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
     ...
     def refCount (self, *args, **kwargs)-> int :
       '''refCount( (RxObject)arg1) -> int :
@@ -71291,6 +72227,240 @@ dict(iterable) -> new dictionary initialized as if via:
         d[k] = v
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class UCSTable:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def add (self, *args, **kwargs)-> ObjectId :
+      '''add( (UCSTable)arg1, (UCSTableRecord)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId add(class PyDbUCSTable {lvalue},class PyDbUCSTableRecord)'''
+    ...
+    def addPersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def assertNotifyEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertReadEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertWriteEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def cancel (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def cast (self, *args, **kwargs)-> UCSTable :
+      '''cast( (RxObject)arg1) -> UCSTable :
+
+    C++ signature :
+        class PyDbUCSTable cast(class PyRxObject)'''
+    ...
+    def className (self, *args, **kwargs)-> str :
+      '''className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs)-> UCSTable :
+      '''cloneFrom( (RxObject)arg1) -> UCSTable :
+
+    C++ signature :
+        class PyDbUCSTable cloneFrom(class PyRxObject)'''
+    ...
+    def close (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def createExtensionDictionary (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def database (self: DbObject)-> Database :
+      '''                             '''
+    ...
+    def desc (self, *args, **kwargs)-> RxClass :
+      '''desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def disableUndoRecording (self: DbObject,disable: bool)-> None :
+      '''                             '''
+    ...
+    def downgradeOpen (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def erase (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def extensionDictionary (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getAt (self, *args, **kwargs)-> ObjectId :
+      '''getAt( (SymbolTable)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getField (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getFieldDictionary (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getHandle (self: DbObject)-> Handle :
+      '''                             '''
+    ...
+    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def has (self, *args, **kwargs)-> bool :
+      '''has( (SymbolTable)arg1, (str)arg2) -> bool :
+
+    C++ signature :
+        bool has(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
+
+    C++ signature :
+        bool has(class PyDbSymbolTable {lvalue},class PyDbObjectId)'''
+    ...
+    def hasFields (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def isA (self, *args, **kwargs)-> RxClass :
+      '''isA( (Drawable)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+    ...
+    def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isCancelling (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isEraseStatusToggled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isErased (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModified (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedGraphics (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedXData (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNewObject (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifyEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifying (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNull (self, *args, **kwargs)-> bool :
+      '''isNull( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyRxObject {lvalue})'''
+    ...
+    def isReadEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isReallyClosing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isTransactionResident (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoRecordingDisabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isWriteEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def objectId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def recordIds (self, *args, **kwargs)-> list :
+      '''recordIds( (SymbolTable)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs)-> int :
+      '''refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
+    def releaseExtensionDictionary (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def removeField (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def setField (self: DbObject,obj: Field)-> ObjectId :
+      '''                             '''
+    ...
+    def setOwnerId (self: DbObject,owner: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
+      '''                             '''
+    ...
+    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def toDict (self, *args, **kwargs)-> dict :
+      '''toDict( (SymbolTable)arg1) -> dict :
+
+    C++ signature :
+        class boost::python::dict toDict(class PyDbSymbolTable {lvalue})'''
+    ...
+    def upgradeFromNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def upgradeOpen (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def xData (self: DbObject,appname: str)-> list :
+      '''                             '''
+    ...
+    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> ErrorStatus :
+      '''                             '''
     ...
 
 class UCSTableRecord:

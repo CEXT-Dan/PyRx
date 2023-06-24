@@ -143,16 +143,19 @@ BOOST_PYTHON_MODULE(PyDb)
     makeAcDbBlockTableRecordWrapper();
     makePyDbTextStyleTableWrapper();
     makePyDbTextStyleTableRecordWrapper();
-
-    //TODO:
+    makePyDbUCSTableWrapper();
+    makePyDbUCSTableRecordWrapper();
+    makePyDbRegAppTableWrapper();
+    makePyDbRegAppTableRecordWrapper();
+    makePyDbLinetypeTableWrapper();
+    makePyDbLinetypeTableRecordWrapper();
+    makePyDbLayerTableWrapper();
+    makeAcDbLayerTableRecordWrapper();
+    makePyDbAbstractViewTableWrapper();
     makePyDbAbstractViewTableRecordWrapper();
     makePyDbViewportTableRecordWrapper();
     makePyDbViewTableRecordWrapper();
 
-    makeAcDbLayerTableRecordWrapper();
-    makePyDbUCSTableRecordWrapper();
-    makePyDbRegAppTableRecordWrapper();
-    makePyDbLinetypeTableRecordWrapper();
     makeAcDbDatabaseWrapper();
     makeAcDbHostApplicationServicesWrapper();
 
