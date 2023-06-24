@@ -19,13 +19,15 @@ class PyDbSymbolTable : public PyDbObject
 {
 public:
     PyDbSymbolTable(AcDbSymbolTable* ptr, bool autoDelete);
+    PyDbSymbolTable(const PyDbObjectId& id);
     PyDbSymbolTable(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbSymbolTable() override = default;
     PyDbObjectId        getAt(const std::string& entryName);
     bool                has(const std::string& entryName);
     bool                has(const PyDbObjectId& entryid);
     PyDbObjectId        add(const PyDbSymbolTableRecord& pRecord);
-    boost::python::list recordIds();
+    boost::python::list ids();
+    boost::python::dict toDict();
     static std::string  className();
     static PyRxClass    desc();
     static PyDbSymbolTable cloneFrom(const PyRxObject& src);
@@ -43,11 +45,10 @@ class PyDbDimStyleTable : public PyDbSymbolTable
 {
 public:
     PyDbDimStyleTable(AcDbDimStyleTable* ptr, bool autoDelete);
+    PyDbDimStyleTable(const PyDbObjectId& id);
     PyDbDimStyleTable(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbDimStyleTable() override = default;
-    PyDbObjectId        getAt(const std::string& entryName);
     PyDbObjectId        add(const PyDbDimStyleTableRecord& entry);
-    boost::python::list recordIds();
     static std::string  className();
     static PyRxClass    desc();
     static PyDbDimStyleTable cloneFrom(const PyRxObject& src);
@@ -65,11 +66,10 @@ class PyDbBlockTable : public PyDbSymbolTable
 {
 public:
     PyDbBlockTable(AcDbBlockTable* ptr, bool autoDelete);
+    PyDbBlockTable(const PyDbObjectId& id);
     PyDbBlockTable(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbBlockTable() override = default;
-    PyDbObjectId        getAt(const std::string& entryName);
     PyDbObjectId        add(const PyDbBlockTableRecord& entry);
-    boost::python::list recordIds();
     static std::string  className();
     static PyRxClass    desc();
     static PyDbBlockTable cloneFrom(const PyRxObject& src);
