@@ -99,12 +99,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_635EF05B4EAA4E568B28EEE56E699704"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_6B86595EE7904F5495E3B48C8FFFE888"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1127,7 +1121,7 @@
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.1.121"
+        "ProductVersion" = "8:1.1.122"
         "Manufacturer" = "8:Daniel Marcotte"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1605,34 +1599,6 @@
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{254ED7F5-4891-44D2-A6BD-F5B3891CCCFF}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_635EF05B4EAA4E568B28EEE56E699704"
-            {
-            "SourcePath" = "8:..\\Bin\\PyRxG23\\x64\\Release\\PyRxG23.grx"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{254ED7F5-4891-44D2-A6BD-F5B3891CCCCF}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
