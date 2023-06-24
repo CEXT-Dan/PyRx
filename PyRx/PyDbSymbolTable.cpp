@@ -302,3 +302,77 @@ AcDbBlockTable* PyDbBlockTable::impObj(const std::source_location& src /*= std::
         throw PyNullObject(src);
     return static_cast<AcDbBlockTable*>(m_pyImp.get());
 }
+
+//---------------------------------------------------------------------------------------- -
+//PyDbTextStyleTable
+void makePyDbTextStyleTableWrapper()
+{
+    class_<PyDbTextStyleTable, bases<PyDbSymbolTable>>("BlockTable", boost::python::no_init)
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("add", &PyDbTextStyleTable::add)
+        .def("className", &PyDbTextStyleTable::className).staticmethod("className")
+        .def("desc", &PyDbTextStyleTable::desc).staticmethod("desc")
+        .def("cloneFrom", &PyDbTextStyleTable::cloneFrom).staticmethod("cloneFrom")
+        .def("cast", &PyDbTextStyleTable::cast).staticmethod("cast")
+        ;
+}
+
+PyDbTextStyleTable::PyDbTextStyleTable(AcDbTextStyleTable* ptr, bool autoDelete)
+    : PyDbSymbolTable(ptr, autoDelete)
+{
+}
+
+PyDbTextStyleTable::PyDbTextStyleTable(const PyDbObjectId& id)
+    : PyDbTextStyleTable(id, AcDb::OpenMode::kForRead)
+{
+}
+
+PyDbTextStyleTable::PyDbTextStyleTable(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbSymbolTable(nullptr, false)
+{
+    AcDbTextStyleTable* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbTextStyleTable>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    this->resetImp(pobj, false, true);
+}
+
+PyDbObjectId PyDbTextStyleTable::add(const PyDbTextStyleTableRecord& entry)
+{
+    AcDbObjectId id;
+    if (auto es = impObj()->add(id, entry.impObj()); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return PyDbObjectId(id);
+}
+
+std::string PyDbTextStyleTable::className()
+{
+    return "AcDbTextStyleTable";
+}
+
+PyRxClass PyDbTextStyleTable::desc()
+{
+    return PyRxClass(AcDbTextStyleTable::desc(), false);
+}
+
+PyDbTextStyleTable PyDbTextStyleTable::cloneFrom(const PyRxObject& src)
+{
+    if (!src.impObj()->isKindOf(AcDbTextStyleTable::desc()))
+        throw PyAcadErrorStatus(eNotThatKindOfClass);
+    return PyDbTextStyleTable(static_cast<AcDbTextStyleTable*>(src.impObj()->clone()), true);
+}
+
+PyDbTextStyleTable PyDbTextStyleTable::cast(const PyRxObject& src)
+{
+    PyDbTextStyleTable dest(nullptr, false);
+    PyRxObject rxo = src;
+    std::swap(rxo.m_pyImp, dest.m_pyImp);
+    return dest;
+}
+
+AcDbTextStyleTable* PyDbTextStyleTable::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr)
+        throw PyNullObject(src);
+    return static_cast<AcDbTextStyleTable*>(m_pyImp.get());
+}

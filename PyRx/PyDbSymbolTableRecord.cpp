@@ -1981,7 +1981,7 @@ AcDbLayerTableRecord* PyDbLayerTableRecord::impObj(const std::source_location& s
 
 //---------------------------------------------------------------------------------------- -
 // PyDbTextStyleTableRecord
-void makeTextStyleTableRecordWrapper()
+void makePyDbTextStyleTableRecordWrapper()
 {
     class_<PyDbTextStyleTableRecord, bases<PyDbSymbolTableRecord>>("TextStyleTableRecord")
         .def(init<>())
