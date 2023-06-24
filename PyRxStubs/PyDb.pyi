@@ -65716,6 +65716,12 @@ class SymbolTable:
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
     ...
+    def add (self, *args, **kwargs)-> ObjectId :
+      '''add( (SymbolTable)arg1, (SymbolTableRecord)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId add(class PyDbSymbolTable {lvalue},class PyDbSymbolTableRecord)'''
+    ...
     def addPersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
