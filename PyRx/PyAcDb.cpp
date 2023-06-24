@@ -158,6 +158,7 @@ BOOST_PYTHON_MODULE(PyDb)
 
     makeAcDbDatabaseWrapper();
     makeAcDbHostApplicationServicesWrapper();
+    makeAPyDbSymUtilServicesWrapper();
 
     makePyDb3dSolidWrapper();
     makePyDbRegionWrapper();
