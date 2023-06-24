@@ -373,7 +373,7 @@ public:
 
 //---------------------------------------------------------------------------------------- -
 // PyDbTextStyleTableRecord
-void makeTextStyleTableRecordWrapper();
+void makePyDbTextStyleTableRecordWrapper();
 class PyDbTextStyleTableRecord : public PyDbSymbolTableRecord
 {
 public:

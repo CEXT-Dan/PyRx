@@ -6,6 +6,7 @@ class PyDbObjectId;
 class PyDbSymbolTableRecord;
 class PyDbDimStyleTableRecord;
 class PyDbBlockTableRecord;
+class PyDbTextStyleTableRecord;
 
 //AcDbLinetypeTable
 //AcDbRegAppTable
@@ -77,4 +78,25 @@ public:
 
 public:
     AcDbBlockTable* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//---------------------------------------------------------------------------------------- -
+//PyDbTextStyleTable
+void makePyDbTextStyleTableWrapper();
+
+class PyDbTextStyleTable : public PyDbSymbolTable
+{
+public:
+    PyDbTextStyleTable(AcDbTextStyleTable* ptr, bool autoDelete);
+    PyDbTextStyleTable(const PyDbObjectId& id);
+    PyDbTextStyleTable(const PyDbObjectId& id, AcDb::OpenMode mode);
+    virtual ~PyDbTextStyleTable() override = default;
+    PyDbObjectId        add(const PyDbTextStyleTableRecord& entry);
+    static std::string  className();
+    static PyRxClass    desc();
+    static PyDbTextStyleTable cloneFrom(const PyRxObject& src);
+    static PyDbTextStyleTable cast(const PyRxObject& src);
+
+public:
+    AcDbTextStyleTable* impObj(const std::source_location& src = std::source_location::current()) const;
 };
