@@ -13,6 +13,7 @@ void makeAcDbSymbolTableWrapper()
     class_<PyDbSymbolTable, bases<PyDbObject>>("SymbolTable", boost::python::no_init)
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("getAt", &PyDbSymbolTable::getAt)
+        .def("add", &PyDbSymbolTable::add)
         .def<bool(PyDbSymbolTable::*)(const std::string&)>("has", &PyDbSymbolTable::has)
         .def<bool(PyDbSymbolTable::*)(const PyDbObjectId&)>("has", &PyDbSymbolTable::has)
         .def("recordIds", &PyDbSymbolTable::recordIds)
@@ -55,6 +56,14 @@ bool PyDbSymbolTable::has(const std::string& entryName)
 bool PyDbSymbolTable::has(const PyDbObjectId& entryid)
 {
     return impObj()->has(entryid.m_id);
+}
+
+PyDbObjectId PyDbSymbolTable::add(const PyDbSymbolTableRecord& pRecord)
+{
+    PyDbObjectId recordId;
+    if (auto es = impObj()->add(recordId.m_id, pRecord.impObj()); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return recordId;
 }
 
 boost::python::list PyDbSymbolTable::recordIds()

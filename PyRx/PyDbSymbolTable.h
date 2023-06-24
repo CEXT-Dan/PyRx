@@ -3,6 +3,7 @@
 #include "PyDbObject.h"
 
 class PyDbObjectId;
+class PyDbSymbolTableRecord;
 class PyDbDimStyleTableRecord;
 class PyDbBlockTableRecord;
 
@@ -20,11 +21,11 @@ public:
     PyDbSymbolTable(AcDbSymbolTable* ptr, bool autoDelete);
     PyDbSymbolTable(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbSymbolTable() override = default;
-    PyDbObjectId    getAt(const std::string& entryName);
-    bool            has(const std::string& entryName);
-    bool            has(const PyDbObjectId& entryid);
+    PyDbObjectId        getAt(const std::string& entryName);
+    bool                has(const std::string& entryName);
+    bool                has(const PyDbObjectId& entryid);
+    PyDbObjectId        add(const PyDbSymbolTableRecord& pRecord);
     boost::python::list recordIds();
-
     static std::string  className();
     static PyRxClass    desc();
     static PyDbSymbolTable cloneFrom(const PyRxObject& src);
