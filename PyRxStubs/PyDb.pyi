@@ -8294,7 +8294,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
 
 class BlockTable:
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
@@ -8369,10 +8374,10 @@ class BlockTable:
       '''                             '''
     ...
     def getAt (self, *args, **kwargs)-> ObjectId :
-      '''getAt( (BlockTable)arg1, (str)arg2) -> ObjectId :
+      '''getAt( (SymbolTable)arg1, (str)arg2) -> ObjectId :
 
     C++ signature :
-        class PyDbObjectId getAt(class PyDbBlockTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def getField (self: DbObject)-> ObjectId :
       '''                             '''
@@ -8402,6 +8407,12 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
+    ...
+    def ids (self, *args, **kwargs)-> list :
+      '''ids( (SymbolTable)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list ids(class PyDbSymbolTable {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -8469,12 +8480,6 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def ownerId (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def recordIds (self, *args, **kwargs)-> list :
-      '''recordIds( (BlockTable)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list recordIds(class PyDbBlockTable {lvalue})'''
-    ...
     def refCount (self, *args, **kwargs)-> int :
       '''refCount( (RxObject)arg1) -> int :
 
@@ -8501,6 +8506,12 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> ErrorStatus :
       '''                             '''
+    ...
+    def toDict (self, *args, **kwargs)-> dict :
+      '''toDict( (SymbolTable)arg1) -> dict :
+
+    C++ signature :
+        class boost::python::dict toDict(class PyDbSymbolTable {lvalue})'''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
@@ -17101,7 +17112,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
 
 class DimStyleTable:
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
@@ -17176,10 +17192,10 @@ class DimStyleTable:
       '''                             '''
     ...
     def getAt (self, *args, **kwargs)-> ObjectId :
-      '''getAt( (DimStyleTable)arg1, (str)arg2) -> ObjectId :
+      '''getAt( (SymbolTable)arg1, (str)arg2) -> ObjectId :
 
     C++ signature :
-        class PyDbObjectId getAt(class PyDbDimStyleTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def getField (self: DbObject)-> ObjectId :
       '''                             '''
@@ -17209,6 +17225,12 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
+    ...
+    def ids (self, *args, **kwargs)-> list :
+      '''ids( (SymbolTable)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list ids(class PyDbSymbolTable {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -17276,12 +17298,6 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def ownerId (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def recordIds (self, *args, **kwargs)-> list :
-      '''recordIds( (DimStyleTable)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list recordIds(class PyDbDimStyleTable {lvalue})'''
-    ...
     def refCount (self, *args, **kwargs)-> int :
       '''refCount( (RxObject)arg1) -> int :
 
@@ -17308,6 +17324,12 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> ErrorStatus :
       '''                             '''
+    ...
+    def toDict (self, *args, **kwargs)-> dict :
+      '''toDict( (SymbolTable)arg1) -> dict :
+
+    C++ signature :
+        class boost::python::dict toDict(class PyDbSymbolTable {lvalue})'''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
@@ -65711,7 +65733,12 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
 
 class SymbolTable:
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
@@ -65820,6 +65847,12 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def ids (self, *args, **kwargs)-> list :
+      '''ids( (SymbolTable)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list ids(class PyDbSymbolTable {lvalue})'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -65886,12 +65919,6 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def ownerId (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def recordIds (self, *args, **kwargs)-> list :
-      '''recordIds( (SymbolTable)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
-    ...
     def refCount (self, *args, **kwargs)-> int :
       '''refCount( (RxObject)arg1) -> int :
 
@@ -65918,6 +65945,12 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> ErrorStatus :
       '''                             '''
+    ...
+    def toDict (self, *args, **kwargs)-> dict :
+      '''toDict( (SymbolTable)arg1) -> dict :
+
+    C++ signature :
+        class boost::python::dict toDict(class PyDbSymbolTable {lvalue})'''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''

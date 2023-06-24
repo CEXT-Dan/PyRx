@@ -11,16 +11,19 @@ using namespace boost::python;
 void makeAcDbSymbolTableWrapper()
 {
     class_<PyDbSymbolTable, bases<PyDbObject>>("SymbolTable", boost::python::no_init)
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("getAt", &PyDbSymbolTable::getAt)
         .def("add", &PyDbSymbolTable::add)
         .def<bool(PyDbSymbolTable::*)(const std::string&)>("has", &PyDbSymbolTable::has)
         .def<bool(PyDbSymbolTable::*)(const PyDbObjectId&)>("has", &PyDbSymbolTable::has)
-        .def("recordIds", &PyDbSymbolTable::recordIds)
+        .def("ids", &PyDbSymbolTable::ids)
+        .def("toDict", &PyDbSymbolTable::toDict)
         .def("className", &PyDbSymbolTable::className).staticmethod("className")
         .def("desc", &PyDbSymbolTable::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbSymbolTable::cloneFrom).staticmethod("cloneFrom")
         .def("cast", &PyDbSymbolTable::cast).staticmethod("cast")
+        .def("__getitem__", &PyDbSymbolTable::getAt)
         ;
 }
 
@@ -30,6 +33,12 @@ PyDbSymbolTable::PyDbSymbolTable(AcDbSymbolTable* ptr, bool autoDelete)
     : PyDbObject(ptr, autoDelete)
 {
 }
+
+PyDbSymbolTable::PyDbSymbolTable(const PyDbObjectId& id)
+    : PyDbSymbolTable(id, AcDb::OpenMode::kForRead)
+{
+}
+
 
 PyDbSymbolTable::PyDbSymbolTable(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbObject(nullptr, true)
@@ -66,7 +75,7 @@ PyDbObjectId PyDbSymbolTable::add(const PyDbSymbolTableRecord& pRecord)
     return recordId;
 }
 
-boost::python::list PyDbSymbolTable::recordIds()
+boost::python::list PyDbSymbolTable::ids()
 {
     PyAutoLockGIL lock;
     AcDbSymbolTableIterator* pIter = nullptr;
@@ -76,9 +85,38 @@ boost::python::list PyDbSymbolTable::recordIds()
     boost::python::list _items;
     for (std::unique_ptr<AcDbSymbolTableIterator> iter(pIter); !iter->done(); iter->step())
     {
-        AcDbObjectId id;
-        if (iter->getRecordId(id) == eOk)
-            _items.append(PyDbObjectId(id));
+        PyDbObjectId id;
+        if (iter->getRecordId(id.m_id) == eOk)
+            _items.append(id);
+    }
+    return _items;
+}
+
+boost::python::dict PyDbSymbolTable::toDict()
+{
+    PyAutoLockGIL lock;
+  
+    AcDbSymbolTableIterator* pIter = nullptr;
+    if (impObj()->newIterator(pIter) != eOk)
+        throw PyAcadErrorStatus(eOutOfMemory);
+
+    boost::python::dict _items;
+    for (std::unique_ptr<AcDbSymbolTableIterator> iter(pIter); !iter->done(); iter->step())
+    {
+        PyDbObjectId id;
+        if (iter->getRecordId(id.m_id) == eOk)
+        {
+            AcDbSymbolTableRecordPointer<AcDbSymbolTableRecord> record(id.m_id, AcDb::kForRead);
+            if (record.openStatus() == eOk)
+            {
+                const TCHAR* name = nullptr;
+                if (record->getName(name) == eOk)
+                {
+                    std::string utf8name = wstr_to_utf8(name);
+                    _items[utf8name] = id;
+                }
+            }
+        }
     }
     return _items;
 }
@@ -120,10 +158,9 @@ AcDbSymbolTable* PyDbSymbolTable::impObj(const std::source_location& src /*= std
 void makePyDbDimStyleTableWrapper()
 {
     class_<PyDbDimStyleTable, bases<PyDbSymbolTable>>("DimStyleTable", boost::python::no_init)
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("getAt", &PyDbDimStyleTable::getAt)
         .def("add", &PyDbDimStyleTable::add)
-        .def("recordIds", &PyDbSymbolTable::recordIds)
         .def("className", &PyDbDimStyleTable::className).staticmethod("className")
         .def("desc", &PyDbDimStyleTable::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbDimStyleTable::cloneFrom).staticmethod("cloneFrom")
@@ -145,12 +182,9 @@ PyDbDimStyleTable::PyDbDimStyleTable(const PyDbObjectId& id, AcDb::OpenMode mode
     this->resetImp(pobj, false, true);
 }
 
-PyDbObjectId PyDbDimStyleTable::getAt(const std::string& entryName)
+PyDbDimStyleTable::PyDbDimStyleTable(const PyDbObjectId& id)
+    : PyDbDimStyleTable(id, AcDb::OpenMode::kForRead)
 {
-    AcDbObjectId id;
-    if (auto es = impObj()->getAt(utf8_to_wstr(entryName).c_str(), id); es != eOk)
-        throw PyAcadErrorStatus(es);
-    return PyDbObjectId(id);
 }
 
 PyDbObjectId PyDbDimStyleTable::add(const PyDbDimStyleTableRecord& entry)
@@ -159,23 +193,6 @@ PyDbObjectId PyDbDimStyleTable::add(const PyDbDimStyleTableRecord& entry)
     if (auto es = impObj()->add(id, entry.impObj()); es != eOk)
         throw PyAcadErrorStatus(es);
     return PyDbObjectId(id);
-}
-
-boost::python::list PyDbDimStyleTable::recordIds()
-{
-    PyAutoLockGIL lock;
-    AcDbDimStyleTableIterator* pIter = nullptr;
-    if (impObj()->newIterator(pIter) != eOk)
-        throw PyAcadErrorStatus(eOutOfMemory);
-
-    boost::python::list _items;
-    for (std::unique_ptr<AcDbDimStyleTableIterator> iter(pIter); !iter->done(); iter->step())
-    {
-        AcDbObjectId id;
-        if (iter->getRecordId(id) == eOk)
-            _items.append(PyDbObjectId(id));
-    }
-    return _items;
 }
 
 std::string PyDbDimStyleTable::className()
@@ -216,10 +233,9 @@ AcDbDimStyleTable* PyDbDimStyleTable::impObj(const std::source_location& src /*=
 void makePyDbBlockTableWrapper()
 {
     class_<PyDbBlockTable, bases<PyDbSymbolTable>>("BlockTable", boost::python::no_init)
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("getAt", &PyDbBlockTable::getAt)
         .def("add", &PyDbBlockTable::add)
-        .def("recordIds", &PyDbBlockTable::recordIds)
         .def("className", &PyDbBlockTable::className).staticmethod("className")
         .def("desc", &PyDbBlockTable::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbBlockTable::cloneFrom).staticmethod("cloneFrom")
@@ -241,12 +257,10 @@ PyDbBlockTable::PyDbBlockTable(const PyDbObjectId& id, AcDb::OpenMode mode)
     this->resetImp(pobj, false, true);
 }
 
-PyDbObjectId PyDbBlockTable::getAt(const std::string& entryName)
+
+PyDbBlockTable::PyDbBlockTable(const PyDbObjectId& id)
+    : PyDbBlockTable(id, AcDb::OpenMode::kForRead)
 {
-    AcDbObjectId id;
-    if (auto es = impObj()->getAt(utf8_to_wstr(entryName).c_str(), id); es != eOk)
-        throw PyAcadErrorStatus(es);
-    return PyDbObjectId(id);
 }
 
 PyDbObjectId PyDbBlockTable::add(const PyDbBlockTableRecord& entry)
@@ -255,23 +269,6 @@ PyDbObjectId PyDbBlockTable::add(const PyDbBlockTableRecord& entry)
     if (auto es = impObj()->add(id, entry.impObj()); es != eOk)
         throw PyAcadErrorStatus(es);
     return PyDbObjectId(id);
-}
-
-boost::python::list PyDbBlockTable::recordIds()
-{
-    PyAutoLockGIL lock;
-    AcDbBlockTableIterator* pIter = nullptr;
-    if (impObj()->newIterator(pIter) != eOk)
-        throw PyAcadErrorStatus(eOutOfMemory);
-
-    boost::python::list _items;
-    for (std::unique_ptr<AcDbBlockTableIterator> iter(pIter); !iter->done(); iter->step())
-    {
-        AcDbObjectId id;
-        if (iter->getRecordId(id) == eOk)
-            _items.append(PyDbObjectId(id));
-    }
-    return _items;
 }
 
 std::string PyDbBlockTable::className()
