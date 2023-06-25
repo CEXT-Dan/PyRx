@@ -2814,6 +2814,7 @@ void makPyDbLineWrapper()
 {
     class_<PyDbLine, bases<PyDbCurve>>("Line")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&>())
         .def("startPoint", &PyDbLine::startPoint)

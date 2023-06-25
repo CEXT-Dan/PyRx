@@ -12,9 +12,36 @@ import PyEd as Ed
 
 print("testname = pyentity")
 
+def create_dbPoint():
+    db = Db.curDb()
+    dbp = Db.Point()
+    dbp.setDatabaseDefaults(db)
+    model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
+    id = model.appendAcDbEntity(dbp)
+    return id
 
 class TestDbEntity(unittest.TestCase):
-    
+
+    def test_dbpointopenctor1(self):
+        id = create_dbPoint()
+        dbp = Db.Point(id)
+        self.assertEqual(dbp.isReadEnabled(), True)
+        dbp.upgradeOpen()
+        self.assertEqual(dbp.erase(), Db.ErrorStatus.eOk)
+        
+    def test_dbpointopenctor2(self):
+        id = create_dbPoint()
+        dbp = Db.Point(id,Db.OpenMode.kForRead)
+        self.assertEqual(dbp.isReadEnabled(), True)
+        dbp.upgradeOpen()
+        self.assertEqual(dbp.erase(), Db.ErrorStatus.eOk)
+        
+    def test_dbpointopenctor3(self):
+        id = create_dbPoint()
+        dbp = Db.Point(id,Db.OpenMode.kForWrite)
+        self.assertEqual(dbp.isWriteEnabled(), True)
+        self.assertEqual(dbp.erase(), Db.ErrorStatus.eOk)
+        
     def test_dbpoint(self):
         db = Db.curDb()
         pos = Ge.Point3d(100, 100, 0)
@@ -25,6 +52,7 @@ class TestDbEntity(unittest.TestCase):
         model.appendAcDbEntity(dbp)
         
     def test_dbline(self):
+        db = Db.curDb()
         line = Db.Line(Ge.Point3d(0, 0, 0), Ge.Point3d(100, 100, 0))
         self.assertEqual(line.objectId().isNull(), True)
         line.setDatabaseDefaults()
@@ -40,8 +68,17 @@ class TestDbEntity(unittest.TestCase):
         self.assertEqual(line.endPoint(), Ge.Point3d(100, 100, 0))
         line.setStartPoint(Ge.Point3d(1, 11, 0))
         self.assertEqual(line.startPoint(), Ge.Point3d(1, 11, 0))
+        model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
+        lid = model.appendAcDbEntity(line)
+        line.close()
+        line2 = Db.Line(lid)
+        self.assertEqual(line2.startPoint(), Ge.Point3d(1, 11, 0))
+        line2.close()
+        line3 = Db.Line(lid,  Db.OpenMode.ForRead)
+        self.assertEqual(line3.startPoint(), Ge.Point3d(1, 11, 0))
         
     def test_dbarc(self):
+        db = Db.curDb()
         arc = Db.Arc(Ge.Point3d(0, 0, 0), 20, 0, math.pi)
         self.assertEqual(arc.startAngle(), 0)
         self.assertEqual(arc.endAngle(),  math.pi)
@@ -49,6 +86,19 @@ class TestDbEntity(unittest.TestCase):
         #curve
         self.assertEqual(arc.getStartPoint(),  Ge.Point3d(20, 0, 0))
         self.assertEqual(arc.getEndPoint(),  Ge.Point3d(-20, 0, 0))
+        #add
+        model = Db.BlockTableRecord(db.modelSpaceId(), Db.OpenMode.ForWrite)
+        eid = model.appendAcDbEntity(arc)
+        arc.close()
+        #ctor
+        arc2 = Db.Arc(eid)
+        self.assertEqual(arc2.endAngle(),  math.pi)
+        self.assertEqual(arc2.close(),  Db.ErrorStatus.eOk)
+        #ctor
+        arc3 = Db.Arc(eid,Db.OpenMode.kForRead)
+        self.assertEqual(arc3.endAngle(),  math.pi)
+        self.assertEqual(arc3.close(),  Db.ErrorStatus.eOk)
+        
         
     def test_dbcircle(self):
         circle = Db.Circle()
