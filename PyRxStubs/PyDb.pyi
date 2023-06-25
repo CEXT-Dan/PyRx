@@ -378,7 +378,12 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
 
 class AbstractViewTableRecord:
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
@@ -951,6 +956,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -2532,6 +2542,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -3358,6 +3373,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -4761,6 +4781,11 @@ __init__( (object)arg1, (Point3d)arg2, (str)arg3, (str)arg4, (str)arg5, (ObjectI
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -5683,6 +5708,11 @@ __init__( (object)arg1, (Point3d)arg2, (str)arg3, (str)arg4, (ObjectId)arg5) -> 
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -6577,7 +6607,12 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
 
 class BlockBegin:
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
@@ -7142,7 +7177,12 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
 
 class BlockEnd:
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
@@ -7717,15 +7757,20 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
-__init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
+__init__( (object)arg1, (ObjectId)arg2) -> None :
 
     C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d {lvalue},class PyDbObjectId)
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
+
+__init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class PyDbObjectId)'''
     ...
     def addPersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
@@ -8771,6 +8816,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -10485,6 +10535,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -11971,7 +12026,12 @@ wcs2Ecs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
 
 class Curve:
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
@@ -15440,7 +15500,7 @@ wblock( (Database)arg1, (Database)arg2 [, (ObjectId)arg3]) -> ErrorStatus :
     ...
 
 class DbObject:
-    def __init__ (self: DbObject,id: ObjectId,mode: OpenMode)-> None :
+    def __init__ (self: DbObject,id: ObjectId,mode: OpenMode=kForRead)-> None :
       '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
@@ -15629,6 +15689,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -16955,6 +17020,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -17590,6 +17660,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -17814,7 +17889,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
 class Dimension:
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
@@ -20624,7 +20704,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
 
 class Entity:
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
@@ -23435,6 +23520,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -24010,6 +24100,16 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)
+
 __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4) -> None :
 
     C++ signature :
@@ -24028,12 +24128,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (bool)arg5,
 __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5, (bool)arg6, (bool)arg7, (bool)arg8, (bool)arg9) -> None :
 
     C++ signature :
-        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,bool,bool,bool,bool)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+        void __init__(struct _object * __ptr64,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,bool,bool,bool,bool)'''
     ...
     def addPersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
@@ -24645,6 +24740,11 @@ __init__( (object)arg1, (DxfCode)arg2, (DxfCode)arg3, (DxfCode)arg4, (DxfCode)ar
     C++ signature :
         void __init__(struct _object * __ptr64,short,short,short,short)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -25249,6 +25349,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -26006,6 +26111,11 @@ __init__( (object)arg1, (str)arg2, (bool)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -27676,6 +27786,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -29498,7 +29613,12 @@ __init__( (object)arg1) -> None :
 
 class Image:
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
@@ -30876,6 +30996,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -31407,6 +31532,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -34023,6 +34153,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -35913,6 +36048,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -36302,6 +36442,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -36882,6 +37027,11 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3, (int)arg4, (int)arg5, (fl
 
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d {lvalue},class PyDbObjectId,unsigned short,unsigned short,double,double)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -44248,6 +44398,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -45095,6 +45250,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -46570,6 +46730,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -46832,6 +46997,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -47791,6 +47961,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -48624,6 +48799,11 @@ __init__( (object)arg1, (bool)arg2) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,bool)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -49370,6 +49550,11 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d {lvalue})
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -49992,6 +50177,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -51576,6 +51766,11 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -52167,6 +52362,11 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -52765,6 +52965,11 @@ __init__( (object)arg1, (int)arg2) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,unsigned int)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -53725,6 +53930,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -54664,6 +54874,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -55506,6 +55721,11 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -56098,6 +56318,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -57423,6 +57648,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -58791,6 +59021,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -59605,6 +59840,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -59939,6 +60179,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -60384,6 +60629,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -60617,6 +60867,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -61321,6 +61576,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -61895,6 +62155,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -63628,7 +63893,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
 
 class SequenceEnd:
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
@@ -64470,6 +64740,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -65529,6 +65804,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -66103,6 +66383,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -67174,7 +67459,12 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
 
 class SymbolTableRecord:
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
@@ -67407,6 +67697,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -70743,6 +71038,11 @@ __init__( (object)arg1, (Point3d)arg2, (str)arg3, (ObjectId)arg4, (float)arg5, (
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},double,double)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -72063,6 +72363,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -72980,6 +73285,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -73252,7 +73562,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
 class UnderlayDefinition:
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
@@ -73537,7 +73852,12 @@ class UnderlayLayer:
 
 class UnderlayReference:
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
@@ -74825,7 +75145,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
 
 class Vertex:
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
@@ -75409,6 +75734,11 @@ __init__( (object)arg1, (Point3d)arg2, (float)arg3, (float)arg4, (float)arg5, (f
 
     C++ signature :
         void __init__(struct _object * __ptr64,class AcGePoint3d,double,double,double,double,int)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -76215,6 +76545,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -76894,6 +77229,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
@@ -78545,6 +78885,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
@@ -79640,6 +79985,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
