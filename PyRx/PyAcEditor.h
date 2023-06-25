@@ -8,7 +8,6 @@ void makeAcEditorWrapper();
 class PyAcEditor
 {
 public:
-    static void                 alert(const std::string& prompt);
     static boost::python::tuple getInteger(const std::string& prompt);
     static boost::python::tuple getDouble(const std::string& prompt);
     static boost::python::tuple getAngle(const AcGePoint3d& basePt, const std::string& prompt);
@@ -43,6 +42,6 @@ public:
     static Acad::PromptStatus   initGet(int val, const std::string& skwl);
     static boost::python::tuple getKword(const std::string& skwl);
     static boost::python::list  traceBoundary(const AcGePoint3d& seedPoint, bool detectIslands);
-    static std::string className();
+    static std::string          className();
 };
 
