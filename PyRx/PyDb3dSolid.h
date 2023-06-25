@@ -11,6 +11,7 @@ class PyDb3dSolid : public PyDbEntity
 public:
     PyDb3dSolid();
     PyDb3dSolid(AcDb3dSolid* ptr, bool autoDelete);
+    PyDb3dSolid(const PyDbObjectId& id);
     PyDb3dSolid(const PyDbObjectId& id, AcDb::OpenMode mode);
     Acad::ErrorStatus   createBox(double xLen, double yLen, double zLen);
     Acad::ErrorStatus   createFrustum(double height, double xRadius, double yRadius, double topXRadius);
@@ -36,6 +37,7 @@ class PyDbRegion : public PyDbEntity
 public:
     PyDbRegion();
     PyDbRegion(AcDbRegion* ptr, bool autoDelete);
+    PyDbRegion(const PyDbObjectId& id);
     PyDbRegion(const PyDbObjectId& id, AcDb::OpenMode mode);
     static std::string  className();
     static PyRxClass    desc();
@@ -54,6 +56,7 @@ class PyDbBody : public PyDbEntity
 public:
     PyDbBody();
     PyDbBody(AcDbBody* ptr, bool autoDelete);
+    PyDbBody(const PyDbObjectId& id);
     PyDbBody(const PyDbObjectId& id, AcDb::OpenMode mode);
     static std::string  className();
     static PyRxClass    desc();

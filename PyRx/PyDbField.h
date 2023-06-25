@@ -10,6 +10,7 @@ public:
     PyDbField(const std::string& pszFieldCode);
     PyDbField(const std::string& pszFieldCode, bool bTextField);
     PyDbField(AcDbField* ptr, bool autoDelete);
+    PyDbField(const PyDbObjectId& id);
     PyDbField(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbField() override = default;
     Acad::ErrorStatus   setInObject(PyDbObject& pObj, const std::string& pszPropName);

@@ -7,6 +7,7 @@ class PyDbCurve : public PyDbEntity
 {
 public:
     PyDbCurve(AcDbCurve* ptr, bool autoDelete);
+    PyDbCurve(const PyDbObjectId& id);
     PyDbCurve(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbCurve() override = default;
     virtual Adesk::Boolean      isClosed() const;

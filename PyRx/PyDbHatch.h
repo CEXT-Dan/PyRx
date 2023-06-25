@@ -10,6 +10,7 @@ class PyDbHatch : public PyDbEntity
 public:
     PyDbHatch();
     PyDbHatch(AcDbHatch* ptr, bool autoDelete);
+    PyDbHatch(const PyDbObjectId& id);
     PyDbHatch(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbHatch() override = default;
     double				elevation() const;

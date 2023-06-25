@@ -124,6 +124,11 @@ PyDbTableStyle::PyDbTableStyle(const PyDbObjectId& id, AcDb::OpenMode mode)
     this->resetImp(pobj, false, true);
 }
 
+PyDbTableStyle::PyDbTableStyle(const PyDbObjectId& id)
+    : PyDbTableStyle(id, AcDb::OpenMode::kForRead)
+{
+}
+
 std::string PyDbTableStyle::getName()
 {
 #ifdef BRXAPP

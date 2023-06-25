@@ -12,6 +12,7 @@ class PyDbViewport : public PyDbEntity
 public:
     PyDbViewport();
     PyDbViewport(AcDbViewport* ptr, bool autoDelete);
+    PyDbViewport(const PyDbObjectId& id);
     PyDbViewport(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbViewport() override = default;
     Acad::ErrorStatus   setModelView(const PyDbXrefObjectId& xrefObjId);

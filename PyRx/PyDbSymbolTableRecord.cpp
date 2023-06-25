@@ -10,6 +10,7 @@ using namespace boost::python;
 void makeAcDbSymbolTableRecordWrapper()
 {
     class_<PyDbSymbolTableRecord, bases<PyDbObject>>("SymbolTableRecord", boost::python::no_init)
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("getName", &PyDbSymbolTableRecord::getName)
         .def("setName", &PyDbSymbolTableRecord::setName)
@@ -37,6 +38,11 @@ PyDbSymbolTableRecord::PyDbSymbolTableRecord(const PyDbObjectId& id, AcDb::OpenM
     if (auto es = acdbOpenObject<AcDbSymbolTableRecord>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbSymbolTableRecord::PyDbSymbolTableRecord(const PyDbObjectId& id)
+    : PyDbSymbolTableRecord(id, AcDb::OpenMode::kForRead)
+{
 }
 
 std::string PyDbSymbolTableRecord::getName()
@@ -108,6 +114,7 @@ void makeAcDbDimStyleTableRecordWrapper()
 {
     class_<PyDbDimStyleTableRecord, bases<PyDbSymbolTableRecord>>("DimStyleTableRecord")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbDimStyleTableRecord::className).staticmethod("className")
         .def("desc", &PyDbDimStyleTableRecord::desc).staticmethod("desc")
@@ -133,6 +140,11 @@ PyDbDimStyleTableRecord::PyDbDimStyleTableRecord(const PyDbObjectId& id, AcDb::O
     if (auto es = acdbOpenObject<AcDbDimStyleTableRecord>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbDimStyleTableRecord::PyDbDimStyleTableRecord(const PyDbObjectId& id)
+    : PyDbDimStyleTableRecord(id, AcDb::OpenMode::kForRead)
+{
 }
 
 std::string PyDbDimStyleTableRecord::className()
@@ -172,6 +184,7 @@ AcDbDimStyleTableRecord* PyDbDimStyleTableRecord::impObj(const std::source_locat
 void makePyDbAbstractViewTableRecordWrapper()
 {
     class_<PyDbAbstractViewTableRecord, bases<PyDbSymbolTableRecord>>("AbstractViewTableRecord", boost::python::no_init)
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("centerPoint", &PyDbAbstractViewTableRecord::centerPoint)
         .def("setCenterPoint", &PyDbAbstractViewTableRecord::setCenterPoint)
@@ -252,6 +265,11 @@ PyDbAbstractViewTableRecord::PyDbAbstractViewTableRecord(const PyDbObjectId& id,
     if (auto es = acdbOpenObject<AcDbAbstractViewTableRecord>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbAbstractViewTableRecord::PyDbAbstractViewTableRecord(const PyDbObjectId& id)
+    : PyDbAbstractViewTableRecord(id, AcDb::OpenMode::kForRead)
+{
 }
 
 AcGePoint2d PyDbAbstractViewTableRecord::centerPoint() const
@@ -572,6 +590,7 @@ void makePyDbViewportTableRecordWrapper()
 {
     class_<PyDbViewportTableRecord, bases<PyDbAbstractViewTableRecord>>("ViewportTableRecord")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("number", &PyDbViewportTableRecord::number)
         .def("lowerLeftCorner", &PyDbViewportTableRecord::lowerLeftCorner)
@@ -646,6 +665,11 @@ PyDbViewportTableRecord::PyDbViewportTableRecord(const PyDbObjectId& id, AcDb::O
     if (auto es = acdbOpenObject<AcDbViewportTableRecord>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbViewportTableRecord::PyDbViewportTableRecord(const PyDbObjectId& id)
+    : PyDbViewportTableRecord(id, AcDb::OpenMode::kForRead)
+{
 }
 
 Adesk::Int16 PyDbViewportTableRecord::number() const
@@ -991,6 +1015,7 @@ void makePyDbViewTableRecordWrapper()
 {
     class_<PyDbViewTableRecord, bases<PyDbAbstractViewTableRecord>>("ViewTableRecord")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("annotationScale", &PyDbViewTableRecord::annotationScale)
         .def("setAnnotationScale", &PyDbViewTableRecord::setAnnotationScale)
@@ -1040,6 +1065,11 @@ PyDbViewTableRecord::PyDbViewTableRecord(const PyDbObjectId& id, AcDb::OpenMode 
     if (auto es = acdbOpenObject<AcDbViewTableRecord>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbViewTableRecord::PyDbViewTableRecord(const PyDbObjectId& id)
+    : PyDbViewTableRecord(id, AcDb::OpenMode::kForRead)
+{
 }
 
 Acad::ErrorStatus PyDbViewTableRecord::setParametersFromViewport(PyDbObjectId& objId)
@@ -1245,6 +1275,7 @@ void makeAcDbBlockTableRecordWrapper()
 {
     class_<PyDbBlockTableRecord, bases<PyDbSymbolTableRecord>>("BlockTableRecord")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("appendAcDbEntity", &PyDbBlockTableRecord::appendAcDbEntity)
         .def("objectIds", &PyDbBlockTableRecord::objectIds)
@@ -1306,6 +1337,11 @@ PyDbBlockTableRecord::PyDbBlockTableRecord(const PyDbObjectId& id, AcDb::OpenMod
     if (auto es = acdbOpenObject<AcDbBlockTableRecord>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbBlockTableRecord::PyDbBlockTableRecord(const PyDbObjectId& id)
+    : PyDbBlockTableRecord(id, AcDb::OpenMode::kForRead)
+{
 }
 
 PyDbObjectId PyDbBlockTableRecord::appendAcDbEntity(const PyDbEntity& ent)
@@ -1589,6 +1625,7 @@ void makeAcDbLayerTableRecordWrapper()
 {
     class_<PyDbLayerTableRecord, bases<PyDbSymbolTableRecord>>("LayerTableRecord")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("isFrozen", &PyDbLayerTableRecord::isFrozen)
         .def("setIsFrozen", &PyDbLayerTableRecord::setIsFrozen)
@@ -1669,6 +1706,11 @@ PyDbLayerTableRecord::PyDbLayerTableRecord(const PyDbObjectId& id, AcDb::OpenMod
     if (auto es = acdbOpenObject<AcDbLayerTableRecord>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbLayerTableRecord::PyDbLayerTableRecord(const PyDbObjectId& id)
+    : PyDbLayerTableRecord(id, AcDb::OpenMode::kForRead)
+{
 }
 
 bool PyDbLayerTableRecord::isFrozen() const
@@ -1985,6 +2027,7 @@ void makePyDbTextStyleTableRecordWrapper()
 {
     class_<PyDbTextStyleTableRecord, bases<PyDbSymbolTableRecord>>("TextStyleTableRecord")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("isShapeFile", &PyDbTextStyleTableRecord::isShapeFile)
         .def("setIsShapeFile", &PyDbTextStyleTableRecord::setIsShapeFile)
@@ -2030,6 +2073,11 @@ PyDbTextStyleTableRecord::PyDbTextStyleTableRecord(const PyDbObjectId& id, AcDb:
     if (auto es = acdbOpenObject<AcDbTextStyleTableRecord>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbTextStyleTableRecord::PyDbTextStyleTableRecord(const PyDbObjectId& id)
+    : PyDbTextStyleTableRecord(id, AcDb::OpenMode::kForRead)
+{
 }
 
 Adesk::Boolean PyDbTextStyleTableRecord::isShapeFile() const
@@ -2200,6 +2248,7 @@ void makePyDbUCSTableRecordWrapper()
 {
     class_<PyDbUCSTableRecord, bases<PyDbSymbolTableRecord>>("UCSTableRecord")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("origin", &PyDbUCSTableRecord::origin)
         .def("setOrigin", &PyDbUCSTableRecord::setOrigin)
@@ -2233,6 +2282,11 @@ PyDbUCSTableRecord::PyDbUCSTableRecord(const PyDbObjectId& id, AcDb::OpenMode mo
     if (auto es = acdbOpenObject<AcDbUCSTableRecord>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbUCSTableRecord::PyDbUCSTableRecord(const PyDbObjectId& id)
+    : PyDbUCSTableRecord(id, AcDb::OpenMode::kForRead)
+{
 }
 
 AcGePoint3d PyDbUCSTableRecord::origin() const
@@ -2321,6 +2375,7 @@ void makePyDbRegAppTableRecordWrapper()
 {
     class_<PyDbRegAppTableRecord, bases<PyDbSymbolTableRecord>>("RegAppTableRecord")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbRegAppTableRecord::className).staticmethod("className")
         .def("desc", &PyDbRegAppTableRecord::desc).staticmethod("desc")
@@ -2346,6 +2401,11 @@ PyDbRegAppTableRecord::PyDbRegAppTableRecord(const PyDbObjectId& id, AcDb::OpenM
     if (auto es = acdbOpenObject<AcDbRegAppTableRecord>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbRegAppTableRecord::PyDbRegAppTableRecord(const PyDbObjectId& id)
+    : PyDbRegAppTableRecord(id, AcDb::OpenMode::kForRead)
+{
 }
 
 std::string PyDbRegAppTableRecord::className()
@@ -2386,6 +2446,7 @@ void makePyDbLinetypeTableRecordWrapper()
 {
     class_<PyDbLinetypeTableRecord, bases<PyDbSymbolTableRecord>>("LinetypeTableRecord")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("comments", &PyDbLinetypeTableRecord::comments)
         .def("setComments", &PyDbLinetypeTableRecord::setComments)
@@ -2437,6 +2498,11 @@ PyDbLinetypeTableRecord::PyDbLinetypeTableRecord(const PyDbObjectId& id, AcDb::O
     if (auto es = acdbOpenObject<AcDbLinetypeTableRecord>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbLinetypeTableRecord::PyDbLinetypeTableRecord(const PyDbObjectId& id)
+    : PyDbLinetypeTableRecord(id, AcDb::OpenMode::kForRead)
+{
 }
 
 std::string PyDbLinetypeTableRecord::comments() const

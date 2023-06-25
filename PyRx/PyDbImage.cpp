@@ -10,6 +10,7 @@ using namespace boost::python;
 void makePyDbImageWrapper()
 {
     class_<PyDbImage, bases<PyDbEntity>>("Image", boost::python::no_init)
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbImage::className).staticmethod("className")
         .def("desc", &PyDbImage::desc).staticmethod("desc")
@@ -30,6 +31,11 @@ PyDbImage::PyDbImage(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbImage>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbImage::PyDbImage(const PyDbObjectId& id)
+    : PyDbImage(id, AcDb::OpenMode::kForRead)
+{
 }
 
 std::string PyDbImage::className()
@@ -71,6 +77,7 @@ void makePyDbRasterImageDefWrapper()
 {
     class_<PyDbRasterImageDef, bases<PyDbObject>>("RasterImageDef")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("setSourceFileName", &PyDbRasterImageDef::setSourceFileName)
         .def("setActiveFileName", &PyDbRasterImageDef::setActiveFileName)
@@ -143,6 +150,11 @@ PyDbRasterImageDef::PyDbRasterImageDef(const PyDbObjectId& id, AcDb::OpenMode mo
     if (auto es = acdbOpenObject<AcDbRasterImageDef>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbRasterImageDef::PyDbRasterImageDef(const PyDbObjectId& id)
+    : PyDbRasterImageDef(id, AcDb::OpenMode::kForRead)
+{
 }
 
 Acad::ErrorStatus PyDbRasterImageDef::setSourceFileName(const std::string& pPathName)
@@ -302,6 +314,7 @@ void makePyDbRasterImageDefReactorWrapper()
 {
     class_<PyDbRasterImageDefReactor, bases<PyDbObject>>("RasterImageDefReactor")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("setEnable", &PyDbRasterImageDefReactor::setEnable).staticmethod("setEnable")
         .def("className", &PyDbRasterImageDefReactor::className).staticmethod("className")
@@ -328,6 +341,11 @@ PyDbRasterImageDefReactor::PyDbRasterImageDefReactor(const PyDbObjectId& id, AcD
     if (auto es = acdbOpenObject<AcDbRasterImageDefReactor>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbRasterImageDefReactor::PyDbRasterImageDefReactor(const PyDbObjectId& id)
+    : PyDbRasterImageDefReactor(id, AcDb::OpenMode::kForRead)
+{
 }
 
 void PyDbRasterImageDefReactor::setEnable(Adesk::Boolean enable)
@@ -373,6 +391,7 @@ void makePyDbRasterImageWrapper()
 {
     class_<PyDbRasterImage, bases<PyDbImage>>("RasterImage")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("setImageDefId", &PyDbRasterImage::setImageDefId)
         .def("imageDefId", &PyDbRasterImage::imageDefId)
@@ -451,6 +470,11 @@ PyDbRasterImage::PyDbRasterImage(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbRasterImage>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbRasterImage::PyDbRasterImage(const PyDbObjectId& id)
+    : PyDbRasterImage(id, AcDb::OpenMode::kForRead)
+{
 }
 
 Acad::ErrorStatus PyDbRasterImage::setImageDefId(const PyDbObjectId& imageId)

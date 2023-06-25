@@ -99,6 +99,11 @@ PyDbEntity::PyDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
     this->resetImp(pobj, false, true);
 }
 
+PyDbEntity::PyDbEntity(const PyDbObjectId& id)
+    : PyDbEntity(id, AcDb::OpenMode::kForRead)
+{
+}
+
 PyDbObjectId PyDbEntity::blockId() const
 {
     return PyDbObjectId(impObj()->blockId());
@@ -495,6 +500,7 @@ AcDbEntity* PyDbEntity::impObj(const std::source_location& src /*= std::source_l
 void makeAcDbBlockBeginWrapper()
 {
     class_<PyDbBlockBegin, bases<PyDbEntity>>("BlockBegin", boost::python::no_init)
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbBlockBegin::className).staticmethod("className")
         .def("desc", &PyDbBlockBegin::desc).staticmethod("desc")
@@ -515,6 +521,11 @@ PyDbBlockBegin::PyDbBlockBegin(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbBlockBegin>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbBlockBegin::PyDbBlockBegin(const PyDbObjectId& id)
+    : PyDbBlockBegin(id, AcDb::OpenMode::kForRead)
+{
 }
 
 std::string PyDbBlockBegin::className()
@@ -554,6 +565,7 @@ AcDbBlockBegin* PyDbBlockBegin::impObj(const std::source_location& src /*= std::
 void makeAcDbBlockEndWrapper()
 {
     class_<PyDbBlockEnd, bases<PyDbEntity>>("BlockEnd", boost::python::no_init)
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbBlockEnd::className).staticmethod("className")
         .def("desc", &PyDbBlockEnd::desc).staticmethod("desc")
@@ -574,6 +586,11 @@ PyDbBlockEnd::PyDbBlockEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbBlockEnd>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbBlockEnd::PyDbBlockEnd(const PyDbObjectId& id)
+    : PyDbBlockEnd(id, AcDb::OpenMode::kForRead)
+{
 }
 
 std::string PyDbBlockEnd::className()
@@ -615,6 +632,7 @@ AcDbBlockEnd* PyDbBlockEnd::impObj(const std::source_location& src /*= std::sour
 void makeAcDbSequenceEndWrapper()
 {
     class_<PyDbSequenceEnd, bases<PyDbEntity>>("SequenceEnd", boost::python::no_init)
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbSequenceEnd::className).staticmethod("className")
         .def("desc", &PyDbSequenceEnd::desc).staticmethod("desc")
@@ -635,6 +653,11 @@ PyDbSequenceEnd::PyDbSequenceEnd(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbSequenceEnd>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbSequenceEnd::PyDbSequenceEnd(const PyDbObjectId& id)
+    : PyDbSequenceEnd(id, AcDb::OpenMode::kForRead)
+{
 }
 
 std::string PyDbSequenceEnd::className()

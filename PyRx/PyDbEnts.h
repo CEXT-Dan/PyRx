@@ -20,6 +20,7 @@ public:
     PyDbText(const AcGePoint3d& position, const std::string& text);
     PyDbText(const AcGePoint3d& position, const std::string& text, PyDbObjectId& style, double height, double rotation);
     PyDbText(AcDbText* ptr, bool autoDelete);
+    PyDbText(const PyDbObjectId& id);
     PyDbText(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbText() override = default;
     AcGePoint3d         position() const;
@@ -76,6 +77,7 @@ public:
     PyDbAttributeDefinition(const AcGePoint3d& position, const std::string& text, const std::string& tag, const std::string& prompt, const PyDbObjectId& style);
     PyDbAttributeDefinition(AcDbAttributeDefinition* ptr, bool autoDelete);
     PyDbAttributeDefinition(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbAttributeDefinition(const PyDbObjectId& id);
     virtual ~PyDbAttributeDefinition() override = default;
     std::string         prompt() const;
     Acad::ErrorStatus   setPrompt(const std::string& val);
@@ -117,6 +119,7 @@ public:
     PyDbAttribute(const AcGePoint3d& position, const std::string& text, const std::string& tag, const PyDbObjectId& style);
     PyDbAttribute(AcDbAttribute* ptr, bool autoDelete);
     PyDbAttribute(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbAttribute(const PyDbObjectId& id);
     virtual ~PyDbAttribute() override = default;
     std::string tag() const;
     Acad::ErrorStatus   setTag(const std::string& val);
@@ -155,6 +158,7 @@ public:
     PyDbBlockReference(const AcGePoint3d& position, const PyDbObjectId& blockTableRec);
     PyDbBlockReference(AcDbBlockReference* ptr, bool autoDelete);
     PyDbBlockReference(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbBlockReference(const PyDbObjectId& id);
     virtual ~PyDbBlockReference() override = default;
     PyDbObjectId        blockTableRecord() const;
     Acad::ErrorStatus   setBlockTableRecord(const PyDbObjectId& val);
@@ -218,6 +222,7 @@ public:
     PyDbMInsertBlock(const AcGePoint3d& position, const PyDbObjectId& blockTableRec, Adesk::UInt16 columns, Adesk::UInt16 rows, double colSpacing, double rowSpacing);
     PyDbMInsertBlock(AcDbMInsertBlock* ptr, bool autoDelete);
     PyDbMInsertBlock(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbMInsertBlock(const PyDbObjectId& id);
     virtual ~PyDbMInsertBlock() override = default;
     Adesk::UInt16      columns() const;
     Acad::ErrorStatus  setColumns(Adesk::UInt16 val);
@@ -242,6 +247,7 @@ class PyDbVertex : public PyDbEntity
 {
 public:
     PyDbVertex(AcDbVertex* ptr, bool autoDelete);
+    PyDbVertex(const PyDbObjectId& id);
     PyDbVertex(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbVertex() = default;
     static std::string  className();
@@ -262,6 +268,7 @@ public:
     PyDb2dVertex(const AcGePoint3d& pos);
     PyDb2dVertex(const AcGePoint3d& pos, double bulge, double startWidth, double endWidth, double tangent, Adesk::Int32 vertexIdentifier);
     PyDb2dVertex(AcDb2dVertex* ptr, bool autoDelete);
+    PyDb2dVertex(const PyDbObjectId& id);
     PyDb2dVertex(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDb2dVertex() = default;
     AcDb::Vertex2dType vertexType() const;
@@ -298,6 +305,7 @@ public:
     PyDb3dPolylineVertex();
     PyDb3dPolylineVertex(const AcGePoint3d& pos);
     PyDb3dPolylineVertex(AcDb3dPolylineVertex* ptr, bool autoDelete);
+    PyDb3dPolylineVertex(const PyDbObjectId& id);
     PyDb3dPolylineVertex(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDb3dPolylineVertex() = default;
     AcDb::Vertex3dType  vertexType() const;
@@ -320,6 +328,7 @@ public:
     PyDbPolygonMeshVertex();
     PyDbPolygonMeshVertex(const AcGePoint3d& pos);
     PyDbPolygonMeshVertex(AcDbPolygonMeshVertex* ptr, bool autoDelete);
+    PyDbPolygonMeshVertex(const PyDbObjectId& id);
     PyDbPolygonMeshVertex(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbPolygonMeshVertex() = default;
     AcDb::Vertex3dType  vertexType() const;
@@ -342,6 +351,7 @@ public:
     PyDbPolyFaceMeshVertex();
     PyDbPolyFaceMeshVertex(const AcGePoint3d& pos);
     PyDbPolyFaceMeshVertex(AcDbPolyFaceMeshVertex* ptr, bool autoDelete);
+    PyDbPolyFaceMeshVertex(const PyDbObjectId& id);
     PyDbPolyFaceMeshVertex(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbPolyFaceMeshVertex() = default;
     AcGePoint3d         position() const;
@@ -363,6 +373,7 @@ public:
     PyDbFaceRecord();
     PyDbFaceRecord(Adesk::Int16 vtx0, Adesk::Int16 vtx1, Adesk::Int16 vtx2, Adesk::Int16 vtx3);
     PyDbFaceRecord(AcDbFaceRecord* ptr, bool autoDelete);
+    PyDbFaceRecord(const PyDbObjectId& id);
     PyDbFaceRecord(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbFaceRecord() = default;
     Adesk::Int16        getVertexAt(Adesk::UInt16 faceIdx) const;
@@ -387,6 +398,7 @@ public:
     PyDbPoint();
     PyDbPoint(const AcGePoint3d& point);
     PyDbPoint(AcDbPoint* ptr, bool autoDelete);
+    PyDbPoint(const PyDbObjectId& id);
     PyDbPoint(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbPoint() override = default;
     AcGePoint3d         position() const;
@@ -414,6 +426,7 @@ public:
     PyDb2dPolyline();
     virtual ~PyDb2dPolyline() override = default;
     PyDb2dPolyline(AcDb2dPolyline* ptr, bool autoDelete);
+    PyDb2dPolyline(const PyDbObjectId& id);
     PyDb2dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDb2dPolyline(AcDb::Poly2dType type, const boost::python::list& vertices, Adesk::Boolean closed);
     AcDb::Poly2dType    polyType() const;
@@ -466,6 +479,7 @@ class PyDb3dPolyline : public PyDbCurve
 public:
     PyDb3dPolyline();
     PyDb3dPolyline(AcDb3dPolyline* ptr, bool autoDelete);
+    PyDb3dPolyline(const PyDbObjectId& id);
     PyDb3dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDb3dPolyline(AcDb::Poly3dType, const boost::python::list& vertices, Adesk::Boolean closed);
     virtual ~PyDb3dPolyline() override = default;
@@ -502,6 +516,7 @@ class PyDbArc : public PyDbCurve
 public:
     PyDbArc();
     PyDbArc(AcDbArc* ptr, bool autoDelete);
+    PyDbArc(const PyDbObjectId& id);
     PyDbArc(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbArc(const AcGePoint3d& center, double radius, double startAngle, double endAngle);
     PyDbArc(const AcGePoint3d& center, const AcGeVector3d& normal, double radius, double startAngle, double endAngle);
@@ -536,6 +551,7 @@ class PyDbCircle : public PyDbCurve
 public:
     PyDbCircle();
     PyDbCircle(AcDbCircle* ptr, bool autoDelete);
+    PyDbCircle(const PyDbObjectId& id);
     PyDbCircle(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbCircle(const AcGePoint3d& cntr, const AcGeVector3d& nrm, double radius);
     virtual ~PyDbCircle() override = default;
@@ -567,6 +583,7 @@ class PyDbLine : public PyDbCurve
 public:
     PyDbLine();
     PyDbLine(AcDbLine* ptr, bool autoDelete);
+    PyDbLine(const PyDbObjectId& id);
     PyDbLine(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbLine(const AcGePoint3d& start, const AcGePoint3d& end);
     virtual ~PyDbLine() override = default;
@@ -596,6 +613,7 @@ public:
     PyDbPolyline();
     PyDbPolyline(unsigned int num_verts);
     PyDbPolyline(AcDbPolyline* ptr, bool autoDelete);
+    PyDbPolyline(const PyDbObjectId& id);
     PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbPolyline() override = default;
     AcGePoint3d         getPoint3dAt(unsigned int) const;
@@ -673,6 +691,7 @@ public:
         Adesk::Boolean e2vis,
         Adesk::Boolean e3vis);
     PyDbFace(AcDbFace* ptr, bool autoDelete);
+    PyDbFace(const PyDbObjectId& id);
     PyDbFace(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbFace() override = default;
     AcGePoint3d         getVertexAt(Adesk::UInt16) const;
@@ -696,6 +715,7 @@ class PyDbFcf : public PyDbEntity
 public:
     PyDbFcf();
     PyDbFcf(AcDbFcf* ptr, bool autoDelete);
+    PyDbFcf(const PyDbObjectId& id);
     PyDbFcf(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbFcf(const std::string&, const AcGePoint3d& pnt, const AcGeVector3d& normal, const AcGeVector3d& direction);
     virtual ~PyDbFcf() override = default;

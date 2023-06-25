@@ -8,6 +8,7 @@ void makeAcDbFieldtWrapper()
         .def(init<>())
         .def(init<const std::string&>())
         .def(init<const std::string&, bool>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("setInObject", &PyDbField::setInObject)
         .def("postInDatabase", &PyDbField::postInDatabase)
@@ -122,6 +123,11 @@ PyDbField::PyDbField(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbField>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbField::PyDbField(const PyDbObjectId& id)
+    : PyDbField(id, AcDb::OpenMode::kForRead)
+{
 }
 
 Acad::ErrorStatus PyDbField::setInObject(PyDbObject& pObj, const std::string& pszPropName)

@@ -12,6 +12,7 @@ class PyDbDimension : public PyDbEntity
 {
 public:
     PyDbDimension(AcDbDimension* ptr, bool autoDelete);
+    PyDbDimension(const PyDbObjectId& id);
     PyDbDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbDimension() override = default;
     boost::python::tuple textDefinedSize() const;
@@ -148,6 +149,7 @@ public:
     PyDb2LineAngularDimension();
     virtual ~PyDb2LineAngularDimension() override = default;
     PyDb2LineAngularDimension(AcDb2LineAngularDimension* ptr, bool autoDelete);
+    PyDb2LineAngularDimension(const PyDbObjectId& id);
     PyDb2LineAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDb2LineAngularDimension(const AcGePoint3d& xLine1Start,
         const AcGePoint3d& xLine1End,
@@ -211,6 +213,7 @@ public:
         const PyDbObjectId& dimStyle);
     PyDb3PointAngularDimension(AcDb3PointAngularDimension* ptr, bool autoDelete);
     PyDb3PointAngularDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDb3PointAngularDimension(const PyDbObjectId& id);
     AcGePoint3d         arcPoint() const;
     Acad::ErrorStatus   setArcPoint(const AcGePoint3d& val);
     AcGePoint3d         xLine1Point() const;
@@ -250,6 +253,7 @@ public:
         const PyDbObjectId& dimStyle);
     PyDbAlignedDimension(AcDbAlignedDimension* ptr, bool autoDelete);
     PyDbAlignedDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbAlignedDimension(const PyDbObjectId& id);
     AcGePoint3d         xLine1Point() const;
     Acad::ErrorStatus   setXLine1Point(const AcGePoint3d& val);
     AcGePoint3d         xLine2Point() const;
@@ -294,6 +298,7 @@ public:
         const PyDbObjectId& styleId);
     PyDbArcDimension(AcDbArcDimension* ptr, bool autoDelete);
     PyDbArcDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbArcDimension(const PyDbObjectId& id);
     AcGePoint3d         arcPoint() const;
     Acad::ErrorStatus   setArcPoint(const AcGePoint3d& arcPt);
     AcGePoint3d         xLine1Point() const;
@@ -333,6 +338,7 @@ public:
     PyDbDiametricDimension();
     PyDbDiametricDimension(AcDbDiametricDimension* ptr, bool autoDelete);
     PyDbDiametricDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbDiametricDimension(const PyDbObjectId& id);
     PyDbDiametricDimension(const AcGePoint3d& chordPoint,
         const AcGePoint3d& farChordPoint,
         double leaderLength);
@@ -371,6 +377,7 @@ class PyDbOrdinateDimension : public PyDbDimension
 public:
     PyDbOrdinateDimension();
     PyDbOrdinateDimension(AcDbOrdinateDimension* ptr, bool autoDelete);
+    PyDbOrdinateDimension(const PyDbObjectId& id);
     PyDbOrdinateDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbOrdinateDimension(
         Adesk::Boolean useXAxis,
@@ -415,6 +422,7 @@ class PyDbRadialDimension : public PyDbDimension
 public:
     PyDbRadialDimension();
     PyDbRadialDimension(AcDbRadialDimension* ptr, bool autoDelete);
+    PyDbRadialDimension(const PyDbObjectId& id);
     PyDbRadialDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbRadialDimension(
         const AcGePoint3d& center,
@@ -457,6 +465,7 @@ class PyDbRadialDimensionLarge : public PyDbDimension
 public:
     PyDbRadialDimensionLarge();
     PyDbRadialDimensionLarge(AcDbRadialDimensionLarge* ptr, bool autoDelete);
+    PyDbRadialDimensionLarge(const PyDbObjectId& id);
     PyDbRadialDimensionLarge(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbRadialDimensionLarge(const AcGePoint3d& center,
         const AcGePoint3d& chordPoint,
@@ -509,6 +518,7 @@ class PyDbRotatedDimension : public PyDbDimension
 public:
     PyDbRotatedDimension();
     PyDbRotatedDimension(AcDbRotatedDimension* ptr, bool autoDelete);
+    PyDbRotatedDimension(const PyDbObjectId& id);
     PyDbRotatedDimension(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbRotatedDimension(
         double rotation,

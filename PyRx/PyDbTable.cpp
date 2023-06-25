@@ -8,6 +8,7 @@ void makeyDbTableWrapper()
 {
     class_<PyDbTable, bases<PyDbBlockReference>>("Table")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("tableStyle", &PyDbTable::tableStyle)
         .def("setTableStyle", &PyDbTable::setTableStyle)
@@ -451,6 +452,11 @@ PyDbTable::PyDbTable(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbTable>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbTable::PyDbTable(const PyDbObjectId& id)
+    : PyDbTable(id, AcDb::OpenMode::kForRead)
+{
 }
 
 PyDbObjectId PyDbTable::tableStyle() const

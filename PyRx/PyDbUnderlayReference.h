@@ -32,6 +32,7 @@ class PyDbUnderlayDefinition : public PyDbObject
 {
 public:
     PyDbUnderlayDefinition(AcDbUnderlayDefinition* ptr, bool autoDelete);
+    PyDbUnderlayDefinition(const PyDbObjectId& id);
     PyDbUnderlayDefinition(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbUnderlayDefinition() override = default;
 
@@ -69,6 +70,7 @@ class PyDbUnderlayReference : public PyDbEntity
 {
 public:
     PyDbUnderlayReference(AcDbUnderlayReference* ptr, bool autoDelete);
+    PyDbUnderlayReference(const PyDbObjectId& id);
     PyDbUnderlayReference(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbUnderlayReference() override = default;
     AcGePoint3d         position() const;
@@ -134,6 +136,7 @@ class PyDbPdfDefinition : public PyDbUnderlayDefinition
 public:
     PyDbPdfDefinition();
     PyDbPdfDefinition(AcDbUnderlayDefinition* ptr, bool autoDelete);
+    PyDbPdfDefinition(const PyDbObjectId& id);
     PyDbPdfDefinition(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbPdfDefinition() override = default;
 
@@ -157,6 +160,7 @@ class PyDbPdfReference : public PyDbUnderlayReference
 public:
     PyDbPdfReference();
     PyDbPdfReference(AcDbPdfReference* ptr, bool autoDelete);
+    PyDbPdfReference(const PyDbObjectId& id);
     PyDbPdfReference(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbPdfReference() override = default;
     

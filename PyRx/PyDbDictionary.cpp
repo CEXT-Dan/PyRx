@@ -10,6 +10,7 @@ void makeAcDbDictionaryWrapper()
 {
     class_<PyDbDictionary, bases<PyDbObject>>("Dictionary")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("getAt", &PyDbDictionary::getAt)
         .def("has", &PyDbDictionary::has1)
@@ -48,6 +49,11 @@ PyDbDictionary::PyDbDictionary(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbDictionary>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbDictionary::PyDbDictionary(const PyDbObjectId& id)
+    : PyDbDictionary(id, AcDb::OpenMode::kForRead)
+{
 }
 
 PyDbObjectId PyDbDictionary::getAt(const std::string& entryName)

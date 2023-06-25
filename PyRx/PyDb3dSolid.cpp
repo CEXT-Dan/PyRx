@@ -9,6 +9,7 @@ void makePyDb3dSolidWrapper()
 {
     class_<PyDb3dSolid, bases<PyDbEntity>>("Solid3d")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("createBox", &PyDb3dSolid::createBox)
         .def("createFrustum", &PyDb3dSolid::createFrustum)
@@ -41,6 +42,11 @@ PyDb3dSolid::PyDb3dSolid(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDb3dSolid>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDb3dSolid::PyDb3dSolid(const PyDbObjectId& id)
+    : PyDb3dSolid(id, AcDb::OpenMode::kForRead)
+{
 }
 
 Acad::ErrorStatus PyDb3dSolid::createBox(double xLen, double yLen, double zLen)
@@ -117,6 +123,7 @@ void makePyDbRegionWrapper()
 {
     class_<PyDbRegion, bases<PyDbEntity>>("Region")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbRegion::className).staticmethod("className")
         .def("desc", &PyDbRegion::desc).staticmethod("desc")
@@ -142,6 +149,11 @@ PyDbRegion::PyDbRegion(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbRegion>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbRegion::PyDbRegion(const PyDbObjectId& id)
+    : PyDbRegion(id, AcDb::OpenMode::kForRead)
+{
 }
 
 std::string PyDbRegion::className()
@@ -182,6 +194,7 @@ void makeAcDbBodyWrapper()
 {
     class_<PyDbBody, bases<PyDbEntity>>("Body")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbBody::className).staticmethod("className")
         .def("desc", &PyDbBody::desc).staticmethod("desc")
@@ -207,6 +220,11 @@ PyDbBody::PyDbBody(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbBody>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbBody::PyDbBody(const PyDbObjectId& id)
+    : PyDbBody(id, AcDb::OpenMode::kForRead)
+{
 }
 
 std::string PyDbBody::className()
