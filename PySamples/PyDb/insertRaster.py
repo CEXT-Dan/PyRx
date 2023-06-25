@@ -6,7 +6,9 @@ import PyDb as Db
 import PyAp as Ap
 import PyEd as Ed
 
-def PyRxCmd_doit():
+print("added command do_raster")
+
+def PyRxCmd_do_raster():
     try:
         dictName = "MY_IMAGE_NAME"
         db = Db.HostApplicationServices().workingDatabase()
