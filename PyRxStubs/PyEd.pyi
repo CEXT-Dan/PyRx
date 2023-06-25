@@ -89,6 +89,18 @@ audit( (Database)arg1, (bool)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         class boost::python::list getPredefinedHatchPatterns()'''
     ...
+    def getVar (self, *args, **kwargs)-> object :
+      '''getVar( (str)arg1) -> object :
+
+    C++ signature :
+        class boost::python::api::object getVar(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setVar (self, *args, **kwargs)-> bool :
+      '''setVar( (str)arg1, (object)arg2) -> bool :
+
+    C++ signature :
+        bool setVar(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::api::object)'''
+    ...
     def xrefDetach (self, *args, **kwargs)-> ErrorStatus :
       '''xrefDetach( (str)arg1) -> ErrorStatus :
 
@@ -754,12 +766,6 @@ class Editor:
     C++ signature :
         class PyDbObjectId activeViewportId()'''
     ...
-    def alert (self, *args, **kwargs)-> None :
-      '''alert( (str)arg1) -> None :
-
-    C++ signature :
-        void alert(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
-    ...
     def className (self, *args, **kwargs)-> str :
       '''className() -> str :
 
@@ -841,12 +847,6 @@ getPoint( (Point3d)arg1, (str)arg2) -> tuple :
 
     C++ signature :
         class boost::python::tuple getString(int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
-    ...
-    def getVar (self, *args, **kwargs)-> object :
-      '''getVar( (str)arg1) -> object :
-
-    C++ signature :
-        class boost::python::api::object getVar(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def initGet (self, *args, **kwargs)-> PromptStatus :
       '''initGet( (int)arg1, (str)arg2) -> PromptStatus :
@@ -947,12 +947,6 @@ selectWindowPolygon( (list)arg1, (list)arg2) -> tuple :
 
     C++ signature :
         enum Acad::ErrorStatus setCurrentUCS(class AcGeMatrix3d)'''
-    ...
-    def setVar (self, *args, **kwargs)-> bool :
-      '''setVar( (str)arg1, (object)arg2) -> bool :
-
-    C++ signature :
-        bool setVar(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::api::object)'''
     ...
     def ssget (self, *args, **kwargs)-> tuple :
       '''ssget( (str)arg1, (object)arg2, (object)arg3) -> tuple :

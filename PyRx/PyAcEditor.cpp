@@ -69,7 +69,6 @@ void makeAcEditorWrapper()
 {
     class_<PyAcEditor>("Editor")
         .def("className", &PyAcEditor::className).staticmethod("className")
-        .def("alert", &PyAcEditor::alert).staticmethod("alert")
         .def("getInteger", &PyAcEditor::getInteger).staticmethod("getInteger")
         .def("getDouble", &PyAcEditor::getDouble).staticmethod("getDouble")
         .def("getReal", &PyAcEditor::getDouble).staticmethod("getReal")
@@ -110,11 +109,6 @@ void makeAcEditorWrapper()
 
 //-----------------------------------------------------------------------------------------
 // PyAcEditor
-void PyAcEditor::alert(const std::string& prompt)
-{
-    acedAlert(utf8_to_wstr(prompt).c_str());
-}
-
 boost::python::tuple PyAcEditor::getInteger(const std::string& prompt)
 {
     PyAutoLockGIL lock;
