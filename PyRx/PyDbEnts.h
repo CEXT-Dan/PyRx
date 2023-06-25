@@ -155,10 +155,10 @@ class PyDbBlockReference : public PyDbEntity
 {
 public:
     PyDbBlockReference();
+    PyDbBlockReference(const PyDbObjectId& id);
+    PyDbBlockReference(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbBlockReference(const AcGePoint3d& position, const PyDbObjectId& blockTableRec);
     PyDbBlockReference(AcDbBlockReference* ptr, bool autoDelete);
-    PyDbBlockReference(const PyDbObjectId& id, AcDb::OpenMode mode);
-    PyDbBlockReference(const PyDbObjectId& id);
     virtual ~PyDbBlockReference() override = default;
     PyDbObjectId        blockTableRecord() const;
     Acad::ErrorStatus   setBlockTableRecord(const PyDbObjectId& val);
