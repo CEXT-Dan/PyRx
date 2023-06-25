@@ -17,6 +17,7 @@ void makePyDbTextWrapper()
         .def(init<>())
         .def(init<AcGePoint3d&, const std::string&>())
         .def(init<AcGePoint3d&, const std::string&, PyDbObjectId&, double, double>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("position", &PyDbText::position)
         .def("setPosition", &PyDbText::setPosition)
@@ -107,6 +108,11 @@ PyDbText::PyDbText(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbText>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbText::PyDbText(const PyDbObjectId& id)
+    : PyDbText(id, AcDb::OpenMode::kForRead)
+{
 }
 
 AcGePoint3d PyDbText::position() const
@@ -354,6 +360,7 @@ void makePyDbAttributeDefinitionWrapper()
     class_<PyDbAttributeDefinition, bases<PyDbText>>("AttributeDefinition")
         .def(init<>())
         .def(init<const AcGePoint3d&, const std::string&, const std::string&, const std::string&, const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("prompt", &PyDbAttributeDefinition::prompt)
         .def("setPrompt", &PyDbAttributeDefinition::setPrompt)
@@ -406,6 +413,11 @@ PyDbAttributeDefinition::PyDbAttributeDefinition(const PyDbObjectId& id, AcDb::O
     if (auto es = acdbOpenObject<AcDbAttributeDefinition>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbAttributeDefinition::PyDbAttributeDefinition(const PyDbObjectId& id)
+    : PyDbAttributeDefinition(id, AcDb::OpenMode::kForRead)
+{
 }
 
 std::string PyDbAttributeDefinition::prompt() const
@@ -560,6 +572,7 @@ void makePyDbAttributeWrapper()
     class_<PyDbAttribute, bases<PyDbText>>("AttributeReference")
         .def(init<>())
         .def(init<const AcGePoint3d&, const std::string&, const std::string&, const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("tag", &PyDbAttribute::tag)
         .def("setTag", &PyDbAttribute::setTag)
@@ -609,6 +622,11 @@ PyDbAttribute::PyDbAttribute(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbAttribute>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbAttribute::PyDbAttribute(const PyDbObjectId& id)
+    : PyDbAttribute(id, AcDb::OpenMode::kForRead)
+{
 }
 
 std::string PyDbAttribute::tag() const
@@ -749,6 +767,7 @@ void makeDbBlockReferenceWrapper()
     class_<PyDbBlockReference, bases<PyDbEntity>>("BlockReference")
         .def(init<>())
         .def(init<AcGePoint3d&, const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("blockTableRecord", &PyDbBlockReference::blockTableRecord)
         .def("setBlockTableRecord", &PyDbBlockReference::setBlockTableRecord)
@@ -799,6 +818,11 @@ PyDbBlockReference::PyDbBlockReference(const PyDbObjectId& id, AcDb::OpenMode mo
     if (auto es = acdbOpenObject<AcDbBlockReference>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbBlockReference::PyDbBlockReference(const PyDbObjectId& id)
+    : PyDbBlockReference(id, AcDb::OpenMode::kForRead)
+{
 }
 
 PyDbObjectId PyDbBlockReference::blockTableRecord() const
@@ -1046,6 +1070,7 @@ void makeDbMInsertBlockeWrapper()
     class_<PyDbMInsertBlock, bases<PyDbBlockReference>>("MInsertBlock")
         .def(init<>())
         .def(init<AcGePoint3d&, const PyDbObjectId&, Adesk::UInt16, Adesk::UInt16, double, double>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("columns", &PyDbMInsertBlock::columns)
         .def("setColumns", &PyDbMInsertBlock::setColumns)
@@ -1084,6 +1109,11 @@ PyDbMInsertBlock::PyDbMInsertBlock(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbMInsertBlock>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbMInsertBlock::PyDbMInsertBlock(const PyDbObjectId& id)
+    : PyDbMInsertBlock(id, AcDb::OpenMode::kForRead)
+{
 }
 
 Adesk::UInt16 PyDbMInsertBlock::columns() const
@@ -1163,6 +1193,7 @@ AcDbMInsertBlock* PyDbMInsertBlock::impObj(const std::source_location& src /*= s
 void makeAcDbVertexWrapper()
 {
     class_<PyDbVertex, bases<PyDbEntity>>("Vertex", boost::python::no_init)
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbVertex::className).staticmethod("className")
         .def("desc", &PyDbVertex::desc).staticmethod("desc")
@@ -1183,6 +1214,11 @@ PyDbVertex::PyDbVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbVertex>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbVertex::PyDbVertex(const PyDbObjectId& id)
+    : PyDbVertex(id, AcDb::OpenMode::kForRead)
+{
 }
 
 std::string PyDbVertex::className()
@@ -1227,6 +1263,7 @@ void makePyDb2dVertexWrapper()
 #ifndef BRXAPP
         .def(init<const AcGePoint3d&, double, double, double, double, Adesk::Int32>())
 #endif
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("vertexType", &PyDb2dVertex::vertexType)
         .def("position", &PyDb2dVertex::position)
@@ -1281,6 +1318,11 @@ PyDb2dVertex::PyDb2dVertex(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDb2dVertex>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDb2dVertex::PyDb2dVertex(const PyDbObjectId& id)
+    : PyDb2dVertex(id, AcDb::OpenMode::kForRead)
+{
 }
 
 AcDb::Vertex2dType PyDb2dVertex::vertexType() const
@@ -1420,6 +1462,7 @@ void makePyAcDb3dPolylineVertexWrapper()
     class_<PyDb3dPolylineVertex, bases<PyDbVertex>>("Polyline3dVertex")
         .def(init<>())
         .def(init<const AcGePoint3d&>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("vertexType", &PyDb3dPolylineVertex::vertexType)
         .def("position", &PyDb3dPolylineVertex::position)
@@ -1453,6 +1496,11 @@ PyDb3dPolylineVertex::PyDb3dPolylineVertex(const PyDbObjectId& id, AcDb::OpenMod
     if (auto es = acdbOpenObject<AcDb3dPolylineVertex>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDb3dPolylineVertex::PyDb3dPolylineVertex(const PyDbObjectId& id)
+    : PyDb3dPolylineVertex(id, AcDb::OpenMode::kForRead)
+{
 }
 
 AcDb::Vertex3dType PyDb3dPolylineVertex::vertexType() const
@@ -1510,6 +1558,7 @@ void makePyAcDbPolygonMeshVertexWrapper()
     class_<PyDbPolygonMeshVertex, bases<PyDbVertex>>("PolygonMeshVertex")
         .def(init<>())
         .def(init<const AcGePoint3d&>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("vertexType", &PyDbPolygonMeshVertex::vertexType)
         .def("position", &PyDbPolygonMeshVertex::position)
@@ -1543,6 +1592,11 @@ PyDbPolygonMeshVertex::PyDbPolygonMeshVertex(const PyDbObjectId& id, AcDb::OpenM
     if (auto es = acdbOpenObject<AcDbPolygonMeshVertex>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbPolygonMeshVertex::PyDbPolygonMeshVertex(const PyDbObjectId& id)
+    : PyDbPolygonMeshVertex(id, AcDb::OpenMode::kForRead)
+{
 }
 
 AcDb::Vertex3dType PyDbPolygonMeshVertex::vertexType() const
@@ -1599,6 +1653,7 @@ void makePyDbPolyFaceMeshVertexWrapper()
     class_<PyDbPolyFaceMeshVertex, bases<PyDbVertex>>("PolyFaceMeshVertex")
         .def(init<>())
         .def(init<const AcGePoint3d&>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("position", &PyDbPolyFaceMeshVertex::position)
         .def("setPosition", &PyDbPolyFaceMeshVertex::setPosition)
@@ -1631,6 +1686,11 @@ PyDbPolyFaceMeshVertex::PyDbPolyFaceMeshVertex(const PyDbObjectId& id, AcDb::Ope
     if (auto es = acdbOpenObject<AcDbPolyFaceMeshVertex>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbPolyFaceMeshVertex::PyDbPolyFaceMeshVertex(const PyDbObjectId& id)
+    : PyDbPolyFaceMeshVertex(id, AcDb::OpenMode::kForRead)
+{
 }
 
 AcGePoint3d PyDbPolyFaceMeshVertex::position() const
@@ -1682,6 +1742,7 @@ void makePyAcDbFaceRecordWrapper()
     class_<PyDbFaceRecord, bases<PyDbVertex>>("FaceRecord")
         .def(init<>())
         .def(init<Adesk::Int16, Adesk::Int16, Adesk::Int16, Adesk::Int16>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("getVertexAt", &PyDbFaceRecord::getVertexAt)
         .def("setVertexAt", &PyDbFaceRecord::setVertexAt)
@@ -1717,6 +1778,11 @@ PyDbFaceRecord::PyDbFaceRecord(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbFaceRecord>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbFaceRecord::PyDbFaceRecord(const PyDbObjectId& id)
+    : PyDbFaceRecord(id, AcDb::OpenMode::kForRead)
+{
 }
 
 Adesk::Int16 PyDbFaceRecord::getVertexAt(Adesk::UInt16 faceIdx) const
@@ -1789,6 +1855,7 @@ void makePyDbPointWrapper()
     class_<PyDbPoint, bases<PyDbEntity>>("Point")
         .def(init<>())
         .def(init<AcGePoint3d&>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("position", &PyDbPoint::position)
         .def("setPosition", &PyDbPoint::setPosition)
@@ -1827,6 +1894,11 @@ PyDbPoint::PyDbPoint(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbPoint>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbPoint::PyDbPoint(const PyDbObjectId& id)
+    : PyDbPoint(id, AcDb::OpenMode::kForRead)
+{
 }
 
 AcGePoint3d PyDbPoint::position() const
@@ -1919,6 +1991,7 @@ void makePyDb2dPolylineWrapper()
 {
     class_<PyDb2dPolyline, bases<PyDbCurve>>("Polyline2d")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<AcDb::Poly2dType, const boost::python::list&, Adesk::Boolean>())
         .def("polyType", &PyDb2dPolyline::polyType)
@@ -1983,6 +2056,11 @@ PyDb2dPolyline::PyDb2dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
 
 PyDb2dPolyline::PyDb2dPolyline(AcDb::Poly2dType type, const boost::python::list& vertices, Adesk::Boolean closed)
     : PyDbCurve(new AcDb2dPolyline(type, listToAcGePoint3dArrayRef(vertices), 0.0, closed), true)
+{
+}
+
+PyDb2dPolyline::PyDb2dPolyline(const PyDbObjectId& id)
+    : PyDb2dPolyline(id, AcDb::OpenMode::kForRead)
 {
 }
 
@@ -2213,6 +2291,7 @@ void makePyDb3dPolylineWrapper()
 {
     class_<PyDb3dPolyline, bases<PyDbCurve>>("Polyline3d")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<AcDb::Poly3dType, const boost::python::list&, Adesk::Boolean>())
         .def("length", &PyDb3dPolyline::length)
@@ -2260,6 +2339,11 @@ PyDb3dPolyline::PyDb3dPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
 
 PyDb3dPolyline::PyDb3dPolyline(AcDb::Poly3dType pt, const boost::python::list& vertices, Adesk::Boolean closed)
     : PyDbCurve(new AcDb3dPolyline(pt, listToAcGePoint3dArrayRef(vertices), closed), true)
+{
+}
+
+PyDb3dPolyline::PyDb3dPolyline(const PyDbObjectId& id)
+    : PyDb3dPolyline(id, AcDb::OpenMode::kForNotify)
 {
 }
 
@@ -2398,6 +2482,7 @@ void makePyDbArcWrapper()
 {
     class_<PyDbArc, bases<PyDbCurve>>("Arc")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const AcGePoint3d&, double, double, double>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&, double, double, double>())
@@ -2448,6 +2533,11 @@ PyDbArc::PyDbArc(const AcGePoint3d& center, double radius, double startAngle, do
 
 PyDbArc::PyDbArc(const AcGePoint3d& center, const AcGeVector3d& normal, double radius, double startAngle, double endAngle)
     : PyDbCurve(new AcDbArc(center, normal, radius, startAngle, endAngle), true)
+{
+}
+
+PyDbArc::PyDbArc(const PyDbObjectId& id)
+    : PyDbArc(id, AcDb::OpenMode::kForRead)
 {
 }
 
@@ -2559,6 +2649,7 @@ void makPyDbCircleWrapper()
 {
     class_<PyDbCircle, bases<PyDbCurve>>("Circle")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const AcGePoint3d&, const AcGeVector3d&, double>())
         .def("center", &PyDbCircle::center)
@@ -2601,6 +2692,11 @@ PyDbCircle::PyDbCircle(const PyDbObjectId& id, AcDb::OpenMode mode)
 
 PyDbCircle::PyDbCircle(const AcGePoint3d& cntr, const AcGeVector3d& nrm, double radius)
     : PyDbCurve(new AcDbCircle(cntr, nrm, radius), true)
+{
+}
+
+PyDbCircle::PyDbCircle(const PyDbObjectId& id)
+    : PyDbCircle(id, AcDb::OpenMode::kForRead)
 {
 }
 
@@ -2760,6 +2856,11 @@ PyDbLine::PyDbLine(const AcGePoint3d& start, const AcGePoint3d& end)
 {
 }
 
+PyDbLine::PyDbLine(const PyDbObjectId& id)
+    : PyDbLine(id, AcDb::OpenMode::kForRead)
+{
+}
+
 AcGePoint3d PyDbLine::startPoint() const
 {
     return impObj()->startPoint();
@@ -2851,6 +2952,7 @@ void makPyDbPolylineWrapper()
     class_<PyDbPolyline, bases<PyDbCurve>>("Polyline")
         .def(init<>())
         .def(init<unsigned int>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("getPoint3dAt", &PyDbPolyline::getPoint3dAt)
         .def("getPoint2dAt", &PyDbPolyline::getPoint2dAt)
@@ -2928,6 +3030,11 @@ PyDbPolyline::PyDbPolyline(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbPolyline>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbPolyline::PyDbPolyline(const PyDbObjectId& id)
+    : PyDbPolyline(id, AcDb::OpenMode::kForRead)
+{
 }
 
 AcGePoint3d PyDbPolyline::getPoint3dAt(unsigned int idx) const
@@ -3192,6 +3299,7 @@ void makPyDbFaceWrapper()
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("getVertexAt", &PyDbFace::getVertexAt)
         .def("setVertexAt", &PyDbFace::setVertexAt)
@@ -3243,6 +3351,11 @@ PyDbFace::PyDbFace(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbFace>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbFace::PyDbFace(const PyDbObjectId& id)
+    : PyDbFace(id, AcDb::OpenMode::kForRead)
+{
 }
 
 AcGePoint3d PyDbFace::getVertexAt(Adesk::UInt16 val) const
@@ -3314,6 +3427,7 @@ void makPyDbFcfWrapper()
 {
     class_<PyDbFcf, bases<PyDbEntity>>("Fcf")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const std::string&, const AcGePoint3d&, const AcGeVector3d&, const AcGeVector3d&>())
         .def("setText", &PyDbFcf::setText)
@@ -3371,6 +3485,11 @@ PyDbFcf::PyDbFcf(const PyDbObjectId& id, AcDb::OpenMode mode)
 
 PyDbFcf::PyDbFcf(const std::string& str, const AcGePoint3d& pnt, const AcGeVector3d& normal, const AcGeVector3d& direction)
     : PyDbEntity(new AcDbFcf(utf8_to_wstr(str).c_str(), pnt, normal, direction), true)
+{
+}
+
+PyDbFcf::PyDbFcf(const PyDbObjectId& id)
+    : PyDbFcf(id, AcDb::OpenMode::kForRead)
 {
 }
 

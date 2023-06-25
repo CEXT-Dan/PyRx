@@ -14,6 +14,7 @@ public:
     PyDbPlotSettings();
     PyDbPlotSettings(bool ModelType);
     PyDbPlotSettings(AcDbPlotSettings* ptr, bool autoDelete);
+    PyDbPlotSettings(const PyDbObjectId& id);
     PyDbPlotSettings(const PyDbObjectId& id, AcDb::OpenMode mode);
     ~PyDbPlotSettings() override = default;
     Acad::ErrorStatus   addToPlotSettingsDict(PyDbDatabase& towhichDb);
@@ -81,6 +82,7 @@ class PyDbLayout : public PyDbPlotSettings
 public:
     PyDbLayout();
     PyDbLayout(AcDbLayout* ptr, bool autoDelete);
+    PyDbLayout(const PyDbObjectId& id);
     PyDbLayout(const PyDbObjectId& id, AcDb::OpenMode mode);
     ~PyDbLayout() override = default;
 

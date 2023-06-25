@@ -11,6 +11,7 @@ class PyDbImage : public PyDbEntity
 {
 public:
     PyDbImage(AcDbImage* ptr, bool autoDelete);
+    PyDbImage(const PyDbObjectId& id);
     PyDbImage(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbImage() override = default;
     
@@ -32,6 +33,7 @@ class PyDbRasterImageDef : public PyDbObject
 public:
     PyDbRasterImageDef();
     PyDbRasterImageDef(AcDbRasterImageDef* ptr, bool autoDelete);
+    PyDbRasterImageDef(const PyDbObjectId& id);
     PyDbRasterImageDef(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbRasterImageDef() override = default;
     Acad::ErrorStatus   setSourceFileName(const std::string& pPathName);
@@ -74,6 +76,7 @@ public:
     PyDbRasterImageDefReactor();
     PyDbRasterImageDefReactor(AcDbRasterImageDefReactor* ptr, bool autoDelete);
     PyDbRasterImageDefReactor(const PyDbObjectId& id, AcDb::OpenMode mode);
+    PyDbRasterImageDefReactor(const PyDbObjectId& id);
     virtual ~PyDbRasterImageDefReactor() override = default;
 
     static void     setEnable(Adesk::Boolean enable);
@@ -96,6 +99,7 @@ class PyDbRasterImage : public PyDbImage
 public:
     PyDbRasterImage();
     PyDbRasterImage(AcDbRasterImage* ptr, bool autoDelete);
+    PyDbRasterImage(const PyDbObjectId& id);
     PyDbRasterImage(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbRasterImage() override = default;
     Acad::ErrorStatus   setImageDefId(const PyDbObjectId& imageId);

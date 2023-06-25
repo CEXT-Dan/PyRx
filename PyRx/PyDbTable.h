@@ -8,6 +8,7 @@ class PyDbTable : public PyDbBlockReference
 public:
     PyDbTable();
     PyDbTable(AcDbTable* ptr, bool autoDelete);
+    PyDbTable(const PyDbObjectId& id);
     PyDbTable(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbObjectId        tableStyle() const;
     Acad::ErrorStatus   setTableStyle(const PyDbObjectId& id);

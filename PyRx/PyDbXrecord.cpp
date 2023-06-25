@@ -11,6 +11,7 @@ void makePyDbXrecordWrapper()
 {
     class_<PyDbXrecord, bases<PyDbObject>>("Xrecord")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("rbChain", &PyDbXrecord::rbChain1)
         .def("rbChain", &PyDbXrecord::rbChain2)
@@ -42,6 +43,11 @@ PyDbXrecord::PyDbXrecord(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbXrecord>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbXrecord::PyDbXrecord(const PyDbObjectId& id)
+    : PyDbXrecord(id, AcDb::OpenMode::kForRead)
+{
 }
 
 boost::python::list PyDbXrecord::rbChain1() const

@@ -7,6 +7,7 @@ class PyDbTableStyle : public PyDbObject
 public:
     PyDbTableStyle();
     PyDbTableStyle(AcDbObject* ptr, bool autoDelete);
+    PyDbTableStyle(const PyDbObjectId& id);
     PyDbTableStyle(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbTableStyle() override = default;
     std::string         getName();

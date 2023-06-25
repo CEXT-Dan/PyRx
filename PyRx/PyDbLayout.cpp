@@ -9,6 +9,7 @@ void makePyDbPlotSettingsWrapper()
     class_<PyDbPlotSettings, bases<PyDbObject>>("PlotSettings")
         .def(init<>())
         .def(init<bool>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("addToPlotSettingsDict", &PyDbPlotSettings::addToPlotSettingsDict)
         .def("getPlotSettingsName", &PyDbPlotSettings::getPlotSettingsName)
@@ -163,6 +164,11 @@ PyDbPlotSettings::PyDbPlotSettings(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbPlotSettings>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbPlotSettings::PyDbPlotSettings(const PyDbObjectId& id)
+    : PyDbPlotSettings(id, AcDb::OpenMode::kForRead)
+{
 }
 
 Acad::ErrorStatus PyDbPlotSettings::addToPlotSettingsDict(PyDbDatabase& towhichDb)
@@ -500,6 +506,7 @@ void makePyDbLayoutWrapper()
 {
     class_<PyDbLayout, bases<PyDbPlotSettings>>("Layout")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("getBlockTableRecordId", &PyDbLayout::getBlockTableRecordId)
         .def("setBlockTableRecordId", &PyDbLayout::setBlockTableRecordId)
@@ -535,11 +542,17 @@ PyDbLayout::PyDbLayout(AcDbLayout* ptr, bool autoDelete)
 }
 
 PyDbLayout::PyDbLayout(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbPlotSettings(nullptr, false)
 {
     AcDbLayout* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbLayout>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbLayout::PyDbLayout(const PyDbObjectId& id)
+    : PyDbLayout(id, AcDb::OpenMode::kForRead)
+{
 }
 
 PyDbObjectId PyDbLayout::getBlockTableRecordId() const

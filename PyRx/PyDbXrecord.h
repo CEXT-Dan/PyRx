@@ -13,6 +13,7 @@ class PyDbXrecord : public PyDbObject
 public:
     PyDbXrecord();
     PyDbXrecord(AcDbObject* ptr, bool autoDelete);
+    PyDbXrecord(const PyDbObjectId& id);
     PyDbXrecord(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbXrecord() override = default;
 

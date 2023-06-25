@@ -15,6 +15,7 @@ class PyDbSurface : public PyDbEntity
 public:
     PyDbSurface();
     PyDbSurface(AcDbSurface* ptr, bool autoDelete);
+    PyDbSurface(const PyDbObjectId& id);
     PyDbSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
     static std::string      className();
     static PyRxClass        desc();
@@ -33,6 +34,7 @@ class PyDbExtrudedSurface : public PyDbSurface
 public:
     PyDbExtrudedSurface();
     PyDbExtrudedSurface(AcDbExtrudedSurface* ptr, bool autoDelete);
+    PyDbExtrudedSurface(const PyDbObjectId& id);
     PyDbExtrudedSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
     static std::string  className();
     static PyRxClass    desc();
@@ -53,6 +55,7 @@ class PyDbLoftedSurface : public PyDbSurface
 public:
     PyDbLoftedSurface();
     PyDbLoftedSurface(AcDbLoftedSurface* ptr, bool autoDelete);
+    PyDbLoftedSurface(const PyDbObjectId& id);
     PyDbLoftedSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
     static std::string  className();
     static PyRxClass    desc();
@@ -74,6 +77,7 @@ class PyDbNurbSurface : public PyDbSurface
 public:
     PyDbNurbSurface();
     PyDbNurbSurface(AcDbNurbSurface* ptr, bool autoDelete);
+    PyDbNurbSurface(const PyDbObjectId& id);
     PyDbNurbSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
     static std::string  className();
     static PyRxClass    desc();
@@ -95,6 +99,7 @@ class PyDbPlaneSurface : public PyDbSurface
 public:
     PyDbPlaneSurface();
     PyDbPlaneSurface(AcDbPlaneSurface* ptr, bool autoDelete);
+    PyDbPlaneSurface(const PyDbObjectId& id);
     PyDbPlaneSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
     static std::string  className();
     static PyRxClass    desc();
@@ -116,6 +121,7 @@ class PyDbRevolvedSurface : public PyDbSurface
 public:
     PyDbRevolvedSurface();
     PyDbRevolvedSurface(AcDbRevolvedSurface* ptr, bool autoDelete);
+    PyDbRevolvedSurface(const PyDbObjectId& id);
     PyDbRevolvedSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
     static std::string  className();
     static PyRxClass    desc();
@@ -137,6 +143,7 @@ class PyDbSweptSurface : public PyDbSurface
 public:
     PyDbSweptSurface();
     PyDbSweptSurface(AcDbSweptSurface* ptr, bool autoDelete);
+    PyDbSweptSurface(const PyDbObjectId& id);
     PyDbSweptSurface(const PyDbObjectId& id, AcDb::OpenMode mode);
     static std::string  className();
     static PyRxClass    desc();

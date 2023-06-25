@@ -2,7 +2,6 @@
 #include "PyDbSurface.h"
 #include "PyDbObjectId.h"
 
-
 #include "dbextrudedsurf.h"
 #include "dbloftedsurf.h"
 #include "dbnurbsurf.h"
@@ -17,6 +16,7 @@ void makePyDbSurfaceWrapper()
 {
     class_<PyDbSurface, bases<PyDbEntity>>("Surface")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbSurface::className).staticmethod("className")
         .def("desc", &PyDbSurface::desc).staticmethod("desc")
@@ -42,6 +42,11 @@ PyDbSurface::PyDbSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbSurface>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbSurface::PyDbSurface(const PyDbObjectId& id)
+    : PyDbSurface(id, AcDb::OpenMode::kForRead)
+{
 }
 
 std::string PyDbSurface::className()
@@ -82,6 +87,7 @@ void makeAcDbExtrudedSurfaceWrapper()
 {
     class_<PyDbExtrudedSurface, bases<PyDbSurface>>("ExtrudedSurface")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbExtrudedSurface::className).staticmethod("className")
         .def("desc", &PyDbExtrudedSurface::desc).staticmethod("desc")
@@ -108,6 +114,12 @@ PyDbExtrudedSurface::PyDbExtrudedSurface(const PyDbObjectId& id, AcDb::OpenMode 
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
 }
+
+PyDbExtrudedSurface::PyDbExtrudedSurface(const PyDbObjectId& id)
+    : PyDbExtrudedSurface(id, AcDb::OpenMode::kForRead)
+{
+}
+
 std::string PyDbExtrudedSurface::className()
 {
     return "AcDbExtrudedSurface";
@@ -148,6 +160,7 @@ void makeAcDbLoftedSurfaceWrapper()
 #else
     class_<PyDbLoftedSurface, bases<PyDbSurface>>("LoftedSurface")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbLoftedSurface::className).staticmethod("className")
         .def("desc", &PyDbLoftedSurface::desc).staticmethod("desc")
@@ -176,6 +189,11 @@ PyDbLoftedSurface::PyDbLoftedSurface(const PyDbObjectId& id, AcDb::OpenMode mode
     if (auto es = acdbOpenObject<AcDbLoftedSurface>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbLoftedSurface::PyDbLoftedSurface(const PyDbObjectId& id)
+    : PyDbLoftedSurface(id, AcDb::OpenMode::kForRead)
+{
 }
 
 std::string PyDbLoftedSurface::className()
@@ -220,6 +238,7 @@ void makePyDbNurbSurfaceWrapper()
 #else
     class_<PyDbNurbSurface, bases<PyDbSurface>>("NurbSurface")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbNurbSurface::className).staticmethod("className")
         .def("desc", &PyDbNurbSurface::desc).staticmethod("desc")
@@ -249,6 +268,11 @@ PyDbNurbSurface::PyDbNurbSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbNurbSurface>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbNurbSurface::PyDbNurbSurface(const PyDbObjectId& id)
+    : PyDbNurbSurface(id, AcDb::OpenMode::kForRead)
+{
 }
 
 std::string PyDbNurbSurface::className()
@@ -292,6 +316,7 @@ void makePyDbPlaneSurfaceWrapper()
 #else
     class_<PyDbPlaneSurface, bases<PyDbSurface>>("PlaneSurface")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbPlaneSurface::className).staticmethod("className")
         .def("desc", &PyDbPlaneSurface::desc).staticmethod("desc")
@@ -320,6 +345,11 @@ PyDbPlaneSurface::PyDbPlaneSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbPlaneSurface>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbPlaneSurface::PyDbPlaneSurface(const PyDbObjectId& id)
+    : PyDbPlaneSurface(id, AcDb::OpenMode::kForRead)
+{
 }
 
 std::string PyDbPlaneSurface::className()
@@ -364,6 +394,7 @@ void makePyDbRevolvedSurfaceWrapper()
 #else
     class_<PyDbRevolvedSurface, bases<PyDbSurface>>("RevolvedSurface")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbRevolvedSurface::className).staticmethod("className")
         .def("desc", &PyDbRevolvedSurface::desc).staticmethod("desc")
@@ -392,6 +423,11 @@ PyDbRevolvedSurface::PyDbRevolvedSurface(const PyDbObjectId& id, AcDb::OpenMode 
     if (auto es = acdbOpenObject<AcDbPlaneSurface>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbRevolvedSurface::PyDbRevolvedSurface(const PyDbObjectId& id)
+    : PyDbRevolvedSurface(id, AcDb::OpenMode::kForRead)
+{
 }
 
 std::string PyDbRevolvedSurface::className()
@@ -435,6 +471,7 @@ void makePyDbSweptSurfaceWrapper()
 #else
     class_<PyDbSweptSurface, bases<PyDbSurface>>("SweptSurface")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbSweptSurface::className).staticmethod("className")
         .def("desc", &PyDbSweptSurface::desc).staticmethod("desc")
@@ -463,6 +500,11 @@ PyDbSweptSurface::PyDbSweptSurface(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbPlaneSurface>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbSweptSurface::PyDbSweptSurface(const PyDbObjectId& id)
+    : PyDbSweptSurface(id, AcDb::OpenMode::kForRead)
+{
 }
 
 std::string PyDbSweptSurface::className()

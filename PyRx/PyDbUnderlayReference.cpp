@@ -54,6 +54,7 @@ Acad::ErrorStatus PyUnderlayLayer::setState(bool state)
 void makePyDbUnderlayDefinitionWrapper()
 {
     class_<PyDbUnderlayDefinition, bases<PyDbObject>>("UnderlayDefinition", boost::python::no_init)
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("setSourceFileName", &PyDbUnderlayDefinition::setSourceFileName)
         .def("getSourceFileName", &PyDbUnderlayDefinition::getSourceFileName)
@@ -84,6 +85,11 @@ PyDbUnderlayDefinition::PyDbUnderlayDefinition(const PyDbObjectId& id, AcDb::Ope
     if (auto es = acdbOpenObject<AcDbUnderlayDefinition>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbUnderlayDefinition::PyDbUnderlayDefinition(const PyDbObjectId& id)
+    : PyDbUnderlayDefinition(id, AcDb::OpenMode::kForRead)
+{
 }
 
 Acad::ErrorStatus PyDbUnderlayDefinition::setSourceFileName(const std::string& file)
@@ -176,6 +182,7 @@ AcDbUnderlayDefinition* PyDbUnderlayDefinition::impObj(const std::source_locatio
 void makePyDbUnderlayReferenceWrapper()
 {
     class_<PyDbUnderlayReference, bases<PyDbEntity>>("UnderlayReference", boost::python::no_init)
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("position", &PyDbUnderlayReference::position)
         .def("setPosition", &PyDbUnderlayReference::setPosition)
@@ -239,6 +246,11 @@ PyDbUnderlayReference::PyDbUnderlayReference(const PyDbObjectId& id, AcDb::OpenM
     if (auto es = acdbOpenObject<AcDbUnderlayReference>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbUnderlayReference::PyDbUnderlayReference(const PyDbObjectId& id)
+    : PyDbUnderlayReference(id, AcDb::OpenMode::kForRead)
+{
 }
 
 AcGePoint3d PyDbUnderlayReference::position() const
@@ -555,6 +567,7 @@ void makePyDbPdfDefinitionWrapper()
 {
     class_<PyDbPdfDefinition, bases<PyDbUnderlayDefinition>>("PdfDefinition")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbUnderlayDefinition::className).staticmethod("className")
         .def("desc", &PyDbUnderlayDefinition::desc).staticmethod("desc")
@@ -582,6 +595,11 @@ PyDbPdfDefinition::PyDbPdfDefinition(const PyDbObjectId& id, AcDb::OpenMode mode
     if (auto es = acdbOpenObject<AcDbPdfDefinition>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbPdfDefinition::PyDbPdfDefinition(const PyDbObjectId& id)
+    : PyDbPdfDefinition(id, AcDb::OpenMode::kForRead)
+{
 }
 
 std::string PyDbPdfDefinition::className()
@@ -622,6 +640,7 @@ void makePyDbPdfReferenceWrapper()
 {
     class_<PyDbPdfReference, bases<PyDbUnderlayReference>>("PdfReference")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("className", &PyDbPdfReference::className).staticmethod("className")
         .def("desc", &PyDbPdfReference::desc).staticmethod("desc")
@@ -647,6 +666,11 @@ PyDbPdfReference::PyDbPdfReference(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbPdfReference>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbPdfReference::PyDbPdfReference(const PyDbObjectId& id)
+    : PyDbPdfReference(id, AcDb::OpenMode::kForRead)
+{
 }
 
 std::string PyDbPdfReference::className()

@@ -12,6 +12,7 @@ using namespace boost::python;
 void makePyDbDimensionWrapper()
 {
     class_<PyDbDimension, bases<PyDbEntity>>("Dimension", no_init)
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("textDefinedSize", &PyDbDimension::textDefinedSize)
         .def("setTextDefinedSize", &PyDbDimension::setTextDefinedSize)
@@ -166,6 +167,11 @@ PyDbDimension::PyDbDimension(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbDimension>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbDimension::PyDbDimension(const PyDbObjectId& id)
+    : PyDbDimension(id, AcDb::OpenMode::kForRead)
+{
 }
 
 boost::python::tuple PyDbDimension::textDefinedSize() const
@@ -1067,6 +1073,7 @@ void makePyDb2LineAngularDimensionWrapper()
 {
     class_<PyDb2LineAngularDimension, bases<PyDbDimension>>("LineAngularDimension2")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&>())
@@ -1097,6 +1104,11 @@ PyDb2LineAngularDimension::PyDb2LineAngularDimension()
 
 PyDb2LineAngularDimension::PyDb2LineAngularDimension(AcDb2LineAngularDimension* ptr, bool autoDelete)
     : PyDbDimension(ptr, autoDelete)
+{
+}
+
+PyDb2LineAngularDimension::PyDb2LineAngularDimension(const PyDbObjectId& id)
+    : PyDb2LineAngularDimension(id, AcDb::OpenMode::kForRead)
 {
 }
 
@@ -1234,6 +1246,7 @@ void makeAcDb3PointAngularDimensionWrapper()
 {
     class_<PyDb3PointAngularDimension, bases<PyDbDimension>>("Point3AngularDimension")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&>())
@@ -1262,6 +1275,11 @@ PyDb3PointAngularDimension::PyDb3PointAngularDimension()
 
 PyDb3PointAngularDimension::PyDb3PointAngularDimension(AcDb3PointAngularDimension* ptr, bool autoDelete)
     : PyDbDimension(ptr, autoDelete)
+{
+}
+
+PyDb3PointAngularDimension::PyDb3PointAngularDimension(const PyDbObjectId& id)
+    : PyDb3PointAngularDimension(id, AcDb::OpenMode::kForRead)
 {
 }
 
@@ -1385,6 +1403,7 @@ void makeAlignedDimensionWrapper()
 {
     class_<PyDbAlignedDimension, bases<PyDbDimension>>("AlignedDimension")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&>())
@@ -1415,6 +1434,11 @@ PyDbAlignedDimension::PyDbAlignedDimension()
 
 PyDbAlignedDimension::PyDbAlignedDimension(AcDbAlignedDimension* ptr, bool autoDelete)
     : PyDbDimension(ptr, autoDelete)
+{
+}
+
+PyDbAlignedDimension::PyDbAlignedDimension(const PyDbObjectId& id)
+    : PyDbAlignedDimension(id, AcDb::OpenMode::kForRead)
 {
 }
 
@@ -1557,6 +1581,7 @@ void makeArcDimensionWrapper()
 {
     class_<PyDbArcDimension, bases<PyDbDimension>>("ArcDimension")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init <const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
         .def(init <const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&>())
@@ -1597,6 +1622,11 @@ PyDbArcDimension::PyDbArcDimension()
 
 PyDbArcDimension::PyDbArcDimension(AcDbArcDimension* ptr, bool autoDelete)
     : PyDbDimension(ptr, autoDelete)
+{
+}
+
+PyDbArcDimension::PyDbArcDimension(const PyDbObjectId& id)
+    : PyDbArcDimension(id, AcDb::OpenMode::kForRead)
 {
 }
 
@@ -1780,6 +1810,7 @@ void makeDiametricDimensionWrapper()
 {
     class_<PyDbDiametricDimension, bases<PyDbDimension>>("DiametricDimension")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, double>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, double, const std::string&>())
@@ -1808,6 +1839,11 @@ PyDbDiametricDimension::PyDbDiametricDimension()
 
 PyDbDiametricDimension::PyDbDiametricDimension(AcDbDiametricDimension* ptr, bool autoDelete)
     : PyDbDimension(ptr, autoDelete)
+{
+}
+
+PyDbDiametricDimension::PyDbDiametricDimension(const PyDbObjectId& id)
+    : PyDbDiametricDimension(id, AcDb::OpenMode::kForRead)
 {
 }
 
@@ -1939,6 +1975,7 @@ void makeOrdinateDimensionWrapper()
 {
     class_<PyDbOrdinateDimension, bases<PyDbDimension>>("OrdinateDimension")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<Adesk::Boolean, const AcGePoint3d&, const AcGePoint3d&>())
         .def(init<Adesk::Boolean, const AcGePoint3d&, const AcGePoint3d&, const std::string&>())
@@ -1969,6 +2006,11 @@ PyDbOrdinateDimension::PyDbOrdinateDimension()
 
 PyDbOrdinateDimension::PyDbOrdinateDimension(AcDbOrdinateDimension* ptr, bool autoDelete)
     : PyDbDimension(ptr, autoDelete)
+{
+}
+
+PyDbOrdinateDimension::PyDbOrdinateDimension(const PyDbObjectId& id)
+    : PyDbOrdinateDimension(id, AcDb::OpenMode::kForRead)
 {
 }
 
@@ -2102,6 +2144,7 @@ void makeRadialDimensionWrapper()
 {
     class_<PyDbRadialDimension, bases<PyDbDimension>>("RadialDimension")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, double>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, double, const std::string&>())
@@ -2130,6 +2173,11 @@ PyDbRadialDimension::PyDbRadialDimension()
 
 PyDbRadialDimension::PyDbRadialDimension(AcDbRadialDimension* ptr, bool autoDelete)
     : PyDbDimension(ptr, autoDelete)
+{
+}
+
+PyDbRadialDimension::PyDbRadialDimension(const PyDbObjectId& id)
+    : PyDbRadialDimension(id, AcDb::OpenMode::kForRead)
 {
 }
 
@@ -2245,6 +2293,7 @@ void makeRadialDimensionLargeWrapper()
 {
     class_<PyDbRadialDimensionLarge, bases<PyDbDimension>>("RadialDimensionLarge")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, double>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, double, const std::string&>())
@@ -2280,6 +2329,11 @@ PyDbRadialDimensionLarge::PyDbRadialDimensionLarge()
 
 PyDbRadialDimensionLarge::PyDbRadialDimensionLarge(AcDbRadialDimensionLarge* ptr, bool autoDelete)
     : PyDbDimension(ptr, autoDelete)
+{
+}
+
+PyDbRadialDimensionLarge::PyDbRadialDimensionLarge(const PyDbObjectId& id)
+    : PyDbRadialDimensionLarge(id, AcDb::OpenMode::kForRead)
 {
 }
 
@@ -2458,6 +2512,7 @@ void makeRotatedDimensionWrapper()
 {
     class_<PyDbRotatedDimension, bases<PyDbDimension>>("RotatedDimension")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<double, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
         .def(init<double, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const std::string&>())
@@ -2490,6 +2545,11 @@ PyDbRotatedDimension::PyDbRotatedDimension()
 
 PyDbRotatedDimension::PyDbRotatedDimension(AcDbRotatedDimension* ptr, bool autoDelete)
     : PyDbDimension(ptr, autoDelete)
+{
+}
+
+PyDbRotatedDimension::PyDbRotatedDimension(const PyDbObjectId& id)
+    : PyDbRotatedDimension(id, AcDb::OpenMode::kForRead)
 {
 }
 

@@ -7,6 +7,7 @@ using namespace boost::python;
 void makePyDbCurveWrapper()
 {
     class_<PyDbCurve, bases<PyDbEntity>>("Curve", boost::python::no_init)
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("isClosed", &PyDbCurve::isClosed)
         .def("isPeriodic", &PyDbCurve::isPeriodic)
@@ -54,6 +55,11 @@ PyDbCurve::PyDbCurve(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbCurve>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbCurve::PyDbCurve(const PyDbObjectId& id)
+ : PyDbCurve(id, AcDb::OpenMode::kForRead)
+{
 }
 
 Adesk::Boolean PyDbCurve::isClosed() const

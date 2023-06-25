@@ -12,6 +12,7 @@ class PyDbEntity : public PyDbObject
 {
 public:
     PyDbEntity(AcDbEntity* ptr, bool autoDelete);
+    PyDbEntity(const PyDbObjectId& id);
     PyDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbEntity() override = default;
     PyDbObjectId        blockId() const;
@@ -94,6 +95,7 @@ class PyDbBlockBegin : public PyDbEntity
 {
 public:
     PyDbBlockBegin(AcDbBlockBegin* ptr, bool autoDelete);
+    PyDbBlockBegin(const PyDbObjectId& id);
     PyDbBlockBegin(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbBlockBegin() = default;
     static std::string      className();
@@ -109,6 +111,7 @@ class PyDbBlockEnd : public PyDbEntity
 {
 public:
     PyDbBlockEnd(AcDbBlockEnd* ptr, bool autoDelete);
+    PyDbBlockEnd(const PyDbObjectId& id);
     PyDbBlockEnd(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbBlockEnd() = default;
     static std::string      className();
@@ -124,6 +127,7 @@ class PyDbSequenceEnd : public PyDbEntity
 {
 public:
     PyDbSequenceEnd(AcDbSequenceEnd* ptr, bool autoDelete);
+    PyDbSequenceEnd(const PyDbObjectId& id);
     PyDbSequenceEnd(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbSequenceEnd() = default;
     static std::string      className();
