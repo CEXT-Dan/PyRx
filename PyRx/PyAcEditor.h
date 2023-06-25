@@ -42,8 +42,6 @@ public:
     static PyDbObjectId         curViewportObjectId();
     static Acad::PromptStatus   initGet(int val, const std::string& skwl);
     static boost::python::tuple getKword(const std::string& skwl);
-    static boost::python::object getVar(const std::string& sym);//
-    static bool                 setVar(const std::string& sym, const  boost::python::object&);
     static boost::python::list  traceBoundary(const AcGePoint3d& seedPoint, bool detectIslands);
     static std::string className();
 };

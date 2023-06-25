@@ -5,6 +5,7 @@ import UnitTestPyDbObjectId
 import UnitTestPyDbPoint
 import UnitTestPyDbEval
 import UnitTestPyDbEntity
+import UnitTestPyEditor
 
 print("testname = pytestall")
 
@@ -17,5 +18,6 @@ def PyRxCmd_pytestall():
       UnitTestPyDbPoint.PyRxCmd_pydbpoint()
       UnitTestPyDbEval.PyRxCmd_pydbeval()
       UnitTestPyDbEntity.PyRxCmd_pyentity()
+      UnitTestPyEditor.PyRxCmd_pyeditor()
     except Exception as err:
       print(err)

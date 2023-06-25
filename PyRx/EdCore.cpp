@@ -5,12 +5,18 @@
 #include "ResultBuffer.h"
 
 #include "acedCmdNF.h"
+
+using namespace boost::python;
+
 #ifdef ARXAPP
 extern "C" bool acedGetPredefinedPattens(AcStringArray & patterns);
 #endif
 
-using namespace boost::python;
+//-----------------------------------------------------------------------------------------
+//helpers
 
+//-----------------------------------------------------------------------------------------
+//EdCore
 void makeEdCoreWrapper()
 {
     class_<EdCore>("Core")
@@ -30,6 +36,8 @@ void makeEdCoreWrapper()
         .def("getPredefinedHatchPatterns", &EdCore::getPredefinedPattens).staticmethod("getPredefinedHatchPatterns")
         .def("getFileD", &EdCore::getFileD).staticmethod("getFileD")
         .def("getFileNavDialog", &EdCore::getFileNavDialog).staticmethod("getFileNavDialog")
+        .def("getVar", &EdCore::getVar).staticmethod("getVar")
+        .def("setVar", &EdCore::setVar).staticmethod("setVar")
         ;
 }
 
@@ -158,4 +166,100 @@ boost::python::list EdCore::getFileNavDialog(const std::string& title, const std
         }
     }
     return pyList;
+}
+
+boost::python::object EdCore::getVar(const std::string& sym)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        resbuf buf;
+        if (acedGetVar(utf8_to_wstr(sym).c_str(), &buf) != RTNORM)
+        {
+            return boost::python::make_tuple(false, boost::python::object());
+        }
+        switch (buf.restype)
+        {
+            case RTSHORT:
+            {
+                return boost::python::object(buf.resval.rint);
+            }
+            case RTLONG:
+            {
+                return boost::python::object(buf.resval.rlong);
+            }
+            case RTREAL:
+            {
+                return boost::python::object(buf.resval.rreal);
+            }
+            case RTSTR:
+            {
+                std::string val = wstr_to_utf8(buf.resval.rstring);
+                acutDelString(buf.resval.rstring);
+                return boost::python::object(val);
+            }
+            case RTPOINT:
+            {
+                AcGePoint2d pnt = asPnt2d(buf.resval.rpoint);
+                return boost::python::object(pnt);
+            }
+            case RT3DPOINT:
+            {
+                AcGePoint3d pnt = asPnt3d(buf.resval.rpoint);
+                return boost::python::object(pnt);
+            }
+            default:
+            {
+                return boost::python::object();
+            }
+        }
+    }
+    catch (...)
+    {
+        acutPrintf(_T("\nExeption @ %ls"), __FUNCTIONW__);
+    }
+    return boost::python::object();
+}
+
+bool EdCore::setVar(const std::string& sym, const boost::python::object& src)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        if (extract<double>(src).check())
+        {
+            const double val = extract<double>(src);
+            AcResBufPtr buf(acutBuildList(RTREAL, val, 0));
+            return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
+        }
+        else if (extract<int>(src).check())
+        {
+            const int val = extract<int>(src);
+            AcResBufPtr buf(acutBuildList(RTLONG, val, 0));
+            return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
+        }
+        else if (extract<AcGePoint2d>(src).check())
+        {
+            const auto val = asDblArray(extract<AcGePoint2d>(src));
+            AcResBufPtr buf(acutBuildList(RTPOINT, val, 0));
+            return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
+        }
+        else if (extract<AcGePoint3d>(src).check())
+        {
+            const auto val = asDblArray(extract<AcGePoint3d>(src));
+            AcResBufPtr buf(acutBuildList(RT3DPOINT, val, 0));
+            return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
+        }
+        else if (extract<char*>(src).check())
+        {
+            const AcString str = utf8_to_wstr(extract<char*>(src)).c_str();
+            AcResBufPtr buf(acutBuildList(RTSTR, (const TCHAR*)str, 0));
+            return acedSetVar(utf8_to_wstr(sym).c_str(), buf.get()) == RTNORM;
+        }
+    }
+    catch (...)
+    {
+        acutPrintf(_T("\nExeption @ %ls"), __FUNCTIONW__);
+    }
+    return false;
 }
