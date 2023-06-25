@@ -766,9 +766,9 @@ void makeDbBlockReferenceWrapper()
 {
     class_<PyDbBlockReference, bases<PyDbEntity>>("BlockReference")
         .def(init<>())
-        .def(init<AcGePoint3d&, const PyDbObjectId&>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const AcGePoint3d&, const PyDbObjectId&>())
         .def("blockTableRecord", &PyDbBlockReference::blockTableRecord)
         .def("setBlockTableRecord", &PyDbBlockReference::setBlockTableRecord)
         .def("position", &PyDbBlockReference::position)
@@ -811,6 +811,11 @@ PyDbBlockReference::PyDbBlockReference(AcDbBlockReference* ptr, bool autoDelete)
 {
 }
 
+PyDbBlockReference::PyDbBlockReference(const PyDbObjectId& id)
+    : PyDbBlockReference(id, AcDb::OpenMode::kForRead)
+{
+}
+
 PyDbBlockReference::PyDbBlockReference(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbEntity(nullptr, false)
 {
@@ -818,11 +823,6 @@ PyDbBlockReference::PyDbBlockReference(const PyDbObjectId& id, AcDb::OpenMode mo
     if (auto es = acdbOpenObject<AcDbBlockReference>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-}
-
-PyDbBlockReference::PyDbBlockReference(const PyDbObjectId& id)
-    : PyDbBlockReference(id, AcDb::OpenMode::kForRead)
-{
 }
 
 PyDbObjectId PyDbBlockReference::blockTableRecord() const
@@ -3295,12 +3295,12 @@ void makPyDbFaceWrapper()
 {
     class_<PyDbFace, bases<PyDbEntity>>("Face")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean>())
         .def(init<const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, const AcGePoint3d&, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean, Adesk::Boolean>())
-        .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("getVertexAt", &PyDbFace::getVertexAt)
         .def("setVertexAt", &PyDbFace::setVertexAt)
         .def("setVertexAt", &PyDbFace::setVertexAt)
@@ -3316,6 +3316,25 @@ void makPyDbFaceWrapper()
 
 PyDbFace::PyDbFace()
     : PyDbEntity(new AcDbFace(), true)
+{
+}
+
+PyDbFace::PyDbFace(const PyDbObjectId& id)
+    : PyDbFace(id, AcDb::OpenMode::kForRead)
+{
+}
+
+PyDbFace::PyDbFace(const PyDbObjectId& id, AcDb::OpenMode mode)
+    : PyDbEntity(nullptr, false)
+{
+    AcDbFace* pobj = nullptr;
+    if (auto es = acdbOpenObject<AcDbFace>(pobj, id.m_id, mode); es != eOk)
+        throw PyAcadErrorStatus(es);
+    this->resetImp(pobj, false, true);
+}
+
+PyDbFace::PyDbFace(AcDbFace* ptr, bool autoDelete)
+    : PyDbEntity(ptr, autoDelete)
 {
 }
 
@@ -3336,25 +3355,6 @@ PyDbFace::PyDbFace(const AcGePoint3d& pt0, const AcGePoint3d& pt1, const AcGePoi
 
 PyDbFace::PyDbFace(const AcGePoint3d& pt0, const AcGePoint3d& pt1, const AcGePoint3d& pt2, const AcGePoint3d& pt3, Adesk::Boolean e0vis, Adesk::Boolean e1vis, Adesk::Boolean e2vis, Adesk::Boolean e3vis)
     : PyDbEntity(new AcDbFace(pt0, pt1, pt2, pt3, e0vis, e1vis, e2vis, e3vis), true)
-{
-}
-
-PyDbFace::PyDbFace(AcDbFace* ptr, bool autoDelete)
-    : PyDbEntity(ptr, autoDelete)
-{
-}
-
-PyDbFace::PyDbFace(const PyDbObjectId& id, AcDb::OpenMode mode)
-    : PyDbEntity(nullptr, false)
-{
-    AcDbFace* pobj = nullptr;
-    if (auto es = acdbOpenObject<AcDbFace>(pobj, id.m_id, mode); es != eOk)
-        throw PyAcadErrorStatus(es);
-    this->resetImp(pobj, false, true);
-}
-
-PyDbFace::PyDbFace(const PyDbObjectId& id)
-    : PyDbFace(id, AcDb::OpenMode::kForRead)
 {
 }
 

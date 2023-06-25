@@ -446,17 +446,17 @@ PyDbTable::PyDbTable(AcDbTable* ptr, bool autoDelete)
 {
 }
 
+PyDbTable::PyDbTable(const PyDbObjectId& id)
+    : PyDbTable(id, AcDb::OpenMode::kForRead)
+{
+}
+
 PyDbTable::PyDbTable(const PyDbObjectId& id, AcDb::OpenMode mode)
 {
     AcDbTable* pobj = nullptr;
     if (auto es = acdbOpenObject<AcDbTable>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
-}
-
-PyDbTable::PyDbTable(const PyDbObjectId& id)
-    : PyDbTable(id, AcDb::OpenMode::kForRead)
-{
 }
 
 PyDbObjectId PyDbTable::tableStyle() const

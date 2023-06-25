@@ -9,6 +9,7 @@ using namespace boost::python;
 void makeAcDbEntityWrapper()
 {
     class_<PyDbEntity, bases<PyDbObject>>("Entity", boost::python::no_init)
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("blockId", &PyDbEntity::blockId)
         .def("color", &PyDbEntity::color)
