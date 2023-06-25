@@ -1,4 +1,5 @@
 import sys
+import os
 import PyRxApp
 import win32com.client
 import pythoncom
@@ -17,7 +18,7 @@ def OnPyUnloadDwg():
 	PyRxApp.Printf("\nOnPyUnloadDwg")
 	
 def getApp():
-	return win32com.client.Dispatch("AutoCAD.Application")
+	return win32com.client.GetActiveObject("AutoCAD.Application")
 	
 def	makeComPoint3d(x, y, z):
 	return win32com.client.VARIANT(pythoncom.VT_ARRAY | pythoncom.VT_R8, [x,y,z])
@@ -25,7 +26,7 @@ def	makeComPoint3d(x, y, z):
 def makeComString(string) :
 	return win32com.client.VARIANT(pythoncom.VT_BSTR, string)
 
-def PyRxAppCmd_Comtest1():
+def PyRxCmd_Comtest1():
 	try:
 		app = getApp()
 		prompt = makeComString("\nGet Angle:")
@@ -34,7 +35,7 @@ def PyRxAppCmd_Comtest1():
 	except Exception as err:
 		PyRxApp.Printf(err)
 			
-def PyRxAppCmd_Comtest2():
+def PyRxCmd_Comtest2():
 	try:
 		app = getApp()
 		pnt = makeComPoint3d(100, 100, 0)
@@ -44,7 +45,7 @@ def PyRxAppCmd_Comtest2():
 	except Exception as err:
 		PyRxApp.Printf(err)
 		
-def PyRxAppCmd_Comtest3():
+def PyRxCmd_Comtest3():
 	try:
 		app = getApp()
 		ms = app.ActiveDocument.ModelSpace
@@ -59,8 +60,9 @@ def PyRxAppCmd_Comtest3():
 		PyRxApp.Printf(r)
 	except Exception as err:
 		PyRxApp.Printf(err)
-		
-		
+  
+
 
 		
 		
+
