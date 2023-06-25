@@ -301,7 +301,11 @@ int PyDbSymUtilServices::compareSymbolName(const std::string& thisName, const st
 
 bool PyDbSymUtilServices::hasVerticalBar(const std::string& name) const
 {
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
     return imp->hasVerticalBar(utf8_to_wstr(name).c_str());
+#endif
 }
 
 std::string PyDbSymUtilServices::makeDependentName(const std::string& dwgName, const std::string& symbolName) const
