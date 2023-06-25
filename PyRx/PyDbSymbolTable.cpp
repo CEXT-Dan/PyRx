@@ -39,7 +39,6 @@ PyDbSymbolTable::PyDbSymbolTable(const PyDbObjectId& id)
 {
 }
 
-
 PyDbSymbolTable::PyDbSymbolTable(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbObject(nullptr, true)
 {
@@ -307,7 +306,7 @@ AcDbBlockTable* PyDbBlockTable::impObj(const std::source_location& src /*= std::
 //PyDbTextStyleTable
 void makePyDbTextStyleTableWrapper()
 {
-    class_<PyDbTextStyleTable, bases<PyDbSymbolTable>>("BlockTable", boost::python::no_init)
+    class_<PyDbTextStyleTable, bases<PyDbSymbolTable>>("TextStyleTable", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("add", &PyDbTextStyleTable::add)
