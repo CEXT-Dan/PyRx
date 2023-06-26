@@ -4,6 +4,8 @@ class PyDbObject;
 class PyDbObjectId;
 class PyDbTransactionManager;
 class PyDbHandle;
+class PyDbAnnotationScale;
+class PyDbDimStyleTableRecord;
 
 void makeAcDbDatabaseWrapper();
 class PyDbDatabase : public PyRxObject
@@ -200,7 +202,7 @@ public:
     AcGePoint3d			pucsorg() const;
     AcGeVector3d		pucsxdir() const;
     AcGeVector3d		pucsydir() const;
-    //Acad::ErrorStatus purge(AcDbObjectIdArray& ids);TODO:
+    boost::python::list purge();
     bool				qtextmode() const;
     Acad::ErrorStatus	reclaimMemoryFromErasedObjects(const boost::python::list& erasedObjects);
     PyDbObjectId		regAppTableId() const;
@@ -227,14 +229,14 @@ public:
     Acad::ErrorStatus	setBlipmode(bool mode);
     Acad::ErrorStatus	setCameraDisplay(bool cameraDisplay);
     Acad::ErrorStatus	setCameraHeight(double cameraHeight);
-    //Acad::ErrorStatus setCannoscale(AcDbAnnotationScale*); TODO:
+    Acad::ErrorStatus   setCannoscale(PyDbAnnotationScale& val);
     Acad::ErrorStatus	setCDynDisplayMode(Adesk::Int16 val);
-    //Acad::ErrorStatus setCecolor(const AcCmColor& color); TODO:
+    Acad::ErrorStatus   setCecolor(const AcCmColor& color);
     Acad::ErrorStatus	setCeltscale(double scale);
     Acad::ErrorStatus	setCeltype(const PyDbObjectId& id);
     Acad::ErrorStatus	setCelweight(AcDb::LineWeight weight);
     Acad::ErrorStatus	setCePlotStyleName(AcDb::PlotStyleNameType, const PyDbObjectId& id);
-    //Acad::ErrorStatus setCetransparency(const AcCmTransparency& transparency); TODO:
+    Acad::ErrorStatus   setCetransparency(const AcCmTransparency& transparency);
     Acad::ErrorStatus	setChamfera(double val);
     Acad::ErrorStatus	setChamferb(double val);
     Acad::ErrorStatus	setChamferc(double val);
@@ -253,8 +255,8 @@ public:
     Acad::ErrorStatus	setDimfit(int fit);
     Acad::ErrorStatus	setDimsho(bool sho);
     Acad::ErrorStatus	setDimstyle(const PyDbObjectId& id);
-    //Acad::ErrorStatus setDimstyleData(AcDbDimStyleTableRecord* pRec);//TODO:
-    Acad::ErrorStatus	setDimstyleData(const PyDbObjectId& id);
+    Acad::ErrorStatus   setDimstyleData1(PyDbDimStyleTableRecord& pRec);
+    Acad::ErrorStatus	setDimstyleData2(const PyDbObjectId& id);
     Acad::ErrorStatus	setDimunit(int unit);
     Acad::ErrorStatus	setDispSilh(bool silh);
     Acad::ErrorStatus	setDragmode(Adesk::Int16 mode);
@@ -287,7 +289,7 @@ public:
     Acad::ErrorStatus	setIndexctl(Adesk::UInt8 val);
     Acad::ErrorStatus	setInsbase(const AcGePoint3d& base);
     Acad::ErrorStatus	setInsunits(const AcDb::UnitsValue units);
-    //Acad::ErrorStatus setInterfereColor(const AcCmColor& color);//TODO: AcCmColor
+    Acad::ErrorStatus   setInterfereColor(const AcCmColor& color);
     Acad::ErrorStatus	setInterfereObjVisStyle(const PyDbObjectId& id);
     Acad::ErrorStatus	setInterfereVpVisStyle(const PyDbObjectId& id);
     Acad::ErrorStatus	setIntersectColor(Adesk::UInt16 val);
