@@ -2118,7 +2118,11 @@ Acad::ErrorStatus PyDbDatabase::setInsunits(const AcDb::UnitsValue units)
 
 Acad::ErrorStatus PyDbDatabase::setInterfereColor(const AcCmColor& color)
 {
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
     return impObj()->setInterfereColor(color);
+#endif
 }
 
 Acad::ErrorStatus PyDbDatabase::setInterfereObjVisStyle(const PyDbObjectId& id)
