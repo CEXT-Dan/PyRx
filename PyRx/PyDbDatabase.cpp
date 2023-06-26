@@ -3,6 +3,8 @@
 #include "PyDbObjectId.h"
 #include "PyDbObject.h"
 #include "PyDbTransactionManager.h"
+#include "PyDbObjectContext.h"
+#include "PyDbSymbolTableRecord.h"
 
 using namespace boost::python;
 //---------------------------------------------------------------------------------------------------
@@ -244,7 +246,8 @@ void makeAcDbDatabaseWrapper()
         .def("setDimfit", &PyDbDatabase::setDimfit)
         .def("setDimsho", &PyDbDatabase::setDimsho)
         .def("setDimstyle", &PyDbDatabase::setDimstyle)
-        .def("setDimstyleData", &PyDbDatabase::setDimstyleData)
+        .def("setDimstyleData", &PyDbDatabase::setDimstyleData1)
+        .def("setDimstyleData", &PyDbDatabase::setDimstyleData2)
         .def("setDimunit", &PyDbDatabase::setDimunit)
         .def("setDispSilh", &PyDbDatabase::setDispSilh)
         .def("setDragmode", &PyDbDatabase::setDragmode)
@@ -468,6 +471,11 @@ void makeAcDbDatabaseWrapper()
         .def("blockTableId", &PyDbDatabase::blockTableId)
         .def("modelSpaceId", &PyDbDatabase::modelSpaceId)
         .def("currentSpaceId", &PyDbDatabase::currentSpaceId)
+        .def("purge", &PyDbDatabase::purge)
+        .def("setCannoscale", &PyDbDatabase::setCannoscale)
+        .def("setCecolor", &PyDbDatabase::setCecolor)
+        .def("setCetransparency", &PyDbDatabase::setCetransparency)
+        .def("setInterfereColor", &PyDbDatabase::setInterfereColor)
         .def("className", &PyDbDatabase::className).staticmethod("className")
         ;
 }
@@ -1601,6 +1609,18 @@ AcGeVector3d PyDbDatabase::pucsydir() const
     return impObj()->pucsydir();
 }
 
+boost::python::list PyDbDatabase::purge()
+{
+    PyAutoLockGIL lock;
+    AcDbObjectIdArray ids;
+    boost::python::list pyids;
+    if (auto es = impObj()->purge(ids); es != eOk)
+        throw PyAcadErrorStatus(es);
+    for (const auto& id : ids)
+        pyids.append(PyDbObjectId(id));
+    return pyids;
+}
+
 bool PyDbDatabase::qtextmode() const
 {
     return impObj()->qtextmode();
@@ -1746,6 +1766,15 @@ Acad::ErrorStatus PyDbDatabase::setCameraHeight(double cameraHeight)
 #endif
 }
 
+Acad::ErrorStatus PyDbDatabase::setCannoscale(PyDbAnnotationScale& val)
+{
+#ifdef ZRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return impObj()->setCannoscale(val.impObj());
+#endif
+}
+
 Acad::ErrorStatus PyDbDatabase::setCDynDisplayMode(Adesk::Int16 val)
 {
 #ifdef BRXAPP
@@ -1753,6 +1782,11 @@ Acad::ErrorStatus PyDbDatabase::setCDynDisplayMode(Adesk::Int16 val)
 #else
     return impObj()->setCDynDisplayMode(val);
 #endif
+}
+
+Acad::ErrorStatus PyDbDatabase::setCecolor(const AcCmColor& color)
+{
+    return impObj()->setCecolor(color);
 }
 
 Acad::ErrorStatus PyDbDatabase::setCeltscale(double scale)
@@ -1773,6 +1807,11 @@ Acad::ErrorStatus PyDbDatabase::setCelweight(AcDb::LineWeight weight)
 Acad::ErrorStatus PyDbDatabase::setCePlotStyleName(AcDb::PlotStyleNameType type, const PyDbObjectId& id)
 {
     return impObj()->setCePlotStyleName(type, id.m_id);
+}
+
+Acad::ErrorStatus PyDbDatabase::setCetransparency(const AcCmTransparency& transparency)
+{
+    return impObj()->setCetransparency(transparency);
 }
 
 Acad::ErrorStatus PyDbDatabase::setChamfera(double val)
@@ -1873,7 +1912,12 @@ Acad::ErrorStatus PyDbDatabase::setDimstyle(const PyDbObjectId& id)
     return impObj()->setDimstyle(id.m_id);
 }
 
-Acad::ErrorStatus PyDbDatabase::setDimstyleData(const PyDbObjectId& id)
+Acad::ErrorStatus PyDbDatabase::setDimstyleData1(PyDbDimStyleTableRecord& pRec)
+{
+    return impObj()->setDimstyleData(pRec.impObj());
+}
+
+Acad::ErrorStatus PyDbDatabase::setDimstyleData2(const PyDbObjectId& id)
 {
     return impObj()->setDimstyleData(id.m_id);
 }
@@ -2070,6 +2114,11 @@ Acad::ErrorStatus PyDbDatabase::setInsbase(const AcGePoint3d& base)
 Acad::ErrorStatus PyDbDatabase::setInsunits(const AcDb::UnitsValue units)
 {
     return impObj()->setInsunits(units);
+}
+
+Acad::ErrorStatus PyDbDatabase::setInterfereColor(const AcCmColor& color)
+{
+    return impObj()->setInterfereColor(color);
 }
 
 Acad::ErrorStatus PyDbDatabase::setInterfereObjVisStyle(const PyDbObjectId& id)
