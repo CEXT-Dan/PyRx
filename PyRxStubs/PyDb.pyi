@@ -13910,6 +13910,12 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> ErrorStat
     C++ signature :
         class AcGeVector3d pucsydir(class PyDbDatabase {lvalue})'''
     ...
+    def purge (self, *args, **kwargs)-> list :
+      '''purge( (Database)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list purge(class PyDbDatabase {lvalue})'''
+    ...
     def qtextmode (self, *args, **kwargs)-> bool :
       '''qtextmode( (Database)arg1) -> bool :
 
@@ -14089,11 +14095,23 @@ readDwgFile( (Database)arg1, (str)arg2, (int)arg3, (bool)arg4, (str)arg5) -> Err
     C++ signature :
         enum Acad::ErrorStatus setCameraHeight(class PyDbDatabase {lvalue},double)'''
     ...
+    def setCannoscale (self, *args, **kwargs)-> ErrorStatus :
+      '''setCannoscale( (Database)arg1, (AnnotationScale)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setCannoscale(class PyDbDatabase {lvalue},class PyDbAnnotationScale {lvalue})'''
+    ...
     def setCePlotStyleName (self, *args, **kwargs)-> ErrorStatus :
       '''setCePlotStyleName( (Database)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setCePlotStyleName(class PyDbDatabase {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId)'''
+    ...
+    def setCecolor (self, *args, **kwargs)-> ErrorStatus :
+      '''setCecolor( (Database)arg1, (Color)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setCecolor(class PyDbDatabase {lvalue},class AcCmColor)'''
     ...
     def setCeltscale (self, *args, **kwargs)-> ErrorStatus :
       '''setCeltscale( (Database)arg1, (float)arg2) -> ErrorStatus :
@@ -14112,6 +14130,12 @@ readDwgFile( (Database)arg1, (str)arg2, (int)arg3, (bool)arg4, (str)arg5) -> Err
 
     C++ signature :
         enum Acad::ErrorStatus setCelweight(class PyDbDatabase {lvalue},enum AcDb::LineWeight)'''
+    ...
+    def setCetransparency (self, *args, **kwargs)-> ErrorStatus :
+      '''setCetransparency( (Database)arg1, (Transparency)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setCetransparency(class PyDbDatabase {lvalue},class AcCmTransparency)'''
     ...
     def setChamfera (self, *args, **kwargs)-> ErrorStatus :
       '''setChamfera( (Database)arg1, (float)arg2) -> ErrorStatus :
@@ -14222,7 +14246,12 @@ readDwgFile( (Database)arg1, (str)arg2, (int)arg3, (bool)arg4, (str)arg5) -> Err
         enum Acad::ErrorStatus setDimstyle(class PyDbDatabase {lvalue},class PyDbObjectId)'''
     ...
     def setDimstyleData (self, *args, **kwargs)-> ErrorStatus :
-      '''setDimstyleData( (Database)arg1, (ObjectId)arg2) -> ErrorStatus :
+      '''setDimstyleData( (Database)arg1, (DimStyleTableRecord)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setDimstyleData(class PyDbDatabase {lvalue},class PyDbDimStyleTableRecord {lvalue})
+
+setDimstyleData( (Database)arg1, (ObjectId)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setDimstyleData(class PyDbDatabase {lvalue},class PyDbObjectId)'''
@@ -14376,6 +14405,12 @@ readDwgFile( (Database)arg1, (str)arg2, (int)arg3, (bool)arg4, (str)arg5) -> Err
 
     C++ signature :
         enum Acad::ErrorStatus setInsunits(class PyDbDatabase {lvalue},enum AcDb::UnitsValue)'''
+    ...
+    def setInterfereColor (self, *args, **kwargs)-> ErrorStatus :
+      '''setInterfereColor( (Database)arg1, (Color)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setInterfereColor(class PyDbDatabase {lvalue},class AcCmColor)'''
     ...
     def setInterfereObjVisStyle (self, *args, **kwargs)-> ErrorStatus :
       '''setInterfereObjVisStyle( (Database)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -33366,6 +33401,11 @@ __init__( (object)arg1) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
 
 __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
