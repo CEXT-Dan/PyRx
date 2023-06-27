@@ -5,8 +5,6 @@ class PyDbDatabase;
 
 void makeAcEditorWrapper();
 
-//acedNEntSelPEx 
-
 class PyAcEditor
 {
 public:
@@ -21,6 +19,8 @@ public:
     static boost::python::tuple entSel(const std::string& prompt);
     static boost::python::tuple nEntSelP1(const std::string& prompt);
     static boost::python::tuple nEntSelP2(const std::string& prompt, AcGePoint3d& ptres);
+    static boost::python::tuple nEntSelPEx1(const std::string& prompt, int uTransSpaceFlag);
+    static boost::python::tuple nEntSelPEx2(const std::string& prompt, AcGePoint3d& ptres, int uTransSpaceFlag);
     static boost::python::tuple select1();
     static boost::python::tuple select2(const boost::python::list& filter);
     static boost::python::tuple select3(const std::string& add, const std::string& remove);

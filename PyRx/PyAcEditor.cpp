@@ -8,6 +8,17 @@
 
 using namespace boost::python;
 
+#ifdef ARXAPP
+extern int acedNEntSelPEx(
+    const ACHAR * str, 
+    ads_name entres,
+    ads_point ptres, 
+    int pickflag,
+    ads_matrix xformres,
+    struct resbuf** refstkres,
+    unsigned int uTransSpaceFlag,
+    Adesk::GsMarker* gsmarker);
+#endif
 //-----------------------------------------------------------------------------------------
 //helpers
 
@@ -81,6 +92,8 @@ void makeAcEditorWrapper()
         .def("entSel", &PyAcEditor::entSel).staticmethod("entSel")
         .def("nEntSelP", &PyAcEditor::nEntSelP1)
         .def("nEntSelP", &PyAcEditor::nEntSelP2).staticmethod("nEntSelP")
+        .def("nEntSelPEx", &PyAcEditor::nEntSelPEx1)
+        .def("nEntSelPEx", &PyAcEditor::nEntSelPEx2).staticmethod("nEntSelPEx")
         .def("getCurrentUCS", &PyAcEditor::curUCS).staticmethod("getCurrentUCS")
         .def("setCurrentUCS", &PyAcEditor::setCurUCS).staticmethod("setCurrentUCS")
         .def("activeViewportId", &PyAcEditor::activeViewportId).staticmethod("activeViewportId")
@@ -240,6 +253,58 @@ boost::python::tuple PyAcEditor::nEntSelP1(const std::string& prompt)
 boost::python::tuple PyAcEditor::nEntSelP2(const std::string& prompt, AcGePoint3d& ptres)
 {
     return nEntSelP(prompt, ptres, 1);
+}
+
+#ifdef ARXAPP
+boost::python::tuple nEntSelPEx(const std::string& prompt, AcGePoint3d& ptres, int opt, unsigned int uTransSpaceFlag)
+{
+    PyAutoLockGIL lock;
+    WxUserInteraction ui;
+    ads_point pnt = { ptres.x,ptres.y, ptres.z };
+    ads_matrix xform;
+    AcGeMatrix3d xformres;
+    memcpy(xform, xformres.entry, sizeof(ads_matrix));
+    struct resbuf* pRb = NULL;
+    ads_name name = { 0L };
+    int64_t gsmarker = -1;
+    int flag = acedNEntSelPEx(utf8_to_wstr(prompt).c_str(), name, pnt, opt, xform, &pRb, uTransSpaceFlag, &gsmarker);
+    AcResBufPtr buf(pRb);
+    PyDbObjectId id;
+    acdbGetObjectId(id.m_id, name);
+    memcpy(xformres.entry, xform, sizeof(ads_matrix));
+    boost::python::list pyIds;
+    if (pRb != nullptr)
+    {
+        for (resbuf* pTail = pRb; pTail != nullptr; pTail = pTail->rbnext)
+        {
+            if (pTail->restype != RTENAME)
+                continue;
+            PyDbObjectId sid;
+            if (acdbGetObjectId(sid.m_id, pTail->resval.rlname) == eOk)
+                pyIds.append(sid);
+        }
+    }
+    return boost::python::make_tuple(flag, id, xformres, gsmarker, pyIds);
+}
+#endif
+
+boost::python::tuple PyAcEditor::nEntSelPEx1(const std::string& prompt, int uTransSpaceFlag)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    AcGePoint3d dummyptp;
+    return nEntSelPEx(prompt, dummyptp, 0, uTransSpaceFlag);
+#endif // !ARXAPP
+}
+
+boost::python::tuple PyAcEditor::nEntSelPEx2(const std::string& prompt, AcGePoint3d& ptres, int uTransSpaceFlag)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    return nEntSelPEx(prompt, ptres, 1, uTransSpaceFlag);
+#endif // !ARXAPP
 }
 
 boost::python::tuple PyAcEditor::select1()
