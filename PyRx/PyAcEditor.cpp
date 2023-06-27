@@ -79,6 +79,8 @@ void makeAcEditorWrapper()
         .def("getDist", &PyAcEditor::getDist1)
         .def("getDist", &PyAcEditor::getDist2).staticmethod("getDist")
         .def("entSel", &PyAcEditor::entSel).staticmethod("entSel")
+        .def("nEntSelP", &PyAcEditor::nEntSelP1)
+        .def("nEntSelP", &PyAcEditor::nEntSelP2).staticmethod("nEntSelP")
         .def("getCurrentUCS", &PyAcEditor::curUCS).staticmethod("getCurrentUCS")
         .def("setCurrentUCS", &PyAcEditor::setCurUCS).staticmethod("setCurrentUCS")
         .def("activeViewportId", &PyAcEditor::activeViewportId).staticmethod("activeViewportId")
@@ -197,6 +199,35 @@ boost::python::tuple PyAcEditor::entSel(const std::string& prompt)
     PyDbObjectId id;
     acdbGetObjectId(id.m_id, name);
     return boost::python::make_tuple<Acad::PromptStatus, PyDbObjectId, AcGePoint3d>(stat, id, asPnt3d(pnt));
+}
+
+boost::python::tuple nEntSelP(const std::string& prompt, AcGePoint3d& ptres, int opt)
+{
+    PyAutoLockGIL lock;
+    WxUserInteraction ui;
+    ads_point pnt = { ptres.x,ptres.y, ptres.z };
+    ads_matrix xform;
+    AcGeMatrix3d xformres;
+    memcpy(xform, xformres.entry, sizeof(ads_matrix));
+    struct resbuf* pRb = NULL;
+    ads_name name = { 0L };
+    int flag = acedNEntSelP(utf8_to_wstr(prompt).c_str(), name, pnt, opt, xform, &pRb);
+    AcResBufPtr buf(pRb);
+    PyDbObjectId id;
+    acdbGetObjectId(id.m_id, name);
+    memcpy(xformres.entry, xform, sizeof(ads_matrix));
+    return boost::python::make_tuple(flag, id, xformres, resbufToList(pRb));
+}
+
+boost::python::tuple PyAcEditor::nEntSelP1(const std::string& prompt)
+{
+    AcGePoint3d dummyptp;
+    return nEntSelP(prompt, dummyptp, 0);
+}
+
+boost::python::tuple PyAcEditor::nEntSelP2(const std::string& prompt, AcGePoint3d& ptres)
+{
+    return nEntSelP(prompt, ptres, 1);
 }
 
 boost::python::tuple PyAcEditor::select1()
