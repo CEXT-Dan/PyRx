@@ -854,6 +854,17 @@ getPoint( (Point3d)arg1, (str)arg2) -> tuple :
     C++ signature :
         enum Acad::PromptStatus initGet(int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def nEntSelP (self, *args, **kwargs)-> tuple :
+      '''nEntSelP( (str)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple nEntSelP(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+nEntSelP( (str)arg1, (Point3d)arg2) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple nEntSelP(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class AcGePoint3d {lvalue})'''
+    ...
     def select (self, *args, **kwargs)-> tuple :
       '''select() -> tuple :
 
