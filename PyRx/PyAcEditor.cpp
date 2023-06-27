@@ -216,7 +216,19 @@ boost::python::tuple nEntSelP(const std::string& prompt, AcGePoint3d& ptres, int
     PyDbObjectId id;
     acdbGetObjectId(id.m_id, name);
     memcpy(xformres.entry, xform, sizeof(ads_matrix));
-    return boost::python::make_tuple(flag, id, xformres, resbufToList(pRb));
+    boost::python::list pyIds;
+    if (pRb != nullptr)
+    {
+        for (resbuf* pTail = pRb; pTail != nullptr; pTail = pTail->rbnext)
+        {
+            if(pTail->restype != RTENAME)
+                continue;
+            PyDbObjectId sid;
+            if (acdbGetObjectId(sid.m_id, pTail->resval.rlname) == eOk)
+                pyIds.append(sid);
+        }
+    }
+    return boost::python::make_tuple(flag, id, xformres, pyIds);
 }
 
 boost::python::tuple PyAcEditor::nEntSelP1(const std::string& prompt)
