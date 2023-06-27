@@ -300,12 +300,18 @@ boost::python::list PyDbText::getBoundingPoints() const
 {
 #ifdef ARXAPP
     PyAutoLockGIL lock;
-    boost::python::list l;
-    AcGePoint3dArray arr;
-    impObj()->getBoundingPoints(arr);
-    for (const auto& item : arr)
-        l.append(item);
-    return l;
+    AcGePoint3dArray boundingPoints;
+    boost::python::list pyBoundingPoints;
+    impObj()->getBoundingPoints(boundingPoints);
+    if (boundingPoints.length() == 0)
+    {
+        if (auto es = impObj()->draw(); es != eOk)
+            throw PyAcadErrorStatus(es);
+        impObj()->getBoundingPoints(boundingPoints);
+    }
+    for (const auto& item : boundingPoints)
+        pyBoundingPoints.append(item);
+    return pyBoundingPoints;
 #else
     throw PyNotimplementedByHost();
 #endif // ARXAPP
