@@ -207,11 +207,17 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbEvalVariantWrapper();
     makePyDbDynBlockReferencePropertyWrapper();
 
-    makeDbCoreWrapper();//LAST
+    makeDbCoreWrapper();//LAST?
 
 
     def("curDb", curPyDb);
 
+    enum_<AcDb::VpFreezeOps>("VpFreezeOps")
+        .value("kFreeze", AcDb::VpFreezeOps::kFreeze)
+        .value("kThaw", AcDb::VpFreezeOps::kThaw)
+        .value("kReset", AcDb::VpFreezeOps::kReset)
+        .export_values()
+        ;
     enum_<AcDb::DwgDataType>("DwgDataType")
         .value("kDwgNull", AcDb::DwgDataType::kDwgNull)
         .value("kDwgReal", AcDb::DwgDataType::kDwgReal)

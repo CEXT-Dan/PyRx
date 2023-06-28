@@ -26,6 +26,12 @@ public:
     static Acad::ErrorStatus    mSpace();
     static Acad::ErrorStatus    pSpace();
 
+    static int                  update(int vport, const AcGePoint2d& p1, const AcGePoint2d& p2);
+    static void                 updateDisplay();
+    static void                 updateDisplayPause(bool bEnable);
+    static bool                 usrBrk();
+    static PyDbObjectId         viewportIdFromNumber(int val);
+    static Acad::ErrorStatus    vpLayer(const PyDbObjectId& vpId, const boost::python::list& layerIds, AcDb::VpFreezeOps operation);
     static boost::python::list  vports();
     static Acad::ErrorStatus    vports2VportTableRecords();
     static Acad::ErrorStatus    vportTableRecords2Vports();
@@ -33,7 +39,7 @@ public:
     static Acad::ErrorStatus    xrefAttach2(const std::string& path, const std::string& name, PyDbObjectId& btrid, PyDbObjectId& refid, AcGePoint3d& pt,
         AcGeScale3d& sc, double rot, bool bQuiet, PyDbDatabase& pHostDb, const std::string& passwd);
 
-    std::string                 xrefCreateBlockname(const std::string& XrefPathname);
+    static std::string          xrefCreateBlockname(const std::string& XrefPathname);
     static Acad::ErrorStatus    xrefDetach1(const std::string& XrefBlockname);
     static Acad::ErrorStatus    xrefDetach2(const std::string& XrefBlockname, bool bQuiet, PyDbDatabase& pHostDb);
     static bool                 xrefNotifyCheckFileChanged(const PyDbObjectId& id);
