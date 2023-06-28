@@ -20,7 +20,6 @@ extern "C" bool acedGetPredefinedPattens(AcStringArray & patterns);
 void makeEdCoreWrapper()
 {
     class_<EdCore>("Core")
-        .def("print", &EdCore::print).staticmethod("print")
         .def("alert", &EdCore::alert).staticmethod("alert")
         .def("arxLoad", &EdCore::arxLoad).staticmethod("arxLoad")
         .def("arxLoaded", &EdCore::arxLoaded).staticmethod("arxLoaded")
@@ -40,11 +39,6 @@ void makeEdCoreWrapper()
         .def("getVar", &EdCore::getVar).staticmethod("getVar")
         .def("setVar", &EdCore::setVar).staticmethod("setVar")
         ;
-}
-
-void EdCore::print(const std::string& str)
-{
-    acutPrintf(utf8_to_wstr(str).c_str());
 }
 
 int EdCore::alert(const std::string& msg)
