@@ -46,4 +46,3 @@ public:
     bool isLoaded = false;
 };
 
-PyMODINIT_FUNC PyInitPyRxModule(void);

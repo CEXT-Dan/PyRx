@@ -201,7 +201,6 @@
     <ClCompile Include="PyGiSubEntityTraits.cpp" />
     <ClCompile Include="PyJig.cpp" />
     <ClCompile Include="PyLispService.cpp" />
-    <ClCompile Include="PyRxAcut.cpp" />
     <ClCompile Include="PyRxApp.cpp" />
     <ClCompile Include="PyRxObject.cpp" />
     <ClCompile Include="PyRxOverrule.cpp" />
@@ -290,7 +289,6 @@
     <ClInclude Include="PyGiSubEntityTraits.h" />
     <ClInclude Include="PyJig.h" />
     <ClInclude Include="PyLispService.h" />
-    <ClInclude Include="PyRxAcut.h" />
     <ClInclude Include="PyRxApp.h" />
     <ClInclude Include="PyRxObject.h" />
     <ClInclude Include="PyRxOverrule.h" />

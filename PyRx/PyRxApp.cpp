@@ -1,7 +1,5 @@
 #include "stdafx.h"
 #include "PyRxApp.h"
-#include "PyRxAcut.h"
-
 #include "PyAcGe.h"
 #include "PyAcDb.h"
 #include "PyAcRx.h"
@@ -154,12 +152,8 @@ bool PyRxApp::init()
         initPyDbModule();
         initPyApModule();
         initPyEdModule();
-
-        //TODO: might not keep this
-        if (PyImport_AppendInittab(PyAppNamespace, PyInitPyRxModule) == -1)
-            acutPrintf(_T("\nPyImport Failed"));
-
         initWxApp();
+
         if (Py_IsInitialized() && setPyConfig())
         {
             isLoaded = true;
@@ -250,24 +244,6 @@ bool PyRxApp::pyRxAppendSearchPath(const TCHAR* pModulePath)
     if (PyList_Append(path.get(), pyString.get()) < 0)
         return false;
     return true;
-}
-
-PyMODINIT_FUNC PyInitPyRxModule(void)
-{
-    static PyMethodDef PyRxMethods[] =
-    {
-        {"Printf", PyRxAcut::Printf, METH_VARARGS, PyRxAcut::PrintfDoc()},
-        {NULL, NULL, 0 , NULL}
-    };
-    static PyModuleDef pyRxModuleDef =
-    {
-        PyModuleDef_HEAD_INIT,  "PyRxApp", "ObjectArx wrappers", -1,  PyRxMethods
-    };
-    WxPyAutoLock lock;
-    PyObject* m = PyModule_Create(&pyRxModuleDef);
-    if (m == NULL)
-        return NULL;
-    return m;
 }
 
 std::wstring PyRxApp::the_error()

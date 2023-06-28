@@ -16,9 +16,6 @@
     <ClCompile Include="PyRxApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PyRxAcut.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PyAcDb.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
@@ -271,9 +268,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PyRxApp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PyRxAcut.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PyDbDatabase.h">
