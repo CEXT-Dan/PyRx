@@ -25,5 +25,8 @@ public:
     static boost::python::list getFileNavDialog(const std::string& title, const std::string& defawlt, const std::string& ext, const std::string& dlgname, int flags);
     static boost::python::object getVar(const std::string& sym);
     static bool                  setVar(const std::string& sym, const  boost::python::object&);
+    static Acad::ErrorStatus    mSpace();
+    static Acad::ErrorStatus    pSpace();
+
 };
 
