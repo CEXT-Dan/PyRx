@@ -8,6 +8,13 @@
 
 using namespace boost::python;
 
+static void print(const boost::python::object& obj)
+{
+    PyAutoLockGIL lock;
+    std::string str = boost::python::extract<std::string>(boost::python::str(obj));
+    acutPrintf(utf8_to_wstr(str).c_str());
+}
+
 BOOST_PYTHON_MODULE(PyEd)
 {
     docstring_options local_docstring_options(true, true, true);
@@ -18,6 +25,8 @@ BOOST_PYTHON_MODULE(PyEd)
     makeAcEdDrawJigWrapper();
     makeAcEditorWrapper();
     makePyEditorReactorWrapper();
+
+    def("print", print);
 
     enum_<Acad::PromptStatus>("PromptStatus")
         .value("eNone", Acad::PromptStatus::eNone)

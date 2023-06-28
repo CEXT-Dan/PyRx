@@ -19,6 +19,7 @@ void makePyEdSelectionSetWrapper()
         .def("ssNameX", &PyEdSelectionSet::ssNameX1)
         .def("ssNameX", &PyEdSelectionSet::ssNameX2)
         .def("ssSetFirst", &PyEdSelectionSet::ssSetFirst)
+        .def("ssXform", &PyEdSelectionSet::ssXform)
         ;
 }
 
@@ -98,6 +99,13 @@ bool PyEdSelectionSet::ssSetFirst()
         throw PyAcadErrorStatus(eInvalidInput);
     ads_name dummy = { 0 };
     return acedSSSetFirst(m_pSet->data(), dummy) == RTNORM;
+}
+
+Acad::PromptStatus PyEdSelectionSet::ssXform(const AcGeMatrix3d& xform)
+{
+    ads_matrix adsXform;
+    memcpy(adsXform, xform.entry, sizeof(ads_matrix));
+    return static_cast<Acad::PromptStatus>(acedXformSS(m_pSet->data(), adsXform));
 }
 
 boost::python::list PyEdSelectionSet::ssNameX1()
