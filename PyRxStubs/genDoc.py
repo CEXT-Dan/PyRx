@@ -4,7 +4,6 @@ import io
 import pydoc
 import enum
 
-import PyRxApp  # = all the global methods like acutPrintf,
 import PyRx  # = Runtime runtime
 import PyGe  # = Geometry
 import PyGi  # = Graphics interface
@@ -118,7 +117,6 @@ def generate_txt_help(moduleName, module):
 
 
 def PyRxCmd_pygenpyi():
-    generate_pyi('PyRxApp.pyi', PyRxApp)
     generate_pyi('PyRx.pyi', PyRx)
     generate_pyi('PyGe.pyi', PyGe)
     generate_pyi('PyGi.pyi', PyGi)
@@ -128,7 +126,6 @@ def PyRxCmd_pygenpyi():
 
 
 def PyRxCmd_pygenhtmlhelp():
-    generate_html_help('PyRxApp.html', PyRxApp)
     generate_html_help('PyRx.html', PyRx)
     generate_html_help('PyGe.html', PyGe)
     generate_html_help('PyGi.html', PyGi)
@@ -138,7 +135,6 @@ def PyRxCmd_pygenhtmlhelp():
 
 
 def PyRxCmd_pygentxthelp():
-    generate_txt_help('PyRxApp.txt', PyRxApp)
     generate_txt_help('PyRx.txt', PyRx)
     generate_txt_help('PyGe.txt', PyGe)
     generate_txt_help('PyGi.txt', PyGi)
