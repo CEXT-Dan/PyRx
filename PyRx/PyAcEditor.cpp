@@ -224,7 +224,7 @@ boost::python::tuple nEntSelP(const std::string& prompt, AcGePoint3d& ptres, int
     memcpy(xform, xformres.entry, sizeof(ads_matrix));
     struct resbuf* pRb = NULL;
     ads_name name = { 0L };
-    int flag = acedNEntSelP(utf8_to_wstr(prompt).c_str(), name, pnt, opt, xform, &pRb);
+    auto flag = static_cast<Acad::PromptStatus>(acedNEntSelP(utf8_to_wstr(prompt).c_str(), name, pnt, opt, xform, &pRb));
     AcResBufPtr buf(pRb);
     PyDbObjectId id;
     acdbGetObjectId(id.m_id, name);
@@ -267,7 +267,7 @@ boost::python::tuple nEntSelPEx(const std::string& prompt, AcGePoint3d& ptres, i
     struct resbuf* pRb = NULL;
     ads_name name = { 0L };
     int64_t gsmarker = -1;
-    int flag = acedNEntSelPEx(utf8_to_wstr(prompt).c_str(), name, pnt, opt, xform, &pRb, uTransSpaceFlag, &gsmarker);
+    auto flag = static_cast<Acad::PromptStatus>(acedNEntSelPEx(utf8_to_wstr(prompt).c_str(), name, pnt, opt, xform, &pRb, uTransSpaceFlag, &gsmarker));
     AcResBufPtr buf(pRb);
     PyDbObjectId id;
     acdbGetObjectId(id.m_id, name);

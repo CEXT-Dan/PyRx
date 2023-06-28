@@ -33,6 +33,7 @@ public:
     bool                hasMember(const PyDbObjectId& objId);
     AdsName             adsname() const;
     bool                ssSetFirst();
+    Acad::PromptStatus  ssXform(const AcGeMatrix3d& xform);
     boost::python::list ssNameX1();
     boost::python::list ssNameX2(int ind);
     boost::python::list toList();
