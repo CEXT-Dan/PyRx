@@ -124,6 +124,39 @@ xrefDetach( (str)arg1, (bool)arg2, (Database)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus xrefDetach(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,class PyDbDatabase {lvalue})'''
     ...
+    def xrefResolve (self, *args, **kwargs)-> ErrorStatus :
+      '''xrefResolve( (Core)arg1, (Database)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus xrefResolve(class EdCore {lvalue},class PyDbDatabase {lvalue})
+
+xrefResolve( (Core)arg1, (Database)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus xrefResolve(class EdCore {lvalue},class PyDbDatabase {lvalue},bool)'''
+    ...
+    def xrefUnload (self, *args, **kwargs)-> ErrorStatus :
+      '''xrefUnload( (str)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus xrefUnload(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+xrefUnload( (str)arg1, (bool)arg2, (Database)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus xrefUnload(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,class PyDbDatabase {lvalue})'''
+    ...
+    def xrefXBind (self, *args, **kwargs)-> ErrorStatus :
+      '''xrefXBind( (list)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus xrefXBind(class boost::python::list)
+
+xrefXBind( (list)arg1, (bool)arg2, (Database)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus xrefXBind(class boost::python::list,bool,class PyDbDatabase {lvalue})'''
+    ...
 
 class CursorType:
     def __init__ (self, /, *args, **kwargs):
