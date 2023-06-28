@@ -113,6 +113,42 @@ audit( (Database)arg1, (bool)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         bool setVar(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::api::object)'''
     ...
+    def update (self, *args, **kwargs)-> int :
+      '''update( (int)arg1, (Point2d)arg2, (Point2d)arg3) -> int :
+
+    C++ signature :
+        int update(int,class AcGePoint2d,class AcGePoint2d)'''
+    ...
+    def updateDisplay (self, *args, **kwargs)-> None :
+      '''updateDisplay() -> None :
+
+    C++ signature :
+        void updateDisplay()'''
+    ...
+    def updateDisplayPause (self, *args, **kwargs)-> None :
+      '''updateDisplayPause( (bool)arg1) -> None :
+
+    C++ signature :
+        void updateDisplayPause(bool)'''
+    ...
+    def usrBrk (self, *args, **kwargs)-> bool :
+      '''usrBrk() -> bool :
+
+    C++ signature :
+        bool usrBrk()'''
+    ...
+    def viewportIdFromNumber (self, *args, **kwargs)-> ObjectId :
+      '''viewportIdFromNumber( (int)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId viewportIdFromNumber(int)'''
+    ...
+    def vpLayer (self, *args, **kwargs)-> ErrorStatus :
+      '''vpLayer( (ObjectId)arg1, (list)arg2, (VpFreezeOps)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus vpLayer(class PyDbObjectId,class boost::python::list,enum AcDb::VpFreezeOps)'''
+    ...
     def vportTableRecords2Vports (self, *args, **kwargs)-> ErrorStatus :
       '''vportTableRecords2Vports() -> ErrorStatus :
 
@@ -154,10 +190,10 @@ xrefBind( (str)arg1, (bool)arg2, (bool)arg3, (Database)arg4) -> ErrorStatus :
         enum Acad::ErrorStatus xrefBind(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,bool,class PyDbDatabase {lvalue})'''
     ...
     def xrefCreateBlockname (self, *args, **kwargs)-> str :
-      '''xrefCreateBlockname( (Core)arg1, (str)arg2) -> str :
+      '''xrefCreateBlockname( (str)arg1) -> str :
 
     C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > xrefCreateBlockname(class EdCore {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > xrefCreateBlockname(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def xrefDetach (self, *args, **kwargs)-> ErrorStatus :
       '''xrefDetach( (str)arg1) -> ErrorStatus :

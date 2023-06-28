@@ -40,6 +40,12 @@ void makeEdCoreWrapper()
         .def("pSpace", &EdCore::pSpace).staticmethod("pSpace")
 
 
+        .def("update", &EdCore::update).staticmethod("update")
+        .def("updateDisplay", &EdCore::updateDisplay).staticmethod("updateDisplay")
+        .def("updateDisplayPause", &EdCore::updateDisplayPause).staticmethod("updateDisplayPause")
+        .def("usrBrk", &EdCore::usrBrk).staticmethod("usrBrk")
+        .def("viewportIdFromNumber", &EdCore::viewportIdFromNumber).staticmethod("viewportIdFromNumber")
+        .def("vpLayer", &EdCore::vpLayer).staticmethod("vpLayer")
         .def("vports", &EdCore::vports).staticmethod("vports")
         .def("vports2VportTableRecords", &EdCore::vports2VportTableRecords).staticmethod("vports2VportTableRecords")
         .def("vportTableRecords2Vports", &EdCore::vportTableRecords2Vports).staticmethod("vportTableRecords2Vports")
@@ -287,6 +293,36 @@ Acad::ErrorStatus EdCore::mSpace()
 Acad::ErrorStatus EdCore::pSpace()
 {
     return acedPspace();
+}
+
+int EdCore::update(int vport, const AcGePoint2d& p1, const AcGePoint2d& p2)
+{
+    return acedUpdate(vport, asDblArray(p1), asDblArray(p2));
+}
+
+void EdCore::updateDisplay()
+{
+    acedUpdateDisplay();
+}
+
+void EdCore::updateDisplayPause(bool bEnable)
+{
+    acedUpdateDisplayPause(bEnable);
+}
+
+bool EdCore::usrBrk()
+{
+    return acedUsrBrk() == 1;
+}
+
+PyDbObjectId EdCore::viewportIdFromNumber(int val)
+{
+    return PyDbObjectId(acedViewportIdFromNumber(val));
+}
+
+Acad::ErrorStatus EdCore::vpLayer(const PyDbObjectId& vpId, const boost::python::list& layerIds, AcDb::VpFreezeOps operation)
+{
+    return acedVPLayer(vpId.m_id, PyListToObjectIdArray(layerIds), operation);
 }
 
 boost::python::list EdCore::vports()
