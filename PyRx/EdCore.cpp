@@ -28,8 +28,6 @@ void makeEdCoreWrapper()
         .def("audit", &EdCore::audit2).staticmethod("audit")
         .def("callBackOnCancel", &EdCore::callBackOnCancel).staticmethod("callBackOnCancel")
         .def("clearOLELock", &EdCore::clearOLELock).staticmethod("clearOLELock")
-        .def("xrefDetach", &EdCore::xrefDetach1)//.staticmethod("xrefDetach")
-        .def("xrefDetach", &EdCore::xrefDetach2).staticmethod("xrefDetach")
         .def("cmdS", &EdCore::cmdS).staticmethod("cmdS")
         .def("findFile", &EdCore::findFile).staticmethod("findFile")
         .def("findTrustedFile", &EdCore::findTrustedFile).staticmethod("findTrustedFile")
@@ -41,10 +39,28 @@ void makeEdCoreWrapper()
         .def("mSpace", &EdCore::mSpace).staticmethod("mSpace")
         .def("pSpace", &EdCore::pSpace).staticmethod("pSpace")
 
+
+        .def("vports", &EdCore::vports).staticmethod("vports")
+        .def("vports2VportTableRecords", &EdCore::vports2VportTableRecords).staticmethod("vports2VportTableRecords")
+        .def("vportTableRecords2Vports", &EdCore::vportTableRecords2Vports).staticmethod("vportTableRecords2Vports")
+        .def("xrefAttach", &EdCore::xrefAttach1)
+        .def("xrefAttach", &EdCore::xrefAttach2).staticmethod("xrefAttach")
+        .def("xrefCreateBlockname", &EdCore::xrefCreateBlockname).staticmethod("xrefCreateBlockname")
+        .def("xrefDetach", &EdCore::xrefDetach1)
+        .def("xrefDetach", &EdCore::xrefDetach2).staticmethod("xrefDetach")
+        .def("xrefNotifyCheckFileChanged", &EdCore::xrefNotifyCheckFileChanged).staticmethod("xrefNotifyCheckFileChanged")
+        .def("xrefOverlay", &EdCore::xrefOverlay1)
+        .def("xrefOverlay", &EdCore::xrefOverlay2).staticmethod("xrefOverlay")
+        .def("xrefReload", &EdCore::xrefReload1)
+        .def("xrefReload", &EdCore::xrefReload2)
+        .def("xrefReload", &EdCore::xrefReload3)
+        .def("xrefReload", &EdCore::xrefReload4).staticmethod("xrefReload")
         .def("xrefResolve", &EdCore::xrefResolve1)
         .def("xrefResolve", &EdCore::xrefResolve2).staticmethod("xrefResolve")
         .def("xrefUnload", &EdCore::xrefUnload1)
         .def("xrefUnload", &EdCore::xrefUnload2).staticmethod("xrefUnload")
+        .def("xrefBind", &EdCore::xrefBind1)
+        .def("xrefBind", &EdCore::xrefBind2).staticmethod("xrefBind")
         .def("xrefXBind", &EdCore::xrefXBind1)
         .def("xrefXBind", &EdCore::xrefXBind2).staticmethod("xrefXBind")
         ;
@@ -139,16 +155,6 @@ boost::python::list EdCore::getPredefinedPattens()
     }
     return py_patterns;
 #endif
-}
-
-Acad::ErrorStatus EdCore::xrefDetach1(const std::string& XrefBlockname)
-{
-    return acedXrefDetach(utf8_to_wstr(XrefBlockname).c_str());
-}
-
-Acad::ErrorStatus EdCore::xrefDetach2(const std::string& XrefBlockname, bool bQuiet, PyDbDatabase& db)
-{
-    return acedXrefDetach(utf8_to_wstr(XrefBlockname).c_str(), bQuiet, db.impObj());
 }
 
 std::string EdCore::getFileD(const std::string& title, const std::string& defawlt, const std::string& ext, int flags)
@@ -283,12 +289,128 @@ Acad::ErrorStatus EdCore::pSpace()
     return acedPspace();
 }
 
+boost::python::list EdCore::vports()
+{
+    resbuf* buf = nullptr;
+    if (auto es = acedVports(&buf); es != RTNORM)
+        throw PyAcadErrorStatus(eOutOfMemory);
+    AcResBufPtr autodel(buf);
+    return resbufToList(buf);
+}
+
+Acad::ErrorStatus EdCore::vports2VportTableRecords()
+{
+    return acedVports2VportTableRecords();
+}
+
+Acad::ErrorStatus EdCore::vportTableRecords2Vports()
+{
+    return acedVportTableRecords2Vports();
+}
+
+Acad::ErrorStatus EdCore::xrefAttach1(const std::string& path, const std::string& name)
+{
+    return acedXrefAttach(utf8_to_wstr(path).c_str(), utf8_to_wstr(name).c_str());
+}
+
+Acad::ErrorStatus EdCore::xrefAttach2(const std::string& path, const std::string& name, PyDbObjectId& btrid, PyDbObjectId& refid,
+    AcGePoint3d& pt, AcGeScale3d& sc, double rot, bool bQuiet, PyDbDatabase& pHostDb, const std::string& passwd)
+{
+    return acedXrefAttach(
+        utf8_to_wstr(path).c_str(),
+        utf8_to_wstr(name).c_str(),
+        &btrid.m_id,
+        &refid.m_id,
+        &pt,
+        &sc,
+        &rot,
+        bQuiet,
+        pHostDb.impObj(),
+        utf8_to_wstr(passwd).c_str());
+}
+
+std::string EdCore::xrefCreateBlockname(const std::string& XrefPathname)
+{
+    std::string result;
+    ACHAR* XrefBlockname = nullptr;
+    if (auto es = acedXrefCreateBlockname(utf8_to_wstr(XrefPathname).c_str(), XrefBlockname); es != eOk)
+        throw PyAcadErrorStatus(es);
+    result = wstr_to_utf8(XrefBlockname);
+    acutDelString(XrefBlockname);
+    return result;
+}
+
+Acad::ErrorStatus EdCore::xrefDetach1(const std::string& XrefBlockname)
+{
+    return acedXrefDetach(utf8_to_wstr(XrefBlockname).c_str());
+}
+
+Acad::ErrorStatus EdCore::xrefDetach2(const std::string& XrefBlockname, bool bQuiet, PyDbDatabase& pHostDb)
+{
+    return acedXrefDetach(utf8_to_wstr(XrefBlockname).c_str(), bQuiet, pHostDb.impObj());
+}
+
+bool EdCore::xrefNotifyCheckFileChanged(const PyDbObjectId& id)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    bool flag = false;
+    if (auto es = acedXrefNotifyCheckFileChanged(id.m_id, flag); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return flag;
+#endif
+}
+
+Acad::ErrorStatus EdCore::xrefOverlay1(const std::string& path, const std::string& name)
+{
+   return acedXrefOverlay(utf8_to_wstr(path).c_str(), utf8_to_wstr(name).c_str());
+}
+
+Acad::ErrorStatus EdCore::xrefOverlay2(const std::string& path, const std::string& name, PyDbObjectId& btrid, PyDbObjectId& refid, 
+    AcGePoint3d& pt, AcGeScale3d& sc, double rot, bool bQuiet, PyDbDatabase& pHostDb, const std::string& passwd)
+{
+    return acedXrefOverlay(
+        utf8_to_wstr(path).c_str(),
+        utf8_to_wstr(name).c_str(),
+        &btrid.m_id,
+        &refid.m_id,
+        &pt,
+        &sc,
+        &rot,
+        bQuiet,
+        pHostDb.impObj(),
+        utf8_to_wstr(passwd).c_str());
+}
+
+Acad::ErrorStatus EdCore::xrefReload1(const boost::python::list& symbolIds)
+{
+    AcDbObjectIdArray ids = PyListToObjectIdArray(symbolIds);
+    return acedXrefReload(ids);
+}
+
+Acad::ErrorStatus EdCore::xrefReload2(const boost::python::list& symbolIds, bool bQuiet, PyDbDatabase& pHostDb)
+{
+    AcDbObjectIdArray ids = PyListToObjectIdArray(symbolIds);
+    return acedXrefReload(ids, bQuiet, pHostDb.impObj());
+}
+
+Acad::ErrorStatus EdCore::xrefReload3(const std::string& name)
+{
+    return acedXrefReload(utf8_to_wstr(name).c_str());
+}
+
+Acad::ErrorStatus EdCore::xrefReload4(const std::string& name, bool bQuiet, PyDbDatabase& pHostDb)
+{
+    return acedXrefReload(utf8_to_wstr(name).c_str(), bQuiet, pHostDb.impObj());
+}
+
 Acad::ErrorStatus EdCore::xrefResolve1(PyDbDatabase& pHostDb)
 {
     return acedXrefResolve(pHostDb.impObj());
 }
 
-Acad::ErrorStatus EdCore::xrefResolve2(PyDbDatabase& pHostDb, const bool bQuiet)
+Acad::ErrorStatus EdCore::xrefResolve2(PyDbDatabase& pHostDb, bool bQuiet)
 {
     return acedXrefResolve(pHostDb.impObj(), bQuiet);
 }
@@ -301,6 +423,16 @@ Acad::ErrorStatus EdCore::xrefUnload1(const std::string& XrefBlockname)
 Acad::ErrorStatus EdCore::xrefUnload2(const std::string& XrefBlockname, bool bQuiet, PyDbDatabase& pHostDb)
 {
     return acedXrefUnload(utf8_to_wstr(XrefBlockname).c_str(), bQuiet, pHostDb.impObj());
+}
+
+Acad::ErrorStatus EdCore::xrefBind1(const std::string& XrefBlockname)
+{
+    return acedXrefBind(utf8_to_wstr(XrefBlockname).c_str());
+}
+
+Acad::ErrorStatus EdCore::xrefBind2(const std::string& XrefBlockname, bool bInsertBind, bool bQuiet, PyDbDatabase& pHostDb)
+{
+    return acedXrefBind(utf8_to_wstr(XrefBlockname).c_str(), bInsertBind, bQuiet, pHostDb.impObj());
 }
 
 Acad::ErrorStatus EdCore::xrefXBind1(const boost::python::list& symbolIds)
