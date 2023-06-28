@@ -95,6 +95,18 @@ audit( (Database)arg1, (bool)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         class boost::python::api::object getVar(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def mSpace (self, *args, **kwargs)-> ErrorStatus :
+      '''mSpace() -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus mSpace()'''
+    ...
+    def pSpace (self, *args, **kwargs)-> ErrorStatus :
+      '''pSpace() -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus pSpace()'''
+    ...
     def setVar (self, *args, **kwargs)-> bool :
       '''setVar( (str)arg1, (object)arg2) -> bool :
 
@@ -1878,6 +1890,12 @@ ssNameX( (SelectionSet)arg1, (int)arg2) -> list :
     C++ signature :
         bool ssSetFirst(class PyEdSelectionSet {lvalue})'''
     ...
+    def ssXform (self, *args, **kwargs)-> PromptStatus :
+      '''ssXform( (SelectionSet)arg1, (Matrix3d)arg2) -> PromptStatus :
+
+    C++ signature :
+        enum Acad::PromptStatus ssXform(class PyEdSelectionSet {lvalue},class AcGeMatrix3d)'''
+    ...
     def toList (self, *args, **kwargs)-> list :
       '''toList( (SelectionSet)arg1) -> list :
 
@@ -2117,4 +2135,12 @@ errors defaults to 'strict'.'''
         The method is deprecated.  The import machinery does the job itself.
 
         '''
+    ...
+
+function print:
+    def print (*args, **kwargs)-> None :
+      '''print( (object)arg1) -> None :
+
+    C++ signature :
+        void print(class boost::python::api::object)'''
     ...

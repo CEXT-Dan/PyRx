@@ -38,6 +38,8 @@ void makeEdCoreWrapper()
         .def("getFileNavDialog", &EdCore::getFileNavDialog).staticmethod("getFileNavDialog")
         .def("getVar", &EdCore::getVar).staticmethod("getVar")
         .def("setVar", &EdCore::setVar).staticmethod("setVar")
+        .def("mSpace", &EdCore::mSpace).staticmethod("mSpace")
+        .def("pSpace", &EdCore::pSpace).staticmethod("pSpace")
         ;
 }
 
@@ -262,4 +264,14 @@ bool EdCore::setVar(const std::string& sym, const boost::python::object& src)
         acutPrintf(_T("\nExeption @ %ls"), __FUNCTIONW__);
     }
     return false;
+}
+
+Acad::ErrorStatus EdCore::mSpace()
+{
+    return acedMspace();
+}
+
+Acad::ErrorStatus EdCore::pSpace()
+{
+    return acedPspace();
 }
