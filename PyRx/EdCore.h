@@ -7,7 +7,6 @@ void makeEdCoreWrapper();
 class EdCore
 {
 public:
-    static void                print(const std::string& str);
     static int                 alert(const std::string& msg);
     static int                 arxLoad(const std::string& msg);
     static boost::python::list arxLoaded();
