@@ -356,5 +356,14 @@ inline AcGePoint3dArray PyListToPoint3dArray(const boost::python::object& iterab
     return arr;
 }
 
+inline AcDbObjectIdArray PyListToObjectIdArray(const boost::python::object& iterable)
+{
+    AcDbObjectIdArray arr;
+    auto vec = py_list_to_std_vector<AcDbObjectId>(iterable);
+    for (auto& item : vec)
+        arr.append(item);
+    return arr;
+}
+
 #pragma pack (pop)
 

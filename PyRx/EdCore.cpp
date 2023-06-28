@@ -40,6 +40,13 @@ void makeEdCoreWrapper()
         .def("setVar", &EdCore::setVar).staticmethod("setVar")
         .def("mSpace", &EdCore::mSpace).staticmethod("mSpace")
         .def("pSpace", &EdCore::pSpace).staticmethod("pSpace")
+
+        .def("xrefResolve", &EdCore::xrefResolve1)
+        .def("xrefResolve", &EdCore::xrefResolve2).staticmethod("xrefResolve")
+        .def("xrefUnload", &EdCore::xrefUnload1)
+        .def("xrefUnload", &EdCore::xrefUnload2).staticmethod("xrefUnload")
+        .def("xrefXBind", &EdCore::xrefXBind1)
+        .def("xrefXBind", &EdCore::xrefXBind2).staticmethod("xrefXBind")
         ;
 }
 
@@ -144,7 +151,7 @@ Acad::ErrorStatus EdCore::xrefDetach2(const std::string& XrefBlockname, bool bQu
     return acedXrefDetach(utf8_to_wstr(XrefBlockname).c_str(), bQuiet, db.impObj());
 }
 
-std::string EdCore::getFileD(const std::string & title, const std::string & defawlt, const std::string & ext, int flags)
+std::string EdCore::getFileD(const std::string& title, const std::string& defawlt, const std::string& ext, int flags)
 {
     std::string path;
     AcResBufPtr result(acutNewRb(RTSTR));
@@ -274,4 +281,44 @@ Acad::ErrorStatus EdCore::mSpace()
 Acad::ErrorStatus EdCore::pSpace()
 {
     return acedPspace();
+}
+
+Acad::ErrorStatus EdCore::xrefResolve1(PyDbDatabase& pHostDb)
+{
+    return acedXrefResolve(pHostDb.impObj());
+}
+
+Acad::ErrorStatus EdCore::xrefResolve2(PyDbDatabase& pHostDb, const bool bQuiet)
+{
+    return acedXrefResolve(pHostDb.impObj(), bQuiet);
+}
+
+Acad::ErrorStatus EdCore::xrefUnload1(const std::string& XrefBlockname)
+{
+    return acedXrefUnload(utf8_to_wstr(XrefBlockname).c_str());
+}
+
+Acad::ErrorStatus EdCore::xrefUnload2(const std::string& XrefBlockname, bool bQuiet, PyDbDatabase& pHostDb)
+{
+    return acedXrefUnload(utf8_to_wstr(XrefBlockname).c_str(), bQuiet, pHostDb.impObj());
+}
+
+Acad::ErrorStatus EdCore::xrefXBind1(const boost::python::list& symbolIds)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    AcDbObjectIdArray ids = PyListToObjectIdArray(symbolIds);
+    return acedXrefXBind(ids);
+#endif
+}
+
+Acad::ErrorStatus EdCore::xrefXBind2(const boost::python::list& symbolIds, bool bQuiet, PyDbDatabase& pHostDb)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    AcDbObjectIdArray ids = PyListToObjectIdArray(symbolIds);
+    return acedXrefXBind(ids, bQuiet, pHostDb.impObj());
+#endif
 }

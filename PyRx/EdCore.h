@@ -25,8 +25,16 @@ public:
     static boost::python::list getFileNavDialog(const std::string& title, const std::string& defawlt, const std::string& ext, const std::string& dlgname, int flags);
     static boost::python::object getVar(const std::string& sym);
     static bool                  setVar(const std::string& sym, const  boost::python::object&);
-    static Acad::ErrorStatus    mSpace();
-    static Acad::ErrorStatus    pSpace();
+    static Acad::ErrorStatus   mSpace();
+    static Acad::ErrorStatus   pSpace();
+
+
+    Acad::ErrorStatus           xrefResolve1(PyDbDatabase& pHostDb);
+    Acad::ErrorStatus           xrefResolve2(PyDbDatabase& pHostDb, const bool bQuiet);
+    static Acad::ErrorStatus    xrefUnload1(const std::string& XrefBlockname);
+    static Acad::ErrorStatus    xrefUnload2(const std::string& XrefBlockname, bool bQuiet, PyDbDatabase& pHostDb);
+    static Acad::ErrorStatus    xrefXBind1(const boost::python::list& symbolIds);
+    static Acad::ErrorStatus    xrefXBind2(const boost::python::list& symbolIds, bool bQuiet, PyDbDatabase& pHostDb);
 
 };
 
