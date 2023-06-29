@@ -17,7 +17,6 @@ void makeAcRxObjectWrapper()
         ;
 }
 
-
 //-----------------------------------------------------------------------------------------
 //PyRxObject
 PyRxObject::PyRxObject(const AcRxObject* ptr)
