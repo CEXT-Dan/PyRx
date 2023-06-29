@@ -3,6 +3,7 @@
 #include "PyDbObjectId.h"
 #include "PyDbEntity.h"
 #include "PyGiCommonDraw.h"
+#include "PyEdUserInteraction.h"
 
 using namespace boost::python;
 

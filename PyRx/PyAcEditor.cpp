@@ -5,6 +5,7 @@
 #include "acedCmdNF.h"
 #include "PyEdSelectionSet.h"
 #include "PyDbEntity.h"
+#include "PyEdUserInteraction.h"
 
 using namespace boost::python;
 

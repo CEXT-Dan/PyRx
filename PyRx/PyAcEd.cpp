@@ -5,6 +5,7 @@
 #include "PyEditorReactor.h"
 #include "PyEdSelectionSet.h"
 #include "EdCore.h"
+#include "PyEdUserInteraction.h"
 
 using namespace boost::python;
 
@@ -25,6 +26,7 @@ BOOST_PYTHON_MODULE(PyEd)
     makeAcEdDrawJigWrapper();
     makeAcEditorWrapper();
     makePyEditorReactorWrapper();
+    makePyEdUIContextWrapper();
 
     def("print", print);
 

@@ -238,7 +238,6 @@ using AcDbObjectUPtr = std::unique_ptr < T, decltype([](T* ptr) noexcept
 #define __WXMSW__ 
 #include <wxPython/sip.h>
 #include <wxPython/wxpy_api.h>
-#include "PyEdUserInteraction.h"
 #include "PyDocString.h"
 
 

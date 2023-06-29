@@ -67,6 +67,20 @@ void PyEdUserInteraction::undoUserInteraction()
 
 //-----------------------------------------------------------------------------------------
 // PyEdUIContext
+void makePyEdUIContextWrapper()
+{
+    class_<PyEdUIContext>("UIContext")
+        .def("getMenuContext", &PyEdUIContext::getMenuContext)
+        .def("onCommand", &PyEdUIContext::onCommand)
+        .def("OnUpdateMenu", &PyEdUIContext::OnUpdateMenu)
+        .def("addObjectContextMenu", &PyEdUIContext::addObjectContextMenu).staticmethod("addObjectContextMenu")
+        .def("removeObjectContextMenu", &PyEdUIContext::removeObjectContextMenu).staticmethod("removeObjectContextMenu")
+        .def("addDefaultContextMenu", &PyEdUIContext::addDefaultContextMenu1)
+        .def("addDefaultContextMenu", &PyEdUIContext::addDefaultContextMenu2).staticmethod("addDefaultContextMenu")
+        .def("removeDefaultContextMenu", &PyEdUIContext::removeDefaultContextMenu).staticmethod("removeDefaultContextMenu")
+        ;
+}
+
 PyEdUIContext::PyEdUIContext()
 {
 
