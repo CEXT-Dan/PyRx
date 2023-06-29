@@ -58,6 +58,7 @@ public:
         AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg(pkt);
         acedRegisterOnIdleWinMsg(AcedOnIdleMsgFn);
         acrxLockApplication(pkt);
+        PyRxApp::instance().appPkt = pkt;
         return (retCode);
     }
 

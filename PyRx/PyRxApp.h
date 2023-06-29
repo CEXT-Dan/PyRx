@@ -43,6 +43,7 @@ public:
     PyLispService lispService;
     PathForCommand pathForCommand;
 
+    void* appPkt = nullptr;
     bool isLoaded = false;
 };
 
