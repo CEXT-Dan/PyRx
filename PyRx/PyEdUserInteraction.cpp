@@ -1,24 +1,24 @@
 #include "stdafx.h"
-#include "WxUserInteraction.h"
+#include "PyEdUserInteraction.h"
 
 //-----------------------------------------------------------------------------------------
 // WxUserInteraction
-WxUserInteraction::WxUserInteraction()
+PyEdUserInteraction::PyEdUserInteraction()
 {
     userInteraction(acDocManagerPtr()->curDocument(), true);
 }
 
-WxUserInteraction::WxUserInteraction(AcApDocument* pDocument, bool prompting)
+PyEdUserInteraction::PyEdUserInteraction(AcApDocument* pDocument, bool prompting)
 {
     userInteraction(pDocument, prompting);
 }
 
-WxUserInteraction::~WxUserInteraction(void)
+PyEdUserInteraction::~PyEdUserInteraction(void)
 {
     undoUserInteraction();
 }
 
-void WxUserInteraction::userInteraction(AcApDocument* pDocument, bool prompting)
+void PyEdUserInteraction::userInteraction(AcApDocument* pDocument, bool prompting)
 {
     AcApDocManager* pDocMan = acDocManagerPtr();
     if (pDocMan->curDocument() == pDocument)
@@ -47,7 +47,7 @@ void WxUserInteraction::userInteraction(AcApDocument* pDocument, bool prompting)
     }
 }
 
-void WxUserInteraction::undoUserInteraction()
+void PyEdUserInteraction::undoUserInteraction()
 {
     acDocManagerPtr()->enableDocumentActivation();
     if (m_wnds.size() > 0)

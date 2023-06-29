@@ -169,9 +169,6 @@
     <ClCompile Include="PyJig.cpp">
       <Filter>Source Files\PyEd</Filter>
     </ClCompile>
-    <ClCompile Include="WxUserInteraction.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PyGeKnotVector.cpp">
       <Filter>Source Files\PyGe</Filter>
     </ClCompile>
@@ -252,6 +249,9 @@
     </ClCompile>
     <ClCompile Include="PyDbObjectContext.cpp">
       <Filter>Source Files\PyDb</Filter>
+    </ClCompile>
+    <ClCompile Include="PyEdUserInteraction.cpp">
+      <Filter>Source Files\PyEd</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -426,9 +426,6 @@
     <ClInclude Include="PyJig.h">
       <Filter>Header Files\PyEd</Filter>
     </ClInclude>
-    <ClInclude Include="WxUserInteraction.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="PyGeKnotVector.h">
       <Filter>Header Files\PyGe</Filter>
     </ClInclude>
@@ -509,6 +506,9 @@
     </ClInclude>
     <ClInclude Include="PyDbObjectContext.h">
       <Filter>Header Files\PyDb</Filter>
+    </ClInclude>
+    <ClInclude Include="PyEdUserInteraction.h">
+      <Filter>Header Files\PyEd</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
