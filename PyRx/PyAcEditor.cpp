@@ -127,7 +127,7 @@ void makeAcEditorWrapper()
 boost::python::tuple PyAcEditor::getInteger(const std::string& prompt)
 {
     PyAutoLockGIL lock;
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     std::pair<Acad::PromptStatus, int> res;
     res.first = static_cast<Acad::PromptStatus>(acedGetInt(utf8_to_wstr(prompt).c_str(), &res.second));
     return boost::python::make_tuple(res.first, res.second);
@@ -136,7 +136,7 @@ boost::python::tuple PyAcEditor::getInteger(const std::string& prompt)
 boost::python::tuple PyAcEditor::getDouble(const std::string& prompt)
 {
     PyAutoLockGIL lock;
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     std::pair<Acad::PromptStatus, double> res;
     res.first = static_cast<Acad::PromptStatus>(acedGetReal(utf8_to_wstr(prompt).c_str(), &res.second));
     return boost::python::make_tuple(res.first, res.second);
@@ -145,7 +145,7 @@ boost::python::tuple PyAcEditor::getDouble(const std::string& prompt)
 boost::python::tuple PyAcEditor::getAngle(const AcGePoint3d& basePt, const std::string& prompt)
 {
     PyAutoLockGIL lock;
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     std::pair<Acad::PromptStatus, double> res;
     res.first = static_cast<Acad::PromptStatus>(acedGetAngle(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), &res.second));
     return boost::python::make_tuple(res.first, res.second);
@@ -154,7 +154,7 @@ boost::python::tuple PyAcEditor::getAngle(const AcGePoint3d& basePt, const std::
 boost::python::tuple PyAcEditor::getPoint1(const std::string& prompt)
 {
     PyAutoLockGIL lock;
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     ads_point pnt;
     std::pair<Acad::PromptStatus, AcGePoint3d> res;
     res.first = static_cast<Acad::PromptStatus>(acedGetPoint(nullptr, utf8_to_wstr(prompt).c_str(), pnt));
@@ -165,7 +165,7 @@ boost::python::tuple PyAcEditor::getPoint1(const std::string& prompt)
 boost::python::tuple PyAcEditor::getPoint2(const AcGePoint3d& basePt, const std::string& prompt)
 {
     PyAutoLockGIL lock;
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     ads_point pnt;
     std::pair<Acad::PromptStatus, AcGePoint3d> res;
     res.first = static_cast<Acad::PromptStatus>(acedGetPoint(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), pnt));
@@ -176,7 +176,7 @@ boost::python::tuple PyAcEditor::getPoint2(const AcGePoint3d& basePt, const std:
 boost::python::tuple PyAcEditor::getDist1(const std::string& prompt)
 {
     PyAutoLockGIL lock;
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     std::pair<Acad::PromptStatus, double> res;
     res.first = static_cast<Acad::PromptStatus>(acedGetDist(nullptr, utf8_to_wstr(prompt).c_str(), &res.second));
     return boost::python::make_tuple(res.first, res.second);
@@ -185,7 +185,7 @@ boost::python::tuple PyAcEditor::getDist1(const std::string& prompt)
 boost::python::tuple PyAcEditor::getDist2(const AcGePoint3d& basePt, const std::string& prompt)
 {
     PyAutoLockGIL lock;
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     std::pair<Acad::PromptStatus, double> res;
     res.first = static_cast<Acad::PromptStatus>(acedGetDist(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), &res.second));
     return boost::python::make_tuple(res.first, res.second);
@@ -194,7 +194,7 @@ boost::python::tuple PyAcEditor::getDist2(const AcGePoint3d& basePt, const std::
 boost::python::tuple PyAcEditor::getString(int cronly, const std::string& prompt)
 {
     PyAutoLockGIL lock;
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     AcString str;
     std::pair<Acad::PromptStatus, std::string> res;
     res.first = static_cast<Acad::PromptStatus>(acedGetString(cronly, utf8_to_wstr(prompt).c_str(), str));
@@ -205,7 +205,7 @@ boost::python::tuple PyAcEditor::getString(int cronly, const std::string& prompt
 boost::python::tuple PyAcEditor::entSel(const std::string& prompt)
 {
     PyAutoLockGIL lock;
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     ads_point pnt;
     ads_name name = { 0L };
     auto stat = static_cast<Acad::PromptStatus>(acedEntSel(utf8_to_wstr(prompt).c_str(), name, pnt));
@@ -217,7 +217,7 @@ boost::python::tuple PyAcEditor::entSel(const std::string& prompt)
 boost::python::tuple nEntSelP(const std::string& prompt, AcGePoint3d& ptres, int opt)
 {
     PyAutoLockGIL lock;
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     ads_point pnt = { ptres.x,ptres.y, ptres.z };
     ads_matrix xform;
     AcGeMatrix3d xformres;
@@ -259,7 +259,7 @@ boost::python::tuple PyAcEditor::nEntSelP2(const std::string& prompt, AcGePoint3
 boost::python::tuple nEntSelPEx(const std::string& prompt, AcGePoint3d& ptres, int opt, unsigned int uTransSpaceFlag)
 {
     PyAutoLockGIL lock;
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     ads_point pnt = { ptres.x,ptres.y, ptres.z };
     ads_matrix xform;
     AcGeMatrix3d xformres;
@@ -309,7 +309,7 @@ boost::python::tuple PyAcEditor::nEntSelPEx2(const std::string& prompt, AcGePoin
 
 boost::python::tuple PyAcEditor::select1()
 {
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     ads_name name = { 0L };
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(nullptr, nullptr, nullptr, nullptr, name));
     return makeSelectionResult(name, stat);
@@ -317,7 +317,7 @@ boost::python::tuple PyAcEditor::select1()
 
 boost::python::tuple PyAcEditor::select2(const boost::python::list& filter)
 {
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(nullptr, nullptr, nullptr, pFilter.get(), name));
@@ -326,7 +326,7 @@ boost::python::tuple PyAcEditor::select2(const boost::python::list& filter)
 
 boost::python::tuple PyAcEditor::select3(const std::string& add, const std::string& remove)
 {
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     ads_name name = { 0L };
     const CString csAdd = utf8_to_wstr(add).c_str();
     const CString csRem = utf8_to_wstr(remove).c_str();
@@ -337,7 +337,7 @@ boost::python::tuple PyAcEditor::select3(const std::string& add, const std::stri
 
 boost::python::tuple PyAcEditor::select4(const std::string& add, const std::string& remove, const boost::python::list& filter)
 {
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     const CString csAdd = utf8_to_wstr(add).c_str();
@@ -349,7 +349,7 @@ boost::python::tuple PyAcEditor::select4(const std::string& add, const std::stri
 
 boost::python::tuple PyAcEditor::selectAll1()
 {
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     ads_name name = { 0L };
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_A"), nullptr, nullptr, nullptr, name));
     return makeSelectionResult(name, stat);
@@ -357,7 +357,7 @@ boost::python::tuple PyAcEditor::selectAll1()
 
 boost::python::tuple PyAcEditor::selectAll2(const boost::python::list& filter)
 {
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_A"), nullptr, nullptr, pFilter.get(), name));
@@ -366,7 +366,7 @@ boost::python::tuple PyAcEditor::selectAll2(const boost::python::list& filter)
 
 boost::python::tuple PyAcEditor::selectWindow1(const AcGePoint3d& pt1, const AcGePoint3d& pt2)
 {
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     ads_name name = { 0L };
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_W"), asDblArray(pt1), asDblArray(pt2), nullptr, name));
     return makeSelectionResult(name, stat);
@@ -374,7 +374,7 @@ boost::python::tuple PyAcEditor::selectWindow1(const AcGePoint3d& pt1, const AcG
 
 boost::python::tuple PyAcEditor::selectWindow2(const AcGePoint3d& pt1, const AcGePoint3d& pt2, const boost::python::list& filter)
 {
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_W"), asDblArray(pt1), asDblArray(pt2), pFilter.get(), name));
@@ -383,7 +383,7 @@ boost::python::tuple PyAcEditor::selectWindow2(const AcGePoint3d& pt1, const AcG
 
 boost::python::tuple PyAcEditor::selectFence1(const boost::python::list& points)
 {
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     ads_name name = { 0L };
     AcResBufPtr rbPoints(acGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_F"), rbPoints.get(), nullptr,nullptr, name));
@@ -392,7 +392,7 @@ boost::python::tuple PyAcEditor::selectFence1(const boost::python::list& points)
 
 boost::python::tuple PyAcEditor::selectFence2(const boost::python::list& points, const boost::python::list& filter)
 {
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     AcResBufPtr rbPoints(acGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
@@ -402,7 +402,7 @@ boost::python::tuple PyAcEditor::selectFence2(const boost::python::list& points,
 
 boost::python::tuple PyAcEditor::selectWindowPolygon1(const boost::python::list& points)
 {
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     ads_name name = { 0L };
     AcResBufPtr rbPoints(acGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_WP"), rbPoints.get(), nullptr, nullptr, name));
@@ -411,7 +411,7 @@ boost::python::tuple PyAcEditor::selectWindowPolygon1(const boost::python::list&
 
 boost::python::tuple PyAcEditor::selectWindowPolygon2(const boost::python::list& points, const boost::python::list& filter)
 {
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     AcResBufPtr rbPoints(acGePoint3dArrayToResbuf(PyListToPoint3dArray(points)));
@@ -421,7 +421,7 @@ boost::python::tuple PyAcEditor::selectWindowPolygon2(const boost::python::list&
 
 boost::python::tuple PyAcEditor::selectPrevious1()
 {
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     ads_name name = { 0L };
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_P"), nullptr, nullptr, nullptr, name));
     return makeSelectionResult(name, stat);
@@ -429,7 +429,7 @@ boost::python::tuple PyAcEditor::selectPrevious1()
 
 boost::python::tuple PyAcEditor::selectPrevious2(const boost::python::list& filter)
 {
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_P"), nullptr, nullptr, pFilter.get(), name));
@@ -438,7 +438,7 @@ boost::python::tuple PyAcEditor::selectPrevious2(const boost::python::list& filt
 
 boost::python::tuple PyAcEditor::selectLast1()
 {
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     ads_name name = { 0L };
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_L"), nullptr, nullptr, nullptr, name));
     return makeSelectionResult(name, stat);
@@ -446,7 +446,7 @@ boost::python::tuple PyAcEditor::selectLast1()
 
 boost::python::tuple PyAcEditor::selectLast2(const boost::python::list& filter)
 {
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     ads_name name = { 0L };
     AcResBufPtr pFilter(listToResbuf(filter));
     auto stat = static_cast<Acad::PromptStatus>(acedSSGet(_T("_L"), nullptr, nullptr, pFilter.get(), name));
@@ -455,7 +455,7 @@ boost::python::tuple PyAcEditor::selectLast2(const boost::python::list& filter)
 
 boost::python::tuple PyAcEditor::ssget1(const std::string& args,const boost::python::object& arg1,const boost::python::object& arg2)
 {
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     ads_name name = { 0L };
     ssArgExtracter ssarg1(arg1);
     ssArgExtracter ssarg2(arg2);
@@ -466,7 +466,7 @@ boost::python::tuple PyAcEditor::ssget1(const std::string& args,const boost::pyt
 
 boost::python::tuple PyAcEditor::ssget2(const std::string& args, const boost::python::object& arg1, const boost::python::object& arg2, const boost::python::list& filter)
 {
-    WxUserInteraction ui;
+    PyEdUserInteraction ui;
     ads_name name = { 0L };
     ssArgExtracter ssarg1(arg1);
     ssArgExtracter ssarg2(arg2);
