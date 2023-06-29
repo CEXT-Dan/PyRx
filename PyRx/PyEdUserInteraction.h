@@ -27,6 +27,7 @@ protected:
 
 //-----------------------------------------------------------------------------------------
 // PyEdUIContext
+void makePyEdUIContextWrapper();
 class PyEdUIContext : AcEdUIContext, public boost::python::wrapper<PyEdUIContext>
 {
     bool isAlive = false;
