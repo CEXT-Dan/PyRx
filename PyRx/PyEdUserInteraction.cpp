@@ -70,9 +70,9 @@ void PyEdUserInteraction::undoUserInteraction()
 void makePyEdUIContextWrapper()
 {
     class_<PyEdUIContext>("UIContext")
-        .def("getMenuContext", &PyEdUIContext::getMenuContext)
-        .def("onCommand", &PyEdUIContext::onCommand)
-        .def("OnUpdateMenu", &PyEdUIContext::OnUpdateMenu)
+        .def("getMenuContext", &PyEdUIContext::getMenuContextWr)
+        .def("onCommand", &PyEdUIContext::onCommandWr)
+        .def("OnUpdateMenu", &PyEdUIContext::OnUpdateMenuWr)
         .def("addObjectContextMenu", &PyEdUIContext::addObjectContextMenu).staticmethod("addObjectContextMenu")
         .def("removeObjectContextMenu", &PyEdUIContext::removeObjectContextMenu).staticmethod("removeObjectContextMenu")
         .def("addDefaultContextMenu", &PyEdUIContext::addDefaultContextMenu1)
@@ -83,12 +83,11 @@ void makePyEdUIContextWrapper()
 
 PyEdUIContext::PyEdUIContext()
 {
-
 }
 
 PyEdUIContext::~PyEdUIContext()
 {
-    if (isAlive)
+    if (m_isAlive)
     {
         acutPrintf(_T("PyEdUIContext was not removed"));
     }
@@ -101,7 +100,18 @@ void* PyEdUIContext::getMenuContext(const AcRxClass* pClass, const AcDbObjectIdA
     for (const auto& id : ids)
         pyids.append(PyDbObjectId(id));
     PyRxClass _pClass(const_cast<AcRxClass*>(pClass), false);
-    return (void*)this->getMenuContextWr(_pClass, pyids);
+    const boost::python::object obj = this->getMenuContextWr(_pClass, pyids);
+    if (wxPyWrappedPtr_TypeCheck(obj.ptr(), _T("wxMenu")))
+    {
+        wxMenu* pMenu = nullptr;
+        wxPyConvertWrappedPtr(obj.ptr(), (void**)&pMenu, wxT("wxMenu"));
+        if (pMenu != nullptr)
+        {
+            m_hmenu = pMenu->GetHMenu();
+            return &m_hmenu;
+        }
+    }
+    return nullptr;
 }
 
 void PyEdUIContext::onCommand(Adesk::UInt32 cmd)
@@ -111,22 +121,26 @@ void PyEdUIContext::onCommand(Adesk::UInt32 cmd)
 
 void PyEdUIContext::OnUpdateMenu()
 {
-    this->OnUpdateMenu();
+    this->OnUpdateMenuWr();
 }
 
-int64_t PyEdUIContext::getMenuContextWr(const PyRxClass& pyclass, const boost::python::list& pyids)
+boost::python::object PyEdUIContext::getMenuContextWr(const PyRxClass& pyclass, const boost::python::list& pyids)
 {
     PyAutoLockGIL lock;
+    boost::python::object val;
     try
     {
         if (override f = this->get_override("getMenuContext"))
-            return f();
+        {
+            val = f(pyclass, pyids);
+            return val;
+        }
     }
     catch (...)
     {
         acutPrintf(_T("Exception @ %ls: "), __FUNCTIONW__);
     }
-    return 0;
+    return val;
 }
 
 void PyEdUIContext::onCommandWr(Adesk::UInt32 cmd)
@@ -135,7 +149,7 @@ void PyEdUIContext::onCommandWr(Adesk::UInt32 cmd)
     try
     {
         if (override f = this->get_override("onCommand"))
-           f(cmd);
+            f(cmd);
     }
     catch (...)
     {
@@ -157,42 +171,42 @@ void PyEdUIContext::OnUpdateMenuWr()
     }
 }
 
-bool PyEdUIContext::addObjectContextMenu(PyRxClass& pClass,PyEdUIContext& pContext)
+bool PyEdUIContext::addObjectContextMenu(PyRxClass& pClass, PyEdUIContext& pContext)
 {
-    if (pContext.isAlive)
+    if (pContext.m_isAlive)
         throw PyAcadErrorStatus(eInvalidInput);
-    pContext.isAlive = acedAddObjectContextMenu(pClass.impObj(), std::addressof(pContext), PyRxApp::instance().appPkt);
-    return pContext.isAlive;
+    pContext.m_isAlive = acedAddObjectContextMenu(pClass.impObj(), std::addressof(pContext), PyRxApp::instance().appPkt);
+    return pContext.m_isAlive;
 }
 
 bool PyEdUIContext::removeObjectContextMenu(PyRxClass& pClass, PyEdUIContext& pContext)
 {
-    if (!pContext.isAlive)
+    if (!pContext.m_isAlive)
         throw PyAcadErrorStatus(eInvalidInput);
-    pContext.isAlive = !acedRemoveObjectContextMenu(pClass.impObj(), std::addressof(pContext));
-    return  pContext.isAlive;
+    pContext.m_isAlive = !acedRemoveObjectContextMenu(pClass.impObj(), std::addressof(pContext));
+    return  pContext.m_isAlive;
 }
 
 bool PyEdUIContext::addDefaultContextMenu1(PyEdUIContext& pContext)
 {
-    if (pContext.isAlive)
+    if (pContext.m_isAlive)
         throw PyAcadErrorStatus(eInvalidInput);
-    pContext.isAlive = acedAddDefaultContextMenu(std::addressof(pContext), PyRxApp::instance().appPkt);
-    return pContext.isAlive;
+    pContext.m_isAlive = acedAddDefaultContextMenu(std::addressof(pContext), PyRxApp::instance().appPkt);
+    return pContext.m_isAlive;
 }
 
 bool PyEdUIContext::addDefaultContextMenu2(PyEdUIContext& pContext, const std::string& appName)
 {
-    if (pContext.isAlive)
+    if (pContext.m_isAlive)
         throw PyAcadErrorStatus(eInvalidInput);
-    pContext.isAlive = acedAddDefaultContextMenu(std::addressof(pContext), PyRxApp::instance().appPkt, utf8_to_wstr(appName).c_str());
-    return pContext.isAlive;
+    pContext.m_isAlive = acedAddDefaultContextMenu(std::addressof(pContext), PyRxApp::instance().appPkt, utf8_to_wstr(appName).c_str());
+    return pContext.m_isAlive;
 }
 
 bool PyEdUIContext::removeDefaultContextMenu(PyEdUIContext& pContext)
 {
-    if (!pContext.isAlive)
+    if (!pContext.m_isAlive)
         throw PyAcadErrorStatus(eInvalidInput);
-    pContext.isAlive = !acedRemoveDefaultContextMenu(std::addressof(pContext));
-    return  pContext.isAlive;
+    pContext.m_isAlive = !acedRemoveDefaultContextMenu(std::addressof(pContext));
+    return  pContext.m_isAlive;
 }
