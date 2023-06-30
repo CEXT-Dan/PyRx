@@ -110,6 +110,10 @@ void* PyEdUIContext::getMenuContext(const AcRxClass* pClass, const AcDbObjectIdA
             m_hmenu = pMenu->GetHMenu();
             return &m_hmenu;
         }
+        else
+        {
+            m_hmenu = 0;
+        }
     }
     return nullptr;
 }
@@ -184,7 +188,7 @@ bool PyEdUIContext::removeObjectContextMenu(PyRxClass& pClass, PyEdUIContext& pC
     if (!pContext.m_isAlive)
         throw PyAcadErrorStatus(eInvalidInput);
     pContext.m_isAlive = !acedRemoveObjectContextMenu(pClass.impObj(), std::addressof(pContext));
-    return  pContext.m_isAlive;
+    return  !pContext.m_isAlive;
 }
 
 bool PyEdUIContext::addDefaultContextMenu1(PyEdUIContext& pContext)
@@ -208,5 +212,5 @@ bool PyEdUIContext::removeDefaultContextMenu(PyEdUIContext& pContext)
     if (!pContext.m_isAlive)
         throw PyAcadErrorStatus(eInvalidInput);
     pContext.m_isAlive = !acedRemoveDefaultContextMenu(std::addressof(pContext));
-    return  pContext.m_isAlive;
+    return !pContext.m_isAlive;
 }
