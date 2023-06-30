@@ -409,6 +409,7 @@ void makeAcApDocManagerWrapper()
         .def("pushAcadResourceHandle", &PyApDocManager::pushAcadResourceHandle)
         .def("popResourceHandle", &PyApDocManager::popResourceHandle)
         .def("sendModelessInterrupt", &PyApDocManager::sendModelessInterrupt)
+        .def("autoLock", &PyApDocManager::autoLock).staticmethod("autoLock")
         .def("className", &PyApDocManager::className).staticmethod("className")
         ;
 }
@@ -604,6 +605,11 @@ Acad::ErrorStatus PyApDocManager::sendModelessInterrupt(PyApDocument& pAcTargetD
     return impObj()->sendModelessInterrupt(pAcTargetDocument.impObj());
 }
 
+PyAutoDocLock PyApDocManager::autoLock()
+{
+    return PyAutoDocLock{};
+}
+
 std::string PyApDocManager::className()
 {
     return std::string{ "AcApDocManager" };
@@ -614,4 +620,40 @@ AcApDocManager* PyApDocManager::impObj(const std::source_location& src /*= std::
     if (m_pyImp == nullptr)
         throw PyNullObject(src);
     return static_cast<AcApDocManager*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------------
+//PyAutoDocLock
+void makePyAutoDocLockWrapper()
+{
+    class_<PyAutoDocLock>("AutoDocLock")
+        .def("className", &PyAutoDocLock::className).staticmethod("className")
+        ;
+}
+
+PyAutoDocLockImp::PyAutoDocLockImp()
+{
+    pDoc = curDoc();
+    if (pDoc != nullptr)
+        acDocManagerPtr()->lockDocument(pDoc);
+}
+
+PyAutoDocLockImp::~PyAutoDocLockImp()
+{
+    if (pDoc != nullptr)
+        acDocManagerPtr()->unlockDocument(pDoc);
+}
+
+PyAutoDocLock::PyAutoDocLock()
+    : imp(new PyAutoDocLockImp())
+{
+}
+
+PyAutoDocLock::~PyAutoDocLock()
+{
+}
+
+std::string PyAutoDocLock::className()
+{
+    return "AutoDocLock";
 }

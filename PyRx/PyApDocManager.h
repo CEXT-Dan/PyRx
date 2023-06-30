@@ -4,6 +4,7 @@
 
 class PyApDocument;
 class PyDbDatabase;
+class PyAutoDocLock;
 
 //-----------------------------------------------------------------------------------------
 //PyApDocManagerReactor
@@ -142,9 +143,32 @@ public:
     void popResourceHandle();
     Acad::ErrorStatus sendModelessInterrupt(PyApDocument& pAcTargetDocument);
 
+    static PyAutoDocLock autoLock();
     static std::string className();
 
 public:
     AcApDocManager* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+
+//-----------------------------------------------------------------------------------------
+//PyAutoDocLock
+void makePyAutoDocLockWrapper();
+
+class PyAutoDocLockImp
+{
+public:
+    PyAutoDocLockImp();
+    ~PyAutoDocLockImp();
+    AcApDocument* pDoc = nullptr;
+};
+
+class PyAutoDocLock
+{
+public:
+    PyAutoDocLock();
+    ~PyAutoDocLock();
+    static std::string className();
+public:
+    std::shared_ptr<PyAutoDocLockImp> imp;
+};
