@@ -37,6 +37,14 @@ class Application:
         void setTitleThemeDark(unsigned __int64)'''
     ...
 
+class AutoDocLock:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+
 class CmdFlags:
     def DEFUN (self, *args, **kwargs)-> integer
 int(x, base=10) -> integer
@@ -809,6 +817,12 @@ activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus appContextRecoverDocument(class PyApDocManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def autoLock (self, *args, **kwargs)-> AutoDocLock :
+      '''autoLock() -> AutoDocLock :
+
+    C++ signature :
+        class PyAutoDocLock autoLock()'''
     ...
     def className (self, *args, **kwargs)-> str :
       '''className() -> str :

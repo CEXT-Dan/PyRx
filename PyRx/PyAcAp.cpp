@@ -84,6 +84,7 @@ BOOST_PYTHON_MODULE(PyAp)
     makePyTransactionManagerManager();
     makePyApResourceOverrideWrapper();
     makeAcApApplictionWrapper();
+    makePyAutoDocLockWrapper();
     makeAcApDocManagerWrapper();
     makeAcApDocumentWrapper();
     makePyApDocManagerReactorWrapper();
