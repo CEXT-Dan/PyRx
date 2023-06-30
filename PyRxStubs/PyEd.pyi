@@ -2086,11 +2086,17 @@ addDefaultContextMenu( (UIContext)arg1, (str)arg2) -> bool :
     C++ signature :
         bool addObjectContextMenu(class PyRxClass {lvalue},class PyEdUIContext {lvalue})'''
     ...
-    def getMenuContext (self, *args, **kwargs)-> int :
-      '''getMenuContext( (UIContext)arg1, (RxClass)arg2, (list)arg3) -> int :
+    def getMenuContext (self, *args, **kwargs)-> object :
+      '''getMenuContext( (UIContext)arg1, (RxClass)arg2, (list)arg3) -> object :
 
     C++ signature :
-        __int64 getMenuContext(class PyEdUIContext {lvalue},class PyRxClass,class boost::python::list)'''
+        class boost::python::api::object getMenuContext(class PyEdUIContext {lvalue},class PyRxClass,class boost::python::list)'''
+    ...
+    def hitPoint (self, *args, **kwargs)-> Point3d :
+      '''hitPoint( (UIContext)arg1) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d hitPoint(class PyEdUIContext {lvalue})'''
     ...
     def onCommand (self, *args, **kwargs)-> None :
       '''onCommand( (UIContext)arg1, (int)arg2) -> None :

@@ -73,6 +73,7 @@ void makePyEdUIContextWrapper()
         .def("getMenuContext", &PyEdUIContext::getMenuContextWr)
         .def("onCommand", &PyEdUIContext::onCommandWr)
         .def("OnUpdateMenu", &PyEdUIContext::OnUpdateMenuWr)
+        .def("hitPoint", &PyEdUIContext::hitPoint)
         .def("addObjectContextMenu", &PyEdUIContext::addObjectContextMenu).staticmethod("addObjectContextMenu")
         .def("removeObjectContextMenu", &PyEdUIContext::removeObjectContextMenu).staticmethod("removeObjectContextMenu")
         .def("addDefaultContextMenu", &PyEdUIContext::addDefaultContextMenu1)
@@ -95,6 +96,7 @@ PyEdUIContext::~PyEdUIContext()
 
 void* PyEdUIContext::getMenuContext(const AcRxClass* pClass, const AcDbObjectIdArray& ids)
 {
+    calcHitPoint();
     PyAutoLockGIL lock;
     boost::python::list pyids;
     for (const auto& id : ids)
@@ -126,6 +128,11 @@ void PyEdUIContext::onCommand(Adesk::UInt32 cmd)
 void PyEdUIContext::OnUpdateMenu()
 {
     this->OnUpdateMenuWr();
+}
+
+AcGePoint3d PyEdUIContext::hitPoint() const
+{
+    return m_hitPoint;
 }
 
 boost::python::object PyEdUIContext::getMenuContextWr(const PyRxClass& pyclass, const boost::python::list& pyids)
@@ -173,6 +180,26 @@ void PyEdUIContext::OnUpdateMenuWr()
     {
         acutPrintf(_T("Exception @ %ls: "), __FUNCTIONW__);
     }
+}
+
+void PyEdUIContext::calcHitPoint()
+{
+    CPoint cursorPos;
+    ::GetCursorPos(&cursorPos);
+    ScreenToClient(adsw_acadDocWnd(), &cursorPos);
+
+    acedDwgPoint cpt;
+    acedCoordFromPixelToWorld(cursorPos, cpt);
+
+    resbuf fromrb;
+    fromrb.restype = RTSHORT;
+    fromrb.resval.rint = 2; // DCS
+
+    resbuf torb;
+    torb.restype = RTSHORT;
+    torb.resval.rint = 0; // WCS 
+
+    acedTrans(cpt, &fromrb, &torb, FALSE, asDblArray(m_hitPoint));
 }
 
 bool PyEdUIContext::addObjectContextMenu(PyRxClass& pClass, PyEdUIContext& pContext)
