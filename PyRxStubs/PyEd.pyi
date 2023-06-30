@@ -2056,6 +2056,61 @@ ssNameX( (SelectionSet)arg1, (int)arg2) -> list :
         class boost::python::list toList(class PyEdSelectionSet {lvalue})'''
     ...
 
+class UIContext:
+    def OnUpdateMenu (self, *args, **kwargs)-> None :
+      '''OnUpdateMenu( (UIContext)arg1) -> None :
+
+    C++ signature :
+        void OnUpdateMenu(class PyEdUIContext {lvalue})'''
+    ...
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def addDefaultContextMenu (self, *args, **kwargs)-> bool :
+      '''addDefaultContextMenu( (UIContext)arg1) -> bool :
+
+    C++ signature :
+        bool addDefaultContextMenu(class PyEdUIContext {lvalue})
+
+addDefaultContextMenu( (UIContext)arg1, (str)arg2) -> bool :
+
+    C++ signature :
+        bool addDefaultContextMenu(class PyEdUIContext {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def addObjectContextMenu (self, *args, **kwargs)-> bool :
+      '''addObjectContextMenu( (RxClass)arg1, (UIContext)arg2) -> bool :
+
+    C++ signature :
+        bool addObjectContextMenu(class PyRxClass {lvalue},class PyEdUIContext {lvalue})'''
+    ...
+    def getMenuContext (self, *args, **kwargs)-> int :
+      '''getMenuContext( (UIContext)arg1, (RxClass)arg2, (list)arg3) -> int :
+
+    C++ signature :
+        __int64 getMenuContext(class PyEdUIContext {lvalue},class PyRxClass,class boost::python::list)'''
+    ...
+    def onCommand (self, *args, **kwargs)-> None :
+      '''onCommand( (UIContext)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void onCommand(class PyEdUIContext {lvalue},unsigned int)'''
+    ...
+    def removeDefaultContextMenu (self, *args, **kwargs)-> bool :
+      '''removeDefaultContextMenu( (UIContext)arg1) -> bool :
+
+    C++ signature :
+        bool removeDefaultContextMenu(class PyEdUIContext {lvalue})'''
+    ...
+    def removeObjectContextMenu (self, *args, **kwargs)-> bool :
+      '''removeObjectContextMenu( (RxClass)arg1, (UIContext)arg2) -> bool :
+
+    C++ signature :
+        bool removeObjectContextMenu(class PyRxClass {lvalue},class PyEdUIContext {lvalue})'''
+    ...
+
 class UserInputControls:
     def __init__ (self, /, *args, **kwargs):
       '''Initialize self.  See help(type(self)) for accurate signature.'''

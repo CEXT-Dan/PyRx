@@ -30,7 +30,8 @@ protected:
 void makePyEdUIContextWrapper();
 class PyEdUIContext : AcEdUIContext, public boost::python::wrapper<PyEdUIContext>
 {
-    bool isAlive = false;
+    bool m_isAlive = false;
+    HMENU m_hmenu = 0;
 public:
     PyEdUIContext();
     virtual ~PyEdUIContext() override;
@@ -38,7 +39,7 @@ public:
     virtual void  onCommand(Adesk::UInt32 cmd);
     virtual void  OnUpdateMenu();
 
-    int64_t getMenuContextWr(const PyRxClass& pyclass, const boost::python::list& pyids);
+    boost::python::object getMenuContextWr(const PyRxClass& pyclass, const boost::python::list& pyids);
     void  onCommandWr(Adesk::UInt32);
     void  OnUpdateMenuWr();
 
