@@ -1218,7 +1218,13 @@ Acad::ErrorStatus PyDbTable::recomputeTableBlock(bool forceUpdate)
 boost::python::tuple PyDbTable::hitTest(const AcGePoint3d& wpt, const AcGeVector3d& wviewVec, double wxaper, double wyaper)
 {
 #ifdef BRXAPP
-    throw PyNotimplementedByHost();
+    PyAutoLockGIL lock;
+    int resultRowIndex = -1;
+    int resultColumnIndex = -1;
+    int contentIndex = -1;
+    AcDb::TableHitItem nItem = AcDb::kTableHitNone;
+    bool flag = impObj()->hitTest(wpt, wviewVec, wxaper, wyaper, resultRowIndex, resultColumnIndex);
+    return boost::python::make_tuple(flag, resultRowIndex, resultColumnIndex, contentIndex, nItem);
 #else
     PyAutoLockGIL lock;
     int resultRowIndex = -1;
