@@ -1,7 +1,7 @@
 import os
 import unittest
 
-import PyRxApp
+
 import PyRx as Rx
 import PyGe as Ge
 import PyGi as Gi
