@@ -25,7 +25,7 @@ public:
     static bool                  setVar(const std::string& sym, const  boost::python::object&);
     static Acad::ErrorStatus    mSpace();
     static Acad::ErrorStatus    pSpace();
-
+    static int                  grDraw(const AcGePoint3d& from, const AcGePoint3d& to, int colorIndex, int highlight);
     static int                  update(int vport, const AcGePoint2d& p1, const AcGePoint2d& p2);
     static void                 updateDisplay();
     static void                 updateDisplayPause(bool bEnable);
