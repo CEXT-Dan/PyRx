@@ -95,6 +95,12 @@ audit( (Database)arg1, (bool)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         class boost::python::api::object getVar(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def grDraw (self, *args, **kwargs)-> int :
+      '''grDraw( (Point3d)arg1, (Point3d)arg2, (int)arg3, (int)arg4) -> int :
+
+    C++ signature :
+        int grDraw(class AcGePoint3d,class AcGePoint3d,int,int)'''
+    ...
     def mSpace (self, *args, **kwargs)-> ErrorStatus :
       '''mSpace() -> ErrorStatus :
 

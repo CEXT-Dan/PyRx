@@ -34,12 +34,11 @@ void makeEdCoreWrapper()
         .def("getPredefinedHatchPatterns", &EdCore::getPredefinedPattens).staticmethod("getPredefinedHatchPatterns")
         .def("getFileD", &EdCore::getFileD).staticmethod("getFileD")
         .def("getFileNavDialog", &EdCore::getFileNavDialog).staticmethod("getFileNavDialog")
+        .def("grDraw", &EdCore::grDraw).staticmethod("grDraw")
         .def("getVar", &EdCore::getVar).staticmethod("getVar")
         .def("setVar", &EdCore::setVar).staticmethod("setVar")
         .def("mSpace", &EdCore::mSpace).staticmethod("mSpace")
         .def("pSpace", &EdCore::pSpace).staticmethod("pSpace")
-
-
         .def("update", &EdCore::update).staticmethod("update")
         .def("updateDisplay", &EdCore::updateDisplay).staticmethod("updateDisplay")
         .def("updateDisplayPause", &EdCore::updateDisplayPause).staticmethod("updateDisplayPause")
@@ -293,6 +292,11 @@ Acad::ErrorStatus EdCore::mSpace()
 Acad::ErrorStatus EdCore::pSpace()
 {
     return acedPspace();
+}
+
+int EdCore::grDraw(const AcGePoint3d& from, const AcGePoint3d& to, int colorIndex, int highlight)
+{
+    return acedGrDraw(asDblArray(from), asDblArray(to), colorIndex, highlight);
 }
 
 int EdCore::update(int vport, const AcGePoint2d& p1, const AcGePoint2d& p2)
