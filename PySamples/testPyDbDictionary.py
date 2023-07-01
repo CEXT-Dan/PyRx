@@ -9,33 +9,33 @@ import PyAp# = application, document classes services
 import PyEd# = editor 
 
 def OnPyInitApp():
-    PyRxApp.Printf("\nOnPyInitApp")
+    print("\nOnPyInitApp")
 	
 def OnPyUnloadApp():
-    PyRxApp.Printf("\nOnPyUnloadApp")
+    print("\nOnPyUnloadApp")
         
 def OnPyLoadDwg():
-	PyRxApp.Printf("\nOnPyLoadDwg")
-	PyRxApp.Printf("\nrun pydbdicttest :")
+	print("\nOnPyLoadDwg")
+	print("\nrun pydbdicttest :")
 	   
 def OnPyUnloadDwg():
-   PyRxApp.Printf("\nOnPyUnloadDwg")
+   print("\nOnPyUnloadDwg")
 
 def PyRxCmd_pydbdicttest():
 	try:
 		PyDbDictOpenForRead()
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)
 		
 def PyDbDictOpenForRead():
 	db = PyDb.HostApplicationServices().workingDatabase()  
 	dictid = db.namedObjectsDictionaryId()
 	dict = PyDb.Dictionary(dictid,PyDb.OpenMode.kForRead)
 	if dict.isNull():
-		PyRxApp.Printf("\nFAIL")
+		print("\nFAIL")
 	else:
-		PyRxApp.Printf("\nPASS({})".format(dict.isA().name()))
+		print("\nPASS({})".format(dict.isA().name()))
 	for (name,id) in dict.keyValuePairs():
-		PyRxApp.Printf("\nitem({},{})".format(name,id ))	
+		print("\nitem({},{})".format(name,id ))	
 	
 	

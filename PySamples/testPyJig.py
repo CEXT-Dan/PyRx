@@ -1,6 +1,5 @@
 import os
 
-import PyRxApp  # = all the global methods like acutPrintf,
 import PyRx  # = Runtime runtime
 import PyGe  # = Geometry
 import PyGi  # = Graphics interface
@@ -71,7 +70,7 @@ def PyRxCmd_pyjigstyle():
         model.appendAcDbEntity(line)
 
     except Exception as err:
-        PyRxApp.Printf(err)
+        print(err)
 
 
 def PyRxCmd_pyjig():
@@ -100,4 +99,4 @@ def PyRxCmd_pyjig():
         model.appendAcDbEntity(line)
 
     except Exception as err:
-        PyRxApp.Printf(err)
+        print(err)

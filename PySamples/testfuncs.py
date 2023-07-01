@@ -2,31 +2,31 @@ import os
 import PyRxApp
 
 def OnPyInitApp():
-    PyRxApp.Printf("\nOnPyInitApp")
+    print("\nOnPyInitApp")
 	
 def OnPyUnloadApp():
-    PyRxApp.Printf("\nOnPyUnloadApp")
+    print("\nOnPyUnloadApp")
         
 def OnPyLoadDwg():
-    PyRxApp.Printf("\nOnPyLoadDwg")
+    print("\nOnPyLoadDwg")
 	
 def OnPyUnloadDwg():
-   PyRxApp.Printf("\nOnPyUnloadDwg")
+   print("\nOnPyUnloadDwg")
          
 def PyRxCmd_testfuncs():
 	testFuncDoc()
 	
 def testFuncDoc():
-	PyRxApp.Printf(PyRxApp.Printf.__doc__)
-	PyRxApp.Printf(PyRxApp.GetVar.__doc__)
-	PyRxApp.Printf(PyRxApp.SetVar.__doc__)
+	print(print.__doc__)
+	print(PyRxApp.GetVar.__doc__)
+	print(PyRxApp.SetVar.__doc__)
 
 def PyRxCmd_testSetVar():
 	try:
 		PyRxApp.SetVar("OSMODE", 0)
-		PyRxApp.Printf(PyRxApp.GetVar("OSMODE"))
+		print(PyRxApp.GetVar("OSMODE"))
 		PyRxApp.SetVar("OSMODE", 191)
-		PyRxApp.Printf(PyRxApp.GetVar("OSMODE"))
+		print(PyRxApp.GetVar("OSMODE"))
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)
 	

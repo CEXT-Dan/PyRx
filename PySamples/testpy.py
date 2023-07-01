@@ -10,18 +10,18 @@ import PyEd  # = editor
 
 
 def OnPyInitApp():
-    PyRxApp.Printf("\nOnPyInitApp")
+    print("\nOnPyInitApp")
 
 def OnPyUnloadApp():
-   PyRxApp.Printf("\nOnPyUnloadApp")
+   print("\nOnPyUnloadApp")
 
 
 def OnPyLoadDwg():
-   PyRxApp.Printf("\nOnPyLoadDwg")
+   print("\nOnPyLoadDwg")
 
 
 def OnPyUnloadDwg():
-   PyRxApp.Printf("\nOnPyUnloadDwg")
+   print("\nOnPyUnloadDwg")
 
 
 def PyRxCmd_pycmd():
@@ -38,7 +38,7 @@ def PyRxCmd_pycmd():
         #getSplitCurves()
 
     except Exception as err:
-        PyRxApp.Printf(err)
+        print(err)
 
 
 def print_ents(objs):
@@ -79,7 +79,7 @@ def table():
             tb.setTextString(1, 0, "sup")
             print(tb.textString(1, 0))
     except Exception as err:
-        PyRxApp.Printf(err)
+        print(err)
 
 
 def mtext():
@@ -94,7 +94,7 @@ def mtext():
             print(type(mt.attachment()))
 
     except Exception as err:
-        PyRxApp.Printf(err)
+        print(err)
 
 
 def createPolyLine():
@@ -135,7 +135,7 @@ def createPolyLine():
             print(curves[1].getEndPoint() == curves[0].getStartPoint())
 
     except Exception as err:
-        PyRxApp.Printf(err)
+        print(err)
 
 
 def createLine():
@@ -155,7 +155,7 @@ def createLine():
         model.appendAcDbEntity(line)
         model.appendAcDbEntity(circle)
     except Exception as err:
-        PyRxApp.Printf(err)
+        print(err)
 
 
 def getSplitCurves():
@@ -193,7 +193,7 @@ def createDbp():
         dbp = PyDb.Point(PyGe.Point3d(100, 100, 0))
         model.appendAcDbEntity(dbp)
     except Exception as err:
-        PyRxApp.Printf(err)
+        print(err)
 
 
 def createDbps():
@@ -209,4 +209,4 @@ def createDbps():
         for o in objs:
             model.appendAcDbEntity(o)
     except Exception as err:
-        PyRxApp.Printf(err)
+        print(err)

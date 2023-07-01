@@ -1,6 +1,5 @@
 import os
 
-import PyRxApp# = all the global methods like acutPrintf,
 import PyRx# = Runtime runtime
 import PyGe# = Geometry
 import PyGi# = Graphics interface
@@ -22,4 +21,4 @@ def PyRxCmd_pycreate_mtext():
         mtext.setAttachment(PyDb.MText.AttachmentPoint.kBottomCenter)
         model.appendAcDbEntity(mtext)
     except Exception as err:
-        PyRxApp.Printf(err)
+        print(err)

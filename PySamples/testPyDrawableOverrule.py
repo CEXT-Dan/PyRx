@@ -1,4 +1,3 @@
-import PyRxApp  # = all the global methods like acutPrintf,
 import PyRx  # = Runtime runtime
 import PyGe  # = Geometry
 import PyGi  # = Graphics interface
@@ -66,7 +65,7 @@ def PyRxCmd_pydrawoverrule():
         else:
             print("fail")
     except Exception as err:
-        PyRxApp.Printf(err)
+        print(err)
 
 
 def PyRxCmd_pystopoverrule():
@@ -78,4 +77,4 @@ def PyRxCmd_pystopoverrule():
             overrule.setIsOverruling(False)
         del (overrule)
     except Exception as err:
-        PyRxApp.Printf(err)
+        print(err)

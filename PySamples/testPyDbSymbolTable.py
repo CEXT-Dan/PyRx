@@ -1,7 +1,6 @@
 import os
 
-import PyRxApp# = all the global methods like acutPrintf, 
-import PyRx# = Runtime runtime 
+ import PyRx# = Runtime runtime 
 import PyGe# = Geometry
 import PyGi# = Graphics interface
 import PyDb# = database
@@ -9,33 +8,33 @@ import PyAp# = application, document classes services
 import PyEd# = editor 
 
 def OnPyInitApp():
-    PyRxApp.Printf("\nOnPyInitApp")
+    print("\nOnPyInitApp")
 	
 def OnPyUnloadApp():
-    PyRxApp.Printf("\nOnPyUnloadApp")
+    print("\nOnPyUnloadApp")
         
 def OnPyLoadDwg():
-	PyRxApp.Printf("\nOnPyLoadDwg")
-	PyRxApp.Printf("\nrun pydbsymtabletest :")
+	print("\nOnPyLoadDwg")
+	print("\nrun pydbsymtabletest :")
 	   
 def OnPyUnloadDwg():
-   PyRxApp.Printf("\nOnPyUnloadDwg")
+   print("\nOnPyUnloadDwg")
 
 def PyRxCmd_pydbsymtabletest():
 	try:
 		PyDbSymOpenForRead()
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)
 		
 def PyDbSymOpenForRead():
 	db = PyDb.HostApplicationServices().workingDatabase()  
 	btid = db.blockTableId()
 	table = PyDb.SymbolTable(btid,PyDb.OpenMode.kForRead)
 	if table.isNull():
-		PyRxApp.Printf("\nFAIL")
+		print("\nFAIL")
 	else:
-		PyRxApp.Printf("\nPASS({})".format(table.isA().name()))
+		print("\nPASS({})".format(table.isA().name()))
 	for (id) in table.recordIds():
-		PyRxApp.Printf("\nitem({})".format(id))	
+		print("\nitem({})".format(id))	
 	
 	

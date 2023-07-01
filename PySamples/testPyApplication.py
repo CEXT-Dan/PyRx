@@ -10,17 +10,17 @@ import PyEd# = editor
 
 
 def OnPyInitApp():
-    PyRxApp.Printf("\nOnPyInitApp")
+    print("\nOnPyInitApp")
 	
 def OnPyUnloadApp():
-    PyRxApp.Printf("\nOnPyUnloadApp")
+    print("\nOnPyUnloadApp")
         
 def OnPyLoadDwg():
-   PyRxApp.Printf("\nOnPyLoadDwg")
-   PyRxApp.Printf("\nrun pyapptest :")
+   print("\nOnPyLoadDwg")
+   print("\nrun pyapptest :")
 	
 def OnPyUnloadDwg():
-   PyRxApp.Printf("\nOnPyUnloadDwg")
+   print("\nOnPyUnloadDwg")
    
 def PyRxCmd_pyapptest():
 	try:
@@ -32,32 +32,32 @@ def PyRxCmd_pyapptest():
 		PyCurDocEdTest3()
 		PyCurDocEntsel()
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)
 		
 def PyCurDocTest():
 	try:
 		db = PyAp.Application().docManager().curDocument().database() 
-		PyRxApp.Printf("\nPASS({})".format(db.getFilename())) 
+		print("\nPASS({})".format(db.getFilename())) 
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)
 
 
 def PyCurDocEdTest1():
 	try:
 		val = PyAp.Application().docManager().curDocument().editor().getInteger("\nEnter an int")
 		if(val[0] == PyEd.PromptStatus.eNormal):
-			PyRxApp.Printf("\nPASS({})".format(val[1])) 
+			print("\nPASS({})".format(val[1])) 
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)
 
 def PyCurDocEdTest2():
 	try:
 		doc = PyAp.Application().docManager().curDocument()
 		val = doc.editor().getInteger("\nEnter an int")
 		if(val[0] == PyEd.PromptStatus.eNormal):
-			PyRxApp.Printf("\nPASS({})".format(val[1])) 
+			print("\nPASS({})".format(val[1])) 
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)
 
 def PyCurDocEdTest3():
 	try:
@@ -67,9 +67,9 @@ def PyCurDocEdTest3():
 		ed = doc.editor()
 		val = ed.getString(1, "\nEnter a string")
 		if(val[0] == PyEd.PromptStatus.eNormal):
-			PyRxApp.Printf("\nPASS({})".format(val[1])) 
+			print("\nPASS({})".format(val[1])) 
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)
 
 def PyCurDocEntsel():
 	try:
@@ -80,11 +80,11 @@ def PyCurDocEntsel():
 		val = ed.entsel("\nSelect")
 		if(val[0] == PyEd.PromptStatus.eNormal):
 			dbo = PyDb.DbObject(val[1], PyDb.OpenMode.ForRead)
-			PyRxApp.Printf("\nPASS({})".format(dbo.isA().name())) 
+			print("\nPASS({})".format(dbo.isA().name())) 
 			p = val[2]
-			PyRxApp.Printf("\nPASS({},{},{})".format(p.x, p.y, p.z))
+			print("\nPASS({},{},{})".format(p.x, p.y, p.z))
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)
 		clpyre
 def PyCurDocSelectAll():
 	try:
@@ -95,9 +95,9 @@ def PyCurDocSelectAll():
 		val = ed.selectAll()
 		if(val[0] == PyEd.PromptStatus.eNormal):
 			numids = len(val[1])
-			PyRxApp.Printf("\nPASS numids({})".format(numids))
+			print("\nPASS numids({})".format(numids))
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)
 		
 def PyCurDocSelectAllFilter():
 	try:
@@ -109,8 +109,8 @@ def PyCurDocSelectAllFilter():
 		val = ed.selectAll(filter)
 		if(val[0] == PyEd.PromptStatus.eNormal):
 			numids = len(val[1])
-			PyRxApp.Printf("\nPASS numids({})".format(numids))
+			print("\nPASS numids({})".format(numids))
 			for id in val[1]:
-				PyRxApp.Printf("\nPASS({})".format(id.objectClass().name()))
+				print("\nPASS({})".format(id.objectClass().name()))
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)
