@@ -11,17 +11,17 @@ import PyEd# = editor
 
 
 def OnPyInitApp():
-    PyRxApp.Printf("\nOnPyInitApp")
+    print("\nOnPyInitApp")
 	
 def OnPyUnloadApp():
-    PyRxApp.Printf("\nOnPyUnloadApp")
+    print("\nOnPyUnloadApp")
         
 def OnPyLoadDwg():
-   PyRxApp.Printf("\nOnPyLoadDwg")
-   PyRxApp.Printf("\nrun pydbatabasetest :")
+   print("\nOnPyLoadDwg")
+   print("\nrun pydbatabasetest :")
 	
 def OnPyUnloadDwg():
-   PyRxApp.Printf("\nOnPyUnloadDwg")
+   print("\nOnPyUnloadDwg")
  
 def PyRxCmd_pydbatabasetest():
 	try:
@@ -33,43 +33,43 @@ def PyRxCmd_pydbatabasetest():
 		PyDbIsA()
 		PyDbGetBlockTable()
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)
 		
 def PyDbGet():
 	try:
 		db = PyDb.HostApplicationServices().workingDatabase()  
-		PyRxApp.Printf("\nangbase = PASS({})".format(db.angbase()))
-		PyRxApp.Printf("\nangdir = PASS({})".format(db.angdir()))
-		PyRxApp.Printf("\nannoAllVisible = PASS({})".format(db.annoAllVisible()))
+		print("\nangbase = PASS({})".format(db.angbase()))
+		print("\nangdir = PASS({})".format(db.angdir()))
+		print("\nannoAllVisible = PASS({})".format(db.annoAllVisible()))
 		
 		p = db.extmin();
-		PyRxApp.Printf("\nextmin PASS({},{},{})".format(p.x, p.y, p.z))
+		print("\nextmin PASS({},{},{})".format(p.x, p.y, p.z))
 		
 		p = db.extmax();
-		PyRxApp.Printf("\nextmax PASS({},{},{})".format(p.x, p.y, p.z))
+		print("\nextmax PASS({},{},{})".format(p.x, p.y, p.z))
 		
-		PyRxApp.Printf("\nlastSavedAsVersion = PASS({})".format(db.lastSavedAsVersion()))
-		PyRxApp.Printf("\nlastSavedAsMaintenanceVersion = PASS({})".format(db.lastSavedAsMaintenanceVersion()))
+		print("\nlastSavedAsVersion = PASS({})".format(db.lastSavedAsVersion()))
+		print("\nlastSavedAsMaintenanceVersion = PASS({})".format(db.lastSavedAsMaintenanceVersion()))
 
-		PyRxApp.Printf("\nlayerEval = PASS({})".format(db.layerEval()))
+		print("\nlayerEval = PASS({})".format(db.layerEval()))
 
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)
 
 def PyDbGetBlockTable():
 	try:
 		db = PyDb.HostApplicationServices().workingDatabase()  
 		id = db.blockTableId()
-		PyRxApp.Printf("\nPyDbGetBlockTable = PASS({})".format(id.objectClass().name()))
+		print("\nPyDbGetBlockTable = PASS({})".format(id.objectClass().name()))
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)
 
 def PyDbIsA():
 	try:
 		db = Db.HostApplicationServices().workingDatabase()  
-		PyRxApp.Printf("\nPASS({})".format(db.isA().name()))  
+		print("\nPASS({})".format(db.isA().name()))  
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)
                 
 def PyHostApptestCopy():
 	try:
@@ -77,14 +77,14 @@ def PyHostApptestCopy():
 		db = ha.workingDatabase()  
 		PrintDbPath(db)        
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)
 		
 def PyHostApptestNest():
 	try:
 		db = PyDb.HostApplicationServices().workingDatabase()  
 		PrintDbPath(db)     
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)
 
 def PyDatabaseReadDwg():
 	try:
@@ -93,11 +93,11 @@ def PyDatabaseReadDwg():
 		dbcopy = db
 		PrintDbPath(dbcopy)  
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)
 
 def PrintDbPath(db):
 	try:
 		dbcopy = db
-		PyRxApp.Printf("\nPASS({})".format(dbcopy.getFilename()))      
+		print("\nPASS({})".format(dbcopy.getFilename()))      
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)

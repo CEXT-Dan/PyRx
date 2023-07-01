@@ -1,6 +1,5 @@
 import os
 
-import PyRxApp# = all the global methods like acutPrintf,
 import PyRx# = Runtime runtime
 import PyGe# = Geometry
 import PyGi# = Graphics interface
@@ -55,4 +54,4 @@ def PyRxCmd_pycreate_hatch():
         model = PyDb.BlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
         model.appendAcDbEntity(hatch)      
     except Exception as err:
-        PyRxApp.Printf(err)
+        print(err)

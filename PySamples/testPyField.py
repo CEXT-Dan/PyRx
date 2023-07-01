@@ -1,4 +1,3 @@
-import PyRxApp
 import PyRx as Rx
 import PyGe as Ge
 import PyGi as Gi
@@ -21,7 +20,7 @@ def PyRxCmd_pygetfields():
                 print(field.getValue())
 
     except Exception as err:
-        PyRxApp.Printf(err)
+        print(err)
 
 
 def PyRxCmd_pymakefield():
@@ -38,4 +37,4 @@ def PyRxCmd_pymakefield():
         field.evaluate()
 
     except Exception as err:
-        PyRxApp.Printf(err)
+        print(err)

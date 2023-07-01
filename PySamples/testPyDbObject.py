@@ -1,6 +1,4 @@
 import os
-
-import PyRxApp# = all the global methods like acutPrintf, 
 import PyRx# = Runtime runtime 
 import PyGe# = Geometry
 import PyGi# = Graphics interface
@@ -9,23 +7,23 @@ import PyAp# = application, document classes services
 import PyEd# = editor 
 
 def OnPyInitApp():
-    PyRxApp.Printf("\nOnPyInitApp")
+    print("\nOnPyInitApp")
 	
 def OnPyUnloadApp():
-    PyRxApp.Printf("\nOnPyUnloadApp")
+    print("\nOnPyUnloadApp")
         
 def OnPyLoadDwg():
-	PyRxApp.Printf("\nOnPyLoadDwg")
-	PyRxApp.Printf("\nrun pydbobjecttest :")
+	print("\nOnPyLoadDwg")
+	print("\nrun pydbobjecttest :")
 	   
 def OnPyUnloadDwg():
-   PyRxApp.Printf("\nOnPyUnloadDwg")
+   print("\nOnPyUnloadDwg")
 
 def PyRxCmd_pydbobjecttest():
 	try:
 		PyDbObjectOpenForRead()
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)
 		
 def PyDbObjectOpenForRead():
 	try:
@@ -33,8 +31,8 @@ def PyDbObjectOpenForRead():
 		id = db.blockTableId()
 		dbo = PyDb.DbObject(id, PyDb.OpenMode.kForRead)
 		if dbo.isNull():
-			PyRxApp.Printf("\nFAIL")
+			print("\nFAIL")
 		else:
-		    PyRxApp.Printf("\nPASS({})".format(dbo.isA().name()))
+		    print("\nPASS({})".format(dbo.isA().name()))
 	except Exception as err:
-		PyRxApp.Printf(err)		
+		print(err)		

@@ -1,4 +1,3 @@
-import PyRxApp
 import PyRx as Rx
 import PyGe as Ge
 import PyGi as Gi
@@ -44,7 +43,7 @@ def PyRxCmd_pyselectall():
             print(selection.size())
 
     except Exception as err:
-	    PyRxApp.Printf(err)
+	     print(err)
 
 
 def PyRxCmd_pyselectallf():

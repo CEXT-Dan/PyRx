@@ -1,6 +1,5 @@
 import os
 
-import PyRxApp# = all the global methods like acutPrintf, 
 import PyRx# = Runtime runtime 
 import PyGe# = Geometry
 import PyGi# = Graphics interface
@@ -10,16 +9,16 @@ import PyEd# = editor
 
 
 def OnPyInitApp():
-    PyRxApp.Printf("\nOnPyInitApp")
+    print("\nOnPyInitApp")
 	
 def OnPyUnloadApp():
-   PyRxApp.Printf("\nOnPyUnloadApp")
+   print("\nOnPyUnloadApp")
         
 def OnPyLoadDwg():
-   PyRxApp.Printf("\nOnPyLoadDwg")
+   print("\nOnPyLoadDwg")
 	
 def OnPyUnloadDwg():
-   PyRxApp.Printf("\nOnPyUnloadDwg")
+   print("\nOnPyUnloadDwg")
          
 # (pylisp)
 def PyRxLisp_pylisp(args):
@@ -36,28 +35,28 @@ def PyRxLisp_pylisp(args):
 		     	(PyRx.LispDataType.kPoint3d,PyGe.Point3d(1,10,100)),
 				(PyRx.LispDataType.kListEnd, 0)]
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)
 
 #(pylisp1)
 def PyRxLisp_pylisp1(args):
 	try: 
 		return [(PyRx.LispDataType.kText, "Text")]
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)
 
 #(pylisprt '("hello world" 1 2 3 4 (1 10 100)))
 def PyRxLisp_pylisprt(args):
 	try: 
 		return args
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)
 
 #(pylispvoid)	
 def PyRxLisp_pylispvoid(args):
 	try: 
 		print("yay!")
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)
 
 #(pylispbad)	
 def PyRxLisp_pylispbad(args):
@@ -65,4 +64,4 @@ def PyRxLisp_pylispbad(args):
 		print("yay!")
 		return "bad"
 	except Exception as err:
-		PyRxApp.Printf(err)
+		print(err)
