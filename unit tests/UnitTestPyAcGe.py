@@ -2,7 +2,6 @@ import os
 import unittest
 import math
 
-import PyRxApp  # = all the global methods like acutPrintf,
 import PyRx  # = Runtime runtime
 import PyGe  # = Geometry
 import PyGi  # = Graphics interface
@@ -250,16 +249,25 @@ class TestGe(unittest.TestCase):
         self.assertEqual(vZ, vZ2)
 
     def test_pyge_line2d_static_properties(self):
-            xline = PyGe.Line2d.kXAxis
-            yline = PyGe.Line2d.kYAxis
-            self.assertTrue(xline.isPerpendicularTo(yline))
+        xline = PyGe.Line2d.kXAxis
+        yline = PyGe.Line2d.kYAxis
+        self.assertTrue(xline.isPerpendicularTo(yline))
 
     def test_pyge_line3d_static_properties(self):
-            xline = PyGe.Line3d.kXAxis
-            yline = PyGe.Line3d.kYAxis
-            zline = PyGe.Line3d.kZAxis
-            self.assertTrue(xline.isPerpendicularTo(yline))
-            self.assertTrue(xline.isPerpendicularTo(zline))
+        xline = PyGe.Line3d.kXAxis
+        yline = PyGe.Line3d.kYAxis
+        zline = PyGe.Line3d.kZAxis
+        self.assertTrue(xline.isPerpendicularTo(yline))
+        self.assertTrue(xline.isPerpendicularTo(zline))
+            
+    def test_lineseg3d_reverse(self):
+        pnt1 = PyGe.Point3d(0,0,0)
+        pnt2 = PyGe.Point3d(1,2,3)
+        seg = PyGe.LineSeg3d(pnt1,pnt2)
+        self.assertEqual(seg.startPoint(), pnt1)
+        seg.reverseParam()
+        self.assertEqual(seg.startPoint(), pnt2)
+        
 
 
 def PyRxCmd_pyge():

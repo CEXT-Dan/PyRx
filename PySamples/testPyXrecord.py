@@ -1,5 +1,5 @@
 import os
-import PyRx# = Runtime runtime
+
 import PyGe# = Geometry
 import PyGi# = Graphics interface
 import PyDb# = database
