@@ -454,9 +454,7 @@ public:
         {
             AcString cmd;
             WxPyAutoLock lock;
-
             //this for stdout
-            PyObjectPtr PyRxApp(PyImport_ImportModule("PyRxApp"));
             PyObjectPtr PyRx(PyImport_ImportModule("PyRx"));
 
             while (acedGetString(1, _T(">>>: "), cmd) == RTNORM)
