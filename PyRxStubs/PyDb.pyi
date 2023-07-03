@@ -11904,6 +11904,24 @@ class Core:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+    def activeDatabaseArray (self, *args, **kwargs)-> list :
+      '''activeDatabaseArray() -> list :
+
+    C++ signature :
+        class boost::python::list activeDatabaseArray()'''
+    ...
+    def angToF (self, *args, **kwargs)-> float :
+      '''angToF( (str)arg1, (int)arg2) -> float :
+
+    C++ signature :
+        double angToF(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    ...
+    def angToS (self, *args, **kwargs)-> str :
+      '''angToS( (float)arg1, (int)arg2, (int)arg3) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > angToS(double,int,int)'''
+    ...
     def ecs2Wcs (self, *args, **kwargs)-> bool :
       '''ecs2Wcs( (Point3d)arg1, (Vector3d)arg2, (Point3d)arg3) -> bool :
 

@@ -1,5 +1,6 @@
 import os 
 import unittest
+import math
 
 import PyRx as Rx
 import PyGe as Ge
@@ -12,11 +13,34 @@ print("testname = pydbtest")
 
 class TestDatabase(unittest.TestCase):
 
+    def test_dbcore_strconversions(self):
+        flag = Ed.Core.setVar("DIMZIN", 0)
+        self.assertEqual(flag,True)
+        val = Db.Core.angToF("180", 0)
+        self.assertAlmostEqual(val, math.pi,8)
+        val = Db.Core.angToF("180d0'0\"", 1)
+        self.assertAlmostEqual(val, math.pi,8)
+        val = Db.Core.angToF("200.0000g", 2)
+        self.assertAlmostEqual(val, math.pi,8)
+        val = Db.Core.angToF("3.1416r", 3)
+        self.assertEqual(val, 3.1416)
+        val = Db.Core.angToF("W", 4)
+        self.assertAlmostEqual(val, math.pi,8)
+        sval = Db.Core.angToS(math.pi, 0, 2)
+        self.assertEqual(sval,"180.00")
+        
+    def test_dbcore_activeDatabaseArray(self):
+        dbs = Db.Core.activeDatabaseArray()
+        self.assertNotEqual(len(dbs), 0)
+        
     def test_property_ids(self):
         self.assertEqual(Db.Database.className(),"AcDbDatabase")
         db = Db.HostApplicationServices().workingDatabase() 
+        angbase = db.angbase()
         db.setAngbase(1)
         self.assertEqual(db.angbase(),1)
+        db.setAngbase(angbase)
+        self.assertEqual(db.angbase(),angbase)
         self.assertEqual(db.byBlockLinetype().objectClass().name(),"AcDbLinetypeTableRecord")
         self.assertEqual(db.byBlockMaterial().objectClass().name(),"AcDbMaterial")
         self.assertEqual(db.byLayerLinetype().objectClass().name(),"AcDbLinetypeTableRecord")

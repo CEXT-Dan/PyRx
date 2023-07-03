@@ -4,6 +4,7 @@
 #include "PyDbEntity.h"
 #include "dbdimassoc.h"
 #include "ResultBuffer.h"
+#include "PyDbDatabase.h"
 
 
 using namespace boost::python;
@@ -24,6 +25,9 @@ Returns :\
 void makeDbCoreWrapper()
 {
     class_<DbCore>("Core")
+        .def("activeDatabaseArray", &DbCore::activeDatabaseArray).staticmethod("activeDatabaseArray")
+        .def("angToF", &DbCore::angToF).staticmethod("angToF")
+        .def("angToS", &DbCore::angToS).staticmethod("angToS")
         .def("entGet", &DbCore::entGet).staticmethod("entGet")
         .def("entDel", &DbCore::entDel).staticmethod("entDel")
         .def("entLast", &DbCore::entLast).staticmethod("entLast")
@@ -44,6 +48,32 @@ void makeDbCoreWrapper()
         .def("ecs2Wcs", &DbCore::ecs2Wcs1)
         .def("ecs2Wcs", &DbCore::ecs2Wcs2).staticmethod("ecs2Wcs")
         ;
+}
+
+boost::python::list DbCore::activeDatabaseArray()
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    const AcArray<AcDbDatabase*>& dbs = acdbActiveDatabaseArray();
+    for (auto db : dbs)
+        pyList.append(PyDbDatabase(db));
+    return pyList;
+}
+
+double DbCore::angToF(const std::string& str, int unit)
+{
+    double result = 0;
+    if (auto res = acdbAngToF(utf8_to_wstr(str).c_str(), unit, &result); res != RTNORM)
+        throw PyAcadErrorStatus(eInvalidInput);
+    return result;
+}
+
+std::string DbCore::angToS(double val, int unit, int prec)
+{
+    std::array<wchar_t, 24> buf = { 0 };
+    if (auto res = acdbAngToS(val, unit, prec, buf.data(), buf.size());  res != RTNORM)
+        throw PyAcadErrorStatus(eInvalidInput);
+    return wstr_to_utf8(buf.data());
 }
 
 bool DbCore::entDel(const PyDbObjectId& id)
