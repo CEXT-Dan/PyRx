@@ -5,6 +5,8 @@
 #include "dbdimassoc.h"
 #include "ResultBuffer.h"
 #include "PyDbDatabase.h"
+#include "PyGeCurve3d.h"
+#include "PyDbCurve.h"
 
 
 using namespace boost::python;
@@ -28,6 +30,13 @@ void makeDbCoreWrapper()
         .def("activeDatabaseArray", &DbCore::activeDatabaseArray).staticmethod("activeDatabaseArray")
         .def("angToF", &DbCore::angToF).staticmethod("angToF")
         .def("angToS", &DbCore::angToS).staticmethod("angToS")
+        .def("assignGelibCurveToAcDbCurve", &DbCore::assignGelibCurveToAcDbCurve1)
+        .def("assignGelibCurveToAcDbCurve", &DbCore::assignGelibCurveToAcDbCurve2)
+        .def("assignGelibCurveToAcDbCurve", &DbCore::assignGelibCurveToAcDbCurve3).staticmethod("assignGelibCurveToAcDbCurve")
+        .def("attachXref", &DbCore::attachXref).staticmethod("attachXref")
+        .def("bindXrefs", &DbCore::bindXrefs1)
+        .def("bindXrefs", &DbCore::bindXrefs2).staticmethod("bindXrefs")
+
         .def("entGet", &DbCore::entGet).staticmethod("entGet")
         .def("entDel", &DbCore::entDel).staticmethod("entDel")
         .def("entLast", &DbCore::entLast).staticmethod("entLast")
@@ -74,6 +83,41 @@ std::string DbCore::angToS(double val, int unit, int prec)
     if (auto res = acdbAngToS(val, unit, prec, buf.data(), buf.size());  res != RTNORM)
         throw PyAcadErrorStatus(eInvalidInput);
     return wstr_to_utf8(buf.data());
+}
+
+Acad::ErrorStatus DbCore::assignGelibCurveToAcDbCurve1(const PyGeCurve3d& geCurve, PyDbCurve& pDbCurve)
+{
+    return acdbAssignGelibCurveToAcDbCurve(*geCurve.impObj(), pDbCurve.impObj());
+}
+
+Acad::ErrorStatus DbCore::assignGelibCurveToAcDbCurve2(const PyGeCurve3d& geCurve, PyDbCurve& pDbCurve, AcGeVector3d& normal)
+{
+    return acdbAssignGelibCurveToAcDbCurve(*geCurve.impObj(), pDbCurve.impObj(), &normal);
+}
+
+Acad::ErrorStatus DbCore::assignGelibCurveToAcDbCurve3(const PyGeCurve3d& geCurve, PyDbCurve& pDbCurve, AcGeVector3d& normal, const AcGeTol& tol)
+{
+    return acdbAssignGelibCurveToAcDbCurve(*geCurve.impObj(), pDbCurve.impObj(), &normal, tol);
+}
+
+Acad::ErrorStatus DbCore::attachXref(PyDbDatabase& pHostDb, const std::string& pFilename, const std::string& pBlockName, PyDbObjectId& xrefBlkId)
+{
+    return acdbAttachXref(pHostDb.impObj(), utf8_to_wstr(pFilename).c_str(), utf8_to_wstr(pBlockName).c_str(), xrefBlkId.m_id);
+}
+
+Acad::ErrorStatus DbCore::bindXrefs1(PyDbDatabase& pHostDb, const boost::python::list xrefBlkIds, const bool bInsertBind)
+{
+    return bindXrefs2(pHostDb, xrefBlkIds, bInsertBind, false, true);
+}
+
+Acad::ErrorStatus DbCore::bindXrefs2(PyDbDatabase& pHostDb, const boost::python::list xrefBlkIds, const bool bInsertBind, const bool bAllowUnresolved, const bool bQuiet)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto ids = PyListToObjectIdArray(xrefBlkIds);
+    return acdbBindXrefs(pHostDb.impObj(), ids, bInsertBind, bAllowUnresolved, bInsertBind);
+#endif
 }
 
 bool DbCore::entDel(const PyDbObjectId& id)
