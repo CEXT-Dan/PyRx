@@ -11922,6 +11922,39 @@ class Core:
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > angToS(double,int,int)'''
     ...
+    def assignGelibCurveToAcDbCurve (self, *args, **kwargs)-> ErrorStatus :
+      '''assignGelibCurveToAcDbCurve( (Curve3d)arg1, (Curve)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus assignGelibCurveToAcDbCurve(class PyGeCurve3d,class PyDbCurve {lvalue})
+
+assignGelibCurveToAcDbCurve( (Curve3d)arg1, (Curve)arg2, (Vector3d)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus assignGelibCurveToAcDbCurve(class PyGeCurve3d,class PyDbCurve {lvalue},class AcGeVector3d {lvalue})
+
+assignGelibCurveToAcDbCurve( (Curve3d)arg1, (Curve)arg2, (Vector3d)arg3, (Tol)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus assignGelibCurveToAcDbCurve(class PyGeCurve3d,class PyDbCurve {lvalue},class AcGeVector3d {lvalue},class AcGeTol)'''
+    ...
+    def attachXref (self, *args, **kwargs)-> ErrorStatus :
+      '''attachXref( (Database)arg1, (str)arg2, (str)arg3, (ObjectId)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus attachXref(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue})'''
+    ...
+    def bindXrefs (self, *args, **kwargs)-> ErrorStatus :
+      '''bindXrefs( (Database)arg1, (list)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus bindXrefs(class PyDbDatabase {lvalue},class boost::python::list,bool)
+
+bindXrefs( (Database)arg1, (list)arg2, (bool)arg3, (bool)arg4, (bool)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus bindXrefs(class PyDbDatabase {lvalue},class boost::python::list,bool,bool,bool)'''
+    ...
     def ecs2Wcs (self, *args, **kwargs)-> bool :
       '''ecs2Wcs( (Point3d)arg1, (Vector3d)arg2, (Point3d)arg3) -> bool :
 

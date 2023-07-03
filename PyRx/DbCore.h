@@ -3,6 +3,9 @@
 class PyDbObject;
 class PyDbObjectId;
 class PyDbEntity;
+class PyGeCurve3d;
+class PyDbCurve;
+class PyDbDatabase;
 
 void makeDbCoreWrapper();
 
@@ -12,6 +15,12 @@ public:
     static boost::python::list  activeDatabaseArray();
     static double               angToF(const std::string& str, int unit);
     static std::string          angToS(double, int unit, int prec);
+    static Acad::ErrorStatus    assignGelibCurveToAcDbCurve1(const PyGeCurve3d& geCurve, PyDbCurve& pDbCurve);
+    static Acad::ErrorStatus    assignGelibCurveToAcDbCurve2(const PyGeCurve3d& geCurve, PyDbCurve& pDbCurve, AcGeVector3d& normal);
+    static Acad::ErrorStatus    assignGelibCurveToAcDbCurve3(const PyGeCurve3d& geCurve, PyDbCurve& pDbCurve, AcGeVector3d& normal, const AcGeTol& tol);
+    static Acad::ErrorStatus    attachXref(PyDbDatabase& pHostDb, const std::string& pFilename, const std::string& pBlockName, PyDbObjectId& xrefBlkId);
+    static Acad::ErrorStatus    bindXrefs1(PyDbDatabase& pHostDb, const boost::python::list xrefBlkIds, const bool bInsertBind);
+    static Acad::ErrorStatus    bindXrefs2(PyDbDatabase& pHostDb, const boost::python::list xrefBlkIds, const bool bInsertBind, const bool bAllowUnresolved, const bool bQuiet);
     static bool                 entDel(const PyDbObjectId& id);
     static boost::python::list  entGet(const PyDbObjectId& id);
     static PyDbObjectId         entLast();
