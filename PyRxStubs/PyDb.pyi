@@ -11955,6 +11955,81 @@ bindXrefs( (Database)arg1, (list)arg2, (bool)arg3, (bool)arg4, (bool)arg5) -> Er
     C++ signature :
         enum Acad::ErrorStatus bindXrefs(class PyDbDatabase {lvalue},class boost::python::list,bool,bool,bool)'''
     ...
+    def convertAcDbCurveToGelibCurve (self, *args, **kwargs)-> Curve3d :
+      '''convertAcDbCurveToGelibCurve( (Curve)arg1) -> Curve3d :
+
+    C++ signature :
+        class PyGeCurve3d convertAcDbCurveToGelibCurve(class PyDbCurve)
+
+convertAcDbCurveToGelibCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
+
+    C++ signature :
+        class PyGeCurve3d convertAcDbCurveToGelibCurve(class PyDbCurve,class AcGeTol)'''
+    ...
+    def convertGelibCurveToAcDbCurve (self, *args, **kwargs)-> Curve :
+      '''convertGelibCurveToAcDbCurve( (Curve3d)arg1) -> Curve :
+
+    C++ signature :
+        class PyDbCurve convertGelibCurveToAcDbCurve(class PyGeCurve3d)
+
+convertGelibCurveToAcDbCurve( (Curve3d)arg1, (Vector3d)arg2) -> Curve :
+
+    C++ signature :
+        class PyDbCurve convertGelibCurveToAcDbCurve(class PyGeCurve3d,class AcGeVector3d {lvalue})
+
+convertGelibCurveToAcDbCurve( (Curve3d)arg1, (Vector3d)arg2, (Tol)arg3) -> Curve :
+
+    C++ signature :
+        class PyDbCurve convertGelibCurveToAcDbCurve(class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
+    ...
+    def createViewByViewport (self, *args, **kwargs)-> ObjectId :
+      '''createViewByViewport( (Database)arg1, (ObjectId)arg2, (str)arg3, (str)arg4, (ObjectId)arg5) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId createViewByViewport(class PyDbDatabase {lvalue},class PyDbObjectId,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+    ...
+    def detachXref (self, *args, **kwargs)-> ErrorStatus :
+      '''detachXref( (Database)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus detachXref(class PyDbDatabase {lvalue},class PyDbObjectId)'''
+    ...
+    def dictAdd (self, *args, **kwargs)-> int :
+      '''dictAdd( (ObjectId)arg1, (str)arg2, (ObjectId)arg3) -> int :
+
+    C++ signature :
+        int dictAdd(class PyDbObjectId,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+    ...
+    def dictNext (self, *args, **kwargs)-> list :
+      '''dictNext( (ObjectId)arg1, (int)arg2) -> list :
+
+    C++ signature :
+        class boost::python::list dictNext(class PyDbObjectId,int)'''
+    ...
+    def dictRemove (self, *args, **kwargs)-> int :
+      '''dictRemove( (ObjectId)arg1, (str)arg2) -> int :
+
+    C++ signature :
+        int dictRemove(class PyDbObjectId,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def dictRename (self, *args, **kwargs)-> int :
+      '''dictRename( (ObjectId)arg1, (str)arg2, (str)arg3) -> int :
+
+    C++ signature :
+        int dictRename(class PyDbObjectId,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def dictSearch (self, *args, **kwargs)-> list :
+      '''dictSearch( (ObjectId)arg1, (str)arg2, (int)arg3) -> list :
+
+    C++ signature :
+        class boost::python::list dictSearch(class PyDbObjectId,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    ...
+    def displayPreviewFromDwg (self, *args, **kwargs)-> bool :
+      '''displayPreviewFromDwg( (str)arg1, (object)arg2) -> bool :
+
+    C++ signature :
+        bool displayPreviewFromDwg(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,struct HWND__ * __ptr64)'''
+    ...
     def ecs2Wcs (self, *args, **kwargs)-> bool :
       '''ecs2Wcs( (Point3d)arg1, (Vector3d)arg2, (Point3d)arg3) -> bool :
 
