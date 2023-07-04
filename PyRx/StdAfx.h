@@ -190,9 +190,8 @@ private:
 public:
     PerfTimer(const CString& funcName);
     ~PerfTimer() = default;
-
-private:
     void end();
+
 private:
     CString m_funcName;
 };

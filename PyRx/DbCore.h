@@ -21,6 +21,21 @@ public:
     static Acad::ErrorStatus    attachXref(PyDbDatabase& pHostDb, const std::string& pFilename, const std::string& pBlockName, PyDbObjectId& xrefBlkId);
     static Acad::ErrorStatus    bindXrefs1(PyDbDatabase& pHostDb, const boost::python::list xrefBlkIds, const bool bInsertBind);
     static Acad::ErrorStatus    bindXrefs2(PyDbDatabase& pHostDb, const boost::python::list xrefBlkIds, const bool bInsertBind, const bool bAllowUnresolved, const bool bQuiet);
+    static PyGeCurve3d          convertAcDbCurveToGelibCurve1(const PyDbCurve& dbCurve);
+    static PyGeCurve3d          convertAcDbCurveToGelibCurve2(const PyDbCurve& dbCurve, const AcGeTol& tol);
+    static PyDbCurve            convertGelibCurveToAcDbCurve1(const PyGeCurve3d& geCurve);
+    static PyDbCurve            convertGelibCurveToAcDbCurve2(const PyGeCurve3d& geCurve, AcGeVector3d& normal);
+    static PyDbCurve            convertGelibCurveToAcDbCurve3(const PyGeCurve3d& geCurve, AcGeVector3d& normal, const AcGeTol& tol);
+    static PyDbObjectId         createViewByViewport(PyDbDatabase& pDb,const PyDbObjectId& viewportId, const std::string& name,const std::string& categoryName,const PyDbObjectId& labelBlockId);
+    static Acad::ErrorStatus    detachXref(PyDbDatabase& pHostDb, const PyDbObjectId& xrefBlkId);
+    static int                  dictAdd(const PyDbObjectId& dictname, const std::string& symname, const PyDbObjectId& newobj);
+    static boost::python::list  dictNext(const PyDbObjectId& dictname, int rewind);
+    static int                  dictRemove(const PyDbObjectId& dictname,const std::string& symname);
+    static int                  dictRename(const PyDbObjectId& dictname, const std::string& symname, const std::string& newsym);
+    static boost::python::list  dictSearch(const PyDbObjectId& dictname, const std::string& symname, int setnext);
+    static bool                 displayPreviewFromDwg(const std::string& pszDwgfilename, HWND hwnd);
+
+
     static bool                 entDel(const PyDbObjectId& id);
     static boost::python::list  entGet(const PyDbObjectId& id);
     static PyDbObjectId         entLast();
