@@ -19,7 +19,7 @@ def OnPyLoadDwg():
     print("\nOnPyLoadDwg")
 
 def OnPyUnloadDwg():
-   print("\nOnPyUnloadDwg")
+    print("\nOnPyUnloadDwg")
    
 #command to launch the dialog
 def PyRxCmd_wxpyxrc():
