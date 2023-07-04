@@ -6,7 +6,6 @@ matplotlib.use('WXAgg')
 from matplotlib.backends.backend_wxagg import FigureCanvasWxAgg as FigureCanvas
 from matplotlib.figure import Figure
 
-import PyRxApp
 import PyRx
 import PyGe
 import PyGi
@@ -23,7 +22,7 @@ def PyRxCmd_wxpy():
             print(dlg.text1.GetValue())
             print(dlg.text2.GetValue())
     except Exception as err:
-        PyRxApp.Printf(err)
+        print(err)
 
         
 class CanvasPanel(wx.Panel):

@@ -5,7 +5,6 @@ import win32api
 import win32gui
 import win32con
 
-import PyRxApp# = all the global methods like acutPrintf,
 import PyRx# = Runtime runtime
 import PyGe# = Geometry
 import PyGi# = Graphics interface
