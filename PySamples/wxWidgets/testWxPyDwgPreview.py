@@ -6,6 +6,8 @@ import PyAp
 import PyEd
 import wx
 
+#note this fails!
+
 print("added command = wxpypr")
 
 
