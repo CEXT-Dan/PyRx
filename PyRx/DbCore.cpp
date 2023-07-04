@@ -229,9 +229,12 @@ boost::python::list DbCore::dictSearch(const PyDbObjectId& dictname, const std::
     return resbufToList(pBuf.get());
 }
 
-bool DbCore::displayPreviewFromDwg(const std::string& pszDwgfilename, HWND hwnd)
+bool DbCore::displayPreviewFromDwg(const std::string& pszDwgfilename, int64_t hwnd)
 {
-    return acdbDisplayPreviewFromDwg(utf8_to_wstr(pszDwgfilename).c_str(), CWnd::FromHandle(hwnd));
+    CWnd* wnd = CWnd::FromHandle((HWND)hwnd);
+    if (wnd == nullptr)
+        return false;
+    return acdbDisplayPreviewFromDwg(utf8_to_wstr(pszDwgfilename).c_str(), wnd);
 }
 
 bool DbCore::entDel(const PyDbObjectId& id)
