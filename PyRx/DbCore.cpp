@@ -231,10 +231,8 @@ boost::python::list DbCore::dictSearch(const PyDbObjectId& dictname, const std::
 
 bool DbCore::displayPreviewFromDwg(const std::string& pszDwgfilename, int64_t hwnd)
 {
-    CWnd* wnd = CWnd::FromHandle((HWND)hwnd);
-    if (wnd == nullptr)
-        return false;
-    return acdbDisplayPreviewFromDwg(utf8_to_wstr(pszDwgfilename).c_str(), wnd);
+    HWND _hwnd = (HWND)hwnd;
+    return acdbDisplayPreviewFromDwg(utf8_to_wstr(pszDwgfilename).c_str(), _hwnd);
 }
 
 bool DbCore::entDel(const PyDbObjectId& id)
