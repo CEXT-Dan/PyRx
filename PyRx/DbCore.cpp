@@ -36,6 +36,19 @@ void makeDbCoreWrapper()
         .def("attachXref", &DbCore::attachXref).staticmethod("attachXref")
         .def("bindXrefs", &DbCore::bindXrefs1)
         .def("bindXrefs", &DbCore::bindXrefs2).staticmethod("bindXrefs")
+        .def("convertAcDbCurveToGelibCurve", &DbCore::convertAcDbCurveToGelibCurve1)
+        .def("convertAcDbCurveToGelibCurve", &DbCore::convertAcDbCurveToGelibCurve2).staticmethod("convertAcDbCurveToGelibCurve")
+        .def("convertGelibCurveToAcDbCurve", &DbCore::convertGelibCurveToAcDbCurve1)
+        .def("convertGelibCurveToAcDbCurve", &DbCore::convertGelibCurveToAcDbCurve2)
+        .def("convertGelibCurveToAcDbCurve", &DbCore::convertGelibCurveToAcDbCurve3).staticmethod("convertGelibCurveToAcDbCurve")
+        .def("createViewByViewport", &DbCore::createViewByViewport).staticmethod("createViewByViewport")
+        .def("detachXref", &DbCore::detachXref).staticmethod("detachXref")
+        .def("dictAdd", &DbCore::dictAdd).staticmethod("dictAdd")
+        .def("dictNext", &DbCore::dictNext).staticmethod("dictNext")
+        .def("dictRemove", &DbCore::dictRemove).staticmethod("dictRemove")
+        .def("dictRename", &DbCore::dictRename).staticmethod("dictRename")
+        .def("dictSearch", &DbCore::dictSearch).staticmethod("dictSearch")
+        .def("displayPreviewFromDwg", &DbCore::displayPreviewFromDwg).staticmethod("displayPreviewFromDwg")
 
         .def("entGet", &DbCore::entGet).staticmethod("entGet")
         .def("entDel", &DbCore::entDel).staticmethod("entDel")
@@ -92,12 +105,12 @@ Acad::ErrorStatus DbCore::assignGelibCurveToAcDbCurve1(const PyGeCurve3d& geCurv
 
 Acad::ErrorStatus DbCore::assignGelibCurveToAcDbCurve2(const PyGeCurve3d& geCurve, PyDbCurve& pDbCurve, AcGeVector3d& normal)
 {
-    return acdbAssignGelibCurveToAcDbCurve(*geCurve.impObj(), pDbCurve.impObj(), &normal);
+    return acdbAssignGelibCurveToAcDbCurve(*geCurve.impObj(), pDbCurve.impObj(), std::addressof(normal));
 }
 
 Acad::ErrorStatus DbCore::assignGelibCurveToAcDbCurve3(const PyGeCurve3d& geCurve, PyDbCurve& pDbCurve, AcGeVector3d& normal, const AcGeTol& tol)
 {
-    return acdbAssignGelibCurveToAcDbCurve(*geCurve.impObj(), pDbCurve.impObj(), &normal, tol);
+    return acdbAssignGelibCurveToAcDbCurve(*geCurve.impObj(), pDbCurve.impObj(), std::addressof(normal), tol);
 }
 
 Acad::ErrorStatus DbCore::attachXref(PyDbDatabase& pHostDb, const std::string& pFilename, const std::string& pBlockName, PyDbObjectId& xrefBlkId)
@@ -118,6 +131,107 @@ Acad::ErrorStatus DbCore::bindXrefs2(PyDbDatabase& pHostDb, const boost::python:
     auto ids = PyListToObjectIdArray(xrefBlkIds);
     return acdbBindXrefs(pHostDb.impObj(), ids, bInsertBind, bAllowUnresolved, bInsertBind);
 #endif
+}
+
+PyGeCurve3d DbCore::convertAcDbCurveToGelibCurve1(const PyDbCurve& dbCurve)
+{
+    AcGeCurve3d* pcurve;
+    if (auto es = acdbConvertAcDbCurveToGelibCurve(dbCurve.impObj(), pcurve); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return PyGeCurve3d(pcurve);
+}
+
+PyGeCurve3d DbCore::convertAcDbCurveToGelibCurve2(const PyDbCurve& dbCurve, const AcGeTol& tol)
+{
+    AcGeCurve3d* pcurve = nullptr;
+    if (auto es = acdbConvertAcDbCurveToGelibCurve(dbCurve.impObj(), pcurve, tol); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return PyGeCurve3d(pcurve);
+}
+
+PyDbCurve DbCore::convertGelibCurveToAcDbCurve1(const PyGeCurve3d& geCurve)
+{
+    AcDbCurve* pcurve = nullptr;
+    if (auto es = acdbConvertGelibCurveToAcDbCurve(*geCurve.impObj(), pcurve); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return PyDbCurve(pcurve, true);
+}
+
+PyDbCurve DbCore::convertGelibCurveToAcDbCurve2(const PyGeCurve3d& geCurve, AcGeVector3d& normal)
+{
+    AcDbCurve* pcurve = nullptr;
+    if (auto es = acdbConvertGelibCurveToAcDbCurve(*geCurve.impObj(), pcurve, std::addressof(normal)); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return PyDbCurve(pcurve, true);
+}
+
+PyDbCurve DbCore::convertGelibCurveToAcDbCurve3(const PyGeCurve3d& geCurve, AcGeVector3d& normal, const AcGeTol& tol)
+{
+    AcDbCurve* pcurve = nullptr;
+    if (auto es = acdbConvertGelibCurveToAcDbCurve(*geCurve.impObj(), pcurve, std::addressof(normal), tol); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return PyDbCurve(pcurve, true);
+}
+
+PyDbObjectId DbCore::createViewByViewport(PyDbDatabase& pDb, const PyDbObjectId& viewportId, const std::string& name, const std::string& categoryName, const PyDbObjectId& labelBlockId)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    PyDbObjectId view;
+    if (auto es = acdbCreateViewByViewport(pDb.impObj(), viewportId.m_id, utf8_to_wstr(name).c_str(), utf8_to_wstr(categoryName).c_str(), labelBlockId.m_id, view.m_id); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return view;
+#endif
+}
+
+Acad::ErrorStatus DbCore::detachXref(PyDbDatabase& pHostDb, const PyDbObjectId& xrefBlkId)
+{
+    return acdbDetachXref(pHostDb.impObj(), xrefBlkId.m_id);
+}
+
+int DbCore::dictAdd(const PyDbObjectId& dictname, const std::string& symname, const PyDbObjectId& newobj)
+{
+    ads_name ads_dictname = { 0 };
+    acdbGetAdsName(ads_dictname, dictname.m_id);
+    ads_name ads_newobj = { 0 };
+    acdbGetAdsName(ads_newobj, dictname.m_id);
+    return acdbDictAdd(ads_dictname, utf8_to_wstr(symname).c_str(), ads_newobj);
+}
+
+boost::python::list DbCore::dictNext(const PyDbObjectId& dictname, int rewind)
+{
+    ads_name ads_dictname = { 0 };
+    acdbGetAdsName(ads_dictname, dictname.m_id);
+    AcResBufPtr pBuf(acdbDictNext(ads_dictname, rewind));
+    return resbufToList(pBuf.get());
+}
+
+int DbCore::dictRemove(const PyDbObjectId& dictname, const std::string& symname)
+{
+    ads_name ads_dictname = { 0 };
+    acdbGetAdsName(ads_dictname, dictname.m_id);
+    return acdbDictRemove(ads_dictname, utf8_to_wstr(symname).c_str());
+}
+
+int DbCore::dictRename(const PyDbObjectId& dictname, const std::string& symname, const std::string& newsym)
+{
+    ads_name ads_dictname = { 0 };
+    acdbGetAdsName(ads_dictname, dictname.m_id);
+    return acdbDictRename(ads_dictname, utf8_to_wstr(symname).c_str(), utf8_to_wstr(newsym).c_str());
+}
+
+boost::python::list DbCore::dictSearch(const PyDbObjectId& dictname, const std::string& symname, int setnext)
+{
+    ads_name ads_dictname = { 0 };
+    acdbGetAdsName(ads_dictname, dictname.m_id);
+    AcResBufPtr pBuf(acdbDictSearch(ads_dictname, utf8_to_wstr(symname).c_str(), setnext));
+    return resbufToList(pBuf.get());
+}
+
+bool DbCore::displayPreviewFromDwg(const std::string& pszDwgfilename, HWND hwnd)
+{
+    return acdbDisplayPreviewFromDwg(utf8_to_wstr(pszDwgfilename).c_str(), CWnd::FromHandle(hwnd));
 }
 
 bool DbCore::entDel(const PyDbObjectId& id)
@@ -216,7 +330,7 @@ boost::python::list DbCore::resbufTest(const boost::python::list& list)
 bool DbCore::ucs2Wcs1(const AcGePoint3d& p, AcGePoint3d& q)
 {
     ads_point pnt;
-    bool flag = acdbUcs2Wcs(asDblArray(p), pnt,false);
+    bool flag = acdbUcs2Wcs(asDblArray(p), pnt, false);
     q = asPnt3d(pnt);
     return flag;
 }
