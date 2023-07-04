@@ -229,10 +229,14 @@ boost::python::list DbCore::dictSearch(const PyDbObjectId& dictname, const std::
     return resbufToList(pBuf.get());
 }
 
-bool DbCore::displayPreviewFromDwg(const std::string& pszDwgfilename, int64_t hwnd)
+bool DbCore::displayPreviewFromDwg(const std::string& pszDwgfilename, UINT_PTR hwnd)
 {
-    HWND _hwnd = (HWND)hwnd;
-    return acdbDisplayPreviewFromDwg(utf8_to_wstr(pszDwgfilename).c_str(), _hwnd);
+    CWnd* wnd = CWnd::FromHandle((HWND)hwnd);
+    if (wnd != nullptr)
+    {
+        return acdbDisplayPreviewFromDwg(utf8_to_wstr(pszDwgfilename).c_str(), wnd->GetSafeHwnd());
+    }
+    return 0;
 }
 
 bool DbCore::entDel(const PyDbObjectId& id)

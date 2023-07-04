@@ -33,7 +33,7 @@ public:
     static int                  dictRemove(const PyDbObjectId& dictname,const std::string& symname);
     static int                  dictRename(const PyDbObjectId& dictname, const std::string& symname, const std::string& newsym);
     static boost::python::list  dictSearch(const PyDbObjectId& dictname, const std::string& symname, int setnext);
-    static bool                 displayPreviewFromDwg(const std::string& pszDwgfilename, int64_t hwnd);
+    static bool                 displayPreviewFromDwg(const std::string& pszDwgfilename, UINT_PTR hwnd);
 
 
     static bool                 entDel(const PyDbObjectId& id);

@@ -36,7 +36,7 @@ public:
     Adesk::Int16        cDynDisplayMode() const;
     double              celtscale() const;
     PyDbObjectId        celtype() const;
-    AcDb::LineWeight    celweight() const; //TODO:: add  AcDb::LineWeight enum
+    AcDb::LineWeight    celweight() const; 
     double              chamfera() const;
     double              chamferb() const;
     double              chamferc() const;
@@ -444,7 +444,7 @@ public:
     PyDbObjectId		textstyle() const;
     PyDbObjectId		textStyleTableId() const;
     double				thickness() const;
-    //void* thumbnailBitmap() const maybe  //TODO:
+    //boost::python::object thumbnailBitmap() const;
     //Acad::ErrorStatus thumbnailImage(Atil::Image*& pPreviewImage) const; probably never
     bool				tilemode() const;
     Adesk::UInt8		tileModeLightSynch() const;
