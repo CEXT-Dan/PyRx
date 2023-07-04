@@ -1,7 +1,6 @@
 import os
 import wx
 
-import PyRxApp# = all the global methods like acutPrintf,
 import PyRx# = Runtime runtime
 import PyGe# = Geometry
 import PyGi# = Graphics interface
@@ -10,17 +9,17 @@ import PyAp# = application, document classes services
 import PyEd# = editor
 
 def OnPyInitApp():
-    PyRxApp.Printf("\nOnPyInitApp")
+    print(err)("\nOnPyInitApp")
     print("Added command 'wxpy'")
 
 def OnPyUnloadApp():
-   PyRxApp.Printf("\nOnPyUnloadApp")
+   print("\nOnPyUnloadApp")
 
 def OnPyLoadDwg():
-   PyRxApp.Printf("\nOnPyLoadDwg")
+   print("\nOnPyLoadDwg")
 
 def OnPyUnloadDwg():
-   PyRxApp.Printf("\nOnPyUnloadDwg")
+   print("\nOnPyUnloadDwg")
 
 #command to launch the dialog
 def PyRxCmd_wxpy():
@@ -34,7 +33,7 @@ def PyRxCmd_wxpy():
             print(dlg.text2.GetValue())
        
     except Exception as err:
-        PyRxApp.Printf(err)
+        print(err)
     finally:
         # explicitly cause the dialog to destroy itself
         dlg.Destroy()
