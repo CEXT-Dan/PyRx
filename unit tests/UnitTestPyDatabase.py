@@ -13,6 +13,21 @@ print("testname = pydbtest")
 
 class TestDatabase(unittest.TestCase):
 
+    def test_dbcore_entmake(self):
+        flag = Db.Core.entMake([(0 , "LINE"),(10, Ge.Point3d(0, 0, 0)),(11, Ge.Point3d(100, 100, 0))])
+        self.assertEqual(flag,True)
+        lastid = Db.Core.entLast()
+        entlist = Db.Core.entGet(lastid)
+        for i, x in enumerate(entlist):
+            if x[0] == 10:
+                entlist[i] = (10, Ge.Point3d(0,100,0))
+        Db.Core.entMod(entlist)
+        entlist2 = Db.Core.entGet(lastid)
+        for x in entlist2:
+            if x[0] == 10:
+                self.assertEqual(x[1],Ge.Point3d(0,100,0))
+
+        
     def test_dbcore_strconversions(self):
         flag = Ed.Core.setVar("DIMZIN", 0)
         self.assertEqual(flag,True)
@@ -55,8 +70,8 @@ class TestDatabase(unittest.TestCase):
         sus = Db.SymUtilServices()
         self.assertEqual(sus.blockModelSpaceId(db), db.modelSpaceId())
         self.assertEqual(sus.blockModelSpaceName(), "*Model_Space")
-        self.assertEqual(sus.hasVerticalBar("str|str"), True)
-        self.assertEqual(sus.hasVerticalBar("strstr"), False)
+        self.assertEqual(sus.hasVerticalBar("str|str"), True)#fails in BricsCAD
+        self.assertEqual(sus.hasVerticalBar("strstr"), False)#fails in BricsCAD
         self.assertEqual(sus.compareSymbolName("strstr", "strstr"),0)
         self.assertEqual(sus.compareSymbolName("strstr", "ztrstr"),-1)
 
