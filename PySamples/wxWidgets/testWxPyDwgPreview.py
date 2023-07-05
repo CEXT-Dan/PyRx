@@ -20,30 +20,23 @@ def PyRxCmd_wxpypr():
 class TestDialog(wx.Dialog):
     def __init__(
             self, parent, id, title, size, pos=wx.DefaultPosition,
-            style=wx.DEFAULT_DIALOG_STYLE, name='dialog'):
+            style=wx.DEFAULT_DIALOG_STYLE | wx.FULL_REPAINT_ON_RESIZE, name='dialog'):
 
         wx.Dialog.__init__(self)
         self.Create(parent, id, title, pos, size, style, name)
         self.Bind(wx.EVT_INIT_DIALOG, self.OnInitDialog)
+        self.previewBox = wx.StaticBox(self, -1, "Preview")
+        self.previewBox.SetSize(wx.Size(400, 200))
 
-        self.sbox = wx.StaticBox(self,-1,"Preview")
-        self.sbox.SetSize(wx.Size(400, 200))  
-        self.timer = wx.Timer(self)
-        self.Bind(wx.EVT_TIMER, self.OnTimer, self.timer)
-       
-    def OnTimer(self, event):
-        self.timer.Stop()
-        self.setPreview()
-        
-    def setPreview(self):
-        PyDb.Core.displayPreviewFromDwg("E:\\Floor Plan Sample.dwg",  self.sbox.GetHandle())
+    def setPreview(self, path):
+        self.dwgPath = path
+        self.previewBox.Bind(wx.EVT_IDLE, self.OnShowPreview)
+
+    def OnShowPreview(self, event):
+        PyDb.Core.displayPreviewFromDwg(self.dwgPath, self.previewBox.GetHandle())
+        self.previewBox.Unbind(wx.EVT_IDLE)
 
     def OnInitDialog(self, event):
         PyAp.Application.setTitleThemeDark(self.GetHandle())
         PyAp.Application.applyHostIcon(self.GetHandle())
-        self.timer.Start(10)
-
-
-
-
-        
+        self.setPreview("E:\\Floor Plan Sample.dwg")
