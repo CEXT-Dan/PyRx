@@ -36,6 +36,7 @@ void makeDbCoreWrapper()
         .def("attachXref", &DbCore::attachXref).staticmethod("attachXref")
         .def("bindXrefs", &DbCore::bindXrefs1)
         .def("bindXrefs", &DbCore::bindXrefs2).staticmethod("bindXrefs")
+        .def("clearSetupForLayouts", &DbCore::clearSetupForLayouts).staticmethod("clearSetupForLayouts")
         .def("convertAcDbCurveToGelibCurve", &DbCore::convertAcDbCurveToGelibCurve1)
         .def("convertAcDbCurveToGelibCurve", &DbCore::convertAcDbCurveToGelibCurve2).staticmethod("convertAcDbCurveToGelibCurve")
         .def("convertGelibCurveToAcDbCurve", &DbCore::convertGelibCurveToAcDbCurve1)
@@ -49,13 +50,22 @@ void makeDbCoreWrapper()
         .def("dictRename", &DbCore::dictRename).staticmethod("dictRename")
         .def("dictSearch", &DbCore::dictSearch).staticmethod("dictSearch")
         .def("displayPreviewFromDwg", &DbCore::displayPreviewFromDwg).staticmethod("displayPreviewFromDwg")
-
+        .def("disToF", &DbCore::disToF).staticmethod("disToF")
+        .def("doSetupForLayouts", &DbCore::doSetupForLayouts).staticmethod("doSetupForLayouts")
+        .def("dwkFileExists", &DbCore::dwkFileExists).staticmethod("dwkFileExists")
+        .def("dxfOutAs2000", &DbCore::dxfOutAs2000).staticmethod("dxfOutAs2000")
+        .def("dxfOutAs2004", &DbCore::dxfOutAs2004).staticmethod("dxfOutAs2004")
+        .def("dxfOutAsR12", &DbCore::dxfOutAsR12).staticmethod("dxfOutAsR12")
         .def("entGet", &DbCore::entGet).staticmethod("entGet")
         .def("entDel", &DbCore::entDel).staticmethod("entDel")
         .def("entLast", &DbCore::entLast).staticmethod("entLast")
         .def("entMod", &DbCore::entMod).staticmethod("entMod")
         .def("entNext", &DbCore::entNext).staticmethod("entNext")
         .def("entUpd", &DbCore::entUpd).staticmethod("entUpd")
+        .def("entMake", &DbCore::entMake).staticmethod("entMake")
+        .def("entMakeX", &DbCore::entMakeX).staticmethod("entMakeX")
+
+
         .def("openDbObject", &DbCore::openDbObject, DbCoreDocStrings::DbCoreopenDbObject).staticmethod("openDbObject")
         .def("openDbEntity", &DbCore::openDbEntity).staticmethod("openDbEntity")
         .def("regApp", &DbCore::regApp).staticmethod("regApp")
@@ -118,18 +128,27 @@ Acad::ErrorStatus DbCore::attachXref(PyDbDatabase& pHostDb, const std::string& p
     return acdbAttachXref(pHostDb.impObj(), utf8_to_wstr(pFilename).c_str(), utf8_to_wstr(pBlockName).c_str(), xrefBlkId.m_id);
 }
 
-Acad::ErrorStatus DbCore::bindXrefs1(PyDbDatabase& pHostDb, const boost::python::list xrefBlkIds, const bool bInsertBind)
+Acad::ErrorStatus DbCore::bindXrefs1(PyDbDatabase& pHostDb, const boost::python::list& xrefBlkIds, const bool bInsertBind)
 {
     return bindXrefs2(pHostDb, xrefBlkIds, bInsertBind, false, true);
 }
 
-Acad::ErrorStatus DbCore::bindXrefs2(PyDbDatabase& pHostDb, const boost::python::list xrefBlkIds, const bool bInsertBind, const bool bAllowUnresolved, const bool bQuiet)
+Acad::ErrorStatus DbCore::bindXrefs2(PyDbDatabase& pHostDb, const boost::python::list& xrefBlkIds, const bool bInsertBind, const bool bAllowUnresolved, const bool bQuiet)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
     auto ids = PyListToObjectIdArray(xrefBlkIds);
     return acdbBindXrefs(pHostDb.impObj(), ids, bInsertBind, bAllowUnresolved, bInsertBind);
+#endif
+}
+
+Acad::ErrorStatus DbCore::clearSetupForLayouts(UINT_PTR contextHandle)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return acdbClearSetupForLayouts(contextHandle);
 #endif
 }
 
@@ -190,13 +209,13 @@ Acad::ErrorStatus DbCore::detachXref(PyDbDatabase& pHostDb, const PyDbObjectId& 
     return acdbDetachXref(pHostDb.impObj(), xrefBlkId.m_id);
 }
 
-int DbCore::dictAdd(const PyDbObjectId& dictname, const std::string& symname, const PyDbObjectId& newobj)
+bool DbCore::dictAdd(const PyDbObjectId& dictname, const std::string& symname, const PyDbObjectId& newobj)
 {
     ads_name ads_dictname = { 0 };
     acdbGetAdsName(ads_dictname, dictname.m_id);
     ads_name ads_newobj = { 0 };
     acdbGetAdsName(ads_newobj, dictname.m_id);
-    return acdbDictAdd(ads_dictname, utf8_to_wstr(symname).c_str(), ads_newobj);
+    return acdbDictAdd(ads_dictname, utf8_to_wstr(symname).c_str(), ads_newobj) == RTNORM;
 }
 
 boost::python::list DbCore::dictNext(const PyDbObjectId& dictname, int rewind)
@@ -207,18 +226,18 @@ boost::python::list DbCore::dictNext(const PyDbObjectId& dictname, int rewind)
     return resbufToList(pBuf.get());
 }
 
-int DbCore::dictRemove(const PyDbObjectId& dictname, const std::string& symname)
+bool DbCore::dictRemove(const PyDbObjectId& dictname, const std::string& symname)
 {
     ads_name ads_dictname = { 0 };
     acdbGetAdsName(ads_dictname, dictname.m_id);
-    return acdbDictRemove(ads_dictname, utf8_to_wstr(symname).c_str());
+    return acdbDictRemove(ads_dictname, utf8_to_wstr(symname).c_str()) == RTNORM;
 }
 
-int DbCore::dictRename(const PyDbObjectId& dictname, const std::string& symname, const std::string& newsym)
+bool DbCore::dictRename(const PyDbObjectId& dictname, const std::string& symname, const std::string& newsym)
 {
     ads_name ads_dictname = { 0 };
     acdbGetAdsName(ads_dictname, dictname.m_id);
-    return acdbDictRename(ads_dictname, utf8_to_wstr(symname).c_str(), utf8_to_wstr(newsym).c_str());
+    return acdbDictRename(ads_dictname, utf8_to_wstr(symname).c_str(), utf8_to_wstr(newsym).c_str()) == RTNORM;
 }
 
 boost::python::list DbCore::dictSearch(const PyDbObjectId& dictname, const std::string& symname, int setnext)
@@ -233,10 +252,70 @@ bool DbCore::displayPreviewFromDwg(const std::string& pszDwgfilename, UINT_PTR h
 {
     CWnd* wnd = CWnd::FromHandle((HWND)hwnd);
     if (wnd != nullptr)
-    {
         return acdbDisplayPreviewFromDwg(utf8_to_wstr(pszDwgfilename).c_str(), wnd->GetSafeHwnd());
-    }
-    return 0;
+    return false;
+}
+
+double DbCore::disToF(const std::string& str, int unit)
+{
+    double result = 0;
+    if (auto res = acdbDisToF(utf8_to_wstr(str).c_str(), unit, &result); res != RTNORM)
+        throw PyAcadErrorStatus(eInvalidInput);
+    return result;
+}
+
+UINT_PTR DbCore::doSetupForLayouts(PyDbDatabase& pDatabase)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    Adesk::ULongPtr contextHandle = 0;
+    if (auto es = acdbDoSetupForLayouts(pDatabase.impObj(), contextHandle); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return contextHandle;
+#endif
+}
+
+bool DbCore::dwkFileExists(const std::string& pszDwgfilename)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    return acdbDwkFileExists(utf8_to_wstr(pszDwgfilename).c_str());
+#endif
+}
+
+Acad::ErrorStatus DbCore::dxfOutAs2000(PyDbDatabase& pDb, const std::string& fileName, int precision)
+{
+    return acdbDxfOutAs2000(pDb.impObj(), utf8_to_wstr(fileName).c_str(), precision);
+}
+
+Acad::ErrorStatus DbCore::dxfOutAs2004(PyDbDatabase& pDb, const std::string& fileName, int precision)
+{
+    return acdbDxfOutAs2004(pDb.impObj(), utf8_to_wstr(fileName).c_str(), precision);
+}
+
+Acad::ErrorStatus DbCore::dxfOutAsR12(PyDbDatabase& pDb, const std::string& fileName, int precision)
+{
+    return acdbDxfOutAsR12(pDb.impObj(), utf8_to_wstr(fileName).c_str(), precision);
+}
+
+bool DbCore::entMake(const boost::python::list& rb)
+{
+    AcResBufPtr pBuf(listToResbuf(rb));
+    return acdbEntMake(pBuf.get()) == RTNORM;
+}
+
+PyDbObjectId DbCore::entMakeX(const boost::python::list& rb)
+{
+    ads_name name = { 0 };
+    AcResBufPtr pBuf(listToResbuf(rb));
+    if (auto es = acdbEntMakeX(pBuf.get(), name); es != RTNORM)
+        throw PyAcadErrorStatus(eInvalidInput);
+    PyDbObjectId id;
+    if(auto es = acdbGetObjectId(id.m_id, name); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return id;
 }
 
 bool DbCore::entDel(const PyDbObjectId& id)

@@ -11955,6 +11955,12 @@ bindXrefs( (Database)arg1, (list)arg2, (bool)arg3, (bool)arg4, (bool)arg5) -> Er
     C++ signature :
         enum Acad::ErrorStatus bindXrefs(class PyDbDatabase {lvalue},class boost::python::list,bool,bool,bool)'''
     ...
+    def clearSetupForLayouts (self, *args, **kwargs)-> ErrorStatus :
+      '''clearSetupForLayouts( (int)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus clearSetupForLayouts(unsigned __int64)'''
+    ...
     def convertAcDbCurveToGelibCurve (self, *args, **kwargs)-> Curve3d :
       '''convertAcDbCurveToGelibCurve( (Curve)arg1) -> Curve3d :
 
@@ -11994,11 +12000,11 @@ convertGelibCurveToAcDbCurve( (Curve3d)arg1, (Vector3d)arg2, (Tol)arg3) -> Curve
     C++ signature :
         enum Acad::ErrorStatus detachXref(class PyDbDatabase {lvalue},class PyDbObjectId)'''
     ...
-    def dictAdd (self, *args, **kwargs)-> int :
-      '''dictAdd( (ObjectId)arg1, (str)arg2, (ObjectId)arg3) -> int :
+    def dictAdd (self, *args, **kwargs)-> bool :
+      '''dictAdd( (ObjectId)arg1, (str)arg2, (ObjectId)arg3) -> bool :
 
     C++ signature :
-        int dictAdd(class PyDbObjectId,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
+        bool dictAdd(class PyDbObjectId,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId)'''
     ...
     def dictNext (self, *args, **kwargs)-> list :
       '''dictNext( (ObjectId)arg1, (int)arg2) -> list :
@@ -12006,17 +12012,17 @@ convertGelibCurveToAcDbCurve( (Curve3d)arg1, (Vector3d)arg2, (Tol)arg3) -> Curve
     C++ signature :
         class boost::python::list dictNext(class PyDbObjectId,int)'''
     ...
-    def dictRemove (self, *args, **kwargs)-> int :
-      '''dictRemove( (ObjectId)arg1, (str)arg2) -> int :
+    def dictRemove (self, *args, **kwargs)-> bool :
+      '''dictRemove( (ObjectId)arg1, (str)arg2) -> bool :
 
     C++ signature :
-        int dictRemove(class PyDbObjectId,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        bool dictRemove(class PyDbObjectId,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def dictRename (self, *args, **kwargs)-> int :
-      '''dictRename( (ObjectId)arg1, (str)arg2, (str)arg3) -> int :
+    def dictRename (self, *args, **kwargs)-> bool :
+      '''dictRename( (ObjectId)arg1, (str)arg2, (str)arg3) -> bool :
 
     C++ signature :
-        int dictRename(class PyDbObjectId,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        bool dictRename(class PyDbObjectId,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def dictSearch (self, *args, **kwargs)-> list :
       '''dictSearch( (ObjectId)arg1, (str)arg2, (int)arg3) -> list :
@@ -12024,11 +12030,47 @@ convertGelibCurveToAcDbCurve( (Curve3d)arg1, (Vector3d)arg2, (Tol)arg3) -> Curve
     C++ signature :
         class boost::python::list dictSearch(class PyDbObjectId,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
     ...
-    def displayPreviewFromDwg (self, *args, **kwargs)-> bool :
-      '''displayPreviewFromDwg( (str)arg1, (object)arg2) -> bool :
+    def disToF (self, *args, **kwargs)-> float :
+      '''disToF( (str)arg1, (int)arg2) -> float :
 
     C++ signature :
-        bool displayPreviewFromDwg(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,struct HWND__ * __ptr64)'''
+        double disToF(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    ...
+    def displayPreviewFromDwg (self, *args, **kwargs)-> bool :
+      '''displayPreviewFromDwg( (str)arg1, (int)arg2) -> bool :
+
+    C++ signature :
+        bool displayPreviewFromDwg(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,unsigned __int64)'''
+    ...
+    def doSetupForLayouts (self, *args, **kwargs)-> int :
+      '''doSetupForLayouts( (Database)arg1) -> int :
+
+    C++ signature :
+        unsigned __int64 doSetupForLayouts(class PyDbDatabase {lvalue})'''
+    ...
+    def dwkFileExists (self, *args, **kwargs)-> bool :
+      '''dwkFileExists( (str)arg1) -> bool :
+
+    C++ signature :
+        bool dwkFileExists(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def dxfOutAs2000 (self, *args, **kwargs)-> ErrorStatus :
+      '''dxfOutAs2000( (Database)arg1, (str)arg2, (int)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus dxfOutAs2000(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    ...
+    def dxfOutAs2004 (self, *args, **kwargs)-> ErrorStatus :
+      '''dxfOutAs2004( (Database)arg1, (str)arg2, (int)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus dxfOutAs2004(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    ...
+    def dxfOutAsR12 (self, *args, **kwargs)-> ErrorStatus :
+      '''dxfOutAsR12( (Database)arg1, (str)arg2, (int)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus dxfOutAsR12(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
     ...
     def ecs2Wcs (self, *args, **kwargs)-> bool :
       '''ecs2Wcs( (Point3d)arg1, (Vector3d)arg2, (Point3d)arg3) -> bool :
@@ -12058,6 +12100,18 @@ ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
 
     C++ signature :
         class PyDbObjectId entLast()'''
+    ...
+    def entMake (self, *args, **kwargs)-> bool :
+      '''entMake( (list)arg1) -> bool :
+
+    C++ signature :
+        bool entMake(class boost::python::list)'''
+    ...
+    def entMakeX (self, *args, **kwargs)-> ObjectId :
+      '''entMakeX( (list)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId entMakeX(class boost::python::list)'''
     ...
     def entMod (self, *args, **kwargs)-> bool :
       '''entMod( (list)arg1) -> bool :
