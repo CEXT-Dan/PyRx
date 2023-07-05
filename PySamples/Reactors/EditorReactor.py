@@ -1,5 +1,3 @@
-
-import PyRxApp 
 import PyRx
 import PyAp
 import PyGi
