@@ -32,10 +32,10 @@ class TestDialog(wx.Dialog):
         self.m_dwgpath = ""
         self.m_hasOnShowPreviewEvent = False #prevent reentry
         self.m_previewCtrl = xrc.XRCCTRL(self,'wxID_DWG_PREVIEW')
-        self.m_buttonBrowes = xrc.XRCCTRL(self,'wxID_BUTTON_BROWSE')
+        self.m_buttonBrowse = xrc.XRCCTRL(self,'wxID_BUTTON_BROWSE')
         self.m_textCtrl = xrc.XRCCTRL(self,'wxID_TEXTCTRL')
         
-        self.Bind(wx.EVT_BUTTON, self.OnBrowseButton,self.m_buttonBrowes)
+        self.Bind(wx.EVT_BUTTON, self.OnBrowseButton,self.m_buttonBrowse)
         self.Bind(wx.EVT_INIT_DIALOG, self.OnInitDialog)
         self.Bind(wx.EVT_SIZE, self.OnSize)
         
