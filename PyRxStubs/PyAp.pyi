@@ -1599,6 +1599,31 @@ updateCurrentPaper( (LayoutManager)arg1, (bool)arg2) -> None :
         void updateLayoutTabs(class PyApLayoutManager {lvalue})'''
     ...
 
+class PaletteSet:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+__init__( (object)arg1, (str)arg2, (str)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def add (self, *args, **kwargs)-> int :
+      '''add( (PaletteSet)arg1, (str)arg2, (int)arg3) -> int :
+
+    C++ signature :
+        int add(class PyCAdUiPaletteSet {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,unsigned __int64)'''
+    ...
+    def setVisible (self, *args, **kwargs)-> None :
+      '''setVisible( (PaletteSet)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setVisible(class PyCAdUiPaletteSet {lvalue},bool)'''
+    ...
+
 class ResourceOverride:
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
