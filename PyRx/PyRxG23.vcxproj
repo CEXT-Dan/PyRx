@@ -205,6 +205,7 @@
     <ClCompile Include="PyRxApp.cpp" />
     <ClCompile Include="PyRxObject.cpp" />
     <ClCompile Include="PyRxOverrule.cpp" />
+    <ClCompile Include="PyUiPalette.cpp" />
     <ClCompile Include="ResultBuffer.cpp" />
     <ClCompile Include="StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -293,6 +294,7 @@
     <ClInclude Include="PyRxApp.h" />
     <ClInclude Include="PyRxObject.h" />
     <ClInclude Include="PyRxOverrule.h" />
+    <ClInclude Include="PyUiPalette.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResultBuffer.h" />
     <ClInclude Include="RxPyString.h" />

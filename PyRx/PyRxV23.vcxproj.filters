@@ -253,6 +253,9 @@
     <ClCompile Include="PyEdUserInteraction.cpp">
       <Filter>Source Files\PyEd</Filter>
     </ClCompile>
+    <ClCompile Include="PyUiPalette.cpp">
+      <Filter>Source Files\PyAp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -509,6 +512,9 @@
     </ClInclude>
     <ClInclude Include="PyEdUserInteraction.h">
       <Filter>Header Files\PyEd</Filter>
+    </ClInclude>
+    <ClInclude Include="PyUiPalette.h">
+      <Filter>Header Files\PyAp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
