@@ -31,18 +31,21 @@ private:
 
 //---------------------------------------------------------------------
 //PyCAdUiPaletteSet
+void makePyCAdUiPaletteSetWrapper();
 class PyCAdUiPaletteSet
 {
 public:
     PyCAdUiPaletteSet(const std::string& name);
     PyCAdUiPaletteSet(const std::string& name, const std::string& guid);
 
-    void Add(const std::string& name, UINT_PTR panel);
+    int add(const std::string& name, boost::python::object& panel);
+    void setVisible(bool show);
+    void createChildren();
 
     PyCAdUiPaletteSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 private:
     std::shared_ptr<PyCAdUiPaletteSetImpl> m_pyImp;
-    std::vector< PyCAdUiPalette> m_children;
+    std::vector<PyCAdUiPalette> m_children;
 };
 
 
@@ -54,30 +57,26 @@ class PyCAdUiPaletteImpl : public CAdUiPalette
 
 public:
     PyCAdUiPaletteImpl();
-    PyCAdUiPaletteImpl(PyCAdUiPalette* bckPtr);
+    PyCAdUiPaletteImpl(PyCAdUiPalette* bckPtr, wxPanel* panel);
     virtual ~PyCAdUiPaletteImpl() override = default;
     DECLARE_MESSAGE_MAP();
     afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+    afx_msg void OnSize(UINT nType, int cx, int cy);
     PyCAdUiPalette* bckptr(const std::source_location& src = std::source_location::current()) const;
-
 private:
+    wxPanel* m_panel = nullptr;
     PyCAdUiPalette* m_bckPtr = nullptr;
 };
 
 
 //---------------------------------------------------------------------
 //PyCAdUiPalette
+void makePyCAdUiPaletteWrapper();
 class PyCAdUiPalette
 {
 public:
-    PyCAdUiPalette(const std::string& name, UINT_PTR panel);
-
-public:
-    CWnd* impWnd(const std::source_location& src = std::source_location::current());
+    PyCAdUiPalette(const std::string& name, wxPanel* panel);
     PyCAdUiPaletteImpl* impObj(const std::source_location& src = std::source_location::current()) const;
-
-    HWND panel() const;
 private:
-    HWND m_panel = 0;
     std::shared_ptr<PyCAdUiPaletteImpl> m_pyImp;
 };

@@ -6,6 +6,7 @@
 #include "PyApApplication.h"
 #include "PyDbTransactionManager.h"
 #include "PyApLayoutManager.h"
+#include "PyUiPalette.h"
 
 using namespace boost::python;
 
@@ -89,6 +90,7 @@ BOOST_PYTHON_MODULE(PyAp)
     makeAcApDocumentWrapper();
     makePyApDocManagerReactorWrapper();
     makePyApLayoutManagerWrapper();
+    makePyCAdUiPaletteSetWrapper();
 
     def("curDoc", curPyDoc);
 };

@@ -18,3 +18,5 @@
 /PyRxSetup/Debug
 /PyRxSetup/Release
 /PyRxStubs/genDocTest.py
+/PySamples/_doit.py
+/PySamples/_wxdoit.py
