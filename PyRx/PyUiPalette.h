@@ -15,7 +15,6 @@ public:
     PyCAdUiPaletteSetImpl();
     PyCAdUiPaletteSetImpl(PyCAdUiPaletteSet* bckPtr);
     virtual ~PyCAdUiPaletteSetImpl() override = default;
-
     DECLARE_MESSAGE_MAP();
     afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
     afx_msg void OnDestroy();
@@ -34,12 +33,35 @@ class PyCAdUiPaletteSet : public boost::python::wrapper<PyCAdUiPaletteSet>
 public:
     PyCAdUiPaletteSet(const std::string& name);
     PyCAdUiPaletteSet(const std::string& name, const std::string& guid);
-
-    int add(const std::string& name, boost::python::object& panel);
-    bool create();
-    void setVisible(bool show);
+public: //INTERNAL
     void createChildren();
+    bool create();
 
+public:
+    int         add(const std::string& name, boost::python::object& panel);
+    void        setVisible(bool show);
+    DWORD       getPaletteSetStyle();
+    void        setPaletteSetStyle(DWORD dwStyle);
+    bool        autoRollupStyle();
+    bool        propertiesMenuStyle();
+    bool        closeButtonStyle();
+    bool        singlePaletteTabStyle();
+    bool        useSinglePaletteTabNameStyle();
+    bool        editNameStyle();
+    bool        snapStyle();
+    bool        showRollupButtonStyle();
+    bool        showIconStyle();
+    std::string getName();
+    bool        setName(const std::string& name);
+    int         getOpacity() const;
+    bool        setOpacity(int nOpacity);
+    int         getRolloverOpacity() const;
+    bool        setRolloverOpacity(int nOpacity);
+    int         getActivePaletteTabIndex();
+    bool        setActivePalette(int nPaletteIndex);
+
+
+public: //INTERNAL
     PyCAdUiPaletteSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 private:
     std::shared_ptr<PyCAdUiPaletteSetImpl> m_pyImp;
