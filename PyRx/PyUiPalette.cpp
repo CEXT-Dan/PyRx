@@ -56,11 +56,12 @@ void makePyCAdUiPaletteSetWrapper()
 PyCAdUiPaletteSet::PyCAdUiPaletteSet(const std::string& name)
     : m_pyImp(nullptr)
 {
-    GUID id;
+    //TODO, test if this is the case!
+    //GUID id;
     m_pyImp.reset(new PyCAdUiPaletteSetImpl(this));
     impObj()->SetName(utf8_to_wstr(name).c_str());
-    HRESULT hr = CoCreateGuid(&id);
-    impObj()->SetToolID(&id);
+    //HRESULT hr = CoCreateGuid(&id);
+    //impObj()->SetToolID(&id);
 }
 
 PyCAdUiPaletteSet::PyCAdUiPaletteSet(const std::string& name, const std::string& guid)
@@ -72,7 +73,10 @@ PyCAdUiPaletteSet::PyCAdUiPaletteSet(const std::string& name, const std::string&
     CString sguid = utf8_to_wstr(guid).c_str();
     HRESULT hr = CLSIDFromString(sguid, (LPCLSID)&id);
     if (hr != S_OK)
+    {
         acutPrintf(_T("BAD GUID"));
+        return;
+    }
     impObj()->SetToolID(&id);
 }
 
@@ -88,8 +92,10 @@ int PyCAdUiPaletteSet::add(const std::string& name, boost::python::object& panel
     return 0;
 }
 
-void PyCAdUiPaletteSet::setVisible(bool show)
+bool PyCAdUiPaletteSet::create()
 {
+    if (m_created)
+        return true;
     CAcModuleResourceOverride resourceOverride;
     CRect rect(0, 0, 275, 500);
     impObj()->Create(
@@ -100,10 +106,14 @@ void PyCAdUiPaletteSet::setVisible(bool show)
         PSS_AUTO_ROLLUP | PSS_CLOSE_BUTTON
     );
     impObj()->EnableDocking(CBRS_ALIGN_LEFT | CBRS_ALIGN_RIGHT);
-
     createChildren();
+    m_created = true;
+    return m_created;
+}
 
-    if (impObj() != nullptr)
+void PyCAdUiPaletteSet::setVisible(bool show)
+{
+    if (impObj() != nullptr && create())
     {
         CMDIFrameWnd* pAcadFrame = acedGetAcadFrame();
         impObj()->RestoreControlBar();
@@ -115,8 +125,9 @@ void PyCAdUiPaletteSet::createChildren()
 {
     for (auto& child : m_children)
     {
-        child.impObj()->Create(WS_CHILD | WS_VISIBLE, impObj()->GetName(), impObj());
-        if (impObj()->AddPalette(m_children.back().impObj()) == -1)
+        if(child.impObj()->Create(WS_CHILD | WS_VISIBLE, child.impObj()->GetName(), impObj()) == FALSE)
+            acutPrintf(_T("Failed to Create palette: "));
+        if (impObj()->AddPalette(child.impObj()) == -1)
             acutPrintf(_T("Failed to add palette: "));
     }
 }
@@ -151,7 +162,8 @@ int PyCAdUiPaletteImpl::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
     if (CAdUiPalette::OnCreate(lpCreateStruct) == -1)
         return -1;
-    wxWindow* win = new wxWindow();//memleak?
+    CAcModuleResourceOverride resourceOverride;
+    wxWindow* win = new wxWindow();
     win->SetHWND((WXHWND)this->GetSafeHwnd());
     win->AdoptAttributesFromHWND();
     m_panel->Create(win);
@@ -164,7 +176,8 @@ void PyCAdUiPaletteImpl::OnSize(UINT nType, int cx, int cy)
     CRect rect;
     GetClientRect(rect);
     CAcModuleResourceOverride resourceOverride;
-    m_panel->SetSize(cx, cy);
+    wxRect _wxrect(rect.left, rect.top, rect.right, rect.bottom);
+    m_panel->SetSize(_wxrect, nType);
 }
 
 PyCAdUiPalette* PyCAdUiPaletteImpl::bckptr(const std::source_location& src /*= std::source_location::current()*/) const
