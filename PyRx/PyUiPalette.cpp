@@ -56,16 +56,20 @@ void makePyCAdUiPaletteSetWrapper()
 PyCAdUiPaletteSet::PyCAdUiPaletteSet(const std::string& name)
     : m_pyImp(nullptr)
 {
-    //TODO, test if this is the case!
-    //GUID id;
+    CAcModuleResourceOverride resourceOverride;
     m_pyImp.reset(new PyCAdUiPaletteSetImpl(this));
     impObj()->SetName(utf8_to_wstr(name).c_str());
-    //HRESULT hr = CoCreateGuid(&id);
-    //impObj()->SetToolID(&id);
+
+#ifdef NEVER  //TODO, test if this is the case!
+    GUID id;
+    HRESULT hr = CoCreateGuid(&id);
+    impObj()->SetToolID(&id);
+#endif
 }
 
 PyCAdUiPaletteSet::PyCAdUiPaletteSet(const std::string& name, const std::string& guid)
 {
+    CAcModuleResourceOverride resourceOverride;
     m_pyImp.reset(new PyCAdUiPaletteSetImpl(this));
     impObj()->SetName(utf8_to_wstr(name).c_str());
 
@@ -82,6 +86,7 @@ PyCAdUiPaletteSet::PyCAdUiPaletteSet(const std::string& name, const std::string&
 
 int PyCAdUiPaletteSet::add(const std::string& name, boost::python::object& panel)
 {
+    CAcModuleResourceOverride resourceOverride;
     if (wxPyWrappedPtr_TypeCheck(panel.ptr(), _T("wxPanel")))
     {
         wxPanel* pPanel = nullptr;
@@ -166,18 +171,25 @@ int PyCAdUiPaletteImpl::OnCreate(LPCREATESTRUCT lpCreateStruct)
     wxWindow* win = new wxWindow();
     win->SetHWND((WXHWND)this->GetSafeHwnd());
     win->AdoptAttributesFromHWND();
-    m_panel->Create(win);
+    panel()->Create(win);
     return 0;
 }
 
 void PyCAdUiPaletteImpl::OnSize(UINT nType, int cx, int cy)
 {
-    CAdUiPalette::OnSize(nType, cx, cy);
     CRect rect;
+    CAdUiPalette::OnSize(nType, cx, cy);
     GetClientRect(rect);
     CAcModuleResourceOverride resourceOverride;
     wxRect _wxrect(rect.left, rect.top, rect.right, rect.bottom);
-    m_panel->SetSize(_wxrect, nType);
+    panel()->SetSize(_wxrect, nType);
+}
+
+wxPanel* PyCAdUiPaletteImpl::panel(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_panel == nullptr)
+        throw PyNullObject(src);
+    return m_panel;
 }
 
 PyCAdUiPalette* PyCAdUiPaletteImpl::bckptr(const std::source_location& src /*= std::source_location::current()*/) const

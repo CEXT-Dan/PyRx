@@ -29,7 +29,7 @@ private:
 //---------------------------------------------------------------------
 //PyCAdUiPaletteSet
 void makePyCAdUiPaletteSetWrapper();
-class PyCAdUiPaletteSet
+class PyCAdUiPaletteSet : public boost::python::wrapper<PyCAdUiPaletteSet>
 {
 public:
     PyCAdUiPaletteSet(const std::string& name);
@@ -61,6 +61,7 @@ public:
     DECLARE_MESSAGE_MAP();
     afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
     afx_msg void OnSize(UINT nType, int cx, int cy);
+    wxPanel* panel(const std::source_location& src = std::source_location::current()) const;
     PyCAdUiPalette* bckptr(const std::source_location& src = std::source_location::current()) const;
 private:
     wxPanel* m_panel = nullptr;
