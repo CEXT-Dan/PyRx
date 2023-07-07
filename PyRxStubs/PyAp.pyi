@@ -1,4 +1,126 @@
 
+class AdUiTitleBarLocation:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None:
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None:
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None:
+      '''the imaginary part of a complex number'''
+    ...
+    def kLeft (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kRight (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None:
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None:
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
 class Application:
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
@@ -1641,6 +1763,18 @@ __init__( (object)arg1, (str)arg2, (str)arg3) -> None :
     C++ signature :
         int getActivePaletteTabIndex(class PyCAdUiPaletteSet {lvalue})'''
     ...
+    def getAutoRollup (self, *args, **kwargs)-> bool :
+      '''getAutoRollup( (PaletteSet)arg1) -> bool :
+
+    C++ signature :
+        bool getAutoRollup(class PyCAdUiPaletteSet {lvalue})'''
+    ...
+    def getFullRect (self, *args, **kwargs)-> None :
+      '''getFullRect( (PaletteSet)arg1, (object)arg2) -> None :
+
+    C++ signature :
+        void getFullRect(class PyCAdUiPaletteSet {lvalue},class wxRect {lvalue})'''
+    ...
     def getName (self, *args, **kwargs)-> str :
       '''getName( (PaletteSet)arg1) -> str :
 
@@ -1652,6 +1786,12 @@ __init__( (object)arg1, (str)arg2, (str)arg3) -> None :
 
     C++ signature :
         int getOpacity(class PyCAdUiPaletteSet {lvalue})'''
+    ...
+    def getPaletteCount (self, *args, **kwargs)-> int :
+      '''getPaletteCount( (PaletteSet)arg1) -> int :
+
+    C++ signature :
+        int getPaletteCount(class PyCAdUiPaletteSet {lvalue})'''
     ...
     def getPaletteSetStyle (self, *args, **kwargs)-> int :
       '''getPaletteSetStyle( (PaletteSet)arg1) -> int :
@@ -1671,11 +1811,46 @@ __init__( (object)arg1, (str)arg2, (str)arg3) -> None :
     C++ signature :
         bool propertiesMenuStyle(class PyCAdUiPaletteSet {lvalue})'''
     ...
+    def removePalette (self, *args, **kwargs)-> bool :
+      '''removePalette( (PaletteSet)arg1, (int)arg2) -> bool :
+
+    C++ signature :
+        bool removePalette(class PyCAdUiPaletteSet {lvalue},int)'''
+    ...
+    def rollOut (self, *args, **kwargs)-> None :
+      '''rollOut( (PaletteSet)arg1) -> None :
+
+    C++ signature :
+        void rollOut(class PyCAdUiPaletteSet {lvalue})
+
+rollOut( (PaletteSet)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void rollOut(class PyCAdUiPaletteSet {lvalue},bool)'''
+    ...
+    def rollUp (self, *args, **kwargs)-> None :
+      '''rollUp( (PaletteSet)arg1) -> None :
+
+    C++ signature :
+        void rollUp(class PyCAdUiPaletteSet {lvalue})'''
+    ...
+    def rolledUp (self, *args, **kwargs)-> bool :
+      '''rolledUp( (PaletteSet)arg1) -> bool :
+
+    C++ signature :
+        bool rolledUp(class PyCAdUiPaletteSet {lvalue})'''
+    ...
     def setActivePalette (self, *args, **kwargs)-> bool :
       '''setActivePalette( (PaletteSet)arg1, (int)arg2) -> bool :
 
     C++ signature :
         bool setActivePalette(class PyCAdUiPaletteSet {lvalue},int)'''
+    ...
+    def setAutoRollup (self, *args, **kwargs)-> bool :
+      '''setAutoRollup( (PaletteSet)arg1, (bool)arg2) -> bool :
+
+    C++ signature :
+        bool setAutoRollup(class PyCAdUiPaletteSet {lvalue},bool)'''
     ...
     def setName (self, *args, **kwargs)-> bool :
       '''setName( (PaletteSet)arg1, (str)arg2) -> bool :
@@ -1700,6 +1875,12 @@ __init__( (object)arg1, (str)arg2, (str)arg3) -> None :
 
     C++ signature :
         bool setRolloverOpacity(class PyCAdUiPaletteSet {lvalue},int)'''
+    ...
+    def setTitleBarLocation (self, *args, **kwargs)-> None :
+      '''setTitleBarLocation( (PaletteSet)arg1, (AdUiTitleBarLocation)arg2) -> None :
+
+    C++ signature :
+        void setTitleBarLocation(class PyCAdUiPaletteSet {lvalue},enum CAdUiPaletteSet::AdUiTitleBarLocation)'''
     ...
     def setVisible (self, *args, **kwargs)-> None :
       '''setVisible( (PaletteSet)arg1, (bool)arg2) -> None :
@@ -1730,6 +1911,18 @@ __init__( (object)arg1, (str)arg2, (str)arg3) -> None :
 
     C++ signature :
         bool snapStyle(class PyCAdUiPaletteSet {lvalue})'''
+    ...
+    def titleBarLocation (self, *args, **kwargs)-> AdUiTitleBarLocation :
+      '''titleBarLocation( (PaletteSet)arg1) -> AdUiTitleBarLocation :
+
+    C++ signature :
+        enum CAdUiPaletteSet::AdUiTitleBarLocation titleBarLocation(class PyCAdUiPaletteSet {lvalue})'''
+    ...
+    def updateTabs (self, *args, **kwargs)-> None :
+      '''updateTabs( (PaletteSet)arg1) -> None :
+
+    C++ signature :
+        void updateTabs(class PyCAdUiPaletteSet {lvalue})'''
     ...
     def useSinglePaletteTabNameStyle (self, *args, **kwargs)-> bool :
       '''useSinglePaletteTabNameStyle( (PaletteSet)arg1) -> bool :

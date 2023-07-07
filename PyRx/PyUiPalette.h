@@ -33,6 +33,7 @@ class PyCAdUiPaletteSet : public boost::python::wrapper<PyCAdUiPaletteSet>
 public:
     PyCAdUiPaletteSet(const std::string& name);
     PyCAdUiPaletteSet(const std::string& name, const std::string& guid);
+    virtual ~PyCAdUiPaletteSet()= default;
 public: //INTERNAL
     void createChildren();
     bool create();
@@ -59,8 +60,19 @@ public:
     bool        setRolloverOpacity(int nOpacity);
     int         getActivePaletteTabIndex();
     bool        setActivePalette(int nPaletteIndex);
-
-
+    bool        setAutoRollup(bool flag);
+    bool        getAutoRollup();
+    void        rollOut1();
+    void        rollOut2(bool bDelay);
+    void        rollUp();
+    bool        removePalette(int nPaletteIndex);
+    int         getPaletteCount();
+    PyObject*   getFullRect();//TODO test:
+    bool        rolledUp();
+    CAdUiPaletteSet::AdUiTitleBarLocation titleBarLocation();
+    void        setTitleBarLocation(CAdUiPaletteSet::AdUiTitleBarLocation loc);
+    void        updateTabs();
+  
 public: //INTERNAL
     PyCAdUiPaletteSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 private:
@@ -98,6 +110,7 @@ class PyCAdUiPalette
 {
 public:
     PyCAdUiPalette(const std::string& name, wxPanel* panel);
+    virtual ~PyCAdUiPalette() = default;
     PyCAdUiPaletteImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 private:
     std::shared_ptr<PyCAdUiPaletteImpl> m_pyImp;
