@@ -3,6 +3,11 @@
 
 using namespace boost::python;
 
+wxRect convertRect(const CRect& rect)
+{
+   return wxRect(rect.left, rect.top, rect.right, rect.bottom);
+}
+
 //---------------------------------------------------------------------
 //PyCAdUiPaletteSetImpl
 
@@ -69,6 +74,23 @@ void makePyCAdUiPaletteSetWrapper()
         .def("setRolloverOpacity", &PyCAdUiPaletteSet::setRolloverOpacity)
         .def("getActivePaletteTabIndex", &PyCAdUiPaletteSet::getActivePaletteTabIndex)
         .def("setActivePalette", &PyCAdUiPaletteSet::setActivePalette)
+        .def("setAutoRollup", &PyCAdUiPaletteSet::setAutoRollup)
+        .def("getAutoRollup", &PyCAdUiPaletteSet::getAutoRollup)
+        .def("rollOut", &PyCAdUiPaletteSet::rollOut1)
+        .def("rollOut", &PyCAdUiPaletteSet::rollOut2)
+        .def("rollUp", &PyCAdUiPaletteSet::rollUp)
+        .def("removePalette", &PyCAdUiPaletteSet::removePalette)
+        .def("getPaletteCount", &PyCAdUiPaletteSet::getPaletteCount)
+        .def("getFullRect", &PyCAdUiPaletteSet::getFullRect)
+        .def("rolledUp", &PyCAdUiPaletteSet::rolledUp)
+        .def("titleBarLocation", &PyCAdUiPaletteSet::titleBarLocation)
+        .def("setTitleBarLocation", &PyCAdUiPaletteSet::setTitleBarLocation)
+        .def("updateTabs", &PyCAdUiPaletteSet::updateTabs)
+        ;
+    enum_<CAdUiPaletteSet::AdUiTitleBarLocation>("AdUiTitleBarLocation")
+        .value("kLeft", CAdUiPaletteSet::AdUiTitleBarLocation::kLeft)
+        .value("kRight", CAdUiPaletteSet::AdUiTitleBarLocation::kRight)
+        .export_values()
         ;
 }
 
@@ -285,6 +307,69 @@ int PyCAdUiPaletteSet::getActivePaletteTabIndex()
 bool PyCAdUiPaletteSet::setActivePalette(int nPaletteIndex)
 {
     return impObj()->SetActivePalette(nPaletteIndex) == TRUE;
+}
+
+bool PyCAdUiPaletteSet::setAutoRollup(bool flag)
+{
+    return impObj()->SetAutoRollup(flag ? 1 : 0) == TRUE;
+}
+
+bool PyCAdUiPaletteSet::getAutoRollup()
+{
+    return impObj()->GetAutoRollup() == TRUE;
+}
+
+void PyCAdUiPaletteSet::rollOut1()
+{
+    return impObj()->RollOut();
+}
+void PyCAdUiPaletteSet::rollOut2(bool bDelay)
+{
+    return impObj()->RollOut(bDelay);
+}
+
+void PyCAdUiPaletteSet::rollUp()
+{
+    return impObj()->RollUp();
+}
+
+bool PyCAdUiPaletteSet::removePalette(int nPaletteIndex)
+{
+    return impObj()->RemovePalette(nPaletteIndex) == TRUE;
+}
+
+int PyCAdUiPaletteSet::getPaletteCount()
+{
+    return impObj()->GetPaletteCount();
+}
+
+PyObject* PyCAdUiPaletteSet::getFullRect()
+{
+    PyAutoLockGIL lock;
+    CRect rect;
+    impObj()->GetFullRect(rect);
+    wxRect _wxRect = convertRect(rect);
+    return wxPyConstructObject(&_wxRect, "wxRect");
+}
+
+bool PyCAdUiPaletteSet::rolledUp()
+{
+    return impObj()->RolledUp() == TRUE;
+}
+
+CAdUiPaletteSet::AdUiTitleBarLocation PyCAdUiPaletteSet::titleBarLocation()
+{
+    return impObj()->TitleBarLocation();
+}
+
+void PyCAdUiPaletteSet::setTitleBarLocation(CAdUiPaletteSet::AdUiTitleBarLocation loc)
+{
+    return impObj()->SetTitleBarLocation(loc);
+}
+
+void PyCAdUiPaletteSet::updateTabs()
+{
+    return impObj()->UpdateTabs();
 }
 
 PyCAdUiPaletteSetImpl* PyCAdUiPaletteSet::impObj(const std::source_location& src /*= std::source_location::current()*/) const
