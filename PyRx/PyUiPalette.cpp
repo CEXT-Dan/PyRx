@@ -416,8 +416,8 @@ void PyCAdUiPaletteImpl::OnSize(UINT nType, int cx, int cy)
     CAdUiPalette::OnSize(nType, cx, cy);
     GetClientRect(rect);
     CAcModuleResourceOverride resourceOverride;
-    wxRect _wxrect(rect.left, rect.top, rect.right, rect.bottom);
-    panel()->SetSize(_wxrect, nType);
+    panel()->SetPosition(wxPoint(cx, cy));
+    panel()->SetSize(rect.left, rect.top, rect.right, rect.bottom);
 }
 
 wxPanel* PyCAdUiPaletteImpl::panel(const std::source_location& src /*= std::source_location::current()*/) const
