@@ -1612,16 +1612,130 @@ __init__( (object)arg1, (str)arg2, (str)arg3) -> None :
         void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def add (self, *args, **kwargs)-> int :
-      '''add( (PaletteSet)arg1, (str)arg2, (int)arg3) -> int :
+      '''add( (PaletteSet)arg1, (str)arg2, (object)arg3) -> int :
 
     C++ signature :
-        int add(class PyCAdUiPaletteSet {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,unsigned __int64)'''
+        int add(class PyCAdUiPaletteSet {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::api::object {lvalue})'''
+    ...
+    def autoRollupStyle (self, *args, **kwargs)-> bool :
+      '''autoRollupStyle( (PaletteSet)arg1) -> bool :
+
+    C++ signature :
+        bool autoRollupStyle(class PyCAdUiPaletteSet {lvalue})'''
+    ...
+    def closeButtonStyle (self, *args, **kwargs)-> bool :
+      '''closeButtonStyle( (PaletteSet)arg1) -> bool :
+
+    C++ signature :
+        bool closeButtonStyle(class PyCAdUiPaletteSet {lvalue})'''
+    ...
+    def editNameStyle (self, *args, **kwargs)-> bool :
+      '''editNameStyle( (PaletteSet)arg1) -> bool :
+
+    C++ signature :
+        bool editNameStyle(class PyCAdUiPaletteSet {lvalue})'''
+    ...
+    def getActivePaletteTabIndex (self, *args, **kwargs)-> int :
+      '''getActivePaletteTabIndex( (PaletteSet)arg1) -> int :
+
+    C++ signature :
+        int getActivePaletteTabIndex(class PyCAdUiPaletteSet {lvalue})'''
+    ...
+    def getName (self, *args, **kwargs)-> str :
+      '''getName( (PaletteSet)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyCAdUiPaletteSet {lvalue})'''
+    ...
+    def getOpacity (self, *args, **kwargs)-> int :
+      '''getOpacity( (PaletteSet)arg1) -> int :
+
+    C++ signature :
+        int getOpacity(class PyCAdUiPaletteSet {lvalue})'''
+    ...
+    def getPaletteSetStyle (self, *args, **kwargs)-> int :
+      '''getPaletteSetStyle( (PaletteSet)arg1) -> int :
+
+    C++ signature :
+        unsigned long getPaletteSetStyle(class PyCAdUiPaletteSet {lvalue})'''
+    ...
+    def getRolloverOpacity (self, *args, **kwargs)-> int :
+      '''getRolloverOpacity( (PaletteSet)arg1) -> int :
+
+    C++ signature :
+        int getRolloverOpacity(class PyCAdUiPaletteSet {lvalue})'''
+    ...
+    def propertiesMenuStyle (self, *args, **kwargs)-> bool :
+      '''propertiesMenuStyle( (PaletteSet)arg1) -> bool :
+
+    C++ signature :
+        bool propertiesMenuStyle(class PyCAdUiPaletteSet {lvalue})'''
+    ...
+    def setActivePalette (self, *args, **kwargs)-> bool :
+      '''setActivePalette( (PaletteSet)arg1, (int)arg2) -> bool :
+
+    C++ signature :
+        bool setActivePalette(class PyCAdUiPaletteSet {lvalue},int)'''
+    ...
+    def setName (self, *args, **kwargs)-> bool :
+      '''setName( (PaletteSet)arg1, (str)arg2) -> bool :
+
+    C++ signature :
+        bool setName(class PyCAdUiPaletteSet {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setOpacity (self, *args, **kwargs)-> bool :
+      '''setOpacity( (PaletteSet)arg1, (int)arg2) -> bool :
+
+    C++ signature :
+        bool setOpacity(class PyCAdUiPaletteSet {lvalue},int)'''
+    ...
+    def setPaletteSetStyle (self, *args, **kwargs)-> None :
+      '''setPaletteSetStyle( (PaletteSet)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setPaletteSetStyle(class PyCAdUiPaletteSet {lvalue},unsigned long)'''
+    ...
+    def setRolloverOpacity (self, *args, **kwargs)-> bool :
+      '''setRolloverOpacity( (PaletteSet)arg1, (int)arg2) -> bool :
+
+    C++ signature :
+        bool setRolloverOpacity(class PyCAdUiPaletteSet {lvalue},int)'''
     ...
     def setVisible (self, *args, **kwargs)-> None :
       '''setVisible( (PaletteSet)arg1, (bool)arg2) -> None :
 
     C++ signature :
         void setVisible(class PyCAdUiPaletteSet {lvalue},bool)'''
+    ...
+    def showIconStyle (self, *args, **kwargs)-> bool :
+      '''showIconStyle( (PaletteSet)arg1) -> bool :
+
+    C++ signature :
+        bool showIconStyle(class PyCAdUiPaletteSet {lvalue})'''
+    ...
+    def showRollupButtonStyle (self, *args, **kwargs)-> bool :
+      '''showRollupButtonStyle( (PaletteSet)arg1) -> bool :
+
+    C++ signature :
+        bool showRollupButtonStyle(class PyCAdUiPaletteSet {lvalue})'''
+    ...
+    def singlePaletteTabStyle (self, *args, **kwargs)-> bool :
+      '''singlePaletteTabStyle( (PaletteSet)arg1) -> bool :
+
+    C++ signature :
+        bool singlePaletteTabStyle(class PyCAdUiPaletteSet {lvalue})'''
+    ...
+    def snapStyle (self, *args, **kwargs)-> bool :
+      '''snapStyle( (PaletteSet)arg1) -> bool :
+
+    C++ signature :
+        bool snapStyle(class PyCAdUiPaletteSet {lvalue})'''
+    ...
+    def useSinglePaletteTabNameStyle (self, *args, **kwargs)-> bool :
+      '''useSinglePaletteTabNameStyle( (PaletteSet)arg1) -> bool :
+
+    C++ signature :
+        bool useSinglePaletteTabNameStyle(class PyCAdUiPaletteSet {lvalue})'''
     ...
 
 class ResourceOverride:
