@@ -22,9 +22,6 @@ public:
 
 public:
     PyCAdUiPaletteSet* bckptr(const std::source_location& src = std::source_location::current()) const;
-
-public:
-    CString m_USRGUID;
 private:
     PyCAdUiPaletteSet* m_bckPtr = nullptr;
 };
@@ -39,6 +36,7 @@ public:
     PyCAdUiPaletteSet(const std::string& name, const std::string& guid);
 
     int add(const std::string& name, boost::python::object& panel);
+    bool create();
     void setVisible(bool show);
     void createChildren();
 
@@ -46,6 +44,7 @@ public:
 private:
     std::shared_ptr<PyCAdUiPaletteSetImpl> m_pyImp;
     std::vector<PyCAdUiPalette> m_children;
+    bool m_created = false;
 };
 
 
