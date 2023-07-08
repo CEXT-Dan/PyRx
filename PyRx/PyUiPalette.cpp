@@ -403,10 +403,10 @@ int PyCAdUiPaletteImpl::OnCreate(LPCREATESTRUCT lpCreateStruct)
     if (CAdUiPalette::OnCreate(lpCreateStruct) == -1)
         return -1;
     CAcModuleResourceOverride resourceOverride;
-    wxWindow* win = new wxWindow();
-    win->SetHWND((WXHWND)this->GetSafeHwnd());
-    win->AdoptAttributesFromHWND();
-    panel()->Create(win);
+    m_win = new wxWindow();
+    window()->SetHWND((WXHWND)this->GetSafeHwnd());
+    window()->AdoptAttributesFromHWND();
+    panel()->Create(window());
     return 0;
 }
 
@@ -416,8 +416,14 @@ void PyCAdUiPaletteImpl::OnSize(UINT nType, int cx, int cy)
     CAdUiPalette::OnSize(nType, cx, cy);
     GetClientRect(rect);
     CAcModuleResourceOverride resourceOverride;
-    panel()->SetPosition(wxPoint(cx, cy));
     panel()->SetSize(rect.left, rect.top, rect.right, rect.bottom);
+}
+
+wxWindow* PyCAdUiPaletteImpl::window(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_win == nullptr)
+        throw PyNullObject(src);
+    return m_win;
 }
 
 wxPanel* PyCAdUiPaletteImpl::panel(const std::source_location& src /*= std::source_location::current()*/) const

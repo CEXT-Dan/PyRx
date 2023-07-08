@@ -8,33 +8,43 @@ import PyEd as Ed
 import wx
 from wx import xrc
 
-
 class MyPanel(wx.Panel):
     def __init__(self):
         super().__init__()
         self.Bind(wx.EVT_SHOW, self.OnShow)
-        #self.Bind(wx.EVT_SIZE,self.OnSize)
-
+        
     def OnShow(self, event):
+        
+        #import the XRC
+        wx.ToolTip.Enable(True)
         self.res = xrc.XmlResource('./wxPaletteTab.xrc')
-        if not self.res.LoadPanel(self, "ID_WXPALETTETAB"):
+        self.childpanel = self.res.LoadPanel(self, "ID_WXPALETTETAB")
+        if not self.childpanel:
              raise Exception("failed to find xrc file") 
-         
-        self.button1 = xrc.XRCCTRL(self,'wxID_BUTTON_1')
-        self.Bind(wx.EVT_BUTTON, self.onButton1,self.button1)
-        self.Layout()
         
-    def OnSize(self,event):
-        event.Skip(True)
-        print(event.GetRect())
+        #create a sizer and add the child
+        sizer = wx.BoxSizer(wx.VERTICAL)
+        sizer.Add(self.childpanel,1,wx.ALL|wx.EXPAND)
+        self.SetSizer(sizer)
         
-    def onButton1(self, event):
-        print("button1")
+        #get ctrls as member variables 
+        self.comboctrl = xrc.XRCCTRL(self,'wxID_COMBOCTRL')
+        self.textctrl = xrc.XRCCTRL(self,'wxID_TEXTCTRL')
+        self.radioleftctrl = xrc.XRCCTRL(self,'wxID_RADIOBUTTON_LEFT')
+        self.radiorightctrl = xrc.XRCCTRL(self,'wxID_RADIOBUTTON_RIGHT')
+        self.button_1ctrl = xrc.XRCCTRL(self,'wxID_BUTTON_1')
+        self.button_2ctrl = xrc.XRCCTRL(self,'wxID_BUTTON_2')
+        self.listctrl = xrc.XRCCTRL(self,'wxID_LISTCTRL')
         
-    
+        #bind events
+        self.Bind(wx.EVT_CHOICE,self.OnChoice,self.comboctrl)
         
-        
+    def OnChoice(self, event):
+        selection = self.comboctrl.GetSelection()
+        selectionString = self.comboctrl.GetString(selection)
+        print(selection,selectionString)
 
+        
 palette = Ap.PaletteSet("MyPalette")
 
 def createPalette():
@@ -47,7 +57,7 @@ def createPalette():
     except Exception as err:
         print(err)
         
-def PyRxCmd_wxpy1():
+def PyRxCmd_wxdoit():
     try:
         createPalette()
     except Exception as err:
