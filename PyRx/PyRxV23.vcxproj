@@ -51,7 +51,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IntDir>$(ProjectName)\$(PlatformName)\$(Configuration)/</IntDir>
     <OutDir>$(SolutionDir)\Bin\$(ProjectName)\$(PlatformName)\$(Configuration)/</OutDir>
-    <LinkIncremental>true</LinkIncremental>
     <TargetExt>.brx</TargetExt>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
