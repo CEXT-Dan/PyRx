@@ -26,7 +26,8 @@ class MyPanel(wx.Panel):
         sizer = wx.BoxSizer(wx.VERTICAL)
         sizer.Add(self.childpanel,1,wx.ALL|wx.EXPAND)
         self.SetSizer(sizer)
-        
+        self.Layout()
+
         #get ctrls as member variables 
         self.comboctrl = xrc.XRCCTRL(self,'wxID_COMBOCTRL')
         self.textctrl = xrc.XRCCTRL(self,'wxID_TEXTCTRL')
@@ -38,12 +39,18 @@ class MyPanel(wx.Panel):
         
         #bind events
         self.Bind(wx.EVT_CHOICE,self.OnChoice,self.comboctrl)
+        self.Bind(wx.EVT_CHAR_HOOK,self.OnEventChar, self.textctrl)
         
     def OnChoice(self, event):
         selection = self.comboctrl.GetSelection()
         selectionString = self.comboctrl.GetString(selection)
         print(selection,selectionString)
-
+        
+    def OnEventChar(self, event):
+        keyCode = event.GetKeyCode() 
+        character = chr(keyCode)
+        print(keyCode,character)
+        event.Skip()
         
 palette = Ap.PaletteSet("MyPalette")
 

@@ -406,7 +406,7 @@ int PyCAdUiPaletteImpl::OnCreate(LPCREATESTRUCT lpCreateStruct)
     m_win = new wxWindow();
     window()->SetHWND((WXHWND)this->GetSafeHwnd());
     window()->AdoptAttributesFromHWND();
-    panel()->Create(window());
+    panel()->Create(window(), -1, wxDefaultPosition, wxDefaultSize, wxWANTS_CHARS | wxTAB_TRAVERSAL);
     return 0;
 }
 
