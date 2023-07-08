@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resource version="2.3.0.1" xmlns="http://www.wxwidgets.org/wxxrc">
     <object class="wxPanel" name="ID_WXPALETTETAB">
+        <style>wxWANTS_CHARS|wxTAB_TRAVERSAL</style>
+        <exstyle>wxWS_EX_VALIDATE_RECURSIVELY</exstyle>
         <object class="wxBoxSizer">
             <orient>wxVERTICAL</orient>
             <object class="sizeritem">
@@ -37,6 +39,7 @@
                         <border>5</border>
                         <option>1</option>
                         <object class="wxTextCtrl" name="wxID_TEXTCTRL">
+							<style>wxWANTS_CHARS</style>
                         </object>
                     </object>
                 </object>
