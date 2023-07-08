@@ -72,9 +72,9 @@ class MyPanel(wx.Panel):
         self.Bind(wx.EVT_BUTTON, self.OnButton_1, self.button_1ctrl)
         self.Bind(wx.EVT_BUTTON, self.OnButton_2, self.button_2ctrl)
         self.Bind(wx.EVT_LIST_BEGIN_DRAG, self.OnDragInit, self.listctrl)
-        self.Bind(wx.EVT_LIST_ITEM_SELECTED,self.OnItemSelected, self.listctrl)
         self.Bind(wx.EVT_CONTEXT_MENU, self.OnContextMenu, self.listctrl)
-
+        self.Bind(wx.EVT_LIST_ITEM_SELECTED,self.OnItemSelected, self.listctrl)
+ 
     def OnInitListCtrl(self):
         self.listctrl.InsertColumn(0, 'Item', width=125)
         self.listctrl.InsertColumn(1, 'Date', width=125)
@@ -112,8 +112,7 @@ class MyPanel(wx.Panel):
         print(src.DoDragDrop(True))
 
     def OnContextMenu(self, event):
-        menu = MyPopupMenu()
-        self.Parent.PopupMenu(menu, wx.GetMousePosition())
+        self.Parent.PopupMenu(MyPopupMenu(),self.ScreenToClient(event.GetPosition()))
 
     def OnItemSelected(self, event):
         print("OnItemSelected")
@@ -121,6 +120,9 @@ class MyPanel(wx.Panel):
     def OnClick(self, event):
         print("OnClick")
         event.Skip()
+        
+    def OnItem1(self, event):
+        print("OnItem1")
 
 
 palette = Ap.PaletteSet("MyPalette")
