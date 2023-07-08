@@ -95,12 +95,13 @@ public:
     DECLARE_MESSAGE_MAP();
     afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
     afx_msg void OnSize(UINT nType, int cx, int cy);
-    wxWindow* window(const std::source_location& src = std::source_location::current()) const;
+    wxWindow* thiswindow(const std::source_location& src = std::source_location::current()) const;
     wxPanel* panel(const std::source_location& src = std::source_location::current()) const;
     PyCAdUiPalette* bckptr(const std::source_location& src = std::source_location::current()) const;
 private:
+    
     wxPanel* m_panel = nullptr;
-    wxWindow* m_win = nullptr;
+    wxWindow* m_thiswin = nullptr;
     PyCAdUiPalette* m_bckPtr = nullptr;
 };
 

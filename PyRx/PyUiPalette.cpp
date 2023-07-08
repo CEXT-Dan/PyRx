@@ -3,11 +3,6 @@
 
 using namespace boost::python;
 
-wxRect convertRect(const CRect& rect)
-{
-   return wxRect(rect.left, rect.top, rect.right, rect.bottom);
-}
-
 //---------------------------------------------------------------------
 //PyCAdUiPaletteSetImpl
 
@@ -348,7 +343,7 @@ PyObject* PyCAdUiPaletteSet::getFullRect()
     PyAutoLockGIL lock;
     CRect rect;
     impObj()->GetFullRect(rect);
-    wxRect _wxRect = convertRect(rect);
+    wxRect _wxRect(rect.left, rect.top, rect.right, rect.bottom);
     return wxPyConstructObject(&_wxRect, "wxRect");
 }
 
@@ -403,10 +398,10 @@ int PyCAdUiPaletteImpl::OnCreate(LPCREATESTRUCT lpCreateStruct)
     if (CAdUiPalette::OnCreate(lpCreateStruct) == -1)
         return -1;
     CAcModuleResourceOverride resourceOverride;
-    m_win = new wxWindow();
-    window()->SetHWND((WXHWND)this->GetSafeHwnd());
-    window()->AdoptAttributesFromHWND();
-    panel()->Create(window(), -1, wxDefaultPosition, wxDefaultSize, wxWANTS_CHARS | wxTAB_TRAVERSAL);
+    m_thiswin = new wxWindow();
+    thiswindow()->SetHWND((WXHWND)this->GetSafeHwnd());
+    thiswindow()->AdoptAttributesFromHWND();
+    panel()->Create(thiswindow(), -1, wxDefaultPosition, wxDefaultSize, wxWANTS_CHARS | wxTAB_TRAVERSAL);
     return 0;
 }
 
@@ -419,11 +414,11 @@ void PyCAdUiPaletteImpl::OnSize(UINT nType, int cx, int cy)
     panel()->SetSize(rect.left, rect.top, rect.right, rect.bottom);
 }
 
-wxWindow* PyCAdUiPaletteImpl::window(const std::source_location& src /*= std::source_location::current()*/) const
+wxWindow* PyCAdUiPaletteImpl::thiswindow(const std::source_location& src /*= std::source_location::current()*/) const
 {
-    if (m_win == nullptr)
+    if (m_thiswin == nullptr)
         throw PyNullObject(src);
-    return m_win;
+    return m_thiswin;
 }
 
 wxPanel* PyCAdUiPaletteImpl::panel(const std::source_location& src /*= std::source_location::current()*/) const
