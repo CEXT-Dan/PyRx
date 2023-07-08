@@ -105,7 +105,7 @@
                         <option>1</option>
                         <object class="wxListCtrl" name="wxID_LISTCTRL">
                             <size>100,100</size>
-                            <style>wxLC_REPORT|wxLC_NO_SORT_HEADER|wxLC_SINGLE_SEL</style>
+                             <style>wxLC_REPORT|wxLC_EDIT_LABELS|wxLC_NO_SORT_HEADER|wxLC_SINGLE_SEL</style>
                         </object>
                     </object>
                 </object>
