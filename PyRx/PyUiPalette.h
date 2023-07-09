@@ -17,7 +17,6 @@ public:
     virtual ~PyCAdUiPaletteSetImpl() override = default;
     DECLARE_MESSAGE_MAP();
     afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
-    afx_msg void OnDestroy();
 
 public:
     PyCAdUiPaletteSet* bckptr(const std::source_location& src = std::source_location::current()) const;
@@ -72,6 +71,8 @@ public:
     CAdUiPaletteSet::AdUiTitleBarLocation titleBarLocation();
     void        setTitleBarLocation(CAdUiPaletteSet::AdUiTitleBarLocation loc);
     void        updateTabs();
+    COLORREF    paletteBackgroundColor() const;
+    COLORREF    paletteTabTextColor() const;
   
 public: //INTERNAL
     PyCAdUiPaletteSetImpl* impObj(const std::source_location& src = std::source_location::current()) const;

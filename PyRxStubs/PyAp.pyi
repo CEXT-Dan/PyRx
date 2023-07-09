@@ -1769,11 +1769,11 @@ __init__( (object)arg1, (str)arg2, (str)arg3) -> None :
     C++ signature :
         bool getAutoRollup(class PyCAdUiPaletteSet {lvalue})'''
     ...
-    def getFullRect (self, *args, **kwargs)-> None :
-      '''getFullRect( (PaletteSet)arg1, (object)arg2) -> None :
+    def getFullRect (self, *args, **kwargs)-> object :
+      '''getFullRect( (PaletteSet)arg1) -> object :
 
     C++ signature :
-        void getFullRect(class PyCAdUiPaletteSet {lvalue},class wxRect {lvalue})'''
+        struct _object * __ptr64 getFullRect(class PyCAdUiPaletteSet {lvalue})'''
     ...
     def getName (self, *args, **kwargs)-> str :
       '''getName( (PaletteSet)arg1) -> str :
@@ -1804,6 +1804,18 @@ __init__( (object)arg1, (str)arg2, (str)arg3) -> None :
 
     C++ signature :
         int getRolloverOpacity(class PyCAdUiPaletteSet {lvalue})'''
+    ...
+    def paletteBackgroundColor (self, *args, **kwargs)-> int :
+      '''paletteBackgroundColor( (PaletteSet)arg1) -> int :
+
+    C++ signature :
+        unsigned long paletteBackgroundColor(class PyCAdUiPaletteSet {lvalue})'''
+    ...
+    def paletteTabTextColor (self, *args, **kwargs)-> int :
+      '''paletteTabTextColor( (PaletteSet)arg1) -> int :
+
+    C++ signature :
+        unsigned long paletteTabTextColor(class PyCAdUiPaletteSet {lvalue})'''
     ...
     def propertiesMenuStyle (self, *args, **kwargs)-> bool :
       '''propertiesMenuStyle( (PaletteSet)arg1) -> bool :

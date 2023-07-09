@@ -10,7 +10,6 @@ IMPLEMENT_DYNCREATE(PyCAdUiPaletteSetImpl, CAdUiPaletteSet)
 
 BEGIN_MESSAGE_MAP(PyCAdUiPaletteSetImpl, CAdUiPaletteSet)
     ON_WM_CREATE()
-    ON_WM_DESTROY()
 END_MESSAGE_MAP()
 
 PyCAdUiPaletteSetImpl::PyCAdUiPaletteSetImpl()
@@ -27,11 +26,6 @@ int PyCAdUiPaletteSetImpl::OnCreate(LPCREATESTRUCT lpCreateStruct)
     if (CAdUiPaletteSet::OnCreate(lpCreateStruct) == -1)
         return -1;
     return 0;
-}
-
-void PyCAdUiPaletteSetImpl::OnDestroy()
-{
-    CAdUiPaletteSet::OnDestroy();
 }
 
 PyCAdUiPaletteSet* PyCAdUiPaletteSetImpl::bckptr(const std::source_location& src /*= std::source_location::current()*/) const
@@ -81,6 +75,8 @@ void makePyCAdUiPaletteSetWrapper()
         .def("titleBarLocation", &PyCAdUiPaletteSet::titleBarLocation)
         .def("setTitleBarLocation", &PyCAdUiPaletteSet::setTitleBarLocation)
         .def("updateTabs", &PyCAdUiPaletteSet::updateTabs)
+        .def("paletteBackgroundColor", &PyCAdUiPaletteSet::paletteBackgroundColor)
+        .def("paletteTabTextColor", &PyCAdUiPaletteSet::paletteTabTextColor)
         ;
     enum_<CAdUiPaletteSet::AdUiTitleBarLocation>("AdUiTitleBarLocation")
         .value("kLeft", CAdUiPaletteSet::AdUiTitleBarLocation::kLeft)
@@ -370,13 +366,36 @@ void PyCAdUiPaletteSet::updateTabs()
     return impObj()->UpdateTabs();
 }
 
+COLORREF PyCAdUiPaletteSet::paletteBackgroundColor() const
+{
+#ifdef BRXAPP
+    return RGB(0, 0, 0);
+#else
+    auto theme = impObj()->GetTheme();
+    if (theme == nullptr)
+        throw PyNullObject();
+    return theme->GetColor(kPaletteBackground);
+#endif
+}
+
+COLORREF PyCAdUiPaletteSet::paletteTabTextColor() const
+{
+#ifdef BRXAPP
+    return RGB(255, 255, 255);
+#else
+    auto theme = impObj()->GetTheme();
+    if (theme == nullptr)
+        throw PyNullObject();
+    return theme->GetColor(kPaletteTabText);
+#endif
+}
+
 PyCAdUiPaletteSetImpl* PyCAdUiPaletteSet::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr)
         throw PyNullObject(src);
     return static_cast<PyCAdUiPaletteSetImpl*>(m_pyImp.get());
 }
-
 
 //---------------------------------------------------------------------
 //PyCAdUiPaletteImpl
@@ -405,16 +424,17 @@ int PyCAdUiPaletteImpl::OnCreate(LPCREATESTRUCT lpCreateStruct)
     auto mcfParent = this->GetParent();
     if (mcfParent == nullptr)
         return -1;
-
-    m_ownerwin = new wxTopLevelWindow();
-    ownerwin()->SetHWND((WXHWND)mcfParent->GetSafeHwnd());
-    ownerwin()->AdoptAttributesFromHWND();
-
-    m_thiswin = new wxPanel();
-    thiswindow()->SetHWND((WXHWND)this->GetSafeHwnd());
-    thiswindow()->AdoptAttributesFromHWND();
-    thiswindow()->Reparent(ownerwin());
-
+    {
+        m_ownerwin = new wxTopLevelWindow();
+        ownerwin()->SetHWND((WXHWND)mcfParent->GetSafeHwnd());
+        ownerwin()->AdoptAttributesFromHWND();
+    }
+    {
+        m_thiswin = new wxPanel();
+        thiswindow()->SetHWND((WXHWND)this->GetSafeHwnd());
+        thiswindow()->AdoptAttributesFromHWND();
+        thiswindow()->Reparent(ownerwin());
+    }
     panel()->Create(thiswindow());
     return 0;
 }

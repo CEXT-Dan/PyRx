@@ -46,7 +46,7 @@ class MyPanel(wx.Panel):
         self.childpanel = self.res.LoadPanel(self, "ID_WXPALETTETAB")
         if not self.childpanel:
             raise Exception("failed to find xrc file")
-
+        
         # create a sizer and add the child
         sizer = wx.BoxSizer(wx.VERTICAL)
         sizer.Add(self.childpanel, 1, wx.ALL | wx.EXPAND)
@@ -76,6 +76,17 @@ class MyPanel(wx.Panel):
         self.Bind(wx.EVT_LIST_BEGIN_DRAG, self.OnDragInit, self.listctrl)
         self.Bind(wx.EVT_CONTEXT_MENU, self.OnContextMenu, self.listctrl)
         self.Bind(wx.EVT_LIST_ITEM_SELECTED,self.OnItemSelected, self.listctrl)
+        
+        self.set_dark_mode(self)
+        
+        
+    def set_dark_mode(self, control):
+        bkclr = wx.Colour(palette.paletteBackgroundColor())
+        fgcolor = wx.Colour(palette.paletteTabTextColor())
+        for child in control.GetChildren():
+            child.SetForegroundColour(fgcolor)
+            child.SetBackgroundColour(bkclr)
+            self.set_dark_mode(child)
         
     def OnSize(self,event):
         print(self.GetRect())
