@@ -140,7 +140,9 @@ palette = Ap.PaletteSet("MyPalette")
 def createPalette():
     try:
         panel = MyPanel()
+        #panel2 = MyPanel()
         palette.add("MyPanel", panel)
+        #palette.add("MyPanel2", panel2)
         palette.setOpacity(50)
         palette.setVisible(True)
         palette.setName("Didn't think this would work")
