@@ -128,9 +128,12 @@ int PyCAdUiPaletteSet::add(const std::string& name, boost::python::object& panel
         wxPanel* pPanel = nullptr;
         wxPyConvertWrappedPtr(panel.ptr(), (void**)&pPanel, wxT("wxPanel"));
         if (pPanel != nullptr)
+        {
             m_children.push_back(PyCAdUiPalette(name, pPanel));
+            return m_children.size() - 1;
+        }
     }
-    return 0;
+    return -1;
 }
 
 bool PyCAdUiPaletteSet::create()
