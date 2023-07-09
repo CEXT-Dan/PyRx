@@ -399,14 +399,18 @@ int PyCAdUiPaletteImpl::OnCreate(LPCREATESTRUCT lpCreateStruct)
         return -1;
     CAcModuleResourceOverride resourceOverride;
 
-    auto top = new wxTopLevelWindow();
-    top->SetHWND((WXHWND)this->GetParent()->GetSafeHwnd());
-    top->AdoptAttributesFromHWND();
+    auto mcfParent = this->GetParent();
+    if (mcfParent == nullptr)
+        return -1;
+
+    auto wxparent = new wxTopLevelWindow();
+    wxparent->SetHWND((WXHWND)mcfParent->GetSafeHwnd());
+    wxparent->AdoptAttributesFromHWND();
 
     m_thiswin = new wxPanel();
     thiswindow()->SetHWND((WXHWND)this->GetSafeHwnd());
     thiswindow()->AdoptAttributesFromHWND();
-    thiswindow()->Reparent(top);
+    thiswindow()->Reparent(wxparent);
 
     panel()->Create(thiswindow());
     return 0;
