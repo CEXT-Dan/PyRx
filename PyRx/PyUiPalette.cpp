@@ -398,10 +398,17 @@ int PyCAdUiPaletteImpl::OnCreate(LPCREATESTRUCT lpCreateStruct)
     if (CAdUiPalette::OnCreate(lpCreateStruct) == -1)
         return -1;
     CAcModuleResourceOverride resourceOverride;
-    m_thiswin = new wxWindow();
+
+    auto top = new wxTopLevelWindow();
+    top->SetHWND((WXHWND)this->GetParent()->GetSafeHwnd());
+    top->AdoptAttributesFromHWND();
+
+    m_thiswin = new wxPanel();
     thiswindow()->SetHWND((WXHWND)this->GetSafeHwnd());
     thiswindow()->AdoptAttributesFromHWND();
-    panel()->Create(thiswindow(), -1, wxDefaultPosition, wxDefaultSize, wxWANTS_CHARS | wxTAB_TRAVERSAL);
+    thiswindow()->Reparent(top);
+
+    panel()->Create(thiswindow());
     return 0;
 }
 
