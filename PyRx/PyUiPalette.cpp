@@ -403,14 +403,14 @@ int PyCAdUiPaletteImpl::OnCreate(LPCREATESTRUCT lpCreateStruct)
     if (mcfParent == nullptr)
         return -1;
 
-    auto wxparent = new wxTopLevelWindow();
-    wxparent->SetHWND((WXHWND)mcfParent->GetSafeHwnd());
-    wxparent->AdoptAttributesFromHWND();
+    m_ownerwin = new wxTopLevelWindow();
+    ownerwin()->SetHWND((WXHWND)mcfParent->GetSafeHwnd());
+    ownerwin()->AdoptAttributesFromHWND();
 
     m_thiswin = new wxPanel();
     thiswindow()->SetHWND((WXHWND)this->GetSafeHwnd());
     thiswindow()->AdoptAttributesFromHWND();
-    thiswindow()->Reparent(wxparent);
+    thiswindow()->Reparent(ownerwin());
 
     panel()->Create(thiswindow());
     return 0;
@@ -430,6 +430,13 @@ wxWindow* PyCAdUiPaletteImpl::thiswindow(const std::source_location& src /*= std
     if (m_thiswin == nullptr)
         throw PyNullObject(src);
     return m_thiswin;
+}
+
+wxWindow* PyCAdUiPaletteImpl::ownerwin(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_ownerwin == nullptr)
+        throw PyNullObject(src);
+    return m_ownerwin;
 }
 
 wxPanel* PyCAdUiPaletteImpl::panel(const std::source_location& src /*= std::source_location::current()*/) const

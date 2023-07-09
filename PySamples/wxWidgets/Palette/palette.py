@@ -66,6 +66,7 @@ class MyPanel(wx.Panel):
         self.OnInitListCtrl()
 
         # bind events
+        self.Bind(wx.EVT_SIZE, self.OnSize)
         self.Bind(wx.EVT_CHOICE, self.OnChoice, self.comboctrl)
         self.Bind(wx.EVT_CHAR_HOOK, self.OnEventChar, self.textctrl)
         self.Bind(wx.EVT_RADIOBUTTON, self.OnRadioLeft, self.radioleftctrl)
@@ -75,7 +76,11 @@ class MyPanel(wx.Panel):
         self.Bind(wx.EVT_LIST_BEGIN_DRAG, self.OnDragInit, self.listctrl)
         self.Bind(wx.EVT_CONTEXT_MENU, self.OnContextMenu, self.listctrl)
         self.Bind(wx.EVT_LIST_ITEM_SELECTED,self.OnItemSelected, self.listctrl)
- 
+        
+    def OnSize(self,event):
+        print(self.GetRect())
+        event.Skip()
+    
     def OnInitListCtrl(self):
         self.listctrl.InsertColumn(0, 'Item', width=125)
         self.listctrl.InsertColumn(1, 'Date', width=125)
