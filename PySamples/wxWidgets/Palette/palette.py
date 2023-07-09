@@ -95,11 +95,9 @@ class MyPanel(wx.Panel):
         self.listctrl.InsertItem(self.index, self.textctrl.Value)
         self.listctrl.SetItem(self.index, 1, date.today().strftime("%d/%m/%Y"))
         self.index += 1
-        event.Skip()
 
     def OnButton_2(self, event):
         print("button 2")
-        event.Skip()
 
     def OnRadioLeft(self, event):
         wx.MessageBox("OnRadioLeft")
@@ -119,14 +117,6 @@ class MyPanel(wx.Panel):
 
     def OnItemSelected(self, event):
         print("OnItemSelected")
-
-    def OnClick(self, event):
-        print("OnClick")
-        event.Skip()
-        
-    def OnItem1(self, event):
-        print("OnItem1")
-
 
 palette = Ap.PaletteSet("MyPalette")
 
