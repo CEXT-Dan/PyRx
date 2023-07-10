@@ -192,7 +192,6 @@ bool PyGiDrawableOverrule::isApplicableWr(PyRxObject& pOverruledSubject) const
     catch (...)
     {
         isApplicableOverride = false;
-        acutPrintf(_T("Exception @ %ls: "), __FUNCTIONW__);
     }
     return false;
 }
@@ -208,7 +207,6 @@ Adesk::Boolean PyGiDrawableOverrule::worldDrawWr(PyGiDrawable& pSubject, PyGiWor
         }
         else
         {
-            isWorldDrawOverride = false;
             return baseWorldDraw(pSubject, wd);
         }
     }
@@ -231,7 +229,6 @@ void PyGiDrawableOverrule::viewportDrawWr(PyGiDrawable& pSubject, PyGiViewportDr
         }
         else
         {
-            isViewportDrawOverride = false;
             baseViewportDraw(pSubject, vd);
         }
     }
@@ -284,7 +281,9 @@ bool PyGiDrawableOverrule::isApplicable(const AcRxObject* pOverruledSubject) con
 {
     if (!isApplicableOverride)
         return false;
+#ifndef ARXAPP
     std::lock_guard<std::mutex> guard(PyGiDrawableOverruleMutex);
+#endif
     PyRxObject obj(pOverruledSubject);
     return this->isApplicableWr(obj);
 }
@@ -293,7 +292,9 @@ Adesk::Boolean PyGiDrawableOverrule::worldDraw(AcGiDrawable* pSubject, AcGiWorld
 {
     if (!isWorldDrawOverride)
         return AcGiDrawableOverrule::worldDraw(pSubject, wd);
+#ifndef ARXAPP
     std::lock_guard<std::mutex> guard(PyGiDrawableOverruleMutex);
+#endif
     PyGiWorldDraw _wd(wd, false);
     PyGiDrawable _dr(pSubject, false, false);
     return worldDrawWr(_dr, _wd);
@@ -303,7 +304,9 @@ void PyGiDrawableOverrule::viewportDraw(AcGiDrawable* pSubject, AcGiViewportDraw
 {
     if (!isViewportDrawOverride)
         return AcGiDrawableOverrule::viewportDraw(pSubject, vd);
+#ifndef ARXAPP
     std::lock_guard<std::mutex> guard(PyGiDrawableOverruleMutex);
+#endif
     PyGiViewportDraw _vd(vd, false);
     PyGiDrawable _dr(pSubject, false, false);
     return viewportDrawWr(_dr, _vd);
@@ -313,7 +316,9 @@ Adesk::UInt32 PyGiDrawableOverrule::viewportDrawLogicalFlags(AcGiDrawable* pSubj
 {
     if (!isViewportDrawLogicalFlagsOverride)
         return AcGiDrawableOverrule::viewportDrawLogicalFlags(pSubject, vd);
+#ifndef ARXAPP
     std::lock_guard<std::mutex> guard(PyGiDrawableOverruleMutex);
+#endif
     PyGiViewportDraw _vd(vd, false);
     PyGiDrawable _dr(pSubject, false, false);
     return viewportDrawLogicalFlagsWr(_dr, _vd);
