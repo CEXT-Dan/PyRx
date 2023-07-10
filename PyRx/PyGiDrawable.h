@@ -5,7 +5,7 @@
 class PyGiWorldDraw;
 class PyGiViewportDraw;
 class PyGiDrawableTraits;
-
+class PyDbObjectId;
 //-----------------------------------------------------------------------------------------
 //PyGiDrawable
 void makeAcGiObjectWrapper();
@@ -15,9 +15,17 @@ class PyGiDrawable : public PyRxObject
 public:
     PyGiDrawable(AcGiDrawable* ptr, bool autoDelete, bool isDbObject);
     virtual ~PyGiDrawable() override = default;
-    static std::string className();
-    static PyRxClass desc();
-
+	Adesk::UInt32   setAttributes(PyGiDrawableTraits& traits);
+	Adesk::Boolean  worldDraw(PyGiWorldDraw& wd);
+	void            viewportDraw(PyGiViewportDraw& vd);
+	Adesk::UInt32   viewportDrawLogicalFlags(PyGiViewportDraw& vd);
+	Adesk::Boolean  isPersistent(void) const;
+	PyDbObjectId    id(void) const;
+	AcGiDrawable::DrawableType	drawableType(void) const;
+	Adesk::Boolean  rolloverHit(Adesk::ULongPtr nSubentId, Adesk::ULongPtr nMouseFlags, Adesk::Boolean  bReset);
+	bool			bounds(AcDbExtents& ext) const;
+    static std::string	className();
+    static PyRxClass	desc();
 public:
     AcGiDrawable* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -32,7 +40,8 @@ public:
 	PyGiDrawableOverrule();
 	PyGiDrawableOverrule(AcGiDrawableOverrule* ptr, bool autoDelete);
 	virtual ~PyGiDrawableOverrule() override = default;
-	Adesk::UInt32 setAttributes(PyGiDrawable& pSubject, PyGiDrawableTraits& traits);
+
+	Adesk::UInt32	setAttributes(PyGiDrawable& pSubject, PyGiDrawableTraits& traits);
 
 	//python subclasses these
 	bool			isApplicableWr(PyRxObject& pOverruledSubject) const;
