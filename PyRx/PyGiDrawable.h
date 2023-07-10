@@ -43,7 +43,7 @@ public:
 	//python can call these to access the true base classes
 	Adesk::Boolean	baseWorldDraw(PyGiDrawable& pSubject, PyGiWorldDraw& wd);
 	void            baseViewportDraw(PyGiDrawable& pSubject, PyGiViewportDraw& vd);
-	void            baseViewportDrawLogicalFlags(PyGiDrawable& pSubject, PyGiViewportDraw& vd);
+	Adesk::UInt32   baseViewportDrawLogicalFlags(PyGiDrawable& pSubject, PyGiViewportDraw& vd);
 
 	//these call into their wrapper 'Wr' counterparts
 	virtual bool			isApplicable(const AcRxObject* pOverruledSubject) const override;
@@ -56,4 +56,10 @@ public:
 
 public:
 	AcGiDrawableOverrule* impObj(const std::source_location& src = std::source_location::current()) const;
+
+private:
+ mutable bool isApplicableOverride = true;
+ mutable bool isWorldDrawOverride = true;
+ mutable bool isViewportDrawOverride = true;
+ mutable bool isViewportDrawLogicalFlagsOverride = true;
 };
