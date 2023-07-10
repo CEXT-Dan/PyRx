@@ -23,7 +23,7 @@ void makeAcGiObjectWrapper()
         .def("className", &PyGiDrawable::className).staticmethod("className")
         .def("desc", &PyGiDrawable::desc).staticmethod("desc")
         ;
-    enum_<AcGiDrawable::DrawableType>("DrawableType")
+    enum_<AcGiDrawable::DrawableType>("GiDrawableType")
         .value("kGeometry", AcGiDrawable::DrawableType::kGeometry)
         .value("kDistantLight", AcGiDrawable::DrawableType::kDistantLight)
         .value("kPointLight", AcGiDrawable::DrawableType::kPointLight)
