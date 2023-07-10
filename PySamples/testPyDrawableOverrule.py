@@ -5,13 +5,16 @@ import PyDb  # = database
 import PyAp  # = application, document classes services
 import PyEd  # = editor
 
+
 def OnPyInitApp():
     print("\ncommand = pydrawoverrule")
     print("\ncommand = pystopoverrule")
 
+
 def OnPyUnloadApp():
-    #please exit cleanly
+    # please exit cleanly
     PyRxCmd_pystopoverrule()
+
 
 class MyDrawableOverrule(PyGi.DrawableOverrule):
     def __init__(self):
@@ -56,9 +59,13 @@ class MyDrawableOverrule(PyGi.DrawableOverrule):
         except Exception as err:
             print(err)
 
+overrule = None
+
 def PyRxCmd_pydrawoverrule():
     try:
         global overrule
+        if overrule != None:
+            return 
         overrule = MyDrawableOverrule()
         if overrule.addOverrule(PyDb.Line.desc(), overrule) == PyDb.ErrorStatus.eOk:
             overrule.setIsOverruling(True)
