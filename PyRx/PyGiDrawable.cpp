@@ -2,6 +2,7 @@
 #include "PyGiDrawable.h"
 #include "PyGiCommonDraw.h"
 #include "PyGiSubEntityTraits.h"
+#include "PyDbObjectId.h"
 
 using namespace boost::python;
 //-----------------------------------------------------------------------------------------
@@ -9,15 +10,112 @@ using namespace boost::python;
 void makeAcGiObjectWrapper()
 {
     class_<PyGiDrawable, bases<PyRxObject>>("Drawable", boost::python::no_init)
-        .def("isA", &PyRxObject::isA)
+        .def("setAttributes", &PyGiDrawable::setAttributes)
+        .def("worldDraw", &PyGiDrawable::worldDraw)
+        .def("viewportDraw", &PyGiDrawable::viewportDraw)
+        .def("viewportDrawLogicalFlags", &PyGiDrawable::viewportDrawLogicalFlags)
+        .def("isPersistent", &PyGiDrawable::isPersistent)
+        .def("id", &PyGiDrawable::id)
+        .def("drawableType", &PyGiDrawable::drawableType)
+        .def("rolloverHit", &PyGiDrawable::rolloverHit)
+        .def("bounds", &PyGiDrawable::bounds)
+        .def("isA", &PyGiDrawable::isA)
         .def("className", &PyGiDrawable::className).staticmethod("className")
         .def("desc", &PyGiDrawable::desc).staticmethod("desc")
+        ;
+    enum_<AcGiDrawable::DrawableType>("DrawableType")
+        .value("kGeometry", AcGiDrawable::DrawableType::kGeometry)
+        .value("kDistantLight", AcGiDrawable::DrawableType::kDistantLight)
+        .value("kPointLight", AcGiDrawable::DrawableType::kPointLight)
+        .value("kSpotLight", AcGiDrawable::DrawableType::kSpotLight)
+        .value("kAmbientLight", AcGiDrawable::DrawableType::kAmbientLight)
+        .value("kSolidBackground", AcGiDrawable::DrawableType::kSolidBackground)
+        .value("kGradientBackground", AcGiDrawable::DrawableType::kGradientBackground)
+        .value("kImageBackground", AcGiDrawable::DrawableType::kImageBackground)
+        .value("kGroundPlaneBackground", AcGiDrawable::DrawableType::kGroundPlaneBackground)
+        .value("kViewport", AcGiDrawable::DrawableType::kViewport)
+#ifndef BRXAPP
+        .value("kWebLight", AcGiDrawable::DrawableType::kWebLight)
+        .value("kSkyBackground", AcGiDrawable::DrawableType::kSkyBackground)
+        .value("kImageBasedLightingBackground", AcGiDrawable::DrawableType::kImageBasedLightingBackground)
+#endif
+        .export_values()
+        ;
+
+    enum_<AcGiDrawable::SetAttributesFlags>("GiAttributesFlags")
+        .value("kDrawableNone", AcGiDrawable::SetAttributesFlags::kDrawableNone)
+        .value("kDrawableIsAnEntity", AcGiDrawable::SetAttributesFlags::kDrawableIsAnEntity)
+        .value("kDrawableUsesNesting", AcGiDrawable::SetAttributesFlags::kDrawableUsesNesting)
+        .value("kDrawableIsCompoundObject", AcGiDrawable::SetAttributesFlags::kDrawableIsCompoundObject)
+        .value("kDrawableViewIndependentViewportDraw", AcGiDrawable::SetAttributesFlags::kDrawableViewIndependentViewportDraw)
+        .value("kDrawableIsInvisible", AcGiDrawable::SetAttributesFlags::kDrawableIsInvisible)
+        .value("kDrawableHasAttributes", AcGiDrawable::SetAttributesFlags::kDrawableHasAttributes)
+        .value("kDrawableRegenTypeDependentGeometry", AcGiDrawable::SetAttributesFlags::kDrawableRegenTypeDependentGeometry)
+        .value("kDrawableIsDimension", AcGiDrawable::SetAttributesFlags::kDrawableIsDimension)
+        .value("kDrawableRegenDraw", AcGiDrawable::SetAttributesFlags::kDrawableRegenDraw)
+        .value("kDrawableStandardDisplaySingleLOD", AcGiDrawable::SetAttributesFlags::kDrawableStandardDisplaySingleLOD)
+        .value("kDrawableShadedDisplaySingleLOD", AcGiDrawable::SetAttributesFlags::kDrawableShadedDisplaySingleLOD)
+        .value("kDrawableViewDependentViewportDraw", AcGiDrawable::SetAttributesFlags::kDrawableViewDependentViewportDraw)
+        .value("kDrawableBlockDependentViewportDraw", AcGiDrawable::SetAttributesFlags::kDrawableBlockDependentViewportDraw)
+        .value("kDrawableIsExternalReference", AcGiDrawable::SetAttributesFlags::kDrawableIsExternalReference)
+        .value("kDrawableNotPlottable", AcGiDrawable::SetAttributesFlags::kDrawableNotPlottable)
+        .value("kDrawableNotAllowLCS", AcGiDrawable::SetAttributesFlags::kDrawableNotAllowLCS)
+        .value("kDrawableMergeControlOff", AcGiDrawable::SetAttributesFlags::kDrawableMergeControlOff)
+#ifdef ARXAPP
+        .value("kThreadedWorldDrawViewportDraw", AcGiDrawable::SetAttributesFlags::kThreadedWorldDrawViewportDraw)
+#endif
+        .export_values()
         ;
 }
 
 PyGiDrawable::PyGiDrawable(AcGiDrawable* ptr, bool autoDelete, bool isDbObject)
     : PyRxObject(ptr, autoDelete, isDbObject)
 {
+}
+
+Adesk::UInt32 PyGiDrawable::setAttributes(PyGiDrawableTraits& traits)
+{
+    return impObj()->setAttributes(traits.impObj());
+}
+
+Adesk::Boolean PyGiDrawable::worldDraw(PyGiWorldDraw& wd)
+{
+    return impObj()->worldDraw(wd.impObj());
+}
+
+void PyGiDrawable::viewportDraw(PyGiViewportDraw& vd)
+{
+    return impObj()->viewportDraw(vd.impObj());
+}
+
+Adesk::UInt32 PyGiDrawable::viewportDrawLogicalFlags(PyGiViewportDraw& vd)
+{
+    return impObj()->viewportDrawLogicalFlags(vd.impObj());
+}
+
+Adesk::Boolean PyGiDrawable::isPersistent(void) const
+{
+    return impObj()->isPersistent();
+}
+
+PyDbObjectId PyGiDrawable::id(void) const
+{
+    return PyDbObjectId(impObj()->id());
+}
+
+AcGiDrawable::DrawableType PyGiDrawable::drawableType(void) const
+{
+    return impObj()->drawableType();
+}
+
+Adesk::Boolean PyGiDrawable::rolloverHit(Adesk::ULongPtr nSubentId, Adesk::ULongPtr nMouseFlags, Adesk::Boolean bReset)
+{
+    return impObj()->RolloverHit(nSubentId, nMouseFlags, bReset);
+}
+
+bool PyGiDrawable::bounds(AcDbExtents& ext) const
+{
+    return impObj()->bounds(ext);
 }
 
 std::string PyGiDrawable::className()
@@ -44,7 +142,7 @@ std::mutex PyGiDrawableOverruleMutex;
 void makeAcGiDrawableOverruleWrapper()
 {
     class_<PyGiDrawableOverrule, bases<PyRxOverrule>>("DrawableOverrule")
-        //.def("setAttributes", &PyGiDrawableOverrule::setAttributes)
+        .def("setAttributes", &PyGiDrawableOverrule::setAttributes)
 
         .def("isApplicable", &PyGiDrawableOverrule::isApplicableWr)
         .def("worldDraw", &PyGiDrawableOverrule::worldDrawWr)
@@ -156,7 +254,7 @@ Adesk::UInt32 PyGiDrawableOverrule::viewportDrawLogicalFlagsWr(PyGiDrawable& pSu
         else
         {
             isViewportDrawLogicalFlagsOverride = false;
-            return baseViewportDrawLogicalFlags(pSubject,vd);
+            return baseViewportDrawLogicalFlags(pSubject, vd);
         }
     }
     catch (...)
