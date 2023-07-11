@@ -143,16 +143,13 @@ void makeAcGiDrawableOverruleWrapper()
 {
     class_<PyGiDrawableOverrule, bases<PyRxOverrule>>("DrawableOverrule")
         .def("setAttributes", &PyGiDrawableOverrule::setAttributes)
-
         .def("isApplicable", &PyGiDrawableOverrule::isApplicableWr)
         .def("worldDraw", &PyGiDrawableOverrule::worldDrawWr)
         .def("viewportDraw", &PyGiDrawableOverrule::viewportDrawWr)
         .def("viewportDrawLogicalFlags", &PyGiDrawableOverrule::viewportDrawLogicalFlagsWr)
-
         .def("baseWorldDraw", &PyGiDrawableOverrule::baseWorldDraw)
         .def("baseViewportDraw", &PyGiDrawableOverrule::baseViewportDraw)
         .def("baseViewportDrawLogicalFlags", &PyGiDrawableOverrule::baseViewportDrawLogicalFlags)
-
         .def("className", &PyGiDrawableOverrule::className).staticmethod("className")
         .def("desc", &PyGiDrawableOverrule::desc).staticmethod("desc")
         ;
