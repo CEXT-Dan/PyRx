@@ -189,7 +189,6 @@ Acad::ErrorStatus PyDbObject::swapIdWith(PyDbObjectId& otherId, Adesk::Boolean s
 
 Acad::ErrorStatus PyDbObject::setXData(const boost::python::list& xdata)
 {
-    PyAutoLockGIL lock;
     AcResBufPtr pData(listToResbuf(xdata));
     if (!impObj()->isWriteEnabled())
         return eNotOpenForWrite;
@@ -198,7 +197,6 @@ Acad::ErrorStatus PyDbObject::setXData(const boost::python::list& xdata)
 
 boost::python::list PyDbObject::xData(const std::string& regappName) const
 {
-    PyAutoLockGIL lock;
     AcResBufPtr pData(impObj()->xData(utf8_to_wstr(regappName).c_str()));
     return resbufToList(pData.get());
 }
