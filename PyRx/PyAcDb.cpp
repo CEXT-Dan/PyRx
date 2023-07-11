@@ -78,6 +78,7 @@ BOOST_PYTHON_MODULE(PyDb)
     docstring_options local_docstring_options(true, true, true);
 
     //create in class order!
+    makePyDbSubentIdWrapper();
     makeAcDbExtents2dWrapper();
     makeAcDbExtentsWrapper();
     makeAcCmColorWrapper();
@@ -162,6 +163,8 @@ BOOST_PYTHON_MODULE(PyDb)
 
     makePyDb3dSolidWrapper();
     makePyDbRegionWrapper();
+    makeAcDbBodyWrapper();
+    makePyDbRevolveOptionsWrapper();
     makePyDbSurfaceWrapper();
     makeAcDbExtrudedSurfaceWrapper();
     makeAcDbLoftedSurfaceWrapper();
@@ -212,6 +215,17 @@ BOOST_PYTHON_MODULE(PyDb)
 
     def("curDb", curPyDb);
 
+    enum_<AcDb::SubentType>("SubentType")
+        .value("kNullSubentType", AcDb::kNullSubentType)
+        .value("kFaceSubentType", AcDb::kFaceSubentType)
+        .value("kEdgeSubentType", AcDb::kEdgeSubentType)
+        .value("kVertexSubentType", AcDb::kVertexSubentType)
+        .value("kMlineSubentCache", AcDb::kMlineSubentCache)
+        .value("kClassSubentType", AcDb::kClassSubentType)
+        .value("kAxisSubentType", AcDb::kAxisSubentType)
+        .value("kSilhouetteSubentType", AcDb::kSilhouetteSubentType)
+        .export_values()
+        ;
     enum_<AcDb::VpFreezeOps>("VpFreezeOps")
         .value("kFreeze", AcDb::VpFreezeOps::kFreeze)
         .value("kThaw", AcDb::VpFreezeOps::kThaw)

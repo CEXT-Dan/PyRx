@@ -10,7 +10,7 @@ void makeAcRxObjectWrapper()
     class_<PyRxObject>("RxObject", boost::python::no_init)
         .def("isA", &PyRxObject::isA)
         .def("className", &PyRxObject::className).staticmethod("className")
-        .def("isNull", &PyRxObject::isNull)
+        .def("isNullObj", &PyRxObject::isNullObj)
         .def("refCount", &PyRxObject::refCount)
         .def("__eq__", &PyRxObject::operator==)
         .def("__ne__", &PyRxObject::operator!=)
@@ -53,7 +53,7 @@ void PyRxObject::resetImp(AcRxObject* ptr, bool autoDelete, bool isDbObject)
     m_pyImp.reset(ptr, PyRxObjectDeleter(autoDelete, isDbObject));
 }
 
-bool PyRxObject::isNull()
+bool PyRxObject::isNullObj()
 {
     return m_pyImp == nullptr;
 }

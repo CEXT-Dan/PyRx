@@ -2105,7 +2105,7 @@ addDefaultContextMenu( (UIContext)arg1, (str)arg2) -> bool :
         class AcGePoint3d hitPoint(class PyEdUIContext {lvalue})'''
     ...
     def onCommand (self, *args, **kwargs)-> None :
-      '''onCommand( (UIContext)arg1, (int)arg2) -> None :
+      '''onCommand( (UIContext)arg1, (SubentType)arg2) -> None :
 
     C++ signature :
         void onCommand(class PyEdUIContext {lvalue},unsigned int)'''

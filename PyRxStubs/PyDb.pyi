@@ -172,6 +172,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -217,6 +223,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -258,6 +270,12 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -294,11 +312,17 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -345,6 +369,18 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    ...
     def setField (self: DbObject,obj: Field)-> ObjectId :
       '''                             '''
     ...
@@ -368,6 +404,24 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -423,6 +477,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId background(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def brightness (self, *args, **kwargs)-> float :
       '''brightness( (AbstractViewTableRecord)arg1) -> float :
@@ -493,6 +553,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def elevation (self, *args, **kwargs)-> float :
       '''elevation( (AbstractViewTableRecord)arg1) -> float :
 
@@ -559,6 +625,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         double height(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -607,11 +679,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -688,11 +766,23 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def setAmbientLightColor (self, *args, **kwargs)-> ErrorStatus :
       '''setAmbientLightColor( (AbstractViewTableRecord)arg1, (Color)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setAmbientLightColor(class PyDbAbstractViewTableRecord {lvalue},class AcCmColor)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setBackClipDistance (self, *args, **kwargs)-> None :
       '''setBackClipDistance( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
@@ -906,6 +996,18 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> Erro
     C++ signature :
         double viewTwist(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visualStyle (self, *args, **kwargs)-> ObjectId :
       '''visualStyle( (AbstractViewTableRecord)arg1) -> ObjectId :
 
@@ -917,6 +1019,12 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> Erro
 
     C++ signature :
         double width(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -1066,6 +1174,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     C++ signature :
         class AcGeMatrix3d blockTransform(class PyDbDimension {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -1195,6 +1309,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def elevation (self, *args, **kwargs)-> float :
       '''elevation( (Dimension)arg1) -> float :
 
@@ -1314,6 +1434,12 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         double horizontalRotation(class PyDbDimension {lvalue})'''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def inspection (self, *args, **kwargs)-> bool :
       '''inspection( (Dimension)arg1) -> bool :
 
@@ -1413,11 +1539,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -1606,6 +1738,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void resetTextDefinedSize(class PyDbDimension {lvalue})'''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def setAltSuppressLeadingZeros (self, *args, **kwargs)-> ErrorStatus :
       '''setAltSuppressLeadingZeros( (Dimension)arg1, (bool)arg2) -> ErrorStatus :
 
@@ -1677,6 +1815,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus setArrowSecondIsFlipped(class PyDbDimension {lvalue},bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -2262,11 +2406,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus useSetTextPosition(class PyDbDimension {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -2487,11 +2649,11 @@ __init__( (object)arg1) -> None :
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def matchScaleId (self, *args, **kwargs)-> bool :
       '''matchScaleId( (AnnotationScale)arg1, (int)arg2) -> bool :
@@ -2580,6 +2742,12 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5,
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -2660,6 +2828,12 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5,
 
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def endAngle (self, *args, **kwargs)-> float :
       '''endAngle( (Arc)arg1) -> float :
@@ -2867,6 +3041,12 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -2930,17 +3110,23 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def isPeriodic (self, *args, **kwargs)-> bool :
       '''isPeriodic( (Curve)arg1) -> bool :
 
     C++ signature :
         bool isPeriodic(class PyDbCurve {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -3087,6 +3273,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus reverseCurve(class PyDbCurve {lvalue})'''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -3349,11 +3547,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -3507,6 +3723,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         class AcGeMatrix3d blockTransform(class PyDbDimension {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -3636,6 +3858,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def elevation (self, *args, **kwargs)-> float :
       '''elevation( (Dimension)arg1) -> float :
 
@@ -3761,6 +3989,12 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         double horizontalRotation(class PyDbDimension {lvalue})'''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def inspection (self, *args, **kwargs)-> bool :
       '''inspection( (Dimension)arg1) -> bool :
 
@@ -3860,17 +4094,23 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def isPartial (self, *args, **kwargs)-> bool :
       '''isPartial( (ArcDimension)arg1) -> bool :
 
     C++ signature :
         bool isPartial(class PyDbArcDimension {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -4053,6 +4293,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void resetTextDefinedSize(class PyDbDimension {lvalue})'''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def setAltSuppressLeadingZeros (self, *args, **kwargs)-> ErrorStatus :
       '''setAltSuppressLeadingZeros( (Dimension)arg1, (bool)arg2) -> ErrorStatus :
 
@@ -4148,6 +4394,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus setArrowSecondIsFlipped(class PyDbDimension {lvalue},bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -4739,11 +4991,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus useSetTextPosition(class PyDbDimension {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -4820,6 +5090,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -4913,6 +5189,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
@@ -5010,6 +5292,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum AcDb::TextHorzMode horizontalMode(class PyDbText {lvalue})'''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -5103,11 +5391,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -5291,6 +5585,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def rotation (self, *args, **kwargs)-> float :
       '''rotation( (Text)arg1) -> float :
 
@@ -5302,6 +5602,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus setAlignmentPoint(class PyDbText {lvalue},class AcGePoint3d)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -5672,6 +5978,18 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum AcDb::TextVertMode verticalMode(class PyDbText {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
@@ -5683,6 +6001,12 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
 
     C++ signature :
         double widthFactor(class PyDbText {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -5747,6 +6071,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -5840,6 +6170,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
@@ -5937,6 +6273,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum AcDb::TextHorzMode horizontalMode(class PyDbText {lvalue})'''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -6030,11 +6372,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -6218,6 +6566,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def rotation (self, *args, **kwargs)-> float :
       '''rotation( (Text)arg1) -> float :
 
@@ -6240,6 +6594,12 @@ setAttributeFromBlock( (AttributeReference)arg1, (AttributeDefinition)arg2, (Mat
 
     C++ signature :
         enum Acad::ErrorStatus setAttributeFromBlock(class PyDbAttribute {lvalue},class PyDbAttributeDefinition,class AcGeMatrix3d)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -6586,6 +6946,18 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum AcDb::TextVertMode verticalMode(class PyDbText {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
@@ -6597,6 +6969,12 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
 
     C++ signature :
         double widthFactor(class PyDbText {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -6634,6 +7012,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -6710,6 +7094,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -6770,6 +7160,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -6827,11 +7223,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -6954,6 +7356,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -7162,11 +7576,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -7204,6 +7636,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -7280,6 +7718,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -7340,6 +7784,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -7397,11 +7847,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -7524,6 +7980,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -7732,11 +8200,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -7814,6 +8300,12 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
     C++ signature :
         class AcGeMatrix3d blockTransform(class PyDbBlockReference {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -7888,6 +8380,12 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
@@ -7966,6 +8464,12 @@ geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -8023,11 +8527,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -8175,6 +8685,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def rotation (self, *args, **kwargs)-> float :
       '''rotation( (BlockReference)arg1) -> float :
 
@@ -8186,6 +8702,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         class AcGeScale3d scaleFactors(class PyDbBlockReference {lvalue})'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setBlockTableRecord (self, *args, **kwargs)-> ErrorStatus :
       '''setBlockTableRecord( (BlockReference)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -8436,11 +8958,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -8601,6 +9141,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -8646,6 +9192,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -8687,6 +9239,12 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -8723,11 +9281,17 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -8774,6 +9338,18 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    ...
     def setField (self: DbObject,obj: Field)-> ObjectId :
       '''                             '''
     ...
@@ -8797,6 +9373,24 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -8869,6 +9463,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum AcDbBlockTableRecord::BlockScaling blockScaling(class PyDbBlockTableRecord {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -8919,6 +9519,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -8984,6 +9590,12 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
+    ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -9051,11 +9663,17 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -9150,6 +9768,18 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    ...
     def setBlockInsertUnits (self, *args, **kwargs)-> ErrorStatus :
       '''setBlockInsertUnits( (BlockTableRecord)arg1, (UnitsValue)arg2) -> ErrorStatus :
 
@@ -9228,6 +9858,24 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
+    ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
@@ -9245,6 +9893,640 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
 
     C++ signature :
         enum AcDb::XrefStatus xrefStatus(class PyDbBlockTableRecord {lvalue})'''
+    ...
+
+class Body:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)
+
+__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def addPersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def assertNotifyEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertReadEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def assertWriteEnabled (self: DbObject)-> None :
+      '''                             '''
+    ...
+    def blockId (self, *args, **kwargs)-> ObjectId :
+      '''blockId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def cancel (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def cast (self, *args, **kwargs)-> Body :
+      '''cast( (RxObject)arg1) -> Body :
+
+    C++ signature :
+        class PyDbBody cast(class PyRxObject)'''
+    ...
+    def castShadows (self, *args, **kwargs)-> bool :
+      '''castShadows( (Entity)arg1) -> bool :
+
+    C++ signature :
+        bool castShadows(class PyDbEntity {lvalue})'''
+    ...
+    def className (self, *args, **kwargs)-> str :
+      '''className() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cloneFrom (self, *args, **kwargs)-> Body :
+      '''cloneFrom( (RxObject)arg1) -> Body :
+
+    C++ signature :
+        class PyDbBody cloneFrom(class PyRxObject)'''
+    ...
+    def close (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def collisionType (self, *args, **kwargs)-> CollisionType :
+      '''collisionType( (Entity)arg1) -> CollisionType :
+
+    C++ signature :
+        enum AcDb::CollisionType collisionType(class PyDbEntity {lvalue})'''
+    ...
+    def color (self, *args, **kwargs)-> Color :
+      '''color( (Entity)arg1) -> Color :
+
+    C++ signature :
+        class AcCmColor color(class PyDbEntity {lvalue})'''
+    ...
+    def colorIndex (self, *args, **kwargs)-> int :
+      '''colorIndex( (Entity)arg1) -> int :
+
+    C++ signature :
+        unsigned short colorIndex(class PyDbEntity {lvalue})'''
+    ...
+    def createExtensionDictionary (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def database (self: DbObject)-> Database :
+      '''                             '''
+    ...
+    def desc (self, *args, **kwargs)-> RxClass :
+      '''desc() -> RxClass :
+
+    C++ signature :
+        class PyRxClass desc()'''
+    ...
+    def disableUndoRecording (self: DbObject,disable: bool)-> None :
+      '''                             '''
+    ...
+    def downgradeOpen (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def draw (self, *args, **kwargs)-> ErrorStatus :
+      '''draw( (Entity)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
+    def entityColor (self, *args, **kwargs)-> EntityColor :
+      '''entityColor( (Entity)arg1) -> EntityColor :
+
+    C++ signature :
+        class AcCmEntityColor entityColor(class PyDbEntity {lvalue})'''
+    ...
+    def erase (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def extensionDictionary (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getCompoundObjectTransform (self, *args, **kwargs)-> ErrorStatus :
+      '''getCompoundObjectTransform( (Entity)arg1, (Matrix3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus getCompoundObjectTransform(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
+    ...
+    def getEcs (self, *args, **kwargs)-> None :
+      '''getEcs( (Entity)arg1, (Matrix3d)arg2) -> None :
+
+    C++ signature :
+        void getEcs(class PyDbEntity {lvalue},class AcGeMatrix3d {lvalue})'''
+    ...
+    def getField (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getFieldDictionary (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def getGeomExtents (self, *args, **kwargs)-> ErrorStatus :
+      '''getGeomExtents( (Entity)arg1, (Extents)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus getGeomExtents(class PyDbEntity {lvalue},class AcDbExtents {lvalue})'''
+    ...
+    def getHandle (self: DbObject)-> Handle :
+      '''                             '''
+    ...
+    def getPlane (self, *args, **kwargs)-> Plane :
+      '''getPlane( (Entity)arg1) -> Plane :
+
+    C++ signature :
+        class PyGePlane getPlane(class PyDbEntity {lvalue})'''
+    ...
+    def getPlotStyleNameId (self, *args, **kwargs)-> ObjectId :
+      '''getPlotStyleNameId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getPlotStyleNameId(class PyDbEntity {lvalue})'''
+    ...
+    def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def hasFields (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
+    def intersectWith (self, *args, **kwargs)-> ErrorStatus :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
+    ...
+    def isA (self, *args, **kwargs)-> RxClass :
+      '''isA( (Drawable)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+    ...
+    def isAProxy (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isCancelling (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isEraseStatusToggled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isErased (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModified (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedGraphics (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isModifiedXData (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNewObject (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifyEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNotifying (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
+    ...
+    def isPlanar (self, *args, **kwargs)-> bool :
+      '''isPlanar( (Entity)arg1) -> bool :
+
+    C++ signature :
+        bool isPlanar(class PyDbEntity {lvalue})'''
+    ...
+    def isReadEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isReallyClosing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isTransactionResident (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoRecordingDisabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isUndoing (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def isWriteEnabled (self: DbObject)-> bool :
+      '''                             '''
+    ...
+    def layer (self, *args, **kwargs)-> str :
+      '''layer( (Entity)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > layer(class PyDbEntity {lvalue})'''
+    ...
+    def layerId (self, *args, **kwargs)-> ObjectId :
+      '''layerId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId layerId(class PyDbEntity {lvalue})'''
+    ...
+    def lineWeight (self, *args, **kwargs)-> LineWeight :
+      '''lineWeight( (Entity)arg1) -> LineWeight :
+
+    C++ signature :
+        enum AcDb::LineWeight lineWeight(class PyDbEntity {lvalue})'''
+    ...
+    def linetype (self, *args, **kwargs)-> str :
+      '''linetype( (Entity)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > linetype(class PyDbEntity {lvalue})'''
+    ...
+    def linetypeId (self, *args, **kwargs)-> ObjectId :
+      '''linetypeId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId linetypeId(class PyDbEntity {lvalue})'''
+    ...
+    def linetypeScale (self, *args, **kwargs)-> float :
+      '''linetypeScale( (Entity)arg1) -> float :
+
+    C++ signature :
+        double linetypeScale(class PyDbEntity {lvalue})'''
+    ...
+    def list (self, *args, **kwargs)-> None :
+      '''list( (Entity)arg1) -> None :
+
+    C++ signature :
+        void list(class PyDbEntity {lvalue})'''
+    ...
+    def material (self, *args, **kwargs)-> str :
+      '''material( (Entity)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > material(class PyDbEntity {lvalue})'''
+    ...
+    def materialId (self, *args, **kwargs)-> ObjectId :
+      '''materialId( (Entity)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
+    ...
+    def objectId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def plotStyleName (self, *args, **kwargs)-> str :
+      '''plotStyleName( (Entity)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > plotStyleName(class PyDbEntity {lvalue})'''
+    ...
+    def receiveShadows (self, *args, **kwargs)-> bool :
+      '''receiveShadows( (Entity)arg1) -> bool :
+
+    C++ signature :
+        bool receiveShadows(class PyDbEntity {lvalue})'''
+    ...
+    def recordGraphicsModified (self, *args, **kwargs)-> None :
+      '''recordGraphicsModified( (Entity)arg1) -> None :
+
+    C++ signature :
+        void recordGraphicsModified(class PyDbEntity {lvalue})
+
+recordGraphicsModified( (Entity)arg1) -> None :
+
+    C++ signature :
+        void recordGraphicsModified(class PyDbEntity {lvalue})'''
+    ...
+    def refCount (self, *args, **kwargs)-> int :
+      '''refCount( (RxObject)arg1) -> int :
+
+    C++ signature :
+        int refCount(class PyRxObject {lvalue})'''
+    ...
+    def releaseExtensionDictionary (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def removeField (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    ...
+    def setCastShadows (self, *args, **kwargs)-> None :
+      '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setCastShadows(class PyDbEntity {lvalue},bool)'''
+    ...
+    def setColor (self, *args, **kwargs)-> ErrorStatus :
+      '''setColor( (Entity)arg1, (Color)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColor(class PyDbEntity {lvalue},class AcCmColor)
+
+setColor( (Entity)arg1, (Color)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColor(class PyDbEntity {lvalue},class AcCmColor,bool)
+
+setColor( (Entity)arg1, (Color)arg2, (bool)arg3, (Database)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColor(class PyDbEntity {lvalue},class AcCmColor,bool,class PyDbDatabase {lvalue})'''
+    ...
+    def setColorIndex (self, *args, **kwargs)-> ErrorStatus :
+      '''setColorIndex( (Entity)arg1, (int)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColorIndex(class PyDbEntity {lvalue},unsigned short)
+
+setColorIndex( (Entity)arg1, (int)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setColorIndex(class PyDbEntity {lvalue},unsigned short,bool)'''
+    ...
+    def setDatabaseDefaults (self, *args, **kwargs)-> None :
+      '''setDatabaseDefaults( (Entity)arg1) -> None :
+
+    C++ signature :
+        void setDatabaseDefaults(class PyDbEntity {lvalue})
+
+setDatabaseDefaults( (Entity)arg1, (Database)arg2) -> None :
+
+    C++ signature :
+        void setDatabaseDefaults(class PyDbEntity {lvalue},class PyDbDatabase)'''
+    ...
+    def setField (self: DbObject,obj: Field)-> ObjectId :
+      '''                             '''
+    ...
+    def setLayer (self, *args, **kwargs)-> ErrorStatus :
+      '''setLayer( (Entity)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setLayer( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setLayer( (Entity)arg1, (str)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,bool)
+
+setLayer( (Entity)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class PyDbObjectId)
+
+setLayer( (Entity)arg1, (ObjectId)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class PyDbObjectId,bool)
+
+setLayer( (Entity)arg1, (ObjectId)arg2, (bool)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLayer(class PyDbEntity {lvalue},class PyDbObjectId,bool,bool)'''
+    ...
+    def setLineWeight (self, *args, **kwargs)-> ErrorStatus :
+      '''setLineWeight( (Entity)arg1, (LineWeight)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLineWeight(class PyDbEntity {lvalue},enum AcDb::LineWeight)
+
+setLineWeight( (Entity)arg1, (LineWeight)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLineWeight(class PyDbEntity {lvalue},enum AcDb::LineWeight,bool)'''
+    ...
+    def setLinetype (self, *args, **kwargs)-> ErrorStatus :
+      '''setLinetype( (Entity)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setLinetype( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setLinetype( (Entity)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class PyDbObjectId)
+
+setLinetype( (Entity)arg1, (ObjectId)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetype(class PyDbEntity {lvalue},class PyDbObjectId,bool)'''
+    ...
+    def setLinetypeScale (self, *args, **kwargs)-> ErrorStatus :
+      '''setLinetypeScale( (Entity)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetypeScale(class PyDbEntity {lvalue},double)
+
+setLinetypeScale( (Entity)arg1, (float)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setLinetypeScale(class PyDbEntity {lvalue},double,bool)'''
+    ...
+    def setMaterial (self, *args, **kwargs)-> ErrorStatus :
+      '''setMaterial( (Entity)arg1, (str)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setMaterial( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setMaterial( (Entity)arg1, (ObjectId)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class PyDbObjectId)
+
+setMaterial( (Entity)arg1, (ObjectId)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setMaterial(class PyDbEntity {lvalue},class PyDbObjectId,bool)'''
+    ...
+    def setOwnerId (self: DbObject,owner: ObjectId)-> ErrorStatus :
+      '''                             '''
+    ...
+    def setPlotStyleName (self, *args, **kwargs)-> ErrorStatus :
+      '''setPlotStyleName( (Entity)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPlotStyleName(class PyDbEntity {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,bool)
+
+setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
+    ...
+    def setPropertiesFrom (self, *args, **kwargs)-> ErrorStatus :
+      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
+
+setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    ...
+    def setReceiveShadows (self, *args, **kwargs)-> None :
+      '''setReceiveShadows( (Entity)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setReceiveShadows(class PyDbEntity {lvalue},bool)'''
+    ...
+    def setVisibility (self, *args, **kwargs)-> ErrorStatus :
+      '''setVisibility( (Entity)arg1, (Visibility)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility)
+
+setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
+    ...
+    def setXData (self: DbObject,xdata: list)-> ErrorStatus :
+      '''                             '''
+    ...
+    def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def transformBy (self, *args, **kwargs)-> ErrorStatus :
+      '''transformBy( (Entity)arg1, (Matrix3d)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus transformBy(class PyDbEntity {lvalue},class AcGeMatrix3d)'''
+    ...
+    def upgradeFromNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
+      '''                             '''
+    ...
+    def upgradeOpen (self: DbObject)-> ErrorStatus :
+      '''                             '''
+    ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def visibility (self, *args, **kwargs)-> Visibility :
+      '''visibility( (Entity)arg1) -> Visibility :
+
+    C++ signature :
+        enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
+    ...
+    def xData (self: DbObject,appname: str)-> list :
+      '''                             '''
+    ...
+    def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> ErrorStatus :
+      '''                             '''
     ...
 
 class Cell:
@@ -10568,6 +11850,12 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -10660,6 +11948,12 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
@@ -10861,6 +12155,12 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -10924,17 +12224,23 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def isPeriodic (self, *args, **kwargs)-> bool :
       '''isPeriodic( (Curve)arg1) -> bool :
 
     C++ signature :
         bool isPeriodic(class PyDbCurve {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -11075,6 +12381,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus reverseCurve(class PyDbCurve {lvalue})'''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -11325,11 +12643,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -11701,7 +13037,7 @@ class Color:
         void setByLayer(class AcCmColor {lvalue})'''
     ...
     def setCOLORREF (self, *args, **kwargs)-> ErrorStatus :
-      '''setCOLORREF( (Color)arg1, (int)arg2) -> ErrorStatus :
+      '''setCOLORREF( (Color)arg1, (SubentType)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setCOLORREF(class AcCmColor {lvalue},unsigned int)'''
@@ -11737,7 +13073,7 @@ class Color:
         enum Acad::ErrorStatus setPenIndex(class AcCmColor {lvalue},unsigned short)'''
     ...
     def setRGB (self, *args, **kwargs)-> ErrorStatus :
-      '''setRGB( (Color)arg1, (int)arg2) -> ErrorStatus :
+      '''setRGB( (Color)arg1, (SubentType)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setRGB(class AcCmColor {lvalue},unsigned int)
@@ -11748,7 +13084,7 @@ setRGB( (Color)arg1, (int)arg2, (int)arg3, (int)arg4) -> ErrorStatus :
         enum Acad::ErrorStatus setRGB(class AcCmColor {lvalue},unsigned char,unsigned char,unsigned char)'''
     ...
     def setRGBM (self, *args, **kwargs)-> ErrorStatus :
-      '''setRGBM( (Color)arg1, (int)arg2) -> ErrorStatus :
+      '''setRGBM( (Color)arg1, (SubentType)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setRGBM(class AcCmColor {lvalue},unsigned int)'''
@@ -12234,6 +13570,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -12308,6 +13650,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
@@ -12509,6 +13857,12 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -12572,17 +13926,23 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def isPeriodic (self, *args, **kwargs)-> bool :
       '''isPeriodic( (Curve)arg1) -> bool :
 
     C++ signature :
         bool isPeriodic(class PyDbCurve {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -12711,6 +14071,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus reverseCurve(class PyDbCurve {lvalue})'''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -12919,11 +14291,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -13172,7 +14562,7 @@ __init__( (object)arg1, (bool)arg2, (bool)arg3) -> None :
         short coords(class PyDbDatabase {lvalue})'''
     ...
     def countEmptyObjects (self, *args, **kwargs)-> int :
-      '''countEmptyObjects( (Database)arg1, (int)arg2) -> int :
+      '''countEmptyObjects( (Database)arg1, (SubentType)arg2) -> int :
 
     C++ signature :
         unsigned int countEmptyObjects(class PyDbDatabase {lvalue},unsigned int)'''
@@ -13334,7 +14724,7 @@ __init__( (object)arg1, (bool)arg2, (bool)arg3) -> None :
         double elevation(class PyDbDatabase {lvalue})'''
     ...
     def eraseEmptyObjects (self, *args, **kwargs)-> int :
-      '''eraseEmptyObjects( (Database)arg1, (int)arg2) -> int :
+      '''eraseEmptyObjects( (Database)arg1, (SubentType)arg2) -> int :
 
     C++ signature :
         unsigned int eraseEmptyObjects(class PyDbDatabase {lvalue},unsigned int)'''
@@ -13399,7 +14789,7 @@ __init__( (object)arg1, (bool)arg2, (bool)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus getAcDbObjectId(class PyDbDatabase {lvalue},class PyDbObjectId {lvalue},bool,class PyDbHandle)
 
-getAcDbObjectId( (Database)arg1, (ObjectId)arg2, (bool)arg3, (Handle)arg4, (int)arg5) -> ErrorStatus :
+getAcDbObjectId( (Database)arg1, (ObjectId)arg2, (bool)arg3, (Handle)arg4, (SubentType)arg5) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus getAcDbObjectId(class PyDbDatabase {lvalue},class PyDbObjectId {lvalue},bool,class PyDbHandle,unsigned int)'''
@@ -13562,11 +14952,11 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> ErrorStat
     C++ signature :
         bool isEMR(class PyDbDatabase {lvalue})'''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def isObjectNonPersistent (self, *args, **kwargs)-> bool :
       '''isObjectNonPersistent( (ObjectId)arg1) -> bool :
@@ -15730,6 +17120,12 @@ class DbObject:
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -15763,6 +17159,12 @@ class DbObject:
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -15786,6 +17188,12 @@ class DbObject:
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
+    ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -15823,11 +17231,17 @@ class DbObject:
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -15868,6 +17282,18 @@ class DbObject:
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    ...
     def setField (self: DbObject,obj: Field)-> ObjectId :
       '''                             '''
     ...
@@ -15885,6 +17311,24 @@ class DbObject:
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -16014,6 +17458,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     C++ signature :
         class AcGeMatrix3d blockTransform(class PyDbDimension {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -16142,6 +17592,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
 
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def elevation (self, *args, **kwargs)-> float :
       '''elevation( (Dimension)arg1) -> float :
@@ -16280,6 +17736,12 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         double horizontalRotation(class PyDbDimension {lvalue})'''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def inspection (self, *args, **kwargs)-> bool :
       '''inspection( (Dimension)arg1) -> bool :
 
@@ -16379,11 +17841,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -16560,6 +18028,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void resetTextDefinedSize(class PyDbDimension {lvalue})'''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def setAltSuppressLeadingZeros (self, *args, **kwargs)-> ErrorStatus :
       '''setAltSuppressLeadingZeros( (Dimension)arg1, (bool)arg2) -> ErrorStatus :
 
@@ -16631,6 +18105,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus setArrowSecondIsFlipped(class PyDbDimension {lvalue},bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -17210,11 +18690,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus useSetTextPosition(class PyDbDimension {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -17263,6 +18761,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -17308,6 +18812,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -17349,6 +18859,12 @@ has( (Dictionary)arg1, (ObjectId)arg2) -> bool :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -17385,11 +18901,17 @@ has( (Dictionary)arg1, (ObjectId)arg2) -> bool :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -17458,11 +18980,23 @@ remove( (Dictionary)arg1, (ObjectId)arg2) -> ErrorStatus :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def setAt (self, *args, **kwargs)-> ObjectId :
       '''setAt( (Dictionary)arg1, (str)arg2, (DbObject)arg3) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId setAt(class PyDbDictionary {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObject {lvalue})'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setField (self: DbObject,obj: Field)-> ObjectId :
       '''                             '''
@@ -17487,6 +19021,24 @@ remove( (Dictionary)arg1, (ObjectId)arg2) -> ErrorStatus :
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -17659,6 +19211,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -17704,6 +19262,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -17745,6 +19309,12 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -17781,11 +19351,17 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -17832,6 +19408,18 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    ...
     def setField (self: DbObject,obj: Field)-> ObjectId :
       '''                             '''
     ...
@@ -17855,6 +19443,24 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -17896,6 +19502,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -17942,6 +19554,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -17971,6 +19589,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
+    ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -18014,11 +19638,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -18071,6 +19701,18 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    ...
     def setField (self: DbObject,obj: Field)-> ObjectId :
       '''                             '''
     ...
@@ -18094,6 +19736,24 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -18197,6 +19857,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class AcGeMatrix3d blockTransform(class PyDbDimension {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -18321,6 +19987,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def elevation (self, *args, **kwargs)-> float :
       '''elevation( (Dimension)arg1) -> float :
 
@@ -18440,6 +20112,12 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         double horizontalRotation(class PyDbDimension {lvalue})'''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def inspection (self, *args, **kwargs)-> bool :
       '''inspection( (Dimension)arg1) -> bool :
 
@@ -18539,11 +20217,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -18714,6 +20398,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void resetTextDefinedSize(class PyDbDimension {lvalue})'''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def setAltSuppressLeadingZeros (self, *args, **kwargs)-> ErrorStatus :
       '''setAltSuppressLeadingZeros( (Dimension)arg1, (bool)arg2) -> ErrorStatus :
 
@@ -18785,6 +20475,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus setArrowSecondIsFlipped(class PyDbDimension {lvalue},bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -19334,11 +21030,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus useSetTextPosition(class PyDbDimension {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -20947,6 +22661,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -21022,6 +22742,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -21082,6 +22808,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -21139,11 +22871,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -21266,6 +23004,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -21474,11 +23224,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -21699,7 +23467,7 @@ black() -> EntityColor :
         void setByLayer(class AcCmEntityColor {lvalue})'''
     ...
     def setCOLORREF (self, *args, **kwargs)-> ErrorStatus :
-      '''setCOLORREF( (EntityColor)arg1, (int)arg2) -> ErrorStatus :
+      '''setCOLORREF( (EntityColor)arg1, (SubentType)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setCOLORREF(class AcCmEntityColor {lvalue},unsigned int)'''
@@ -21741,7 +23509,7 @@ black() -> EntityColor :
         enum Acad::ErrorStatus setPenIndex(class AcCmEntityColor {lvalue},unsigned short)'''
     ...
     def setRGB (self, *args, **kwargs)-> ErrorStatus :
-      '''setRGB( (EntityColor)arg1, (int)arg2) -> ErrorStatus :
+      '''setRGB( (EntityColor)arg1, (SubentType)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setRGB(class AcCmEntityColor {lvalue},unsigned int)
@@ -21752,7 +23520,7 @@ setRGB( (EntityColor)arg1, (int)arg2, (int)arg3, (int)arg4) -> ErrorStatus :
         enum Acad::ErrorStatus setRGB(class AcCmEntityColor {lvalue},unsigned char,unsigned char,unsigned char)'''
     ...
     def setRGBM (self, *args, **kwargs)-> ErrorStatus :
-      '''setRGBM( (EntityColor)arg1, (int)arg2) -> ErrorStatus :
+      '''setRGBM( (EntityColor)arg1, (SubentType)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setRGBM(class AcCmEntityColor {lvalue},unsigned int)'''
@@ -23538,11 +25306,11 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def refCount (self, *args, **kwargs)-> int :
       '''refCount( (RxObject)arg1) -> int :
@@ -23763,6 +25531,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -23838,6 +25612,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -23898,6 +25678,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -23955,11 +25741,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -24082,6 +25874,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -24290,11 +26094,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -24362,6 +26184,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -24438,6 +26266,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -24504,6 +26338,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -24567,11 +26407,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -24706,6 +26552,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -24925,11 +26783,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -24982,6 +26858,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -25058,6 +26940,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -25124,6 +27012,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -25187,11 +27081,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -25326,6 +27226,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -25540,11 +27452,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -25597,6 +27527,12 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -25721,6 +27657,12 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -25799,6 +27741,12 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -25856,11 +27804,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -25995,6 +27949,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -26292,11 +28258,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -26348,6 +28332,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -26405,6 +28395,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -26476,6 +28472,12 @@ evaluate( (Field)arg1, (FieldEvalContext)arg2, (Database)arg3) -> ErrorStatus :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -26512,11 +28514,17 @@ evaluate( (Field)arg1, (FieldEvalContext)arg2, (Database)arg3) -> ErrorStatus :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -26569,6 +28577,18 @@ evaluate( (Field)arg1, (FieldEvalContext)arg2, (Database)arg3) -> ErrorStatus :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    ...
     def setEvaluationOption (self, *args, **kwargs)-> ErrorStatus :
       '''setEvaluationOption( (Field)arg1, (FieldEvalOption)arg2) -> ErrorStatus :
 
@@ -26616,6 +28636,24 @@ evaluate( (Field)arg1, (FieldEvalContext)arg2, (Database)arg3) -> ErrorStatus :
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -27954,13 +29992,13 @@ __init__( (object)arg1, (int)arg2) -> None :
         unsigned int low(class PyDbHandle {lvalue})'''
     ...
     def setHigh (self, *args, **kwargs)-> None :
-      '''setHigh( (Handle)arg1, (int)arg2) -> None :
+      '''setHigh( (Handle)arg1, (SubentType)arg2) -> None :
 
     C++ signature :
         void setHigh(class PyDbHandle {lvalue},unsigned int)'''
     ...
     def setLow (self, *args, **kwargs)-> None :
-      '''setLow( (Handle)arg1, (int)arg2) -> None :
+      '''setLow( (Handle)arg1, (SubentType)arg2) -> None :
 
     C++ signature :
         void setLow(class PyDbHandle {lvalue},unsigned int)'''
@@ -28060,6 +30098,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -28134,6 +30178,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def elevation (self, *args, **kwargs)-> float :
       '''elevation( (Hatch)arg1) -> float :
@@ -28338,6 +30388,12 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> ErrorStatus :
     C++ signature :
         enum AcDbHatch::HatchStyle hatchStyle(class PyDbHatch {lvalue})'''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def insertLoopAt (self, *args, **kwargs)-> ErrorStatus :
       '''insertLoopAt( (Hatch)arg1, (int)arg2, (int)arg3, (list)arg4) -> ErrorStatus :
 
@@ -28413,11 +30469,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -28637,11 +30699,23 @@ recordGraphicsModified( (Entity)arg1) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def setAssociative (self, *args, **kwargs)-> ErrorStatus :
       '''setAssociative( (Hatch)arg1, (bool)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setAssociative(class PyDbHatch {lvalue},bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setBackgroundColor (self, *args, **kwargs)-> ErrorStatus :
       '''setBackgroundColor( (Hatch)arg1, (Color)arg2) -> ErrorStatus :
@@ -28964,11 +31038,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -29856,6 +31948,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -29931,6 +32029,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -29991,6 +32095,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -30048,11 +32158,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -30175,6 +32291,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -30383,11 +32511,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -30989,6 +33135,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -31034,6 +33186,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -31075,6 +33233,12 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -31111,11 +33275,17 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -31162,6 +33332,18 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    ...
     def setField (self: DbObject,obj: Field)-> ObjectId :
       '''                             '''
     ...
@@ -31185,6 +33367,24 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -31232,6 +33432,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -31295,6 +33501,12 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (LayerTableRecord)arg1) -> EntityColor :
 
@@ -31342,6 +33554,12 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
+    ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -31414,17 +33632,23 @@ isHidden( (ObjectId)arg1) -> bool :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def isOff (self, *args, **kwargs)-> bool :
       '''isOff( (LayerTableRecord)arg1) -> bool :
 
     C++ signature :
         bool isOff(class PyDbLayerTableRecord {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlottable (self, *args, **kwargs)-> bool :
       '''isPlottable( (LayerTableRecord)arg1) -> bool :
@@ -31586,6 +33810,18 @@ removeAllOverrides( (LayerTableRecord)arg1) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus removeViewportOverrides(class PyDbLayerTableRecord {lvalue},class PyDbObjectId)'''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    ...
     def setColor (self, *args, **kwargs)-> None :
       '''setColor( (LayerTableRecord)arg1, (Color)arg2) -> None :
 
@@ -31729,6 +33965,24 @@ transparency( (LayerTableRecord)arg1, (ObjectId)arg2) -> Transparency :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
+    ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
@@ -31788,6 +34042,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -31838,6 +34098,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         bool drawViewportsFirst(class PyDbPlotSettings {lvalue})'''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -31971,6 +34237,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def initialize (self, *args, **kwargs)-> ErrorStatus :
       '''initialize( (Layout)arg1) -> ErrorStatus :
 
@@ -32018,11 +34290,17 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> ErrorStatus :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -32135,6 +34413,12 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> ErrorStatus :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def scaleLineweights (self, *args, **kwargs)-> bool :
       '''scaleLineweights( (PlotSettings)arg1) -> bool :
 
@@ -32146,6 +34430,12 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setAnnoAllVisible(class PyDbLayout {lvalue},bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setBlockTableRecordId (self, *args, **kwargs)-> ErrorStatus :
       '''setBlockTableRecordId( (Layout)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -32308,6 +34598,24 @@ setShadePlot( (PlotSettings)arg1, (ShadePlotType)arg2, (ObjectId)arg3) -> ErrorS
     C++ signature :
         bool useStandardScale(class PyDbPlotSettings {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
+    ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
@@ -32440,11 +34748,11 @@ getActiveLayoutName( (LayoutManager)arg1, (bool)arg2, (Database)arg3) -> str :
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def isVpnumClipped (self, *args, **kwargs)-> bool :
       '''isVpnumClipped( (LayoutManager)arg1, (int)arg2) -> bool :
@@ -32585,6 +34893,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -32738,6 +35052,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
@@ -32980,6 +35300,12 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -33043,17 +35369,23 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def isPeriodic (self, *args, **kwargs)-> bool :
       '''isPeriodic( (Curve)arg1) -> bool :
 
     C++ signature :
         bool isPeriodic(class PyDbCurve {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -33219,6 +35551,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         enum Acad::ErrorStatus reverseCurve(class PyDbCurve {lvalue})'''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def setAnnotationObjId (self, *args, **kwargs)-> ErrorStatus :
       '''setAnnotationObjId( (Leader)arg1, (ObjectId)arg2) -> ErrorStatus :
 
@@ -33230,6 +35568,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus setAnnotationOffset(class PyDbLeader {lvalue},class AcGeVector3d)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -33557,11 +35901,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         class AcGePoint3d vertexAt(class PyDbLeader {lvalue},int)'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -33614,6 +35976,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -33689,6 +36057,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def endPoint (self, *args, **kwargs)-> Point3d :
       '''endPoint( (Line)arg1) -> Point3d :
@@ -33896,6 +36270,12 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -33959,17 +36339,23 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def isPeriodic (self, *args, **kwargs)-> bool :
       '''isPeriodic( (Curve)arg1) -> bool :
 
     C++ signature :
         bool isPeriodic(class PyDbCurve {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -34104,6 +36490,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus reverseCurve(class PyDbCurve {lvalue})'''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -34348,11 +36746,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -34488,6 +36904,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         class AcGeMatrix3d blockTransform(class PyDbDimension {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -34610,6 +37032,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
 
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def elevation (self, *args, **kwargs)-> float :
       '''elevation( (Dimension)arg1) -> float :
@@ -34736,6 +37164,12 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         double horizontalRotation(class PyDbDimension {lvalue})'''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def inspection (self, *args, **kwargs)-> bool :
       '''inspection( (Dimension)arg1) -> bool :
 
@@ -34835,11 +37269,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -35010,6 +37450,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void resetTextDefinedSize(class PyDbDimension {lvalue})'''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def setAltSuppressLeadingZeros (self, *args, **kwargs)-> ErrorStatus :
       '''setAltSuppressLeadingZeros( (Dimension)arg1, (bool)arg2) -> ErrorStatus :
 
@@ -35087,6 +37533,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus setArrowSecondIsFlipped(class PyDbDimension {lvalue},bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -35666,11 +38118,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus useSetTextPosition(class PyDbDimension {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -36052,6 +38522,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -36097,6 +38573,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -36138,6 +38620,12 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -36174,11 +38662,17 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -36225,6 +38719,18 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    ...
     def setField (self: DbObject,obj: Field)-> ObjectId :
       '''                             '''
     ...
@@ -36248,6 +38754,24 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -36289,6 +38813,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -36347,6 +38877,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -36376,6 +38912,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
+    ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -36419,11 +38961,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -36493,6 +39041,18 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setComments (self, *args, **kwargs)-> ErrorStatus :
       '''setComments( (LinetypeTableRecord)arg1, (str)arg2) -> ErrorStatus :
@@ -36644,6 +39204,24 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
+    ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
@@ -36690,6 +39268,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -36766,6 +39350,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -36826,6 +39416,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -36883,11 +39479,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -37010,6 +39612,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -37218,11 +39832,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -37299,6 +39931,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class AcGeMatrix3d blockTransform(class PyDbBlockReference {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -37387,6 +40025,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -37464,6 +40108,12 @@ geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -37521,11 +40171,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -37673,6 +40329,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def rotation (self, *args, **kwargs)-> float :
       '''rotation( (BlockReference)arg1) -> float :
 
@@ -37696,6 +40358,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         class AcGeScale3d scaleFactors(class PyDbBlockReference {lvalue})'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setBlockTableRecord (self, *args, **kwargs)-> ErrorStatus :
       '''setBlockTableRecord( (BlockReference)arg1, (ObjectId)arg2) -> ErrorStatus :
@@ -37970,11 +40638,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -38095,6 +40781,12 @@ addLeaderLine( (MLeader)arg1, (Point3d)arg2) -> int :
     C++ signature :
         class AcGeScale3d blockScale(class PyDbMLeader {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -38192,6 +40884,12 @@ connectionPoint( (MLeader)arg1, (Vector3d)arg2, (MLeaderTextAttachmentDirection)
 
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def enableAnnotationScale (self, *args, **kwargs)-> bool :
       '''enableAnnotationScale( (MLeader)arg1) -> bool :
@@ -38419,6 +41117,12 @@ getLeaderLineIndexes( (MLeader)arg1, (int)arg2) -> list :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -38476,17 +41180,23 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def isOverride (self, *args, **kwargs)-> bool :
       '''isOverride( (MLeader)arg1, (MLeaderPropertyOverrideType)arg2) -> bool :
 
     C++ signature :
         bool isOverride(class PyDbMLeader {lvalue},enum AcDbMLeader::PropertyOverrideType)'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -38741,6 +41451,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def scale (self, *args, **kwargs)-> float :
       '''scale( (MLeader)arg1) -> float :
 
@@ -38768,6 +41484,12 @@ setArrowSymbolId( (MLeader)arg1, (int)arg2, (ObjectId)arg3) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setArrowSymbolId(class PyDbMLeader {lvalue},int,class PyDbObjectId)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setBlockAttributeValue (self, *args, **kwargs)-> ErrorStatus :
       '''setBlockAttributeValue( (MLeader)arg1, (ObjectId)arg2, (AttributeReference)arg3) -> ErrorStatus :
@@ -39291,11 +42013,29 @@ textAttachmentType( (MLeader)arg1, (MLeaderLeaderDirectionType)arg2) -> MLeaderT
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -40516,6 +43256,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class AcGeScale3d blockScale(class PyDbMLeaderStyle {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def breakSize (self, *args, **kwargs)-> float :
       '''breakSize( (MLeaderStyle)arg1) -> float :
 
@@ -40602,6 +43348,12 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
     C++ signature :
         enum AcDbMLeaderStyle::DrawMLeaderOrderType drawMLeaderOrderType(class PyDbMLeaderStyle {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def enableBlockRotation (self, *args, **kwargs)-> bool :
       '''enableBlockRotation( (MLeaderStyle)arg1) -> bool :
 
@@ -40674,6 +43426,12 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -40710,11 +43468,17 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -40809,6 +43573,12 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def scale (self, *args, **kwargs)-> float :
       '''scale( (MLeaderStyle)arg1) -> float :
 
@@ -40850,8 +43620,14 @@ setArrowSymbolId( (MLeaderStyle)arg1, (ObjectId)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus setArrowSymbolId(class PyDbMLeaderStyle {lvalue},class PyDbObjectId)'''
     ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    ...
     def setBitFlags (self, *args, **kwargs)-> ErrorStatus :
-      '''setBitFlags( (MLeaderStyle)arg1, (int)arg2) -> ErrorStatus :
+      '''setBitFlags( (MLeaderStyle)arg1, (SubentType)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setBitFlags(class PyDbMLeaderStyle {lvalue},unsigned int)'''
@@ -41147,6 +43923,24 @@ setDrawLeaderOrderType( (MLeaderStyle)arg1, (DrawLeaderOrderType)arg2) -> ErrorS
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -41741,6 +44535,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -41851,6 +44651,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
@@ -41996,6 +44802,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         bool hitTest(class PyDbMText {lvalue},class AcGePoint3d)'''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -42053,11 +44865,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -42205,6 +45023,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def rotation (self, *args, **kwargs)-> float :
       '''rotation( (MText)arg1) -> float :
 
@@ -42222,6 +45046,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus setAttachmentMovingLocation(class PyDbMText {lvalue},enum AcDbMText::AttachmentPoint)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setBackgroundFill (self, *args, **kwargs)-> ErrorStatus :
       '''setBackgroundFill( (MText)arg1, (bool)arg2) -> ErrorStatus :
@@ -42616,6 +45446,18 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         bool useBackgroundColorOn(class PyDbMText {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
@@ -42627,6 +45469,12 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
 
     C++ signature :
         double width(class PyDbMText {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -43379,6 +46227,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -43459,6 +46313,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def element (self, *args, **kwargs)-> int :
       '''element( (Mline)arg1, (Point3d)arg2) -> int :
@@ -43547,6 +46407,12 @@ getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4, (bool
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -43604,11 +46470,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -43768,11 +46640,23 @@ recordGraphicsModified( (Entity)arg1) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def scale (self, *args, **kwargs)-> float :
       '''scale( (Mline)arg1) -> float :
 
     C++ signature :
         double scale(class PyDbMline {lvalue})'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -44047,11 +46931,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         class AcGePoint3d vertexAt(class PyDbMline {lvalue},int)'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -44234,6 +47136,12 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -44284,6 +47192,12 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     ...
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def endAngle (self, *args, **kwargs)-> float :
       '''endAngle( (MlineStyle)arg1) -> float :
@@ -44351,6 +47265,12 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def initMlineStyle (self, *args, **kwargs)-> None :
       '''initMlineStyle( (MlineStyle)arg1) -> None :
 
@@ -44393,11 +47313,17 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -44456,6 +47382,12 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def set (self, *args, **kwargs)-> None :
       '''set( (MlineStyle)arg1, (MlineStyle)arg2) -> None :
 
@@ -44466,6 +47398,12 @@ set( (MlineStyle)arg1, (MlineStyle)arg2, (bool)arg3) -> None :
 
     C++ signature :
         void set(class PyDbMlineStyle {lvalue},class PyDbMlineStyle,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setDescription (self, *args, **kwargs)-> ErrorStatus :
       '''setDescription( (MlineStyle)arg1, (str)arg2) -> ErrorStatus :
@@ -44599,6 +47537,24 @@ set( (MlineStyle)arg1, (MlineStyle)arg2, (bool)arg3) -> None :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
+    ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
@@ -44645,6 +47601,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -44721,6 +47683,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -44781,6 +47749,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -44838,11 +47812,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -44965,6 +47945,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -45173,11 +48165,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -45221,11 +48231,11 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def refCount (self, *args, **kwargs)-> int :
       '''refCount( (RxObject)arg1) -> int :
@@ -45580,6 +48590,12 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     C++ signature :
         class AcGeMatrix3d blockTransform(class PyDbDimension {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -45709,6 +48725,12 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def elevation (self, *args, **kwargs)-> float :
       '''elevation( (Dimension)arg1) -> float :
 
@@ -45828,6 +48850,12 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         double horizontalRotation(class PyDbDimension {lvalue})'''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def inspection (self, *args, **kwargs)-> bool :
       '''inspection( (Dimension)arg1) -> bool :
 
@@ -45927,11 +48955,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -46126,6 +49160,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void resetTextDefinedSize(class PyDbDimension {lvalue})'''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def setAltSuppressLeadingZeros (self, *args, **kwargs)-> ErrorStatus :
       '''setAltSuppressLeadingZeros( (Dimension)arg1, (bool)arg2) -> ErrorStatus :
 
@@ -46197,6 +49237,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus setArrowSecondIsFlipped(class PyDbDimension {lvalue},bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -46788,11 +49834,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus useYAxis(class PyDbOrdinateDimension {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -46972,6 +50036,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -47023,6 +50093,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -47064,6 +50140,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
+    ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -47107,11 +50189,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -47163,6 +50251,18 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> ErrorStatus :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    ...
     def setField (self: DbObject,obj: Field)-> ObjectId :
       '''                             '''
     ...
@@ -47198,6 +50298,24 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> ErrorStatus :
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -47245,6 +50363,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -47351,6 +50475,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -47453,6 +50583,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         double height(class PyDbUnderlayReference {lvalue})'''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -47546,17 +50682,23 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def isOn (self, *args, **kwargs)-> bool :
       '''isOn( (UnderlayReference)arg1) -> bool :
 
     C++ signature :
         bool isOn(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -47692,6 +50834,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def rotation (self, *args, **kwargs)-> float :
       '''rotation( (UnderlayReference)arg1) -> float :
 
@@ -47703,6 +50851,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         class AcGeScale3d scaleFactors(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -48025,6 +51179,18 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
@@ -48036,6 +51202,12 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
 
     C++ signature :
         double width(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -48209,6 +51381,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -48284,6 +51462,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -48344,6 +51528,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -48401,11 +51591,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -48528,6 +51724,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -48736,11 +51944,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -49047,6 +52273,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -49097,6 +52329,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         bool drawViewportsFirst(class PyDbPlotSettings {lvalue})'''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -49188,6 +52426,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -49224,11 +52468,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -49341,11 +52591,23 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def scaleLineweights (self, *args, **kwargs)-> bool :
       '''scaleLineweights( (PlotSettings)arg1) -> bool :
 
     C++ signature :
         bool scaleLineweights(class PyDbPlotSettings {lvalue})'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setDrawViewportsFirst (self, *args, **kwargs)-> None :
       '''setDrawViewportsFirst( (PlotSettings)arg1, (bool)arg2) -> None :
@@ -49483,6 +52745,24 @@ setShadePlot( (PlotSettings)arg1, (ShadePlotType)arg2, (ObjectId)arg3) -> ErrorS
 
     C++ signature :
         bool useStandardScale(class PyDbPlotSettings {lvalue})'''
+    ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -49798,6 +53078,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -49873,6 +53159,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def ecsRotation (self, *args, **kwargs)-> float :
       '''ecsRotation( (Point)arg1) -> float :
 
@@ -49939,6 +53231,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -49996,11 +53294,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -50135,6 +53439,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -50373,11 +53689,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -50513,6 +53847,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         class AcGeMatrix3d blockTransform(class PyDbDimension {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -50642,6 +53982,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def elevation (self, *args, **kwargs)-> float :
       '''elevation( (Dimension)arg1) -> float :
 
@@ -50767,6 +54113,12 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         double horizontalRotation(class PyDbDimension {lvalue})'''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def inspection (self, *args, **kwargs)-> bool :
       '''inspection( (Dimension)arg1) -> bool :
 
@@ -50866,11 +54218,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -51041,6 +54399,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void resetTextDefinedSize(class PyDbDimension {lvalue})'''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def setAltSuppressLeadingZeros (self, *args, **kwargs)-> ErrorStatus :
       '''setAltSuppressLeadingZeros( (Dimension)arg1, (bool)arg2) -> ErrorStatus :
 
@@ -51118,6 +54482,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus setArrowSecondIsFlipped(class PyDbDimension {lvalue},bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -51691,11 +55061,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus useSetTextPosition(class PyDbDimension {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -52014,6 +55402,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -52089,6 +55483,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -52149,6 +55549,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -52206,11 +55612,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -52339,6 +55751,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -52553,11 +55977,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -52610,6 +56052,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -52686,6 +56134,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -52746,6 +56200,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -52803,11 +56263,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -52936,6 +56402,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -53156,11 +56634,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum AcDb::Vertex3dType vertexType(class PyDbPolygonMeshVertex {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -53181,7 +56677,7 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)
 
-__init__( (object)arg1, (int)arg2) -> None :
+__init__( (object)arg1, (SubentType)arg2) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,unsigned int)
@@ -53200,12 +56696,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def addVertexAt (self, *args, **kwargs)-> ErrorStatus :
-      '''addVertexAt( (Polyline)arg1, (int)arg2, (Point2d)arg3) -> ErrorStatus :
+      '''addVertexAt( (Polyline)arg1, (SubentType)arg2, (Point2d)arg3) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus addVertexAt(class PyDbPolyline {lvalue},unsigned int,class AcGePoint2d)
 
-addVertexAt( (Polyline)arg1, (int)arg2, (Point2d)arg3, (float)arg4, (float)arg5, (float)arg6) -> ErrorStatus :
+addVertexAt( (Polyline)arg1, (SubentType)arg2, (Point2d)arg3, (float)arg4, (float)arg5, (float)arg6) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus addVertexAt(class PyDbPolyline {lvalue},unsigned int,class AcGePoint2d,double,double,double)'''
@@ -53224,6 +56720,12 @@ addVertexAt( (Polyline)arg1, (int)arg2, (Point2d)arg3, (float)arg4, (float)arg5,
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -53300,6 +56802,12 @@ addVertexAt( (Polyline)arg1, (int)arg2, (Point2d)arg3, (float)arg4, (float)arg5,
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def elevation (self, *args, **kwargs)-> float :
       '''elevation( (Polyline)arg1) -> float :
 
@@ -53330,13 +56838,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> ErrorStatus :
       '''                             '''
     ...
     def getArcSeg2dAt (self, *args, **kwargs)-> CircArc2d :
-      '''getArcSeg2dAt( (Polyline)arg1, (int)arg2) -> CircArc2d :
+      '''getArcSeg2dAt( (Polyline)arg1, (SubentType)arg2) -> CircArc2d :
 
     C++ signature :
         class PyGeCircArc2d getArcSeg2dAt(class PyDbPolyline {lvalue},unsigned int)'''
     ...
     def getArcSeg3dAt (self, *args, **kwargs)-> CircArc3d :
-      '''getArcSeg3dAt( (Polyline)arg1, (int)arg2) -> CircArc3d :
+      '''getArcSeg3dAt( (Polyline)arg1, (SubentType)arg2) -> CircArc3d :
 
     C++ signature :
         class PyGeCircArc3d getArcSeg3dAt(class PyDbPolyline {lvalue},unsigned int)'''
@@ -53348,7 +56856,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> ErrorStatus :
         double getArea(class PyDbCurve {lvalue})'''
     ...
     def getBulgeAt (self, *args, **kwargs)-> float :
-      '''getBulgeAt( (Polyline)arg1, (int)arg2) -> float :
+      '''getBulgeAt( (Polyline)arg1, (SubentType)arg2) -> float :
 
     C++ signature :
         double getBulgeAt(class PyDbPolyline {lvalue},unsigned int)'''
@@ -53412,7 +56920,7 @@ getEcs( (Polyline)arg1, (Matrix3d)arg2) -> None :
         class AcGePoint3d getEndPoint(class PyDbCurve {lvalue})'''
     ...
     def getEndWidthAt (self, *args, **kwargs)-> float :
-      '''getEndWidthAt( (Polyline)arg1, (int)arg2) -> float :
+      '''getEndWidthAt( (Polyline)arg1, (SubentType)arg2) -> float :
 
     C++ signature :
         double getEndWidthAt(class PyDbPolyline {lvalue},unsigned int)'''
@@ -53444,13 +56952,13 @@ getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
       '''                             '''
     ...
     def getLineSeg2dAt (self, *args, **kwargs)-> LineSeg2d :
-      '''getLineSeg2dAt( (Polyline)arg1, (int)arg2) -> LineSeg2d :
+      '''getLineSeg2dAt( (Polyline)arg1, (SubentType)arg2) -> LineSeg2d :
 
     C++ signature :
         class PyGeLineSeg2d getLineSeg2dAt(class PyDbPolyline {lvalue},unsigned int)'''
     ...
     def getLineSeg3dAt (self, *args, **kwargs)-> LineSeg3d :
-      '''getLineSeg3dAt( (Polyline)arg1, (int)arg2) -> LineSeg3d :
+      '''getLineSeg3dAt( (Polyline)arg1, (SubentType)arg2) -> LineSeg3d :
 
     C++ signature :
         class PyGeLineSeg3d getLineSeg3dAt(class PyDbPolyline {lvalue},unsigned int)'''
@@ -53492,13 +57000,13 @@ getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
         class PyDbObjectId getPlotStyleNameId(class PyDbEntity {lvalue})'''
     ...
     def getPoint2dAt (self, *args, **kwargs)-> Point2d :
-      '''getPoint2dAt( (Polyline)arg1, (int)arg2) -> Point2d :
+      '''getPoint2dAt( (Polyline)arg1, (SubentType)arg2) -> Point2d :
 
     C++ signature :
         class AcGePoint2d getPoint2dAt(class PyDbPolyline {lvalue},unsigned int)'''
     ...
     def getPoint3dAt (self, *args, **kwargs)-> Point3d :
-      '''getPoint3dAt( (Polyline)arg1, (int)arg2) -> Point3d :
+      '''getPoint3dAt( (Polyline)arg1, (SubentType)arg2) -> Point3d :
 
     C++ signature :
         class AcGePoint3d getPoint3dAt(class PyDbPolyline {lvalue},unsigned int)'''
@@ -53557,7 +57065,7 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
         class AcGePoint3d getStartPoint(class PyDbCurve {lvalue})'''
     ...
     def getStartWidthAt (self, *args, **kwargs)-> float :
-      '''getStartWidthAt( (Polyline)arg1, (int)arg2) -> float :
+      '''getStartWidthAt( (Polyline)arg1, (SubentType)arg2) -> float :
 
     C++ signature :
         double getStartWidthAt(class PyDbPolyline {lvalue},unsigned int)'''
@@ -53594,6 +57102,12 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
 
     C++ signature :
         bool hasWidth(class PyDbPolyline {lvalue})'''
+    ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
@@ -53658,11 +57172,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def isOnlyLines (self, *args, **kwargs)-> bool :
       '''isOnlyLines( (Polyline)arg1) -> bool :
@@ -53675,6 +57189,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
 
     C++ signature :
         bool isPeriodic(class PyDbCurve {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -53788,7 +57308,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''                             '''
     ...
     def onSegAt (self, *args, **kwargs)-> bool :
-      '''onSegAt( (Polyline)arg1, (int)arg2, (Point2d)arg3, (float)arg4) -> bool :
+      '''onSegAt( (Polyline)arg1, (SubentType)arg2, (Point2d)arg3, (float)arg4) -> bool :
 
     C++ signature :
         bool onSegAt(class PyDbPolyline {lvalue},unsigned int,class AcGePoint2d,double)'''
@@ -53835,13 +57355,13 @@ recordGraphicsModified( (Entity)arg1) -> None :
       '''                             '''
     ...
     def removeVertexAt (self, *args, **kwargs)-> ErrorStatus :
-      '''removeVertexAt( (Polyline)arg1, (int)arg2) -> ErrorStatus :
+      '''removeVertexAt( (Polyline)arg1, (SubentType)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus removeVertexAt(class PyDbPolyline {lvalue},unsigned int)'''
     ...
     def reset (self, *args, **kwargs)-> None :
-      '''reset( (Polyline)arg1, (bool)arg2, (int)arg3) -> None :
+      '''reset( (Polyline)arg1, (bool)arg2, (SubentType)arg3) -> None :
 
     C++ signature :
         void reset(class PyDbPolyline {lvalue},bool,unsigned int)'''
@@ -53852,14 +57372,26 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         enum Acad::ErrorStatus reverseCurve(class PyDbCurve {lvalue})'''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def segType (self, *args, **kwargs)-> SegType :
-      '''segType( (Polyline)arg1, (int)arg2) -> SegType :
+      '''segType( (Polyline)arg1, (SubentType)arg2) -> SegType :
 
     C++ signature :
         enum AcDbPolyline::SegType segType(class PyDbPolyline {lvalue},unsigned int)'''
     ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    ...
     def setBulgeAt (self, *args, **kwargs)-> ErrorStatus :
-      '''setBulgeAt( (Polyline)arg1, (int)arg2, (float)arg3) -> ErrorStatus :
+      '''setBulgeAt( (Polyline)arg1, (SubentType)arg2, (float)arg3) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setBulgeAt(class PyDbPolyline {lvalue},unsigned int,double)'''
@@ -54056,7 +57588,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
         enum Acad::ErrorStatus setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
     def setPointAt (self, *args, **kwargs)-> ErrorStatus :
-      '''setPointAt( (Polyline)arg1, (int)arg2, (Point2d)arg3) -> ErrorStatus :
+      '''setPointAt( (Polyline)arg1, (SubentType)arg2, (Point2d)arg3) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setPointAt(class PyDbPolyline {lvalue},unsigned int,class AcGePoint2d)'''
@@ -54096,7 +57628,7 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
         enum Acad::ErrorStatus setVisibility(class PyDbEntity {lvalue},enum AcDb::Visibility,bool)'''
     ...
     def setWidthsAt (self, *args, **kwargs)-> ErrorStatus :
-      '''setWidthsAt( (Polyline)arg1, (int)arg2, (float)arg3, (float)arg4) -> ErrorStatus :
+      '''setWidthsAt( (Polyline)arg1, (SubentType)arg2, (float)arg3, (float)arg4) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setWidthsAt(class PyDbPolyline {lvalue},unsigned int,double,double)'''
@@ -54125,11 +57657,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -54193,6 +57743,12 @@ appendVertex( (Polyline2d)arg1, (ObjectId)arg2, (Vertex2d)arg3) -> ErrorStatus :
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -54292,6 +57848,12 @@ appendVertex( (Polyline2d)arg1, (ObjectId)arg2, (Vertex2d)arg3) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def elevation (self, *args, **kwargs)-> float :
       '''elevation( (Polyline2d)arg1) -> float :
@@ -54499,6 +58061,12 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def insertVertexAt (self, *args, **kwargs)-> ErrorStatus :
       '''insertVertexAt( (Polyline2d)arg1, (Vertex2d)arg2, (Vertex2d)arg3) -> ErrorStatus :
 
@@ -54579,17 +58147,23 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def isPeriodic (self, *args, **kwargs)-> bool :
       '''isPeriodic( (Curve)arg1) -> bool :
 
     C++ signature :
         bool isPeriodic(class PyDbCurve {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -54766,6 +58340,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus reverseCurve(class PyDbCurve {lvalue})'''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -55069,11 +58655,29 @@ splineFit( (Polyline2d)arg1, (Poly2dType)arg2, (DxfCode)arg3) -> ErrorStatus :
     C++ signature :
         class AcGePoint3d vertexPosition(class PyDb2dPolyline {lvalue},class AcDb2dVertex)'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -55137,6 +58741,12 @@ appendVertex( (Polyline3d)arg1, (ObjectId)arg2, (Polyline3dVertex)arg3) -> Error
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -55218,6 +58828,12 @@ appendVertex( (Polyline3d)arg1, (ObjectId)arg2, (Polyline3dVertex)arg3) -> Error
 
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
@@ -55419,6 +59035,12 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def insertVertexAt (self, *args, **kwargs)-> ErrorStatus :
       '''insertVertexAt( (Polyline3d)arg1, (Polyline3dVertex)arg2, (Polyline3dVertex)arg3) -> ErrorStatus :
 
@@ -55493,17 +59115,23 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def isPeriodic (self, *args, **kwargs)-> bool :
       '''isPeriodic( (Curve)arg1) -> bool :
 
     C++ signature :
         bool isPeriodic(class PyDbCurve {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -55668,6 +59296,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus reverseCurve(class PyDbCurve {lvalue})'''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -55911,11 +59551,29 @@ splineFit( (Polyline3d)arg1, (Poly3dType)arg2, (DxfCode)arg3) -> ErrorStatus :
     C++ signature :
         class boost::python::list vertexIds(class PyDb3dPolyline {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -55968,6 +59626,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -56044,6 +59708,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -56104,6 +59774,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -56161,11 +59837,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -56294,6 +59976,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -56514,11 +60208,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum AcDb::Vertex3dType vertexType(class PyDb3dPolylineVertex {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -56647,6 +60359,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
 
     C++ signature :
         class AcGeMatrix3d blockTransform(class PyDbDimension {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -56783,6 +60501,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def elevation (self, *args, **kwargs)-> float :
       '''elevation( (Dimension)arg1) -> float :
 
@@ -56914,6 +60638,12 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         double horizontalRotation(class PyDbDimension {lvalue})'''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def inspection (self, *args, **kwargs)-> bool :
       '''inspection( (Dimension)arg1) -> bool :
 
@@ -57013,11 +60743,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -57194,6 +60930,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void resetTextDefinedSize(class PyDbDimension {lvalue})'''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def setAltSuppressLeadingZeros (self, *args, **kwargs)-> ErrorStatus :
       '''setAltSuppressLeadingZeros( (Dimension)arg1, (bool)arg2) -> ErrorStatus :
 
@@ -57265,6 +61007,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus setArrowSecondIsFlipped(class PyDbDimension {lvalue},bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -57844,11 +61592,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus useSetTextPosition(class PyDbDimension {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -57977,6 +61743,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
 
     C++ signature :
         class AcGeMatrix3d blockTransform(class PyDbDimension {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -58113,6 +61885,12 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def elevation (self, *args, **kwargs)-> float :
       '''elevation( (Dimension)arg1) -> float :
 
@@ -58244,6 +62022,12 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         double horizontalRotation(class PyDbDimension {lvalue})'''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def inspection (self, *args, **kwargs)-> bool :
       '''inspection( (Dimension)arg1) -> bool :
 
@@ -58343,11 +62127,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -58536,6 +62326,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void resetTextDefinedSize(class PyDbDimension {lvalue})'''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def setAltSuppressLeadingZeros (self, *args, **kwargs)-> ErrorStatus :
       '''setAltSuppressLeadingZeros( (Dimension)arg1, (bool)arg2) -> ErrorStatus :
 
@@ -58607,6 +62403,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus setArrowSecondIsFlipped(class PyDbDimension {lvalue},bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -59216,11 +63018,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus useSetTextPosition(class PyDbDimension {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -59268,6 +63088,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def brightness (self, *args, **kwargs)-> int :
       '''brightness( (RasterImage)arg1) -> int :
@@ -59368,6 +63194,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -59457,6 +63289,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         double height(class PyDbRasterImage {lvalue})'''
+    ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
     def imageDefId (self, *args, **kwargs)-> ObjectId :
       '''imageDefId( (RasterImage)arg1) -> ObjectId :
@@ -59568,11 +63406,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -59720,6 +63564,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def rotation (self, *args, **kwargs)-> float :
       '''rotation( (RasterImage)arg1) -> float :
 
@@ -59731,6 +63581,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         class AcGeVector2d scale(class PyDbRasterImage {lvalue})'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setBrightness (self, *args, **kwargs)-> ErrorStatus :
       '''setBrightness( (RasterImage)arg1, (MlineJustification)arg2) -> ErrorStatus :
@@ -60029,6 +63885,18 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
@@ -60040,6 +63908,12 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
 
     C++ signature :
         double width(class PyDbRasterImage {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -60087,6 +63961,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -60139,6 +64019,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def embed (self, *args, **kwargs)-> ErrorStatus :
       '''embed( (RasterImageDef)arg1) -> ErrorStatus :
 
@@ -60180,6 +64066,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
+    ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
     def imageDictionary (self, *args, **kwargs)-> ObjectId :
       '''imageDictionary( (Database)arg1) -> ObjectId :
@@ -60235,11 +64127,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -60298,6 +64196,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum AcDbRasterImageDef::Units resolutionUnits(class PyDbRasterImageDef {lvalue})'''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def searchForActivePath (self, *args, **kwargs)-> str :
       '''searchForActivePath( (RasterImageDef)arg1) -> str :
 
@@ -60309,6 +64213,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus setActiveFileName(class PyDbRasterImageDef {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setField (self: DbObject,obj: Field)-> ObjectId :
       '''                             '''
@@ -60381,6 +64291,24 @@ unload( (RasterImageDef)arg1, (bool)arg2) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
+    ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
@@ -60421,6 +64349,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -60467,6 +64401,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -60490,6 +64430,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
+    ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -60527,11 +64473,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -60572,6 +64524,18 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    ...
     def setEnable (self, *args, **kwargs)-> None :
       '''setEnable( (bool)arg1) -> None :
 
@@ -60595,6 +64559,24 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -60632,6 +64614,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -60678,6 +64666,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -60719,6 +64713,12 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -60755,11 +64755,17 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -60806,6 +64812,18 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    ...
     def setField (self: DbObject,obj: Field)-> ObjectId :
       '''                             '''
     ...
@@ -60829,6 +64847,24 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -60870,6 +64906,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -60916,6 +64958,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -60945,6 +64993,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
+    ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -60988,11 +65042,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -61045,6 +65105,18 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    ...
     def setField (self: DbObject,obj: Field)-> ObjectId :
       '''                             '''
     ...
@@ -61068,6 +65140,24 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -61115,6 +65205,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -61167,6 +65263,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def createExtensionDictionary (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def createFromCurves (self, *args, **kwargs)-> list :
+      '''createFromCurves( (list)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list createFromCurves(class boost::python::list)'''
+    ...
     def database (self: DbObject)-> Database :
       '''                             '''
     ...
@@ -61190,6 +65292,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
@@ -61251,6 +65359,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -61309,10 +65423,22 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
       '''                             '''
     ...
     def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+      '''isNull( (Region)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNull(class PyDbRegion {lvalue})'''
+    ...
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
+
+    C++ signature :
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -61435,6 +65561,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -61643,11 +65781,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -61784,6 +65940,55 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class RevolveOptions:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def closeToAxis (self, *args, **kwargs)-> bool :
+      '''closeToAxis( (RevolveOptions)arg1) -> bool :
+
+    C++ signature :
+        bool closeToAxis(class PyDbRevolveOptions {lvalue})'''
+    ...
+    def draftAngle (self, *args, **kwargs)-> float :
+      '''draftAngle( (RevolveOptions)arg1) -> float :
+
+    C++ signature :
+        double draftAngle(class PyDbRevolveOptions {lvalue})'''
+    ...
+    def setCloseToAxis (self, *args, **kwargs)-> None :
+      '''setCloseToAxis( (RevolveOptions)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setCloseToAxis(class PyDbRevolveOptions {lvalue},bool)'''
+    ...
+    def setDraftAngle (self, *args, **kwargs)-> None :
+      '''setDraftAngle( (RevolveOptions)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDraftAngle(class PyDbRevolveOptions {lvalue},double)'''
+    ...
+    def setTwistAngle (self, *args, **kwargs)-> None :
+      '''setTwistAngle( (RevolveOptions)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setTwistAngle(class PyDbRevolveOptions {lvalue},double)'''
+    ...
+    def twistAngle (self, *args, **kwargs)-> float :
+      '''twistAngle( (RevolveOptions)arg1) -> float :
+
+    C++ signature :
+        double twistAngle(class PyDbRevolveOptions {lvalue})'''
+    ...
+
 class RevolvedSurface:
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
@@ -61823,6 +66028,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -61899,6 +66110,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -61959,6 +66176,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -62016,11 +66239,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -62143,6 +66372,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -62351,11 +66592,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -62484,6 +66743,12 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
 
     C++ signature :
         class AcGeMatrix3d blockTransform(class PyDbDimension {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -62614,6 +66879,12 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def elevation (self, *args, **kwargs)-> float :
       '''elevation( (Dimension)arg1) -> float :
 
@@ -62733,6 +67004,12 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         double horizontalRotation(class PyDbDimension {lvalue})'''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def inspection (self, *args, **kwargs)-> bool :
       '''inspection( (Dimension)arg1) -> bool :
 
@@ -62832,11 +67109,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -63025,6 +67308,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void resetTextDefinedSize(class PyDbDimension {lvalue})'''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def rotation (self, *args, **kwargs)-> float :
       '''rotation( (RotatedDimension)arg1) -> float :
 
@@ -63102,6 +67391,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus setArrowSecondIsFlipped(class PyDbDimension {lvalue},bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -63693,11 +67988,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus useSetTextPosition(class PyDbDimension {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -64141,6 +68454,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -64216,6 +68535,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -64276,6 +68601,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -64333,11 +68664,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -64460,6 +68797,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -64668,11 +69017,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -64989,6 +69356,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -65063,6 +69436,17 @@ createPyramid( (Solid3d)arg1, (float)arg2, (int)arg3, (float)arg4, (float)arg5) 
     C++ signature :
         enum Acad::ErrorStatus createPyramid(class PyDb3dSolid {lvalue},double,int,double,double)'''
     ...
+    def createRevolvedSolid (self, *args, **kwargs)-> ErrorStatus :
+      '''createRevolvedSolid( (Solid3d)arg1, (Entity)arg2, (Point3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6, (RevolveOptions)arg7) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus createRevolvedSolid(class PyDb3dSolid {lvalue},class PyDbEntity {lvalue},class AcGePoint3d,class AcGeVector3d,double,double,class PyDbRevolveOptions {lvalue})
+
+createRevolvedSolid( (Solid3d)arg1, (Entity)arg2, (SubentId)arg3, (Point3d)arg4, (Vector3d)arg5, (float)arg6, (float)arg7, (RevolveOptions)arg8) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus createRevolvedSolid(class PyDb3dSolid {lvalue},class PyDbEntity {lvalue},class PyDbSubentId,class AcGePoint3d,class AcGeVector3d,double,double,class PyDbRevolveOptions {lvalue})'''
+    ...
     def createSphere (self, *args, **kwargs)-> ErrorStatus :
       '''createSphere( (Solid3d)arg1, (float)arg2) -> ErrorStatus :
 
@@ -65105,6 +69489,12 @@ createPyramid( (Solid3d)arg1, (float)arg2, (int)arg3, (float)arg4, (float)arg5) 
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -65116,6 +69506,28 @@ createPyramid( (Solid3d)arg1, (float)arg2, (int)arg3, (float)arg4, (float)arg5) 
     ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
+    ...
+    def extrude (self, *args, **kwargs)-> ErrorStatus :
+      '''extrude( (Solid3d)arg1, (Region)arg2, (float)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus extrude(class PyDb3dSolid {lvalue},class PyDbRegion,double)
+
+extrude( (Solid3d)arg1, (Region)arg2, (float)arg3, (float)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus extrude(class PyDb3dSolid {lvalue},class PyDbRegion,double,double)'''
+    ...
+    def extrudeAlongPath (self, *args, **kwargs)-> ErrorStatus :
+      '''extrudeAlongPath( (Solid3d)arg1, (Region)arg2, (Curve)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus extrudeAlongPath(class PyDb3dSolid {lvalue},class PyDbRegion,class PyDbCurve)
+
+extrudeAlongPath( (Solid3d)arg1, (Region)arg2, (Curve)arg3, (float)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus extrudeAlongPath(class PyDb3dSolid {lvalue},class PyDbRegion,class PyDbCurve,double)'''
     ...
     def getCompoundObjectTransform (self, *args, **kwargs)-> ErrorStatus :
       '''getCompoundObjectTransform( (Entity)arg1, (Matrix3d)arg2) -> ErrorStatus :
@@ -65164,6 +69576,12 @@ createPyramid( (Solid3d)arg1, (float)arg2, (int)arg3, (float)arg4, (float)arg5) 
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
+    ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
@@ -65222,11 +69640,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -65349,6 +69773,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -65557,11 +69993,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -66012,6 +70466,208 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class SubentId:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (SubentType)arg2, (int)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,unsigned int,__int64)
+
+__init__( (object)arg1, (RxClass)arg2, (int)arg3) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyRxClass {lvalue},__int64)'''
+    ...
+    def index (self, *args, **kwargs)-> int :
+      '''index( (SubentId)arg1) -> int :
+
+    C++ signature :
+        __int64 index(class PyDbSubentId {lvalue})'''
+    ...
+    def kNull (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def setIndex (self, *args, **kwargs)-> None :
+      '''setIndex( (SubentId)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void setIndex(class PyDbSubentId {lvalue},__int64)'''
+    ...
+    def setType (self, *args, **kwargs)-> None :
+      '''setType( (SubentId)arg1, (SubentType)arg2) -> None :
+
+    C++ signature :
+        void setType(class PyDbSubentId {lvalue},unsigned int)'''
+    ...
+    def setTypeClass (self, *args, **kwargs)-> None :
+      '''setTypeClass( (SubentId)arg1, (RxClass)arg2) -> None :
+
+    C++ signature :
+        void setTypeClass(class PyDbSubentId {lvalue},class PyRxClass {lvalue})'''
+    ...
+    def type (self, *args, **kwargs)-> int :
+      '''type( (SubentId)arg1) -> int :
+
+    C++ signature :
+        unsigned int type(class PyDbSubentId {lvalue})'''
+    ...
+    def typeClass (self, *args, **kwargs)-> RxClass :
+      '''typeClass( (SubentId)arg1) -> RxClass :
+
+    C++ signature :
+        class PyRxClass typeClass(class PyDbSubentId {lvalue})'''
+    ...
+
+class SubentType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None:
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None:
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None:
+      '''the imaginary part of a complex number'''
+    ...
+    def kAxisSubentType (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kClassSubentType (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kEdgeSubentType (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kFaceSubentType (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kMlineSubentCache (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kNullSubentType (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kSilhouetteSubentType (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kVertexSubentType (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None:
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None:
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
 class Surface:
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
@@ -66051,6 +70707,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -66127,6 +70789,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -66187,6 +70855,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -66244,11 +70918,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -66371,6 +71051,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -66579,11 +71271,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -66631,6 +71341,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -66707,6 +71423,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -66767,6 +71489,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -66824,11 +71552,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -66951,6 +71685,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -67159,11 +71905,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -67473,6 +72237,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -67518,6 +72288,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -67559,6 +72335,12 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -67595,11 +72377,17 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -67646,6 +72434,18 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    ...
     def setField (self: DbObject,obj: Field)-> ObjectId :
       '''                             '''
     ...
@@ -67669,6 +72469,24 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -67700,6 +72518,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -67746,6 +72570,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -67775,6 +72605,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
+    ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -67818,11 +72654,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -67875,6 +72717,18 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    ...
     def setField (self: DbObject,obj: Field)-> ObjectId :
       '''                             '''
     ...
@@ -67898,6 +72752,24 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -68025,6 +72897,12 @@ blockTableRecordId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> ObjectId :
 
     C++ signature :
         class AcGeMatrix3d blockTransform(class PyDbBlockReference {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def breakFlowDirection (self, *args, **kwargs)-> TableBreakFlowDirection :
       '''breakFlowDirection( (Table)arg1) -> TableBreakFlowDirection :
@@ -68286,6 +73164,12 @@ deleteContent( (Table)arg1, (CellRange)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def enableBreak (self, *args, **kwargs)-> ErrorStatus :
       '''enableBreak( (Table)arg1, (bool)arg2) -> ErrorStatus :
@@ -68591,6 +73475,12 @@ gridVisibility( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> Visibi
     C++ signature :
         double horzCellMargin(class PyDbTable {lvalue})'''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def insertColumns (self, *args, **kwargs)-> ErrorStatus :
       '''insertColumns( (Table)arg1, (int)arg2, (float)arg3, (int)arg4) -> ErrorStatus :
 
@@ -68742,11 +73632,17 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -68989,6 +73885,12 @@ removeDataLink( (Table)arg1, (int)arg2, (int)arg3) -> ErrorStatus :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def rotation (self, *args, **kwargs)-> float :
       '''rotation( (Table)arg1) -> float :
 
@@ -69034,6 +73936,12 @@ setAlignment( (Table)arg1, (int)arg2, (int)arg3, (CellAlignment)arg4) -> ErrorSt
 
     C++ signature :
         enum Acad::ErrorStatus setAlignment(class PyDbTable {lvalue},int,int,enum AcDb::CellAlignment)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setAutoScale (self, *args, **kwargs)-> ErrorStatus :
       '''setAutoScale( (Table)arg1, (int)arg2, (int)arg3, (bool)arg4) -> ErrorStatus :
@@ -69843,6 +74751,18 @@ updateDataLink( (Table)arg1, (int)arg2, (int)arg3, (UpdateDirection)arg4, (Updat
     C++ signature :
         double vertCellMargin(class PyDbTable {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
@@ -69854,6 +74774,12 @@ updateDataLink( (Table)arg1, (int)arg2, (int)arg3, (UpdateDirection)arg4, (Updat
 
     C++ signature :
         double width(class PyDbTable {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -70574,6 +75500,12 @@ backgroundColor( (TableStyle)arg1, (str)arg2) -> Color :
     C++ signature :
         unsigned int bitFlags(class PyDbTableStyle {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -70669,6 +75601,12 @@ createCellStyle( (TableStyle)arg1, (str)arg2, (str)arg3) -> ErrorStatus :
     ...
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def enableMergeAll (self, *args, **kwargs)-> ErrorStatus :
       '''enableMergeAll( (TableStyle)arg1, (bool)arg2, (str)arg3) -> ErrorStatus :
@@ -70814,6 +75752,12 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     C++ signature :
         double horzCellMargin(class PyDbTableStyle {lvalue})'''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -70874,11 +75818,17 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -70955,6 +75905,12 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     C++ signature :
         enum Acad::ErrorStatus renameCellStyle(class PyDbTableStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def rotation (self, *args, **kwargs)-> float :
       '''rotation( (TableStyle)arg1, (str)arg2) -> float :
 
@@ -70971,6 +75927,12 @@ setAlignment( (TableStyle)arg1, (CellAlignment)arg2, (str)arg3) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setAlignment(class PyDbTableStyle {lvalue},enum AcDb::CellAlignment,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setBackgroundColor (self, *args, **kwargs)-> ErrorStatus :
       '''setBackgroundColor( (TableStyle)arg1, (Color)arg2, (RowType)arg3) -> ErrorStatus :
@@ -70990,7 +75952,7 @@ setBackgroundColor( (TableStyle)arg1, (Color)arg2, (str)arg3) -> ErrorStatus :
         enum Acad::ErrorStatus setBackgroundColorNone(class PyDbTableStyle {lvalue},bool,enum AcDb::RowType)'''
     ...
     def setBitFlags (self, *args, **kwargs)-> ErrorStatus :
-      '''setBitFlags( (TableStyle)arg1, (int)arg2) -> ErrorStatus :
+      '''setBitFlags( (TableStyle)arg1, (SubentType)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setBitFlags(class PyDbTableStyle {lvalue},unsigned int)'''
@@ -71229,6 +76191,24 @@ textStyle( (TableStyle)arg1, (str)arg2) -> ObjectId :
     C++ signature :
         double vertCellMargin(class PyDbTableStyle {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
+    ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
@@ -71297,6 +76277,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -71385,6 +76371,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -71469,6 +76461,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum AcDb::TextHorzMode horizontalMode(class PyDbText {lvalue})'''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -71544,11 +76542,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -71708,6 +76712,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def rotation (self, *args, **kwargs)-> float :
       '''rotation( (Text)arg1) -> float :
 
@@ -71719,6 +76729,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus setAlignmentPoint(class PyDbText {lvalue},class AcGePoint3d)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -72023,6 +77039,18 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum AcDb::TextVertMode verticalMode(class PyDbText {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
@@ -72034,6 +77062,12 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
 
     C++ signature :
         double widthFactor(class PyDbText {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -72367,6 +77401,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -72412,6 +77452,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -72453,6 +77499,12 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -72489,11 +77541,17 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -72540,6 +77598,18 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    ...
     def setField (self: DbObject,obj: Field)-> ObjectId :
       '''                             '''
     ...
@@ -72563,6 +77633,24 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -72611,6 +77699,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > bigFontFileName(class PyDbTextStyleTableRecord {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -72655,6 +77749,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -72704,6 +77804,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -72746,11 +77852,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -72826,6 +77938,18 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setBigFontFileName (self, *args, **kwargs)-> ErrorStatus :
       '''setBigFontFileName( (TextStyleTableRecord)arg1, (str)arg2) -> ErrorStatus :
@@ -72917,6 +78041,24 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
+    ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
     ...
@@ -72975,11 +78117,11 @@ getObject( (Transaction)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> DbO
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def numOpenedObjects (self, *args, **kwargs)-> int :
       '''numOpenedObjects( (TransactionManager)arg1) -> int :
@@ -73025,11 +78167,11 @@ class TransactionManager:
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def numActiveTransactions (self: TransactionManager)-> int :
       '''                             '''
@@ -73289,6 +78431,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -73334,6 +78482,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -73375,6 +78529,12 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -73411,11 +78571,17 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -73462,6 +78628,18 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    ...
     def setField (self: DbObject,obj: Field)-> ObjectId :
       '''                             '''
     ...
@@ -73485,6 +78663,24 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -73526,6 +78722,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -73572,6 +78774,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -73601,6 +78809,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
+    ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -73644,11 +78858,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -73707,6 +78927,18 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    ...
     def setField (self: DbObject,obj: Field)-> ObjectId :
       '''                             '''
     ...
@@ -73761,6 +78993,24 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
+    ...
     def xAxis (self, *args, **kwargs)-> Vector3d :
       '''xAxis( (UCSTableRecord)arg1) -> Vector3d :
 
@@ -73803,6 +79053,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -73855,6 +79111,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -73896,6 +79158,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
+    ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -73939,11 +79207,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -73995,6 +79269,18 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> ErrorStatus :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    ...
     def setField (self: DbObject,obj: Field)-> ObjectId :
       '''                             '''
     ...
@@ -74030,6 +79316,24 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> ErrorStatus :
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -74099,6 +79403,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
@@ -74205,6 +79515,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -74307,6 +79623,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         double height(class PyDbUnderlayReference {lvalue})'''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -74400,17 +79722,23 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def isOn (self, *args, **kwargs)-> bool :
       '''isOn( (UnderlayReference)arg1) -> bool :
 
     C++ signature :
         bool isOn(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -74546,6 +79874,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def rotation (self, *args, **kwargs)-> float :
       '''rotation( (UnderlayReference)arg1) -> float :
 
@@ -74557,6 +79891,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         class AcGeScale3d scaleFactors(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -74879,6 +80219,18 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
@@ -74890,6 +80242,12 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
 
     C++ signature :
         double width(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -75393,6 +80751,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -75468,6 +80832,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def entityColor (self, *args, **kwargs)-> EntityColor :
       '''entityColor( (Entity)arg1) -> EntityColor :
 
@@ -75528,6 +80898,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -75585,11 +80961,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -75712,6 +81094,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setCastShadows (self, *args, **kwargs)-> None :
       '''setCastShadows( (Entity)arg1, (bool)arg2) -> None :
@@ -75920,11 +81314,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -75982,6 +81394,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def bulge (self, *args, **kwargs)-> float :
       '''bulge( (Vertex2d)arg1) -> float :
@@ -76064,6 +81482,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def endWidth (self, *args, **kwargs)-> float :
       '''endWidth( (Vertex2d)arg1) -> float :
 
@@ -76130,6 +81554,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def ignoreTangent (self, *args, **kwargs)-> ErrorStatus :
       '''ignoreTangent( (Vertex2d)arg1) -> ErrorStatus :
 
@@ -76193,11 +81623,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPlanar (self, *args, **kwargs)-> bool :
       '''isPlanar( (Entity)arg1) -> bool :
@@ -76332,6 +81768,18 @@ recordGraphicsModified( (Entity)arg1) -> None :
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
+    ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setBulge (self, *args, **kwargs)-> ErrorStatus :
       '''setBulge( (Vertex2d)arg1, (float)arg2) -> ErrorStatus :
@@ -76612,11 +82060,29 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum AcDb::Vertex2dType vertexType(class PyDb2dVertex {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
     C++ signature :
         enum AcDb::Visibility visibility(class PyDbEntity {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -76817,6 +82283,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId background(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def brightness (self, *args, **kwargs)-> float :
       '''brightness( (AbstractViewTableRecord)arg1) -> float :
 
@@ -76897,6 +82369,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def elevation (self, *args, **kwargs)-> float :
       '''elevation( (AbstractViewTableRecord)arg1) -> float :
@@ -76982,6 +82460,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         double height(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -77036,17 +82520,23 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def isPaperspaceView (self, *args, **kwargs)-> bool :
       '''isPaperspaceView( (ViewTableRecord)arg1) -> bool :
 
     C++ signature :
         bool isPaperspaceView(class PyDbViewTableRecord {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -77141,6 +82631,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def setAmbientLightColor (self, *args, **kwargs)-> ErrorStatus :
       '''setAmbientLightColor( (AbstractViewTableRecord)arg1, (Color)arg2) -> ErrorStatus :
 
@@ -77152,6 +82648,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus setAnnotationScale(class PyDbViewTableRecord {lvalue},class PyDbAnnotationScale)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setBackClipDistance (self, *args, **kwargs)-> None :
       '''setBackClipDistance( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
@@ -77419,6 +82921,18 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> Erro
     C++ signature :
         double viewTwist(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visualStyle (self, *args, **kwargs)-> ObjectId :
       '''visualStyle( (AbstractViewTableRecord)arg1) -> ObjectId :
 
@@ -77430,6 +82944,12 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> Erro
 
     C++ signature :
         double width(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -77501,6 +83021,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def brightness (self, *args, **kwargs)-> float :
       '''brightness( (Viewport)arg1) -> float :
@@ -77618,6 +83144,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         enum Acad::ErrorStatus draw(class PyDbEntity {lvalue})'''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def effectivePlotStyleSheet (self, *args, **kwargs)-> str :
       '''effectivePlotStyleSheet( (Viewport)arg1) -> str :
@@ -77763,6 +83295,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         bool hiddenLinesRemoved(class PyDbViewport {lvalue})'''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
 
@@ -77898,17 +83436,23 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def isOn (self, *args, **kwargs)-> bool :
       '''isOn( (Viewport)arg1) -> bool :
 
     C++ signature :
         bool isOn(class PyDbViewport {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isPerspectiveOn (self, *args, **kwargs)-> bool :
       '''isPerspectiveOn( (Viewport)arg1) -> bool :
@@ -78108,7 +83652,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     C++ signature :
         class PyDbObjectId previousBackground(class PyDbViewport {lvalue})
 
-previousBackground( (Viewport)arg1, (object)arg2) -> ObjectId :
+previousBackground( (Viewport)arg1, (GiDrawableType)arg2) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId previousBackground(class PyDbViewport {lvalue},enum AcGiDrawable::DrawableType)'''
@@ -78180,6 +83724,12 @@ removeHiddenLines( (Viewport)arg1, (bool)arg2) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus removeSheetView(class PyDbViewport {lvalue})'''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def setAmbientLightColor (self, *args, **kwargs)-> ErrorStatus :
       '''setAmbientLightColor( (Viewport)arg1, (Color)arg2) -> ErrorStatus :
 
@@ -78191,6 +83741,12 @@ removeHiddenLines( (Viewport)arg1, (bool)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setAnnotationScale(class PyDbViewport {lvalue},class PyDbAnnotationScale)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setBackClipDistance (self, *args, **kwargs)-> ErrorStatus :
       '''setBackClipDistance( (Viewport)arg1, (float)arg2) -> ErrorStatus :
@@ -78656,12 +84212,12 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         enum Acad::ErrorStatus setPreviousBackground(class PyDbViewport {lvalue},class PyDbObjectId {lvalue})
 
-setPreviousBackground( (Viewport)arg1, (ObjectId)arg2, (object)arg3) -> ErrorStatus :
+setPreviousBackground( (Viewport)arg1, (ObjectId)arg2, (GiDrawableType)arg3) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setPreviousBackground(class PyDbViewport {lvalue},class PyDbObjectId {lvalue},enum AcGiDrawable::DrawableType)
 
-setPreviousBackground( (Viewport)arg1, (ObjectId)arg2, (object)arg3, (bool)arg4) -> ErrorStatus :
+setPreviousBackground( (Viewport)arg1, (ObjectId)arg2, (GiDrawableType)arg3, (bool)arg4) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setPreviousBackground(class PyDbViewport {lvalue},class PyDbObjectId {lvalue},enum AcGiDrawable::DrawableType,bool)'''
@@ -79068,6 +84624,18 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         class AcGePoint3d viewTarget(class PyDbViewport {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visibility (self, *args, **kwargs)-> Visibility :
       '''visibility( (Entity)arg1) -> Visibility :
 
@@ -79085,6 +84653,12 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
 
     C++ signature :
         double width(class PyDbViewport {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -79150,6 +84724,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId background(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
     ...
     def brightness (self, *args, **kwargs)-> float :
       '''brightness( (AbstractViewTableRecord)arg1) -> float :
@@ -79225,6 +84805,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
+    ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
     ...
     def elevation (self, *args, **kwargs)-> float :
       '''elevation( (AbstractViewTableRecord)arg1) -> float :
@@ -79328,6 +84914,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         bool iconEnabled(class PyDbViewportTableRecord {lvalue})'''
     ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -79400,11 +84992,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -79496,7 +85094,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId previousBackground(class PyDbViewportTableRecord {lvalue})
 
-previousBackground( (ViewportTableRecord)arg1, (object)arg2) -> ObjectId :
+previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId previousBackground(class PyDbViewportTableRecord {lvalue},enum AcGiDrawable::DrawableType)'''
@@ -79522,11 +85120,23 @@ previousBackground( (ViewportTableRecord)arg1, (object)arg2) -> ObjectId :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
     def setAmbientLightColor (self, *args, **kwargs)-> ErrorStatus :
       '''setAmbientLightColor( (AbstractViewTableRecord)arg1, (Color)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setAmbientLightColor(class PyDbAbstractViewTableRecord {lvalue},class AcCmColor)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
     def setBackClipDistance (self, *args, **kwargs)-> None :
       '''setBackClipDistance( (AbstractViewTableRecord)arg1, (float)arg2) -> None :
@@ -79714,7 +85324,7 @@ previousBackground( (ViewportTableRecord)arg1, (object)arg2) -> ObjectId :
     C++ signature :
         enum Acad::ErrorStatus setPreviousBackground(class PyDbViewportTableRecord {lvalue},class PyDbObjectId {lvalue})
 
-setPreviousBackground( (ViewportTableRecord)arg1, (ObjectId)arg2, (object)arg3, (bool)arg4) -> ErrorStatus :
+setPreviousBackground( (ViewportTableRecord)arg1, (ObjectId)arg2, (GiDrawableType)arg3, (bool)arg4) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus setPreviousBackground(class PyDbViewportTableRecord {lvalue},class PyDbObjectId {lvalue},enum AcGiDrawable::DrawableType,bool)'''
@@ -79919,6 +85529,18 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> Erro
     C++ signature :
         double viewTwist(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
     def visualStyle (self, *args, **kwargs)-> ObjectId :
       '''visualStyle( (AbstractViewTableRecord)arg1) -> ObjectId :
 
@@ -79930,6 +85552,12 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> Erro
 
     C++ signature :
         double width(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''
@@ -80353,6 +85981,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
+    def bounds (self, *args, **kwargs)-> bool :
+      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
+
+    C++ signature :
+        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    ...
     def cancel (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -80392,6 +86026,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def downgradeToNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
+    def drawableType (self, *args, **kwargs)-> GiDrawableType :
+      '''drawableType( (Drawable)arg1) -> GiDrawableType :
+
+    C++ signature :
+        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    ...
     def erase (self: DbObject)-> ErrorStatus :
       '''                             '''
     ...
@@ -80415,6 +86055,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
+    ...
+    def id (self, *args, **kwargs)-> ObjectId :
+      '''id( (Drawable)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
@@ -80452,11 +86098,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
+    ...
+    def isPersistent (self, *args, **kwargs)-> bool :
+      '''isPersistent( (Drawable)arg1) -> bool :
+
+    C++ signature :
+        bool isPersistent(class PyGiDrawable {lvalue})'''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -80520,6 +86172,18 @@ rbChain( (Xrecord)arg1, (Database)arg2) -> list :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
     ...
+    def rolloverHit (self, *args, **kwargs)-> bool :
+      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
+
+    C++ signature :
+        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def setAttributes (self, *args, **kwargs)-> int :
+      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
+
+    C++ signature :
+        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    ...
     def setField (self: DbObject,obj: Field)-> ObjectId :
       '''                             '''
     ...
@@ -80560,6 +86224,24 @@ setFromRbChain( (Xrecord)arg1, (list)arg2, (Database)arg3) -> ErrorStatus :
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def viewportDraw (self, *args, **kwargs)-> None :
+      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
+
+    C++ signature :
+        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
+      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
+
+    C++ signature :
+        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    ...
+    def worldDraw (self, *args, **kwargs)-> bool :
+      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
+
+    C++ signature :
+        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
     ...
     def xData (self: DbObject,appname: str)-> list :
       '''                             '''

@@ -204,11 +204,11 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def isOverruling (self, *args, **kwargs)-> bool :
       '''isOverruling() -> bool :
@@ -276,11 +276,11 @@ This class cannot be instantiated from Python'''
     C++ signature :
         bool isDerivedFrom(class PyRxClass {lvalue},class PyRxClass)'''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def name (self, *args, **kwargs)-> str :
       '''name( (RxClass)arg1) -> str :
@@ -312,11 +312,11 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def refCount (self, *args, **kwargs)-> int :
       '''refCount( (RxObject)arg1) -> int :

@@ -1024,11 +1024,11 @@ activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         bool isDocumentActivationEnabled(class PyApDocManager {lvalue})'''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def lockDocument (self, *args, **kwargs)-> ErrorStatus :
       '''lockDocument( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
@@ -1304,11 +1304,11 @@ This class cannot be instantiated from Python'''
     C++ signature :
         bool isCommandInputInactive(class PyApDocument {lvalue})'''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def isQuiescent (self, *args, **kwargs)-> bool :
       '''isQuiescent( (Document)arg1) -> bool :
@@ -1535,11 +1535,11 @@ getActiveLayoutName( (LayoutManager)arg1, (bool)arg2, (Database)arg3) -> str :
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def isVpnumClipped (self, *args, **kwargs)-> bool :
       '''isVpnumClipped( (LayoutManager)arg1, (int)arg2) -> bool :
@@ -2224,11 +2224,11 @@ class TransactionManager:
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (RxObject)arg1) -> bool :
+    def isNullObj (self, *args, **kwargs)-> bool :
+      '''isNullObj( (RxObject)arg1) -> bool :
 
     C++ signature :
-        bool isNull(class PyRxObject {lvalue})'''
+        bool isNullObj(class PyRxObject {lvalue})'''
     ...
     def numActiveTransactions (self: TransactionManager)-> int :
       '''                             '''
