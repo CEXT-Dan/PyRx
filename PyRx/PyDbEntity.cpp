@@ -693,3 +693,90 @@ AcDbSequenceEnd* PyDbSequenceEnd::impObj(const std::source_location& src /*= std
     return static_cast<AcDbSequenceEnd*>(m_pyImp.get());
 }
 
+//-------------------------------------------------------------------------------------------------------------
+//PyDbSubentId
+void makePyDbSubentIdWrapper()
+{
+    class_<PyDbSubentId>("SubentId")
+        .def(init<>())
+        .def(init<AcDb::SubentType, Adesk::GsMarker>())
+        .def(init<PyRxClass&, Adesk::GsMarker>())
+        .def("type", &PyDbSubentId::type)
+        .def("setType", &PyDbSubentId::setType)
+        .def("typeClass", &PyDbSubentId::typeClass)
+        .def("setTypeClass", &PyDbSubentId::setTypeClass)
+        .def("index", &PyDbSubentId::index)
+        .def("setIndex", &PyDbSubentId::setIndex)
+        .add_static_property("kNull", &PyDbSubentId::kNull)
+        //operators
+        .def("__eq__", &PyDbSubentId::operator==)
+        .def("__ne__", &PyDbSubentId::operator!=)
+        ;
+}
+
+PyDbSubentId::PyDbSubentId()
+    :m_pyImp(new AcDbSubentId())
+{
+}
+
+PyDbSubentId::PyDbSubentId(AcDb::SubentType type, Adesk::GsMarker index)
+    :m_pyImp(new AcDbSubentId(type, index))
+{
+}
+
+PyDbSubentId::PyDbSubentId(PyRxClass& pTypeClass, Adesk::GsMarker index)
+    :m_pyImp(new AcDbSubentId(pTypeClass.impObj(), index))
+{
+}
+
+AcDb::SubentType PyDbSubentId::type() const
+{
+    return impObj()->type();
+}
+
+void PyDbSubentId::setType(AcDb::SubentType et)
+{
+    return impObj()->setType(et);
+}
+
+PyRxClass PyDbSubentId::typeClass() const
+{
+    return PyRxClass(impObj()->typeClass(), false);
+}
+
+void PyDbSubentId::setTypeClass(PyRxClass& pClass)
+{
+    return impObj()->setTypeClass(pClass.impObj());
+}
+
+Adesk::GsMarker PyDbSubentId::index() const
+{
+    return impObj()->index();
+}
+
+void PyDbSubentId::setIndex(Adesk::GsMarker ind)
+{
+    return impObj()->setIndex(ind);
+}
+
+const PyDbSubentId PyDbSubentId::kNull()
+{
+    return PyDbSubentId();
+}
+
+bool PyDbSubentId::operator!=(const PyDbSubentId& id) const
+{
+    return *impObj() != *id.impObj();
+}
+
+bool PyDbSubentId::operator==(const PyDbSubentId& id) const
+{
+    return *impObj() == *id.impObj();
+}
+
+AcDbSubentId* PyDbSubentId::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr)
+        throw PyNullObject(src);
+    return static_cast<AcDbSubentId*>(m_pyImp.get());
+}

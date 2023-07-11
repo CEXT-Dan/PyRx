@@ -2,6 +2,10 @@
 #include "PyDbEntity.h"
 
 class PyDbObjectId;
+class PyDbRegion;
+class PyDbCurve;
+class PyDbRevolveOptions;
+
 //-----------------------------------------------------------------------------------
 //PyDb3dSolid
 void makePyDb3dSolidWrapper();
@@ -20,6 +24,12 @@ public:
     Acad::ErrorStatus   createPyramid1(double height, int sides, double radius);
     Acad::ErrorStatus   createPyramid2(double height, int sides, double radius, double topRadius);
     Acad::ErrorStatus   createWedge(double xLen, double yLen, double zLen);
+    Acad::ErrorStatus   extrude1(const PyDbRegion& region, double height);
+    Acad::ErrorStatus   extrude2(const PyDbRegion& region, double height, double taperAngle);
+    Acad::ErrorStatus   extrudeAlongPath1(const PyDbRegion& region, const PyDbCurve& path);
+    Acad::ErrorStatus   extrudeAlongPath2(const PyDbRegion& region, const PyDbCurve& path, double taperAngle);
+    Acad::ErrorStatus   createRevolvedSolid1(PyDbEntity& pRevEnt,const AcGePoint3d& axisPnt,const AcGeVector3d& axisDir,double revAngle, double startAngle, PyDbRevolveOptions& revolveOptions);
+    Acad::ErrorStatus   createRevolvedSolid2(PyDbEntity& pRevEnt,const PyDbSubentId& faceSubentId,const AcGePoint3d& axisPnt, const AcGeVector3d& axisDir, double revAngle, double startAngle, PyDbRevolveOptions& revolveOptions);
     static std::string  className();
     static PyRxClass    desc();
     static PyDb3dSolid  cloneFrom(const PyRxObject& src);
@@ -39,6 +49,10 @@ public:
     PyDbRegion(AcDbRegion* ptr, bool autoDelete);
     PyDbRegion(const PyDbObjectId& id);
     PyDbRegion(const PyDbObjectId& id, AcDb::OpenMode mode);
+    Adesk::Boolean    isNull() const;
+
+
+    static boost::python::list createFromCurves(const boost::python::list& curveSegments);
     static std::string  className();
     static PyRxClass    desc();
     static PyDbRegion   cloneFrom(const PyRxObject& src);
@@ -64,4 +78,26 @@ public:
     static PyDbBody     cast(const PyRxObject& src);
 public:
     AcDbBody* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+//-----------------------------------------------------------------------------------
+//PyDbRevolveOptions
+void makePyDbRevolveOptionsWrapper();
+class PyDbRevolveOptions
+{
+public:
+    PyDbRevolveOptions();
+    PyDbRevolveOptions(const AcDbRevolveOptions& src);
+    double      draftAngle() const;
+    void        setDraftAngle(double ang);
+    double      twistAngle() const;
+    void        setTwistAngle(double ang);
+    bool        closeToAxis() const;
+    void        setCloseToAxis(bool val);
+
+public:
+    AcDbRevolveOptions* impObj(const std::source_location& src = std::source_location::current()) const;
+private:
+    std::shared_ptr<AcDbRevolveOptions> m_pyImp;
 };

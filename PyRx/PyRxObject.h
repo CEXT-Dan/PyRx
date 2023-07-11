@@ -72,7 +72,7 @@ public:
 
     PyRxClass isA() const;
     void resetImp(AcRxObject* ptr, bool autoDelete, bool isDbObject);
-    bool isNull();
+    bool isNullObj();
     int refCount();
 
     static PyRxClass desc();

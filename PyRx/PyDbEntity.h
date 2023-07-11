@@ -2,12 +2,10 @@
 #include "PyDbObject.h"
 class PyCmColor;
 class PyGePlane;
-void makeAcDbEntityWrapper();
-void makeAcDbBlockBeginWrapper();
-void makeAcDbBlockEndWrapper();
-void makeAcDbSequenceEndWrapper();
+
 //-------------------------------------------------------------------------------------------------------------
 //PyDbEntity
+void makeAcDbEntityWrapper();
 class PyDbEntity : public PyDbObject
 {
 public:
@@ -91,6 +89,7 @@ public:
 };
 //-------------------------------------------------------------------------------------------------------------
 //PyDbBlockBegin
+void makeAcDbBlockBeginWrapper();
 class PyDbBlockBegin : public PyDbEntity
 {
 public:
@@ -107,6 +106,7 @@ public:
 };
 //-------------------------------------------------------------------------------------------------------------
 //PyDbBlockEnd
+void makeAcDbBlockEndWrapper();
 class PyDbBlockEnd : public PyDbEntity
 {
 public:
@@ -123,6 +123,7 @@ public:
 };
 //-------------------------------------------------------------------------------------------------------------
 //PyDbSequenceEnd
+void makeAcDbSequenceEndWrapper();
 class PyDbSequenceEnd : public PyDbEntity
 {
 public:
@@ -136,4 +137,30 @@ public:
     static PyDbSequenceEnd  cast(const PyRxObject& src);
 public:
     AcDbSequenceEnd* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+//-------------------------------------------------------------------------------------------------------------
+//PyDbSubentId
+void makePyDbSubentIdWrapper();
+
+class PyDbSubentId
+{
+public:
+    PyDbSubentId();
+    PyDbSubentId(AcDb::SubentType type, Adesk::GsMarker index);
+    PyDbSubentId(PyRxClass& pTypeClass, Adesk::GsMarker index);
+    bool        operator ==(const PyDbSubentId& id) const;
+    bool        operator !=(const PyDbSubentId& id) const;
+    AcDb::SubentType   type() const;
+    void               setType(AcDb::SubentType et);
+    PyRxClass          typeClass() const;
+    void               setTypeClass(PyRxClass& pClass);
+    Adesk::GsMarker    index() const;
+    void               setIndex(Adesk::GsMarker ind);
+    static const PyDbSubentId kNull();
+public:
+    AcDbSubentId* impObj(const std::source_location& src = std::source_location::current()) const;
+private:
+    std::shared_ptr<AcDbSubentId> m_pyImp;
+
 };

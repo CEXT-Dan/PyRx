@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "PyDb3dSolid.h"
 #include "PyDbObjectId.h"
-
+#include "PyDbCurve.h"
 
 using namespace boost::python;
 
@@ -18,6 +18,12 @@ void makePyDb3dSolidWrapper()
         .def("createPyramid", &PyDb3dSolid::createPyramid1)
         .def("createPyramid", &PyDb3dSolid::createPyramid2)
         .def("createWedge", &PyDb3dSolid::createWedge)
+        .def("extrude", &PyDb3dSolid::extrude1)
+        .def("extrude", &PyDb3dSolid::extrude2)
+        .def("extrudeAlongPath", &PyDb3dSolid::extrudeAlongPath1)
+        .def("extrudeAlongPath", &PyDb3dSolid::extrudeAlongPath2)
+        .def("createRevolvedSolid", &PyDb3dSolid::createRevolvedSolid1)
+        .def("createRevolvedSolid", &PyDb3dSolid::createRevolvedSolid2)
         .def("className", &PyDb3dSolid::className).staticmethod("className")
         .def("desc", &PyDb3dSolid::desc).staticmethod("desc")
         .def("cloneFrom", &PyDb3dSolid::cloneFrom).staticmethod("cloneFrom")
@@ -84,6 +90,36 @@ Acad::ErrorStatus PyDb3dSolid::createWedge(double xLen, double yLen, double zLen
     return impObj()->createWedge(xLen, yLen, zLen);
 }
 
+Acad::ErrorStatus PyDb3dSolid::extrude1(const PyDbRegion& region, double height)
+{
+    return impObj()->extrude(region.impObj(), height);
+}
+
+Acad::ErrorStatus PyDb3dSolid::extrude2(const PyDbRegion& region, double height, double taperAngle)
+{
+    return impObj()->extrude(region.impObj(), height, taperAngle);
+}
+
+Acad::ErrorStatus PyDb3dSolid::extrudeAlongPath1(const PyDbRegion& region, const PyDbCurve& path)
+{
+    return impObj()->extrudeAlongPath(region.impObj(), path.impObj());
+}
+
+Acad::ErrorStatus PyDb3dSolid::extrudeAlongPath2(const PyDbRegion& region, const PyDbCurve& path, double taperAngle)
+{
+    return impObj()->extrudeAlongPath(region.impObj(), path.impObj(), taperAngle);
+}
+
+Acad::ErrorStatus PyDb3dSolid::createRevolvedSolid1(PyDbEntity& pRevEnt, const AcGePoint3d& axisPnt, const AcGeVector3d& axisDir, double revAngle, double startAngle, PyDbRevolveOptions& revolveOptions)
+{
+    return impObj()->createRevolvedSolid(pRevEnt.impObj(), axisPnt, axisDir, revAngle, startAngle, *revolveOptions.impObj());
+}
+
+Acad::ErrorStatus PyDb3dSolid::createRevolvedSolid2(PyDbEntity& pRevEnt, const PyDbSubentId& faceSubentId, const AcGePoint3d& axisPnt, const AcGeVector3d& axisDir, double revAngle, double startAngle, PyDbRevolveOptions& revolveOptions)
+{
+    return impObj()->createRevolvedSolid(pRevEnt.impObj(), *faceSubentId.impObj(), axisPnt, axisDir, revAngle, startAngle, *revolveOptions.impObj());
+}
+
 std::string PyDb3dSolid::className()
 {
     return "AcDb3dSolid";
@@ -125,6 +161,8 @@ void makePyDbRegionWrapper()
         .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def("isNull", &PyDbRegion::isNull)
+        .def("createFromCurves", &PyDbRegion::createFromCurves).staticmethod("createFromCurves")
         .def("className", &PyDbRegion::className).staticmethod("className")
         .def("desc", &PyDbRegion::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbRegion::cloneFrom).staticmethod("cloneFrom")
@@ -154,6 +192,40 @@ PyDbRegion::PyDbRegion(const PyDbObjectId& id, AcDb::OpenMode mode)
 PyDbRegion::PyDbRegion(const PyDbObjectId& id)
     : PyDbRegion(id, AcDb::OpenMode::kForRead)
 {
+}
+
+Adesk::Boolean PyDbRegion::isNull() const
+{
+    return impObj()->isNull();
+}
+
+boost::python::list PyDbRegion::createFromCurves(const boost::python::list& curveSegments)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyRegions;
+#ifdef ARXAPP
+    AcArray<AcDbEntity*> acCurveSegments;
+    auto vec = py_list_to_std_vector<PyDbEntity>(curveSegments);
+    for (auto& item : vec)
+        acCurveSegments.append(item.impObj());
+    AcArray<AcDbRegion*> regions;
+    if (auto es = AcDbRegion::createFromCurves(acCurveSegments, regions); es != eOk)
+        throw PyAcadErrorStatus(es);
+    for (auto item : regions)
+        pyRegions.append(PyDbRegion(item, true));
+#else
+    AcDbVoidPtrArray acCurveSegments;
+    auto vec = py_list_to_std_vector<PyDbEntity>(curveSegments);
+    for (auto& item : vec)
+        acCurveSegments.append(item.impObj());
+    AcDbVoidPtrArray regions;
+    if (auto es = AcDbRegion::createFromCurves(acCurveSegments, regions); es != eOk)
+        throw PyAcadErrorStatus(es);
+    for (auto item : regions)
+        pyRegions.append(PyDbRegion((AcDbRegion*)item, true));
+#endif
+
+    return pyRegions;
 }
 
 std::string PyDbRegion::className()
@@ -257,4 +329,67 @@ AcDbBody* PyDbBody::impObj(const std::source_location& src /*= std::source_locat
     if (m_pyImp == nullptr)
         throw PyNullObject(src);
     return static_cast<AcDbBody*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyDbRevolveOptions
+void makePyDbRevolveOptionsWrapper()
+{
+    class_<PyDbRevolveOptions>("RevolveOptions")
+        .def(init<>())
+        .def("draftAngle", &PyDbRevolveOptions::draftAngle)
+        .def("setDraftAngle", &PyDbRevolveOptions::setDraftAngle)
+        .def("twistAngle", &PyDbRevolveOptions::twistAngle)
+        .def("setTwistAngle", &PyDbRevolveOptions::setTwistAngle)
+        .def("closeToAxis", &PyDbRevolveOptions::closeToAxis)
+        .def("setCloseToAxis", &PyDbRevolveOptions::setCloseToAxis)
+        ;
+}
+
+PyDbRevolveOptions::PyDbRevolveOptions()
+    : m_pyImp(new AcDbRevolveOptions())
+{
+}
+
+PyDbRevolveOptions::PyDbRevolveOptions(const AcDbRevolveOptions& src)
+    : m_pyImp(new AcDbRevolveOptions(src))
+{
+}
+
+double PyDbRevolveOptions::draftAngle() const
+{
+    return impObj()->draftAngle();
+
+}
+
+void PyDbRevolveOptions::setDraftAngle(double ang)
+{
+    return impObj()->setDraftAngle(ang);
+}
+
+double PyDbRevolveOptions::twistAngle() const
+{
+    return impObj()->twistAngle();
+}
+
+void PyDbRevolveOptions::setTwistAngle(double ang)
+{
+    return impObj()->setTwistAngle(ang);
+}
+
+bool PyDbRevolveOptions::closeToAxis() const
+{
+    return impObj()->closeToAxis();
+}
+
+void PyDbRevolveOptions::setCloseToAxis(bool val)
+{
+    return impObj()->setCloseToAxis(val);
+}
+
+AcDbRevolveOptions* PyDbRevolveOptions::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr)
+        throw PyNullObject(src);
+    return static_cast<AcDbRevolveOptions*>(m_pyImp.get());
 }
