@@ -39,6 +39,21 @@ static PyDbDatabase curPyDb()
     return PyDbDatabase(acdbHostApplicationServices()->workingDatabase(), false);
 }
 
+std::string AcDbExtents2dToString(const AcDbExtents2d& p)
+{
+    auto mi = p.minPoint();
+    auto ma = p.maxPoint();
+    return std::format("(({:.14f},{:.14f}),({:.14f},{:.14f}))", mi.x, mi.y, ma.x, ma.y);
+}
+
+std::string AcDbExtents2dToStringRepr(const AcDbExtents2d& p)
+{
+    auto mi = p.minPoint();
+    auto ma = p.maxPoint();
+    return std::format("<{}.Extents2d(({:.14f},{:.14f}),({:.14f},{:.14f}))>", PyGeNamespace, mi.x, mi.y, ma.x, ma.y);
+}
+
+
 void makeAcDbExtents2dWrapper()
 {
     class_<AcDbExtents2d>("Extents2d")
@@ -54,8 +69,25 @@ void makeAcDbExtents2dWrapper()
         .def("expandBy", &AcDbExtents2d::expandBy)
         .def("transformBy", &AcDbExtents2d::transformBy)
 #endif // !BRXAPP
+        .def("__str__", &AcDbExtents2dToString)
+        .def("__repr__", &AcDbExtents2dToStringRepr)
         ;
 }
+
+std::string AcDbExtentsToString(const AcDbExtents& p)
+{
+    auto mi = p.minPoint();
+    auto ma = p.maxPoint();
+    return std::format("(({:.14f},{:.14f},{:.14f}),({:.14f},{:.14f},{:.14f}))", mi.x, mi.y, mi.z, ma.x, ma.y, ma.z);
+}
+
+std::string AcDbExtentsToStringRepr(const AcDbExtents& p)
+{
+    auto mi = p.minPoint();
+    auto ma = p.maxPoint();
+    return std::format("<{}.Extents(({:.14f},{:.14f},{:.14f}),({:.14f},{:.14f},{:.14f}))>", PyGeNamespace, mi.x, mi.y, mi.z, ma.x, ma.y, ma.z);
+}
+
 void makeAcDbExtentsWrapper()
 {
     class_<AcDbExtents>("Extents")
@@ -69,6 +101,8 @@ void makeAcDbExtentsWrapper()
         .def("addExt", &AcDbExtents::addExt)
         .def("expandBy", &AcDbExtents::expandBy)
         .def("transformBy", &AcDbExtents::transformBy)
+        .def("__str__", &AcDbExtentsToString)
+        .def("__repr__", &AcDbExtentsToStringRepr)
         //.def("addBlockExt", &AcDbExtents::addBlockExt) //TODO
         ;
 }
