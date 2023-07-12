@@ -74,7 +74,6 @@ public:
     bool                usesGraphicsCache();
     Acad::ErrorStatus   createSculptedSolid(const boost::python::list& limitingBodies, const boost::python::list& limitingFlags);
     boost::python::list projectOnToSolid(const PyDbEntity& pEntityToProject, const AcGeVector3d& projectionDirection) const;
-
     static std::string  className();
     static PyRxClass    desc();
     static PyDb3dSolid  cloneFrom(const PyRxObject& src);
