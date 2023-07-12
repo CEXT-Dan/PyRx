@@ -343,6 +343,8 @@ void makePyDbRevolveOptionsWrapper()
         .def("setTwistAngle", &PyDbRevolveOptions::setTwistAngle)
         .def("closeToAxis", &PyDbRevolveOptions::closeToAxis)
         .def("setCloseToAxis", &PyDbRevolveOptions::setCloseToAxis)
+        .def("checkRevolveCurve", &PyDbRevolveOptions::checkRevolveCurve1)
+        .def("checkRevolveCurve", &PyDbRevolveOptions::checkRevolveCurve2)
         ;
 }
 
@@ -387,9 +389,310 @@ void PyDbRevolveOptions::setCloseToAxis(bool val)
     return impObj()->setCloseToAxis(val);
 }
 
+boost::python::tuple PyDbRevolveOptions::checkRevolveCurve1(PyDbEntity& ent, const AcGePoint3d& axisPnt, const AcGeVector3d& axisDir)
+{
+    return checkRevolveCurve2(ent, axisPnt, axisDir, false);
+}
+
+boost::python::tuple PyDbRevolveOptions::checkRevolveCurve2(PyDbEntity& ent, const AcGePoint3d& axisPnt, const AcGeVector3d& axisDir, bool displayErrorMessages)
+{
+#ifdef BRXAPP
+    throw PyNotimplementedByHost();
+#else
+    PyAutoLockGIL lock;
+    bool closed = false;
+    bool planar = false;
+    bool endPointsOnAxis = false;
+    if (auto es = impObj()->checkRevolveCurve(ent.impObj(), axisPnt, axisDir, closed, endPointsOnAxis, planar, displayErrorMessages); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return boost::python::make_tuple(closed, endPointsOnAxis, planar);
+#endif
+}
+
 AcDbRevolveOptions* PyDbRevolveOptions::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_pyImp == nullptr)
         throw PyNullObject(src);
     return static_cast<AcDbRevolveOptions*>(m_pyImp.get());
+}
+
+//-----------------------------------------------------------------------------------
+//PyDbSweepOptions
+void makePyDbSweepOptionsWrapper()
+{
+    class_<PyDbSweepOptions>("SweepOptions")
+        .def(init<>())
+        .def("draftAngle", &PyDbSweepOptions::draftAngle)
+        .def("setDraftAngle", &PyDbSweepOptions::setDraftAngle)
+        .def("startDraftDist", &PyDbSweepOptions::startDraftDist)
+        .def("setStartDraftDist", &PyDbSweepOptions::setStartDraftDist)
+        .def("endDraftDist", &PyDbSweepOptions::endDraftDist)
+        .def("setEndDraftDist", &PyDbSweepOptions::setEndDraftDist)
+        .def("twistAngle", &PyDbSweepOptions::twistAngle)
+        .def("setTwistAngle", &PyDbSweepOptions::setTwistAngle)
+        .def("scaleFactor", &PyDbSweepOptions::scaleFactor)
+        .def("setScaleFactor", &PyDbSweepOptions::setScaleFactor)
+        .def("alignAngle", &PyDbSweepOptions::alignAngle)
+        .def("setAlignAngle", &PyDbSweepOptions::setAlignAngle)
+        .def("align", &PyDbSweepOptions::align)
+        .def("setAlign", &PyDbSweepOptions::setAlign)
+        .def("miterOption", &PyDbSweepOptions::miterOption)
+        .def("setMiterOption", &PyDbSweepOptions::setMiterOption)
+        .def("alignStart", &PyDbSweepOptions::alignStart)
+        .def("setAlignStart", &PyDbSweepOptions::setAlignStart)
+        .def("basePoint", &PyDbSweepOptions::basePoint)
+        .def("setBasePoint", &PyDbSweepOptions::setBasePoint)
+        .def("bank", &PyDbSweepOptions::bank)
+        .def("setBank", &PyDbSweepOptions::setBank)
+        .def("checkIntersections", &PyDbSweepOptions::checkIntersections)
+        .def("setCheckIntersections", &PyDbSweepOptions::setCheckIntersections)
+        .def("twistRefVec", &PyDbSweepOptions::twistRefVec)
+        .def("setTwistRefVec", &PyDbSweepOptions::setTwistRefVec)
+        .def("getSweepEntityTransform", &PyDbSweepOptions::getSweepEntityTransform)
+        .def("setSweepEntityTransform", &PyDbSweepOptions::setSweepEntityTransform1)
+        .def("setSweepEntityTransform", &PyDbSweepOptions::setSweepEntityTransform2)
+        .def("setSweepEntityTransform", &PyDbSweepOptions::setSweepEntityTransform3)
+        .def("getPathEntityTransform", &PyDbSweepOptions::getPathEntityTransform)
+        .def("setPathEntityTransform", &PyDbSweepOptions::setPathEntityTransform1)
+        .def("setPathEntityTransform", &PyDbSweepOptions::setPathEntityTransform2)
+        .def("setPathEntityTransform", &PyDbSweepOptions::setPathEntityTransform3)
+        .def("checkSweepCurve", &PyDbSweepOptions::checkSweepCurve1)
+        .def("checkSweepCurve", &PyDbSweepOptions::checkSweepCurve2)
+        .def("checkPathCurve", &PyDbSweepOptions::checkPathCurve1)
+        .def("checkPathCurve", &PyDbSweepOptions::checkPathCurve2)
+        ;
+    enum_<AcDbSweepOptions::AlignOption>("SweepAlignOption")
+        .value("kNoAlignment", AcDbSweepOptions::AlignOption::kNoAlignment)
+        .value("kAlignSweepEntityToPath", AcDbSweepOptions::AlignOption::kAlignSweepEntityToPath)
+        .value("kTranslateSweepEntityToPath", AcDbSweepOptions::AlignOption::kTranslateSweepEntityToPath)
+        .value("kTranslatePathToSweepEntity", AcDbSweepOptions::AlignOption::kTranslatePathToSweepEntity)
+        .export_values()
+        ;
+    enum_<AcDbSweepOptions::MiterOption>("SweepMiterOption")
+        .value("kDefaultMiter", AcDbSweepOptions::MiterOption::kDefaultMiter)
+        .value("kOldMiter", AcDbSweepOptions::MiterOption::kOldMiter)
+        .value("kNewMiter", AcDbSweepOptions::MiterOption::kNewMiter)
+        .value("kCrimpMiter", AcDbSweepOptions::MiterOption::kCrimpMiter)
+        .value("kBendMiter", AcDbSweepOptions::MiterOption::kBendMiter)
+        .export_values()
+        ;
+}
+
+PyDbSweepOptions::PyDbSweepOptions()
+    : m_pyImp(new AcDbSweepOptions())
+{
+}
+
+PyDbSweepOptions::PyDbSweepOptions(const AcDbSweepOptions& src)
+    : m_pyImp(new AcDbSweepOptions(src))
+{
+}
+
+double PyDbSweepOptions::draftAngle() const
+{
+    return impObj()->draftAngle();
+}
+
+void PyDbSweepOptions::setDraftAngle(double ang)
+{
+    return impObj()->setDraftAngle(ang);
+}
+
+double PyDbSweepOptions::startDraftDist() const
+{
+    return impObj()->startDraftDist();
+}
+
+void PyDbSweepOptions::setStartDraftDist(double val)
+{
+    return impObj()->setStartDraftDist(val);
+}
+
+double PyDbSweepOptions::endDraftDist() const
+{
+    return impObj()->endDraftDist();
+}
+
+void PyDbSweepOptions::setEndDraftDist(double val)
+{
+    return impObj()->setEndDraftDist(val);
+}
+
+double PyDbSweepOptions::twistAngle() const
+{
+    return impObj()->twistAngle();
+}
+
+void PyDbSweepOptions::setTwistAngle(double ang)
+{
+    return impObj()->setTwistAngle(ang);
+}
+
+double PyDbSweepOptions::scaleFactor() const
+{
+    return impObj()->scaleFactor();
+}
+
+void PyDbSweepOptions::setScaleFactor(double val)
+{
+    return impObj()->setScaleFactor(val);
+}
+
+double PyDbSweepOptions::alignAngle() const
+{
+    return impObj()->alignAngle();
+}
+
+void PyDbSweepOptions::setAlignAngle(double ang)
+{
+    return impObj()->setAlignAngle(ang);
+}
+
+AcDbSweepOptions::AlignOption PyDbSweepOptions::align() const
+{
+    return impObj()->align();
+}
+
+void PyDbSweepOptions::setAlign(AcDbSweepOptions::AlignOption val)
+{
+    return impObj()->setAlign(val);
+}
+
+AcDbSweepOptions::MiterOption PyDbSweepOptions::miterOption() const
+{
+    return impObj()->miterOption();
+}
+
+void PyDbSweepOptions::setMiterOption(AcDbSweepOptions::MiterOption val)
+{
+    return impObj()->setMiterOption(val);
+}
+
+bool PyDbSweepOptions::alignStart() const
+{
+    return impObj()->alignStart();
+}
+
+void PyDbSweepOptions::setAlignStart(bool val)
+{
+    return impObj()->setAlignStart(val);
+}
+
+AcGePoint3d PyDbSweepOptions::basePoint() const
+{
+    return impObj()->basePoint();
+}
+
+void PyDbSweepOptions::setBasePoint(AcGePoint3d& pnt)
+{
+    return impObj()->setBasePoint(pnt);
+}
+
+bool PyDbSweepOptions::bank() const
+{
+    return impObj()->bank();
+}
+
+void PyDbSweepOptions::setBank(bool val)
+{
+    return impObj()->setBank(val);
+}
+
+bool PyDbSweepOptions::checkIntersections() const
+{
+    return impObj()->checkIntersections();
+}
+
+void PyDbSweepOptions::setCheckIntersections(bool val)
+{
+    return impObj()->setCheckIntersections(val);
+}
+
+AcGeVector3d PyDbSweepOptions::twistRefVec() const
+{
+    return impObj()->twistRefVec();
+}
+
+void PyDbSweepOptions::setTwistRefVec(const AcGeVector3d& vec)
+{
+    return impObj()->setTwistRefVec(vec);
+}
+
+bool PyDbSweepOptions::getSweepEntityTransform(AcGeMatrix3d& mat)
+{
+    return impObj()->getSweepEntityTransform(mat);
+}
+
+void PyDbSweepOptions::setSweepEntityTransform1(AcGeMatrix3d& mat)
+{
+    return impObj()->setSweepEntityTransform(mat);
+}
+
+Acad::ErrorStatus PyDbSweepOptions::setSweepEntityTransform2(boost::python::list& sweepEntities)
+{
+    return setSweepEntityTransform3(sweepEntities, false);
+}
+
+Acad::ErrorStatus PyDbSweepOptions::setSweepEntityTransform3(boost::python::list& sweepEntities, bool displayErrorMessages)
+{
+    AcArray<AcDbEntity*> _sweepEntities;
+    auto vec = py_list_to_std_vector<PyDbEntity>(sweepEntities);
+    for (auto& item : vec)
+        _sweepEntities.append(item.impObj());
+    return impObj()->setSweepEntityTransform(_sweepEntities, displayErrorMessages);
+}
+
+bool PyDbSweepOptions::getPathEntityTransform(AcGeMatrix3d& mat)
+{
+    return impObj()->getPathEntityTransform(mat);
+}
+
+void PyDbSweepOptions::setPathEntityTransform1(AcGeMatrix3d& mat)
+{
+    return impObj()->setPathEntityTransform(mat);
+}
+
+Acad::ErrorStatus PyDbSweepOptions::setPathEntityTransform2(PyDbEntity& pPathEnt)
+{
+    return impObj()->setPathEntityTransform(pPathEnt.impObj());
+}
+
+Acad::ErrorStatus PyDbSweepOptions::setPathEntityTransform3(PyDbEntity& pPathEnt, bool displayErrorMessages)
+{
+    return impObj()->setPathEntityTransform(pPathEnt.impObj(), displayErrorMessages);
+}
+
+boost::python::tuple PyDbSweepOptions::checkSweepCurve1(PyDbEntity& pSweepEnt)
+{
+    return checkSweepCurve2(pSweepEnt, false);
+}
+
+boost::python::tuple PyDbSweepOptions::checkSweepCurve2(PyDbEntity& pSweepEnt, bool displayErrorMessages)
+{
+    PyAutoLockGIL lock;
+    AcDb::Planarity planarity;
+    AcGePoint3d pnt;
+    AcGeVector3d vec;
+    bool closed = false;
+    double approxArcLen =0;
+    if (auto es = impObj()->checkSweepCurve(pSweepEnt.impObj(), planarity, pnt, vec, closed, approxArcLen, displayErrorMessages); es != eOk)
+        throw PyAcadErrorStatus(es);
+    return boost::python::make_tuple(planarity, pnt, vec, closed, approxArcLen);
+}
+
+Acad::ErrorStatus PyDbSweepOptions::checkPathCurve1(PyDbEntity& pPathEnt)
+{
+    return impObj()->checkPathCurve(pPathEnt.impObj());
+}
+
+Acad::ErrorStatus PyDbSweepOptions::checkPathCurve2(PyDbEntity& pPathEnt, bool displayErrorMessages)
+{
+    return impObj()->checkPathCurve(pPathEnt.impObj(), displayErrorMessages);
+}
+
+AcDbSweepOptions* PyDbSweepOptions::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr)
+        throw PyNullObject(src);
+    return static_cast<AcDbSweepOptions*>(m_pyImp.get());
 }
