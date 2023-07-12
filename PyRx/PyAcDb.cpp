@@ -165,6 +165,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbRegionWrapper();
     makeAcDbBodyWrapper();
     makePyDbRevolveOptionsWrapper();
+    makePyDbSweepOptionsWrapper();
     makePyDbSurfaceWrapper();
     makeAcDbExtrudedSurfaceWrapper();
     makeAcDbLoftedSurfaceWrapper();
