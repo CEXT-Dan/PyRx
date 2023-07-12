@@ -65952,6 +65952,17 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
+    def checkRevolveCurve (self, *args, **kwargs)-> tuple :
+      '''checkRevolveCurve( (RevolveOptions)arg1, (Entity)arg2, (Point3d)arg3, (Vector3d)arg4) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple checkRevolveCurve(class PyDbRevolveOptions {lvalue},class PyDbEntity {lvalue},class AcGePoint3d,class AcGeVector3d)
+
+checkRevolveCurve( (RevolveOptions)arg1, (Entity)arg2, (Point3d)arg3, (Vector3d)arg4, (bool)arg5) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple checkRevolveCurve(class PyDbRevolveOptions {lvalue},class PyDbEntity {lvalue},class AcGePoint3d,class AcGeVector3d,bool)'''
+    ...
     def closeToAxis (self, *args, **kwargs)-> bool :
       '''closeToAxis( (RevolveOptions)arg1) -> bool :
 
@@ -71300,6 +71311,500 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     ...
     def xDataTransformBy (self: DbObject,xform: AcGeMatrix3d)-> ErrorStatus :
       '''                             '''
+    ...
+
+class SweepAlignOption:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None:
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None:
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None:
+      '''the imaginary part of a complex number'''
+    ...
+    def kAlignSweepEntityToPath (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kNoAlignment (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kTranslatePathToSweepEntity (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kTranslateSweepEntityToPath (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None:
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None:
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class SweepMiterOption:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None:
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None:
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None:
+      '''the imaginary part of a complex number'''
+    ...
+    def kBendMiter (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kCrimpMiter (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kDefaultMiter (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kNewMiter (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kOldMiter (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None:
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None:
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class SweepOptions:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def align (self, *args, **kwargs)-> SweepAlignOption :
+      '''align( (SweepOptions)arg1) -> SweepAlignOption :
+
+    C++ signature :
+        enum AcDbSweepOptions::AlignOption align(class PyDbSweepOptions {lvalue})'''
+    ...
+    def alignAngle (self, *args, **kwargs)-> float :
+      '''alignAngle( (SweepOptions)arg1) -> float :
+
+    C++ signature :
+        double alignAngle(class PyDbSweepOptions {lvalue})'''
+    ...
+    def alignStart (self, *args, **kwargs)-> bool :
+      '''alignStart( (SweepOptions)arg1) -> bool :
+
+    C++ signature :
+        bool alignStart(class PyDbSweepOptions {lvalue})'''
+    ...
+    def bank (self, *args, **kwargs)-> bool :
+      '''bank( (SweepOptions)arg1) -> bool :
+
+    C++ signature :
+        bool bank(class PyDbSweepOptions {lvalue})'''
+    ...
+    def basePoint (self, *args, **kwargs)-> Point3d :
+      '''basePoint( (SweepOptions)arg1) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d basePoint(class PyDbSweepOptions {lvalue})'''
+    ...
+    def checkIntersections (self, *args, **kwargs)-> bool :
+      '''checkIntersections( (SweepOptions)arg1) -> bool :
+
+    C++ signature :
+        bool checkIntersections(class PyDbSweepOptions {lvalue})'''
+    ...
+    def checkPathCurve (self, *args, **kwargs)-> ErrorStatus :
+      '''checkPathCurve( (SweepOptions)arg1, (Entity)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus checkPathCurve(class PyDbSweepOptions {lvalue},class PyDbEntity {lvalue})
+
+checkPathCurve( (SweepOptions)arg1, (Entity)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus checkPathCurve(class PyDbSweepOptions {lvalue},class PyDbEntity {lvalue},bool)'''
+    ...
+    def checkSweepCurve (self, *args, **kwargs)-> tuple :
+      '''checkSweepCurve( (SweepOptions)arg1, (Entity)arg2) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple checkSweepCurve(class PyDbSweepOptions {lvalue},class PyDbEntity {lvalue})
+
+checkSweepCurve( (SweepOptions)arg1, (Entity)arg2, (bool)arg3) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple checkSweepCurve(class PyDbSweepOptions {lvalue},class PyDbEntity {lvalue},bool)'''
+    ...
+    def draftAngle (self, *args, **kwargs)-> float :
+      '''draftAngle( (SweepOptions)arg1) -> float :
+
+    C++ signature :
+        double draftAngle(class PyDbSweepOptions {lvalue})'''
+    ...
+    def endDraftDist (self, *args, **kwargs)-> float :
+      '''endDraftDist( (SweepOptions)arg1) -> float :
+
+    C++ signature :
+        double endDraftDist(class PyDbSweepOptions {lvalue})'''
+    ...
+    def getPathEntityTransform (self, *args, **kwargs)-> bool :
+      '''getPathEntityTransform( (SweepOptions)arg1, (Matrix3d)arg2) -> bool :
+
+    C++ signature :
+        bool getPathEntityTransform(class PyDbSweepOptions {lvalue},class AcGeMatrix3d {lvalue})'''
+    ...
+    def getSweepEntityTransform (self, *args, **kwargs)-> bool :
+      '''getSweepEntityTransform( (SweepOptions)arg1, (Matrix3d)arg2) -> bool :
+
+    C++ signature :
+        bool getSweepEntityTransform(class PyDbSweepOptions {lvalue},class AcGeMatrix3d {lvalue})'''
+    ...
+    def miterOption (self, *args, **kwargs)-> SweepMiterOption :
+      '''miterOption( (SweepOptions)arg1) -> SweepMiterOption :
+
+    C++ signature :
+        enum AcDbSweepOptions::MiterOption miterOption(class PyDbSweepOptions {lvalue})'''
+    ...
+    def scaleFactor (self, *args, **kwargs)-> float :
+      '''scaleFactor( (SweepOptions)arg1) -> float :
+
+    C++ signature :
+        double scaleFactor(class PyDbSweepOptions {lvalue})'''
+    ...
+    def setAlign (self, *args, **kwargs)-> None :
+      '''setAlign( (SweepOptions)arg1, (SweepAlignOption)arg2) -> None :
+
+    C++ signature :
+        void setAlign(class PyDbSweepOptions {lvalue},enum AcDbSweepOptions::AlignOption)'''
+    ...
+    def setAlignAngle (self, *args, **kwargs)-> None :
+      '''setAlignAngle( (SweepOptions)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setAlignAngle(class PyDbSweepOptions {lvalue},double)'''
+    ...
+    def setAlignStart (self, *args, **kwargs)-> None :
+      '''setAlignStart( (SweepOptions)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setAlignStart(class PyDbSweepOptions {lvalue},bool)'''
+    ...
+    def setBank (self, *args, **kwargs)-> None :
+      '''setBank( (SweepOptions)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setBank(class PyDbSweepOptions {lvalue},bool)'''
+    ...
+    def setBasePoint (self, *args, **kwargs)-> None :
+      '''setBasePoint( (SweepOptions)arg1, (Point3d)arg2) -> None :
+
+    C++ signature :
+        void setBasePoint(class PyDbSweepOptions {lvalue},class AcGePoint3d {lvalue})'''
+    ...
+    def setCheckIntersections (self, *args, **kwargs)-> None :
+      '''setCheckIntersections( (SweepOptions)arg1, (bool)arg2) -> None :
+
+    C++ signature :
+        void setCheckIntersections(class PyDbSweepOptions {lvalue},bool)'''
+    ...
+    def setDraftAngle (self, *args, **kwargs)-> None :
+      '''setDraftAngle( (SweepOptions)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setDraftAngle(class PyDbSweepOptions {lvalue},double)'''
+    ...
+    def setEndDraftDist (self, *args, **kwargs)-> None :
+      '''setEndDraftDist( (SweepOptions)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setEndDraftDist(class PyDbSweepOptions {lvalue},double)'''
+    ...
+    def setMiterOption (self, *args, **kwargs)-> None :
+      '''setMiterOption( (SweepOptions)arg1, (SweepMiterOption)arg2) -> None :
+
+    C++ signature :
+        void setMiterOption(class PyDbSweepOptions {lvalue},enum AcDbSweepOptions::MiterOption)'''
+    ...
+    def setPathEntityTransform (self, *args, **kwargs)-> None :
+      '''setPathEntityTransform( (SweepOptions)arg1, (Matrix3d)arg2) -> None :
+
+    C++ signature :
+        void setPathEntityTransform(class PyDbSweepOptions {lvalue},class AcGeMatrix3d {lvalue})
+
+setPathEntityTransform( (SweepOptions)arg1, (Entity)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPathEntityTransform(class PyDbSweepOptions {lvalue},class PyDbEntity {lvalue})
+
+setPathEntityTransform( (SweepOptions)arg1, (Entity)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setPathEntityTransform(class PyDbSweepOptions {lvalue},class PyDbEntity {lvalue},bool)'''
+    ...
+    def setScaleFactor (self, *args, **kwargs)-> None :
+      '''setScaleFactor( (SweepOptions)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setScaleFactor(class PyDbSweepOptions {lvalue},double)'''
+    ...
+    def setStartDraftDist (self, *args, **kwargs)-> None :
+      '''setStartDraftDist( (SweepOptions)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setStartDraftDist(class PyDbSweepOptions {lvalue},double)'''
+    ...
+    def setSweepEntityTransform (self, *args, **kwargs)-> None :
+      '''setSweepEntityTransform( (SweepOptions)arg1, (Matrix3d)arg2) -> None :
+
+    C++ signature :
+        void setSweepEntityTransform(class PyDbSweepOptions {lvalue},class AcGeMatrix3d {lvalue})
+
+setSweepEntityTransform( (SweepOptions)arg1, (list)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSweepEntityTransform(class PyDbSweepOptions {lvalue},class boost::python::list {lvalue})
+
+setSweepEntityTransform( (SweepOptions)arg1, (list)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSweepEntityTransform(class PyDbSweepOptions {lvalue},class boost::python::list {lvalue},bool)'''
+    ...
+    def setTwistAngle (self, *args, **kwargs)-> None :
+      '''setTwistAngle( (SweepOptions)arg1, (float)arg2) -> None :
+
+    C++ signature :
+        void setTwistAngle(class PyDbSweepOptions {lvalue},double)'''
+    ...
+    def setTwistRefVec (self, *args, **kwargs)-> None :
+      '''setTwistRefVec( (SweepOptions)arg1, (Vector3d)arg2) -> None :
+
+    C++ signature :
+        void setTwistRefVec(class PyDbSweepOptions {lvalue},class AcGeVector3d)'''
+    ...
+    def startDraftDist (self, *args, **kwargs)-> float :
+      '''startDraftDist( (SweepOptions)arg1) -> float :
+
+    C++ signature :
+        double startDraftDist(class PyDbSweepOptions {lvalue})'''
+    ...
+    def twistAngle (self, *args, **kwargs)-> float :
+      '''twistAngle( (SweepOptions)arg1) -> float :
+
+    C++ signature :
+        double twistAngle(class PyDbSweepOptions {lvalue})'''
+    ...
+    def twistRefVec (self, *args, **kwargs)-> Vector3d :
+      '''twistRefVec( (SweepOptions)arg1) -> Vector3d :
+
+    C++ signature :
+        class AcGeVector3d twistRefVec(class PyDbSweepOptions {lvalue})'''
     ...
 
 class SweptSurface:
