@@ -216,6 +216,12 @@ BOOST_PYTHON_MODULE(PyDb)
 
     def("curDb", curPyDb);
 
+    enum_<AcDb::BoolOperType>("BoolOperType")
+        .value("kBoolUnite", AcDb::BoolOperType::kBoolUnite)
+        .value("kBoolIntersect", AcDb::BoolOperType::kBoolIntersect)
+        .value("kBoolSubtract", AcDb::BoolOperType::kBoolSubtract)
+        .export_values()
+        ;
     enum_<AcDb::SubentType>("SubentType")
         .value("kNullSubentType", AcDb::kNullSubentType)
         .value("kFaceSubentType", AcDb::kFaceSubentType)

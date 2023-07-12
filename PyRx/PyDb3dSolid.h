@@ -4,8 +4,9 @@
 class PyDbObjectId;
 class PyDbRegion;
 class PyDbCurve;
+class PyDbSurface;
 class PyDbRevolveOptions;
-
+class PyDbSweepOptions;
 //-----------------------------------------------------------------------------------
 //PyDb3dSolid
 void makePyDb3dSolidWrapper();
@@ -28,12 +29,57 @@ public:
     Acad::ErrorStatus   extrude2(const PyDbRegion& region, double height, double taperAngle);
     Acad::ErrorStatus   extrudeAlongPath1(const PyDbRegion& region, const PyDbCurve& path);
     Acad::ErrorStatus   extrudeAlongPath2(const PyDbRegion& region, const PyDbCurve& path, double taperAngle);
-    Acad::ErrorStatus   createRevolvedSolid1(PyDbEntity& pRevEnt,const AcGePoint3d& axisPnt,const AcGeVector3d& axisDir,double revAngle, double startAngle, PyDbRevolveOptions& revolveOptions);
-    Acad::ErrorStatus   createRevolvedSolid2(PyDbEntity& pRevEnt,const PyDbSubentId& faceSubentId,const AcGePoint3d& axisPnt, const AcGeVector3d& axisDir, double revAngle, double startAngle, PyDbRevolveOptions& revolveOptions);
+    Acad::ErrorStatus   createRevolvedSolid1(PyDbEntity& pRevEnt, const AcGePoint3d& axisPnt, const AcGeVector3d& axisDir, double revAngle, double startAngle, PyDbRevolveOptions& revolveOptions);
+    Acad::ErrorStatus   createRevolvedSolid2(PyDbEntity& pRevEnt, const PyDbSubentId& faceSubentId, const AcGePoint3d& axisPnt, const AcGeVector3d& axisDir, double revAngle, double startAngle, PyDbRevolveOptions& revolveOptions);
+    Acad::ErrorStatus   createSweptSolid1(PyDbEntity& pSweepEnt, PyDbEntity& pPathEnt, PyDbSweepOptions& sweepOptions);
+    Acad::ErrorStatus   createSweptSolid2(PyDbEntity& pSweepEnt, const PyDbSubentId& faceSubentId, PyDbEntity& pPathEnt, PyDbSweepOptions& sweepOptions);
+    Acad::ErrorStatus   createExtrudedSolid1(PyDbEntity& pSweepEnt, const AcGeVector3d& directionVec, PyDbSweepOptions& sweepOptions);
+    Acad::ErrorStatus   createExtrudedSolid2(PyDbEntity& pSweepEnt, const PyDbSubentId& faceSubentId, const AcGeVector3d& directionVec, PyDbSweepOptions& sweepOptions);
+    Acad::ErrorStatus   createExtrudedSolid3(PyDbEntity& pSweepEnt, const PyDbSubentId& faceSubentId, double height, PyDbSweepOptions& sweepOptions);
+    Acad::ErrorStatus   createFrom(const PyDbEntity& pFromEntity);
+    double              getArea() const;
+    boost::python::tuple checkInterference(const PyDb3dSolid& otherSolid, Adesk::Boolean createNewSolid);
+    boost::python::tuple getMassProp();
+    Adesk::Boolean      isNull() const;
+    PyDbRegion          getSection(const PyGePlane& plane);
+    Acad::ErrorStatus   stlOut1(const std::string& fileName, Adesk::Boolean asciiFormat) const;
+    Acad::ErrorStatus   stlOut2(const std::string& fileName, Adesk::Boolean asciiFormat, double maxSurfaceDeviation) const;
+    Acad::ErrorStatus   booleanOper(AcDb::BoolOperType operation, PyDb3dSolid& solid);
+    PyDb3dSolid         getSlice1(const PyGePlane& plane, Adesk::Boolean getNegHalfToo);
+    PyDb3dSolid         getSlice2(const PyDbSurface& plane, Adesk::Boolean getNegHalfToo);
+    Adesk::UInt32       numChanges() const;
+    PyDbEntity          copyEdge(const PyDbSubentId& subentId);
+    PyDbEntity          copyFace(const PyDbSubentId& subentId);
+    Acad::ErrorStatus   extrudeFaces(const boost::python::list& faceSubentIds, double height, double taper);
+    Acad::ErrorStatus   extrudeFacesAlongPath(boost::python::list& faceSubentIds, const PyDbCurve& path);
+    Acad::ErrorStatus   imprintEntity(const PyDbEntity& pEntity);
+    Acad::ErrorStatus   cleanBody();
+    Acad::ErrorStatus   offsetBody(double offsetDistance);
+    Acad::ErrorStatus   offsetFaces(const boost::python::list& faceSubentIds, double offsetDistance);
+    Acad::ErrorStatus   removeFaces(const boost::python::list& faceSubentIds);
+    boost::python::list separateBody();
+    Acad::ErrorStatus   shellBody(const boost::python::list& faceSubentIds, double offsetDistance);
+    Acad::ErrorStatus   taperFaces(const boost::python::list& faceSubentIds, const AcGePoint3d& basePoint, const AcGeVector3d& draftVector, double draftAngle);
+    Acad::ErrorStatus   transformFaces(const boost::python::list& faceSubentIds, const AcGeMatrix3d& matrix);
+    Acad::ErrorStatus   setSubentColor(const PyDbSubentId& subentId, const AcCmColor& color);
+    AcCmColor           getSubentColor(const PyDbSubentId& subentId) const;
+    Acad::ErrorStatus   setSubentMaterial(const PyDbSubentId& subentId, PyDbObjectId& matId);
+    PyDbObjectId        getSubentMaterial(const PyDbSubentId& subentId) const;
+    bool                recordHistory() const;
+    Acad::ErrorStatus   setRecordHistory(bool bRecord);
+    bool                showHistory() const;
+    Acad::ErrorStatus   setShowHistory(bool bShow);
+    Acad::ErrorStatus   chamferEdges(const boost::python::list& edgeSubentIds, const PyDbSubentId& baseFaceSubentId, double baseDist, double otherDist);
+    Acad::ErrorStatus   filletEdges(const boost::python::list& edgeSubentIds, boost::python::list& radius, boost::python::list& startSetback, boost::python::list& endSetback);
+    bool                usesGraphicsCache();
+    Acad::ErrorStatus   createSculptedSolid(const boost::python::list& limitingBodies, const boost::python::list& limitingFlags);
+    boost::python::list projectOnToSolid(const PyDbEntity& pEntityToProject, const AcGeVector3d& projectionDirection) const;
+
     static std::string  className();
     static PyRxClass    desc();
     static PyDb3dSolid  cloneFrom(const PyRxObject& src);
     static PyDb3dSolid  cast(const PyRxObject& src);
+
 public:
     AcDb3dSolid* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -144,7 +190,7 @@ public:
     bool                getPathEntityTransform(AcGeMatrix3d& mat);
     void                setPathEntityTransform1(AcGeMatrix3d& mat);
     Acad::ErrorStatus   setPathEntityTransform2(PyDbEntity& pPathEnt);
-    Acad::ErrorStatus   setPathEntityTransform3(PyDbEntity& pPathEnt,bool displayErrorMessages);
+    Acad::ErrorStatus   setPathEntityTransform3(PyDbEntity& pPathEnt, bool displayErrorMessages);
     boost::python::tuple checkSweepCurve1(PyDbEntity& pSweepEnt);
     boost::python::tuple checkSweepCurve2(PyDbEntity& pSweepEnt, bool displayErrorMessages);
     Acad::ErrorStatus   checkPathCurve1(PyDbEntity& pPathEnt);
