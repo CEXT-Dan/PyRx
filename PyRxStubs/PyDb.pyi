@@ -10529,6 +10529,131 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
       '''                             '''
     ...
 
+class BoolOperType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None:
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None:
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None:
+      '''the imaginary part of a complex number'''
+    ...
+    def kBoolIntersect (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kBoolSubtract (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kBoolUnite (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None:
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None:
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
 class Cell:
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
@@ -69367,6 +69492,12 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId blockId(class PyDbEntity {lvalue})'''
     ...
+    def booleanOper (self, *args, **kwargs)-> ErrorStatus :
+      '''booleanOper( (Solid3d)arg1, (BoolOperType)arg2, (Solid3d)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus booleanOper(class PyDb3dSolid {lvalue},enum AcDb::BoolOperType,class PyDb3dSolid {lvalue})'''
+    ...
     def bounds (self, *args, **kwargs)-> bool :
       '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
 
@@ -69388,11 +69519,29 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         bool castShadows(class PyDbEntity {lvalue})'''
     ...
+    def chamferEdges (self, *args, **kwargs)-> ErrorStatus :
+      '''chamferEdges( (Solid3d)arg1, (list)arg2, (SubentId)arg3, (float)arg4, (float)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus chamferEdges(class PyDb3dSolid {lvalue},class boost::python::list,class PyDbSubentId,double,double)'''
+    ...
+    def checkInterference (self, *args, **kwargs)-> tuple :
+      '''checkInterference( (Solid3d)arg1, (Solid3d)arg2, (bool)arg3) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple checkInterference(class PyDb3dSolid {lvalue},class PyDb3dSolid,bool)'''
+    ...
     def className (self, *args, **kwargs)-> str :
       '''className() -> str :
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    ...
+    def cleanBody (self, *args, **kwargs)-> ErrorStatus :
+      '''cleanBody( (Solid3d)arg1) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus cleanBody(class PyDb3dSolid {lvalue})'''
     ...
     def cloneFrom (self, *args, **kwargs)-> Solid3d :
       '''cloneFrom( (RxObject)arg1) -> Solid3d :
@@ -69421,6 +69570,18 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         unsigned short colorIndex(class PyDbEntity {lvalue})'''
     ...
+    def copyEdge (self, *args, **kwargs)-> Entity :
+      '''copyEdge( (Solid3d)arg1, (SubentId)arg2) -> Entity :
+
+    C++ signature :
+        class PyDbEntity copyEdge(class PyDb3dSolid {lvalue},class PyDbSubentId)'''
+    ...
+    def copyFace (self, *args, **kwargs)-> Entity :
+      '''copyFace( (Solid3d)arg1, (SubentId)arg2) -> Entity :
+
+    C++ signature :
+        class PyDbEntity copyFace(class PyDb3dSolid {lvalue},class PyDbSubentId)'''
+    ...
     def createBox (self, *args, **kwargs)-> ErrorStatus :
       '''createBox( (Solid3d)arg1, (float)arg2, (float)arg3, (float)arg4) -> ErrorStatus :
 
@@ -69429,6 +69590,28 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def createExtensionDictionary (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def createExtrudedSolid (self, *args, **kwargs)-> ErrorStatus :
+      '''createExtrudedSolid( (Solid3d)arg1, (Entity)arg2, (Vector3d)arg3, (SweepOptions)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus createExtrudedSolid(class PyDb3dSolid {lvalue},class PyDbEntity {lvalue},class AcGeVector3d,class PyDbSweepOptions {lvalue})
+
+createExtrudedSolid( (Solid3d)arg1, (Entity)arg2, (SubentId)arg3, (Vector3d)arg4, (SweepOptions)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus createExtrudedSolid(class PyDb3dSolid {lvalue},class PyDbEntity {lvalue},class PyDbSubentId,class AcGeVector3d,class PyDbSweepOptions {lvalue})
+
+createExtrudedSolid( (Solid3d)arg1, (Entity)arg2, (SubentId)arg3, (float)arg4, (SweepOptions)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus createExtrudedSolid(class PyDb3dSolid {lvalue},class PyDbEntity {lvalue},class PyDbSubentId,double,class PyDbSweepOptions {lvalue})'''
+    ...
+    def createFrom (self, *args, **kwargs)-> ErrorStatus :
+      '''createFrom( (Solid3d)arg1, (Entity)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus createFrom(class PyDb3dSolid {lvalue},class PyDbEntity)'''
     ...
     def createFrustum (self, *args, **kwargs)-> ErrorStatus :
       '''createFrustum( (Solid3d)arg1, (float)arg2, (float)arg3, (float)arg4, (float)arg5) -> ErrorStatus :
@@ -69458,11 +69641,28 @@ createRevolvedSolid( (Solid3d)arg1, (Entity)arg2, (SubentId)arg3, (Point3d)arg4,
     C++ signature :
         enum Acad::ErrorStatus createRevolvedSolid(class PyDb3dSolid {lvalue},class PyDbEntity {lvalue},class PyDbSubentId,class AcGePoint3d,class AcGeVector3d,double,double,class PyDbRevolveOptions {lvalue})'''
     ...
+    def createSculptedSolid (self, *args, **kwargs)-> ErrorStatus :
+      '''createSculptedSolid( (Solid3d)arg1, (list)arg2, (list)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus createSculptedSolid(class PyDb3dSolid {lvalue},class boost::python::list,class boost::python::list)'''
+    ...
     def createSphere (self, *args, **kwargs)-> ErrorStatus :
       '''createSphere( (Solid3d)arg1, (float)arg2) -> ErrorStatus :
 
     C++ signature :
         enum Acad::ErrorStatus createSphere(class PyDb3dSolid {lvalue},double)'''
+    ...
+    def createSweptSolid (self, *args, **kwargs)-> ErrorStatus :
+      '''createSweptSolid( (Solid3d)arg1, (Entity)arg2, (Entity)arg3, (SweepOptions)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus createSweptSolid(class PyDb3dSolid {lvalue},class PyDbEntity {lvalue},class PyDbEntity {lvalue},class PyDbSweepOptions {lvalue})
+
+createSweptSolid( (Solid3d)arg1, (Entity)arg2, (SubentId)arg3, (Entity)arg4, (SweepOptions)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus createSweptSolid(class PyDb3dSolid {lvalue},class PyDbEntity {lvalue},class PyDbSubentId,class PyDbEntity {lvalue},class PyDbSweepOptions {lvalue})'''
     ...
     def createTorus (self, *args, **kwargs)-> ErrorStatus :
       '''createTorus( (Solid3d)arg1, (float)arg2, (float)arg3) -> ErrorStatus :
@@ -69540,6 +69740,30 @@ extrudeAlongPath( (Solid3d)arg1, (Region)arg2, (Curve)arg3, (float)arg4) -> Erro
     C++ signature :
         enum Acad::ErrorStatus extrudeAlongPath(class PyDb3dSolid {lvalue},class PyDbRegion,class PyDbCurve,double)'''
     ...
+    def extrudeFaces (self, *args, **kwargs)-> ErrorStatus :
+      '''extrudeFaces( (Solid3d)arg1, (list)arg2, (float)arg3, (float)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus extrudeFaces(class PyDb3dSolid {lvalue},class boost::python::list,double,double)'''
+    ...
+    def extrudeFacesAlongPath (self, *args, **kwargs)-> ErrorStatus :
+      '''extrudeFacesAlongPath( (Solid3d)arg1, (list)arg2, (Curve)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus extrudeFacesAlongPath(class PyDb3dSolid {lvalue},class boost::python::list {lvalue},class PyDbCurve)'''
+    ...
+    def filletEdges (self, *args, **kwargs)-> ErrorStatus :
+      '''filletEdges( (Solid3d)arg1, (list)arg2, (list)arg3, (list)arg4, (list)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus filletEdges(class PyDb3dSolid {lvalue},class boost::python::list,class boost::python::list {lvalue},class boost::python::list {lvalue},class boost::python::list {lvalue})'''
+    ...
+    def getArea (self, *args, **kwargs)-> float :
+      '''getArea( (Solid3d)arg1) -> float :
+
+    C++ signature :
+        double getArea(class PyDb3dSolid {lvalue})'''
+    ...
     def getCompoundObjectTransform (self, *args, **kwargs)-> ErrorStatus :
       '''getCompoundObjectTransform( (Entity)arg1, (Matrix3d)arg2) -> ErrorStatus :
 
@@ -69567,6 +69791,12 @@ extrudeAlongPath( (Solid3d)arg1, (Region)arg2, (Curve)arg3, (float)arg4) -> Erro
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
+    def getMassProp (self, *args, **kwargs)-> tuple :
+      '''getMassProp( (Solid3d)arg1) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getMassProp(class PyDb3dSolid {lvalue})'''
+    ...
     def getPlane (self, *args, **kwargs)-> Plane :
       '''getPlane( (Entity)arg1) -> Plane :
 
@@ -69578,6 +69808,35 @@ extrudeAlongPath( (Solid3d)arg1, (Region)arg2, (Curve)arg3, (float)arg4) -> Erro
 
     C++ signature :
         class PyDbObjectId getPlotStyleNameId(class PyDbEntity {lvalue})'''
+    ...
+    def getSection (self, *args, **kwargs)-> Region :
+      '''getSection( (Solid3d)arg1, (Plane)arg2) -> Region :
+
+    C++ signature :
+        class PyDbRegion getSection(class PyDb3dSolid {lvalue},class PyGePlane)'''
+    ...
+    def getSlice (self, *args, **kwargs)-> Solid3d :
+      '''getSlice( (Solid3d)arg1, (Plane)arg2, (bool)arg3) -> Solid3d :
+
+    C++ signature :
+        class PyDb3dSolid getSlice(class PyDb3dSolid {lvalue},class PyGePlane,bool)
+
+getSlice( (Solid3d)arg1, (Surface)arg2, (bool)arg3) -> Solid3d :
+
+    C++ signature :
+        class PyDb3dSolid getSlice(class PyDb3dSolid {lvalue},class PyDbSurface,bool)'''
+    ...
+    def getSubentColor (self, *args, **kwargs)-> Color :
+      '''getSubentColor( (Solid3d)arg1, (SubentId)arg2) -> Color :
+
+    C++ signature :
+        class AcCmColor getSubentColor(class PyDb3dSolid {lvalue},class PyDbSubentId)'''
+    ...
+    def getSubentMaterial (self, *args, **kwargs)-> ObjectId :
+      '''getSubentMaterial( (Solid3d)arg1, (SubentId)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getSubentMaterial(class PyDb3dSolid {lvalue},class PyDbSubentId)'''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> ErrorStatus :
       '''                             '''
@@ -69593,6 +69852,12 @@ extrudeAlongPath( (Solid3d)arg1, (Region)arg2, (Curve)arg3, (float)arg4) -> Erro
 
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    ...
+    def imprintEntity (self, *args, **kwargs)-> ErrorStatus :
+      '''imprintEntity( (Solid3d)arg1, (Entity)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus imprintEntity(class PyDb3dSolid {lvalue},class PyDbEntity)'''
     ...
     def intersectWith (self, *args, **kwargs)-> ErrorStatus :
       '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> ErrorStatus :
@@ -69650,6 +69915,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     ...
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
+    ...
+    def isNull (self, *args, **kwargs)-> bool :
+      '''isNull( (Solid3d)arg1) -> bool :
+
+    C++ signature :
+        bool isNull(class PyDb3dSolid {lvalue})'''
     ...
     def isNullObj (self, *args, **kwargs)-> bool :
       '''isNullObj( (RxObject)arg1) -> bool :
@@ -69741,8 +70012,26 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     C++ signature :
         class PyDbObjectId materialId(class PyDbEntity {lvalue})'''
     ...
+    def numChanges (self, *args, **kwargs)-> int :
+      '''numChanges( (Solid3d)arg1) -> int :
+
+    C++ signature :
+        unsigned int numChanges(class PyDb3dSolid {lvalue})'''
+    ...
     def objectId (self: DbObject)-> ObjectId :
       '''                             '''
+    ...
+    def offsetBody (self, *args, **kwargs)-> ErrorStatus :
+      '''offsetBody( (Solid3d)arg1, (float)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus offsetBody(class PyDb3dSolid {lvalue},double)'''
+    ...
+    def offsetFaces (self, *args, **kwargs)-> ErrorStatus :
+      '''offsetFaces( (Solid3d)arg1, (list)arg2, (float)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus offsetFaces(class PyDb3dSolid {lvalue},class boost::python::list,double)'''
     ...
     def ownerId (self: DbObject)-> ObjectId :
       '''                             '''
@@ -69752,6 +70041,12 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > plotStyleName(class PyDbEntity {lvalue})'''
+    ...
+    def projectOnToSolid (self, *args, **kwargs)-> list :
+      '''projectOnToSolid( (Solid3d)arg1, (Entity)arg2, (Vector3d)arg3) -> list :
+
+    C++ signature :
+        class boost::python::list projectOnToSolid(class PyDb3dSolid {lvalue},class PyDbEntity,class AcGeVector3d)'''
     ...
     def receiveShadows (self, *args, **kwargs)-> bool :
       '''receiveShadows( (Entity)arg1) -> bool :
@@ -69770,6 +70065,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
     C++ signature :
         void recordGraphicsModified(class PyDbEntity {lvalue})'''
     ...
+    def recordHistory (self, *args, **kwargs)-> bool :
+      '''recordHistory( (Solid3d)arg1) -> bool :
+
+    C++ signature :
+        bool recordHistory(class PyDb3dSolid {lvalue})'''
+    ...
     def refCount (self, *args, **kwargs)-> int :
       '''refCount( (RxObject)arg1) -> int :
 
@@ -69778,6 +70079,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
     ...
     def releaseExtensionDictionary (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def removeFaces (self, *args, **kwargs)-> ErrorStatus :
+      '''removeFaces( (Solid3d)arg1, (list)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus removeFaces(class PyDb3dSolid {lvalue},class boost::python::list)'''
     ...
     def removeField (self: DbObject,id: ObjectId)-> ErrorStatus :
       '''                             '''
@@ -69790,6 +70097,12 @@ recordGraphicsModified( (Entity)arg1) -> None :
 
     C++ signature :
         bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    ...
+    def separateBody (self, *args, **kwargs)-> list :
+      '''separateBody( (Solid3d)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list separateBody(class PyDb3dSolid {lvalue})'''
     ...
     def setAttributes (self, *args, **kwargs)-> int :
       '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
@@ -69975,6 +70288,30 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         void setReceiveShadows(class PyDbEntity {lvalue},bool)'''
     ...
+    def setRecordHistory (self, *args, **kwargs)-> ErrorStatus :
+      '''setRecordHistory( (Solid3d)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setRecordHistory(class PyDb3dSolid {lvalue},bool)'''
+    ...
+    def setShowHistory (self, *args, **kwargs)-> ErrorStatus :
+      '''setShowHistory( (Solid3d)arg1, (bool)arg2) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setShowHistory(class PyDb3dSolid {lvalue},bool)'''
+    ...
+    def setSubentColor (self, *args, **kwargs)-> ErrorStatus :
+      '''setSubentColor( (Solid3d)arg1, (SubentId)arg2, (Color)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSubentColor(class PyDb3dSolid {lvalue},class PyDbSubentId,class AcCmColor)'''
+    ...
+    def setSubentMaterial (self, *args, **kwargs)-> ErrorStatus :
+      '''setSubentMaterial( (Solid3d)arg1, (SubentId)arg2, (ObjectId)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus setSubentMaterial(class PyDb3dSolid {lvalue},class PyDbSubentId,class PyDbObjectId {lvalue})'''
+    ...
     def setVisibility (self, *args, **kwargs)-> ErrorStatus :
       '''setVisibility( (Entity)arg1, (Visibility)arg2) -> ErrorStatus :
 
@@ -69989,8 +70326,37 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     def setXData (self: DbObject,xdata: list)-> ErrorStatus :
       '''                             '''
     ...
+    def shellBody (self, *args, **kwargs)-> ErrorStatus :
+      '''shellBody( (Solid3d)arg1, (list)arg2, (float)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus shellBody(class PyDb3dSolid {lvalue},class boost::python::list,double)'''
+    ...
+    def showHistory (self, *args, **kwargs)-> bool :
+      '''showHistory( (Solid3d)arg1) -> bool :
+
+    C++ signature :
+        bool showHistory(class PyDb3dSolid {lvalue})'''
+    ...
+    def stlOut (self, *args, **kwargs)-> ErrorStatus :
+      '''stlOut( (Solid3d)arg1, (str)arg2, (bool)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus stlOut(class PyDb3dSolid {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)
+
+stlOut( (Solid3d)arg1, (str)arg2, (bool)arg3, (float)arg4) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus stlOut(class PyDb3dSolid {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,double)'''
+    ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> ErrorStatus :
       '''                             '''
+    ...
+    def taperFaces (self, *args, **kwargs)-> ErrorStatus :
+      '''taperFaces( (Solid3d)arg1, (list)arg2, (Point3d)arg3, (Vector3d)arg4, (float)arg5) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus taperFaces(class PyDb3dSolid {lvalue},class boost::python::list,class AcGePoint3d,class AcGeVector3d,double)'''
     ...
     def transformBy (self, *args, **kwargs)-> ErrorStatus :
       '''transformBy( (Entity)arg1, (Matrix3d)arg2) -> ErrorStatus :
@@ -69998,11 +70364,23 @@ setVisibility( (Entity)arg1, (Visibility)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum Acad::ErrorStatus transformBy(class PyDbEntity {lvalue},class AcGeMatrix3d)'''
     ...
+    def transformFaces (self, *args, **kwargs)-> ErrorStatus :
+      '''transformFaces( (Solid3d)arg1, (list)arg2, (Matrix3d)arg3) -> ErrorStatus :
+
+    C++ signature :
+        enum Acad::ErrorStatus transformFaces(class PyDb3dSolid {lvalue},class boost::python::list,class AcGeMatrix3d)'''
+    ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> ErrorStatus :
       '''                             '''
     ...
     def upgradeOpen (self: DbObject)-> ErrorStatus :
       '''                             '''
+    ...
+    def usesGraphicsCache (self, *args, **kwargs)-> bool :
+      '''usesGraphicsCache( (Solid3d)arg1) -> bool :
+
+    C++ signature :
+        bool usesGraphicsCache(class PyDb3dSolid {lvalue})'''
     ...
     def viewportDraw (self, *args, **kwargs)-> None :
       '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
