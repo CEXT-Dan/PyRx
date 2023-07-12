@@ -616,7 +616,7 @@ std::string AcGeVector3dToString(const AcGeVector3d& p)
     return std::format("({:.14f},{:.14f},{:.14f})", p.x, p.y, p.z);
 }
 
-std::string AcGeVector3dToStringRepr(const AcGePoint3d& p)
+std::string AcGeVector3dToStringRepr(const AcGeVector3d& p)
 {
     return std::format("<{}.Vector3d({:.14f},{:.14f},{:.14f})>", PyGeNamespace, p.x, p.y, p.z);
 }
