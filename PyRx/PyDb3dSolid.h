@@ -95,9 +95,62 @@ public:
     void        setTwistAngle(double ang);
     bool        closeToAxis() const;
     void        setCloseToAxis(bool val);
-
+    boost::python::tuple checkRevolveCurve1(PyDbEntity& ent, const AcGePoint3d& axisPnt, const AcGeVector3d& axisDir);
+    boost::python::tuple checkRevolveCurve2(PyDbEntity& ent, const AcGePoint3d& axisPnt, const AcGeVector3d& axisDir, bool displayErrorMessages);
 public:
     AcDbRevolveOptions* impObj(const std::source_location& src = std::source_location::current()) const;
 private:
     std::shared_ptr<AcDbRevolveOptions> m_pyImp;
+};
+
+//-----------------------------------------------------------------------------------
+//PyDbSweepOptions
+void makePyDbSweepOptionsWrapper();
+class PyDbSweepOptions
+{
+public:
+    PyDbSweepOptions();
+    PyDbSweepOptions(const AcDbSweepOptions& src);
+    double              draftAngle() const;
+    void                setDraftAngle(double ang);
+    double              startDraftDist() const;
+    void                setStartDraftDist(double val);
+    double              endDraftDist() const;
+    void                setEndDraftDist(double val);
+    double              twistAngle() const;
+    void                setTwistAngle(double ang);
+    double              scaleFactor() const;
+    void                setScaleFactor(double val);
+    double              alignAngle() const;
+    void                setAlignAngle(double ang);
+    AcDbSweepOptions::AlignOption align() const;
+    void                setAlign(AcDbSweepOptions::AlignOption val);
+    AcDbSweepOptions::MiterOption miterOption() const;
+    void                setMiterOption(AcDbSweepOptions::MiterOption val);
+    bool                alignStart() const;
+    void                setAlignStart(bool val);
+    AcGePoint3d         basePoint() const;
+    void                setBasePoint(AcGePoint3d& pnt);
+    bool                bank() const;
+    void                setBank(bool val);
+    bool                checkIntersections() const;
+    void                setCheckIntersections(bool val);
+    AcGeVector3d        twistRefVec() const;
+    void                setTwistRefVec(const AcGeVector3d& vec);
+    bool                getSweepEntityTransform(AcGeMatrix3d& mat);
+    void                setSweepEntityTransform1(AcGeMatrix3d& mat);
+    Acad::ErrorStatus   setSweepEntityTransform2(boost::python::list& sweepEntities);
+    Acad::ErrorStatus   setSweepEntityTransform3(boost::python::list& sweepEntities, bool displayErrorMessages);
+    bool                getPathEntityTransform(AcGeMatrix3d& mat);
+    void                setPathEntityTransform1(AcGeMatrix3d& mat);
+    Acad::ErrorStatus   setPathEntityTransform2(PyDbEntity& pPathEnt);
+    Acad::ErrorStatus   setPathEntityTransform3(PyDbEntity& pPathEnt,bool displayErrorMessages);
+    boost::python::tuple checkSweepCurve1(PyDbEntity& pSweepEnt);
+    boost::python::tuple checkSweepCurve2(PyDbEntity& pSweepEnt, bool displayErrorMessages);
+    Acad::ErrorStatus   checkPathCurve1(PyDbEntity& pPathEnt);
+    Acad::ErrorStatus   checkPathCurve2(PyDbEntity& pPathEnt, bool displayErrorMessages);
+public:
+    AcDbSweepOptions* impObj(const std::source_location& src = std::source_location::current()) const;
+private:
+    std::shared_ptr<AcDbSweepOptions> m_pyImp;
 };
