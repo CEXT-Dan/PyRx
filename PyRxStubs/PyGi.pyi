@@ -1329,17 +1329,17 @@ class DrawableOverrule:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def addOverrule (self, *args, **kwargs)-> ErrorStatus :
-      '''addOverrule( (RxClass)arg1, (Overrule)arg2) -> ErrorStatus :
+    def addOverrule (self, *args, **kwargs)-> None :
+      '''addOverrule( (RxClass)arg1, (Overrule)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus addOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
+        void addOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
     ...
-    def addOverruleLast (self, *args, **kwargs)-> ErrorStatus :
-      '''addOverruleLast( (RxClass)arg1, (Overrule)arg2, (bool)arg3) -> ErrorStatus :
+    def addOverruleLast (self, *args, **kwargs)-> None :
+      '''addOverruleLast( (RxClass)arg1, (Overrule)arg2, (bool)arg3) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus addOverruleLast(class PyRxClass {lvalue},class PyRxOverrule {lvalue},bool)'''
+        void addOverruleLast(class PyRxClass {lvalue},class PyRxOverrule {lvalue},bool)'''
     ...
     def baseViewportDraw (self, *args, **kwargs)-> None :
       '''baseViewportDraw( (DrawableOverrule)arg1, (Drawable)arg2, (ViewportDraw)arg3) -> None :
@@ -1407,11 +1407,11 @@ class DrawableOverrule:
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
     ...
-    def removeOverrule (self, *args, **kwargs)-> ErrorStatus :
-      '''removeOverrule( (RxClass)arg1, (Overrule)arg2) -> ErrorStatus :
+    def removeOverrule (self, *args, **kwargs)-> None :
+      '''removeOverrule( (RxClass)arg1, (Overrule)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus removeOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
+        void removeOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
     ...
     def setAttributes (self, *args, **kwargs)-> int :
       '''setAttributes( (DrawableOverrule)arg1, (Drawable)arg2, (DrawableTraits)arg3) -> int :
@@ -1551,11 +1551,11 @@ This class cannot be instantiated from Python'''
     C++ signature :
         void setColor(class PyGiSubEntityTraits {lvalue},unsigned short)'''
     ...
-    def setDrawFlags (self, *args, **kwargs)-> ErrorStatus :
-      '''setDrawFlags( (SubEntityTraits)arg1, (SubentType)arg2) -> ErrorStatus :
+    def setDrawFlags (self, *args, **kwargs)-> None :
+      '''setDrawFlags( (SubEntityTraits)arg1, (SubentType)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus setDrawFlags(class PyGiSubEntityTraits {lvalue},unsigned int)'''
+        void setDrawFlags(class PyGiSubEntityTraits {lvalue},unsigned int)'''
     ...
     def setFillType (self, *args, **kwargs)-> None :
       '''setFillType( (SubEntityTraits)arg1, (AcGiFillType)arg2) -> None :
@@ -1627,11 +1627,11 @@ setPlotStyleName( (SubEntityTraits)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3
     C++ signature :
         void setSelectionMarker(class PyGiSubEntityTraits {lvalue},__int64)'''
     ...
-    def setShadowFlags (self, *args, **kwargs)-> ErrorStatus :
-      '''setShadowFlags( (SubEntityTraits)arg1, (ShadowFlags)arg2) -> ErrorStatus :
+    def setShadowFlags (self, *args, **kwargs)-> None :
+      '''setShadowFlags( (SubEntityTraits)arg1, (ShadowFlags)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus setShadowFlags(class PyGiSubEntityTraits {lvalue},enum AcGiSubEntityTraits::ShadowFlags)'''
+        void setShadowFlags(class PyGiSubEntityTraits {lvalue},enum AcGiSubEntityTraits::ShadowFlags)'''
     ...
     def setThickness (self, *args, **kwargs)-> None :
       '''setThickness( (SubEntityTraits)arg1, (float)arg2) -> None :
@@ -2579,11 +2579,11 @@ This class cannot be instantiated from Python'''
     C++ signature :
         void setColor(class PyGiSubEntityTraits {lvalue},unsigned short)'''
     ...
-    def setDrawFlags (self, *args, **kwargs)-> ErrorStatus :
-      '''setDrawFlags( (SubEntityTraits)arg1, (SubentType)arg2) -> ErrorStatus :
+    def setDrawFlags (self, *args, **kwargs)-> None :
+      '''setDrawFlags( (SubEntityTraits)arg1, (SubentType)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus setDrawFlags(class PyGiSubEntityTraits {lvalue},unsigned int)'''
+        void setDrawFlags(class PyGiSubEntityTraits {lvalue},unsigned int)'''
     ...
     def setFillType (self, *args, **kwargs)-> None :
       '''setFillType( (SubEntityTraits)arg1, (AcGiFillType)arg2) -> None :
@@ -2655,11 +2655,11 @@ setPlotStyleName( (SubEntityTraits)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3
     C++ signature :
         void setSelectionMarker(class PyGiSubEntityTraits {lvalue},__int64)'''
     ...
-    def setShadowFlags (self, *args, **kwargs)-> ErrorStatus :
-      '''setShadowFlags( (SubEntityTraits)arg1, (ShadowFlags)arg2) -> ErrorStatus :
+    def setShadowFlags (self, *args, **kwargs)-> None :
+      '''setShadowFlags( (SubEntityTraits)arg1, (ShadowFlags)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus setShadowFlags(class PyGiSubEntityTraits {lvalue},enum AcGiSubEntityTraits::ShadowFlags)'''
+        void setShadowFlags(class PyGiSubEntityTraits {lvalue},enum AcGiSubEntityTraits::ShadowFlags)'''
     ...
     def setThickness (self, *args, **kwargs)-> None :
       '''setThickness( (SubEntityTraits)arg1, (float)arg2) -> None :

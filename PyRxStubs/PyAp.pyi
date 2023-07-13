@@ -905,46 +905,46 @@ class DocManager:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def activateDocument (self, *args, **kwargs)-> ErrorStatus :
-      '''activateDocument( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
+    def activateDocument (self, *args, **kwargs)-> None :
+      '''activateDocument( (DocManager)arg1, (Document)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus activateDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})
+        void activateDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})
 
-activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> ErrorStatus :
+activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus activateDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue},bool)'''
+        void activateDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue},bool)'''
     ...
-    def appContextCloseDocument (self, *args, **kwargs)-> ErrorStatus :
-      '''appContextCloseDocument( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
+    def appContextCloseDocument (self, *args, **kwargs)-> None :
+      '''appContextCloseDocument( (DocManager)arg1, (Document)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus appContextCloseDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})'''
+        void appContextCloseDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})'''
     ...
-    def appContextNewDocument (self, *args, **kwargs)-> ErrorStatus :
-      '''appContextNewDocument( (DocManager)arg1, (str)arg2) -> ErrorStatus :
+    def appContextNewDocument (self, *args, **kwargs)-> None :
+      '''appContextNewDocument( (DocManager)arg1, (str)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus appContextNewDocument(class PyApDocManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        void appContextNewDocument(class PyApDocManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def appContextOpenDocument (self, *args, **kwargs)-> ErrorStatus :
-      '''appContextOpenDocument( (DocManager)arg1, (str)arg2) -> ErrorStatus :
+    def appContextOpenDocument (self, *args, **kwargs)-> None :
+      '''appContextOpenDocument( (DocManager)arg1, (str)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus appContextOpenDocument(class PyApDocManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        void appContextOpenDocument(class PyApDocManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def appContextPromptOpenDocument (self, *args, **kwargs)-> ErrorStatus :
-      '''appContextPromptOpenDocument( (DocManager)arg1) -> ErrorStatus :
+    def appContextPromptOpenDocument (self, *args, **kwargs)-> None :
+      '''appContextPromptOpenDocument( (DocManager)arg1) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus appContextPromptOpenDocument(class PyApDocManager {lvalue})'''
+        void appContextPromptOpenDocument(class PyApDocManager {lvalue})'''
     ...
-    def appContextRecoverDocument (self, *args, **kwargs)-> ErrorStatus :
-      '''appContextRecoverDocument( (DocManager)arg1, (str)arg2) -> ErrorStatus :
+    def appContextRecoverDocument (self, *args, **kwargs)-> None :
+      '''appContextRecoverDocument( (DocManager)arg1, (str)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus appContextRecoverDocument(class PyApDocManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        void appContextRecoverDocument(class PyApDocManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def autoLock (self, *args, **kwargs)-> AutoDocLock :
       '''autoLock() -> AutoDocLock :
@@ -958,11 +958,11 @@ activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def closeDocument (self, *args, **kwargs)-> ErrorStatus :
-      '''closeDocument( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
+    def closeDocument (self, *args, **kwargs)-> None :
+      '''closeDocument( (DocManager)arg1, (Document)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus closeDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})'''
+        void closeDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})'''
     ...
     def curDocument (self, *args, **kwargs)-> Document :
       '''curDocument( (DocManager)arg1) -> Document :
@@ -976,11 +976,11 @@ activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         enum AcApDocument::SaveFormat defaultFormatForSave(class PyApDocManager {lvalue})'''
     ...
-    def disableDocumentActivation (self, *args, **kwargs)-> ErrorStatus :
-      '''disableDocumentActivation( (DocManager)arg1) -> ErrorStatus :
+    def disableDocumentActivation (self, *args, **kwargs)-> None :
+      '''disableDocumentActivation( (DocManager)arg1) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus disableDocumentActivation(class PyApDocManager {lvalue})'''
+        void disableDocumentActivation(class PyApDocManager {lvalue})'''
     ...
     def document (self, *args, **kwargs)-> Document :
       '''document( (DocManager)arg1, (Database)arg2) -> Document :
@@ -994,11 +994,11 @@ activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         int documentCount(class PyApDocManager {lvalue})'''
     ...
-    def enableDocumentActivation (self, *args, **kwargs)-> ErrorStatus :
-      '''enableDocumentActivation( (DocManager)arg1) -> ErrorStatus :
+    def enableDocumentActivation (self, *args, **kwargs)-> None :
+      '''enableDocumentActivation( (DocManager)arg1) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus enableDocumentActivation(class PyApDocManager {lvalue})'''
+        void enableDocumentActivation(class PyApDocManager {lvalue})'''
     ...
     def inputPending (self, *args, **kwargs)-> int :
       '''inputPending( (DocManager)arg1, (Document)arg2) -> int :
@@ -1030,21 +1030,21 @@ activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         bool isNullObj(class PyRxObject {lvalue})'''
     ...
-    def lockDocument (self, *args, **kwargs)-> ErrorStatus :
-      '''lockDocument( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
+    def lockDocument (self, *args, **kwargs)-> None :
+      '''lockDocument( (DocManager)arg1, (Document)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus lockDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})
+        void lockDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})
 
-lockDocument( (DocManager)arg1, (Document)arg2, (DocLockMode)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus lockDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue},enum AcAp::DocLockMode)
-
-lockDocument( (DocManager)arg1, (Document)arg2, (DocLockMode)arg3, (str)arg4, (str)arg5, (bool)arg6) -> ErrorStatus :
+lockDocument( (DocManager)arg1, (Document)arg2, (DocLockMode)arg3) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus lockDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue},enum AcAp::DocLockMode,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)'''
+        void lockDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue},enum AcAp::DocLockMode)
+
+lockDocument( (DocManager)arg1, (Document)arg2, (DocLockMode)arg3, (str)arg4, (str)arg5, (bool)arg6) -> None :
+
+    C++ signature :
+        void lockDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue},enum AcAp::DocLockMode,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)'''
     ...
     def mdiActiveDocument (self, *args, **kwargs)-> Document :
       '''mdiActiveDocument( (DocManager)arg1) -> Document :
@@ -1058,17 +1058,17 @@ lockDocument( (DocManager)arg1, (Document)arg2, (DocLockMode)arg3, (str)arg4, (s
     C++ signature :
         class boost::python::list newAcApDocumentIterator(class PyApDocManager {lvalue})'''
     ...
-    def newDocument (self, *args, **kwargs)-> ErrorStatus :
-      '''newDocument( (DocManager)arg1) -> ErrorStatus :
+    def newDocument (self, *args, **kwargs)-> None :
+      '''newDocument( (DocManager)arg1) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus newDocument(class PyApDocManager {lvalue})'''
+        void newDocument(class PyApDocManager {lvalue})'''
     ...
-    def openDocument (self, *args, **kwargs)-> ErrorStatus :
-      '''openDocument( (DocManager)arg1) -> ErrorStatus :
+    def openDocument (self, *args, **kwargs)-> None :
+      '''openDocument( (DocManager)arg1) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus openDocument(class PyApDocManager {lvalue})'''
+        void openDocument(class PyApDocManager {lvalue})'''
     ...
     def popResourceHandle (self, *args, **kwargs)-> None :
       '''popResourceHandle( (DocManager)arg1) -> None :
@@ -1088,45 +1088,45 @@ lockDocument( (DocManager)arg1, (Document)arg2, (DocLockMode)arg3, (str)arg4, (s
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
     ...
-    def sendModelessInterrupt (self, *args, **kwargs)-> ErrorStatus :
-      '''sendModelessInterrupt( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
+    def sendModelessInterrupt (self, *args, **kwargs)-> None :
+      '''sendModelessInterrupt( (DocManager)arg1, (Document)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus sendModelessInterrupt(class PyApDocManager {lvalue},class PyApDocument {lvalue})'''
+        void sendModelessInterrupt(class PyApDocManager {lvalue},class PyApDocument {lvalue})'''
     ...
-    def sendStringToExecute (self, *args, **kwargs)-> ErrorStatus :
-      '''sendStringToExecute( (DocManager)arg1, (Document)arg2, (str)arg3) -> ErrorStatus :
+    def sendStringToExecute (self, *args, **kwargs)-> None :
+      '''sendStringToExecute( (DocManager)arg1, (Document)arg2, (str)arg3) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus sendStringToExecute(class PyApDocManager {lvalue},class PyApDocument {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+        void sendStringToExecute(class PyApDocManager {lvalue},class PyApDocument {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
 
-sendStringToExecute( (DocManager)arg1, (Document)arg2, (str)arg3, (bool)arg4, (bool)arg5, (bool)arg6) -> ErrorStatus :
+sendStringToExecute( (DocManager)arg1, (Document)arg2, (str)arg3, (bool)arg4, (bool)arg5, (bool)arg6) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus sendStringToExecute(class PyApDocManager {lvalue},class PyApDocument {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,bool,bool)'''
+        void sendStringToExecute(class PyApDocManager {lvalue},class PyApDocument {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,bool,bool)'''
     ...
-    def setCurDocument (self, *args, **kwargs)-> ErrorStatus :
-      '''setCurDocument( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
+    def setCurDocument (self, *args, **kwargs)-> None :
+      '''setCurDocument( (DocManager)arg1, (Document)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus setCurDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})
+        void setCurDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})
 
-setCurDocument( (DocManager)arg1, (Document)arg2, (DocLockMode)arg3, (bool)arg4) -> ErrorStatus :
+setCurDocument( (DocManager)arg1, (Document)arg2, (DocLockMode)arg3, (bool)arg4) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus setCurDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue},enum AcAp::DocLockMode,bool)'''
+        void setCurDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue},enum AcAp::DocLockMode,bool)'''
     ...
-    def setDefaultFormatForSave (self, *args, **kwargs)-> ErrorStatus :
-      '''setDefaultFormatForSave( (DocManager)arg1, (SaveFormat)arg2) -> ErrorStatus :
+    def setDefaultFormatForSave (self, *args, **kwargs)-> None :
+      '''setDefaultFormatForSave( (DocManager)arg1, (SaveFormat)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus setDefaultFormatForSave(class PyApDocManager {lvalue},enum AcApDocument::SaveFormat)'''
+        void setDefaultFormatForSave(class PyApDocManager {lvalue},enum AcApDocument::SaveFormat)'''
     ...
-    def unlockDocument (self, *args, **kwargs)-> ErrorStatus :
-      '''unlockDocument( (DocManager)arg1, (Document)arg2) -> ErrorStatus :
+    def unlockDocument (self, *args, **kwargs)-> None :
+      '''unlockDocument( (DocManager)arg1, (Document)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus unlockDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})'''
+        void unlockDocument(class PyApDocManager {lvalue},class PyApDocument {lvalue})'''
     ...
 
 class DocManagerReactor:
@@ -1256,11 +1256,11 @@ This class cannot be instantiated from Python'''
     C++ signature :
         __int64 docWnd()'''
     ...
-    def downgradeDocOpen (self, *args, **kwargs)-> ErrorStatus :
-      '''downgradeDocOpen( (Document)arg1, (bool)arg2) -> ErrorStatus :
+    def downgradeDocOpen (self, *args, **kwargs)-> None :
+      '''downgradeDocOpen( (Document)arg1, (bool)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus downgradeDocOpen(class PyApDocument {lvalue},bool)'''
+        void downgradeDocOpen(class PyApDocument {lvalue},bool)'''
     ...
     def editor (self, *args, **kwargs)-> Editor :
       '''editor( (Document)arg1) -> Editor :
@@ -1333,11 +1333,11 @@ lockMode( (Document)arg1, (bool)arg2) -> DocLockMode :
     C++ signature :
         enum AcAp::DocLockMode myLockMode(class PyApDocument {lvalue})'''
     ...
-    def popDbmod (self, *args, **kwargs)-> ErrorStatus :
-      '''popDbmod( (Document)arg1) -> ErrorStatus :
+    def popDbmod (self, *args, **kwargs)-> None :
+      '''popDbmod( (Document)arg1) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus popDbmod(class PyApDocument {lvalue})'''
+        void popDbmod(class PyApDocument {lvalue})'''
     ...
     def pushDbmod (self, *args, **kwargs)-> None :
       '''pushDbmod( (Document)arg1) -> None :
@@ -1363,11 +1363,11 @@ lockMode( (Document)arg1, (bool)arg2) -> DocLockMode :
     C++ signature :
         class PyTransactionManager transactionManager(class PyApDocument {lvalue})'''
     ...
-    def upgradeDocOpen (self, *args, **kwargs)-> ErrorStatus :
-      '''upgradeDocOpen( (Document)arg1) -> ErrorStatus :
+    def upgradeDocOpen (self, *args, **kwargs)-> None :
+      '''upgradeDocOpen( (Document)arg1) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus upgradeDocOpen(class PyApDocument {lvalue})'''
+        void upgradeDocOpen(class PyApDocument {lvalue})'''
     ...
 
 class LayoutManager:
@@ -1383,33 +1383,33 @@ class LayoutManager:
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def clearSetupForLayouts (self, *args, **kwargs)-> ErrorStatus :
-      '''clearSetupForLayouts( (int)arg1) -> ErrorStatus :
+    def clearSetupForLayouts (self, *args, **kwargs)-> None :
+      '''clearSetupForLayouts( (int)arg1) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus clearSetupForLayouts(unsigned __int64)'''
+        void clearSetupForLayouts(unsigned __int64)'''
     ...
-    def cloneLayout (self, *args, **kwargs)-> ErrorStatus :
-      '''cloneLayout( (LayoutManager)arg1, (Layout)arg2, (str)arg3) -> ErrorStatus :
+    def cloneLayout (self, *args, **kwargs)-> None :
+      '''cloneLayout( (LayoutManager)arg1, (Layout)arg2, (str)arg3) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus cloneLayout(class PyDbLayoutManager {lvalue},class PyDbLayout {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+        void cloneLayout(class PyDbLayoutManager {lvalue},class PyDbLayout {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
 
-cloneLayout( (LayoutManager)arg1, (Layout)arg2, (str)arg3, (int)arg4, (Database)arg5) -> ErrorStatus :
+cloneLayout( (LayoutManager)arg1, (Layout)arg2, (str)arg3, (int)arg4, (Database)arg5) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus cloneLayout(class PyDbLayoutManager {lvalue},class PyDbLayout {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,class PyDbDatabase {lvalue})'''
+        void cloneLayout(class PyDbLayoutManager {lvalue},class PyDbLayout {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,class PyDbDatabase {lvalue})'''
     ...
-    def copyLayout (self, *args, **kwargs)-> ErrorStatus :
-      '''copyLayout( (LayoutManager)arg1, (str)arg2, (str)arg3) -> ErrorStatus :
+    def copyLayout (self, *args, **kwargs)-> None :
+      '''copyLayout( (LayoutManager)arg1, (str)arg2, (str)arg3) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus copyLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+        void copyLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
 
-copyLayout( (LayoutManager)arg1, (str)arg2, (str)arg3, (Database)arg4) -> ErrorStatus :
+copyLayout( (LayoutManager)arg1, (str)arg2, (str)arg3, (Database)arg4) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus copyLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+        void copyLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
     ...
     def countLayouts (self, *args, **kwargs)-> int :
       '''countLayouts( (LayoutManager)arg1) -> int :
@@ -1422,16 +1422,16 @@ countLayouts( (LayoutManager)arg1, (Database)arg2) -> int :
     C++ signature :
         int countLayouts(class PyDbLayoutManager {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def createLayout (self, *args, **kwargs)-> ErrorStatus :
-      '''createLayout( (LayoutManager)arg1, (str)arg2, (ObjectId)arg3, (ObjectId)arg4) -> ErrorStatus :
+    def createLayout (self, *args, **kwargs)-> None :
+      '''createLayout( (LayoutManager)arg1, (str)arg2, (ObjectId)arg3, (ObjectId)arg4) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus createLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},class PyDbObjectId {lvalue})
+        void createLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},class PyDbObjectId {lvalue})
 
-createLayout( (LayoutManager)arg1, (str)arg2, (ObjectId)arg3, (ObjectId)arg4, (Database)arg5) -> ErrorStatus :
+createLayout( (LayoutManager)arg1, (str)arg2, (ObjectId)arg3, (ObjectId)arg4, (Database)arg5) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus createLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},class PyDbObjectId {lvalue},class PyDbDatabase {lvalue})'''
+        void createLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},class PyDbObjectId {lvalue},class PyDbDatabase {lvalue})'''
     ...
     def createLayoutFromTemplate (self, *args, **kwargs)-> ObjectId :
       '''createLayoutFromTemplate( (LayoutManager)arg1, (str)arg2, (str)arg3, (str)arg4) -> ObjectId :
@@ -1450,16 +1450,16 @@ createLayoutFromTemplate( (LayoutManager)arg1, (str)arg2, (str)arg3, (str)arg4, 
     C++ signature :
         bool createViewports(class PyApLayoutManager {lvalue})'''
     ...
-    def deleteLayout (self, *args, **kwargs)-> ErrorStatus :
-      '''deleteLayout( (LayoutManager)arg1, (str)arg2) -> ErrorStatus :
+    def deleteLayout (self, *args, **kwargs)-> None :
+      '''deleteLayout( (LayoutManager)arg1, (str)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus deleteLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+        void deleteLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
 
-deleteLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> ErrorStatus :
+deleteLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus deleteLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
+        void deleteLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
     ...
     def desc (self, *args, **kwargs)-> RxClass :
       '''desc() -> RxClass :
@@ -1591,16 +1591,16 @@ pageSetup( (LayoutManager)arg1, (ObjectId)arg2, (int)arg3, (bool)arg4) -> int :
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
     ...
-    def renameLayout (self, *args, **kwargs)-> ErrorStatus :
-      '''renameLayout( (LayoutManager)arg1, (str)arg2, (str)arg3) -> ErrorStatus :
+    def renameLayout (self, *args, **kwargs)-> None :
+      '''renameLayout( (LayoutManager)arg1, (str)arg2, (str)arg3) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus renameLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+        void renameLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
 
-renameLayout( (LayoutManager)arg1, (str)arg2, (str)arg3, (Database)arg4) -> ErrorStatus :
+renameLayout( (LayoutManager)arg1, (str)arg2, (str)arg3, (Database)arg4) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus renameLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
+        void renameLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
     ...
     def setCaptureOnLayoutSwitch (self, *args, **kwargs)-> None :
       '''setCaptureOnLayoutSwitch( (LayoutManager)arg1, (bool)arg2) -> None :
@@ -1614,22 +1614,22 @@ renameLayout( (LayoutManager)arg1, (str)arg2, (str)arg3, (Database)arg4) -> Erro
     C++ signature :
         void setCreateViewports(class PyApLayoutManager {lvalue},bool)'''
     ...
-    def setCurrentLayout (self, *args, **kwargs)-> ErrorStatus :
-      '''setCurrentLayout( (LayoutManager)arg1, (str)arg2) -> ErrorStatus :
+    def setCurrentLayout (self, *args, **kwargs)-> None :
+      '''setCurrentLayout( (LayoutManager)arg1, (str)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus setCurrentLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+        void setCurrentLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
 
-setCurrentLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> ErrorStatus :
+setCurrentLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus setCurrentLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
+        void setCurrentLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
     ...
-    def setCurrentLayoutId (self, *args, **kwargs)-> ErrorStatus :
-      '''setCurrentLayoutId( (LayoutManager)arg1, (ObjectId)arg2) -> ErrorStatus :
+    def setCurrentLayoutId (self, *args, **kwargs)-> None :
+      '''setCurrentLayoutId( (LayoutManager)arg1, (ObjectId)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus setCurrentLayoutId(class PyDbLayoutManager {lvalue},class PyDbObjectId)'''
+        void setCurrentLayoutId(class PyDbLayoutManager {lvalue},class PyDbObjectId)'''
     ...
     def setDefaultPlotConfig (self, *args, **kwargs)-> None :
       '''setDefaultPlotConfig( (LayoutManager)arg1, (ObjectId)arg2) -> None :
@@ -2179,10 +2179,10 @@ class TransactionManager:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def abortTransaction (self: TransactionManager)-> ErrorStatus :
+    def abortTransaction (self: TransactionManager)-> None :
       '''                             '''
     ...
-    def addNewlyCreatedDBRObject (self: TransactionManager,obj: DbObject,add: bool=True)-> ErrorStatus :
+    def addNewlyCreatedDBRObject (self: TransactionManager,obj: DbObject,add: bool=True)-> None :
       '''                             '''
     ...
     def className (self, *args, **kwargs)-> str :
@@ -2197,13 +2197,13 @@ class TransactionManager:
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def enableGraphicsFlush (self, *args, **kwargs)-> ErrorStatus :
-      '''enableGraphicsFlush( (TransactionManager)arg1, (bool)arg2) -> ErrorStatus :
+    def enableGraphicsFlush (self, *args, **kwargs)-> None :
+      '''enableGraphicsFlush( (TransactionManager)arg1, (bool)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus enableGraphicsFlush(class PyTransactionManager {lvalue},bool)'''
+        void enableGraphicsFlush(class PyTransactionManager {lvalue},bool)'''
     ...
-    def endTransaction (self: TransactionManager)-> ErrorStatus :
+    def endTransaction (self: TransactionManager)-> None :
       '''                             '''
     ...
     def flushGraphics (self, *args, **kwargs)-> None :
@@ -2236,7 +2236,7 @@ class TransactionManager:
     def numOpenedObjects (self: TransactionManager)-> int :
       '''                             '''
     ...
-    def queueForGraphicsFlush (self: TransactionManager)-> ErrorStatus :
+    def queueForGraphicsFlush (self: TransactionManager)-> None :
       '''                             '''
     ...
     def refCount (self, *args, **kwargs)-> int :

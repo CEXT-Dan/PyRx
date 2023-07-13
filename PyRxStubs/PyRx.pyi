@@ -168,17 +168,17 @@ class Overrule:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def addOverrule (self, *args, **kwargs)-> ErrorStatus :
-      '''addOverrule( (RxClass)arg1, (Overrule)arg2) -> ErrorStatus :
+    def addOverrule (self, *args, **kwargs)-> None :
+      '''addOverrule( (RxClass)arg1, (Overrule)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus addOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
+        void addOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
     ...
-    def addOverruleLast (self, *args, **kwargs)-> ErrorStatus :
-      '''addOverruleLast( (RxClass)arg1, (Overrule)arg2, (bool)arg3) -> ErrorStatus :
+    def addOverruleLast (self, *args, **kwargs)-> None :
+      '''addOverruleLast( (RxClass)arg1, (Overrule)arg2, (bool)arg3) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus addOverruleLast(class PyRxClass {lvalue},class PyRxOverrule {lvalue},bool)'''
+        void addOverruleLast(class PyRxClass {lvalue},class PyRxOverrule {lvalue},bool)'''
     ...
     def className (self, *args, **kwargs)-> str :
       '''className() -> str :
@@ -222,11 +222,11 @@ This class cannot be instantiated from Python'''
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
     ...
-    def removeOverrule (self, *args, **kwargs)-> ErrorStatus :
-      '''removeOverrule( (RxClass)arg1, (Overrule)arg2) -> ErrorStatus :
+    def removeOverrule (self, *args, **kwargs)-> None :
+      '''removeOverrule( (RxClass)arg1, (Overrule)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus removeOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
+        void removeOverrule(class PyRxClass {lvalue},class PyRxOverrule {lvalue})'''
     ...
     def setIsOverruling (self, *args, **kwargs)-> None :
       '''setIsOverruling( (bool)arg1) -> None :

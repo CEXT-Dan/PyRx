@@ -30,16 +30,16 @@ class Core:
     C++ signature :
         int arxUnload(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def audit (self, *args, **kwargs)-> ErrorStatus :
-      '''audit( (Database)arg1, (bool)arg2) -> ErrorStatus :
+    def audit (self, *args, **kwargs)-> None :
+      '''audit( (Database)arg1, (bool)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus audit(class PyDbDatabase {lvalue},bool)
+        void audit(class PyDbDatabase {lvalue},bool)
 
-audit( (Database)arg1, (bool)arg2, (bool)arg3) -> ErrorStatus :
+audit( (Database)arg1, (bool)arg2, (bool)arg3) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus audit(class PyDbDatabase {lvalue},bool,bool)'''
+        void audit(class PyDbDatabase {lvalue},bool,bool)'''
     ...
     def callBackOnCancel (self, *args, **kwargs)-> None :
       '''callBackOnCancel() -> None :
@@ -101,17 +101,17 @@ audit( (Database)arg1, (bool)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         int grDraw(class AcGePoint3d,class AcGePoint3d,int,int)'''
     ...
-    def mSpace (self, *args, **kwargs)-> ErrorStatus :
-      '''mSpace() -> ErrorStatus :
+    def mSpace (self, *args, **kwargs)-> None :
+      '''mSpace() -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus mSpace()'''
+        void mSpace()'''
     ...
-    def pSpace (self, *args, **kwargs)-> ErrorStatus :
-      '''pSpace() -> ErrorStatus :
+    def pSpace (self, *args, **kwargs)-> None :
+      '''pSpace() -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus pSpace()'''
+        void pSpace()'''
     ...
     def setVar (self, *args, **kwargs)-> bool :
       '''setVar( (str)arg1, (object)arg2) -> bool :
@@ -149,17 +149,17 @@ audit( (Database)arg1, (bool)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         class PyDbObjectId viewportIdFromNumber(int)'''
     ...
-    def vpLayer (self, *args, **kwargs)-> ErrorStatus :
-      '''vpLayer( (ObjectId)arg1, (list)arg2, (VpFreezeOps)arg3) -> ErrorStatus :
+    def vpLayer (self, *args, **kwargs)-> None :
+      '''vpLayer( (ObjectId)arg1, (list)arg2, (VpFreezeOps)arg3) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus vpLayer(class PyDbObjectId,class boost::python::list,enum AcDb::VpFreezeOps)'''
+        void vpLayer(class PyDbObjectId,class boost::python::list,enum AcDb::VpFreezeOps)'''
     ...
-    def vportTableRecords2Vports (self, *args, **kwargs)-> ErrorStatus :
-      '''vportTableRecords2Vports() -> ErrorStatus :
+    def vportTableRecords2Vports (self, *args, **kwargs)-> None :
+      '''vportTableRecords2Vports() -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus vportTableRecords2Vports()'''
+        void vportTableRecords2Vports()'''
     ...
     def vports (self, *args, **kwargs)-> list :
       '''vports() -> list :
@@ -167,33 +167,33 @@ audit( (Database)arg1, (bool)arg2, (bool)arg3) -> ErrorStatus :
     C++ signature :
         class boost::python::list vports()'''
     ...
-    def vports2VportTableRecords (self, *args, **kwargs)-> ErrorStatus :
-      '''vports2VportTableRecords() -> ErrorStatus :
+    def vports2VportTableRecords (self, *args, **kwargs)-> None :
+      '''vports2VportTableRecords() -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus vports2VportTableRecords()'''
+        void vports2VportTableRecords()'''
     ...
-    def xrefAttach (self, *args, **kwargs)-> ErrorStatus :
-      '''xrefAttach( (str)arg1, (str)arg2) -> ErrorStatus :
+    def xrefAttach (self, *args, **kwargs)-> None :
+      '''xrefAttach( (str)arg1, (str)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus xrefAttach(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+        void xrefAttach(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
 
-xrefAttach( (str)arg1, (str)arg2, (ObjectId)arg3, (ObjectId)arg4, (Point3d)arg5, (Scale3d)arg6, (float)arg7, (bool)arg8, (Database)arg9, (str)arg10) -> ErrorStatus :
+xrefAttach( (str)arg1, (str)arg2, (ObjectId)arg3, (ObjectId)arg4, (Point3d)arg5, (Scale3d)arg6, (float)arg7, (bool)arg8, (Database)arg9, (str)arg10) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus xrefAttach(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},class PyDbObjectId {lvalue},class AcGePoint3d {lvalue},class AcGeScale3d {lvalue},double,bool,class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        void xrefAttach(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},class PyDbObjectId {lvalue},class AcGePoint3d {lvalue},class AcGeScale3d {lvalue},double,bool,class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def xrefBind (self, *args, **kwargs)-> ErrorStatus :
-      '''xrefBind( (str)arg1) -> ErrorStatus :
+    def xrefBind (self, *args, **kwargs)-> None :
+      '''xrefBind( (str)arg1) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus xrefBind(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+        void xrefBind(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
 
-xrefBind( (str)arg1, (bool)arg2, (bool)arg3, (Database)arg4) -> ErrorStatus :
+xrefBind( (str)arg1, (bool)arg2, (bool)arg3, (Database)arg4) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus xrefBind(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,bool,class PyDbDatabase {lvalue})'''
+        void xrefBind(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,bool,class PyDbDatabase {lvalue})'''
     ...
     def xrefCreateBlockname (self, *args, **kwargs)-> str :
       '''xrefCreateBlockname( (str)arg1) -> str :
@@ -201,16 +201,16 @@ xrefBind( (str)arg1, (bool)arg2, (bool)arg3, (Database)arg4) -> ErrorStatus :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > xrefCreateBlockname(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def xrefDetach (self, *args, **kwargs)-> ErrorStatus :
-      '''xrefDetach( (str)arg1) -> ErrorStatus :
+    def xrefDetach (self, *args, **kwargs)-> None :
+      '''xrefDetach( (str)arg1) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus xrefDetach(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+        void xrefDetach(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
 
-xrefDetach( (str)arg1, (bool)arg2, (Database)arg3) -> ErrorStatus :
+xrefDetach( (str)arg1, (bool)arg2, (Database)arg3) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus xrefDetach(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,class PyDbDatabase {lvalue})'''
+        void xrefDetach(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,class PyDbDatabase {lvalue})'''
     ...
     def xrefNotifyCheckFileChanged (self, *args, **kwargs)-> bool :
       '''xrefNotifyCheckFileChanged( (ObjectId)arg1) -> bool :
@@ -218,70 +218,70 @@ xrefDetach( (str)arg1, (bool)arg2, (Database)arg3) -> ErrorStatus :
     C++ signature :
         bool xrefNotifyCheckFileChanged(class PyDbObjectId)'''
     ...
-    def xrefOverlay (self, *args, **kwargs)-> ErrorStatus :
-      '''xrefOverlay( (str)arg1, (str)arg2) -> ErrorStatus :
+    def xrefOverlay (self, *args, **kwargs)-> None :
+      '''xrefOverlay( (str)arg1, (str)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus xrefOverlay(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+        void xrefOverlay(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
 
-xrefOverlay( (str)arg1, (str)arg2, (ObjectId)arg3, (ObjectId)arg4, (Point3d)arg5, (Scale3d)arg6, (float)arg7, (bool)arg8, (Database)arg9, (str)arg10) -> ErrorStatus :
+xrefOverlay( (str)arg1, (str)arg2, (ObjectId)arg3, (ObjectId)arg4, (Point3d)arg5, (Scale3d)arg6, (float)arg7, (bool)arg8, (Database)arg9, (str)arg10) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus xrefOverlay(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},class PyDbObjectId {lvalue},class AcGePoint3d {lvalue},class AcGeScale3d {lvalue},double,bool,class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+        void xrefOverlay(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},class PyDbObjectId {lvalue},class AcGePoint3d {lvalue},class AcGeScale3d {lvalue},double,bool,class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def xrefReload (self, *args, **kwargs)-> ErrorStatus :
-      '''xrefReload( (list)arg1) -> ErrorStatus :
+    def xrefReload (self, *args, **kwargs)-> None :
+      '''xrefReload( (list)arg1) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus xrefReload(class boost::python::list)
+        void xrefReload(class boost::python::list)
 
-xrefReload( (list)arg1, (bool)arg2, (Database)arg3) -> ErrorStatus :
-
-    C++ signature :
-        enum Acad::ErrorStatus xrefReload(class boost::python::list,bool,class PyDbDatabase {lvalue})
-
-xrefReload( (str)arg1) -> ErrorStatus :
+xrefReload( (list)arg1, (bool)arg2, (Database)arg3) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus xrefReload(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+        void xrefReload(class boost::python::list,bool,class PyDbDatabase {lvalue})
 
-xrefReload( (str)arg1, (bool)arg2, (Database)arg3) -> ErrorStatus :
+xrefReload( (str)arg1) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus xrefReload(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,class PyDbDatabase {lvalue})'''
+        void xrefReload(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+xrefReload( (str)arg1, (bool)arg2, (Database)arg3) -> None :
+
+    C++ signature :
+        void xrefReload(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,class PyDbDatabase {lvalue})'''
     ...
-    def xrefResolve (self, *args, **kwargs)-> ErrorStatus :
-      '''xrefResolve( (Database)arg1) -> ErrorStatus :
+    def xrefResolve (self, *args, **kwargs)-> None :
+      '''xrefResolve( (Database)arg1) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus xrefResolve(class PyDbDatabase {lvalue})
+        void xrefResolve(class PyDbDatabase {lvalue})
 
-xrefResolve( (Database)arg1, (bool)arg2) -> ErrorStatus :
+xrefResolve( (Database)arg1, (bool)arg2) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus xrefResolve(class PyDbDatabase {lvalue},bool)'''
+        void xrefResolve(class PyDbDatabase {lvalue},bool)'''
     ...
-    def xrefUnload (self, *args, **kwargs)-> ErrorStatus :
-      '''xrefUnload( (str)arg1) -> ErrorStatus :
+    def xrefUnload (self, *args, **kwargs)-> None :
+      '''xrefUnload( (str)arg1) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus xrefUnload(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+        void xrefUnload(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
 
-xrefUnload( (str)arg1, (bool)arg2, (Database)arg3) -> ErrorStatus :
+xrefUnload( (str)arg1, (bool)arg2, (Database)arg3) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus xrefUnload(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,class PyDbDatabase {lvalue})'''
+        void xrefUnload(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool,class PyDbDatabase {lvalue})'''
     ...
-    def xrefXBind (self, *args, **kwargs)-> ErrorStatus :
-      '''xrefXBind( (list)arg1) -> ErrorStatus :
+    def xrefXBind (self, *args, **kwargs)-> None :
+      '''xrefXBind( (list)arg1) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus xrefXBind(class boost::python::list)
+        void xrefXBind(class boost::python::list)
 
-xrefXBind( (list)arg1, (bool)arg2, (Database)arg3) -> ErrorStatus :
+xrefXBind( (list)arg1, (bool)arg2, (Database)arg3) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus xrefXBind(class boost::python::list,bool,class PyDbDatabase {lvalue})'''
+        void xrefXBind(class boost::python::list,bool,class PyDbDatabase {lvalue})'''
     ...
 
 class CursorType:
@@ -1135,11 +1135,11 @@ selectWindowPolygon( (list)arg1, (list)arg2) -> tuple :
     C++ signature :
         class boost::python::tuple selectWindowPolygon(class boost::python::list,class boost::python::list)'''
     ...
-    def setCurrentUCS (self, *args, **kwargs)-> ErrorStatus :
-      '''setCurrentUCS( (Matrix3d)arg1) -> ErrorStatus :
+    def setCurrentUCS (self, *args, **kwargs)-> None :
+      '''setCurrentUCS( (Matrix3d)arg1) -> None :
 
     C++ signature :
-        enum Acad::ErrorStatus setCurrentUCS(class AcGeMatrix3d)'''
+        void setCurrentUCS(class AcGeMatrix3d)'''
     ...
     def ssget (self, *args, **kwargs)-> tuple :
       '''ssget( (str)arg1, (object)arg2, (object)arg3) -> tuple :
