@@ -448,57 +448,57 @@ bool PyDbXrefObjectId::isNull(void) const
 #endif
 }
 
-Acad::ErrorStatus PyDbXrefObjectId::setNull(void)
+void PyDbXrefObjectId::setNull(void)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return m_imp.setNull();
+    return PyThrowBadEs(m_imp.setNull());
 #endif
 }
 
-Acad::ErrorStatus PyDbXrefObjectId::setXrefId(PyDbObjectId& xrefBlkId, const PyDbHandle& hObject)
+void PyDbXrefObjectId::setXrefId(PyDbObjectId& xrefBlkId, const PyDbHandle& hObject)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return m_imp.setXrefId(xrefBlkId.m_id, hObject.m_hnd);
+    return PyThrowBadEs(m_imp.setXrefId(xrefBlkId.m_id, hObject.m_hnd));
 #endif
 }
 
-Acad::ErrorStatus PyDbXrefObjectId::getXrefId(PyDbObjectId& xrefBlkId, PyDbHandle& hObject) const
+void PyDbXrefObjectId::getXrefId(PyDbObjectId& xrefBlkId, PyDbHandle& hObject) const
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return m_imp.getXrefId(xrefBlkId.m_id, hObject.m_hnd);
+    return PyThrowBadEs(m_imp.getXrefId(xrefBlkId.m_id, hObject.m_hnd));
 #endif
 }
 
-Acad::ErrorStatus PyDbXrefObjectId::setLocalId(PyDbObjectId& objId)
+void PyDbXrefObjectId::setLocalId(PyDbObjectId& objId)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return m_imp.setLocalId(objId.m_id);
+    return PyThrowBadEs(m_imp.setLocalId(objId.m_id));
 #endif
 }
 
-Acad::ErrorStatus PyDbXrefObjectId::getLocalId(PyDbObjectId& objId) const
+void PyDbXrefObjectId::getLocalId(PyDbObjectId& objId) const
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return m_imp.getLocalId(objId.m_id);
+    return PyThrowBadEs(m_imp.getLocalId(objId.m_id));
 #endif
 }
 
-Acad::ErrorStatus PyDbXrefObjectId::resolveObjectId(PyDbObjectId& id) const
+void PyDbXrefObjectId::resolveObjectId(PyDbObjectId& id) const
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return m_imp.resolveObjectId(id.m_id);
+    return PyThrowBadEs(m_imp.resolveObjectId(id.m_id));
 #endif
 }
 

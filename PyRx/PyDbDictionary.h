@@ -19,9 +19,9 @@ public:
     std::string             nameAt(const PyDbObjectId& id);
     Adesk::UInt32           numEntries() const;
     PyDbObjectId            setAt(const std::string& srchKey, PyDbObject& newValue);
-    Acad::ErrorStatus       remove1(const std::string& key);
-    Acad::ErrorStatus       remove2(const std::string& key, PyDbObjectId& returnId);
-    Acad::ErrorStatus       remove3(PyDbObjectId&  objId);
+    void                    remove1(const std::string& key);
+    void                    remove2(const std::string& key, PyDbObjectId& returnId);
+    void                    remove3(PyDbObjectId&  objId);
     bool                    setName(const std::string& oldName, const std::string& newName);
     boost::python::dict     asDict();
     static std::string      className();

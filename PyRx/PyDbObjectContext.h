@@ -16,7 +16,7 @@ public:
     PyDbObjectContext(AcDbObjectContext* pt, bool autoDelete, bool isDbOject);
     virtual ~PyDbObjectContext() = default;
     std::string           getName() const;
-    Acad::ErrorStatus     setName(const std::string& name);
+    void                  setName(const std::string& name);
     Adesk::LongPtr        uniqueIdentifier() const;
     std::string           collectionName() const;
     static PyRxClass      desc();
@@ -38,13 +38,13 @@ public:
     PyDbAnnotationScale(AcDbAnnotationScale* pt);
     PyDbAnnotationScale(AcDbAnnotationScale* pt, bool autoDelete, bool isDbOject);
     virtual ~PyDbAnnotationScale() = default;
-    Acad::ErrorStatus   copyFrom(const PyRxObject& val);
+    void   copyFrom(const PyRxObject& val);
     double              getPaperUnits() const;
     double              getDrawingUnits() const;
     double              getScale() const;
     bool                getIsTemporaryScale() const;
-    Acad::ErrorStatus   setPaperUnits(double val);
-    Acad::ErrorStatus   setDrawingUnits(double val);
+    void                setPaperUnits(double val);
+    void                setDrawingUnits(double val);
     bool                matchScaleId(Adesk::LongPtr val) const;
     static PyRxClass    desc();
     static std::string  className();

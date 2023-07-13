@@ -95,19 +95,19 @@ PyDbObjectId PyDbDictionary::setAt(const std::string& srchKey, PyDbObject& newVa
     return id;
 }
 
-Acad::ErrorStatus PyDbDictionary::remove1(const std::string& key)
+void PyDbDictionary::remove1(const std::string& key)
 {
-    return impObj()->remove(utf8_to_wstr(key).c_str());
+    return PyThrowBadEs(impObj()->remove(utf8_to_wstr(key).c_str()));
 }
 
-Acad::ErrorStatus PyDbDictionary::remove2(const std::string& key, PyDbObjectId& returnId)
+void PyDbDictionary::remove2(const std::string& key, PyDbObjectId& returnId)
 {
-    return impObj()->remove(utf8_to_wstr(key).c_str(), returnId.m_id);
+    return PyThrowBadEs(impObj()->remove(utf8_to_wstr(key).c_str(), returnId.m_id));
 }
 
-Acad::ErrorStatus PyDbDictionary::remove3(PyDbObjectId& objId)
+void PyDbDictionary::remove3(PyDbObjectId& objId)
 {
-    return impObj()->remove(objId.m_id);
+    return PyThrowBadEs(impObj()->remove(objId.m_id));
 }
 
 bool PyDbDictionary::setName(const std::string& oldName, const std::string& newName)

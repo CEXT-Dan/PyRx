@@ -130,18 +130,18 @@ PyDbField::PyDbField(const PyDbObjectId& id)
 {
 }
 
-Acad::ErrorStatus PyDbField::setInObject(PyDbObject& pObj, const std::string& pszPropName)
+void PyDbField::setInObject(PyDbObject& pObj, const std::string& pszPropName)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setInObject(pObj.impObj(), utf8_to_wstr(pszPropName).c_str());
+    return PyThrowBadEs(impObj()->setInObject(pObj.impObj(), utf8_to_wstr(pszPropName).c_str()));
 #endif
 }
 
-Acad::ErrorStatus PyDbField::postInDatabase(PyDbDatabase& pDb)
+void PyDbField::postInDatabase(PyDbDatabase& pDb)
 {
-    return impObj()->postInDatabase(pDb.impObj());
+    return PyThrowBadEs(impObj()->postInDatabase(pDb.impObj()));
 }
 
 AcDbField::State PyDbField::state(void) const
@@ -159,9 +159,9 @@ AcDbField::EvalOption PyDbField::evaluationOption(void) const
     return impObj()->evaluationOption();
 }
 
-Acad::ErrorStatus PyDbField::setEvaluationOption(AcDbField::EvalOption nEvalOption)
+void PyDbField::setEvaluationOption(AcDbField::EvalOption nEvalOption)
 {
-    return impObj()->setEvaluationOption(nEvalOption);
+    return PyThrowBadEs(impObj()->setEvaluationOption(nEvalOption));
 }
 
 std::string PyDbField::evaluatorId(void) const
@@ -169,9 +169,9 @@ std::string PyDbField::evaluatorId(void) const
     return wstr_to_utf8(impObj()->evaluatorId());
 }
 
-Acad::ErrorStatus PyDbField::setEvaluatorId(const std::string& pszEvaluatorId)
+void PyDbField::setEvaluatorId(const std::string& pszEvaluatorId)
 {
-    return impObj()->setEvaluatorId(utf8_to_wstr(pszEvaluatorId).c_str());
+    return PyThrowBadEs(impObj()->setEvaluatorId(utf8_to_wstr(pszEvaluatorId).c_str()));
 }
 
 bool PyDbField::isTextField(void) const
@@ -179,12 +179,12 @@ bool PyDbField::isTextField(void) const
     return impObj()->isTextField();
 }
 
-Acad::ErrorStatus PyDbField::convertToTextField(void)
+void PyDbField::convertToTextField(void)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->convertToTextField();
+    return PyThrowBadEs(impObj()->convertToTextField());
 #endif
 }
 
@@ -198,9 +198,9 @@ std::string PyDbField::getFormat(void) const
     return wstr_to_utf8(impObj()->getFormat());
 }
 
-Acad::ErrorStatus PyDbField::setFormat(const std::string& pszFormat)
+void PyDbField::setFormat(const std::string& pszFormat)
 {
-    return impObj()->setFormat(utf8_to_wstr(pszFormat).c_str());
+    return PyThrowBadEs(impObj()->setFormat(utf8_to_wstr(pszFormat).c_str()));
 }
 
 std::string PyDbField::getValue(void) const
@@ -208,19 +208,19 @@ std::string PyDbField::getValue(void) const
     return wstr_to_utf8(impObj()->getValue());
 }
 
-Acad::ErrorStatus PyDbField::evaluate1()
+void PyDbField::evaluate1()
 {
-    return impObj()->evaluate(32, acdbHostApplicationServices()->workingDatabase());
+    return PyThrowBadEs(impObj()->evaluate(32, acdbHostApplicationServices()->workingDatabase()));
 }
 
-Acad::ErrorStatus PyDbField::evaluate2(AcDbField::EvalContext nContext)
+void PyDbField::evaluate2(AcDbField::EvalContext nContext)
 {
-    return impObj()->evaluate(nContext, acdbHostApplicationServices()->workingDatabase());
+    return PyThrowBadEs(impObj()->evaluate(nContext, acdbHostApplicationServices()->workingDatabase()));
 }
 
-Acad::ErrorStatus PyDbField::evaluate3(AcDbField::EvalContext nContext, PyDbDatabase& db)
+void PyDbField::evaluate3(AcDbField::EvalContext nContext, PyDbDatabase& db)
 {
-    return impObj()->evaluate(nContext, db.impObj());
+    return PyThrowBadEs(impObj()->evaluate(nContext, db.impObj()));
 }
 
 std::string PyDbField::className()

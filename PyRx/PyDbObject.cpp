@@ -112,9 +112,9 @@ PyDbObjectId PyDbObject::ownerId() const
     return PyDbObjectId(impObj()->ownerId());
 }
 
-Acad::ErrorStatus PyDbObject::setOwnerId(const PyDbObjectId& objId)
+void PyDbObject::setOwnerId(const PyDbObjectId& objId)
 {
-    return impObj()->setOwnerId(objId.m_id);
+    return PyThrowBadEs(impObj()->setOwnerId(objId.m_id));
 }
 
 PyDbDatabase PyDbObject::database() const
@@ -122,9 +122,9 @@ PyDbDatabase PyDbObject::database() const
     return PyDbDatabase(impObj()->database());
 }
 
-Acad::ErrorStatus PyDbObject::createExtensionDictionary()
+void PyDbObject::createExtensionDictionary()
 {
-    return impObj()->createExtensionDictionary();
+    return PyThrowBadEs(impObj()->createExtensionDictionary());
 }
 
 PyDbObjectId PyDbObject::extensionDictionary() const
@@ -132,67 +132,67 @@ PyDbObjectId PyDbObject::extensionDictionary() const
     return PyDbObjectId(impObj()->extensionDictionary());
 }
 
-Acad::ErrorStatus PyDbObject::releaseExtensionDictionary()
+void PyDbObject::releaseExtensionDictionary()
 {
-    return impObj()->releaseExtensionDictionary();
+    return PyThrowBadEs(impObj()->releaseExtensionDictionary());
 }
 
-Acad::ErrorStatus PyDbObject::close()
+void PyDbObject::close()
 {
-    return impObj()->close();
+    return PyThrowBadEs(impObj()->close());
 }
 
-Acad::ErrorStatus PyDbObject::upgradeOpen()
+void PyDbObject::upgradeOpen()
 {
-    return impObj()->upgradeOpen();
+    return PyThrowBadEs(impObj()->upgradeOpen());
 }
 
-Acad::ErrorStatus PyDbObject::upgradeFromNotify(Adesk::Boolean& wasWritable)
+void PyDbObject::upgradeFromNotify(Adesk::Boolean& wasWritable)
 {
-    return impObj()->upgradeFromNotify(wasWritable);
+    return PyThrowBadEs(impObj()->upgradeFromNotify(wasWritable));
 }
 
-Acad::ErrorStatus PyDbObject::downgradeOpen()
+void PyDbObject::downgradeOpen()
 {
-    return impObj()->downgradeOpen();
+    return PyThrowBadEs(impObj()->downgradeOpen());
 }
 
-Acad::ErrorStatus PyDbObject::downgradeToNotify(Adesk::Boolean wasWritable)
+void PyDbObject::downgradeToNotify(Adesk::Boolean wasWritable)
 {
-    return impObj()->downgradeToNotify(wasWritable);
+    return PyThrowBadEs(impObj()->downgradeToNotify(wasWritable));
 }
 
-Acad::ErrorStatus PyDbObject::cancel()
+void PyDbObject::cancel()
 {
-    return impObj()->cancel();
+    return PyThrowBadEs(impObj()->cancel());
 }
 
-Acad::ErrorStatus PyDbObject::erase1()
+void PyDbObject::erase1()
 {
-    return impObj()->erase();
+    return PyThrowBadEs(impObj()->erase());
 }
 
-Acad::ErrorStatus PyDbObject::erase2(Adesk::Boolean erasing)
+void PyDbObject::erase2(Adesk::Boolean erasing)
 {
-    return impObj()->erase(erasing);
+    return PyThrowBadEs(impObj()->erase(erasing));
 }
 
-Acad::ErrorStatus PyDbObject::handOverTo(PyDbObject& newObject, Adesk::Boolean keepXData, Adesk::Boolean keepExtDict)
+void PyDbObject::handOverTo(PyDbObject& newObject, Adesk::Boolean keepXData, Adesk::Boolean keepExtDict)
 {
-    return impObj()->handOverTo(newObject.impObj(), keepXData, keepExtDict);
+    return PyThrowBadEs(impObj()->handOverTo(newObject.impObj(), keepXData, keepExtDict));
 }
 
-Acad::ErrorStatus PyDbObject::swapIdWith(PyDbObjectId& otherId, Adesk::Boolean swapXdata, Adesk::Boolean swapExtDict)
+void PyDbObject::swapIdWith(PyDbObjectId& otherId, Adesk::Boolean swapXdata, Adesk::Boolean swapExtDict)
 {
-    return impObj()->swapIdWith(otherId.m_id, swapXdata, swapExtDict);
+    return PyThrowBadEs(impObj()->swapIdWith(otherId.m_id, swapXdata, swapExtDict));
 }
 
-Acad::ErrorStatus PyDbObject::setXData(const boost::python::list& xdata)
+void PyDbObject::setXData(const boost::python::list& xdata)
 {
     AcResBufPtr pData(listToResbuf(xdata));
     if (!impObj()->isWriteEnabled())
-        return eNotOpenForWrite;
-    return impObj()->setXData(pData.get());
+        PyThrowBadEs(eNotOpenForWrite);
+    PyThrowBadEs(impObj()->setXData(pData.get()));
 }
 
 boost::python::list PyDbObject::xData(const std::string& regappName) const
@@ -201,9 +201,9 @@ boost::python::list PyDbObject::xData(const std::string& regappName) const
     return resbufToList(pData.get());
 }
 
-Acad::ErrorStatus PyDbObject::xDataTransformBy(const AcGeMatrix3d& xform)
+void PyDbObject::xDataTransformBy(const AcGeMatrix3d& xform)
 {
-    return impObj()->xDataTransformBy(xform);
+    return PyThrowBadEs(impObj()->xDataTransformBy(xform));
 }
 
 Adesk::Boolean PyDbObject::isEraseStatusToggled() const
@@ -306,19 +306,18 @@ void PyDbObject::disableUndoRecording(Adesk::Boolean disable)
     impObj()->disableUndoRecording(disable);
 }
 
-Acad::ErrorStatus PyDbObject::addPersistentReactor(const PyDbObjectId& objId)
+void PyDbObject::addPersistentReactor(const PyDbObjectId& objId)
 {
 #ifdef BRXAPP
-    impObj()->addPersistentReactor(objId.m_id);
-    return eOk;
+    impObj()->addPersistentReactor(objId.m_id);;
 #else
-    return impObj()->addPersistentReactor(objId.m_id);
+    return PyThrowBadEs(impObj()->addPersistentReactor(objId.m_id));
 #endif
 }
 
-Acad::ErrorStatus PyDbObject::removePersistentReactor(const PyDbObjectId& objId)
+void PyDbObject::removePersistentReactor(const PyDbObjectId& objId)
 {
-    return impObj()->removePersistentReactor(objId.m_id);
+    return PyThrowBadEs(impObj()->removePersistentReactor(objId.m_id));
 }
 
 bool PyDbObject::hasPersistentReactor(const PyDbObjectId& objId) const
@@ -370,14 +369,14 @@ PyDbHandle PyDbObject::getHandle() const
     return handle;
 }
 
-Acad::ErrorStatus PyDbObject::removeField1(const PyDbObjectId& fieldId)
+void PyDbObject::removeField1(const PyDbObjectId& fieldId)
 {
-    return impObj()->removeField(fieldId.m_id);
+    return PyThrowBadEs(impObj()->removeField(fieldId.m_id));
 }
 
-Acad::ErrorStatus PyDbObject::removeField2(const std::string& propName)
+void PyDbObject::removeField2(const std::string& propName)
 {
-    return impObj()->removeField(utf8_to_wstr(propName).c_str());
+    return PyThrowBadEs(impObj()->removeField(utf8_to_wstr(propName).c_str()));
 }
 
 PyDbObjectId PyDbObject::getFieldDictionary(void) const

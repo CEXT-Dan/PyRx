@@ -171,9 +171,9 @@ PyDbPlotSettings::PyDbPlotSettings(const PyDbObjectId& id)
 {
 }
 
-Acad::ErrorStatus PyDbPlotSettings::addToPlotSettingsDict(PyDbDatabase& towhichDb)
+void PyDbPlotSettings::addToPlotSettingsDict(PyDbDatabase& towhichDb)
 {
-    return impObj()->addToPlotSettingsDict(towhichDb.impObj());
+    return PyThrowBadEs(impObj()->addToPlotSettingsDict(towhichDb.impObj()));
 }
 
 std::string PyDbPlotSettings::getPlotSettingsName() const
@@ -184,9 +184,9 @@ std::string PyDbPlotSettings::getPlotSettingsName() const
     return wstr_to_utf8(plotSettingsName);
 }
 
-Acad::ErrorStatus PyDbPlotSettings::setPlotSettingsName(const std::string& plotSettingsName)
+void PyDbPlotSettings::setPlotSettingsName(const std::string& plotSettingsName)
 {
-    return impObj()->setPlotSettingsName(utf8_to_wstr(plotSettingsName).c_str());
+    return PyThrowBadEs(impObj()->setPlotSettingsName(utf8_to_wstr(plotSettingsName).c_str()));
 }
 
 std::string PyDbPlotSettings::getPlotCfgName() const
@@ -319,18 +319,18 @@ AcDbPlotSettings::ShadePlotType PyDbPlotSettings::shadePlot() const
 #endif
 }
 
-Acad::ErrorStatus PyDbPlotSettings::setShadePlot1(AcDbPlotSettings::ShadePlotType shadePlot)
+void PyDbPlotSettings::setShadePlot1(AcDbPlotSettings::ShadePlotType shadePlot)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setShadePlot(shadePlot);
+    return PyThrowBadEs(impObj()->setShadePlot(shadePlot));
 #endif
 }
 
-Acad::ErrorStatus PyDbPlotSettings::setShadePlot2(AcDbPlotSettings::ShadePlotType type, const PyDbObjectId& shadePlotId)
+void PyDbPlotSettings::setShadePlot2(AcDbPlotSettings::ShadePlotType type, const PyDbObjectId& shadePlotId)
 {
-    return impObj()->setShadePlot(type, shadePlotId.m_id);
+    return PyThrowBadEs(impObj()->setShadePlot(type, shadePlotId.m_id));
 }
 
 bool PyDbPlotSettings::plotWireframe() const
@@ -348,9 +348,9 @@ AcDbPlotSettings::ShadePlotResLevel PyDbPlotSettings::shadePlotResLevel() const
     return impObj()->shadePlotResLevel();
 }
 
-Acad::ErrorStatus PyDbPlotSettings::setShadePlotResLevel(AcDbPlotSettings::ShadePlotResLevel resLevel)
+void PyDbPlotSettings::setShadePlotResLevel(AcDbPlotSettings::ShadePlotResLevel resLevel)
 {
-    return impObj()->setShadePlotResLevel(resLevel);
+    return PyThrowBadEs(impObj()->setShadePlotResLevel(resLevel));
 }
 
 Adesk::Int16 PyDbPlotSettings::shadePlotCustomDPI() const
@@ -358,9 +358,9 @@ Adesk::Int16 PyDbPlotSettings::shadePlotCustomDPI() const
     return impObj()->shadePlotCustomDPI();
 }
 
-Acad::ErrorStatus PyDbPlotSettings::setShadePlotCustomDPI(Adesk::Int16 val)
+void PyDbPlotSettings::setShadePlotCustomDPI(Adesk::Int16 val)
 {
-    return impObj()->setShadePlotCustomDPI(val);
+    return PyThrowBadEs(impObj()->setShadePlotCustomDPI(val));
 }
 
 AcDbPlotSettings::PlotType PyDbPlotSettings::plotType() const
@@ -560,14 +560,14 @@ PyDbObjectId PyDbLayout::getBlockTableRecordId() const
     return PyDbObjectId(impObj()->getBlockTableRecordId());
 }
 
-Acad::ErrorStatus PyDbLayout::setBlockTableRecordId(PyDbObjectId& BlockTableRecordId)
+void PyDbLayout::setBlockTableRecordId(PyDbObjectId& BlockTableRecordId)
 {
-    return impObj()->setBlockTableRecordId(BlockTableRecordId.m_id);
+    return PyThrowBadEs(impObj()->setBlockTableRecordId(BlockTableRecordId.m_id));
 }
 
-Acad::ErrorStatus PyDbLayout::addToLayoutDict(PyDbDatabase& towhichDb, PyDbObjectId BlockTableRecordId)
+void PyDbLayout::addToLayoutDict(PyDbDatabase& towhichDb, PyDbObjectId BlockTableRecordId)
 {
-    return impObj()->addToLayoutDict(towhichDb.impObj(), BlockTableRecordId.m_id);
+    return PyThrowBadEs(impObj()->addToLayoutDict(towhichDb.impObj(), BlockTableRecordId.m_id));
 }
 
 std::string PyDbLayout::getLayoutName() const
@@ -578,9 +578,9 @@ std::string PyDbLayout::getLayoutName() const
     return wstr_to_utf8(layoutName);
 }
 
-Acad::ErrorStatus PyDbLayout::setLayoutName(const std::string& layoutName)
+void PyDbLayout::setLayoutName(const std::string& layoutName)
 {
-    return impObj()->setLayoutName(utf8_to_wstr(layoutName).c_str());
+    return PyThrowBadEs(impObj()->setLayoutName(utf8_to_wstr(layoutName).c_str()));
 }
 
 int PyDbLayout::getTabOrder() const
@@ -636,14 +636,14 @@ boost::python::tuple PyDbLayout::getExtents() const
 #endif
 }
 
-Acad::ErrorStatus PyDbLayout::initialize1()
+void PyDbLayout::initialize1()
 {
-    return impObj()->initialize();
+    return PyThrowBadEs(impObj()->initialize());
 }
 
-Acad::ErrorStatus PyDbLayout::initialize2(PyDbObjectId& paperVportId)
+void PyDbLayout::initialize2(PyDbObjectId& paperVportId)
 {
-    return impObj()->initialize(&paperVportId.m_id);
+    return PyThrowBadEs(impObj()->initialize(&paperVportId.m_id));
 }
 
 bool PyDbLayout::annoAllVisible() const
@@ -651,9 +651,9 @@ bool PyDbLayout::annoAllVisible() const
     return impObj()->annoAllVisible();
 }
 
-Acad::ErrorStatus PyDbLayout::setAnnoAllVisible(bool newVal)
+void PyDbLayout::setAnnoAllVisible(bool newVal)
 {
-    return impObj()->setAnnoAllVisible(newVal);
+    return PyThrowBadEs(impObj()->setAnnoAllVisible(newVal));
 }
 
 std::string PyDbLayout::className()
@@ -736,19 +736,19 @@ PyDbLayoutManager::PyDbLayoutManager(AcDbLayoutManager* ptr, bool autoDelete)
 {
 }
 
-Acad::ErrorStatus PyDbLayoutManager::setCurrentLayout1(const std::string& newname)
+void PyDbLayoutManager::setCurrentLayout1(const std::string& newname)
 {
-    return impObj()->setCurrentLayout(utf8_to_wstr(newname).c_str());
+    return PyThrowBadEs(impObj()->setCurrentLayout(utf8_to_wstr(newname).c_str()));
 }
 
-Acad::ErrorStatus PyDbLayoutManager::setCurrentLayout2(const std::string& newname, PyDbDatabase& pDb)
+void PyDbLayoutManager::setCurrentLayout2(const std::string& newname, PyDbDatabase& pDb)
 {
-    return impObj()->setCurrentLayout(utf8_to_wstr(newname).c_str(), pDb.impObj());
+    return PyThrowBadEs(impObj()->setCurrentLayout(utf8_to_wstr(newname).c_str(), pDb.impObj()));
 }
 
-Acad::ErrorStatus PyDbLayoutManager::setCurrentLayoutId(const PyDbObjectId& layoutId)
+void PyDbLayoutManager::setCurrentLayoutId(const PyDbObjectId& layoutId)
 {
-    return impObj()->setCurrentLayoutId(layoutId.m_id);
+    return PyThrowBadEs(impObj()->setCurrentLayoutId(layoutId.m_id));
 }
 
 std::string PyDbLayoutManager::getActiveLayoutName1(bool allowModel)
@@ -797,54 +797,54 @@ bool PyDbLayoutManager::layoutExists2(const std::string& name, const PyDbDatabas
     return impObj()->layoutExists(utf8_to_wstr(name).c_str(), pDb.impObj());
 }
 
-Acad::ErrorStatus PyDbLayoutManager::copyLayout1(const std::string& copyname, const std::string& newname)
+void PyDbLayoutManager::copyLayout1(const std::string& copyname, const std::string& newname)
 {
-    return impObj()->copyLayout(utf8_to_wstr(copyname).c_str(), utf8_to_wstr(newname).c_str());
+    return PyThrowBadEs(impObj()->copyLayout(utf8_to_wstr(copyname).c_str(), utf8_to_wstr(newname).c_str()));
 }
 
-Acad::ErrorStatus PyDbLayoutManager::copyLayout2(const std::string& copyname, const std::string& newname, const PyDbDatabase& pDb)
+void PyDbLayoutManager::copyLayout2(const std::string& copyname, const std::string& newname, const PyDbDatabase& pDb)
 {
-    return impObj()->copyLayout(utf8_to_wstr(copyname).c_str(), utf8_to_wstr(newname).c_str(), pDb.impObj());
+    return PyThrowBadEs(impObj()->copyLayout(utf8_to_wstr(copyname).c_str(), utf8_to_wstr(newname).c_str(), pDb.impObj()));
 }
 
-Acad::ErrorStatus PyDbLayoutManager::deleteLayout1(const std::string& delname)
+void PyDbLayoutManager::deleteLayout1(const std::string& delname)
 {
-    return impObj()->deleteLayout(utf8_to_wstr(delname).c_str());
+    return PyThrowBadEs(impObj()->deleteLayout(utf8_to_wstr(delname).c_str()));
 }
 
-Acad::ErrorStatus PyDbLayoutManager::deleteLayout2(const std::string& delname, PyDbDatabase& pDb)
+void PyDbLayoutManager::deleteLayout2(const std::string& delname, PyDbDatabase& pDb)
 {
-    return impObj()->deleteLayout(utf8_to_wstr(delname).c_str(), pDb.impObj());
+    return PyThrowBadEs(impObj()->deleteLayout(utf8_to_wstr(delname).c_str(), pDb.impObj()));
 }
 
-Acad::ErrorStatus PyDbLayoutManager::createLayout1(const std::string& newname, PyDbObjectId& layoutId, PyDbObjectId& blockTableRecId)
+void PyDbLayoutManager::createLayout1(const std::string& newname, PyDbObjectId& layoutId, PyDbObjectId& blockTableRecId)
 {
-    return impObj()->createLayout(utf8_to_wstr(newname).c_str(), layoutId.m_id, blockTableRecId.m_id);
+    return PyThrowBadEs(impObj()->createLayout(utf8_to_wstr(newname).c_str(), layoutId.m_id, blockTableRecId.m_id));
 }
 
-Acad::ErrorStatus PyDbLayoutManager::createLayout2(const std::string& newname, PyDbObjectId& layoutId, PyDbObjectId& blockTableRecId, PyDbDatabase& pDb)
+void PyDbLayoutManager::createLayout2(const std::string& newname, PyDbObjectId& layoutId, PyDbObjectId& blockTableRecId, PyDbDatabase& pDb)
 {
-    return impObj()->createLayout(utf8_to_wstr(newname).c_str(), layoutId.m_id, blockTableRecId.m_id, pDb.impObj());
+    return PyThrowBadEs(impObj()->createLayout(utf8_to_wstr(newname).c_str(), layoutId.m_id, blockTableRecId.m_id, pDb.impObj()));
 }
 
-Acad::ErrorStatus PyDbLayoutManager::renameLayout1(const std::string& oldname, const std::string& newname)
+void PyDbLayoutManager::renameLayout1(const std::string& oldname, const std::string& newname)
 {
-    return impObj()->renameLayout(utf8_to_wstr(oldname).c_str(), utf8_to_wstr(newname).c_str());
+    return PyThrowBadEs(impObj()->renameLayout(utf8_to_wstr(oldname).c_str(), utf8_to_wstr(newname).c_str()));
 }
 
-Acad::ErrorStatus PyDbLayoutManager::renameLayout2(const std::string& oldname, const std::string& newname, PyDbDatabase& pDb)
+void PyDbLayoutManager::renameLayout2(const std::string& oldname, const std::string& newname, PyDbDatabase& pDb)
 {
-    return impObj()->renameLayout(utf8_to_wstr(oldname).c_str(), utf8_to_wstr(newname).c_str(), pDb.impObj());
+    return PyThrowBadEs(impObj()->renameLayout(utf8_to_wstr(oldname).c_str(), utf8_to_wstr(newname).c_str(), pDb.impObj()));
 }
 
-Acad::ErrorStatus PyDbLayoutManager::cloneLayout1(PyDbLayout& pLBTR, const std::string& newname)
+void PyDbLayoutManager::cloneLayout1(PyDbLayout& pLBTR, const std::string& newname)
 {
-    return impObj()->cloneLayout(pLBTR.impObj(), utf8_to_wstr(newname).c_str());
+    return PyThrowBadEs(impObj()->cloneLayout(pLBTR.impObj(), utf8_to_wstr(newname).c_str()));
 }
 
-Acad::ErrorStatus PyDbLayoutManager::cloneLayout2(PyDbLayout& pLBTR, const std::string& newname, int newTabOrder, PyDbDatabase& pDb)
+void PyDbLayoutManager::cloneLayout2(PyDbLayout& pLBTR, const std::string& newname, int newTabOrder, PyDbDatabase& pDb)
 {
-    return impObj()->cloneLayout(pLBTR.impObj(), utf8_to_wstr(newname).c_str(), newTabOrder, pDb.impObj());
+    return PyThrowBadEs(impObj()->cloneLayout(pLBTR.impObj(), utf8_to_wstr(newname).c_str(), newTabOrder, pDb.impObj()));
 }
 
 PyDbObjectId PyDbLayoutManager::getNonRectVPIdFromClipId(PyDbObjectId& clipId)
@@ -884,12 +884,12 @@ Adesk::ULongPtr PyDbLayoutManager::setupForLayouts(PyDbDatabase& pDb)
 #endif
 }
 
-Acad::ErrorStatus PyDbLayoutManager::clearSetupForLayouts(Adesk::ULongPtr contextHandle)
+void PyDbLayoutManager::clearSetupForLayouts(Adesk::ULongPtr contextHandle)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return acdbClearSetupForLayouts(contextHandle);
+    return PyThrowBadEs(acdbClearSetupForLayouts(contextHandle));
 #endif
 }
 

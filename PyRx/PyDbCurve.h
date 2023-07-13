@@ -17,10 +17,10 @@ public:
     virtual AcGePoint3d         getStartPoint() const;
     virtual AcGePoint3d         getEndPoint() const;
     virtual AcGePoint3d         getPointAtParam(double) const;
-    virtual  double             getParamAtPoint(const AcGePoint3d& pnt)const;
-    virtual  double             getDistAtParam(double param) const;
-    virtual  double             getParamAtDist(double dist) const;
-    virtual  double             getDistAtPoint(const AcGePoint3d& pnt)const;
+    virtual double              getParamAtPoint(const AcGePoint3d& pnt)const;
+    virtual double              getDistAtParam(double param) const;
+    virtual double              getParamAtDist(double dist) const;
+    virtual double              getDistAtPoint(const AcGePoint3d& pnt)const;
     virtual AcGePoint3d         getPointAtDist(double) const;
     virtual AcGeVector3d        getFirstDeriv(double param) const;
     virtual AcGeVector3d        getFirstDeriv(const AcGePoint3d& pnt) const;
@@ -33,10 +33,10 @@ public:
     virtual boost::python::list getSplitCurves(const boost::python::list& params) const;
     virtual boost::python::list getSplitCurvesAtParams(const boost::python::list& params) const;
     virtual boost::python::list getSplitCurvesAtPoints(const boost::python::list& params) const;
-    virtual Acad::ErrorStatus   extend(double newParam);
-    virtual Acad::ErrorStatus   extend(Adesk::Boolean extendStart, const AcGePoint3d& toPoint);
+    virtual void                extend(double newParam);
+    virtual void                extend(Adesk::Boolean extendStart, const AcGePoint3d& toPoint);
     virtual double              getArea() const;
-    virtual Acad::ErrorStatus   reverseCurve();
+    virtual void                reverseCurve();
     static std::string          className();
     static PyRxClass            desc();
     static PyDbCurve            cloneFrom(const PyRxObject& src);

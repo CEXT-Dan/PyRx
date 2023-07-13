@@ -170,9 +170,9 @@ double PyDbHatch::elevation() const
     return impObj()->elevation();
 }
 
-Acad::ErrorStatus PyDbHatch::setElevation(double elevation)
+void PyDbHatch::setElevation(double elevation)
 {
-    return impObj()->setElevation(elevation);
+    return PyThrowBadEs(impObj()->setElevation(elevation));
 }
 
 AcGeVector3d PyDbHatch::normal() const
@@ -180,9 +180,9 @@ AcGeVector3d PyDbHatch::normal() const
     return impObj()->normal();
 }
 
-Acad::ErrorStatus PyDbHatch::setNormal(const AcGeVector3d& normal)
+void PyDbHatch::setNormal(const AcGeVector3d& normal)
 {
-    return impObj()->setNormal(normal);
+    return PyThrowBadEs(impObj()->setNormal(normal));
 }
 
 AcCmColor PyDbHatch::backgroundColor() const
@@ -190,9 +190,9 @@ AcCmColor PyDbHatch::backgroundColor() const
     return impObj()->backgroundColor();
 }
 
-Acad::ErrorStatus PyDbHatch::setBackgroundColor(const AcCmColor& color)
+void PyDbHatch::setBackgroundColor(const AcCmColor& color)
 {
-    return impObj()->setBackgroundColor(color);
+    return PyThrowBadEs(impObj()->setBackgroundColor(color));
 }
 
 int PyDbHatch::numLoops() const
@@ -234,7 +234,7 @@ boost::python::tuple PyDbHatch::getLoopBulgesAt(int loopIndex)
     return boost::python::make_tuple(loopType, verticesList, bulgesList);
 }
 
-Acad::ErrorStatus PyDbHatch::appendLoopEdges(Adesk::Int32 loopType, const boost::python::list& edgePtrs, const boost::python::list& edgeTypes)
+void PyDbHatch::appendLoopEdges(Adesk::Int32 loopType, const boost::python::list& edgePtrs, const boost::python::list& edgeTypes)
 {
     PyAutoLockGIL lock;
     AcGeVoidPointerArray _edgePtrs;
@@ -245,10 +245,10 @@ Acad::ErrorStatus PyDbHatch::appendLoopEdges(Adesk::Int32 loopType, const boost:
     auto ints = py_list_to_std_vector<Int32>(edgeTypes);
     for (auto i : ints)
         _edgeTypes.append(i);
-    return impObj()->appendLoop(loopType, _edgePtrs, _edgeTypes);
+    return PyThrowBadEs(impObj()->appendLoop(loopType, _edgePtrs, _edgeTypes));
 }
 
-Acad::ErrorStatus PyDbHatch::appendLoopBulges(Adesk::Int32 loopType, const boost::python::list& vertices, const boost::python::list& bulges)
+void PyDbHatch::appendLoopBulges(Adesk::Int32 loopType, const boost::python::list& vertices, const boost::python::list& bulges)
 {
     PyAutoLockGIL lock;
     AcGePoint2dArray _vertices;
@@ -259,12 +259,12 @@ Acad::ErrorStatus PyDbHatch::appendLoopBulges(Adesk::Int32 loopType, const boost
     auto doubles = py_list_to_std_vector<double>(bulges);
     for (auto dbl : doubles)
         _bulges.append(dbl);
-    return impObj()->appendLoop(loopType, _vertices, _bulges);
+    return PyThrowBadEs(impObj()->appendLoop(loopType, _vertices, _bulges));
 }
 
-Acad::ErrorStatus PyDbHatch::removeLoopAt(int loopIndex)
+void PyDbHatch::removeLoopAt(int loopIndex)
 {
-    return impObj()->removeLoopAt(loopIndex);
+    return PyThrowBadEs(impObj()->removeLoopAt(loopIndex));
 }
 
 bool PyDbHatch::associative() const
@@ -272,27 +272,27 @@ bool PyDbHatch::associative() const
     return impObj()->associative();
 }
 
-Acad::ErrorStatus PyDbHatch::setAssociative(bool isAssociative)
+void PyDbHatch::setAssociative(bool isAssociative)
 {
-    return impObj()->setAssociative(isAssociative);
+    return PyThrowBadEs(impObj()->setAssociative(isAssociative));
 }
 
-Acad::ErrorStatus PyDbHatch::appendLoop(Adesk::Int32 loopType, const boost::python::list& dbObjIds)
+void PyDbHatch::appendLoop(Adesk::Int32 loopType, const boost::python::list& dbObjIds)
 {
     auto idsList = py_list_to_std_vector<PyDbObjectId>(dbObjIds);
     AcDbObjectIdArray ids;
     for (auto& id : idsList)
         ids.append(id.m_id);
-    return impObj()->appendLoop(loopType, ids);
+    return PyThrowBadEs(impObj()->appendLoop(loopType, ids));
 }
 
-Acad::ErrorStatus PyDbHatch::insertLoopAt(int loopIndex, Adesk::Int32 loopType, const boost::python::list& dbObjIds)
+void PyDbHatch::insertLoopAt(int loopIndex, Adesk::Int32 loopType, const boost::python::list& dbObjIds)
 {
     auto idsList = py_list_to_std_vector<PyDbObjectId>(dbObjIds);
     AcDbObjectIdArray ids;
     for (auto& id : idsList)
         ids.append(id.m_id);
-    return impObj()->insertLoopAt(loopIndex, loopType, ids);
+    return PyThrowBadEs(impObj()->insertLoopAt(loopIndex, loopType, ids));
 }
 
 boost::python::list PyDbHatch::getAssocObjIdsAt(int loopIndex) const
@@ -319,9 +319,9 @@ boost::python::list PyDbHatch::getAssocObjIds() const
     return idsList;
 }
 
-Acad::ErrorStatus PyDbHatch::removeAssocObjIds()
+void PyDbHatch::removeAssocObjIds()
 {
-    return impObj()->removeAssocObjIds();
+    return PyThrowBadEs(impObj()->removeAssocObjIds());
 }
 
 AcDbHatch::HatchObjectType PyDbHatch::hatchObjectType() const
@@ -329,9 +329,9 @@ AcDbHatch::HatchObjectType PyDbHatch::hatchObjectType() const
     return impObj()->hatchObjectType();
 }
 
-Acad::ErrorStatus PyDbHatch::setHatchObjectType(AcDbHatch::HatchObjectType type)
+void PyDbHatch::setHatchObjectType(AcDbHatch::HatchObjectType type)
 {
-    return impObj()->setHatchObjectType(type);
+    return PyThrowBadEs(impObj()->setHatchObjectType(type));
 }
 
 Adesk::Boolean PyDbHatch::isGradient() const
@@ -354,9 +354,9 @@ std::string PyDbHatch::gradientName() const
     return wstr_to_utf8(impObj()->gradientName());
 }
 
-Acad::ErrorStatus PyDbHatch::setGradient(AcDbHatch::GradientPatternType gradType, const std::string& gradName)
+void PyDbHatch::setGradient(AcDbHatch::GradientPatternType gradType, const std::string& gradName)
 {
-    return impObj()->setGradient(gradType, utf8_to_wstr(gradName).c_str());
+    return PyThrowBadEs(impObj()->setGradient(gradType, utf8_to_wstr(gradName).c_str()));
 }
 
 double PyDbHatch::gradientAngle() const
@@ -364,9 +364,9 @@ double PyDbHatch::gradientAngle() const
     return impObj()->gradientAngle();
 }
 
-Acad::ErrorStatus PyDbHatch::setGradientAngle(double angle)
+void PyDbHatch::setGradientAngle(double angle)
 {
-    return impObj()->setGradientAngle(angle);
+    return PyThrowBadEs(impObj()->setGradientAngle(angle));
 }
 
 boost::python::tuple PyDbHatch::getGradientColors()
@@ -387,14 +387,14 @@ boost::python::tuple PyDbHatch::getGradientColors()
     return boost::python::make_tuple(colorList, valueList);
 }
 
-Acad::ErrorStatus PyDbHatch::setGradientColors(const boost::python::list& colors, const boost::python::list& values)
+void PyDbHatch::setGradientColors(const boost::python::list& colors, const boost::python::list& values)
 {
     PyAutoLockGIL lock;
     auto _colors = py_list_to_std_vector<AcCmColor>(colors);
     auto _values = py_list_to_std_vector<float>(values);
     if (_colors.size() != _values.size())
-        return eInvalidInput;
-    return impObj()->setGradientColors(_colors.size(), _colors.data(), _values.data());
+        PyThrowBadEs(eInvalidInput);
+    return PyThrowBadEs(impObj()->setGradientColors(_colors.size(), _colors.data(), _values.data()));
 }
 
 Adesk::Boolean PyDbHatch::getGradientOneColorMode() const
@@ -402,9 +402,9 @@ Adesk::Boolean PyDbHatch::getGradientOneColorMode() const
     return impObj()->getGradientOneColorMode();
 }
 
-Acad::ErrorStatus PyDbHatch::setGradientOneColorMode(Adesk::Boolean oneColorMode)
+void PyDbHatch::setGradientOneColorMode(Adesk::Boolean oneColorMode)
 {
-    return impObj()->setGradientOneColorMode(oneColorMode);
+    return PyThrowBadEs(impObj()->setGradientOneColorMode(oneColorMode));
 }
 
 float PyDbHatch::getShadeTintValue() const
@@ -412,14 +412,14 @@ float PyDbHatch::getShadeTintValue() const
     return impObj()->getShadeTintValue();
 }
 
-Acad::ErrorStatus PyDbHatch::setShadeTintValue(float value)
+void PyDbHatch::setShadeTintValue(float value)
 {
-    return impObj()->setShadeTintValue(value);
+    return PyThrowBadEs(impObj()->setShadeTintValue(value));
 }
 
-Acad::ErrorStatus PyDbHatch::setShadeTintValueAndColor2(float value)
+void PyDbHatch::setShadeTintValueAndColor2(float value)
 {
-    return impObj()->setShadeTintValueAndColor2(value);
+    return PyThrowBadEs(impObj()->setShadeTintValueAndColor2(value));
 }
 
 float PyDbHatch::gradientShift() const
@@ -427,9 +427,9 @@ float PyDbHatch::gradientShift() const
     return impObj()->gradientShift();
 }
 
-Acad::ErrorStatus PyDbHatch::setGradientShift(float shiftValue)
+void PyDbHatch::setGradientShift(float shiftValue)
 {
-    return impObj()->setGradientShift(shiftValue);
+    return PyThrowBadEs(impObj()->setGradientShift(shiftValue));
 }
 
 AcCmColor PyDbHatch::evaluateGradientColorAt(float value)
@@ -454,9 +454,9 @@ std::string PyDbHatch::patternName() const
     return wstr_to_utf8(impObj()->patternName());
 }
 
-Acad::ErrorStatus PyDbHatch::setPattern(AcDbHatch::HatchPatternType patType, const std::string& patName)
+void PyDbHatch::setPattern(AcDbHatch::HatchPatternType patType, const std::string& patName)
 {
-    return impObj()->setPattern(patType, utf8_to_wstr(patName).c_str());
+    return PyThrowBadEs(impObj()->setPattern(patType, utf8_to_wstr(patName).c_str()));
 }
 
 double PyDbHatch::patternAngle() const
@@ -464,9 +464,9 @@ double PyDbHatch::patternAngle() const
     return impObj()->patternAngle();
 }
 
-Acad::ErrorStatus PyDbHatch::setPatternAngle(double angle)
+void PyDbHatch::setPatternAngle(double angle)
 {
-    return impObj()->setPatternAngle(angle);
+    return PyThrowBadEs(impObj()->setPatternAngle(angle));
 }
 
 double PyDbHatch::patternSpace() const
@@ -474,9 +474,9 @@ double PyDbHatch::patternSpace() const
     return impObj()->patternSpace();
 }
 
-Acad::ErrorStatus PyDbHatch::setPatternSpace(double space)
+void PyDbHatch::setPatternSpace(double space)
 {
-    return impObj()->setPatternSpace(space);
+    return PyThrowBadEs(impObj()->setPatternSpace(space));
 }
 
 double PyDbHatch::patternScale() const
@@ -484,9 +484,9 @@ double PyDbHatch::patternScale() const
     return impObj()->patternScale();
 }
 
-Acad::ErrorStatus PyDbHatch::setPatternScale(double scale)
+void PyDbHatch::setPatternScale(double scale)
 {
-    return impObj()->setPatternScale(scale);
+    return PyThrowBadEs(impObj()->setPatternScale(scale));
 }
 
 bool PyDbHatch::patternDouble() const
@@ -494,9 +494,9 @@ bool PyDbHatch::patternDouble() const
     return impObj()->patternDouble();
 }
 
-Acad::ErrorStatus PyDbHatch::setPatternDouble(bool isDouble)
+void PyDbHatch::setPatternDouble(bool isDouble)
 {
-    return impObj()->setPatternDouble(isDouble);
+    return PyThrowBadEs(impObj()->setPatternDouble(isDouble));
 }
 
 int PyDbHatch::numPatternDefinitions() const
@@ -526,36 +526,36 @@ AcDbHatch::HatchStyle PyDbHatch::hatchStyle() const
     return impObj()->hatchStyle();
 }
 
-Acad::ErrorStatus PyDbHatch::setHatchStyle(AcDbHatch::HatchStyle hstyle)
+void PyDbHatch::setHatchStyle(AcDbHatch::HatchStyle hstyle)
 {
-    return impObj()->setHatchStyle(hstyle);
+    return PyThrowBadEs(impObj()->setHatchStyle(hstyle));
 }
 
-Acad::ErrorStatus PyDbHatch::evaluateHatch1()
+void PyDbHatch::evaluateHatch1()
 {
-    return impObj()->evaluateHatch();
+    return PyThrowBadEs(impObj()->evaluateHatch());
 }
 
-Acad::ErrorStatus PyDbHatch::evaluateHatch2(bool bUnderestimateNumLines)
+void PyDbHatch::evaluateHatch2(bool bUnderestimateNumLines)
 {
-    return impObj()->evaluateHatch(bUnderestimateNumLines);
+    return PyThrowBadEs(impObj()->evaluateHatch(bUnderestimateNumLines));
 }
 
-Acad::ErrorStatus PyDbHatch::evaluateHatchAllScales1()
+void PyDbHatch::evaluateHatchAllScales1()
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->evaluateHatchAllScales();
+    return PyThrowBadEs(impObj()->evaluateHatchAllScales());
 #endif
 }
 
-Acad::ErrorStatus PyDbHatch::evaluateHatchAllScales2(bool bUnderestimateNumLines)
+void PyDbHatch::evaluateHatchAllScales2(bool bUnderestimateNumLines)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->evaluateHatchAllScales(bUnderestimateNumLines);
+    return PyThrowBadEs(impObj()->evaluateHatchAllScales(bUnderestimateNumLines));
 #endif
 }
 
@@ -621,9 +621,9 @@ double PyDbHatch::getArea() const
     return a;
 }
 
-Acad::ErrorStatus PyDbHatch::setOriginPoint(const AcGePoint2d& pt)
+void PyDbHatch::setOriginPoint(const AcGePoint2d& pt)
 {
-    return impObj()->setOriginPoint(pt);
+    return PyThrowBadEs(impObj()->setOriginPoint(pt));
 }
 
 AcGePoint2d PyDbHatch::originPoint() const

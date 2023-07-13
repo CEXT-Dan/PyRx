@@ -52,9 +52,9 @@ std::string PyDbSymbolTableRecord::getName()
     return wstr_to_utf8(arxName);
 }
 
-Acad::ErrorStatus PyDbSymbolTableRecord::setName(const std::string name)
+void PyDbSymbolTableRecord::setName(const std::string name)
 {
-    return impObj()->setName(utf8_to_wstr(name).c_str());
+    return PyThrowBadEs(impObj()->setName(utf8_to_wstr(name).c_str()));
 }
 
 bool PyDbSymbolTableRecord::isDependent() const
@@ -322,9 +322,9 @@ void PyDbAbstractViewTableRecord::setViewDirection1(const AcGeVector3d& viewDire
     return impObj()->setViewDirection(viewDirection);
 }
 
-Acad::ErrorStatus PyDbAbstractViewTableRecord::setViewDirection2(AcDb::OrthographicView view)
+void PyDbAbstractViewTableRecord::setViewDirection2(AcDb::OrthographicView view)
 {
-    return impObj()->setViewDirection(view);
+    return PyThrowBadEs(impObj()->setViewDirection(view));
 }
 
 double PyDbAbstractViewTableRecord::viewTwist() const
@@ -412,9 +412,9 @@ PyDbObjectId PyDbAbstractViewTableRecord::background() const
     return PyDbObjectId(impObj()->background());
 }
 
-Acad::ErrorStatus PyDbAbstractViewTableRecord::setBackground(const PyDbObjectId& backgroundId)
+void PyDbAbstractViewTableRecord::setBackground(const PyDbObjectId& backgroundId)
 {
-    return impObj()->setBackground(backgroundId.m_id);
+    return PyThrowBadEs(impObj()->setBackground(backgroundId.m_id));
 }
 
 PyDbObjectId PyDbAbstractViewTableRecord::visualStyle() const
@@ -422,9 +422,9 @@ PyDbObjectId PyDbAbstractViewTableRecord::visualStyle() const
     return PyDbObjectId(impObj()->visualStyle());
 }
 
-Acad::ErrorStatus PyDbAbstractViewTableRecord::setVisualStyle(const PyDbObjectId& visualStyleId)
+void PyDbAbstractViewTableRecord::setVisualStyle(const PyDbObjectId& visualStyleId)
 {
-    return impObj()->setVisualStyle(visualStyleId.m_id);
+    return PyThrowBadEs(impObj()->setVisualStyle(visualStyleId.m_id));
 }
 
 bool PyDbAbstractViewTableRecord::isDefaultLightingOn() const
@@ -432,9 +432,9 @@ bool PyDbAbstractViewTableRecord::isDefaultLightingOn() const
     return impObj()->isDefaultLightingOn();
 }
 
-Acad::ErrorStatus PyDbAbstractViewTableRecord::setDefaultLightingOn(bool on)
+void PyDbAbstractViewTableRecord::setDefaultLightingOn(bool on)
 {
-    return impObj()->setDefaultLightingOn(on);
+    return PyThrowBadEs(impObj()->setDefaultLightingOn(on));
 }
 
 AcGiViewportTraits::DefaultLightingType PyDbAbstractViewTableRecord::defaultLightingType() const
@@ -442,9 +442,9 @@ AcGiViewportTraits::DefaultLightingType PyDbAbstractViewTableRecord::defaultLigh
     return impObj()->defaultLightingType();
 }
 
-Acad::ErrorStatus PyDbAbstractViewTableRecord::setDefaultLightingType(AcGiViewportTraits::DefaultLightingType typ)
+void PyDbAbstractViewTableRecord::setDefaultLightingType(AcGiViewportTraits::DefaultLightingType typ)
 {
-    return impObj()->setDefaultLightingType(typ);
+    return PyThrowBadEs(impObj()->setDefaultLightingType(typ));
 }
 
 double PyDbAbstractViewTableRecord::brightness() const
@@ -452,9 +452,9 @@ double PyDbAbstractViewTableRecord::brightness() const
     return impObj()->brightness();
 }
 
-Acad::ErrorStatus PyDbAbstractViewTableRecord::setBrightness(double val)
+void PyDbAbstractViewTableRecord::setBrightness(double val)
 {
-    return impObj()->setBrightness(val);
+    return PyThrowBadEs(impObj()->setBrightness(val));
 }
 
 double PyDbAbstractViewTableRecord::contrast() const
@@ -462,9 +462,9 @@ double PyDbAbstractViewTableRecord::contrast() const
     return impObj()->contrast();
 }
 
-Acad::ErrorStatus PyDbAbstractViewTableRecord::setContrast(double val)
+void PyDbAbstractViewTableRecord::setContrast(double val)
 {
-    return impObj()->setContrast(val);
+    return PyThrowBadEs(impObj()->setContrast(val));
 }
 
 AcCmColor PyDbAbstractViewTableRecord::ambientLightColor() const
@@ -472,9 +472,9 @@ AcCmColor PyDbAbstractViewTableRecord::ambientLightColor() const
     return impObj()->ambientLightColor();
 }
 
-Acad::ErrorStatus PyDbAbstractViewTableRecord::setAmbientLightColor(const AcCmColor& clr)
+void PyDbAbstractViewTableRecord::setAmbientLightColor(const AcCmColor& clr)
 {
-    return impObj()->setAmbientLightColor(clr);
+    return PyThrowBadEs(impObj()->setAmbientLightColor(clr));
 }
 
 PyDbObjectId PyDbAbstractViewTableRecord::sunId() const
@@ -482,23 +482,23 @@ PyDbObjectId PyDbAbstractViewTableRecord::sunId() const
     return PyDbObjectId(impObj()->sunId());
 }
 
-Acad::ErrorStatus PyDbAbstractViewTableRecord::setSun1(PyDbObjectId& retId, PyDbObject& pSun)
+void PyDbAbstractViewTableRecord::setSun1(PyDbObjectId& retId, PyDbObject& pSun)
 {
-    return impObj()->setSun(retId.m_id, pSun.impObj());
+    return PyThrowBadEs(impObj()->setSun(retId.m_id, pSun.impObj()));
 }
 
-Acad::ErrorStatus PyDbAbstractViewTableRecord::setSun2(PyDbObjectId& retId, PyDbObject& pSun, bool eraseOldSun)
+void PyDbAbstractViewTableRecord::setSun2(PyDbObjectId& retId, PyDbObject& pSun, bool eraseOldSun)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setSun(retId.m_id, pSun.impObj(), eraseOldSun);
+    return PyThrowBadEs(impObj()->setSun(retId.m_id, pSun.impObj(), eraseOldSun));
 #endif
 }
 
-Acad::ErrorStatus PyDbAbstractViewTableRecord::getUcs(AcGePoint3d& origin, AcGeVector3d& xAxis, AcGeVector3d& yAxis) const
+void PyDbAbstractViewTableRecord::getUcs(AcGePoint3d& origin, AcGeVector3d& xAxis, AcGeVector3d& yAxis) const
 {
-    return impObj()->getUcs(origin, xAxis, yAxis);
+    return PyThrowBadEs(impObj()->getUcs(origin, xAxis, yAxis));
 }
 
 boost::python::tuple PyDbAbstractViewTableRecord::isUcsOrthographic() const
@@ -519,29 +519,29 @@ double PyDbAbstractViewTableRecord::elevation() const
     return impObj()->elevation();
 }
 
-Acad::ErrorStatus PyDbAbstractViewTableRecord::setUcs1(const AcGePoint3d& origin, const AcGeVector3d& xAxis, const AcGeVector3d& yAxis)
+void PyDbAbstractViewTableRecord::setUcs1(const AcGePoint3d& origin, const AcGeVector3d& xAxis, const AcGeVector3d& yAxis)
 {
-    return impObj()->setUcs(origin, xAxis, yAxis);
+    return PyThrowBadEs(impObj()->setUcs(origin, xAxis, yAxis));
 }
 
-Acad::ErrorStatus PyDbAbstractViewTableRecord::setUcs2(AcDb::OrthographicView view)
+void PyDbAbstractViewTableRecord::setUcs2(AcDb::OrthographicView view)
 {
-    return impObj()->setUcs(view);
+    return PyThrowBadEs(impObj()->setUcs(view));
 }
 
-Acad::ErrorStatus PyDbAbstractViewTableRecord::setUcs3(const PyDbObjectId& ucsId)
+void PyDbAbstractViewTableRecord::setUcs3(const PyDbObjectId& ucsId)
 {
-    return impObj()->setUcs(ucsId.m_id);
+    return PyThrowBadEs(impObj()->setUcs(ucsId.m_id));
 }
 
-Acad::ErrorStatus PyDbAbstractViewTableRecord::setUcsToWorld()
+void PyDbAbstractViewTableRecord::setUcsToWorld()
 {
-    return impObj()->setUcsToWorld();
+    return PyThrowBadEs(impObj()->setUcsToWorld());
 }
 
-Acad::ErrorStatus PyDbAbstractViewTableRecord::setElevation(double elev)
+void PyDbAbstractViewTableRecord::setElevation(double elev)
 {
-    return impObj()->setElevation(elev);
+    return PyThrowBadEs(impObj()->setElevation(elev));
 }
 
 boost::python::tuple PyDbAbstractViewTableRecord::isViewOrthographic() const
@@ -927,9 +927,9 @@ void PyDbViewportTableRecord::setGridMajor(Adesk::Int16 value)
 #endif
 }
 
-Acad::ErrorStatus PyDbViewportTableRecord::setBackground(const PyDbObjectId& backgroundId)
+void PyDbViewportTableRecord::setBackground(const PyDbObjectId& backgroundId)
 {
-    return impObj()->setBackground(backgroundId.m_id);
+    return PyThrowBadEs(impObj()->setBackground(backgroundId.m_id));
 }
 
 PyDbObjectId PyDbViewportTableRecord::previousBackground1() const
@@ -950,21 +950,21 @@ PyDbObjectId PyDbViewportTableRecord::previousBackground2(AcGiDrawable::Drawable
 #endif
 }
 
-Acad::ErrorStatus PyDbViewportTableRecord::setPreviousBackground1(PyDbObjectId& backgroundId)
+void PyDbViewportTableRecord::setPreviousBackground1(PyDbObjectId& backgroundId)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setPreviousBackground(backgroundId.m_id);
+    return PyThrowBadEs(impObj()->setPreviousBackground(backgroundId.m_id));
 #endif
 }
 
-Acad::ErrorStatus PyDbViewportTableRecord::setPreviousBackground2(PyDbObjectId& backgroundId, AcGiDrawable::DrawableType type, bool bForcedSwitch)
+void PyDbViewportTableRecord::setPreviousBackground2(PyDbObjectId& backgroundId, AcGiDrawable::DrawableType type, bool bForcedSwitch)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setPreviousBackground(backgroundId.m_id, type, bForcedSwitch);
+    return PyThrowBadEs(impObj()->setPreviousBackground(backgroundId.m_id, type, bForcedSwitch));
 #endif
 }
 
@@ -1072,9 +1072,9 @@ PyDbViewTableRecord::PyDbViewTableRecord(const PyDbObjectId& id)
 {
 }
 
-Acad::ErrorStatus PyDbViewTableRecord::setParametersFromViewport(PyDbObjectId& objId)
+void PyDbViewTableRecord::setParametersFromViewport(PyDbObjectId& objId)
 {
-    return impObj()->setParametersFromViewport(objId.m_id);
+    return PyThrowBadEs(impObj()->setParametersFromViewport(objId.m_id));
 }
 
 bool PyDbViewTableRecord::isPaperspaceView() const
@@ -1092,9 +1092,9 @@ bool PyDbViewTableRecord::isUcsAssociatedToView() const
     return impObj()->isUcsAssociatedToView();
 }
 
-Acad::ErrorStatus PyDbViewTableRecord::disassociateUcsFromView()
+void PyDbViewTableRecord::disassociateUcsFromView()
 {
-    return impObj()->disassociateUcsFromView();
+    return PyThrowBadEs(impObj()->disassociateUcsFromView());
 }
 
 std::string PyDbViewTableRecord::getCategoryName() const
@@ -1109,9 +1109,9 @@ std::string PyDbViewTableRecord::getCategoryName() const
 #endif
 }
 
-Acad::ErrorStatus PyDbViewTableRecord::setCategoryName(const std::string& categoryName)
+void PyDbViewTableRecord::setCategoryName(const std::string& categoryName)
 {
-    return impObj()->setCategoryName(utf8_to_wstr(categoryName).c_str());
+    return PyThrowBadEs(impObj()->setCategoryName(utf8_to_wstr(categoryName).c_str()));
 }
 
 std::string PyDbViewTableRecord::getLayerState() const
@@ -1126,9 +1126,9 @@ std::string PyDbViewTableRecord::getLayerState() const
 #endif
 }
 
-Acad::ErrorStatus PyDbViewTableRecord::setLayerState(const std::string& layerStateName)
+void PyDbViewTableRecord::setLayerState(const std::string& layerStateName)
 {
-    return impObj()->setLayerState(utf8_to_wstr(layerStateName).c_str());
+    return PyThrowBadEs(impObj()->setLayerState(utf8_to_wstr(layerStateName).c_str()));
 }
 
 PyDbObjectId PyDbViewTableRecord::getLayout() const
@@ -1139,9 +1139,9 @@ PyDbObjectId PyDbViewTableRecord::getLayout() const
     return id;
 }
 
-Acad::ErrorStatus PyDbViewTableRecord::setLayout(const PyDbObjectId& layoutId)
+void PyDbViewTableRecord::setLayout(const PyDbObjectId& layoutId)
 {
-    return impObj()->setLayout(layoutId.m_id);
+    return PyThrowBadEs(impObj()->setLayout(layoutId.m_id));
 }
 
 bool PyDbViewTableRecord::isViewAssociatedToViewport() const
@@ -1149,9 +1149,9 @@ bool PyDbViewTableRecord::isViewAssociatedToViewport() const
     return impObj()->isViewAssociatedToViewport();
 }
 
-Acad::ErrorStatus PyDbViewTableRecord::setViewAssociatedToViewport(bool bVPflag)
+void PyDbViewTableRecord::setViewAssociatedToViewport(bool bVPflag)
 {
-    return impObj()->setViewAssociatedToViewport(bVPflag);
+    return PyThrowBadEs(impObj()->setViewAssociatedToViewport(bVPflag));
 }
 
 bool PyDbViewTableRecord::isCameraPlottable() const
@@ -1159,9 +1159,9 @@ bool PyDbViewTableRecord::isCameraPlottable() const
     return impObj()->isCameraPlottable();
 }
 
-Acad::ErrorStatus PyDbViewTableRecord::setIsCameraPlottable(bool plottable)
+void PyDbViewTableRecord::setIsCameraPlottable(bool plottable)
 {
-    return impObj()->setIsCameraPlottable(plottable);
+    return PyThrowBadEs(impObj()->setIsCameraPlottable(plottable));
 }
 
 PyDbObjectId PyDbViewTableRecord::liveSection() const
@@ -1173,12 +1173,12 @@ PyDbObjectId PyDbViewTableRecord::liveSection() const
 #endif
 }
 
-Acad::ErrorStatus PyDbViewTableRecord::setLiveSection(const PyDbObjectId& liveSectionId)
+void PyDbViewTableRecord::setLiveSection(const PyDbObjectId& liveSectionId)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setLiveSection(liveSectionId.m_id);
+    return PyThrowBadEs(impObj()->setLiveSection(liveSectionId.m_id));
 #endif
 }
 
@@ -1191,12 +1191,12 @@ PyDbObjectId PyDbViewTableRecord::camera() const
 #endif
 }
 
-Acad::ErrorStatus PyDbViewTableRecord::setCamera(const PyDbObjectId& cameraId)
+void PyDbViewTableRecord::setCamera(const PyDbObjectId& cameraId)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setCamera(cameraId.m_id);
+    return PyThrowBadEs(impObj()->setCamera(cameraId.m_id));
 #endif
 }
 
@@ -1209,12 +1209,12 @@ PyDbAnnotationScale PyDbViewTableRecord::annotationScale() const
 #endif
 }
 
-Acad::ErrorStatus PyDbViewTableRecord::setAnnotationScale(const PyDbAnnotationScale& pScaleObj)
+void PyDbViewTableRecord::setAnnotationScale(const PyDbAnnotationScale& pScaleObj)
 {
 #ifdef ZRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setAnnotationScale(pScaleObj.impObj());
+    return PyThrowBadEs(impObj()->setAnnotationScale(pScaleObj.impObj()));
 #endif
 }
 
@@ -1223,17 +1223,17 @@ PyDbObjectId PyDbViewTableRecord::sunId() const
     return PyDbObjectId(impObj()->sunId());
 }
 
-Acad::ErrorStatus PyDbViewTableRecord::setSun1(PyDbObjectId& retId, PyDbObject& pSun)
+void PyDbViewTableRecord::setSun1(PyDbObjectId& retId, PyDbObject& pSun)
 {
-    return impObj()->setSun(retId.m_id, pSun.impObj());
+    return PyThrowBadEs(impObj()->setSun(retId.m_id, pSun.impObj()));
 }
 
-Acad::ErrorStatus PyDbViewTableRecord::setSun2(PyDbObjectId& retId, PyDbObject& pSun, bool eraseOldSun)
+void PyDbViewTableRecord::setSun2(PyDbObjectId& retId, PyDbObject& pSun, bool eraseOldSun)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setSun(retId.m_id, pSun.impObj(), eraseOldSun);
+    return PyThrowBadEs(impObj()->setSun(retId.m_id, pSun.impObj(), eraseOldSun));
 #endif
 }
 
@@ -1380,9 +1380,9 @@ std::string PyDbBlockTableRecord::comments()
 #endif
 }
 
-Acad::ErrorStatus PyDbBlockTableRecord::setComments(const std::string& pString)
+void PyDbBlockTableRecord::setComments(const std::string& pString)
 {
-    return impObj()->setComments(utf8_to_wstr(pString).c_str());
+    return PyThrowBadEs(impObj()->setComments(utf8_to_wstr(pString).c_str()));
 }
 
 std::string PyDbBlockTableRecord::pathName()
@@ -1396,9 +1396,9 @@ std::string PyDbBlockTableRecord::pathName()
 #endif
 }
 
-Acad::ErrorStatus PyDbBlockTableRecord::setPathName(const std::string& pString)
+void PyDbBlockTableRecord::setPathName(const std::string& pString)
 {
-    return impObj()->setPathName(utf8_to_wstr(pString).c_str());
+    return PyThrowBadEs(impObj()->setPathName(utf8_to_wstr(pString).c_str()));
 }
 
 AcGePoint3d PyDbBlockTableRecord::origin() const
@@ -1406,28 +1406,24 @@ AcGePoint3d PyDbBlockTableRecord::origin() const
     return impObj()->origin();
 }
 
-Acad::ErrorStatus PyDbBlockTableRecord::setOrigin(const AcGePoint3d& pt)
+void PyDbBlockTableRecord::setOrigin(const AcGePoint3d& pt)
 {
-    return impObj()->setOrigin(pt);
+    return PyThrowBadEs(impObj()->setOrigin(pt));
 }
 
 //TODO: wrong
-Acad::ErrorStatus PyDbBlockTableRecord::openBlockBegin(PyDbBlockBegin& pBlockBegin, AcDb::OpenMode openMode)
+void PyDbBlockTableRecord::openBlockBegin(PyDbBlockBegin& pBlockBegin, AcDb::OpenMode openMode)
 {
     AcDbBlockBegin* pObj = nullptr;
-    auto stat = impObj()->openBlockBegin(pObj, openMode);
-    if (stat == eOk)
-        pBlockBegin = PyDbBlockBegin(pObj, false);
-    return stat;
+    PyThrowBadEs(impObj()->openBlockBegin(pObj, openMode));
+    pBlockBegin = PyDbBlockBegin(pObj, false);
 }
 
-Acad::ErrorStatus PyDbBlockTableRecord::openBlockEnd(PyDbBlockEnd& pBlockBegin, AcDb::OpenMode openMode)
+void PyDbBlockTableRecord::openBlockEnd(PyDbBlockEnd& pBlockBegin, AcDb::OpenMode openMode)
 {
     AcDbBlockEnd* pObj = nullptr;
-    auto stat = impObj()->openBlockEnd(pObj, openMode);
-    if (stat == eOk)
-        pBlockBegin = PyDbBlockEnd(pObj, false);
-    return stat;
+    PyThrowBadEs(impObj()->openBlockEnd(pObj, openMode));
+    pBlockBegin = PyDbBlockEnd(pObj, false);
 }
 
 bool PyDbBlockTableRecord::hasAttributeDefinitions() const
@@ -1450,12 +1446,12 @@ bool PyDbBlockTableRecord::isFromOverlayReference() const
     return impObj()->isFromOverlayReference();
 }
 
-Acad::ErrorStatus PyDbBlockTableRecord::setIsFromOverlayReference(bool bIsOverlay)
+void PyDbBlockTableRecord::setIsFromOverlayReference(bool bIsOverlay)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setIsFromOverlayReference(bIsOverlay);
+    return PyThrowBadEs(impObj()->setIsFromOverlayReference(bIsOverlay));
 #endif
 }
 
@@ -1469,9 +1465,9 @@ PyDbObjectId PyDbBlockTableRecord::getLayoutId() const
     return PyDbObjectId(impObj()->getLayoutId());
 }
 
-Acad::ErrorStatus PyDbBlockTableRecord::setLayoutId(const PyDbObjectId& id)
+void PyDbBlockTableRecord::setLayoutId(const PyDbObjectId& id)
 {
-    return impObj()->setLayoutId(id.m_id);
+    return PyThrowBadEs(impObj()->setLayoutId(id.m_id));
 }
 
 boost::python::list PyDbBlockTableRecord::getBlockReferenceIds1()
@@ -1517,9 +1513,9 @@ bool PyDbBlockTableRecord::isUnloaded() const
     return impObj()->isUnloaded();
 }
 
-Acad::ErrorStatus PyDbBlockTableRecord::setIsUnloaded(bool isUnloaded)
+void PyDbBlockTableRecord::setIsUnloaded(bool isUnloaded)
 {
-    return impObj()->setIsUnloaded(isUnloaded);
+    return PyThrowBadEs(impObj()->setIsUnloaded(isUnloaded));
 }
 
 AcDb::XrefStatus PyDbBlockTableRecord::xrefStatus() const
@@ -1527,7 +1523,7 @@ AcDb::XrefStatus PyDbBlockTableRecord::xrefStatus() const
     return impObj()->xrefStatus();
 }
 
-Acad::ErrorStatus PyDbBlockTableRecord::assumeOwnershipOf(const boost::python::list& entitiesToMove)
+void PyDbBlockTableRecord::assumeOwnershipOf(const boost::python::list& entitiesToMove)
 {
     try
     {
@@ -1536,7 +1532,7 @@ Acad::ErrorStatus PyDbBlockTableRecord::assumeOwnershipOf(const boost::python::l
         AcDbObjectIdArray ids;
         for (const auto& pyId : PyDbObjectIds)
             ids.append(pyId.m_id);
-        return impObj()->assumeOwnershipOf(ids);
+        return PyThrowBadEs(impObj()->assumeOwnershipOf(ids));
     }
     catch (...)
     {
@@ -1549,14 +1545,14 @@ AcDbBlockTableRecord::BlockScaling PyDbBlockTableRecord::blockScaling() const
     return impObj()->blockScaling();
 }
 
-Acad::ErrorStatus PyDbBlockTableRecord::setBlockScaling(AcDbBlockTableRecord::BlockScaling _blockScaling)
+void PyDbBlockTableRecord::setBlockScaling(AcDbBlockTableRecord::BlockScaling _blockScaling)
 {
-    return impObj()->setBlockScaling(_blockScaling);
+    return PyThrowBadEs(impObj()->setBlockScaling(_blockScaling));
 }
 
-Acad::ErrorStatus PyDbBlockTableRecord::setExplodable(bool bExplodable)
+void PyDbBlockTableRecord::setExplodable(bool bExplodable)
 {
-    return impObj()->setExplodable(bExplodable);
+    return PyThrowBadEs(impObj()->setExplodable(bExplodable));
 }
 
 bool PyDbBlockTableRecord::explodable() const
@@ -1564,9 +1560,9 @@ bool PyDbBlockTableRecord::explodable() const
     return impObj()->explodable();
 }
 
-Acad::ErrorStatus PyDbBlockTableRecord::setBlockInsertUnits(AcDb::UnitsValue insunits)
+void PyDbBlockTableRecord::setBlockInsertUnits(AcDb::UnitsValue insunits)
 {
-    return impObj()->setBlockInsertUnits(insunits);
+    return PyThrowBadEs(impObj()->setBlockInsertUnits(insunits));
 }
 
 AcDb::UnitsValue PyDbBlockTableRecord::blockInsertUnits() const
@@ -1582,9 +1578,9 @@ int PyDbBlockTableRecord::postProcessAnnotativeBTR(bool bqueryOnly, bool bScale)
     return stripCnt;
 }
 
-Acad::ErrorStatus PyDbBlockTableRecord::addAnnoScalestoBlkRefs(bool bScale /*= false*/)
+void PyDbBlockTableRecord::addAnnoScalestoBlkRefs(bool bScale /*= false*/)
 {
-    return impObj()->addAnnoScalestoBlkRefs(bScale);
+    return PyThrowBadEs(impObj()->addAnnoScalestoBlkRefs(bScale));
 }
 
 std::string PyDbBlockTableRecord::className()
@@ -1638,12 +1634,12 @@ void makeAcDbLayerTableRecordWrapper()
         .def<AcCmColor(PyDbLayerTableRecord::*)(void)const>("color", &PyDbLayerTableRecord::color)
         .def<AcCmColor(PyDbLayerTableRecord::*)(const PyDbObjectId&)const>("color", &PyDbLayerTableRecord::color)
         .def<void(PyDbLayerTableRecord::*)(const AcCmColor& color)>("setColor", &PyDbLayerTableRecord::setColor)
-        .def<Acad::ErrorStatus(PyDbLayerTableRecord::*)(const AcCmColor& color, const PyDbObjectId&)>("setColor", &PyDbLayerTableRecord::setColor)
+        .def<void(PyDbLayerTableRecord::*)(const AcCmColor& color, const PyDbObjectId&)>("setColor", &PyDbLayerTableRecord::setColor)
         .def("entityColor", &PyDbLayerTableRecord::entityColor)
         .def<AcCmTransparency(PyDbLayerTableRecord::*)(void)const>("transparency", &PyDbLayerTableRecord::transparency)
         .def<AcCmTransparency(PyDbLayerTableRecord::*)(const PyDbObjectId&)const>("transparency", &PyDbLayerTableRecord::transparency)
-        .def<Acad::ErrorStatus(PyDbLayerTableRecord::*)(const AcCmTransparency&)>("setTransparency", &PyDbLayerTableRecord::setTransparency)
-        .def<Acad::ErrorStatus(PyDbLayerTableRecord::*)(const AcCmTransparency&, const PyDbObjectId&)>("setTransparency", &PyDbLayerTableRecord::setTransparency)
+        .def<void(PyDbLayerTableRecord::*)(const AcCmTransparency&)>("setTransparency", &PyDbLayerTableRecord::setTransparency)
+        .def<void(PyDbLayerTableRecord::*)(const AcCmTransparency&, const PyDbObjectId&)>("setTransparency", &PyDbLayerTableRecord::setTransparency)
         .def("linetypeObjectId", &PyDbLayerTableRecord::linetypeObjectId)
         .def("setLinetypeObjectId", &PyDbLayerTableRecord::setLinetypeObjectId)
         .def("materialId", &PyDbLayerTableRecord::materialId)
@@ -1652,16 +1648,16 @@ void makeAcDbLayerTableRecordWrapper()
         .def("setIsPlottable", &PyDbLayerTableRecord::setIsPlottable)
         .def<AcDb::LineWeight(PyDbLayerTableRecord::*)(void)const>("lineWeight", &PyDbLayerTableRecord::lineWeight)
         .def<AcDb::LineWeight(PyDbLayerTableRecord::*)(const PyDbObjectId&)const>("lineWeight", &PyDbLayerTableRecord::lineWeight)
-        .def<Acad::ErrorStatus(PyDbLayerTableRecord::*)(AcDb::LineWeight)>("setLineWeight", &PyDbLayerTableRecord::setLineWeight)
-        .def<Acad::ErrorStatus(PyDbLayerTableRecord::*)(AcDb::LineWeight, const PyDbObjectId&)>("setLineWeight", &PyDbLayerTableRecord::setLineWeight)
+        .def<void(PyDbLayerTableRecord::*)(AcDb::LineWeight)>("setLineWeight", &PyDbLayerTableRecord::setLineWeight)
+        .def<void(PyDbLayerTableRecord::*)(AcDb::LineWeight, const PyDbObjectId&)>("setLineWeight", &PyDbLayerTableRecord::setLineWeight)
         .def<std::string(PyDbLayerTableRecord::*)(void)const>("plotStyleName", &PyDbLayerTableRecord::plotStyleName)
         .def<std::string(PyDbLayerTableRecord::*)(const PyDbObjectId&)const>("plotStyleName", &PyDbLayerTableRecord::plotStyleName)
         .def<PyDbObjectId(PyDbLayerTableRecord::*)(void)const>("plotStyleNameId", &PyDbLayerTableRecord::plotStyleNameId)
         .def<PyDbObjectId(PyDbLayerTableRecord::*)(const PyDbObjectId&)const>("plotStyleNameId", &PyDbLayerTableRecord::plotStyleNameId)
-        .def<Acad::ErrorStatus(PyDbLayerTableRecord::*)(const std::string&)>("setPlotStyleName", &PyDbLayerTableRecord::setPlotStyleName)
-        .def<Acad::ErrorStatus(PyDbLayerTableRecord::*)(const PyDbObjectId&)>("setPlotStyleName", &PyDbLayerTableRecord::setPlotStyleName)
-        .def<Acad::ErrorStatus(PyDbLayerTableRecord::*)(const PyDbObjectId&, const PyDbObjectId&)>("setPlotStyleName", &PyDbLayerTableRecord::setPlotStyleName)
-        .def<Acad::ErrorStatus(PyDbLayerTableRecord::*)(const std::string&, const PyDbObjectId&)>("setPlotStyleName", &PyDbLayerTableRecord::setPlotStyleName)
+        .def<void(PyDbLayerTableRecord::*)(const std::string&)>("setPlotStyleName", &PyDbLayerTableRecord::setPlotStyleName)
+        .def<void(PyDbLayerTableRecord::*)(const PyDbObjectId&)>("setPlotStyleName", &PyDbLayerTableRecord::setPlotStyleName)
+        .def<void(PyDbLayerTableRecord::*)(const PyDbObjectId&, const PyDbObjectId&)>("setPlotStyleName", &PyDbLayerTableRecord::setPlotStyleName)
+        .def<void(PyDbLayerTableRecord::*)(const std::string&, const PyDbObjectId&)>("setPlotStyleName", &PyDbLayerTableRecord::setPlotStyleName)
         .def("isInUse", &PyDbLayerTableRecord::isInUse)
         .def("description", &PyDbLayerTableRecord::description)
         .def("setDescription", &PyDbLayerTableRecord::setDescription)
@@ -1718,9 +1714,9 @@ bool PyDbLayerTableRecord::isFrozen() const
     return impObj()->isFrozen();
 }
 
-Acad::ErrorStatus PyDbLayerTableRecord::setIsFrozen(bool frozen)
+void PyDbLayerTableRecord::setIsFrozen(bool frozen)
 {
-    return impObj()->setIsFrozen(frozen);
+    return PyThrowBadEs(impObj()->setIsFrozen(frozen));
 }
 
 bool PyDbLayerTableRecord::isOff() const
@@ -1769,9 +1765,9 @@ void PyDbLayerTableRecord::setColor(const AcCmColor& _color)
     return impObj()->setColor(_color);
 }
 
-Acad::ErrorStatus PyDbLayerTableRecord::setColor(const AcCmColor& color, const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::setColor(const AcCmColor& color, const PyDbObjectId& viewportId)
 {
-    return impObj()->setColor(color, viewportId.m_id);
+    return PyThrowBadEs(impObj()->setColor(color, viewportId.m_id));
 }
 
 AcCmEntityColor PyDbLayerTableRecord::entityColor(void) const
@@ -1790,49 +1786,49 @@ AcCmTransparency PyDbLayerTableRecord::transparency(const PyDbObjectId& viewport
     return impObj()->transparency(viewportId.m_id, flag);
 }
 
-Acad::ErrorStatus PyDbLayerTableRecord::setTransparency(const AcCmTransparency& trans)
+void PyDbLayerTableRecord::setTransparency(const AcCmTransparency& trans)
 {
-    return impObj()->setTransparency(trans);
+    return PyThrowBadEs(impObj()->setTransparency(trans));
 }
 
-Acad::ErrorStatus PyDbLayerTableRecord::setTransparency(const AcCmTransparency& trans, const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::setTransparency(const AcCmTransparency& trans, const PyDbObjectId& viewportId)
 {
-    return impObj()->setTransparency(trans, viewportId.m_id);
+    return PyThrowBadEs(impObj()->setTransparency(trans, viewportId.m_id));
 }
 
-Acad::ErrorStatus PyDbLayerTableRecord::removeColorOverride(const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::removeColorOverride(const PyDbObjectId& viewportId)
 {
-    return impObj()->removeColorOverride(viewportId.m_id);
+    return PyThrowBadEs(impObj()->removeColorOverride(viewportId.m_id));
 }
 
-Acad::ErrorStatus PyDbLayerTableRecord::removeLinetypeOverride(const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::removeLinetypeOverride(const PyDbObjectId& viewportId)
 {
-    return impObj()->removeLinetypeOverride(viewportId.m_id);
+    return PyThrowBadEs(impObj()->removeLinetypeOverride(viewportId.m_id));
 }
 
-Acad::ErrorStatus PyDbLayerTableRecord::removeLineWeightOverride(const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::removeLineWeightOverride(const PyDbObjectId& viewportId)
 {
-    return impObj()->removeLineWeightOverride(viewportId.m_id);
+    return PyThrowBadEs(impObj()->removeLineWeightOverride(viewportId.m_id));
 }
 
-Acad::ErrorStatus PyDbLayerTableRecord::removePlotStyleOverride(const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::removePlotStyleOverride(const PyDbObjectId& viewportId)
 {
-    return impObj()->removePlotStyleOverride(viewportId.m_id);
+    return PyThrowBadEs(impObj()->removePlotStyleOverride(viewportId.m_id));
 }
 
-Acad::ErrorStatus PyDbLayerTableRecord::removeTransparencyOverride(const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::removeTransparencyOverride(const PyDbObjectId& viewportId)
 {
-    return impObj()->removeTransparencyOverride(viewportId.m_id);
+    return PyThrowBadEs(impObj()->removeTransparencyOverride(viewportId.m_id));
 }
 
-Acad::ErrorStatus PyDbLayerTableRecord::removeViewportOverrides(const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::removeViewportOverrides(const PyDbObjectId& viewportId)
 {
-    return impObj()->removeViewportOverrides(viewportId.m_id);
+    return PyThrowBadEs(impObj()->removeViewportOverrides(viewportId.m_id));
 }
 
-Acad::ErrorStatus PyDbLayerTableRecord::removeAllOverrides()
+void PyDbLayerTableRecord::removeAllOverrides()
 {
-    return impObj()->removeAllOverrides();
+    return PyThrowBadEs(impObj()->removeAllOverrides());
 }
 
 bool PyDbLayerTableRecord::hasOverrides(const PyDbObjectId& viewportId) const
@@ -1850,13 +1846,12 @@ PyDbObjectId PyDbLayerTableRecord::linetypeObjectId() const
     return PyDbObjectId(impObj()->linetypeObjectId());
 }
 
-Acad::ErrorStatus PyDbLayerTableRecord::setLinetypeObjectId(const PyDbObjectId& id)
+void PyDbLayerTableRecord::setLinetypeObjectId(const PyDbObjectId& id)
 {
 #ifdef BRXAPP
     impObj()->setLinetypeObjectId(id.m_id);
-    return eOk;
 #else
-    return impObj()->setLinetypeObjectId(id.m_id);
+    return PyThrowBadEs(impObj()->setLinetypeObjectId(id.m_id));
 #endif // BRXAPP
 }
 
@@ -1865,9 +1860,9 @@ PyDbObjectId PyDbLayerTableRecord::materialId() const
     return PyDbObjectId(impObj()->linetypeObjectId());
 }
 
-Acad::ErrorStatus PyDbLayerTableRecord::setMaterialId(const PyDbObjectId& id)
+void PyDbLayerTableRecord::setMaterialId(const PyDbObjectId& id)
 {
-    return impObj()->setMaterialId(id.m_id);
+    return PyThrowBadEs(impObj()->setMaterialId(id.m_id));
 }
 
 bool PyDbLayerTableRecord::isPlottable() const
@@ -1875,9 +1870,9 @@ bool PyDbLayerTableRecord::isPlottable() const
     return impObj()->isPlottable();
 }
 
-Acad::ErrorStatus PyDbLayerTableRecord::setIsPlottable(bool plot)
+void PyDbLayerTableRecord::setIsPlottable(bool plot)
 {
-    return impObj()->setIsPlottable(plot);
+    return PyThrowBadEs(impObj()->setIsPlottable(plot));
 }
 
 AcDb::LineWeight PyDbLayerTableRecord::lineWeight() const
@@ -1891,14 +1886,14 @@ AcDb::LineWeight PyDbLayerTableRecord::lineWeight(const PyDbObjectId& viewportId
     return impObj()->lineWeight(viewportId.m_id, flag);
 }
 
-Acad::ErrorStatus PyDbLayerTableRecord::setLineWeight(AcDb::LineWeight weight)
+void PyDbLayerTableRecord::setLineWeight(AcDb::LineWeight weight)
 {
-    return impObj()->setLineWeight(weight);
+    return PyThrowBadEs(impObj()->setLineWeight(weight));
 }
 
-Acad::ErrorStatus PyDbLayerTableRecord::setLineWeight(AcDb::LineWeight weight, const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::setLineWeight(AcDb::LineWeight weight, const PyDbObjectId& viewportId)
 {
-    return impObj()->setLineWeight(weight, viewportId.m_id);
+    return PyThrowBadEs(impObj()->setLineWeight(weight, viewportId.m_id));
 }
 
 std::string PyDbLayerTableRecord::plotStyleName() const
@@ -1923,24 +1918,24 @@ PyDbObjectId PyDbLayerTableRecord::plotStyleNameId(const PyDbObjectId& viewportI
     return PyDbObjectId(impObj()->plotStyleNameId(viewportId.m_id, flag));
 }
 
-Acad::ErrorStatus PyDbLayerTableRecord::setPlotStyleName(const std::string& newName)
+void PyDbLayerTableRecord::setPlotStyleName(const std::string& newName)
 {
-    return impObj()->setPlotStyleName(utf8_to_wstr(newName).c_str());
+    return PyThrowBadEs(impObj()->setPlotStyleName(utf8_to_wstr(newName).c_str()));
 }
 
-Acad::ErrorStatus PyDbLayerTableRecord::setPlotStyleName(const PyDbObjectId& newId)
+void PyDbLayerTableRecord::setPlotStyleName(const PyDbObjectId& newId)
 {
-    return impObj()->setPlotStyleName(newId.m_id);
+    return PyThrowBadEs(impObj()->setPlotStyleName(newId.m_id));
 }
 
-Acad::ErrorStatus PyDbLayerTableRecord::setPlotStyleName(const std::string& newName, const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::setPlotStyleName(const std::string& newName, const PyDbObjectId& viewportId)
 {
-    return impObj()->setPlotStyleName(utf8_to_wstr(newName).c_str(), viewportId.m_id);
+    return PyThrowBadEs(impObj()->setPlotStyleName(utf8_to_wstr(newName).c_str(), viewportId.m_id));
 }
 
-Acad::ErrorStatus PyDbLayerTableRecord::setPlotStyleName(const PyDbObjectId& newId, const PyDbObjectId& viewportId)
+void PyDbLayerTableRecord::setPlotStyleName(const PyDbObjectId& newId, const PyDbObjectId& viewportId)
 {
-    return impObj()->setPlotStyleName(newId.m_id, viewportId.m_id);
+    return PyThrowBadEs(impObj()->setPlotStyleName(newId.m_id, viewportId.m_id));
 }
 
 bool PyDbLayerTableRecord::isInUse() const
@@ -1953,9 +1948,9 @@ std::string PyDbLayerTableRecord::description() const
     return wstr_to_utf8(impObj()->description());
 }
 
-Acad::ErrorStatus PyDbLayerTableRecord::setDescription(const std::string& description)
+void PyDbLayerTableRecord::setDescription(const std::string& description)
 {
-    return impObj()->setDescription(utf8_to_wstr(description).c_str());
+    return PyThrowBadEs(impObj()->setDescription(utf8_to_wstr(description).c_str()));
 }
 
 bool PyDbLayerTableRecord::isHidden() const
@@ -1968,9 +1963,9 @@ bool PyDbLayerTableRecord::isHiddenS(const PyDbObjectId& id)
     return AcDbLayerTableRecord::isHidden(id.m_id);
 }
 
-Acad::ErrorStatus PyDbLayerTableRecord::setIsHidden(bool on)
+void PyDbLayerTableRecord::setIsHidden(bool on)
 {
-    return impObj()->setIsHidden(on);
+    return PyThrowBadEs(impObj()->setIsHidden(on));
 }
 
 bool PyDbLayerTableRecord::isReconciled() const
@@ -1983,9 +1978,9 @@ bool PyDbLayerTableRecord::isReconciledS(const PyDbObjectId& id)
     return AcDbLayerTableRecord::isReconciled(id.m_id);
 }
 
-Acad::ErrorStatus PyDbLayerTableRecord::setIsReconciled(bool bReconcile /*= true*/)
+void PyDbLayerTableRecord::setIsReconciled(bool bReconcile /*= true*/)
 {
-    return impObj()->setIsReconciled(bReconcile);
+    return PyThrowBadEs(impObj()->setIsReconciled(bReconcile));
 }
 
 std::string PyDbLayerTableRecord::className()
@@ -2105,9 +2100,9 @@ double PyDbTextStyleTableRecord::textSize() const
     return impObj()->textSize();
 }
 
-Acad::ErrorStatus PyDbTextStyleTableRecord::setTextSize(double size)
+void PyDbTextStyleTableRecord::setTextSize(double size)
 {
-    return impObj()->setTextSize(size);
+    return PyThrowBadEs(impObj()->setTextSize(size));
 }
 
 double PyDbTextStyleTableRecord::xScale() const
@@ -2115,9 +2110,9 @@ double PyDbTextStyleTableRecord::xScale() const
     return impObj()->xScale();
 }
 
-Acad::ErrorStatus PyDbTextStyleTableRecord::setXScale(double xScale)
+void PyDbTextStyleTableRecord::setXScale(double xScale)
 {
-    return impObj()->setXScale(xScale);
+    return PyThrowBadEs(impObj()->setXScale(xScale));
 }
 
 double PyDbTextStyleTableRecord::obliquingAngle() const
@@ -2125,9 +2120,9 @@ double PyDbTextStyleTableRecord::obliquingAngle() const
     return impObj()->obliquingAngle();
 }
 
-Acad::ErrorStatus PyDbTextStyleTableRecord::setObliquingAngle(double obliquingAngle)
+void PyDbTextStyleTableRecord::setObliquingAngle(double obliquingAngle)
 {
-    return impObj()->setObliquingAngle(obliquingAngle);
+    return PyThrowBadEs(impObj()->setObliquingAngle(obliquingAngle));
 }
 
 Adesk::UInt8 PyDbTextStyleTableRecord::flagBits() const
@@ -2145,9 +2140,9 @@ double PyDbTextStyleTableRecord::priorSize() const
     return impObj()->priorSize();
 }
 
-Acad::ErrorStatus PyDbTextStyleTableRecord::setPriorSize(double priorSize)
+void PyDbTextStyleTableRecord::setPriorSize(double priorSize)
 {
-    return impObj()->setPriorSize(priorSize);
+    return PyThrowBadEs(impObj()->setPriorSize(priorSize));
 }
 
 std::string PyDbTextStyleTableRecord::fileName()
@@ -2162,9 +2157,9 @@ std::string PyDbTextStyleTableRecord::fileName()
 #endif
 }
 
-Acad::ErrorStatus PyDbTextStyleTableRecord::setFileName(const std::string& path)
+void PyDbTextStyleTableRecord::setFileName(const std::string& path)
 {
-    return impObj()->setFileName(utf8_to_wstr(path).c_str());
+    return PyThrowBadEs(impObj()->setFileName(utf8_to_wstr(path).c_str()));
 }
 
 std::string PyDbTextStyleTableRecord::bigFontFileName()
@@ -2175,20 +2170,20 @@ std::string PyDbTextStyleTableRecord::bigFontFileName()
     return wstr_to_utf8(path);
 }
 
-Acad::ErrorStatus PyDbTextStyleTableRecord::setBigFontFileName(const std::string& path)
+void PyDbTextStyleTableRecord::setBigFontFileName(const std::string& path)
 {
-    return impObj()->setBigFontFileName(utf8_to_wstr(path).c_str());
+    return PyThrowBadEs(impObj()->setBigFontFileName(utf8_to_wstr(path).c_str()));
 }
 
-Acad::ErrorStatus PyDbTextStyleTableRecord::setFont(const std::string& pTypeface, bool bold, bool italic, int charset, int pitch, int family, bool bAllowMissingFont)
+void PyDbTextStyleTableRecord::setFont(const std::string& pTypeface, bool bold, bool italic, int charset, int pitch, int family, bool bAllowMissingFont)
 {
-    return impObj()->setFont(
+    return PyThrowBadEs(impObj()->setFont(
         utf8_to_wstr(pTypeface).c_str(),
         bold,
         italic,
         (Charset)charset,
         (Autodesk::AutoCAD::PAL::FontUtils::FontPitch)pitch,
-        (Autodesk::AutoCAD::PAL::FontUtils::FontFamily)family, bAllowMissingFont);
+        (Autodesk::AutoCAD::PAL::FontUtils::FontFamily)family, bAllowMissingFont));
 }
 
 boost::python::tuple PyDbTextStyleTableRecord::font()
@@ -2328,12 +2323,12 @@ AcGePoint3d PyDbUCSTableRecord::ucsBaseOrigin(AcDb::OrthographicView view) const
 #endif
 }
 
-Acad::ErrorStatus PyDbUCSTableRecord::setUcsBaseOrigin(const AcGePoint3d& origin, AcDb::OrthographicView view)
+void PyDbUCSTableRecord::setUcsBaseOrigin(const AcGePoint3d& origin, AcDb::OrthographicView view)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setUcsBaseOrigin(origin, view);
+    return PyThrowBadEs(impObj()->setUcsBaseOrigin(origin, view));
 #endif
 }
 
@@ -2513,9 +2508,9 @@ std::string PyDbLinetypeTableRecord::comments() const
     return wstr_to_utf8(val);
 }
 
-Acad::ErrorStatus PyDbLinetypeTableRecord::setComments(const std::string& pstring)
+void PyDbLinetypeTableRecord::setComments(const std::string& pstring)
 {
-    return impObj()->setComments(utf8_to_wstr(pstring).c_str());
+    return PyThrowBadEs(impObj()->setComments(utf8_to_wstr(pstring).c_str()))
 }
 
 double PyDbLinetypeTableRecord::patternLength() const
@@ -2523,9 +2518,9 @@ double PyDbLinetypeTableRecord::patternLength() const
     return impObj()->patternLength();
 }
 
-Acad::ErrorStatus PyDbLinetypeTableRecord::setPatternLength(double patternLength)
+void PyDbLinetypeTableRecord::setPatternLength(double patternLength)
 {
-    return impObj()->setPatternLength(patternLength);
+    return PyThrowBadEs(impObj()->setPatternLength(patternLength));
 }
 
 int PyDbLinetypeTableRecord::numDashes() const
@@ -2533,9 +2528,9 @@ int PyDbLinetypeTableRecord::numDashes() const
     return impObj()->numDashes();
 }
 
-Acad::ErrorStatus PyDbLinetypeTableRecord::setNumDashes(int count)
+void PyDbLinetypeTableRecord::setNumDashes(int count)
 {
-    return impObj()->setNumDashes(count);
+    return PyThrowBadEs(impObj()->setNumDashes(count));
 }
 
 double PyDbLinetypeTableRecord::dashLengthAt(int index) const
@@ -2543,9 +2538,9 @@ double PyDbLinetypeTableRecord::dashLengthAt(int index) const
     return impObj()->dashLengthAt(index);
 }
 
-Acad::ErrorStatus PyDbLinetypeTableRecord::setDashLengthAt(int index, double value)
+void PyDbLinetypeTableRecord::setDashLengthAt(int index, double value)
 {
-    return impObj()->setDashLengthAt(index, value);
+    return PyThrowBadEs(impObj()->setDashLengthAt(index, value));
 }
 
 PyDbObjectId PyDbLinetypeTableRecord::shapeStyleAt(int index) const
@@ -2553,9 +2548,9 @@ PyDbObjectId PyDbLinetypeTableRecord::shapeStyleAt(int index) const
     return PyDbObjectId(impObj()->shapeStyleAt(index));
 }
 
-Acad::ErrorStatus PyDbLinetypeTableRecord::setShapeStyleAt(int index, PyDbObjectId& id)
+void PyDbLinetypeTableRecord::setShapeStyleAt(int index, PyDbObjectId& id)
 {
-    return impObj()->setShapeStyleAt(index, id.m_id);
+    return PyThrowBadEs(impObj()->setShapeStyleAt(index, id.m_id));
 }
 
 int PyDbLinetypeTableRecord::shapeNumberAt(int index) const
@@ -2563,9 +2558,9 @@ int PyDbLinetypeTableRecord::shapeNumberAt(int index) const
     return impObj()->shapeNumberAt(index);
 }
 
-Acad::ErrorStatus PyDbLinetypeTableRecord::setShapeNumberAt(int index, int shapeNumber)
+void PyDbLinetypeTableRecord::setShapeNumberAt(int index, int shapeNumber)
 {
-    return impObj()->setShapeNumberAt(index, shapeNumber);
+    return PyThrowBadEs(impObj()->setShapeNumberAt(index, shapeNumber));
 }
 
 AcGeVector2d PyDbLinetypeTableRecord::shapeOffsetAt(int index) const
@@ -2573,9 +2568,9 @@ AcGeVector2d PyDbLinetypeTableRecord::shapeOffsetAt(int index) const
     return impObj()->shapeOffsetAt(index);
 }
 
-Acad::ErrorStatus PyDbLinetypeTableRecord::setShapeOffsetAt(int index, const AcGeVector2d& offset)
+void PyDbLinetypeTableRecord::setShapeOffsetAt(int index, const AcGeVector2d& offset)
 {
-    return impObj()->setShapeOffsetAt(index, offset);
+    return PyThrowBadEs(impObj()->setShapeOffsetAt(index, offset));
 }
 
 double PyDbLinetypeTableRecord::shapeScaleAt(int index) const
@@ -2583,9 +2578,9 @@ double PyDbLinetypeTableRecord::shapeScaleAt(int index) const
     return impObj()->shapeScaleAt(index);
 }
 
-Acad::ErrorStatus PyDbLinetypeTableRecord::setShapeScaleAt(int index, double scale)
+void PyDbLinetypeTableRecord::setShapeScaleAt(int index, double scale)
 {
-    return impObj()->setShapeScaleAt(index, scale);
+    return PyThrowBadEs(impObj()->setShapeScaleAt(index, scale));
 }
 
 bool PyDbLinetypeTableRecord::isScaledToFit() const
@@ -2603,9 +2598,9 @@ bool PyDbLinetypeTableRecord::shapeIsUcsOrientedAt(int index) const
     return impObj()->shapeIsUcsOrientedAt(index);
 }
 
-Acad::ErrorStatus PyDbLinetypeTableRecord::setShapeIsUcsOrientedAt(int index, bool isUcsOriented)
+void PyDbLinetypeTableRecord::setShapeIsUcsOrientedAt(int index, bool isUcsOriented)
 {
-    return impObj()->setShapeIsUcsOrientedAt(index, isUcsOriented);
+    return PyThrowBadEs(impObj()->setShapeIsUcsOrientedAt(index, isUcsOriented));
 }
 
 bool PyDbLinetypeTableRecord::shapeIsUprightAt(int index) const
@@ -2613,9 +2608,9 @@ bool PyDbLinetypeTableRecord::shapeIsUprightAt(int index) const
     return impObj()->shapeIsUprightAt(index);
 }
 
-Acad::ErrorStatus PyDbLinetypeTableRecord::setShapeIsUprightAt(int index, bool isUpright)
+void PyDbLinetypeTableRecord::setShapeIsUprightAt(int index, bool isUpright)
 {
-    return impObj()->setShapeIsUprightAt(index, isUpright);
+    return PyThrowBadEs(impObj()->setShapeIsUprightAt(index, isUpright));
 }
 
 double PyDbLinetypeTableRecord::shapeRotationAt(int index) const
@@ -2623,9 +2618,9 @@ double PyDbLinetypeTableRecord::shapeRotationAt(int index) const
     return impObj()->shapeRotationAt(index);
 }
 
-Acad::ErrorStatus PyDbLinetypeTableRecord::setShapeRotationAt(int index, double rotation)
+void PyDbLinetypeTableRecord::setShapeRotationAt(int index, double rotation)
 {
-    return impObj()->setShapeRotationAt(index, rotation);
+    return PyThrowBadEs(impObj()->setShapeRotationAt(index, rotation));
 }
 
 std::string PyDbLinetypeTableRecord::textAt(int index)
@@ -2636,9 +2631,9 @@ std::string PyDbLinetypeTableRecord::textAt(int index)
     return wstr_to_utf8(val);
 }
 
-Acad::ErrorStatus PyDbLinetypeTableRecord::setTextAt(int index, const std::string& pstring)
+void PyDbLinetypeTableRecord::setTextAt(int index, const std::string& pstring)
 {
-    return impObj()->setTextAt(index, utf8_to_wstr(pstring).c_str());
+    return PyThrowBadEs(impObj()->setTextAt(index, utf8_to_wstr(pstring).c_str()));
 }
 
 std::string PyDbLinetypeTableRecord::className()
