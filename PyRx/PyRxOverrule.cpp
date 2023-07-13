@@ -24,19 +24,19 @@ PyRxOverrule::PyRxOverrule(AcRxOverrule* ptr, bool autoDelete)
 {
 }
 
-Acad::ErrorStatus PyRxOverrule::addOverrule1(PyRxClass& pClass, PyRxOverrule& pOverrule)
+void PyRxOverrule::addOverrule1(PyRxClass& pClass, PyRxOverrule& pOverrule)
 {
-    return AcRxOverrule::addOverrule(pClass.impObj(), pOverrule.impObj());
+    return PyThrowBadEs(AcRxOverrule::addOverrule(pClass.impObj(), pOverrule.impObj()));
 }
 
-Acad::ErrorStatus PyRxOverrule::addOverrule2(PyRxClass& pClass, PyRxOverrule& pOverrule, bool bAddAtLast)
+void PyRxOverrule::addOverrule2(PyRxClass& pClass, PyRxOverrule& pOverrule, bool bAddAtLast)
 {
-    return AcRxOverrule::addOverrule(pClass.impObj(), pOverrule.impObj(), bAddAtLast);
+    return PyThrowBadEs(AcRxOverrule::addOverrule(pClass.impObj(), pOverrule.impObj(), bAddAtLast));
 }
 
-Acad::ErrorStatus PyRxOverrule::removeOverrule(PyRxClass& pClass, PyRxOverrule& pOverrule)
+void PyRxOverrule::removeOverrule(PyRxClass& pClass, PyRxOverrule& pOverrule)
 {
-    return AcRxOverrule::removeOverrule(pClass.impObj(), pOverrule.impObj());
+    return PyThrowBadEs(AcRxOverrule::removeOverrule(pClass.impObj(), pOverrule.impObj()));
 }
 
 void PyRxOverrule::setIsOverruling(bool bIsOverruling)

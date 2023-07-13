@@ -11,9 +11,9 @@ public:
 	PyRxOverrule(AcRxOverrule* ptr, bool autoDelete);
 	virtual ~PyRxOverrule() override = default;
 public:
-	static Acad::ErrorStatus addOverrule1(PyRxClass& pClass, PyRxOverrule& pOverrule);
-	static Acad::ErrorStatus addOverrule2(PyRxClass& pClass, PyRxOverrule& pOverrule, bool bAddAtLast);
-	static Acad::ErrorStatus removeOverrule(PyRxClass& pClass, PyRxOverrule& pOverrule);
+	static void addOverrule1(PyRxClass& pClass, PyRxOverrule& pOverrule);
+	static void addOverrule2(PyRxClass& pClass, PyRxOverrule& pOverrule, bool bAddAtLast);
+	static void removeOverrule(PyRxClass& pClass, PyRxOverrule& pOverrule);
 	static void setIsOverruling(bool bIsOverruling);
 	static bool isOverruling(void);
 	static bool hasOverrule(PyRxObject& pSubject, PyRxClass& pOverruleClass);
