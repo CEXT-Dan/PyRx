@@ -85,8 +85,7 @@ std::string PyApLayoutManager::getActiveTab()
     throw PyNotimplementedByHost();
 #else
     AcString sName;
-    if (auto es = impObj()->getActiveTab(sName); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getActiveTab(sName));
     return wstr_to_utf8(sName);
 #endif
 }
@@ -157,8 +156,7 @@ std::string PyApLayoutManager::generateNextNewLayoutName1()
     throw PyNotimplementedByHost();
 #else
     AcString sName;
-    if (auto es = impObj()->generateNextNewLayoutName(sName); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->generateNextNewLayoutName(sName));
     return wstr_to_utf8(sName);
 #endif
 }
@@ -169,8 +167,7 @@ std::string PyApLayoutManager::generateNextNewLayoutName2(PyDbDatabase& useDb)
     throw PyNotimplementedByHost();
 #else
     AcString sName;
-    if (auto es = impObj()->generateNextNewLayoutName(sName, useDb.impObj()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->generateNextNewLayoutName(sName, useDb.impObj()));
     return wstr_to_utf8(sName);
 #endif
 }
@@ -185,8 +182,7 @@ boost::python::list PyApLayoutManager::getClipBoundaryElabration(const PyDbObjec
     PyAutoLockGIL lock;
     boost::python::list pyList;
     AcGePoint2dArray* clipBoundary = nullptr;
-    if (auto es = impObj()->getClipBoundaryElaboration(clipId.m_id, clipBoundary); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->getClipBoundaryElaboration(clipId.m_id, clipBoundary));
     if (clipBoundary != nullptr)
     {
         for (auto& item : *clipBoundary)
@@ -200,8 +196,7 @@ boost::python::list PyApLayoutManager::pointInViewports(const AcGePoint3d& pickP
     PyAutoLockGIL lock;
     boost::python::list pyList;
     AcDbObjectIdArray viewports;
-    if (auto es = impObj()->pointInViewports(pickPt, viewports); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->pointInViewports(pickPt, viewports));
     for (auto& item : viewports)
         pyList.append(item);
     return pyList;
@@ -218,8 +213,7 @@ PyDbObjectId PyApLayoutManager::createLayoutFromTemplate1(const std::string& new
     throw PyNotimplementedByHost();
 #else
     PyDbObjectId id;
-    if (auto es = impObj()->createLayoutFromTemplate(utf8_to_wstr(newLayoutName).c_str(),id.m_id,utf8_to_wstr(templatePath).c_str(),utf8_to_wstr(layoutName).c_str()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->createLayoutFromTemplate(utf8_to_wstr(newLayoutName).c_str(), id.m_id, utf8_to_wstr(templatePath).c_str(), utf8_to_wstr(layoutName).c_str()));
     return id;
 #endif
 }
@@ -230,8 +224,7 @@ PyDbObjectId PyApLayoutManager::createLayoutFromTemplate2(const std::string& new
     throw PyNotimplementedByHost();
 #else
     PyDbObjectId id;
-    if (auto es = impObj()->createLayoutFromTemplate(utf8_to_wstr(newLayoutName).c_str(), id.m_id, utf8_to_wstr(templatePath).c_str(), utf8_to_wstr(layoutName).c_str(), pDb.impObj()); es != eOk)
-        throw PyAcadErrorStatus(es);
+    PyThrowBadEs(impObj()->createLayoutFromTemplate(utf8_to_wstr(newLayoutName).c_str(), id.m_id, utf8_to_wstr(templatePath).c_str(), utf8_to_wstr(layoutName).c_str(), pDb.impObj()));
     return id;
 #endif
 }

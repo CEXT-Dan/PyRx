@@ -156,19 +156,19 @@ void PyApDocument::pushDbmod()
     return impObj()->pushDbmod();
 }
 
-Acad::ErrorStatus PyApDocument::popDbmod()
+void PyApDocument::popDbmod()
 {
-    return impObj()->popDbmod();
+    return PyThrowBadEs(impObj()->popDbmod());
 }
 
-Acad::ErrorStatus PyApDocument::upgradeDocOpen()
+void PyApDocument::upgradeDocOpen()
 {
-    return impObj()->upgradeDocOpen();
+    return PyThrowBadEs(impObj()->upgradeDocOpen());
 }
 
-Acad::ErrorStatus PyApDocument::downgradeDocOpen(bool bPromptForSave)
+void PyApDocument::downgradeDocOpen(bool bPromptForSave)
 {
-    return impObj()->downgradeDocOpen(bPromptForSave);
+    return PyThrowBadEs(impObj()->downgradeDocOpen(bPromptForSave));
 }
 
 PyTransactionManager PyApDocument::transactionManager()

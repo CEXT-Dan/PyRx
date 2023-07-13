@@ -39,4 +39,5 @@ const TCHAR* getappname()
 #ifdef GRXAPP
     return _T("GRX");
 #endif
+    return _T("ARX");
 }
