@@ -2510,7 +2510,7 @@ std::string PyDbLinetypeTableRecord::comments() const
 
 void PyDbLinetypeTableRecord::setComments(const std::string& pstring)
 {
-    return PyThrowBadEs(impObj()->setComments(utf8_to_wstr(pstring).c_str()))
+    return PyThrowBadEs(impObj()->setComments(utf8_to_wstr(pstring).c_str()));
 }
 
 double PyDbLinetypeTableRecord::patternLength() const

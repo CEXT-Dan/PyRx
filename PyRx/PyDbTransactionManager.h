@@ -16,19 +16,19 @@ public:
     virtual ~PyDbTransactionManager() override = default;
 
     PyTransaction       startTransaction();
-    Acad::ErrorStatus   endTransaction();
-    Acad::ErrorStatus   abortTransaction();
+    void                endTransaction();
+    void                abortTransaction();
     int                 numActiveTransactions();
     int                 numOpenedObjects();
     PyTransaction       topTransaction();
-    Acad::ErrorStatus   addNewlyCreatedDBRObject1(PyDbObject& obj);
-    Acad::ErrorStatus   addNewlyCreatedDBRObject2(PyDbObject& obj, bool add);
+    void                addNewlyCreatedDBRObject1(PyDbObject& obj);
+    void                addNewlyCreatedDBRObject2(PyDbObject& obj, bool add);
 
     boost::python::list getAllObjects();
     PyDbObject          getObject1(const PyDbObjectId &id);
     PyDbObject          getObject2(const PyDbObjectId& id, AcDb::OpenMode mode);
     PyDbObject          getObject3(const PyDbObjectId& id, AcDb::OpenMode mode, bool openErasedObject);
-    Acad::ErrorStatus   queueForGraphicsFlush();
+    void   queueForGraphicsFlush();
 public:
     static PyRxClass desc();
     static std::string className();
@@ -46,7 +46,7 @@ public:
     PyTransactionManager();
     PyTransactionManager(AcTransactionManager* ptr);
     virtual ~PyTransactionManager() override = default;
-    Acad::ErrorStatus   enableGraphicsFlush(bool doEnable);
+    void                enableGraphicsFlush(bool doEnable);
     void                flushGraphics();
 public:
     static PyRxClass desc();

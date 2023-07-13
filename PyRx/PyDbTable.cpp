@@ -464,9 +464,9 @@ PyDbObjectId PyDbTable::tableStyle() const
     return PyDbObjectId(impObj()->tableStyle());
 }
 
-Acad::ErrorStatus PyDbTable::setTableStyle(const PyDbObjectId& id)
+void PyDbTable::setTableStyle(const PyDbObjectId& id)
 {
-    return impObj()->setTableStyle(id.m_id);
+    return PyThrowBadEs(impObj()->setTableStyle(id.m_id));
 }
 
 AcGeVector3d PyDbTable::direction() const
@@ -474,9 +474,9 @@ AcGeVector3d PyDbTable::direction() const
     return impObj()->direction();
 }
 
-Acad::ErrorStatus PyDbTable::setDirection(const AcGeVector3d& horzVec)
+void PyDbTable::setDirection(const AcGeVector3d& horzVec)
 {
-    return impObj()->setDirection(horzVec);
+    return PyThrowBadEs(impObj()->setDirection(horzVec));
 }
 
 Adesk::UInt32 PyDbTable::numRows() const
@@ -494,9 +494,9 @@ double PyDbTable::width() const
     return impObj()->width();
 }
 
-Acad::ErrorStatus PyDbTable::setWidth(double width)
+void PyDbTable::setWidth(double width)
 {
-    return impObj()->setWidth(width);
+    return PyThrowBadEs(impObj()->setWidth(width));
 }
 
 double PyDbTable::columnWidth(int col) const
@@ -504,14 +504,14 @@ double PyDbTable::columnWidth(int col) const
     return impObj()->columnWidth(col);
 }
 
-Acad::ErrorStatus PyDbTable::setColumnWidth1(int col, double width)
+void PyDbTable::setColumnWidth1(int col, double width)
 {
-    return impObj()->setColumnWidth(col, width);
+    return PyThrowBadEs(impObj()->setColumnWidth(col, width));
 }
 
-Acad::ErrorStatus PyDbTable::setColumnWidth2(double width)
+void PyDbTable::setColumnWidth2(double width)
 {
-    return impObj()->setColumnWidth(width);
+    return PyThrowBadEs(impObj()->setColumnWidth(width));
 }
 
 double PyDbTable::height() const
@@ -519,9 +519,9 @@ double PyDbTable::height() const
     return impObj()->height();
 }
 
-Acad::ErrorStatus PyDbTable::setHeight(double height)
+void PyDbTable::setHeight(double height)
 {
-    return impObj()->setHeight(height);
+    return PyThrowBadEs(impObj()->setHeight(height));
 }
 
 double PyDbTable::rowHeight(int row) const
@@ -529,14 +529,14 @@ double PyDbTable::rowHeight(int row) const
     return impObj()->rowHeight(row);
 }
 
-Acad::ErrorStatus PyDbTable::setRowHeight1(int row, double height)
+void PyDbTable::setRowHeight1(int row, double height)
 {
-    return impObj()->setRowHeight(row, height);
+    return PyThrowBadEs(impObj()->setRowHeight(row, height));
 }
 
-Acad::ErrorStatus PyDbTable::setRowHeight2(double height)
+void PyDbTable::setRowHeight2(double height)
 {
-    return impObj()->setRowHeight(height);
+    return PyThrowBadEs(impObj()->setRowHeight(height));
 }
 
 double PyDbTable::minimumColumnWidth(int col) const
@@ -564,9 +564,9 @@ double PyDbTable::horzCellMargin() const
     return impObj()->horzCellMargin();
 }
 
-Acad::ErrorStatus PyDbTable::setHorzCellMargin(double gap)
+void PyDbTable::setHorzCellMargin(double gap)
 {
-    return impObj()->setHorzCellMargin(gap);
+    return PyThrowBadEs(impObj()->setHorzCellMargin(gap));
 }
 
 double PyDbTable::vertCellMargin() const
@@ -574,9 +574,9 @@ double PyDbTable::vertCellMargin() const
     return impObj()->vertCellMargin();
 }
 
-Acad::ErrorStatus PyDbTable::setVertCellMargin(double gap)
+void PyDbTable::setVertCellMargin(double gap)
 {
-    return impObj()->setVertCellMargin(gap);
+    return PyThrowBadEs(impObj()->setVertCellMargin(gap));
 }
 
 AcDb::FlowDirection PyDbTable::flowDirection() const
@@ -584,9 +584,9 @@ AcDb::FlowDirection PyDbTable::flowDirection() const
     return impObj()->flowDirection();
 }
 
-Acad::ErrorStatus PyDbTable::setFlowDirection(AcDb::FlowDirection flow)
+void PyDbTable::setFlowDirection(AcDb::FlowDirection flow)
 {
-    return impObj()->setFlowDirection(flow);
+    return PyThrowBadEs(impObj()->setFlowDirection(flow));
 }
 
 bool PyDbTable::isTitleSuppressed() const
@@ -594,9 +594,9 @@ bool PyDbTable::isTitleSuppressed() const
     return impObj()->isTitleSuppressed();
 }
 
-Acad::ErrorStatus PyDbTable::suppressTitleRow(bool value)
+void PyDbTable::suppressTitleRow(bool value)
 {
-    return impObj()->suppressTitleRow(value);
+    return PyThrowBadEs(impObj()->suppressTitleRow(value));
 }
 
 bool PyDbTable::isHeaderSuppressed() const
@@ -604,9 +604,9 @@ bool PyDbTable::isHeaderSuppressed() const
     return impObj()->isHeaderSuppressed();
 }
 
-Acad::ErrorStatus PyDbTable::suppressHeaderRow(bool value)
+void PyDbTable::suppressHeaderRow(bool value)
 {
-    return impObj()->suppressHeaderRow(value);
+    return PyThrowBadEs(impObj()->suppressHeaderRow(value));
 }
 
 AcDb::CellAlignment PyDbTable::alignment(AcDb::RowType type) const
@@ -619,14 +619,14 @@ AcDb::CellAlignment PyDbTable::alignment2(int row, int col) const
     return impObj()->alignment(row, col);
 }
 
-Acad::ErrorStatus PyDbTable::setAlignment(AcDb::CellAlignment align, AcDb::RowType rowTypes)
+void PyDbTable::setAlignment(AcDb::CellAlignment align, AcDb::RowType rowTypes)
 {
-    return impObj()->setAlignment(align, rowTypes);
+    return PyThrowBadEs(impObj()->setAlignment(align, rowTypes));
 }
 
-Acad::ErrorStatus PyDbTable::setAlignment2(int row, int col, AcDb::CellAlignment align)
+void PyDbTable::setAlignment2(int row, int col, AcDb::CellAlignment align)
 {
-    return impObj()->setAlignment(row, col, align);
+    return PyThrowBadEs(impObj()->setAlignment(row, col, align));
 }
 
 bool PyDbTable::isBackgroundColorNone(AcDb::RowType type) const
@@ -639,14 +639,14 @@ bool PyDbTable::isBackgroundColorNone2(int row, int col) const
     return impObj()->isBackgroundColorNone(row, col);
 }
 
-Acad::ErrorStatus PyDbTable::setBackgroundColorNone(bool value, AcDb::RowType type)
+void PyDbTable::setBackgroundColorNone(bool value, AcDb::RowType type)
 {
-    return impObj()->setBackgroundColorNone(value, type);
+    return PyThrowBadEs(impObj()->setBackgroundColorNone(value, type));
 }
 
-Acad::ErrorStatus PyDbTable::setBackgroundColorNone2(int row, int col, bool value)
+void PyDbTable::setBackgroundColorNone2(int row, int col, bool value)
 {
-    return impObj()->setBackgroundColorNone(row, col, value);
+    return PyThrowBadEs(impObj()->setBackgroundColorNone(row, col, value));
 }
 
 AcCmColor PyDbTable::backgroundColor(AcDb::RowType type) const
@@ -659,14 +659,14 @@ AcCmColor PyDbTable::backgroundColor2(int row, int col) const
     return impObj()->backgroundColor(row, col);
 }
 
-Acad::ErrorStatus PyDbTable::setBackgroundColor(const AcCmColor& color, AcDb::RowType type)
+void PyDbTable::setBackgroundColor(const AcCmColor& color, AcDb::RowType type)
 {
-    return impObj()->setBackgroundColor(color, type);
+    return PyThrowBadEs(impObj()->setBackgroundColor(color, type));
 }
 
-Acad::ErrorStatus PyDbTable::setBackgroundColor2(int row, int col, const AcCmColor& color)
+void PyDbTable::setBackgroundColor2(int row, int col, const AcCmColor& color)
 {
-    return impObj()->setBackgroundColor(row, col, color);
+    return PyThrowBadEs(impObj()->setBackgroundColor(row, col, color));
 }
 
 AcCmColor PyDbTable::contentColor(AcDb::RowType type) const
@@ -688,22 +688,22 @@ AcCmColor PyDbTable::contentColor3(int row, int col, int nContent) const
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::setContentColor(const AcCmColor& color, AcDb::RowType type)
+void PyDbTable::setContentColor(const AcCmColor& color, AcDb::RowType type)
 {
-    return impObj()->setContentColor(color, type);
+    return PyThrowBadEs(impObj()->setContentColor(color, type));
 }
 
-Acad::ErrorStatus PyDbTable::setContentColor2(int row, int col, const AcCmColor& color)
+void PyDbTable::setContentColor2(int row, int col, const AcCmColor& color)
 {
-    return impObj()->setContentColor(row, col, color);
+    return PyThrowBadEs(impObj()->setContentColor(row, col, color));
 }
 
-Acad::ErrorStatus PyDbTable::setContentColor3(int row, int col, int nContent, const AcCmColor& color)
+void PyDbTable::setContentColor3(int row, int col, int nContent, const AcCmColor& color)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setContentColor(row, col, nContent, color);
+    return PyThrowBadEs(impObj()->setContentColor(row, col, nContent, color));
 #endif
 }
 
@@ -723,9 +723,9 @@ void PyDbTable::clearCellOverrides(int row, int column)
     return impObj()->clearCellOverrides(row, column);
 }
 
-Acad::ErrorStatus PyDbTable::deleteCellContent(int row, int col)
+void PyDbTable::deleteCellContent(int row, int col)
 {
-    return impObj()->deleteCellContent(row, col);
+    return PyThrowBadEs(impObj()->deleteCellContent(row, col));
 }
 
 AcDb::RowType PyDbTable::rowType(int row) const
@@ -763,32 +763,32 @@ boost::python::tuple PyDbTable::getDataType3(int row, int col, int nContent) con
     return boost::python::make_tuple(nDataType, nUnitType);
 }
 
-Acad::ErrorStatus PyDbTable::setDataType1(AcValue::DataType nDataType, AcValue::UnitType nUnitType)
+void PyDbTable::setDataType1(AcValue::DataType nDataType, AcValue::UnitType nUnitType)
 {
-    return impObj()->setDataType(nDataType, nUnitType);
+    return PyThrowBadEs(impObj()->setDataType(nDataType, nUnitType));
 }
 
-Acad::ErrorStatus PyDbTable::setDataType2(AcValue::DataType nDataType, AcValue::UnitType nUnitType, AcDb::RowType type)
+void PyDbTable::setDataType2(AcValue::DataType nDataType, AcValue::UnitType nUnitType, AcDb::RowType type)
 {
-    return impObj()->setDataType(nDataType, nUnitType, type);
+    return PyThrowBadEs(impObj()->setDataType(nDataType, nUnitType, type));
 }
 
-Acad::ErrorStatus PyDbTable::setDataType3(int row, int col, AcValue::DataType nDataType, AcValue::UnitType nUnitType)
+void PyDbTable::setDataType3(int row, int col, AcValue::DataType nDataType, AcValue::UnitType nUnitType)
 {
-    return impObj()->setDataType(row, col, nDataType, nUnitType);
+    return PyThrowBadEs(impObj()->setDataType(row, col, nDataType, nUnitType));
 }
 
-Acad::ErrorStatus PyDbTable::setDataType4(int row, int col, int nContent, AcValue::DataType nDataType, AcValue::UnitType nUnitType)
+void PyDbTable::setDataType4(int row, int col, int nContent, AcValue::DataType nDataType, AcValue::UnitType nUnitType)
 {
-    return impObj()->setDataType(row, col, nContent, nDataType, nUnitType);
+    return PyThrowBadEs(impObj()->setDataType(row, col, nContent, nDataType, nUnitType));
 }
 
-Acad::ErrorStatus PyDbTable::setFormat(int row, int col, const std::string& pszFormat)
+void PyDbTable::setFormat(int row, int col, const std::string& pszFormat)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setFormat(row, col, utf8_to_wstr(pszFormat).c_str());
+    return PyThrowBadEs(impObj()->setFormat(row, col, utf8_to_wstr(pszFormat).c_str()));
 #endif
 }
 
@@ -826,14 +826,14 @@ std::string PyDbTable::textString4(int row, int col, int nContent, AcValue::Form
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::setTextString(int row, int col, const std::string& text)
+void PyDbTable::setTextString(int row, int col, const std::string& text)
 {
-    return impObj()->setTextString(row, col, utf8_to_wstr(text).c_str());
+    return PyThrowBadEs(impObj()->setTextString(row, col, utf8_to_wstr(text).c_str()));
 }
 
-Acad::ErrorStatus PyDbTable::setTextString2(int row, int col, int nContent, const std::string& text)
+void PyDbTable::setTextString2(int row, int col, int nContent, const std::string& text)
 {
-    return impObj()->setTextString(row, col, nContent, utf8_to_wstr(text).c_str());
+    return PyThrowBadEs(impObj()->setTextString(row, col, nContent, utf8_to_wstr(text).c_str()));
 }
 
 PyDbObjectId PyDbTable::textStyle(AcDb::RowType type) const
@@ -855,22 +855,22 @@ PyDbObjectId PyDbTable::textStyle3(int row, int col, int nContent) const
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::setTextStyle(const PyDbObjectId& id, AcDb::RowType rowTypes)
+void PyDbTable::setTextStyle(const PyDbObjectId& id, AcDb::RowType rowTypes)
 {
-    return impObj()->setTextStyle(id.m_id, rowTypes);
+    return PyThrowBadEs(impObj()->setTextStyle(id.m_id, rowTypes));
 }
 
-Acad::ErrorStatus PyDbTable::setTextStyle2(int row, int col, const PyDbObjectId& id)
+void PyDbTable::setTextStyle2(int row, int col, const PyDbObjectId& id)
 {
-    return impObj()->setTextStyle(row, col, id.m_id);
+    return PyThrowBadEs(impObj()->setTextStyle(row, col, id.m_id));
 }
 
-Acad::ErrorStatus PyDbTable::setTextStyle3(int row, int col, int nContent, const PyDbObjectId& id)
+void PyDbTable::setTextStyle3(int row, int col, int nContent, const PyDbObjectId& id)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setTextStyle(row, col, nContent, id.m_id);
+    return PyThrowBadEs(impObj()->setTextStyle(row, col, nContent, id.m_id));
 #endif
 }
 
@@ -893,22 +893,22 @@ double PyDbTable::textHeight3(int row, int col, int nContent) const
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::setTextHeight(double height, AcDb::RowType rowTypes)
+void PyDbTable::setTextHeight(double height, AcDb::RowType rowTypes)
 {
-    return impObj()->setTextHeight(height, rowTypes);
+    return PyThrowBadEs(impObj()->setTextHeight(height, rowTypes));
 }
 
-Acad::ErrorStatus PyDbTable::setTextHeight2(int row, int col, double height)
+void PyDbTable::setTextHeight2(int row, int col, double height)
 {
-    return impObj()->setTextHeight(row, col, height);
+    return PyThrowBadEs(impObj()->setTextHeight(row, col, height));
 }
 
-Acad::ErrorStatus PyDbTable::setTextHeight3(int row, int col, int nContent, double height)
+void PyDbTable::setTextHeight3(int row, int col, int nContent, double height)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setTextHeight(row, col, nContent, height);
+    return PyThrowBadEs(impObj()->setTextHeight(row, col, nContent, height));
 #endif
 }
 
@@ -927,19 +927,19 @@ AcDb::LineWeight PyDbTable::gridLineWeight3(int nRow, int nCol, AcDb::GridLineTy
     return impObj()->gridLineWeight(nRow, nCol, nGridLineType);
 }
 
-Acad::ErrorStatus PyDbTable::setGridLineWeight(AcDb::LineWeight lwt, int nBorders, int nRows)
+void PyDbTable::setGridLineWeight(AcDb::LineWeight lwt, int nBorders, int nRows)
 {
-    return impObj()->setGridLineWeight(lwt, nBorders, nRows);
+    return PyThrowBadEs(impObj()->setGridLineWeight(lwt, nBorders, nRows));
 }
 
-Acad::ErrorStatus PyDbTable::setGridLineWeight2(int row, int col, AcDb::CellEdgeMask nEdges, AcDb::LineWeight value)
+void PyDbTable::setGridLineWeight2(int row, int col, AcDb::CellEdgeMask nEdges, AcDb::LineWeight value)
 {
-    return impObj()->setGridLineWeight(row, col, nEdges, value);
+    return PyThrowBadEs(impObj()->setGridLineWeight(row, col, nEdges, value));
 }
 
-Acad::ErrorStatus PyDbTable::setGridLineWeight3(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, AcDb::LineWeight nLineWeight)
+void PyDbTable::setGridLineWeight3(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, AcDb::LineWeight nLineWeight)
 {
-    return impObj()->setGridLineWeight(nRow, nCol, nGridLineTypes, nLineWeight);
+    return PyThrowBadEs(impObj()->setGridLineWeight(nRow, nCol, nGridLineTypes, nLineWeight));
 }
 
 AcCmColor PyDbTable::gridColor(AcDb::GridLineType gridlineType, AcDb::RowType type) const
@@ -961,22 +961,22 @@ AcCmColor PyDbTable::gridColor3(int nRow, int nCol, AcDb::GridLineType nGridLine
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::setGridColor(const AcCmColor& color, int nBorders, int nRows)
+void PyDbTable::setGridColor(const AcCmColor& color, int nBorders, int nRows)
 {
-    return impObj()->setGridColor(color, nBorders, nRows);
+    return PyThrowBadEs(impObj()->setGridColor(color, nBorders, nRows));
 }
 
-Acad::ErrorStatus PyDbTable::setGridColor2(int row, int col, AcDb::CellEdgeMask nEdges, const AcCmColor& color)
+void PyDbTable::setGridColor2(int row, int col, AcDb::CellEdgeMask nEdges, const AcCmColor& color)
 {
-    return impObj()->setGridColor(row, col, nEdges, color);
+    return PyThrowBadEs(impObj()->setGridColor(row, col, nEdges, color));
 }
 
-Acad::ErrorStatus PyDbTable::setGridColor3(int nRow, int nCol, AcDb::GridLineType nGridlineTypes, const AcCmColor& color)
+void PyDbTable::setGridColor3(int nRow, int nCol, AcDb::GridLineType nGridlineTypes, const AcCmColor& color)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setGridColor(nRow, nCol, nGridlineTypes, color);
+    return PyThrowBadEs(impObj()->setGridColor(nRow, nCol, nGridlineTypes, color));
 #endif
 }
 
@@ -995,19 +995,19 @@ AcDb::Visibility PyDbTable::gridVisibility3(int nRow, int nCol, AcDb::GridLineTy
     return impObj()->gridVisibility(nRow, nCol, nGridLineType);
 }
 
-Acad::ErrorStatus PyDbTable::setGridVisibility(AcDb::Visibility visible, int nBorders, int nRows)
+void PyDbTable::setGridVisibility(AcDb::Visibility visible, int nBorders, int nRows)
 {
-    return impObj()->setGridVisibility(visible, nBorders, nRows);
+    return PyThrowBadEs(impObj()->setGridVisibility(visible, nBorders, nRows));
 }
 
-Acad::ErrorStatus PyDbTable::setGridVisibility2(int row, int col, AcDb::CellEdgeMask iEdge, AcDb::Visibility value)
+void PyDbTable::setGridVisibility2(int row, int col, AcDb::CellEdgeMask iEdge, AcDb::Visibility value)
 {
-    return impObj()->setGridVisibility(row, col, iEdge, value);
+    return PyThrowBadEs(impObj()->setGridVisibility(row, col, iEdge, value));
 }
 
-Acad::ErrorStatus PyDbTable::setGridVisibility3(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, AcDb::Visibility nVisibility)
+void PyDbTable::setGridVisibility3(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, AcDb::Visibility nVisibility)
 {
-    return impObj()->setGridVisibility(nRow, nCol, nGridLineTypes, nVisibility);
+    return PyThrowBadEs(impObj()->setGridVisibility(nRow, nCol, nGridLineTypes, nVisibility));
 }
 
 boost::python::list PyDbTable::tableStyleOverrides() const
@@ -1031,9 +1031,9 @@ AcDb::CellType PyDbTable::cellType(int row, int col) const
     return impObj()->cellType(row, col);
 }
 
-Acad::ErrorStatus PyDbTable::setCellType(int row, int col, AcDb::CellType type)
+void PyDbTable::setCellType(int row, int col, AcDb::CellType type)
 {
-    return impObj()->setCellType(row, col, type);
+    return PyThrowBadEs(impObj()->setCellType(row, col, type));
 }
 
 boost::python::list PyDbTable::getCellExtents(int row, int col, bool isOuterCell) const
@@ -1072,17 +1072,17 @@ PyDbObjectId PyDbTable::fieldId2(int row, int col, int nContent) const
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::setFieldId(int row, int col, const PyDbObjectId& fieldId)
+void PyDbTable::setFieldId(int row, int col, const PyDbObjectId& fieldId)
 {
-    return impObj()->setFieldId(row, col, fieldId.m_id);
+    return PyThrowBadEs(impObj()->setFieldId(row, col, fieldId.m_id));
 }
 
-Acad::ErrorStatus PyDbTable::setFieldId2(int row, int col, int nContent, const PyDbObjectId& fieldId, AcDb::CellOption nFlag)
+void PyDbTable::setFieldId2(int row, int col, int nContent, const PyDbObjectId& fieldId, AcDb::CellOption nFlag)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setFieldId(row, col, nContent, fieldId.m_id, nFlag);
+    return PyThrowBadEs(impObj()->setFieldId(row, col, nContent, fieldId.m_id, nFlag));
 #endif
 }
 
@@ -1091,9 +1091,9 @@ AcDb::RotationAngle PyDbTable::textRotation(int row, int col) const
     return impObj()->textRotation(row, col);
 }
 
-Acad::ErrorStatus PyDbTable::setTextRotation(int row, int col, AcDb::RotationAngle rot)
+void PyDbTable::setTextRotation(int row, int col, AcDb::RotationAngle rot)
 {
-    return impObj()->setTextRotation(row, col, rot);
+    return PyThrowBadEs(impObj()->setTextRotation(row, col, rot));
 }
 
 bool PyDbTable::isAutoScale(int row, int col) const
@@ -1106,14 +1106,14 @@ bool PyDbTable::isAutoScale2(int row, int col, int nContent) const
     return impObj()->isAutoScale(row, col, nContent);
 }
 
-Acad::ErrorStatus PyDbTable::setAutoScale(int row, int col, bool autoFit)
+void PyDbTable::setAutoScale(int row, int col, bool autoFit)
 {
-    return impObj()->setAutoScale(row, col, autoFit);
+    return PyThrowBadEs(impObj()->setAutoScale(row, col, autoFit));
 }
 
-Acad::ErrorStatus PyDbTable::setAutoScale2(int row, int col, int nContent, bool autoFit)
+void PyDbTable::setAutoScale2(int row, int col, int nContent, bool autoFit)
 {
-    return impObj()->setAutoScale(row, col, nContent, autoFit);
+    return PyThrowBadEs(impObj()->setAutoScale(row, col, nContent, autoFit));
 }
 
 PyDbObjectId PyDbTable::blockTableRecordId(int row, int col) const
@@ -1130,17 +1130,17 @@ PyDbObjectId PyDbTable::blockTableRecordId2(int row, int col, int nContent) cons
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::setBlockTableRecordId(int row, int col, const PyDbObjectId& blkId, bool autoFit)
+void PyDbTable::setBlockTableRecordId(int row, int col, const PyDbObjectId& blkId, bool autoFit)
 {
-    return impObj()->setBlockTableRecordId(row, col, blkId.m_id, autoFit);
+    return PyThrowBadEs(impObj()->setBlockTableRecordId(row, col, blkId.m_id, autoFit));
 }
 
-Acad::ErrorStatus PyDbTable::setBlockTableRecordId2(int row, int col, int nContent, const PyDbObjectId& blkId, bool autoFit)
+void PyDbTable::setBlockTableRecordId2(int row, int col, int nContent, const PyDbObjectId& blkId, bool autoFit)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setBlockTableRecordId(row, col, nContent, blkId.m_id, autoFit);
+    return PyThrowBadEs(impObj()->setBlockTableRecordId(row, col, nContent, blkId.m_id, autoFit));
 #endif
 }
 
@@ -1149,9 +1149,9 @@ double PyDbTable::blockScale(int row, int col) const
     return impObj()->blockScale(row, col);
 }
 
-Acad::ErrorStatus PyDbTable::setBlockScale(int row, int col, double scale)
+void PyDbTable::setBlockScale(int row, int col, double scale)
 {
-    return impObj()->setBlockScale(row, col, scale);
+    return PyThrowBadEs(impObj()->setBlockScale(row, col, scale));
 }
 
 double PyDbTable::blockRotation(int row, int col) const
@@ -1159,39 +1159,39 @@ double PyDbTable::blockRotation(int row, int col) const
     return impObj()->blockRotation(row, col);
 }
 
-Acad::ErrorStatus PyDbTable::setBlockRotation(int row, int col, double rotAng)
+void PyDbTable::setBlockRotation(int row, int col, double rotAng)
 {
-    return impObj()->setBlockRotation(row, col, rotAng);
+    return PyThrowBadEs(impObj()->setBlockRotation(row, col, rotAng));
 }
 
-Acad::ErrorStatus PyDbTable::insertColumns(int col, double width, int nCols)
+void PyDbTable::insertColumns(int col, double width, int nCols)
 {
-    return impObj()->insertColumns(col, width, nCols);
+    return PyThrowBadEs(impObj()->insertColumns(col, width, nCols));
 }
 
-Acad::ErrorStatus PyDbTable::deleteColumns(int col, int nCols)
+void PyDbTable::deleteColumns(int col, int nCols)
 {
-    return impObj()->deleteColumns(col, nCols);
+    return PyThrowBadEs(impObj()->deleteColumns(col, nCols));
 }
 
-Acad::ErrorStatus PyDbTable::insertRows(int row, double height, int nRows)
+void PyDbTable::insertRows(int row, double height, int nRows)
 {
-    return impObj()->insertRows(row, height, nRows);
+    return PyThrowBadEs(impObj()->insertRows(row, height, nRows));
 }
 
-Acad::ErrorStatus PyDbTable::deleteRows(int row, int nRows)
+void PyDbTable::deleteRows(int row, int nRows)
 {
-    return impObj()->deleteRows(row, nRows);
+    return PyThrowBadEs(impObj()->deleteRows(row, nRows));
 }
 
-Acad::ErrorStatus PyDbTable::mergeCells(int minRow, int maxRow, int minCol, int maxCol)
+void PyDbTable::mergeCells(int minRow, int maxRow, int minCol, int maxCol)
 {
-    return impObj()->mergeCells(minRow, maxRow, minCol, maxCol);
+    return PyThrowBadEs(impObj()->mergeCells(minRow, maxRow, minCol, maxCol));
 }
 
-Acad::ErrorStatus PyDbTable::unmergeCells(int minRow, int maxRow, int minCol, int maxCol)
+void PyDbTable::unmergeCells(int minRow, int maxRow, int minCol, int maxCol)
 {
-    return impObj()->unmergeCells(minRow, maxRow, minCol, maxCol);
+    return PyThrowBadEs(impObj()->unmergeCells(minRow, maxRow, minCol, maxCol));
 }
 
 boost::python::tuple PyDbTable::isMergedCell(int row, int col)
@@ -1205,14 +1205,14 @@ boost::python::tuple PyDbTable::isMergedCell(int row, int col)
     return boost::python::make_tuple(flag, minRow, maxRow, minCol, maxCol);
 }
 
-Acad::ErrorStatus PyDbTable::generateLayout()
+void PyDbTable::generateLayout()
 {
-    return impObj()->generateLayout();
+    return PyThrowBadEs(impObj()->generateLayout());
 }
 
-Acad::ErrorStatus PyDbTable::recomputeTableBlock(bool forceUpdate)
+void PyDbTable::recomputeTableBlock(bool forceUpdate)
 {
-    return impObj()->recomputeTableBlock(forceUpdate);
+    return PyThrowBadEs(impObj()->recomputeTableBlock(forceUpdate));
 }
 
 boost::python::tuple PyDbTable::hitTest(const AcGePoint3d& wpt, const AcGeVector3d& wviewVec, double wxaper, double wyaper)
@@ -1241,12 +1241,12 @@ AcCellRange PyDbTable::getSubSelection(void) const
     return impObj()->getSubSelection();
 }
 
-Acad::ErrorStatus PyDbTable::setSubSelection(const AcCellRange& range)
+void PyDbTable::setSubSelection(const AcCellRange& range)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setSubSelection(range);
+    return PyThrowBadEs(impObj()->setSubSelection(range));
 #endif
 }
 
@@ -1260,14 +1260,14 @@ bool PyDbTable::hasSubSelection() const
     return impObj()->hasSubSelection();
 }
 
-Acad::ErrorStatus PyDbTable::setPosition(const AcGePoint3d& newVal)
+void PyDbTable::setPosition(const AcGePoint3d& newVal)
 {
-    return impObj()->setPosition(newVal);
+    return PyThrowBadEs(impObj()->setPosition(newVal));
 }
 
-Acad::ErrorStatus PyDbTable::setNormal(const AcGeVector3d& newVal)
+void PyDbTable::setNormal(const AcGeVector3d& newVal)
 {
-    return impObj()->setNormal(newVal);
+    return PyThrowBadEs(impObj()->setNormal(newVal));
 }
 
 void PyDbTable::setRegen()
@@ -1299,9 +1299,9 @@ void PyDbTable::setRecomputeTableBlock(bool newVal)
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::setSize(int nRows, int nCols)
+void PyDbTable::setSize(int nRows, int nCols)
 {
-    return impObj()->setSize(nRows, nCols);
+    return PyThrowBadEs(impObj()->setSize(nRows, nCols));
 }
 
 bool PyDbTable::canInsert(int nIndex, bool bRow) const
@@ -1313,14 +1313,14 @@ bool PyDbTable::canInsert(int nIndex, bool bRow) const
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::insertRowsAndInherit(int nIndex, int nInheritFrom, int nNumRows)
+void PyDbTable::insertRowsAndInherit(int nIndex, int nInheritFrom, int nNumRows)
 {
-    return impObj()->insertRowsAndInherit(nIndex, nInheritFrom, nNumRows);
+    return PyThrowBadEs(impObj()->insertRowsAndInherit(nIndex, nInheritFrom, nNumRows));
 }
 
-Acad::ErrorStatus PyDbTable::insertColumnsAndInherit(int col, int nInheritFrom, int nNumCols)
+void PyDbTable::insertColumnsAndInherit(int col, int nInheritFrom, int nNumCols)
 {
-    return impObj()->insertRowsAndInherit(col, nInheritFrom, nNumCols);
+    return PyThrowBadEs(impObj()->insertRowsAndInherit(col, nInheritFrom, nNumCols));
 }
 
 bool PyDbTable::canDelete(int nIndex, int nCount, bool bRow) const
@@ -1421,9 +1421,9 @@ AcDb::CellState PyDbTable::cellState(int nRow, int nCol) const
     return impObj()->cellState(nRow, nCol);
 }
 
-Acad::ErrorStatus PyDbTable::setCellState(int nRow, int nCol, AcDb::CellState nLock)
+void PyDbTable::setCellState(int nRow, int nCol, AcDb::CellState nLock)
 {
-    return impObj()->setCellState(nRow, nCol, nLock);
+    return PyThrowBadEs(impObj()->setCellState(nRow, nCol, nLock));
 }
 
 int PyDbTable::numContents(int nRow, int nCol) const
@@ -1436,28 +1436,28 @@ int PyDbTable::createContent(int nRow, int nCol, int nIndex)
     return impObj()->createContent(nRow, nCol, nIndex);
 }
 
-Acad::ErrorStatus PyDbTable::moveContent(int nRow, int nCol, int nFromIndex, int nToIndex)
+void PyDbTable::moveContent(int nRow, int nCol, int nFromIndex, int nToIndex)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->moveContent(nRow, nCol, nFromIndex, nToIndex);
+    return PyThrowBadEs(impObj()->moveContent(nRow, nCol, nFromIndex, nToIndex));
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::deleteContent1(int nRow, int nCol)
+void PyDbTable::deleteContent1(int nRow, int nCol)
 {
-    return impObj()->deleteContent(nRow, nCol);
+    return PyThrowBadEs(impObj()->deleteContent(nRow, nCol));
 }
 
-Acad::ErrorStatus PyDbTable::deleteContent2(int nRow, int nCol, int nIndex)
+void PyDbTable::deleteContent2(int nRow, int nCol, int nIndex)
 {
-    return impObj()->deleteContent(nRow, nCol, nIndex);
+    return PyThrowBadEs(impObj()->deleteContent(nRow, nCol, nIndex));
 }
 
-Acad::ErrorStatus PyDbTable::deleteContent3(const AcCellRange& range)
+void PyDbTable::deleteContent3(const AcCellRange& range)
 {
-    return impObj()->deleteContent(range);
+    return PyThrowBadEs(impObj()->deleteContent(range));
 }
 
 AcDb::CellContentType PyDbTable::contentType1(int nRow, int nCol) const
@@ -1488,14 +1488,14 @@ std::string PyDbTable::dataFormat2(int row, int col, int nContent) const
     return wstr_to_utf8(impObj()->dataFormat(row, row, nContent));
 }
 
-Acad::ErrorStatus PyDbTable::setDataFormat1(int row, int col, const std::string& pszFormat)
+void PyDbTable::setDataFormat1(int row, int col, const std::string& pszFormat)
 {
-    return impObj()->setDataFormat(row, col, utf8_to_wstr(pszFormat).c_str());
+    return PyThrowBadEs(impObj()->setDataFormat(row, col, utf8_to_wstr(pszFormat).c_str()));
 }
 
-Acad::ErrorStatus PyDbTable::setDataFormat2(int row, int col, int nContent, const std::string& pszFormat)
+void PyDbTable::setDataFormat2(int row, int col, int nContent, const std::string& pszFormat)
 {
-    return impObj()->setDataFormat(row, col, nContent, utf8_to_wstr(pszFormat).c_str());
+    return PyThrowBadEs(impObj()->setDataFormat(row, col, nContent, utf8_to_wstr(pszFormat).c_str()));
 }
 
 bool PyDbTable::hasFormula(int nRow, int nCol, int nContent) const
@@ -1516,12 +1516,12 @@ std::string PyDbTable::getFormula(int nRow, int nCol, int nContent) const
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::setFormula(int nRow, int nCol, int nContent, const std::string& pszFormula)
+void PyDbTable::setFormula(int nRow, int nCol, int nContent, const std::string& pszFormula)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setFormula(nRow, nCol, nContent, utf8_to_wstr(pszFormula).c_str());
+    return PyThrowBadEs(impObj()->setFormula(nRow, nCol, nContent, utf8_to_wstr(pszFormula).c_str()));
 #endif
 }
 
@@ -1549,17 +1549,17 @@ std::string PyDbTable::getBlockAttributeValue2(int row, int col, int nContent, c
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::setBlockAttributeValue1(int row, int col, const PyDbObjectId& attdefId, const std::string& value)
+void PyDbTable::setBlockAttributeValue1(int row, int col, const PyDbObjectId& attdefId, const std::string& value)
 {
-    return impObj()->setBlockAttributeValue(row, col, attdefId.m_id, utf8_to_wstr(value).c_str());
+    return PyThrowBadEs(impObj()->setBlockAttributeValue(row, col, attdefId.m_id, utf8_to_wstr(value).c_str()));
 }
 
-Acad::ErrorStatus PyDbTable::setBlockAttributeValue2(int row, int col, int nContent, const PyDbObjectId& attdefId, const std::string& value)
+void PyDbTable::setBlockAttributeValue2(int row, int col, int nContent, const PyDbObjectId& attdefId, const std::string& value)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setBlockAttributeValue(row, col, nContent, attdefId.m_id, utf8_to_wstr(value).c_str());
+    return PyThrowBadEs(impObj()->setBlockAttributeValue(row, col, nContent, attdefId.m_id, utf8_to_wstr(value).c_str()));
 #endif
 }
 
@@ -1568,9 +1568,9 @@ const std::string PyDbTable::cellStyle(int nRow, int nCol) const
     return wstr_to_utf8(impObj()->cellStyle(nRow, nCol));
 }
 
-Acad::ErrorStatus PyDbTable::setCellStyle(int nRow, int nCol, const std::string& pszCellStyle)
+void PyDbTable::setCellStyle(int nRow, int nCol, const std::string& pszCellStyle)
 {
-    return impObj()->setCellStyle(nRow, nCol, utf8_to_wstr(pszCellStyle).c_str());
+    return PyThrowBadEs(impObj()->setCellStyle(nRow, nCol, utf8_to_wstr(pszCellStyle).c_str()));
 }
 
 double PyDbTable::margin(int nRow, int nCol, AcDb::CellMargin nMargin) const
@@ -1578,9 +1578,9 @@ double PyDbTable::margin(int nRow, int nCol, AcDb::CellMargin nMargin) const
     return impObj()->margin(nRow, nCol, nMargin);
 }
 
-Acad::ErrorStatus PyDbTable::setMargin(int nRow, int nCol, AcDb::CellMargin nMargins, double fMargin)
+void PyDbTable::setMargin(int nRow, int nCol, AcDb::CellMargin nMargins, double fMargin)
 {
-    return impObj()->setMargin(nRow, nCol, nMargins, fMargin);
+    return PyThrowBadEs(impObj()->setMargin(nRow, nCol, nMargins, fMargin));
 }
 
 double PyDbTable::rotation(void) const
@@ -1593,14 +1593,14 @@ double PyDbTable::rotation2(int row, int col, int nContent) const
     return impObj()->rotation(row, col, nContent);
 }
 
-Acad::ErrorStatus PyDbTable::setRotation(double fAngle)
+void PyDbTable::setRotation(double fAngle)
 {
-    return impObj()->setRotation(fAngle);
+    return PyThrowBadEs(impObj()->setRotation(fAngle));
 }
 
-Acad::ErrorStatus PyDbTable::setRotation2(int row, int col, int nContent, double fAngle)
+void PyDbTable::setRotation2(int row, int col, int nContent, double fAngle)
 {
-    return impObj()->setRotation(row, col, nContent, fAngle);
+    return PyThrowBadEs(impObj()->setRotation(row, col, nContent, fAngle));
 }
 
 double PyDbTable::scale(int row, int col, int nContent) const
@@ -1612,12 +1612,12 @@ double PyDbTable::scale(int row, int col, int nContent) const
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::setScale(int row, int col, int nContent, double scale)
+void PyDbTable::setScale(int row, int col, int nContent, double scale)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setScale(row, col, nContent, scale);
+    return PyThrowBadEs(impObj()->setScale(row, col, nContent, scale));
 #endif
 }
 
@@ -1626,9 +1626,9 @@ AcDb::CellContentLayout PyDbTable::contentLayout(int row, int col) const
     return impObj()->contentLayout(row, col);
 }
 
-Acad::ErrorStatus PyDbTable::setContentLayout(int row, int col, AcDb::CellContentLayout nLayout)
+void PyDbTable::setContentLayout(int row, int col, AcDb::CellContentLayout nLayout)
 {
-    return impObj()->setContentLayout(row, col, nLayout);
+    return PyThrowBadEs(impObj()->setContentLayout(row, col, nLayout));
 }
 
 bool PyDbTable::isMergeAllEnabled(int nRow, int nCol) const
@@ -1640,12 +1640,12 @@ bool PyDbTable::isMergeAllEnabled(int nRow, int nCol) const
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::enableMergeAll(int nRow, int nCol, bool bEnable)
+void PyDbTable::enableMergeAll(int nRow, int nCol, bool bEnable)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->enableMergeAll(nRow, nCol, bEnable);
+    return PyThrowBadEs(impObj()->enableMergeAll(nRow, nCol, bEnable));
 #endif
 }
 
@@ -1667,30 +1667,30 @@ AcDb::GridProperty PyDbTable::getOverride2(int nRow, int nCol, AcDb::GridLineTyp
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::setOverride1(int nRow, int nCol, int nContent, AcDb::CellProperty nOverride)
+void PyDbTable::setOverride1(int nRow, int nCol, int nContent, AcDb::CellProperty nOverride)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setOverride(nRow, nCol, nContent, nOverride);
+    return PyThrowBadEs(impObj()->setOverride(nRow, nCol, nContent, nOverride));
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::setOverride2(int nRow, int nCol, AcDb::GridLineType nGridLineType, AcDb::GridProperty nOverride)
+void PyDbTable::setOverride2(int nRow, int nCol, AcDb::GridLineType nGridLineType, AcDb::GridProperty nOverride)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setOverride(nRow, nCol, nGridLineType, nOverride);
+    return PyThrowBadEs(impObj()->setOverride(nRow, nCol, nGridLineType, nOverride));
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::removeAllOverrides(int nRow, int nCol)
+void PyDbTable::removeAllOverrides(int nRow, int nCol)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->removeAllOverrides(nRow, nCol);
+    return PyThrowBadEs(impObj()->removeAllOverrides(nRow, nCol));
 #endif
 }
 
@@ -1703,12 +1703,12 @@ AcDb::GridLineStyle PyDbTable::gridLineStyle(int nRow, int nCol, AcDb::GridLineT
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::setGridLineStyle(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, AcDb::GridLineStyle nLineStyle)
+void PyDbTable::setGridLineStyle(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, AcDb::GridLineStyle nLineStyle)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setGridLineStyle(nRow, nCol, nGridLineTypes, nLineStyle);
+    return PyThrowBadEs(impObj()->setGridLineStyle(nRow, nCol, nGridLineTypes, nLineStyle));
 #endif
 }
 
@@ -1721,12 +1721,12 @@ PyDbObjectId PyDbTable::gridLinetype(int nRow, int nCol, AcDb::GridLineType nGri
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::setGridLinetype(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, const PyDbObjectId& idLinetype)
+void PyDbTable::setGridLinetype(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, const PyDbObjectId& idLinetype)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setGridLinetype(nRow, nCol, nGridLineTypes, idLinetype.m_id);
+    return PyThrowBadEs(impObj()->setGridLinetype(nRow, nCol, nGridLineTypes, idLinetype.m_id));
 #endif
 }
 
@@ -1739,12 +1739,12 @@ double PyDbTable::gridDoubleLineSpacing(int nRow, int nCol, AcDb::GridLineType n
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::setGridDoubleLineSpacing(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, double fSpacing)
+void PyDbTable::setGridDoubleLineSpacing(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, double fSpacing)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setGridDoubleLineSpacing(nRow, nCol, nGridLineTypes, fSpacing);
+    return PyThrowBadEs(impObj()->setGridDoubleLineSpacing(nRow, nCol, nGridLineTypes, fSpacing));
 #endif
 }
 
@@ -1760,21 +1760,21 @@ AcGridProperty PyDbTable::getGridProperty(int nRow, int nCol, AcDb::GridLineType
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::setGridProperty1(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, const AcGridProperty& gridProp)
+void PyDbTable::setGridProperty1(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, const AcGridProperty& gridProp)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setGridProperty(nRow, nCol, nGridLineTypes, gridProp);
+    return PyThrowBadEs(impObj()->setGridProperty(nRow, nCol, nGridLineTypes, gridProp));
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::setGridProperty2(const AcCellRange& rangeIn, AcDb::GridLineType nGridLineTypes, const AcGridProperty& gridProp)
+void PyDbTable::setGridProperty2(const AcCellRange& rangeIn, AcDb::GridLineType nGridLineTypes, const AcGridProperty& gridProp)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setGridProperty(rangeIn, nGridLineTypes, gridProp);
+    return PyThrowBadEs(impObj()->setGridProperty(rangeIn, nGridLineTypes, gridProp));
 #endif
 }
 
@@ -1796,12 +1796,12 @@ PyDbObjectId PyDbTable::getDataLink(int nRow, int nCol) const
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::setDataLink(const AcCellRange& range, const PyDbObjectId& idDataLink, bool bUpdate)
+void PyDbTable::setDataLink(const AcCellRange& range, const PyDbObjectId& idDataLink, bool bUpdate)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setDataLink(range, idDataLink.m_id, bUpdate);
+    return PyThrowBadEs(impObj()->setDataLink(range, idDataLink.m_id, bUpdate));
 #endif
 }
 
@@ -1814,39 +1814,39 @@ AcCellRange PyDbTable::getDataLinkRange(int nRow, int nCol) const
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::removeDataLink1(void)
+void PyDbTable::removeDataLink1(void)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->removeDataLink();
+    return PyThrowBadEs(impObj()->removeDataLink());
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::removeDataLink2(int nRow, int nCol)
+void PyDbTable::removeDataLink2(int nRow, int nCol)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->removeDataLink(nRow, nCol);
+    return PyThrowBadEs(impObj()->removeDataLink(nRow, nCol));
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::updateDataLink1(AcDb::UpdateDirection nDir, AcDb::UpdateOption nOption)
+void PyDbTable::updateDataLink1(AcDb::UpdateDirection nDir, AcDb::UpdateOption nOption)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->updateDataLink(nDir, nOption);
+    return PyThrowBadEs(impObj()->updateDataLink(nDir, nOption));
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::updateDataLink2(int nRow, int nCol, AcDb::UpdateDirection nDir, AcDb::UpdateOption nOption)
+void PyDbTable::updateDataLink2(int nRow, int nCol, AcDb::UpdateDirection nDir, AcDb::UpdateOption nOption)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->updateDataLink(nRow, nCol, nDir, nOption);
+    return PyThrowBadEs(impObj()->updateDataLink(nRow, nCol, nDir, nOption));
 #endif
 }
 
@@ -1855,9 +1855,9 @@ bool PyDbTable::isBreakEnabled(void) const
     return impObj()->isBreakEnabled();
 }
 
-Acad::ErrorStatus PyDbTable::enableBreak(bool bEnable)
+void PyDbTable::enableBreak(bool bEnable)
 {
-    return impObj()->enableBreak(bEnable);
+    return PyThrowBadEs(impObj()->enableBreak(bEnable));
 }
 
 AcDb::TableBreakFlowDirection PyDbTable::breakFlowDirection(void) const
@@ -1869,12 +1869,12 @@ AcDb::TableBreakFlowDirection PyDbTable::breakFlowDirection(void) const
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::setBreakFlowDirection(AcDb::TableBreakFlowDirection nDir)
+void PyDbTable::setBreakFlowDirection(AcDb::TableBreakFlowDirection nDir)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setBreakFlowDirection(nDir);
+    return PyThrowBadEs(impObj()->setBreakFlowDirection(nDir));
 #endif
 }
 
@@ -1883,9 +1883,9 @@ double PyDbTable::breakHeight(int nIndex) const
     return impObj()->breakHeight(nIndex);
 }
 
-Acad::ErrorStatus PyDbTable::setBreakHeight(int nIndex, double fHeight)
+void PyDbTable::setBreakHeight(int nIndex, double fHeight)
 {
-    return impObj()->setBreakHeight(nIndex, fHeight);
+    return PyThrowBadEs(impObj()->setBreakHeight(nIndex, fHeight));
 }
 
 AcGeVector3d PyDbTable::breakOffset(int nIndex) const
@@ -1897,12 +1897,12 @@ AcGeVector3d PyDbTable::breakOffset(int nIndex) const
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::setBreakOffset(int nIndex, const AcGeVector3d& vec)
+void PyDbTable::setBreakOffset(int nIndex, const AcGeVector3d& vec)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setBreakOffset(nIndex, vec);
+    return PyThrowBadEs(impObj()->setBreakOffset(nIndex, vec));
 #endif
 }
 
@@ -1915,12 +1915,12 @@ AcDb::TableBreakOption PyDbTable::breakOption(void) const
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::setBreakOption(AcDb::TableBreakOption nOption)
+void PyDbTable::setBreakOption(AcDb::TableBreakOption nOption)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setBreakOption(nOption);
+    return PyThrowBadEs(impObj()->setBreakOption(nOption));
 #endif
 }
 
@@ -1933,12 +1933,12 @@ double PyDbTable::breakSpacing(void) const
 #endif
 }
 
-Acad::ErrorStatus PyDbTable::setBreakSpacing(double fSpacing)
+void PyDbTable::setBreakSpacing(double fSpacing)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setBreakSpacing(fSpacing);
+    return PyThrowBadEs(impObj()->setBreakSpacing(fSpacing));
 #endif
 }
 
