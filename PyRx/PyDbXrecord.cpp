@@ -70,20 +70,20 @@ boost::python::list PyDbXrecord::rbChain2(PyDbDatabase& auxDb) const
     return resbufToList(pRb);
 }
 
-Acad::ErrorStatus PyDbXrecord::setFromRbChain1(const boost::python::list& pRb)
+void PyDbXrecord::setFromRbChain1(const boost::python::list& pRb)
 {
     AcResBufPtr ptr(listToResbuf(pRb));
     if (ptr == nullptr)
-        return eInvalidInput;
-    return impObj()->setFromRbChain(*ptr.get());
+        PyThrowBadEs(eInvalidInput);
+    return PyThrowBadEs(impObj()->setFromRbChain(*ptr.get()));
 }
 
-Acad::ErrorStatus PyDbXrecord::setFromRbChain2(const boost::python::list& pRb, PyDbDatabase& auxDb)
+void PyDbXrecord::setFromRbChain2(const boost::python::list& pRb, PyDbDatabase& auxDb)
 {
     AcResBufPtr ptr(listToResbuf(pRb));
     if (ptr == nullptr)
-        return eInvalidInput;
-    return impObj()->setFromRbChain(*ptr.get(), auxDb.impObj());
+        PyThrowBadEs(eInvalidInput);
+    PyThrowBadEs(impObj()->setFromRbChain(*ptr.get(), auxDb.impObj()));
 }
 
 bool PyDbXrecord::isXlateReferences() const

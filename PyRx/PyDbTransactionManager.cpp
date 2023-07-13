@@ -45,14 +45,14 @@ PyTransaction PyDbTransactionManager::startTransaction()
     return PyTransaction(impObj()->startTransaction());
 }
 
-Acad::ErrorStatus PyDbTransactionManager::endTransaction()
+void PyDbTransactionManager::endTransaction()
 {
-    return impObj()->endTransaction();
+    return PyThrowBadEs(impObj()->endTransaction());
 }
 
-Acad::ErrorStatus PyDbTransactionManager::abortTransaction()
+void PyDbTransactionManager::abortTransaction()
 {
-    return impObj()->abortTransaction();
+    return PyThrowBadEs(impObj()->abortTransaction());
 }
 
 int PyDbTransactionManager::numActiveTransactions()
@@ -74,14 +74,14 @@ PyTransaction PyDbTransactionManager::topTransaction()
     return PyTransaction(impObj()->topTransaction());
 }
 
-Acad::ErrorStatus PyDbTransactionManager::addNewlyCreatedDBRObject1(PyDbObject& obj)
+void PyDbTransactionManager::addNewlyCreatedDBRObject1(PyDbObject& obj)
 {
-    return impObj()->addNewlyCreatedDBRObject(obj.impObj());
+    return PyThrowBadEs(impObj()->addNewlyCreatedDBRObject(obj.impObj()));
 }
 
-Acad::ErrorStatus PyDbTransactionManager::addNewlyCreatedDBRObject2(PyDbObject& obj, bool add)
+void PyDbTransactionManager::addNewlyCreatedDBRObject2(PyDbObject& obj, bool add)
 {
-    return impObj()->addNewlyCreatedDBRObject(obj.impObj(), add);
+    return PyThrowBadEs(impObj()->addNewlyCreatedDBRObject(obj.impObj(), add));
 }
 
 boost::python::list PyDbTransactionManager::getAllObjects()
@@ -125,9 +125,9 @@ PyDbObject PyDbTransactionManager::getObject3(const PyDbObjectId& id, AcDb::Open
     return PyDbObject(obj, true);
 }
 
-Acad::ErrorStatus PyDbTransactionManager::queueForGraphicsFlush()
+void PyDbTransactionManager::queueForGraphicsFlush()
 {
-    return  impObj()->queueForGraphicsFlush();
+    return PyThrowBadEs(impObj()->queueForGraphicsFlush());
 }
 
 PyRxClass PyDbTransactionManager::desc()
@@ -170,9 +170,9 @@ PyTransactionManager::PyTransactionManager(AcTransactionManager* ptr)
 {
 }
 
-Acad::ErrorStatus PyTransactionManager::enableGraphicsFlush(bool doEnable)
+void PyTransactionManager::enableGraphicsFlush(bool doEnable)
 {
-    return impObj()->enableGraphicsFlush(doEnable);
+    return PyThrowBadEs(impObj()->enableGraphicsFlush(doEnable));
 }
 
 void PyTransactionManager::flushGraphics()
