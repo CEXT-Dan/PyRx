@@ -27,8 +27,8 @@ public:
     void                setPlotStyleName2(AcDb::PlotStyleNameType val, const PyDbObjectId& id);
     void                setMaterial(const PyDbObjectId& materialId);
     void                setSectionable(bool bSectionable);
-    Acad::ErrorStatus   setDrawFlags(Adesk::UInt32 flags);
-    Acad::ErrorStatus   setShadowFlags(AcGiSubEntityTraits::ShadowFlags flags);
+    void                setDrawFlags(Adesk::UInt32 flags);
+    void                setShadowFlags(AcGiSubEntityTraits::ShadowFlags flags);
     void                setSelectionGeom(bool bSelectionflag);
     void                setTransparency(const AcCmTransparency& transparency);
 

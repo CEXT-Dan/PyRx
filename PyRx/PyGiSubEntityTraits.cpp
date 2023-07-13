@@ -164,14 +164,14 @@ void PyGiSubEntityTraits::setSectionable(bool bSectionable)
     impObj()->setSectionable(bSectionable);
 }
 
-Acad::ErrorStatus PyGiSubEntityTraits::setDrawFlags(Adesk::UInt32 flags)
+void PyGiSubEntityTraits::setDrawFlags(Adesk::UInt32 flags)
 {
-    return impObj()->setDrawFlags(flags);
+    return PyThrowBadEs(impObj()->setDrawFlags(flags));
 }
 
-Acad::ErrorStatus PyGiSubEntityTraits::setShadowFlags(AcGiSubEntityTraits::ShadowFlags flags)
+void PyGiSubEntityTraits::setShadowFlags(AcGiSubEntityTraits::ShadowFlags flags)
 {
-    return impObj()->setShadowFlags(flags);
+    return PyThrowBadEs(impObj()->setShadowFlags(flags));
 }
 
 void PyGiSubEntityTraits::setSelectionGeom(bool bSelectionflag)
