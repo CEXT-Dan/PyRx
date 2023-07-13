@@ -485,9 +485,9 @@ AcGeMatrix3d PyAcEditor::curUCS()
     return mat;
 }
 
-Acad::ErrorStatus PyAcEditor::setCurUCS(const AcGeMatrix3d& mat)
+void PyAcEditor::setCurUCS(const AcGeMatrix3d& mat)
 {
-    return acedSetCurrentUCS(mat);
+    return PyThrowBadEs(acedSetCurrentUCS(mat));
 }
 
 PyDbObjectId PyAcEditor::activeViewportId()
