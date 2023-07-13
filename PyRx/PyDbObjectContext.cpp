@@ -41,9 +41,9 @@ std::string PyDbObjectContext::getName() const
     return wstr_to_utf8(str);
 }
 
-Acad::ErrorStatus PyDbObjectContext::setName(const std::string& name)
+void PyDbObjectContext::setName(const std::string& name)
 {
-    return impObj()->setName(utf8_to_wstr(name).c_str());
+    return  PyThrowBadEs(impObj()->setName(utf8_to_wstr(name).c_str()));
 }
 
 Adesk::LongPtr PyDbObjectContext::uniqueIdentifier() const
@@ -111,9 +111,9 @@ PyDbAnnotationScale::PyDbAnnotationScale(AcDbAnnotationScale* pt, bool autoDelet
 {
 }
 
-Acad::ErrorStatus PyDbAnnotationScale::copyFrom(const PyRxObject& val)
+void PyDbAnnotationScale::copyFrom(const PyRxObject& val)
 {
-    return impObj()->copyFrom(val.impObj());
+    return  PyThrowBadEs(impObj()->copyFrom(val.impObj()));
 }
 
 double PyDbAnnotationScale::getPaperUnits() const
@@ -148,14 +148,14 @@ bool PyDbAnnotationScale::getIsTemporaryScale() const
     return val;
 }
 
-Acad::ErrorStatus PyDbAnnotationScale::setPaperUnits(double val)
+void PyDbAnnotationScale::setPaperUnits(double val)
 {
-    return impObj()->setPaperUnits(val);
+    return  PyThrowBadEs(impObj()->setPaperUnits(val));
 }
 
-Acad::ErrorStatus PyDbAnnotationScale::setDrawingUnits(double val)
+void PyDbAnnotationScale::setDrawingUnits(double val)
 {
-    return impObj()->setDrawingUnits(val);
+    return  PyThrowBadEs(impObj()->setDrawingUnits(val));
 }
 
 bool PyDbAnnotationScale::matchScaleId(Adesk::LongPtr val) const

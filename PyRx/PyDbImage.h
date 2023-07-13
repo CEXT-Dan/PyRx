@@ -36,22 +36,22 @@ public:
     PyDbRasterImageDef(const PyDbObjectId& id);
     PyDbRasterImageDef(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbRasterImageDef() override = default;
-    Acad::ErrorStatus   setSourceFileName(const std::string& pPathName);
-    Acad::ErrorStatus   setActiveFileName(const std::string& pPathName);
+    void                setSourceFileName(const std::string& pPathName);
+    void                setActiveFileName(const std::string& pPathName);
     std::string         searchForActivePath();
     std::string         sourceFileName() const;
     std::string         activeFileName() const;
-    Acad::ErrorStatus   embed();
+    void                embed();
     Adesk::Boolean      isEmbedded() const;
-    Acad::ErrorStatus   load();
-    Acad::ErrorStatus   unload1();
-    Acad::ErrorStatus   unload2(Adesk::Boolean modifyDatabase);
+    void                load();
+    void                unload1();
+    void                unload2(Adesk::Boolean modifyDatabase);
     Adesk::Boolean      isLoaded() const;
     AcGeVector2d        size() const;
     std::string         fileType() const;
     int                 entityCount() const;
     void                updateEntities() const;
-    Acad::ErrorStatus   setResolutionMMPerPixel(const AcGeVector2d& resMMPerPixel);
+    void                setResolutionMMPerPixel(const AcGeVector2d& resMMPerPixel);
     AcGeVector2d        resolutionMMPerPixel() const;
     void                setResolutionUnits(AcDbRasterImageDef::Units units);
     AcDbRasterImageDef::Units resolutionUnits() const;
@@ -79,7 +79,7 @@ public:
     PyDbRasterImageDefReactor(const PyDbObjectId& id);
     virtual ~PyDbRasterImageDefReactor() override = default;
 
-    static void     setEnable(Adesk::Boolean enable);
+    static void         setEnable(Adesk::Boolean enable);
 public:
     static std::string  className();
     static PyRxClass    desc();
@@ -102,7 +102,7 @@ public:
     PyDbRasterImage(const PyDbObjectId& id);
     PyDbRasterImage(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbRasterImage() override = default;
-    Acad::ErrorStatus   setImageDefId(const PyDbObjectId& imageId);
+    void                setImageDefId(const PyDbObjectId& imageId);
     PyDbObjectId        imageDefId() const;
     void                setReactorId(const PyDbObjectId& reactorId);
     PyDbObjectId        reactorId() const;
@@ -111,7 +111,7 @@ public:
     AcGeVector2d        scale() const;
     AcGeVector2d        imageSize1() const;
     AcGeVector2d        imageSize2(Adesk::Boolean bGetCachedValue) const;
-    Acad::ErrorStatus   setClipBoundaryToWholeImage(AcGeVector2d& size);
+    void                setClipBoundaryToWholeImage(AcGeVector2d& size);
     boost::python::list clipBoundary() const;
     AcDbRasterImage::ClipBoundaryType  clipBoundaryType() const;
     Adesk::Boolean      isClipped() const;
@@ -119,11 +119,11 @@ public:
     AcGeMatrix3d        getPixelToModelTransform() const;
     void                setDisplayOpt(AcDbRasterImage::ImageDisplayOpt option, Adesk::Boolean bValue);
     Adesk::Boolean      isSetDisplayOpt(AcDbRasterImage::ImageDisplayOpt option) const;
-    Acad::ErrorStatus   setBrightness(Adesk::Int8 value);
+    void                setBrightness(Adesk::Int8 value);
     Adesk::Int8         brightness() const;
-    Acad::ErrorStatus   setContrast(Adesk::Int8 value);
+    void                setContrast(Adesk::Int8 value);
     Adesk::Int8         contrast() const;
-    Acad::ErrorStatus   setFade(Adesk::Int8 value);
+    void                setFade(Adesk::Int8 value);
     Adesk::Int8         fade() const;
     Adesk::Boolean      isClipInverted() const;
     void                setClipInverted(Adesk::Boolean newVal);
@@ -131,11 +131,11 @@ public:
     double              height() const;
     double              imageHeight() const;
     double              imageWidth() const;
-    Acad::ErrorStatus   setHeight(double val);
-    Acad::ErrorStatus   setWidth(double val);
+    void                setHeight(double val);
+    void                setWidth(double val);
     AcGePoint3d         position() const;
     double              rotation() const;
-    Acad::ErrorStatus   setRotation(double rotation);
+    void                setRotation(double rotation);
     bool                isImageShown() const;
     void                setShowImage(bool value);
     bool                isImageTransparent() const;

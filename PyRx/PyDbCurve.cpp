@@ -32,8 +32,8 @@ void makePyDbCurveWrapper()
         .def("getSplitCurves", &PyDbCurve::getSplitCurves)
         .def("getSplitCurvesAtParams", &PyDbCurve::getSplitCurvesAtParams)
         .def("getSplitCurvesAtPoints", &PyDbCurve::getSplitCurvesAtPoints)
-        .def<Acad::ErrorStatus(PyDbCurve::*)(double)>("extend", &PyDbCurve::extend)
-        .def<Acad::ErrorStatus(PyDbCurve::*)(Adesk::Boolean, const AcGePoint3d&)>("extend", &PyDbCurve::extend)
+        .def<void(PyDbCurve::*)(double)>("extend", &PyDbCurve::extend)
+        .def<void(PyDbCurve::*)(Adesk::Boolean, const AcGePoint3d&)>("extend", &PyDbCurve::extend)
         .def("getArea", &PyDbCurve::getArea)
         .def("reverseCurve", &PyDbCurve::reverseCurve)
         .def("className", &PyDbCurve::className).staticmethod("className")
@@ -294,14 +294,14 @@ boost::python::list PyDbCurve::getSplitCurvesAtPoints(const boost::python::list&
     }
 }
 
-Acad::ErrorStatus PyDbCurve::extend(double newParam)
+void PyDbCurve::extend(double newParam)
 {
-    return impObj()->extend(newParam);
+    return PyThrowBadEs(impObj()->extend(newParam));
 }
 
-Acad::ErrorStatus PyDbCurve::extend(Adesk::Boolean extendStart, const AcGePoint3d& toPoint)
+void PyDbCurve::extend(Adesk::Boolean extendStart, const AcGePoint3d& toPoint)
 {
-    return impObj()->extend(extendStart, toPoint);
+    return PyThrowBadEs(impObj()->extend(extendStart, toPoint));
 }
 
 double PyDbCurve::getArea() const
@@ -312,9 +312,9 @@ double PyDbCurve::getArea() const
     return area;
 }
 
-Acad::ErrorStatus PyDbCurve::reverseCurve()
+void PyDbCurve::reverseCurve()
 {
-    return impObj()->reverseCurve();
+    return PyThrowBadEs(impObj()->reverseCurve());
 }
 
 std::string PyDbCurve::className()

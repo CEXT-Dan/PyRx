@@ -210,9 +210,9 @@ AcGePoint3d PyDbDimension::textPosition() const
     return impObj()->textPosition();
 }
 
-Acad::ErrorStatus PyDbDimension::setTextPosition(const AcGePoint3d& val)
+void PyDbDimension::setTextPosition(const AcGePoint3d& val)
 {
-    return impObj()->setTextPosition(val);
+    return PyThrowBadEs(impObj()->setTextPosition(val));
 }
 
 Adesk::Boolean PyDbDimension::isUsingDefaultTextPosition() const
@@ -220,22 +220,22 @@ Adesk::Boolean PyDbDimension::isUsingDefaultTextPosition() const
     return impObj()->isUsingDefaultTextPosition();
 }
 
-Acad::ErrorStatus PyDbDimension::useSetTextPosition()
+void PyDbDimension::useSetTextPosition()
 {
-    return impObj()->useSetTextPosition();
+    return PyThrowBadEs(impObj()->useSetTextPosition());
 }
 
-Acad::ErrorStatus PyDbDimension::useDefaultTextPosition()
+void PyDbDimension::useDefaultTextPosition()
 {
-    return impObj()->useDefaultTextPosition();
+    return PyThrowBadEs(impObj()->useDefaultTextPosition());
 }
 
-Acad::ErrorStatus PyDbDimension::setUsingDefaultTextPosition(bool val)
+void PyDbDimension::setUsingDefaultTextPosition(bool val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setUsingDefaultTextPosition(val);
+    return PyThrowBadEs(impObj()->setUsingDefaultTextPosition(val));
 #endif
 }
 
@@ -244,9 +244,9 @@ AcGeVector3d PyDbDimension::normal() const
     return impObj()->normal();
 }
 
-Acad::ErrorStatus PyDbDimension::setNormal(const AcGeVector3d& val)
+void PyDbDimension::setNormal(const AcGeVector3d& val)
 {
-    return impObj()->setNormal(val);
+    return PyThrowBadEs(impObj()->setNormal(val));
 }
 
 double PyDbDimension::elevation() const
@@ -254,9 +254,9 @@ double PyDbDimension::elevation() const
     return impObj()->elevation();
 }
 
-Acad::ErrorStatus PyDbDimension::setElevation(double val)
+void PyDbDimension::setElevation(double val)
 {
-    return impObj()->setElevation(val);
+    return PyThrowBadEs(impObj()->setElevation(val));
 }
 
 std::string PyDbDimension::dimensionText() const
@@ -264,9 +264,9 @@ std::string PyDbDimension::dimensionText() const
     return wstr_to_utf8(impObj()->dimensionText());
 }
 
-Acad::ErrorStatus PyDbDimension::setDimensionText(const std::string& val)
+void PyDbDimension::setDimensionText(const std::string& val)
 {
-    return impObj()->setDimensionText(utf8_to_wstr(val).c_str());
+    return PyThrowBadEs(impObj()->setDimensionText(utf8_to_wstr(val).c_str()));
 }
 
 double PyDbDimension::textRotation() const
@@ -274,9 +274,9 @@ double PyDbDimension::textRotation() const
     return impObj()->textRotation();
 }
 
-Acad::ErrorStatus PyDbDimension::setTextRotation(double val)
+void PyDbDimension::setTextRotation(double val)
 {
-    return impObj()->setTextRotation(val);
+    return PyThrowBadEs(impObj()->setTextRotation(val));
 }
 
 PyDbObjectId PyDbDimension::dimensionStyle() const
@@ -284,9 +284,9 @@ PyDbObjectId PyDbDimension::dimensionStyle() const
     return PyDbObjectId(impObj()->dimensionStyle());
 }
 
-Acad::ErrorStatus PyDbDimension::setDimensionStyle(const PyDbObjectId& val)
+void PyDbDimension::setDimensionStyle(const PyDbObjectId& val)
 {
-    return impObj()->setDimensionStyle(val.m_id);
+    return PyThrowBadEs(impObj()->setDimensionStyle(val.m_id));
 }
 
 AcDbMText::AttachmentPoint PyDbDimension::textAttachment() const
@@ -294,9 +294,9 @@ AcDbMText::AttachmentPoint PyDbDimension::textAttachment() const
     return impObj()->textAttachment();
 }
 
-Acad::ErrorStatus PyDbDimension::setTextAttachment(AcDbMText::AttachmentPoint eAtt)
+void PyDbDimension::setTextAttachment(AcDbMText::AttachmentPoint eAtt)
 {
-    return impObj()->setTextAttachment(eAtt);
+    return PyThrowBadEs(impObj()->setTextAttachment(eAtt));
 }
 
 AcDb::LineSpacingStyle PyDbDimension::textLineSpacingStyle() const
@@ -304,9 +304,9 @@ AcDb::LineSpacingStyle PyDbDimension::textLineSpacingStyle() const
     return impObj()->textLineSpacingStyle();
 }
 
-Acad::ErrorStatus PyDbDimension::setTextLineSpacingStyle(AcDb::LineSpacingStyle eStyle)
+void PyDbDimension::setTextLineSpacingStyle(AcDb::LineSpacingStyle eStyle)
 {
-    return impObj()->setTextLineSpacingStyle(eStyle);
+    return PyThrowBadEs(impObj()->setTextLineSpacingStyle(eStyle));
 }
 
 double PyDbDimension::textLineSpacingFactor() const
@@ -314,9 +314,9 @@ double PyDbDimension::textLineSpacingFactor() const
     return impObj()->textLineSpacingFactor();
 }
 
-Acad::ErrorStatus PyDbDimension::setTextLineSpacingFactor(double dFactor)
+void PyDbDimension::setTextLineSpacingFactor(double dFactor)
 {
-    return impObj()->setTextLineSpacingFactor(dFactor);
+    return PyThrowBadEs(impObj()->setTextLineSpacingFactor(dFactor));
 }
 
 PyDbDimStyleTableRecord PyDbDimension::getDimstyleData() const
@@ -327,14 +327,14 @@ PyDbDimStyleTableRecord PyDbDimension::getDimstyleData() const
     return PyDbDimStyleTableRecord(pSyle, true);
 }
 
-Acad::ErrorStatus PyDbDimension::setDimstyleData2(const PyDbDimStyleTableRecord& pNewData)
+void PyDbDimension::setDimstyleData2(const PyDbDimStyleTableRecord& pNewData)
 {
-    return impObj()->setDimstyleData(pNewData.impObj());
+    return PyThrowBadEs(impObj()->setDimstyleData(pNewData.impObj()));
 }
 
-Acad::ErrorStatus PyDbDimension::setDimstyleData1(const PyDbObjectId& newDataId)
+void PyDbDimension::setDimstyleData1(const PyDbObjectId& newDataId)
 {
-    return impObj()->setDimstyleData(newDataId.m_id);
+    return PyThrowBadEs(impObj()->setDimstyleData(newDataId.m_id));
 }
 
 double PyDbDimension::horizontalRotation() const
@@ -342,9 +342,9 @@ double PyDbDimension::horizontalRotation() const
     return impObj()->horizontalRotation();
 }
 
-Acad::ErrorStatus PyDbDimension::setHorizontalRotation(double newVal)
+void PyDbDimension::setHorizontalRotation(double newVal)
 {
-    return impObj()->setHorizontalRotation(newVal);
+    return PyThrowBadEs(impObj()->setHorizontalRotation(newVal));
 }
 
 PyDbObjectId PyDbDimension::dimBlockId() const
@@ -352,9 +352,9 @@ PyDbObjectId PyDbDimension::dimBlockId() const
     return PyDbObjectId(impObj()->dimBlockId());
 }
 
-Acad::ErrorStatus PyDbDimension::setDimBlockId(const PyDbObjectId& val)
+void PyDbDimension::setDimBlockId(const PyDbObjectId& val)
 {
-    return impObj()->setDimBlockId(val.m_id);
+    return PyThrowBadEs(impObj()->setDimBlockId(val.m_id));
 }
 
 AcGePoint3d PyDbDimension::dimBlockPosition() const
@@ -362,24 +362,24 @@ AcGePoint3d PyDbDimension::dimBlockPosition() const
     return impObj()->dimBlockPosition();
 }
 
-Acad::ErrorStatus PyDbDimension::setDimBlockPosition(const AcGePoint3d& val)
+void PyDbDimension::setDimBlockPosition(const AcGePoint3d& val)
 {
-    return impObj()->setDimBlockPosition(val);
+    return PyThrowBadEs(impObj()->setDimBlockPosition(val));
 }
 
-Acad::ErrorStatus PyDbDimension::recomputeDimBlock1()
+void PyDbDimension::recomputeDimBlock1()
 {
-    return impObj()->recomputeDimBlock();
+    return PyThrowBadEs(impObj()->recomputeDimBlock());
 }
 
-Acad::ErrorStatus PyDbDimension::recomputeDimBlock2(bool forceUpdate)
+void PyDbDimension::recomputeDimBlock2(bool forceUpdate)
 {
-    return impObj()->recomputeDimBlock(forceUpdate);
+    return PyThrowBadEs(impObj()->recomputeDimBlock(forceUpdate));
 }
 
-Acad::ErrorStatus PyDbDimension::generateLayout()
+void PyDbDimension::generateLayout()
 {
-    return impObj()->generateLayout();
+    return PyThrowBadEs(impObj()->generateLayout());
 }
 
 double PyDbDimension::measurement()
@@ -416,9 +416,9 @@ bool PyDbDimension::isDynamicDimension() const
     return impObj()->isDynamicDimension();
 }
 
-Acad::ErrorStatus PyDbDimension::setDynamicDimension(bool newVal)
+void PyDbDimension::setDynamicDimension(bool newVal)
 {
-    return impObj()->setDynamicDimension(newVal);
+    return PyThrowBadEs(impObj()->setDynamicDimension(newVal));
 }
 
 PyDbObjectId PyDbDimension::dimLineLinetype() const
@@ -426,9 +426,9 @@ PyDbObjectId PyDbDimension::dimLineLinetype() const
     return PyDbObjectId(impObj()->dimLineLinetype());
 }
 
-Acad::ErrorStatus PyDbDimension::setDimLineLinetype(const PyDbObjectId& linetype)
+void PyDbDimension::setDimLineLinetype(const PyDbObjectId& linetype)
 {
-    return impObj()->setDimLineLinetype(linetype.m_id);
+    return PyThrowBadEs(impObj()->setDimLineLinetype(linetype.m_id));
 }
 
 PyDbObjectId PyDbDimension::dimExt1Linetype() const
@@ -436,9 +436,9 @@ PyDbObjectId PyDbDimension::dimExt1Linetype() const
     return PyDbObjectId(impObj()->dimExt1Linetype());
 }
 
-Acad::ErrorStatus PyDbDimension::setDimExt1Linetype(const PyDbObjectId& linetype)
+void PyDbDimension::setDimExt1Linetype(const PyDbObjectId& linetype)
 {
-    return impObj()->setDimExt1Linetype(linetype.m_id);
+    return PyThrowBadEs(impObj()->setDimExt1Linetype(linetype.m_id));
 }
 
 PyDbObjectId PyDbDimension::dimExt2Linetype() const
@@ -446,35 +446,35 @@ PyDbObjectId PyDbDimension::dimExt2Linetype() const
     return PyDbObjectId(impObj()->dimExt2Linetype());
 }
 
-Acad::ErrorStatus PyDbDimension::setDimExt2Linetype(const PyDbObjectId& linetype)
+void PyDbDimension::setDimExt2Linetype(const PyDbObjectId& linetype)
 {
-    return impObj()->setDimExt2Linetype(linetype.m_id);
+    return PyThrowBadEs(impObj()->setDimExt2Linetype(linetype.m_id));
 }
 
-Acad::ErrorStatus PyDbDimension::removeTextField()
+void PyDbDimension::removeTextField()
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->removeTextField();
+    return PyThrowBadEs(impObj()->removeTextField());
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::fieldToMText(PyDbMText& pDimMText)
+void PyDbDimension::fieldToMText(PyDbMText& pDimMText)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->fieldToMText(pDimMText.impObj());
+    return PyThrowBadEs(impObj()->fieldToMText(pDimMText.impObj()));
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::fieldFromMText(PyDbMText& pDimMText)
+void PyDbDimension::fieldFromMText(PyDbMText& pDimMText)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->fieldFromMText(pDimMText.impObj());
+    return PyThrowBadEs(impObj()->fieldFromMText(pDimMText.impObj()));
 #endif
 }
 
@@ -487,12 +487,12 @@ bool PyDbDimension::isHorizontalRefTextRotation() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setHorizontalRefTextRotation(bool newVal)
+void PyDbDimension::setHorizontalRefTextRotation(bool newVal)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setHorizontalRefTextRotation(newVal);
+    return PyThrowBadEs(impObj()->setHorizontalRefTextRotation(newVal));
 #endif
 }
 
@@ -506,14 +506,14 @@ bool PyDbDimension::getArrowSecondIsFlipped() const
     return impObj()->getArrowSecondIsFlipped();
 }
 
-Acad::ErrorStatus PyDbDimension::setArrowFirstIsFlipped(bool bIsFlipped)
+void PyDbDimension::setArrowFirstIsFlipped(bool bIsFlipped)
 {
-    return impObj()->setArrowFirstIsFlipped(bIsFlipped);
+    return PyThrowBadEs(impObj()->setArrowFirstIsFlipped(bIsFlipped));
 }
 
-Acad::ErrorStatus PyDbDimension::setArrowSecondIsFlipped(bool bIsFlipped)
+void PyDbDimension::setArrowSecondIsFlipped(bool bIsFlipped)
 {
-    return impObj()->setArrowSecondIsFlipped(bIsFlipped);
+    return PyThrowBadEs(impObj()->setArrowSecondIsFlipped(bIsFlipped));
 }
 
 AcGeMatrix3d PyDbDimension::blockTransform() const
@@ -530,12 +530,12 @@ bool PyDbDimension::inspection() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setInspection(bool val)
+void PyDbDimension::setInspection(bool val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setInspection(val);
+    return PyThrowBadEs(impObj()->setInspection(val));
 #endif
 }
 
@@ -548,12 +548,12 @@ int PyDbDimension::inspectionFrame() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setInspectionFrame(int frame)
+void PyDbDimension::setInspectionFrame(int frame)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setInspectionFrame(frame);
+    return PyThrowBadEs(impObj()->setInspectionFrame(frame));
 #endif
 }
 
@@ -566,12 +566,12 @@ const std::string PyDbDimension::inspectionLabel() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setInspectionLabel(const std::string& label)
+void PyDbDimension::setInspectionLabel(const std::string& label)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setInspectionLabel(utf8_to_wstr(label).c_str());
+    return PyThrowBadEs(impObj()->setInspectionLabel(utf8_to_wstr(label).c_str()));
 #endif
 }
 
@@ -597,12 +597,12 @@ bool PyDbDimension::isConstraintDynamic(void) const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setConstraintDynamic(bool bDynamic)
+void PyDbDimension::setConstraintDynamic(bool bDynamic)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setConstraintDynamic(bDynamic);
+    return PyThrowBadEs(impObj()->setConstraintDynamic(bDynamic));
 #endif
 }
 
@@ -644,12 +644,12 @@ std::string PyDbDimension::prefix() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setPrefix(const std::string& val)
+void PyDbDimension::setPrefix(const std::string& val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setPrefix(utf8_to_wstr(val).c_str());
+    return PyThrowBadEs(impObj()->setPrefix(utf8_to_wstr(val).c_str()));
 #endif
 }
 
@@ -664,12 +664,12 @@ std::string PyDbDimension::suffix() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setSuffix(const std::string& val)
+void PyDbDimension::setSuffix(const std::string& val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setSuffix(utf8_to_wstr(val).c_str());
+    return PyThrowBadEs(impObj()->setSuffix(utf8_to_wstr(val).c_str()));
 #endif
 }
 
@@ -684,12 +684,12 @@ std::string PyDbDimension::alternateSuffix() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setAlternateSuffix(const std::string& val)
+void PyDbDimension::setAlternateSuffix(const std::string& val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setAlternateSuffix(utf8_to_wstr(val).c_str());
+    return PyThrowBadEs(impObj()->setAlternateSuffix(utf8_to_wstr(val).c_str()));
 #endif
 }
 
@@ -704,12 +704,12 @@ std::string PyDbDimension::alternatePrefix() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setAlternatePrefix(const std::string& val)
+void PyDbDimension::setAlternatePrefix(const std::string& val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setAlternatePrefix(utf8_to_wstr(val).c_str());
+    return PyThrowBadEs(impObj()->setAlternatePrefix(utf8_to_wstr(val).c_str()));
 #endif
 }
 
@@ -722,12 +722,12 @@ bool PyDbDimension::suppressAngularLeadingZeros() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setSuppressAngularLeadingZeros(bool val)
+void PyDbDimension::setSuppressAngularLeadingZeros(bool val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setSuppressAngularLeadingZeros(val);
+    return PyThrowBadEs(impObj()->setSuppressAngularLeadingZeros(val));
 #endif
 }
 
@@ -740,12 +740,12 @@ bool PyDbDimension::suppressAngularTrailingZeros() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setSuppressAngularTrailingZeros(bool val)
+void PyDbDimension::setSuppressAngularTrailingZeros(bool val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setSuppressAngularTrailingZeros(val);
+    return PyThrowBadEs(impObj()->setSuppressAngularTrailingZeros(val));
 #endif
 }
 
@@ -758,12 +758,12 @@ bool PyDbDimension::altSuppressZeroInches() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setAltSuppressZeroInches(bool val)
+void PyDbDimension::setAltSuppressZeroInches(bool val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setAltSuppressZeroInches(val);
+    return PyThrowBadEs(impObj()->setAltSuppressZeroInches(val));
 #endif
 }
 
@@ -776,12 +776,12 @@ bool PyDbDimension::altSuppressZeroFeet() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setAltSuppressZeroFeet(bool val)
+void PyDbDimension::setAltSuppressZeroFeet(bool val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setAltSuppressZeroFeet(val);
+    return PyThrowBadEs(impObj()->setAltSuppressZeroFeet(val));
 #endif
 }
 
@@ -794,12 +794,12 @@ bool PyDbDimension::altSuppressTrailingZeros() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setAltSuppressTrailingZeros(bool val)
+void PyDbDimension::setAltSuppressTrailingZeros(bool val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setAltSuppressTrailingZeros(val);
+    return PyThrowBadEs(impObj()->setAltSuppressTrailingZeros(val));
 #endif
 }
 
@@ -812,12 +812,12 @@ bool PyDbDimension::altToleranceSuppressLeadingZeros() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setAltToleranceSuppressLeadingZeros(bool val)
+void PyDbDimension::setAltToleranceSuppressLeadingZeros(bool val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setAltToleranceSuppressLeadingZeros(val);
+    return PyThrowBadEs(impObj()->setAltToleranceSuppressLeadingZeros(val));
 #endif
 }
 
@@ -830,12 +830,12 @@ bool PyDbDimension::altToleranceSuppressZeroInches() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setAltToleranceSuppressZeroInches(bool val)
+void PyDbDimension::setAltToleranceSuppressZeroInches(bool val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setAltToleranceSuppressZeroInches(val);
+    return PyThrowBadEs(impObj()->setAltToleranceSuppressZeroInches(val));
 #endif
 }
 
@@ -848,12 +848,12 @@ bool PyDbDimension::altToleranceSuppressZeroFeet() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setAltToleranceSuppressZeroFeet(bool val)
+void PyDbDimension::setAltToleranceSuppressZeroFeet(bool val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setAltToleranceSuppressZeroFeet(val);
+    return PyThrowBadEs(impObj()->setAltToleranceSuppressZeroFeet(val));
 #endif
 }
 
@@ -862,9 +862,9 @@ bool PyDbDimension::altToleranceSuppressTrailingZeros() const
     return impObj()->altToleranceSuppressTrailingZeros();
 }
 
-Acad::ErrorStatus PyDbDimension::setAltToleranceSuppressTrailingZeros(bool val)
+void PyDbDimension::setAltToleranceSuppressTrailingZeros(bool val)
 {
-    return impObj()->setAltToleranceSuppressTrailingZeros(val);
+    return PyThrowBadEs(impObj()->setAltToleranceSuppressTrailingZeros(val));
 }
 
 bool PyDbDimension::suppressZeroFeet() const
@@ -876,12 +876,12 @@ bool PyDbDimension::suppressZeroFeet() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setSuppressZeroFeet(bool val)
+void PyDbDimension::setSuppressZeroFeet(bool val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setSuppressZeroFeet(val);
+    return PyThrowBadEs(impObj()->setSuppressZeroFeet(val));
 #endif
 }
 
@@ -894,12 +894,12 @@ bool PyDbDimension::suppressTrailingZeros() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setSuppressTrailingZeros(bool val)
+void PyDbDimension::setSuppressTrailingZeros(bool val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setSuppressTrailingZeros(val);
+    return PyThrowBadEs(impObj()->setSuppressTrailingZeros(val));
 #endif
 }
 
@@ -912,12 +912,12 @@ bool PyDbDimension::suppressLeadingZeros() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setSuppressLeadingZeros(bool val)
+void PyDbDimension::setSuppressLeadingZeros(bool val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setSuppressLeadingZeros(val);
+    return PyThrowBadEs(impObj()->setSuppressLeadingZeros(val));
 #endif
 }
 
@@ -930,12 +930,12 @@ bool PyDbDimension::suppressZeroInches() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setSuppressZeroInches(bool val)
+void PyDbDimension::setSuppressZeroInches(bool val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setSuppressZeroInches(val);
+    return PyThrowBadEs(impObj()->setSuppressZeroInches(val));
 #endif
 }
 
@@ -948,12 +948,12 @@ bool PyDbDimension::altSuppressLeadingZeros() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setAltSuppressLeadingZeros(bool val)
+void PyDbDimension::setAltSuppressLeadingZeros(bool val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setAltSuppressLeadingZeros(val);
+    return PyThrowBadEs(impObj()->setAltSuppressLeadingZeros(val));
 #endif
 }
 
@@ -966,12 +966,12 @@ bool PyDbDimension::toleranceSuppressZeroFeet() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setToleranceSuppressZeroFeet(bool val)
+void PyDbDimension::setToleranceSuppressZeroFeet(bool val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setToleranceSuppressZeroFeet(val);
+    return PyThrowBadEs(impObj()->setToleranceSuppressZeroFeet(val));
 #endif
 }
 
@@ -984,12 +984,12 @@ bool PyDbDimension::toleranceSuppressTrailingZeros() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setToleranceSuppressTrailingZeros(bool val)
+void PyDbDimension::setToleranceSuppressTrailingZeros(bool val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setToleranceSuppressTrailingZeros(val);
+    return PyThrowBadEs(impObj()->setToleranceSuppressTrailingZeros(val));
 #endif
 }
 
@@ -1002,12 +1002,12 @@ bool PyDbDimension::toleranceSuppressLeadingZeros() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setToleranceSuppressLeadingZeros(bool val)
+void PyDbDimension::setToleranceSuppressLeadingZeros(bool val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setToleranceSuppressLeadingZeros(val);
+    return PyThrowBadEs(impObj()->setToleranceSuppressLeadingZeros(val));
 #endif
 }
 
@@ -1020,12 +1020,12 @@ bool PyDbDimension::toleranceSuppressZeroInches() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDimension::setToleranceSuppressZeroInches(bool val)
+void PyDbDimension::setToleranceSuppressZeroInches(bool val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setToleranceSuppressZeroInches(val);
+    return PyThrowBadEs(impObj()->setToleranceSuppressZeroInches(val));
 #endif
 }
 
@@ -1144,9 +1144,9 @@ AcGePoint3d PyDb2LineAngularDimension::arcPoint() const
     return impObj()->arcPoint();
 }
 
-Acad::ErrorStatus PyDb2LineAngularDimension::setArcPoint(const AcGePoint3d& val)
+void PyDb2LineAngularDimension::setArcPoint(const AcGePoint3d& val)
 {
-    return impObj()->setArcPoint(val);
+    return PyThrowBadEs(impObj()->setArcPoint(val));
 }
 
 AcGePoint3d PyDb2LineAngularDimension::xLine1Start() const
@@ -1154,9 +1154,9 @@ AcGePoint3d PyDb2LineAngularDimension::xLine1Start() const
     return impObj()->xLine1Start();
 }
 
-Acad::ErrorStatus PyDb2LineAngularDimension::setXLine1Start(const AcGePoint3d& val)
+void PyDb2LineAngularDimension::setXLine1Start(const AcGePoint3d& val)
 {
-    return impObj()->setXLine1Start(val);
+    return PyThrowBadEs(impObj()->setXLine1Start(val));
 }
 
 AcGePoint3d PyDb2LineAngularDimension::xLine1End() const
@@ -1164,9 +1164,9 @@ AcGePoint3d PyDb2LineAngularDimension::xLine1End() const
     return impObj()->xLine1End();
 }
 
-Acad::ErrorStatus PyDb2LineAngularDimension::setXLine1End(const AcGePoint3d& val)
+void PyDb2LineAngularDimension::setXLine1End(const AcGePoint3d& val)
 {
-    return impObj()->setXLine1End(val);
+    return PyThrowBadEs(impObj()->setXLine1End(val));
 }
 
 AcGePoint3d PyDb2LineAngularDimension::xLine2Start() const
@@ -1174,9 +1174,9 @@ AcGePoint3d PyDb2LineAngularDimension::xLine2Start() const
     return impObj()->xLine2Start();
 }
 
-Acad::ErrorStatus PyDb2LineAngularDimension::setXLine2Start(const AcGePoint3d& val)
+void PyDb2LineAngularDimension::setXLine2Start(const AcGePoint3d& val)
 {
-    return impObj()->setXLine2Start(val);
+    return PyThrowBadEs(impObj()->setXLine2Start(val));
 }
 
 AcGePoint3d PyDb2LineAngularDimension::xLine2End() const
@@ -1184,9 +1184,9 @@ AcGePoint3d PyDb2LineAngularDimension::xLine2End() const
     return impObj()->xLine2End();
 }
 
-Acad::ErrorStatus PyDb2LineAngularDimension::setXLine2End(const AcGePoint3d& val)
+void PyDb2LineAngularDimension::setXLine2End(const AcGePoint3d& val)
 {
-    return impObj()->setXLine2End(val);
+    return PyThrowBadEs(impObj()->setXLine2End(val));
 }
 
 bool PyDb2LineAngularDimension::extArcOn() const
@@ -1198,12 +1198,12 @@ bool PyDb2LineAngularDimension::extArcOn() const
 #endif
 }
 
-Acad::ErrorStatus PyDb2LineAngularDimension::setExtArcOn(bool value)
+void PyDb2LineAngularDimension::setExtArcOn(bool value)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setExtArcOn(value);
+    return PyThrowBadEs(impObj()->setExtArcOn(value));
 #endif
 }
 
@@ -1312,9 +1312,9 @@ AcGePoint3d PyDb3PointAngularDimension::arcPoint() const
     return impObj()->arcPoint();
 }
 
-Acad::ErrorStatus PyDb3PointAngularDimension::setArcPoint(const AcGePoint3d& val)
+void PyDb3PointAngularDimension::setArcPoint(const AcGePoint3d& val)
 {
-    return impObj()->setArcPoint(val);
+    return PyThrowBadEs(impObj()->setArcPoint(val));
 }
 
 AcGePoint3d PyDb3PointAngularDimension::xLine1Point() const
@@ -1322,9 +1322,9 @@ AcGePoint3d PyDb3PointAngularDimension::xLine1Point() const
     return impObj()->xLine1Point();
 }
 
-Acad::ErrorStatus PyDb3PointAngularDimension::setXLine1Point(const AcGePoint3d& val)
+void PyDb3PointAngularDimension::setXLine1Point(const AcGePoint3d& val)
 {
-    return impObj()->setXLine1Point(val);
+    return PyThrowBadEs(impObj()->setXLine1Point(val));
 }
 
 AcGePoint3d PyDb3PointAngularDimension::xLine2Point() const
@@ -1332,9 +1332,9 @@ AcGePoint3d PyDb3PointAngularDimension::xLine2Point() const
     return impObj()->xLine1Point();
 }
 
-Acad::ErrorStatus PyDb3PointAngularDimension::setXLine2Point(const AcGePoint3d& val)
+void PyDb3PointAngularDimension::setXLine2Point(const AcGePoint3d& val)
 {
-    return impObj()->setXLine2Point(val);
+    return PyThrowBadEs(impObj()->setXLine2Point(val));
 }
 
 AcGePoint3d PyDb3PointAngularDimension::centerPoint() const
@@ -1342,9 +1342,9 @@ AcGePoint3d PyDb3PointAngularDimension::centerPoint() const
     return impObj()->centerPoint();
 }
 
-Acad::ErrorStatus PyDb3PointAngularDimension::setCenterPoint(const AcGePoint3d& val)
+void PyDb3PointAngularDimension::setCenterPoint(const AcGePoint3d& val)
 {
-    return impObj()->setCenterPoint(val);
+    return PyThrowBadEs(impObj()->setCenterPoint(val));
 }
 
 bool PyDb3PointAngularDimension::extArcOn() const
@@ -1356,12 +1356,12 @@ bool PyDb3PointAngularDimension::extArcOn() const
 #endif
 }
 
-Acad::ErrorStatus PyDb3PointAngularDimension::setExtArcOn(bool value)
+void PyDb3PointAngularDimension::setExtArcOn(bool value)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setExtArcOn(value);
+    return PyThrowBadEs(impObj()->setExtArcOn(value));
 #endif
 }
 
@@ -1471,9 +1471,9 @@ AcGePoint3d PyDbAlignedDimension::xLine1Point() const
     return impObj()->xLine1Point();
 }
 
-Acad::ErrorStatus PyDbAlignedDimension::setXLine1Point(const AcGePoint3d& val)
+void PyDbAlignedDimension::setXLine1Point(const AcGePoint3d& val)
 {
-    return impObj()->setXLine1Point(val);
+    return PyThrowBadEs(impObj()->setXLine1Point(val));
 }
 
 AcGePoint3d PyDbAlignedDimension::xLine2Point() const
@@ -1481,9 +1481,9 @@ AcGePoint3d PyDbAlignedDimension::xLine2Point() const
     return impObj()->xLine2Point();
 }
 
-Acad::ErrorStatus PyDbAlignedDimension::setXLine2Point(const AcGePoint3d& val)
+void PyDbAlignedDimension::setXLine2Point(const AcGePoint3d& val)
 {
-    return impObj()->setXLine2Point(val);
+    return PyThrowBadEs(impObj()->setXLine2Point(val));
 }
 
 AcGePoint3d PyDbAlignedDimension::dimLinePoint() const
@@ -1491,9 +1491,9 @@ AcGePoint3d PyDbAlignedDimension::dimLinePoint() const
     return impObj()->dimLinePoint();
 }
 
-Acad::ErrorStatus PyDbAlignedDimension::setDimLinePoint(const AcGePoint3d& val)
+void PyDbAlignedDimension::setDimLinePoint(const AcGePoint3d& val)
 {
-    return impObj()->setDimLinePoint(val);
+    return PyThrowBadEs(impObj()->setDimLinePoint(val));
 }
 
 double PyDbAlignedDimension::oblique() const
@@ -1501,9 +1501,9 @@ double PyDbAlignedDimension::oblique() const
     return impObj()->oblique();
 }
 
-Acad::ErrorStatus PyDbAlignedDimension::setOblique(double val)
+void PyDbAlignedDimension::setOblique(double val)
 {
-    return impObj()->setOblique(val);
+    return PyThrowBadEs(impObj()->setOblique(val));
 }
 
 bool PyDbAlignedDimension::jogSymbolOn() const
@@ -1515,12 +1515,12 @@ bool PyDbAlignedDimension::jogSymbolOn() const
 #endif
 }
 
-Acad::ErrorStatus PyDbAlignedDimension::setJogSymbolOn(bool value)
+void PyDbAlignedDimension::setJogSymbolOn(bool value)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setJogSymbolOn(value);
+    return PyThrowBadEs(impObj()->setJogSymbolOn(value));
 #endif
 }
 
@@ -1533,12 +1533,12 @@ AcGePoint3d PyDbAlignedDimension::jogSymbolPosition() const
 #endif
 }
 
-Acad::ErrorStatus PyDbAlignedDimension::setJogSymbolPosition(const AcGePoint3d& pt)
+void PyDbAlignedDimension::setJogSymbolPosition(const AcGePoint3d& pt)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setJogSymbolPosition(pt);
+    return PyThrowBadEs(impObj()->setJogSymbolPosition(pt));
 #endif
 }
 
@@ -1659,9 +1659,9 @@ AcGePoint3d PyDbArcDimension::arcPoint() const
     return impObj()->arcPoint();
 }
 
-Acad::ErrorStatus PyDbArcDimension::setArcPoint(const AcGePoint3d& arcPt)
+void PyDbArcDimension::setArcPoint(const AcGePoint3d& arcPt)
 {
-    return impObj()->setArcPoint(arcPt);
+    return PyThrowBadEs(impObj()->setArcPoint(arcPt));
 }
 
 AcGePoint3d PyDbArcDimension::xLine1Point() const
@@ -1669,9 +1669,9 @@ AcGePoint3d PyDbArcDimension::xLine1Point() const
     return impObj()->xLine1Point();
 }
 
-Acad::ErrorStatus PyDbArcDimension::setXLine1Point(const AcGePoint3d& xLine1Pt)
+void PyDbArcDimension::setXLine1Point(const AcGePoint3d& xLine1Pt)
 {
-    return impObj()->setXLine1Point(xLine1Pt);
+    return PyThrowBadEs(impObj()->setXLine1Point(xLine1Pt));
 }
 
 AcGePoint3d PyDbArcDimension::xLine2Point() const
@@ -1679,9 +1679,9 @@ AcGePoint3d PyDbArcDimension::xLine2Point() const
     return impObj()->xLine2Point();
 }
 
-Acad::ErrorStatus PyDbArcDimension::setXLine2Point(const AcGePoint3d& xLine2Pt)
+void PyDbArcDimension::setXLine2Point(const AcGePoint3d& xLine2Pt)
 {
-    return impObj()->setXLine2Point(xLine2Pt);
+    return PyThrowBadEs(impObj()->setXLine2Point(xLine2Pt));
 }
 
 AcGePoint3d PyDbArcDimension::centerPoint() const
@@ -1689,9 +1689,9 @@ AcGePoint3d PyDbArcDimension::centerPoint() const
     return impObj()->centerPoint();
 }
 
-Acad::ErrorStatus PyDbArcDimension::setCenterPoint(const AcGePoint3d& ctrPt)
+void PyDbArcDimension::setCenterPoint(const AcGePoint3d& ctrPt)
 {
-    return impObj()->setCenterPoint(ctrPt);
+    return PyThrowBadEs(impObj()->setCenterPoint(ctrPt));
 }
 
 bool PyDbArcDimension::isPartial() const
@@ -1703,12 +1703,12 @@ bool PyDbArcDimension::isPartial() const
 #endif
 }
 
-Acad::ErrorStatus PyDbArcDimension::setIsPartial(bool partial)
+void PyDbArcDimension::setIsPartial(bool partial)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setIsPartial(partial);
+    return PyThrowBadEs(impObj()->setIsPartial(partial));
 #endif
 }
 
@@ -1717,9 +1717,9 @@ double PyDbArcDimension::arcStartParam() const
     return impObj()->arcStartParam();
 }
 
-Acad::ErrorStatus PyDbArcDimension::setArcStartParam(double arcParam)
+void PyDbArcDimension::setArcStartParam(double arcParam)
 {
-    return impObj()->setArcStartParam(arcParam);
+    return PyThrowBadEs(impObj()->setArcStartParam(arcParam));
 }
 
 double PyDbArcDimension::arcEndParam() const
@@ -1727,9 +1727,9 @@ double PyDbArcDimension::arcEndParam() const
     return impObj()->arcEndParam();
 }
 
-Acad::ErrorStatus PyDbArcDimension::setArcEndParam(double arcParam)
+void PyDbArcDimension::setArcEndParam(double arcParam)
 {
-    return impObj()->setArcEndParam(arcParam);
+    return PyThrowBadEs(impObj()->setArcEndParam(arcParam));
 }
 
 bool PyDbArcDimension::hasLeader() const
@@ -1737,9 +1737,9 @@ bool PyDbArcDimension::hasLeader() const
     return impObj()->hasLeader();
 }
 
-Acad::ErrorStatus PyDbArcDimension::setHasLeader(bool leaderVal)
+void PyDbArcDimension::setHasLeader(bool leaderVal)
 {
-    return impObj()->setHasLeader(leaderVal);
+    return PyThrowBadEs(impObj()->setHasLeader(leaderVal));
 }
 
 AcGePoint3d PyDbArcDimension::leader1Point() const
@@ -1747,9 +1747,9 @@ AcGePoint3d PyDbArcDimension::leader1Point() const
     return impObj()->leader1Point();
 }
 
-Acad::ErrorStatus PyDbArcDimension::setLeader1Point(const AcGePoint3d& ldr1Pt)
+void PyDbArcDimension::setLeader1Point(const AcGePoint3d& ldr1Pt)
 {
-    return impObj()->setLeader1Point(ldr1Pt);
+    return PyThrowBadEs(impObj()->setLeader1Point(ldr1Pt));
 }
 
 AcGePoint3d PyDbArcDimension::leader2Point() const
@@ -1757,9 +1757,9 @@ AcGePoint3d PyDbArcDimension::leader2Point() const
     return impObj()->leader2Point();
 }
 
-Acad::ErrorStatus PyDbArcDimension::setLeader2Point(const AcGePoint3d& ldr2Pt)
+void PyDbArcDimension::setLeader2Point(const AcGePoint3d& ldr2Pt)
 {
-    return impObj()->setLeader2Point(ldr2Pt);
+    return PyThrowBadEs(impObj()->setLeader2Point(ldr2Pt));
 }
 
 int PyDbArcDimension::arcSymbolType() const
@@ -1767,9 +1767,9 @@ int PyDbArcDimension::arcSymbolType() const
     return impObj()->arcSymbolType();
 }
 
-Acad::ErrorStatus PyDbArcDimension::setArcSymbolType(int symbol)
+void PyDbArcDimension::setArcSymbolType(int symbol)
 {
-    return impObj()->setArcSymbolType(symbol);
+    return PyThrowBadEs(impObj()->setArcSymbolType(symbol));
 }
 
 std::string PyDbArcDimension::className()
@@ -1876,9 +1876,9 @@ double PyDbDiametricDimension::leaderLength() const
     return impObj()->leaderLength();
 }
 
-Acad::ErrorStatus PyDbDiametricDimension::setLeaderLength(double val)
+void PyDbDiametricDimension::setLeaderLength(double val)
 {
-    return impObj()->setLeaderLength(val);
+    return PyThrowBadEs(impObj()->setLeaderLength(val));
 }
 
 AcGePoint3d PyDbDiametricDimension::chordPoint() const
@@ -1886,9 +1886,9 @@ AcGePoint3d PyDbDiametricDimension::chordPoint() const
     return impObj()->chordPoint();
 }
 
-Acad::ErrorStatus PyDbDiametricDimension::setChordPoint(const AcGePoint3d& val)
+void PyDbDiametricDimension::setChordPoint(const AcGePoint3d& val)
 {
-    return impObj()->setChordPoint(val);
+    return PyThrowBadEs(impObj()->setChordPoint(val));
 }
 
 AcGePoint3d PyDbDiametricDimension::farChordPoint() const
@@ -1896,9 +1896,9 @@ AcGePoint3d PyDbDiametricDimension::farChordPoint() const
     return impObj()->farChordPoint();
 }
 
-Acad::ErrorStatus PyDbDiametricDimension::setFarChordPoint(const AcGePoint3d& val)
+void PyDbDiametricDimension::setFarChordPoint(const AcGePoint3d& val)
 {
-    return impObj()->setFarChordPoint(val);
+    return PyThrowBadEs(impObj()->setFarChordPoint(val));
 }
 
 double PyDbDiametricDimension::extArcStartAngle() const
@@ -1910,12 +1910,12 @@ double PyDbDiametricDimension::extArcStartAngle() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDiametricDimension::setExtArcStartAngle(double newAngle)
+void PyDbDiametricDimension::setExtArcStartAngle(double newAngle)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setExtArcStartAngle(newAngle);
+    return PyThrowBadEs(impObj()->setExtArcStartAngle(newAngle));
 #endif
 }
 
@@ -1928,12 +1928,12 @@ double PyDbDiametricDimension::extArcEndAngle() const
 #endif
 }
 
-Acad::ErrorStatus PyDbDiametricDimension::setExtArcEndAngle(double newAngle)
+void PyDbDiametricDimension::setExtArcEndAngle(double newAngle)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setExtArcEndAngle(newAngle);
+    return PyThrowBadEs(impObj()->setExtArcEndAngle(newAngle));
 #endif
 }
 
@@ -2048,31 +2048,31 @@ Adesk::Boolean PyDbOrdinateDimension::isUsingYAxis() const
     return impObj()->isUsingYAxis();
 }
 
-Acad::ErrorStatus PyDbOrdinateDimension::useXAxis()
+void PyDbOrdinateDimension::useXAxis()
 {
-    return impObj()->useXAxis();
+    return PyThrowBadEs(impObj()->useXAxis());
 }
 
-Acad::ErrorStatus PyDbOrdinateDimension::useYAxis()
+void PyDbOrdinateDimension::useYAxis()
 {
-    return impObj()->useYAxis();
+    return PyThrowBadEs(impObj()->useYAxis());
 }
 
-Acad::ErrorStatus PyDbOrdinateDimension::setUsingXAxis(bool value)
+void PyDbOrdinateDimension::setUsingXAxis(bool value)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setUsingXAxis(value);
+    return PyThrowBadEs(impObj()->setUsingXAxis(value));
 #endif
 }
 
-Acad::ErrorStatus PyDbOrdinateDimension::setUsingYAxis(bool value)
+void PyDbOrdinateDimension::setUsingYAxis(bool value)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setUsingYAxis(value);
+    return PyThrowBadEs(impObj()->setUsingYAxis(value));
 #endif
 }
 
@@ -2081,9 +2081,9 @@ AcGePoint3d PyDbOrdinateDimension::origin() const
     return impObj()->origin();
 }
 
-Acad::ErrorStatus PyDbOrdinateDimension::setOrigin(const AcGePoint3d& val)
+void PyDbOrdinateDimension::setOrigin(const AcGePoint3d& val)
 {
-    return impObj()->setOrigin(val);
+    return PyThrowBadEs(impObj()->setOrigin(val));
 }
 
 AcGePoint3d PyDbOrdinateDimension::definingPoint() const
@@ -2091,9 +2091,9 @@ AcGePoint3d PyDbOrdinateDimension::definingPoint() const
     return impObj()->definingPoint();
 }
 
-Acad::ErrorStatus PyDbOrdinateDimension::setDefiningPoint(const AcGePoint3d& val)
+void PyDbOrdinateDimension::setDefiningPoint(const AcGePoint3d& val)
 {
-    return impObj()->setDefiningPoint(val);
+    return PyThrowBadEs(impObj()->setDefiningPoint(val));
 }
 
 AcGePoint3d PyDbOrdinateDimension::leaderEndPoint() const
@@ -2101,9 +2101,9 @@ AcGePoint3d PyDbOrdinateDimension::leaderEndPoint() const
     return impObj()->leaderEndPoint();
 }
 
-Acad::ErrorStatus PyDbOrdinateDimension::setLeaderEndPoint(const AcGePoint3d& val)
+void PyDbOrdinateDimension::setLeaderEndPoint(const AcGePoint3d& val)
 {
-    return impObj()->setLeaderEndPoint(val);
+    return PyThrowBadEs(impObj()->setLeaderEndPoint(val));
 }
 
 std::string PyDbOrdinateDimension::className()
@@ -2210,9 +2210,9 @@ double PyDbRadialDimension::leaderLength() const
     return impObj()->leaderLength();
 }
 
-Acad::ErrorStatus PyDbRadialDimension::setLeaderLength(double val)
+void PyDbRadialDimension::setLeaderLength(double val)
 {
-    return impObj()->setLeaderLength(val);
+    return PyThrowBadEs(impObj()->setLeaderLength(val));
 }
 
 AcGePoint3d PyDbRadialDimension::center() const
@@ -2220,9 +2220,9 @@ AcGePoint3d PyDbRadialDimension::center() const
     return impObj()->center();
 }
 
-Acad::ErrorStatus PyDbRadialDimension::setCenter(const AcGePoint3d& val)
+void PyDbRadialDimension::setCenter(const AcGePoint3d& val)
 {
-    return impObj()->setCenter(val);
+    return PyThrowBadEs(impObj()->setCenter(val));
 }
 
 AcGePoint3d PyDbRadialDimension::chordPoint() const
@@ -2230,9 +2230,9 @@ AcGePoint3d PyDbRadialDimension::chordPoint() const
     return impObj()->chordPoint();
 }
 
-Acad::ErrorStatus PyDbRadialDimension::setChordPoint(const AcGePoint3d& val)
+void PyDbRadialDimension::setChordPoint(const AcGePoint3d& val)
 {
-    return impObj()->setChordPoint(val);
+    return PyThrowBadEs(impObj()->setChordPoint(val));
 }
 
 double PyDbRadialDimension::extArcStartAngle() const
@@ -2240,9 +2240,9 @@ double PyDbRadialDimension::extArcStartAngle() const
     return impObj()->extArcStartAngle();
 }
 
-Acad::ErrorStatus PyDbRadialDimension::setExtArcStartAngle(double newAngle)
+void PyDbRadialDimension::setExtArcStartAngle(double newAngle)
 {
-    return impObj()->setExtArcStartAngle(newAngle);
+    return PyThrowBadEs(impObj()->setExtArcStartAngle(newAngle));
 }
 
 double PyDbRadialDimension::extArcEndAngle() const
@@ -2250,9 +2250,9 @@ double PyDbRadialDimension::extArcEndAngle() const
     return impObj()->extArcEndAngle();
 }
 
-Acad::ErrorStatus PyDbRadialDimension::setExtArcEndAngle(double newAngle)
+void PyDbRadialDimension::setExtArcEndAngle(double newAngle)
 {
-    return impObj()->setExtArcEndAngle(newAngle);
+    return PyThrowBadEs(impObj()->setExtArcEndAngle(newAngle));
 }
 
 std::string PyDbRadialDimension::className()
@@ -2366,9 +2366,9 @@ AcGePoint3d PyDbRadialDimensionLarge::center() const
     return impObj()->center();
 }
 
-Acad::ErrorStatus PyDbRadialDimensionLarge::setCenter(const AcGePoint3d& centerPoint)
+void PyDbRadialDimensionLarge::setCenter(const AcGePoint3d& centerPoint)
 {
-    return impObj()->setCenter(centerPoint);
+    return PyThrowBadEs(impObj()->setCenter(centerPoint));
 }
 
 AcGePoint3d PyDbRadialDimensionLarge::chordPoint() const
@@ -2376,9 +2376,9 @@ AcGePoint3d PyDbRadialDimensionLarge::chordPoint() const
     return impObj()->chordPoint();
 }
 
-Acad::ErrorStatus PyDbRadialDimensionLarge::setChordPoint(const AcGePoint3d& chordPoint)
+void PyDbRadialDimensionLarge::setChordPoint(const AcGePoint3d& chordPoint)
 {
-    return impObj()->setChordPoint(chordPoint);
+    return PyThrowBadEs(impObj()->setChordPoint(chordPoint));
 }
 
 AcGePoint3d PyDbRadialDimensionLarge::overrideCenter() const
@@ -2386,9 +2386,9 @@ AcGePoint3d PyDbRadialDimensionLarge::overrideCenter() const
     return impObj()->overrideCenter();
 }
 
-Acad::ErrorStatus PyDbRadialDimensionLarge::setOverrideCenter(const AcGePoint3d& overrideCenterPoint)
+void PyDbRadialDimensionLarge::setOverrideCenter(const AcGePoint3d& overrideCenterPoint)
 {
-    return impObj()->setOverrideCenter(overrideCenterPoint);
+    return PyThrowBadEs(impObj()->setOverrideCenter(overrideCenterPoint));
 }
 
 AcGePoint3d PyDbRadialDimensionLarge::jogPoint() const
@@ -2396,9 +2396,9 @@ AcGePoint3d PyDbRadialDimensionLarge::jogPoint() const
     return impObj()->jogPoint();
 }
 
-Acad::ErrorStatus PyDbRadialDimensionLarge::setJogPoint(const AcGePoint3d& jogPoint)
+void PyDbRadialDimensionLarge::setJogPoint(const AcGePoint3d& jogPoint)
 {
-    return impObj()->setJogPoint(jogPoint);
+    return PyThrowBadEs(impObj()->setJogPoint(jogPoint));
 }
 
 double PyDbRadialDimensionLarge::jogAngle() const
@@ -2406,35 +2406,35 @@ double PyDbRadialDimensionLarge::jogAngle() const
     return impObj()->jogAngle();
 }
 
-Acad::ErrorStatus PyDbRadialDimensionLarge::setJogAngle(double jogAngle)
+void PyDbRadialDimensionLarge::setJogAngle(double jogAngle)
 {
-    return impObj()->setJogAngle(jogAngle);
+    return PyThrowBadEs(impObj()->setJogAngle(jogAngle));
 }
 
-Acad::ErrorStatus PyDbRadialDimensionLarge::setOverrideCenterPP(const AcGePoint3d& overrideCenterPointPP)
+void PyDbRadialDimensionLarge::setOverrideCenterPP(const AcGePoint3d& overrideCenterPointPP)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setOverrideCenterPP(overrideCenterPointPP);
+    return PyThrowBadEs(impObj()->setOverrideCenterPP(overrideCenterPointPP));
 #endif
 }
 
-Acad::ErrorStatus PyDbRadialDimensionLarge::setJogPointPP(const AcGePoint3d& jogPointPP)
+void PyDbRadialDimensionLarge::setJogPointPP(const AcGePoint3d& jogPointPP)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setJogPointPP(jogPointPP);
+    return PyThrowBadEs(impObj()->setJogPointPP(jogPointPP));
 #endif
 }
 
-Acad::ErrorStatus PyDbRadialDimensionLarge::setTextPositionPP(const AcGePoint3d& textPointPP)
+void PyDbRadialDimensionLarge::setTextPositionPP(const AcGePoint3d& textPointPP)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setTextPositionPP(textPointPP);
+    return PyThrowBadEs(impObj()->setTextPositionPP(textPointPP));
 #endif
 }
 
@@ -2447,12 +2447,12 @@ double PyDbRadialDimensionLarge::extArcStartAngle() const
 #endif
 }
 
-Acad::ErrorStatus PyDbRadialDimensionLarge::setExtArcStartAngle(double newAngle)
+void PyDbRadialDimensionLarge::setExtArcStartAngle(double newAngle)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setExtArcStartAngle(newAngle);
+    return PyThrowBadEs(impObj()->setExtArcStartAngle(newAngle));
 #endif
 }
 
@@ -2465,12 +2465,12 @@ double PyDbRadialDimensionLarge::extArcEndAngle() const
 #endif
 }
 
-Acad::ErrorStatus PyDbRadialDimensionLarge::setExtArcEndAngle(double newAngle)
+void PyDbRadialDimensionLarge::setExtArcEndAngle(double newAngle)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setExtArcEndAngle(newAngle);
+    return PyThrowBadEs(impObj()->setExtArcEndAngle(newAngle));
 #endif
 }
 
@@ -2582,9 +2582,9 @@ AcGePoint3d PyDbRotatedDimension::xLine1Point() const
     return impObj()->xLine1Point();
 }
 
-Acad::ErrorStatus PyDbRotatedDimension::setXLine1Point(const AcGePoint3d& val)
+void PyDbRotatedDimension::setXLine1Point(const AcGePoint3d& val)
 {
-    return impObj()->setXLine1Point(val);
+    return PyThrowBadEs(impObj()->setXLine1Point(val));
 }
 
 AcGePoint3d PyDbRotatedDimension::xLine2Point() const
@@ -2592,9 +2592,9 @@ AcGePoint3d PyDbRotatedDimension::xLine2Point() const
     return impObj()->xLine2Point();
 }
 
-Acad::ErrorStatus PyDbRotatedDimension::setXLine2Point(const AcGePoint3d& val)
+void PyDbRotatedDimension::setXLine2Point(const AcGePoint3d& val)
 {
-    return impObj()->setXLine2Point(val);
+    return PyThrowBadEs(impObj()->setXLine2Point(val));
 }
 
 AcGePoint3d PyDbRotatedDimension::dimLinePoint() const
@@ -2602,9 +2602,9 @@ AcGePoint3d PyDbRotatedDimension::dimLinePoint() const
     return impObj()->dimLinePoint();
 }
 
-Acad::ErrorStatus PyDbRotatedDimension::setDimLinePoint(const AcGePoint3d& val)
+void PyDbRotatedDimension::setDimLinePoint(const AcGePoint3d& val)
 {
-    return impObj()->setDimLinePoint(val);
+    return PyThrowBadEs(impObj()->setDimLinePoint(val));
 }
 
 double PyDbRotatedDimension::oblique() const
@@ -2612,9 +2612,9 @@ double PyDbRotatedDimension::oblique() const
     return impObj()->oblique();
 }
 
-Acad::ErrorStatus PyDbRotatedDimension::setOblique(double val)
+void PyDbRotatedDimension::setOblique(double val)
 {
-    return impObj()->setOblique(val);
+    return PyThrowBadEs(impObj()->setOblique(val));
 }
 
 double PyDbRotatedDimension::rotation() const
@@ -2622,9 +2622,9 @@ double PyDbRotatedDimension::rotation() const
     return impObj()->rotation();
 }
 
-Acad::ErrorStatus PyDbRotatedDimension::setRotation(double val)
+void PyDbRotatedDimension::setRotation(double val)
 {
-    return impObj()->setRotation(val);
+    return PyThrowBadEs(impObj()->setRotation(val));
 }
 
 bool PyDbRotatedDimension::jogSymbolOn() const
@@ -2636,12 +2636,12 @@ bool PyDbRotatedDimension::jogSymbolOn() const
 #endif
 }
 
-Acad::ErrorStatus PyDbRotatedDimension::setJogSymbolOn(bool val)
+void PyDbRotatedDimension::setJogSymbolOn(bool val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setJogSymbolOn(val);
+    return PyThrowBadEs(impObj()->setJogSymbolOn(val));
 #endif
 }
 
@@ -2654,12 +2654,12 @@ AcGePoint3d PyDbRotatedDimension::jogSymbolPosition() const
 #endif
 }
 
-Acad::ErrorStatus PyDbRotatedDimension::setJogSymbolPosition(const AcGePoint3d& val)
+void PyDbRotatedDimension::setJogSymbolPosition(const AcGePoint3d& val)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setJogSymbolPosition(val);
+    return PyThrowBadEs(impObj()->setJogSymbolPosition(val));
 #endif
 }
 

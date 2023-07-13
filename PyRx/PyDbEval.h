@@ -31,13 +31,13 @@ public:
     bool operator == (const PyDbEvalVariant& val) const;
     bool operator != (const PyDbEvalVariant& val) const;
 
-    Acad::ErrorStatus setDouble(AcDb::DxfCode groupcode, double value);
-    Acad::ErrorStatus setInt16(AcDb::DxfCode groupcode, short value);
-    Acad::ErrorStatus setInt32(AcDb::DxfCode groupcode, Adesk::Int32 value);
-    Acad::ErrorStatus setString(AcDb::DxfCode groupcode, const std::string& value);
-    Acad::ErrorStatus setObjectId(AcDb::DxfCode groupcode, const PyDbObjectId& value);
-    Acad::ErrorStatus setPoint3d(AcDb::DxfCode groupcode, const AcGePoint3d& value);
-    Acad::ErrorStatus setPoint2d(AcDb::DxfCode groupcode, const AcGePoint2d& value);
+    void            setDouble(AcDb::DxfCode groupcode, double value);
+    void            setInt16(AcDb::DxfCode groupcode, short value);
+    void            setInt32(AcDb::DxfCode groupcode, Adesk::Int32 value);
+    void            setString(AcDb::DxfCode groupcode, const std::string& value);
+    void            setObjectId(AcDb::DxfCode groupcode, const PyDbObjectId& value);
+    void            setPoint3d(AcDb::DxfCode groupcode, const AcGePoint3d& value);
+    void            setPoint2d(AcDb::DxfCode groupcode, const AcGePoint2d& value);
 
     double          getDouble();
     short           getInt16();
@@ -51,7 +51,7 @@ public:
     //Acad::ErrorStatus fromAcRxValue(const AcRxValue& value);
 
     void clear();
-    Acad::ErrorStatus copyFrom(const PyRxObject& pOther);
+    void copyFrom(const PyRxObject& pOther);
     AcDb::DwgDataType getType() const;
 
     static PyRxClass desc();
@@ -82,7 +82,7 @@ public:
     AcDbDynBlockReferenceProperty::UnitsType unitsType() const;
     boost::python::list   getAllowedValues();
     PyDbEvalVariant       value() const;
-    Acad::ErrorStatus     setValue(const PyDbEvalVariant& value);
+    void                  setValue(const PyDbEvalVariant& value);
 
     static std::string className();
 public:

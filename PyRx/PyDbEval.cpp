@@ -125,55 +125,49 @@ bool PyDbEvalVariant::operator!=(const PyDbEvalVariant& val) const
     return *impObj() != *val.impObj();
 }
 
-Acad::ErrorStatus PyDbEvalVariant::setDouble(AcDb::DxfCode groupcode, double value)
+void PyDbEvalVariant::setDouble(AcDb::DxfCode groupcode, double value)
 {
     impObj()->restype = groupcode;
     impObj()->resval.rreal = value;
-    return eOk;
 }
 
-Acad::ErrorStatus PyDbEvalVariant::setInt16(AcDb::DxfCode groupcode, short value)
+void PyDbEvalVariant::setInt16(AcDb::DxfCode groupcode, short value)
 {
     impObj()->restype = groupcode;
     impObj()->resval.rint = value;
-    return eOk;
 }
 
-Acad::ErrorStatus PyDbEvalVariant::setInt32(AcDb::DxfCode groupcode, Adesk::Int32 value)
+void PyDbEvalVariant::setInt32(AcDb::DxfCode groupcode, Adesk::Int32 value)
 {
     impObj()->restype = groupcode;
     impObj()->resval.rlong = value;
-    return eOk;
 }
 
-Acad::ErrorStatus PyDbEvalVariant::setString(AcDb::DxfCode groupcode, const std::string& value)
+void PyDbEvalVariant::setString(AcDb::DxfCode groupcode, const std::string& value)
 {
     impObj()->restype = groupcode;
     impObj()->resval.rstring = _wcsdup(utf8_to_wstr(value).c_str());
-    return eOk;
 }
 
-Acad::ErrorStatus PyDbEvalVariant::setObjectId(AcDb::DxfCode groupcode, const PyDbObjectId& value)
+void PyDbEvalVariant::setObjectId(AcDb::DxfCode groupcode, const PyDbObjectId& value)
 {
     impObj()->restype = groupcode;
-    return acdbGetAdsName(impObj()->resval.rlname, value.m_id);
+    PyThrowBadEs(acdbGetAdsName(impObj()->resval.rlname, value.m_id));
 }
 
-Acad::ErrorStatus PyDbEvalVariant::setPoint3d(AcDb::DxfCode groupcode, const AcGePoint3d& value)
+void PyDbEvalVariant::setPoint3d(AcDb::DxfCode groupcode, const AcGePoint3d& value)
 {
     impObj()->restype = groupcode;
     impObj()->resval.rpoint[0] = value[0];
     impObj()->resval.rpoint[1] = value[1];
     impObj()->resval.rpoint[2] = value[2];
-    return eOk;
 }
 
-Acad::ErrorStatus PyDbEvalVariant::setPoint2d(AcDb::DxfCode groupcode, const AcGePoint2d& value)
+void PyDbEvalVariant::setPoint2d(AcDb::DxfCode groupcode, const AcGePoint2d& value)
 {
     impObj()->restype = groupcode;
     impObj()->resval.rpoint[0] = value[0];
     impObj()->resval.rpoint[1] = value[1];
-    return eOk;
 }
 
 double PyDbEvalVariant::getDouble()
@@ -250,9 +244,9 @@ void PyDbEvalVariant::clear()
     impObj()->clear();
 }
 
-Acad::ErrorStatus PyDbEvalVariant::copyFrom(const PyRxObject& pOther)
+void PyDbEvalVariant::copyFrom(const PyRxObject& pOther)
 {
-    return impObj()->copyFrom(pOther.impObj());
+    return PyThrowBadEs(impObj()->copyFrom(pOther.impObj()));
 }
 
 AcDb::DwgDataType PyDbEvalVariant::getType() const
@@ -384,9 +378,9 @@ PyDbEvalVariant PyDbDynBlockReferenceProperty::value() const
     return PyDbEvalVariant(impObj()->value());
 }
 
-Acad::ErrorStatus PyDbDynBlockReferenceProperty::setValue(const PyDbEvalVariant& value)
+void PyDbDynBlockReferenceProperty::setValue(const PyDbEvalVariant& value)
 {
-    return impObj()->setValue(*value.impObj());
+    return PyThrowBadEs(impObj()->setValue(*value.impObj()));
 }
 
 std::string PyDbDynBlockReferenceProperty::className()

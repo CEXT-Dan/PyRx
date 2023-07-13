@@ -22,45 +22,45 @@ void makeAcDbEntityWrapper()
         .def("entityColor", &PyDbEntity::entityColor)
         .def("layer", &PyDbEntity::layer)
         .def("layerId", &PyDbEntity::layerId)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(const std::string&)>("setLayer", &PyDbEntity::setLayer)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(const std::string&, bool)>("setLayer", &PyDbEntity::setLayer)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(const std::string&, bool, bool)>("setLayer", &PyDbEntity::setLayer)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(const PyDbObjectId&)>("setLayer", &PyDbEntity::setLayer)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(const PyDbObjectId&, bool)>("setLayer", &PyDbEntity::setLayer)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(const PyDbObjectId&, bool, bool)>("setLayer", &PyDbEntity::setLayer)
+        .def<void(PyDbEntity::*)(const std::string&)>("setLayer", &PyDbEntity::setLayer)
+        .def<void(PyDbEntity::*)(const std::string&, bool)>("setLayer", &PyDbEntity::setLayer)
+        .def<void(PyDbEntity::*)(const std::string&, bool, bool)>("setLayer", &PyDbEntity::setLayer)
+        .def<void(PyDbEntity::*)(const PyDbObjectId&)>("setLayer", &PyDbEntity::setLayer)
+        .def<void(PyDbEntity::*)(const PyDbObjectId&, bool)>("setLayer", &PyDbEntity::setLayer)
+        .def<void(PyDbEntity::*)(const PyDbObjectId&, bool, bool)>("setLayer", &PyDbEntity::setLayer)
         .def("plotStyleName", &PyDbEntity::plotStyleName)
         .def("getPlotStyleNameId", &PyDbEntity::getPlotStyleNameId)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(const std::string&, Adesk::Boolean)>("setPlotStyleName", &PyDbEntity::setPlotStyleName)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(AcDb::PlotStyleNameType, Adesk::Boolean)>("setPlotStyleName", &PyDbEntity::setPlotStyleName)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(AcDb::PlotStyleNameType, const PyDbObjectId&, Adesk::Boolean)>("setPlotStyleName", &PyDbEntity::setPlotStyleName)
+        .def<void(PyDbEntity::*)(const std::string&, Adesk::Boolean)>("setPlotStyleName", &PyDbEntity::setPlotStyleName)
+        .def<void(PyDbEntity::*)(AcDb::PlotStyleNameType, Adesk::Boolean)>("setPlotStyleName", &PyDbEntity::setPlotStyleName)
+        .def<void(PyDbEntity::*)(AcDb::PlotStyleNameType, const PyDbObjectId&, Adesk::Boolean)>("setPlotStyleName", &PyDbEntity::setPlotStyleName)
         .def("linetype", &PyDbEntity::linetype)
         .def("linetypeId", &PyDbEntity::linetypeId)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(const std::string&)>("setLinetype", &PyDbEntity::setLinetype)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(const std::string&, Adesk::Boolean)>("setLinetype", &PyDbEntity::setLinetype)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(const PyDbObjectId&)>("setLinetype", &PyDbEntity::setLinetype)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(const PyDbObjectId&, Adesk::Boolean)>("setLinetype", &PyDbEntity::setLinetype)
+        .def<void(PyDbEntity::*)(const std::string&)>("setLinetype", &PyDbEntity::setLinetype)
+        .def<void(PyDbEntity::*)(const std::string&, Adesk::Boolean)>("setLinetype", &PyDbEntity::setLinetype)
+        .def<void(PyDbEntity::*)(const PyDbObjectId&)>("setLinetype", &PyDbEntity::setLinetype)
+        .def<void(PyDbEntity::*)(const PyDbObjectId&, Adesk::Boolean)>("setLinetype", &PyDbEntity::setLinetype)
         .def("material", &PyDbEntity::material)
         .def("materialId", &PyDbEntity::materialId)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(const std::string&)>("setMaterial", &PyDbEntity::setMaterial)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(const std::string&, Adesk::Boolean)>("setMaterial", &PyDbEntity::setMaterial)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(const PyDbObjectId&)>("setMaterial", &PyDbEntity::setMaterial)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(const PyDbObjectId&, Adesk::Boolean)>("setMaterial", &PyDbEntity::setMaterial)
+        .def<void(PyDbEntity::*)(const std::string&)>("setMaterial", &PyDbEntity::setMaterial)
+        .def<void(PyDbEntity::*)(const std::string&, Adesk::Boolean)>("setMaterial", &PyDbEntity::setMaterial)
+        .def<void(PyDbEntity::*)(const PyDbObjectId&)>("setMaterial", &PyDbEntity::setMaterial)
+        .def<void(PyDbEntity::*)(const PyDbObjectId&, Adesk::Boolean)>("setMaterial", &PyDbEntity::setMaterial)
         .def("linetypeScale", &PyDbEntity::linetypeScale)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(double)>("setLinetypeScale", &PyDbEntity::setLinetypeScale)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(double, Adesk::Boolean)>("setLinetypeScale", &PyDbEntity::setLinetypeScale)
+        .def<void(PyDbEntity::*)(double)>("setLinetypeScale", &PyDbEntity::setLinetypeScale)
+        .def<void(PyDbEntity::*)(double, Adesk::Boolean)>("setLinetypeScale", &PyDbEntity::setLinetypeScale)
         .def("visibility", &PyDbEntity::visibility)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(AcDb::Visibility)>("setVisibility", &PyDbEntity::setVisibility)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(AcDb::Visibility, Adesk::Boolean)>("setVisibility", &PyDbEntity::setVisibility)
+        .def<void(PyDbEntity::*)(AcDb::Visibility)>("setVisibility", &PyDbEntity::setVisibility)
+        .def<void(PyDbEntity::*)(AcDb::Visibility, Adesk::Boolean)>("setVisibility", &PyDbEntity::setVisibility)
         .def("lineWeight", &PyDbEntity::lineWeight)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(AcDb::LineWeight)>("setLineWeight", &PyDbEntity::setLineWeight)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(AcDb::LineWeight, Adesk::Boolean)>("setLineWeight", &PyDbEntity::setLineWeight)
+        .def<void(PyDbEntity::*)(AcDb::LineWeight)>("setLineWeight", &PyDbEntity::setLineWeight)
+        .def<void(PyDbEntity::*)(AcDb::LineWeight, Adesk::Boolean)>("setLineWeight", &PyDbEntity::setLineWeight)
         .def("collisionType", &PyDbEntity::collisionType)
         .def("castShadows", &PyDbEntity::castShadows)
         .def("setCastShadows", &PyDbEntity::setCastShadows)
         .def("receiveShadows", &PyDbEntity::receiveShadows)
         .def("setReceiveShadows", &PyDbEntity::setReceiveShadows)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(const PyDbEntity&)>("setPropertiesFrom", &PyDbEntity::setPropertiesFrom)
-        .def<Acad::ErrorStatus(PyDbEntity::*)(const PyDbEntity&, Adesk::Boolean)>("setPropertiesFrom", &PyDbEntity::setPropertiesFrom)
+        .def<void(PyDbEntity::*)(const PyDbEntity&)>("setPropertiesFrom", &PyDbEntity::setPropertiesFrom)
+        .def<void(PyDbEntity::*)(const PyDbEntity&, Adesk::Boolean)>("setPropertiesFrom", &PyDbEntity::setPropertiesFrom)
         .def("isPlanar", &PyDbEntity::isPlanar)
         .def("getPlane", &PyDbEntity::getPlane)
         .def("getEcs", &PyDbEntity::getEcs)
@@ -115,34 +115,34 @@ AcCmColor PyDbEntity::color() const
     return impObj()->color();
 }
 
-Acad::ErrorStatus PyDbEntity::setLayer(const std::string& newVal)
+void PyDbEntity::setLayer(const std::string& newVal)
 {
     return this->setLayer(newVal, true, false);
 }
 
-Acad::ErrorStatus PyDbEntity::setLayer(const std::string& newVal, bool doSubents)
+void PyDbEntity::setLayer(const std::string& newVal, bool doSubents)
 {
     return this->setLayer(newVal, doSubents, false);
 }
 
-Acad::ErrorStatus PyDbEntity::setLayer(const std::string& newVal, bool doSubents, bool allowHiddenLayer)
+void PyDbEntity::setLayer(const std::string& newVal, bool doSubents, bool allowHiddenLayer)
 {
-    return impObj()->setLayer(utf8_to_wstr(newVal).c_str(), doSubents, allowHiddenLayer);
+    return PyThrowBadEs(impObj()->setLayer(utf8_to_wstr(newVal).c_str(), doSubents, allowHiddenLayer));
 }
 
-Acad::ErrorStatus PyDbEntity::setLayer(const PyDbObjectId& newVal)
+void PyDbEntity::setLayer(const PyDbObjectId& newVal)
 {
     return this->setLayer(newVal, true, false);
 }
 
-Acad::ErrorStatus PyDbEntity::setLayer(const PyDbObjectId& newVal, bool doSubents)
+void PyDbEntity::setLayer(const PyDbObjectId& newVal, bool doSubents)
 {
     return this->setLayer(newVal, true, false);
 }
 
-Acad::ErrorStatus PyDbEntity::setLayer(const PyDbObjectId& newVal, bool doSubents, bool allowHiddenLayer)
+void PyDbEntity::setLayer(const PyDbObjectId& newVal, bool doSubents, bool allowHiddenLayer)
 {
-    return impObj()->setLayer(newVal.m_id, doSubents, allowHiddenLayer);
+    return PyThrowBadEs(impObj()->setLayer(newVal.m_id, doSubents, allowHiddenLayer));
 }
 
 std::string PyDbEntity::plotStyleName() const
@@ -163,19 +163,19 @@ PyDbObjectId PyDbEntity::getPlotStyleNameId() const
     return PyDbObjectId(id);
 }
 
-Acad::ErrorStatus PyDbEntity::setColor1(const AcCmColor& color)
+void PyDbEntity::setColor1(const AcCmColor& color)
 {
-    return impObj()->setColor(color);
+    return PyThrowBadEs(impObj()->setColor(color));
 }
 
-Acad::ErrorStatus PyDbEntity::setColor2(const AcCmColor& color, bool doSubents)
+void PyDbEntity::setColor2(const AcCmColor& color, bool doSubents)
 {
-    return impObj()->setColor(color, doSubents);
+    return PyThrowBadEs(impObj()->setColor(color, doSubents));
 }
 
-Acad::ErrorStatus PyDbEntity::setColor3(const AcCmColor& color, bool doSubents, PyDbDatabase& db)
+void PyDbEntity::setColor3(const AcCmColor& color, bool doSubents, PyDbDatabase& db)
 {
-    return impObj()->setColor(color, doSubents, db.impObj());
+    return PyThrowBadEs(impObj()->setColor(color, doSubents, db.impObj()));
 }
 
 Adesk::UInt16 PyDbEntity::colorIndex() const
@@ -183,14 +183,14 @@ Adesk::UInt16 PyDbEntity::colorIndex() const
     return impObj()->colorIndex();
 }
 
-Acad::ErrorStatus PyDbEntity::setColorIndex1(Adesk::UInt16 color)
+void PyDbEntity::setColorIndex1(Adesk::UInt16 color)
 {
-    return impObj()->setColorIndex(color);
+    return PyThrowBadEs(impObj()->setColorIndex(color));
 }
 
-Acad::ErrorStatus PyDbEntity::setColorIndex2(Adesk::UInt16 color, Adesk::Boolean doSubents)
+void PyDbEntity::setColorIndex2(Adesk::UInt16 color, Adesk::Boolean doSubents)
 {
-    return impObj()->setColorIndex(color, doSubents);
+    return PyThrowBadEs(impObj()->setColorIndex(color, doSubents));
 }
 
 AcCmEntityColor PyDbEntity::entityColor() const
@@ -203,9 +203,9 @@ AcCmTransparency PyDbEntity::transparency() const
     return impObj()->transparency();
 }
 
-Acad::ErrorStatus PyDbEntity::setTransparency(const AcCmTransparency& trans, Adesk::Boolean doSubents /*= true*/)
+void PyDbEntity::setTransparency(const AcCmTransparency& trans, Adesk::Boolean doSubents /*= true*/)
 {
-    return impObj()->setTransparency(trans, doSubents);
+    return PyThrowBadEs(impObj()->setTransparency(trans, doSubents));
 }
 
 std::string PyDbEntity::layer() const
@@ -218,19 +218,19 @@ PyDbObjectId PyDbEntity::layerId() const
     return  PyDbObjectId(impObj()->layerId());
 }
 
-Acad::ErrorStatus PyDbEntity::setPlotStyleName(const std::string& str, Adesk::Boolean doSubents)
+void PyDbEntity::setPlotStyleName(const std::string& str, Adesk::Boolean doSubents)
 {
-    return impObj()->setPlotStyleName(utf8_to_wstr(str).c_str(), doSubents);
+    return PyThrowBadEs(impObj()->setPlotStyleName(utf8_to_wstr(str).c_str(), doSubents));
 }
 
-Acad::ErrorStatus PyDbEntity::setPlotStyleName(AcDb::PlotStyleNameType tp, Adesk::Boolean doSubents)
+void PyDbEntity::setPlotStyleName(AcDb::PlotStyleNameType tp, Adesk::Boolean doSubents)
 {
-    return impObj()->setPlotStyleName(tp, AcDbObjectId::kNull, doSubents);
+    return PyThrowBadEs(impObj()->setPlotStyleName(tp, AcDbObjectId::kNull, doSubents));
 }
 
-Acad::ErrorStatus PyDbEntity::setPlotStyleName(AcDb::PlotStyleNameType tp, const PyDbObjectId& newId, Adesk::Boolean doSubents)
+void PyDbEntity::setPlotStyleName(AcDb::PlotStyleNameType tp, const PyDbObjectId& newId, Adesk::Boolean doSubents)
 {
-    return impObj()->setPlotStyleName(tp, newId.m_id, doSubents);
+    return PyThrowBadEs(impObj()->setPlotStyleName(tp, newId.m_id, doSubents));
 }
 
 std::string PyDbEntity::linetype() const
@@ -243,24 +243,24 @@ PyDbObjectId PyDbEntity::linetypeId() const
     return  PyDbObjectId(impObj()->linetypeId());
 }
 
-Acad::ErrorStatus PyDbEntity::setLinetype(const std::string& newVal)
+void PyDbEntity::setLinetype(const std::string& newVal)
 {
-    return impObj()->setLinetype(utf8_to_wstr(newVal).c_str());
+    return PyThrowBadEs(impObj()->setLinetype(utf8_to_wstr(newVal).c_str()));
 }
 
-Acad::ErrorStatus PyDbEntity::setLinetype(const std::string& newVal, Adesk::Boolean doSubents)
+void PyDbEntity::setLinetype(const std::string& newVal, Adesk::Boolean doSubents)
 {
-    return impObj()->setLinetype(utf8_to_wstr(newVal).c_str(), doSubents);
+    return PyThrowBadEs(impObj()->setLinetype(utf8_to_wstr(newVal).c_str(), doSubents));
 }
 
-Acad::ErrorStatus PyDbEntity::setLinetype(const PyDbObjectId& newVal)
+void PyDbEntity::setLinetype(const PyDbObjectId& newVal)
 {
-    return impObj()->setLinetype(newVal.m_id);
+    return PyThrowBadEs(impObj()->setLinetype(newVal.m_id));
 }
 
-Acad::ErrorStatus PyDbEntity::setLinetype(const PyDbObjectId& newVal, Adesk::Boolean doSubents)
+void PyDbEntity::setLinetype(const PyDbObjectId& newVal, Adesk::Boolean doSubents)
 {
-    return impObj()->setLinetype(newVal.m_id, doSubents);
+    return PyThrowBadEs(impObj()->setLinetype(newVal.m_id, doSubents));
 }
 
 std::string PyDbEntity::material() const
@@ -273,24 +273,24 @@ PyDbObjectId PyDbEntity::materialId() const
     return  PyDbObjectId(impObj()->materialId());
 }
 
-Acad::ErrorStatus PyDbEntity::setMaterial(const std::string& newVal)
+void PyDbEntity::setMaterial(const std::string& newVal)
 {
-    return impObj()->setMaterial(utf8_to_wstr(newVal).c_str());
+    return PyThrowBadEs(impObj()->setMaterial(utf8_to_wstr(newVal).c_str()));
 }
 
-Acad::ErrorStatus PyDbEntity::setMaterial(const std::string& newVal, Adesk::Boolean doSubents)
+void PyDbEntity::setMaterial(const std::string& newVal, Adesk::Boolean doSubents)
 {
-    return impObj()->setMaterial(utf8_to_wstr(newVal).c_str(), doSubents);
+    return PyThrowBadEs(impObj()->setMaterial(utf8_to_wstr(newVal).c_str(), doSubents));
 }
 
-Acad::ErrorStatus PyDbEntity::setMaterial(const PyDbObjectId& newVal)
+void PyDbEntity::setMaterial(const PyDbObjectId& newVal)
 {
-    return impObj()->setLinetype(newVal.m_id);
+    return PyThrowBadEs(impObj()->setLinetype(newVal.m_id));
 }
 
-Acad::ErrorStatus PyDbEntity::setMaterial(const PyDbObjectId& newVal, Adesk::Boolean doSubents)
+void PyDbEntity::setMaterial(const PyDbObjectId& newVal, Adesk::Boolean doSubents)
 {
-    return impObj()->setLinetype(newVal.m_id, doSubents);
+    return PyThrowBadEs(impObj()->setLinetype(newVal.m_id, doSubents));
 }
 
 double PyDbEntity::linetypeScale() const
@@ -298,14 +298,14 @@ double PyDbEntity::linetypeScale() const
     return  impObj()->linetypeScale();
 }
 
-Acad::ErrorStatus PyDbEntity::setLinetypeScale(double newval)
+void PyDbEntity::setLinetypeScale(double newval)
 {
-    return  impObj()->setLinetypeScale(newval);
+    return  PyThrowBadEs(impObj()->setLinetypeScale(newval));
 }
 
-Acad::ErrorStatus PyDbEntity::setLinetypeScale(double newval, Adesk::Boolean doSubents)
+void PyDbEntity::setLinetypeScale(double newval, Adesk::Boolean doSubents)
 {
-    return  impObj()->setLinetypeScale(newval, doSubents);
+    return  PyThrowBadEs(impObj()->setLinetypeScale(newval, doSubents));
 }
 
 AcDb::Visibility PyDbEntity::visibility() const
@@ -313,14 +313,14 @@ AcDb::Visibility PyDbEntity::visibility() const
     return  impObj()->visibility();
 }
 
-Acad::ErrorStatus PyDbEntity::setVisibility(AcDb::Visibility newVal)
+void PyDbEntity::setVisibility(AcDb::Visibility newVal)
 {
-    return  impObj()->setVisibility(newVal);
+    return  PyThrowBadEs(impObj()->setVisibility(newVal));
 }
 
-Acad::ErrorStatus PyDbEntity::setVisibility(AcDb::Visibility newVal, Adesk::Boolean doSubents /*= true*/)
+void PyDbEntity::setVisibility(AcDb::Visibility newVal, Adesk::Boolean doSubents /*= true*/)
 {
-    return  impObj()->setVisibility(newVal, doSubents);
+    return  PyThrowBadEs(impObj()->setVisibility(newVal, doSubents));
 }
 
 AcDb::LineWeight PyDbEntity::lineWeight() const
@@ -328,14 +328,14 @@ AcDb::LineWeight PyDbEntity::lineWeight() const
     return impObj()->lineWeight();
 }
 
-Acad::ErrorStatus PyDbEntity::setLineWeight(AcDb::LineWeight newVal)
+void PyDbEntity::setLineWeight(AcDb::LineWeight newVal)
 {
-    return  impObj()->setLineWeight(newVal);
+    return  PyThrowBadEs(impObj()->setLineWeight(newVal));
 }
 
-Acad::ErrorStatus PyDbEntity::setLineWeight(AcDb::LineWeight newVal, Adesk::Boolean doSubents)
+void PyDbEntity::setLineWeight(AcDb::LineWeight newVal, Adesk::Boolean doSubents)
 {
-    return impObj()->setLineWeight(newVal, doSubents);
+    return PyThrowBadEs(impObj()->setLineWeight(newVal, doSubents));
 }
 
 AcDb::CollisionType PyDbEntity::collisionType() const
@@ -363,14 +363,14 @@ void PyDbEntity::setReceiveShadows(bool newVal)
     impObj()->setReceiveShadows(newVal);
 }
 
-Acad::ErrorStatus PyDbEntity::setPropertiesFrom(const PyDbEntity& pEntity)
+void PyDbEntity::setPropertiesFrom(const PyDbEntity& pEntity)
 {
-    return impObj()->setPropertiesFrom(pEntity.impObj());
+    return PyThrowBadEs(impObj()->setPropertiesFrom(pEntity.impObj()));
 }
 
-Acad::ErrorStatus PyDbEntity::setPropertiesFrom(const PyDbEntity& pEntity, Adesk::Boolean doSubents)
+void PyDbEntity::setPropertiesFrom(const PyDbEntity& pEntity, Adesk::Boolean doSubents)
 {
-    return impObj()->setPropertiesFrom(pEntity.impObj(), doSubents);
+    return PyThrowBadEs(impObj()->setPropertiesFrom(pEntity.impObj(), doSubents));
 }
 
 Adesk::Boolean PyDbEntity::isPlanar() const
@@ -399,9 +399,9 @@ void PyDbEntity::list() const
     impObj()->list();
 }
 
-Acad::ErrorStatus PyDbEntity::transformBy(const AcGeMatrix3d& xform)
+void PyDbEntity::transformBy(const AcGeMatrix3d& xform)
 {
-    return impObj()->transformBy(xform);
+    return PyThrowBadEs(impObj()->transformBy(xform));
 }
 
 void PyDbEntity::recordGraphicsModified()
@@ -409,9 +409,9 @@ void PyDbEntity::recordGraphicsModified()
     impObj()->recordGraphicsModified();
 }
 
-Acad::ErrorStatus PyDbEntity::draw()
+void PyDbEntity::draw()
 {
-    return impObj()->draw();
+    return PyThrowBadEs(impObj()->draw());
 }
 
 void PyDbEntity::setDatabaseDefaults()
@@ -424,44 +424,42 @@ void PyDbEntity::setDatabaseDefaults(const PyDbDatabase& db)
     impObj()->setDatabaseDefaults(db.impObj());
 }
 
-Acad::ErrorStatus PyDbEntity::getCompoundObjectTransform(AcGeMatrix3d& xMat) const
+void PyDbEntity::getCompoundObjectTransform(AcGeMatrix3d& xMat) const
 {
-    return impObj()->getCompoundObjectTransform(xMat);
+    return PyThrowBadEs(impObj()->getCompoundObjectTransform(xMat));
 }
 
-Acad::ErrorStatus PyDbEntity::getGeomExtents(AcDbExtents& extents) const
+void PyDbEntity::getGeomExtents(AcDbExtents& extents) const
 {
-    return impObj()->getGeomExtents(extents);
+    return PyThrowBadEs(impObj()->getGeomExtents(extents));
 }
 
-Acad::ErrorStatus PyDbEntity::intersectWith1(const PyDbEntity& pEnt, AcDb::Intersect intType, boost::python::list& points) const
+void PyDbEntity::intersectWith1(const PyDbEntity& pEnt, AcDb::Intersect intType, boost::python::list& points) const
 {
     return intersectWith2(pEnt, intType, points, 0, 0);
 }
 
-Acad::ErrorStatus PyDbEntity::intersectWith2(const PyDbEntity& pEnt, AcDb::Intersect intType, boost::python::list& points, Adesk::GsMarker thisGsMarker, Adesk::GsMarker otherGsMarker) const
+void PyDbEntity::intersectWith2(const PyDbEntity& pEnt, AcDb::Intersect intType, boost::python::list& points, Adesk::GsMarker thisGsMarker, Adesk::GsMarker otherGsMarker) const
 {
     PyAutoLockGIL lock;
     AcGePoint3dArray pnts;
-    auto es = impObj()->intersectWith(pEnt.impObj(), intType, pnts, thisGsMarker, otherGsMarker);
+    PyThrowBadEs(impObj()->intersectWith(pEnt.impObj(), intType, pnts, thisGsMarker, otherGsMarker));
     for (const auto& item : pnts)
         points.append(item);
-    return es;
 }
 
-Acad::ErrorStatus PyDbEntity::intersectWith3(const PyDbEntity& pEnt, AcDb::Intersect intType, const PyGePlane& projPlane, boost::python::list& points) const
+void PyDbEntity::intersectWith3(const PyDbEntity& pEnt, AcDb::Intersect intType, const PyGePlane& projPlane, boost::python::list& points) const
 {
     return intersectWith4(pEnt, intType, projPlane, points, 0, 0);
 }
 
-Acad::ErrorStatus PyDbEntity::intersectWith4(const PyDbEntity& pEnt, AcDb::Intersect intType, const PyGePlane& projPlane, boost::python::list& points, Adesk::GsMarker thisGsMarker, Adesk::GsMarker otherGsMarker) const
+void PyDbEntity::intersectWith4(const PyDbEntity& pEnt, AcDb::Intersect intType, const PyGePlane& projPlane, boost::python::list& points, Adesk::GsMarker thisGsMarker, Adesk::GsMarker otherGsMarker) const
 {
     PyAutoLockGIL lock;
     AcGePoint3dArray pnts;
-    auto es = impObj()->intersectWith(pEnt.impObj(), intType, *projPlane.impObj(), pnts, thisGsMarker, otherGsMarker);
+    PyThrowBadEs(impObj()->intersectWith(pEnt.impObj(), intType, *projPlane.impObj(), pnts, thisGsMarker, otherGsMarker));
     for (const auto& item : pnts)
         points.append(item);
-    return es;
 }
 
 std::string PyDbEntity::className()

@@ -17,9 +17,9 @@ public:
     PyDbPlotSettings(const PyDbObjectId& id);
     PyDbPlotSettings(const PyDbObjectId& id, AcDb::OpenMode mode);
     ~PyDbPlotSettings() override = default;
-    Acad::ErrorStatus   addToPlotSettingsDict(PyDbDatabase& towhichDb);
+    void                addToPlotSettingsDict(PyDbDatabase& towhichDb);
     std::string         getPlotSettingsName() const;
-    Acad::ErrorStatus   setPlotSettingsName(const  std::string& plotSettingsName);
+    void                setPlotSettingsName(const  std::string& plotSettingsName);
     std::string         getPlotCfgName() const;
     boost::python::tuple getPlotPaperMargins() const;
     boost::python::tuple getPlotPaperSize() const;
@@ -40,12 +40,12 @@ public:
     void                setPlotHidden(Adesk::Boolean plotHidden);
     AcDbPlotSettings::ShadePlotType shadePlot() const;
     PyDbObjectId        shadePlotId() const;
-    Acad::ErrorStatus   setShadePlot2(AcDbPlotSettings::ShadePlotType type, const PyDbObjectId& shadePlotId);
-    Acad::ErrorStatus   setShadePlot1(AcDbPlotSettings::ShadePlotType shadePlot);
+    void                setShadePlot2(AcDbPlotSettings::ShadePlotType type, const PyDbObjectId& shadePlotId);
+    void                setShadePlot1(AcDbPlotSettings::ShadePlotType shadePlot);
     AcDbPlotSettings::ShadePlotResLevel shadePlotResLevel() const;
-    Acad::ErrorStatus   setShadePlotResLevel(AcDbPlotSettings::ShadePlotResLevel resLevel);
+    void                setShadePlotResLevel(AcDbPlotSettings::ShadePlotResLevel resLevel);
     Adesk::Int16        shadePlotCustomDPI() const;
-    Acad::ErrorStatus   setShadePlotCustomDPI(Adesk::Int16 val);
+    void                setShadePlotCustomDPI(Adesk::Int16 val);
     AcDbPlotSettings::PlotType plotType() const;
     boost::python::tuple getPlotWindowArea() const;
     std::string         getPlotViewName() const;
@@ -87,10 +87,10 @@ public:
     ~PyDbLayout() override = default;
 
     PyDbObjectId        getBlockTableRecordId() const;
-    Acad::ErrorStatus   setBlockTableRecordId(PyDbObjectId& BlockTableRecordId);
-    Acad::ErrorStatus   addToLayoutDict(PyDbDatabase& towhichDb, PyDbObjectId BlockTableRecordId);
+    void                setBlockTableRecordId(PyDbObjectId& BlockTableRecordId);
+    void                addToLayoutDict(PyDbDatabase& towhichDb, PyDbObjectId BlockTableRecordId);
     std::string         getLayoutName() const;
-    Acad::ErrorStatus   setLayoutName(const std::string& layoutName);
+    void                setLayoutName(const std::string& layoutName);
     int                 getTabOrder() const;
     void                setTabOrder(int newOrder);
     bool                getTabSelected() const;
@@ -98,10 +98,10 @@ public:
     boost::python::list getViewportArray() const;
     boost::python::tuple getLimits() const;
     boost::python::tuple getExtents() const;
-    Acad::ErrorStatus   initialize1();
-    Acad::ErrorStatus   initialize2(PyDbObjectId& paperVportId);
+    void                initialize1();
+    void                initialize2(PyDbObjectId& paperVportId);
     bool                annoAllVisible() const;
-    Acad::ErrorStatus   setAnnoAllVisible(bool newVal);
+    void                setAnnoAllVisible(bool newVal);
 
 public:
     static std::string    className();
@@ -122,9 +122,9 @@ public:
     PyDbLayoutManager();
     PyDbLayoutManager(AcDbLayoutManager* ptr, bool autoDelete);
     virtual ~PyDbLayoutManager() override = default;
-    Acad::ErrorStatus   setCurrentLayout1(const std::string& newname);
-    Acad::ErrorStatus   setCurrentLayout2(const std::string& newname, PyDbDatabase& pDb);
-    Acad::ErrorStatus   setCurrentLayoutId(const PyDbObjectId& layoutId);
+    void                setCurrentLayout1(const std::string& newname);
+    void                setCurrentLayout2(const std::string& newname, PyDbDatabase& pDb);
+    void                setCurrentLayoutId(const PyDbObjectId& layoutId);
     std::string         getActiveLayoutName1(bool allowModel);
     std::string         getActiveLayoutName2(bool allowModel, PyDbDatabase& pDb);
     PyDbObjectId        getActiveLayoutBTRId1();
@@ -133,16 +133,16 @@ public:
     PyDbObjectId        findLayoutNamed2(const std::string& name, const PyDbDatabase& pDb);
     bool                layoutExists1(const std::string& name);
     bool                layoutExists2(const std::string& name, const PyDbDatabase& pDb);
-    Acad::ErrorStatus   copyLayout1(const std::string& copyname, const std::string& newname);
-    Acad::ErrorStatus   copyLayout2(const std::string& copyname, const std::string& newname, const PyDbDatabase& pDb);
-    Acad::ErrorStatus   deleteLayout1(const std::string& delname);
-    Acad::ErrorStatus   deleteLayout2(const std::string& delname, PyDbDatabase& pDb);
-    Acad::ErrorStatus   createLayout1(const std::string& newname, PyDbObjectId& layoutId, PyDbObjectId& blockTableRecId);
-    Acad::ErrorStatus   createLayout2(const std::string& newname, PyDbObjectId& layoutId, PyDbObjectId& blockTableRecId, PyDbDatabase& pDb);
-    Acad::ErrorStatus   renameLayout1(const std::string& oldname, const std::string& newname);
-    Acad::ErrorStatus   renameLayout2(const std::string& oldname, const std::string& newname, PyDbDatabase& pDb);
-    Acad::ErrorStatus   cloneLayout1(PyDbLayout& pLBTR, const std::string& newname);
-    Acad::ErrorStatus   cloneLayout2(PyDbLayout& pLBTR, const std::string& newname, int newTabOrder, PyDbDatabase& pDb);
+    void                copyLayout1(const std::string& copyname, const std::string& newname);
+    void                copyLayout2(const std::string& copyname, const std::string& newname, const PyDbDatabase& pDb);
+    void                deleteLayout1(const std::string& delname);
+    void                deleteLayout2(const std::string& delname, PyDbDatabase& pDb);
+    void                createLayout1(const std::string& newname, PyDbObjectId& layoutId, PyDbObjectId& blockTableRecId);
+    void                createLayout2(const std::string& newname, PyDbObjectId& layoutId, PyDbObjectId& blockTableRecId, PyDbDatabase& pDb);
+    void                renameLayout1(const std::string& oldname, const std::string& newname);
+    void                renameLayout2(const std::string& oldname, const std::string& newname, PyDbDatabase& pDb);
+    void                cloneLayout1(PyDbLayout& pLBTR, const std::string& newname);
+    void                cloneLayout2(PyDbLayout& pLBTR, const std::string& newname, int newTabOrder, PyDbDatabase& pDb);
     PyDbObjectId        getNonRectVPIdFromClipId(PyDbObjectId& clipId);
     bool                isVpnumClipped1(int index);
     bool                isVpnumClipped2(int index, const PyDbDatabase& pDb);
@@ -153,7 +153,7 @@ public:
     //void              removeReactor(AcDbLayoutManagerReactor* delObj)
 
     static Adesk::ULongPtr      setupForLayouts(PyDbDatabase& pDb);
-    static Acad::ErrorStatus    clearSetupForLayouts(Adesk::ULongPtr contextHandle);
+    static void    clearSetupForLayouts(Adesk::ULongPtr contextHandle);
     static PyRxClass            desc();
     static std::string          className();
 public:

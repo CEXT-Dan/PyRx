@@ -213,19 +213,19 @@ void PyDbLeader::setDimensionStyle(const PyDbHardPointerId& val)
     return impObj()->setDimensionStyle(val.m_id);
 }
 
-Acad::ErrorStatus PyDbLeader::setDimstyleData(const PyDbObjectId& newDataId)
+void PyDbLeader::setDimstyleData(const PyDbObjectId& newDataId)
 {
-    return impObj()->setDimstyleData(newDataId.m_id);
+    return PyThrowBadEs(impObj()->setDimstyleData(newDataId.m_id));
 }
 
-Acad::ErrorStatus PyDbLeader::attachAnnotation(const PyDbObjectId& annoId)
+void PyDbLeader::attachAnnotation(const PyDbObjectId& annoId)
 {
-    return impObj()->attachAnnotation(annoId.m_id);
+    return PyThrowBadEs(impObj()->attachAnnotation(annoId.m_id));
 }
 
-Acad::ErrorStatus PyDbLeader::detachAnnotation()
+void PyDbLeader::detachAnnotation()
 {
-    return impObj()->detachAnnotation();
+    return PyThrowBadEs(impObj()->detachAnnotation());
 }
 
 PyDbObjectId PyDbLeader::annotationObjId() const
@@ -233,18 +233,18 @@ PyDbObjectId PyDbLeader::annotationObjId() const
     return PyDbObjectId(impObj()->annotationObjId());
 }
 
-Acad::ErrorStatus PyDbLeader::setAnnotationObjId(const PyDbObjectId& annoId)
+void PyDbLeader::setAnnotationObjId(const PyDbObjectId& annoId)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setAnnotationObjId(annoId.m_id);
+    return PyThrowBadEs(impObj()->setAnnotationObjId(annoId.m_id));
 #endif
 }
 
-Acad::ErrorStatus PyDbLeader::evaluateLeader()
+void PyDbLeader::evaluateLeader()
 {
-    return impObj()->evaluateLeader();
+    return PyThrowBadEs(impObj()->evaluateLeader());
 }
 
 AcGeVector3d PyDbLeader::annotationOffset() const
@@ -252,9 +252,9 @@ AcGeVector3d PyDbLeader::annotationOffset() const
     return impObj()->annotationOffset();
 }
 
-Acad::ErrorStatus PyDbLeader::setAnnotationOffset(const AcGeVector3d& offset)
+void PyDbLeader::setAnnotationOffset(const AcGeVector3d& offset)
 {
-    return impObj()->setAnnotationOffset(offset);
+    return PyThrowBadEs(impObj()->setAnnotationOffset(offset));
 }
 
 AcDbLeader::AnnoType PyDbLeader::annoType() const
@@ -322,59 +322,59 @@ double PyDbLeader::dimtxt() const
     return impObj()->dimtxt();
 }
 
-Acad::ErrorStatus PyDbLeader::setDimasz(double val)
+void PyDbLeader::setDimasz(double val)
 {
-    return impObj()->setDimasz(val);
+    return PyThrowBadEs(impObj()->setDimasz(val));
 }
 
-Acad::ErrorStatus PyDbLeader::setDimclrd(AcCmColor& val)
+void PyDbLeader::setDimclrd(AcCmColor& val)
 {
-    return impObj()->setDimclrd(val);
+    return PyThrowBadEs(impObj()->setDimclrd(val));
 }
 
-Acad::ErrorStatus PyDbLeader::setDimgap(double val)
+void PyDbLeader::setDimgap(double val)
 {
-    return impObj()->setDimgap(val);
+    return PyThrowBadEs(impObj()->setDimgap(val));
 }
 
-Acad::ErrorStatus PyDbLeader::setDimldrblk1(const PyDbObjectId& val)
+void PyDbLeader::setDimldrblk1(const PyDbObjectId& val)
 {
-    return impObj()->setDimldrblk(val.m_id);
+    return PyThrowBadEs(impObj()->setDimldrblk(val.m_id));
 }
 
-Acad::ErrorStatus PyDbLeader::setDimldrblk2(const std::string& val)
+void PyDbLeader::setDimldrblk2(const std::string& val)
 {
-    return impObj()->setDimldrblk(utf8_to_wstr(val).c_str());
+    return PyThrowBadEs(impObj()->setDimldrblk(utf8_to_wstr(val).c_str()));
 }
 
-Acad::ErrorStatus PyDbLeader::setDimlwd(AcDb::LineWeight val)
+void PyDbLeader::setDimlwd(AcDb::LineWeight val)
 {
-    return impObj()->setDimlwd(val);
+    return PyThrowBadEs(impObj()->setDimlwd(val));
 }
 
-Acad::ErrorStatus PyDbLeader::setDimsah(bool val)
+void PyDbLeader::setDimsah(bool val)
 {
-    return impObj()->setDimsah(val);
+    return PyThrowBadEs(impObj()->setDimsah(val));
 }
 
-Acad::ErrorStatus PyDbLeader::setDimscale(double val)
+void PyDbLeader::setDimscale(double val)
 {
-    return impObj()->setDimscale(val);
+    return PyThrowBadEs(impObj()->setDimscale(val));
 }
 
-Acad::ErrorStatus PyDbLeader::setDimtad(int val)
+void PyDbLeader::setDimtad(int val)
 {
-    return impObj()->setDimtad(val);
+    return PyThrowBadEs(impObj()->setDimtad(val));
 }
 
-Acad::ErrorStatus PyDbLeader::setDimtxsty(const PyDbObjectId& val)
+void PyDbLeader::setDimtxsty(const PyDbObjectId& val)
 {
-    return impObj()->setDimtxsty(val.m_id);
+    return PyThrowBadEs(impObj()->setDimtxsty(val.m_id));
 }
 
-Acad::ErrorStatus PyDbLeader::setDimtxt(double val)
+void PyDbLeader::setDimtxt(double val)
 {
-    return impObj()->setDimtxt(val);
+    return PyThrowBadEs(impObj()->setDimtxt(val));
 }
 
 void PyDbLeader::modified(const PyDbObject& obj)
@@ -402,14 +402,14 @@ void PyDbLeader::copied(const PyDbObject& objA, const PyDbObject& objB)
     return impObj()->copied(objA.impObj(), objB.impObj());
 }
 
-Acad::ErrorStatus PyDbLeader::setColorIndex1(Adesk::UInt16 val)
+void PyDbLeader::setColorIndex1(Adesk::UInt16 val)
 {
-    return impObj()->setColorIndex(val);
+    return PyThrowBadEs(impObj()->setColorIndex(val));
 }
 
-Acad::ErrorStatus PyDbLeader::setColorIndex2(Adesk::UInt16 val, Adesk::Boolean doSubents)
+void PyDbLeader::setColorIndex2(Adesk::UInt16 val, Adesk::Boolean doSubents)
 {
-    return impObj()->setColorIndex(val, doSubents);
+    return PyThrowBadEs(impObj()->setColorIndex(val, doSubents));
 }
 
 std::string PyDbLeader::className()
@@ -671,14 +671,14 @@ void PyDbMLeader::modified(const PyDbObject& dbObj)
     impObj()->modified(dbObj.impObj());
 }
 
-Acad::ErrorStatus PyDbMLeader::setOverride1(AcDbMLeader::PropertyOverrideType propertyType)
+void PyDbMLeader::setOverride1(AcDbMLeader::PropertyOverrideType propertyType)
 {
-    return impObj()->setOverride(propertyType);
+    return PyThrowBadEs(impObj()->setOverride(propertyType));
 }
 
-Acad::ErrorStatus PyDbMLeader::setOverride2(AcDbMLeader::PropertyOverrideType propertyType, bool isOverride)
+void PyDbMLeader::setOverride2(AcDbMLeader::PropertyOverrideType propertyType, bool isOverride)
 {
-    return impObj()->setOverride(propertyType, isOverride);
+    return PyThrowBadEs(impObj()->setOverride(propertyType, isOverride));
 }
 
 bool PyDbMLeader::isOverride(AcDbMLeader::PropertyOverrideType propertyType) const
@@ -686,9 +686,9 @@ bool PyDbMLeader::isOverride(AcDbMLeader::PropertyOverrideType propertyType) con
     return impObj()->isOverride(propertyType);
 }
 
-Acad::ErrorStatus PyDbMLeader::setScale(double scale)
+void PyDbMLeader::setScale(double scale)
 {
-    return impObj()->setScale(scale);
+    return PyThrowBadEs(impObj()->setScale(scale));
 }
 
 double PyDbMLeader::scale() const
@@ -708,9 +708,9 @@ PyDbAttribute PyDbMLeader::getBlockAttributeValue1(const PyDbObjectId& attdefId)
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeader::setBlockAttributeValue1(const PyDbObjectId& attdefId, const PyDbAttribute& pAtt)
+void PyDbMLeader::setBlockAttributeValue1(const PyDbObjectId& attdefId, const PyDbAttribute& pAtt)
 {
-    return impObj()->setBlockAttributeValue(attdefId.m_id, pAtt.impObj());
+    return PyThrowBadEs(impObj()->setBlockAttributeValue(attdefId.m_id, pAtt.impObj()));
 }
 
 std::string PyDbMLeader::getBlockAttributeValue2(const PyDbObjectId& attdefId) const
@@ -727,12 +727,12 @@ std::string PyDbMLeader::getBlockAttributeValue2(const PyDbObjectId& attdefId) c
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeader::setBlockAttributeValue2(const PyDbObjectId& attdefId, const std::string& pAtt)
+void PyDbMLeader::setBlockAttributeValue2(const PyDbObjectId& attdefId, const std::string& pAtt)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setBlockAttributeValue(attdefId.m_id, utf8_to_wstr(pAtt).c_str());
+    return  PyThrowBadEs(impObj()->setBlockAttributeValue(attdefId.m_id, utf8_to_wstr(pAtt).c_str()));
 #endif
 }
 
@@ -751,14 +751,14 @@ AcGeVector3d PyDbMLeader::normal() const
     return impObj()->normal();
 }
 
-Acad::ErrorStatus PyDbMLeader::moveMLeader1(const AcGeVector3d& vector, AcDbMLeader::MoveType moveType)
+void PyDbMLeader::moveMLeader1(const AcGeVector3d& vector, AcDbMLeader::MoveType moveType)
 {
-    return impObj()->moveMLeader(vector, moveType);
+    return PyThrowBadEs(impObj()->moveMLeader(vector, moveType));
 }
 
-Acad::ErrorStatus PyDbMLeader::moveMLeader2(const AcGeVector3d& vector, AcDbMLeader::MoveType moveType, bool bAutoSwitchDogleg)
+void PyDbMLeader::moveMLeader2(const AcGeVector3d& vector, AcDbMLeader::MoveType moveType, bool bAutoSwitchDogleg)
 {
-    return impObj()->moveMLeader(vector, moveType, bAutoSwitchDogleg);
+    return PyThrowBadEs(impObj()->moveMLeader(vector, moveType, bAutoSwitchDogleg));
 }
 
 AcDbExtents PyDbMLeader::getContentGeomExtents() const
@@ -813,22 +813,22 @@ int PyDbMLeader::addLeaderLine2(const AcGePoint3d& point)
     return leaderLineIndex;
 }
 
-Acad::ErrorStatus PyDbMLeader::removeLeaderLine(int leaderLineIndex)
+void PyDbMLeader::removeLeaderLine(int leaderLineIndex)
 {
-    return impObj()->removeLeaderLine(leaderLineIndex);
+    return PyThrowBadEs(impObj()->removeLeaderLine(leaderLineIndex));
 }
 
-Acad::ErrorStatus PyDbMLeader::addFirstVertex(int leaderLineIndex, const AcGePoint3d& point)
+void PyDbMLeader::addFirstVertex(int leaderLineIndex, const AcGePoint3d& point)
 {
-    return impObj()->addFirstVertex(leaderLineIndex, point);
+    return PyThrowBadEs(impObj()->addFirstVertex(leaderLineIndex, point));
 }
 
-Acad::ErrorStatus PyDbMLeader::removeFirstVertex(int leaderLineIndex)
+void PyDbMLeader::removeFirstVertex(int leaderLineIndex)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->removeFirstVertex(leaderLineIndex);
+    return PyThrowBadEs(impObj()->removeFirstVertex(leaderLineIndex));
 #endif
 }
 
@@ -840,27 +840,27 @@ AcGePoint3d PyDbMLeader::getFirstVertex(int leaderLineIndex) const
     return point;
 }
 
-Acad::ErrorStatus PyDbMLeader::setFirstVertex(int leaderLineIndex, const AcGePoint3d& point)
+void PyDbMLeader::setFirstVertex(int leaderLineIndex, const AcGePoint3d& point)
 {
-    return impObj()->setFirstVertex(leaderLineIndex, point);
+    return PyThrowBadEs(impObj()->setFirstVertex(leaderLineIndex, point));
 }
 
-Acad::ErrorStatus PyDbMLeader::addLastVertex(int leaderLineIndex, const AcGePoint3d& point)
+void PyDbMLeader::addLastVertex(int leaderLineIndex, const AcGePoint3d& point)
 {
-    return impObj()->addLastVertex(leaderLineIndex, point);
+    return PyThrowBadEs(impObj()->addLastVertex(leaderLineIndex, point));
 }
 
-Acad::ErrorStatus PyDbMLeader::removeLastVertex(int leaderLineIndex)
+void PyDbMLeader::removeLastVertex(int leaderLineIndex)
 {
-    return impObj()->removeLastVertex(leaderLineIndex);
+    return PyThrowBadEs(impObj()->removeLastVertex(leaderLineIndex));
 }
 
-Acad::ErrorStatus PyDbMLeader::removeLeader(int leaderIndex)
+void PyDbMLeader::removeLeader(int leaderIndex)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->removeLeader(leaderIndex);
+    return PyThrowBadEs(impObj()->removeLeader(leaderIndex));
 #endif
 }
 
@@ -899,9 +899,9 @@ AcGePoint3d PyDbMLeader::getLastVertex(int leaderLineIndex) const
     return point;
 }
 
-Acad::ErrorStatus PyDbMLeader::setLastVertex(int leaderLineIndex, const AcGePoint3d& point)
+void PyDbMLeader::setLastVertex(int leaderLineIndex, const AcGePoint3d& point)
 {
-    return impObj()->setLastVertex(leaderLineIndex, point);
+    return PyThrowBadEs(impObj()->setLastVertex(leaderLineIndex, point));
 }
 
 int PyDbMLeader::numVertices(int leaderLineIndex) const
@@ -912,9 +912,9 @@ int PyDbMLeader::numVertices(int leaderLineIndex) const
     return cnt;
 }
 
-Acad::ErrorStatus PyDbMLeader::setVertex(int leaderLineIndex, int index, const AcGePoint3d& point)
+void PyDbMLeader::setVertex(int leaderLineIndex, int index, const AcGePoint3d& point)
 {
-    return impObj()->setVertex(leaderLineIndex, index, point);
+    return PyThrowBadEs(impObj()->setVertex(leaderLineIndex, index, point));
 }
 
 AcGePoint3d PyDbMLeader::getVertex(int leaderLineIndex, int index) const
@@ -933,9 +933,9 @@ int PyDbMLeader::getLeaderIndex(int leaderLineIndex) const
     return cnt;
 }
 
-Acad::ErrorStatus PyDbMLeader::setDoglegDirection(int leaderIndex, const AcGeVector3d& vector)
+void PyDbMLeader::setDoglegDirection(int leaderIndex, const AcGeVector3d& vector)
 {
-    return impObj()->setDoglegDirection(leaderIndex, vector);
+    return PyThrowBadEs(impObj()->setDoglegDirection(leaderIndex, vector));
 }
 
 AcGeVector3d PyDbMLeader::getDoglegDirection(int leaderIndex) const
@@ -946,14 +946,14 @@ AcGeVector3d PyDbMLeader::getDoglegDirection(int leaderIndex) const
     return point;
 }
 
-Acad::ErrorStatus PyDbMLeader::setLeaderLineType1(AcDbMLeaderStyle::LeaderType leaderLineType)
+void PyDbMLeader::setLeaderLineType1(AcDbMLeaderStyle::LeaderType leaderLineType)
 {
-    return impObj()->setLeaderLineType(leaderLineType);
+    return PyThrowBadEs(impObj()->setLeaderLineType(leaderLineType));
 }
 
-Acad::ErrorStatus PyDbMLeader::setLeaderLineType2(int leaderLineIndex, AcDbMLeaderStyle::LeaderType leaderLineType)
+void PyDbMLeader::setLeaderLineType2(int leaderLineIndex, AcDbMLeaderStyle::LeaderType leaderLineType)
 {
-    return impObj()->setLeaderLineType(leaderLineType, leaderLineType);
+    return PyThrowBadEs(impObj()->setLeaderLineType(leaderLineType, leaderLineType));
 }
 
 AcDbMLeaderStyle::LeaderType PyDbMLeader::getLeaderLineType(int leaderLineIndex) const
@@ -969,17 +969,17 @@ AcCmColor PyDbMLeader::leaderLineColor() const
     return impObj()->leaderLineColor();
 }
 
-Acad::ErrorStatus PyDbMLeader::setLeaderLineColor1(const AcCmColor& leaderLineColor)
+void PyDbMLeader::setLeaderLineColor1(const AcCmColor& leaderLineColor)
 {
-    return impObj()->setLeaderLineColor(leaderLineColor);
+    return PyThrowBadEs(impObj()->setLeaderLineColor(leaderLineColor));
 }
 
-Acad::ErrorStatus PyDbMLeader::setLeaderLineColor2(int leaderLineIndex, const AcCmColor& leaderLineColor)
+void PyDbMLeader::setLeaderLineColor2(int leaderLineIndex, const AcCmColor& leaderLineColor)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setLeaderLineColor(leaderLineIndex, leaderLineColor);
+    return PyThrowBadEs(impObj()->setLeaderLineColor(leaderLineIndex, leaderLineColor));
 #endif
 }
 
@@ -1009,21 +1009,21 @@ AcDbMLeaderStyle::LeaderType PyDbMLeader::leaderLineType() const
     return impObj()->leaderLineType();
 }
 
-Acad::ErrorStatus PyDbMLeader::setLeaderLineTypeId1(const PyDbObjectId& leaderLineTypeId)
+void PyDbMLeader::setLeaderLineTypeId1(const PyDbObjectId& leaderLineTypeId)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setLeaderLineTypeId(leaderLineTypeId.m_id);
+    return PyThrowBadEs(impObj()->setLeaderLineTypeId(leaderLineTypeId.m_id));
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeader::setLeaderLineTypeId2(int leaderLineIndex, const PyDbObjectId& leaderLineTypeId)
+void PyDbMLeader::setLeaderLineTypeId2(int leaderLineIndex, const PyDbObjectId& leaderLineTypeId)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setLeaderLineTypeId(leaderLineIndex, leaderLineTypeId.m_id);
+    return PyThrowBadEs(impObj()->setLeaderLineTypeId(leaderLineIndex, leaderLineTypeId.m_id));
 #endif
 }
 
@@ -1048,21 +1048,21 @@ AcDb::LineWeight PyDbMLeader::leaderLineWeight() const
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeader::setLeaderLineWeight1(AcDb::LineWeight leaderLineWeight)
+void PyDbMLeader::setLeaderLineWeight1(AcDb::LineWeight leaderLineWeight)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setLeaderLineWeight(leaderLineWeight);
+    return PyThrowBadEs(impObj()->setLeaderLineWeight(leaderLineWeight));
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeader::setLeaderLineWeight2(int leaderLineIndex, AcDb::LineWeight leaderLineWeight)
+void PyDbMLeader::setLeaderLineWeight2(int leaderLineIndex, AcDb::LineWeight leaderLineWeight)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setLeaderLineWeight(leaderLineIndex, leaderLineWeight);
+    return PyThrowBadEs(impObj()->setLeaderLineWeight(leaderLineIndex, leaderLineWeight));
 #endif
 }
 
@@ -1078,9 +1078,9 @@ AcDb::LineWeight PyDbMLeader::getLeaderLineWeight(int leaderLineIndex) const
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeader::setLandingGap(double landingGap)
+void PyDbMLeader::setLandingGap(double landingGap)
 {
-    return impObj()->setLandingGap(landingGap);
+    return PyThrowBadEs(impObj()->setLandingGap(landingGap));
 }
 
 double PyDbMLeader::landingGap() const
@@ -1088,9 +1088,9 @@ double PyDbMLeader::landingGap() const
     return impObj()->landingGap();
 }
 
-Acad::ErrorStatus PyDbMLeader::setEnableLanding(bool enableLanding)
+void PyDbMLeader::setEnableLanding(bool enableLanding)
 {
-    return impObj()->setEnableLanding(enableLanding);
+    return PyThrowBadEs(impObj()->setEnableLanding(enableLanding));
 }
 
 bool PyDbMLeader::enableLanding() const
@@ -1098,9 +1098,9 @@ bool PyDbMLeader::enableLanding() const
     return impObj()->enableLanding();
 }
 
-Acad::ErrorStatus PyDbMLeader::setEnableDogleg(bool enableDogleg)
+void PyDbMLeader::setEnableDogleg(bool enableDogleg)
 {
-    return impObj()->setEnableDogleg(enableDogleg);
+    return PyThrowBadEs(impObj()->setEnableDogleg(enableDogleg));
 }
 
 bool PyDbMLeader::enableDogleg() const
@@ -1113,14 +1113,14 @@ double PyDbMLeader::doglegLength() const
     return impObj()->doglegLength();
 }
 
-Acad::ErrorStatus PyDbMLeader::setDoglegLength1(double doglegLength)
+void PyDbMLeader::setDoglegLength1(double doglegLength)
 {
-    return impObj()->setDoglegLength(doglegLength);
+    return PyThrowBadEs(impObj()->setDoglegLength(doglegLength));
 }
 
-Acad::ErrorStatus PyDbMLeader::setDoglegLength2(int leaderIndex, double doglegLength)
+void PyDbMLeader::setDoglegLength2(int leaderIndex, double doglegLength)
 {
-    return impObj()->setDoglegLength(leaderIndex, doglegLength);
+    return PyThrowBadEs(impObj()->setDoglegLength(leaderIndex, doglegLength));
 }
 
 double PyDbMLeader::getDoglegLength(int leaderIndex) const
@@ -1136,14 +1136,14 @@ PyDbObjectId PyDbMLeader::arrowSymbolId() const
     return PyDbObjectId(impObj()->arrowSymbolId());
 }
 
-Acad::ErrorStatus PyDbMLeader::setArrowSymbolId1(const PyDbObjectId& arrowSymbolId)
+void PyDbMLeader::setArrowSymbolId1(const PyDbObjectId& arrowSymbolId)
 {
-    return impObj()->setArrowSymbolId(arrowSymbolId.m_id);
+    return PyThrowBadEs(impObj()->setArrowSymbolId(arrowSymbolId.m_id));
 }
 
-Acad::ErrorStatus PyDbMLeader::setArrowSymbolId2(int leaderLineIndex, const PyDbObjectId& arrowSymbolId)
+void PyDbMLeader::setArrowSymbolId2(int leaderLineIndex, const PyDbObjectId& arrowSymbolId)
 {
-    return impObj()->setArrowSymbolId(leaderLineIndex, arrowSymbolId.m_id);
+    return PyThrowBadEs(impObj()->setArrowSymbolId(leaderLineIndex, arrowSymbolId.m_id));
 }
 
 PyDbObjectId PyDbMLeader::getArrowSymbolId(int leaderLineIndex) const
@@ -1159,14 +1159,14 @@ double PyDbMLeader::arrowSize() const
     return impObj()->arrowSize();
 }
 
-Acad::ErrorStatus PyDbMLeader::setArrowSize1(double arrowSize)
+void PyDbMLeader::setArrowSize1(double arrowSize)
 {
-    return impObj()->setArrowSize(arrowSize);
+    return PyThrowBadEs(impObj()->setArrowSize(arrowSize));
 }
 
-Acad::ErrorStatus PyDbMLeader::setArrowSize2(int leaderLineIndex, double arrowSize)
+void PyDbMLeader::setArrowSize2(int leaderLineIndex, double arrowSize)
 {
-    return impObj()->setArrowSize(leaderLineIndex, arrowSize);
+    return PyThrowBadEs(impObj()->setArrowSize(leaderLineIndex, arrowSize));
 }
 
 double PyDbMLeader::getArrowSize(int leaderLineIndex) const
@@ -1182,9 +1182,9 @@ AcDbMLeaderStyle::ContentType PyDbMLeader::contentType() const
     return impObj()->contentType();
 }
 
-Acad::ErrorStatus PyDbMLeader::setContentType(AcDbMLeaderStyle::ContentType contentType)
+void PyDbMLeader::setContentType(AcDbMLeaderStyle::ContentType contentType)
 {
-    return impObj()->setContentType(contentType);
+    return PyThrowBadEs(impObj()->setContentType(contentType));
 }
 
 PyDbObjectId PyDbMLeader::textStyleId() const
@@ -1192,9 +1192,9 @@ PyDbObjectId PyDbMLeader::textStyleId() const
     return PyDbObjectId(impObj()->textStyleId());
 }
 
-Acad::ErrorStatus PyDbMLeader::setTextStyleId(const PyDbObjectId& textStyleId)
+void PyDbMLeader::setTextStyleId(const PyDbObjectId& textStyleId)
 {
-    return impObj()->setTextStyleId(textStyleId.m_id);
+    return PyThrowBadEs(impObj()->setTextStyleId(textStyleId.m_id));
 }
 
 AcDbMLeaderStyle::TextAttachmentType PyDbMLeader::textAttachmentType1() const
@@ -1207,14 +1207,14 @@ AcDbMLeaderStyle::TextAttachmentType PyDbMLeader::textAttachmentType2(AcDbMLeade
     return impObj()->textAttachmentType(leaderDirection);
 }
 
-Acad::ErrorStatus PyDbMLeader::setTextAttachmentType1(AcDbMLeaderStyle::TextAttachmentType textAttachmentType)
+void PyDbMLeader::setTextAttachmentType1(AcDbMLeaderStyle::TextAttachmentType textAttachmentType)
 {
-    return impObj()->setTextAttachmentType(textAttachmentType);
+    return PyThrowBadEs(impObj()->setTextAttachmentType(textAttachmentType));
 }
 
-Acad::ErrorStatus PyDbMLeader::setTextAttachmentType2(AcDbMLeaderStyle::TextAttachmentType textAttachmentType, AcDbMLeaderStyle::LeaderDirectionType leaderDirection)
+void PyDbMLeader::setTextAttachmentType2(AcDbMLeaderStyle::TextAttachmentType textAttachmentType, AcDbMLeaderStyle::LeaderDirectionType leaderDirection)
 {
-    return impObj()->setTextAttachmentType(textAttachmentType, leaderDirection);
+    return PyThrowBadEs(impObj()->setTextAttachmentType(textAttachmentType, leaderDirection));
 }
 
 AcDbMLeaderStyle::TextAngleType PyDbMLeader::textAngleType() const
@@ -1222,9 +1222,9 @@ AcDbMLeaderStyle::TextAngleType PyDbMLeader::textAngleType() const
     return impObj()->textAngleType();
 }
 
-Acad::ErrorStatus PyDbMLeader::setTextAngleType(AcDbMLeaderStyle::TextAngleType textAngleType)
+void PyDbMLeader::setTextAngleType(AcDbMLeaderStyle::TextAngleType textAngleType)
 {
-    return impObj()->setTextAngleType(textAngleType);
+    return PyThrowBadEs(impObj()->setTextAngleType(textAngleType));
 }
 
 AcDbMLeaderStyle::TextAlignmentType PyDbMLeader::textAlignmentType() const
@@ -1232,14 +1232,14 @@ AcDbMLeaderStyle::TextAlignmentType PyDbMLeader::textAlignmentType() const
     return impObj()->textAlignmentType();
 }
 
-Acad::ErrorStatus PyDbMLeader::setTextAlignmentType(AcDbMLeaderStyle::TextAlignmentType textAlignmentType)
+void PyDbMLeader::setTextAlignmentType(AcDbMLeaderStyle::TextAlignmentType textAlignmentType)
 {
-    return impObj()->setTextAlignmentType(textAlignmentType);
+    return PyThrowBadEs(impObj()->setTextAlignmentType(textAlignmentType));
 }
 
-Acad::ErrorStatus PyDbMLeader::setTextColor(const AcCmColor& textColor)
+void PyDbMLeader::setTextColor(const AcCmColor& textColor)
 {
-    return impObj()->setTextColor(textColor);
+    return PyThrowBadEs(impObj()->setTextColor(textColor));
 }
 
 AcCmColor PyDbMLeader::textColor() const
@@ -1247,9 +1247,9 @@ AcCmColor PyDbMLeader::textColor() const
     return impObj()->textColor();
 }
 
-Acad::ErrorStatus PyDbMLeader::setTextHeight(double textHeight)
+void PyDbMLeader::setTextHeight(double textHeight)
 {
-    return impObj()->setTextHeight(textHeight);
+    return PyThrowBadEs(impObj()->setTextHeight(textHeight));
 }
 
 double PyDbMLeader::textHeight() const
@@ -1257,9 +1257,9 @@ double PyDbMLeader::textHeight() const
     return impObj()->textHeight();
 }
 
-Acad::ErrorStatus PyDbMLeader::setEnableFrameText(bool enableFrameText)
+void PyDbMLeader::setEnableFrameText(bool enableFrameText)
 {
-    return impObj()->setEnableFrameText(enableFrameText);
+    return PyThrowBadEs(impObj()->setEnableFrameText(enableFrameText));
 }
 
 bool PyDbMLeader::enableFrameText() const
@@ -1267,9 +1267,9 @@ bool PyDbMLeader::enableFrameText() const
     return impObj()->enableFrameText();
 }
 
-Acad::ErrorStatus PyDbMLeader::setMText(const PyDbMText& pMText)
+void PyDbMLeader::setMText(const PyDbMText& pMText)
 {
-    return impObj()->setMText(pMText.impObj());
+    return PyThrowBadEs(impObj()->setMText(pMText.impObj()));
 }
 
 PyDbMText PyDbMLeader::mtext() const
@@ -1277,9 +1277,9 @@ PyDbMText PyDbMLeader::mtext() const
     return PyDbMText(impObj()->mtext(), true);
 }
 
-Acad::ErrorStatus PyDbMLeader::setBlockContentId(const PyDbObjectId& blockId)
+void PyDbMLeader::setBlockContentId(const PyDbObjectId& blockId)
 {
-    return impObj()->setBlockContentId(blockId.m_id);
+    return PyThrowBadEs(impObj()->setBlockContentId(blockId.m_id));
 }
 
 PyDbObjectId PyDbMLeader::blockContentId() const
@@ -1287,9 +1287,9 @@ PyDbObjectId PyDbMLeader::blockContentId() const
     return PyDbObjectId(impObj()->blockContentId());
 }
 
-Acad::ErrorStatus PyDbMLeader::setBlockColor(const AcCmColor& blockColor)
+void PyDbMLeader::setBlockColor(const AcCmColor& blockColor)
 {
-    return impObj()->setBlockColor(blockColor);
+    return PyThrowBadEs(impObj()->setBlockColor(blockColor));
 }
 
 AcCmColor PyDbMLeader::blockColor() const
@@ -1297,9 +1297,9 @@ AcCmColor PyDbMLeader::blockColor() const
     return impObj()->blockColor();
 }
 
-Acad::ErrorStatus PyDbMLeader::setBlockScale(const AcGeScale3d& scale)
+void PyDbMLeader::setBlockScale(const AcGeScale3d& scale)
 {
-    return impObj()->setBlockScale(scale);
+    return PyThrowBadEs(impObj()->setBlockScale(scale));
 }
 
 AcGeScale3d PyDbMLeader::blockScale() const
@@ -1307,9 +1307,9 @@ AcGeScale3d PyDbMLeader::blockScale() const
     return impObj()->blockScale();
 }
 
-Acad::ErrorStatus PyDbMLeader::setBlockRotation(double rotation)
+void PyDbMLeader::setBlockRotation(double rotation)
 {
-    return impObj()->setBlockRotation(rotation);
+    return PyThrowBadEs(impObj()->setBlockRotation(rotation));
 }
 
 double PyDbMLeader::blockRotation() const
@@ -1317,9 +1317,9 @@ double PyDbMLeader::blockRotation() const
     return impObj()->blockRotation();
 }
 
-Acad::ErrorStatus PyDbMLeader::setBlockConnectionType(AcDbMLeaderStyle::BlockConnectionType blockConnectionType)
+void PyDbMLeader::setBlockConnectionType(AcDbMLeaderStyle::BlockConnectionType blockConnectionType)
 {
-    return impObj()->setBlockConnectionType(blockConnectionType);
+    return PyThrowBadEs(impObj()->setBlockConnectionType(blockConnectionType));
 }
 
 AcDbMLeaderStyle::BlockConnectionType PyDbMLeader::blockConnectionType() const
@@ -1327,9 +1327,9 @@ AcDbMLeaderStyle::BlockConnectionType PyDbMLeader::blockConnectionType() const
     return impObj()->blockConnectionType();
 }
 
-Acad::ErrorStatus PyDbMLeader::setEnableAnnotationScale(bool enableAnnotationScale)
+void PyDbMLeader::setEnableAnnotationScale(bool enableAnnotationScale)
 {
-    return impObj()->setEnableAnnotationScale(enableAnnotationScale);
+    return PyThrowBadEs(impObj()->setEnableAnnotationScale(enableAnnotationScale));
 }
 
 bool PyDbMLeader::enableAnnotationScale() const
@@ -1337,9 +1337,9 @@ bool PyDbMLeader::enableAnnotationScale() const
     return impObj()->enableAnnotationScale();
 }
 
-Acad::ErrorStatus PyDbMLeader::setMLeaderStyle(const PyDbObjectId& blockId)
+void PyDbMLeader::setMLeaderStyle(const PyDbObjectId& blockId)
 {
-    return impObj()->setMLeaderStyle(blockId.m_id);
+    return PyThrowBadEs(impObj()->setMLeaderStyle(blockId.m_id));
 }
 
 PyDbObjectId PyDbMLeader::MLeaderStyle()
@@ -1347,18 +1347,18 @@ PyDbObjectId PyDbMLeader::MLeaderStyle()
     return PyDbObjectId(impObj()->MLeaderStyle());
 }
 
-Acad::ErrorStatus PyDbMLeader::getOverridedMLeaderStyle(PyDbMLeaderStyle& mleaderStyle)
+void PyDbMLeader::getOverridedMLeaderStyle(PyDbMLeaderStyle& mleaderStyle)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return  impObj()->getOverridedMLeaderStyle(*mleaderStyle.impObj());
+    return  PyThrowBadEs(impObj()->getOverridedMLeaderStyle(*mleaderStyle.impObj()));
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeader::setBlockPosition(const AcGePoint3d& position)
+void PyDbMLeader::setBlockPosition(const AcGePoint3d& position)
 {
-    return impObj()->setBlockPosition(position);
+    return PyThrowBadEs(impObj()->setBlockPosition(position));
 }
 
 AcGePoint3d PyDbMLeader::getBlockPosition() const
@@ -1369,9 +1369,9 @@ AcGePoint3d PyDbMLeader::getBlockPosition() const
     return val;
 }
 
-Acad::ErrorStatus PyDbMLeader::setTextLocation(const AcGePoint3d& location)
+void PyDbMLeader::setTextLocation(const AcGePoint3d& location)
 {
-    return impObj()->setTextLocation(location);
+    return PyThrowBadEs(impObj()->setTextLocation(location));
 }
 
 AcGePoint3d PyDbMLeader::getTextLocation() const
@@ -1382,12 +1382,12 @@ AcGePoint3d PyDbMLeader::getTextLocation() const
     return val;
 }
 
-Acad::ErrorStatus PyDbMLeader::setToleranceLocation(const AcGePoint3d& location)
+void PyDbMLeader::setToleranceLocation(const AcGePoint3d& location)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setToleranceLocation(location);
+    return PyThrowBadEs(impObj()->setToleranceLocation(location));
 #endif
 }
 
@@ -1428,41 +1428,41 @@ AcGePoint3d PyDbMLeader::connectionPoint2(const AcGeVector3d& vect, AcDbMLeaderS
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeader::recomputeBreakPoints()
+void PyDbMLeader::recomputeBreakPoints()
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->recomputeBreakPoints();
+    return PyThrowBadEs(impObj()->recomputeBreakPoints());
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeader::postMLeaderToDb(PyDbDatabase& pDb)
+void PyDbMLeader::postMLeaderToDb(PyDbDatabase& pDb)
 {
-    return impObj()->postMLeaderToDb(pDb.impObj());
+    return PyThrowBadEs(impObj()->postMLeaderToDb(pDb.impObj()));
 }
 
-Acad::ErrorStatus PyDbMLeader::updateLeaderLinePosition()
+void PyDbMLeader::updateLeaderLinePosition()
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->updateLeaderLinePosition();
+    return PyThrowBadEs(impObj()->updateLeaderLinePosition());
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeader::removeLeaderLineRefAssoc(int leaderLineIndex) const
+void PyDbMLeader::removeLeaderLineRefAssoc(int leaderLineIndex) const
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->removeLeaderLineRefAssoc(leaderLineIndex);
+    return PyThrowBadEs(impObj()->removeLeaderLineRefAssoc(leaderLineIndex));
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeader::setTextAttachmentDirection(AcDbMLeaderStyle::TextAttachmentDirection textAttachmentDirection)
+void PyDbMLeader::setTextAttachmentDirection(AcDbMLeaderStyle::TextAttachmentDirection textAttachmentDirection)
 {
-    return impObj()->setTextAttachmentDirection(textAttachmentDirection);
+    return PyThrowBadEs(impObj()->setTextAttachmentDirection(textAttachmentDirection));
 }
 
 AcDbMLeaderStyle::TextAttachmentDirection PyDbMLeader::textAttachmentDirection() const
@@ -1470,12 +1470,12 @@ AcDbMLeaderStyle::TextAttachmentDirection PyDbMLeader::textAttachmentDirection()
     return impObj()->textAttachmentDirection();
 }
 
-Acad::ErrorStatus PyDbMLeader::setExtendLeaderToText(bool value)
+void PyDbMLeader::setExtendLeaderToText(bool value)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setExtendLeaderToText(value);
+    return PyThrowBadEs(impObj()->setExtendLeaderToText(value));
 #endif
 }
 
@@ -1732,9 +1732,9 @@ std::string PyDbMLeaderStyle::getName() const
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setName(const std::string& pszName)
+void PyDbMLeaderStyle::setName(const std::string& pszName)
 {
-    return impObj()->setName(utf8_to_wstr(pszName).c_str());
+    return PyThrowBadEs(impObj()->setName(utf8_to_wstr(pszName).c_str()));
 }
 
 bool PyDbMLeaderStyle::isRenamable() const
@@ -1747,9 +1747,9 @@ const std::string PyDbMLeaderStyle::description(void) const
     return wstr_to_utf8(impObj()->description());
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setDescription(const std::string& pszDescription)
+void PyDbMLeaderStyle::setDescription(const std::string& pszDescription)
 {
-    return impObj()->setName(utf8_to_wstr(pszDescription).c_str());
+    return PyThrowBadEs(impObj()->setName(utf8_to_wstr(pszDescription).c_str()));
 }
 
 Adesk::UInt32 PyDbMLeaderStyle::bitFlags() const
@@ -1757,9 +1757,9 @@ Adesk::UInt32 PyDbMLeaderStyle::bitFlags() const
     return impObj()->bitFlags();
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setBitFlags(Adesk::UInt32 flags)
+void PyDbMLeaderStyle::setBitFlags(Adesk::UInt32 flags)
 {
-    return impObj()->setBitFlags(flags);
+    return PyThrowBadEs(impObj()->setBitFlags(flags));
 }
 
 AcDbMLeaderStyle::ContentType PyDbMLeaderStyle::contentType() const
@@ -1767,17 +1767,17 @@ AcDbMLeaderStyle::ContentType PyDbMLeaderStyle::contentType() const
     return impObj()->contentType();
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setContentType(AcDbMLeaderStyle::ContentType contentType)
+void PyDbMLeaderStyle::setContentType(AcDbMLeaderStyle::ContentType contentType)
 {
-    return impObj()->setContentType(contentType);
+    return PyThrowBadEs(impObj()->setContentType(contentType));
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setDrawMLeaderOrderType(AcDbMLeaderStyle::DrawMLeaderOrderType drawMLeaderOrderType)
+void PyDbMLeaderStyle::setDrawMLeaderOrderType(AcDbMLeaderStyle::DrawMLeaderOrderType drawMLeaderOrderType)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setDrawMLeaderOrderType(drawMLeaderOrderType);
+    return PyThrowBadEs(impObj()->setDrawMLeaderOrderType(drawMLeaderOrderType));
 #endif
 }
 
@@ -1790,12 +1790,12 @@ AcDbMLeaderStyle::DrawMLeaderOrderType PyDbMLeaderStyle::drawMLeaderOrderType() 
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setDrawLeaderOrderType(AcDbMLeaderStyle::DrawLeaderOrderType drawLeaderOrderType)
+void PyDbMLeaderStyle::setDrawLeaderOrderType(AcDbMLeaderStyle::DrawLeaderOrderType drawLeaderOrderType)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setDrawLeaderOrderType(drawLeaderOrderType);
+    return PyThrowBadEs(impObj()->setDrawLeaderOrderType(drawLeaderOrderType));
 #endif
 }
 
@@ -1808,9 +1808,9 @@ AcDbMLeaderStyle::DrawLeaderOrderType PyDbMLeaderStyle::drawLeaderOrderType() co
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setMaxLeaderSegmentsPoints(int maxLeaderSegmentsPoints)
+void PyDbMLeaderStyle::setMaxLeaderSegmentsPoints(int maxLeaderSegmentsPoints)
 {
-    return impObj()->setMaxLeaderSegmentsPoints(maxLeaderSegmentsPoints);
+    return PyThrowBadEs(impObj()->setMaxLeaderSegmentsPoints(maxLeaderSegmentsPoints));
 }
 
 int PyDbMLeaderStyle::maxLeaderSegmentsPoints() const
@@ -1818,12 +1818,12 @@ int PyDbMLeaderStyle::maxLeaderSegmentsPoints() const
     return impObj()->maxLeaderSegmentsPoints();
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setFirstSegmentAngleConstraint(AcDbMLeaderStyle::SegmentAngleType angle)
+void PyDbMLeaderStyle::setFirstSegmentAngleConstraint(AcDbMLeaderStyle::SegmentAngleType angle)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setFirstSegmentAngleConstraint(angle);
+    return PyThrowBadEs(impObj()->setFirstSegmentAngleConstraint(angle));
 #endif
 }
 
@@ -1836,12 +1836,12 @@ AcDbMLeaderStyle::SegmentAngleType PyDbMLeaderStyle::firstSegmentAngleConstraint
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setSecondSegmentAngleConstraint(AcDbMLeaderStyle::SegmentAngleType angle)
+void PyDbMLeaderStyle::setSecondSegmentAngleConstraint(AcDbMLeaderStyle::SegmentAngleType angle)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setSecondSegmentAngleConstraint(angle);
+    return PyThrowBadEs(impObj()->setSecondSegmentAngleConstraint(angle));
 #endif
 }
 
@@ -1854,9 +1854,9 @@ AcDbMLeaderStyle::SegmentAngleType PyDbMLeaderStyle::secondSegmentAngleConstrain
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setLeaderLineType(AcDbMLeaderStyle::LeaderType leaderLineType)
+void PyDbMLeaderStyle::setLeaderLineType(AcDbMLeaderStyle::LeaderType leaderLineType)
 {
-    return impObj()->setLeaderLineType(leaderLineType);
+    return PyThrowBadEs(impObj()->setLeaderLineType(leaderLineType));
 }
 
 AcDbMLeaderStyle::LeaderType PyDbMLeaderStyle::leaderLineType() const
@@ -1864,9 +1864,9 @@ AcDbMLeaderStyle::LeaderType PyDbMLeaderStyle::leaderLineType() const
     return impObj()->leaderLineType();
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setLeaderLineColor(const AcCmColor& leaderLineColor)
+void PyDbMLeaderStyle::setLeaderLineColor(const AcCmColor& leaderLineColor)
 {
-    return impObj()->setLeaderLineColor(leaderLineColor);
+    return PyThrowBadEs(impObj()->setLeaderLineColor(leaderLineColor));
 }
 
 AcCmColor PyDbMLeaderStyle::leaderLineColor() const
@@ -1874,9 +1874,9 @@ AcCmColor PyDbMLeaderStyle::leaderLineColor() const
     return impObj()->leaderLineColor();
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setLeaderLineTypeId(const PyDbObjectId& leaderLineTypeId)
+void PyDbMLeaderStyle::setLeaderLineTypeId(const PyDbObjectId& leaderLineTypeId)
 {
-    return impObj()->setLeaderLineTypeId(leaderLineTypeId.m_id);
+    return PyThrowBadEs(impObj()->setLeaderLineTypeId(leaderLineTypeId.m_id));
 }
 
 PyDbObjectId PyDbMLeaderStyle::leaderLineTypeId() const
@@ -1884,12 +1884,12 @@ PyDbObjectId PyDbMLeaderStyle::leaderLineTypeId() const
     return impObj()->leaderLineTypeId();
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setLeaderLineWeight(AcDb::LineWeight leaderLineWeight)
+void PyDbMLeaderStyle::setLeaderLineWeight(AcDb::LineWeight leaderLineWeight)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setLeaderLineWeight(leaderLineWeight);
+    return PyThrowBadEs(impObj()->setLeaderLineWeight(leaderLineWeight));
 #endif
 }
 
@@ -1902,9 +1902,9 @@ AcDb::LineWeight PyDbMLeaderStyle::leaderLineWeight() const
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setEnableLanding(bool enableLanding)
+void PyDbMLeaderStyle::setEnableLanding(bool enableLanding)
 {
-    return impObj()->setEnableLanding(enableLanding);
+    return PyThrowBadEs(impObj()->setEnableLanding(enableLanding));
 }
 
 bool PyDbMLeaderStyle::enableLanding() const
@@ -1912,9 +1912,9 @@ bool PyDbMLeaderStyle::enableLanding() const
     return impObj()->enableLanding();
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setLandingGap(double landingGap)
+void PyDbMLeaderStyle::setLandingGap(double landingGap)
 {
-    return impObj()->setLandingGap(landingGap);
+    return PyThrowBadEs(impObj()->setLandingGap(landingGap));
 }
 
 double PyDbMLeaderStyle::landingGap() const
@@ -1922,9 +1922,9 @@ double PyDbMLeaderStyle::landingGap() const
     return impObj()->landingGap();
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setEnableDogleg(bool enableDogleg)
+void PyDbMLeaderStyle::setEnableDogleg(bool enableDogleg)
 {
-    return impObj()->setEnableDogleg(enableDogleg);
+    return PyThrowBadEs(impObj()->setEnableDogleg(enableDogleg));
 }
 
 bool PyDbMLeaderStyle::enableDogleg() const
@@ -1932,9 +1932,9 @@ bool PyDbMLeaderStyle::enableDogleg() const
     return impObj()->enableDogleg();
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setDoglegLength(double doglegLength)
+void PyDbMLeaderStyle::setDoglegLength(double doglegLength)
 {
-    return impObj()->setEnableDogleg(doglegLength);
+    return PyThrowBadEs(impObj()->setEnableDogleg(doglegLength));
 }
 
 double PyDbMLeaderStyle::doglegLength() const
@@ -1942,18 +1942,18 @@ double PyDbMLeaderStyle::doglegLength() const
     return impObj()->doglegLength();
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setArrowSymbolId1(const std::string& name)
+void PyDbMLeaderStyle::setArrowSymbolId1(const std::string& name)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setArrowSymbolId(utf8_to_wstr(name).c_str());
+    return PyThrowBadEs(impObj()->setArrowSymbolId(utf8_to_wstr(name).c_str()));
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setArrowSymbolId2(const PyDbObjectId& arrowSymbolId)
+void PyDbMLeaderStyle::setArrowSymbolId2(const PyDbObjectId& arrowSymbolId)
 {
-    return impObj()->setArrowSymbolId(arrowSymbolId.m_id);
+    return PyThrowBadEs(impObj()->setArrowSymbolId(arrowSymbolId.m_id));
 }
 
 PyDbObjectId PyDbMLeaderStyle::arrowSymbolId() const
@@ -1961,9 +1961,9 @@ PyDbObjectId PyDbMLeaderStyle::arrowSymbolId() const
     return PyDbObjectId(impObj()->arrowSymbolId());
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setArrowSize(double arrowSize)
+void PyDbMLeaderStyle::setArrowSize(double arrowSize)
 {
-    return impObj()->setArrowSize(arrowSize);
+    return PyThrowBadEs(impObj()->setArrowSize(arrowSize));
 }
 
 double PyDbMLeaderStyle::arrowSize() const
@@ -1971,9 +1971,9 @@ double PyDbMLeaderStyle::arrowSize() const
     return impObj()->arrowSize();
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setDefaultMText(const PyDbMText& defaultMText)
+void PyDbMLeaderStyle::setDefaultMText(const PyDbMText& defaultMText)
 {
-    return impObj()->setDefaultMText(defaultMText.impObj());
+    return PyThrowBadEs(impObj()->setDefaultMText(defaultMText.impObj()));
 }
 
 PyDbMText PyDbMLeaderStyle::defaultMText() const
@@ -1981,9 +1981,9 @@ PyDbMText PyDbMLeaderStyle::defaultMText() const
     return PyDbMText(impObj()->defaultMText(), true);
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setTextStyleId(const PyDbObjectId& textStyleId)
+void PyDbMLeaderStyle::setTextStyleId(const PyDbObjectId& textStyleId)
 {
-    return impObj()->setTextStyleId(textStyleId.m_id);
+    return PyThrowBadEs(impObj()->setTextStyleId(textStyleId.m_id));
 }
 
 PyDbObjectId PyDbMLeaderStyle::textStyleId() const
@@ -1991,9 +1991,9 @@ PyDbObjectId PyDbMLeaderStyle::textStyleId() const
     return PyDbObjectId(impObj()->textStyleId());
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setTextAttachmentType1(AcDbMLeaderStyle::TextAttachmentType textAttachmentType, AcDbMLeaderStyle::LeaderDirectionType leaderDirection)
+void PyDbMLeaderStyle::setTextAttachmentType1(AcDbMLeaderStyle::TextAttachmentType textAttachmentType, AcDbMLeaderStyle::LeaderDirectionType leaderDirection)
 {
-    return impObj()->setTextAttachmentType(textAttachmentType, leaderDirection);
+    return PyThrowBadEs(impObj()->setTextAttachmentType(textAttachmentType, leaderDirection));
 }
 
 AcDbMLeaderStyle::TextAttachmentType PyDbMLeaderStyle::textAttachmentType1(AcDbMLeaderStyle::LeaderDirectionType leaderDirection) const
@@ -2001,12 +2001,12 @@ AcDbMLeaderStyle::TextAttachmentType PyDbMLeaderStyle::textAttachmentType1(AcDbM
     return impObj()->textAttachmentType(leaderDirection);
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setTextAttachmentType2(AcDbMLeaderStyle::TextAttachmentType textAttachmentType)
+void PyDbMLeaderStyle::setTextAttachmentType2(AcDbMLeaderStyle::TextAttachmentType textAttachmentType)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setTextAttachmentType(textAttachmentType);
+    return PyThrowBadEs(impObj()->setTextAttachmentType(textAttachmentType));
 #endif
 }
 
@@ -2019,12 +2019,12 @@ AcDbMLeaderStyle::TextAttachmentType PyDbMLeaderStyle::textAttachmentType2() con
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setTextAngleType(AcDbMLeaderStyle::TextAngleType textAngleType)
+void PyDbMLeaderStyle::setTextAngleType(AcDbMLeaderStyle::TextAngleType textAngleType)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setTextAngleType(textAngleType);
+    return PyThrowBadEs(impObj()->setTextAngleType(textAngleType));
 #endif
 }
 
@@ -2037,12 +2037,12 @@ AcDbMLeaderStyle::TextAngleType PyDbMLeaderStyle::textAngleType() const
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setTextAlignmentType(AcDbMLeaderStyle::TextAlignmentType textAlignmentType)
+void PyDbMLeaderStyle::setTextAlignmentType(AcDbMLeaderStyle::TextAlignmentType textAlignmentType)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setTextAlignmentType(textAlignmentType);
+    return PyThrowBadEs(impObj()->setTextAlignmentType(textAlignmentType));
 #endif
 }
 
@@ -2055,12 +2055,12 @@ AcDbMLeaderStyle::TextAlignmentType PyDbMLeaderStyle::textAlignmentType() const
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setTextAlignAlwaysLeft(bool bAlwaysLeft)
+void PyDbMLeaderStyle::setTextAlignAlwaysLeft(bool bAlwaysLeft)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setTextAlignAlwaysLeft(bAlwaysLeft);
+    return PyThrowBadEs(impObj()->setTextAlignAlwaysLeft(bAlwaysLeft));
 #endif
 }
 
@@ -2073,9 +2073,9 @@ bool PyDbMLeaderStyle::textAlignAlwaysLeft() const
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setTextColor(const AcCmColor& textColor)
+void PyDbMLeaderStyle::setTextColor(const AcCmColor& textColor)
 {
-    return impObj()->setTextColor(textColor);
+    return PyThrowBadEs(impObj()->setTextColor(textColor));
 }
 
 AcCmColor PyDbMLeaderStyle::textColor() const
@@ -2083,9 +2083,9 @@ AcCmColor PyDbMLeaderStyle::textColor() const
     return impObj()->textColor();
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setTextHeight(double textHeight)
+void PyDbMLeaderStyle::setTextHeight(double textHeight)
 {
-    return impObj()->setTextHeight(textHeight);
+    return PyThrowBadEs(impObj()->setTextHeight(textHeight));
 }
 
 double PyDbMLeaderStyle::textHeight() const
@@ -2093,9 +2093,9 @@ double PyDbMLeaderStyle::textHeight() const
     return impObj()->textHeight();
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setEnableFrameText(bool enableFrameText)
+void PyDbMLeaderStyle::setEnableFrameText(bool enableFrameText)
 {
-    return impObj()->setEnableFrameText(enableFrameText);
+    return PyThrowBadEs(impObj()->setEnableFrameText(enableFrameText));
 }
 
 bool PyDbMLeaderStyle::enableFrameText() const
@@ -2103,9 +2103,9 @@ bool PyDbMLeaderStyle::enableFrameText() const
     return impObj()->enableFrameText();
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setAlignSpace(double alignSpace)
+void PyDbMLeaderStyle::setAlignSpace(double alignSpace)
 {
-    return impObj()->setAlignSpace(alignSpace);
+    return PyThrowBadEs(impObj()->setAlignSpace(alignSpace));
 }
 
 double PyDbMLeaderStyle::alignSpace() const
@@ -2113,18 +2113,18 @@ double PyDbMLeaderStyle::alignSpace() const
     return impObj()->alignSpace();
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setBlockId1(const std::string& name)
+void PyDbMLeaderStyle::setBlockId1(const std::string& name)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setBlockId(utf8_to_wstr(name).c_str());
+    return PyThrowBadEs(impObj()->setBlockId(utf8_to_wstr(name).c_str()));
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setBlockId2(const PyDbObjectId& blockId)
+void PyDbMLeaderStyle::setBlockId2(const PyDbObjectId& blockId)
 {
-    return impObj()->setBlockId(blockId.m_id);
+    return PyThrowBadEs(impObj()->setBlockId(blockId.m_id));
 }
 
 PyDbObjectId PyDbMLeaderStyle::blockId() const
@@ -2132,12 +2132,12 @@ PyDbObjectId PyDbMLeaderStyle::blockId() const
     return PyDbObjectId(impObj()->blockId());
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setBlockColor(const AcCmColor& blockColor)
+void PyDbMLeaderStyle::setBlockColor(const AcCmColor& blockColor)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setBlockColor(blockColor);
+    return PyThrowBadEs(impObj()->setBlockColor(blockColor));
 #endif
 }
 
@@ -2150,12 +2150,12 @@ AcCmColor PyDbMLeaderStyle::blockColor() const
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setBlockScale(const AcGeScale3d& scale)
+void PyDbMLeaderStyle::setBlockScale(const AcGeScale3d& scale)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setBlockScale(scale);
+    return PyThrowBadEs(impObj()->setBlockScale(scale));
 #endif
 }
 
@@ -2168,12 +2168,12 @@ AcGeScale3d PyDbMLeaderStyle::blockScale() const
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setEnableBlockScale(bool enableBlockScale)
+void PyDbMLeaderStyle::setEnableBlockScale(bool enableBlockScale)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setEnableBlockScale(enableBlockScale);
+    return PyThrowBadEs(impObj()->setEnableBlockScale(enableBlockScale));
 #endif
 }
 
@@ -2186,12 +2186,12 @@ bool PyDbMLeaderStyle::enableBlockScale() const
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setBlockRotation(double rotation)
+void PyDbMLeaderStyle::setBlockRotation(double rotation)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setBlockRotation(rotation);
+    return PyThrowBadEs(impObj()->setBlockRotation(rotation));
 #endif
 }
 
@@ -2204,12 +2204,12 @@ double PyDbMLeaderStyle::blockRotation() const
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setEnableBlockRotation(bool enableBlockRotation)
+void PyDbMLeaderStyle::setEnableBlockRotation(bool enableBlockRotation)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setEnableBlockRotation(enableBlockRotation);
+    return PyThrowBadEs(impObj()->setEnableBlockRotation(enableBlockRotation));
 #endif
 }
 
@@ -2222,12 +2222,12 @@ bool PyDbMLeaderStyle::enableBlockRotation() const
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setBlockConnectionType(AcDbMLeaderStyle::BlockConnectionType blockConnectionType)
+void PyDbMLeaderStyle::setBlockConnectionType(AcDbMLeaderStyle::BlockConnectionType blockConnectionType)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setBlockConnectionType(blockConnectionType);
+    return PyThrowBadEs(impObj()->setBlockConnectionType(blockConnectionType));
 #endif
 }
 
@@ -2240,9 +2240,9 @@ AcDbMLeaderStyle::BlockConnectionType PyDbMLeaderStyle::blockConnectionType() co
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setScale(double scale)
+void PyDbMLeaderStyle::setScale(double scale)
 {
-    return impObj()->setScale(scale);
+    return PyThrowBadEs(impObj()->setScale(scale));
 }
 
 double PyDbMLeaderStyle::scale() const
@@ -2267,9 +2267,9 @@ PyDbObjectId PyDbMLeaderStyle::postMLeaderStyleToDb(PyDbDatabase& pDb, const std
     return PyDbObjectId(id);
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setAnnotative(bool isAnnotative)
+void PyDbMLeaderStyle::setAnnotative(bool isAnnotative)
 {
-    return impObj()->setAnnotative(isAnnotative);
+    return PyThrowBadEs(impObj()->setAnnotative(isAnnotative));
 }
 
 bool PyDbMLeaderStyle::annotative() const
@@ -2277,9 +2277,9 @@ bool PyDbMLeaderStyle::annotative() const
     return impObj()->annotative();
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setBreakSize(double size)
+void PyDbMLeaderStyle::setBreakSize(double size)
 {
-    return impObj()->setBreakSize(size);
+    return PyThrowBadEs(impObj()->setBreakSize(size));
 }
 
 double PyDbMLeaderStyle::breakSize() const
@@ -2287,12 +2287,12 @@ double PyDbMLeaderStyle::breakSize() const
     return impObj()->breakSize();
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setTextAttachmentDirection(AcDbMLeaderStyle::TextAttachmentDirection textAttachmentDirection)
+void PyDbMLeaderStyle::setTextAttachmentDirection(AcDbMLeaderStyle::TextAttachmentDirection textAttachmentDirection)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setTextAttachmentDirection(textAttachmentDirection);
+    return PyThrowBadEs(impObj()->setTextAttachmentDirection(textAttachmentDirection));
 #endif
 }
 
@@ -2305,12 +2305,12 @@ AcDbMLeaderStyle::TextAttachmentDirection PyDbMLeaderStyle::textAttachmentDirect
 #endif
 }
 
-Acad::ErrorStatus PyDbMLeaderStyle::setExtendLeaderToText(bool value)
+void PyDbMLeaderStyle::setExtendLeaderToText(bool value)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return impObj()->setExtendLeaderToText(value);
+    return PyThrowBadEs(impObj()->setExtendLeaderToText(value));
 #endif
 }
 

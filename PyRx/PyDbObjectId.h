@@ -113,12 +113,12 @@ public:
     bool                isValid(void) const;
     bool                isXref(void) const;
     bool                isNull(void) const;
-    Acad::ErrorStatus   setNull(void);
-    Acad::ErrorStatus   setXrefId(PyDbObjectId& xrefBlkId, const PyDbHandle& hObject);
-    Acad::ErrorStatus   getXrefId(PyDbObjectId& xrefBlkId, PyDbHandle& hObject) const;
-    Acad::ErrorStatus   setLocalId(PyDbObjectId& objId);
-    Acad::ErrorStatus   getLocalId(PyDbObjectId& objId) const;
-    Acad::ErrorStatus   resolveObjectId(PyDbObjectId& id) const;
+    void                setNull(void);
+    void                setXrefId(PyDbObjectId& xrefBlkId, const PyDbHandle& hObject);
+    void                getXrefId(PyDbObjectId& xrefBlkId, PyDbHandle& hObject) const;
+    void                setLocalId(PyDbObjectId& objId);
+    void                getLocalId(PyDbObjectId& objId) const;
+    void                resolveObjectId(PyDbObjectId& id) const;
 public:
 #ifdef BRXAPP
     int m_imp;
