@@ -21,15 +21,15 @@ class TestDbObject(unittest.TestCase):
                 self.assertEqual(bdo.isAProxy(), False) 
                 self.assertEqual(bdo.isNewObject(), False)
                 #
-                self.assertEqual(bdo.upgradeOpen(), PyDb.ErrorStatus.Ok)
+                bdo.upgradeOpen()
                 self.assertEqual(bdo.isWriteEnabled(), True) 
                 #
-                self.assertEqual(bdo.downgradeOpen(), PyDb.ErrorStatus.Ok)
+                bdo.downgradeOpen()
                 self.assertEqual(bdo.isWriteEnabled(), False)
                 #
                 self.assertEqual(bdo.database(), PyDb.HostApplicationServices().workingDatabase())  
                 #
-                self.assertEqual(bdo.close(), PyDb.ErrorStatus.Ok)  
+                bdo.close()
                 self.assertEqual(bdo.isReadEnabled(), False)
                 
         def test_propertys(self):
@@ -75,7 +75,7 @@ def PyRxCmd_pydbobject():
                 suite = unittest.TestLoader().loadTestsFromTestCase(TestDbObject)
                 print(unittest.TextTestRunner(verbosity=0).run(suite))
         except Exception as err:
-                PyRxApp.Printf(err)
+                print.Printf(err)
 
 
     

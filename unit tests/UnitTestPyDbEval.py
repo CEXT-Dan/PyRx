@@ -76,7 +76,7 @@ def PyRxCmd_pydbeval():
         print('TestDbEval')
         print(unittest.TextTestRunner(verbosity=0).run(suite))
     except Exception as err:
-        PyRxApp.Printf(err)
+        print.Printf(err)
 
 
     

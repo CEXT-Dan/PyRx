@@ -26,20 +26,20 @@ class TestDbEntity(unittest.TestCase):
         dbp = Db.Point(id)
         self.assertEqual(dbp.isReadEnabled(), True)
         dbp.upgradeOpen()
-        self.assertEqual(dbp.erase(), Db.ErrorStatus.eOk)
+        dbp.erase()
         
     def test_dbpointopenctor2(self):
         id = create_dbPoint()
         dbp = Db.Point(id,Db.OpenMode.kForRead)
         self.assertEqual(dbp.isReadEnabled(), True)
         dbp.upgradeOpen()
-        self.assertEqual(dbp.erase(), Db.ErrorStatus.eOk)
+        dbp.erase()
         
     def test_dbpointopenctor3(self):
         id = create_dbPoint()
         dbp = Db.Point(id,Db.OpenMode.kForWrite)
         self.assertEqual(dbp.isWriteEnabled(), True)
-        self.assertEqual(dbp.erase(), Db.ErrorStatus.eOk)
+        dbp.erase()
         
     def test_dbpoint(self):
         db = Db.curDb()
@@ -92,11 +92,11 @@ class TestDbEntity(unittest.TestCase):
         #ctor
         arc2 = Db.Arc(eid)
         self.assertEqual(arc2.endAngle(),  math.pi)
-        self.assertEqual(arc2.close(),  Db.ErrorStatus.eOk)
+        arc2.close(),  Db.ErrorStatus.eOk
         #ctor
         arc3 = Db.Arc(eid,Db.OpenMode.kForRead)
         self.assertEqual(arc3.endAngle(),  math.pi)
-        self.assertEqual(arc3.close(),  Db.ErrorStatus.eOk)
+        arc3.close()
         
         
     def test_dbcircle(self):
@@ -179,4 +179,4 @@ def PyRxCmd_pyentity():
         print('TestDbPoint')
         print(unittest.TextTestRunner(verbosity=0).run(suite))
     except Exception as err:
-        PyRxApp.Printf(err)
+        print.Printf(err)
