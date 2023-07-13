@@ -93,21 +93,21 @@ int EdCore::arxUnload(const std::string& app)
     return acedArxUnload(utf8_to_wstr(app).c_str());
 }
 
-Acad::ErrorStatus EdCore::audit1(PyDbDatabase& pDb, bool bFixErrors)
+void EdCore::audit1(PyDbDatabase& pDb, bool bFixErrors)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return acedAudit(pDb.impObj(), bFixErrors);
+    return PyThrowBadEs(acedAudit(pDb.impObj(), bFixErrors));
 #endif
 }
 
-Acad::ErrorStatus EdCore::audit2(PyDbDatabase& pDb, bool bFixErrors, bool bCmdLnEcho)
+void EdCore::audit2(PyDbDatabase& pDb, bool bFixErrors, bool bCmdLnEcho)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
-    return acedAudit(pDb.impObj(), bFixErrors, bCmdLnEcho);
+    return PyThrowBadEs(acedAudit(pDb.impObj(), bFixErrors, bCmdLnEcho));
 #endif
 }
 
@@ -284,14 +284,14 @@ bool EdCore::setVar(const std::string& sym, const boost::python::object& src)
     return false;
 }
 
-Acad::ErrorStatus EdCore::mSpace()
+void EdCore::mSpace()
 {
-    return acedMspace();
+    return PyThrowBadEs(acedMspace());
 }
 
-Acad::ErrorStatus EdCore::pSpace()
+void EdCore::pSpace()
 {
-    return acedPspace();
+    return PyThrowBadEs(acedPspace());
 }
 
 int EdCore::grDraw(const AcGePoint3d& from, const AcGePoint3d& to, int colorIndex, int highlight)
@@ -324,9 +324,9 @@ PyDbObjectId EdCore::viewportIdFromNumber(int val)
     return PyDbObjectId(acedViewportIdFromNumber(val));
 }
 
-Acad::ErrorStatus EdCore::vpLayer(const PyDbObjectId& vpId, const boost::python::list& layerIds, AcDb::VpFreezeOps operation)
+void EdCore::vpLayer(const PyDbObjectId& vpId, const boost::python::list& layerIds, AcDb::VpFreezeOps operation)
 {
-    return acedVPLayer(vpId.m_id, PyListToObjectIdArray(layerIds), operation);
+    return PyThrowBadEs(acedVPLayer(vpId.m_id, PyListToObjectIdArray(layerIds), operation));
 }
 
 boost::python::list EdCore::vports()
@@ -338,25 +338,25 @@ boost::python::list EdCore::vports()
     return resbufToList(buf);
 }
 
-Acad::ErrorStatus EdCore::vports2VportTableRecords()
+void EdCore::vports2VportTableRecords()
 {
-    return acedVports2VportTableRecords();
+    return PyThrowBadEs(acedVports2VportTableRecords());
 }
 
-Acad::ErrorStatus EdCore::vportTableRecords2Vports()
+void EdCore::vportTableRecords2Vports()
 {
-    return acedVportTableRecords2Vports();
+    return PyThrowBadEs(acedVportTableRecords2Vports());
 }
 
-Acad::ErrorStatus EdCore::xrefAttach1(const std::string& path, const std::string& name)
+void EdCore::xrefAttach1(const std::string& path, const std::string& name)
 {
-    return acedXrefAttach(utf8_to_wstr(path).c_str(), utf8_to_wstr(name).c_str());
+    return PyThrowBadEs(acedXrefAttach(utf8_to_wstr(path).c_str(), utf8_to_wstr(name).c_str()));
 }
 
-Acad::ErrorStatus EdCore::xrefAttach2(const std::string& path, const std::string& name, PyDbObjectId& btrid, PyDbObjectId& refid,
+void EdCore::xrefAttach2(const std::string& path, const std::string& name, PyDbObjectId& btrid, PyDbObjectId& refid,
     AcGePoint3d& pt, AcGeScale3d& sc, double rot, bool bQuiet, PyDbDatabase& pHostDb, const std::string& passwd)
 {
-    return acedXrefAttach(
+    return PyThrowBadEs(acedXrefAttach(
         utf8_to_wstr(path).c_str(),
         utf8_to_wstr(name).c_str(),
         &btrid.m_id,
@@ -366,7 +366,7 @@ Acad::ErrorStatus EdCore::xrefAttach2(const std::string& path, const std::string
         &rot,
         bQuiet,
         pHostDb.impObj(),
-        utf8_to_wstr(passwd).c_str());
+        utf8_to_wstr(passwd).c_str()));
 }
 
 std::string EdCore::xrefCreateBlockname(const std::string& XrefPathname)
@@ -380,14 +380,14 @@ std::string EdCore::xrefCreateBlockname(const std::string& XrefPathname)
     return result;
 }
 
-Acad::ErrorStatus EdCore::xrefDetach1(const std::string& XrefBlockname)
+void EdCore::xrefDetach1(const std::string& XrefBlockname)
 {
-    return acedXrefDetach(utf8_to_wstr(XrefBlockname).c_str());
+    return PyThrowBadEs(acedXrefDetach(utf8_to_wstr(XrefBlockname).c_str()));
 }
 
-Acad::ErrorStatus EdCore::xrefDetach2(const std::string& XrefBlockname, bool bQuiet, PyDbDatabase& pHostDb)
+void EdCore::xrefDetach2(const std::string& XrefBlockname, bool bQuiet, PyDbDatabase& pHostDb)
 {
-    return acedXrefDetach(utf8_to_wstr(XrefBlockname).c_str(), bQuiet, pHostDb.impObj());
+    return PyThrowBadEs(acedXrefDetach(utf8_to_wstr(XrefBlockname).c_str(), bQuiet, pHostDb.impObj()));
 }
 
 bool EdCore::xrefNotifyCheckFileChanged(const PyDbObjectId& id)
@@ -402,15 +402,15 @@ bool EdCore::xrefNotifyCheckFileChanged(const PyDbObjectId& id)
 #endif
 }
 
-Acad::ErrorStatus EdCore::xrefOverlay1(const std::string& path, const std::string& name)
+void EdCore::xrefOverlay1(const std::string& path, const std::string& name)
 {
-   return acedXrefOverlay(utf8_to_wstr(path).c_str(), utf8_to_wstr(name).c_str());
+   return PyThrowBadEs(acedXrefOverlay(utf8_to_wstr(path).c_str(), utf8_to_wstr(name).c_str()));
 }
 
-Acad::ErrorStatus EdCore::xrefOverlay2(const std::string& path, const std::string& name, PyDbObjectId& btrid, PyDbObjectId& refid, 
+void EdCore::xrefOverlay2(const std::string& path, const std::string& name, PyDbObjectId& btrid, PyDbObjectId& refid, 
     AcGePoint3d& pt, AcGeScale3d& sc, double rot, bool bQuiet, PyDbDatabase& pHostDb, const std::string& passwd)
 {
-    return acedXrefOverlay(
+    return PyThrowBadEs(acedXrefOverlay(
         utf8_to_wstr(path).c_str(),
         utf8_to_wstr(name).c_str(),
         &btrid.m_id,
@@ -420,77 +420,77 @@ Acad::ErrorStatus EdCore::xrefOverlay2(const std::string& path, const std::strin
         &rot,
         bQuiet,
         pHostDb.impObj(),
-        utf8_to_wstr(passwd).c_str());
+        utf8_to_wstr(passwd).c_str()));
 }
 
-Acad::ErrorStatus EdCore::xrefReload1(const boost::python::list& symbolIds)
+void EdCore::xrefReload1(const boost::python::list& symbolIds)
 {
     AcDbObjectIdArray ids = PyListToObjectIdArray(symbolIds);
-    return acedXrefReload(ids);
+    return PyThrowBadEs(acedXrefReload(ids));
 }
 
-Acad::ErrorStatus EdCore::xrefReload2(const boost::python::list& symbolIds, bool bQuiet, PyDbDatabase& pHostDb)
+void EdCore::xrefReload2(const boost::python::list& symbolIds, bool bQuiet, PyDbDatabase& pHostDb)
 {
     AcDbObjectIdArray ids = PyListToObjectIdArray(symbolIds);
-    return acedXrefReload(ids, bQuiet, pHostDb.impObj());
+    return PyThrowBadEs(acedXrefReload(ids, bQuiet, pHostDb.impObj()));
 }
 
-Acad::ErrorStatus EdCore::xrefReload3(const std::string& name)
+void EdCore::xrefReload3(const std::string& name)
 {
-    return acedXrefReload(utf8_to_wstr(name).c_str());
+    return PyThrowBadEs(acedXrefReload(utf8_to_wstr(name).c_str()));
 }
 
-Acad::ErrorStatus EdCore::xrefReload4(const std::string& name, bool bQuiet, PyDbDatabase& pHostDb)
+void EdCore::xrefReload4(const std::string& name, bool bQuiet, PyDbDatabase& pHostDb)
 {
-    return acedXrefReload(utf8_to_wstr(name).c_str(), bQuiet, pHostDb.impObj());
+    return PyThrowBadEs(acedXrefReload(utf8_to_wstr(name).c_str(), bQuiet, pHostDb.impObj()));
 }
 
-Acad::ErrorStatus EdCore::xrefResolve1(PyDbDatabase& pHostDb)
+void EdCore::xrefResolve1(PyDbDatabase& pHostDb)
 {
-    return acedXrefResolve(pHostDb.impObj());
+    return PyThrowBadEs(acedXrefResolve(pHostDb.impObj()));
 }
 
-Acad::ErrorStatus EdCore::xrefResolve2(PyDbDatabase& pHostDb, bool bQuiet)
+void EdCore::xrefResolve2(PyDbDatabase& pHostDb, bool bQuiet)
 {
-    return acedXrefResolve(pHostDb.impObj(), bQuiet);
+    return PyThrowBadEs(acedXrefResolve(pHostDb.impObj(), bQuiet));
 }
 
-Acad::ErrorStatus EdCore::xrefUnload1(const std::string& XrefBlockname)
+void EdCore::xrefUnload1(const std::string& XrefBlockname)
 {
-    return acedXrefUnload(utf8_to_wstr(XrefBlockname).c_str());
+    return PyThrowBadEs(acedXrefUnload(utf8_to_wstr(XrefBlockname).c_str()));
 }
 
-Acad::ErrorStatus EdCore::xrefUnload2(const std::string& XrefBlockname, bool bQuiet, PyDbDatabase& pHostDb)
+void EdCore::xrefUnload2(const std::string& XrefBlockname, bool bQuiet, PyDbDatabase& pHostDb)
 {
-    return acedXrefUnload(utf8_to_wstr(XrefBlockname).c_str(), bQuiet, pHostDb.impObj());
+    return PyThrowBadEs(acedXrefUnload(utf8_to_wstr(XrefBlockname).c_str(), bQuiet, pHostDb.impObj()));
 }
 
-Acad::ErrorStatus EdCore::xrefBind1(const std::string& XrefBlockname)
+void EdCore::xrefBind1(const std::string& XrefBlockname)
 {
-    return acedXrefBind(utf8_to_wstr(XrefBlockname).c_str());
+    return PyThrowBadEs(acedXrefBind(utf8_to_wstr(XrefBlockname).c_str()));
 }
 
-Acad::ErrorStatus EdCore::xrefBind2(const std::string& XrefBlockname, bool bInsertBind, bool bQuiet, PyDbDatabase& pHostDb)
+void EdCore::xrefBind2(const std::string& XrefBlockname, bool bInsertBind, bool bQuiet, PyDbDatabase& pHostDb)
 {
-    return acedXrefBind(utf8_to_wstr(XrefBlockname).c_str(), bInsertBind, bQuiet, pHostDb.impObj());
+    return PyThrowBadEs(acedXrefBind(utf8_to_wstr(XrefBlockname).c_str(), bInsertBind, bQuiet, pHostDb.impObj()));
 }
 
-Acad::ErrorStatus EdCore::xrefXBind1(const boost::python::list& symbolIds)
+void EdCore::xrefXBind1(const boost::python::list& symbolIds)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
     AcDbObjectIdArray ids = PyListToObjectIdArray(symbolIds);
-    return acedXrefXBind(ids);
+    return PyThrowBadEs(acedXrefXBind(ids));
 #endif
 }
 
-Acad::ErrorStatus EdCore::xrefXBind2(const boost::python::list& symbolIds, bool bQuiet, PyDbDatabase& pHostDb)
+void EdCore::xrefXBind2(const boost::python::list& symbolIds, bool bQuiet, PyDbDatabase& pHostDb)
 {
 #ifdef BRXAPP
     throw PyNotimplementedByHost();
 #else
     AcDbObjectIdArray ids = PyListToObjectIdArray(symbolIds);
-    return acedXrefXBind(ids, bQuiet, pHostDb.impObj());
+    return PyThrowBadEs(acedXrefXBind(ids, bQuiet, pHostDb.impObj()));
 #endif
 }
