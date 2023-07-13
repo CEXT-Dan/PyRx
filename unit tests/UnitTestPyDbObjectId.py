@@ -42,7 +42,7 @@ def PyRxCmd_pydbobjectid():
                 print('TestDbObjectId')
                 print(unittest.TextTestRunner(verbosity=0).run(suite))
         except Exception as err:
-                PyRxApp.Printf(err)
+                print.Printf(err)
 
 
     
