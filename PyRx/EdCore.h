@@ -4,6 +4,8 @@ class PyDbDatabase;
 
 void makeEdCoreWrapper();
 
+//acedSetUndoMark
+
 class EdCore
 {
 public:
@@ -21,11 +23,13 @@ public:
     static boost::python::list  getPredefinedPattens();
     static std::string          getFileD(const std::string& title, const std::string& defawlt, const std::string& ext, int flags);
     static boost::python::list  getFileNavDialog(const std::string& title, const std::string& defawlt, const std::string& ext, const std::string& dlgname, int flags);
+    static std::string          getCommandPromptString();
     static boost::python::object getVar(const std::string& sym);
     static bool                  setVar(const std::string& sym, const  boost::python::object&);
     static void                 mSpace();
     static void                 pSpace();
     static int                  grDraw(const AcGePoint3d& from, const AcGePoint3d& to, int colorIndex, int highlight);
+    static void                 setUndoMark(bool flag);
     static int                  update(int vport, const AcGePoint2d& p1, const AcGePoint2d& p2);
     static void                 updateDisplay();
     static void                 updateDisplayPause(bool bEnable);
@@ -58,6 +62,5 @@ public:
     static void                 xrefBind2(const std::string& XrefBlockname, bool bInsertBind, bool bQuiet, PyDbDatabase& pHostDb);
     static void                 xrefXBind1(const boost::python::list& symbolIds);
     static void                 xrefXBind2(const boost::python::list& symbolIds, bool bQuiet, PyDbDatabase& pHostDb);
-
 };
 
