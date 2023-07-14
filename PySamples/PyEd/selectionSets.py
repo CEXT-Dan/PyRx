@@ -100,3 +100,11 @@ def PyRxCmd_pyssget3():
     print(nestedInfo)
   except Exception as err:
     print(err)
+    
+def PyRxCmd_pyssget4():
+  try:
+    ssResult = Ed.Editor.selectPrompt("Add", "Remove")
+    if ssResult[0] == Ed.PromptStatus.eNormal : 
+      print(len(ssResult[1].toList()))
+  except Exception as err:
+    print(err)

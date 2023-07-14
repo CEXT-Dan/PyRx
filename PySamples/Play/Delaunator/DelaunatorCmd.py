@@ -51,7 +51,7 @@ def PyRxCmd_pydoit():
         pnt2ds = get_2dpointd(pnt3ds)
         t = Delaunator(pnt2ds).triangles
         
-        db = PyAp.Application().docManager().curDocument().database()
+        db = PyDb.HostApplicationServices().workingDatabase()
         model = PyDb.BlockTableRecord(db.modelSpaceId(), PyDb.OpenMode.kForWrite)
         cnt = len(t)
         for i in range(0, cnt, 3):
