@@ -148,7 +148,7 @@ void PyDbEntity::setLayer(const PyDbObjectId& newVal, bool doSubents, bool allow
 std::string PyDbEntity::plotStyleName() const
 {
     AcString str;
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     return  wstr_to_utf8(impObj()->plotStyleName());
 #else
     impObj()->plotStyleName(str);

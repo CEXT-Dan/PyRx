@@ -81,7 +81,7 @@ void PyApLayoutManager::updateLayoutTabs()
 
 std::string PyApLayoutManager::getActiveTab()
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     AcString sName;
@@ -152,7 +152,7 @@ void PyApLayoutManager::setShowPrintBorder(Adesk::Boolean showPrintBorder)
 
 std::string PyApLayoutManager::generateNextNewLayoutName1()
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     AcString sName;
@@ -163,7 +163,7 @@ std::string PyApLayoutManager::generateNextNewLayoutName1()
 
 std::string PyApLayoutManager::generateNextNewLayoutName2(PyDbDatabase& useDb)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     AcString sName;
@@ -209,7 +209,7 @@ void PyApLayoutManager::setCaptureOnLayoutSwitch(bool bCaptureOnLayout)
 
 PyDbObjectId PyApLayoutManager::createLayoutFromTemplate1(const std::string& newLayoutName, const std::string& templatePath, const std::string& layoutName)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     PyDbObjectId id;
@@ -220,7 +220,7 @@ PyDbObjectId PyApLayoutManager::createLayoutFromTemplate1(const std::string& new
 
 PyDbObjectId PyApLayoutManager::createLayoutFromTemplate2(const std::string& newLayoutName, const std::string& templatePath, const std::string& layoutName, PyDbDatabase& pDb)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     PyDbObjectId id;

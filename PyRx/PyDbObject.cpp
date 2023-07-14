@@ -308,7 +308,7 @@ void PyDbObject::disableUndoRecording(Adesk::Boolean disable)
 
 void PyDbObject::addPersistentReactor(const PyDbObjectId& objId)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     impObj()->addPersistentReactor(objId.m_id);;
 #else
     return PyThrowBadEs(impObj()->addPersistentReactor(objId.m_id));

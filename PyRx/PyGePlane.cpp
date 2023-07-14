@@ -109,7 +109,7 @@ boost::python::tuple PyGePlane::intersectWith4(const PyGePlane& otherPln, const 
 
 boost::python::tuple PyGePlane::intersectWith5(const PyGeBoundedPlane& bndPln) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -121,7 +121,7 @@ boost::python::tuple PyGePlane::intersectWith5(const PyGeBoundedPlane& bndPln) c
 
 boost::python::tuple PyGePlane::intersectWith6(const PyGeBoundedPlane& bndPln, const AcGeTol& tol) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -230,7 +230,7 @@ boost::python::tuple PyGeBoundedPlane::intersectWith2(const PyGeLinearEnt3d& lin
 
 boost::python::tuple PyGeBoundedPlane::intersectWith3(const PyGePlane& otherPln) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -242,7 +242,7 @@ boost::python::tuple PyGeBoundedPlane::intersectWith3(const PyGePlane& otherPln)
 
 boost::python::tuple PyGeBoundedPlane::intersectWith4(const PyGePlane& otherPln, const AcGeTol& tol) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;

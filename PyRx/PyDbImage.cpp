@@ -267,7 +267,7 @@ PyDbObjectId PyDbRasterImageDef::imageDictionary(PyDbDatabase& pDb)
 
 std::string PyDbRasterImageDef::suggestName(PyDbDictionary& dict, const std::string& pPathName)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     ACHAR newImageName[AcDbRasterImageDef::kMaxSuggestNameSize];

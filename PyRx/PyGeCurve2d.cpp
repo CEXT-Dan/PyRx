@@ -341,7 +341,7 @@ double PyGeCurve2d::area2(double startParam, double endParam, const AcGeTol& tol
 
 boost::python::tuple PyGeCurve2d::isDegenerate1() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -353,7 +353,7 @@ boost::python::tuple PyGeCurve2d::isDegenerate1() const
 
 boost::python::tuple PyGeCurve2d::isDegenerate2(const AcGeTol& tol) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -612,7 +612,7 @@ boost::python::tuple PyGeCircArc2d::intersectWith4(const PyGeCircArc2d& arc, con
 
 boost::python::tuple PyGeCircArc2d::tangent1(const AcGePoint2d& pnt) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -625,7 +625,7 @@ boost::python::tuple PyGeCircArc2d::tangent1(const AcGePoint2d& pnt) const
 
 boost::python::tuple PyGeCircArc2d::tangent2(const AcGePoint2d& pnt, const AcGeTol& tol) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -730,7 +730,7 @@ PyGeCircArc2d& PyGeCircArc2d::set2(const AcGePoint2d& cent, double radius, doubl
 
 PyGeCircArc2d& PyGeCircArc2d::set3(const AcGePoint2d& startPoint, const AcGePoint2d& pnt, const AcGePoint2d& endPoint)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     AcGeError err;
@@ -749,7 +749,7 @@ PyGeCircArc2d& PyGeCircArc2d::set4(const AcGePoint2d& startPoint, const AcGePoin
 
 PyGeCircArc2d& PyGeCircArc2d::set5(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, double radius)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     double param1 = 0.0;
@@ -764,7 +764,7 @@ PyGeCircArc2d& PyGeCircArc2d::set5(const PyGeCurve2d& curve1, const PyGeCurve2d&
 
 PyGeCircArc2d& PyGeCircArc2d::set6(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2, const PyGeCurve2d& curve3)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     double param1 = 0.0;
@@ -951,7 +951,7 @@ Adesk::Boolean PyGeEllipArc2d::isClockWise() const
 
 PyGeEllipArc2d& PyGeEllipArc2d::setCenter(const AcGePoint2d& cent)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     impObj()->setCenter(cent);
@@ -961,7 +961,7 @@ PyGeEllipArc2d& PyGeEllipArc2d::setCenter(const AcGePoint2d& cent)
 
 PyGeEllipArc2d& PyGeEllipArc2d::setMinorRadius(double rad)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     impObj()->setMinorRadius(rad);
@@ -971,7 +971,7 @@ PyGeEllipArc2d& PyGeEllipArc2d::setMinorRadius(double rad)
 
 PyGeEllipArc2d& PyGeEllipArc2d::setMajorRadius(double rad)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     impObj()->setMajorRadius(rad);
@@ -981,7 +981,7 @@ PyGeEllipArc2d& PyGeEllipArc2d::setMajorRadius(double rad)
 
 PyGeEllipArc2d& PyGeEllipArc2d::setAxes(const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     impObj()->setAxes(majorAxis, minorAxis);
@@ -991,7 +991,7 @@ PyGeEllipArc2d& PyGeEllipArc2d::setAxes(const AcGeVector2d& majorAxis, const AcG
 
 PyGeEllipArc2d& PyGeEllipArc2d::setAngles(double startAngle, double endAngle)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     impObj()->setAngles(startAngle, endAngle);
@@ -1013,7 +1013,7 @@ PyGeEllipArc2d& PyGeEllipArc2d::set2(const AcGePoint2d& cent, const AcGeVector2d
 
 PyGeEllipArc2d& PyGeEllipArc2d::set3(const PyGeCircArc2d& arc)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     if (impObj() == nullptr || arc.isNull())

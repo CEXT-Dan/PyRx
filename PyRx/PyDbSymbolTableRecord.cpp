@@ -69,7 +69,7 @@ bool PyDbSymbolTableRecord::isResolved() const
 
 bool PyDbSymbolTableRecord::isRenamable() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isRenamable();
@@ -489,7 +489,7 @@ void PyDbAbstractViewTableRecord::setSun1(PyDbObjectId& retId, PyDbObject& pSun)
 
 void PyDbAbstractViewTableRecord::setSun2(PyDbObjectId& retId, PyDbObject& pSun, bool eraseOldSun)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setSun(retId.m_id, pSun.impObj(), eraseOldSun));
@@ -839,7 +839,7 @@ void PyDbViewportTableRecord::setUcsPerViewport(bool ucsvp)
 
 bool PyDbViewportTableRecord::isGridBoundToLimits() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isGridBoundToLimits();
@@ -848,7 +848,7 @@ bool PyDbViewportTableRecord::isGridBoundToLimits() const
 
 void PyDbViewportTableRecord::setGridBoundToLimits(bool enabled)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->setGridBoundToLimits(enabled);
@@ -857,7 +857,7 @@ void PyDbViewportTableRecord::setGridBoundToLimits(bool enabled)
 
 bool PyDbViewportTableRecord::isGridAdaptive() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isGridAdaptive();
@@ -866,7 +866,7 @@ bool PyDbViewportTableRecord::isGridAdaptive() const
 
 void PyDbViewportTableRecord::setGridAdaptive(bool enabled)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->setGridAdaptive(enabled);
@@ -875,7 +875,7 @@ void PyDbViewportTableRecord::setGridAdaptive(bool enabled)
 
 bool PyDbViewportTableRecord::isGridSubdivisionRestricted() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isGridSubdivisionRestricted();
@@ -884,7 +884,7 @@ bool PyDbViewportTableRecord::isGridSubdivisionRestricted() const
 
 void PyDbViewportTableRecord::setGridSubdivisionRestricted(bool enabled)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->setGridSubdivisionRestricted(enabled);
@@ -893,7 +893,7 @@ void PyDbViewportTableRecord::setGridSubdivisionRestricted(bool enabled)
 
 bool PyDbViewportTableRecord::isGridFollow() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isGridFollow();
@@ -902,7 +902,7 @@ bool PyDbViewportTableRecord::isGridFollow() const
 
 void PyDbViewportTableRecord::setGridFollow(bool enabled)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->setGridFollow(enabled);
@@ -911,7 +911,7 @@ void PyDbViewportTableRecord::setGridFollow(bool enabled)
 
 Adesk::Int16 PyDbViewportTableRecord::gridMajor() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->gridMajor();
@@ -920,7 +920,7 @@ Adesk::Int16 PyDbViewportTableRecord::gridMajor() const
 
 void PyDbViewportTableRecord::setGridMajor(Adesk::Int16 value)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->setGridMajor(value);
@@ -934,7 +934,7 @@ void PyDbViewportTableRecord::setBackground(const PyDbObjectId& backgroundId)
 
 PyDbObjectId PyDbViewportTableRecord::previousBackground1() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyDbObjectId(impObj()->previousBackground());
@@ -943,7 +943,7 @@ PyDbObjectId PyDbViewportTableRecord::previousBackground1() const
 
 PyDbObjectId PyDbViewportTableRecord::previousBackground2(AcGiDrawable::DrawableType type) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyDbObjectId(impObj()->previousBackground(type));
@@ -952,7 +952,7 @@ PyDbObjectId PyDbViewportTableRecord::previousBackground2(AcGiDrawable::Drawable
 
 void PyDbViewportTableRecord::setPreviousBackground1(PyDbObjectId& backgroundId)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setPreviousBackground(backgroundId.m_id));
@@ -961,7 +961,7 @@ void PyDbViewportTableRecord::setPreviousBackground1(PyDbObjectId& backgroundId)
 
 void PyDbViewportTableRecord::setPreviousBackground2(PyDbObjectId& backgroundId, AcGiDrawable::DrawableType type, bool bForcedSwitch)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setPreviousBackground(backgroundId.m_id, type, bForcedSwitch));
@@ -970,7 +970,7 @@ void PyDbViewportTableRecord::setPreviousBackground2(PyDbObjectId& backgroundId,
 
 bool PyDbViewportTableRecord::previousBackgroundForcedSwitch(void) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->previousBackgroundForcedSwitch();
@@ -1099,7 +1099,7 @@ void PyDbViewTableRecord::disassociateUcsFromView()
 
 std::string PyDbViewTableRecord::getCategoryName() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     AcString str;
@@ -1116,7 +1116,7 @@ void PyDbViewTableRecord::setCategoryName(const std::string& categoryName)
 
 std::string PyDbViewTableRecord::getLayerState() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     AcString str;
@@ -1166,7 +1166,7 @@ void PyDbViewTableRecord::setIsCameraPlottable(bool plottable)
 
 PyDbObjectId PyDbViewTableRecord::liveSection() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyDbObjectId(impObj()->liveSection());
@@ -1175,7 +1175,7 @@ PyDbObjectId PyDbViewTableRecord::liveSection() const
 
 void PyDbViewTableRecord::setLiveSection(const PyDbObjectId& liveSectionId)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setLiveSection(liveSectionId.m_id));
@@ -1184,7 +1184,7 @@ void PyDbViewTableRecord::setLiveSection(const PyDbObjectId& liveSectionId)
 
 PyDbObjectId PyDbViewTableRecord::camera() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyDbObjectId(impObj()->camera());
@@ -1193,7 +1193,7 @@ PyDbObjectId PyDbViewTableRecord::camera() const
 
 void PyDbViewTableRecord::setCamera(const PyDbObjectId& cameraId)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setCamera(cameraId.m_id));
@@ -1230,7 +1230,7 @@ void PyDbViewTableRecord::setSun1(PyDbObjectId& retId, PyDbObject& pSun)
 
 void PyDbViewTableRecord::setSun2(PyDbObjectId& retId, PyDbObject& pSun, bool eraseOldSun)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setSun(retId.m_id, pSun.impObj(), eraseOldSun));
@@ -1371,7 +1371,7 @@ boost::python::list PyDbBlockTableRecord::objectIds()
 
 std::string PyDbBlockTableRecord::comments()
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     AcString str;
@@ -1387,7 +1387,7 @@ void PyDbBlockTableRecord::setComments(const std::string& pString)
 
 std::string PyDbBlockTableRecord::pathName()
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     AcString str;
@@ -1448,7 +1448,7 @@ bool PyDbBlockTableRecord::isFromOverlayReference() const
 
 void PyDbBlockTableRecord::setIsFromOverlayReference(bool bIsOverlay)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setIsFromOverlayReference(bIsOverlay));
@@ -1848,7 +1848,7 @@ PyDbObjectId PyDbLayerTableRecord::linetypeObjectId() const
 
 void PyDbLayerTableRecord::setLinetypeObjectId(const PyDbObjectId& id)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     impObj()->setLinetypeObjectId(id.m_id);
 #else
     return PyThrowBadEs(impObj()->setLinetypeObjectId(id.m_id));
@@ -2147,7 +2147,7 @@ void PyDbTextStyleTableRecord::setPriorSize(double priorSize)
 
 std::string PyDbTextStyleTableRecord::fileName()
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     AcString path;
@@ -2188,7 +2188,7 @@ void PyDbTextStyleTableRecord::setFont(const std::string& pTypeface, bool bold, 
 
 boost::python::tuple PyDbTextStyleTableRecord::font()
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -2316,7 +2316,7 @@ void PyDbUCSTableRecord::setYAxis(const AcGeVector3d& yAxis)
 
 AcGePoint3d PyDbUCSTableRecord::ucsBaseOrigin(AcDb::OrthographicView view) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->ucsBaseOrigin(view);
@@ -2325,7 +2325,7 @@ AcGePoint3d PyDbUCSTableRecord::ucsBaseOrigin(AcDb::OrthographicView view) const
 
 void PyDbUCSTableRecord::setUcsBaseOrigin(const AcGePoint3d& origin, AcDb::OrthographicView view)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setUcsBaseOrigin(origin, view));

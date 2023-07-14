@@ -66,7 +66,7 @@ int PyGeSplineEnt3d::numControlPoints() const
 
 int PyGeSplineEnt3d::continuityAtKnot1(int idx) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->continuityAtKnot(idx);
@@ -75,7 +75,7 @@ int PyGeSplineEnt3d::continuityAtKnot1(int idx) const
 
 int PyGeSplineEnt3d::continuityAtKnot2(int idx, const AcGeTol& tol) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->continuityAtKnot(idx, tol);
@@ -114,7 +114,7 @@ double PyGeSplineEnt3d::knotAt(int idx) const
 
 PyGeSplineEnt3d& PyGeSplineEnt3d::setKnotAt(int idx, double val)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     impObj()->setKnotAt(idx, val);

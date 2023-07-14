@@ -681,7 +681,7 @@ AcCmColor PyDbTable::contentColor2(int row, int col) const
 
 AcCmColor PyDbTable::contentColor3(int row, int col, int nContent) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->contentColor(row, col, nContent);
@@ -700,7 +700,7 @@ void PyDbTable::setContentColor2(int row, int col, const AcCmColor& color)
 
 void PyDbTable::setContentColor3(int row, int col, int nContent, const AcCmColor& color)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setContentColor(row, col, nContent, color));
@@ -785,7 +785,7 @@ void PyDbTable::setDataType4(int row, int col, int nContent, AcValue::DataType n
 
 void PyDbTable::setFormat(int row, int col, const std::string& pszFormat)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setFormat(row, col, utf8_to_wstr(pszFormat).c_str()));
@@ -799,7 +799,7 @@ std::string PyDbTable::textString(int row, int col) const
 
 std::string PyDbTable::textString2(int row, int col, int nContent) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return wstr_to_utf8(impObj()->textString(row, col, nContent));
@@ -816,7 +816,7 @@ std::string PyDbTable::textString3(int row, int col, AcValue::FormatOption nOpti
 
 std::string PyDbTable::textString4(int row, int col, int nContent, AcValue::FormatOption nOption) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     AcString str;
@@ -848,7 +848,7 @@ PyDbObjectId PyDbTable::textStyle2(int row, int col) const
 
 PyDbObjectId PyDbTable::textStyle3(int row, int col, int nContent) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyDbObjectId(impObj()->textStyle(row, col, nContent));
@@ -867,7 +867,7 @@ void PyDbTable::setTextStyle2(int row, int col, const PyDbObjectId& id)
 
 void PyDbTable::setTextStyle3(int row, int col, int nContent, const PyDbObjectId& id)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setTextStyle(row, col, nContent, id.m_id));
@@ -886,7 +886,7 @@ double PyDbTable::textHeight2(int row, int col) const
 
 double PyDbTable::textHeight3(int row, int col, int nContent) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->textHeight(row, col, nContent);
@@ -905,7 +905,7 @@ void PyDbTable::setTextHeight2(int row, int col, double height)
 
 void PyDbTable::setTextHeight3(int row, int col, int nContent, double height)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setTextHeight(row, col, nContent, height));
@@ -954,7 +954,7 @@ AcCmColor PyDbTable::gridColor2(int row, int col, AcDb::CellEdgeMask iEdge) cons
 
 AcCmColor PyDbTable::gridColor3(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->gridColor(nRow, nCol, nGridLineType);
@@ -973,7 +973,7 @@ void PyDbTable::setGridColor2(int row, int col, AcDb::CellEdgeMask nEdges, const
 
 void PyDbTable::setGridColor3(int nRow, int nCol, AcDb::GridLineType nGridlineTypes, const AcCmColor& color)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setGridColor(nRow, nCol, nGridlineTypes, color));
@@ -1065,7 +1065,7 @@ PyDbObjectId PyDbTable::fieldId(int row, int col) const
 
 PyDbObjectId PyDbTable::fieldId2(int row, int col, int nContent) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyDbObjectId(impObj()->fieldId(row, col, nContent));
@@ -1079,7 +1079,7 @@ void PyDbTable::setFieldId(int row, int col, const PyDbObjectId& fieldId)
 
 void PyDbTable::setFieldId2(int row, int col, int nContent, const PyDbObjectId& fieldId, AcDb::CellOption nFlag)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setFieldId(row, col, nContent, fieldId.m_id, nFlag));
@@ -1123,7 +1123,7 @@ PyDbObjectId PyDbTable::blockTableRecordId(int row, int col) const
 
 PyDbObjectId PyDbTable::blockTableRecordId2(int row, int col, int nContent) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyDbObjectId(impObj()->blockTableRecordId(row, col, nContent));
@@ -1137,7 +1137,7 @@ void PyDbTable::setBlockTableRecordId(int row, int col, const PyDbObjectId& blkI
 
 void PyDbTable::setBlockTableRecordId2(int row, int col, int nContent, const PyDbObjectId& blkId, bool autoFit)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setBlockTableRecordId(row, col, nContent, blkId.m_id, autoFit));
@@ -1217,7 +1217,7 @@ void PyDbTable::recomputeTableBlock(bool forceUpdate)
 
 boost::python::tuple PyDbTable::hitTest(const AcGePoint3d& wpt, const AcGeVector3d& wviewVec, double wxaper, double wyaper)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     PyAutoLockGIL lock;
     int resultRowIndex = -1;
     int resultColumnIndex = -1;
@@ -1243,7 +1243,7 @@ AcCellRange PyDbTable::getSubSelection(void) const
 
 void PyDbTable::setSubSelection(const AcCellRange& range)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setSubSelection(range));
@@ -1292,7 +1292,7 @@ void PyDbTable::suppressRegenerateTable(bool bSuppress)
 
 void PyDbTable::setRecomputeTableBlock(bool newVal)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     impObj()->setRecomputeTableBlock(newVal);
@@ -1306,7 +1306,7 @@ void PyDbTable::setSize(int nRows, int nCols)
 
 bool PyDbTable::canInsert(int nIndex, bool bRow) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->canInsert(nIndex, bRow);
@@ -1325,7 +1325,7 @@ void PyDbTable::insertColumnsAndInherit(int col, int nInheritFrom, int nNumCols)
 
 bool PyDbTable::canDelete(int nIndex, int nCount, bool bRow) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->canDelete(nIndex, nCount, bRow);
@@ -1334,7 +1334,7 @@ bool PyDbTable::canDelete(int nIndex, int nCount, bool bRow) const
 
 bool PyDbTable::isEmpty(int nRow, int nCol) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isEmpty(nRow, nCol);
@@ -1348,7 +1348,7 @@ AcCellRange PyDbTable::getMergeRange(int nRow, int nCol) const
 
 boost::python::list PyDbTable::getIterator1()
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -1362,7 +1362,7 @@ boost::python::list PyDbTable::getIterator1()
 
 boost::python::list PyDbTable::getIterator2(AcDb::TableIteratorOption nOption) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -1376,7 +1376,7 @@ boost::python::list PyDbTable::getIterator2(AcDb::TableIteratorOption nOption) c
 
 boost::python::list PyDbTable::getIterator3(const AcCellRange& pRange, AcDb::TableIteratorOption nOption) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -1390,7 +1390,7 @@ boost::python::list PyDbTable::getIterator3(const AcCellRange& pRange, AcDb::Tab
 
 boost::python::list PyDbTable::getIterator4(const AcCellRange& pRange) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -1409,7 +1409,7 @@ bool PyDbTable::isContentEditable(int nRow, int nCol) const
 
 bool PyDbTable::isFormatEditable(int nRow, int nCol) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isFormatEditable(nRow, nCol);
@@ -1438,7 +1438,7 @@ int PyDbTable::createContent(int nRow, int nCol, int nIndex)
 
 void PyDbTable::moveContent(int nRow, int nCol, int nFromIndex, int nToIndex)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->moveContent(nRow, nCol, nFromIndex, nToIndex));
@@ -1462,7 +1462,7 @@ void PyDbTable::deleteContent3(const AcCellRange& range)
 
 AcDb::CellContentType PyDbTable::contentType1(int nRow, int nCol) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->contentType(nRow, nCol);
@@ -1471,7 +1471,7 @@ AcDb::CellContentType PyDbTable::contentType1(int nRow, int nCol) const
 
 AcDb::CellContentType PyDbTable::contentType2(int nRow, int nCol, int nIndex) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->contentType(nRow, nCol, nIndex);
@@ -1500,7 +1500,7 @@ void PyDbTable::setDataFormat2(int row, int col, int nContent, const std::string
 
 bool PyDbTable::hasFormula(int nRow, int nCol, int nContent) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->hasFormula(nRow, nCol, nContent);
@@ -1509,7 +1509,7 @@ bool PyDbTable::hasFormula(int nRow, int nCol, int nContent) const
 
 std::string PyDbTable::getFormula(int nRow, int nCol, int nContent) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return wstr_to_utf8(impObj()->getFormula(nRow, nCol, nContent));
@@ -1518,7 +1518,7 @@ std::string PyDbTable::getFormula(int nRow, int nCol, int nContent) const
 
 void PyDbTable::setFormula(int nRow, int nCol, int nContent, const std::string& pszFormula)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setFormula(nRow, nCol, nContent, utf8_to_wstr(pszFormula).c_str()));
@@ -1537,7 +1537,7 @@ std::string PyDbTable::getBlockAttributeValue1(int row, int col, const PyDbObjec
 
 std::string PyDbTable::getBlockAttributeValue2(int row, int col, int nContent, const PyDbObjectId& attdefId) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     ACHAR* val = nullptr;
@@ -1556,7 +1556,7 @@ void PyDbTable::setBlockAttributeValue1(int row, int col, const PyDbObjectId& at
 
 void PyDbTable::setBlockAttributeValue2(int row, int col, int nContent, const PyDbObjectId& attdefId, const std::string& value)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setBlockAttributeValue(row, col, nContent, attdefId.m_id, utf8_to_wstr(value).c_str()));
@@ -1605,7 +1605,7 @@ void PyDbTable::setRotation2(int row, int col, int nContent, double fAngle)
 
 double PyDbTable::scale(int row, int col, int nContent) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->scale(row, col, nContent);
@@ -1614,7 +1614,7 @@ double PyDbTable::scale(int row, int col, int nContent) const
 
 void PyDbTable::setScale(int row, int col, int nContent, double scale)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setScale(row, col, nContent, scale));
@@ -1633,7 +1633,7 @@ void PyDbTable::setContentLayout(int row, int col, AcDb::CellContentLayout nLayo
 
 bool PyDbTable::isMergeAllEnabled(int nRow, int nCol) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isMergeAllEnabled(nRow, nCol);
@@ -1642,7 +1642,7 @@ bool PyDbTable::isMergeAllEnabled(int nRow, int nCol) const
 
 void PyDbTable::enableMergeAll(int nRow, int nCol, bool bEnable)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->enableMergeAll(nRow, nCol, bEnable));
@@ -1651,7 +1651,7 @@ void PyDbTable::enableMergeAll(int nRow, int nCol, bool bEnable)
 
 AcDb::CellProperty PyDbTable::getOverride1(int nRow, int nCol, int nContent) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->getOverride(nRow, nCol, nContent);
@@ -1660,7 +1660,7 @@ AcDb::CellProperty PyDbTable::getOverride1(int nRow, int nCol, int nContent) con
 
 AcDb::GridProperty PyDbTable::getOverride2(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->getOverride(nRow, nCol, nGridLineType);
@@ -1669,7 +1669,7 @@ AcDb::GridProperty PyDbTable::getOverride2(int nRow, int nCol, AcDb::GridLineTyp
 
 void PyDbTable::setOverride1(int nRow, int nCol, int nContent, AcDb::CellProperty nOverride)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setOverride(nRow, nCol, nContent, nOverride));
@@ -1678,7 +1678,7 @@ void PyDbTable::setOverride1(int nRow, int nCol, int nContent, AcDb::CellPropert
 
 void PyDbTable::setOverride2(int nRow, int nCol, AcDb::GridLineType nGridLineType, AcDb::GridProperty nOverride)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setOverride(nRow, nCol, nGridLineType, nOverride));
@@ -1687,7 +1687,7 @@ void PyDbTable::setOverride2(int nRow, int nCol, AcDb::GridLineType nGridLineTyp
 
 void PyDbTable::removeAllOverrides(int nRow, int nCol)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->removeAllOverrides(nRow, nCol));
@@ -1696,7 +1696,7 @@ void PyDbTable::removeAllOverrides(int nRow, int nCol)
 
 AcDb::GridLineStyle PyDbTable::gridLineStyle(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->gridLineStyle(nRow, nCol, nGridLineType);
@@ -1705,7 +1705,7 @@ AcDb::GridLineStyle PyDbTable::gridLineStyle(int nRow, int nCol, AcDb::GridLineT
 
 void PyDbTable::setGridLineStyle(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, AcDb::GridLineStyle nLineStyle)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setGridLineStyle(nRow, nCol, nGridLineTypes, nLineStyle));
@@ -1714,7 +1714,7 @@ void PyDbTable::setGridLineStyle(int nRow, int nCol, AcDb::GridLineType nGridLin
 
 PyDbObjectId PyDbTable::gridLinetype(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyDbObjectId(impObj()->gridLinetype(nRow, nCol, nGridLineType));
@@ -1723,7 +1723,7 @@ PyDbObjectId PyDbTable::gridLinetype(int nRow, int nCol, AcDb::GridLineType nGri
 
 void PyDbTable::setGridLinetype(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, const PyDbObjectId& idLinetype)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setGridLinetype(nRow, nCol, nGridLineTypes, idLinetype.m_id));
@@ -1732,7 +1732,7 @@ void PyDbTable::setGridLinetype(int nRow, int nCol, AcDb::GridLineType nGridLine
 
 double PyDbTable::gridDoubleLineSpacing(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->gridDoubleLineSpacing(nRow, nCol, nGridLineType);
@@ -1741,7 +1741,7 @@ double PyDbTable::gridDoubleLineSpacing(int nRow, int nCol, AcDb::GridLineType n
 
 void PyDbTable::setGridDoubleLineSpacing(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, double fSpacing)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setGridDoubleLineSpacing(nRow, nCol, nGridLineTypes, fSpacing));
@@ -1750,7 +1750,7 @@ void PyDbTable::setGridDoubleLineSpacing(int nRow, int nCol, AcDb::GridLineType 
 
 AcGridProperty PyDbTable::getGridProperty(int nRow, int nCol, AcDb::GridLineType nGridLineType) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     AcGridProperty prop;
@@ -1762,7 +1762,7 @@ AcGridProperty PyDbTable::getGridProperty(int nRow, int nCol, AcDb::GridLineType
 
 void PyDbTable::setGridProperty1(int nRow, int nCol, AcDb::GridLineType nGridLineTypes, const AcGridProperty& gridProp)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setGridProperty(nRow, nCol, nGridLineTypes, gridProp));
@@ -1771,7 +1771,7 @@ void PyDbTable::setGridProperty1(int nRow, int nCol, AcDb::GridLineType nGridLin
 
 void PyDbTable::setGridProperty2(const AcCellRange& rangeIn, AcDb::GridLineType nGridLineTypes, const AcGridProperty& gridProp)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setGridProperty(rangeIn, nGridLineTypes, gridProp));
@@ -1780,7 +1780,7 @@ void PyDbTable::setGridProperty2(const AcCellRange& rangeIn, AcDb::GridLineType 
 
 bool PyDbTable::isLinked(int nRow, int nCol) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isLinked(nRow, nCol);
@@ -1789,7 +1789,7 @@ bool PyDbTable::isLinked(int nRow, int nCol) const
 
 PyDbObjectId PyDbTable::getDataLink(int nRow, int nCol) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return  PyDbObjectId(impObj()->getDataLink(nRow, nCol));
@@ -1798,7 +1798,7 @@ PyDbObjectId PyDbTable::getDataLink(int nRow, int nCol) const
 
 void PyDbTable::setDataLink(const AcCellRange& range, const PyDbObjectId& idDataLink, bool bUpdate)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setDataLink(range, idDataLink.m_id, bUpdate));
@@ -1807,7 +1807,7 @@ void PyDbTable::setDataLink(const AcCellRange& range, const PyDbObjectId& idData
 
 AcCellRange PyDbTable::getDataLinkRange(int nRow, int nCol) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->getDataLinkRange(nRow, nCol);
@@ -1816,7 +1816,7 @@ AcCellRange PyDbTable::getDataLinkRange(int nRow, int nCol) const
 
 void PyDbTable::removeDataLink1(void)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->removeDataLink());
@@ -1825,7 +1825,7 @@ void PyDbTable::removeDataLink1(void)
 
 void PyDbTable::removeDataLink2(int nRow, int nCol)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->removeDataLink(nRow, nCol));
@@ -1834,7 +1834,7 @@ void PyDbTable::removeDataLink2(int nRow, int nCol)
 
 void PyDbTable::updateDataLink1(AcDb::UpdateDirection nDir, AcDb::UpdateOption nOption)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->updateDataLink(nDir, nOption));
@@ -1843,7 +1843,7 @@ void PyDbTable::updateDataLink1(AcDb::UpdateDirection nDir, AcDb::UpdateOption n
 
 void PyDbTable::updateDataLink2(int nRow, int nCol, AcDb::UpdateDirection nDir, AcDb::UpdateOption nOption)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->updateDataLink(nRow, nCol, nDir, nOption));
@@ -1862,7 +1862,7 @@ void PyDbTable::enableBreak(bool bEnable)
 
 AcDb::TableBreakFlowDirection PyDbTable::breakFlowDirection(void) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->breakFlowDirection();
@@ -1871,7 +1871,7 @@ AcDb::TableBreakFlowDirection PyDbTable::breakFlowDirection(void) const
 
 void PyDbTable::setBreakFlowDirection(AcDb::TableBreakFlowDirection nDir)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setBreakFlowDirection(nDir));
@@ -1890,7 +1890,7 @@ void PyDbTable::setBreakHeight(int nIndex, double fHeight)
 
 AcGeVector3d PyDbTable::breakOffset(int nIndex) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->breakOffset(nIndex);
@@ -1899,7 +1899,7 @@ AcGeVector3d PyDbTable::breakOffset(int nIndex) const
 
 void PyDbTable::setBreakOffset(int nIndex, const AcGeVector3d& vec)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setBreakOffset(nIndex, vec));
@@ -1908,7 +1908,7 @@ void PyDbTable::setBreakOffset(int nIndex, const AcGeVector3d& vec)
 
 AcDb::TableBreakOption PyDbTable::breakOption(void) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->breakOption();
@@ -1917,7 +1917,7 @@ AcDb::TableBreakOption PyDbTable::breakOption(void) const
 
 void PyDbTable::setBreakOption(AcDb::TableBreakOption nOption)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setBreakOption(nOption));
@@ -1926,7 +1926,7 @@ void PyDbTable::setBreakOption(AcDb::TableBreakOption nOption)
 
 double PyDbTable::breakSpacing(void) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->breakSpacing();
@@ -1935,7 +1935,7 @@ double PyDbTable::breakSpacing(void) const
 
 void PyDbTable::setBreakSpacing(double fSpacing)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setBreakSpacing(fSpacing));
@@ -1944,7 +1944,7 @@ void PyDbTable::setBreakSpacing(double fSpacing)
 
 AcCellRange PyDbTable::cellRange() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->cellRange();

@@ -27,7 +27,7 @@ PyApDocManager PyApApplication::docManager()
 void PyApApplication::applyHostIcon(UINT_PTR _hwnd)
 {
     HICON hIcon = 0;
-#ifdef BRXAPPV23
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     hIcon = LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(31233));
 #endif
 #ifdef ZRXAPPZ23

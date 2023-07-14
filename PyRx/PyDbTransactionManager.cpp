@@ -62,7 +62,7 @@ int PyDbTransactionManager::numActiveTransactions()
 
 int PyDbTransactionManager::numOpenedObjects()
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->numOpenedObjects();
@@ -86,7 +86,7 @@ void PyDbTransactionManager::addNewlyCreatedDBRObject2(PyDbObject& obj, bool add
 
 boost::python::list PyDbTransactionManager::getAllObjects()
 {
-#ifdef BRXAPPV23 // SR159573
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)// SR159573
     PyAutoLockGIL lock;
     AcDbVoidPtrArray objs;
     boost::python::list pyObjs;
@@ -237,7 +237,7 @@ PyDbObject PyTransaction::getObject3(const PyDbObjectId& id, AcDb::OpenMode mode
 
 boost::python::list PyTransaction::getAllObjects()
 {
-#ifdef BRXAPPV23
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     PyAutoLockGIL lock;
     AcDbVoidPtrArray objs;
     boost::python::list pyObjs;
@@ -260,7 +260,7 @@ boost::python::list PyTransaction::getAllObjects()
 
 int PyTransaction::numOpenedObjects()
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->numOpenedObjects();

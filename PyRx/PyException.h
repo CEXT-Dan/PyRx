@@ -6,7 +6,7 @@ static std::string appHostName()
 #ifdef ARXAPP
     return  "ARX";
 #endif
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     return  "BRX";
 #endif
 #ifdef GRXAPP
