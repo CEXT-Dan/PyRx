@@ -147,7 +147,10 @@ AcEdJig::DragStatus PyJig::sampler()
         if (override f = this->get_override("sampler"))
             return f();
     }
-    catch (...) {}
+    catch (...) 
+    {
+        throw PyAcadErrorStatus(Acad::ErrorStatus::eInvalidInput);
+    }
     return AcEdJig::DragStatus::kCancel;
 }
 
@@ -159,7 +162,10 @@ Adesk::Boolean PyJig::update()
         if (override f = this->get_override("update"))
             return f();
     }
-    catch (...) {}
+    catch (...) 
+    {
+        throw PyAcadErrorStatus(Acad::ErrorStatus::eInvalidInput);
+    }
     return true;
 }
 
@@ -335,7 +341,10 @@ AcEdJig::DragStatus PyDrawJig::sampler()
         if (override f = this->get_override("sampler"))
             return f();
     }
-    catch (...) {}
+    catch (...)
+    {
+        throw PyAcadErrorStatus(Acad::ErrorStatus::eInvalidInput);
+    }
     return AcEdJig::DragStatus::kCancel;
 }
 
@@ -347,7 +356,10 @@ Adesk::Boolean PyDrawJig::update()
         if (override f = this->get_override("update"))
             return f();
     }
-    catch (...) {}
+    catch (...)
+    {
+        throw PyAcadErrorStatus(Acad::ErrorStatus::eInvalidInput);
+    }
     return false;
 }
 
@@ -459,7 +471,10 @@ Adesk::Boolean PyDrawJig::worldDrawwr(PyGiWorldDraw& wd)
         if (override f = this->get_override("worldDraw"))
             return f(wd);
     }
-    catch (...) {}
+    catch (...) 
+    {
+        throw PyAcadErrorStatus(Acad::ErrorStatus::eInvalidInput);
+    }
     return false;
 }
 
@@ -471,7 +486,10 @@ void PyDrawJig::viewportDrawwr(PyGiViewportDraw& vd)
         if (override f = this->get_override("ViewportDraw"))
             f(vd);
     }
-    catch (...) {}
+    catch (...) 
+    {
+        throw PyAcadErrorStatus(Acad::ErrorStatus::eInvalidInput);
+    }
 }
 
 Adesk::Boolean PyDrawJig::subWorldDraw(AcGiWorldDraw* wd)
