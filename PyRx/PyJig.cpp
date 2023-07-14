@@ -196,13 +196,21 @@ void PyJig::setDispPromptWr(const std::string& val)
 
 boost::python::tuple PyJig::acquireStringWr()
 {
-#ifdef ARXAPP
     PyAutoLockGIL lock;
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    ACHAR chr[2049];
+    auto result = this->acquireString(chr);
+    return boost::python::make_tuple(result, wstr_to_utf8(chr));
+#endif
+#if defined(_ZRXTARGET) && (_ZRXTARGET <= 23)
+    ACHAR chr[2049];
+    auto result = this->acquireString(chr);
+    return boost::python::make_tuple(result, wstr_to_utf8(chr));
+#endif
+#if defined(_ARXTARGET)
     AcString value;
     auto result = this->acquireString(value);
     return boost::python::make_tuple(result, wstr_to_utf8(value));
-#else
-    throw PyNotimplementedByHost();
 #endif
 }
 
