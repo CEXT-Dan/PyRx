@@ -92,7 +92,7 @@ struct PyAcadErrorStatus
     inline std::string format() const
     {
         const std::filesystem::path file = m_src.file_name();
-        return std::format("\nException! ({}) in function {} {}: ", wstr_to_utf8(acadErrorStatusText(m_es)), m_src.function_name(), file.filename().string());
+        return std::format("\nException! ({}) in function {} ,Line {}, File {}: ", wstr_to_utf8(acadErrorStatusText(m_es)), m_src.function_name(), m_src.line(), file.filename().string());
     }
 
     inline static void translator(PyAcadErrorStatus const& x)
@@ -124,12 +124,12 @@ struct PyNotimplementedByHost
 
 inline void PyThrowBadEs(Acad::ErrorStatus es, const std::source_location& src = std::source_location::current())
 {
-    if (es != eOk)[[unlikely]]
+    if (es != eOk)
         throw PyAcadErrorStatus(es, src);
 }
 
 inline void PyThrowBadRt(int es, const std::source_location& src = std::source_location::current())
 {
-    if (es != RTNORM) [[unlikely]]
+    if (es != RTNORM)
         throw PyAcadErrorStatus(eInvalidInput, src);
 }
