@@ -10,6 +10,8 @@ using namespace boost::python;
 
 #ifdef ARXAPP
 extern "C" bool acedGetPredefinedPattens(AcStringArray & patterns);
+extern "C" Acad::ErrorStatus acedSetUndoMark(bool);
+extern "C" void acedGetCommandPromptString(CString&);
 #endif
 
 //-----------------------------------------------------------------------------------------
@@ -35,10 +37,12 @@ void makeEdCoreWrapper()
         .def("getFileD", &EdCore::getFileD).staticmethod("getFileD")
         .def("getFileNavDialog", &EdCore::getFileNavDialog).staticmethod("getFileNavDialog")
         .def("grDraw", &EdCore::grDraw).staticmethod("grDraw")
+        .def("getCommandPromptString", &EdCore::getCommandPromptString).staticmethod("getCommandPromptString")
         .def("getVar", &EdCore::getVar).staticmethod("getVar")
         .def("setVar", &EdCore::setVar).staticmethod("setVar")
         .def("mSpace", &EdCore::mSpace).staticmethod("mSpace")
         .def("pSpace", &EdCore::pSpace).staticmethod("pSpace")
+        .def("setUndoMark", &EdCore::setUndoMark).staticmethod("setUndoMark")
         .def("update", &EdCore::update).staticmethod("update")
         .def("updateDisplay", &EdCore::updateDisplay).staticmethod("updateDisplay")
         .def("updateDisplayPause", &EdCore::updateDisplayPause).staticmethod("updateDisplayPause")
@@ -188,6 +192,17 @@ boost::python::list EdCore::getFileNavDialog(const std::string& title, const std
     return pyList;
 }
 
+std::string EdCore::getCommandPromptString()
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    CString str;
+    acedGetCommandPromptString(str);
+    return wstr_to_utf8(str);
+#endif
+}
+
 boost::python::object EdCore::getVar(const std::string& sym)
 {
     PyAutoLockGIL lock;
@@ -297,6 +312,15 @@ void EdCore::pSpace()
 int EdCore::grDraw(const AcGePoint3d& from, const AcGePoint3d& to, int colorIndex, int highlight)
 {
     return acedGrDraw(asDblArray(from), asDblArray(to), colorIndex, highlight);
+}
+
+void EdCore::setUndoMark(bool flag)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    return PyThrowBadEs(acedSetUndoMark(flag));
+#endif
 }
 
 int EdCore::update(int vport, const AcGePoint2d& p1, const AcGePoint2d& p2)
