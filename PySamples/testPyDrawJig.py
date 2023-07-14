@@ -11,11 +11,8 @@ import PyEd  # = editor
 print("command = pydrawjig")
 
 # just like in ARX, ent must not be null
-
-
 class MyDrawJig(PyEd.DrawJig):
     def __init__(self, basepoint):
-        try:
             PyEd.DrawJig.__init__(self)
             self.curpoint = basepoint
             self.basepoint = basepoint
@@ -26,28 +23,20 @@ class MyDrawJig(PyEd.DrawJig):
 
             self.circle = PyDb.Circle(PyGe.Point3d(50, 50, 0), PyGe.Vector3d.kZAxis, 10)
             self.circle.setDatabaseDefaults()
-        except Exception as err:
-            print(err)
+
 
     def sampler(self):
-        try:
-            self.setUserInputControls
-            (
-                PyEd.UserInputControls(
-                PyEd.UserInputControls.kAccept3dCoordinates |
-                PyEd.UserInputControls.kNullResponseAccepted)
-            )
-            point_result_tuple = self.acquirePoint(self.curpoint)
+            self.setUserInputControls(PyEd.UserInputControls.kAccept3dCoordinates)
+            point_result_tuple = self.acquirePoint()
             self.curpoint = point_result_tuple[1]
+            
+            if point_result_tuple[0] == PyEd.DragStatus.kNormal:
+                return PyEd.DragStatus.kNoChange
             return point_result_tuple[0]
-        except Exception as err:
-            print(err)
 
-    # C++ update returns True is not overridden
+    # C++ update returns False is not overridden
     def update(self):
         try:
-            if self.lastpoint == self.curpoint:
-                return False
             self.lastpoint = self.curpoint
             return True
         except Exception as err:
@@ -57,7 +46,7 @@ class MyDrawJig(PyEd.DrawJig):
     def worldDraw(self, wd):
         try:
             mat = PyGe.Matrix3d.translation(self.curpoint-self.basepoint)
-            geo = wd.worldGeometry()
+            geo = wd.geometry()
             geo.pushModelTransform(mat)
             geo.draw(self.line)
             geo.draw(self.circle)
@@ -69,10 +58,8 @@ class MyDrawJig(PyEd.DrawJig):
 def PyRxCmd_pydrawjig():
     try:
         jig = MyDrawJig(PyGe.Point3d(0, 0, 0))
-        jig.setDispPrompt("\nPick endPoint")
-        if jig.drag() != PyEd.DragStatus.kNormal:
-            print('oops')
-            return
-
+        jig.setDispPrompt("\nPick endPoint:\n")
+        res = jig.drag()
+        print("done", res)
     except Exception as err:
         print(err)
