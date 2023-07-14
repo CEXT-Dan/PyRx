@@ -30,10 +30,10 @@ def do_select():
     if (ss[0] == PyEd.PromptStatus.eNormal):
         return ss[1]
 
-def get_3dpointd(objs):
+def get_3dpointds(objs):
     pnts = []
     for id in objs:
-        p = PyDb.Point(id, PyDb.OpenMode.kForRead)
+        p = PyDb.Point(id)
         pnts.append(p.position())
     return pnts
 
@@ -47,7 +47,7 @@ def PyRxCmd_pydoit():
     try:
         ss = do_select()
         t1_start = perf_counter()
-        pnt3ds = get_3dpointd(ss.toList())
+        pnt3ds = get_3dpointds(ss.toList())
         pnt2ds = get_2dpointd(pnt3ds)
         t = Delaunator(pnt2ds).triangles
         
