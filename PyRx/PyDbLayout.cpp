@@ -254,7 +254,7 @@ void PyDbPlotSettings::setPlotViewportBorders(Adesk::Boolean plotViewportBorders
 
 Adesk::Boolean PyDbPlotSettings::plotTransparency() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->plotTransparency();
@@ -263,7 +263,7 @@ Adesk::Boolean PyDbPlotSettings::plotTransparency() const
 
 void PyDbPlotSettings::setPlotTransparency(Adesk::Boolean plotTransparency)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     impObj()->setPlotTransparency(plotTransparency);
@@ -312,7 +312,7 @@ void PyDbPlotSettings::setPlotHidden(Adesk::Boolean plotHidden)
 
 AcDbPlotSettings::ShadePlotType PyDbPlotSettings::shadePlot() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->shadePlot();
@@ -321,7 +321,7 @@ AcDbPlotSettings::ShadePlotType PyDbPlotSettings::shadePlot() const
 
 void PyDbPlotSettings::setShadePlot1(AcDbPlotSettings::ShadePlotType shadePlot)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setShadePlot(shadePlot));
@@ -461,7 +461,7 @@ Adesk::Boolean PyDbPlotSettings::modelType() const
 
 PyDbObjectId PyDbPlotSettings::shadePlotId() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyDbObjectId(impObj()->shadePlotId());
@@ -625,7 +625,7 @@ boost::python::tuple PyDbLayout::getLimits() const
 
 boost::python::tuple PyDbLayout::getExtents() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     PyAutoLockGIL lock;
@@ -874,7 +874,7 @@ int PyDbLayoutManager::countLayouts2(PyDbDatabase& pDb)
 
 Adesk::ULongPtr PyDbLayoutManager::setupForLayouts(PyDbDatabase& pDb)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     Adesk::ULongPtr contextHandle = 0;
@@ -886,7 +886,7 @@ Adesk::ULongPtr PyDbLayoutManager::setupForLayouts(PyDbDatabase& pDb)
 
 void PyDbLayoutManager::clearSetupForLayouts(Adesk::ULongPtr contextHandle)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(acdbClearSetupForLayouts(contextHandle));

@@ -262,7 +262,7 @@ void PyDbText::setVerticalMode(AcDb::TextVertMode val)
 
 int PyDbText::correctSpelling()
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->correctSpelling();
@@ -271,7 +271,7 @@ int PyDbText::correctSpelling()
 
 void PyDbText::adjustAlignment(const PyDbDatabase& pDb)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->adjustAlignment(pDb.impObj()));
@@ -280,7 +280,7 @@ void PyDbText::adjustAlignment(const PyDbDatabase& pDb)
 
 void PyDbText::convertFieldToText()
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->convertFieldToText());
@@ -727,7 +727,7 @@ void PyDbAttribute::updateMTextAttribute()
 
 bool PyDbAttribute::isReallyLocked() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isReallyLocked();
@@ -1015,7 +1015,7 @@ void PyDbDynBlockReference::resetBlock()
 
 void PyDbDynBlockReference::convertToStaticBlock1()
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->convertToStaticBlock());
@@ -1024,7 +1024,7 @@ void PyDbDynBlockReference::convertToStaticBlock1()
 
 void PyDbDynBlockReference::convertToStaticBlock2(const std::string& newBlockName)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->convertToStaticBlock(utf8_to_wstr(newBlockName).c_str()));
@@ -1393,7 +1393,7 @@ void PyDb2dVertex::ignoreTangent()
 
 void PyDb2dVertex::setTangentUsed(Adesk::Boolean val)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else // !BRXAPP
     return PyThrowBadEs(impObj()->setTangentUsed(val));
@@ -1412,7 +1412,7 @@ void PyDb2dVertex::setTangent(double newVal)
 
 void PyDb2dVertex::setVertexIdentifier(Adesk::Int32 suggestedValue)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else // !BRXAPP
     return PyThrowBadEs(impObj()->setVertexIdentifier(suggestedValue));
@@ -1421,7 +1421,7 @@ void PyDb2dVertex::setVertexIdentifier(Adesk::Int32 suggestedValue)
 
 int PyDb2dVertex::vertexIdentifier() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else // !BRXAPP
     return impObj()->vertexIdentifier();
@@ -2249,7 +2249,7 @@ AcGePoint3d PyDb2dPolyline::vertexPosition(const AcDb2dVertex& vert) const
 
 void PyDb2dPolyline::makeClosedIfStartAndEndVertexCoincide(double distTol)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->makeClosedIfStartAndEndVertexCoincide(distTol));
@@ -2742,7 +2742,7 @@ void PyDbCircle::setNormal(const AcGeVector3d& val)
 
 double PyDbCircle::circumference() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->circumference();
@@ -2751,7 +2751,7 @@ double PyDbCircle::circumference() const
 
 void PyDbCircle::setCircumference(double val)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setCircumference(val));
@@ -2760,7 +2760,7 @@ void PyDbCircle::setCircumference(double val)
 
 double PyDbCircle::diameter() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->diameter();
@@ -2769,7 +2769,7 @@ double PyDbCircle::diameter() const
 
 void PyDbCircle::setDiameter(double val)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setDiameter(val));

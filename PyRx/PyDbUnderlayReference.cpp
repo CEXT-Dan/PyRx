@@ -315,7 +315,7 @@ void PyDbUnderlayReference::setDefinitionId(const PyDbObjectId& id)
 
 void PyDbUnderlayReference::setWidth(double width)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setWidth(width));
@@ -325,7 +325,7 @@ void PyDbUnderlayReference::setWidth(double width)
 
 double PyDbUnderlayReference::width() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     double val = 0;
@@ -337,7 +337,7 @@ double PyDbUnderlayReference::width() const
 
 void PyDbUnderlayReference::setHeight(double width)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setHeight(width));
@@ -346,7 +346,7 @@ void PyDbUnderlayReference::setHeight(double width)
 
 double PyDbUnderlayReference::height() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     double val = 0;
@@ -447,7 +447,7 @@ bool PyDbUnderlayReference::isFramePlottable() const
 
 Adesk::UInt32 PyDbUnderlayReference::underlayLayerCount() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->underlayLayerCount();
@@ -456,7 +456,7 @@ Adesk::UInt32 PyDbUnderlayReference::underlayLayerCount() const
 
 PyUnderlayLayer PyDbUnderlayReference::getUnderlayLayer(int index) const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     AcUnderlayLayer val;
@@ -468,7 +468,7 @@ PyUnderlayLayer PyDbUnderlayReference::getUnderlayLayer(int index) const
 
 void PyDbUnderlayReference::setUnderlayLayer(int index, const PyUnderlayLayer& layer)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setUnderlayLayer(index, layer.imp));
@@ -477,7 +477,7 @@ void PyDbUnderlayReference::setUnderlayLayer(int index, const PyUnderlayLayer& l
 
 bool PyDbUnderlayReference::isClipInverted() const
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->isClipInverted();
@@ -486,7 +486,7 @@ bool PyDbUnderlayReference::isClipInverted() const
 
 void PyDbUnderlayReference::setClipInverted(bool value)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setClipInverted(value));
@@ -495,7 +495,7 @@ void PyDbUnderlayReference::setClipInverted(bool value)
 
 void PyDbUnderlayReference::generateClipBoundaryFromPline(PyDbObjectId& polyId)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->generateClipBoundaryFromPline(polyId.m_id));

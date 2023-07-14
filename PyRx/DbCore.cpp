@@ -128,7 +128,7 @@ void DbCore::attachXref(PyDbDatabase& pHostDb, const std::string& pFilename, con
 
 void DbCore::bindXrefs1(PyDbDatabase& pHostDb, const boost::python::list& xrefBlkIds, const bool bInsertBind)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     auto ids = PyListToObjectIdArray(xrefBlkIds);
@@ -138,7 +138,7 @@ void DbCore::bindXrefs1(PyDbDatabase& pHostDb, const boost::python::list& xrefBl
 
 void DbCore::bindXrefs2(PyDbDatabase& pHostDb, const boost::python::list& xrefBlkIds, const bool bInsertBind, const bool bAllowUnresolved, const bool bQuiet)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     auto ids = PyListToObjectIdArray(xrefBlkIds);
@@ -148,7 +148,7 @@ void DbCore::bindXrefs2(PyDbDatabase& pHostDb, const boost::python::list& xrefBl
 
 void DbCore::clearSetupForLayouts(UINT_PTR contextHandle)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(acdbClearSetupForLayouts(contextHandle));
@@ -192,7 +192,7 @@ PyDbCurve DbCore::convertGelibCurveToAcDbCurve3(const PyGeCurve3d& geCurve, AcGe
 
 PyDbObjectId DbCore::createViewByViewport(PyDbDatabase& pDb, const PyDbObjectId& viewportId, const std::string& name, const std::string& categoryName, const PyDbObjectId& labelBlockId)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     PyDbObjectId view;
@@ -262,7 +262,7 @@ double DbCore::disToF(const std::string& str, int unit)
 
 UINT_PTR DbCore::doSetupForLayouts(PyDbDatabase& pDatabase)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     Adesk::ULongPtr contextHandle = 0;
@@ -273,7 +273,7 @@ UINT_PTR DbCore::doSetupForLayouts(PyDbDatabase& pDatabase)
 
 bool DbCore::dwkFileExists(const std::string& pszDwgfilename)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return acdbDwkFileExists(utf8_to_wstr(pszDwgfilename).c_str());

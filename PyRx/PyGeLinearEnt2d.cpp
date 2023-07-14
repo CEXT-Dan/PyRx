@@ -266,7 +266,7 @@ PyGeLineSeg2d& PyGeLineSeg2d::set2(const AcGePoint2d& pnt1, const AcGePoint2d& p
 
 PyGeLineSeg2d& PyGeLineSeg2d::set3(const PyGeCurve2d& curve1, const PyGeCurve2d& curve2)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     double param1, param2;
@@ -280,7 +280,7 @@ PyGeLineSeg2d& PyGeLineSeg2d::set3(const PyGeCurve2d& curve1, const PyGeCurve2d&
 
 PyGeLineSeg2d& PyGeLineSeg2d::set4(const PyGeCurve2d& curve, const AcGePoint2d& point)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     double param1;

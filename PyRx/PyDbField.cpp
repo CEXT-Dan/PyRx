@@ -132,7 +132,7 @@ PyDbField::PyDbField(const PyDbObjectId& id)
 
 void PyDbField::setInObject(PyDbObject& pObj, const std::string& pszPropName)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->setInObject(pObj.impObj(), utf8_to_wstr(pszPropName).c_str()));
@@ -181,7 +181,7 @@ bool PyDbField::isTextField(void) const
 
 void PyDbField::convertToTextField(void)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->convertToTextField());

@@ -290,7 +290,7 @@ double PyDbMText::actualWidth() const
 
 int PyDbMText::correctSpelling()
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return impObj()->correctSpelling();
@@ -499,7 +499,7 @@ void PyDbMText::setColumnHeight(int idx, double val)
 
 void PyDbMText::convertFieldToText()
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(impObj()->convertFieldToText());

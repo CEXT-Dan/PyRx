@@ -11,7 +11,7 @@ int PyCmd::getCommandFlags(AcString& str)
     if (str.find(PyCommandFlagPrefix) == -1)
         return 1;
     AcString sflag = str.substr(PyCommandFlagPrefix.length() + 1, str.length() - 1);
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     CString csFlag = (const TCHAR*)sflag;
     csFlag.TrimRight(')');
     return _wtoi(csFlag);

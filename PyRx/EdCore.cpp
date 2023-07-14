@@ -99,7 +99,7 @@ int EdCore::arxUnload(const std::string& app)
 
 void EdCore::audit1(PyDbDatabase& pDb, bool bFixErrors)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(acedAudit(pDb.impObj(), bFixErrors));
@@ -108,7 +108,7 @@ void EdCore::audit1(PyDbDatabase& pDb, bool bFixErrors)
 
 void EdCore::audit2(PyDbDatabase& pDb, bool bFixErrors, bool bCmdLnEcho)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(acedAudit(pDb.impObj(), bFixErrors, bCmdLnEcho));
@@ -140,7 +140,7 @@ std::string EdCore::findFile(const std::string& file)
 
 std::string EdCore::findTrustedFile(const std::string& file)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     std::array<wchar_t, MAX_PATH> data;
@@ -416,7 +416,7 @@ void EdCore::xrefDetach2(const std::string& XrefBlockname, bool bQuiet, PyDbData
 
 bool EdCore::xrefNotifyCheckFileChanged(const PyDbObjectId& id)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     bool flag = false;
@@ -501,7 +501,7 @@ void EdCore::xrefBind2(const std::string& XrefBlockname, bool bInsertBind, bool 
 
 void EdCore::xrefXBind1(const boost::python::list& symbolIds)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     AcDbObjectIdArray ids = PyListToObjectIdArray(symbolIds);
@@ -511,7 +511,7 @@ void EdCore::xrefXBind1(const boost::python::list& symbolIds)
 
 void EdCore::xrefXBind2(const boost::python::list& symbolIds, bool bQuiet, PyDbDatabase& pHostDb)
 {
-#ifdef BRXAPP
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
 #else
     AcDbObjectIdArray ids = PyListToObjectIdArray(symbolIds);
