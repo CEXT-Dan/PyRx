@@ -44,9 +44,9 @@ void makeAcEdJigWrapper()
             .value("kCancel", PyJig::DragStatus::kCancel)
             .value("kOther", PyJig::DragStatus::kOther)
             .value("kNull", PyJig::DragStatus::kNull)
-            .value("kNormal", PyJig::DragStatus::kNormal)
             .value("eNormal", PyJig::DragStatus::kNormal)
             .value("eOk", PyJig::DragStatus::kNormal)
+            .value("kNormal", PyJig::DragStatus::kNormal)
             .value("kKW1", PyJig::DragStatus::kKW1)
             .value("kKW2", PyJig::DragStatus::kKW2)
             .value("kKW3", PyJig::DragStatus::kKW3)
@@ -142,16 +142,24 @@ AcEdJig::DragStatus PyJig::dragwr2(const AcEdDragStyle& style)
 AcEdJig::DragStatus PyJig::sampler()
 {
     PyAutoLockGIL lock;
-    if (override f = this->get_override("sampler"))
-        return f();
-    return AcEdJig::DragStatus::kNoChange;
+    try
+    {
+        if (override f = this->get_override("sampler"))
+            return f();
+    }
+    catch (...) {}
+    return AcEdJig::DragStatus::kCancel;
 }
 
 Adesk::Boolean PyJig::update()
 {
     PyAutoLockGIL lock;
-    if (override f = this->get_override("update"))
-        return f();
+    try
+    {
+        if (override f = this->get_override("update"))
+            return f();
+    }
+    catch (...) {}
     return true;
 }
 
@@ -322,17 +330,25 @@ AcEdJig::DragStatus PyDrawJig::dragwr2(const AcEdDragStyle& style)
 AcEdJig::DragStatus PyDrawJig::sampler()
 {
     PyAutoLockGIL lock;
-    if (override f = this->get_override("sampler"))
-        return f();
-    return AcEdJig::DragStatus::kNoChange;
+    try
+    {
+        if (override f = this->get_override("sampler"))
+            return f();
+    }
+    catch (...) {}
+    return AcEdJig::DragStatus::kCancel;
 }
 
 Adesk::Boolean PyDrawJig::update()
 {
     PyAutoLockGIL lock;
-    if (override f = this->get_override("update"))
-        return f();
-    return true;
+    try
+    {
+        if (override f = this->get_override("update"))
+            return f();
+    }
+    catch (...) {}
+    return false;
 }
 
 std::string PyDrawJig::keywordListwr()
@@ -438,16 +454,24 @@ void PyDrawJig::setUserInputControlswr(AcEdJig::UserInputControls val)
 Adesk::Boolean PyDrawJig::worldDrawwr(PyGiWorldDraw& wd)
 {
     PyAutoLockGIL lock;
-    if (override f = this->get_override("worldDraw"))
-        return f(wd);
+    try
+    {
+        if (override f = this->get_override("worldDraw"))
+            return f(wd);
+    }
+    catch (...) {}
     return false;
 }
 
 void PyDrawJig::viewportDrawwr(PyGiViewportDraw& vd)
 {
-    PyAutoLockGIL lock;
-    if (override f = this->get_override("ViewportDraw"))
-        f(vd);
+    try
+    {
+        PyAutoLockGIL lock;
+        if (override f = this->get_override("ViewportDraw"))
+            f(vd);
+    }
+    catch (...) {}
 }
 
 Adesk::Boolean PyDrawJig::subWorldDraw(AcGiWorldDraw* wd)
