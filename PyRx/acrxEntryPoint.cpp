@@ -497,7 +497,7 @@ public:
 
     static void AcRxPyApp_doit(void)
     {
-      
+
     }
 };
 
