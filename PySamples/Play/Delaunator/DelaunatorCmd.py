@@ -1,6 +1,5 @@
 import os
 
-import PyRxApp  # = all the global methods like acutPrintf,
 import PyRx  # = Runtime runtime
 import PyGe  # = Geometry
 import PyGi  # = Graphics interface
@@ -12,22 +11,22 @@ from Delaunator import Delaunator
 from time import perf_counter
 
 def OnPyInitApp():
-    PyRxApp.Printf("\nOnPyInitApp")
+    print("\nOnPyInitApp")
 
 def OnPyUnloadApp():
-   PyRxApp.Printf("\nOnPyUnloadApp")
+   print.Printf("\nOnPyUnloadApp")
 
 def OnPyLoadDwg():
-   PyRxApp.Printf("\nOnPyLoadDwg")
+   print.Printf("\nOnPyLoadDwg")
 
 def OnPyUnloadDwg():
-   PyRxApp.Printf("\nOnPyUnloadDwg")
+   print.Printf("\nOnPyUnloadDwg")
 
 
 def do_select():
     filter = [(PyDb.DxfCode.kDxfStart, "POINT")]
     ed = PyAp.Application().docManager().curDocument().editor()
-    ss = ed.select("\nSelect points: ", "\nRemove points: ", filter)
+    ss = ed.selectPrompt("\nSelect points: ", "\nRemove points: ", filter)
     if (ss[0] == PyEd.PromptStatus.eNormal):
         return ss[1]
 
@@ -48,7 +47,7 @@ def PyRxCmd_pydoit():
     try:
         ss = do_select()
         t1_start = perf_counter()
-        pnt3ds = get_3dpointd(ss)
+        pnt3ds = get_3dpointd(ss.toList())
         pnt2ds = get_2dpointd(pnt3ds)
         t = Delaunator(pnt2ds).triangles
         
@@ -66,4 +65,4 @@ def PyRxCmd_pydoit():
         r = "Elapsed time: {t:.4f}".format(t=t1_stop-t1_start)
         print(r)
     except Exception as err:
-        PyRxApp.Printf(err)
+        print(err)
