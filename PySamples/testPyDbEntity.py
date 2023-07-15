@@ -32,9 +32,9 @@ def PyDbObjectOpenForRead():
 		db = PyDb.HostApplicationServices().workingDatabase()  
 		id = db.blockTableId()
 		dbo = PyDb.DbObject(id, PyDb.OpenMode.kForRead)
-		if dbo.isNull():
+		if dbo.isNullObj():
 			print("\nFAIL")
 		else:
-		    print("\nPASS({})".format(dbo.isA().name()))
+			print("\nPASS({})".format(dbo.isA().name()))
 	except Exception as err:
 		print(err)		

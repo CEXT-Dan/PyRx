@@ -1,7 +1,5 @@
 
 import os
-
-import PyRxApp# = all the global methods like acutPrintf, 
 import PyRx# = Runtime runtime 
 import PyGe# = Geometry
 import PyGi# = Graphics interface
@@ -26,11 +24,9 @@ def PyRxCmd_pyinsert():
     try: 
         db = PyDb.HostApplicationServices().workingDatabase()
         db2 = PyDb.Database(False, False)
-        if db2.readDwgFile("./dwg/18X36RP.dwg") != PyDb.ErrorStatus.eOk:
-             print("fail")
+        db2.readDwgFile("./dwg/18X36RP.dwg")
         oid = PyDb.ObjectId()
-        if db.insert(oid,"WOOHOO", db2, True) != PyDb.ErrorStatus.eOk:
-              print("fail")
+        db.insert(oid,"WOOHOO", db2, True)
 
     except Exception as err:
         print(err)

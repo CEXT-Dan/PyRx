@@ -1,6 +1,3 @@
-import os
-
-import PyRxApp# = all the global methods like acutPrintf, 
 import PyRx# = Runtime runtime 
 import PyGe# = Geometry
 import PyGi# = Graphics interface
@@ -31,11 +28,11 @@ def PyDbDictOpenForRead():
 	db = PyDb.HostApplicationServices().workingDatabase()  
 	dictid = db.namedObjectsDictionaryId()
 	dict = PyDb.Dictionary(dictid,PyDb.OpenMode.kForRead)
-	if dict.isNull():
+	if dict.isNullObj():
 		print("\nFAIL")
 	else:
 		print("\nPASS({})".format(dict.isA().name()))
-	for (name,id) in dict.keyValuePairs():
+	for (name,id) in dict.asDict().items():
 		print("\nitem({},{})".format(name,id ))	
 	
 	
