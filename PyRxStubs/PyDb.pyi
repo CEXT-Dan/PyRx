@@ -2625,13 +2625,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getArea (self: Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extent: bool=False)-> Point3d :
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extend: bool=False)-> Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getDistAtParam (self: Curve,param: real)-> float :
+    def getDistAtParam (self: Curve,param: float)-> float :
       '''                             '''
     ...
     def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
@@ -2652,7 +2652,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+    def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
     def getGeomExtents (self: Entity,extents: Extents)-> None :
@@ -2661,13 +2661,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self: Curve,dist: real)-> list :
+    def getOffsetCurves (self: Curve,dist: float)-> list :
       '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: real)-> list :
+    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
-    def getParamAtDist (self: Curve,dist: real)-> float :
+    def getParamAtDist (self: Curve,dist: float)-> float :
       '''                             '''
     ...
     def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
@@ -2679,13 +2679,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getPlotStyleNameId (self: Entity)-> ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self: Curve,dist: real)-> Point3d :
+    def getPointAtDist (self: Curve,dist: float)-> Point3d :
       '''                             '''
     ...
-    def getPointAtParam (self: Curve,param: real)-> Point3d :
+    def getPointAtParam (self: Curve,param: float)-> Point3d :
       '''                             '''
     ...
-    def getSecondDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+    def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
     def getSplitCurves (self: Curve,params: list)-> list :
@@ -9967,13 +9967,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getArea (self: Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extent: bool=False)-> Point3d :
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extend: bool=False)-> Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getDistAtParam (self: Curve,param: real)-> float :
+    def getDistAtParam (self: Curve,param: float)-> float :
       '''                             '''
     ...
     def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
@@ -9994,7 +9994,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+    def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
     def getGeomExtents (self: Entity,extents: Extents)-> None :
@@ -10003,13 +10003,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self: Curve,dist: real)-> list :
+    def getOffsetCurves (self: Curve,dist: float)-> list :
       '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: real)-> list :
+    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
-    def getParamAtDist (self: Curve,dist: real)-> float :
+    def getParamAtDist (self: Curve,dist: float)-> float :
       '''                             '''
     ...
     def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
@@ -10021,13 +10021,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getPlotStyleNameId (self: Entity)-> ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self: Curve,dist: real)-> Point3d :
+    def getPointAtDist (self: Curve,dist: float)-> Point3d :
       '''                             '''
     ...
-    def getPointAtParam (self: Curve,param: real)-> Point3d :
+    def getPointAtParam (self: Curve,param: float)-> Point3d :
       '''                             '''
     ...
-    def getSecondDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+    def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
     def getSplitCurves (self: Curve,params: list)-> list :
@@ -11344,13 +11344,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getArea (self: Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extent: bool=False)-> Point3d :
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extend: bool=False)-> Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getDistAtParam (self: Curve,param: real)-> float :
+    def getDistAtParam (self: Curve,param: float)-> float :
       '''                             '''
     ...
     def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
@@ -11371,7 +11371,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+    def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
     def getGeomExtents (self: Entity,extents: Extents)-> None :
@@ -11380,13 +11380,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self: Curve,dist: real)-> list :
+    def getOffsetCurves (self: Curve,dist: float)-> list :
       '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: real)-> list :
+    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
-    def getParamAtDist (self: Curve,dist: real)-> float :
+    def getParamAtDist (self: Curve,dist: float)-> float :
       '''                             '''
     ...
     def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
@@ -11398,13 +11398,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getPlotStyleNameId (self: Entity)-> ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self: Curve,dist: real)-> Point3d :
+    def getPointAtDist (self: Curve,dist: float)-> Point3d :
       '''                             '''
     ...
-    def getPointAtParam (self: Curve,param: real)-> Point3d :
+    def getPointAtParam (self: Curve,param: float)-> Point3d :
       '''                             '''
     ...
-    def getSecondDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+    def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
     def getSplitCurves (self: Curve,params: list)-> list :
@@ -30398,13 +30398,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getArea (self: Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extent: bool=False)-> Point3d :
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extend: bool=False)-> Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getDistAtParam (self: Curve,param: real)-> float :
+    def getDistAtParam (self: Curve,param: float)-> float :
       '''                             '''
     ...
     def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
@@ -30425,7 +30425,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+    def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
     def getGeomExtents (self: Entity,extents: Extents)-> None :
@@ -30434,13 +30434,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self: Curve,dist: real)-> list :
+    def getOffsetCurves (self: Curve,dist: float)-> list :
       '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: real)-> list :
+    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
-    def getParamAtDist (self: Curve,dist: real)-> float :
+    def getParamAtDist (self: Curve,dist: float)-> float :
       '''                             '''
     ...
     def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
@@ -30452,13 +30452,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getPlotStyleNameId (self: Entity)-> ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self: Curve,dist: real)-> Point3d :
+    def getPointAtDist (self: Curve,dist: float)-> Point3d :
       '''                             '''
     ...
-    def getPointAtParam (self: Curve,param: real)-> Point3d :
+    def getPointAtParam (self: Curve,param: float)-> Point3d :
       '''                             '''
     ...
-    def getSecondDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+    def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
     def getSplitCurves (self: Curve,params: list)-> list :
@@ -31086,13 +31086,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getArea (self: Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extent: bool=False)-> Point3d :
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extend: bool=False)-> Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getDistAtParam (self: Curve,param: real)-> float :
+    def getDistAtParam (self: Curve,param: float)-> float :
       '''                             '''
     ...
     def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
@@ -31113,7 +31113,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+    def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
     def getGeomExtents (self: Entity,extents: Extents)-> None :
@@ -31122,7 +31122,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self: Curve,dist: real)-> list :
+    def getOffsetCurves (self: Curve,dist: float)-> list :
       '''                             '''
     ...
     def getOffsetCurvesGivenPlaneNormal (self, *args, **kwargs)-> list :
@@ -31131,7 +31131,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     C++ signature :
         class boost::python::list getOffsetCurvesGivenPlaneNormal(class PyDbLine {lvalue},class AcGeVector3d,double)'''
     ...
-    def getParamAtDist (self: Curve,dist: real)-> float :
+    def getParamAtDist (self: Curve,dist: float)-> float :
       '''                             '''
     ...
     def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
@@ -31143,13 +31143,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getPlotStyleNameId (self: Entity)-> ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self: Curve,dist: real)-> Point3d :
+    def getPointAtDist (self: Curve,dist: float)-> Point3d :
       '''                             '''
     ...
-    def getPointAtParam (self: Curve,param: real)-> Point3d :
+    def getPointAtParam (self: Curve,param: float)-> Point3d :
       '''                             '''
     ...
-    def getSecondDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+    def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
     def getSplitCurves (self: Curve,params: list)-> list :
@@ -48368,7 +48368,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     C++ signature :
         double getBulgeAt(class PyDbPolyline {lvalue},unsigned int)'''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extent: bool=False)-> Point3d :
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extend: bool=False)-> Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -48380,7 +48380,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     C++ signature :
         double getConstantWidth(class PyDbPolyline {lvalue})'''
     ...
-    def getDistAtParam (self: Curve,param: real)-> float :
+    def getDistAtParam (self: Curve,param: float)-> float :
       '''                             '''
     ...
     def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
@@ -48415,7 +48415,7 @@ getEcs( (Polyline)arg1, (Matrix3d)arg2) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+    def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
     def getGeomExtents (self: Entity,extents: Extents)-> None :
@@ -48436,13 +48436,13 @@ getEcs( (Polyline)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         class PyGeLineSeg3d getLineSeg3dAt(class PyDbPolyline {lvalue},unsigned int)'''
     ...
-    def getOffsetCurves (self: Curve,dist: real)-> list :
+    def getOffsetCurves (self: Curve,dist: float)-> list :
       '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: real)-> list :
+    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
-    def getParamAtDist (self: Curve,dist: real)-> float :
+    def getParamAtDist (self: Curve,dist: float)-> float :
       '''                             '''
     ...
     def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
@@ -48466,13 +48466,13 @@ getEcs( (Polyline)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         class AcGePoint3d getPoint3dAt(class PyDbPolyline {lvalue},unsigned int)'''
     ...
-    def getPointAtDist (self: Curve,dist: real)-> Point3d :
+    def getPointAtDist (self: Curve,dist: float)-> Point3d :
       '''                             '''
     ...
-    def getPointAtParam (self: Curve,param: real)-> Point3d :
+    def getPointAtParam (self: Curve,param: float)-> Point3d :
       '''                             '''
     ...
-    def getSecondDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+    def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
     def getSplitCurves (self: Curve,params: list)-> list :
@@ -49092,13 +49092,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getArea (self: Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extent: bool=False)-> Point3d :
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extend: bool=False)-> Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getDistAtParam (self: Curve,param: real)-> float :
+    def getDistAtParam (self: Curve,param: float)-> float :
       '''                             '''
     ...
     def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
@@ -49119,7 +49119,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+    def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
     def getGeomExtents (self: Entity,extents: Extents)-> None :
@@ -49128,13 +49128,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self: Curve,dist: real)-> list :
+    def getOffsetCurves (self: Curve,dist: float)-> list :
       '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: real)-> list :
+    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
-    def getParamAtDist (self: Curve,dist: real)-> float :
+    def getParamAtDist (self: Curve,dist: float)-> float :
       '''                             '''
     ...
     def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
@@ -49146,13 +49146,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getPlotStyleNameId (self: Entity)-> ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self: Curve,dist: real)-> Point3d :
+    def getPointAtDist (self: Curve,dist: float)-> Point3d :
       '''                             '''
     ...
-    def getPointAtParam (self: Curve,param: real)-> Point3d :
+    def getPointAtParam (self: Curve,param: float)-> Point3d :
       '''                             '''
     ...
-    def getSecondDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+    def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
     def getSplitCurves (self: Curve,params: list)-> list :
@@ -49758,13 +49758,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getArea (self: Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extent: bool=False)-> Point3d :
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extend: bool=False)-> Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getDistAtParam (self: Curve,param: real)-> float :
+    def getDistAtParam (self: Curve,param: float)-> float :
       '''                             '''
     ...
     def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
@@ -49785,7 +49785,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+    def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
     def getGeomExtents (self: Entity,extents: Extents)-> None :
@@ -49794,13 +49794,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self: Curve,dist: real)-> list :
+    def getOffsetCurves (self: Curve,dist: float)-> list :
       '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: real)-> list :
+    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: float)-> list :
       '''                             '''
     ...
-    def getParamAtDist (self: Curve,dist: real)-> float :
+    def getParamAtDist (self: Curve,dist: float)-> float :
       '''                             '''
     ...
     def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
@@ -49812,13 +49812,13 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getPlotStyleNameId (self: Entity)-> ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self: Curve,dist: real)-> Point3d :
+    def getPointAtDist (self: Curve,dist: float)-> Point3d :
       '''                             '''
     ...
-    def getPointAtParam (self: Curve,param: real)-> Point3d :
+    def getPointAtParam (self: Curve,param: float)-> Point3d :
       '''                             '''
     ...
-    def getSecondDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+    def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
     def getSplitCurves (self: Curve,params: list)-> list :
