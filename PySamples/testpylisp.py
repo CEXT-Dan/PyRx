@@ -1,12 +1,9 @@
-import os
-
-import PyRx# = Runtime runtime 
-import PyGe# = Geometry
-import PyGi# = Graphics interface
-import PyDb# = database
-import PyAp# = application, document classes services 
-import PyEd# = editor 
-
+import PyRx as Rx
+import PyGe as Ge
+import PyGi as Gi
+import PyDb as Db
+import PyAp as Ap
+import PyEd as Ed
 
 def OnPyInitApp():
     print("\nOnPyInitApp")
@@ -23,24 +20,24 @@ def OnPyUnloadDwg():
 # (pylisp)
 def PyRxLisp_pylisp(args):
 	try: 
-		return [(PyRx.LispDataType.kListBegin, 0),
-	            (PyRx.LispDataType.kText, "Text"),
-		        (PyRx.LispDataType.kDouble, 12.23),
-			    (PyRx.LispDataType.kListBegin, 0),
-			    (PyRx.LispDataType.kInt16, 1),
-			    (PyRx.LispDataType.kInt32, 2),
-			    (PyRx.LispDataType.kNil, 0),
-			    (PyRx.LispDataType.kT_atom, 0),
-			    (PyRx.LispDataType.kListEnd, 0),
-		     	(PyRx.LispDataType.kPoint3d,PyGe.Point3d(1,10,100)),
-				(PyRx.LispDataType.kListEnd, 0)]
+		return [(Rx.LispDataType.kListBegin, 0),
+	            (Rx.LispDataType.kText, "Text"),
+		        (Rx.LispDataType.kDouble, 12.23),
+			    (Rx.LispDataType.kListBegin, 0),
+			    (Rx.LispDataType.kInt16, 1),
+			    (Rx.LispDataType.kInt32, 2),
+			    (Rx.LispDataType.kNil, 0),
+			    (Rx.LispDataType.kT_atom, 0),
+			    (Rx.LispDataType.kListEnd, 0),
+		     	(Rx.LispDataType.kPoint3d,Ge.Point3d(1,10,100)),
+				(Rx.LispDataType.kListEnd, 0)]
 	except Exception as err:
 		print(err)
 
 #(pylisp1)
 def PyRxLisp_pylisp1(args):
 	try: 
-		return [(PyRx.LispDataType.kText, "Text")]
+		return [(Rx.LispDataType.kText, "Text")]
 	except Exception as err:
 		print(err)
 

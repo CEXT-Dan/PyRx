@@ -71,7 +71,7 @@ bool PyLispService::tryAddFunc(const AcString& pythonFuncName, PyObject* method)
         }
         else
         {
-            funcode code = lispFuncCodes.size();
+            funcode code = lispFuncCodes.size() +1;
             lispFuncs.emplace(lispFuncName, code);
             lispFuncCodes.emplace(code, method);
             acedDefun(lispFuncName, code);
