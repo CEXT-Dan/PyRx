@@ -35,8 +35,8 @@ def PyDbEntSetLayer():
 	ed = doc.editor()
 	ss = ed.selectAll()
 	t1_start = perf_counter()
-	if(ss[0] == PyEd.PromptStatus.Normal):
-		for id in ss[1]:
+	if(ss[0] == PyEd.PromptStatus.kNormal):
+		for id in ss[1].toList():
 			PyDb.Entity(id, PyDb.OpenMode.kForWrite).setLayer("0")
 	t1_stop = perf_counter()
 	print("\nNum Items = {}, Elapsed time: {t:.4f}".format(len(ss[1]), t = t1_stop-t1_start))
