@@ -71,6 +71,12 @@ audit( (Database)arg1, (bool)arg2, (bool)arg3) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > findTrustedFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def getCommandPromptString (self, *args, **kwargs)-> str :
+      '''getCommandPromptString() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getCommandPromptString()'''
+    ...
     def getFileD (self, *args, **kwargs)-> str :
       '''getFileD( (str)arg1, (str)arg2, (str)arg3, (int)arg4) -> str :
 
@@ -112,6 +118,12 @@ audit( (Database)arg1, (bool)arg2, (bool)arg3) -> None :
 
     C++ signature :
         void pSpace()'''
+    ...
+    def setUndoMark (self, *args, **kwargs)-> None :
+      '''setUndoMark( (bool)arg1) -> None :
+
+    C++ signature :
+        void setUndoMark(bool)'''
     ...
     def setVar (self, *args, **kwargs)-> bool :
       '''setVar( (str)arg1, (object)arg2) -> bool :

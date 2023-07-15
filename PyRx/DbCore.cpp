@@ -8,21 +8,7 @@
 #include "PyGeCurve3d.h"
 #include "PyDbCurve.h"
 
-
 using namespace boost::python;
-
-struct DbCoreDocStrings
-{
-    static constexpr const char* DbCoreopenDbObject = "\
-Args :\
-\n    \n\
-\t1, PyDb.ObjectId : object id for the object to open.  \n\
-\t2, PyDb.OpenMode : kForRead, kForWrite or kForNotify. \n\
-\n    \n\
-Returns :\
-\n    \n\
-\tThe PyDb.DbObject or PyAp.PyAcadErrorStatus exception";
-};
 
 void makeDbCoreWrapper()
 {
@@ -66,7 +52,7 @@ void makeDbCoreWrapper()
         .def("entMakeX", &DbCore::entMakeX).staticmethod("entMakeX")
 
 
-        .def("openDbObject", &DbCore::openDbObject, DbCoreDocStrings::DbCoreopenDbObject).staticmethod("openDbObject")
+        .def("openDbObject", &DbCore::openDbObject).staticmethod("openDbObject")
         .def("openDbEntity", &DbCore::openDbEntity).staticmethod("openDbEntity")
         .def("regApp", &DbCore::regApp).staticmethod("regApp")
         .def("updateDimension", &DbCore::updateDimension).staticmethod("updateDimension")
