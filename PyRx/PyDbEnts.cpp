@@ -13,6 +13,7 @@ using namespace boost::python;
 //PyDbText
 void makePyDbTextWrapper()
 {
+    PyDocString DS("Text");
     class_<PyDbText, bases<PyDbEntity>>("Text")
         .def(init<>())
         .def(init<AcGePoint3d&, const std::string&>())
@@ -363,6 +364,7 @@ AcDbText* PyDbText::impObj(const std::source_location& src /*= std::source_locat
 //PyDbAttributeDefinition
 void makePyDbAttributeDefinitionWrapper()
 {
+    PyDocString DS("AttributeDefinition");
     class_<PyDbAttributeDefinition, bases<PyDbText>>("AttributeDefinition")
         .def(init<>())
         .def(init<const AcGePoint3d&, const std::string&, const std::string&, const std::string&, const PyDbObjectId&>())
@@ -575,6 +577,7 @@ AcDbAttributeDefinition* PyDbAttributeDefinition::impObj(const std::source_locat
 //PyDbAttribute
 void makePyDbAttributeWrapper()
 {
+    PyDocString DS("AttributeReference");
     class_<PyDbAttribute, bases<PyDbText>>("AttributeReference")
         .def(init<>())
         .def(init<const AcGePoint3d&, const std::string&, const std::string&, const PyDbObjectId&>())
@@ -770,6 +773,7 @@ AcDbAttribute* PyDbAttribute::impObj(const std::source_location& src /*= std::so
 //PyDbBlockReference
 void makeDbBlockReferenceWrapper()
 {
+    PyDocString DS("BlockReference");
     class_<PyDbBlockReference, bases<PyDbEntity>>("BlockReference")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -978,6 +982,7 @@ AcDbBlockReference* PyDbBlockReference::impObj(const std::source_location& src /
 //PyDbDynBlockReference
 void makePyDbDynBlockReferenceWrapper() //TODO: Make test
 {
+    PyDocString DS("DynBlockReference");
     class_<PyDbDynBlockReference>("DynBlockReference", no_init)
         .def(init<const PyDbObjectId&>())
         .def("isDynamicBlock", &PyDbDynBlockReference::isDynamicBlock1)
@@ -1073,6 +1078,7 @@ AcDbDynBlockReference* PyDbDynBlockReference::impObj(const std::source_location&
 //DbMInsertBlock
 void makeDbMInsertBlockeWrapper()
 {
+    PyDocString DS("MInsertBlock");
     class_<PyDbMInsertBlock, bases<PyDbBlockReference>>("MInsertBlock")
         .def(init<>())
         .def(init<AcGePoint3d&, const PyDbObjectId&, Adesk::UInt16, Adesk::UInt16, double, double>())
@@ -1198,6 +1204,7 @@ AcDbMInsertBlock* PyDbMInsertBlock::impObj(const std::source_location& src /*= s
 //PyDbVertex
 void makeAcDbVertexWrapper()
 {
+    PyDocString DS("Vertex");
     class_<PyDbVertex, bases<PyDbEntity>>("Vertex", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
@@ -1263,6 +1270,7 @@ AcDbVertex* PyDbVertex::impObj(const std::source_location& src /*= std::source_l
 //PyDb2dVertex
 void makePyDb2dVertexWrapper()
 {
+    PyDocString DS("Vertex2d");
     class_<PyDb2dVertex, bases<PyDbVertex>>("Vertex2d")
         .def(init<>())
         .def(init<const AcGePoint3d&>())
@@ -1465,6 +1473,7 @@ AcDb2dVertex* PyDb2dVertex::impObj(const std::source_location& src /*= std::sour
 //AcDb3dPolylineVertex
 void makePyAcDb3dPolylineVertexWrapper()
 {
+    PyDocString DS("Polyline3dVertex");
     class_<PyDb3dPolylineVertex, bases<PyDbVertex>>("Polyline3dVertex")
         .def(init<>())
         .def(init<const AcGePoint3d&>())
@@ -1561,6 +1570,7 @@ AcDb3dPolylineVertex* PyDb3dPolylineVertex::impObj(const std::source_location& s
 //AcDbPolygonMeshVertex
 void makePyAcDbPolygonMeshVertexWrapper()
 {
+    PyDocString DS("PolygonMeshVertex");
     class_<PyDbPolygonMeshVertex, bases<PyDbVertex>>("PolygonMeshVertex")
         .def(init<>())
         .def(init<const AcGePoint3d&>())
@@ -1656,6 +1666,7 @@ AcDbPolygonMeshVertex* PyDbPolygonMeshVertex::impObj(const std::source_location&
 //AcDbPolygonMeshVertex
 void makePyDbPolyFaceMeshVertexWrapper()
 {
+    PyDocString DS("PolyFaceMeshVertex");
     class_<PyDbPolyFaceMeshVertex, bases<PyDbVertex>>("PolyFaceMeshVertex")
         .def(init<>())
         .def(init<const AcGePoint3d&>())
@@ -1745,6 +1756,7 @@ AcDbPolyFaceMeshVertex* PyDbPolyFaceMeshVertex::impObj(const std::source_locatio
 //AcDbFaceRecord
 void makePyAcDbFaceRecordWrapper()
 {
+    PyDocString DS("FaceRecord");
     class_<PyDbFaceRecord, bases<PyDbVertex>>("FaceRecord")
         .def(init<>())
         .def(init<Adesk::Int16, Adesk::Int16, Adesk::Int16, Adesk::Int16>())
@@ -1858,6 +1870,7 @@ AcDbFaceRecord* PyDbFaceRecord::impObj(const std::source_location& src /*= std::
 //PyDbPoint
 void makePyDbPointWrapper()
 {
+    PyDocString DS("Point");
     class_<PyDbPoint, bases<PyDbEntity>>("Point")
         .def(init<>())
         .def(init<AcGePoint3d&>())
@@ -1995,6 +2008,7 @@ AcGePoint3dArray& listToAcGePoint3dArrayRef(const boost::python::list& list)
 
 void makePyDb2dPolylineWrapper()
 {
+    PyDocString DS("Polyline2d");
     class_<PyDb2dPolyline, bases<PyDbCurve>>("Polyline2d")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -2292,6 +2306,7 @@ AcDb2dPolyline* PyDb2dPolyline::impObj(const std::source_location& src /*= std::
 //PyDb3dPolyline
 void makePyDb3dPolylineWrapper()
 {
+    PyDocString DS("Polyline3d");
     class_<PyDb3dPolyline, bases<PyDbCurve>>("Polyline3d")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -2480,6 +2495,7 @@ AcDb3dPolyline* PyDb3dPolyline::impObj(const std::source_location& src /*= std::
 //PyDbArc
 void makePyDbArcWrapper()
 {
+    PyDocString DS("Arc");
     class_<PyDbArc, bases<PyDbCurve>>("Arc")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -2647,6 +2663,7 @@ AcDbArc* PyDbArc::impObj(const std::source_location& src /*= std::source_locatio
 //PyDbCircle
 void makPyDbCircleWrapper()
 {
+    PyDocString DS("Circle");
     class_<PyDbCircle, bases<PyDbCurve>>("Circle")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -2812,6 +2829,7 @@ AcDbCircle* PyDbCircle::impObj(const std::source_location& src /*= std::source_l
 //PyDbLine
 void makPyDbLineWrapper()
 {
+    PyDocString DS("Line");
     class_<PyDbLine, bases<PyDbCurve>>("Line")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -2950,6 +2968,7 @@ AcDbLine* PyDbLine::impObj(const std::source_location& src /*= std::source_locat
 //PyDbPolyline
 void makPyDbPolylineWrapper()
 {
+    PyDocString DS("Polyline");
     class_<PyDbPolyline, bases<PyDbCurve>>("Polyline")
         .def(init<>())
         .def(init<unsigned int>())
@@ -3294,6 +3313,7 @@ AcDbPolyline* PyDbPolyline::impObj(const std::source_location& src /*= std::sour
 //PyDbDace
 void makPyDbFaceWrapper()
 {
+    PyDocString DS("Face");
     class_<PyDbFace, bases<PyDbEntity>>("Face")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -3426,6 +3446,7 @@ AcDbFace* PyDbFace::impObj(const std::source_location& src /*= std::source_locat
 //AcDbFcf
 void makPyDbFcfWrapper()
 {
+    PyDocString DS("Fcf");
     class_<PyDbFcf, bases<PyDbEntity>>("Fcf")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
