@@ -1,21 +1,22 @@
-import os
+import PyRx as Rx
+import PyGe as Ge
+import PyGi as Gi
+import PyDb as Db
+import PyAp as Ap
+import PyEd as Ed
 
-import PyGe# = Geometry
-import PyGi# = Graphics interface
-import PyDb# = database
-import PyAp# = application, document classes services
-import PyEd# = editor
+print("added command = pyxrecord")
 
 def PyRxCmd_pyxrecord():
     try: 
-        db = PyDb.HostApplicationServices().workingDatabase()
-        nod = PyDb.Dictionary(db.namedObjectsDictionaryId(), PyDb.OpenMode.kForRead)
+        db = Db.HostApplicationServices().workingDatabase()
+        nod = Db.Dictionary(db.namedObjectsDictionaryId(), Db.OpenMode.kForRead)
         if not nod.has("AcadDim_CRX"):
             print("fail")
             return
         
         xid = nod.getAt("AcadDim_CRX")
-        xrec = PyDb.Xrecord(xid, PyDb.OpenMode.kForRead)
+        xrec = Db.Xrecord(xid, Db.OpenMode.kForRead)
         
         rbChain = xrec.rbChain()
         print(rbChain)
