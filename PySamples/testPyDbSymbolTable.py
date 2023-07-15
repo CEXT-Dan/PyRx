@@ -1,6 +1,4 @@
-import os
-
- import PyRx# = Runtime runtime 
+import PyRx# = Runtime runtime 
 import PyGe# = Geometry
 import PyGi# = Graphics interface
 import PyDb# = database
@@ -30,11 +28,11 @@ def PyDbSymOpenForRead():
 	db = PyDb.HostApplicationServices().workingDatabase()  
 	btid = db.blockTableId()
 	table = PyDb.SymbolTable(btid,PyDb.OpenMode.kForRead)
-	if table.isNull():
+	if table.isNullObj():
 		print("\nFAIL")
 	else:
 		print("\nPASS({})".format(table.isA().name()))
-	for (id) in table.recordIds():
-		print("\nitem({})".format(id))	
+	for id in table.recordIds():
+		print(id)	
 	
 	

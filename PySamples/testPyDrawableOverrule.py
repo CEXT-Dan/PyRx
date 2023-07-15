@@ -67,10 +67,8 @@ def PyRxCmd_pydrawoverrule():
         if overrule != None:
             return 
         overrule = MyDrawableOverrule()
-        if overrule.addOverrule(PyDb.Line.desc(), overrule) == PyDb.ErrorStatus.eOk:
-            overrule.setIsOverruling(True)
-        else:
-            print("fail")
+        overrule.addOverrule(PyDb.Line.desc(), overrule)
+        overrule.setIsOverruling(True)
     except Exception as err:
         print(err)
 
