@@ -173,6 +173,7 @@
     <ClCompile Include="PyDbViewport.cpp" />
     <ClCompile Include="PyDbXrecord.cpp" />
     <ClCompile Include="PyDocString.cpp" />
+    <ClCompile Include="PyEdInput.cpp" />
     <ClCompile Include="PyEditorReactor.cpp" />
     <ClCompile Include="PyEdSelectionSet.cpp" />
     <ClCompile Include="PyGeBoundBlock2d.cpp" />
@@ -261,6 +262,7 @@
     <ClInclude Include="PyDbViewport.h" />
     <ClInclude Include="PyDbXrecord.h" />
     <ClInclude Include="PyDocString.h" />
+    <ClInclude Include="PyEdInput.h" />
     <ClInclude Include="PyEditorReactor.h" />
     <ClInclude Include="PyEdSelectionSet.h" />
     <ClInclude Include="PyException.h" />
