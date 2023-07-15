@@ -256,6 +256,9 @@
     <ClCompile Include="PyUiPalette.cpp">
       <Filter>Source Files\PyAp</Filter>
     </ClCompile>
+    <ClCompile Include="PyEdInput.cpp">
+      <Filter>Source Files\PyEd</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -515,6 +518,9 @@
     </ClInclude>
     <ClInclude Include="PyUiPalette.h">
       <Filter>Header Files\PyAp</Filter>
+    </ClInclude>
+    <ClInclude Include="PyEdInput.h">
+      <Filter>Header Files\PyEd</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
