@@ -1,3 +1,9 @@
+import PyRx
+import PyGe
+import PyGi
+import PyDb
+import PyAp
+import PyEd
 
 class ACIcolorMethod:
     def __init__ (self, /, *args, **kwargs):
@@ -1353,7 +1359,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getDimstyleData (self, *args, **kwargs)-> DimStyleTableRecord :
@@ -1362,7 +1368,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -2161,7 +2167,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         bool toleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -2616,52 +2622,29 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getArea (self, *args, **kwargs)-> float :
-      '''getArea( (Curve)arg1) -> float :
-
-    C++ signature :
-        double getArea(class PyDbCurve {lvalue})'''
-    ...
-    def getClosestPointTo (self, *args, **kwargs)-> Point3d :
-      '''getClosestPointTo( (Curve)arg1, (Point3d)arg2, (bool)arg3) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getClosestPointTo(class PyDbCurve {lvalue},class AcGePoint3d,bool)
-
-getClosestPointTo( (Curve)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getClosestPointTo(class PyDbCurve {lvalue},class AcGePoint3d,class AcGeVector3d,bool)'''
-    ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getArea (self: Curve)-> float :
       '''                             '''
     ...
-    def getDistAtParam (self, *args, **kwargs)-> float :
-      '''getDistAtParam( (Curve)arg1, (float)arg2) -> float :
-
-    C++ signature :
-        double getDistAtParam(class PyDbCurve {lvalue},double)'''
-    ...
-    def getDistAtPoint (self, *args, **kwargs)-> float :
-      '''getDistAtPoint( (Curve)arg1, (Point3d)arg2) -> float :
-
-    C++ signature :
-        double getDistAtPoint(class PyDbCurve {lvalue},class AcGePoint3d)'''
-    ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extent: bool=False)-> Point3d :
       '''                             '''
     ...
-    def getEndParam (self, *args, **kwargs)-> float :
-      '''getEndParam( (Curve)arg1) -> float :
-
-    C++ signature :
-        double getEndParam(class PyDbCurve {lvalue})'''
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+      '''                             '''
     ...
-    def getEndPoint (self, *args, **kwargs)-> Point3d :
-      '''getEndPoint( (Curve)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getEndPoint(class PyDbCurve {lvalue})'''
+    def getDistAtParam (self: Curve,param: real)-> float :
+      '''                             '''
+    ...
+    def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+      '''                             '''
+    ...
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def getEndParam (self: Curve)-> float :
+      '''                             '''
+    ...
+    def getEndPoint (self: Curve)-> Point3d :
+      '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
       '''                             '''
@@ -2669,16 +2652,8 @@ getClosestPointTo( (Curve)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4) -> Po
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self, *args, **kwargs)-> Vector3d :
-      '''getFirstDeriv( (Curve)arg1, (float)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getFirstDeriv(class PyDbCurve {lvalue},double)
-
-getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getFirstDeriv(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getFirstDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+      '''                             '''
     ...
     def getGeomExtents (self: Entity,extents: Extents)-> None :
       '''                             '''
@@ -2686,29 +2661,17 @@ getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self, *args, **kwargs)-> list :
-      '''getOffsetCurves( (Curve)arg1, (float)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getOffsetCurves(class PyDbCurve {lvalue},double)'''
+    def getOffsetCurves (self: Curve,dist: real)-> list :
+      '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self, *args, **kwargs)-> list :
-      '''getOffsetCurvesGivenPlaneNormal( (Curve)arg1, (Vector3d)arg2, (float)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list getOffsetCurvesGivenPlaneNormal(class PyDbCurve {lvalue},class AcGeVector3d,double)'''
+    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: real)-> list :
+      '''                             '''
     ...
-    def getParamAtDist (self, *args, **kwargs)-> float :
-      '''getParamAtDist( (Curve)arg1, (float)arg2) -> float :
-
-    C++ signature :
-        double getParamAtDist(class PyDbCurve {lvalue},double)'''
+    def getParamAtDist (self: Curve,dist: real)-> float :
+      '''                             '''
     ...
-    def getParamAtPoint (self, *args, **kwargs)-> float :
-      '''getParamAtPoint( (Curve)arg1, (Point3d)arg2) -> float :
-
-    C++ signature :
-        double getParamAtPoint(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+      '''                             '''
     ...
     def getPlane (self: Entity)-> Plane :
       '''                             '''
@@ -2716,58 +2679,29 @@ getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def getPlotStyleNameId (self: Entity)-> ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self, *args, **kwargs)-> Point3d :
-      '''getPointAtDist( (Curve)arg1, (float)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getPointAtDist(class PyDbCurve {lvalue},double)'''
+    def getPointAtDist (self: Curve,dist: real)-> Point3d :
+      '''                             '''
     ...
-    def getPointAtParam (self, *args, **kwargs)-> Point3d :
-      '''getPointAtParam( (Curve)arg1, (float)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getPointAtParam(class PyDbCurve {lvalue},double)'''
+    def getPointAtParam (self: Curve,param: real)-> Point3d :
+      '''                             '''
     ...
-    def getSecondDeriv (self, *args, **kwargs)-> Vector3d :
-      '''getSecondDeriv( (Curve)arg1, (float)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getSecondDeriv(class PyDbCurve {lvalue},double)
-
-getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getSecondDeriv(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getSecondDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+      '''                             '''
     ...
-    def getSplitCurves (self, *args, **kwargs)-> list :
-      '''getSplitCurves( (Curve)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSplitCurves(class PyDbCurve {lvalue},class boost::python::list)'''
+    def getSplitCurves (self: Curve,params: list)-> list :
+      '''                             '''
     ...
-    def getSplitCurvesAtParams (self, *args, **kwargs)-> list :
-      '''getSplitCurvesAtParams( (Curve)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSplitCurvesAtParams(class PyDbCurve {lvalue},class boost::python::list)'''
+    def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+      '''                             '''
     ...
-    def getSplitCurvesAtPoints (self, *args, **kwargs)-> list :
-      '''getSplitCurvesAtPoints( (Curve)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSplitCurvesAtPoints(class PyDbCurve {lvalue},class boost::python::list)'''
+    def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
+      '''                             '''
     ...
-    def getStartParam (self, *args, **kwargs)-> float :
-      '''getStartParam( (Curve)arg1) -> float :
-
-    C++ signature :
-        double getStartParam(class PyDbCurve {lvalue})'''
+    def getStartParam (self: Curve)-> float :
+      '''                             '''
     ...
-    def getStartPoint (self, *args, **kwargs)-> Point3d :
-      '''getStartPoint( (Curve)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getStartPoint(class PyDbCurve {lvalue})'''
+    def getStartPoint (self: Curve)-> Point3d :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -2799,11 +2733,8 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Curve)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyDbCurve {lvalue})'''
+    def isClosed (self: Curve)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -2835,11 +2766,8 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     C++ signature :
         bool isNullObj(class PyRxObject {lvalue})'''
     ...
-    def isPeriodic (self, *args, **kwargs)-> bool :
-      '''isPeriodic( (Curve)arg1) -> bool :
-
-    C++ signature :
-        bool isPeriodic(class PyDbCurve {lvalue})'''
+    def isPeriodic (self: Curve)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -2943,11 +2871,8 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def reverseCurve (self, *args, **kwargs)-> None :
-      '''reverseCurve( (Curve)arg1) -> None :
-
-    C++ signature :
-        void reverseCurve(class PyDbCurve {lvalue})'''
+    def reverseCurve (self: Curve)-> None :
+      '''                             '''
     ...
     def rolloverHit (self, *args, **kwargs)-> bool :
       '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
@@ -3087,7 +3012,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         double totalAngle(class PyDbArc {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -3448,7 +3373,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getDimstyleData (self, *args, **kwargs)-> DimStyleTableRecord :
@@ -3457,7 +3382,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -4292,7 +4217,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         bool toleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -4518,10 +4443,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class boost::python::list getBoundingPoints(class PyDbText {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -5052,7 +4977,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         double thickness(class PyDbText {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def updateMTextAttributeDefinition (self, *args, **kwargs)-> None :
@@ -5272,10 +5197,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class boost::python::list getBoundingPoints(class PyDbText {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -5793,7 +5718,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         double thickness(class PyDbText {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def updateMTextAttribute (self, *args, **kwargs)-> None :
@@ -5956,10 +5881,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -6208,7 +6133,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -6353,10 +6278,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -6605,7 +6530,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -6806,10 +6731,10 @@ geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
     C++ signature :
         class AcDbExtents geomExtentsBestFit(class PyDbBlockReference {lvalue},class AcGeMatrix3d)'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -7130,7 +7055,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def treatAsAcDbBlockRefForExplode (self, *args, **kwargs)-> bool :
@@ -8197,10 +8122,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -8449,7 +8374,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -10039,52 +9964,29 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getArea (self, *args, **kwargs)-> float :
-      '''getArea( (Curve)arg1) -> float :
-
-    C++ signature :
-        double getArea(class PyDbCurve {lvalue})'''
-    ...
-    def getClosestPointTo (self, *args, **kwargs)-> Point3d :
-      '''getClosestPointTo( (Curve)arg1, (Point3d)arg2, (bool)arg3) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getClosestPointTo(class PyDbCurve {lvalue},class AcGePoint3d,bool)
-
-getClosestPointTo( (Curve)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getClosestPointTo(class PyDbCurve {lvalue},class AcGePoint3d,class AcGeVector3d,bool)'''
-    ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getArea (self: Curve)-> float :
       '''                             '''
     ...
-    def getDistAtParam (self, *args, **kwargs)-> float :
-      '''getDistAtParam( (Curve)arg1, (float)arg2) -> float :
-
-    C++ signature :
-        double getDistAtParam(class PyDbCurve {lvalue},double)'''
-    ...
-    def getDistAtPoint (self, *args, **kwargs)-> float :
-      '''getDistAtPoint( (Curve)arg1, (Point3d)arg2) -> float :
-
-    C++ signature :
-        double getDistAtPoint(class PyDbCurve {lvalue},class AcGePoint3d)'''
-    ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extent: bool=False)-> Point3d :
       '''                             '''
     ...
-    def getEndParam (self, *args, **kwargs)-> float :
-      '''getEndParam( (Curve)arg1) -> float :
-
-    C++ signature :
-        double getEndParam(class PyDbCurve {lvalue})'''
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+      '''                             '''
     ...
-    def getEndPoint (self, *args, **kwargs)-> Point3d :
-      '''getEndPoint( (Curve)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getEndPoint(class PyDbCurve {lvalue})'''
+    def getDistAtParam (self: Curve,param: real)-> float :
+      '''                             '''
+    ...
+    def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+      '''                             '''
+    ...
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def getEndParam (self: Curve)-> float :
+      '''                             '''
+    ...
+    def getEndPoint (self: Curve)-> Point3d :
+      '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
       '''                             '''
@@ -10092,16 +9994,8 @@ getClosestPointTo( (Curve)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4) -> Po
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self, *args, **kwargs)-> Vector3d :
-      '''getFirstDeriv( (Curve)arg1, (float)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getFirstDeriv(class PyDbCurve {lvalue},double)
-
-getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getFirstDeriv(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getFirstDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+      '''                             '''
     ...
     def getGeomExtents (self: Entity,extents: Extents)-> None :
       '''                             '''
@@ -10109,29 +10003,17 @@ getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self, *args, **kwargs)-> list :
-      '''getOffsetCurves( (Curve)arg1, (float)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getOffsetCurves(class PyDbCurve {lvalue},double)'''
+    def getOffsetCurves (self: Curve,dist: real)-> list :
+      '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self, *args, **kwargs)-> list :
-      '''getOffsetCurvesGivenPlaneNormal( (Curve)arg1, (Vector3d)arg2, (float)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list getOffsetCurvesGivenPlaneNormal(class PyDbCurve {lvalue},class AcGeVector3d,double)'''
+    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: real)-> list :
+      '''                             '''
     ...
-    def getParamAtDist (self, *args, **kwargs)-> float :
-      '''getParamAtDist( (Curve)arg1, (float)arg2) -> float :
-
-    C++ signature :
-        double getParamAtDist(class PyDbCurve {lvalue},double)'''
+    def getParamAtDist (self: Curve,dist: real)-> float :
+      '''                             '''
     ...
-    def getParamAtPoint (self, *args, **kwargs)-> float :
-      '''getParamAtPoint( (Curve)arg1, (Point3d)arg2) -> float :
-
-    C++ signature :
-        double getParamAtPoint(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+      '''                             '''
     ...
     def getPlane (self: Entity)-> Plane :
       '''                             '''
@@ -10139,58 +10021,29 @@ getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def getPlotStyleNameId (self: Entity)-> ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self, *args, **kwargs)-> Point3d :
-      '''getPointAtDist( (Curve)arg1, (float)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getPointAtDist(class PyDbCurve {lvalue},double)'''
+    def getPointAtDist (self: Curve,dist: real)-> Point3d :
+      '''                             '''
     ...
-    def getPointAtParam (self, *args, **kwargs)-> Point3d :
-      '''getPointAtParam( (Curve)arg1, (float)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getPointAtParam(class PyDbCurve {lvalue},double)'''
+    def getPointAtParam (self: Curve,param: real)-> Point3d :
+      '''                             '''
     ...
-    def getSecondDeriv (self, *args, **kwargs)-> Vector3d :
-      '''getSecondDeriv( (Curve)arg1, (float)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getSecondDeriv(class PyDbCurve {lvalue},double)
-
-getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getSecondDeriv(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getSecondDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+      '''                             '''
     ...
-    def getSplitCurves (self, *args, **kwargs)-> list :
-      '''getSplitCurves( (Curve)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSplitCurves(class PyDbCurve {lvalue},class boost::python::list)'''
+    def getSplitCurves (self: Curve,params: list)-> list :
+      '''                             '''
     ...
-    def getSplitCurvesAtParams (self, *args, **kwargs)-> list :
-      '''getSplitCurvesAtParams( (Curve)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSplitCurvesAtParams(class PyDbCurve {lvalue},class boost::python::list)'''
+    def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+      '''                             '''
     ...
-    def getSplitCurvesAtPoints (self, *args, **kwargs)-> list :
-      '''getSplitCurvesAtPoints( (Curve)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSplitCurvesAtPoints(class PyDbCurve {lvalue},class boost::python::list)'''
+    def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
+      '''                             '''
     ...
-    def getStartParam (self, *args, **kwargs)-> float :
-      '''getStartParam( (Curve)arg1) -> float :
-
-    C++ signature :
-        double getStartParam(class PyDbCurve {lvalue})'''
+    def getStartParam (self: Curve)-> float :
+      '''                             '''
     ...
-    def getStartPoint (self, *args, **kwargs)-> Point3d :
-      '''getStartPoint( (Curve)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getStartPoint(class PyDbCurve {lvalue})'''
+    def getStartPoint (self: Curve)-> Point3d :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -10222,11 +10075,8 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Curve)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyDbCurve {lvalue})'''
+    def isClosed (self: Curve)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -10258,11 +10108,8 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     C++ signature :
         bool isNullObj(class PyRxObject {lvalue})'''
     ...
-    def isPeriodic (self, *args, **kwargs)-> bool :
-      '''isPeriodic( (Curve)arg1) -> bool :
-
-    C++ signature :
-        bool isPeriodic(class PyDbCurve {lvalue})'''
+    def isPeriodic (self: Curve)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -10360,11 +10207,8 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def reverseCurve (self, *args, **kwargs)-> None :
-      '''reverseCurve( (Curve)arg1) -> None :
-
-    C++ signature :
-        void reverseCurve(class PyDbCurve {lvalue})'''
+    def reverseCurve (self: Curve)-> None :
+      '''                             '''
     ...
     def rolloverHit (self, *args, **kwargs)-> bool :
       '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
@@ -10492,7 +10336,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         double thickness(class PyDbCircle {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -11387,16 +11231,8 @@ wcs2Ecs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
     ...
 
 class Curve:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self: Curve,id: ObjectId,mode: OpenMode=kForRead)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
@@ -11505,52 +11341,29 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getArea (self, *args, **kwargs)-> float :
-      '''getArea( (Curve)arg1) -> float :
-
-    C++ signature :
-        double getArea(class PyDbCurve {lvalue})'''
-    ...
-    def getClosestPointTo (self, *args, **kwargs)-> Point3d :
-      '''getClosestPointTo( (Curve)arg1, (Point3d)arg2, (bool)arg3) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getClosestPointTo(class PyDbCurve {lvalue},class AcGePoint3d,bool)
-
-getClosestPointTo( (Curve)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getClosestPointTo(class PyDbCurve {lvalue},class AcGePoint3d,class AcGeVector3d,bool)'''
-    ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getArea (self: Curve)-> float :
       '''                             '''
     ...
-    def getDistAtParam (self, *args, **kwargs)-> float :
-      '''getDistAtParam( (Curve)arg1, (float)arg2) -> float :
-
-    C++ signature :
-        double getDistAtParam(class PyDbCurve {lvalue},double)'''
-    ...
-    def getDistAtPoint (self, *args, **kwargs)-> float :
-      '''getDistAtPoint( (Curve)arg1, (Point3d)arg2) -> float :
-
-    C++ signature :
-        double getDistAtPoint(class PyDbCurve {lvalue},class AcGePoint3d)'''
-    ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extent: bool=False)-> Point3d :
       '''                             '''
     ...
-    def getEndParam (self, *args, **kwargs)-> float :
-      '''getEndParam( (Curve)arg1) -> float :
-
-    C++ signature :
-        double getEndParam(class PyDbCurve {lvalue})'''
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+      '''                             '''
     ...
-    def getEndPoint (self, *args, **kwargs)-> Point3d :
-      '''getEndPoint( (Curve)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getEndPoint(class PyDbCurve {lvalue})'''
+    def getDistAtParam (self: Curve,param: real)-> float :
+      '''                             '''
+    ...
+    def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+      '''                             '''
+    ...
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def getEndParam (self: Curve)-> float :
+      '''                             '''
+    ...
+    def getEndPoint (self: Curve)-> Point3d :
+      '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
       '''                             '''
@@ -11558,16 +11371,8 @@ getClosestPointTo( (Curve)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4) -> Po
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self, *args, **kwargs)-> Vector3d :
-      '''getFirstDeriv( (Curve)arg1, (float)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getFirstDeriv(class PyDbCurve {lvalue},double)
-
-getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getFirstDeriv(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getFirstDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+      '''                             '''
     ...
     def getGeomExtents (self: Entity,extents: Extents)-> None :
       '''                             '''
@@ -11575,29 +11380,17 @@ getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self, *args, **kwargs)-> list :
-      '''getOffsetCurves( (Curve)arg1, (float)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getOffsetCurves(class PyDbCurve {lvalue},double)'''
+    def getOffsetCurves (self: Curve,dist: real)-> list :
+      '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self, *args, **kwargs)-> list :
-      '''getOffsetCurvesGivenPlaneNormal( (Curve)arg1, (Vector3d)arg2, (float)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list getOffsetCurvesGivenPlaneNormal(class PyDbCurve {lvalue},class AcGeVector3d,double)'''
+    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: real)-> list :
+      '''                             '''
     ...
-    def getParamAtDist (self, *args, **kwargs)-> float :
-      '''getParamAtDist( (Curve)arg1, (float)arg2) -> float :
-
-    C++ signature :
-        double getParamAtDist(class PyDbCurve {lvalue},double)'''
+    def getParamAtDist (self: Curve,dist: real)-> float :
+      '''                             '''
     ...
-    def getParamAtPoint (self, *args, **kwargs)-> float :
-      '''getParamAtPoint( (Curve)arg1, (Point3d)arg2) -> float :
-
-    C++ signature :
-        double getParamAtPoint(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+      '''                             '''
     ...
     def getPlane (self: Entity)-> Plane :
       '''                             '''
@@ -11605,58 +11398,29 @@ getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def getPlotStyleNameId (self: Entity)-> ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self, *args, **kwargs)-> Point3d :
-      '''getPointAtDist( (Curve)arg1, (float)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getPointAtDist(class PyDbCurve {lvalue},double)'''
+    def getPointAtDist (self: Curve,dist: real)-> Point3d :
+      '''                             '''
     ...
-    def getPointAtParam (self, *args, **kwargs)-> Point3d :
-      '''getPointAtParam( (Curve)arg1, (float)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getPointAtParam(class PyDbCurve {lvalue},double)'''
+    def getPointAtParam (self: Curve,param: real)-> Point3d :
+      '''                             '''
     ...
-    def getSecondDeriv (self, *args, **kwargs)-> Vector3d :
-      '''getSecondDeriv( (Curve)arg1, (float)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getSecondDeriv(class PyDbCurve {lvalue},double)
-
-getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getSecondDeriv(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getSecondDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+      '''                             '''
     ...
-    def getSplitCurves (self, *args, **kwargs)-> list :
-      '''getSplitCurves( (Curve)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSplitCurves(class PyDbCurve {lvalue},class boost::python::list)'''
+    def getSplitCurves (self: Curve,params: list)-> list :
+      '''                             '''
     ...
-    def getSplitCurvesAtParams (self, *args, **kwargs)-> list :
-      '''getSplitCurvesAtParams( (Curve)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSplitCurvesAtParams(class PyDbCurve {lvalue},class boost::python::list)'''
+    def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+      '''                             '''
     ...
-    def getSplitCurvesAtPoints (self, *args, **kwargs)-> list :
-      '''getSplitCurvesAtPoints( (Curve)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSplitCurvesAtPoints(class PyDbCurve {lvalue},class boost::python::list)'''
+    def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
+      '''                             '''
     ...
-    def getStartParam (self, *args, **kwargs)-> float :
-      '''getStartParam( (Curve)arg1) -> float :
-
-    C++ signature :
-        double getStartParam(class PyDbCurve {lvalue})'''
+    def getStartParam (self: Curve)-> float :
+      '''                             '''
     ...
-    def getStartPoint (self, *args, **kwargs)-> Point3d :
-      '''getStartPoint( (Curve)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getStartPoint(class PyDbCurve {lvalue})'''
+    def getStartPoint (self: Curve)-> Point3d :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -11688,11 +11452,8 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Curve)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyDbCurve {lvalue})'''
+    def isClosed (self: Curve)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -11724,11 +11485,8 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     C++ signature :
         bool isNullObj(class PyRxObject {lvalue})'''
     ...
-    def isPeriodic (self, *args, **kwargs)-> bool :
-      '''isPeriodic( (Curve)arg1) -> bool :
-
-    C++ signature :
-        bool isPeriodic(class PyDbCurve {lvalue})'''
+    def isPeriodic (self: Curve)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -11814,11 +11572,8 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def reverseCurve (self, *args, **kwargs)-> None :
-      '''reverseCurve( (Curve)arg1) -> None :
-
-    C++ signature :
-        void reverseCurve(class PyDbCurve {lvalue})'''
+    def reverseCurve (self: Curve)-> None :
+      '''                             '''
     ...
     def rolloverHit (self, *args, **kwargs)-> bool :
       '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
@@ -11904,7 +11659,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -15274,7 +15029,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getDimstyleData (self, *args, **kwargs)-> DimStyleTableRecord :
@@ -15283,7 +15038,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -16064,7 +15819,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         bool toleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -17423,7 +17178,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getDimstyleData (self, *args, **kwargs)-> DimStyleTableRecord :
@@ -17432,7 +17187,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -18177,7 +17932,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         bool toleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -19884,10 +19639,10 @@ class Entity:
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -20136,7 +19891,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -22527,10 +22282,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -22779,7 +22534,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -22954,10 +22709,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -23241,7 +22996,7 @@ setVertexAt( (Face)arg1, (int)arg2, (Point3d)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -23401,10 +23156,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -23683,7 +23438,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -23903,7 +23658,7 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     C++ signature :
         class boost::python::list getBoundingPoints(class PyDbFcf {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getDimstyleData (self, *args, **kwargs)-> DimStyleTableRecord :
@@ -23912,7 +23667,7 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     C++ signature :
         class PyDbDimStyleTableRecord getDimstyleData(class PyDbFcf {lvalue})'''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -24262,7 +24017,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > textAll(class PyDbFcf {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -26239,10 +25994,10 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     C++ signature :
         class boost::python::list getAssocObjIdsAt(class PyDbHatch {lvalue},int)'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -26815,7 +26570,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -27809,10 +27564,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -28061,7 +27816,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -30640,52 +30395,29 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     C++ signature :
         class AcGePoint3d firstVertex(class PyDbLeader {lvalue})'''
     ...
-    def getArea (self, *args, **kwargs)-> float :
-      '''getArea( (Curve)arg1) -> float :
-
-    C++ signature :
-        double getArea(class PyDbCurve {lvalue})'''
-    ...
-    def getClosestPointTo (self, *args, **kwargs)-> Point3d :
-      '''getClosestPointTo( (Curve)arg1, (Point3d)arg2, (bool)arg3) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getClosestPointTo(class PyDbCurve {lvalue},class AcGePoint3d,bool)
-
-getClosestPointTo( (Curve)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getClosestPointTo(class PyDbCurve {lvalue},class AcGePoint3d,class AcGeVector3d,bool)'''
-    ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getArea (self: Curve)-> float :
       '''                             '''
     ...
-    def getDistAtParam (self, *args, **kwargs)-> float :
-      '''getDistAtParam( (Curve)arg1, (float)arg2) -> float :
-
-    C++ signature :
-        double getDistAtParam(class PyDbCurve {lvalue},double)'''
-    ...
-    def getDistAtPoint (self, *args, **kwargs)-> float :
-      '''getDistAtPoint( (Curve)arg1, (Point3d)arg2) -> float :
-
-    C++ signature :
-        double getDistAtPoint(class PyDbCurve {lvalue},class AcGePoint3d)'''
-    ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extent: bool=False)-> Point3d :
       '''                             '''
     ...
-    def getEndParam (self, *args, **kwargs)-> float :
-      '''getEndParam( (Curve)arg1) -> float :
-
-    C++ signature :
-        double getEndParam(class PyDbCurve {lvalue})'''
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+      '''                             '''
     ...
-    def getEndPoint (self, *args, **kwargs)-> Point3d :
-      '''getEndPoint( (Curve)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getEndPoint(class PyDbCurve {lvalue})'''
+    def getDistAtParam (self: Curve,param: real)-> float :
+      '''                             '''
+    ...
+    def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+      '''                             '''
+    ...
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def getEndParam (self: Curve)-> float :
+      '''                             '''
+    ...
+    def getEndPoint (self: Curve)-> Point3d :
+      '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
       '''                             '''
@@ -30693,16 +30425,8 @@ getClosestPointTo( (Curve)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4) -> Po
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self, *args, **kwargs)-> Vector3d :
-      '''getFirstDeriv( (Curve)arg1, (float)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getFirstDeriv(class PyDbCurve {lvalue},double)
-
-getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getFirstDeriv(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getFirstDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+      '''                             '''
     ...
     def getGeomExtents (self: Entity,extents: Extents)-> None :
       '''                             '''
@@ -30710,29 +30434,17 @@ getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self, *args, **kwargs)-> list :
-      '''getOffsetCurves( (Curve)arg1, (float)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getOffsetCurves(class PyDbCurve {lvalue},double)'''
+    def getOffsetCurves (self: Curve,dist: real)-> list :
+      '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self, *args, **kwargs)-> list :
-      '''getOffsetCurvesGivenPlaneNormal( (Curve)arg1, (Vector3d)arg2, (float)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list getOffsetCurvesGivenPlaneNormal(class PyDbCurve {lvalue},class AcGeVector3d,double)'''
+    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: real)-> list :
+      '''                             '''
     ...
-    def getParamAtDist (self, *args, **kwargs)-> float :
-      '''getParamAtDist( (Curve)arg1, (float)arg2) -> float :
-
-    C++ signature :
-        double getParamAtDist(class PyDbCurve {lvalue},double)'''
+    def getParamAtDist (self: Curve,dist: real)-> float :
+      '''                             '''
     ...
-    def getParamAtPoint (self, *args, **kwargs)-> float :
-      '''getParamAtPoint( (Curve)arg1, (Point3d)arg2) -> float :
-
-    C++ signature :
-        double getParamAtPoint(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+      '''                             '''
     ...
     def getPlane (self: Entity)-> Plane :
       '''                             '''
@@ -30740,58 +30452,29 @@ getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def getPlotStyleNameId (self: Entity)-> ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self, *args, **kwargs)-> Point3d :
-      '''getPointAtDist( (Curve)arg1, (float)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getPointAtDist(class PyDbCurve {lvalue},double)'''
+    def getPointAtDist (self: Curve,dist: real)-> Point3d :
+      '''                             '''
     ...
-    def getPointAtParam (self, *args, **kwargs)-> Point3d :
-      '''getPointAtParam( (Curve)arg1, (float)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getPointAtParam(class PyDbCurve {lvalue},double)'''
+    def getPointAtParam (self: Curve,param: real)-> Point3d :
+      '''                             '''
     ...
-    def getSecondDeriv (self, *args, **kwargs)-> Vector3d :
-      '''getSecondDeriv( (Curve)arg1, (float)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getSecondDeriv(class PyDbCurve {lvalue},double)
-
-getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getSecondDeriv(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getSecondDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+      '''                             '''
     ...
-    def getSplitCurves (self, *args, **kwargs)-> list :
-      '''getSplitCurves( (Curve)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSplitCurves(class PyDbCurve {lvalue},class boost::python::list)'''
+    def getSplitCurves (self: Curve,params: list)-> list :
+      '''                             '''
     ...
-    def getSplitCurvesAtParams (self, *args, **kwargs)-> list :
-      '''getSplitCurvesAtParams( (Curve)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSplitCurvesAtParams(class PyDbCurve {lvalue},class boost::python::list)'''
+    def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+      '''                             '''
     ...
-    def getSplitCurvesAtPoints (self, *args, **kwargs)-> list :
-      '''getSplitCurvesAtPoints( (Curve)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSplitCurvesAtPoints(class PyDbCurve {lvalue},class boost::python::list)'''
+    def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
+      '''                             '''
     ...
-    def getStartParam (self, *args, **kwargs)-> float :
-      '''getStartParam( (Curve)arg1) -> float :
-
-    C++ signature :
-        double getStartParam(class PyDbCurve {lvalue})'''
+    def getStartParam (self: Curve)-> float :
+      '''                             '''
     ...
-    def getStartPoint (self, *args, **kwargs)-> Point3d :
-      '''getStartPoint( (Curve)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getStartPoint(class PyDbCurve {lvalue})'''
+    def getStartPoint (self: Curve)-> Point3d :
+      '''                             '''
     ...
     def goodbye (self, *args, **kwargs)-> None :
       '''goodbye( (Leader)arg1, (DbObject)arg2) -> None :
@@ -30841,11 +30524,8 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Curve)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyDbCurve {lvalue})'''
+    def isClosed (self: Curve)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -30877,11 +30557,8 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     C++ signature :
         bool isNullObj(class PyRxObject {lvalue})'''
     ...
-    def isPeriodic (self, *args, **kwargs)-> bool :
-      '''isPeriodic( (Curve)arg1) -> bool :
-
-    C++ signature :
-        bool isPeriodic(class PyDbCurve {lvalue})'''
+    def isPeriodic (self: Curve)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -31003,11 +30680,8 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def reverseCurve (self, *args, **kwargs)-> None :
-      '''reverseCurve( (Curve)arg1) -> None :
-
-    C++ signature :
-        void reverseCurve(class PyDbCurve {lvalue})'''
+    def reverseCurve (self: Curve)-> None :
+      '''                             '''
     ...
     def rolloverHit (self, *args, **kwargs)-> bool :
       '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
@@ -31226,7 +30900,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -31409,52 +31083,29 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getArea (self, *args, **kwargs)-> float :
-      '''getArea( (Curve)arg1) -> float :
-
-    C++ signature :
-        double getArea(class PyDbCurve {lvalue})'''
-    ...
-    def getClosestPointTo (self, *args, **kwargs)-> Point3d :
-      '''getClosestPointTo( (Curve)arg1, (Point3d)arg2, (bool)arg3) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getClosestPointTo(class PyDbCurve {lvalue},class AcGePoint3d,bool)
-
-getClosestPointTo( (Curve)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getClosestPointTo(class PyDbCurve {lvalue},class AcGePoint3d,class AcGeVector3d,bool)'''
-    ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getArea (self: Curve)-> float :
       '''                             '''
     ...
-    def getDistAtParam (self, *args, **kwargs)-> float :
-      '''getDistAtParam( (Curve)arg1, (float)arg2) -> float :
-
-    C++ signature :
-        double getDistAtParam(class PyDbCurve {lvalue},double)'''
-    ...
-    def getDistAtPoint (self, *args, **kwargs)-> float :
-      '''getDistAtPoint( (Curve)arg1, (Point3d)arg2) -> float :
-
-    C++ signature :
-        double getDistAtPoint(class PyDbCurve {lvalue},class AcGePoint3d)'''
-    ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extent: bool=False)-> Point3d :
       '''                             '''
     ...
-    def getEndParam (self, *args, **kwargs)-> float :
-      '''getEndParam( (Curve)arg1) -> float :
-
-    C++ signature :
-        double getEndParam(class PyDbCurve {lvalue})'''
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+      '''                             '''
     ...
-    def getEndPoint (self, *args, **kwargs)-> Point3d :
-      '''getEndPoint( (Curve)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getEndPoint(class PyDbCurve {lvalue})'''
+    def getDistAtParam (self: Curve,param: real)-> float :
+      '''                             '''
+    ...
+    def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+      '''                             '''
+    ...
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def getEndParam (self: Curve)-> float :
+      '''                             '''
+    ...
+    def getEndPoint (self: Curve)-> Point3d :
+      '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
       '''                             '''
@@ -31462,16 +31113,8 @@ getClosestPointTo( (Curve)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4) -> Po
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self, *args, **kwargs)-> Vector3d :
-      '''getFirstDeriv( (Curve)arg1, (float)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getFirstDeriv(class PyDbCurve {lvalue},double)
-
-getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getFirstDeriv(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getFirstDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+      '''                             '''
     ...
     def getGeomExtents (self: Entity,extents: Extents)-> None :
       '''                             '''
@@ -31479,11 +31122,8 @@ getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self, *args, **kwargs)-> list :
-      '''getOffsetCurves( (Curve)arg1, (float)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getOffsetCurves(class PyDbCurve {lvalue},double)'''
+    def getOffsetCurves (self: Curve,dist: real)-> list :
+      '''                             '''
     ...
     def getOffsetCurvesGivenPlaneNormal (self, *args, **kwargs)-> list :
       '''getOffsetCurvesGivenPlaneNormal( (Line)arg1, (Vector3d)arg2, (float)arg3) -> list :
@@ -31491,17 +31131,11 @@ getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     C++ signature :
         class boost::python::list getOffsetCurvesGivenPlaneNormal(class PyDbLine {lvalue},class AcGeVector3d,double)'''
     ...
-    def getParamAtDist (self, *args, **kwargs)-> float :
-      '''getParamAtDist( (Curve)arg1, (float)arg2) -> float :
-
-    C++ signature :
-        double getParamAtDist(class PyDbCurve {lvalue},double)'''
+    def getParamAtDist (self: Curve,dist: real)-> float :
+      '''                             '''
     ...
-    def getParamAtPoint (self, *args, **kwargs)-> float :
-      '''getParamAtPoint( (Curve)arg1, (Point3d)arg2) -> float :
-
-    C++ signature :
-        double getParamAtPoint(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+      '''                             '''
     ...
     def getPlane (self: Entity)-> Plane :
       '''                             '''
@@ -31509,58 +31143,29 @@ getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def getPlotStyleNameId (self: Entity)-> ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self, *args, **kwargs)-> Point3d :
-      '''getPointAtDist( (Curve)arg1, (float)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getPointAtDist(class PyDbCurve {lvalue},double)'''
+    def getPointAtDist (self: Curve,dist: real)-> Point3d :
+      '''                             '''
     ...
-    def getPointAtParam (self, *args, **kwargs)-> Point3d :
-      '''getPointAtParam( (Curve)arg1, (float)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getPointAtParam(class PyDbCurve {lvalue},double)'''
+    def getPointAtParam (self: Curve,param: real)-> Point3d :
+      '''                             '''
     ...
-    def getSecondDeriv (self, *args, **kwargs)-> Vector3d :
-      '''getSecondDeriv( (Curve)arg1, (float)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getSecondDeriv(class PyDbCurve {lvalue},double)
-
-getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getSecondDeriv(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getSecondDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+      '''                             '''
     ...
-    def getSplitCurves (self, *args, **kwargs)-> list :
-      '''getSplitCurves( (Curve)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSplitCurves(class PyDbCurve {lvalue},class boost::python::list)'''
+    def getSplitCurves (self: Curve,params: list)-> list :
+      '''                             '''
     ...
-    def getSplitCurvesAtParams (self, *args, **kwargs)-> list :
-      '''getSplitCurvesAtParams( (Curve)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSplitCurvesAtParams(class PyDbCurve {lvalue},class boost::python::list)'''
+    def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+      '''                             '''
     ...
-    def getSplitCurvesAtPoints (self, *args, **kwargs)-> list :
-      '''getSplitCurvesAtPoints( (Curve)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSplitCurvesAtPoints(class PyDbCurve {lvalue},class boost::python::list)'''
+    def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
+      '''                             '''
     ...
-    def getStartParam (self, *args, **kwargs)-> float :
-      '''getStartParam( (Curve)arg1) -> float :
-
-    C++ signature :
-        double getStartParam(class PyDbCurve {lvalue})'''
+    def getStartParam (self: Curve)-> float :
+      '''                             '''
     ...
-    def getStartPoint (self, *args, **kwargs)-> Point3d :
-      '''getStartPoint( (Curve)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getStartPoint(class PyDbCurve {lvalue})'''
+    def getStartPoint (self: Curve)-> Point3d :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -31592,11 +31197,8 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Curve)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyDbCurve {lvalue})'''
+    def isClosed (self: Curve)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -31628,11 +31230,8 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     C++ signature :
         bool isNullObj(class PyRxObject {lvalue})'''
     ...
-    def isPeriodic (self, *args, **kwargs)-> bool :
-      '''isPeriodic( (Curve)arg1) -> bool :
-
-    C++ signature :
-        bool isPeriodic(class PyDbCurve {lvalue})'''
+    def isPeriodic (self: Curve)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -31724,11 +31323,8 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def reverseCurve (self, *args, **kwargs)-> None :
-      '''reverseCurve( (Curve)arg1) -> None :
-
-    C++ signature :
-        void reverseCurve(class PyDbCurve {lvalue})'''
+    def reverseCurve (self: Curve)-> None :
+      '''                             '''
     ...
     def rolloverHit (self, *args, **kwargs)-> bool :
       '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
@@ -31850,7 +31446,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         double thickness(class PyDbLine {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -32193,7 +31789,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getDimstyleData (self, *args, **kwargs)-> DimStyleTableRecord :
@@ -32202,7 +31798,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -32983,7 +32579,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         bool toleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -34230,10 +33826,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -34482,7 +34078,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -34695,10 +34291,10 @@ geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
     C++ signature :
         class AcDbExtents geomExtentsBestFit(class PyDbBlockReference {lvalue},class AcGeMatrix3d)'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -35055,7 +34651,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def treatAsAcDbBlockRefForExplode (self, *args, **kwargs)-> bool :
@@ -35370,7 +34966,7 @@ getBlockAttributeValue( (MLeader)arg1, (ObjectId)arg2) -> str :
     C++ signature :
         class AcGePoint3d getBlockPosition(class PyDbMLeader {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getContentGeomExtents (self, *args, **kwargs)-> Extents :
@@ -35391,7 +34987,7 @@ getBlockAttributeValue( (MLeader)arg1, (ObjectId)arg2) -> str :
     C++ signature :
         double getDoglegLength(class PyDbMLeader {lvalue},int)'''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -36203,7 +35799,7 @@ textAttachmentType( (MLeader)arg1, (MLeaderLeaderDirectionType)arg2) -> MLeaderT
     C++ signature :
         class PyDbObjectId textStyleId(class PyDbMLeader {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def updateLeaderLinePosition (self, *args, **kwargs)-> None :
@@ -38923,10 +38519,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         double getColumnWidth(class PyDbMText {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -39409,7 +39005,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         class PyDbObjectId textStyle(class PyDbMText {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -40313,10 +39909,10 @@ getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4, (bool
     C++ signature :
         class AcGePoint3d getClosestPointTo(class PyDbMline {lvalue},class AcGePoint3d,class AcGeVector3d,bool,bool)'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -40670,7 +40266,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -41431,10 +41027,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -41683,7 +41279,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -42293,7 +41889,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getDimstyleData (self, *args, **kwargs)-> DimStyleTableRecord :
@@ -42302,7 +41898,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -43101,7 +42697,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         bool toleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -43799,10 +43395,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void generateClipBoundaryFromPline(class PyDbUnderlayReference {lvalue},class PyDbObjectId {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -44237,7 +43833,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         class AcGeMatrix3d transform(class PyDbUnderlayReference {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def underlayLayerCount (self, *args, **kwargs)-> int :
@@ -44529,10 +44125,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -44781,7 +44377,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -46005,10 +45601,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -46299,7 +45895,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         double thickness(class PyDbPoint {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -46648,7 +46244,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getDimstyleData (self, *args, **kwargs)-> DimStyleTableRecord :
@@ -46657,7 +46253,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -47432,7 +47028,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         bool toleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -47869,10 +47465,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -48133,7 +47729,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -48293,10 +47889,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -48557,7 +48153,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -48763,11 +48359,8 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     C++ signature :
         class PyGeCircArc3d getArcSeg3dAt(class PyDbPolyline {lvalue},unsigned int)'''
     ...
-    def getArea (self, *args, **kwargs)-> float :
-      '''getArea( (Curve)arg1) -> float :
-
-    C++ signature :
-        double getArea(class PyDbCurve {lvalue})'''
+    def getArea (self: Curve)-> float :
+      '''                             '''
     ...
     def getBulgeAt (self, *args, **kwargs)-> float :
       '''getBulgeAt( (Polyline)arg1, (SubentType)arg2) -> float :
@@ -48775,18 +48368,10 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     C++ signature :
         double getBulgeAt(class PyDbPolyline {lvalue},unsigned int)'''
     ...
-    def getClosestPointTo (self, *args, **kwargs)-> Point3d :
-      '''getClosestPointTo( (Curve)arg1, (Point3d)arg2, (bool)arg3) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getClosestPointTo(class PyDbCurve {lvalue},class AcGePoint3d,bool)
-
-getClosestPointTo( (Curve)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getClosestPointTo(class PyDbCurve {lvalue},class AcGePoint3d,class AcGeVector3d,bool)'''
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extent: bool=False)-> Point3d :
+      '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getConstantWidth (self, *args, **kwargs)-> float :
@@ -48795,17 +48380,11 @@ getClosestPointTo( (Curve)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4) -> Po
     C++ signature :
         double getConstantWidth(class PyDbPolyline {lvalue})'''
     ...
-    def getDistAtParam (self, *args, **kwargs)-> float :
-      '''getDistAtParam( (Curve)arg1, (float)arg2) -> float :
-
-    C++ signature :
-        double getDistAtParam(class PyDbCurve {lvalue},double)'''
+    def getDistAtParam (self: Curve,param: real)-> float :
+      '''                             '''
     ...
-    def getDistAtPoint (self, *args, **kwargs)-> float :
-      '''getDistAtPoint( (Curve)arg1, (Point3d)arg2) -> float :
-
-    C++ signature :
-        double getDistAtPoint(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+      '''                             '''
     ...
     def getEcs (self, *args, **kwargs)-> None :
       '''getEcs( (Polyline)arg1, (Matrix3d)arg2) -> None :
@@ -48818,17 +48397,11 @@ getEcs( (Polyline)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void getEcs(class PyDbPolyline {lvalue},class AcGeMatrix3d {lvalue})'''
     ...
-    def getEndParam (self, *args, **kwargs)-> float :
-      '''getEndParam( (Curve)arg1) -> float :
-
-    C++ signature :
-        double getEndParam(class PyDbCurve {lvalue})'''
+    def getEndParam (self: Curve)-> float :
+      '''                             '''
     ...
-    def getEndPoint (self, *args, **kwargs)-> Point3d :
-      '''getEndPoint( (Curve)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getEndPoint(class PyDbCurve {lvalue})'''
+    def getEndPoint (self: Curve)-> Point3d :
+      '''                             '''
     ...
     def getEndWidthAt (self, *args, **kwargs)-> float :
       '''getEndWidthAt( (Polyline)arg1, (SubentType)arg2) -> float :
@@ -48842,16 +48415,8 @@ getEcs( (Polyline)arg1, (Matrix3d)arg2) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self, *args, **kwargs)-> Vector3d :
-      '''getFirstDeriv( (Curve)arg1, (float)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getFirstDeriv(class PyDbCurve {lvalue},double)
-
-getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getFirstDeriv(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getFirstDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+      '''                             '''
     ...
     def getGeomExtents (self: Entity,extents: Extents)-> None :
       '''                             '''
@@ -48871,29 +48436,17 @@ getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     C++ signature :
         class PyGeLineSeg3d getLineSeg3dAt(class PyDbPolyline {lvalue},unsigned int)'''
     ...
-    def getOffsetCurves (self, *args, **kwargs)-> list :
-      '''getOffsetCurves( (Curve)arg1, (float)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getOffsetCurves(class PyDbCurve {lvalue},double)'''
+    def getOffsetCurves (self: Curve,dist: real)-> list :
+      '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self, *args, **kwargs)-> list :
-      '''getOffsetCurvesGivenPlaneNormal( (Curve)arg1, (Vector3d)arg2, (float)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list getOffsetCurvesGivenPlaneNormal(class PyDbCurve {lvalue},class AcGeVector3d,double)'''
+    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: real)-> list :
+      '''                             '''
     ...
-    def getParamAtDist (self, *args, **kwargs)-> float :
-      '''getParamAtDist( (Curve)arg1, (float)arg2) -> float :
-
-    C++ signature :
-        double getParamAtDist(class PyDbCurve {lvalue},double)'''
+    def getParamAtDist (self: Curve,dist: real)-> float :
+      '''                             '''
     ...
-    def getParamAtPoint (self, *args, **kwargs)-> float :
-      '''getParamAtPoint( (Curve)arg1, (Point3d)arg2) -> float :
-
-    C++ signature :
-        double getParamAtPoint(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+      '''                             '''
     ...
     def getPlane (self: Entity)-> Plane :
       '''                             '''
@@ -48913,58 +48466,29 @@ getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     C++ signature :
         class AcGePoint3d getPoint3dAt(class PyDbPolyline {lvalue},unsigned int)'''
     ...
-    def getPointAtDist (self, *args, **kwargs)-> Point3d :
-      '''getPointAtDist( (Curve)arg1, (float)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getPointAtDist(class PyDbCurve {lvalue},double)'''
+    def getPointAtDist (self: Curve,dist: real)-> Point3d :
+      '''                             '''
     ...
-    def getPointAtParam (self, *args, **kwargs)-> Point3d :
-      '''getPointAtParam( (Curve)arg1, (float)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getPointAtParam(class PyDbCurve {lvalue},double)'''
+    def getPointAtParam (self: Curve,param: real)-> Point3d :
+      '''                             '''
     ...
-    def getSecondDeriv (self, *args, **kwargs)-> Vector3d :
-      '''getSecondDeriv( (Curve)arg1, (float)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getSecondDeriv(class PyDbCurve {lvalue},double)
-
-getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getSecondDeriv(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getSecondDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+      '''                             '''
     ...
-    def getSplitCurves (self, *args, **kwargs)-> list :
-      '''getSplitCurves( (Curve)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSplitCurves(class PyDbCurve {lvalue},class boost::python::list)'''
+    def getSplitCurves (self: Curve,params: list)-> list :
+      '''                             '''
     ...
-    def getSplitCurvesAtParams (self, *args, **kwargs)-> list :
-      '''getSplitCurvesAtParams( (Curve)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSplitCurvesAtParams(class PyDbCurve {lvalue},class boost::python::list)'''
+    def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+      '''                             '''
     ...
-    def getSplitCurvesAtPoints (self, *args, **kwargs)-> list :
-      '''getSplitCurvesAtPoints( (Curve)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSplitCurvesAtPoints(class PyDbCurve {lvalue},class boost::python::list)'''
+    def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
+      '''                             '''
     ...
-    def getStartParam (self, *args, **kwargs)-> float :
-      '''getStartParam( (Curve)arg1) -> float :
-
-    C++ signature :
-        double getStartParam(class PyDbCurve {lvalue})'''
+    def getStartParam (self: Curve)-> float :
+      '''                             '''
     ...
-    def getStartPoint (self, *args, **kwargs)-> Point3d :
-      '''getStartPoint( (Curve)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getStartPoint(class PyDbCurve {lvalue})'''
+    def getStartPoint (self: Curve)-> Point3d :
+      '''                             '''
     ...
     def getStartWidthAt (self, *args, **kwargs)-> float :
       '''getStartWidthAt( (Polyline)arg1, (SubentType)arg2) -> float :
@@ -49026,11 +48550,8 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Curve)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyDbCurve {lvalue})'''
+    def isClosed (self: Curve)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -49068,11 +48589,8 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     C++ signature :
         bool isOnlyLines(class PyDbPolyline {lvalue})'''
     ...
-    def isPeriodic (self, *args, **kwargs)-> bool :
-      '''isPeriodic( (Curve)arg1) -> bool :
-
-    C++ signature :
-        bool isPeriodic(class PyDbCurve {lvalue})'''
+    def isPeriodic (self: Curve)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -49206,11 +48724,8 @@ getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     C++ signature :
         void reset(class PyDbPolyline {lvalue},bool,unsigned int)'''
     ...
-    def reverseCurve (self, *args, **kwargs)-> None :
-      '''reverseCurve( (Curve)arg1) -> None :
-
-    C++ signature :
-        void reverseCurve(class PyDbCurve {lvalue})'''
+    def reverseCurve (self: Curve)-> None :
+      '''                             '''
     ...
     def rolloverHit (self, *args, **kwargs)-> bool :
       '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
@@ -49362,7 +48877,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         double thickness(class PyDbPolyline {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -49574,52 +49089,29 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getArea (self, *args, **kwargs)-> float :
-      '''getArea( (Curve)arg1) -> float :
-
-    C++ signature :
-        double getArea(class PyDbCurve {lvalue})'''
-    ...
-    def getClosestPointTo (self, *args, **kwargs)-> Point3d :
-      '''getClosestPointTo( (Curve)arg1, (Point3d)arg2, (bool)arg3) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getClosestPointTo(class PyDbCurve {lvalue},class AcGePoint3d,bool)
-
-getClosestPointTo( (Curve)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getClosestPointTo(class PyDbCurve {lvalue},class AcGePoint3d,class AcGeVector3d,bool)'''
-    ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getArea (self: Curve)-> float :
       '''                             '''
     ...
-    def getDistAtParam (self, *args, **kwargs)-> float :
-      '''getDistAtParam( (Curve)arg1, (float)arg2) -> float :
-
-    C++ signature :
-        double getDistAtParam(class PyDbCurve {lvalue},double)'''
-    ...
-    def getDistAtPoint (self, *args, **kwargs)-> float :
-      '''getDistAtPoint( (Curve)arg1, (Point3d)arg2) -> float :
-
-    C++ signature :
-        double getDistAtPoint(class PyDbCurve {lvalue},class AcGePoint3d)'''
-    ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extent: bool=False)-> Point3d :
       '''                             '''
     ...
-    def getEndParam (self, *args, **kwargs)-> float :
-      '''getEndParam( (Curve)arg1) -> float :
-
-    C++ signature :
-        double getEndParam(class PyDbCurve {lvalue})'''
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+      '''                             '''
     ...
-    def getEndPoint (self, *args, **kwargs)-> Point3d :
-      '''getEndPoint( (Curve)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getEndPoint(class PyDbCurve {lvalue})'''
+    def getDistAtParam (self: Curve,param: real)-> float :
+      '''                             '''
+    ...
+    def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+      '''                             '''
+    ...
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def getEndParam (self: Curve)-> float :
+      '''                             '''
+    ...
+    def getEndPoint (self: Curve)-> Point3d :
+      '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
       '''                             '''
@@ -49627,16 +49119,8 @@ getClosestPointTo( (Curve)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4) -> Po
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self, *args, **kwargs)-> Vector3d :
-      '''getFirstDeriv( (Curve)arg1, (float)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getFirstDeriv(class PyDbCurve {lvalue},double)
-
-getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getFirstDeriv(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getFirstDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+      '''                             '''
     ...
     def getGeomExtents (self: Entity,extents: Extents)-> None :
       '''                             '''
@@ -49644,29 +49128,17 @@ getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self, *args, **kwargs)-> list :
-      '''getOffsetCurves( (Curve)arg1, (float)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getOffsetCurves(class PyDbCurve {lvalue},double)'''
+    def getOffsetCurves (self: Curve,dist: real)-> list :
+      '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self, *args, **kwargs)-> list :
-      '''getOffsetCurvesGivenPlaneNormal( (Curve)arg1, (Vector3d)arg2, (float)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list getOffsetCurvesGivenPlaneNormal(class PyDbCurve {lvalue},class AcGeVector3d,double)'''
+    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: real)-> list :
+      '''                             '''
     ...
-    def getParamAtDist (self, *args, **kwargs)-> float :
-      '''getParamAtDist( (Curve)arg1, (float)arg2) -> float :
-
-    C++ signature :
-        double getParamAtDist(class PyDbCurve {lvalue},double)'''
+    def getParamAtDist (self: Curve,dist: real)-> float :
+      '''                             '''
     ...
-    def getParamAtPoint (self, *args, **kwargs)-> float :
-      '''getParamAtPoint( (Curve)arg1, (Point3d)arg2) -> float :
-
-    C++ signature :
-        double getParamAtPoint(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+      '''                             '''
     ...
     def getPlane (self: Entity)-> Plane :
       '''                             '''
@@ -49674,58 +49146,29 @@ getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def getPlotStyleNameId (self: Entity)-> ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self, *args, **kwargs)-> Point3d :
-      '''getPointAtDist( (Curve)arg1, (float)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getPointAtDist(class PyDbCurve {lvalue},double)'''
+    def getPointAtDist (self: Curve,dist: real)-> Point3d :
+      '''                             '''
     ...
-    def getPointAtParam (self, *args, **kwargs)-> Point3d :
-      '''getPointAtParam( (Curve)arg1, (float)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getPointAtParam(class PyDbCurve {lvalue},double)'''
+    def getPointAtParam (self: Curve,param: real)-> Point3d :
+      '''                             '''
     ...
-    def getSecondDeriv (self, *args, **kwargs)-> Vector3d :
-      '''getSecondDeriv( (Curve)arg1, (float)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getSecondDeriv(class PyDbCurve {lvalue},double)
-
-getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getSecondDeriv(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getSecondDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+      '''                             '''
     ...
-    def getSplitCurves (self, *args, **kwargs)-> list :
-      '''getSplitCurves( (Curve)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSplitCurves(class PyDbCurve {lvalue},class boost::python::list)'''
+    def getSplitCurves (self: Curve,params: list)-> list :
+      '''                             '''
     ...
-    def getSplitCurvesAtParams (self, *args, **kwargs)-> list :
-      '''getSplitCurvesAtParams( (Curve)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSplitCurvesAtParams(class PyDbCurve {lvalue},class boost::python::list)'''
+    def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+      '''                             '''
     ...
-    def getSplitCurvesAtPoints (self, *args, **kwargs)-> list :
-      '''getSplitCurvesAtPoints( (Curve)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSplitCurvesAtPoints(class PyDbCurve {lvalue},class boost::python::list)'''
+    def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
+      '''                             '''
     ...
-    def getStartParam (self, *args, **kwargs)-> float :
-      '''getStartParam( (Curve)arg1) -> float :
-
-    C++ signature :
-        double getStartParam(class PyDbCurve {lvalue})'''
+    def getStartParam (self: Curve)-> float :
+      '''                             '''
     ...
-    def getStartPoint (self, *args, **kwargs)-> Point3d :
-      '''getStartPoint( (Curve)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getStartPoint(class PyDbCurve {lvalue})'''
+    def getStartPoint (self: Curve)-> Point3d :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -49768,11 +49211,8 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Curve)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyDbCurve {lvalue})'''
+    def isClosed (self: Curve)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -49810,11 +49250,8 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     C++ signature :
         bool isNullObj(class PyRxObject {lvalue})'''
     ...
-    def isPeriodic (self, *args, **kwargs)-> bool :
-      '''isPeriodic( (Curve)arg1) -> bool :
-
-    C++ signature :
-        bool isPeriodic(class PyDbCurve {lvalue})'''
+    def isPeriodic (self: Curve)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -49948,11 +49385,8 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def reverseCurve (self, *args, **kwargs)-> None :
-      '''reverseCurve( (Curve)arg1) -> None :
-
-    C++ signature :
-        void reverseCurve(class PyDbCurve {lvalue})'''
+    def reverseCurve (self: Curve)-> None :
+      '''                             '''
     ...
     def rolloverHit (self, *args, **kwargs)-> bool :
       '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
@@ -50121,7 +49555,7 @@ splineFit( (Polyline2d)arg1, (Poly2dType)arg2, (DxfCode)arg3) -> None :
     C++ signature :
         double thickness(class PyDb2dPolyline {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -50321,52 +49755,29 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getArea (self, *args, **kwargs)-> float :
-      '''getArea( (Curve)arg1) -> float :
-
-    C++ signature :
-        double getArea(class PyDbCurve {lvalue})'''
-    ...
-    def getClosestPointTo (self, *args, **kwargs)-> Point3d :
-      '''getClosestPointTo( (Curve)arg1, (Point3d)arg2, (bool)arg3) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getClosestPointTo(class PyDbCurve {lvalue},class AcGePoint3d,bool)
-
-getClosestPointTo( (Curve)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getClosestPointTo(class PyDbCurve {lvalue},class AcGePoint3d,class AcGeVector3d,bool)'''
-    ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getArea (self: Curve)-> float :
       '''                             '''
     ...
-    def getDistAtParam (self, *args, **kwargs)-> float :
-      '''getDistAtParam( (Curve)arg1, (float)arg2) -> float :
-
-    C++ signature :
-        double getDistAtParam(class PyDbCurve {lvalue},double)'''
-    ...
-    def getDistAtPoint (self, *args, **kwargs)-> float :
-      '''getDistAtPoint( (Curve)arg1, (Point3d)arg2) -> float :
-
-    C++ signature :
-        double getDistAtPoint(class PyDbCurve {lvalue},class AcGePoint3d)'''
-    ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extent: bool=False)-> Point3d :
       '''                             '''
     ...
-    def getEndParam (self, *args, **kwargs)-> float :
-      '''getEndParam( (Curve)arg1) -> float :
-
-    C++ signature :
-        double getEndParam(class PyDbCurve {lvalue})'''
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+      '''                             '''
     ...
-    def getEndPoint (self, *args, **kwargs)-> Point3d :
-      '''getEndPoint( (Curve)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getEndPoint(class PyDbCurve {lvalue})'''
+    def getDistAtParam (self: Curve,param: real)-> float :
+      '''                             '''
+    ...
+    def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+      '''                             '''
+    ...
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+      '''                             '''
+    ...
+    def getEndParam (self: Curve)-> float :
+      '''                             '''
+    ...
+    def getEndPoint (self: Curve)-> Point3d :
+      '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
       '''                             '''
@@ -50374,16 +49785,8 @@ getClosestPointTo( (Curve)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4) -> Po
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getFirstDeriv (self, *args, **kwargs)-> Vector3d :
-      '''getFirstDeriv( (Curve)arg1, (float)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getFirstDeriv(class PyDbCurve {lvalue},double)
-
-getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getFirstDeriv(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getFirstDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+      '''                             '''
     ...
     def getGeomExtents (self: Entity,extents: Extents)-> None :
       '''                             '''
@@ -50391,29 +49794,17 @@ getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getOffsetCurves (self, *args, **kwargs)-> list :
-      '''getOffsetCurves( (Curve)arg1, (float)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getOffsetCurves(class PyDbCurve {lvalue},double)'''
+    def getOffsetCurves (self: Curve,dist: real)-> list :
+      '''                             '''
     ...
-    def getOffsetCurvesGivenPlaneNormal (self, *args, **kwargs)-> list :
-      '''getOffsetCurvesGivenPlaneNormal( (Curve)arg1, (Vector3d)arg2, (float)arg3) -> list :
-
-    C++ signature :
-        class boost::python::list getOffsetCurvesGivenPlaneNormal(class PyDbCurve {lvalue},class AcGeVector3d,double)'''
+    def getOffsetCurvesGivenPlaneNormal (self: Curve,normal: PyGe.Vector3d,dist: real)-> list :
+      '''                             '''
     ...
-    def getParamAtDist (self, *args, **kwargs)-> float :
-      '''getParamAtDist( (Curve)arg1, (float)arg2) -> float :
-
-    C++ signature :
-        double getParamAtDist(class PyDbCurve {lvalue},double)'''
+    def getParamAtDist (self: Curve,dist: real)-> float :
+      '''                             '''
     ...
-    def getParamAtPoint (self, *args, **kwargs)-> float :
-      '''getParamAtPoint( (Curve)arg1, (Point3d)arg2) -> float :
-
-    C++ signature :
-        double getParamAtPoint(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getParamAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
+      '''                             '''
     ...
     def getPlane (self: Entity)-> Plane :
       '''                             '''
@@ -50421,58 +49812,29 @@ getFirstDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
     def getPlotStyleNameId (self: Entity)-> ObjectId :
       '''                             '''
     ...
-    def getPointAtDist (self, *args, **kwargs)-> Point3d :
-      '''getPointAtDist( (Curve)arg1, (float)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getPointAtDist(class PyDbCurve {lvalue},double)'''
+    def getPointAtDist (self: Curve,dist: real)-> Point3d :
+      '''                             '''
     ...
-    def getPointAtParam (self, *args, **kwargs)-> Point3d :
-      '''getPointAtParam( (Curve)arg1, (float)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getPointAtParam(class PyDbCurve {lvalue},double)'''
+    def getPointAtParam (self: Curve,param: real)-> Point3d :
+      '''                             '''
     ...
-    def getSecondDeriv (self, *args, **kwargs)-> Vector3d :
-      '''getSecondDeriv( (Curve)arg1, (float)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getSecondDeriv(class PyDbCurve {lvalue},double)
-
-getSecondDeriv( (Curve)arg1, (Point3d)arg2) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d getSecondDeriv(class PyDbCurve {lvalue},class AcGePoint3d)'''
+    def getSecondDeriv (self: Curve,param: real|PyGe.Point3d)-> Vector3d :
+      '''                             '''
     ...
-    def getSplitCurves (self, *args, **kwargs)-> list :
-      '''getSplitCurves( (Curve)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSplitCurves(class PyDbCurve {lvalue},class boost::python::list)'''
+    def getSplitCurves (self: Curve,params: list)-> list :
+      '''                             '''
     ...
-    def getSplitCurvesAtParams (self, *args, **kwargs)-> list :
-      '''getSplitCurvesAtParams( (Curve)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSplitCurvesAtParams(class PyDbCurve {lvalue},class boost::python::list)'''
+    def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+      '''                             '''
     ...
-    def getSplitCurvesAtPoints (self, *args, **kwargs)-> list :
-      '''getSplitCurvesAtPoints( (Curve)arg1, (list)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getSplitCurvesAtPoints(class PyDbCurve {lvalue},class boost::python::list)'''
+    def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
+      '''                             '''
     ...
-    def getStartParam (self, *args, **kwargs)-> float :
-      '''getStartParam( (Curve)arg1) -> float :
-
-    C++ signature :
-        double getStartParam(class PyDbCurve {lvalue})'''
+    def getStartParam (self: Curve)-> float :
+      '''                             '''
     ...
-    def getStartPoint (self, *args, **kwargs)-> Point3d :
-      '''getStartPoint( (Curve)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d getStartPoint(class PyDbCurve {lvalue})'''
+    def getStartPoint (self: Curve)-> Point3d :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -50515,11 +49877,8 @@ insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVer
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isClosed (self, *args, **kwargs)-> bool :
-      '''isClosed( (Curve)arg1) -> bool :
-
-    C++ signature :
-        bool isClosed(class PyDbCurve {lvalue})'''
+    def isClosed (self: Curve)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -50551,11 +49910,8 @@ insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVer
     C++ signature :
         bool isNullObj(class PyRxObject {lvalue})'''
     ...
-    def isPeriodic (self, *args, **kwargs)-> bool :
-      '''isPeriodic( (Curve)arg1) -> bool :
-
-    C++ signature :
-        bool isPeriodic(class PyDbCurve {lvalue})'''
+    def isPeriodic (self: Curve)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -50677,11 +50033,8 @@ insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVer
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def reverseCurve (self, *args, **kwargs)-> None :
-      '''reverseCurve( (Curve)arg1) -> None :
-
-    C++ signature :
-        void reverseCurve(class PyDbCurve {lvalue})'''
+    def reverseCurve (self: Curve)-> None :
+      '''                             '''
     ...
     def rolloverHit (self, *args, **kwargs)-> bool :
       '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
@@ -50796,7 +50149,7 @@ splineFit( (Polyline3d)arg1, (Poly3dType)arg2, (DxfCode)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -50962,10 +50315,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -51226,7 +50579,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -51587,7 +50940,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getDimstyleData (self, *args, **kwargs)-> DimStyleTableRecord :
@@ -51596,7 +50949,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -52377,7 +51730,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         bool toleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -52744,7 +52097,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getDimstyleData (self, *args, **kwargs)-> DimStyleTableRecord :
@@ -52753,7 +52106,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -53576,7 +52929,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         bool toleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -53773,10 +53126,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         signed char fade(class PyDbRasterImage {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -54228,7 +53581,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -55639,10 +54992,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -55897,7 +55250,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -56240,10 +55593,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -56492,7 +55845,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -56829,7 +56182,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getDimstyleData (self, *args, **kwargs)-> DimStyleTableRecord :
@@ -56838,7 +56191,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -57649,7 +57002,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         bool toleranceSuppressZeroInches(class PyDbDimension {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -58211,10 +57564,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -58463,7 +57816,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -59059,10 +58412,10 @@ extrudeAlongPath( (Solid3d)arg1, (Region)arg2, (Curve)arg3, (float)arg4) -> None
     C++ signature :
         double getArea(class PyDb3dSolid {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -59453,7 +58806,7 @@ stlOut( (Solid3d)arg1, (str)arg2, (bool)arg3, (float)arg4) -> None :
     C++ signature :
         void taperFaces(class PyDb3dSolid {lvalue},class boost::python::list,class AcGePoint3d,class AcGeVector3d,double)'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def transformFaces (self, *args, **kwargs)-> None :
@@ -60264,10 +59617,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -60516,7 +59869,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -61165,10 +60518,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -61417,7 +60770,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -62749,7 +62102,7 @@ getBlockAttributeValue( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)
     C++ signature :
         class boost::python::list getCellExtents(class PyDbTable {lvalue},int,int,bool)'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getDataLink (self, *args, **kwargs)-> ObjectId :
@@ -62780,7 +62133,7 @@ getDataType( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> tuple :
     C++ signature :
         class boost::python::tuple getDataType(class PyDbTable {lvalue},int,int,int)'''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -64007,7 +63360,7 @@ textStyle( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> ObjectId :
     C++ signature :
         class PyDbObjectId textStyle(class PyDbTable {lvalue},int,int,int)'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def treatAsAcDbBlockRefForExplode (self, *args, **kwargs)-> bool :
@@ -65665,10 +65018,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class boost::python::list getBoundingPoints(class PyDbText {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -66091,7 +65444,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         double thickness(class PyDbText {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -68606,10 +67959,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void generateClipBoundaryFromPline(class PyDbUnderlayReference {lvalue},class PyDbObjectId {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -69044,7 +68397,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         class AcGeMatrix3d transform(class PyDbUnderlayReference {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def underlayLayerCount (self, *args, **kwargs)-> int :
@@ -69666,10 +69019,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -69918,7 +69271,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -70095,10 +69448,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -70419,7 +69772,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         double tangent(class PyDb2dVertex {lvalue})'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
@@ -71555,10 +70908,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         double frontClipDistance(class PyDbViewport {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: Matrix3d)-> None :
+    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def getField (self: DbObject)-> ObjectId :
@@ -72732,7 +72085,7 @@ setUcsIconVisible( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         void thawLayersInViewport(class PyDbViewport {lvalue},class boost::python::list)'''
     ...
-    def transformBy (self: Entity,matrix3d: Matrix3d)-> None :
+    def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
     def twistAngle (self, *args, **kwargs)-> float :

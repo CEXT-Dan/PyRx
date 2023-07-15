@@ -11,6 +11,8 @@ import PyDb  # = database
 import PyAp  # = application, document classes services
 import PyEd  # = editor
 
+all_modules_names = ["PyRx", "PyGe", "PyGi", "PyDb", "PyAp", "PyEd"]
+
 #TODO iterate all the above modules, and add imports ant type aliasing 
 #to each
 
@@ -62,6 +64,9 @@ def findReturnType(sig):
 # it should be able to parse this, or add something in the doc user string
 def generate_pyi(moduleName, module):
     with open(moduleName, 'w') as f:
+        
+        for mname in all_modules_names:
+            f.write(f'import {mname}\n')
 
         for name, obj in inspect.getmembers(module):
             if inspect.isclass(obj):
