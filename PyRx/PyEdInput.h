@@ -10,7 +10,8 @@ class PyGiViewportDraw;
 class PyApDocument;
 
 //---------------------------------------------------------------------------------
-//AcEdInputPointManager
+//PyEdInputPointManager
+void makePyEdInputPointManagerWrapper();
 class PyEdInputPointManager
 {
 public:
@@ -67,11 +68,12 @@ public:
 
 //---------------------------------------------------------------------------------
 //PyEdInputPointFilter
+void makePyEdInputPointFilterWrapper();
 class PyEdInputPointFilter : public PyRxObject, public boost::python::wrapper<PyEdInputPointFilter>
 {
 public:
     PyEdInputPointFilter();
-    Acad::ErrorStatus monitorInputPoint(const PyEdInputPoint& input, PyEdInputPointFilterResult& output);
+    Acad::ErrorStatus processInputPoint(const PyEdInputPoint& input, PyEdInputPointFilterResult& output);
 public:
     PyEdInputPointFilterImpl* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -79,6 +81,7 @@ public:
 
 //---------------------------------------------------------------------------------
 //PyEdInputPointMonitor
+void makePyEdInputPointMonitorWrapper();
 class PyEdInputPointMonitor : public PyRxObject, public boost::python::wrapper<PyEdInputPointMonitor>
 {
 public:
@@ -91,6 +94,7 @@ public:
 
 //---------------------------------------------------------------------------------
 //PyEdInputPoint
+void makePyEdInputPointWrapper();
 class PyEdInputPoint
 {
 public:
@@ -122,6 +126,7 @@ public:
 
 //---------------------------------------------------------------------------------
 //PyEdInputPointFilterResult
+void makePyEdInputPointFilterResultWrapper();
 class PyEdInputPointFilterResult
 {
 public:
@@ -141,6 +146,7 @@ public:
 
 //---------------------------------------------------------------------------------
 //PyEdInputPointMonitorResult
+void makePyEdInputPointMonitorResultWrapper();
 class PyEdInputPointMonitorResult
 {
 public:

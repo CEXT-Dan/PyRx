@@ -6,6 +6,7 @@
 #include "PyEdSelectionSet.h"
 #include "EdCore.h"
 #include "PyEdUserInteraction.h"
+#include "PyEdInput.h"
 
 using namespace boost::python;
 
@@ -27,6 +28,12 @@ BOOST_PYTHON_MODULE(PyEd)
     makeAcEditorWrapper();
     makePyEditorReactorWrapper();
     makePyEdUIContextWrapper();
+    makePyEdInputPointManagerWrapper();
+    makePyEdInputPointFilterWrapper();
+    makePyEdInputPointMonitorWrapper();
+    makePyEdInputPointWrapper();
+    makePyEdInputPointFilterResultWrapper();
+    makePyEdInputPointMonitorResultWrapper();
 
     def("print", print);
 
