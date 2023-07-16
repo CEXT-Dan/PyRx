@@ -1298,6 +1298,12 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class boost::python::tuple getItemOfLispList(class PyApDocument {lvalue},int)'''
     ...
+    def inputPointManager (self, *args, **kwargs)-> InputPointManager :
+      '''inputPointManager( (Document)arg1) -> InputPointManager :
+
+    C++ signature :
+        class PyEdInputPointManager inputPointManager(class PyApDocument {lvalue})'''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (RxObject)arg1) -> RxClass :
 

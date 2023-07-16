@@ -247,7 +247,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -369,7 +369,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -387,7 +387,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     C++ signature :
         unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -595,7 +595,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         bool frontClipEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -766,7 +766,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -844,7 +844,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setElevation(class PyDbAbstractViewTableRecord {lvalue},double)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setFrontClipAtEye (self, *args, **kwargs)-> None :
@@ -1371,7 +1371,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -1628,7 +1628,7 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -1819,7 +1819,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setElevation(class PyDbDimension {lvalue},double)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setHorizontalRefTextRotation (self, *args, **kwargs)-> None :
@@ -2646,7 +2646,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getEndPoint (self: Curve)-> Point3d :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -2865,7 +2865,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -2910,7 +2910,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     C++ signature :
         void setEndAngle(class PyDbArc {lvalue},double)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -3385,7 +3385,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -3648,7 +3648,7 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -3863,7 +3863,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setElevation(class PyDbDimension {lvalue},double)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setHasLeader (self, *args, **kwargs)-> None :
@@ -4449,7 +4449,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -4725,7 +4725,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -4773,7 +4773,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setFieldLength (self, *args, **kwargs)-> None :
@@ -5203,7 +5203,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -5479,7 +5479,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -5532,7 +5532,7 @@ setAttributeFromBlock( (AttributeReference)arg1, (AttributeDefinition)arg2, (Mat
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setFieldLength (self, *args, **kwargs)-> None :
@@ -5887,7 +5887,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -6043,7 +6043,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -6073,7 +6073,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -6284,7 +6284,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -6440,7 +6440,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -6470,7 +6470,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -6737,7 +6737,7 @@ geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -6917,7 +6917,7 @@ geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -6971,7 +6971,7 @@ geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -7319,7 +7319,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -7441,7 +7441,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -7459,7 +7459,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     C++ signature :
         unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -7664,7 +7664,7 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     C++ signature :
         class boost::python::list getErasedBlockReferenceIds(class PyDbBlockTableRecord {lvalue})'''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -7871,7 +7871,7 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -7913,7 +7913,7 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     C++ signature :
         void setExplodable(class PyDbBlockTableRecord {lvalue},bool)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setIsFromOverlayReference (self, *args, **kwargs)-> None :
@@ -8128,7 +8128,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -8284,7 +8284,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -8314,7 +8314,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -9988,7 +9988,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getEndPoint (self: Curve)-> Point3d :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -10201,7 +10201,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -10252,7 +10252,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     C++ signature :
         void setDiameter(class PyDbCircle {lvalue},double)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -11365,7 +11365,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getEndPoint (self: Curve)-> Point3d :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -11566,7 +11566,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -11599,7 +11599,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -14545,7 +14545,7 @@ class DbObject:
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -14650,7 +14650,7 @@ class DbObject:
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -14668,7 +14668,7 @@ class DbObject:
     C++ signature :
         unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -15041,7 +15041,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -15286,7 +15286,7 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -15495,7 +15495,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setFarChordPoint(class PyDbDiametricDimension {lvalue},class AcGePoint3d)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setHorizontalRefTextRotation (self, *args, **kwargs)-> None :
@@ -15977,7 +15977,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId getAt(class PyDbDictionary {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -16121,7 +16121,7 @@ remove( (Dictionary)arg1, (ObjectId)arg2) -> None :
     C++ signature :
         void remove(class PyDbDictionary {lvalue},class PyDbObjectId {lvalue})'''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -16145,7 +16145,7 @@ remove( (Dictionary)arg1, (ObjectId)arg2) -> None :
     C++ signature :
         unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setName (self, *args, **kwargs)-> bool :
@@ -16427,7 +16427,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -16549,7 +16549,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -16567,7 +16567,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     C++ signature :
         unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -16713,7 +16713,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -16842,7 +16842,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -16860,7 +16860,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setName (self, *args, **kwargs)-> None :
@@ -17190,7 +17190,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -17429,7 +17429,7 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -17614,7 +17614,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setElevation(class PyDbDimension {lvalue},double)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setHorizontalRefTextRotation (self, *args, **kwargs)-> None :
@@ -19645,7 +19645,7 @@ class Entity:
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -19801,7 +19801,7 @@ class Entity:
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -19831,7 +19831,7 @@ class Entity:
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -22288,7 +22288,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -22444,7 +22444,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -22474,7 +22474,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -22715,7 +22715,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -22895,7 +22895,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -22925,7 +22925,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -23162,7 +23162,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -23342,7 +23342,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -23372,7 +23372,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -23670,7 +23670,7 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -23838,7 +23838,7 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -23927,7 +23927,7 @@ setDimstyleData( (Fcf)arg1, (ObjectId)arg2) -> None :
     C++ signature :
         void setDimtxt(class PyDbFcf {lvalue},double)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -24207,7 +24207,7 @@ evaluate( (Field)arg1, (FieldEvalContext)arg2, (Database)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -24336,7 +24336,7 @@ evaluate( (Field)arg1, (FieldEvalContext)arg2, (Database)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -24366,7 +24366,7 @@ evaluate( (Field)arg1, (FieldEvalContext)arg2, (Database)arg3) -> None :
     C++ signature :
         void setEvaluatorId(class PyDbField {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setFormat (self, *args, **kwargs)-> None :
@@ -26000,7 +26000,7 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -26348,7 +26348,7 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     C++ signature :
         void removeAssocObjIds(class PyDbHatch {lvalue})'''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removeHatchLines (self, *args, **kwargs)-> None :
@@ -26408,7 +26408,7 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     C++ signature :
         void setElevation(class PyDbHatch {lvalue},double)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setGradient (self, *args, **kwargs)-> None :
@@ -27570,7 +27570,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -27726,7 +27726,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -27756,7 +27756,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -28515,7 +28515,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -28637,7 +28637,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -28655,7 +28655,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     C++ signature :
         unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -28830,7 +28830,7 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -29085,7 +29085,7 @@ removeAllOverrides( (LayerTableRecord)arg1) -> None :
     C++ signature :
         void removeColorOverride(class PyDbLayerTableRecord {lvalue},class PyDbObjectId)'''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removeLineWeightOverride (self, *args, **kwargs)-> None :
@@ -29150,7 +29150,7 @@ setColor( (LayerTableRecord)arg1, (Color)arg2, (ObjectId)arg3) -> None :
     C++ signature :
         void setDescription(class PyDbLayerTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setIsFrozen (self, *args, **kwargs)-> None :
@@ -29452,7 +29452,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class boost::python::tuple getExtents(class PyDbLayout {lvalue})'''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -29718,7 +29718,7 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -29760,7 +29760,7 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
     C++ signature :
         void setDrawViewportsFirst(class PyDbPlotSettings {lvalue},bool)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayoutName (self, *args, **kwargs)-> None :
@@ -30419,7 +30419,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getEndPoint (self: Curve)-> Point3d :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -30668,7 +30668,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removeLastVertex (self, *args, **kwargs)-> None :
@@ -30804,7 +30804,7 @@ setDimldrblk( (Leader)arg1, (str)arg2) -> None :
     C++ signature :
         void setDimtxt(class PyDbLeader {lvalue},double)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setHasArrowHead (self, *args, **kwargs)-> None :
@@ -31107,7 +31107,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getEndPoint (self: Curve)-> Point3d :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -31317,7 +31317,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -31356,7 +31356,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     C++ signature :
         void setEndPoint(class PyDbLine {lvalue},class AcGePoint3d)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -31801,7 +31801,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -32040,7 +32040,7 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -32237,7 +32237,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setExtArcOn(class PyDb2LineAngularDimension {lvalue},bool)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setHorizontalRefTextRotation (self, *args, **kwargs)-> None :
@@ -33070,7 +33070,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -33192,7 +33192,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -33210,7 +33210,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     C++ signature :
         unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -33368,7 +33368,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -33515,7 +33515,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -33545,7 +33545,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setDashLengthAt(class PyDbLinetypeTableRecord {lvalue},int,double)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setIsScaledToFit (self, *args, **kwargs)-> None :
@@ -33832,7 +33832,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -33988,7 +33988,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -34018,7 +34018,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -34297,7 +34297,7 @@ geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -34477,7 +34477,7 @@ geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -34555,7 +34555,7 @@ geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -34990,7 +34990,7 @@ getBlockAttributeValue( (MLeader)arg1, (ObjectId)arg2) -> str :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -35342,7 +35342,7 @@ moveMLeader( (MLeader)arg1, (Vector3d)arg2, (MLeaderMoveType)arg3, (bool)arg4) -
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removeFirstVertex (self, *args, **kwargs)-> None :
@@ -35530,7 +35530,7 @@ setDoglegLength( (MLeader)arg1, (int)arg2, (float)arg3) -> None :
     C++ signature :
         void setExtendLeaderToText(class PyDbMLeader {lvalue},bool)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setFirstVertex (self, *args, **kwargs)-> None :
@@ -37200,7 +37200,7 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
     C++ signature :
         enum AcDbMLeaderStyle::SegmentAngleType firstSegmentAngleConstraint(class PyDbMLeaderStyle {lvalue})'''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -37365,7 +37365,7 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -37548,7 +37548,7 @@ setDrawLeaderOrderType( (MLeaderStyle)arg1, (DrawLeaderOrderType)arg2) -> None :
     C++ signature :
         void setExtendLeaderToText(class PyDbMLeaderStyle {lvalue},bool)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setFirstSegmentAngleConstraint (self, *args, **kwargs)-> None :
@@ -38525,7 +38525,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -38717,7 +38717,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -38855,7 +38855,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setDynamicColumns(class PyDbMText {lvalue},double,double,bool)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setFlowDirection (self, *args, **kwargs)-> None :
@@ -39915,7 +39915,7 @@ getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4, (bool
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -40104,7 +40104,7 @@ getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4, (bool
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removeLastSeg (self, *args, **kwargs)-> None :
@@ -40152,7 +40152,7 @@ getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4, (bool
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setJustification (self, *args, **kwargs)-> None :
@@ -40594,7 +40594,7 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     C++ signature :
         class boost::python::tuple getElementAt(class PyDbMlineStyle {lvalue},int)'''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -40723,7 +40723,7 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     C++ signature :
         void removeElementAt(class PyDbMlineStyle {lvalue},int)'''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -40788,7 +40788,7 @@ set( (MlineStyle)arg1, (MlineStyle)arg2, (bool)arg3) -> None :
     C++ signature :
         void setEndSquareCap(class PyDbMlineStyle {lvalue},bool)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setFillColor (self, *args, **kwargs)-> None :
@@ -41033,7 +41033,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -41189,7 +41189,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -41219,7 +41219,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -41901,7 +41901,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -42164,7 +42164,7 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -42355,7 +42355,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setElevation(class PyDbDimension {lvalue},double)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setHorizontalRefTextRotation (self, *args, **kwargs)-> None :
@@ -43004,7 +43004,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getActiveFileName(class PyDbUnderlayDefinition {lvalue})'''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -43138,7 +43138,7 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -43156,7 +43156,7 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     C++ signature :
         unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setItemName (self, *args, **kwargs)-> None :
@@ -43401,7 +43401,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -43623,7 +43623,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -43695,7 +43695,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setFade(class PyDbUnderlayReference {lvalue},unsigned char)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setHeight (self, *args, **kwargs)-> None :
@@ -44131,7 +44131,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -44287,7 +44287,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -44317,7 +44317,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -44799,7 +44799,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class boost::python::tuple getCustomPrintScale(class PyDbPlotSettings {lvalue})'''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -45024,7 +45024,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -45054,7 +45054,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setDrawViewportsFirst(class PyDbPlotSettings {lvalue},bool)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -45607,7 +45607,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -45775,7 +45775,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -45811,7 +45811,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setEcsRotation(class PyDbPoint {lvalue},double)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -46256,7 +46256,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -46495,7 +46495,7 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -46698,7 +46698,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setExtArcOn(class PyDb3PointAngularDimension {lvalue},bool)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setHorizontalRefTextRotation (self, *args, **kwargs)-> None :
@@ -47471,7 +47471,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -47633,7 +47633,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -47663,7 +47663,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -47895,7 +47895,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -48057,7 +48057,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -48087,7 +48087,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -48409,7 +48409,7 @@ getEcs( (Polyline)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         double getEndWidthAt(class PyDbPolyline {lvalue},unsigned int)'''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -48706,7 +48706,7 @@ getEcs( (Polyline)arg1, (Matrix3d)arg2) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -48781,7 +48781,7 @@ getEcs( (Polyline)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void setElevation(class PyDbPolyline {lvalue},double)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -49113,7 +49113,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getEndPoint (self: Curve)-> Point3d :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -49379,7 +49379,7 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -49442,7 +49442,7 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     C++ signature :
         void setElevation(class PyDb2dPolyline {lvalue},double)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -49779,7 +49779,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getEndPoint (self: Curve)-> Point3d :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -50027,7 +50027,7 @@ insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVer
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -50066,7 +50066,7 @@ insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVer
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -50321,7 +50321,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -50483,7 +50483,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -50513,7 +50513,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -50952,7 +50952,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -51197,7 +51197,7 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -51406,7 +51406,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setExtArcStartAngle(class PyDbRadialDimension {lvalue},double)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setHorizontalRefTextRotation (self, *args, **kwargs)-> None :
@@ -52109,7 +52109,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -52366,7 +52366,7 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -52575,7 +52575,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setExtArcStartAngle(class PyDbRadialDimensionLarge {lvalue},double)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setHorizontalRefTextRotation (self, *args, **kwargs)-> None :
@@ -53132,7 +53132,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -53389,7 +53389,7 @@ imageSize( (RasterImage)arg1, (bool)arg2) -> Vector2d :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -53467,7 +53467,7 @@ imageSize( (RasterImage)arg1, (bool)arg2) -> Vector2d :
     C++ signature :
         void setFade(class PyDbRasterImage {lvalue},signed char)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setHeight (self, *args, **kwargs)-> None :
@@ -53751,7 +53751,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > fileType(class PyDbRasterImageDef {lvalue})'''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -53880,7 +53880,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -53922,7 +53922,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -54115,7 +54115,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -54220,7 +54220,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -54244,7 +54244,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setEnable(bool)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -54386,7 +54386,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -54508,7 +54508,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -54526,7 +54526,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     C++ signature :
         unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -54672,7 +54672,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -54801,7 +54801,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -54819,7 +54819,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setName (self, *args, **kwargs)-> None :
@@ -54998,7 +54998,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -55160,7 +55160,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -55190,7 +55190,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -55599,7 +55599,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -55755,7 +55755,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -55785,7 +55785,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -56194,7 +56194,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -56451,7 +56451,7 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -56648,7 +56648,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setElevation(class PyDbDimension {lvalue},double)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setHorizontalRefTextRotation (self, *args, **kwargs)-> None :
@@ -57570,7 +57570,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -57726,7 +57726,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -57756,7 +57756,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -58418,7 +58418,7 @@ extrudeAlongPath( (Solid3d)arg1, (Region)arg2, (Curve)arg3, (float)arg4) -> None
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -58657,7 +58657,7 @@ getSlice( (Solid3d)arg1, (Surface)arg2, (bool)arg3) -> Solid3d :
     C++ signature :
         void removeFaces(class PyDb3dSolid {lvalue},class boost::python::list)'''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -58693,7 +58693,7 @@ getSlice( (Solid3d)arg1, (Surface)arg2, (bool)arg3) -> Solid3d :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -59623,7 +59623,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -59779,7 +59779,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -59809,7 +59809,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -60524,7 +60524,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -60680,7 +60680,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -60710,7 +60710,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -61177,7 +61177,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -61299,7 +61299,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -61317,7 +61317,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     C++ signature :
         unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -61453,7 +61453,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -61582,7 +61582,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -61600,7 +61600,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setName (self, *args, **kwargs)-> None :
@@ -62136,7 +62136,7 @@ getDataType( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> tuple :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -62652,7 +62652,7 @@ removeDataLink( (Table)arg1, (int)arg2, (int)arg3) -> None :
     C++ signature :
         void removeDataLink(class PyDbTable {lvalue},int,int)'''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -62932,7 +62932,7 @@ setDataType( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (object)arg5, (object
     C++ signature :
         void setDirection(class PyDbTable {lvalue},class AcGeVector3d)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setFieldId (self, *args, **kwargs)-> None :
@@ -64303,7 +64303,7 @@ getDataType( (TableStyle)arg1, (str)arg2) -> tuple :
     C++ signature :
         class boost::python::tuple getDataType(class PyDbTableStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -64531,7 +64531,7 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -64640,7 +64640,7 @@ setDataType( (TableStyle)arg1, (object)arg2, (object)arg3, (str)arg4) -> None :
     C++ signature :
         void setDescription(class PyDbTableStyle {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setFlowDirection (self, *args, **kwargs)-> None :
@@ -65024,7 +65024,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -65252,7 +65252,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -65294,7 +65294,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setHeight (self, *args, **kwargs)-> None :
@@ -65887,7 +65887,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -66009,7 +66009,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -66027,7 +66027,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     C++ signature :
         unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -66197,7 +66197,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class boost::python::tuple font(class PyDbTextStyleTableRecord {lvalue})'''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -66350,7 +66350,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -66374,7 +66374,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setBigFontFileName(class PyDbTextStyleTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setFileName (self, *args, **kwargs)-> None :
@@ -66917,7 +66917,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId getAt(class PyDbSymbolTable {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -67039,7 +67039,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -67057,7 +67057,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     C++ signature :
         unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -67203,7 +67203,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -67338,7 +67338,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -67356,7 +67356,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setName (self, *args, **kwargs)-> None :
@@ -67546,7 +67546,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getActiveFileName(class PyDbUnderlayDefinition {lvalue})'''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -67680,7 +67680,7 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -67698,7 +67698,7 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     C++ signature :
         unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setItemName (self, *args, **kwargs)-> None :
@@ -67965,7 +67965,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -68187,7 +68187,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -68259,7 +68259,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setFade(class PyDbUnderlayReference {lvalue},unsigned char)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setHeight (self, *args, **kwargs)-> None :
@@ -69025,7 +69025,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -69181,7 +69181,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -69211,7 +69211,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -69454,7 +69454,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -69628,7 +69628,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -69670,7 +69670,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setEndWidth(class PyDb2dVertex {lvalue},double)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
@@ -70148,7 +70148,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getCategoryName(class PyDbViewTableRecord {lvalue})'''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -70361,7 +70361,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -70457,7 +70457,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setElevation(class PyDbAbstractViewTableRecord {lvalue},double)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setFrontClipAtEye (self, *args, **kwargs)-> None :
@@ -70914,7 +70914,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -71327,7 +71327,7 @@ previousBackground( (Viewport)arg1, (GiDrawableType)arg2) -> ObjectId :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removeHiddenLines (self, *args, **kwargs)-> None :
@@ -71492,7 +71492,7 @@ setFastZoomOn( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         void setFastZoomOn(class PyDbViewport {lvalue},bool)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setFrontClipAtEyeOff (self, *args, **kwargs)-> None :
@@ -72357,7 +72357,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         bool frontClipEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -72623,7 +72623,7 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -72713,7 +72713,7 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
     C++ signature :
         void setFastZoomsEnabled(class PyDbViewportTableRecord {lvalue},bool)'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setFrontClipAtEye (self, *args, **kwargs)-> None :
@@ -73547,7 +73547,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getField (self: DbObject)-> ObjectId :
+    def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
@@ -73675,7 +73675,7 @@ rbChain( (Xrecord)arg1, (Database)arg2) -> list :
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
-    def removeField (self: DbObject,id: ObjectId)-> None :
+    def removeField (self: DbObject,id: str|ObjectId)-> None :
       '''                             '''
     ...
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
@@ -73693,7 +73693,7 @@ rbChain( (Xrecord)arg1, (Database)arg2) -> list :
     C++ signature :
         unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
     ...
-    def setField (self: DbObject,obj: Field)-> ObjectId :
+    def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
     def setFromRbChain (self, *args, **kwargs)-> None :
