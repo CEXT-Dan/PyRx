@@ -6,6 +6,9 @@ class PyEdInputPointMonitor;
 class PyEdInputPoint;
 class PyEdInputPointFilterResult;
 class PyEdInputPointMonitorResult;
+class PyGiViewportDraw;
+class PyApDocument;
+
 //---------------------------------------------------------------------------------
 //AcEdInputPointManager
 class PyEdInputPointManager
@@ -64,7 +67,7 @@ public:
 
 //---------------------------------------------------------------------------------
 //PyEdInputPointFilter
-class PyEdInputPointFilter : public PyRxObject
+class PyEdInputPointFilter : public PyRxObject, public boost::python::wrapper<PyEdInputPointFilter>
 {
 public:
     PyEdInputPointFilter();
@@ -76,7 +79,7 @@ public:
 
 //---------------------------------------------------------------------------------
 //PyEdInputPointMonitor
-class PyEdInputPointMonitor : public PyRxObject
+class PyEdInputPointMonitor : public PyRxObject, public boost::python::wrapper<PyEdInputPointMonitor>
 {
 public:
     PyEdInputPointMonitor();
@@ -92,6 +95,28 @@ class PyEdInputPoint
 {
 public:
     PyEdInputPoint(const AcEdInputPoint& inp);
+    PyApDocument        document() const;
+    bool                pointComputed() const;
+    int                 history() const;
+    AcGePoint3d         lastPoint() const;
+    AcGePoint3d         rawPoint() const;
+    AcGePoint3d         grippedPoint() const;
+    AcGePoint3d         cartesianSnappedPoint() const;
+    AcGePoint3d         osnappedPoint() const;
+    AcDb::OsnapMask     osnapMask() const;
+    AcDb::OsnapMask     osnapOverrides() const;
+    boost::python::list pickedEntities() const;
+    boost::python::list nestedPickedEntities() const;
+    boost::python::list gsSelectionMark() const;
+    boost::python::list keyPointEntities() const;
+    boost::python::list nestedKeyPointEntities() const;
+    boost::python::list keyPointGsSelectionMark() const;
+    boost::python::list alignmentPaths() const;
+    AcGePoint3d         computedPoint() const;
+    std::string         tooltipString() const;
+    PyGiViewportDraw    drawContext() const;
+
+public:
     const AcEdInputPoint& rpyimp;
 };
 
@@ -101,8 +126,16 @@ class PyEdInputPointFilterResult
 {
 public:
     PyEdInputPointFilterResult(AcEdInputPointFilterResult& inpr);
+    void        setNewPoint(const AcGePoint3d& newValue);
+    void        setDisplayOsnapGlyph(bool newValue);
+    void        setNewTooltipString(const std::string& newValue);
+    void        setRetry(bool newValue);
+    AcGePoint3d newPoint() const;
+    bool        displayOsnapGlyph() const;
+    std::string newTooltipString() const;
+    bool        retry() const;
 
-
+public:
     AcEdInputPointFilterResult& rpyimp;
 };
 
@@ -112,7 +145,10 @@ class PyEdInputPointMonitorResult
 {
 public:
     PyEdInputPointMonitorResult(AcEdInputPointMonitorResult& inpr);
+    void        setAdditionalTooltipString(const std::string& newValue);
+    bool        appendToTooltipStr() const;
+    std::string additionalTooltipString() const;
 
-
+public:
     AcEdInputPointMonitorResult& rpyimp;
 };

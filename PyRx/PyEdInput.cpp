@@ -1,6 +1,11 @@
 #include "stdafx.h"
 #include "PyEdInput.h"
 #include "PyApDocument.h"
+#include "PyGiCommonDraw.h"
+#include "PyDbObjectId.h"
+#include "PyGeCurve3d.h"
+
+using namespace boost::python;
 
 //---------------------------------------------------------------------------------
 //AcEdInputPointManager
@@ -144,6 +149,16 @@ PyEdInputPointFilter::PyEdInputPointFilter()
 
 Acad::ErrorStatus PyEdInputPointFilter::monitorInputPoint(const PyEdInputPoint& input, PyEdInputPointFilterResult& output)
 {
+    PyAutoLockGIL lock;
+    try
+    {
+        if (override f = this->get_override("monitorInputPoint"))
+            return f(input, output);
+    }
+    catch (...)
+    {
+        throw PyAcadErrorStatus(Acad::ErrorStatus::eInvalidInput);
+    }
     return eOk;
 }
 
@@ -164,6 +179,16 @@ PyEdInputPointMonitor::PyEdInputPointMonitor()
 
 Acad::ErrorStatus PyEdInputPointMonitor::monitorInputPoint(const PyEdInputPoint& input, PyEdInputPointMonitorResult& output)
 {
+    PyAutoLockGIL lock;
+    try
+    {
+        if (override f = this->get_override("monitorInputPoint"))
+            return f(input, output);
+    }
+    catch (...)
+    {
+        throw PyAcadErrorStatus(Acad::ErrorStatus::eInvalidInput);
+    }
     return eOk;
 }
 
@@ -181,6 +206,151 @@ PyEdInputPoint::PyEdInputPoint(const AcEdInputPoint& inp)
 {
 }
 
+PyApDocument PyEdInputPoint::document() const
+{
+    return PyApDocument(rpyimp.document(),false);
+}
+
+bool PyEdInputPoint::pointComputed() const
+{
+   return rpyimp.pointComputed();
+}
+
+int PyEdInputPoint::history() const
+{
+    return rpyimp.history();
+}
+
+AcGePoint3d PyEdInputPoint::lastPoint() const
+{
+    return rpyimp.lastPoint();
+}
+
+AcGePoint3d PyEdInputPoint::rawPoint() const
+{
+    return rpyimp.rawPoint();
+}
+
+AcGePoint3d PyEdInputPoint::grippedPoint() const
+{
+    return rpyimp.grippedPoint();
+}
+
+AcGePoint3d PyEdInputPoint::cartesianSnappedPoint() const
+{
+    return rpyimp.cartesianSnappedPoint();
+}
+
+AcGePoint3d PyEdInputPoint::osnappedPoint() const
+{
+    return rpyimp.osnappedPoint();
+}
+
+AcDb::OsnapMask PyEdInputPoint::osnapMask() const
+{
+    return rpyimp.osnapMask();
+}
+
+AcDb::OsnapMask PyEdInputPoint::osnapOverrides() const
+{
+    return rpyimp.osnapOverrides();
+}
+
+boost::python::list PyEdInputPoint::pickedEntities() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    const auto& resut = rpyimp.pickedEntities();
+    for (const auto& item : resut)
+        pyList.append(PyDbObjectId(item));
+    return pyList;
+}
+
+boost::python::list PyEdInputPoint::nestedPickedEntities() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    const auto& resut = rpyimp.nestedPickedEntities();
+    for (const auto& items : resut)
+    {
+        boost::python::list pysubList;
+        for(const auto& item : items)
+            pysubList.append(PyDbObjectId(item));
+        pyList.append(pysubList);
+    }
+    return pyList;
+}
+
+boost::python::list PyEdInputPoint::gsSelectionMark() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    const auto& resut = rpyimp.gsSelectionMark();
+    for (const auto item : resut)
+        pyList.append(item);
+    return pyList;
+}
+
+boost::python::list PyEdInputPoint::keyPointEntities() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    const auto& resut = rpyimp.keyPointEntities();
+    for (const auto& item : resut)
+        pyList.append(PyDbObjectId(item));
+    return pyList;
+}
+
+boost::python::list PyEdInputPoint::nestedKeyPointEntities() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    const auto& resut = rpyimp.nestedKeyPointEntities();
+    for (const auto& items : resut)
+    {
+        boost::python::list pysubList;
+        for (const auto& item : items)
+            pysubList.append(PyDbObjectId(item));
+        pyList.append(pysubList);
+    }
+    return pyList;
+}
+
+boost::python::list PyEdInputPoint::keyPointGsSelectionMark() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    const auto& resut = rpyimp.keyPointGsSelectionMark();
+    for (const auto item : resut)
+        pyList.append(item);
+    return pyList;
+}
+
+boost::python::list PyEdInputPoint::alignmentPaths() const
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    const auto& resut = rpyimp.alignmentPaths();
+    for (auto& item : resut)
+        pyList.append(PyGeCurve3d(item));
+    return pyList;
+}
+
+AcGePoint3d PyEdInputPoint::computedPoint() const
+{
+    return rpyimp.computedPoint();
+}
+
+std::string PyEdInputPoint::tooltipString() const
+{
+    return wstr_to_utf8(rpyimp.tooltipString());
+}
+
+PyGiViewportDraw PyEdInputPoint::drawContext() const
+{
+    return PyGiViewportDraw(rpyimp.drawContext(), false);
+}
+
 //---------------------------------------------------------------------------------
 //PyEdInputPointFilterResult
 PyEdInputPointFilterResult::PyEdInputPointFilterResult(AcEdInputPointFilterResult& inpr)
@@ -188,9 +358,64 @@ PyEdInputPointFilterResult::PyEdInputPointFilterResult(AcEdInputPointFilterResul
 {
 }
 
+void PyEdInputPointFilterResult::setNewPoint(const AcGePoint3d& newValue)
+{
+    rpyimp.setNewPoint(newValue);
+}
+
+void PyEdInputPointFilterResult::setDisplayOsnapGlyph(bool newValue)
+{
+    rpyimp.setDisplayOsnapGlyph(newValue);
+}
+
+void PyEdInputPointFilterResult::setNewTooltipString(const std::string& newValue)
+{
+    rpyimp.setNewTooltipString(utf8_to_wstr(newValue).c_str());
+}
+
+void PyEdInputPointFilterResult::setRetry(bool newValue)
+{
+    rpyimp.setRetry(newValue);
+}
+
+AcGePoint3d PyEdInputPointFilterResult::newPoint() const
+{
+    return rpyimp.newPoint();
+}
+
+bool PyEdInputPointFilterResult::displayOsnapGlyph() const
+{
+    return rpyimp.displayOsnapGlyph();
+}
+
+std::string PyEdInputPointFilterResult::newTooltipString() const
+{
+    return wstr_to_utf8(rpyimp.newTooltipString());
+}
+
+bool PyEdInputPointFilterResult::retry() const
+{
+    return rpyimp.retry();
+}
+
 //---------------------------------------------------------------------------------
 //PyEdInputPointMonitorResult
 PyEdInputPointMonitorResult::PyEdInputPointMonitorResult(AcEdInputPointMonitorResult& inpr)
     : rpyimp(inpr)
 {
+}
+
+void PyEdInputPointMonitorResult::setAdditionalTooltipString(const std::string& newValue)
+{
+    rpyimp.setAdditionalTooltipString(utf8_to_wstr(newValue).c_str());
+}
+
+bool PyEdInputPointMonitorResult::appendToTooltipStr() const
+{
+    return rpyimp.appendToTooltipStr();
+}
+
+std::string PyEdInputPointMonitorResult::additionalTooltipString() const
+{
+    return wstr_to_utf8(rpyimp.additionalTooltipString());
 }
