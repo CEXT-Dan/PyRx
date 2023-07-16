@@ -1807,14 +1807,14 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class boost::python::list nestedPickedEntities(class PyEdInputPoint {lvalue})'''
     ...
-    def osnapMask (self, *args, **kwargs)-> object :
-      '''osnapMask( (InputPoint)arg1) -> object :
+    def osnapMask (self, *args, **kwargs)-> OsnapMask :
+      '''osnapMask( (InputPoint)arg1) -> OsnapMask :
 
     C++ signature :
         enum AcDb::OsnapMask osnapMask(class PyEdInputPoint {lvalue})'''
     ...
-    def osnapOverrides (self, *args, **kwargs)-> object :
-      '''osnapOverrides( (InputPoint)arg1) -> object :
+    def osnapOverrides (self, *args, **kwargs)-> OsnapMask :
+      '''osnapOverrides( (InputPoint)arg1) -> OsnapMask :
 
     C++ signature :
         enum AcDb::OsnapMask osnapOverrides(class PyEdInputPoint {lvalue})'''
