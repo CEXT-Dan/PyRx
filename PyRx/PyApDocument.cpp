@@ -2,6 +2,7 @@
 #include "PyApDocument.h"
 #include "PyAcEditor.h"
 #include "PyDbTransactionManager.h"
+#include "PyEdInput.h"
 
 using namespace boost::python;
 
@@ -29,6 +30,7 @@ void makeAcApDocumentWrapper()
         .def("upgradeDocOpen", &PyApDocument::upgradeDocOpen)
         .def("downgradeDocOpen", &PyApDocument::downgradeDocOpen)
         .def("transactionManager", &PyApDocument::transactionManager)
+        .def("inputPointManager", &PyApDocument::inputPointManager)
         //static
         .def("docWnd", &PyApDocument::docWnd).staticmethod("docWnd")
         .def("className", &PyApDocument::className).staticmethod("className")
@@ -174,6 +176,11 @@ void PyApDocument::downgradeDocOpen(bool bPromptForSave)
 PyTransactionManager PyApDocument::transactionManager()
 {
     return PyTransactionManager(impObj()->transactionManager());
+}
+
+PyEdInputPointManager PyApDocument::inputPointManager()
+{
+    return PyEdInputPointManager(impObj()->inputPointManager());
 }
 
 int64_t PyApDocument::docWnd()
