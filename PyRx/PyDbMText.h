@@ -8,6 +8,7 @@ class PyDbMText : public PyDbEntity
 public:
     PyDbMText();
     PyDbMText(AcDbMText* ptr, bool autoDelete);
+    PyDbMText(const PyDbObjectId& id);
     PyDbMText(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbMText() override = default;
     AcGePoint3d         location() const;
