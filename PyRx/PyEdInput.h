@@ -15,8 +15,8 @@ void makePyEdInputPointManagerWrapper();
 class PyEdInputPointManager
 {
 public:
-    PyEdInputPointManager(AcEdInputPointManager* src);
-    virtual ~PyEdInputPointManager();
+    explicit PyEdInputPointManager(AcEdInputPointManager* src);
+    virtual ~PyEdInputPointManager() = default;
     void        registerPointFilter(PyEdInputPointFilter& pFilter);
     void        revokePointFilter();
     bool        hasFilter();
@@ -43,7 +43,8 @@ public:
 class PyEdInputPointFilterImpl : public AcEdInputPointFilter
 {
 public:
-    PyEdInputPointFilterImpl(PyEdInputPointFilter* bckPtr);
+    explicit PyEdInputPointFilterImpl(PyEdInputPointFilter* bckPtr);
+    virtual ~PyEdInputPointFilterImpl() override = default;
     virtual Acad::ErrorStatus processInputPoint(const AcEdInputPoint& input, AcEdInputPointFilterResult& output) override;
 
 public:
@@ -57,7 +58,8 @@ public:
 class PyEdInputPointMonitorImpl : public  AcEdInputPointMonitor
 {
 public:
-    PyEdInputPointMonitorImpl(PyEdInputPointMonitor* bckPtr);
+    explicit PyEdInputPointMonitorImpl(PyEdInputPointMonitor* bckPtr);
+    virtual ~PyEdInputPointMonitorImpl() override = default;
     virtual Acad::ErrorStatus monitorInputPoint(const AcEdInputPoint& input, AcEdInputPointMonitorResult& output) override;
 
 public:
@@ -73,6 +75,7 @@ class PyEdInputPointFilter : public PyRxObject, public boost::python::wrapper<Py
 {
 public:
     PyEdInputPointFilter();
+    virtual ~PyEdInputPointFilter() override = default;
     Acad::ErrorStatus processInputPoint(const PyEdInputPoint& input, PyEdInputPointFilterResult& output);
 public:
     PyEdInputPointFilterImpl* impObj(const std::source_location& src = std::source_location::current()) const;
@@ -86,6 +89,7 @@ class PyEdInputPointMonitor : public PyRxObject, public boost::python::wrapper<P
 {
 public:
     PyEdInputPointMonitor();
+    virtual ~PyEdInputPointMonitor() override = default;
     Acad::ErrorStatus monitorInputPoint(const PyEdInputPoint& input, PyEdInputPointMonitorResult& output);
 
 public:
@@ -98,7 +102,8 @@ void makePyEdInputPointWrapper();
 class PyEdInputPoint
 {
 public:
-    PyEdInputPoint(const AcEdInputPoint& inp);
+    explicit PyEdInputPoint(const AcEdInputPoint& inp);
+    ~PyEdInputPoint()  = default;
     PyApDocument        document() const;
     bool                pointComputed() const;
     int                 history() const;
@@ -130,7 +135,8 @@ void makePyEdInputPointFilterResultWrapper();
 class PyEdInputPointFilterResult
 {
 public:
-    PyEdInputPointFilterResult(AcEdInputPointFilterResult& inpr);
+    explicit PyEdInputPointFilterResult(AcEdInputPointFilterResult& inpr);
+    ~PyEdInputPointFilterResult() = default;
     void        setNewPoint(const AcGePoint3d& newValue);
     void        setDisplayOsnapGlyph(bool newValue);
     void        setNewTooltipString(const std::string& newValue);
@@ -150,7 +156,8 @@ void makePyEdInputPointMonitorResultWrapper();
 class PyEdInputPointMonitorResult
 {
 public:
-    PyEdInputPointMonitorResult(AcEdInputPointMonitorResult& inpr);
+    explicit PyEdInputPointMonitorResult(AcEdInputPointMonitorResult& inpr);
+    ~PyEdInputPointMonitorResult() = default;
     void        setAdditionalTooltipString(const std::string& newValue);
     bool        appendToTooltipStr() const;
     std::string additionalTooltipString() const;

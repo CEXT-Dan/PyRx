@@ -6,6 +6,7 @@ void makePyDbMTextWrapper()
 {
     class_<PyDbMText, bases<PyDbEntity>>("MText")
         .def(init<>())
+        .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
         .def("location", &PyDbMText::location)
         .def("setLocation", &PyDbMText::setLocation)
@@ -137,6 +138,11 @@ PyDbMText::PyDbMText(const PyDbObjectId& id, AcDb::OpenMode mode)
     if (auto es = acdbOpenObject<AcDbMText>(pobj, id.m_id, mode); es != eOk)
         throw PyAcadErrorStatus(es);
     this->resetImp(pobj, false, true);
+}
+
+PyDbMText::PyDbMText(const PyDbObjectId& id)
+    : PyDbMText(id, AcDb::OpenMode::kForRead)
+{
 }
 
 AcGePoint3d PyDbMText::location() const

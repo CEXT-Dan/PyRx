@@ -11,7 +11,7 @@ using namespace boost::python;
 //AcEdInputPointManager
 void makePyEdInputPointManagerWrapper()
 {
-    class_<PyEdInputPointManager, boost::noncopyable>("InputPointManager", boost::python::no_init)
+    class_<PyEdInputPointManager>("InputPointManager", boost::python::no_init)
         .def("registerPointFilter", &PyEdInputPointManager::registerPointFilter)
         .def("revokePointFilter", &PyEdInputPointManager::revokePointFilter)
         .def("hasFilter", &PyEdInputPointManager::hasFilter)
@@ -34,14 +34,9 @@ PyEdInputPointManager::PyEdInputPointManager(AcEdInputPointManager* src)
 {
 }
 
-PyEdInputPointManager::~PyEdInputPointManager()
-{
-    m_pyImp = nullptr;
-}
-
 void PyEdInputPointManager::registerPointFilter(PyEdInputPointFilter& pFilter)
 {
-   PyThrowBadEs(impObj()->registerPointFilter(pFilter.impObj()));
+    PyThrowBadEs(impObj()->registerPointFilter(pFilter.impObj()));
 }
 
 void PyEdInputPointManager::revokePointFilter()
@@ -121,7 +116,6 @@ AcEdInputPointManager* PyEdInputPointManager::impObj(const std::source_location&
 PyEdInputPointFilterImpl::PyEdInputPointFilterImpl(PyEdInputPointFilter* bckPtr)
     : m_bckPtr(bckPtr)
 {
-
 }
 
 Acad::ErrorStatus PyEdInputPointFilterImpl::processInputPoint(const AcEdInputPoint& input, AcEdInputPointFilterResult& output)
@@ -172,7 +166,7 @@ void makePyEdInputPointFilterWrapper()
 }
 
 PyEdInputPointFilter::PyEdInputPointFilter()
-    : PyRxObject(new PyEdInputPointFilterImpl(this),true,false)
+    : PyRxObject(new PyEdInputPointFilterImpl(this), true, false)
 {
 }
 
@@ -182,11 +176,11 @@ Acad::ErrorStatus PyEdInputPointFilter::processInputPoint(const PyEdInputPoint& 
     try
     {
         if (override f = this->get_override("processInputPoint"))
-            return f(input, output);
+            f(input, output);
     }
     catch (...)
     {
-        throw PyAcadErrorStatus(Acad::ErrorStatus::eInvalidInput);
+        return Acad::ErrorStatus::eInvalidInput;
     }
     return eOk;
 }
@@ -218,11 +212,11 @@ Acad::ErrorStatus PyEdInputPointMonitor::monitorInputPoint(const PyEdInputPoint&
     try
     {
         if (override f = this->get_override("monitorInputPoint"))
-            return f(input, output);
+            f(input, output);
     }
     catch (...)
     {
-        throw PyAcadErrorStatus(Acad::ErrorStatus::eInvalidInput);
+        return Acad::ErrorStatus::eInvalidInput;
     }
     return eOk;
 }
@@ -238,7 +232,7 @@ PyEdInputPointMonitorImpl* PyEdInputPointMonitor::impObj(const std::source_locat
 //PyEdInputPoint
 void makePyEdInputPointWrapper()
 {
-    class_<PyEdInputPoint, boost::noncopyable>("InputPoint", boost::python::no_init)
+    class_<PyEdInputPoint>("InputPoint", boost::python::no_init)
         .def("document", &PyEdInputPoint::document)
         .def("pointComputed", &PyEdInputPoint::pointComputed)
         .def("history", &PyEdInputPoint::history)
@@ -269,12 +263,12 @@ PyEdInputPoint::PyEdInputPoint(const AcEdInputPoint& inp)
 
 PyApDocument PyEdInputPoint::document() const
 {
-    return PyApDocument(rpyimp.document(),false);
+    return PyApDocument(rpyimp.document(), false);
 }
 
 bool PyEdInputPoint::pointComputed() const
 {
-   return rpyimp.pointComputed();
+    return rpyimp.pointComputed();
 }
 
 int PyEdInputPoint::history() const
@@ -335,7 +329,7 @@ boost::python::list PyEdInputPoint::nestedPickedEntities() const
     for (const auto& items : resut)
     {
         boost::python::list pysubList;
-        for(const auto& item : items)
+        for (const auto& item : items)
             pysubList.append(PyDbObjectId(item));
         pyList.append(pysubList);
     }
@@ -416,7 +410,7 @@ PyGiViewportDraw PyEdInputPoint::drawContext() const
 //PyEdInputPointFilterResult
 void makePyEdInputPointFilterResultWrapper()
 {
-    class_<PyEdInputPointFilterResult, boost::noncopyable>("InputPointFilterResult", boost::python::no_init)
+    class_<PyEdInputPointFilterResult>("InputPointFilterResult", boost::python::no_init)
         .def("setNewPoint", &PyEdInputPointFilterResult::setNewPoint)
         .def("setDisplayOsnapGlyph", &PyEdInputPointFilterResult::setDisplayOsnapGlyph)
         .def("setNewTooltipString", &PyEdInputPointFilterResult::setNewTooltipString)
@@ -429,7 +423,7 @@ void makePyEdInputPointFilterResultWrapper()
 }
 
 PyEdInputPointFilterResult::PyEdInputPointFilterResult(AcEdInputPointFilterResult& inpr)
-  : rpyimp(inpr)
+    : rpyimp(inpr)
 {
 }
 
@@ -477,7 +471,7 @@ bool PyEdInputPointFilterResult::retry() const
 //PyEdInputPointMonitorResult
 void makePyEdInputPointMonitorResultWrapper()
 {
-    class_<PyEdInputPointMonitorResult, boost::noncopyable>("InputPointMonitorResult", boost::python::no_init)
+    class_<PyEdInputPointMonitorResult>("InputPointMonitorResult", boost::python::no_init)
         .def("setAdditionalTooltipString", &PyEdInputPointMonitorResult::setAdditionalTooltipString)
         .def("appendToTooltipStr", &PyEdInputPointMonitorResult::appendToTooltipStr)
         .def("additionalTooltipString", &PyEdInputPointMonitorResult::additionalTooltipString)
@@ -490,7 +484,8 @@ PyEdInputPointMonitorResult::PyEdInputPointMonitorResult(AcEdInputPointMonitorRe
 
 void PyEdInputPointMonitorResult::setAdditionalTooltipString(const std::string& newValue)
 {
-    rpyimp.setAdditionalTooltipString(utf8_to_wstr(newValue).c_str());
+    CString str = utf8_to_wstr(newValue).c_str();
+    rpyimp.setAdditionalTooltipString(str);
 }
 
 bool PyEdInputPointMonitorResult::appendToTooltipStr() const
