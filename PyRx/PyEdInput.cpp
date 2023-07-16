@@ -9,6 +9,26 @@ using namespace boost::python;
 
 //---------------------------------------------------------------------------------
 //AcEdInputPointManager
+void makePyEdInputPointManagerWrapper()
+{
+    class_<PyEdInputPointManager, boost::noncopyable>("InputPointManager", boost::python::no_init)
+        .def("registerPointFilter", &PyEdInputPointManager::registerPointFilter)
+        .def("revokePointFilter", &PyEdInputPointManager::revokePointFilter)
+        .def("hasFilter", &PyEdInputPointManager::hasFilter)
+        .def("addPointMonitor", &PyEdInputPointManager::addPointMonitor)
+        .def("removePointMonitor", &PyEdInputPointManager::removePointMonitor)
+        .def("disableSystemCursorGraphics", &PyEdInputPointManager::disableSystemCursorGraphics)
+        .def("enableSystemCursorGraphics", &PyEdInputPointManager::enableSystemCursorGraphics)
+        .def("systemCursorDisableCount", &PyEdInputPointManager::systemCursorDisableCount)
+        .def("turnOffForcedPick", &PyEdInputPointManager::turnOffForcedPick)
+        .def("forcedPickCount", &PyEdInputPointManager::forcedPickCount)
+        .def("mouseHasMoved", &PyEdInputPointManager::mouseHasMoved)
+        .def("turnOnSubentityWindowSelection", &PyEdInputPointManager::turnOnSubentityWindowSelection)
+        .def("turnOffSubentityWindowSelection", &PyEdInputPointManager::turnOffSubentityWindowSelection)
+        .def("enableMultiSubentPathSelection", &PyEdInputPointManager::enableMultiSubentPathSelection)
+        ;
+}
+
 PyEdInputPointManager::PyEdInputPointManager(AcEdInputPointManager* src)
     : m_pyImp(src)
 {
@@ -106,7 +126,10 @@ PyEdInputPointFilterImpl::PyEdInputPointFilterImpl(PyEdInputPointFilter* bckPtr)
 
 Acad::ErrorStatus PyEdInputPointFilterImpl::processInputPoint(const AcEdInputPoint& input, AcEdInputPointFilterResult& output)
 {
-    return eOk;
+    PyAutoLockGIL lock;
+    PyEdInputPoint pyinput(input);
+    PyEdInputPointFilterResult pyoutput(output);
+    return backPtr()->processInputPoint(pyinput, pyoutput);
 }
 
 PyEdInputPointFilter* PyEdInputPointFilterImpl::backPtr(const std::source_location& src /*= std::source_location::current()*/) const
@@ -141,18 +164,24 @@ PyEdInputPointMonitor* PyEdInputPointMonitorImpl::backPtr(const std::source_loca
 
 //---------------------------------------------------------------------------------
 //PyEdInputPointFilter
+void makePyEdInputPointFilterWrapper()
+{
+    class_<PyEdInputPointFilter>("InputPointFilter")
+        .def("processInputPoint", &PyEdInputPointFilter::processInputPoint)
+        ;
+}
+
 PyEdInputPointFilter::PyEdInputPointFilter()
     : PyRxObject(new PyEdInputPointFilterImpl(this),true,false)
 {
-
 }
 
-Acad::ErrorStatus PyEdInputPointFilter::monitorInputPoint(const PyEdInputPoint& input, PyEdInputPointFilterResult& output)
+Acad::ErrorStatus PyEdInputPointFilter::processInputPoint(const PyEdInputPoint& input, PyEdInputPointFilterResult& output)
 {
     PyAutoLockGIL lock;
     try
     {
-        if (override f = this->get_override("monitorInputPoint"))
+        if (override f = this->get_override("processInputPoint"))
             return f(input, output);
     }
     catch (...)
@@ -171,10 +200,16 @@ PyEdInputPointFilterImpl* PyEdInputPointFilter::impObj(const std::source_locatio
 
 //---------------------------------------------------------------------------------
 //PyEdInputPointMonitor
+void makePyEdInputPointMonitorWrapper()
+{
+    class_<PyEdInputPointMonitor>("InputPointMonitor")
+        .def("monitorInputPoint", &PyEdInputPointMonitor::monitorInputPoint)
+        ;
+}
+
 PyEdInputPointMonitor::PyEdInputPointMonitor()
     : PyRxObject(new PyEdInputPointMonitorImpl(this), true, false)
 {
-
 }
 
 Acad::ErrorStatus PyEdInputPointMonitor::monitorInputPoint(const PyEdInputPoint& input, PyEdInputPointMonitorResult& output)
@@ -201,6 +236,32 @@ PyEdInputPointMonitorImpl* PyEdInputPointMonitor::impObj(const std::source_locat
 
 //---------------------------------------------------------------------------------
 //PyEdInputPoint
+void makePyEdInputPointWrapper()
+{
+    class_<PyEdInputPoint, boost::noncopyable>("InputPoint", boost::python::no_init)
+        .def("document", &PyEdInputPoint::document)
+        .def("pointComputed", &PyEdInputPoint::pointComputed)
+        .def("history", &PyEdInputPoint::history)
+        .def("lastPoint", &PyEdInputPoint::lastPoint)
+        .def("rawPoint", &PyEdInputPoint::rawPoint)
+        .def("grippedPoint", &PyEdInputPoint::grippedPoint)
+        .def("cartesianSnappedPoint", &PyEdInputPoint::cartesianSnappedPoint)
+        .def("osnappedPoint", &PyEdInputPoint::osnappedPoint)
+        .def("osnapMask", &PyEdInputPoint::osnapMask)
+        .def("osnapOverrides", &PyEdInputPoint::osnapOverrides)
+        .def("pickedEntities", &PyEdInputPoint::pickedEntities)
+        .def("nestedPickedEntities", &PyEdInputPoint::nestedPickedEntities)
+        .def("gsSelectionMark", &PyEdInputPoint::gsSelectionMark)
+        .def("keyPointEntities", &PyEdInputPoint::keyPointEntities)
+        .def("nestedKeyPointEntities", &PyEdInputPoint::nestedKeyPointEntities)
+        .def("keyPointGsSelectionMark", &PyEdInputPoint::keyPointGsSelectionMark)
+        .def("alignmentPaths", &PyEdInputPoint::alignmentPaths)
+        .def("computedPoint", &PyEdInputPoint::computedPoint)
+        .def("tooltipString", &PyEdInputPoint::tooltipString)
+        .def("drawContext", &PyEdInputPoint::drawContext)
+        ;
+}
+
 PyEdInputPoint::PyEdInputPoint(const AcEdInputPoint& inp)
     : rpyimp(inp)
 {
@@ -353,6 +414,20 @@ PyGiViewportDraw PyEdInputPoint::drawContext() const
 
 //---------------------------------------------------------------------------------
 //PyEdInputPointFilterResult
+void makePyEdInputPointFilterResultWrapper()
+{
+    class_<PyEdInputPointFilterResult, boost::noncopyable>("InputPointFilterResult", boost::python::no_init)
+        .def("setNewPoint", &PyEdInputPointFilterResult::setNewPoint)
+        .def("setDisplayOsnapGlyph", &PyEdInputPointFilterResult::setDisplayOsnapGlyph)
+        .def("setNewTooltipString", &PyEdInputPointFilterResult::setNewTooltipString)
+        .def("setRetry", &PyEdInputPointFilterResult::setRetry)
+        .def("newPoint", &PyEdInputPointFilterResult::newPoint)
+        .def("displayOsnapGlyph", &PyEdInputPointFilterResult::displayOsnapGlyph)
+        .def("newTooltipString", &PyEdInputPointFilterResult::newTooltipString)
+        .def("retry", &PyEdInputPointFilterResult::retry)
+        ;
+}
+
 PyEdInputPointFilterResult::PyEdInputPointFilterResult(AcEdInputPointFilterResult& inpr)
   : rpyimp(inpr)
 {
@@ -400,6 +475,14 @@ bool PyEdInputPointFilterResult::retry() const
 
 //---------------------------------------------------------------------------------
 //PyEdInputPointMonitorResult
+void makePyEdInputPointMonitorResultWrapper()
+{
+    class_<PyEdInputPointMonitorResult, boost::noncopyable>("InputPointMonitorResult", boost::python::no_init)
+        .def("setAdditionalTooltipString", &PyEdInputPointMonitorResult::setAdditionalTooltipString)
+        .def("appendToTooltipStr", &PyEdInputPointMonitorResult::appendToTooltipStr)
+        .def("additionalTooltipString", &PyEdInputPointMonitorResult::additionalTooltipString)
+        ;
+}
 PyEdInputPointMonitorResult::PyEdInputPointMonitorResult(AcEdInputPointMonitorResult& inpr)
     : rpyimp(inpr)
 {
