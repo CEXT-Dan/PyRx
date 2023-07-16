@@ -1,6 +1,5 @@
 #pragma once
 #include "PyRxObject.h"
-#include "PyGiCommonDraw.h"
 
 class PyGiDrawable;
 class PyGiWorldGeometry;
