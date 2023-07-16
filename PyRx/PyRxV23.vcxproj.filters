@@ -259,6 +259,9 @@
     <ClCompile Include="PyEdInput.cpp">
       <Filter>Source Files\PyEd</Filter>
     </ClCompile>
+    <ClCompile Include="PyGiTransientManager.cpp">
+      <Filter>Source Files\PyGi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -521,6 +524,9 @@
     </ClInclude>
     <ClInclude Include="PyEdInput.h">
       <Filter>Header Files\PyEd</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGiTransientManager.h">
+      <Filter>Header Files\PyGi</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
