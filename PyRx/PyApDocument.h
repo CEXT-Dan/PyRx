@@ -4,6 +4,7 @@
 
 class PyAcEditor;
 class PyTransactionManager;
+class PyEdInputPointManager;
 
 void makeAcApDocumentWrapper();
 
@@ -33,6 +34,7 @@ public:
     void                upgradeDocOpen();
     void                downgradeDocOpen(bool bPromptForSave);
     PyTransactionManager transactionManager();
+    PyEdInputPointManager inputPointManager();
 
     static int64_t      docWnd();
     static std::string  className();
