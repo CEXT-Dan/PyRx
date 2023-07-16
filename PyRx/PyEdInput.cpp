@@ -113,6 +113,7 @@ AcEdInputPointManager* PyEdInputPointManager::impObj(const std::source_location&
 
 //---------------------------------------------------------------------------------
 //PyEdInputPointFilterImpl
+ACRX_CONS_DEFINE_MEMBERS(PyEdInputPointFilterImpl, AcEdInputPointFilter, 1)
 PyEdInputPointFilterImpl::PyEdInputPointFilterImpl(PyEdInputPointFilter* bckPtr)
     : m_bckPtr(bckPtr)
 {
@@ -135,10 +136,10 @@ PyEdInputPointFilter* PyEdInputPointFilterImpl::backPtr(const std::source_locati
 
 //---------------------------------------------------------------------------------
 //PyEdInputPointMonitorImpl
+ACRX_CONS_DEFINE_MEMBERS(PyEdInputPointMonitorImpl, AcEdInputPointMonitor, 1)
 PyEdInputPointMonitorImpl::PyEdInputPointMonitorImpl(PyEdInputPointMonitor* bckPtr)
     : m_bckPtr(bckPtr)
 {
-
 }
 
 Acad::ErrorStatus PyEdInputPointMonitorImpl::monitorInputPoint(const AcEdInputPoint& input, AcEdInputPointMonitorResult& output)

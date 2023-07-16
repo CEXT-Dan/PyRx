@@ -43,7 +43,10 @@ public:
 class PyEdInputPointFilterImpl : public AcEdInputPointFilter
 {
 public:
-    explicit PyEdInputPointFilterImpl(PyEdInputPointFilter* bckPtr);
+    ACRX_DECLARE_MEMBERS(PyEdInputPointFilterImpl);
+public:
+    PyEdInputPointFilterImpl() = default;
+    PyEdInputPointFilterImpl(PyEdInputPointFilter* bckPtr);
     virtual ~PyEdInputPointFilterImpl() override = default;
     virtual Acad::ErrorStatus processInputPoint(const AcEdInputPoint& input, AcEdInputPointFilterResult& output) override;
 
@@ -52,13 +55,17 @@ public:
 public:
     PyEdInputPointFilter* m_bckPtr = nullptr;
 };
+ACDB_REGISTER_OBJECT_ENTRY_AUTO(PyEdInputPointFilterImpl)
 
 //---------------------------------------------------------------------------------
 //PyEdInputPointMonitorImpl
 class PyEdInputPointMonitorImpl : public  AcEdInputPointMonitor
 {
 public:
-    explicit PyEdInputPointMonitorImpl(PyEdInputPointMonitor* bckPtr);
+    ACRX_DECLARE_MEMBERS(PyEdInputPointMonitorImpl);
+public:
+    PyEdInputPointMonitorImpl() = default;
+    PyEdInputPointMonitorImpl(PyEdInputPointMonitor* bckPtr);
     virtual ~PyEdInputPointMonitorImpl() override = default;
     virtual Acad::ErrorStatus monitorInputPoint(const AcEdInputPoint& input, AcEdInputPointMonitorResult& output) override;
 
@@ -67,6 +74,7 @@ public:
 public:
     PyEdInputPointMonitor* m_bckPtr = nullptr;
 };
+ACDB_REGISTER_OBJECT_ENTRY_AUTO(PyEdInputPointMonitorImpl)
 
 //---------------------------------------------------------------------------------
 //PyEdInputPointFilter
