@@ -363,5 +363,14 @@ inline AcDbObjectIdArray PyListToObjectIdArray(const boost::python::object& iter
     return arr;
 }
 
+inline AcArray<int> PyListToIntArray(const boost::python::object& iterable)
+{
+    AcArray<int> arr;
+    auto vec = py_list_to_std_vector<int>(iterable);
+    for (auto& item : vec)
+        arr.append(item);
+    return arr;
+}
+
 #pragma pack (pop)
 

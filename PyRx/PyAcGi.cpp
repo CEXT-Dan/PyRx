@@ -3,6 +3,7 @@
 #include "PyGiDrawable.h"
 #include "PyGiCommonDraw.h"
 #include "PyGiSubEntityTraits.h"
+#include "PyGiTransientManager.h"
 
 using namespace boost::python;
 
@@ -23,6 +24,18 @@ BOOST_PYTHON_MODULE(PyGi)
     makeAcGiGeometryWrapper();
     makeAcGiWorldGeometryWrapper();
     makeAcGiViewportGeometryWrapper();
+    makePyGiTransientManagerWrapper();
+
+    enum_<AcGiTransientDrawingMode>("AcGiTransientDrawingMode")
+        .value("kAcGiMain", AcGiTransientDrawingMode::kAcGiMain)
+        .value("kAcGiSprite", AcGiTransientDrawingMode::kAcGiSprite)
+        .value("kAcGiDirectShortTerm", AcGiTransientDrawingMode::kAcGiDirectShortTerm)
+        .value("kAcGiHighlight", AcGiTransientDrawingMode::kAcGiHighlight)
+        .value("kAcGiDirectTopmost", AcGiTransientDrawingMode::kAcGiDirectTopmost)
+        .value("kAcGiContrast", AcGiTransientDrawingMode::kAcGiContrast)
+        .value("kAcGiDrawingModeCount", AcGiTransientDrawingMode::kAcGiDrawingModeCount)
+        .export_values()
+        ;
 
     enum_<AcGiPositionTransformBehavior>("AcGiPositionTransformBehavior")
         .value("kAcGiWorldPosition", AcGiPositionTransformBehavior::kAcGiWorldPosition)
