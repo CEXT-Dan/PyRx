@@ -4,7 +4,7 @@ class PyGeInterval;
 class PyGePointOnSurface;
 //-----------------------------------------------------------------------------------------
 //AcGeSurface wrapper
-void makeAcGeSurfaceWrapper();
+void makePyGeSurfaceWrapper();
 class PyAcGeSurface : public PyGeEntity3d
 {
 protected:

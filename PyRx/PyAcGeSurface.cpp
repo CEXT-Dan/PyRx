@@ -6,7 +6,7 @@
 using namespace boost::python;
 // ---------------------------------------------------------------------------------------- -
 //AcGeSurface wrapper
-void makeAcGeSurfaceWrapper()
+void makePyGeSurfaceWrapper()
 {
     class_<PyAcGeSurface, bases<PyGeEntity3d>>("Surface", boost::python::no_init)
         .def("paramOf", &PyAcGeSurface::paramOf)

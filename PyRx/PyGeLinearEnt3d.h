@@ -5,7 +5,7 @@ class PyGePlane;
 class PyGeLine3d;
 //-----------------------------------------------------------------------------------
 //PyGeLinearEnt3d
-void makPyGeLinearEnt3dWrapper();
+void makePyGeLinearEnt3dWrapper();
 class PyGeLinearEnt3d : public PyGeCurve3d
 {
 public:
@@ -44,7 +44,7 @@ public:
 };
 //-----------------------------------------------------------------------------------
 //AcGeLine3d
-void makAcGeLine3dWrapper();
+void makePyGeLine3dWrapper();
 class PyGeLine3d : public PyGeLinearEnt3d
 {
 public:
@@ -64,7 +64,7 @@ public:
 };
 //-----------------------------------------------------------------------------------
 //PyGeLineSeg3d
-void makPyGeLineSeg3dWrapper();
+void makePyGeLineSeg3dWrapper();
 class PyGeLineSeg3d : public PyGeLinearEnt3d
 {
 public:
@@ -89,7 +89,7 @@ public:
 };
 //-----------------------------------------------------------------------------------
 //AcGeRay3d
-void makAcGeRay3ddWrapper();
+void makePyGeRay3ddWrapper();
 class PyGeRay3d : public PyGeLinearEnt3d
 {
 public:

@@ -100,7 +100,7 @@ AcGiWorldDraw* PyGiWorldDraw::impObj(const std::source_location& src /*= std::so
 
 //-----------------------------------------------------------------------------------------
 //PyGiViewportDraw
-void makeAcGiViewportDrawWrapper()
+void makePyGiViewportDrawWrapper()
 {
     class_<PyGiViewportDraw, bases<PyGiCommonDraw>>("ViewportDraw", boost::python::no_init)
         .def("geometry", &PyGiViewportDraw::geometry)
@@ -138,7 +138,7 @@ AcGiViewportDraw* PyGiViewportDraw::impObj(const std::source_location& src /*= s
 
 //-----------------------------------------------------------------------------------------
 //PyGiGeometry
-void makeAcGiGeometryWrapper()
+void makePyGiGeometryWrapper()
 {
     class_<PyGiGeometry, bases<PyRxObject>>("Geometry", boost::python::no_init)
         .def("getModelToWorldTransform", &PyGiGeometry::getModelToWorldTransform)
@@ -367,7 +367,7 @@ AcGiGeometry* PyGiGeometry::impObj(const std::source_location& src /*= std::sour
 
 //-----------------------------------------------------------------------------------------
 //PyGiWorldGeometry
-void makeAcGiWorldGeometryWrapper()
+void makePyGiWorldGeometryWrapper()
 {
     class_<PyGiWorldGeometry, bases<PyGiGeometry>>("WorldGeometry", boost::python::no_init)
         .def("className", &PyGiGeometry::className).staticmethod("className")
@@ -399,7 +399,7 @@ AcGiWorldGeometry* PyGiWorldGeometry::impObj(const std::source_location& src /*=
 
 //-----------------------------------------------------------------------------------------
 //AcGiViewportGeometry
-void makeAcGiViewportGeometryWrapper()
+void makePyGiViewportGeometryWrapper()
 {
     class_<PyGiViewportGeometry, bases<PyGiGeometry>>("ViewportGeometry", boost::python::no_init)
         .def("className", &PyGiGeometry::className).staticmethod("className")

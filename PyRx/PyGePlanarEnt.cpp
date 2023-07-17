@@ -6,7 +6,7 @@ using namespace boost::python;
 
 //-----------------------------------------------------------------------------------------
 //AcGePlanarEnt wrapper
-void makeAcGePlanarEntWrapper()
+void makePyGePlanarEntWrapper()
 {
     class_<PyGePlanarEnt, bases<PyAcGeSurface>>("PlanarEnt", boost::python::no_init)
         .def("intersectWith", &PyGePlanarEnt::intersectWith1)

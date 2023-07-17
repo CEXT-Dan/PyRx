@@ -8,7 +8,7 @@ class PyGiDrawableTraits;
 class PyDbObjectId;
 //-----------------------------------------------------------------------------------------
 //PyGiDrawable
-void makeAcGiObjectWrapper();
+void makePyGiObjectWrapper();
 
 class PyGiDrawable : public PyRxObject
 {
@@ -32,7 +32,7 @@ public:
 
 //-----------------------------------------------------------------------------------------
 //PyGiDrawable
-void makeAcGiDrawableOverruleWrapper();
+void makePyGiDrawableOverruleWrapper();
 
 class PyGiDrawableOverrule : public PyRxOverrule, public AcGiDrawableOverrule, public boost::python::wrapper<PyGiDrawableOverrule>
 {

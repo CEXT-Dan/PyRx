@@ -4,7 +4,7 @@
 using namespace boost::python;
 //-----------------------------------------------------------------------------------------
 //AcGeLinearEnt2d wrapper
-void makeAcGeLinearEnt2dWrapper()
+void makePyGeLinearEnt2dWrapper()
 {
     class_<PyGeLinearEnt2d, bases<PyGeCurve2d>>("LinearEnt2d", boost::python::no_init)
         .def("intersectWith", &PyGeLinearEnt2d::intersectWith1)
@@ -130,7 +130,7 @@ AcGeLinearEnt2d* PyGeLinearEnt2d::impObj(const std::source_location& src /*= std
 
 //-----------------------------------------------------------------------------------------
 //AcGeLine2d  wrapper
-void makeAcGeLine2dWrapper()
+void makePyGeLine2dWrapper()
 {
     class_<PyGeLine2d, bases<PyGeLinearEnt2d>>("Line2d")
         .def(init<>())
@@ -348,7 +348,7 @@ AcGeLineSeg2d* PyGeLineSeg2d::impObj(const std::source_location& src /*= std::so
 
 //-----------------------------------------------------------------------------------------
 //AcGeRay2d  wrapper
-void makeAcGeRay2dWrapper()
+void makePyGeRay2dWrapper()
 {
     class_<PyGeRay2d, bases<PyGeLinearEnt2d>>("Ray2d")
         .def(init<>())

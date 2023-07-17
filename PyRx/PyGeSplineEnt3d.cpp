@@ -147,7 +147,7 @@ AcGeSplineEnt3d* PyGeSplineEnt3d::impObj(const std::source_location& src /*= std
 
 //-----------------------------------------------------------------------------------------
 //AcGeCubicSplineCurve3d wrapper
-void makAcGeCubicSplineCurve3dWrapper()
+void makePyGeCubicSplineCurve3dWrapper()
 {
     class_<PyGeCubicSplineCurve3d, bases<PyGeSplineEnt3d>>("CubicSplineCurve3d")
         .def("className", &PyGeCubicSplineCurve3d::className).staticmethod("className")
@@ -178,7 +178,7 @@ AcGeCubicSplineCurve3d* PyGeCubicSplineCurve3d::impObj(const std::source_locatio
 
 //-----------------------------------------------------------------------------------------
 //AcGeNurbCurve3d  wrapper
-void makAcGeNurbCurve3dWrapper()
+void makePyGeNurbCurve3dWrapper()
 {
     class_<PyGeNurbCurve3d, bases<PyGeSplineEnt3d>>("NurbCurve3d")
         .def("className", &PyGeNurbCurve3d::className).staticmethod("className")
@@ -209,7 +209,7 @@ AcGeNurbCurve3d* PyGeNurbCurve3d::impObj(const std::source_location& src /*= std
 
 //-----------------------------------------------------------------------------------------
 //AcGeNurbCurve3d  wrapper
-void makAcGePolyline3dWrapper()
+void makePyGePolyline3dWrapper()
 {
     class_<PyGePolyline3d, bases<PyGeSplineEnt3d>>("Polyline3d")
         .def(init<>())

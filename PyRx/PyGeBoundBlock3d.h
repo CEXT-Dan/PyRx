@@ -3,7 +3,7 @@
 
 //-----------------------------------------------------------------------------------
 //PyGeBoundBlock3d
-void makPyGeBoundBlock3dWrapper();
+void makePyGeBoundBlock3dWrapper();
 class PyGeBoundBlock3d : public PyGeEntity3d
 {
 public:

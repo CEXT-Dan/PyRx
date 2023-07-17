@@ -3,7 +3,7 @@
 class PyGeLine2d;
 //-----------------------------------------------------------------------------------------
 //AcGeLinearEnt2d wrapper
-void makeAcGeLinearEnt2dWrapper();
+void makePyGeLinearEnt2dWrapper();
 class PyGeLinearEnt2d : public PyGeCurve2d
 {
 public:
@@ -30,7 +30,7 @@ public:
 
 //-----------------------------------------------------------------------------------------
 //AcGeLine2d  wrapper
-void makeAcGeLine2dWrapper();
+void makePyGeLine2dWrapper();
 class PyGeLine2d : public PyGeLinearEnt2d
 {
 public:
@@ -78,7 +78,7 @@ public:
 
 //-----------------------------------------------------------------------------------------
 //AcGeRay2d  wrapper
-void makeAcGeRay2dWrapper();
+void makePyGeRay2dWrapper();
 class PyGeRay2d : public PyGeLinearEnt2d
 {
 public:

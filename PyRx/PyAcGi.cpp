@@ -11,19 +11,16 @@ BOOST_PYTHON_MODULE(PyGi)
 {
     docstring_options local_docstring_options(true, true, true);
 
-    makeAcGiObjectWrapper();
+    makePyGiObjectWrapper();
     makePyGiCommonDrawWrapper();
     makePyGiWorldDrawWrapper();
-    makeAcGiViewportDrawWrapper();
-
-    makeAcGiDrawableOverruleWrapper();
-
+    makePyGiViewportDrawWrapper();
+    makePyGiDrawableOverruleWrapper();
     makePyGiSubEntityTraitsWrapper();
     makePyGiDrawableTraitsWrapper();
-
-    makeAcGiGeometryWrapper();
-    makeAcGiWorldGeometryWrapper();
-    makeAcGiViewportGeometryWrapper();
+    makePyGiGeometryWrapper();
+    makePyGiWorldGeometryWrapper();
+    makePyGiViewportGeometryWrapper();
     makePyGiTransientManagerWrapper();
 
     enum_<AcGiTransientDrawingMode>("AcGiTransientDrawingMode")

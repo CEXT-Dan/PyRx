@@ -4,7 +4,7 @@ using namespace boost::python;
 
 //-----------------------------------------------------------------------------------
 //PyGeBoundBlock3d
-void makPyGeBoundBlock3dWrapper()
+void makePyGeBoundBlock3dWrapper()
 {
     class_<PyGeBoundBlock3d, bases<PyGeEntity3d>>("BoundBlock3d")
         .def(init<>())
