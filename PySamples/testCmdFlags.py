@@ -5,6 +5,28 @@ import PyDb as Db
 import PyAp as Ap
 import PyEd as Ed
 
+# MODAL           
+# TRANSPARENT     
+# USEPICKSET      
+# REDRAW          
+# NOPERSPECTIVE   
+# NOMULTIPLE      
+# NOTILEMODE      
+# NOPAPERSPACE    
+# NOOEM           
+# UNDEFINED       
+# INPROGRESS      
+# DEFUN           
+# NOINTERNALLOCK  
+# DOCREADLOCK     
+# DOCEXCLUSIVELOCK
+# SESSION         
+# INTERRUPTIBLE   
+# NOHISTORY       
+# NO_UNDO_MARKER  
+# NOBEDIT         
+
+
 #not case sensitive
 def PyRxCmd_pynohist(CmDFlags = Ap.CmdFlags.NOHISTORY):
     try:
