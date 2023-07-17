@@ -87,7 +87,7 @@ public:
 
 //-----------------------------------------------------------------------------------------
 //PyApDocManager
-void makeAcApDocManagerWrapper();
+void makePyApDocManagerWrapper();
 
 class PyApDocManager : public PyRxObject
 {

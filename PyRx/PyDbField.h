@@ -1,6 +1,6 @@
 #pragma once
 #include "PyDbObject.h"
-void makeAcDbFieldtWrapper();
+void makePyDbFieldtWrapper();
 //---------------------------------------------------------------------------------------- -
 //PyDbField
 class PyDbField : public PyDbObject

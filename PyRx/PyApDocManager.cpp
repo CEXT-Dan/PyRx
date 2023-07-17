@@ -373,7 +373,7 @@ void PyApDocManagerReactor::removeReactor()
 
 //-----------------------------------------------------------------------------------------
 //PyApDocManager Wrapper
-void makeAcApDocManagerWrapper()
+void makePyApDocManagerWrapper()
 {
     class_<PyApDocManager, bases<PyRxObject>>("DocManager")
         .def("curDocument", &PyApDocManager::curDocument)

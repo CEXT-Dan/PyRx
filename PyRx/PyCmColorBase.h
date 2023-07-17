@@ -1,4 +1,4 @@
 #pragma once
-void makeAcCmColorWrapper();
-void makeAcCmTransparencyWrapper();
-void makeAcCmEntityColorWrapper();
+void makePyCmColorWrapper();
+void makePyCmTransparencyWrapper();
+void makePyCmEntityColorWrapper();

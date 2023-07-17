@@ -2,7 +2,7 @@
 #include "PyDbEnts.h"
 //-----------------------------------------------------------------------------------
 //PyDbTable
-void makeyDbTableWrapper();
+void makePyDbTableWrapper();
 class PyDbTable : public PyDbBlockReference
 {
 public:

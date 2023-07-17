@@ -8,7 +8,7 @@ class PyDbObjectId;
 class PyDbAnnotationScale;
 
 
-void makeAcDbSymbolTableRecordWrapper();
+void makePyDbSymbolTableRecordWrapper();
 
 //---------------------------------------------------------------------------------------- -
 // PyDbSymbolTableRecord 
@@ -35,7 +35,7 @@ public:
 
 //---------------------------------------------------------------------------------------- -
 // PyDbDimStyleTableRecord 
-void makeAcDbDimStyleTableRecordWrapper();
+void makePyDbDimStyleTableRecordWrapper();
 class PyDbDimStyleTableRecord : public PyDbSymbolTableRecord
 {
 public:
@@ -255,7 +255,7 @@ public:
 
 //---------------------------------------------------------------------------------------- -
 // PyDbBlockTableRecord
-void makeAcDbBlockTableRecordWrapper();
+void makePyDbBlockTableRecordWrapper();
 class PyDbBlockTableRecord : public PyDbSymbolTableRecord
 {
 public:
@@ -308,7 +308,7 @@ public:
 
 //---------------------------------------------------------------------------------------- -
 // PyDbLayerTableRecord
-void makeAcDbLayerTableRecordWrapper();
+void makePyDbLayerTableRecordWrapper();
 class PyDbLayerTableRecord : public PyDbSymbolTableRecord
 {
 public:

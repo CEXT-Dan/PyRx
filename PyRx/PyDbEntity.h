@@ -5,7 +5,7 @@ class PyGePlane;
 
 //-------------------------------------------------------------------------------------------------------------
 //PyDbEntity
-void makeAcDbEntityWrapper();
+void makePyDbEntityWrapper();
 class PyDbEntity : public PyDbObject
 {
 public:
@@ -89,7 +89,7 @@ public:
 };
 //-------------------------------------------------------------------------------------------------------------
 //PyDbBlockBegin
-void makeAcDbBlockBeginWrapper();
+void makePyDbBlockBeginWrapper();
 class PyDbBlockBegin : public PyDbEntity
 {
 public:
@@ -106,7 +106,7 @@ public:
 };
 //-------------------------------------------------------------------------------------------------------------
 //PyDbBlockEnd
-void makeAcDbBlockEndWrapper();
+void makePyDbBlockEndWrapper();
 class PyDbBlockEnd : public PyDbEntity
 {
 public:
@@ -123,7 +123,7 @@ public:
 };
 //-------------------------------------------------------------------------------------------------------------
 //PyDbSequenceEnd
-void makeAcDbSequenceEndWrapper();
+void makePyDbSequenceEndWrapper();
 class PyDbSequenceEnd : public PyDbEntity
 {
 public:

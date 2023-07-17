@@ -9,7 +9,7 @@ class PyGiWorldDraw;
 class PyGiViewportDraw;
 //--------------------------------------------------------------------------------------------------------
 //PyJig
-void makeAcEdJigWrapper();
+void makePyEdJigWrapper();
 class PyJig : public AcEdJig, public boost::python::wrapper<PyJig>
 {
 public:
@@ -46,7 +46,7 @@ public:
 
 //--------------------------------------------------------------------------------------------------------
 //PyDrawJig
-void makeAcEdDrawJigWrapper();
+void makePyEdDrawJigWrapper();
 
 class PyDrawJig : public AcEdJig, public AcDbEntity, public boost::python::wrapper<PyDrawJig>
 {

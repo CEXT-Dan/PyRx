@@ -7,7 +7,7 @@ class PyDbHandle;
 class PyDbAnnotationScale;
 class PyDbDimStyleTableRecord;
 
-void makeAcDbDatabaseWrapper();
+void makePyDbDatabaseWrapper();
 class PyDbDatabase : public PyRxObject
 {
 public:

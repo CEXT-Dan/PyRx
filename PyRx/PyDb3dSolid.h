@@ -108,7 +108,7 @@ public:
 
 //-----------------------------------------------------------------------------------
 //PyDbBody
-void makeAcDbBodyWrapper();
+void makePyDbBodyWrapper();
 
 class PyDbBody : public PyDbEntity
 {

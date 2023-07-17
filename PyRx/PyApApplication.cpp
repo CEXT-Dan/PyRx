@@ -8,7 +8,7 @@
 using namespace boost::python;
 //-----------------------------------------------------------------------------------------
 //PyApApplication  Wrapper
-void makeAcApApplictionWrapper()
+void makePyApApplictionWrapper()
 {
     class_<PyApApplication>("Application")
         .def("docManager", &PyApApplication::docManager)

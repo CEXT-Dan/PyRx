@@ -6,7 +6,7 @@
 using namespace boost::python;
 //---------------------------------------------------------------------------------------- -
 //PyDbDictionary wrapper
-void makeAcDbDictionaryWrapper()
+void makePyDbDictionaryWrapper()
 {
     class_<PyDbDictionary, bases<PyDbObject>>("Dictionary")
         .def(init<>())

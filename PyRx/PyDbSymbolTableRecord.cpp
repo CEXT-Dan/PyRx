@@ -7,7 +7,7 @@
 using namespace boost::python;
 //---------------------------------------------------------------------------------------- -
 // PyDbSymbolTableRecord  wrapper
-void makeAcDbSymbolTableRecordWrapper()
+void makePyDbSymbolTableRecordWrapper()
 {
     class_<PyDbSymbolTableRecord, bases<PyDbObject>>("SymbolTableRecord", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
@@ -110,7 +110,7 @@ AcDbSymbolTableRecord* PyDbSymbolTableRecord::impObj(const std::source_location&
 
 //---------------------------------------------------------------------------------------- -
 // PyDbDimStyleTableRecord 
-void makeAcDbDimStyleTableRecordWrapper()
+void makePyDbDimStyleTableRecordWrapper()
 {
     class_<PyDbDimStyleTableRecord, bases<PyDbSymbolTableRecord>>("DimStyleTableRecord")
         .def(init<>())
@@ -1271,7 +1271,7 @@ AcDbViewTableRecord* PyDbViewTableRecord::impObj(const std::source_location& src
 
 //---------------------------------------------------------------------------------------- -
 //PyDbBlockTableRecord wrapper
-void makeAcDbBlockTableRecordWrapper()
+void makePyDbBlockTableRecordWrapper()
 {
     class_<PyDbBlockTableRecord, bases<PyDbSymbolTableRecord>>("BlockTableRecord")
         .def(init<>())
@@ -1617,7 +1617,7 @@ AcDbBlockTableRecord* PyDbBlockTableRecord::impObj(const std::source_location& s
 
 //---------------------------------------------------------------------------------------- -
 //AcDbLayerTableRecord wrapper
-void makeAcDbLayerTableRecordWrapper()
+void makePyDbLayerTableRecordWrapper()
 {
     class_<PyDbLayerTableRecord, bases<PyDbSymbolTableRecord>>("LayerTableRecord")
         .def(init<>())

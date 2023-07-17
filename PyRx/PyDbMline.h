@@ -6,7 +6,7 @@ class PyDbObjectId;
 
 //-----------------------------------------------------------------------------------
 //PyDbMline
-void makPyDbMlineWrapper();
+void makePyDbMlineWrapper();
 class PyDbMline : public PyDbEntity
 {
 public:
@@ -53,7 +53,7 @@ public:
 
 //-----------------------------------------------------------------------------------
 //PyDbMlineStyle
-void makPyDbMlineStyleWrapper();
+void makePyDbMlineStyleWrapper();
 
 class PyDbMlineStyle : public PyDbObject
 {

@@ -21,11 +21,11 @@ BOOST_PYTHON_MODULE(PyEd)
 {
     docstring_options local_docstring_options(true, true, true);
 
-    makeEdCoreWrapper();
+    makePyEdCoreWrapper();
     makePyEdSelectionSetWrapper();
-    makeAcEdJigWrapper();
-    makeAcEdDrawJigWrapper();
-    makeAcEditorWrapper();
+    makePyEdJigWrapper();
+    makePyEdDrawJigWrapper();
+    makePyEditorWrapper();
     makePyEditorReactorWrapper();
     makePyEdUIContextWrapper();
     makePyEdInputPointManagerWrapper();

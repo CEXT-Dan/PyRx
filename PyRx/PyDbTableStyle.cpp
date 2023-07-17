@@ -3,7 +3,7 @@
 #include "PyDbObjectId.h"
 
 using namespace boost::python;
-void makeAcDbTableStyleWrapper()
+void makePyDbTableStyleWrapper()
 {
     class_<PyDbTableStyle, bases<PyDbObject>>("TableStyle")
         .def(init<>())

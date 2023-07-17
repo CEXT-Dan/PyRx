@@ -191,7 +191,7 @@ public:
 
 //-----------------------------------------------------------------------------------
 //AcDb3PointAngularDimension
-void makeAcDb3PointAngularDimensionWrapper();
+void makePyDb3PointAngularDimensionWrapper();
 class PyDb3PointAngularDimension : public PyDbDimension
 {
 public:
@@ -234,7 +234,7 @@ public:
 
 //-----------------------------------------------------------------------------------
 //AcDbAlignedDimension
-void makeAlignedDimensionWrapper();
+void makePyDbAlignedDimensionWrapper();
 class PyDbAlignedDimension : public PyDbDimension
 {
 public:
@@ -276,7 +276,7 @@ public:
 
 //-----------------------------------------------------------------------------------
 //AcDbArcDimension
-void makeArcDimensionWrapper();
+void makePyDbArcDimensionWrapper();
 class PyDbArcDimension : public PyDbDimension
 {
 public:
@@ -331,7 +331,7 @@ public:
 
 //-----------------------------------------------------------------------------------
 //AcDbDiametricDimension
-void makeDiametricDimensionWrapper();
+void makePyDbDiametricDimensionWrapper();
 class PyDbDiametricDimension : public PyDbDimension
 {
 public:
@@ -371,7 +371,7 @@ public:
 
 //-----------------------------------------------------------------------------------
 //AcDbOrdinateDimension
-void makeOrdinateDimensionWrapper();
+void makePyDbOrdinateDimensionWrapper();
 class PyDbOrdinateDimension : public PyDbDimension
 {
 public:
@@ -416,7 +416,7 @@ public:
 
 //-----------------------------------------------------------------------------------
 //AcDbRadialDimension
-void makeRadialDimensionWrapper();
+void makePyDbRadialDimensionWrapper();
 class PyDbRadialDimension : public PyDbDimension
 {
 public:
@@ -459,7 +459,7 @@ public:
 
 //-----------------------------------------------------------------------------------
 //AcDbRadialDimensionLarge
-void makeRadialDimensionLargeWrapper();
+void makePyDbRadialDimensionLargeWrapper();
 class PyDbRadialDimensionLarge : public PyDbDimension
 {
 public:
@@ -512,7 +512,7 @@ public:
 
 //-----------------------------------------------------------------------------------
 //AcDbRotatedDimension
-void makeRotatedDimensionWrapper();
+void makePyDbRotatedDimensionWrapper();
 class PyDbRotatedDimension : public PyDbDimension
 {
 public:

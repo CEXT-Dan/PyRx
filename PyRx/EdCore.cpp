@@ -19,7 +19,7 @@ extern "C" void acedGetCommandPromptString(CString&);
 
 //-----------------------------------------------------------------------------------------
 //EdCore
-void makeEdCoreWrapper()
+void makePyEdCoreWrapper()
 {
     class_<EdCore>("Core")
         .def("alert", &EdCore::alert).staticmethod("alert")

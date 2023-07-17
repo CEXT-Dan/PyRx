@@ -2,7 +2,7 @@
 
 class  PyApDocManager;
 
-void makeAcApApplictionWrapper();
+void makePyApApplictionWrapper();
 
 //-----------------------------------------------------------------------------------------
 //PyApApplication  Wrapper

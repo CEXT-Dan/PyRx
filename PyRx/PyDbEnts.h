@@ -150,7 +150,7 @@ public:
 
 //-----------------------------------------------------------------------------------
 //PyDbBlockReference
-void makeDbBlockReferenceWrapper();
+void makePyDbBlockReferenceWrapper();
 class PyDbBlockReference : public PyDbEntity
 {
 public:
@@ -214,7 +214,7 @@ public:
 
 //-----------------------------------------------------------------------------------
 //PyDbMInsertBlock
-void makeDbMInsertBlockeWrapper();
+void makePyDbMInsertBlockeWrapper();
 class PyDbMInsertBlock : public  PyDbBlockReference
 {
 public:
@@ -242,7 +242,7 @@ public:
 
 //-------------------------------------------------------------------------------------------------------------
 //PyDbVertex
-void makeAcDbVertexWrapper();
+void makePyDbVertexWrapper();
 class PyDbVertex : public PyDbEntity
 {
 public:
@@ -545,7 +545,7 @@ public:
 
 //-----------------------------------------------------------------------------------
 //PyDbCircle
-void makPyDbCircleWrapper();
+void makePyDbCircleWrapper();
 class PyDbCircle : public PyDbCurve
 {
 public:
@@ -577,7 +577,7 @@ public:
 
 //-----------------------------------------------------------------------------------
 //PyDbLine
-void makPyDbLineWrapper();
+void makePyDbLineWrapper();
 class PyDbLine : public PyDbCurve
 {
 public:
@@ -606,7 +606,7 @@ public:
 
 //-----------------------------------------------------------------------------------
 //PyDbPolyline
-void makPyDbPolylineWrapper();
+void makePyDbPolylineWrapper();
 class PyDbPolyline : public PyDbCurve
 {
 public:
@@ -663,7 +663,7 @@ public:
 
 //-----------------------------------------------------------------------------------
 //PyDbDace
-void makPyDbFaceWrapper();
+void makePyDbFaceWrapper();
 class PyDbFace : public PyDbEntity
 {
 public:
@@ -709,7 +709,7 @@ public:
 
 //-----------------------------------------------------------------------------------
 //AcDbFcf
-void makPyDbFcfWrapper();
+void makePyDbFcfWrapper();
 class PyDbFcf : public PyDbEntity
 {
 public:

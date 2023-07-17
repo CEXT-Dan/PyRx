@@ -54,7 +54,7 @@ std::string AcDbExtents2dToStringRepr(const AcDbExtents2d& p)
 }
 
 
-void makeAcDbExtents2dWrapper()
+void makePyDbExtents2dWrapper()
 {
     class_<AcDbExtents2d>("Extents2d")
         .def(init<>())
@@ -88,7 +88,7 @@ std::string AcDbExtentsToStringRepr(const AcDbExtents& p)
     return std::format("<{}.Extents(({:.14f},{:.14f},{:.14f}),({:.14f},{:.14f},{:.14f}))>", PyGeNamespace, mi.x, mi.y, mi.z, ma.x, ma.y, ma.z);
 }
 
-void makeAcDbExtentsWrapper()
+void makePyDbExtentsWrapper()
 {
     class_<AcDbExtents>("Extents")
         .def(init<>())
@@ -113,43 +113,39 @@ BOOST_PYTHON_MODULE(PyDb)
 
     //create in class order!
     makePyDbSubentIdWrapper();
-    makeAcDbExtents2dWrapper();
-    makeAcDbExtentsWrapper();
-    makeAcCmColorWrapper();
-    makeAcCmEntityColorWrapper();
-    makeAcCmTransparencyWrapper();
-    makeAcDbObjectIdWrapper();
+    makePyDbExtents2dWrapper();
+    makePyDbExtentsWrapper();
+    makePyCmColorWrapper();
+    makePyCmEntityColorWrapper();
+    makePyCmTransparencyWrapper();
+    makePyDbObjectIdWrapper();
     makePyDbHandleWrapper();
     makePyDbXrefObjectIdWrapper();
-    makeAdsNameWrapper();
-    makeAcDbObjectWrapper();
-    makeAcDbFieldtWrapper();
-    makeAcDbEntityWrapper();
-    makeAcDbBlockBeginWrapper();
-    makeAcDbBlockEndWrapper();
-    makeAcDbSequenceEndWrapper();
+    makePyAdsNameWrapper();
+    makePyDbObjectWrapper();
+    makePyDbFieldtWrapper();
+    makePyDbEntityWrapper();
+    makePyDbBlockBeginWrapper();
+    makePyDbBlockEndWrapper();
+    makePyDbSequenceEndWrapper();
     makePyDbXrecordWrapper();
-
 #ifndef ZRXAPP
     makePyDbObjectContextWrapper();
     makePyDbAnnotationScaleWrapper();
 #endif
-
-    makeAcDbTableStyleWrapper();
+    makePyDbTableStyleWrapper();
     makePyDbMLeaderStyleWrapper();
-    makPyDbMlineStyleWrapper();
-
+    makePyDbMlineStyleWrapper();
     makePyDbTextWrapper();
     makePyDbAttributeDefinitionWrapper();
     makePyDbAttributeWrapper();
-    makeDbBlockReferenceWrapper();
+    makePyDbBlockReferenceWrapper();
     makePyDbDynBlockReferenceWrapper();
-    makeDbMInsertBlockeWrapper();
+    makePyDbMInsertBlockeWrapper();
     makePyDbMTextWrapper();
-    makeyDbTableWrapper();
+    makePyDbTableWrapper();
     makePyDbViewportWrapper();
-
-    makeAcDbVertexWrapper();
+    makePyDbVertexWrapper();
     makePyDb2dVertexWrapper();
     makePyAcDb3dPolylineVertexWrapper();
     makePyAcDbPolygonMeshVertexWrapper();
@@ -160,22 +156,20 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDb2dPolylineWrapper();
     makePyDb3dPolylineWrapper();
     makePyDbArcWrapper();
-    makPyDbCircleWrapper();
-    makPyDbLineWrapper();
-    makPyDbPolylineWrapper();
-    makPyDbFaceWrapper();
-    makPyDbFcfWrapper();
-    makPyDbMlineWrapper();
+    makePyDbCircleWrapper();
+    makePyDbLineWrapper();
+    makePyDbPolylineWrapper();
+    makePyDbFaceWrapper();
+    makePyDbFcfWrapper();
+    makePyDbMlineWrapper();
     makePyDbHatchWrapper();
-
-    makeAcDbDictionaryWrapper();
-
-    makeAcDbSymbolTableWrapper();
-    makeAcDbSymbolTableRecordWrapper();
+    makePyDbDictionaryWrapper();
+    makePyDbSymbolTableWrapper();
+    makePyDbSymbolTableRecordWrapper();
     makePyDbDimStyleTableWrapper();
-    makeAcDbDimStyleTableRecordWrapper();
+    makePyDbDimStyleTableRecordWrapper();
     makePyDbBlockTableWrapper();
-    makeAcDbBlockTableRecordWrapper();
+    makePyDbBlockTableRecordWrapper();
     makePyDbTextStyleTableWrapper();
     makePyDbTextStyleTableRecordWrapper();
     makePyDbUCSTableWrapper();
@@ -185,68 +179,56 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbLinetypeTableWrapper();
     makePyDbLinetypeTableRecordWrapper();
     makePyDbLayerTableWrapper();
-    makeAcDbLayerTableRecordWrapper();
+    makePyDbLayerTableRecordWrapper();
     makePyDbAbstractViewTableWrapper();
     makePyDbAbstractViewTableRecordWrapper();
     makePyDbViewportTableRecordWrapper();
     makePyDbViewTableRecordWrapper();
-
-    makeAcDbDatabaseWrapper();
-    makeAcDbHostApplicationServicesWrapper();
-    makeAPyDbSymUtilServicesWrapper();
-
+    makePyDbDatabaseWrapper();
+    makePyDbHostApplicationServicesWrapper();
+    makePyDbSymUtilServicesWrapper();
     makePyDb3dSolidWrapper();
     makePyDbRegionWrapper();
-    makeAcDbBodyWrapper();
+    makePyDbBodyWrapper();
     makePyDbRevolveOptionsWrapper();
     makePyDbSweepOptionsWrapper();
     makePyDbSurfaceWrapper();
-    makeAcDbExtrudedSurfaceWrapper();
-    makeAcDbLoftedSurfaceWrapper();
+    makePyDbExtrudedSurfaceWrapper();
+    makePyDbLoftedSurfaceWrapper();
     makePyDbNurbSurfaceWrapper();
     makePyDbPlaneSurfaceWrapper();
     makePyDbRevolvedSurfaceWrapper();
     makePyDbSweptSurfaceWrapper();
-
     makePyDbDimensionWrapper();
     makePyDb2LineAngularDimensionWrapper();
-    makeAcDb3PointAngularDimensionWrapper();
-    makeAlignedDimensionWrapper();
-    makeArcDimensionWrapper();
-    makeDiametricDimensionWrapper();
-    makeOrdinateDimensionWrapper();
-    makeRadialDimensionWrapper();
-    makeRadialDimensionLargeWrapper();
-    makeRotatedDimensionWrapper();
-
+    makePyDb3PointAngularDimensionWrapper();
+    makePyDbAlignedDimensionWrapper();
+    makePyDbArcDimensionWrapper();
+    makePyDbDiametricDimensionWrapper();
+    makePyDbOrdinateDimensionWrapper();
+    makePyDbRadialDimensionWrapper();
+    makePyDbRadialDimensionLargeWrapper();
+    makePyDbRotatedDimensionWrapper();
     makePyDbLeaderWrapper();
     makePyDbMLeaderWrapper();
-
     makePyUnderlayLayerWrapper();
     makePyDbUnderlayDefinitionWrapper();
     makePyDbUnderlayReferenceWrapper();
     makePyDbPdfDefinitionWrapper();
     makePyDbPdfReferenceWrapper();
-
     makePyDbImageWrapper();
     makePyDbRasterImageDefWrapper();
     makePyDbRasterImageDefReactorWrapper();
     makePyDbRasterImageWrapper();
-
     makePyDbIdMappingWrapper();
-
     makePyDbTransactionManager();
     makePyTransaction();
-
     makePyDbPlotSettingsWrapper();
     makePyDbLayoutWrapper();
     makePyDbLayoutManagerWrapper();
-
     makePyDbEvalVariantWrapper();
     makePyDbDynBlockReferencePropertyWrapper();
-
     makeDbCoreWrapper();//LAST?
-
 
     def("curDb", curPyDb);
 

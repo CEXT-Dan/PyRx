@@ -7,7 +7,7 @@
 
 using namespace boost::python;
 
-void makeAcDbObjectWrapper()
+void makePyDbObjectWrapper()
 {
     PyDocString DS("DbObject");
     class_<PyDbObject, bases<PyGiDrawable>>("DbObject", boost::python::no_init)

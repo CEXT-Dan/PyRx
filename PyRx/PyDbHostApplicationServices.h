@@ -6,7 +6,7 @@ class PyDbLayoutManager;
 
 //---------------------------------------------------------------------------------------- -
 //PyDbHostApplicationServices
-void makeAcDbHostApplicationServicesWrapper();
+void makePyDbHostApplicationServicesWrapper();
 
 class PyDbHostApplicationServices
 {
@@ -26,7 +26,7 @@ protected:
 
 //---------------------------------------------------------------------------------------- -
 //PyDbSymUtilServices
-void makeAPyDbSymUtilServicesWrapper();
+void makePyDbSymUtilServicesWrapper();
 
 class PyDbSymUtilServices
 {

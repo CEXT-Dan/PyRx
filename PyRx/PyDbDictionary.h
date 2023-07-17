@@ -1,7 +1,7 @@
 #pragma once
 #include "PyDbObject.h"
 
-void makeAcDbDictionaryWrapper();
+void makePyDbDictionaryWrapper();
 
 //---------------------------------------------------------------------------------------- -
 //PyDbDictionary

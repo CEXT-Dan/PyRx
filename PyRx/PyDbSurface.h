@@ -27,7 +27,7 @@ public:
 
 //----------------------------------------------------------------------
 //AcDbExtrudedSurface
-void makeAcDbExtrudedSurfaceWrapper();
+void makePyDbExtrudedSurfaceWrapper();
 
 class PyDbExtrudedSurface : public PyDbSurface
 {
@@ -46,7 +46,7 @@ public:
 
 //----------------------------------------------------------------------
 //AcDbLoftedSurface 
-void makeAcDbLoftedSurfaceWrapper();
+void makePyDbLoftedSurfaceWrapper();
 
 #if defined(GRXAPP) || defined(ZRXAPP)
 #else

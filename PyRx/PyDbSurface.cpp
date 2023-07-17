@@ -83,7 +83,7 @@ AcDbSurface* PyDbSurface::impObj(const std::source_location& src /*= std::source
 
 //----------------------------------------------------------------------
 //AcDbExtrudedSurface
-void makeAcDbExtrudedSurfaceWrapper()
+void makePyDbExtrudedSurfaceWrapper()
 {
     class_<PyDbExtrudedSurface, bases<PyDbSurface>>("ExtrudedSurface")
         .def(init<>())
@@ -154,7 +154,7 @@ AcDbExtrudedSurface* PyDbExtrudedSurface::impObj(const std::source_location& src
 
 //----------------------------------------------------------------------
 //AcDbLoftedSurface 
-void makeAcDbLoftedSurfaceWrapper()
+void makePyDbLoftedSurfaceWrapper()
 {
 #if defined(GRXAPP) || defined(ZRXAPP)
 #else

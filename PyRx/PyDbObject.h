@@ -4,7 +4,7 @@ class PyDbObjectId;
 class PyDbDatabase;
 class PyDbField;
 class PyDbHandle;
-void makeAcDbObjectWrapper();
+void makePyDbObjectWrapper();
 //---------------------------------------------------------------------------------------- -
 //PyDbObject
 class PyDbObject : public PyGiDrawable

@@ -8,7 +8,7 @@ using namespace boost::python;
 
 //---------------------------------------------------------------------------------------- -
 //PyDbHostApplicationServices
-void makeAcDbHostApplicationServicesWrapper()
+void makePyDbHostApplicationServicesWrapper()
 {
     class_<PyDbHostApplicationServices, boost::noncopyable>("HostApplicationServices")
         .def(init<>())
@@ -94,7 +94,7 @@ PyDbLayoutManager PyDbHostApplicationServices::dbLayoutManager()
 
 //---------------------------------------------------------------------------------------- -
 //PyDbSymUtilServices
-void makeAPyDbSymUtilServicesWrapper()
+void makePyDbSymUtilServicesWrapper()
 {
     class_<PyDbSymUtilServices, boost::noncopyable>("SymUtilServices")
         .def(init<>())

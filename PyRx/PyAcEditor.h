@@ -3,7 +3,7 @@
 class PyDbObjectId;
 class PyDbDatabase;
 
-void makeAcEditorWrapper();
+void makePyEditorWrapper();
 
 class PyAcEditor
 {
