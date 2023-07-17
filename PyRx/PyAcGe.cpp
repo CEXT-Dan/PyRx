@@ -38,7 +38,7 @@ std::string AcGeScale2dToStringRepr(const AcGeScale2d& s)
     return std::format("<{}.Scale2d({:.14f},{:.14f})>", PyGeNamespace, s.sx, s.sy);
 }
 
-void makeAcGeScale2dWrapper()
+void makePyGeScale2dWrapper()
 {
     class_<AcGeScale2d>("Scale2d")
         .def(init<>())
@@ -72,7 +72,7 @@ static AcGeTol getTol()
     return AcGeContext::gTol;
 }
 
-void makeAcGeTolWrapper()
+void makePyGeTolWrapper()
 {
     class_<AcGeTol>("Tol")
         .def(init<>())
@@ -152,7 +152,7 @@ void AcGePoint2dSetItem(AcGePoint2d& p, int idx, double val)
     }
 }
 
-void makeAcGePoint2dWrapper()
+void makePyGePoint2dWrapper()
 {
     class_<AcGePoint2d>("Point2d")
         .def(init<>())
@@ -258,7 +258,7 @@ void AcGeVector2dSetItem(AcGeVector2d& p, int idx, double val)
     }
 }
 
-void makeAcGeVector2dWrapper()
+void makePyGeVector2dWrapper()
 {
     class_<AcGeVector2d>("Vector2d")
         .def(init<>())
@@ -371,7 +371,7 @@ static AcGeMatrix2d AcGeMatrix2alignCoordSys
     return AcGeMatrix2d::alignCoordSys(fromOrigin, fromE0, fromE1, toOrigin, toE0, toE1);
 }
 
-static void makeAcGeMatrix2dWrapper()
+static void makePyGeMatrix2dWrapper()
 {
     class_<AcGeMatrix2d>("Matrix2d")
         .add_static_property("kIdentity", &AcGeMatrix2dkIdentity)
@@ -430,7 +430,7 @@ std::string AcGeScale3dToStringRepr(const AcGeScale3d& s)
     return std::format("<{}.Scale3d({:.14f},{:.14f},{:.14f})>", PyGeNamespace, s.sx, s.sy, s.sz);
 }
 
-void makeAcGeScale3dWrapper()
+void makePyGeScale3dWrapper()
 {
     class_<AcGeScale3d>("Scale3d")
         .def_readwrite("sx", &AcGeScale3d::sx)
@@ -539,7 +539,7 @@ void AcGePoint3dSetItem(AcGePoint3d& p, int idx, double val)
     }
 }
 
-void makeAcGePoint3dWrapper()
+void makePyGePoint3dWrapper()
 {
     PyDocString DS("Point3d");
     class_<AcGePoint3d>("Point3d")
@@ -673,7 +673,7 @@ void AcGeVector3dSetItem(AcGeVector3d& p, int idx, double val)
     }
 }
 
-static void makeAcGeVector3dWrapper()
+static void makePyGeVector3dWrapper()
 {
     class_<AcGeVector3d>("Vector3d")
         .def(init<>())
@@ -858,7 +858,7 @@ std::string AcGeMatrix3dToStringRepr(const AcGeMatrix3d& x)
         x.entry[3][0], x.entry[3][1], x.entry[3][2], x.entry[3][3]);
 }
 
-void makeAcGeMatrix3dWrapper()
+void makePyGeMatrix3dWrapper()
 {
     class_<AcGeMatrix3d>("Matrix3d")
         .def(init<>())
@@ -928,19 +928,19 @@ BOOST_PYTHON_MODULE(PyGe)
 {
     docstring_options local_docstring_options(true, true, true);
 
-    makeAcGeTolWrapper();
+    makePyGeTolWrapper();
     //
     makePyGeKnotVectorWrapper();
-    makeAcGePoint2dWrapper();
-    makeAcGeVector2dWrapper();
-    makeAcGeMatrix2dWrapper();
+    makePyGePoint2dWrapper();
+    makePyGeVector2dWrapper();
+    makePyGeMatrix2dWrapper();
     //
-    makeAcGePoint3dWrapper();
-    makeAcGeVector3dWrapper();
-    makeAcGeMatrix3dWrapper();
+    makePyGePoint3dWrapper();
+    makePyGeVector3dWrapper();
+    makePyGeMatrix3dWrapper();
     //
-    makeAcGeScale3dWrapper();
-    makeAcGeScale2dWrapper();
+    makePyGeScale3dWrapper();
+    makePyGeScale2dWrapper();
     //
     makePyGeIntervalWrapper();
     //2D
@@ -948,51 +948,51 @@ BOOST_PYTHON_MODULE(PyGe)
     makePyGeBoundBlock2dWrapper();
     makePyGeClipBoundary2dWrapper();
     makePyGeCurve2dWrapper();
-    makeAcGeCircArc2dWrapper();
-    makeAcGeEllipArc2Wrapper();
-    makeAcGeExternalCurve2dWrapper();
-    makeAcGeLinearEnt2dWrapper();
-    makeAcGeLine2dWrapper();
+    makePyGeCircArc2dWrapper();
+    makePyGeEllipArc2Wrapper();
+    makePyGeExternalCurve2dWrapper();
+    makePyGeLinearEnt2dWrapper();
+    makePyGeLine2dWrapper();
     makePyGeLineSeg2dWrapper();
-    makeAcGeRay2dWrapper();
-    makeAcGeOffsetCurve2dWrapper();
+    makePyGeRay2dWrapper();
+    makePyGeOffsetCurve2dWrapper();
     makePyGeCurveCurveInt2dWrapper();
     makePyGePointEnt2dWrapper();
     makePyGePointOnCurve2dWrapper();
-    makeAcGePosition2dWrapper();
+    makePyGePosition2dWrapper();
     makePyGeSplineEnt2dWrapper();
-    makAcGeCubicSplineCurve2dWrapper();
-    makAcGeNurbCurve2dWrapper();
-    makAcGePolyline2dWrapper();
-    makeAcGeCompositeCurve2dWrapper();
+    makePyGeCubicSplineCurve2dWrapper();
+    makePyGeNurbCurve2dWrapper();
+    makePyGePolyline2dWrapper();
+    makePyGeCompositeCurve2dWrapper();
     //3D
     makePyGeEntity3dWrapper();
     makePyGeCurveSurfIntWrapper();
     makePyGeSurfSurfIntWrapper();
-    makPyGeCurve3dWrapper();
+    makePyGeCurve3dWrapper();
     makePyGePointEnt3dWrapper();
     makePyGePointOnCurve3dWrapper();
     makePyGePointOnSurfaceWrapper();
     makePyGePosition3dWrapper();
-    makPyGeBoundBlock3dWrapper();
-    makPyGeLinearEnt3dWrapper();
-    makPyGeLineSeg3dWrapper();
-    makAcGeLine3dWrapper();
-    makAcGeRay3ddWrapper();
-    makeAcGeSurfaceWrapper();
-    makeAcGePlanarEntWrapper();
+    makePyGeBoundBlock3dWrapper();
+    makePyGeLinearEnt3dWrapper();
+    makePyGeLineSeg3dWrapper();
+    makePyGeLine3dWrapper();
+    makePyGeRay3ddWrapper();
+    makePyGeSurfaceWrapper();
+    makePyGePlanarEntWrapper();
     makePyGePlaneWrapper();
     makePyGeBoundedPlaneWrapper();
-    makAcGeCircArc3dWrapper();
-    makAcGeCompositeCurve3dWrapper();
-    makeAcGeEllipArc3dWrapper();
-    makeAcGeExternalCurve3dWrapper();
-    makeAcGeOffsetCurve3dWrapper();
+    makePyGeCircArc3dWrapper();
+    makePyGeCompositeCurve3dWrapper();
+    makePyGeEllipArc3dWrapper();
+    makePyGeExternalCurve3dWrapper();
+    makePyGeOffsetCurve3dWrapper();
     makePyGeCurveCurveInt3dWrapper();
     makePyGeSplineEnt3dWrapper();
-    makAcGeCubicSplineCurve3dWrapper();
-    makAcGeNurbCurve3dWrapper();
-    makAcGePolyline3dWrapper();
+    makePyGeCubicSplineCurve3dWrapper();
+    makePyGeNurbCurve3dWrapper();
+    makePyGePolyline3dWrapper();
 
     enum_<AcGe::ErrorCondition>("AcGeError")
         .value("kOk", AcGe::ErrorCondition::kOk)

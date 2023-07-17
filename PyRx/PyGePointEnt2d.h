@@ -54,7 +54,7 @@ public:
 
 //-----------------------------------------------------------------------------------------
 //AcGePosition2d wrapper
-void makeAcGePosition2dWrapper();
+void makePyGePosition2dWrapper();
 
 class PyGePosition2d : public PyGePointEnt2d
 {

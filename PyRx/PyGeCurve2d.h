@@ -73,7 +73,7 @@ public:
 };
 //-----------------------------------------------------------------------------------------
 //AcGeCircArc2d wrapper
-void makeAcGeCircArc2dWrapper();
+void makePyGeCircArc2dWrapper();
 class PyGeCircArc2d : public PyGeCurve2d
 {
 public:
@@ -118,7 +118,7 @@ public:
 };
 //-----------------------------------------------------------------------------------------
 //AcGeCircArc2d wrapper
-void makeAcGeEllipArc2Wrapper();
+void makePyGeEllipArc2Wrapper();
 class PyGeEllipArc2d : public PyGeCurve2d
 {
 public:
@@ -160,7 +160,7 @@ public:
 };
 //-----------------------------------------------------------------------------------------
 //PyGeExternalCurve2d wrapper
-void makeAcGeExternalCurve2dWrapper();
+void makePyGeExternalCurve2dWrapper();
 class PyGeExternalCurve2d : public PyGeCurve2d
 {
 public:
@@ -171,7 +171,7 @@ public:
 };
 //-----------------------------------------------------------------------------------------
 //AcGeOffsetCurve2d wrapper
-void makeAcGeOffsetCurve2dWrapper();
+void makePyGeOffsetCurve2dWrapper();
 class PyGeOffsetCurve2d : public PyGeCurve2d
 {
 public:
@@ -183,7 +183,7 @@ public:
 };
 //-----------------------------------------------------------------------------------------
 //AcGeCompositeCurve2d wrapper
-void makeAcGeCompositeCurve2dWrapper();
+void makePyGeCompositeCurve2dWrapper();
 class PyGeCompositeCurve2d : public PyGeCurve2d
 {
 public:

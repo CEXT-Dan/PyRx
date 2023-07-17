@@ -11,7 +11,7 @@
 using namespace boost::python;
 //-----------------------------------------------------------------------------------
 //PyGeCurve3d
-void makPyGeCurve3dWrapper()
+void makePyGeCurve3dWrapper()
 {
     class_<PyGeCurve3d, bases<PyGeEntity3d>>("Curve3d", boost::python::no_init)
         .def("getInterval", &PyGeCurve3d::getInterval)
@@ -613,7 +613,7 @@ AcGeCurve3d* PyGeCurve3d::impObj(const std::source_location& src /*= std::source
 
 //-----------------------------------------------------------------------------------
 //AcGeCircArc3d
-void makAcGeCircArc3dWrapper()
+void makePyGeCircArc3dWrapper()
 {
     class_<PyGeCircArc3d, bases<PyGeCurve3d>>("CircArc3d")
         .def(init<>())
@@ -927,7 +927,7 @@ AcGeCircArc3d* PyGeCircArc3d::impObj(const std::source_location& src /*= std::so
 
 //-----------------------------------------------------------------------------------
 //AcGeCompositeCurve3d
-void makAcGeCompositeCurve3dWrapper()
+void makePyGeCompositeCurve3dWrapper()
 {
     class_<PyGeCompositeCurve3d, bases<PyGeCurve3d>>("CompositeCurve3d")
         .def("className", &PyGeCompositeCurve3d::className).staticmethod("className")
@@ -958,7 +958,7 @@ AcGeCompositeCurve3d* PyGeCompositeCurve3d::impObj(const std::source_location& s
 
 //-----------------------------------------------------------------------------------------
 //AcGeCircArc3d wrapper
-void makeAcGeEllipArc3dWrapper()
+void makePyGeEllipArc3dWrapper()
 {
     class_<PyGeEllipArc3d, bases<PyGeCurve3d>>("EllipArc3d")
         .def(init<>())
@@ -1242,7 +1242,7 @@ AcGeEllipArc3d* PyGeEllipArc3d::impObj(const std::source_location& src /*= std::
 
 //-----------------------------------------------------------------------------------------
 //PyGeExternalCurve3d wrapper
-void makeAcGeExternalCurve3dWrapper()
+void makePyGeExternalCurve3dWrapper()
 {
     class_<PyGeExternalCurve3d, bases<PyGeCurve3d>>("ExternalCurve3d", boost::python::no_init)
         .def("className", &PyGeExternalCurve3d::className).staticmethod("className")
@@ -1268,7 +1268,7 @@ AcGeExternalCurve3d* PyGeExternalCurve3d::impObj(const std::source_location& src
 
 //-----------------------------------------------------------------------------------------
 //AcGeOffsetCurve3d wrapper
-void makeAcGeOffsetCurve3dWrapper()
+void makePyGeOffsetCurve3dWrapper()
 {
     class_<PyGeOffsetCurve3d, bases<PyGeCurve3d>>("OffsetCurve3d", boost::python::no_init)
         .def(init<const PyGeCurve3d&, const AcGeVector3d&, double>())

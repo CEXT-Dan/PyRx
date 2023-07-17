@@ -7,7 +7,7 @@
 using namespace boost::python;
 //-----------------------------------------------------------------------------------------
 //PyGiDrawable
-void makeAcGiObjectWrapper()
+void makePyGiObjectWrapper()
 {
     class_<PyGiDrawable, bases<PyRxObject>>("Drawable", boost::python::no_init)
         .def("setAttributes", &PyGiDrawable::setAttributes)
@@ -139,7 +139,7 @@ AcGiDrawable* PyGiDrawable::impObj(const std::source_location& src /*= std::sour
 //PyGiDrawableOverrule
 
 std::mutex PyGiDrawableOverruleMutex;
-void makeAcGiDrawableOverruleWrapper()
+void makePyGiDrawableOverruleWrapper()
 {
     class_<PyGiDrawableOverrule, bases<PyRxOverrule>>("DrawableOverrule")
         .def("setAttributes", &PyGiDrawableOverrule::setAttributes)

@@ -8,7 +8,7 @@ class PyGePlanarEnt;
 class PyGeLinearEnt3d;
 //-----------------------------------------------------------------------------------
 //PyGeCurve3d
-void makPyGeCurve3dWrapper();
+void makePyGeCurve3dWrapper();
 class PyGeCurve3d : public PyGeEntity3d
 {
 public:
@@ -91,7 +91,7 @@ public:
 };
 //-----------------------------------------------------------------------------------
 //AcGeCircArc3d
-void makAcGeCircArc3dWrapper();
+void makePyGeCircArc3dWrapper();
 class PyGeCircArc3d : public PyGeCurve3d
 {
 public:
@@ -139,7 +139,7 @@ public:
 };
 //-----------------------------------------------------------------------------------
 //AcGeCompositeCurve3d
-void makAcGeCompositeCurve3dWrapper();
+void makePyGeCompositeCurve3dWrapper();
 class PyGeCompositeCurve3d : public PyGeCurve3d
 {
 public:
@@ -151,7 +151,7 @@ public:
 };
 //-----------------------------------------------------------------------------------------
 //AcGeCircArc3d wrapper
-void makeAcGeEllipArc3dWrapper();
+void makePyGeEllipArc3dWrapper();
 class PyGeEllipArc3d : public PyGeCurve3d
 {
 public:
@@ -200,7 +200,7 @@ public:
 };
 //-----------------------------------------------------------------------------------------
 //PyGeExternalCurve3d wrapper
-void makeAcGeExternalCurve3dWrapper();
+void makePyGeExternalCurve3dWrapper();
 class PyGeExternalCurve3d : public PyGeCurve3d
 {
 public:
@@ -211,7 +211,7 @@ public:
 };
 //-----------------------------------------------------------------------------------------
 //AcGeOffsetCurve3d wrapper
-void makeAcGeOffsetCurve3dWrapper();
+void makePyGeOffsetCurve3dWrapper();
 class PyGeOffsetCurve3d : public PyGeCurve3d
 {
 public:

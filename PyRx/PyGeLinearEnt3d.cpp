@@ -6,7 +6,7 @@
 using namespace boost::python;
 //-----------------------------------------------------------------------------------
 //PyGeLinearEnt3d
-void makPyGeLinearEnt3dWrapper()
+void makePyGeLinearEnt3dWrapper()
 {
     class_<PyGeLinearEnt3d, bases<PyGeCurve3d>>("LinearEnt3d", boost::python::no_init)
         .def("intersectWith", &PyGeLinearEnt3d::intersectWith1)
@@ -236,7 +236,7 @@ AcGeLinearEnt3d* PyGeLinearEnt3d::impObj(const std::source_location& src /*= std
 
 //-----------------------------------------------------------------------------------
 //AcGeLine3d
-void makAcGeLine3dWrapper()
+void makePyGeLine3dWrapper()
 {
     class_<PyGeLine3d, bases<PyGeLinearEnt3d>>("Line3d")
         .def(init<>())
@@ -317,7 +317,7 @@ AcGeLine3d* PyGeLine3d::impObj(const std::source_location& src /*= std::source_l
 
 //-----------------------------------------------------------------------------------
 //PyGeLineSeg3d
-void makPyGeLineSeg3dWrapper()
+void makePyGeLineSeg3dWrapper()
 {
     class_<PyGeLineSeg3d, bases<PyGeLinearEnt3d>>("LineSeg3d")
         .def(init<>())
@@ -430,7 +430,7 @@ AcGeLineSeg3d* PyGeLineSeg3d::impObj(const std::source_location& src /*= std::so
 
 //-----------------------------------------------------------------------------------
 //AcGeRay3d
-void makAcGeRay3ddWrapper()
+void makePyGeRay3ddWrapper()
 {
     class_<PyGeRay3d, bases<PyGeLinearEnt3d>>("Ray3d")
         .def(init<>())

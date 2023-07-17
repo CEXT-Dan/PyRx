@@ -494,7 +494,7 @@ AcGeCurve2d* PyGeCurve2d::impObj(const std::source_location& src /*= std::source
 
 //-----------------------------------------------------------------------------------------
 //AcGeCircArc2d wrapper
-void makeAcGeCircArc2dWrapper()
+void makePyGeCircArc2dWrapper()
 {
     class_<PyGeCircArc2d, bases<PyGeCurve2d>>("CircArc2d")
         .def(init<>())
@@ -792,7 +792,7 @@ AcGeCircArc2d* PyGeCircArc2d::impObj(const std::source_location& src /*= std::so
 
 //----------------------------------------------------------------------------
 //AcGeCircArc2d wrapper
-void makeAcGeEllipArc2Wrapper()
+void makePyGeEllipArc2Wrapper()
 {
     class_<PyGeEllipArc2d, bases<PyGeCurve2d>>("EllipArc2d")
         .def(init<>())
@@ -1036,7 +1036,7 @@ AcGeEllipArc2d* PyGeEllipArc2d::impObj(const std::source_location& src /*= std::
 
 //-----------------------------------------------------------------------------------------
 //PyGeExternalCurve2d wrapper
-void makeAcGeExternalCurve2dWrapper()
+void makePyGeExternalCurve2dWrapper()
 {
     class_<PyGeExternalCurve2d, bases<PyGeCurve2d>>("ExternalCurve2d", boost::python::no_init)
         .def("className", &PyGeExternalCurve2d::className).staticmethod("className")
@@ -1062,7 +1062,7 @@ AcGeExternalCurve2d* PyGeExternalCurve2d::impObj(const std::source_location& src
 
 //-----------------------------------------------------------------------------------------
 //AcGeOffsetCurve2d wrapper
-void makeAcGeOffsetCurve2dWrapper()
+void makePyGeOffsetCurve2dWrapper()
 {
     class_<PyGeOffsetCurve2d, bases<PyGeCurve2d>>("OffsetCurve2d", boost::python::no_init)
         .def(init<const PyGeCurve2d&, double>())
@@ -1094,7 +1094,7 @@ AcGeOffsetCurve2d* PyGeOffsetCurve2d::impObj(const std::source_location& src /*=
 
 //-----------------------------------------------------------------------------------------
 //AcGeCompositeCurve2d wrapper
-void makeAcGeCompositeCurve2dWrapper()
+void makePyGeCompositeCurve2dWrapper()
 {
     class_<PyGeCompositeCurve2d, bases<PyGeCurve2d>>("CompositeCurve2d")
         .def("className", &PyGeCompositeCurve2d::className).staticmethod("className")

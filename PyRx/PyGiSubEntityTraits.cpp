@@ -48,7 +48,6 @@ void makePyGiSubEntityTraitsWrapper()
         .def("desc", &PyGiSubEntityTraits::desc).staticmethod("desc")
         ;
 
-
     enum_<AcGiSubEntityTraits::DrawFlags>("DrawFlags")
         .value("kNoDrawFlags", AcGiSubEntityTraits::DrawFlags::kNoDrawFlags)
         .value("kDrawHatchGroup", AcGiSubEntityTraits::DrawFlags::kDrawHatchGroup)

@@ -34,7 +34,7 @@ public:
 
 //-----------------------------------------------------------------------------------------
 //AcGeCubicSplineCurve3d wrapper
-void makAcGeCubicSplineCurve3dWrapper();
+void makePyGeCubicSplineCurve3dWrapper();
 class PyGeCubicSplineCurve3d : public PyGeSplineEnt3d
 {
 public:
@@ -47,7 +47,7 @@ public:
 
 //-----------------------------------------------------------------------------------------
 //AcGeNurbCurve3d  wrapper
-void makAcGeNurbCurve3dWrapper();
+void makePyGeNurbCurve3dWrapper();
 class PyGeNurbCurve3d : public PyGeSplineEnt3d
 {
 public:
@@ -60,7 +60,7 @@ public:
 
 //-----------------------------------------------------------------------------------------
 //PyGePolyline3d  wrapper
-void makAcGePolyline3dWrapper();
+void makePyGePolyline3dWrapper();
 class PyGePolyline3d : public PyGeSplineEnt3d
 {
 public:

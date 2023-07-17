@@ -206,7 +206,7 @@ AcGePointOnCurve2d* PyGePointOnCurve2d::impObj(const std::source_location& src /
 
 //-----------------------------------------------------------------------------------------
 //AcGePosition2d wrapper
-void makeAcGePosition2dWrapper()
+void makePyGePosition2dWrapper()
 {
     class_<PyGePosition2d, bases<PyGePointEnt2d>>("Position2d")
         .def(init<>())

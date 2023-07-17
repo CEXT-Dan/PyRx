@@ -47,7 +47,7 @@ public:
 
 //-----------------------------------------------------------------------------------------
 //PyGiViewportDraw
-void makeAcGiViewportDrawWrapper();
+void makePyGiViewportDrawWrapper();
 
 class PyGiViewportDraw : public PyGiCommonDraw
 {
@@ -65,7 +65,7 @@ public:
 
 //-----------------------------------------------------------------------------------------
 //PyGiGeometry
-void makeAcGiGeometryWrapper();
+void makePyGiGeometryWrapper();
 
 class PyGiGeometry : public PyRxObject
 {
@@ -116,7 +116,7 @@ public:
 
 //-----------------------------------------------------------------------------------------
 //PyGiWorldGeometry
-void makeAcGiWorldGeometryWrapper();
+void makePyGiWorldGeometryWrapper();
 
 class PyGiWorldGeometry : public PyGiGeometry
 {
@@ -132,7 +132,7 @@ public:
 
 //-----------------------------------------------------------------------------------------
 //AcGiViewportGeometry
-void makeAcGiViewportGeometryWrapper();
+void makePyGiViewportGeometryWrapper();
 
 class PyGiViewportGeometry : public PyGiGeometry
 {

@@ -8,7 +8,7 @@ class PyGeCircArc3d;
 
 //-----------------------------------------------------------------------------------------
 //AcGeSurface wrapper
-void makeAcGePlanarEntWrapper();
+void makePyGePlanarEntWrapper();
 class PyGePlanarEnt : public PyAcGeSurface
 {
 protected:
