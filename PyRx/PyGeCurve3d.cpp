@@ -474,7 +474,7 @@ double PyGeCurve3d::paramAtLength2(double datumParam, double length, Adesk::Bool
 double PyGeCurve3d::area1(double startParam, double endParam) const
 {
     double length = 0;
-    if (bool flag = impObj()->area(startParam, endParam, length); flag = false)
+    if (bool flag = impObj()->area(startParam, endParam, length); flag == false)
         throw PyAcadErrorStatus(eInvalidInput);
     return length;
 }
@@ -482,7 +482,7 @@ double PyGeCurve3d::area1(double startParam, double endParam) const
 double PyGeCurve3d::area2(double startParam, double endParam, const AcGeTol& tol) const
 {
     double length = 0;
-    if (bool flag = impObj()->area(startParam, endParam, length, tol); flag = false)
+    if (bool flag = impObj()->area(startParam, endParam, length, tol); flag == false)
         throw PyAcadErrorStatus(eInvalidInput);
     return length;
 }

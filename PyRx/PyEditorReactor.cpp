@@ -129,7 +129,7 @@ void PyEditorReactor::addReactor()
 
 void PyEditorReactor::removeReactor()
 {
-    if (m_isActive = true)
+    if (m_isActive == true)
     {
         acedEditor->removeReactor(this);
         m_isActive = false;
