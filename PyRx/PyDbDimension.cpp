@@ -1242,7 +1242,7 @@ AcDb2LineAngularDimension* PyDb2LineAngularDimension::impObj(const std::source_l
 
 //-----------------------------------------------------------------------------------
 //AcDb3PointAngularDimension
-void makeAcDb3PointAngularDimensionWrapper()
+void makePyDb3PointAngularDimensionWrapper()
 {
     class_<PyDb3PointAngularDimension, bases<PyDbDimension>>("Point3AngularDimension")
         .def(init<>())
@@ -1399,7 +1399,7 @@ AcDb3PointAngularDimension* PyDb3PointAngularDimension::impObj(const std::source
 
 //-----------------------------------------------------------------------------------
 //AcDbAlignedDimension
-void makeAlignedDimensionWrapper()
+void makePyDbAlignedDimensionWrapper()
 {
     class_<PyDbAlignedDimension, bases<PyDbDimension>>("AlignedDimension")
         .def(init<>())
@@ -1577,7 +1577,7 @@ AcDbAlignedDimension* PyDbAlignedDimension::impObj(const std::source_location& s
 
 //-----------------------------------------------------------------------------------
 //AcDbArcDimension
-void makeArcDimensionWrapper()
+void makePyDbArcDimensionWrapper()
 {
     class_<PyDbArcDimension, bases<PyDbDimension>>("ArcDimension")
         .def(init<>())
@@ -1806,7 +1806,7 @@ AcDbArcDimension* PyDbArcDimension::impObj(const std::source_location& src /*= s
 
 //-----------------------------------------------------------------------------------
 //AcDbDiametricDimension
-void makeDiametricDimensionWrapper()
+void makePyDbDiametricDimensionWrapper()
 {
     class_<PyDbDiametricDimension, bases<PyDbDimension>>("DiametricDimension")
         .def(init<>())
@@ -1971,7 +1971,7 @@ AcDbDiametricDimension* PyDbDiametricDimension::impObj(const std::source_locatio
 
 //-----------------------------------------------------------------------------------
 //AcDbOrdinateDimension
-void makeOrdinateDimensionWrapper()
+void makePyDbOrdinateDimensionWrapper()
 {
     class_<PyDbOrdinateDimension, bases<PyDbDimension>>("OrdinateDimension")
         .def(init<>())
@@ -2140,7 +2140,7 @@ AcDbOrdinateDimension* PyDbOrdinateDimension::impObj(const std::source_location&
 
 //-----------------------------------------------------------------------------------
 //AcDbRadialDimension
-void makeRadialDimensionWrapper()
+void makePyDbRadialDimensionWrapper()
 {
     class_<PyDbRadialDimension, bases<PyDbDimension>>("RadialDimension")
         .def(init<>())
@@ -2289,7 +2289,7 @@ AcDbRadialDimension* PyDbRadialDimension::impObj(const std::source_location& src
 
 //-----------------------------------------------------------------------------------
 //AcDbRadialDimensionLarge
-void makeRadialDimensionLargeWrapper()
+void makePyDbRadialDimensionLargeWrapper()
 {
     class_<PyDbRadialDimensionLarge, bases<PyDbDimension>>("RadialDimensionLarge")
         .def(init<>())
@@ -2508,7 +2508,7 @@ AcDbRadialDimensionLarge* PyDbRadialDimensionLarge::impObj(const std::source_loc
 
 //-----------------------------------------------------------------------------------
 //AcDbRotatedDimension
-void makeRotatedDimensionWrapper()
+void makePyDbRotatedDimensionWrapper()
 {
     class_<PyDbRotatedDimension, bases<PyDbDimension>>("RotatedDimension")
         .def(init<>())

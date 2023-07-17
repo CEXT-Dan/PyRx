@@ -8,7 +8,7 @@
 using namespace boost::python;
 
 //-----------------------------------------------------------------------------------------------------------------------------------
-void makeAcEdJigWrapper()
+void makePyEdJigWrapper()
 {
     {
         class_<PyJig, boost::noncopyable>("Jig", boost::python::no_init)
@@ -294,7 +294,7 @@ std::string PyJig::className()
 
 //--------------------------------------------------------------------------------------------------------
 //PyDrawJig
-void makeAcEdDrawJigWrapper()
+void makePyEdDrawJigWrapper()
 {
     class_<PyDrawJig, boost::noncopyable>("DrawJig")
         .def("drag", &PyDrawJig::dragwr1)

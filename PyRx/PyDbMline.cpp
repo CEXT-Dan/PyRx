@@ -6,7 +6,7 @@
 
 using namespace boost::python;
 
-void makPyDbMlineWrapper()
+void makePyDbMlineWrapper()
 {
     class_<PyDbMline, bases<PyDbEntity>>("Mline")
         .def(init<>())
@@ -289,7 +289,7 @@ AcDbMline* PyDbMline::impObj(const std::source_location& src /*= std::source_loc
 
 //-----------------------------------------------------------------------------------
 //PyDbMlineStyle
-void makPyDbMlineStyleWrapper()
+void makePyDbMlineStyleWrapper()
 {
     class_<PyDbMlineStyle, bases<PyDbObject>>("MlineStyle")
         .def(init<>())

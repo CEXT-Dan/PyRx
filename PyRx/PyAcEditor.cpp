@@ -77,7 +77,7 @@ boost::python::tuple makeSelectionResult(const ads_name& name, Acad::PromptStatu
 //-----------------------------------------------------------------------------------------
 // PyAcEditor wrapper
 
-void makeAcEditorWrapper()
+void makePyEditorWrapper()
 {
     class_<PyAcEditor>("Editor")
         .def("className", &PyAcEditor::className).staticmethod("className")

@@ -9,7 +9,7 @@
 using namespace boost::python;
 //---------------------------------------------------------------------------------------------------
 // makeAcDbDatabaseWrapper
-void makeAcDbDatabaseWrapper()
+void makePyDbDatabaseWrapper()
 {
     class_<PyDbDatabase, bases<PyRxObject>>("Database")
         .def(init<>())

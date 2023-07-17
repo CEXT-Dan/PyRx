@@ -771,7 +771,7 @@ AcDbAttribute* PyDbAttribute::impObj(const std::source_location& src /*= std::so
 
 //-----------------------------------------------------------------------------------
 //PyDbBlockReference
-void makeDbBlockReferenceWrapper()
+void makePyDbBlockReferenceWrapper()
 {
     PyDocString DS("BlockReference");
     class_<PyDbBlockReference, bases<PyDbEntity>>("BlockReference")
@@ -1076,7 +1076,7 @@ AcDbDynBlockReference* PyDbDynBlockReference::impObj(const std::source_location&
 
 //-----------------------------------------------------------------------------------
 //DbMInsertBlock
-void makeDbMInsertBlockeWrapper()
+void makePyDbMInsertBlockeWrapper()
 {
     PyDocString DS("MInsertBlock");
     class_<PyDbMInsertBlock, bases<PyDbBlockReference>>("MInsertBlock")
@@ -1202,7 +1202,7 @@ AcDbMInsertBlock* PyDbMInsertBlock::impObj(const std::source_location& src /*= s
 
 //-------------------------------------------------------------------------------------------------------------
 //PyDbVertex
-void makeAcDbVertexWrapper()
+void makePyDbVertexWrapper()
 {
     PyDocString DS("Vertex");
     class_<PyDbVertex, bases<PyDbEntity>>("Vertex", boost::python::no_init)
@@ -2661,7 +2661,7 @@ AcDbArc* PyDbArc::impObj(const std::source_location& src /*= std::source_locatio
 
 //-----------------------------------------------------------------------------------
 //PyDbCircle
-void makPyDbCircleWrapper()
+void makePyDbCircleWrapper()
 {
     PyDocString DS("Circle");
     class_<PyDbCircle, bases<PyDbCurve>>("Circle")
@@ -2827,7 +2827,7 @@ AcDbCircle* PyDbCircle::impObj(const std::source_location& src /*= std::source_l
 
 //-----------------------------------------------------------------------------------
 //PyDbLine
-void makPyDbLineWrapper()
+void makePyDbLineWrapper()
 {
     PyDocString DS("Line");
     class_<PyDbLine, bases<PyDbCurve>>("Line")
@@ -2966,7 +2966,7 @@ AcDbLine* PyDbLine::impObj(const std::source_location& src /*= std::source_locat
 
 //-----------------------------------------------------------------------------------
 //PyDbPolyline
-void makPyDbPolylineWrapper()
+void makePyDbPolylineWrapper()
 {
     PyDocString DS("Polyline");
     class_<PyDbPolyline, bases<PyDbCurve>>("Polyline")
@@ -3311,7 +3311,7 @@ AcDbPolyline* PyDbPolyline::impObj(const std::source_location& src /*= std::sour
 
 //-----------------------------------------------------------------------------------
 //PyDbDace
-void makPyDbFaceWrapper()
+void makePyDbFaceWrapper()
 {
     PyDocString DS("Face");
     class_<PyDbFace, bases<PyDbEntity>>("Face")
@@ -3444,7 +3444,7 @@ AcDbFace* PyDbFace::impObj(const std::source_location& src /*= std::source_locat
 
 //-----------------------------------------------------------------------------------
 //AcDbFcf
-void makPyDbFcfWrapper()
+void makePyDbFcfWrapper()
 {
     PyDocString DS("Fcf");
     class_<PyDbFcf, bases<PyDbEntity>>("Fcf")

@@ -6,7 +6,7 @@
 using namespace boost::python;
 //----------------------------------------------------------------------------------------------------
 //wrapper
-void makeAcDbEntityWrapper()
+void makePyDbEntityWrapper()
 {
     PyDocString DS("Entity");
     class_<PyDbEntity, bases<PyDbObject>>("Entity", boost::python::no_init)
@@ -496,7 +496,7 @@ AcDbEntity* PyDbEntity::impObj(const std::source_location& src /*= std::source_l
 
 //-------------------------------------------------------------------------------------------------------------
 //PyDbBlockBegin
-void makeAcDbBlockBeginWrapper()
+void makePyDbBlockBeginWrapper()
 {
     class_<PyDbBlockBegin, bases<PyDbEntity>>("BlockBegin", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
@@ -561,7 +561,7 @@ AcDbBlockBegin* PyDbBlockBegin::impObj(const std::source_location& src /*= std::
 
 //-------------------------------------------------------------------------------------------------------------
 //PyDbBlockEnd
-void makeAcDbBlockEndWrapper()
+void makePyDbBlockEndWrapper()
 {
     class_<PyDbBlockEnd, bases<PyDbEntity>>("BlockEnd", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
@@ -628,7 +628,7 @@ AcDbBlockEnd* PyDbBlockEnd::impObj(const std::source_location& src /*= std::sour
 //PyDbSequenceEnd
 //-------------------------------------------------------------------------------------------------------------
 //PyDbBlockEnd
-void makeAcDbSequenceEndWrapper()
+void makePyDbSequenceEndWrapper()
 {
     class_<PyDbSequenceEnd, bases<PyDbEntity>>("SequenceEnd", boost::python::no_init)
         .def(init<const PyDbObjectId&>())

@@ -1,7 +1,7 @@
 #pragma once
 #include "PyDbObject.h"
 class PyDbObjectId;
-void makeAcDbTableStyleWrapper();
+void makePyDbTableStyleWrapper();
 class PyDbTableStyle : public PyDbObject
 {
 public:

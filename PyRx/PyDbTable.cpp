@@ -4,7 +4,7 @@
 using namespace boost::python;
 //-----------------------------------------------------------------------------------
 //PyDbTable
-void makeyDbTableWrapper()
+void makePyDbTableWrapper()
 {
     class_<PyDbTable, bases<PyDbBlockReference>>("Table")
         .def(init<>())

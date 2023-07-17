@@ -16,7 +16,7 @@ class PyDbAbstractViewTableRecord;
 
 //---------------------------------------------------------------------------------------- -
 //PyDbSymbolTable
-void makeAcDbSymbolTableWrapper();
+void makePyDbSymbolTableWrapper();
 
 class PyDbSymbolTable : public PyDbObject
 {

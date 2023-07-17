@@ -6,7 +6,7 @@ class PyAcEditor;
 class PyTransactionManager;
 class PyEdInputPointManager;
 
-void makeAcApDocumentWrapper();
+void makePyApDocumentWrapper();
 
 //-----------------------------------------------------------------------------------------
 //PyApDocument

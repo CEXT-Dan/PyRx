@@ -2,7 +2,7 @@
 #include "PyDbField.h"
 #include "PyDbObjectId.h"
 using namespace boost::python;
-void makeAcDbFieldtWrapper()
+void makePyDbFieldtWrapper()
 {
     class_<PyDbField, bases<PyDbObject>>("Field")
         .def(init<>())

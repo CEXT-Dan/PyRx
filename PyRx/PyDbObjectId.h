@@ -1,6 +1,6 @@
 #pragma once
 #include "PyDbDatabase.h"
-void makeAcDbObjectIdWrapper();
+void makePyDbObjectIdWrapper();
 class PyDbObjectId
 {
 public:
@@ -32,7 +32,7 @@ public:
 };
 
 //
-void makeAdsNameWrapper();
+void makePyAdsNameWrapper();
 class AdsName
 {
 public:

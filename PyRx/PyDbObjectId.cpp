@@ -7,7 +7,7 @@ using namespace boost::python;
 
 //---------------------------------------------------------------------------------
 // wrapper
-void makeAcDbObjectIdWrapper()
+void makePyDbObjectIdWrapper()
 {
     class_<PyDbObjectId>("ObjectId")
         .def(init<>())
@@ -157,7 +157,7 @@ std::size_t PyDbObjectId::hash()
 }
 
 //AdsName
-void makeAdsNameWrapper()
+void makePyAdsNameWrapper()
 {
     class_<AdsName>("AdsName")
         .def("toObjectId", &AdsName::toObjectId)

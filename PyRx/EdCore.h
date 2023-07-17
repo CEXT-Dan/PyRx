@@ -2,7 +2,7 @@
 class PyDbObjectId;
 class PyDbDatabase;
 
-void makeEdCoreWrapper();
+void makePyEdCoreWrapper();
 
 //acedSetUndoMark
 

@@ -629,7 +629,7 @@ AcDbRegion* PyDbRegion::impObj(const std::source_location& src /*= std::source_l
 
 //-----------------------------------------------------------------------------------
 //PyDbBody
-void makeAcDbBodyWrapper()
+void makePyDbBodyWrapper()
 {
     class_<PyDbBody, bases<PyDbEntity>>("Body")
         .def(init<>())

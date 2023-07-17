@@ -84,10 +84,10 @@ BOOST_PYTHON_MODULE(PyAp)
 
     makePyTransactionManagerManager();
     makePyApResourceOverrideWrapper();
-    makeAcApApplictionWrapper();
+    makePyApApplictionWrapper();
     makePyAutoDocLockWrapper();
-    makeAcApDocManagerWrapper();
-    makeAcApDocumentWrapper();
+    makePyApDocManagerWrapper();
+    makePyApDocumentWrapper();
     makePyApDocManagerReactorWrapper();
     makePyApLayoutManagerWrapper();
     makePyCAdUiPaletteSetWrapper();

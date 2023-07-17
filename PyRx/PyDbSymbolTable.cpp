@@ -8,7 +8,7 @@ using namespace boost::python;
 
 //---------------------------------------------------------------------------------------- -
 //PyDbSymbolTable wrapper
-void makeAcDbSymbolTableWrapper()
+void makePyDbSymbolTableWrapper()
 {
     class_<PyDbSymbolTable, bases<PyDbObject>>("SymbolTable", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
