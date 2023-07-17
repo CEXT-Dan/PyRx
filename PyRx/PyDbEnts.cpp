@@ -2440,7 +2440,7 @@ void PyDb3dPolyline::insertVertexAt(PyDbObjectId& newVertId, const PyDbObjectId&
 
 void PyDb3dPolyline::openVertex(PyDb3dPolylineVertex& vt, const PyDbObjectId& vertId, AcDb::OpenMode mode) const
 {
-    PyDb3dPolylineVertex(vertId, mode);;
+    vt = PyDb3dPolylineVertex(vertId, mode);
 }
 
 void PyDb3dPolyline::openSequenceEnd(PyDbSequenceEnd& end, AcDb::OpenMode mode)

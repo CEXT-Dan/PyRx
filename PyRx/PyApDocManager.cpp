@@ -364,7 +364,7 @@ void PyApDocManagerReactor::addReactor()
 
 void PyApDocManagerReactor::removeReactor()
 {
-    if (m_isActive = true)
+    if (m_isActive == true)
     {
         acDocManagerPtr()->removeReactor(this);
         m_isActive = false;
