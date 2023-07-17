@@ -1901,11 +1901,6 @@ PyDbPoint::PyDbPoint(const AcGePoint3d& point)
 {
 }
 
-PyDbPoint::PyDbPoint(AcDbPoint* ptr, bool autoDelete)
-    : PyDbEntity(ptr, autoDelete)
-{
-}
-
 PyDbPoint::PyDbPoint(const PyDbObjectId& id, AcDb::OpenMode mode)
     : PyDbEntity(nullptr, false)
 {
@@ -1917,6 +1912,11 @@ PyDbPoint::PyDbPoint(const PyDbObjectId& id, AcDb::OpenMode mode)
 
 PyDbPoint::PyDbPoint(const PyDbObjectId& id)
     : PyDbPoint(id, AcDb::OpenMode::kForRead)
+{
+}
+
+PyDbPoint::PyDbPoint(AcDbPoint* ptr, bool autoDelete)
+    : PyDbEntity(ptr, autoDelete)
 {
 }
 

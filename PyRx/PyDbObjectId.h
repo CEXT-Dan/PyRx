@@ -31,6 +31,16 @@ public:
     AcDbObjectId m_id;
 };
 
+inline AcDbObjectIdArray PyListToObjectIdArray(const boost::python::object& iterable)
+{
+    AcDbObjectIdArray arr;
+    const auto& vec = py_list_to_std_vector<PyDbObjectId>(iterable);
+    arr.setLogicalLength(vec.size());
+    for (auto& item : vec)
+        arr.append(item.m_id);
+    return arr;
+}
+
 //
 void makePyAdsNameWrapper();
 class AdsName
