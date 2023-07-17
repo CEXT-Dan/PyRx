@@ -19,7 +19,6 @@ void makePyGiTransientManagerWrapper()
         ;
 }
 
-
 PyGiTransientManager::PyGiTransientManager()
     : PyGiTransientManager(acgiGetTransientManager())
 {
