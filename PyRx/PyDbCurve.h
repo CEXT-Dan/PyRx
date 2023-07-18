@@ -1,5 +1,8 @@
 #pragma once
 #include "PyDbEntity.h"
+
+class PyGeCurve3d;
+
 //-----------------------------------------------------------------------------------
 //PyDbCurve
 void makePyDbCurveWrapper();
@@ -10,33 +13,41 @@ public:
     PyDbCurve(const PyDbObjectId& id);
     PyDbCurve(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbCurve() override = default;
-    virtual Adesk::Boolean      isClosed() const;
-    virtual Adesk::Boolean      isPeriodic() const;
-    virtual double              getStartParam() const;
-    virtual double              getEndParam() const;
-    virtual AcGePoint3d         getStartPoint() const;
-    virtual AcGePoint3d         getEndPoint() const;
-    virtual AcGePoint3d         getPointAtParam(double) const;
-    virtual double              getParamAtPoint(const AcGePoint3d& pnt)const;
-    virtual double              getDistAtParam(double param) const;
-    virtual double              getParamAtDist(double dist) const;
-    virtual double              getDistAtPoint(const AcGePoint3d& pnt)const;
-    virtual AcGePoint3d         getPointAtDist(double) const;
-    virtual AcGeVector3d        getFirstDeriv(double param) const;
-    virtual AcGeVector3d        getFirstDeriv(const AcGePoint3d& pnt) const;
-    virtual AcGeVector3d        getSecondDeriv(double param) const;
-    virtual AcGeVector3d        getSecondDeriv(const AcGePoint3d& pnt) const;
-    virtual AcGePoint3d         getClosestPointTo(const AcGePoint3d& givenPnt, Adesk::Boolean extend) const;
-    virtual AcGePoint3d         getClosestPointTo(const AcGePoint3d& givenPnt, const AcGeVector3d& direction, Adesk::Boolean extend) const;
-    virtual boost::python::list getOffsetCurves(double offsetDist) const;
-    virtual boost::python::list getOffsetCurvesGivenPlaneNormal(const AcGeVector3d& normal, double offsetDist) const;
-    virtual boost::python::list getSplitCurves(const boost::python::list& params) const;
-    virtual boost::python::list getSplitCurvesAtParams(const boost::python::list& params) const;
-    virtual boost::python::list getSplitCurvesAtPoints(const boost::python::list& params) const;
-    virtual void                extend(double newParam);
-    virtual void                extend(Adesk::Boolean extendStart, const AcGePoint3d& toPoint);
-    virtual double              getArea() const;
-    virtual void                reverseCurve();
+    Adesk::Boolean      isClosed() const;
+    Adesk::Boolean      isPeriodic() const;
+    double              getStartParam() const;
+    double              getEndParam() const;
+    AcGePoint3d         getStartPoint() const;
+    AcGePoint3d         getEndPoint() const;
+    AcGePoint3d         getPointAtParam(double) const;
+    double              getParamAtPoint(const AcGePoint3d& pnt)const;
+    double              getDistAtParam(double param) const;
+    double              getParamAtDist(double dist) const;
+    double              getDistAtPoint(const AcGePoint3d& pnt)const;
+    AcGePoint3d         getPointAtDist(double) const;
+    AcGeVector3d        getFirstDeriv(double param) const;
+    AcGeVector3d        getFirstDeriv(const AcGePoint3d& pnt) const;
+    AcGeVector3d        getSecondDeriv(double param) const;
+    AcGeVector3d        getSecondDeriv(const AcGePoint3d& pnt) const;
+    AcGePoint3d         getClosestPointTo(const AcGePoint3d& givenPnt, Adesk::Boolean extend) const;
+    AcGePoint3d         getClosestPointTo(const AcGePoint3d& givenPnt, const AcGeVector3d& direction, Adesk::Boolean extend) const;
+    boost::python::list getOffsetCurves(double offsetDist) const;
+    boost::python::list getOffsetCurvesGivenPlaneNormal(const AcGeVector3d& normal, double offsetDist) const;
+    boost::python::list getSplitCurves(const boost::python::list& params) const;
+    boost::python::list getSplitCurvesAtParams(const boost::python::list& params) const;
+    boost::python::list getSplitCurvesAtPoints(const boost::python::list& params) const;
+    void                extend(double newParam);
+    void                extend(Adesk::Boolean extendStart, const AcGePoint3d& toPoint);
+    double              getArea() const;
+    void                reverseCurve();
+    PyGeCurve3d         getAcGeCurve1() const;
+    PyGeCurve3d         getAcGeCurve2(const AcGeTol& tol) const;
+    void                setFromAcGeCurve1(const PyGeCurve3d& geCurve);
+    void                setFromAcGeCurve2(const PyGeCurve3d& geCurve, AcGeVector3d& normal);
+    void                setFromAcGeCurve3(const PyGeCurve3d& geCurve, AcGeVector3d& normal, const AcGeTol& tol);
+    static PyDbCurve    createFromAcGeCurve1(const PyGeCurve3d& geCurve);
+    static PyDbCurve    createFromAcGeCurve2(const PyGeCurve3d& geCurve, AcGeVector3d& normal);
+    static PyDbCurve    createFromAcGeCurve3(const PyGeCurve3d& geCurve, AcGeVector3d& normal, const AcGeTol& tol);
     static std::string          className();
     static PyRxClass            desc();
     static PyDbCurve            cloneFrom(const PyRxObject& src);

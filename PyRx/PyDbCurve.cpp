@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PyDbCurve.h"
 #include "PyDbObjectId.h"
+#include "PyGeCurve3d.h"
 
 using namespace boost::python;
 
@@ -37,6 +38,14 @@ void makePyDbCurveWrapper()
         .def<void(PyDbCurve::*)(Adesk::Boolean, const AcGePoint3d&)>("extend", &PyDbCurve::extend)
         .def("getArea", &PyDbCurve::getArea, DS.CLASSARGS())
         .def("reverseCurve", &PyDbCurve::reverseCurve, DS.CLASSARGS())
+        .def("getAcGeCurve", &PyDbCurve::getAcGeCurve1)
+        .def("getAcGeCurve", &PyDbCurve::getAcGeCurve2)
+        .def("setFromAcGeCurve", &PyDbCurve::setFromAcGeCurve1)
+        .def("setFromAcGeCurve", &PyDbCurve::setFromAcGeCurve2)
+        .def("setFromAcGeCurve", &PyDbCurve::setFromAcGeCurve3)
+        .def("createFromAcGeCurve", &PyDbCurve::createFromAcGeCurve1)
+        .def("createFromAcGeCurve", &PyDbCurve::createFromAcGeCurve2)
+        .def("createFromAcGeCurve", &PyDbCurve::createFromAcGeCurve3).staticmethod("createFromAcGeCurve")
         .def("className", &PyDbCurve::className).staticmethod("className")
         .def("desc", &PyDbCurve::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbCurve::cloneFrom).staticmethod("cloneFrom")
@@ -316,6 +325,68 @@ double PyDbCurve::getArea() const
 void PyDbCurve::reverseCurve()
 {
     return PyThrowBadEs(impObj()->reverseCurve());
+}
+
+PyGeCurve3d PyDbCurve::getAcGeCurve1() const
+{
+    AcGeCurve3d *pGeCurve = nullptr;
+    PyThrowBadEs(impObj()->getAcGeCurve(pGeCurve));
+    return PyGeCurve3d(pGeCurve);
+}
+
+PyGeCurve3d PyDbCurve::getAcGeCurve2(const AcGeTol& tol) const
+{
+    AcGeCurve3d* pGeCurve = nullptr;
+    PyThrowBadEs(impObj()->getAcGeCurve(pGeCurve, tol));
+    return PyGeCurve3d(pGeCurve);
+}
+
+void PyDbCurve::setFromAcGeCurve1(const PyGeCurve3d& geCurve)
+{
+    PyThrowBadEs(impObj()->setFromAcGeCurve(*geCurve.impObj()));
+}
+
+void PyDbCurve::setFromAcGeCurve2(const PyGeCurve3d& geCurve, AcGeVector3d& normal)
+{
+    PyThrowBadEs(impObj()->setFromAcGeCurve(*geCurve.impObj(), std::addressof(normal)));
+}
+
+void PyDbCurve::setFromAcGeCurve3(const PyGeCurve3d& geCurve, AcGeVector3d& normal, const AcGeTol& tol)
+{
+    PyThrowBadEs(impObj()->setFromAcGeCurve(*geCurve.impObj(), std::addressof(normal), tol));
+}
+
+PyDbCurve PyDbCurve::createFromAcGeCurve1(const PyGeCurve3d& geCurve)
+{
+#if defined(_ZRXTARGET) && (_ZRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    AcDbCurve* pDbCurve = nullptr;
+    PyThrowBadEs(AcDbCurve::createFromAcGeCurve(*geCurve.impObj(), pDbCurve));
+    return PyDbCurve(pDbCurve, true);
+#endif
+}
+
+PyDbCurve PyDbCurve::createFromAcGeCurve2(const PyGeCurve3d& geCurve, AcGeVector3d& normal)
+{
+#if defined(_ZRXTARGET) && (_ZRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    AcDbCurve* pDbCurve = nullptr;
+    PyThrowBadEs(AcDbCurve::createFromAcGeCurve(*geCurve.impObj(), pDbCurve, std::addressof(normal)));
+    return PyDbCurve(pDbCurve, true);
+#endif
+}
+
+PyDbCurve PyDbCurve::createFromAcGeCurve3(const PyGeCurve3d& geCurve, AcGeVector3d& normal, const AcGeTol& tol)
+{
+#if defined(_ZRXTARGET) && (_ZRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    AcDbCurve* pDbCurve = nullptr;
+    PyThrowBadEs(AcDbCurve::createFromAcGeCurve(*geCurve.impObj(), pDbCurve, std::addressof(normal), tol));
+    return PyDbCurve(pDbCurve, true);
+#endif
 }
 
 std::string PyDbCurve::className()
