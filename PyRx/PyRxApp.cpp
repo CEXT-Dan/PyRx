@@ -4,6 +4,7 @@
 #include "PyAcDb.h"
 #include "PyAcRx.h"
 #include "PyAcGi.h"
+#include "PyAcGs.h"
 #include "PyAcAp.h"
 #include "PyAcEd.h"
 
@@ -149,6 +150,7 @@ bool PyRxApp::init()
         initPyRxModule();
         initPyGeModule();
         initPyGiModule();
+        initPyGsModule();
         initPyDbModule();
         initPyApModule();
         initPyEdModule();
