@@ -262,6 +262,12 @@
     <ClCompile Include="PyGiTransientManager.cpp">
       <Filter>Source Files\PyGi</Filter>
     </ClCompile>
+    <ClCompile Include="PyAcGs.cpp">
+      <Filter>Source Files\PyGs</Filter>
+    </ClCompile>
+    <ClCompile Include="PyGsManager.cpp">
+      <Filter>Source Files\PyGs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -528,6 +534,12 @@
     <ClInclude Include="PyGiTransientManager.h">
       <Filter>Header Files\PyGi</Filter>
     </ClInclude>
+    <ClInclude Include="PyAcGs.h">
+      <Filter>Header Files\PyGs</Filter>
+    </ClInclude>
+    <ClInclude Include="PyGsManager.h">
+      <Filter>Header Files\PyGs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -574,6 +586,12 @@
     </Filter>
     <Filter Include="Source Files\PyEd">
       <UniqueIdentifier>{104b26c1-4635-4730-8522-4790fadbda27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\PyGs">
+      <UniqueIdentifier>{fd492d91-6dd9-4592-aa52-1887e8a9359c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PyGs">
+      <UniqueIdentifier>{8ffb5799-5480-4ef8-8c6c-a4028d0821d4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
