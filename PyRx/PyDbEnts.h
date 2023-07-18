@@ -595,7 +595,6 @@ public:
     void                setThickness(double val);
     AcGeVector3d        normal() const;
     void                setNormal(const AcGeVector3d& val);
-    boost::python::list getOffsetCurvesGivenPlaneNormal(const AcGeVector3d& normal, double offsetDist) const override;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbLine		cloneFrom(const PyRxObject& src);

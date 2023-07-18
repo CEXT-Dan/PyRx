@@ -2920,18 +2920,6 @@ void PyDbLine::setNormal(const AcGeVector3d& val)
     return PyThrowBadEs(impObj()->setNormal(val));
 }
 
-boost::python::list PyDbLine::getOffsetCurvesGivenPlaneNormal(const AcGeVector3d& normal, double offsetDist) const
-{
-    PyAutoLockGIL lock;
-    boost::python::list curves;
-    AcDbVoidPtrArray offsetCurves;
-    if (auto es = impObj()->getOffsetCurvesGivenPlaneNormal(normal, offsetDist, offsetCurves); es != eOk)
-        throw PyAcadErrorStatus(es);
-    for (auto ptr : offsetCurves)
-        curves.append(PyDbEntity(static_cast<AcDbEntity*>(ptr), true));
-    return curves;
-}
-
 std::string PyDbLine::className()
 {
     return "AcDbLine";
