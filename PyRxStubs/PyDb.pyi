@@ -2569,6 +2569,22 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5,
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def createFromAcGeCurve (self, *args, **kwargs)-> Curve :
+      '''createFromAcGeCurve( (Curve3d)arg1) -> Curve :
+
+    C++ signature :
+        class PyDbCurve createFromAcGeCurve(class PyGeCurve3d)
+
+createFromAcGeCurve( (Curve3d)arg1, (Vector3d)arg2) -> Curve :
+
+    C++ signature :
+        class PyDbCurve createFromAcGeCurve(class PyGeCurve3d,class AcGeVector3d {lvalue})
+
+createFromAcGeCurve( (Curve3d)arg1, (Vector3d)arg2, (Tol)arg3) -> Curve :
+
+    C++ signature :
+        class PyDbCurve createFromAcGeCurve(class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
+    ...
     def database (self: DbObject)-> Database :
       '''                             '''
     ...
@@ -2621,6 +2637,17 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
+    ...
+    def getAcGeCurve (self, *args, **kwargs)-> Curve3d :
+      '''getAcGeCurve( (Curve)arg1) -> Curve3d :
+
+    C++ signature :
+        class PyGeCurve3d getAcGeCurve(class PyDbCurve {lvalue})
+
+getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
+
+    C++ signature :
+        class PyGeCurve3d getAcGeCurve(class PyDbCurve {lvalue},class AcGeTol)'''
     ...
     def getArea (self: Curve)-> float :
       '''                             '''
@@ -2912,6 +2939,22 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
+    ...
+    def setFromAcGeCurve (self, *args, **kwargs)-> None :
+      '''setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2) -> None :
+
+    C++ signature :
+        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d)
+
+setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3) -> None :
+
+    C++ signature :
+        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue})
+
+setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None :
+
+    C++ signature :
+        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
       '''                             '''
@@ -9911,6 +9954,22 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def createFromAcGeCurve (self, *args, **kwargs)-> Curve :
+      '''createFromAcGeCurve( (Curve3d)arg1) -> Curve :
+
+    C++ signature :
+        class PyDbCurve createFromAcGeCurve(class PyGeCurve3d)
+
+createFromAcGeCurve( (Curve3d)arg1, (Vector3d)arg2) -> Curve :
+
+    C++ signature :
+        class PyDbCurve createFromAcGeCurve(class PyGeCurve3d,class AcGeVector3d {lvalue})
+
+createFromAcGeCurve( (Curve3d)arg1, (Vector3d)arg2, (Tol)arg3) -> Curve :
+
+    C++ signature :
+        class PyDbCurve createFromAcGeCurve(class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
+    ...
     def database (self: DbObject)-> Database :
       '''                             '''
     ...
@@ -9963,6 +10022,17 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
+    ...
+    def getAcGeCurve (self, *args, **kwargs)-> Curve3d :
+      '''getAcGeCurve( (Curve)arg1) -> Curve3d :
+
+    C++ signature :
+        class PyGeCurve3d getAcGeCurve(class PyDbCurve {lvalue})
+
+getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
+
+    C++ signature :
+        class PyGeCurve3d getAcGeCurve(class PyDbCurve {lvalue},class AcGeTol)'''
     ...
     def getArea (self: Curve)-> float :
       '''                             '''
@@ -10254,6 +10324,22 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
+    ...
+    def setFromAcGeCurve (self, *args, **kwargs)-> None :
+      '''setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2) -> None :
+
+    C++ signature :
+        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d)
+
+setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3) -> None :
+
+    C++ signature :
+        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue})
+
+setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None :
+
+    C++ signature :
+        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
       '''                             '''
@@ -11294,6 +11380,22 @@ class Curve:
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def createFromAcGeCurve (self, *args, **kwargs)-> Curve :
+      '''createFromAcGeCurve( (Curve3d)arg1) -> Curve :
+
+    C++ signature :
+        class PyDbCurve createFromAcGeCurve(class PyGeCurve3d)
+
+createFromAcGeCurve( (Curve3d)arg1, (Vector3d)arg2) -> Curve :
+
+    C++ signature :
+        class PyDbCurve createFromAcGeCurve(class PyGeCurve3d,class AcGeVector3d {lvalue})
+
+createFromAcGeCurve( (Curve3d)arg1, (Vector3d)arg2, (Tol)arg3) -> Curve :
+
+    C++ signature :
+        class PyDbCurve createFromAcGeCurve(class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
+    ...
     def database (self: DbObject)-> Database :
       '''                             '''
     ...
@@ -11340,6 +11442,17 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
+    ...
+    def getAcGeCurve (self, *args, **kwargs)-> Curve3d :
+      '''getAcGeCurve( (Curve)arg1) -> Curve3d :
+
+    C++ signature :
+        class PyGeCurve3d getAcGeCurve(class PyDbCurve {lvalue})
+
+getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
+
+    C++ signature :
+        class PyGeCurve3d getAcGeCurve(class PyDbCurve {lvalue},class AcGeTol)'''
     ...
     def getArea (self: Curve)-> float :
       '''                             '''
@@ -11601,6 +11714,22 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
+    ...
+    def setFromAcGeCurve (self, *args, **kwargs)-> None :
+      '''setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2) -> None :
+
+    C++ signature :
+        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d)
+
+setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3) -> None :
+
+    C++ signature :
+        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue})
+
+setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None :
+
+    C++ signature :
+        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
       '''                             '''
@@ -30253,6 +30382,22 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def createFromAcGeCurve (self, *args, **kwargs)-> Curve :
+      '''createFromAcGeCurve( (Curve3d)arg1) -> Curve :
+
+    C++ signature :
+        class PyDbCurve createFromAcGeCurve(class PyGeCurve3d)
+
+createFromAcGeCurve( (Curve3d)arg1, (Vector3d)arg2) -> Curve :
+
+    C++ signature :
+        class PyDbCurve createFromAcGeCurve(class PyGeCurve3d,class AcGeVector3d {lvalue})
+
+createFromAcGeCurve( (Curve3d)arg1, (Vector3d)arg2, (Tol)arg3) -> Curve :
+
+    C++ signature :
+        class PyDbCurve createFromAcGeCurve(class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
+    ...
     def database (self: DbObject)-> Database :
       '''                             '''
     ...
@@ -30394,6 +30539,17 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
 
     C++ signature :
         class AcGePoint3d firstVertex(class PyDbLeader {lvalue})'''
+    ...
+    def getAcGeCurve (self, *args, **kwargs)-> Curve3d :
+      '''getAcGeCurve( (Curve)arg1) -> Curve3d :
+
+    C++ signature :
+        class PyGeCurve3d getAcGeCurve(class PyDbCurve {lvalue})
+
+getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
+
+    C++ signature :
+        class PyGeCurve3d getAcGeCurve(class PyDbCurve {lvalue},class AcGeTol)'''
     ...
     def getArea (self: Curve)-> float :
       '''                             '''
@@ -30807,6 +30963,22 @@ setDimldrblk( (Leader)arg1, (str)arg2) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
+    def setFromAcGeCurve (self, *args, **kwargs)-> None :
+      '''setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2) -> None :
+
+    C++ signature :
+        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d)
+
+setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3) -> None :
+
+    C++ signature :
+        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue})
+
+setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None :
+
+    C++ signature :
+        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
+    ...
     def setHasArrowHead (self, *args, **kwargs)-> None :
       '''setHasArrowHead( (Leader)arg1, (bool)arg2) -> None :
 
@@ -31030,6 +31202,22 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def createFromAcGeCurve (self, *args, **kwargs)-> Curve :
+      '''createFromAcGeCurve( (Curve3d)arg1) -> Curve :
+
+    C++ signature :
+        class PyDbCurve createFromAcGeCurve(class PyGeCurve3d)
+
+createFromAcGeCurve( (Curve3d)arg1, (Vector3d)arg2) -> Curve :
+
+    C++ signature :
+        class PyDbCurve createFromAcGeCurve(class PyGeCurve3d,class AcGeVector3d {lvalue})
+
+createFromAcGeCurve( (Curve3d)arg1, (Vector3d)arg2, (Tol)arg3) -> Curve :
+
+    C++ signature :
+        class PyDbCurve createFromAcGeCurve(class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
+    ...
     def database (self: DbObject)-> Database :
       '''                             '''
     ...
@@ -31082,6 +31270,17 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
+    ...
+    def getAcGeCurve (self, *args, **kwargs)-> Curve3d :
+      '''getAcGeCurve( (Curve)arg1) -> Curve3d :
+
+    C++ signature :
+        class PyGeCurve3d getAcGeCurve(class PyDbCurve {lvalue})
+
+getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
+
+    C++ signature :
+        class PyGeCurve3d getAcGeCurve(class PyDbCurve {lvalue},class AcGeTol)'''
     ...
     def getArea (self: Curve)-> float :
       '''                             '''
@@ -31358,6 +31557,22 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
+    ...
+    def setFromAcGeCurve (self, *args, **kwargs)-> None :
+      '''setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2) -> None :
+
+    C++ signature :
+        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d)
+
+setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3) -> None :
+
+    C++ signature :
+        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue})
+
+setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None :
+
+    C++ signature :
+        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
       '''                             '''
@@ -48618,6 +48833,22 @@ addVertexAt( (Polyline)arg1, (SubentType)arg2, (Point2d)arg3, (float)arg4, (floa
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def createFromAcGeCurve (self, *args, **kwargs)-> Curve :
+      '''createFromAcGeCurve( (Curve3d)arg1) -> Curve :
+
+    C++ signature :
+        class PyDbCurve createFromAcGeCurve(class PyGeCurve3d)
+
+createFromAcGeCurve( (Curve3d)arg1, (Vector3d)arg2) -> Curve :
+
+    C++ signature :
+        class PyDbCurve createFromAcGeCurve(class PyGeCurve3d,class AcGeVector3d {lvalue})
+
+createFromAcGeCurve( (Curve3d)arg1, (Vector3d)arg2, (Tol)arg3) -> Curve :
+
+    C++ signature :
+        class PyDbCurve createFromAcGeCurve(class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
+    ...
     def database (self: DbObject)-> Database :
       '''                             '''
     ...
@@ -48670,6 +48901,17 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
+    ...
+    def getAcGeCurve (self, *args, **kwargs)-> Curve3d :
+      '''getAcGeCurve( (Curve)arg1) -> Curve3d :
+
+    C++ signature :
+        class PyGeCurve3d getAcGeCurve(class PyDbCurve {lvalue})
+
+getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
+
+    C++ signature :
+        class PyGeCurve3d getAcGeCurve(class PyDbCurve {lvalue},class AcGeTol)'''
     ...
     def getArcSeg2dAt (self, *args, **kwargs)-> CircArc2d :
       '''getArcSeg2dAt( (Polyline)arg1, (SubentType)arg2) -> CircArc2d :
@@ -49108,6 +49350,22 @@ getEcs( (Polyline)arg1, (Matrix3d)arg2) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
+    def setFromAcGeCurve (self, *args, **kwargs)-> None :
+      '''setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2) -> None :
+
+    C++ signature :
+        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d)
+
+setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3) -> None :
+
+    C++ signature :
+        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue})
+
+setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None :
+
+    C++ signature :
+        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
+    ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
       '''                             '''
     ...
@@ -49348,6 +49606,22 @@ appendVertex( (Polyline2d)arg1, (ObjectId)arg2, (Vertex2d)arg3) -> None :
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def createFromAcGeCurve (self, *args, **kwargs)-> Curve :
+      '''createFromAcGeCurve( (Curve3d)arg1) -> Curve :
+
+    C++ signature :
+        class PyDbCurve createFromAcGeCurve(class PyGeCurve3d)
+
+createFromAcGeCurve( (Curve3d)arg1, (Vector3d)arg2) -> Curve :
+
+    C++ signature :
+        class PyDbCurve createFromAcGeCurve(class PyGeCurve3d,class AcGeVector3d {lvalue})
+
+createFromAcGeCurve( (Curve3d)arg1, (Vector3d)arg2, (Tol)arg3) -> Curve :
+
+    C++ signature :
+        class PyDbCurve createFromAcGeCurve(class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
+    ...
     def database (self: DbObject)-> Database :
       '''                             '''
     ...
@@ -49412,6 +49686,17 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
+    ...
+    def getAcGeCurve (self, *args, **kwargs)-> Curve3d :
+      '''getAcGeCurve( (Curve)arg1) -> Curve3d :
+
+    C++ signature :
+        class PyGeCurve3d getAcGeCurve(class PyDbCurve {lvalue})
+
+getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
+
+    C++ signature :
+        class PyGeCurve3d getAcGeCurve(class PyDbCurve {lvalue},class AcGeTol)'''
     ...
     def getArea (self: Curve)-> float :
       '''                             '''
@@ -49769,6 +50054,22 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
+    def setFromAcGeCurve (self, *args, **kwargs)-> None :
+      '''setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2) -> None :
+
+    C++ signature :
+        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d)
+
+setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3) -> None :
+
+    C++ signature :
+        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue})
+
+setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None :
+
+    C++ signature :
+        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
+    ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
       '''                             '''
     ...
@@ -50032,6 +50333,22 @@ appendVertex( (Polyline3d)arg1, (ObjectId)arg2, (Polyline3dVertex)arg3) -> None 
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
     ...
+    def createFromAcGeCurve (self, *args, **kwargs)-> Curve :
+      '''createFromAcGeCurve( (Curve3d)arg1) -> Curve :
+
+    C++ signature :
+        class PyDbCurve createFromAcGeCurve(class PyGeCurve3d)
+
+createFromAcGeCurve( (Curve3d)arg1, (Vector3d)arg2) -> Curve :
+
+    C++ signature :
+        class PyDbCurve createFromAcGeCurve(class PyGeCurve3d,class AcGeVector3d {lvalue})
+
+createFromAcGeCurve( (Curve3d)arg1, (Vector3d)arg2, (Tol)arg3) -> Curve :
+
+    C++ signature :
+        class PyDbCurve createFromAcGeCurve(class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
+    ...
     def database (self: DbObject)-> Database :
       '''                             '''
     ...
@@ -50078,6 +50395,17 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
+    ...
+    def getAcGeCurve (self, *args, **kwargs)-> Curve3d :
+      '''getAcGeCurve( (Curve)arg1) -> Curve3d :
+
+    C++ signature :
+        class PyGeCurve3d getAcGeCurve(class PyDbCurve {lvalue})
+
+getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
+
+    C++ signature :
+        class PyGeCurve3d getAcGeCurve(class PyDbCurve {lvalue},class AcGeTol)'''
     ...
     def getArea (self: Curve)-> float :
       '''                             '''
@@ -50392,6 +50720,22 @@ insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVer
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
+    ...
+    def setFromAcGeCurve (self, *args, **kwargs)-> None :
+      '''setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2) -> None :
+
+    C++ signature :
+        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d)
+
+setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3) -> None :
+
+    C++ signature :
+        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue})
+
+setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None :
+
+    C++ signature :
+        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
       '''                             '''
