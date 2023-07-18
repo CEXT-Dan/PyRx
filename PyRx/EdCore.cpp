@@ -48,6 +48,8 @@ void makePyEdCoreWrapper()
         .def("setUndoMark", &EdCore::setUndoMark).staticmethod("setUndoMark")
         .def("showHTMLModalWindow", &EdCore::showHTMLModalWindow1)
         .def("showHTMLModalWindow", &EdCore::showHTMLModalWindow2).staticmethod("showHTMLModalWindow")
+        .def("showHTMLModelessWindow", &EdCore::showHTMLModelessWindow1)
+        .def("showHTMLModelessWindow", &EdCore::showHTMLModelessWindow2).staticmethod("showHTMLModelessWindow")
         .def("update", &EdCore::update).staticmethod("update")
         .def("updateDisplay", &EdCore::updateDisplay).staticmethod("updateDisplay")
         .def("updateDisplayPause", &EdCore::updateDisplayPause).staticmethod("updateDisplayPause")
@@ -343,6 +345,24 @@ bool EdCore::showHTMLModalWindow2(UINT_PTR hwnd, const std::string& uriOfHtmlPag
     throw PyNotimplementedByHost();
 #else
     return acedShowHTMLModalWindow((HWND)hwnd, utf8_to_wstr(uriOfHtmlPage).c_str(), persistSizeAndPosition);
+#endif
+}
+
+UINT_PTR EdCore::showHTMLModelessWindow1(UINT_PTR owner, const std::string& uriOfHtmlPage)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    return showHTMLModelessWindow2(owner, uriOfHtmlPage, true);
+#endif
+}
+
+UINT_PTR EdCore::showHTMLModelessWindow2(UINT_PTR owner, const std::string& uriOfHtmlPage, bool persistSizeAndPosition)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    return (UINT_PTR)acedShowHTMLModelessWindow((HWND)owner, utf8_to_wstr(uriOfHtmlPage).c_str(), persistSizeAndPosition);
 #endif
 }
 

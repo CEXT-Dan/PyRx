@@ -148,6 +148,17 @@ showHTMLModalWindow( (int)arg1, (str)arg2, (bool)arg3) -> bool :
     C++ signature :
         bool showHTMLModalWindow(unsigned __int64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)'''
     ...
+    def showHTMLModelessWindow (self, *args, **kwargs)-> int :
+      '''showHTMLModelessWindow( (int)arg1, (str)arg2) -> int :
+
+    C++ signature :
+        unsigned __int64 showHTMLModelessWindow(unsigned __int64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+showHTMLModelessWindow( (int)arg1, (str)arg2, (bool)arg3) -> int :
+
+    C++ signature :
+        unsigned __int64 showHTMLModelessWindow(unsigned __int64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,bool)'''
+    ...
     def update (self, *args, **kwargs)-> int :
       '''update( (int)arg1, (Point2d)arg2, (Point2d)arg3) -> int :
 
