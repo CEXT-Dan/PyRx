@@ -30,6 +30,8 @@ public:
     static void                 pSpace();
     static int                  grDraw(const AcGePoint3d& from, const AcGePoint3d& to, int colorIndex, int highlight);
     static void                 setUndoMark(bool flag);
+    static bool                 showHTMLModalWindow1(UINT_PTR hwnd, const std::string & uriOfHtmlPage);
+    static bool                 showHTMLModalWindow2(UINT_PTR hwnd, const std::string& uriOfHtmlPage, bool persistSizeAndPosition);
     static int                  update(int vport, const AcGePoint2d& p1, const AcGePoint2d& p2);
     static void                 updateDisplay();
     static void                 updateDisplayPause(bool bEnable);

@@ -3,8 +3,11 @@
 #include "PyDbObjectId.h"
 #include "PyDbDatabase.h"
 #include "ResultBuffer.h"
-
 #include "acedCmdNF.h"
+
+#ifdef ARXAPP
+#include "AcHTMLApi.h"
+#endif
 
 using namespace boost::python;
 
@@ -43,6 +46,8 @@ void makePyEdCoreWrapper()
         .def("mSpace", &EdCore::mSpace).staticmethod("mSpace")
         .def("pSpace", &EdCore::pSpace).staticmethod("pSpace")
         .def("setUndoMark", &EdCore::setUndoMark).staticmethod("setUndoMark")
+        .def("showHTMLModalWindow", &EdCore::showHTMLModalWindow1)
+        .def("showHTMLModalWindow", &EdCore::showHTMLModalWindow2).staticmethod("showHTMLModalWindow")
         .def("update", &EdCore::update).staticmethod("update")
         .def("updateDisplay", &EdCore::updateDisplay).staticmethod("updateDisplay")
         .def("updateDisplayPause", &EdCore::updateDisplayPause).staticmethod("updateDisplayPause")
@@ -320,6 +325,24 @@ void EdCore::setUndoMark(bool flag)
     throw PyNotimplementedByHost();
 #else
     return PyThrowBadEs(acedSetUndoMark(flag));
+#endif
+}
+
+bool EdCore::showHTMLModalWindow1(UINT_PTR hwnd, const std::string& uriOfHtmlPage)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    return showHTMLModalWindow2(hwnd, uriOfHtmlPage, true);
+#endif
+}
+
+bool EdCore::showHTMLModalWindow2(UINT_PTR hwnd, const std::string& uriOfHtmlPage, bool persistSizeAndPosition)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    return acedShowHTMLModalWindow((HWND)hwnd, utf8_to_wstr(uriOfHtmlPage).c_str(), persistSizeAndPosition);
 #endif
 }
 
