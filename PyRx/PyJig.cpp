@@ -149,7 +149,7 @@ AcEdJig::DragStatus PyJig::sampler()
     }
     catch (...)
     {
-        throw PyAcadErrorStatus(Acad::ErrorStatus::eInvalidInput);
+        printExceptionMsg();
     }
     return AcEdJig::DragStatus::kCancel;
 }
@@ -164,7 +164,7 @@ Adesk::Boolean PyJig::update()
     }
     catch (...)
     {
-        throw PyAcadErrorStatus(Acad::ErrorStatus::eInvalidInput);
+        printExceptionMsg();
     }
     return true;
 }
@@ -351,7 +351,7 @@ AcEdJig::DragStatus PyDrawJig::sampler()
     }
     catch (...)
     {
-        throw PyAcadErrorStatus(Acad::ErrorStatus::eInvalidInput);
+        printExceptionMsg();
     }
     return AcEdJig::DragStatus::kCancel;
 }
@@ -366,7 +366,7 @@ Adesk::Boolean PyDrawJig::update()
     }
     catch (...)
     {
-        throw PyAcadErrorStatus(Acad::ErrorStatus::eInvalidInput);
+        printExceptionMsg();
     }
     return false;
 }
@@ -489,7 +489,7 @@ Adesk::Boolean PyDrawJig::worldDrawWr(PyGiWorldDraw& wd)
     }
     catch (...)
     {
-        throw PyAcadErrorStatus(Acad::ErrorStatus::eInvalidInput);
+        printExceptionMsg();
     }
     return false;
 }
@@ -504,7 +504,7 @@ void PyDrawJig::viewportDrawWr(PyGiViewportDraw& vd)
     }
     catch (...)
     {
-        throw PyAcadErrorStatus(Acad::ErrorStatus::eInvalidInput);
+        printExceptionMsg();
     }
 }
 
