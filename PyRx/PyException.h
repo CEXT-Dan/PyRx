@@ -17,7 +17,7 @@ static std::string appHostName()
 #endif
 }
 
-void printExceptionMsg(const std::source_location& src = std::source_location::current())
+inline void printExceptionMsg(const std::source_location& src = std::source_location::current())
 {
     const std::string er = std::format("\nException,line {} in function {} {}: ",src.line(), src.function_name(), src.file_name());
     acutPrintf(utf8_to_wstr(er).c_str());
