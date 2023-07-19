@@ -1,6 +1,7 @@
 #pragma once
 class PyDbObjectId;
 class PyDbDatabase;
+class PyDbMText;
 
 void makePyEdCoreWrapper();
 
@@ -17,7 +18,28 @@ public:
     static void                 audit2(PyDbDatabase& pDb, bool bFixErrors, bool bCmdLnEcho);
     static void                 callBackOnCancel();
     static bool                 clearOLELock(int handle);
+    static std::string          clipFormatName();
+    static bool                 cmdCWasCancelled();
+    static int                  cmdUndefine(const std::string& name, int undefIt);
+    static bool                 coordFromPixelToWorld1(const boost::python::list& tin, AcGePoint3d& pnt);
+    static bool                 coordFromPixelToWorld2(int windnum, const boost::python::list& tin, AcGePoint3d& pnt);
+    static bool                 coordFromWorldToPixel(int windnum, const AcGePoint3d& pnt, boost::python::list& tin);
+    static bool                 createInternetShortcut(const std::string& szURL, const std::string& szShortcutPath);
+    static PyDbObjectId         createViewportByView(PyDbDatabase& db, PyDbObjectId& view, const AcGePoint2d& location, double scale);
     static bool                 cmdS(const boost::python::list& lst);
+    static int                  defun(const std::string& pszName, int nFuncNum);
+    static int                  defunEx(const std::string& pszGlobalName, const std::string& pszLocalName,int nFuncNum);
+    static void                 disableDefaultARXExceptionHandler(bool flag);
+    static void                 disableUsrbrk();
+    static bool                 displayBorder(bool flag);
+    static bool                 drawingStatusBarsVisible();
+    static void                 drawOrderInherit(PyDbObjectId& parent,const boost::python::list& childArray,AcEdDrawOrderCmdType cmd);
+    static int                  eatCommandThroat();
+    static int                  editMTextInteractive(PyDbMText& mtext, bool useNewUI, bool allowTabs);
+    static void                 enableUsrbrk();
+
+
+
     static std::string          findFile(const std::string& file);
     static std::string          findTrustedFile(const std::string& file);
     static boost::python::list  getPredefinedPattens();
