@@ -4,6 +4,7 @@
 #include "PyDbDatabase.h"
 #include "ResultBuffer.h"
 #include "acedCmdNF.h"
+#include "PyDbMText.h"
 
 #ifdef ARXAPP
 #include "AcHTMLApi.h"
@@ -33,7 +34,27 @@ void makePyEdCoreWrapper()
         .def("audit", &EdCore::audit2).staticmethod("audit")
         .def("callBackOnCancel", &EdCore::callBackOnCancel).staticmethod("callBackOnCancel")
         .def("clearOLELock", &EdCore::clearOLELock).staticmethod("clearOLELock")
+        .def("clipFormatName", &EdCore::clipFormatName).staticmethod("clipFormatName")
+        .def("cmdCWasCancelled", &EdCore::cmdCWasCancelled).staticmethod("cmdCWasCancelled")
+        .def("cmdUndefine", &EdCore::cmdUndefine).staticmethod("cmdUndefine")
+        .def("coordFromPixelToWorld", &EdCore::coordFromPixelToWorld1)
+        .def("coordFromPixelToWorld", &EdCore::coordFromPixelToWorld2).staticmethod("coordFromPixelToWorld")
+        .def("coordFromWorldToPixel", &EdCore::coordFromWorldToPixel).staticmethod("coordFromWorldToPixel")
+        .def("createInternetShortcut", &EdCore::createInternetShortcut).staticmethod("createInternetShortcut")
+        .def("createViewportByView", &EdCore::createViewportByView).staticmethod("createViewportByView")
         .def("cmdS", &EdCore::cmdS).staticmethod("cmdS")
+        .def("defun", &EdCore::defun).staticmethod("defun")
+        .def("defunEx", &EdCore::defunEx).staticmethod("defunEx")
+        .def("disableDefaultARXExceptionHandler", &EdCore::disableDefaultARXExceptionHandler).staticmethod("disableDefaultARXExceptionHandler")
+        .def("disableUsrbrk", &EdCore::disableUsrbrk).staticmethod("disableUsrbrk")
+        .def("displayBorder", &EdCore::displayBorder).staticmethod("displayBorder")
+        .def("drawingStatusBarsVisible", &EdCore::drawingStatusBarsVisible).staticmethod("drawingStatusBarsVisible")
+        .def("drawOrderInherit", &EdCore::drawOrderInherit).staticmethod("drawOrderInherit")
+        .def("eatCommandThroat", &EdCore::eatCommandThroat).staticmethod("eatCommandThroat")
+        .def("editMTextInteractive", &EdCore::editMTextInteractive).staticmethod("editMTextInteractive")
+        .def("enableUsrbrk", &EdCore::enableUsrbrk).staticmethod("enableUsrbrk")
+
+
         .def("findFile", &EdCore::findFile).staticmethod("findFile")
         .def("findTrustedFile", &EdCore::findTrustedFile).staticmethod("findTrustedFile")
         .def("getPredefinedHatchPatterns", &EdCore::getPredefinedPattens).staticmethod("getPredefinedHatchPatterns")
@@ -130,6 +151,152 @@ void EdCore::callBackOnCancel()
 bool EdCore::clearOLELock(int handle)
 {
     return acedClearOLELock(handle);
+}
+
+std::string EdCore::clipFormatName()
+{
+    return wstr_to_utf8(acedClipFormatName());
+}
+
+bool EdCore::cmdCWasCancelled()
+{
+    return acedCmdCWasCancelled();
+}
+
+int EdCore::cmdUndefine(const std::string& name, int undefIt)
+{
+    return acedCmdUndefine(utf8_to_wstr(name).c_str(), undefIt);
+}
+
+bool EdCore::coordFromPixelToWorld1(const boost::python::list& tin, AcGePoint3d& pnt)
+{
+    PyAutoLockGIL lock;
+    const size_t listSize = boost::python::len(tin);
+    if (listSize != 2)
+        return false;
+    int x = extract<int>(tin[0]);
+    int y = extract<int>(tin[1]);
+    CPoint cpnt(x, y);
+    acedCoordFromPixelToWorld(cpnt, asDblArray(pnt));
+    return true;
+}
+
+bool EdCore::coordFromPixelToWorld2(int windnum, const boost::python::list& tin, AcGePoint3d& pnt)
+{
+    PyAutoLockGIL lock;
+    const size_t listSize = boost::python::len(tin);
+    if (listSize != 2)
+        return false;
+    int x = extract<int>(tin[0]);
+    int y = extract<int>(tin[1]);
+    CPoint cpnt(x, y);
+    return acedCoordFromPixelToWorld(windnum, cpnt, asDblArray(pnt));
+}
+
+bool EdCore::coordFromWorldToPixel(int windnum, const AcGePoint3d& pnt, boost::python::list& tin)
+{
+    CPoint cpnt;
+    if (!acedCoordFromWorldToPixel(windnum, asDblArray(pnt), cpnt))
+        return false;
+    PyAutoLockGIL lock;
+    tin.append(cpnt.x);
+    tin.append(cpnt.y);
+    return true;
+}
+
+bool EdCore::createInternetShortcut(const std::string& szURL, const std::string& szShortcutPath)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    return acedCreateInternetShortcut(utf8_to_wstr(szURL).c_str(), utf8_to_wstr(szShortcutPath).c_str());
+#endif
+}
+
+PyDbObjectId EdCore::createViewportByView(PyDbDatabase& db, PyDbObjectId& view, const AcGePoint2d& location, double scale)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    PyDbObjectId id;
+    PyThrowBadEs(acedCreateViewportByView(db.impObj(), view.m_id, location, scale, id.m_id));
+    return id;
+#endif
+}
+
+int EdCore::defun(const std::string& pszName, int nFuncNum)
+{
+    return acedDefun(utf8_to_wstr(pszName).c_str(), nFuncNum);
+}
+
+int EdCore::defunEx(const std::string& pszGlobalName, const std::string& pszLocalName, int nFuncNum)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    return acedDefunEx(utf8_to_wstr(pszGlobalName).c_str(), utf8_to_wstr(pszLocalName).c_str(), nFuncNum);
+#endif
+}
+
+void EdCore::disableDefaultARXExceptionHandler(bool flag)
+{
+    acedDisableDefaultARXExceptionHandler(flag);
+}
+
+void EdCore::disableUsrbrk()
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    acedDisableUsrbrk();
+#endif
+}
+
+bool EdCore::displayBorder(bool flag)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    return acedDisplayBorder(flag);
+#endif
+}
+
+bool EdCore::drawingStatusBarsVisible()
+{
+    return acedDrawingStatusBarsVisible();
+}
+
+void EdCore::drawOrderInherit(PyDbObjectId& parent, const boost::python::list& childArray, AcEdDrawOrderCmdType cmd)
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    auto ids = PyListToObjectIdArray(childArray);
+    PyThrowBadEs(acedDrawOrderInherit(parent.m_id, ids, cmd));
+#endif
+}
+
+int EdCore::eatCommandThroat()
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    return acedEatCommandThroat();
+#endif
+}
+
+int EdCore::editMTextInteractive(PyDbMText& mtext, bool useNewUI, bool allowTabs)
+{
+    return acedEditMTextInteractive(mtext.impObj(), useNewUI, allowTabs);
+}
+
+void EdCore::enableUsrbrk()
+{
+#ifndef ARXAPP
+    throw PyNotimplementedByHost();
+#else
+    return acedEnableUsrbrk();
+#endif
 }
 
 bool EdCore::cmdS(const boost::python::list& lst)

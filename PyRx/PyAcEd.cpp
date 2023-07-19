@@ -51,6 +51,14 @@ BOOST_PYTHON_MODULE(PyEd)
         .value("eDirect", Acad::PromptStatus::eDirect)
         .export_values()
         ;
+    enum_<AcEdDrawOrderCmdType>("AcEdDrawOrderCmdType")
+        .value("kDrawOrderNone", AcEdDrawOrderCmdType::kDrawOrderNone)
+        .value("kDrawOrderBottom", AcEdDrawOrderCmdType::kDrawOrderBottom)
+        .value("kDrawOrderTop", AcEdDrawOrderCmdType::kDrawOrderTop)
+        .value("kDrawOrderBelow", AcEdDrawOrderCmdType::kDrawOrderBelow)
+        .value("kDrawOrderAbove", AcEdDrawOrderCmdType::kDrawOrderAbove)
+        .export_values()
+        ;
 };
 
 void initPyEdModule()
