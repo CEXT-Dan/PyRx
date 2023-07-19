@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "PyGsManager.h"
 #include "AcGsManager.h"
-using namespace boost::python;
 
+using namespace boost::python;
 
 void makePyGsManagerWrapper()
 {
