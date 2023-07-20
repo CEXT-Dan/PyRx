@@ -11827,11 +11827,8 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     ...
 
 class Database:
-    def UCSTableId (self, *args, **kwargs)-> ObjectId :
-      '''UCSTableId( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId UCSTableId(class PyDbDatabase {lvalue})'''
+    def UCSTableId (self: Database)-> ObjectId :
+      '''                             '''
     ...
     def __init__ (self: Database,buildDefaultDrawing : bool=True,noDocument: bool=False)-> None :
       '''                             '''
@@ -11866,11 +11863,8 @@ class Database:
     def blipmode (self: Database)-> bool :
       '''                             '''
     ...
-    def blockTableId (self, *args, **kwargs)-> ObjectId :
-      '''blockTableId( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId blockTableId(class PyDbDatabase {lvalue})'''
+    def blockTableId (self: Database)-> ObjectId :
+      '''                             '''
     ...
     def byBlockLinetype (self: Database)-> ObjectId :
       '''                             '''
@@ -11926,7 +11920,7 @@ class Database:
     def clayer (self: Database)-> ObjectId :
       '''                             '''
     ...
-    def closeInput (self: Database,closeit : bool)-> None :
+    def closeInput (self: Database,close : bool)-> None :
       '''                             '''
     ...
     def cmaterial (self: Database)-> ObjectId :
@@ -11953,11 +11947,8 @@ class Database:
     def countEmptyObjects (self: Database,flag : int)-> int :
       '''                             '''
     ...
-    def currentSpaceId (self, *args, **kwargs)-> ObjectId :
-      '''currentSpaceId( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId currentSpaceId(class PyDbDatabase {lvalue})'''
+    def currentSpaceId (self: Database)-> ObjectId :
+      '''                             '''
     ...
     def detailViewStyle (self: Database)-> ObjectId :
       '''                             '''
@@ -12070,11 +12061,8 @@ class Database:
     def getDimstyleParentId (self: Database)-> ObjectId :
       '''                             '''
     ...
-    def getFilename (self, *args, **kwargs)-> str :
-      '''getFilename( (Database)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getFilename(class PyDbDatabase {lvalue})'''
+    def getFilename (self: Database)-> str :
+      '''                             '''
     ...
     def getNearestLineWeight (weight : int)-> LineWeight :
       '''                             '''
@@ -12296,11 +12284,8 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def mleaderstyle (self: Database)-> ObjectId :
       '''                             '''
     ...
-    def modelSpaceId (self, *args, **kwargs)-> ObjectId :
-      '''modelSpaceId( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId modelSpaceId(class PyDbDatabase {lvalue})'''
+    def modelSpaceId (self: Database)-> ObjectId :
+      '''                             '''
     ...
     def msOleScale (self: Database)-> float :
       '''                             '''
@@ -12425,25 +12410,14 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def pucsydir (self: Database)-> Vector3d :
       '''                             '''
     ...
-    def purge (self, *args, **kwargs)-> list :
-      '''purge( (Database)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list purge(class PyDbDatabase {lvalue})'''
+    def purge (self: Database)-> list :
+      '''                             '''
     ...
     def qtextmode (self: Database)-> bool :
       '''                             '''
     ...
-    def readDwgFile (self, *args, **kwargs)-> None :
-      '''readDwgFile( (Database)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void readDwgFile(class PyDbDatabase {lvalue},char const * __ptr64)
-
-readDwgFile( (Database)arg1, (str)arg2, (int)arg3, (bool)arg4, (str)arg5) -> None :
-
-    C++ signature :
-        void readDwgFile(class PyDbDatabase {lvalue},char const * __ptr64,int,bool,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def readDwgFile (self: Database,fileName : str,mode : int=kForReadAndReadShare,bAllowCPConversion : bool=False,password : str=empty)-> None :
+      '''                             '''
     ...
     def reclaimMemoryFromErasedObjects (self: Database,ids : list[ObjectId])-> None :
       '''                             '''
@@ -12529,20 +12503,14 @@ readDwgFile( (Database)arg1, (str)arg2, (int)arg3, (bool)arg4, (str)arg5) -> Non
     def setCameraHeight (self: Database,val : float)-> None :
       '''                             '''
     ...
-    def setCannoscale (self, *args, **kwargs)-> None :
-      '''setCannoscale( (Database)arg1, (AnnotationScale)arg2) -> None :
-
-    C++ signature :
-        void setCannoscale(class PyDbDatabase {lvalue},class PyDbAnnotationScale {lvalue})'''
+    def setCannoscale (self: Database,val : AnnotationScale)-> None :
+      '''                             '''
     ...
     def setCePlotStyleName (self: Database,val : PlotStyleNameType,id : ObjectId)-> None :
       '''                             '''
     ...
-    def setCecolor (self, *args, **kwargs)-> None :
-      '''setCecolor( (Database)arg1, (Color)arg2) -> None :
-
-    C++ signature :
-        void setCecolor(class PyDbDatabase {lvalue},class AcCmColor)'''
+    def setCecolor (self: Database,val : Color)-> None :
+      '''                             '''
     ...
     def setCeltscale (self: Database,val : float)-> None :
       '''                             '''
@@ -12553,11 +12521,8 @@ readDwgFile( (Database)arg1, (str)arg2, (int)arg3, (bool)arg4, (str)arg5) -> Non
     def setCelweight (self: Database,val : LineWeight)-> None :
       '''                             '''
     ...
-    def setCetransparency (self, *args, **kwargs)-> None :
-      '''setCetransparency( (Database)arg1, (Transparency)arg2) -> None :
-
-    C++ signature :
-        void setCetransparency(class PyDbDatabase {lvalue},class AcCmTransparency)'''
+    def setCetransparency (self: Database,val : Transparency)-> None :
+      '''                             '''
     ...
     def setChamfera (self: Database,val : float)-> None :
       '''                             '''
@@ -12691,11 +12656,8 @@ readDwgFile( (Database)arg1, (str)arg2, (int)arg3, (bool)arg4, (str)arg5) -> Non
     def setInsunits (self: Database,val : UnitsValue)-> None :
       '''                             '''
     ...
-    def setInterfereColor (self, *args, **kwargs)-> None :
-      '''setInterfereColor( (Database)arg1, (Color)arg2) -> None :
-
-    C++ signature :
-        void setInterfereColor(class PyDbDatabase {lvalue},class AcCmColor)'''
+    def setInterfereColor (self: Database,val : Color)-> None :
+      '''                             '''
     ...
     def setInterfereObjVisStyle (self: Database,val : ObjectId)-> None :
       '''                             '''
@@ -12874,725 +12836,365 @@ readDwgFile( (Database)arg1, (str)arg2, (int)arg3, (bool)arg4, (str)arg5) -> Non
     def setPucs (self: Database,ucsOrigin : PyGe.Point3d,ucsXDir : PyGe.Point3d,ucsYDir : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setPucsBase (self, *args, **kwargs)-> None :
-      '''setPucsBase( (Database)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setPucsBase(class PyDbDatabase {lvalue},class PyDbObjectId)'''
-    ...
-    def setPucsname (self, *args, **kwargs)-> None :
-      '''setPucsname( (Database)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setPucsname(class PyDbDatabase {lvalue},class PyDbObjectId)'''
-    ...
-    def setQtextmode (self, *args, **kwargs)-> None :
-      '''setQtextmode( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setQtextmode(class PyDbDatabase {lvalue},bool)'''
-    ...
-    def setRealWorldScale (self, *args, **kwargs)-> None :
-      '''setRealWorldScale( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setRealWorldScale(class PyDbDatabase {lvalue},bool)'''
-    ...
-    def setRegenmode (self, *args, **kwargs)-> None :
-      '''setRegenmode( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setRegenmode(class PyDbDatabase {lvalue},bool)'''
-    ...
-    def setRetainOriginalThumbnailBitmap (self, *args, **kwargs)-> None :
-      '''setRetainOriginalThumbnailBitmap( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setRetainOriginalThumbnailBitmap(class PyDbDatabase {lvalue},bool)'''
-    ...
-    def setSaveproxygraphics (self, *args, **kwargs)-> None :
-      '''setSaveproxygraphics( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setSaveproxygraphics(class PyDbDatabase {lvalue},short)'''
-    ...
-    def setSectionViewStyle (self, *args, **kwargs)-> None :
-      '''setSectionViewStyle( (Database)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setSectionViewStyle(class PyDbDatabase {lvalue},class PyDbObjectId)'''
-    ...
-    def setShadedge (self, *args, **kwargs)-> None :
-      '''setShadedge( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setShadedge(class PyDbDatabase {lvalue},short)'''
-    ...
-    def setShadedif (self, *args, **kwargs)-> None :
-      '''setShadedif( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setShadedif(class PyDbDatabase {lvalue},short)'''
-    ...
-    def setShadowPlaneLocation (self, *args, **kwargs)-> None :
-      '''setShadowPlaneLocation( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setShadowPlaneLocation(class PyDbDatabase {lvalue},double)'''
-    ...
-    def setShowHist (self, *args, **kwargs)-> None :
-      '''setShowHist( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setShowHist(class PyDbDatabase {lvalue},unsigned char)'''
-    ...
-    def setSketchinc (self, *args, **kwargs)-> None :
-      '''setSketchinc( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setSketchinc(class PyDbDatabase {lvalue},double)'''
-    ...
-    def setSkpoly (self, *args, **kwargs)-> None :
-      '''setSkpoly( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setSkpoly(class PyDbDatabase {lvalue},bool)'''
-    ...
-    def setSolidHist (self, *args, **kwargs)-> None :
-      '''setSolidHist( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setSolidHist(class PyDbDatabase {lvalue},unsigned char)'''
-    ...
-    def setSortEnts (self, *args, **kwargs)-> None :
-      '''setSortEnts( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setSortEnts(class PyDbDatabase {lvalue},unsigned char)'''
-    ...
-    def setSplframe (self, *args, **kwargs)-> None :
-      '''setSplframe( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setSplframe(class PyDbDatabase {lvalue},bool)'''
-    ...
-    def setSplinesegs (self, *args, **kwargs)-> None :
-      '''setSplinesegs( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setSplinesegs(class PyDbDatabase {lvalue},short)'''
-    ...
-    def setSplinetype (self, *args, **kwargs)-> None :
-      '''setSplinetype( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setSplinetype(class PyDbDatabase {lvalue},short)'''
-    ...
-    def setStepSize (self, *args, **kwargs)-> None :
-      '''setStepSize( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setStepSize(class PyDbDatabase {lvalue},double)'''
-    ...
-    def setStepsPerSec (self, *args, **kwargs)-> None :
-      '''setStepsPerSec( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setStepsPerSec(class PyDbDatabase {lvalue},double)'''
-    ...
-    def setStyleSheet (self, *args, **kwargs)-> None :
-      '''setStyleSheet( (Database)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setStyleSheet(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
-    ...
-    def setSurftab1 (self, *args, **kwargs)-> None :
-      '''setSurftab1( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setSurftab1(class PyDbDatabase {lvalue},short)'''
-    ...
-    def setSurftab2 (self, *args, **kwargs)-> None :
-      '''setSurftab2( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setSurftab2(class PyDbDatabase {lvalue},short)'''
-    ...
-    def setSurftype (self, *args, **kwargs)-> None :
-      '''setSurftype( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setSurftype(class PyDbDatabase {lvalue},short)'''
-    ...
-    def setSurfu (self, *args, **kwargs)-> None :
-      '''setSurfu( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setSurfu(class PyDbDatabase {lvalue},short)'''
-    ...
-    def setSurfv (self, *args, **kwargs)-> None :
-      '''setSurfv( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setSurfv(class PyDbDatabase {lvalue},short)'''
-    ...
-    def setTStackAlign (self, *args, **kwargs)-> None :
-      '''setTStackAlign( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setTStackAlign(class PyDbDatabase {lvalue},int)'''
-    ...
-    def setTStackSize (self, *args, **kwargs)-> None :
-      '''setTStackSize( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setTStackSize(class PyDbDatabase {lvalue},int)'''
-    ...
-    def setTablestyle (self, *args, **kwargs)-> None :
-      '''setTablestyle( (Database)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setTablestyle(class PyDbDatabase {lvalue},class PyDbObjectId)'''
-    ...
-    def setTextsize (self, *args, **kwargs)-> None :
-      '''setTextsize( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setTextsize(class PyDbDatabase {lvalue},double)'''
-    ...
-    def setTextstyle (self, *args, **kwargs)-> None :
-      '''setTextstyle( (Database)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setTextstyle(class PyDbDatabase {lvalue},class PyDbObjectId)'''
-    ...
-    def setThickness (self, *args, **kwargs)-> None :
-      '''setThickness( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setThickness(class PyDbDatabase {lvalue},double)'''
-    ...
-    def setTilemode (self, *args, **kwargs)-> None :
-      '''setTilemode( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setTilemode(class PyDbDatabase {lvalue},bool)'''
-    ...
-    def setTimeZone (self, *args, **kwargs)-> None :
-      '''setTimeZone( (Database)arg1, (object)arg2) -> None :
-
-    C++ signature :
-        void setTimeZone(class PyDbDatabase {lvalue},enum AcDb::TimeZone)'''
-    ...
-    def setTimeZoneAsUtcOffset (self, *args, **kwargs)-> None :
-      '''setTimeZoneAsUtcOffset( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setTimeZoneAsUtcOffset(class PyDbDatabase {lvalue},double)'''
-    ...
-    def setTracewid (self, *args, **kwargs)-> None :
-      '''setTracewid( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setTracewid(class PyDbDatabase {lvalue},double)'''
-    ...
-    def setTreedepth (self, *args, **kwargs)-> None :
-      '''setTreedepth( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setTreedepth(class PyDbDatabase {lvalue},short)'''
-    ...
-    def setUcs (self, *args, **kwargs)-> None :
-      '''setUcs( (Database)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
-
-    C++ signature :
-        void setUcs(class PyDbDatabase {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d)'''
-    ...
-    def setUcsBase (self, *args, **kwargs)-> None :
-      '''setUcsBase( (Database)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setUcsBase(class PyDbDatabase {lvalue},class PyDbObjectId)'''
-    ...
-    def setUcsname (self, *args, **kwargs)-> None :
-      '''setUcsname( (Database)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setUcsname(class PyDbDatabase {lvalue},class PyDbObjectId)'''
-    ...
-    def setUnitmode (self, *args, **kwargs)-> None :
-      '''setUnitmode( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setUnitmode(class PyDbDatabase {lvalue},short)'''
-    ...
-    def setUpdateThumbnail (self, *args, **kwargs)-> None :
-      '''setUpdateThumbnail( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setUpdateThumbnail(class PyDbDatabase {lvalue},unsigned char)'''
-    ...
-    def setUseri1 (self, *args, **kwargs)-> None :
-      '''setUseri1( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setUseri1(class PyDbDatabase {lvalue},short)'''
-    ...
-    def setUseri2 (self, *args, **kwargs)-> None :
-      '''setUseri2( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setUseri2(class PyDbDatabase {lvalue},short)'''
-    ...
-    def setUseri3 (self, *args, **kwargs)-> None :
-      '''setUseri3( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setUseri3(class PyDbDatabase {lvalue},short)'''
-    ...
-    def setUseri4 (self, *args, **kwargs)-> None :
-      '''setUseri4( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setUseri4(class PyDbDatabase {lvalue},short)'''
-    ...
-    def setUseri5 (self, *args, **kwargs)-> None :
-      '''setUseri5( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setUseri5(class PyDbDatabase {lvalue},short)'''
-    ...
-    def setUserr1 (self, *args, **kwargs)-> None :
-      '''setUserr1( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setUserr1(class PyDbDatabase {lvalue},double)'''
-    ...
-    def setUserr2 (self, *args, **kwargs)-> None :
-      '''setUserr2( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setUserr2(class PyDbDatabase {lvalue},double)'''
-    ...
-    def setUserr3 (self, *args, **kwargs)-> None :
-      '''setUserr3( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setUserr3(class PyDbDatabase {lvalue},double)'''
-    ...
-    def setUserr4 (self, *args, **kwargs)-> None :
-      '''setUserr4( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setUserr4(class PyDbDatabase {lvalue},double)'''
-    ...
-    def setUserr5 (self, *args, **kwargs)-> None :
-      '''setUserr5( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setUserr5(class PyDbDatabase {lvalue},double)'''
-    ...
-    def setUsrtimer (self, *args, **kwargs)-> None :
-      '''setUsrtimer( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setUsrtimer(class PyDbDatabase {lvalue},bool)'''
-    ...
-    def setVersionGuid (self, *args, **kwargs)-> None :
-      '''setVersionGuid( (Database)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setVersionGuid(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
-    ...
-    def setViewportScaleDefault (self, *args, **kwargs)-> None :
-      '''setViewportScaleDefault( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setViewportScaleDefault(class PyDbDatabase {lvalue},double)'''
-    ...
-    def setVisretain (self, *args, **kwargs)-> None :
-      '''setVisretain( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setVisretain(class PyDbDatabase {lvalue},bool)'''
-    ...
-    def setWorldPucsBaseOrigin (self, *args, **kwargs)-> None :
-      '''setWorldPucsBaseOrigin( (Database)arg1, (Point3d)arg2, (OrthographicView)arg3) -> None :
-
-    C++ signature :
-        void setWorldPucsBaseOrigin(class PyDbDatabase {lvalue},class AcGePoint3d,enum AcDb::OrthographicView)'''
-    ...
-    def setWorldUcsBaseOrigin (self, *args, **kwargs)-> None :
-      '''setWorldUcsBaseOrigin( (Database)arg1, (Point3d)arg2, (OrthographicView)arg3) -> None :
-
-    C++ signature :
-        void setWorldUcsBaseOrigin(class PyDbDatabase {lvalue},class AcGePoint3d,enum AcDb::OrthographicView)'''
-    ...
-    def setWorldview (self, *args, **kwargs)-> None :
-      '''setWorldview( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setWorldview(class PyDbDatabase {lvalue},bool)'''
-    ...
-    def setXclipFrame (self, *args, **kwargs)-> None :
-      '''setXclipFrame( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setXclipFrame(class PyDbDatabase {lvalue},unsigned char)'''
-    ...
-    def setXrefEditEnabled (self, *args, **kwargs)-> None :
-      '''setXrefEditEnabled( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setXrefEditEnabled(class PyDbDatabase {lvalue},bool)'''
-    ...
-    def shadedge (self, *args, **kwargs)-> int :
-      '''shadedge( (Database)arg1) -> int :
-
-    C++ signature :
-        short shadedge(class PyDbDatabase {lvalue})'''
-    ...
-    def shadedif (self, *args, **kwargs)-> int :
-      '''shadedif( (Database)arg1) -> int :
-
-    C++ signature :
-        short shadedif(class PyDbDatabase {lvalue})'''
-    ...
-    def shadowPlaneLocation (self, *args, **kwargs)-> float :
-      '''shadowPlaneLocation( (Database)arg1) -> float :
-
-    C++ signature :
-        double shadowPlaneLocation(class PyDbDatabase {lvalue})'''
-    ...
-    def showHist (self, *args, **kwargs)-> int :
-      '''showHist( (Database)arg1) -> int :
-
-    C++ signature :
-        unsigned char showHist(class PyDbDatabase {lvalue})'''
-    ...
-    def sketchinc (self, *args, **kwargs)-> float :
-      '''sketchinc( (Database)arg1) -> float :
-
-    C++ signature :
-        double sketchinc(class PyDbDatabase {lvalue})'''
-    ...
-    def skpoly (self, *args, **kwargs)-> bool :
-      '''skpoly( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool skpoly(class PyDbDatabase {lvalue})'''
-    ...
-    def solidHist (self, *args, **kwargs)-> int :
-      '''solidHist( (Database)arg1) -> int :
-
-    C++ signature :
-        unsigned char solidHist(class PyDbDatabase {lvalue})'''
-    ...
-    def sortEnts (self, *args, **kwargs)-> int :
-      '''sortEnts( (Database)arg1) -> int :
-
-    C++ signature :
-        unsigned char sortEnts(class PyDbDatabase {lvalue})'''
-    ...
-    def splframe (self, *args, **kwargs)-> bool :
-      '''splframe( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool splframe(class PyDbDatabase {lvalue})'''
-    ...
-    def splinesegs (self, *args, **kwargs)-> int :
-      '''splinesegs( (Database)arg1) -> int :
-
-    C++ signature :
-        short splinesegs(class PyDbDatabase {lvalue})'''
-    ...
-    def splinetype (self, *args, **kwargs)-> int :
-      '''splinetype( (Database)arg1) -> int :
-
-    C++ signature :
-        short splinetype(class PyDbDatabase {lvalue})'''
-    ...
-    def stepSize (self, *args, **kwargs)-> float :
-      '''stepSize( (Database)arg1) -> float :
-
-    C++ signature :
-        double stepSize(class PyDbDatabase {lvalue})'''
-    ...
-    def stepsPerSec (self, *args, **kwargs)-> float :
-      '''stepsPerSec( (Database)arg1) -> float :
-
-    C++ signature :
-        double stepsPerSec(class PyDbDatabase {lvalue})'''
-    ...
-    def surftab1 (self, *args, **kwargs)-> int :
-      '''surftab1( (Database)arg1) -> int :
-
-    C++ signature :
-        short surftab1(class PyDbDatabase {lvalue})'''
-    ...
-    def surftab2 (self, *args, **kwargs)-> int :
-      '''surftab2( (Database)arg1) -> int :
-
-    C++ signature :
-        short surftab2(class PyDbDatabase {lvalue})'''
-    ...
-    def surftype (self, *args, **kwargs)-> int :
-      '''surftype( (Database)arg1) -> int :
-
-    C++ signature :
-        short surftype(class PyDbDatabase {lvalue})'''
-    ...
-    def surfu (self, *args, **kwargs)-> int :
-      '''surfu( (Database)arg1) -> int :
-
-    C++ signature :
-        short surfu(class PyDbDatabase {lvalue})'''
-    ...
-    def surfv (self, *args, **kwargs)-> int :
-      '''surfv( (Database)arg1) -> int :
-
-    C++ signature :
-        short surfv(class PyDbDatabase {lvalue})'''
-    ...
-    def tableStyleDictionaryId (self, *args, **kwargs)-> ObjectId :
-      '''tableStyleDictionaryId( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId tableStyleDictionaryId(class PyDbDatabase {lvalue})'''
-    ...
-    def tablestyle (self, *args, **kwargs)-> ObjectId :
-      '''tablestyle( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId tablestyle(class PyDbDatabase {lvalue})'''
-    ...
-    def textStyleTableId (self, *args, **kwargs)-> ObjectId :
-      '''textStyleTableId( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId textStyleTableId(class PyDbDatabase {lvalue})'''
-    ...
-    def textsize (self, *args, **kwargs)-> float :
-      '''textsize( (Database)arg1) -> float :
-
-    C++ signature :
-        double textsize(class PyDbDatabase {lvalue})'''
-    ...
-    def textstyle (self, *args, **kwargs)-> ObjectId :
-      '''textstyle( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId textstyle(class PyDbDatabase {lvalue})'''
-    ...
-    def thickness (self, *args, **kwargs)-> float :
-      '''thickness( (Database)arg1) -> float :
-
-    C++ signature :
-        double thickness(class PyDbDatabase {lvalue})'''
-    ...
-    def tileModeLightSynch (self, *args, **kwargs)-> int :
-      '''tileModeLightSynch( (Database)arg1) -> int :
-
-    C++ signature :
-        unsigned char tileModeLightSynch(class PyDbDatabase {lvalue})'''
-    ...
-    def tilemode (self, *args, **kwargs)-> bool :
-      '''tilemode( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool tilemode(class PyDbDatabase {lvalue})'''
-    ...
-    def timeZone (self, *args, **kwargs)-> int :
-      '''timeZone( (Database)arg1) -> int :
-
-    C++ signature :
-        int timeZone(class PyDbDatabase {lvalue})'''
-    ...
-    def tracewid (self, *args, **kwargs)-> float :
-      '''tracewid( (Database)arg1) -> float :
-
-    C++ signature :
-        double tracewid(class PyDbDatabase {lvalue})'''
-    ...
-    def transactionManager (self, *args, **kwargs)-> TransactionManager :
-      '''transactionManager( (Database)arg1) -> TransactionManager :
-
-    C++ signature :
-        class PyDbTransactionManager transactionManager(class PyDbDatabase {lvalue})'''
-    ...
-    def treedepth (self, *args, **kwargs)-> int :
-      '''treedepth( (Database)arg1) -> int :
-
-    C++ signature :
-        short treedepth(class PyDbDatabase {lvalue})'''
-    ...
-    def tstackalign (self, *args, **kwargs)-> int :
-      '''tstackalign( (Database)arg1) -> int :
-
-    C++ signature :
-        int tstackalign(class PyDbDatabase {lvalue})'''
-    ...
-    def tstacksize (self, *args, **kwargs)-> int :
-      '''tstacksize( (Database)arg1) -> int :
-
-    C++ signature :
-        int tstacksize(class PyDbDatabase {lvalue})'''
-    ...
-    def ucsBase (self, *args, **kwargs)-> ObjectId :
-      '''ucsBase( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId ucsBase(class PyDbDatabase {lvalue})'''
-    ...
-    def ucsname (self, *args, **kwargs)-> ObjectId :
-      '''ucsname( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId ucsname(class PyDbDatabase {lvalue})'''
-    ...
-    def ucsorg (self, *args, **kwargs)-> Point3d :
-      '''ucsorg( (Database)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d ucsorg(class PyDbDatabase {lvalue})'''
-    ...
-    def ucsxdir (self, *args, **kwargs)-> Vector3d :
-      '''ucsxdir( (Database)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d ucsxdir(class PyDbDatabase {lvalue})'''
-    ...
-    def ucsydir (self, *args, **kwargs)-> Vector3d :
-      '''ucsydir( (Database)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d ucsydir(class PyDbDatabase {lvalue})'''
-    ...
-    def undoRecording (self, *args, **kwargs)-> bool :
-      '''undoRecording( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool undoRecording(class PyDbDatabase {lvalue})'''
-    ...
-    def unitmode (self, *args, **kwargs)-> int :
-      '''unitmode( (Database)arg1) -> int :
-
-    C++ signature :
-        short unitmode(class PyDbDatabase {lvalue})'''
-    ...
-    def updateDataLink (self, *args, **kwargs)-> None :
-      '''updateDataLink( (Database)arg1, (UpdateDirection)arg2, (UpdateOption)arg3) -> None :
-
-    C++ signature :
-        void updateDataLink(class PyDbDatabase {lvalue},enum AcDb::UpdateDirection,enum AcDb::UpdateOption)'''
-    ...
-    def updateExt (self, *args, **kwargs)-> None :
-      '''updateExt( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void updateExt(class PyDbDatabase {lvalue},bool)'''
-    ...
-    def updateThumbnail (self, *args, **kwargs)-> int :
-      '''updateThumbnail( (Database)arg1) -> int :
-
-    C++ signature :
-        unsigned char updateThumbnail(class PyDbDatabase {lvalue})'''
-    ...
-    def useri1 (self, *args, **kwargs)-> int :
-      '''useri1( (Database)arg1) -> int :
-
-    C++ signature :
-        short useri1(class PyDbDatabase {lvalue})'''
-    ...
-    def useri2 (self, *args, **kwargs)-> int :
-      '''useri2( (Database)arg1) -> int :
-
-    C++ signature :
-        short useri2(class PyDbDatabase {lvalue})'''
-    ...
-    def useri3 (self, *args, **kwargs)-> int :
-      '''useri3( (Database)arg1) -> int :
-
-    C++ signature :
-        short useri3(class PyDbDatabase {lvalue})'''
-    ...
-    def useri4 (self, *args, **kwargs)-> int :
-      '''useri4( (Database)arg1) -> int :
-
-    C++ signature :
-        short useri4(class PyDbDatabase {lvalue})'''
-    ...
-    def useri5 (self, *args, **kwargs)-> int :
-      '''useri5( (Database)arg1) -> int :
-
-    C++ signature :
-        short useri5(class PyDbDatabase {lvalue})'''
-    ...
-    def userr1 (self, *args, **kwargs)-> float :
-      '''userr1( (Database)arg1) -> float :
-
-    C++ signature :
-        double userr1(class PyDbDatabase {lvalue})'''
-    ...
-    def userr2 (self, *args, **kwargs)-> float :
-      '''userr2( (Database)arg1) -> float :
-
-    C++ signature :
-        double userr2(class PyDbDatabase {lvalue})'''
-    ...
-    def userr3 (self, *args, **kwargs)-> float :
-      '''userr3( (Database)arg1) -> float :
-
-    C++ signature :
-        double userr3(class PyDbDatabase {lvalue})'''
-    ...
-    def userr4 (self, *args, **kwargs)-> float :
-      '''userr4( (Database)arg1) -> float :
-
-    C++ signature :
-        double userr4(class PyDbDatabase {lvalue})'''
-    ...
-    def userr5 (self, *args, **kwargs)-> float :
-      '''userr5( (Database)arg1) -> float :
-
-    C++ signature :
-        double userr5(class PyDbDatabase {lvalue})'''
-    ...
-    def usrtimer (self, *args, **kwargs)-> bool :
-      '''usrtimer( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool usrtimer(class PyDbDatabase {lvalue})'''
-    ...
-    def viewTableId (self, *args, **kwargs)-> ObjectId :
-      '''viewTableId( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId viewTableId(class PyDbDatabase {lvalue})'''
-    ...
-    def viewportScaleDefault (self, *args, **kwargs)-> float :
-      '''viewportScaleDefault( (Database)arg1) -> float :
-
-    C++ signature :
-        double viewportScaleDefault(class PyDbDatabase {lvalue})'''
-    ...
-    def viewportTableId (self, *args, **kwargs)-> ObjectId :
-      '''viewportTableId( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId viewportTableId(class PyDbDatabase {lvalue})'''
-    ...
-    def visretain (self, *args, **kwargs)-> bool :
-      '''visretain( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool visretain(class PyDbDatabase {lvalue})'''
-    ...
-    def visualStyleDictionaryId (self, *args, **kwargs)-> ObjectId :
-      '''visualStyleDictionaryId( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId visualStyleDictionaryId(class PyDbDatabase {lvalue})'''
+    def setPucsBase (self: Database,ucsid : ObjectId)-> None :
+      '''                             '''
+    ...
+    def setPucsname (self: Database,ucsrec : ObjectId)-> None :
+      '''                             '''
+    ...
+    def setQtextmode (self: Database,val : bool)-> None :
+      '''                             '''
+    ...
+    def setRealWorldScale (self: Database,val : float)-> None :
+      '''                             '''
+    ...
+    def setRegenmode (self: Database,val : bool)-> None :
+      '''                             '''
+    ...
+    def setRetainOriginalThumbnailBitmap (self: Database,val : bool)-> None :
+      '''                             '''
+    ...
+    def setSaveproxygraphics (self: Database,val : int)-> None :
+      '''                             '''
+    ...
+    def setSectionViewStyle (self: Database,val : ObjectId)-> None :
+      '''                             '''
+    ...
+    def setShadedge (self: Database,val : int)-> None :
+      '''                             '''
+    ...
+    def setShadedif (self: Database,val : int)-> None :
+      '''                             '''
+    ...
+    def setShadowPlaneLocation (self: Database,val : float)-> None :
+      '''                             '''
+    ...
+    def setShowHist (self: Database,val : int)-> None :
+      '''                             '''
+    ...
+    def setSketchinc (self: Database,val : float)-> None :
+      '''                             '''
+    ...
+    def setSkpoly (self: Database,val : bool)-> None :
+      '''                             '''
+    ...
+    def setSolidHist (self: Database,val : int)-> None :
+      '''                             '''
+    ...
+    def setSortEnts (self: Database,val : int)-> None :
+      '''                             '''
+    ...
+    def setSplframe (self: Database,val : bool)-> None :
+      '''                             '''
+    ...
+    def setSplinesegs (self: Database,val : int)-> None :
+      '''                             '''
+    ...
+    def setSplinetype (self: Database,val : int)-> None :
+      '''                             '''
+    ...
+    def setStepSize (self: Database,val : float)-> None :
+      '''                             '''
+    ...
+    def setStepsPerSec (self: Database,val : float)-> None :
+      '''                             '''
+    ...
+    def setStyleSheet (self: Database,val : str)-> None :
+      '''                             '''
+    ...
+    def setSurftab1 (self: Database,val : int)-> None :
+      '''                             '''
+    ...
+    def setSurftab2 (self: Database,val : int)-> None :
+      '''                             '''
+    ...
+    def setSurftype (self: Database,val : int)-> None :
+      '''                             '''
+    ...
+    def setSurfu (self: Database,val : int)-> None :
+      '''                             '''
+    ...
+    def setSurfv (self: Database,val : int)-> None :
+      '''                             '''
+    ...
+    def setTStackAlign (self: Database,val : int)-> None :
+      '''                             '''
+    ...
+    def setTStackSize (self: Database,val : int)-> None :
+      '''                             '''
+    ...
+    def setTablestyle (self: Database,val : ObjectId)-> None :
+      '''                             '''
+    ...
+    def setTextsize (self: Database,val : float)-> None :
+      '''                             '''
+    ...
+    def setTextstyle (self: Database,val : ObjectId)-> None :
+      '''                             '''
+    ...
+    def setThickness (self: Database,val : float)-> None :
+      '''                             '''
+    ...
+    def setTilemode (self: Database,val : bool)-> None :
+      '''                             '''
+    ...
+    def setTimeZone (self: Database,val : TimeZone)-> None :
+      '''                             '''
+    ...
+    def setTimeZoneAsUtcOffset (self: Database,val : float)-> None :
+      '''                             '''
+    ...
+    def setTracewid (self: Database,val : float)-> None :
+      '''                             '''
+    ...
+    def setTreedepth (self: Database,val : int)-> None :
+      '''                             '''
+    ...
+    def setUcs (self: Database,ucsOrigin : PyGe.Point3d,ucsXDir : PyGe.Point3d,ucsYDir : PyGe.Point3d)-> None :
+      '''                             '''
+    ...
+    def setUcsBase (self: Database,ucsid : ObjectId)-> None :
+      '''                             '''
+    ...
+    def setUcsname (self: Database,ucsrecId : ObjectId)-> None :
+      '''                             '''
+    ...
+    def setUnitmode (self: Database,val : int)-> None :
+      '''                             '''
+    ...
+    def setUpdateThumbnail (self: Database,val : int)-> None :
+      '''                             '''
+    ...
+    def setUseri1 (self: Database,val : int)-> None :
+      '''                             '''
+    ...
+    def setUseri2 (self: Database,val : int)-> None :
+      '''                             '''
+    ...
+    def setUseri3 (self: Database,val : int)-> None :
+      '''                             '''
+    ...
+    def setUseri4 (self: Database,val : int)-> None :
+      '''                             '''
+    ...
+    def setUseri5 (self: Database,val : int)-> None :
+      '''                             '''
+    ...
+    def setUserr1 (self: Database,val : float)-> None :
+      '''                             '''
+    ...
+    def setUserr2 (self: Database,val : float)-> None :
+      '''                             '''
+    ...
+    def setUserr3 (self: Database,val : float)-> None :
+      '''                             '''
+    ...
+    def setUserr4 (self: Database,val : float)-> None :
+      '''                             '''
+    ...
+    def setUserr5 (self: Database,val : float)-> None :
+      '''                             '''
+    ...
+    def setUsrtimer (self: Database,val : bool)-> None :
+      '''                             '''
+    ...
+    def setVersionGuid (self: Database,val : str)-> None :
+      '''                             '''
+    ...
+    def setViewportScaleDefault (self: Database,val : float)-> None :
+      '''                             '''
+    ...
+    def setVisretain (self: Database,val : bool)-> None :
+      '''                             '''
+    ...
+    def setWorldPucsBaseOrigin (self: Database,ucsOrigin : PyGe.Point3d,orthoView : OrthographicView)-> None :
+      '''                             '''
+    ...
+    def setWorldUcsBaseOrigin (self: Database,ucsOrigin : PyGe.Point3d,orthoView : OrthographicView)-> None :
+      '''                             '''
+    ...
+    def setWorldview (self: Database,val : bool)-> None :
+      '''                             '''
+    ...
+    def setXclipFrame (self: Database,val : int)-> None :
+      '''                             '''
+    ...
+    def setXrefEditEnabled (self: Database,val : bool)-> None :
+      '''                             '''
+    ...
+    def shadedge (self: Database)-> int :
+      '''                             '''
+    ...
+    def shadedif (self: Database)-> int :
+      '''                             '''
+    ...
+    def shadowPlaneLocation (self: Database)-> float :
+      '''                             '''
+    ...
+    def showHist (self: Database)-> int :
+      '''                             '''
+    ...
+    def sketchinc (self: Database)-> float :
+      '''                             '''
+    ...
+    def skpoly (self: Database)-> bool :
+      '''                             '''
+    ...
+    def solidHist (self: Database)-> int :
+      '''                             '''
+    ...
+    def sortEnts (self: Database)-> int :
+      '''                             '''
+    ...
+    def splframe (self: Database)-> bool :
+      '''                             '''
+    ...
+    def splinesegs (self: Database)-> int :
+      '''                             '''
+    ...
+    def splinetype (self: Database)-> int :
+      '''                             '''
+    ...
+    def stepSize (self: Database)-> float :
+      '''                             '''
+    ...
+    def stepsPerSec (self: Database)-> float :
+      '''                             '''
+    ...
+    def surftab1 (self: Database)-> int :
+      '''                             '''
+    ...
+    def surftab2 (self: Database)-> int :
+      '''                             '''
+    ...
+    def surftype (self: Database)-> int :
+      '''                             '''
+    ...
+    def surfu (self: Database)-> int :
+      '''                             '''
+    ...
+    def surfv (self: Database)-> int :
+      '''                             '''
+    ...
+    def tableStyleDictionaryId (self: Database)-> ObjectId :
+      '''                             '''
+    ...
+    def tablestyle (self: Database)-> ObjectId :
+      '''                             '''
+    ...
+    def textStyleTableId (self: Database)-> ObjectId :
+      '''                             '''
+    ...
+    def textsize (self: Database)-> float :
+      '''                             '''
+    ...
+    def textstyle (self: Database)-> ObjectId :
+      '''                             '''
+    ...
+    def thickness (self: Database)-> float :
+      '''                             '''
+    ...
+    def tileModeLightSynch (self: Database)-> int :
+      '''                             '''
+    ...
+    def tilemode (self: Database)-> bool :
+      '''                             '''
+    ...
+    def timeZone (self: Database)-> TimeZone :
+      '''                             '''
+    ...
+    def tracewid (self: Database)-> float :
+      '''                             '''
+    ...
+    def transactionManager (self: Database)-> TransactionManager :
+      '''                             '''
+    ...
+    def treedepth (self: Database)-> int :
+      '''                             '''
+    ...
+    def tstackalign (self: Database)-> int :
+      '''                             '''
+    ...
+    def tstacksize (self: Database)-> int :
+      '''                             '''
+    ...
+    def ucsBase (self: Database)-> ObjectId :
+      '''                             '''
+    ...
+    def ucsname (self: Database)-> ObjectId :
+      '''                             '''
+    ...
+    def ucsorg (self: Database)-> Point3d :
+      '''                             '''
+    ...
+    def ucsxdir (self: Database)-> Vector3d :
+      '''                             '''
+    ...
+    def ucsydir (self: Database)-> Vector3d :
+      '''                             '''
+    ...
+    def undoRecording (self: Database)-> bool :
+      '''                             '''
+    ...
+    def unitmode (self: Database)-> int :
+      '''                             '''
+    ...
+    def updateDataLink (self: Database,nDir : UpdateDirection,opt : UpdateOption)-> None :
+      '''                             '''
+    ...
+    def updateExt (self: Database,val : bool)-> None :
+      '''                             '''
+    ...
+    def updateThumbnail (self: Database)-> int :
+      '''                             '''
+    ...
+    def useri1 (self: Database)-> int :
+      '''                             '''
+    ...
+    def useri2 (self: Database)-> int :
+      '''                             '''
+    ...
+    def useri3 (self: Database)-> int :
+      '''                             '''
+    ...
+    def useri4 (self: Database)-> int :
+      '''                             '''
+    ...
+    def useri5 (self: Database)-> int :
+      '''                             '''
+    ...
+    def userr1 (self: Database)-> float :
+      '''                             '''
+    ...
+    def userr2 (self: Database)-> float :
+      '''                             '''
+    ...
+    def userr3 (self: Database)-> float :
+      '''                             '''
+    ...
+    def userr4 (self: Database)-> float :
+      '''                             '''
+    ...
+    def userr5 (self: Database)-> float :
+      '''                             '''
+    ...
+    def usrtimer (self: Database)-> bool :
+      '''                             '''
+    ...
+    def viewTableId (self: Database)-> ObjectId :
+      '''                             '''
+    ...
+    def viewportScaleDefault (self: Database)-> float :
+      '''                             '''
+    ...
+    def viewportTableId (self: Database)-> ObjectId :
+      '''                             '''
+    ...
+    def visretain (self: Database)-> bool :
+      '''                             '''
+    ...
+    def visualStyleDictionaryId (self: Database)-> ObjectId :
+      '''                             '''
     ...
     def wblock (self, *args, **kwargs)-> None :
       '''wblock( (Database)arg1, (Database)arg2, (list)arg3, (Point3d)arg4 [, (DuplicateRecordCloning)arg5]) -> None :
@@ -13605,41 +13207,23 @@ wblock( (Database)arg1, (Database)arg2 [, (ObjectId)arg3]) -> None :
     C++ signature :
         void wblock(class PyDbDatabase {lvalue},class PyDbDatabase {lvalue} [,class PyDbObjectId])'''
     ...
-    def worldPucsBaseOrigin (self, *args, **kwargs)-> Point3d :
-      '''worldPucsBaseOrigin( (Database)arg1, (OrthographicView)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d worldPucsBaseOrigin(class PyDbDatabase {lvalue},enum AcDb::OrthographicView)'''
+    def worldPucsBaseOrigin (self: Database,view : OrthographicView)-> Point3d :
+      '''                             '''
     ...
-    def worldUcsBaseOrigin (self, *args, **kwargs)-> Point3d :
-      '''worldUcsBaseOrigin( (Database)arg1, (OrthographicView)arg2) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d worldUcsBaseOrigin(class PyDbDatabase {lvalue},enum AcDb::OrthographicView)'''
+    def worldUcsBaseOrigin (self: Database,view : OrthographicView)-> Point3d :
+      '''                             '''
     ...
-    def worldview (self, *args, **kwargs)-> bool :
-      '''worldview( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool worldview(class PyDbDatabase {lvalue})'''
+    def worldview (self: Database)-> bool :
+      '''                             '''
     ...
-    def xclipFrame (self, *args, **kwargs)-> int :
-      '''xclipFrame( (Database)arg1) -> int :
-
-    C++ signature :
-        unsigned char xclipFrame(class PyDbDatabase {lvalue})'''
+    def xclipFrame (self: Database)-> int :
+      '''                             '''
     ...
-    def xrefBlockId (self, *args, **kwargs)-> ObjectId :
-      '''xrefBlockId( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId xrefBlockId(class PyDbDatabase {lvalue})'''
+    def xrefBlockId (self: Database)-> ObjectId :
+      '''                             '''
     ...
-    def xrefEditEnabled (self, *args, **kwargs)-> bool :
-      '''xrefEditEnabled( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool xrefEditEnabled(class PyDbDatabase {lvalue})'''
+    def xrefEditEnabled (self: Database)-> bool :
+      '''                             '''
     ...
 
 class DbObject:
@@ -66190,6 +65774,350 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         double xScale(class PyDbTextStyleTableRecord {lvalue})'''
+    ...
+
+class TimeZone:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None:
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None:
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None:
+      '''the imaginary part of a complex number'''
+    ...
+    def kAbuDhabi (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kAdelaide (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kAlaska (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kAlmaty (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kArizona (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kAthens (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kAtlanticCanada (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kAzores (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kBaghdad (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kBangkok (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kBeijing (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kBerlin (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kBogota (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kBrasilia (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kBrisbane (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kBuenosAires (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kCairo (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kCapeVerde (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kCaracas (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kCaucasus (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kCentral (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kCentralAmerica (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kDarwin (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kDhaka (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kEastAfrica (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kEastern (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kEasternEurope (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kEkaterinburg (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kFiji (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kGMT (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kGreenland (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kGuam (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kHarare (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kHawaii (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kHelsinki (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kHobart (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kIndiana (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kInternationalDateLine (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kIrkutsk (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kIslamabad (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kJerusalem (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kKabul (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kKathmandu (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kKolkata (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kKrasnoyarsk (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kMagadan (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kMazatlan (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kMexicoCity (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kMidAtlantic (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kMidwayIsland (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kMonrovia (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kMoscow (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kMountain (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kNewfoundland (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kPacific (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kParis (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kPerth (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kPrague (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kRangoon (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kRiyadh (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kSantiago (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kSarajevo (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kSaskatchewan (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kSeoul (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kSingapore (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kSriLanka (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kSydney (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kTaipei (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kTehran (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kTokyo (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kTonga (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kUTC (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kVladivostock (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kWellington (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kWestCentralAfrica (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kYakutsk (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None:
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None:
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
 class Transaction:
