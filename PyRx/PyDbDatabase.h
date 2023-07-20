@@ -82,8 +82,8 @@ public:
     std::string         geoCoordinateSystemId() const;
     bool                geoMarkerVisibility() const;
     double              get3dDwfPrec() const;
-    void                getAcDbObjectId1(PyDbObjectId& retId, bool createIfNotFound, const PyDbHandle& objHandle);
-    void                getAcDbObjectId2(PyDbObjectId& retId, bool createIfNotFound, const PyDbHandle& objHandle, Adesk::UInt32 xRefId);
+    PyDbObjectId        getAcDbObjectId1(bool createIfNotFound, const PyDbHandle& objHandle);
+    PyDbObjectId        getAcDbObjectId2(bool createIfNotFound, const PyDbHandle& objHandle, Adesk::UInt32 xRefId);
     AcDb::PlotStyleNameType getCePlotStyleNameId(PyDbObjectId& id) const;
     bool                isAppRegistered(const std::string& pszAppName) const;
     std::string         dimapost() const;
