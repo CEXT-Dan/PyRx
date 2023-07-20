@@ -5,6 +5,137 @@ import PyDb
 import PyAp
 import PyEd
 
+class AcEdDrawOrderCmdType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None:
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None:
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None:
+      '''the imaginary part of a complex number'''
+    ...
+    def kDrawOrderAbove (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kDrawOrderBelow (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kDrawOrderBottom (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kDrawOrderNone (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kDrawOrderTop (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None:
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None:
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
 class Core:
     def __init__ (self, *args, **kwargs)-> None :
       '''__init__( (object)arg1) -> None :
@@ -59,11 +190,118 @@ audit( (Database)arg1, (bool)arg2, (bool)arg3) -> None :
     C++ signature :
         bool clearOLELock(int)'''
     ...
+    def clipFormatName (self, *args, **kwargs)-> str :
+      '''clipFormatName() -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > clipFormatName()'''
+    ...
+    def cmdCWasCancelled (self, *args, **kwargs)-> bool :
+      '''cmdCWasCancelled() -> bool :
+
+    C++ signature :
+        bool cmdCWasCancelled()'''
+    ...
     def cmdS (self, *args, **kwargs)-> bool :
       '''cmdS( (list)arg1) -> bool :
 
     C++ signature :
         bool cmdS(class boost::python::list)'''
+    ...
+    def cmdUndefine (self, *args, **kwargs)-> int :
+      '''cmdUndefine( (str)arg1, (int)arg2) -> int :
+
+    C++ signature :
+        int cmdUndefine(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    ...
+    def coordFromPixelToWorld (self, *args, **kwargs)-> bool :
+      '''coordFromPixelToWorld( (list)arg1, (Point3d)arg2) -> bool :
+
+    C++ signature :
+        bool coordFromPixelToWorld(class boost::python::list,class AcGePoint3d {lvalue})
+
+coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
+
+    C++ signature :
+        bool coordFromPixelToWorld(int,class boost::python::list,class AcGePoint3d {lvalue})'''
+    ...
+    def coordFromWorldToPixel (self, *args, **kwargs)-> bool :
+      '''coordFromWorldToPixel( (int)arg1, (Point3d)arg2, (list)arg3) -> bool :
+
+    C++ signature :
+        bool coordFromWorldToPixel(int,class AcGePoint3d,class boost::python::list {lvalue})'''
+    ...
+    def createInternetShortcut (self, *args, **kwargs)-> bool :
+      '''createInternetShortcut( (str)arg1, (str)arg2) -> bool :
+
+    C++ signature :
+        bool createInternetShortcut(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def createViewportByView (self, *args, **kwargs)-> ObjectId :
+      '''createViewportByView( (Database)arg1, (ObjectId)arg2, (Point2d)arg3, (float)arg4) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId createViewportByView(class PyDbDatabase {lvalue},class PyDbObjectId {lvalue},class AcGePoint2d,double)'''
+    ...
+    def defun (self, *args, **kwargs)-> int :
+      '''defun( (str)arg1, (int)arg2) -> int :
+
+    C++ signature :
+        int defun(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    ...
+    def defunEx (self, *args, **kwargs)-> int :
+      '''defunEx( (str)arg1, (str)arg2, (int)arg3) -> int :
+
+    C++ signature :
+        int defunEx(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    ...
+    def disableDefaultARXExceptionHandler (self, *args, **kwargs)-> None :
+      '''disableDefaultARXExceptionHandler( (bool)arg1) -> None :
+
+    C++ signature :
+        void disableDefaultARXExceptionHandler(bool)'''
+    ...
+    def disableUsrbrk (self, *args, **kwargs)-> None :
+      '''disableUsrbrk() -> None :
+
+    C++ signature :
+        void disableUsrbrk()'''
+    ...
+    def displayBorder (self, *args, **kwargs)-> bool :
+      '''displayBorder( (bool)arg1) -> bool :
+
+    C++ signature :
+        bool displayBorder(bool)'''
+    ...
+    def drawOrderInherit (self, *args, **kwargs)-> None :
+      '''drawOrderInherit( (ObjectId)arg1, (list)arg2, (AcEdDrawOrderCmdType)arg3) -> None :
+
+    C++ signature :
+        void drawOrderInherit(class PyDbObjectId {lvalue},class boost::python::list,enum AcEdDrawOrderCmdType)'''
+    ...
+    def drawingStatusBarsVisible (self, *args, **kwargs)-> bool :
+      '''drawingStatusBarsVisible() -> bool :
+
+    C++ signature :
+        bool drawingStatusBarsVisible()'''
+    ...
+    def eatCommandThroat (self, *args, **kwargs)-> int :
+      '''eatCommandThroat() -> int :
+
+    C++ signature :
+        int eatCommandThroat()'''
+    ...
+    def editMTextInteractive (self, *args, **kwargs)-> int :
+      '''editMTextInteractive( (MText)arg1, (bool)arg2, (bool)arg3) -> int :
+
+    C++ signature :
+        int editMTextInteractive(class PyDbMText {lvalue},bool,bool)'''
+    ...
+    def enableUsrbrk (self, *args, **kwargs)-> None :
+      '''enableUsrbrk() -> None :
+
+    C++ signature :
+        void enableUsrbrk()'''
     ...
     def findFile (self, *args, **kwargs)-> str :
       '''findFile( (str)arg1) -> str :

@@ -74,8 +74,21 @@ class TestDatabase(unittest.TestCase):
         self.assertEqual(sus.hasVerticalBar("strstr"), False)#fails in BricsCAD
         self.assertEqual(sus.compareSymbolName("strstr", "strstr"),0)
         self.assertEqual(sus.compareSymbolName("strstr", "ztrstr"),-1)
+        
+    def test_handle(self):
+        sideDb = Db.Database(False,True)
+        sideDb.readDwgFile("./testmedia/line.dwg")
+        sideDb.closeInput(True)
+        lineHnd = Db.Handle("296")
+        lineId = sideDb.getObjectId(False, lineHnd)
+        self.assertEqual(lineId.isNull(),False)
+        self.assertEqual(lineHnd.isNull(),False)
+        self.assertEqual(lineId.isDerivedFrom(Db.Line.desc()),True)
+        self.assertEqual(lineHnd.toString(),"296")
+        self.assertEqual(Db.Handle("296") == Db.Handle("296"),True)
+        self.assertEqual(Db.Handle("296") != Db.Handle("296"),False)
 
-
+        
 def PyRxCmd_pydbtest():
     try:
         suite = unittest.TestLoader().loadTestsFromTestCase(TestDatabase)
