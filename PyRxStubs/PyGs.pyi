@@ -19,7 +19,7 @@ class GsManager:
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def testfunc (,val : int,val2 : int)-> None :
+    def testfunc (val : int,val2 : int)-> None :
       '''                             '''
     ...
 

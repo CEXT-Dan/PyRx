@@ -12076,7 +12076,7 @@ class Database:
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getFilename(class PyDbDatabase {lvalue})'''
     ...
-    def getNearestLineWeight (,weight : int)-> LineWeight :
+    def getNearestLineWeight (weight : int)-> LineWeight :
       '''                             '''
     ...
     def getObjectId (self: Database,createIfNotFound : bool,objHandle : Handle,xRefId : int=0)-> ObjectId :
@@ -12161,7 +12161,7 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     C++ signature :
         bool isNullObj(class PyRxObject {lvalue})'''
     ...
-    def isObjectNonPersistent (,id : ObjectId)-> bool :
+    def isObjectNonPersistent (id : ObjectId)-> bool :
       '''                             '''
     ...
     def isPartiallyOpened (self: Database)-> bool :
@@ -12173,7 +12173,7 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def isUcsOrthographic (self: Database,orthoView : OrthographicView)-> bool :
       '''                             '''
     ...
-    def isValidLineWeight (,weight : int)-> bool :
+    def isValidLineWeight (weight : int)-> bool :
       '''                             '''
     ...
     def isolines (self: Database)-> int :
@@ -12275,7 +12275,7 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def maintenanceReleaseVersion (self: Database)-> int :
       '''                             '''
     ...
-    def markObjectNonPersistent (,id : ObjectId,value : bool)-> None :
+    def markObjectNonPersistent (id : ObjectId,value : bool)-> None :
       '''                             '''
     ...
     def materialDictionaryId (self, *args, **kwargs)-> ObjectId :
@@ -14221,13 +14221,13 @@ class DbObject:
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (,otherObject: RxObject)-> DbObject :
+    def cast (otherObject: RxObject)-> DbObject :
       '''                             '''
     ...
     def className ()-> str :
       '''                             '''
     ...
-    def cloneFrom (,otherObject: RxObject)-> DbObject :
+    def cloneFrom (otherObject: RxObject)-> DbObject :
       '''                             '''
     ...
     def close (self: DbObject)-> None :
@@ -19297,7 +19297,7 @@ class Entity:
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (,otherObject: RxObject)-> Entity :
+    def cast (otherObject: RxObject)-> Entity :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
@@ -19306,7 +19306,7 @@ class Entity:
     def className ()-> str :
       '''                             '''
     ...
-    def cloneFrom (,otherObject: RxObject)-> Entity :
+    def cloneFrom (otherObject: RxObject)-> Entity :
       '''                             '''
     ...
     def close (self: DbObject)-> None :
@@ -36873,7 +36873,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (,otherObject: RxObject)-> DbObject :
+    def cast (otherObject: RxObject)-> DbObject :
       '''                             '''
     ...
     def className (self, *args, **kwargs)-> str :
@@ -36882,7 +36882,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def cloneFrom (,otherObject: RxObject)-> DbObject :
+    def cloneFrom (otherObject: RxObject)-> DbObject :
       '''                             '''
     ...
     def close (self: DbObject)-> None :
@@ -73756,7 +73756,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (,otherObject: RxObject)-> DbObject :
+    def cast (otherObject: RxObject)-> DbObject :
       '''                             '''
     ...
     def className (self, *args, **kwargs)-> str :
@@ -73765,7 +73765,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def cloneFrom (,otherObject: RxObject)-> DbObject :
+    def cloneFrom (otherObject: RxObject)-> DbObject :
       '''                             '''
     ...
     def close (self: DbObject)-> None :

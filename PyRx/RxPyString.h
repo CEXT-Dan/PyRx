@@ -1,5 +1,38 @@
 #pragma once
 
+constexpr inline void ltrim(std::string& s, char chr) noexcept {
+    s.erase(s.begin(), std::find_if(s.begin(), s.end(), [&](char ch) {
+        return chr != ch;
+        }));
+}
+
+constexpr inline void rtrim(std::string& s, char chr) noexcept {
+    s.erase(std::find_if(s.rbegin(), s.rend(), [&](char ch) {
+        return chr != ch;
+        }).base(), s.end());
+}
+
+constexpr inline void trim(std::string& s, char chr) noexcept {
+    ltrim(s, chr);
+    rtrim(s, chr);
+}
+
+constexpr inline std::string ltrim_copy(std::string s, char chr) noexcept {
+    ltrim(s, chr);
+    return s;
+}
+
+constexpr inline std::string rtrim_copy(std::string s, char chr) noexcept {
+    rtrim(s, chr);
+    return s;
+}
+
+// trim from both ends (copying)
+constexpr inline std::string trim_copy(std::string s, char chr) noexcept {
+    trim(s, chr);
+    return s;
+}
+
 constexpr inline void ltrim(std::wstring& s, wchar_t chr) noexcept {
     s.erase(s.begin(), std::find_if(s.begin(), s.end(), [&](wchar_t ch) {
         return chr != ch;
