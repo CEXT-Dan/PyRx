@@ -448,7 +448,7 @@ public:
     //void thumbnailImage(Atil::Image*& pPreviewImage) const; probably never
     bool				tilemode() const;
     Adesk::UInt8		tileModeLightSynch() const;
-    int					timeZone() const;
+    AcDb::TimeZone		timeZone() const;
     double				tracewid() const;
     PyDbTransactionManager transactionManager() const;
     Adesk::Int16		treedepth() const;
@@ -481,10 +481,10 @@ public:
     PyDbObjectId		viewTableId() const;
     bool				visretain() const;
     PyDbObjectId		visualStyleDictionaryId() const;
-    void	            wblock(PyDbDatabase& pOutputDb, const boost::python::list& outObjIds, const AcGePoint3d& basePoint, AcDb::DuplicateRecordCloning drc);
-    void	            wblock(PyDbDatabase& pOutputDb, const boost::python::list& outObjIds, const AcGePoint3d& basePoint);
-    void	            wblock(PyDbDatabase& pOutputDb, const PyDbObjectId& blockId);
-    void	            wblock(PyDbDatabase& pOutputDb);
+    void	            wblock1(PyDbDatabase& pOutputDb, const boost::python::list& outObjIds, const AcGePoint3d& basePoint, AcDb::DuplicateRecordCloning drc);
+    void	            wblock2(PyDbDatabase& pOutputDb, const boost::python::list& outObjIds, const AcGePoint3d& basePoint);
+    void	            wblock3(PyDbDatabase& pOutputDb, const PyDbObjectId& blockId);
+    void	            wblock4(PyDbDatabase& pOutputDb);
     //TODO: AcDbIdMapping
     //void wblockCloneObjects(const boost::python::list& objectIds, const AcDbObjectId& owner, AcDbIdMapping& idMap, AcDb::DuplicateRecordCloning drc, bool deferXlation = false);
     AcGePoint3d			worldPucsBaseOrigin(AcDb::OrthographicView orthoView) const;
