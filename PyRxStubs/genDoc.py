@@ -7,11 +7,12 @@ import enum
 import PyRx  # = Runtime runtime
 import PyGe  # = Geometry
 import PyGi  # = Graphics interface
+import PyGs  # = editor
 import PyDb  # = database
 import PyAp  # = application, document classes services
 import PyEd  # = editor
 
-all_modules_names = ["PyRx", "PyGe", "PyGi", "PyDb", "PyAp", "PyEd"]
+all_modules_names = ["PyRx", "PyGe", "PyGi", "PyGs", "PyDb", "PyAp", "PyEd"]
 
 #TODO iterate all the above modules, and add imports ant type aliasing 
 #to each
@@ -125,6 +126,7 @@ def PyRxCmd_pygenpyi():
     generate_pyi('PyRx.pyi', PyRx)
     generate_pyi('PyGe.pyi', PyGe)
     generate_pyi('PyGi.pyi', PyGi)
+    generate_pyi('PyGs.pyi', PyGs)
     generate_pyi('PyDb.pyi', PyDb)
     generate_pyi('PyAp.pyi', PyAp)
     generate_pyi('PyEd.pyi', PyEd)
@@ -134,6 +136,7 @@ def PyRxCmd_pygenhtmlhelp():
     generate_html_help('PyRx.html', PyRx)
     generate_html_help('PyGe.html', PyGe)
     generate_html_help('PyGi.html', PyGi)
+    generate_html_help('PyGs.html', PyGs)
     generate_html_help('PyDb.html', PyDb)
     generate_html_help('PyAp.html', PyAp)
     generate_html_help('PyEd.html', PyEd)
@@ -143,6 +146,7 @@ def PyRxCmd_pygentxthelp():
     generate_txt_help('PyRx.txt', PyRx)
     generate_txt_help('PyGe.txt', PyGe)
     generate_txt_help('PyGi.txt', PyGi)
+    generate_txt_help('PyGs.txt', PyGs)
     generate_txt_help('PyDb.txt', PyDb)
     generate_txt_help('PyAp.txt', PyAp)
     generate_txt_help('PyEd.txt', PyEd)

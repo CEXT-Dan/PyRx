@@ -97,9 +97,9 @@ public:
     boost::python::list getVisualStyleList(); //TODO test
     PyDbObjectId        globalMaterial() const;
     PyDbObjectId        groupDictionaryId() const;
-    void                insert(PyDbObjectId& blockId, const std::string& pBlockName, PyDbDatabase& db, bool preserveSourceDatabase);
-    void                insert(PyDbObjectId& blockId, const std::string& pSourceBlockName, const std::string& pDestinationBlockName, PyDbDatabase& db, bool preserveSourceDatabase);
-    void                insert(const AcGeMatrix3d& xform, PyDbDatabase& db, bool preserveSourceDatabase);
+    void                insert1(PyDbObjectId& blockId, const std::string& pBlockName, PyDbDatabase& db, bool preserveSourceDatabase);
+    void                insert2(PyDbObjectId& blockId, const std::string& pSourceBlockName, const std::string& pDestinationBlockName, PyDbDatabase& db, bool preserveSourceDatabase);
+    void                insert3(const AcGeMatrix3d& xform, PyDbDatabase& db, bool preserveSourceDatabase);
     Adesk::UInt8        haloGap() const;
     PyDbHandle          handseed() const;
     bool                hasClass(const PyRxClass& pClass) const;

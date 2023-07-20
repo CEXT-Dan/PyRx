@@ -6,7 +6,9 @@ using namespace boost::python;
 
 void makePyGsManagerWrapper()
 {
+    PyDocString DS("GsManager");
     class_<PyGsManager>("GsManager")
+        .def("testfunc", &PyGsManager::testfunc, DS.CLASSARGSSTATIC({ "val : int","val2 : int" })).staticmethod("testfunc")
         .def("className", &PyGsManager::className).staticmethod("className")
         ;
 }
@@ -14,6 +16,11 @@ void makePyGsManagerWrapper()
 PyGsManager::PyGsManager()
     : m_pyImp(acgsGetGsManager())
 {
+}
+
+void PyGsManager::testfunc(int val, int val2)
+{
+
 }
 
 std::string PyGsManager::className()
