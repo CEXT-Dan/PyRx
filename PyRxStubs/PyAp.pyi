@@ -135,35 +135,20 @@ class Application:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def applyHostIcon (self, *args, **kwargs)-> None :
-      '''applyHostIcon( (int)arg1) -> None :
-
-    C++ signature :
-        void applyHostIcon(unsigned __int64)'''
+    def applyHostIcon (wnd : int)-> None :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def docManager (self, *args, **kwargs)-> DocManager :
-      '''docManager( (Application)arg1) -> DocManager :
-
-    C++ signature :
-        class PyApDocManager docManager(class PyApApplication {lvalue})'''
+    def docManager ()-> DocManager :
+      '''                             '''
     ...
-    def mainWnd (self, *args, **kwargs)-> int :
-      '''mainWnd() -> int :
-
-    C++ signature :
-        __int64 mainWnd()'''
+    def mainWnd ()-> int :
+      '''                             '''
     ...
-    def setTitleThemeDark (self, *args, **kwargs)-> None :
-      '''setTitleThemeDark( (int)arg1) -> None :
-
-    C++ signature :
-        void setTitleThemeDark(unsigned __int64)'''
+    def setTitleThemeDark (wnd : int)-> None :
+      '''                             '''
     ...
 
 class AutoDocLock:
@@ -1143,95 +1128,50 @@ class DocManagerReactor:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def addReactor (self, *args, **kwargs)-> None :
-      '''addReactor( (DocManagerReactor)arg1) -> None :
-
-    C++ signature :
-        void addReactor(class PyApDocManagerReactor {lvalue})'''
+    def addReactor (self: DocManagerReactor)-> None :
+      '''                             '''
     ...
-    def documentActivated (self, *args, **kwargs)-> None :
-      '''documentActivated( (DocManagerReactor)arg1, (Document)arg2) -> None :
-
-    C++ signature :
-        void documentActivated(class PyApDocManagerReactor {lvalue},class PyApDocument {lvalue})'''
+    def documentActivated (self: DocManagerReactor,val : Document)-> None :
+      '''                             '''
     ...
-    def documentActivationModified (self, *args, **kwargs)-> None :
-      '''documentActivationModified( (DocManagerReactor)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void documentActivationModified(class PyApDocManagerReactor {lvalue},bool)'''
+    def documentActivationModified (self: DocManagerReactor,val : bool)-> None :
+      '''                             '''
     ...
-    def documentBecameCurrent (self, *args, **kwargs)-> None :
-      '''documentBecameCurrent( (DocManagerReactor)arg1, (Document)arg2) -> None :
-
-    C++ signature :
-        void documentBecameCurrent(class PyApDocManagerReactor {lvalue},class PyApDocument {lvalue})'''
+    def documentBecameCurrent (self: DocManagerReactor,val : Document)-> None :
+      '''                             '''
     ...
-    def documentCreateCanceled (self, *args, **kwargs)-> None :
-      '''documentCreateCanceled( (DocManagerReactor)arg1, (Document)arg2) -> None :
-
-    C++ signature :
-        void documentCreateCanceled(class PyApDocManagerReactor {lvalue},class PyApDocument {lvalue})'''
+    def documentCreateCanceled (self: DocManagerReactor,val : Document)-> None :
+      '''                             '''
     ...
-    def documentCreateStarted (self, *args, **kwargs)-> None :
-      '''documentCreateStarted( (DocManagerReactor)arg1, (Document)arg2) -> None :
-
-    C++ signature :
-        void documentCreateStarted(class PyApDocManagerReactor {lvalue},class PyApDocument {lvalue})'''
+    def documentCreateStarted (self: DocManagerReactor,val : Document)-> None :
+      '''                             '''
     ...
-    def documentCreated (self, *args, **kwargs)-> None :
-      '''documentCreated( (DocManagerReactor)arg1, (Document)arg2) -> None :
-
-    C++ signature :
-        void documentCreated(class PyApDocManagerReactor {lvalue},class PyApDocument {lvalue})'''
+    def documentCreated (self: DocManagerReactor,val : Document)-> None :
+      '''                             '''
     ...
-    def documentDestroyed (self, *args, **kwargs)-> None :
-      '''documentDestroyed( (DocManagerReactor)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void documentDestroyed(class PyApDocManagerReactor {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def documentDestroyed (self: DocManagerReactor,val : str)-> None :
+      '''                             '''
     ...
-    def documentLockModeChangeVetoed (self, *args, **kwargs)-> None :
-      '''documentLockModeChangeVetoed( (DocManagerReactor)arg1, (Document)arg2, (str)arg3) -> None :
-
-    C++ signature :
-        void documentLockModeChangeVetoed(class PyApDocManagerReactor {lvalue},class PyApDocument {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def documentLockModeChangeVetoed (self: DocManagerReactor,doc : Document,globalCmdName : str)-> None :
+      '''                             '''
     ...
-    def documentLockModeChanged (self, *args, **kwargs)-> None :
-      '''documentLockModeChanged( (DocManagerReactor)arg1, (Document)arg2, (DocLockMode)arg3, (DocLockMode)arg4, (DocLockMode)arg5, (str)arg6) -> None :
-
-    C++ signature :
-        void documentLockModeChanged(class PyApDocManagerReactor {lvalue},class PyApDocument {lvalue},enum AcAp::DocLockMode,enum AcAp::DocLockMode,enum AcAp::DocLockMode,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def documentLockModeChanged (self: DocManagerReactor,doc : Document,myPrevMode : DocLockMode,myCurMode : DocLockMode,currentMode : DocLockMode,globalCmdName : str)-> None :
+      '''                             '''
     ...
-    def documentLockModeWillChange (self, *args, **kwargs)-> None :
-      '''documentLockModeWillChange( (DocManagerReactor)arg1, (Document)arg2, (DocLockMode)arg3, (DocLockMode)arg4, (DocLockMode)arg5, (str)arg6) -> None :
-
-    C++ signature :
-        void documentLockModeWillChange(class PyApDocManagerReactor {lvalue},class PyApDocument {lvalue},enum AcAp::DocLockMode,enum AcAp::DocLockMode,enum AcAp::DocLockMode,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def documentLockModeWillChange (self: DocManagerReactor,myCurMode : DocLockMode,myNewMode : DocLockMode,curMode : DocLockMode,globalCmdName : str)-> None :
+      '''                             '''
     ...
-    def documentToBeActivated (self, *args, **kwargs)-> None :
-      '''documentToBeActivated( (DocManagerReactor)arg1, (Document)arg2) -> None :
-
-    C++ signature :
-        void documentToBeActivated(class PyApDocManagerReactor {lvalue},class PyApDocument {lvalue})'''
+    def documentToBeActivated (self: DocManagerReactor,val : Document)-> None :
+      '''                             '''
     ...
-    def documentToBeDeactivated (self, *args, **kwargs)-> None :
-      '''documentToBeDeactivated( (DocManagerReactor)arg1, (Document)arg2) -> None :
-
-    C++ signature :
-        void documentToBeDeactivated(class PyApDocManagerReactor {lvalue},class PyApDocument {lvalue})'''
+    def documentToBeDeactivated (self: DocManagerReactor,val : Document)-> None :
+      '''                             '''
     ...
-    def documentToBeDestroyed (self, *args, **kwargs)-> None :
-      '''documentToBeDestroyed( (DocManagerReactor)arg1, (Document)arg2) -> None :
-
-    C++ signature :
-        void documentToBeDestroyed(class PyApDocManagerReactor {lvalue},class PyApDocument {lvalue})'''
+    def documentToBeDestroyed (self: DocManagerReactor,val : Document)-> None :
+      '''                             '''
     ...
-    def removeReactor (self, *args, **kwargs)-> None :
-      '''removeReactor( (DocManagerReactor)arg1) -> None :
-
-    C++ signature :
-        void removeReactor(class PyApDocManagerReactor {lvalue})'''
+    def removeReactor (self: DocManagerReactor)-> None :
+      '''                             '''
     ...
 
 class Document:
@@ -1239,71 +1179,38 @@ class Document:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def database (self, *args, **kwargs)-> Database :
-      '''database( (Document)arg1) -> Database :
-
-    C++ signature :
-        class PyDbDatabase database(class PyApDocument {lvalue})'''
+    def database (self: Document)-> Database :
+      '''                             '''
     ...
-    def docTitle (self, *args, **kwargs)-> str :
-      '''docTitle( (Document)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > docTitle(class PyApDocument {lvalue})'''
+    def docTitle (self: Document)-> str :
+      '''                             '''
     ...
-    def docWnd (self, *args, **kwargs)-> int :
-      '''docWnd() -> int :
-
-    C++ signature :
-        __int64 docWnd()'''
+    def docWnd ()-> int :
+      '''                             '''
     ...
-    def downgradeDocOpen (self, *args, **kwargs)-> None :
-      '''downgradeDocOpen( (Document)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void downgradeDocOpen(class PyApDocument {lvalue},bool)'''
+    def downgradeDocOpen (self: Document,promptForSave : bool)-> None :
+      '''                             '''
     ...
-    def editor (self, *args, **kwargs)-> Editor :
-      '''editor( (Document)arg1) -> Editor :
-
-    C++ signature :
-        class PyAcEditor editor(class PyApDocument {lvalue})'''
+    def editor (self: Document)-> Editor :
+      '''                             '''
     ...
-    def fileName (self, *args, **kwargs)-> str :
-      '''fileName( (Document)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > fileName(class PyApDocument {lvalue})'''
+    def fileName (self: Document)-> str :
+      '''                             '''
     ...
-    def formatForSave (self, *args, **kwargs)-> SaveFormat :
-      '''formatForSave( (Document)arg1) -> SaveFormat :
-
-    C++ signature :
-        enum AcApDocument::SaveFormat formatForSave(class PyApDocument {lvalue})'''
+    def formatForSave (self: Document)-> SaveFormat :
+      '''                             '''
     ...
-    def getCountOfLispList (self, *args, **kwargs)-> int :
-      '''getCountOfLispList( (Document)arg1) -> int :
-
-    C++ signature :
-        int getCountOfLispList(class PyApDocument {lvalue})'''
+    def getCountOfLispList (self: Document)-> int :
+      '''                             '''
     ...
-    def getItemOfLispList (self, *args, **kwargs)-> tuple :
-      '''getItemOfLispList( (Document)arg1, (int)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getItemOfLispList(class PyApDocument {lvalue},int)'''
+    def getItemOfLispList (self: Document,index : int)-> tuple :
+      '''                             '''
     ...
-    def inputPointManager (self, *args, **kwargs)-> InputPointManager :
-      '''inputPointManager( (Document)arg1) -> InputPointManager :
-
-    C++ signature :
-        class PyEdInputPointManager inputPointManager(class PyApDocument {lvalue})'''
+    def inputPointManager (self: Document)-> InputPointManager :
+      '''                             '''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (RxObject)arg1) -> RxClass :
@@ -1311,11 +1218,8 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
-    def isCommandInputInactive (self, *args, **kwargs)-> bool :
-      '''isCommandInputInactive( (Document)arg1) -> bool :
-
-    C++ signature :
-        bool isCommandInputInactive(class PyApDocument {lvalue})'''
+    def isCommandInputInactive (self: Document)-> bool :
+      '''                             '''
     ...
     def isNullObj (self, *args, **kwargs)-> bool :
       '''isNullObj( (RxObject)arg1) -> bool :
@@ -1323,40 +1227,20 @@ This class cannot be instantiated from Python'''
     C++ signature :
         bool isNullObj(class PyRxObject {lvalue})'''
     ...
-    def isQuiescent (self, *args, **kwargs)-> bool :
-      '''isQuiescent( (Document)arg1) -> bool :
-
-    C++ signature :
-        bool isQuiescent(class PyApDocument {lvalue})'''
+    def isQuiescent (self: Document)-> bool :
+      '''                             '''
     ...
-    def lockMode (self, *args, **kwargs)-> DocLockMode :
-      '''lockMode( (Document)arg1) -> DocLockMode :
-
-    C++ signature :
-        enum AcAp::DocLockMode lockMode(class PyApDocument {lvalue})
-
-lockMode( (Document)arg1, (bool)arg2) -> DocLockMode :
-
-    C++ signature :
-        enum AcAp::DocLockMode lockMode(class PyApDocument {lvalue},bool)'''
+    def lockMode (self: Document,bIncludeMyLocks : bool=False)-> DocLockMode :
+      '''                             '''
     ...
-    def myLockMode (self, *args, **kwargs)-> DocLockMode :
-      '''myLockMode( (Document)arg1) -> DocLockMode :
-
-    C++ signature :
-        enum AcAp::DocLockMode myLockMode(class PyApDocument {lvalue})'''
+    def myLockMode (self: Document)-> DocLockMode :
+      '''                             '''
     ...
-    def popDbmod (self, *args, **kwargs)-> None :
-      '''popDbmod( (Document)arg1) -> None :
-
-    C++ signature :
-        void popDbmod(class PyApDocument {lvalue})'''
+    def popDbmod (self: Document)-> None :
+      '''                             '''
     ...
-    def pushDbmod (self, *args, **kwargs)-> None :
-      '''pushDbmod( (Document)arg1) -> None :
-
-    C++ signature :
-        void pushDbmod(class PyApDocument {lvalue})'''
+    def pushDbmod (self: Document)-> None :
+      '''                             '''
     ...
     def refCount (self, *args, **kwargs)-> int :
       '''refCount( (RxObject)arg1) -> int :
@@ -1364,23 +1248,14 @@ lockMode( (Document)arg1, (bool)arg2) -> DocLockMode :
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
     ...
-    def setDocTitle (self, *args, **kwargs)-> None :
-      '''setDocTitle( (Document)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setDocTitle(class PyApDocument {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setDocTitle (self: Document,title : str)-> None :
+      '''                             '''
     ...
-    def transactionManager (self, *args, **kwargs)-> TransactionManager :
-      '''transactionManager( (Document)arg1) -> TransactionManager :
-
-    C++ signature :
-        class PyTransactionManager transactionManager(class PyApDocument {lvalue})'''
+    def transactionManager (self: Document)-> TransactionManager :
+      '''                             '''
     ...
-    def upgradeDocOpen (self, *args, **kwargs)-> None :
-      '''upgradeDocOpen( (Document)arg1) -> None :
-
-    C++ signature :
-        void upgradeDocOpen(class PyApDocument {lvalue})'''
+    def upgradeDocOpen (self: Document)-> None :
+      '''                             '''
     ...
 
 class LayoutManager:
@@ -1390,11 +1265,8 @@ class LayoutManager:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
     def clearSetupForLayouts (self, *args, **kwargs)-> None :
       '''clearSetupForLayouts( (int)arg1) -> None :
@@ -1446,22 +1318,11 @@ createLayout( (LayoutManager)arg1, (str)arg2, (ObjectId)arg3, (ObjectId)arg4, (D
     C++ signature :
         void createLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbObjectId {lvalue},class PyDbObjectId {lvalue},class PyDbDatabase {lvalue})'''
     ...
-    def createLayoutFromTemplate (self, *args, **kwargs)-> ObjectId :
-      '''createLayoutFromTemplate( (LayoutManager)arg1, (str)arg2, (str)arg3, (str)arg4) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId createLayoutFromTemplate(class PyApLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-createLayoutFromTemplate( (LayoutManager)arg1, (str)arg2, (str)arg3, (str)arg4, (Database)arg5) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId createLayoutFromTemplate(class PyApLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
+    def createLayoutFromTemplate (self: LayoutManager,newLayoutName : str,templatePath : str,layoutName : str,db : PyDb.Database=current)-> ObjectId :
+      '''                             '''
     ...
-    def createViewports (self, *args, **kwargs)-> bool :
-      '''createViewports( (LayoutManager)arg1) -> bool :
-
-    C++ signature :
-        bool createViewports(class PyApLayoutManager {lvalue})'''
+    def createViewports (self: LayoutManager)-> bool :
+      '''                             '''
     ...
     def deleteLayout (self, *args, **kwargs)-> None :
       '''deleteLayout( (LayoutManager)arg1, (str)arg2) -> None :
@@ -1474,11 +1335,8 @@ deleteLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> None :
     C++ signature :
         void deleteLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
     ...
-    def desc (self, *args, **kwargs)-> RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> RxClass :
+      '''                             '''
     ...
     def findLayoutNamed (self, *args, **kwargs)-> ObjectId :
       '''findLayoutNamed( (LayoutManager)arg1, (str)arg2) -> ObjectId :
@@ -1491,16 +1349,8 @@ findLayoutNamed( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> ObjectId :
     C++ signature :
         class PyDbObjectId findLayoutNamed(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
     ...
-    def generateNextNewLayoutName (self, *args, **kwargs)-> str :
-      '''generateNextNewLayoutName( (LayoutManager)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > generateNextNewLayoutName(class PyApLayoutManager {lvalue})
-
-generateNextNewLayoutName( (LayoutManager)arg1, (Database)arg2) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > generateNextNewLayoutName(class PyApLayoutManager {lvalue},class PyDbDatabase {lvalue})'''
+    def generateNextNewLayoutName (self: LayoutManager,val : PyDb.Database=current)-> str :
+      '''                             '''
     ...
     def getActiveLayoutBTRId (self, *args, **kwargs)-> ObjectId :
       '''getActiveLayoutBTRId( (LayoutManager)arg1) -> ObjectId :
@@ -1524,17 +1374,11 @@ getActiveLayoutName( (LayoutManager)arg1, (bool)arg2, (Database)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getActiveLayoutName(class PyDbLayoutManager {lvalue},bool,class PyDbDatabase {lvalue})'''
     ...
-    def getActiveTab (self, *args, **kwargs)-> str :
-      '''getActiveTab( (LayoutManager)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getActiveTab(class PyApLayoutManager {lvalue})'''
+    def getActiveTab (self: LayoutManager)-> str :
+      '''                             '''
     ...
-    def getClipBoundaryElabration (self, *args, **kwargs)-> list :
-      '''getClipBoundaryElabration( (LayoutManager)arg1, (ObjectId)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list getClipBoundaryElabration(class PyApLayoutManager {lvalue},class PyDbObjectId)'''
+    def getClipBoundaryElabration (self: LayoutManager,val : PyDb.ObjectId)-> list :
+      '''                             '''
     ...
     def getNonRectVPIdFromClipId (self, *args, **kwargs)-> ObjectId :
       '''getNonRectVPIdFromClipId( (LayoutManager)arg1, (ObjectId)arg2) -> ObjectId :
@@ -1576,27 +1420,11 @@ layoutExists( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> bool :
     C++ signature :
         bool layoutExists(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
     ...
-    def pageSetup (self, *args, **kwargs)-> int :
-      '''pageSetup( (LayoutManager)arg1) -> int :
-
-    C++ signature :
-        int pageSetup(class PyApLayoutManager {lvalue})
-
-pageSetup( (LayoutManager)arg1, (ObjectId)arg2) -> int :
-
-    C++ signature :
-        int pageSetup(class PyApLayoutManager {lvalue},class PyDbObjectId)
-
-pageSetup( (LayoutManager)arg1, (ObjectId)arg2, (int)arg3, (bool)arg4) -> int :
-
-    C++ signature :
-        int pageSetup(class PyApLayoutManager {lvalue},class PyDbObjectId,unsigned __int64,bool)'''
+    def pageSetup (self: LayoutManager,layoutBTRId : PyDb.ObjectId=kNull,parent : int=kNull,isPageSetupDlg : bool=True)-> int :
+      '''                             '''
     ...
-    def pointInViewports (self, *args, **kwargs)-> list :
-      '''pointInViewports( (LayoutManager)arg1, (Point3d)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list pointInViewports(class PyApLayoutManager {lvalue},class AcGePoint3d)'''
+    def pointInViewports (self: LayoutManager,val : PyGe.Point3d)-> list :
+      '''                             '''
     ...
     def refCount (self, *args, **kwargs)-> int :
       '''refCount( (RxObject)arg1) -> int :
@@ -1615,17 +1443,11 @@ renameLayout( (LayoutManager)arg1, (str)arg2, (str)arg3, (Database)arg4) -> None
     C++ signature :
         void renameLayout(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
     ...
-    def setCaptureOnLayoutSwitch (self, *args, **kwargs)-> None :
-      '''setCaptureOnLayoutSwitch( (LayoutManager)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setCaptureOnLayoutSwitch(class PyApLayoutManager {lvalue},bool)'''
+    def setCaptureOnLayoutSwitch (self: LayoutManager,val : bool)-> None :
+      '''                             '''
     ...
-    def setCreateViewports (self, *args, **kwargs)-> None :
-      '''setCreateViewports( (LayoutManager)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setCreateViewports(class PyApLayoutManager {lvalue},bool)'''
+    def setCreateViewports (self: LayoutManager,val : bool)-> None :
+      '''                             '''
     ...
     def setCurrentLayout (self, *args, **kwargs)-> None :
       '''setCurrentLayout( (LayoutManager)arg1, (str)arg2) -> None :
@@ -1644,41 +1466,23 @@ setCurrentLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> None :
     C++ signature :
         void setCurrentLayoutId(class PyDbLayoutManager {lvalue},class PyDbObjectId)'''
     ...
-    def setDefaultPlotConfig (self, *args, **kwargs)-> None :
-      '''setDefaultPlotConfig( (LayoutManager)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setDefaultPlotConfig(class PyApLayoutManager {lvalue},class PyDbObjectId {lvalue})'''
+    def setDefaultPlotConfig (self: LayoutManager,val : PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def setShowPageSetup (self, *args, **kwargs)-> None :
-      '''setShowPageSetup( (LayoutManager)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setShowPageSetup(class PyApLayoutManager {lvalue},bool)'''
+    def setShowPageSetup (self: LayoutManager,val : bool)-> None :
+      '''                             '''
     ...
-    def setShowPaperBackground (self, *args, **kwargs)-> None :
-      '''setShowPaperBackground( (LayoutManager)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setShowPaperBackground(class PyApLayoutManager {lvalue},bool)'''
+    def setShowPaperBackground (self: LayoutManager,val : bool)-> None :
+      '''                             '''
     ...
-    def setShowPaperMargins (self, *args, **kwargs)-> None :
-      '''setShowPaperMargins( (LayoutManager)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setShowPaperMargins(class PyApLayoutManager {lvalue},bool)'''
+    def setShowPaperMargins (self: LayoutManager,val : bool)-> None :
+      '''                             '''
     ...
-    def setShowPrintBorder (self, *args, **kwargs)-> None :
-      '''setShowPrintBorder( (LayoutManager)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setShowPrintBorder(class PyApLayoutManager {lvalue},bool)'''
+    def setShowPrintBorder (self: LayoutManager,val : bool)-> None :
+      '''                             '''
     ...
-    def setShowTabs (self, *args, **kwargs)-> None :
-      '''setShowTabs( (LayoutManager)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setShowTabs(class PyApLayoutManager {lvalue},bool)'''
+    def setShowTabs (self: LayoutManager,val : bool)-> None :
+      '''                             '''
     ...
     def setupForLayouts (self, *args, **kwargs)-> int :
       '''setupForLayouts( (Database)arg1) -> int :
@@ -1686,274 +1490,133 @@ setCurrentLayout( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> None :
     C++ signature :
         unsigned __int64 setupForLayouts(class PyDbDatabase {lvalue})'''
     ...
-    def showPageSetup (self, *args, **kwargs)-> bool :
-      '''showPageSetup( (LayoutManager)arg1) -> bool :
-
-    C++ signature :
-        bool showPageSetup(class PyApLayoutManager {lvalue})'''
+    def showPageSetup (self: LayoutManager)-> bool :
+      '''                             '''
     ...
-    def showPaperBackground (self, *args, **kwargs)-> bool :
-      '''showPaperBackground( (LayoutManager)arg1) -> bool :
-
-    C++ signature :
-        bool showPaperBackground(class PyApLayoutManager {lvalue})'''
+    def showPaperBackground (self: LayoutManager)-> bool :
+      '''                             '''
     ...
-    def showPaperMargins (self, *args, **kwargs)-> bool :
-      '''showPaperMargins( (LayoutManager)arg1) -> bool :
-
-    C++ signature :
-        bool showPaperMargins(class PyApLayoutManager {lvalue})'''
+    def showPaperMargins (self: LayoutManager)-> bool :
+      '''                             '''
     ...
-    def showPrintBorder (self, *args, **kwargs)-> bool :
-      '''showPrintBorder( (LayoutManager)arg1) -> bool :
-
-    C++ signature :
-        bool showPrintBorder(class PyApLayoutManager {lvalue})'''
+    def showPrintBorder (self: LayoutManager)-> bool :
+      '''                             '''
     ...
-    def showTabs (self, *args, **kwargs)-> bool :
-      '''showTabs( (LayoutManager)arg1) -> bool :
-
-    C++ signature :
-        bool showTabs(class PyApLayoutManager {lvalue})'''
+    def showTabs (self: LayoutManager)-> bool :
+      '''                             '''
     ...
-    def updateCurrentPaper (self, *args, **kwargs)-> None :
-      '''updateCurrentPaper( (LayoutManager)arg1) -> None :
-
-    C++ signature :
-        void updateCurrentPaper(class PyApLayoutManager {lvalue})
-
-updateCurrentPaper( (LayoutManager)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void updateCurrentPaper(class PyApLayoutManager {lvalue},bool)'''
+    def updateCurrentPaper (self: LayoutManager,zoomToPaper : bool=False)-> None :
+      '''                             '''
     ...
-    def updateLayoutTabs (self, *args, **kwargs)-> None :
-      '''updateLayoutTabs( (LayoutManager)arg1) -> None :
-
-    C++ signature :
-        void updateLayoutTabs(class PyApLayoutManager {lvalue})'''
+    def updateLayoutTabs (self: LayoutManager)-> None :
+      '''                             '''
     ...
 
 class PaletteSet:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-__init__( (object)arg1, (str)arg2, (str)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def __init__ (self: PaletteSet,name : str,guid : str=None)-> None :
+      '''                             '''
     ...
-    def add (self, *args, **kwargs)-> int :
-      '''add( (PaletteSet)arg1, (str)arg2, (object)arg3) -> int :
-
-    C++ signature :
-        int add(class PyCAdUiPaletteSet {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::api::object {lvalue})'''
+    def add (self: PaletteSet,name : str)-> int :
+      '''                             '''
     ...
-    def autoRollupStyle (self, *args, **kwargs)-> bool :
-      '''autoRollupStyle( (PaletteSet)arg1) -> bool :
-
-    C++ signature :
-        bool autoRollupStyle(class PyCAdUiPaletteSet {lvalue})'''
+    def autoRollupStyle (self: PaletteSet)-> bool :
+      '''                             '''
     ...
-    def closeButtonStyle (self, *args, **kwargs)-> bool :
-      '''closeButtonStyle( (PaletteSet)arg1) -> bool :
-
-    C++ signature :
-        bool closeButtonStyle(class PyCAdUiPaletteSet {lvalue})'''
+    def closeButtonStyle (self: PaletteSet)-> bool :
+      '''                             '''
     ...
-    def editNameStyle (self, *args, **kwargs)-> bool :
-      '''editNameStyle( (PaletteSet)arg1) -> bool :
-
-    C++ signature :
-        bool editNameStyle(class PyCAdUiPaletteSet {lvalue})'''
+    def editNameStyle (self: PaletteSet)-> bool :
+      '''                             '''
     ...
-    def getActivePaletteTabIndex (self, *args, **kwargs)-> int :
-      '''getActivePaletteTabIndex( (PaletteSet)arg1) -> int :
-
-    C++ signature :
-        int getActivePaletteTabIndex(class PyCAdUiPaletteSet {lvalue})'''
+    def getActivePaletteTabIndex (self: PaletteSet)-> int :
+      '''                             '''
     ...
-    def getAutoRollup (self, *args, **kwargs)-> bool :
-      '''getAutoRollup( (PaletteSet)arg1) -> bool :
-
-    C++ signature :
-        bool getAutoRollup(class PyCAdUiPaletteSet {lvalue})'''
+    def getAutoRollup (self: PaletteSet)-> bool :
+      '''                             '''
     ...
-    def getFullRect (self, *args, **kwargs)-> object :
-      '''getFullRect( (PaletteSet)arg1) -> object :
-
-    C++ signature :
-        struct _object * __ptr64 getFullRect(class PyCAdUiPaletteSet {lvalue})'''
+    def getFullRect (self: PaletteSet)-> object :
+      '''                             '''
     ...
-    def getName (self, *args, **kwargs)-> str :
-      '''getName( (PaletteSet)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyCAdUiPaletteSet {lvalue})'''
+    def getName (self: PaletteSet)-> str :
+      '''                             '''
     ...
-    def getOpacity (self, *args, **kwargs)-> int :
-      '''getOpacity( (PaletteSet)arg1) -> int :
-
-    C++ signature :
-        int getOpacity(class PyCAdUiPaletteSet {lvalue})'''
+    def getOpacity (self: PaletteSet)-> int :
+      '''                             '''
     ...
-    def getPaletteCount (self, *args, **kwargs)-> int :
-      '''getPaletteCount( (PaletteSet)arg1) -> int :
-
-    C++ signature :
-        int getPaletteCount(class PyCAdUiPaletteSet {lvalue})'''
+    def getPaletteCount (self: PaletteSet)-> int :
+      '''                             '''
     ...
-    def getPaletteSetStyle (self, *args, **kwargs)-> int :
-      '''getPaletteSetStyle( (PaletteSet)arg1) -> int :
-
-    C++ signature :
-        unsigned long getPaletteSetStyle(class PyCAdUiPaletteSet {lvalue})'''
+    def getPaletteSetStyle (self: PaletteSet)-> int :
+      '''                             '''
     ...
-    def getRolloverOpacity (self, *args, **kwargs)-> int :
-      '''getRolloverOpacity( (PaletteSet)arg1) -> int :
-
-    C++ signature :
-        int getRolloverOpacity(class PyCAdUiPaletteSet {lvalue})'''
+    def getRolloverOpacity (self: PaletteSet)-> int :
+      '''                             '''
     ...
-    def paletteBackgroundColor (self, *args, **kwargs)-> int :
-      '''paletteBackgroundColor( (PaletteSet)arg1) -> int :
-
-    C++ signature :
-        unsigned long paletteBackgroundColor(class PyCAdUiPaletteSet {lvalue})'''
+    def paletteBackgroundColor (self: PaletteSet)-> int :
+      '''                             '''
     ...
-    def paletteTabTextColor (self, *args, **kwargs)-> int :
-      '''paletteTabTextColor( (PaletteSet)arg1) -> int :
-
-    C++ signature :
-        unsigned long paletteTabTextColor(class PyCAdUiPaletteSet {lvalue})'''
+    def paletteTabTextColor (self: PaletteSet)-> int :
+      '''                             '''
     ...
-    def propertiesMenuStyle (self, *args, **kwargs)-> bool :
-      '''propertiesMenuStyle( (PaletteSet)arg1) -> bool :
-
-    C++ signature :
-        bool propertiesMenuStyle(class PyCAdUiPaletteSet {lvalue})'''
+    def propertiesMenuStyle (self: PaletteSet)-> bool :
+      '''                             '''
     ...
-    def removePalette (self, *args, **kwargs)-> bool :
-      '''removePalette( (PaletteSet)arg1, (int)arg2) -> bool :
-
-    C++ signature :
-        bool removePalette(class PyCAdUiPaletteSet {lvalue},int)'''
+    def removePalette (self: PaletteSet,val : int)-> bool :
+      '''                             '''
     ...
-    def rollOut (self, *args, **kwargs)-> None :
-      '''rollOut( (PaletteSet)arg1) -> None :
-
-    C++ signature :
-        void rollOut(class PyCAdUiPaletteSet {lvalue})
-
-rollOut( (PaletteSet)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void rollOut(class PyCAdUiPaletteSet {lvalue},bool)'''
+    def rollOut (self: PaletteSet,delay : bool=False)-> None :
+      '''                             '''
     ...
-    def rollUp (self, *args, **kwargs)-> None :
-      '''rollUp( (PaletteSet)arg1) -> None :
-
-    C++ signature :
-        void rollUp(class PyCAdUiPaletteSet {lvalue})'''
+    def rollUp (self: PaletteSet)-> None :
+      '''                             '''
     ...
-    def rolledUp (self, *args, **kwargs)-> bool :
-      '''rolledUp( (PaletteSet)arg1) -> bool :
-
-    C++ signature :
-        bool rolledUp(class PyCAdUiPaletteSet {lvalue})'''
+    def rolledUp (self: PaletteSet)-> bool :
+      '''                             '''
     ...
-    def setActivePalette (self, *args, **kwargs)-> bool :
-      '''setActivePalette( (PaletteSet)arg1, (int)arg2) -> bool :
-
-    C++ signature :
-        bool setActivePalette(class PyCAdUiPaletteSet {lvalue},int)'''
+    def setActivePalette (self: PaletteSet,val : int)-> bool :
+      '''                             '''
     ...
-    def setAutoRollup (self, *args, **kwargs)-> bool :
-      '''setAutoRollup( (PaletteSet)arg1, (bool)arg2) -> bool :
-
-    C++ signature :
-        bool setAutoRollup(class PyCAdUiPaletteSet {lvalue},bool)'''
+    def setAutoRollup (self: PaletteSet,val : bool)-> bool :
+      '''                             '''
     ...
-    def setName (self, *args, **kwargs)-> bool :
-      '''setName( (PaletteSet)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool setName(class PyCAdUiPaletteSet {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setName (self: PaletteSet,val : str)-> bool :
+      '''                             '''
     ...
-    def setOpacity (self, *args, **kwargs)-> bool :
-      '''setOpacity( (PaletteSet)arg1, (int)arg2) -> bool :
-
-    C++ signature :
-        bool setOpacity(class PyCAdUiPaletteSet {lvalue},int)'''
+    def setOpacity (self: PaletteSet,val : int)-> bool :
+      '''                             '''
     ...
-    def setPaletteSetStyle (self, *args, **kwargs)-> None :
-      '''setPaletteSetStyle( (PaletteSet)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setPaletteSetStyle(class PyCAdUiPaletteSet {lvalue},unsigned long)'''
+    def setPaletteSetStyle (self: PaletteSet,val : int)-> None :
+      '''                             '''
     ...
-    def setRolloverOpacity (self, *args, **kwargs)-> bool :
-      '''setRolloverOpacity( (PaletteSet)arg1, (int)arg2) -> bool :
-
-    C++ signature :
-        bool setRolloverOpacity(class PyCAdUiPaletteSet {lvalue},int)'''
+    def setRolloverOpacity (self: PaletteSet,val : int)-> bool :
+      '''                             '''
     ...
-    def setTitleBarLocation (self, *args, **kwargs)-> None :
-      '''setTitleBarLocation( (PaletteSet)arg1, (AdUiTitleBarLocation)arg2) -> None :
-
-    C++ signature :
-        void setTitleBarLocation(class PyCAdUiPaletteSet {lvalue},enum CAdUiPaletteSet::AdUiTitleBarLocation)'''
+    def setTitleBarLocation (self: PaletteSet,val : AdUiTitleBarLocation)-> None :
+      '''                             '''
     ...
-    def setVisible (self, *args, **kwargs)-> None :
-      '''setVisible( (PaletteSet)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setVisible(class PyCAdUiPaletteSet {lvalue},bool)'''
+    def setVisible (self: PaletteSet,val : bool)-> None :
+      '''                             '''
     ...
-    def showIconStyle (self, *args, **kwargs)-> bool :
-      '''showIconStyle( (PaletteSet)arg1) -> bool :
-
-    C++ signature :
-        bool showIconStyle(class PyCAdUiPaletteSet {lvalue})'''
+    def showIconStyle (self: PaletteSet)-> bool :
+      '''                             '''
     ...
-    def showRollupButtonStyle (self, *args, **kwargs)-> bool :
-      '''showRollupButtonStyle( (PaletteSet)arg1) -> bool :
-
-    C++ signature :
-        bool showRollupButtonStyle(class PyCAdUiPaletteSet {lvalue})'''
+    def showRollupButtonStyle (self: PaletteSet)-> bool :
+      '''                             '''
     ...
-    def singlePaletteTabStyle (self, *args, **kwargs)-> bool :
-      '''singlePaletteTabStyle( (PaletteSet)arg1) -> bool :
-
-    C++ signature :
-        bool singlePaletteTabStyle(class PyCAdUiPaletteSet {lvalue})'''
+    def singlePaletteTabStyle (self: PaletteSet)-> bool :
+      '''                             '''
     ...
-    def snapStyle (self, *args, **kwargs)-> bool :
-      '''snapStyle( (PaletteSet)arg1) -> bool :
-
-    C++ signature :
-        bool snapStyle(class PyCAdUiPaletteSet {lvalue})'''
+    def snapStyle (self: PaletteSet)-> bool :
+      '''                             '''
     ...
-    def titleBarLocation (self, *args, **kwargs)-> AdUiTitleBarLocation :
-      '''titleBarLocation( (PaletteSet)arg1) -> AdUiTitleBarLocation :
-
-    C++ signature :
-        enum CAdUiPaletteSet::AdUiTitleBarLocation titleBarLocation(class PyCAdUiPaletteSet {lvalue})'''
+    def titleBarLocation (self: PaletteSet)-> AdUiTitleBarLocation :
+      '''                             '''
     ...
-    def updateTabs (self, *args, **kwargs)-> None :
-      '''updateTabs( (PaletteSet)arg1) -> None :
-
-    C++ signature :
-        void updateTabs(class PyCAdUiPaletteSet {lvalue})'''
+    def updateTabs (self: PaletteSet)-> None :
+      '''                             '''
     ...
-    def useSinglePaletteTabNameStyle (self, *args, **kwargs)-> bool :
-      '''useSinglePaletteTabNameStyle( (PaletteSet)arg1) -> bool :
-
-    C++ signature :
-        bool useSinglePaletteTabNameStyle(class PyCAdUiPaletteSet {lvalue})'''
+    def useSinglePaletteTabNameStyle (self: PaletteSet)-> bool :
+      '''                             '''
     ...
 
 class ResourceOverride:

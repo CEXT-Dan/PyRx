@@ -10,12 +10,13 @@ using namespace boost::python;
 //PyApApplication  Wrapper
 void makePyApApplictionWrapper()
 {
+    PyDocString DS("Application");
     class_<PyApApplication>("Application")
-        .def("docManager", &PyApApplication::docManager)
-        .def("className", &PyApApplication::className).staticmethod("className")
-        .def("mainWnd", &PyApApplication::mainWnd).staticmethod("mainWnd")
-        .def("setTitleThemeDark", &PyApApplication::setTitleThemeDark).staticmethod("setTitleThemeDark")
-        .def("applyHostIcon", &PyApApplication::applyHostIcon).staticmethod("applyHostIcon")
+        .def("docManager", &PyApApplication::docManager, DS.CLASSARGSSTATIC())
+        .def("mainWnd", &PyApApplication::mainWnd, DS.CLASSARGSSTATIC()).staticmethod("mainWnd")
+        .def("setTitleThemeDark", &PyApApplication::setTitleThemeDark, DS.CLASSARGSSTATIC({ "wnd : int" })).staticmethod("setTitleThemeDark")
+        .def("applyHostIcon", &PyApApplication::applyHostIcon, DS.CLASSARGSSTATIC({ "wnd : int" })).staticmethod("applyHostIcon")
+        .def("className", &PyApApplication::className, DS.CLASSARGSSTATIC()).staticmethod("className")
         ;
 }
 

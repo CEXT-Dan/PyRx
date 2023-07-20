@@ -11911,11 +11911,8 @@ class Database:
     def classDxfName (self: Database,pClass : PyRx.RxClass)-> str :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
     def clayer (self: Database)-> ObjectId :
       '''                             '''

@@ -9,22 +9,23 @@ using namespace boost::python;
 //PyApDocManagerReactor
 void makePyApDocManagerReactorWrapper()
 {
+    PyDocString DS("DocManagerReactor");
     class_<PyApDocManagerReactor, boost::noncopyable>("DocManagerReactor")
-        .def("documentCreateStarted", &PyApDocManagerReactor::documentCreateStartedWr)
-        .def("documentCreated", &PyApDocManagerReactor::documentCreatedWr)
-        .def("documentToBeDestroyed", &PyApDocManagerReactor::documentToBeDestroyedWr)
-        .def("documentDestroyed", &PyApDocManagerReactor::documentDestroyedWr)
-        .def("documentCreateCanceled", &PyApDocManagerReactor::documentCreateCanceledWr)
-        .def("documentLockModeWillChange", &PyApDocManagerReactor::documentLockModeWillChangeWr)
-        .def("documentLockModeChangeVetoed", &PyApDocManagerReactor::documentLockModeChangeVetoedWr)
-        .def("documentLockModeChanged", &PyApDocManagerReactor::documentLockModeChangedWr)
-        .def("documentBecameCurrent", &PyApDocManagerReactor::documentBecameCurrentWr)
-        .def("documentToBeActivated", &PyApDocManagerReactor::documentToBeActivatedWr)
-        .def("documentToBeDeactivated", &PyApDocManagerReactor::documentToBeDeactivatedWr)
-        .def("documentActivationModified", &PyApDocManagerReactor::documentActivationModifiedWr)
-        .def("documentActivated", &PyApDocManagerReactor::documentActivatedWr)
-        .def("addReactor", &PyApDocManagerReactor::addReactor)
-        .def("removeReactor", &PyApDocManagerReactor::removeReactor)
+        .def("documentCreateStarted", &PyApDocManagerReactor::documentCreateStartedWr, DS.CLASSARGS({ "val : Document" }))
+        .def("documentCreated", &PyApDocManagerReactor::documentCreatedWr, DS.CLASSARGS({ "val : Document" }))
+        .def("documentToBeDestroyed", &PyApDocManagerReactor::documentToBeDestroyedWr, DS.CLASSARGS({ "val : Document" }))
+        .def("documentDestroyed", &PyApDocManagerReactor::documentDestroyedWr, DS.CLASSARGS({ "val : str" }))
+        .def("documentCreateCanceled", &PyApDocManagerReactor::documentCreateCanceledWr, DS.CLASSARGS({ "val : Document" }))
+        .def("documentLockModeWillChange", &PyApDocManagerReactor::documentLockModeWillChangeWr, DS.CLASSARGS({ "myCurMode : DocLockMode","myNewMode : DocLockMode" ,"curMode : DocLockMode","globalCmdName : str" }))
+        .def("documentLockModeChangeVetoed", &PyApDocManagerReactor::documentLockModeChangeVetoedWr, DS.CLASSARGS({ "doc : Document", "globalCmdName : str" }))
+        .def("documentLockModeChanged", &PyApDocManagerReactor::documentLockModeChangedWr, DS.CLASSARGS({ "doc : Document","myPrevMode : DocLockMode" ,"myCurMode : DocLockMode","currentMode : DocLockMode","globalCmdName : str" }))
+        .def("documentBecameCurrent", &PyApDocManagerReactor::documentBecameCurrentWr, DS.CLASSARGS({ "val : Document" }))
+        .def("documentToBeActivated", &PyApDocManagerReactor::documentToBeActivatedWr, DS.CLASSARGS({ "val : Document" }))
+        .def("documentToBeDeactivated", &PyApDocManagerReactor::documentToBeDeactivatedWr, DS.CLASSARGS({ "val : Document" }))
+        .def("documentActivationModified", &PyApDocManagerReactor::documentActivationModifiedWr, DS.CLASSARGS({ "val : bool" }))
+        .def("documentActivated", &PyApDocManagerReactor::documentActivatedWr, DS.CLASSARGS({ "val : Document" }))
+        .def("addReactor", &PyApDocManagerReactor::addReactor, DS.CLASSARGS())
+        .def("removeReactor", &PyApDocManagerReactor::removeReactor, DS.CLASSARGS())
         ;
 }
 

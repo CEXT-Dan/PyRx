@@ -11,7 +11,7 @@ public:
     PyApLayoutManager(AcApLayoutManager* ptr, bool autoDelete);
     int                 pageSetup1();
     int                 pageSetup2(const PyDbObjectId &lid);
-    int                 pageSetup3(const PyDbObjectId& lid, UINT_PTR hwnd, Adesk::Boolean  isPageSetupDlg);//TODO test
+    int                 pageSetup3(const PyDbObjectId& lid, UINT_PTR hwnd, Adesk::Boolean  isPageSetupDlg);
     void                updateCurrentPaper1();
     void                updateCurrentPaper2(Adesk::Boolean zoomToPaper);
     void                updateLayoutTabs();
