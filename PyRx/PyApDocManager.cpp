@@ -10,7 +10,7 @@ using namespace boost::python;
 void makePyApDocManagerReactorWrapper()
 {
     PyDocString DS("DocManagerReactor");
-    class_<PyApDocManagerReactor, boost::noncopyable>("DocManagerReactor")
+    class_<PyApDocManagerReactor>("DocManagerReactor")
         .def("documentCreateStarted", &PyApDocManagerReactor::documentCreateStartedWr, DS.CLASSARGS({ "val : Document" }))
         .def("documentCreated", &PyApDocManagerReactor::documentCreatedWr, DS.CLASSARGS({ "val : Document" }))
         .def("documentToBeDestroyed", &PyApDocManagerReactor::documentToBeDestroyedWr, DS.CLASSARGS({ "val : Document" }))

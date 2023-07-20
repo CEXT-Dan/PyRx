@@ -5,7 +5,7 @@ using namespace boost::python;
 
 void makePyDbIdMappingWrapper()
 {
-    class_<PyDbIdMapping, boost::noncopyable>("IdMapping")
+    class_<PyDbIdMapping>("IdMapping")
         .def(init<>())
         ;
 }
