@@ -14,7 +14,6 @@ public:
 public:
     std::string outstr;
     std::string m_className;
-    std::vector<std::string> m_args;
     inline static std::string m_argBegin = "![(";
     inline static std::string m_argEnd = ")]!";
 };

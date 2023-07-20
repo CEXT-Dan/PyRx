@@ -72,7 +72,7 @@ void makePyDbDatabaseWrapper()
         .def("drawOrderCtl", &PyDbDatabase::drawOrderCtl, DS.CLASSARGS())
         .def("dwfframe", &PyDbDatabase::dwfframe, DS.CLASSARGS())
         .def("dwgFileWasSavedByAutodeskSoftware", &PyDbDatabase::dwgFileWasSavedByAutodeskSoftware, DS.CLASSARGS())
-        .def("dxfIn", &PyDbDatabase::dxfIn, DS.CLASSARGS({"filename : str"}))
+        .def("dxfIn", &PyDbDatabase::dxfIn, DS.CLASSARGS({ "filename : str" }))
         .def("dxfOut", &PyDbDatabase::dxfOut, DS.CLASSARGS({ "filename : str" }))
         .def("elevation", &PyDbDatabase::elevation, DS.CLASSARGS())
         .def("eraseEmptyObjects", &PyDbDatabase::eraseEmptyObjects, DS.CLASSARGS({ "flag : int" }))
@@ -86,70 +86,69 @@ void makePyDbDatabaseWrapper()
         .def("geoMarkerVisibility", &PyDbDatabase::geoMarkerVisibility, DS.CLASSARGS())
         .def("get3dDwfPrec", &PyDbDatabase::get3dDwfPrec, DS.CLASSARGS())
         .def("getObjectId", &PyDbDatabase::getAcDbObjectId1)
-        .def("getObjectId", &PyDbDatabase::getAcDbObjectId2, DS.CLASSARGS({"createIfNotFound : bool","objHandle : Handle","xRefId : int=0" }))
-        .def("getCePlotStyleNameId", &PyDbDatabase::getCePlotStyleNameId)
-        .def("getDimstyleParentId", &PyDbDatabase::getDimstyleParentId)
-        .def("getNearestLineWeight", &PyDbDatabase::getNearestLineWeight).staticmethod("getNearestLineWeight")//static
-        .def("getViewportArray", &PyDbDatabase::getViewportArray)//TODO: TEST
-        .def("getVisualStyleList", &PyDbDatabase::getVisualStyleList)
-        .def("globalMaterial", &PyDbDatabase::globalMaterial)
-        .def("groupDictionaryId", &PyDbDatabase::groupDictionaryId)
-        .def("haloGap", &PyDbDatabase::haloGap)
-        .def("handseed", &PyDbDatabase::handseed)
-        .def("hasClass", &PyDbDatabase::hasClass)
-        .def("hideText", &PyDbDatabase::hideText)
-        .def("hpInherit", &PyDbDatabase::hpInherit)
-        .def("hpOrigin", &PyDbDatabase::hpOrigin)
-        .def("hpOrigin", &PyDbDatabase::hpOrigin)
-        //TODO: TEST
-        .def<void(PyDbDatabase::*)(PyDbObjectId&, const std::string&, PyDbDatabase&, bool)>("insert", &PyDbDatabase::insert)
-        .def<void(PyDbDatabase::*)(PyDbObjectId&, const std::string&, const std::string&, PyDbDatabase&, bool)>("insert", &PyDbDatabase::insert)
-        .def<void(PyDbDatabase::*)(const AcGeMatrix3d&, PyDbDatabase&, bool)>("insert", &PyDbDatabase::insert)
-        .def("hpOrigin", &PyDbDatabase::indexctl)
-        .def("isAppRegistered", &PyDbDatabase::isAppRegistered)
-        .def("insunits", &PyDbDatabase::insunits)
-        .def("interfereVpVisStyle", &PyDbDatabase::interfereVpVisStyle)
-        .def("intersectColor", &PyDbDatabase::intersectColor)
-        .def("intersectDisplay", &PyDbDatabase::intersectDisplay)
-        .def("isBeingDestroyed", &PyDbDatabase::isBeingDestroyed)
-        .def("isEMR", &PyDbDatabase::isEMR)
-        .def("isObjectNonPersistent", &PyDbDatabase::isObjectNonPersistent)
-        .def("isolines", &PyDbDatabase::isolines)
-        .def("isPartiallyOpened", &PyDbDatabase::isPartiallyOpened)
-        .def("isPucsOrthographic", &PyDbDatabase::isPucsOrthographic)
-        .def("isUcsOrthographic", &PyDbDatabase::isUcsOrthographic)
-        .def("isValidLineWeight", &PyDbDatabase::isValidLineWeight).staticmethod("isValidLineWeight")//static
-        .def("joinStyle", &PyDbDatabase::joinStyle)
-        .def("lastSavedAsMaintenanceVersion", &PyDbDatabase::lastSavedAsMaintenanceVersion)
-        .def("lastSavedAsVersion", &PyDbDatabase::lastSavedAsVersion)
-        .def("latitude", &PyDbDatabase::latitude)
-        .def("layerEval", &PyDbDatabase::layerEval)
-        .def("layerNotify", &PyDbDatabase::layerNotify)
-        .def("layerTableId", &PyDbDatabase::layerTableId)
-        .def("layerZero", &PyDbDatabase::layerZero)
-        .def("layoutDictionaryId", &PyDbDatabase::layoutDictionaryId)
-        .def("lensLength", &PyDbDatabase::lensLength)
-        .def("lightGlyphDisplay", &PyDbDatabase::lightGlyphDisplay)
-        .def("lightingUnits", &PyDbDatabase::lightingUnits)
-        .def("lightsInBlocks", &PyDbDatabase::lightsInBlocks)
-        .def("limcheck", &PyDbDatabase::limcheck)
-        .def("limmax", &PyDbDatabase::limmax)
-        .def("limmin", &PyDbDatabase::limmin)
-        .def("linetypeTableId", &PyDbDatabase::linetypeTableId)
-        .def("lineWeightDisplay", &PyDbDatabase::lineWeightDisplay)
-        .def("loadLineTypeFile", &PyDbDatabase::loadLineTypeFile)
-        .def("loftAng1", &PyDbDatabase::loftAng1)
-        .def("loftAng2", &PyDbDatabase::loftAng2)
-        .def("loftMag1", &PyDbDatabase::loftMag1)
-        .def("loftMag2", &PyDbDatabase::loftMag2)
-        .def("loftNormals", &PyDbDatabase::loftNormals)
-        .def("loftParam", &PyDbDatabase::loftParam)
-        .def("longitude", &PyDbDatabase::longitude)
-        .def("ltscale", &PyDbDatabase::ltscale)
-        .def("lunits", &PyDbDatabase::lunits)
-        .def("luprec", &PyDbDatabase::luprec)
-        .def("maintenanceReleaseVersion", &PyDbDatabase::maintenanceReleaseVersion)
-        .def("markObjectNonPersistent", &PyDbDatabase::markObjectNonPersistent).staticmethod("markObjectNonPersistent")//static
+        .def("getObjectId", &PyDbDatabase::getAcDbObjectId2, DS.CLASSARGS({ "createIfNotFound : bool","objHandle : Handle","xRefId : int=0" }))
+        .def("getCePlotStyleNameId", &PyDbDatabase::getCePlotStyleNameId, DS.CLASSARGS())
+        .def("getDimstyleParentId", &PyDbDatabase::getDimstyleParentId, DS.CLASSARGS())
+        .def("getNearestLineWeight", &PyDbDatabase::getNearestLineWeight, DS.CLASSARGSSTATIC({ "weight : int" })).staticmethod("getNearestLineWeight")//static
+        .def("getViewportArray", &PyDbDatabase::getViewportArray, DS.CLASSARGS())
+        .def("getVisualStyleList", &PyDbDatabase::getVisualStyleList, DS.CLASSARGS())
+        .def("globalMaterial", &PyDbDatabase::globalMaterial, DS.CLASSARGS())
+        .def("groupDictionaryId", &PyDbDatabase::groupDictionaryId, DS.CLASSARGS())
+        .def("haloGap", &PyDbDatabase::haloGap, DS.CLASSARGS())
+        .def("handseed", &PyDbDatabase::handseed, DS.CLASSARGS())
+        .def("hasClass", &PyDbDatabase::hasClass, DS.CLASSARGS({ "pClass : PyRx.RxClass" }))
+        .def("hideText", &PyDbDatabase::hideText, DS.CLASSARGS())
+        .def("hpInherit", &PyDbDatabase::hpInherit, DS.CLASSARGS())
+        .def("hpOrigin", &PyDbDatabase::hpOrigin, DS.CLASSARGS())
+        //TODO: TEST and DOCSTRING
+        .def("insert", &PyDbDatabase::insert1)
+        .def("insert", &PyDbDatabase::insert2)
+        .def("insert", &PyDbDatabase::insert3)
+        .def("hpOrigin", &PyDbDatabase::indexctl, DS.CLASSARGS())
+        .def("isAppRegistered", &PyDbDatabase::isAppRegistered, DS.CLASSARGS({ "pszAppName : str" }))
+        .def("insunits", &PyDbDatabase::insunits, DS.CLASSARGS())
+        .def("interfereVpVisStyle", &PyDbDatabase::interfereVpVisStyle, DS.CLASSARGS())
+        .def("intersectColor", &PyDbDatabase::intersectColor, DS.CLASSARGS())
+        .def("intersectDisplay", &PyDbDatabase::intersectDisplay, DS.CLASSARGS())
+        .def("isBeingDestroyed", &PyDbDatabase::isBeingDestroyed, DS.CLASSARGS())
+        .def("isEMR", &PyDbDatabase::isEMR, DS.CLASSARGS())
+        .def("isObjectNonPersistent", &PyDbDatabase::isObjectNonPersistent, DS.CLASSARGSSTATIC({ "id : ObjectId" })).staticmethod("isObjectNonPersistent")//static
+        .def("isolines", &PyDbDatabase::isolines, DS.CLASSARGS())
+        .def("isPartiallyOpened", &PyDbDatabase::isPartiallyOpened, DS.CLASSARGS())
+        .def("isPucsOrthographic", &PyDbDatabase::isPucsOrthographic, DS.CLASSARGS({ "orthoView : OrthographicView" }))
+        .def("isUcsOrthographic", &PyDbDatabase::isUcsOrthographic, DS.CLASSARGS({ "orthoView : OrthographicView" }))
+        .def("isValidLineWeight", &PyDbDatabase::isValidLineWeight, DS.CLASSARGSSTATIC({ "weight : int" })).staticmethod("isValidLineWeight")//static
+        .def("joinStyle", &PyDbDatabase::joinStyle, DS.CLASSARGS())
+        .def("lastSavedAsMaintenanceVersion", &PyDbDatabase::lastSavedAsMaintenanceVersion, DS.CLASSARGS())
+        .def("lastSavedAsVersion", &PyDbDatabase::lastSavedAsVersion, DS.CLASSARGS())
+        .def("latitude", &PyDbDatabase::latitude, DS.CLASSARGS())
+        .def("layerEval", &PyDbDatabase::layerEval, DS.CLASSARGS())
+        .def("layerNotify", &PyDbDatabase::layerNotify, DS.CLASSARGS())
+        .def("layerTableId", &PyDbDatabase::layerTableId, DS.CLASSARGS())
+        .def("layerZero", &PyDbDatabase::layerZero, DS.CLASSARGS())
+        .def("layoutDictionaryId", &PyDbDatabase::layoutDictionaryId, DS.CLASSARGS())
+        .def("lensLength", &PyDbDatabase::lensLength, DS.CLASSARGS())
+        .def("lightGlyphDisplay", &PyDbDatabase::lightGlyphDisplay, DS.CLASSARGS())
+        .def("lightingUnits", &PyDbDatabase::lightingUnits, DS.CLASSARGS())
+        .def("lightsInBlocks", &PyDbDatabase::lightsInBlocks, DS.CLASSARGS())
+        .def("limcheck", &PyDbDatabase::limcheck, DS.CLASSARGS())
+        .def("limmax", &PyDbDatabase::limmax, DS.CLASSARGS())
+        .def("limmin", &PyDbDatabase::limmin, DS.CLASSARGS())
+        .def("linetypeTableId", &PyDbDatabase::linetypeTableId, DS.CLASSARGS())
+        .def("lineWeightDisplay", &PyDbDatabase::lineWeightDisplay, DS.CLASSARGS())
+        .def("loadLineTypeFile", &PyDbDatabase::loadLineTypeFile, DS.CLASSARGS({ "ltn : str","filename : str" }))
+        .def("loftAng1", &PyDbDatabase::loftAng1, DS.CLASSARGS())
+        .def("loftAng2", &PyDbDatabase::loftAng2, DS.CLASSARGS())
+        .def("loftMag1", &PyDbDatabase::loftMag1, DS.CLASSARGS())
+        .def("loftMag2", &PyDbDatabase::loftMag2, DS.CLASSARGS())
+        .def("loftNormals", &PyDbDatabase::loftNormals, DS.CLASSARGS())
+        .def("loftParam", &PyDbDatabase::loftParam, DS.CLASSARGS())
+        .def("longitude", &PyDbDatabase::longitude, DS.CLASSARGS())
+        .def("ltscale", &PyDbDatabase::ltscale, DS.CLASSARGS())
+        .def("lunits", &PyDbDatabase::lunits, DS.CLASSARGS())
+        .def("luprec", &PyDbDatabase::luprec, DS.CLASSARGS())
+        .def("maintenanceReleaseVersion", &PyDbDatabase::maintenanceReleaseVersion, DS.CLASSARGS())
+        .def("markObjectNonPersistent", &PyDbDatabase::markObjectNonPersistent, DS.CLASSARGSSTATIC({"id : ObjectId","value : bool" })).staticmethod("markObjectNonPersistent")//static
         .def("materialDictionaryId", &PyDbDatabase::materialDictionaryId)
         .def("maxactvp", &PyDbDatabase::maxactvp)
         .def("measurement", &PyDbDatabase::measurement)
@@ -948,33 +947,23 @@ AcDb::LineWeight PyDbDatabase::getNearestLineWeight(int weight)
 
 boost::python::list PyDbDatabase::getViewportArray() const
 {
-    PyAutoLockGIL lock;
     AcDbObjectIdArray vportIds;
+    PyThrowBadEs(impObj()->getViewportArray(vportIds));
+    PyAutoLockGIL lock;
     boost::python::list pyvportIds;
-    {
-        if (eOk == impObj()->getViewportArray(vportIds))
-        {
-            for (auto& item : vportIds)
-                pyvportIds.append(PyDbObjectId(item));
-        }
-
-    }
+    for (auto& item : vportIds)
+        pyvportIds.append(PyDbObjectId(item));
     return pyvportIds;
 }
 
 boost::python::list PyDbDatabase::getVisualStyleList()
 {
+    AcArray<const ACHAR*> vstyleList;
+    PyThrowBadEs(impObj()->getVisualStyleList(vstyleList));
     PyAutoLockGIL lock;
     boost::python::list pyvstyleList;
-    AcArray<const ACHAR*> vstyleList;
-    {
-        if (eOk == impObj()->getVisualStyleList(vstyleList))
-        {
-            for (const auto& item : vstyleList)
-                pyvstyleList(wstr_to_utf8(item));
-        }
-
-    }
+    for (const auto& item : vstyleList)
+        pyvstyleList(wstr_to_utf8(item));
     return pyvstyleList;
 }
 
@@ -988,17 +977,17 @@ PyDbObjectId PyDbDatabase::groupDictionaryId() const
     return PyDbObjectId(impObj()->groupDictionaryId());
 }
 
-void PyDbDatabase::insert(PyDbObjectId& blockId, const std::string& pBlockName, PyDbDatabase& db, bool preserveSourceDatabase)
+void PyDbDatabase::insert1(PyDbObjectId& blockId, const std::string& pBlockName, PyDbDatabase& db, bool preserveSourceDatabase)
 {
     return PyThrowBadEs(impObj()->insert(blockId.m_id, utf8_to_wstr(pBlockName).c_str(), db.impObj(), preserveSourceDatabase));
 }
 
-void PyDbDatabase::insert(PyDbObjectId& blockId, const std::string& pSourceBlockName, const std::string& pDestinationBlockName, PyDbDatabase& db, bool preserveSourceDatabase)
+void PyDbDatabase::insert2(PyDbObjectId& blockId, const std::string& pSourceBlockName, const std::string& pDestinationBlockName, PyDbDatabase& db, bool preserveSourceDatabase)
 {
     return PyThrowBadEs(impObj()->insert(blockId.m_id, utf8_to_wstr(pSourceBlockName).c_str(), utf8_to_wstr(pDestinationBlockName).c_str(), db.impObj(), preserveSourceDatabase));
 }
 
-void PyDbDatabase::insert(const AcGeMatrix3d& xform, PyDbDatabase& db, bool preserveSourceDatabase)
+void PyDbDatabase::insert3(const AcGeMatrix3d& xform, PyDbDatabase& db, bool preserveSourceDatabase)
 {
     return PyThrowBadEs(impObj()->insert(xform, db.impObj(), preserveSourceDatabase));
 }

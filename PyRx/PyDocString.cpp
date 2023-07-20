@@ -54,7 +54,7 @@ const char* PyDocString::CLASSARGSSTATIC()
 const char* PyDocString::CLASSARGSSTATIC(std::initializer_list<std::string> pyargs)
 {
     outstr = m_argBegin;
-    for (auto& arg : m_args)
+    for (auto& arg : pyargs)
     {
         outstr += ",";
         outstr += std::format("{}", arg);

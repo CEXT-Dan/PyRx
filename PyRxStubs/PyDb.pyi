@@ -1,6 +1,7 @@
 import PyRx
 import PyGe
 import PyGi
+import PyGs
 import PyDb
 import PyAp
 import PyEd
@@ -12063,17 +12064,11 @@ class Database:
     def get3dDwfPrec (self: Database)-> float :
       '''                             '''
     ...
-    def getCePlotStyleNameId (self, *args, **kwargs)-> PlotStyleNameType :
-      '''getCePlotStyleNameId( (Database)arg1, (ObjectId)arg2) -> PlotStyleNameType :
-
-    C++ signature :
-        enum AcDb::PlotStyleNameType getCePlotStyleNameId(class PyDbDatabase {lvalue},class PyDbObjectId {lvalue})'''
+    def getCePlotStyleNameId (self: Database)-> PlotStyleNameType :
+      '''                             '''
     ...
-    def getDimstyleParentId (self, *args, **kwargs)-> ObjectId :
-      '''getDimstyleParentId( (Database)arg1, (ObjectId)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId getDimstyleParentId(class PyDbDatabase {lvalue},class PyDbObjectId {lvalue})'''
+    def getDimstyleParentId (self: Database)-> ObjectId :
+      '''                             '''
     ...
     def getFilename (self, *args, **kwargs)-> str :
       '''getFilename( (Database)arg1) -> str :
@@ -12081,84 +12076,41 @@ class Database:
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getFilename(class PyDbDatabase {lvalue})'''
     ...
-    def getNearestLineWeight (self, *args, **kwargs)-> LineWeight :
-      '''getNearestLineWeight( (int)arg1) -> LineWeight :
-
-    C++ signature :
-        enum AcDb::LineWeight getNearestLineWeight(int)'''
+    def getNearestLineWeight (,weight : int)-> LineWeight :
+      '''                             '''
     ...
     def getObjectId (self: Database,createIfNotFound : bool,objHandle : Handle,xRefId : int=0)-> ObjectId :
       '''                             '''
     ...
-    def getViewportArray (self, *args, **kwargs)-> list :
-      '''getViewportArray( (Database)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getViewportArray(class PyDbDatabase {lvalue})'''
+    def getViewportArray (self: Database)-> list :
+      '''                             '''
     ...
-    def getVisualStyleList (self, *args, **kwargs)-> list :
-      '''getVisualStyleList( (Database)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getVisualStyleList(class PyDbDatabase {lvalue})'''
+    def getVisualStyleList (self: Database)-> list :
+      '''                             '''
     ...
-    def globalMaterial (self, *args, **kwargs)-> ObjectId :
-      '''globalMaterial( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId globalMaterial(class PyDbDatabase {lvalue})'''
+    def globalMaterial (self: Database)-> ObjectId :
+      '''                             '''
     ...
-    def groupDictionaryId (self, *args, **kwargs)-> ObjectId :
-      '''groupDictionaryId( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId groupDictionaryId(class PyDbDatabase {lvalue})'''
+    def groupDictionaryId (self: Database)-> ObjectId :
+      '''                             '''
     ...
-    def haloGap (self, *args, **kwargs)-> int :
-      '''haloGap( (Database)arg1) -> int :
-
-    C++ signature :
-        unsigned char haloGap(class PyDbDatabase {lvalue})'''
+    def haloGap (self: Database)-> int :
+      '''                             '''
     ...
-    def handseed (self, *args, **kwargs)-> Handle :
-      '''handseed( (Database)arg1) -> Handle :
-
-    C++ signature :
-        class PyDbHandle handseed(class PyDbDatabase {lvalue})'''
+    def handseed (self: Database)-> Handle :
+      '''                             '''
     ...
-    def hasClass (self, *args, **kwargs)-> bool :
-      '''hasClass( (Database)arg1, (RxClass)arg2) -> bool :
-
-    C++ signature :
-        bool hasClass(class PyDbDatabase {lvalue},class PyRxClass)'''
+    def hasClass (self: Database,pClass : PyRx.RxClass)-> bool :
+      '''                             '''
     ...
-    def hideText (self, *args, **kwargs)-> int :
-      '''hideText( (Database)arg1) -> int :
-
-    C++ signature :
-        unsigned char hideText(class PyDbDatabase {lvalue})'''
+    def hideText (self: Database)-> int :
+      '''                             '''
     ...
-    def hpInherit (self, *args, **kwargs)-> bool :
-      '''hpInherit( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool hpInherit(class PyDbDatabase {lvalue})'''
+    def hpInherit (self: Database)-> bool :
+      '''                             '''
     ...
-    def hpOrigin (self, *args, **kwargs)-> Point2d :
-      '''hpOrigin( (Database)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d hpOrigin(class PyDbDatabase {lvalue})
-
-hpOrigin( (Database)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d hpOrigin(class PyDbDatabase {lvalue})
-
-hpOrigin( (Database)arg1) -> int :
-
-    C++ signature :
-        unsigned char hpOrigin(class PyDbDatabase {lvalue})'''
+    def hpOrigin (self: Database)-> Point2d :
+      '''                             '''
     ...
     def insert (self, *args, **kwargs)-> None :
       '''insert( (Database)arg1, (ObjectId)arg2, (str)arg3, (Database)arg4, (bool)arg5) -> None :
@@ -12176,29 +12128,17 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     C++ signature :
         void insert(class PyDbDatabase {lvalue},class AcGeMatrix3d,class PyDbDatabase {lvalue},bool)'''
     ...
-    def insunits (self, *args, **kwargs)-> UnitsValue :
-      '''insunits( (Database)arg1) -> UnitsValue :
-
-    C++ signature :
-        enum AcDb::UnitsValue insunits(class PyDbDatabase {lvalue})'''
+    def insunits (self: Database)-> UnitsValue :
+      '''                             '''
     ...
-    def interfereVpVisStyle (self, *args, **kwargs)-> ObjectId :
-      '''interfereVpVisStyle( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId interfereVpVisStyle(class PyDbDatabase {lvalue})'''
+    def interfereVpVisStyle (self: Database)-> ObjectId :
+      '''                             '''
     ...
-    def intersectColor (self, *args, **kwargs)-> int :
-      '''intersectColor( (Database)arg1) -> int :
-
-    C++ signature :
-        unsigned short intersectColor(class PyDbDatabase {lvalue})'''
+    def intersectColor (self: Database)-> int :
+      '''                             '''
     ...
-    def intersectDisplay (self, *args, **kwargs)-> int :
-      '''intersectDisplay( (Database)arg1) -> int :
-
-    C++ signature :
-        unsigned char intersectDisplay(class PyDbDatabase {lvalue})'''
+    def intersectDisplay (self: Database)-> int :
+      '''                             '''
     ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (RxObject)arg1) -> RxClass :
@@ -12206,23 +12146,14 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     C++ signature :
         class PyRxClass isA(class PyRxObject {lvalue})'''
     ...
-    def isAppRegistered (self, *args, **kwargs)-> bool :
-      '''isAppRegistered( (Database)arg1, (str)arg2) -> bool :
-
-    C++ signature :
-        bool isAppRegistered(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def isAppRegistered (self: Database,pszAppName : str)-> bool :
+      '''                             '''
     ...
-    def isBeingDestroyed (self, *args, **kwargs)-> bool :
-      '''isBeingDestroyed( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool isBeingDestroyed(class PyDbDatabase {lvalue})'''
+    def isBeingDestroyed (self: Database)-> bool :
+      '''                             '''
     ...
-    def isEMR (self, *args, **kwargs)-> bool :
-      '''isEMR( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool isEMR(class PyDbDatabase {lvalue})'''
+    def isEMR (self: Database)-> bool :
+      '''                             '''
     ...
     def isNullObj (self, *args, **kwargs)-> bool :
       '''isNullObj( (RxObject)arg1) -> bool :
@@ -12230,215 +12161,110 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     C++ signature :
         bool isNullObj(class PyRxObject {lvalue})'''
     ...
-    def isObjectNonPersistent (self, *args, **kwargs)-> bool :
-      '''isObjectNonPersistent( (ObjectId)arg1) -> bool :
-
-    C++ signature :
-        bool isObjectNonPersistent(class PyDbObjectId)'''
+    def isObjectNonPersistent (,id : ObjectId)-> bool :
+      '''                             '''
     ...
-    def isPartiallyOpened (self, *args, **kwargs)-> bool :
-      '''isPartiallyOpened( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool isPartiallyOpened(class PyDbDatabase {lvalue})'''
+    def isPartiallyOpened (self: Database)-> bool :
+      '''                             '''
     ...
-    def isPucsOrthographic (self, *args, **kwargs)-> bool :
-      '''isPucsOrthographic( (Database)arg1, (OrthographicView)arg2) -> bool :
-
-    C++ signature :
-        bool isPucsOrthographic(class PyDbDatabase {lvalue},enum AcDb::OrthographicView {lvalue})'''
+    def isPucsOrthographic (self: Database,orthoView : OrthographicView)-> bool :
+      '''                             '''
     ...
-    def isUcsOrthographic (self, *args, **kwargs)-> bool :
-      '''isUcsOrthographic( (Database)arg1, (OrthographicView)arg2) -> bool :
-
-    C++ signature :
-        bool isUcsOrthographic(class PyDbDatabase {lvalue},enum AcDb::OrthographicView {lvalue})'''
+    def isUcsOrthographic (self: Database,orthoView : OrthographicView)-> bool :
+      '''                             '''
     ...
-    def isValidLineWeight (self, *args, **kwargs)-> bool :
-      '''isValidLineWeight( (int)arg1) -> bool :
-
-    C++ signature :
-        bool isValidLineWeight(int)'''
+    def isValidLineWeight (,weight : int)-> bool :
+      '''                             '''
     ...
-    def isolines (self, *args, **kwargs)-> int :
-      '''isolines( (Database)arg1) -> int :
-
-    C++ signature :
-        short isolines(class PyDbDatabase {lvalue})'''
+    def isolines (self: Database)-> int :
+      '''                             '''
     ...
-    def joinStyle (self, *args, **kwargs)-> JoinStyle :
-      '''joinStyle( (Database)arg1) -> JoinStyle :
-
-    C++ signature :
-        enum AcDb::JoinStyle joinStyle(class PyDbDatabase {lvalue})'''
+    def joinStyle (self: Database)-> JoinStyle :
+      '''                             '''
     ...
-    def lastSavedAsMaintenanceVersion (self, *args, **kwargs)-> int :
-      '''lastSavedAsMaintenanceVersion( (Database)arg1) -> int :
-
-    C++ signature :
-        int lastSavedAsMaintenanceVersion(class PyDbDatabase {lvalue})'''
+    def lastSavedAsMaintenanceVersion (self: Database)-> int :
+      '''                             '''
     ...
-    def lastSavedAsVersion (self, *args, **kwargs)-> int :
-      '''lastSavedAsVersion( (Database)arg1) -> int :
-
-    C++ signature :
-        int lastSavedAsVersion(class PyDbDatabase {lvalue})'''
+    def lastSavedAsVersion (self: Database)-> int :
+      '''                             '''
     ...
-    def latitude (self, *args, **kwargs)-> float :
-      '''latitude( (Database)arg1) -> float :
-
-    C++ signature :
-        double latitude(class PyDbDatabase {lvalue})'''
+    def latitude (self: Database)-> float :
+      '''                             '''
     ...
-    def layerEval (self, *args, **kwargs)-> int :
-      '''layerEval( (Database)arg1) -> int :
-
-    C++ signature :
-        unsigned char layerEval(class PyDbDatabase {lvalue})'''
+    def layerEval (self: Database)-> int :
+      '''                             '''
     ...
-    def layerNotify (self, *args, **kwargs)-> int :
-      '''layerNotify( (Database)arg1) -> int :
-
-    C++ signature :
-        short layerNotify(class PyDbDatabase {lvalue})'''
+    def layerNotify (self: Database)-> int :
+      '''                             '''
     ...
-    def layerTableId (self, *args, **kwargs)-> ObjectId :
-      '''layerTableId( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId layerTableId(class PyDbDatabase {lvalue})'''
+    def layerTableId (self: Database)-> ObjectId :
+      '''                             '''
     ...
-    def layerZero (self, *args, **kwargs)-> ObjectId :
-      '''layerZero( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId layerZero(class PyDbDatabase {lvalue})'''
+    def layerZero (self: Database)-> ObjectId :
+      '''                             '''
     ...
-    def layoutDictionaryId (self, *args, **kwargs)-> ObjectId :
-      '''layoutDictionaryId( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId layoutDictionaryId(class PyDbDatabase {lvalue})'''
+    def layoutDictionaryId (self: Database)-> ObjectId :
+      '''                             '''
     ...
-    def lensLength (self, *args, **kwargs)-> float :
-      '''lensLength( (Database)arg1) -> float :
-
-    C++ signature :
-        double lensLength(class PyDbDatabase {lvalue})'''
+    def lensLength (self: Database)-> float :
+      '''                             '''
     ...
-    def lightGlyphDisplay (self, *args, **kwargs)-> int :
-      '''lightGlyphDisplay( (Database)arg1) -> int :
-
-    C++ signature :
-        unsigned char lightGlyphDisplay(class PyDbDatabase {lvalue})'''
+    def lightGlyphDisplay (self: Database)-> int :
+      '''                             '''
     ...
-    def lightingUnits (self, *args, **kwargs)-> int :
-      '''lightingUnits( (Database)arg1) -> int :
-
-    C++ signature :
-        unsigned char lightingUnits(class PyDbDatabase {lvalue})'''
+    def lightingUnits (self: Database)-> int :
+      '''                             '''
     ...
-    def lightsInBlocks (self, *args, **kwargs)-> bool :
-      '''lightsInBlocks( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool lightsInBlocks(class PyDbDatabase {lvalue})'''
+    def lightsInBlocks (self: Database)-> bool :
+      '''                             '''
     ...
-    def limcheck (self, *args, **kwargs)-> bool :
-      '''limcheck( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool limcheck(class PyDbDatabase {lvalue})'''
+    def limcheck (self: Database)-> bool :
+      '''                             '''
     ...
-    def limmax (self, *args, **kwargs)-> Point2d :
-      '''limmax( (Database)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d limmax(class PyDbDatabase {lvalue})'''
+    def limmax (self: Database)-> Point2d :
+      '''                             '''
     ...
-    def limmin (self, *args, **kwargs)-> Point2d :
-      '''limmin( (Database)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d limmin(class PyDbDatabase {lvalue})'''
+    def limmin (self: Database)-> Point2d :
+      '''                             '''
     ...
-    def lineWeightDisplay (self, *args, **kwargs)-> bool :
-      '''lineWeightDisplay( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool lineWeightDisplay(class PyDbDatabase {lvalue})'''
+    def lineWeightDisplay (self: Database)-> bool :
+      '''                             '''
     ...
-    def linetypeTableId (self, *args, **kwargs)-> ObjectId :
-      '''linetypeTableId( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId linetypeTableId(class PyDbDatabase {lvalue})'''
+    def linetypeTableId (self: Database)-> ObjectId :
+      '''                             '''
     ...
-    def loadLineTypeFile (self, *args, **kwargs)-> None :
-      '''loadLineTypeFile( (Database)arg1, (str)arg2, (str)arg3) -> None :
-
-    C++ signature :
-        void loadLineTypeFile(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def loadLineTypeFile (self: Database,ltn : str,filename : str)-> None :
+      '''                             '''
     ...
-    def loftAng1 (self, *args, **kwargs)-> float :
-      '''loftAng1( (Database)arg1) -> float :
-
-    C++ signature :
-        double loftAng1(class PyDbDatabase {lvalue})'''
+    def loftAng1 (self: Database)-> float :
+      '''                             '''
     ...
-    def loftAng2 (self, *args, **kwargs)-> float :
-      '''loftAng2( (Database)arg1) -> float :
-
-    C++ signature :
-        double loftAng2(class PyDbDatabase {lvalue})'''
+    def loftAng2 (self: Database)-> float :
+      '''                             '''
     ...
-    def loftMag1 (self, *args, **kwargs)-> float :
-      '''loftMag1( (Database)arg1) -> float :
-
-    C++ signature :
-        double loftMag1(class PyDbDatabase {lvalue})'''
+    def loftMag1 (self: Database)-> float :
+      '''                             '''
     ...
-    def loftMag2 (self, *args, **kwargs)-> float :
-      '''loftMag2( (Database)arg1) -> float :
-
-    C++ signature :
-        double loftMag2(class PyDbDatabase {lvalue})'''
+    def loftMag2 (self: Database)-> float :
+      '''                             '''
     ...
-    def loftNormals (self, *args, **kwargs)-> int :
-      '''loftNormals( (Database)arg1) -> int :
-
-    C++ signature :
-        unsigned char loftNormals(class PyDbDatabase {lvalue})'''
+    def loftNormals (self: Database)-> int :
+      '''                             '''
     ...
-    def loftParam (self, *args, **kwargs)-> int :
-      '''loftParam( (Database)arg1) -> int :
-
-    C++ signature :
-        unsigned short loftParam(class PyDbDatabase {lvalue})'''
+    def loftParam (self: Database)-> int :
+      '''                             '''
     ...
-    def longitude (self, *args, **kwargs)-> float :
-      '''longitude( (Database)arg1) -> float :
-
-    C++ signature :
-        double longitude(class PyDbDatabase {lvalue})'''
+    def longitude (self: Database)-> float :
+      '''                             '''
     ...
-    def ltscale (self, *args, **kwargs)-> float :
-      '''ltscale( (Database)arg1) -> float :
-
-    C++ signature :
-        double ltscale(class PyDbDatabase {lvalue})'''
+    def ltscale (self: Database)-> float :
+      '''                             '''
     ...
-    def lunits (self, *args, **kwargs)-> int :
-      '''lunits( (Database)arg1) -> int :
-
-    C++ signature :
-        short lunits(class PyDbDatabase {lvalue})'''
+    def lunits (self: Database)-> int :
+      '''                             '''
     ...
-    def luprec (self, *args, **kwargs)-> int :
-      '''luprec( (Database)arg1) -> int :
-
-    C++ signature :
-        short luprec(class PyDbDatabase {lvalue})'''
+    def luprec (self: Database)-> int :
+      '''                             '''
     ...
     def mLStyleDictionaryId (self, *args, **kwargs)-> ObjectId :
       '''mLStyleDictionaryId( (Database)arg1) -> ObjectId :
@@ -12446,17 +12272,11 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     C++ signature :
         class PyDbObjectId mLStyleDictionaryId(class PyDbDatabase {lvalue})'''
     ...
-    def maintenanceReleaseVersion (self, *args, **kwargs)-> int :
-      '''maintenanceReleaseVersion( (Database)arg1) -> int :
-
-    C++ signature :
-        int maintenanceReleaseVersion(class PyDbDatabase {lvalue})'''
+    def maintenanceReleaseVersion (self: Database)-> int :
+      '''                             '''
     ...
-    def markObjectNonPersistent (self, *args, **kwargs)-> None :
-      '''markObjectNonPersistent( (ObjectId)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void markObjectNonPersistent(class PyDbObjectId,bool)'''
+    def markObjectNonPersistent (,id : ObjectId,value : bool)-> None :
+      '''                             '''
     ...
     def materialDictionaryId (self, *args, **kwargs)-> ObjectId :
       '''materialDictionaryId( (Database)arg1) -> ObjectId :
@@ -14401,13 +14221,13 @@ class DbObject:
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast ()-> DbObject :
+    def cast (,otherObject: RxObject)-> DbObject :
       '''                             '''
     ...
     def className ()-> str :
       '''                             '''
     ...
-    def cloneFrom ()-> DbObject :
+    def cloneFrom (,otherObject: RxObject)-> DbObject :
       '''                             '''
     ...
     def close (self: DbObject)-> None :
@@ -19477,7 +19297,7 @@ class Entity:
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast ()-> Entity :
+    def cast (,otherObject: RxObject)-> Entity :
       '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
@@ -19486,7 +19306,7 @@ class Entity:
     def className ()-> str :
       '''                             '''
     ...
-    def cloneFrom ()-> Entity :
+    def cloneFrom (,otherObject: RxObject)-> Entity :
       '''                             '''
     ...
     def close (self: DbObject)-> None :
@@ -37053,7 +36873,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast ()-> DbObject :
+    def cast (,otherObject: RxObject)-> DbObject :
       '''                             '''
     ...
     def className (self, *args, **kwargs)-> str :
@@ -37062,7 +36882,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def cloneFrom ()-> DbObject :
+    def cloneFrom (,otherObject: RxObject)-> DbObject :
       '''                             '''
     ...
     def close (self: DbObject)-> None :
@@ -73936,7 +73756,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast ()-> DbObject :
+    def cast (,otherObject: RxObject)-> DbObject :
       '''                             '''
     ...
     def className (self, *args, **kwargs)-> str :
@@ -73945,7 +73765,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def cloneFrom ()-> DbObject :
+    def cloneFrom (,otherObject: RxObject)-> DbObject :
       '''                             '''
     ...
     def close (self: DbObject)-> None :
