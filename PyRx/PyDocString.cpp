@@ -23,6 +23,7 @@ const char* PyDocString::CLASSARGS(std::initializer_list<std::string> pyargs)
         outstr += ",";
         outstr += std::format("{}", arg);
     }
+    trim(outstr, ',');
     outstr += m_argEnd;
     return outstr.c_str();
 }
@@ -39,6 +40,7 @@ const char* PyDocString::CLASSARGS(std::initializer_list<std::initializer_list<s
             outstr += ",";
             outstr += std::format("{}", arg);
         }
+        trim(outstr, ',');
         outstr += m_argEnd;
     }
     return outstr.c_str();
@@ -56,9 +58,9 @@ const char* PyDocString::CLASSARGSSTATIC(std::initializer_list<std::string> pyar
     outstr = m_argBegin;
     for (auto& arg : pyargs)
     {
-        outstr += ",";
-        outstr += std::format("{}", arg);
+        outstr += std::format("{},", arg);
     }
+    trim(outstr, ',');
     outstr += m_argEnd;
     return outstr.c_str();
 }
