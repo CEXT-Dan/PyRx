@@ -9,7 +9,7 @@ using namespace boost::python;
 //PyEditorReactor
 void makePyEditorReactorWrapper()
 {
-    class_<PyEditorReactor, boost::noncopyable>("EditorReactor")
+    class_<PyEditorReactor>("EditorReactor")
         .def("addReactor", &PyEditorReactor::addReactor)
         .def("removeReactor", &PyEditorReactor::removeReactor)
         .def("veto", &PyEditorReactor::pyveto)

@@ -9,6 +9,6 @@ public:
     PyDbIdMapping(const AcDbIdMapping& mapping);
 
 public:
-    std::unique_ptr<AcDbIdMapping> m_imp;
+    std::shared_ptr<AcDbIdMapping> m_imp;
 };
 

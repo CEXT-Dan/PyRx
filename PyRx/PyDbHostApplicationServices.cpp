@@ -10,7 +10,7 @@ using namespace boost::python;
 //PyDbHostApplicationServices
 void makePyDbHostApplicationServicesWrapper()
 {
-    class_<PyDbHostApplicationServices, boost::noncopyable>("HostApplicationServices")
+    class_<PyDbHostApplicationServices>("HostApplicationServices")
         .def(init<>())
         .def("workingDatabase", &PyDbHostApplicationServices::workingDatabase)
         .def("setWorkingDatabase", &PyDbHostApplicationServices::setWorkingDatabase)
@@ -96,7 +96,7 @@ PyDbLayoutManager PyDbHostApplicationServices::dbLayoutManager()
 //PyDbSymUtilServices
 void makePyDbSymUtilServicesWrapper()
 {
-    class_<PyDbSymUtilServices, boost::noncopyable>("SymUtilServices")
+    class_<PyDbSymUtilServices>("SymUtilServices")
         .def(init<>())
         .def("isBlockLayoutName", &PyDbSymUtilServices::isBlockLayoutName)
         .def("isBlockModelSpaceName", &PyDbSymUtilServices::isBlockModelSpaceName)

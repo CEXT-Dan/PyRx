@@ -400,7 +400,7 @@ bool DbCore::ucs2Wcs2(const AcGeVector3d& p, AcGeVector3d& q)
 bool DbCore::wcs2Ecs1(const AcGePoint3d& p, const AcGeVector3d& normal, AcGePoint3d& q)
 {
     ads_point pnt;
-    bool flag = acdbWcs2Ecs(asDblArray(p), pnt, asDblArray(normal), true);
+    bool flag = acdbWcs2Ecs(asDblArray(p), pnt, asDblArray(normal), false);
     q = asPnt3d(pnt);
     return flag;
 }
@@ -424,7 +424,7 @@ bool DbCore::ucs2Ucs1(const AcGePoint3d& p, AcGePoint3d& q)
 bool DbCore::ucs2Ucs2(const AcGeVector3d& p, AcGeVector3d& q)
 {
     ads_point pnt;
-    bool flag = acdbWcs2Ucs(asDblArray(p), pnt, false);
+    bool flag = acdbWcs2Ucs(asDblArray(p), pnt, true);
     q = asVec3d(pnt);
     return flag;
 }
@@ -432,7 +432,7 @@ bool DbCore::ucs2Ucs2(const AcGeVector3d& p, AcGeVector3d& q)
 bool DbCore::ecs2Wcs1(const AcGePoint3d& p, const AcGeVector3d& normal, AcGePoint3d& q)
 {
     ads_point pnt;
-    bool flag = acdbEcs2Wcs(asDblArray(p), pnt, asDblArray(normal), true);
+    bool flag = acdbEcs2Wcs(asDblArray(p), pnt, asDblArray(normal), false);
     q = asPnt3d(pnt);
     return flag;
 }
