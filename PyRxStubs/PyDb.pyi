@@ -12266,11 +12266,8 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def luprec (self: Database)-> int :
       '''                             '''
     ...
-    def mLStyleDictionaryId (self, *args, **kwargs)-> ObjectId :
-      '''mLStyleDictionaryId( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId mLStyleDictionaryId(class PyDbDatabase {lvalue})'''
+    def mLStyleDictionaryId (self: Database)-> ObjectId :
+      '''                             '''
     ...
     def maintenanceReleaseVersion (self: Database)-> int :
       '''                             '''
@@ -12278,47 +12275,26 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def markObjectNonPersistent (id : ObjectId,value : bool)-> None :
       '''                             '''
     ...
-    def materialDictionaryId (self, *args, **kwargs)-> ObjectId :
-      '''materialDictionaryId( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId materialDictionaryId(class PyDbDatabase {lvalue})'''
+    def materialDictionaryId (self: Database)-> ObjectId :
+      '''                             '''
     ...
-    def maxactvp (self, *args, **kwargs)-> int :
-      '''maxactvp( (Database)arg1) -> int :
-
-    C++ signature :
-        short maxactvp(class PyDbDatabase {lvalue})'''
+    def maxactvp (self: Database)-> int :
+      '''                             '''
     ...
-    def measurement (self, *args, **kwargs)-> MeasurementValue :
-      '''measurement( (Database)arg1) -> MeasurementValue :
-
-    C++ signature :
-        enum AcDb::MeasurementValue measurement(class PyDbDatabase {lvalue})'''
+    def measurement (self: Database)-> MeasurementValue :
+      '''                             '''
     ...
-    def mirrtext (self, *args, **kwargs)-> bool :
-      '''mirrtext( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool mirrtext(class PyDbDatabase {lvalue})'''
+    def mirrtext (self: Database)-> bool :
+      '''                             '''
     ...
-    def mleaderStyleDictionaryId (self, *args, **kwargs)-> ObjectId :
-      '''mleaderStyleDictionaryId( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId mleaderStyleDictionaryId(class PyDbDatabase {lvalue})'''
+    def mleaderStyleDictionaryId (self: Database)-> ObjectId :
+      '''                             '''
     ...
-    def mleaderscale (self, *args, **kwargs)-> float :
-      '''mleaderscale( (Database)arg1) -> float :
-
-    C++ signature :
-        double mleaderscale(class PyDbDatabase {lvalue})'''
+    def mleaderscale (self: Database)-> float :
+      '''                             '''
     ...
-    def mleaderstyle (self, *args, **kwargs)-> ObjectId :
-      '''mleaderstyle( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId mleaderstyle(class PyDbDatabase {lvalue})'''
+    def mleaderstyle (self: Database)-> ObjectId :
+      '''                             '''
     ...
     def modelSpaceId (self, *args, **kwargs)-> ObjectId :
       '''modelSpaceId( (Database)arg1) -> ObjectId :
@@ -12326,251 +12302,128 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     C++ signature :
         class PyDbObjectId modelSpaceId(class PyDbDatabase {lvalue})'''
     ...
-    def msOleScale (self, *args, **kwargs)-> float :
-      '''msOleScale( (Database)arg1) -> float :
-
-    C++ signature :
-        double msOleScale(class PyDbDatabase {lvalue})'''
+    def msOleScale (self: Database)-> float :
+      '''                             '''
     ...
-    def msltscale (self, *args, **kwargs)-> bool :
-      '''msltscale( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool msltscale(class PyDbDatabase {lvalue})'''
+    def msltscale (self: Database)-> bool :
+      '''                             '''
     ...
-    def namedObjectsDictionaryId (self, *args, **kwargs)-> ObjectId :
-      '''namedObjectsDictionaryId( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId namedObjectsDictionaryId(class PyDbDatabase {lvalue})'''
+    def namedObjectsDictionaryId (self: Database)-> ObjectId :
+      '''                             '''
     ...
-    def needsRecovery (self, *args, **kwargs)-> bool :
-      '''needsRecovery( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool needsRecovery(class PyDbDatabase {lvalue})'''
+    def needsRecovery (self: Database)-> bool :
+      '''                             '''
     ...
-    def northDirection (self, *args, **kwargs)-> float :
-      '''northDirection( (Database)arg1) -> float :
-
-    C++ signature :
-        double northDirection(class PyDbDatabase {lvalue})'''
+    def northDirection (self: Database)-> float :
+      '''                             '''
     ...
-    def numberOfSaves (self, *args, **kwargs)-> int :
-      '''numberOfSaves( (Database)arg1) -> int :
-
-    C++ signature :
-        int numberOfSaves(class PyDbDatabase {lvalue})'''
+    def numberOfSaves (self: Database)-> int :
+      '''                             '''
     ...
-    def obscuredColor (self, *args, **kwargs)-> int :
-      '''obscuredColor( (Database)arg1) -> int :
-
-    C++ signature :
-        unsigned short obscuredColor(class PyDbDatabase {lvalue})'''
+    def obscuredColor (self: Database)-> int :
+      '''                             '''
     ...
-    def obscuredLineType (self, *args, **kwargs)-> int :
-      '''obscuredLineType( (Database)arg1) -> int :
-
-    C++ signature :
-        unsigned char obscuredLineType(class PyDbDatabase {lvalue})'''
+    def obscuredLineType (self: Database)-> int :
+      '''                             '''
     ...
-    def oleStartUp (self, *args, **kwargs)-> bool :
-      '''oleStartUp( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool oleStartUp(class PyDbDatabase {lvalue})'''
+    def oleStartUp (self: Database)-> bool :
+      '''                             '''
     ...
-    def originalFileMaintenanceVersion (self, *args, **kwargs)-> int :
-      '''originalFileMaintenanceVersion( (Database)arg1) -> int :
-
-    C++ signature :
-        int originalFileMaintenanceVersion(class PyDbDatabase {lvalue})'''
+    def originalFileMaintenanceVersion (self: Database)-> int :
+      '''                             '''
     ...
-    def originalFileName (self, *args, **kwargs)-> str :
-      '''originalFileName( (Database)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > originalFileName(class PyDbDatabase {lvalue})'''
+    def originalFileName (self: Database)-> str :
+      '''                             '''
     ...
-    def originalFileSavedByMaintenanceVersion (self, *args, **kwargs)-> int :
-      '''originalFileSavedByMaintenanceVersion( (Database)arg1) -> int :
-
-    C++ signature :
-        int originalFileSavedByMaintenanceVersion(class PyDbDatabase {lvalue})'''
+    def originalFileSavedByMaintenanceVersion (self: Database)-> int :
+      '''                             '''
     ...
-    def originalFileSavedByVersion (self, *args, **kwargs)-> int :
-      '''originalFileSavedByVersion( (Database)arg1) -> int :
-
-    C++ signature :
-        int originalFileSavedByVersion(class PyDbDatabase {lvalue})'''
+    def originalFileSavedByVersion (self: Database)-> int :
+      '''                             '''
     ...
-    def originalFileVersion (self, *args, **kwargs)-> int :
-      '''originalFileVersion( (Database)arg1) -> int :
-
-    C++ signature :
-        int originalFileVersion(class PyDbDatabase {lvalue})'''
+    def originalFileVersion (self: Database)-> int :
+      '''                             '''
     ...
-    def orthomode (self, *args, **kwargs)-> bool :
-      '''orthomode( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool orthomode(class PyDbDatabase {lvalue})'''
+    def orthomode (self: Database)-> bool :
+      '''                             '''
     ...
-    def paperSpaceVportId (self, *args, **kwargs)-> ObjectId :
-      '''paperSpaceVportId( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId paperSpaceVportId(class PyDbDatabase {lvalue})'''
+    def paperSpaceVportId (self: Database)-> ObjectId :
+      '''                             '''
     ...
-    def pdfframe (self, *args, **kwargs)-> int :
-      '''pdfframe( (Database)arg1) -> int :
-
-    C++ signature :
-        signed char pdfframe(class PyDbDatabase {lvalue})'''
+    def pdfframe (self: Database)-> int :
+      '''                             '''
     ...
-    def pdmode (self, *args, **kwargs)-> int :
-      '''pdmode( (Database)arg1) -> int :
-
-    C++ signature :
-        short pdmode(class PyDbDatabase {lvalue})'''
+    def pdmode (self: Database)-> int :
+      '''                             '''
     ...
-    def pdsize (self, *args, **kwargs)-> float :
-      '''pdsize( (Database)arg1) -> float :
-
-    C++ signature :
-        double pdsize(class PyDbDatabase {lvalue})'''
+    def pdsize (self: Database)-> float :
+      '''                             '''
     ...
-    def pextmax (self, *args, **kwargs)-> Point3d :
-      '''pextmax( (Database)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d pextmax(class PyDbDatabase {lvalue})'''
+    def pextmax (self: Database)-> Point3d :
+      '''                             '''
     ...
-    def pextmin (self, *args, **kwargs)-> Point3d :
-      '''pextmin( (Database)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d pextmin(class PyDbDatabase {lvalue})'''
+    def pextmin (self: Database)-> Point3d :
+      '''                             '''
     ...
-    def pickstyle (self, *args, **kwargs)-> int :
-      '''pickstyle( (Database)arg1) -> int :
-
-    C++ signature :
-        short pickstyle(class PyDbDatabase {lvalue})'''
+    def pickstyle (self: Database)-> int :
+      '''                             '''
     ...
-    def pinsbase (self, *args, **kwargs)-> Point3d :
-      '''pinsbase( (Database)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d pinsbase(class PyDbDatabase {lvalue})'''
+    def pinsbase (self: Database)-> Point3d :
+      '''                             '''
     ...
-    def plimcheck (self, *args, **kwargs)-> bool :
-      '''plimcheck( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool plimcheck(class PyDbDatabase {lvalue})'''
+    def plimcheck (self: Database)-> bool :
+      '''                             '''
     ...
-    def plimmax (self, *args, **kwargs)-> Point2d :
-      '''plimmax( (Database)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d plimmax(class PyDbDatabase {lvalue})'''
+    def plimmax (self: Database)-> Point2d :
+      '''                             '''
     ...
-    def plimmin (self, *args, **kwargs)-> Point2d :
-      '''plimmin( (Database)arg1) -> Point2d :
-
-    C++ signature :
-        class AcGePoint2d plimmin(class PyDbDatabase {lvalue})'''
+    def plimmin (self: Database)-> Point2d :
+      '''                             '''
     ...
-    def plineEllipse (self, *args, **kwargs)-> bool :
-      '''plineEllipse( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool plineEllipse(class PyDbDatabase {lvalue})'''
+    def plineEllipse (self: Database)-> bool :
+      '''                             '''
     ...
-    def plinegen (self, *args, **kwargs)-> bool :
-      '''plinegen( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool plinegen(class PyDbDatabase {lvalue})'''
+    def plinegen (self: Database)-> bool :
+      '''                             '''
     ...
-    def plinewid (self, *args, **kwargs)-> float :
-      '''plinewid( (Database)arg1) -> float :
-
-    C++ signature :
-        double plinewid(class PyDbDatabase {lvalue})'''
+    def plinewid (self: Database)-> float :
+      '''                             '''
     ...
-    def plotSettingsDictionaryId (self, *args, **kwargs)-> ObjectId :
-      '''plotSettingsDictionaryId( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId plotSettingsDictionaryId(class PyDbDatabase {lvalue})'''
+    def plotSettingsDictionaryId (self: Database)-> ObjectId :
+      '''                             '''
     ...
-    def plotStyleMode (self, *args, **kwargs)-> bool :
-      '''plotStyleMode( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool plotStyleMode(class PyDbDatabase {lvalue})'''
+    def plotStyleMode (self: Database)-> bool :
+      '''                             '''
     ...
-    def plotStyleNameDictionaryId (self, *args, **kwargs)-> ObjectId :
-      '''plotStyleNameDictionaryId( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId plotStyleNameDictionaryId(class PyDbDatabase {lvalue})'''
+    def plotStyleNameDictionaryId (self: Database)-> ObjectId :
+      '''                             '''
     ...
-    def previewType (self, *args, **kwargs)-> int :
-      '''previewType( (Database)arg1) -> int :
-
-    C++ signature :
-        short previewType(class PyDbDatabase {lvalue})'''
+    def previewType (self: Database)-> int :
+      '''                             '''
     ...
-    def psltscale (self, *args, **kwargs)-> bool :
-      '''psltscale( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool psltscale(class PyDbDatabase {lvalue})'''
+    def psltscale (self: Database)-> bool :
+      '''                             '''
     ...
-    def psolHeight (self, *args, **kwargs)-> float :
-      '''psolHeight( (Database)arg1) -> float :
-
-    C++ signature :
-        double psolHeight(class PyDbDatabase {lvalue})'''
+    def psolHeight (self: Database)-> float :
+      '''                             '''
     ...
-    def psolWidth (self, *args, **kwargs)-> float :
-      '''psolWidth( (Database)arg1) -> float :
-
-    C++ signature :
-        double psolWidth(class PyDbDatabase {lvalue})'''
+    def psolWidth (self: Database)-> float :
+      '''                             '''
     ...
-    def pucsBase (self, *args, **kwargs)-> ObjectId :
-      '''pucsBase( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId pucsBase(class PyDbDatabase {lvalue})'''
+    def pucsBase (self: Database)-> ObjectId :
+      '''                             '''
     ...
-    def pucsname (self, *args, **kwargs)-> ObjectId :
-      '''pucsname( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId pucsname(class PyDbDatabase {lvalue})'''
+    def pucsname (self: Database)-> ObjectId :
+      '''                             '''
     ...
-    def pucsorg (self, *args, **kwargs)-> Point3d :
-      '''pucsorg( (Database)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d pucsorg(class PyDbDatabase {lvalue})'''
+    def pucsorg (self: Database)-> Point3d :
+      '''                             '''
     ...
-    def pucsxdir (self, *args, **kwargs)-> Vector3d :
-      '''pucsxdir( (Database)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d pucsxdir(class PyDbDatabase {lvalue})'''
+    def pucsxdir (self: Database)-> Vector3d :
+      '''                             '''
     ...
-    def pucsydir (self, *args, **kwargs)-> Vector3d :
-      '''pucsydir( (Database)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d pucsydir(class PyDbDatabase {lvalue})'''
+    def pucsydir (self: Database)-> Vector3d :
+      '''                             '''
     ...
     def purge (self, *args, **kwargs)-> list :
       '''purge( (Database)arg1) -> list :
@@ -12578,11 +12431,8 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     C++ signature :
         class boost::python::list purge(class PyDbDatabase {lvalue})'''
     ...
-    def qtextmode (self, *args, **kwargs)-> bool :
-      '''qtextmode( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool qtextmode(class PyDbDatabase {lvalue})'''
+    def qtextmode (self: Database)-> bool :
+      '''                             '''
     ...
     def readDwgFile (self, *args, **kwargs)-> None :
       '''readDwgFile( (Database)arg1, (str)arg2) -> None :
@@ -12595,11 +12445,8 @@ readDwgFile( (Database)arg1, (str)arg2, (int)arg3, (bool)arg4, (str)arg5) -> Non
     C++ signature :
         void readDwgFile(class PyDbDatabase {lvalue},char const * __ptr64,int,bool,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def reclaimMemoryFromErasedObjects (self, *args, **kwargs)-> None :
-      '''reclaimMemoryFromErasedObjects( (Database)arg1, (list)arg2) -> None :
-
-    C++ signature :
-        void reclaimMemoryFromErasedObjects(class PyDbDatabase {lvalue},class boost::python::list)'''
+    def reclaimMemoryFromErasedObjects (self: Database,ids : list[ObjectId])-> None :
+      '''                             '''
     ...
     def refCount (self, *args, **kwargs)-> int :
       '''refCount( (RxObject)arg1) -> int :
@@ -12607,155 +12454,80 @@ readDwgFile( (Database)arg1, (str)arg2, (int)arg3, (bool)arg4, (str)arg5) -> Non
     C++ signature :
         int refCount(class PyRxObject {lvalue})'''
     ...
-    def regAppTableId (self, *args, **kwargs)-> ObjectId :
-      '''regAppTableId( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId regAppTableId(class PyDbDatabase {lvalue})'''
+    def regAppTableId (self: Database)-> ObjectId :
+      '''                             '''
     ...
-    def regenmode (self, *args, **kwargs)-> bool :
-      '''regenmode( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool regenmode(class PyDbDatabase {lvalue})'''
+    def regenmode (self: Database)-> bool :
+      '''                             '''
     ...
-    def registerApp (self, *args, **kwargs)-> None :
-      '''registerApp( (Database)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void registerApp(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def registerApp (self: Database,appName : str)-> None :
+      '''                             '''
     ...
-    def resetTimes (self, *args, **kwargs)-> None :
-      '''resetTimes( (Database)arg1) -> None :
-
-    C++ signature :
-        void resetTimes(class PyDbDatabase {lvalue})'''
+    def resetTimes (self: Database)-> None :
+      '''                             '''
     ...
-    def restoreForwardingXrefSymbols (self, *args, **kwargs)-> None :
-      '''restoreForwardingXrefSymbols( (Database)arg1) -> None :
-
-    C++ signature :
-        void restoreForwardingXrefSymbols(class PyDbDatabase {lvalue})'''
+    def restoreForwardingXrefSymbols (self: Database)-> None :
+      '''                             '''
     ...
-    def restoreOriginalXrefSymbols (self, *args, **kwargs)-> None :
-      '''restoreOriginalXrefSymbols( (Database)arg1) -> None :
-
-    C++ signature :
-        void restoreOriginalXrefSymbols(class PyDbDatabase {lvalue})'''
+    def restoreOriginalXrefSymbols (self: Database)-> None :
+      '''                             '''
     ...
-    def retainOriginalThumbnailBitmap (self, *args, **kwargs)-> bool :
-      '''retainOriginalThumbnailBitmap( (Database)arg1) -> bool :
-
-    C++ signature :
-        bool retainOriginalThumbnailBitmap(class PyDbDatabase {lvalue})'''
+    def retainOriginalThumbnailBitmap (self: Database)-> bool :
+      '''                             '''
     ...
-    def saveAs (self, *args, **kwargs)-> None :
-      '''saveAs( (Database)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void saveAs(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def saveAs (self: Database,filename : str)-> None :
+      '''                             '''
     ...
-    def saveproxygraphics (self, *args, **kwargs)-> int :
-      '''saveproxygraphics( (Database)arg1) -> int :
-
-    C++ signature :
-        short saveproxygraphics(class PyDbDatabase {lvalue})'''
+    def saveproxygraphics (self: Database)-> int :
+      '''                             '''
     ...
-    def scaleListDictionaryId (self, *args, **kwargs)-> ObjectId :
-      '''scaleListDictionaryId( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId scaleListDictionaryId(class PyDbDatabase {lvalue})'''
+    def scaleListDictionaryId (self: Database)-> ObjectId :
+      '''                             '''
     ...
-    def sectionViewStyle (self, *args, **kwargs)-> ObjectId :
-      '''sectionViewStyle( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId sectionViewStyle(class PyDbDatabase {lvalue})'''
+    def sectionViewStyle (self: Database)-> ObjectId :
+      '''                             '''
     ...
-    def sectionViewStyleDictionaryId (self, *args, **kwargs)-> ObjectId :
-      '''sectionViewStyleDictionaryId( (Database)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId sectionViewStyleDictionaryId(class PyDbDatabase {lvalue})'''
+    def sectionViewStyleDictionaryId (self: Database)-> ObjectId :
+      '''                             '''
     ...
-    def set3dDwfPrec (self, *args, **kwargs)-> None :
-      '''set3dDwfPrec( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void set3dDwfPrec(class PyDbDatabase {lvalue},double)'''
+    def set3dDwfPrec (self: Database,dwfPrec : float)-> None :
+      '''                             '''
     ...
-    def setAngbase (self, *args, **kwargs)-> None :
-      '''setAngbase( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setAngbase(class PyDbDatabase {lvalue},double)'''
+    def setAngbase (self: Database,angle : float)-> None :
+      '''                             '''
     ...
-    def setAngdir (self, *args, **kwargs)-> None :
-      '''setAngdir( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setAngdir(class PyDbDatabase {lvalue},bool)'''
+    def setAngdir (self: Database,dir : bool)-> None :
+      '''                             '''
     ...
-    def setAnnoAllVisible (self, *args, **kwargs)-> None :
-      '''setAnnoAllVisible( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setAnnoAllVisible(class PyDbDatabase {lvalue},bool)'''
+    def setAnnoAllVisible (self: Database,allvis : bool)-> None :
+      '''                             '''
     ...
-    def setAttdia (self, *args, **kwargs)-> None :
-      '''setAttdia( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setAttdia(class PyDbDatabase {lvalue},bool)'''
+    def setAttdia (self: Database,val : bool)-> None :
+      '''                             '''
     ...
-    def setAttmode (self, *args, **kwargs)-> None :
-      '''setAttmode( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setAttmode(class PyDbDatabase {lvalue},short)'''
+    def setAttmode (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setAttreq (self, *args, **kwargs)-> None :
-      '''setAttreq( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setAttreq(class PyDbDatabase {lvalue},bool)'''
+    def setAttreq (self: Database,val : bool)-> None :
+      '''                             '''
     ...
-    def setAunits (self, *args, **kwargs)-> None :
-      '''setAunits( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setAunits(class PyDbDatabase {lvalue},short)'''
+    def setAunits (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setAuprec (self, *args, **kwargs)-> None :
-      '''setAuprec( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setAuprec(class PyDbDatabase {lvalue},short)'''
+    def setAuprec (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setBlipmode (self, *args, **kwargs)-> None :
-      '''setBlipmode( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setBlipmode(class PyDbDatabase {lvalue},bool)'''
+    def setBlipmode (self: Database,val : bool)-> None :
+      '''                             '''
     ...
-    def setCDynDisplayMode (self, *args, **kwargs)-> None :
-      '''setCDynDisplayMode( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setCDynDisplayMode(class PyDbDatabase {lvalue},short)'''
+    def setCDynDisplayMode (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setCameraDisplay (self, *args, **kwargs)-> None :
-      '''setCameraDisplay( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setCameraDisplay(class PyDbDatabase {lvalue},bool)'''
+    def setCameraDisplay (self: Database,val : bool)-> None :
+      '''                             '''
     ...
-    def setCameraHeight (self, *args, **kwargs)-> None :
-      '''setCameraHeight( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setCameraHeight(class PyDbDatabase {lvalue},double)'''
+    def setCameraHeight (self: Database,val : float)-> None :
+      '''                             '''
     ...
     def setCannoscale (self, *args, **kwargs)-> None :
       '''setCannoscale( (Database)arg1, (AnnotationScale)arg2) -> None :
@@ -12763,11 +12535,8 @@ readDwgFile( (Database)arg1, (str)arg2, (int)arg3, (bool)arg4, (str)arg5) -> Non
     C++ signature :
         void setCannoscale(class PyDbDatabase {lvalue},class PyDbAnnotationScale {lvalue})'''
     ...
-    def setCePlotStyleName (self, *args, **kwargs)-> None :
-      '''setCePlotStyleName( (Database)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3) -> None :
-
-    C++ signature :
-        void setCePlotStyleName(class PyDbDatabase {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId)'''
+    def setCePlotStyleName (self: Database,val : PlotStyleNameType,id : ObjectId)-> None :
+      '''                             '''
     ...
     def setCecolor (self, *args, **kwargs)-> None :
       '''setCecolor( (Database)arg1, (Color)arg2) -> None :
@@ -12775,23 +12544,14 @@ readDwgFile( (Database)arg1, (str)arg2, (int)arg3, (bool)arg4, (str)arg5) -> Non
     C++ signature :
         void setCecolor(class PyDbDatabase {lvalue},class AcCmColor)'''
     ...
-    def setCeltscale (self, *args, **kwargs)-> None :
-      '''setCeltscale( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setCeltscale(class PyDbDatabase {lvalue},double)'''
+    def setCeltscale (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setCeltype (self, *args, **kwargs)-> None :
-      '''setCeltype( (Database)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setCeltype(class PyDbDatabase {lvalue},class PyDbObjectId)'''
+    def setCeltype (self: Database,val : ObjectId)-> None :
+      '''                             '''
     ...
-    def setCelweight (self, *args, **kwargs)-> None :
-      '''setCelweight( (Database)arg1, (LineWeight)arg2) -> None :
-
-    C++ signature :
-        void setCelweight(class PyDbDatabase {lvalue},enum AcDb::LineWeight)'''
+    def setCelweight (self: Database,val : LineWeight)-> None :
+      '''                             '''
     ...
     def setCetransparency (self, *args, **kwargs)-> None :
       '''setCetransparency( (Database)arg1, (Transparency)arg2) -> None :
@@ -12799,274 +12559,137 @@ readDwgFile( (Database)arg1, (str)arg2, (int)arg3, (bool)arg4, (str)arg5) -> Non
     C++ signature :
         void setCetransparency(class PyDbDatabase {lvalue},class AcCmTransparency)'''
     ...
-    def setChamfera (self, *args, **kwargs)-> None :
-      '''setChamfera( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setChamfera(class PyDbDatabase {lvalue},double)'''
+    def setChamfera (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setChamferb (self, *args, **kwargs)-> None :
-      '''setChamferb( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setChamferb(class PyDbDatabase {lvalue},double)'''
+    def setChamferb (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setChamferc (self, *args, **kwargs)-> None :
-      '''setChamferc( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setChamferc(class PyDbDatabase {lvalue},double)'''
+    def setChamferc (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setChamferd (self, *args, **kwargs)-> None :
-      '''setChamferd( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setChamferd(class PyDbDatabase {lvalue},double)'''
+    def setChamferd (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setClayer (self, *args, **kwargs)-> None :
-      '''setClayer( (Database)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setClayer(class PyDbDatabase {lvalue},class PyDbObjectId)'''
+    def setClayer (self: Database,val : ObjectId)-> None :
+      '''                             '''
     ...
-    def setCmaterial (self, *args, **kwargs)-> None :
-      '''setCmaterial( (Database)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setCmaterial(class PyDbDatabase {lvalue},class PyDbObjectId)'''
+    def setCmaterial (self: Database,val : ObjectId)-> None :
+      '''                             '''
     ...
-    def setCmljust (self, *args, **kwargs)-> None :
-      '''setCmljust( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setCmljust(class PyDbDatabase {lvalue},short)'''
+    def setCmljust (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setCmlscale (self, *args, **kwargs)-> None :
-      '''setCmlscale( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setCmlscale(class PyDbDatabase {lvalue},double)'''
+    def setCmlscale (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setCmlstyleID (self, *args, **kwargs)-> None :
-      '''setCmlstyleID( (Database)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setCmlstyleID(class PyDbDatabase {lvalue},class PyDbObjectId)'''
+    def setCmlstyleID (self: Database,val : ObjectId)-> None :
+      '''                             '''
     ...
-    def setCoords (self, *args, **kwargs)-> None :
-      '''setCoords( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setCoords(class PyDbDatabase {lvalue},short)'''
+    def setCoords (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setCshadow (self, *args, **kwargs)-> None :
-      '''setCshadow( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setCshadow(class PyDbDatabase {lvalue},unsigned char)'''
+    def setCshadow (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setDelUsedObj (self, *args, **kwargs)-> None :
-      '''setDelUsedObj( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setDelUsedObj(class PyDbDatabase {lvalue},short)'''
+    def setDelUsedObj (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setDgnframe (self, *args, **kwargs)-> None :
-      '''setDgnframe( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setDgnframe(class PyDbDatabase {lvalue},unsigned char)'''
+    def setDgnframe (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setDimAssoc (self, *args, **kwargs)-> None :
-      '''setDimAssoc( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setDimAssoc(class PyDbDatabase {lvalue},unsigned char)'''
+    def setDimAssoc (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setDimaso (self, *args, **kwargs)-> None :
-      '''setDimaso( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setDimaso(class PyDbDatabase {lvalue},bool)'''
+    def setDimaso (self: Database,val : bool)-> None :
+      '''                             '''
     ...
-    def setDimfit (self, *args, **kwargs)-> None :
-      '''setDimfit( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setDimfit(class PyDbDatabase {lvalue},int)'''
+    def setDimfit (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setDimsho (self, *args, **kwargs)-> None :
-      '''setDimsho( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setDimsho(class PyDbDatabase {lvalue},bool)'''
+    def setDimsho (self: Database,val : bool)-> None :
+      '''                             '''
     ...
-    def setDimstyle (self, *args, **kwargs)-> None :
-      '''setDimstyle( (Database)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setDimstyle(class PyDbDatabase {lvalue},class PyDbObjectId)'''
+    def setDimstyle (self: Database,val : ObjectId)-> None :
+      '''                             '''
     ...
-    def setDimstyleData (self, *args, **kwargs)-> None :
-      '''setDimstyleData( (Database)arg1, (DimStyleTableRecord)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbDatabase {lvalue},class PyDbDimStyleTableRecord {lvalue})
-
-setDimstyleData( (Database)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setDimstyleData(class PyDbDatabase {lvalue},class PyDbObjectId)'''
+    def setDimstyleData (self: Database,val : DimStyleTableRecord | ObjectId)-> None :
+      '''                             '''
     ...
-    def setDimunit (self, *args, **kwargs)-> None :
-      '''setDimunit( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setDimunit(class PyDbDatabase {lvalue},int)'''
+    def setDimunit (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setDispSilh (self, *args, **kwargs)-> None :
-      '''setDispSilh( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setDispSilh(class PyDbDatabase {lvalue},bool)'''
+    def setDispSilh (self: Database,val : bool)-> None :
+      '''                             '''
     ...
-    def setDragVisStyle (self, *args, **kwargs)-> None :
-      '''setDragVisStyle( (Database)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setDragVisStyle(class PyDbDatabase {lvalue},class PyDbObjectId)'''
+    def setDragVisStyle (self: Database,val : ObjectId)-> None :
+      '''                             '''
     ...
-    def setDragmode (self, *args, **kwargs)-> None :
-      '''setDragmode( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setDragmode(class PyDbDatabase {lvalue},short)'''
+    def setDragmode (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setDrawOrderCtl (self, *args, **kwargs)-> None :
-      '''setDrawOrderCtl( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setDrawOrderCtl(class PyDbDatabase {lvalue},unsigned char)'''
+    def setDrawOrderCtl (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setDwfframe (self, *args, **kwargs)-> None :
-      '''setDwfframe( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setDwfframe(class PyDbDatabase {lvalue},unsigned char)'''
+    def setDwfframe (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setElevation (self, *args, **kwargs)-> None :
-      '''setElevation( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setElevation(class PyDbDatabase {lvalue},double)'''
+    def setElevation (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setEndCaps (self, *args, **kwargs)-> None :
-      '''setEndCaps( (Database)arg1, (EndCaps)arg2) -> None :
-
-    C++ signature :
-        void setEndCaps(class PyDbDatabase {lvalue},enum AcDb::EndCaps)'''
+    def setEndCaps (self: Database,val : EndCaps)-> None :
+      '''                             '''
     ...
-    def setExtmax (self, *args, **kwargs)-> None :
-      '''setExtmax( (Database)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setExtmax(class PyDbDatabase {lvalue},class AcGePoint3d)'''
+    def setExtmax (self: Database,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setExtmin (self, *args, **kwargs)-> None :
-      '''setExtmin( (Database)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setExtmin(class PyDbDatabase {lvalue},class AcGePoint3d)'''
+    def setExtmin (self: Database,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setFacetres (self, *args, **kwargs)-> None :
-      '''setFacetres( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setFacetres(class PyDbDatabase {lvalue},double)'''
+    def setFacetres (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setFilletrad (self, *args, **kwargs)-> None :
-      '''setFilletrad( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setFilletrad(class PyDbDatabase {lvalue},double)'''
+    def setFilletrad (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setFillmode (self, *args, **kwargs)-> None :
-      '''setFillmode( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setFillmode(class PyDbDatabase {lvalue},bool)'''
+    def setFillmode (self: Database,val : bool)-> None :
+      '''                             '''
     ...
-    def setFingerprintGuid (self, *args, **kwargs)-> None :
-      '''setFingerprintGuid( (Database)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setFingerprintGuid(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setFingerprintGuid (self: Database,guid : str)-> None :
+      '''                             '''
     ...
-    def setFullSaveRequired (self, *args, **kwargs)-> None :
-      '''setFullSaveRequired( (Database)arg1) -> None :
-
-    C++ signature :
-        void setFullSaveRequired(class PyDbDatabase {lvalue})'''
+    def setFullSaveRequired (self: Database)-> None :
+      '''                             '''
     ...
-    def setGeoMarkerVisibility (self, *args, **kwargs)-> None :
-      '''setGeoMarkerVisibility( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setGeoMarkerVisibility(class PyDbDatabase {lvalue},bool)'''
+    def setGeoMarkerVisibility (self: Database,val : bool)-> None :
+      '''                             '''
     ...
-    def setHaloGap (self, *args, **kwargs)-> None :
-      '''setHaloGap( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setHaloGap(class PyDbDatabase {lvalue},unsigned char)'''
+    def setHaloGap (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setHandseed (self, *args, **kwargs)-> None :
-      '''setHandseed( (Database)arg1, (Handle)arg2) -> None :
-
-    C++ signature :
-        void setHandseed(class PyDbDatabase {lvalue},class PyDbHandle)'''
+    def setHandseed (self: Database,val : Handle)-> None :
+      '''                             '''
     ...
-    def setHideText (self, *args, **kwargs)-> None :
-      '''setHideText( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setHideText(class PyDbDatabase {lvalue},unsigned char)'''
+    def setHideText (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setHpInherit (self, *args, **kwargs)-> None :
-      '''setHpInherit( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setHpInherit(class PyDbDatabase {lvalue},bool)'''
+    def setHpInherit (self: Database,val : bool)-> None :
+      '''                             '''
     ...
-    def setHpOrigin (self, *args, **kwargs)-> None :
-      '''setHpOrigin( (Database)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void setHpOrigin(class PyDbDatabase {lvalue},class AcGePoint2d)'''
+    def setHpOrigin (self: Database,val : PyGe.Point2d)-> None :
+      '''                             '''
     ...
-    def setHyperlinkBase (self, *args, **kwargs)-> None :
-      '''setHyperlinkBase( (Database)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setHyperlinkBase(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setHyperlinkBase (self: Database,val : str)-> None :
+      '''                             '''
     ...
-    def setIndexctl (self, *args, **kwargs)-> None :
-      '''setIndexctl( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setIndexctl(class PyDbDatabase {lvalue},unsigned char)'''
+    def setIndexctl (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setInsbase (self, *args, **kwargs)-> None :
-      '''setInsbase( (Database)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setInsbase(class PyDbDatabase {lvalue},class AcGePoint3d)'''
+    def setInsbase (self: Database,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setInsunits (self, *args, **kwargs)-> None :
-      '''setInsunits( (Database)arg1, (UnitsValue)arg2) -> None :
-
-    C++ signature :
-        void setInsunits(class PyDbDatabase {lvalue},enum AcDb::UnitsValue)'''
+    def setInsunits (self: Database,val : UnitsValue)-> None :
+      '''                             '''
     ...
     def setInterfereColor (self, *args, **kwargs)-> None :
       '''setInterfereColor( (Database)arg1, (Color)arg2) -> None :
@@ -13074,359 +12697,182 @@ setDimstyleData( (Database)arg1, (ObjectId)arg2) -> None :
     C++ signature :
         void setInterfereColor(class PyDbDatabase {lvalue},class AcCmColor)'''
     ...
-    def setInterfereObjVisStyle (self, *args, **kwargs)-> None :
-      '''setInterfereObjVisStyle( (Database)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setInterfereObjVisStyle(class PyDbDatabase {lvalue},class PyDbObjectId)'''
+    def setInterfereObjVisStyle (self: Database,val : ObjectId)-> None :
+      '''                             '''
     ...
-    def setInterfereVpVisStyle (self, *args, **kwargs)-> None :
-      '''setInterfereVpVisStyle( (Database)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setInterfereVpVisStyle(class PyDbDatabase {lvalue},class PyDbObjectId)'''
+    def setInterfereVpVisStyle (self: Database,val : ObjectId)-> None :
+      '''                             '''
     ...
-    def setIntersectColor (self, *args, **kwargs)-> None :
-      '''setIntersectColor( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setIntersectColor(class PyDbDatabase {lvalue},unsigned short)'''
+    def setIntersectColor (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setIntersectDisplay (self, *args, **kwargs)-> None :
-      '''setIntersectDisplay( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setIntersectDisplay(class PyDbDatabase {lvalue},unsigned char)'''
+    def setIntersectDisplay (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setIsolines (self, *args, **kwargs)-> None :
-      '''setIsolines( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setIsolines(class PyDbDatabase {lvalue},short)'''
+    def setIsolines (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setJoinStyle (self, *args, **kwargs)-> None :
-      '''setJoinStyle( (Database)arg1, (JoinStyle)arg2) -> None :
-
-    C++ signature :
-        void setJoinStyle(class PyDbDatabase {lvalue},enum AcDb::JoinStyle)'''
+    def setJoinStyle (self: Database,val : JoinStyle)-> None :
+      '''                             '''
     ...
-    def setLatitude (self, *args, **kwargs)-> None :
-      '''setLatitude( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setLatitude(class PyDbDatabase {lvalue},double)'''
+    def setLatitude (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setLayerEval (self, *args, **kwargs)-> None :
-      '''setLayerEval( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setLayerEval(class PyDbDatabase {lvalue},unsigned char)'''
+    def setLayerEval (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setLayerNotify (self, *args, **kwargs)-> None :
-      '''setLayerNotify( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setLayerNotify(class PyDbDatabase {lvalue},short)'''
+    def setLayerNotify (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setLensLength (self, *args, **kwargs)-> None :
-      '''setLensLength( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setLensLength(class PyDbDatabase {lvalue},double)'''
+    def setLensLength (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setLightGlyphDisplay (self, *args, **kwargs)-> None :
-      '''setLightGlyphDisplay( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setLightGlyphDisplay(class PyDbDatabase {lvalue},unsigned char)'''
+    def setLightGlyphDisplay (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setLightingUnits (self, *args, **kwargs)-> None :
-      '''setLightingUnits( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setLightingUnits(class PyDbDatabase {lvalue},unsigned char)'''
+    def setLightingUnits (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setLightsInBlocks (self, *args, **kwargs)-> None :
-      '''setLightsInBlocks( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setLightsInBlocks(class PyDbDatabase {lvalue},bool)'''
+    def setLightsInBlocks (self: Database,val : bool)-> None :
+      '''                             '''
     ...
-    def setLimcheck (self, *args, **kwargs)-> None :
-      '''setLimcheck( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setLimcheck(class PyDbDatabase {lvalue},bool)'''
+    def setLimcheck (self: Database,val : bool)-> None :
+      '''                             '''
     ...
-    def setLimmax (self, *args, **kwargs)-> None :
-      '''setLimmax( (Database)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void setLimmax(class PyDbDatabase {lvalue},class AcGePoint2d)'''
+    def setLimmax (self: Database,val : PyGe.Point2d)-> None :
+      '''                             '''
     ...
-    def setLimmin (self, *args, **kwargs)-> None :
-      '''setLimmin( (Database)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void setLimmin(class PyDbDatabase {lvalue},class AcGePoint2d)'''
+    def setLimmin (self: Database,val : PyGe.Point2d)-> None :
+      '''                             '''
     ...
-    def setLineWeightDisplay (self, *args, **kwargs)-> None :
-      '''setLineWeightDisplay( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setLineWeightDisplay(class PyDbDatabase {lvalue},bool)'''
+    def setLineWeightDisplay (self: Database,val : bool)-> None :
+      '''                             '''
     ...
-    def setLoftAng1 (self, *args, **kwargs)-> None :
-      '''setLoftAng1( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setLoftAng1(class PyDbDatabase {lvalue},double)'''
+    def setLoftAng1 (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setLoftAng2 (self, *args, **kwargs)-> None :
-      '''setLoftAng2( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setLoftAng2(class PyDbDatabase {lvalue},double)'''
+    def setLoftAng2 (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setLoftMag1 (self, *args, **kwargs)-> None :
-      '''setLoftMag1( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setLoftMag1(class PyDbDatabase {lvalue},double)'''
+    def setLoftMag1 (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setLoftMag2 (self, *args, **kwargs)-> None :
-      '''setLoftMag2( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setLoftMag2(class PyDbDatabase {lvalue},double)'''
+    def setLoftMag2 (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setLoftNormals (self, *args, **kwargs)-> None :
-      '''setLoftNormals( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setLoftNormals(class PyDbDatabase {lvalue},unsigned char)'''
+    def setLoftNormals (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setLoftParam (self, *args, **kwargs)-> None :
-      '''setLoftParam( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setLoftParam(class PyDbDatabase {lvalue},unsigned short)'''
+    def setLoftParam (self: Database,flags : int)-> None :
+      '''                             '''
     ...
-    def setLongitude (self, *args, **kwargs)-> None :
-      '''setLongitude( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setLongitude(class PyDbDatabase {lvalue},double)'''
+    def setLongitude (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setLtscale (self, *args, **kwargs)-> None :
-      '''setLtscale( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setLtscale(class PyDbDatabase {lvalue},double)'''
+    def setLtscale (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setLunits (self, *args, **kwargs)-> None :
-      '''setLunits( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setLunits(class PyDbDatabase {lvalue},short)'''
+    def setLunits (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setLuprec (self, *args, **kwargs)-> None :
-      '''setLuprec( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setLuprec(class PyDbDatabase {lvalue},short)'''
+    def setLuprec (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setMLeaderscale (self, *args, **kwargs)-> None :
-      '''setMLeaderscale( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setMLeaderscale(class PyDbDatabase {lvalue},double)'''
+    def setMLeaderscale (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setMLeaderstyle (self, *args, **kwargs)-> None :
-      '''setMLeaderstyle( (Database)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setMLeaderstyle(class PyDbDatabase {lvalue},class PyDbObjectId)'''
+    def setMLeaderstyle (self: Database,val : ObjectId)-> None :
+      '''                             '''
     ...
-    def setMaxactvp (self, *args, **kwargs)-> None :
-      '''setMaxactvp( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setMaxactvp(class PyDbDatabase {lvalue},short)'''
+    def setMaxactvp (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setMeasurement (self, *args, **kwargs)-> None :
-      '''setMeasurement( (Database)arg1, (MeasurementValue)arg2) -> None :
-
-    C++ signature :
-        void setMeasurement(class PyDbDatabase {lvalue},enum AcDb::MeasurementValue)'''
+    def setMeasurement (self: Database,val : MeasurementValue)-> None :
+      '''                             '''
     ...
-    def setMirrtext (self, *args, **kwargs)-> None :
-      '''setMirrtext( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setMirrtext(class PyDbDatabase {lvalue},bool)'''
+    def setMirrtext (self: Database,val : bool)-> None :
+      '''                             '''
     ...
-    def setMsOleScale (self, *args, **kwargs)-> None :
-      '''setMsOleScale( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setMsOleScale(class PyDbDatabase {lvalue},double)'''
+    def setMsOleScale (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setMsltscale (self, *args, **kwargs)-> None :
-      '''setMsltscale( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setMsltscale(class PyDbDatabase {lvalue},bool)'''
+    def setMsltscale (self: Database,val : bool)-> None :
+      '''                             '''
     ...
-    def setNorthDirection (self, *args, **kwargs)-> None :
-      '''setNorthDirection( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setNorthDirection(class PyDbDatabase {lvalue},double)'''
+    def setNorthDirection (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setObscuredColor (self, *args, **kwargs)-> None :
-      '''setObscuredColor( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setObscuredColor(class PyDbDatabase {lvalue},unsigned short)'''
+    def setObscuredColor (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setObscuredLineType (self, *args, **kwargs)-> None :
-      '''setObscuredLineType( (Database)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setObscuredLineType(class PyDbDatabase {lvalue},unsigned char)'''
+    def setObscuredLineType (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setOleStartUp (self, *args, **kwargs)-> None :
-      '''setOleStartUp( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setOleStartUp(class PyDbDatabase {lvalue},bool)'''
+    def setOleStartUp (self: Database,val : bool)-> None :
+      '''                             '''
     ...
-    def setOrthomode (self, *args, **kwargs)-> None :
-      '''setOrthomode( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setOrthomode(class PyDbDatabase {lvalue},bool)'''
+    def setOrthomode (self: Database,val : bool)-> None :
+      '''                             '''
     ...
-    def setPdfframe (self, *args, **kwargs)-> None :
-      '''setPdfframe( (Database)arg1, (MlineJustification)arg2) -> None :
-
-    C++ signature :
-        void setPdfframe(class PyDbDatabase {lvalue},signed char)'''
+    def setPdfframe (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setPdmode (self, *args, **kwargs)-> None :
-      '''setPdmode( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setPdmode(class PyDbDatabase {lvalue},short)'''
+    def setPdmode (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setPdsize (self, *args, **kwargs)-> None :
-      '''setPdsize( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setPdsize(class PyDbDatabase {lvalue},double)'''
+    def setPdsize (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setPelevation (self, *args, **kwargs)-> None :
-      '''setPelevation( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setPelevation(class PyDbDatabase {lvalue},double)'''
+    def setPelevation (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setPextmax (self, *args, **kwargs)-> None :
-      '''setPextmax( (Database)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setPextmax(class PyDbDatabase {lvalue},class AcGePoint3d)'''
+    def setPextmax (self: Database,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setPextmin (self, *args, **kwargs)-> None :
-      '''setPextmin( (Database)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setPextmin(class PyDbDatabase {lvalue},class AcGePoint3d)'''
+    def setPextmin (self: Database,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setPickstyle (self, *args, **kwargs)-> None :
-      '''setPickstyle( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setPickstyle(class PyDbDatabase {lvalue},short)'''
+    def setPickstyle (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setPinsbase (self, *args, **kwargs)-> None :
-      '''setPinsbase( (Database)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setPinsbase(class PyDbDatabase {lvalue},class AcGePoint3d)'''
+    def setPinsbase (self: Database,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
-    def setPlimcheck (self, *args, **kwargs)-> None :
-      '''setPlimcheck( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPlimcheck(class PyDbDatabase {lvalue},bool)'''
+    def setPlimcheck (self: Database,val : bool)-> None :
+      '''                             '''
     ...
-    def setPlimmax (self, *args, **kwargs)-> None :
-      '''setPlimmax( (Database)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void setPlimmax(class PyDbDatabase {lvalue},class AcGePoint2d)'''
+    def setPlimmax (self: Database,val : PyGe.Point2d)-> None :
+      '''                             '''
     ...
-    def setPlimmin (self, *args, **kwargs)-> None :
-      '''setPlimmin( (Database)arg1, (Point2d)arg2) -> None :
-
-    C++ signature :
-        void setPlimmin(class PyDbDatabase {lvalue},class AcGePoint2d)'''
+    def setPlimmin (self: Database,val : PyGe.Point2d)-> None :
+      '''                             '''
     ...
-    def setPlineEllipse (self, *args, **kwargs)-> None :
-      '''setPlineEllipse( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPlineEllipse(class PyDbDatabase {lvalue},bool)'''
+    def setPlineEllipse (self: Database,val : bool)-> None :
+      '''                             '''
     ...
-    def setPlinegen (self, *args, **kwargs)-> None :
-      '''setPlinegen( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPlinegen(class PyDbDatabase {lvalue},bool)'''
+    def setPlinegen (self: Database,val : bool)-> None :
+      '''                             '''
     ...
-    def setPlinewid (self, *args, **kwargs)-> None :
-      '''setPlinewid( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setPlinewid(class PyDbDatabase {lvalue},double)'''
+    def setPlinewid (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setPreviewType (self, *args, **kwargs)-> None :
-      '''setPreviewType( (Database)arg1, (DxfCode)arg2) -> None :
-
-    C++ signature :
-        void setPreviewType(class PyDbDatabase {lvalue},short)'''
+    def setPreviewType (self: Database,val : int)-> None :
+      '''                             '''
     ...
-    def setProjectName (self, *args, **kwargs)-> None :
-      '''setProjectName( (Database)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setProjectName(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setProjectName (self: Database,val : str)-> None :
+      '''                             '''
     ...
-    def setPsltscale (self, *args, **kwargs)-> None :
-      '''setPsltscale( (Database)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPsltscale(class PyDbDatabase {lvalue},bool)'''
+    def setPsltscale (self: Database,val : bool)-> None :
+      '''                             '''
     ...
-    def setPsolHeight (self, *args, **kwargs)-> None :
-      '''setPsolHeight( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setPsolHeight(class PyDbDatabase {lvalue},double)'''
+    def setPsolHeight (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setPsolWidth (self, *args, **kwargs)-> None :
-      '''setPsolWidth( (Database)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setPsolWidth(class PyDbDatabase {lvalue},double)'''
+    def setPsolWidth (self: Database,val : float)-> None :
+      '''                             '''
     ...
-    def setPucs (self, *args, **kwargs)-> None :
-      '''setPucs( (Database)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
-
-    C++ signature :
-        void setPucs(class PyDbDatabase {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d)'''
+    def setPucs (self: Database,ucsOrigin : PyGe.Point3d,ucsXDir : PyGe.Point3d,ucsYDir : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setPucsBase (self, *args, **kwargs)-> None :
       '''setPucsBase( (Database)arg1, (ObjectId)arg2) -> None :

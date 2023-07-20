@@ -36,7 +36,7 @@ public:
     Adesk::Int16        cDynDisplayMode() const;
     double              celtscale() const;
     PyDbObjectId        celtype() const;
-    AcDb::LineWeight    celweight() const; 
+    AcDb::LineWeight    celweight() const;
     double              chamfera() const;
     double              chamferb() const;
     double              chamferc() const;
@@ -274,7 +274,7 @@ public:
     void	            setFingerprintGuid(const std::string& newGuid);
     void				setFullSaveRequired();
     void	            readDwgFile(const char* fileName);
-    void	            readDwgFile2(const char* fileName, int mode, bool bAllowCPConversion ,const std::string& password);
+    void	            readDwgFile2(const char* fileName, int mode, bool bAllowCPConversion, const std::string& password);
     std::string			getFilename();
     PyDbObjectId		currentSpaceId() const;
     PyDbObjectId		blockTableId() const;
