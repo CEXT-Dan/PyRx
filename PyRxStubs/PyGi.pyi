@@ -1372,83 +1372,47 @@ class Drawable:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def bounds (self, *args, **kwargs)-> bool :
-      '''bounds( (Drawable)arg1, (Extents)arg2) -> bool :
-
-    C++ signature :
-        bool bounds(class PyGiDrawable {lvalue},class AcDbExtents {lvalue})'''
+    def bounds (self: Drawable,ext: PyDb.Extents)-> bool :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> RxClass :
+      '''                             '''
     ...
-    def drawableType (self, *args, **kwargs)-> GiDrawableType :
-      '''drawableType( (Drawable)arg1) -> GiDrawableType :
-
-    C++ signature :
-        enum AcGiDrawable::DrawableType drawableType(class PyGiDrawable {lvalue})'''
+    def drawableType (self: Drawable)-> GiDrawableType :
+      '''                             '''
     ...
-    def id (self, *args, **kwargs)-> ObjectId :
-      '''id( (Drawable)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId id(class PyGiDrawable {lvalue})'''
+    def id (self: Drawable)-> ObjectId :
+      '''                             '''
     ...
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (Drawable)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyGiDrawable {lvalue})'''
+    def isA (self: Drawable)-> RxClass :
+      '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
-    def isPersistent (self, *args, **kwargs)-> bool :
-      '''isPersistent( (Drawable)arg1) -> bool :
-
-    C++ signature :
-        bool isPersistent(class PyGiDrawable {lvalue})'''
+    def isPersistent (self: Drawable)-> bool :
+      '''                             '''
     ...
-    def rolloverHit (self, *args, **kwargs)-> bool :
-      '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
-
-    C++ signature :
-        bool rolloverHit(class PyGiDrawable {lvalue},unsigned __int64,unsigned __int64,bool)'''
+    def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
+      '''                             '''
     ...
-    def setAttributes (self, *args, **kwargs)-> int :
-      '''setAttributes( (Drawable)arg1, (DrawableTraits)arg2) -> int :
-
-    C++ signature :
-        unsigned int setAttributes(class PyGiDrawable {lvalue},class PyGiDrawableTraits {lvalue})'''
+    def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
+      '''                             '''
     ...
-    def viewportDraw (self, *args, **kwargs)-> None :
-      '''viewportDraw( (Drawable)arg1, (ViewportDraw)arg2) -> None :
-
-    C++ signature :
-        void viewportDraw(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None :
+      '''                             '''
     ...
-    def viewportDrawLogicalFlags (self, *args, **kwargs)-> int :
-      '''viewportDrawLogicalFlags( (Drawable)arg1, (ViewportDraw)arg2) -> int :
-
-    C++ signature :
-        unsigned int viewportDrawLogicalFlags(class PyGiDrawable {lvalue},class PyGiViewportDraw {lvalue})'''
+    def viewportDrawLogicalFlags (self: Drawable,vpdraw: PyGi.ViewportDraw)-> int :
+      '''                             '''
     ...
-    def worldDraw (self, *args, **kwargs)-> bool :
-      '''worldDraw( (Drawable)arg1, (WorldDraw)arg2) -> bool :
-
-    C++ signature :
-        bool worldDraw(class PyGiDrawable {lvalue},class PyGiWorldDraw {lvalue})'''
+    def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
+      '''                             '''
     ...
 
 class DrawableOverrule:
