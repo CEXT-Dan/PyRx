@@ -205,29 +205,20 @@ This class cannot be instantiated from Python'''
     C++ signature :
         bool hasOverrule(class PyRxObject {lvalue},class PyRxClass {lvalue})'''
     ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (RxObject)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isOverruling (self, *args, **kwargs)-> bool :
       '''isOverruling() -> bool :
 
     C++ signature :
         bool isOverruling()'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def removeOverrule (self, *args, **kwargs)-> None :
       '''removeOverrule( (RxClass)arg1, (Overrule)arg2) -> None :
@@ -247,59 +238,32 @@ class RxClass:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def appName (self, *args, **kwargs)-> str :
-      '''appName( (RxClass)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > appName(class PyRxClass {lvalue})'''
+    def appName (self: RxClass)-> str :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> RxClass :
+      '''                             '''
     ...
-    def dxfName (self, *args, **kwargs)-> str :
-      '''dxfName( (RxClass)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > dxfName(class PyRxClass {lvalue})'''
+    def dxfName (self: RxClass)-> str :
+      '''                             '''
     ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (RxObject)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
     ...
-    def isDerivedFrom (self, *args, **kwargs)-> bool :
-      '''isDerivedFrom( (RxClass)arg1, (RxClass)arg2) -> bool :
-
-    C++ signature :
-        bool isDerivedFrom(class PyRxClass {lvalue},class PyRxClass)'''
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isDerivedFrom (self: RxClass,other : RxClass)-> bool :
+      '''                             '''
     ...
-    def name (self, *args, **kwargs)-> str :
-      '''name( (RxClass)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name(class PyRxClass {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
+    def name (self: RxClass)-> str :
+      '''                             '''
     ...
 
 class RxObject:
@@ -307,29 +271,17 @@ class RxObject:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (RxObject)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
     ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
 
 class __loader__:

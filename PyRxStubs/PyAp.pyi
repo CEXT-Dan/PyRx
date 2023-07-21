@@ -992,17 +992,17 @@ activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> None :
     C++ signature :
         void enableDocumentActivation(class PyApDocManager {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def inputPending (self, *args, **kwargs)-> int :
       '''inputPending( (DocManager)arg1, (Document)arg2) -> int :
 
     C++ signature :
         int inputPending(class PyApDocManager {lvalue},class PyApDocument {lvalue})'''
     ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (RxObject)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
     ...
     def isApplicationContext (self, *args, **kwargs)-> bool :
       '''isApplicationContext( (DocManager)arg1) -> bool :
@@ -1016,11 +1016,8 @@ activateDocument( (DocManager)arg1, (Document)arg2, (bool)arg3) -> None :
     C++ signature :
         bool isDocumentActivationEnabled(class PyApDocManager {lvalue})'''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def lockDocument (self, *args, **kwargs)-> None :
       '''lockDocument( (DocManager)arg1, (Document)arg2) -> None :
@@ -1073,12 +1070,6 @@ lockDocument( (DocManager)arg1, (Document)arg2, (DocLockMode)arg3, (str)arg4, (s
 
     C++ signature :
         void pushAcadResourceHandle(class PyApDocManager {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def sendModelessInterrupt (self, *args, **kwargs)-> None :
       '''sendModelessInterrupt( (DocManager)arg1, (Document)arg2) -> None :
@@ -1209,23 +1200,20 @@ This class cannot be instantiated from Python'''
     def getItemOfLispList (self: Document,index : int)-> tuple :
       '''                             '''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def inputPointManager (self: Document)-> InputPointManager :
       '''                             '''
     ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (RxObject)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
     ...
     def isCommandInputInactive (self: Document)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isQuiescent (self: Document)-> bool :
       '''                             '''
@@ -1241,12 +1229,6 @@ This class cannot be instantiated from Python'''
     ...
     def pushDbmod (self: Document)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def setDocTitle (self: Document,title : str)-> None :
       '''                             '''
@@ -1386,17 +1368,14 @@ getActiveLayoutName( (LayoutManager)arg1, (bool)arg2, (Database)arg3) -> str :
     C++ signature :
         class PyDbObjectId getNonRectVPIdFromClipId(class PyDbLayoutManager {lvalue},class PyDbObjectId {lvalue})'''
     ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (RxObject)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isVpnumClipped (self, *args, **kwargs)-> bool :
       '''isVpnumClipped( (LayoutManager)arg1, (int)arg2) -> bool :
@@ -1425,12 +1404,6 @@ layoutExists( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> bool :
     ...
     def pointInViewports (self: LayoutManager,val : PyGe.Point3d)-> list :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def renameLayout (self, *args, **kwargs)-> None :
       '''renameLayout( (LayoutManager)arg1, (str)arg2, (str)arg3) -> None :
@@ -1894,17 +1867,14 @@ class TransactionManager:
     def getObject (self: TransactionManager,id: ObjectId,mode: OpenMode=OpenMode.kForRead,openErasedObject: bool=False)-> DbObject :
       '''                             '''
     ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (RxObject)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def numActiveTransactions (self: TransactionManager)-> int :
       '''                             '''
@@ -1914,12 +1884,6 @@ class TransactionManager:
     ...
     def queueForGraphicsFlush (self: TransactionManager)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def startTransaction (self: TransactionManager)-> Transaction :
       '''                             '''

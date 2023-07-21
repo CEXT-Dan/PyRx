@@ -1178,11 +1178,11 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (RxObject)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
     ...
     def isDragging (self, *args, **kwargs)-> bool :
       '''isDragging( (CommonDraw)arg1) -> bool :
@@ -1190,17 +1190,8 @@ This class cannot be instantiated from Python'''
     C++ signature :
         bool isDragging(class PyGiCommonDraw {lvalue})'''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def regenAbort (self, *args, **kwargs)-> bool :
       '''regenAbort( (CommonDraw)arg1) -> bool :
@@ -1411,29 +1402,23 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
     C++ signature :
         class PyRxClass isA(class PyGiDrawable {lvalue})'''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
 
     C++ signature :
         bool isPersistent(class PyGiDrawable {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def rolloverHit (self, *args, **kwargs)-> bool :
       '''rolloverHit( (Drawable)arg1, (int)arg2, (int)arg3, (bool)arg4) -> bool :
@@ -1521,11 +1506,11 @@ class DrawableOverrule:
     C++ signature :
         bool hasOverrule(class PyRxObject {lvalue},class PyRxClass {lvalue})'''
     ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (RxObject)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
     ...
     def isApplicable (self, *args, **kwargs)-> bool :
       '''isApplicable( (DrawableOverrule)arg1, (RxObject)arg2) -> bool :
@@ -1533,23 +1518,14 @@ class DrawableOverrule:
     C++ signature :
         bool isApplicable(class PyGiDrawableOverrule {lvalue},class PyRxObject {lvalue})'''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isOverruling (self, *args, **kwargs)-> bool :
       '''isOverruling() -> bool :
 
     C++ signature :
         bool isOverruling()'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def removeOverrule (self, *args, **kwargs)-> None :
       '''removeOverrule( (RxClass)arg1, (Overrule)arg2) -> None :
@@ -1629,17 +1605,14 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class PyDbObjectId getPlotStyleNameId(class PyGiSubEntityTraits {lvalue})'''
     ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (RxObject)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def layerId (self, *args, **kwargs)-> ObjectId :
       '''layerId( (SubEntityTraits)arg1) -> ObjectId :
@@ -1670,12 +1643,6 @@ This class cannot be instantiated from Python'''
 
     C++ signature :
         class PyDbObjectId materialId(class PyGiSubEntityTraits {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def sectionable (self, *args, **kwargs)-> bool :
       '''sectionable( (SubEntityTraits)arg1) -> bool :
@@ -1916,17 +1883,14 @@ ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (floa
     C++ signature :
         class AcGeMatrix3d getWorldToModelTransform(class PyGiGeometry {lvalue})'''
     ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (RxObject)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def pline (self, *args, **kwargs)-> bool :
       '''pline( (Geometry)arg1, (Polyline)arg2) -> bool :
@@ -2006,12 +1970,6 @@ pushScaleTransform( (Geometry)arg1, (AcGiScaleTransformBehavior)arg2, (Point2d)a
 
     C++ signature :
         bool ray(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d)'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def rowOfDots (self, *args, **kwargs)-> bool :
       '''rowOfDots( (Geometry)arg1, (int)arg2, (Point3d)arg3, (Vector3d)arg4) -> bool :
@@ -2657,17 +2615,14 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class PyDbObjectId getPlotStyleNameId(class PyGiSubEntityTraits {lvalue})'''
     ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (RxObject)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def layerId (self, *args, **kwargs)-> ObjectId :
       '''layerId( (SubEntityTraits)arg1) -> ObjectId :
@@ -2698,12 +2653,6 @@ This class cannot be instantiated from Python'''
 
     C++ signature :
         class PyDbObjectId materialId(class PyGiSubEntityTraits {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def sectionable (self, *args, **kwargs)-> bool :
       '''sectionable( (SubEntityTraits)arg1) -> bool :
@@ -3070,11 +3019,11 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class PyGiViewportGeometry geometry(class PyGiViewportDraw {lvalue})'''
     ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (RxObject)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
     ...
     def isDragging (self, *args, **kwargs)-> bool :
       '''isDragging( (CommonDraw)arg1) -> bool :
@@ -3082,17 +3031,8 @@ This class cannot be instantiated from Python'''
     C++ signature :
         bool isDragging(class PyGiCommonDraw {lvalue})'''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def regenAbort (self, *args, **kwargs)-> bool :
       '''regenAbort( (CommonDraw)arg1) -> bool :
@@ -3197,17 +3137,14 @@ ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (floa
     C++ signature :
         class AcGeMatrix3d getWorldToModelTransform(class PyGiGeometry {lvalue})'''
     ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (RxObject)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def pline (self, *args, **kwargs)-> bool :
       '''pline( (Geometry)arg1, (Polyline)arg2) -> bool :
@@ -3288,12 +3225,6 @@ pushScaleTransform( (Geometry)arg1, (AcGiScaleTransformBehavior)arg2, (Point2d)a
     C++ signature :
         bool ray(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d)'''
     ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
-    ...
     def rowOfDots (self, *args, **kwargs)-> bool :
       '''rowOfDots( (Geometry)arg1, (int)arg2, (Point3d)arg3, (Vector3d)arg4) -> bool :
 
@@ -3342,11 +3273,11 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class PyGiWorldGeometry geometry(class PyGiWorldDraw {lvalue})'''
     ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (RxObject)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
     ...
     def isDragging (self, *args, **kwargs)-> bool :
       '''isDragging( (CommonDraw)arg1) -> bool :
@@ -3354,17 +3285,8 @@ This class cannot be instantiated from Python'''
     C++ signature :
         bool isDragging(class PyGiCommonDraw {lvalue})'''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def regenAbort (self, *args, **kwargs)-> bool :
       '''regenAbort( (CommonDraw)arg1) -> bool :
@@ -3469,17 +3391,14 @@ ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (floa
     C++ signature :
         class AcGeMatrix3d getWorldToModelTransform(class PyGiGeometry {lvalue})'''
     ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (RxObject)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def pline (self, *args, **kwargs)-> bool :
       '''pline( (Geometry)arg1, (Polyline)arg2) -> bool :
@@ -3559,12 +3478,6 @@ pushScaleTransform( (Geometry)arg1, (AcGiScaleTransformBehavior)arg2, (Point2d)a
 
     C++ signature :
         bool ray(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d)'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def rowOfDots (self, *args, **kwargs)-> bool :
       '''rowOfDots( (Geometry)arg1, (int)arg2, (Point3d)arg3, (Vector3d)arg4) -> bool :

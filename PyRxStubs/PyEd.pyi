@@ -1240,6 +1240,12 @@ class Editor:
     C++ signature :
         class boost::python::tuple getAngle(class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def getCorner (self, *args, **kwargs)-> tuple :
+      '''getCorner( (Point3d)arg1, (str)arg2) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getCorner(class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
     def getCurrentUCS (self, *args, **kwargs)-> Matrix3d :
       '''getCurrentUCS() -> Matrix3d :
 

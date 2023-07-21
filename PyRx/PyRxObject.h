@@ -73,7 +73,7 @@ public:
     PyRxClass isA() const;
     void resetImp(AcRxObject* ptr, bool autoDelete, bool isDbObject);
     bool isNullObj();
-    int refCount();
+    int implRefCount();
 
     static PyRxClass desc();
     static std::string className();

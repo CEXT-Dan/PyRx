@@ -283,6 +283,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -319,11 +322,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -360,12 +360,6 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
 
     C++ signature :
         class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -638,6 +632,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -686,11 +683,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -757,12 +751,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         bool perspectiveEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -1411,6 +1399,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def inspection (self, *args, **kwargs)-> bool :
       '''inspection( (Dimension)arg1) -> bool :
 
@@ -1492,11 +1483,8 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -1619,12 +1607,6 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -2423,29 +2405,20 @@ __init__( (object)arg1) -> None :
     C++ signature :
         double getScale(class PyDbAnnotationScale {lvalue})'''
     ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (RxObject)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def matchScaleId (self, *args, **kwargs)-> bool :
       '''matchScaleId( (AnnotationScale)arg1, (int)arg2) -> bool :
 
     C++ signature :
         bool matchScaleId(class PyDbAnnotationScale {lvalue},__int64)'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def setDrawingUnits (self, *args, **kwargs)-> None :
       '''setDrawingUnits( (AnnotationScale)arg1, (float)arg2) -> None :
@@ -2746,6 +2719,9 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -2788,11 +2764,8 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPeriodic (self: Curve)-> bool :
       '''                             '''
@@ -2883,12 +2856,6 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -3474,6 +3441,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def inspection (self, *args, **kwargs)-> bool :
       '''inspection( (Dimension)arg1) -> bool :
 
@@ -3555,11 +3525,8 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPartial (self, *args, **kwargs)-> bool :
       '''isPartial( (ArcDimension)arg1) -> bool :
@@ -3682,12 +3649,6 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -4550,6 +4511,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -4625,11 +4589,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -4759,12 +4720,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -5304,6 +5259,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -5379,11 +5337,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -5513,12 +5468,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -5964,6 +5913,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -6003,11 +5955,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -6077,12 +6026,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -6361,6 +6304,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -6400,11 +6346,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -6474,12 +6417,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -6814,6 +6751,9 @@ geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -6853,11 +6793,8 @@ geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -6951,12 +6888,6 @@ geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -7375,6 +7306,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -7411,11 +7345,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -7452,12 +7383,6 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
 
     C++ signature :
         class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -7709,6 +7634,9 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -7775,11 +7703,8 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -7864,12 +7789,6 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
 
     C++ signature :
         int postProcessAnnotativeBTR(class PyDbBlockTableRecord {lvalue},bool,bool)'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -8164,6 +8083,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -8203,11 +8125,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -8277,12 +8196,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -10090,6 +10003,9 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -10132,11 +10048,8 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPeriodic (self: Curve)-> bool :
       '''                             '''
@@ -10221,12 +10134,6 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -11510,6 +11417,9 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -11552,11 +11462,8 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPeriodic (self: Curve)-> bool :
       '''                             '''
@@ -11629,12 +11536,6 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -12056,6 +11957,9 @@ class Database:
     def hpOrigin (self: Database)-> Point2d :
       '''                             '''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def insert (self, *args, **kwargs)-> None :
       '''insert( (Database)arg1, (ObjectId)arg2, (str)arg3, (Database)arg4, (bool)arg5) -> None :
 
@@ -12084,11 +11988,8 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def intersectDisplay (self: Database)-> int :
       '''                             '''
     ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (RxObject)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
     ...
     def isAppRegistered (self: Database,pszAppName : str)-> bool :
       '''                             '''
@@ -12099,11 +12000,8 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def isEMR (self: Database)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isObjectNonPersistent (id : ObjectId)-> bool :
       '''                             '''
@@ -12377,12 +12275,6 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     ...
     def reclaimMemoryFromErasedObjects (self: Database,ids : list[ObjectId])-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def regAppTableId (self: Database)-> ObjectId :
       '''                             '''
@@ -13273,6 +13165,9 @@ class DbObject:
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -13309,11 +13204,8 @@ class DbObject:
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -13344,12 +13236,6 @@ class DbObject:
     ...
     def ownerId (self: DbObject)-> ObjectId :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -13784,6 +13670,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def inspection (self, *args, **kwargs)-> bool :
       '''inspection( (Dimension)arg1) -> bool :
 
@@ -13865,11 +13754,8 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -13980,12 +13866,6 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -14716,6 +14596,9 @@ has( (Dictionary)arg1, (ObjectId)arg2) -> bool :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -14752,11 +14635,8 @@ has( (Dictionary)arg1, (ObjectId)arg2) -> bool :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -14799,12 +14679,6 @@ has( (Dictionary)arg1, (ObjectId)arg2) -> bool :
     ...
     def ownerId (self: DbObject)-> ObjectId :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -15166,6 +15040,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -15202,11 +15079,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -15243,12 +15117,6 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
 
     C++ signature :
         class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -15447,6 +15315,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -15489,11 +15360,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -15536,12 +15404,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def ownerId (self: DbObject)-> ObjectId :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -15933,6 +15795,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def inspection (self, *args, **kwargs)-> bool :
       '''inspection( (Dimension)arg1) -> bool :
 
@@ -16014,11 +15879,8 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -16123,12 +15985,6 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -18382,6 +18238,9 @@ class Entity:
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -18421,11 +18280,8 @@ class Entity:
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -18495,12 +18351,6 @@ class Entity:
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -20677,23 +20527,14 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
     C++ signature :
         enum AcDb::DwgDataType getType(class PyDbEvalVariant {lvalue})'''
     ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (RxObject)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
     ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def setDouble (self, *args, **kwargs)-> None :
       '''setDouble( (EvalVariant)arg1, (DxfCode)arg2, (float)arg3) -> None :
@@ -21025,6 +20866,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -21064,11 +20908,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -21138,12 +20979,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -21458,6 +21293,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -21503,11 +21341,8 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -21589,12 +21424,6 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -21905,6 +21734,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -21950,11 +21782,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -22036,12 +21865,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -22407,6 +22230,9 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -22446,11 +22272,8 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -22532,12 +22355,6 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -22947,6 +22764,9 @@ evaluate( (Field)arg1, (FieldEvalContext)arg2, (Database)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -22983,11 +22803,8 @@ evaluate( (Field)arg1, (FieldEvalContext)arg2, (Database)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -23030,12 +22847,6 @@ evaluate( (Field)arg1, (FieldEvalContext)arg2, (Database)arg3) -> None :
 
     C++ signature :
         void postInDatabase(class PyDbField {lvalue},class PyDbDatabase {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -24827,6 +24638,9 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def insertLoopAt (self, *args, **kwargs)-> None :
       '''insertLoopAt( (Hatch)arg1, (int)arg2, (int)arg3, (list)arg4) -> None :
 
@@ -24884,11 +24698,8 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -25036,12 +24847,6 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -26307,6 +26112,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -26346,11 +26154,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -26420,12 +26225,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -27254,6 +27053,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -27290,11 +27092,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -27331,12 +27130,6 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
 
     C++ signature :
         class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -27576,6 +27369,9 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -27647,11 +27443,8 @@ isHidden( (ObjectId)arg1) -> bool :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isOff (self, *args, **kwargs)-> bool :
       '''isOff( (LayerTableRecord)arg1) -> bool :
@@ -27762,12 +27555,6 @@ plotStyleNameId( (LayerTableRecord)arg1, (ObjectId)arg2) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId plotStyleNameId(class PyDbLayerTableRecord {lvalue},class PyDbObjectId)'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -28258,6 +28045,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def initialize (self, *args, **kwargs)-> None :
       '''initialize( (Layout)arg1) -> None :
 
@@ -28305,11 +28095,8 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -28412,12 +28199,6 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
 
     C++ signature :
         bool printLineweights(class PyDbPlotSettings {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -28757,17 +28538,14 @@ getActiveLayoutName( (LayoutManager)arg1, (bool)arg2, (Database)arg3) -> str :
     C++ signature :
         class PyDbObjectId getNonRectVPIdFromClipId(class PyDbLayoutManager {lvalue},class PyDbObjectId {lvalue})'''
     ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (RxObject)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isVpnumClipped (self, *args, **kwargs)-> bool :
       '''isVpnumClipped( (LayoutManager)arg1, (int)arg2) -> bool :
@@ -28790,12 +28568,6 @@ layoutExists( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> bool :
 
     C++ signature :
         bool layoutExists(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def renameLayout (self, *args, **kwargs)-> None :
       '''renameLayout( (LayoutManager)arg1, (str)arg2, (str)arg3) -> None :
@@ -29240,6 +29012,9 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -29282,11 +29057,8 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPeriodic (self: Curve)-> bool :
       '''                             '''
@@ -29389,12 +29161,6 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -29956,6 +29722,9 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -29998,11 +29767,8 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPeriodic (self: Curve)-> bool :
       '''                             '''
@@ -30081,12 +29847,6 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -30630,6 +30390,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def inspection (self, *args, **kwargs)-> bool :
       '''inspection( (Dimension)arg1) -> bool :
 
@@ -30711,11 +30474,8 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -30820,12 +30580,6 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -31895,6 +31649,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -31931,11 +31688,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -31972,12 +31726,6 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
 
     C++ signature :
         class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -32188,6 +31936,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -32230,11 +31981,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -32295,12 +32043,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         double patternLength(class PyDbLinetypeTableRecord {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -32655,6 +32397,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -32694,11 +32439,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -32768,12 +32510,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -33120,6 +32856,9 @@ geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -33159,11 +32898,8 @@ geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -33257,12 +32993,6 @@ geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -33902,6 +33632,9 @@ getLeaderLineIndexes( (MLeader)arg1, (int)arg2) -> list :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -33941,11 +33674,8 @@ getLeaderLineIndexes( (MLeader)arg1, (int)arg2) -> list :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isOverride (self, *args, **kwargs)-> bool :
       '''isOverride( (MLeader)arg1, (MLeaderPropertyOverrideType)arg2) -> bool :
@@ -34122,12 +33852,6 @@ moveMLeader( (MLeader)arg1, (Vector3d)arg2, (MLeaderMoveType)arg3, (bool)arg4) -
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -36020,6 +35744,9 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -36056,11 +35783,8 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -36145,12 +35869,6 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
 
     C++ signature :
         class PyDbObjectId postMLeaderStyleToDb(class PyDbMLeaderStyle {lvalue},class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -37365,6 +37083,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -37404,11 +37125,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -37502,12 +37220,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -38746,6 +38458,9 @@ getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4, (bool
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -38785,11 +38500,8 @@ getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4, (bool
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -38889,12 +38601,6 @@ getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4, (bool
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -39413,6 +39119,9 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def initMlineStyle (self, *args, **kwargs)-> None :
       '''initMlineStyle( (MlineStyle)arg1) -> None :
 
@@ -39455,11 +39164,8 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -39502,12 +39208,6 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     ...
     def ownerId (self: DbObject)-> ObjectId :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -39861,6 +39561,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -39900,11 +39603,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -39974,12 +39674,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -40140,23 +39834,14 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbObjectContext {lvalue})'''
     ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (RxObject)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
     ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def setName (self, *args, **kwargs)-> None :
       '''setName( (ObjectContext)arg1, (str)arg2) -> None :
@@ -40735,6 +40420,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def inspection (self, *args, **kwargs)-> bool :
       '''inspection( (Dimension)arg1) -> bool :
 
@@ -40816,11 +40504,8 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -40949,12 +40634,6 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -42154,6 +41833,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -42196,11 +41878,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -42242,12 +41921,6 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     ...
     def ownerId (self: DbObject)-> ObjectId :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -42560,6 +42233,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -42635,11 +42311,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isOn (self, *args, **kwargs)-> bool :
       '''isOn( (UnderlayReference)arg1) -> bool :
@@ -42727,12 +42400,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -43278,6 +42945,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -43317,11 +42987,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -43391,12 +43058,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -43985,6 +43646,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -44021,11 +43685,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -44128,12 +43789,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         bool printLineweights(class PyDbPlotSettings {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -44754,6 +44409,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -44793,11 +44451,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -44879,12 +44534,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -45409,6 +45058,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def inspection (self, *args, **kwargs)-> bool :
       '''inspection( (Dimension)arg1) -> bool :
 
@@ -45490,11 +45142,8 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -45599,12 +45248,6 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -46618,6 +46261,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -46657,11 +46303,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -46737,12 +46380,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -47042,6 +46679,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -47081,11 +46721,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -47161,12 +46798,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -47676,6 +47307,9 @@ getEcs( (Polyline)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -47718,11 +47352,8 @@ getEcs( (Polyline)arg1, (Matrix3d)arg2) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isOnlyLines (self, *args, **kwargs)-> bool :
       '''isOnlyLines( (Polyline)arg1) -> bool :
@@ -47837,12 +47468,6 @@ getEcs( (Polyline)arg1, (Matrix3d)arg2) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -48369,6 +47994,9 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def insertVertexAt (self, *args, **kwargs)-> None :
       '''insertVertexAt( (Polyline2d)arg1, (Vertex2d)arg2, (Vertex2d)arg3) -> None :
 
@@ -48428,11 +48056,8 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPeriodic (self: Curve)-> bool :
       '''                             '''
@@ -48553,12 +48178,6 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -49078,6 +48697,9 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def insertVertexAt (self, *args, **kwargs)-> None :
       '''insertVertexAt( (Polyline3d)arg1, (Polyline3dVertex)arg2, (Polyline3dVertex)arg3) -> None :
 
@@ -49131,11 +48753,8 @@ insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVer
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPeriodic (self: Curve)-> bool :
       '''                             '''
@@ -49244,12 +48863,6 @@ insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVer
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -49597,6 +49210,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -49636,11 +49252,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -49716,12 +49329,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -50234,6 +49841,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def inspection (self, *args, **kwargs)-> bool :
       '''inspection( (Dimension)arg1) -> bool :
 
@@ -50315,11 +49925,8 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -50430,12 +50037,6 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -51391,6 +50992,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def inspection (self, *args, **kwargs)-> bool :
       '''inspection( (Dimension)arg1) -> bool :
 
@@ -51472,11 +51076,8 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -51599,12 +51200,6 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -52461,6 +52056,9 @@ imageSize( (RasterImage)arg1, (bool)arg2) -> Vector2d :
     C++ signature :
         double imageWidth(class PyDbRasterImage {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -52524,11 +52122,8 @@ imageSize( (RasterImage)arg1, (bool)arg2) -> Vector2d :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -52622,12 +52217,6 @@ imageSize( (RasterImage)arg1, (bool)arg2) -> Vector2d :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -53024,6 +52613,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId imageDictionary(class PyDbDatabase {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -53072,11 +52664,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -53113,12 +52702,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def ownerId (self: DbObject)-> ObjectId :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -53382,6 +52965,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -53418,11 +53004,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -53453,12 +53036,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def ownerId (self: DbObject)-> ObjectId :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -53664,6 +53241,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -53700,11 +53280,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -53741,12 +53318,6 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
 
     C++ signature :
         class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -53945,6 +53516,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -53987,11 +53561,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -54034,12 +53605,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def ownerId (self: DbObject)-> ObjectId :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -54274,6 +53839,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -54319,11 +53887,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         bool isNull(class PyDbRegion {lvalue})'''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -54393,12 +53958,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -54875,6 +54434,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -54914,11 +54476,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -54988,12 +54547,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -55476,6 +55029,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def inspection (self, *args, **kwargs)-> bool :
       '''inspection( (Dimension)arg1) -> bool :
 
@@ -55557,11 +55113,8 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -55684,12 +55237,6 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -56846,6 +56393,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -56885,11 +56435,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -56959,12 +56506,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -57729,6 +57270,9 @@ getSlice( (Solid3d)arg1, (Surface)arg2, (bool)arg3) -> Solid3d :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def imprintEntity (self, *args, **kwargs)-> None :
       '''imprintEntity( (Solid3d)arg1, (Entity)arg2) -> None :
 
@@ -57780,11 +57324,8 @@ getSlice( (Solid3d)arg1, (Surface)arg2, (bool)arg3) -> Solid3d :
     C++ signature :
         bool isNull(class PyDb3dSolid {lvalue})'''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -57884,12 +57425,6 @@ getSlice( (Solid3d)arg1, (Surface)arg2, (bool)arg3) -> Solid3d :
 
     C++ signature :
         bool recordHistory(class PyDb3dSolid {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -58899,6 +58434,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -58938,11 +58476,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -59012,12 +58547,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -59800,6 +59329,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -59839,11 +59371,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -59913,12 +59442,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -60455,6 +59978,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -60491,11 +60017,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -60532,12 +60055,6 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
 
     C++ signature :
         class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -60726,6 +60243,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -60768,11 +60288,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -60815,12 +60332,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def ownerId (self: DbObject)-> ObjectId :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -61559,6 +61070,9 @@ gridVisibility( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> Visibi
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def insertColumns (self, *args, **kwargs)-> None :
       '''insertColumns( (Table)arg1, (int)arg2, (float)arg3, (int)arg4) -> None :
 
@@ -61692,11 +61206,8 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -61868,12 +61379,6 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -63645,6 +63150,9 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -63705,11 +63213,8 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -63764,12 +63269,6 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
 
     C++ signature :
         class PyDbObjectId postTableStyleToDb(class PyDbTableStyle {lvalue},class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -64318,6 +63817,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -64375,11 +63877,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -64485,12 +63984,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -65165,6 +64658,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -65201,11 +64697,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -65242,12 +64735,6 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
 
     C++ signature :
         class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -65470,6 +64957,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -65512,11 +65002,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -65583,12 +65070,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         double priorSize(class PyDbTextStyleTableRecord {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -66115,29 +65596,20 @@ getObject( (Transaction)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> DbO
     C++ signature :
         class PyDbObject getObject(class PyTransaction {lvalue},class PyDbObjectId,enum AcDb::OpenMode,bool)'''
     ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (RxObject)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def numOpenedObjects (self, *args, **kwargs)-> int :
       '''numOpenedObjects( (TransactionManager)arg1) -> int :
 
     C++ signature :
         int numOpenedObjects(class PyDbTransactionManager {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
 
 class TransactionManager:
@@ -66165,17 +65637,14 @@ class TransactionManager:
     def getObject (self: TransactionManager,id: ObjectId,mode: OpenMode=OpenMode.kForRead,openErasedObject: bool=False)-> DbObject :
       '''                             '''
     ...
-    def isA (self, *args, **kwargs)-> RxClass :
-      '''isA( (RxObject)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass isA(class PyRxObject {lvalue})'''
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def numActiveTransactions (self: TransactionManager)-> int :
       '''                             '''
@@ -66185,12 +65654,6 @@ class TransactionManager:
     ...
     def queueForGraphicsFlush (self: TransactionManager)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def startTransaction (self: TransactionManager)-> Transaction :
       '''                             '''
@@ -66539,6 +66002,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -66575,11 +66041,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -66616,12 +66079,6 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
 
     C++ signature :
         class boost::python::list recordIds(class PyDbSymbolTable {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -66820,6 +66277,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -66862,11 +66322,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -66915,12 +66372,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def ownerId (self: DbObject)-> ObjectId :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -67169,6 +66620,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -67211,11 +66665,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -67257,12 +66708,6 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     ...
     def ownerId (self: DbObject)-> ObjectId :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -67597,6 +67042,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -67672,11 +67120,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isOn (self, *args, **kwargs)-> bool :
       '''isOn( (UnderlayReference)arg1) -> bool :
@@ -67764,12 +67209,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -68645,6 +68084,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -68684,11 +68126,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -68758,12 +68197,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -69080,6 +68513,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void ignoreTangent(class PyDb2dVertex {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -69119,11 +68555,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -69205,12 +68638,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -69789,6 +69216,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -69843,11 +69273,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPaperspaceView (self, *args, **kwargs)-> bool :
       '''isPaperspaceView( (ViewTableRecord)arg1) -> bool :
@@ -69938,12 +69365,6 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         bool perspectiveEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -70588,6 +70009,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
       '''                             '''
     ...
@@ -70705,11 +70129,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isOn (self, *args, **kwargs)-> bool :
       '''isOn( (Viewport)arg1) -> bool :
@@ -70904,12 +70325,6 @@ previousBackground( (Viewport)arg1, (GiDrawableType)arg2) -> ObjectId :
     ...
     def recordGraphicsModified (self: Entity)-> None :
       '''                             '''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -72016,6 +71431,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -72088,11 +71506,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -72200,12 +71615,6 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
 
     C++ signature :
         bool previousBackgroundForcedSwitch(class PyDbViewportTableRecord {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -73158,6 +72567,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId id(class PyGiDrawable {lvalue})'''
     ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
     def isA (self, *args, **kwargs)-> RxClass :
       '''isA( (Drawable)arg1) -> RxClass :
 
@@ -73194,11 +72606,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isNotifying (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isNullObj (self, *args, **kwargs)-> bool :
-      '''isNullObj( (RxObject)arg1) -> bool :
-
-    C++ signature :
-        bool isNullObj(class PyRxObject {lvalue})'''
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
     ...
     def isPersistent (self, *args, **kwargs)-> bool :
       '''isPersistent( (Drawable)arg1) -> bool :
@@ -73252,12 +72661,6 @@ rbChain( (Xrecord)arg1, (Database)arg2) -> list :
 
     C++ signature :
         class boost::python::list rbChain(class PyDbXrecord {lvalue},class PyDbDatabase {lvalue})'''
-    ...
-    def refCount (self, *args, **kwargs)-> int :
-      '''refCount( (RxObject)arg1) -> int :
-
-    C++ signature :
-        int refCount(class PyRxObject {lvalue})'''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
