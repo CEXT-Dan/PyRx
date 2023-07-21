@@ -1273,10 +1273,11 @@ AcDbViewTableRecord* PyDbViewTableRecord::impObj(const std::source_location& src
 //PyDbBlockTableRecord wrapper
 void makePyDbBlockTableRecordWrapper()
 {
+    PyDocString DS("BlockTableRecord");
     class_<PyDbBlockTableRecord, bases<PyDbSymbolTableRecord>>("BlockTableRecord")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.CLASSARGS({ "id: ObjectId=kNull", "mode: OpenMode=kForRead" })))
         .def("appendAcDbEntity", &PyDbBlockTableRecord::appendAcDbEntity)
         .def("objectIds", &PyDbBlockTableRecord::objectIds)
         .def("comments", &PyDbBlockTableRecord::comments)

@@ -691,7 +691,7 @@ Adesk::Int16 PyDbDatabase::coords() const
     return impObj()->coords();
 }
 
-Adesk::UInt32 PyDbDatabase::countEmptyObjects(const Adesk::UInt32 flags)
+Adesk::UInt32 PyDbDatabase::countEmptyObjects(const Adesk::Int32 flags)
 {
 #if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();
@@ -812,7 +812,7 @@ double PyDbDatabase::elevation() const
     return impObj()->elevation();
 }
 
-Adesk::UInt32 PyDbDatabase::eraseEmptyObjects(const Adesk::UInt32 flags)
+Adesk::UInt32 PyDbDatabase::eraseEmptyObjects(const Adesk::Int32 flags)
 {
 #if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     throw PyNotimplementedByHost();

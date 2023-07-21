@@ -72,8 +72,8 @@ void makePyDbObjectWrapper()
         .def("getFieldDictionary", &PyDbObject::getFieldDictionary, DS.CLASSARGS())
         .def("desc", &PyDbObject::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
         .def("className", &PyDbObject::className, DS.CLASSARGSSTATIC()).staticmethod("className")
-        .def("cloneFrom", &PyDbObject::cloneFrom, DS.CLASSARGSSTATIC({ "otherObject: RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDbObject::cast, DS.CLASSARGSSTATIC({ "otherObject: RxObject" })).staticmethod("cast")
+        .def("cloneFrom", &PyDbObject::cloneFrom, DS.CLASSARGSSTATIC({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbObject::cast, DS.CLASSARGSSTATIC({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 

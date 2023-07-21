@@ -51,7 +51,7 @@ public:
     PyDbObjectId        colorDictionaryId() const;
     PyDbObjectId        continuousLinetype() const;
     Adesk::Int16        coords() const;
-    Adesk::UInt32       countEmptyObjects(const Adesk::UInt32 flags);
+    Adesk::UInt32       countEmptyObjects(const Adesk::Int32 flags);
     PyDbObjectId        detailViewStyle() const;
     PyDbObjectId        detailViewStyleDictionaryId() const;
     bool                dimaso() const;
@@ -72,7 +72,7 @@ public:
     void                dxfIn(const std::string& dxfFilename);
     void                dxfOut(const std::string& dxfFilename);
     double              elevation() const;
-    Adesk::UInt32       eraseEmptyObjects(const Adesk::UInt32 flags);
+    Adesk::UInt32       eraseEmptyObjects(const Adesk::Int32 flags);
     AcGePoint3d         extmax() const;
     AcGePoint3d         extmin() const;
     double              facetres() const;
