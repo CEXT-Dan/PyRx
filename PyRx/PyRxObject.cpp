@@ -7,13 +7,14 @@ using namespace boost::python;
 //PyRxObject wrapper
 void makeAcRxObjectWrapper()
 {
+    PyDocString DS("RxObject");
     class_<PyRxObject>("RxObject", boost::python::no_init)
-        .def("isA", &PyRxObject::isA)
-        .def("className", &PyRxObject::className).staticmethod("className")
-        .def("isNullObj", &PyRxObject::isNullObj)
-        .def("refCount", &PyRxObject::refCount)
+        .def("isA", &PyRxObject::isA,DS.CLASSARGS())
+        .def("isNullObj", &PyRxObject::isNullObj, DS.CLASSARGS())
+        .def("implRefCount", &PyRxObject::implRefCount, DS.CLASSARGS())
         .def("__eq__", &PyRxObject::operator==)
         .def("__ne__", &PyRxObject::operator!=)
+        .def("className", &PyRxObject::className, DS.CLASSARGSSTATIC()).staticmethod("className")
         ;
 }
 
@@ -58,7 +59,7 @@ bool PyRxObject::isNullObj()
     return m_pyImp == nullptr;
 }
 
-int PyRxObject::refCount()
+int PyRxObject::implRefCount()
 {
     return m_pyImp.use_count();
 }
@@ -84,13 +85,14 @@ AcRxObject* PyRxObject::impObj(const std::source_location& src /*= std::source_l
 //PyRxClass Wrapper
 void makeAcRxClassWrapper()
 {
+    PyDocString DS("RxClass");
     class_<PyRxClass, bases<PyRxObject>>("RxClass", boost::python::no_init)
-        .def("isDerivedFrom", &PyRxClass::isDerivedFrom)
-        .def("appName", &PyRxClass::appName)
-        .def("dxfName", &PyRxClass::dxfName)
-        .def("name", &PyRxClass::name)
-        .def("desc", &PyRxClass::desc).staticmethod("desc")
-        .def("className", &PyRxClass::className).staticmethod("className")
+        .def("isDerivedFrom", &PyRxClass::isDerivedFrom, DS.CLASSARGS({"other : RxClass"}))
+        .def("appName", &PyRxClass::appName, DS.CLASSARGS())
+        .def("dxfName", &PyRxClass::dxfName, DS.CLASSARGS())
+        .def("name", &PyRxClass::name, DS.CLASSARGS())
+        .def("desc", &PyRxClass::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
+        .def("className", &PyRxClass::className, DS.CLASSARGSSTATIC()).staticmethod("className")
         ;
 }
 
