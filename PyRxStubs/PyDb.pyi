@@ -599,11 +599,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getName (self, *args, **kwargs)-> str :
-      '''getName( (SymbolTableRecord)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbSymbolTableRecord {lvalue})'''
+    def getName (self: SymbolTableRecord)-> str :
+      '''                             '''
     ...
     def getUcs (self, *args, **kwargs)-> None :
       '''getUcs( (AbstractViewTableRecord)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
@@ -653,11 +650,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         bool isDefaultLightingOn(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
-    def isDependent (self, *args, **kwargs)-> bool :
-      '''isDependent( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isDependent(class PyDbSymbolTableRecord {lvalue})'''
+    def isDependent (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -698,17 +692,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isReallyClosing (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isRenamable (self, *args, **kwargs)-> bool :
-      '''isRenamable( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isRenamable(class PyDbSymbolTableRecord {lvalue})'''
+    def isRenamable (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
-    def isResolved (self, *args, **kwargs)-> bool :
-      '''isResolved( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isResolved(class PyDbSymbolTableRecord {lvalue})'''
+    def isResolved (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
     def isTransactionResident (self: DbObject)-> bool :
       '''                             '''
@@ -866,11 +854,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setLensLength(class PyDbAbstractViewTableRecord {lvalue},double)'''
     ...
-    def setName (self, *args, **kwargs)-> None :
-      '''setName( (SymbolTableRecord)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setName(class PyDbSymbolTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setName (self: SymbolTableRecord,name: str)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
       '''                             '''
@@ -7607,11 +7592,8 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     C++ signature :
         class PyDbObjectId getLayoutId(class PyDbBlockTableRecord {lvalue})'''
     ...
-    def getName (self, *args, **kwargs)-> str :
-      '''getName( (SymbolTableRecord)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbSymbolTableRecord {lvalue})'''
+    def getName (self: SymbolTableRecord)-> str :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -7655,11 +7637,8 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isDependent (self, *args, **kwargs)-> bool :
-      '''isDependent( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isDependent(class PyDbSymbolTableRecord {lvalue})'''
+    def isDependent (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -7718,17 +7697,11 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def isReallyClosing (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isRenamable (self, *args, **kwargs)-> bool :
-      '''isRenamable( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isRenamable(class PyDbSymbolTableRecord {lvalue})'''
+    def isRenamable (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
-    def isResolved (self, *args, **kwargs)-> bool :
-      '''isResolved( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isResolved(class PyDbSymbolTableRecord {lvalue})'''
+    def isResolved (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
     def isTransactionResident (self: DbObject)-> bool :
       '''                             '''
@@ -7856,11 +7829,8 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     C++ signature :
         void setLayoutId(class PyDbBlockTableRecord {lvalue},class PyDbObjectId)'''
     ...
-    def setName (self, *args, **kwargs)-> None :
-      '''setName( (SymbolTableRecord)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setName(class PyDbSymbolTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setName (self: SymbolTableRecord,name: str)-> None :
+      '''                             '''
     ...
     def setOrigin (self, *args, **kwargs)-> None :
       '''setOrigin( (BlockTableRecord)arg1, (Point3d)arg2) -> None :
@@ -15294,11 +15264,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getName (self, *args, **kwargs)-> str :
-      '''getName( (SymbolTableRecord)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbSymbolTableRecord {lvalue})'''
+    def getName (self: SymbolTableRecord)-> str :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -15330,11 +15297,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isDependent (self, *args, **kwargs)-> bool :
-      '''isDependent( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isDependent(class PyDbSymbolTableRecord {lvalue})'''
+    def isDependent (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -15375,17 +15339,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isReallyClosing (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isRenamable (self, *args, **kwargs)-> bool :
-      '''isRenamable( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isRenamable(class PyDbSymbolTableRecord {lvalue})'''
+    def isRenamable (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
-    def isResolved (self, *args, **kwargs)-> bool :
-      '''isResolved( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isResolved(class PyDbSymbolTableRecord {lvalue})'''
+    def isResolved (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
     def isTransactionResident (self: DbObject)-> bool :
       '''                             '''
@@ -15429,11 +15387,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setName (self, *args, **kwargs)-> None :
-      '''setName( (SymbolTableRecord)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setName(class PyDbSymbolTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setName (self: SymbolTableRecord,name: str)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
       '''                             '''
@@ -27336,11 +27291,8 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getName (self, *args, **kwargs)-> str :
-      '''getName( (SymbolTableRecord)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbSymbolTableRecord {lvalue})'''
+    def getName (self: SymbolTableRecord)-> str :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -27384,11 +27336,8 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isDependent (self, *args, **kwargs)-> bool :
-      '''isDependent( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isDependent(class PyDbSymbolTableRecord {lvalue})'''
+    def isDependent (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -27481,17 +27430,11 @@ isReconciled( (ObjectId)arg1) -> bool :
     C++ signature :
         bool isReconciled(class PyDbObjectId)'''
     ...
-    def isRenamable (self, *args, **kwargs)-> bool :
-      '''isRenamable( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isRenamable(class PyDbSymbolTableRecord {lvalue})'''
+    def isRenamable (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
-    def isResolved (self, *args, **kwargs)-> bool :
-      '''isResolved( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isResolved(class PyDbSymbolTableRecord {lvalue})'''
+    def isResolved (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
     def isTransactionResident (self: DbObject)-> bool :
       '''                             '''
@@ -27697,11 +27640,8 @@ setLineWeight( (LayerTableRecord)arg1, (LineWeight)arg2, (ObjectId)arg3) -> None
     C++ signature :
         void setMaterialId(class PyDbLayerTableRecord {lvalue},class PyDbObjectId)'''
     ...
-    def setName (self, *args, **kwargs)-> None :
-      '''setName( (SymbolTableRecord)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setName(class PyDbSymbolTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setName (self: SymbolTableRecord,name: str)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
       '''                             '''
@@ -31915,11 +31855,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getName (self, *args, **kwargs)-> str :
-      '''getName( (SymbolTableRecord)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbSymbolTableRecord {lvalue})'''
+    def getName (self: SymbolTableRecord)-> str :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -31951,11 +31888,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isDependent (self, *args, **kwargs)-> bool :
-      '''isDependent( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isDependent(class PyDbSymbolTableRecord {lvalue})'''
+    def isDependent (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -31996,17 +31930,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isReallyClosing (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isRenamable (self, *args, **kwargs)-> bool :
-      '''isRenamable( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isRenamable(class PyDbSymbolTableRecord {lvalue})'''
+    def isRenamable (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
-    def isResolved (self, *args, **kwargs)-> bool :
-      '''isResolved( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isResolved(class PyDbSymbolTableRecord {lvalue})'''
+    def isResolved (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
     def isScaledToFit (self, *args, **kwargs)-> bool :
       '''isScaledToFit( (LinetypeTableRecord)arg1) -> bool :
@@ -32086,11 +32014,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setIsScaledToFit(class PyDbLinetypeTableRecord {lvalue},bool)'''
     ...
-    def setName (self, *args, **kwargs)-> None :
-      '''setName( (SymbolTableRecord)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setName(class PyDbSymbolTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setName (self: SymbolTableRecord,name: str)-> None :
+      '''                             '''
     ...
     def setNumDashes (self, *args, **kwargs)-> None :
       '''setNumDashes( (LinetypeTableRecord)arg1, (int)arg2) -> None :
@@ -53462,11 +53387,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getName (self, *args, **kwargs)-> str :
-      '''getName( (SymbolTableRecord)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbSymbolTableRecord {lvalue})'''
+    def getName (self: SymbolTableRecord)-> str :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -53498,11 +53420,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isDependent (self, *args, **kwargs)-> bool :
-      '''isDependent( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isDependent(class PyDbSymbolTableRecord {lvalue})'''
+    def isDependent (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -53543,17 +53462,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isReallyClosing (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isRenamable (self, *args, **kwargs)-> bool :
-      '''isRenamable( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isRenamable(class PyDbSymbolTableRecord {lvalue})'''
+    def isRenamable (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
-    def isResolved (self, *args, **kwargs)-> bool :
-      '''isResolved( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isResolved(class PyDbSymbolTableRecord {lvalue})'''
+    def isResolved (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
     def isTransactionResident (self: DbObject)-> bool :
       '''                             '''
@@ -53597,11 +53510,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setName (self, *args, **kwargs)-> None :
-      '''setName( (SymbolTableRecord)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setName(class PyDbSymbolTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setName (self: SymbolTableRecord,name: str)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
       '''                             '''
@@ -60094,16 +60004,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     ...
 
 class SymbolTableRecord:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self: SymbolTableRecord,id: ObjectId,mode: OpenMode=kForRead)-> None :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
@@ -60126,23 +60028,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> SymbolTableRecord :
-      '''cast( (RxObject)arg1) -> SymbolTableRecord :
-
-    C++ signature :
-        class PyDbSymbolTableRecord cast(class PyRxObject)'''
+    def cast (otherObject: PyRx.RxObject)-> SymbolTableRecord :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> SymbolTableRecord :
-      '''cloneFrom( (RxObject)arg1) -> SymbolTableRecord :
-
-    C++ signature :
-        class PyDbSymbolTableRecord cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: PyRx.RxObject)-> SymbolTableRecord :
+      '''                             '''
     ...
     def close (self: DbObject)-> None :
       '''                             '''
@@ -60153,11 +60046,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> Database :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -60189,11 +60079,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getName (self, *args, **kwargs)-> str :
-      '''getName( (SymbolTableRecord)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbSymbolTableRecord {lvalue})'''
+    def getName (self: SymbolTableRecord)-> str :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -60225,11 +60112,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isDependent (self, *args, **kwargs)-> bool :
-      '''isDependent( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isDependent(class PyDbSymbolTableRecord {lvalue})'''
+    def isDependent (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -60270,17 +60154,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isReallyClosing (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isRenamable (self, *args, **kwargs)-> bool :
-      '''isRenamable( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isRenamable(class PyDbSymbolTableRecord {lvalue})'''
+    def isRenamable (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
-    def isResolved (self, *args, **kwargs)-> bool :
-      '''isResolved( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isResolved(class PyDbSymbolTableRecord {lvalue})'''
+    def isResolved (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
     def isTransactionResident (self: DbObject)-> bool :
       '''                             '''
@@ -60324,11 +60202,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setName (self, *args, **kwargs)-> None :
-      '''setName( (SymbolTableRecord)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setName(class PyDbSymbolTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setName (self: SymbolTableRecord,name: str)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
       '''                             '''
@@ -64903,11 +64778,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getName (self, *args, **kwargs)-> str :
-      '''getName( (SymbolTableRecord)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbSymbolTableRecord {lvalue})'''
+    def getName (self: SymbolTableRecord)-> str :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -64939,11 +64811,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isDependent (self, *args, **kwargs)-> bool :
-      '''isDependent( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isDependent(class PyDbSymbolTableRecord {lvalue})'''
+    def isDependent (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -64984,17 +64853,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isReallyClosing (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isRenamable (self, *args, **kwargs)-> bool :
-      '''isRenamable( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isRenamable(class PyDbSymbolTableRecord {lvalue})'''
+    def isRenamable (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
-    def isResolved (self, *args, **kwargs)-> bool :
-      '''isResolved( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isResolved(class PyDbSymbolTableRecord {lvalue})'''
+    def isResolved (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
     def isShapeFile (self, *args, **kwargs)-> bool :
       '''isShapeFile( (TextStyleTableRecord)arg1) -> bool :
@@ -65098,11 +64961,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setIsVertical(class PyDbTextStyleTableRecord {lvalue},bool)'''
     ...
-    def setName (self, *args, **kwargs)-> None :
-      '''setName( (SymbolTableRecord)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setName(class PyDbSymbolTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setName (self: SymbolTableRecord,name: str)-> None :
+      '''                             '''
     ...
     def setObliquingAngle (self, *args, **kwargs)-> None :
       '''setObliquingAngle( (TextStyleTableRecord)arg1, (float)arg2) -> None :
@@ -66223,11 +66083,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getName (self, *args, **kwargs)-> str :
-      '''getName( (SymbolTableRecord)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbSymbolTableRecord {lvalue})'''
+    def getName (self: SymbolTableRecord)-> str :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -66259,11 +66116,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isDependent (self, *args, **kwargs)-> bool :
-      '''isDependent( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isDependent(class PyDbSymbolTableRecord {lvalue})'''
+    def isDependent (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -66304,17 +66158,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isReallyClosing (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isRenamable (self, *args, **kwargs)-> bool :
-      '''isRenamable( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isRenamable(class PyDbSymbolTableRecord {lvalue})'''
+    def isRenamable (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
-    def isResolved (self, *args, **kwargs)-> bool :
-      '''isResolved( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isResolved(class PyDbSymbolTableRecord {lvalue})'''
+    def isResolved (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
     def isTransactionResident (self: DbObject)-> bool :
       '''                             '''
@@ -66364,11 +66212,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setName (self, *args, **kwargs)-> None :
-      '''setName( (SymbolTableRecord)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setName(class PyDbSymbolTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setName (self: SymbolTableRecord,name: str)-> None :
+      '''                             '''
     ...
     def setOrigin (self, *args, **kwargs)-> None :
       '''setOrigin( (UCSTableRecord)arg1, (Point3d)arg2) -> None :
@@ -69150,11 +68995,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId getLayout(class PyDbViewTableRecord {lvalue})'''
     ...
-    def getName (self, *args, **kwargs)-> str :
-      '''getName( (SymbolTableRecord)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbSymbolTableRecord {lvalue})'''
+    def getName (self: SymbolTableRecord)-> str :
+      '''                             '''
     ...
     def getUcs (self, *args, **kwargs)-> None :
       '''getUcs( (AbstractViewTableRecord)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
@@ -69210,11 +69052,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         bool isDefaultLightingOn(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
-    def isDependent (self, *args, **kwargs)-> bool :
-      '''isDependent( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isDependent(class PyDbSymbolTableRecord {lvalue})'''
+    def isDependent (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -69261,17 +69100,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isReallyClosing (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isRenamable (self, *args, **kwargs)-> bool :
-      '''isRenamable( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isRenamable(class PyDbSymbolTableRecord {lvalue})'''
+    def isRenamable (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
-    def isResolved (self, *args, **kwargs)-> bool :
-      '''isResolved( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isResolved(class PyDbSymbolTableRecord {lvalue})'''
+    def isResolved (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
     def isTransactionResident (self: DbObject)-> bool :
       '''                             '''
@@ -69495,11 +69328,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setLiveSection(class PyDbViewTableRecord {lvalue},class PyDbObjectId)'''
     ...
-    def setName (self, *args, **kwargs)-> None :
-      '''setName( (SymbolTableRecord)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setName(class PyDbSymbolTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setName (self: SymbolTableRecord,name: str)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
       '''                             '''
@@ -71335,11 +71165,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getName (self, *args, **kwargs)-> str :
-      '''getName( (SymbolTableRecord)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getName(class PyDbSymbolTableRecord {lvalue})'''
+    def getName (self: SymbolTableRecord)-> str :
+      '''                             '''
     ...
     def getUcs (self, *args, **kwargs)-> None :
       '''getUcs( (AbstractViewTableRecord)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
@@ -71419,11 +71246,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         bool isDefaultLightingOn(class PyDbAbstractViewTableRecord {lvalue})'''
     ...
-    def isDependent (self, *args, **kwargs)-> bool :
-      '''isDependent( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isDependent(class PyDbSymbolTableRecord {lvalue})'''
+    def isDependent (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -71488,17 +71312,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def isReallyClosing (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isRenamable (self, *args, **kwargs)-> bool :
-      '''isRenamable( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isRenamable(class PyDbSymbolTableRecord {lvalue})'''
+    def isRenamable (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
-    def isResolved (self, *args, **kwargs)-> bool :
-      '''isResolved( (SymbolTableRecord)arg1) -> bool :
-
-    C++ signature :
-        bool isResolved(class PyDbSymbolTableRecord {lvalue})'''
+    def isResolved (self: SymbolTableRecord)-> bool :
+      '''                             '''
     ...
     def isTransactionResident (self: DbObject)-> bool :
       '''                             '''
@@ -71775,11 +71593,8 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
     C++ signature :
         void setLowerLeftCorner(class PyDbViewportTableRecord {lvalue},class AcGePoint2d)'''
     ...
-    def setName (self, *args, **kwargs)-> None :
-      '''setName( (SymbolTableRecord)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setName(class PyDbSymbolTableRecord {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setName (self: SymbolTableRecord,name: str)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
       '''                             '''
