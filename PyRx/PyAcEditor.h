@@ -8,6 +8,8 @@ void makePyEditorWrapper();
 class PyAcEditor
 {
 public:
+
+    static boost::python::tuple getCorner(const AcGePoint3d& basePt, const std::string& prompt);
     static boost::python::tuple getInteger(const std::string& prompt);
     static boost::python::tuple getDouble(const std::string& prompt);
     static boost::python::tuple getAngle(const AcGePoint3d& basePt, const std::string& prompt);
