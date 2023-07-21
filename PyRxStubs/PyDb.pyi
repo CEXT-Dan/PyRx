@@ -39868,71 +39868,38 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def asOldId (self, *args, **kwargs)-> int :
-      '''asOldId( (ObjectId)arg1) -> int :
-
-    C++ signature :
-        __int64 asOldId(class PyDbObjectId {lvalue})'''
+    def asOldId (self: ObjectId)-> int :
+      '''                             '''
     ...
-    def convertToRedirectedId (self, *args, **kwargs)-> bool :
-      '''convertToRedirectedId( (ObjectId)arg1) -> bool :
-
-    C++ signature :
-        bool convertToRedirectedId(class PyDbObjectId {lvalue})'''
+    def convertToRedirectedId (self: ObjectId)-> bool :
+      '''                             '''
     ...
-    def database (self, *args, **kwargs)-> Database :
-      '''database( (ObjectId)arg1) -> Database :
-
-    C++ signature :
-        class PyDbDatabase database(class PyDbObjectId {lvalue})'''
+    def database (self: ObjectId)-> Database :
+      '''                             '''
     ...
-    def isDerivedFrom (self, *args, **kwargs)-> bool :
-      '''isDerivedFrom( (ObjectId)arg1, (RxClass)arg2) -> bool :
-
-    C++ signature :
-        bool isDerivedFrom(class PyDbObjectId {lvalue},class PyRxClass)'''
+    def isDerivedFrom (self: ObjectId,desc : PyRx.RxClass)-> bool :
+      '''                             '''
     ...
-    def isNull (self, *args, **kwargs)-> bool :
-      '''isNull( (ObjectId)arg1) -> bool :
-
-    C++ signature :
-        bool isNull(class PyDbObjectId {lvalue})'''
+    def isNull (self: ObjectId)-> bool :
+      '''                             '''
     ...
-    def isResident (self, *args, **kwargs)-> bool :
-      '''isResident( (ObjectId)arg1) -> bool :
-
-    C++ signature :
-        bool isResident(class PyDbObjectId {lvalue})'''
+    def isResident (self: ObjectId)-> bool :
+      '''                             '''
     ...
-    def isValid (self, *args, **kwargs)-> bool :
-      '''isValid( (ObjectId)arg1) -> bool :
-
-    C++ signature :
-        bool isValid(class PyDbObjectId {lvalue})'''
+    def isValid (self: ObjectId)-> bool :
+      '''                             '''
     ...
-    def isWellBehaved (self, *args, **kwargs)-> bool :
-      '''isWellBehaved( (ObjectId)arg1) -> bool :
-
-    C++ signature :
-        bool isWellBehaved(class PyDbObjectId {lvalue})'''
+    def isWellBehaved (self: ObjectId)-> bool :
+      '''                             '''
     ...
-    def objectClass (self, *args, **kwargs)-> RxClass :
-      '''objectClass( (ObjectId)arg1) -> RxClass :
-
-    C++ signature :
-        class PyRxClass objectClass(class PyDbObjectId {lvalue})'''
+    def objectClass (self: ObjectId)-> RxClass :
+      '''                             '''
     ...
-    def originalDatabase (self, *args, **kwargs)-> Database :
-      '''originalDatabase( (ObjectId)arg1) -> Database :
-
-    C++ signature :
-        class PyDbDatabase originalDatabase(class PyDbObjectId {lvalue})'''
+    def originalDatabase (self: ObjectId)-> Database :
+      '''                             '''
     ...
-    def setFromOldId (self, *args, **kwargs)-> ObjectId :
-      '''setFromOldId( (ObjectId)arg1, (int)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId {lvalue} setFromOldId(class PyDbObjectId {lvalue},__int64)'''
+    def setFromOldId (self: ObjectId,val : int)-> ObjectId :
+      '''                             '''
     ...
 
 class OpenMode:
