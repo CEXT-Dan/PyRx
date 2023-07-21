@@ -5,6 +5,15 @@ using namespace boost::python;
 
 //----------------------------------------------------------------------------------------------------
 //wrapper
+static bool AcCmColorEqualsOperator(const AcCmColor& left, const AcCmColor& right)
+{
+    return left == right;
+}
+static bool AcCmColorNotEqualsOperator(const AcCmColor& left, const AcCmColor& right)
+{
+    return left != right;
+}
+
 void makePyCmColorWrapper()
 {
     class_<AcCmColor>("Color")
@@ -45,6 +54,9 @@ void makePyCmColorWrapper()
         .def("penIndex", &AcCmColor::penIndex)
         .def("setPenIndex", &AcCmColor::setPenIndex)
         .def("entityColor", &AcCmColor::entityColor)
+        //operators
+        .def("__eq__", &AcCmColorEqualsOperator)
+        .def("__ne__", &AcCmColorNotEqualsOperator)
         ;
 }
 
@@ -67,6 +79,9 @@ void makePyCmTransparencyWrapper()
 #endif // !BRXAPP
         .def("isClear", &AcCmTransparency::isClear)
         .def("isSolid", &AcCmTransparency::isSolid)
+        //operators
+        .def("__eq__", &AcCmTransparency::operator==)
+        .def("__ne__", &AcCmTransparency::operator!=)
         ;
 
     enum_<AcCmTransparency::transparencyMethod>("TransparencyMethod")
@@ -155,6 +170,8 @@ void makePyCmEntityColorWrapper()
         .def("Foreground", &AcCmEntityColor::Foreground).staticmethod("Foreground")
         .def("white", &AcCmEntityColor::white).staticmethod("white")
         .def("black", &AcCmEntityColor::black).staticmethod("black")
+        .def("__eq__", &AcCmEntityColor::operator==)
+        .def("__ne__", &AcCmEntityColor::operator!=)
 #endif
         ;
     enum_<AcCmEntityColor::ColorMethod>("ColorMethod")
