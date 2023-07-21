@@ -12,8 +12,8 @@ void makeAcRxObjectWrapper()
         .def("isA", &PyRxObject::isA,DS.CLASSARGS())
         .def("isNullObj", &PyRxObject::isNullObj, DS.CLASSARGS())
         .def("implRefCount", &PyRxObject::implRefCount, DS.CLASSARGS())
-        .def("__eq__", &PyRxObject::operator==)
-        .def("__ne__", &PyRxObject::operator!=)
+        .def("__eq__", &PyRxObject::operator==, DS.CLASSARGS({ "rhs : RxObject" }))
+        .def("__ne__", &PyRxObject::operator!=, DS.CLASSARGS({ "rhs : RxObject" }))
         .def("className", &PyRxObject::className, DS.CLASSARGSSTATIC()).staticmethod("className")
         ;
 }
