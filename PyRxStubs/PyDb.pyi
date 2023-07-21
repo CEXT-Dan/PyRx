@@ -7265,22 +7265,11 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class BlockTable:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self: BlockTable,id: ObjectId,mode: OpenMode=kForRead)-> None :
+      '''                             '''
     ...
-    def add (self, *args, **kwargs)-> ObjectId :
-      '''add( (BlockTable)arg1, (BlockTableRecord)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId add(class PyDbBlockTable {lvalue},class PyDbBlockTableRecord)'''
+    def add (self: BlockTable,block : BlockTableRecord)-> ObjectId :
+      '''                             '''
     ...
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
@@ -7303,23 +7292,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> BlockTable :
-      '''cast( (RxObject)arg1) -> BlockTable :
-
-    C++ signature :
-        class PyDbBlockTable cast(class PyRxObject)'''
+    def cast (otherObject: PyRx.RxObject)-> BlockTable :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> BlockTable :
-      '''cloneFrom( (RxObject)arg1) -> BlockTable :
-
-    C++ signature :
-        class PyDbBlockTable cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: PyRx.RxObject)-> BlockTable :
+      '''                             '''
     ...
     def close (self: DbObject)-> None :
       '''                             '''
@@ -7330,11 +7310,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> Database :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -7553,26 +7530,8 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     ...
 
 class BlockTableRecord:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)
-
-__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)
-
-__init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId,enum AcDb::OpenMode)'''
+    def __init__ (self: BlockTableRecord,id: ObjectId=kNull,mode: OpenMode=kForRead)-> None :
+      '''                             '''
     ...
     def addAnnoScalestoBlkRefs (self, *args, **kwargs)-> None :
       '''addAnnoScalestoBlkRefs( (BlockTableRecord)arg1, (bool)arg2) -> None :
@@ -13248,13 +13207,13 @@ class DbObject:
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (otherObject: RxObject)-> DbObject :
+    def cast (otherObject: PyRx.RxObject)-> DbObject :
       '''                             '''
     ...
     def className ()-> str :
       '''                             '''
     ...
-    def cloneFrom (otherObject: RxObject)-> DbObject :
+    def cloneFrom (otherObject: PyRx.RxObject)-> DbObject :
       '''                             '''
     ...
     def close (self: DbObject)-> None :
@@ -35900,7 +35859,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (otherObject: RxObject)-> DbObject :
+    def cast (otherObject: PyRx.RxObject)-> DbObject :
       '''                             '''
     ...
     def className (self, *args, **kwargs)-> str :
@@ -35909,7 +35868,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def cloneFrom (otherObject: RxObject)-> DbObject :
+    def cloneFrom (otherObject: PyRx.RxObject)-> DbObject :
       '''                             '''
     ...
     def close (self: DbObject)-> None :
@@ -73127,7 +73086,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (otherObject: RxObject)-> DbObject :
+    def cast (otherObject: PyRx.RxObject)-> DbObject :
       '''                             '''
     ...
     def className (self, *args, **kwargs)-> str :
@@ -73136,7 +73095,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
     ...
-    def cloneFrom (otherObject: RxObject)-> DbObject :
+    def cloneFrom (otherObject: PyRx.RxObject)-> DbObject :
       '''                             '''
     ...
     def close (self: DbObject)-> None :
