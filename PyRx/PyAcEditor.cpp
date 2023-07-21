@@ -81,6 +81,7 @@ void makePyEditorWrapper()
 {
     class_<PyAcEditor>("Editor")
         .def("className", &PyAcEditor::className).staticmethod("className")
+        .def("getCorner", &PyAcEditor::getCorner).staticmethod("getCorner")
         .def("getInteger", &PyAcEditor::getInteger).staticmethod("getInteger")
         .def("getDouble", &PyAcEditor::getDouble).staticmethod("getDouble")
         .def("getReal", &PyAcEditor::getDouble).staticmethod("getReal")
@@ -123,8 +124,19 @@ void makePyEditorWrapper()
         ;
 }
 
+
 //-----------------------------------------------------------------------------------------
 // PyAcEditor
+boost::python::tuple PyAcEditor::getCorner(const AcGePoint3d& basePt, const std::string& prompt)
+{
+    ads_point pnt;
+    PyAutoLockGIL lock;
+    PyEdUserInteraction ui;
+    auto res = static_cast<Acad::PromptStatus>(acedGetCorner(asDblArray(basePt), utf8_to_wstr(prompt).c_str(), pnt));
+    AcGePoint3d pnt3d = asPnt3d(pnt);
+    return boost::python::make_tuple(res,pnt3d);
+}
+
 boost::python::tuple PyAcEditor::getInteger(const std::string& prompt)
 {
     PyAutoLockGIL lock;
