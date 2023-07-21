@@ -9,18 +9,19 @@ using namespace boost::python;
 // PyDbSymbolTableRecord  wrapper
 void makePyDbSymbolTableRecordWrapper()
 {
+    PyDocString DS("SymbolTableRecord");
     class_<PyDbSymbolTableRecord, bases<PyDbObject>>("SymbolTableRecord", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("getName", &PyDbSymbolTableRecord::getName)
-        .def("setName", &PyDbSymbolTableRecord::setName)
-        .def("isDependent", &PyDbSymbolTableRecord::isDependent)
-        .def("isResolved", &PyDbSymbolTableRecord::isResolved)
-        .def("isRenamable", &PyDbSymbolTableRecord::isRenamable)
-        .def("className", &PyDbSymbolTableRecord::className).staticmethod("className")
-        .def("desc", &PyDbSymbolTableRecord::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbSymbolTableRecord::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbSymbolTableRecord::cast).staticmethod("cast")
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.CLASSARGS({ "id: ObjectId", "mode: OpenMode=kForRead" })))
+        .def("getName", &PyDbSymbolTableRecord::getName, DS.CLASSARGS())
+        .def("setName", &PyDbSymbolTableRecord::setName, DS.CLASSARGS({ "name: str" }))
+        .def("isDependent", &PyDbSymbolTableRecord::isDependent, DS.CLASSARGS())
+        .def("isResolved", &PyDbSymbolTableRecord::isResolved, DS.CLASSARGS())
+        .def("isRenamable", &PyDbSymbolTableRecord::isRenamable, DS.CLASSARGS())
+        .def("className", &PyDbSymbolTableRecord::className, DS.CLASSARGSSTATIC()).staticmethod("className")
+        .def("desc", &PyDbSymbolTableRecord::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
+        .def("cloneFrom", &PyDbSymbolTableRecord::cloneFrom, DS.CLASSARGSSTATIC({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbSymbolTableRecord::cast,DS.CLASSARGSSTATIC({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -112,6 +113,7 @@ AcDbSymbolTableRecord* PyDbSymbolTableRecord::impObj(const std::source_location&
 // PyDbDimStyleTableRecord 
 void makePyDbDimStyleTableRecordWrapper()
 {
+    PyDocString DS("DimStyleTableRecord");
     class_<PyDbDimStyleTableRecord, bases<PyDbSymbolTableRecord>>("DimStyleTableRecord")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -183,6 +185,7 @@ AcDbDimStyleTableRecord* PyDbDimStyleTableRecord::impObj(const std::source_locat
 // PyDbAbstractViewTableRecord
 void makePyDbAbstractViewTableRecordWrapper()
 {
+    PyDocString DS("PyDbAbstractViewTableRecord");
     class_<PyDbAbstractViewTableRecord, bases<PyDbSymbolTableRecord>>("AbstractViewTableRecord", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
@@ -588,6 +591,7 @@ AcDbAbstractViewTableRecord* PyDbAbstractViewTableRecord::impObj(const std::sour
 // PyDbViewportTableRecord
 void makePyDbViewportTableRecordWrapper()
 {
+    PyDocString DS("ViewportTableRecord");
     class_<PyDbViewportTableRecord, bases<PyDbAbstractViewTableRecord>>("ViewportTableRecord")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -1013,6 +1017,7 @@ AcDbViewportTableRecord* PyDbViewportTableRecord::impObj(const std::source_locat
 // PyDbViewTableRecord
 void makePyDbViewTableRecordWrapper()
 {
+    PyDocString DS("ViewTableRecord");
     class_<PyDbViewTableRecord, bases<PyDbAbstractViewTableRecord>>("ViewTableRecord")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -1620,6 +1625,7 @@ AcDbBlockTableRecord* PyDbBlockTableRecord::impObj(const std::source_location& s
 //AcDbLayerTableRecord wrapper
 void makePyDbLayerTableRecordWrapper()
 {
+    PyDocString DS("LayerTableRecord");
     class_<PyDbLayerTableRecord, bases<PyDbSymbolTableRecord>>("LayerTableRecord")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -2021,6 +2027,7 @@ AcDbLayerTableRecord* PyDbLayerTableRecord::impObj(const std::source_location& s
 // PyDbTextStyleTableRecord
 void makePyDbTextStyleTableRecordWrapper()
 {
+    PyDocString DS("TextStyleTableRecord");
     class_<PyDbTextStyleTableRecord, bases<PyDbSymbolTableRecord>>("TextStyleTableRecord")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -2242,6 +2249,7 @@ AcDbTextStyleTableRecord* PyDbTextStyleTableRecord::impObj(const std::source_loc
 // PyDbUCSTableRecord
 void makePyDbUCSTableRecordWrapper()
 {
+    PyDocString DS("UCSTableRecord");
     class_<PyDbUCSTableRecord, bases<PyDbSymbolTableRecord>>("UCSTableRecord")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -2369,6 +2377,7 @@ AcDbUCSTableRecord* PyDbUCSTableRecord::impObj(const std::source_location& src /
 // PyDbRegAppTableRecord
 void makePyDbRegAppTableRecordWrapper()
 {
+    PyDocString DS("RegAppTableRecord");
     class_<PyDbRegAppTableRecord, bases<PyDbSymbolTableRecord>>("RegAppTableRecord")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
@@ -2440,6 +2449,7 @@ AcDbRegAppTableRecord* PyDbRegAppTableRecord::impObj(const std::source_location&
 // PyDbLinetypeTableRecord
 void makePyDbLinetypeTableRecordWrapper()
 {
+    PyDocString DS("LinetypeTableRecord");
     class_<PyDbLinetypeTableRecord, bases<PyDbSymbolTableRecord>>("LinetypeTableRecord")
         .def(init<>())
         .def(init<const PyDbObjectId&>())
