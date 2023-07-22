@@ -16,52 +16,52 @@ void makePyDbEntityWrapper()
         .def("color", &PyDbEntity::color, DS.CLASSARGS())
         .def("setColor", &PyDbEntity::setColor1)
         .def("setColor", &PyDbEntity::setColor2)
-        .def("setColor", &PyDbEntity::setColor3, DS.CLASSARGS({ "clr: AcCmColor", "dosubents = True","db = current" }))
+        .def("setColor", &PyDbEntity::setColor3, DS.CLASSARGS({ "clr: AcCmColor", "dosubents : bool=True","db : Database=current" }))
         .def("colorIndex", &PyDbEntity::colorIndex, DS.CLASSARGS())
         .def("setColorIndex", &PyDbEntity::setColorIndex1)
-        .def("setColorIndex", &PyDbEntity::setColorIndex2, DS.CLASSARGS({ "clr: int16", "dosubents = True" }))
+        .def("setColorIndex", &PyDbEntity::setColorIndex2, DS.CLASSARGS({ "clr: int",  "dosubents : bool=True" }))
         .def("entityColor", &PyDbEntity::entityColor, DS.CLASSARGS())
         .def("layer", &PyDbEntity::layer, DS.CLASSARGS())
         .def("layerId", &PyDbEntity::layerId, DS.CLASSARGS())
-        .def<void(PyDbEntity::*)(const std::string&)>("setLayer", &PyDbEntity::setLayer)
-        .def<void(PyDbEntity::*)(const std::string&, bool)>("setLayer", &PyDbEntity::setLayer)
-        .def<void(PyDbEntity::*)(const std::string&, bool, bool)>("setLayer", &PyDbEntity::setLayer)
-        .def<void(PyDbEntity::*)(const PyDbObjectId&)>("setLayer", &PyDbEntity::setLayer)
-        .def<void(PyDbEntity::*)(const PyDbObjectId&, bool)>("setLayer", &PyDbEntity::setLayer)
-        .def<void(PyDbEntity::*)(const PyDbObjectId&, bool, bool)>("setLayer", &PyDbEntity::setLayer, DS.CLASSARGS({ "val: str|ObjectId", "dosubents = True","allowHiddenLayer = false" }))
+        .def("setLayer", &PyDbEntity::setLayer1)
+        .def("setLayer", &PyDbEntity::setLayer2)
+        .def("setLayer", &PyDbEntity::setLayer3)
+        .def("setLayer", &PyDbEntity::setLayer4)
+        .def("setLayer", &PyDbEntity::setLayer5)
+        .def("setLayer", &PyDbEntity::setLayer6, DS.CLASSARGS({ "val: str|ObjectId", "dosubents : bool=True","allowHiddenLayer : bool=False" }))
         .def("plotStyleName", &PyDbEntity::plotStyleName, DS.CLASSARGS())
         .def("getPlotStyleNameId", &PyDbEntity::getPlotStyleNameId, DS.CLASSARGS())
-        .def<void(PyDbEntity::*)(const std::string&, Adesk::Boolean)>("setPlotStyleName", &PyDbEntity::setPlotStyleName)
-        .def<void(PyDbEntity::*)(AcDb::PlotStyleNameType, Adesk::Boolean)>("setPlotStyleName", &PyDbEntity::setPlotStyleName)
-        .def<void(PyDbEntity::*)(AcDb::PlotStyleNameType, const PyDbObjectId&, Adesk::Boolean)>("setPlotStyleName", &PyDbEntity::setPlotStyleName)
+        .def("setPlotStyleName", &PyDbEntity::setPlotStyleName1)
+        .def("setPlotStyleName", &PyDbEntity::setPlotStyleName2)
+        .def("setPlotStyleName", &PyDbEntity::setPlotStyleName3)
         .def("linetype", &PyDbEntity::linetype, DS.CLASSARGS())
         .def("linetypeId", &PyDbEntity::linetypeId, DS.CLASSARGS())
-        .def<void(PyDbEntity::*)(const std::string&)>("setLinetype", &PyDbEntity::setLinetype)
-        .def<void(PyDbEntity::*)(const std::string&, Adesk::Boolean)>("setLinetype", &PyDbEntity::setLinetype)
-        .def<void(PyDbEntity::*)(const PyDbObjectId&)>("setLinetype", &PyDbEntity::setLinetype)
-        .def<void(PyDbEntity::*)(const PyDbObjectId&, Adesk::Boolean)>("setLinetype", &PyDbEntity::setLinetype, DS.CLASSARGS({ "val: str|ObjectId", "dosubents = True" }))
+        .def("setLinetype", &PyDbEntity::setLinetype1)
+        .def("setLinetype", &PyDbEntity::setLinetype2)
+        .def("setLinetype", &PyDbEntity::setLinetype3)
+        .def("setLinetype", &PyDbEntity::setLinetype4, DS.CLASSARGS({ "val: str|ObjectId", "dosubents : bool=True" }))
         .def("material", &PyDbEntity::material, DS.CLASSARGS())
         .def("materialId", &PyDbEntity::materialId, DS.CLASSARGS())
-        .def<void(PyDbEntity::*)(const std::string&)>("setMaterial", &PyDbEntity::setMaterial)
-        .def<void(PyDbEntity::*)(const std::string&, Adesk::Boolean)>("setMaterial", &PyDbEntity::setMaterial)
-        .def<void(PyDbEntity::*)(const PyDbObjectId&)>("setMaterial", &PyDbEntity::setMaterial)
-        .def<void(PyDbEntity::*)(const PyDbObjectId&, Adesk::Boolean)>("setMaterial", &PyDbEntity::setMaterial, DS.CLASSARGS({ "val: str|ObjectId", "dosubents = True" }))
+        .def("setMaterial", &PyDbEntity::setMaterial1)
+        .def("setMaterial", &PyDbEntity::setMaterial2)
+        .def("setMaterial", &PyDbEntity::setMaterial3)
+        .def("setMaterial", &PyDbEntity::setMaterial4, DS.CLASSARGS({ "val: str|ObjectId",  "dosubents : bool=True" }))
         .def("linetypeScale", &PyDbEntity::linetypeScale, DS.CLASSARGS())
-        .def<void(PyDbEntity::*)(double)>("setLinetypeScale", &PyDbEntity::setLinetypeScale)
-        .def<void(PyDbEntity::*)(double, Adesk::Boolean)>("setLinetypeScale", &PyDbEntity::setLinetypeScale, DS.CLASSARGS({ "val: float", "dosubents = True" }))
+        .def("setLinetypeScale", &PyDbEntity::setLinetypeScale1)
+        .def("setLinetypeScale", &PyDbEntity::setLinetypeScale2, DS.CLASSARGS({ "val: float",  "dosubents : bool=True" }))
         .def("visibility", &PyDbEntity::visibility, DS.CLASSARGS())
-        .def<void(PyDbEntity::*)(AcDb::Visibility)>("setVisibility", &PyDbEntity::setVisibility)
-        .def<void(PyDbEntity::*)(AcDb::Visibility, Adesk::Boolean)>("setVisibility", &PyDbEntity::setVisibility, DS.CLASSARGS({ "val: Visibility", "dosubents = True" }))
+        .def("setVisibility", &PyDbEntity::setVisibility1)
+        .def("setVisibility", &PyDbEntity::setVisibility2, DS.CLASSARGS({ "val: Visibility",  "dosubents : bool=True" }))
         .def("lineWeight", &PyDbEntity::lineWeight, DS.CLASSARGS())
-        .def<void(PyDbEntity::*)(AcDb::LineWeight)>("setLineWeight", &PyDbEntity::setLineWeight)
-        .def<void(PyDbEntity::*)(AcDb::LineWeight, Adesk::Boolean)>("setLineWeight", &PyDbEntity::setLineWeight, DS.CLASSARGS({ "val: LineWeight", "dosubents = True" }))
+        .def("setLineWeight", &PyDbEntity::setLineWeight1)
+        .def("setLineWeight", &PyDbEntity::setLineWeight2, DS.CLASSARGS({ "val: LineWeight",  "dosubents : bool=True" }))
         .def("collisionType", &PyDbEntity::collisionType, DS.CLASSARGS())
         .def("castShadows", &PyDbEntity::castShadows, DS.CLASSARGS())
         .def("setCastShadows", &PyDbEntity::setCastShadows, DS.CLASSARGS({ "val: bool" }))
         .def("receiveShadows", &PyDbEntity::receiveShadows, DS.CLASSARGS())
         .def("setReceiveShadows", &PyDbEntity::setReceiveShadows, DS.CLASSARGS({ "val: bool" }))
-        .def<void(PyDbEntity::*)(const PyDbEntity&)>("setPropertiesFrom", &PyDbEntity::setPropertiesFrom)
-        .def<void(PyDbEntity::*)(const PyDbEntity&, Adesk::Boolean)>("setPropertiesFrom", &PyDbEntity::setPropertiesFrom)
+        .def("setPropertiesFrom", &PyDbEntity::setPropertiesFrom1)
+        .def("setPropertiesFrom", &PyDbEntity::setPropertiesFrom2,  DS.CLASSARGS({ "ent: Entity",  "dosubents : bool=True" }))
         .def("isPlanar", &PyDbEntity::isPlanar, DS.CLASSARGS())
         .def("getPlane", &PyDbEntity::getPlane, DS.CLASSARGS())
         .def("getEcs", &PyDbEntity::getEcs, DS.CLASSARGS({ "matrix3d: PyGe.Matrix3d" }))
@@ -69,11 +69,11 @@ void makePyDbEntityWrapper()
         .def("intersectWith", &PyDbEntity::intersectWith1)
         .def("intersectWith", &PyDbEntity::intersectWith2)
         .def("intersectWith", &PyDbEntity::intersectWith3)
-        .def("intersectWith", &PyDbEntity::intersectWith4, DS.CLASSARGS({ "entity: Entity", "inter: Intersect", "points: list" }))
+        .def("intersectWith", &PyDbEntity::intersectWith4)
         .def("transformBy", &PyDbEntity::transformBy, DS.CLASSARGS({ "matrix3d: PyGe.Matrix3d" }))
         .def("recordGraphicsModified", &PyDbEntity::recordGraphicsModified, DS.CLASSARGS())
-        .def<void(PyDbEntity::*)(void)>("setDatabaseDefaults", &PyDbEntity::setDatabaseDefaults)
-        .def<void(PyDbEntity::*)(const PyDbDatabase&)>("setDatabaseDefaults", &PyDbEntity::setDatabaseDefaults, DS.CLASSARGS({ "db: Database = current" }))
+        .def("setDatabaseDefaults", &PyDbEntity::setDatabaseDefaults1)
+        .def("setDatabaseDefaults", &PyDbEntity::setDatabaseDefaults2, DS.CLASSARGS({ "db: Database = current" }))
         .def("getCompoundObjectTransform", &PyDbEntity::getCompoundObjectTransform, DS.CLASSARGS({ "matrix3d: PyGe.Matrix3d" }))
         .def("getGeomExtents", &PyDbEntity::getGeomExtents, DS.CLASSARGS({ "extents: Extents" }))
         .def("draw", &PyDbEntity::draw, DS.CLASSARGS())
@@ -115,32 +115,32 @@ AcCmColor PyDbEntity::color() const
     return impObj()->color();
 }
 
-void PyDbEntity::setLayer(const std::string& newVal)
+void PyDbEntity::setLayer1(const std::string& newVal)
 {
-    return this->setLayer(newVal, true, false);
+    return this->setLayer3(newVal, true, false);
 }
 
-void PyDbEntity::setLayer(const std::string& newVal, bool doSubents)
+void PyDbEntity::setLayer2(const std::string& newVal, bool doSubents)
 {
-    return this->setLayer(newVal, doSubents, false);
+    return this->setLayer3(newVal, doSubents, false);
 }
 
-void PyDbEntity::setLayer(const std::string& newVal, bool doSubents, bool allowHiddenLayer)
+void PyDbEntity::setLayer3(const std::string& newVal, bool doSubents, bool allowHiddenLayer)
 {
     return PyThrowBadEs(impObj()->setLayer(utf8_to_wstr(newVal).c_str(), doSubents, allowHiddenLayer));
 }
 
-void PyDbEntity::setLayer(const PyDbObjectId& newVal)
+void PyDbEntity::setLayer4(const PyDbObjectId& newVal)
 {
-    return this->setLayer(newVal, true, false);
+    return this->setLayer6(newVal, true, false);
 }
 
-void PyDbEntity::setLayer(const PyDbObjectId& newVal, bool doSubents)
+void PyDbEntity::setLayer5(const PyDbObjectId& newVal, bool doSubents)
 {
-    return this->setLayer(newVal, true, false);
+    return this->setLayer6(newVal, true, false);
 }
 
-void PyDbEntity::setLayer(const PyDbObjectId& newVal, bool doSubents, bool allowHiddenLayer)
+void PyDbEntity::setLayer6(const PyDbObjectId& newVal, bool doSubents, bool allowHiddenLayer)
 {
     return PyThrowBadEs(impObj()->setLayer(newVal.m_id, doSubents, allowHiddenLayer));
 }
@@ -218,17 +218,17 @@ PyDbObjectId PyDbEntity::layerId() const
     return  PyDbObjectId(impObj()->layerId());
 }
 
-void PyDbEntity::setPlotStyleName(const std::string& str, Adesk::Boolean doSubents)
+void PyDbEntity::setPlotStyleName1(const std::string& str, Adesk::Boolean doSubents)
 {
     return PyThrowBadEs(impObj()->setPlotStyleName(utf8_to_wstr(str).c_str(), doSubents));
 }
 
-void PyDbEntity::setPlotStyleName(AcDb::PlotStyleNameType tp, Adesk::Boolean doSubents)
+void PyDbEntity::setPlotStyleName2(AcDb::PlotStyleNameType tp, Adesk::Boolean doSubents)
 {
     return PyThrowBadEs(impObj()->setPlotStyleName(tp, AcDbObjectId::kNull, doSubents));
 }
 
-void PyDbEntity::setPlotStyleName(AcDb::PlotStyleNameType tp, const PyDbObjectId& newId, Adesk::Boolean doSubents)
+void PyDbEntity::setPlotStyleName3(AcDb::PlotStyleNameType tp, const PyDbObjectId& newId, Adesk::Boolean doSubents)
 {
     return PyThrowBadEs(impObj()->setPlotStyleName(tp, newId.m_id, doSubents));
 }
@@ -243,22 +243,22 @@ PyDbObjectId PyDbEntity::linetypeId() const
     return  PyDbObjectId(impObj()->linetypeId());
 }
 
-void PyDbEntity::setLinetype(const std::string& newVal)
+void PyDbEntity::setLinetype1(const std::string& newVal)
 {
     return PyThrowBadEs(impObj()->setLinetype(utf8_to_wstr(newVal).c_str()));
 }
 
-void PyDbEntity::setLinetype(const std::string& newVal, Adesk::Boolean doSubents)
+void PyDbEntity::setLinetype2(const std::string& newVal, Adesk::Boolean doSubents)
 {
     return PyThrowBadEs(impObj()->setLinetype(utf8_to_wstr(newVal).c_str(), doSubents));
 }
 
-void PyDbEntity::setLinetype(const PyDbObjectId& newVal)
+void PyDbEntity::setLinetype3(const PyDbObjectId& newVal)
 {
     return PyThrowBadEs(impObj()->setLinetype(newVal.m_id));
 }
 
-void PyDbEntity::setLinetype(const PyDbObjectId& newVal, Adesk::Boolean doSubents)
+void PyDbEntity::setLinetype4(const PyDbObjectId& newVal, Adesk::Boolean doSubents)
 {
     return PyThrowBadEs(impObj()->setLinetype(newVal.m_id, doSubents));
 }
@@ -273,22 +273,22 @@ PyDbObjectId PyDbEntity::materialId() const
     return  PyDbObjectId(impObj()->materialId());
 }
 
-void PyDbEntity::setMaterial(const std::string& newVal)
+void PyDbEntity::setMaterial1(const std::string& newVal)
 {
     return PyThrowBadEs(impObj()->setMaterial(utf8_to_wstr(newVal).c_str()));
 }
 
-void PyDbEntity::setMaterial(const std::string& newVal, Adesk::Boolean doSubents)
+void PyDbEntity::setMaterial2(const std::string& newVal, Adesk::Boolean doSubents)
 {
     return PyThrowBadEs(impObj()->setMaterial(utf8_to_wstr(newVal).c_str(), doSubents));
 }
 
-void PyDbEntity::setMaterial(const PyDbObjectId& newVal)
+void PyDbEntity::setMaterial3(const PyDbObjectId& newVal)
 {
     return PyThrowBadEs(impObj()->setLinetype(newVal.m_id));
 }
 
-void PyDbEntity::setMaterial(const PyDbObjectId& newVal, Adesk::Boolean doSubents)
+void PyDbEntity::setMaterial4(const PyDbObjectId& newVal, Adesk::Boolean doSubents)
 {
     return PyThrowBadEs(impObj()->setLinetype(newVal.m_id, doSubents));
 }
@@ -298,12 +298,12 @@ double PyDbEntity::linetypeScale() const
     return  impObj()->linetypeScale();
 }
 
-void PyDbEntity::setLinetypeScale(double newval)
+void PyDbEntity::setLinetypeScale1(double newval)
 {
     return  PyThrowBadEs(impObj()->setLinetypeScale(newval));
 }
 
-void PyDbEntity::setLinetypeScale(double newval, Adesk::Boolean doSubents)
+void PyDbEntity::setLinetypeScale2(double newval, Adesk::Boolean doSubents)
 {
     return  PyThrowBadEs(impObj()->setLinetypeScale(newval, doSubents));
 }
@@ -313,12 +313,12 @@ AcDb::Visibility PyDbEntity::visibility() const
     return  impObj()->visibility();
 }
 
-void PyDbEntity::setVisibility(AcDb::Visibility newVal)
+void PyDbEntity::setVisibility1(AcDb::Visibility newVal)
 {
     return  PyThrowBadEs(impObj()->setVisibility(newVal));
 }
 
-void PyDbEntity::setVisibility(AcDb::Visibility newVal, Adesk::Boolean doSubents /*= true*/)
+void PyDbEntity::setVisibility2(AcDb::Visibility newVal, Adesk::Boolean doSubents /*= true*/)
 {
     return  PyThrowBadEs(impObj()->setVisibility(newVal, doSubents));
 }
@@ -328,12 +328,12 @@ AcDb::LineWeight PyDbEntity::lineWeight() const
     return impObj()->lineWeight();
 }
 
-void PyDbEntity::setLineWeight(AcDb::LineWeight newVal)
+void PyDbEntity::setLineWeight1(AcDb::LineWeight newVal)
 {
     return  PyThrowBadEs(impObj()->setLineWeight(newVal));
 }
 
-void PyDbEntity::setLineWeight(AcDb::LineWeight newVal, Adesk::Boolean doSubents)
+void PyDbEntity::setLineWeight2(AcDb::LineWeight newVal, Adesk::Boolean doSubents)
 {
     return PyThrowBadEs(impObj()->setLineWeight(newVal, doSubents));
 }
@@ -363,12 +363,12 @@ void PyDbEntity::setReceiveShadows(bool newVal)
     impObj()->setReceiveShadows(newVal);
 }
 
-void PyDbEntity::setPropertiesFrom(const PyDbEntity& pEntity)
+void PyDbEntity::setPropertiesFrom1(const PyDbEntity& pEntity)
 {
     return PyThrowBadEs(impObj()->setPropertiesFrom(pEntity.impObj()));
 }
 
-void PyDbEntity::setPropertiesFrom(const PyDbEntity& pEntity, Adesk::Boolean doSubents)
+void PyDbEntity::setPropertiesFrom2(const PyDbEntity& pEntity, Adesk::Boolean doSubents)
 {
     return PyThrowBadEs(impObj()->setPropertiesFrom(pEntity.impObj(), doSubents));
 }
@@ -414,12 +414,12 @@ void PyDbEntity::draw()
     return PyThrowBadEs(impObj()->draw());
 }
 
-void PyDbEntity::setDatabaseDefaults()
+void PyDbEntity::setDatabaseDefaults1()
 {
     impObj()->setDatabaseDefaults();
 }
 
-void PyDbEntity::setDatabaseDefaults(const PyDbDatabase& db)
+void PyDbEntity::setDatabaseDefaults2(const PyDbDatabase& db)
 {
     impObj()->setDatabaseDefaults(db.impObj());
 }

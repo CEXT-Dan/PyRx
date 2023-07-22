@@ -7,7 +7,6 @@ public:
 
     const char* CLASSARGS();
     const char* CLASSARGS(std::initializer_list<std::string> pyargs);
-    const char* CLASSARGS(std::initializer_list<std::initializer_list<std::string>> pyargs);
     const char* CLASSARGSSTATIC();
     const char* CLASSARGSSTATIC(std::initializer_list<std::string> pyargs);
 

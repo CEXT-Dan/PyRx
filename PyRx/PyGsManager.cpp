@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PyGsManager.h"
 #include "AcGsManager.h"
+#include "PyDbObjectId.h"
 
 using namespace boost::python;
 
@@ -8,19 +9,14 @@ void makePyGsManagerWrapper()
 {
     PyDocString DS("GsManager");
     class_<PyGsManager>("GsManager")
-        .def("testfunc", &PyGsManager::testfunc, DS.CLASSARGSSTATIC({ "val : int","val2 : int" })).staticmethod("testfunc")
-        .def("className", &PyGsManager::className).staticmethod("className")
+        .def(init<>(DS.CLASSARGS()))
+        .def("className", &PyGsManager::className, DS.CLASSARGSSTATIC()).staticmethod("className")
         ;
 }
 
 PyGsManager::PyGsManager()
     : m_pyImp(acgsGetGsManager())
 {
-}
-
-void PyGsManager::testfunc(int val, int val2)
-{
-
 }
 
 std::string PyGsManager::className()
