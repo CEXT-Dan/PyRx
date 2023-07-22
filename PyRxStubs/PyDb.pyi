@@ -1336,8 +1336,26 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -1620,10 +1638,10 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setConstraintDynamic (self, *args, **kwargs)-> None :
@@ -1751,19 +1769,19 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setJogSymbolPosition(class PyDbAlignedDimension {lvalue},class AcGePoint3d)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -1803,16 +1821,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPrefix(class PyDbDimension {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -1925,7 +1935,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setUsingDefaultTextPosition(class PyDbDimension {lvalue},bool)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -2608,8 +2618,26 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -2764,10 +2792,10 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     C++ signature :
         void setCenter(class PyDbArc {lvalue},class AcGePoint3d)'''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -2798,19 +2826,19 @@ setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None
     C++ signature :
         void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -2838,16 +2866,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setRadius (self, *args, **kwargs)-> None :
       '''setRadius( (Arc)arg1, (float)arg2) -> None :
@@ -2870,7 +2890,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setThickness(class PyDbArc {lvalue},double)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -3318,8 +3338,26 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -3632,10 +3670,10 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     C++ signature :
         void setCenterPoint(class PyDbArcDimension {lvalue},class AcGePoint3d)'''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setConstraintDynamic (self, *args, **kwargs)-> None :
@@ -3757,7 +3795,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setIsPartial(class PyDbArcDimension {lvalue},bool)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
     def setLeader1Point (self, *args, **kwargs)-> None :
@@ -3772,16 +3810,16 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setLeader2Point(class PyDbArcDimension {lvalue},class AcGePoint3d)'''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -3815,16 +3853,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPrefix(class PyDbDimension {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -3937,7 +3967,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setUsingDefaultTextPosition(class PyDbDimension {lvalue},bool)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -4340,8 +4370,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -4571,10 +4619,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setConstant (self, *args, **kwargs)-> None :
@@ -4619,16 +4667,16 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setJustification(class PyDbText {lvalue},enum AcDbText::AcTextAlignment)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLockPositionInBlock (self, *args, **kwargs)-> None :
@@ -4643,7 +4691,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setMTextAttributeDefinition(class PyDbAttributeDefinition {lvalue},class PyDbMText)'''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -4695,16 +4743,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPrompt(class PyDbAttributeDefinition {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -4751,7 +4791,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setVerticalMode(class PyDbText {lvalue},enum AcDb::TextVertMode)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWidthFactor (self, *args, **kwargs)-> None :
@@ -5058,8 +5098,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -5300,10 +5358,10 @@ setAttributeFromBlock( (AttributeReference)arg1, (AttributeDefinition)arg2, (Mat
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -5342,16 +5400,16 @@ setAttributeFromBlock( (AttributeReference)arg1, (AttributeDefinition)arg2, (Mat
     C++ signature :
         void setJustification(class PyDbText {lvalue},enum AcDbText::AcTextAlignment)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLockPositionInBlock (self, *args, **kwargs)-> None :
@@ -5366,7 +5424,7 @@ setAttributeFromBlock( (AttributeReference)arg1, (AttributeDefinition)arg2, (Mat
     C++ signature :
         void setMTextAttribute(class PyDbAttribute {lvalue},class PyDbMText {lvalue})'''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -5406,16 +5464,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPosition(class PyDbText {lvalue},class AcGePoint3d)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -5456,7 +5506,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setVerticalMode(class PyDbText {lvalue},enum AcDb::TextVertMode)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWidthFactor (self, *args, **kwargs)-> None :
@@ -5682,8 +5732,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -5805,10 +5873,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -5817,19 +5885,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -5851,21 +5919,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -6043,8 +6103,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -6166,10 +6244,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -6178,19 +6256,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -6212,21 +6290,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -6460,8 +6530,26 @@ geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -6631,10 +6719,10 @@ geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -6643,19 +6731,19 @@ geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -6689,16 +6777,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPosition(class PyDbBlockReference {lvalue},class AcGePoint3d)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -6715,7 +6795,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setScaleFactors(class PyDbBlockReference {lvalue},class AcGeScale3d)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -7687,8 +7767,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -7810,10 +7908,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -7822,19 +7920,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -7856,21 +7954,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -9577,8 +9667,26 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -9733,10 +9841,10 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     C++ signature :
         void setCircumference(class PyDbCircle {lvalue},double)'''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -9767,19 +9875,19 @@ setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None
     C++ signature :
         void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -9807,16 +9915,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setRadius (self, *args, **kwargs)-> None :
       '''setRadius( (Circle)arg1, (float)arg2) -> None :
@@ -9833,7 +9933,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setThickness(class PyDbCircle {lvalue},double)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -10961,8 +11061,26 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -11093,10 +11211,10 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -11121,19 +11239,19 @@ setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None
     C++ signature :
         void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -11155,21 +11273,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -12201,7 +12311,7 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def setPsolWidth (self: Database,val : float)-> None :
       '''                             '''
     ...
-    def setPucs (self: Database,ucsOrigin : PyGe.Point3d,ucsXDir : PyGe.Point3d,ucsYDir : PyGe.Point3d)-> None :
+    def setPucs (self: Database,ucsOrigin : PyGe.Point3d,ucsXDir : PyGe.Vector3d,ucsYDir : PyGe.Vector3d)-> None :
       '''                             '''
     ...
     def setPucsBase (self: Database,ucsid : ObjectId)-> None :
@@ -12318,7 +12428,7 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
     def setTreedepth (self: Database,val : int)-> None :
       '''                             '''
     ...
-    def setUcs (self: Database,ucsOrigin : PyGe.Point3d,ucsXDir : PyGe.Point3d,ucsYDir : PyGe.Point3d)-> None :
+    def setUcs (self: Database,ucsOrigin : PyGe.Point3d,ucsXDir : PyGe.Vector3d,ucsYDir : PyGe.Vector3d)-> None :
       '''                             '''
     ...
     def setUcsBase (self: Database,ucsid : ObjectId)-> None :
@@ -13172,8 +13282,26 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -13450,10 +13578,10 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     C++ signature :
         void setChordPoint(class PyDbDiametricDimension {lvalue},class AcGePoint3d)'''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setConstraintDynamic (self, *args, **kwargs)-> None :
@@ -13581,7 +13709,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setInspectionLabel(class PyDbDimension {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
     def setLeaderLength (self, *args, **kwargs)-> None :
@@ -13590,16 +13718,16 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setLeaderLength(class PyDbDiametricDimension {lvalue},double)'''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -13633,16 +13761,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPrefix(class PyDbDimension {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -13755,7 +13875,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setUsingDefaultTextPosition(class PyDbDimension {lvalue},bool)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -15162,8 +15282,26 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -15428,10 +15566,10 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setConstraintDynamic (self, *args, **kwargs)-> None :
@@ -15541,19 +15679,19 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setInspectionLabel(class PyDbDimension {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -15587,16 +15725,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPrefix(class PyDbDimension {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -15709,7 +15839,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setUsingDefaultTextPosition(class PyDbDimension {lvalue},bool)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -17557,8 +17687,26 @@ class Entity:
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -17680,10 +17828,10 @@ class Entity:
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -17692,19 +17840,19 @@ class Entity:
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -17726,21 +17874,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -20155,8 +20295,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -20278,10 +20436,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -20290,19 +20448,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -20324,21 +20482,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -20552,8 +20702,26 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -20693,10 +20861,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -20705,19 +20873,19 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -20739,16 +20907,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -20764,7 +20924,7 @@ setVertexAt( (Face)arg1, (int)arg2, (Point3d)arg3) -> None :
     C++ signature :
         void setVertexAt(class PyDbFace {lvalue},unsigned short,class AcGePoint3d)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -20963,8 +21123,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -21104,10 +21282,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -21116,19 +21294,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -21150,16 +21328,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -21170,7 +21340,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setVertexAt(class PyDbFaceRecord {lvalue},unsigned short,short)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -21429,8 +21599,26 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -21564,10 +21752,10 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -21635,16 +21823,16 @@ setDimstyleData( (Fcf)arg1, (ObjectId)arg2) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLocation (self, *args, **kwargs)-> None :
@@ -21653,7 +21841,7 @@ setDimstyleData( (Fcf)arg1, (ObjectId)arg2) -> None :
     C++ signature :
         void setLocation(class PyDbFcf {lvalue},class AcGePoint3d)'''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOrientation (self, *args, **kwargs)-> None :
@@ -21681,16 +21869,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -21701,7 +21881,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setText(class PyDbFcf {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -23783,8 +23963,26 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     C++ signature :
         void insertLoopAt(class PyDbHatch {lvalue},int,int,class boost::python::list)'''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -24026,10 +24224,10 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -24086,7 +24284,7 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     C++ signature :
         void setHatchStyle(class PyDbHatch {lvalue},enum AcDbHatch::HatchStyle)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
     def setLineGenerationEnabled (self, *args, **kwargs)-> bool :
@@ -24095,16 +24293,16 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     C++ signature :
         bool setLineGenerationEnabled(class PyDbHatch {lvalue},bool)'''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -24168,16 +24366,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -24194,7 +24384,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setShadeTintValueAndColor2(class PyDbHatch {lvalue},float)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -25221,8 +25411,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -25344,10 +25552,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -25356,19 +25564,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -25390,21 +25598,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -27986,8 +28186,26 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -28166,7 +28384,7 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
     def setColorIndex (self, *args, **kwargs)-> None :
@@ -28285,19 +28503,19 @@ setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None
     C++ signature :
         void setHasArrowHead(class PyDbLeader {lvalue},bool)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -28325,16 +28543,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -28363,7 +28573,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         bool setVertexAt(class PyDbLeader {lvalue},int,class AcGePoint3d)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -28666,8 +28876,26 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -28804,10 +29032,10 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -28838,19 +29066,19 @@ setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None
     C++ signature :
         void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -28878,16 +29106,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -28904,7 +29124,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setThickness(class PyDbLine {lvalue},double)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -29322,8 +29542,26 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -29594,10 +29832,10 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setConstraintDynamic (self, *args, **kwargs)-> None :
@@ -29713,19 +29951,19 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setInspectionLabel(class PyDbDimension {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -29759,16 +29997,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPrefix(class PyDbDimension {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -29881,7 +30111,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setUsingDefaultTextPosition(class PyDbDimension {lvalue},bool)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -31206,8 +31436,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -31329,10 +31577,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -31341,19 +31589,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -31375,21 +31623,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -31635,8 +31875,26 @@ geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -31818,10 +32076,10 @@ geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setColumnSpacing (self, *args, **kwargs)-> None :
@@ -31842,19 +32100,19 @@ geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -31888,16 +32146,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPosition(class PyDbBlockReference {lvalue},class AcGePoint3d)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -31926,7 +32176,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setScaleFactors(class PyDbBlockReference {lvalue},class AcGeScale3d)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -32381,8 +32631,26 @@ getLeaderLineIndexes( (MLeader)arg1, (int)arg2) -> list :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -32716,10 +32984,10 @@ setBlockAttributeValue( (MLeader)arg1, (ObjectId)arg2, (str)arg3) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setContentType (self, *args, **kwargs)-> None :
@@ -32799,7 +33067,7 @@ setDoglegLength( (MLeader)arg1, (int)arg2, (float)arg3) -> None :
     C++ signature :
         void setLastVertex(class PyDbMLeader {lvalue},int,class AcGePoint3d)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
     def setLeaderLineColor1 (self, *args, **kwargs)-> None :
@@ -32846,13 +33114,13 @@ setLeaderLineWeight1( (MLeader)arg1, (int)arg2, (LineWeight)arg3) -> None :
     C++ signature :
         void setLeaderLineWeight1(class PyDbMLeader {lvalue},int,enum AcDb::LineWeight)'''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setMLeaderStyle (self, *args, **kwargs)-> None :
@@ -32867,7 +33135,7 @@ setLeaderLineWeight1( (MLeader)arg1, (int)arg2, (LineWeight)arg3) -> None :
     C++ signature :
         void setMText(class PyDbMLeader {lvalue},class PyDbMText)'''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOverride (self, *args, **kwargs)-> None :
@@ -32906,16 +33174,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -32991,7 +33251,7 @@ setTextAttachmentType( (MLeader)arg1, (MLeaderTextAttachmentType)arg2, (MLeaderL
     C++ signature :
         void setVertex(class PyDbMLeader {lvalue},int,int,class AcGePoint3d)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -35772,8 +36032,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -35961,10 +36239,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setColumnAutoHeight (self, *args, **kwargs)-> None :
@@ -36051,7 +36329,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setHeight(class PyDbMText {lvalue},double)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
     def setLineSpacingFactor (self, *args, **kwargs)-> None :
@@ -36066,13 +36344,13 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setLineSpacingStyle(class PyDbMText {lvalue},enum AcDb::LineSpacingStyle)'''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLocation (self, *args, **kwargs)-> None :
@@ -36081,7 +36359,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setLocation(class PyDbMText {lvalue},class AcGePoint3d)'''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -36109,16 +36387,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -36153,7 +36423,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setUseBackgroundColor(class PyDbMText {lvalue},bool)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWidth (self, *args, **kwargs)-> None :
@@ -37117,8 +37387,26 @@ getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4, (bool
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -37288,10 +37576,10 @@ getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4, (bool
     C++ signature :
         void setClosedMline(class PyDbMline {lvalue},bool)'''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -37306,19 +37594,19 @@ getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4, (bool
     C++ signature :
         void setJustification(class PyDbMline {lvalue},signed char)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -37346,16 +37634,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -37384,7 +37664,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setSupressStartCaps(class PyDbMline {lvalue},bool)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -38160,8 +38440,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -38283,10 +38581,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -38295,19 +38593,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -38329,21 +38627,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -38974,8 +39264,26 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -39264,10 +39572,10 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setConstraintDynamic (self, *args, **kwargs)-> None :
@@ -39383,7 +39691,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setInspectionLabel(class PyDbDimension {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
     def setLeaderEndPoint (self, *args, **kwargs)-> None :
@@ -39392,16 +39700,16 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setLeaderEndPoint(class PyDbOrdinateDimension {lvalue},class AcGePoint3d)'''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -39441,16 +39749,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPrefix(class PyDbDimension {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -39575,7 +39875,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setUsingYAxis(class PyDbOrdinateDimension {lvalue},bool)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -40709,8 +41009,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -40910,10 +41228,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setClipInverted(class PyDbUnderlayReference {lvalue},bool)'''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setContrast (self, *args, **kwargs)-> None :
@@ -40970,19 +41288,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setIsOn(class PyDbUnderlayReference {lvalue},bool)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -41016,16 +41334,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPosition(class PyDbUnderlayReference {lvalue},class AcGePoint3d)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -41054,7 +41364,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setUnderlayLayer(class PyDbUnderlayReference {lvalue},int,class PyUnderlayLayer)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWidth (self, *args, **kwargs)-> None :
@@ -41391,8 +41701,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -41514,10 +41842,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -41526,19 +41854,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -41560,21 +41888,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -42795,8 +43115,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -42930,10 +43268,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -42948,19 +43286,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -42994,16 +43332,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPosition(class PyDbPoint {lvalue},class AcGePoint3d)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -43014,7 +43344,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setThickness(class PyDbPoint {lvalue},double)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -43432,8 +43762,26 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -43710,10 +44058,10 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     C++ signature :
         void setCenterPoint(class PyDb3PointAngularDimension {lvalue},class AcGePoint3d)'''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setConstraintDynamic (self, *args, **kwargs)-> None :
@@ -43829,19 +44177,19 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setInspectionLabel(class PyDbDimension {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -43875,16 +44223,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPrefix(class PyDbDimension {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -43997,7 +44337,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setUsingDefaultTextPosition(class PyDbDimension {lvalue},bool)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -44587,8 +44927,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -44716,10 +45074,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -44728,19 +45086,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -44768,21 +45126,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPosition(class PyDbPolyFaceMeshVertex {lvalue},class AcGePoint3d)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -44975,8 +45325,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -45104,10 +45472,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -45116,19 +45484,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -45156,21 +45524,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPosition(class PyDbPolygonMeshVertex {lvalue},class AcGePoint3d)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -45573,8 +45933,26 @@ getEcs( (Polyline)arg1, (Matrix3d)arg2) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -45777,10 +46155,10 @@ getEcs( (Polyline)arg1, (Matrix3d)arg2) -> None :
     C++ signature :
         void setClosed(class PyDbPolyline {lvalue},bool)'''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setConstantWidth (self, *args, **kwargs)-> None :
@@ -45817,19 +46195,19 @@ setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None
     C++ signature :
         void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -45869,16 +46247,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPointAt(class PyDbPolyline {lvalue},unsigned int,class AcGePoint2d)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -45889,7 +46259,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setThickness(class PyDbPolyline {lvalue},double)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWidthsAt (self, *args, **kwargs)-> None :
@@ -46241,8 +46611,26 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     C++ signature :
         void insertVertexAt(class PyDb2dPolyline {lvalue},class PyDbObjectId {lvalue},class PyDbObjectId,class PyDb2dVertex {lvalue})'''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -46433,10 +46821,10 @@ insertVertexAt( (Polyline2d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Vertex2d)arg4
     C++ signature :
         void setClosed(class PyDb2dPolyline {lvalue},bool)'''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setConstantWidth (self, *args, **kwargs)-> None :
@@ -46485,13 +46873,13 @@ setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None
     C++ signature :
         void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLinetypeGenerationOff (self, *args, **kwargs)-> None :
@@ -46506,10 +46894,10 @@ setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None
     C++ signature :
         void setLinetypeGenerationOn(class PyDb2dPolyline {lvalue})'''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -46543,16 +46931,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPolyType(class PyDb2dPolyline {lvalue},enum AcDb::Poly2dType)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -46563,7 +46943,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setThickness(class PyDb2dPolyline {lvalue},double)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -46914,8 +47294,26 @@ insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVer
     C++ signature :
         void insertVertexAt(class PyDb3dPolyline {lvalue},class PyDbObjectId {lvalue},class PyDbObjectId,class PyDb3dPolylineVertex {lvalue})'''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -47088,10 +47486,10 @@ insertVertexAt( (Polyline3d)arg1, (ObjectId)arg2, (ObjectId)arg3, (Polyline3dVer
     C++ signature :
         void setClosed(class PyDb3dPolyline {lvalue},bool)'''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -47116,19 +47514,19 @@ setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None
     C++ signature :
         void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -47156,21 +47554,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPolyType(class PyDb3dPolyline {lvalue},enum AcDb::Poly3dType)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -47386,8 +47776,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -47515,10 +47923,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -47527,19 +47935,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -47567,21 +47975,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPosition(class PyDb3dPolylineVertex {lvalue},class AcGePoint3d)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -48005,8 +48405,26 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -48289,10 +48707,10 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     C++ signature :
         void setChordPoint(class PyDbRadialDimension {lvalue},class AcGePoint3d)'''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setConstraintDynamic (self, *args, **kwargs)-> None :
@@ -48414,7 +48832,7 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setInspectionLabel(class PyDbDimension {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
     def setLeaderLength (self, *args, **kwargs)-> None :
@@ -48423,16 +48841,16 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setLeaderLength(class PyDbRadialDimension {lvalue},double)'''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -48466,16 +48884,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPrefix(class PyDbDimension {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -48588,7 +48998,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setUsingDefaultTextPosition(class PyDbDimension {lvalue},bool)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -49126,8 +49536,26 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -49422,10 +49850,10 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     C++ signature :
         void setChordPoint(class PyDbRadialDimensionLarge {lvalue},class AcGePoint3d)'''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setConstraintDynamic (self, *args, **kwargs)-> None :
@@ -49565,19 +49993,19 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setJogPointPP(class PyDbRadialDimensionLarge {lvalue},class AcGePoint3d)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -49623,16 +50051,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPrefix(class PyDbDimension {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -49751,7 +50171,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setUsingDefaultTextPosition(class PyDbDimension {lvalue},bool)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -50142,8 +50562,26 @@ imageSize( (RasterImage)arg1, (bool)arg2) -> Vector2d :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -50343,10 +50781,10 @@ imageSize( (RasterImage)arg1, (bool)arg2) -> Vector2d :
     C++ signature :
         void setClipInverted(class PyDbRasterImage {lvalue},bool)'''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setContrast (self, *args, **kwargs)-> None :
@@ -50391,19 +50829,19 @@ imageSize( (RasterImage)arg1, (bool)arg2) -> Vector2d :
     C++ signature :
         void setImageTransparency(class PyDbRasterImage {lvalue},bool)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOrientation (self, *args, **kwargs)-> bool :
@@ -50431,16 +50869,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReactorId (self, *args, **kwargs)-> None :
       '''setReactorId( (RasterImage)arg1, (ObjectId)arg2) -> None :
@@ -50469,7 +50899,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setShowImage(class PyDbRasterImage {lvalue},bool)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWidth (self, *args, **kwargs)-> None :
@@ -51760,8 +52190,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -51889,10 +52337,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -51901,19 +52349,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -51935,21 +52383,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -52325,8 +52765,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -52448,10 +52906,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -52460,19 +52918,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -52494,21 +52952,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -52908,8 +53358,26 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > inspectionLabel(class PyDbDimension {lvalue})'''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -53198,10 +53666,10 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setConstraintDynamic (self, *args, **kwargs)-> None :
@@ -53329,19 +53797,19 @@ setDimstyleData( (Dimension)arg1, (DimStyleTableRecord)arg2) -> None :
     C++ signature :
         void setJogSymbolPosition(class PyDbRotatedDimension {lvalue},class AcGePoint3d)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -53381,16 +53849,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPrefix(class PyDbDimension {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -53509,7 +53969,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setUsingDefaultTextPosition(class PyDbDimension {lvalue},bool)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -54224,8 +54684,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -54347,10 +54825,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -54359,19 +54837,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -54393,21 +54871,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -55077,8 +55547,26 @@ getSlice( (Solid3d)arg1, (Surface)arg2, (bool)arg3) -> Solid3d :
     C++ signature :
         void imprintEntity(class PyDb3dSolid {lvalue},class PyDbEntity)'''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -55248,10 +55736,10 @@ getSlice( (Solid3d)arg1, (Surface)arg2, (bool)arg3) -> Solid3d :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -55260,19 +55748,19 @@ getSlice( (Solid3d)arg1, (Surface)arg2, (bool)arg3) -> Solid3d :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -55294,16 +55782,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -55332,7 +55812,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setSubentMaterial(class PyDb3dSolid {lvalue},class PyDbSubentId,class PyDbObjectId {lvalue})'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -56205,8 +56685,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -56328,10 +56826,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -56340,19 +56838,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -56374,21 +56872,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -57070,8 +57560,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -57193,10 +57701,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -57205,19 +57713,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -57239,21 +57747,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -58710,8 +59210,26 @@ gridVisibility( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> Visibi
     C++ signature :
         void insertRowsAndInherit(class PyDbTable {lvalue},int,int,int)'''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -59195,10 +59713,10 @@ setBlockTableRecordId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)a
     C++ signature :
         void setCellType(class PyDbTable {lvalue},int,int,enum AcDb::CellType)'''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setColumnWidth (self, *args, **kwargs)-> None :
@@ -59403,16 +59921,16 @@ setGridVisibility( (Table)arg1, (int)arg2, (int)arg3, (CellEdgeMask)arg4, (Visib
     C++ signature :
         void setHorzCellMargin(class PyDbTable {lvalue},double)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setMargin (self, *args, **kwargs)-> None :
@@ -59421,7 +59939,7 @@ setGridVisibility( (Table)arg1, (int)arg2, (int)arg3, (CellEdgeMask)arg4, (Visib
     C++ signature :
         void setMargin(class PyDbTable {lvalue},int,int,enum AcDb::CellMargin,double)'''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -59466,16 +59984,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPosition(class PyDbTable {lvalue},class AcGePoint3d)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -59599,7 +60109,7 @@ setTextStyle( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)arg5) -> N
     C++ signature :
         void setVertCellMargin(class PyDbTable {lvalue},double)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWidth (self, *args, **kwargs)-> None :
@@ -61373,8 +61883,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -61562,10 +62090,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -61592,19 +62120,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setJustification(class PyDbText {lvalue},enum AcDbText::AcTextAlignment)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -61644,16 +62172,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPosition(class PyDbText {lvalue},class AcGePoint3d)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -61688,7 +62208,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setVerticalMode(class PyDbText {lvalue},enum AcDb::TextVertMode)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWidthFactor (self, *args, **kwargs)-> None :
@@ -64388,8 +64908,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -64589,10 +65127,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setClipInverted(class PyDbUnderlayReference {lvalue},bool)'''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setContrast (self, *args, **kwargs)-> None :
@@ -64649,19 +65187,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setIsOn(class PyDbUnderlayReference {lvalue},bool)'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setNormal (self, *args, **kwargs)-> None :
@@ -64695,16 +65233,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPosition(class PyDbUnderlayReference {lvalue},class AcGePoint3d)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -64733,7 +65263,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setUnderlayLayer(class PyDbUnderlayReference {lvalue},int,class PyUnderlayLayer)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setWidth (self, *args, **kwargs)-> None :
@@ -65400,8 +65930,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -65523,10 +66071,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -65535,19 +66083,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -65569,21 +66117,13 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -65799,8 +66339,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -65940,10 +66498,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
@@ -65958,19 +66516,19 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
@@ -65998,16 +66556,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPosition(class PyDb2dVertex {lvalue},class AcGePoint3d)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -66036,7 +66586,7 @@ setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
     C++ signature :
         void setVertexIdentifier(class PyDb2dVertex {lvalue},int)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
@@ -67220,8 +67770,26 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def intersectWith (self: Entity,entity: Entity,inter: Intersect,points: list)-> None :
-      '''                             '''
+    def intersectWith (self, *args, **kwargs)-> None :
+      '''intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (list)arg4, (int)arg5, (int)arg6) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class boost::python::list {lvalue},__int64,__int64)
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue})
+
+intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)arg5, (int)arg6, (int)arg7) -> None :
+
+    C++ signature :
+        void intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,class boost::python::list {lvalue},__int64,__int64)'''
     ...
     def isA (self: Drawable)-> RxClass :
       '''                             '''
@@ -67634,10 +68202,10 @@ setBackClipOn( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         void setCircleSides(class PyDbViewport {lvalue},unsigned short)'''
     ...
-    def setColor (self: Entity,clr: AcCmColor,dosubents = True,db = current)-> None :
+    def setColor (self: Entity,clr: AcCmColor,dosubents : bool=True,db : Database=current)-> None :
       '''                             '''
     ...
-    def setColorIndex (self: Entity,clr: int16,dosubents = True)-> None :
+    def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setContrast (self, *args, **kwargs)-> None :
@@ -67804,7 +68372,7 @@ setGridOn( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         void setLabelBlock(class PyDbViewport {lvalue},class PyDbObjectId {lvalue})'''
     ...
-    def setLayer (self: Entity,val: str|ObjectId,dosubents = True,allowHiddenLayer = false)-> None :
+    def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
     ...
     def setLensLength (self, *args, **kwargs)-> None :
@@ -67813,13 +68381,13 @@ setGridOn( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         void setLensLength(class PyDbViewport {lvalue},double)'''
     ...
-    def setLineWeight (self: Entity,val: LineWeight,dosubents = True)-> None :
+    def setLineWeight (self: Entity,val: LineWeight,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetype (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setLinetype (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLinetypeScale (self: Entity,val: float,dosubents = True)-> None :
+    def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setLocked (self, *args, **kwargs)-> None :
@@ -67833,7 +68401,7 @@ setLocked( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         void setLocked(class PyDbViewport {lvalue},bool)'''
     ...
-    def setMaterial (self: Entity,val: str|ObjectId,dosubents = True)-> None :
+    def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setModelView (self, *args, **kwargs)-> None :
@@ -67946,16 +68514,8 @@ setPreviousBackground( (Viewport)arg1, (ObjectId)arg2, (GiDrawableType)arg3, (bo
     C++ signature :
         void setPreviousBackground(class PyDbViewport {lvalue},class PyDbObjectId {lvalue},enum AcGiDrawable::DrawableType,bool)'''
     ...
-    def setPropertiesFrom (self, *args, **kwargs)-> None :
-      '''setPropertiesFrom( (Entity)arg1, (Entity)arg2) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity)
-
-setPropertiesFrom( (Entity)arg1, (Entity)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void setPropertiesFrom(class PyDbEntity {lvalue},class PyDbEntity,bool)'''
+    def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
+      '''                             '''
     ...
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -68184,7 +68744,7 @@ setUcsIconVisible( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         void setViewTarget(class PyDbViewport {lvalue},class AcGePoint3d)'''
     ...
-    def setVisibility (self: Entity,val: Visibility,dosubents = True)-> None :
+    def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
     def setVisualStyle (self, *args, **kwargs)-> None :

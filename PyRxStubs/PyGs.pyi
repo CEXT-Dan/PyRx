@@ -7,19 +7,10 @@ import PyAp
 import PyEd
 
 class GsManager:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64)'''
+    def __init__ (self: GsManager)-> None :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
-    ...
-    def testfunc (val : int,val2 : int)-> None :
+    def className ()-> str :
       '''                             '''
     ...
 
