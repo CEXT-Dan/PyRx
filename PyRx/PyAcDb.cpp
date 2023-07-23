@@ -30,6 +30,7 @@
 #include "PyDbLayout.h"
 #include "PyDbViewport.h"
 #include "PyDbObjectContext.h"
+#include "PyDbProtocolExtensions.h"
 
 
 using namespace boost::python;
@@ -228,6 +229,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbLayoutManagerWrapper();
     makePyDbEvalVariantWrapper();
     makePyDbDynBlockReferencePropertyWrapper();
+    makePyDbJoinEntityPEWrapper();
     makeDbCoreWrapper();//LAST?
 
     def("curDb", curPyDb);

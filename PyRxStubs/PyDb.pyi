@@ -26196,6 +26196,38 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
     ...
 
+class JoinEntityPE:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1, (RxClass)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyRxClass)'''
+    ...
+    def className ()-> str :
+      '''                             '''
+    ...
+    def desc ()-> RxClass :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def joinEntities (self: RxClass,primaryEntity : PyDb.Entity,secondaryEntities : [PyDb.Entity],tol : PyGe.Tol=default)-> list :
+      '''                             '''
+    ...
+    def joinEntity (self: RxClass,primaryEntity : PyDb.Entity,secondaryEntity : PyDb.Entity,tol : PyGe.Tol=default)-> bool :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
+    ...
+
 class JoinStyle:
     def __init__ (self, /, *args, **kwargs):
       '''Initialize self.  See help(type(self)) for accurate signature.'''

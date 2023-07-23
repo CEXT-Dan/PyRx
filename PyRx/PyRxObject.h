@@ -82,7 +82,7 @@ public:
 
 
 //-----------------------------------------------------------------------------------------
-//PrRxClass
+//PyRxClass
 void makeAcRxClassWrapper();
 
 class PyRxClass : public PyRxObject
