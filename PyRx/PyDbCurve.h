@@ -25,19 +25,26 @@ public:
     double              getParamAtDist(double dist) const;
     double              getDistAtPoint(const AcGePoint3d& pnt)const;
     AcGePoint3d         getPointAtDist(double) const;
-    AcGeVector3d        getFirstDeriv(double param) const;
-    AcGeVector3d        getFirstDeriv(const AcGePoint3d& pnt) const;
-    AcGeVector3d        getSecondDeriv(double param) const;
-    AcGeVector3d        getSecondDeriv(const AcGePoint3d& pnt) const;
-    AcGePoint3d         getClosestPointTo(const AcGePoint3d& givenPnt, Adesk::Boolean extend) const;
-    AcGePoint3d         getClosestPointTo(const AcGePoint3d& givenPnt, const AcGeVector3d& direction, Adesk::Boolean extend) const;
+
+    AcGeVector3d        getFirstDeriv1(double param) const;
+    AcGeVector3d        getFirstDeriv2(const AcGePoint3d& pnt) const;
+
+    AcGeVector3d        getSecondDeriv1(double param) const;
+    AcGeVector3d        getSecondDeriv2(const AcGePoint3d& pnt) const;
+
+    AcGePoint3d         getClosestPointTo1(const AcGePoint3d& givenPnt) const;
+    AcGePoint3d         getClosestPointTo2(const AcGePoint3d& givenPnt, Adesk::Boolean extend) const;
+    AcGePoint3d         getClosestPointTo3(const AcGePoint3d& givenPnt, const AcGeVector3d& direction, Adesk::Boolean extend) const;
+
     boost::python::list getOffsetCurves(double offsetDist) const;
     boost::python::list getOffsetCurvesGivenPlaneNormal(const AcGeVector3d& normal, double offsetDist) const;
     boost::python::list getSplitCurves(const boost::python::list& params) const;
+    boost::python::list getSplitCurvesAtParam(double param) const;
     boost::python::list getSplitCurvesAtParams(const boost::python::list& params) const;
+    boost::python::list getSplitCurvesAtPoint(const AcGePoint3d& givenPnt) const;
     boost::python::list getSplitCurvesAtPoints(const boost::python::list& params) const;
-    void                extend(double newParam);
-    void                extend(Adesk::Boolean extendStart, const AcGePoint3d& toPoint);
+    void                extend1(double newParam);
+    void                extend2(Adesk::Boolean extendStart, const AcGePoint3d& toPoint);
     double              getArea() const;
     void                reverseCurve();
     PyGeCurve3d         getAcGeCurve1() const;
