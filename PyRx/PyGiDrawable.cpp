@@ -20,7 +20,6 @@ void makePyGiObjectWrapper()
         .def("drawableType", &PyGiDrawable::drawableType, DS.CLASSARGS())
         .def("rolloverHit", &PyGiDrawable::rolloverHit, DS.CLASSARGS({ "nSubentId: int", "nMouseFlags: int", "bReset: bool" }))
         .def("bounds", &PyGiDrawable::bounds, DS.CLASSARGS({ "ext: PyDb.Extents" }))
-        .def("isA", &PyGiDrawable::isA, DS.CLASSARGS())
         .def("className", &PyGiDrawable::className, DS.CLASSARGSSTATIC()).staticmethod("className")
         .def("desc", &PyGiDrawable::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
         ;

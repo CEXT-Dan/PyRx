@@ -9,11 +9,12 @@ void makeAcRxObjectWrapper()
 {
     PyDocString DS("RxObject");
     class_<PyRxObject>("RxObject", boost::python::no_init)
-        .def("isA", &PyRxObject::isA,DS.CLASSARGS())
+        .def("isA", &PyRxObject::isA, DS.CLASSARGS())
         .def("isNullObj", &PyRxObject::isNullObj, DS.CLASSARGS())
         .def("implRefCount", &PyRxObject::implRefCount, DS.CLASSARGS())
-        .def("__eq__", &PyRxObject::operator==, DS.CLASSARGS({ "rhs : RxObject" }))
-        .def("__ne__", &PyRxObject::operator!=, DS.CLASSARGS({ "rhs : RxObject" }))
+        .def("queryX", &PyRxObject::queryX, DS.CLASSARGS({ "rhs :  PyRx.RxClass" }))
+        .def("__eq__", &PyRxObject::operator==, DS.CLASSARGS({ "rhs :  PyRx.RxObject" }))
+        .def("__ne__", &PyRxObject::operator!=, DS.CLASSARGS({ "rhs :  PyRx.RxObject" }))
         .def("className", &PyRxObject::className, DS.CLASSARGSSTATIC()).staticmethod("className")
         ;
 }
@@ -64,6 +65,14 @@ int PyRxObject::implRefCount()
     return m_pyImp.use_count();
 }
 
+PyRxObject PyRxObject::queryX(const PyRxClass& protocolClass) const
+{
+    AcRxObject* ptr = impObj()->queryX(protocolClass.impObj());
+    if (ptr == nullptr)
+        throw PyAcadErrorStatus(eInvalidInput);
+    return PyRxObject(ptr, false, false);
+}
+
 PyRxClass PyRxObject::desc()
 {
     return PyRxClass(AcRxObject::desc(), false);
@@ -87,10 +96,11 @@ void makeAcRxClassWrapper()
 {
     PyDocString DS("RxClass");
     class_<PyRxClass, bases<PyRxObject>>("RxClass", boost::python::no_init)
-        .def("isDerivedFrom", &PyRxClass::isDerivedFrom, DS.CLASSARGS({"other : RxClass"}))
+        .def("isDerivedFrom", &PyRxClass::isDerivedFrom, DS.CLASSARGS({ "other : PyRx.RxClass" }))
         .def("appName", &PyRxClass::appName, DS.CLASSARGS())
         .def("dxfName", &PyRxClass::dxfName, DS.CLASSARGS())
         .def("name", &PyRxClass::name, DS.CLASSARGS())
+        .def("queryX", &PyRxObject::queryX, DS.CLASSARGS({ "rhs :  PyRx.RxClass" }))
         .def("desc", &PyRxClass::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
         .def("className", &PyRxClass::className, DS.CLASSARGSSTATIC()).staticmethod("className")
         ;
@@ -121,6 +131,14 @@ std::string PyRxClass::appName() const
 std::string PyRxClass::dxfName() const
 {
     return wstr_to_utf8(impObj()->dxfName());
+}
+
+PyRxObject PyRxClass::queryX(const PyRxClass& protocolClass) const
+{
+    AcRxObject* ptr = impObj()->queryX(protocolClass.impObj());
+    if (ptr == nullptr)
+        throw PyAcadErrorStatus(eInvalidInput);
+    return PyRxObject(ptr, false, false);
 }
 
 PyRxClass PyRxClass::desc()
