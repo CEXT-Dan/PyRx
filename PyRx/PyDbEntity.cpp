@@ -77,6 +77,8 @@ void makePyDbEntityWrapper()
         .def("getCompoundObjectTransform", &PyDbEntity::getCompoundObjectTransform, DS.CLASSARGS({ "matrix3d: PyGe.Matrix3d" }))
         .def("getGeomExtents", &PyDbEntity::getGeomExtents, DS.CLASSARGS({ "extents: Extents" }))
         .def("draw", &PyDbEntity::draw, DS.CLASSARGS())
+        .def("explode", &PyDbEntity::explode, DS.CLASSARGS())
+        .def("getTransformedCopy", &PyDbEntity::getTransformedCopy, DS.CLASSARGS({ "matrix3d: PyGe.Matrix3d" }))
         .def("className", &PyDbEntity::className, DS.CLASSARGSSTATIC()).staticmethod("className")
         .def("desc", &PyDbEntity::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
         .def("cloneFrom", &PyDbEntity::cloneFrom, DS.CLASSARGSSTATIC({ "otherObject: RxObject" })).staticmethod("cloneFrom")
@@ -464,6 +466,24 @@ boost::python::list PyDbEntity::intersectWith4(const PyDbEntity& pEnt, AcDb::Int
     for (const auto& item : pnts)
         points.append(item);
     return points;
+}
+
+boost::python::list PyDbEntity::explode() const
+{
+    PyAutoLockGIL lock;
+    AcDbVoidPtrArray _ents;
+    boost::python::list ents;
+    PyThrowBadEs(impObj()->explode(_ents));
+    for (auto item : _ents)
+        ents.append(PyDbEntity(static_cast<AcDbEntity*>(item), true));
+    return ents;
+}
+
+PyDbEntity PyDbEntity::getTransformedCopy(const AcGeMatrix3d& xform) const
+{
+    AcDbEntity* pEnt = nullptr;
+    PyThrowBadEs(impObj()->getTransformedCopy(xform,pEnt));
+    return PyDbEntity(pEnt, true);
 }
 
 std::string PyDbEntity::className()
