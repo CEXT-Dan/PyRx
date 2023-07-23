@@ -2795,21 +2795,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setFromAcGeCurve (self, *args, **kwargs)-> None :
-      '''setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2) -> None :
-
-    C++ signature :
-        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d)
-
-setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3) -> None :
-
-    C++ signature :
-        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue})
-
-setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None :
-
-    C++ signature :
-        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
+    def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
+      '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -9829,21 +9816,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setFromAcGeCurve (self, *args, **kwargs)-> None :
-      '''setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2) -> None :
-
-    C++ signature :
-        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d)
-
-setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3) -> None :
-
-    C++ signature :
-        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue})
-
-setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None :
-
-    C++ signature :
-        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
+    def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
+      '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -11166,21 +11140,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setFromAcGeCurve (self, *args, **kwargs)-> None :
-      '''setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2) -> None :
-
-    C++ signature :
-        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d)
-
-setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3) -> None :
-
-    C++ signature :
-        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue})
-
-setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None :
-
-    C++ signature :
-        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
+    def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
+      '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -28409,21 +28370,8 @@ setDimldrblk( (Leader)arg1, (str)arg2) -> None :
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setFromAcGeCurve (self, *args, **kwargs)-> None :
-      '''setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2) -> None :
-
-    C++ signature :
-        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d)
-
-setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3) -> None :
-
-    C++ signature :
-        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue})
-
-setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None :
-
-    C++ signature :
-        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
+    def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
+      '''                             '''
     ...
     def setHasArrowHead (self, *args, **kwargs)-> None :
       '''setHasArrowHead( (Leader)arg1, (bool)arg2) -> None :
@@ -28963,21 +28911,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setFromAcGeCurve (self, *args, **kwargs)-> None :
-      '''setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2) -> None :
-
-    C++ signature :
-        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d)
-
-setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3) -> None :
-
-    C++ signature :
-        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue})
-
-setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None :
-
-    C++ signature :
-        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
+    def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
+      '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -46077,21 +46012,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setFromAcGeCurve (self, *args, **kwargs)-> None :
-      '''setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2) -> None :
-
-    C++ signature :
-        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d)
-
-setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3) -> None :
-
-    C++ signature :
-        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue})
-
-setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None :
-
-    C++ signature :
-        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
+    def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
+      '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -46740,21 +46662,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setFromAcGeCurve (self, *args, **kwargs)-> None :
-      '''setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2) -> None :
-
-    C++ signature :
-        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d)
-
-setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3) -> None :
-
-    C++ signature :
-        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue})
-
-setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None :
-
-    C++ signature :
-        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
+    def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
+      '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -47366,21 +47275,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (list)a
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setFromAcGeCurve (self, *args, **kwargs)-> None :
-      '''setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2) -> None :
-
-    C++ signature :
-        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d)
-
-setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3) -> None :
-
-    C++ signature :
-        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue})
-
-setFromAcGeCurve( (Curve)arg1, (Curve3d)arg2, (Vector3d)arg3, (Tol)arg4) -> None :
-
-    C++ signature :
-        void setFromAcGeCurve(class PyDbCurve {lvalue},class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
+    def setFromAcGeCurve (self: Curve,curve: PyGe.Curve3d,normal: PyGe.Vector3d = kZAxis,tol: Tol = default)-> None :
+      '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
