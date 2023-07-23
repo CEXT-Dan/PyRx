@@ -164,6 +164,7 @@
     <ClCompile Include="PyDbObject.cpp" />
     <ClCompile Include="PyDbObjectContext.cpp" />
     <ClCompile Include="PyDbObjectId.cpp" />
+    <ClCompile Include="PyDbProtocolExtensions.cpp" />
     <ClCompile Include="PyDbSurface.cpp" />
     <ClCompile Include="PyDbSymbolTable.cpp" />
     <ClCompile Include="PyDbSymbolTableRecord.cpp" />
@@ -256,6 +257,7 @@
     <ClInclude Include="PyDbObject.h" />
     <ClInclude Include="PyDbObjectContext.h" />
     <ClInclude Include="PyDbObjectId.h" />
+    <ClInclude Include="PyDbProtocolExtensions.h" />
     <ClInclude Include="PyDbSurface.h" />
     <ClInclude Include="PyDbSymbolTable.h" />
     <ClInclude Include="PyDbSymbolTableRecord.h" />

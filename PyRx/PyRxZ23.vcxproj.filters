@@ -268,6 +268,9 @@
     <ClCompile Include="PyAcGs.cpp">
       <Filter>Source Files\PyGs</Filter>
     </ClCompile>
+    <ClCompile Include="PyDbProtocolExtensions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -539,6 +542,9 @@
     </ClInclude>
     <ClInclude Include="PyGsManager.h">
       <Filter>Header Files\PyGs</Filter>
+    </ClInclude>
+    <ClInclude Include="PyDbProtocolExtensions.h">
+      <Filter>Header Files\PyDb</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
