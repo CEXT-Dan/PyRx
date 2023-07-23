@@ -27,8 +27,6 @@ struct PyRxObjectDeleter
             if (!dbo->objectId().isNull())
             {
 #ifdef PyRxDebug
-                if (!dbo->isReadEnabled() && !dbo->isWriteEnabled())
-                    acutPrintf(_T("\nobject already closed: "));
                 if (auto es = dbo->close(); es != eOk)
                     acutPrintf(_T("\nStatus = %ls in %ls: "), acadErrorStatusText(es), __FUNCTIONW__);
 #else
@@ -66,17 +64,15 @@ public:
     PyRxObject(const AcRxObject* ptr);
     PyRxObject(AcRxObject* ptr, bool autoDelete, bool isDbObject);
     virtual ~PyRxObject();
-
     bool operator==(const PyRxObject& rhs) const;
     bool operator!=(const PyRxObject& rhs) const;
-
-    PyRxClass isA() const;
-    void resetImp(AcRxObject* ptr, bool autoDelete, bool isDbObject);
-    bool isNullObj();
-    int implRefCount();
-
-    static PyRxClass desc();
-    static std::string className();
+    PyRxClass           isA() const;
+    void                resetImp(AcRxObject* ptr, bool autoDelete, bool isDbObject);
+    bool                isNullObj();
+    int                 implRefCount();
+    PyRxObject          queryX(const PyRxClass& protocolClass) const;
+    static PyRxClass    desc();
+    static std::string  className();
 public:
     AcRxObject* impObj(const std::source_location& src = std::source_location::current()) const;
 
@@ -94,12 +90,13 @@ class PyRxClass : public PyRxObject
 public:
     PyRxClass(AcRxClass* ptr, bool autoDelete);
     virtual ~PyRxClass() override = default;
-    bool isDerivedFrom(const PyRxClass& other) const;
-    std::string name();
-    std::string appName() const;
-    std::string dxfName() const;
-    static PyRxClass desc();
-    static std::string className();
+    bool                isDerivedFrom(const PyRxClass& other) const;
+    std::string         name();
+    std::string         appName() const;
+    std::string         dxfName() const;
+    PyRxObject          queryX(const PyRxClass& protocolClass) const;
+    static PyRxClass    desc();
+    static std::string  className();
 
 public:
     AcRxClass* impObj(const std::source_location& src = std::source_location::current()) const;

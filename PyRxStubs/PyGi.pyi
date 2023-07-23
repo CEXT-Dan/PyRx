@@ -1193,6 +1193,9 @@ This class cannot be instantiated from Python'''
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
+    ...
     def regenAbort (self, *args, **kwargs)-> bool :
       '''regenAbort( (CommonDraw)arg1) -> bool :
 
@@ -1390,13 +1393,16 @@ This class cannot be instantiated from Python'''
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
     def isPersistent (self: Drawable)-> bool :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -1490,6 +1496,9 @@ class DrawableOverrule:
 
     C++ signature :
         bool isOverruling()'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def removeOverrule (self, *args, **kwargs)-> None :
       '''removeOverrule( (RxClass)arg1, (Overrule)arg2) -> None :
@@ -1607,6 +1616,9 @@ This class cannot be instantiated from Python'''
 
     C++ signature :
         class PyDbObjectId materialId(class PyGiSubEntityTraits {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def sectionable (self, *args, **kwargs)-> bool :
       '''sectionable( (SubEntityTraits)arg1) -> bool :
@@ -1928,6 +1940,9 @@ pushScaleTransform( (Geometry)arg1, (AcGiScaleTransformBehavior)arg2, (Point2d)a
 
     C++ signature :
         class AcGeMatrix3d pushScaleTransform(class PyGiGeometry {lvalue},enum AcGiScaleTransformBehavior,class AcGePoint2d)'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def ray (self, *args, **kwargs)-> bool :
       '''ray( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
@@ -2618,6 +2633,9 @@ This class cannot be instantiated from Python'''
     C++ signature :
         class PyDbObjectId materialId(class PyGiSubEntityTraits {lvalue})'''
     ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
+    ...
     def sectionable (self, *args, **kwargs)-> bool :
       '''sectionable( (SubEntityTraits)arg1) -> bool :
 
@@ -2998,6 +3016,9 @@ This class cannot be instantiated from Python'''
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
+    ...
     def regenAbort (self, *args, **kwargs)-> bool :
       '''regenAbort( (CommonDraw)arg1) -> bool :
 
@@ -3183,6 +3204,9 @@ pushScaleTransform( (Geometry)arg1, (AcGiScaleTransformBehavior)arg2, (Point2d)a
     C++ signature :
         class AcGeMatrix3d pushScaleTransform(class PyGiGeometry {lvalue},enum AcGiScaleTransformBehavior,class AcGePoint2d)'''
     ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
+    ...
     def ray (self, *args, **kwargs)-> bool :
       '''ray( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
 
@@ -3250,6 +3274,9 @@ This class cannot be instantiated from Python'''
         bool isDragging(class PyGiCommonDraw {lvalue})'''
     ...
     def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def regenAbort (self, *args, **kwargs)-> bool :
@@ -3436,6 +3463,9 @@ pushScaleTransform( (Geometry)arg1, (AcGiScaleTransformBehavior)arg2, (Point2d)a
 
     C++ signature :
         class AcGeMatrix3d pushScaleTransform(class PyGiGeometry {lvalue},enum AcGiScaleTransformBehavior,class AcGePoint2d)'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def ray (self, *args, **kwargs)-> bool :
       '''ray( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :

@@ -1071,6 +1071,9 @@ lockDocument( (DocManager)arg1, (Document)arg2, (DocLockMode)arg3, (str)arg4, (s
     C++ signature :
         void pushAcadResourceHandle(class PyApDocManager {lvalue})'''
     ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
+    ...
     def sendModelessInterrupt (self, *args, **kwargs)-> None :
       '''sendModelessInterrupt( (DocManager)arg1, (Document)arg2) -> None :
 
@@ -1228,6 +1231,9 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def pushDbmod (self: Document)-> None :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def setDocTitle (self: Document,title : str)-> None :
@@ -1403,6 +1409,9 @@ layoutExists( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> bool :
       '''                             '''
     ...
     def pointInViewports (self: LayoutManager,val : PyGe.Point3d)-> list :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def renameLayout (self, *args, **kwargs)-> None :
@@ -1880,6 +1889,9 @@ class TransactionManager:
       '''                             '''
     ...
     def numOpenedObjects (self: TransactionManager)-> int :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def queueForGraphicsFlush (self: TransactionManager)-> None :

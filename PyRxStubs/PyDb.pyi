@@ -277,7 +277,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -338,6 +338,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list :
@@ -593,7 +596,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -694,6 +697,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         bool perspectiveEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -1363,7 +1369,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -1524,6 +1530,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > prefix(class PyDbDimension {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -2331,6 +2340,9 @@ __init__( (object)arg1) -> None :
     C++ signature :
         bool matchScaleId(class PyDbAnnotationScale {lvalue},__int64)'''
     ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
+    ...
     def setDrawingUnits (self, *args, **kwargs)-> None :
       '''setDrawingUnits( (AnnotationScale)arg1, (float)arg2) -> None :
 
@@ -2636,7 +2648,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -2748,6 +2760,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def radius (self, *args, **kwargs)-> float :
@@ -3349,7 +3364,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -3510,6 +3525,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > prefix(class PyDbDimension {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -4387,7 +4405,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -4578,6 +4596,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > prompt(class PyDbAttributeDefinition {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -5121,7 +5142,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -5312,6 +5333,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class AcGePoint3d position(class PyDbText {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -5761,7 +5785,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -5855,6 +5879,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -6138,7 +6165,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -6232,6 +6259,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -6571,7 +6601,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -6690,6 +6720,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class AcGePoint3d position(class PyDbBlockReference {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -7085,7 +7118,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -7146,6 +7179,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list :
@@ -7380,7 +7416,7 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -7517,6 +7553,9 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
 
     C++ signature :
         int postProcessAnnotativeBTR(class PyDbBlockTableRecord {lvalue},bool,bool)'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -7814,7 +7853,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -7908,6 +7947,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -9705,7 +9747,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -9811,6 +9853,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def radius (self, *args, **kwargs)-> float :
@@ -11065,7 +11110,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -11165,6 +11210,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -11868,6 +11916,9 @@ insert( (Database)arg1, (Matrix3d)arg2, (Database)arg3, (bool)arg4) -> None :
       '''                             '''
     ...
     def qtextmode (self: Database)-> bool :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def readDwgFile (self: Database,fileName : str,mode : int=kForReadAndReadShare,bAllowCPConversion : bool=False,password : str=empty)-> None :
@@ -12759,7 +12810,7 @@ class DbObject:
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -12820,6 +12871,9 @@ class DbObject:
       '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -13279,7 +13333,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -13428,6 +13482,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > prefix(class PyDbDimension {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -14146,7 +14203,7 @@ has( (Dictionary)arg1, (ObjectId)arg2) -> bool :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -14219,6 +14276,9 @@ has( (Dictionary)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -14560,7 +14620,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -14621,6 +14681,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list :
@@ -14802,7 +14865,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -14872,6 +14935,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -15285,7 +15351,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -15428,6 +15494,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > prefix(class PyDbDimension {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -17696,7 +17765,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -17790,6 +17859,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -19959,6 +20031,9 @@ __init__( (object)arg1, (Point3d)arg2) -> None :
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
+    ...
     def setDouble (self, *args, **kwargs)-> None :
       '''setDouble( (EvalVariant)arg1, (DxfCode)arg2, (float)arg3) -> None :
 
@@ -20310,7 +20385,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -20404,6 +20479,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -20723,7 +20801,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -20835,6 +20913,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -21150,7 +21231,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -21262,6 +21343,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -21632,7 +21716,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -21738,6 +21822,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -22125,7 +22212,7 @@ evaluate( (Field)arg1, (FieldEvalContext)arg2, (Database)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -22199,6 +22286,9 @@ evaluate( (Field)arg1, (FieldEvalContext)arg2, (Database)arg3) -> None :
 
     C++ signature :
         void postInDatabase(class PyDbField {lvalue},class PyDbDatabase {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -24002,7 +24092,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -24186,6 +24276,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
         enum AcDbHatch::HatchPatternType patternType(class PyDbHatch {lvalue})'''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -25456,7 +25549,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -25550,6 +25643,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -26356,7 +26452,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -26417,6 +26513,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list :
@@ -26639,7 +26738,7 @@ color( (LayerTableRecord)arg1, (ObjectId)arg2) -> Color :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -26807,6 +26906,9 @@ plotStyleNameId( (LayerTableRecord)arg1, (ObjectId)arg2) -> ObjectId :
 
     C++ signature :
         class PyDbObjectId plotStyleNameId(class PyDbLayerTableRecord {lvalue},class PyDbObjectId)'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -27284,7 +27386,7 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
     C++ signature :
         void initialize(class PyDbLayout {lvalue},class PyDbObjectId {lvalue})'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -27418,6 +27520,9 @@ initialize( (Layout)arg1, (ObjectId)arg2) -> None :
 
     C++ signature :
         bool printLineweights(class PyDbPlotSettings {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -27772,6 +27877,9 @@ layoutExists( (LayoutManager)arg1, (str)arg2, (Database)arg3) -> bool :
 
     C++ signature :
         bool layoutExists(class PyDbLayoutManager {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase)'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def renameLayout (self, *args, **kwargs)-> None :
       '''renameLayout( (LayoutManager)arg1, (str)arg2, (str)arg3) -> None :
@@ -28222,7 +28330,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -28352,6 +28460,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -28890,7 +29001,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -28996,6 +29107,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -29549,7 +29663,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -29692,6 +29806,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > prefix(class PyDbDimension {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -30749,7 +30866,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -30810,6 +30927,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list :
@@ -31003,7 +31123,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -31092,6 +31212,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         double patternLength(class PyDbLinetypeTableRecord {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -31449,7 +31572,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -31543,6 +31666,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -31894,7 +32020,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -32013,6 +32139,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class AcGePoint3d position(class PyDbBlockReference {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -32656,7 +32785,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -32852,6 +32981,9 @@ moveMLeader( (MLeader)arg1, (Vector3d)arg2, (MLeaderMoveType)arg3, (bool)arg4) -
 
     C++ signature :
         void postMLeaderToDb(class PyDbMLeader {lvalue},class PyDbDatabase {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -34727,7 +34859,7 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -34843,6 +34975,9 @@ drawLeaderOrderType( (MLeaderStyle)arg1) -> DrawLeaderOrderType :
 
     C++ signature :
         class PyDbObjectId postMLeaderStyleToDb(class PyDbMLeaderStyle {lvalue},class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -36063,7 +36198,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -36181,6 +36316,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -37424,7 +37562,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -37548,6 +37686,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -38050,7 +38191,7 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
     C++ signature :
         void initMlineStyle(class PyDbMlineStyle {lvalue})'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -38123,6 +38264,9 @@ addElement( (MlineStyle)arg1, (float)arg2, (Color)arg3, (ObjectId)arg4, (bool)ar
       '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -38483,7 +38627,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -38577,6 +38721,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -38728,6 +38875,9 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def setName (self, *args, **kwargs)-> None :
@@ -39313,7 +39463,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -39480,6 +39630,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > prefix(class PyDbDimension {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -40667,7 +40820,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -40745,6 +40898,9 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
       '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -41064,7 +41220,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -41213,6 +41369,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class AcGePoint3d position(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -41762,7 +41921,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -41856,6 +42015,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -42422,7 +42584,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -42556,6 +42718,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         bool printLineweights(class PyDbPlotSettings {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -43182,7 +43347,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -43289,6 +43454,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class AcGePoint3d position(class PyDbPoint {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -43835,7 +44003,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -43978,6 +44146,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > prefix(class PyDbDimension {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -45006,7 +45177,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -45107,6 +45278,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class AcGePoint3d position(class PyDbPolyFaceMeshVertex {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -45410,7 +45584,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -45511,6 +45685,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class AcGePoint3d position(class PyDbPolygonMeshVertex {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -46009,7 +46186,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -46151,6 +46328,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -46665,7 +46845,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -46820,6 +47000,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         enum AcDb::Poly2dType polyType(class PyDb2dPolyline {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -47326,7 +47509,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -47463,6 +47646,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         enum AcDb::Poly3dType polyType(class PyDb3dPolyline {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -47801,7 +47987,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -47902,6 +48088,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class AcGePoint3d position(class PyDb3dPolylineVertex {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -48436,7 +48625,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -48585,6 +48774,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > prefix(class PyDbDimension {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -49573,7 +49765,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -49734,6 +49926,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > prefix(class PyDbDimension {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -50605,7 +50800,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -50742,6 +50937,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class AcGePoint3d position(class PyDbRasterImage {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def reactorId (self, *args, **kwargs)-> ObjectId :
       '''reactorId( (RasterImage)arg1) -> ObjectId :
@@ -51121,7 +51319,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -51200,6 +51398,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -51443,7 +51644,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -51504,6 +51705,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -51689,7 +51893,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -51750,6 +51954,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list :
@@ -51931,7 +52138,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -52001,6 +52208,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -52239,7 +52449,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -52339,6 +52549,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -52820,7 +53033,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -52914,6 +53127,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -53419,7 +53635,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -53580,6 +53796,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > prefix(class PyDbDimension {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -54751,7 +54970,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -54845,6 +55064,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -55620,7 +55842,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -55745,6 +55967,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class boost::python::list projectOnToSolid(class PyDb3dSolid {lvalue},class PyDbEntity,class AcGeVector3d)'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -56764,7 +56989,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -56858,6 +57083,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -57645,7 +57873,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -57739,6 +57967,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -58253,7 +58484,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -58314,6 +58545,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list :
@@ -58465,7 +58699,7 @@ class SymbolTableRecord:
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -58535,6 +58769,9 @@ class SymbolTableRecord:
       '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -59301,7 +59538,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -59562,6 +59799,9 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
 
     C++ signature :
         class AcGePoint3d position(class PyDbBlockReference {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -61316,7 +61556,7 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -61426,6 +61666,9 @@ gridVisibility( (TableStyle)arg1, (GridLineType)arg2, (str)arg3) -> Visibility :
 
     C++ signature :
         class PyDbObjectId postTableStyleToDb(class PyDbTableStyle {lvalue},class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -61980,7 +62223,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -62129,6 +62372,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class AcGePoint3d position(class PyDbText {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -62780,7 +63026,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -62841,6 +63087,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list :
@@ -63046,7 +63295,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -63141,6 +63390,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         double priorSize(class PyDbTextStyleTableRecord {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -63664,6 +63916,9 @@ getObject( (Transaction)arg1, (ObjectId)arg2, (OpenMode)arg3, (bool)arg4) -> DbO
     C++ signature :
         int numOpenedObjects(class PyDbTransactionManager {lvalue})'''
     ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
+    ...
 
 class TransactionManager:
     def __init__ (self: TransactionManager)-> None :
@@ -63703,6 +63958,9 @@ class TransactionManager:
       '''                             '''
     ...
     def numOpenedObjects (self: TransactionManager)-> int :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def queueForGraphicsFlush (self: TransactionManager)-> None :
@@ -64049,7 +64307,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -64110,6 +64368,9 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
       '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def recordIds (self, *args, **kwargs)-> list :
@@ -64291,7 +64552,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -64367,6 +64628,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
         class AcGePoint3d origin(class PyDbUCSTableRecord {lvalue})'''
     ...
     def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -64592,7 +64856,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -64670,6 +64934,9 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
       '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
@@ -65011,7 +65278,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -65160,6 +65427,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class AcGePoint3d position(class PyDbUnderlayReference {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -66039,7 +66309,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -66133,6 +66403,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
       '''                             '''
     ...
     def plotStyleName (self: Entity)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
@@ -66454,7 +66727,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -66561,6 +66834,9 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
 
     C++ signature :
         class AcGePoint3d position(class PyDb2dVertex {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -67113,7 +67389,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -67244,6 +67520,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         bool perspectiveEnabled(class PyDbAbstractViewTableRecord {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -67891,7 +68170,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         class boost::python::list intersectWith(class PyDbEntity {lvalue},class PyDbEntity,enum AcDb::Intersect,class PyGePlane,__int64,__int64)'''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -68189,6 +68468,9 @@ previousBackground( (Viewport)arg1, (GiDrawableType)arg2) -> ObjectId :
 
     C++ signature :
         bool previousBackgroundForcedSwitch(class PyDbViewport {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def receiveShadows (self: Entity)-> bool :
       '''                             '''
@@ -69269,7 +69551,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -69435,6 +69717,9 @@ previousBackground( (ViewportTableRecord)arg1, (GiDrawableType)arg2) -> ObjectId
 
     C++ signature :
         bool previousBackgroundForcedSwitch(class PyDbViewportTableRecord {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
     ...
     def releaseExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -70363,7 +70648,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def implRefCount (self: RxObject)-> int :
       '''                             '''
     ...
-    def isA (self: Drawable)-> RxClass :
+    def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
     def isAProxy (self: DbObject)-> bool :
@@ -70436,6 +70721,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
     def rbChain (self, *args, **kwargs)-> list :

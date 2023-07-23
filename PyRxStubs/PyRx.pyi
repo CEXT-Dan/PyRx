@@ -220,6 +220,9 @@ This class cannot be instantiated from Python'''
     C++ signature :
         bool isOverruling()'''
     ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
+    ...
     def removeOverrule (self, *args, **kwargs)-> None :
       '''removeOverrule( (RxClass)arg1, (Overrule)arg2) -> None :
 
@@ -256,13 +259,16 @@ This class cannot be instantiated from Python'''
     def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
-    def isDerivedFrom (self: RxClass,other : RxClass)-> bool :
+    def isDerivedFrom (self: RxClass,other : PyRx.RxClass)-> bool :
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
     def name (self: RxClass)-> str :
+      '''                             '''
+    ...
+    def queryX (self: RxClass,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
 
@@ -281,6 +287,9 @@ This class cannot be instantiated from Python'''
       '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
 
