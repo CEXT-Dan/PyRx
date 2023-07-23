@@ -80,6 +80,9 @@ public:
     boost::python::list intersectWith2(const PyDbEntity&, AcDb::Intersect, Adesk::GsMarker, Adesk::GsMarker) const;
     boost::python::list intersectWith3(const PyDbEntity&, AcDb::Intersect, const PyGePlane&) const;
     boost::python::list intersectWith4(const PyDbEntity&, AcDb::Intersect, const PyGePlane&, Adesk::GsMarker, Adesk::GsMarker) const;
+    boost::python::list explode() const;
+    PyDbEntity          getTransformedCopy(const AcGeMatrix3d& xform) const;
+
     static std::string  className();
     static PyRxClass    desc();
     static PyDbEntity   cloneFrom(const PyRxObject& src);

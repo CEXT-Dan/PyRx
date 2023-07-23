@@ -1223,6 +1223,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -1295,6 +1298,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -2484,6 +2490,9 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5,
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extend (self, *args, **kwargs)-> None :
       '''extend( (Curve)arg1, (float)arg2) -> None :
 
@@ -2586,6 +2595,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getStartPoint (self: Curve)-> Point3d :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -3191,6 +3203,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -3263,6 +3278,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -4264,6 +4282,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -4307,6 +4328,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -4992,6 +5016,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -5035,6 +5062,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -5662,6 +5692,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -5687,6 +5720,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -6033,6 +6069,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -6058,6 +6097,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -6443,6 +6485,9 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def explodeToOwnerSpace (self, *args, **kwargs)-> None :
       '''explodeToOwnerSpace( (BlockReference)arg1) -> None :
 
@@ -6485,6 +6530,9 @@ geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -7697,6 +7745,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -7722,6 +7773,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -9505,6 +9559,9 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extend (self, *args, **kwargs)-> None :
       '''extend( (Curve)arg1, (float)arg2) -> None :
 
@@ -9607,6 +9664,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getStartPoint (self: Curve)-> Point3d :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -10859,6 +10919,9 @@ class Curve:
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extend (self, *args, **kwargs)-> None :
       '''extend( (Curve)arg1, (float)arg2) -> None :
 
@@ -10961,6 +11024,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getStartPoint (self: Curve)-> Point3d :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -13055,6 +13121,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extArcEndAngle (self, *args, **kwargs)-> float :
       '''extArcEndAngle( (DiametricDimension)arg1) -> float :
 
@@ -13145,6 +13214,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -15073,6 +15145,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -15145,6 +15220,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -17549,6 +17627,9 @@ class Entity:
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -17574,6 +17655,9 @@ class Entity:
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -20157,6 +20241,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -20182,6 +20269,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -20558,6 +20648,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -20583,6 +20676,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def getVertexAt (self, *args, **kwargs)-> Point3d :
@@ -20979,6 +21075,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -21004,6 +21103,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def getVertexAt (self, *args, **kwargs)-> int :
@@ -21443,6 +21545,9 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -21486,6 +21591,9 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -23711,6 +23819,9 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     C++ signature :
         void evaluateHatchAllScales2(class PyDbHatch {lvalue},bool)'''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -23809,6 +23920,9 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
 
     C++ signature :
         float getShadeTintValue(class PyDbHatch {lvalue})'''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
+      '''                             '''
     ...
     def gradientAngle (self, *args, **kwargs)-> float :
       '''gradientAngle( (Hatch)arg1) -> float :
@@ -25273,6 +25387,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -25298,6 +25415,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -27932,6 +28052,9 @@ erased( (Leader)arg1, (DbObject)arg2, (bool)arg3) -> None :
     C++ signature :
         void evaluateLeader(class PyDbLeader {lvalue})'''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extend (self, *args, **kwargs)-> None :
       '''extend( (Curve)arg1, (float)arg2) -> None :
 
@@ -28040,6 +28163,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getStartPoint (self: Curve)-> Point3d :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def goodbye (self, *args, **kwargs)-> None :
@@ -28615,6 +28741,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extend (self, *args, **kwargs)-> None :
       '''extend( (Curve)arg1, (float)arg2) -> None :
 
@@ -28720,6 +28849,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getStartPoint (self: Curve)-> Point3d :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -29271,6 +29403,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extArcOn (self, *args, **kwargs)-> bool :
       '''extArcOn( (LineAngularDimension2)arg1) -> bool :
 
@@ -29349,6 +29484,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -31242,6 +31380,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -31267,6 +31408,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -31664,6 +31808,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def explodeToOwnerSpace (self, *args, **kwargs)-> None :
       '''explodeToOwnerSpace( (BlockReference)arg1) -> None :
 
@@ -31706,6 +31853,9 @@ geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -32295,6 +32445,9 @@ connectionPoint( (MLeader)arg1, (Vector3d)arg2, (MLeaderTextAttachmentDirection)
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extendLeaderToText (self, *args, **kwargs)-> bool :
       '''extendLeaderToText( (MLeader)arg1) -> bool :
 
@@ -32451,6 +32604,9 @@ getLeaderLineIndexes( (MLeader)arg1, (int)arg2) -> list :
 
     C++ signature :
         class AcGePoint3d getToleranceLocation(class PyDbMLeader {lvalue})'''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
+      '''                             '''
     ...
     def getVertex (self, *args, **kwargs)-> Point3d :
       '''getVertex( (MLeader)arg1, (int)arg2, (int)arg3) -> Point3d :
@@ -35754,6 +35910,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -35851,6 +36010,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -37169,6 +37331,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -37218,6 +37383,9 @@ getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4, (bool
         class PyGePlane getPlane(class PyDbMline {lvalue})'''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -38246,6 +38414,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -38271,6 +38442,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -38999,6 +39173,9 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -39071,6 +39248,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -40773,6 +40953,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -40828,6 +41011,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def getUnderlayLayer (self, *args, **kwargs)-> UnderlayLayer :
@@ -41507,6 +41693,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -41532,6 +41721,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -42921,6 +43113,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -42946,6 +43141,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -43491,6 +43689,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extArcOn (self, *args, **kwargs)-> bool :
       '''extArcOn( (Point3AngularDimension)arg1) -> bool :
 
@@ -43569,6 +43770,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -44733,6 +44937,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -44758,6 +44965,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -45131,6 +45341,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -45156,6 +45369,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -45555,6 +45771,9 @@ addVertexAt( (Polyline)arg1, (SubentType)arg2, (Point2d)arg3, (float)arg4, (floa
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extend (self, *args, **kwargs)-> None :
       '''extend( (Curve)arg1, (float)arg2) -> None :
 
@@ -45726,6 +45945,9 @@ getEcs( (Polyline)arg1, (Matrix3d)arg2) -> None :
 
     C++ signature :
         double getStartWidthAt(class PyDbPolyline {lvalue},unsigned int)'''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -46286,6 +46508,9 @@ appendVertex( (Polyline2d)arg1, (ObjectId)arg2, (Vertex2d)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extend (self, *args, **kwargs)-> None :
       '''extend( (Curve)arg1, (float)arg2) -> None :
 
@@ -46388,6 +46613,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getStartPoint (self: Curve)-> Point3d :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -46941,6 +47169,9 @@ appendVertex( (Polyline3d)arg1, (ObjectId)arg2, (Polyline3dVertex)arg3) -> None 
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extend (self, *args, **kwargs)-> None :
       '''extend( (Curve)arg1, (float)arg2) -> None :
 
@@ -47043,6 +47274,9 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
       '''                             '''
     ...
     def getStartPoint (self: Curve)-> Point3d :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -47498,6 +47732,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -47523,6 +47760,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -48044,6 +48284,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extArcEndAngle (self, *args, **kwargs)-> float :
       '''extArcEndAngle( (RadialDimension)arg1) -> float :
 
@@ -48128,6 +48371,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -49175,6 +49421,9 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extArcEndAngle (self, *args, **kwargs)-> float :
       '''extArcEndAngle( (RadialDimensionLarge)arg1) -> float :
 
@@ -49259,6 +49508,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -50225,6 +50477,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -50268,6 +50523,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def getVertices (self, *args, **kwargs)-> list :
@@ -51912,6 +52170,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -51937,6 +52198,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -52487,6 +52751,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -52512,6 +52779,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -53009,6 +53279,9 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -53081,6 +53354,9 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -54406,6 +54682,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -54431,6 +54710,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -55182,6 +55464,9 @@ createSweptSolid( (Solid3d)arg1, (Entity)arg2, (SubentId)arg3, (Entity)arg4, (Sw
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -55289,6 +55574,9 @@ getSlice( (Solid3d)arg1, (Surface)arg2, (bool)arg3) -> Solid3d :
 
     C++ signature :
         class PyDbObjectId getSubentMaterial(class PyDb3dSolid {lvalue},class PyDbSubentId)'''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -56407,6 +56695,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -56432,6 +56723,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -57282,6 +57576,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -57307,6 +57604,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -58676,6 +58976,9 @@ deleteContent( (Table)arg1, (CellRange)arg2) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def explodeToOwnerSpace (self, *args, **kwargs)-> None :
       '''explodeToOwnerSpace( (BlockReference)arg1) -> None :
 
@@ -58838,6 +59141,9 @@ getOverride( (Table)arg1, (int)arg2, (int)arg3, (GridLineType)arg4) -> GridPrope
 
     C++ signature :
         struct AcCellRange getSubSelection(class PyDbTable {lvalue})'''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
+      '''                             '''
     ...
     def gridColor (self, *args, **kwargs)-> Color :
       '''gridColor( (Table)arg1, (GridLineType)arg2, (RowType)arg3) -> Color :
@@ -61581,6 +61887,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -61612,6 +61921,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -64588,6 +64900,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -64643,6 +64958,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def getUnderlayLayer (self, *args, **kwargs)-> UnderlayLayer :
@@ -65652,6 +65970,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -65677,6 +65998,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -66055,6 +66379,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def erase (self: DbObject)-> None :
       '''                             '''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -66080,6 +66407,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
       '''                             '''
     ...
     def getPlotStyleNameId (self: Entity)-> ObjectId :
+      '''                             '''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
@@ -67426,6 +67756,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void erased(class PyDbViewport {lvalue},class PyDbObject,bool)'''
     ...
+    def explode (self: Entity)-> list :
+      '''                             '''
+    ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
@@ -67488,6 +67821,9 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
 
     C++ signature :
         class PyDbObjectId getSheetView(class PyDbViewport {lvalue})'''
+    ...
+    def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
+      '''                             '''
     ...
     def getUcs (self, *args, **kwargs)-> None :
       '''getUcs( (Viewport)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4) -> None :
