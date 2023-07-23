@@ -76,10 +76,10 @@ public:
     void                setDatabaseDefaults2(const PyDbDatabase& pDb);
     void                getCompoundObjectTransform(AcGeMatrix3d& xMat) const;
     void                getGeomExtents(AcDbExtents& extents) const;
-    void                intersectWith1(const PyDbEntity&, AcDb::Intersect, boost::python::list&) const;
-    void                intersectWith2(const PyDbEntity&, AcDb::Intersect, boost::python::list&, Adesk::GsMarker, Adesk::GsMarker) const;
-    void                intersectWith3(const PyDbEntity&, AcDb::Intersect, const PyGePlane&, boost::python::list&) const;
-    void                intersectWith4(const PyDbEntity&, AcDb::Intersect, const PyGePlane&, boost::python::list&, Adesk::GsMarker, Adesk::GsMarker) const;
+    boost::python::list intersectWith1(const PyDbEntity&, AcDb::Intersect) const;
+    boost::python::list intersectWith2(const PyDbEntity&, AcDb::Intersect, Adesk::GsMarker, Adesk::GsMarker) const;
+    boost::python::list intersectWith3(const PyDbEntity&, AcDb::Intersect, const PyGePlane&) const;
+    boost::python::list intersectWith4(const PyDbEntity&, AcDb::Intersect, const PyGePlane&, Adesk::GsMarker, Adesk::GsMarker) const;
     static std::string  className();
     static PyRxClass    desc();
     static PyDbEntity   cloneFrom(const PyRxObject& src);
