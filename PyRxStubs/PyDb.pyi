@@ -2525,7 +2525,7 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def getArea (self: Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extend: bool=False)-> Point3d :
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -2588,10 +2588,16 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
-    def getSplitCurves (self: Curve,params: list)-> list :
+    def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
+      '''                             '''
+    ...
+    def getSplitCurvesAtParam (self: Curve,param: float)-> list :
       '''                             '''
     ...
     def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+      '''                             '''
+    ...
+    def getSplitCurvesAtPoint (self: Curve,point: PyGe.Point3d)-> list :
       '''                             '''
     ...
     def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
@@ -9574,7 +9580,7 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def getArea (self: Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extend: bool=False)-> Point3d :
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -9637,10 +9643,16 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
-    def getSplitCurves (self: Curve,params: list)-> list :
+    def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
+      '''                             '''
+    ...
+    def getSplitCurvesAtParam (self: Curve,param: float)-> list :
       '''                             '''
     ...
     def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+      '''                             '''
+    ...
+    def getSplitCurvesAtPoint (self: Curve,point: PyGe.Point3d)-> list :
       '''                             '''
     ...
     def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
@@ -10968,7 +10980,7 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def getArea (self: Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extend: bool=False)-> Point3d :
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -11031,10 +11043,16 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
-    def getSplitCurves (self: Curve,params: list)-> list :
+    def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
+      '''                             '''
+    ...
+    def getSplitCurvesAtParam (self: Curve,param: float)-> list :
       '''                             '''
     ...
     def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+      '''                             '''
+    ...
+    def getSplitCurvesAtPoint (self: Curve,point: PyGe.Point3d)-> list :
       '''                             '''
     ...
     def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
@@ -28075,7 +28093,7 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def getArea (self: Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extend: bool=False)-> Point3d :
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -28138,10 +28156,16 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
-    def getSplitCurves (self: Curve,params: list)-> list :
+    def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
+      '''                             '''
+    ...
+    def getSplitCurvesAtParam (self: Curve,param: float)-> list :
       '''                             '''
     ...
     def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+      '''                             '''
+    ...
+    def getSplitCurvesAtPoint (self: Curve,point: PyGe.Point3d)-> list :
       '''                             '''
     ...
     def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
@@ -28780,7 +28804,7 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def getArea (self: Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extend: bool=False)-> Point3d :
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -28846,10 +28870,16 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
-    def getSplitCurves (self: Curve,params: list)-> list :
+    def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
+      '''                             '''
+    ...
+    def getSplitCurvesAtParam (self: Curve,param: float)-> list :
       '''                             '''
     ...
     def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+      '''                             '''
+    ...
+    def getSplitCurvesAtPoint (self: Curve,point: PyGe.Point3d)-> list :
       '''                             '''
     ...
     def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
@@ -45766,7 +45796,7 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     C++ signature :
         double getBulgeAt(class PyDbPolyline {lvalue},unsigned int)'''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extend: bool=False)-> Point3d :
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -45873,10 +45903,16 @@ getEcs( (Polyline)arg1, (Matrix3d)arg2) -> None :
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
-    def getSplitCurves (self: Curve,params: list)-> list :
+    def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
+      '''                             '''
+    ...
+    def getSplitCurvesAtParam (self: Curve,param: float)-> list :
       '''                             '''
     ...
     def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+      '''                             '''
+    ...
+    def getSplitCurvesAtPoint (self: Curve,point: PyGe.Point3d)-> list :
       '''                             '''
     ...
     def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
@@ -46507,7 +46543,7 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def getArea (self: Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extend: bool=False)-> Point3d :
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -46570,10 +46606,16 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
-    def getSplitCurves (self: Curve,params: list)-> list :
+    def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
+      '''                             '''
+    ...
+    def getSplitCurvesAtParam (self: Curve,param: float)-> list :
       '''                             '''
     ...
     def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+      '''                             '''
+    ...
+    def getSplitCurvesAtPoint (self: Curve,point: PyGe.Point3d)-> list :
       '''                             '''
     ...
     def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
@@ -47190,7 +47232,7 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def getArea (self: Curve)-> float :
       '''                             '''
     ...
-    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,extend: bool=False)-> Point3d :
+    def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> Point3d :
       '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
@@ -47253,10 +47295,16 @@ getAcGeCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
     def getSecondDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
-    def getSplitCurves (self: Curve,params: list)-> list :
+    def getSplitCurves (self: Curve,paramsOrPoints: list)-> list :
+      '''                             '''
+    ...
+    def getSplitCurvesAtParam (self: Curve,param: float)-> list :
       '''                             '''
     ...
     def getSplitCurvesAtParams (self: Curve,params: list)-> list :
+      '''                             '''
+    ...
+    def getSplitCurvesAtPoint (self: Curve,point: PyGe.Point3d)-> list :
       '''                             '''
     ...
     def getSplitCurvesAtPoints (self: Curve,points: list)-> list :
