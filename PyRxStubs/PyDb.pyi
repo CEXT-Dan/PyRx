@@ -26198,10 +26198,10 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
 
 class JoinEntityPE:
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (RxClass)arg2) -> None :
+      '''__init__( (object)arg1, (RxObject)arg2) -> None :
 
     C++ signature :
-        void __init__(struct _object * __ptr64,class PyRxClass)'''
+        void __init__(struct _object * __ptr64,class PyRxObject)'''
     ...
     def className ()-> str :
       '''                             '''
@@ -26218,7 +26218,7 @@ class JoinEntityPE:
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
-    def joinEntities (self: RxClass,primaryEntity : PyDb.Entity,secondaryEntities : [PyDb.Entity],tol : PyGe.Tol=default)-> list :
+    def joinEntities (self: RxClass,primaryEntity : PyDb.Entity,secondaryEntities : list[PyDb.Entity],tol : PyGe.Tol=default)-> list :
       '''                             '''
     ...
     def joinEntity (self: RxClass,primaryEntity : PyDb.Entity,secondaryEntity : PyDb.Entity,tol : PyGe.Tol=default)-> bool :
