@@ -140,17 +140,18 @@ AcGiViewportDraw* PyGiViewportDraw::impObj(const std::source_location& src /*= s
 //PyGiGeometry
 void makePyGiGeometryWrapper()
 {
+    PyDocString DS("Geometry");
     class_<PyGiGeometry, bases<PyRxObject>>("Geometry", boost::python::no_init)
-        .def("getModelToWorldTransform", &PyGiGeometry::getModelToWorldTransform)
-        .def("getWorldToModelTransform", &PyGiGeometry::getWorldToModelTransform)
+        .def("getModelToWorldTransform", &PyGiGeometry::getModelToWorldTransform, DS.CLASSARGS())
+        .def("getWorldToModelTransform", &PyGiGeometry::getWorldToModelTransform, DS.CLASSARGS())
         .def("pushModelTransform", &PyGiGeometry::pushModelTransform1)
-        .def("pushModelTransform", &PyGiGeometry::pushModelTransform2)
-        .def("popModelTransform", &PyGiGeometry::popModelTransform)
+        .def("pushModelTransform", &PyGiGeometry::pushModelTransform2, DS.CLASSARGS({ "val : PyGe.Vector3d|PyGe.Matrix3d" }))
+        .def("popModelTransform", &PyGiGeometry::popModelTransform, DS.CLASSARGS())
         .def("pushPositionTransform", &PyGiGeometry::pushPositionTransform1)
-        .def("pushPositionTransform", &PyGiGeometry::pushPositionTransform2)
+        .def("pushPositionTransform", &PyGiGeometry::pushPositionTransform2, DS.CLASSARGS({ "behavior : PyGi.AcGiPositionTransformBehavior"," offset : PyGe.Point2d|PyGe.Point2d" }))
         .def("pushScaleTransform", &PyGiGeometry::pushScaleTransform1)
-        .def("pushScaleTransform", &PyGiGeometry::pushScaleTransform2)
-        .def("pushOrientationTransform", &PyGiGeometry::pushOrientationTransform)
+        .def("pushScaleTransform", &PyGiGeometry::pushScaleTransform2, DS.CLASSARGS({ "behavior : PyGi.AcGiScaleTransformBehavior"," extents : PyGe.Point2d|PyGe.Point2d" }))
+        .def("pushOrientationTransform", &PyGiGeometry::pushOrientationTransform, DS.CLASSARGS({ " behavior : PyGi.AcGiOrientationTransformBehavior" }))
         .def("circle", &PyGiGeometry::circle1)
         .def("circle", &PyGiGeometry::circle2)
         .def("circularArc", &PyGiGeometry::circularArc1)
@@ -159,6 +160,7 @@ void makePyGiGeometryWrapper()
         .def("circularArc", &PyGiGeometry::circularArc4)
         .def("polyline", &PyGiGeometry::polyline1)
         .def("polyline", &PyGiGeometry::polyline2)
+        .def("polyline", &PyGiGeometry::polyline3, DS.CLASSARGS({ "vertexList : list[PyGe.Point3d]","normal : PyGe.Vector3d=default","marker : int=default" }))
         .def("polygon", &PyGiGeometry::polygon)
         .def("text", &PyGiGeometry::text1)
         .def("xline", &PyGiGeometry::xline)
@@ -273,7 +275,13 @@ Adesk::Boolean PyGiGeometry::polyline1(const boost::python::list& vertexList)
     return impObj()->polyline(pnts.size(), pnts.data());
 }
 
-Adesk::Boolean PyGiGeometry::polyline2(const boost::python::list& vertexList, const AcGeVector3d& normal, Adesk::LongPtr marker)
+Adesk::Boolean PyGiGeometry::polyline2(const boost::python::list& vertexList, const AcGeVector3d& normal)
+{
+    std::vector<AcGePoint3d> pnts = py_list_to_std_vector<AcGePoint3d>(vertexList);
+    return impObj()->polyline(pnts.size(), pnts.data(), &normal);
+}
+
+Adesk::Boolean PyGiGeometry::polyline3(const boost::python::list& vertexList, const AcGeVector3d& normal, Adesk::LongPtr marker)
 {
     std::vector<AcGePoint3d> pnts = py_list_to_std_vector<AcGePoint3d>(vertexList);
     return impObj()->polyline(pnts.size(), pnts.data(), &normal, marker);
@@ -285,7 +293,7 @@ Adesk::Boolean PyGiGeometry::polygon(const boost::python::list& vertexList) cons
     return impObj()->polygon(pnts.size(), pnts.data());
 }
 
-Adesk::Boolean PyGiGeometry::text1(const AcGePoint3d& position, const AcGeVector3d& normal, const AcGeVector3d& direction, const double height, const double width, 
+Adesk::Boolean PyGiGeometry::text1(const AcGePoint3d& position, const AcGeVector3d& normal, const AcGeVector3d& direction, const double height, const double width,
     const double oblique, const std::string& pMsg) const
 {
     return impObj()->text(position, normal, direction, height, width, oblique, utf8_to_wstr(pMsg).c_str());
@@ -316,13 +324,13 @@ Adesk::Boolean PyGiGeometry::rowOfDots(int count, const AcGePoint3d& start, cons
     return impObj()->rowOfDots(count, start, step);
 }
 
-Adesk::Boolean PyGiGeometry::ellipticalArc1(const AcGePoint3d& center, const AcGeVector3d& normal, double majorAxisLength, double minorAxisLength, 
+Adesk::Boolean PyGiGeometry::ellipticalArc1(const AcGePoint3d& center, const AcGeVector3d& normal, double majorAxisLength, double minorAxisLength,
     double startDegreeInRads, double endDegreeInRads, double tiltDegreeInRads)
 {
-    return impObj()->ellipticalArc( center, normal, majorAxisLength, minorAxisLength, startDegreeInRads, endDegreeInRads, tiltDegreeInRads);
+    return impObj()->ellipticalArc(center, normal, majorAxisLength, minorAxisLength, startDegreeInRads, endDegreeInRads, tiltDegreeInRads);
 }
 
-Adesk::Boolean PyGiGeometry::ellipticalArc2(const AcGePoint3d& center, const AcGeVector3d& normal, double majorAxisLength, double minorAxisLength, 
+Adesk::Boolean PyGiGeometry::ellipticalArc2(const AcGePoint3d& center, const AcGeVector3d& normal, double majorAxisLength, double minorAxisLength,
     double startDegreeInRads, double endDegreeInRads, double tiltDegreeInRads, AcGiArcType arcType)
 {
     return impObj()->ellipticalArc(center, normal, majorAxisLength, minorAxisLength, startDegreeInRads, endDegreeInRads, tiltDegreeInRads, arcType);

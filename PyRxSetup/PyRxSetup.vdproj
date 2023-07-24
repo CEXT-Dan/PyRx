@@ -441,6 +441,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_E44A7C37B65B4014B7AADB869FD5FE6C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_E998AB86FAACC22CABE0CA3CC33258C6"
         "OwnerKey" = "8:_0E337FD6BD1840B08C0D9B84B69E68BE"
         "MsmSig" = "8:_UNDEFINED"
@@ -1510,6 +1516,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E44A7C37B65B4014B7AADB869FD5FE6C"
+            {
+            "SourcePath" = "8:..\\PyRxStubs\\PyGs.html"
+            "TargetName" = "8:PyGs.html"
+            "Tag" = "8:"
+            "Folder" = "8:_4079D664F70E400284955FB86F99C7BB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E998AB86FAACC22CABE0CA3CC33258C6"
             {
             "SourcePath" = "8:api-ms-win-crt-heap-l1-1-0.dll"
@@ -2210,7 +2236,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0E337FD6BD1840B08C0D9B84B69E68BE"
             {
-            "SourcePath" = "8:..\\Bin\\PyRxZ23\\x64\\Debug\\PyRxZ23.zrx"
+            "SourcePath" = "8:..\\Bin\\PyRxZ23\\x64\\Release\\PyRxZ23.zrx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
@@ -2238,7 +2264,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_BBBF8640B3534699B8C12891D95E644F"
             {
-            "SourcePath" = "8:..\\Bin\\PyRxV23\\x64\\Debug\\PyRxV23.brx"
+            "SourcePath" = "8:..\\Bin\\PyRxV23\\x64\\Release\\PyRxV23.brx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
@@ -2266,7 +2292,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_FB5365C0C70E4357B09AFE0841C5C631"
             {
-            "SourcePath" = "8:..\\Bin\\PyRx24\\x64\\Debug\\PyRx24.arx"
+            "SourcePath" = "8:..\\Bin\\PyRx24\\x64\\Release\\PyRx24.arx"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C417D9F4A4F143FEA3567CC0E6251182"
