@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "PyDbProtocolExtensions.h"
+
+#ifndef ZRXAPP
 #include "dbJoinEntityPE.h"
 #include "PyDbEntity.h"
 
@@ -35,7 +37,11 @@ bool PyDbJoinEntityPE::joinEntity1(PyDbEntity& pPrimaryEntity, PyDbEntity& pSeco
 
 bool PyDbJoinEntityPE::joinEntity2(PyDbEntity& pPrimaryEntity, PyDbEntity& pSecondaryEntity, const AcGeTol& tol) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
     return impObj()->joinEntity(pPrimaryEntity.impObj(), pSecondaryEntity.impObj(), tol) == eOk;
+#endif
 }
 
 boost::python::list PyDbJoinEntityPE::joinEntities1(PyDbEntity& pPrimaryEntity, const boost::python::list& otherEntities) const
@@ -76,3 +82,4 @@ AcDbJoinEntityPE* PyDbJoinEntityPE::impObj(const std::source_location& src /*= s
         throw PyNullObject(src);
     return static_cast<AcDbJoinEntityPE*>(m_pyImp.get());
 }
+#endif

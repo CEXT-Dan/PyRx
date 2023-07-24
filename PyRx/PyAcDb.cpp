@@ -229,7 +229,9 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbLayoutManagerWrapper();
     makePyDbEvalVariantWrapper();
     makePyDbDynBlockReferencePropertyWrapper();
+#ifndef ZRXAPP
     makePyDbJoinEntityPEWrapper();
+#endif
     makeDbCoreWrapper();//LAST?
 
     def("curDb", curPyDb);
