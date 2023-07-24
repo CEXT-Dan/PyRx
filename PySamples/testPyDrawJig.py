@@ -43,11 +43,11 @@ class MyDrawJig(PyEd.DrawJig):
             print(err)
 
     #worldDraw
-    def worldDraw(self, wd):
+    def worldDraw(self, wd : PyGi.WorldDraw):
         try:
             mat = PyGe.Matrix3d.translation(self.curpoint-self.basepoint)
             geo = wd.geometry()
-            geo.pushModelTransform(mat)
+            geo.pushModelTransform()
             geo.draw(self.line)
             geo.draw(self.circle)
             geo.popModelTransform()

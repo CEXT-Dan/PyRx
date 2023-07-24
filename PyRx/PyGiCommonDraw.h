@@ -92,7 +92,8 @@ public:
     Adesk::Boolean      circularArc3(const AcGePoint3d& start, const AcGePoint3d& point, const AcGePoint3d& end) const;
     Adesk::Boolean      circularArc4(const AcGePoint3d& start, const AcGePoint3d& point, const AcGePoint3d& end, const AcGiArcType arcType) const;
     Adesk::Boolean      polyline1(const boost::python::list& vertexList);
-    Adesk::Boolean      polyline2(const boost::python::list& vertexList, const AcGeVector3d& normal, Adesk::LongPtr marker);
+    Adesk::Boolean      polyline2(const boost::python::list& vertexList, const AcGeVector3d& normal);
+    Adesk::Boolean      polyline3(const boost::python::list& vertexList, const AcGeVector3d& normal, Adesk::LongPtr marker);
     Adesk::Boolean      polygon(const boost::python::list& vertexList) const;
     Adesk::Boolean      text1(const AcGePoint3d& position, const AcGeVector3d& normal, const AcGeVector3d& direction, const double height,
         const double width, const double oblique, const std::string& pMsg) const;

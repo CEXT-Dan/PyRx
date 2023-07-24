@@ -1847,17 +1847,11 @@ ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (floa
     C++ signature :
         bool ellipticalArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGeVector3d,double,double,double,double,double,enum AcGiArcType)'''
     ...
-    def getModelToWorldTransform (self, *args, **kwargs)-> Matrix3d :
-      '''getModelToWorldTransform( (Geometry)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d getModelToWorldTransform(class PyGiGeometry {lvalue})'''
+    def getModelToWorldTransform (self: Geometry)-> Matrix3d :
+      '''                             '''
     ...
-    def getWorldToModelTransform (self, *args, **kwargs)-> Matrix3d :
-      '''getWorldToModelTransform( (Geometry)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d getWorldToModelTransform(class PyGiGeometry {lvalue})'''
+    def getWorldToModelTransform (self: Geometry)-> Matrix3d :
+      '''                             '''
     ...
     def implRefCount (self: RxObject)-> int :
       '''                             '''
@@ -1885,61 +1879,23 @@ pline( (Geometry)arg1, (Polyline)arg2, (SubentType)arg3, (SubentType)arg4) -> bo
     C++ signature :
         bool polygon(class PyGiGeometry {lvalue},class boost::python::list)'''
     ...
-    def polyline (self, *args, **kwargs)-> bool :
-      '''polyline( (Geometry)arg1, (list)arg2) -> bool :
-
-    C++ signature :
-        bool polyline(class PyGiGeometry {lvalue},class boost::python::list)
-
-polyline( (Geometry)arg1, (list)arg2, (Vector3d)arg3, (int)arg4) -> bool :
-
-    C++ signature :
-        bool polyline(class PyGiGeometry {lvalue},class boost::python::list,class AcGeVector3d,__int64)'''
+    def polyline (self: Geometry,vertexList : list[PyGe.Point3d],normal : PyGe.Vector3d=default,marker : int=default)-> bool :
+      '''                             '''
     ...
-    def popModelTransform (self, *args, **kwargs)-> bool :
-      '''popModelTransform( (Geometry)arg1) -> bool :
-
-    C++ signature :
-        bool popModelTransform(class PyGiGeometry {lvalue})'''
+    def popModelTransform (self: Geometry)-> bool :
+      '''                             '''
     ...
-    def pushModelTransform (self, *args, **kwargs)-> bool :
-      '''pushModelTransform( (Geometry)arg1, (Vector3d)arg2) -> bool :
-
-    C++ signature :
-        bool pushModelTransform(class PyGiGeometry {lvalue},class AcGeVector3d)
-
-pushModelTransform( (Geometry)arg1, (Matrix3d)arg2) -> bool :
-
-    C++ signature :
-        bool pushModelTransform(class PyGiGeometry {lvalue},class AcGeMatrix3d)'''
+    def pushModelTransform (self: Geometry,val : PyGe.Vector3d|PyGe.Matrix3d)-> bool :
+      '''                             '''
     ...
-    def pushOrientationTransform (self, *args, **kwargs)-> Matrix3d :
-      '''pushOrientationTransform( (Geometry)arg1, (AcGiOrientationTransformBehavior)arg2) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d pushOrientationTransform(class PyGiGeometry {lvalue},enum AcGiOrientationTransformBehavior)'''
+    def pushOrientationTransform (self: Geometry, behavior : PyGi.AcGiOrientationTransformBehavior)-> Matrix3d :
+      '''                             '''
     ...
-    def pushPositionTransform (self, *args, **kwargs)-> Matrix3d :
-      '''pushPositionTransform( (Geometry)arg1, (AcGiPositionTransformBehavior)arg2, (Point3d)arg3) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d pushPositionTransform(class PyGiGeometry {lvalue},enum AcGiPositionTransformBehavior,class AcGePoint3d)
-
-pushPositionTransform( (Geometry)arg1, (AcGiPositionTransformBehavior)arg2, (Point2d)arg3) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d pushPositionTransform(class PyGiGeometry {lvalue},enum AcGiPositionTransformBehavior,class AcGePoint2d)'''
+    def pushPositionTransform (self: Geometry,behavior : PyGi.AcGiPositionTransformBehavior, offset : PyGe.Point2d|PyGe.Point2d)-> Matrix3d :
+      '''                             '''
     ...
-    def pushScaleTransform (self, *args, **kwargs)-> Matrix3d :
-      '''pushScaleTransform( (Geometry)arg1, (AcGiScaleTransformBehavior)arg2, (Point3d)arg3) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d pushScaleTransform(class PyGiGeometry {lvalue},enum AcGiScaleTransformBehavior,class AcGePoint3d)
-
-pushScaleTransform( (Geometry)arg1, (AcGiScaleTransformBehavior)arg2, (Point2d)arg3) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d pushScaleTransform(class PyGiGeometry {lvalue},enum AcGiScaleTransformBehavior,class AcGePoint2d)'''
+    def pushScaleTransform (self: Geometry,behavior : PyGi.AcGiScaleTransformBehavior, extents : PyGe.Point2d|PyGe.Point2d)-> Matrix3d :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
@@ -3110,17 +3066,11 @@ ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (floa
     C++ signature :
         bool ellipticalArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGeVector3d,double,double,double,double,double,enum AcGiArcType)'''
     ...
-    def getModelToWorldTransform (self, *args, **kwargs)-> Matrix3d :
-      '''getModelToWorldTransform( (Geometry)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d getModelToWorldTransform(class PyGiGeometry {lvalue})'''
+    def getModelToWorldTransform (self: Geometry)-> Matrix3d :
+      '''                             '''
     ...
-    def getWorldToModelTransform (self, *args, **kwargs)-> Matrix3d :
-      '''getWorldToModelTransform( (Geometry)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d getWorldToModelTransform(class PyGiGeometry {lvalue})'''
+    def getWorldToModelTransform (self: Geometry)-> Matrix3d :
+      '''                             '''
     ...
     def implRefCount (self: RxObject)-> int :
       '''                             '''
@@ -3148,61 +3098,23 @@ pline( (Geometry)arg1, (Polyline)arg2, (SubentType)arg3, (SubentType)arg4) -> bo
     C++ signature :
         bool polygon(class PyGiGeometry {lvalue},class boost::python::list)'''
     ...
-    def polyline (self, *args, **kwargs)-> bool :
-      '''polyline( (Geometry)arg1, (list)arg2) -> bool :
-
-    C++ signature :
-        bool polyline(class PyGiGeometry {lvalue},class boost::python::list)
-
-polyline( (Geometry)arg1, (list)arg2, (Vector3d)arg3, (int)arg4) -> bool :
-
-    C++ signature :
-        bool polyline(class PyGiGeometry {lvalue},class boost::python::list,class AcGeVector3d,__int64)'''
+    def polyline (self: Geometry,vertexList : list[PyGe.Point3d],normal : PyGe.Vector3d=default,marker : int=default)-> bool :
+      '''                             '''
     ...
-    def popModelTransform (self, *args, **kwargs)-> bool :
-      '''popModelTransform( (Geometry)arg1) -> bool :
-
-    C++ signature :
-        bool popModelTransform(class PyGiGeometry {lvalue})'''
+    def popModelTransform (self: Geometry)-> bool :
+      '''                             '''
     ...
-    def pushModelTransform (self, *args, **kwargs)-> bool :
-      '''pushModelTransform( (Geometry)arg1, (Vector3d)arg2) -> bool :
-
-    C++ signature :
-        bool pushModelTransform(class PyGiGeometry {lvalue},class AcGeVector3d)
-
-pushModelTransform( (Geometry)arg1, (Matrix3d)arg2) -> bool :
-
-    C++ signature :
-        bool pushModelTransform(class PyGiGeometry {lvalue},class AcGeMatrix3d)'''
+    def pushModelTransform (self: Geometry,val : PyGe.Vector3d|PyGe.Matrix3d)-> bool :
+      '''                             '''
     ...
-    def pushOrientationTransform (self, *args, **kwargs)-> Matrix3d :
-      '''pushOrientationTransform( (Geometry)arg1, (AcGiOrientationTransformBehavior)arg2) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d pushOrientationTransform(class PyGiGeometry {lvalue},enum AcGiOrientationTransformBehavior)'''
+    def pushOrientationTransform (self: Geometry, behavior : PyGi.AcGiOrientationTransformBehavior)-> Matrix3d :
+      '''                             '''
     ...
-    def pushPositionTransform (self, *args, **kwargs)-> Matrix3d :
-      '''pushPositionTransform( (Geometry)arg1, (AcGiPositionTransformBehavior)arg2, (Point3d)arg3) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d pushPositionTransform(class PyGiGeometry {lvalue},enum AcGiPositionTransformBehavior,class AcGePoint3d)
-
-pushPositionTransform( (Geometry)arg1, (AcGiPositionTransformBehavior)arg2, (Point2d)arg3) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d pushPositionTransform(class PyGiGeometry {lvalue},enum AcGiPositionTransformBehavior,class AcGePoint2d)'''
+    def pushPositionTransform (self: Geometry,behavior : PyGi.AcGiPositionTransformBehavior, offset : PyGe.Point2d|PyGe.Point2d)-> Matrix3d :
+      '''                             '''
     ...
-    def pushScaleTransform (self, *args, **kwargs)-> Matrix3d :
-      '''pushScaleTransform( (Geometry)arg1, (AcGiScaleTransformBehavior)arg2, (Point3d)arg3) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d pushScaleTransform(class PyGiGeometry {lvalue},enum AcGiScaleTransformBehavior,class AcGePoint3d)
-
-pushScaleTransform( (Geometry)arg1, (AcGiScaleTransformBehavior)arg2, (Point2d)arg3) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d pushScaleTransform(class PyGiGeometry {lvalue},enum AcGiScaleTransformBehavior,class AcGePoint2d)'''
+    def pushScaleTransform (self: Geometry,behavior : PyGi.AcGiScaleTransformBehavior, extents : PyGe.Point2d|PyGe.Point2d)-> Matrix3d :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
@@ -3370,17 +3282,11 @@ ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (floa
     C++ signature :
         bool ellipticalArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGeVector3d,double,double,double,double,double,enum AcGiArcType)'''
     ...
-    def getModelToWorldTransform (self, *args, **kwargs)-> Matrix3d :
-      '''getModelToWorldTransform( (Geometry)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d getModelToWorldTransform(class PyGiGeometry {lvalue})'''
+    def getModelToWorldTransform (self: Geometry)-> Matrix3d :
+      '''                             '''
     ...
-    def getWorldToModelTransform (self, *args, **kwargs)-> Matrix3d :
-      '''getWorldToModelTransform( (Geometry)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d getWorldToModelTransform(class PyGiGeometry {lvalue})'''
+    def getWorldToModelTransform (self: Geometry)-> Matrix3d :
+      '''                             '''
     ...
     def implRefCount (self: RxObject)-> int :
       '''                             '''
@@ -3408,61 +3314,23 @@ pline( (Geometry)arg1, (Polyline)arg2, (SubentType)arg3, (SubentType)arg4) -> bo
     C++ signature :
         bool polygon(class PyGiGeometry {lvalue},class boost::python::list)'''
     ...
-    def polyline (self, *args, **kwargs)-> bool :
-      '''polyline( (Geometry)arg1, (list)arg2) -> bool :
-
-    C++ signature :
-        bool polyline(class PyGiGeometry {lvalue},class boost::python::list)
-
-polyline( (Geometry)arg1, (list)arg2, (Vector3d)arg3, (int)arg4) -> bool :
-
-    C++ signature :
-        bool polyline(class PyGiGeometry {lvalue},class boost::python::list,class AcGeVector3d,__int64)'''
+    def polyline (self: Geometry,vertexList : list[PyGe.Point3d],normal : PyGe.Vector3d=default,marker : int=default)-> bool :
+      '''                             '''
     ...
-    def popModelTransform (self, *args, **kwargs)-> bool :
-      '''popModelTransform( (Geometry)arg1) -> bool :
-
-    C++ signature :
-        bool popModelTransform(class PyGiGeometry {lvalue})'''
+    def popModelTransform (self: Geometry)-> bool :
+      '''                             '''
     ...
-    def pushModelTransform (self, *args, **kwargs)-> bool :
-      '''pushModelTransform( (Geometry)arg1, (Vector3d)arg2) -> bool :
-
-    C++ signature :
-        bool pushModelTransform(class PyGiGeometry {lvalue},class AcGeVector3d)
-
-pushModelTransform( (Geometry)arg1, (Matrix3d)arg2) -> bool :
-
-    C++ signature :
-        bool pushModelTransform(class PyGiGeometry {lvalue},class AcGeMatrix3d)'''
+    def pushModelTransform (self: Geometry,val : PyGe.Vector3d|PyGe.Matrix3d)-> bool :
+      '''                             '''
     ...
-    def pushOrientationTransform (self, *args, **kwargs)-> Matrix3d :
-      '''pushOrientationTransform( (Geometry)arg1, (AcGiOrientationTransformBehavior)arg2) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d pushOrientationTransform(class PyGiGeometry {lvalue},enum AcGiOrientationTransformBehavior)'''
+    def pushOrientationTransform (self: Geometry, behavior : PyGi.AcGiOrientationTransformBehavior)-> Matrix3d :
+      '''                             '''
     ...
-    def pushPositionTransform (self, *args, **kwargs)-> Matrix3d :
-      '''pushPositionTransform( (Geometry)arg1, (AcGiPositionTransformBehavior)arg2, (Point3d)arg3) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d pushPositionTransform(class PyGiGeometry {lvalue},enum AcGiPositionTransformBehavior,class AcGePoint3d)
-
-pushPositionTransform( (Geometry)arg1, (AcGiPositionTransformBehavior)arg2, (Point2d)arg3) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d pushPositionTransform(class PyGiGeometry {lvalue},enum AcGiPositionTransformBehavior,class AcGePoint2d)'''
+    def pushPositionTransform (self: Geometry,behavior : PyGi.AcGiPositionTransformBehavior, offset : PyGe.Point2d|PyGe.Point2d)-> Matrix3d :
+      '''                             '''
     ...
-    def pushScaleTransform (self, *args, **kwargs)-> Matrix3d :
-      '''pushScaleTransform( (Geometry)arg1, (AcGiScaleTransformBehavior)arg2, (Point3d)arg3) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d pushScaleTransform(class PyGiGeometry {lvalue},enum AcGiScaleTransformBehavior,class AcGePoint3d)
-
-pushScaleTransform( (Geometry)arg1, (AcGiScaleTransformBehavior)arg2, (Point2d)arg3) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d pushScaleTransform(class PyGiGeometry {lvalue},enum AcGiScaleTransformBehavior,class AcGePoint2d)'''
+    def pushScaleTransform (self: Geometry,behavior : PyGi.AcGiScaleTransformBehavior, extents : PyGe.Point2d|PyGe.Point2d)-> Matrix3d :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
