@@ -8,13 +8,14 @@
 using namespace boost::python;
 void makePyGiCommonDrawWrapper()
 {
+    PyDocString DS("CommonDraw");
     class_<PyGiCommonDraw, bases<PyRxObject>>("CommonDraw", boost::python::no_init)
-        .def("regenType", &PyGiCommonDraw::regenType)
-        .def("regenAbort", &PyGiCommonDraw::regenAbort)
-        .def("isDragging", &PyGiCommonDraw::isDragging)
-        .def("subEntityTraits", &PyGiCommonDraw::subEntityTraits)
-        .def("className", &PyGiCommonDraw::className).staticmethod("className")
-        .def("desc", &PyGiCommonDraw::desc).staticmethod("desc")
+        .def("regenType", &PyGiCommonDraw::regenType, DS.CLASSARGS())
+        .def("regenAbort", &PyGiCommonDraw::regenAbort, DS.CLASSARGS())
+        .def("isDragging", &PyGiCommonDraw::isDragging, DS.CLASSARGS())
+        .def("subEntityTraits", &PyGiCommonDraw::subEntityTraits, DS.CLASSARGS())
+        .def("className", &PyGiCommonDraw::className, DS.CLASSARGSSTATIC()).staticmethod("className")
+        .def("desc", &PyGiCommonDraw::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
         ;
 }
 
@@ -64,10 +65,11 @@ AcGiCommonDraw* PyGiCommonDraw::impObj(const std::source_location& src /*= std::
 //PyGiWorldDraw 
 void makePyGiWorldDrawWrapper()
 {
+    PyDocString DS("WorldDraw");
     class_<PyGiWorldDraw, bases<PyGiCommonDraw>>("WorldDraw", boost::python::no_init)
-        .def("geometry", &PyGiWorldDraw::geometry)
-        .def("className", &PyGiWorldDraw::className).staticmethod("className")
-        .def("desc", &PyGiWorldDraw::desc).staticmethod("desc")
+        .def("geometry", &PyGiWorldDraw::geometry, DS.CLASSARGS())
+        .def("className", &PyGiWorldDraw::className, DS.CLASSARGSSTATIC()).staticmethod("className")
+        .def("desc", &PyGiWorldDraw::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
         ;
 }
 
@@ -102,10 +104,11 @@ AcGiWorldDraw* PyGiWorldDraw::impObj(const std::source_location& src /*= std::so
 //PyGiViewportDraw
 void makePyGiViewportDrawWrapper()
 {
+    PyDocString DS("ViewportDraw");
     class_<PyGiViewportDraw, bases<PyGiCommonDraw>>("ViewportDraw", boost::python::no_init)
-        .def("geometry", &PyGiViewportDraw::geometry)
-        .def("className", &PyGiViewportDraw::className).staticmethod("className")
-        .def("desc", &PyGiViewportDraw::desc).staticmethod("desc")
+        .def("geometry", &PyGiViewportDraw::geometry, DS.CLASSARGS())
+        .def("className", &PyGiViewportDraw::className, DS.CLASSARGSSTATIC()).staticmethod("className")
+        .def("desc", &PyGiViewportDraw::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
         ;
 }
 
@@ -377,9 +380,10 @@ AcGiGeometry* PyGiGeometry::impObj(const std::source_location& src /*= std::sour
 //PyGiWorldGeometry
 void makePyGiWorldGeometryWrapper()
 {
+    PyDocString DS("WorldGeometry");
     class_<PyGiWorldGeometry, bases<PyGiGeometry>>("WorldGeometry", boost::python::no_init)
-        .def("className", &PyGiGeometry::className).staticmethod("className")
-        .def("desc", &PyGiGeometry::desc).staticmethod("desc")
+        .def("className", &PyGiGeometry::className, DS.CLASSARGSSTATIC()).staticmethod("className")
+        .def("desc", &PyGiGeometry::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
         ;
 }
 
@@ -409,9 +413,10 @@ AcGiWorldGeometry* PyGiWorldGeometry::impObj(const std::source_location& src /*=
 //AcGiViewportGeometry
 void makePyGiViewportGeometryWrapper()
 {
+    PyDocString DS("ViewportGeometry");
     class_<PyGiViewportGeometry, bases<PyGiGeometry>>("ViewportGeometry", boost::python::no_init)
-        .def("className", &PyGiGeometry::className).staticmethod("className")
-        .def("desc", &PyGiGeometry::desc).staticmethod("desc")
+        .def("className", &PyGiGeometry::className, DS.CLASSARGSSTATIC()).staticmethod("className")
+        .def("desc", &PyGiGeometry::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
         ;
 }
 
