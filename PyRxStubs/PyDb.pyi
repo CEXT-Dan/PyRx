@@ -4192,11 +4192,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void adjustAlignment(class PyDbAttributeDefinition {lvalue},class PyDbDatabase)'''
     ...
-    def alignmentPoint (self, *args, **kwargs)-> Point3d :
-      '''alignmentPoint( (Text)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d alignmentPoint(class PyDbText {lvalue})'''
+    def alignmentPoint (self: Text)-> Point3d :
+      '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
@@ -4249,11 +4246,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def convertFieldToText (self, *args, **kwargs)-> None :
-      '''convertFieldToText( (Text)arg1) -> None :
-
-    C++ signature :
-        void convertFieldToText(class PyDbText {lvalue})'''
+    def convertFieldToText (self: Text)-> None :
+      '''                             '''
     ...
     def convertIntoMTextAttributeDefinition (self, *args, **kwargs)-> None :
       '''convertIntoMTextAttributeDefinition( (AttributeDefinition)arg1, (bool)arg2) -> None :
@@ -4261,11 +4255,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void convertIntoMTextAttributeDefinition(class PyDbAttributeDefinition {lvalue},bool)'''
     ...
-    def correctSpelling (self, *args, **kwargs)-> int :
-      '''correctSpelling( (Text)arg1) -> int :
-
-    C++ signature :
-        int correctSpelling(class PyDbText {lvalue})'''
+    def correctSpelling (self: Text)-> int :
+      '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -4312,11 +4303,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         unsigned short fieldLength(class PyDbAttributeDefinition {lvalue})'''
     ...
-    def getBoundingPoints (self, *args, **kwargs)-> list :
-      '''getBoundingPoints( (Text)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getBoundingPoints(class PyDbText {lvalue})'''
+    def getBoundingPoints (self: Text)-> list :
+      '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
@@ -4360,23 +4348,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
-    def height (self, *args, **kwargs)-> float :
-      '''height( (Text)arg1) -> float :
-
-    C++ signature :
-        double height(class PyDbText {lvalue})'''
+    def height (self: Text)-> float :
+      '''                             '''
     ...
-    def hitTest (self, *args, **kwargs)-> bool :
-      '''hitTest( (Text)arg1, (Point3d)arg2) -> bool :
-
-    C++ signature :
-        bool hitTest(class PyDbText {lvalue},class AcGePoint3d)'''
+    def hitTest (self: Text,val : PyGe.Point3d)-> bool :
+      '''                             '''
     ...
-    def horizontalMode (self, *args, **kwargs)-> TextHorzMode :
-      '''horizontalMode( (Text)arg1) -> TextHorzMode :
-
-    C++ signature :
-        enum AcDb::TextHorzMode horizontalMode(class PyDbText {lvalue})'''
+    def horizontalMode (self: Text)-> TextHorzMode :
+      '''                             '''
     ...
     def id (self: Drawable)-> ObjectId :
       '''                             '''
@@ -4420,11 +4399,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         bool isConstant(class PyDbAttributeDefinition {lvalue})'''
     ...
-    def isDefaultAlignment (self, *args, **kwargs)-> bool :
-      '''isDefaultAlignment( (Text)arg1) -> bool :
-
-    C++ signature :
-        bool isDefaultAlignment(class PyDbText {lvalue})'''
+    def isDefaultAlignment (self: Text)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -4444,17 +4420,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         bool isMTextAttributeDefinition(class PyDbAttributeDefinition {lvalue})'''
     ...
-    def isMirroredInX (self, *args, **kwargs)-> bool :
-      '''isMirroredInX( (Text)arg1) -> bool :
-
-    C++ signature :
-        bool isMirroredInX(class PyDbText {lvalue})'''
+    def isMirroredInX (self: Text)-> bool :
+      '''                             '''
     ...
-    def isMirroredInY (self, *args, **kwargs)-> bool :
-      '''isMirroredInY( (Text)arg1) -> bool :
-
-    C++ signature :
-        bool isMirroredInY(class PyDbText {lvalue})'''
+    def isMirroredInY (self: Text)-> bool :
+      '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
       '''                             '''
@@ -4513,11 +4483,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def justification (self, *args, **kwargs)-> TextAlignment :
-      '''justification( (Text)arg1) -> TextAlignment :
-
-    C++ signature :
-        enum AcDbText::AcTextAlignment justification(class PyDbText {lvalue})'''
+    def justification (self: Text)-> TextAlignment :
+      '''                             '''
     ...
     def layer (self: Entity)-> str :
       '''                             '''
@@ -4552,32 +4519,20 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> ObjectId :
       '''                             '''
     ...
-    def mirrorInX (self, *args, **kwargs)-> None :
-      '''mirrorInX( (Text)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void mirrorInX(class PyDbText {lvalue},bool)'''
+    def mirrorInX (self: Text,val : bool)-> None :
+      '''                             '''
     ...
-    def mirrorInY (self, *args, **kwargs)-> None :
-      '''mirrorInY( (Text)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void mirrorInY(class PyDbText {lvalue},bool)'''
+    def mirrorInY (self: Text,val : bool)-> None :
+      '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> Vector3d :
-      '''normal( (Text)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbText {lvalue})'''
+    def normal (self: Text)-> Vector3d :
+      '''                             '''
     ...
     def objectId (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def oblique (self, *args, **kwargs)-> float :
-      '''oblique( (Text)arg1) -> float :
-
-    C++ signature :
-        double oblique(class PyDbText {lvalue})'''
+    def oblique (self: Text)-> float :
+      '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
       '''                             '''
@@ -4585,11 +4540,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def position (self, *args, **kwargs)-> Point3d :
-      '''position( (Text)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d position(class PyDbText {lvalue})'''
+    def position (self: Text)-> Point3d :
+      '''                             '''
     ...
     def prompt (self, *args, **kwargs)-> str :
       '''prompt( (AttributeDefinition)arg1) -> str :
@@ -4618,17 +4570,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
-    def rotation (self, *args, **kwargs)-> float :
-      '''rotation( (Text)arg1) -> float :
-
-    C++ signature :
-        double rotation(class PyDbText {lvalue})'''
+    def rotation (self: Text)-> float :
+      '''                             '''
     ...
-    def setAlignmentPoint (self, *args, **kwargs)-> None :
-      '''setAlignmentPoint( (Text)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setAlignmentPoint(class PyDbText {lvalue},class AcGePoint3d)'''
+    def setAlignmentPoint (self: Text,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
@@ -4660,17 +4606,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         void setFieldLength(class PyDbAttributeDefinition {lvalue},unsigned short)'''
     ...
-    def setHeight (self, *args, **kwargs)-> None :
-      '''setHeight( (Text)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setHeight(class PyDbText {lvalue},double)'''
+    def setHeight (self: Text,val : float)-> None :
+      '''                             '''
     ...
-    def setHorizontalMode (self, *args, **kwargs)-> None :
-      '''setHorizontalMode( (Text)arg1, (TextHorzMode)arg2) -> None :
-
-    C++ signature :
-        void setHorizontalMode(class PyDbText {lvalue},enum AcDb::TextHorzMode)'''
+    def setHorizontalMode (self: Text,val : TextHorzMode)-> None :
+      '''                             '''
     ...
     def setInvisible (self, *args, **kwargs)-> None :
       '''setInvisible( (AttributeDefinition)arg1, (bool)arg2) -> None :
@@ -4678,11 +4618,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         void setInvisible(class PyDbAttributeDefinition {lvalue},bool)'''
     ...
-    def setJustification (self, *args, **kwargs)-> None :
-      '''setJustification( (Text)arg1, (TextAlignment)arg2) -> None :
-
-    C++ signature :
-        void setJustification(class PyDbText {lvalue},enum AcDbText::AcTextAlignment)'''
+    def setJustification (self: Text,val : TextAlignment)-> None :
+      '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -4711,17 +4648,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self, *args, **kwargs)-> None :
-      '''setNormal( (Text)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setNormal(class PyDbText {lvalue},class AcGeVector3d)'''
+    def setNormal (self: Text,val : PyGe.Vector3d)-> None :
+      '''                             '''
     ...
-    def setOblique (self, *args, **kwargs)-> None :
-      '''setOblique( (Text)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setOblique(class PyDbText {lvalue},double)'''
+    def setOblique (self: Text,val : float)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
       '''                             '''
@@ -4742,11 +4673,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPosition (self, *args, **kwargs)-> None :
-      '''setPosition( (Text)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setPosition(class PyDbText {lvalue},class AcGePoint3d)'''
+    def setPosition (self: Text,pos : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setPreset (self, *args, **kwargs)-> None :
       '''setPreset( (AttributeDefinition)arg1, (bool)arg2) -> None :
@@ -4766,11 +4694,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setRotation (self, *args, **kwargs)-> None :
-      '''setRotation( (Text)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setRotation(class PyDbText {lvalue},double)'''
+    def setRotation (self: Text,val : float)-> None :
+      '''                             '''
     ...
     def setTag (self, *args, **kwargs)-> None :
       '''setTag( (AttributeDefinition)arg1, (str)arg2) -> None :
@@ -4778,23 +4703,14 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setTag(class PyDbAttributeDefinition {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setTextString (self, *args, **kwargs)-> None :
-      '''setTextString( (Text)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setTextString(class PyDbText {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setTextString (self: Text,val : str)-> None :
+      '''                             '''
     ...
-    def setTextStyle (self, *args, **kwargs)-> None :
-      '''setTextStyle( (Text)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setTextStyle(class PyDbText {lvalue},class PyDbObjectId)'''
+    def setTextStyle (self: Text,val : ObjectId)-> None :
+      '''                             '''
     ...
-    def setThickness (self, *args, **kwargs)-> None :
-      '''setThickness( (Text)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setThickness(class PyDbText {lvalue},double)'''
+    def setThickness (self: Text,val : float)-> None :
+      '''                             '''
     ...
     def setVerifiable (self, *args, **kwargs)-> None :
       '''setVerifiable( (AttributeDefinition)arg1, (bool)arg2) -> None :
@@ -4802,20 +4718,14 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setVerifiable(class PyDbAttributeDefinition {lvalue},bool)'''
     ...
-    def setVerticalMode (self, *args, **kwargs)-> None :
-      '''setVerticalMode( (Text)arg1, (TextHorzMode)arg2) -> None :
-
-    C++ signature :
-        void setVerticalMode(class PyDbText {lvalue},enum AcDb::TextVertMode)'''
+    def setVerticalMode (self: Text,val : TextVertMode)-> None :
+      '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setWidthFactor (self, *args, **kwargs)-> None :
-      '''setWidthFactor( (Text)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setWidthFactor(class PyDbText {lvalue},double)'''
+    def setWidthFactor (self: Text,val : float)-> None :
+      '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
@@ -4829,23 +4739,14 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > tag(class PyDbAttributeDefinition {lvalue})'''
     ...
-    def textString (self, *args, **kwargs)-> str :
-      '''textString( (Text)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > textString(class PyDbText {lvalue})'''
+    def textString (self: Text)-> str :
+      '''                             '''
     ...
-    def textStyle (self, *args, **kwargs)-> ObjectId :
-      '''textStyle( (Text)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId textStyle(class PyDbText {lvalue})'''
+    def textStyle (self: Text)-> ObjectId :
+      '''                             '''
     ...
-    def thickness (self, *args, **kwargs)-> float :
-      '''thickness( (Text)arg1) -> float :
-
-    C++ signature :
-        double thickness(class PyDbText {lvalue})'''
+    def thickness (self: Text)-> float :
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
@@ -4862,11 +4763,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: DbObject)-> None :
       '''                             '''
     ...
-    def verticalMode (self, *args, **kwargs)-> TextHorzMode :
-      '''verticalMode( (Text)arg1) -> TextHorzMode :
-
-    C++ signature :
-        enum AcDb::TextVertMode verticalMode(class PyDbText {lvalue})'''
+    def verticalMode (self: Text)-> TextHorzMode :
+      '''                             '''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -4877,11 +4775,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> Visibility :
       '''                             '''
     ...
-    def widthFactor (self, *args, **kwargs)-> float :
-      '''widthFactor( (Text)arg1) -> float :
-
-    C++ signature :
-        double widthFactor(class PyDbText {lvalue})'''
+    def widthFactor (self: Text)-> float :
+      '''                             '''
     ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
@@ -4923,17 +4818,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def adjustAlignment (self, *args, **kwargs)-> None :
-      '''adjustAlignment( (Text)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void adjustAlignment(class PyDbText {lvalue},class PyDbDatabase)'''
+    def adjustAlignment (self: Text,val : Database)-> None :
+      '''                             '''
     ...
-    def alignmentPoint (self, *args, **kwargs)-> Point3d :
-      '''alignmentPoint( (Text)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d alignmentPoint(class PyDbText {lvalue})'''
+    def alignmentPoint (self: Text)-> Point3d :
+      '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
@@ -4986,11 +4875,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def convertFieldToText (self, *args, **kwargs)-> None :
-      '''convertFieldToText( (Text)arg1) -> None :
-
-    C++ signature :
-        void convertFieldToText(class PyDbText {lvalue})'''
+    def convertFieldToText (self: Text)-> None :
+      '''                             '''
     ...
     def convertIntoMTextAttribute (self, *args, **kwargs)-> None :
       '''convertIntoMTextAttribute( (AttributeReference)arg1, (bool)arg2) -> None :
@@ -4998,11 +4884,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void convertIntoMTextAttribute(class PyDbAttribute {lvalue},bool)'''
     ...
-    def correctSpelling (self, *args, **kwargs)-> int :
-      '''correctSpelling( (Text)arg1) -> int :
-
-    C++ signature :
-        int correctSpelling(class PyDbText {lvalue})'''
+    def correctSpelling (self: Text)-> int :
+      '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -5049,11 +4932,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         unsigned short fieldLength(class PyDbAttribute {lvalue})'''
     ...
-    def getBoundingPoints (self, *args, **kwargs)-> list :
-      '''getBoundingPoints( (Text)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getBoundingPoints(class PyDbText {lvalue})'''
+    def getBoundingPoints (self: Text)-> list :
+      '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
@@ -5097,23 +4977,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
-    def height (self, *args, **kwargs)-> float :
-      '''height( (Text)arg1) -> float :
-
-    C++ signature :
-        double height(class PyDbText {lvalue})'''
+    def height (self: Text)-> float :
+      '''                             '''
     ...
-    def hitTest (self, *args, **kwargs)-> bool :
-      '''hitTest( (Text)arg1, (Point3d)arg2) -> bool :
-
-    C++ signature :
-        bool hitTest(class PyDbText {lvalue},class AcGePoint3d)'''
+    def hitTest (self: Text,val : PyGe.Point3d)-> bool :
+      '''                             '''
     ...
-    def horizontalMode (self, *args, **kwargs)-> TextHorzMode :
-      '''horizontalMode( (Text)arg1) -> TextHorzMode :
-
-    C++ signature :
-        enum AcDb::TextHorzMode horizontalMode(class PyDbText {lvalue})'''
+    def horizontalMode (self: Text)-> TextHorzMode :
+      '''                             '''
     ...
     def id (self: Drawable)-> ObjectId :
       '''                             '''
@@ -5157,11 +5028,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         bool isConstant(class PyDbAttribute {lvalue})'''
     ...
-    def isDefaultAlignment (self, *args, **kwargs)-> bool :
-      '''isDefaultAlignment( (Text)arg1) -> bool :
-
-    C++ signature :
-        bool isDefaultAlignment(class PyDbText {lvalue})'''
+    def isDefaultAlignment (self: Text)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -5181,17 +5049,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         bool isMTextAttribute(class PyDbAttribute {lvalue})'''
     ...
-    def isMirroredInX (self, *args, **kwargs)-> bool :
-      '''isMirroredInX( (Text)arg1) -> bool :
-
-    C++ signature :
-        bool isMirroredInX(class PyDbText {lvalue})'''
+    def isMirroredInX (self: Text)-> bool :
+      '''                             '''
     ...
-    def isMirroredInY (self, *args, **kwargs)-> bool :
-      '''isMirroredInY( (Text)arg1) -> bool :
-
-    C++ signature :
-        bool isMirroredInY(class PyDbText {lvalue})'''
+    def isMirroredInY (self: Text)-> bool :
+      '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
       '''                             '''
@@ -5256,11 +5118,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def justification (self, *args, **kwargs)-> TextAlignment :
-      '''justification( (Text)arg1) -> TextAlignment :
-
-    C++ signature :
-        enum AcDbText::AcTextAlignment justification(class PyDbText {lvalue})'''
+    def justification (self: Text)-> TextAlignment :
+      '''                             '''
     ...
     def layer (self: Entity)-> str :
       '''                             '''
@@ -5295,32 +5154,20 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> ObjectId :
       '''                             '''
     ...
-    def mirrorInX (self, *args, **kwargs)-> None :
-      '''mirrorInX( (Text)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void mirrorInX(class PyDbText {lvalue},bool)'''
+    def mirrorInX (self: Text,val : bool)-> None :
+      '''                             '''
     ...
-    def mirrorInY (self, *args, **kwargs)-> None :
-      '''mirrorInY( (Text)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void mirrorInY(class PyDbText {lvalue},bool)'''
+    def mirrorInY (self: Text,val : bool)-> None :
+      '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> Vector3d :
-      '''normal( (Text)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbText {lvalue})'''
+    def normal (self: Text)-> Vector3d :
+      '''                             '''
     ...
     def objectId (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def oblique (self, *args, **kwargs)-> float :
-      '''oblique( (Text)arg1) -> float :
-
-    C++ signature :
-        double oblique(class PyDbText {lvalue})'''
+    def oblique (self: Text)-> float :
+      '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
       '''                             '''
@@ -5328,11 +5175,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def position (self, *args, **kwargs)-> Point3d :
-      '''position( (Text)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d position(class PyDbText {lvalue})'''
+    def position (self: Text)-> Point3d :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
@@ -5355,17 +5199,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
-    def rotation (self, *args, **kwargs)-> float :
-      '''rotation( (Text)arg1) -> float :
-
-    C++ signature :
-        double rotation(class PyDbText {lvalue})'''
+    def rotation (self: Text)-> float :
+      '''                             '''
     ...
-    def setAlignmentPoint (self, *args, **kwargs)-> None :
-      '''setAlignmentPoint( (Text)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setAlignmentPoint(class PyDbText {lvalue},class AcGePoint3d)'''
+    def setAlignmentPoint (self: Text,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setAttributeFromBlock (self, *args, **kwargs)-> None :
       '''setAttributeFromBlock( (AttributeReference)arg1, (Matrix3d)arg2) -> None :
@@ -5402,17 +5240,11 @@ setAttributeFromBlock( (AttributeReference)arg1, (AttributeDefinition)arg2, (Mat
     C++ signature :
         void setFieldLength(class PyDbAttribute {lvalue},unsigned short)'''
     ...
-    def setHeight (self, *args, **kwargs)-> None :
-      '''setHeight( (Text)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setHeight(class PyDbText {lvalue},double)'''
+    def setHeight (self: Text,val : float)-> None :
+      '''                             '''
     ...
-    def setHorizontalMode (self, *args, **kwargs)-> None :
-      '''setHorizontalMode( (Text)arg1, (TextHorzMode)arg2) -> None :
-
-    C++ signature :
-        void setHorizontalMode(class PyDbText {lvalue},enum AcDb::TextHorzMode)'''
+    def setHorizontalMode (self: Text,val : TextHorzMode)-> None :
+      '''                             '''
     ...
     def setInvisible (self, *args, **kwargs)-> None :
       '''setInvisible( (AttributeReference)arg1, (bool)arg2) -> None :
@@ -5420,11 +5252,8 @@ setAttributeFromBlock( (AttributeReference)arg1, (AttributeDefinition)arg2, (Mat
     C++ signature :
         void setInvisible(class PyDbAttribute {lvalue},bool)'''
     ...
-    def setJustification (self, *args, **kwargs)-> None :
-      '''setJustification( (Text)arg1, (TextAlignment)arg2) -> None :
-
-    C++ signature :
-        void setJustification(class PyDbText {lvalue},enum AcDbText::AcTextAlignment)'''
+    def setJustification (self: Text,val : TextAlignment)-> None :
+      '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -5453,17 +5282,11 @@ setAttributeFromBlock( (AttributeReference)arg1, (AttributeDefinition)arg2, (Mat
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self, *args, **kwargs)-> None :
-      '''setNormal( (Text)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setNormal(class PyDbText {lvalue},class AcGeVector3d)'''
+    def setNormal (self: Text,val : PyGe.Vector3d)-> None :
+      '''                             '''
     ...
-    def setOblique (self, *args, **kwargs)-> None :
-      '''setOblique( (Text)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setOblique(class PyDbText {lvalue},double)'''
+    def setOblique (self: Text,val : float)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
       '''                             '''
@@ -5484,11 +5307,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPosition (self, *args, **kwargs)-> None :
-      '''setPosition( (Text)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setPosition(class PyDbText {lvalue},class AcGePoint3d)'''
+    def setPosition (self: Text,pos : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
       '''                             '''
@@ -5496,11 +5316,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setRotation (self, *args, **kwargs)-> None :
-      '''setRotation( (Text)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setRotation(class PyDbText {lvalue},double)'''
+    def setRotation (self: Text,val : float)-> None :
+      '''                             '''
     ...
     def setTag (self, *args, **kwargs)-> None :
       '''setTag( (AttributeReference)arg1, (str)arg2) -> None :
@@ -5508,38 +5325,23 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setTag(class PyDbAttribute {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
-    def setTextString (self, *args, **kwargs)-> None :
-      '''setTextString( (Text)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setTextString(class PyDbText {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setTextString (self: Text,val : str)-> None :
+      '''                             '''
     ...
-    def setTextStyle (self, *args, **kwargs)-> None :
-      '''setTextStyle( (Text)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setTextStyle(class PyDbText {lvalue},class PyDbObjectId)'''
+    def setTextStyle (self: Text,val : ObjectId)-> None :
+      '''                             '''
     ...
-    def setThickness (self, *args, **kwargs)-> None :
-      '''setThickness( (Text)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setThickness(class PyDbText {lvalue},double)'''
+    def setThickness (self: Text,val : float)-> None :
+      '''                             '''
     ...
-    def setVerticalMode (self, *args, **kwargs)-> None :
-      '''setVerticalMode( (Text)arg1, (TextHorzMode)arg2) -> None :
-
-    C++ signature :
-        void setVerticalMode(class PyDbText {lvalue},enum AcDb::TextVertMode)'''
+    def setVerticalMode (self: Text,val : TextVertMode)-> None :
+      '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setWidthFactor (self, *args, **kwargs)-> None :
-      '''setWidthFactor( (Text)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setWidthFactor(class PyDbText {lvalue},double)'''
+    def setWidthFactor (self: Text,val : float)-> None :
+      '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
@@ -5553,23 +5355,14 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > tag(class PyDbAttribute {lvalue})'''
     ...
-    def textString (self, *args, **kwargs)-> str :
-      '''textString( (Text)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > textString(class PyDbText {lvalue})'''
+    def textString (self: Text)-> str :
+      '''                             '''
     ...
-    def textStyle (self, *args, **kwargs)-> ObjectId :
-      '''textStyle( (Text)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId textStyle(class PyDbText {lvalue})'''
+    def textStyle (self: Text)-> ObjectId :
+      '''                             '''
     ...
-    def thickness (self, *args, **kwargs)-> float :
-      '''thickness( (Text)arg1) -> float :
-
-    C++ signature :
-        double thickness(class PyDbText {lvalue})'''
+    def thickness (self: Text)-> float :
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
@@ -5586,11 +5379,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: DbObject)-> None :
       '''                             '''
     ...
-    def verticalMode (self, *args, **kwargs)-> TextHorzMode :
-      '''verticalMode( (Text)arg1) -> TextHorzMode :
-
-    C++ signature :
-        enum AcDb::TextVertMode verticalMode(class PyDbText {lvalue})'''
+    def verticalMode (self: Text)-> TextHorzMode :
+      '''                             '''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -5601,11 +5391,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> Visibility :
       '''                             '''
     ...
-    def widthFactor (self, *args, **kwargs)-> float :
-      '''widthFactor( (Text)arg1) -> float :
-
-    C++ signature :
-        double widthFactor(class PyDbText {lvalue})'''
+    def widthFactor (self: Text)-> float :
+      '''                             '''
     ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
@@ -62054,17 +61841,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def adjustAlignment (self, *args, **kwargs)-> None :
-      '''adjustAlignment( (Text)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void adjustAlignment(class PyDbText {lvalue},class PyDbDatabase)'''
+    def adjustAlignment (self: Text,val : Database)-> None :
+      '''                             '''
     ...
-    def alignmentPoint (self, *args, **kwargs)-> Point3d :
-      '''alignmentPoint( (Text)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d alignmentPoint(class PyDbText {lvalue})'''
+    def alignmentPoint (self: Text)-> Point3d :
+      '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
@@ -62084,26 +61865,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> Text :
-      '''cast( (RxObject)arg1) -> Text :
-
-    C++ signature :
-        class PyDbText cast(class PyRxObject)'''
+    def cast (otherObject: RxObject)-> Text :
+      '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> Text :
-      '''cloneFrom( (RxObject)arg1) -> Text :
-
-    C++ signature :
-        class PyDbText cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: RxObject)-> Text :
+      '''                             '''
     ...
     def close (self: DbObject)-> None :
       '''                             '''
@@ -62117,17 +61889,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def convertFieldToText (self, *args, **kwargs)-> None :
-      '''convertFieldToText( (Text)arg1) -> None :
-
-    C++ signature :
-        void convertFieldToText(class PyDbText {lvalue})'''
+    def convertFieldToText (self: Text)-> None :
+      '''                             '''
     ...
-    def correctSpelling (self, *args, **kwargs)-> int :
-      '''correctSpelling( (Text)arg1) -> int :
-
-    C++ signature :
-        int correctSpelling(class PyDbText {lvalue})'''
+    def correctSpelling (self: Text)-> int :
+      '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -62135,11 +61901,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> Database :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -62168,11 +61931,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getBoundingPoints (self, *args, **kwargs)-> list :
-      '''getBoundingPoints( (Text)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getBoundingPoints(class PyDbText {lvalue})'''
+    def getBoundingPoints (self: Text)-> list :
+      '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
@@ -62210,23 +61970,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def hasPersistentReactor (self: DbObject,id: ObjectId)-> bool :
       '''                             '''
     ...
-    def height (self, *args, **kwargs)-> float :
-      '''height( (Text)arg1) -> float :
-
-    C++ signature :
-        double height(class PyDbText {lvalue})'''
+    def height (self: Text)-> float :
+      '''                             '''
     ...
-    def hitTest (self, *args, **kwargs)-> bool :
-      '''hitTest( (Text)arg1, (Point3d)arg2) -> bool :
-
-    C++ signature :
-        bool hitTest(class PyDbText {lvalue},class AcGePoint3d)'''
+    def hitTest (self: Text,val : PyGe.Point3d)-> bool :
+      '''                             '''
     ...
-    def horizontalMode (self, *args, **kwargs)-> TextHorzMode :
-      '''horizontalMode( (Text)arg1) -> TextHorzMode :
-
-    C++ signature :
-        enum AcDb::TextHorzMode horizontalMode(class PyDbText {lvalue})'''
+    def horizontalMode (self: Text)-> TextHorzMode :
+      '''                             '''
     ...
     def id (self: Drawable)-> ObjectId :
       '''                             '''
@@ -62264,11 +62015,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isDefaultAlignment (self, *args, **kwargs)-> bool :
-      '''isDefaultAlignment( (Text)arg1) -> bool :
-
-    C++ signature :
-        bool isDefaultAlignment(class PyDbText {lvalue})'''
+    def isDefaultAlignment (self: Text)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -62276,17 +62024,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isMirroredInX (self, *args, **kwargs)-> bool :
-      '''isMirroredInX( (Text)arg1) -> bool :
-
-    C++ signature :
-        bool isMirroredInX(class PyDbText {lvalue})'''
+    def isMirroredInX (self: Text)-> bool :
+      '''                             '''
     ...
-    def isMirroredInY (self, *args, **kwargs)-> bool :
-      '''isMirroredInY( (Text)arg1) -> bool :
-
-    C++ signature :
-        bool isMirroredInY(class PyDbText {lvalue})'''
+    def isMirroredInY (self: Text)-> bool :
+      '''                             '''
     ...
     def isModified (self: DbObject)-> bool :
       '''                             '''
@@ -62333,11 +62075,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
     ...
-    def justification (self, *args, **kwargs)-> TextAlignment :
-      '''justification( (Text)arg1) -> TextAlignment :
-
-    C++ signature :
-        enum AcDbText::AcTextAlignment justification(class PyDbText {lvalue})'''
+    def justification (self: Text)-> TextAlignment :
+      '''                             '''
     ...
     def layer (self: Entity)-> str :
       '''                             '''
@@ -62366,32 +62105,20 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> ObjectId :
       '''                             '''
     ...
-    def mirrorInX (self, *args, **kwargs)-> None :
-      '''mirrorInX( (Text)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void mirrorInX(class PyDbText {lvalue},bool)'''
+    def mirrorInX (self: Text,val : bool)-> None :
+      '''                             '''
     ...
-    def mirrorInY (self, *args, **kwargs)-> None :
-      '''mirrorInY( (Text)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void mirrorInY(class PyDbText {lvalue},bool)'''
+    def mirrorInY (self: Text,val : bool)-> None :
+      '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> Vector3d :
-      '''normal( (Text)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbText {lvalue})'''
+    def normal (self: Text)-> Vector3d :
+      '''                             '''
     ...
     def objectId (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def oblique (self, *args, **kwargs)-> float :
-      '''oblique( (Text)arg1) -> float :
-
-    C++ signature :
-        double oblique(class PyDbText {lvalue})'''
+    def oblique (self: Text)-> float :
+      '''                             '''
     ...
     def ownerId (self: DbObject)-> ObjectId :
       '''                             '''
@@ -62399,11 +62126,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def position (self, *args, **kwargs)-> Point3d :
-      '''position( (Text)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d position(class PyDbText {lvalue})'''
+    def position (self: Text)-> Point3d :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
@@ -62426,17 +62150,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
-    def rotation (self, *args, **kwargs)-> float :
-      '''rotation( (Text)arg1) -> float :
-
-    C++ signature :
-        double rotation(class PyDbText {lvalue})'''
+    def rotation (self: Text)-> float :
+      '''                             '''
     ...
-    def setAlignmentPoint (self, *args, **kwargs)-> None :
-      '''setAlignmentPoint( (Text)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setAlignmentPoint(class PyDbText {lvalue},class AcGePoint3d)'''
+    def setAlignmentPoint (self: Text,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
@@ -62456,23 +62174,14 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setHeight (self, *args, **kwargs)-> None :
-      '''setHeight( (Text)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setHeight(class PyDbText {lvalue},double)'''
+    def setHeight (self: Text,val : float)-> None :
+      '''                             '''
     ...
-    def setHorizontalMode (self, *args, **kwargs)-> None :
-      '''setHorizontalMode( (Text)arg1, (TextHorzMode)arg2) -> None :
-
-    C++ signature :
-        void setHorizontalMode(class PyDbText {lvalue},enum AcDb::TextHorzMode)'''
+    def setHorizontalMode (self: Text,val : TextHorzMode)-> None :
+      '''                             '''
     ...
-    def setJustification (self, *args, **kwargs)-> None :
-      '''setJustification( (Text)arg1, (TextAlignment)arg2) -> None :
-
-    C++ signature :
-        void setJustification(class PyDbText {lvalue},enum AcDbText::AcTextAlignment)'''
+    def setJustification (self: Text,val : TextAlignment)-> None :
+      '''                             '''
     ...
     def setLayer (self: Entity,val: str|ObjectId,dosubents : bool=True,allowHiddenLayer : bool=False)-> None :
       '''                             '''
@@ -62489,17 +62198,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self, *args, **kwargs)-> None :
-      '''setNormal( (Text)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setNormal(class PyDbText {lvalue},class AcGeVector3d)'''
+    def setNormal (self: Text,val : PyGe.Vector3d)-> None :
+      '''                             '''
     ...
-    def setOblique (self, *args, **kwargs)-> None :
-      '''setOblique( (Text)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setOblique(class PyDbText {lvalue},double)'''
+    def setOblique (self: Text,val : float)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
       '''                             '''
@@ -62520,11 +62223,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPosition (self, *args, **kwargs)-> None :
-      '''setPosition( (Text)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setPosition(class PyDbText {lvalue},class AcGePoint3d)'''
+    def setPosition (self: Text,pos : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
       '''                             '''
@@ -62532,44 +62232,26 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setRotation (self, *args, **kwargs)-> None :
-      '''setRotation( (Text)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setRotation(class PyDbText {lvalue},double)'''
+    def setRotation (self: Text,val : float)-> None :
+      '''                             '''
     ...
-    def setTextString (self, *args, **kwargs)-> None :
-      '''setTextString( (Text)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setTextString(class PyDbText {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setTextString (self: Text,val : str)-> None :
+      '''                             '''
     ...
-    def setTextStyle (self, *args, **kwargs)-> None :
-      '''setTextStyle( (Text)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setTextStyle(class PyDbText {lvalue},class PyDbObjectId)'''
+    def setTextStyle (self: Text,val : ObjectId)-> None :
+      '''                             '''
     ...
-    def setThickness (self, *args, **kwargs)-> None :
-      '''setThickness( (Text)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setThickness(class PyDbText {lvalue},double)'''
+    def setThickness (self: Text,val : float)-> None :
+      '''                             '''
     ...
-    def setVerticalMode (self, *args, **kwargs)-> None :
-      '''setVerticalMode( (Text)arg1, (TextHorzMode)arg2) -> None :
-
-    C++ signature :
-        void setVerticalMode(class PyDbText {lvalue},enum AcDb::TextVertMode)'''
+    def setVerticalMode (self: Text,val : TextVertMode)-> None :
+      '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setWidthFactor (self, *args, **kwargs)-> None :
-      '''setWidthFactor( (Text)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setWidthFactor(class PyDbText {lvalue},double)'''
+    def setWidthFactor (self: Text,val : float)-> None :
+      '''                             '''
     ...
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
@@ -62577,23 +62259,14 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def textString (self, *args, **kwargs)-> str :
-      '''textString( (Text)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > textString(class PyDbText {lvalue})'''
+    def textString (self: Text)-> str :
+      '''                             '''
     ...
-    def textStyle (self, *args, **kwargs)-> ObjectId :
-      '''textStyle( (Text)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId textStyle(class PyDbText {lvalue})'''
+    def textStyle (self: Text)-> ObjectId :
+      '''                             '''
     ...
-    def thickness (self, *args, **kwargs)-> float :
-      '''thickness( (Text)arg1) -> float :
-
-    C++ signature :
-        double thickness(class PyDbText {lvalue})'''
+    def thickness (self: Text)-> float :
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
@@ -62604,11 +62277,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: DbObject)-> None :
       '''                             '''
     ...
-    def verticalMode (self, *args, **kwargs)-> TextHorzMode :
-      '''verticalMode( (Text)arg1) -> TextHorzMode :
-
-    C++ signature :
-        enum AcDb::TextVertMode verticalMode(class PyDbText {lvalue})'''
+    def verticalMode (self: Text)-> TextHorzMode :
+      '''                             '''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -62619,11 +62289,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def visibility (self: Entity)-> Visibility :
       '''                             '''
     ...
-    def widthFactor (self, *args, **kwargs)-> float :
-      '''widthFactor( (Text)arg1) -> float :
-
-    C++ signature :
-        double widthFactor(class PyDbText {lvalue})'''
+    def widthFactor (self: Text)-> float :
+      '''                             '''
     ...
     def worldDraw (self: Drawable,wdraw: PyGi.WorldDraw)-> bool :
       '''                             '''
