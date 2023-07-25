@@ -20627,26 +20627,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> FaceRecord :
-      '''cast( (RxObject)arg1) -> FaceRecord :
-
-    C++ signature :
-        class PyDbFaceRecord cast(class PyRxObject)'''
+    def cast (otherObject: RxObject)-> FaceRecord :
+      '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> FaceRecord :
-      '''cloneFrom( (RxObject)arg1) -> FaceRecord :
-
-    C++ signature :
-        class PyDbFaceRecord cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: RxObject)-> FaceRecord :
+      '''                             '''
     ...
     def close (self: DbObject)-> None :
       '''                             '''
@@ -20666,11 +20657,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> Database :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -20726,11 +20714,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getTransformedCopy (self: Entity,matrix3d: PyGe.Matrix3d)-> Entity :
       '''                             '''
     ...
-    def getVertexAt (self, *args, **kwargs)-> int :
-      '''getVertexAt( (FaceRecord)arg1, (int)arg2) -> int :
-
-    C++ signature :
-        short getVertexAt(class PyDbFaceRecord {lvalue},unsigned short)'''
+    def getVertexAt (self: FaceRecord,val : int)-> int :
+      '''                             '''
     ...
     def handOverTo (self: DbObject,newObject: DbObject,keepXData: bool,keepExtDict: bool)-> None :
       '''                             '''
@@ -20777,11 +20762,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isEdgeVisibleAt (self, *args, **kwargs)-> bool :
-      '''isEdgeVisibleAt( (FaceRecord)arg1, (int)arg2) -> bool :
-
-    C++ signature :
-        bool isEdgeVisibleAt(class PyDbFaceRecord {lvalue},unsigned short)'''
+    def isEdgeVisibleAt (self: FaceRecord,val : int)-> bool :
+      '''                             '''
     ...
     def isEraseStatusToggled (self: DbObject)-> bool :
       '''                             '''
@@ -20855,17 +20837,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def list (self: Entity)-> None :
       '''                             '''
     ...
-    def makeEdgeInvisibleAt (self, *args, **kwargs)-> None :
-      '''makeEdgeInvisibleAt( (FaceRecord)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void makeEdgeInvisibleAt(class PyDbFaceRecord {lvalue},unsigned short)'''
+    def makeEdgeInvisibleAt (self: FaceRecord,val : int)-> None :
+      '''                             '''
     ...
-    def makeEdgeVisibleAt (self, *args, **kwargs)-> None :
-      '''makeEdgeVisibleAt( (FaceRecord)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void makeEdgeVisibleAt(class PyDbFaceRecord {lvalue},unsigned short)'''
+    def makeEdgeVisibleAt (self: FaceRecord,val : int)-> None :
+      '''                             '''
     ...
     def material (self: Entity)-> str :
       '''                             '''
@@ -20961,11 +20937,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setVertexAt (self, *args, **kwargs)-> None :
-      '''setVertexAt( (FaceRecord)arg1, (int)arg2, (DxfCode)arg3) -> None :
-
-    C++ signature :
-        void setVertexAt(class PyDbFaceRecord {lvalue},unsigned short,short)'''
+    def setVertexAt (self: FaceRecord,val : int,idx : int)-> None :
+      '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
@@ -42677,26 +42650,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> Point :
-      '''cast( (RxObject)arg1) -> Point :
-
-    C++ signature :
-        class PyDbPoint cast(class PyRxObject)'''
+    def cast (otherObject: RxObject)-> Point :
+      '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> Point :
-      '''cloneFrom( (RxObject)arg1) -> Point :
-
-    C++ signature :
-        class PyDbPoint cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: RxObject)-> Point :
+      '''                             '''
     ...
     def close (self: DbObject)-> None :
       '''                             '''
@@ -42716,11 +42680,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> Database :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -42737,11 +42698,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> GiDrawableType :
       '''                             '''
     ...
-    def ecsRotation (self, *args, **kwargs)-> float :
-      '''ecsRotation( (Point)arg1) -> float :
-
-    C++ signature :
-        double ecsRotation(class PyDbPoint {lvalue})'''
+    def ecsRotation (self: Point)-> float :
+      '''                             '''
     ...
     def entityColor (self: Entity)-> EntityColor :
       '''                             '''
@@ -42905,11 +42863,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> ObjectId :
       '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> Vector3d :
-      '''normal( (Point)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbPoint {lvalue})'''
+    def normal (self: Point)-> Vector3d :
+      '''                             '''
     ...
     def objectId (self: DbObject)-> ObjectId :
       '''                             '''
@@ -42920,11 +42875,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def position (self, *args, **kwargs)-> Point3d :
-      '''position( (Point)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d position(class PyDbPoint {lvalue})'''
+    def position (self: Point)-> Point3d :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
@@ -42962,11 +42914,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setEcsRotation (self, *args, **kwargs)-> None :
-      '''setEcsRotation( (Point)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setEcsRotation(class PyDbPoint {lvalue},double)'''
+    def setEcsRotation (self: Point,val : float)-> None :
+      '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
@@ -42986,11 +42935,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self, *args, **kwargs)-> None :
-      '''setNormal( (Point)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setNormal(class PyDbPoint {lvalue},class AcGeVector3d)'''
+    def setNormal (self: Point,val : PyGe.Vector3d)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
       '''                             '''
@@ -43011,11 +42957,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPosition (self, *args, **kwargs)-> None :
-      '''setPosition( (Point)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setPosition(class PyDbPoint {lvalue},class AcGePoint3d)'''
+    def setPosition (self: Point,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
       '''                             '''
@@ -43023,11 +42966,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setThickness (self, *args, **kwargs)-> None :
-      '''setThickness( (Point)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setThickness(class PyDbPoint {lvalue},double)'''
+    def setThickness (self: Point,val : float)-> None :
+      '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
@@ -43038,11 +42978,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def thickness (self, *args, **kwargs)-> float :
-      '''thickness( (Point)arg1) -> float :
-
-    C++ signature :
-        double thickness(class PyDbPoint {lvalue})'''
+    def thickness (self: Point)-> float :
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
@@ -44513,26 +44450,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PolyFaceMeshVertex :
-      '''cast( (RxObject)arg1) -> PolyFaceMeshVertex :
-
-    C++ signature :
-        class PyDbPolyFaceMeshVertex cast(class PyRxObject)'''
+    def cast (otherObject: RxObject)-> PolyFaceMeshVertex :
+      '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PolyFaceMeshVertex :
-      '''cloneFrom( (RxObject)arg1) -> PolyFaceMeshVertex :
-
-    C++ signature :
-        class PyDbPolyFaceMeshVertex cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: RxObject)-> PolyFaceMeshVertex :
+      '''                             '''
     ...
     def close (self: DbObject)-> None :
       '''                             '''
@@ -44552,11 +44480,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> Database :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -44744,11 +44669,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def position (self, *args, **kwargs)-> Point3d :
-      '''position( (PolyFaceMeshVertex)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d position(class PyDbPolyFaceMeshVertex {lvalue})'''
+    def position (self: PolyFaceMeshVertex)-> Point3d :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
@@ -44823,11 +44745,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPosition (self, *args, **kwargs)-> None :
-      '''setPosition( (PolyFaceMeshVertex)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setPosition(class PyDbPolyFaceMeshVertex {lvalue},class AcGePoint3d)'''
+    def setPosition (self: PolyFaceMeshVertex,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
       '''                             '''
@@ -44920,26 +44839,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> PolygonMeshVertex :
-      '''cast( (RxObject)arg1) -> PolygonMeshVertex :
-
-    C++ signature :
-        class PyDbPolygonMeshVertex cast(class PyRxObject)'''
+    def cast (otherObject: RxObject)-> PolygonMeshVertex :
+      '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> PolygonMeshVertex :
-      '''cloneFrom( (RxObject)arg1) -> PolygonMeshVertex :
-
-    C++ signature :
-        class PyDbPolygonMeshVertex cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: RxObject)-> PolygonMeshVertex :
+      '''                             '''
     ...
     def close (self: DbObject)-> None :
       '''                             '''
@@ -44959,11 +44869,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> Database :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -45151,11 +45058,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def position (self, *args, **kwargs)-> Point3d :
-      '''position( (PolygonMeshVertex)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d position(class PyDbPolygonMeshVertex {lvalue})'''
+    def position (self: PolygonMeshVertex)-> Point3d :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
@@ -45230,11 +45134,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPosition (self, *args, **kwargs)-> None :
-      '''setPosition( (PolygonMeshVertex)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setPosition(class PyDbPolygonMeshVertex {lvalue},class AcGePoint3d)'''
+    def setPosition (self: PolygonMeshVertex,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
       '''                             '''
@@ -45260,11 +45161,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: DbObject)-> None :
       '''                             '''
     ...
-    def vertexType (self, *args, **kwargs)-> object :
-      '''vertexType( (PolygonMeshVertex)arg1) -> object :
-
-    C++ signature :
-        enum AcDb::Vertex3dType vertexType(class PyDbPolygonMeshVertex {lvalue})'''
+    def vertexType (self: PolygonMeshVertex)-> object :
+      '''                             '''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
@@ -47323,26 +47221,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> Polyline3dVertex :
-      '''cast( (RxObject)arg1) -> Polyline3dVertex :
-
-    C++ signature :
-        class PyDb3dPolylineVertex cast(class PyRxObject)'''
+    def cast (otherObject: RxObject)-> Polyline3dVertex :
+      '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> Polyline3dVertex :
-      '''cloneFrom( (RxObject)arg1) -> Polyline3dVertex :
-
-    C++ signature :
-        class PyDb3dPolylineVertex cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: RxObject)-> Polyline3dVertex :
+      '''                             '''
     ...
     def close (self: DbObject)-> None :
       '''                             '''
@@ -47362,11 +47251,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> Database :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -47554,11 +47440,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def position (self, *args, **kwargs)-> Point3d :
-      '''position( (Polyline3dVertex)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d position(class PyDb3dPolylineVertex {lvalue})'''
+    def position (self: Polyline3dVertex)-> Point3d :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
@@ -47633,11 +47516,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPosition (self, *args, **kwargs)-> None :
-      '''setPosition( (Polyline3dVertex)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setPosition(class PyDb3dPolylineVertex {lvalue},class AcGePoint3d)'''
+    def setPosition (self: Polyline3dVertex,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
       '''                             '''
@@ -47663,11 +47543,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: DbObject)-> None :
       '''                             '''
     ...
-    def vertexType (self, *args, **kwargs)-> object :
-      '''vertexType( (Polyline3dVertex)arg1) -> object :
-
-    C++ signature :
-        enum AcDb::Vertex3dType vertexType(class PyDb3dPolylineVertex {lvalue})'''
+    def vertexType (self: Polyline3dVertex)-> object :
+      '''                             '''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
