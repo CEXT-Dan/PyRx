@@ -1166,17 +1166,11 @@ class CommonDraw:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> RxClass :
+      '''                             '''
     ...
     def implRefCount (self: RxObject)-> int :
       '''                             '''
@@ -1184,11 +1178,8 @@ This class cannot be instantiated from Python'''
     def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
-    def isDragging (self, *args, **kwargs)-> bool :
-      '''isDragging( (CommonDraw)arg1) -> bool :
-
-    C++ signature :
-        bool isDragging(class PyGiCommonDraw {lvalue})'''
+    def isDragging (self: CommonDraw)-> bool :
+      '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
@@ -1196,23 +1187,14 @@ This class cannot be instantiated from Python'''
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
-    def regenAbort (self, *args, **kwargs)-> bool :
-      '''regenAbort( (CommonDraw)arg1) -> bool :
-
-    C++ signature :
-        bool regenAbort(class PyGiCommonDraw {lvalue})'''
+    def regenAbort (self: CommonDraw)-> bool :
+      '''                             '''
     ...
-    def regenType (self, *args, **kwargs)-> AcGiRegenType :
-      '''regenType( (CommonDraw)arg1) -> AcGiRegenType :
-
-    C++ signature :
-        enum AcGiRegenType regenType(class PyGiCommonDraw {lvalue})'''
+    def regenType (self: CommonDraw)-> AcGiRegenType :
+      '''                             '''
     ...
-    def subEntityTraits (self, *args, **kwargs)-> SubEntityTraits :
-      '''subEntityTraits( (CommonDraw)arg1) -> SubEntityTraits :
-
-    C++ signature :
-        class PyGiSubEntityTraits subEntityTraits(class PyGiCommonDraw {lvalue})'''
+    def subEntityTraits (self: CommonDraw)-> SubEntityTraits :
+      '''                             '''
     ...
 
 class DrawFlags:
@@ -1824,28 +1806,14 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     C++ signature :
         class PyRxClass desc()'''
     ...
-    def draw (self, *args, **kwargs)-> bool :
-      '''draw( (Geometry)arg1, (Drawable)arg2) -> bool :
-
-    C++ signature :
-        bool draw(class PyGiGeometry {lvalue},class PyGiDrawable {lvalue})'''
+    def draw (self: Geometry,drawable : PyGi.Drawable)-> bool :
+      '''                             '''
     ...
-    def edge (self, *args, **kwargs)-> bool :
-      '''edge( (Geometry)arg1, (list)arg2) -> bool :
-
-    C++ signature :
-        bool edge(class PyGiGeometry {lvalue},class boost::python::list)'''
+    def edge (self: Geometry,edgeList : list[PyGe.Curve2d])-> bool :
+      '''                             '''
     ...
-    def ellipticalArc (self, *args, **kwargs)-> bool :
-      '''ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5, (float)arg6, (float)arg7, (float)arg8) -> bool :
-
-    C++ signature :
-        bool ellipticalArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGeVector3d,double,double,double,double,double)
-
-ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5, (float)arg6, (float)arg7, (float)arg8, (AcGiArcType)arg9) -> bool :
-
-    C++ signature :
-        bool ellipticalArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGeVector3d,double,double,double,double,double,enum AcGiArcType)'''
+    def ellipticalArc (self: Geometry,center:PyGe.Point3d,norm:PyGe.Vector3d,majAxisLen:float,minAxisLen:float,startDeg:float,endDeg:float,tilt:float,arcType:ArcType=kAcGiArcSimple)-> bool :
+      '''                             '''
     ...
     def getModelToWorldTransform (self: Geometry)-> Matrix3d :
       '''                             '''
@@ -1862,22 +1830,11 @@ ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (floa
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
-    def pline (self, *args, **kwargs)-> bool :
-      '''pline( (Geometry)arg1, (Polyline)arg2) -> bool :
-
-    C++ signature :
-        bool pline(class PyGiGeometry {lvalue},class PyDbPolyline)
-
-pline( (Geometry)arg1, (Polyline)arg2, (SubentType)arg3, (SubentType)arg4) -> bool :
-
-    C++ signature :
-        bool pline(class PyGiGeometry {lvalue},class PyDbPolyline,unsigned int,unsigned int)'''
+    def pline (self: Geometry,p1 : PyDb.Polyline,fromIndex : int,numSegs : int)-> bool :
+      '''                             '''
     ...
-    def polygon (self, *args, **kwargs)-> bool :
-      '''polygon( (Geometry)arg1, (list)arg2) -> bool :
-
-    C++ signature :
-        bool polygon(class PyGiGeometry {lvalue},class boost::python::list)'''
+    def polygon (self: Geometry,vertexList : list[PyGe.Point3d])-> bool :
+      '''                             '''
     ...
     def polyline (self: Geometry,vertexList : list[PyGe.Point3d],normal : PyGe.Vector3d=default,marker : int=default)-> bool :
       '''                             '''
@@ -1900,35 +1857,20 @@ pline( (Geometry)arg1, (Polyline)arg2, (SubentType)arg3, (SubentType)arg4) -> bo
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
-    def ray (self, *args, **kwargs)-> bool :
-      '''ray( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
-
-    C++ signature :
-        bool ray(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d)'''
+    def ray (self: Geometry,p1 : PyGe.Point3d,p2 : PyGe.Point3d)-> bool :
+      '''                             '''
     ...
-    def rowOfDots (self, *args, **kwargs)-> bool :
-      '''rowOfDots( (Geometry)arg1, (int)arg2, (Point3d)arg3, (Vector3d)arg4) -> bool :
-
-    C++ signature :
-        bool rowOfDots(class PyGiGeometry {lvalue},int,class AcGePoint3d,class AcGeVector3d)'''
+    def rowOfDots (self: Geometry,count : int,start: PyGe.Point3d,step : PyGe.Vector3d)-> bool :
+      '''                             '''
     ...
-    def text (self, *args, **kwargs)-> bool :
-      '''text( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6, (float)arg7, (str)arg8) -> bool :
-
-    C++ signature :
-        bool text(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def text (self: Geometry,pos : PyGe.Point3d,normal : PyGe.Vector3d,direction : PyGe.Vector3d,height : float,width : float,oblique : float,msg : str)-> bool :
+      '''                             '''
     ...
-    def worldLine (self, *args, **kwargs)-> bool :
-      '''worldLine( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
-
-    C++ signature :
-        bool worldLine(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d)'''
+    def worldLine (self: Geometry,p1 : PyGe.Point3d,p2 : PyGe.Point3d)-> bool :
+      '''                             '''
     ...
-    def xline (self, *args, **kwargs)-> bool :
-      '''xline( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
-
-    C++ signature :
-        bool xline(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d)'''
+    def xline (self: Geometry,p1 : PyGe.Point3d,p2 : PyGe.Point3d)-> bool :
+      '''                             '''
     ...
 
 class GiAttributesFlags:
@@ -2939,23 +2881,14 @@ class ViewportDraw:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> RxClass :
+      '''                             '''
     ...
-    def geometry (self, *args, **kwargs)-> ViewportGeometry :
-      '''geometry( (ViewportDraw)arg1) -> ViewportGeometry :
-
-    C++ signature :
-        class PyGiViewportGeometry geometry(class PyGiViewportDraw {lvalue})'''
+    def geometry (self: ViewportDraw)-> ViewportGeometry :
+      '''                             '''
     ...
     def implRefCount (self: RxObject)-> int :
       '''                             '''
@@ -2963,11 +2896,8 @@ This class cannot be instantiated from Python'''
     def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
-    def isDragging (self, *args, **kwargs)-> bool :
-      '''isDragging( (CommonDraw)arg1) -> bool :
-
-    C++ signature :
-        bool isDragging(class PyGiCommonDraw {lvalue})'''
+    def isDragging (self: CommonDraw)-> bool :
+      '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
@@ -2975,23 +2905,14 @@ This class cannot be instantiated from Python'''
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
-    def regenAbort (self, *args, **kwargs)-> bool :
-      '''regenAbort( (CommonDraw)arg1) -> bool :
-
-    C++ signature :
-        bool regenAbort(class PyGiCommonDraw {lvalue})'''
+    def regenAbort (self: CommonDraw)-> bool :
+      '''                             '''
     ...
-    def regenType (self, *args, **kwargs)-> AcGiRegenType :
-      '''regenType( (CommonDraw)arg1) -> AcGiRegenType :
-
-    C++ signature :
-        enum AcGiRegenType regenType(class PyGiCommonDraw {lvalue})'''
+    def regenType (self: CommonDraw)-> AcGiRegenType :
+      '''                             '''
     ...
-    def subEntityTraits (self, *args, **kwargs)-> SubEntityTraits :
-      '''subEntityTraits( (CommonDraw)arg1) -> SubEntityTraits :
-
-    C++ signature :
-        class PyGiSubEntityTraits subEntityTraits(class PyGiCommonDraw {lvalue})'''
+    def subEntityTraits (self: CommonDraw)-> SubEntityTraits :
+      '''                             '''
     ...
 
 class ViewportGeometry:
@@ -3031,40 +2952,20 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     C++ signature :
         bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,enum AcGiArcType)'''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> RxClass :
+      '''                             '''
     ...
-    def draw (self, *args, **kwargs)-> bool :
-      '''draw( (Geometry)arg1, (Drawable)arg2) -> bool :
-
-    C++ signature :
-        bool draw(class PyGiGeometry {lvalue},class PyGiDrawable {lvalue})'''
+    def draw (self: Geometry,drawable : PyGi.Drawable)-> bool :
+      '''                             '''
     ...
-    def edge (self, *args, **kwargs)-> bool :
-      '''edge( (Geometry)arg1, (list)arg2) -> bool :
-
-    C++ signature :
-        bool edge(class PyGiGeometry {lvalue},class boost::python::list)'''
+    def edge (self: Geometry,edgeList : list[PyGe.Curve2d])-> bool :
+      '''                             '''
     ...
-    def ellipticalArc (self, *args, **kwargs)-> bool :
-      '''ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5, (float)arg6, (float)arg7, (float)arg8) -> bool :
-
-    C++ signature :
-        bool ellipticalArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGeVector3d,double,double,double,double,double)
-
-ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5, (float)arg6, (float)arg7, (float)arg8, (AcGiArcType)arg9) -> bool :
-
-    C++ signature :
-        bool ellipticalArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGeVector3d,double,double,double,double,double,enum AcGiArcType)'''
+    def ellipticalArc (self: Geometry,center:PyGe.Point3d,norm:PyGe.Vector3d,majAxisLen:float,minAxisLen:float,startDeg:float,endDeg:float,tilt:float,arcType:ArcType=kAcGiArcSimple)-> bool :
+      '''                             '''
     ...
     def getModelToWorldTransform (self: Geometry)-> Matrix3d :
       '''                             '''
@@ -3081,22 +2982,11 @@ ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (floa
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
-    def pline (self, *args, **kwargs)-> bool :
-      '''pline( (Geometry)arg1, (Polyline)arg2) -> bool :
-
-    C++ signature :
-        bool pline(class PyGiGeometry {lvalue},class PyDbPolyline)
-
-pline( (Geometry)arg1, (Polyline)arg2, (SubentType)arg3, (SubentType)arg4) -> bool :
-
-    C++ signature :
-        bool pline(class PyGiGeometry {lvalue},class PyDbPolyline,unsigned int,unsigned int)'''
+    def pline (self: Geometry,p1 : PyDb.Polyline,fromIndex : int,numSegs : int)-> bool :
+      '''                             '''
     ...
-    def polygon (self, *args, **kwargs)-> bool :
-      '''polygon( (Geometry)arg1, (list)arg2) -> bool :
-
-    C++ signature :
-        bool polygon(class PyGiGeometry {lvalue},class boost::python::list)'''
+    def polygon (self: Geometry,vertexList : list[PyGe.Point3d])-> bool :
+      '''                             '''
     ...
     def polyline (self: Geometry,vertexList : list[PyGe.Point3d],normal : PyGe.Vector3d=default,marker : int=default)-> bool :
       '''                             '''
@@ -3119,35 +3009,20 @@ pline( (Geometry)arg1, (Polyline)arg2, (SubentType)arg3, (SubentType)arg4) -> bo
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
-    def ray (self, *args, **kwargs)-> bool :
-      '''ray( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
-
-    C++ signature :
-        bool ray(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d)'''
+    def ray (self: Geometry,p1 : PyGe.Point3d,p2 : PyGe.Point3d)-> bool :
+      '''                             '''
     ...
-    def rowOfDots (self, *args, **kwargs)-> bool :
-      '''rowOfDots( (Geometry)arg1, (int)arg2, (Point3d)arg3, (Vector3d)arg4) -> bool :
-
-    C++ signature :
-        bool rowOfDots(class PyGiGeometry {lvalue},int,class AcGePoint3d,class AcGeVector3d)'''
+    def rowOfDots (self: Geometry,count : int,start: PyGe.Point3d,step : PyGe.Vector3d)-> bool :
+      '''                             '''
     ...
-    def text (self, *args, **kwargs)-> bool :
-      '''text( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6, (float)arg7, (str)arg8) -> bool :
-
-    C++ signature :
-        bool text(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def text (self: Geometry,pos : PyGe.Point3d,normal : PyGe.Vector3d,direction : PyGe.Vector3d,height : float,width : float,oblique : float,msg : str)-> bool :
+      '''                             '''
     ...
-    def worldLine (self, *args, **kwargs)-> bool :
-      '''worldLine( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
-
-    C++ signature :
-        bool worldLine(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d)'''
+    def worldLine (self: Geometry,p1 : PyGe.Point3d,p2 : PyGe.Point3d)-> bool :
+      '''                             '''
     ...
-    def xline (self, *args, **kwargs)-> bool :
-      '''xline( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
-
-    C++ signature :
-        bool xline(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d)'''
+    def xline (self: Geometry,p1 : PyGe.Point3d,p2 : PyGe.Point3d)-> bool :
+      '''                             '''
     ...
 
 class WorldDraw:
@@ -3155,23 +3030,14 @@ class WorldDraw:
       '''Raises an exception
 This class cannot be instantiated from Python'''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> RxClass :
+      '''                             '''
     ...
-    def geometry (self, *args, **kwargs)-> WorldGeometry :
-      '''geometry( (WorldDraw)arg1) -> WorldGeometry :
-
-    C++ signature :
-        class PyGiWorldGeometry geometry(class PyGiWorldDraw {lvalue})'''
+    def geometry (self: WorldDraw)-> WorldGeometry :
+      '''                             '''
     ...
     def implRefCount (self: RxObject)-> int :
       '''                             '''
@@ -3179,11 +3045,8 @@ This class cannot be instantiated from Python'''
     def isA (self: RxObject)-> RxClass :
       '''                             '''
     ...
-    def isDragging (self, *args, **kwargs)-> bool :
-      '''isDragging( (CommonDraw)arg1) -> bool :
-
-    C++ signature :
-        bool isDragging(class PyGiCommonDraw {lvalue})'''
+    def isDragging (self: CommonDraw)-> bool :
+      '''                             '''
     ...
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
@@ -3191,23 +3054,14 @@ This class cannot be instantiated from Python'''
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
-    def regenAbort (self, *args, **kwargs)-> bool :
-      '''regenAbort( (CommonDraw)arg1) -> bool :
-
-    C++ signature :
-        bool regenAbort(class PyGiCommonDraw {lvalue})'''
+    def regenAbort (self: CommonDraw)-> bool :
+      '''                             '''
     ...
-    def regenType (self, *args, **kwargs)-> AcGiRegenType :
-      '''regenType( (CommonDraw)arg1) -> AcGiRegenType :
-
-    C++ signature :
-        enum AcGiRegenType regenType(class PyGiCommonDraw {lvalue})'''
+    def regenType (self: CommonDraw)-> AcGiRegenType :
+      '''                             '''
     ...
-    def subEntityTraits (self, *args, **kwargs)-> SubEntityTraits :
-      '''subEntityTraits( (CommonDraw)arg1) -> SubEntityTraits :
-
-    C++ signature :
-        class PyGiSubEntityTraits subEntityTraits(class PyGiCommonDraw {lvalue})'''
+    def subEntityTraits (self: CommonDraw)-> SubEntityTraits :
+      '''                             '''
     ...
 
 class WorldGeometry:
@@ -3247,40 +3101,20 @@ circularArc( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (AcGiA
     C++ signature :
         bool circularArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,enum AcGiArcType)'''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> RxClass :
+      '''                             '''
     ...
-    def draw (self, *args, **kwargs)-> bool :
-      '''draw( (Geometry)arg1, (Drawable)arg2) -> bool :
-
-    C++ signature :
-        bool draw(class PyGiGeometry {lvalue},class PyGiDrawable {lvalue})'''
+    def draw (self: Geometry,drawable : PyGi.Drawable)-> bool :
+      '''                             '''
     ...
-    def edge (self, *args, **kwargs)-> bool :
-      '''edge( (Geometry)arg1, (list)arg2) -> bool :
-
-    C++ signature :
-        bool edge(class PyGiGeometry {lvalue},class boost::python::list)'''
+    def edge (self: Geometry,edgeList : list[PyGe.Curve2d])-> bool :
+      '''                             '''
     ...
-    def ellipticalArc (self, *args, **kwargs)-> bool :
-      '''ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5, (float)arg6, (float)arg7, (float)arg8) -> bool :
-
-    C++ signature :
-        bool ellipticalArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGeVector3d,double,double,double,double,double)
-
-ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5, (float)arg6, (float)arg7, (float)arg8, (AcGiArcType)arg9) -> bool :
-
-    C++ signature :
-        bool ellipticalArc(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGeVector3d,double,double,double,double,double,enum AcGiArcType)'''
+    def ellipticalArc (self: Geometry,center:PyGe.Point3d,norm:PyGe.Vector3d,majAxisLen:float,minAxisLen:float,startDeg:float,endDeg:float,tilt:float,arcType:ArcType=kAcGiArcSimple)-> bool :
+      '''                             '''
     ...
     def getModelToWorldTransform (self: Geometry)-> Matrix3d :
       '''                             '''
@@ -3297,22 +3131,11 @@ ellipticalArc( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (floa
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
-    def pline (self, *args, **kwargs)-> bool :
-      '''pline( (Geometry)arg1, (Polyline)arg2) -> bool :
-
-    C++ signature :
-        bool pline(class PyGiGeometry {lvalue},class PyDbPolyline)
-
-pline( (Geometry)arg1, (Polyline)arg2, (SubentType)arg3, (SubentType)arg4) -> bool :
-
-    C++ signature :
-        bool pline(class PyGiGeometry {lvalue},class PyDbPolyline,unsigned int,unsigned int)'''
+    def pline (self: Geometry,p1 : PyDb.Polyline,fromIndex : int,numSegs : int)-> bool :
+      '''                             '''
     ...
-    def polygon (self, *args, **kwargs)-> bool :
-      '''polygon( (Geometry)arg1, (list)arg2) -> bool :
-
-    C++ signature :
-        bool polygon(class PyGiGeometry {lvalue},class boost::python::list)'''
+    def polygon (self: Geometry,vertexList : list[PyGe.Point3d])-> bool :
+      '''                             '''
     ...
     def polyline (self: Geometry,vertexList : list[PyGe.Point3d],normal : PyGe.Vector3d=default,marker : int=default)-> bool :
       '''                             '''
@@ -3335,35 +3158,20 @@ pline( (Geometry)arg1, (Polyline)arg2, (SubentType)arg3, (SubentType)arg4) -> bo
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
-    def ray (self, *args, **kwargs)-> bool :
-      '''ray( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
-
-    C++ signature :
-        bool ray(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d)'''
+    def ray (self: Geometry,p1 : PyGe.Point3d,p2 : PyGe.Point3d)-> bool :
+      '''                             '''
     ...
-    def rowOfDots (self, *args, **kwargs)-> bool :
-      '''rowOfDots( (Geometry)arg1, (int)arg2, (Point3d)arg3, (Vector3d)arg4) -> bool :
-
-    C++ signature :
-        bool rowOfDots(class PyGiGeometry {lvalue},int,class AcGePoint3d,class AcGeVector3d)'''
+    def rowOfDots (self: Geometry,count : int,start: PyGe.Point3d,step : PyGe.Vector3d)-> bool :
+      '''                             '''
     ...
-    def text (self, *args, **kwargs)-> bool :
-      '''text( (Geometry)arg1, (Point3d)arg2, (Vector3d)arg3, (Vector3d)arg4, (float)arg5, (float)arg6, (float)arg7, (str)arg8) -> bool :
-
-    C++ signature :
-        bool text(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGeVector3d,class AcGeVector3d,double,double,double,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def text (self: Geometry,pos : PyGe.Point3d,normal : PyGe.Vector3d,direction : PyGe.Vector3d,height : float,width : float,oblique : float,msg : str)-> bool :
+      '''                             '''
     ...
-    def worldLine (self, *args, **kwargs)-> bool :
-      '''worldLine( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
-
-    C++ signature :
-        bool worldLine(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d)'''
+    def worldLine (self: Geometry,p1 : PyGe.Point3d,p2 : PyGe.Point3d)-> bool :
+      '''                             '''
     ...
-    def xline (self, *args, **kwargs)-> bool :
-      '''xline( (Geometry)arg1, (Point3d)arg2, (Point3d)arg3) -> bool :
-
-    C++ signature :
-        bool xline(class PyGiGeometry {lvalue},class AcGePoint3d,class AcGePoint3d)'''
+    def xline (self: Geometry,p1 : PyGe.Point3d,p2 : PyGe.Point3d)-> bool :
+      '''                             '''
     ...
 
 class __loader__:
