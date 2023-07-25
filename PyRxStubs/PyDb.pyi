@@ -4186,11 +4186,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def adjustAlignment (self, *args, **kwargs)-> None :
-      '''adjustAlignment( (AttributeDefinition)arg1, (Database)arg2) -> None :
-
-    C++ signature :
-        void adjustAlignment(class PyDbAttributeDefinition {lvalue},class PyDbDatabase)'''
+    def adjustAlignment (self: AttributeDefinition,val : Database)-> None :
+      '''                             '''
     ...
     def alignmentPoint (self: Text)-> Point3d :
       '''                             '''
@@ -4213,26 +4210,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> AttributeDefinition :
-      '''cast( (RxObject)arg1) -> AttributeDefinition :
-
-    C++ signature :
-        class PyDbAttributeDefinition cast(class PyRxObject)'''
+    def cast (otherObject: RxObject)-> AttributeDefinition :
+      '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> AttributeDefinition :
-      '''cloneFrom( (RxObject)arg1) -> AttributeDefinition :
-
-    C++ signature :
-        class PyDbAttributeDefinition cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: RxObject)-> AttributeDefinition :
+      '''                             '''
     ...
     def close (self: DbObject)-> None :
       '''                             '''
@@ -4249,11 +4237,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def convertFieldToText (self: Text)-> None :
       '''                             '''
     ...
-    def convertIntoMTextAttributeDefinition (self, *args, **kwargs)-> None :
-      '''convertIntoMTextAttributeDefinition( (AttributeDefinition)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void convertIntoMTextAttributeDefinition(class PyDbAttributeDefinition {lvalue},bool)'''
+    def convertIntoMTextAttributeDefinition (self: AttributeDefinition,val : bool)-> None :
+      '''                             '''
     ...
     def correctSpelling (self: Text)-> int :
       '''                             '''
@@ -4264,11 +4249,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> Database :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -4297,11 +4279,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def fieldLength (self, *args, **kwargs)-> int :
-      '''fieldLength( (AttributeDefinition)arg1) -> int :
-
-    C++ signature :
-        unsigned short fieldLength(class PyDbAttributeDefinition {lvalue})'''
+    def fieldLength (self: AttributeDefinition)-> int :
+      '''                             '''
     ...
     def getBoundingPoints (self: Text)-> list :
       '''                             '''
@@ -4324,11 +4303,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getMTextAttributeDefinition (self, *args, **kwargs)-> MText :
-      '''getMTextAttributeDefinition( (AttributeDefinition)arg1) -> MText :
-
-    C++ signature :
-        class PyDbMText getMTextAttributeDefinition(class PyDbAttributeDefinition {lvalue})'''
+    def getMTextAttributeDefinition (self: AttributeDefinition)-> MText :
+      '''                             '''
     ...
     def getPlane (self: Entity)-> Plane :
       '''                             '''
@@ -4393,11 +4369,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isConstant (self, *args, **kwargs)-> bool :
-      '''isConstant( (AttributeDefinition)arg1) -> bool :
-
-    C++ signature :
-        bool isConstant(class PyDbAttributeDefinition {lvalue})'''
+    def isConstant (self: AttributeDefinition)-> bool :
+      '''                             '''
     ...
     def isDefaultAlignment (self: Text)-> bool :
       '''                             '''
@@ -4408,17 +4381,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isInvisible (self, *args, **kwargs)-> bool :
-      '''isInvisible( (AttributeDefinition)arg1) -> bool :
-
-    C++ signature :
-        bool isInvisible(class PyDbAttributeDefinition {lvalue})'''
+    def isInvisible (self: AttributeDefinition)-> bool :
+      '''                             '''
     ...
-    def isMTextAttributeDefinition (self, *args, **kwargs)-> bool :
-      '''isMTextAttributeDefinition( (AttributeDefinition)arg1) -> bool :
-
-    C++ signature :
-        bool isMTextAttributeDefinition(class PyDbAttributeDefinition {lvalue})'''
+    def isMTextAttributeDefinition (self: AttributeDefinition)-> bool :
+      '''                             '''
     ...
     def isMirroredInX (self: Text)-> bool :
       '''                             '''
@@ -4453,11 +4420,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isPlanar (self: Entity)-> bool :
       '''                             '''
     ...
-    def isPreset (self, *args, **kwargs)-> bool :
-      '''isPreset( (AttributeDefinition)arg1) -> bool :
-
-    C++ signature :
-        bool isPreset(class PyDbAttributeDefinition {lvalue})'''
+    def isPreset (self: AttributeDefinition)-> bool :
+      '''                             '''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -4474,11 +4438,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isUndoing (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isVerifiable (self, *args, **kwargs)-> bool :
-      '''isVerifiable( (AttributeDefinition)arg1) -> bool :
-
-    C++ signature :
-        bool isVerifiable(class PyDbAttributeDefinition {lvalue})'''
+    def isVerifiable (self: AttributeDefinition)-> bool :
+      '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -4507,11 +4468,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def list (self: Entity)-> None :
       '''                             '''
     ...
-    def lockPositionInBlock (self, *args, **kwargs)-> bool :
-      '''lockPositionInBlock( (AttributeDefinition)arg1) -> bool :
-
-    C++ signature :
-        bool lockPositionInBlock(class PyDbAttributeDefinition {lvalue})'''
+    def lockPositionInBlock (self: AttributeDefinition)-> bool :
+      '''                             '''
     ...
     def material (self: Entity)-> str :
       '''                             '''
@@ -4543,11 +4501,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def position (self: Text)-> Point3d :
       '''                             '''
     ...
-    def prompt (self, *args, **kwargs)-> str :
-      '''prompt( (AttributeDefinition)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > prompt(class PyDbAttributeDefinition {lvalue})'''
+    def prompt (self: AttributeDefinition)-> str :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
@@ -4588,11 +4543,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setConstant (self, *args, **kwargs)-> None :
-      '''setConstant( (AttributeDefinition)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setConstant(class PyDbAttributeDefinition {lvalue},bool)'''
+    def setConstant (self: AttributeDefinition,val : bool)-> None :
+      '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
@@ -4600,11 +4552,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setFieldLength (self, *args, **kwargs)-> None :
-      '''setFieldLength( (AttributeDefinition)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setFieldLength(class PyDbAttributeDefinition {lvalue},unsigned short)'''
+    def setFieldLength (self: AttributeDefinition,val : int)-> None :
+      '''                             '''
     ...
     def setHeight (self: Text,val : float)-> None :
       '''                             '''
@@ -4612,11 +4561,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setHorizontalMode (self: Text,val : TextHorzMode)-> None :
       '''                             '''
     ...
-    def setInvisible (self, *args, **kwargs)-> None :
-      '''setInvisible( (AttributeDefinition)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setInvisible(class PyDbAttributeDefinition {lvalue},bool)'''
+    def setInvisible (self: AttributeDefinition,val : bool)-> None :
+      '''                             '''
     ...
     def setJustification (self: Text,val : TextAlignment)-> None :
       '''                             '''
@@ -4633,17 +4579,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLockPositionInBlock (self, *args, **kwargs)-> None :
-      '''setLockPositionInBlock( (AttributeDefinition)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setLockPositionInBlock(class PyDbAttributeDefinition {lvalue},bool)'''
+    def setLockPositionInBlock (self: AttributeDefinition,val : bool)-> None :
+      '''                             '''
     ...
-    def setMTextAttributeDefinition (self, *args, **kwargs)-> None :
-      '''setMTextAttributeDefinition( (AttributeDefinition)arg1, (MText)arg2) -> None :
-
-    C++ signature :
-        void setMTextAttributeDefinition(class PyDbAttributeDefinition {lvalue},class PyDbMText)'''
+    def setMTextAttributeDefinition (self: AttributeDefinition,val : MText)-> None :
+      '''                             '''
     ...
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
@@ -4676,17 +4616,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setPosition (self: Text,pos : PyGe.Point3d)-> None :
       '''                             '''
     ...
-    def setPreset (self, *args, **kwargs)-> None :
-      '''setPreset( (AttributeDefinition)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setPreset(class PyDbAttributeDefinition {lvalue},bool)'''
+    def setPreset (self: AttributeDefinition,val : bool)-> None :
+      '''                             '''
     ...
-    def setPrompt (self, *args, **kwargs)-> None :
-      '''setPrompt( (AttributeDefinition)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setPrompt(class PyDbAttributeDefinition {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setPrompt (self: AttributeDefinition,val : str)-> None :
+      '''                             '''
     ...
     def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
       '''                             '''
@@ -4697,11 +4631,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setRotation (self: Text,val : float)-> None :
       '''                             '''
     ...
-    def setTag (self, *args, **kwargs)-> None :
-      '''setTag( (AttributeDefinition)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setTag(class PyDbAttributeDefinition {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setTag (self: AttributeDefinition,val : str)-> None :
+      '''                             '''
     ...
     def setTextString (self: Text,val : str)-> None :
       '''                             '''
@@ -4712,11 +4643,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setThickness (self: Text,val : float)-> None :
       '''                             '''
     ...
-    def setVerifiable (self, *args, **kwargs)-> None :
-      '''setVerifiable( (AttributeDefinition)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setVerifiable(class PyDbAttributeDefinition {lvalue},bool)'''
+    def setVerifiable (self: AttributeDefinition,val : bool)-> None :
+      '''                             '''
     ...
     def setVerticalMode (self: Text,val : TextVertMode)-> None :
       '''                             '''
@@ -4733,11 +4661,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def tag (self, *args, **kwargs)-> str :
-      '''tag( (AttributeDefinition)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > tag(class PyDbAttributeDefinition {lvalue})'''
+    def tag (self: AttributeDefinition)-> str :
+      '''                             '''
     ...
     def textString (self: Text)-> str :
       '''                             '''
@@ -4751,11 +4676,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def updateMTextAttributeDefinition (self, *args, **kwargs)-> None :
-      '''updateMTextAttributeDefinition( (AttributeDefinition)arg1) -> None :
-
-    C++ signature :
-        void updateMTextAttributeDefinition(class PyDbAttributeDefinition {lvalue})'''
+    def updateMTextAttributeDefinition (self: AttributeDefinition)-> None :
+      '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''
@@ -4842,26 +4764,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> AttributeReference :
-      '''cast( (RxObject)arg1) -> AttributeReference :
-
-    C++ signature :
-        class PyDbAttribute cast(class PyRxObject)'''
+    def cast (otherObject: RxObject)-> AttributeReference :
+      '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> AttributeReference :
-      '''cloneFrom( (RxObject)arg1) -> AttributeReference :
-
-    C++ signature :
-        class PyDbAttribute cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: RxObject)-> AttributeReference :
+      '''                             '''
     ...
     def close (self: DbObject)-> None :
       '''                             '''
@@ -4878,11 +4791,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def convertFieldToText (self: Text)-> None :
       '''                             '''
     ...
-    def convertIntoMTextAttribute (self, *args, **kwargs)-> None :
-      '''convertIntoMTextAttribute( (AttributeReference)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void convertIntoMTextAttribute(class PyDbAttribute {lvalue},bool)'''
+    def convertIntoMTextAttribute (self: AttributeReference,val : bool)-> None :
+      '''                             '''
     ...
     def correctSpelling (self: Text)-> int :
       '''                             '''
@@ -4893,11 +4803,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> Database :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -4926,11 +4833,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def fieldLength (self, *args, **kwargs)-> int :
-      '''fieldLength( (AttributeReference)arg1) -> int :
-
-    C++ signature :
-        unsigned short fieldLength(class PyDbAttribute {lvalue})'''
+    def fieldLength (self: AttributeReference)-> int :
+      '''                             '''
     ...
     def getBoundingPoints (self: Text)-> list :
       '''                             '''
@@ -4953,11 +4857,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getHandle (self: DbObject)-> Handle :
       '''                             '''
     ...
-    def getMTextAttribute (self, *args, **kwargs)-> MText :
-      '''getMTextAttribute( (AttributeReference)arg1) -> MText :
-
-    C++ signature :
-        class PyDbMText getMTextAttribute(class PyDbAttribute {lvalue})'''
+    def getMTextAttribute (self: AttributeReference)-> MText :
+      '''                             '''
     ...
     def getPlane (self: Entity)-> Plane :
       '''                             '''
@@ -5022,11 +4923,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isCancelling (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isConstant (self, *args, **kwargs)-> bool :
-      '''isConstant( (AttributeReference)arg1) -> bool :
-
-    C++ signature :
-        bool isConstant(class PyDbAttribute {lvalue})'''
+    def isConstant (self: AttributeReference)-> bool :
+      '''                             '''
     ...
     def isDefaultAlignment (self: Text)-> bool :
       '''                             '''
@@ -5037,17 +4935,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isErased (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isInvisible (self, *args, **kwargs)-> bool :
-      '''isInvisible( (AttributeReference)arg1) -> bool :
-
-    C++ signature :
-        bool isInvisible(class PyDbAttribute {lvalue})'''
+    def isInvisible (self: AttributeReference)-> bool :
+      '''                             '''
     ...
-    def isMTextAttribute (self, *args, **kwargs)-> bool :
-      '''isMTextAttribute( (AttributeReference)arg1) -> bool :
-
-    C++ signature :
-        bool isMTextAttribute(class PyDbAttribute {lvalue})'''
+    def isMTextAttribute (self: AttributeReference)-> bool :
+      '''                             '''
     ...
     def isMirroredInX (self: Text)-> bool :
       '''                             '''
@@ -5082,11 +4974,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isPlanar (self: Entity)-> bool :
       '''                             '''
     ...
-    def isPreset (self, *args, **kwargs)-> bool :
-      '''isPreset( (AttributeReference)arg1) -> bool :
-
-    C++ signature :
-        bool isPreset(class PyDbAttribute {lvalue})'''
+    def isPreset (self: AttributeReference)-> bool :
+      '''                             '''
     ...
     def isReadEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -5094,11 +4983,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isReallyClosing (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isReallyLocked (self, *args, **kwargs)-> bool :
-      '''isReallyLocked( (AttributeReference)arg1) -> bool :
-
-    C++ signature :
-        bool isReallyLocked(class PyDbAttribute {lvalue})'''
+    def isReallyLocked (self: AttributeReference)-> bool :
+      '''                             '''
     ...
     def isTransactionResident (self: DbObject)-> bool :
       '''                             '''
@@ -5109,11 +4995,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isUndoing (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isVerifiable (self, *args, **kwargs)-> bool :
-      '''isVerifiable( (AttributeReference)arg1) -> bool :
-
-    C++ signature :
-        bool isVerifiable(class PyDbAttribute {lvalue})'''
+    def isVerifiable (self: AttributeReference)-> bool :
+      '''                             '''
     ...
     def isWriteEnabled (self: DbObject)-> bool :
       '''                             '''
@@ -5142,11 +5025,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def list (self: Entity)-> None :
       '''                             '''
     ...
-    def lockPositionInBlock (self, *args, **kwargs)-> bool :
-      '''lockPositionInBlock( (AttributeReference)arg1) -> bool :
-
-    C++ signature :
-        bool lockPositionInBlock(class PyDbAttribute {lvalue})'''
+    def lockPositionInBlock (self: AttributeReference)-> bool :
+      '''                             '''
     ...
     def material (self: Entity)-> str :
       '''                             '''
@@ -5234,11 +5114,8 @@ setAttributeFromBlock( (AttributeReference)arg1, (AttributeDefinition)arg2, (Mat
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
     ...
-    def setFieldLength (self, *args, **kwargs)-> None :
-      '''setFieldLength( (AttributeReference)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setFieldLength(class PyDbAttribute {lvalue},unsigned short)'''
+    def setFieldLength (self: AttributeReference,val : int)-> None :
+      '''                             '''
     ...
     def setHeight (self: Text,val : float)-> None :
       '''                             '''
@@ -5246,11 +5123,8 @@ setAttributeFromBlock( (AttributeReference)arg1, (AttributeDefinition)arg2, (Mat
     def setHorizontalMode (self: Text,val : TextHorzMode)-> None :
       '''                             '''
     ...
-    def setInvisible (self, *args, **kwargs)-> None :
-      '''setInvisible( (AttributeReference)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setInvisible(class PyDbAttribute {lvalue},bool)'''
+    def setInvisible (self: AttributeReference,val : bool)-> None :
+      '''                             '''
     ...
     def setJustification (self: Text,val : TextAlignment)-> None :
       '''                             '''
@@ -5267,17 +5141,11 @@ setAttributeFromBlock( (AttributeReference)arg1, (AttributeDefinition)arg2, (Mat
     def setLinetypeScale (self: Entity,val: float,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setLockPositionInBlock (self, *args, **kwargs)-> None :
-      '''setLockPositionInBlock( (AttributeReference)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setLockPositionInBlock(class PyDbAttribute {lvalue},bool)'''
+    def setLockPositionInBlock (self: AttributeReference,val : bool)-> None :
+      '''                             '''
     ...
-    def setMTextAttribute (self, *args, **kwargs)-> None :
-      '''setMTextAttribute( (AttributeReference)arg1, (MText)arg2) -> None :
-
-    C++ signature :
-        void setMTextAttribute(class PyDbAttribute {lvalue},class PyDbMText {lvalue})'''
+    def setMTextAttribute (self: AttributeReference,val : MText)-> None :
+      '''                             '''
     ...
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
@@ -5319,11 +5187,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setRotation (self: Text,val : float)-> None :
       '''                             '''
     ...
-    def setTag (self, *args, **kwargs)-> None :
-      '''setTag( (AttributeReference)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void setTag(class PyDbAttribute {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def setTag (self: AttributeReference,val : str)-> None :
+      '''                             '''
     ...
     def setTextString (self: Text,val : str)-> None :
       '''                             '''
@@ -5349,11 +5214,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def tag (self, *args, **kwargs)-> str :
-      '''tag( (AttributeReference)arg1) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > tag(class PyDbAttribute {lvalue})'''
+    def tag (self: AttributeReference)-> str :
+      '''                             '''
     ...
     def textString (self: Text)-> str :
       '''                             '''
@@ -5367,11 +5229,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def updateMTextAttribute (self, *args, **kwargs)-> None :
-      '''updateMTextAttribute( (AttributeReference)arg1) -> None :
-
-    C++ signature :
-        void updateMTextAttribute(class PyDbAttribute {lvalue})'''
+    def updateMTextAttribute (self: AttributeReference)-> None :
+      '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''
@@ -6194,11 +6053,8 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def appendAttribute (self, *args, **kwargs)-> ObjectId :
-      '''appendAttribute( (BlockReference)arg1, (AttributeReference)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId appendAttribute(class PyDbBlockReference {lvalue},class PyDbAttribute {lvalue})'''
+    def appendAttribute (self: BlockReference,val : Attribute)-> ObjectId :
+      '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
@@ -6209,26 +6065,17 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
-    def attributeIds (self, *args, **kwargs)-> list :
-      '''attributeIds( (BlockReference)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list attributeIds(class PyDbBlockReference {lvalue})'''
+    def attributeIds (self: BlockReference)-> list :
+      '''                             '''
     ...
     def blockId (self: Entity)-> ObjectId :
       '''                             '''
     ...
-    def blockTableRecord (self, *args, **kwargs)-> ObjectId :
-      '''blockTableRecord( (BlockReference)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId blockTableRecord(class PyDbBlockReference {lvalue})'''
+    def blockTableRecord (self: BlockReference)-> ObjectId :
+      '''                             '''
     ...
-    def blockTransform (self, *args, **kwargs)-> Matrix3d :
-      '''blockTransform( (BlockReference)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d blockTransform(class PyDbBlockReference {lvalue})'''
+    def blockTransform (self: BlockReference)-> Matrix3d :
+      '''                             '''
     ...
     def bounds (self: Drawable,ext: PyDb.Extents)-> bool :
       '''                             '''
@@ -6305,25 +6152,14 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
     def explode (self: Entity)-> list :
       '''                             '''
     ...
-    def explodeToOwnerSpace (self, *args, **kwargs)-> None :
-      '''explodeToOwnerSpace( (BlockReference)arg1) -> None :
-
-    C++ signature :
-        void explodeToOwnerSpace(class PyDbBlockReference {lvalue})'''
+    def explodeToOwnerSpace (self: BlockReference)-> None :
+      '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def geomExtentsBestFit (self, *args, **kwargs)-> Extents :
-      '''geomExtentsBestFit( (BlockReference)arg1) -> Extents :
-
-    C++ signature :
-        class AcDbExtents geomExtentsBestFit(class PyDbBlockReference {lvalue})
-
-geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
-
-    C++ signature :
-        class AcDbExtents geomExtentsBestFit(class PyDbBlockReference {lvalue},class AcGeMatrix3d)'''
+    def geomExtentsBestFit (self: BlockReference,val : PyGe.Matrix3d=kIdentity)-> Extents :
+      '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
@@ -6475,23 +6311,14 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> ObjectId :
       '''                             '''
     ...
-    def nonAnnotationBlockTransform (self, *args, **kwargs)-> Matrix3d :
-      '''nonAnnotationBlockTransform( (BlockReference)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d nonAnnotationBlockTransform(class PyDbBlockReference {lvalue})'''
+    def nonAnnotationBlockTransform (self: BlockReference)-> Matrix3d :
+      '''                             '''
     ...
-    def nonAnnotationScaleFactors (self, *args, **kwargs)-> Scale3d :
-      '''nonAnnotationScaleFactors( (BlockReference)arg1) -> Scale3d :
-
-    C++ signature :
-        class AcGeScale3d nonAnnotationScaleFactors(class PyDbBlockReference {lvalue})'''
+    def nonAnnotationScaleFactors (self: BlockReference)-> Scale3d :
+      '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> Vector3d :
-      '''normal( (BlockReference)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbBlockReference {lvalue})'''
+    def normal (self: BlockReference)-> Vector3d :
+      '''                             '''
     ...
     def objectId (self: DbObject)-> ObjectId :
       '''                             '''
@@ -6502,11 +6329,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def position (self, *args, **kwargs)-> Point3d :
-      '''position( (BlockReference)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d position(class PyDbBlockReference {lvalue})'''
+    def position (self: BlockReference)-> Point3d :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
@@ -6529,32 +6353,20 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
-    def rotation (self, *args, **kwargs)-> float :
-      '''rotation( (BlockReference)arg1) -> float :
-
-    C++ signature :
-        double rotation(class PyDbBlockReference {lvalue})'''
+    def rotation (self: BlockReference)-> float :
+      '''                             '''
     ...
-    def scaleFactors (self, *args, **kwargs)-> Scale3d :
-      '''scaleFactors( (BlockReference)arg1) -> Scale3d :
-
-    C++ signature :
-        class AcGeScale3d scaleFactors(class PyDbBlockReference {lvalue})'''
+    def scaleFactors (self: BlockReference)-> Scale3d :
+      '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setBlockTableRecord (self, *args, **kwargs)-> None :
-      '''setBlockTableRecord( (BlockReference)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setBlockTableRecord(class PyDbBlockReference {lvalue},class PyDbObjectId)'''
+    def setBlockTableRecord (self: BlockReference,val : ObjectId)-> None :
+      '''                             '''
     ...
-    def setBlockTransform (self, *args, **kwargs)-> None :
-      '''setBlockTransform( (BlockReference)arg1, (Matrix3d)arg2) -> None :
-
-    C++ signature :
-        void setBlockTransform(class PyDbBlockReference {lvalue},class AcGeMatrix3d)'''
+    def setBlockTransform (self: BlockReference,val : PyGe.Matrix3d)-> None :
+      '''                             '''
     ...
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -6586,11 +6398,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self, *args, **kwargs)-> None :
-      '''setNormal( (BlockReference)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setNormal(class PyDbBlockReference {lvalue},class AcGeVector3d)'''
+    def setNormal (self: BlockReference,val : PyGe.Vector3d)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
       '''                             '''
@@ -6611,11 +6420,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPosition (self, *args, **kwargs)-> None :
-      '''setPosition( (BlockReference)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setPosition(class PyDbBlockReference {lvalue},class AcGePoint3d)'''
+    def setPosition (self: BlockReference,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
       '''                             '''
@@ -6623,17 +6429,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setRotation (self, *args, **kwargs)-> None :
-      '''setRotation( (BlockReference)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setRotation(class PyDbBlockReference {lvalue},double)'''
+    def setRotation (self: BlockReference,val : float)-> None :
+      '''                             '''
     ...
-    def setScaleFactors (self, *args, **kwargs)-> None :
-      '''setScaleFactors( (BlockReference)arg1, (Scale3d)arg2) -> None :
-
-    C++ signature :
-        void setScaleFactors(class PyDbBlockReference {lvalue},class AcGeScale3d)'''
+    def setScaleFactors (self: BlockReference,val : PyGe.Scale3d)-> None :
+      '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
@@ -6647,11 +6447,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def treatAsAcDbBlockRefForExplode (self, *args, **kwargs)-> bool :
-      '''treatAsAcDbBlockRefForExplode( (BlockReference)arg1) -> bool :
-
-    C++ signature :
-        bool treatAsAcDbBlockRefForExplode(class PyDbBlockReference {lvalue})'''
+    def treatAsAcDbBlockRefForExplode (self: BlockReference)-> bool :
+      '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''
@@ -31633,11 +31430,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def appendAttribute (self, *args, **kwargs)-> ObjectId :
-      '''appendAttribute( (BlockReference)arg1, (AttributeReference)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId appendAttribute(class PyDbBlockReference {lvalue},class PyDbAttribute {lvalue})'''
+    def appendAttribute (self: BlockReference,val : Attribute)-> ObjectId :
+      '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
@@ -31648,26 +31442,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def assertWriteEnabled (self: DbObject)-> None :
       '''                             '''
     ...
-    def attributeIds (self, *args, **kwargs)-> list :
-      '''attributeIds( (BlockReference)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list attributeIds(class PyDbBlockReference {lvalue})'''
+    def attributeIds (self: BlockReference)-> list :
+      '''                             '''
     ...
     def blockId (self: Entity)-> ObjectId :
       '''                             '''
     ...
-    def blockTableRecord (self, *args, **kwargs)-> ObjectId :
-      '''blockTableRecord( (BlockReference)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId blockTableRecord(class PyDbBlockReference {lvalue})'''
+    def blockTableRecord (self: BlockReference)-> ObjectId :
+      '''                             '''
     ...
-    def blockTransform (self, *args, **kwargs)-> Matrix3d :
-      '''blockTransform( (BlockReference)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d blockTransform(class PyDbBlockReference {lvalue})'''
+    def blockTransform (self: BlockReference)-> Matrix3d :
+      '''                             '''
     ...
     def bounds (self: Drawable,ext: PyDb.Extents)-> bool :
       '''                             '''
@@ -31756,25 +31541,14 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def explode (self: Entity)-> list :
       '''                             '''
     ...
-    def explodeToOwnerSpace (self, *args, **kwargs)-> None :
-      '''explodeToOwnerSpace( (BlockReference)arg1) -> None :
-
-    C++ signature :
-        void explodeToOwnerSpace(class PyDbBlockReference {lvalue})'''
+    def explodeToOwnerSpace (self: BlockReference)-> None :
+      '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def geomExtentsBestFit (self, *args, **kwargs)-> Extents :
-      '''geomExtentsBestFit( (BlockReference)arg1) -> Extents :
-
-    C++ signature :
-        class AcDbExtents geomExtentsBestFit(class PyDbBlockReference {lvalue})
-
-geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
-
-    C++ signature :
-        class AcDbExtents geomExtentsBestFit(class PyDbBlockReference {lvalue},class AcGeMatrix3d)'''
+    def geomExtentsBestFit (self: BlockReference,val : PyGe.Matrix3d=kIdentity)-> Extents :
+      '''                             '''
     ...
     def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
@@ -31926,23 +31700,14 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def materialId (self: Entity)-> ObjectId :
       '''                             '''
     ...
-    def nonAnnotationBlockTransform (self, *args, **kwargs)-> Matrix3d :
-      '''nonAnnotationBlockTransform( (BlockReference)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d nonAnnotationBlockTransform(class PyDbBlockReference {lvalue})'''
+    def nonAnnotationBlockTransform (self: BlockReference)-> Matrix3d :
+      '''                             '''
     ...
-    def nonAnnotationScaleFactors (self, *args, **kwargs)-> Scale3d :
-      '''nonAnnotationScaleFactors( (BlockReference)arg1) -> Scale3d :
-
-    C++ signature :
-        class AcGeScale3d nonAnnotationScaleFactors(class PyDbBlockReference {lvalue})'''
+    def nonAnnotationScaleFactors (self: BlockReference)-> Scale3d :
+      '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> Vector3d :
-      '''normal( (BlockReference)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbBlockReference {lvalue})'''
+    def normal (self: BlockReference)-> Vector3d :
+      '''                             '''
     ...
     def objectId (self: DbObject)-> ObjectId :
       '''                             '''
@@ -31953,11 +31718,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def position (self, *args, **kwargs)-> Point3d :
-      '''position( (BlockReference)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d position(class PyDbBlockReference {lvalue})'''
+    def position (self: BlockReference)-> Point3d :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
@@ -31980,11 +31742,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
       '''                             '''
     ...
-    def rotation (self, *args, **kwargs)-> float :
-      '''rotation( (BlockReference)arg1) -> float :
-
-    C++ signature :
-        double rotation(class PyDbBlockReference {lvalue})'''
+    def rotation (self: BlockReference)-> float :
+      '''                             '''
     ...
     def rowSpacing (self, *args, **kwargs)-> float :
       '''rowSpacing( (MInsertBlock)arg1) -> float :
@@ -31998,26 +31757,17 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     C++ signature :
         unsigned short rows(class PyDbMInsertBlock {lvalue})'''
     ...
-    def scaleFactors (self, *args, **kwargs)-> Scale3d :
-      '''scaleFactors( (BlockReference)arg1) -> Scale3d :
-
-    C++ signature :
-        class AcGeScale3d scaleFactors(class PyDbBlockReference {lvalue})'''
+    def scaleFactors (self: BlockReference)-> Scale3d :
+      '''                             '''
     ...
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setBlockTableRecord (self, *args, **kwargs)-> None :
-      '''setBlockTableRecord( (BlockReference)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setBlockTableRecord(class PyDbBlockReference {lvalue},class PyDbObjectId)'''
+    def setBlockTableRecord (self: BlockReference,val : ObjectId)-> None :
+      '''                             '''
     ...
-    def setBlockTransform (self, *args, **kwargs)-> None :
-      '''setBlockTransform( (BlockReference)arg1, (Matrix3d)arg2) -> None :
-
-    C++ signature :
-        void setBlockTransform(class PyDbBlockReference {lvalue},class AcGeMatrix3d)'''
+    def setBlockTransform (self: BlockReference,val : PyGe.Matrix3d)-> None :
+      '''                             '''
     ...
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -32061,11 +31811,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setMaterial (self: Entity,val: str|ObjectId,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setNormal (self, *args, **kwargs)-> None :
-      '''setNormal( (BlockReference)arg1, (Vector3d)arg2) -> None :
-
-    C++ signature :
-        void setNormal(class PyDbBlockReference {lvalue},class AcGeVector3d)'''
+    def setNormal (self: BlockReference,val : PyGe.Vector3d)-> None :
+      '''                             '''
     ...
     def setOwnerId (self: DbObject,owner: ObjectId)-> None :
       '''                             '''
@@ -32086,11 +31833,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPosition (self, *args, **kwargs)-> None :
-      '''setPosition( (BlockReference)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setPosition(class PyDbBlockReference {lvalue},class AcGePoint3d)'''
+    def setPosition (self: BlockReference,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
       '''                             '''
@@ -32098,11 +31842,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setRotation (self, *args, **kwargs)-> None :
-      '''setRotation( (BlockReference)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setRotation(class PyDbBlockReference {lvalue},double)'''
+    def setRotation (self: BlockReference,val : float)-> None :
+      '''                             '''
     ...
     def setRowSpacing (self, *args, **kwargs)-> None :
       '''setRowSpacing( (MInsertBlock)arg1, (float)arg2) -> None :
@@ -32116,11 +31857,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setRows(class PyDbMInsertBlock {lvalue},unsigned short)'''
     ...
-    def setScaleFactors (self, *args, **kwargs)-> None :
-      '''setScaleFactors( (BlockReference)arg1, (Scale3d)arg2) -> None :
-
-    C++ signature :
-        void setScaleFactors(class PyDbBlockReference {lvalue},class AcGeScale3d)'''
+    def setScaleFactors (self: BlockReference,val : PyGe.Scale3d)-> None :
+      '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
@@ -32134,11 +31872,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def treatAsAcDbBlockRefForExplode (self, *args, **kwargs)-> bool :
-      '''treatAsAcDbBlockRefForExplode( (BlockReference)arg1) -> bool :
-
-    C++ signature :
-        bool treatAsAcDbBlockRefForExplode(class PyDbBlockReference {lvalue})'''
+    def treatAsAcDbBlockRefForExplode (self: BlockReference)-> bool :
+      '''                             '''
     ...
     def upgradeFromNotify (self: DbObject,wasWritable: bool)-> None :
       '''                             '''
@@ -58681,11 +58416,8 @@ alignment( (Table)arg1, (int)arg2, (int)arg3) -> CellAlignment :
     C++ signature :
         enum AcDb::CellAlignment alignment(class PyDbTable {lvalue},int,int)'''
     ...
-    def appendAttribute (self, *args, **kwargs)-> ObjectId :
-      '''appendAttribute( (BlockReference)arg1, (AttributeReference)arg2) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId appendAttribute(class PyDbBlockReference {lvalue},class PyDbAttribute {lvalue})'''
+    def appendAttribute (self: BlockReference,val : Attribute)-> ObjectId :
+      '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
       '''                             '''
@@ -58707,11 +58439,8 @@ attachmentPoint( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> Point3d :
     C++ signature :
         class AcGePoint3d attachmentPoint(class PyDbTable {lvalue},int,int,int)'''
     ...
-    def attributeIds (self, *args, **kwargs)-> list :
-      '''attributeIds( (BlockReference)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list attributeIds(class PyDbBlockReference {lvalue})'''
+    def attributeIds (self: BlockReference)-> list :
+      '''                             '''
     ...
     def backgroundColor (self, *args, **kwargs)-> Color :
       '''backgroundColor( (Table)arg1, (RowType)arg2) -> Color :
@@ -58739,11 +58468,8 @@ backgroundColor( (Table)arg1, (int)arg2, (int)arg3) -> Color :
     C++ signature :
         double blockScale(class PyDbTable {lvalue},int,int)'''
     ...
-    def blockTableRecord (self, *args, **kwargs)-> ObjectId :
-      '''blockTableRecord( (BlockReference)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId blockTableRecord(class PyDbBlockReference {lvalue})'''
+    def blockTableRecord (self: BlockReference)-> ObjectId :
+      '''                             '''
     ...
     def blockTableRecordId (self, *args, **kwargs)-> ObjectId :
       '''blockTableRecordId( (Table)arg1, (int)arg2, (int)arg3) -> ObjectId :
@@ -58756,11 +58482,8 @@ blockTableRecordId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> ObjectId :
     C++ signature :
         class PyDbObjectId blockTableRecordId(class PyDbTable {lvalue},int,int,int)'''
     ...
-    def blockTransform (self, *args, **kwargs)-> Matrix3d :
-      '''blockTransform( (BlockReference)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d blockTransform(class PyDbBlockReference {lvalue})'''
+    def blockTransform (self: BlockReference)-> Matrix3d :
+      '''                             '''
     ...
     def bounds (self: Drawable,ext: PyDb.Extents)-> bool :
       '''                             '''
@@ -59035,11 +58758,8 @@ deleteContent( (Table)arg1, (CellRange)arg2) -> None :
     def explode (self: Entity)-> list :
       '''                             '''
     ...
-    def explodeToOwnerSpace (self, *args, **kwargs)-> None :
-      '''explodeToOwnerSpace( (BlockReference)arg1) -> None :
-
-    C++ signature :
-        void explodeToOwnerSpace(class PyDbBlockReference {lvalue})'''
+    def explodeToOwnerSpace (self: BlockReference)-> None :
+      '''                             '''
     ...
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
@@ -59067,16 +58787,8 @@ fieldId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> ObjectId :
     C++ signature :
         void generateLayout(class PyDbTable {lvalue})'''
     ...
-    def geomExtentsBestFit (self, *args, **kwargs)-> Extents :
-      '''geomExtentsBestFit( (BlockReference)arg1) -> Extents :
-
-    C++ signature :
-        class AcDbExtents geomExtentsBestFit(class PyDbBlockReference {lvalue})
-
-geomExtentsBestFit( (BlockReference)arg1, (Matrix3d)arg2) -> Extents :
-
-    C++ signature :
-        class AcDbExtents geomExtentsBestFit(class PyDbBlockReference {lvalue},class AcGeMatrix3d)'''
+    def geomExtentsBestFit (self: BlockReference,val : PyGe.Matrix3d=kIdentity)-> Extents :
+      '''                             '''
     ...
     def getBlockAttributeValue (self, *args, **kwargs)-> str :
       '''getBlockAttributeValue( (Table)arg1, (int)arg2, (int)arg3, (ObjectId)arg4) -> str :
@@ -59568,23 +59280,14 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
     C++ signature :
         void moveContent(class PyDbTable {lvalue},int,int,int,int)'''
     ...
-    def nonAnnotationBlockTransform (self, *args, **kwargs)-> Matrix3d :
-      '''nonAnnotationBlockTransform( (BlockReference)arg1) -> Matrix3d :
-
-    C++ signature :
-        class AcGeMatrix3d nonAnnotationBlockTransform(class PyDbBlockReference {lvalue})'''
+    def nonAnnotationBlockTransform (self: BlockReference)-> Matrix3d :
+      '''                             '''
     ...
-    def nonAnnotationScaleFactors (self, *args, **kwargs)-> Scale3d :
-      '''nonAnnotationScaleFactors( (BlockReference)arg1) -> Scale3d :
-
-    C++ signature :
-        class AcGeScale3d nonAnnotationScaleFactors(class PyDbBlockReference {lvalue})'''
+    def nonAnnotationScaleFactors (self: BlockReference)-> Scale3d :
+      '''                             '''
     ...
-    def normal (self, *args, **kwargs)-> Vector3d :
-      '''normal( (BlockReference)arg1) -> Vector3d :
-
-    C++ signature :
-        class AcGeVector3d normal(class PyDbBlockReference {lvalue})'''
+    def normal (self: BlockReference)-> Vector3d :
+      '''                             '''
     ...
     def numColumns (self, *args, **kwargs)-> int :
       '''numColumns( (Table)arg1) -> int :
@@ -59613,11 +59316,8 @@ isBackgroundColorNone( (Table)arg1, (int)arg2, (int)arg3) -> bool :
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def position (self, *args, **kwargs)-> Point3d :
-      '''position( (BlockReference)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d position(class PyDbBlockReference {lvalue})'''
+    def position (self: BlockReference)-> Point3d :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
@@ -59692,11 +59392,8 @@ rotation( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> float :
     C++ signature :
         double scale(class PyDbTable {lvalue},int,int,int)'''
     ...
-    def scaleFactors (self, *args, **kwargs)-> Scale3d :
-      '''scaleFactors( (BlockReference)arg1) -> Scale3d :
-
-    C++ signature :
-        class AcGeScale3d scaleFactors(class PyDbBlockReference {lvalue})'''
+    def scaleFactors (self: BlockReference)-> Scale3d :
+      '''                             '''
     ...
     def setAlignment (self, *args, **kwargs)-> None :
       '''setAlignment( (Table)arg1, (CellAlignment)arg2, (RowType)arg3) -> None :
@@ -59768,11 +59465,8 @@ setBlockAttributeValue( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)
     C++ signature :
         void setBlockScale(class PyDbTable {lvalue},int,int,double)'''
     ...
-    def setBlockTableRecord (self, *args, **kwargs)-> None :
-      '''setBlockTableRecord( (BlockReference)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void setBlockTableRecord(class PyDbBlockReference {lvalue},class PyDbObjectId)'''
+    def setBlockTableRecord (self: BlockReference,val : ObjectId)-> None :
+      '''                             '''
     ...
     def setBlockTableRecordId (self, *args, **kwargs)-> None :
       '''setBlockTableRecordId( (Table)arg1, (int)arg2, (int)arg3, (ObjectId)arg4, (bool)arg5) -> None :
@@ -59785,11 +59479,8 @@ setBlockTableRecordId( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)a
     C++ signature :
         void setBlockTableRecordId(class PyDbTable {lvalue},int,int,int,class PyDbObjectId,bool)'''
     ...
-    def setBlockTransform (self, *args, **kwargs)-> None :
-      '''setBlockTransform( (BlockReference)arg1, (Matrix3d)arg2) -> None :
-
-    C++ signature :
-        void setBlockTransform(class PyDbBlockReference {lvalue},class AcGeMatrix3d)'''
+    def setBlockTransform (self: BlockReference,val : PyGe.Matrix3d)-> None :
+      '''                             '''
     ...
     def setBreakFlowDirection (self, *args, **kwargs)-> None :
       '''setBreakFlowDirection( (Table)arg1, (TableBreakFlowDirection)arg2) -> None :
@@ -60159,11 +59850,8 @@ setRowHeight( (Table)arg1, (float)arg2) -> None :
     C++ signature :
         void setScale(class PyDbTable {lvalue},int,int,int,double)'''
     ...
-    def setScaleFactors (self, *args, **kwargs)-> None :
-      '''setScaleFactors( (BlockReference)arg1, (Scale3d)arg2) -> None :
-
-    C++ signature :
-        void setScaleFactors(class PyDbBlockReference {lvalue},class AcGeScale3d)'''
+    def setScaleFactors (self: BlockReference,val : PyGe.Scale3d)-> None :
+      '''                             '''
     ...
     def setSize (self, *args, **kwargs)-> None :
       '''setSize( (Table)arg1, (int)arg2, (int)arg3) -> None :
@@ -60351,11 +60039,8 @@ textStyle( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> ObjectId :
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
     ...
-    def treatAsAcDbBlockRefForExplode (self, *args, **kwargs)-> bool :
-      '''treatAsAcDbBlockRefForExplode( (BlockReference)arg1) -> bool :
-
-    C++ signature :
-        bool treatAsAcDbBlockRefForExplode(class PyDbBlockReference {lvalue})'''
+    def treatAsAcDbBlockRefForExplode (self: BlockReference)-> bool :
+      '''                             '''
     ...
     def unmergeCells (self, *args, **kwargs)-> None :
       '''unmergeCells( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (int)arg5) -> None :
