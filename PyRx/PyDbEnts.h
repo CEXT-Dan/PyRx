@@ -246,14 +246,15 @@ void makePyDbVertexWrapper();
 class PyDbVertex : public PyDbEntity
 {
 public:
+    PyDbVertex();
     PyDbVertex(AcDbVertex* ptr, bool autoDelete);
     PyDbVertex(const PyDbObjectId& id);
     PyDbVertex(const PyDbObjectId& id, AcDb::OpenMode mode);
     virtual ~PyDbVertex() = default;
     static std::string  className();
     static PyRxClass    desc();
-    static PyDbVertex cloneFrom(const PyRxObject& src);
-    static PyDbVertex cast(const PyRxObject& src);
+    static PyDbVertex   cloneFrom(const PyRxObject& src);
+    static PyDbVertex   cast(const PyRxObject& src);
 public:
     AcDbVertex* impObj(const std::source_location& src = std::source_location::current()) const;
 };
@@ -266,7 +267,9 @@ class PyDb2dVertex : public PyDbVertex
 public:
     PyDb2dVertex();
     PyDb2dVertex(const AcGePoint3d& pos);
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     PyDb2dVertex(const AcGePoint3d& pos, double bulge, double startWidth, double endWidth, double tangent, Adesk::Int32 vertexIdentifier);
+#endif
     PyDb2dVertex(AcDb2dVertex* ptr, bool autoDelete);
     PyDb2dVertex(const PyDbObjectId& id);
     PyDb2dVertex(const PyDbObjectId& id, AcDb::OpenMode mode);
