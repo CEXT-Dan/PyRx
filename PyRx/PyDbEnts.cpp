@@ -1206,15 +1206,21 @@ void makePyDbVertexWrapper()
 {
     PyDocString DS("Vertex");
     class_<PyDbVertex, bases<PyDbEntity>>("Vertex", boost::python::no_init)
+        .def(init<>())
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("className", &PyDbVertex::className).staticmethod("className")
-        .def("desc", &PyDbVertex::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDbVertex::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDbVertex::cast).staticmethod("cast")
+        .def("className", &PyDbVertex::className, DS.CLASSARGSSTATIC()).staticmethod("className")
+        .def("desc", &PyDbVertex::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
+        .def("cloneFrom", &PyDbVertex::cloneFrom, DS.CLASSARGSSTATIC({ "otherObject: RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbVertex::cast, DS.CLASSARGSSTATIC({ "otherObject: RxObject" })).staticmethod("cast")
         ;
 }
 
+PyDbVertex::PyDbVertex()
+    : PyDbEntity(new AcDbVertex(), true)
+{
+
+}
 PyDbVertex::PyDbVertex(AcDbVertex* ptr, bool autoDelete)
     : PyDbEntity(ptr, autoDelete)
 {
@@ -1274,32 +1280,32 @@ void makePyDb2dVertexWrapper()
     class_<PyDb2dVertex, bases<PyDbVertex>>("Vertex2d")
         .def(init<>())
         .def(init<const AcGePoint3d&>())
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
         .def(init<const AcGePoint3d&, double, double, double, double, Adesk::Int32>())
 #endif
         .def(init<const PyDbObjectId&>())
         .def(init<const PyDbObjectId&, AcDb::OpenMode>())
-        .def("vertexType", &PyDb2dVertex::vertexType)
-        .def("position", &PyDb2dVertex::position)
-        .def("setPosition", &PyDb2dVertex::setPosition)
-        .def("startWidth", &PyDb2dVertex::startWidth)
-        .def("setStartWidth", &PyDb2dVertex::setStartWidth)
-        .def("endWidth", &PyDb2dVertex::endWidth)
-        .def("setEndWidth", &PyDb2dVertex::setEndWidth)
-        .def("bulge", &PyDb2dVertex::bulge)
-        .def("setBulge", &PyDb2dVertex::setBulge)
-        .def("isTangentUsed", &PyDb2dVertex::isTangentUsed)
-        .def("useTangent", &PyDb2dVertex::useTangent)
-        .def("ignoreTangent", &PyDb2dVertex::ignoreTangent)
-        .def("setTangentUsed", &PyDb2dVertex::setTangentUsed)
-        .def("tangent", &PyDb2dVertex::tangent)
-        .def("setTangent", &PyDb2dVertex::setTangent)
-        .def("setVertexIdentifier", &PyDb2dVertex::setVertexIdentifier)
-        .def("vertexIdentifier", &PyDb2dVertex::vertexIdentifier)
-        .def("className", &PyDb2dVertex::className).staticmethod("className")
-        .def("desc", &PyDb2dVertex::desc).staticmethod("desc")
-        .def("cloneFrom", &PyDb2dVertex::cloneFrom).staticmethod("cloneFrom")
-        .def("cast", &PyDb2dVertex::cast).staticmethod("cast")
+        .def("vertexType", &PyDb2dVertex::vertexType, DS.CLASSARGS())
+        .def("position", &PyDb2dVertex::position, DS.CLASSARGS())
+        .def("setPosition", &PyDb2dVertex::setPosition, DS.CLASSARGS({ "val : PyGe.Point3d" }))
+        .def("startWidth", &PyDb2dVertex::startWidth, DS.CLASSARGS())
+        .def("setStartWidth", &PyDb2dVertex::setStartWidth, DS.CLASSARGS({ "val : float" }))
+        .def("endWidth", &PyDb2dVertex::endWidth, DS.CLASSARGS())
+        .def("setEndWidth", &PyDb2dVertex::setEndWidth, DS.CLASSARGS({ "val : float" }))
+        .def("bulge", &PyDb2dVertex::bulge, DS.CLASSARGS())
+        .def("setBulge", &PyDb2dVertex::setBulge, DS.CLASSARGS({ "val : float" }))
+        .def("isTangentUsed", &PyDb2dVertex::isTangentUsed, DS.CLASSARGS())
+        .def("useTangent", &PyDb2dVertex::useTangent, DS.CLASSARGS())
+        .def("ignoreTangent", &PyDb2dVertex::ignoreTangent, DS.CLASSARGS())
+        .def("setTangentUsed", &PyDb2dVertex::setTangentUsed, DS.CLASSARGS({ "val : bool" }))
+        .def("tangent", &PyDb2dVertex::tangent, DS.CLASSARGS())
+        .def("setTangent", &PyDb2dVertex::setTangent, DS.CLASSARGS({ "val : float" }))
+        .def("setVertexIdentifier", &PyDb2dVertex::setVertexIdentifier, DS.CLASSARGS({ "val : int" }))
+        .def("vertexIdentifier", &PyDb2dVertex::vertexIdentifier, DS.CLASSARGS())
+        .def("className", &PyDb2dVertex::className, DS.CLASSARGSSTATIC()).staticmethod("className")
+        .def("desc", &PyDb2dVertex::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
+        .def("cloneFrom", &PyDb2dVertex::cloneFrom, DS.CLASSARGSSTATIC({ "otherObject: RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDb2dVertex::cast, DS.CLASSARGSSTATIC({ "otherObject: RxObject" })).staticmethod("cast")
         ;
 }
 
@@ -1313,7 +1319,7 @@ PyDb2dVertex::PyDb2dVertex(const AcGePoint3d& pos)
 {
 }
 
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
 PyDb2dVertex::PyDb2dVertex(const AcGePoint3d& pos, double bulge, double startWidth, double endWidth, double tangent, Adesk::Int32 vertexIdentifier)
     : PyDb2dVertex(new AcDb2dVertex(pos, bulge, startWidth, endWidth, tangent, vertexIdentifier), true)
 {

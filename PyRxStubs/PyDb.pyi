@@ -65444,7 +65444,12 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
 
 class Vertex:
     def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
 
     C++ signature :
         void __init__(struct _object * __ptr64,class PyDbObjectId)
@@ -65475,26 +65480,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> Vertex :
-      '''cast( (RxObject)arg1) -> Vertex :
-
-    C++ signature :
-        class PyDbVertex cast(class PyRxObject)'''
+    def cast (otherObject: RxObject)-> Vertex :
+      '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> Vertex :
-      '''cloneFrom( (RxObject)arg1) -> Vertex :
-
-    C++ signature :
-        class PyDbVertex cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: RxObject)-> Vertex :
+      '''                             '''
     ...
     def close (self: DbObject)-> None :
       '''                             '''
@@ -65514,11 +65510,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> Database :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -65872,35 +65865,23 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def bounds (self: Drawable,ext: PyDb.Extents)-> bool :
       '''                             '''
     ...
-    def bulge (self, *args, **kwargs)-> float :
-      '''bulge( (Vertex2d)arg1) -> float :
-
-    C++ signature :
-        double bulge(class PyDb2dVertex {lvalue})'''
+    def bulge (self: Vertex2d)-> float :
+      '''                             '''
     ...
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> Vertex2d :
-      '''cast( (RxObject)arg1) -> Vertex2d :
-
-    C++ signature :
-        class PyDb2dVertex cast(class PyRxObject)'''
+    def cast (otherObject: RxObject)-> Vertex2d :
+      '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> Vertex2d :
-      '''cloneFrom( (RxObject)arg1) -> Vertex2d :
-
-    C++ signature :
-        class PyDb2dVertex cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: RxObject)-> Vertex2d :
+      '''                             '''
     ...
     def close (self: DbObject)-> None :
       '''                             '''
@@ -65920,11 +65901,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> Database :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -65941,11 +65919,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def drawableType (self: Drawable)-> GiDrawableType :
       '''                             '''
     ...
-    def endWidth (self, *args, **kwargs)-> float :
-      '''endWidth( (Vertex2d)arg1) -> float :
-
-    C++ signature :
-        double endWidth(class PyDb2dVertex {lvalue})'''
+    def endWidth (self: Vertex2d)-> float :
+      '''                             '''
     ...
     def entityColor (self: Entity)-> EntityColor :
       '''                             '''
@@ -65998,11 +65973,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def id (self: Drawable)-> ObjectId :
       '''                             '''
     ...
-    def ignoreTangent (self, *args, **kwargs)-> None :
-      '''ignoreTangent( (Vertex2d)arg1) -> None :
-
-    C++ signature :
-        void ignoreTangent(class PyDb2dVertex {lvalue})'''
+    def ignoreTangent (self: Vertex2d)-> None :
+      '''                             '''
     ...
     def implRefCount (self: RxObject)-> int :
       '''                             '''
@@ -66076,11 +66048,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def isReallyClosing (self: DbObject)-> bool :
       '''                             '''
     ...
-    def isTangentUsed (self, *args, **kwargs)-> bool :
-      '''isTangentUsed( (Vertex2d)arg1) -> bool :
-
-    C++ signature :
-        bool isTangentUsed(class PyDb2dVertex {lvalue})'''
+    def isTangentUsed (self: Vertex2d)-> bool :
+      '''                             '''
     ...
     def isTransactionResident (self: DbObject)-> bool :
       '''                             '''
@@ -66130,11 +66099,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def plotStyleName (self: Entity)-> str :
       '''                             '''
     ...
-    def position (self, *args, **kwargs)-> Point3d :
-      '''position( (Vertex2d)arg1) -> Point3d :
-
-    C++ signature :
-        class AcGePoint3d position(class PyDb2dVertex {lvalue})'''
+    def position (self: Vertex2d)-> Point3d :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
@@ -66160,11 +66126,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setAttributes (self: Drawable,traits: PyGi.DrawableTraits)-> int :
       '''                             '''
     ...
-    def setBulge (self, *args, **kwargs)-> None :
-      '''setBulge( (Vertex2d)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setBulge(class PyDb2dVertex {lvalue},double)'''
+    def setBulge (self: Vertex2d,val : float)-> None :
+      '''                             '''
     ...
     def setCastShadows (self: Entity,val: bool)-> None :
       '''                             '''
@@ -66178,11 +66141,8 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
     ...
-    def setEndWidth (self, *args, **kwargs)-> None :
-      '''setEndWidth( (Vertex2d)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setEndWidth(class PyDb2dVertex {lvalue},double)'''
+    def setEndWidth (self: Vertex2d,val : float)-> None :
+      '''                             '''
     ...
     def setField (self: DbObject,prop: str=TEXT,obj: Field)-> ObjectId :
       '''                             '''
@@ -66221,11 +66181,8 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         void setPlotStyleName(class PyDbEntity {lvalue},enum AcDb::PlotStyleNameType,class PyDbObjectId,bool)'''
     ...
-    def setPosition (self, *args, **kwargs)-> None :
-      '''setPosition( (Vertex2d)arg1, (Point3d)arg2) -> None :
-
-    C++ signature :
-        void setPosition(class PyDb2dVertex {lvalue},class AcGePoint3d)'''
+    def setPosition (self: Vertex2d,val : PyGe.Point3d)-> None :
+      '''                             '''
     ...
     def setPropertiesFrom (self: Entity,ent: Entity,dosubents : bool=True)-> None :
       '''                             '''
@@ -66233,29 +66190,17 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setReceiveShadows (self: Entity,val: bool)-> None :
       '''                             '''
     ...
-    def setStartWidth (self, *args, **kwargs)-> None :
-      '''setStartWidth( (Vertex2d)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setStartWidth(class PyDb2dVertex {lvalue},double)'''
+    def setStartWidth (self: Vertex2d,val : float)-> None :
+      '''                             '''
     ...
-    def setTangent (self, *args, **kwargs)-> None :
-      '''setTangent( (Vertex2d)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setTangent(class PyDb2dVertex {lvalue},double)'''
+    def setTangent (self: Vertex2d,val : float)-> None :
+      '''                             '''
     ...
-    def setTangentUsed (self, *args, **kwargs)-> None :
-      '''setTangentUsed( (Vertex2d)arg1, (bool)arg2) -> None :
-
-    C++ signature :
-        void setTangentUsed(class PyDb2dVertex {lvalue},bool)'''
+    def setTangentUsed (self: Vertex2d,val : bool)-> None :
+      '''                             '''
     ...
-    def setVertexIdentifier (self, *args, **kwargs)-> None :
-      '''setVertexIdentifier( (Vertex2d)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setVertexIdentifier(class PyDb2dVertex {lvalue},int)'''
+    def setVertexIdentifier (self: Vertex2d,val : int)-> None :
+      '''                             '''
     ...
     def setVisibility (self: Entity,val: Visibility,dosubents : bool=True)-> None :
       '''                             '''
@@ -66263,20 +66208,14 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def startWidth (self, *args, **kwargs)-> float :
-      '''startWidth( (Vertex2d)arg1) -> float :
-
-    C++ signature :
-        double startWidth(class PyDb2dVertex {lvalue})'''
+    def startWidth (self: Vertex2d)-> float :
+      '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
       '''                             '''
     ...
-    def tangent (self, *args, **kwargs)-> float :
-      '''tangent( (Vertex2d)arg1) -> float :
-
-    C++ signature :
-        double tangent(class PyDb2dVertex {lvalue})'''
+    def tangent (self: Vertex2d)-> float :
+      '''                             '''
     ...
     def transformBy (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
       '''                             '''
@@ -66287,23 +66226,14 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def upgradeOpen (self: DbObject)-> None :
       '''                             '''
     ...
-    def useTangent (self, *args, **kwargs)-> None :
-      '''useTangent( (Vertex2d)arg1) -> None :
-
-    C++ signature :
-        void useTangent(class PyDb2dVertex {lvalue})'''
+    def useTangent (self: Vertex2d)-> None :
+      '''                             '''
     ...
-    def vertexIdentifier (self, *args, **kwargs)-> int :
-      '''vertexIdentifier( (Vertex2d)arg1) -> int :
-
-    C++ signature :
-        int vertexIdentifier(class PyDb2dVertex {lvalue})'''
+    def vertexIdentifier (self: Vertex2d)-> int :
+      '''                             '''
     ...
-    def vertexType (self, *args, **kwargs)-> Vertex2dType :
-      '''vertexType( (Vertex2d)arg1) -> Vertex2dType :
-
-    C++ signature :
-        enum AcDb::Vertex2dType vertexType(class PyDb2dVertex {lvalue})'''
+    def vertexType (self: Vertex2d)-> Vertex2dType :
+      '''                             '''
     ...
     def viewportDraw (self: Drawable,vpdraw: PyGi.ViewportDraw)-> None :
       '''                             '''
