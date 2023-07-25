@@ -6083,26 +6083,17 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> BlockReference :
-      '''cast( (RxObject)arg1) -> BlockReference :
-
-    C++ signature :
-        class PyDbBlockReference cast(class PyRxObject)'''
+    def cast (otherObject: RxObject)-> BlockReference :
+      '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> BlockReference :
-      '''cloneFrom( (RxObject)arg1) -> BlockReference :
-
-    C++ signature :
-        class PyDbBlockReference cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: RxObject)-> BlockReference :
+      '''                             '''
     ...
     def close (self: DbObject)-> None :
       '''                             '''
@@ -6122,11 +6113,8 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
     def database (self: DbObject)-> Database :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -16794,70 +16782,35 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class DynBlockReference:
-    def __init__ (self, *args, **kwargs)-> None :
-      '''__init__( (object)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void __init__(struct _object * __ptr64,class PyDbObjectId)'''
+    def __init__ (self: DynBlockReference,val : ObjectId)-> None :
+      '''                             '''
     ...
-    def anonymousBlockTableRecord (self, *args, **kwargs)-> ObjectId :
-      '''anonymousBlockTableRecord( (DynBlockReference)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId anonymousBlockTableRecord(class PyDbDynBlockReference {lvalue})'''
+    def anonymousBlockTableRecord (self: DynBlockReference)-> ObjectId :
+      '''                             '''
     ...
-    def blockId (self, *args, **kwargs)-> ObjectId :
-      '''blockId( (DynBlockReference)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId blockId(class PyDbDynBlockReference {lvalue})'''
+    def blockId (self: DynBlockReference)-> ObjectId :
+      '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def convertToStaticBlock (self, *args, **kwargs)-> None :
-      '''convertToStaticBlock( (DynBlockReference)arg1) -> None :
-
-    C++ signature :
-        void convertToStaticBlock(class PyDbDynBlockReference {lvalue})
-
-convertToStaticBlock( (DynBlockReference)arg1, (str)arg2) -> None :
-
-    C++ signature :
-        void convertToStaticBlock(class PyDbDynBlockReference {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def convertToStaticBlock (self: DynBlockReference,val : str=None)-> None :
+      '''                             '''
     ...
-    def dynamicBlockTableRecord (self, *args, **kwargs)-> ObjectId :
-      '''dynamicBlockTableRecord( (DynBlockReference)arg1) -> ObjectId :
-
-    C++ signature :
-        class PyDbObjectId dynamicBlockTableRecord(class PyDbDynBlockReference {lvalue})'''
+    def dynamicBlockTableRecord (self: DynBlockReference)-> ObjectId :
+      '''                             '''
     ...
-    def getBlockProperties (self, *args, **kwargs)-> list :
-      '''getBlockProperties( (DynBlockReference)arg1) -> list :
-
-    C++ signature :
-        class boost::python::list getBlockProperties(class PyDbDynBlockReference {lvalue})'''
+    def getBlockProperties (self: DynBlockReference)-> list :
+      '''                             '''
     ...
-    def getIsDynamicBlock (self, *args, **kwargs)-> bool :
-      '''getIsDynamicBlock( (ObjectId)arg1) -> bool :
-
-    C++ signature :
-        bool getIsDynamicBlock(class PyDbObjectId)'''
+    def getIsDynamicBlock (otherObject: ObjectId)-> bool :
+      '''                             '''
     ...
-    def isDynamicBlock (self, *args, **kwargs)-> bool :
-      '''isDynamicBlock( (DynBlockReference)arg1) -> bool :
-
-    C++ signature :
-        bool isDynamicBlock(class PyDbDynBlockReference {lvalue})'''
+    def isDynamicBlock (self: DynBlockReference)-> bool :
+      '''                             '''
     ...
-    def resetBlock (self, *args, **kwargs)-> None :
-      '''resetBlock( (DynBlockReference)arg1) -> None :
-
-    C++ signature :
-        void resetBlock(class PyDbDynBlockReference {lvalue})'''
+    def resetBlock (self: DynBlockReference)-> None :
+      '''                             '''
     ...
 
 class DynBlockReferenceProperty:
@@ -31460,26 +31413,17 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def cancel (self: DbObject)-> None :
       '''                             '''
     ...
-    def cast (self, *args, **kwargs)-> MInsertBlock :
-      '''cast( (RxObject)arg1) -> MInsertBlock :
-
-    C++ signature :
-        class PyDbMInsertBlock cast(class PyRxObject)'''
+    def cast (otherObject: RxObject)-> MInsertBlock :
+      '''                             '''
     ...
     def castShadows (self: Entity)-> bool :
       '''                             '''
     ...
-    def className (self, *args, **kwargs)-> str :
-      '''className() -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > className()'''
+    def className ()-> str :
+      '''                             '''
     ...
-    def cloneFrom (self, *args, **kwargs)-> MInsertBlock :
-      '''cloneFrom( (RxObject)arg1) -> MInsertBlock :
-
-    C++ signature :
-        class PyDbMInsertBlock cloneFrom(class PyRxObject)'''
+    def cloneFrom (otherObject: RxObject)-> MInsertBlock :
+      '''                             '''
     ...
     def close (self: DbObject)-> None :
       '''                             '''
@@ -31493,17 +31437,11 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def colorIndex (self: Entity)-> int :
       '''                             '''
     ...
-    def columnSpacing (self, *args, **kwargs)-> float :
-      '''columnSpacing( (MInsertBlock)arg1) -> float :
-
-    C++ signature :
-        double columnSpacing(class PyDbMInsertBlock {lvalue})'''
+    def columnSpacing (self: MInsertBlock)-> float :
+      '''                             '''
     ...
-    def columns (self, *args, **kwargs)-> int :
-      '''columns( (MInsertBlock)arg1) -> int :
-
-    C++ signature :
-        unsigned short columns(class PyDbMInsertBlock {lvalue})'''
+    def columns (self: MInsertBlock)-> int :
+      '''                             '''
     ...
     def createExtensionDictionary (self: DbObject)-> None :
       '''                             '''
@@ -31511,11 +31449,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def database (self: DbObject)-> Database :
       '''                             '''
     ...
-    def desc (self, *args, **kwargs)-> RxClass :
-      '''desc() -> RxClass :
-
-    C++ signature :
-        class PyRxClass desc()'''
+    def desc ()-> RxClass :
+      '''                             '''
     ...
     def disableUndoRecording (self: DbObject,disable: bool)-> None :
       '''                             '''
@@ -31745,17 +31680,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def rotation (self: BlockReference)-> float :
       '''                             '''
     ...
-    def rowSpacing (self, *args, **kwargs)-> float :
-      '''rowSpacing( (MInsertBlock)arg1) -> float :
-
-    C++ signature :
-        double rowSpacing(class PyDbMInsertBlock {lvalue})'''
+    def rowSpacing (self: MInsertBlock)-> float :
+      '''                             '''
     ...
-    def rows (self, *args, **kwargs)-> int :
-      '''rows( (MInsertBlock)arg1) -> int :
-
-    C++ signature :
-        unsigned short rows(class PyDbMInsertBlock {lvalue})'''
+    def rows (self: MInsertBlock)-> int :
+      '''                             '''
     ...
     def scaleFactors (self: BlockReference)-> Scale3d :
       '''                             '''
@@ -31778,17 +31707,11 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def setColorIndex (self: Entity,clr: int,dosubents : bool=True)-> None :
       '''                             '''
     ...
-    def setColumnSpacing (self, *args, **kwargs)-> None :
-      '''setColumnSpacing( (MInsertBlock)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setColumnSpacing(class PyDbMInsertBlock {lvalue},double)'''
+    def setColumnSpacing (self: MInsertBlock,val : float)-> None :
+      '''                             '''
     ...
-    def setColumns (self, *args, **kwargs)-> None :
-      '''setColumns( (MInsertBlock)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setColumns(class PyDbMInsertBlock {lvalue},unsigned short)'''
+    def setColumns (self: MInsertBlock,val : int)-> None :
+      '''                             '''
     ...
     def setDatabaseDefaults (self: Entity,db: Database = current)-> None :
       '''                             '''
@@ -31845,17 +31768,11 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setRotation (self: BlockReference,val : float)-> None :
       '''                             '''
     ...
-    def setRowSpacing (self, *args, **kwargs)-> None :
-      '''setRowSpacing( (MInsertBlock)arg1, (float)arg2) -> None :
-
-    C++ signature :
-        void setRowSpacing(class PyDbMInsertBlock {lvalue},double)'''
+    def setRowSpacing (self: MInsertBlock,val : float)-> None :
+      '''                             '''
     ...
-    def setRows (self, *args, **kwargs)-> None :
-      '''setRows( (MInsertBlock)arg1, (int)arg2) -> None :
-
-    C++ signature :
-        void setRows(class PyDbMInsertBlock {lvalue},unsigned short)'''
+    def setRows (self: MInsertBlock,val : int)-> None :
+      '''                             '''
     ...
     def setScaleFactors (self: BlockReference,val : PyGe.Scale3d)-> None :
       '''                             '''
