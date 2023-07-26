@@ -7,7 +7,8 @@ using namespace boost::python;
 
 void makePyEdSelectionSetWrapper()
 {
-    class_<PyEdSelectionSet>("SelectionSet", boost::python::no_init)
+    class_<PyEdSelectionSet>("SelectionSet")
+        .def(init<>())
         .def("isInitialized", &PyEdSelectionSet::isInitialized)
         .def("size", &PyEdSelectionSet::size)
         .def("clear", &PyEdSelectionSet::clear)
@@ -21,6 +22,16 @@ void makePyEdSelectionSetWrapper()
         .def("ssSetFirst", &PyEdSelectionSet::ssSetFirst)
         .def("ssXform", &PyEdSelectionSet::ssXform)
         ;
+}
+
+PyEdSelectionSet::PyEdSelectionSet()
+    : m_pSet(new PySSName(), PyEdSSDeleter())
+{
+    ads_name result = { 0L,0L };
+    acedSSAdd(nullptr, nullptr, result);
+    auto& a = *m_pSet;
+    a[0] = result[0];
+    a[1] = result[1];
 }
 
 PyEdSelectionSet::PyEdSelectionSet(const ads_name& ss)
