@@ -404,14 +404,20 @@ public:
 
     static AcString commandForCurDocument()
     {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
         AcString cmdName;
-        ACHAR* pGlobalCmdName = nullptr;
-        if (auto es = acedGetCommandForDocument(curDoc(), pGlobalCmdName); es != eOk)
+        RxAutoOutStr pGlobalCmdName;
+        if (auto es = acedGetCommandForDocument(curDoc(), pGlobalCmdName.buf); es != eOk)
             return cmdName;
-        cmdName = pGlobalCmdName;
-        acutDelString(pGlobalCmdName);
+        cmdName = pGlobalCmdName.buf;
         cmdName.makeUpper();
         return cmdName;
+#else
+        AcString pGlobalCmdName;
+        if (auto es = acedGetCommandForDocument(curDoc(), pGlobalCmdName); es != eOk)
+            return pGlobalCmdName;
+        return pGlobalCmdName.makeUpper();
+#endif
     }
 
     static void AcRxPyApp_pyfunc(void)
