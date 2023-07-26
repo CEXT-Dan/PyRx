@@ -12435,6 +12435,12 @@ getCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (int)arg2) -> tuple :
     C++ signature :
         void setComments(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
+    def setCustomSummaryFromDict (self, *args, **kwargs)-> None :
+      '''setCustomSummaryFromDict( (DatabaseSummaryInfo)arg1, (dict)arg2) -> None :
+
+    C++ signature :
+        void setCustomSummaryFromDict(class PyDbDatabaseSummaryInfo {lvalue},class boost::python::dict {lvalue})'''
+    ...
     def setCustomSummaryInfo (self, *args, **kwargs)-> None :
       '''setCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (str)arg2, (str)arg3) -> None :
 

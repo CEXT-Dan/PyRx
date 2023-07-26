@@ -87,7 +87,37 @@ class TestDatabase(unittest.TestCase):
         self.assertEqual(lineHnd.toString(),"296")
         self.assertEqual(Db.Handle("296") == Db.Handle("296"),True)
         self.assertEqual(Db.Handle("296") != Db.Handle("296"),False)
-
+    
+    @staticmethod
+    def test_putSummaryInfo():
+        db = Db.curDb()
+        customDict = {"Ford" : "Mustang", "Chevy" : "Camaro", "VW" : " Bug"}
+        info = Db.Core.getSummaryInfo(db)
+        info.setCustomSummaryFromDict(customDict)
+        info.setTitle("MyTitle")
+        info.setSubject("MySubject")
+        info.setAuthor("MyAuthor")
+        info.setKeywords("MyKeywords")
+        info.setComments("MyComments")
+        info.setLastSavedBy("Me")
+        info.setRevisionNumber("1.1.0001")
+        info.setHyperlinkBase("myHyperlinkBase")
+        Db.Core.putSummaryInfo(info, db)
+        
+    def test_getSummaryInfo(self):
+        TestDatabase.test_putSummaryInfo()
+        customDict = {"Ford" : "Mustang", "Chevy" : "Camaro", "VW" : " Bug"}
+        db = Db.curDb()
+        info = Db.Core.getSummaryInfo(db)
+        self.assertEqual(info.getTitle(),"MyTitle")
+        self.assertEqual(info.getSubject(),"MySubject")
+        self.assertEqual(info.getAuthor(),"MyAuthor")
+        self.assertEqual(info.getKeywords(),"MyKeywords")
+        self.assertEqual(info.getComments(),"MyComments")
+        self.assertEqual(info.getLastSavedBy(),"Me")
+        self.assertEqual(info.getRevisionNumber(),"1.1.0001")
+        self.assertEqual(info.getHyperlinkBase(),"myHyperlinkBase")
+        self.assertEqual(info.asDict(),customDict)
         
 def PyRxCmd_pydbtest():
     try:
