@@ -449,11 +449,9 @@ PyDbDatabaseSummaryInfo::PyDbDatabaseSummaryInfo(AcDbDatabaseSummaryInfo* ptr)
 std::string PyDbDatabaseSummaryInfo::getTitle() const
 {
 #if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    ACHAR* _achar = nullptr;
-    PyThrowBadEs(impObj()->getTitle(_achar));
-    std::string str = wstr_to_utf8(_achar);
-    acutDelString(_achar);
-    return str;
+    RxAutoOutStr _achar;
+    PyThrowBadEs(impObj()->getTitle(_achar.buf));
+    return wstr_to_utf8(_achar.buf);
 #else
     AcString str;
     PyThrowBadEs(impObj()->getTitle(str));
@@ -469,11 +467,9 @@ void PyDbDatabaseSummaryInfo::setTitle(const std::string& title)
 std::string PyDbDatabaseSummaryInfo::getSubject() const
 {
 #if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    ACHAR* _achar = nullptr;
-    PyThrowBadEs(impObj()->getSubject(_achar));
-    std::string str = wstr_to_utf8(_achar);
-    acutDelString(_achar);
-    return str;
+    RxAutoOutStr _achar;
+    PyThrowBadEs(impObj()->getSubject(_achar.buf));
+    return wstr_to_utf8(_achar.buf);
 #else
     AcString str;
     PyThrowBadEs(impObj()->getSubject(str));
@@ -489,11 +485,9 @@ void PyDbDatabaseSummaryInfo::setSubject(const std::string& subject)
 std::string PyDbDatabaseSummaryInfo::getAuthor() const
 {
 #if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    ACHAR* _achar = nullptr;
-    PyThrowBadEs(impObj()->getAuthor(_achar));
-    std::string str = wstr_to_utf8(_achar);
-    acutDelString(_achar);
-    return str;
+    RxAutoOutStr _achar;
+    PyThrowBadEs(impObj()->getAuthor(_achar.buf));
+    return wstr_to_utf8(_achar.buf);
 #else
     AcString str;
     PyThrowBadEs(impObj()->getAuthor(str));
@@ -509,11 +503,9 @@ void PyDbDatabaseSummaryInfo::setAuthor(const std::string& author)
 std::string PyDbDatabaseSummaryInfo::getKeywords() const
 {
 #if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    ACHAR* _achar = nullptr;
-    PyThrowBadEs(impObj()->getKeywords(_achar));
-    std::string str = wstr_to_utf8(_achar);
-    acutDelString(_achar);
-    return str;
+    RxAutoOutStr _achar;
+    PyThrowBadEs(impObj()->getKeywords(_achar.buf));
+    return wstr_to_utf8(_achar.buf);
 #else
     AcString str;
     PyThrowBadEs(impObj()->getKeywords(str));
@@ -529,11 +521,10 @@ void PyDbDatabaseSummaryInfo::setKeywords(const std::string& keywordlist)
 std::string PyDbDatabaseSummaryInfo::getComments() const
 {
 #if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    ACHAR* _achar = nullptr;
-    PyThrowBadEs(impObj()->getComments(_achar));
-    std::string str = wstr_to_utf8(_achar);
-    acutDelString(_achar);
-    return str;
+    RxAutoOutStr _achar;
+    PyThrowBadEs(impObj()->getComments(_achar.buf));
+    std::string str = wstr_to_utf8(_achar.buf);
+    return wstr_to_utf8(_achar.buf);
 #else
     AcString str;
     PyThrowBadEs(impObj()->getComments(str));
@@ -549,11 +540,9 @@ void PyDbDatabaseSummaryInfo::setComments(const std::string& comments)
 std::string PyDbDatabaseSummaryInfo::getLastSavedBy() const
 {
 #if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    ACHAR* _achar = nullptr;
-    PyThrowBadEs(impObj()->getLastSavedBy(_achar));
-    std::string str = wstr_to_utf8(_achar);
-    acutDelString(_achar);
-    return str;
+    RxAutoOutStr _achar;
+    PyThrowBadEs(impObj()->getLastSavedBy(_achar.buf));
+    return wstr_to_utf8(_achar.buf);
 #else
     AcString str;
     PyThrowBadEs(impObj()->getLastSavedBy(str));
@@ -569,11 +558,9 @@ void PyDbDatabaseSummaryInfo::setLastSavedBy(const std::string& lastSavedBy)
 std::string PyDbDatabaseSummaryInfo::getRevisionNumber() const
 {
 #if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    ACHAR* _achar = nullptr;
-    PyThrowBadEs(impObj()->getRevisionNumber(_achar));
-    std::string str = wstr_to_utf8(_achar);
-    acutDelString(_achar);
-    return str;
+    RxAutoOutStr _achar;
+    PyThrowBadEs(impObj()->getRevisionNumber(_achar.buf));
+    return wstr_to_utf8(_achar.buf);
 #else
     AcString str;
     PyThrowBadEs(impObj()->getRevisionNumber(str));
@@ -589,11 +576,9 @@ void PyDbDatabaseSummaryInfo::setRevisionNumber(const std::string& revisionNumbe
 std::string PyDbDatabaseSummaryInfo::getHyperlinkBase() const
 {
 #if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    ACHAR* _achar = nullptr;
-    PyThrowBadEs(impObj()->getHyperlinkBase(_achar));
-    std::string str = wstr_to_utf8(_achar);
-    acutDelString(_achar);
-    return str;
+    RxAutoOutStr _achar;
+    PyThrowBadEs(impObj()->getHyperlinkBase(_achar.buf));
+    return wstr_to_utf8(_achar.buf);
 #else
     AcString str;
     PyThrowBadEs(impObj()->getHyperlinkBase(str));
@@ -629,10 +614,9 @@ void PyDbDatabaseSummaryInfo::deleteCustomSummaryInfo2(const std::string& key)
 boost::python::tuple PyDbDatabaseSummaryInfo::getCustomSummaryInfo1(const std::string& customInfoKey) const
 {
 #if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    ACHAR* _achar = nullptr;
-    PyThrowBadEs(impObj()->getCustomSummaryInfo(utf8_to_wstr(customInfoKey).c_str(), _achar));
-    std::string str = wstr_to_utf8(_achar);
-    acutDelString(_achar);
+    RxAutoOutStr _achar;
+    PyThrowBadEs(impObj()->getCustomSummaryInfo(utf8_to_wstr(customInfoKey).c_str(), _achar.buf));
+    std::string str = wstr_to_utf8(_achar.buf);
     return boost::python::make_tuple(customInfoKey, str);
 #else
     AcString value;
@@ -645,13 +629,11 @@ boost::python::tuple PyDbDatabaseSummaryInfo::getCustomSummaryInfo1(const std::s
 boost::python::tuple PyDbDatabaseSummaryInfo::getCustomSummaryInfo2(int index) const
 {
 #if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    ACHAR* _acharKey = nullptr;
-    ACHAR* _acharValue = nullptr;
-    PyThrowBadEs(impObj()->getCustomSummaryInfo(index, _acharKey, _acharValue));
-    std::string strKey = wstr_to_utf8(_acharKey);
-    std::string strVal = wstr_to_utf8(_acharValue);
-    acutDelString(_acharKey);
-    acutDelString(_acharValue);
+    RxAutoOutStr _acharKey;
+    RxAutoOutStr _acharValue;
+    PyThrowBadEs(impObj()->getCustomSummaryInfo(index, _acharKey.buf, _acharValue.buf));
+    std::string strKey = wstr_to_utf8(_acharKey.buf);
+    std::string strVal = wstr_to_utf8(_acharValue.buf);
     return boost::python::make_tuple(strKey, strVal);
 #else
     AcString key;
@@ -675,10 +657,8 @@ void PyDbDatabaseSummaryInfo::setCustomSummaryInfo2(int index, const std::string
 static bool hasKey(AcDbDatabaseSummaryInfo* imp, const TCHAR* key)
 {
 #if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    ACHAR* _acharValue = nullptr;
-    auto flag = (imp->getCustomSummaryInfo(key, _acharValue) == eOk);
-    acutDelString(_acharValue);
-    return flag;
+    RxAutoOutStr _acharValue;
+    return imp->getCustomSummaryInfo(key, _acharValue.buf) == eOk;
 #else
     AcString dummy;
     return imp->getCustomSummaryInfo(key, dummy) == eOk;
@@ -713,14 +693,12 @@ boost::python::dict PyDbDatabaseSummaryInfo::asDict() const
 #if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     for (int idx = 0; idx < this->numCustomInfo(); idx++)
     {
-        ACHAR* _acharKey = nullptr;
-        ACHAR* _acharValue = nullptr;
-        if (impObj()->getCustomSummaryInfo(idx, _acharKey, _acharValue) == eOk)
+        RxAutoOutStr _acharKey;
+        RxAutoOutStr _acharValue;
+        if (impObj()->getCustomSummaryInfo(idx, _acharKey.buf, _acharValue.buf) == eOk)
         {
-            std::string sdtkey = wstr_to_utf8(_acharKey);
-            std::string stdvalue = wstr_to_utf8(_acharValue);
-            acutDelString(_acharKey);
-            acutDelString(_acharValue);
+            std::string sdtkey = wstr_to_utf8(_acharKey.buf);
+            std::string stdvalue = wstr_to_utf8(_acharValue.buf);
             sinfoDict[sdtkey] = stdvalue;
         }
     }
