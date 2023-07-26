@@ -7,6 +7,7 @@
 #include "PyDbDatabase.h"
 #include "PyGeCurve3d.h"
 #include "PyDbCurve.h"
+#include "PyDbHostApplicationServices.h"
 
 using namespace boost::python;
 
@@ -51,12 +52,17 @@ void makeDbCoreWrapper()
         .def("entMake", &DbCore::entMake).staticmethod("entMake")
         .def("entMakeX", &DbCore::entMakeX).staticmethod("entMakeX")
 
-
         .def("openDbObject", &DbCore::openDbObject).staticmethod("openDbObject")
         .def("openDbEntity", &DbCore::openDbEntity).staticmethod("openDbEntity")
         .def("regApp", &DbCore::regApp).staticmethod("regApp")
         .def("updateDimension", &DbCore::updateDimension).staticmethod("updateDimension")
         .def("resbufTest", &DbCore::resbufTest).staticmethod("resbufTest")
+
+        .def("getSummaryInfo", &DbCore::getSummaryInfo).staticmethod("getSummaryInfo")
+        .def("putSummaryInfo", &DbCore::putSummaryInfo).staticmethod("putSummaryInfo")
+        .def("validateCustomSummaryInfoKey", &DbCore::validateCustomSummaryInfoKey).staticmethod("validateCustomSummaryInfoKey")
+
+
         .def("ucs2Wcs", &DbCore::ucs2Wcs1)
         .def("ucs2Wcs", &DbCore::ucs2Wcs2).staticmethod("ucs2Wcs")
         .def("wcs2Ecs", &DbCore::wcs2Ecs1)
@@ -379,6 +385,27 @@ boost::python::list DbCore::resbufTest(const boost::python::list& list)
 {
     AcResBufPtr ptr(listToResbuf(list));
     return resbufToList(ptr.get());
+}
+
+PyDbDatabaseSummaryInfo DbCore::getSummaryInfo(PyDbDatabase& db)
+{
+    AcDbDatabaseSummaryInfo* info = nullptr;
+    PyThrowBadEs(acdbGetSummaryInfo(db.impObj(), info));
+    return PyDbDatabaseSummaryInfo(info);
+}
+
+void DbCore::putSummaryInfo(PyDbDatabaseSummaryInfo& info, PyDbDatabase& db)
+{
+    PyThrowBadEs(acdbPutSummaryInfo(info.impObj(), db.impObj()));
+}
+
+bool DbCore::validateCustomSummaryInfoKey(const std::string& key, PyDbDatabaseSummaryInfo& info)
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    return acdbValidateCustomSummaryInfoKey(utf8_to_wstr(key).c_str(), info.impObj()) == eOk;
+#endif
 }
 
 bool DbCore::ucs2Wcs1(const AcGePoint3d& p, AcGePoint3d& q)

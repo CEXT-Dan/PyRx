@@ -10390,6 +10390,12 @@ ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
     C++ signature :
         bool entUpd(class PyDbObjectId)'''
     ...
+    def getSummaryInfo (self, *args, **kwargs)-> DatabaseSummaryInfo :
+      '''getSummaryInfo( (Database)arg1) -> DatabaseSummaryInfo :
+
+    C++ signature :
+        class PyDbDatabaseSummaryInfo getSummaryInfo(class PyDbDatabase {lvalue})'''
+    ...
     def openDbEntity (self, *args, **kwargs)-> Entity :
       '''openDbEntity( (ObjectId)arg1, (OpenMode)arg2) -> Entity :
 
@@ -10401,6 +10407,12 @@ ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
 
     C++ signature :
         class PyDbObject openDbObject(class PyDbObjectId,enum AcDb::OpenMode)'''
+    ...
+    def putSummaryInfo (self, *args, **kwargs)-> None :
+      '''putSummaryInfo( (DatabaseSummaryInfo)arg1, (Database)arg2) -> None :
+
+    C++ signature :
+        void putSummaryInfo(class PyDbDatabaseSummaryInfo {lvalue},class PyDbDatabase {lvalue})'''
     ...
     def regApp (self, *args, **kwargs)-> bool :
       '''regApp( (str)arg1) -> bool :
@@ -10441,6 +10453,12 @@ ucs2Wcs( (Vector3d)arg1, (Vector3d)arg2) -> bool :
 
     C++ signature :
         void updateDimension(class PyDbObjectId)'''
+    ...
+    def validateCustomSummaryInfoKey (self, *args, **kwargs)-> bool :
+      '''validateCustomSummaryInfoKey( (str)arg1, (DatabaseSummaryInfo)arg2) -> bool :
+
+    C++ signature :
+        bool validateCustomSummaryInfoKey(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabaseSummaryInfo {lvalue})'''
     ...
     def wcs2Ecs (self, *args, **kwargs)-> bool :
       '''wcs2Ecs( (Point3d)arg1, (Vector3d)arg2, (Point3d)arg3) -> bool :
@@ -12295,6 +12313,174 @@ wblock( (Database)arg1, (Database)arg2 [, (ObjectId)arg3]) -> None :
     ...
     def xrefEditEnabled (self: Database)-> bool :
       '''                             '''
+    ...
+
+class DatabaseSummaryInfo:
+    def __init__ (self, *args, **kwargs)-> None:
+      '''Raises an exception
+This class cannot be instantiated from Python'''
+    ...
+    def addCustomSummaryInfo (self, *args, **kwargs)-> None :
+      '''addCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (str)arg2, (str)arg3) -> None :
+
+    C++ signature :
+        void addCustomSummaryInfo(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def asDict (self, *args, **kwargs)-> dict :
+      '''asDict( (DatabaseSummaryInfo)arg1) -> dict :
+
+    C++ signature :
+        class boost::python::dict asDict(class PyDbDatabaseSummaryInfo {lvalue})'''
+    ...
+    def className ()-> str :
+      '''                             '''
+    ...
+    def deleteCustomSummaryInfo (self, *args, **kwargs)-> None :
+      '''deleteCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (int)arg2) -> None :
+
+    C++ signature :
+        void deleteCustomSummaryInfo(class PyDbDatabaseSummaryInfo {lvalue},int)
+
+deleteCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void deleteCustomSummaryInfo(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getAuthor (self, *args, **kwargs)-> str :
+      '''getAuthor( (DatabaseSummaryInfo)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getAuthor(class PyDbDatabaseSummaryInfo {lvalue})'''
+    ...
+    def getComments (self, *args, **kwargs)-> str :
+      '''getComments( (DatabaseSummaryInfo)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getComments(class PyDbDatabaseSummaryInfo {lvalue})'''
+    ...
+    def getCustomSummaryInfo (self, *args, **kwargs)-> tuple :
+      '''getCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (str)arg2) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getCustomSummaryInfo(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+getCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (int)arg2) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple getCustomSummaryInfo(class PyDbDatabaseSummaryInfo {lvalue},int)'''
+    ...
+    def getHyperlinkBase (self, *args, **kwargs)-> str :
+      '''getHyperlinkBase( (DatabaseSummaryInfo)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getHyperlinkBase(class PyDbDatabaseSummaryInfo {lvalue})'''
+    ...
+    def getKeywords (self, *args, **kwargs)-> str :
+      '''getKeywords( (DatabaseSummaryInfo)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getKeywords(class PyDbDatabaseSummaryInfo {lvalue})'''
+    ...
+    def getLastSavedBy (self, *args, **kwargs)-> str :
+      '''getLastSavedBy( (DatabaseSummaryInfo)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getLastSavedBy(class PyDbDatabaseSummaryInfo {lvalue})'''
+    ...
+    def getRevisionNumber (self, *args, **kwargs)-> str :
+      '''getRevisionNumber( (DatabaseSummaryInfo)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getRevisionNumber(class PyDbDatabaseSummaryInfo {lvalue})'''
+    ...
+    def getSubject (self, *args, **kwargs)-> str :
+      '''getSubject( (DatabaseSummaryInfo)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getSubject(class PyDbDatabaseSummaryInfo {lvalue})'''
+    ...
+    def getTitle (self, *args, **kwargs)-> str :
+      '''getTitle( (DatabaseSummaryInfo)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getTitle(class PyDbDatabaseSummaryInfo {lvalue})'''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def numCustomInfo (self, *args, **kwargs)-> int :
+      '''numCustomInfo( (DatabaseSummaryInfo)arg1) -> int :
+
+    C++ signature :
+        int numCustomInfo(class PyDbDatabaseSummaryInfo {lvalue})'''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
+    ...
+    def setAuthor (self, *args, **kwargs)-> None :
+      '''setAuthor( (DatabaseSummaryInfo)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setAuthor(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setComments (self, *args, **kwargs)-> None :
+      '''setComments( (DatabaseSummaryInfo)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setComments(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setCustomSummaryInfo (self, *args, **kwargs)-> None :
+      '''setCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (str)arg2, (str)arg3) -> None :
+
+    C++ signature :
+        void setCustomSummaryInfo(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+setCustomSummaryInfo( (DatabaseSummaryInfo)arg1, (int)arg2, (str)arg3, (str)arg4) -> None :
+
+    C++ signature :
+        void setCustomSummaryInfo(class PyDbDatabaseSummaryInfo {lvalue},int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setHyperlinkBase (self, *args, **kwargs)-> None :
+      '''setHyperlinkBase( (DatabaseSummaryInfo)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setHyperlinkBase(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setKeywords (self, *args, **kwargs)-> None :
+      '''setKeywords( (DatabaseSummaryInfo)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setKeywords(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setLastSavedBy (self, *args, **kwargs)-> None :
+      '''setLastSavedBy( (DatabaseSummaryInfo)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setLastSavedBy(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setRevisionNumber (self, *args, **kwargs)-> None :
+      '''setRevisionNumber( (DatabaseSummaryInfo)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setRevisionNumber(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setSubject (self, *args, **kwargs)-> None :
+      '''setSubject( (DatabaseSummaryInfo)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setSubject(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def setTitle (self, *args, **kwargs)-> None :
+      '''setTitle( (DatabaseSummaryInfo)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void setTitle(class PyDbDatabaseSummaryInfo {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
 
 class DbObject:
