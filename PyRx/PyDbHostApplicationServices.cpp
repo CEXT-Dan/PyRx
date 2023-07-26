@@ -296,7 +296,13 @@ std::string PyDbSymUtilServices::viewportActiveName() const
 
 int PyDbSymUtilServices::compareSymbolName(const std::string& thisName, const std::string& otherName) const
 {
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    AcString acthisName = utf8_to_wstr(thisName).c_str();
+    AcString acotherName = utf8_to_wstr(otherName).c_str();
+    return acthisName.compare(acotherName);
+#else
     return imp->compareSymbolName(utf8_to_wstr(thisName).c_str(), utf8_to_wstr(otherName).c_str());
+#endif
 }
 
 bool PyDbSymUtilServices::hasVerticalBar(const std::string& name) const
@@ -666,11 +672,23 @@ void PyDbDatabaseSummaryInfo::setCustomSummaryInfo2(int index, const std::string
     PyThrowBadEs(impObj()->setCustomSummaryInfo(index,utf8_to_wstr(key).c_str(), utf8_to_wstr(value).c_str()));
 }
 
-void PyDbDatabaseSummaryInfo::setCustomSummaryFromDict(boost::python::dict& pydict)
+static bool hasKey(AcDbDatabaseSummaryInfo* imp, const TCHAR* key)
 {
 #if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
+    ACHAR* _acharValue = nullptr;
+    auto flag = (imp->getCustomSummaryInfo(key, _acharValue) == eOk);
+    acutDelString(_acharValue);
+    return flag;
 #else
+    AcString dummy;
+    return imp->getCustomSummaryInfo(key, dummy) == eOk;
+#endif
+    return true;
+}
+
+void PyDbDatabaseSummaryInfo::setCustomSummaryFromDict(boost::python::dict& pydict)
+{
+    PyAutoLockGIL lock;
     boost::python::list keys = boost::python::list(pydict.keys());
     for (int i = 0; i < len(keys); ++i) 
     {
@@ -680,24 +698,33 @@ void PyDbDatabaseSummaryInfo::setCustomSummaryFromDict(boost::python::dict& pydi
             std::string key = keyExtractor();
             boost::python::extract<std::string> valExtractor(pydict[key]);
             std::string val = valExtractor();
-
-            AcString dummy;
-            if(impObj()->getCustomSummaryInfo(utf8_to_wstr(key).c_str(), dummy) == eOk)
+            if (hasKey(impObj(),utf8_to_wstr(key).c_str()))
                 setCustomSummaryInfo1(key, val);
             else
                 addCustomSummaryInfo(key, val);
         }
     }
-#endif
 }
 
 boost::python::dict PyDbDatabaseSummaryInfo::asDict() const
 {
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
     PyAutoLockGIL lock;
     boost::python::dict sinfoDict;
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    for (int idx = 0; idx < this->numCustomInfo(); idx++)
+    {
+        ACHAR* _acharKey = nullptr;
+        ACHAR* _acharValue = nullptr;
+        if (impObj()->getCustomSummaryInfo(idx, _acharKey, _acharValue) == eOk)
+        {
+            std::string sdtkey = wstr_to_utf8(_acharKey);
+            std::string stdvalue = wstr_to_utf8(_acharValue);
+            acutDelString(_acharKey);
+            acutDelString(_acharValue);
+            sinfoDict[sdtkey] = stdvalue;
+        }
+    }
+#else
     for (int idx = 0; idx < this->numCustomInfo(); idx++)
     {
         AcString key;
@@ -709,8 +736,8 @@ boost::python::dict PyDbDatabaseSummaryInfo::asDict() const
             sinfoDict[sdtkey] = stdvalue;
         }
     }
-    return sinfoDict;
 #endif
+    return sinfoDict;
 }
 
 std::string PyDbDatabaseSummaryInfo::className()
