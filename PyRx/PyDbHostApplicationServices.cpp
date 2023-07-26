@@ -429,13 +429,14 @@ void makePyDbDatabaseSummaryInfoWrapper()
         .def("getCustomSummaryInfo", &PyDbDatabaseSummaryInfo::getCustomSummaryInfo2)
         .def("setCustomSummaryInfo", &PyDbDatabaseSummaryInfo::setCustomSummaryInfo1)
         .def("setCustomSummaryInfo", &PyDbDatabaseSummaryInfo::setCustomSummaryInfo2)
+        .def("setCustomSummaryFromDict", &PyDbDatabaseSummaryInfo::setCustomSummaryFromDict)
         .def("asDict", &PyDbDatabaseSummaryInfo::asDict)
         .def("className", &PyDbDatabaseSummaryInfo::className, DS.CLASSARGSSTATIC()).staticmethod("className")
         ;
 }
 
 PyDbDatabaseSummaryInfo::PyDbDatabaseSummaryInfo(AcDbDatabaseSummaryInfo* ptr)
-    : PyRxObject(ptr,false,false)
+    : PyRxObject(ptr,true,false)
 {
 }
 
@@ -663,6 +664,31 @@ void PyDbDatabaseSummaryInfo::setCustomSummaryInfo1(const std::string& customInf
 void PyDbDatabaseSummaryInfo::setCustomSummaryInfo2(int index, const std::string& key, const std::string& value)
 {
     PyThrowBadEs(impObj()->setCustomSummaryInfo(index,utf8_to_wstr(key).c_str(), utf8_to_wstr(value).c_str()));
+}
+
+void PyDbDatabaseSummaryInfo::setCustomSummaryFromDict(boost::python::dict& pydict)
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    boost::python::list keys = boost::python::list(pydict.keys());
+    for (int i = 0; i < len(keys); ++i) 
+    {
+        boost::python::extract<std::string> keyExtractor(keys[i]);
+        if (keyExtractor.check()) 
+        {
+            std::string key = keyExtractor();
+            boost::python::extract<std::string> valExtractor(pydict[key]);
+            std::string val = valExtractor();
+
+            AcString dummy;
+            if(impObj()->getCustomSummaryInfo(utf8_to_wstr(key).c_str(), dummy) == eOk)
+                setCustomSummaryInfo1(key, val);
+            else
+                addCustomSummaryInfo(key, val);
+        }
+    }
+#endif
 }
 
 boost::python::dict PyDbDatabaseSummaryInfo::asDict() const

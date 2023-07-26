@@ -117,6 +117,7 @@ public:
     boost::python::tuple getCustomSummaryInfo2(int index) const;
     void                setCustomSummaryInfo1(const std::string& customInfoKey, const std::string& value);
     void                setCustomSummaryInfo2(int index, const std::string& key, const std::string& value);
+    void                setCustomSummaryFromDict(boost::python::dict& pydict);
     boost::python::dict asDict() const;
     static std::string  className();
 public:
