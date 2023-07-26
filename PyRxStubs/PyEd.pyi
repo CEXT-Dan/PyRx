@@ -2593,9 +2593,16 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class SelectionSet:
-    def __init__ (self, *args, **kwargs)-> None:
-      '''Raises an exception
-This class cannot be instantiated from Python'''
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
     ...
     def add (self, *args, **kwargs)-> None :
       '''add( (SelectionSet)arg1, (ObjectId)arg2) -> None :

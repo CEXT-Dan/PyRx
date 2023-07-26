@@ -23,7 +23,8 @@ struct PyEdSSDeleter
 class PyEdSelectionSet
 {
 public:
-    explicit PyEdSelectionSet(const ads_name& ss);
+    PyEdSelectionSet();
+    PyEdSelectionSet(const ads_name& ss);
     ~PyEdSelectionSet() = default;
     bool			    isInitialized() const;
     size_t              size();
