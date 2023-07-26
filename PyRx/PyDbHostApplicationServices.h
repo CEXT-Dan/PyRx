@@ -1,4 +1,5 @@
 #pragma once
+#include "PyRxObject.h"
 
 class PyDbObjectId;
 class PyDbDatabase;
@@ -81,4 +82,43 @@ public:
                                       
 public:
     const AcDbSymUtilServices* imp = acdbSymUtil();
+};
+
+
+//---------------------------------------------------------------------------------------- -
+//PyDbDatabaseSummaryInfo
+void makePyDbDatabaseSummaryInfoWrapper();
+
+class PyDbDatabaseSummaryInfo : public PyRxObject
+{
+public:
+    PyDbDatabaseSummaryInfo(AcDbDatabaseSummaryInfo* ptr);
+    std::string         getTitle() const;
+    void                setTitle(const std::string& title);
+    std::string         getSubject() const;
+    void                setSubject(const std::string& subject);
+    std::string         getAuthor() const;
+    void                setAuthor(const std::string& author);
+    std::string         getKeywords() const;
+    void                setKeywords(const std::string& keywordlist);
+    std::string         getComments() const;
+    void                setComments(const std::string& comments);
+    std::string         getLastSavedBy() const;
+    void                setLastSavedBy(const std::string& lastSavedBy);
+    std::string         getRevisionNumber() const;
+    void                setRevisionNumber(const std::string& revisionNumber);
+    std::string         getHyperlinkBase() const;
+    void                setHyperlinkBase(const std::string& HyperlinkBase);
+    int                 numCustomInfo() const;
+    void                addCustomSummaryInfo(const std::string& key, const std::string& value);
+    void                deleteCustomSummaryInfo1(int index);
+    void                deleteCustomSummaryInfo2(const std::string& key);
+    boost::python::tuple getCustomSummaryInfo1(const std::string& customInfoKey) const;
+    boost::python::tuple getCustomSummaryInfo2(int index) const;
+    void                setCustomSummaryInfo1(const std::string& customInfoKey, const std::string& value);
+    void                setCustomSummaryInfo2(int index, const std::string& key, const std::string& value);
+    boost::python::dict asDict() const;
+    static std::string  className();
+public:
+    AcDbDatabaseSummaryInfo* impObj(const std::source_location& src = std::source_location::current()) const;
 };

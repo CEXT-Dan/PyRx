@@ -6,6 +6,7 @@ class PyDbEntity;
 class PyGeCurve3d;
 class PyDbCurve;
 class PyDbDatabase;
+class PyDbDatabaseSummaryInfo;
 
 void makeDbCoreWrapper();
 
@@ -27,18 +28,18 @@ public:
     static PyDbCurve            convertGelibCurveToAcDbCurve1(const PyGeCurve3d& geCurve);
     static PyDbCurve            convertGelibCurveToAcDbCurve2(const PyGeCurve3d& geCurve, AcGeVector3d& normal);
     static PyDbCurve            convertGelibCurveToAcDbCurve3(const PyGeCurve3d& geCurve, AcGeVector3d& normal, const AcGeTol& tol);
-    static PyDbObjectId         createViewByViewport(PyDbDatabase& pDb,const PyDbObjectId& viewportId, const std::string& name,const std::string& categoryName,const PyDbObjectId& labelBlockId);
+    static PyDbObjectId         createViewByViewport(PyDbDatabase& pDb, const PyDbObjectId& viewportId, const std::string& name, const std::string& categoryName, const PyDbObjectId& labelBlockId);
     static void                 detachXref(PyDbDatabase& pHostDb, const PyDbObjectId& xrefBlkId);
     static bool                 dictAdd(const PyDbObjectId& dictname, const std::string& symname, const PyDbObjectId& newobj);
     static boost::python::list  dictNext(const PyDbObjectId& dictname, int rewind);
-    static bool                 dictRemove(const PyDbObjectId& dictname,const std::string& symname);
+    static bool                 dictRemove(const PyDbObjectId& dictname, const std::string& symname);
     static bool                 dictRename(const PyDbObjectId& dictname, const std::string& symname, const std::string& newsym);
     static boost::python::list  dictSearch(const PyDbObjectId& dictname, const std::string& symname, int setnext);
     static bool                 displayPreviewFromDwg(const std::string& pszDwgfilename, UINT_PTR hwnd);
     static double               disToF(const std::string& str, int unit);
     static UINT_PTR             doSetupForLayouts(PyDbDatabase& pDatabase);
     static bool                 dwkFileExists(const std::string& pszDwgfilename);
-    static void                 dxfOutAs2000(PyDbDatabase& pDb,const std::string& fileName,int precision);
+    static void                 dxfOutAs2000(PyDbDatabase& pDb, const std::string& fileName, int precision);
     static void                 dxfOutAs2004(PyDbDatabase& pDb, const std::string& fileName, int precision);
     static void                 dxfOutAsR12(PyDbDatabase& pDb, const std::string& fileName, int precision);
     static bool                 entMake(const boost::python::list& rb);
@@ -55,6 +56,10 @@ public:
     static bool                 regApp(const std::string& app);
     static void                 updateDimension(const PyDbObjectId& id);
     static boost::python::list  resbufTest(const boost::python::list& list);
+
+    static PyDbDatabaseSummaryInfo getSummaryInfo(PyDbDatabase& db);
+    static void                 putSummaryInfo(PyDbDatabaseSummaryInfo& info, PyDbDatabase& db);
+    static bool                 validateCustomSummaryInfoKey(const std::string& key, PyDbDatabaseSummaryInfo& info);
     static bool                 ucs2Wcs1(const AcGePoint3d& p, AcGePoint3d& q);
     static bool                 ucs2Wcs2(const AcGeVector3d& p, AcGeVector3d& q);
     static bool                 wcs2Ecs1(const AcGePoint3d& p, const AcGeVector3d& normal, AcGePoint3d& q);

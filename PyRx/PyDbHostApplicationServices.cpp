@@ -302,7 +302,8 @@ int PyDbSymUtilServices::compareSymbolName(const std::string& thisName, const st
 bool PyDbSymUtilServices::hasVerticalBar(const std::string& name) const
 {
 #if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
+    std::size_t found = name.find("|");
+    return found != std::string::npos;
 #else
     return imp->hasVerticalBar(utf8_to_wstr(name).c_str());
 #endif
@@ -398,3 +399,302 @@ Acad::ErrorStatus PyDbSymUtilServices::validateCompatibleSymbolName(const std::s
     return imp->validateCompatibleSymbolName(utf8_to_wstr(name).c_str(), isNewName, allowVerticalBar, compatibilityMode);
 }
 
+//---------------------------------------------------------------------------------------- -
+//PyDbDatabaseSummaryInfo
+void makePyDbDatabaseSummaryInfoWrapper()
+{
+    PyDocString DS("DatabaseSummaryInfo");
+    class_<PyDbDatabaseSummaryInfo, bases<PyRxObject>>("DatabaseSummaryInfo", boost::python::no_init)
+        .def("getTitle", &PyDbDatabaseSummaryInfo::getTitle)
+        .def("setTitle", &PyDbDatabaseSummaryInfo::setTitle)
+        .def("getSubject", &PyDbDatabaseSummaryInfo::getSubject)
+        .def("setSubject", &PyDbDatabaseSummaryInfo::setSubject)
+        .def("getAuthor", &PyDbDatabaseSummaryInfo::getAuthor)
+        .def("setAuthor", &PyDbDatabaseSummaryInfo::setAuthor)
+        .def("getKeywords", &PyDbDatabaseSummaryInfo::getKeywords)
+        .def("setKeywords", &PyDbDatabaseSummaryInfo::setKeywords)
+        .def("getComments", &PyDbDatabaseSummaryInfo::getComments)
+        .def("setComments", &PyDbDatabaseSummaryInfo::setComments)
+        .def("getLastSavedBy", &PyDbDatabaseSummaryInfo::getLastSavedBy)
+        .def("setLastSavedBy", &PyDbDatabaseSummaryInfo::setLastSavedBy)
+        .def("getRevisionNumber", &PyDbDatabaseSummaryInfo::getRevisionNumber)
+        .def("setRevisionNumber", &PyDbDatabaseSummaryInfo::setRevisionNumber)
+        .def("getHyperlinkBase", &PyDbDatabaseSummaryInfo::getHyperlinkBase)
+        .def("setHyperlinkBase", &PyDbDatabaseSummaryInfo::setHyperlinkBase)
+        .def("numCustomInfo", &PyDbDatabaseSummaryInfo::numCustomInfo)
+        .def("addCustomSummaryInfo", &PyDbDatabaseSummaryInfo::addCustomSummaryInfo)
+        .def("deleteCustomSummaryInfo", &PyDbDatabaseSummaryInfo::deleteCustomSummaryInfo1)
+        .def("deleteCustomSummaryInfo", &PyDbDatabaseSummaryInfo::deleteCustomSummaryInfo2)
+        .def("getCustomSummaryInfo", &PyDbDatabaseSummaryInfo::getCustomSummaryInfo1)
+        .def("getCustomSummaryInfo", &PyDbDatabaseSummaryInfo::getCustomSummaryInfo2)
+        .def("setCustomSummaryInfo", &PyDbDatabaseSummaryInfo::setCustomSummaryInfo1)
+        .def("setCustomSummaryInfo", &PyDbDatabaseSummaryInfo::setCustomSummaryInfo2)
+        .def("asDict", &PyDbDatabaseSummaryInfo::asDict)
+        .def("className", &PyDbDatabaseSummaryInfo::className, DS.CLASSARGSSTATIC()).staticmethod("className")
+        ;
+}
+
+PyDbDatabaseSummaryInfo::PyDbDatabaseSummaryInfo(AcDbDatabaseSummaryInfo* ptr)
+    : PyRxObject(ptr,false,false)
+{
+}
+
+std::string PyDbDatabaseSummaryInfo::getTitle() const
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    ACHAR* _achar = nullptr;
+    PyThrowBadEs(impObj()->getTitle(_achar));
+    std::string str = wstr_to_utf8(_achar);
+    acutDelString(_achar);
+    return str;
+#else
+    AcString str;
+    PyThrowBadEs(impObj()->getTitle(str));
+    return wstr_to_utf8(str);
+#endif
+}
+
+void PyDbDatabaseSummaryInfo::setTitle(const std::string& title)
+{
+    PyThrowBadEs(impObj()->setTitle(utf8_to_wstr(title).c_str()));
+}
+
+std::string PyDbDatabaseSummaryInfo::getSubject() const
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    ACHAR* _achar = nullptr;
+    PyThrowBadEs(impObj()->getSubject(_achar));
+    std::string str = wstr_to_utf8(_achar);
+    acutDelString(_achar);
+    return str;
+#else
+    AcString str;
+    PyThrowBadEs(impObj()->getSubject(str));
+    return wstr_to_utf8(str);
+#endif
+}
+
+void PyDbDatabaseSummaryInfo::setSubject(const std::string& subject)
+{
+    PyThrowBadEs(impObj()->setSubject(utf8_to_wstr(subject).c_str()));
+}
+
+std::string PyDbDatabaseSummaryInfo::getAuthor() const
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    ACHAR* _achar = nullptr;
+    PyThrowBadEs(impObj()->getAuthor(_achar));
+    std::string str = wstr_to_utf8(_achar);
+    acutDelString(_achar);
+    return str;
+#else
+    AcString str;
+    PyThrowBadEs(impObj()->getAuthor(str));
+    return wstr_to_utf8(str);
+#endif
+}
+
+void PyDbDatabaseSummaryInfo::setAuthor(const std::string& author)
+{
+    PyThrowBadEs(impObj()->setAuthor(utf8_to_wstr(author).c_str()));
+}
+
+std::string PyDbDatabaseSummaryInfo::getKeywords() const
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    ACHAR* _achar = nullptr;
+    PyThrowBadEs(impObj()->getKeywords(_achar));
+    std::string str = wstr_to_utf8(_achar);
+    acutDelString(_achar);
+    return str;
+#else
+    AcString str;
+    PyThrowBadEs(impObj()->getKeywords(str));
+    return wstr_to_utf8(str);
+#endif
+}
+
+void PyDbDatabaseSummaryInfo::setKeywords(const std::string& keywordlist)
+{
+    PyThrowBadEs(impObj()->setKeywords(utf8_to_wstr(keywordlist).c_str()));
+}
+
+std::string PyDbDatabaseSummaryInfo::getComments() const
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    ACHAR* _achar = nullptr;
+    PyThrowBadEs(impObj()->getComments(_achar));
+    std::string str = wstr_to_utf8(_achar);
+    acutDelString(_achar);
+    return str;
+#else
+    AcString str;
+    PyThrowBadEs(impObj()->getComments(str));
+    return wstr_to_utf8(str);
+#endif
+}
+
+void PyDbDatabaseSummaryInfo::setComments(const std::string& comments)
+{
+    PyThrowBadEs(impObj()->setComments(utf8_to_wstr(comments).c_str()));
+}
+
+std::string PyDbDatabaseSummaryInfo::getLastSavedBy() const
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    ACHAR* _achar = nullptr;
+    PyThrowBadEs(impObj()->getLastSavedBy(_achar));
+    std::string str = wstr_to_utf8(_achar);
+    acutDelString(_achar);
+    return str;
+#else
+    AcString str;
+    PyThrowBadEs(impObj()->getLastSavedBy(str));
+    return wstr_to_utf8(str);
+#endif
+}
+
+void PyDbDatabaseSummaryInfo::setLastSavedBy(const std::string& lastSavedBy)
+{
+    PyThrowBadEs(impObj()->setLastSavedBy(utf8_to_wstr(lastSavedBy).c_str()));
+}
+
+std::string PyDbDatabaseSummaryInfo::getRevisionNumber() const
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    ACHAR* _achar = nullptr;
+    PyThrowBadEs(impObj()->getRevisionNumber(_achar));
+    std::string str = wstr_to_utf8(_achar);
+    acutDelString(_achar);
+    return str;
+#else
+    AcString str;
+    PyThrowBadEs(impObj()->getRevisionNumber(str));
+    return wstr_to_utf8(str);
+#endif
+}
+
+void PyDbDatabaseSummaryInfo::setRevisionNumber(const std::string& revisionNumber)
+{
+    PyThrowBadEs(impObj()->setRevisionNumber(utf8_to_wstr(revisionNumber).c_str()));
+}
+
+std::string PyDbDatabaseSummaryInfo::getHyperlinkBase() const
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    ACHAR* _achar = nullptr;
+    PyThrowBadEs(impObj()->getHyperlinkBase(_achar));
+    std::string str = wstr_to_utf8(_achar);
+    acutDelString(_achar);
+    return str;
+#else
+    AcString str;
+    PyThrowBadEs(impObj()->getHyperlinkBase(str));
+    return wstr_to_utf8(str);
+#endif
+}
+
+void PyDbDatabaseSummaryInfo::setHyperlinkBase(const std::string& HyperlinkBase)
+{
+    PyThrowBadEs(impObj()->setHyperlinkBase(utf8_to_wstr(HyperlinkBase).c_str()));
+}
+
+int PyDbDatabaseSummaryInfo::numCustomInfo() const
+{
+    return impObj()->numCustomInfo();
+}
+
+void PyDbDatabaseSummaryInfo::addCustomSummaryInfo(const std::string& key, const std::string& value)
+{
+    PyThrowBadEs(impObj()->addCustomSummaryInfo(utf8_to_wstr(key).c_str(), utf8_to_wstr(value).c_str()));
+}
+
+void PyDbDatabaseSummaryInfo::deleteCustomSummaryInfo1(int index)
+{
+    PyThrowBadEs(impObj()->deleteCustomSummaryInfo(index));
+}
+
+void PyDbDatabaseSummaryInfo::deleteCustomSummaryInfo2(const std::string& key)
+{
+    PyThrowBadEs(impObj()->deleteCustomSummaryInfo(utf8_to_wstr(key).c_str()));
+}
+
+boost::python::tuple PyDbDatabaseSummaryInfo::getCustomSummaryInfo1(const std::string& customInfoKey) const
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    ACHAR* _achar = nullptr;
+    PyThrowBadEs(impObj()->getCustomSummaryInfo(utf8_to_wstr(customInfoKey).c_str(), _achar));
+    std::string str = wstr_to_utf8(_achar);
+    acutDelString(_achar);
+    return boost::python::make_tuple(customInfoKey, str);
+#else
+    AcString value;
+    PyThrowBadEs(impObj()->getCustomSummaryInfo(utf8_to_wstr(customInfoKey).c_str(), value));
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(customInfoKey, wstr_to_utf8(value));
+#endif
+}
+
+boost::python::tuple PyDbDatabaseSummaryInfo::getCustomSummaryInfo2(int index) const
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    ACHAR* _acharKey = nullptr;
+    ACHAR* _acharValue = nullptr;
+    PyThrowBadEs(impObj()->getCustomSummaryInfo(index, _acharKey, _acharValue));
+    std::string strKey = wstr_to_utf8(_acharKey);
+    std::string strVal = wstr_to_utf8(_acharValue);
+    acutDelString(_acharKey);
+    acutDelString(_acharValue);
+    return boost::python::make_tuple(strKey, strVal);
+#else
+    AcString key;
+    AcString value;
+    PyThrowBadEs(impObj()->getCustomSummaryInfo(index, key, value));
+    PyAutoLockGIL lock;
+    return boost::python::make_tuple(wstr_to_utf8(key), wstr_to_utf8(value));
+#endif
+}
+
+void PyDbDatabaseSummaryInfo::setCustomSummaryInfo1(const std::string& customInfoKey, const std::string& value)
+{
+    PyThrowBadEs(impObj()->setCustomSummaryInfo(utf8_to_wstr(customInfoKey).c_str(), utf8_to_wstr(value).c_str()));
+}
+
+void PyDbDatabaseSummaryInfo::setCustomSummaryInfo2(int index, const std::string& key, const std::string& value)
+{
+    PyThrowBadEs(impObj()->setCustomSummaryInfo(index,utf8_to_wstr(key).c_str(), utf8_to_wstr(value).c_str()));
+}
+
+boost::python::dict PyDbDatabaseSummaryInfo::asDict() const
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    PyAutoLockGIL lock;
+    boost::python::dict sinfoDict;
+    for (int idx = 0; idx < this->numCustomInfo(); idx++)
+    {
+        AcString key;
+        AcString value;
+        if (impObj()->getCustomSummaryInfo(idx, key, value) == eOk)
+        {
+            std::string sdtkey = wstr_to_utf8(key);
+            std::string stdvalue = wstr_to_utf8(value);
+            sinfoDict[sdtkey] = stdvalue;
+        }
+    }
+    return sinfoDict;
+#endif
+}
+
+std::string PyDbDatabaseSummaryInfo::className()
+{
+    return "AcDbDatabaseSummaryInfo";
+}
+
+AcDbDatabaseSummaryInfo* PyDbDatabaseSummaryInfo::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr)
+        throw PyNullObject(src);
+    return static_cast<AcDbDatabaseSummaryInfo*>(m_pyImp.get());
+}

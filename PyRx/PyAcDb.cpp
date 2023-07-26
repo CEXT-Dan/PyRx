@@ -232,6 +232,7 @@ BOOST_PYTHON_MODULE(PyDb)
 #ifndef ZRXAPP
     makePyDbJoinEntityPEWrapper();
 #endif
+    makePyDbDatabaseSummaryInfoWrapper();
     makeDbCoreWrapper();//LAST?
 
     def("curDb", curPyDb);
