@@ -184,7 +184,24 @@ inline PyObject* acstr_to_py(const AcString& str)
     return PyUnicode_FromWideChar(str.constPtr(), str.length());
 }
 
-
+//use for functions that have not been converted to AcString
+class RxAutoOutStr
+{
+public:
+    RxAutoOutStr() = default;
+    ~RxAutoOutStr()
+    {
+        if (buf != nullptr)
+        {
+            acutDelString(buf);
+            buf = nullptr;
+        }
+    }
+    RxAutoOutStr(RxAutoOutStr const&) = delete;
+    RxAutoOutStr& operator=(RxAutoOutStr const&) = delete;
+public: 
+    TCHAR* buf = nullptr;
+};
 
 
 
