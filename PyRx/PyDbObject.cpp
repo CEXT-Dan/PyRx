@@ -71,7 +71,7 @@ void makePyDbObjectWrapper()
         .def("removeField", &PyDbObject::removeField2, DS.CLASSARGS({ "id: str|ObjectId" }))
         .def("getFieldDictionary", &PyDbObject::getFieldDictionary, DS.CLASSARGS())
         .def("addReactor", &PyDbObject::addReactor, DS.CLASSARGS({ "reactor: DbObjectReactor" }))
-        .def("removeReactor", &PyDbObject::removeReactor,DS.CLASSARGS({ "reactor: DbObjectReactor" }))
+        .def("removeReactor", &PyDbObject::removeReactor, DS.CLASSARGS({ "reactor: DbObjectReactor" }))
         .def("desc", &PyDbObject::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
         .def("className", &PyDbObject::className, DS.CLASSARGSSTATIC()).staticmethod("className")
         .def("cloneFrom", &PyDbObject::cloneFrom, DS.CLASSARGSSTATIC({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -391,7 +391,7 @@ void PyDbObject::addReactor(PyDbObjectReactor& pReactor) const
 #if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     impObj()->addReactor(pReactor.impObj());
 #else
-   return PyThrowBadEs(impObj()->addReactor(pReactor.impObj()));
+    return PyThrowBadEs(impObj()->addReactor(pReactor.impObj()));
 #endif
 }
 
@@ -400,7 +400,7 @@ void PyDbObject::removeReactor(PyDbObjectReactor& pReactor) const
 #if defined(_BRXTARGET) && (_BRXTARGET <= 23)
     impObj()->removeReactor(pReactor.impObj());
 #else
-   return PyThrowBadEs(impObj()->removeReactor(pReactor.impObj()));
+    return PyThrowBadEs(impObj()->removeReactor(pReactor.impObj()));
 #endif
 }
 
@@ -447,6 +447,7 @@ PyDbObjectReactorImpl::PyDbObjectReactorImpl(PyDbObjectReactor* ptr)
 void PyDbObjectReactorImpl::cancelled(const AcDbObject* src)
 {
     PyDbObject obj(const_cast<AcDbObject*>(src), false);
+    obj.forceKeepAlive(true);
     impObj()->cancelled(obj);
 }
 
@@ -454,6 +455,8 @@ void PyDbObjectReactorImpl::copied(const AcDbObject* src, const AcDbObject* newO
 {
     PyDbObject obj(const_cast<AcDbObject*>(src), false);
     PyDbObject obj2(const_cast<AcDbObject*>(newObj), false);
+    obj.forceKeepAlive(true);
+    obj2.forceKeepAlive(true);
     impObj()->copied(obj, obj2);
 }
 
@@ -461,12 +464,14 @@ void PyDbObjectReactorImpl::copied(const AcDbObject* src, const AcDbObject* newO
 void PyDbObjectReactorImpl::erased(const AcDbObject* src, Adesk::Boolean bErasing)
 {
     PyDbObject obj(const_cast<AcDbObject*>(src), false);
+    obj.forceKeepAlive(true);
     impObj()->erased(obj, bErasing);
 }
 #else
 void PyDbObjectReactorImpl::erased(const AcDbObject* src, bool bErasing)
 {
     PyDbObject obj(const_cast<AcDbObject*>(src), false);
+    obj.forceKeepAlive(true);
     impObj()->erased(obj, bErasing);
 }
 #endif
@@ -474,18 +479,21 @@ void PyDbObjectReactorImpl::erased(const AcDbObject* src, bool bErasing)
 void PyDbObjectReactorImpl::goodbye(const AcDbObject* ptr)
 {
     PyDbObject obj(const_cast<AcDbObject*>(ptr), false);
+    obj.forceKeepAlive(true);
     impObj()->goodbye(obj);
 }
 
 void PyDbObjectReactorImpl::openedForModify(const AcDbObject* ptr)
 {
     PyDbObject obj(const_cast<AcDbObject*>(ptr), false);
+    obj.forceKeepAlive(true);
     impObj()->openedForModify(obj);
 }
 
 void PyDbObjectReactorImpl::modified(const AcDbObject* ptr)
 {
     PyDbObject obj(const_cast<AcDbObject*>(ptr), false);
+    obj.forceKeepAlive(true);
     impObj()->modified(obj);
 }
 
@@ -493,30 +501,36 @@ void PyDbObjectReactorImpl::subObjModified(const AcDbObject* ptr, const AcDbObje
 {
     PyDbObject obj(const_cast<AcDbObject*>(ptr), false);
     PyDbObject obj2(const_cast<AcDbObject*>(subObj), false);
+    obj.forceKeepAlive(true);
+    obj2.forceKeepAlive(true);
     impObj()->subObjModified(obj, obj2);
 }
 
 void PyDbObjectReactorImpl::modifyUndone(const AcDbObject* ptr)
 {
     PyDbObject obj(const_cast<AcDbObject*>(ptr), false);
+    obj.forceKeepAlive(true);
     impObj()->modifyUndone(obj);
 }
 
 void PyDbObjectReactorImpl::modifiedXData(const AcDbObject* ptr)
 {
     PyDbObject obj(const_cast<AcDbObject*>(ptr), false);
+    obj.forceKeepAlive(true);
     impObj()->modifiedXData(obj);
 }
 
 void PyDbObjectReactorImpl::unappended(const AcDbObject* ptr)
 {
     PyDbObject obj(const_cast<AcDbObject*>(ptr), false);
+    obj.forceKeepAlive(true);
     impObj()->unappended(obj);
 }
 
 void PyDbObjectReactorImpl::reappended(const AcDbObject* ptr)
 {
     PyDbObject obj(const_cast<AcDbObject*>(ptr), false);
+    obj.forceKeepAlive(true);
     impObj()->reappended(obj);
 }
 
@@ -678,84 +692,114 @@ void PyDbObjectReactor::modified(const PyDbObject& ptr)
 
 void PyDbObjectReactor::subObjModified(const PyDbObject& ptr, const PyDbObject& subObj)
 {
+    if (!reg_subObjModified)
+        return;
     PyAutoLockGIL lock;
     try
     {
         if (override f = this->get_override("subObjModified"))
             f(ptr, subObj);
+        else
+            reg_subObjModified = false;
     }
     catch (...)
     {
+        reg_subObjModified = false;
         printExceptionMsg();
     }
 }
 
 void PyDbObjectReactor::modifyUndone(const PyDbObject& ptr)
 {
+    if (!reg_modifyUndone)
+        return;
     PyAutoLockGIL lock;
     try
     {
         if (override f = this->get_override("modifyUndone"))
             f(ptr);
+        else
+            reg_modifyUndone = false;
     }
     catch (...)
     {
+        reg_modifyUndone = false;
         printExceptionMsg();
     }
 }
 
 void PyDbObjectReactor::modifiedXData(const PyDbObject& ptr)
 {
+    if (!reg_modifiedXData)
+        return;
     PyAutoLockGIL lock;
     try
     {
         if (override f = this->get_override("modifiedXData"))
             f(ptr);
+        else
+            reg_modifiedXData = false;
     }
     catch (...)
     {
+        reg_modifiedXData = false;
         printExceptionMsg();
     }
 }
 
 void PyDbObjectReactor::unappended(const PyDbObject& ptr)
 {
+    if (!reg_unappended)
+        return;
     PyAutoLockGIL lock;
     try
     {
         if (override f = this->get_override("unappended"))
             f(ptr);
+        else
+            reg_unappended = false;
     }
     catch (...)
     {
+        reg_unappended = false;
         printExceptionMsg();
     }
 }
 
 void PyDbObjectReactor::reappended(const PyDbObject& ptr)
 {
+    if (!reg_reappended)
+        return;
     PyAutoLockGIL lock;
     try
     {
         if (override f = this->get_override("reappended"))
             f(ptr);
+        else
+            reg_reappended = false;
     }
     catch (...)
     {
+        reg_reappended = false;
         printExceptionMsg();
     }
 }
 
 void PyDbObjectReactor::objectClosed(const PyDbObjectId& id)
 {
+    if (!reg_objectClosed)
+        return;
     PyAutoLockGIL lock;
     try
     {
         if (override f = this->get_override("objectClosed"))
             f(id);
+        else
+            reg_objectClosed = false;
     }
     catch (...)
     {
+        reg_objectClosed = false;
         printExceptionMsg();
     }
 }

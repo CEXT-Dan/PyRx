@@ -17,23 +17,30 @@ struct PyRxObjectDeleter
 
     inline bool isDbroThenClose(AcRxObject* p) const
     {
-        if (!m_isDbObject)
+        try
         {
-            return false;
-        }
-        else if (p->isA()->isDerivedFrom(AcDbObject::desc()))
-        {
-            const auto dbo = static_cast<AcDbObject*>(p);
-            if (!dbo->objectId().isNull())
+            if (!m_isDbObject)
             {
-#ifdef PyRxDebug
-                if (auto es = dbo->close(); es != eOk)
-                    acutPrintf(_T("\nStatus = %ls in %ls: "), acadErrorStatusText(es), __FUNCTIONW__);
-#else
-                dbo->close();
-#endif
-                return true;
+                return false;
             }
+            else if (p->isA()->isDerivedFrom(AcDbObject::desc()))
+            {
+                const auto dbo = static_cast<AcDbObject*>(p);
+                if (!dbo->objectId().isNull())
+                {
+#ifdef PyRxDebug
+                    if (auto es = dbo->close(); es != eOk)
+                        acutPrintf(_T("\nStatus = %ls in %ls: "), acadErrorStatusText(es), __FUNCTIONW__);
+#else
+                    dbo->close();
+#endif
+                    return true;
+                }
+            }
+        }
+        catch (...)
+        {
+
         }
         return false;
     }
@@ -41,6 +48,8 @@ struct PyRxObjectDeleter
     inline void operator()(AcRxObject* p) const
     {
         if (p == nullptr)
+            return;
+        else if (m_forceKeepAlive)
             return;
         else if (isDbroThenClose(p))
             return;
@@ -52,6 +61,7 @@ struct PyRxObjectDeleter
 
     bool m_autoDelete = true;
     bool m_isDbObject = false;
+    bool m_forceKeepAlive = false;
 };
 
 //-----------------------------------------------------------------------------------------
@@ -68,6 +78,7 @@ public:
     bool operator!=(const PyRxObject& rhs) const;
     PyRxClass           isA() const;
     void                resetImp(AcRxObject* ptr, bool autoDelete, bool isDbObject);
+    void                forceKeepAlive(bool flag);
     bool                isNullObj();
     int                 implRefCount();
     PyRxObject          queryX(const PyRxClass& protocolClass) const;
