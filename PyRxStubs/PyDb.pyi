@@ -12773,35 +12773,23 @@ __init__( (object)arg1) -> None :
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def cancelled (self, *args, **kwargs)-> None :
-      '''cancelled( (DbObjectReactor)arg1, (DbObject)arg2) -> None :
-
-    C++ signature :
-        void cancelled(class PyDbObjectReactor {lvalue},class PyDbObject)'''
+    def cancelled (self: DbObjectReactor,obj: PyDb.DbObject)-> None :
+      '''                             '''
     ...
     def className ()-> str :
       '''                             '''
     ...
-    def copied (self, *args, **kwargs)-> None :
-      '''copied( (DbObjectReactor)arg1, (DbObject)arg2, (DbObject)arg3) -> None :
-
-    C++ signature :
-        void copied(class PyDbObjectReactor {lvalue},class PyDbObject,class PyDbObject)'''
+    def copied (self: DbObjectReactor,obj: PyDb.DbObject,newObj: PyDb.DbObject)-> None :
+      '''                             '''
     ...
     def desc ()-> RxClass :
       '''                             '''
     ...
-    def erased (self, *args, **kwargs)-> None :
-      '''erased( (DbObjectReactor)arg1, (DbObject)arg2, (bool)arg3) -> None :
-
-    C++ signature :
-        void erased(class PyDbObjectReactor {lvalue},class PyDbObject,bool)'''
+    def erased (self: DbObjectReactor,obj: PyDb.DbObject,flag: bool)-> None :
+      '''                             '''
     ...
-    def goodbye (self, *args, **kwargs)-> None :
-      '''goodbye( (DbObjectReactor)arg1, (DbObject)arg2) -> None :
-
-    C++ signature :
-        void goodbye(class PyDbObjectReactor {lvalue},class PyDbObject)'''
+    def goodbye (self: DbObjectReactor,obj: PyDb.DbObject)-> None :
+      '''                             '''
     ...
     def implRefCount (self: RxObject)-> int :
       '''                             '''
@@ -12812,56 +12800,32 @@ __init__( (object)arg1) -> None :
     def isNullObj (self: RxObject)-> bool :
       '''                             '''
     ...
-    def modified (self, *args, **kwargs)-> None :
-      '''modified( (DbObjectReactor)arg1, (DbObject)arg2) -> None :
-
-    C++ signature :
-        void modified(class PyDbObjectReactor {lvalue},class PyDbObject)'''
+    def modified (self: DbObjectReactor,obj: PyDb.DbObject)-> None :
+      '''                             '''
     ...
-    def modifiedXData (self, *args, **kwargs)-> None :
-      '''modifiedXData( (DbObjectReactor)arg1, (DbObject)arg2) -> None :
-
-    C++ signature :
-        void modifiedXData(class PyDbObjectReactor {lvalue},class PyDbObject)'''
+    def modifiedXData (self: DbObjectReactor,obj: PyDb.DbObject)-> None :
+      '''                             '''
     ...
-    def modifyUndone (self, *args, **kwargs)-> None :
-      '''modifyUndone( (DbObjectReactor)arg1, (DbObject)arg2) -> None :
-
-    C++ signature :
-        void modifyUndone(class PyDbObjectReactor {lvalue},class PyDbObject)'''
+    def modifyUndone (self: DbObjectReactor,obj: PyDb.DbObject)-> None :
+      '''                             '''
     ...
-    def objectClosed (self, *args, **kwargs)-> None :
-      '''objectClosed( (DbObjectReactor)arg1, (ObjectId)arg2) -> None :
-
-    C++ signature :
-        void objectClosed(class PyDbObjectReactor {lvalue},class PyDbObjectId)'''
+    def objectClosed (self: DbObjectReactor,obj: PyDb.ObjectId)-> None :
+      '''                             '''
     ...
-    def openedForModify (self, *args, **kwargs)-> None :
-      '''openedForModify( (DbObjectReactor)arg1, (DbObject)arg2) -> None :
-
-    C++ signature :
-        void openedForModify(class PyDbObjectReactor {lvalue},class PyDbObject)'''
+    def openedForModify (self: DbObjectReactor,obj: PyDb.DbObject)-> None :
+      '''                             '''
     ...
     def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
       '''                             '''
     ...
-    def reappended (self, *args, **kwargs)-> None :
-      '''reappended( (DbObjectReactor)arg1, (DbObject)arg2) -> None :
-
-    C++ signature :
-        void reappended(class PyDbObjectReactor {lvalue},class PyDbObject)'''
+    def reappended (self: DbObjectReactor,obj: PyDb.DbObject)-> None :
+      '''                             '''
     ...
-    def subObjModified (self, *args, **kwargs)-> None :
-      '''subObjModified( (DbObjectReactor)arg1, (DbObject)arg2, (DbObject)arg3) -> None :
-
-    C++ signature :
-        void subObjModified(class PyDbObjectReactor {lvalue},class PyDbObject,class PyDbObject)'''
+    def subObjModified (self: DbObjectReactor,obj: PyDb.DbObject,subObj: PyDb.DbObject)-> None :
+      '''                             '''
     ...
-    def unappended (self, *args, **kwargs)-> None :
-      '''unappended( (DbObjectReactor)arg1, (DbObject)arg2) -> None :
-
-    C++ signature :
-        void unappended(class PyDbObjectReactor {lvalue},class PyDbObject)'''
+    def unappended (self: DbObjectReactor,obj: PyDb.DbObject)-> None :
+      '''                             '''
     ...
 
 class DiametricDimension:
