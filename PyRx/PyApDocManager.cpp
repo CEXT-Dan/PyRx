@@ -154,6 +154,7 @@ void PyApDocManagerReactor::documentCreateStartedWr(PyApDocument& pDocCreating)
     catch (...)
     {
         reg_documentCreateStarted = false;
+        printExceptionMsg();
     }
 }
 
@@ -170,6 +171,7 @@ void PyApDocManagerReactor::documentCreatedWr(PyApDocument& pDocCreating)
     catch (...)
     {
         reg_documentCreated = false;
+        printExceptionMsg();
     }
 }
 
@@ -186,6 +188,7 @@ void PyApDocManagerReactor::documentToBeDestroyedWr(PyApDocument& pDocToDestroy)
     catch (...)
     {
         reg_documentToBeDestroyed = false;
+        printExceptionMsg();
     }
 }
 
@@ -202,6 +205,7 @@ void PyApDocManagerReactor::documentDestroyedWr(const std::string& fileName)
     catch (...)
     {
         reg_documentDestroyed = false;
+        printExceptionMsg();
     }
 }
 
@@ -218,6 +222,7 @@ void PyApDocManagerReactor::documentCreateCanceledWr(PyApDocument& pDocCreateCan
     catch (...)
     {
         reg_documentCreateCanceled = false;
+        printExceptionMsg();
     }
 }
 
@@ -234,6 +239,7 @@ void PyApDocManagerReactor::documentLockModeWillChangeWr(PyApDocument& doc, AcAp
     catch (...)
     {
         reg_documentLockModeWillChange = false;
+        printExceptionMsg();
     }
 }
 
@@ -250,6 +256,7 @@ void PyApDocManagerReactor::documentLockModeChangeVetoedWr(PyApDocument& doc, co
     catch (...)
     {
         reg_documentLockModeChangeVetoed = false;
+        printExceptionMsg();
     }
 }
 
@@ -266,6 +273,7 @@ void PyApDocManagerReactor::documentLockModeChangedWr(PyApDocument& doc, AcAp::D
     catch (...)
     {
         reg_documentLockModeChanged = false;
+        printExceptionMsg();
     }
 }
 
@@ -282,6 +290,7 @@ void PyApDocManagerReactor::documentBecameCurrentWr(PyApDocument& doc)
     catch (...)
     {
         reg_documentBecameCurrent = false;
+        printExceptionMsg();
     }
 }
 
@@ -298,6 +307,7 @@ void PyApDocManagerReactor::documentToBeActivatedWr(PyApDocument& pActivatingDoc
     catch (...)
     {
         reg_documentToBeActivated = false;
+        printExceptionMsg();
     }
 }
 
@@ -314,6 +324,7 @@ void PyApDocManagerReactor::documentToBeDeactivatedWr(PyApDocument& pDeActivated
     catch (...)
     {
         reg_documentToBeDeactivated = false;
+        printExceptionMsg();
     }
 }
 
@@ -330,6 +341,7 @@ void PyApDocManagerReactor::documentActivationModifiedWr(bool bActivation)
     catch (...)
     {
         reg_documentActivationModified = false;
+        printExceptionMsg();
     }
 }
 
@@ -346,6 +358,7 @@ void PyApDocManagerReactor::documentActivatedWr(PyApDocument& pActivatedDoc)
     catch (...)
     {
         reg_documentActivated = false;
+        printExceptionMsg();
     }
 }
 

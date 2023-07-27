@@ -4,9 +4,10 @@ class PyDbObjectId;
 class PyDbDatabase;
 class PyDbField;
 class PyDbHandle;
-void makePyDbObjectWrapper();
-//---------------------------------------------------------------------------------------- -
+class PyDbObjectReactor;
+//----------------------------------------------------------------------------------------
 //PyDbObject
+void makePyDbObjectWrapper();
 class PyDbObject : public PyGiDrawable
 {
 public:
@@ -66,10 +67,92 @@ public:
     void                removeField1(const PyDbObjectId& fieldId);
     void                removeField2(const std::string& propName);
     PyDbObjectId        getFieldDictionary(void) const;
+    void                addReactor(PyDbObjectReactor& pReactor) const;
+    void                removeReactor(PyDbObjectReactor& pReactor) const;
     static PyRxClass    desc();
     static std::string  className();
     static PyDbObject   cloneFrom(const PyRxObject& src);
     static PyDbObject   cast(const PyRxObject& src);
 public:
     AcDbObject* impObj(const std::source_location& src = std::source_location::current()) const;
+};
+
+
+//---------------------------------------------------------------------------------------- -
+//PyDbObjectReactorImpl
+
+class PyDbObjectReactorImpl : public AcDbObjectReactor
+{
+public:
+    ACRX_DECLARE_MEMBERS(PyDbObjectReactorImpl);
+public:
+    PyDbObjectReactorImpl() = default;
+    PyDbObjectReactorImpl(PyDbObjectReactor* ptr);
+    virtual ~PyDbObjectReactorImpl() override = default;
+    virtual void cancelled(const AcDbObject* pObj) override;
+    virtual void copied(const AcDbObject* src, const AcDbObject* newObj) override;
+
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    virtual void erased(const AcDbObject*, Adesk::Boolean = Adesk::kTrue) override;
+#else
+    virtual void erased(const AcDbObject*, bool bErasing) override;
+#endif
+    virtual void goodbye(const AcDbObject* ptr) override;
+    virtual void openedForModify(const AcDbObject* ptr) override;
+    virtual void modified(const AcDbObject* ptr)override;
+    virtual void subObjModified(const AcDbObject* ptr, const AcDbObject* subObj) override;
+    virtual void modifyUndone(const AcDbObject* ptr) override;
+    virtual void modifiedXData(const AcDbObject* ptr) override;
+    virtual void unappended(const AcDbObject* ptr) override;
+    virtual void reappended(const AcDbObject* ptr) override;
+    virtual void objectClosed(const AcDbObjectId id) override;
+
+public:
+    PyDbObjectReactor* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    PyDbObjectReactor* backPtr = nullptr;
+};
+ACDB_REGISTER_OBJECT_ENTRY_AUTO(PyDbObjectReactorImpl)
+
+//---------------------------------------------------------------------------------------- -
+//PyDbObjectReactor
+void makePyDbObjectReactorWrapper();
+class PyDbObjectReactor : public PyRxObject , public boost::python::wrapper<PyDbObjectReactor>
+{
+public:
+    PyDbObjectReactor();
+    virtual ~PyDbObjectReactor() = default;
+    void cancelled(const PyDbObject& pObj);
+    void copied(const PyDbObject& src, const PyDbObject& newObj);
+    void erased(const PyDbObject& src, bool bErasing);
+    void goodbye(const PyDbObject& ptr);
+    void openedForModify(const PyDbObject& ptr);
+    void modified(const PyDbObject& ptr);
+    void subObjModified(const PyDbObject& ptr, const PyDbObject& subObj);
+    void modifyUndone(const PyDbObject& ptr);
+    void modifiedXData(const PyDbObject& ptr);
+    void unappended(const PyDbObject& ptr);
+    void reappended(const PyDbObject& ptr);
+    void objectClosed(const PyDbObjectId& id);
+
+public:
+    static PyRxClass    desc();
+    static std::string  className();
+
+public:
+    AcDbObjectReactor* impObj(const std::source_location& src = std::source_location::current()) const;
+
+public:
+    bool reg_cancelled = true;
+    bool reg_copied = true;
+    bool reg_erased = true;
+    bool reg_goodbye = true;
+    bool reg_openedForModify = true;
+    bool reg_modified = true;
+    bool reg_subObjModified = true;
+    bool reg_modifyUndone = true;
+    bool reg_modifiedXData = true;
+    bool reg_unappended = true;
+    bool reg_reappended = true;
+    bool reg_objectClosed = true;
 };

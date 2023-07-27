@@ -941,6 +941,7 @@ void PyEditorReactor::commandWillStartWr(const std::string& cmdStr)
     catch (...)
     {
         reg_commandWillStart = false;
+        printExceptionMsg();
     }
 }
 
@@ -956,6 +957,7 @@ void PyEditorReactor::commandEndedWr(const std::string& cmdStr)
     catch (...)
     {
         reg_commandEnded = false;
+        printExceptionMsg();
     }
 }
 
@@ -971,6 +973,7 @@ void PyEditorReactor::commandCancelledWr(const std::string& cmdStr)
     catch (...)
     {
         reg_commandCancelled = false;
+        printExceptionMsg();
     }
 }
 
@@ -986,6 +989,7 @@ void PyEditorReactor::commandFailedWr(const std::string& cmdStr)
     catch (...)
     {
         reg_commandFailed = false;
+        printExceptionMsg();
     }
 }
 
@@ -1001,6 +1005,7 @@ void PyEditorReactor::lispWillStartWr(const std::string& firstLine)
     catch (...)
     {
         reg_lispWillStart = false;
+        printExceptionMsg();
     }
 }
 
@@ -1016,6 +1021,7 @@ void PyEditorReactor::lispEndedWr()
     catch (...)
     {
         reg_lispEnded = false;
+        printExceptionMsg();
     }
 }
 
@@ -1031,6 +1037,7 @@ void PyEditorReactor::lispCancelledWr()
     catch (...)
     {
         reg_lispCancelled = false;
+        printExceptionMsg();
     }
 }
 
@@ -1046,6 +1053,7 @@ void PyEditorReactor::beginDxfInWr(PyDbDatabase& db)
     catch (...)
     {
         reg_beginDxfIn = false;
+        printExceptionMsg();
     }
 }
 
@@ -1061,6 +1069,7 @@ void PyEditorReactor::abortDxfInWr(PyDbDatabase& db)
     catch (...)
     {
         reg_abortDxfIn = false;
+        printExceptionMsg();
     }
 }
 
@@ -1076,6 +1085,7 @@ void PyEditorReactor::dxfInCompleteWr(PyDbDatabase& db)
     catch (...)
     {
         reg_dxfInComplete = false;
+        printExceptionMsg();
     }
 }
 
@@ -1091,6 +1101,7 @@ void PyEditorReactor::beginDxfOutWr(PyDbDatabase& db)
     catch (...)
     {
         reg_beginDxfOut = false;
+        printExceptionMsg();
     }
 }
 
@@ -1106,6 +1117,7 @@ void PyEditorReactor::abortDxfOutWr(PyDbDatabase& db)
     catch (...)
     {
         reg_abortDxfOut = false;
+        printExceptionMsg();
     }
 }
 
@@ -1121,6 +1133,7 @@ void PyEditorReactor::dxfOutCompleteWr(PyDbDatabase& db)
     catch (...)
     {
         reg_dxfOutComplete = false;
+        printExceptionMsg();
     }
 }
 
@@ -1136,6 +1149,7 @@ void PyEditorReactor::beginDwgOpenWr(const std::string& filename)
     catch (...)
     {
         reg_beginDwgOpen = false;
+        printExceptionMsg();
     }
 }
 
@@ -1151,6 +1165,7 @@ void PyEditorReactor::endDwgOpenWr(const std::string& filename, PyDbDatabase& db
     catch (...)
     {
         reg_endDwgOpen = false;
+        printExceptionMsg();
     }
 }
 
@@ -1166,6 +1181,7 @@ void PyEditorReactor::initialDwgFileOpenCompleteWr(PyDbDatabase& db)
     catch (...)
     {
         reg_initialDwgFileOpenComplete = false;
+        printExceptionMsg();
     }
 }
 
@@ -1181,6 +1197,7 @@ void PyEditorReactor::databaseConstructedWr(PyDbDatabase& db)
     catch (...)
     {
         reg_databaseConstructed = false;
+        printExceptionMsg();
     }
 }
 
@@ -1196,6 +1213,7 @@ void PyEditorReactor::databaseToBeDestroyedWr(PyDbDatabase& db)
     catch (...)
     {
         reg_databaseToBeDestroyed = false;
+        printExceptionMsg();
     }
 }
 
@@ -1211,6 +1229,7 @@ void PyEditorReactor::beginSaveWr(PyDbDatabase& db, const std::string& pIntended
     catch (...)
     {
         reg_beginSave = false;
+        printExceptionMsg();
     }
 }
 
@@ -1226,6 +1245,7 @@ void PyEditorReactor::saveCompleteWr(PyDbDatabase& db, const std::string& pActua
     catch (...)
     {
         reg_saveComplete = false;
+        printExceptionMsg();
     }
 }
 
@@ -1241,6 +1261,7 @@ void PyEditorReactor::abortSaveWr(PyDbDatabase& db)
     catch (...)
     {
         reg_abortSave = false;
+        printExceptionMsg();
     }
 }
 
@@ -1256,6 +1277,7 @@ void PyEditorReactor::beginInsertWr1(PyDbDatabase& pTo, const std::string& pBloc
     catch (...)
     {
         reg_beginInsert1 = false;
+        printExceptionMsg();
     }
 }
 
@@ -1271,6 +1293,7 @@ void PyEditorReactor::beginInsertWr2(PyDbDatabase& pTo, const AcGeMatrix3d& xfor
     catch (...)
     {
         reg_beginInsert2 = false;
+        printExceptionMsg();
     }
 }
 
@@ -1286,6 +1309,7 @@ void PyEditorReactor::otherInsertWr(PyDbDatabase& pTo, PyDbIdMapping& idMap, PyD
     catch (...)
     {
         reg_otherInsert = false;
+        printExceptionMsg();
     }
 }
 
@@ -1301,6 +1325,7 @@ void PyEditorReactor::abortInsertWr(PyDbDatabase& pTo)
     catch (...)
     {
         reg_otherInsert = false;
+        printExceptionMsg();
     }
 }
 
@@ -1316,6 +1341,7 @@ void PyEditorReactor::endInsertWr(PyDbDatabase& pTo)
     catch (...)
     {
         reg_endInsert = false;
+        printExceptionMsg();
     }
 }
 
@@ -1331,6 +1357,7 @@ void PyEditorReactor::wblockNoticeWr(PyDbDatabase& pDb)
     catch (...)
     {
         reg_wblockNotice = false;
+        printExceptionMsg();
     }
 }
 
@@ -1346,6 +1373,7 @@ void PyEditorReactor::beginWblockWr(PyDbDatabase& pTo, PyDbDatabase& pFrom, PyDb
     catch (...)
     {
         reg_beginWblock = false;
+        printExceptionMsg();
     }
 }
 
@@ -1361,6 +1389,7 @@ void PyEditorReactor::otherWblockWr(PyDbDatabase& pTo, PyDbIdMapping& mapping, P
     catch (...)
     {
         reg_otherWblock = false;
+        printExceptionMsg();
     }
 }
 
@@ -1376,6 +1405,7 @@ void PyEditorReactor::abortWblockWr(PyDbDatabase& pTo)
     catch (...)
     {
         reg_abortWblock = false;
+        printExceptionMsg();
     }
 }
 
@@ -1391,6 +1421,7 @@ void PyEditorReactor::endWblockWr(PyDbDatabase& pTo)
     catch (...)
     {
         reg_endWblock = false;
+        printExceptionMsg();
     }
 }
 
@@ -1406,6 +1437,7 @@ void PyEditorReactor::beginDeepCloneWr(PyDbDatabase& pTo, PyDbIdMapping& mapping
     catch (...)
     {
         reg_beginDeepClone = false;
+        printExceptionMsg();
     }
 }
 
@@ -1421,6 +1453,7 @@ Acad::ErrorStatus PyEditorReactor::beginDeepCloneXlationWr(PyDbIdMapping& mappin
     catch (...)
     {
         reg_beginDeepCloneXlation = false;
+        printExceptionMsg();
         return eInvalidInput;
     }
     return eOk;
@@ -1438,6 +1471,7 @@ void PyEditorReactor::abortDeepCloneWr(PyDbIdMapping& mapping)
     catch (...)
     {
         reg_abortDeepClone = false;
+        printExceptionMsg();
     }
 }
 
@@ -1453,6 +1487,7 @@ void PyEditorReactor::endDeepCloneWr(PyDbIdMapping& mapping)
     catch (...)
     {
         reg_endDeepClone = false;
+        printExceptionMsg();
     }
 }
 
@@ -1468,6 +1503,7 @@ void PyEditorReactor::sysVarChangedWr(const std::string& varName, bool success)
     catch (...)
     {
         reg_sysVarChanged = false;
+        printExceptionMsg();
     }
 }
 
@@ -1483,6 +1519,7 @@ void PyEditorReactor::sysVarWillChangeWr(const std::string& varName)
     catch (...)
     {
         reg_sysVarWillChange = false;
+        printExceptionMsg();
     }
 }
 
@@ -1498,6 +1535,7 @@ void PyEditorReactor::beginAttachWr(PyDbDatabase& pTo, const std::string& str, P
     catch (...)
     {
         reg_beginAttach = false;
+        printExceptionMsg();
     }
 }
 
@@ -1513,6 +1551,7 @@ void PyEditorReactor::otherAttachWr(PyDbDatabase& pTo, PyDbDatabase& pFrom)
     catch (...)
     {
         reg_otherAttach = false;
+        printExceptionMsg();
     }
 }
 
@@ -1528,6 +1567,7 @@ void PyEditorReactor::abortAttachWr(PyDbDatabase& pFrom)
     catch (...)
     {
         reg_abortAttach = false;
+        printExceptionMsg();
     }
 }
 
@@ -1543,6 +1583,7 @@ void PyEditorReactor::endAttachWr(PyDbDatabase& pTo)
     catch (...)
     {
         reg_endAttach = false;
+        printExceptionMsg();
     }
 }
 
@@ -1558,6 +1599,7 @@ void PyEditorReactor::redirectedWr(PyDbObjectId& newId, PyDbObjectId& oldId)
     catch (...)
     {
         reg_redirected = false;
+        printExceptionMsg();
     }
 }
 
@@ -1573,6 +1615,7 @@ void PyEditorReactor::comandeeredWr(PyDbDatabase& pTo, PyDbObjectId& id, PyDbDat
     catch (...)
     {
         reg_comandeered = false;
+        printExceptionMsg();
     }
 }
 
@@ -1588,6 +1631,7 @@ void PyEditorReactor::beginRestoreWr(PyDbDatabase& pTo, const std::string& str, 
     catch (...)
     {
         reg_beginRestore = false;
+        printExceptionMsg();
     }
 }
 
@@ -1603,6 +1647,7 @@ void PyEditorReactor::abortRestoreWr(PyDbDatabase& pTo)
     catch (...)
     {
         reg_endRestore = false;
+        printExceptionMsg();
     }
 }
 
@@ -1618,6 +1663,7 @@ void PyEditorReactor::endRestoreWr(PyDbDatabase& pTo)
     catch (...)
     {
         reg_endRestore = false;
+        printExceptionMsg();
     }
 }
 
@@ -1633,6 +1679,7 @@ void PyEditorReactor::xrefSubcommandBindItemWr(PyDbDatabase& pHost, int activity
     catch (...)
     {
         reg_xrefSubcommandBindItem = false;
+        printExceptionMsg();
     }
 }
 
@@ -1648,6 +1695,7 @@ void PyEditorReactor::xrefSubcommandAttachItemWr(PyDbDatabase& pHost, int activi
     catch (...)
     {
         reg_xrefSubcommandAttachItem = false;
+        printExceptionMsg();
     }
 }
 
@@ -1663,6 +1711,7 @@ void PyEditorReactor::xrefSubcommandOverlayItemWr(PyDbDatabase& pHost, int activ
     catch (...)
     {
         reg_xrefSubcommandOverlayItem = false;
+        printExceptionMsg();
     }
 }
 
@@ -1678,6 +1727,7 @@ void PyEditorReactor::xrefSubcommandDetachItemWr(PyDbDatabase& pHost, int activi
     catch (...)
     {
         reg_xrefSubcommandDetachItem = false;
+        printExceptionMsg();
     }
 }
 
@@ -1693,6 +1743,7 @@ void PyEditorReactor::xrefSubcommandPathItemWr(int activity, PyDbObjectId& block
     catch (...)
     {
         reg_xrefSubcommandPathItem = false;
+        printExceptionMsg();
     }
 }
 
@@ -1708,6 +1759,7 @@ void PyEditorReactor::xrefSubcommandReloadItemWr(PyDbDatabase& pHost, int activi
     catch (...)
     {
         reg_xrefSubcommandReloadItem = false;
+        printExceptionMsg();
     }
 }
 
@@ -1723,6 +1775,7 @@ void PyEditorReactor::xrefSubcommandUnloadItemWr(PyDbDatabase& pHost, int activi
     catch (...)
     {
         reg_xrefSubcommandUnloadItem = false;
+        printExceptionMsg();
     }
 }
 
@@ -1738,6 +1791,7 @@ void PyEditorReactor::undoSubcommandAutoWr(int activity, bool state)
     catch (...)
     {
         reg_undoSubcommandAuto = false;
+        printExceptionMsg();
     }
 }
 
@@ -1753,6 +1807,7 @@ void PyEditorReactor::undoSubcommandControlWr(int activity, int option)
     catch (...)
     {
         reg_undoSubcommandControl = false;
+        printExceptionMsg();
     }
 }
 
@@ -1768,6 +1823,7 @@ void PyEditorReactor::undoSubcommandBeginWr(int activity)
     catch (...)
     {
         reg_undoSubcommandBegin = false;
+        printExceptionMsg();
     }
 }
 
@@ -1783,6 +1839,7 @@ void PyEditorReactor::undoSubcommandEndWr(int activity)
     catch (...)
     {
         reg_undoSubcommandEnd = false;
+        printExceptionMsg();
     }
 }
 
@@ -1798,6 +1855,7 @@ void PyEditorReactor::undoSubcommandMarkWr(int activity)
     catch (...)
     {
         reg_undoSubcommandMark = false;
+        printExceptionMsg();
     }
 }
 
@@ -1813,6 +1871,7 @@ void PyEditorReactor::undoSubcommandBackWr(int activity)
     catch (...)
     {
         reg_undoSubcommandBack = false;
+        printExceptionMsg();
     }
 }
 
@@ -1828,6 +1887,7 @@ void PyEditorReactor::undoSubcommandNumberWr(int activity, int num)
     catch (...)
     {
         reg_undoSubcommandNumber = false;
+        printExceptionMsg();
     }
 }
 
@@ -1843,6 +1903,7 @@ void PyEditorReactor::pickfirstModifiedWr()
     catch (...)
     {
         reg_pickfirstModified = false;
+        printExceptionMsg();
     }
 }
 
@@ -1858,6 +1919,7 @@ void PyEditorReactor::layoutSwitchedWr(const std::string& newLayoutName)
     catch (...)
     {
         reg_layoutSwitched = false;
+        printExceptionMsg();
     }
 }
 
@@ -1873,6 +1935,7 @@ void PyEditorReactor::layoutToBeSwitchedWr(const std::string& oldLayoutName, con
     catch (...)
     {
         reg_layoutToBeSwitched = false;
+        printExceptionMsg();
     }
 }
 
@@ -1888,6 +1951,7 @@ void PyEditorReactor::dwgViewResizedWr(Adesk::LongPtr hwndDwgView)
     catch (...)
     {
         reg_dwgViewResized = false;
+        printExceptionMsg();
     }
 }
 
@@ -1903,6 +1967,7 @@ void PyEditorReactor::fullRegenEndedWr(PyDbDatabase& pDb, const boost::python::l
     catch (...)
     {
         reg_fullRegenEnded = false;
+        printExceptionMsg();
     }
 }
 
@@ -1918,6 +1983,7 @@ void PyEditorReactor::docFrameMovedOrResizedWr(Adesk::LongPtr hwndDocFrame, bool
     catch (...)
     {
         reg_docFrameMovedOrResized = false;
+        printExceptionMsg();
     }
 }
 
@@ -1933,6 +1999,7 @@ void PyEditorReactor::mainFrameMovedOrResizedWr(Adesk::LongPtr hwndMainFrame, bo
     catch (...)
     {
         reg_mainFrameMovedOrResized = false;
+        printExceptionMsg();
     }
 }
 
@@ -1948,6 +2015,7 @@ void PyEditorReactor::beginDoubleClickWr(const AcGePoint3d& clickPoint)
     catch (...)
     {
         reg_beginDoubleClick = false;
+        printExceptionMsg();
     }
 }
 
@@ -1963,6 +2031,7 @@ void PyEditorReactor::beginRightClickWr(const AcGePoint3d& clickPoint)
     catch (...)
     {
         reg_beginRightClick = false;
+        printExceptionMsg();
     }
 }
 
@@ -1978,6 +2047,7 @@ void PyEditorReactor::toolbarBitmapSizeWillChangeWr(bool bLarge)
     catch (...)
     {
         reg_toolbarBitmapSizeWillChange = false;
+        printExceptionMsg();
     }
 }
 
@@ -1993,6 +2063,7 @@ void PyEditorReactor::toolbarBitmapSizeChangedWr(bool bLarge)
     catch (...)
     {
         reg_toolbarBitmapSizeChanged = false;
+        printExceptionMsg();
     }
 }
 
@@ -2008,6 +2079,7 @@ void PyEditorReactor::beginWblockObjectsWr(PyDbDatabase& pFrom, PyDbIdMapping& m
     catch (...)
     {
         reg_beginWblockObjects = false;
+        printExceptionMsg();
     }
 }
 
@@ -2023,6 +2095,7 @@ void PyEditorReactor::partialOpenNoticeWr(PyDbDatabase& pDb)
     catch (...)
     {
         reg_partialOpenNotice = false;
+        printExceptionMsg();
     }
 }
 
@@ -2038,6 +2111,7 @@ void PyEditorReactor::objectsLazyLoadedWr(const boost::python::list& idArray)
     catch (...)
     {
         reg_objectsLazyLoaded = false;
+        printExceptionMsg();
     }
 }
 
@@ -2053,6 +2127,7 @@ void PyEditorReactor::beginDocCloseWr(PyDbDatabase& pDwg)
     catch (...)
     {
         reg_beginDocClose = false;
+        printExceptionMsg();
     }
 }
 
@@ -2068,6 +2143,7 @@ void PyEditorReactor::docCloseAbortedWr(PyDbDatabase& pDwg)
     catch (...)
     {
         reg_docCloseAborted = false;
+        printExceptionMsg();
     }
 }
 
@@ -2083,6 +2159,7 @@ void PyEditorReactor::docCloseWillStartWr(PyDbDatabase& pDwg)
     catch (...)
     {
         reg_docCloseWillStart = false;
+        printExceptionMsg();
     }
 }
 
@@ -2098,6 +2175,7 @@ void PyEditorReactor::beginCloseAllWr()
     catch (...)
     {
         reg_beginCloseAll = false;
+        printExceptionMsg();
     }
 }
 
@@ -2113,6 +2191,7 @@ void PyEditorReactor::beginQuitWr()
     catch (...)
     {
         reg_beginQuit = false;
+        printExceptionMsg();
     }
 }
 
@@ -2128,6 +2207,7 @@ void PyEditorReactor::quitAbortedWr()
     catch (...)
     {
         reg_quitAborted = false;
+        printExceptionMsg();
     }
 }
 
@@ -2143,6 +2223,7 @@ void PyEditorReactor::quitWillStartWr()
     catch (...)
     {
         reg_quitWillStart = false;
+        printExceptionMsg();
     }
 }
 
@@ -2158,6 +2239,7 @@ void PyEditorReactor::modelessOperationWillStartWr(const std::string& contextStr
     catch (...)
     {
         reg_modelessOperationWillStart = false;
+        printExceptionMsg();
     }
 }
 
@@ -2173,6 +2255,7 @@ void PyEditorReactor::modelessOperationEndedWr(const std::string& contextStr)
     catch (...)
     {
         reg_modelessOperationEnded = false;
+        printExceptionMsg();
     }
 }
 
@@ -2188,6 +2271,7 @@ void PyEditorReactor::cmdIUnkModifiedWr(const std::string& strCommand)
     catch (...)
     {
         reg_cmdIUnkModified = false;
+        printExceptionMsg();
     }
 }
 
@@ -2203,6 +2287,7 @@ void PyEditorReactor::preXrefLockFileWr(PyDbObjectId& btrId)
     catch (...)
     {
         reg_preXrefLockFile = false;
+        printExceptionMsg();
     }
 }
 
@@ -2218,6 +2303,7 @@ void PyEditorReactor::viewChangedWr()
     catch (...)
     {
         reg_viewChanged = false;
+        printExceptionMsg();
     }
 }
 
@@ -2233,6 +2319,7 @@ void PyEditorReactor::fullRegenWillStartWr(PyDbDatabase& pDb)
     catch (...)
     {
         reg_fullRegenWillStart = false;
+        printExceptionMsg();
     }
 
 }
