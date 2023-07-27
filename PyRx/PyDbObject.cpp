@@ -70,6 +70,8 @@ void makePyDbObjectWrapper()
         .def("removeField", &PyDbObject::removeField1)
         .def("removeField", &PyDbObject::removeField2, DS.CLASSARGS({ "id: str|ObjectId" }))
         .def("getFieldDictionary", &PyDbObject::getFieldDictionary, DS.CLASSARGS())
+        .def("addReactor", &PyDbObject::addReactor, DS.CLASSARGS({ "reactor: DbObjectReactor" }))
+        .def("removeReactor", &PyDbObject::removeReactor,DS.CLASSARGS({ "reactor: DbObjectReactor" }))
         .def("desc", &PyDbObject::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
         .def("className", &PyDbObject::className, DS.CLASSARGSSTATIC()).staticmethod("className")
         .def("cloneFrom", &PyDbObject::cloneFrom, DS.CLASSARGSSTATIC({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -384,6 +386,24 @@ PyDbObjectId PyDbObject::getFieldDictionary(void) const
     return PyDbObjectId(impObj()->getFieldDictionary());
 }
 
+void PyDbObject::addReactor(PyDbObjectReactor& pReactor) const
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    impObj()->addReactor(pReactor.impObj());
+#else
+   return PyThrowBadEs(impObj()->addReactor(pReactor.impObj()));
+#endif
+}
+
+void PyDbObject::removeReactor(PyDbObjectReactor& pReactor) const
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    impObj()->removeReactor(pReactor.impObj());
+#else
+   return PyThrowBadEs(impObj()->removeReactor(pReactor.impObj()));
+#endif
+}
+
 PyRxClass PyDbObject::desc()
 {
     return PyRxClass(AcDbObject::desc(), false);
@@ -416,3 +436,343 @@ AcDbObject* PyDbObject::impObj(const std::source_location& src /*= std::source_l
     return static_cast<AcDbObject*>(m_pyImp.get());
 }
 
+//---------------------------------------------------------------------------------------- -
+//PyDbObjectReactorImpl
+ACRX_CONS_DEFINE_MEMBERS(PyDbObjectReactorImpl, AcDbObjectReactor, 1)
+PyDbObjectReactorImpl::PyDbObjectReactorImpl(PyDbObjectReactor* ptr)
+    : backPtr(ptr)
+{
+}
+
+void PyDbObjectReactorImpl::cancelled(const AcDbObject* src)
+{
+    PyDbObject obj(const_cast<AcDbObject*>(src), false);
+    impObj()->cancelled(obj);
+}
+
+void PyDbObjectReactorImpl::copied(const AcDbObject* src, const AcDbObject* newObj)
+{
+    PyDbObject obj(const_cast<AcDbObject*>(src), false);
+    PyDbObject obj2(const_cast<AcDbObject*>(newObj), false);
+    impObj()->copied(obj, obj2);
+}
+
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+void PyDbObjectReactorImpl::erased(const AcDbObject* src, Adesk::Boolean bErasing)
+{
+    PyDbObject obj(const_cast<AcDbObject*>(src), false);
+    impObj()->erased(obj, bErasing);
+}
+#else
+void PyDbObjectReactorImpl::erased(const AcDbObject* src, bool bErasing)
+{
+    PyDbObject obj(const_cast<AcDbObject*>(src), false);
+    impObj()->erased(obj, bErasing);
+}
+#endif
+
+void PyDbObjectReactorImpl::goodbye(const AcDbObject* ptr)
+{
+    PyDbObject obj(const_cast<AcDbObject*>(ptr), false);
+    impObj()->goodbye(obj);
+}
+
+void PyDbObjectReactorImpl::openedForModify(const AcDbObject* ptr)
+{
+    PyDbObject obj(const_cast<AcDbObject*>(ptr), false);
+    impObj()->openedForModify(obj);
+}
+
+void PyDbObjectReactorImpl::modified(const AcDbObject* ptr)
+{
+    PyDbObject obj(const_cast<AcDbObject*>(ptr), false);
+    impObj()->modified(obj);
+}
+
+void PyDbObjectReactorImpl::subObjModified(const AcDbObject* ptr, const AcDbObject* subObj)
+{
+    PyDbObject obj(const_cast<AcDbObject*>(ptr), false);
+    PyDbObject obj2(const_cast<AcDbObject*>(subObj), false);
+    impObj()->subObjModified(obj, obj2);
+}
+
+void PyDbObjectReactorImpl::modifyUndone(const AcDbObject* ptr)
+{
+    PyDbObject obj(const_cast<AcDbObject*>(ptr), false);
+    impObj()->modifyUndone(obj);
+}
+
+void PyDbObjectReactorImpl::modifiedXData(const AcDbObject* ptr)
+{
+    PyDbObject obj(const_cast<AcDbObject*>(ptr), false);
+    impObj()->modifiedXData(obj);
+}
+
+void PyDbObjectReactorImpl::unappended(const AcDbObject* ptr)
+{
+    PyDbObject obj(const_cast<AcDbObject*>(ptr), false);
+    impObj()->unappended(obj);
+}
+
+void PyDbObjectReactorImpl::reappended(const AcDbObject* ptr)
+{
+    PyDbObject obj(const_cast<AcDbObject*>(ptr), false);
+    impObj()->reappended(obj);
+}
+
+void PyDbObjectReactorImpl::objectClosed(const AcDbObjectId id)
+{
+    PyDbObjectId obj(id);
+    impObj()->objectClosed(obj);
+}
+
+PyDbObjectReactor* PyDbObjectReactorImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (backPtr == nullptr)
+        throw PyNullObject(src);
+    return backPtr;
+}
+
+//---------------------------------------------------------------------------------------- -
+//PyDbObjectReactor
+void makePyDbObjectReactorWrapper()
+{
+    PyDocString DS("DbObjectReactor");
+    class_<PyDbObjectReactor, bases<PyRxObject>>("DbObjectReactor")
+        .def(init<>())
+        .def("cancelled", &PyDbObjectReactor::cancelled)
+        .def("copied", &PyDbObjectReactor::copied)
+        .def("erased", &PyDbObjectReactor::erased)
+        .def("goodbye", &PyDbObjectReactor::goodbye)
+        .def("openedForModify", &PyDbObjectReactor::openedForModify)
+        .def("modified", &PyDbObjectReactor::modified)
+        .def("subObjModified", &PyDbObjectReactor::subObjModified)
+        .def("modifyUndone", &PyDbObjectReactor::modifyUndone)
+        .def("modifiedXData", &PyDbObjectReactor::modifiedXData)
+        .def("unappended", &PyDbObjectReactor::unappended)
+        .def("reappended", &PyDbObjectReactor::reappended)
+        .def("objectClosed", &PyDbObjectReactor::objectClosed)
+        .def("desc", &PyDbObjectReactor::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
+        .def("className", &PyDbObjectReactor::className, DS.CLASSARGSSTATIC()).staticmethod("className")
+        ;
+}
+
+PyDbObjectReactor::PyDbObjectReactor()
+    : PyRxObject(new PyDbObjectReactorImpl(this), true, false)
+{
+}
+
+void PyDbObjectReactor::cancelled(const PyDbObject& pObj)
+{
+    if (!reg_cancelled)
+        return;
+    PyAutoLockGIL lock;
+    try
+    {
+        if (override f = this->get_override("cancelled"))
+            f(pObj);
+        else
+            reg_cancelled = false;
+    }
+    catch (...)
+    {
+        reg_cancelled = false;
+        printExceptionMsg();
+    }
+}
+
+void PyDbObjectReactor::copied(const PyDbObject& src, const PyDbObject& newObj)
+{
+    if (!reg_copied)
+        return;
+    PyAutoLockGIL lock;
+    try
+    {
+        if (override f = this->get_override("copied"))
+            f(src, newObj);
+        else
+            reg_copied = false;
+    }
+    catch (...)
+    {
+        reg_copied = false;
+        printExceptionMsg();
+    }
+}
+
+void PyDbObjectReactor::erased(const PyDbObject& src, bool bErasing)
+{
+    if (!reg_erased)
+        return;
+    PyAutoLockGIL lock;
+    try
+    {
+        if (override f = this->get_override("erased"))
+            f(src, bErasing);
+        else
+            reg_erased = false;
+    }
+    catch (...)
+    {
+        reg_erased = false;
+        printExceptionMsg();
+    }
+}
+
+void PyDbObjectReactor::goodbye(const PyDbObject& ptr)
+{
+    if (!reg_goodbye)
+        return;
+    PyAutoLockGIL lock;
+    try
+    {
+        if (override f = this->get_override("goodbye"))
+            f(ptr);
+        else
+            reg_goodbye = false;
+    }
+    catch (...)
+    {
+        reg_goodbye = false;
+        printExceptionMsg();
+    }
+}
+
+void PyDbObjectReactor::openedForModify(const PyDbObject& ptr)
+{
+    if (!reg_openedForModify)
+        return;
+    PyAutoLockGIL lock;
+    try
+    {
+        if (override f = this->get_override("openedForModify"))
+            f(ptr);
+        else
+            reg_openedForModify = false;
+    }
+    catch (...)
+    {
+        reg_openedForModify = false;
+        printExceptionMsg();
+    }
+}
+
+void PyDbObjectReactor::modified(const PyDbObject& ptr)
+{
+    if (!reg_modified)
+        return;
+    PyAutoLockGIL lock;
+    try
+    {
+        if (override f = this->get_override("modified"))
+            f(ptr);
+        else
+            reg_modified = false;
+    }
+    catch (...)
+    {
+        reg_modified = false;
+        printExceptionMsg();
+    }
+}
+
+void PyDbObjectReactor::subObjModified(const PyDbObject& ptr, const PyDbObject& subObj)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        if (override f = this->get_override("subObjModified"))
+            f(ptr, subObj);
+    }
+    catch (...)
+    {
+        printExceptionMsg();
+    }
+}
+
+void PyDbObjectReactor::modifyUndone(const PyDbObject& ptr)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        if (override f = this->get_override("modifyUndone"))
+            f(ptr);
+    }
+    catch (...)
+    {
+        printExceptionMsg();
+    }
+}
+
+void PyDbObjectReactor::modifiedXData(const PyDbObject& ptr)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        if (override f = this->get_override("modifiedXData"))
+            f(ptr);
+    }
+    catch (...)
+    {
+        printExceptionMsg();
+    }
+}
+
+void PyDbObjectReactor::unappended(const PyDbObject& ptr)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        if (override f = this->get_override("unappended"))
+            f(ptr);
+    }
+    catch (...)
+    {
+        printExceptionMsg();
+    }
+}
+
+void PyDbObjectReactor::reappended(const PyDbObject& ptr)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        if (override f = this->get_override("reappended"))
+            f(ptr);
+    }
+    catch (...)
+    {
+        printExceptionMsg();
+    }
+}
+
+void PyDbObjectReactor::objectClosed(const PyDbObjectId& id)
+{
+    PyAutoLockGIL lock;
+    try
+    {
+        if (override f = this->get_override("objectClosed"))
+            f(id);
+    }
+    catch (...)
+    {
+        printExceptionMsg();
+    }
+}
+
+PyRxClass PyDbObjectReactor::desc()
+{
+    return PyRxClass(AcDbObjectReactor::desc(), false);
+}
+
+std::string PyDbObjectReactor::className()
+{
+    return "AcDbObjectReactor";
+}
+
+AcDbObjectReactor* PyDbObjectReactor::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_pyImp == nullptr)
+        throw PyNullObject(src);
+    return static_cast<AcDbObjectReactor*>(m_pyImp.get());
+}

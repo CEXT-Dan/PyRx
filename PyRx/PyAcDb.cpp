@@ -124,6 +124,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbXrefObjectIdWrapper();
     makePyAdsNameWrapper();
     makePyDbObjectWrapper();
+    makePyDbObjectReactorWrapper();
     makePyDbFieldtWrapper();
     makePyDbEntityWrapper();
     makePyDbBlockBeginWrapper();
