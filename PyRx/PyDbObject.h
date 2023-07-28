@@ -1,10 +1,12 @@
 #pragma once
 #include "PyGiDrawable.h"
+class PyDbEntity;
 class PyDbObjectId;
 class PyDbDatabase;
 class PyDbField;
 class PyDbHandle;
 class PyDbObjectReactor;
+class PyDbEntityReactor;
 //----------------------------------------------------------------------------------------
 //PyDbObject
 void makePyDbObjectWrapper();
@@ -78,13 +80,13 @@ public:
 };
 
 
+// This could be done better 
+// boost::python::wrapper<> causes issues with subclassing i couldn't solve
+// just made two classes, one for AcDbObjectReactor, and AcDbEntityReactor
 //---------------------------------------------------------------------------------------- -
 //PyDbObjectReactorImpl
-
 class PyDbObjectReactorImpl : public AcDbObjectReactor
 {
-public:
-    ACRX_DECLARE_MEMBERS(PyDbObjectReactorImpl);
 public:
     PyDbObjectReactorImpl() = default;
     PyDbObjectReactorImpl(PyDbObjectReactor* ptr);
@@ -110,9 +112,8 @@ public:
 public:
     PyDbObjectReactor* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
-    PyDbObjectReactor* backPtr = nullptr;
+    PyDbObjectReactor* m_backPtr = nullptr;
 };
-ACDB_REGISTER_OBJECT_ENTRY_AUTO(PyDbObjectReactorImpl)
 
 //---------------------------------------------------------------------------------------- -
 //PyDbObjectReactor
@@ -155,4 +156,85 @@ public:
     bool reg_unappended = true;
     bool reg_reappended = true;
     bool reg_objectClosed = true;
+};
+
+//---------------------------------------------------------------------------------------- -
+//AcDbEntityReactorImpl
+class AcDbEntityReactorImpl : public AcDbEntityReactor
+{
+public:
+    AcDbEntityReactorImpl() = default;
+    AcDbEntityReactorImpl(PyDbEntityReactor* ptr);
+    virtual ~AcDbEntityReactorImpl() override = default;
+    virtual void cancelled(const AcDbObject* pObj) override;
+    virtual void copied(const AcDbObject* src, const AcDbObject* newObj) override;
+
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    virtual void erased(const AcDbObject*, Adesk::Boolean = Adesk::kTrue) override;
+#else
+    virtual void erased(const AcDbObject*, bool bErasing) override;
+#endif
+    virtual void goodbye(const AcDbObject* ptr) override;
+    virtual void openedForModify(const AcDbObject* ptr) override;
+    virtual void modified(const AcDbObject* ptr)override;
+    virtual void subObjModified(const AcDbObject* ptr, const AcDbObject* subObj) override;
+    virtual void modifyUndone(const AcDbObject* ptr) override;
+    virtual void modifiedXData(const AcDbObject* ptr) override;
+    virtual void unappended(const AcDbObject* ptr) override;
+    virtual void reappended(const AcDbObject* ptr) override;
+    virtual void objectClosed(const AcDbObjectId id) override;
+    virtual void modifiedGraphics(const AcDbEntity*) override;
+    virtual void dragCloneToBeDeleted(const AcDbEntity* pOriginalObj, const AcDbEntity* pClone) override;
+public:
+    PyDbEntityReactor* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    PyDbEntityReactor* m_backPtr = nullptr;
+};
+
+//---------------------------------------------------------------------------------------- -
+//PyDbEntityReactor
+void makePyDbEntityReactorWrapper();
+class PyDbEntityReactor : public PyRxObject, public boost::python::wrapper<PyDbEntityReactor>
+{
+public:
+    PyDbEntityReactor();
+    virtual ~PyDbEntityReactor() = default;
+
+    void cancelled(const PyDbObject& pObj);
+    void copied(const PyDbObject& src, const PyDbObject& newObj);
+    void erased(const PyDbObject& src, bool bErasing);
+    void goodbye(const PyDbObject& ptr);
+    void openedForModify(const PyDbObject& ptr);
+    void modified(const PyDbObject& ptr);
+    void subObjModified(const PyDbObject& ptr, const PyDbObject& subObj);
+    void modifyUndone(const PyDbObject& ptr);
+    void modifiedXData(const PyDbObject& ptr);
+    void unappended(const PyDbObject& ptr);
+    void reappended(const PyDbObject& ptr);
+    void objectClosed(const PyDbObjectId& id);
+    void modifiedGraphics(const PyDbEntity& ent);
+    void dragCloneToBeDeleted(const PyDbEntity& pOriginalObj, const  PyDbEntity& pClone);
+ 
+public:
+    static PyRxClass    desc();
+    static std::string  className();
+
+public:
+    AcDbEntityReactor* impObj(const std::source_location& src = std::source_location::current()) const;
+
+public:
+    bool reg_cancelled = true;
+    bool reg_copied = true;
+    bool reg_erased = true;
+    bool reg_goodbye = true;
+    bool reg_openedForModify = true;
+    bool reg_modified = true;
+    bool reg_subObjModified = true;
+    bool reg_modifyUndone = true;
+    bool reg_modifiedXData = true;
+    bool reg_unappended = true;
+    bool reg_reappended = true;
+    bool reg_objectClosed = true;
+    bool reg_modifiedGraphics = true;
+    bool reg_dragCloneToBeDeleted = true;
 };
