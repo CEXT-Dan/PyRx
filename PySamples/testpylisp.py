@@ -20,24 +20,24 @@ def OnPyUnloadDwg():
 # (pylisp)
 def PyRxLisp_pylisp(args):
 	try: 
-		return [(Rx.LispDataType.kListBegin, 0),
-	            (Rx.LispDataType.kText, "Text"),
-		        (Rx.LispDataType.kDouble, 12.23),
-			    (Rx.LispDataType.kListBegin, 0),
-			    (Rx.LispDataType.kInt16, 1),
-			    (Rx.LispDataType.kInt32, 2),
-			    (Rx.LispDataType.kNil, 0),
-			    (Rx.LispDataType.kT_atom, 0),
-			    (Rx.LispDataType.kListEnd, 0),
-		     	(Rx.LispDataType.kPoint3d,Ge.Point3d(1,10,100)),
-				(Rx.LispDataType.kListEnd, 0)]
+		return [(Rx.LispType.kListBegin, 0),
+	            (Rx.LispType.kText, "Text"),
+		        (Rx.LispType.kDouble, 12.23),
+			    (Rx.LispType.kListBegin, 0),
+			    (Rx.LispType.kInt16, 1),
+			    (Rx.LispType.kInt32, 2),
+			    (Rx.LispType.kNil, 0),
+			    (Rx.LispType.kT_atom, 0),
+			    (Rx.LispType.kListEnd, 0),
+		     	(Rx.LispType.kPoint3d,Ge.Point3d(1,10,100)),
+				(Rx.LispType.kListEnd, 0)]
 	except Exception as err:
 		print(err)
 
 #(pylisp1)
 def PyRxLisp_pylisp1(args):
 	try: 
-		return [(Rx.LispDataType.kText, "Text")]
+		return [(Rx.LispType.kText, "Text")]
 	except Exception as err:
 		print(err)
 
