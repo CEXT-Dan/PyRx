@@ -62,6 +62,7 @@ void makePyEdCoreWrapper()
         .def("getFileNavDialog", &EdCore::getFileNavDialog).staticmethod("getFileNavDialog")
         .def("grDraw", &EdCore::grDraw).staticmethod("grDraw")
         .def("getCommandPromptString", &EdCore::getCommandPromptString).staticmethod("getCommandPromptString")
+        .def("invoke", &EdCore::invoke).staticmethod("invoke")
         .def("getVar", &EdCore::getVar).staticmethod("getVar")
         .def("setVar", &EdCore::setVar).staticmethod("setVar")
         .def("mSpace", &EdCore::mSpace).staticmethod("mSpace")
@@ -375,6 +376,16 @@ std::string EdCore::getCommandPromptString()
     acedGetCommandPromptString(str);
     return wstr_to_utf8(str);
 #endif
+}
+
+boost::python::list EdCore::invoke(const boost::python::list& args)
+{
+    PyAutoLockGIL lock;
+    AcResBufPtr pArgs(listToResbuf(args));
+    resbuf* pResult = nullptr;
+    acedInvoke(pArgs.get(), &pResult);
+    AcResBufPtr pResultPtr(pResult);
+    return resbufToList(pResult);
 }
 
 boost::python::object EdCore::getVar(const std::string& sym)
