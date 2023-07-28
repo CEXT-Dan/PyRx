@@ -9,7 +9,7 @@ import PyGs as Gs
 #  (defun C:ADDNUM ( x / ) (+ x x))
 def PyRxCmd_doit(CmDFlags = Ap.CmdFlags.SESSION):
     try:
-        args = [(Rx.LispDataType.kText, "C:ADDNUM"),(Rx.LispDataType.kInt16,10),(Rx.LispDataType.kNone,0) ]
+        args = [(Rx.LispType.kText, "C:ADDNUM"),(Rx.LispType.kInt16,10),(Rx.LispType.kNone,0) ]
         result = Ed.Core.invoke(args)
         print(result)
       
@@ -19,7 +19,7 @@ def PyRxCmd_doit(CmDFlags = Ap.CmdFlags.SESSION):
     #  (defun C:GETLASTENT () (entget(entlast)))
 def PyRxCmd_doit2(CmDFlags = Ap.CmdFlags.SESSION):
     try:
-        args = [(Rx.LispDataType.kText, "C:GETLASTENT"),(Rx.LispDataType.kNone,0) ]
+        args = [(Rx.LispType.kText, "C:GETLASTENT"),(Rx.LispType.kNone,0) ]
         result = Ed.Core.invoke(args)
         print(result)
       
