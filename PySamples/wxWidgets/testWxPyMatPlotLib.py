@@ -17,10 +17,9 @@ import wx
 def PyRxCmd_wxpy():
     try: 
         res = PyAp.ResourceOverride()
-        dlg = TestDialog(None, -1, "Plot",wx.Size(700,700))
+        dlg = TestDialog(None, -1, "Plot",wx.Size(700,500))
         if dlg.ShowModal() == wx.ID_OK:
-            print(dlg.text1.GetValue())
-            print(dlg.text2.GetValue())
+            print("Yay!")
     except Exception as err:
         print(err)
 
@@ -51,6 +50,7 @@ class TestDialog(wx.Dialog):
         self.SetExtraStyle(wx.DIALOG_EX_CONTEXTHELP)
         self.Create(parent, id, title, pos, size, style, name)
         PyAp.Application.setTitleThemeDark(self.GetHandle())
+        PyAp.Application.applyHostIcon(self.GetHandle())
         
         self.pltpanel = CanvasPanel(self)
         self.pltpanel.draw()
