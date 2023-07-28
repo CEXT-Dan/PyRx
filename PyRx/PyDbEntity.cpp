@@ -79,6 +79,8 @@ void makePyDbEntityWrapper()
         .def("draw", &PyDbEntity::draw, DS.CLASSARGS())
         .def("explode", &PyDbEntity::explode, DS.CLASSARGS())
         .def("getTransformedCopy", &PyDbEntity::getTransformedCopy, DS.CLASSARGS({ "matrix3d: PyGe.Matrix3d" }))
+        .def("addReactor", &PyDbEntity::addReactor, DS.CLASSARGS({ "reactor: EntityReactor" }))
+        .def("removeReactor", &PyDbEntity::removeReactor, DS.CLASSARGS({ "reactor: EntityReactor" }))
         .def("className", &PyDbEntity::className, DS.CLASSARGSSTATIC()).staticmethod("className")
         .def("desc", &PyDbEntity::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
         .def("cloneFrom", &PyDbEntity::cloneFrom, DS.CLASSARGSSTATIC({ "otherObject: RxObject" })).staticmethod("cloneFrom")
@@ -484,6 +486,24 @@ PyDbEntity PyDbEntity::getTransformedCopy(const AcGeMatrix3d& xform) const
     AcDbEntity* pEnt = nullptr;
     PyThrowBadEs(impObj()->getTransformedCopy(xform,pEnt));
     return PyDbEntity(pEnt, true);
+}
+
+void PyDbEntity::addReactor(PyDbEntityReactor& pReactor) const
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    impObj()->addReactor(pReactor.impObj());
+#else
+    return PyThrowBadEs(impObj()->addReactor(pReactor.impObj()));
+#endif
+}
+
+void PyDbEntity::removeReactor(PyDbEntityReactor& pReactor) const
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    impObj()->removeReactor(pReactor.impObj());
+#else
+    return PyThrowBadEs(impObj()->removeReactor(pReactor.impObj()));
+#endif
 }
 
 std::string PyDbEntity::className()

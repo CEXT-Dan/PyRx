@@ -1031,7 +1031,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, 
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def altSuppressLeadingZeros (self, *args, **kwargs)-> bool :
@@ -1575,7 +1575,7 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def removeTextField (self, *args, **kwargs)-> None :
@@ -2421,7 +2421,7 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4, (float)arg5,
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -2795,7 +2795,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def reverseCurve (self: Curve)-> None :
@@ -2996,7 +2996,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def altSuppressLeadingZeros (self, *args, **kwargs)-> bool :
@@ -3570,7 +3570,7 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def removeTextField (self, *args, **kwargs)-> None :
@@ -4204,7 +4204,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def adjustAlignment (self: AttributeDefinition,val : Database)-> None :
@@ -4543,7 +4543,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -4764,7 +4764,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def adjustAlignment (self: Text,val : Database)-> None :
@@ -5103,7 +5103,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -5308,7 +5308,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -5578,7 +5578,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -5694,7 +5694,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -5964,7 +5964,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -6095,7 +6095,7 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def appendAttribute (self: BlockReference,val : Attribute)-> ObjectId :
@@ -6383,7 +6383,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -7332,7 +7332,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -7602,7 +7602,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -9134,7 +9134,7 @@ __init__( (object)arg1, (Point3d)arg2, (Vector3d)arg3, (float)arg4) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -9508,7 +9508,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def reverseCurve (self: Curve)-> None :
@@ -10539,7 +10539,7 @@ class Curve:
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -10883,7 +10883,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def reverseCurve (self: Curve)-> None :
@@ -12868,7 +12868,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def altSuppressLeadingZeros (self, *args, **kwargs)-> bool :
@@ -13418,7 +13418,7 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def removeTextField (self, *args, **kwargs)-> None :
@@ -14934,7 +14934,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def altSuppressLeadingZeros (self, *args, **kwargs)-> bool :
@@ -15454,7 +15454,7 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def removeTextField (self, *args, **kwargs)-> None :
@@ -17522,7 +17522,7 @@ class Entity:
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -17780,7 +17780,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -18161,6 +18161,79 @@ white() -> EntityColor :
 
     C++ signature :
         class AcCmEntityColor white()'''
+    ...
+
+class EntityReactor:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)'''
+    ...
+    def cancelled (self: EntityReactor,obj: PyDb.DbObject)-> None :
+      '''                             '''
+    ...
+    def className ()-> str :
+      '''                             '''
+    ...
+    def copied (self: EntityReactor,obj: PyDb.DbObject,newObj: PyDb.DbObject)-> None :
+      '''                             '''
+    ...
+    def desc ()-> RxClass :
+      '''                             '''
+    ...
+    def dragCloneToBeDeleted (self: EntityReactor,obj: PyDb.Entity,clone: PyDb.Entity)-> None :
+      '''                             '''
+    ...
+    def erased (self: EntityReactor,obj: PyDb.DbObject,flag: bool)-> None :
+      '''                             '''
+    ...
+    def goodbye (self: EntityReactor,obj: PyDb.DbObject)-> None :
+      '''                             '''
+    ...
+    def implRefCount (self: RxObject)-> int :
+      '''                             '''
+    ...
+    def isA (self: RxObject)-> RxClass :
+      '''                             '''
+    ...
+    def isNullObj (self: RxObject)-> bool :
+      '''                             '''
+    ...
+    def modified (self: EntityReactor,obj: PyDb.DbObject)-> None :
+      '''                             '''
+    ...
+    def modifiedGraphics (self: EntityReactor,obj: PyDb.Entity)-> None :
+      '''                             '''
+    ...
+    def modifiedXData (self: EntityReactor,obj: PyDb.DbObject)-> None :
+      '''                             '''
+    ...
+    def modifyUndone (self: EntityReactor,obj: PyDb.DbObject)-> None :
+      '''                             '''
+    ...
+    def objectClosed (self: EntityReactor,obj: PyDb.ObjectId)-> None :
+      '''                             '''
+    ...
+    def openedForModify (self: EntityReactor,obj: PyDb.DbObject)-> None :
+      '''                             '''
+    ...
+    def queryX (self: RxObject,rhs :  PyRx.RxClass)-> RxObject :
+      '''                             '''
+    ...
+    def reappended (self: EntityReactor,obj: PyDb.DbObject)-> None :
+      '''                             '''
+    ...
+    def subObjModified (self: EntityReactor,obj: PyDb.DbObject,subObj: PyDb.DbObject)-> None :
+      '''                             '''
+    ...
+    def unappended (self: EntityReactor,obj: PyDb.DbObject)-> None :
+      '''                             '''
     ...
 
 class ErrorStatus:
@@ -20136,7 +20209,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -20406,7 +20479,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -20552,7 +20625,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -20834,7 +20907,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -20976,7 +21049,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -21246,7 +21319,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -21380,7 +21453,7 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -21716,7 +21789,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -23643,7 +23716,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def appendLoop (self, *args, **kwargs)-> None :
@@ -24200,7 +24273,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -25285,7 +25358,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -25555,7 +25628,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -27881,7 +27954,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def annoHeight (self, *args, **kwargs)-> float :
@@ -28434,7 +28507,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def reverseCurve (self: Curve)-> None :
@@ -28710,7 +28783,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -29069,7 +29142,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def reverseCurve (self: Curve)-> None :
@@ -29252,7 +29325,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def altSuppressLeadingZeros (self, *args, **kwargs)-> bool :
@@ -29784,7 +29857,7 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def removeTextField (self, *args, **kwargs)-> None :
@@ -31382,7 +31455,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -31652,7 +31725,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -31783,7 +31856,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def appendAttribute (self: BlockReference,val : Attribute)-> ObjectId :
@@ -32077,7 +32150,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -32278,7 +32351,7 @@ addLeaderLine( (MLeader)arg1, (Point3d)arg2) -> int :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def arrowSize (self, *args, **kwargs)-> float :
@@ -32916,7 +32989,7 @@ moveMLeader( (MLeader)arg1, (Vector3d)arg2, (MLeaderMoveType)arg3, (bool)arg4) -
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -35796,7 +35869,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def ascent (self, *args, **kwargs)-> float :
@@ -36228,7 +36301,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -37256,7 +37329,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def appendSeg (self, *args, **kwargs)-> None :
@@ -37610,7 +37683,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -38381,7 +38454,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -38651,7 +38724,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -39026,7 +39099,7 @@ __init__( (object)arg1, (bool)arg2, (Point3d)arg3, (Point3d)arg4, (str)arg5, (Ob
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def altSuppressLeadingZeros (self, *args, **kwargs)-> bool :
@@ -39576,7 +39649,7 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def removeTextField (self, *args, **kwargs)-> None :
@@ -40920,7 +40993,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -41316,7 +41389,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -41699,7 +41772,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -41969,7 +42042,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -43131,7 +43204,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -43398,7 +43471,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -43554,7 +43627,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def altSuppressLeadingZeros (self, *args, **kwargs)-> bool :
@@ -44092,7 +44165,7 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def removeTextField (self, *args, **kwargs)-> None :
@@ -44943,7 +45016,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -45204,7 +45277,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -45338,7 +45411,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -45599,7 +45672,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -45736,7 +45809,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def addVertexAt (self, *args, **kwargs)-> None :
@@ -46231,7 +46304,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def removeVertexAt (self, *args, **kwargs)-> None :
@@ -46446,7 +46519,7 @@ __init__( (object)arg1, (Poly2dType)arg2, (list)arg3, (bool)arg4) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def appendVertex (self, *args, **kwargs)-> None :
@@ -46896,7 +46969,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def reverseCurve (self: Curve)-> None :
@@ -47128,7 +47201,7 @@ __init__( (object)arg1, (Poly3dType)arg2, (list)arg3, (bool)arg4) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def appendVertex (self, *args, **kwargs)-> None :
@@ -47536,7 +47609,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def reverseCurve (self: Curve)-> None :
@@ -47708,7 +47781,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -47969,7 +48042,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -48116,7 +48189,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (float)arg4, (str)arg5, (O
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def altSuppressLeadingZeros (self, *args, **kwargs)-> bool :
@@ -48666,7 +48739,7 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def removeTextField (self, *args, **kwargs)-> None :
@@ -49262,7 +49335,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def altSuppressLeadingZeros (self, *args, **kwargs)-> bool :
@@ -49824,7 +49897,7 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def removeTextField (self, *args, **kwargs)-> None :
@@ -50435,7 +50508,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -50836,7 +50909,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -52191,7 +52264,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -52473,7 +52546,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -52787,7 +52860,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -53057,7 +53130,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -53198,7 +53271,7 @@ __init__( (object)arg1, (float)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)arg5
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def altSuppressLeadingZeros (self, *args, **kwargs)-> bool :
@@ -53742,7 +53815,7 @@ recomputeDimBlock( (Dimension)arg1, (bool)arg2) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def removeTextField (self, *args, **kwargs)-> None :
@@ -54736,7 +54809,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -55006,7 +55079,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -55400,7 +55473,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -55926,7 +55999,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -56767,7 +56840,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -57037,7 +57110,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -57657,7 +57730,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -57927,7 +58000,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -58806,7 +58879,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def alignment (self, *args, **kwargs)-> CellAlignment :
@@ -59764,7 +59837,7 @@ removeDataLink( (Table)arg1, (int)arg2, (int)arg3) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -61939,7 +62012,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def adjustAlignment (self: Text,val : Database)-> None :
@@ -62248,7 +62321,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -64886,7 +64959,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -65282,7 +65355,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -66000,7 +66073,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -66258,7 +66331,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -66394,7 +66467,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def assertNotifyEnabled (self: DbObject)-> None :
@@ -66667,7 +66740,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def rolloverHit (self: Drawable,nSubentId: int,nMouseFlags: int,bReset: bool)-> bool :
@@ -67654,7 +67727,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def addPersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def addReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def addReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def ambientLightColor (self, *args, **kwargs)-> Color :
@@ -68300,7 +68373,7 @@ removeHiddenLines( (Viewport)arg1, (bool)arg2) -> None :
     def removePersistentReactor (self: DbObject,id: ObjectId)-> None :
       '''                             '''
     ...
-    def removeReactor (self: DbObject,reactor: DbObjectReactor)-> None :
+    def removeReactor (self: Entity,reactor: EntityReactor)-> None :
       '''                             '''
     ...
     def removeSheetView (self, *args, **kwargs)-> None :
