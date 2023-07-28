@@ -27,7 +27,7 @@
 #include "PyLispService.h"
 #include "PyRxApp.h"
 #include "PyCmd.h"
-
+#include "rxvar.h"
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("")
 
@@ -514,7 +514,17 @@ public:
 
     static void AcRxPyApp_doit(void)
     {
-
+        std::unique_ptr<AcEdSysVarIterator> vars(new AcEdSysVarIterator());
+        for (vars->reset(); !vars->done(); vars->step())
+        {
+            resbuf buf;
+            const AcRxVariable* var = vars->getSysVar();
+            acutPrintf(_T("%ls, "), var->name());
+            //var->getValue(buf);
+            //if (buf.restype == RTSTR)
+                //acutDelString(buf.resval.rstring);
+        }
+        
     }
 };
 

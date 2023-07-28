@@ -6,7 +6,7 @@ import PyDb
 import PyAp
 import PyEd
 
-class LispDataType:
+class LispType:
     def __init__ (self, /, *args, **kwargs):
       '''Initialize self.  See help(type(self)) for accurate signature.'''
     ...

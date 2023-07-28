@@ -1,6 +1,6 @@
 #pragma once
 
-enum class LispDataType
+enum class LispType
 {
     kAngle = 5004,
     kDottedPair = 5018,
