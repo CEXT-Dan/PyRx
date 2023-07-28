@@ -293,7 +293,7 @@ struct PyObjectDeleter
         Py_XDECREF(ptr);
     }
 };
-using PyObjectPtr = std::unique_ptr < PyObject, PyObjectDeleter>;
+using PyObjectPtr = std::unique_ptr <PyObject, PyObjectDeleter>;
 
 
 AcGePoint3d py_list_to_point3d(const boost::python::object& iterable)
