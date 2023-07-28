@@ -352,6 +352,12 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         int grDraw(class AcGePoint3d,class AcGePoint3d,int,int)'''
     ...
+    def invoke (self, *args, **kwargs)-> list :
+      '''invoke( (list)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list invoke(class boost::python::list)'''
+    ...
     def mSpace (self, *args, **kwargs)-> None :
       '''mSpace() -> None :
 
