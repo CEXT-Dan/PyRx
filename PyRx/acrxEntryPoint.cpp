@@ -412,12 +412,23 @@ public:
         cmdName = pGlobalCmdName.buf;
         cmdName.makeUpper();
         return cmdName;
-#else
+#endif
+#if defined(_ZRXTARGET) && (_ZRXTARGET <= 23)
+        AcString cmdName;
+        RxAutoOutStr pGlobalCmdName;
+        if (auto es = acedGetCommandForDocument(curDoc(), pGlobalCmdName.buf); es != eOk)
+            return cmdName;
+        cmdName = pGlobalCmdName.buf;
+        cmdName.makeUpper();
+        return cmdName;
+#endif
+#if defined(_ARXTARGET)
         AcString pGlobalCmdName;
         if (auto es = acedGetCommandForDocument(curDoc(), pGlobalCmdName); es != eOk)
             return pGlobalCmdName;
         return pGlobalCmdName.makeUpper();
 #endif
+
     }
 
     static void AcRxPyApp_pyfunc(void)
