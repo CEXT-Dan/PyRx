@@ -1,9 +1,7 @@
 #include "stdafx.h"
 #include "PyDbObjectId.h"
 
-
 using namespace boost::python;
-
 
 //---------------------------------------------------------------------------------
 // PyDbObjectId

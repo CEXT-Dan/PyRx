@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "PyDbFiler.h"
+#include "PyDbObjectId.h"
+
 //TODO
 
 void makePyDbDwgFilerWrapper()
@@ -50,6 +52,54 @@ AcDb::MaintenanceReleaseVersion PyDbDwgFiler::extendedDwgMaintenanceReleaseVersi
     PyThrowBadEs(impObj()->extendedDwgMaintenanceReleaseVersion(val));
     return val;
 #endif // !BRXAPP
+}
+
+PyDbObjectId PyDbDwgFiler::readHardOwnershipId()
+{
+    AcDbHardOwnershipId id;
+    PyThrowBadEs(impObj()->readHardOwnershipId(&id));
+    return PyDbObjectId(id);
+}
+
+void PyDbDwgFiler::writeHardOwnershipId(const PyDbObjectId& id)
+{
+    PyThrowBadEs(impObj()->writeHardOwnershipId(id.m_id));
+}
+
+PyDbObjectId PyDbDwgFiler::readSoftOwnershipId()
+{
+    AcDbSoftOwnershipId id;
+    PyThrowBadEs(impObj()->readSoftOwnershipId(&id));
+    return PyDbObjectId(id);
+}
+
+void PyDbDwgFiler::writeSoftOwnershipId(const PyDbObjectId& id)
+{
+    PyThrowBadEs(impObj()->writeSoftOwnershipId(id.m_id));
+}
+
+PyDbObjectId PyDbDwgFiler::readHardPointerId()
+{
+    AcDbHardPointerId id;
+    PyThrowBadEs(impObj()->readHardPointerId(&id));
+    return PyDbObjectId(id);
+}
+
+void PyDbDwgFiler::writeHardPointerId(const PyDbObjectId& id)
+{
+    PyThrowBadEs(impObj()->writeHardPointerId(id.m_id));
+}
+
+PyDbObjectId PyDbDwgFiler::readSoftPointerId()
+{
+    AcDbSoftPointerId id;
+    PyThrowBadEs(impObj()->readSoftPointerId(&id));
+    return PyDbObjectId(id);
+}
+
+void PyDbDwgFiler::writeSoftPointerId(const PyDbObjectId& id)
+{
+    PyThrowBadEs(impObj()->writeSoftPointerId(id.m_id));
 }
 
 PyRxClass PyDbDwgFiler::desc()
