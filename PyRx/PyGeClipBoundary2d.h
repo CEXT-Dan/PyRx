@@ -10,7 +10,7 @@ class PyGeClipBoundary2d : public PyGeEntity2d
 public:
     PyGeClipBoundary2d();
     PyGeClipBoundary2d(AcGeEntity2d* pEnt);
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     PyGeClipBoundary2d(const AcGePoint2d& cornerA, const AcGePoint2d& cornerB);
     PyGeClipBoundary2d(const boost::python::list& clipBoundary); //TODO: make test
 #endif // !BRXAPP

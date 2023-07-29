@@ -206,7 +206,7 @@ void makePyDbViewportWrapper()
         .value("k1_1", AcDbViewport::StandardScaleType::k1_1)
         .value("k1_2", AcDbViewport::StandardScaleType::k1_2)
         .value("k1_4", AcDbViewport::StandardScaleType::k1_4)
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
         .value("k1_5", AcDbViewport::StandardScaleType::k1_5)
 #endif // !BRXAPP
         .value("k1_8", AcDbViewport::StandardScaleType::k1_8)

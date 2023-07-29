@@ -64,7 +64,7 @@ void makePyDbExtents2dWrapper()
         .def("minPoint", &AcDbExtents2d::minPoint)
         .def("maxPoint", &AcDbExtents2d::maxPoint)
         .def("set", &AcDbExtents2d::set)
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
         .def("addPoint", &AcDbExtents2d::addPoint)
         .def("addExt", &AcDbExtents2d::addExt)
         .def("expandBy", &AcDbExtents2d::expandBy)
@@ -481,7 +481,7 @@ BOOST_PYTHON_MODULE(PyDb)
         .value("kDxfLinetypeAlign", AcDb::kDxfLinetypeAlign)
         .value("kDxfLinetypePDC", AcDb::kDxfLinetypePDC)
         .value("kDxfInt32", AcDb::kDxfInt32)
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
         .value("kDxfVertexIdentifier", AcDb::kDxfVertexIdentifier)
 #endif // !BRXAPP
         .value("kDxfSubclass", AcDb::kDxfSubclass)
@@ -540,7 +540,7 @@ BOOST_PYTHON_MODULE(PyDb)
         .value("kDxfGradientTintVal", AcDb::kDxfGradientTintVal)
         .value("kDxfGradientColVal", AcDb::kDxfGradientColVal)
         .value("kDxfGradientName", AcDb::kDxfGradientName)
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
         .value("kDxfFaceStyleId", AcDb::kDxfFaceStyleId)
         .value("kDxfEdgeStyleId", AcDb::kDxfEdgeStyleId)
 #endif
@@ -568,7 +568,7 @@ BOOST_PYTHON_MODULE(PyDb)
         .value("kDxfXdScale", AcDb::kDxfXdScale)
         .value("kDxfXdInteger16", AcDb::kDxfXdInteger16)
         .value("kDxfXdInteger32", AcDb::kDxfXdInteger32)
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
         .value("kDxfXdMax", AcDb::kDxfXdMax)
 #endif
         .export_values()

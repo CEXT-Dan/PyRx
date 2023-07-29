@@ -224,7 +224,7 @@ bool PyRxApp::setPyConfig()
     return true;
 }
 
-bool PyRxApp::pyRxAppendSearchPath(const TCHAR* pModulePath)
+bool PyRxApp::appendSearchPath(const TCHAR* pModulePath)
 {
     WxPyAutoLock lock;
 

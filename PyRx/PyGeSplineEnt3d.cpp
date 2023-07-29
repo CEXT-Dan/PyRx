@@ -215,7 +215,7 @@ void makePyGePolyline3dWrapper()
         .def(init<>())
         .def(init<const boost::python::list&>())
         .def(init<const PyGeKnotVector&, const boost::python::list&>())
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
         .def(init<const PyGeCurve3d&, double>())
 #endif // BRXAPP
         .def("numFitPoints", &PyGePolyline3d::numFitPoints)
@@ -250,7 +250,7 @@ PyGePolyline3d::PyGePolyline3d(const PyGeKnotVector& knots, const boost::python:
 {
 }
 
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
 PyGePolyline3d::PyGePolyline3d(const PyGeCurve3d& crv, double apprEps)
     : PyGeSplineEnt3d(new AcGePolyline3d(*crv.impObj(), apprEps))
 {

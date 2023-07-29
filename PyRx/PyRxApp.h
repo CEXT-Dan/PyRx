@@ -22,7 +22,7 @@ public:
     bool init();
     bool uninit();
     static bool setPyConfig();
-    static bool pyRxAppendSearchPath(const TCHAR* pModulePath);
+    static bool appendSearchPath(const TCHAR* pModulePath);
     static std::wstring the_error();
     static std::filesystem::path modulePath();
     static PyRxApp& instance();
