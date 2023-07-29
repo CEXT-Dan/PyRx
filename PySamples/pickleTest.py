@@ -8,6 +8,7 @@ import PyGs as Gs
 
 import pickle
 
+
 def pickleizer():
     sysvars = Ed.Core.getSysVars()
     pickle.dump(sysvars, open("E:\\SysVar.p", "wb"))
@@ -38,9 +39,27 @@ def PyRxCmd_doit3():
     try:
         sysvars1 = pickleizer()
         sysvars2 = depickleizer()
-        for left, right in zip(sysvars1.values(), sysvars2.values()):
-            if left != right:
-                print(left, "!=", right)
+        for leftKey, leftValue, rightKey, rightValue in zip(sysvars1.keys(), sysvars1.values(),  sysvars2.keys(), sysvars2.values()):
+            if leftValue != rightValue:
+                print(leftKey,leftValue, "!=",rightKey, rightValue)
+
+    except Exception as err:
+        print(err)
+        
+# pickle test
+def PyRxCmd_doit4():
+    try:
+        Ed.Core.setVar("OSMODE", 191)
+        pickleizer()
+        sysvars1 = depickleizer()
+        
+        Ed.Core.setVar("OSMODE", 0)
+        sysvars2 = Ed.Core.getSysVars()
+        
+        for leftKey, leftValue, rightKey, rightValue in zip(sysvars1.keys(), sysvars1.values(),  sysvars2.keys(), sysvars2.values()):
+            if leftValue != rightValue:
+                print(leftKey, leftValue, "!=", rightKey, rightValue)
+        
 
     except Exception as err:
         print(err)
