@@ -5,6 +5,7 @@
 #include "ResultBuffer.h"
 #include "acedCmdNF.h"
 #include "PyDbMText.h"
+#include "rxvar.h"
 
 #ifdef ARXAPP
 #include "AcHTMLApi.h"
@@ -65,6 +66,7 @@ void makePyEdCoreWrapper()
         .def("invoke", &EdCore::invoke).staticmethod("invoke")
         .def("getVar", &EdCore::getVar).staticmethod("getVar")
         .def("setVar", &EdCore::setVar).staticmethod("setVar")
+        .def("getSysVars", &EdCore::getSysVars).staticmethod("getSysVars")
         .def("mSpace", &EdCore::mSpace).staticmethod("mSpace")
         .def("pSpace", &EdCore::pSpace).staticmethod("pSpace")
         .def("setUndoMark", &EdCore::setUndoMark).staticmethod("setUndoMark")
@@ -388,6 +390,55 @@ boost::python::list EdCore::invoke(const boost::python::list& args)
     return resbufToList(pResult);
 }
 
+boost::python::dict EdCore::getSysVars()
+{
+    PyAutoLockGIL lock;
+    boost::python::dict pydict;
+
+    std::unique_ptr<AcEdSysVarIterator> vars(new AcEdSysVarIterator());
+    for (vars->reset(); !vars->done(); vars->step())
+    {
+        resbuf buf;
+        buf.restype = 0;
+        buf.resval.rint = 0;
+        const AcRxVariable* var = vars->getSysVar();
+        const std::string utf8Name = wstr_to_utf8(var->name());
+
+        if (auto es = acedGetVar(var->name(), &buf); es != RTNORM)
+        {
+            pydict[utf8Name] = wstr_to_utf8(buf.resval.rstring);
+            continue;
+        }
+        switch (buf.restype)
+        {
+            case RTSTR:
+            {
+                pydict[utf8Name] = wstr_to_utf8(buf.resval.rstring);
+                acutDelString(buf.resval.rstring);
+                break;
+            }
+            case RTLONG:
+            case RTSHORT:
+            {
+                pydict[utf8Name] = buf.resval.rlong;
+                break;
+            }
+            case RTREAL:
+            {
+                pydict[utf8Name] = buf.resval.rreal;
+                break;
+            }
+            case RTPOINT:
+            case RT3DPOINT:
+            {
+                pydict[utf8Name] = asPnt3d(buf.resval.rpoint);
+                break;
+            }
+        }
+    }
+    return pydict;
+}
+
 boost::python::object EdCore::getVar(const std::string& sym)
 {
     PyAutoLockGIL lock;
@@ -649,10 +700,10 @@ bool EdCore::xrefNotifyCheckFileChanged(const PyDbObjectId& id)
 
 void EdCore::xrefOverlay1(const std::string& path, const std::string& name)
 {
-   return PyThrowBadEs(acedXrefOverlay(utf8_to_wstr(path).c_str(), utf8_to_wstr(name).c_str()));
+    return PyThrowBadEs(acedXrefOverlay(utf8_to_wstr(path).c_str(), utf8_to_wstr(name).c_str()));
 }
 
-void EdCore::xrefOverlay2(const std::string& path, const std::string& name, PyDbObjectId& btrid, PyDbObjectId& refid, 
+void EdCore::xrefOverlay2(const std::string& path, const std::string& name, PyDbObjectId& btrid, PyDbObjectId& refid,
     AcGePoint3d& pt, AcGeScale3d& sc, double rot, bool bQuiet, PyDbDatabase& pHostDb, const std::string& passwd)
 {
     return PyThrowBadEs(acedXrefOverlay(
