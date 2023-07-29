@@ -1,5 +1,8 @@
 #pragma once
-//TODO
+#include "PyRxObject.h"
 
-class PyDbFiler;
+class PyDbDwgFiler : public PyRxObject
+{
+
+};
 
