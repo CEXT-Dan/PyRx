@@ -86,6 +86,14 @@ void makePyGeTolWrapper()
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGePoint2d
+struct AcGePoint2dpickle : boost::python::pickle_suite
+{
+    static boost::python::tuple getinitargs(const AcGePoint2d& p)
+    {
+        return boost::python::make_tuple(p.x, p.y);
+    }
+};
+
 boost::python::tuple AcGePoint2dToTuple(const AcGePoint2d& p)
 {
     PyAutoLockGIL lock;
@@ -182,6 +190,7 @@ void makePyGePoint2dWrapper()
         .def<AcGePoint2d(AcGePoint2d::*)(const AcGeVector2d&)const>("__sub__", &AcGePoint2d::operator-)
         .def<AcGePoint2d& (AcGePoint2d::*)(const AcGeVector2d&)>("__isub__", &AcGePoint2d::operator-=, return_self<>())
         .def<AcGeVector2d(AcGePoint2d::*)(const AcGePoint2d&)const>("__sub__", &AcGePoint2d::operator-)
+        .def_pickle(AcGePoint2dpickle())
         .def("toString", &AcGePoint2dToString)
         .def("toTuple", &AcGePoint2dToTuple)
         .def("toList", &AcGePoint2dToList)
@@ -195,6 +204,14 @@ void makePyGePoint2dWrapper()
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGeVector2d
+struct AcGeVector2pickle : boost::python::pickle_suite
+{
+    static boost::python::tuple getinitargs(const AcGeVector2d& p)
+    {
+        return boost::python::make_tuple(p.x, p.y);
+    }
+};
+
 std::string AcGeVector2ToString(const AcGeVector2d& p)
 {
     return std::format("({:.14f},{:.14f})", p.x, p.y);
@@ -303,6 +320,7 @@ void makePyGeVector2dWrapper()
         .def<AcGeVector2d(AcGeVector2d::*)()const>("__sub__", &AcGeVector2d::operator-)
         .def<AcGeVector2d(AcGeVector2d::*)(const AcGeVector2d&)const>("__sub__", &AcGeVector2d::operator-)
         .def<AcGeVector2d& (AcGeVector2d::*)(const AcGeVector2d&)>("__isub__", &AcGeVector2d::operator-=, return_self<>())
+        .def_pickle(AcGeVector2pickle())
         .def("toString", &AcGeVector2ToString)
         .def("__str__", &AcGeVector2ToString)
         .def("__repr__", &AcGeVector2dToStringRepr)
@@ -456,6 +474,14 @@ void makePyGeScale3dWrapper()
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGePoint3d
+struct AcGePoint3dpickle : boost::python::pickle_suite
+{
+    static boost::python::tuple getinitargs(const AcGePoint3d& p)
+    {
+        return boost::python::make_tuple(p.x, p.y, p.z);
+    }
+};
+
 boost::python::tuple AcGePoint3dToTuple(const AcGePoint3d& p)
 {
     PyAutoLockGIL lock;
@@ -578,6 +604,7 @@ void makePyGePoint3dWrapper()
         .def<AcGePoint3d(AcGePoint3d::*)(const AcGeVector3d&)const>("__sub__", &AcGePoint3d::operator-)
         .def<AcGePoint3d& (AcGePoint3d::*)(const AcGeVector3d&)>("__isub__", &AcGePoint3d::operator-=, return_self<>())
         .def<AcGeVector3d(AcGePoint3d::*)(const AcGePoint3d&)const>("__sub__", &AcGePoint3d::operator-)
+        .def_pickle(AcGePoint3dpickle())
         .def("toList", &AcGePoint3dToList)
         .def("toTuple", &AcGePoint3dToTuple)
         .def("toString", &AcGePoint3dToString)
@@ -591,6 +618,14 @@ void makePyGePoint3dWrapper()
 
 //---------------------------------------------------------------------------------------------------------------
 //AcGeVector3d
+struct AcGeVector3dpickle : boost::python::pickle_suite
+{
+    static boost::python::tuple getinitargs(const AcGeVector3d& p)
+    {
+        return boost::python::make_tuple(p.x, p.y, p.z);
+    }
+};
+
 static AcGeVector3d AcGeVector3dkIdentity()
 {
     return AcGeVector3d::kIdentity;
@@ -732,6 +767,7 @@ static void makePyGeVector3dWrapper()
         .def<AcGeVector3d& (AcGeVector3d::*)(const AcGeVector3d&)>("__iadd__", &AcGeVector3d::operator+=, return_self<>())
         .def<AcGeVector3d(AcGeVector3d::*)(const AcGeVector3d&)const>("__sub__", &AcGeVector3d::operator-)
         .def<AcGeVector3d& (AcGeVector3d::*)(const AcGeVector3d&)>("__isub__", &AcGeVector3d::operator-=, return_self<>())
+        .def_pickle(AcGeVector3dpickle())
         .def("toString", &AcGeVector3dToString)
         .def("__str__", &AcGeVector3dToString)
         .def("__repr__", &AcGeVector3dToStringRepr)

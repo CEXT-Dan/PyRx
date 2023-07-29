@@ -340,6 +340,12 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
     C++ signature :
         class boost::python::list getPredefinedHatchPatterns()'''
     ...
+    def getSysVars (self, *args, **kwargs)-> dict :
+      '''getSysVars() -> dict :
+
+    C++ signature :
+        class boost::python::dict getSysVars()'''
+    ...
     def getVar (self, *args, **kwargs)-> object :
       '''getVar( (str)arg1) -> object :
 
