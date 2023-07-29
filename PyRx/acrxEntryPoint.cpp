@@ -215,7 +215,7 @@ public:
         pypath = pResBuf->resval.rstring;
         pysyspath = pResBuf->resval.rstring;
         pysyspath.remove_filename();
-        PyRxApp::pyRxAppendSearchPath(pysyspath.c_str());
+        PyRxApp::appendSearchPath(pysyspath.c_str());
         pypath.replace_extension(_T(""));
         acutRelRb(pResBuf);
 
@@ -443,14 +443,14 @@ public:
                     if (PyRxApp::instance().pathForCommand.contains(cmdName))
                         std::filesystem::current_path(PyRxApp::instance().pathForCommand.at(cmdName));
 
-                    PyObject* method = PyRxApp::instance().commands.at(cmdName);
-                    if (method != nullptr)
+                    PyObject* pMethod = PyRxApp::instance().commands.at(cmdName);
+                    if (pMethod != nullptr)
                     {
                         WxPyAutoLock lock;
                         PyErr_Clear();
-                        if (PyCallable_Check(method))
+                        if (PyCallable_Check(pMethod))
                         {
-                            PyObjectPtr rslt(PyObject_CallFunction(method, NULL));
+                            PyObjectPtr rslt(PyObject_CallFunction(pMethod, NULL));
                             if (rslt != nullptr)
                                 return;
                         }
@@ -501,7 +501,7 @@ public:
             pypath = pArgs->resval.rstring;
             pysyspath = pArgs->resval.rstring;
             pysyspath.remove_filename();
-            PyRxApp::pyRxAppendSearchPath(pysyspath.c_str());
+            PyRxApp::appendSearchPath(pysyspath.c_str());
             pypath.replace_extension(_T(""));
             pathName = pypath.filename().c_str();
             moduleName = pathName;

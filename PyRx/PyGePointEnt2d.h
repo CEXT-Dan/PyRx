@@ -62,7 +62,7 @@ public:
     PyGePosition2d();
     PyGePosition2d(const AcGePoint2d& pnt);
     PyGePosition2d(double x, double y);
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     PyGePosition2d(const AcGePosition2d& pos);
 #endif
     PyGePosition2d(AcGeEntity2d* pEnt);

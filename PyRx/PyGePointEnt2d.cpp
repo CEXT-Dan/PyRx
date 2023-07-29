@@ -237,7 +237,7 @@ PyGePosition2d::PyGePosition2d(double x, double y)
     : PyGePointEnt2d(new AcGePosition2d(x, y))
 {
 }
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
 PyGePosition2d::PyGePosition2d(const AcGePosition2d& pos)
     : PyGePointEnt2d(new AcGePosition2d(pos))
 {

@@ -38,7 +38,7 @@ void makePyDbFieldtWrapper()
         .value("kModified", AcDbField::State::kModified)
         .value("kEvaluated", AcDbField::State::kEvaluated)
         .value("kHasCache", AcDbField::State::kHasCache)
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
         .value("kHasFormattedString", AcDbField::State::kHasFormattedString)
 #endif // BRXAPP
         .export_values()
@@ -86,7 +86,7 @@ void makePyDbFieldtWrapper()
         .value("kPreserveFields", AcDbField::FieldCodeFlag::kPreserveFields)
         .value("kTextField", AcDbField::FieldCodeFlag::kTextField)
         .export_values()
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
         .value("kPreserveOptions", AcDbField::FieldCodeFlag::kPreserveOptions)
         .value("kDetachChildren", AcDbField::FieldCodeFlag::kDetachChildren)
         .value("kChildObjectReference", AcDbField::FieldCodeFlag::kChildObjectReference)

@@ -5,7 +5,7 @@ int PyCmd::getCommandFlags(AcString& str)
 {
     if (str.length() < 3) //we may get the function '()'
         return 1;
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     str.remove();
 #endif // !BRXAPP
     if (str.find(PyCommandFlagPrefix) == -1)

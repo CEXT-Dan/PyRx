@@ -11,7 +11,7 @@ class PyGeCurveCurveInt2d : public PyGeEntity2d
 {
 public:
     PyGeCurveCurveInt2d();
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     PyGeCurveCurveInt2d(const AcGeCurve2d& curve1, const AcGeCurve2d& curve2);
     PyGeCurveCurveInt2d(const AcGeCurve2d& curve1, const AcGeCurve2d& curve2, const AcGeTol& tol);
     PyGeCurveCurveInt2d(const AcGeCurve2d& curve1, const AcGeCurve2d& curve2, const PyGeInterval& range1, const PyGeInterval& range2);

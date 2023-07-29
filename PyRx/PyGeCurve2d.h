@@ -124,7 +124,7 @@ class PyGeEllipArc2d : public PyGeCurve2d
 public:
     PyGeEllipArc2d();
     PyGeEllipArc2d(const AcGeEllipArc2d& ell);
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     PyGeEllipArc2d(const PyGeCircArc2d& arc);
 #endif // !BRXAPP
     PyGeEllipArc2d(const AcGePoint2d& cent, const AcGeVector2d& majorAxis, const AcGeVector2d& minorAxis, double majorRadius, double minorRadius);

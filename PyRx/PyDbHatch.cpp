@@ -102,7 +102,7 @@ void makePyDbHatchWrapper()
         .value("kSelfIntersecting", AcDbHatch::HatchLoopType::kSelfIntersecting)
         .value("kTextIsland", AcDbHatch::HatchLoopType::kTextIsland)
         .value("kDuplicate", AcDbHatch::HatchLoopType::kDuplicate)
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
         .value("kIsAnnotative", AcDbHatch::HatchLoopType::kIsAnnotative)
         .value("kDoesNotSupportScale", AcDbHatch::HatchLoopType::kDoesNotSupportScale)
         .value("kForceAnnoAllVisible", AcDbHatch::HatchLoopType::kForceAnnoAllVisible)

@@ -74,7 +74,7 @@ void makePyCmTransparencyWrapper()
         .def("isByAlpha", &AcCmTransparency::isByAlpha)
         .def("isByBlock", &AcCmTransparency::isByBlock)
         .def("isByLayer", &AcCmTransparency::isByLayer)
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
         .def("isInvalid", &AcCmTransparency::isInvalid)
 #endif // !BRXAPP
         .def("isClear", &AcCmTransparency::isClear)

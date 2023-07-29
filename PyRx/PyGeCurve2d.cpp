@@ -796,7 +796,7 @@ void makePyGeEllipArc2Wrapper()
 {
     class_<PyGeEllipArc2d, bases<PyGeCurve2d>>("EllipArc2d")
         .def(init<>())
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
         .def(init<const PyGeCircArc2d&>())
 #endif // !BRXAPP
         .def(init<const AcGePoint2d&, const AcGeVector2d&, const AcGeVector2d&, double, double>())
@@ -844,7 +844,7 @@ PyGeEllipArc2d::PyGeEllipArc2d(const AcGeEllipArc2d& ell)
 {
 }
 
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
 PyGeEllipArc2d::PyGeEllipArc2d(const PyGeCircArc2d& arc)
     : PyGeCurve2d(new AcGeEllipArc2d(*arc.impObj()))
 {

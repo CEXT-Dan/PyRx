@@ -14,7 +14,7 @@ void makePyEdJigWrapper()
         class_<PyJig, boost::noncopyable>("Jig", boost::python::no_init)
             .def(init<const PyDbEntity&>())
             .def("drag", &PyJig::dragwr1)
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
             .def("drag", &PyJig::dragwr2)
 #endif
             .def("sampler", &PyJig::sampler)
@@ -97,7 +97,7 @@ void makePyEdJigWrapper()
             ;
     }
 
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     {
         class_<AcEdDragStyle>("DragStyle")
             .def(init<>())
@@ -132,7 +132,7 @@ AcEdJig::DragStatus PyJig::dragwr1()
     return this->drag();
 }
 
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
 AcEdJig::DragStatus PyJig::dragwr2(const AcEdDragStyle& style)
 {
     return  this->drag(style);
@@ -298,7 +298,7 @@ void makePyEdDrawJigWrapper()
 {
     class_<PyDrawJig, boost::noncopyable>("DrawJig")
         .def("drag", &PyDrawJig::dragwr1)
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
         .def("drag", &PyDrawJig::dragwr2)
 #endif
         .def("sampler", &PyDrawJig::sampler)
@@ -334,7 +334,7 @@ AcEdJig::DragStatus PyDrawJig::dragwr1()
     return this->drag();
 }
 
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
 AcEdJig::DragStatus PyDrawJig::dragwr2(const AcEdDragStyle& style)
 {
     return this->drag(style);

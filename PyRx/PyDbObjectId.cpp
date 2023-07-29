@@ -414,7 +414,7 @@ PyDbXrefObjectId::PyDbXrefObjectId()
 {
 }
 
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
 PyDbXrefObjectId::PyDbXrefObjectId(const AcDbXrefObjectId& id)
     : m_imp(id)
 {

@@ -34,7 +34,7 @@ void makePyGiObjectWrapper()
         .value("kImageBackground", AcGiDrawable::DrawableType::kImageBackground)
         .value("kGroundPlaneBackground", AcGiDrawable::DrawableType::kGroundPlaneBackground)
         .value("kViewport", AcGiDrawable::DrawableType::kViewport)
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
         .value("kWebLight", AcGiDrawable::DrawableType::kWebLight)
         .value("kSkyBackground", AcGiDrawable::DrawableType::kSkyBackground)
         .value("kImageBasedLightingBackground", AcGiDrawable::DrawableType::kImageBasedLightingBackground)

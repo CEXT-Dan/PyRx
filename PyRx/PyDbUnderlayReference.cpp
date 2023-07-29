@@ -9,7 +9,7 @@ using namespace boost::python;
 void makePyUnderlayLayerWrapper()
 {
     class_<PyUnderlayLayer>("UnderlayLayer")
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
         .def("name", &PyUnderlayLayer::name)
         .def("state", &PyUnderlayLayer::state)
         .def("setName", &PyUnderlayLayer::setName)
@@ -22,7 +22,7 @@ PyUnderlayLayer::PyUnderlayLayer()
 {
 }
 
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
 PyUnderlayLayer::PyUnderlayLayer(const AcUnderlayLayer& layer)
     : imp(layer)
 {

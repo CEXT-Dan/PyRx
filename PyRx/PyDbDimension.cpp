@@ -133,7 +133,7 @@ void makePyDbDimensionWrapper()
         .def("cast", &PyDbDimension::cast).staticmethod("cast")
         ;
 
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     enum_<AcDbDimension::DimInspect>("DimInspect")
         .value("kShapeRemove", AcDbDimension::DimInspect::kShapeRemove)
         .value("kShapeRound", AcDbDimension::DimInspect::kShapeRound)
@@ -145,7 +145,7 @@ void makePyDbDimensionWrapper()
         ;
 #endif
 
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
     enum_<AcDbDimension::CenterMarkType>("CenterMarkType")
         .value("kMark", AcDbDimension::CenterMarkType::kMark)
         .value("kLine", AcDbDimension::CenterMarkType::kLine)
@@ -1029,7 +1029,7 @@ void PyDbDimension::setToleranceSuppressZeroInches(bool val)
 #endif
 }
 
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
 AcDbDimension::CenterMarkType PyDbDimension::centerMarkType() const
 {
     return impObj()->centerMarkType();

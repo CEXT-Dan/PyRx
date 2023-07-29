@@ -8,7 +8,7 @@ void makePyGeClipBoundary2dWrapper()
 {
     class_<PyGeClipBoundary2d, bases<PyGeEntity2d>>("ClipBoundary2d")
         .def(init<>())
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
         .def(init<const AcGePoint2d&, const AcGePoint2d&>())
         .def(init<const boost::python::list&>())
 #endif // BRXAPP
@@ -26,14 +26,14 @@ PyGeClipBoundary2d::PyGeClipBoundary2d(AcGeEntity2d* pEnt)
 {
 }
 
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
 PyGeClipBoundary2d::PyGeClipBoundary2d(const AcGePoint2d& cornerA, const AcGePoint2d& cornerB)
     : PyGeEntity2d(new AcGeClipBoundary2d(cornerA, cornerB))
 {
 }
 #endif
 
-#ifndef BRXAPP
+#if !defined(_BRXTARGET) && (_BRXTARGET <= 23)
 PyGeClipBoundary2d::PyGeClipBoundary2d(const boost::python::list& clipBoundary)
     : PyGeEntity2d(nullptr)
 {
