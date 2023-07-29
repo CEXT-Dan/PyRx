@@ -12,7 +12,7 @@ public:
     PyDbEntity(AcDbEntity* ptr, bool autoDelete);
     PyDbEntity(const PyDbObjectId& id);
     PyDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode);
-    virtual ~PyDbEntity() override = default;
+    inline virtual ~PyDbEntity() override = default;
     PyDbObjectId        blockId() const;
     AcCmColor           color() const;
     void                setColor1(const AcCmColor& color);
@@ -89,7 +89,7 @@ public:
     static PyDbEntity   cloneFrom(const PyRxObject& src);
     static PyDbEntity   cast(const PyRxObject& src);
 public:
-    AcDbEntity* impObj(const std::source_location& src = std::source_location::current()) const;
+    inline  AcDbEntity* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 //-------------------------------------------------------------------------------------------------------------
 //PyDbBlockBegin
@@ -106,7 +106,7 @@ public:
     static PyDbBlockBegin   cloneFrom(const PyRxObject& src);
     static PyDbBlockBegin   cast(const PyRxObject& src);
 public:
-    AcDbBlockBegin* impObj(const std::source_location& src = std::source_location::current()) const;
+    inline AcDbBlockBegin* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 //-------------------------------------------------------------------------------------------------------------
 //PyDbBlockEnd
@@ -123,7 +123,7 @@ public:
     static PyDbBlockEnd     cloneFrom(const PyRxObject& src);
     static PyDbBlockEnd     cast(const PyRxObject& src);
 public:
-    AcDbBlockEnd* impObj(const std::source_location& src = std::source_location::current()) const;
+    inline AcDbBlockEnd* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 //-------------------------------------------------------------------------------------------------------------
 //PyDbSequenceEnd
@@ -140,7 +140,7 @@ public:
     static PyDbSequenceEnd  cloneFrom(const PyRxObject& src);
     static PyDbSequenceEnd  cast(const PyRxObject& src);
 public:
-    AcDbSequenceEnd* impObj(const std::source_location& src = std::source_location::current()) const;
+    inline AcDbSequenceEnd* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 //-------------------------------------------------------------------------------------------------------------
@@ -163,7 +163,7 @@ public:
     void               setIndex(Adesk::GsMarker ind);
     static const PyDbSubentId kNull();
 public:
-    AcDbSubentId* impObj(const std::source_location& src = std::source_location::current()) const;
+    inline AcDbSubentId* impObj(const std::source_location& src = std::source_location::current()) const;
 private:
     std::shared_ptr<AcDbSubentId> m_pyImp;
 
