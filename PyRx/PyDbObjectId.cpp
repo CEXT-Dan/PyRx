@@ -17,12 +17,12 @@ void makePyDbObjectIdWrapper()
         .def("isResident", &PyDbObjectId::isResident, DS.CLASSARGS())
         .def("isValid", &PyDbObjectId::isValid, DS.CLASSARGS())
         .def("isWellBehaved", &PyDbObjectId::isWellBehaved, DS.CLASSARGS())
-        .def("setFromOldId", &PyDbObjectId::setFromOldId, DS.CLASSARGS({"val : int"}), return_self<>())
+        .def("setFromOldId", &PyDbObjectId::setFromOldId, DS.CLASSARGS({ "val : int" }), return_self<>())
         .def("database", &PyDbObjectId::database, DS.CLASSARGS())
         .def("originalDatabase", &PyDbObjectId::originalDatabase, DS.CLASSARGS())
         .def("convertToRedirectedId", &PyDbObjectId::convertToRedirectedId, DS.CLASSARGS())
         .def("objectClass", &PyDbObjectId::objectClass, DS.CLASSARGS())
-        .def("isDerivedFrom", &PyDbObjectId::isDerivedFrom, DS.CLASSARGS({"desc : PyRx.RxClass"}))
+        .def("isDerivedFrom", &PyDbObjectId::isDerivedFrom, DS.CLASSARGS({ "desc : PyRx.RxClass" }))
         .def("__str__", &PyDbObjectId::str)
         .def("__repr__", &PyDbObjectId::repr)
         .def("__hash__", &PyDbObjectId::hash)
@@ -237,7 +237,7 @@ void makePyDbAcDbHardOwnershipIdWrapper()
         .def("__eq__", &PyDbHardOwnershipId::operator==)
         .def("__ne__", &PyDbHardOwnershipId::operator!=)
         ;
-    implicitly_convertible<PyDbHardPointerId, PyDbObjectId>();
+    implicitly_convertible<PyDbHardOwnershipId, PyDbObjectId>();
 }
 
 PyDbHardOwnershipId::PyDbHardOwnershipId()
