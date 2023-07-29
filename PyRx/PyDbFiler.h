@@ -1,6 +1,10 @@
 #pragma once
 #include "PyRxObject.h"
 
+class PyDbObjectId;
+class PyDbSoftOwnershipId;
+class PyDbHardOwnershipId;
+
 //-----------------------------------------------------------------------------------------
 //PyDbDwgFiler
 void makePyDbDwgFilerWrapper();
@@ -16,6 +20,14 @@ class PyDbDwgFiler : public PyRxObject
     boost::python::tuple dwgVersion() const;
     AcDb::MaintenanceReleaseVersion extendedDwgMaintenanceReleaseVersion() const;
 
+    PyDbObjectId        readHardOwnershipId();
+    void                writeHardOwnershipId(const PyDbObjectId& id);
+    PyDbObjectId        readSoftOwnershipId();
+    void                writeSoftOwnershipId(const PyDbObjectId& id);
+    PyDbObjectId        readHardPointerId();
+    void                writeHardPointerId(const PyDbObjectId& id);
+    PyDbObjectId        readSoftPointerId();
+    void                writeSoftPointerId(const PyDbObjectId& id);
 
     static PyRxClass    desc();
     static std::string  className();
