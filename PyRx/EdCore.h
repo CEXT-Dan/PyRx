@@ -47,6 +47,7 @@ public:
     static boost::python::list  getFileNavDialog(const std::string& title, const std::string& defawlt, const std::string& ext, const std::string& dlgname, int flags);
     static std::string          getCommandPromptString();
     static boost::python::list  invoke(const boost::python::list& args);
+    static boost::python::dict  getSysVars();
     static boost::python::object getVar(const std::string& sym);
     static bool                  setVar(const std::string& sym, const  boost::python::object&);
     static void                 mSpace();
