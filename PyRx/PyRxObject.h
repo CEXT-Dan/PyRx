@@ -85,7 +85,7 @@ public:
     static PyRxClass    desc();
     static std::string  className();
 public:
-    AcRxObject* impObj(const std::source_location& src = std::source_location::current()) const;
+    inline AcRxObject* impObj(const std::source_location& src = std::source_location::current()) const;
 
 public:
     std::shared_ptr<AcRxObject> m_pyImp;
@@ -110,6 +110,6 @@ public:
     static std::string  className();
 
 public:
-    AcRxClass* impObj(const std::source_location& src = std::source_location::current()) const;
+    inline AcRxClass* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 

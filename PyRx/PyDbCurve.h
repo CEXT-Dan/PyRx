@@ -60,5 +60,5 @@ public:
     static PyDbCurve            cloneFrom(const PyRxObject& src);
     static PyDbCurve            cast(const PyRxObject& src);
 public:
-    AcDbCurve* impObj(const std::source_location& src = std::source_location::current()) const;
+    inline AcDbCurve* impObj(const std::source_location& src = std::source_location::current()) const;
 };

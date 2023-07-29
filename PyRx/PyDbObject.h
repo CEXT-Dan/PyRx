@@ -16,7 +16,7 @@ public:
     PyDbObject(AcDbObject* ptr, bool autoDelete);
     PyDbObject(const PyDbObjectId&);
     PyDbObject(const PyDbObjectId& id, AcDb::OpenMode mode);
-    virtual ~PyDbObject() override;
+    inline virtual ~PyDbObject() override;
     PyDbObjectId        objectId() const;
     PyDbObjectId        ownerId() const;
     void                setOwnerId(const PyDbObjectId& objId);
@@ -76,7 +76,7 @@ public:
     static PyDbObject   cloneFrom(const PyRxObject& src);
     static PyDbObject   cast(const PyRxObject& src);
 public:
-    AcDbObject* impObj(const std::source_location& src = std::source_location::current()) const;
+    inline AcDbObject* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
 
