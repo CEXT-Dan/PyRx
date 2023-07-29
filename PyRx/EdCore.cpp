@@ -406,7 +406,7 @@ boost::python::dict EdCore::getSysVars()
 
         if (auto es = acedGetVar(var->name(), &buf); es != RTNORM)
         {
-            pydict[utf8Name] = wstr_to_utf8(buf.resval.rstring);
+            pydict[utf8Name] = boost::python::object();
             continue;
         }
         switch (buf.restype)

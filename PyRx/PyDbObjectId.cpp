@@ -270,7 +270,16 @@ bool PyDbSoftPointerId::operator==(const PyDbSoftPointerId& rhs) const
     return m_id == rhs.m_id;
 }
 
-//
+//---------------------------------------------------------------------------------------------------------------
+//AcGePoint2d
+struct PyDbHandledpickle : boost::python::pickle_suite
+{
+    static boost::python::tuple getinitargs(const PyDbHandle& p)
+    {
+        return boost::python::make_tuple(p.toString());
+    }
+};
+
 void makePyDbHandleWrapper()
 {
     class_<PyDbHandle>("Handle")
@@ -288,6 +297,7 @@ void makePyDbHandleWrapper()
         .def("isOne", &PyDbHandle::isOne)
         .def("value", &PyDbHandle::value)
         .def("toString", &PyDbHandle::toString)
+        .def_pickle(PyDbHandledpickle())
         .def("__str__", &PyDbHandle::toString)
         .def("__repr__", &PyDbHandle::repr)
         .def("__hash__", &PyDbHandle::hash)
