@@ -6,7 +6,7 @@ using namespace boost::python;
 
 
 //---------------------------------------------------------------------------------
-// wrapper
+// PyDbObjectId
 void makePyDbObjectIdWrapper()
 {
     PyDocString DS("ObjectId");
@@ -36,8 +36,6 @@ void makePyDbObjectIdWrapper()
         ;
 }
 
-//---------------------------------------------------------------------------------
-//PyDbObjectId
 PyDbObjectId::PyDbObjectId(const AcDbObjectId& id)
     : m_id(id)
 {
@@ -157,7 +155,8 @@ std::size_t PyDbObjectId::hash()
     return (std::size_t)(AcDbStub*)m_id;
 }
 
-//AdsName
+//---------------------------------------------------------------------------------
+// AdsName
 void makePyAdsNameWrapper()
 {
     class_<AdsName>("AdsName")
@@ -184,7 +183,8 @@ void AdsName::fromObjectId(const PyDbObjectId& id)
 }
 
 
-//
+//---------------------------------------------------------------------------------
+// PyDbHardPointerId
 void makePyDbHardPointerIdWrapper()
 {
     class_<PyDbHardPointerId, bases<PyDbObjectId>>("HardPointerId")
@@ -226,8 +226,53 @@ bool PyDbHardPointerId::operator==(const PyDbHardPointerId& rhs) const
 {
     return m_id == rhs.m_id;
 }
-//
-//
+
+//-----------------------------------------------------------------------------------------
+//PyDbHardOwnershipId
+void makePyDbAcDbHardOwnershipIdWrapper()
+{
+    class_<PyDbHardOwnershipId, bases<PyDbObjectId>>("HardOwnershipId")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def("__eq__", &PyDbHardOwnershipId::operator==)
+        .def("__ne__", &PyDbHardOwnershipId::operator!=)
+        ;
+    implicitly_convertible<PyDbHardPointerId, PyDbObjectId>();
+}
+
+PyDbHardOwnershipId::PyDbHardOwnershipId()
+{
+}
+
+PyDbHardOwnershipId::PyDbHardOwnershipId(const PyDbObjectId& id)
+    : m_id(id.m_id)
+{
+}
+
+bool PyDbHardOwnershipId::operator!=(const PyDbHardOwnershipId& rhs) const
+{
+    return m_id != rhs.m_id;
+}
+
+bool PyDbHardOwnershipId::operator==(const PyDbHardOwnershipId& rhs) const
+{
+    return m_id == rhs.m_id;
+}
+
+PyDbHardOwnershipId& PyDbHardOwnershipId::operator=(const PyDbObjectId& rhs)
+{
+    m_id = rhs.m_id;
+    return *this;
+}
+
+PyDbHardOwnershipId& PyDbHardOwnershipId::operator=(const PyDbHardOwnershipId& rhs)
+{
+    m_id = rhs.m_id;
+    return *this;
+}
+
+//---------------------------------------------------------------------------------
+// PyDbSoftPointerId
 void makePySoftPointerIdWrapper()
 {
     class_<PyDbSoftPointerId, bases<PyDbObjectId>>("SoftPointerId")
@@ -269,9 +314,55 @@ bool PyDbSoftPointerId::operator==(const PyDbSoftPointerId& rhs) const
 {
     return m_id == rhs.m_id;
 }
+//-----------------------------------------------------------------------------------------
+//PyDbSoftOwnershipId
 
-//---------------------------------------------------------------------------------------------------------------
-//AcGePoint2d
+void makePyDbSoftOwnershipIdWrapper()
+{
+    class_<PyDbSoftOwnershipId, bases<PyDbObjectId>>("SoftOwnershipId")
+        .def(init<>())
+        .def(init<const PyDbObjectId&>())
+        .def("__eq__", &PyDbSoftPointerId::operator==)
+        .def("__ne__", &PyDbSoftPointerId::operator!=)
+        ;
+    implicitly_convertible<PyDbSoftOwnershipId, PyDbObjectId>();
+}
+
+PyDbSoftOwnershipId::PyDbSoftOwnershipId()
+{
+
+}
+
+PyDbSoftOwnershipId::PyDbSoftOwnershipId(const PyDbObjectId& id)
+    : m_id(id.m_id)
+{
+
+}
+
+bool PyDbSoftOwnershipId::operator!=(const PyDbSoftOwnershipId& rhs) const
+{
+    return m_id != rhs.m_id;
+}
+
+bool PyDbSoftOwnershipId::operator==(const PyDbSoftOwnershipId& rhs) const
+{
+    return m_id == rhs.m_id;
+}
+
+PyDbSoftOwnershipId& PyDbSoftOwnershipId::operator=(const PyDbObjectId& rhs)
+{
+    m_id = rhs.m_id;
+    return *this;
+}
+
+PyDbSoftOwnershipId& PyDbSoftOwnershipId::operator=(const PyDbSoftOwnershipId& rhs)
+{
+    m_id = rhs.m_id;
+    return *this;
+}
+
+//---------------------------------------------------------------------------------
+// PyDbHandle
 struct PyDbHandledpickle : boost::python::pickle_suite
 {
     static boost::python::tuple getinitargs(const PyDbHandle& p)
@@ -400,7 +491,8 @@ bool PyDbHandle::operator==(const PyDbHandle& rhs) const
     return m_hnd == rhs.m_hnd;
 }
 
-//
+//---------------------------------------------------------------------------------
+// PyDbXrefObjectId
 void makePyDbXrefObjectIdWrapper()
 {
     class_<PyDbXrefObjectId>("XrefObjectId")

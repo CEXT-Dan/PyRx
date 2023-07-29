@@ -1,5 +1,7 @@
 #pragma once
 #include "PyDbDatabase.h"
+//-----------------------------------------------------------------------------------------
+//PyDbObjectId
 void makePyDbObjectIdWrapper();
 class PyDbObjectId
 {
@@ -41,7 +43,8 @@ inline AcDbObjectIdArray PyListToObjectIdArray(const boost::python::object& iter
     return arr;
 }
 
-//
+//-----------------------------------------------------------------------------------------
+//AdsName
 void makePyAdsNameWrapper();
 class AdsName
 {
@@ -52,7 +55,8 @@ public:
     std::array<int64_t, 2> m_data = { 0 };
 };
 
-//
+//-----------------------------------------------------------------------------------------
+//PyDbHardPointerId
 void makePyDbHardPointerIdWrapper();
 class PyDbHardPointerId : public PyDbObjectId
 {
@@ -67,7 +71,25 @@ public:
     AcDbHardPointerId m_id;
 };
 
-//
+//-----------------------------------------------------------------------------------------
+//PyDbHardOwnershipId
+void makePyDbAcDbHardOwnershipIdWrapper();
+class PyDbHardOwnershipId : public PyDbObjectId
+{
+public:
+    PyDbHardOwnershipId();
+    PyDbHardOwnershipId(const PyDbObjectId& id);
+    PyDbHardOwnershipId& operator =(const PyDbHardOwnershipId& rhs);
+    PyDbHardOwnershipId& operator =(const PyDbObjectId& rhs);
+    bool operator==(const PyDbHardOwnershipId& rhs) const;
+    bool operator!=(const PyDbHardOwnershipId& rhs) const;
+public:
+    AcDbHardOwnershipId m_id;
+};
+
+
+//-----------------------------------------------------------------------------------------
+//PyDbSoftPointerId
 void makePySoftPointerIdWrapper();
 class PyDbSoftPointerId : public PyDbObjectId
 {
@@ -82,7 +104,24 @@ public:
     AcDbSoftPointerId m_id;
 };
 
-//
+//-----------------------------------------------------------------------------------------
+//PyDbSoftOwnershipId
+void makePyDbSoftOwnershipIdWrapper();
+class PyDbSoftOwnershipId : public PyDbObjectId
+{
+public:
+    PyDbSoftOwnershipId();
+    PyDbSoftOwnershipId(const PyDbObjectId& id);
+    PyDbSoftOwnershipId& operator =(const PyDbSoftOwnershipId& rhs);
+    PyDbSoftOwnershipId& operator =(const PyDbObjectId& rhs);
+    bool operator==(const PyDbSoftOwnershipId& rhs) const;
+    bool operator!=(const PyDbSoftOwnershipId& rhs) const;
+public:
+    AcDbSoftOwnershipId m_id;
+};
+
+//-----------------------------------------------------------------------------------------
+//PyDbHandle
 void makePyDbHandleWrapper();
 class PyDbHandle
 {
@@ -106,13 +145,13 @@ public:
     bool operator==(const PyDbHandle& rhs) const;
     bool operator!=(const PyDbHandle& rhs) const;
 
-
 public:
     AcDbHandle m_hnd;
 };
 
+//-----------------------------------------------------------------------------------------
+//PyDbXrefObjectId
 void makePyDbXrefObjectIdWrapper();
-
 class PyDbXrefObjectId
 {
 public:

@@ -120,6 +120,10 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyCmEntityColorWrapper();
     makePyCmTransparencyWrapper();
     makePyDbObjectIdWrapper();
+    makePySoftPointerIdWrapper();
+    makePyDbSoftOwnershipIdWrapper();
+    makePyDbHardPointerIdWrapper();
+    makePyDbAcDbHardOwnershipIdWrapper();
     makePyDbHandleWrapper();
     makePyDbXrefObjectIdWrapper();
     makePyAdsNameWrapper();
