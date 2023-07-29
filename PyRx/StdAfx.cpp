@@ -30,7 +30,7 @@ const TCHAR* getappname()
 #ifdef ZRXAPP
     return _T("ZRX");
 #endif
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+#ifdef BRXAPP
     return _T("BRX");
 #endif
 #ifdef ARXAPP
