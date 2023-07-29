@@ -226,7 +226,7 @@
     <ClCompile Include="PyDbViewport.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
-    <ClCompile Include="PyDFiler.cpp">
+    <ClCompile Include="PyDbFiler.cpp">
       <Filter>Source Files\PyDb</Filter>
     </ClCompile>
     <ClCompile Include="EdCore.cpp">
@@ -501,7 +501,7 @@
     <ClInclude Include="PyDbViewport.h">
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
-    <ClInclude Include="PyDFiler.h">
+    <ClInclude Include="PyDbFiler.h">
       <Filter>Header Files\PyDb</Filter>
     </ClInclude>
     <ClInclude Include="EdCore.h">
