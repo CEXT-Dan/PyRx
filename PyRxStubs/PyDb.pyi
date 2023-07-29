@@ -21519,8 +21519,8 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     C++ signature :
         class AcCmColor dimclrt(class PyDbFcf {lvalue})'''
     ...
-    def dimensionStyle (self, *args, **kwargs)-> object :
-      '''dimensionStyle( (Fcf)arg1) -> object :
+    def dimensionStyle (self, *args, **kwargs)-> HardPointerId :
+      '''dimensionStyle( (Fcf)arg1) -> HardPointerId :
 
     C++ signature :
         class PyDbHardPointerId dimensionStyle(class PyDbFcf {lvalue})'''
@@ -21829,7 +21829,7 @@ intersectWith( (Entity)arg1, (Entity)arg2, (Intersect)arg3, (Plane)arg4, (int)ar
         void setDimclrt(class PyDbFcf {lvalue},class AcCmColor {lvalue})'''
     ...
     def setDimensionStyle (self, *args, **kwargs)-> None :
-      '''setDimensionStyle( (Fcf)arg1, (object)arg2) -> None :
+      '''setDimensionStyle( (Fcf)arg1, (HardPointerId)arg2) -> None :
 
     C++ signature :
         void setDimensionStyle(class PyDbFcf {lvalue},class PyDbHardPointerId)'''
@@ -23689,6 +23689,108 @@ __init__( (object)arg1, (int)arg2) -> None :
 
     C++ signature :
         unsigned __int64 value(class PyDbHandle {lvalue})'''
+    ...
+
+class HardOwnershipId:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)'''
+    ...
+    def asOldId (self: ObjectId)-> int :
+      '''                             '''
+    ...
+    def convertToRedirectedId (self: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def database (self: ObjectId)-> Database :
+      '''                             '''
+    ...
+    def isDerivedFrom (self: ObjectId,desc : PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNull (self: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def isResident (self: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def isWellBehaved (self: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def objectClass (self: ObjectId)-> RxClass :
+      '''                             '''
+    ...
+    def originalDatabase (self: ObjectId)-> Database :
+      '''                             '''
+    ...
+    def setFromOldId (self: ObjectId,val : int)-> ObjectId :
+      '''                             '''
+    ...
+
+class HardPointerId:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)'''
+    ...
+    def asOldId (self: ObjectId)-> int :
+      '''                             '''
+    ...
+    def convertToRedirectedId (self: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def database (self: ObjectId)-> Database :
+      '''                             '''
+    ...
+    def isDerivedFrom (self: ObjectId,desc : PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNull (self: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def isResident (self: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def isWellBehaved (self: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def objectClass (self: ObjectId)-> RxClass :
+      '''                             '''
+    ...
+    def originalDatabase (self: ObjectId)-> Database :
+      '''                             '''
+    ...
+    def setFromOldId (self: ObjectId,val : int)-> ObjectId :
+      '''                             '''
     ...
 
 class Hatch:
@@ -28089,8 +28191,8 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class AcCmColor dimclrd(class PyDbLeader {lvalue})'''
     ...
-    def dimensionStyle (self, *args, **kwargs)-> object :
-      '''dimensionStyle( (Leader)arg1) -> object :
+    def dimensionStyle (self, *args, **kwargs)-> HardPointerId :
+      '''dimensionStyle( (Leader)arg1) -> HardPointerId :
 
     C++ signature :
         class PyDbHardPointerId dimensionStyle(class PyDbLeader {lvalue})'''
@@ -28564,7 +28666,7 @@ setColorIndex( (Leader)arg1, (int)arg2, (bool)arg3) -> None :
         void setDimclrd(class PyDbLeader {lvalue},class AcCmColor {lvalue})'''
     ...
     def setDimensionStyle (self, *args, **kwargs)-> None :
-      '''setDimensionStyle( (Leader)arg1, (object)arg2) -> None :
+      '''setDimensionStyle( (Leader)arg1, (HardPointerId)arg2) -> None :
 
     C++ signature :
         void setDimensionStyle(class PyDbLeader {lvalue},class PyDbHardPointerId)'''
@@ -55446,6 +55548,108 @@ dict(iterable) -> new dictionary initialized as if via:
         d[k] = v
 dict(**kwargs) -> new dictionary initialized with the name=value pairs
     in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class SoftOwnershipId:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)'''
+    ...
+    def asOldId (self: ObjectId)-> int :
+      '''                             '''
+    ...
+    def convertToRedirectedId (self: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def database (self: ObjectId)-> Database :
+      '''                             '''
+    ...
+    def isDerivedFrom (self: ObjectId,desc : PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNull (self: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def isResident (self: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def isWellBehaved (self: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def objectClass (self: ObjectId)-> RxClass :
+      '''                             '''
+    ...
+    def originalDatabase (self: ObjectId)-> Database :
+      '''                             '''
+    ...
+    def setFromOldId (self: ObjectId,val : int)-> ObjectId :
+      '''                             '''
+    ...
+
+class SoftPointerId:
+    def __init__ (self, *args, **kwargs)-> None :
+      '''__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64)
+
+__init__( (object)arg1, (ObjectId)arg2) -> None :
+
+    C++ signature :
+        void __init__(struct _object * __ptr64,class PyDbObjectId)'''
+    ...
+    def asOldId (self: ObjectId)-> int :
+      '''                             '''
+    ...
+    def convertToRedirectedId (self: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def database (self: ObjectId)-> Database :
+      '''                             '''
+    ...
+    def isDerivedFrom (self: ObjectId,desc : PyRx.RxClass)-> bool :
+      '''                             '''
+    ...
+    def isNull (self: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def isResident (self: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def isValid (self: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def isWellBehaved (self: ObjectId)-> bool :
+      '''                             '''
+    ...
+    def objectClass (self: ObjectId)-> RxClass :
+      '''                             '''
+    ...
+    def originalDatabase (self: ObjectId)-> Database :
+      '''                             '''
+    ...
+    def setFromOldId (self: ObjectId,val : int)-> ObjectId :
+      '''                             '''
     ...
 
 class Solid3d:
