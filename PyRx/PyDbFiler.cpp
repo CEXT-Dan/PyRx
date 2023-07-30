@@ -46,72 +46,152 @@ Acad::ErrorStatus PyDbDwgFilerImpl::dwgVersion(AcDb::AcDbDwgVersion& ver, AcDb::
 
 Acad::ErrorStatus PyDbDwgFilerImpl::readHardOwnershipId(AcDbHardOwnershipId* pVal)
 {
-    return Acad::eInvalidInput;
+    if (pVal == nullptr)
+        return eNullPtr;
+    PyDbObjectId id = impObj()->readHardOwnershipId();
+    *pVal = id.m_id;
+    return Acad::eOk;
 }
 
 Acad::ErrorStatus PyDbDwgFilerImpl::writeHardOwnershipId(const AcDbHardOwnershipId& val)
 {
-    return Acad::eInvalidInput;
+    PyDbObjectId id(val);
+    try
+    {
+        impObj()->writeHardOwnershipId(id);
+    }
+    catch(...)
+    {
+        return Acad::eInvalidInput;
+    }
+    return Acad::eOk;
 }
 
 Acad::ErrorStatus PyDbDwgFilerImpl::readSoftOwnershipId(AcDbSoftOwnershipId* pVal)
 {
-    return Acad::eInvalidInput;
+    if (pVal == nullptr)
+        return eNullPtr;
+    PyDbObjectId id = impObj()->readSoftOwnershipId();
+    *pVal = id.m_id;
+    return Acad::eOk;
 }
 
 Acad::ErrorStatus PyDbDwgFilerImpl::writeSoftOwnershipId(const AcDbSoftOwnershipId& val)
 {
-    return Acad::eInvalidInput;
+    PyDbObjectId id(val);
+    try
+    {
+        impObj()->writeSoftOwnershipId(id);
+    }
+    catch (...)
+    {
+        return Acad::eInvalidInput;
+    }
+    return Acad::eOk;
 }
 
 Acad::ErrorStatus PyDbDwgFilerImpl::readHardPointerId(AcDbHardPointerId* pVal)
 {
-    return Acad::eInvalidInput;
+    if (pVal == nullptr)
+        return eNullPtr;
+    PyDbObjectId id = impObj()->readHardPointerId();
+    *pVal = id.m_id;
+    return Acad::eOk;
 }
 
 Acad::ErrorStatus PyDbDwgFilerImpl::writeHardPointerId(const AcDbHardPointerId& val)
 {
-    return Acad::eInvalidInput;
+    PyDbObjectId id(val);
+    try
+    {
+        impObj()->writeHardPointerId(id);
+    }
+    catch (...)
+    {
+        return Acad::eInvalidInput;
+    }
+    return Acad::eOk;
 }
 
 Acad::ErrorStatus PyDbDwgFilerImpl::readSoftPointerId(AcDbSoftPointerId* pVal)
 {
-    return Acad::eInvalidInput;
+    if (pVal == nullptr)
+        return eNullPtr;
+    PyDbObjectId id = impObj()->readSoftPointerId();
+    *pVal = id.m_id;
+    return Acad::eOk;
 }
 
 Acad::ErrorStatus PyDbDwgFilerImpl::writeSoftPointerId(const AcDbSoftPointerId& val)
 {
-    return Acad::eInvalidInput;
+    PyDbObjectId id(val);
+    try
+    {
+        impObj()->writeSoftPointerId(id);
+    }
+    catch (...)
+    {
+        return Acad::eInvalidInput;
+    }
+    return Acad::eOk;
 }
 
 Acad::ErrorStatus PyDbDwgFilerImpl::readInt8(Adesk::Int8* pVal)
 {
-    return Acad::eInvalidInput;
+    if (pVal == nullptr)
+        return eNullPtr;
+    *pVal = impObj()->readInt8();
+    return Acad::eOk;
 }
 
 Acad::ErrorStatus PyDbDwgFilerImpl::writeInt8(Adesk::Int8 val)
 {
-    return Acad::eInvalidInput;
+    try
+    {
+        impObj()->writeInt8(val);
+    }
+    catch (...)
+    {
+        return Acad::eInvalidInput;
+    }
+    return Acad::eOk;
 }
 
 Acad::ErrorStatus PyDbDwgFilerImpl::readString(ACHAR** pVal)
 {
-    return Acad::eInvalidInput;
+    return acutNewString(utf8_to_wstr(impObj()->readString()).c_str(), *pVal);
 }
 
 Acad::ErrorStatus PyDbDwgFilerImpl::readString(AcString& val)
 {
+    val = utf8_to_wstr(impObj()->readString()).c_str();
     return Acad::eInvalidInput;
 }
 
 Acad::ErrorStatus PyDbDwgFilerImpl::writeString(const ACHAR* pVal)
 {
-    return Acad::eInvalidInput;
+    try
+    {
+        impObj()->writeString(wstr_to_utf8(pVal));
+    }
+    catch (...)
+    {
+        return Acad::eInvalidInput;
+    }
+    return Acad::eOk;
 }
 
 Acad::ErrorStatus PyDbDwgFilerImpl::writeString(const AcString& pVal)
 {
-    return Acad::eInvalidInput;
+    try
+    {
+        impObj()->writeString(wstr_to_utf8(pVal));
+    }
+    catch (...)
+    {
+        return Acad::eInvalidInput;
+    }
+    return Acad::eOk;
 }
 
 Acad::ErrorStatus PyDbDwgFilerImpl::readBChunk(ads_binary* pVal)
