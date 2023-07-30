@@ -5,7 +5,7 @@
 #include "PyDbObjectId.h"
 #include "ResultBuffer.h"
 #include "PyDbField.h"
-
+#include "PyDbFiler.h"
 using namespace boost::python;
 
 void makePyDbObjectWrapper()
@@ -73,6 +73,7 @@ void makePyDbObjectWrapper()
         .def("getFieldDictionary", &PyDbObject::getFieldDictionary, DS.CLASSARGS())
         .def("addReactor", &PyDbObject::addReactor, DS.CLASSARGS({ "reactor: DbObjectReactor" }))
         .def("removeReactor", &PyDbObject::removeReactor, DS.CLASSARGS({ "reactor: DbObjectReactor" }))
+        .def("snoop", &PyDbObject::snoop, DS.CLASSARGS())
         .def("desc", &PyDbObject::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
         .def("className", &PyDbObject::className, DS.CLASSARGSSTATIC()).staticmethod("className")
         .def("cloneFrom", &PyDbObject::cloneFrom, DS.CLASSARGSSTATIC({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -403,6 +404,11 @@ void PyDbObject::removeReactor(PyDbObjectReactor& pReactor) const
 #else
     return PyThrowBadEs(impObj()->removeReactor(pReactor.impObj()));
 #endif
+}
+
+void PyDbObject::snoop(PyDbSnoopDwgFiler& filer)
+{
+    return PyThrowBadEs(impObj()->dwgOut(std::addressof(filer)));
 }
 
 PyRxClass PyDbObject::desc()

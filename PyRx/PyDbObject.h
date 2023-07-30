@@ -7,6 +7,8 @@ class PyDbField;
 class PyDbHandle;
 class PyDbObjectReactor;
 class PyDbEntityReactor;
+class PyDbSnoopDwgFiler;
+
 //----------------------------------------------------------------------------------------
 //PyDbObject
 void makePyDbObjectWrapper();
@@ -71,6 +73,7 @@ public:
     PyDbObjectId        getFieldDictionary(void) const;
     void                addReactor(PyDbObjectReactor& pReactor) const;
     void                removeReactor(PyDbObjectReactor& pReactor) const;
+    void                snoop(PyDbSnoopDwgFiler& filer);
     static PyRxClass    desc();
     static std::string  className();
     static PyDbObject   cloneFrom(const PyRxObject& src);
