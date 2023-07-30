@@ -16,7 +16,7 @@ class PyDbSnoopDwgFiler : public AcDbDwgFiler
 public:
     PyDbSnoopDwgFiler();
     PyDbSnoopDwgFiler(AcDb::FilerType ft);
-    virtual ~PyDbSnoopDwgFiler() override;
+    virtual ~PyDbSnoopDwgFiler() override = default;
     virtual  Acad::ErrorStatus  filerStatus() const override;
     virtual  AcDb::FilerType    filerType() const override;
     virtual void                setFilerStatus(Acad::ErrorStatus es) override;
@@ -78,7 +78,6 @@ public:
     boost::python::list         buffer() const;
 
 public:
-    PyGILState_STATE gstate =  PyGILState_Ensure();
     Acad::ErrorStatus   m_stat = eOk;
     AcDb::FilerType     m_filerType = AcDb::kCopyFiler;
     boost::python::list m_list;

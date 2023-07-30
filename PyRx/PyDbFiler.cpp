@@ -25,11 +25,6 @@ PyDbSnoopDwgFiler::PyDbSnoopDwgFiler(AcDb::FilerType ft)
 
 }
 
-PyDbSnoopDwgFiler::~PyDbSnoopDwgFiler()
-{
-    PyGILState_Release(gstate);
-}
-
 Acad::ErrorStatus PyDbSnoopDwgFiler::filerStatus() const
 {
     return m_stat;
