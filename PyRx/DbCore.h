@@ -47,6 +47,8 @@ public:
 
     static bool                 entDel(const PyDbObjectId& id);
     static boost::python::list  entGet(const PyDbObjectId& id);
+    static boost::python::list  entGetX1(const PyDbObjectId& id);
+    static boost::python::list  entGetX2(const PyDbObjectId& id, const boost::python::list& rb);
     static PyDbObjectId         entLast();
     static bool                 entMod(const boost::python::list& list);
     static PyDbObjectId         entNext(const PyDbObjectId& id);

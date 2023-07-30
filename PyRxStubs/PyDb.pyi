@@ -10456,6 +10456,17 @@ ecs2Wcs( (Vector3d)arg1, (Vector3d)arg2, (Vector3d)arg3) -> bool :
     C++ signature :
         class boost::python::list entGet(class PyDbObjectId)'''
     ...
+    def entGetX (self, *args, **kwargs)-> list :
+      '''entGetX( (ObjectId)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list entGetX(class PyDbObjectId)
+
+entGetX( (ObjectId)arg1, (list)arg2) -> list :
+
+    C++ signature :
+        class boost::python::list entGetX(class PyDbObjectId,class boost::python::list)'''
+    ...
     def entLast (self, *args, **kwargs)-> ObjectId :
       '''entLast() -> ObjectId :
 
@@ -55904,7 +55915,7 @@ dict(**kwargs) -> new dictionary initialized with the name=value pairs
     ...
 
 class SnoopDwgFiler:
-    def __init__ (self: SnoopDwgFiler,filerType: AcDb::FilerType)-> None :
+    def __init__ (self: SnoopDwgFiler,filerType: PyDb.FilerType)-> None :
       '''                             '''
     ...
     def buffer (self: SnoopDwgFiler)-> list :
