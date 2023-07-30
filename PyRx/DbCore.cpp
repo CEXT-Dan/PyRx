@@ -328,6 +328,7 @@ boost::python::list DbCore::entGetX1(const PyDbObjectId& id)
     PyThrowBadEs(acdbGetAdsName(name, id.m_id));
     AcResBufPtr rbIn(acutNewRb(RTSTR));
     acutNewString(_T("*"), rbIn->resval.rstring);
+    rbIn->rbnext = nullptr;
     AcResBufPtr ptr(acdbEntGetX(name, rbIn.get()));
     if (ptr == nullptr)
         throw PyAcadErrorStatus(eInvalidInput);
