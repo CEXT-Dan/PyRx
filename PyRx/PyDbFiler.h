@@ -7,7 +7,7 @@ class PyDbObjectId;
 class PyDbSoftOwnershipId;
 class PyDbHardOwnershipId;
 
-#define ENABLE_FILER
+//#define ENABLE_FILER
 //-----------------------------------------------------------------------------------------
 //PyDbSnoopDwgFiler
 void makePyDbSnoopDwgFilerWrapper();
