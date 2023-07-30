@@ -31,7 +31,7 @@
 #include "PyDbViewport.h"
 #include "PyDbObjectContext.h"
 #include "PyDbProtocolExtensions.h"
-
+#include "PyDbFiler.h"
 
 using namespace boost::python;
 
@@ -239,6 +239,7 @@ BOOST_PYTHON_MODULE(PyDb)
     makePyDbJoinEntityPEWrapper();
 #endif
     makePyDbDatabaseSummaryInfoWrapper();
+    makePyDbSnoopDwgFilerWrapper();
     makeDbCoreWrapper();//LAST?
 
     def("curDb", curPyDb);

@@ -2,6 +2,383 @@
 #include "PyDbFiler.h"
 #include "PyDbObjectId.h"
 
+using namespace boost::python;
+//-----------------------------------------------------------------------------------------
+//PyDbDwgFilerImpl
+void makePyDbSnoopDwgFilerWrapper()
+{
+    PyDocString DS("SnoopDwgFiler");
+    class_<PyDbSnoopDwgFiler>("SnoopDwgFiler")
+        .def(init<>())
+        .def(init<AcDb::FilerType>(DS.CLASSARGS({ "filerType: AcDb::FilerType" })))
+        .def("buffer", &PyDbSnoopDwgFiler::buffer, DS.CLASSARGS())
+        ;
+}
+
+PyDbSnoopDwgFiler::PyDbSnoopDwgFiler()
+{
+}
+
+PyDbSnoopDwgFiler::PyDbSnoopDwgFiler(AcDb::FilerType ft)
+  :m_filerType(ft)
+{
+
+}
+
+PyDbSnoopDwgFiler::~PyDbSnoopDwgFiler()
+{
+    PyGILState_Release(gstate);
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::filerStatus() const
+{
+    return m_stat;
+}
+
+AcDb::FilerType PyDbSnoopDwgFiler::filerType() const
+{
+    return m_filerType;
+}
+
+void PyDbSnoopDwgFiler::setFilerStatus(Acad::ErrorStatus es)
+{
+    m_stat = es;
+}
+
+void PyDbSnoopDwgFiler::resetFilerStatus()
+{
+    m_stat = eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readHardOwnershipId(AcDbHardOwnershipId* pVal)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writeHardOwnershipId(const AcDbHardOwnershipId& val)
+{
+    PyAutoLockGIL m_lock;
+    m_list.append(PyDbObjectId(val));
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readSoftOwnershipId(AcDbSoftOwnershipId* pVal)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writeSoftOwnershipId(const AcDbSoftOwnershipId& val)
+{
+    PyAutoLockGIL m_lock;
+    m_list.append(PyDbObjectId(val));
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readHardPointerId(AcDbHardPointerId* pVal)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writeHardPointerId(const AcDbHardPointerId& val)
+{
+    PyAutoLockGIL m_lock;
+    m_list.append(PyDbObjectId(val));
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readSoftPointerId(AcDbSoftPointerId* pVal)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writeSoftPointerId(const AcDbSoftPointerId& val)
+{
+    PyAutoLockGIL m_lock;
+    m_list.append(PyDbObjectId(val));
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readInt8(Adesk::Int8* pVal)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writeInt8(Adesk::Int8 val)
+{
+    PyAutoLockGIL m_lock;
+    m_list.append(val);
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readString(ACHAR** pVal)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readString(AcString& val)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writeString(const ACHAR* pVal)
+{
+    PyAutoLockGIL m_lock;
+    m_list.append(wstr_to_utf8(pVal));
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writeString(const AcString& pVal)
+{
+    PyAutoLockGIL m_lock;
+    m_list.append(wstr_to_utf8(pVal));
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readBChunk(ads_binary* pVal)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writeBChunk(const ads_binary& adsval)
+{
+    PyAutoLockGIL lock;
+    PyObject* py_buf = PyMemoryView_FromMemory(adsval.buf, (size_t)adsval.clen, PyBUF_WRITE);
+    m_list.append(boost::python::object(boost::python::handle<>(py_buf)));
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readAcDbHandle(AcDbHandle* pVal)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writeAcDbHandle(const AcDbHandle& val)
+{
+    PyAutoLockGIL m_lock;
+    m_list.append(PyDbHandle(val));
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readInt64(Adesk::Int64* pVal)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writeInt64(Adesk::Int64 val)
+{
+    PyAutoLockGIL m_lock;
+    m_list.append(val);
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readInt32(Adesk::Int32* pVal)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writeInt32(Adesk::Int32 val)
+{
+    PyAutoLockGIL m_lock;
+    m_list.append(val);
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readInt16(Adesk::Int16* pVal)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writeInt16(Adesk::Int16 val)
+{
+    PyAutoLockGIL m_lock;
+    m_list.append(val);
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readUInt64(Adesk::UInt64* pVal)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writeUInt64(Adesk::UInt64 val)
+{
+    PyAutoLockGIL m_lock;
+    m_list.append(val);
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readUInt32(Adesk::UInt32* pVal)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writeUInt32(Adesk::UInt32 val)
+{
+    PyAutoLockGIL m_lock;
+    m_list.append(val);
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readUInt16(Adesk::UInt16* pVal)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writeUInt16(Adesk::UInt16 val)
+{
+    PyAutoLockGIL m_lock;
+    m_list.append(val);
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readUInt8(Adesk::UInt8* pVal)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writeUInt8(Adesk::UInt8 val)
+{
+    PyAutoLockGIL m_lock;
+    m_list.append(val);
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readBoolean(Adesk::Boolean* pVal)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writeBoolean(Adesk::Boolean val)
+{
+    PyAutoLockGIL m_lock;
+    m_list.append(val);
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readBool(bool* pVal)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writeBool(bool val)
+{
+    PyAutoLockGIL m_lock;
+    m_list.append(val);
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readDouble(double* pVal)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writeDouble(double val)
+{
+    PyAutoLockGIL m_lock;
+    m_list.append(val);
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readPoint2d(AcGePoint2d* pVal)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writePoint2d(const AcGePoint2d& val)
+{
+    PyAutoLockGIL m_lock;
+    m_list.append(val);
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readPoint3d(AcGePoint3d* pVal)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writePoint3d(const AcGePoint3d& val)
+{
+    PyAutoLockGIL m_lock;
+    m_list.append(val);
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readVector2d(AcGeVector2d* pVal)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writeVector2d(const AcGeVector2d& val)
+{
+    PyAutoLockGIL m_lock;
+    m_list.append(val);
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readVector3d(AcGeVector3d* pVal)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writeVector3d(const AcGeVector3d& val)
+{
+    PyAutoLockGIL m_lock;
+    m_list.append(val);
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readScale3d(AcGeScale3d* pVal)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writeScale3d(const AcGeScale3d& val)
+{
+    PyAutoLockGIL m_lock;
+    m_list.append(val);
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readBytes(void* pDest, Adesk::UIntPtr nBytes)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writeBytes(const void* pSrc, Adesk::UIntPtr nBytes)
+{
+    PyAutoLockGIL lock;
+    PyObject* py_buf = PyMemoryView_FromMemory((char*)pSrc, (size_t)nBytes, PyBUF_WRITE);
+    m_list.append(boost::python::object(boost::python::handle<>(py_buf)));
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::readAddress(void** pVal)
+{
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::writeAddress(const void* pVal)
+{
+    PyAutoLockGIL m_lock;
+    m_list.append(INT_PTR(pVal));
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbSnoopDwgFiler::seek(Adesk::Int64 nOffset, int nMethod)
+{
+    return eOk;
+}
+
+Adesk::Int64 PyDbSnoopDwgFiler::tell() const
+{
+    return 0L;
+}
+
+boost::python::list PyDbSnoopDwgFiler::buffer() const
+{
+    return m_list;
+}
+
 #ifdef ENABLE_FILER
 //-----------------------------------------------------------------------------------------
 //PyDbDwgFilerImpl
@@ -792,3 +1169,4 @@ AcDbDwgFiler* PyDbDwgFiler::impObj(const std::source_location& src /*= std::sour
 
 
 #endif// ENABLE_FILER
+
