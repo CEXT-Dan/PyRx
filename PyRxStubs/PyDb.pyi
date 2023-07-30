@@ -379,7 +379,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -907,7 +907,7 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def sunId (self, *args, **kwargs)-> ObjectId :
@@ -1998,7 +1998,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         bool shouldParticipateInOPM(class PyDbDimension {lvalue})'''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def suffix (self, *args, **kwargs)-> str :
@@ -2916,7 +2916,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def startAngle (self, *args, **kwargs)-> float :
@@ -4029,7 +4029,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         bool shouldParticipateInOPM(class PyDbDimension {lvalue})'''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def suffix (self, *args, **kwargs)-> str :
@@ -4697,7 +4697,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -5259,7 +5259,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -5669,7 +5669,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -6058,7 +6058,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -6504,7 +6504,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -6870,7 +6870,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -7303,7 +7303,7 @@ getBlockReferenceIds( (BlockTableRecord)arg1, (bool)arg2, (bool)arg3) -> list :
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -7708,7 +7708,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -9659,7 +9659,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -11001,7 +11001,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -12781,7 +12781,7 @@ class DbObject:
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -13877,7 +13877,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         bool shouldParticipateInOPM(class PyDbDimension {lvalue})'''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def suffix (self, *args, **kwargs)-> str :
@@ -14299,7 +14299,7 @@ remove( (Dictionary)arg1, (ObjectId)arg2) -> None :
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -14691,7 +14691,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -14951,7 +14951,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -15895,7 +15895,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         bool shouldParticipateInOPM(class PyDbDimension {lvalue})'''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def suffix (self, *args, **kwargs)-> str :
@@ -17913,7 +17913,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -20615,7 +20615,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -21057,7 +21057,7 @@ setVertexAt( (Face)arg1, (int)arg2, (Point3d)arg3) -> None :
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -21464,7 +21464,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -22011,7 +22011,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -22372,7 +22372,7 @@ evaluate( (Field)arg1, (FieldEvalContext)arg2, (Database)arg3) -> None :
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def state (self, *args, **kwargs)-> FieldState :
@@ -24792,7 +24792,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -26030,7 +26030,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -26889,7 +26889,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -27442,7 +27442,7 @@ setTransparency( (LayerTableRecord)arg1, (Transparency)arg2, (ObjectId)arg3) -> 
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -28050,7 +28050,7 @@ setShadePlot( (PlotSettings)arg1, (ShadePlotType)arg2, (ObjectId)arg3) -> None :
     C++ signature :
         bool showPlotStyles(class PyDbPlotSettings {lvalue})'''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def stdScaleType (self, *args, **kwargs)-> StdScaleType :
@@ -29060,7 +29060,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -29589,7 +29589,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def startPoint (self, *args, **kwargs)-> Point3d :
@@ -30624,7 +30624,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         bool shouldParticipateInOPM(class PyDbDimension {lvalue})'''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def suffix (self, *args, **kwargs)-> str :
@@ -31345,7 +31345,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -31755,7 +31755,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class PyDbObjectId shapeStyleAt(class PyDbLinetypeTableRecord {lvalue},int)'''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -32154,7 +32154,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -32624,7 +32624,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -33714,7 +33714,7 @@ setTextAttachmentType( (MLeader)arg1, (MLeaderTextAttachmentType)arg2, (MLeaderL
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -35606,7 +35606,7 @@ setDrawLeaderOrderType( (MLeaderStyle)arg1, (DrawLeaderOrderType)arg2) -> None :
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -36922,7 +36922,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -38175,7 +38175,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def style (self, *args, **kwargs)-> ObjectId :
@@ -38757,7 +38757,7 @@ set( (MlineStyle)arg1, (MlineStyle)arg2, (bool)arg3) -> None :
     C++ signature :
         bool showMiters(class PyDbMlineStyle {lvalue})'''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def startAngle (self, *args, **kwargs)-> float :
@@ -39174,7 +39174,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -40443,7 +40443,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         bool shouldParticipateInOPM(class PyDbDimension {lvalue})'''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def suffix (self, *args, **kwargs)-> str :
@@ -41323,7 +41323,7 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -41962,7 +41962,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -42504,7 +42504,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -43270,7 +43270,7 @@ setShadePlot( (PlotSettings)arg1, (ShadePlotType)arg2, (ObjectId)arg3) -> None :
     C++ signature :
         bool showPlotStyles(class PyDbPlotSettings {lvalue})'''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def stdScaleType (self, *args, **kwargs)-> StdScaleType :
@@ -43951,7 +43951,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -44977,7 +44977,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         bool shouldParticipateInOPM(class PyDbDimension {lvalue})'''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def suffix (self, *args, **kwargs)-> str :
@@ -45754,7 +45754,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -46152,7 +46152,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -46862,7 +46862,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -47518,7 +47518,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def splineFit (self, *args, **kwargs)-> None :
@@ -48113,7 +48113,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def splineFit (self, *args, **kwargs)-> None :
@@ -48534,7 +48534,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -49572,7 +49572,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         bool shouldParticipateInOPM(class PyDbDimension {lvalue})'''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def suffix (self, *args, **kwargs)-> str :
@@ -50763,7 +50763,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         bool shouldParticipateInOPM(class PyDbDimension {lvalue})'''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def suffix (self, *args, **kwargs)-> str :
@@ -51509,7 +51509,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -51862,7 +51862,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class AcGeVector2d size(class PyDbRasterImageDef {lvalue})'''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def sourceFileName (self, *args, **kwargs)-> str :
@@ -52136,7 +52136,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -52394,7 +52394,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -52654,7 +52654,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -53059,7 +53059,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -53646,7 +53646,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -54693,7 +54693,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         bool shouldParticipateInOPM(class PyDbDimension {lvalue})'''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def suffix (self, *args, **kwargs)-> str :
@@ -55601,7 +55601,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -56676,7 +56676,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     C++ signature :
         bool showHistory(class PyDb3dSolid {lvalue})'''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def stlOut (self, *args, **kwargs)-> None :
@@ -57748,7 +57748,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -58641,7 +58641,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -59176,7 +59176,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -59406,7 +59406,7 @@ class SymbolTableRecord:
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -60998,7 +60998,7 @@ setTextStyle( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)arg5) -> N
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def suppressHeaderRow (self, *args, **kwargs)-> None :
@@ -62495,7 +62495,7 @@ setTextStyle( (TableStyle)arg1, (ObjectId)arg2, (str)arg3) -> None :
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def suppressHeaderRow (self, *args, **kwargs)-> None :
@@ -63019,7 +63019,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -63593,7 +63593,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -63961,7 +63961,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setXScale(class PyDbTextStyleTableRecord {lvalue},double)'''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -64892,7 +64892,7 @@ has( (SymbolTable)arg1, (ObjectId)arg2) -> bool :
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -65182,7 +65182,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void setYAxis(class PyDbUCSTableRecord {lvalue},class AcGeVector3d)'''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -65482,7 +65482,7 @@ load( (UnderlayDefinition)arg1, (str)arg2) -> None :
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -66143,7 +66143,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -67008,7 +67008,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
@@ -67441,7 +67441,7 @@ setPlotStyleName( (Entity)arg1, (PlotStyleNameType)arg2, (ObjectId)arg3, (bool)a
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def startWidth (self: Vertex2d)-> float :
@@ -68248,7 +68248,7 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     def setXData (self: DbObject,xdata: list)-> None :
       '''                             '''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def sunId (self, *args, **kwargs)-> ObjectId :
@@ -69668,7 +69668,7 @@ setUcsIconVisible( (Viewport)arg1, (bool)arg2) -> None :
     C++ signature :
         unsigned short snapIsoPair(class PyDbViewport {lvalue})'''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def standardScale (self, *args, **kwargs)-> StandardScaleType :
@@ -70570,7 +70570,7 @@ setViewDirection( (AbstractViewTableRecord)arg1, (OrthographicView)arg2) -> None
     C++ signature :
         short snapPair(class PyDbViewportTableRecord {lvalue})'''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def sunId (self, *args, **kwargs)-> ObjectId :
@@ -71284,7 +71284,7 @@ setFromRbChain( (Xrecord)arg1, (list)arg2, (Database)arg3) -> None :
     C++ signature :
         void setXlateReferences(class PyDbXrecord {lvalue},bool)'''
     ...
-    def snoop (self: DbObject)-> None :
+    def snoop (self: DbObject, filer : PyDb.SnoopDwgFiler)-> None :
       '''                             '''
     ...
     def swapIdWith (self: DbObject,otherId: DbObject,swapXdata: bool,swapExtDict: bool)-> None :
