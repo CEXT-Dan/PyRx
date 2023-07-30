@@ -121,7 +121,7 @@ public:
 //---------------------------------------------------------------------------------------- -
 //PyDbObjectReactor
 void makePyDbObjectReactorWrapper();
-class PyDbObjectReactor : public PyRxObject , public boost::python::wrapper<PyDbObjectReactor>
+class PyDbObjectReactor : public PyRxObject, public boost::python::wrapper<PyDbObjectReactor>
 {
 public:
     PyDbObjectReactor();
@@ -187,7 +187,7 @@ public:
     virtual void        modifiedGraphics(const AcDbEntity*) override;
     virtual void        dragCloneToBeDeleted(const AcDbEntity* pOriginalObj, const AcDbEntity* pClone) override;
 public:
-    PyDbEntityReactor*  impObj(const std::source_location& src = std::source_location::current()) const;
+    PyDbEntityReactor* impObj(const std::source_location& src = std::source_location::current()) const;
 public:
     PyDbEntityReactor* m_backPtr = nullptr;
 };
@@ -220,7 +220,7 @@ public:
 
 public:
     AcDbEntityReactor* impObj(const std::source_location& src = std::source_location::current()) const;
- 
+
 public://prevent reentry on error
     bool reg_cancelled = true;
     bool reg_copied = true;
