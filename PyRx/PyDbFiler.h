@@ -2,16 +2,40 @@
 #include "PyRxObject.h"
 
 class PyDbHandle;
+class PyDbDwgFiler;
 class PyDbObjectId;
 class PyDbSoftOwnershipId;
 class PyDbHardOwnershipId;
+
+//#define ENABLE_FILER
+
+#ifdef ENABLE_FILER
+
+//-----------------------------------------------------------------------------------------
+//PyDbDwgFilerImpl
+class PyDbDwgFilerImpl : public AcDbDwgFiler
+{
+public:
+    PyDbDwgFilerImpl(PyDbDwgFiler* backFiler);
+    virtual ~PyDbDwgFilerImpl() override = default;
+    virtual  Acad::ErrorStatus filerStatus() const override;
+    virtual  AcDb::FilerType   filerType() const override;
+    virtual void               setFilerStatus(Acad::ErrorStatus es) override;
+    virtual void               resetFilerStatus() override;
+
+public:
+    inline PyDbDwgFiler* impObj(const std::source_location& src = std::source_location::current()) const;
+public:
+    PyDbDwgFiler* m_backFiler = nullptr;
+};
 
 //-----------------------------------------------------------------------------------------
 //PyDbDwgFiler
 void makePyDbDwgFilerWrapper();
 class PyDbDwgFiler : public PyRxObject
 {
-    PyDbDwgFiler(AcDbDwgFiler* ptr, bool autoDelete);
+public:
+    PyDbDwgFiler();
     virtual ~PyDbDwgFiler() = default;
 
     Acad::ErrorStatus   filerStatus() const;
@@ -78,3 +102,5 @@ public:
     inline AcDbDwgFiler* impObj(const std::source_location& src = std::source_location::current()) const;
 };
 
+
+#endif// ENABLE_FILER

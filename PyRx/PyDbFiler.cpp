@@ -2,15 +2,51 @@
 #include "PyDbFiler.h"
 #include "PyDbObjectId.h"
 
-//TODO
+#ifdef ENABLE_FILER
+//-----------------------------------------------------------------------------------------
+//PyDbDwgFilerImpl
+PyDbDwgFilerImpl::PyDbDwgFilerImpl(PyDbDwgFiler* backFiler)
+    : m_backFiler(backFiler)
+{
 
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::filerStatus() const
+{
+    return impObj()->filerStatus();
+}
+
+AcDb::FilerType PyDbDwgFilerImpl::filerType() const
+{
+    return impObj()->filerType();
+}
+
+void PyDbDwgFilerImpl::setFilerStatus(Acad::ErrorStatus es)
+{
+    return impObj()->setFilerStatus(es);
+}
+
+void PyDbDwgFilerImpl::resetFilerStatus()
+{
+    return impObj()->resetFilerStatus();
+}
+
+PyDbDwgFiler* PyDbDwgFilerImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
+{
+    if (m_backFiler == nullptr)
+        throw PyNullObject(src);
+    return m_backFiler;
+}
+
+//-----------------------------------------------------------------------------------------
+//PyDbDwgFiler
 void makePyDbDwgFilerWrapper()
 {
 
 }
 
-PyDbDwgFiler::PyDbDwgFiler(AcDbDwgFiler* ptr, bool autoDelete)
-    : PyRxObject(ptr, autoDelete,false)
+PyDbDwgFiler::PyDbDwgFiler()
+    : PyRxObject(new PyDbDwgFilerImpl(this), true, false)
 {
 }
 
@@ -401,3 +437,6 @@ AcDbDwgFiler* PyDbDwgFiler::impObj(const std::source_location& src /*= std::sour
         throw PyNullObject(src);
     return static_cast<AcDbDwgFiler*>(m_pyImp.get());
 }
+
+
+#endif// ENABLE_FILER
