@@ -31,6 +31,289 @@ void PyDbDwgFilerImpl::resetFilerStatus()
     return impObj()->resetFilerStatus();
 }
 
+Acad::ErrorStatus PyDbDwgFilerImpl::dwgVersion(AcDb::AcDbDwgVersion& ver, AcDb::MaintenanceReleaseVersion& maintVer) const
+{
+    PyAutoLockGIL lock;
+    const boost::python::tuple tp = impObj()->dwgVersion();
+    if (boost::python::len(tp) != 2)
+        throw PyAcadErrorStatus(Acad::eInvalidInput);
+    int intVer = boost::python::extract<int>(tp[0]);
+    ver = static_cast<AcDb::AcDbDwgVersion>(intVer);
+    int intMaintVer = boost::python::extract<int>(tp[1]);
+    maintVer = static_cast<AcDb::MaintenanceReleaseVersion>(intMaintVer);
+    return eOk;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readHardOwnershipId(AcDbHardOwnershipId* pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writeHardOwnershipId(const AcDbHardOwnershipId& val)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readSoftOwnershipId(AcDbSoftOwnershipId* pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writeSoftOwnershipId(const AcDbSoftOwnershipId& val)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readHardPointerId(AcDbHardPointerId* pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writeHardPointerId(const AcDbHardPointerId& val)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readSoftPointerId(AcDbSoftPointerId* pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writeSoftPointerId(const AcDbSoftPointerId& val)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readInt8(Adesk::Int8* pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writeInt8(Adesk::Int8 val)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readString(ACHAR** pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readString(AcString& val)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writeString(const ACHAR* pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writeString(const AcString& pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readBChunk(ads_binary* pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writeBChunk(const ads_binary&)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readAcDbHandle(AcDbHandle* pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writeAcDbHandle(const AcDbHandle& val)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readInt64(Adesk::Int64* pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writeInt64(Adesk::Int64 val)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readInt32(Adesk::Int32* pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writeInt32(Adesk::Int32 val)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readInt16(Adesk::Int16* pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writeInt16(Adesk::Int16 val)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readUInt64(Adesk::UInt64* pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writeUInt64(Adesk::UInt64 val)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readUInt32(Adesk::UInt32* pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writeUInt32(Adesk::UInt32 val)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readUInt16(Adesk::UInt16* pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writeUInt16(Adesk::UInt16 val)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readUInt8(Adesk::UInt8* pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writeUInt8(Adesk::UInt8 val)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readBoolean(Adesk::Boolean* pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writeBoolean(Adesk::Boolean val)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readBool(bool* pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writeBool(bool val)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readDouble(double* pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writeDouble(double val)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readPoint2d(AcGePoint2d* pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writePoint2d(const AcGePoint2d& val)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readPoint3d(AcGePoint3d* pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writePoint3d(const AcGePoint3d& val)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readVector2d(AcGeVector2d* pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writeVector2d(const AcGeVector2d& val)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readVector3d(AcGeVector3d* pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writeVector3d(const AcGeVector3d& val)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readScale3d(AcGeScale3d* pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writeScale3d(const AcGeScale3d& val)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readBytes(void* pDest, Adesk::UIntPtr nBytes)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writeBytes(const void* pSrc, Adesk::UIntPtr nBytes)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::readAddress(void** pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::writeAddress(const void* pVal)
+{
+    return Acad::eInvalidInput;
+}
+
+Acad::ErrorStatus PyDbDwgFilerImpl::seek(Adesk::Int64 nOffset, int nMethod)
+{
+    return Acad::eInvalidInput;
+}
+
+Adesk::Int64 PyDbDwgFilerImpl::tell() const
+{
+    return 0;
+}
+
 PyDbDwgFiler* PyDbDwgFilerImpl::impObj(const std::source_location& src /*= std::source_location::current()*/) const
 {
     if (m_backFiler == nullptr)
@@ -77,17 +360,6 @@ boost::python::tuple PyDbDwgFiler::dwgVersion() const
     AcDb::MaintenanceReleaseVersion maintVer;
     PyThrowBadEs(impObj()->dwgVersion(ver, maintVer));
     return boost::python::make_tuple(ver, maintVer);
-}
-
-AcDb::MaintenanceReleaseVersion PyDbDwgFiler::extendedDwgMaintenanceReleaseVersion() const
-{
-#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
-    throw PyNotimplementedByHost();
-#else
-    AcDb::MaintenanceReleaseVersion val;
-    PyThrowBadEs(impObj()->extendedDwgMaintenanceReleaseVersion(val));
-    return val;
-#endif // !BRXAPP
 }
 
 PyDbObjectId PyDbDwgFiler::readHardOwnershipId()
