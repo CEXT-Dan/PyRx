@@ -10,7 +10,7 @@ void makePyDbSnoopDwgFilerWrapper()
     PyDocString DS("SnoopDwgFiler");
     class_<PyDbSnoopDwgFiler>("SnoopDwgFiler")
         .def(init<>())
-        .def(init<AcDb::FilerType>(DS.CLASSARGS({ "filerType: AcDb::FilerType" })))
+        .def(init<AcDb::FilerType>(DS.CLASSARGS({ "filerType: PyDb.FilerType" })))
         .def("buffer", &PyDbSnoopDwgFiler::buffer, DS.CLASSARGS())
         ;
 }
@@ -20,9 +20,8 @@ PyDbSnoopDwgFiler::PyDbSnoopDwgFiler()
 }
 
 PyDbSnoopDwgFiler::PyDbSnoopDwgFiler(AcDb::FilerType ft)
-  :m_filerType(ft)
+    :m_filerType(ft)
 {
-
 }
 
 Acad::ErrorStatus PyDbSnoopDwgFiler::filerStatus() const
@@ -432,7 +431,7 @@ Acad::ErrorStatus PyDbDwgFilerImpl::writeHardOwnershipId(const AcDbHardOwnership
     {
         impObj()->writeHardOwnershipId(id);
     }
-    catch(...)
+    catch (...)
     {
         return Acad::eInvalidInput;
     }
@@ -808,7 +807,7 @@ void PyDbDwgFiler::resetFilerStatus()
 boost::python::tuple PyDbDwgFiler::dwgVersion() const
 {
     PyAutoLockGIL lock;
-    AcDb::AcDbDwgVersion ver; 
+    AcDb::AcDbDwgVersion ver;
     AcDb::MaintenanceReleaseVersion maintVer;
     PyThrowBadEs(impObj()->dwgVersion(ver, maintVer));
     return boost::python::make_tuple(ver, maintVer);
@@ -902,7 +901,7 @@ void PyDbDwgFiler::writeBChunk(const boost::python::object& val)
     if (!PyObject_CheckBuffer(val.ptr()))
         PyThrowBadEs(eInvalidInput);
     Py_buffer view;
-    if(PyObject_GetBuffer(val.ptr(), &view, PyBUF_ANY_CONTIGUOUS) == -1)
+    if (PyObject_GetBuffer(val.ptr(), &view, PyBUF_ANY_CONTIGUOUS) == -1)
         PyThrowBadEs(eInvalidInput);
     ads_binary adsval = { 0 };
     adsval.clen = view.len;

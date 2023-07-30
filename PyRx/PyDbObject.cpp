@@ -73,7 +73,7 @@ void makePyDbObjectWrapper()
         .def("getFieldDictionary", &PyDbObject::getFieldDictionary, DS.CLASSARGS())
         .def("addReactor", &PyDbObject::addReactor, DS.CLASSARGS({ "reactor: DbObjectReactor" }))
         .def("removeReactor", &PyDbObject::removeReactor, DS.CLASSARGS({ "reactor: DbObjectReactor" }))
-        .def("snoop", &PyDbObject::snoop, DS.CLASSARGS({" filer : PyDb.SnoopDwgFiler"}))
+        .def("snoop", &PyDbObject::snoop, DS.CLASSARGS({ " filer : PyDb.SnoopDwgFiler" }))
         .def("desc", &PyDbObject::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
         .def("className", &PyDbObject::className, DS.CLASSARGSSTATIC()).staticmethod("className")
         .def("cloneFrom", &PyDbObject::cloneFrom, DS.CLASSARGSSTATIC({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
@@ -1068,7 +1068,7 @@ void makePyDbEntityReactorWrapper()
 }
 
 PyDbEntityReactor::PyDbEntityReactor()
-    : PyRxObject(new AcDbEntityReactorImpl(this), true,false)
+    : PyRxObject(new AcDbEntityReactorImpl(this), true, false)
 {
 }
 
