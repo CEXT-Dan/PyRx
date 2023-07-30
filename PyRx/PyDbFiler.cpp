@@ -247,6 +247,144 @@ void PyDbDwgFiler::writeUInt8(Adesk::UInt8 val)
     PyThrowBadEs(impObj()->writeUInt8(val));
 }
 
+Adesk::Boolean PyDbDwgFiler::readBoolean()
+{
+    Adesk::Boolean val;
+    PyThrowBadEs(impObj()->readBoolean(&val));
+    return val;
+}
+
+void PyDbDwgFiler::writeBoolean(Adesk::Boolean val)
+{
+    PyThrowBadEs(impObj()->writeBoolean(val));
+}
+
+bool PyDbDwgFiler::readBool()
+{
+    bool val;
+    PyThrowBadEs(impObj()->readBool(&val));
+    return val;
+}
+
+void PyDbDwgFiler::writeBool(bool val)
+{
+    PyThrowBadEs(impObj()->writeBool(val));
+}
+
+double PyDbDwgFiler::readDouble()
+{
+    double val;
+    PyThrowBadEs(impObj()->readDouble(&val));
+    return val;
+}
+
+void PyDbDwgFiler::writeDouble(double val)
+{
+    PyThrowBadEs(impObj()->writeDouble(val));
+}
+
+AcGePoint2d PyDbDwgFiler::readPoint2d()
+{
+    AcGePoint2d val;
+    PyThrowBadEs(impObj()->readPoint2d(&val));
+    return val;
+}
+
+void PyDbDwgFiler::writePoint2d(const AcGePoint2d& val)
+{
+    PyThrowBadEs(impObj()->writePoint2d(val));
+}
+
+AcGePoint3d PyDbDwgFiler::readPoint3d()
+{
+    AcGePoint3d val;
+    PyThrowBadEs(impObj()->readPoint3d(&val));
+    return val;
+}
+
+void PyDbDwgFiler::writePoint3d(const AcGePoint3d& val)
+{
+    PyThrowBadEs(impObj()->writePoint3d(val));
+}
+
+AcGeVector2d PyDbDwgFiler::readVector2d()
+{
+    AcGeVector2d val;
+    PyThrowBadEs(impObj()->readVector2d(&val));
+    return val;
+}
+
+void PyDbDwgFiler::writeVector2d(const AcGeVector2d& val)
+{
+    PyThrowBadEs(impObj()->writeVector2d(val));
+}
+
+AcGeVector3d PyDbDwgFiler::readVector3d()
+{
+    AcGeVector3d val;
+    PyThrowBadEs(impObj()->readVector3d(&val));
+    return val;
+}
+
+void PyDbDwgFiler::writeVector3d(const AcGeVector3d& val)
+{
+    PyThrowBadEs(impObj()->writeVector3d(val));
+}
+
+AcGeScale3d PyDbDwgFiler::readScale3d()
+{
+    AcGeScale3d val;
+    PyThrowBadEs(impObj()->readScale3d(&val));
+    return val;
+}
+
+void PyDbDwgFiler::writeScale3d(const AcGeScale3d& val)
+{
+    PyThrowBadEs(impObj()->writeScale3d(val));
+}
+
+boost::python::object PyDbDwgFiler::readBytes()
+{
+    ads_binary adsval = { 0 };
+    PyThrowBadEs(impObj()->readBChunk(&adsval));
+    PyAutoLockGIL lock;
+    PyObject* py_buf = PyMemoryView_FromMemory(adsval.buf, (size_t)adsval.clen, PyBUF_WRITE);
+    return boost::python::object(boost::python::handle<>(py_buf));
+}
+
+void PyDbDwgFiler::writeBytes(const boost::python::object& val)
+{
+    if (!PyObject_CheckBuffer(val.ptr()))
+        PyThrowBadEs(eInvalidInput);
+    Py_buffer view;
+    if (PyObject_GetBuffer(val.ptr(), &view, PyBUF_ANY_CONTIGUOUS) == -1)
+        PyThrowBadEs(eInvalidInput);
+    PyThrowBadEs(impObj()->writeBytes(static_cast<char*>(view.buf), view.len));
+    PyBuffer_Release(&view);
+}
+
+INT_PTR PyDbDwgFiler::readAddress()
+{
+    void* val;
+    PyThrowBadEs(impObj()->readAddress(&val));
+    return (INT_PTR)val;
+}
+
+void PyDbDwgFiler::writeAddress(INT_PTR val)
+{
+    PyThrowBadEs(impObj()->writeAddress((void*)val));
+}
+
+void PyDbDwgFiler::seek(Adesk::Int64 nOffset, int nMethod)
+{
+    PyThrowBadEs(impObj()->seek(nOffset, nMethod));
+}
+
+Adesk::Int64 PyDbDwgFiler::tell() const
+{
+    return impObj()->tell();
+}
+
 PyRxClass PyDbDwgFiler::desc()
 {
     return PyRxClass(AcDbDwgFiler::desc(), false);

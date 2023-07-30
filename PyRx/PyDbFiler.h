@@ -20,7 +20,6 @@ class PyDbDwgFiler : public PyRxObject
     void                resetFilerStatus();
     boost::python::tuple dwgVersion() const;
     AcDb::MaintenanceReleaseVersion extendedDwgMaintenanceReleaseVersion() const;
-
     PyDbObjectId        readHardOwnershipId();
     void                writeHardOwnershipId(const PyDbObjectId& id);
     PyDbObjectId        readSoftOwnershipId();
@@ -33,10 +32,8 @@ class PyDbDwgFiler : public PyRxObject
     void                writeInt8(Adesk::Int8 val);
     std::string         readString();
     void                writeString(const std::string& pVal);
-
     boost::python::object   readBChunk();
     void                    writeBChunk(const boost::python::object& val);
-
     PyDbHandle          readAcDbHandle();
     void                writeAcDbHandle(const PyDbHandle& val);
     Adesk::Int64        readInt64();
@@ -53,41 +50,28 @@ class PyDbDwgFiler : public PyRxObject
     void                writeUInt16(Adesk::UInt16 val);
     Adesk::UInt8        readUInt8();
     void                writeUInt8(Adesk::UInt8 val);
-
-
-
-
-    Acad::ErrorStatus   readBoolean(Adesk::Boolean* pVal);
-    Acad::ErrorStatus   writeBoolean(Adesk::Boolean val);
-
-    Acad::ErrorStatus   readBool(bool* pVal);
-    Acad::ErrorStatus   writeBool(bool val);
-
-    Acad::ErrorStatus   readDouble(double* pVal);
-    Acad::ErrorStatus   writeDouble(double val);
-
-    Acad::ErrorStatus   readPoint2d(AcGePoint2d* pVal);
-    Acad::ErrorStatus   writePoint2d(const AcGePoint2d& val);
-
-    Acad::ErrorStatus   readPoint3d(AcGePoint3d* pVal);
-    Acad::ErrorStatus   writePoint3d(const AcGePoint3d& val);
-
-    Acad::ErrorStatus   readVector2d(AcGeVector2d* pVal);
-    Acad::ErrorStatus   writeVector2d(const AcGeVector2d& val);
-
-    Acad::ErrorStatus   readVector3d(AcGeVector3d* pVal);
-    Acad::ErrorStatus   writeVector3d(const AcGeVector3d& val);
-
-    Acad::ErrorStatus   readScale3d(AcGeScale3d* pVal);
-    Acad::ErrorStatus   writeScale3d(const AcGeScale3d& val);
-
-    Acad::ErrorStatus   readBytes(void* pDest, Adesk::UIntPtr nBytes);
-    Acad::ErrorStatus   writeBytes(const void* pSrc, Adesk::UIntPtr nBytes);
-
-    Acad::ErrorStatus   readAddress(void** pVal);
-    Acad::ErrorStatus   writeAddress(const void* pVal);
-
-
+    Adesk::Boolean      readBoolean();
+    void                writeBoolean(Adesk::Boolean val);
+    bool                readBool();
+    void                writeBool(bool val);
+    double              readDouble();
+    void                writeDouble(double val);
+    AcGePoint2d         readPoint2d();
+    void                writePoint2d(const AcGePoint2d& val);
+    AcGePoint3d         readPoint3d();
+    void                writePoint3d(const AcGePoint3d& val);
+    AcGeVector2d        readVector2d();
+    void                writeVector2d(const AcGeVector2d& val);
+    AcGeVector3d        readVector3d();
+    void                writeVector3d(const AcGeVector3d& val);
+    AcGeScale3d         readScale3d();
+    void                writeScale3d(const AcGeScale3d& val);
+    boost::python::object   readBytes();
+    void                    writeBytes(const boost::python::object& val);
+    INT_PTR             readAddress();
+    void                writeAddress(INT_PTR val);
+    void                seek(Adesk::Int64 nOffset, int nMethod);
+    Adesk::Int64        tell() const;
     static PyRxClass    desc();
     static std::string  className();
 public:
