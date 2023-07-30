@@ -44,6 +44,8 @@ void makeDbCoreWrapper()
         .def("dxfOutAs2004", &DbCore::dxfOutAs2004).staticmethod("dxfOutAs2004")
         .def("dxfOutAsR12", &DbCore::dxfOutAsR12).staticmethod("dxfOutAsR12")
         .def("entGet", &DbCore::entGet).staticmethod("entGet")
+        .def("entGetX", &DbCore::entGetX1)
+        .def("entGetX", &DbCore::entGetX2).staticmethod("entGetX")
         .def("entDel", &DbCore::entDel).staticmethod("entDel")
         .def("entLast", &DbCore::entLast).staticmethod("entLast")
         .def("entMod", &DbCore::entMod).staticmethod("entMod")
@@ -315,6 +317,29 @@ boost::python::list DbCore::entGet(const PyDbObjectId& id)
     ads_name name = { 0L };
     PyThrowBadEs(acdbGetAdsName(name, id.m_id));
     AcResBufPtr ptr(acdbEntGet(name));
+    if (ptr == nullptr)
+        throw PyAcadErrorStatus(eInvalidInput);
+    return resbufToList(ptr.get());
+}
+
+boost::python::list DbCore::entGetX1(const PyDbObjectId& id)
+{
+    ads_name name = { 0L };
+    PyThrowBadEs(acdbGetAdsName(name, id.m_id));
+    AcResBufPtr rbIn(acutNewRb(RTSTR));
+    acutNewString(_T("*"), rbIn->resval.rstring);
+    AcResBufPtr ptr(acdbEntGetX(name, rbIn.get()));
+    if (ptr == nullptr)
+        throw PyAcadErrorStatus(eInvalidInput);
+    return resbufToList(ptr.get());
+}
+
+boost::python::list DbCore::entGetX2(const PyDbObjectId& id, const boost::python::list& rb)
+{
+    ads_name name = { 0L };
+    PyThrowBadEs(acdbGetAdsName(name, id.m_id));
+    AcResBufPtr rbIn(listToResbuf(rb));
+    AcResBufPtr ptr(acdbEntGetX(name, rbIn.get()));
     if (ptr == nullptr)
         throw PyAcadErrorStatus(eInvalidInput);
     return resbufToList(ptr.get());
