@@ -244,6 +244,19 @@ BOOST_PYTHON_MODULE(PyDb)
 
     def("curDb", curPyDb);
 
+    enum_<AcDb::FilerType>("FilerType")
+        .value("kFileFiler", AcDb::FilerType::kFileFiler)
+        .value("kCopyFiler", AcDb::FilerType::kCopyFiler)
+        .value("kUndoFiler", AcDb::FilerType::kUndoFiler)
+        .value("kBagFiler", AcDb::FilerType::kBagFiler)
+        .value("kIdXlateFiler", AcDb::FilerType::kIdXlateFiler)
+        .value("kPageFiler", AcDb::FilerType::kPageFiler)
+        .value("kDeepCloneFiler", AcDb::FilerType::kDeepCloneFiler)
+        .value("kIdFiler", AcDb::FilerType::kIdFiler)
+        .value("kPurgeFiler", AcDb::FilerType::kPurgeFiler)
+        .value("kWblockCloneFiler", AcDb::FilerType::kWblockCloneFiler)
+        .export_values()
+        ;
     enum_<AcDb::OsnapMode>("OsnapMode")
         .value("kOsModeEnd", AcDb::OsnapMode::kOsModeEnd)
         .value("kOsModeMid", AcDb::OsnapMode::kOsModeMid)
