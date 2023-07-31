@@ -27,6 +27,8 @@ void makePyDbFieldtWrapper()
         .def("evaluate", &PyDbField::evaluate1)
         .def("evaluate", &PyDbField::evaluate2)
         .def("evaluate", &PyDbField::evaluate3)
+        .def("getFieldCode", &PyDbField::getFieldCode1)
+        .def("getFieldCode", &PyDbField::getFieldCode2)
         .def("className", &PyDbField::className).staticmethod("className")
         .def("desc", &PyDbField::desc).staticmethod("desc")
         .def("cloneFrom", &PyDbField::cloneFrom).staticmethod("cloneFrom")
@@ -221,6 +223,21 @@ void PyDbField::evaluate2(AcDbField::EvalContext nContext)
 void PyDbField::evaluate3(AcDbField::EvalContext nContext, PyDbDatabase& db)
 {
     return PyThrowBadEs(impObj()->evaluate(nContext, db.impObj()));
+}
+
+std::string PyDbField::getFieldCode1(AcDbField::FieldCodeFlag nFlag)
+{
+    return wstr_to_utf8(impObj()->getFieldCode(nFlag));
+}
+
+std::string PyDbField::getFieldCode2(AcDbField::FieldCodeFlag nFlag, boost::python::list pyfields, AcDb::OpenMode mode)
+{
+    PyAutoLockGIL lock;
+    AcArray<AcDbField*> pChildFields;
+    auto PyList = py_list_to_std_vector<PyDbField>(pyfields);
+    for (const auto& item : PyList)
+        pChildFields.append(item.impObj());
+    return wstr_to_utf8(impObj()->getFieldCode(nFlag, &pChildFields, mode));
 }
 
 std::string PyDbField::className()

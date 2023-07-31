@@ -1282,16 +1282,8 @@ class Editor:
     def nEntSelP (prompt:str,selpt:PyGe.Point3d=None)-> tuple :
       '''                             '''
     ...
-    def nEntSelPEx (self, *args, **kwargs)-> tuple :
-      '''nEntSelPEx( (str)arg1, (int)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple nEntSelPEx(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)
-
-nEntSelPEx( (str)arg1, (Point3d)arg2, (int)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple nEntSelPEx(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class AcGePoint3d,int)'''
+    def nEntSelPEx (prompt:str,selpt:PyGe.Point3d=None,flags:int)-> tuple :
+      '''                             '''
     ...
     def select (filer:list=None)-> tuple :
       '''                             '''

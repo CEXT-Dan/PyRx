@@ -10460,6 +10460,18 @@ entGetX( (ObjectId)arg1, (list)arg2) -> list :
     C++ signature :
         bool entUpd(class PyDbObjectId)'''
     ...
+    def fail (self, *args, **kwargs)-> None :
+      '''fail( (str)arg1) -> None :
+
+    C++ signature :
+        void fail(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def findField (self, *args, **kwargs)-> tuple :
+      '''findField( (str)arg1, (int)arg2) -> tuple :
+
+    C++ signature :
+        class boost::python::tuple findField(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    ...
     def getSummaryInfo (self, *args, **kwargs)-> DatabaseSummaryInfo :
       '''getSummaryInfo( (Database)arg1) -> DatabaseSummaryInfo :
 
@@ -22177,6 +22189,17 @@ evaluate( (Field)arg1, (FieldEvalContext)arg2, (Database)arg3) -> None :
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
       '''                             '''
+    ...
+    def getFieldCode (self, *args, **kwargs)-> str :
+      '''getFieldCode( (Field)arg1, (FieldCodeFlag)arg2) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getFieldCode(class PyDbField {lvalue},enum AcDbField::FieldCodeFlag)
+
+getFieldCode( (Field)arg1, (FieldCodeFlag)arg2, (list)arg3, (OpenMode)arg4) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getFieldCode(class PyDbField {lvalue},enum AcDbField::FieldCodeFlag,class boost::python::list,enum AcDb::OpenMode)'''
     ...
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''

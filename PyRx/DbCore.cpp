@@ -63,6 +63,9 @@ void makeDbCoreWrapper()
         .def("entMake", &DbCore::entMake).staticmethod("entMake")
         .def("entMakeX", &DbCore::entMakeX).staticmethod("entMakeX")
 
+        .def("fail", &DbCore::fail).staticmethod("fail")
+        .def("findField", &DbCore::findField).staticmethod("findField")
+
         .def("openDbObject", &DbCore::openDbObject).staticmethod("openDbObject")
         .def("openDbEntity", &DbCore::openDbEntity).staticmethod("openDbEntity")
         .def("regApp", &DbCore::regApp).staticmethod("regApp")
@@ -386,6 +389,24 @@ bool DbCore::entUpd(const PyDbObjectId& id)
     ads_name name = { 0L };
     PyThrowBadEs(acdbGetAdsName(name, id.m_id));
     return acdbEntUpd(name) == RTNORM;
+}
+
+void DbCore::fail(const std::string& msg)
+{
+    acdbFail(utf8_to_wstr(msg).c_str());
+}
+
+boost::python::tuple DbCore::findField(const std::string& pszText, int iSearchFrom)
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    PyAutoLockGIL lock;
+    int nStartPos = -1;
+    int nEndPos = -1;
+    auto flag = acdbFindField(utf8_to_wstr(pszText).c_str(), iSearchFrom, nStartPos, nEndPos);
+    return boost::python::make_tuple(flag, nStartPos, nEndPos);
+#endif
 }
 
 PyDbObject DbCore::openDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
