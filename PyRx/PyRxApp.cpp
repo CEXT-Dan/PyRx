@@ -77,6 +77,10 @@ int WxRxApp::OnExit()
 
 bool WxRxApp::Init_wxPython()
 {
+#ifdef NEVER// interesting flag
+    if (SetEnvironmentVariable(L"PYTHONOPTIMIZE", L"yes") != 0)
+        acutPrintf(_T("\nPYTHONOPTIMIZE = TRUE\n"));
+#endif
     Py_InitializeEx(0);
     PyEval_InitThreads();
     if (wxPyGetAPIPtr() == NULL)
