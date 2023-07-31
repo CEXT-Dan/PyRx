@@ -1240,23 +1240,14 @@ class Editor:
     C++ signature :
         class PyDbObjectId curViewportObjectId()'''
     ...
-    def entSel (self, *args, **kwargs)-> tuple :
-      '''entSel( (str)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple entSel(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def entSel (prompt:str)-> tuple :
+      '''                             '''
     ...
-    def getAngle (self, *args, **kwargs)-> tuple :
-      '''getAngle( (Point3d)arg1, (str)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getAngle(class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getAngle (basePt:PyGe.Point3d,prompt:str)-> tuple :
+      '''                             '''
     ...
-    def getCorner (self, *args, **kwargs)-> tuple :
-      '''getCorner( (Point3d)arg1, (str)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getCorner(class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getCorner (basePt:PyGe.Point3d,prompt:str)-> tuple :
+      '''                             '''
     ...
     def getCurrentUCS (self, *args, **kwargs)-> Matrix3d :
       '''getCurrentUCS() -> Matrix3d :
@@ -1264,74 +1255,32 @@ class Editor:
     C++ signature :
         class AcGeMatrix3d getCurrentUCS()'''
     ...
-    def getDist (self, *args, **kwargs)-> tuple :
-      '''getDist( (str)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getDist(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-getDist( (Point3d)arg1, (str)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getDist(class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getDist (basePt:PyGe.Point3d=default,prompt:str)-> tuple :
+      '''                             '''
     ...
-    def getDouble (self, *args, **kwargs)-> tuple :
-      '''getDouble( (str)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getDouble(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getDouble (prompt:str)-> tuple :
+      '''                             '''
     ...
-    def getInteger (self, *args, **kwargs)-> tuple :
-      '''getInteger( (str)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getInteger(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getInteger (prompt:str)-> tuple :
+      '''                             '''
     ...
-    def getKword (self, *args, **kwargs)-> tuple :
-      '''getKword( (str)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getKword(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getKword (keyword:str)-> tuple :
+      '''                             '''
     ...
-    def getPoint (self, *args, **kwargs)-> tuple :
-      '''getPoint( (str)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getPoint(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-getPoint( (Point3d)arg1, (str)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getPoint(class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getPoint (basePt:PyGe.Point3d=default,prompt:str)-> tuple :
+      '''                             '''
     ...
-    def getReal (self, *args, **kwargs)-> tuple :
-      '''getReal( (str)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getReal(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getReal (prompt:str)-> tuple :
+      '''                             '''
     ...
-    def getString (self, *args, **kwargs)-> tuple :
-      '''getString( (int)arg1, (str)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple getString(int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def getString (cronly:int,prompt:str)-> tuple :
+      '''                             '''
     ...
-    def initGet (self, *args, **kwargs)-> PromptStatus :
-      '''initGet( (int)arg1, (str)arg2) -> PromptStatus :
-
-    C++ signature :
-        enum Acad::PromptStatus initGet(int,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    def initGet (val:int,keyword:str)-> PromptStatus :
+      '''                             '''
     ...
-    def nEntSelP (self, *args, **kwargs)-> tuple :
-      '''nEntSelP( (str)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple nEntSelP(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-nEntSelP( (str)arg1, (Point3d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple nEntSelP(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class AcGePoint3d {lvalue})'''
+    def nEntSelP (prompt:str,selpt:PyGe.Point3d=default)-> tuple :
+      '''                             '''
     ...
     def nEntSelPEx (self, *args, **kwargs)-> tuple :
       '''nEntSelPEx( (str)arg1, (int)arg2) -> tuple :
@@ -1342,118 +1291,40 @@ nEntSelP( (str)arg1, (Point3d)arg2) -> tuple :
 nEntSelPEx( (str)arg1, (Point3d)arg2, (int)arg3) -> tuple :
 
     C++ signature :
-        class boost::python::tuple nEntSelPEx(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class AcGePoint3d {lvalue},int)'''
+        class boost::python::tuple nEntSelPEx(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class AcGePoint3d,int)'''
     ...
-    def select (self, *args, **kwargs)-> tuple :
-      '''select() -> tuple :
-
-    C++ signature :
-        class boost::python::tuple select()
-
-select( (list)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple select(class boost::python::list)'''
+    def select (filer:list=None)-> tuple :
+      '''                             '''
     ...
-    def selectAll (self, *args, **kwargs)-> tuple :
-      '''selectAll() -> tuple :
-
-    C++ signature :
-        class boost::python::tuple selectAll()
-
-selectAll( (list)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple selectAll(class boost::python::list)'''
+    def selectAll (filer:list=None)-> tuple :
+      '''                             '''
     ...
-    def selectFence (self, *args, **kwargs)-> tuple :
-      '''selectFence( (list)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple selectFence(class boost::python::list)
-
-selectFence( (list)arg1, (list)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple selectFence(class boost::python::list,class boost::python::list)'''
+    def selectFence (points:list[PyGe.Point3d],filer:list=None)-> tuple :
+      '''                             '''
     ...
-    def selectLast (self, *args, **kwargs)-> tuple :
-      '''selectLast() -> tuple :
-
-    C++ signature :
-        class boost::python::tuple selectLast()
-
-selectLast( (list)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple selectLast(class boost::python::list)'''
+    def selectLast (filer:list=None)-> tuple :
+      '''                             '''
     ...
-    def selectPrevious (self, *args, **kwargs)-> tuple :
-      '''selectPrevious() -> tuple :
-
-    C++ signature :
-        class boost::python::tuple selectPrevious()
-
-selectPrevious( (list)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple selectPrevious(class boost::python::list)'''
+    def selectPrevious (filer:list=None)-> tuple :
+      '''                             '''
     ...
-    def selectPrompt (self, *args, **kwargs)-> tuple :
-      '''selectPrompt( (str)arg1, (str)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple selectPrompt(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
-
-selectPrompt( (str)arg1, (str)arg2, (list)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple selectPrompt(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::list)'''
+    def selectPrompt (addPromt:str,remPromt:str,filer:list=None)-> tuple :
+      '''                             '''
     ...
-    def selectWindow (self, *args, **kwargs)-> tuple :
-      '''selectWindow( (Point3d)arg1, (Point3d)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple selectWindow(class AcGePoint3d,class AcGePoint3d)
-
-selectWindow( (Point3d)arg1, (Point3d)arg2, (list)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple selectWindow(class AcGePoint3d,class AcGePoint3d,class boost::python::list)'''
+    def selectWindow (pt1:PyGe.Point3d,pt2:PyGe.Point3d,filer:list=None)-> tuple :
+      '''                             '''
     ...
-    def selectWindowPolygon (self, *args, **kwargs)-> tuple :
-      '''selectWindowPolygon( (list)arg1) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple selectWindowPolygon(class boost::python::list)
-
-selectWindowPolygon( (list)arg1, (list)arg2) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple selectWindowPolygon(class boost::python::list,class boost::python::list)'''
+    def selectWindowPolygon (points:list[PyGe.Point3d],filer:list=None)-> tuple :
+      '''                             '''
     ...
-    def setCurrentUCS (self, *args, **kwargs)-> None :
-      '''setCurrentUCS( (Matrix3d)arg1) -> None :
-
-    C++ signature :
-        void setCurrentUCS(class AcGeMatrix3d)'''
+    def setCurrentUCS (ucs:PyGe.Matrix3d)-> None :
+      '''                             '''
     ...
-    def ssget (self, *args, **kwargs)-> tuple :
-      '''ssget( (str)arg1, (object)arg2, (object)arg3) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple ssget(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::api::object,class boost::python::api::object)
-
-ssget( (str)arg1, (object)arg2, (object)arg3, (list)arg4) -> tuple :
-
-    C++ signature :
-        class boost::python::tuple ssget(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class boost::python::api::object,class boost::python::api::object,class boost::python::list)'''
+    def ssget (mode:str,arg1:any,arg2:any,filer:list=None)-> tuple :
+      '''                             '''
     ...
-    def traceBoundary (self, *args, **kwargs)-> list :
-      '''traceBoundary( (Point3d)arg1, (bool)arg2) -> list :
-
-    C++ signature :
-        class boost::python::list traceBoundary(class AcGePoint3d,bool)'''
+    def traceBoundary (point:PyGe.Point3d,detectIslands : bool)-> list :
+      '''                             '''
     ...
 
 class EditorReactor:
