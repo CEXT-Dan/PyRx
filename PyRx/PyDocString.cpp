@@ -6,7 +6,7 @@ PyDocString::PyDocString(const std::string& val)
 {
 }
 
-const char* PyDocString::CLASSARGS()
+const char* PyDocString::ARGS()
 {
     outstr = m_argBegin;
     outstr += std::format("self: {}", m_className);
@@ -14,7 +14,7 @@ const char* PyDocString::CLASSARGS()
     return outstr.c_str();
 }
 
-const char* PyDocString::CLASSARGS(std::initializer_list<std::string> pyargs)
+const char* PyDocString::ARGS(std::initializer_list<std::string> pyargs)
 {
     outstr = m_argBegin;
     outstr += std::format("self: {}", m_className);
@@ -28,14 +28,14 @@ const char* PyDocString::CLASSARGS(std::initializer_list<std::string> pyargs)
     return outstr.c_str();
 }
 
-const char* PyDocString::CLASSARGSSTATIC()
+const char* PyDocString::SARGS()
 {
     outstr = m_argBegin;
     outstr += m_argEnd;
     return outstr.c_str();
 }
 
-const char* PyDocString::CLASSARGSSTATIC(std::initializer_list<std::string> pyargs)
+const char* PyDocString::SARGS(std::initializer_list<std::string> pyargs)
 {
     outstr = m_argBegin;
     for (auto& arg : pyargs)

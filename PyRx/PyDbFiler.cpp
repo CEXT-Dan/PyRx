@@ -10,8 +10,8 @@ void makePyDbSnoopDwgFilerWrapper()
     PyDocString DS("SnoopDwgFiler");
     class_<PyDbSnoopDwgFiler>("SnoopDwgFiler")
         .def(init<>())
-        .def(init<AcDb::FilerType>(DS.CLASSARGS({ "filerType: PyDb.FilerType" })))
-        .def("buffer", &PyDbSnoopDwgFiler::buffer, DS.CLASSARGS())
+        .def(init<AcDb::FilerType>(DS.ARGS({ "filerType: PyDb.FilerType" })))
+        .def("buffer", &PyDbSnoopDwgFiler::buffer, DS.ARGS())
         ;
 }
 
