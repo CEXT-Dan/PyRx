@@ -1255,7 +1255,7 @@ class Editor:
     C++ signature :
         class AcGeMatrix3d getCurrentUCS()'''
     ...
-    def getDist (basePt:PyGe.Point3d=default,prompt:str)-> tuple :
+    def getDist (basePt:PyGe.Point3d=None,prompt:str)-> tuple :
       '''                             '''
     ...
     def getDouble (prompt:str)-> tuple :
@@ -1267,7 +1267,7 @@ class Editor:
     def getKword (keyword:str)-> tuple :
       '''                             '''
     ...
-    def getPoint (basePt:PyGe.Point3d=default,prompt:str)-> tuple :
+    def getPoint (basePt:PyGe.Point3d=None,prompt:str)-> tuple :
       '''                             '''
     ...
     def getReal (prompt:str)-> tuple :
@@ -1279,7 +1279,7 @@ class Editor:
     def initGet (val:int,keyword:str)-> PromptStatus :
       '''                             '''
     ...
-    def nEntSelP (prompt:str,selpt:PyGe.Point3d=default)-> tuple :
+    def nEntSelP (prompt:str,selpt:PyGe.Point3d=None)-> tuple :
       '''                             '''
     ...
     def nEntSelPEx (self, *args, **kwargs)-> tuple :
