@@ -10265,39 +10265,17 @@ class Core:
     C++ signature :
         void __init__(struct _object * __ptr64)'''
     ...
-    def activeDatabaseArray (self, *args, **kwargs)-> list :
-      '''activeDatabaseArray() -> list :
-
-    C++ signature :
-        class boost::python::list activeDatabaseArray()'''
+    def activeDatabaseArray ()-> list :
+      '''                             '''
     ...
-    def angToF (self, *args, **kwargs)-> float :
-      '''angToF( (str)arg1, (int)arg2) -> float :
-
-    C++ signature :
-        double angToF(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    def angToF (value:str,unit:int)-> float :
+      '''                             '''
     ...
-    def angToS (self, *args, **kwargs)-> str :
-      '''angToS( (float)arg1, (int)arg2, (int)arg3) -> str :
-
-    C++ signature :
-        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > angToS(double,int,int)'''
+    def angToS (value:float,unit:int,prec:int)-> str :
+      '''                             '''
     ...
-    def assignGelibCurveToAcDbCurve (self, *args, **kwargs)-> None :
-      '''assignGelibCurveToAcDbCurve( (Curve3d)arg1, (Curve)arg2) -> None :
-
-    C++ signature :
-        void assignGelibCurveToAcDbCurve(class PyGeCurve3d,class PyDbCurve {lvalue})
-
-assignGelibCurveToAcDbCurve( (Curve3d)arg1, (Curve)arg2, (Vector3d)arg3) -> None :
-
-    C++ signature :
-        void assignGelibCurveToAcDbCurve(class PyGeCurve3d,class PyDbCurve {lvalue},class AcGeVector3d {lvalue})
-
-assignGelibCurveToAcDbCurve( (Curve3d)arg1, (Curve)arg2, (Vector3d)arg3, (Tol)arg4) -> None :
-
-    C++ signature :
-        void assignGelibCurveToAcDbCurve(class PyGeCurve3d,class PyDbCurve {lvalue},class AcGeVector3d {lvalue},class AcGeTol)'''
+    def assignGelibCurveToAcDbCurve (geCurve:PyGe.Curve3d,dbCurve:PyDb.Curve,norm:PyGe.Vector3d=kZAxis,tol:PyGe.Tol=tol)-> None :
+      '''                             '''
     ...
     def attachXref (self, *args, **kwargs)-> None :
       '''attachXref( (Database)arg1, (str)arg2, (str)arg3, (ObjectId)arg4) -> None :
@@ -10322,32 +10300,11 @@ bindXrefs( (Database)arg1, (list)arg2, (bool)arg3, (bool)arg4, (bool)arg5) -> No
     C++ signature :
         void clearSetupForLayouts(unsigned __int64)'''
     ...
-    def convertAcDbCurveToGelibCurve (self, *args, **kwargs)-> Curve3d :
-      '''convertAcDbCurveToGelibCurve( (Curve)arg1) -> Curve3d :
-
-    C++ signature :
-        class PyGeCurve3d convertAcDbCurveToGelibCurve(class PyDbCurve)
-
-convertAcDbCurveToGelibCurve( (Curve)arg1, (Tol)arg2) -> Curve3d :
-
-    C++ signature :
-        class PyGeCurve3d convertAcDbCurveToGelibCurve(class PyDbCurve,class AcGeTol)'''
+    def convertAcDbCurveToGelibCurve (geCurve:PyGe.Curve2d,tol:PyGe.Tol=tol)-> Curve3d :
+      '''                             '''
     ...
-    def convertGelibCurveToAcDbCurve (self, *args, **kwargs)-> Curve :
-      '''convertGelibCurveToAcDbCurve( (Curve3d)arg1) -> Curve :
-
-    C++ signature :
-        class PyDbCurve convertGelibCurveToAcDbCurve(class PyGeCurve3d)
-
-convertGelibCurveToAcDbCurve( (Curve3d)arg1, (Vector3d)arg2) -> Curve :
-
-    C++ signature :
-        class PyDbCurve convertGelibCurveToAcDbCurve(class PyGeCurve3d,class AcGeVector3d {lvalue})
-
-convertGelibCurveToAcDbCurve( (Curve3d)arg1, (Vector3d)arg2, (Tol)arg3) -> Curve :
-
-    C++ signature :
-        class PyDbCurve convertGelibCurveToAcDbCurve(class PyGeCurve3d,class AcGeVector3d {lvalue},class AcGeTol)'''
+    def convertGelibCurveToAcDbCurve (geCurve:PyGe.Curve3d,norm:PyGe.Vector3d=kZAxis,tol:PyGe.Tol=tol)-> Curve :
+      '''                             '''
     ...
     def createViewByViewport (self, *args, **kwargs)-> ObjectId :
       '''createViewByViewport( (Database)arg1, (ObjectId)arg2, (str)arg3, (str)arg4, (ObjectId)arg5) -> ObjectId :

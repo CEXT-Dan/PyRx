@@ -26,6 +26,7 @@ extern "C" void acedGetCommandPromptString(CString&);
 //EdCore
 void makePyEdCoreWrapper()
 {
+    PyDocString DS("Core");
     class_<EdCore>("Core")
         .def("alert", &EdCore::alert).staticmethod("alert")
         .def("arxLoad", &EdCore::arxLoad).staticmethod("arxLoad")
