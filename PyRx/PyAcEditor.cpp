@@ -79,8 +79,8 @@ boost::python::tuple makeSelectionResult(const ads_name& name, Acad::PromptStatu
 
 void makePyEditorWrapper()
 {
+    PyDocString DS("Editor");
     class_<PyAcEditor>("Editor")
-        .def("className", &PyAcEditor::className).staticmethod("className")
         .def("getCorner", &PyAcEditor::getCorner).staticmethod("getCorner")
         .def("getInteger", &PyAcEditor::getInteger).staticmethod("getInteger")
         .def("getDouble", &PyAcEditor::getDouble).staticmethod("getDouble")
@@ -121,6 +121,7 @@ void makePyEditorWrapper()
         .def("initGet", &PyAcEditor::initGet).staticmethod("initGet")
         .def("getKword", &PyAcEditor::getKword).staticmethod("getKword")
         .def("traceBoundary", &PyAcEditor::traceBoundary).staticmethod("traceBoundary")
+        .def("className", &PyAcEditor::className).staticmethod("className")
         ;
 }
 

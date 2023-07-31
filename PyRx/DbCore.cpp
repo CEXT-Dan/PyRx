@@ -13,22 +13,31 @@ using namespace boost::python;
 
 void makeDbCoreWrapper()
 {
+    PyDocString DS("Core");
     class_<DbCore>("Core")
-        .def("activeDatabaseArray", &DbCore::activeDatabaseArray).staticmethod("activeDatabaseArray")
-        .def("angToF", &DbCore::angToF).staticmethod("angToF")
-        .def("angToS", &DbCore::angToS).staticmethod("angToS")
+        .def("activeDatabaseArray", &DbCore::activeDatabaseArray, DS.CLASSARGSSTATIC()).staticmethod("activeDatabaseArray")
+        .def("angToF", &DbCore::angToF, DS.CLASSARGSSTATIC({ "value:str","unit:int" })).staticmethod("angToF")
+        .def("angToS", &DbCore::angToS, DS.CLASSARGSSTATIC({ "value:float","unit:int","prec:int" })).staticmethod("angToS")
+
         .def("assignGelibCurveToAcDbCurve", &DbCore::assignGelibCurveToAcDbCurve1)
         .def("assignGelibCurveToAcDbCurve", &DbCore::assignGelibCurveToAcDbCurve2)
-        .def("assignGelibCurveToAcDbCurve", &DbCore::assignGelibCurveToAcDbCurve3).staticmethod("assignGelibCurveToAcDbCurve")
+        .def("assignGelibCurveToAcDbCurve", &DbCore::assignGelibCurveToAcDbCurve3, 
+            DS.CLASSARGSSTATIC({ "geCurve:PyGe.Curve3d","dbCurve:PyDb.Curve","norm:PyGe.Vector3d=kZAxis","tol:PyGe.Tol=tol" })).staticmethod("assignGelibCurveToAcDbCurve")
+
         .def("attachXref", &DbCore::attachXref).staticmethod("attachXref")
         .def("bindXrefs", &DbCore::bindXrefs1)
         .def("bindXrefs", &DbCore::bindXrefs2).staticmethod("bindXrefs")
         .def("clearSetupForLayouts", &DbCore::clearSetupForLayouts).staticmethod("clearSetupForLayouts")
+
         .def("convertAcDbCurveToGelibCurve", &DbCore::convertAcDbCurveToGelibCurve1)
-        .def("convertAcDbCurveToGelibCurve", &DbCore::convertAcDbCurveToGelibCurve2).staticmethod("convertAcDbCurveToGelibCurve")
+        .def("convertAcDbCurveToGelibCurve", &DbCore::convertAcDbCurveToGelibCurve2, 
+            DS.CLASSARGSSTATIC({ "geCurve:PyGe.Curve2d","tol:PyGe.Tol=tol" })).staticmethod("convertAcDbCurveToGelibCurve")
+
         .def("convertGelibCurveToAcDbCurve", &DbCore::convertGelibCurveToAcDbCurve1)
         .def("convertGelibCurveToAcDbCurve", &DbCore::convertGelibCurveToAcDbCurve2)
-        .def("convertGelibCurveToAcDbCurve", &DbCore::convertGelibCurveToAcDbCurve3).staticmethod("convertGelibCurveToAcDbCurve")
+        .def("convertGelibCurveToAcDbCurve", &DbCore::convertGelibCurveToAcDbCurve3,
+            DS.CLASSARGSSTATIC({ "geCurve:PyGe.Curve3d","norm:PyGe.Vector3d=kZAxis","tol:PyGe.Tol=tol" })).staticmethod("convertGelibCurveToAcDbCurve")
+
         .def("createViewByViewport", &DbCore::createViewByViewport).staticmethod("createViewByViewport")
         .def("detachXref", &DbCore::detachXref).staticmethod("detachXref")
         .def("dictAdd", &DbCore::dictAdd).staticmethod("dictAdd")
@@ -326,7 +335,7 @@ boost::python::list DbCore::entGetX1(const PyDbObjectId& id)
 {
     ads_name name = { 0L };
     PyThrowBadEs(acdbGetAdsName(name, id.m_id));
-    AcResBufPtr rbIn(acutNewRb(RTSTR));
+    AcResBufPtr rbIn(acutNewRb(RTSTR));//stack?
     acutNewString(_T("*"), rbIn->resval.rstring);
     rbIn->rbnext = nullptr;
     AcResBufPtr ptr(acdbEntGetX(name, rbIn.get()));
