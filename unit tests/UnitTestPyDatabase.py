@@ -77,7 +77,7 @@ class TestDatabase(unittest.TestCase):
         
     def test_handle(self):
         sideDb = Db.Database(False,True)
-        sideDb.readDwgFile("./testmedia/line.dwg")
+        sideDb.readDwgFile("./testmedia/test.dwg")
         sideDb.closeInput(True)
         lineHnd = Db.Handle("296")
         lineId = sideDb.getObjectId(False, lineHnd)
