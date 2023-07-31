@@ -15,14 +15,14 @@ void makeDbCoreWrapper()
 {
     PyDocString DS("Core");
     class_<DbCore>("Core")
-        .def("activeDatabaseArray", &DbCore::activeDatabaseArray, DS.CLASSARGSSTATIC()).staticmethod("activeDatabaseArray")
-        .def("angToF", &DbCore::angToF, DS.CLASSARGSSTATIC({ "value:str","unit:int" })).staticmethod("angToF")
-        .def("angToS", &DbCore::angToS, DS.CLASSARGSSTATIC({ "value:float","unit:int","prec:int" })).staticmethod("angToS")
+        .def("activeDatabaseArray", &DbCore::activeDatabaseArray, DS.SARGS()).staticmethod("activeDatabaseArray")
+        .def("angToF", &DbCore::angToF, DS.SARGS({ "value:str","unit:int" })).staticmethod("angToF")
+        .def("angToS", &DbCore::angToS, DS.SARGS({ "value:float","unit:int","prec:int" })).staticmethod("angToS")
 
         .def("assignGelibCurveToAcDbCurve", &DbCore::assignGelibCurveToAcDbCurve1)
         .def("assignGelibCurveToAcDbCurve", &DbCore::assignGelibCurveToAcDbCurve2)
         .def("assignGelibCurveToAcDbCurve", &DbCore::assignGelibCurveToAcDbCurve3, 
-            DS.CLASSARGSSTATIC({ "geCurve:PyGe.Curve3d","dbCurve:PyDb.Curve","norm:PyGe.Vector3d=kZAxis","tol:PyGe.Tol=tol" })).staticmethod("assignGelibCurveToAcDbCurve")
+            DS.SARGS({ "geCurve:PyGe.Curve3d","dbCurve:PyDb.Curve","norm:PyGe.Vector3d=kZAxis","tol:PyGe.Tol=tol" })).staticmethod("assignGelibCurveToAcDbCurve")
 
         .def("attachXref", &DbCore::attachXref).staticmethod("attachXref")
         .def("bindXrefs", &DbCore::bindXrefs1)
@@ -31,12 +31,12 @@ void makeDbCoreWrapper()
 
         .def("convertAcDbCurveToGelibCurve", &DbCore::convertAcDbCurveToGelibCurve1)
         .def("convertAcDbCurveToGelibCurve", &DbCore::convertAcDbCurveToGelibCurve2, 
-            DS.CLASSARGSSTATIC({ "geCurve:PyGe.Curve2d","tol:PyGe.Tol=tol" })).staticmethod("convertAcDbCurveToGelibCurve")
+            DS.SARGS({ "geCurve:PyGe.Curve2d","tol:PyGe.Tol=tol" })).staticmethod("convertAcDbCurveToGelibCurve")
 
         .def("convertGelibCurveToAcDbCurve", &DbCore::convertGelibCurveToAcDbCurve1)
         .def("convertGelibCurveToAcDbCurve", &DbCore::convertGelibCurveToAcDbCurve2)
         .def("convertGelibCurveToAcDbCurve", &DbCore::convertGelibCurveToAcDbCurve3,
-            DS.CLASSARGSSTATIC({ "geCurve:PyGe.Curve3d","norm:PyGe.Vector3d=kZAxis","tol:PyGe.Tol=tol" })).staticmethod("convertGelibCurveToAcDbCurve")
+            DS.SARGS({ "geCurve:PyGe.Curve3d","norm:PyGe.Vector3d=kZAxis","tol:PyGe.Tol=tol" })).staticmethod("convertGelibCurveToAcDbCurve")
 
         .def("createViewByViewport", &DbCore::createViewByViewport).staticmethod("createViewByViewport")
         .def("detachXref", &DbCore::detachXref).staticmethod("detachXref")

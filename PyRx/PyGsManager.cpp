@@ -9,8 +9,8 @@ void makePyGsManagerWrapper()
 {
     PyDocString DS("GsManager");
     class_<PyGsManager>("GsManager")
-        .def(init<>(DS.CLASSARGS()))
-        .def("className", &PyGsManager::className, DS.CLASSARGSSTATIC()).staticmethod("className")
+        .def(init<>(DS.ARGS()))
+        .def("className", &PyGsManager::className, DS.SARGS()).staticmethod("className")
         ;
 }
 

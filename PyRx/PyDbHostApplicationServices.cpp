@@ -437,7 +437,7 @@ void makePyDbDatabaseSummaryInfoWrapper()
         .def("setCustomSummaryInfo", &PyDbDatabaseSummaryInfo::setCustomSummaryInfo2)
         .def("setCustomSummaryFromDict", &PyDbDatabaseSummaryInfo::setCustomSummaryFromDict)
         .def("asDict", &PyDbDatabaseSummaryInfo::asDict)
-        .def("className", &PyDbDatabaseSummaryInfo::className, DS.CLASSARGSSTATIC()).staticmethod("className")
+        .def("className", &PyDbDatabaseSummaryInfo::className, DS.SARGS()).staticmethod("className")
         ;
 }
 

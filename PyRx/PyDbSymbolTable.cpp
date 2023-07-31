@@ -234,12 +234,12 @@ void makePyDbBlockTableWrapper()
     PyDocString DS("BlockTable");
     class_<PyDbBlockTable, bases<PyDbSymbolTable>>("BlockTable", boost::python::no_init)
         .def(init<const PyDbObjectId&>())
-        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.CLASSARGS({ "id: ObjectId", "mode: OpenMode=kForRead" })))
-        .def("add", &PyDbBlockTable::add, DS.CLASSARGS({ "block : BlockTableRecord"}))
-        .def("className", &PyDbBlockTable::className, DS.CLASSARGSSTATIC()).staticmethod("className")
-        .def("desc", &PyDbBlockTable::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
-        .def("cloneFrom", &PyDbBlockTable::cloneFrom, DS.CLASSARGSSTATIC({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
-        .def("cast", &PyDbBlockTable::cast, DS.CLASSARGSSTATIC({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
+        .def(init<const PyDbObjectId&, AcDb::OpenMode>(DS.ARGS({ "id: ObjectId", "mode: OpenMode=kForRead" })))
+        .def("add", &PyDbBlockTable::add, DS.ARGS({ "block : BlockTableRecord"}))
+        .def("className", &PyDbBlockTable::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyDbBlockTable::desc, DS.SARGS()).staticmethod("desc")
+        .def("cloneFrom", &PyDbBlockTable::cloneFrom, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cloneFrom")
+        .def("cast", &PyDbBlockTable::cast, DS.SARGS({ "otherObject: PyRx.RxObject" })).staticmethod("cast")
         ;
 }
 

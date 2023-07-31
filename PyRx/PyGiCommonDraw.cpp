@@ -10,12 +10,12 @@ void makePyGiCommonDrawWrapper()
 {
     PyDocString DS("CommonDraw");
     class_<PyGiCommonDraw, bases<PyRxObject>>("CommonDraw", boost::python::no_init)
-        .def("regenType", &PyGiCommonDraw::regenType, DS.CLASSARGS())
-        .def("regenAbort", &PyGiCommonDraw::regenAbort, DS.CLASSARGS())
-        .def("isDragging", &PyGiCommonDraw::isDragging, DS.CLASSARGS())
-        .def("subEntityTraits", &PyGiCommonDraw::subEntityTraits, DS.CLASSARGS())
-        .def("className", &PyGiCommonDraw::className, DS.CLASSARGSSTATIC()).staticmethod("className")
-        .def("desc", &PyGiCommonDraw::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
+        .def("regenType", &PyGiCommonDraw::regenType, DS.ARGS())
+        .def("regenAbort", &PyGiCommonDraw::regenAbort, DS.ARGS())
+        .def("isDragging", &PyGiCommonDraw::isDragging, DS.ARGS())
+        .def("subEntityTraits", &PyGiCommonDraw::subEntityTraits, DS.ARGS())
+        .def("className", &PyGiCommonDraw::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyGiCommonDraw::desc, DS.SARGS()).staticmethod("desc")
         ;
 }
 
@@ -67,9 +67,9 @@ void makePyGiWorldDrawWrapper()
 {
     PyDocString DS("WorldDraw");
     class_<PyGiWorldDraw, bases<PyGiCommonDraw>>("WorldDraw", boost::python::no_init)
-        .def("geometry", &PyGiWorldDraw::geometry, DS.CLASSARGS())
-        .def("className", &PyGiWorldDraw::className, DS.CLASSARGSSTATIC()).staticmethod("className")
-        .def("desc", &PyGiWorldDraw::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
+        .def("geometry", &PyGiWorldDraw::geometry, DS.ARGS())
+        .def("className", &PyGiWorldDraw::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyGiWorldDraw::desc, DS.SARGS()).staticmethod("desc")
         ;
 }
 
@@ -106,9 +106,9 @@ void makePyGiViewportDrawWrapper()
 {
     PyDocString DS("ViewportDraw");
     class_<PyGiViewportDraw, bases<PyGiCommonDraw>>("ViewportDraw", boost::python::no_init)
-        .def("geometry", &PyGiViewportDraw::geometry, DS.CLASSARGS())
-        .def("className", &PyGiViewportDraw::className, DS.CLASSARGSSTATIC()).staticmethod("className")
-        .def("desc", &PyGiViewportDraw::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
+        .def("geometry", &PyGiViewportDraw::geometry, DS.ARGS())
+        .def("className", &PyGiViewportDraw::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyGiViewportDraw::desc, DS.SARGS()).staticmethod("desc")
         ;
 }
 
@@ -145,16 +145,16 @@ void makePyGiGeometryWrapper()
 {
     PyDocString DS("Geometry");
     class_<PyGiGeometry, bases<PyRxObject>>("Geometry", boost::python::no_init)
-        .def("getModelToWorldTransform", &PyGiGeometry::getModelToWorldTransform, DS.CLASSARGS())
-        .def("getWorldToModelTransform", &PyGiGeometry::getWorldToModelTransform, DS.CLASSARGS())
+        .def("getModelToWorldTransform", &PyGiGeometry::getModelToWorldTransform, DS.ARGS())
+        .def("getWorldToModelTransform", &PyGiGeometry::getWorldToModelTransform, DS.ARGS())
         .def("pushModelTransform", &PyGiGeometry::pushModelTransform1)
-        .def("pushModelTransform", &PyGiGeometry::pushModelTransform2, DS.CLASSARGS({ "val : PyGe.Vector3d|PyGe.Matrix3d" }))
-        .def("popModelTransform", &PyGiGeometry::popModelTransform, DS.CLASSARGS())
+        .def("pushModelTransform", &PyGiGeometry::pushModelTransform2, DS.ARGS({ "val : PyGe.Vector3d|PyGe.Matrix3d" }))
+        .def("popModelTransform", &PyGiGeometry::popModelTransform, DS.ARGS())
         .def("pushPositionTransform", &PyGiGeometry::pushPositionTransform1)
-        .def("pushPositionTransform", &PyGiGeometry::pushPositionTransform2, DS.CLASSARGS({ "behavior : PyGi.AcGiPositionTransformBehavior"," offset : PyGe.Point2d|PyGe.Point2d" }))
+        .def("pushPositionTransform", &PyGiGeometry::pushPositionTransform2, DS.ARGS({ "behavior : PyGi.AcGiPositionTransformBehavior"," offset : PyGe.Point2d|PyGe.Point2d" }))
         .def("pushScaleTransform", &PyGiGeometry::pushScaleTransform1)
-        .def("pushScaleTransform", &PyGiGeometry::pushScaleTransform2, DS.CLASSARGS({ "behavior : PyGi.AcGiScaleTransformBehavior"," extents : PyGe.Point2d|PyGe.Point2d" }))
-        .def("pushOrientationTransform", &PyGiGeometry::pushOrientationTransform, DS.CLASSARGS({ " behavior : PyGi.AcGiOrientationTransformBehavior" }))
+        .def("pushScaleTransform", &PyGiGeometry::pushScaleTransform2, DS.ARGS({ "behavior : PyGi.AcGiScaleTransformBehavior"," extents : PyGe.Point2d|PyGe.Point2d" }))
+        .def("pushOrientationTransform", &PyGiGeometry::pushOrientationTransform, DS.ARGS({ " behavior : PyGi.AcGiOrientationTransformBehavior" }))
         .def("circle", &PyGiGeometry::circle1)
         .def("circle", &PyGiGeometry::circle2)
         .def("circularArc", &PyGiGeometry::circularArc1)
@@ -163,19 +163,19 @@ void makePyGiGeometryWrapper()
         .def("circularArc", &PyGiGeometry::circularArc4)
         .def("polyline", &PyGiGeometry::polyline1)
         .def("polyline", &PyGiGeometry::polyline2)
-        .def("polyline", &PyGiGeometry::polyline3, DS.CLASSARGS({ "vertexList : list[PyGe.Point3d]","normal : PyGe.Vector3d=default","marker : int=default" }))
-        .def("polygon", &PyGiGeometry::polygon, DS.CLASSARGS({ "vertexList : list[PyGe.Point3d]" }))
-        .def("text", &PyGiGeometry::text1, DS.CLASSARGS({ "pos : PyGe.Point3d","normal : PyGe.Vector3d","direction : PyGe.Vector3d","height : float","width : float","oblique : float","msg : str" }))
-        .def("xline", &PyGiGeometry::xline, DS.CLASSARGS({ "p1 : PyGe.Point3d",  "p2 : PyGe.Point3d" }))
-        .def("ray", &PyGiGeometry::ray, DS.CLASSARGS({ "p1 : PyGe.Point3d",  "p2 : PyGe.Point3d" }))
+        .def("polyline", &PyGiGeometry::polyline3, DS.ARGS({ "vertexList : list[PyGe.Point3d]","normal : PyGe.Vector3d=default","marker : int=default" }))
+        .def("polygon", &PyGiGeometry::polygon, DS.ARGS({ "vertexList : list[PyGe.Point3d]" }))
+        .def("text", &PyGiGeometry::text1, DS.ARGS({ "pos : PyGe.Point3d","normal : PyGe.Vector3d","direction : PyGe.Vector3d","height : float","width : float","oblique : float","msg : str" }))
+        .def("xline", &PyGiGeometry::xline, DS.ARGS({ "p1 : PyGe.Point3d",  "p2 : PyGe.Point3d" }))
+        .def("ray", &PyGiGeometry::ray, DS.ARGS({ "p1 : PyGe.Point3d",  "p2 : PyGe.Point3d" }))
         .def("pline", &PyGiGeometry::pline1)
-        .def("pline", &PyGiGeometry::pline2, DS.CLASSARGS({ "p1 : PyDb.Polyline",  "fromIndex : int","numSegs : int" }))
-        .def("rowOfDots", &PyGiGeometry::rowOfDots, DS.CLASSARGS({ "count : int","start: PyGe.Point3d" ,"step : PyGe.Vector3d" }))
+        .def("pline", &PyGiGeometry::pline2, DS.ARGS({ "p1 : PyDb.Polyline",  "fromIndex : int","numSegs : int" }))
+        .def("rowOfDots", &PyGiGeometry::rowOfDots, DS.ARGS({ "count : int","start: PyGe.Point3d" ,"step : PyGe.Vector3d" }))
         .def("ellipticalArc", &PyGiGeometry::ellipticalArc1)
-        .def("ellipticalArc", &PyGiGeometry::ellipticalArc2, DS.CLASSARGS({ "center:PyGe.Point3d","norm:PyGe.Vector3d","majAxisLen:float","minAxisLen:float","startDeg:float","endDeg:float","tilt:float", "arcType:ArcType=kAcGiArcSimple" }))
-        .def("worldLine", &PyGiGeometry::worldLine, DS.CLASSARGS({ "p1 : PyGe.Point3d",  "p2 : PyGe.Point3d" }))
-        .def("edge", &PyGiGeometry::edge, DS.CLASSARGS({ "edgeList : list[PyGe.Curve2d]" }))
-        .def("draw", &PyGiGeometry::draw, DS.CLASSARGS({ "drawable : PyGi.Drawable" }))
+        .def("ellipticalArc", &PyGiGeometry::ellipticalArc2, DS.ARGS({ "center:PyGe.Point3d","norm:PyGe.Vector3d","majAxisLen:float","minAxisLen:float","startDeg:float","endDeg:float","tilt:float", "arcType:ArcType=kAcGiArcSimple" }))
+        .def("worldLine", &PyGiGeometry::worldLine, DS.ARGS({ "p1 : PyGe.Point3d",  "p2 : PyGe.Point3d" }))
+        .def("edge", &PyGiGeometry::edge, DS.ARGS({ "edgeList : list[PyGe.Curve2d]" }))
+        .def("draw", &PyGiGeometry::draw, DS.ARGS({ "drawable : PyGi.Drawable" }))
         .def("className", &PyGiGeometry::className).staticmethod("className")
         .def("desc", &PyGiGeometry::desc).staticmethod("desc")
         ;
@@ -382,8 +382,8 @@ void makePyGiWorldGeometryWrapper()
 {
     PyDocString DS("WorldGeometry");
     class_<PyGiWorldGeometry, bases<PyGiGeometry>>("WorldGeometry", boost::python::no_init)
-        .def("className", &PyGiGeometry::className, DS.CLASSARGSSTATIC()).staticmethod("className")
-        .def("desc", &PyGiGeometry::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
+        .def("className", &PyGiGeometry::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyGiGeometry::desc, DS.SARGS()).staticmethod("desc")
         ;
 }
 
@@ -415,8 +415,8 @@ void makePyGiViewportGeometryWrapper()
 {
     PyDocString DS("ViewportGeometry");
     class_<PyGiViewportGeometry, bases<PyGiGeometry>>("ViewportGeometry", boost::python::no_init)
-        .def("className", &PyGiGeometry::className, DS.CLASSARGSSTATIC()).staticmethod("className")
-        .def("desc", &PyGiGeometry::desc, DS.CLASSARGSSTATIC()).staticmethod("desc")
+        .def("className", &PyGiGeometry::className, DS.SARGS()).staticmethod("className")
+        .def("desc", &PyGiGeometry::desc, DS.SARGS()).staticmethod("desc")
         ;
 }
 
