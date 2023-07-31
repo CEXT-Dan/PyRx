@@ -53,6 +53,10 @@ public:
     static bool                 entMod(const boost::python::list& list);
     static PyDbObjectId         entNext(const PyDbObjectId& id);
     static bool                 entUpd(const PyDbObjectId& id);
+    static void                 fail(const std::string& msg);
+    static boost::python::tuple findField(const std::string& pszText, int iSearchFrom);
+
+
     static PyDbObject           openDbObject(const PyDbObjectId& id, AcDb::OpenMode mode);
     static PyDbEntity           openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode);
     static bool                 regApp(const std::string& app);

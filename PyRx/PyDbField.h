@@ -30,6 +30,8 @@ public:
     void                evaluate1();
     void                evaluate2(AcDbField::EvalContext nContext);
     void                evaluate3(AcDbField::EvalContext nContext, PyDbDatabase& db);
+    std::string         getFieldCode1(AcDbField::FieldCodeFlag nFlag);
+    std::string         getFieldCode2(AcDbField::FieldCodeFlag nFlag, boost::python::list, AcDb::OpenMode mode);
     static std::string  className();
     static PyRxClass    desc();
     static PyDbField    cloneFrom(const PyRxObject& src);
