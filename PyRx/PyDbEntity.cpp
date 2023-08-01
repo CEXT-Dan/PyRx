@@ -64,7 +64,7 @@ void makePyDbEntityWrapper()
         .def("setPropertiesFrom", &PyDbEntity::setPropertiesFrom2,  DS.ARGS({ "ent: Entity",  "dosubents : bool=True" }))
         .def("isPlanar", &PyDbEntity::isPlanar, DS.ARGS())
         .def("getPlane", &PyDbEntity::getPlane, DS.ARGS())
-        .def("getEcs", &PyDbEntity::getEcs, DS.ARGS({ "matrix3d: PyGe.Matrix3d" }))
+        .def("getEcs", &PyDbEntity::getEcs, DS.ARGS())
         .def("list", &PyDbEntity::list, DS.ARGS())
         .def("intersectWith", &PyDbEntity::intersectWith1)
         .def("intersectWith", &PyDbEntity::intersectWith2)
@@ -74,8 +74,8 @@ void makePyDbEntityWrapper()
         .def("recordGraphicsModified", &PyDbEntity::recordGraphicsModified, DS.ARGS())
         .def("setDatabaseDefaults", &PyDbEntity::setDatabaseDefaults1)
         .def("setDatabaseDefaults", &PyDbEntity::setDatabaseDefaults2, DS.ARGS({ "db: Database = current" }))
-        .def("getCompoundObjectTransform", &PyDbEntity::getCompoundObjectTransform, DS.ARGS({ "matrix3d: PyGe.Matrix3d" }))
-        .def("getGeomExtents", &PyDbEntity::getGeomExtents, DS.ARGS({ "extents: Extents" }))
+        .def("getCompoundObjectTransform", &PyDbEntity::getCompoundObjectTransform, DS.ARGS())
+        .def("getGeomExtents", &PyDbEntity::getGeomExtents, DS.ARGS())
         .def("draw", &PyDbEntity::draw, DS.ARGS())
         .def("explode", &PyDbEntity::explode, DS.ARGS())
         .def("getTransformedCopy", &PyDbEntity::getTransformedCopy, DS.ARGS({ "matrix3d: PyGe.Matrix3d" }))
@@ -393,9 +393,11 @@ PyGePlane PyDbEntity::getPlane() const
     return PyGePlane(plane);
 }
 
-void PyDbEntity::getEcs(AcGeMatrix3d& retVal) const
+AcGeMatrix3d PyDbEntity::getEcs() const
 {
+    AcGeMatrix3d retVal;
     impObj()->getEcs(retVal);
+    return retVal;
 }
 
 void PyDbEntity::list() const
@@ -428,14 +430,18 @@ void PyDbEntity::setDatabaseDefaults2(const PyDbDatabase& db)
     impObj()->setDatabaseDefaults(db.impObj());
 }
 
-void PyDbEntity::getCompoundObjectTransform(AcGeMatrix3d& xMat) const
+AcGeMatrix3d PyDbEntity::getCompoundObjectTransform() const
 {
-    return PyThrowBadEs(impObj()->getCompoundObjectTransform(xMat));
+    AcGeMatrix3d xMat;
+    PyThrowBadEs(impObj()->getCompoundObjectTransform(xMat));
+    return xMat;
 }
 
-void PyDbEntity::getGeomExtents(AcDbExtents& extents) const
+AcDbExtents PyDbEntity::getGeomExtents() const
 {
-    return PyThrowBadEs(impObj()->getGeomExtents(extents));
+    AcDbExtents extents;
+    PyThrowBadEs(impObj()->getGeomExtents(extents));
+    return extents;
 }
 
 boost::python::list PyDbEntity::intersectWith1(const PyDbEntity& pEnt, AcDb::Intersect intType) const
