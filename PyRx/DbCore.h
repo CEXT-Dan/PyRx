@@ -55,6 +55,8 @@ public:
     static bool                 entUpd(const PyDbObjectId& id);
     static void                 fail(const std::string& msg);
     static boost::python::tuple findField(const std::string& pszText, int iSearchFrom);
+    static void                 forceTextAdjust(const boost::python::list& ids);
+    static PyDbObjectId         getCurUserViewportId(PyDbDatabase& db);
 
 
     static PyDbObject           openDbObject(const PyDbObjectId& id, AcDb::OpenMode mode);

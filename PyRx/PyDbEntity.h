@@ -67,15 +67,15 @@ public:
     void                setPropertiesFrom2(const PyDbEntity& pEntity, Adesk::Boolean doSubents);
     Adesk::Boolean      isPlanar() const;
     PyGePlane           getPlane() const;
-    void                getEcs(AcGeMatrix3d& retVal) const;
+    AcGeMatrix3d        getEcs() const;
     void                list() const;
     void                transformBy(const AcGeMatrix3d& xform);
     void                recordGraphicsModified();
     void                draw();
     void                setDatabaseDefaults1();
     void                setDatabaseDefaults2(const PyDbDatabase& pDb);
-    void                getCompoundObjectTransform(AcGeMatrix3d& xMat) const;
-    void                getGeomExtents(AcDbExtents& extents) const;
+    AcGeMatrix3d        getCompoundObjectTransform() const;
+    AcDbExtents         getGeomExtents() const;
     boost::python::list intersectWith1(const PyDbEntity&, AcDb::Intersect) const;
     boost::python::list intersectWith2(const PyDbEntity&, AcDb::Intersect, Adesk::GsMarker, Adesk::GsMarker) const;
     boost::python::list intersectWith3(const PyDbEntity&, AcDb::Intersect, const PyGePlane&) const;

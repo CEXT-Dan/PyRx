@@ -62,9 +62,12 @@ void makeDbCoreWrapper()
         .def("entUpd", &DbCore::entUpd).staticmethod("entUpd")
         .def("entMake", &DbCore::entMake).staticmethod("entMake")
         .def("entMakeX", &DbCore::entMakeX).staticmethod("entMakeX")
-
         .def("fail", &DbCore::fail).staticmethod("fail")
         .def("findField", &DbCore::findField).staticmethod("findField")
+        .def("forceTextAdjust", &DbCore::forceTextAdjust).staticmethod("forceTextAdjust")
+
+        .def("getCurUserViewportId", &DbCore::getCurUserViewportId).staticmethod("getCurUserViewportId")
+
 
         .def("openDbObject", &DbCore::openDbObject).staticmethod("openDbObject")
         .def("openDbEntity", &DbCore::openDbEntity).staticmethod("openDbEntity")
@@ -406,6 +409,27 @@ boost::python::tuple DbCore::findField(const std::string& pszText, int iSearchFr
     int nEndPos = -1;
     auto flag = acdbFindField(utf8_to_wstr(pszText).c_str(), iSearchFrom, nStartPos, nEndPos);
     return boost::python::make_tuple(flag, nStartPos, nEndPos);
+#endif
+}
+
+void DbCore::forceTextAdjust(const boost::python::list& ids)
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    auto _ids = PyListToObjectIdArray(ids);
+    PyThrowBadEs(acdbForceTextAdjust(_ids));
+#endif
+}
+
+PyDbObjectId DbCore::getCurUserViewportId(PyDbDatabase& db)
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    PyDbObjectId id;
+    PyThrowBadEs(acdbGetCurUserViewportId(db.impObj(), id.m_id));
+    return id;
 #endif
 }
 

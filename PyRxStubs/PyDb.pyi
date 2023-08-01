@@ -1297,7 +1297,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getDimstyleData (self, *args, **kwargs)-> DimStyleTableRecord :
@@ -1306,7 +1306,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -1315,7 +1315,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -2546,7 +2546,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> Point3d :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getDistAtParam (self: Curve,param: float)-> float :
@@ -2555,7 +2555,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getEndParam (self: Curve)-> float :
@@ -2573,7 +2573,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -3292,7 +3292,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getDimstyleData (self, *args, **kwargs)-> DimStyleTableRecord :
@@ -3301,7 +3301,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -3310,7 +3310,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -4321,10 +4321,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getBoundingPoints (self: Text)-> list :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -4333,7 +4333,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -4884,10 +4884,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getBoundingPoints (self: Text)-> list :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -4896,7 +4896,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -5422,10 +5422,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -5434,7 +5434,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -5811,10 +5811,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -5823,7 +5823,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -6221,10 +6221,10 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
     def geomExtentsBestFit (self: BlockReference,val : PyGe.Matrix3d=kIdentity)-> Extents :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -6233,7 +6233,7 @@ __init__( (object)arg1, (Point3d)arg2, (ObjectId)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -7461,10 +7461,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -7473,7 +7473,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -9295,7 +9295,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> Point3d :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getDistAtParam (self: Curve,param: float)-> float :
@@ -9304,7 +9304,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getEndParam (self: Curve)-> float :
@@ -9322,7 +9322,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -10472,6 +10472,18 @@ entGetX( (ObjectId)arg1, (list)arg2) -> list :
     C++ signature :
         class boost::python::tuple findField(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
     ...
+    def forceTextAdjust (self, *args, **kwargs)-> None :
+      '''forceTextAdjust( (list)arg1) -> None :
+
+    C++ signature :
+        void forceTextAdjust(class boost::python::list)'''
+    ...
+    def getCurUserViewportId (self, *args, **kwargs)-> ObjectId :
+      '''getCurUserViewportId( (Database)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getCurUserViewportId(class PyDbDatabase {lvalue})'''
+    ...
     def getSummaryInfo (self, *args, **kwargs)-> DatabaseSummaryInfo :
       '''getSummaryInfo( (Database)arg1) -> DatabaseSummaryInfo :
 
@@ -10665,7 +10677,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> Point3d :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getDistAtParam (self: Curve,param: float)-> float :
@@ -10674,7 +10686,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getEndParam (self: Curve)-> float :
@@ -10692,7 +10704,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -13174,7 +13186,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getDimstyleData (self, *args, **kwargs)-> DimStyleTableRecord :
@@ -13183,7 +13195,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -13192,7 +13204,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -15228,7 +15240,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getDimstyleData (self, *args, **kwargs)-> DimStyleTableRecord :
@@ -15237,7 +15249,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -15246,7 +15258,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -17646,10 +17658,10 @@ class Entity:
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -17658,7 +17670,7 @@ class Entity:
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -20348,10 +20360,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -20360,7 +20372,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -20755,10 +20767,10 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -20767,7 +20779,7 @@ __init__( (object)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (Point3d)ar
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -21182,10 +21194,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -21194,7 +21206,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -21649,7 +21661,7 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     C++ signature :
         class boost::python::list getBoundingPoints(class PyDbFcf {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getDimstyleData (self, *args, **kwargs)-> DimStyleTableRecord :
@@ -21658,7 +21670,7 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     C++ signature :
         class PyDbDimStyleTableRecord getDimstyleData(class PyDbFcf {lvalue})'''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -21667,7 +21679,7 @@ __init__( (object)arg1, (str)arg2, (Point3d)arg3, (Vector3d)arg4, (Vector3d)arg5
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -24212,10 +24224,10 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     C++ signature :
         class boost::python::list getAssocObjIdsAt(class PyDbHatch {lvalue},int)'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -24224,7 +24236,7 @@ evaluateHatch( (Hatch)arg1, (bool)arg2) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getGradientColors (self, *args, **kwargs)-> tuple :
@@ -25774,10 +25786,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -25786,7 +25798,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -28548,7 +28560,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> Point3d :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getDistAtParam (self: Curve,param: float)-> float :
@@ -28557,7 +28569,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getEndParam (self: Curve)-> float :
@@ -28575,7 +28587,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -29231,7 +29243,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> Point3d :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getDistAtParam (self: Curve,param: float)-> float :
@@ -29240,7 +29252,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getEndParam (self: Curve)-> float :
@@ -29258,7 +29270,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -29932,7 +29944,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getDimstyleData (self, *args, **kwargs)-> DimStyleTableRecord :
@@ -29941,7 +29953,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -29950,7 +29962,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -31898,10 +31910,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -31910,7 +31922,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -32314,10 +32326,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def geomExtentsBestFit (self: BlockReference,val : PyGe.Matrix3d=kIdentity)-> Extents :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -32326,7 +32338,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -32924,7 +32936,7 @@ getBlockAttributeValue( (MLeader)arg1, (ObjectId)arg2) -> str :
     C++ signature :
         class AcGePoint3d getBlockPosition(class PyDbMLeader {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getContentGeomExtents (self, *args, **kwargs)-> Extents :
@@ -32945,7 +32957,7 @@ getBlockAttributeValue( (MLeader)arg1, (ObjectId)arg2) -> str :
     C++ signature :
         double getDoglegLength(class PyDbMLeader {lvalue},int)'''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -32960,7 +32972,7 @@ getBlockAttributeValue( (MLeader)arg1, (ObjectId)arg2) -> str :
     C++ signature :
         class AcGePoint3d getFirstVertex(class PyDbMLeader {lvalue},int)'''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -36450,10 +36462,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         double getColumnWidth(class PyDbMText {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -36462,7 +36474,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -37832,10 +37844,10 @@ getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4, (bool
     C++ signature :
         class AcGePoint3d getClosestPointTo(class PyDbMline {lvalue},class AcGePoint3d,class AcGeVector3d,bool,bool)'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -37844,7 +37856,7 @@ getClosestPointTo( (Mline)arg1, (Point3d)arg2, (Vector3d)arg3, (bool)arg4, (bool
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -38918,10 +38930,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -38930,7 +38942,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -39733,7 +39745,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getDimstyleData (self, *args, **kwargs)-> DimStyleTableRecord :
@@ -39742,7 +39754,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -39751,7 +39763,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -41526,10 +41538,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void generateClipBoundaryFromPline(class PyDbUnderlayReference {lvalue},class PyDbObjectId {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -41538,7 +41550,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -42248,10 +42260,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -42260,7 +42272,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -43677,10 +43689,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -43689,7 +43701,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -44291,7 +44303,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getDimstyleData (self, *args, **kwargs)-> DimStyleTableRecord :
@@ -44300,7 +44312,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -44309,7 +44321,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -45492,10 +45504,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -45504,7 +45516,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -45890,10 +45902,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -45902,7 +45914,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -46349,7 +46361,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> Point3d :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getConstantWidth (self, *args, **kwargs)-> float :
@@ -46364,16 +46376,16 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
-    def getEcs (self, *args, **kwargs)-> None :
-      '''getEcs( (Polyline)arg1, (Matrix3d)arg2) -> None :
+    def getEcs (self, *args, **kwargs)-> Matrix3d :
+      '''getEcs( (Polyline)arg1) -> Matrix3d :
 
     C++ signature :
-        void getEcs(class PyDbPolyline {lvalue},class AcGeMatrix3d {lvalue})
+        class AcGeMatrix3d getEcs(class PyDbPolyline {lvalue})
 
-getEcs( (Polyline)arg1, (Matrix3d)arg2) -> None :
+getEcs( (Polyline)arg1) -> Matrix3d :
 
     C++ signature :
-        void getEcs(class PyDbPolyline {lvalue},class AcGeMatrix3d {lvalue})'''
+        class AcGeMatrix3d getEcs(class PyDbPolyline {lvalue})'''
     ...
     def getEndParam (self: Curve)-> float :
       '''                             '''
@@ -46396,7 +46408,7 @@ getEcs( (Polyline)arg1, (Matrix3d)arg2) -> None :
     def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -47068,7 +47080,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> Point3d :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getDistAtParam (self: Curve,param: float)-> float :
@@ -47077,7 +47089,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getEndParam (self: Curve)-> float :
@@ -47095,7 +47107,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -47729,7 +47741,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getClosestPointTo (self: Curve,point3d: PyGe.Point3d,direction: PyGe.Vector3d=None,extend: bool=False)-> Point3d :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getDistAtParam (self: Curve,param: float)-> float :
@@ -47738,7 +47750,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getDistAtPoint (self: Curve,point3d: PyGe.Point3d)-> float :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getEndParam (self: Curve)-> float :
@@ -47756,7 +47768,7 @@ extend( (Curve)arg1, (bool)arg2, (Point3d)arg3) -> None :
     def getFirstDeriv (self: Curve,param: float|PyGe.Point3d)-> Vector3d :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -48272,10 +48284,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -48284,7 +48296,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -48880,7 +48892,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getDimstyleData (self, *args, **kwargs)-> DimStyleTableRecord :
@@ -48889,7 +48901,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -48898,7 +48910,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -50029,7 +50041,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getDimstyleData (self, *args, **kwargs)-> DimStyleTableRecord :
@@ -50038,7 +50050,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -50047,7 +50059,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -51050,10 +51062,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         signed char fade(class PyDbRasterImage {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -51062,7 +51074,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -52797,10 +52809,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -52809,7 +52821,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -53390,10 +53402,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -53402,7 +53414,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -53971,7 +53983,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         bool getArrowSecondIsFlipped(class PyDbDimension {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getDimstyleData (self, *args, **kwargs)-> DimStyleTableRecord :
@@ -53980,7 +53992,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     C++ signature :
         class PyDbDimStyleTableRecord getDimstyleData(class PyDbDimension {lvalue})'''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -53989,7 +54001,7 @@ formatMeasurement( (Dimension)arg1, (float)arg2, (str)arg3) -> str :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -55345,10 +55357,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -55357,7 +55369,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -56295,10 +56307,10 @@ extrudeAlongPath( (Solid3d)arg1, (Region)arg2, (Curve)arg3, (float)arg4) -> None
     C++ signature :
         double getArea(class PyDb3dSolid {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -56307,7 +56319,7 @@ extrudeAlongPath( (Solid3d)arg1, (Region)arg2, (Curve)arg3, (float)arg4) -> None
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -57492,10 +57504,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -57504,7 +57516,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -58385,10 +58397,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -58397,7 +58409,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -59855,7 +59867,7 @@ getBlockAttributeValue( (Table)arg1, (int)arg2, (int)arg3, (int)arg4, (ObjectId)
     C++ signature :
         class boost::python::list getCellExtents(class PyDbTable {lvalue},int,int,bool)'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getDataLink (self, *args, **kwargs)-> ObjectId :
@@ -59886,7 +59898,7 @@ getDataType( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> tuple :
     C++ signature :
         class boost::python::tuple getDataType(class PyDbTable {lvalue},int,int,int)'''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -59901,7 +59913,7 @@ getDataType( (Table)arg1, (int)arg2, (int)arg3, (int)arg4) -> tuple :
     C++ signature :
         class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getFormula(class PyDbTable {lvalue},int,int,int)'''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getGridProperty (self, *args, **kwargs)-> object :
@@ -62685,10 +62697,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getBoundingPoints (self: Text)-> list :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -62697,7 +62709,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -65707,10 +65719,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         void generateClipBoundaryFromPline(class PyDbUnderlayReference {lvalue},class PyDbObjectId {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -65719,7 +65731,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -66752,10 +66764,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -66764,7 +66776,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -67155,10 +67167,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def extensionDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -67167,7 +67179,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     def getFieldDictionary (self: DbObject)-> ObjectId :
       '''                             '''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
@@ -68523,10 +68535,10 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         double frontClipDistance(class PyDbViewport {lvalue})'''
     ...
-    def getCompoundObjectTransform (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getCompoundObjectTransform (self: Entity)-> Matrix3d :
       '''                             '''
     ...
-    def getEcs (self: Entity,matrix3d: PyGe.Matrix3d)-> None :
+    def getEcs (self: Entity)-> Matrix3d :
       '''                             '''
     ...
     def getField (self: DbObject,prop: str=TEXT)-> ObjectId :
@@ -68541,7 +68553,7 @@ __init__( (object)arg1, (ObjectId)arg2, (OpenMode)arg3) -> None :
     C++ signature :
         class boost::python::list getFrozenLayerList(class PyDbViewport {lvalue})'''
     ...
-    def getGeomExtents (self: Entity,extents: Extents)-> None :
+    def getGeomExtents (self: Entity)-> Extents :
       '''                             '''
     ...
     def getHandle (self: DbObject)-> Handle :
