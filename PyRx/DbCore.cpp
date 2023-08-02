@@ -67,6 +67,10 @@ void makeDbCoreWrapper()
         .def("forceTextAdjust", &DbCore::forceTextAdjust).staticmethod("forceTextAdjust")
 
         .def("getCurUserViewportId", &DbCore::getCurUserViewportId).staticmethod("getCurUserViewportId")
+        .def("getCurVportId", &DbCore::getCurVportId).staticmethod("getCurVportId")
+        .def("getCurVportTableRecordId", &DbCore::getCurVportTableRecordId).staticmethod("getCurVportTableRecordId")
+        .def("getDimAssocId", &DbCore::getDimAssocId).staticmethod("getDimAssocId")
+        .def("getDimAssocIds", &DbCore::getDimAssocIds).staticmethod("getDimAssocIds")
 
 
         .def("openDbObject", &DbCore::openDbObject).staticmethod("openDbObject")
@@ -430,6 +434,38 @@ PyDbObjectId DbCore::getCurUserViewportId(PyDbDatabase& db)
     PyDbObjectId id;
     PyThrowBadEs(acdbGetCurUserViewportId(db.impObj(), id.m_id));
     return id;
+#endif
+}
+
+PyDbObjectId DbCore::getCurVportId(PyDbDatabase& db)
+{
+    return PyDbObjectId(acdbGetCurVportId(db.impObj()));
+}
+
+PyDbObjectId DbCore::getCurVportTableRecordId(PyDbDatabase& db)
+{
+    return PyDbObjectId(acdbGetCurVportTableRecordId(db.impObj()));
+}
+
+PyDbObjectId DbCore::getDimAssocId(const PyDbObjectId& dimId)
+{
+    PyDbObjectId id;
+    PyThrowBadEs(acdbGetDimAssocId(dimId.m_id, id.m_id));
+    return id;
+}
+
+boost::python::list DbCore::getDimAssocIds(const PyDbObjectId& dimId)
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    PyAutoLockGIL lock;
+    AcDbObjectIdArray dimAssocIds;
+    PyThrowBadEs(acdbGetDimAssocIds(dimId.m_id, dimAssocIds));
+    boost::python::list pyIds;
+    for (auto item : dimAssocIds)
+        pyIds.append(PyDbObjectId(item));
+    return pyIds;
 #endif
 }
 

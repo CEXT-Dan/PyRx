@@ -57,6 +57,10 @@ public:
     static boost::python::tuple findField(const std::string& pszText, int iSearchFrom);
     static void                 forceTextAdjust(const boost::python::list& ids);
     static PyDbObjectId         getCurUserViewportId(PyDbDatabase& db);
+    static PyDbObjectId         getCurVportId(PyDbDatabase& db);
+    static PyDbObjectId         getCurVportTableRecordId(PyDbDatabase& db);
+    static PyDbObjectId         getDimAssocId(const PyDbObjectId& dimId);
+    static boost::python::list  getDimAssocIds(const PyDbObjectId& id);
 
 
     static PyDbObject           openDbObject(const PyDbObjectId& id, AcDb::OpenMode mode);

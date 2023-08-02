@@ -10484,6 +10484,30 @@ entGetX( (ObjectId)arg1, (list)arg2) -> list :
     C++ signature :
         class PyDbObjectId getCurUserViewportId(class PyDbDatabase {lvalue})'''
     ...
+    def getCurVportId (self, *args, **kwargs)-> ObjectId :
+      '''getCurVportId( (Database)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getCurVportId(class PyDbDatabase {lvalue})'''
+    ...
+    def getCurVportTableRecordId (self, *args, **kwargs)-> ObjectId :
+      '''getCurVportTableRecordId( (Database)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getCurVportTableRecordId(class PyDbDatabase {lvalue})'''
+    ...
+    def getDimAssocId (self, *args, **kwargs)-> ObjectId :
+      '''getDimAssocId( (ObjectId)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getDimAssocId(class PyDbObjectId)'''
+    ...
+    def getDimAssocIds (self, *args, **kwargs)-> list :
+      '''getDimAssocIds( (ObjectId)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list getDimAssocIds(class PyDbObjectId)'''
+    ...
     def getSummaryInfo (self, *args, **kwargs)-> DatabaseSummaryInfo :
       '''getSummaryInfo( (Database)arg1) -> DatabaseSummaryInfo :
 
