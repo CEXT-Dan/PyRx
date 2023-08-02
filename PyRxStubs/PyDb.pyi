@@ -10508,11 +10508,71 @@ entGetX( (ObjectId)arg1, (list)arg2) -> list :
     C++ signature :
         class boost::python::list getDimAssocIds(class PyDbObjectId)'''
     ...
+    def getMappedFontName (self, *args, **kwargs)-> str :
+      '''getMappedFontName( (str)arg1) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getMappedFontName(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def getReservedString (self, *args, **kwargs)-> str :
+      '''getReservedString( (ReservedStringEnumType)arg1, (bool)arg2) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > getReservedString(enum AcDb::reservedStringEnumType,bool)'''
+    ...
     def getSummaryInfo (self, *args, **kwargs)-> DatabaseSummaryInfo :
       '''getSummaryInfo( (Database)arg1) -> DatabaseSummaryInfo :
 
     C++ signature :
         class PyDbDatabaseSummaryInfo getSummaryInfo(class PyDbDatabase {lvalue})'''
+    ...
+    def getUnitsConversion (self, *args, **kwargs)-> float :
+      '''getUnitsConversion( (UnitsValue)arg1, (UnitsValue)arg2) -> float :
+
+    C++ signature :
+        double getUnitsConversion(enum AcDb::UnitsValue,enum AcDb::UnitsValue)'''
+    ...
+    def getViewportVisualStyle (self, *args, **kwargs)-> ObjectId :
+      '''getViewportVisualStyle() -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId getViewportVisualStyle()'''
+    ...
+    def handEnt (self, *args, **kwargs)-> ObjectId :
+      '''handEnt( (str)arg1) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId handEnt(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def inters (self, *args, **kwargs)-> Point3d :
+      '''inters( (Point3d)arg1, (Point3d)arg2, (Point3d)arg3, (Point3d)arg4, (int)arg5) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d inters(class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,class AcGePoint3d,int)'''
+    ...
+    def isReservedString (self, *args, **kwargs)-> bool :
+      '''isReservedString( (str)arg1, (ReservedStringEnumType)arg2) -> bool :
+
+    C++ signature :
+        bool isReservedString(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,enum AcDb::reservedStringEnumType)'''
+    ...
+    def loadLineTypeFile (self, *args, **kwargs)-> None :
+      '''loadLineTypeFile( (str)arg1, (str)arg2, (Database)arg3) -> None :
+
+    C++ signature :
+        void loadLineTypeFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class PyDbDatabase {lvalue})'''
+    ...
+    def loadMlineStyleFile (self, *args, **kwargs)-> None :
+      '''loadMlineStyleFile( (str)arg1, (str)arg2) -> None :
+
+    C++ signature :
+        void loadMlineStyleFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def namedObjDict (self, *args, **kwargs)-> ObjectId :
+      '''namedObjDict() -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId namedObjDict()'''
     ...
     def openDbEntity (self, *args, **kwargs)-> Entity :
       '''openDbEntity( (ObjectId)arg1, (OpenMode)arg2) -> Entity :
@@ -53191,6 +53251,200 @@ Also known as the population count.
       '''None'''
     ...
     def kXrefResolution (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def name (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def names (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+    def numerator (self, *args, **kwargs)-> None:
+      '''the numerator of a rational number in lowest terms'''
+    ...
+    def real (self, *args, **kwargs)-> None:
+      '''the real part of a complex number'''
+    ...
+    def to_bytes (self, /, length, byteorder, *, signed=False):
+      '''Return an array of bytes representing an integer.
+
+  length
+    Length of bytes object to use.  An OverflowError is raised if the
+    integer is not representable with the given number of bytes.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Determines whether two's complement is used to represent the integer.
+    If signed is False and a negative integer is given, an OverflowError
+    is raised.'''
+    ...
+    def values (self, *args, **kwargs)-> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+      '''dict() -> new empty dictionary
+dict(mapping) -> new dictionary initialized from a mapping object's
+    (key, value) pairs
+dict(iterable) -> new dictionary initialized as if via:
+    d = {}
+    for k, v in iterable:
+        d[k] = v
+dict(**kwargs) -> new dictionary initialized with the name=value pairs
+    in the keyword argument list.  For example:  dict(one=1, two=2)'''
+    ...
+
+class ReservedStringEnumType:
+    def __init__ (self, /, *args, **kwargs):
+      '''Initialize self.  See help(type(self)) for accurate signature.'''
+    ...
+    def as_integer_ratio (self, /):
+      '''Return integer ratio.
+
+Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.
+
+>>> (10).as_integer_ratio()
+(10, 1)
+>>> (-10).as_integer_ratio()
+(-10, 1)
+>>> (0).as_integer_ratio()
+(0, 1)'''
+    ...
+    def bit_count (self, /):
+      '''Number of ones in the binary representation of the absolute value of self.
+
+Also known as the population count.
+
+>>> bin(13)
+'0b1101'
+>>> (13).bit_count()
+3'''
+    ...
+    def bit_length (self, /):
+      '''Number of bits necessary to represent self in binary.
+
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6'''
+    ...
+    def conjugate (self, *args, **kwargs)-> None:
+      '''Returns self, the complex conjugate of any int.'''
+    ...
+    def denominator (self, *args, **kwargs)-> None:
+      '''the denominator of a rational number in lowest terms'''
+    ...
+    def from_bytes (bytes, byteorder, *, signed=False):
+      '''Return the integer represented by the given array of bytes.
+
+  bytes
+    Holds the array of bytes to convert.  The argument must either
+    support the buffer protocol or be an iterable object producing bytes.
+    Bytes and bytearray are examples of built-in objects that support the
+    buffer protocol.
+  byteorder
+    The byte order used to represent the integer.  If byteorder is 'big',
+    the most significant byte is at the beginning of the byte array.  If
+    byteorder is 'little', the most significant byte is at the end of the
+    byte array.  To request the native byte order of the host system, use
+    `sys.byteorder' as the byte order value.
+  signed
+    Indicates whether two's complement is used to represent the integer.'''
+    ...
+    def imag (self, *args, **kwargs)-> None:
+      '''the imaginary part of a complex number'''
+    ...
+    def kByBlock (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kByColor (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kByLayer (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kContinuous (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kData (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kDefPoints (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kDefault (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kGlobal (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kHeader (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kMissing (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kModel (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kNone (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kNormal (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kReservedStringCount (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kStandard (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kTitle (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kVS2DWireframe (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kVS3DHidden (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kVS3DWireframe (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kVSConceptual (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kVSRealistic (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kVSShaded (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kVSShadedWithEdges (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kVSShadesOfGray (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kVSSketchy (self, *args, **kwargs)-> None:
+      '''None'''
+    ...
+    def kVSXRay (self, *args, **kwargs)-> None:
       '''None'''
     ...
     def name (self, *args, **kwargs)-> None:
