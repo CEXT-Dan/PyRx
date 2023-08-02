@@ -61,7 +61,17 @@ public:
     static PyDbObjectId         getCurVportTableRecordId(PyDbDatabase& db);
     static PyDbObjectId         getDimAssocId(const PyDbObjectId& dimId);
     static boost::python::list  getDimAssocIds(const PyDbObjectId& id);
+    static std::string          getMappedFontName(const std::string& fontName);
+    static std::string          getReservedString(AcDb::reservedStringEnumType reservedType, bool bGetLocalized);
+    static double               getUnitsConversion(AcDb::UnitsValue from, AcDb::UnitsValue to);
+    static PyDbObjectId         getViewportVisualStyle();
+    static PyDbObjectId         handEnt(const std::string& handle);
 
+    static bool                 isReservedString(const std::string& strString, AcDb::reservedStringEnumType reservedType);
+    static AcGePoint3d          inters(const AcGePoint3d& from1, const AcGePoint3d& to1, const AcGePoint3d& from2, const AcGePoint3d& to2, int teston);
+    static void                 loadLineTypeFile(const std::string& ltname, const std::string& fname, PyDbDatabase& db);
+    static void                 loadMlineStyleFile(const std::string& ltname, const std::string& fname);
+    static PyDbObjectId         namedObjDict();
 
     static PyDbObject           openDbObject(const PyDbObjectId& id, AcDb::OpenMode mode);
     static PyDbEntity           openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode);

@@ -71,7 +71,18 @@ void makeDbCoreWrapper()
         .def("getCurVportTableRecordId", &DbCore::getCurVportTableRecordId).staticmethod("getCurVportTableRecordId")
         .def("getDimAssocId", &DbCore::getDimAssocId).staticmethod("getDimAssocId")
         .def("getDimAssocIds", &DbCore::getDimAssocIds).staticmethod("getDimAssocIds")
+        .def("getMappedFontName", &DbCore::getMappedFontName).staticmethod("getMappedFontName")
+        .def("getReservedString", &DbCore::getReservedString).staticmethod("getReservedString")
+        .def("getUnitsConversion", &DbCore::getUnitsConversion).staticmethod("getUnitsConversion")
+        .def("getViewportVisualStyle", &DbCore::getViewportVisualStyle).staticmethod("getViewportVisualStyle")
 
+
+        .def("handEnt", &DbCore::handEnt).staticmethod("handEnt")
+        .def("isReservedString", &DbCore::isReservedString).staticmethod("isReservedString")
+        .def("inters", &DbCore::inters).staticmethod("inters")
+        .def("loadLineTypeFile", &DbCore::loadLineTypeFile).staticmethod("loadLineTypeFile")
+        .def("loadMlineStyleFile", &DbCore::loadMlineStyleFile).staticmethod("loadMlineStyleFile")
+        .def("namedObjDict", &DbCore::namedObjDict).staticmethod("namedObjDict")
 
         .def("openDbObject", &DbCore::openDbObject).staticmethod("openDbObject")
         .def("openDbEntity", &DbCore::openDbEntity).staticmethod("openDbEntity")
@@ -467,6 +478,72 @@ boost::python::list DbCore::getDimAssocIds(const PyDbObjectId& dimId)
         pyIds.append(PyDbObjectId(item));
     return pyIds;
 #endif
+}
+
+std::string DbCore::getMappedFontName(const std::string& fontName)
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    return wstr_to_utf8(acdbGetMappedFontName(utf8_to_wstr(fontName).c_str()));
+#endif
+}
+
+std::string DbCore::getReservedString(AcDb::reservedStringEnumType reservedType, bool bGetLocalized)
+{
+    return wstr_to_utf8(acdbGetReservedString(reservedType, bGetLocalized));
+}
+
+double DbCore::getUnitsConversion(AcDb::UnitsValue from, AcDb::UnitsValue to)
+{
+    double d = 0;
+    PyThrowBadEs(acdbGetUnitsConversion(from, to, d));
+    return d;
+}
+
+PyDbObjectId DbCore::getViewportVisualStyle()
+{
+    return PyDbObjectId(acdbGetViewportVisualStyle());
+}
+
+bool DbCore::isReservedString(const std::string& strString, AcDb::reservedStringEnumType reservedType)
+{
+    return acdbIsReservedString(utf8_to_wstr(strString).c_str(), reservedType);
+}
+
+PyDbObjectId DbCore::handEnt(const std::string& handle)
+{
+    PyDbObjectId id;
+    ads_name entres = { 0 };
+    acdbHandEnt(utf8_to_wstr(handle).c_str(), entres);
+    PyThrowBadEs(acdbGetObjectId(id.m_id, entres));
+    return id;
+}
+
+AcGePoint3d DbCore::inters(const AcGePoint3d& from1, const AcGePoint3d& to1, const AcGePoint3d& from2, const AcGePoint3d& to2, int teston)
+{
+    AcGePoint3d result;
+    PyThrowBadRt(acdbInters(asDblArray(from1), asDblArray(to1), asDblArray(from2), asDblArray(to2), teston, asDblArray(result)));
+    return result;
+}
+
+void DbCore::loadLineTypeFile(const std::string& ltname, const std::string& fname, PyDbDatabase& db)
+{
+    PyThrowBadEs(acdbLoadLineTypeFile(utf8_to_wstr(ltname).c_str(), utf8_to_wstr(fname).c_str(), db.impObj()));
+}
+
+void DbCore::loadMlineStyleFile(const std::string& ltname, const std::string& fname)
+{
+    PyThrowBadEs(acdbLoadMlineStyleFile(utf8_to_wstr(ltname).c_str(), utf8_to_wstr(fname).c_str()));
+}
+
+PyDbObjectId DbCore::namedObjDict()
+{
+    PyDbObjectId id;
+    ads_name entres = { 0 };
+    PyThrowBadRt(acdbNamedObjDict(entres));
+    PyThrowBadEs(acdbGetObjectId(id.m_id, entres));
+    return id;
 }
 
 PyDbObject DbCore::openDbObject(const PyDbObjectId& id, AcDb::OpenMode mode)
