@@ -8,6 +8,7 @@
 #include "PyGeCurve3d.h"
 #include "PyDbCurve.h"
 #include "PyDbHostApplicationServices.h"
+#include "PyDbTransactionManager.h"
 
 using namespace boost::python;
 
@@ -18,7 +19,6 @@ void makeDbCoreWrapper()
         .def("activeDatabaseArray", &DbCore::activeDatabaseArray, DS.SARGS()).staticmethod("activeDatabaseArray")
         .def("angToF", &DbCore::angToF, DS.SARGS({ "value:str","unit:int" })).staticmethod("angToF")
         .def("angToS", &DbCore::angToS, DS.SARGS({ "value:float","unit:int","prec:int" })).staticmethod("angToS")
-
         .def("assignGelibCurveToAcDbCurve", &DbCore::assignGelibCurveToAcDbCurve1)
         .def("assignGelibCurveToAcDbCurve", &DbCore::assignGelibCurveToAcDbCurve2)
         .def("assignGelibCurveToAcDbCurve", &DbCore::assignGelibCurveToAcDbCurve3, 
@@ -28,7 +28,6 @@ void makeDbCoreWrapper()
         .def("bindXrefs", &DbCore::bindXrefs1)
         .def("bindXrefs", &DbCore::bindXrefs2).staticmethod("bindXrefs")
         .def("clearSetupForLayouts", &DbCore::clearSetupForLayouts).staticmethod("clearSetupForLayouts")
-
         .def("convertAcDbCurveToGelibCurve", &DbCore::convertAcDbCurveToGelibCurve1)
         .def("convertAcDbCurveToGelibCurve", &DbCore::convertAcDbCurveToGelibCurve2, 
             DS.SARGS({ "geCurve:PyGe.Curve2d","tol:PyGe.Tol=tol" })).staticmethod("convertAcDbCurveToGelibCurve")
@@ -65,7 +64,6 @@ void makeDbCoreWrapper()
         .def("fail", &DbCore::fail).staticmethod("fail")
         .def("findField", &DbCore::findField).staticmethod("findField")
         .def("forceTextAdjust", &DbCore::forceTextAdjust).staticmethod("forceTextAdjust")
-
         .def("getCurUserViewportId", &DbCore::getCurUserViewportId).staticmethod("getCurUserViewportId")
         .def("getCurVportId", &DbCore::getCurVportId).staticmethod("getCurVportId")
         .def("getCurVportTableRecordId", &DbCore::getCurVportTableRecordId).staticmethod("getCurVportTableRecordId")
@@ -75,40 +73,34 @@ void makeDbCoreWrapper()
         .def("getReservedString", &DbCore::getReservedString).staticmethod("getReservedString")
         .def("getUnitsConversion", &DbCore::getUnitsConversion).staticmethod("getUnitsConversion")
         .def("getViewportVisualStyle", &DbCore::getViewportVisualStyle).staticmethod("getViewportVisualStyle")
-
-
         .def("handEnt", &DbCore::handEnt).staticmethod("handEnt")
         .def("isReservedString", &DbCore::isReservedString).staticmethod("isReservedString")
         .def("inters", &DbCore::inters).staticmethod("inters")
         .def("loadLineTypeFile", &DbCore::loadLineTypeFile).staticmethod("loadLineTypeFile")
         .def("loadMlineStyleFile", &DbCore::loadMlineStyleFile).staticmethod("loadMlineStyleFile")
         .def("namedObjDict", &DbCore::namedObjDict).staticmethod("namedObjDict")
-
         .def("openDbObject", &DbCore::openDbObject).staticmethod("openDbObject")
         .def("openDbEntity", &DbCore::openDbEntity).staticmethod("openDbEntity")
-
         .def("queueAnnotationEntitiesForRegen", &DbCore::queueAnnotationEntitiesForRegen).staticmethod("queueAnnotationEntitiesForRegen")
         .def("queueForRegen", &DbCore::queueForRegen).staticmethod("queueForRegen")
-
-
         .def("regApp", &DbCore::regApp).staticmethod("regApp")
         .def("rtos", &DbCore::rtos).staticmethod("rtos")
         .def("resbufTest", &DbCore::resbufTest).staticmethod("resbufTest")
-
         .def("snValid", &DbCore::snValid).staticmethod("snValid")
         .def("symUtil", &DbCore::symUtil).staticmethod("symUtil")
-
         .def("tblNext", &DbCore::tblNext).staticmethod("tblNext")
         .def("tblObjName", &DbCore::tblObjName).staticmethod("tblObjName")
         .def("tblSearch", &DbCore::tblSearch).staticmethod("tblSearch")
         .def("textFind", &DbCore::textFind1)
         .def("textFind", &DbCore::textFind2).staticmethod("textFind")
-
+        .def("transactionManager", &DbCore::transactionManager).staticmethod("transactionManager")
+        .def("ucsMatrix", &DbCore::ucsMatrix).staticmethod("ucsMatrix")
+        .def("unloadXrefs", &DbCore::unloadXrefs1)
+        .def("unloadXrefs", &DbCore::unloadXrefs2).staticmethod("unloadXrefs")
         .def("getSummaryInfo", &DbCore::getSummaryInfo).staticmethod("getSummaryInfo")
         .def("putSummaryInfo", &DbCore::putSummaryInfo).staticmethod("putSummaryInfo")
         .def("updateDimension", &DbCore::updateDimension).staticmethod("updateDimension")
         .def("validateCustomSummaryInfoKey", &DbCore::validateCustomSummaryInfoKey).staticmethod("validateCustomSummaryInfoKey")
-
         .def("ucs2Wcs", &DbCore::ucs2Wcs1)
         .def("ucs2Wcs", &DbCore::ucs2Wcs2).staticmethod("ucs2Wcs")
         .def("wcs2Ecs", &DbCore::wcs2Ecs1)
@@ -667,6 +659,34 @@ boost::python::list DbCore::textFind2(PyDbDatabase& db, const std::string& findS
     auto set = PyListToObjectIdArray(selSet);
     acdbTextFind(db.impObj(), resultSet, utf8_to_wstr(findString).c_str(), utf8_to_wstr(replaceString).c_str(), searchOptions, resultSet);
     return ObjectIdArrayToPyList(resultSet);
+#endif
+}
+
+PyDbTransactionManager DbCore::transactionManager()
+{
+    return PyDbTransactionManager(acdbTransactionManagerPtr());
+}
+
+AcGeMatrix3d DbCore::ucsMatrix(PyDbDatabase& db)
+{
+    AcGeMatrix3d mat;
+    if (acdbUcsMatrix(mat, db.impObj()) != true)
+        throw PyAcadErrorStatus(eInvalidInput);
+    return mat;
+}
+
+void DbCore::unloadXrefs1(PyDbDatabase& db, const boost::python::list& xrefBlkIds)
+{
+    unloadXrefs2(db, xrefBlkIds, true);
+}
+
+void DbCore::unloadXrefs2(PyDbDatabase& db, const boost::python::list& xrefBlkIds, bool bQuiet)
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    auto ids = PyListToObjectIdArray(xrefBlkIds);
+    PyThrowBadEs(acdbUnloadXrefs(db.impObj(), ids, bQuiet));
 #endif
 }
 
