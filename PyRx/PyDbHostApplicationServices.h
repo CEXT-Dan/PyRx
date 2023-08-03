@@ -70,7 +70,7 @@ public:
     std::string         makeDependentName(const std::string& dwgName, const std::string& symbolName) const;
     std::string         repairPreExtendedSymbolName(const std::string& oldName, bool allowVerticalBar) const;
     std::string         repairSymbolName(const std::string& oldName, bool allowVerticalBar) const;
-    //bool            splitDependentName(size_t& numLeftBytes, const ACHAR*& pRight, const ACHAR* symbolName) const = 0;//TODO:
+    //bool              splitDependentName(size_t& numLeftBytes, const ACHAR*& pRight, const ACHAR* symbolName) const = 0;//TODO:
     Acad::ErrorStatus   validatePreExtendedSymbolName(const std::string& name, bool allowVerticalBar) const;
     Acad::ErrorStatus   validateSymbolName(const std::string& name, bool allowVerticalBar) const;
     bool                compatibilityMode(PyDbDatabase& pDb) const;

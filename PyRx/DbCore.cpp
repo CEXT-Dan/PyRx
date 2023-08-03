@@ -86,14 +86,26 @@ void makeDbCoreWrapper()
 
         .def("openDbObject", &DbCore::openDbObject).staticmethod("openDbObject")
         .def("openDbEntity", &DbCore::openDbEntity).staticmethod("openDbEntity")
+
+        .def("queueAnnotationEntitiesForRegen", &DbCore::queueAnnotationEntitiesForRegen).staticmethod("queueAnnotationEntitiesForRegen")
+        .def("queueForRegen", &DbCore::queueForRegen).staticmethod("queueForRegen")
+
+
         .def("regApp", &DbCore::regApp).staticmethod("regApp")
-        .def("updateDimension", &DbCore::updateDimension).staticmethod("updateDimension")
+        .def("rtos", &DbCore::rtos).staticmethod("rtos")
         .def("resbufTest", &DbCore::resbufTest).staticmethod("resbufTest")
+
+        .def("snValid", &DbCore::snValid).staticmethod("snValid")
+        .def("symUtil", &DbCore::symUtil).staticmethod("symUtil")
+
+        .def("tblNext", &DbCore::tblNext).staticmethod("tblNext")
+        .def("tblObjName", &DbCore::tblObjName).staticmethod("tblObjName")
+        .def("tblSearch", &DbCore::tblSearch).staticmethod("tblSearch")
 
         .def("getSummaryInfo", &DbCore::getSummaryInfo).staticmethod("getSummaryInfo")
         .def("putSummaryInfo", &DbCore::putSummaryInfo).staticmethod("putSummaryInfo")
+        .def("updateDimension", &DbCore::updateDimension).staticmethod("updateDimension")
         .def("validateCustomSummaryInfoKey", &DbCore::validateCustomSummaryInfoKey).staticmethod("validateCustomSummaryInfoKey")
-
 
         .def("ucs2Wcs", &DbCore::ucs2Wcs1)
         .def("ucs2Wcs", &DbCore::ucs2Wcs2).staticmethod("ucs2Wcs")
@@ -564,9 +576,31 @@ PyDbEntity DbCore::openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode)
     throw PyNotThatKindOfClass();
 }
 
+void DbCore::queueAnnotationEntitiesForRegen(PyDbDatabase& db)
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    PyThrowBadEs(acdbQueueAnnotationEntitiesForRegen(db.impObj()));
+#endif
+}
+
+int DbCore::queueForRegen(const boost::python::list& pyids)
+{
+    auto ids = PyListToObjectIdArray(pyids);
+    return acdbQueueForRegen(ids.asArrayPtr(), ids.length());
+}
+
 bool DbCore::regApp(const std::string& app)
 {
     return acdbRegApp(utf8_to_wstr(app).c_str()) == RTNORM;
+}
+
+std::string DbCore::rtos(double val, int unit, int prec)
+{
+    std::array<wchar_t, 24> buf = { 0 };
+    PyThrowBadRt(acdbRToS(val, unit, prec, buf.data(), buf.size()));
+    return wstr_to_utf8(buf.data());
 }
 
 void DbCore::updateDimension(const PyDbObjectId& id)
@@ -577,6 +611,37 @@ void DbCore::updateDimension(const PyDbObjectId& id)
 boost::python::list DbCore::resbufTest(const boost::python::list& list)
 {
     AcResBufPtr ptr(listToResbuf(list));
+    return resbufToList(ptr.get());
+}
+
+bool DbCore::snValid(const std::string& tbstr, int pipeTest)
+{
+    return acdbSNValid(utf8_to_wstr(tbstr).c_str(), pipeTest) == RTNORM;
+}
+
+PyDbSymUtilServices DbCore::symUtil()
+{
+    return PyDbSymUtilServices();
+}
+
+boost::python::list DbCore::tblNext(const std::string& tblname, int rewind)
+{
+    AcResBufPtr ptr(acdbTblNext(utf8_to_wstr(tblname).c_str(), rewind));
+    return resbufToList(ptr.get());
+}
+
+PyDbObjectId DbCore::tblObjName(const std::string& tblname, const std::string& sym)
+{
+    PyDbObjectId id;
+    ads_name entres = { 0 };
+    acdbTblObjName(utf8_to_wstr(tblname).c_str(), utf8_to_wstr(sym).c_str(), entres);
+    PyThrowBadEs(acdbGetObjectId(id.m_id, entres));
+    return id;
+}
+
+boost::python::list DbCore::tblSearch(const std::string& tblname, const std::string& sym, int setnext)
+{
+    AcResBufPtr ptr(acdbTblSearch(utf8_to_wstr(tblname).c_str(), utf8_to_wstr(sym).c_str(), setnext));
     return resbufToList(ptr.get());
 }
 

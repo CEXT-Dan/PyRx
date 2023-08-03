@@ -10592,6 +10592,18 @@ entGetX( (ObjectId)arg1, (list)arg2) -> list :
     C++ signature :
         void putSummaryInfo(class PyDbDatabaseSummaryInfo {lvalue},class PyDbDatabase {lvalue})'''
     ...
+    def queueAnnotationEntitiesForRegen (self, *args, **kwargs)-> None :
+      '''queueAnnotationEntitiesForRegen( (Database)arg1) -> None :
+
+    C++ signature :
+        void queueAnnotationEntitiesForRegen(class PyDbDatabase {lvalue})'''
+    ...
+    def queueForRegen (self, *args, **kwargs)-> int :
+      '''queueForRegen( (list)arg1) -> int :
+
+    C++ signature :
+        int queueForRegen(class boost::python::list)'''
+    ...
     def regApp (self, *args, **kwargs)-> bool :
       '''regApp( (str)arg1) -> bool :
 
@@ -10603,6 +10615,42 @@ entGetX( (ObjectId)arg1, (list)arg2) -> list :
 
     C++ signature :
         class boost::python::list resbufTest(class boost::python::list)'''
+    ...
+    def rtos (self, *args, **kwargs)-> str :
+      '''rtos( (float)arg1, (int)arg2, (int)arg3) -> str :
+
+    C++ signature :
+        class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > rtos(double,int,int)'''
+    ...
+    def snValid (self, *args, **kwargs)-> bool :
+      '''snValid( (str)arg1, (int)arg2) -> bool :
+
+    C++ signature :
+        bool snValid(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    ...
+    def symUtil (self, *args, **kwargs)-> SymUtilServices :
+      '''symUtil() -> SymUtilServices :
+
+    C++ signature :
+        class PyDbSymUtilServices symUtil()'''
+    ...
+    def tblNext (self, *args, **kwargs)-> list :
+      '''tblNext( (str)arg1, (int)arg2) -> list :
+
+    C++ signature :
+        class boost::python::list tblNext(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
+    ...
+    def tblObjName (self, *args, **kwargs)-> ObjectId :
+      '''tblObjName( (str)arg1, (str)arg2) -> ObjectId :
+
+    C++ signature :
+        class PyDbObjectId tblObjName(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
+    ...
+    def tblSearch (self, *args, **kwargs)-> list :
+      '''tblSearch( (str)arg1, (str)arg2, (int)arg3) -> list :
+
+    C++ signature :
+        class boost::python::list tblSearch(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
     ...
     def ucs2Ucs (self, *args, **kwargs)-> bool :
       '''ucs2Ucs( (Point3d)arg1, (Point3d)arg2) -> bool :

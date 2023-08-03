@@ -7,6 +7,7 @@ class PyGeCurve3d;
 class PyDbCurve;
 class PyDbDatabase;
 class PyDbDatabaseSummaryInfo;
+class PyDbSymUtilServices;
 
 void makeDbCoreWrapper();
 
@@ -75,9 +76,22 @@ public:
 
     static PyDbObject           openDbObject(const PyDbObjectId& id, AcDb::OpenMode mode);
     static PyDbEntity           openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode);
+
+    static void                 queueAnnotationEntitiesForRegen(PyDbDatabase& db);
+    static int                  queueForRegen(const boost::python::list& pyids);
+
     static bool                 regApp(const std::string& app);
+    static std::string          rtos(double, int unit, int prec);
+
     static void                 updateDimension(const PyDbObjectId& id);
     static boost::python::list  resbufTest(const boost::python::list& list);
+
+    static bool                 snValid(const std::string& tbstr, int pipeTest);
+    static PyDbSymUtilServices  symUtil();
+
+    static boost::python::list  tblNext(const std::string& tblname, int rewind);
+    static PyDbObjectId         tblObjName(const std::string& tblname, const std::string& sym);
+    static boost::python::list  tblSearch(const std::string& tblname, const std::string& sym, int setnext);
 
     static PyDbDatabaseSummaryInfo getSummaryInfo(PyDbDatabase& db);
     static void                 putSummaryInfo(PyDbDatabaseSummaryInfo& info, PyDbDatabase& db);
