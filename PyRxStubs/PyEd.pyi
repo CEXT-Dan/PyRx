@@ -2509,6 +2509,12 @@ __init__( (object)arg1) -> None :
     C++ signature :
         bool isInitialized(class PyEdSelectionSet {lvalue})'''
     ...
+    def objectIds (self, *args, **kwargs)-> list :
+      '''objectIds( (SelectionSet)arg1) -> list :
+
+    C++ signature :
+        class boost::python::list objectIds(class PyEdSelectionSet {lvalue})'''
+    ...
     def remove (self, *args, **kwargs)-> None :
       '''remove( (SelectionSet)arg1, (ObjectId)arg2) -> None :
 

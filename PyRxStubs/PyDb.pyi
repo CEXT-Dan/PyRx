@@ -10652,6 +10652,23 @@ entGetX( (ObjectId)arg1, (list)arg2) -> list :
     C++ signature :
         class boost::python::list tblSearch(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
     ...
+    def textFind (self, *args, **kwargs)-> list :
+      '''textFind( (Database)arg1, (str)arg2) -> list :
+
+    C++ signature :
+        class boost::python::list textFind(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)
+
+textFind( (Database)arg1, (str)arg2, (str)arg3, (int)arg4, (list)arg5) -> list :
+
+    C++ signature :
+        class boost::python::list textFind(class PyDbDatabase {lvalue},class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,unsigned char,class boost::python::list)'''
+    ...
+    def transactionManager (self, *args, **kwargs)-> TransactionManager :
+      '''transactionManager() -> TransactionManager :
+
+    C++ signature :
+        class PyDbTransactionManager transactionManager()'''
+    ...
     def ucs2Ucs (self, *args, **kwargs)-> bool :
       '''ucs2Ucs( (Point3d)arg1, (Point3d)arg2) -> bool :
 
@@ -10673,6 +10690,23 @@ ucs2Wcs( (Vector3d)arg1, (Vector3d)arg2) -> bool :
 
     C++ signature :
         bool ucs2Wcs(class AcGeVector3d,class AcGeVector3d {lvalue})'''
+    ...
+    def ucsMatrix (self, *args, **kwargs)-> Matrix3d :
+      '''ucsMatrix( (Database)arg1) -> Matrix3d :
+
+    C++ signature :
+        class AcGeMatrix3d ucsMatrix(class PyDbDatabase {lvalue})'''
+    ...
+    def unloadXrefs (self, *args, **kwargs)-> None :
+      '''unloadXrefs( (Database)arg1, (list)arg2) -> None :
+
+    C++ signature :
+        void unloadXrefs(class PyDbDatabase {lvalue},class boost::python::list)
+
+unloadXrefs( (Database)arg1, (list)arg2, (bool)arg3) -> None :
+
+    C++ signature :
+        void unloadXrefs(class PyDbDatabase {lvalue},class boost::python::list,bool)'''
     ...
     def updateDimension (self, *args, **kwargs)-> None :
       '''updateDimension( (ObjectId)arg1) -> None :

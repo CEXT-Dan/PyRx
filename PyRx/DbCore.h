@@ -8,6 +8,7 @@ class PyDbCurve;
 class PyDbDatabase;
 class PyDbDatabaseSummaryInfo;
 class PyDbSymUtilServices;
+class PyDbTransactionManager;
 
 void makeDbCoreWrapper();
 
@@ -45,7 +46,6 @@ public:
     static void                 dxfOutAsR12(PyDbDatabase& pDb, const std::string& fileName, int precision);
     static bool                 entMake(const boost::python::list& rb);
     static PyDbObjectId         entMakeX(const boost::python::list& rb);
-
     static bool                 entDel(const PyDbObjectId& id);
     static boost::python::list  entGet(const PyDbObjectId& id);
     static boost::python::list  entGetX1(const PyDbObjectId& id);
@@ -67,35 +67,30 @@ public:
     static double               getUnitsConversion(AcDb::UnitsValue from, AcDb::UnitsValue to);
     static PyDbObjectId         getViewportVisualStyle();
     static PyDbObjectId         handEnt(const std::string& handle);
-
     static bool                 isReservedString(const std::string& strString, AcDb::reservedStringEnumType reservedType);
     static AcGePoint3d          inters(const AcGePoint3d& from1, const AcGePoint3d& to1, const AcGePoint3d& from2, const AcGePoint3d& to2, int teston);
     static void                 loadLineTypeFile(const std::string& ltname, const std::string& fname, PyDbDatabase& db);
     static void                 loadMlineStyleFile(const std::string& ltname, const std::string& fname);
     static PyDbObjectId         namedObjDict();
-
     static PyDbObject           openDbObject(const PyDbObjectId& id, AcDb::OpenMode mode);
     static PyDbEntity           openDbEntity(const PyDbObjectId& id, AcDb::OpenMode mode);
-
     static void                 queueAnnotationEntitiesForRegen(PyDbDatabase& db);
     static int                  queueForRegen(const boost::python::list& pyids);
-
     static bool                 regApp(const std::string& app);
     static std::string          rtos(double, int unit, int prec);
-
     static void                 updateDimension(const PyDbObjectId& id);
     static boost::python::list  resbufTest(const boost::python::list& list);
-
     static bool                 snValid(const std::string& tbstr, int pipeTest);
     static PyDbSymUtilServices  symUtil();
-
     static boost::python::list  tblNext(const std::string& tblname, int rewind);
     static PyDbObjectId         tblObjName(const std::string& tblname, const std::string& sym);
     static boost::python::list  tblSearch(const std::string& tblname, const std::string& sym, int setnext);
-
     static boost::python::list  textFind1(PyDbDatabase& db, const std::string& findString);
     static boost::python::list  textFind2(PyDbDatabase& db, const std::string& findString, const std::string& replaceString, Adesk::UInt8 searchOptions, const boost::python::list& selSet);
-
+    static PyDbTransactionManager transactionManager();
+    static AcGeMatrix3d           ucsMatrix(PyDbDatabase& db);
+    static void                 unloadXrefs1(PyDbDatabase& db, const boost::python::list& xrefBlkIds);
+    static void                 unloadXrefs2(PyDbDatabase& db, const boost::python::list& xrefBlkIds, bool bQuiet);
     static PyDbDatabaseSummaryInfo getSummaryInfo(PyDbDatabase& db);
     static void                 putSummaryInfo(PyDbDatabaseSummaryInfo& info, PyDbDatabase& db);
     static bool                 validateCustomSummaryInfoKey(const std::string& key, PyDbDatabaseSummaryInfo& info);
