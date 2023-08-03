@@ -234,7 +234,15 @@ public:
         method.OnPyUnloadDwg = PyDict_GetItemString(method.mdict, "OnPyUnloadDwg");
     }
 
-    static void loadCommands(PyRxMethod& method, std::filesystem::path pysyspath)
+    static CString formatFileNameforCommandGroup(const TCHAR* modulename)
+    {
+        CString _modulename = _T("PY_");
+        _modulename.Append(modulename);
+        _modulename.Replace(' ', '_');
+        return _modulename;
+    }
+
+    static void loadCommands(PyRxMethod& method, const std::filesystem::path& pyPath, const AcString& moduleName)
     {
         PyObject* pKey = nullptr, * pValue = nullptr;
         for (Py_ssize_t i = 0; PyDict_Next(method.mdict, &i, &pKey, &pValue);)
@@ -247,8 +255,8 @@ public:
                 {
                     const int commandFlags = PyCmd::getCommandFlags(pValue);
                     PyRxApp::instance().commands.emplace(commandName.makeUpper(), pValue);
-                    PyRxApp::instance().pathForCommand.emplace(commandName, pysyspath);
-                    acedRegCmds->addCommand(_T("PYCOMMANDS"), commandName, commandName, commandFlags, AcRxPyApp_pyfunc);
+                    PyRxApp::instance().pathForCommand.emplace(commandName, pyPath);
+                    acedRegCmds->addCommand(formatFileNameforCommandGroup(moduleName), commandName, commandName, commandFlags, AcRxPyApp_pyfunc);
                 }
             }
             if (key.find(PyLispFuncPrefix) != -1)
@@ -258,7 +266,7 @@ public:
         }
     }
 
-    static void reloadCommands(PyRxMethod& method, std::filesystem::path pysyspath)
+    static void reloadCommands(PyRxMethod& method, const std::filesystem::path& pypath, const AcString& moduleName)
     {
         PyObject* pKey = nullptr, * pValue = nullptr;
         for (Py_ssize_t i = 0; PyDict_Next(method.mdict, &i, &pKey, &pValue);)
@@ -277,8 +285,8 @@ public:
                     {
                         const int commandFlags = PyCmd::getCommandFlags(pValue);
                         PyRxApp::instance().commands.emplace(commandName, pValue);
-                        PyRxApp::instance().pathForCommand.emplace(commandName, pysyspath);
-                        acedRegCmds->addCommand(_T("PYCOMMANDS"), commandName, commandName, commandFlags, AcRxPyApp_pyfunc);
+                        PyRxApp::instance().pathForCommand.emplace(commandName, pypath);
+                        acedRegCmds->addCommand(formatFileNameforCommandGroup(moduleName), commandName, commandName, commandFlags, AcRxPyApp_pyfunc);
                     }
                 }
             }
@@ -289,7 +297,7 @@ public:
         }
     }
 
-    static bool doPyLoad(AcString& pathName, AcString& moduleName, std::filesystem::path& pysyspath)
+    static bool doPyLoad(AcString& pathName, AcString& moduleName, std::filesystem::path& pypath)
     {
         if (PyRxApp::instance().funcNameMap.contains(moduleName))
         {
@@ -303,7 +311,7 @@ public:
         {
             method.mdict = PyModule_GetDict(method.mod.get());
             loadPyAppReactors(method);
-            loadCommands(method, pysyspath);
+            loadCommands(method, pypath, moduleName);
             PyRxApp::instance().funcNameMap.emplace(moduleName, std::move(method));
             acutPrintf(_T("\nSuccess module %ls is loaded: "), (const TCHAR*)moduleName);
             onLoadPyModule(moduleName);
@@ -332,7 +340,7 @@ public:
             {
                 method.mdict = PyModule_GetDict(method.mod.get());
                 loadPyAppReactors(method);
-                reloadCommands(method, pysyspath);
+                reloadCommands(method, pysyspath, moduleName);
                 PyRxApp::instance().funcNameMap.emplace(moduleName, std::move(method));
                 acutPrintf(_T("\nSuccess module %ls is reloaded: "), (const TCHAR*)moduleName);
                 onLoadPyModule(moduleName);
@@ -363,10 +371,10 @@ public:
             {
                 AcString pathName;
                 AcString moduleName;
-                std::filesystem::path pysyspath;
-                if (!pyNavFileNavDialog(pysyspath, pathName, moduleName))
+                std::filesystem::path pypath;
+                if (!pyNavFileNavDialog(pypath, pathName, moduleName))
                     return;
-                doPyLoad(pathName, moduleName, pysyspath);
+                doPyLoad(pathName, moduleName, pypath);
             }
         }
         catch (...)
@@ -514,7 +522,7 @@ public:
 
     static void AcRxPyApp_doit(void)
     {
-       
+
     }
 };
 
