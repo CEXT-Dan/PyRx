@@ -39,6 +39,7 @@ void makePyEdCoreWrapper()
         .def("clipFormatName", &EdCore::clipFormatName).staticmethod("clipFormatName")
         .def("cmdCWasCancelled", &EdCore::cmdCWasCancelled).staticmethod("cmdCWasCancelled")
         .def("cmdUndefine", &EdCore::cmdUndefine).staticmethod("cmdUndefine")
+        .def("getCommands", &EdCore::getCommands).staticmethod("getCommands")
         .def("coordFromPixelToWorld", &EdCore::coordFromPixelToWorld1)
         .def("coordFromPixelToWorld", &EdCore::coordFromPixelToWorld2).staticmethod("coordFromPixelToWorld")
         .def("coordFromWorldToPixel", &EdCore::coordFromWorldToPixel).staticmethod("coordFromWorldToPixel")
@@ -70,6 +71,7 @@ void makePyEdCoreWrapper()
         .def("getSysVars", &EdCore::getSysVars).staticmethod("getSysVars")
         .def("mSpace", &EdCore::mSpace).staticmethod("mSpace")
         .def("pSpace", &EdCore::pSpace).staticmethod("pSpace")
+        .def("osnap", &EdCore::osnap).staticmethod("osnap")
         .def("setUndoMark", &EdCore::setUndoMark).staticmethod("setUndoMark")
         .def("showHTMLModalWindow", &EdCore::showHTMLModalWindow1)
         .def("showHTMLModalWindow", &EdCore::showHTMLModalWindow2).staticmethod("showHTMLModalWindow")
@@ -170,6 +172,22 @@ bool EdCore::cmdCWasCancelled()
 int EdCore::cmdUndefine(const std::string& name, int undefIt)
 {
     return acedCmdUndefine(utf8_to_wstr(name).c_str(), undefIt);
+}
+
+boost::python::list EdCore::getCommands()
+{
+    PyAutoLockGIL lock;
+    boost::python::list lyList;
+    AcEdCommandIterator* iter = acedRegCmds->iterator();
+    if (iter != nullptr)
+    {
+        for (; !iter->done(); iter->next())
+        {
+            const auto cmd = iter->command();
+            lyList.append(boost::python::make_tuple(wstr_to_utf8(cmd->globalName()), wstr_to_utf8(cmd->localName()), cmd->commandFlags()));
+        }
+    }
+    return lyList;
 }
 
 bool EdCore::coordFromPixelToWorld1(const boost::python::list& tin, AcGePoint3d& pnt)
@@ -549,6 +567,14 @@ void EdCore::pSpace()
 int EdCore::grDraw(const AcGePoint3d& from, const AcGePoint3d& to, int colorIndex, int highlight)
 {
     return acedGrDraw(asDblArray(from), asDblArray(to), colorIndex, highlight);
+}
+
+AcGePoint3d EdCore::osnap(const AcGePoint3d& pt, const std::string& mode)
+{
+    PyAutoLockGIL lock;
+    AcGePoint3d result;
+    PyThrowBadRt(acedOsnap(asDblArray(pt), utf8_to_wstr(mode).c_str(), asDblArray(result)));
+    return result;
 }
 
 void EdCore::setUndoMark(bool flag)
