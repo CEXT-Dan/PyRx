@@ -17,30 +17,19 @@ struct PyRxObjectDeleter
 
     inline bool isDbroThenClose(AcRxObject* p) const
     {
-        try
+        if (!m_isDbObject)
         {
-            if (!m_isDbObject)
-            {
-                return false;
-            }
-            else if (p->isA()->isDerivedFrom(AcDbObject::desc()))
-            {
-                const auto dbo = static_cast<AcDbObject*>(p);
-                if (!dbo->objectId().isNull())
-                {
-#ifdef PyRxDebug
-                    if (auto es = dbo->close(); es != eOk)
-                        acutPrintf(_T("\nStatus = %ls in %ls: "), acadErrorStatusText(es), __FUNCTIONW__);
-#else
-                    dbo->close();
-#endif
-                    return true;
-                }
-            }
+            return false;
         }
-        catch (...)
+        else if (p->isA()->isDerivedFrom(AcDbObject::desc()))
         {
-
+            const auto dbo = static_cast<AcDbObject*>(p);
+            if (!dbo->objectId().isNull())
+            {
+                if (auto es = dbo->close(); es != eOk)
+                    acutPrintf(_T("\nStatus = %ls in %ls: "), acadErrorStatusText(es), __FUNCTIONW__);
+                return true;
+            }
         }
         return false;
     }

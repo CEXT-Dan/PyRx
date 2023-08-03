@@ -21,7 +21,7 @@ public:
     static std::string          clipFormatName();
     static bool                 cmdCWasCancelled();
     static int                  cmdUndefine(const std::string& name, int undefIt);
-    static boost::python::list  getCommands();
+    static boost::python::dict  getCommands();
     static bool                 coordFromPixelToWorld1(const boost::python::list& tin, AcGePoint3d& pnt);
     static bool                 coordFromPixelToWorld2(int windnum, const boost::python::list& tin, AcGePoint3d& pnt);
     static bool                 coordFromWorldToPixel(int windnum, const AcGePoint3d& pnt, boost::python::list& tin);
@@ -38,8 +38,6 @@ public:
     static int                  eatCommandThroat();
     static int                  editMTextInteractive(PyDbMText& mtext, bool useNewUI, bool allowTabs);
     static void                 enableUsrbrk();
-
-
 
     static std::string          findFile(const std::string& file);
     static std::string          findTrustedFile(const std::string& file);

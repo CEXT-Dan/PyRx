@@ -174,20 +174,25 @@ int EdCore::cmdUndefine(const std::string& name, int undefIt)
     return acedCmdUndefine(utf8_to_wstr(name).c_str(), undefIt);
 }
 
-boost::python::list EdCore::getCommands()
+boost::python::dict EdCore::getCommands()
 {
     PyAutoLockGIL lock;
-    boost::python::list lyList;
+    boost::python::dict Pydict;
+    std::map<std::string, boost::python::list> pyMap;
     AcEdCommandIterator* iter = acedRegCmds->iterator();
     if (iter != nullptr)
     {
         for (; !iter->done(); iter->next())
         {
             const auto cmd = iter->command();
-            lyList.append(boost::python::make_tuple(wstr_to_utf8(cmd->globalName()), wstr_to_utf8(cmd->localName()), cmd->commandFlags()));
+            pyMap[wstr_to_utf8(iter->commandGroup())].append(boost::python::make_tuple(wstr_to_utf8(cmd->globalName()), wstr_to_utf8(cmd->localName()), cmd->commandFlags()));
+        }
+        for (auto& item : pyMap)
+        {
+            Pydict[item.first] = item.second;
         }
     }
-    return lyList;
+    return Pydict;
 }
 
 bool EdCore::coordFromPixelToWorld1(const boost::python::list& tin, AcGePoint3d& pnt)
