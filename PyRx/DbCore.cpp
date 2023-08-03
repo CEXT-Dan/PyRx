@@ -101,6 +101,8 @@ void makeDbCoreWrapper()
         .def("tblNext", &DbCore::tblNext).staticmethod("tblNext")
         .def("tblObjName", &DbCore::tblObjName).staticmethod("tblObjName")
         .def("tblSearch", &DbCore::tblSearch).staticmethod("tblSearch")
+        .def("textFind", &DbCore::textFind1)
+        .def("textFind", &DbCore::textFind2).staticmethod("textFind")
 
         .def("getSummaryInfo", &DbCore::getSummaryInfo).staticmethod("getSummaryInfo")
         .def("putSummaryInfo", &DbCore::putSummaryInfo).staticmethod("putSummaryInfo")
@@ -643,6 +645,29 @@ boost::python::list DbCore::tblSearch(const std::string& tblname, const std::str
 {
     AcResBufPtr ptr(acdbTblSearch(utf8_to_wstr(tblname).c_str(), utf8_to_wstr(sym).c_str(), setnext));
     return resbufToList(ptr.get());
+}
+
+boost::python::list DbCore::textFind1(PyDbDatabase& db, const std::string& findString)
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    AcDbObjectIdArray resultSet;
+    acdbTextFind(db.impObj(), resultSet, utf8_to_wstr(findString).c_str());
+    return ObjectIdArrayToPyList(resultSet);
+#endif
+}
+
+boost::python::list DbCore::textFind2(PyDbDatabase& db, const std::string& findString, const std::string& replaceString, Adesk::UInt8 searchOptions, const boost::python::list& selSet)
+{
+#if defined(_BRXTARGET) && (_BRXTARGET <= 23)
+    throw PyNotimplementedByHost();
+#else
+    AcDbObjectIdArray resultSet;
+    auto set = PyListToObjectIdArray(selSet);
+    acdbTextFind(db.impObj(), resultSet, utf8_to_wstr(findString).c_str(), utf8_to_wstr(replaceString).c_str(), searchOptions, resultSet);
+    return ObjectIdArrayToPyList(resultSet);
+#endif
 }
 
 PyDbDatabaseSummaryInfo DbCore::getSummaryInfo(PyDbDatabase& db)

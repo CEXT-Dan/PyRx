@@ -37,7 +37,7 @@ public:
     Acad::PromptStatus  ssXform(const AcGeMatrix3d& xform);
     boost::python::list ssNameX1();
     boost::python::list ssNameX2(int ind);
-    boost::python::list toList();
+    boost::python::list objectIds();
 
 public:
     PySSName* impObj(const std::source_location& src = std::source_location::current()) const;

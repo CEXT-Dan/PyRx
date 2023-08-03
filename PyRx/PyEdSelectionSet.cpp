@@ -15,7 +15,8 @@ void makePyEdSelectionSetWrapper()
         .def("add", &PyEdSelectionSet::add)
         .def("remove", &PyEdSelectionSet::remove)
         .def("hasMember", &PyEdSelectionSet::hasMember)
-        .def("toList", &PyEdSelectionSet::toList)
+        .def("toList", &PyEdSelectionSet::objectIds)
+        .def("objectIds", &PyEdSelectionSet::objectIds)
         .def("adsname", &PyEdSelectionSet::adsname)
         .def("ssNameX", &PyEdSelectionSet::ssNameX1)
         .def("ssNameX", &PyEdSelectionSet::ssNameX2)
@@ -136,7 +137,7 @@ boost::python::list PyEdSelectionSet::ssNameX2(int idx)
     return resbufToList(rb);
 }
 
-boost::python::list PyEdSelectionSet::toList()
+boost::python::list PyEdSelectionSet::objectIds()
 {
     PyAutoLockGIL lock;
     PyDbObjectId objId;

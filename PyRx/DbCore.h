@@ -93,6 +93,9 @@ public:
     static PyDbObjectId         tblObjName(const std::string& tblname, const std::string& sym);
     static boost::python::list  tblSearch(const std::string& tblname, const std::string& sym, int setnext);
 
+    static boost::python::list  textFind1(PyDbDatabase& db, const std::string& findString);
+    static boost::python::list  textFind2(PyDbDatabase& db, const std::string& findString, const std::string& replaceString, Adesk::UInt8 searchOptions, const boost::python::list& selSet);
+
     static PyDbDatabaseSummaryInfo getSummaryInfo(PyDbDatabase& db);
     static void                 putSummaryInfo(PyDbDatabaseSummaryInfo& info, PyDbDatabase& db);
     static bool                 validateCustomSummaryInfoKey(const std::string& key, PyDbDatabaseSummaryInfo& info);
