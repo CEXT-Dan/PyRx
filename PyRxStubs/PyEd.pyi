@@ -215,6 +215,12 @@ audit( (Database)arg1, (bool)arg2, (bool)arg3) -> None :
     C++ signature :
         int cmdUndefine(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)'''
     ...
+    def cmds (self, *args, **kwargs)-> list :
+      '''cmds() -> list :
+
+    C++ signature :
+        class boost::python::list cmds()'''
+    ...
     def coordFromPixelToWorld (self, *args, **kwargs)-> bool :
       '''coordFromPixelToWorld( (list)arg1, (Point3d)arg2) -> bool :
 
@@ -369,6 +375,12 @@ coordFromPixelToWorld( (int)arg1, (list)arg2, (Point3d)arg3) -> bool :
 
     C++ signature :
         void mSpace()'''
+    ...
+    def osnap (self, *args, **kwargs)-> Point3d :
+      '''osnap( (Point3d)arg1, (str)arg2) -> Point3d :
+
+    C++ signature :
+        class AcGePoint3d osnap(class AcGePoint3d,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)'''
     ...
     def pSpace (self, *args, **kwargs)-> None :
       '''pSpace() -> None :

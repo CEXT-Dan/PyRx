@@ -21,6 +21,7 @@ public:
     static std::string          clipFormatName();
     static bool                 cmdCWasCancelled();
     static int                  cmdUndefine(const std::string& name, int undefIt);
+    static boost::python::list  getCommands();
     static bool                 coordFromPixelToWorld1(const boost::python::list& tin, AcGePoint3d& pnt);
     static bool                 coordFromPixelToWorld2(int windnum, const boost::python::list& tin, AcGePoint3d& pnt);
     static bool                 coordFromWorldToPixel(int windnum, const AcGePoint3d& pnt, boost::python::list& tin);
@@ -53,6 +54,7 @@ public:
     static void                 mSpace();
     static void                 pSpace();
     static int                  grDraw(const AcGePoint3d& from, const AcGePoint3d& to, int colorIndex, int highlight);
+    static AcGePoint3d          osnap(const AcGePoint3d& pt, const std::string& mode);
     static void                 setUndoMark(bool flag);
     static bool                 showHTMLModalWindow1(UINT_PTR hwnd, const std::string & uriOfHtmlPage);
     static bool                 showHTMLModalWindow2(UINT_PTR hwnd, const std::string& uriOfHtmlPage, bool persistSizeAndPosition);
