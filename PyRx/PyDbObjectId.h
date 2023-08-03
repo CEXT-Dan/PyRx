@@ -33,6 +33,15 @@ public:
     AcDbObjectId m_id;
 };
 
+inline boost::python::list ObjectIdArrayToPyList(const AcDbObjectIdArray& arr)
+{
+    PyAutoLockGIL lock;
+    boost::python::list pyList;
+    for (const auto& id : arr)
+        pyList.append(PyDbObjectId(id));
+    return pyList;
+}
+
 inline AcDbObjectIdArray PyListToObjectIdArray(const boost::python::object& iterable)
 {
     AcDbObjectIdArray arr;
