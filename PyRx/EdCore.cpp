@@ -179,14 +179,16 @@ boost::python::dict EdCore::getCommands()
     PyAutoLockGIL lock; //lock when creating python types
     boost::python::dict Pydict;
     std::map<std::string, boost::python::list> pyMap;
-    AcEdCommandIterator* iter = acedRegCmds->iterator();
+    std::unique_ptr<AcEdCommandIterator>iter(acedRegCmds->iterator());
     if (iter == nullptr)
         return Pydict;
 
     for (; !iter->done(); iter->next())
     {
         const auto cmd = iter->command();
-        pyMap[wstr_to_utf8(iter->commandGroup())].append(make_tuple(wstr_to_utf8(cmd->globalName()), wstr_to_utf8(cmd->localName()), cmd->commandFlags()));
+        pyMap[wstr_to_utf8(iter->commandGroup())].append(
+            boost::python::make_tuple(wstr_to_utf8(cmd->globalName()), 
+                wstr_to_utf8(cmd->localName()), cmd->commandFlags()));
     }
     for (auto& item : pyMap)
     {
