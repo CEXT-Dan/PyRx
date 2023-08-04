@@ -176,21 +176,21 @@ int EdCore::cmdUndefine(const std::string& name, int undefIt)
 
 boost::python::dict EdCore::getCommands()
 {
-    PyAutoLockGIL lock;
+    PyAutoLockGIL lock; //lock when creating python types
     boost::python::dict Pydict;
     std::map<std::string, boost::python::list> pyMap;
     AcEdCommandIterator* iter = acedRegCmds->iterator();
-    if (iter != nullptr)
+    if (iter == nullptr)
+        return Pydict;
+
+    for (; !iter->done(); iter->next())
     {
-        for (; !iter->done(); iter->next())
-        {
-            const auto cmd = iter->command();
-            pyMap[wstr_to_utf8(iter->commandGroup())].append(boost::python::make_tuple(wstr_to_utf8(cmd->globalName()), wstr_to_utf8(cmd->localName()), cmd->commandFlags()));
-        }
-        for (auto& item : pyMap)
-        {
-            Pydict[item.first] = item.second;
-        }
+        const auto cmd = iter->command();
+        pyMap[wstr_to_utf8(iter->commandGroup())].append(make_tuple(wstr_to_utf8(cmd->globalName()), wstr_to_utf8(cmd->localName()), cmd->commandFlags()));
+    }
+    for (auto& item : pyMap)
+    {
+        Pydict[item.first] = item.second;
     }
     return Pydict;
 }
