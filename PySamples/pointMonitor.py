@@ -6,6 +6,9 @@ import PyAp as Ap
 import PyEd as Ed
 import traceback
 
+print("added command pymon")
+print("added command pyunmon")
+
 
 class MyPointMonitor(Ed.InputPointMonitor):
     def __init__(self):
@@ -35,10 +38,19 @@ class MyPointMonitor(Ed.InputPointMonitor):
 pm = MyPointMonitor()
 
 
-def PyRxCmd_doit():
+def PyRxCmd_pymon():
     try:
         manager = Ap.curDoc().inputPointManager()
         manager.addPointMonitor(pm)
 
     except Exception as err:
         traceback.print_exception(err)
+        
+def PyRxCmd_pyunmon():
+    try:
+        manager = Ap.curDoc().inputPointManager()
+        manager.removePointMonitor(pm)
+
+    except Exception as err:
+        traceback.print_exception(err)
+
