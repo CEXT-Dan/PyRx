@@ -20,14 +20,14 @@ def depickleizer():
     return sysvars
 
 # pickle
-def PyRxCmd_doit():
+def PyRxCmd_pickle():
     try:
         pickleizer()
     except Exception as err:
         print(err)
 
 # unpickle
-def PyRxCmd_doit2():
+def PyRxCmd_pickle2():
     try:
         sysvars = depickleizer()
         print(sysvars)
@@ -35,7 +35,7 @@ def PyRxCmd_doit2():
         print(err)
 
 # pickle test
-def PyRxCmd_doit3():
+def PyRxCmd_pickle3():
     try:
         sysvars1 = pickleizer()
         sysvars2 = depickleizer()
@@ -47,7 +47,7 @@ def PyRxCmd_doit3():
         print(err)
         
 # pickle test
-def PyRxCmd_doit4():
+def PyRxCmd_pickle4():
     try:
         Ed.Core.setVar("OSMODE", 191)
         pickleizer()
